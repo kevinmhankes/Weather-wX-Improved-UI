@@ -28,9 +28,6 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         if floatBuffer.capacity < (32 * rd.numberOfRadials * rd.numberOfRangeBins) {
             floatBuffer = MemoryBuffer(32 * rd.numberOfRadials * rd.numberOfRangeBins)
         }
-        //if colorBuffer.capacity < (12 * rd.numberOfRadials * rd.numberOfRangeBins) {
-        //    colorBuffer = MemoryBuffer(12 * rd.numberOfRadials * rd.numberOfRangeBins)
-        //}
         setToPositionZero()
     }
 }

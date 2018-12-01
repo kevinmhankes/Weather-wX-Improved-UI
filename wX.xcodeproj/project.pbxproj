@@ -44,7 +44,6 @@
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
-		03DA3B3521ACBA4B00319596 /* PageAlignedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA3B3421ACBA4B00319596 /* PageAlignedArray.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DF17EE21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */; };
 		03DF17F021AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */; };
@@ -402,7 +401,6 @@
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
-		03DA3B3421ACBA4B00319596 /* PageAlignedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAlignedArray.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalRadarBuffers.swift; sourceTree = "<group>"; };
 		03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalNexradLevelData.swift; sourceTree = "<group>"; };
@@ -1095,7 +1093,6 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
-				03DA3B3421ACBA4B00319596 /* PageAlignedArray.swift */,
 				032EE2BE21A9617E00460D5D /* LatLonStr.swift */,
 				F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */,
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
@@ -1483,7 +1480,6 @@
 				F07076201DB7AABB00893E14 /* ViewControllerWEBVIEW.swift in Sources */,
 				F0B335B71DA3FD960035BD36 /* UtilityModelNSSLWRFInputOutput.swift in Sources */,
 				F0B335771DA3FD6F0035BD36 /* Utility.swift in Sources */,
-				03DA3B3521ACBA4B00319596 /* PageAlignedArray.swift in Sources */,
 				F0CFE98F1E5A1DB300F98DA1 /* UtilityWPCText.swift in Sources */,
 				F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */,
 				F0FE641C1DB57E520064553C /* ViewControllerSPCWATCH.swift in Sources */,

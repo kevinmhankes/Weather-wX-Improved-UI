@@ -215,22 +215,17 @@ class WXMetalRender {
             buffers.putFloat(colors[2])
             vList += 4
         }
-        //buffers.isInitialized = true
         buffers.count = vList
     }
 
     func constructGenericGeographic(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.geotype.count)
-        //buffers.breakSize = 30000
-        //if !buffers.isInitialized {
         buffers.initialize(4 * buffers.count, buffers.geotype.color)
-        //}
         let colors = buffers.getColorArrayInFloat()
         JNI_GenMercato(MemoryBuffer.getPointer(buffers.geotype.relativeBuffer.array),
                        MemoryBuffer.getPointer(buffers.floatBuffer.array), pn.xFloat,
                        pn.yFloat, pn.xCenterFloat, pn.yCenterFloat, pn.oneDegreeScaleFactorFloat, Int32(buffers.count))
         buffers.setToPositionZero()
-        //buffers.computeBreakSize()
         var i = 0
         (0..<(buffers.count/2)).forEach {_ in
             let f1 = Float(buffers.floatBuffer.getCGFloatNative())
@@ -282,8 +277,6 @@ class WXMetalRender {
     }
 
     func cleanup() {
-        //vertexBuffer = []
-        //vertexRadarBuffer = []
         radarLayers = []
         stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
         countyLineBuffers = ObjectMetalBuffers(GeographyType.countyLines, 0.75)
@@ -414,8 +407,6 @@ class WXMetalRender {
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
-        //locdotBuffers.isInitialized = true
-        //locCircleBuffers.isInitialized = true
         locdotBuffers.generateMtlBuffer(device)
         locCircleBuffers.generateMtlBuffer(device)
     }
@@ -429,7 +420,6 @@ class WXMetalRender {
         }
         buffers.lenInit = scaleLength(buffers.lenInit)
         buffers.draw(pn)
-        //buffers.isInitialized = true
     }
 
     func constructGenericLinesShort(_ buffers: ObjectMetalBuffers, _ fList: [Double]) {
@@ -450,7 +440,6 @@ class WXMetalRender {
             buffers.putFloat(colors[2])
             vList += 4
         }
-        //buffers.isInitialized = true
         buffers.count = vList
     }
 
@@ -478,7 +467,6 @@ class WXMetalRender {
         wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
         wbCircleBuffers.lenInit = scaleLength(wbCircleBuffers.lenInit)
         ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, pn)
-        //wbCircleBuffers.isInitialized = true
         wbCircleBuffers.generateMtlBuffer(device)
     }
 
@@ -520,7 +508,6 @@ class WXMetalRender {
     }
 
     func constructSpotters() {
-        //spotterBuffers.isInitialized = false
         spotterBuffers.lenInit = spotterBuffers.type.size
         spotterBuffers.triangleCount = 6
         _ = UtilitySpotter.getSpotterData()
