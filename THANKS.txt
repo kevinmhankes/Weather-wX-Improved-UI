@@ -1,0 +1,10 @@
+
+The following individiduals provided open source software used in this project. Thankyou
+
+Mike Gavaghan - code used to plot angle/distance to lat/long ( storm track, etc )
+Joel Teply - HSBColorPicker 
+Nguyen Cong Huy - ImageScrollView
+Just contributors - Just - used to only download the first chunk of Level2 data
+University Corporation for Atmospheric Research/Unidata - substantial Level 2 decoder in Java was used as a basis for the Swift code in wXIOS
+Cezar Pereira - TabBarControllerSwipeExtension.swift
+Chris Howell - Solar.swift

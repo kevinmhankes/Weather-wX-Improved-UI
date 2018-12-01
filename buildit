@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ..
+versionStr=`defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString`
+zip -r wXL23_${versionStr}.zip wX -x *.git* > /dev/null
+#zip -r wXIOS.`date +'%Y%m%d-%H-%M'`.zip wX  > /dev/null
+#cd wX

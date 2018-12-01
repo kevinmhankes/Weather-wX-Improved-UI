@@ -1,0 +1,6 @@
+info.plist to allow http
+
+<key>NSAppTransportSecurity</key>  
+     <dict>  
+          <key>NSAllowsArbitraryLoads</key><true/>  
+     </dict>

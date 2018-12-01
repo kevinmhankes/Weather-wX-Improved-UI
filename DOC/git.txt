@@ -1,0 +1,22 @@
+Initial push
+--------
+cd wXL23/wX
+git init
+git remote add origin https://gitlab.com/joshua.tee/wxl23.git
+git add .
+git commit -m "1st commit"
+git commit -a -m "version number"
+git push -u origin master
+
+
+Clone to another system
+------
+git clone https://gitlab.com/joshua.tee/wx.git
+#git push -u origin --all
+#git push -u origin --tags
+
+
+tag for release
+-------
+git tag 50541
+git push origin --tags

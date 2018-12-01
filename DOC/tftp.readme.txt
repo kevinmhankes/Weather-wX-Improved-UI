@@ -1,0 +1,45 @@
+NOTICE
+
+All information on this computer system may be intercepted, recorded,
+read, copied, and disclosed by and to authorized personnel for official
+purposes, including criminal investigations. Access or use of this
+computer system by any person whether authorized or unauthorized,
+constitutes consent to these terms.
+
+-------------------------------------------------------------------
+
+
+NOTICE TO FTP USERS
+
+This is an open service for general Use
+
+Accessing these servers with programs/scripts that are:
+   (1) too repetitive over time (knowing data does not change that frequently),
+   (2) opening multiple concurrent sessions, and
+   (3) include the constant use of the FTP "ls" (list command) during the session
+will significantly reduce server response for everyone and severly impact the access by all
+users. DO NOT DO THIS!
+
+ACCESS Controls are:
+   (1) No more than 20 concurrent sessions are allowed per customer,
+   (2) No more than 30 minutes duration per access (don't use slow access speeds),
+   (3) Session is dropped after 5 minutes idle to allow others access. 
+
+For additional information, please see http://www.nws.noaa.gov/tg/general.html
+
+If users have an issue with any of the services offered thought this site please 
+contact Tech Control:
+  email - toc.nwstg@noaa.gov
+  phone - 301-713-0902
+
+Information contained in this server is intended to
+provide an easy method for the national and international
+meteorological community to acquire current information
+concerning the communications and identification of 
+meteorological and hydrological data received via the National
+Weather Service Telecommunication Gateway.
+
+Members of the meteorological community should contact their
+normal source of meteorological data for further information
+concerning data, communications protocols, or message procedures
+outlined in this server.  

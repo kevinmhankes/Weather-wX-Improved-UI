@@ -1,0 +1,12 @@
+disabled_rules: # rule identifiers to exclude from running
+  - cyclomatic_complexity
+  - file_length
+  - large_tuple
+  - type_body_length
+  - function_body_length
+  - identifier_name
+  - line_length
+  - function_parameter_count
+  - type_name 
+  - force_try
+  - shorthand_operator

@@ -1,0 +1,301 @@
+/*****************************************************************************
+ * Copyright (c) 2016, 2017, 2018 joshua.tee@gmail.com. All rights reserved.
+ *
+ * Refer to the COPYING file of the official project for license.
+ *****************************************************************************/
+
+import UIKit
+
+final class UtilityDownload {
+
+    static func getStringFromUrl(_ urlstr: String) -> String {
+        guard let myURL = URL(string: urlstr) else {return ""}
+        do {
+            return try String(contentsOf: myURL, encoding: .ascii)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return ""
+    }
+
+    static func getStringFromUrlSep(_ urlstr: String) -> String {
+        guard let myURL = URL(string: urlstr) else {return ""}
+        do {
+            return try String(contentsOf: myURL, encoding: .ascii)
+        } catch _ {
+            //print("Error: \(error)")
+        }
+        return ""
+    }
+
+    static func getBitmapFromUrl(_ urlstr: String) -> Bitmap {
+        guard let myURL = URL(string: urlstr) else {return Bitmap()}
+        let imageData = try?  Data(contentsOf: myURL)
+        if let image = imageData {
+            return Bitmap(image)
+        } else {
+            return Bitmap()
+        }
+    }
+
+    static func getInputStreamFromURL(_ urlstr: String) -> Data {
+        guard let myURL = URL(string: urlstr) else {return Data()}
+        let imageData = try? Data(contentsOf: myURL)
+        var data = Data()
+        if let dataTmp = imageData {data = dataTmp}
+        return data
+    }
+
+    static func getTextProduct(_ produ: String) -> String {
+        var text = ""
+        let prod = produ.uppercased()
+        if prod=="AFDLOC" {
+            text = getTextProduct("afd" + Location.wfo.lowercased())
+        } else if prod=="HWOLOC" {
+            text = getTextProduct("hwo" + Location.wfo.lowercased())
+        } else if prod=="SUNMOON" {
+            text = UtilitySunMoon.getExtendedSunMoonData()
+            let textArr = UtilitySunMoon.parseData(text)
+            text = textArr.1
+        } else if prod=="HOURLY" {
+            let textArr = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
+            text = textArr.0
+        } else if prod=="SWPC3DAY" {
+            text = ("http://services.swpc.noaa.gov/text/3-day-forecast.txt").getHtml()
+        } else if prod=="SWPC27DAY" {
+            text = ("http://services.swpc.noaa.gov/text/27-day-outlook.txt").getHtml()
+        } else if prod=="SWPCWWA" {
+            text = ("http://services.swpc.noaa.gov/text/advisory-outlook.txt").getHtml()
+        } else if prod=="SWPCHIGH" {
+            text = ("http://services.swpc.noaa.gov/text/weekly.txt").getHtml()
+        } else if prod=="SWPCDISC" {
+            text = ("http://services.swpc.noaa.gov/text/discussion.txt").getHtml()
+        } else if prod=="SWPC3DAYGEO" {
+            text = ("http://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt").getHtml()
+        } else if prod.contains("MIATCP") || prod.contains("MIATCM")
+            || prod.contains("MIATCD") || prod.contains("MIAPWS")
+            || prod.contains("MIAHS") {
+            let textUrl = "http://www.nhc.noaa.gov/text/" + prod + ".shtml"
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+        } else if prod.contains("MIAT") {
+            text = ("http://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
+            if UIPreferences.nwsTextRemovelinebreaks && prod=="MIATWOAT"
+                || prod=="MIATWDAT" || prod=="MIATWOEP"
+                || prod=="MIATWDEP" {
+                text = text.replaceAll("<br><br>", "<BR><BR>")
+                text = text.replaceAll("<br>", " ")
+            }
+        } else if prod.hasPrefix("SCCNS") {
+            let textUrl = "/discussions/nfd" + prod.lowercased().replace("ns", "") + ".html"
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+            if UIPreferences.nwsTextRemovelinebreaks {
+                text = text.removeLineBreaks()
+            }
+        } else if prod.contains("SPCMCD") {
+            let no = prod.substring(6)
+            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+            if UIPreferences.nwsTextRemovelinebreaks {
+                text = text.removeLineBreaks()
+            }
+        } else if prod.contains("SPCWAT") {
+            let no = prod.substring(6)
+            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+            if UIPreferences.nwsTextRemovelinebreaks {
+                text = text.removeLineBreaks()
+            }
+        } else if prod.contains("WPCMPD") {
+            let no = prod.substring(6)
+            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+        } else if prod.hasPrefix("GLF") && !prod.contains("%") {
+            text = getTextProduct(prod + "%")
+        } else if prod.contains("FOCN45") {
+            text = "http://tgftp.nws.noaa.gov/data/raw/fo/focn45.cwwg..txt".getHtmlSep()
+            if UIPreferences.nwsTextRemovelinebreaks {text = text.removeLineBreaks()}
+        } else if prod.hasPrefix("AWCN") {
+            text = ("http://tgftp.nws.noaa.gov/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
+        } else if prod.contains("NFD") {
+            text = ("http://www.opc.ncep.noaa.gov/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml()
+        } else if prod.contains("FWDDY38") {
+            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
+            text = textUrl.getHtmlSep()
+            text = text.parse(MyApplication.pre2Pattern)
+        } else if prod.contains("FXCN01") {
+            text = "http://tgftp.nws.noaa.gov/data/raw/fx/fxcn01.cwao..txt".getHtmlSep()
+        } else if prod.contains("FPCN48") {
+            text = "http://tgftp.nws.noaa.gov/data/raw/fp/fpcn48.cwao..txt".getHtmlSep()
+        } else {
+            let t1 = prod.substring(0, 3)
+            let t2 = prod.substring(3).replace("%", "")
+            let html = ("https://api.weather.gov/products/types/" + t1 + "/locations/" + t2).getNwsHtml()
+            let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
+            let prodHtml = urlProd.getNwsHtml()
+            text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
+            text = text.replace("\\n\\n", "\n")
+            text = text.replace("\\n", " ")
+        }
+        UtilityPlayList.checkAndSave(prod, text)
+        return text
+    }
+
+    static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
+        var text = ""
+        let prodLocal = product.uppercased()
+        let t1 = prodLocal.substring(0, 3)
+        let t2 = prodLocal.substring(3)
+        let textUrl = "http://forecast.weather.gov/product.php?site=NWS&product=" + t1
+            + "&issuedby=" + t2 + "&version=" + String(version)
+        text = textUrl.getHtmlSep()
+        text = text.parse(MyApplication.prePattern)
+        text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\"><u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
+        text = text.replaceAll("^<br>", "")
+        if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {text = text.removeLineBreaks()}
+        return text
+    }
+
+    static func get1KMURL() -> Bitmap {return Bitmap()}
+
+    static func get1KMURL(_ wfo: String) -> Bitmap {return Bitmap()}
+
+    static func get2KMURL(_ product: String) -> Bitmap {return Bitmap()}
+
+    static func getImageProduct(_ product: String) -> Bitmap {
+        var url = ""
+        var bitmap = Bitmap()
+        var needsBitmap = true
+        switch product {
+        case "VIS_1KM":
+            needsBitmap = false
+            bitmap = get1KMURL()
+        case "GOES16":
+            needsBitmap = false
+            let url = UtilityGOES16.getUrl(preferences.getString("GOES16_PROD", "02"), preferences.getString("GOES16_SECTOR", "cgl"))
+            bitmap = url[0].getImage()
+        case "VIS_MAIN":
+            needsBitmap = false
+            bitmap = get1KMURL()
+        case "VIS_CONUS":
+            needsBitmap = false
+            bitmap = UtilityGOES16.getUrl("02", "CONUS")[0].getImage()
+        case "CARAIN":
+            if Location.x.contains("CANADA") {
+                needsBitmap = false
+                var rid = Location.rid
+                if rid=="NAT" {rid = "CAN"}
+                if rid=="CAN" || rid=="PAC" || rid=="WRN" || rid=="ONT" || rid=="QUE" || rid=="ERN" {
+                    bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
+                } else {
+                    bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(rid, "")
+                }
+            }
+        case "WEATHERSTORY":
+            needsBitmap = false
+            bitmap = Bitmap("http://www.weather.gov/images/" + Location.wfo.lowercased() + "/wxstory/Tab2FileL.png")
+        case "RAD_1KM": break
+        case "IR_2KM":
+            needsBitmap = false
+            bitmap = get2KMURL(product)
+        case "WV_2KM":
+            needsBitmap = false
+            bitmap = get2KMURL(product)
+        case "VIS_2KM":
+            needsBitmap = false
+            bitmap = get2KMURL(product)
+        case "RAD_2KM":
+            needsBitmap = false
+            bitmap = get2KMURL(product)
+        case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
+        case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
+        case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
+        case "FMAP36": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
+        case "FMAP48": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
+        case "FMAP3D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
+        case "FMAP4D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
+        case "FMAP5D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
+        case "FMAP6D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9mhwbg_conus.gif"
+        case "QPF1":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif"
+        case "QPF2":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif"
+        case "QPF3":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif"
+        case "QPF1-2": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d12_fill.gif"
+        case "QPF1-3": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d13_fill.gif"
+        case "QPF4-5": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/95ep48iwbg_fill.gif"
+        case "QPF6-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
+        case "QPF1-5": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
+        case "QPF1-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
+        case "SWOD1":
+            needsBitmap = false
+            bitmap = UtilitySPCSWO.getImageUrls("1", getAllImages: false)[0]
+        case "SWOD2":
+            needsBitmap = false
+            bitmap = UtilitySPCSWO.getImageUrls("2", getAllImages: false)[0]
+        case "SWOD3":
+            needsBitmap = false
+            bitmap = UtilitySPCSWO.getImageUrls("3", getAllImages: false)[0]
+        case "SPCMESO1":
+            let param = "500mb"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_500":
+            let param = "500mb"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_MSLP":
+            let param = "pmsl"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_TTD":
+            let param = "ttd"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_RGNLRAD":
+            let param = "rgnlrad"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_LLLR":
+            let param = "lllr"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "SPCMESO_LAPS":
+            let param = "laps"
+            needsBitmap = false
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+                + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
+        case "CONUSWV":
+            needsBitmap = false
+            bitmap = UtilityGOES16.getUrl("09", "CONUS")[0].getImage()
+        case "LTG":
+            needsBitmap = false
+            bitmap = UtilityLightning.getImage(preferences.getString("LIGHTNING_SECTOR", "usa_big"),
+                                               preferences.getString("LIGHTNING_PERIOD", "0.25"))
+        case "SND":
+            let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latlon)
+            needsBitmap = false
+            bitmap = UtilitySPCSoundings.getImage(nwsOffice)
+        case "STRPT": url = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
+        default:
+            bitmap = get1KMURL(product)
+            needsBitmap = false
+        }
+        if needsBitmap {bitmap = Bitmap(url)}
+        return bitmap
+    }
+
+    static func getRadarStatusMessage(_ radarSite: String) -> String {
+        var ridSmall = radarSite
+        if radarSite.count==4 {ridSmall.remove(at: radarSite.startIndex)}
+        return getTextProduct("FTM" + ridSmall.uppercased())
+    }
+}

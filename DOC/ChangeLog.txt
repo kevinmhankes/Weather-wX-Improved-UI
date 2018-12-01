@@ -1,0 +1,854 @@
+// TODO add tilts to radar
+// TODO update UI to match android version, new theme, FAB, rounded corners, drop shadow
+// TODO remove option "Use enhanced hw data" - should always be true
+// TODO color palette editor
+// TODO move global vars to myapp
+// TODO add new white theme
+// TODO add fab
+// TODO look into rounded corners
+// TODO sync version between both platforms
+// TODO look into notch spacing in latest phones
+// BUG canada locations don't set rid
+
+NOTE: releases after 51100 unless otherwise specified are continued heavy development of metal based radar
+2018_12_01 51100 metal: add autorefresh and center on double tap zoom
+		 [BUG] fix wind barbs with multiple values (utilMetar)
+		 [BUG] NSSL WRF was not initializing properly
+		 [BUG] nhi_tsra icon was not working
+2018_11_28 50900 metal: 
+2018_11_28 50800 metal: respect remember location, fix zoom issues due to 3d
+2018_11_28 50700 metal, bugfix on clicking icons in non-locfrag tab
+2018_11_25 50540 metal, add anim 
+2018_11_25 50520 metal, add -Ounchecked compiler option
+2018_11_24 50510 metal
+		 (bugfix) dup card in locfrag
+2018_11_24 50500 metal
+2018_11_23 50490 refactor object package to match android
+2018_11_17 50480 lint cleanup and bugfixes
+2018_11_15 50470 lint cleanup
+2018_11_14 50460 lint cleanup
+2018_11_12 50452 revamp NSSL WRF
+2018_11_08 50451 SPC Meso - update few parms
+		 add global vars for WPC/SPC HTTPS prefix
+	         install swiftlint with brew and make numerous lint corrections
+2018_10_30 50450 update project settings and remove uneeded files
+		 set objc inference to default, modify spc tab to accomdate
+2018_09_16 50401 if haz card not in homescreen do not download data
+		 (bugfix) fix smoke, hurr, and ts icons
+2018_06_17 50310 upadate font in icon code for IOS12 ( 12 dropped helvetica bold )
+2018_06_13 50304 cg
+2018_06_12 50301 add "Nexrad Test" for coregraphics test
+2018_05_31 50300 force GOES16 to use 1200x1200
+		 GOES16 remove timestamp in toolbar
+		 NHC storm - remove cloud icon
+		 fix canada typo in about
+2018_05_05 50292 (bugfix) severedash warnings was not show issuing office
+		 (bugfix) equalize height of radar in dual/quad pane
+2018_04_15 50290 in ObjectMetar add "Light Drizzle, Snow And Mist" to "snow",
+		 SPC MESO - add "Violent Tornado Parameter (VTP)"  - vtp ( Beta last one )
+                 SPC Meso - add mlcp_eshr "100mb Mixed-Layer CAPE / Effective Bulk Shear"
+                 SPC MESO - rename label to "Sfc Frontogenesis"
+                 SPC MESO - add pwtr2 "Precipitable Water (w/850mb Moisture Transport Vector)"
+                 SPC MESO - rename label to "Near-Freezing Surface Temp."
+                 SPC MESO - rename label to "Surface Wet-Bulb Temp"
+                 SPC MESO - rename label to "Freezing Level"
+                 SPC MESO - rename label to "Sfc RH, Temp, Wind"
+                 SPC MESO - rename label to "Lower Atmospheric Severity Index"
+                 SPC HREF - add "Fixed-Layer STP mean", "Fixed-Layer STP P[>1]", "Fixed-Layer STP P[>3]"
+                 SPC HREF - add "1-hr Snowfall: P[>2\"]",
+                 SPC HREF - add "1-hr QPF: P[>1\"]", "6-hr QPF: P[>1\"]", "6-hr QPF: P[>2\"]", "6-hr QPF: P[>3\"]",
+                 Hourly - translate T-storms to Tst
+2018_02_21 50281 add local forecast back to submenu
+2018_02_20 50279 add auto day/night detection via obs lat/lon sunrise/sunset
+2018_02_20 50278 add GPS lat/lon to radar long press, more conditions table improvements
+2018_02_18 50277 add "Fog" in conditions table
+2018_02_18 50276 add minus_ra icon
+2018_02_18 50275 on main screen use obs closest to LAT/LON
+2018_02_17 50274 use metar for icon determination
+2018_02_17 50273 GOES-16 back to 1200x1200 for few products
+		 put framework in place to not use API for Obs at all (needs refinement)
+2018_02_15 50272 add option in UI to show Metar in CC
+		 remove NCAR Ensemble from credits
+2018_02_14 50271 (bugfix) fix crash in locfrag when metar is lacking data ( Reno, NV )
+                 support degree/pressure unit conversions in current conditions 
+2018_02_13 50270 change refreshLocMin from 30 to 10min
+		 convert all Metar to localtime
+2018_02_13 50269 CC metar - add wind gust
+		 if wind is calm set to 0
+		 temp/dewpt round and remove fraction
+		 add ObjectMetar
+2018_02_11 50267 Hourly abbreviation: Likely
+		 Add abbreviations table at bottom of Hourly
+		 partial convert of CC to Metar as source
+2018_02_11 50266 (bugfix) GOES16 change to 600x600 from 1200x1200
+2018_02_08 50265 Hourly change Isolated to Iso
+		 SPC HREF show sector labels instead of codes
+2018_02_07 50264 ObjectAlertDetail: change from start to issued
+                                    add extension and use removeSingleLineBreaks()
+2018_02_05 50263 update about to show copyright through 2018, show appName/vers in main submenu
+		 (bugfix) SPC HREF time detection not working
+		 radar - hide/show textview on pinch zoom similar to pan
+2018_02_03 50262 (bugfix) update GOES16 sectors/sizes for ATL
+		 change formatting in radar long press
+2018_02_02 50261 (bugfix) update GOES16 sectors/sizes for ATL
+2018_02_01 50260 update goes wv icon for misc tab
+		 SPC Meso: add "Enhanced EHI" and "EL Temp/MUCAPE/MUCIN"
+2018_01_18 50257 1024 pixel image - remove alpha channel and transparency
+2018_01_18 50256 update 1024 pixel app icon after playstore rejection
+2018_01_14 50255 remove unused spotter VC code ( no plans to use on iOS )
+2018_01_14 50254 remove legacy GOES-13 stuff
+2018_01_13 50253 remove legacy GOES-13 stuff
+		 homescreen CONUSWV fix
+		 homescreen - better support for phantom goes-13 stuff ( to see and delete )
+		 goes-16: show best res for 5 products in regional
+2018_01_13 50252 add to hourly  .replaceAll("Light", "Lgt")
+		 add to GOES16: NotificationCenter.default.addObserver
+2018_01_10 50251 updates for GOES16
+2018_01_04 50250 cleanup and itunes release
+2018_01_02 50231 locfrag - scrollToTop in willEnterForeground
+2018_01_02 50230 cleanup
+		 change storyboard color to default blue
+		 rename methods in UtilityUSImgNWSGOES, UtilityNWSGOESFullDisk
+		 camelCase various methods
+2018_01_01 50229 add GOES16 to homescreen
+	         add status time in GOES16
+	         cleanup
+2018_01_01 50228 hourly formatting tweak
+		 update copyright to include 2018
+		 move to extension: getHtmlSep
+		 settings - location - capitalize first word in label after search
+2017_12_31 50227 code cleanup
+2017_12_30 50226 modify submenu data to not inlcude start index
+		 WPC Img - add ice analysis
+2017_12_30 50225 in radar show and then hide object when pan (perf improvement to match Android)
+2017_12_29 50224 (bugfix) pinch zoom in radar was not working correctly
+		 GOES16 - add animation frame count
+2017_12_24 50223 cleanup
+2017_12_23 50222 locfrag - move more logic to UI classes
+2017_12_23 50221 convert more foreach-append to map
+		 adhoc location - move more logic to UI classes
+2017_12_23 50220 cleanup
+2017_12_23 50219 move editor and pref to global var
+		 camelCase radargeom const
+2017_12_23 50218 convert MyApp.radarColorPalette* to map of String:String
+		 create new RadarPrefences and UIPreferences to offload from MyApp
+2017_12_23 50217 rename colorpal and radargeom to remove myapp from filename
+		 move many items from myApp to radargeom
+		 (bugfix) polygon color changes not taking effect immediately
+2017_12_23 50216 cleanup
+		 add coreobject/DataStorage to encapsulate severeDashboard stuff
+		 add global/AppColors to offload from MyApp
+2017_12_22 50215 move towards extensions for various string manip and download things
+		 new init for Bitmap class
+2017_12_22 50214 use of new String extensions and cleanup
+2017_12_21 50213 more use of LatLon
+		 cleanup
+2017_12_20 50212 more icon work with Enum
+2017_12_20 50211 (bugfix) GOES16 animations in NON GEOCOLOR for FD/CONUS not working
+		 use LatLon in locationSave
+		 add IconType Enum
+2017_12_20 50210 GOES16 - add CONUS, FD
+2017_12_19 50209 update GOES16 labels
+		 use more LatLon in UtilityLocation
+2017_12_19 50208 goes16 - add to misc and add anim support
+		 cleanup
+		 add firstToken String type extension
+2017_12_19 50207 add LatLon.reversed
+		 update GOES16 to new site (WIP)
+2017_12_18 50206 more work on LatLon including convert from class to struct
+2017_12_18 50205 more work on LatLon and move MyApp loccreate method to Location class
+2017_12_18 50204 add IAD as sounding site ( for DC )
+		 (bugfix) utilPref2 was checking on non-existing pref so IAD change overwrote location data #
+2017_12_17 50203 locfrag - change label immediately when location changed
+		 use LatLon more
+2017_12_17 50202 cleanup
+		 (bugfix) double tap was now 4x after change in last release
+2017_12_17 50201 cleanup
+		 double tap no longer zooms out then in
+2017_12_17 50200 cleanup
+2017_12_17 50199 (bugfix) location index change after delete was not working as intended - off by one
+2017_12_17 50198 cleanup
+		 change toolbarHeight from 48 to 44
+2017_12_17 50197 cleanup
+2017_12_16 50196 more remaining gesture code into WXGLSurfaceView to match Android arch
+2017_12_16 50195 remove auroral forecast files
+		 (bugfix) double tap in radar working on more devices with respect to centering
+		 move some gesture code into WXGLSurfaceView to match Android arch
+2017_12_16 50194 remove token "cod" from various vars in MyApp
+2017_12_16 50193 added scrolltop gesture to 7day small text
+		 WPC Img - add experimental Day1-3
+2017_12_16 50192 add ObjectStackView
+		 add Poly/Geo Type to ObjectOglBuffers and make use of in WXGLRender
+2017_12_15 50191 cleanup
+2017_12_15 50190 cleanup
+		 (bugfix) save/restore was not working correctly for all radar cases
+2017_12_14 50189 cleanup
+2017_12_14 50188 modify constructors for ObjectTextView and ObjectImage to not use view controller
+		 (bugfix) NWS API changed image icon from https to http breaking 7day/cc icons
+2017_12_14 50187 (bugfix) add enhanced error checking in 7 day
+		 (bugfix) added enhanced icon parsing for NWS inconsistencties ( night// instead of night/ )
+2017_12_13 50186 cleanup
+2017_12_12 50185 radar cleanup
+2017_12_11 50184 more cleanup in radar 
+2017_12_11 50183 more cleanup in radar 
+2017_12_11 50182 more cleanup in radar - use pn directly
+2017_12_10 50181 more work in level 3 text products to leverage pn from renderer
+2017_12_10 50180 more work in level 3 text products to leverage pn from renderer
+2017_12_10 50179 move UtilityCanvasProjection.getProjectionNumbers to initializer in ProjectionNumbers
+		 cleanup
+2017_12_10 50178 cleanup
+2017_12_10 50177 more work on ObjectModel ( remove anim in each util file )
+		 change class func to static func
+2017_12_10 50176 more work on ObjectModel ( remove anim in each util file )
+2017_12_09 50175 more work on ObjectModel
+2017_12_09 50174 remove StringBuilder, cleanup
+		 SPCSREF - use objectModel in func signature
+2017_12_09 50173 cleanup
+2017_12_08 50172 cleanup in radar incl var rename
+2017_12_08 50172 cleanup in radar incl var rename
+		 in single pane radar if not share posn don't show top toolbar
+		 (bugfix) in radar animation stop/play icon was not toggling
+2017_12_07 50171 var rename
+2017_12_07 50170 var rename
+2017_12_06 50169 release
+2017_12_04 50168 more work from 167
+2017_12_04 50167 add sideSwipe to UtilityUI, reduce use of global bitmap vars, add bitmap to TouchImage
+2017_12_04 50166 remove NCAR ens ( being retired at end of year: http://ensemble.ucar.edu/shutdown.php )
+		 convert more VC to wXVC
+2017_12_04 50165 convert locfrag to normal view controller
+		 remove uneeded source code files
+		 change tabs to use normal background instead of black
+		 remove ncar ens from misc tab ( but save source cleanup for later )
+2017_12_03 50164 cleanup and enhance the way swipes are handled in images
+		 use full labels for NWS radar mosaic
+2017_12_03 50163 settings -> homescreen, if radar was configured don't crash. Also show label in popup, change verbiage in popups at bottom
+		 add textual label in color picker
+2017_12_02 50162 perm disable radar on main screen
+2017_12_02 50161 temp disable radar on main screen
+2017_12_01 50160 cleanup - remove uneeded files
+		 remove init(){} in some cases
+		 optimize in Location class
+		 (bugfix) change GOES sector e to eepac and add logic in UtilityUSImgNWSGOES.getGOESMosaic
+		 add initializer in ObjectToolbarIcon to handle text buttons with initial labels of ""
+2017_12_01 50159 move WPCGEFS to MISC and out of hourly
+2017_12_01 50158 WPCGEFS - completely revamp params/labels from web after major changes noted
+2017_12_01 50157 WPCGEFS - add params, change to submenu
+		 remove GOES16 link for now
+2017_11_30 50156 change ibuff/obuff to iBuff/oBuff to match Android
+		 add ObjectCardHazard
+		 (bugfix) settings->location was not working
+2017_11_30 50155 cleanup
+		 add NEXRAD_PRODUCT_STRING and change in WXGLNexradLevelData
+		 (bugfix) L2 radar product code was not showing up when long press in radar
+		 move numRadials into LevelData
+2017_11_29 50154 fold Level Data under radar Buffers similar to Android
+2017_11_28 50153 more work on radar
+2017_11_27 50152 consolidate down to WXGLNexradLevelData from 2/3
+2017_11_26 50151 more conversion to subscript
+		 rename ByteBuffer to MemoryBuffer
+2017_11_26 50150 comment cleanup
+		 use subscript in ByteBuffers and OpenGLBuffers
+2017_11_25 50149 convert to UIwXViewController
+2017_11_24 50148 add new super for VCs UIwXViewController ( test in WPCText and WPCImg )
+		 in many VCs move pref save out of done and over to getContent
+2017_11_24 50147 remove ByteBufferNative
+		 transition to more computed properties
+		 convert many global properties in viewControllers to let such as stackview and scrollview
+2017_11_23 50146 cleanup
+2017_11_23 50145 cleanup
+2017_11_23 50144 cleanup, more use of idices
+		 (bugfix) soundings was not using location properly to determine closest data
+2017_11_22 50143 optimizations in WXGLDownload and WXGLNexrad
+		 add ObjectTextViewSmallGray
+		 add ObjectTextViewLarge
+		 add ObjectCardImage
+		 add ObjectCardStackView
+2017_11_22 50142 radar refinements in L2/L3 class and WXGLNexrad TDWR func
+2017_11_20 50140 CC and 7day card - shrink font of top line instead of truncate
+2017_11_20 50139 more radar enhancements
+		 add L2 size check for download file from Android version
+2017_11_19 50138 more radar enhancements
+2017_11_19 50137 SPC Meso truncate sector to not crowd bottom toolbar
+		 ObjectOglRadarBuffers.swift added
+2017_11_18 50136 (bugfix) normal vs terminal radar switching was broken
+		 switch to ObjectOglBuffers for radar float/color
+2017_11_18 50135 (bugfix) textual overlays were broken in radar
+		 radar refactoring and optimizations
+2017_11_17 50133 optimize radar 
+2017_11_16 50132 release
+2017_11_15 50131 WXGL fold rid/product into WXGLRender class
+2017_11_15 50130 hourly formatting
+		 usAlerts - do not show image after filtered
+		 code optimizations in WXOGLOpenGLMultiPane
+2017_11_14 50129 cleanup
+2017_11_13 50128 retire SPC SSEO in favor of SPC HREF
+2017_11_12 50127 SPC HREF - conver to submenu
+2017_11_12 50126 SPC HREF
+2017_11_12 50125 add sunrise/sunset to bottom card main screen
+2017_11_12 50124 hourly formatting
+2017_11_11 50123 more work on SPC HREF
+		 add GMT card to bottom
+2017_11_11 50122 more hourly abbreviations
+		 more work on SPC HREF
+2017_11_10 50121 SPC HREF init framework
+2017_11_06 50120 code cleanup
+2017_11_03 50117 cleanup
+2017_11_01 50116 cleanup incl removal of deprecated String.characters after update to xCode 9.1
+		 move more mapView to Utility
+		 LSR by WFO - use text instead of map icon in toolbar
+		 wxglrender add setView
+2017_10_28 50114 cleanup
+2017_10_28 50113 move location stuff from Utility to Location
+2017_10_28 50112 enhancements in storm info/windbarb/ObjectColorPalette
+2017_10_24 50109 cleanup
+2017_10_23 50108 cleanup
+2017_10_21 50106 convert many radar objects from float to double
+2017_10_20 50105 cleanup 
+2017_10_19 50104 cleanup 
+2017_10_19 50103 cleanup 
+		 (bugfix) obssite was crashing
+		 (bugfix) SPC SREF was only extending to 81 and not 87
+2017_10_18 50100 cleanup 
+2017_10_17 50097 cleanup Util
+2017_10_15 50096 remove LayerDrawable class
+2017_10_11 50095 (bugfix) quad pane crashed when terminal radar was chosen
+2017_10_06 50092 (bugfix) add condition on CC icon main screen
+2017_09_23 50091 rescale app logo images per lint
+2017_09_22 50090 add 1024x1024 marketing image
+2017_09_22 50089 lint warnings
+2017_09_21 50088 turn swift3 objc interface to default
+2017_09_21 50087 shrink icon size for triple dot and back arrow
+2017_09_21 50086 convert to Swift 4 via XCode 9
+2017_09_16 50084 add additional CPC images and remove test auroral forecast (for now)
+2017_09_09 50082 enhance formatting for data for full moon schedule
+2017_09_07 50081 add more data for full moon schedule
+2017_09_05 50079 add Full moon times
+2017_08_30 50077 WPC MPD share both image list and text
+		 (bugfix) fix tropical storm icon main screen
+2017_08_26 50075 twitter - save last used
+2017_08_23 50074 goes16 add swipe left/right
+2017_08_22 50073 cleanup
+2017_08_20 50070 dedicated beta GOES16 activity - part1
+2017_08_20 50069 add exper GOES16 in lightning
+2017_08_19 50068 (bugfix) wxtextObs fixes from Android
+2017_08_19 50067 (bugfix) NHC Pac storm VIS not working
+2017_08_16 50064 (bugfix) ESRL RAP sectors were not working correctly
+2017_08_16 50063 cleanup
+2017_08_14 50062 cleanup
+		 switch ordering of top toolbar icons
+		 (bugfix) NHC storm GOES not working
+2017_08_11 50061 cleanup
+2017_08_10 50060 cleanup
+2017_07_31 50056 cleanup
+2017_07_26 50052 add new colormaps
+2017_07_25 50050 add Auroral Model
+2017_07_24 50049 code cleanup and add more space weather products
+2017_07_23 50047 code cleanup
+		 (bugfix) L2 anim was not working
+2017_07_23 50046 bugfix for remember location
+2017_07_22 50044 SPC other VCs clickthrough to zoom in
+2017_07_22 50043 SPC Tstorm clickthrough to zoom in
+2017_07_19 50040 add some space weather stuff in txt,img
+2017_07_18 50039 (bugfix) settings -> radar geography changes take effect now w/o restart
+		 remove launch to radar setting ( will not implement )
+2017_07_17 50038 wxglrender - refinements
+2017_07_16 50037 cleanup
+2017_07_16 50035 add config for Nexrad Radar background in settings->color
+2017_07_16 50034 moon/sun data formatting
+		 remove ImpactGraphic.swift as not used
+2017_07_16 50033 hourly: enhance formattingm,add abbreviated conditions, add tap action to scroll back to top on tap
+2017_07_16 50032 in radar show TDWR products if radar is TDWR
+2017_07_15 50030 add adhoc location by long press in radar
+		 add array size check in utilNWS Icon code like Android
+2017_07_13 50027 NSSL WRF - add WFO sectors
+2017_07_13 50026 minor UI refinements
+2017_07_12 50023 cleanup
+2017_07_12 50022 cleanup
+2017_07_11 50019 FP and cleanup through ??
+2017_07_10 50018 FP and cleanup through Models
+2017_07_08 50016 UI enhancements - moon data and SPC Meso
+2017_07_06 50014 FP and cleanup into ""
+		 settings color - show as sorted
+		 settings color - have changes take effect immediately
+		 settings location - click GPS and have save if lat/lon valid
+2017_07_06 50012 FP and cleanup into "radar"
+2017_07_05 50011 FP and cleanup through "global"
+2017_07_04 50009 one line if consolidation and FP
+2017_07_03 50008 one line if consolidation and FP
+2017_07_03 50007 one line if consolidation and FP
+2017_07_03 50006 one line if consolidation and forEach
+2017_07_02 50005 utilShare remove need for labels, more use of forEach
+2017_07_02 50004 switch statement cleanup through wpc
+2017_07_02 50003 switch statement cleanup through ?
+2017_07_02 50002 switch statement cleanup through nhc
+2017_07_02 50001 switch statement cleanup
+2017_07_02 50000 version bump & cleanup
+2017_07_01 38440 cleanup
+2017_06_30 38439 (bugfix) settings homescreen delete was causing crash
+2017_06_24 38438 NHC fix when storm advisories no longer being issued
+2017_06_23 38437 (bugfix) ESRL sectors not working
+2017_06_22 38435 add ObjectScrollStackView , ObjectToast
+2017_06_21 38433 add genMercato to UtilityWXOGLPerf and test in WXGLRender with geom
+2017_06_20 38431 code cleanup
+2017_06_19 38430 code cleanup
+2017_06_15 38427 remove legacy getter/setter to match Kotlin
+2017_06_14 38426 move some map code to UtilityMap
+		 start removing legacy getter/setter to match Kotlin
+2017_06_13 38425 code cleanup
+2017_06_12 38424 code cleanup till ui
+2017_06_10 38423 code cleanup till radar
+2017_06_04 38420 code cleanup
+2017_06_03 38418 code cleanup
+2017_06_02 38417 code cleanup
+		 (bugfix) prevent crash when longpress in radar outside CONUS for obs/metar
+2017_06_01 38416 code cleanup
+2017_05_31 38415 add ObjectNHC
+2017_05_29 38408 (HIGH IMPACT) more arg removal for methods with few parms - prefs
+2017_05_29 38407 more arg removal for methods with few parms
+		 add more NHC images to main screen
+		 deprecate legacy SPC SWO image url getter
+2017_05_29 38406 more arg removal for methods with few parms
+2017_05_28 38405 more arg removal for methods with few parms
+2017_05_28 38403 update af ref cm
+2017_05_15 38400 add ObjectWatchProduct.swift
+		 add UtilitySPC.getTstormOutlookImages()
+2017_05_14 38399 minor reorder in radar prod submenu
+		 (bugfix) DSP colormap was not showing up
+2017_05_14 38398 add arg locNum in utilHourly and use Location object in Forecast instead of x/y
+2017_05_14 38397 (VERY HIGH IMPACT) move to Location object for all location management
+2017_05_13 38394 UtilityWXOGLPerf.genCircleLocdot - convert args to Double instead of Float
+		 WXGLSurfaceView - make all properties private
+		 remove named args in much of UtilMath
+2017_05_13 38393 ObjectOglBuffers - make all properties private
+2017_05_12 38392 refactor UIColorLegend
+		 (bugfix) N0C colorlegend was not showing up
+2017_05_12 38391 remove named arg for additional extensions
+		 add new AF colormap for prod99
+2017_05_12 38390 remove named arg for additional string extensions
+		 add addPeriodBeforeLastTwoChars()
+		 add getRidPrefix() in WXGLDownload
+2017_05_11 38389 remove named arg for equals/contains ( String )
+2017_05_11 38388 remove named arg for startsWith , replaceAll
+2017_05_11 38387 refactor wxogltext
+2017_05_11 38387 remove named arg for split String extension
+2017_05_10 38385 ByteBuffer remove named args
+2017_05_10 38384 wxglrender,utilwxoglperf - significant refactor based on Android wX
+2017_05_10 38383 wxglrender - significant refactor based on Android wX
+2017_05_09 38382 wxglrender - significant refactor based on Android wX
+2017_05_09 38381 wxglrender - significant refactor based on Android wX
+2017_05_09 38380 wxglrender - significant refactor based on Android wX
+2017_05_07 38378 wxglrender - simplify scaleChanged - phase2
+2017_05_07 38377 wxglrender - simplify scaleChanged
+2017_05_07 38376 start using enhanced ObjectOglBuffers with solidColor - phase2
+2017_05_07 38375 start using enhanced ObjectOglBuffers with solidColor ( spotters, locdot, etc )
+2017_05_06 38374 enhance ObjectOglBuffers to store RGB for solid color ( do not implement yet )
+2017_05_06 38373 colormap fix for 134
+2017_05_06 38372 colormap fix for 165,19
+2017_05_06 38371 implement ObjectColorPalette
+2017_05_06 38370 (bugfix) fix colormap issue caused by Color.HSVToColor
+2017_05_06 38369 look into color
+2017_05_06 38368 use ObjectOglBuffers in UtilityWXOGLPerf
+2017_05_06 38367 add ObjectOglBuffers
+		 add AF colormap
+2017_05_03 38366 add enums in global for projection,polygonType/GeographicType
+2017_05_03 38365 utilCanvas rename to remove v2
+		 utilCanvas have MPD use WAT/MCD code
+2017_05_02 38363 add Legal card in CAHourly and CAText
+		 redo switch statements for tabs to use strings instead of numbers
+		 reorder tiles
+2017_05_02 38362 add ObjectCAWARN
+2017_05_01 38361 UtilityWat - use ProjectionNumbers directly
+		 WXGLRender - use ProjectionNumbers directly
+2017_05_01 38360 WXGLPolygon - use ProjectionNumbers directly
+2017_05_01 38359 utilwxoglPerf - use projectionNumbers directly
+2017_05_01 38358 add getter/setter in various radar objects - finish model/ObjectModel
+		 enhance ProjectNumbers and pass object instead of individual items
+2017_05_01 38357 add getter/setter in various radar objects - model/ObjectModel
+2017_05_01 38356 add getter/setter in various radar objects - Bitmap and other coreobjects
+2017_05_01 38355 add getter/setter in various radar objects - model/RunTimeData
+2017_05_01 38354 add getter/setter in various radar objects - phase4
+2017_04_30 38353 add getter/setter in various radar objects - phase3
+2017_04_30 38352 add getter/setter in various radar objects - phase2
+2017_04_30 38351 add getter/setter in various radar objects - phase1
+2017_04_30 38350 cleanup in coreobject
+2017_04_30 38349 cleanup ( remove uneeded Context object from Android ), camelCase
+2017_04_29 38348 cleanup
+2017_04_29 38346 add ObjectNHCStormInfo.swift
+2017_04_28 38345 add more SPCMESO favorites
+		 usAlerts - add a supporting class and add top text summary card
+2017_04_28 38344 settings location add bottom toolbar as well to more closelt match Android
+2017_04_28 38343 toolbar back to top in settings location
+2017_04_28 38342 revamp tab VC classes with superclass and UI object
+2017_04_27 38341 (bugfix) locFrag OGL was not processing MPD/WAT/MCD causing polygons to be in wrong spot
+		migrate VC Alert detail to CAPAlert and off of util 
+		add new object ObjectAlertDetail
+2017_04_26 38340 cleanup
+2017_04_26 38339 move fcstList for 7day into 7day class
+		 move more CC Processing to CC class out of UI
+                 enhance 7day class to have native lists for Icon and DetailedForecast
+2017_04_26 38338 add ObjectForecastPackage and associated classes bundled with it - PHASE3 ( locfrag )
+2017_04_26 38337 add ObjectForecastPackage and associated classes bundled with it - PHASE2 ( CA ) 
+2017_04_26 38336 add ObjectForecastPackage and associated classes bundled with it - PHASE1
+		 add icon snow_sleet and nsnow_sleet
+2017_04_26 38335 (bugfix) Radar msg not working for terminal radars
+2017_04_26 38334 convert GLF text product to new API , "PMD30D" "PMD90D" "PMDHCO"
+2017_04_25 38333 add setting to remember WFO
+2017_04_25 38332 merge method for closest RID and WFO
+2017_04_25 38331 convert locationSave to use computed closest RID/WFO
+2017_04_25 38330 add VIS_CONUS and 3 SPCMESO to homescreen
+		 (bugfix) IMG tab did not support help
+		 SPC MESO add topo layer
+2017_04_24 38328 mark class as final in many cases, make more classes have getter/setter 
+2017_04_24 38327 migrate from MercatoNumbers to ProjectionNumbers and delete the former
+2017_04_24 38326 mark class as final in core objects
+2017_04_24 38325 mark class as final in many cases, make more classes have getter/setter incl projectionNum
+2017_04_23 38324 use Utility getX/Y/WFO in more places
+2017_04_23 38323 make vars private in RID LatLon and Spotters - add getter/setter as needed
+2017_04_23 38322 (bugfix) NCEP Models complete str was never working
+2017_04_22 38321 (bugfix) weather story URL
+		 NCAR ENS from 36 to 48
+		 SPC HRRR add few prod
+2017_04_22 38319 NWS Goes - use txtfile for anim if cnt less then size
+2017_04_22 38318 (bugfix) settings -> location crash
+2017_04_22 38317 have usalerts format match Android
+		 WPCMPD - show individual MPD when called from severe dash
+2017_04_21 38316 SPC SREF Interface - remove legacy labels
+2017_04_21 38315 NWS Goes - change method to get overlays ( performance issue )
+2017_04_20 38314 switch back to L3 radar @ http://tgftp.nws.noaa.gov/
+		 nexrad long press add miles from current loc and rid
+2017_04_20 38313 NHC fixes
+2017_04_20 38312 cleanup
+2017_04_19 38311 wxogl - add miles in long press for closest radar
+2017_04_17 38309 reinit utilPolygon on exit of settings->radar ( in case user changes polygon related settings )
+2017_04_15 38308 add SPC SWO state graphic
+2017_04_15 38307 add hourly using Gridpoint but do not use it yet ( issues with incomplete data )
+		 remove location county/zone definitions
+2017_04_14 38306 (bugfix) move tor in front of tst/ffw for long press in polygon - nexrad
+2017_04_14 38305 fix WXGLPolygon to match Android with regards to VTEC check of EXP CAN
+2017_04_13 38304 fix WXGLPolygon to match Android with regards to LAT LON ordering
+2017_04_12 38303 add UtilityDownloadNWS.getCAP to match Android
+2017_04_10 38301 warning polygons - use new API (utilWXOGL and WXGLPolygon,SevereWarning)
+2017_04_10 38300 usAlerts - move to new API but still use XML
+2017_04_08 38298 SSEO - move to submenu and add CAPE
+2017_04_08 38297 prelim add of Caleb's SSEO new products
+2017_04_08 38296 cleanup, colorpicker add RGB
+2017_04_07 38295 hrrr/sseo anim method - comply with design pattern
+2017_04_07 38294 utilModel - have anim method use getImage
+2017_04_04 38293 re-cleanup: audio,canada,coreobjects,fragments,global
+2017_04_04 38292 cleanup: audio,canada,coreobjects,fragments,global
+2017_04_03 38291 add prefs to change forecast icon text color and bottom bar
+2017_04_03 38290 cleanup: activitiesmisc
+2017_04_02 38288 hail markers to use triangles right side up
+		 (bugfix) hail marker decodingnot working properly
+2017_04_02 38287 (bugfix) change regexp to get spc swo img
+		 redo SPC SWO Summary to use utilSPCSWO
+2017_04_01 38286 lightning - don't zoom out on prod/time change
+		 spc swo - new framework for getting images
+2017_03_31 38285 move NCEP updates from March 2017 change
+2017_03_30 38282 add more 7day temp extraction matches
+2017_03_30 38281 cleanup
+		 (bugfix)playlist would not play new TTS after first one started
+2017_03_29 38280 disable spotters from submenu - too slow for now
+2017_03_29 38279 camelCase and cleanup
+		 add Utility.getLocationIndex
+		 remove TTS infrastructure from CA Warn
+		 playlist - modernize playbutton infra
+		 usalertsdetail - modernize playbutton infra
+2017_03_28 38278 radar - delete tmp files on exit
+		 radar - stop anim when return from background
+2017_03_28 38277 radar  swo day 1 lat/lon bugfix
+2017_03_28 38276 code cleanup
+		 on initial program load at first use, in radar use radar site of first location used
+2017_03_27 38273 code cleanup
+		 remove temp forecast website link from main submenu
+		 spotters and spotter reports - add count in toolbar
+2017_03_26 38272 code cleanup
+2017_03_26 38269 code cleanup
+2017_03_26 38268 rename VC Settings Main/Location/LocationEdit to match naming standard convention
+		 (bugfix) settings edit - if location not saved and hit delete would cause crash
+		 settings edit - search popup now has no text to delete
+		 code cleanup in radar
+		 (bugfix) found one Level2 file where highReflectivity.count was not numberOfRadials
+		 (HIGH IMPACT) fix memory leak in radar
+2017_03_25 38267 (bugfix) fix location dot in vis
+		 cleanup
+		 more movement towards UIGraphicsImageRenderer
+2017_03_25 38265 (bugfix) not all layers were working in nws mosaic anim
+		 add green colormap for ref
+2017_03_25 38262 move NWS mosaic anim to android method - overlays not working yet
+2017_03_25 38261 (bugfix) tst wat was showing color of tor watch
+		 move WFOText to generic UtilityShare method for text
+		 move nws mosaic to android method with canvas overlays ( beta )
+2017_03_24 38260 remove unused swift source files ( notif, some canvas radar, etc )
+2017_03_24 38259 (bugfix) severe dashboard
+		 add config for data refresh interval in settings->radar
+                 update polygon when rid changed
+2017_03_24 38258 remove unneeded source files ( notifications, radar canvas, utilFav )
+2017_03_24 38257 use UIGrapahicsImagerRender in UtilityNWS and UtilityImg ( mergeImage method )
+                 canvasMain - reenable MPD/MCD/WAT ( for Vis and in future for NWS Mosaic )(data is not yet pulled in goes viewcontroller)
+		 add framework in canvas main/generic and utilNWSMosaic to support NWS Mosaic like android with blackBG and customer overlays
+2017_03_23 38255 change buildit script following name change to wXL23
+		 wxogl add anim frames when animating like android
+2017_03_23 38254 (bugfix) missing thunderstorm icon
+		 (bugfix) WAT/MCD had issues around lon 100.0
+2017_03_23 38253 (bugfix) main submenu help mode was not working correctly
+		 helpmode - add toast like android - rework methods in utilityActions to support
+2017_03_23 38252 NCEP - add new FIREWX model
+		 WPC GEFS - move from main submenu to hourly like android
+2017_03_22 38250 spotter reports - fix UI and add option to show on map
+		 wxglrender - have mpd polygon use mpd color
+2017_03_21 38249 move radar warning to new framework with mpd/mcd/wat
+                 NCEP March changes part 1
+2017_03_21 38248 bugfix in framework wat/mpd/mcd in radar
+2017_03_21 38247 init framework wat/mpd/mcd in radar
+2017_03_21 38245 add map selection to spotters activity
+		 add initial framework for MCD/MPD/WAT in radar
+2017_03_20 38244 cleanup in radar files
+2017_03_19 38243 add viewcontroller for spotterreports
+                 add Local Forecast entry to submenu
+2017_03_19 38242 add viewcontroller for spotters
+2017_03_18 38241 GOES Vis show (on) if overlay or meso selected
+2017_03_18 38240 SPC Meso show (on) in menu if prod selected
+2017_03_18 38239 WPC MPD - if only one show text as well
+		 SPC Compmap show (on) in menu if prod selected
+2017_03_18 38238 SPC Meso , more work 
+2017_03_18 38237 SPC Meso , more work incl cleanup
+2017_03_18 38236 SPCMCD enhancements to match Android
+                 convert SPC Meso to new submenu framekwork and add new params
+2017_03_17 38235 ObjectLocationCard spacing changes
+		 location edit, move status below lat/lon and remove uncessary code from when switches were present
+2017_03_16 38234 add ObjectLocationCard for settings->Location as a start to look like Android
+2017_03_16 38233 rename WXOGLGLKit.swift to WXGLRender.swift
+2017_03_15 38232 (bugfix) was missing         "tsra_hi.png":R.drawable.hi_tsra,
+		 (bugfix) ObjectTileImage - was not working correctly for images tab with regard to swipe left/right
+		 (bugfix) Obs act was not restoring title correctly
+		 (bugfix) sounding on homescreen had transparent background
+2017_03_15 38231 (bugfix) homescreen text widgets expansion was not working due to parallelism
+                 (bugfix) submenu items weren't respecting animation off setting
+		 NHC - don't show product code in text menu
+2017_03_15 38230 (bugfix) not all widgets on homescreen were honoring viewOrder esp cc, 7day, haz
+		 (bugfix) UtilityLocation.getNearestSnd caused crash
+2017_03_14 38229 add option to show dual pane radar from lightning icon
+		 complete adding pref for backArrowAnim to all view controllers
+                 settings UI/Radar move one method to utilSettings after subclass NSObject in objectSwitch 
+2017_03_13 38228 modify and use ObjectNumberPicker
+		 wxogl - remove memory low method
+		 add C to F table in settings
+		 add pref for backArrowAnim ( not implemented in all view controllers yet )
+2017_03_13 38227 (bugfix) mslp in in not showing correctly
+		 add UtilitySettings.swift and add common methods between settingsUI/Radar
+		 settings->UI add generic method to generate picker values
+2017_03_13 38226 settings->colors , remove save button and save color on exit
+		 add playlist to settings
+		 rearrange settings order to match Android
+                 (bugfix) settings->UI not saving changes correctly do to not sorting on keys
+2017_03_12 38225 cleanup
+2017_03_12 38223/24 add ObjectToolbarIcon ( handle play icon )
+                 (bugfix) SPC SWO TTS not working
+2017_03_12 38222 add ObjectToolbarIcon
+2017_03_12 38221 add ObjectPopUp and use throughout app
+                 remove unused overriden didReceiveMemoryWarning
+2017_03_12 38220 add ObjectPopUp and use in all WPC* viewContollers
+2017_03_12 38219 add ObjectToolbar
+2017_03_12 38218 add ObjectToolbarItems
+		 (bugfix) modelGeneric , NCEP was not showing runTimes
+2017_03_11 38217 in all DispatchQueue change qos from .background to .userInitiated
+                 remove model viewcontroller code no longer needed after conversion to generic
+2017_03_11 38216 in wxglrender add spottersInit=false at top of spotter data construction like in Android
+		 (bugfix) NCEP GFS time array was not resetting on model switch
+                 change SSEO times based on run time
+2017_03_10 38215 cleanup, enable SPC Meso Fav1 in homescreen
+                 WPC Text - don't show code in submenu for PROD
+2017_03_09 38214 enhance SPC MCD to more closely match Android
+2017_03_09 38212 add windChill, heatIndex for new NWS API
+2017_03_08 38210 vis - put toolbars on top, utilUSv2 RH has bug for null detect
+2017_03_07 38209 icon fix new API, cleanup in icon code utilNWS
+                 utilUSv2 getHazards, return String instead of string array
+2017_03_06 38208 new API truncate lat/lon to 2 spaces after dec ( loc save, hourly, cc, etc )
+2017_03_06 38207 new API 7day truncate lat/lon to 2 spaces after dec
+2017_03_06 38206 more cleanup, click anywhere in 7day card to scrollTop
+                 use ObjectTextView in NHC
+2017_03_05 38204 more cleanup of old API, move CA to new ICON support
+2017_03_05 38203 remove old NWS API support
+2017_03_05 38202 camelCase and cleanup
+2017_03_04 38201 enhance formatting for new API text products ( match android )
+                 icon enhancementes - new NWS
+2017_03_04 38200 enhance robustness in icon handling
+2017_03_04 38199 tap 7day icon to scroll to top
+2017_03_04 38198 camelCase
+2017_03_04 38197 camelCase
+                 after location search automatically save
+2017_03_01 38194 (bugfix) new api location save change http to https for api server
+                 camelcaseStuff
+2017_03_01 38193 camelCase stuff, cleanup
+2017_03_01 38192 camelCase stuff, cleanup 
+                 new API fix, icons now at api not api-v1
+2017_02_28 38190 camelCase stuff, cleanup 
+                 NCAR ensemble further nesting
+2017_02_26 38187 camelCase stuff, cleanup 
+2017_02_26 38186 camelCase stuff, cleanup 
+                 prevent certain radar elements from bein displayed in multipane ( obs , spotter, etc )
+                 add weather story as homescreen widget
+2017_02_25 38185 camelCase stuff, cleanup - implment System.currentTimeMilli
+2017_02_25 38184 camelCase radar stuff
+2017_02_24 38183 camelCase model stuff, cleanup
+2017_02_23 38182 cleanup
+2017_02_23 38181 remove old model code
+2017_02_23 38180 SPC SREF - convert to new submenu and to generic activity
+                 bugfix
+2017_02_22 38179 move WPC GEFS to generic activity and bugfixs
+2017_02_22 38178 move all but SPC SREF and WPC GEFS to generic activity
+2017_02_22 38177 move SPCSREF/HRRR/SSEO to ObjectModel
+2017_02_22 38176 move WPCGEFS to ObjectModel
+2017_02_22 38175 move NCEP to ObjectModel
+2017_02_22 38174 prep move NCEP to ObjectModel
+2017_02_21 38173 move GLCFS to ObjectModel
+2017_02_21 38172 move ESRL to ObjectModel
+2017_02_21 38171 cleanup after last change, camelCase model util methods for upcoming ObjectModel conversion
+                 move more code into ObjectModel
+2017_02_21 38170 move NSSL/NCAR more fully to ObjectModel and handle more things in that Object
+2017_02_20 38169 (bugfix) NCAR Ens day1/day2 was not working
+                 finish migrating NCAR and NSSL to ObjectModel
+2017_02_20 38168 add ObjectModel and make NCAR submenu nested
+2017_02_20 38167 hourlyv2 - translate to weekday/hour
+                 cleanup
+2017_02_19 38166 code cleanup
+2017_02_19 38165 HRRR fixes after upstream ESRL changes
+2017_02_19 38164 HRRR fixes after upstream ESRL changes
+2017_02_19 38163 add code to handle new API for warning polygons
+2017_02_19 38162 UIScrollView - add extension to scroll to top and use in WFO / WPC Text
+                 convert WPC Text to new subMenu model
+                 change ordering of play button in WPC Text
+2017_02_19 38161 WPC Img to submenu using new UI objects
+2017_02_19 38160 (bugfix) settings location tablet crash
+                 (bugfix) settings location was showing move up/down if only one location
+                 add classes for submenu support
+2017_02_19 38159 cleanup in models
+2017_02_18 38158 cleanup and enhance crash prevention ( models )
+2017_02_18 38157 spc storm reports - convert to ObjectTextView
+                 add test code in UtilityDownloadRadar for new warning polygons
+                 add data picker UI object and use in spc storm reports
+2017_02_18 38156 more object unification ( AFD,WPC TXT, CA TXT ), cleanup
+2017_02_18 38155 usutilv2  - if mslp is null show as "NA", cleanup
+2017_02_18 38152 add version to settings->main, cleanup
+2017_02_17 38151 remove hourly graphic, support new NWS API text products
+2017_02_17 38150 spc meso/sref - use dual dialogues instead of existing submenu that does not work
+2017_02_17 38148 additional optim/cleanup related to UI/Radar NP code
+                 cleanup in locfrag
+2017_02_17 38147 locfrag cleanup, add setting to control homeScreen text len
+                 revamp numberPickers in settingsUI to be like settingsRadar
+2017_02_16 38146 camelCase for GlobalArrays, locationCA convert to UI objects
+2017_02_16 38145 settings->location , redo to use standard stackview/scrollview/ObjectTextView
+                 UI refinements and code cleanup
+2017_02_15 38144 convert to new UI objects for textview, image, and touchimage, cleanup
+2017_02_15 38142 misc enhancements
+2017_02_14 38140 update settings UI with new UI object for switch
+                 nws api , tweak get status - make city before code for obs site
+                 for nws api - add user agent using Just
+2017_02_14 38139 update settings radar with new UI object for switch
+2017_02_14 38138 add more UI Objects and use in locfrag and other places
+2017_02_14 38137 (bugfix) misc, add object for tv
+2017_02_13 38136 nws api - hazards locfrag
+2017_02_13 38135 nws api - integrate code to save locations
+2017_02_13 38134 nws api - integrate code to save obssite and obssite loc
+                 add HWO to homescreen widget choice
+2017_02_11 38133 integrate code for NWS API change ( hourly )
+
+2017_02_11 38130 integrate code for NWS API change
+2017_02_02 38129 (bugfix) fix issue with showing NWS Obs in radar
+2017_02_01 38128 add 2 new NWS Obs sites 
+                 (bugfix) radar settings would crash
+2017_01_28 38127 fix padding issue on tabs
+2017_01_26 38126 camelCase and code cleanup ( including core radar stuff )
+2017_01_25 38124 camelCase and code cleanup ( including core radar stuff )
+2017_01_24 38123 camelCase and code cleanup ( including core radar stuff )
+                 resolve bug with sharing multiple images
+2017_01_23 38122 camelCase and code cleanup ( including core radar stuff )
+2017_01_22 38121 camelCase and code cleanup ( including core radar stuff )
+2017_01_21 38120 camelCase and code cleanup ( including core radar stuff )
+2017_01_20 38119 radar SWO color enhancements
+2017_01_20 38118 camelCase and code cleanup
+2017_01_19 38117 camelCase and code cleanup
+2017_01_18 38116 camelCase and code cleanup
+2017_01_17 38115 remove all semi-colons
+                 disable background data fetch in plist
+                 camelCase and code cleanup
+2017_01_16 38114 camelCase and code cleanup
+2017_01_15 38112 continued reduction in boilerplate UI code
+2017_01_14 38111 continued reduction in boilerplate UI code
+2017_01_13 38110 (bugfix) GOES - don't crash if overlay not present
+                 camelCase and cleanup
+                 disable checkSPC from updating mains tabs as background fetch not supported
+                 add UtilityShare and test in SPC Compmap
+                 add UtilityUI.setupButton and test in SPC TST
+                 add UtilityUI.setupToolbar and test in SPC TST
+                 add UtilityUI.setupToolbarTop and test in SPC MESO
+                 add UtilityUI.setupScrollAndStackView and test in SPC TST
+                 add UtilityUI.setupScrollAndStackViewWithImage and test in SPC MESO
+2017_01_12 38109 camelCase and cleanup
+                 WFOTXT , attempt to set email subject in share ( needs testing )
+                 CA radar - add short and long options
+                 disable color pal editor in settingsMain for now
+                 ESRLmodel ( and various others ) - status was bringing up model choice
+2017_01_10 38108 camelCase methods and cleanup
+2017_01_09 38107 camelCase methods and cleanup
+2017_01_08 38106 add homescreen sunmoon option
+                 camelCase methods
+2017_01_07 38105 camelCase code style
+2017_01_04 38105 camelCase code style
+2017_01_02 38104 code and lint cleanup
+                 add fix for MCD - need to left pad zeros like watch
+2017_01_01 38103 wpc gefs - add sector support
+                 standardize names for model interface - sectors,params,labels ( start to )
+2016_12_31 38102 code and lint cleanup, clean project and recompile 
+		 (bugfix) level3 4bit SRM (56) was not displaying status info or showing frame time in anim
+		 remove 4bit ref from prod list in radar ( deprecated this year )
+		 NWS Mosaic was not using utility method for main image fetch
+		 (bugfix) NWS Mosaic fix utility method which homescreen was using
+		 WPC Images , change labels and add some more images
+2016_12_30 38101 fix time display in SPC HRRR/SSEO
+                 hide status in SSEO
+                 fix a few broken text products ( see android changelog for details )
+2016_12_29 38100 bump version number closer to android version
+                 CA Radar: add mosaic animations
+                 Homescreen: add local CA radar
+2016_12_29 1.0.39 organize source files into groups and real folders
+2016_12_28 1.0.38 minor fixes on NCEP models
+                  SWO summary bugfix ( case sensitive ) for D1
+2016_12_27 1.0.38 add animation to all models
+2016_12_27 1.0.37 SPC SSEO - add back beta 
+                  enhance stormtrack with 0 tickmark and dual lines for tickmarks
+2016_12_25 Sun 1.0.37 CA radar - add vis
+                      MyApp RefreshLocData was being called before prefinit so no LOCs were present until 2nd launch
+2016_12_24 Sat 1.0.37 CA 7day, CC, and location save
+2016_12_24 Sat 1.0.37 add util Canada files
+2016_12_23 Fri 1.0.37 complete work to add license data to file header
+2016_12_23 Fri 1.0.36 add NCAR Ensemble now that license is permissive
+2016_12_23 Fri 1.0.36 add lighting now that license is permissive
+                      add skeletal ncar wrf now that license is permissive
+2016_12_22 Wed 1.0.36 add copyright info
+2016_12_21 Wed 1.0.36 WPC IMG fix NFDB images
+                      add GNU GPLv3 to main dir and start to add to files
+                      remove unused files in top level
+                      settings edit - remove notification perm check
+2016_12_13 Tue 1.0.33 add markers to storm tracks for 15min
+                      cleanup - remove uneeded source files
+                      locfrag - change NWS images to align to top of card view UIStackView alignment
+2016_12_10 Sat 1.0.32 (bugfix) NCEP model time arr not cleared between model chg
+2016_12_07 Mon 1.0.31 (bugfix) SPC Day 1 broke due to lowercase conversion
+2016_12_05 Mon 1.0.30 radar - add swo d1
+2016_12_05 Mon 1.0.30 settings->radar add setting for detailed METAR zoom
+2016_12_05 1.0.29 wind barb - add gust
+2016_12_04 1.0.29 refinement to windbarbs and obs
+                  wxogl - correct text size scaling issue
+2016_12_03 1.0.28 disable MCD/WAT/MPD in radar canvas
+                  wind barb work
+2016_11_30 1.0.27 in settings->Locations add ability to move up/down and delete
+2016_11_26 1.0.25 updates to PlayList ( add WFO and Text pro buttons ), decrease text preview size
+                  add support for color legend for precip dereived radars
+2016_10_30 1PM changes to support multipane radar with lat/lon not shared
+2016_10_30 10AM rename files comprising tabs
+2016_10_29 AM fix bugs in NWS Mosaic and Model time transalation
+              test stackview spacing in SPC storm reports
+2016_10_28 7am storm reports map and code cleanup, more work on NCEP run status but no success
+2016_10_04 add rough CC to FirstViewController

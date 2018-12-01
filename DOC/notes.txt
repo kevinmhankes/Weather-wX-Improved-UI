@@ -1,0 +1,25 @@
+info.plist to allow http
+
+<key>NSAppTransportSecurity</key>  
+     <dict>  
+          <key>NSAllowsArbitraryLoads</key><true/>  
+     </dict>
+
+// create image
+self.myImageView = UIImageView(image:UIImage(data: img))
+'------
+
+
+
+guard let myURL = URL(string: "http://radar.weather.gov/Legend/N0R/TBW_N0R_Legend_0.gif") else {
+            print("Error: doesn't seem to be a valid URL")
+            return
+        }
+        
+        let imageData = try? Data(contentsOf: myURL)
+        let img = imageData!
+        
+       
+        // create image
+        self.myImageView = UIImageView(image:UIImage(data: img))
+        //self.myImageView.contentMode = .scaleAspectFill
