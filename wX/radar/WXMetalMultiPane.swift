@@ -37,6 +37,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var height = 0.0
     let numberOfPanes = 1
     var oneMinRadarFetch = Timer()
+    let ortInt: Float = 250.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,16 +65,51 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         device = MTLCreateSystemDefaultDevice()
 
         let screenSize: CGSize = UIScreen.main.bounds.size
+        // FIXME for dual/quad pane these numbers will need to be adjusted
+        // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
         let screenHeight = Float(screenSize.height)
-        projectionMatrix = Matrix4.makeOrthoViewAngle(screenWidth/2.0 * -1.0, right: screenWidth/2.0, bottom: screenHeight/2 * -1.0, top: screenHeight/2, nearZ: -100.0, farZ: 100.0)
+        print(screenWidth)
+        print(screenHeight)
+        let surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
+                                                      bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+                                                      top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
+        //let projectionMatrix = GLKMatrix4MakeOrtho(-1.0 * ortInt, ortInt,
+        //                                           -1.0 * ortInt * (1.0 / surfaceRatio),
+        //                                           ortInt * (1 / surfaceRatio), 1.0, -1.0)
+        //projectionMatrix = Matrix4.makeOrthoViewAngle(screenWidth/2.0 * -1.0, right: screenWidth/2.0, bottom: screenHeight/2 * -1.0, top: screenHeight/2, nearZ: -100.0, farZ: 100.0)
+
+        let halfWidth = self.view.frame.width / 2
+        var halfHeight = self.view.frame.height / 2
+        halfHeight -= UIPreferences.toolbarHeight / 2.0
 
         metalLayer = CAMetalLayer()
         metalLayer.device = device
         metalLayer.pixelFormat = .bgra8Unorm
         metalLayer.framebufferOnly = true
         metalLayer.frame = view.layer.frame
+        // top left
+        //metalLayer.frame =  CGRect(x: 0, y: 0, width: self.view.bounds.width/2, height: self.view.bounds.height/2)
+        // top half for dual
+        //metalLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight)
+        // bottom half for dual
+        //metalLayer.frame = CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight)
         view.layer.addSublayer(metalLayer)
+
+        /*if numberOfPanes==2 {
+            halfHeight -= UIPreferences.toolbarHeight / 2.0
+            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight), context: self.context!))
+        } else if numberOfPanes==4 {
+            halfHeight -= UIPreferences.toolbarHeight / 2.0
+            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
+        } else {
+            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
+        }*/
 
         wxMetal = WXMetalRender(device, timeButton, productButton)
         radarSiteButton.title = wxMetal.rid

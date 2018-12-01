@@ -13,10 +13,7 @@ class ObjectMetalBuffers {
     var red: UInt8 = 0
     var green: UInt8 = 0
     var blue: UInt8 = 0
-    //var breakSize = 30000
-    //var chunkCount = 0
     var count = 0
-    private var initialized = false
     var lenInit = 7.5
     var latList = [Double]()
     var lonList = [Double]()
@@ -99,33 +96,6 @@ class ObjectMetalBuffers {
 
     func setCount(_ count: Int) {
         self.count = count
-        //chunkCount = 1
-        //let totalBinsCounty: Int = count / 4
-       // if totalBinsCounty < breakSize {
-        //    breakSize = totalBinsCounty
-        //} else if breakSize != 0 {
-        //    chunkCount = totalBinsCounty / breakSize
-        //    chunkCount += 1
-        //}
-    }
-
-   /* func computeBreakSize() {
-        chunkCount = 1
-        let totalBinsCounty: Int = count / 4
-        if totalBinsCounty < breakSize {
-            breakSize = totalBinsCounty
-        } else {
-            chunkCount = totalBinsCounty / breakSize
-            chunkCount += 1
-        }
-    }*/
-
-    var isInitialized: Bool {
-        get {return initialized}
-        set {
-            initialized = newValue
-            //if !initialized {chunkCount = 0}
-        }
     }
 
     func setXYList(_ combinedLatLonList: [Double]) {
