@@ -275,7 +275,7 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
-        case 153, 154, 56: self.totalBins = UtilityWXOGLPerf.genRadials(self.radarBuffers)
+        case 153, 154, 30, 56: self.totalBins = UtilityWXOGLPerf.genRadials(self.radarBuffers)
         case 0: break
         default: self.totalBins = UtilityWXOGLPerf.decode8BitAndGenRadials(self.radarBuffers)
         }

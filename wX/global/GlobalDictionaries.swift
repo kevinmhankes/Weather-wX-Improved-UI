@@ -12,6 +12,8 @@ class GlobalDictionaries {
         "N1R": "DS.p19r1",
         "N2R": "DS.p19r2",
         "N3R": "DS.p19r3",
+        "NSP": "DS.p28sw",
+        "NSW": "DS.p30sw",
         "N0Q": "DS.p94r0",
         "N1Q": "DS.p94r1",
         "N2Q": "DS.p94r2",
