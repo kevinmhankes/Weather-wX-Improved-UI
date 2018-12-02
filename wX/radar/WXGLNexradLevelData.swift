@@ -31,7 +31,7 @@ final class WXGLNexradLevelData {
         productCode = GlobalDictionaries.PRODUCT_STRING_TO_SHORT[product] ?? 0
         switch productCode {
         case 153, 154: radarType = .level2
-        case 56: radarType =      .level3bit4
+        case 30, 56: radarType =      .level3bit4
         default: radarType =      .level3
         }
     }
@@ -39,7 +39,7 @@ final class WXGLNexradLevelData {
     func decode() {
         switch productCode {
         case 153, 154:  decocodeAndPlotNexradL2()
-        case 56:        decocodeAndPlotNexradLevel3FourBit()
+        case 30, 56:        decocodeAndPlotNexradLevel3FourBit()
         default:        decocodeAndPlotNexradLevel3()
         }
     }

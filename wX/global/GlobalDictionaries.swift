@@ -82,6 +82,8 @@ class GlobalDictionaries {
         "N1V": 27,
         "N2V": 27,
         "N3V": 27,
+        "NSP": 28,
+        "NSW": 30,
         "N0U": 99,
         "N1U": 99,
         "N2U": 99,

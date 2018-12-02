@@ -19,7 +19,8 @@ final class WXGLNexrad {
         "H0C: Hydrometer Classification",
         "DSP: Digital Storm Total Precipitation",
         "DAA: Digital Accumulation Array",
-        "N0S: SRM - 4 bit"
+        "N0S: Storm Relative Mean Velocity",
+        "NSW: Base Spectrum Width"
         ]
 
     static var radarProductListTDWR = [
