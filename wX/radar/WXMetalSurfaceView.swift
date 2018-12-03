@@ -9,6 +9,11 @@ import UIKit
 let panSensivity: Float = 300.0
 
 final class WXMetalSurfaceView {
+    
+    var citiesExtAl = [TextViewMetal]()
+    var countyLabelsAl = [TextViewMetal]()
+    var obsAl = [TextViewMetal]()
+    var spottersLabelAl = [TextViewMetal]()
 
     static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
         let zoomDifference = newZoom / oldZoom
@@ -16,28 +21,36 @@ final class WXMetalSurfaceView {
         wxMetal.yPos = wxMetal.yPos * zoomDifference
     }
 
-    static func gesturePan(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ panGesture: UIPanGestureRecognizer) {
-        if panGesture.state == UIGestureRecognizerState.changed {
-            let pointInView = panGesture.location(in: uiv.view)
+    static func gesturePan(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPanGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizerState.changed {
+            let pointInView = gestureRecognizer.location(in: uiv.view)
             let xDelta = Float((wxMetal.lastPanLocation.x - pointInView.x)/uiv.view.bounds.width) * panSensivity
             let yDelta = Float((wxMetal.lastPanLocation.y - pointInView.y)/uiv.view.bounds.height) * panSensivity
             wxMetal.xPos -= xDelta
             wxMetal.yPos += yDelta
             wxMetal.lastPanLocation = pointInView
-        } else if panGesture.state == UIGestureRecognizerState.began {
-            wxMetal.lastPanLocation = panGesture.location(in: uiv.view)
+        } else if gestureRecognizer.state == UIGestureRecognizerState.began {
+            wxMetal.lastPanLocation = gestureRecognizer.location(in: uiv.view)
+        }
+        gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
+        switch gestureRecognizer.state {
+        case .began: uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        case .ended: textObj.addTV()
+        default: break
         }
     }
 
-    static func singleTap(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ gestureRecognizer: UITapGestureRecognizer) {
+    static func singleTap(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
         //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
         setModifiedZoom(wxMetal.zoom * 0.5, wxMetal.zoom, wxMetal)
         wxMetal.zoom *= 0.5
         wxMetal.setZoom()
+        uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        textObj.addTV()
         //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
     }
 
-    static func doubleTap(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ gestureRecognizer: UITapGestureRecognizer) {
+    static func doubleTap(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
         //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
         let location = gestureRecognizer.location(in: uiv.view)
         let bounds = UtilityUI.getScreenBounds()
@@ -53,9 +66,11 @@ final class WXMetalSurfaceView {
         setModifiedZoom(wxMetal.zoom * 2.0, wxMetal.zoom, wxMetal)
         wxMetal.zoom *= 2.0
         wxMetal.setZoom()
+        uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        textObj.addTV()
     }
 
-    static func gestureLongPress(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ longPressCount: Int, _ fn: (CGFloat, CGFloat, Int) -> Void, _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
+    static func gestureLongPress(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ textObj: WXMetalTextObject, _ longPressCount: Int, _ fn: (CGFloat, CGFloat, Int) -> Void, _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
         if let radarIndex = gestureRecognizer.view?.tag {
@@ -65,7 +80,7 @@ final class WXMetalSurfaceView {
         return longPressCountLocal
     }
 
-    static func gestureZoom(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ gestureRecognizer: UIPinchGestureRecognizer) {
+    static func gestureZoom(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPinchGestureRecognizer) {
         let slowItDown: Float = 1.0 // was 1.0
         let maxZoom: Float = 15.0
         let minZoom: Float = 0.03
@@ -83,5 +98,11 @@ final class WXMetalSurfaceView {
             }
         }
         wxMetal.setZoom()
+        gestureRecognizer.scale = 1
+        switch gestureRecognizer.state {
+        case .began: uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        case .ended: textObj.addTV()
+        default: break
+        }
     }
 }

@@ -15,6 +15,8 @@
 		031546321FC632FD0020EF7B /* ObjectTextViewLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */; };
 		031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546331FC634CB0020EF7B /* ObjectCardImage.swift */; };
 		031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546351FC636450020EF7B /* ObjectCardStackView.swift */; };
+		0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */; };
+		0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */; };
 		032EE2BF21A9617E00460D5D /* LatLonStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EE2BE21A9617E00460D5D /* LatLonStr.swift */; };
 		032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */; };
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
@@ -372,6 +374,8 @@
 		031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewLarge.swift; sourceTree = "<group>"; };
 		031546331FC634CB0020EF7B /* ObjectCardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardImage.swift; sourceTree = "<group>"; };
 		031546351FC636450020EF7B /* ObjectCardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStackView.swift; sourceTree = "<group>"; };
+		0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalTextObject.swift; sourceTree = "<group>"; };
+		0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewMetal.swift; sourceTree = "<group>"; };
 		032EE2BE21A9617E00460D5D /* LatLonStr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLonStr.swift; sourceTree = "<group>"; };
 		032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerADHOCLOCATION.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
@@ -1045,6 +1049,7 @@
 		F09504B11E1530D4008A966E /* radar */ = {
 			isa = PBXGroup;
 			children = (
+				0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */,
 				03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
 				03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */,
@@ -1138,6 +1143,7 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				F05806741DB187FB009E2786 /* ImageScrollView.swift */,
 				F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */,
@@ -1544,6 +1550,7 @@
 				F0FE64211DB5924A0064553C /* ViewControllerSETTINGSUI.swift in Sources */,
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
+				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
 				F01AD2381EC9B7A60091A2A7 /* UtilitySPC.swift in Sources */,
 				03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */,
 				F0F28D871DB9929D0020AD08 /* UtilitySPCStormReports.swift in Sources */,
@@ -1581,6 +1588,7 @@
 				F080C5FB1E4FAEE8008579D0 /* UtilityUSHourlyV2.swift in Sources */,
 				F0EC66351DB05364000005B3 /* ViewControllerSPCSWOV2.swift in Sources */,
 				F096C09B1DADB18700E63046 /* ViewControllerSOUNDING.swift in Sources */,
+				0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */,
 				F078FE2D1DA330B7002CCD13 /* AppDelegate.swift in Sources */,
 				F0B335161DA3FD1C0035BD36 /* RID.swift in Sources */,
 				F0DED0EB1DAF127D0069E9F7 /* ViewControllerWPCIMG.swift in Sources */,

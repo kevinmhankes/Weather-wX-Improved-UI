@@ -38,6 +38,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     let numberOfPanes = 1
     var oneMinRadarFetch = Timer()
     let ortInt: Float = 250.0
+    var textObj = WXMetalTextObject()
+    var colorLegend = UIColorLegend()
+    var screenScale = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +139,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         self.view.addSubview(toolbar)
+        screenScale = Double(UIScreen.main.scale)
+        textObj = WXMetalTextObject(self, numberOfPanes,
+                                 Double(view.frame.width),
+                                 Double(view.frame.height),
+                                 wxMetal,
+                                 screenScale)
+        textObj.initTV()
+        textObj.addTV()
         self.wxMetal.getRadar("")
         getPolygonWarnings()
         if RadarPreferences.wxoglRadarAutorefresh {
@@ -203,23 +214,23 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        WXMetalSurfaceView.singleTap(self, wxMetal, gestureRecognizer)
+        WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
-        WXMetalSurfaceView.doubleTap(self, wxMetal, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, gestureRecognizer)
     }
 
     @objc func gestureZoom(_ gestureRecognizer: UIPinchGestureRecognizer) {
-        WXMetalSurfaceView.gestureZoom(self, wxMetal, gestureRecognizer)
+        WXMetalSurfaceView.gestureZoom(self, wxMetal, textObj, gestureRecognizer)
     }
 
     @objc func gesturePan(_ gestureRecognizer: UIPanGestureRecognizer) {
-        WXMetalSurfaceView.gesturePan(self, wxMetal, gestureRecognizer)
+        WXMetalSurfaceView.gesturePan(self, wxMetal, textObj, gestureRecognizer)
     }
 
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, longPressCount, longPressAction, gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, textObj, longPressCount, longPressAction, gestureRecognizer)
     }
 
     @objc func doneClicked() {
@@ -239,6 +250,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         metalLayer = nil
         pipelineState = nil
         timer = nil
+        textObj = WXMetalTextObject()
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
 
@@ -310,12 +322,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityFileManagement.deleteAllFiles()
         radarSiteButton.title = rid
         getPolygonWarnings()
-        //textObj = WXGLTextObject(self, numberOfPanes,
-        //Double(view.frame.width),
-        //Double(view.frame.height),
-        //oglrArr[0], screenScale)
-        //textObj.initTV()
-        //textObj.addTV()
+        textObj = WXMetalTextObject(self, numberOfPanes,
+                                 Double(view.frame.width),
+                                 Double(view.frame.height),
+                                 wxMetal, screenScale)
+        textObj.initTV()
+        textObj.addTV()
         wxMetal.rid = rid
         wxMetal.loadGeometry()
         wxMetal.xPos = 0.0
