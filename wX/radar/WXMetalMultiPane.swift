@@ -322,18 +322,19 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityFileManagement.deleteAllFiles()
         radarSiteButton.title = rid
         getPolygonWarnings()
-        textObj = WXMetalTextObject(self, numberOfPanes,
-                                 Double(view.frame.width),
-                                 Double(view.frame.height),
-                                 wxMetal, screenScale)
-        textObj.initTV()
-        textObj.addTV()
         wxMetal.rid = rid
         wxMetal.loadGeometry()
         wxMetal.xPos = 0.0
         wxMetal.yPos = 0.0
         wxMetal.zoom = 1.0
         self.wxMetal.getRadar("")
+        self.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        textObj = WXMetalTextObject(self, numberOfPanes,
+                                    Double(view.frame.width),
+                                    Double(view.frame.height),
+                                    wxMetal, screenScale)
+        textObj.initTV()
+        textObj.addTV()
     }
 
     @objc func animateClicked() {
