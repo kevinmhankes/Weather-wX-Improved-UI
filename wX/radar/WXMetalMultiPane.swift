@@ -75,9 +75,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         // FIXME for dual/quad pane these numbers will need to be adjusted
         // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
-        let screenHeight = Float(screenSize.height)
-        print(screenWidth)
-        print(screenHeight)
+        var screenHeight = Float(screenSize.height)
+        if numberOfPanes == 2 {
+            screenHeight /= 2
+        }
+        //print(screenWidth)
+        //print(screenHeight)
         let surfaceRatio = Float(screenWidth)/Float(screenHeight)
         projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
                                                       bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
@@ -96,7 +99,16 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
-            metalLayer[index]!.frame = view.layer.frame
+            //metalLayer[index]!.frame = view.layer.frame
+        }
+        
+        if numberOfPanes == 1 {
+            metalLayer[0]!.frame = view.layer.frame
+        } else if numberOfPanes == 2 {
+            // top half for dual
+            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight)
+            // bottom half for dual
+            metalLayer[1]!.frame = CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight)
         }
         
         // top left
@@ -123,7 +135,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
         }*/
 
-        wxMetal.append(WXMetalRender(device, timeButton, productButton))
+        pangeRange.forEach { _ in wxMetal.append(WXMetalRender(device, timeButton, productButton)) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
 
