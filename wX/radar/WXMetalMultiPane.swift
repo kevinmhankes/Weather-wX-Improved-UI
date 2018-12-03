@@ -29,7 +29,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var doneButton = ObjectToolbarIcon()
     var timeButton = ObjectToolbarIcon()
     var radarSiteButton = ObjectToolbarIcon()
-    var productButton = ObjectToolbarIcon()
+    var productButton = [ObjectToolbarIcon]()
     var animateButton = ObjectToolbarIcon()
     var inOglAnim = false
     var longPressCount = 0
@@ -44,10 +44,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
         let pangeRange = 0..<numberOfPanes
-        
+
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
@@ -65,17 +65,33 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
 
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        productButton = ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)))
+        //productButton = ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)))
+        pangeRange.forEach {productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))}
         radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, timeButton, flexBarButton, animateButton, productButton, radarSiteButton]).items
+        
+        var toolbarButtons = [UIBarButtonItem]()
+        toolbarButtons.append(doneButton)
+        if numberOfPanes == 1 {
+            toolbarButtons.append(timeButton)
+        }
+        toolbarButtons.append(flexBarButton)
+        toolbarButtons.append(animateButton)
+        pangeRange.forEach {
+            toolbarButtons.append(fixedSpace)
+            toolbarButtons.append(productButton[$0])
+        }
+        if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
+        toolbar.items = ObjectToolbarItems(toolbarButtons).items
+        
+        //toolbar.items = ObjectToolbarItems([doneButton, timeButton, flexBarButton, animateButton, productButton, radarSiteButton]).items
         device = MTLCreateSystemDefaultDevice()
 
         let screenSize: CGSize = UIScreen.main.bounds.size
         // FIXME for dual/quad pane these numbers will need to be adjusted
         // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
-        var screenHeight = Float(screenSize.height)
+        var screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
         if numberOfPanes == 2 {
             screenHeight /= 2
         }
@@ -135,7 +151,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
         }*/
 
-        pangeRange.forEach { _ in wxMetal.append(WXMetalRender(device, timeButton, productButton)) }
+        pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0])) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
 
@@ -283,7 +299,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func productClicked(sender: ObjectToolbarIcon) {
-        let alert = ObjectPopUp(self, "Select radar product:", productButton)
+        let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
+        // FIXME tdwr check
         WXGLNexrad.radarProductList.forEach {product in
             alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
                 self.productChanged(sender.tag, product.split(":")[0])}))
@@ -293,9 +310,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func productChanged(_ index: Int, _ product: String) {
         stopAnimate()
-        productButton.title = product
-        self.wxMetal.forEach { $0!.radarProduct = product }
-        self.wxMetal.forEach { $0!.getRadar("") }
+        self.wxMetal[index]!.product = product
+        self.wxMetal[index]!.getRadar("")
+        productButton[index].title = product
+        //self.wxMetal.forEach { $0!.radarProduct = product }
+        //self.wxMetal.forEach { $0!.getRadar("") }
         updateColorLegend()
         getPolygonWarnings()
     }
@@ -351,12 +370,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityFileManagement.deleteAllFiles()
         radarSiteButton.title = rid
         getPolygonWarnings()
-        wxMetal[0]!.rid = rid
-        wxMetal[0]!.loadGeometry()
-        wxMetal[0]!.xPos = 0.0
-        wxMetal[0]!.yPos = 0.0
-        wxMetal[0]!.zoom = 1.0
-        self.wxMetal[0]!.getRadar("")
+        wxMetal.forEach {
+            $0!.rid = rid
+            $0!.loadGeometry()
+            $0!.xPos = 0.0
+            $0!.yPos = 0.0
+            $0!.zoom = 1.0
+            $0!.getRadar("")
+        }
         self.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj = WXMetalTextObject(self, numberOfPanes,
                                     Double(view.frame.width),

@@ -152,6 +152,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         timeButton = ObjectToolbarIcon(self, nil)
+        
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
@@ -165,6 +166,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         }
         if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarsiteButton)}
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
+        
         width = Double(self.view.bounds.size.width)
         height = Double(self.view.bounds.size.height)
         self.context = EAGLContext(api: .openGLES2)
