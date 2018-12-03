@@ -245,7 +245,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         wxMetal.writePrefs(numberOfPanes)
         wxMetal.cleanup()
         device = nil
-        //self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
         wxMetal = nil
         commandQueue = nil
         metalLayer = nil
