@@ -115,6 +115,9 @@ class WXMetalRender {
             radarLayers.append(wbGustsBuffers)
             radarLayers.append(wbBuffers)
         }
+        if PolygonType.SWO.display {
+            radarLayers.append(swoBuffers)
+        }
         radarLayers.append(stiBuffers)
         radarLayers.append(hiBuffers)
         radarLayers.append(tvsBuffers)
@@ -346,6 +349,10 @@ class WXMetalRender {
                 if PolygonType.WIND_BARB.display {
                     self.constructWBLines()
                 }
+                if PolygonType.SWO.display {
+                    UtilitySWOD1.getSWO()
+                    self.constructSWOLines()
+                }
             }
 
             DispatchQueue.main.async {
@@ -515,6 +522,44 @@ class WXMetalRender {
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)
         spotterBuffers.generateMtlBuffer(device)
+    }
+
+    func constructSWOLines() {
+        swoBuffers.initialize(2, Color.MAGENTA)
+        colorSwo = []
+        colorSwo.append(Color.MAGENTA)
+        colorSwo.append(Color.RED)
+        colorSwo.append(wXColor.colorsToInt(255, 140, 0))
+        colorSwo.append(Color.YELLOW)
+        colorSwo.append(wXColor.colorsToInt(0, 100, 0))
+        var tmpCoords = (0.0, 0.0)
+        var fSize = 0
+        (0...4).forEach {
+            if let flArr = UtilitySWOD1.hashSwo[$0] {fSize += flArr.count}
+        }
+        swoBuffers.metalBuffer = []
+        (0...4).forEach { z in
+            if let flArr = UtilitySWOD1.hashSwo[z] {
+                stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
+                    swoBuffers.putFloat(tmpCoords.0)
+                    swoBuffers.putFloat(tmpCoords.1 * -1.0)
+                    swoBuffers.putColor(Color.red(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.green(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.blue(self.colorSwo[z]))
+
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, pn)
+                    swoBuffers.putFloat(tmpCoords.0)
+                    swoBuffers.putFloat(tmpCoords.1 * -1.0)
+                    swoBuffers.putColor(Color.red(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.green(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.blue(self.colorSwo[z]))
+                }
+            }
+        }
+        // FIXME not yet working
+        swoBuffers.count = Int(Double(swoBuffers.metalBuffer.count) * 0.4)
+        swoBuffers.generateMtlBuffer(device)
     }
 
     func scaleLength(_ currentLength: Double) -> Double {
