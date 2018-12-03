@@ -21,21 +21,21 @@ final class UtilityActions {
     }
 
     static func radarClicked(_ uiv: UIViewController) {
-        if UIPreferences.useMetalRadar {
-            goToVCS(uiv, "wxmetalradar")
-            return
-        }
-        if UIPreferences.dualpaneRadarIcon {
-            ActVars.WXOGLPaneCnt = "2"
-        } else {
-            ActVars.WXOGLPaneCnt = "1"
-        }
-        if Location.isUS {
-            goToVCS(uiv, "wxoglmultipane")
-        } else {
+        if !Location.isUS {
             ActVars.CARADARimgType = "radar"
             ActVars.CARADARprov = ""
             goToVCS(uiv, "caradar")
+        } else {
+            if UIPreferences.dualpaneRadarIcon {
+                ActVars.WXOGLPaneCnt = "2"
+            } else {
+                ActVars.WXOGLPaneCnt = "1"
+            }
+            if UIPreferences.useMetalRadar {
+                goToVCS(uiv, "wxmetalradar")
+            } else {
+                goToVCS(uiv, "wxoglmultipane")
+            }
         }
     }
 

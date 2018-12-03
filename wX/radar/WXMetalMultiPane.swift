@@ -13,7 +13,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     var wxMetal = [WXMetalRender?]()
     var device: MTLDevice!
-    var metalLayer: CAMetalLayer!
+    var metalLayer = [CAMetalLayer?]()
     var pipelineState: MTLRenderPipelineState!
     var commandQueue: MTLCommandQueue!
     var timer: CADisplayLink!
@@ -35,7 +35,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var longPressCount = 0
     var width = 0.0
     var height = 0.0
-    let numberOfPanes = 1
+    var numberOfPanes = 1
     var oneMinRadarFetch = Timer()
     let ortInt: Float = 250.0
     var textObj = WXMetalTextObject()
@@ -44,6 +44,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
+        let pangeRange = 0..<numberOfPanes
+        
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
@@ -87,18 +91,23 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         var halfHeight = self.view.frame.height / 2
         halfHeight -= UIPreferences.toolbarHeight / 2.0
 
-        metalLayer = CAMetalLayer()
-        metalLayer.device = device
-        metalLayer.pixelFormat = .bgra8Unorm
-        metalLayer.framebufferOnly = true
-        metalLayer.frame = view.layer.frame
+        pangeRange.enumerated().forEach { index, pane in
+            metalLayer.append(CAMetalLayer())
+            metalLayer[index]!.device = device
+            metalLayer[index]!.pixelFormat = .bgra8Unorm
+            metalLayer[index]!.framebufferOnly = true
+            metalLayer[index]!.frame = view.layer.frame
+        }
+        
         // top left
         //metalLayer.frame =  CGRect(x: 0, y: 0, width: self.view.bounds.width/2, height: self.view.bounds.height/2)
+        
         // top half for dual
         //metalLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight)
         // bottom half for dual
         //metalLayer.frame = CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight)
-        view.layer.addSublayer(metalLayer)
+        
+        metalLayer.forEach { view.layer.addSublayer($0!) }
 
         /*if numberOfPanes==2 {
             halfHeight -= UIPreferences.toolbarHeight / 2.0
@@ -171,8 +180,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func render() {
-        guard let drawable = metalLayer?.nextDrawable() else { return }
-        wxMetal.forEach { $0!.render(commandQueue: commandQueue,
+        
+        wxMetal.enumerated().forEach { index, wxmetal in
+            guard let drawable = metalLayer[index]!.nextDrawable() else { return }
+            wxmetal!.render(commandQueue: commandQueue,
                        pipelineState: pipelineState,
                        drawable: drawable,
                        parentModelViewMatrix: modelMatrix(),
@@ -252,7 +263,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         device = nil
         wxMetal[0] = nil
         commandQueue = nil
-        metalLayer = nil
+        metalLayer[0] = nil
         pipelineState = nil
         timer = nil
         textObj = WXMetalTextObject()
@@ -322,7 +333,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func mapCall(annotationView: MKAnnotationView) {self.ridChanged((annotationView.annotation!.title!)!, mapIndex)}
 
-    // fixme
+    // FIXME
     func ridChanged(_ rid: String, _ index: Int) {
         stopAnimate()
         UtilityFileManagement.deleteAllFiles()
@@ -426,7 +437,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             xMiddle = width / 2.0
         }
         let glv = wxMetal[0]!
-        // fixme
+        // FIXME
         let diffX = density * (xMiddle - xModified) / Double(wxMetal[0]!.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal[0]!.zoom)
         let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[0]!.rid + "_X", "0.00"),
@@ -535,7 +546,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         wxMetal.forEach { $0!.getRadar("") }
         getPolygonWarnings()
     }
-    
+
     func updateColorLegend() {
         if RadarPreferences.radarShowLegend && numberOfPanes==1 {
             colorLegend.removeFromSuperview()
