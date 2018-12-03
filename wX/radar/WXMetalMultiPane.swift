@@ -156,7 +156,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
         }*/
 
-        pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0])) }
+        pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
 
@@ -291,12 +291,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         locationManager.stopUpdatingLocation()
         locationManager.stopMonitoringSignificantLocationChanges()
         stopAnimate()
-        wxMetal[0]!.writePrefs(numberOfPanes)
-        wxMetal[0]!.cleanup()
+        //wxMetal[0]!.writePrefs(numberOfPanes)
+        wxMetal.forEach { $0!.writePrefs() }
+        wxMetal.forEach { $0!.cleanup() }
+        //wxMetal[0]!.cleanup()
         device = nil
-        wxMetal[0] = nil
+        wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
         commandQueue = nil
-        metalLayer[0] = nil
+        metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
         pipelineState = nil
         timer = nil
         textObj = WXMetalTextObject()

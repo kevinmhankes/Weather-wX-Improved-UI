@@ -86,12 +86,16 @@ class WXMetalRender {
     private var timeButton: ObjectToolbarIcon
     private var productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
+    private var paneNumber = 0
+    private var numberOfPanes = 0
 
-    init(_ device: MTLDevice, _ timeButton: ObjectToolbarIcon, _ productButton: ObjectToolbarIcon) {
+    init(_ device: MTLDevice, _ timeButton: ObjectToolbarIcon, _ productButton: ObjectToolbarIcon, paneNumber: Int, _ numberOfPanes: Int) {
         self.device = device
         self.timeButton = timeButton
         self.productButton = productButton
-        readPrefs(1)
+        self.paneNumber = paneNumber
+        self.numberOfPanes = numberOfPanes
+        readPrefs()
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {if $0.geotype.display {geographicBuffers.append($0)}}
@@ -253,9 +257,9 @@ class WXMetalRender {
         }
     }
 
-    func writePrefs(_ numberOfPanesInt: Int) {
-        let numberOfPanes = String(numberOfPanesInt)
-        let index = String(0)
+    func writePrefs() {
+        let numberOfPanes = String(self.numberOfPanes)
+        let index = String(paneNumber)
         let radarType = "WXMETAL"
         editor.putFloat(radarType + numberOfPanes + "_ZOOM" + index, zoom)
         editor.putFloat(radarType + numberOfPanes + "_X" + index, xPos)
@@ -264,10 +268,10 @@ class WXMetalRender {
         editor.putString(radarType + numberOfPanes + "_PROD" + index, product)
     }
 
-    func readPrefs(_ numberOfPanesInt: Int) {
+    func readPrefs() {
         if RadarPreferences.wxoglRememberLocation {
-            let numberOfPanes = String(numberOfPanesInt)
-            let index = String(0)
+            let numberOfPanes = String(self.numberOfPanes)
+            let index = String(paneNumber)
             let radarType = "WXMETAL"
             zoom = preferences.getFloat(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = preferences.getFloat(radarType + numberOfPanes + "_X" + index, 0.0)
