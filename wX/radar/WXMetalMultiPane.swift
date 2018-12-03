@@ -77,8 +77,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         toolbarButtons.append(flexBarButton)
         toolbarButtons.append(animateButton)
+        toolbarButtons.append(fixedSpace)
         pangeRange.forEach {
-            toolbarButtons.append(fixedSpace)
             toolbarButtons.append(productButton[$0])
         }
         if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
@@ -92,12 +92,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
         var screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
-        if numberOfPanes == 2 {
-            screenHeight /= 2
-        }
+        //if numberOfPanes == 2 {
+        //    screenHeight /= 2
+        //}
         //print(screenWidth)
         //print(screenHeight)
-        let surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        var surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        if numberOfPanes == 2 {
+            surfaceRatio = Float(screenWidth)/Float(screenHeight/2.0)
+        }
         projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
                                                       bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
                                                       top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
@@ -106,9 +109,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         //                                           ortInt * (1 / surfaceRatio), 1.0, -1.0)
         //projectionMatrix = Matrix4.makeOrthoViewAngle(screenWidth/2.0 * -1.0, right: screenWidth/2.0, bottom: screenHeight/2 * -1.0, top: screenHeight/2, nearZ: -100.0, farZ: 100.0)
 
-        let halfWidth = self.view.frame.width / 2
-        var halfHeight = self.view.frame.height / 2
-        halfHeight -= UIPreferences.toolbarHeight / 2.0
+        //let halfWidth = self.view.frame.width / 2
+        //var halfHeight = self.view.frame.height / 2
+        let halfWidth = screenWidth / 2
+        var halfHeight = screenHeight / 2
+        //halfHeight -= UIPreferences.toolbarHeight / 2.0
 
         pangeRange.enumerated().forEach { index, pane in
             metalLayer.append(CAMetalLayer())
@@ -122,9 +127,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[0]!.frame = view.layer.frame
         } else if numberOfPanes == 2 {
             // top half for dual
-            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight)
+            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: CGFloat(screenWidth), height: CGFloat(halfHeight))
             // bottom half for dual
-            metalLayer[1]!.frame = CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight)
+            metalLayer[1]!.frame = CGRect(x: 0, y: CGFloat(halfHeight), width: CGFloat(screenWidth), height: CGFloat(halfHeight))
         }
         
         // top left
