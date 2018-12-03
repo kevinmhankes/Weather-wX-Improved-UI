@@ -149,6 +149,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         textObj.addTV()
         self.wxMetal.getRadar("")
         getPolygonWarnings()
+        updateColorLegend()
         if RadarPreferences.wxoglRadarAutorefresh {
             oneMinRadarFetch = Timer.scheduledTimer(timeInterval: 60.0,
                                                     target: self,
@@ -265,10 +266,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func productChanged(_ index: Int, _ product: String) {
         stopAnimate()
-        //updateColorLegend()
         productButton.title = product
         self.wxMetal.radarProduct = product
         self.wxMetal.getRadar("")
+        updateColorLegend()
         getPolygonWarnings()
     }
 
@@ -527,6 +528,16 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func getRadarEveryMinute() {
         wxMetal.getRadar("")
         getPolygonWarnings()
+    }
+    
+    func updateColorLegend() {
+        if RadarPreferences.radarShowLegend && numberOfPanes==1 {
+            colorLegend.removeFromSuperview()
+            colorLegend = UIColorLegend(wxMetal.product, CGRect(x: 0, y: UIPreferences.statusBarHeight, width: 100, height: self.view.frame.size.height - UIPreferences.toolbarHeight - UIPreferences.statusBarHeight))
+            colorLegend.backgroundColor = UIColor.clear
+            colorLegend.isOpaque = false
+            self.view.addSubview(colorLegend)
+        }
     }
 
     public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
