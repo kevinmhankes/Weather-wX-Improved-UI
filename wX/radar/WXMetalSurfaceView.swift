@@ -23,15 +23,33 @@ final class WXMetalSurfaceView {
 
     // fixme
     static func gesturePan(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == UIGestureRecognizerState.changed {
-            let pointInView = gestureRecognizer.location(in: uiv.view)
-            let xDelta = Float((wxMetal[0]!.lastPanLocation.x - pointInView.x)/uiv.view.bounds.width) * panSensivity
-            let yDelta = Float((wxMetal[0]!.lastPanLocation.y - pointInView.y)/uiv.view.bounds.height) * panSensivity
-            wxMetal[0]!.xPos -= xDelta
-            wxMetal[0]!.yPos += yDelta
-            wxMetal[0]!.lastPanLocation = pointInView
-        } else if gestureRecognizer.state == UIGestureRecognizerState.began {
-            wxMetal[0]!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
+        let location = gestureRecognizer.location(in: uiv.view)
+        let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
+        
+        if RadarPreferences.dualpaneshareposn {
+            wxMetal.forEach {
+                if gestureRecognizer.state == UIGestureRecognizerState.changed {
+                    let pointInView = gestureRecognizer.location(in: uiv.view)
+                    let xDelta = Float(($0!.lastPanLocation.x - pointInView.x)/uiv.view.bounds.width) * panSensivity
+                    let yDelta = Float(($0!.lastPanLocation.y - pointInView.y)/uiv.view.bounds.height) * panSensivity
+                    $0!.xPos -= xDelta
+                    $0!.yPos += yDelta
+                    $0!.lastPanLocation = pointInView
+                } else if gestureRecognizer.state == UIGestureRecognizerState.began {
+                    $0!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
+                }
+            }
+        } else {
+            if gestureRecognizer.state == UIGestureRecognizerState.changed {
+                let pointInView = gestureRecognizer.location(in: uiv.view)
+                let xDelta = Float((wxMetal[radarIndex]!.lastPanLocation.x - pointInView.x)/uiv.view.bounds.width) * panSensivity
+                let yDelta = Float((wxMetal[radarIndex]!.lastPanLocation.y - pointInView.y)/uiv.view.bounds.height) * panSensivity
+                wxMetal[radarIndex]!.xPos -= xDelta
+                wxMetal[radarIndex]!.yPos += yDelta
+                wxMetal[radarIndex]!.lastPanLocation = pointInView
+            } else if gestureRecognizer.state == UIGestureRecognizerState.began {
+                wxMetal[radarIndex]!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
+            }
         }
         gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
         switch gestureRecognizer.state {
@@ -75,7 +93,7 @@ final class WXMetalSurfaceView {
     static func singleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        print(radarIndex)
+        //print(radarIndex)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
@@ -96,22 +114,26 @@ final class WXMetalSurfaceView {
     }
 
     static func doubleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
-        //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
         let location = gestureRecognizer.location(in: uiv.view)
+        let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let bounds = UtilityUI.getScreenBounds()
-        let scaleFactor: Float = 2.0
+        //let scaleFactor: Float = 2.0
         let fudgeFactor: Float = -(450.0 / bounds.0)
-
         let xMiddle = Float(uiv.view.frame.width/2.0)
         let yMiddle = Float(uiv.view.frame.height/2.0)
-
-        wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * fudgeFactor }
-        wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * fudgeFactor }
-
-        //setModifiedZoom(wxMetal.zoom * 2.0, wxMetal.zoom, wxMetal)
-        wxMetal.forEach { setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)}
-        wxMetal.forEach { $0!.zoom *= 2.0 }
-        wxMetal.forEach { $0!.setZoom() }
+        if RadarPreferences.dualpaneshareposn {
+            wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * fudgeFactor }
+            wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * fudgeFactor }
+            wxMetal.forEach { setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)}
+            wxMetal.forEach { $0!.zoom *= 2.0 }
+            wxMetal.forEach { $0!.setZoom() }
+        } else {
+            wxMetal[radarIndex]!.xPos +=  (Float(location.x) - xMiddle) * fudgeFactor
+            wxMetal[radarIndex]!.yPos +=  (yMiddle - Float(location.y)) * fudgeFactor
+            setModifiedZoom(wxMetal[radarIndex]!.zoom * 2.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+            wxMetal[radarIndex]!.zoom *= 2.0
+            wxMetal[radarIndex]!.setZoom()
+        }
         uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj.addTV()
     }
