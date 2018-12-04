@@ -150,26 +150,42 @@ final class WXMetalSurfaceView {
 
     // fixme
     static func gestureZoom(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPinchGestureRecognizer) {
+        let location = gestureRecognizer.location(in: uiv.view)
+        let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let slowItDown: Float = 1.0 // was 1.0
         let maxZoom: Float = 15.0
         let minZoom: Float = 0.03
         let fudge: Float = 0.01
-        if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[0]!.zoom < maxZoom && wxMetal[0]!.zoom > minZoom {
-            // setModifiedZoom(wxMetal.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), wxMetal.zoom, wxMetal)
-            wxMetal.forEach { setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)}
-            wxMetal[0]!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
-            if wxMetal[0]!.zoom < minZoom {
-                //setModifiedZoom(minZoom + fudge/10.0, wxMetal.zoom, wxMetal)
-                wxMetal.forEach { setModifiedZoom(minZoom + fudge/10.0, $0!.zoom, $0!)}
-                wxMetal[0]!.zoom = minZoom + fudge/10.0
+        
+        if RadarPreferences.dualpaneshareposn {
+            if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[0]!.zoom < maxZoom && wxMetal[0]!.zoom > minZoom {
+                wxMetal.forEach { setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)}
+                wxMetal[0]!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
+                if wxMetal[0]!.zoom < minZoom {
+                    wxMetal.forEach { setModifiedZoom(minZoom + fudge/10.0, $0!.zoom, $0!)}
+                    wxMetal[0]!.zoom = minZoom + fudge/10.0
+                }
+                if wxMetal[0]!.zoom > maxZoom {
+                    wxMetal.forEach { setModifiedZoom(maxZoom - fudge, $0!.zoom, $0!)}
+                    wxMetal[0]!.zoom = maxZoom - fudge
+                }
             }
-            if wxMetal[0]!.zoom > maxZoom {
-                //setModifiedZoom(maxZoom - fudge, wxMetal.zoom, wxMetal)
-                wxMetal.forEach { setModifiedZoom(maxZoom - fudge, $0!.zoom, $0!)}
-                wxMetal[0]!.zoom = maxZoom - fudge
+            wxMetal.forEach { $0!.setZoom() }
+        } else {
+            if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[radarIndex]!.zoom < maxZoom && wxMetal[radarIndex]!.zoom > minZoom {
+                setModifiedZoom(wxMetal[radarIndex]!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                wxMetal[radarIndex]!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
+                if wxMetal[radarIndex]!.zoom < minZoom {
+                    setModifiedZoom(minZoom + fudge/10.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                    wxMetal[radarIndex]!.zoom = minZoom + fudge/10.0
+                }
+                if wxMetal[radarIndex]!.zoom > maxZoom {
+                    setModifiedZoom(maxZoom - fudge, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                    wxMetal[radarIndex]!.zoom = maxZoom - fudge
+                }
             }
+            wxMetal[radarIndex]!.setZoom()
         }
-        wxMetal.forEach { $0!.setZoom() }
         gestureRecognizer.scale = 1
         switch gestureRecognizer.state {
         case .began: uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
