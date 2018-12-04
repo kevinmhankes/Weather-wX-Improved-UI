@@ -138,6 +138,12 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                 items.append(siteButton[$0])
             }
             toolbarTop.items = ObjectToolbarItems(items).items
+            if UIPreferences.radarToolbarTransparent {
+                toolbarTop.setBackgroundImage(UIImage(),
+                                           forToolbarPosition: .any,
+                                           barMetrics: .default)
+                toolbarTop.setShadowImage(UIImage(), forToolbarPosition: .any)
+            }
         }
         let toolbar = ObjectToolbar()
         toolbar.setConfig()

@@ -31,6 +31,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var radarSiteButton = ObjectToolbarIcon()
     var productButton = [ObjectToolbarIcon]()
     var animateButton = ObjectToolbarIcon()
+    var siteButton = [ObjectToolbarIcon]()
     var inOglAnim = false
     var longPressCount = 0
     var width = 0.0
@@ -51,6 +52,27 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
+        //
+        //  setup top toolbar if needed
+        //
+        let toolbarTop = ObjectToolbar(.top)
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
+            toolbarTop.setConfig(.top)
+            pangeRange.forEach {siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))}
+            var items = [UIBarButtonItem]()
+            items.append(flexBarButton)
+            pangeRange.forEach {
+                items.append(fixedSpace)
+                items.append(siteButton[$0])
+            }
+            toolbarTop.items = ObjectToolbarItems(items).items
+            if UIPreferences.radarToolbarTransparent {
+                toolbarTop.setBackgroundImage(UIImage(),
+                                           forToolbarPosition: .any,
+                                           barMetrics: .default)
+                toolbarTop.setShadowImage(UIImage(), forToolbarPosition: .any)
+            }
+        }
         toolbar.setConfig()
         if UIPreferences.radarToolbarTransparent {
             toolbar.setBackgroundImage(UIImage(),
@@ -155,6 +177,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
+        if !RadarPreferences.dualpaneshareposn {siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}}
 
         let defaultLibrary = device.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary.makeFunction(name: "basic_fragment")
@@ -178,6 +201,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         self.view.addSubview(toolbar)
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
+            self.view.addSubview(toolbarTop)
+        }
         screenScale = Double(UIScreen.main.scale)
         // FIXME
         textObj = WXMetalTextObject(self, numberOfPanes,
