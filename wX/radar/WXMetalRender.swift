@@ -95,6 +95,7 @@ class WXMetalRender {
         self.timeButton = timeButton
         self.productButton = productButton
         self.paneNumber = paneNumber
+        self.idxStr = String(paneNumber)
         self.numberOfPanes = numberOfPanes
         readPrefs()
         radarLayers = [radarBuffers]

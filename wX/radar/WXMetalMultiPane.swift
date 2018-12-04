@@ -160,24 +160,24 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
 
-        /*if numberOfPanes==2 {
-            halfHeight -= UIPreferences.toolbarHeight / 2.0
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight), context: self.context!))
-        } else if numberOfPanes==4 {
-            halfHeight -= UIPreferences.toolbarHeight / 2.0
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
-        } else {
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
-        }*/
-
+    
         pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
-        if !RadarPreferences.dualpaneshareposn {siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}}
+        if !RadarPreferences.dualpaneshareposn {
+            siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}
+        }
+        if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
+            let x = wxMetal[0]!.xPos
+            let y = wxMetal[0]!.yPos
+            let zoom = wxMetal[0]!.zoom
+            
+            wxMetal.forEach {
+                $0!.xPos = x
+                $0!.yPos = y
+                $0!.zoom = zoom
+            }
+        }
 
         let defaultLibrary = device.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary.makeFunction(name: "basic_fragment")

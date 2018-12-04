@@ -42,20 +42,11 @@ final class WXMetalSurfaceView {
     }
 
     static func singleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
-        //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
-        //wxMetal.forEach { setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)}
-        //wxMetal.forEach { $0!.zoom *= 0.5 }
-        //wxMetal.forEach { $0!.setZoom() }
-        
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                
                 setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
                 $0!.zoom *= 0.5
                 $0!.setZoom()
-                
-                //$0.setView(0.5)
-                //$0.setZoom()
             }
         } else {
             let radarIndex = gestureRecognizer.view!.tag
@@ -63,10 +54,9 @@ final class WXMetalSurfaceView {
             wxMetal[radarIndex]!.zoom *= 0.5
             wxMetal[radarIndex]!.setZoom()
         }
-        
         uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj.addTV()
-        //print(String(wxMetal.xPos) + " " + String(wxMetal.yPos) + " " + String(wxMetal.zoom))
+        //print(String(wxMetal[0]!.zoom) + " " + String(wxMetal[1]!.zoom))
     }
 
     static func doubleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
