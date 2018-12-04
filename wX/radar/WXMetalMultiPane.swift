@@ -226,11 +226,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     // FIXME
-    func modelMatrix() -> Matrix4 {
+    func modelMatrix(_ index: Int) -> Matrix4 {
         let matrix = Matrix4()
-        matrix.translate(wxMetal[0]!.xPos, y: wxMetal[0]!.yPos, z: wxMetal[0]!.zPos)
+        matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
         matrix.rotateAroundX(0, y: 0, z: 0)
-        matrix.scale(wxMetal[0]!.zoom, y: wxMetal[0]!.zoom, z: wxMetal[0]!.zoom)
+        matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
         return matrix
     }
 
@@ -240,7 +240,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             wxmetal!.render(commandQueue: commandQueue,
                        pipelineState: pipelineState,
                        drawable: drawable,
-                       parentModelViewMatrix: modelMatrix(),
+                       parentModelViewMatrix: modelMatrix(index),
                        projectionMatrix: projectionMatrix,
                        clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
         }

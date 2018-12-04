@@ -40,8 +40,42 @@ final class WXMetalSurfaceView {
         default: break
         }
     }
+    
+    // bottom left 0,600
+    // bottom right 350,600
+    // top left 0,0
+    // top right 350,0
+    
+    static func tapInPane(_ location: CGPoint, _ uiv: UIViewController, _ wxMetal: WXMetalRender) -> Int {
+        if wxMetal.numberOfPanes == 1 {
+            return 0
+        } else if wxMetal.numberOfPanes == 2 {
+            if location.y < uiv.view.frame.height/2.0 {
+                return 0
+            } else {
+                return 1
+            }
+        } else { // 4 pane
+            if location.y < uiv.view.frame.height/2.0 {
+                if location.x < uiv.view.frame.width/2.0 {
+                    return 0  // top left
+                } else {
+                    return 1  // top right
+                }
+            } else {
+                if location.x < uiv.view.frame.width/2.0 {
+                    return 2  // bottom left
+                } else {
+                    return 3  // bottom right
+                }
+            }
+        }
+    }
 
     static func singleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: uiv.view)
+        let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
+        print(radarIndex)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
@@ -49,13 +83,15 @@ final class WXMetalSurfaceView {
                 $0!.setZoom()
             }
         } else {
-            let radarIndex = gestureRecognizer.view!.tag
+            //let radarIndex = gestureRecognizer.view!.tag
             setModifiedZoom(wxMetal[radarIndex]!.zoom * 0.5, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
             wxMetal[radarIndex]!.zoom *= 0.5
             wxMetal[radarIndex]!.setZoom()
         }
         uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj.addTV()
+        //print(location.x)
+        //print(location.y)
         //print(String(wxMetal[0]!.zoom) + " " + String(wxMetal[1]!.zoom))
     }
 

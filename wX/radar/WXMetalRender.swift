@@ -87,8 +87,8 @@ class WXMetalRender {
     private var timeButton: ObjectToolbarIcon
     private var productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
-    private var paneNumber = 0
-    private var numberOfPanes = 0
+    var paneNumber = 0
+    var numberOfPanes = 0
 
     init(_ device: MTLDevice, _ timeButton: ObjectToolbarIcon, _ productButton: ObjectToolbarIcon, paneNumber: Int, _ numberOfPanes: Int) {
         self.device = device
