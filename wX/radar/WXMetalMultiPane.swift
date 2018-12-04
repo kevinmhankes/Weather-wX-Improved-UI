@@ -69,7 +69,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pangeRange.forEach {productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))}
         radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        
+
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
@@ -83,7 +83,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
-        
+
         //toolbar.items = ObjectToolbarItems([doneButton, timeButton, flexBarButton, animateButton, productButton, radarSiteButton]).items
         device = MTLCreateSystemDefaultDevice()
 
@@ -91,7 +91,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         // FIXME for dual/quad pane these numbers will need to be adjusted
         // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
-        var screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
+        let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
         //if numberOfPanes == 2 {
         //    screenHeight /= 2
         //}
@@ -112,20 +112,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         //                                           ortInt * (1 / surfaceRatio), 1.0, -1.0)
         //projectionMatrix = Matrix4.makeOrthoViewAngle(screenWidth/2.0 * -1.0, right: screenWidth/2.0, bottom: screenHeight/2 * -1.0, top: screenHeight/2, nearZ: -100.0, farZ: 100.0)
 
-        //let halfWidth = self.view.frame.width / 2
-        //var halfHeight = self.view.frame.height / 2
         let halfWidth = screenWidth / 2
-        var halfHeight = screenHeight / 2
-        //halfHeight -= UIPreferences.toolbarHeight / 2.0
-
-        pangeRange.enumerated().forEach { index, pane in
+        let halfHeight = screenHeight / 2
+        pangeRange.enumerated().forEach { index, _ in
             metalLayer.append(CAMetalLayer())
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
             //metalLayer[index]!.frame = view.layer.frame
         }
-        
         if numberOfPanes == 1 {
             metalLayer[0]!.frame = view.layer.frame
         } else if numberOfPanes == 2 {
@@ -141,15 +136,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[2]!.frame = CGRect(x: 0, y: CGFloat(halfHeight), width: CGFloat(halfWidth), height: CGFloat(halfHeight))
             metalLayer[3]!.frame = CGRect(x: CGFloat(halfWidth), y: CGFloat(halfHeight), width: CGFloat(halfWidth), height: CGFloat(halfHeight))
         }
-        
-        // top left
-        //metalLayer.frame =  CGRect(x: 0, y: 0, width: self.view.bounds.width/2, height: self.view.bounds.height/2)
-        
-        // top half for dual
-        //metalLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight)
-        // bottom half for dual
-        //metalLayer.frame = CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight)
-        
         metalLayer.forEach { view.layer.addSublayer($0!) }
 
         /*if numberOfPanes==2 {
@@ -223,7 +209,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func render() {
-        
         wxMetal.enumerated().forEach { index, wxmetal in
             guard let drawable = metalLayer[index]!.nextDrawable() else { return }
             wxmetal!.render(commandQueue: commandQueue,
@@ -633,6 +618,4 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 // N0U anim not working ( seems worse on slower devices )
 // minor mem leak
 // multipane
-// spotter labels
-// cities
 // after enabling GPS need to go in , out and back into radar

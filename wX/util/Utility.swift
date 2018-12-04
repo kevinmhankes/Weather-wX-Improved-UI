@@ -18,7 +18,7 @@ final class Utility {
         let objCC = ObjectForecastPackageCurrentConditions.createForCanada(html)
         return ObjectForecastPackage(objCC)
     }
-    
+
     static func getCurrentConditionsV2(_ locNum: Int) -> ObjectForecastPackage {
         if Location.isUS(locNum) {
             return getCurrentConditionsUSV2(locNum)
@@ -26,7 +26,7 @@ final class Utility {
             return getCurrentConditionsCanada(locNum)
         }
     }
-    
+
     static func getCurrentHazards(_ locNum: Int) -> ObjectForecastPackageHazards {
         if Location.isUS(locNum) {
             return ObjectForecastPackageHazards(locNum)
