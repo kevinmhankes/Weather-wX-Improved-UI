@@ -23,6 +23,7 @@ class WXMetalRender {
     var ridStr = "DTX"
     var rdDownload = WXGLDownload()
     var radarProduct = "N0Q"
+    var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
     var zPos: Float = -7.0
@@ -276,7 +277,7 @@ class WXMetalRender {
             zoom = preferences.getFloat(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = preferences.getFloat(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = preferences.getFloat(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = preferences.getString(radarType + numberOfPanes + "_PROD" + index, radarProduct)
+            product = preferences.getString(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
             rid = preferences.getString(radarType + numberOfPanes + "_RID" + index, Location.rid)
         } else {
             rid = Location.rid
