@@ -424,19 +424,23 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func getAnimate(_ frameCntStr: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            animArray.append(self.wxMetal[0]!.rdDownload.getRadarByFTPAnimation(frameCntStr))
-            animArray[0].indices.forEach {
-                UtilityFileManagement.deleteFile(String(0) + "nexrad_anim" + String($0))
-                UtilityFileManagement.moveFile(animArray[0][$0], String(0)  + "nexrad_anim" + String($0))
+            self.wxMetal.forEach {animArray.append($0!.rdDownload.getRadarByFTPAnimation(frameCntStr))}
+            self.wxMetal.enumerated().forEach { index, _ in
+                animArray[index].indices.forEach {
+                    UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
+                    UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
+                }
             }
             let frameCnt = Int(frameCntStr) ?? 0
             var scaleFactor = 1
             while self.inOglAnim {
                 for frame in (0..<frameCnt) {
                     if self.inOglAnim {
-                        let buttonText = " (\(String(frame+1))/\(frameCnt))"
-                        self.wxMetal[0]!.getRadar(String(0) + "nexrad_anim" + String(frame), buttonText)
-                        scaleFactor = 1
+                        self.wxMetal.enumerated().forEach { index, glv in
+                            let buttonText = " (\(String(frame+1))/\(frameCnt))"
+                            glv!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
+                            scaleFactor = 1
+                        }
                         usleep(UInt32(100000 * MyApplication.animInterval * scaleFactor))
                     } else {
                         break

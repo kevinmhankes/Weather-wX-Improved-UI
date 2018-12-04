@@ -46,7 +46,7 @@ class WXMetalRender {
     private var watchBuffers = ObjectMetalBuffers(PolygonType.WATCH)
     private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
     private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
-    private var swoBuffers = ObjectMetalBuffers()
+    private var swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
     private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
     private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE)
