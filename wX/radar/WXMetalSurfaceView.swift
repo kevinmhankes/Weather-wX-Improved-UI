@@ -156,21 +156,22 @@ final class WXMetalSurfaceView {
         let maxZoom: Float = 15.0
         let minZoom: Float = 0.03
         let fudge: Float = 0.01
-        
         if RadarPreferences.dualpaneshareposn {
-            if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[0]!.zoom < maxZoom && wxMetal[0]!.zoom > minZoom {
-                wxMetal.forEach { setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)}
-                wxMetal[0]!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
-                if wxMetal[0]!.zoom < minZoom {
-                    wxMetal.forEach { setModifiedZoom(minZoom + fudge/10.0, $0!.zoom, $0!)}
-                    wxMetal[0]!.zoom = minZoom + fudge/10.0
+            wxMetal.forEach {
+                if gestureRecognizer.state == UIGestureRecognizerState.changed && $0!.zoom < maxZoom && $0!.zoom > minZoom {
+                    setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
+                    $0!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
+                    if $0!.zoom < minZoom {
+                        setModifiedZoom(minZoom + fudge/10.0, $0!.zoom, $0!)
+                        $0!.zoom = minZoom + fudge/10.0
+                    }
+                    if $0!.zoom > maxZoom {
+                        setModifiedZoom(maxZoom - fudge, $0!.zoom, $0!)
+                        $0!.zoom = maxZoom - fudge
+                    }
                 }
-                if wxMetal[0]!.zoom > maxZoom {
-                    wxMetal.forEach { setModifiedZoom(maxZoom - fudge, $0!.zoom, $0!)}
-                    wxMetal[0]!.zoom = maxZoom - fudge
-                }
+                $0!.setZoom()
             }
-            wxMetal.forEach { $0!.setZoom() }
         } else {
             if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[radarIndex]!.zoom < maxZoom && wxMetal[radarIndex]!.zoom > minZoom {
                 setModifiedZoom(wxMetal[radarIndex]!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)

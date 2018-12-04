@@ -62,7 +62,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             var items = [UIBarButtonItem]()
             items.append(flexBarButton)
             pangeRange.forEach {
-                items.append(fixedSpace)
+                //items.append(fixedSpace)
                 items.append(siteButton[$0])
             }
             toolbarTop.items = ObjectToolbarItems(items).items
@@ -478,16 +478,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         height = Double(self.view.bounds.size.height)
         var yModified = Double(y)
         var xModified = Double(x)
-        // see if y is in the bottom pane, if adjust
         if numberOfPanes != 1 {
             if y > self.view.frame.height / 2.0 {
                 yModified -= Double(self.view.frame.height) / 2.0
-                //glvIdx = 1
             }
         }
         if numberOfPanes==4 {if x > self.view.frame.width / 2.0 {xModified -= Double(self.view.frame.width) / 2.0}}
-        //var density = Double(oglrArr[0].ortInt * 2) / width
-        let density = 400/width
+        var density = Double(ortInt * 2) / width
+        //let density = 400/width
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
         var xMiddle = 0.0
@@ -505,6 +503,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         // FIXME
         let diffX = density * (xMiddle - xModified) / Double(wxMetal[0]!.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal[0]!.zoom)
+        //let diffX = density * (xMiddle - xModified)
+        //let diffY = density * (yMiddle - yModified)
         let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[0]!.rid + "_X", "0.00"),
                                    preferences.getString("RID_" + wxMetal[0]!.rid + "_Y", "0.00"))
         let ppd = wxMetal[0]!.pn.oneDegreeScaleFactor
