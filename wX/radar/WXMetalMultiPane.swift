@@ -111,7 +111,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let screenSize: CGSize = UIScreen.main.bounds.size
         let screenWidth = Float(screenSize.width)
         let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
-        
         var surfaceRatio = Float(screenWidth)/Float(screenHeight)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth)/Float(screenHeight/2.0)
@@ -311,10 +310,17 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
-        // FIXME tdwr check
-        WXGLNexrad.radarProductList.forEach {product in
-            alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
-                self.productChanged(sender.tag, product.split(":")[0])}))
+        // FIXME check which pane is calling this
+        if WXGLNexrad.isRidTdwr(wxMetal[0]!.rid) {
+            WXGLNexrad.radarProductListTDWR.forEach {product in
+                alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
+                    self.productChanged(sender.tag, product.split(":")[0])}))
+            }
+        } else {
+            WXGLNexrad.radarProductList.forEach {product in
+                alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
+                    self.productChanged(sender.tag, product.split(":")[0])}))
+            }
         }
         alert.finish()
     }
@@ -474,7 +480,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         if numberOfPanes==4 {if x > self.view.frame.width / 2.0 {xModified -= Double(self.view.frame.width) / 2.0}}
         let density = Double(ortInt * 2) / width
-        //let density = 400/width
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
         var xMiddle = 0.0
@@ -489,11 +494,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             xMiddle = width / 2.0
         }
         let glv = wxMetal[0]!
-        // FIXME
         let diffX = density * (xMiddle - xModified) / Double(wxMetal[index]!.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal[index]!.zoom)
-        //let diffX = density * (xMiddle - xModified)
-        //let diffY = density * (yMiddle - yModified)
         let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[index]!.rid + "_X", "0.00"),
                                    preferences.getString("RID_" + wxMetal[index]!.rid + "_Y", "0.00"))
         let ppd = wxMetal[index]!.pn.oneDegreeScaleFactor
