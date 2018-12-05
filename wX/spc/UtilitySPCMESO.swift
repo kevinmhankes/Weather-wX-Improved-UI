@@ -12,7 +12,7 @@ final class UtilitySPCMESO {
     static let imageSf = ":mixr:ttd:mcon:thea:mxth:temp_chg:dwpt_chg:mixr_chg:thte_chg:925mb:850mb:700mb:500mb:300mb:sbcp:mlcp:mucp:muli:laps:lllr:lclh:lfch:lfrh:effh:stor:stpc:cpsh:comp:lcls:lr3c:tdlr:qlcs1:qlcs2:pwtr:tran:tran_925:tran_925-850:prop:peff:fzlv:les1:" +
     "tadv_925:7tad:tadv:"
 
-    static let TITLES = [
+    static let titles = [
         ObjectMenuTitle("Observations", 3),
         ObjectMenuTitle("Surface", 15),
         ObjectMenuTitle("Upper Air", 24), // 1
@@ -27,7 +27,7 @@ final class UtilitySPCMESO {
         ObjectMenuTitle("Beta", 9)
         ]
 
-    static let PARAMS = [
+    static let params = [
 
         "bigsfc",
         "1kmv",
@@ -192,7 +192,7 @@ final class UtilitySPCMESO {
         "vtp"
         ]
 
-    static let LABELS = [
+    static let labels = [
 
         "Surface Observations",
         "Visible Satellite",
@@ -429,14 +429,14 @@ final class UtilitySPCMESO {
 
     static let sectorMap = [
         "19": "CONUS",
-        "20": "MW",
-        "13": "NC",
-        "14": "C",
-        "15": "SC",
-        "16": "NE",
-        "17": "CE",
-        "18": "SE",
-        "12": "SW",
-        "11": "NW"
+        "20": "Midwest",
+        "13": "North Central",
+        "14": "Central",
+        "15": "South Central",
+        "16": "Northeast",
+        "17": "Central East",
+        "18": "Southeast",
+        "12": "Southwest",
+        "11": "Northwest"
         ]
 }

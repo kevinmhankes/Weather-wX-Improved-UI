@@ -23,7 +23,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     var prefModel = "SPCMESO"
     let numPanesStr = "1"
     var firstRun = true
-    let subMenu = ObjectMenuData(UtilitySPCMESO.TITLES, UtilitySPCMESO.PARAMS, UtilitySPCMESO.LABELS)
+    let subMenu = ObjectMenuData(UtilitySPCMESO.titles, UtilitySPCMESO.params, UtilitySPCMESO.labels)
 
     override func viewDidLoad() {
         super.viewDidLoad()
