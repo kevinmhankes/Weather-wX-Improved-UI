@@ -62,7 +62,7 @@ final class UtilityGOES16 {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
 
-    static let SECTORS = [
+    static let sectors = [
         "FD: Full Disk",
         "CONUS: US",
         "pnw: Pacific Northwest",
@@ -82,7 +82,7 @@ final class UtilityGOES16 {
         "taw: Tropical Atlantic: wide view"
     ]
 
-    static let PRODUCTS = [
+    static let products = [
         "00 True color daytime, multispectral IR at night": "GEOCOLOR",
         "00.47 um (Band 1) Blue - Visible": "01",
         "00.64 um (Band 2) Red - Visible": "02",

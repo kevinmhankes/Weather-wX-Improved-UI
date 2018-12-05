@@ -67,7 +67,7 @@ class GlobalDictionaries {
         "H3C": "DS.165h3"
     ]
 
-    static let  PRODUCT_STRING_TO_SHORT: [String: Int16] = [
+    static let  radarProductStringToShortInt: [String: Int16] = [
         "L2REF": 153,
         "L2VEL": 154,
         "N0R": 19,

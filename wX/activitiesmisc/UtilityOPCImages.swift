@@ -6,7 +6,7 @@
 
 final class UtilityOPCImages {
 
- static let NAMES = [
+ static let labels = [
             "Atlantic Surface Analysis",
             "Atlantic Wind/Wave Analysis",
             "Atlantic 24-hour 500 mb",
@@ -48,7 +48,7 @@ final class UtilityOPCImages {
             "Alaska/Arctic 96-hour Wave period & Direction"
     ]
 
-    static let URLS = [
+    static let urls = [
             MyApplication.nwsOpcWebsitePrefix + "/A_sfc_full_ocean_color.png",
             MyApplication.nwsOpcWebsitePrefix + "/shtml/ira1.gif",
             MyApplication.nwsOpcWebsitePrefix + "/shtml/A_24hr500.gif",

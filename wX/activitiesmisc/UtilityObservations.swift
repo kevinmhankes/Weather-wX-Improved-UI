@@ -6,7 +6,7 @@
 
 final class UtilityObservations {
 
-    static let URLS = [
+    static let urls = [
         MyApplication.nwsWPCwebsitePrefix + "/sfc/sfcobs/large_latestsfc.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namswsfcwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namscsfcwbg.gif",
@@ -21,7 +21,7 @@ final class UtilityObservations {
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namak2sfcwbg.gif"
         ]
 
-    static let NAMES = [
+    static let labels = [
         "CONUS Surface Obs",
         "SW Surface Analysis",
         "SC Surface Analysis",

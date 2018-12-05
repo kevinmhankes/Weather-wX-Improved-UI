@@ -25,7 +25,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        self.url = preferences.getString(prefToken, UtilityObservations.URLS[0])
+        self.url = preferences.getString(prefToken, UtilityObservations.urls[0])
         self.index = preferences.getInt(prefTokenIdx, 0)
         self.getContent()
     }
@@ -35,7 +35,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
             let bitmap = Bitmap(self.url)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityObservations.NAMES[self.index]
+                self.productButton.title = UtilityObservations.labels[self.index]
                 editor.putString(self.prefToken, self.url)
                 editor.putInt(self.prefTokenIdx, self.index)
             }
@@ -44,7 +44,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityObservations.NAMES.enumerated().forEach { index, rid in
+        UtilityObservations.labels.enumerated().forEach { index, rid in
             alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.productChanged(index)}))
         }
         alert.finish()
@@ -52,7 +52,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
 
     func productChanged(_ index: Int) {
         self.index = index
-        self.url = UtilityObservations.URLS[index]
+        self.url = UtilityObservations.urls[index]
         self.getContent()
     }
 
@@ -61,8 +61,8 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityObservations.URLS)
-        self.url = UtilityObservations.URLS[index]
+        index = UtilityUI.sideSwipe(sender, index, UtilityObservations.urls)
+        self.url = UtilityObservations.urls[index]
         getContent()
     }
 }

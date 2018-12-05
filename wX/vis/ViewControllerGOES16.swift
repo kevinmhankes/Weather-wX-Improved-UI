@@ -34,7 +34,7 @@ class ViewControllerGOES16: UIwXViewController {
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
-        goesProducts = UtilityGOES16.PRODUCTS.values.sorted()
+        goesProducts = UtilityGOES16.products.values.sorted()
         self.view.addSubview(toolbar)
         deSerializeSettings()
         self.getContent()
@@ -78,17 +78,17 @@ class ViewControllerGOES16: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityGOES16.PRODUCTS.keys.sorted().forEach {
+        UtilityGOES16.products.keys.sorted().forEach {
             let code = $0
             alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in
-                self.productChanged(UtilityGOES16.PRODUCTS[code]!)}))
+                self.productChanged(UtilityGOES16.products[code]!)}))
         }
         alert.finish()
     }
 
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Sector Selection", productButton)
-        UtilityGOES16.SECTORS.forEach {
+        UtilityGOES16.sectors.forEach {
             let code = $0.firstToken(":")
             alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in self.sectorChanged(code)}))
         }

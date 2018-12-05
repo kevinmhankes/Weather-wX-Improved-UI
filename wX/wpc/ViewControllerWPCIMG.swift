@@ -12,7 +12,7 @@ class ViewControllerWPCIMG: UIwXViewController {
     var productButton = ObjectToolbarIcon()
     var index = 0
     var timePeriod = 1
-    var subMenu = ObjectMenuData(UtilityWPCImages.TITLES, UtilityWPCImages.urls, UtilityWPCImages.LABELS)
+    var subMenu = ObjectMenuData(UtilityWPCImages.titles, UtilityWPCImages.urls, UtilityWPCImages.labels)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ViewControllerWPCIMG: UIwXViewController {
             let bitmap = Bitmap(getUrl)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityWPCImages.LABELS[self.index]
+                self.productButton.title = UtilityWPCImages.labels[self.index]
                 editor.putInt("WPCIMG_PARAM_LAST_USED", self.index)
             }
         }

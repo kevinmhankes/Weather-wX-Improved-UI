@@ -15,7 +15,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var textView = ObjectTextView()
     var html = "a"
     var playListButton = ObjectToolbarIcon()
-    var subMenu = ObjectMenuData(UtilityWPCText.TITLES, [], UtilityWPCText.LABELS)
+    var subMenu = ObjectMenuData(UtilityWPCText.titles, [], UtilityWPCText.labels)
     let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {

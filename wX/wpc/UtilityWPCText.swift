@@ -6,7 +6,7 @@
 
 final class UtilityWPCText {
 
-    static let TITLES = [
+    static let titles = [
         ObjectMenuTitle("General", 3),
         ObjectMenuTitle("General Forecast Discussions", 8),
         ObjectMenuTitle("Precipitation Discussions", 3),
@@ -21,7 +21,7 @@ final class UtilityWPCText {
         ObjectMenuTitle("Space Weather", 6)
         ]
 
-    static let LABELS = [
+    static let labels = [
         "pmdspd: Short Range Forecast Discussion",
         "pmdepd: Extended Forecast Discussion",
         "pmdhmd: Model Diagnostics Discussion",

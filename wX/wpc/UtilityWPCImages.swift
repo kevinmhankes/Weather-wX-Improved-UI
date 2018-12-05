@@ -6,7 +6,7 @@
 
 final class UtilityWPCImages {
 
-   static let TITLES = [
+   static let titles = [
         ObjectMenuTitle("Surface Analysis", 7),
         ObjectMenuTitle("Forecast Maps", 20),
         ObjectMenuTitle("QPF", 27),
@@ -17,7 +17,7 @@ final class UtilityWPCImages {
         ObjectMenuTitle("Space Weather", 3)
         ]
 
-    static let LABELS = [
+    static let labels = [
         "WPC Analysis, Radar, Warnings",
         "Surface Analysis with Obs (CONUS)",
         "Surface Analysis with Obs (NHEM)",
