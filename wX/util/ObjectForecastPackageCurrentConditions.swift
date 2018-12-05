@@ -55,7 +55,7 @@ final class ObjectForecastPackageCurrentConditions {
         status = UtilityCanada.getStatus(html)
         formatCC()
     }
-    
+
     // CA
     static func createForCanada(_ html: String) -> ObjectForecastPackageCurrentConditions {
         let obj = ObjectForecastPackageCurrentConditions()

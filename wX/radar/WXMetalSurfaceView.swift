@@ -9,7 +9,7 @@ import UIKit
 let panSensivity: Float = 300.0
 
 final class WXMetalSurfaceView {
-    
+
     var citiesExtAl = [TextViewMetal]()
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
@@ -21,11 +21,9 @@ final class WXMetalSurfaceView {
         wxMetal.yPos = wxMetal.yPos * zoomDifference
     }
 
-    // fixme
     static func gesturePan(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPanGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 if gestureRecognizer.state == UIGestureRecognizerState.changed {
@@ -58,12 +56,12 @@ final class WXMetalSurfaceView {
         default: break
         }
     }
-    
+
     // bottom left 0,600
     // bottom right 350,600
     // top left 0,0
     // top right 350,0
-    
+
     static func tapInPane(_ location: CGPoint, _ uiv: UIViewController, _ wxMetal: WXMetalRender) -> Int {
         if wxMetal.numberOfPanes == 1 {
             return 0
@@ -93,7 +91,6 @@ final class WXMetalSurfaceView {
     static func singleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        //print(radarIndex)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
@@ -101,16 +98,12 @@ final class WXMetalSurfaceView {
                 $0!.setZoom()
             }
         } else {
-            //let radarIndex = gestureRecognizer.view!.tag
             setModifiedZoom(wxMetal[radarIndex]!.zoom * 0.5, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
             wxMetal[radarIndex]!.zoom *= 0.5
             wxMetal[radarIndex]!.setZoom()
         }
         uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj.addTV()
-        //print(location.x)
-        //print(location.y)
-        //print(String(wxMetal[0]!.zoom) + " " + String(wxMetal[1]!.zoom))
     }
 
     static func doubleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
@@ -142,14 +135,13 @@ final class WXMetalSurfaceView {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        //if let radarIndex = gestureRecognizer.view?.tag {
-            longPressCountLocal += 1
-            if longPressCountLocal % 2 != 0 {fn(location.x, location.y, radarIndex)}
-        //}
+        longPressCountLocal += 1
+        if longPressCountLocal % 2 != 0 {
+            fn(location.x, location.y, radarIndex)
+        }
         return longPressCountLocal
     }
 
-    // fixme
     static func gestureZoom(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPinchGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)

@@ -53,7 +53,7 @@ final class Location {
     }
 
     class func addToListOfNames(_ name: String) {listOf.append(name)}
-    
+
     class func checkCurrentLocationValidity() {
         if getCurrentLocation() >= MyApplication.locations.count {
             setCurrentLocation(MyApplication.locations.count-1)

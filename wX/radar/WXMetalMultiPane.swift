@@ -106,19 +106,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
 
-        //toolbar.items = ObjectToolbarItems([doneButton, timeButton, flexBarButton, animateButton, productButton, radarSiteButton]).items
         device = MTLCreateSystemDefaultDevice()
 
         let screenSize: CGSize = UIScreen.main.bounds.size
-        // FIXME for dual/quad pane these numbers will need to be adjusted
-        // for example, screenHeight needs to be divided by 2 for dual pane
         let screenWidth = Float(screenSize.width)
         let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
-        //if numberOfPanes == 2 {
-        //    screenHeight /= 2
-        //}
-        //print(screenWidth)
-        //print(screenHeight)
+        
         var surfaceRatio = Float(screenWidth)/Float(screenHeight)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth)/Float(screenHeight/2.0)
@@ -141,7 +134,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
-            //metalLayer[index]!.frame = view.layer.frame
         }
         if numberOfPanes == 1 {
             metalLayer[0]!.frame = view.layer.frame
@@ -159,8 +151,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[3]!.frame = CGRect(x: CGFloat(halfWidth), y: CGFloat(halfHeight), width: CGFloat(halfWidth), height: CGFloat(halfHeight))
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
-
-    
         pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
         // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
@@ -171,14 +161,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             let x = wxMetal[0]!.xPos
             let y = wxMetal[0]!.yPos
             let zoom = wxMetal[0]!.zoom
-            
             wxMetal.forEach {
                 $0!.xPos = x
                 $0!.yPos = y
                 $0!.zoom = zoom
             }
         }
-
         let defaultLibrary = device.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary.makeFunction(name: "basic_fragment")
         let vertexProgram = defaultLibrary.makeFunction(name: "basic_vertex")
@@ -205,7 +193,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             self.view.addSubview(toolbarTop)
         }
         screenScale = Double(UIScreen.main.scale)
-        // FIXME
         textObj = WXMetalTextObject(self, numberOfPanes,
                                  Double(view.frame.width),
                                  Double(view.frame.height),
@@ -225,7 +212,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
     }
 
-    // FIXME
     func modelMatrix(_ index: Int) -> Matrix4 {
         let matrix = Matrix4()
         matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
@@ -303,7 +289,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, textObj, longPressCount, longPressAction, gestureRecognizer)
     }
 
-    // FIXME
     @objc func doneClicked() {
         if RadarPreferences.wxoglRadarAutorefresh {
             oneMinRadarFetch.invalidate()
@@ -312,10 +297,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         locationManager.stopUpdatingLocation()
         locationManager.stopMonitoringSignificantLocationChanges()
         stopAnimate()
-        //wxMetal[0]!.writePrefs(numberOfPanes)
         wxMetal.forEach { $0!.writePrefs() }
         wxMetal.forEach { $0!.cleanup() }
-        //wxMetal[0]!.cleanup()
         device = nil
         wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
         commandQueue = nil
@@ -341,8 +324,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.wxMetal[index]!.product = product
         self.wxMetal[index]!.getRadar("")
         productButton[index].title = product
-        //self.wxMetal.forEach { $0!.radarProduct = product }
-        //self.wxMetal.forEach { $0!.getRadar("") }
         updateColorLegend()
         getPolygonWarnings()
     }
@@ -392,7 +373,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func mapCall(annotationView: MKAnnotationView) {self.ridChanged((annotationView.annotation!.title!)!, mapIndex)}
 
-    // FIXME
     func ridChanged(_ rid: String, _ index: Int) {
         stopAnimate()
         UtilityFileManagement.deleteAllFiles()
@@ -493,7 +473,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         if numberOfPanes==4 {if x > self.view.frame.width / 2.0 {xModified -= Double(self.view.frame.width) / 2.0}}
-        var density = Double(ortInt * 2) / width
+        let density = Double(ortInt * 2) / width
         //let density = 400/width
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
@@ -652,5 +632,4 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
 // N0U anim not working ( seems worse on slower devices )
 // minor mem leak
-// multipane
 // after enabling GPS need to go in , out and back into radar
