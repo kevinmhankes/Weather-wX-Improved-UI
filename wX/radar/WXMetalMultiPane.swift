@@ -398,13 +398,22 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityFileManagement.deleteAllFiles()
         radarSiteButton.title = rid
         getPolygonWarnings()
-        wxMetal.forEach {
-            $0!.rid = rid
-            $0!.loadGeometry()
-            $0!.xPos = 0.0
-            $0!.yPos = 0.0
-            $0!.zoom = 1.0
-            $0!.getRadar("")
+        if RadarPreferences.dualpaneshareposn {
+            wxMetal.forEach {
+                $0!.rid = rid
+                $0!.loadGeometry()
+                $0!.xPos = 0.0
+                $0!.yPos = 0.0
+                $0!.zoom = 1.0
+                $0!.getRadar("")
+            }
+        } else {
+            wxMetal[index]!.rid = rid
+            wxMetal[index]!.loadGeometry()
+            wxMetal[index]!.xPos = 0.0
+            wxMetal[index]!.yPos = 0.0
+            wxMetal[index]!.zoom = 1.0
+            wxMetal[index]!.getRadar("")
         }
         self.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
         textObj = WXMetalTextObject(self, numberOfPanes,
@@ -501,16 +510,16 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         let glv = wxMetal[0]!
         // FIXME
-        let diffX = density * (xMiddle - xModified) / Double(wxMetal[0]!.zoom)
-        let diffY = density * (yMiddle - yModified) / Double(wxMetal[0]!.zoom)
+        let diffX = density * (xMiddle - xModified) / Double(wxMetal[index]!.zoom)
+        let diffY = density * (yMiddle - yModified) / Double(wxMetal[index]!.zoom)
         //let diffX = density * (xMiddle - xModified)
         //let diffY = density * (yMiddle - yModified)
-        let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[0]!.rid + "_X", "0.00"),
-                                   preferences.getString("RID_" + wxMetal[0]!.rid + "_Y", "0.00"))
-        let ppd = wxMetal[0]!.pn.oneDegreeScaleFactor
-        let newX = radarLocation.lon + (Double(wxMetal[0]!.xPos) / Double(wxMetal[0]!.zoom) + diffX) / ppd
+        let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[index]!.rid + "_X", "0.00"),
+                                   preferences.getString("RID_" + wxMetal[index]!.rid + "_Y", "0.00"))
+        let ppd = wxMetal[index]!.pn.oneDegreeScaleFactor
+        let newX = radarLocation.lon + (Double(wxMetal[index]!.xPos) / Double(wxMetal[index]!.zoom) + diffX) / ppd
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
-        var newY = test2 + (Double(-wxMetal[0]!.yPos) / Double(wxMetal[0]!.zoom) + diffY) / ppd
+        var newY = test2 + (Double(-wxMetal[index]!.yPos) / Double(wxMetal[index]!.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         print(newX)
         print(newY)
@@ -519,12 +528,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: glv.rid)
         let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
-        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline + String(dist.roundTo(places: 2)) + " miles from location" + ", " + String(distRid.roundTo(places: 2)) + " miles from " + wxMetal[0]!.rid
-        if wxMetal[0]!.gpsLocation.latString != "0.0" && wxMetal[0]!.gpsLocation.lonString != "0.0" {
+        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline + String(dist.roundTo(places: 2)) + " miles from location" + ", " + String(distRid.roundTo(places: 2)) + " miles from " + wxMetal[index]!.rid
+        if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: "
-                + wxMetal[0]!.gpsLocation.latString.truncate(10)
+                + wxMetal[index]!.gpsLocation.latString.truncate(10)
                 + ", -"
-                + wxMetal[0]!.gpsLocation.lonString.truncate(10)
+                + wxMetal[index]!.gpsLocation.lonString.truncate(10)
         }
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)

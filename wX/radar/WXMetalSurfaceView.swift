@@ -141,10 +141,11 @@ final class WXMetalSurfaceView {
     static func gestureLongPress(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ longPressCount: Int, _ fn: (CGFloat, CGFloat, Int) -> Void, _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
-        if let radarIndex = gestureRecognizer.view?.tag {
+        let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
+        //if let radarIndex = gestureRecognizer.view?.tag {
             longPressCountLocal += 1
             if longPressCountLocal % 2 != 0 {fn(location.x, location.y, radarIndex)}
-        }
+        //}
         return longPressCountLocal
     }
 
