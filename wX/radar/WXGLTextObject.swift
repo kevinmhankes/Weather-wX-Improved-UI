@@ -74,7 +74,6 @@ final class WXGLTextObject {
         tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, OGLR.pn)
         let xPos = tmpCoords.0 * OGLR.zoom - xFudge + Double(OGLR.x)
         let yPos = tmpCoords.1 * OGLR.zoom - yFudge - Double(OGLR.y)
-        // FIXME prevent from obscuring bottom toolbar:  && abs(y * scale * 2) > (glviewHeight - Double(MyApplication.toolbarHeight))
         if abs(xPos) * scale * 2 < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
             tvList.append(TextView(context))
             let ii = tvList.count - 1

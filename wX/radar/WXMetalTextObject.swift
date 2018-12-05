@@ -76,7 +76,6 @@ final class WXMetalTextObject {
         tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, OGLR.pn)
         let xPos = tmpCoords.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
         let yPos = tmpCoords.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
-        // FIXME prevent from obscuring bottom toolbar:  && abs(y * scale * 2) > (glviewHeight - Double(MyApplication.toolbarHeight))
         if abs(xPos) * scale * 2 < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
             tvList.append(TextViewMetal(context))
             let ii = tvList.count - 1
