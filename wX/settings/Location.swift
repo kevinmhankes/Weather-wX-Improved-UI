@@ -119,7 +119,12 @@ final class Location {
 
     static var getLocationIndex: Int {return Location.getCurrentLocation()}
 
-    class func isUS(_ locationNumber: Int) -> Bool {return MyApplication.locations[locationNumber].isLocationUS}
+    class func isUS(_ locationNumber: Int) -> Bool {
+        if locationNumber == -1 {
+            return true
+        }
+        return MyApplication.locations[locationNumber].isLocationUS
+    }
 
     static var isUS: Bool {return MyApplication.locations[Location.getLocationIndex].isLocationUS}
 
