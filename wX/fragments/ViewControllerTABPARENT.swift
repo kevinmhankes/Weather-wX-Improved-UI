@@ -21,7 +21,6 @@ class ViewControllerTABPARENT: UIViewController {
         rightSwipe.direction = .right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
-        // FIXME return UIColor for app colors
         self.tabBarController?.tabBar.barTintColor = UIColor(red: AppColors.primaryColorRed,
                                                              green: AppColors.primaryColorGreen,
                                                              blue: AppColors.primaryColorBlue,

@@ -563,7 +563,6 @@ class WXMetalRender {
                 }
             }
         }
-        // FIXME not yet working
         swoBuffers.count = Int(Double(swoBuffers.metalBuffer.count) * 0.4)
         swoBuffers.generateMtlBuffer(device)
     }

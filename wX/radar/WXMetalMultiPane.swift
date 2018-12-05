@@ -151,7 +151,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
         pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
-        // FIXME
         radarSiteButton.title = wxMetal[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
             siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}

@@ -195,7 +195,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         ActVars.vc = self
         Location.checkCurrentLocationValidity()
         if Location.latlon != oldLocation {
-            // FIXME this sometimes gets called on start, need to save oldLocation in pref
             self.getContentMaster()
         }
     }

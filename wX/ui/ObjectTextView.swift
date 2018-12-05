@@ -87,7 +87,6 @@ final class ObjectTextView {
     }
 
     var textSize: Double {
-        // FIXME not used but return a good value
         get {return 0}
         set {tv.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize * CGFloat(newValue))}
     }
