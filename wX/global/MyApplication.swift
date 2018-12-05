@@ -14,7 +14,7 @@ class MyApplication {
     static let nwsGraphicalWebsitePrefix: String = "http://graphical.weather.gov"
     static let nwsCPCNcepWebsitePrefix: String = "http://www.cpc.ncep.noaa.gov"
     static let nwsGoesWebsitePrefix: String = "https://www.goes.noaa.gov"
-    static let nwsOpcWebsitePrefix: String = "https://www.opc.ncep.noaa.gov"
+    static let nwsOpcWebsitePrefix: String = "http://www.opc.ncep.noaa.gov"
     static let nwsNhcWebsitePrefix: String = "https://www.nhc.noaa.gov"
     static let nwsRadarWebsitePrefix: String = "http://radar.weather.gov"
     static let nwsMagNcepWebsitePrefix: String = "http://mag.ncep.noaa.gov"
