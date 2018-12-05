@@ -41,9 +41,9 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Layer Selection", productButton)
-        (["Clear All"] + UtilitySPCCompmap.LABELS).enumerated().forEach { index, rid in
+        (["Clear All"] + UtilitySPCCompmap.labels).enumerated().forEach { index, rid in
             var pre = ""
-            if index > 0 && layers.contains(UtilitySPCCompmap.urlIndices[UtilitySPCCompmap.LABELS.index(of: rid)!]) {
+            if index > 0 && layers.contains(UtilitySPCCompmap.urlIndices[UtilitySPCCompmap.labels.index(of: rid)!]) {
                 pre = "(on) "
             }
             alert.addAction(UIAlertAction(title: pre + rid, style: .default, handler: {_ in

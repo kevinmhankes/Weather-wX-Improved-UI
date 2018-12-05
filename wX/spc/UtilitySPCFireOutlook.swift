@@ -6,13 +6,13 @@
 
 final class UtilitySPCFireOutlook {
 
-    static let PRODUCTS = [
+    static let products = [
         "fwddy1",
         "fwddy2",
         "fwddy38"
         ]
 
-    static let URLS = [
+    static let urls = [
         MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/day1otlk_fire.gif",
         MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/day2otlk_fire.gif",
         MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/imgs/day38otlk_fire.gif"

@@ -13,7 +13,7 @@ final class UtilitySPCCompmap {
         return UtilityImg.layerDrawableToBitmap(layers)
     }
 
-    static let LABELS = [
+    static let labels = [
         "IR satellite",
         "MAPS sea-level pressure (mb)",
         "2-meter temperature  (F)",

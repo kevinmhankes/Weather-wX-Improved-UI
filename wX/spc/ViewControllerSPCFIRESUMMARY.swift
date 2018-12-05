@@ -20,7 +20,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySPCFireOutlook.URLS.map {Bitmap($0)}
+            self.bitmaps = UtilitySPCFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
                 self.bitmaps.enumerated().forEach {
                     let imgObject = ObjectImage(self.stackView, $1)
@@ -33,7 +33,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.WPCTXTProd = UtilitySPCFireOutlook.PRODUCTS[sender.data]
+        ActVars.WPCTXTProd = UtilitySPCFireOutlook.products[sender.data]
         self.goToVC("WPCText")
     }
 

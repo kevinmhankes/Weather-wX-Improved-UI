@@ -5,11 +5,15 @@
  *****************************************************************************/
 
 import UIKit
+import CoreLocation
 
-class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+
+    var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager.delegate = self
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
@@ -53,8 +57,25 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
         var truthString = "false"
-        if isOnQ {truthString = "true"}
+        if isOnQ {
+            truthString = "true"
+        }
         editor.putString(prefLabels[sender.tag], truthString)
+        if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error while updating location " + error.localizedDescription)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //let locValue: CLLocationCoordinate2D = manager.location!.coordinate
+        //self.latTextView.text = String(locValue.latitude)
+        //self.lonTextView.text = String(locValue.longitude)
+        //if self.latTextView.text != "" && self.lonTextView.text != "" {self.saveClicked()}
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
