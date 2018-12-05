@@ -166,13 +166,4 @@ final class UtilityTime {
         let sunset = solar?.sunset
         return (sunrise!, sunset!)
     }
-
-    static func isNight() -> Bool {
-        // FIXME based on LAT/LON SUNRISE/SUNSET OF OBS
-        let hour = getCurrentHour()
-        if hour < 7 || hour > 19 {
-            return true
-        }
-        return false
-    }
 }

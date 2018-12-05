@@ -591,8 +591,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locValue = manager.location?.coordinate { // type CLLocationCoordinate2D
             if wxMetal[0] != nil {
-                wxMetal[0]!.gpsLocation = LatLon(Double(locValue.latitude), Double(locValue.longitude) * -1.0)
-                wxMetal[0]!.constructLocationDot()
+                wxMetal.forEach {
+                    $0!.gpsLocation = LatLon(Double(locValue.latitude), Double(locValue.longitude) * -1.0)
+                    $0!.constructLocationDot()
+                }
             }
         }
     }
@@ -633,3 +635,4 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
 // N0U anim not working ( seems worse on slower devices )
 // minor mem leak
+// GPS location not showing up in bottom pane
