@@ -63,6 +63,13 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         editor.putString(prefLabels[sender.tag], truthString)
         if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
             locationManager.requestWhenInUseAuthorization()
+            switch CLLocationManager.authorizationStatus() {
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("already authorized")
+            case .notDetermined, .restricted, .denied:
+                print("show help")
+                UtilitySettings.getHelp(self, doneButton, "After the dialog for GPS permission has been shown once, all future updates to GPS permissions must be done via settings in iOS.")
+            }
             locationManager.requestLocation()
         }
     }

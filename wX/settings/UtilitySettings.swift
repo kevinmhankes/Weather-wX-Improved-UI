@@ -15,6 +15,14 @@ final class UtilitySettings {
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
+    
+    static func getHelp(_ uiv: UIViewController,
+                        _ targetButton: UIBarButtonItem,
+                        _ help: String) {
+        let alert = ObjectPopUp(uiv, help, targetButton)
+        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
+        alert.finish()
+    }
 
     static func switchChanged(sender: ObjectSettingsSwitch) {
         let prefLabels = [String](sender.prefMap.keys).sorted(by: <)

@@ -632,4 +632,3 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
 // N0U anim not working ( seems worse on slower devices )
 // minor mem leak
-// after enabling GPS need to go in , out and back into radar
