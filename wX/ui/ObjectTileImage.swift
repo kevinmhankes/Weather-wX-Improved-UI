@@ -24,5 +24,7 @@ final class ObjectTileImage {
         sV.addArrangedSubview(imgL)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {imgL.addGestureRecognizer(gesture)}
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        imgL.addGestureRecognizer(gesture)
+    }
 }

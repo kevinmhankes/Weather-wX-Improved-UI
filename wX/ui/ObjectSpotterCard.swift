@@ -23,5 +23,7 @@ final class ObjectSpotterCard {
         stackView.addArrangedSubview(sV)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {sV.addGestureRecognizer(gesture)}
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        sV.addGestureRecognizer(gesture)
+    }
 }

@@ -39,5 +39,7 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
         self.goToVC("imageviewer")
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, bitmaps)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps)
+    }
 }

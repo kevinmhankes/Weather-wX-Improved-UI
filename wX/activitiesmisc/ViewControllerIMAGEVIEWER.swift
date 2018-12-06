@@ -21,7 +21,9 @@ class ViewControllerIMAGEVIEWER: UIwXViewController {
     func getContent(_ url: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(url)
-            DispatchQueue.main.async {self.image = ObjectTouchImageView(self, self.toolbar, bitmap)}
+            DispatchQueue.main.async {
+                self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
+            }
         }
     }
 

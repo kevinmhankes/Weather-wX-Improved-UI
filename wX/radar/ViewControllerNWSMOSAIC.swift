@@ -47,7 +47,9 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         }
     }
 
-    @objc func willEnterForeground() {self.getContent()}
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
@@ -62,7 +64,9 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)

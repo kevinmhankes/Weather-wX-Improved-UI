@@ -59,7 +59,6 @@ final class CAPAlert {
         area = eventTxt.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")
         area = area.replace("&apos;", "'")
         effective = eventTxt.parse("<cap:effective>(.*?)</cap:effective>")
-        //effective = eventTxt.parse("<cap:onset>(.*?)</cap:onset>")
         expires = eventTxt.parse("<cap:expires>(.*?)</cap:expires>")
         event = eventTxt.parse("<cap:event>(.*?)</cap:event>")
         vtec = eventTxt.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")

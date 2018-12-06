@@ -117,11 +117,15 @@ final class ObjectCAWARN: NSObject {
         _ = ObjectCALegal(stackView)
     }
 
-    func getWarningUrl(_ index: Int) -> String {return "http://weather.gc.ca" + listLocUrl[index]}
+    func getWarningUrl(_ index: Int) -> String {
+        return "http://weather.gc.ca" + listLocUrl[index]
+    }
 
     @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {}
 
     var count: String {return String(listLocUrl.count)}
 
-    func setProv(_ prov: String) {provCode = provToCodeMap[prov] ?? ""}
+    func setProv(_ prov: String) {
+        provCode = provToCodeMap[prov] ?? ""
+    }
 }

@@ -66,7 +66,9 @@ class ViewControllerSPCMESO: UIwXViewController {
         }
     }
 
-    @objc func willEnterForeground() {self.getContent()}
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
 
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Sector Selection", sectorButton)

@@ -9,6 +9,7 @@ import AVFoundation
 
 class ViewControllerSUNMOONDATA: UIwXViewController {
 
+    // FIXME are these needed? thought had global
     var textView = ObjectTextView()
     var playButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
@@ -31,5 +32,7 @@ class ViewControllerSUNMOONDATA: UIwXViewController {
         }
     }
 
-    @objc func playClicked() {UtilityActions.playClicked(textView.view, synth, playButton)}
+    @objc func playClicked() {
+        UtilityActions.playClicked(textView.view, synth, playButton)
+    }
 }

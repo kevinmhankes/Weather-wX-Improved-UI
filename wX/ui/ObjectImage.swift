@@ -54,5 +54,7 @@ final class ObjectImage {
         UtilityUI.setImageAnchors(img, bitmap, width)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {img.addGestureRecognizer(gesture)}
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        img.addGestureRecognizer(gesture)
+    }
 }

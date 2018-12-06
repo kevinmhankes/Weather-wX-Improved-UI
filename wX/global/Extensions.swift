@@ -75,21 +75,37 @@ extension String {
         return str1 + string + str2
     }
 
-    func contains(_ str: String) -> Bool {return self.range(of: str) != nil}
+    func contains(_ str: String) -> Bool {
+        return self.range(of: str) != nil
+    }
 
-    func replaceAll(_ a: String, _ b: String) -> String {return UtilityString.replaceAllS(self, a, b)}
+    func replaceAll(_ a: String, _ b: String) -> String {
+        return UtilityString.replaceAllS(self, a, b)
+    }
 
-    func replaceAllRegexp(_ a: String, _ b: String) -> String {return UtilityString.replaceAllRegexp(self, a, b)}
+    func replaceAllRegexp(_ a: String, _ b: String) -> String {
+        return UtilityString.replaceAllRegexp(self, a, b)
+    }
 
-    func matches(regexp: String) -> Bool {return (self.range(of: regexp, options: .regularExpression) != nil)}
+    func matches(regexp: String) -> Bool {
+        return (self.range(of: regexp, options: .regularExpression) != nil)
+    }
 
-    func replace(_ a: String, _ b: String) -> String {return self.replaceAll(a, b)}
+    func replace(_ a: String, _ b: String) -> String {
+        return self.replaceAll(a, b)
+    }
 
-    func split(_ delim: String) -> [String] {return UtilityString.splitS(self, delim)}
+    func split(_ delim: String) -> [String] {
+        return UtilityString.splitS(self, delim)
+    }
 
-    func substring(_ start: Int) -> String {return UtilityString.substringS(self, start)}
+    func substring(_ start: Int) -> String {
+        return UtilityString.substringS(self, start)
+    }
 
-    func substring(_ start: Int, _ end: Int) -> String {return UtilityString.substringS(self, start, end)}
+    func substring(_ start: Int, _ end: Int) -> String {
+        return UtilityString.substringS(self, start, end)
+    }
 
     func delete(_ str: String) -> String {
         let stringToArray = self.components(separatedBy: str)

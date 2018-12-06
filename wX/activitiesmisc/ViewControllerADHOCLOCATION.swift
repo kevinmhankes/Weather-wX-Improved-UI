@@ -29,7 +29,6 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            //self.objFcst = Utility.getCurrentConditionsUSbyLatLon(self.location)
             self.objFcst = Utility.getCurrentConditionsUSbyLatLon(self.location)
             self.objSevenDay = Utility.getCurrentSevenDay(self.location)
             self.objHazards = Utility.getCurrentHazards(self.location)

@@ -65,11 +65,19 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         self.goToVC("imageviewer")
     }
 
-    @objc func playClicked() {UtilityActions.playClicked(textView.view, synth, playButton)}
+    @objc func playClicked() {
+        UtilityActions.playClicked(textView.view, synth, playButton)
+    }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, bitmaps)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps)
+    }
 
-    @objc func playlistClicked() {UtilityPlayList.add(self.product, self.html, self, playlistButton)}
+    @objc func playlistClicked() {
+        UtilityPlayList.add(self.product, self.html, self, playlistButton)
+    }
 
-    @objc func stateClicked() {self.goToVC("spcswostate")}
+    @objc func stateClicked() {
+        self.goToVC("spcswostate")
+    }
 }

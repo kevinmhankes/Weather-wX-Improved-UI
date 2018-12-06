@@ -48,7 +48,9 @@ class ViewControllerOPC: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         index = UtilityUI.sideSwipe(sender, index, UtilityOPCImages.urls)

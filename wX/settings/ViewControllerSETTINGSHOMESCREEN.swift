@@ -49,7 +49,9 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         super.doneClicked()
     }
 
-    func serializeSettings() {editor.putString("HOMESCREEN_FAV", TextUtils.join(":", homescreenFav))}
+    func serializeSettings() {
+        editor.putString("HOMESCREEN_FAV", TextUtils.join(":", homescreenFav))
+    }
 
     func deSerializeSettings() {
         homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",

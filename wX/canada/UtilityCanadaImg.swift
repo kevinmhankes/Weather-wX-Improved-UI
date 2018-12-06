@@ -6,21 +6,21 @@
 
 final class UtilityCanadaImg {
 
-    static let NAMES = [
+    static let names = [
         "Vis West",
         "Vis East",
         "IR West",
         "IR East"
         ]
 
-    static let URLS = [
+    static let urls = [
         "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_ecan_visible_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_wcan_1070_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_ecan_1070_100.jpg"
         ]
 
-    static let MOSAICRIDS = [
+    static let mosaicRids = [
         "CAN",
         "PAC",
         "WRN",
@@ -29,7 +29,7 @@ final class UtilityCanadaImg {
         "ERN"
         ]
 
-    static let CARIDARR = [
+    static let caRids = [
         "WUJ: Aldergrove, BC (near Vancouver)",
         "XPG: Prince George, BC",
         "XSS: Silver Star Mountain, BC (near Vernon)",

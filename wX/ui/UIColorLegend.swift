@@ -12,7 +12,9 @@ final class UIColorLegend: UIView {
     private var frameSize = CGRect()
     private var context = UIGraphicsGetCurrentContext()
 
-    required init(coder aDecoder: NSCoder) {super.init(coder: aDecoder)!}
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
 
     required init(_ product: String, _ size: CGRect) {
         self.product = product
@@ -22,7 +24,9 @@ final class UIColorLegend: UIView {
         isOpaque = false
     }
 
-    required init() {super.init(frame: CGRect())}
+    required init() {
+        super.init(frame: CGRect())
+    }
 
     func drawRect(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
         context!.addRect(CGRect(x: x, y: y, width: width, height: height))
@@ -51,7 +55,9 @@ final class UIColorLegend: UIView {
         }
     }
 
-    func setColor(_ red: UInt8, _ green: UInt8, _ blue: UInt8) {_ =  wXColor.uiColorInt(red, green, blue).set()}
+    func setColor(_ red: UInt8, _ green: UInt8, _ blue: UInt8) {
+        _ =  wXColor.uiColorInt(red, green, blue).set()
+    }
 
     func setColorWithBuffers(prodId: Int, index: Int) {
         setColor(MyApplication.colorMap[prodId]!.redValues.get(index),

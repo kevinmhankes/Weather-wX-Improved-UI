@@ -83,9 +83,15 @@ class ViewControllerWPCTEXT: UIwXViewController {
         self.getContent()
     }
 
-    @objc func playClicked() {UtilityActions.playClicked(textView.view, synth, playButton)}
+    @objc func playClicked() {
+        UtilityActions.playClicked(textView.view, synth, playButton)
+    }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.share(self, sender, html)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.share(self, sender, html)
+    }
 
-    @objc func playlistClicked() {UtilityPlayList.add(self.product, self.html, self, playListButton)}
+    @objc func playlistClicked() {
+        UtilityPlayList.add(self.product, self.html, self, playListButton)
+    }
 }

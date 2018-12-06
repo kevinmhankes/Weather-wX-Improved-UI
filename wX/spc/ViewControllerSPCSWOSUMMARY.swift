@@ -45,5 +45,7 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
         }
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, bitmaps)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps)
+    }
 }

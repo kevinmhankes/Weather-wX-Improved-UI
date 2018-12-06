@@ -64,7 +64,9 @@ final class ObjectTextView {
         stackView.insertArrangedSubview(self.tv, at: viewOrder)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {self.tv.addGestureRecognizer(gesture)}
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        self.tv.addGestureRecognizer(gesture)
+    }
 
     var color: UIColor {
         get {return tv.textColor!}
@@ -96,7 +98,9 @@ final class ObjectTextView {
         set {tv.tag = newValue}
     }
 
-    func setZeroSpacing() {tv.textContainerInset = UIEdgeInsets.zero}
+    func setZeroSpacing() {
+        tv.textContainerInset = UIEdgeInsets.zero
+    }
 
     // default is 8 0 8 0
     func setSpacing(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {

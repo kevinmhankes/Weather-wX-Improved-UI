@@ -40,6 +40,7 @@ class ViewControllerWPCIMG: UIwXViewController {
             }
         }
     }
+
     @objc func showProdMenu() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         subMenu.objTitles.enumerated().forEach { index, title in
@@ -66,7 +67,9 @@ class ViewControllerWPCIMG: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         index = UtilityUI.sideSwipe(sender, index, UtilityWPCImages.urls)

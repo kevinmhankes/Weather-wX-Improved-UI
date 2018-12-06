@@ -9,6 +9,7 @@ import AVFoundation
 
 class ViewControllerTEXTVIEWER: UIwXViewController {
 
+    // FIXME
     var textView = ObjectTextView()
     var playButton = ObjectToolbarIcon()
     var playlistButton = ObjectToolbarIcon()

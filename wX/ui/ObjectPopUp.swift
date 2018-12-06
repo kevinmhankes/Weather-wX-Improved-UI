@@ -18,7 +18,9 @@ final class ObjectPopUp {
         self.uiv = uiv
     }
 
-    func addAction(_ action: UIAlertAction) {alert.addAction(action)}
+    func addAction(_ action: UIAlertAction) {
+        alert.addAction(action)
+    }
 
     func finish() {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))

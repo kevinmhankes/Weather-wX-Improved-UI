@@ -33,9 +33,13 @@ class ViewControllerCAWARN: UIwXViewController {
         }
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, self.objCAWARN.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, self.objCAWARN.bitmap)
+    }
 
-    func gotoWarning(sender: UITapGestureRecognizerWithData) {getWarningDetail(objCAWARN.getWarningUrl(sender.data))}
+    func gotoWarning(sender: UITapGestureRecognizerWithData) {
+        getWarningDetail(objCAWARN.getWarningUrl(sender.data))
+    }
 
     @objc func provClicked() {
         let alert = ObjectPopUp(self, "Providence Selection", provButton)

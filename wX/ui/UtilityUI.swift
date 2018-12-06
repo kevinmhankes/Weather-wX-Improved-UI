@@ -19,7 +19,9 @@ public class UtilityUI {
         return (Float(width), Float(height))
     }
 
-    class func statusBarHeight() -> CGFloat {return UIApplication.shared.statusBarFrame.size.height}
+    class func statusBarHeight() -> CGFloat {
+        return UIApplication.shared.statusBarFrame.size.height
+    }
 
     class func setupStackView (_ sV: UIStackView) {
         sV.axis = .vertical

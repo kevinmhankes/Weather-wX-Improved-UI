@@ -54,7 +54,9 @@ class ViewControllerLIGHTNING: UIwXViewController {
         }
     }
 
-    @objc func willEnterForeground() {self.getContent()}
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
 
     @objc func prodClicked() {
         let alert = ObjectPopUp(self, "Region Selection", productButton)
@@ -85,5 +87,7 @@ class ViewControllerLIGHTNING: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 }

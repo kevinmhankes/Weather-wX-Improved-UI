@@ -62,7 +62,11 @@ final class ObjectTouchImageView {
         self.img.zoomView?.startAnimating()
     }
 
-    func setMaxScaleFromMinScale(_ value: CGFloat) {img.maxScaleFromMinScale = value}
+    func setMaxScaleFromMinScale(_ value: CGFloat) {
+        img.maxScaleFromMinScale = value
+    }
 
-    func setKZoomInFactorFromMinWhenDoubleTap(_ value: CGFloat) {img.kZoomInFactorFromMinWhenDoubleTap = value}
+    func setKZoomInFactorFromMinWhenDoubleTap(_ value: CGFloat) {
+        img.kZoomInFactorFromMinWhenDoubleTap = value
+    }
 }

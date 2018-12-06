@@ -29,7 +29,9 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     var button = UIButton()
 
-    override init() {super.init()}
+    override init() {
+        super.init()
+    }
 
     convenience init(_ uiv: UIViewController, _ iconStr: String, _ action: Selector) {
         self.init()
@@ -67,5 +69,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 
-    func setImage(_ image: UIImage, for: UIControlState) {button.setImage(image, for: .normal)}
+    func setImage(_ image: UIImage, for: UIControlState) {
+        button.setImage(image, for: .normal)
+    }
 }

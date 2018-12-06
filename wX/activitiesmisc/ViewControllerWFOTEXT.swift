@@ -69,7 +69,9 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     let synth = AVSpeechSynthesizer()
 
-    @objc func playClicked() {UtilityActions.playClicked(textView.view, synth, playButton)}
+    @objc func playClicked() {
+        UtilityActions.playClicked(textView.view, synth, playButton)
+    }
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)

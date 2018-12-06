@@ -10,7 +10,9 @@ final class SevereWarning {
     private var type = ""
     private var count = 0
 
-    init(_ type: String) {self.type = type}
+    init(_ type: String) {
+        self.type = type
+    }
 
     func generateString(_ textTor: String) {
         var nwsOfficeArr = [String]()

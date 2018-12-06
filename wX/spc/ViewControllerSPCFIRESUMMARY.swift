@@ -37,5 +37,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
         self.goToVC("WPCText")
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, bitmaps)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps)
+    }
 }

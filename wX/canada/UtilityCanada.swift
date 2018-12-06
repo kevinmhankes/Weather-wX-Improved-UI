@@ -378,7 +378,6 @@ final class UtilityCanada {
 
     static func getLatLonFromLabel(_ label: String) -> LatLonStr {
         var latLon = [Double]()
-        //var latLonStr = [String]()
         var index = 0
         if !UtilityCitiesCA.cityInit {UtilityCitiesCA.loadCitiesArray()}
         for city in UtilityCitiesCA.citiesCa {
@@ -389,8 +388,6 @@ final class UtilityCanada {
             }
             index += 1
         }
-        //latLonStr.append(String(latLon[0]))
-        //latLonStr.append(String(latLon[1]))
         return LatLonStr(String(latLon[0]), String(latLon[1]))
     }
 }

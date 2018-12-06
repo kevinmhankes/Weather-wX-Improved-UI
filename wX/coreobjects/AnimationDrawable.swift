@@ -12,7 +12,9 @@ final class AnimationDrawable {
     private var delay = 3.0
     var animationDelay = Double(MyApplication.animInterval)
 
-    init() {delay = animationDelay / 2.0}
+    init() {
+        delay = animationDelay / 2.0
+    }
 
     func addFrame(_ layer: Drawable, _ delay: Int) {
         imageArray.append(layer.img)

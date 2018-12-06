@@ -40,7 +40,9 @@ class ViewControllerGOES16: UIwXViewController {
         self.getContent()
     }
 
-    @objc func willEnterForeground() {self.getContent()}
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
 
     func serializeSettings() {
         if savePrefs {
@@ -107,7 +109,9 @@ class ViewControllerGOES16: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         let index = UtilityUI.sideSwipe(sender, goesProducts.index(of: productCode)!, goesProducts)

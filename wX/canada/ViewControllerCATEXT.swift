@@ -45,7 +45,9 @@ class ViewControllerCATEXT: UIwXViewController {
         }
     }
 
-    @objc func playClicked() {UtilityActions.playClicked(textView.view, synth, playButton)}
+    @objc func playClicked() {
+        UtilityActions.playClicked(textView.view, synth, playButton)
+    }
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)

@@ -78,6 +78,7 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         print("Error while updating location " + error.localizedDescription)
     }
 
+    // FIXME what was this for?
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //let locValue: CLLocationCoordinate2D = manager.location!.coordinate
         //self.latTextView.text = String(locValue.latitude)

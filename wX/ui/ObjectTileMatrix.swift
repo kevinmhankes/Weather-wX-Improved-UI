@@ -188,15 +188,25 @@ final class ObjectImageTileMatrix: NSObject {
         }
     }
 
-    @objc func cloudClicked() {UtilityActions.cloudClicked(uiv!)}
+    @objc func cloudClicked() {
+        UtilityActions.cloudClicked(uiv!)
+    }
 
-    @objc func radarClicked() {UtilityActions.radarClicked(uiv!)}
+    @objc func radarClicked() {
+        UtilityActions.radarClicked(uiv!)
+    }
 
-    @objc func wfotextClicked() {UtilityActions.wfotextClicked(uiv!)}
+    @objc func wfotextClicked() {
+        UtilityActions.wfotextClicked(uiv!)
+    }
 
-    @objc func menuClicked() {UtilityActions.menuClicked(uiv!, menuButton)}
+    @objc func menuClicked() {
+        UtilityActions.menuClicked(uiv!, menuButton)
+    }
 
-    @objc func dashClicked() {UtilityActions.dashClicked(uiv!)}
+    @objc func dashClicked() {
+        UtilityActions.dashClicked(uiv!)
+    }
 
     var iconsSpc = [
         "spcsref",

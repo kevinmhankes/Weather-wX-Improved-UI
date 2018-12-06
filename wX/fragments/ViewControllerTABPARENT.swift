@@ -43,15 +43,27 @@ class ViewControllerTABPARENT: UIViewController {
         }
     }
 
-    @objc func imgClicked(sender: UITapGestureRecognizer) {objTileMatrix.imgClicked(sender: sender)}
+    @objc func imgClicked(sender: UITapGestureRecognizer) {
+        objTileMatrix.imgClicked(sender: sender)
+    }
 
-    @objc func cloudClicked() {objTileMatrix.cloudClicked()}
+    @objc func cloudClicked() {
+        objTileMatrix.cloudClicked()
+    }
 
-    @objc func radarClicked() {objTileMatrix.radarClicked()}
+    @objc func radarClicked() {
+        objTileMatrix.radarClicked()
+    }
 
-    @objc func wfotextClicked() {objTileMatrix.wfotextClicked()}
+    @objc func wfotextClicked() {
+        objTileMatrix.wfotextClicked()
+    }
 
-    @objc func menuClicked() {objTileMatrix.menuClicked()}
+    @objc func menuClicked() {
+        objTileMatrix.menuClicked()
+    }
 
-    @objc func dashClicked() {objTileMatrix.dashClicked()}
+    @objc func dashClicked() {
+        objTileMatrix.dashClicked()
+    }
 }

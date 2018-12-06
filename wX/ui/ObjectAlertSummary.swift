@@ -72,7 +72,9 @@ final class ObjectAlertSummary: NSObject {
         objTextSummary.text = "Filter: " + filterLabel + "(" + String(index) + ")" + MyApplication.newline + stateCnt
     }
 
-    func getUrl(_ index: Int) -> String {return urlArr[index]}
+    func getUrl(_ index: Int) -> String {
+        return urlArr[index]
+    }
 
     @objc func imageClicked() {}
 

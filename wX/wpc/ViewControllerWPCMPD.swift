@@ -56,5 +56,7 @@ class ViewControllerWPCMPD: UIwXViewController {
         self.goToVC("textviewer")
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, bitmaps, text)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps, text)
+    }
 }
