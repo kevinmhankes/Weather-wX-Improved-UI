@@ -6,7 +6,8 @@
 
 import UIKit
 
-let panSensivity: Float = 300.0
+//let panSensivity: Float = 300.0
+let panSensivity: Float = 500.0
 
 final class WXMetalSurfaceView {
 
@@ -17,8 +18,8 @@ final class WXMetalSurfaceView {
 
     static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
         let zoomDifference = newZoom / oldZoom
-        wxMetal.xPos = wxMetal.xPos * zoomDifference
-        wxMetal.yPos = wxMetal.yPos * zoomDifference
+        wxMetal.xPos *= zoomDifference
+        wxMetal.yPos *= zoomDifference
     }
 
     static func gesturePan(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPanGestureRecognizer) {

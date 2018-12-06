@@ -9,4 +9,4 @@ disabled_rules: # rule identifiers to exclude from running
   - function_parameter_count
   - type_name 
   - force_try
-  - shorthand_operator
+#  - shorthand_operator
