@@ -49,7 +49,7 @@ class ViewControllerCATEXT: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityCanada.PRODUCTS.forEach {
+        UtilityCanada.products.forEach {
             var imageTypeCode = $0.split(":")
             alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in self.productChanged(imageTypeCode[0])}))
         }
