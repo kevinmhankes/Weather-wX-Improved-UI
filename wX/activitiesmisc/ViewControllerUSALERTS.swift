@@ -70,7 +70,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         self.objAlertSummary.image = bitmap
     }
 
-    func imageClicked() {
+    @objc func imageClicked() {
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
     }
