@@ -35,11 +35,17 @@ final class Color {
         return retVal
     }
 
-    class func red(_ color: Int) -> UInt8 {return UInt8((color >> 16) & 0xFF)}
+    class func red(_ color: Int) -> UInt8 {
+        return UInt8((color >> 16) & 0xFF)
+    }
 
-    class func green(_ color: Int) -> UInt8 {return UInt8(((color >> 8) & 0xFF))}
+    class func green(_ color: Int) -> UInt8 {
+        return UInt8(((color >> 8) & 0xFF))
+    }
 
-    class func blue(_ color: Int) -> UInt8 {return UInt8(color & 0xFF)}
+    class func blue(_ color: Int) -> UInt8 {
+        return UInt8(color & 0xFF)
+    }
 
     class func intToColors(colorInt: Int) -> [Int] {
         let newRed: Int = (colorInt >> 16) & 0xFF

@@ -46,7 +46,9 @@ final class MemoryBuffer {
 
     var length: Int {return capacity}
 
-    func seek(_ position: Int) {self.posn = position}
+    func seek(_ position: Int) {
+        self.posn = position
+    }
 
     var address: UnsafeMutablePointer<UInt8> {
         let iBuffPtr = UnsafeMutablePointer(mutating: backingArray)
@@ -61,18 +63,26 @@ final class MemoryBuffer {
         capacity = data.count
     }
 
-    func skipBytes(_ count: Int) {posn += count}
+    func skipBytes(_ count: Int) {
+        posn += count
+    }
 
-    func mark() {markPosition = posn}
+    func mark() {
+        markPosition = posn
+    }
 
     func mark(_ index: Int) {
         markPosition = posn
         posn = index
     }
 
-    func reset() {posn = markPosition}
+    func reset() {
+        posn = markPosition
+    }
 
-    func get(_ index: Int) -> UInt8 {return backingArray[index]}
+    func get(_ index: Int) -> UInt8 {
+        return backingArray[index]
+    }
 
     func get() -> UInt8 {
         posn += 1
@@ -84,7 +94,9 @@ final class MemoryBuffer {
         posn += 1
     }
 
-    func put(_ index: Int, _ newValue: UInt8) {backingArray[index] = newValue}
+    func put(_ index: Int, _ newValue: UInt8) {
+        backingArray[index] = newValue
+    }
 
     func putFloat(_ newValue: Float) {
         var f = newValue
@@ -137,7 +149,9 @@ final class MemoryBuffer {
         return CGFloat(f)
     }
 
-    func copy(_ newArray: [UInt8]) {backingArray = newArray}
+    func copy(_ newArray: [UInt8]) {
+        backingArray = newArray
+    }
 
     func appendArray(_ newArray: [UInt8]) {
         backingArray += newArray

@@ -52,7 +52,9 @@ final class Bitmap {
         }
     }
 
-    var data: Data {return dataBm}
+    var data: Data {
+        return dataBm
+    }
 
     class func createBitmap(width: Int, height: Int, type: Int) -> Bitmap {
         let rect = CGSize(width: CGFloat(width), height: CGFloat(height))
@@ -99,9 +101,6 @@ final class Bitmap {
 
     class func resize(image: UIImage, ratio: Float) -> Bitmap {
         let originalSize = image.size
-        //let widthRatio = targetSize.width / originalSize.width
-        //let heightRatio = targetSize.height / originalSize.height
-        //let ratio = min(widthRatio, heightRatio)
         let newSize = CGSize(width: originalSize.width * CGFloat(ratio), height: originalSize.height * CGFloat(ratio))
         // preparing rect for new image size
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
