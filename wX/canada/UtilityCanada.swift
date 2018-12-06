@@ -6,7 +6,7 @@
 
 final class UtilityCanada {
 
-    static let PRODUCTS = [
+    static let products = [
         "focn45: Significant Weather Discussion, PASPC",
         "fxcn01: FXCN01",
         "awcn11: Weather Summary S. Manitoba",
