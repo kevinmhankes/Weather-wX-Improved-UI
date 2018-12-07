@@ -92,7 +92,7 @@ class UtilityUSImgNWSMosaic {
         "HI": "hawaii"
         ]
 
-    static let LABELS = [
+    static let labels = [
         "Alaska",
         "Hawaii",
         "Pacific Southwest",

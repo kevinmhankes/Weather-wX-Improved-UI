@@ -78,15 +78,25 @@ class ObjectMetalBuffers {
         floatBuffer.position = 0
     }
 
-    func putFloat(_ newValue: Float) {metalBuffer.append(newValue)}
+    func putFloat(_ newValue: Float) {
+        metalBuffer.append(newValue)
+    }
 
-    func putFloat(_ newValue: Double) {metalBuffer.append(Float(newValue))}
+    func putFloat(_ newValue: Double) {
+        metalBuffer.append(Float(newValue))
+    }
 
-    func putColor(_ byte: UInt8) {metalBuffer.append(Float(Float(byte)/Float(255.0)))}
+    func putColor(_ byte: UInt8) {
+        metalBuffer.append(Float(Float(byte)/Float(255.0)))
+    }
 
-    func putColorFloat(_ color: Float) {metalBuffer.append(color)}
+    func putColorFloat(_ color: Float) {
+        metalBuffer.append(color)
+    }
 
-    func getColorArray() -> [UInt8] {return [red, green, blue]}
+    func getColorArray() -> [UInt8] {
+        return [red, green, blue]
+    }
 
     func getColorArrayInFloat() -> [Float] {
         return [Float(red)/255.0, Float(green)/255.0, Float(blue)/255.0]

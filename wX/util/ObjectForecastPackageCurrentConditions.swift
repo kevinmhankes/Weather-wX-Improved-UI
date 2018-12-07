@@ -25,7 +25,9 @@ final class ObjectForecastPackageCurrentConditions {
     var condition = ""
     var rawMetar = ""
 
-    convenience init(_ locNum: Int) {self.init(Location.getLatLon(locNum))}
+    convenience init(_ locNum: Int) {
+        self.init(Location.getLatLon(locNum))
+    }
 
     // US via LAT LON
     convenience init(_ location: LatLon) {

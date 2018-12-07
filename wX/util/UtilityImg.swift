@@ -8,7 +8,9 @@ import UIKit
 
 final class UtilityImg {
 
-    static func getAnimInterval() -> Int {return 50 * MyApplication.animInterval}
+    static func getAnimInterval() -> Int {
+        return 50 * MyApplication.animInterval
+    }
 
     static func layerDrawableToBitmap(_ layers: [Drawable]) -> Bitmap {
         var image = UIImage()

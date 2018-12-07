@@ -29,7 +29,9 @@ final class ObjectForecastPackage7Day {
         sevenDayExtStr = get7DayExt(html)
     }
 
-    var fcstList: [String] {return detailedForecastAl}
+    var fcstList: [String] {
+        return detailedForecastAl
+    }
 
     func convertExt7DaytoList() {
         detailedForecastAl =  sevenDayExtStr.split(MyApplication.newline + MyApplication.newline)

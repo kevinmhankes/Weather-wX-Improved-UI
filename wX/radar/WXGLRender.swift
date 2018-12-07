@@ -379,7 +379,9 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         wbCircleBuffers.isInitialized = true
     }
 
-    func deconstructWBCircle() {wbCircleBuffers.isInitialized = false}
+    func deconstructWBCircle() {
+        wbCircleBuffers.isInitialized = false
+    }
 
     func constructSWOLines() {
         colorSwo = []
@@ -422,7 +424,9 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         }
     }
 
-    func deconstructSWOLines() {swoBuffers.isInitialized = false}
+    func deconstructSWOLines() {
+        swoBuffers.isInitialized = false
+    }
 
     func drawElement(_ buffers: ObjectOglBuffers) {
         if buffers.isInitialized {

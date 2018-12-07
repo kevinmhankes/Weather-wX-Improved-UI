@@ -21,7 +21,9 @@ class UtilityNexradColors {
             } else {
                 return ret
             }
-        } else {return (colorA + ((colorB - colorA) * proportion))}
+        } else {
+            return (colorA + ((colorB - colorA) * proportion))
+        }
     }
 
     static func interpolateColor(_ colorA: Int, _ colorB: Int, _ proportion: Double) -> Int {

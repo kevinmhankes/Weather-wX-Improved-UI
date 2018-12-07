@@ -72,9 +72,13 @@ final class UtilityMath {
         return retVal
     }
 
-    static func celsiusDToFarenheit(_ valueD: Double) -> String {return String(Int(round(valueD * 9 / 5 + 32)))}
+    static func celsiusDToFarenheit(_ valueD: Double) -> String {
+        return String(Int(round(valueD * 9 / 5 + 32)))
+    }
 
-    static func farenheitTocelsius(_ valueD: Double) -> String {return String(Int(round((valueD-32) * 5 / 9)))}
+    static func farenheitTocelsius(_ valueD: Double) -> String {
+        return String(Int(round((valueD-32) * 5 / 9)))
+    }
 
     static func celsiusToFarenheitTable() -> String {
         var sb = "C\t\tF" + MyApplication.newline
@@ -82,16 +86,22 @@ final class UtilityMath {
         return sb
     }
 
-    static func degreesToRadians(_ deg: Double) -> Double {return deg * Double.pi / 180}
+    static func degreesToRadians(_ deg: Double) -> Double {
+        return deg * Double.pi / 180
+    }
 
     static func pixPerDegreeLon(_ centerX: Double, _ factor: Double) -> Double {
         let radius = (180 / Double.pi) * (1 / cos(degreesToRadians(30.51))) * factor
         return radius * (Double.pi / 180) * cos(degreesToRadians(centerX))
     }
 
-    static func deg2rad(_ deg: Double) -> Double {return (deg * Double.pi / 180.0)}
+    static func deg2rad(_ deg: Double) -> Double {
+        return (deg * Double.pi / 180.0)
+    }
 
-    static func rad2deg(_ rad: Double) -> Double {return (rad * 180.0 / Double.pi)}
+    static func rad2deg(_ rad: Double) -> Double {
+        return (rad * 180.0 / Double.pi)
+    }
 
     static func convertWindDir(_ direction: Double) -> String {
         var dirStr = ""
@@ -115,11 +125,17 @@ final class UtilityMath {
         return dirStr
     }
 
-    static func roundDToString(_ valueD: Double) -> String {return String(Int(round(valueD)))}
+    static func roundDToString(_ valueD: Double) -> String {
+        return String(Int(round(valueD)))
+    }
 
-    static func metersToMileRounded(_ valueD: Double) -> String {return String(Int(round(valueD / 1609.34)))}
+    static func metersToMileRounded(_ valueD: Double) -> String {
+        return String(Int(round(valueD / 1609.34)))
+    }
 
-    static func pressurePAtoMB(_ valueD: Double) -> String {return String(Int(round(valueD / 100.0)))}
+    static func pressurePAtoMB(_ valueD: Double) -> String {
+        return String(Int(round(valueD / 100.0)))
+    }
 
     static func pressureMBtoIn(_ value: String) -> String {
         var tmpNum = Double(value) ?? 0.0

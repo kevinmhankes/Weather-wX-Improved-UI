@@ -31,7 +31,9 @@ final class WXGLDownload {
         case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA": ridPrefix = "p"
         default: ridPrefix = "k"
         }
-        if tdwr {ridPrefix = ""}
+        if tdwr {
+            ridPrefix = ""
+        }
         return ridPrefix
     }
 
@@ -42,7 +44,9 @@ final class WXGLDownload {
         case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA": ridPrefix = "p"
         default: ridPrefix = "k"
         }
-        if product=="TV0" || product=="TZL" {ridPrefix = ""}
+        if product=="TV0" || product=="TZL" {
+            ridPrefix = ""
+        }
         return ridPrefix
     }
 
@@ -162,7 +166,7 @@ final class WXGLDownload {
         return baseUrl + fileName
     }
 
-    func  getInputStreamFromURLL2(_ url: String) -> Data {
+    func getInputStreamFromURLL2(_ url: String) -> Data {
         let byteEnd = "3000000"
         let myJustDefaults = JustSessionDefaults(headers: ["Range": "bytes=0-" + byteEnd])
         let just = JustOf<HTTP>(defaults: myJustDefaults)

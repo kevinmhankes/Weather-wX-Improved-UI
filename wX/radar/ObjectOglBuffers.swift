@@ -63,15 +63,25 @@ class ObjectOglBuffers {
         colorBuffer.position = 0
     }
 
-    func putFloat(_ newValue: Float) {floatBuffer.putFloat(newValue)}
+    func putFloat(_ newValue: Float) {
+        floatBuffer.putFloat(newValue)
+    }
 
-    func putFloat(_ newValue: Double) {floatBuffer.putFloat(Float(newValue))}
+    func putFloat(_ newValue: Double) {
+        floatBuffer.putFloat(Float(newValue))
+    }
 
-    func putIndex(_ newValue: UInt16) {indexBuffer.putShort(newValue)}
+    func putIndex(_ newValue: UInt16) {
+        indexBuffer.putShort(newValue)
+    }
 
-    func putColor(_ byte: UInt8) {colorBuffer.put(byte)}
+    func putColor(_ byte: UInt8) {
+        colorBuffer.put(byte)
+    }
 
-    func getColorArray() -> [UInt8] {return [red, green, blue]}
+    func getColorArray() -> [UInt8] {
+        return [red, green, blue]
+    }
 
     func setCount(_ count: Int) {
         self.count = count

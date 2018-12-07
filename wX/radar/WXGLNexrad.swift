@@ -115,9 +115,15 @@ final class WXGLNexrad {
         }
     }
 
-    static func isRidTdwr(_ radarSite: String) -> Bool {return getTdwrShortList().contains(radarSite)}
+    static func isRidTdwr(_ radarSite: String) -> Bool {
+        return getTdwrShortList().contains(radarSite)
+    }
 
-    static func getTdwrShortList() -> [String] {return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}}
+    static func getTdwrShortList() -> [String] {
+        return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
+    }
 
-    static func getTDWRFromRID (_ radarSite: String) -> String {return TDWR[radarSite] ?? ""}
+    static func getTDWRFromRID (_ radarSite: String) -> String {
+        return TDWR[radarSite] ?? ""
+    }
 }

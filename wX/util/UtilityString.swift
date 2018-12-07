@@ -91,11 +91,17 @@ final class UtilityString {
         }
     }
 
-   	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String {return str.parse(regexpStr)}
+   	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String {
+        return str.parse(regexpStr)
+    }
 
-    static func parseColumnS(_ str: String, _ regexpStr: String) -> [String] {return parseHelper(regexpStr, str)}
+    static func parseColumnS(_ str: String, _ regexpStr: String) -> [String] {
+        return parseHelper(regexpStr, str)
+    }
 
-    static func parseColumnAllS(_ str: String, _ regexpStr: String) -> [String] {return parseHelper(regexpStr, str)}
+    static func parseColumnAllS(_ str: String, _ regexpStr: String) -> [String] {
+        return parseHelper(regexpStr, str)
+    }
 
     static func parseAndCount(_ str: String, _ regexpStr: String) -> Int {
         let tmpArr = str.parseColumn(regexpStr)
@@ -127,5 +133,7 @@ final class UtilityString {
         }
     }
 
-    static func addPeriodBeforeLastTwoChars(_ str: String) -> String {return str.insert(str.count - 2, ".")}
+    static func addPeriodBeforeLastTwoChars(_ str: String) -> String {
+        return str.insert(str.count - 2, ".")
+    }
 }

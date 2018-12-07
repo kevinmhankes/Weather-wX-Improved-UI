@@ -99,7 +99,7 @@ final class UtilityActions {
             ActVars.TEXTVIEWText = aboutStr + " " + UtilityUI.getVersion()
             token = "textviewer"
         case "Spotters": token = "spotters"
-        case "Metal Radar Test": token = "wxmetalradar"
+        //case "Metal Radar Test": token = "wxmetalradar"
         case "Local Forecast":
             ActVars.WEBVIEWuseUrl = true
             ActVars.WEBVIEWurl = "http://forecast.weather.gov/MapClick.php?lon="
@@ -141,7 +141,7 @@ final class UtilityActions {
             "PlayList",
             "Local Forecast",
             "Settings",
-            "Metal Radar Test",
+            //"Metal Radar Test",
             "Help Mode - Off",
             "About "  + appName + " " + UtilityUI.getVersion()
             ]

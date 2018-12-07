@@ -46,5 +46,7 @@ final class UtilityCanvasProjection {
         return !(provider == .nwsMosaic || provider == .nwsMosaicSector)
     }
 
-    static func needDarkPaint(_ provider: ProjectionType) -> Bool {return false}
+    static func needDarkPaint(_ provider: ProjectionType) -> Bool {
+        return false
+    }
 }
