@@ -41,7 +41,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
             let bitmap = UtilityUSImgNWSMosaic.nwsMosaic(UtilityUSImgNWSMosaic.sectors[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityUSImgNWSMosaic.LABELS[self.index]
+                self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
                 if !self.isLocal {editor.putInt("NWSMOSAIC_PARAM_LAST_USED", self.index)}
             }
         }
@@ -53,7 +53,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityUSImgNWSMosaic.LABELS.enumerated().forEach { i, rid in
+        UtilityUSImgNWSMosaic.labels.enumerated().forEach { i, rid in
             alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.productChanged(i)}))
         }
         alert.finish()

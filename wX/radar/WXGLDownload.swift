@@ -65,7 +65,7 @@ final class WXGLDownload {
             UtilityIO.saveInputStream(data, l3BaseFn + idxStr)
         } else {
             if urlStr=="" {
-                let data = getInputStreamFromURLL2(iowaMesoL2())
+                let data = getInputStreamFromURLL2(getLevel2Url())
                 UtilityIO.saveInputStream(data, l2BaseFn + "_d" + idxStr)
             }
             UtilityFileManagement.deleteFile(l2BaseFn + idxStr)
@@ -149,8 +149,7 @@ final class WXGLDownload {
         return l2Arr
     }
 
-    // FIXME no longer use Iowa Meso so rename this function
-    func iowaMesoL2() -> String {
+    func getLevel2Url() -> String {
         let ridPrefix = getRidPrefix(radarSite, false).uppercased()
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let tmpArr = (baseUrl + "dir.list").getHtmlSep().replace("<br>", " ").split(" ")

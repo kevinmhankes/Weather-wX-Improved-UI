@@ -93,7 +93,7 @@ final public class ObjectModel {
             param = "500_vort_ht"
             model = "GFS"
             sector = "NAMER"
-            modelArr = UtilityModelNCEPInterface.MODELS
+            modelArr = UtilityModelNCEPInterface.models
         case "WPCGEFS":
             run = "00Z"
             timeStr = "01"
@@ -250,9 +250,9 @@ final public class ObjectModel {
             timeArr = []
             (0...21).forEach {timeArr.append(String(format: "%02d", $0))}
         case "GLCFS:GLCFS":
-            paramArr = UtilityModelGLCFSInterface.PARAMS
-            paramLabelArr = UtilityModelGLCFSInterface.LABELS
-            sectorArr = UtilityModelGLCFSInterface.SECTORS
+            paramArr = UtilityModelGLCFSInterface.params
+            paramLabelArr = UtilityModelGLCFSInterface.labels
+            sectorArr = UtilityModelGLCFSInterface.sectors
             timeArr = []
             (1...13).forEach {timeArr.append(String(format: "%02d", $0))}
             stride(from: 15, to: 120, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}
@@ -391,29 +391,29 @@ final public class ObjectModel {
             stride(from: 0, to: 37, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "WPCGEFS:WPCGEFS":
-            paramArr = UtilityModelWPCGEFSInterface.PARAMS
-            paramLabelArr = UtilityModelWPCGEFSInterface.LABELS
-            sectorArr = UtilityModelWPCGEFSInterface.SECTORS
+            paramArr = UtilityModelWPCGEFSInterface.params
+            paramLabelArr = UtilityModelWPCGEFSInterface.labels
+            sectorArr = UtilityModelWPCGEFSInterface.sectors
             timeArr = []
             stride(from: 0, to: 240, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
             runArr = self.runTimeData.listRun
         case "SPCHRRR:HRRR":
-            paramArr = UtilityModelSPCHRRRInterface.PARAMS
-            paramLabelArr = UtilityModelSPCHRRRInterface.LABELS
+            paramArr = UtilityModelSPCHRRRInterface.params
+            paramLabelArr = UtilityModelSPCHRRRInterface.labels
             sectorArr = UtilityModelSPCHRRRInterface.sectors
             timeArr = []
             (2...15).forEach {timeArr.append(String(format: "%02d", $0))}
             runArr = self.runTimeData.listRun
         case "SPCHREF:HREF":
-            paramArr = UtilityModelSPCHREFInterface.PARAMS
-            paramLabelArr = UtilityModelSPCHREFInterface.LABELS
+            paramArr = UtilityModelSPCHREFInterface.params
+            paramLabelArr = UtilityModelSPCHREFInterface.labels
             sectorArr = UtilityModelSPCHREFInterface.sectorsLong
             timeArr = []
             (1...36).forEach {timeArr.append(String(format: "%02d", $0))}
             runArr = self.runTimeData.listRun
         case "SPCSREF:SREF":
-            paramArr = UtilityModelsSPCSREFInterface.PARAMS
-            paramLabelArr = UtilityModelsSPCSREFInterface.LABELS
+            paramArr = UtilityModelsSPCSREFInterface.params
+            paramLabelArr = UtilityModelsSPCSREFInterface.labels
             sectorArr = []
             timeArr = []
             stride(from: 0, to: 90, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}

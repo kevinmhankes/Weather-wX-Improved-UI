@@ -8,9 +8,16 @@
 // TODO look into rounded corners
 // TODO sync version between both platforms
 // TODO look into notch spacing in latest phones
+// TODO standard model var names with android version
+// TODO add code to objectmetalbuffers true/false to show if displayHold should be consulted
+// TODO add display hold in pan and gesture zoom
+// TODO dd scaleCutoff to more elements per Android version
+// TODO N0U anim not working ( seems worse on slower devices )
+// TODO Metal - minor mem leak
+// TODO add code to handle rectangular transformation in render
 // BUG canada locations don't set rid
 
-NOTE: releases after 51100 unless otherwise specified are continued heavy development of metal based radar
+2018_12_01 52800 code cleanup and continued metal radar dev
 2018_12_01 51100 metal: add autorefresh and center on double tap zoom
 		 [BUG] fix wind barbs with multiple values (utilMetar)
 		 [BUG] NSSL WRF was not initializing properly

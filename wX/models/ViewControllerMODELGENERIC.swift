@@ -16,9 +16,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     var timeButton = ObjectToolbarIcon()
     var productButton = ObjectToolbarIcon()
     var firstRun = true
-    var subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.TITLES,
-                                 UtilityModelSPCHREFInterface.PARAMS,
-                                 UtilityModelSPCHREFInterface.LABELS)
+    var subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.titles,
+                                 UtilityModelSPCHREFInterface.params,
+                                 UtilityModelSPCHREFInterface.labels)
     var modelObj = ObjectModel()
 
     override func viewDidLoad() {
@@ -44,17 +44,17 @@ class ViewControllerMODELGENERIC: UIwXViewController {
             productButton = ObjectToolbarIcon(title: "Product", self, #selector(self.prodClicked))
         }
         if ActVars.modelActivitySelected.contains("SPCSREF") {
-            subMenu = ObjectMenuData(UtilityModelsSPCSREFInterface.TITLES,
-                                     UtilityModelsSPCSREFInterface.PARAMS,
-                                     UtilityModelsSPCSREFInterface.LABELS)
+            subMenu = ObjectMenuData(UtilityModelsSPCSREFInterface.titles,
+                                     UtilityModelsSPCSREFInterface.params,
+                                     UtilityModelsSPCSREFInterface.labels)
         } else if ActVars.modelActivitySelected.contains("SPCHREF") {
-            subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.TITLES,
-                                     UtilityModelSPCHREFInterface.PARAMS,
-                                     UtilityModelSPCHREFInterface.LABELS)
+            subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.titles,
+                                     UtilityModelSPCHREFInterface.params,
+                                     UtilityModelSPCHREFInterface.labels)
         } else if ActVars.modelActivitySelected.contains("WPCGEFS") {
-            subMenu = ObjectMenuData(UtilityModelWPCGEFSInterface.TITLES,
-                                     UtilityModelWPCGEFSInterface.PARAMS,
-                                     UtilityModelWPCGEFSInterface.LABELS)
+            subMenu = ObjectMenuData(UtilityModelWPCGEFSInterface.titles,
+                                     UtilityModelWPCGEFSInterface.params,
+                                     UtilityModelWPCGEFSInterface.labels)
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(self.timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(self.doneClicked))
