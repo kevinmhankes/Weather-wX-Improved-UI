@@ -4,12 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17d62bc8-b789-4241-a8f9-30fbf51fd5d9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wX.xcodeproj/project.xcworkspace/xcuserdata/josh.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/wX.xcodeproj/project.xcworkspace/xcuserdata/josh.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wX/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/wX/Info.plist" afterDir="false" />
-    </list>
+    <list default="true" id="17d62bc8-b789-4241-a8f9-30fbf51fd5d9" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,17 +196,17 @@
       <workItem from="1497516030418" duration="7315000" />
       <workItem from="1499294163822" duration="50000" />
       <workItem from="1514110218386" duration="730000" />
-      <workItem from="1544218866543" duration="920000" />
+      <workItem from="1544218866543" duration="1376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26654000" />
+    <option name="totallyTimeSpent" value="27110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="30" width="1865" height="956" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13823368" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13823368" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -227,7 +222,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49753392" weight="0.32977462" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50246847" side_tool="true" visible="true" weight="0.3784722" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4081381" weight="0.2182681" />
-      <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.49753153" visible="true" weight="0.3784722" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="11" sideWeight="0.49753153" visible="true" weight="0.3784722" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
