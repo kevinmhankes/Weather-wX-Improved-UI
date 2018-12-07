@@ -58,7 +58,7 @@ class ViewControllerCARADAR: UIwXViewController {
                     editor.putString("CA_LAST_RID", self.rid)
                     editor.putString("CA_LAST_RID_URL", self.url)
                 }
-                if UtilityCanadaImg.MOSAICRIDS.contains(self.rid) {
+                if UtilityCanadaImg.mosaicRids.contains(self.rid) {
                     self.mosaicShown = true
                 } else {
                     self.mosaicShown = false
@@ -73,7 +73,7 @@ class ViewControllerCARADAR: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Site Selection", productButton)
-        UtilityCanadaImg.CARIDARR.enumerated().forEach { index, rid in
+        UtilityCanadaImg.caRids.enumerated().forEach { index, rid in
             alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in
                 self.productChanged(prod: index)})
             )
@@ -83,7 +83,7 @@ class ViewControllerCARADAR: UIwXViewController {
 
     func productChanged(prod: Int) {
         ActVars.CARADARimgType = "radar"
-        rid = UtilityCanadaImg.CARIDARR[prod].split(":")[0]
+        rid = UtilityCanadaImg.caRids[prod].split(":")[0]
         self.getContent()
     }
 
@@ -117,7 +117,7 @@ class ViewControllerCARADAR: UIwXViewController {
 
     @objc func cloudClicked() {
         let alert = ObjectPopUp(self, "Product Selection", cloudButton)
-        UtilityCanadaImg.NAMES.enumerated().forEach { index, rid in
+        UtilityCanadaImg.names.enumerated().forEach { index, rid in
             alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.cloudChanged(index)}))
         }
         alert.finish()
@@ -125,7 +125,7 @@ class ViewControllerCARADAR: UIwXViewController {
 
     func cloudChanged(_ prod: Int) {
         ActVars.CARADARimgType = "vis"
-        url = UtilityCanadaImg.URLS[prod]
+        url = UtilityCanadaImg.urls[prod]
         self.getContent()
     }
 

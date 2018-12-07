@@ -17,7 +17,7 @@ class MyApplication {
     static let nwsGoesWebsitePrefix: String = "https://www.goes.noaa.gov"
     static let nwsOpcWebsitePrefix: String = "http://www.opc.ncep.noaa.gov"
     static let nwsNhcWebsitePrefix: String = "https://www.nhc.noaa.gov"
-    static let nwsRadarWebsitePrefix: String = "http://radar.weather.gov"
+    static let nwsRadarWebsitePrefix: String = "https://radar.weather.gov"
     static let nwsMagNcepWebsitePrefix: String = "https://mag.ncep.noaa.gov"
     static let sunMoonDataUrl: String = "https://api.usno.navy.mil"
     static let currentConditionsViaMetar = true
