@@ -6,7 +6,7 @@
 
 final class UtilityModelSPCHREFInterface {
 
-    static let TITLES = [
+    static let titles = [
         ObjectMenuTitle("SPC Guidance", 6),
         ObjectMenuTitle("Synoptic", 5),
         ObjectMenuTitle("Severe", 12),
@@ -42,7 +42,7 @@ final class UtilityModelSPCHREFInterface {
         "sw"
     ]
 
-    static let PARAMS = [
+    static let params = [
         "guidance_hail_spchazcal_004h",
         "guidance_tor_spchazcal_004h",
         "guidance_wind_spchazcal_004h",
@@ -142,7 +142,7 @@ final class UtilityModelSPCHREFInterface {
         "wspd_024hmax_pb30_members"
         ]
 
-    static let LABELS = [
+    static let labels = [
         "4-hr HREF/SREF Calibrated: Hail",
         "4-hr HREF/SREF Calibrated: Tornado",
         "4-hr HREF/SREF Calibrated: Wind",

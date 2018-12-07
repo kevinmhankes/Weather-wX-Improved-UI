@@ -6,7 +6,7 @@
 
 final class UtilityModelsSPCSREFInterface {
 
-    static let TITLES = [
+    static let titles = [
         ObjectMenuTitle("SPC Guidance", 11),
         ObjectMenuTitle("Overview", 24),
         ObjectMenuTitle("Moisture", 23),
@@ -20,7 +20,7 @@ final class UtilityModelsSPCSREFInterface {
         ObjectMenuTitle("Aviation", 9)
         ]
 
-    static let PARAMS = [
+    static let params = [
         "SREF_PROB_TRW_CALIBRATED_HRLY__",
         "SREF_03HR_SVR_PROBS__",
         "SREF_03HR_SVR_PROBS_CONDITIONAL__",
@@ -348,7 +348,7 @@ final class UtilityModelsSPCSREFInterface {
         "SREF_maxtop_prob_high_"
         ]
 
-    static let LABELS = [
+    static let labels = [
         "[PR]:3hr Calibrated Thunderstorm",
         "[PR]:3hr Calibrated Severe Thunderstorm",
         "[PR]:3hr Calibrated Conditional Severe Tstm",

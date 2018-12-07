@@ -6,7 +6,7 @@
 
 final class UtilityModelNCEPInterface {
 
-    static let MODELS = [
+    static let models = [
         "HRRR",
         "GFS",
         "NAM",

@@ -32,7 +32,7 @@ final class UtilityModelSPCHRRRInterface {
         "S20"
     ]
 
-    static let PARAMS = [
+    static let params = [
         "refc",
         "pmsl",
         "srh3",
@@ -45,7 +45,7 @@ final class UtilityModelSPCHRRRInterface {
         "ttd"
         ]
 
-    static let LABELS = [
+    static let labels = [
         "Composite Reflectivity",
         "MSL Pressure & Wind",
         "Shear Parameters",

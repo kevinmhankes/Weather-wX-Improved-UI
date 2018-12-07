@@ -235,7 +235,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         self.getContent()
     }
 
-    func setupModel() {modelObj.setModelVars(self.modelObj.model)}
+    func setupModel() {
+        modelObj.setModelVars(self.modelObj.model)
+    }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .left {rightClicked()}

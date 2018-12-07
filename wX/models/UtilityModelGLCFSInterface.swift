@@ -6,7 +6,7 @@
 
 final class UtilityModelGLCFSInterface {
 
-    static let SECTORS = [
+    static let sectors = [
             "Lake Superior",
             "Lake Michigan",
             "Lake Huron",
@@ -15,7 +15,7 @@ final class UtilityModelGLCFSInterface {
             "All Lakes"
     ]
 
-    static let PARAMS = [
+    static let params = [
             "wv",
             "wn",
             "swt",
@@ -26,7 +26,7 @@ final class UtilityModelGLCFSInterface {
             "at"
     ]
 
-    static let LABELS = [
+    static let labels = [
             "Wave height",
             "Wind speed",
             "Surface temperature",
