@@ -145,6 +145,7 @@ final class WXGLDownload {
         return l2Arr
     }
 
+    // FIXME no longer use Iowa Meso so rename this function
     func iowaMesoL2() -> String {
         let ridPrefix = getRidPrefix(radarSite, false).uppercased()
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"

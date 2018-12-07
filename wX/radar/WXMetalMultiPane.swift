@@ -633,6 +633,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 }
 
+// remove metal from submenu
+// rename iowa meso method
+// add displayHold from Android version
+// add scaleCutoff to more elements per Android version
 // N0U anim not working ( seems worse on slower devices )
 // minor mem leak
 // GPS location not showing up in bottom pane
