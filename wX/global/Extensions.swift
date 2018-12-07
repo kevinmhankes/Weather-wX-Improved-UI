@@ -152,8 +152,13 @@ extension Double {
 }
 
 extension UIImage {
-    func getWidth() -> CGFloat {return self.size.width}
-    func getHeight() -> CGFloat {return self.size.height}
+    func getWidth() -> CGFloat {
+        return self.size.width
+    }
+
+    func getHeight() -> CGFloat {
+        return self.size.height
+    }
 }
 
 extension UIColor {
