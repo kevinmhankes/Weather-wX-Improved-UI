@@ -37,7 +37,7 @@ class ViewControllerCAWARN: UIwXViewController {
         UtilityShare.shareImage(self, sender, self.objCAWARN.bitmap)
     }
 
-    func gotoWarning(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {
         getWarningDetail(objCAWARN.getWarningUrl(sender.data))
     }
 
