@@ -87,7 +87,7 @@ final class UtilityActions {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
                 ActVars.CARADARprov = UtilityCanada.getECSectorFromProv(prov)
                 ActVars.CARADARimgType = "radar"
-                goToVCS(uiv, "caradar")
+                token = "caradar"
             }
         case "Alerts":
             if Location.isUS {
