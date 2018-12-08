@@ -118,9 +118,15 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
         if RadarPreferences.locdotFollowsGps {
-            NotificationCenter.default.addObserver(self, selector: #selector(WXOGLOpenGLMultiPane.invalidateGPS), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(WXOGLOpenGLMultiPane.invalidateGPS),
+                                                   name: NSNotification.Name.UIApplicationWillResignActive,
+                                                   object: nil)
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
         self.preferredFramesPerSecond = 0
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
         let pangeRange = 0..<numberOfPanes
@@ -130,7 +136,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
             toolbarTop.setConfig(.top)
-            pangeRange.forEach {siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))}
+            pangeRange.forEach {
+                siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
+            }
             var items = [UIBarButtonItem]()
             items.append(flexBarButton)
             pangeRange.forEach {
@@ -154,7 +162,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         }
         radarsiteButton = ObjectToolbarIcon(title: "RadarSite", self, #selector(radarSiteClicked(sender:)))
-        pangeRange.forEach {productButton.append(ObjectToolbarIcon(title: "Product", self, #selector(productClicked(sender:)), tag: $0))}
+        pangeRange.forEach {
+            productButton.append(ObjectToolbarIcon(title: "Product", self, #selector(productClicked(sender:)), tag: $0))
+        }
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         timeButton = ObjectToolbarIcon(self, nil)
@@ -181,16 +191,37 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         var halfHeight = self.view.frame.height / 2
         if numberOfPanes==2 {
             halfHeight -= UIPreferences.toolbarHeight / 2.0
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: self.view.frame.width, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0,
+                                                   y: 0,
+                                                   width: self.view.frame.width,
+                                                   height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0,
+                                                   y: halfHeight,
+                                                   width: self.view.frame.width,
+                                                   height: halfHeight), context: self.context!))
         } else if numberOfPanes==4 {
             halfHeight -= UIPreferences.toolbarHeight / 2.0
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: 0, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
-            glviewArr.append(GLKView(frame: CGRect(x: halfWidth, y: halfHeight, width: halfWidth, height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0,
+                                                   y: 0,
+                                                   width: halfWidth,
+                                                   height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: halfWidth,
+                                                   y: 0,
+                                                   width: halfWidth,
+                                                   height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0,
+                                                   y: halfHeight,
+                                                   width: halfWidth,
+                                                   height: halfHeight), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: halfWidth,
+                                                   y: halfHeight,
+                                                   width: halfWidth,
+                                                   height: halfHeight), context: self.context!))
         } else {
-            glviewArr.append(GLKView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), context: self.context!))
+            glviewArr.append(GLKView(frame: CGRect(x: 0,
+                                                   y: 0,
+                                                   width: self.view.frame.width,
+                                                   height: self.view.frame.height), context: self.context!))
         }
         pangeRange.forEach {oglrArr.append(WXGLRender(timeButton, productButton[$0]))}
         if RadarPreferences.wxoglRememberLocation || numberOfPanes != 1 {
@@ -446,7 +477,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             self.getRadarStatus()}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = radarsiteButton}
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = radarsiteButton
+        }
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -494,7 +527,8 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         if !inOglAnim {
             let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
             ["5", "10", "20", "30", "40", "50", "60"].forEach { cnt in
-                alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in self.animateFrameCntClicked(cnt)}))
+                alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in
+                    self.animateFrameCntClicked(cnt)}))
             }
             alert.finish()
         } else {
@@ -678,7 +712,8 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     func getMeteogram(_ location: LatLon) {
         let obsSite = UtilityMetar.findClosestObservation(location)
-        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
+        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
+            + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
             + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta=" + obsSite.name
         self.goToVC("imageviewer")
     }
@@ -702,7 +737,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                         CGRect(x: 0,
                                                y: UIPreferences.statusBarHeight,
                                                width: 100,
-                                               height: self.view.frame.size.height - UIPreferences.toolbarHeight - UIPreferences.statusBarHeight))
+                                               height: self.view.frame.size.height
+                                                - UIPreferences.toolbarHeight
+                                                - UIPreferences.statusBarHeight))
             colorLegend.backgroundColor = UIColor.clear
             colorLegend.isOpaque = false
             self.view.addSubview(colorLegend)

@@ -161,9 +161,22 @@ final class WXGLRender: NSObject, GLKViewDelegate {
             radarBuffers.floatBuffer.position = $0 * breakSizeRadar * 32
             radarBuffers.colorBuffer.position = $0 * breakSizeRadar * 12
             triangleIndexBuffer.position = 0
-            glVertexAttribPointer(positionHandle, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, radarBuffers.floatBuffer.address)
-            glVertexAttribPointer(colorHandle, 3, GLenum(GL_UNSIGNED_BYTE), GLboolean(GL_TRUE), 0, radarBuffers.colorBuffer.address)
-            glDrawElements(GLenum(GL_TRIANGLES), GLsizei(radarChunkCnt), GLenum(GL_UNSIGNED_SHORT), triangleIndexBuffer.array)
+            glVertexAttribPointer(positionHandle,
+                                  2,
+                                  GLenum(GL_FLOAT),
+                                  GLboolean(GL_FALSE),
+                                  0,
+                                  radarBuffers.floatBuffer.address)
+            glVertexAttribPointer(colorHandle,
+                                  3,
+                                  GLenum(GL_UNSIGNED_BYTE),
+                                  GLboolean(GL_TRUE),
+                                  0,
+                                  radarBuffers.colorBuffer.address)
+            glDrawElements(GLenum(GL_TRIANGLES),
+                           GLsizei(radarChunkCnt),
+                           GLenum(GL_UNSIGNED_SHORT),
+                           triangleIndexBuffer.array)
         }
         glLineWidth(2.0)
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
@@ -187,7 +200,9 @@ final class WXGLRender: NSObject, GLKViewDelegate {
 
     func loadGeometry() {
         pn = ProjectionNumbers(rid, .wxOgl)
-        [stateLineBuffers, countyLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {if $0.geotype.display {constructGenericGeographic($0)}}
+        [stateLineBuffers, countyLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
+            if $0.geotype.display {constructGenericGeographic($0)}
+        }
         if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {constructLocationDot()}
     }
 
@@ -201,13 +216,20 @@ final class WXGLRender: NSObject, GLKViewDelegate {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
         }
-        locdotBuffers.latList = locmarkerAl.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value)}
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value)}
+        locdotBuffers.latList = locmarkerAl.enumerated().filter {idx, _ in
+            idx & 1 == 0}.map { _, value in Double(value)}
+        locdotBuffers.lonList = locmarkerAl.enumerated().filter {idx, _ in
+            idx & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 12
         constructTriangles(locdotBuffers)
         locCircleBuffers.triangleCount = 18
-        locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, 8 * locCircleBuffers.triangleCount, 6 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
-        UtilityWXOGLPerf.colorGen(locCircleBuffers.colorBuffer, 2 * locCircleBuffers.triangleCount, locCircleBuffers.getColorArray())
+        locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount,
+                                    8 * locCircleBuffers.triangleCount,
+                                    6 * locCircleBuffers.triangleCount,
+                                    PolygonType.LOCDOT.color)
+        UtilityWXOGLPerf.colorGen(locCircleBuffers.colorBuffer,
+                                  2 * locCircleBuffers.triangleCount,
+                                  locCircleBuffers.getColorArray())
         if RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXOGLPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
@@ -219,7 +241,11 @@ final class WXGLRender: NSObject, GLKViewDelegate {
     func getRadar(_ url: String, _ additionalText: String="") {
         DispatchQueue.global(qos: .userInitiated).async {
             if url=="" {
-                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url, self.rid, self.radarProduct, self.idxStr, self.TDWR)
+                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url,
+                                                                    self.rid,
+                                                                    self.radarProduct,
+                                                                    self.idxStr,
+                                                                    self.TDWR)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = self.l3BaseFn + self.idxStr
                 } else {
@@ -229,9 +255,13 @@ final class WXGLRender: NSObject, GLKViewDelegate {
                 self.radarBuffers.fileName = url
             }
             if ActVars.WXOGLPaneCnt == "1" {
-                [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach { if $0.display {self.constructLevel3TextProduct($0)}}
+                [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
+                    if $0.display {self.constructLevel3TextProduct($0)}
+                }
                 if PolygonType.SPOTTER.display {self.constructSpotters()}
-                if PolygonType.OBS.display || PolygonType.WIND_BARB.display {UtilityMetar.getStateMetarArrayForWXOGL(self.rid)}
+                if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
+                    UtilityMetar.getStateMetarArrayForWXOGL(self.rid)
+                }
                 if PolygonType.WIND_BARB.display {self.constructWBLines()}
                 if PolygonType.SWO.display {
                     UtilitySWOD1.getSWO()
@@ -373,7 +403,8 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         wbCircleBuffers.setCount(wbCircleBuffers.latList.count)
         wbCircleBuffers.triangleCount = 6
         wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount,
-                                   12 * wbCircleBuffers.count * wbCircleBuffers.triangleCount, 9 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
+                                   12 * wbCircleBuffers.count * wbCircleBuffers.triangleCount,
+                                   9 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
         wbCircleBuffers.lenInit = scaleLength(wbCircleBuffers.lenInit)
         ObjectOglBuffers.redrawCircleWithColor(wbCircleBuffers, pn)
         wbCircleBuffers.isInitialized = true
@@ -413,10 +444,14 @@ final class WXGLRender: NSObject, GLKViewDelegate {
                         self.swoBuffers.colorBuffer.put(Color.green(self.colorSwo[z]))
                         self.swoBuffers.colorBuffer.put(Color.blue(self.colorSwo[z]))
                     }
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]),
+                                                                               Double(flArr[j+1]) * -1.0,
+                                                                               pn)
                     swoBuffers.floatBuffer.putFloat(tmpCoords.0)
                     swoBuffers.floatBuffer.putFloat(tmpCoords.1 * -1.0)
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]),
+                                                                               Double(flArr[j+3]) * -1.0,
+                                                                               pn)
                     swoBuffers.floatBuffer.putFloat(tmpCoords.0)
                     swoBuffers.floatBuffer.putFloat(tmpCoords.1 * -1.0)
                 }
@@ -439,8 +474,18 @@ final class WXGLRender: NSObject, GLKViewDelegate {
                 buffers.floatBuffer.position = $0 * 480000
                 buffers.colorBuffer.position = $0 * 240000
                 lineIndexBuffer.position = 0
-                glVertexAttribPointer(positionHandle, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, buffers.floatBuffer.address)
-                glVertexAttribPointer(colorHandle, 3, GLenum(GL_UNSIGNED_BYTE), GLboolean(GL_TRUE), 0, buffers.colorBuffer.array)
+                glVertexAttribPointer(positionHandle,
+                                      2,
+                                      GLenum(GL_FLOAT),
+                                      GLboolean(GL_FALSE),
+                                      0,
+                                      buffers.floatBuffer.address)
+                glVertexAttribPointer(colorHandle,
+                                      3,
+                                      GLenum(GL_UNSIGNED_BYTE),
+                                      GLboolean(GL_TRUE),
+                                      0,
+                                      buffers.colorBuffer.array)
                 glDrawElements(GLenum(GL_LINES), GLsizei(lineCnt-1), GLenum(GL_UNSIGNED_SHORT), lineIndexBuffer.array)
             }
         }
@@ -465,9 +510,22 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         (0..<buffers.chunkCount).forEach { _ in
             buffers.setToPositionZero()
             lineIndexBuffer.position = 0
-            glVertexAttribPointer(positionHandle, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, buffers.floatBuffer.address)
-            glVertexAttribPointer(colorHandle, 3, GLenum(GL_UNSIGNED_BYTE), GLboolean(GL_TRUE), 0, buffers.colorBuffer.address)
-            glDrawElements(GLenum(GL_LINES), GLsizei(buffers.floatBuffer.capacity/countDivisor), GLenum(GL_UNSIGNED_SHORT), lineIndexBuffer.array)
+            glVertexAttribPointer(positionHandle,
+                                  2,
+                                  GLenum(GL_FLOAT),
+                                  GLboolean(GL_FALSE),
+                                  0,
+                                  buffers.floatBuffer.address)
+            glVertexAttribPointer(colorHandle,
+                                  3,
+                                  GLenum(GL_UNSIGNED_BYTE),
+                                  GLboolean(GL_TRUE),
+                                  0,
+                                  buffers.colorBuffer.address)
+            glDrawElements(GLenum(GL_LINES),
+                           GLsizei(buffers.floatBuffer.capacity/countDivisor),
+                           GLenum(GL_UNSIGNED_SHORT),
+                           lineIndexBuffer.array)
         }
     }
 
@@ -548,17 +606,38 @@ final class WXGLRender: NSObject, GLKViewDelegate {
     func drawTriangles(_ buffers: ObjectOglBuffers) {
         if buffers.isInitialized {
             buffers.setToPositionZero()
-            glVertexAttribPointer(positionHandle, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, buffers.floatBuffer.address)
-            glVertexAttribPointer(colorHandle, 3, GLenum(GL_UNSIGNED_BYTE), GLboolean(GL_TRUE), 0, buffers.colorBuffer.address)
-            glDrawElements(GLenum(GL_TRIANGLES), GLsizei(buffers.floatBuffer.capacity/8), GLenum(GL_UNSIGNED_SHORT), buffers.indexBuffer.array)
+            glVertexAttribPointer(positionHandle,
+                                  2,
+                                  GLenum(GL_FLOAT),
+                                  GLboolean(GL_FALSE),
+                                  0,
+                                  buffers.floatBuffer.address)
+            glVertexAttribPointer(colorHandle,
+                                  3,
+                                  GLenum(GL_UNSIGNED_BYTE),
+                                  GLboolean(GL_TRUE),
+                                  0,
+                                  buffers.colorBuffer.address)
+            glDrawElements(GLenum(GL_TRIANGLES),
+                           GLsizei(buffers.floatBuffer.capacity/8),
+                           GLenum(GL_UNSIGNED_SHORT),
+                           buffers.indexBuffer.array)
         }
     }
 
     func constructTriangles(_ buffers: ObjectOglBuffers) {
         buffers.setCount(buffers.latList.count)
         switch buffers.type.string {
-        case "LOCDOT": buffers.initialize(24 * buffers.count * buffers.triangleCount, 12 * buffers.count * buffers.triangleCount, 9 * buffers.count * buffers.triangleCount, buffers.type.color)
-        case "SPOTTER": buffers.initialize(24 * buffers.count * buffers.triangleCount, 12 * buffers.count * buffers.triangleCount, 9 * buffers.count * buffers.triangleCount, buffers.type.color)
+        case "LOCDOT":
+            buffers.initialize(24 * buffers.count * buffers.triangleCount,
+                               12 * buffers.count * buffers.triangleCount,
+                               9 * buffers.count * buffers.triangleCount,
+                               buffers.type.color)
+        case "SPOTTER":
+            buffers.initialize(24 * buffers.count * buffers.triangleCount,
+                               12 * buffers.count * buffers.triangleCount,
+                               9 * buffers.count * buffers.triangleCount,
+                               buffers.type.color)
         default: buffers.initialize(4 * 6 * buffers.count, 4 * 3 * buffers.count, 9 * buffers.count, buffers.type.color)
         }
         buffers.lenInit = scaleLength(buffers.lenInit)
@@ -646,7 +725,12 @@ final class WXGLRender: NSObject, GLKViewDelegate {
         if self.product=="TV0" || self.product=="TZL" {
             self.TDWR = true
         } else {self.TDWR = false}
-        if (self.product=="N0Q"||self.product=="N1Q"||self.product=="N2Q"||self.product=="N3Q"||self.product=="L2REF") && ridIsTdwr {
+        if (self.product=="N0Q"
+            || self.product=="N1Q"
+            || self.product=="N2Q"
+            || self.product=="N3Q"
+            || self.product=="L2REF")
+            && ridIsTdwr {
             self.radarProduct = "TZL"
             self.TDWR = true
         }
@@ -654,7 +738,12 @@ final class WXGLRender: NSObject, GLKViewDelegate {
             self.radarProduct = "N0Q"
             self.TDWR = false
         }
-        if (self.product=="N0U"||self.product=="N1U"||self.product=="N2U"||self.product=="N3U"||self.product=="L2VEL") && ridIsTdwr {
+        if (self.product=="N0U"
+            || self.product=="N1U"
+            || self.product=="N2U"
+            || self.product=="N3U"
+            || self.product=="L2VEL")
+            && ridIsTdwr {
             self.radarProduct = "TV0"
             self.TDWR = true
         }
