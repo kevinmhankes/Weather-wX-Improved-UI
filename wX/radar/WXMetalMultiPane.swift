@@ -159,10 +159,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             let x = wxMetal[0]!.xPos
             let y = wxMetal[0]!.yPos
             let zoom = wxMetal[0]!.zoom
+            let rid = wxMetal[0]!.rid
             wxMetal.forEach {
                 $0!.xPos = x
                 $0!.yPos = y
                 $0!.zoom = zoom
+                $0!.rid = rid
+                $0!.loadGeometry()
             }
         }
         let defaultLibrary = device.makeDefaultLibrary()!
@@ -381,7 +384,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func ridChanged(_ rid: String, _ index: Int) {
         stopAnimate()
         UtilityFileManagement.deleteAllFiles()
-        radarSiteButton.title = rid
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
+            siteButton[index].title = rid
+        } else {
+            radarSiteButton.title = rid
+        }
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {

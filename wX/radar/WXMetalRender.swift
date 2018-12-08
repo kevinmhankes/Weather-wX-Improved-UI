@@ -127,7 +127,9 @@ class WXMetalRender {
         radarLayers.append(stiBuffers)
         radarLayers.append(hiBuffers)
         radarLayers.append(tvsBuffers)
-        loadGeometry()
+        if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn {
+            loadGeometry()
+        }
     }
 
     func render(commandQueue: MTLCommandQueue,
