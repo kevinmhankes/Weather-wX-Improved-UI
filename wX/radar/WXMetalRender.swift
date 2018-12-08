@@ -176,12 +176,18 @@ class WXMetalRender {
                         renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
                         let nodeModelMatrix = self.modelMatrix()
                         nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-                        let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2, options: [])
+                        let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2,
+                                                              options: [])
                         let bufferPointer = uniformBuffer?.contents()
-                        memcpy(bufferPointer, nodeModelMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
-                        memcpy(bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(), projectionMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+                        memcpy(bufferPointer, nodeModelMatrix.raw(),
+                               MemoryLayout<Float>.size * Matrix4.numberOfElements())
+                        memcpy(bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(),
+                               projectionMatrix.raw(),
+                               MemoryLayout<Float>.size * Matrix4.numberOfElements())
                         renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                        renderEncoder!.drawPrimitives(type: vbuffer.shape, vertexStart: 0, vertexCount: vbuffer.vertexCount)
+                        renderEncoder!.drawPrimitives(type: vbuffer.shape,
+                                                      vertexStart: 0,
+                                                      vertexCount: vbuffer.vertexCount)
                     }
                 }
             }
@@ -298,7 +304,8 @@ class WXMetalRender {
             zoom = preferences.getFloat(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = preferences.getFloat(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = preferences.getFloat(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = preferences.getString(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
+            product = preferences.getString(radarType + numberOfPanes + "_PROD" + index,
+                                            initialRadarProducts[paneNumber])
             rid = preferences.getString(radarType + numberOfPanes + "_RID" + index, Location.rid)
         } else {
             rid = Location.rid
@@ -334,7 +341,11 @@ class WXMetalRender {
         if self.product=="TV0" || self.product=="TZL" {
             self.TDWR = true
         } else {self.TDWR = false}
-        if (self.product=="N0Q"||self.product=="N1Q"||self.product=="N2Q"||self.product=="N3Q"||self.product=="L2REF") && ridIsTdwr {
+        if (self.product=="N0Q"
+            || self.product=="N1Q"
+            || self.product=="N2Q"
+            || self.product=="N3Q"
+            || self.product=="L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
             self.TDWR = true
         }
@@ -342,7 +353,11 @@ class WXMetalRender {
             self.radarProduct = "N0Q"
             self.TDWR = false
         }
-        if (self.product=="N0U"||self.product=="N1U"||self.product=="N2U"||self.product=="N3U"||self.product=="L2VEL") && ridIsTdwr {
+        if (self.product=="N0U"
+            || self.product=="N1U"
+            || self.product=="N2U"
+            || self.product=="N3U"
+            || self.product=="L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
             self.TDWR = true
         }
@@ -355,7 +370,11 @@ class WXMetalRender {
     func getRadar(_ url: String, _ additionalText: String="") {
         DispatchQueue.global(qos: .userInitiated).async {
             if url=="" {
-                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url, self.rid, self.radarProduct, self.idxStr, self.TDWR)
+                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url,
+                                                                    self.rid,
+                                                                    self.radarProduct,
+                                                                    self.idxStr,
+                                                                    self.TDWR)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = self.l3BaseFn + self.idxStr
                 } else {
