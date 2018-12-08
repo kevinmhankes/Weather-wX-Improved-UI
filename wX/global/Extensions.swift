@@ -189,3 +189,13 @@ extension UIViewController {
         UtilityActions.goToVCS(self, target)
     }
 }
+
+extension Array where Element == String {
+    func safeGet(_ index: Int) -> String {
+        if self.count <= index {
+            return ""
+        } else {
+            return self[index]
+        }
+    }
+}

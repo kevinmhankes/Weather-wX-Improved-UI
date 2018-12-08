@@ -1,10 +1,7 @@
 // TODO add tilts to radar
 // TODO update UI to match android version, new theme, FAB, rounded corners, drop shadow
-// TODO remove option "Use enhanced hw data" - should always be true
 // TODO color palette editor
 // TODO move global vars to myapp
-// TODO add new white theme
-// TODO add fab
 // TODO look into rounded corners
 // TODO sync version between both platforms
 // TODO look into notch spacing in latest phones
@@ -12,6 +9,7 @@
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO Metal - minor mem leak
 // TODO add code to handle rectangular transformation in render
+// TODO perform network test
 
 2018_12_01 52800 code cleanup and continued metal radar dev
 2018_12_01 51100 metal: add autorefresh and center on double tap zoom
