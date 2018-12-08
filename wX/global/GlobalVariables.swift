@@ -8,10 +8,6 @@ import AVFoundation
 import UIKit
 
 var globalSynth = AVSpeechSynthesizer()
-
-let mapRegionRadius = 1000000.0
-
-let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by http://weather.gc.ca/canada_e.html."
 let flexBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
 let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
 let preferences = Preferences()

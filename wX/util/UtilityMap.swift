@@ -31,7 +31,7 @@ final class UtilityMap {
         }
         mapView.addAnnotations(annotations)
         let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
-        centerMapOnLocation(mapView, location: usCenter, regionRadius: mapRegionRadius)
+        centerMapOnLocation(mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
     }
 
     static func createLocationsArray(_ itemList: [String], _ prefVar: String) -> [Dictionary<String, String>] {

@@ -9,6 +9,6 @@ import UIKit
 final class ObjectCALegal {
 
     init(_ stackView: UIStackView) {
-        _ = ObjectTextView(stackView, mainScreenCaDisclaimor, UIFont.systemFont(ofSize: 15), UIColor.gray)
+        _ = ObjectTextView(stackView, MyApplication.mainScreenCaDisclaimor, UIFont.systemFont(ofSize: 15), UIColor.gray)
     }
 }
