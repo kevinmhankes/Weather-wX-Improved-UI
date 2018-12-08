@@ -29,9 +29,11 @@ final class UtilityLightning {
         let url: String
         if sector.contains("goes") {
             let sectorCode = sector.split("_")[1]
-            let html = ("https://weather.msfc.nasa.gov/cgi-bin/sportPublishData.pl?dataset=goes16glm&product=group&loc=" + sectorCode).getHtml()
+            let html = ("https://weather.msfc.nasa.gov/cgi-bin/sportPublishData.pl?dataset=goes16glm&product=group&loc="
+                + sectorCode).getHtml()
             url = "https://weather.msfc.nasa.gov"
-                + html.parse("SRC=.(/sport/dynamic/goes16/glm/" + sectorCode + "/sport_goes16_glm_" + sectorCode + "_group_[0-9]{8}_[0-9]{4}.png)")
+                + html.parse("SRC=.(/sport/dynamic/goes16/glm/" + sectorCode + "/sport_goes16_glm_"
+                    + sectorCode + "_group_[0-9]{8}_[0-9]{4}.png)")
         } else {
             let baseUrl = "http://images.lightningmaps.org/blitzortung/america/index.php?map="
             let baseUrlOceania = "http://images.lightningmaps.org/blitzortung/oceania/index.php?map="

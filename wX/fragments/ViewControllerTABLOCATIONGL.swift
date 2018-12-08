@@ -31,16 +31,26 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     override func viewDidLoad() {
         super.viewDidLoad()
         ActVars.vc = self
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
         let toolbar = ObjectToolbar(.top)
         let radarButton = ObjectToolbarIcon(self, "ic_flash_on_24dp", #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(self, "ic_cloud_24dp", #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
         menuButton = ObjectToolbarIcon(self, "ic_more_vert_white_24dp", #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(self, "ic_report_24dp", #selector(dashClicked))
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace,
+                                         target: nil,
+                                         action: nil)
         fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems([flexBarButton, dashButton, wfoTextButton, cloudButton, radarButton, menuButton]).items
+        toolbar.items = ObjectToolbarItems([flexBarButton,
+                                            dashButton,
+                                            wfoTextButton,
+                                            cloudButton,
+                                            radarButton,
+                                            menuButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.view.addSubview(toolbar)
@@ -90,7 +100,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                ObjectForecastPackage7Day.getSevenDayCards(self.scrollView, self.stackViewForecast.view, self.objSevenDay, self.isUS)
+                ObjectForecastPackage7Day.getSevenDayCards(self.scrollView,
+                                                           self.stackViewForecast.view,
+                                                           self.objSevenDay,
+                                                           self.isUS)
             }
         }
     }
@@ -122,27 +135,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                //self.stackView.subviews.forEach {$0.removeFromSuperview()}
-                //self.forecastImage = []
-                //self.forecastText = []
-                //
-                // location card loaded regardless of settings
-                //
-                //let stackViewLocal = ObjectStackViewHS()
-                //stackViewLocal.setup()
-                //self.stackView.addArrangedSubview(stackViewLocal)
-                //self.objLabel = ObjectTextView(stackViewLocal, Location.name, UIFont.systemFont(ofSize: 20), UIColor.blue)
-                //self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
                 //
                 // end location card
                 //
-                let homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
+                let homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",
+                                                                          MyApplication.homescreenFavDefault), ":")
                 self.textArr = [:]
                 homescreenFav.forEach {
                     switch $0 {
-                        //case "TXT-CC2":   self.getCurrentConditionCards(self.stackView)
-                        //case "TXT-HAZ":   ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards, self.isUS)
-                    //case "TXT-7DAY2": ObjectForecastPackage7Day.getSevenDayCards(self.scrollView, self.stackView, self.objSevenDay, self.isUS)
                     case "TXT-CC2":   self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
                     case "TXT-HAZ":    self.stackView.addArrangedSubview(self.stackViewHazards.view)
                     case "TXT-7DAY2": self.stackView.addArrangedSubview(self.stackViewForecast.view)
@@ -221,14 +221,22 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func locationAction() {
-        let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = UIAlertController(title: "Select location:",
+                                      message: "",
+                                      preferredStyle: UIAlertControllerStyle.actionSheet)
         MyApplication.locations.indices.forEach { location in
-            let action = UIAlertAction(title: Location.getName(location), style: .default, handler: {_ in self.locationChanged(location)})
+            let action = UIAlertAction(title: Location.getName(location),
+                                       style: .default,
+                                       handler: {_ in self.locationChanged(location)})
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
+        alert.addAction(UIAlertAction(title: "Add location..",
+                                      style: .default,
+                                      handler: {_ in self.locationChanged(Location.numLocations)}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = self.menuButton}
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = self.menuButton
+        }
         self.present(alert, animated: true, completion: nil)
     }
 

@@ -71,7 +71,10 @@ final class Color {
     }
 
     class func HSVToColor(_ hsv: [Double]) -> Int {
-        let color = UIColor(hue: CGFloat(hsv[0]), saturation: CGFloat(hsv[1]), brightness: CGFloat(hsv[2]), alpha: CGFloat(1.0))
+        let color = UIColor(hue: CGFloat(hsv[0]),
+                            saturation: CGFloat(hsv[1]),
+                            brightness: CGFloat(hsv[2]),
+                            alpha: CGFloat(1.0))
         var fRed: CGFloat = 0
         var fGreen: CGFloat = 0
         var fBlue: CGFloat = 0

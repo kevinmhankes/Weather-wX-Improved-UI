@@ -284,11 +284,18 @@ final class UtilityCanada {
     static func getConditions(_ html: String) -> String {
         let sum = html.parse("<b>Condition:</b> (.*?) <br/>.*?<b>Pressure.*?:</b> .*? kPa.*?<br/>")
         let pressure = html.parse("<b>Condition:</b> .*? <br/>.*?<b>Pressure.*?:</b> (.*?) kPa.*?<br/>")
-        let vis = html.parse("<b>Visibility:</b> (.*?)<br/>").replaceAll("<.*?>", "").replaceAll("\\s+", "").replace(" miles", "mi")
-        let temp = html.parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
-        let relativeHumdity = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
-        let dew = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
-        let wind = html.parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
+        let vis = html.parse("<b>Visibility:</b> (.*?)<br/>")
+            .replaceAll("<.*?>", "")
+            .replaceAll("\\s+", "")
+            .replace(" miles", "mi")
+        let temp = html
+            .parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+        let relativeHumdity = html
+            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+        let dew = html
+            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
+        let wind = html
+            .parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
         return temp
             + MyApplication.degreeSymbol
             +  " / "

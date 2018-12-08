@@ -25,7 +25,12 @@ class ViewControllerCATEXT: UIwXViewController {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, playButton, shareButton, playlistButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton,
+                                            flexBarButton,
+                                            productButton,
+                                            playButton,
+                                            shareButton,
+                                            playlistButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         _ = ObjectCALegal(stackView)
@@ -53,7 +58,9 @@ class ViewControllerCATEXT: UIwXViewController {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         UtilityCanada.products.forEach {
             var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in self.productChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction(title: $0,
+                                          style: .default,
+                                          handler: {_ in self.productChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }

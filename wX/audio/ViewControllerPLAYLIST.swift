@@ -40,17 +40,32 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let alert = ObjectPopUp(self, "", addButton)
-        alert.addAction(UIAlertAction(title: "Play", style: .default, handler: {_ in self.playProduct(selection: sender.data)}))
-        alert.addAction(UIAlertAction(title: "View Text", style: .default, handler: {_ in self.viewProduct(selection: sender.data)}))
-        if sender.data != 0 {alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.move(sender.data, .up)}))}
-        if sender.data != (playlistItems.count-1) {alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.move(sender.data, .down)}))}
-        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {_ in self.delete(selection: sender.data)}))
+        alert.addAction(UIAlertAction(title: "Play",
+                                      style: .default, handler: {_ in self.playProduct(selection: sender.data)}))
+        alert.addAction(UIAlertAction(title: "View Text",
+                                      style: .default, handler: {_ in self.viewProduct(selection: sender.data)}))
+        if sender.data != 0 {
+            alert.addAction(UIAlertAction(title: "Move Up",
+                                          style: .default,
+                                          handler: {_ in self.move(sender.data, .up)}))
+        }
+        if sender.data != (playlistItems.count-1) {
+            alert.addAction(UIAlertAction(title: "Move Down",
+                                          style: .default,
+                                          handler: {_ in self.move(sender.data, .down)}))
+        }
+        alert.addAction(UIAlertAction(title: "Delete",
+                                      style: .default, handler: {_ in self.delete(selection: sender.data)}))
         alert.finish()
     }
 
     func playProduct(selection: Int) {
         UtilityActions.stopAudio(synth, playButton)
-        playlistItems.enumerated().forEach {if $0 >= selection {UtilityActions.playClickedNewItem(preferences.getString("PLAYLIST_" + $1, ""), synth, playButton)}}
+        playlistItems.enumerated().forEach {
+            if $0 >= selection {
+                UtilityActions.playClickedNewItem(preferences.getString("PLAYLIST_" + $1, ""), synth, playButton)
+            }
+        }
     }
 
     func viewProduct(selection: Int) {

@@ -56,7 +56,9 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         return UtilityMap.mapView(mapView, annotation)
     }
 
-    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView,
+                 annotationView: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
         mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
