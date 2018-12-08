@@ -426,7 +426,8 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach {
             let name = $0.name
-            let b = UIAlertAction(title: name + ": " +  preferences.getString("RID_LOC_" + name, "") + " (" + String($0.distance) + " mi)", style: .default, handler: { _ in self.ridChanged(name, index)})
+            let b = UIAlertAction(title: name + ": " +  preferences.getString("RID_LOC_" + name, "")
+                + " (" + String($0.distance) + " mi)", style: .default, handler: { _ in self.ridChanged(name, index)})
             alert.addAction(b)
         }
         alert.addAction(UIAlertAction(title: "Show warning text", style: .default, handler: {_ in
@@ -673,7 +674,8 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     func getMeteogram(_ location: LatLon) {
         let obsSite = UtilityMetar.findClosestObservation(location)
-        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox=Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta=" + obsSite.name
+        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
+            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta=" + obsSite.name
         self.goToVC("imageviewer")
     }
 
@@ -692,7 +694,11 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
     func updateColorLegend() {
         if RadarPreferences.radarShowLegend && numberOfPanes==1 {
             colorLegend.removeFromSuperview()
-            colorLegend = UIColorLegend(oglrArr[0].product, CGRect(x: 0, y: UIPreferences.statusBarHeight, width: 100, height: self.view.frame.size.height - UIPreferences.toolbarHeight - UIPreferences.statusBarHeight))
+            colorLegend = UIColorLegend(oglrArr[0].product,
+                                        CGRect(x: 0,
+                                               y: UIPreferences.statusBarHeight,
+                                               width: 100,
+                                               height: self.view.frame.size.height - UIPreferences.toolbarHeight - UIPreferences.statusBarHeight))
             colorLegend.backgroundColor = UIColor.clear
             colorLegend.isOpaque = false
             self.view.addSubview(colorLegend)

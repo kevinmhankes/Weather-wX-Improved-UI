@@ -145,7 +145,9 @@ public class ExternalGeodeticCalculator {
      * @param distance distance to travel (meters)
      * @return
      */
-    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid = ExternalEllipsoid.WGS84, _ start: ExternalGlobalCoordinates, _ startBearing: Double, _ distance: Double) -> ExternalGlobalCoordinates {
+    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid = ExternalEllipsoid.WGS84,
+                                           _ start: ExternalGlobalCoordinates, _ startBearing: Double,
+                                           _ distance: Double) -> ExternalGlobalCoordinates {
         return calculateEndingGlobalCoordinates(ellipsoid, start, startBearing, distance, [])
     }
     /**

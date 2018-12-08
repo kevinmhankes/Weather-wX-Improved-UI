@@ -103,7 +103,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
 
     @objc func searchClicked() {
         let alert = UIAlertController(title: "Search for location",
-                                      message: "Enter a city,state combination or a zipcode. After the search completes, valid latitude and longitude values should appear. Hit save after they appear.",
+                                      message: "Enter a city,state combination or a zipcode. After the search completes, "
+                                        + "valid latitude and longitude values should appear. Hit save after they appear.",
                                       preferredStyle: .alert)
         alert.addTextField {(textField) in textField.text = ""}
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in

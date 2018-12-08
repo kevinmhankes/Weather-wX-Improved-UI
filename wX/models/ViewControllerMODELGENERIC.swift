@@ -89,7 +89,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 } else if !ActVars.modelActivitySelected.contains("GLCFS") {
                     self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
                         self.modelObj.setTimeArr(idx,
-                                                 timeStr.split(" ")[0] + " " + UtilityModels.convertTimeRuntoTimeString(self.modelObj.runTimeData.timeStrConv.replace("Z", ""), timeStr.split(" ")[0], false))
+                                                 timeStr.split(" ")[0] + " "
+                                                    + UtilityModels.convertTimeRuntoTimeString(self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                                                                                               timeStr.split(" ")[0], false))
                     }
                 }
                 if self.modelObj.timeIdx>=self.modelObj.timeArr.count {

@@ -1,8 +1,8 @@
 // TODO add tilts to radar
 // TODO update UI to match android version, new theme, FAB, rounded corners, drop shadow
+// https://github.com/material-components/material-components-ios
+// https://material.io/develop/ios/components/buttons/
 // TODO color palette editor
-// TODO move global vars to myapp
-// TODO look into rounded corners
 // TODO standard model var names with android version
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO Metal - minor mem leak

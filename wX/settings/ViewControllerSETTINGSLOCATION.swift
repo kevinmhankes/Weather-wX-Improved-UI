@@ -88,7 +88,8 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         locations = []
         (0..<Location.numLocations).forEach {
             let locationStr = (String($0+1)
-                + ": \(MyApplication.locations[$0].name) \(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) \(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid) \(MyApplication.locations[$0].state)")
+                + ": \(MyApplication.locations[$0].name) \(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) "
+                + "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid) \(MyApplication.locations[$0].state)")
             locations.append(locationStr)
             let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon)"
             let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"

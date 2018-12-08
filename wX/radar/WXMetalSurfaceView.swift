@@ -136,7 +136,12 @@ final class WXMetalSurfaceView {
         textObj.addTV()
     }
 
-    static func gestureLongPress(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ longPressCount: Int, _ fn: (CGFloat, CGFloat, Int) -> Void, _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
+    static func gestureLongPress(_ uiv: UIViewController,
+                                 _ wxMetal: [WXMetalRender?],
+                                 _ textObj: WXMetalTextObject,
+                                 _ longPressCount: Int,
+                                 _ fn: (CGFloat, CGFloat, Int) -> Void,
+                                 _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)

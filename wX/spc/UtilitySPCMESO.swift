@@ -7,10 +7,11 @@
 final class UtilitySPCMESO {
 
     static let defaultSector = "19"
-    //static let IMG_SF = ":ttd:mcon:thea:mxth:temp_chg:dwpt_chg:mixr_chg:thte_chg:925mb:850mb:700mb:500mb:300mb:sbcp:mlcp:mucp:muli:laps:lllr:lclh:lfch:lfrh:effh:stor:stpc:cpsh:comp:lcls:lr3c:tdlr:qlcs1:qlcs2:pwtr:tran:prop:peff:fzlv:les1:"
-
-    static let imageSf = ":mixr:ttd:mcon:thea:mxth:temp_chg:dwpt_chg:mixr_chg:thte_chg:925mb:850mb:700mb:500mb:300mb:sbcp:mlcp:mucp:muli:laps:lllr:lclh:lfch:lfrh:effh:stor:stpc:cpsh:comp:lcls:lr3c:tdlr:qlcs1:qlcs2:pwtr:tran:tran_925:tran_925-850:prop:peff:fzlv:les1:" +
-    "tadv_925:7tad:tadv:"
+    
+    // FIXME convert to list
+    static let imageSf = ":mixr:ttd:mcon:thea:mxth:temp_chg:dwpt_chg:mixr_chg:thte_chg:925mb:850mb:700mb:500mb:300mb:sbcp:mlcp:"
+        + "mucp:muli:laps:lllr:lclh:lfch:lfrh:effh:stor:stpc:cpsh:comp:lcls:lr3c:tdlr:qlcs1:qlcs2:pwtr:tran:tran_925:tran_925-850:prop:peff:fzlv:les1:"
+        + "tadv_925:7tad:tadv:"
 
     static let titles = [
         ObjectMenuTitle("Observations", 3),
