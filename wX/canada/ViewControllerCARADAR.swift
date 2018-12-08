@@ -40,6 +40,9 @@ class ViewControllerCARADAR: UIwXViewController {
             rid = String(ActVars.CARADARprov)
             mosaicShown = true
         }
+        if !RadarPreferences.wxoglRememberLocation {
+            rid = Location.rid
+        }
         self.getContent()
     }
 
