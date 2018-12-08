@@ -23,7 +23,7 @@ final class UtilityDownloadNWS {
     }
 
     static func getNWSStringFromURLS(_ url: String) -> String {
-        let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS " + appName + " " + appCreatorEmail])
+        let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS " + MyApplication.appName + " " + MyApplication.appCreatorEmail])
         let just = JustOf<HTTP>(defaults: myJustDefaults)
         let result = just.get(url)
         return result.text ?? ""
@@ -48,7 +48,7 @@ final class UtilityDownloadNWS {
     static func getNWSStringFromURLXML(_ url: String) -> String {
         let myJustDefaults = JustSessionDefaults(
             headers: [
-                "User-Agent": "IOS " + appName + " " + appCreatorEmail,
+                "User-Agent": "IOS " + MyApplication.appName + " " + MyApplication.appCreatorEmail,
                 "Accept": "application/atom+xml"
             ]
         )

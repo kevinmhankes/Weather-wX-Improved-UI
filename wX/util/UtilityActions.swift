@@ -95,11 +95,10 @@ final class UtilityActions {
             } else {
                 token = "cawarn"
             }
-        case "About " + appName + " " + UtilityUI.getVersion():
-            ActVars.TEXTVIEWText = aboutStr + " " + UtilityUI.getVersion()
+        case "About " + MyApplication.appName + " " + UtilityUI.getVersion():
+            ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
             token = "textviewer"
         case "Spotters": token = "spotters"
-        //case "Metal Radar Test": token = "wxmetalradar"
         case "Local Forecast":
             ActVars.WEBVIEWuseUrl = true
             ActVars.WEBVIEWurl = "http://forecast.weather.gov/MapClick.php?lon="
@@ -141,9 +140,8 @@ final class UtilityActions {
             "PlayList",
             "Local Forecast",
             "Settings",
-            //"Metal Radar Test",
             "Help Mode - Off",
-            "About "  + appName + " " + UtilityUI.getVersion()
+            "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
             ]
         if MyApplication.helpMode {
             menuList.enumerated().forEach {if $1.contains("Help Mode") {menuList[$0] = "Help Mode - On"}}
