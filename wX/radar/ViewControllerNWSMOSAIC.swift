@@ -70,8 +70,8 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-        ["5", "10", "20", "30"].forEach {
-            cnt in alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in self.getAnimation(cnt)}))
+        ["5", "10", "20", "30"].forEach { count in
+            alert.addAction(UIAlertAction(title: count, style: .default, handler: {_ in self.getAnimation(count)}))
         }
         alert.finish()
     }

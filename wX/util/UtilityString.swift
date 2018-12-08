@@ -130,8 +130,8 @@ final class UtilityString {
             let nsString = str as NSString
             let results = regex.matches(in: str, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
-            results.forEach {
-                result in (0..<result.numberOfRanges).forEach {
+            results.forEach { result in
+                (0..<result.numberOfRanges).forEach {
                     match.append(nsString.substring(with: result.range(at: $0)))
                 }
             }
