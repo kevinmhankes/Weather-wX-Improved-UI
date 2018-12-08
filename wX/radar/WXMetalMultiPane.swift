@@ -516,7 +516,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: glv.rid)
         let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
-        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline + String(dist.roundTo(places: 2)) + " miles from location" + ", " + String(distRid.roundTo(places: 2)) + " miles from " + wxMetal[index]!.rid
+        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+            + String(dist.roundTo(places: 2)) + " miles from location"
+            + ", " + String(distRid.roundTo(places: 2)) + " miles from "
+            + wxMetal[index]!.rid
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: "
                 + wxMetal[index]!.gpsLocation.latString.truncate(10)

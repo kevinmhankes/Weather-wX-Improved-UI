@@ -415,7 +415,11 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: oglrArr[0].rid)
         let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
-        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline + String(dist.roundTo(places: 2)) + " miles from location" + ", " + String(distRid.roundTo(places: 2)) + " miles from " + oglrArr[0].rid
+        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "")
+            + MyApplication.newline
+            + String(dist.roundTo(places: 2))
+            + " miles from location" + ", "
+            + String(distRid.roundTo(places: 2)) + " miles from " + oglrArr[0].rid
         if glv.gpsLocation.latString != "0.0" && glv.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: "
                 + glv.gpsLocation.latString.truncate(10)
