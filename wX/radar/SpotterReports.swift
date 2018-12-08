@@ -15,7 +15,15 @@ final class SpotterReports {
 	var time: String
 	var city: String
 
-	init(_ firstName: String, _ lastName: String, _ lat: String, _ lon: String, _ narrative: String, _ uniq: String, _ type: String, _ time: String, _ city: String) {
+	init(_ firstName: String,
+         _ lastName: String,
+         _ lat: String,
+         _ lon: String,
+         _ narrative: String,
+         _ uniq: String,
+         _ type: String,
+         _ time: String,
+         _ city: String) {
 		self.firstName = firstName
 		self.lastName = lastName.replaceAll("^ ", "")
         location = LatLon(lat, lon)

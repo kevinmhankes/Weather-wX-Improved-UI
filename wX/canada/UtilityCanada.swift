@@ -315,7 +315,8 @@ final class UtilityCanada {
     }
 
     static func get7Day(_ html: String) -> String {
-        let resultList = html.parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary type=\"html\">(.*?\\.) Forecast.*?</summary>")
+        let resultList = html
+            .parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary type=\"html\">(.*?\\.) Forecast.*?</summary>")
         var tmpStr = ""
         var sb2 = ""
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
@@ -363,9 +364,12 @@ final class UtilityCanada {
                 notFound = false
             }
         }
-        warningData = warningData.replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM feed.> <a href=./rss/battleboard/.*?.>ATOM</a></li>", "")
-        warningData = warningData.replace(" <div class=\"col-xs-12\">", "").replace("<section class=\"followus hidden-print\"><h2>Follow:</h2>", "")
-        warningData = warningData.replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
+        warningData = warningData
+            .replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM feed.> <a href=./rss/battleboard/.*?.>ATOM</a></li>", "")
+        warningData = warningData
+            .replace(" <div class=\"col-xs-12\">", "").replace("<section class=\"followus hidden-print\"><h2>Follow:</h2>", "")
+        warningData = warningData
+            .replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
         return warningData.replace("<div class=\"row\">", "")
     }
 

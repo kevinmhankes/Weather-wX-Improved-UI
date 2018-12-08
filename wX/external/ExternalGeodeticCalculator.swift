@@ -27,7 +27,10 @@ public class ExternalGeodeticCalculator {
      *            be populated with the result
      * @return
      */
-    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid, _ start: ExternalGlobalCoordinates, _ startBearing: Double, _ distance: Double,
+    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid,
+                                           _ start: ExternalGlobalCoordinates,
+                                           _ startBearing: Double,
+                                           _ distance: Double,
                                            _ endBearing: [Double]) -> ExternalGlobalCoordinates {
         let a = ellipsoid.getSemiMajorAxis()
         let b = ellipsoid.getSemiMinorAxis()
@@ -83,7 +86,8 @@ public class ExternalGeodeticCalculator {
             deltaSigma = B
                 * sinSigma
                 * (cosSigmaM2 + (B / 4.0)
-                    * (cosSignma * (-1 + 2 * cos2SigmaM2) - (B / 6.0) * cosSigmaM2 * (-3 + 4 * sinSigma * sinSigma) * (-3 + 4 * cos2SigmaM2)))
+                    * (cosSignma * (-1 + 2 * cos2SigmaM2) - (B / 6.0)
+                        * cosSigmaM2 * (-3 + 4 * sinSigma * sinSigma) * (-3 + 4 * cos2SigmaM2)))
 
             // eq. 7
             sigma = sOverbA + deltaSigma
@@ -121,7 +125,8 @@ public class ExternalGeodeticCalculator {
         let C = (f / 16) * cos2Alpha * (4 + f * (4 - 3 * cos2Alpha))
 
         // eq. 11
-        let L = lambda - (1 - C) * f * sinAlpha * (sigma + C * sinSigma * (cosSigmaM2 + C * cosSigma * (-1 + 2 * cos2SigmaM2)))
+        let L = lambda - (1 - C) * f * sinAlpha
+            * (sigma + C * sinSigma * (cosSigmaM2 + C * cosSigma * (-1 + 2 * cos2SigmaM2)))
 
         // eq. 12
         let alpha2 = atan2(sinAlpha, -sinU1 * sinSigma + cosU1 * cosSigma * cosAlpha1)
@@ -159,7 +164,9 @@ public class ExternalGeodeticCalculator {
      * @param end ending coordinates
      * @return
      */
-    func  calculateGeodeticCurve(ellipsoid: ExternalEllipsoid, start: ExternalGlobalCoordinates, end: ExternalGlobalCoordinates) -> ExternalGeodeticCurve {
+    func  calculateGeodeticCurve(ellipsoid: ExternalEllipsoid,
+                                 start: ExternalGlobalCoordinates,
+                                 end: ExternalGlobalCoordinates) -> ExternalGeodeticCurve {
         //
         // All equation numbers refer back to Vincenty's publication:
         // See http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
@@ -217,7 +224,8 @@ public class ExternalGeodeticCalculator {
             let sinlambda = sin(lambda)
             let coslambda = cos(lambda)
             // eq. 14
-            let sin2sigma = (cosU2 * sinlambda * cosU2 * sinlambda) + (cosU1sinU2 - sinU1cosU2 * coslambda) * (cosU1sinU2 - sinU1cosU2 * coslambda)
+            let sin2sigma = (cosU2 * sinlambda * cosU2 * sinlambda)
+                + (cosU1sinU2 - sinU1cosU2 * coslambda) * (cosU1sinU2 - sinU1cosU2 * coslambda)
             let sinsigma = sqrt(sin2sigma)
             // eq. 15
             let cossigma = sinU1sinU2 + (cosU1cosU2 * coslambda)
@@ -313,7 +321,9 @@ public class ExternalGeodeticCalculator {
      * @param end ending position
      * @return
      */
-    func  calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid, start: ExternalGlobalPosition, end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
+    func  calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid,
+                                       start: ExternalGlobalPosition,
+                                       end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
         // calculate elevation differences
         let elev1 = start.getElevation()
         let elev2 = end.getElevation()

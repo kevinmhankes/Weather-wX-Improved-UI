@@ -119,14 +119,17 @@ final class UtilityModelESRLInputOutput {
                 + "_jet/" + om.run.replaceAll("Z", "")+"/"+sectorLocal.lowercased()+"/"+param+"_f"+om.time+".png"
             ondemandUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/" + "displayMapLocalDiskDateDomainZip"
                 + zipStr + ".cgi?keys=" + om.model.lowercased() + "_jet:&runtime=" + om.run.replaceAll("Z", "")
-                + "&plot_type=" + param + "&fcst=" + om.time + "&time_inc=60&num_times=16&model=" + om.model.lowercased()
-                + "&ptitle=" + om.model + "%20Model%20Fields%20-%20Experimental&maxFcstLen=15&fcstStrLen=-1&domain=" + sectorLocal.lowercased() + "&adtfn=1"
+                + "&plot_type=" + param + "&fcst=" + om.time
+                + "&time_inc=60&num_times=16&model=" + om.model.lowercased()
+                + "&ptitle=" + om.model + "%20Model%20Fields%20-%20Experimental&maxFcstLen=15&fcstStrLen=-1&domain="
+                + sectorLocal.lowercased() + "&adtfn=1"
         } else {
             imgUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased() + "/for_web/"
                 + om.model.lowercased() + "_jet/"
                 + om.run.replaceAll("Z", "") + "/"
                 + sectorLocal.lowercased() + "/" + param + "_f" + om.time + ".png"
-            ondemandUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased() + "/" + "displayMapLocalDiskDateDomainZip"
+            ondemandUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased()
+                + "/" + "displayMapLocalDiskDateDomainZip"
                 + zipStr + ".cgi?keys=" + om.model.lowercased()+"_jet:&runtime="
                 + om.run.replaceAll("Z", "") + "&plot_type=" + param + "&fcst="
                 + om.time + "&time_inc=60&num_times=16&model=" + om.model.lowercased()

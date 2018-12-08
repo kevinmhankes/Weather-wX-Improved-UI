@@ -11,9 +11,12 @@ final class UtilityModelSPCHRRRInputOutput {
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunstatus = (MyApplication.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/latestHour.php").getHtml()
-        let html = htmlRunstatus.parse(".*?.LatestFile.: .s[0-9]{2}/R([0-9]{10})_F[0-9]{3}_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-        runData.imageCompleteStr = htmlRunstatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F([0-9]{3})_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-        runData.validTime = htmlRunstatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F[0-9]{3}_V([0-9]{10})_S[0-9]{2}_.*?.gif..*?")
+        let html = htmlRunstatus
+            .parse(".*?.LatestFile.: .s[0-9]{2}/R([0-9]{10})_F[0-9]{3}_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
+        runData.imageCompleteStr = htmlRunstatus
+            .parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F([0-9]{3})_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
+        runData.validTime = htmlRunstatus
+            .parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F[0-9]{3}_V([0-9]{10})_S[0-9]{2}_.*?.gif..*?")
         runData.appendListRun(html)
         runData.appendListRun(UtilityTime.genModelRuns(html, 1))
         runData.mostRecentRun = html

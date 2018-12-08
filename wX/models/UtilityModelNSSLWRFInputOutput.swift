@@ -55,10 +55,12 @@ final class UtilityModelNSSLWRFInputOutput {
         let day = om.run.substring(6, 8)
         let hour = om.run.substring(8, 10)
         let url = baseUrl + "/graphics/models/" + model + modelPostfix + "/" + year + "/" + month
-            + "/" + day + "/" + hour + "00/f0" + om.time + "00/" + om.param + ".spc_" + sector.lowercased() + ".f0" + om.time + "00.png"
+            + "/" + day + "/" + hour + "00/f0" + om.time + "00/" + om.param + ".spc_"
+            + sector.lowercased() + ".f0" + om.time + "00.png"
         let baseLayer = Bitmap(baseLayerUrl)
         let prodLayer = Bitmap(url)
-        let consolidatedImage = UtilityImg.addColorBG(UtilityImg.mergeImages(prodLayer.image, baseLayer.image), UIColor.white)
+        let consolidatedImage = UtilityImg.addColorBG(UtilityImg.mergeImages(prodLayer.image, baseLayer.image),
+                                                      UIColor.white)
         return Bitmap(consolidatedImage)
     }
 }

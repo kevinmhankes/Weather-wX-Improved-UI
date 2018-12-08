@@ -81,7 +81,8 @@ public class ExternalPolygon {
         }
 
         /**
-         * Close the polygon shape. This will create a new side (edge) from the <b>last</b> vertex point to the <b>first</b> vertex point.
+         * Close the polygon shape. This will create a new side (edge)
+         * from the <b>last</b> vertex point to the <b>first</b> vertex point.
          *
          * @return The builder
          */
@@ -241,7 +242,10 @@ public class ExternalPolygon {
      * @return <code>True</code> if the point in bounding box, otherwise return <code>False</code>
      */
     func  inBoundingBox(point: ExternalPoint) -> Bool {
-        if point.x < _boundingBox.xMin || point.x > _boundingBox.xMax || point.y < _boundingBox.yMin || point.y > _boundingBox.yMax {
+        if point.x < _boundingBox.xMin
+            || point.x > _boundingBox.xMax
+            || point.y < _boundingBox.yMin
+            || point.y > _boundingBox.yMax {
             return false
         }
         return true
