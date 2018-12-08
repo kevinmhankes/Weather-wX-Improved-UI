@@ -175,7 +175,9 @@ final class WXMetalSurfaceView {
         let fudge: Float = 0.01
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                if gestureRecognizer.state == UIGestureRecognizerState.changed && $0!.zoom < maxZoom && $0!.zoom > minZoom {
+                if gestureRecognizer.state == UIGestureRecognizerState.changed
+                    && $0!.zoom < maxZoom
+                    && $0!.zoom > minZoom {
                     setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
                     $0!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
                     if $0!.zoom < minZoom {
@@ -190,7 +192,9 @@ final class WXMetalSurfaceView {
                 $0!.setZoom()
             }
         } else {
-            if gestureRecognizer.state == UIGestureRecognizerState.changed && wxMetal[radarIndex]!.zoom < maxZoom && wxMetal[radarIndex]!.zoom > minZoom {
+            if gestureRecognizer.state == UIGestureRecognizerState.changed
+                && wxMetal[radarIndex]!.zoom < maxZoom
+                && wxMetal[radarIndex]!.zoom > minZoom {
                 setModifiedZoom(wxMetal[radarIndex]!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown),
                                 wxMetal[radarIndex]!.zoom,
                                 wxMetal[radarIndex]!)

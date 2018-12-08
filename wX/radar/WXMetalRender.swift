@@ -384,7 +384,9 @@ class WXMetalRender {
                 self.radarBuffers.fileName = url
             }
             if url=="" {  // not anim
-                [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach { if $0.display {self.constructLevel3TextProduct($0)}}
+                [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
+                    if $0.display {self.constructLevel3TextProduct($0)}
+                }
                 if PolygonType.SPOTTER.display {
                     self.constructSpotters()
                 }
@@ -447,8 +449,10 @@ class WXMetalRender {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
         }
-        locdotBuffers.latList = locmarkerAl.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value)}
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value)}
+        locdotBuffers.latList = locmarkerAl.enumerated().filter { idx, _ in
+            idx & 1 == 0}.map { _, value in Double(value)}
+        locdotBuffers.lonList = locmarkerAl.enumerated().filter { idx, _ in
+            idx & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 24
         locdotBuffers.count = locmarkerAl.count
         constructTriangles(locdotBuffers)
@@ -586,14 +590,18 @@ class WXMetalRender {
         (0...4).forEach { z in
             if let flArr = UtilitySWOD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]),
+                                                                               Double(flArr[j+1]) * -1.0,
+                                                                               pn)
                     swoBuffers.putFloat(tmpCoords.0)
                     swoBuffers.putFloat(tmpCoords.1 * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))
 
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]),
+                                                                               Double(flArr[j+3]) * -1.0,
+                                                                               pn)
                     swoBuffers.putFloat(tmpCoords.0)
                     swoBuffers.putFloat(tmpCoords.1 * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
