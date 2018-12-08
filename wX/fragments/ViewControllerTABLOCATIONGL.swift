@@ -241,12 +241,16 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func ccAction() {
-        let alert2 = UIAlertController(title: "Select from:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert2 = UIAlertController(title: "Select from:",
+                                       message: "",
+                                       preferredStyle: UIAlertControllerStyle.actionSheet)
         alert2.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert2.addAction(UIAlertAction(title: "Sun/Moon data..", style: .default, handler: {_ in self.sunMoonData()}))
         alert2.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
         alert2.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert2.popoverPresentationController {popoverController.barButtonItem = self.menuButton}
+        if let popoverController = alert2.popoverPresentationController {
+            popoverController.barButtonItem = self.menuButton
+        }
         self.present(alert2, animated: true, completion: nil)
     }
 
@@ -264,7 +268,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             DispatchQueue.main.async {
                 self.textArr[product] = html
                 let objTv = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
-                objTv.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product, target: self, action: #selector(self.textTap(sender:))))
+                objTv.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product,
+                                                                          target: self,
+                                                                          action: #selector(self.textTap(sender:))))
             }
         }
     }
@@ -283,7 +289,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             let bitmap = UtilityDownload.getImageProduct(product)
             DispatchQueue.main.async {
                 let imgObj = ObjectImage(stackView, bitmap, hs: true)
-                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product, target: self, action: #selector(self.imageTap(sender:))))
+                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product,
+                                                                           target: self,
+                                                                           action: #selector(self.imageTap(sender:))))
             }
         }
     }
