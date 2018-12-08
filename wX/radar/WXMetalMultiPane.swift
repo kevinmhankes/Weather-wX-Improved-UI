@@ -58,7 +58,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
             toolbarTop.setConfig(.top)
-            pangeRange.forEach {siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))}
+            pangeRange.forEach {
+                siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
+            }
             var items = [UIBarButtonItem]()
             items.append(flexBarButton)
             pangeRange.forEach {
@@ -82,13 +84,20 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
 
         if RadarPreferences.locdotFollowsGps {
-            NotificationCenter.default.addObserver(self, selector: #selector(WXMetalMultipane.invalidateGPS), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(WXMetalMultipane.invalidateGPS),
+                                                   name: NSNotification.Name.UIApplicationWillResignActive,
+                                                   object: nil)
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
 
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        //productButton = ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)))
-        pangeRange.forEach {productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))}
+        pangeRange.forEach {
+            productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))
+        }
         radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
 
@@ -121,11 +130,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
                                                       bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
                                                       top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
-        //let projectionMatrix = GLKMatrix4MakeOrtho(-1.0 * ortInt, ortInt,
-        //                                           -1.0 * ortInt * (1.0 / surfaceRatio),
-        //                                           ortInt * (1 / surfaceRatio), 1.0, -1.0)
-        //projectionMatrix = Matrix4.makeOrthoViewAngle(screenWidth/2.0 * -1.0, right: screenWidth/2.0, bottom: screenHeight/2 * -1.0, top: screenHeight/2, nearZ: -100.0, farZ: 100.0)
-
         let halfWidth = screenWidth / 2
         let halfHeight = screenHeight / 2
         pangeRange.enumerated().forEach { index, _ in
@@ -138,19 +142,39 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[0]!.frame = view.layer.frame
         } else if numberOfPanes == 2 {
             // top half for dual
-            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: CGFloat(screenWidth), height: CGFloat(halfHeight))
+            metalLayer[0]!.frame = CGRect(x: 0,
+                                          y: 0,
+                                          width: CGFloat(screenWidth),
+                                          height: CGFloat(halfHeight))
             // bottom half for dual
-            metalLayer[1]!.frame = CGRect(x: 0, y: CGFloat(halfHeight), width: CGFloat(screenWidth), height: CGFloat(halfHeight))
+            metalLayer[1]!.frame = CGRect(x: 0,
+                                          y: CGFloat(halfHeight),
+                                          width: CGFloat(screenWidth),
+                                          height: CGFloat(halfHeight))
         } else if numberOfPanes == 4 {
             // top half for quad
-            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: CGFloat(halfWidth), height: CGFloat(halfHeight))
-            metalLayer[1]!.frame = CGRect(x: CGFloat(halfWidth), y: 0, width: CGFloat(halfWidth), height: CGFloat(halfHeight))
+            metalLayer[0]!.frame = CGRect(x: 0,
+                                          y: 0,
+                                          width: CGFloat(halfWidth),
+                                          height: CGFloat(halfHeight))
+            metalLayer[1]!.frame = CGRect(x: CGFloat(halfWidth),
+                                          y: 0,
+                                          width: CGFloat(halfWidth),
+                                          height: CGFloat(halfHeight))
             // bottom half for quad
-            metalLayer[2]!.frame = CGRect(x: 0, y: CGFloat(halfHeight), width: CGFloat(halfWidth), height: CGFloat(halfHeight))
-            metalLayer[3]!.frame = CGRect(x: CGFloat(halfWidth), y: CGFloat(halfHeight), width: CGFloat(halfWidth), height: CGFloat(halfHeight))
+            metalLayer[2]!.frame = CGRect(x: 0,
+                                          y: CGFloat(halfHeight),
+                                          width: CGFloat(halfWidth),
+                                          height: CGFloat(halfHeight))
+            metalLayer[3]!.frame = CGRect(x: CGFloat(halfWidth),
+                                          y: CGFloat(halfHeight),
+                                          width: CGFloat(halfWidth),
+                                          height: CGFloat(halfHeight))
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
-        pangeRange.forEach { wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
+        pangeRange.forEach {
+            wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
+        }
         radarSiteButton.title = wxMetal[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
             siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}
@@ -287,7 +311,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, textObj, longPressCount, longPressAction, gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(self,
+                                                             wxMetal,
+                                                             textObj,
+                                                             longPressCount,
+                                                             longPressAction,
+                                                             gestureRecognizer)
     }
 
     @objc func doneClicked() {
@@ -420,7 +449,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if !inOglAnim {
             let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
             ["5", "10", "20", "30", "40", "50", "60"].forEach { cnt in
-                alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in self.animateFrameCntClicked(cnt)}))
+                alert.addAction(UIAlertAction(title: cnt,
+                                              style: .default,
+                                              handler: {_ in self.animateFrameCntClicked(cnt)}))
             }
             alert.finish()
         } else {
@@ -547,9 +578,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn {
-            if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = radarSiteButton}
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.barButtonItem = radarSiteButton
+            }
         } else {
-            if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = siteButton[0]}
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.barButtonItem = siteButton[0]
+            }
         }
         self.present(alert, animated: true, completion: nil)
     }
@@ -580,7 +615,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func getMeteogram(_ location: LatLon) {
         let obsSite = UtilityMetar.findClosestObservation(location)
         ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
-            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta=" + obsSite.name
+            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
+            + obsSite.name
         self.goToVC("imageviewer")
     }
 
@@ -627,7 +663,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                         CGRect(x: 0,
                                                y: UIPreferences.statusBarHeight,
                                                width: 100,
-                                               height: self.view.frame.size.height - UIPreferences.toolbarHeight - UIPreferences.statusBarHeight))
+                                               height: self.view.frame.size.height
+                                                - UIPreferences.toolbarHeight
+                                                - UIPreferences.statusBarHeight))
             colorLegend.backgroundColor = UIColor.clear
             colorLegend.isOpaque = false
             self.view.addSubview(colorLegend)

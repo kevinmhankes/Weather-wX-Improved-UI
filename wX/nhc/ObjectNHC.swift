@@ -42,7 +42,8 @@ final class ObjectNHC: NSObject {
     func getData() {
         imageUrls.forEach {bitmaps.append(Bitmap($0))}
         (1...5).forEach {
-            let dataRet = UtilityNHC.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String($0) + ".xml")
+            let dataRet = UtilityNHC.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix
+                + "/nhc_at" + String($0) + ".xml")
             if dataRet.title != "" {
                 self.atlSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
@@ -54,7 +55,8 @@ final class ObjectNHC: NSObject {
             }
         }
         (1...5).forEach {
-            let dataRet = UtilityNHC.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String($0) + ".xml")
+            let dataRet = UtilityNHC.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix
+                + "/nhc_ep" + String($0) + ".xml")
             if dataRet.title != "" {
                 self.pacSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
