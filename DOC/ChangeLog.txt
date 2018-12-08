@@ -9,8 +9,6 @@
 // TODO sync version between both platforms
 // TODO look into notch spacing in latest phones
 // TODO standard model var names with android version
-// TODO add code to objectmetalbuffers true/false to show if displayHold should be consulted
-// TODO add display hold in pan and gesture zoom
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO Metal - minor mem leak
 // TODO add code to handle rectangular transformation in render
