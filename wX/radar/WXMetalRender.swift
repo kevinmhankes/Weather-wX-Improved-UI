@@ -31,9 +31,10 @@ class WXMetalRender {
     var lastPanLocation: CGPoint!
     var TDWR = false
     private static let zoomToHideMiscFeatures: Float = 0.5
+    var displayHold: Bool = false
     private var stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
     private var countyLineBuffers = ObjectMetalBuffers(GeographyType.countyLines, 0.75)
-    private var hwBuffers = ObjectMetalBuffers(GeographyType.highways, 0.45)
+    private var hwBuffers = ObjectMetalBuffers(GeographyType.highways, zoomToHideMiscFeatures)
     private var hwExtBuffers = ObjectMetalBuffers(GeographyType.highwaysExtended, 3.00)
     private var lakeBuffers = ObjectMetalBuffers(GeographyType.lakes, zoomToHideMiscFeatures)
     private var stiBuffers = ObjectMetalBuffers(PolygonType.STI, zoomToHideMiscFeatures)
@@ -49,8 +50,8 @@ class WXMetalRender {
     private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
     private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
     private var swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
-    private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
-    private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
+    private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT, zoomToHideMiscFeatures)
+    private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE, zoomToHideMiscFeatures)
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
     private var spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
     private var colorSwo = [Int]()
@@ -157,15 +158,17 @@ class WXMetalRender {
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
                 if vbuffer.scaleCutOff < zoom {
-                    renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
-                    let nodeModelMatrix = self.modelMatrix()
-                    nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-                    let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2, options: [])
-                    let bufferPointer = uniformBuffer?.contents()
-                    memcpy(bufferPointer, nodeModelMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
-                    memcpy(bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(), projectionMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
-                    renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                    renderEncoder!.drawPrimitives(type: vbuffer.shape, vertexStart: 0, vertexCount: vbuffer.vertexCount)
+                    if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
+                        renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
+                        let nodeModelMatrix = self.modelMatrix()
+                        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
+                        let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2, options: [])
+                        let bufferPointer = uniformBuffer?.contents()
+                        memcpy(bufferPointer, nodeModelMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+                        memcpy(bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(), projectionMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+                        renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
+                        renderEncoder!.drawPrimitives(type: vbuffer.shape, vertexStart: 0, vertexCount: vbuffer.vertexCount)
+                    }
                 }
             }
         }

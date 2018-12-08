@@ -52,8 +52,12 @@ final class WXMetalSurfaceView {
         }
         gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
         switch gestureRecognizer.state {
-        case .began: uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
-        case .ended: textObj.addTV()
+        case .began:
+            uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+            wxMetal.forEach {$0!.displayHold = true}
+        case .ended:
+            textObj.addTV()
+            wxMetal.forEach {$0!.displayHold = false}
         default: break
         }
     }
@@ -183,8 +187,12 @@ final class WXMetalSurfaceView {
         }
         gestureRecognizer.scale = 1
         switch gestureRecognizer.state {
-        case .began: uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
-        case .ended: textObj.addTV()
+        case .began:
+            uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+            wxMetal.forEach {$0!.displayHold = true}
+        case .ended:
+            textObj.addTV()
+            wxMetal.forEach {$0!.displayHold = false}
         default: break
         }
     }

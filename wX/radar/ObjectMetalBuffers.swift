@@ -25,6 +25,7 @@ class ObjectMetalBuffers {
     var vertexCount = 0
     var mtlBuffer: MTLBuffer?
     var shape: MTLPrimitiveType = .triangle
+    var honorDisplayHold = false
 
     init() {}
 
@@ -48,11 +49,12 @@ class ObjectMetalBuffers {
         self.scaleCutOff = scaleCutOff
         self.shape = .line
     }
-    
+
     convenience init (_ type: PolygonType, _ scaleCutOff: Float) {
         self.init()
         self.type = type
         self.scaleCutOff = scaleCutOff
+        self.honorDisplayHold = true
         self.shape = .line
         if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
             self.shape = .triangle
