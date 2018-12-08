@@ -65,11 +65,13 @@ final class UtilityModels {
     static func getAnimation(_ om: ObjectModel, _ getImage: (ObjectModel) -> Bitmap) -> AnimationDrawable {
         var bitmaps = [Bitmap]()
         let origTime = om.timeStr
-        (om.timeIndex..<om.timeArr.count).forEach {
-            om.timeStr = om.timeArr[$0].split(" ")[0]
-            bitmaps.append(getImage(om))
+        if om.timeArr.count > 0 {
+            (om.timeIndex..<om.timeArr.count).forEach {
+                om.timeStr = om.timeArr[$0].split(" ")[0]
+                bitmaps.append(getImage(om))
+            }
+            om.timeStr = origTime
         }
-        om.timeStr = origTime
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }

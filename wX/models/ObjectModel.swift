@@ -552,7 +552,8 @@ final public class ObjectModel {
 
     func timeIdxDecr() {
         self.timeIdx -= 1
-        self.timeStr = self.timeArr[timeIdx]
+        //self.timeStr = self.timeArr[timeIdx]
+        self.timeStr = self.timeArr.safeGet(timeIdx)
         self.timeButton.title = timeStr
     }
 
