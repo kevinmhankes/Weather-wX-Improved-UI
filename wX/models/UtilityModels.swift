@@ -46,7 +46,11 @@ final class UtilityModels {
         return futureDay + "  " + String(hourOfDay) + amPm
     }
 
-    static func updateTime(_ run: String, _ modelCurrentTime: String, _ listTime: [String], _ prefix: String, _ showDate: Bool) -> [String] {
+    static func updateTime(_ run: String,
+                           _ modelCurrentTime: String,
+                           _ listTime: [String],
+                           _ prefix: String,
+                           _ showDate: Bool) -> [String] {
         var tmpStr = ""
         var run2 = run.replace("Z", "").replace("z", "")
         var listTimeNew = [String]()
@@ -56,7 +60,8 @@ final class UtilityModels {
             if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) {run2 = String((Int(run2) ?? 0) - 24)}
             listTime.enumerated().forEach {
                 tmpStr = $1.split(" ")[0].replace(prefix, "")
-                listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
+                listTimeNew.append(prefix + tmpStr + " "
+                    + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
             }
         }
         return listTimeNew

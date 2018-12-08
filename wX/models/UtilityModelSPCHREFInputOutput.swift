@@ -41,7 +41,8 @@ final class UtilityModelSPCHREFInputOutput {
                     + "." + sector + ".f0" + om.time + "00." + paramArr[1] + ".tl00.png"
             } else {
                 url = MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/models/href/" + year + "/" + month
-                    + "/" + day + "/" + hour + "00/f0" + om.time + "00/" + $0 + "." + sector + ".f0" + om.time + "00.png"
+                    + "/" + day + "/" + hour + "00/f0" + om.time
+                    + "00/" + $0 + "." + sector + ".f0" + om.time + "00.png"
             }
             urlArr.append(url)
         }

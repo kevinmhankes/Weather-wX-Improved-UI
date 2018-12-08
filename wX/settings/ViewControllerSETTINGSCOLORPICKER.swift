@@ -30,9 +30,17 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
                                                      height: UIScreen.main.bounds.height - toolbar.frame.size.height * 2 - colorBarSize - UIPreferences.statusBarHeight))
         colPicker.delegate = self
         self.view.addSubview(colPicker)
-        colorBar = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize, width: UIScreen.main.bounds.width, height: colorBarSize ))
+        colorBar = UIView(frame: CGRect(x: 0,
+                                        y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
+                                        width: UIScreen.main.bounds.width,
+                                        height: colorBarSize ))
         colorBar.backgroundColor = ActVars.ColorObject.uicolorCurrent
-        colorButton.title = "(" + String(ActVars.ColorObject.colorsCurrent.0) + "," + String(ActVars.ColorObject.colorsCurrent.1) + "," + String(ActVars.ColorObject.colorsCurrent.2) + ")"
+        colorButton.title = "(" + String(ActVars.ColorObject.colorsCurrent.0)
+            + ","
+            + String(ActVars.ColorObject.colorsCurrent.1)
+            + ","
+            + String(ActVars.ColorObject.colorsCurrent.2)
+            + ")"
         self.view.addSubview(colorBar)
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
@@ -65,7 +73,9 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
 
     @objc func saveDefaultColorClicked() {
         editor.putInt(ActVars.ColorObject.prefVar,
-                      Color.rgb(ActVars.ColorObject.defaultRed, ActVars.ColorObject.defaultGreen, ActVars.ColorObject.defaultBlue))
+                      Color.rgb(ActVars.ColorObject.defaultRed,
+                                ActVars.ColorObject.defaultGreen,
+                                ActVars.ColorObject.defaultBlue))
         colorBar.backgroundColor = ActVars.ColorObject.uicolorDefault
         ActVars.ColorObject.regenCurrentColor()
         newRed = ActVars.ColorObject.defaultRed

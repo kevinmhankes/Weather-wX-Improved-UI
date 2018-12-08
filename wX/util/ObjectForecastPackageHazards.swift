@@ -61,7 +61,9 @@ final class ObjectForecastPackageHazards {
         return numHaz
     }
 
-    static func getHazardCards(_ stackView: UIStackView, _ objHazards: ObjectForecastPackageHazards, _ isUS: Bool = true) {
+    static func getHazardCards(_ stackView: UIStackView,
+                               _ objHazards: ObjectForecastPackageHazards,
+                               _ isUS: Bool = true) {
         self.isUS = isUS
         var numHaz = 0
         let stackViewLocalHaz = ObjectStackViewHS()

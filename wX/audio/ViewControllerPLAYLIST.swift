@@ -104,14 +104,19 @@ class ViewControllerPLAYLIST: UIwXViewController {
     func updateView() {
         self.stackView.subviews.forEach {$0.removeFromSuperview()}
         playlistItems.enumerated().forEach {
-            let txtObject = ObjectTextView(self.stackView, $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", ""))
+            let txtObject = ObjectTextView(self.stackView,
+                                           $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", ""))
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-            txtObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0, target: self, action: #selector(self.buttonPressed(sender:))))
+            txtObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
+                                                                          target: self,
+                                                                          action: #selector(self.buttonPressed(sender:))))
         }
     }
 
     @objc func playClicked() {
-        playlistItems.forEach {UtilityActions.playClicked(preferences.getString("PLAYLIST_" + $0, ""), synth, playButton)}
+        playlistItems.forEach {
+            UtilityActions.playClicked(preferences.getString("PLAYLIST_" + $0, ""), synth, playButton)
+        }
     }
 
     @objc func downloadClicked() {
@@ -123,10 +128,14 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func addClicked() {
-        let alert = UIAlertController(title: "Product Selection", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = UIAlertController(title: "Product Selection",
+                                      message: "",
+                                      preferredStyle: UIAlertControllerStyle.actionSheet)
         GlobalArrays.nwsTextProducts.forEach {
             var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in self.addProduct(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction(title: $0,
+                                          style: .default,
+                                          handler: {_ in self.addProduct(imageTypeCode[0])}))
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = addButton}

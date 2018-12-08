@@ -89,7 +89,12 @@ final class UtilityCanvas {
         canvasDrawWarnings(tmpArr, bitmap, paint, isMercato, pn, false)
     }
 
-    static func canvasDrawWarnings(_ warningAl: [String], _ canvas: Bitmap, _ paint: Paint, _ isMercato: Bool, _ pn: ProjectionNumbers, _ addPeriod: Bool) {
+    static func canvasDrawWarnings(_ warningAl: [String],
+                                   _ canvas: Bitmap,
+                                   _ paint: Paint,
+                                   _ isMercato: Bool,
+                                   _ pn: ProjectionNumbers,
+                                   _ addPeriod: Bool) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
