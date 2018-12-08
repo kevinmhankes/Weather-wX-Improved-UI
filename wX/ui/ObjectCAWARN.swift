@@ -76,11 +76,16 @@ final class ObjectCAWARN: NSObject {
         } else {
             dataAsString = ("http://weather.gc.ca/warnings/index_e.html?prov=" + self.provCode).getHtml()
         }
-        self.listLocUrl = dataAsString.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocName = dataAsString.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWarning = dataAsString.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWatch = dataAsString.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocStatement = dataAsString.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
+        self.listLocUrl = dataAsString
+            .parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocName = dataAsString
+            .parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocWarning = dataAsString
+            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocWatch = dataAsString
+            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocStatement = dataAsString
+            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
     }
 
     func showData() {
@@ -112,7 +117,8 @@ final class ObjectCAWARN: NSObject {
             text = text.replaceAllRegexp("\n", "")
             let tvObj = ObjectTextView(stackView, text)
             tvObj.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                                                                      target: uiv, action: #selector(gotoWarning(sender:))))
+                                                                      target: uiv,
+                                                                      action: #selector(gotoWarning(sender:))))
         }
         _ = ObjectCALegal(stackView)
     }

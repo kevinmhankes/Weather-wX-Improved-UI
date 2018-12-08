@@ -9,7 +9,14 @@ import Foundation
 final class UtilityString {
 
     static func shortenTime(_ str: String) -> String {
-        let longTime = str.replace("-09:00", "").replace("-10:00", "").replace("-05:00", "").replace("T", " ").replace("-04:00", "").replaceAll(":00 ", " ").replaceAll("[0-9]{4}-", "")
+        let longTime = str
+            .replace("-09:00", "")
+            .replace("-10:00", "")
+            .replace("-05:00", "")
+            .replace("T", " ")
+            .replace("-04:00", "")
+            .replaceAll(":00 ", " ")
+            .replaceAll("[0-9]{4}-", "")
         return longTime.replace("-06:00", "").replace("-07:00", "")
     }
 

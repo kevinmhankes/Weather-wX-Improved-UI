@@ -19,7 +19,10 @@ class ViewControllerGOES16: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))

@@ -23,7 +23,9 @@ final class UtilityCanvas {
             let warningHTML = warningData.replace("\n", "").replace(" ", "")
             var warnings = warningHTML.parseColumn(warningLatLonPattern)
             let vtecs = warningHTML.parseColumn(warningVtecPattern)
-            warnings.enumerated().forEach {warnings[$0] = $1.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")}
+            warnings.enumerated().forEach {
+                warnings[$0] = $1.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+            }
             canvasDrawWarningsNEWAPI(warnings, vtecs, bitmap, paint, isMercato, pn, false)
         }
     }
@@ -164,7 +166,10 @@ final class UtilityCanvas {
     }
 
     static func canvasDrawWarningsNEWAPI(_ warningAl: [String], _ vtecAl: [String], _ canvas: Bitmap,
-                                         _ paint: Paint, _ isMercato: Bool, _ pn: ProjectionNumbers, _ addPeriod: Bool) {
+                                         _ paint: Paint,
+                                         _ isMercato: Bool,
+                                         _ pn: ProjectionNumbers,
+                                         _ addPeriod: Bool) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
@@ -183,7 +188,9 @@ final class UtilityCanvas {
             var polyCount = -1
             warningAl.forEach { warn in
                 polyCount += 1
-                if vtecAl.count > polyCount && !vtecAl[polyCount].hasPrefix("0.EXP") && !vtecAl[polyCount].hasPrefix("0.CAN") {
+                if vtecAl.count > polyCount
+                    && !vtecAl[polyCount].hasPrefix("0.EXP")
+                    && !vtecAl[polyCount].hasPrefix("0.CAN") {
                     x = []
                     y = []
                     index = 0
@@ -237,7 +244,11 @@ final class UtilityCanvas {
         canvas.image = newImage
     }
 
-    static func drawCircle(_ canvas: Bitmap, _ pixXInit: Double, _ pixYInit: Double, _ lineWidth: Double, _ paint: Paint) {
+    static func drawCircle(_ canvas: Bitmap,
+                           _ pixXInit: Double,
+                           _ pixYInit: Double,
+                           _ lineWidth: Double,
+                           _ paint: Paint) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0

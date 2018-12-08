@@ -21,7 +21,8 @@ final class ObjectCardCC {
         if isUS {
             img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
         } else {
-            img.view.image = UtilityNWS.getIcon(UtilityCanada.translateIconNameCurrentConditions(objFcst.objCC.data1, objFcst.objCC.status)).image
+            img.view.image = UtilityNWS.getIcon(UtilityCanada.translateIconNameCurrentConditions(objFcst.objCC.data1,
+                                                                                                 objFcst.objCC.status)).image
         }
         tv = ObjectTextViewLarge(textPadding)
         tv.view.isUserInteractionEnabled = true

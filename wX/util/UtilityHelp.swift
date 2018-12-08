@@ -22,16 +22,22 @@ final class UtilityHelp {
         "spctstsummary": "",
         "spccompmap": "SPC Compmap: Beta activity for this Product. Use pullout nav bar at left to select parameters.",
         "modelspchrrr": "Interface for SPC HRRR  website.",
-        "modelspcsseo": "Interface for SPC SSEO  website. For some paramaters ( not 1km reflectivity ) runs ending in 00Z start at 015 instead of 003. This is an experimental product from SPC.",
+        "modelspcsseo": "Interface for SPC SSEO  website. For some paramaters ( not 1km reflectivity ) runs ending "
+            + "in 00Z start at 015 instead of 003. This is an experimental product from SPC.",
         "modelncep": "Interface for NCEP\'s models website.",
         "modelesrl": "Interface for NWS HRRR Viewer website.",
         "usalerts": "US severe weather alerts: By default tornado, flash flood, or severe tstorm warnings are shown if any. Use pullout "
-            + "nav drawer from left to filter on a different type or specific state. Tap an entry to view text. Long press an entry for more options such as show radar.",
+            + "nav drawer from left to filter on a different type or specific state. Tap an entry to view text."
+            + " Long press an entry for more options such as show radar.",
         "goes": "GOES image browser: Browse GOES provided radar, vis, ir, and wv. Animation and many mesoscale overlays available. "
-            + "Images support pan, pinch zoom, and double tap zoom. GOES has additional enhancements including ( if enabled ) polygon warnings and city support.",
-        "WPCText": "WPC text products: Show mostly text products from WPC. Last one viewed is shown at next start of activity. Action bar menu is used to change products.",
-        "wpcimg": "Show forecast maps and QPF forecasts from NWS WPC and numerous other images from various other central NWS departments.",
-        "nhc": "National Hurricane Center product viewer: Tap either image or use the action bar menu to access NHC products.",
+            + "Images support pan, pinch zoom, and double tap zoom. GOES has additional enhancements including"
+            + " ( if enabled ) polygon warnings and city support.",
+        "WPCText": "WPC text products: Show mostly text products from WPC. Last one viewed is shown at next"
+            + " start of activity. Action bar menu is used to change products.",
+        "wpcimg": "Show forecast maps and QPF forecasts from NWS WPC and numerous other images from various"
+            + " other central NWS departments.",
+        "nhc": "National Hurricane Center product viewer: Tap either image or use the action bar "
+            + "menu to access NHC products.",
         "nwsmosaic": "Nws mosaic viewer: View nws radar mosaics by region and with animation. wX custom roads and state boundaries are used. "
             + "Severe weather polygons are shown if configured in global settings.",
         "opc": "Interface to NWS OPC images.",

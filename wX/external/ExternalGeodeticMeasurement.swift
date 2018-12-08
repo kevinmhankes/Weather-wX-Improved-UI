@@ -22,7 +22,10 @@ class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
     }
 
     convenience init(averageCurve: ExternalGeodeticCurve, elevationChange: Double) {
-        self.init(ellipsoidalDistance: averageCurve.getEllipsoidalDistance(), azimuth: averageCurve.getAzimuth(), reverseAzimuth: averageCurve.getReverseAzimuth(), elevationChange: elevationChange)
+        self.init(ellipsoidalDistance: averageCurve.getEllipsoidalDistance(),
+                  azimuth: averageCurve.getAzimuth(),
+                  reverseAzimuth: averageCurve.getReverseAzimuth(),
+                  elevationChange: elevationChange)
     }
 
     func getElevationChange() -> Double {return mElevationChange}

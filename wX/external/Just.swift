@@ -10,7 +10,8 @@
  and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
  subject to the following conditions:
  
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
  
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -1056,7 +1057,11 @@ extension HTTP: URLSessionTaskDelegate, URLSessionDataDelegate {
     }
   }
 
-  public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+  public func urlSession(_ session: URLSession,
+                         task: URLSessionTask,
+                         didSendBodyData bytesSent: Int64,
+                         totalBytesSent: Int64,
+                         totalBytesExpectedToSend: Int64) {
     if let handler = taskConfigs[task.taskIdentifier]?.progressHandler {
       handler(
         HTTPProgress(

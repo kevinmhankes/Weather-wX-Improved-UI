@@ -116,7 +116,8 @@ final class Location {
     static var x: String {return MyApplication.locations[getCurrentLocation()].lat}
 
     static var latLon: LatLon {
-        return LatLon( MyApplication.locations[getCurrentLocation()].lat, MyApplication.locations[getCurrentLocation()].lon)
+        return LatLon( MyApplication.locations[getCurrentLocation()].lat,
+                       MyApplication.locations[getCurrentLocation()].lon)
     }
 
     class func getX(_ locNum: Int) -> String {
@@ -243,7 +244,8 @@ final class Location {
                 let alertNotificationCurrent = preferences.getString("ALERT" + jStr + "_NOTIFICATION", "false")
                 let alertNotificationRadarCurrent = preferences.getString("ALERT_NOTIFICATION_RADAR" + jStr, "false")
                 let alertCcNotificationCurrent = preferences.getString("ALERT_CC" + jStr + "_NOTIFICATION", "false")
-                let alert7day1NotificationCurrent = preferences.getString("ALERT_7DAY_" + jStr + "_NOTIFICATION", "false")
+                let alert7day1NotificationCurrent = preferences.getString("ALERT_7DAY_" + jStr + "_NOTIFICATION",
+                                                                          "false")
                 let alertNotificationSoundCurrent = preferences.getString("ALERT_NOTIFICATION_SOUND" + jStr, "false")
                 let alertNotificationMcdCurrent = preferences.getString("ALERT_NOTIFICATION_MCD" + jStr, "false")
                 let alertNotificationSwoCurrent = preferences.getString("ALERT_NOTIFICATION_SWO" + jStr, "false")

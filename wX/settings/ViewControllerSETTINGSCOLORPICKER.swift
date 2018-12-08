@@ -25,7 +25,8 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, colorButton, defaultButton]).items
-        let colPicker = HSBColorPicker(frame: CGRect(x: 0, y: toolbar.frame.size.height + UIPreferences.statusBarHeight,
+        let colPicker = HSBColorPicker(frame: CGRect(x: 0,
+                                                     y: toolbar.frame.size.height + UIPreferences.statusBarHeight,
                                                      width: UIScreen.main.bounds.width,
                                                      height: UIScreen.main.bounds.height - toolbar.frame.size.height * 2 - colorBarSize - UIPreferences.statusBarHeight))
         colPicker.delegate = self
@@ -56,7 +57,10 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
                                     point: CGPoint,
                                     state: UIGestureRecognizerState) {
         let myColorComponents = color.components
-        let colorInt: Int = (0xFF << 24) | (myColorComponents.red << 16) | (myColorComponents.green << 8) | myColorComponents.blue
+        let colorInt: Int = (0xFF << 24)
+            | (myColorComponents.red << 16)
+            | (myColorComponents.green << 8)
+            | myColorComponents.blue
         newRed = (colorInt >> 16) & 0xFF
         newGreen = (colorInt >> 8) & 0xFF
         newBlue = colorInt & 0xFF

@@ -18,7 +18,11 @@ final class ObjectAlertSummary: NSObject {
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
 
-    convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ filter: String, _ capAlerts: [CAPAlert], showImage: Bool = true) {
+    convenience init(_ uiv: UIViewController,
+                     _ stackView: UIStackView,
+                     _ filter: String,
+                     _ capAlerts: [CAPAlert],
+                     showImage: Bool = true) {
         self.init()
         stackView.subviews.forEach {$0.removeFromSuperview()}
         let objTextSummary = ObjectTextView(stackView)
@@ -63,7 +67,8 @@ final class ObjectAlertSummary: NSObject {
                 let objAlert = ObjectTextView(stackView, content)
                 self.urlArr.append(alert.url)
                 objAlert.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                                                                             target: uiv, action: #selector(warningSelected(sender:))))
+                                                                             target: uiv,
+                                                                             action: #selector(warningSelected(sender:))))
                 index += 1
             }
         }

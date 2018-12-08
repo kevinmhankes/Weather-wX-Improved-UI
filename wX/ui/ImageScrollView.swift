@@ -52,13 +52,17 @@ open class ImageScrollView: UIScrollView {
 
     override open var frame: CGRect {
         willSet {
-            if frame.equalTo(newValue) == false && newValue.equalTo(CGRect.zero) == false && imageSize.equalTo(CGSize.zero) == false {
+            if frame.equalTo(newValue) == false
+                && newValue.equalTo(CGRect.zero) == false
+                && imageSize.equalTo(CGSize.zero) == false {
                 prepareToResize()
             }
         }
 
         didSet {
-            if frame.equalTo(oldValue) == false && frame.equalTo(CGRect.zero) == false && imageSize.equalTo(CGSize.zero) == false {
+            if frame.equalTo(oldValue) == false
+                && frame.equalTo(CGRect.zero) == false
+                && imageSize.equalTo(CGSize.zero) == false {
                 recoverFromResizing()
             }
         }
@@ -152,7 +156,8 @@ open class ImageScrollView: UIScrollView {
         zoomView = UIImageView(image: image)
         zoomView!.isUserInteractionEnabled = true
         addSubview(zoomView!)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
         tapGesture.numberOfTapsRequired = 2
         zoomView!.addGestureRecognizer(tapGesture)
         // the one line below is what causes image data to reset after another image is shown, add logic to only run first time
@@ -180,7 +185,8 @@ open class ImageScrollView: UIScrollView {
         zoomView?.animationImages = anim.imageArray
         zoomView?.animationDuration = 3.0
         zoomView?.startAnimating()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
         tapGesture.numberOfTapsRequired = 2
         zoomView!.addGestureRecognizer(tapGesture)
         configureImageForSize(image.size)

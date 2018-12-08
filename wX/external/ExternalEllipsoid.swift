@@ -36,13 +36,19 @@ public class ExternalEllipsoid {
     class func fromAAndInverseF(semiMajor: Double, inverseFlattening: Double) -> ExternalEllipsoid {
         let f = 1.0 / inverseFlattening
         let b = (1.0 - f) * semiMajor
-        return ExternalEllipsoid(semiMajor: semiMajor, semiMinor: b, flattening: f, inverseFlattening: inverseFlattening)
+        return ExternalEllipsoid(semiMajor: semiMajor,
+                                 semiMinor: b,
+                                 flattening: f,
+                                 inverseFlattening: inverseFlattening)
     }
 
     class func fromAAndF(semiMajor: Double, flattening: Double) -> ExternalEllipsoid {
         let inverseF = 1.0 / flattening
         let b = (1.0 - flattening) * semiMajor
-        return ExternalEllipsoid(semiMajor: semiMajor, semiMinor: b, flattening: flattening, inverseFlattening: inverseF)
+        return ExternalEllipsoid(semiMajor: semiMajor,
+                                 semiMinor: b,
+                                 flattening: flattening,
+                                 inverseFlattening: inverseF)
     }
 
     func getSemiMajorAxis() -> Double {return mSemiMajorAxis}

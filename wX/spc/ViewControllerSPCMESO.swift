@@ -27,20 +27,36 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         let toolbarTop = ObjectToolbar(.top)
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(self.layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        toolbarTop.items = ObjectToolbarItems([flexBarButton, paramButton, fixedSpace, layerButton, fixedSpace, animateButton, fixedSpace, shareButton]).items
+        toolbarTop.items = ObjectToolbarItems([flexBarButton,
+                                               paramButton,
+                                               fixedSpace,
+                                               layerButton,
+                                               fixedSpace,
+                                               animateButton,
+                                               fixedSpace,
+                                               shareButton]).items
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
         sfcButton = ObjectToolbarIcon(title: "SFC", self, #selector(paramClicked))
         uaButton = ObjectToolbarIcon(title: "UA", self, #selector(paramClicked))
         cpeButton = ObjectToolbarIcon(title: "CPE", self, #selector(paramClicked))
         cmpButton = ObjectToolbarIcon(title: "CMP", self, #selector(paramClicked))
         shrButton = ObjectToolbarIcon(title: "SHR", self, #selector(paramClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, sfcButton, uaButton, cpeButton, cmpButton, shrButton, sectorButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton,
+                                            flexBarButton,
+                                            sfcButton,
+                                            uaButton,
+                                            cpeButton,
+                                            cmpButton,
+                                            shrButton,
+                                            sectorButton]).items
         image = ObjectTouchImageView(self, toolbar)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         self.view.addSubview(toolbarTop)
@@ -73,7 +89,9 @@ class ViewControllerSPCMESO: UIwXViewController {
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Sector Selection", sectorButton)
         UtilitySPCMESO.sectorMap.keys.forEach { sector in
-            alert.addAction(UIAlertAction(title: UtilitySPCMESO.sectorMap[sector], style: .default, handler: {_ in self.sectorChanged(sector)}))
+            alert.addAction(UIAlertAction(title: UtilitySPCMESO.sectorMap[sector],
+                                          style: .default,
+                                          handler: {_ in self.sectorChanged(sector)}))
         }
         alert.finish()
     }
@@ -103,7 +121,9 @@ class ViewControllerSPCMESO: UIwXViewController {
         }
         let alert = ObjectPopUp(self, "Product Selection", sender)
         paramArray.keys.sorted().forEach { productCode in
-            alert.addAction(UIAlertAction(title: paramArray[productCode], style: .default, handler: {_ in self.productChanged(productCode)}))
+            alert.addAction(UIAlertAction(title: paramArray[productCode],
+                                          style: .default,
+                                          handler: {_ in self.productChanged(productCode)}))
         }
         alert.finish()
     }
@@ -113,7 +133,9 @@ class ViewControllerSPCMESO: UIwXViewController {
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
             var pre = ""
             if isLayerSelected(layer) {pre = "(on) "}
-            alert.addAction(UIAlertAction(title: pre + layer, style: .default, handler: {_ in self.layerChanged(layer)}))
+            alert.addAction(UIAlertAction(title: pre + layer,
+                                          style: .default,
+                                          handler: {_ in self.layerChanged(layer)}))
         }
         alert.finish()
     }

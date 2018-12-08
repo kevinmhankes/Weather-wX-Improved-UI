@@ -68,7 +68,9 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
                 print("already authorized")
             case .notDetermined, .restricted, .denied:
                 print("show help")
-                UtilitySettings.getHelp(self, doneButton, "After the dialog for GPS permission has been shown once, all future updates to GPS permissions must be done via settings in iOS.")
+                UtilitySettings.getHelp(self,
+                                        doneButton,
+                                        "After the dialog for GPS permission has been shown once, all future updates to GPS permissions must be done via settings in iOS.")
             }
             locationManager.requestLocation()
         }
@@ -78,12 +80,8 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         print("Error while updating location " + error.localizedDescription)
     }
 
-    // FIXME what was this for?
+    // needed for Radar/GPS setting
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //let locValue: CLLocationCoordinate2D = manager.location!.coordinate
-        //self.latTextView.text = String(locValue.latitude)
-        //self.lonTextView.text = String(locValue.longitude)
-        //if self.latTextView.text != "" && self.lonTextView.text != "" {self.saveClicked()}
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -96,7 +94,9 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
@@ -107,10 +107,12 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
         var array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
         default:
-            if array[pickerView.tag]=="RADAR_COLOR_PALETTE_94"||array[pickerView.tag]=="RADAR_COLOR_PALETTE_99" {
-                editor.putString(array[pickerView.tag], UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])
+            if array[pickerView.tag]=="RADAR_COLOR_PALETTE_94" || array[pickerView.tag]=="RADAR_COLOR_PALETTE_99" {
+                editor.putString(array[pickerView.tag],
+                                 UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])
             } else {
-                editor.putInt(array[pickerView.tag], Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!)
+                editor.putInt(array[pickerView.tag],
+                              Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!)
             }
         }
     }

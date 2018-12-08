@@ -63,7 +63,9 @@ class WXGLNexradLevel3StormInfo {
                     tmpCoordsArr = []
                     (0...3).forEach { index in
                         ecArr.append(ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start,
-                                                                          Double(degree2) + Double(degreeShift), Double(nm2) * 1852.0 * Double(index) * 0.25, bearing))
+                                                                          Double(degree2) + Double(degreeShift),
+                                                                          Double(nm2) * 1852.0 * Double(index) * 0.25,
+                                                                          bearing))
                         tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[index], pn)))
                     }
                     endPoint = tmpCoords

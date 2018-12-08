@@ -20,7 +20,10 @@ class ViewControllerCARADAR: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))

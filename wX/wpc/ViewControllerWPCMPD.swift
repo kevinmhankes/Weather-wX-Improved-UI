@@ -42,7 +42,9 @@ class ViewControllerWPCMPD: UIwXViewController {
                 if !self.bitmaps.isEmpty {
                     self.bitmaps.enumerated().forEach {
                         let imgObject = ObjectImage(self.stackView, $1)
-                        imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0, target: self, action: #selector(self.imgClicked(sender:))))
+                        imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
+                                                                                      target: self,
+                                                                                      action: #selector(self.imgClicked(sender:))))
                     }
                     if self.bitmaps.count == 1 {_ = ObjectTextView(self.stackView, self.text)}
                 }

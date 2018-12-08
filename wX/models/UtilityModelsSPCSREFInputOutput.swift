@@ -26,7 +26,9 @@ final class UtilityModelsSPCSREFInputOutput {
     }
 
     static func getImage(_ om: ObjectModel) -> Bitmap {
-        let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/" + om.run.replace("z", "") + "/" + om.param + "f0" + om.time + ".gif"
+        let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/"
+            + om.run.replace("z", "")
+            + "/" + om.param + "f0" + om.time + ".gif"
         return UtilityImg.getBitmapAddWhiteBG(imgUrl)
     }
 }

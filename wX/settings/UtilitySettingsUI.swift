@@ -71,7 +71,8 @@ final class UtilitySettingsUI {
         ]
 
     static var pickerDataSource = [
-        "TEXTVIEW_FONT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+        "TEXTVIEW_FONT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+                               "13", "14", "15", "16", "17", "18", "19", "20"],
         "UI_THEME": ["blue", "black", "green"],
         "REFRESH_LOC_MIN": [],
         "ANIM_INTERVAL": [],
