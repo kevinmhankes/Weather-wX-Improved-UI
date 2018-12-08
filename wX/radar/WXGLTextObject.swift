@@ -62,8 +62,11 @@ final class WXGLTextObject {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach {
                     if glview.citiesExtAl.count <= maxCitiesPerGlview {
-                        checkAndDrawText(&glview.citiesExtAl, UtilityCitiesExtended.cities[$0].latitude,
-                                         UtilityCitiesExtended.cities[$0].longitude, UtilityCitiesExtended.cities[$0].name, GeographyType.cities.color)
+                        checkAndDrawText(&glview.citiesExtAl,
+                                         UtilityCitiesExtended.cities[$0].latitude,
+                                         UtilityCitiesExtended.cities[$0].longitude,
+                                         UtilityCitiesExtended.cities[$0].name,
+                                         GeographyType.cities.color)
                     }
                 }
             }
@@ -79,7 +82,8 @@ final class WXGLTextObject {
             let ii = tvList.count - 1
             tvList[ii].textColor = color
             tvList[ii].textSize = textSize
-            tvList[ii].setPadding(CGFloat(glviewWidth/2) + CGFloat(xPos * scale), CGFloat(glviewHeight/2) + CGFloat(yPos * scale))
+            tvList[ii].setPadding(CGFloat(glviewWidth/2) + CGFloat(xPos * scale),
+                                  CGFloat(glviewHeight/2) + CGFloat(yPos * scale))
             tvList[ii].setText(text)
         }
     }
@@ -132,8 +136,10 @@ final class WXGLTextObject {
             textSize = oglrZoom * 0.75 * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
-                    checkAndDrawText(&glview.spottersLabelAl, UtilitySpotter.spotterList[$0].latD,
-                                     UtilitySpotter.spotterList[$0].lonD, " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
+                    checkAndDrawText(&glview.spottersLabelAl,
+                                     UtilitySpotter.spotterList[$0].latD,
+                                     UtilitySpotter.spotterList[$0].lonD,
+                                     " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
                                      PolygonType.SPOTTER_LABELS.color)
                 }
             }

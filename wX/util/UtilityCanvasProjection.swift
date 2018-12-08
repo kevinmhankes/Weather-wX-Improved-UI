@@ -11,11 +11,13 @@ final class UtilityCanvasProjection {
     static func compute4326Numbers(_ lat: Double, _ lon: Double, _ centerX: Double,
                                    _ centerY: Double, _ xImageCenterPixels: Double,
                                    _ yImageCenterPixels: Double, _ scaleFactor: Double ) -> (Double, Double) {
-        return ((-((lon - centerY) * scaleFactor) + xImageCenterPixels), (-((lat - centerX) *  scaleFactor) + yImageCenterPixels))
+        return ((-((lon - centerY) * scaleFactor) + xImageCenterPixels),
+                (-((lat - centerX) *  scaleFactor) + yImageCenterPixels))
     }
 
     static func compute4326Numbers(_ pn: ProjectionNumbers) -> (Double, Double) {
-        return ((-((pn.yDbl - pn.yCenterDouble) * pn.scale) + pn.xCenterDouble), (-((pn.xDbl - pn.xCenterDouble) *  pn.scale) + pn.yCenterDouble))
+        return ((-((pn.yDbl - pn.yCenterDouble) * pn.scale) + pn.xCenterDouble),
+                (-((pn.xDbl - pn.xCenterDouble) *  pn.scale) + pn.yCenterDouble))
     }
 
     static func compute4326Numbers(_ location: LatLon, _ pn: ProjectionNumbers) -> (Double, Double) {
@@ -34,7 +36,9 @@ final class UtilityCanvasProjection {
         return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
     }
 
-    static func computeMercatorNumbers(_ location: LatLon, _ pn: ProjectionNumbers, multLonNegativeOne: Bool = true) -> (Double, Double) {
+    static func computeMercatorNumbers(_ location: LatLon,
+                                       _ pn: ProjectionNumbers,
+                                       multLonNegativeOne: Bool = true) -> (Double, Double) {
         if multLonNegativeOne {
             return computeMercatorNumbers(location.lat, location.lon * -1.0, pn)
         } else {

@@ -49,13 +49,18 @@ final class UtilityString {
 
     static func replaceAllRegexp(_ str: String, _ a: String, _ b: String) -> String {
         if let regex = try? NSRegularExpression(pattern: a, options: []) {
-            let modString = regex.stringByReplacingMatches(in: str, options: .withTransparentBounds, range: NSRange(location: 0, length: str.count), withTemplate: b)
+            let modString = regex.stringByReplacingMatches(in: str,
+                                                           options: .withTransparentBounds,
+                                                           range: NSRange(location: 0, length: str.count),
+                                                           withTemplate: b)
             return(modString)
         }
         return str
     }
 
-    static func removeLineBreaksS(_ html: String) -> String {return html.replaceAll("\n\n", "<BR>").replaceAll("\n", " ").replaceAll("<BR>", "\n")}
+    static func removeLineBreaksS(_ html: String) -> String {
+        return html.replaceAll("\n\n", "<BR>").replaceAll("\n", " ").replaceAll("<BR>", "\n")
+    }
 
     static func parseHelper(_ regex: String!, _ text: String!) -> [String] {
         do {
@@ -64,7 +69,11 @@ final class UtilityString {
             let results = regex.matches(in: text, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
             results.forEach { result in
-                (0..<result.numberOfRanges).forEach {if $0%2 != 0 {match.append(nsString.substring(with: result.range(at: $0)))}}
+                (0..<result.numberOfRanges).forEach {
+                    if $0%2 != 0 {
+                        match.append(nsString.substring(with: result.range(at: $0)))
+                    }
+                }
             }
             return match
         } catch let error as NSError {
@@ -114,7 +123,11 @@ final class UtilityString {
             let nsString = str as NSString
             let results = regex.matches(in: str, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
-            results.forEach { result in (0..<result.numberOfRanges).forEach {match.append(nsString.substring(with: result.range(at: $0)))}}
+            results.forEach {
+                result in (0..<result.numberOfRanges).forEach {
+                    match.append(nsString.substring(with: result.range(at: $0)))
+                }
+            }
             if match.count>1 {match.remove(at: 0)}
             return match
         } catch let error as NSError {

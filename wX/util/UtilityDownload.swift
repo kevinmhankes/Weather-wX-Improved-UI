@@ -154,7 +154,8 @@ final class UtilityDownload {
             + "&issuedby=" + t2 + "&version=" + String(version)
         text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
-        text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\"><u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
+        text = text
+            .replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\"><u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
         if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {text = text.removeLineBreaks()}
         return text
@@ -176,7 +177,8 @@ final class UtilityDownload {
             bitmap = get1KMURL()
         case "GOES16":
             needsBitmap = false
-            let url = UtilityGOES16.getUrl(preferences.getString("GOES16_PROD", "02"), preferences.getString("GOES16_SECTOR", "cgl"))
+            let url = UtilityGOES16
+                .getUrl(preferences.getString("GOES16_PROD", "02"), preferences.getString("GOES16_SECTOR", "cgl"))
             bitmap = url[0].getImage()
         case "VIS_MAIN":
             needsBitmap = false

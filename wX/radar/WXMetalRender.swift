@@ -92,7 +92,11 @@ class WXMetalRender {
     var paneNumber = 0
     var numberOfPanes = 0
 
-    init(_ device: MTLDevice, _ timeButton: ObjectToolbarIcon, _ productButton: ObjectToolbarIcon, paneNumber: Int, _ numberOfPanes: Int) {
+    init(_ device: MTLDevice,
+         _ timeButton: ObjectToolbarIcon,
+         _ productButton: ObjectToolbarIcon,
+         paneNumber: Int,
+         _ numberOfPanes: Int) {
         self.device = device
         self.timeButton = timeButton
         self.productButton = productButton
@@ -102,9 +106,19 @@ class WXMetalRender {
         readPrefs()
         radarLayers = [radarBuffers]
         geographicBuffers = []
-        [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {if $0.geotype.display {geographicBuffers.append($0)}}
-        [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {if $0.geotype.display {radarLayers.append($0)}}
-        [warningTstBuffers, warningTorBuffers, warningFfwBuffers, mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
+        [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
+            if $0.geotype.display {geographicBuffers.append($0)}
+        }
+        [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
+            if $0.geotype.display {radarLayers.append($0)}
+        }
+        [warningTstBuffers,
+         warningTorBuffers,
+         warningFfwBuffers,
+         mcdBuffers,
+         watchBuffers,
+         watchTornadoBuffers,
+         mpdBuffers].forEach {
             if $0.type.display {
                 radarLayers.append($0)
             }

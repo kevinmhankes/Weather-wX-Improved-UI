@@ -77,15 +77,35 @@ class WXGLNexradLevel3StormInfo {
                         let stormTrackTickMarkAngleOff90 = 30.0
                         (0...3).forEach { index in
                             // first line
-                            stormList += drawTickMarks(tmpCoordsArr[index], ecc, pn, ecArr[index],
-                                                       degree2 - (90.0 + stormTrackTickMarkAngleOff90), arrowLength * 1852.0 * sti15IncrLen, bearing)
-                            stormList += drawTickMarks(tmpCoordsArr[index], ecc, pn, ecArr[index],
-                                                       degree2 + (90.0 - stormTrackTickMarkAngleOff90), arrowLength * 1852.0 * sti15IncrLen, bearing)
+                            stormList += drawTickMarks(tmpCoordsArr[index],
+                                                       ecc,
+                                                       pn,
+                                                       ecArr[index],
+                                                       degree2 - (90.0 + stormTrackTickMarkAngleOff90),
+                                                       arrowLength * 1852.0 * sti15IncrLen,
+                                                       bearing)
+                            stormList += drawTickMarks(tmpCoordsArr[index],
+                                                       ecc,
+                                                       pn,
+                                                       ecArr[index],
+                                                       degree2 + (90.0 - stormTrackTickMarkAngleOff90),
+                                                       arrowLength * 1852.0 * sti15IncrLen,
+                                                       bearing)
                             // 2nd line
-                            stormList += drawTickMarks(tmpCoordsArr[index], ecc, pn, ecArr[index],
-                                                       degree2 - (90.0 - stormTrackTickMarkAngleOff90), arrowLength * 1852.0 * sti15IncrLen, bearing)
-                            stormList += drawTickMarks(tmpCoordsArr[index], ecc, pn, ecArr[index],
-                                                       degree2 + (90.0 + stormTrackTickMarkAngleOff90), arrowLength * 1852.0 * sti15IncrLen, bearing)
+                            stormList += drawTickMarks(tmpCoordsArr[index],
+                                                       ecc,
+                                                       pn,
+                                                       ecArr[index],
+                                                       degree2 - (90.0 - stormTrackTickMarkAngleOff90),
+                                                       arrowLength * 1852.0 * sti15IncrLen,
+                                                       bearing)
+                            stormList += drawTickMarks(tmpCoordsArr[index],
+                                                       ecc,
+                                                       pn,
+                                                       ecArr[index],
+                                                       degree2 + (90.0 + stormTrackTickMarkAngleOff90),
+                                                       arrowLength * 1852.0 * sti15IncrLen,
+                                                       bearing)
                         }
                     }
                 }

@@ -33,7 +33,11 @@ class ObjectMetalBuffers {
         self.init()
         self.type = type
         self.shape = .line
-        if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+        if type.string == "WIND_BARB_CIRCLE"
+            || type.string == "LOCDOT"
+            || type.string == "SPOTTER"
+            || type.string == "HI"
+            || type.string == "TVS" {
             self.shape = .triangle
         }
     }

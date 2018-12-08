@@ -173,7 +173,13 @@ final class UtilityMetar {
                             obsAlAviationColor.append(aviationColor)
                         }
                         if validWindGust {
-                            obsAlWbGust.append(latlon.latString + ":" + latlon.lonString + ":" + windDir + ":" + windgustInKt)
+                            obsAlWbGust.append(latlon.latString
+                                + ":"
+                                + latlon.lonString
+                                + ":"
+                                + windDir
+                                + ":"
+                                + windgustInKt)
                         }
                     }
                 }
@@ -272,7 +278,8 @@ final class UtilityMetar {
         return obsListSb.replaceAll(",$", "")
     }
 
-    // used to condense a list of metar that contains multiple entries for one site, newest is first so simply grab first/append
+    // used to condense a list of metar that contains multiple entries for one site,
+    // newest is first so simply grab first/append
     static func condenseObs(_ list: [String]) -> [String] {
         var siteMap = [String: Bool]()
         var goodObsList = [String]()
