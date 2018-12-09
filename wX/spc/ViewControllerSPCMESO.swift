@@ -71,6 +71,7 @@ class ViewControllerSPCMESO: UIwXViewController {
             DispatchQueue.main.async {
                 if self.firstRun {
                     self.image.setBitmap(bitmap)
+                    UtilityImg.imgRestorePosnZoom(self.image.img, self)
                     self.firstRun = false
                 } else {
                     self.image.updateBitmap(bitmap)
@@ -80,6 +81,11 @@ class ViewControllerSPCMESO: UIwXViewController {
                 editor.putString(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
             }
         }
+    }
+    
+    @objc override func doneClicked() {
+        UtilityImg.imgSavePosnZoom(image.img, self)
+        super.doneClicked()
     }
 
     @objc func willEnterForeground() {

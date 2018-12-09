@@ -119,6 +119,7 @@ class ViewControllerGOES16: UIwXViewController {
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
+        UtilityImg.imgCenter(self.image.img, self)
         self.getContent()
     }
 
