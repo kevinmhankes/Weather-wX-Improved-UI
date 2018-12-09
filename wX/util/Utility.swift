@@ -78,27 +78,31 @@ final class Utility {
         }
     }
 
-    func readPref(_ key: String, _ value: Float) -> Float {
+    static func readPref(_ key: String, _ value: Float) -> Float {
         return preferences.getFloat(key, value)
     }
 
-    func readPref(_ key: String, _ value: Int) -> Int {
+    static func readPref(_ key: String, _ value: Int) -> Int {
         return preferences.getInt(key, value)
     }
 
-    func readPref(_ key: String, _ value: String) -> String {
+    static func readPref(_ key: String, _ value: String) -> String {
         return preferences.getString(key, value)
     }
 
-    func writePref(_ key: String, _ value: Float) {
+    static func writePref(_ key: String, _ value: Float) {
         editor.putFloat(key, value)
     }
 
-    func writePref(_ key: String, _ value: Int) {
+    static func writePref(_ key: String, _ value: Int) {
         editor.putInt(key, value)
     }
 
-    func writePref(_ key: String, _ value: String) {
+    static func writePref(_ key: String, _ value: String) {
         editor.putString(key, value)
+    }
+
+    static func getClassName(_ uiv: UIViewController) -> String {
+        return String(describing: uiv).split(":").safeGet(0).replace("<", "")
     }
 }

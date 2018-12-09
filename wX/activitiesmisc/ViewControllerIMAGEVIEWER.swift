@@ -27,5 +27,7 @@ class ViewControllerIMAGEVIEWER: UIwXViewController {
         }
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 }

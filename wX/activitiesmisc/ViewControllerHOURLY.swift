@@ -26,5 +26,7 @@ class ViewControllerHOURLY: UIwXViewController {
         }
     }
 
-    @objc func textAction() {scrollView.scrollToTop()}
+    @objc func textAction() {
+        scrollView.scrollToTop()
+    }
 }

@@ -16,6 +16,7 @@ class ViewControllerGOES16: UIwXViewController {
     var sectorCode = ""
     var goesProducts = [String]()
     var savePrefs = true
+    var firstRun = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +76,19 @@ class ViewControllerGOES16: UIwXViewController {
             let bitmap = Bitmap(urlList[0])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                //self.statusButton.title = String(urlList[1].suffix(4))
                 self.serializeSettings()
-                self.image.img.restorePosition(CGFloat(2.0), center: CGPoint(x: 1000.0, y: 1000.0))
+                if self.firstRun {
+                    //UtilityImg.imgRestorePosnZoom(self.image.img, self)
+                } else {
+                    self.firstRun = false
+                }
             }
         }
+    }
+
+    @objc override func doneClicked() {
+        UtilityImg.imgSavePosnZoom(image.img, self)
+        super.doneClicked()
     }
 
     @objc func productClicked() {
