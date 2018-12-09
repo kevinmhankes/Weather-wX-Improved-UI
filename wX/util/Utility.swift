@@ -77,4 +77,28 @@ final class Utility {
             return list[index]
         }
     }
+
+    func readPref(_ key: String, _ value: Float) -> Float {
+        return preferences.getFloat(key, value)
+    }
+
+    func readPref(_ key: String, _ value: Int) -> Int {
+        return preferences.getInt(key, value)
+    }
+
+    func readPref(_ key: String, _ value: String) -> String {
+        return preferences.getString(key, value)
+    }
+    
+    func writePref(_ key: String, _ value: Float) {
+        editor.putFloat(key, value)
+    }
+    
+    func writePref(_ key: String, _ value: Int) {
+        editor.putInt(key, value)
+    }
+    
+    func writePref(_ key: String, _ value: String) {
+        editor.putString(key, value)
+    }
 }
