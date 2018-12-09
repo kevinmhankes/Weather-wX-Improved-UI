@@ -73,6 +73,7 @@ class ObjectMetalBuffers {
         if count > 0 {
             let dataSize = metalBuffer.count * MemoryLayout.size(ofValue: metalBuffer[0])
             mtlBuffer = device.makeBuffer(bytes: metalBuffer, length: dataSize, options: [])!
+            //mtlBuffer = device.makeBufferWithPageAlignedArray(metalBuffer)
             if type.string == "LOCDOT"
                 || type.string == "WIND_BARB_CIRCLE"
                 || type.string == "SPOTTER"
@@ -87,6 +88,8 @@ class ObjectMetalBuffers {
 
     func initialize(_ floatCount: Int) {
         floatBuffer = MemoryBuffer(floatCount)
+        //let zero: Float = 0.0
+        //metalBuffer = PageAlignedContiguousArray(repeating: zero, count: floatCountPerVertex * (count*2)) // x y  r g b
         metalBuffer = Array(repeating: 0.0, count: floatCountPerVertex * (count*2)) // x y  r g b
         setToPositionZero()
     }
