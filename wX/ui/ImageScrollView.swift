@@ -227,8 +227,16 @@ open class ImageScrollView: UIScrollView {
         }
     }
 
+    func restorePosition(_ scale: CGFloat, center: CGPoint) {
+        let zoomRect = zoomRectForScale(scale, center: center)
+        zoom(to: zoomRect, animated: true)
+    }
+
     fileprivate func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
+        print(scale)
+        print(center.x)
+        print(center.y)
         // the zoom rect is in the content view's coordinates.
         // at a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
         // as the zoom scale decreases, so more content is visible, the size of the rect grows.

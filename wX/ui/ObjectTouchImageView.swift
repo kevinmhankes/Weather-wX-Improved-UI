@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectTouchImageView {
 
-    private var img = ImageScrollView()
+    var img = ImageScrollView()
     private var uiv: UIViewController?
     var bitmap = Bitmap()
 

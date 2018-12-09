@@ -77,6 +77,7 @@ class ViewControllerGOES16: UIwXViewController {
                 self.image.setBitmap(bitmap)
                 //self.statusButton.title = String(urlList[1].suffix(4))
                 self.serializeSettings()
+                self.image.img.restorePosition(CGFloat(2.0), center: CGPoint(x: 1000.0, y: 1000.0))
             }
         }
     }
