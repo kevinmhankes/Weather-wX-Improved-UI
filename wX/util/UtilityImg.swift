@@ -94,9 +94,15 @@ final class UtilityImg {
         let prefStr = Utility.getClassName(uiv)
         let z = CGFloat(Utility.readPref(prefStr + "_ZOOM", 1.0))
         var x = CGFloat(Utility.readPref(prefStr + "_X", 0.0))
-        let y = CGFloat(Utility.readPref(prefStr + "_Y", 0.0))
+        var y = CGFloat(Utility.readPref(prefStr + "_Y", 0.0))
+        if x < 20.0 && y < 20.0 {
+            return
+        }
         if x < 20.0 {
             x = 50.0
+        }
+        if y < 20.0 {
+            y = 50.0
         }
         print("restore start")
         print(x)
@@ -110,6 +116,6 @@ final class UtilityImg {
     }
 
     static func imgCenter(_ img: ImageScrollView, _ uiv: UIViewController) {
-            img.restorePosition(0, center: CGPoint(x: 0.0, y: 0.0))
+            img.restorePosition(1, center: CGPoint(x: 0.0, y: 0.0))
     }
 }
