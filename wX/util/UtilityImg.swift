@@ -77,8 +77,8 @@ final class UtilityImg {
     static func imgSavePosnZoom(_ img: ImageScrollView, _ uiv: UIViewController) {
         let z = Float(img.zoomScale)
         let cgpoint = img.contentOffset
-        let x = Float(cgpoint.x) / z
-        let y = Float(cgpoint.y) / z
+        let x = Float(cgpoint.x)
+        let y = Float(cgpoint.y)
         let prefStr = Utility.getClassName(uiv)
         Utility.writePref(prefStr + "_X", x)
         Utility.writePref(prefStr + "_Y", y)
