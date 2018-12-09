@@ -79,7 +79,6 @@ class ViewControllerGOES16: UIwXViewController {
                 self.serializeSettings()
                 if self.firstRun {
                     UtilityImg.imgRestorePosnZoom(self.image.img, self)
-                } else {
                     self.firstRun = false
                 }
             }

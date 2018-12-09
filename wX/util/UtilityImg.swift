@@ -108,7 +108,7 @@ final class UtilityImg {
             img.restorePosition(z, center: CGPoint(x: x, y: y))
         }
     }
-    
+
     static func imgCenter(_ img: ImageScrollView, _ uiv: UIViewController) {
             img.restorePosition(0, center: CGPoint(x: 0.0, y: 0.0))
     }
