@@ -89,15 +89,15 @@ final class Utility {
     func readPref(_ key: String, _ value: String) -> String {
         return preferences.getString(key, value)
     }
-    
+
     func writePref(_ key: String, _ value: Float) {
         editor.putFloat(key, value)
     }
-    
+
     func writePref(_ key: String, _ value: Int) {
         editor.putInt(key, value)
     }
-    
+
     func writePref(_ key: String, _ value: String) {
         editor.putString(key, value)
     }
