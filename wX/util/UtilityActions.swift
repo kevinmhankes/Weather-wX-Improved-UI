@@ -205,5 +205,7 @@ final class UtilityActions {
         playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
     }
 
-    static func ttsPrep() {globalSynth.stopSpeaking(at: AVSpeechBoundary.word)}
+    static func ttsPrep() {
+        globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
+    }
 }
