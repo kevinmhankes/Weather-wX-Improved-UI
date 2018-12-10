@@ -342,7 +342,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
         // FIXME check which pane is calling this
-        if WXGLNexrad.isRidTdwr(wxMetal[0]!.rid) {
+        if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTDWR.forEach {product in
                 alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
                     self.productChanged(sender.tag, product.split(":")[0])}))
