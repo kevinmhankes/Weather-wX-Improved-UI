@@ -577,7 +577,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             self.getRadarStatus()}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
-        if RadarPreferences.dualpaneshareposn {
+        if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
             if let popoverController = alert.popoverPresentationController {
                 popoverController.barButtonItem = radarSiteButton
             }
