@@ -314,6 +314,7 @@ class WXMetalRender {
 
     func cleanup() {
         radarLayers = []
+        geographicBuffers = []
         stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
         countyLineBuffers = ObjectMetalBuffers(GeographyType.countyLines, 0.75)
         hwBuffers = ObjectMetalBuffers(GeographyType.highways, 0.45)

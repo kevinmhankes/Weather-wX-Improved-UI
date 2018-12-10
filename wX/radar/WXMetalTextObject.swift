@@ -11,7 +11,7 @@ import GLKit
 final class WXMetalTextObject {
 
     private var glview = WXMetalSurfaceView()
-    private var OGLR: WXMetalRender!
+    var OGLR: WXMetalRender!
     private var numPanes = 0
     private var cityextTvArrInit = false
     private var countyLabelsTvArrInit = false

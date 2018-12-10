@@ -330,9 +330,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         wxMetal.forEach { $0!.writePrefs() }
         wxMetal.forEach { $0!.cleanup() }
         device = nil
+        textObj.OGLR = nil
+        metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
         wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
         commandQueue = nil
-        metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
         pipelineState = nil
         timer = nil
         textObj = WXMetalTextObject()
