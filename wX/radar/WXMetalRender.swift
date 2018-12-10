@@ -317,6 +317,11 @@ class WXMetalRender {
         stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
         countyLineBuffers = ObjectMetalBuffers(GeographyType.countyLines, 0.75)
         hwBuffers = ObjectMetalBuffers(GeographyType.highways, 0.45)
+        radarBuffers.rd.radarBuffers = nil
+        radarBuffers.rd.radialStartAngle = MemoryBuffer()
+        radarBuffers.rd.binWord = MemoryBuffer()
+        radarBuffers.rd = WXMetalNexradLevelData()
+        radarBuffers.metalBuffer = []
         radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     }
 

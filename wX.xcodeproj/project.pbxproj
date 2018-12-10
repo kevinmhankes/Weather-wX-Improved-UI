@@ -1143,7 +1143,6 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				F05806741DB187FB009E2786 /* ImageScrollView.swift */,
 				F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */,
@@ -1181,6 +1180,7 @@
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
 				F01B6BF81DD53A91002D5178 /* TextView.swift */,
+				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
 				F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */,
 				F0FAD0461DCB4F860014752A /* UILabelInset.swift */,
 				F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */,

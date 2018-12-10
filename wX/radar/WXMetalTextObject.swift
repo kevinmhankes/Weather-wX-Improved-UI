@@ -36,7 +36,9 @@ final class WXMetalTextObject {
     private var yFudge = 25.0
     private var fudgeFactor = 375.0
 
-    init() {context = UIViewController()}
+    init() {
+        context = UIViewController()
+    }
 
     init(_ context: UIViewController, _ numPanes: Int, _  glviewWidth: Double,
          _ glviewHeight: Double, _ OGLR: WXMetalRender, _ screenScale: Double) {

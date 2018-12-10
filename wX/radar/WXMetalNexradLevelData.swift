@@ -21,7 +21,7 @@ final class WXMetalNexradLevelData {
     private var timestampStr = ""
     private var seekStart: CLong = 0
     private var compressedFileSize = 0
-    private var radarBuffers: ObjectMetalRadarBuffers?
+    var radarBuffers: ObjectMetalRadarBuffers?
     var index = "0"
 
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
