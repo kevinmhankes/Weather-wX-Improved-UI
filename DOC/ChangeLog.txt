@@ -2,10 +2,8 @@
 // TODO color palette editor
 // TODO standard model var names with android version
 // TODO N0U anim not working ( seems worse on slower devices )
-// TODO Metal - minor mem leak
 // TODO add code to handle rectangular transformation in render
 // TODO BIG look for way to save x/y/zoom of images
-// TODO BIG metal radar memory optimize
 
 2018_12_09 53000 integrate for testing: https://github.com/eldade/PageAlignedArray (code was removed, to slow to allocate mem in testing)
 2018_12_01 52800 code cleanup and continued metal radar dev
