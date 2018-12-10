@@ -28,7 +28,9 @@ final class UtilitySettings {
         let prefLabels = [String](sender.prefMap.keys).sorted(by: <)
         let isOnQ = sender.sw.isOn
         var truthString = "false"
-        if isOnQ {truthString = "true"}
+        if isOnQ {
+            truthString = "true"
+        }
         editor.putString(prefLabels[sender.sw.tag], truthString)
     }
 }

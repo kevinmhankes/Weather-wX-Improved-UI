@@ -10,7 +10,7 @@ final class UtilityImgAnim {
         let html = url.getHtml()
         let frames = html.parseColumn(pattern)
         let frameCnt = Int(cnt) ?? 0
-        if frames.count>frameCnt {
+        if frames.count > frameCnt {
             return ((frames.count-frameCnt)..<frames.count).map {frames[$0]}
         } else {
             return frames.indices.map {frames[$0]}

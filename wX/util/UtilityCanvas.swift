@@ -253,7 +253,7 @@ final class UtilityCanvas {
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
         let renderer = UIGraphicsImageRenderer(size: canvas.image.size, format: rendererFormat)
-        let newImage = renderer.image {_ in
+        let newImage = renderer.image { _ in
             canvas.image.draw(at: CGPoint.zero)
             let wallpath = UIBezierPath(arcCenter: CGPoint(x: CGFloat(pixXInit), y: CGFloat(pixYInit)),
                                         radius: CGFloat(lineWidth/2.0), startAngle: CGFloat(0.0),

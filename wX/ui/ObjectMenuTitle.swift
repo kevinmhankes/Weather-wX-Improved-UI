@@ -17,9 +17,13 @@ final class ObjectMenuTitle {
 	}
 
     static func getStart(_ titles: [ObjectMenuTitle], _ index: Int) -> Int {
-        if index==0 {return 0}
+        if index==0 {
+            return 0
+        }
         var sum = 0
-        (0..<index).forEach { sum += titles[$0].count}
+        (0..<index).forEach { 
+            sum += titles[$0].count
+        }
         return sum
     }
 }

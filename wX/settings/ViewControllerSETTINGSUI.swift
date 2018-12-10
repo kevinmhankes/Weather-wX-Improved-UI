@@ -36,7 +36,9 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = preferences.getString(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
-                if defaultRowIndex == nil { defaultRowIndex = 0 }
+                if defaultRowIndex == nil { 
+                    defaultRowIndex = 0 
+                }
                 objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
             } else {
                 objNp.sw.selectRow(preferences.getInt(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
@@ -56,7 +58,9 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
         var truthString = "false"
-        if isOnQ {truthString = "true"}
+        if isOnQ {
+            truthString = "true"
+        }
         editor.putString(prefLabels[sender.tag], truthString)
     }
 
@@ -70,7 +74,9 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)

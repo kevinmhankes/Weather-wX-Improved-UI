@@ -10,7 +10,6 @@ final class UtilityUSv2 {
 
     static var obsClosestClass = ""
     static var obsCodeToLocation = [String: String]()
-    //static var latlonToObs = [String: String]()
 
     static func getStatus(_ conditionsTimeStr: String) -> String {
         var conditionsTimeStrLocal = conditionsTimeStr
@@ -18,7 +17,9 @@ final class UtilityUSv2 {
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" {obsCodeToLocation[obsClosestClass] = locationName}
+            if locationName != "" && obsClosestClass != "" {
+                obsCodeToLocation[obsClosestClass] = locationName
+            }
         }
         conditionsTimeStrLocal = UtilityTime.convertFromUTC(UtilityString.shortenTime(conditionsTimeStrLocal))
         return conditionsTimeStrLocal.replace(":00 ", " ")
@@ -27,14 +28,14 @@ final class UtilityUSv2 {
     }
 
     static func getStatusViaMetar(_ conditionsTimeStr: String) -> String {
-        //var conditionsTimeStrLocal = conditionsTimeStr
         var locationName: String?
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" {obsCodeToLocation[obsClosestClass] = locationName}
+            if locationName != "" && obsClosestClass != "" {
+                obsCodeToLocation[obsClosestClass] = locationName
+            }
         }
-        //conditionsTimeStrLocal = UtilityTime.convertFromUTC(UtilityString.shortenTime(conditionsTimeStrLocal))
         return conditionsTimeStr + " "
             + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             + " (" + obsClosestClass + ") "
@@ -44,9 +45,15 @@ final class UtilityUSv2 {
         var locatioName = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         var tmp = ""
-        lines.forEach {if $0.contains("," + obsShortCode) {tmp = $0}}
+        lines.forEach {
+            if $0.contains("," + obsShortCode) {
+                tmp = $0
+            }
+        }
         let chunks = tmp.split(",")
-        if chunks.count>2 {locatioName = chunks[0] + ", " + chunks[1]}
+        if chunks.count > 2 {
+            locatioName = chunks[0] + ", " + chunks[1]
+        }
         return locatioName
     }
 
@@ -54,12 +61,14 @@ final class UtilityUSv2 {
         let newLatLon = UtilityMath.latLonFix(location)
         let key = "LLTOOBS" + newLatLon.latString + "," + newLatLon.lonString
         var obsClosest = preferences.getString(key, "")
-        if obsClosest=="" {
+        if obsClosest == "" {
             let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + ","
                 + newLatLon.lonString + "/stations").getNwsHtml()
             obsClosest = obsHtml.parseFirst("gov/stations/(.*?)\"")
             obsClosestClass = obsClosest
-            if key != "" && obsClosest != "" {editor.putString(key, obsClosest)}
+            if key != "" && obsClosest != "" {
+                editor.putString(key, obsClosest)
+            }
         }
         obsClosestClass = obsClosest
         return obsClosest

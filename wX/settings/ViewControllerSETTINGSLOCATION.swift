@@ -55,7 +55,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     }
 
     func moveUp(_ position: Int) {
-        if position>0 {
+        if position > 0 {
             let locA = Location(position - 1)
             let locB = Location(position)
             locA.saveLocationToNewSlot(position)
@@ -70,7 +70,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     }
 
     func moveDown(_ position: Int) {
-        if position<(Location.numLocations-1) {
+        if position < (Location.numLocations - 1) {
             let locA = Location(position)
             let locB = Location(position + 1)
             locA.saveLocationToNewSlot(position + 1)
@@ -85,7 +85,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     }
 
     func deleteLocation(_ position: Int) {
-        if Location.numLocations>1 {
+        if Location.numLocations > 1 {
             Location.deleteLocation(String(position + 1))
             updateView()
         }

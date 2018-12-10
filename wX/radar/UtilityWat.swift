@@ -4,6 +4,8 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+// FIXME rename? wat to Watch
+
 class UtilityWat {
 
     static func addWat(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {

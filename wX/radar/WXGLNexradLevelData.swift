@@ -39,7 +39,7 @@ final class WXGLNexradLevelData {
     func decode() {
         switch productCode {
         case 153, 154:  decocodeAndPlotNexradL2()
-        case 30, 56:        decocodeAndPlotNexradLevel3FourBit()
+        case 30, 56:    decocodeAndPlotNexradLevel3FourBit()
         default:        decocodeAndPlotNexradLevel3()
         }
     }

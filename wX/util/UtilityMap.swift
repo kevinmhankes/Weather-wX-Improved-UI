@@ -12,7 +12,9 @@ final class UtilityMap {
         return "http://www.openstreetmap.org/?mlat=" + xStr + "&mlon=" + yStr + "&zoom=" + zoomLevel + "&layers=M"
     }
 
-    static func genMapURLFromStreetAddress(_ streetAddr: String) -> String {return "http://www.openstreetmap.org/search?query=" + streetAddr.replace(",", "%2C").replace(" ", "%20")}
+    static func genMapURLFromStreetAddress(_ streetAddr: String) -> String {
+        return "http://www.openstreetmap.org/search?query=" + streetAddr.replace(",", "%2C").replace(" ", "%20")
+    }
 
     static func setupMap(_ mapView: MKMapView, _ itemList: [String], _ prefVar: String) {
         let locations = createLocationsArray(itemList, prefVar)
@@ -41,7 +43,7 @@ final class UtilityMap {
             let latStr = preferences.getString(prefVar + ridArr[0] + "_X", "40.00")
             var lonStr = preferences.getString(prefVar + ridArr[0] + "_Y", "80.00")
             if !lonStr.hasPrefix("-") {lonStr = "-" + lonStr}
-            if ridArr.count>1 {
+            if ridArr.count > 1 {
                 let arr = ["name": ridArr[0], "latitude": latStr, "longitude": lonStr, "mediaURL": ridArr[1]]
                 locations.append(arr)
             } else {
@@ -67,7 +69,9 @@ final class UtilityMap {
             pin!.pinTintColor = .red
             pin!.canShowCallout = true
             pin!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        } else {pin!.annotation = annotation}
+        } else {
+            pin!.annotation = annotation
+        }
         return pin
     }
 

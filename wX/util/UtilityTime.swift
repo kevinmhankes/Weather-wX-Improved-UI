@@ -54,7 +54,9 @@ final class UtilityTime {
         let date = dateFormatter.date(from: time.replace("+00:00", ""))
         dateFormatter.dateFormat = "MM-dd h:mm a"
         dateFormatter.timeZone = TimeZone.current
-        if let goodDate = date {returnTime = dateFormatter.string(from: goodDate)}
+        if let goodDate = date {
+            returnTime = dateFormatter.string(from: goodDate)
+        }
         return returnTime
     }
 

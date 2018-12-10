@@ -124,7 +124,9 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                 let coordinate = location?.coordinate
                 self.latTextView.text = String(coordinate!.latitude)
                 self.lonTextView.text = String(coordinate!.longitude)
-                if self.latTextView.text != "" && self.lonTextView.text != "" {self.saveClicked()}
+                if self.latTextView.text != "" && self.lonTextView.text != "" {
+                    self.saveClicked()
+                }
             }
         })
     }
@@ -138,7 +140,9 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let locValue: CLLocationCoordinate2D = manager.location!.coordinate
         self.latTextView.text = String(locValue.latitude)
         self.lonTextView.text = String(locValue.longitude)
-        if self.latTextView.text != "" && self.lonTextView.text != "" {self.saveClicked()}
+        if self.latTextView.text != "" && self.lonTextView.text != "" {
+            self.saveClicked()
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -158,6 +162,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             self.lonTextView.text = caId
             self.labelTextView.text = caCity + ", " + caProv
         }
-        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {saveClicked()}
+        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
+            saveClicked()
+        }
     }
 }

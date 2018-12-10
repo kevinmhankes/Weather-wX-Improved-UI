@@ -24,7 +24,9 @@ final class UtilityMath {
     }
 
     static func knotsToMph(_ value: String) -> String {
-        if value == "" { return "" }
+        if value == "" { 
+            return "" 
+        }
         var tmpNum = Double(value) ?? 0.0
         tmpNum *= 1.152
         return roundDToString(tmpNum)
@@ -36,7 +38,9 @@ final class UtilityMath {
         if UIPreferences.unitsM {
             tmpNum *= 33.8637526
             value2 = String(format: "%.2f", tmpNum) + " mb"
-        } else {value2 = String(format: "%.2f", tmpNum) + " in"}
+        } else {
+            value2 = String(format: "%.2f", tmpNum) + " in"
+        }
         return value2
     }
 
@@ -139,7 +143,6 @@ final class UtilityMath {
 
     static func pressureMBtoIn(_ value: String) -> String {
         var tmpNum = Double(value) ?? 0.0
-        //tmpNum = tmpNum / 100.00 / 33.8637526
         tmpNum /= 33.8637526
         return String(format: "%.2f", tmpNum) + " in"
     }

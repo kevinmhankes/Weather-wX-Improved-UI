@@ -108,9 +108,13 @@ class UtilityUSImgNWSMosaic {
         "CONUS"
         ]
 
-    static func getNwsSectorLabelFromCode(_ code: String) -> String {return sectorToLabel[code] ?? ""}
+    static func getNwsSectorLabelFromCode(_ code: String) -> String {
+        return sectorToLabel[code] ?? ""
+    }
 
-    static func getNwsSectorFromState(_ state: String) -> String {return stateToSector[state] ?? ""}
+    static func getNwsSectorFromState(_ state: String) -> String {
+        return stateToSector[state] ?? ""
+    }
 
     static func nwsMosaic(_ sector: String) -> Bitmap {
         return Bitmap("http://radar.weather.gov/Conus/RadarImg/" + sector + ".gif")
@@ -120,9 +124,13 @@ class UtilityUSImgNWSMosaic {
         var sectorUrl = ""
         if sector=="latest" {
             sectorUrl = "NAT"
-        } else {sectorUrl = sector}
+        } else {
+            sectorUrl = sector
+        }
         var sPattern = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl=="alaska" {sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"}
+        if sectorUrl=="alaska" {
+            sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
+        }
         let urls = UtilityImgAnim.getUrlArray("http://radar.weather.gov/ridge/Conus/RadarImg/",
                                               sPattern, numberOfFrames)
         let baseUrl = "http://radar.weather.gov/ridge/Conus/RadarImg/"

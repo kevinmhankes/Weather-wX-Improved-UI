@@ -4,6 +4,9 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+// FIXME cleanup comments
+// FIXME decide if continue with X Y R G B (5 floats) or go to X Y rgba (3 floats)
+
 import Foundation
 
 class UtilityWXMetalPerf {

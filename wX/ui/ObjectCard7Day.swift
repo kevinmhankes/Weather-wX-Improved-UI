@@ -39,7 +39,7 @@ final class ObjectCard7Day {
     func format7Day(_ dayStr: String) -> (String, String) {
         var dayTmpArr = dayStr.split(": ")
         var retStr = ""
-        if dayTmpArr.count>1 {
+        if dayTmpArr.count > 1 {
             if isUS {
                 retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
                     + MyApplication.degreeSymbol

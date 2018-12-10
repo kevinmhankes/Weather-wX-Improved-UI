@@ -107,7 +107,9 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {
                 (localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
-                    if $0.hasPrefix(prefVarMod) {title = $0.split(":")[1]}
+                    if $0.hasPrefix(prefVarMod) {
+                        title = $0.split(":")[1]
+                    }
                 }
             }
             if title == nil {
@@ -147,7 +149,9 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
 
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
-        if to == .up {delta = -1}
+        if to == .up {
+            delta = -1
+        }
         let tmp = homescreenFav[from + delta]
         homescreenFav[from + delta] = homescreenFav[from]
         homescreenFav[from] = tmp

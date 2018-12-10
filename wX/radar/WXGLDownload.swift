@@ -108,8 +108,10 @@ final class WXGLDownload {
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
-        (0..<snDates.count - 1).forEach { if snDates[$0]==mostRecentTime {
-            mostRecentSn = snFiles[$0]}
+        (0..<snDates.count - 1).forEach { 
+            if snDates[$0]==mostRecentTime {
+                mostRecentSn = snFiles[$0]
+            }
         }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
         var index = seq - frameCnt + 1
@@ -140,7 +142,9 @@ final class WXGLDownload {
         let fnSize = Int(tmpArr[tmpArr.count - 3]) ?? 0
         let fnPrevSize = Int(tmpArr[tmpArr.count - 5]) ?? 0
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 {additionalAdd = 1}
+        if ratio < 0.75 {
+            additionalAdd = 1
+        }
         (0..<frameCntInt).forEach {
             l2Arr.append(tmpArr[tmpArr.count - (frameCntInt - $0 + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + l2Arr[$0])
@@ -161,7 +165,9 @@ final class WXGLDownload {
         let fnSize = Int(tmpArr[tmpArr.count - 2]) ?? 1
         let fnPrevSize = Int(tmpArr[tmpArr.count - 4]) ?? 1
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 {fileName = fnPrev}
+        if ratio < 0.75 {
+            fileName = fnPrev
+        }
         return baseUrl + fileName
     }
 

@@ -91,7 +91,7 @@ final class UtilityString {
 
     static func parseS(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
-        if retArr.count>0 {
+        if retArr.count > 0 {
             return retArr[retArr.count - 1]
         } else {
             return ""
@@ -100,7 +100,7 @@ final class UtilityString {
 
     static func parseFirstS(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
-        if retArr.count>0 {
+        if retArr.count > 0 {
             return retArr[0]
         } else {
             return ""
@@ -144,7 +144,7 @@ final class UtilityString {
     }
 
     static func getLastXChars(_ string: String, _ x: Int) -> String {
-        if string.count==x {
+        if string.count == x {
             return string
         } else if string.count > x {
             return string.substring(string.count - x)

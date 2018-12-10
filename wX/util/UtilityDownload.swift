@@ -9,7 +9,9 @@ import UIKit
 final class UtilityDownload {
 
     static func getStringFromUrl(_ urlstr: String) -> String {
-        guard let myURL = URL(string: urlstr) else {return ""}
+        guard let myURL = URL(string: urlstr) else {
+            return ""
+        }
         do {
             return try String(contentsOf: myURL, encoding: .ascii)
         } catch {
@@ -19,7 +21,9 @@ final class UtilityDownload {
     }
 
     static func getStringFromUrlSep(_ urlstr: String) -> String {
-        guard let myURL = URL(string: urlstr) else {return ""}
+        guard let myURL = URL(string: urlstr) else {
+            return ""
+        }
         do {
             return try String(contentsOf: myURL, encoding: .ascii)
         } catch _ {
@@ -29,7 +33,9 @@ final class UtilityDownload {
     }
 
     static func getBitmapFromUrl(_ urlstr: String) -> Bitmap {
-        guard let myURL = URL(string: urlstr) else {return Bitmap()}
+        guard let myURL = URL(string: urlstr) else {
+            return Bitmap()
+        }
         let imageData = try?  Data(contentsOf: myURL)
         if let image = imageData {
             return Bitmap(image)
@@ -39,38 +45,42 @@ final class UtilityDownload {
     }
 
     static func getInputStreamFromURL(_ urlstr: String) -> Data {
-        guard let myURL = URL(string: urlstr) else {return Data()}
+        guard let myURL = URL(string: urlstr) else {
+            return Data()
+        }
         let imageData = try? Data(contentsOf: myURL)
         var data = Data()
-        if let dataTmp = imageData {data = dataTmp}
+        if let dataTmp = imageData {
+            data = dataTmp
+        }
         return data
     }
 
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
         let prod = produ.uppercased()
-        if prod=="AFDLOC" {
+        if prod == "AFDLOC" {
             text = getTextProduct("afd" + Location.wfo.lowercased())
-        } else if prod=="HWOLOC" {
+        } else if prod == "HWOLOC" {
             text = getTextProduct("hwo" + Location.wfo.lowercased())
-        } else if prod=="SUNMOON" {
+        } else if prod == "SUNMOON" {
             text = UtilitySunMoon.getExtendedSunMoonData()
             let textArr = UtilitySunMoon.parseData(text)
             text = textArr.1
-        } else if prod=="HOURLY" {
+        } else if prod == "HOURLY" {
             let textArr = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
             text = textArr.0
-        } else if prod=="SWPC3DAY" {
+        } else if prod == "SWPC3DAY" {
             text = ("http://services.swpc.noaa.gov/text/3-day-forecast.txt").getHtml()
-        } else if prod=="SWPC27DAY" {
+        } else if prod == "SWPC27DAY" {
             text = ("http://services.swpc.noaa.gov/text/27-day-outlook.txt").getHtml()
-        } else if prod=="SWPCWWA" {
+        } else if prod == "SWPCWWA" {
             text = ("http://services.swpc.noaa.gov/text/advisory-outlook.txt").getHtml()
-        } else if prod=="SWPCHIGH" {
+        } else if prod == "SWPCHIGH" {
             text = ("http://services.swpc.noaa.gov/text/weekly.txt").getHtml()
-        } else if prod=="SWPCDISC" {
+        } else if prod == "SWPCDISC" {
             text = ("http://services.swpc.noaa.gov/text/discussion.txt").getHtml()
-        } else if prod=="SWPC3DAYGEO" {
+        } else if prod == "SWPC3DAYGEO" {
             text = ("http://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt").getHtml()
         } else if prod.contains("MIATCP") || prod.contains("MIATCM")
             || prod.contains("MIATCD") || prod.contains("MIAPWS")
@@ -157,15 +167,24 @@ final class UtilityDownload {
         text = text
             .replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\"><u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
-        if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {text = text.removeLineBreaks()}
+        if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {
+            text = text.removeLineBreaks()
+        }
         return text
     }
 
-    static func get1KMURL() -> Bitmap {return Bitmap()}
+// FIXME needed?
+    static func get1KMURL() -> Bitmap {
+        return Bitmap()
+    }
 
-    static func get1KMURL(_ wfo: String) -> Bitmap {return Bitmap()}
+    static func get1KMURL(_ wfo: String) -> Bitmap {
+        return Bitmap()
+    }
 
-    static func get2KMURL(_ product: String) -> Bitmap {return Bitmap()}
+    static func get2KMURL(_ product: String) -> Bitmap {
+        return Bitmap()
+    }
 
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
@@ -297,7 +316,9 @@ final class UtilityDownload {
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
-        if radarSite.count==4 {ridSmall.remove(at: radarSite.startIndex)}
+        if radarSite.count == 4 {
+            ridSmall.remove(at: radarSite.startIndex)
+        }
         return getTextProduct("FTM" + ridSmall.uppercased())
     }
 }

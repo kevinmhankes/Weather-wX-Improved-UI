@@ -24,7 +24,9 @@ final class ObjectPopUp {
 
     func finish() {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = button}
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = button
+        }
         uiv.present(alert, animated: true, completion: nil)
     }
 }

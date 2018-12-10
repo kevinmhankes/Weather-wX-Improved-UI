@@ -24,7 +24,9 @@ class ViewControllerSPCMCD: UIwXViewController {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         spcMcdNumber = ActVars.SPCMCDNo
-        if spcMcdNumber != "" {ActVars.SPCMCDNo = ""}
+        if spcMcdNumber != "" {
+            ActVars.SPCMCDNo = ""
+        }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()

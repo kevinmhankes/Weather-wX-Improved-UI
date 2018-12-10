@@ -6,7 +6,6 @@
 
 import UIKit
 
-//let panSensivity: Float = 300.0
 let panSensivity: Float = 500.0
 
 final class WXMetalSurfaceView {
@@ -126,7 +125,6 @@ final class WXMetalSurfaceView {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let bounds = UtilityUI.getScreenBounds()
-        //let scaleFactor: Float = 2.0
         let fudgeFactor: Float = -(450.0 / bounds.0)
         let xMiddle = Float(uiv.view.frame.width/2.0)
         let yMiddle = Float(uiv.view.frame.height/2.0)

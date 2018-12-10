@@ -13,10 +13,10 @@ final public class StormReport {
     private var state = ""
 
     init(_ text: String, _ lat: String, _ lon: String, _ time: String, _ state: String) {
-		self.text = text
-		self.lat = lat
-		self.lon = lon
-		self.time = time
-		self.state = state
-	}
+        self.text = text
+        self.lat = lat
+        self.lon = lon
+        self.time = time
+        self.state = state
+	  }
 }

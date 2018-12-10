@@ -30,7 +30,7 @@ final class WXGLPolygonWarnings {
                 && !vtecAl[polyCount].hasPrefix("0.EXP")
                 && !vtecAl[polyCount].hasPrefix("0.CAN") {
                 let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
-                if polyTmp.count>1 {
+                if polyTmp.count > 1 {
                     y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
                     x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }

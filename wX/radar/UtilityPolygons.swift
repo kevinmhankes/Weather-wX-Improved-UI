@@ -17,8 +17,12 @@ public class UtilityPolygons {
         currentTime = UtilityTime.currentTimeMillis()
         currentTimeSec = currentTime / 1000
         refreshIntervalSec = refreshLocMin * 60
-        if !PolygonType.TST.display {UtilityDownloadRadar.clearPolygonVTEC()}
-        if !PolygonType.MPD.display {UtilityDownloadRadar.clearMPD()}
+        if !PolygonType.TST.display {
+            UtilityDownloadRadar.clearPolygonVTEC()
+        }
+        if !PolygonType.MPD.display {
+            UtilityDownloadRadar.clearMPD()
+        }
         if !PolygonType.MCD.display {
             UtilityDownloadRadar.clearMCD()
             UtilityDownloadRadar.clearWAT()

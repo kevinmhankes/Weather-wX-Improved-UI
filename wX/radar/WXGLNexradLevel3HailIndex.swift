@@ -34,7 +34,7 @@ class WXGLNexradLevel3HailIndex {
             var posnNumbers = posnStr.parseColumnAll(stiPattern3)
             var hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
             var hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
-            if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count>1 {
+            if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
                 var degree = 0
                 var nm = 0
                 let bearing = [Double]()

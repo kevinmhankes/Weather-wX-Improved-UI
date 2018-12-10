@@ -43,7 +43,6 @@ final class UtilityIO {
             let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
                                                              in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
-            //return (try? Data(contentsOf: fileUrl)) ?? Data()
             return try Data(contentsOf: fileUrl)
         } catch {
             print("error in readFiletoData")

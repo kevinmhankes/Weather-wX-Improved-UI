@@ -15,8 +15,12 @@ final class ObjectAlertDetail {
         (0...6).forEach {
             let objText = ObjectTextView(stackView, "")
             textViews.append(objText)
-            if $0==4 {textViews[$0].color = UIColor.blue}
-            if $0==0 {textViews[$0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize+2)}
+            if $0==4 {
+                textViews[$0].color = UIColor.blue
+            }
+            if $0==0 {
+                textViews[$0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize+2)
+            }
         }
     }
 

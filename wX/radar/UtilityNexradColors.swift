@@ -34,7 +34,9 @@ class UtilityNexradColors {
         (0...2).forEach {
             if $0 > 0 {
                 hsvb[$0] = interpolate(hsva[$0], hsvb[$0], Double(proportion))
-            } else {hsvb[$0] = interpolateHue(hsva[$0], hsvb[$0], Double(proportion))}
+            } else {
+                hsvb[$0] = interpolateHue(hsva[$0], hsvb[$0], Double(proportion))
+            }
         }
         return Color.HSVToColor(hsvb)
     }

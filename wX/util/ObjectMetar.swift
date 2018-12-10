@@ -28,7 +28,6 @@ final class ObjectMetar {
     var metarWeatherCondition = ""
 
     init(_ location: LatLon) {
-        //let obsClosest = UtilityUSv2.getObsFromLatLon(location)
         let obsClosest = UtilityMetar.findClosestObservation(location)
         UtilityUSv2.obsClosestClass = obsClosest.name
         if !decodeIcon {
@@ -60,7 +59,6 @@ final class ObjectMetar {
             }
             condition = condition.replace("; Lightning Observed", "")
             condition = condition.replace("; Cumulonimbus Clouds, Lightning Observed", "")
-
             if condition == "Mist" {
                 condition = "Fog/Mist"
             }
@@ -182,15 +180,12 @@ final class ObjectMetar {
                 pressureBlob = pressureBlob.insert(pressureBlob.count - 2, ".")
                 pressureBlob = UtilityMath.unitsPressure(pressureBlob)
             }
-            if windBlob.contains("KT") && windBlob.count==7 {
-                //validWind = true
+            if windBlob.contains("KT") && windBlob.count == 7 {
                 windDir = windBlob.substring(0, 3)
                 windInKt = windBlob.substring(3, 5)
                 windDirD = Double(windDir) ?? 0.0
                 windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " kt"
-            } else if windBlob.contains("KT") && windBlob.count==10 {
-                //validWind = true
-                //validWindGust = true
+            } else if windBlob.contains("KT") && windBlob.count == 10 {
                 windDir = windBlob.substring(0, 3)
                 windInKt = windBlob.substring(3, 5)
                 windgustInKt = windBlob.substring(6, 8)
@@ -199,7 +194,7 @@ final class ObjectMetar {
                     + windInKt + " G " + windgustInKt + " kt"
             }
 
-            if TDArr.count>1 {
+            if TDArr.count > 1 {
                 temperature = TDArr[0]
                 dewpoint = TDArr[1]
                 temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")

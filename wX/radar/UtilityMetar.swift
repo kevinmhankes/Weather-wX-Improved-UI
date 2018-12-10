@@ -24,9 +24,11 @@ final class UtilityMetar {
     static var obsStateOld = ""
     static var lastRefresh: CLong = 0
     static var refreshLocMin = RadarPreferences.radarDataRefreshInterval
-    //static var obsLatlon = Dictionary<String, LatLon>()
     static var obsLatlon = [String: LatLon]()
-    static func rawFileToStringArray(_ rawFile: String) -> [String] {return UtilityIO.readTextFile(rawFile).split("\n")}
+
+    static func rawFileToStringArray(_ rawFile: String) -> [String] {
+        return UtilityIO.readTextFile(rawFile).split("\n")
+    }
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
         let currentTime1: CLong = UtilityTime.currentTimeMillis()
@@ -204,7 +206,9 @@ final class UtilityMetar {
         }
     }
 
-    static func getObsArrAviationColor() -> [Int] {return obsArrAviationColor}
+    static func getObsArrAviationColor() -> [Int] {
+        return obsArrAviationColor
+    }
 
     static func findClosestMetar(_ location: LatLon) -> String {
         var lines = rawFileToStringArray(R.Raw.us_metar3)

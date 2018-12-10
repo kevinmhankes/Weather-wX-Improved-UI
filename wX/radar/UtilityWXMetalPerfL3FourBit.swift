@@ -24,7 +24,8 @@ class UtilityWXMetalPerfL3FourBit {
                 (0..<numberOfRleHalfwords[radial] * 2).forEach {_ in
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
-                    (0..<numOfBins).forEach { _ in radarBuffers.rd.binWord.put(UInt8(bin % 16))}
+                    (0..<numOfBins).forEach { _ in 
+                        radarBuffers.rd.binWord.put(UInt8(bin % 16))}
                 }
             }
         }

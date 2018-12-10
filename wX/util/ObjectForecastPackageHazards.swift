@@ -52,10 +52,8 @@ final class ObjectForecastPackageHazards {
 
     static func getHazardCount(_ objHazards: ObjectForecastPackageHazards) -> Int {
         var numHaz = 0
-        //var idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
         let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
         hazardTitles.enumerated().forEach { _, _ in
-            //let hazCard = ObjectCardHazard(stackViewLocalHaz, hazard)
             numHaz += 1
         }
         return numHaz
@@ -87,7 +85,9 @@ final class ObjectForecastPackageHazards {
                 numHaz += 1
             }
         }
-        if numHaz>0 {stackView.addArrangedSubview(stackViewLocalHaz)}
+        if numHaz > 0 {
+            stackView.addArrangedSubview(stackViewLocalHaz)
+        }
     }
 
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {

@@ -11,7 +11,9 @@ class WXGLNexradLevel3WindBarbs {
         var arrWb = [String]()
         if !isGust {
             arrWb = UtilityMetar.obsArrWb
-        } else {arrWb = UtilityMetar.obsArrWbGust}
+        } else {
+            arrWb = UtilityMetar.obsArrWbGust
+        }
         var degree = 0.0
         var nm = 0.0
         var degree2 = 0.0
@@ -37,13 +39,13 @@ class WXGLNexradLevel3WindBarbs {
             var length = 0
             var locXDbl = 0.0
             var locYDbl = 0.0
-            if metarArr.count>3 {
+            if metarArr.count > 3 {
                 locXDbl = Double(metarArr[0]) ?? 0.0
                 locYDbl = Double(metarArr[1]) ?? 0.0
                 angle = Int(metarArr[2]) ?? 0
                 length = Int(metarArr[3]) ?? 0
             }
-            if length>4 {
+            if length > 4 {
                 degree = 0.0
                 nm = 0.0
                 degree2 = Double(angle)
@@ -68,12 +70,18 @@ class WXGLNexradLevel3WindBarbs {
                 var barbCount = Int(length / 10)
                 var halfBarb = false
                 var oneHalfBarb = false
-                if ((length - barbCount * 10)>4 && length>10) || (length > 4 && length < 10) {halfBarb = true}
-                if length > 4 && length < 10 {oneHalfBarb = true}
+                if ((length - barbCount * 10)>4 && length>10) || (length > 4 && length < 10) {
+                    halfBarb = true
+                }
+                if length > 4 && length < 10 {
+                    oneHalfBarb = true
+                }
                 if length > 49 {
                     above50 = true
                     barbCount -= 4
-                } else {above50 = false}
+                } else {
+                    above50 = false
+                }
                 var index = 0
                 if above50 {
                     // initial angled line

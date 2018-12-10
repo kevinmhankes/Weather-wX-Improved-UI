@@ -17,14 +17,18 @@ final class ObjectSettingsSwitch {
         let sV = UIStackView()
         sV.distribution = .fill
         sV.axis = .horizontal
-        [sV, vw, sw].forEach {$0.backgroundColor = UIColor.white}
+        [sV, vw, sw].forEach {
+            $0.backgroundColor = UIColor.white
+        }
         vw.contentHorizontalAlignment = .left
         vw.setTitle(prefMap[prefVar], for: .normal)
         vw.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         sw.thumbTintColor = AppColors.primaryDarkBlueUIColor
         sw.onTintColor = AppColors.primaryColorUIColor
         sw.setOn(preferences.getString(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
-        [vw, sw].forEach {sV.addArrangedSubview($0)}
+        [vw, sw].forEach {
+            sV.addArrangedSubview($0)
+        }
         sV.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         stackView.addArrangedSubview(sV)
     }
