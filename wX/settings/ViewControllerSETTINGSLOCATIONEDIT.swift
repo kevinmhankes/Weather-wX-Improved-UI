@@ -29,7 +29,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         self.locationManager.delegate = self
         let toolbar = ObjectToolbar(.top)
         let toolbarBottom = ObjectToolbar(.bottom)
-        let caButton = ObjectToolbarIcon(title: "CA", self, #selector(caClicked))
+        let caButton = ObjectToolbarIcon(title: "Canada", self, #selector(caClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         let doneButton2 = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         let saveButton = ObjectToolbarIcon(self, .save, #selector(saveClicked))
