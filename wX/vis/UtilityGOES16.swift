@@ -34,7 +34,9 @@ final class UtilityGOES16 {
         default: url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_sectors.php?sector=" + sector
         }
         var sectorLocal = "SECTOR/" + sector
-        if sector == "FD" || sector == "CONUS" {sectorLocal = sector}
+        if sector == "FD" || sector == "CONUS" {
+            sectorLocal = sector
+        }
         let html = url.getHtml()
         let parseString = "href=.(https://cdn.star.nesdis.noaa.gov/GOES16/ABI/"
             + sectorLocal + "/" + product + "/[0-9]{11}_GOES16-ABI-"
