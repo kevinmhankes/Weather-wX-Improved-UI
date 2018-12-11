@@ -70,7 +70,7 @@ class WXGLNexradLevel3WindBarbs {
                 var barbCount = Int(length / 10)
                 var halfBarb = false
                 var oneHalfBarb = false
-                if ((length - barbCount * 10)>4 && length>10) || (length > 4 && length < 10) {
+                if ((length - barbCount * 10) > 4 && length > 10) || (length > 4 && length < 10) {
                     halfBarb = true
                 }
                 if length > 4 && length < 10 {

@@ -8,7 +8,7 @@
 
 class UtilityWat {
 
-    static func addWat(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
+    static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = ""
         switch type.string {

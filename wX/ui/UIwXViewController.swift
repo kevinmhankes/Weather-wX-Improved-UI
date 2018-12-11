@@ -23,5 +23,6 @@ class UIwXViewController: UIViewController {
 
     @objc func doneClicked() {
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+        //self.dismiss(animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 }

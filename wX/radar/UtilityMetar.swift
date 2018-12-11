@@ -86,12 +86,12 @@ final class UtilityMetar {
                     tmpArr2 = metar.split(" ")
                     tmpBlob = metar.parse(patternMetarWxogl1)
                     TDArr = tmpBlob.split("/")
-                    if tmpArr2.count>1 {
+                    if tmpArr2.count > 1 {
                         timeBlob = tmpArr2[1]
                     }
                     pressureBlob = metar.parse(patternMetarWxogl2)
                     windBlob = metar.parse(patternMetarWxogl3)
-                    if windBlob=="" {
+                    if windBlob == "" {
                         windBlob = metar.parse(patternMetarWxogl4)
                     }
                     conditionsBlob = metar.parse(patternMetarWxogl5)

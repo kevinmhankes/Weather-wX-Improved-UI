@@ -33,13 +33,17 @@ class ViewControllerTABPARENT: UIViewController {
             let selectedIndex = self.tabBarController!.selectedIndex
             if selectedIndex == 2 {
                 self.tabBarController!.selectedIndex = 0
-            } else {self.tabBarController!.selectedIndex = selectedIndex + 1}
+            } else {
+                self.tabBarController!.selectedIndex = selectedIndex + 1
+            }
         }
         if sender.direction == .right {
             let selectedIndex = self.tabBarController!.selectedIndex
             if selectedIndex == 0 {
                 self.tabBarController!.selectedIndex = 2
-            } else {self.tabBarController!.selectedIndex = selectedIndex - 1}
+            } else {
+                self.tabBarController!.selectedIndex = selectedIndex - 1
+            }
         }
     }
 

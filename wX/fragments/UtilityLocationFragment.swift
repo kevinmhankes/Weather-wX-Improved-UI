@@ -80,13 +80,15 @@ final class UtilityLocationFragment {
         // 5 to 7 mph.
         var wind9 = UtilityString.parseMultipe(chunk, sevenDayWind9, 2)
         // Winds could gusts as high as 21 mph.
-        if gust=="" {gust = chunk.parse(sevenDayWind8)}
+        if gust == "" {
+            gust = chunk.parse(sevenDayWind8)
+        }
         if gust != "" {
             gust = " G " + gust + " mph"
         } else {
             gust = " mph"
         }
-        if wind.count>1 {
+        if wind.count > 1 {
             return spacing + wind[0] + "-" + wind[1] + gust
         } else if wind2 != "" {
             return spacing + wind2 + gust
@@ -98,14 +100,14 @@ final class UtilityLocationFragment {
             return spacing + wind5[0] + "-" + wind5[1] + gust
         } else if wind7 != "" {
             return spacing + wind7 + gust
-        } else if wind9.count>1 {
+        } else if wind9.count > 1 {
             return spacing + wind9[0] + "-" + wind9[1] + gust
         } else {
             return ""
         }
     }
 
-    static let WINDDIR = [
+    static let windDir = [
         "north": "N",
         "north northeast": "NNE",
         "northeast": "NE",
@@ -148,10 +150,10 @@ final class UtilityLocationFragment {
         } else if winddir7 != "" {
             retStr = winddir7
         }
-        if retStr=="" {
+        if retStr == "" {
             return ""
         } else {
-            if let ret = WINDDIR[retStr.lowercased()] {
+            if let ret = windDir[retStr.lowercased()] {
                 return " " + ret + ""
             } else {
                 return ""
@@ -235,8 +237,12 @@ final class UtilityLocationFragment {
 
     static func extractCAWindDirection(_ chunk: String) -> String {
         var wdir = chunk.parse(ca7dayWinddir1)
-        if wdir=="" {wdir = chunk.parse(ca7dayWinddir2)}
-        if wdir != "" {wdir = " " + (WINDDIR[wdir] ?? "")}
+        if wdir == "" {
+            wdir = chunk.parse(ca7dayWinddir2)
+        }
+        if wdir != "" {
+            wdir = " " + (windDir[wdir] ?? "")
+        }
         return wdir
     }
 
@@ -244,9 +250,13 @@ final class UtilityLocationFragment {
         var wspdRange = UtilityString.parseMultipe(chunk, ca7dayWindspd1, 2)
         let wspd = chunk.parse(ca7dayWindspd2)
         var gust = ""
-        if chunk.contains("gusting") {gust = " G " + chunk.parse(ca7dayWindspd3)}
-        if wspdRange.count>1 {return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h"}
-        if wspd=="" {
+        if chunk.contains("gusting") {
+            gust = " G " + chunk.parse(ca7dayWindspd3)
+        }
+        if wspdRange.count > 1 {
+            return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h"
+        }
+        if wspd == "" {
             return ""
         } else {
             return wspd + gust + " km/h"

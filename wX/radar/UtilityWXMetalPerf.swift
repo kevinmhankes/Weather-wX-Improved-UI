@@ -4,9 +4,6 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-// FIXME cleanup comments
-// FIXME decide if continue with X Y R G B (5 floats) or go to X Y rgba (3 floats)
-
 import Foundation
 
 class UtilityWXMetalPerf {
@@ -74,74 +71,45 @@ class UtilityWXMetalPerf {
                 } else {
                     angleVCos = cos((angleV)/k180DivPi)
                     angleVSin = sin((angleV)/k180DivPi)
-
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
-
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
                     // 2
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
 
                     angleCos = cos(angle/k180DivPi)
                     angleSin = sin(angle/k180DivPi)
-
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
-
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
-
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
                     // 4
                     radarBuffers.putFloat((binStart * angleCos))
                     radarBuffers.putFloat((binStart * angleSin))
-                    //radarBuffers.putFloat(0.0)
-                    //(0...3).forEach { _ in
-                        radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                        radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-                        //radarBuffers.putColorFloat(1.0)
-                    //}
+                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
+                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
 
                     totalBins += 1
                     level = curLevel
@@ -198,14 +166,12 @@ class UtilityWXMetalPerf {
                 } else {
                     angleVCos = cos((angleV) / k180DivPi)
                     angleVSin = sin((angleV) / k180DivPi)
-
                     // 1
                     radarBuffers.putFloat(binStart * angleVCos)
                     radarBuffers.putFloat(binStart * angleVSin)
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-
                     // 2
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVCos)
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVSin)
@@ -215,28 +181,24 @@ class UtilityWXMetalPerf {
 
                     angleCos = cos(angle / k180DivPi)
                     angleSin = sin(angle / k180DivPi)
-
                     // 3
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleCos)
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleSin)
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
-
                     // 4
                     radarBuffers.putFloat(binStart * angleCos)
                     radarBuffers.putFloat(binStart * angleSin)
@@ -373,12 +335,10 @@ class UtilityWXMetalPerf {
         var pointY = 0.0
         var pixYD = 0.0
         var pixXD = 0.0
-        //var ixCount: UInt16 = 0
         var test1 = 0.0
         var test2 = 0.0
         let lenLocal = buffers.lenInit * 0.50
         let triangleAmountF = Double(buffers.triangleCount)
-        //var col = [UInt8]()
         buffers.setToPositionZero()
         buffers.metalBuffer = []
         var red: UInt8 = 0
@@ -445,22 +405,6 @@ class UtilityWXMetalPerf {
             buffers.putColor(buffers.blue)
             buffers.putFloat(pixXD + (lenLocal*cos((Double($0) + 1) * twicePi / triangleAmountF)))
             buffers.putFloat(-pixYD + (lenLocal*sin((Double($0) + 1) * twicePi / triangleAmountF)))
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
-        }
-    }
-
-    static func colorGen (_ colorBuff: MemoryBuffer, _ len: Int, _ colArr: [UInt8]) {
-        (0..<len).forEach { _ in
-            colorBuff.put(colArr[0])
-            colorBuff.put(colArr[1])
-            colorBuff.put(colArr[2])
-        }
-    }
-
-    static func colorGen (_ buffers: ObjectOglBuffers, _ len: Int) {
-        (0..<len).forEach { _ in
             buffers.putColor(buffers.red)
             buffers.putColor(buffers.green)
             buffers.putColor(buffers.blue)
