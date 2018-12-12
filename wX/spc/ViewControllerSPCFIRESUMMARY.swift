@@ -24,9 +24,10 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
             DispatchQueue.main.async {
                 self.bitmaps.enumerated().forEach {
                     let imgObject = ObjectImage(self.stackView, $1)
-                    imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                                  target: self,
-                                                                                  action: #selector(self.imageClicked(sender:))))
+                    imgObject.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(data: $0,
+                                                       target: self,
+                                                       action: #selector(self.imageClicked(sender:))))
                 }
             }
         }

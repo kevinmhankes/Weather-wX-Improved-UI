@@ -88,7 +88,8 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
                                                               end,
                                                               degree2,
-                                                              barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor,
+                                                              barbOffset + startLength + Double(index) * arrowSpacing
+                                                                * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
                     stormList += drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
                                           startLength + arrowLength * nmScaleFactor, bearing)
@@ -96,7 +97,8 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
                                                               end,
                                                               degree2,
-                                                              barbOffset + startLength + -1.0 * arrowSpacing * nmScaleFactor * barbLengthScaleFactor,
+                                                              barbOffset + startLength + -1.0 * arrowSpacing
+                                                                * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
                     stormList += drawLine(ec, ecc, pn, start, degree2 - 90.0,
                                           startLength + 0.80 * arrowLength * nmScaleFactor, bearing)
@@ -105,7 +107,8 @@ class WXGLNexradLevel3WindBarbs {
                                                               end,
                                                               degree2,
                                                               barbOffset + startLength
-                                                                + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor,
+                                                                + Double(index) * arrowSpacing
+                                                                * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
                     stormList += drawLine(ec,
                                           ecc,
@@ -121,7 +124,8 @@ class WXGLNexradLevel3WindBarbs {
                                                               end,
                                                               degree2,
                                                               barbOffset + startLength
-                                                                + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor,
+                                                                + Double(index) * arrowSpacing
+                                                                * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
                     stormList += drawLine(ec,
                                           ecc,
@@ -139,7 +143,8 @@ class WXGLNexradLevel3WindBarbs {
                                                               end,
                                                               degree2,
                                                               barbOffset + halfBarbOffsetFudge + startLength
-                                                                + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor,
+                                                                + Double(index) * arrowSpacing
+                                                                * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
                     stormList += drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
                                           startLength + arrowLength / 2.0 * nmScaleFactor, bearing)

@@ -25,7 +25,7 @@ final class UtilityMath {
 
     static func knotsToMph(_ value: String) -> String {
         if value == "" {
-            return "" 
+            return ""
         }
         var tmpNum = Double(value) ?? 0.0
         tmpNum *= 1.152

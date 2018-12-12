@@ -70,9 +70,13 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
                 self.listCity.enumerated().forEach {
                     let objText = ObjectTextView(self.stackView, $1)
                     self.tvArr.append(objText)
-                    objText.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                                target: self,
-                                                                                action: #selector(self.gotoProv(sender:))))
+                    objText.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(
+                            data: $0,
+                            target: self,
+                            action: #selector(self.gotoProv(sender:))
+                        )
+                    )
                     objText.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 3)
                 }
             }

@@ -114,21 +114,31 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
             }
             if title == nil {
                 GlobalArrays.nwsTextProducts.forEach {
-                    if $0.hasPrefix(prefVarMod) {title = $0.split(":")[1]}
+                    if $0.hasPrefix(prefVarMod) {
+                        title = $0.split(":")[1]
+                    }
                 }
             }
             if let goodTitle = title {
                 let objText = ObjectTextView(stackView, goodTitle)
-                objText.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                                                                            strData: goodTitle,
-                                                                            target: self,
-                                                                            action: #selector(self.buttonPressed(sender:))))
+                objText.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        data: index,
+                        strData: goodTitle,
+                        target: self,
+                        action: #selector(self.buttonPressed(sender:))
+                    )
+                )
             } else {
                 let objText = ObjectTextView(stackView, prefVar)
-                objText.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                                                                            strData: prefVar,
-                                                                            target: self,
-                                                                            action: #selector(self.buttonPressed(sender:))))
+                objText.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        data: index,
+                        strData: prefVar,
+                        target: self,
+                        action: #selector(self.buttonPressed(sender:))
+                    )
+                )
             }
         }
     }
@@ -140,7 +150,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         if index != 0 {
             alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.move(index, .up)}))
         }
-        if index != (homescreenFav.count-1) {
+        if index != (homescreenFav.count - 1) {
             alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.move(index, .down)}))
         }
         alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {_ in self.delete(selection: index)}))

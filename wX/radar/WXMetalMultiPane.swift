@@ -198,7 +198,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pipelineStateDescriptor.vertexFunction = vertexProgram
         pipelineStateDescriptor.fragmentFunction = fragmentProgram
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        //pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        do {
+            pipelineState = try device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        } catch {
+            print("error init pipelineState")
+        }
         commandQueue = device.makeCommandQueue()
         timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         timer.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
@@ -289,8 +294,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self,
-                                                                    action: #selector(WXMetalMultipane.gestureLongPress(_:))))
+        self.view.addGestureRecognizer(
+            UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(WXMetalMultipane.gestureLongPress(_:))
+            )
+        )
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {

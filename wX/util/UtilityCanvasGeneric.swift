@@ -8,7 +8,12 @@ import UIKit
 
 final class UtilityCanvasGeneric {
 
-    static func draw(_ provider: ProjectionType, _ bitmap: Bitmap, _ radarSite: String, _ lineWidth: Int, _ type: GeographyType) {
+    static func draw(
+        _ provider: ProjectionType,
+        _ bitmap: Bitmap,
+        _ radarSite: String,
+        _ lineWidth: Int,
+        _ type: GeographyType) {
         let isMercato = UtilityCanvasProjection.isMercator(provider)
         let paint = Paint()
         var genericCount: Int
@@ -37,10 +42,16 @@ final class UtilityCanvasGeneric {
             let wallpath = UIBezierPath()
             stride(from: 0, to: genericCount, by: 4).forEach { _ in
                 if isMercato {
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(genericByteBuffer.getFloat()),
-                                                                               Double(genericByteBuffer.getFloat()), pn)
-                    tmpCoords2 = UtilityCanvasProjection.computeMercatorNumbers(Double(genericByteBuffer.getFloat()),
-                                                                                Double(genericByteBuffer.getFloat()), pn)
+                    tmpCoords =
+                        UtilityCanvasProjection.computeMercatorNumbers(
+                            Double(genericByteBuffer.getFloat()),
+                            Double(genericByteBuffer.getFloat()), pn
+                        )
+                    tmpCoords2 =
+                        UtilityCanvasProjection.computeMercatorNumbers(
+                            Double(genericByteBuffer.getFloat()),
+                            Double(genericByteBuffer.getFloat()), pn
+                        )
                 } else {
                     tmpCoords = UtilityCanvasProjection.compute4326Numbers(pn)
                     tmpCoords2 = UtilityCanvasProjection.compute4326Numbers(pn)

@@ -39,7 +39,7 @@ class UtilitySWOD1 {
                 var y = [Double]()
                 var tmpArr = retStr.split(":")
                 var test = [String]()
-                if tmpArr.count>1 {
+                if tmpArr.count > 1 {
                     tmpArr.indices.forEach { z in
                         if tmpArr[z] != "" {
                             test = tmpArr[z].split(" ")
@@ -49,11 +49,11 @@ class UtilitySWOD1 {
                             y = test.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in
                                 (Double(value) ?? 0.0) * -1.0
                             }
-                            if x.count>0 && y.count>0 {
+                            if x.count > 0 && y.count > 0 {
                                 warningList.append(x[0])
                                 warningList.append(y[0])
                                 (1..<x.count-1).forEach { j in
-                                    if x[j]<99.0 {
+                                    if x[j] < 99.0 {
                                         warningList.append(x[j])
                                         warningList.append(y[j])
                                         warningList.append(x[j])

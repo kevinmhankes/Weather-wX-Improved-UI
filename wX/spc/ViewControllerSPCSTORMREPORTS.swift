@@ -39,8 +39,12 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
             self.stormReports = UtilitySPCStormReports.processData(self.html.split(MyApplication.newline))
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self,
-                                                                               action: #selector(self.imgClicked(sender:))))
+                self.image.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        target: self,
+                        action: #selector(self.imgClicked(sender:))
+                    )
+                )
                 self.stormReports.enumerated().forEach {
                     let tv = ObjectTextView(self.stackView, $1.text)
                     if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {

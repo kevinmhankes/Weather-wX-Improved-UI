@@ -79,9 +79,13 @@ final class ObjectForecastPackageHazards {
             let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
                 let hazCard = ObjectCardHazard(stackViewLocalHaz, hazard)
-                hazCard.addGestureRecognizer(UITapGestureRecognizerWithData(strData: idAl[index],
-                                                                            target: self,
-                                                                            action: #selector(self.hazardsAction(sender:))))
+                hazCard.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        strData: idAl[index],
+                        target: self,
+                        action: #selector(self.hazardsAction(sender:))
+                    )
+                )
                 numHaz += 1
             }
         }

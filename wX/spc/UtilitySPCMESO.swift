@@ -8,10 +8,52 @@ final class UtilitySPCMESO {
 
     static let defaultSector = "19"
 
-    // FIXME convert to list
-    static let imageSf = ":mixr:ttd:mcon:thea:mxth:temp_chg:dwpt_chg:mixr_chg:thte_chg:925mb:850mb:700mb:500mb:300mb:sbcp:mlcp:"
-        + "mucp:muli:laps:lllr:lclh:lfch:lfrh:effh:stor:stpc:cpsh:comp:lcls:lr3c:tdlr:qlcs1:qlcs2:pwtr:tran:tran_925:tran_925-850:prop:peff:fzlv:les1:"
-        + "tadv_925:7tad:tadv:"
+    static let imgSf = [
+        "mixr",
+        "ttd",
+        "mcon",
+        "thea",
+        "mxth",
+        "temp_chg",
+        "dwpt_chg",
+        "mixr_chg",
+        "thte_chg",
+        "925mb",
+        "850mb",
+        "700mb",
+        "500mb",
+        "300mb",
+        "sbcp",
+        "mlcp",
+        "mucp",
+        "muli",
+        "laps",
+        "lllr",
+        "lclh",
+        "lfch",
+        "lfrh",
+        "effh",
+        "stor",
+        "stpc",
+        "cpsh",
+        "comp",
+        "lcls",
+        "lr3c",
+        "tdlr",
+        "qlcs1",
+        "qlcs2",
+        "pwtr",
+        "tran",
+        "tran_925",
+        "tran_925-850",
+        "prop",
+        "peff",
+        "fzlv",
+        "les1",
+        "tadv_925",
+        "7tad",
+        "tadv"
+    ]
 
     static let titles = [
         ObjectMenuTitle("Observations", 3),
@@ -26,10 +68,9 @@ final class UtilitySPCMESO {
         ObjectMenuTitle("Fire Weather", 6),
         ObjectMenuTitle("Classic", 3),
         ObjectMenuTitle("Beta", 9)
-        ]
+    ]
 
     static let params = [
-
         "bigsfc",
         "1kmv",
         "rgnlrad",
@@ -191,7 +232,7 @@ final class UtilitySPCMESO {
         "pstpe",
         "pvstpe",
         "vtp"
-        ]
+    ]
 
     static let labels = [
 
@@ -356,7 +397,7 @@ final class UtilitySPCMESO {
         "Prob EF2+ (conditional on RM supercell)",
         "Prob EF4+ (conditional on RM supercell)",
         "Violent Tornado Parameter (VTP)"
-        ]
+    ]
 
     static let paramSurface = [
         "bigsfc": "Surface Observations",
@@ -365,7 +406,7 @@ final class UtilitySPCMESO {
         "thea": "Theta-E Advection",
         "ttd": "Temp/Wind/Dwpt",
         "pmsl": "MSL Pressure/Wind"
-        ]
+    ]
 
     static let paramUpperAir = [
         "925mb": "925mb Analysis",
@@ -375,7 +416,7 @@ final class UtilitySPCMESO {
         "300mb": "300mb Analysis",
         "pwtr": "Precipitable water",
         "muli": "Surface-based Lifted Index"
-        ]
+    ]
 
     static let paramCape = [
         "laps": "Mid-Level Lapse Rates",
@@ -384,20 +425,20 @@ final class UtilitySPCMESO {
         "sbcp": "CAPE - Surface Based",
         "mlcp": "CAPE - 100mb Mixed Layer",
         "mucp": "CAPE - Most Unstable / LPL Height"
-        ]
+    ]
 
     static let paramComp = [
         "sigh": "Sgfnt Hail",
         "stpc": "Sgfnt Tornado (effective layer)",
         "scp": "Supercell Composite"
-        ]
+    ]
 
     static let paramShear = [
         "srh1": "SR Helicity - Sfc-1km",
         "srh3": "SR Helicity - Sfc-3km",
         "shr6": "Bulk Shear - Sfc-6km",
         "eshr": "Bulk Shear - Effective"
-        ]
+    ]
 
     static let productShortList = [
         "bigsfc",
@@ -426,7 +467,7 @@ final class UtilitySPCMESO {
         "srh3",
         "shr6",
         "eshr"
-        ]
+    ]
 
     static let sectorMap = [
         "19": "CONUS",
@@ -439,5 +480,5 @@ final class UtilitySPCMESO {
         "18": "Southeast",
         "12": "Southwest",
         "11": "Northwest"
-        ]
+    ]
 }

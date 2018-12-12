@@ -70,7 +70,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             numLocsLocalStr = String(Location.numLocations + 1)
         } else {
             numLocsLocalStr = ActVars.settingsLocationEditNum
-            let locIdx = Int(numLocsLocalStr)!-1
+            let locIdx = Int(numLocsLocalStr)! - 1
             labelTextView.text = Location.getName(locIdx)
             latTextView.text = MyApplication.locations[locIdx].lat
             lonTextView.text = MyApplication.locations[locIdx].lon
@@ -90,9 +90,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     @objc func saveClicked() {
-        status = Location.locationSave(numLocsLocalStr,
-                                              LatLon(latTextView.text!, lonTextView.text!),
-                                              labelTextView.text!)
+        status = Location.locationSave(
+            numLocsLocalStr,
+            LatLon(latTextView.text!, lonTextView.text!),
+            labelTextView.text!
+        )
         statusTextView.text = status
     }
 
@@ -102,10 +104,12 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     @objc func searchClicked() {
-        let alert = UIAlertController(title: "Search for location",
-                                      message: "Enter a city,state combination or a zipcode. After the search completes, "
-                                        + "valid latitude and longitude values should appear. Hit save after they appear.",
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "Search for location",
+            message: "Enter a city,state combination or a zipcode. After the search completes, "
+                + "valid latitude and longitude values should appear. Hit save after they appear.",
+            preferredStyle: .alert
+        )
         alert.addTextField {(textField) in textField.text = ""}
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
             let textField = alert.textFields![0]
@@ -117,7 +121,9 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
 
     func searchAddress(_ address: String) {
         CLGeocoder().geocodeAddressString(address, completionHandler: {(placemarks, error) in
-            if error != nil {return}
+            if error != nil {
+                return
+            }
             if (placemarks?.count)! > 0 {
                 let placemark = placemarks?[0]
                 let location = placemark?.location

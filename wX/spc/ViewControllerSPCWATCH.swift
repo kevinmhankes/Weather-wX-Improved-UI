@@ -26,7 +26,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var mcdList = [String]()
             var mcdTxt = ""
-            if self.SPCWATno=="" {
+            if self.SPCWATno == "" {
                 let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
                 mcdList = dataAsString.parseColumn("[om] Watch #([0-9]*?)</a>")
             } else {
@@ -40,14 +40,20 @@ class ViewControllerSPCWATCH: UIwXViewController {
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
-                if self.bitmaps.count>0 {
+                if self.bitmaps.count > 0 {
                     self.bitmaps.enumerated().forEach {
                         let objImage = ObjectImage(self.stackView, $1)
-                        objImage.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                                     target: self,
-                                                                                     action: #selector(self.imgClicked(sender:))))
+                        objImage.addGestureRecognizer(
+                            UITapGestureRecognizerWithData(
+                                data: $0,
+                                target: self,
+                                action: #selector(self.imgClicked(sender:))
+                            )
+                        )
                     }
-                    if self.bitmaps.count == 1 {_ = ObjectTextView(self.stackView, mcdTxt)}
+                    if self.bitmaps.count == 1 {
+                        _ = ObjectTextView(self.stackView, mcdTxt)
+                    }
                 } else {
                     _ = ObjectTextView(self.stackView, "No active watches")
                 }

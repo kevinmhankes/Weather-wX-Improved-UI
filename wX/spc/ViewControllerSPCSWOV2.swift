@@ -46,15 +46,23 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             self.bitmaps = UtilitySPCSWO.getImageUrls(ActVars.spcswoDay)
             DispatchQueue.main.async {
                 let objImage = ObjectImage(self.stackView, self.bitmaps[0])
-                objImage.addGestureRecognizer(UITapGestureRecognizerWithData(data: 0,
-                                                                             target: self,
-                                                                             action: #selector(self.imgClicked(sender:))))
+                objImage.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        data: 0,
+                        target: self,
+                        action: #selector(self.imgClicked(sender:))
+                    )
+                )
                 self.textView = ObjectTextView(self.stackView, self.html)
                 stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
                     let objImage = ObjectImage(self.stackView, self.bitmaps[$0])
-                    objImage.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                                 target: self,
-                                                                                 action: #selector(self.imgClicked(sender:))))
+                    objImage.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(
+                            data: $0,
+                            target: self,
+                            action: #selector(self.imgClicked(sender:))
+                        )
+                    )
                 }
             }
         }

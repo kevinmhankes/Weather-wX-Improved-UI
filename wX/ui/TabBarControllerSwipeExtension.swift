@@ -38,12 +38,16 @@ import UIKit
 extension UITabBarController {
 
     func setupSwipeGestureRecognizers(allowCyclingThoughTabs cycleThroughTabs: Bool = false) {
-        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self,
-                                                                  action: cycleThroughTabs ? #selector(handleSwipeLeftAllowingCyclingThroughTabs) : #selector(handleSwipeLeft))
+        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: cycleThroughTabs ? #selector(handleSwipeLeftAllowingCyclingThroughTabs) : #selector(handleSwipeLeft)
+        )
         swipeLeftGestureRecognizer.direction = .left
         self.tabBar.addGestureRecognizer(swipeLeftGestureRecognizer)
-        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self,
-                                                                   action: cycleThroughTabs ? #selector(handleSwipeRightAllowingCyclingThroughTabs) : #selector(handleSwipeRight))
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: cycleThroughTabs ? #selector(handleSwipeRightAllowingCyclingThroughTabs) : #selector(handleSwipeRight)
+        )
         swipeRightGestureRecognizer.direction = .right
         self.tabBar.addGestureRecognizer(swipeRightGestureRecognizer)
     }

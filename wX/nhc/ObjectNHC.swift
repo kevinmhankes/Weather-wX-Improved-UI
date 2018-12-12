@@ -70,20 +70,24 @@ final class ObjectNHC: NSObject {
     }
 
     func showData() {
-        if self.atlSumList.count<1 {
+        if self.atlSumList.count < 1 {
             blob =  "There are no tropical cyclones in the Atlantic at this time." + MyApplication.newline
         } else {
             self.atlSumList.indices.forEach {
                 if atlImg1List[$0] != "" {
                     let textStr = self.atlSumList[$0].replaceAllRegexp("<.*?>", "")
                     let obj = ObjectTextView(stackView, textStr)
-                    obj.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                            target: self,
-                                                                            action: #selector(self.gotoATLNHCStorm(sender:))))
+                    obj.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(
+                            data: $0,
+                            target: self,
+                            action: #selector(self.gotoATLNHCStorm(sender:))
+                        )
+                    )
                 }
             }
         }
-        if self.pacSumList.count<1 {
+        if self.pacSumList.count < 1 {
             blob += "There are no tropical cyclones in the Eastern Pacific at this time."
                 +  MyApplication.newline + MyApplication.newline
         } else {
@@ -91,9 +95,13 @@ final class ObjectNHC: NSObject {
                 if pacImg1List[$0] != "" {
                     let textStr = self.pacSumList[$0].replaceAllRegexp("<.*?>", "")
                     let obj = ObjectTextView(stackView, textStr)
-                    obj.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                            target: self,
-                                                                            action: #selector(self.gotoEPACNHCStorm(sender:))))
+                    obj.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(
+                            data: $0,
+                            target: self,
+                            action: #selector(self.gotoEPACNHCStorm(sender:))
+                        )
+                    )
                 }
             }
         }

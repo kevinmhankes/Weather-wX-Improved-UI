@@ -19,14 +19,16 @@ class ViewControllerWPCMPD: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         mpdNumber = ActVars.WPCMPDNo
-        if mpdNumber != "" {ActVars.WPCMPDNo = ""}
+        if mpdNumber != "" {
+            ActVars.WPCMPDNo = ""
+        }
         self.getContent()
     }
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var mpdList = [String]()
-            if self.mpdNumber=="" {
+            if self.mpdNumber == "" {
                 let dataAsString = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
                 mpdList = dataAsString.parseColumn(">MPD #(.*?)</a></strong>")
             } else {
@@ -42,11 +44,17 @@ class ViewControllerWPCMPD: UIwXViewController {
                 if !self.bitmaps.isEmpty {
                     self.bitmaps.enumerated().forEach {
                         let imgObject = ObjectImage(self.stackView, $1)
-                        imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                                      target: self,
-                                                                                      action: #selector(self.imgClicked(sender:))))
+                        imgObject.addGestureRecognizer(
+                            UITapGestureRecognizerWithData(
+                                data: $0,
+                                target: self,
+                                action: #selector(self.imgClicked(sender:))
+                            )
+                        )
                     }
-                    if self.bitmaps.count == 1 {_ = ObjectTextView(self.stackView, self.text)}
+                    if self.bitmaps.count == 1 {
+                        _ = ObjectTextView(self.stackView, self.text)
+                    }
                 }
                 self.view.bringSubview(toFront: self.toolbar)
             }

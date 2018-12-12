@@ -176,8 +176,10 @@ class WXMetalRender {
                         renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
                         let nodeModelMatrix = self.modelMatrix()
                         nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-                        let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2,
-                                                              options: [])
+                        let uniformBuffer = device.makeBuffer(
+                            length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2,
+                            options: []
+                        )
                         let bufferPointer = uniformBuffer?.contents()
                         memcpy(bufferPointer, nodeModelMatrix.raw(),
                                MemoryLayout<Float>.size * Matrix4.numberOfElements())

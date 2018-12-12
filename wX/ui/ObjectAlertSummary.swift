@@ -11,9 +11,10 @@ final class ObjectAlertSummary: NSObject {
     var urlArr = [String]()
     var objImage = ObjectImage()
     var imageIndex = 0
-    let imageUrls = ["http://forecast.weather.gov/wwamap/png/US.png",
-                     "http://forecast.weather.gov/wwamap/png/ak.png",
-                     "http://forecast.weather.gov/wwamap/png/hi.png"
+    let imageUrls = [
+        "http://forecast.weather.gov/wwamap/png/US.png",
+        "http://forecast.weather.gov/wwamap/png/ak.png",
+        "http://forecast.weather.gov/wwamap/png/hi.png"
     ]
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
@@ -66,9 +67,13 @@ final class ObjectAlertSummary: NSObject {
                     + alert.title + MyApplication.newline + alert.area
                 let objAlert = ObjectTextView(stackView, content)
                 self.urlArr.append(alert.url)
-                objAlert.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                                                                             target: uiv,
-                                                                             action: #selector(warningSelected(sender:))))
+                objAlert.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(
+                        data: index,
+                        target: uiv,
+                        action: #selector(warningSelected(sender:))
+                    )
+                )
                 index += 1
             }
         }

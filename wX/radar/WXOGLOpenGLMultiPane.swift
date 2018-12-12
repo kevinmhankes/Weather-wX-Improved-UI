@@ -273,8 +273,10 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                                            action: #selector(WXOGLOpenGLMultiPane.tapGesture(_:)))
             gestureRecognizer.numberOfTapsRequired = 1
             $1.addGestureRecognizer(gestureRecognizer)
-            let gestureRecognizer2 = UITapGestureRecognizer(target: self,
-                                                            action: #selector(WXOGLOpenGLMultiPane.tapGesture(_:double:)))
+            let gestureRecognizer2 = UITapGestureRecognizer(
+                target: self,
+                action: #selector(WXOGLOpenGLMultiPane.tapGesture(_:double:))
+            )
             gestureRecognizer2.numberOfTapsRequired = 2
             //needed to distingish singletap/doubletap
             gestureRecognizer.require(toFail: gestureRecognizer2)
@@ -285,8 +287,12 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                                            action: #selector(WXOGLOpenGLMultiPane.gesturePan(_:))))
             $1.addGestureRecognizer(UIPinchGestureRecognizer(target: self,
                                                              action: #selector(WXOGLOpenGLMultiPane.gestureZoom(_:))))
-            $1.addGestureRecognizer(UILongPressGestureRecognizer(target: self,
-                                                                 action: #selector(WXOGLOpenGLMultiPane.gestureLongPress(_:))))
+            $1.addGestureRecognizer(
+                UILongPressGestureRecognizer(
+                    target: self,
+                    action: #selector(WXOGLOpenGLMultiPane.gestureLongPress(_:))
+                )
+            )
         }
         self.view.addSubview(toolbar)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {self.view.addSubview(toolbarTop)}
@@ -714,7 +720,8 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let obsSite = UtilityMetar.findClosestObservation(location)
         ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
             + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
-            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta=" + obsSite.name
+            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
+            + obsSite.name
         self.goToVC("imageviewer")
     }
 

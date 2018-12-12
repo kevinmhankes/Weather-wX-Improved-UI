@@ -31,9 +31,13 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
             objNp.sw.delegate = self
             objNp.sw.tag = index
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
-                objNp.sw.selectRow((UtilitySettingsRadar.pickerDataSource[prefVar]?.index(of: preferences.getString(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!)!,
-                                   inComponent: 0,
-                                   animated: true)
+                objNp.sw.selectRow(
+                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
+                        of: preferences.getString(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
+                        )!,
+                    inComponent: 0,
+                    animated: true
+                )
             } else {
                 objNp.sw.selectRow(preferences.getInt(prefVar, UtilitySettingsRadar.pickerinit[prefVar]!),
                                    inComponent: 0,
@@ -68,9 +72,12 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIP
                 print("already authorized")
             case .notDetermined, .restricted, .denied:
                 print("show help")
-                UtilitySettings.getHelp(self,
-                                        doneButton,
-                                        "After the dialog for GPS permission has been shown once, all future updates to GPS permissions must be done via settings in iOS.")
+                UtilitySettings.getHelp(
+                    self,
+                    doneButton,
+                    "After the dialog for GPS permission has been shown once, all future updates to GPS"
+                        + " permissions must be done via settings in iOS."
+                )
             }
             locationManager.requestLocation()
         }

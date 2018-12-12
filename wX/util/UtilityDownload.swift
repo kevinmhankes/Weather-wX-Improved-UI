@@ -173,19 +173,6 @@ final class UtilityDownload {
         return text
     }
 
-// FIXME needed?
-    static func get1KMURL() -> Bitmap {
-        return Bitmap()
-    }
-
-    static func get1KMURL(_ wfo: String) -> Bitmap {
-        return Bitmap()
-    }
-
-    static func get2KMURL(_ product: String) -> Bitmap {
-        return Bitmap()
-    }
-
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
         var bitmap = Bitmap()
@@ -193,7 +180,7 @@ final class UtilityDownload {
         switch product {
         case "VIS_1KM":
             needsBitmap = false
-            bitmap = get1KMURL()
+            bitmap = Bitmap()
         case "GOES16":
             needsBitmap = false
             let url = UtilityGOES16
@@ -201,7 +188,7 @@ final class UtilityDownload {
             bitmap = url[0].getImage()
         case "VIS_MAIN":
             needsBitmap = false
-            bitmap = get1KMURL()
+            bitmap = Bitmap()
         case "VIS_CONUS":
             needsBitmap = false
             bitmap = UtilityGOES16.getUrl("02", "CONUS")[0].getImage()
@@ -222,16 +209,16 @@ final class UtilityDownload {
         case "RAD_1KM": break
         case "IR_2KM":
             needsBitmap = false
-            bitmap = get2KMURL(product)
+            bitmap = Bitmap()
         case "WV_2KM":
             needsBitmap = false
-            bitmap = get2KMURL(product)
+            bitmap = Bitmap()
         case "VIS_2KM":
             needsBitmap = false
-            bitmap = get2KMURL(product)
+            bitmap = Bitmap()
         case "RAD_2KM":
             needsBitmap = false
-            bitmap = get2KMURL(product)
+            bitmap = Bitmap()
         case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
         case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
         case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
@@ -307,10 +294,12 @@ final class UtilityDownload {
             bitmap = UtilitySPCSoundings.getImage(nwsOffice)
         case "STRPT": url = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
         default:
-            bitmap = get1KMURL(product)
+            bitmap = Bitmap()
             needsBitmap = false
         }
-        if needsBitmap {bitmap = Bitmap(url)}
+        if needsBitmap {
+            bitmap = Bitmap(url)
+        }
         return bitmap
     }
 

@@ -22,7 +22,7 @@ final class UtilitySPCMESOInputOutput {
         let outlookImgUrl = baseUrl + sector + "/" + "otlk" + "/" + "otlk" + ".gif"
         let watwarnImgUrl = baseUrl + sector + "/" + "warns" + "/" + "warns" + ".gif"
         let topoImgUrl = baseUrl + sector + "/" + "topo" + "/" + "topo" + ".gif"
-        if UtilitySPCMESO.imageSf.contains(":" + product + ":") && !showRadar {
+        if UtilitySPCMESO.imgSf.contains(product) && !showRadar {
             gifUrl = "_sf.gif"
         } else {
             gifUrl = ".gif"

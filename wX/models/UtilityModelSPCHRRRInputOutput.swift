@@ -33,11 +33,10 @@ final class UtilityModelSPCHRRRInputOutput {
 
     static func getSectorCode(_ sectorName: String) -> String {
         var sectorCode = "S19"
-        for index in UtilityModelSPCHRRRInterface.sectors.indices {
-            if sectorName == UtilityModelSPCHRRRInterface.sectors[index] {
+        for index in UtilityModelSPCHRRRInterface.sectors.indices
+            where sectorName == UtilityModelSPCHRRRInterface.sectors[index] {
                 sectorCode = UtilityModelSPCHRRRInterface.sectorCodes[index]
                 break
-            }
         }
         return sectorCode
     }
