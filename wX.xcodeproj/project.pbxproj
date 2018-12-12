@@ -31,6 +31,7 @@
 		03626AE61F294B6D002BBAAD /* colormaprefeak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE51F294B6C002BBAAD /* colormaprefeak.txt */; };
 		036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */; };
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
+		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
 		037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */; };
 		037FF27D21A993450002E6E6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27C21A993450002E6E6 /* Shaders.metal */; };
@@ -287,7 +288,6 @@
 		F0B335FD1DA3FDD40035BD36 /* UtilityTTSTranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F91DA3FDD40035BD36 /* UtilityTTSTranslations.swift */; };
 		F0B335FE1DA3FDD40035BD36 /* UtilityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335FA1DA3FDD40035BD36 /* UtilityUI.swift */; };
 		F0B3360E1DA3FDE30035BD36 /* UtilityUSImgNWSMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B336031DA3FDE20035BD36 /* UtilityUSImgNWSMosaic.swift */; };
-		F0B336111DA3FDE30035BD36 /* UtilityWat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B336061DA3FDE20035BD36 /* UtilityWat.swift */; };
 		F0B336121DA3FDE30035BD36 /* UtilityWPCImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B336071DA3FDE20035BD36 /* UtilityWPCImages.swift */; };
 		F0B336141DA3FDE30035BD36 /* UtilityWXOGLPerf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B336091DA3FDE30035BD36 /* UtilityWXOGLPerf.swift */; };
 		F0B336151DA3FDE30035BD36 /* UtilityWXOGLPerfL2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3360A1DA3FDE30035BD36 /* UtilityWXOGLPerfL2.swift */; };
@@ -390,6 +390,7 @@
 		03626AE51F294B6C002BBAAD /* colormaprefeak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefeak.txt; sourceTree = "<group>"; };
 		036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
 		037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalMultiPane.swift; sourceTree = "<group>"; };
 		037FF27C21A993450002E6E6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -654,7 +655,6 @@
 		F0B335F91DA3FDD40035BD36 /* UtilityTTSTranslations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTTSTranslations.swift; sourceTree = "<group>"; };
 		F0B335FA1DA3FDD40035BD36 /* UtilityUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUI.swift; sourceTree = "<group>"; };
 		F0B336031DA3FDE20035BD36 /* UtilityUSImgNWSMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUSImgNWSMosaic.swift; sourceTree = "<group>"; };
-		F0B336061DA3FDE20035BD36 /* UtilityWat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWat.swift; sourceTree = "<group>"; };
 		F0B336071DA3FDE20035BD36 /* UtilityWPCImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWPCImages.swift; sourceTree = "<group>"; };
 		F0B336091DA3FDE30035BD36 /* UtilityWXOGLPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGLPerf.swift; sourceTree = "<group>"; };
 		F0B3360A1DA3FDE30035BD36 /* UtilityWXOGLPerfL2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGLPerfL2.swift; sourceTree = "<group>"; };
@@ -1068,7 +1068,7 @@
 				F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */,
 				F031EF141DF6266B008C5B6B /* UtilitySWOD1.swift */,
 				F0B336031DA3FDE20035BD36 /* UtilityUSImgNWSMosaic.swift */,
-				F0B336061DA3FDE20035BD36 /* UtilityWat.swift */,
+				037162DD21C1013700B815BB /* UtilityWatch.swift */,
 				03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */,
 				03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */,
 				03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */,
@@ -1565,7 +1565,6 @@
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				F05383871EDFA83400B1DDEC /* ObjectNHC.swift in Sources */,
 				F0B335E61DA3FDA70035BD36 /* UtilityPref4.swift in Sources */,
-				F0B336111DA3FDE30035BD36 /* UtilityWat.swift in Sources */,
 				F04378BF1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift in Sources */,
 				F0DAD9371DA7018D00C2BD4B /* decompress.c in Sources */,
 				F0DAD9331DA7018D00C2BD4B /* randtable.c in Sources */,
@@ -1742,6 +1741,7 @@
 				F0B335AB1DA3FD960035BD36 /* UtilityImgAnim.swift in Sources */,
 				F011E61A1DB03E25006531FD /* ViewControllerNWSMOSAIC.swift in Sources */,
 				F0A1EDBF1DC0F09F000BDE46 /* ViewControllerNHCGOES.swift in Sources */,
+				037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */,
 				03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */,
 				F0B335561DA3FD510035BD36 /* ExternalGeodeticCalculator.swift in Sources */,
 				F011E6111DB03D78006531FD /* UtilityObservations.swift in Sources */,

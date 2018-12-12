@@ -82,7 +82,7 @@ class ViewControllerSPCMESO: UIwXViewController {
             }
         }
     }
-    
+
     @objc override func doneClicked() {
         UtilityImg.imgSavePosnZoom(image.img, self)
         super.doneClicked()

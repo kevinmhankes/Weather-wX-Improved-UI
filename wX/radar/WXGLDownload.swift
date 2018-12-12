@@ -108,7 +108,7 @@ final class WXGLDownload {
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
-        (0..<snDates.count - 1).forEach { 
+        (0..<snDates.count - 1).forEach {
             if snDates[$0]==mostRecentTime {
                 mostRecentSn = snFiles[$0]
             }

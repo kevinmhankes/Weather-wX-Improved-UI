@@ -9,7 +9,6 @@ import AVFoundation
 
 class ViewControllerSUNMOONDATA: UIwXViewController {
 
-    // FIXME are these needed? thought had global
     var textView = ObjectTextView()
     var playButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()

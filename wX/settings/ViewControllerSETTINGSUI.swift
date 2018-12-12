@@ -36,8 +36,8 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = preferences.getString(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
-                if defaultRowIndex == nil { 
-                    defaultRowIndex = 0 
+                if defaultRowIndex == nil {
+                    defaultRowIndex = 0
                 }
                 objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
             } else {

@@ -25,8 +25,8 @@ class UtilityWXMetalPerfL2 {
         if let outputStream = OutputStream(url: fileURL, append: true) {
             outputStream.open()
             let bytesWritten = outputStream.write(UnsafePointer(disFirst.array), maxLength: fileHeaderSize)
-            if bytesWritten < 0 { 
-                print("write failure") 
+            if bytesWritten < 0 {
+                print("write failure")
             }
             outputStream.close()
         } else {

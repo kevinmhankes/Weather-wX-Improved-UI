@@ -532,10 +532,10 @@ final class WXGLRender: NSObject, GLKViewDelegate {
     func constructGenericLines(_ buffers: ObjectOglBuffers) {
         var fList = [Double]()
         switch buffers.type.string {
-        case "MCD": fList = UtilityWat.add(pn, buffers.type)
-        case "MPD": fList = UtilityWat.add(pn, buffers.type)
-        case "WATCH": fList = UtilityWat.add(pn, buffers.type)
-        case "WATCH_TORNADO": fList = UtilityWat.add(pn, buffers.type)
+        case "MCD": fList = UtilityWatch.add(pn, buffers.type)
+        case "MPD": fList = UtilityWatch.add(pn, buffers.type)
+        case "WATCH": fList = UtilityWatch.add(pn, buffers.type)
+        case "WATCH_TORNADO": fList = UtilityWatch.add(pn, buffers.type)
         case "TST": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
         case "TOR": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
         case "FFW": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)

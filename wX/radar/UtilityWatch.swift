@@ -4,9 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-// FIXME rename? wat to Watch
-
-class UtilityWat {
+class UtilityWatch {
 
     static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
@@ -26,7 +24,7 @@ class UtilityWat {
             var tmpArr = prefToken.split(":")
             tmpArr.indices.forEach {
                 let test = tmpArr[$0].split(" ")
-                if test.count>1 {
+                if test.count > 1 {
                     x = test.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
                     y = test.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
                 }

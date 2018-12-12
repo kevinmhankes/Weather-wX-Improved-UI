@@ -64,7 +64,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             var items = [UIBarButtonItem]()
             items.append(flexBarButton)
             pangeRange.forEach {
-                //items.append(fixedSpace)
                 items.append(siteButton[$0])
             }
             toolbarTop.items = ObjectToolbarItems(items).items
@@ -342,7 +341,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
-        // FIXME check which pane is calling this
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTDWR.forEach {product in
                 alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
@@ -541,8 +539,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
         var newY = test2 + (Double(-wxMetal[index]!.yPos) / Double(wxMetal[index]!.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
-        print(newX)
-        print(newY)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
         let pointerLocation = LatLon.reversed(newX, newY)
         let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
