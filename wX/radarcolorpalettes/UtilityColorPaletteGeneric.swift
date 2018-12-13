@@ -72,7 +72,7 @@ final class UtilityColorPaletteGeneric {
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
             scale = 1
             lowerEnd = 0
-        default: 
+        default:
             break
         }
         colorMapR.position = 0
@@ -260,7 +260,7 @@ final class UtilityColorPaletteGeneric {
             case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
             default:       UtilityColorPaletteGeneric.generate(product, map)
             }
-        default: 
+        default:
             break
         }
     }

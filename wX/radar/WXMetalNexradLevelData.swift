@@ -30,11 +30,11 @@ final class WXMetalNexradLevelData {
         self.index = index
         productCode = GlobalDictionaries.radarProductStringToShortInt[product] ?? 0
         switch productCode {
-        case 153, 154: 
+        case 153, 154:
             radarType = .level2
-        case 30, 56: 
+        case 30, 56:
             radarType = .level3bit4
-        default: 
+        default:
             radarType = .level3
         }
     }

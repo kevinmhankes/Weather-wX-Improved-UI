@@ -36,8 +36,8 @@ final class UtilityMap {
         centerMapOnLocation(mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
     }
 
-    static func createLocationsArray(_ itemList: [String], _ prefVar: String) -> [Dictionary<String, String>] {
-        var locations = [Dictionary<String, String>]()
+    static func createLocationsArray(_ itemList: [String], _ prefVar: String) -> [[String: String]] {
+        var locations = [[String: String]]()
         itemList.forEach {
             let ridArr = $0.split(":")
             let latStr = preferences.getString(prefVar + ridArr[0] + "_X", "40.00")

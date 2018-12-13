@@ -69,7 +69,7 @@ final class UtilityActions {
             return
         }
         switch menuItem {
-        case "Soundings": 
+        case "Soundings":
             token = "sounding"
         case "Hourly":
             if Location.isUS {
@@ -77,11 +77,11 @@ final class UtilityActions {
             } else {
                 token = "cahourly"
             }
-        case "Settings":     
+        case "Settings":
             token = "settingsmain"
-        case "Observations": 
+        case "Observations":
             token = "observations"
-        case "PlayList":     
+        case "PlayList":
             token = "playlist"
         case "Radar Mosaic":
             if Location.isUS {
@@ -102,14 +102,14 @@ final class UtilityActions {
         case "About " + MyApplication.appName + " " + UtilityUI.getVersion():
             ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
             token = "textviewer"
-        case "Spotters": 
+        case "Spotters":
             token = "spotters"
         case "Local Forecast":
             ActVars.WEBVIEWuseUrl = true
             ActVars.WEBVIEWurl = "http://forecast.weather.gov/MapClick.php?lon="
                 + Location.latlon.lonString + "&lat=" + Location.latlon.latString
             token = "webview"
-        default:  
+        default:
             token = "hourly"
         }
         goToVCS(uiv, token)

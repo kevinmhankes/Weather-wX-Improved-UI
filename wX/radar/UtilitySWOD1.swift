@@ -9,7 +9,7 @@ class UtilitySWOD1 {
     static var initialized = false
     static var lastRefresh: CLong = 0
     static var refreshLocMin = RadarPreferences.radarDataRefreshInterval * 2
-    static var hashSwo = Dictionary<Int, Array<Double>>()
+    static var hashSwo = [Int: [Double]]()
 
     static func getSWO() {
         let currentTime1: CLong = UtilityTime.currentTimeMillis()

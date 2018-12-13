@@ -222,23 +222,23 @@ class WXMetalRender {
         // FIXME var naming
         var fList = [Double]()
         switch buffers.type.string {
-        case "MCD": 
+        case "MCD":
             fList = UtilityWatch.add(pn, buffers.type)
-        case "MPD": 
+        case "MPD":
             fList = UtilityWatch.add(pn, buffers.type)
-        case "WATCH": 
+        case "WATCH":
             fList = UtilityWatch.add(pn, buffers.type)
-        case "WATCH_TORNADO": 
+        case "WATCH_TORNADO":
             fList = UtilityWatch.add(pn, buffers.type)
-        case "TST": 
+        case "TST":
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "TOR": 
+        case "TOR":
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "FFW": 
+        case "FFW":
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "STI": 
+        case "STI":
             fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
-        default: 
+        default:
             break
         }
         buffers.initialize(2, buffers.type.color)
@@ -435,11 +435,11 @@ class WXMetalRender {
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
-        case 153, 154, 30, 56: 
+        case 153, 154, 30, 56:
             self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
-        case 0: 
+        case 0:
             break
-        default: 
+        default:
             self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
         }
         self.radarBuffers.setToPositionZero()
@@ -492,11 +492,11 @@ class WXMetalRender {
     func constructTriangles(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.latList.count)
         switch buffers.type.string {
-        case "LOCDOT": 
+        case "LOCDOT":
             buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
-        case "SPOTTER": 
+        case "SPOTTER":
             buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
-        default: 
+        default:
             buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
         }
         buffers.lenInit = scaleLength(buffers.lenInit)
@@ -553,11 +553,11 @@ class WXMetalRender {
 
     func constructLevel3TextProduct(_ type: PolygonType) {
         switch type.string {
-        case "HI": 
+        case "HI":
             constructHI()
-        case "TVS": 
+        case "TVS":
             constructTVS()
-        case "STI": 
+        case "STI":
             constructSTILines()
         default: break
         }

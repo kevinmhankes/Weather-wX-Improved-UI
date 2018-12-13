@@ -138,11 +138,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.textArr = [:]
                 homescreenFav.forEach {
                     switch $0 {
-                    case "TXT-CC2":   
+                    case "TXT-CC2":
                         self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                    case "TXT-HAZ":    
+                    case "TXT-HAZ":
                         self.stackView.addArrangedSubview(self.stackViewHazards.view)
-                    case "TXT-7DAY2": 
+                    case "TXT-7DAY2":
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
@@ -301,9 +301,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
         var token = ""
         switch sender.strData {
-        case "VIS_1KM":      
+        case "VIS_1KM":
             token = "wpcimg"
-        case "FMAP":         
+        case "FMAP":
             token = "wpcimg"
         case "VIS_CONUS":
             ActVars.goesSector = "CONUS"
@@ -325,19 +325,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         case "STRPT":
             ActVars.spcStormReportsDay = "today"
             token = "spcstormreports"
-        case "SND":          
+        case "SND":
             token = "sounding"
-        case "SPCMESO_500":  
+        case "SPCMESO_500":
             token = "spcmeso"
-        case "SPCMESO_MSLP": 
+        case "SPCMESO_MSLP":
             token = "spcmeso"
-        case "SPCMESO_TTD":  
+        case "SPCMESO_TTD":
             token = "spcmeso"
-        case "GOES16":       
+        case "GOES16":
             ActVars.goesSector = ""
             ActVars.goesProduct = ""
             token = "goes16"
-        default:             
+        default:
             token = "wpcimg"
         }
         self.goToVC(token)

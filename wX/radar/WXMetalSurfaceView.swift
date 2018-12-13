@@ -62,7 +62,7 @@ final class WXMetalSurfaceView {
         case .ended:
             textObj.addTV()
             wxMetal.forEach {$0!.displayHold = false}
-        default: 
+        default:
             break
         }
     }
@@ -225,7 +225,7 @@ final class WXMetalSurfaceView {
         case .ended:
             textObj.addTV()
             wxMetal.forEach {$0!.displayHold = false}
-        default: 
+        default:
             break
         }
     }

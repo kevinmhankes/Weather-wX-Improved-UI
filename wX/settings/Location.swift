@@ -72,8 +72,8 @@ final class Location {
     }
 
     class var numLocations: Int {
-        get { 
-            return numberOfLocations 
+        get {
+            return numberOfLocations
         }
         set {
             Location.numberOfLocations = newValue
