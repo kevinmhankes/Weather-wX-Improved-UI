@@ -580,7 +580,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(title: "Show nearest meteogram", style: .default, handler: {_ in
             self.getMeteogram(pointerLocation)}))
         alert.addAction(UIAlertAction(title: "Show radar status message", style: .default, handler: {_ in
-            self.getRadarStatus()}))
+            self.getRadarStatus(index)}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
@@ -627,9 +627,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.goToVC("imageviewer")
     }
 
-    func getRadarStatus() {
+    func getRadarStatus(_ index: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let radarStatus = UtilityDownload.getRadarStatusMessage(self.wxMetal[0]!.rid)
+            var radarStatus = UtilityDownload.getRadarStatusMessage(self.wxMetal[index]!.rid)
+            if radarStatus == "" {
+                radarStatus = "The current radar status for " + self.wxMetal[index]!.rid + " is not available."
+            }
             DispatchQueue.main.async {
                 ActVars.TEXTVIEWText = radarStatus
                 self.goToVC("textviewer")
