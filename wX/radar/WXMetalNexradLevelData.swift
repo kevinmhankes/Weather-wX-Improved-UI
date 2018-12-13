@@ -30,17 +30,23 @@ final class WXMetalNexradLevelData {
         self.index = index
         productCode = GlobalDictionaries.radarProductStringToShortInt[product] ?? 0
         switch productCode {
-        case 153, 154: radarType = .level2
-        case 30, 56: radarType = .level3bit4
-        default: radarType = .level3
+        case 153, 154: 
+            radarType = .level2
+        case 30, 56: 
+            radarType = .level3bit4
+        default: 
+            radarType = .level3
         }
     }
 
     func decode() {
         switch productCode {
-        case 153, 154: decocodeAndPlotNexradL2()
-        case 30, 56: decocodeAndPlotNexradLevel3FourBit()
-        default: decocodeAndPlotNexradLevel3()
+        case 153, 154:
+            decocodeAndPlotNexradL2()
+        case 30, 56:
+            decocodeAndPlotNexradLevel3FourBit()
+        default:
+            decocodeAndPlotNexradLevel3()
         }
     }
 

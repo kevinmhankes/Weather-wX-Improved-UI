@@ -30,23 +30,29 @@ final class WXGLNexradLevelData {
         self.index = index
         productCode = GlobalDictionaries.radarProductStringToShortInt[product] ?? 0
         switch productCode {
-        case 153, 154: radarType = .level2
-        case 30, 56: radarType =      .level3bit4
-        default: radarType =      .level3
+        case 153, 154: 
+            radarType = .level2
+        case 30, 56: 
+            radarType = .level3bit4
+        default: 
+            radarType = .level3
         }
     }
 
     func decode() {
         switch productCode {
-        case 153, 154:  decocodeAndPlotNexradL2()
-        case 30, 56:    decocodeAndPlotNexradLevel3FourBit()
-        default:        decocodeAndPlotNexradLevel3()
+        case 153, 154:  
+            decocodeAndPlotNexradL2()
+        case 30, 56:    
+            decocodeAndPlotNexradLevel3FourBit()
+        default:        
+            decocodeAndPlotNexradLevel3()
         }
     }
 
     func decocodeAndPlotNexradLevel3() {
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers!.fileName)
-        if dis.capacity>0 {
+        if dis.capacity > 0 {
             while dis.getShort() != -1 {}
             dis.skipBytes(8)
             let heightOfRadar = Int16(dis.getUnsignedShort())
@@ -73,7 +79,7 @@ final class WXGLNexradLevelData {
         binWord = MemoryBuffer(360 * 230)
         radialStartAngle = MemoryBuffer(4 * 360)
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers!.fileName)
-        if dis.capacity>0 {
+        if dis.capacity > 0 {
             dis.skipBytes(30)
             dis.skipBytes(20)
             let heightOfRadar = Int16(dis.getUnsignedShort())

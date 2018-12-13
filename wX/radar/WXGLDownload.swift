@@ -64,7 +64,7 @@ final class WXGLDownload {
                 + ridPrefix + rid.lowercased() + "/sn.last")
             UtilityIO.saveInputStream(data, l3BaseFn + idxStr)
         } else {
-            if urlStr=="" {
+            if urlStr == "" {
                 let data = getInputStreamFromURLL2(getLevel2Url())
                 UtilityIO.saveInputStream(data, l2BaseFn + "_d" + idxStr)
             }
@@ -94,13 +94,13 @@ final class WXGLDownload {
             + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
         var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
         var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
-        if snDates.count==0 {
+        if snDates.count == 0 {
             let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
                 + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
             snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         }
-        if snDates.count==0 {
+        if snDates.count == 0 {
             let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
                 + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
@@ -109,7 +109,7 @@ final class WXGLDownload {
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
         (0..<snDates.count - 1).forEach {
-            if snDates[$0]==mostRecentTime {
+            if snDates[$0] == mostRecentTime {
                 mostRecentSn = snFiles[$0]
             }
         }

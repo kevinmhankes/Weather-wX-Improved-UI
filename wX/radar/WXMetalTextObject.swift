@@ -112,7 +112,9 @@ final class WXMetalTextObject {
         if GeographyType.countyLabels.display {
             glview.countyLabelsAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.00 {oglrZoom = OGLR.zoom * 0.8}
+            if OGLR.zoom < 1.00 {
+                oglrZoom = OGLR.zoom * 0.8
+            }
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 1.50 {
                 UtilityCountyLabels.countyName.indices.forEach {
@@ -136,7 +138,9 @@ final class WXMetalTextObject {
             spotterLon = 0.0
             glview.spottersLabelAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.0 {oglrZoom = OGLR.zoom * 0.8}
+            if OGLR.zoom < 1.0 {
+                oglrZoom = OGLR.zoom * 0.8
+            }
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
@@ -151,7 +155,9 @@ final class WXMetalTextObject {
     }
 
     func initTV() {
-        if numPanes == 1 {initTVCitiesExt()}
+        if numPanes == 1 {
+            initTVCitiesExt()
+        }
         initTVCountyLabels()
         initTVSpottersLabels()
         initTVObs()
@@ -167,7 +173,7 @@ final class WXMetalTextObject {
     }
 
     func initTVObs() {
-        if (PolygonType.OBS.display||PolygonType.WIND_BARB.display) && UtilityMetar.obsArr.count>0 {
+        if (PolygonType.OBS.display||PolygonType.WIND_BARB.display) && UtilityMetar.obsArr.count > 0 {
             obsTvArrInit = true
         }
     }
@@ -182,7 +188,9 @@ final class WXMetalTextObject {
             var tmpArrObs = [String]()
             var tmpArrObsExt = [String]()
             oglrZoom = 1.0
-            if OGLR.zoom < 1.0 {oglrZoom = OGLR.zoom * 0.8}
+            if OGLR.zoom < 1.0 {
+                oglrZoom = OGLR.zoom * 0.8
+            }
             textSize = Double(oglrZoom) * fontScaleFactorObs * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 0.5 {
                 UtilityMetar.obsArr.indices.forEach {

@@ -154,6 +154,7 @@ class WXGLNexradLevel3WindBarbs {
         return stormList
     }
 
+    // FIXME can this code be shared with storm tracks?
     static func drawLine(_ startEc: ExternalGlobalCoordinates, _ ecc: ExternalGeodeticCalculator,
                          _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates, _ startBearing: Double,
                          _ distance: Double, _ bearing: [Double]) -> [Double] {

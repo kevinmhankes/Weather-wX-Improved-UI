@@ -64,7 +64,7 @@ final class Location {
     }
 
     class func clearListOfNames() {
-        listOf=[]
+        listOf = []
     }
 
     class func initNumLocations() {
@@ -72,7 +72,9 @@ final class Location {
     }
 
     class var numLocations: Int {
-        get { return numberOfLocations }
+        get { 
+            return numberOfLocations 
+        }
         set {
             Location.numberOfLocations = newValue
             editor.putInt( "LOC_NUM_INT", newValue)
@@ -93,7 +95,7 @@ final class Location {
 
     class func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
-        self.currentLocation = Int(currentLocationStr)!-1
+        self.currentLocation = Int(currentLocationStr)! - 1
     }
 
     class func us(_ xStr: String) -> Bool {
@@ -180,7 +182,7 @@ final class Location {
             Location.numLocations = locNumToSave
             nwsOfficeShortLower = UtilityLocation.getNearestOffice("WFO", location).lowercased()
             rid = UtilityLocation.getNearestOffice("RADAR", location)
-            if rid=="" {
+            if rid == "" {
                 rid = preferences.getString("NWS_RID_" + nwsOfficeShortLower.uppercased(), "")
             }
             editor.putString("RID" + locNum, rid.uppercased())
@@ -194,10 +196,14 @@ final class Location {
             }
             var prov = ""
             var parseProv = location.latString.split(":")
-            if parseProv.count > 0 {prov = parseProv[1]}
+            if parseProv.count > 0 {
+                prov = parseProv[1]
+            }
             var id = ""
             var parseId = location.lonString.split(":")
-            if parseId.count > 0 {id = parseId[0]}
+            if parseId.count > 0 {
+                id = parseId[0]
+            }
             if location.latString.count > 12 {
                 tmpLatlon.latStr = parseProv[2]
                 tmpLatlon.lonStr = parseId[1]
@@ -225,7 +231,9 @@ final class Location {
         let locToDeleteInt = Int(locToDeleteStr) ?? 0
         let locNumIntCurrent = Location.numLocations
         let locNumIntCurrentStr = String(locNumIntCurrent)
-        if locToDeleteInt>locNumIntCurrent {return}
+        if locToDeleteInt > locNumIntCurrent {
+            return
+        }
         if locToDeleteInt == locNumIntCurrent {
             Location.numLocations = locNumIntCurrent - 1
         } else {

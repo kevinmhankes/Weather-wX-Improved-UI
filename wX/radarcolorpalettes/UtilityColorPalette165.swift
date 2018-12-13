@@ -25,7 +25,7 @@ final class UtilityColorPalette165 {
                 } else {
                     tmpArr = $0.split(" ")
                 }
-                if tmpArr.count>4 {
+                if tmpArr.count > 4 {
                     dbzAl.append(Int(tmpArr[1])!)
                     rAl.append(UInt8(tmpArr[2])!)
                     gAl.append(UInt8(tmpArr[3])!)

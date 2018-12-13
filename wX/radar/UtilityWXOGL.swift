@@ -19,7 +19,7 @@ public class UtilityWXOGL {
         var notFound = true
         polygons.enumerated().forEach { index, warning in
             let polyTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
-            if polyTmp.count>1 {
+            if polyTmp.count > 1 {
                 y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
                 x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
             }

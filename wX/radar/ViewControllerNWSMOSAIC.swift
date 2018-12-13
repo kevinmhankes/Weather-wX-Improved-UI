@@ -42,7 +42,9 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
-                if !self.isLocal {editor.putInt("NWSMOSAIC_PARAM_LAST_USED", self.index)}
+                if !self.isLocal {
+                    editor.putInt("NWSMOSAIC_PARAM_LAST_USED", self.index)
+                }
             }
         }
     }

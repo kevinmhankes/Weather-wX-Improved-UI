@@ -97,6 +97,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getLocationForecastSevenDay() {
+        // FIXME on immediate phone restart sometimes 7day does not show
+        // figure out a way to detect/retry once
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
             DispatchQueue.main.async {
@@ -124,10 +126,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            //self.oldLocation = Location.latlon
-            //self.objFcst = Utility.getCurrentConditionsUSV2(Location.getCurrentLocation())
-            //self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
-            //self.objHazards = Utility.getCurrentHazards(Location.getCurrentLocation())
             if Location.isUS {
                 self.isUS = true
             } else {
@@ -135,17 +133,17 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                //
-                // end location card
-                //
                 let homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",
                                                                           MyApplication.homescreenFavDefault), ":")
                 self.textArr = [:]
                 homescreenFav.forEach {
                     switch $0 {
-                    case "TXT-CC2":   self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                    case "TXT-HAZ":    self.stackView.addArrangedSubview(self.stackViewHazards.view)
-                    case "TXT-7DAY2": self.stackView.addArrangedSubview(self.stackViewForecast.view)
+                    case "TXT-CC2":   
+                        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+                    case "TXT-HAZ":    
+                        self.stackView.addArrangedSubview(self.stackViewHazards.view)
+                    case "TXT-7DAY2": 
+                        self.stackView.addArrangedSubview(self.stackViewForecast.view)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
                         stackViewLocal.setup()
@@ -187,7 +185,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         currentTime = UtilityTime.currentTimeMillis64()
         currentTimeSec = currentTime / 1000
         refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
-        if currentTimeSec > (lastRefresh + refreshIntervalSec) {self.getContentMaster()}
+        if currentTimeSec > (lastRefresh + refreshIntervalSec) {
+            self.getContentMaster()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -280,7 +280,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             let currentLength = v.text!.count
             if currentLength < (UIPreferences.homescreenTextLength + 1) {
                 v.text = textArr[sender.strData]
-            } else {v.text = textArr[sender.strData]?.truncate(UIPreferences.homescreenTextLength)}
+            } else {
+                v.text = textArr[sender.strData]?.truncate(UIPreferences.homescreenTextLength)
+            }
         }
     }
 
@@ -299,8 +301,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
         var token = ""
         switch sender.strData {
-        case "VIS_1KM":      token = "wpcimg"
-        case "FMAP":         token = "wpcimg"
+        case "VIS_1KM":      
+            token = "wpcimg"
+        case "FMAP":         
+            token = "wpcimg"
         case "VIS_CONUS":
             ActVars.goesSector = "CONUS"
             ActVars.goesProduct = "02"
@@ -321,14 +325,20 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         case "STRPT":
             ActVars.spcStormReportsDay = "today"
             token = "spcstormreports"
-        case "SND":          token = "sounding"
-        case "SPCMESO_500":  token = "spcmeso"
-        case "SPCMESO_MSLP": token = "spcmeso"
-        case "SPCMESO_TTD":  token = "spcmeso"
-        case "GOES16":       ActVars.goesSector = ""
-        ActVars.goesProduct = ""
-        token = "goes16"
-        default:             token = "wpcimg"
+        case "SND":          
+            token = "sounding"
+        case "SPCMESO_500":  
+            token = "spcmeso"
+        case "SPCMESO_MSLP": 
+            token = "spcmeso"
+        case "SPCMESO_TTD":  
+            token = "spcmeso"
+        case "GOES16":       
+            ActVars.goesSector = ""
+            ActVars.goesProduct = ""
+            token = "goes16"
+        default:             
+            token = "wpcimg"
         }
         self.goToVC(token)
     }

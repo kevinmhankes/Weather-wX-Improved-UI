@@ -165,10 +165,6 @@ class WXMetalRender {
         renderEncoder!.setCullMode(MTLCullMode.front)
         //renderEncoder!.setCullMode(MTLCullMode.none)
         renderEncoder!.setRenderPipelineState(pipelineState)
-
-        //
-        //
-        //
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
                 if vbuffer.scaleCutOff < zoom {
@@ -223,17 +219,27 @@ class WXMetalRender {
     }
 
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
+        // FIXME var naming
         var fList = [Double]()
         switch buffers.type.string {
-        case "MCD": fList = UtilityWatch.add(pn, buffers.type)
-        case "MPD": fList = UtilityWatch.add(pn, buffers.type)
-        case "WATCH": fList = UtilityWatch.add(pn, buffers.type)
-        case "WATCH_TORNADO": fList = UtilityWatch.add(pn, buffers.type)
-        case "TST": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "TOR": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "FFW": fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
-        case "STI": fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
-        default: break
+        case "MCD": 
+            fList = UtilityWatch.add(pn, buffers.type)
+        case "MPD": 
+            fList = UtilityWatch.add(pn, buffers.type)
+        case "WATCH": 
+            fList = UtilityWatch.add(pn, buffers.type)
+        case "WATCH_TORNADO": 
+            fList = UtilityWatch.add(pn, buffers.type)
+        case "TST": 
+            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+        case "TOR": 
+            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+        case "FFW": 
+            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+        case "STI": 
+            fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
+        default: 
+            break
         }
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
@@ -264,7 +270,7 @@ class WXMetalRender {
                        pn.yFloat, pn.xCenterFloat, pn.yCenterFloat, pn.oneDegreeScaleFactorFloat, Int32(buffers.count))
         buffers.setToPositionZero()
         var i = 0
-        (0..<(buffers.count/2)).forEach {_ in
+        (0..<(buffers.count/2)).forEach { _ in
             let f1 = Float(buffers.floatBuffer.getCGFloatNative())
             let f2 = Float(buffers.floatBuffer.getCGFloatNative())
             buffers.metalBuffer[i] = f1
@@ -329,7 +335,9 @@ class WXMetalRender {
     }
 
     var rid: String {
-        get {return ridStr}
+        get {
+            return ridStr
+        }
         set {
             self.ridStr = newValue
             checkIfTDWR()
@@ -337,7 +345,9 @@ class WXMetalRender {
     }
 
     var product: String {
-        get {return radarProduct}
+        get {
+            return radarProduct
+        }
         set {
             self.radarProduct = newValue
             checkIfTDWR()
@@ -348,7 +358,9 @@ class WXMetalRender {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         if self.product=="TV0" || self.product=="TZL" {
             self.TDWR = true
-        } else {self.TDWR = false}
+        } else {
+            self.TDWR = false
+        }
         if (self.product=="N0Q"
             || self.product=="N1Q"
             || self.product=="N2Q"
@@ -375,9 +387,9 @@ class WXMetalRender {
         }
     }
 
-    func getRadar(_ url: String, _ additionalText: String="") {
+    func getRadar(_ url: String, _ additionalText: String = "") {
         DispatchQueue.global(qos: .userInitiated).async {
-            if url=="" {
+            if url == "" {
                 self.ridPrefixGlobal = self.rdDownload.getRadarFile(url,
                                                                     self.rid,
                                                                     self.radarProduct,
@@ -409,7 +421,6 @@ class WXMetalRender {
                     self.constructSWOLines()
                 }
             }
-
             DispatchQueue.main.async {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText)
@@ -424,9 +435,12 @@ class WXMetalRender {
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
-        case 153, 154, 30, 56: self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
-        case 0: break
-        default: self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
+        case 153, 154, 30, 56: 
+            self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
+        case 0: 
+            break
+        default: 
+            self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
         }
         self.radarBuffers.setToPositionZero()
         self.radarBuffers.count = (self.radarBuffers.metalBuffer.count/self.radarBuffers.floatCountPerVertex) * 2
@@ -478,9 +492,12 @@ class WXMetalRender {
     func constructTriangles(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.latList.count)
         switch buffers.type.string {
-        case "LOCDOT": buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
-        case "SPOTTER": buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
-        default: buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
+        case "LOCDOT": 
+            buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
+        case "SPOTTER": 
+            buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
+        default: 
+            buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
         }
         buffers.lenInit = scaleLength(buffers.lenInit)
         buffers.draw(pn)
@@ -536,9 +553,12 @@ class WXMetalRender {
 
     func constructLevel3TextProduct(_ type: PolygonType) {
         switch type.string {
-        case "HI": constructHI()
-        case "TVS": constructTVS()
-        case "STI": constructSTILines()
+        case "HI": 
+            constructHI()
+        case "TVS": 
+            constructTVS()
+        case "STI": 
+            constructSTILines()
         default: break
         }
     }
@@ -592,7 +612,9 @@ class WXMetalRender {
         var tmpCoords = (0.0, 0.0)
         var fSize = 0
         (0...4).forEach {
-            if let flArr = UtilitySWOD1.hashSwo[$0] {fSize += flArr.count}
+            if let flArr = UtilitySWOD1.hashSwo[$0] {
+                fSize += flArr.count
+            }
         }
         swoBuffers.metalBuffer = []
         (0...4).forEach { z in
@@ -625,7 +647,9 @@ class WXMetalRender {
     func scaleLength(_ currentLength: Double) -> Double {
         if zoom > 1.01 {
             return (currentLength / Double(zoom)) * 2.0
-        } else {return currentLength}
+        } else {
+            return currentLength
+        }
     }
 
     func setZoom() {

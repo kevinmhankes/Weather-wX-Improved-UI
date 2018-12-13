@@ -69,16 +69,20 @@ final class UtilityActions {
             return
         }
         switch menuItem {
-        case "Soundings": token = "sounding"
+        case "Soundings": 
+            token = "sounding"
         case "Hourly":
             if Location.isUS {
                 token = "hourly"
             } else {
                 token = "cahourly"
             }
-        case "Settings":     token = "settingsmain"
-        case "Observations": token = "observations"
-        case "PlayList":     token = "playlist"
+        case "Settings":     
+            token = "settingsmain"
+        case "Observations": 
+            token = "observations"
+        case "PlayList":     
+            token = "playlist"
         case "Radar Mosaic":
             if Location.isUS {
                 ActVars.NWSMOSAICtype = "local"
@@ -98,13 +102,15 @@ final class UtilityActions {
         case "About " + MyApplication.appName + " " + UtilityUI.getVersion():
             ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
             token = "textviewer"
-        case "Spotters": token = "spotters"
+        case "Spotters": 
+            token = "spotters"
         case "Local Forecast":
             ActVars.WEBVIEWuseUrl = true
             ActVars.WEBVIEWurl = "http://forecast.weather.gov/MapClick.php?lon="
                 + Location.latlon.lonString + "&lat=" + Location.latlon.latString
             token = "webview"
-        default:  token = "hourly"
+        default:  
+            token = "hourly"
         }
         goToVCS(uiv, token)
     }
@@ -157,7 +163,9 @@ final class UtilityActions {
         uiv.present(alert, animated: true, completion: nil)
     }
 
-    static func doneClicked(_ uiv: UIViewController) {uiv.dismiss(animated: true, completion: {})}
+    static func doneClicked(_ uiv: UIViewController) {
+        uiv.dismiss(animated: true, completion: {})
+    }
 
     static func playClicked(_ textView: UITextView, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")

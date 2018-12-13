@@ -116,6 +116,7 @@ class UtilityUSImgNWSMosaic {
         return stateToSector[state] ?? ""
     }
 
+    // FIXME move base URL to myapp
     static func nwsMosaic(_ sector: String) -> Bitmap {
         return Bitmap("http://radar.weather.gov/Conus/RadarImg/" + sector + ".gif")
     }

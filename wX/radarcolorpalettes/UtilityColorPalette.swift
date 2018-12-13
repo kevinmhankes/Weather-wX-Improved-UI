@@ -77,7 +77,7 @@ final class UtilityColorPalette {
             }
         default: break
         }
-        if text==nil {
+        if text == nil {
             return UtilityIO.readTextFile(cmFileInt)
         } else {
             return text!

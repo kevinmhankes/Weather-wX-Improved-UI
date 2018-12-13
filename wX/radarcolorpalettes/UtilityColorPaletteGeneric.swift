@@ -72,7 +72,8 @@ final class UtilityColorPaletteGeneric {
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
             scale = 1
             lowerEnd = 0
-        default: break
+        default: 
+            break
         }
         colorMapR.position = 0
         colorMapG.position = 0
@@ -95,7 +96,7 @@ final class UtilityColorPaletteGeneric {
                 } else {
                     tmpArr = line.split(" ")
                 }
-                if tmpArr.count>4 {
+                if tmpArr.count > 4 {
                     if priorLineHas6 {
                         dbzAl.append(Int(Double(tmpArr[1])! * prodScale + prodOffset - 1))
                         rAl.append(UInt8(Int(red)!))
@@ -112,7 +113,7 @@ final class UtilityColorPaletteGeneric {
                         gAl.append(UInt8(tmpArr[3])!)
                         bAl.append(UInt8(tmpArr[4])!)
                     }
-                    if tmpArr.count>7 {
+                    if tmpArr.count > 7 {
                         priorLineHas6 = true
                         red = tmpArr[5]
                         green = tmpArr[6]
@@ -147,14 +148,14 @@ final class UtilityColorPaletteGeneric {
             colorMapR.put(rAl[0])
             colorMapG.put(gAl[0])
             colorMapB.put(bAl[0])
-            if scale==2 {
+            if scale == 2 {
                 colorMapR.put(rAl[0])
                 colorMapG.put(gAl[0])
                 colorMapB.put(bAl[0])
             }
         }
         dbzAl.indices.forEach { index in
-            if index < (dbzAl.count-1) {
+            if index < (dbzAl.count - 1) {
                 low = dbzAl[index]
                 lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
                 high = dbzAl[index + 1]
@@ -163,7 +164,7 @@ final class UtilityColorPaletteGeneric {
                 colorMapR.put(rAl[index])
                 colorMapG.put(gAl[index])
                 colorMapB.put(bAl[index])
-                if scale==2 {
+                if scale == 2 {
                     colorMapR.put(rAl[index])
                     colorMapG.put(gAl[index])
                     colorMapB.put(bAl[index])
@@ -172,14 +173,14 @@ final class UtilityColorPaletteGeneric {
                     diff = 1
                 }
                 (1..<diff).forEach { j in
-                    if scale==1 {
+                    if scale == 1 {
                         colorInt = UtilityNexradColors.interpolateColor(Int(lowColor),
                                                                         Int(highColor),
                                                                         Double(j)/Double(diff*scale))
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))
-                    } else if scale==2 {
+                    } else if scale == 2 {
                         colorInt = UtilityNexradColors.interpolateColor(Int(lowColor),
                                                                         Int(highColor),
                                                                         Double(((j*2)-1))/Double((diff*2)))
@@ -259,7 +260,8 @@ final class UtilityColorPaletteGeneric {
             case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
             default:       UtilityColorPaletteGeneric.generate(product, map)
             }
-        default: break
+        default: 
+            break
         }
     }
 }

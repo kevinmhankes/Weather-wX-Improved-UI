@@ -62,7 +62,8 @@ final class WXMetalSurfaceView {
         case .ended:
             textObj.addTV()
             wxMetal.forEach {$0!.displayHold = false}
-        default: break
+        default: 
+            break
         }
     }
 
@@ -114,7 +115,11 @@ final class WXMetalSurfaceView {
             wxMetal[radarIndex]!.zoom *= 0.5
             wxMetal[radarIndex]!.setZoom()
         }
-        uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        uiv.view.subviews.forEach {
+            if $0 is UITextView {
+                $0.removeFromSuperview()
+            }
+        }
         textObj.addTV()
     }
 
@@ -141,7 +146,11 @@ final class WXMetalSurfaceView {
             wxMetal[radarIndex]!.zoom *= 2.0
             wxMetal[radarIndex]!.setZoom()
         }
-        uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        uiv.view.subviews.forEach {
+            if $0 is UITextView {
+                $0.removeFromSuperview()
+            }
+        }
         textObj.addTV()
     }
 
@@ -216,7 +225,8 @@ final class WXMetalSurfaceView {
         case .ended:
             textObj.addTV()
             wxMetal.forEach {$0!.displayHold = false}
-        default: break
+        default: 
+            break
         }
     }
 }

@@ -32,7 +32,9 @@ class WXGLNexradLevel3TVS {
                 ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start,
                                                           Double(degree),
                                                           Double(nm) * 1852.0, bearing)
-                stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
+                //stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
+                stormList.append(ec.getLatitude())
+                stormList.append(ec.getLongitude() * -1.0)
             }
             return stormList
         } else {

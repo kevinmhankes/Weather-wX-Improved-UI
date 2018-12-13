@@ -39,7 +39,7 @@ class WXGLNexradLevel3StormInfo {
             let degreeShift = 180
             let arrowLength = 2.0
             let arrowBend = 20.0
-            if (posnNumbers.count == motNumbers.count) && posnNumbers.count>1 {
+            if (posnNumbers.count == motNumbers.count) && posnNumbers.count > 1 {
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach { index in
                     let ecc = ExternalGeodeticCalculator()
                     degree = Int(posnNumbers[index]) ?? 0

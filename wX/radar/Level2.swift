@@ -16,6 +16,7 @@ final class Level2 {
         let fileName = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         let velocityProd = (radarBuffers.rd.productCode == 154)
         let dis2 = UtilityIO.readFiletoByteByffer(fileName)
+        // FIXME - use commented var above
         if dis2.capacity>24 {
             var highReflectivity = [Level2Record]()
             var highVelocity = [Level2Record]()

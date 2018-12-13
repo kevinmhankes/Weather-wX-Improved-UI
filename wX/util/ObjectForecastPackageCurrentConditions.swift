@@ -68,11 +68,9 @@ final class ObjectForecastPackageCurrentConditions {
     }
 
     func getConditionsViaMetar(_ location: LatLon) -> (String, String, String) {
-
         var sb = ""
         let objMetar = ObjectMetar(location)
         conditionsTimeStr = objMetar.conditionsTimeStr
-
         self.temperature = objMetar.temperature + MyApplication.degreeSymbol
         self.windChill = objMetar.windChill + MyApplication.degreeSymbol
         self.heatIndex = objMetar.heatIndex + MyApplication.degreeSymbol
@@ -92,7 +90,9 @@ final class ObjectForecastPackageCurrentConditions {
         }
         sb += " / " + self.dewpoint + "(" + self.relativeHumidity + ")" + " - "
         sb += seaLevelPressure +  " - " + windDirection + " " + windSpeed
-        if windGust != "" {sb += " G "}
+        if windGust != "" {
+            sb += " G "
+        }
         sb += windGust + " mph" + " - " + visibility + " mi - " + condition
         return (sb, objMetar.icon, objMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
@@ -115,7 +115,6 @@ final class ObjectForecastPackageCurrentConditions {
         var windChill = observationData.parseFirst("\"windChill\":.*?\"value\": (.*?),")
         var heatIndex = observationData.parseFirst("\"heatIndex\":.*?\"value\": (.*?),")
         conditionsTimeStr = observationData.parseFirst("\"timestamp\": \"(.*?)\"")
-
         if !temperature.contains("NA") &&  temperature != "null" {
             if let tempD = Double(temperature) {
                 if UIPreferences.unitsF {
@@ -124,8 +123,9 @@ final class ObjectForecastPackageCurrentConditions {
                     temperature = tempD.roundToString()
                 }
             }
-        } else {temperature = "NA"}
-
+        } else {
+            temperature = "NA"
+        }
         if !windChill.contains("NA") &&  windChill != "null" {
             if let tempD = Double(windChill) {
                 if UIPreferences.unitsF {
@@ -134,8 +134,9 @@ final class ObjectForecastPackageCurrentConditions {
                     windChill = tempD.roundToString()
                 }
             }
-        } else {windChill = "NA"}
-
+        } else {
+            windChill = "NA"
+        }
         if !heatIndex.contains("NA") &&  heatIndex != "null" {
             if let tempD = Double(heatIndex) {
                 if UIPreferences.unitsF {
@@ -144,8 +145,9 @@ final class ObjectForecastPackageCurrentConditions {
                     heatIndex = tempD.roundToString()
                 }
             }
-        } else {heatIndex = "NA"}
-
+        } else {
+            heatIndex = "NA"
+        }
         if !dewpoint.contains("NA") &&  dewpoint != "null" {
             if let tempD = Double(dewpoint) {
                 if UIPreferences.unitsF {
@@ -154,44 +156,52 @@ final class ObjectForecastPackageCurrentConditions {
                     dewpoint = tempD.roundToString()
                 }
             }
-        } else {dewpoint = "NA"}
-
+        } else {
+            dewpoint = "NA"
+        }
         if !windDirection.contains("NA") &&  windDirection != "null" {
             if windDirection != "" && windDirection != "null" {
                 windDirection = UtilityMath.convertWindDir(Double(windDirection) ?? 0.0)
             }
-        } else {windDirection = "NA"}
-
+        } else {
+            windDirection = "NA"
+        }
         if windSpeed != "null" {
             if let tempD = Double(windSpeed) {
                 windSpeed = UtilityMath.metersPerSecondtoMPH(tempD)
             } else {windSpeed = "NA"}
-        } else {windSpeed = "NA"}
-
+        } else {
+            windSpeed = "NA"
+        }
         if !relativeHumidity.contains("NA") &&  relativeHumidity != "null" {
             if let tempD = Double(relativeHumidity) {
                 relativeHumidity = tempD.roundToString()
             }
-        } else {relativeHumidity = "NA"}
-
+        } else {
+            relativeHumidity = "NA"
+        }
         if let tempD = Double(visibility) {
             visibility = UtilityMath.metersToMileRounded(tempD)
-        } else {visibility = "NA"}
-
+        } else {
+            visibility = "NA"
+        }
         if let tempD = Double(seaLevelPressure) {
             if !UIPreferences.unitsM {
                 seaLevelPressure = UtilityMath.pressureMBtoIn(seaLevelPressure)
             } else {
                 seaLevelPressure = UtilityMath.pressurePAtoMB(tempD) + " mb"
             }
-        } else {seaLevelPressure = "NA"}
-
+        } else {
+            seaLevelPressure = "NA"
+        }
         if windGust != "null" {
             if let tempD = Double(windGust) {
                 windGust = UtilityMath.metersPerSecondtoMPH(tempD)
                 windGust = "G " + windGust
             }
-        } else {windGust = ""}
+        } else {
+            windGust = ""
+        }
         self.temperature = temperature + MyApplication.degreeSymbol
         self.windChill = windChill + MyApplication.degreeSymbol
         self.heatIndex = heatIndex + MyApplication.degreeSymbol
@@ -212,7 +222,9 @@ final class ObjectForecastPackageCurrentConditions {
         }
         sb += " / " + dewpoint + MyApplication.degreeSymbol + "(" + relativeHumidity + "%)" + " - "
         sb += seaLevelPressure +  " - " + windDirection + " " + windSpeed
-        if windGust != "" {sb += " "}
+        if windGust != "" {
+            sb += " "
+        }
         sb += windGust + " mph" + " - " + visibility + " mi - " + condition
         return (sb, icon)
     }

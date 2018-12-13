@@ -9,7 +9,6 @@ import Foundation
 final class ObjectMetar {
 
     let decodeIcon = true
-
     var condition = ""
     var temperature = ""
     var dewpoint = ""
@@ -193,7 +192,6 @@ final class ObjectMetar {
                 windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") "
                     + windInKt + " G " + windgustInKt + " kt"
             }
-
             if TDArr.count > 1 {
                 temperature = TDArr[0]
                 dewpoint = TDArr[1]
@@ -219,6 +217,8 @@ final class ObjectMetar {
         let shortCondition = iconFromCondition[conditionModified] ?? ""
         return "https://api.weather.gov/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
     }
+
+    // FIXME move to seperate file
     // https://www.weather.gov/forecast-icons
     let iconFromCondition = [
         "Mostly Clear": "few",

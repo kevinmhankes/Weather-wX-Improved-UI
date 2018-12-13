@@ -44,6 +44,7 @@ class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var angleNext = 0.0
         var angle0 = 0.0
+        // FIXME add var for 360
         (0..<360).forEach { radial in
             numberOfRleHalfwords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
