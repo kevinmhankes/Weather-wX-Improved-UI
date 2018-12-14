@@ -123,13 +123,13 @@ class UtilityUSImgNWSMosaic {
 
     static func nwsMosaicAnimation(_ sector: String, _ numberOfFrames: String) -> AnimationDrawable {
         var sectorUrl = ""
-        if sector=="latest" {
+        if sector == "latest" {
             sectorUrl = "NAT"
         } else {
             sectorUrl = sector
         }
         var sPattern = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl=="alaska" {
+        if sectorUrl == "alaska" {
             sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
         }
         let urls = UtilityImgAnim.getUrlArray("http://radar.weather.gov/ridge/Conus/RadarImg/",

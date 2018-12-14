@@ -16,7 +16,9 @@ final class UtilityPlayList {
             editor.putString("PLAYLIST", MyApplication.playlistStr + ":" + prodLocal)
             MyApplication.playlistStr += ":" + prodLocal
             _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
-        } else {_ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)}
+        } else {
+            _ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)
+        }
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         editor.putString("PLAYLIST_" + prodLocal, text)
         editor.putString("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
@@ -38,7 +40,9 @@ final class UtilityPlayList {
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         arr.forEach {
             text = UtilityDownload.getTextProduct($0)
-            if $0.contains("SWO") {text = text.replaceAll("^<br>", "")}
+            if $0.contains("SWO") {
+                text = text.replaceAll("^<br>", "")
+            }
             if text != "" {
                 editor.putString("PLAYLIST_" + $0, text)
                 editor.putString("PLAYLIST_" + $0 + "_TIME", formattedDate)

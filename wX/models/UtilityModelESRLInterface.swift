@@ -7,11 +7,31 @@
 final class UtilityModelESRLInterface {
 
     static let models = [
-        "HRRR", "HRRR_AK", "HRRR_NCEP", "RAP", "RAP_NCEP"
+        "HRRR",
+		"HRRR_AK",
+		"HRRR_NCEP",
+		"RAP",
+		"RAP_NCEP"
     ]
 
 	static let sectorsHrrr = [
-			"Full", "NW", "NC", "NE", "SW", "SC", "SE", "GL", "NE CO", "SEA", "SFO", "MKX", "OKX", "IAD", "MIA", "ATL", "CLE"
+			"Full",
+			"NW",
+			"NC",
+			"NE", 
+			"SW",
+			"SC",
+			"SE",
+			"GL",
+			"NE CO",
+			"SEA",
+			"SFO",
+			"MKX", 
+			"OKX",
+			"IAD",
+			"MIA",
+			"ATL",
+			"CLE"
 	]
 
 	static let sectorsHrrrAk = [
@@ -110,7 +130,6 @@ final class UtilityModelESRLInterface {
 			"flru_sfc",
 			"ulwrf_nta",
 			"solar_sfc"
-
 	]
 
 	static let modelHrrrLabels = [

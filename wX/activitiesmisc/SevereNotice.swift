@@ -12,7 +12,9 @@ final class SevereNotice {
     var bitmaps = [Bitmap]()
     private var type = ""
 
-    init(_ type: String) {self.type = type}
+    init(_ type: String) {
+        self.type = type
+    }
 
     func getBitmaps(_ dataAsStringMCD: String) {
         var comp = ""
@@ -32,7 +34,9 @@ final class SevereNotice {
             default:    break
             }
             text = dataAsStringMCD
-        } else {text = ""}
+        } else {
+            text = ""
+        }
         numberList = text.split(":")
         if text != "" {
             (0..<(numberList.count - 1)).forEach {

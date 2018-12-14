@@ -200,7 +200,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func locationChanged(_ locationNumber: Int) {
-        if locationNumber<Location.numLocations {
+        if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
             editor.putString("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
             self.objLabel.text = Location.name

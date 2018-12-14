@@ -348,9 +348,11 @@ final class UtilityCanada {
         let watch = UtilityArray.joinArrayWithDelim(titles, "<BR>")
         result.0 = (warning + statement + watch)
         result.1 = (warningUrl + "," + statementUrl + "," + watchUrl)
-        if !result.0.contains ("No watches or warnings in effect") {
+        if !result.0.contains("No watches or warnings in effect") {
             result.1 = getHazardsFromUrl(warningUrl)
-        } else {result.1 = result.0}
+        } else {
+            result.1 = result.0
+        }
         return result
     }
 
@@ -380,7 +382,9 @@ final class UtilityCanada {
 
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false
-        if !UtilityCitiesCA.cityInit {UtilityCitiesCA.loadCitiesArray()}
+        if !UtilityCitiesCA.cityInit {
+            UtilityCitiesCA.loadCitiesArray()
+        }
         for city in UtilityCitiesCA.citiesCa {
             if city.contains(label) {
                 isPresent = true
@@ -393,7 +397,9 @@ final class UtilityCanada {
     static func getLatLonFromLabel(_ label: String) -> LatLonStr {
         var latLon = [Double]()
         var index = 0
-        if !UtilityCitiesCA.cityInit {UtilityCitiesCA.loadCitiesArray()}
+        if !UtilityCitiesCA.cityInit {
+            UtilityCitiesCA.loadCitiesArray()
+        }
         for city in UtilityCitiesCA.citiesCa {
             if city == label {
                 latLon.append(UtilityCitiesCA.latCa[index])

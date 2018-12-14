@@ -85,7 +85,6 @@ final class UtilityUSHourlyV2 {
     }
 
     static func shortenConditions(_ str: String) -> String {
-
         var hourly = str
         hourlyAbbreviationsFirst.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsFirst[$0]!)}
         hourlyAbbreviationsSecond.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsSecond[$0]!)}

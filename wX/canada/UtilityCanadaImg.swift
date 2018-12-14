@@ -92,7 +92,9 @@ final class UtilityCanadaImg {
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
         let html = ("http://weather.gc.ca/radar/index_e.html?id=" + radarSite).getHtmlSep()
         var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
-        if duration=="long" {durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"}
+        if duration == "long" {
+            durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"
+        }
         let radarHtml1hr = html.parse(durationPatMatch)
         var tmpAl = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
         var string = tmpAl.map {":/data/radar/detailed/temp_image/" + radarSite + "/" + $0 + ".GIF"}.joined()
@@ -113,19 +115,23 @@ final class UtilityCanadaImg {
 
     static func getRadarBitmapOptionsApplied(_ rid: String, _ url: String) -> Bitmap {
         let urlImg: String
-        if url=="" {
+        if url == "" {
             let rid1 = rid
             let radHtml = ("https://weather.gc.ca/radar/index_e.html?id=" + rid1).getHtml()
             let matchStr = "(/data/radar/.*?GIF)\""
             let summary = radHtml.parse(matchStr).replaceAll("detailed/", "")
             urlImg = "http://weather.gc.ca/" + summary
-        } else {urlImg = url}
+        } else {
+            urlImg = url
+        }
         return Bitmap(urlImg)
     }
 
     static func getRadarMosaicBitmapOptionsApplied(_ sector: String) -> Bitmap {
         var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
-        if sector=="CAN" {url = "http://weather.gc.ca/radar/index_e.html"}
+        if sector=="CAN" {
+            url = "http://weather.gc.ca/radar/index_e.html"
+        }
         let radHtml = url.getHtmlSep()
         let matchStr = "(/data/radar/.*?GIF)\""
         let summary = radHtml.parse(matchStr).replace("detailed/", "")
@@ -134,10 +140,12 @@ final class UtilityCanadaImg {
 
     static func getRadarMosaicAnimation(_ sector: String, _ duration: String) -> AnimationDrawable {
         var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
-        if sector=="CAN" {url = "http://weather.gc.ca/radar/index_e.html"}
+        if sector=="CAN" {
+            url = "http://weather.gc.ca/radar/index_e.html"
+        }
         let radHtml = url.getHtmlSep()
         var sectorLocal = ""
-        if sector=="CAN" {
+        if sector == "CAN" {
             sectorLocal = "NAT"
         } else {
             sectorLocal = sector

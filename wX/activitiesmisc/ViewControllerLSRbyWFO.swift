@@ -54,11 +54,13 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
         let html = ("http://forecast.weather.gov/product.php?site=" + nwsOffice + "&issuedby="
             + nwsOffice + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
-        if numberLSR=="" {
+        if numberLSR == "" {
             lsrArr.append("None issued by this office recently.")
         } else {
             var maxVers = Int(numberLSR) ?? 0
-            if maxVers > 30 {maxVers = 30}
+            if maxVers > 30 {
+                maxVers = 30
+            }
             stride(from: 1, to: maxVers, by: 2).forEach {
                 lsrArr.append(UtilityDownload.getTextProductWithVersion("LSR" + nwsOffice, $0))
             }

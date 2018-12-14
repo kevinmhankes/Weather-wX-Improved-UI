@@ -475,12 +475,20 @@ final public class ObjectModel {
         case "ESRL":    bitmap = UtilityModelESRLInputOutput.getImage(self)
         case "GLCFS":   bitmap = UtilityModelGLCFSInputOutput.getImage(self)
         case "NCEP":
-            if self.model=="NAM4KM" {self.model = "NAM-HIRES"}
-            if self.model.contains("HRW") && self.model.contains("-AK") {self.model = self.model.replace("-AK", "")}
-            if self.model.contains("HRW") && self.model.contains("-PR") {self.model = self.model.replace("-PR", "")}
+            if self.model=="NAM4KM" {
+                self.model = "NAM-HIRES"
+            }
+            if self.model.contains("HRW") && self.model.contains("-AK") {
+                self.model = self.model.replace("-AK", "")
+            }
+            if self.model.contains("HRW") && self.model.contains("-PR") {
+                self.model = self.model.replace("-PR", "")
+            }
             if self.model != "HRRR" {
                 self.timeStr = self.timeStr.truncate(3)
-            } else {self.timeStr = self.timeStr.truncate(3)}
+            } else {
+                self.timeStr = self.timeStr.truncate(3)
+            }
             bitmap = UtilityModelNCEPInputOutput.getImage(self)
         case "WPCGEFS": bitmap = UtilityModelWPCGEFSInputOutput.getImage(self)
         case "SPCHRRR": bitmap = UtilityModelSPCHRRRInputOutput.getImage(self)
@@ -545,28 +553,30 @@ final public class ObjectModel {
 
     func timeIdxIncr() {
         self.timeIdx += 1
-        //self.timeStr = self.timeArr[timeIdx]
         self.timeStr = self.timeArr.safeGet(timeIdx)
         self.timeButton.title = timeStr
     }
 
     func timeIdxDecr() {
         self.timeIdx -= 1
-        //self.timeStr = self.timeArr[timeIdx]
         self.timeStr = self.timeArr.safeGet(timeIdx)
         self.timeButton.title = timeStr
     }
 
     func leftClick() {
-        if timeIdx==0 {
+        if timeIdx == 0 {
             setTimeIdx(timeArr.count-1)
-        } else {timeIdxDecr()}
+        } else {
+            timeIdxDecr()
+        }
     }
 
     func rightClick() {
-        if timeIdx==timeArr.count-1 {
+        if timeIdx == timeArr.count - 1 {
             setTimeIdx(0)
-        } else {timeIdxIncr()}
+        } else {
+            timeIdxIncr()
+        }
     }
 
     func setTimeArr(_ idx: Int, _ time: String) {

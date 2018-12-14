@@ -52,7 +52,7 @@ class ViewControllerCARADAR: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
-            if ActVars.CARADARimgType=="radar" {
+            if ActVars.CARADARimgType == "radar" {
                 bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.rid, "")
             } else {
                 bitmap = Bitmap(self.url)
@@ -108,7 +108,7 @@ class ViewControllerCARADAR: UIwXViewController {
     func getAnimation(_ frameCnt: String) {
         var animDrawable = AnimationDrawable()
         DispatchQueue.global(qos: .userInitiated).async {
-            if ActVars.CARADARimgType=="radar" {
+            if ActVars.CARADARimgType == "radar" {
                 if !self.mosaicShown {
                     animDrawable = UtilityCanadaImg.getRadarAnimOptionsApplied(self.rid, frameCnt)
                 } else {

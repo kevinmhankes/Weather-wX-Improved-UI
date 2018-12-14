@@ -75,7 +75,9 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
-        if to == .up {delta = -1}
+        if to == .up {
+            delta = -1
+        }
         let tmp = playlistItems[from + delta]
         playlistItems[from + delta] = playlistItems[from]
         playlistItems[from] = tmp

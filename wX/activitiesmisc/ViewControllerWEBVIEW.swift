@@ -37,7 +37,9 @@ class ViewControllerWEBVIEW: UIwXViewController {
             webView.loadHTMLString(ActVars.WEBVIEWurl, baseURL: nil)
         }
         self.view.addSubview(webView)
-        if ActVars.WEBVIEWstateCode=="tornado" {productButton.title = "#tornado"}
+        if ActVars.WEBVIEWstateCode == "tornado" {
+            productButton.title = "#tornado"
+        }
         ActVars.WEBVIEWshowProd = true
         ActVars.WEBVIEWuseUrl = false
     }
@@ -53,7 +55,9 @@ class ViewControllerWEBVIEW: UIwXViewController {
     func productChanged(_ stateCodeCurrent: String) {
         urlChanged(stateCodeCurrent)
         webView.loadHTMLString(ActVars.WEBVIEWurl, baseURL: nil)
-        if ActVars.WEBVIEWstateCode != "tornado" {editor.putString("STATE_CODE", self.stateCodeCurrent)}
+        if ActVars.WEBVIEWstateCode != "tornado" {
+            editor.putString("STATE_CODE", self.stateCodeCurrent)
+        }
     }
 
     func urlChanged(_ stateCodeCurrent: String) {

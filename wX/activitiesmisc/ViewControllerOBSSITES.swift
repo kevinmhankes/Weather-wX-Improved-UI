@@ -53,7 +53,7 @@ class ViewControllerOBSSITES: UIwXViewController {
     }
 
     @objc func gotoObsSite(sender: UITapGestureRecognizerWithData) {
-        if sender.data==0 {
+        if sender.data == 0 {
             constructStateView()
         } else {
             ActVars.WEBVIEWshowProd = false

@@ -43,8 +43,12 @@ final class UtilitySunMoon {
             + MyApplication.newline
             + moonphaseChunk.replaceAll("\"time\"", "")
             + MyApplication.newline
-        if moonFracillum != "" {content2 += moonFracillum + "% Moon fracillum" + MyApplication.newline}
-        if moonCurrentphase != "" {content2 += moonCurrentphase + " is the current phase" + MyApplication.newline}
+        if moonFracillum != "" {
+            content2 += moonFracillum + "% Moon fracillum" + MyApplication.newline
+        }
+        if moonCurrentphase != "" {
+            content2 += moonCurrentphase + " is the current phase" + MyApplication.newline
+        }
         return (header, content2)
     }
 

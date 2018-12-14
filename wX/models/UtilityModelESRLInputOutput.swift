@@ -45,11 +45,11 @@ final class UtilityModelESRLInputOutput {
         runData.imageCompleteInt = UtilityString.parseAndCount(htmlRunstatus, ".(allfields).")-1
         runData.imageCompleteStr = String(runData.imageCompleteInt)
         if html != "" {
-            (0...12).forEach { i in
-                let year = oldRunTimes[i].parse(eslHrrrPattern3)
-                let day = oldRunTimes[i].parse(eslHrrrPattern4)
-                let hour = oldRunTimes[i].parse(eslHrrrPattern5)
-                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[i].parse(eslHrrrPattern6))
+            (0...12).forEach {
+                let year = oldRunTimes[$0].parse(eslHrrrPattern3)
+                let day = oldRunTimes[$0].parse(eslHrrrPattern4)
+                let hour = oldRunTimes[$0].parse(eslHrrrPattern5)
+                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[$0].parse(eslHrrrPattern6))
                 runData.appendListRun(year + monthStr + day + hour)
             }
             runData.timeStrConv = html.parse("([0-9]{2})$")
@@ -82,7 +82,8 @@ final class UtilityModelESRLInputOutput {
                 sectorLocal = "z" + String(sectorInt - 9)
                 paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
             }
-        case "HRRR_AK": break
+        case "HRRR_AK":
+            break
         case "RAP":
             if sectorInt == 0 || sectorInt == 1 {
             } else if sectorInt == 9 {
@@ -111,14 +112,18 @@ final class UtilityModelESRLInputOutput {
                 sectorLocal = "t" + String(sectorInt)
                 paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
             }
-        default: break
+        default:
+            break
         }
         let param = paramTmpLocal
         var parentModel = om.model.replaceAll("HRRR_AK", "alaska")
         switch om.model {
-        case "RAP_NCEP":  parentModel = "RAP"
-        case "HRRR_NCEP": parentModel = "HRRR"
-        default: break
+        case "RAP_NCEP":
+            parentModel = "RAP"
+        case "HRRR_NCEP":
+            parentModel = "HRRR"
+        default:
+            break
         }
         var imgUrl = ""
         var ondemandUrl = ""
