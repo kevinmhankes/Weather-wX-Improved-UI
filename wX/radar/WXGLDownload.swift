@@ -74,7 +74,7 @@ final class WXGLDownload {
         return ridPrefixGlobal
     }
 
-    func getRadarByFTPAnimation(_ frameCnt: String) -> [String] {
+    func getRadarByFTPAnimation(_ frameCnt: Int) -> [String] {
         var nidsArr = [String]()
         let ridPrefix = getRidPrefix(radarSite, prod)
         if !prod.contains("L2") {
@@ -86,8 +86,7 @@ final class WXGLDownload {
         return nidsArr
     }
 
-    func getNidsArr(_ frameCntStr: String, _ prod: String, _ ridPrefix: String, _ rid: String ) -> [String] {
-        let frameCnt = Int(frameCntStr) ?? 0
+    func getNidsArr(_ frameCnt: Int, _ prod: String, _ ridPrefix: String, _ rid: String ) -> [String] {
         var nidsArr = [String]()
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
@@ -134,8 +133,7 @@ final class WXGLDownload {
         return nidsArr
     }
 
-    func getL2Arr(_ baseUrl: String, _ frameCnt: String) -> [String] {
-        let frameCntInt = Int(frameCnt) ?? 0
+    func getL2Arr(_ baseUrl: String, _ frameCnt: Int) -> [String] {
         var l2Arr = [String]()
         let tmpArr = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
@@ -145,8 +143,8 @@ final class WXGLDownload {
         if ratio < 0.75 {
             additionalAdd = 1
         }
-        (0..<frameCntInt).forEach {
-            l2Arr.append(tmpArr[tmpArr.count - (frameCntInt - $0 + additionalAdd) * 2])
+        (0..<frameCnt).forEach {
+            l2Arr.append(tmpArr[tmpArr.count - (frameCnt - $0 + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + l2Arr[$0])
             UtilityIO.saveInputStream(data, l2Arr[$0])
         }

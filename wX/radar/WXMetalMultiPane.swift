@@ -458,10 +458,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func animateClicked() {
         if !inOglAnim {
             let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-            ["5", "10", "20", "30", "40", "50", "60"].forEach { cnt in
-                alert.addAction(UIAlertAction(title: cnt,
+            [5, 10, 20, 30, 40, 50, 60].forEach { count in
+                alert.addAction(UIAlertAction(title: String(count),
                                               style: .default,
-                                              handler: {_ in self.animateFrameCntClicked(cnt)}))
+                                              handler: {_ in self.animateFrameCntClicked(count)}))
             }
             alert.finish()
         } else {
@@ -474,7 +474,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
     }
 
-    func animateFrameCntClicked(_ frameCnt: String) {
+    func animateFrameCntClicked(_ frameCnt: Int) {
         if !inOglAnim {
             inOglAnim = true
             animateButton.setImage(UIImage(named: "ic_stop_24dp")!, for: .normal)
@@ -484,17 +484,16 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
     }
 
-    func getAnimate(_ frameCntStr: String) {
+    func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            self.wxMetal.forEach {animArray.append($0!.rdDownload.getRadarByFTPAnimation(frameCntStr))}
+            self.wxMetal.forEach {animArray.append($0!.rdDownload.getRadarByFTPAnimation(frameCnt))}
             self.wxMetal.enumerated().forEach { index, _ in
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
                 }
             }
-            let frameCnt = Int(frameCntStr) ?? 0
             var scaleFactor = 1
             while self.inOglAnim {
                 for frame in (0..<frameCnt) {
