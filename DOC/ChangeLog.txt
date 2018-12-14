@@ -4,6 +4,7 @@
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO add code to handle rectangular transformation in render
 // TODO BIG look for way to save x/y/zoom of images
+// TODO look at animation menus ( such as radar ) and convert to Int as native type
 
 2018_12_09 53000 integrate for testing: https://github.com/eldade/PageAlignedArray (code was removed, to slow to allocate mem in testing)
 2018_12_01 52800 code cleanup and continued metal radar dev

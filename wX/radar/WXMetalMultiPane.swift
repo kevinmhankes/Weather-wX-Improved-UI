@@ -416,7 +416,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
-    func mapCall(annotationView: MKAnnotationView) {self.ridChanged((annotationView.annotation!.title!)!, mapIndex)}
+    func mapCall(annotationView: MKAnnotationView) {
+        self.ridChanged((annotationView.annotation!.title!)!, mapIndex)
+    }
 
     func ridChanged(_ rid: String, _ index: Int) {
         stopAnimate()
