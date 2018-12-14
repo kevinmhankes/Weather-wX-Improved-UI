@@ -28,54 +28,6 @@ final class WXGLNexrad {
         "TV0: Digital Base Velocity"
         ]
 
-    static let TDWR = [
-        "DTX": "DTW",
-        "LOT": "ORD",
-        "MKX": "MKE",
-        "MPX": "MSP",
-        "FTG": "DEN",
-        "BOX": "BOS",
-        "CLE": "LVE",
-        "EAX": "MCI",
-        "FFC": "ATL",
-        "FWS": "DFW",
-        "GSP": "CLT",
-        "HGX": "HOU",
-        "IND": "IDS",
-        "LIX": "MSY",
-        "LVX": "SDF",
-        "LSX": "STL",
-        "NQA": "MEM",
-        "AMX": "MIA",
-        "OHX": "BNA",
-        "OKX": "JFK",
-        "TLX": "OKC",
-        "PBZ": "PIT",
-        "DIX": "PHL",
-        "IWA": "PHX",
-        "RAX": "RDU",
-        "MTX": "SLC",
-        "TBW": "TPA",
-        "INX": "TUL",
-        "ESX": "LAS",
-        "TBW": "TPA",
-        "JUA": "SJU",
-        "LWX": "DCA",
-        "ILN": "CMH",
-        "MLB": "MCO",
-        "ICT": "ICT",
-        "CMH": "CMH",
-        "CVG": "CVG",
-        "DAL": "DAL",
-        "DAY": "DAY",
-        "EWR": "EWR",
-        "FLL": "FLL",
-        "IAD": "IAD",
-        "IAH": "IAH",
-        "MDW": "MDW",
-        "PBI": "PBI"
-    ]
-
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {
         case 134: return 460
@@ -121,9 +73,5 @@ final class WXGLNexrad {
 
     static func getTdwrShortList() -> [String] {
         return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
-    }
-
-    static func getTDWRFromRID (_ radarSite: String) -> String {
-        return TDWR[radarSite] ?? ""
     }
 }
