@@ -81,7 +81,9 @@ final class Bitmap {
         return width > 10
     }
 
-    class Config {static let ARGB8888 = 0}
+    class Config {
+        static let ARGB8888 = 0
+    }
 
     class func imageWithSize(size: CGSize,
                              filledWithColor color: UIColor = UIColor.clear,
