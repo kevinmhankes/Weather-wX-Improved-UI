@@ -24,10 +24,12 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
         state = Location.state
         stateButton.title = state
         self.view.addSubview(toolbar)
-        self.getContent()
+        self.getContent(state)
     }
 
-    func getContent() {
+    func getContent(_ state: String) {
+        self.state = state
+        stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix
                 + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
@@ -38,13 +40,7 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
     }
 
     @objc func stateClicked(sender: ObjectToolbarIcon) {
-        _ = ObjectPopUp(self, "State Selection", sender, GlobalArrays.states, self.stateChanged(_:))
-    }
-
-    func stateChanged(_ state: String) {
-        self.state = state
-        stateButton.title = self.state
-        getContent()
+        _ = ObjectPopUp(self, "State Selection", sender, GlobalArrays.states, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
