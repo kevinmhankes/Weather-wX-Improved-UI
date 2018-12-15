@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilitySunMoon {
 
-    static func getExtendedSunMoonData() -> String {
+    static func getExtendedData() -> String {
         let timeZone = UtilityTime.getDateAsString("Z")
         let tzOffset = timeZone.substring(0, 3) + "." + timeZone.substring(3, 5)
         let url = "https://api.usno.navy.mil/rstt/oneday?date=today&coords="
@@ -52,7 +52,7 @@ final class UtilitySunMoon {
         return (header, content2)
     }
 
-    static func getFullMoonDates() -> String {
+    static func getFullDates() -> String {
         let url = "https://api.usno.navy.mil/moon/phase?date=" + String(UtilityTime.getMonth())
             + "/" + String(UtilityTime.getDay()) + "/" + String(UtilityTime.getYear()) + "&nump=99"
         let text = url.getHtml()

@@ -17,7 +17,7 @@ class ViewControllerCAHOURLY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityCanadaHourly.getHourlyString(Location.getLocationIndex)
+            let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {
                 _ = ObjectTextView(self.stackView, html)
                 _ = ObjectCALegal(self.stackView)

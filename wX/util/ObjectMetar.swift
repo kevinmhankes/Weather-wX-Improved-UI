@@ -41,7 +41,8 @@ final class ObjectMetar {
         dewpoint = metarData.parseFirst("Dew Point: (.*?) F")
         windDirection = metarData.parseFirst("Wind: from the (.*?) \\(.*? degrees\\) at .*? MPH ")
         windSpeed = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at (.*?) MPH ")
-        windGust = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at .*? MPH \\(.*? KT\\) gusting to (.*?) MPH")
+        windGust = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at .*? "
+            + "MPH \\(.*? KT\\) gusting to (.*?) MPH")
         seaLevelPressure = metarData.parseFirst("Pressure \\(altimeter\\): .*? in. Hg \\((.*?) hPa\\)")
         visibility = metarData.parseFirst("Visibility: (.*?) mile")
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")

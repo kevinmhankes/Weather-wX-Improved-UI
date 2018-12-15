@@ -48,7 +48,7 @@ final class UtilityUSHourlyV2 {
         let header = fixedLengthString("Time", 7) + fixedLengthString("T", 3)
             + fixedLengthString("Wind", 10) + fixedLengthString("WindDir", 6) +  MyApplication.newline
         let footer = getFooter()
-        return (header + parseHourly(html) + footer, html)
+        return (header + parse(html) + footer, html)
     }
 
     static func fixedLengthString(_ string: String, _ length: Int) -> String {
@@ -61,7 +61,7 @@ final class UtilityUSHourlyV2 {
         }
     }
 
-    static func parseHourly(_ html: String) -> String {
+    static func parse(_ html: String) -> String {
         let startTime = html.parseColumn("\"startTime\": \"(.*?)\",")
         let temperatures = html.parseColumn("\"temperature\": (.*?),")
         let windSpeeds = html.parseColumn("\"windSpeed\": \"(.*?)\"")

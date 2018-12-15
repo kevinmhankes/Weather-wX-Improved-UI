@@ -6,17 +6,17 @@
 
 final class UtilityCanadaHourly {
 
-    static func  getHourlyString(_ location: Int) -> String {
+    static func  getString(_ location: Int) -> String {
         let url = "http://weather.gc.ca/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-" + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
         let html = url.getHtml()
         let header = "Time   Temp   Summary   PrecipChance   Wind   Humindex"
-        return header + parseHourly(html)
+        return header + parse(html)
     }
 
-    static func getHourlyUrl(_ location: Int) -> String {
+    static func getUrl(_ location: Int) -> String {
         return "http://weather.gc.ca/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-"
@@ -24,7 +24,7 @@ final class UtilityCanadaHourly {
             + "_metric_e.html"
     }
 
-    static func parseHourly(_ html: String) -> String {
+    static func parse(_ html: String) -> String {
         let htmlLocal = html.parse("<tbody>(.*?)</tbody>")
         let timeAl = htmlLocal.parseColumn("<tr>.*?<td.*?>(.*?)</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
