@@ -352,12 +352,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTDWR.forEach {product in
-                alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
+                alert.addAction(UIAlertAction(product, {_ in
                     self.productChanged(sender.tag, product.split(":")[0])}))
             }
         } else {
             WXGLNexrad.radarProductList.forEach {product in
-                alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
+                alert.addAction(UIAlertAction(product, {_ in
                     self.productChanged(sender.tag, product.split(":")[0])}))
             }
         }
@@ -459,9 +459,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if !inOglAnim {
             let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
             [5, 10, 20, 30, 40, 50, 60].forEach { count in
-                alert.addAction(UIAlertAction(title: String(count),
-                                              style: .default,
-                                              handler: {_ in self.animateFrameCntClicked(count)}))
+                alert.addAction(UIAlertAction(String(count), { _ in self.animateFrameCntClicked(count)}))
             }
             alert.finish()
         } else {
@@ -568,20 +566,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach {
             let name = $0.name
-            let b = UIAlertAction(title: name + ": " +  preferences.getString("RID_LOC_" + name, "")
-                + " (" + String($0.distance) + " mi)", style: .default, handler: { _ in self.ridChanged(name, index)})
+            let b = UIAlertAction(name + ": " +  preferences.getString("RID_LOC_" + name, "")
+                + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
             alert.addAction(b)
         }
-        alert.addAction(UIAlertAction(title: "Show warning text", style: .default, handler: {_ in
-            self.showPolygonText(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest observation", style: .default, handler: {_ in
-            self.getMetar(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest forecast", style: .default, handler: {_ in
-            self.getForecast(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest meteogram", style: .default, handler: {_ in
-            self.getMeteogram(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show radar status message", style: .default, handler: {_ in
-            self.getRadarStatus(index)}))
+        alert.addAction(UIAlertAction("Show warning text", { _ in self.showPolygonText(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest observation", { _ in self.getMetar(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest forecast", { _ in self.getForecast(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest meteogram", { _ in self.getMeteogram(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show radar status message", { _ in self.getRadarStatus(index)}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
