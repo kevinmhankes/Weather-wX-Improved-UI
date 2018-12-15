@@ -9,6 +9,7 @@
 // TODO switch to new extension for UIActionAlert
 // TODO check AWC images in WPCImg
 // TODO remove labels for UITapGestureRecognizerWithData
+// move more vars out of global namespace - like ActVars , camelcase in process
 
 2018_12_15 53100 [BUG] GOES16
   	         add extension to UIAlertAction

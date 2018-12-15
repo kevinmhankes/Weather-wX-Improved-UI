@@ -80,9 +80,7 @@ class ViewControllerCARADAR: UIwXViewController {
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Site Selection", productButton)
         UtilityCanadaImg.caRids.enumerated().forEach { index, rid in
-            alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in
-                self.productChanged(prod: index)})
-            )
+            alert.addAction(UIAlertAction(rid, {_ in self.productChanged(prod: index)}))
         }
         alert.finish()
     }
@@ -99,9 +97,7 @@ class ViewControllerCARADAR: UIwXViewController {
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select animation:", animateButton)
-        ["short", "long"].forEach {cnt in alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in
-            self.getAnimation(cnt)}))
-        }
+        ["short", "long"].forEach {count in alert.addAction(UIAlertAction(count, {_ in self.getAnimation(count)}))}
         alert.finish()
     }
 
@@ -114,7 +110,7 @@ class ViewControllerCARADAR: UIwXViewController {
                 } else {
                     animDrawable = UtilityCanadaImg.getRadarMosaicAnimation(self.rid, frameCnt)
                 }
-            } else {animDrawable =  UtilityCanadaImg.getGOESAnim(self.url)}
+            } else {animDrawable = UtilityCanadaImg.getGOESAnim(self.url)}
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
@@ -124,7 +120,7 @@ class ViewControllerCARADAR: UIwXViewController {
     @objc func cloudClicked() {
         let alert = ObjectPopUp(self, "Product Selection", cloudButton)
         UtilityCanadaImg.names.enumerated().forEach { index, rid in
-            alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.cloudChanged(index)}))
+            alert.addAction(UIAlertAction(rid, {_ in self.cloudChanged(index)}))
         }
         alert.finish()
     }
