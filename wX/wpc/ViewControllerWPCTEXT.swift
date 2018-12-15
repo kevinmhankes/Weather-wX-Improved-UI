@@ -58,21 +58,20 @@ class ViewControllerWPCTEXT: UIwXViewController {
 
     @objc func showProductMenu() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        subMenu.objTitles.enumerated().forEach { idx, title in
-            alert.addAction(UIAlertAction(title: title.title, style: .default, handler: {_ in self.showSubMenu(idx)}))
+        subMenu.objTitles.enumerated().forEach { index, title in
+            alert.addAction(UIAlertAction(title.title, {_ in self.showSubMenu(index)}))
         }
         alert.finish()
     }
 
     func showSubMenu(_ index: Int) {
-        let startIdx  = ObjectMenuTitle.getStart(subMenu.objTitles, index)
+        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
         let title = subMenu.objTitles[index].title
         let alert = ObjectPopUp(self, title, productButton)
-        (startIdx..<(startIdx+count)).forEach { idx in
+        (startIdx..<(startIdx + count)).forEach { idx in
             let strArr = subMenu.paramLabels[idx].split(":")
-            alert.addAction(UIAlertAction(title: strArr[1], style: .default, handler: { _ in
-                self.productChanged(strArr[0])}))
+            alert.addAction(UIAlertAction(strArr[1], { _ in self.productChanged(strArr[0])}))
         }
         alert.finish()
     }
