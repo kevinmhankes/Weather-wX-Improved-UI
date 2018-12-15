@@ -17,8 +17,12 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
     }
-    
-    init(_ uiv: UIViewController, _ title: String, _ button: UIBarButtonItem,_ list: [String],_ fn: @escaping (String) -> ()) {
+
+    init(_ uiv: UIViewController,
+         _ title: String,
+         _ button: UIBarButtonItem,
+         _ list: [String],
+         _ fn: @escaping (String) -> Void) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         self.button = button
         self.uiv = uiv
