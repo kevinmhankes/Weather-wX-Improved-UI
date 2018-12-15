@@ -30,13 +30,15 @@ class ViewControllerSPCSWOV2: UIwXViewController {
                                             shareButton,
                                             playlistButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        if ActVars.spcswoDay=="48" {stateButton.title = ""}
+        if ActVars.spcswoDay == "48" {
+            stateButton.title = ""
+        }
         self.getContent()
     }
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            if ActVars.spcswoDay=="48" {
+            if ActVars.spcswoDay == "48" {
                 self.product = "SWOD" + ActVars.spcswoDay
                 self.html = UtilityDownload.getTextProduct(self.product)
             } else {

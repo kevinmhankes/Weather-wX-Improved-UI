@@ -51,14 +51,16 @@ class ViewControllerSPCMCD: UIwXViewController {
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
-                if self.bitmaps.count>0 {
+                if self.bitmaps.count > 0 {
                     self.bitmaps.enumerated().forEach {
                         let objImage = ObjectImage(self.stackView, $1)
                         objImage.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
                                                                                      target: self,
                                                                                      action: #selector(self.imgClicked(sender:))))
                     }
-                    if self.bitmaps.count == 1 {_ = ObjectTextView(self.stackView, self.text)}
+                    if self.bitmaps.count == 1 {
+                        _ = ObjectTextView(self.stackView, self.text)
+                    }
                 } else {
                     _ = ObjectTextView(self.stackView, "No active SPC MCDs")
                 }

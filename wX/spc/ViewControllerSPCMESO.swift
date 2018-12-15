@@ -166,7 +166,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         case "Topography":       isSelected = preferences.getString("SPCMESO_SHOW_TOPO", "false")
         default: break
         }
-        return isSelected=="true"
+        return isSelected == "true"
     }
 
     func toggleLayer(_ prefVar: String) {

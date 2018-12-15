@@ -56,14 +56,18 @@ public class UtilityUI {
     class func sideSwipe(_ sender: UISwipeGestureRecognizer, _ currentIndex: Int, _ imageList: [String]) -> Int {
         var productIndex = currentIndex
         if sender.direction == .left {
-            if currentIndex==imageList.count - 1 {
+            if currentIndex == imageList.count - 1 {
                 productIndex = 0
-            } else {productIndex += 1}
+            } else {
+                productIndex += 1
+            }
         }
         if sender.direction == .right {
-            if currentIndex==0 {
+            if currentIndex == 0 {
                 productIndex = imageList.count - 1
-            } else {productIndex -= 1}
+            } else {
+                productIndex -= 1
+            }
         }
         return productIndex
     }

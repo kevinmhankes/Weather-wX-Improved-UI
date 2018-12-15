@@ -16,7 +16,9 @@ class ViewControllerSPCWATCH: UIwXViewController {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         SPCWATno = ActVars.SPCWATNo
-        if SPCWATno != "" {ActVars.SPCWATNo = ""}
+        if SPCWATno != "" {
+            ActVars.SPCWATNo = ""
+        }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
