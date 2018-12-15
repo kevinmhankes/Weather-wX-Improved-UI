@@ -42,7 +42,9 @@ class ViewControllerCATEXT: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
-                if self.html=="" {self.html = "None issused by this office recently."}
+                if self.html == "" {
+                    self.html = "None issused by this office recently."
+                }
                 self.textView.text = self.html
                 self.productButton.title = self.product
                 editor.putString("CA_TEXT_LASTUSED", self.product)
@@ -55,12 +57,7 @@ class ViewControllerCATEXT: UIwXViewController {
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityCanada.products.forEach {
-            var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction($0, {_ in self.productChanged(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityCanada.products, self.productChanged(_:))
     }
 
     func productChanged(_ product: String) {

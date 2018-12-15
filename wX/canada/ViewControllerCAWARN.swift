@@ -42,10 +42,7 @@ class ViewControllerCAWARN: UIwXViewController {
     }
 
     @objc func provClicked() {
-        let alert = ObjectPopUp(self, "Providence Selection", provButton)
-        self.objCAWARN.provList.forEach { prov in
-            alert.addAction(UIAlertAction(prov, {_ in self.provChanged(prov)}))}
-        alert.finish()
+        _ = ObjectPopUp(self, "Providence Selection", provButton, self.objCAWARN.provList, self.provChanged(_:))
     }
 
     func provChanged(_ prov: String) {

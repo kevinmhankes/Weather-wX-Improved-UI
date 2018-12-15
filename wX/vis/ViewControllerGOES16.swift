@@ -128,7 +128,7 @@ class ViewControllerGOES16: UIwXViewController {
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
         stride(from: 24, to: 96 + 12, by: 12).forEach { count in
-            alert.addAction(UIAlertAction(String(count), {_ in self.getAnimation(count)}))
+            alert.addAction(UIAlertAction(count, {_ in self.getAnimation(count)}))
         }
         alert.finish()
     }

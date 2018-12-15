@@ -55,12 +55,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         self.capAlerts.forEach {eventArr.append($0.event)}
         eventArr.forEach {counts[$0] = (counts[$0] ?? 0) + 1}
         Array(counts.keys).sorted().forEach {eventArrWithCount.append("\($0): \(counts[$0]!)")}
-        let alert = ObjectPopUp(self, "Filter Selection", filterButton)
-        eventArrWithCount.forEach {
-            var filterType = $0.split(":")
-            alert.addAction(UIAlertAction($0, { _ in self.filterChanged(filterType[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
     }
 
     func filterChanged(_ filter: String) {

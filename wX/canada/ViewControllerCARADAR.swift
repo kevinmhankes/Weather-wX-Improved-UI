@@ -96,9 +96,7 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        let alert = ObjectPopUp(self, "Select animation:", animateButton)
-        ["short", "long"].forEach {count in alert.addAction(UIAlertAction(count, {_ in self.getAnimation(count)}))}
-        alert.finish()
+        _ = ObjectPopUp(self, "Select animation:", animateButton, ["short", "long"], self.getAnimation(_:))
     }
 
     func getAnimation(_ frameCnt: String) {
@@ -110,7 +108,9 @@ class ViewControllerCARADAR: UIwXViewController {
                 } else {
                     animDrawable = UtilityCanadaImg.getRadarMosaicAnimation(self.rid, frameCnt)
                 }
-            } else {animDrawable = UtilityCanadaImg.getGOESAnim(self.url)}
+            } else {
+                animDrawable = UtilityCanadaImg.getGOESAnim(self.url)
+            }
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
