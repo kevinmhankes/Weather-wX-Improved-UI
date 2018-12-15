@@ -27,7 +27,11 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
         list.forEach { item in
-            addAction(UIAlertAction(item, {_ in fn(item)}))
+            var code = item
+            if item.contains(":") {
+                code = item.firstToken(":")
+            }
+            addAction(UIAlertAction(item, {_ in fn(code)}))
         }
         finish()
     }

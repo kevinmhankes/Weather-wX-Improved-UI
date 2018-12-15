@@ -100,12 +100,7 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        let alert = ObjectPopUp(self, "Sector Selection", productButton)
-        UtilityGOES16.sectors.forEach {
-            let code = $0.firstToken(":")
-            alert.addAction(UIAlertAction($0, {_ in self.sectorChanged(code)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGOES16.sectors, self.sectorChanged(_:))
     }
 
     func productChanged(_ product: String) {
