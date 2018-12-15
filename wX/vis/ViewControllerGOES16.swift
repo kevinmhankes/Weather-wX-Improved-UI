@@ -73,12 +73,12 @@ class ViewControllerGOES16: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let urlList = UtilityGOES16.getUrl(self.productCode, self.sectorCode)
+            self.serializeSettings()
             let bitmap = Bitmap(urlList[0])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.serializeSettings()
                 if self.firstRun {
-                    UtilityImg.imgRestorePosnZoom(self.image.img, self)
+                    //UtilityImg.imgRestorePosnZoom(self.image.img, self)
                     self.firstRun = false
                 }
             }
@@ -94,8 +94,7 @@ class ViewControllerGOES16: UIwXViewController {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         UtilityGOES16.products.keys.sorted().forEach {
             let code = $0
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in
-                self.productChanged(UtilityGOES16.products[code]!)}))
+            alert.addAction(UIAlertAction($0, {_ in self.productChanged(UtilityGOES16.products[code]!)}))
         }
         alert.finish()
     }
@@ -118,7 +117,7 @@ class ViewControllerGOES16: UIwXViewController {
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
-        UtilityImg.imgCenter(self.image.img, self)
+        //UtilityImg.imgCenter(self.image.img, self)
         self.getContent()
     }
 

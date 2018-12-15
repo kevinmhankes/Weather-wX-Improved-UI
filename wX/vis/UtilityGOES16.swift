@@ -38,12 +38,24 @@ final class UtilityGOES16 {
             sectorLocal = sector
         }
         let html = url.getHtml()
-        let parseString = "href=.(https://cdn.star.nesdis.noaa.gov/GOES16/ABI/"
-            + sectorLocal + "/" + product + "/[0-9]{11}_GOES16-ABI-"
-            + sector + "-" + product + "-" + getImageSize(product, sector) + ".jpg).>"
-        let imgUrl = html.parse(parseString)
-        let timeStamp = imgUrl.parse(product + "/([0-9]{11})_GOES16-ABI-" + sector)
-        return [imgUrl, timeStamp]
+        var randomString = "/."
+        if product == "GEOCOLOR" || sector == "FD" || sector == "CONUS" {
+            randomString = ""
+        }
+        // FIXME can we just use latest
+        // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
+        // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
+        let latestUrl = MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
+        //let parseString = "href=.(https://cdn.star.nesdis.noaa.gov/GOES16/ABI/"
+        //    + sectorLocal + "/" + product + randomString + "/[0-9]{11}_GOES16-ABI-"
+        //    + sector + "-" + product + "-" + getImageSize(product, sector) + ".jpg).>"
+        //print(parseString)
+        //let imgUrl = html.parse(parseString)
+        //let timeStamp = imgUrl.parse(product + "/([0-9]{11})_GOES16-ABI-" + sector)
+        //print(imgUrl)
+        //return [imgUrl, timeStamp]
+        print(latestUrl)
+        return [latestUrl, ""]
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {

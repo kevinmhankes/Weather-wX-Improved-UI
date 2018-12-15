@@ -37,6 +37,7 @@ class MyApplication {
     static let nwsRadarWebsitePrefix: String = "https://radar.weather.gov"
     static let nwsMagNcepWebsitePrefix: String = "https://mag.ncep.noaa.gov"
     static let sunMoonDataUrl: String = "https://api.usno.navy.mil"
+    static let goes16Url: String = "https://cdn.star.nesdis.noaa.gov"
     static let currentConditionsViaMetar = true
     static let degreeSymbol = "\u{00B0}"
     static let textviewMagicFudgeFactor: Float = 4.05
