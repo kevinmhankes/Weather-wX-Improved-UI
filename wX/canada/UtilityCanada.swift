@@ -68,160 +68,160 @@ final class UtilityCanada {
         return days.map {translateIconName($0)}
     }
 
-    static func translateIconName(_ s: String) -> String {
+    static func translateIconName(_ condition: String) -> String {
         var newName = ""
-        if s.contains("reezing rain or snow")
-            || s.contains("chance of flurries and risk of freezing drizzle")
-            || s.contains("chance of flurries before morning with risk of freezing drizzle")
-            || s.contains("Periods of freezing drizzle or flurries")
-            || s.contains("Flurries or freezing drizzle") {
+        if condition.contains("reezing rain or snow")
+            || condition.contains("chance of flurries and risk of freezing drizzle")
+            || condition.contains("chance of flurries before morning with risk of freezing drizzle")
+            || condition.contains("Periods of freezing drizzle or flurries")
+            || condition.contains("Flurries or freezing drizzle") {
             newName = "fzra_sn"
-        } else if s.contains("eriods of freezing drizzle")
-            || s.contains("reezing Drizzle")
-            || s.contains("reezing drizzle")
-            || s.contains("reezing rain")
-            || s.contains("isk of freezing drizzle") {
+        } else if condition.contains("eriods of freezing drizzle")
+            || condition.contains("reezing Drizzle")
+            || condition.contains("reezing drizzle")
+            || condition.contains("reezing rain")
+            || condition.contains("isk of freezing drizzle") {
             newName = "fzra"
-        } else if s.contains("Ice Crystals") || s.contains("ice pellets") {
+        } else if condition.contains("Ice Crystals") || condition.contains("ice pellets") {
             newName = "ip"
-        } else if s.contains("hundershowers") || s.contains("hunderstorm") {
+        } else if condition.contains("hundershowers") || condition.contains("hunderstorm") {
             newName = "scttsra"
-        } else if s.contains("hance of rain showers or flurries")
-            || s.contains("lurries or rain showers")
-            || s.contains(" few rain showers or flurries")
-            || s.contains("ain or snow")
-            || s.contains("eriods of rain or snow")
-            || s.contains("now or rain")
-            || s.contains("ain changing to snow")
-            || s.contains("ain showers or flurries")
-            || s.contains("ain changing to periods of snow")
-            || s.contains("now changing to periods of rain")
-            || s.contains("Rain at times heavy changing to snow")
-            || s.contains("Snow changing to periods of drizzle")
-            || s.contains("Rain at times mixed with wet snow") {
+        } else if condition.contains("hance of rain showers or flurries")
+            || condition.contains("lurries or rain showers")
+            || condition.contains(" few rain showers or flurries")
+            || condition.contains("ain or snow")
+            || condition.contains("eriods of rain or snow")
+            || condition.contains("now or rain")
+            || condition.contains("ain changing to snow")
+            || condition.contains("ain showers or flurries")
+            || condition.contains("ain changing to periods of snow")
+            || condition.contains("now changing to periods of rain")
+            || condition.contains("Rain at times heavy changing to snow")
+            || condition.contains("Snow changing to periods of drizzle")
+            || condition.contains("Rain at times mixed with wet snow") {
             newName = "ra_sn"
-        } else if s.contains("hance of showers") || s.contains("howers") {
+        } else if condition.contains("hance of showers") || condition.contains("howers") {
             newName = "shra"
-        } else if s.contains("hance of rain")
-            || s.contains("Rain beginning")
-            || s.contains("eriods of drizzle changing to rain at times")
-            || s.contains("Rain at times heavy") {
+        } else if condition.contains("hance of rain")
+            || condition.contains("Rain beginning")
+            || condition.contains("eriods of drizzle changing to rain at times")
+            || condition.contains("Rain at times heavy") {
             newName = "ra"
-        } else if s.contains("hance of flurries")
-            || s.contains("hance of snow")
-            || s.contains("eriods of snow")
-            || s.contains(" few flurries")
-            || s.contains("eriods of light snow")
-            || s.contains("Flurries")
-            || s.contains("Snow")
-            || s.contains("then snow")
-            || s.contains("ight snow") {
+        } else if condition.contains("hance of flurries")
+            || condition.contains("hance of snow")
+            || condition.contains("eriods of snow")
+            || condition.contains(" few flurries")
+            || condition.contains("eriods of light snow")
+            || condition.contains("Flurries")
+            || condition.contains("Snow")
+            || condition.contains("then snow")
+            || condition.contains("ight snow") {
             newName = "sn"
-        } else if s.contains("A few showers")
-            || s.contains("eriods of rain")
-            || s.contains("drizzle") {
+        } else if condition.contains("A few showers")
+            || condition.contains("eriods of rain")
+            || condition.contains("drizzle") {
             newName = "hi_shwrs"
-        } else if s.contains("Increasing cloudiness") || s.contains("Cloudy periods") {
+        } else if condition.contains("Increasing cloudiness") || condition.contains("Cloudy periods") {
             newName = "bkn"
-        } else if s.contains("Mainly sunny") || s.contains("A few clouds") {
+        } else if condition.contains("Mainly sunny") || condition.contains("A few clouds") {
             newName = "few"
-        } else if s.contains("loudy")
-            || s.contains("Mainly cloudy")
-            || s.contains("Overcast") {
+        } else if condition.contains("loudy")
+            || condition.contains("Mainly cloudy")
+            || condition.contains("Overcast") {
             newName = "ovc"
-        } else if s.contains("A mix of sun and cloud")
-            || s.contains("Partly cloudy")
-            || s.contains("Clearing") {
+        } else if condition.contains("A mix of sun and cloud")
+            || condition.contains("Partly cloudy")
+            || condition.contains("Clearing") {
             newName = "sct"
-        } else if s.contains("Clear") || s.contains("Sunny") {
+        } else if condition.contains("Clear") || condition.contains("Sunny") {
             newName = "skc"
-        } else if s.contains("Blizzard")
-            || s.contains("Local blowing snow") {
+        } else if condition.contains("Blizzard")
+            || condition.contains("Local blowing snow") {
             newName = "blizzard"
-        } else if s.contains("Rain") {
+        } else if condition.contains("Rain") {
             newName = "ra"
-        } else if s.contains("Mist")
-            || s.contains("Fog")
-            || s.contains("Light Drizzle") {
+        } else if condition.contains("Mist")
+            || condition.contains("Fog")
+            || condition.contains("Light Drizzle") {
             newName = "fg"
         }
-        if s.contains("night") {
+        if condition.contains("night") {
             if newName.contains("hi_") {
                 newName = newName.replace("hi_", "hi_n")
             } else {
                 newName = "n" + newName
             }
         }
-        if s.contains("percent") {
-            let pop = s.parse("([0-9]{2}) percent")
+        if condition.contains("percent") {
+            let pop = condition.parse("([0-9]{2}) percent")
             newName += "," + pop
         }
         return newName
     }
 
-    static func translateIconNameCurrentConditions(_ s: String, _ day1: String) -> String {
+    static func translateIconNameCurrentConditions(_ condition: String, _ day1: String) -> String {
         var newName = ""
-        if s.contains("eriods of freezing drizzle")
-            || s.contains("Freezing Drizzle")
-            || s.contains("Freezing Rain") {
+        if condition.contains("eriods of freezing drizzle")
+            || condition.contains("Freezing Drizzle")
+            || condition.contains("Freezing Rain") {
             newName = "fzra"
-        } else if s.contains("hundershowers") || s.contains("hunderstorm") {
+        } else if condition.contains("hundershowers") || condition.contains("hunderstorm") {
             newName = "scttsra"
-        } else if s.contains("Haze") {
+        } else if condition.contains("Haze") {
             newName = "fg"
-        } else if s.contains("hance of rain showers or flurries")
-            || s.contains("lurries or rain showers")
-            || s.contains(" few rain showers or flurries")
-            || s.contains("ain or snow")
-            || s.contains("ain and Snow")
-            || s.contains("eriods of rain or snow")
-            || s.contains("now or rain") {
+        } else if condition.contains("hance of rain showers or flurries")
+            || condition.contains("lurries or rain showers")
+            || condition.contains(" few rain showers or flurries")
+            || condition.contains("ain or snow")
+            || condition.contains("ain and Snow")
+            || condition.contains("eriods of rain or snow")
+            || condition.contains("now or rain") {
             newName = "ra_sn"
-        } else if s.contains("hance of showers") || s.contains("Showers") {
+        } else if condition.contains("hance of showers") || condition.contains("Showers") {
             newName = "shra"
-        } else if s.contains("hance of rain") {
+        } else if condition.contains("hance of rain") {
             newName = "ra"
-        } else if s.contains("A few showers") || s.contains("eriods of rain")
-            || s.contains("drizzle") {
+        } else if condition.contains("A few showers") || condition.contains("eriods of rain")
+            || condition.contains("drizzle") {
             newName = "hi_shwrs"
-        } else if s.contains("Blizzard")
-            || s.contains("Blowing Snow")
-            || s.contains("Drifting Snow") {
+        } else if condition.contains("Blizzard")
+            || condition.contains("Blowing Snow")
+            || condition.contains("Drifting Snow") {
             newName = "blizzard"
-        } else if s.contains("hance of flurries")
-            || s.contains("hance of snow")
-            || s.contains("eriods of snow")
-            || s.contains(" few flurries")
-            || s.contains("eriods of light snow")
-            || s.contains("Flurries")
-            || s.contains("Snow")
-            || s.contains("ight snow") {
+        } else if condition.contains("hance of flurries")
+            || condition.contains("hance of snow")
+            || condition.contains("eriods of snow")
+            || condition.contains(" few flurries")
+            || condition.contains("eriods of light snow")
+            || condition.contains("Flurries")
+            || condition.contains("Snow")
+            || condition.contains("ight snow") {
             newName = "sn"
-        } else if s.contains("Increasing cloudiness") || s.contains("Cloudy periods") {
+        } else if condition.contains("Increasing cloudiness") || condition.contains("Cloudy periods") {
             newName = "bkn"
-        } else if s.contains("Mainly sunny")
-            || s.contains("A few clouds")
-            || s.contains("Mainly Sunny")
-            || s.contains("Mainly Clear") {
+        } else if condition.contains("Mainly sunny")
+            || condition.contains("A few clouds")
+            || condition.contains("Mainly Sunny")
+            || condition.contains("Mainly Clear") {
             newName = "few"
-        } else if s.contains("Cloudy")
-            || s.contains("Mainly cloudy")
-            || s.contains("Overcast") {
+        } else if condition.contains("Cloudy")
+            || condition.contains("Mainly cloudy")
+            || condition.contains("Overcast") {
             newName = "ovc"
-        } else if s.contains("A mix of sun and cloud")
-            || s.contains("Partly cloudy")
-            || s.contains("Clearing") {
+        } else if condition.contains("A mix of sun and cloud")
+            || condition.contains("Partly cloudy")
+            || condition.contains("Clearing") {
             newName = "sct"
-        } else if s.contains("Clear") || s.contains("Sunny") {
+        } else if condition.contains("Clear") || condition.contains("Sunny") {
             newName = "skc"
-        } else if s.contains("Rain") {
+        } else if condition.contains("Rain") {
             newName = "ra"
-        } else if s.contains("Mist")
-            || s.contains("Fog")
-            || s.contains("Light Drizzle") {
+        } else if condition.contains("Mist")
+            || condition.contains("Fog")
+            || condition.contains("Light Drizzle") {
             newName = "fg"
-        } else if s.contains("Ice Crystals")
-            || s.contains("Ice Pellets") {
+        } else if condition.contains("Ice Crystals")
+            || condition.contains("Ice Pellets") {
             newName = "ip"
         }
         let time = day1.parse(" ([0-9]{1,2}:[0-9]{2} [AP]M) ")
@@ -245,8 +245,8 @@ final class UtilityCanada {
                 newName = "n" + newName
             }
         }
-        if s.contains("percent") {
-            let pop = s.parse("([0-9]{2}) percent")
+        if condition.contains("percent") {
+            let pop = condition.parse("([0-9]{2}) percent")
             newName += "," + pop
         }
         return newName
@@ -262,19 +262,19 @@ final class UtilityCanada {
         return ("http://weather.gc.ca/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
 
-    static func getLocationUrl(_ x: String, _ y: String ) -> String {
-        let prov = x.split(":")
-        let id = y.split(":")
+    static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
+        let prov = lat.split(":")
+        let id = lon.split(":")
         return "http://weather.gc.ca/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
     }
 
     static func getStatus(_ html: String) -> String {return html.parse("<b>Observed at:</b>(.*?)<br/>")}
 
-    static func getRid(_ x: String, _ y: String) -> String {
+    static func getRid(_ lat: String, _ lon: String) -> String {
         let url = "http://weather.gc.ca/city/pages/"
-            + x.split(":")[1].lowercased()
+            + lat.split(":")[1].lowercased()
             + "-"
-            + y.split(":")[0]
+            + lon.split(":")[0]
             + "_metric_e.html"
         let html = url.getHtmlSep()
         let rid = html.parse("<a href=./radar/index_e.html.id=([a-z]{3})..*?>Weather Radar</a>").uppercased()

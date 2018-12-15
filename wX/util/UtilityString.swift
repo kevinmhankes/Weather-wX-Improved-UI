@@ -147,11 +147,11 @@ final class UtilityString {
         }
     }
 
-    static func getLastXChars(_ string: String, _ x: Int) -> String {
-        if string.count == x {
+    static func getLastXChars(_ string: String, _ count: Int) -> String {
+        if string.count == count {
             return string
-        } else if string.count > x {
-            return string.substring(string.count - x)
+        } else if string.count > count {
+            return string.substring(string.count - count)
         } else {
             return string
         }

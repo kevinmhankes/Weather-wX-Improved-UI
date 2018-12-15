@@ -9,8 +9,8 @@ import Foundation
 final class UtilityMath {
 
     static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {
-        let rh = 100 * (exp((17.625 * dewpt)/(243.04 + dewpt))/exp((17.625 * temp)/(243.04 + temp)))
-        return roundDToString(rh)
+        let relativeHumidity = 100 * (exp((17.625 * dewpt)/(243.04 + dewpt))/exp((17.625 * temp)/(243.04 + temp)))
+        return roundDToString(relativeHumidity)
     }
 
     static func latLonFix(_ location: LatLon) -> LatLon {
@@ -85,9 +85,9 @@ final class UtilityMath {
     }
 
     static func celsiusToFarenheitTable() -> String {
-        var sb = "C\t\tF" + MyApplication.newline
-        (-40...39).forEach {sb += String($0) + "  " + celsiusToFarenheit($0) + MyApplication.newline}
-        return sb
+        var table = "C\t\tF" + MyApplication.newline
+        (-40...39).forEach {table += String($0) + "  " + celsiusToFarenheit($0) + MyApplication.newline}
+        return table
     }
 
     static func degreesToRadians(_ deg: Double) -> Double {

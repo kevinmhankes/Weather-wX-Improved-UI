@@ -105,54 +105,54 @@ final class MemoryBuffer {
     }
 
     func putFloat(_ newValue: Float) {
-        var f = newValue
-        memcpy(&backingArray[posn], &f, 4)
+        var float = newValue
+        memcpy(&backingArray[posn], &float, 4)
         posn += 4
     }
 
     func putFloat(_ newValue: Double) {
-        var f = Float(newValue)
-        memcpy(&backingArray[posn], &f, 4)
+        var float = Float(newValue)
+        memcpy(&backingArray[posn], &float, 4)
         posn += 4
     }
 
     func getFloat() -> Float {
         let bytes: [UInt8] = [backingArray[posn+3], backingArray[posn+2], backingArray[posn+1], backingArray[posn]]
-        var f: Float = 0.0
+        var float: Float = 0.0
         posn += 4
-        memcpy(&f, bytes, 4)
-        return f
+        memcpy(&float, bytes, 4)
+        return float
     }
 
     func getCGFloat() -> CGFloat {
         let bytes: [UInt8] = [backingArray[posn+3], backingArray[posn+2], backingArray[posn+1], backingArray[posn]]
-        var f: Float = 0.0
+        var float: Float = 0.0
         posn += 4
-        memcpy(&f, bytes, 4)
-        return CGFloat(f)
+        memcpy(&float, bytes, 4)
+        return CGFloat(float)
     }
 
     func getInt() -> Int {
         let bytes: [UInt8] = [backingArray[posn+3], backingArray[posn+2], backingArray[posn+1], backingArray[posn]]
-        var i = 0
+        var integer = 0
         posn += 4
-        memcpy(&i, bytes, 4)
-        return i
+        memcpy(&integer, bytes, 4)
+        return integer
     }
 
     func getFloatNative(_ index: Int) -> Double {
         let bytes: [UInt8] = [backingArray[index], backingArray[index+1], backingArray[index+2], backingArray[index+3]]
-        var f: Float = 0.0
-        memcpy(&f, bytes, 4)
-        return Double(f)
+        var float: Float = 0.0
+        memcpy(&float, bytes, 4)
+        return Double(float)
     }
 
     func getCGFloatNative() -> CGFloat {
         let bytes: [UInt8] = [backingArray[posn], backingArray[posn+1], backingArray[posn+2], backingArray[posn+3]]
-        var f: Float = 0.0
+        var float: Float = 0.0
         posn += 4
-        memcpy(&f, bytes, 4)
-        return CGFloat(f)
+        memcpy(&float, bytes, 4)
+        return CGFloat(float)
     }
 
     func copy(_ newArray: [UInt8]) {
@@ -174,44 +174,44 @@ final class MemoryBuffer {
     }
 
     func putShort(_ newValue: UInt16) {
-        var f: UInt16 = newValue
-        memcpy(&backingArray[posn], &f, 2)
+        var unsignedShort: UInt16 = newValue
+        memcpy(&backingArray[posn], &unsignedShort, 2)
         posn += 2
     }
 
     func putSignedShort(_ newValue: Int16) {
-        var f = newValue
-        memcpy(&backingArray[posn], &f, 2)
+        var short = newValue
+        memcpy(&backingArray[posn], &short, 2)
         posn += 2
     }
 
    func getShortNative() -> Int16 {
         let bytes: [UInt8] = [backingArray[posn], backingArray[posn+1]]
-        var i: Int16 = 0
+        var short: Int16 = 0
         posn += 2
-        memcpy(&i, bytes, 2)
-        return i
+        memcpy(&short, bytes, 2)
+        return short
     }
 
     func getShort() -> Int16 {
         let bytes: [UInt8] = [backingArray[posn+1], backingArray[posn]]
-        var i: Int16 = 0
+        var short: Int16 = 0
         posn += 2
-        memcpy(&i, bytes, 2)
-        return i
+        memcpy(&short, bytes, 2)
+        return short
     }
 
     func getUnsignedShort() -> UInt16 {
         let bytes: [UInt8] = [backingArray[posn+1], backingArray[posn]]
-        var i: UInt16 = 0
+        var unsignedShort: UInt16 = 0
         posn += 2
-        memcpy(&i, bytes, 2)
-        return i
+        memcpy(&unsignedShort, bytes, 2)
+        return unsignedShort
     }
 
     func putInt(_ newValue: Int32) {
-        var f: UInt32 = CFSwapInt32(UInt32(newValue))
-        memcpy(&backingArray[posn], &f, 4)
+        var unsignedInt: UInt32 = CFSwapInt32(UInt32(newValue))
+        memcpy(&backingArray[posn], &unsignedInt, 4)
         posn += 4
     }
 
