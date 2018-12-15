@@ -73,6 +73,7 @@ final class ObjectForecastPackage7Day {
         scrollView = sv
         let stackViewLocal7Day = ObjectStackViewHS()
         stackViewLocal7Day.setupWithPadding()
+        //stackView.subviews.forEach {$0.removeFromSuperview()}
         stackView.addArrangedSubview(stackViewLocal7Day)
         let dayArr = objSevenDay.fcstList
         dayArr.indices.forEach {

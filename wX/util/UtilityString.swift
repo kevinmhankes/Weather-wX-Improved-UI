@@ -37,7 +37,9 @@ final class UtilityString {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
-            if intValue >= start && intValue < str.count {retStr += String(str[$0])}
+            if intValue >= start && intValue < str.count {
+                retStr += String(str[$0])
+            }
         }
         return retStr
     }
@@ -77,7 +79,7 @@ final class UtilityString {
             var match = [String]()
             results.forEach { result in
                 (0..<result.numberOfRanges).forEach {
-                    if $0%2 != 0 {
+                    if $0 % 2 != 0 {
                         match.append(nsString.substring(with: result.range(at: $0)))
                     }
                 }
@@ -135,7 +137,9 @@ final class UtilityString {
                     match.append(nsString.substring(with: result.range(at: $0)))
                 }
             }
-            if match.count>1 {match.remove(at: 0)}
+            if match.count > 1 {
+                match.remove(at: 0)
+            }
             return match
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")

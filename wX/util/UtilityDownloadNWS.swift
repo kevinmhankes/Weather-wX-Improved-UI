@@ -9,7 +9,7 @@ import Foundation
 final class UtilityDownloadNWS {
 
     static func getCAP(_ sector: String) -> String {
-        if sector=="us" {
+        if sector == "us" {
             return getNWSStringFromURLXML("https://api.weather.gov/alerts/active?region_type=land")
         } else {
             return getNWSStringFromURLXML("https://api.weather.gov/alerts/active?state=" + sector.uppercased())

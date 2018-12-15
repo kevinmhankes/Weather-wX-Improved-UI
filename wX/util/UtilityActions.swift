@@ -156,7 +156,9 @@ final class UtilityActions {
                                       preferredStyle: UIAlertControllerStyle.actionSheet)
         menuList.forEach { rid in
             let action = UIAlertAction(title: rid, style: .default, handler: {_ in menuItemClicked(uiv, rid, button)})
-            if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = button}
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.barButtonItem = button
+            }
             alert.addAction(action)
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))

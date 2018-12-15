@@ -169,7 +169,9 @@ final class ObjectForecastPackageCurrentConditions {
         if windSpeed != "null" {
             if let tempD = Double(windSpeed) {
                 windSpeed = UtilityMath.metersPerSecondtoMPH(tempD)
-            } else {windSpeed = "NA"}
+            } else {
+                windSpeed = "NA"
+            }
         } else {
             windSpeed = "NA"
         }

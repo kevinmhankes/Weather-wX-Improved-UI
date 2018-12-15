@@ -19,8 +19,8 @@ class DataStorage {
     }
 
     var value: String {
-        get { 
-            return val 
+        get {
+            return val
         }
         set {
             val = newValue

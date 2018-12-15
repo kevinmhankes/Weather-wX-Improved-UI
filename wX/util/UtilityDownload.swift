@@ -90,9 +90,9 @@ final class UtilityDownload {
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("MIAT") {
             text = ("http://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
-            if UIPreferences.nwsTextRemovelinebreaks && prod=="MIATWOAT"
-                || prod=="MIATWDAT" || prod=="MIATWOEP"
-                || prod=="MIATWDEP" {
+            if UIPreferences.nwsTextRemovelinebreaks && prod == "MIATWOAT"
+                || prod == "MIATWDAT" || prod == "MIATWOEP"
+                || prod == "MIATWDEP" {
                 text = text.replaceAll("<br><br>", "<BR><BR>")
                 text = text.replaceAll("<br>", " ")
             }
@@ -196,8 +196,10 @@ final class UtilityDownload {
             if Location.x.contains("CANADA") {
                 needsBitmap = false
                 var rid = Location.rid
-                if rid=="NAT" {rid = "CAN"}
-                if rid=="CAN" || rid=="PAC" || rid=="WRN" || rid=="ONT" || rid=="QUE" || rid=="ERN" {
+                if rid == "NAT" {
+                    rid = "CAN"
+                }
+                if rid == "CAN" || rid == "PAC" || rid == "WRN" || rid == "ONT" || rid == "QUE" || rid == "ERN" {
                     bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
                 } else {
                     bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(rid, "")
