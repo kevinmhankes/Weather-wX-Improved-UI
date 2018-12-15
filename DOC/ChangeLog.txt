@@ -8,6 +8,7 @@
 // TODO complete URL refactor to move base URL to myApp
 // TODO switch to new extension for UIActionAlert
 // TODO check AWC images in WPCImg
+// TODO remove labels for UITapGestureRecognizerWithData
 
 2018_12_15 53100 [BUG] GOES16
   	         add extension to UIAlertAction

@@ -57,7 +57,9 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             var html = UtilityDownload.getTextProduct(self.product + self.wfo)
             DispatchQueue.main.async {
-                if html=="" {html = "None issused by this office recently."}
+                if html == "" {
+                    html = "None issused by this office recently."
+                }
                 self.textView.text = html
                 self.productButton.title = self.product
                 self.siteButton.title = self.wfo
@@ -77,8 +79,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         wfoProdList.forEach {
             var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in
-                self.productChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction($0, {_ in self.productChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }

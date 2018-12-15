@@ -40,22 +40,15 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let alert = ObjectPopUp(self, "", addButton)
-        alert.addAction(UIAlertAction(title: "Play",
-                                      style: .default, handler: {_ in self.playProduct(selection: sender.data)}))
-        alert.addAction(UIAlertAction(title: "View Text",
-                                      style: .default, handler: {_ in self.viewProduct(selection: sender.data)}))
+        alert.addAction(UIAlertAction("Play", {_ in self.playProduct(selection: sender.data)}))
+        alert.addAction(UIAlertAction("View Text", {_ in self.viewProduct(selection: sender.data)}))
         if sender.data != 0 {
-            alert.addAction(UIAlertAction(title: "Move Up",
-                                          style: .default,
-                                          handler: {_ in self.move(sender.data, .up)}))
+            alert.addAction(UIAlertAction("Move Up", {_ in self.move(sender.data, .up)}))
         }
-        if sender.data != (playlistItems.count-1) {
-            alert.addAction(UIAlertAction(title: "Move Down",
-                                          style: .default,
-                                          handler: {_ in self.move(sender.data, .down)}))
+        if sender.data != (playlistItems.count - 1) {
+            alert.addAction(UIAlertAction("Move Down", {_ in self.move(sender.data, .down)}))
         }
-        alert.addAction(UIAlertAction(title: "Delete",
-                                      style: .default, handler: {_ in self.delete(selection: sender.data)}))
+        alert.addAction(UIAlertAction("Delete", {_ in self.delete(selection: sender.data)}))
         alert.finish()
     }
 
@@ -134,18 +127,14 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func addClicked() {
-        let alert = UIAlertController(title: "Product Selection",
-                                      message: "",
-                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = ObjectPopUp(self, "Product Selection", addButton)
         GlobalArrays.nwsTextProducts.forEach {
             var imageTypeCode = $0.split(":")
             alert.addAction(UIAlertAction(title: $0,
                                           style: .default,
                                           handler: {_ in self.addProduct(imageTypeCode[0])}))
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = addButton}
-        self.present(alert, animated: true, completion: nil)
+        alert.finish()
     }
 
     func addProduct(_ product: String) {
@@ -154,18 +143,12 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func wfotextClicked() {
-        let alert = UIAlertController(title: "Product Selection",
-                                      message: "",
-                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = ObjectPopUp(self, "Product Selection", wfotextButton)
         GlobalArrays.wfos.forEach {
             var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in
-                self.addWfoProduct(imageTypeCode[0])})
-            )
+            alert.addAction(UIAlertAction($0, {_ in self.addWfoProduct(imageTypeCode[0])}))
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = addButton}
-        self.present(alert, animated: true, completion: nil)
+        alert.finish()
     }
 
     func addWfoProduct(_ product: String) {

@@ -58,8 +58,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         let alert = ObjectPopUp(self, "Filter Selection", filterButton)
         eventArrWithCount.forEach {
             var filterType = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: { _ in
-                self.filterChanged(filterType[0])}))
+            alert.addAction(UIAlertAction($0, { _ in self.filterChanged(filterType[0])}))
         }
         alert.finish()
     }

@@ -44,8 +44,8 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityObservations.labels.enumerated().forEach { index, rid in
-            alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.productChanged(index)}))
+        UtilityObservations.labels.enumerated().forEach { index, product in
+            alert.addAction(UIAlertAction(product, {_ in self.productChanged(index)}))
         }
         alert.finish()
     }
