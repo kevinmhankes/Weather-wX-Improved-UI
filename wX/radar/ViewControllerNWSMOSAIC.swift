@@ -53,16 +53,20 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         self.getContent()
     }
 
+    // FIXME
+    // add an init for ObjectPopup that accepts a List and calls finish method when done
+    // refactor code below so that productChanged sends the list item not the index and
+    // the reciever will convert as needed to index
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityUSImgNWSMosaic.labels.enumerated().forEach { i, rid in
-            alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.productChanged(i)}))
-        }
-        alert.finish()
+        let alert = ObjectPopUp(self, "Product Selection", productButton, UtilityUSImgNWSMosaic.labels, self.productChanged(_:))
+        //UtilityUSImgNWSMosaic.labels.forEach { rid in
+        //    alert.addAction(UIAlertAction(rid, {_ in self.productChanged(rid)}))
+        //}
+        //alert.finish()
     }
 
-    func productChanged(_ index: Int) {
-        self.index = index
+    func productChanged(_ product: String) {
+        self.index = UtilityUSImgNWSMosaic.labels.index(of: product)!
         self.getContent()
     }
 

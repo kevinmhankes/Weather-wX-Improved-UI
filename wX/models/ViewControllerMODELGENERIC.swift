@@ -127,7 +127,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func prodClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         modelObj.paramLabelArr.enumerated().forEach { i, product in
-            alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in self.prodChanged(i)}))
+            alert.addAction(UIAlertAction(product, {_ in self.prodChanged(i)}))
         }
         alert.finish()
     }
@@ -138,20 +138,20 @@ class ViewControllerMODELGENERIC: UIwXViewController {
 
     @objc func showProdMenu() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
-        subMenu.objTitles.enumerated().forEach { idx, title in
-            alert.addAction(UIAlertAction(title: title.title, style: .default, handler: {_ in self.showSubMenu(idx)}))
+        subMenu.objTitles.enumerated().forEach { index, title in
+            alert.addAction(UIAlertAction(title.title, {_ in self.showSubMenu(index)}))
         }
         alert.finish()
     }
 
     func showSubMenu(_ index: Int) {
-        let startIdx  = ObjectMenuTitle.getStart(subMenu.objTitles, index)
+        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
         let title = subMenu.objTitles[index].title
         let alert = ObjectPopUp(self, title, productButton)
-        (startIdx..<(startIdx+count)).forEach { idx in
+        (startIdx..<(startIdx + count)).forEach { idx in
             let paramTitle = subMenu.paramLabels[idx]
-            alert.addAction(UIAlertAction(title: paramTitle, style: .default, handler: {_ in self.prodChanged(idx)}))
+            alert.addAction(UIAlertAction(paramTitle, {_ in self.prodChanged(idx)}))
         }
         alert.finish()
     }
@@ -163,7 +163,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Region Selection", sectorButton)
         modelObj.sectorArr.forEach { sector in
-            alert.addAction(UIAlertAction(title: sector, style: .default, handler: {_ in self.sectorChanged(sector)}))
+            alert.addAction(UIAlertAction(sector, {_ in self.sectorChanged(sector)}))
         }
         alert.finish()
     }
@@ -175,8 +175,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
 
     @objc func runClicked() {
         let alert = ObjectPopUp(self, "Run Selection", runButton)
-        modelObj.runTimeData.listRun.forEach { rid in
-            alert.addAction(UIAlertAction(title: rid, style: .default, handler: {_ in self.runChanged(rid)}))
+        modelObj.runTimeData.listRun.forEach { run in
+            alert.addAction(UIAlertAction(run, {_ in self.runChanged(run)}))
         }
         alert.finish()
     }
@@ -189,7 +189,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func modelClicked() {
         let alert = ObjectPopUp(self, "Model Selection", modelButton)
         self.modelObj.modelArr.forEach { model in
-            alert.addAction(UIAlertAction(title: model, style: .default, handler: {_ in self.modelChanged(model)}))
+            alert.addAction(UIAlertAction(model, {_ in self.modelChanged(model)}))
         }
         alert.finish()
     }
@@ -222,7 +222,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func timeClicked() {
         let alert = ObjectPopUp(self, "Time Selection", timeButton)
         modelObj.timeArr.enumerated().forEach { index, time in
-            alert.addAction(UIAlertAction(title: time, style: .default, handler: {_ in self.timeChanged(index)}))
+            alert.addAction(UIAlertAction(time, {_ in self.timeChanged(index)}))
         }
         alert.finish()
     }

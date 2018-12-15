@@ -42,9 +42,7 @@ class ViewControllerNHC: UIwXViewController {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         UtilityNHC.textProducts.forEach {
             let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: imageTypeCode[1],
-                                          style: .default,
-                                          handler: {_ in self.productChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction(imageTypeCode[1], {_ in self.productChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }
@@ -63,9 +61,7 @@ class ViewControllerNHC: UIwXViewController {
     @objc func imageProductClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         UtilityNHC.imageTitles.enumerated().forEach { index, product in
-            alert.addAction(UIAlertAction(title: product,
-                                          style: .default,
-                                          handler: {_ in self.imageProductChanged(UtilityNHC.imageUrls[index])}))
+            alert.addAction(UIAlertAction(product, {_ in self.imageProductChanged(UtilityNHC.imageUrls[index])}))
         }
         alert.finish()
     }

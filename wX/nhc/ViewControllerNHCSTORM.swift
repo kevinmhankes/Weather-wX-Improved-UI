@@ -87,8 +87,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         textProducts.forEach { product in
             let imageTypeCode = product.split(":")
-            alert.addAction(UIAlertAction(title: product, style: .default, handler: {_ in
-                self.productChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction(product, {_ in self.productChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }

@@ -60,8 +60,7 @@ class ViewControllerNHCGOES: UIwXViewController {
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", productButton)
         [10, 20, 30].forEach { count in
-            alert.addAction(UIAlertAction(title: String(count), style: .default, handler: { _ in
-                self.getAnimation(count)}))
+            alert.addAction(UIAlertAction(String(count), { _ in self.getAnimation(count)}))
         }
         alert.finish()
     }
@@ -70,9 +69,7 @@ class ViewControllerNHCGOES: UIwXViewController {
         let alert = ObjectPopUp(self, "Image Type Selection", productButton)
         UtilityNHC.imageType.forEach {
             let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0,
-                                          style: .default,
-                                          handler: {_ in self.imageTypeChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction($0, {_ in self.imageTypeChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }
