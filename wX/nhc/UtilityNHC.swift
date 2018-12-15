@@ -79,11 +79,11 @@ final class UtilityNHC {
         return ObjectNHCStormInfo(title, summary, url, img1, img2, wallet)
     }
 
-    static func getAnimation(_ sector: String, _ prodId: String, _ frameCntStr: String) -> AnimationDrawable {
+    static func getAnimation(_ sector: String, _ prodId: String, _ frameCount: Int) -> AnimationDrawable {
         let baseUrl = "http://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/"
         let urls = UtilityImgAnim.getUrlArray(baseUrl,
                                               "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
-                                              frameCntStr)
+                                              frameCount)
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         let animDrawable = AnimationDrawable()
         bitmaps.forEach {animDrawable.addFrame(Drawable($0), UtilityImg.getAnimInterval())}

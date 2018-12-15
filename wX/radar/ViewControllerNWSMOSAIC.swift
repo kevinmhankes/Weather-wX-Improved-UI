@@ -72,16 +72,17 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-        ["5", "10", "20", "30"].forEach { count in
-            alert.addAction(UIAlertAction(title: count, style: .default, handler: {_ in self.getAnimation(count)}))
+        [5, 10, 20, 30].forEach { count in
+            alert.addAction(UIAlertAction(title: String(count), style: .default, handler: { _ in
+                self.getAnimation(count)}))
         }
         alert.finish()
     }
 
-    func getAnimation(_ frameCnt: String) {
+    func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityUSImgNWSMosaic.getAnimation(UtilityUSImgNWSMosaic.sectors[self.index],
-                                                                        frameCnt)
+                                                                        frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }

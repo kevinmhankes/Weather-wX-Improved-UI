@@ -120,7 +120,7 @@ class UtilityUSImgNWSMosaic {
         return Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif")
     }
 
-    static func getAnimation(_ sector: String, _ numberOfFrames: String) -> AnimationDrawable {
+    static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
         var sectorUrl = ""
         if sector == "latest" {
             sectorUrl = "NAT"

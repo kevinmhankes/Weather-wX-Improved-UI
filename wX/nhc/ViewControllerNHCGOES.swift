@@ -48,9 +48,9 @@ class ViewControllerNHCGOES: UIwXViewController {
         }
     }
 
-    func getAnimation(_ frameCnt: String) {
+    func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityNHC.getAnimation(self.sector, self.imageType, frameCnt)
+            let animDrawable = UtilityNHC.getAnimation(self.sector, self.imageType, frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
@@ -59,8 +59,9 @@ class ViewControllerNHCGOES: UIwXViewController {
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", productButton)
-        ["10", "20", "30"].forEach { cnt in
-            alert.addAction(UIAlertAction(title: cnt, style: .default, handler: {_ in self.getAnimation(cnt)}))
+        [10, 20, 30].forEach { count in
+            alert.addAction(UIAlertAction(title: String(count), style: .default, handler: { _ in
+                self.getAnimation(count)}))
         }
         alert.finish()
     }

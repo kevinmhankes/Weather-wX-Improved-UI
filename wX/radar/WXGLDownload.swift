@@ -27,9 +27,12 @@ final class WXGLDownload {
     func getRidPrefix(_ radarSite: String, _ tdwr: Bool) -> String {
         var ridPrefix = "k"
         switch radarSite {
-        case "JUA": ridPrefix = "t"
-        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA": ridPrefix = "p"
-        default: ridPrefix = "k"
+        case "JUA":
+            ridPrefix = "t"
+        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
+            ridPrefix = "p"
+        default:
+            ridPrefix = "k"
         }
         if tdwr {
             ridPrefix = ""
@@ -40,9 +43,12 @@ final class WXGLDownload {
     func getRidPrefix(_ radarSite: String, _ product: String) -> String {
         var ridPrefix = "k"
         switch radarSite {
-        case "JUA": ridPrefix = "t"
-        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA": ridPrefix = "p"
-        default: ridPrefix = "k"
+        case "JUA":
+            ridPrefix = "t"
+        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
+            ridPrefix = "p"
+        default:
+            ridPrefix = "k"
         }
         if product=="TV0" || product=="TZL" {
             ridPrefix = ""
