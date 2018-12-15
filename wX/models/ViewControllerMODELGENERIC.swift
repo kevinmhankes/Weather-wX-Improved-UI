@@ -102,7 +102,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                         )
                     }
                 }
-                if self.modelObj.timeIdx>=self.modelObj.timeArr.count {
+                if self.modelObj.timeIdx >= self.modelObj.timeArr.count {
                     self.modelObj.setTimeIdx(self.modelObj.timeArr.count - 1)
                 }
                 self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.timeArr, self.modelObj.timeIdx)
@@ -118,7 +118,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 if self.firstRun {
                     self.image.setBitmap(bitmap)
                     self.firstRun = false
-                } else {self.image.updateBitmap(bitmap)}
+                } else {
+                    self.image.updateBitmap(bitmap)
+                }
                 self.modelObj.setPrefs()
             }
         }
@@ -127,7 +129,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func prodClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         modelObj.paramLabelArr.enumerated().forEach { i, product in
-            alert.addAction(UIAlertAction(product, {_ in self.prodChanged(i)}))
+            alert.addAction(UIAlertAction(product, { _ in self.prodChanged(i)}))
         }
         alert.finish()
     }
@@ -139,7 +141,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     @objc func showProdMenu() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title.title, {_ in self.showSubMenu(index)}))
+            alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
         }
         alert.finish()
     }
@@ -151,7 +153,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         let alert = ObjectPopUp(self, title, productButton)
         (startIdx..<(startIdx + count)).forEach { idx in
             let paramTitle = subMenu.paramLabels[idx]
-            alert.addAction(UIAlertAction(paramTitle, {_ in self.prodChanged(idx)}))
+            alert.addAction(UIAlertAction(paramTitle, { _ in self.prodChanged(idx)}))
         }
         alert.finish()
     }
@@ -161,11 +163,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     //
 
     @objc func sectorClicked() {
-        let alert = ObjectPopUp(self, "Region Selection", sectorButton)
-        modelObj.sectorArr.forEach { sector in
-            alert.addAction(UIAlertAction(sector, {_ in self.sectorChanged(sector)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Region Selection", sectorButton, modelObj.sectorArr, self.sectorChanged(_:))
     }
 
     func sectorChanged(_ sector: String) {
@@ -174,11 +172,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     @objc func runClicked() {
-        let alert = ObjectPopUp(self, "Run Selection", runButton)
-        modelObj.runTimeData.listRun.forEach { run in
-            alert.addAction(UIAlertAction(run, {_ in self.runChanged(run)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Run Selection", runButton, modelObj.runTimeData.listRun, self.runChanged(_:))
     }
 
     func runChanged(_ run: String) {
@@ -187,11 +181,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     @objc func modelClicked() {
-        let alert = ObjectPopUp(self, "Model Selection", modelButton)
-        self.modelObj.modelArr.forEach { model in
-            alert.addAction(UIAlertAction(model, {_ in self.modelChanged(model)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Model Selection", modelButton, self.modelObj.modelArr, self.modelChanged(_:))
     }
 
     func modelChanged(_ model: String) {

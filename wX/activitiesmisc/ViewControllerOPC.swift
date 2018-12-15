@@ -35,6 +35,7 @@ class ViewControllerOPC: UIwXViewController {
         }
     }
 
+    // FIXME create a better framework to handle name/index pair
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
         UtilityOPCImages.labels.enumerated().forEach { index, product in
