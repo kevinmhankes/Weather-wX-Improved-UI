@@ -6,8 +6,13 @@
 // TODO BIG look for way to save x/y/zoom of images
 // TODO look at animation menus ( such as radar ) and convert to Int as native type
 // TODO complete URL refactor to move base URL to myApp
-// TODO create wrapper class for UIAlertAction
+// TODO switch to new extension for UIActionAlert
+// TODO check AWC images in WPCImg
 
+2018_12_15 53100 [BUG] GOES16
+  	         add extension to UIAlertAction
+		 change toolbar text color from light gray to white
+		 disable img posn save/restore in goes16
 2018_12_09 53000 integrate for testing: https://github.com/eldade/PageAlignedArray (code was removed, to slow to allocate mem in testing)
 2018_12_01 52800 code cleanup and continued metal radar dev
 2018_12_01 51100 metal: add autorefresh and center on double tap zoom

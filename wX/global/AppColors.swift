@@ -11,7 +11,8 @@ class AppColors {
     static var primaryColorRed = CGFloat(46.0/255.0)
     static var primaryColorGreen = CGFloat(63.0/255.0)
     static var primaryColorBlue = CGFloat(89.0/255.0)
-    static var toolbarTextColor = UIColor.lightGray
+    //static var toolbarTextColor = UIColor.lightGray
+    static var toolbarTextColor = UIColor.white
     static var primaryColorUIColor = UIColor(red: primaryColorRed,
                                              green: primaryColorGreen,
                                              blue: primaryColorBlue,
@@ -26,7 +27,7 @@ class AppColors {
             primaryColorRed = CGFloat(30.0 / 255.0)
             primaryColorGreen = CGFloat(30.0 / 255.0)
             primaryColorBlue = CGFloat(30.0 / 255.0)
-            toolbarTextColor = UIColor.lightGray
+            //toolbarTextColor = UIColor.lightGray
             primaryColorUIColor =  UIColor(red: primaryColorRed,
                                            green: primaryColorGreen,
                                            blue: primaryColorBlue,
@@ -37,7 +38,7 @@ class AppColors {
             primaryColorRed = CGFloat(0.0 / 255.0)
             primaryColorGreen = CGFloat(71.0 / 255.0)
             primaryColorBlue = CGFloat(6.0 / 255.0)
-            toolbarTextColor = UIColor.lightGray
+            //toolbarTextColor = UIColor.lightGray
             primaryColorUIColor =  UIColor(red: primaryColorRed,
                                            green: primaryColorGreen,
                                            blue: primaryColorBlue,
@@ -48,7 +49,7 @@ class AppColors {
             primaryColorRed = CGFloat(46.0 / 255.0)
             primaryColorGreen = CGFloat(63.0 / 255.0)
             primaryColorBlue = CGFloat(89.0 / 255.0)
-            toolbarTextColor = UIColor.lightGray
+            //toolbarTextColor = UIColor.lightGray
             primaryColorUIColor =  UIColor(red: primaryColorRed,
                                            green: primaryColorGreen,
                                            blue: primaryColorBlue,
