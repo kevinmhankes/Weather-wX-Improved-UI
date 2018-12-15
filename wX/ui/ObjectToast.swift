@@ -12,7 +12,9 @@ public class ObjectToast {
         let alert = UIAlertController(title: msg, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = menuButton}
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = menuButton
+        }
         uiv.present(alert, animated: true, completion: nil)
     }
 }

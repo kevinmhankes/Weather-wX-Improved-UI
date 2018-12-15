@@ -15,10 +15,10 @@ final class ObjectAlertDetail {
         (0...6).forEach {
             let objText = ObjectTextView(stackView, "")
             textViews.append(objText)
-            if $0==4 {
+            if $0 == 4 {
                 textViews[$0].color = UIColor.blue
             }
-            if $0==0 {
+            if $0 == 0 {
                 textViews[$0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize+2)
             }
         }
@@ -27,14 +27,14 @@ final class ObjectAlertDetail {
     func updateContent(_ cap: CAPAlert) {
         let title = cap.title.parse("(.*?) issued")
         var startTime = cap.title.parse("issued (.*?) until")
-        if startTime=="" {
+        if startTime == "" {
             startTime = cap.title.parse("issued (.*?) expiring")
         }
-        if startTime=="" {
+        if startTime == "" {
             startTime = cap.title.parse("issued (.*?) by")
         }
         var endTime = cap.title.parse("until (.*?) by")
-        if endTime=="" {
+        if endTime == "" {
             endTime = cap.title.parse("expiring (.*?) by")
         }
         let wfo = cap.title.parse("by (.*?)$")

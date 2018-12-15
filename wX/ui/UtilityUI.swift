@@ -34,7 +34,9 @@ public class UtilityUI {
 
     class func getVersion() -> String {
         var vers = ""
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {vers = version}
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            vers = version
+        }
         return vers
     }
 

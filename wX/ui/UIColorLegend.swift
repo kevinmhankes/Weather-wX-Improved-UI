@@ -84,8 +84,8 @@ final class UIColorLegend: UIView {
         let heightFudge: CGFloat = 15.0
         let screenHeight = self.frame.height
         var scaledHeight = (screenHeight - 2.0 * startHeight)/256.0
-        let scaledHeightText = (screenHeight - 2.0 * startHeight)/(95.0+32.0)
-        let scaledHeightVel = (screenHeight - 2.0 * startHeight)/(127.0*2.0)
+        let scaledHeightText = (screenHeight - 2.0 * startHeight)/(95.0 + 32.0)
+        let scaledHeightVel = (screenHeight - 2.0 * startHeight)/(127.0 * 2.0)
         var unitsDrawn = false
         switch product {
         case "N0Q", "L2REF", "TZL":
@@ -146,7 +146,7 @@ final class UIColorLegend: UIView {
                 }
             }
         case "EET":
-            scaledHeight =  (screenHeight-2.0*startHeight)/70.0
+            scaledHeight = (screenHeight - 2.0 * startHeight) / 70.0
             (0...70).forEach {
                 setColorWithBuffers(prodId: 135, index: 70 - $0)
                 drawRect(widthStarting,
@@ -212,7 +212,7 @@ final class UIColorLegend: UIView {
                          CGFloat($0) * scaledHeight + scaledHeight + startHeight)
             }
             units = " PHAS"
-            for j in ( -2...10 ).reversed() {
+            for j in (-2...10).reversed() {
                 drawText(String(j) + units,
                          widthStarting + width + textFromLegend,
                          (20.0 * scaledHeightVel * (10.0 - CGFloat(j))) + heightFudge + startHeight)
@@ -222,7 +222,7 @@ final class UIColorLegend: UIView {
                 }
             }
         case "H0C":
-            scaledHeight = (screenHeight - 2.0 * startHeight)/160.0
+            scaledHeight = (screenHeight - 2.0 * startHeight) / 160.0
             var labels = ["ND", "BI", "GC", "IC", "DS", "WS", "RA", "HR", "BD", "GR", "HA", "", "", "", "UK", "RF"]
             (0...159).forEach {
                 setColorWithBuffers(prodId: 165, index: 160 - $0)
@@ -234,7 +234,7 @@ final class UIColorLegend: UIView {
             units = ""
             (0...159).reversed().forEach {
                 if $0 % 10 == 0 {
-                    drawText(labels[Int($0/10)] + units,
+                    drawText(labels[Int($0 / 10)] + units,
                              widthStarting + width + textFromLegend,
                              (scaledHeight * (159.0 - CGFloat($0)))  + startHeight)
                     if !unitsDrawn {
@@ -255,7 +255,7 @@ final class UIColorLegend: UIView {
             var j = ActVars.WXOGLDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0/ActVars.WXOGLDspLegendMax)
+                let yVar1 = CGFloat(255.0 / ActVars.WXOGLDspLegendMax)
                     * scaledHeightVel
                     * CGFloat(ActVars.WXOGLDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight
@@ -278,7 +278,7 @@ final class UIColorLegend: UIView {
             var j = ActVars.WXOGLDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0/ActVars.WXOGLDspLegendMax)
+                let yVar1 = CGFloat(255.0 / ActVars.WXOGLDspLegendMax)
                     * scaledHeightVel
                     * CGFloat(ActVars.WXOGLDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight

@@ -17,7 +17,7 @@ final class ObjectMenuTitle {
 	}
 
     static func getStart(_ titles: [ObjectMenuTitle], _ index: Int) -> Int {
-        if index==0 {
+        if index == 0 {
             return 0
         }
         var sum = 0
