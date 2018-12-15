@@ -104,7 +104,7 @@ class ViewControllerGOES16: UIwXViewController {
         let alert = ObjectPopUp(self, "Sector Selection", productButton)
         UtilityGOES16.sectors.forEach {
             let code = $0.firstToken(":")
-            alert.addAction(UIAlertAction(title: $0, style: .default, handler: {_ in self.sectorChanged(code)}))
+            alert.addAction(UIAlertAction($0, {_ in self.sectorChanged(code)}))
         }
         alert.finish()
     }

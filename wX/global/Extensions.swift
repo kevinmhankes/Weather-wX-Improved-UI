@@ -201,3 +201,9 @@ extension Array where Element == String {
         }
     }
 }
+
+extension UIAlertAction {
+    convenience init(_ title: String, _ handler: ((UIAlertAction) -> Void)? = nil) {
+        self.init(title: title, style: .default, handler: handler)
+    }
+}
