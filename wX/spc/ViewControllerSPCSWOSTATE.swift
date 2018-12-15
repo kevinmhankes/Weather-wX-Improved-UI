@@ -38,12 +38,7 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
     }
 
     @objc func stateClicked(sender: ObjectToolbarIcon) {
-        let alert = ObjectPopUp(self, "State Selection", sender)
-        GlobalArrays.states.forEach {
-            let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction($0, {_ in self.stateChanged(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "State Selection", sender, GlobalArrays.states, self.stateChanged(_:))
     }
 
     func stateChanged(_ state: String) {
