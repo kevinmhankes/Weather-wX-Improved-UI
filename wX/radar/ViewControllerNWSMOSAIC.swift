@@ -30,7 +30,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         if ActVars.NWSMOSAICtype=="local" {
             ActVars.NWSMOSAICtype = ""
             isLocal = true
-            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getNwsSectorFromState(getStateFromRid())
+            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(getStateFromRid())
             index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent()
@@ -38,7 +38,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityUSImgNWSMosaic.nwsMosaic(UtilityUSImgNWSMosaic.sectors[self.index])
+            let bitmap = UtilityUSImgNWSMosaic.get(UtilityUSImgNWSMosaic.sectors[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
@@ -80,7 +80,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     func getAnimation(_ frameCnt: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityUSImgNWSMosaic.nwsMosaicAnimation(UtilityUSImgNWSMosaic.sectors[self.index],
+            let animDrawable = UtilityUSImgNWSMosaic.getAnimation(UtilityUSImgNWSMosaic.sectors[self.index],
                                                                         frameCnt)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)

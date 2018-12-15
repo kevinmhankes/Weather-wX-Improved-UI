@@ -22,7 +22,6 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_STI": "Show storm tracks",
         "RADAR_SHOW_HI": "Show Hail index",
         "RADAR_SHOW_TVS": "Show TVS",
-        //"RADAR_HW_ENH": "Use enhanced hw data",
         "RADAR_HW_ENH_EXT": "Hw data, show secondary roads",
         "RADAR_CAMX_BORDERS": "Show CA/MX borders",
         "RADAR_AUTOREFRESH": "Screen on, auto refresh",
@@ -37,41 +36,58 @@ final class UtilitySettingsRadar {
     ]
 
     static let helpStrings = [
-        "Show warnings": "Display warning polygons for tornado, severe thunderstorm, and flash flood. This will cause a periodic task to run in "
+        "Show warnings": "Display warning polygons for tornado, severe thunderstorm, and flash flood."
+            + " This will cause a periodic task to run in "
             + "the background and pull data. Interval can be set under settings -> Notifications." ,
-        "Multi-pane: share lat/lon/zoom": "If in a multi-pane radar mode each pane will share the same zoom lat/lon provided they are using the same radar site.",
-        "Show spotters": "Determines whether storm spotters are shown along with radar. Color and size for storm spotter markers can also be configured.",
+        "Multi-pane: share lat/lon/zoom": "If in a multi-pane radar mode each pane will share the "
+            + "same zoom lat/lon provided they are using the same radar site.",
+        "Show spotters": "Determines whether storm spotters are shown along with radar. "
+            + "Color and size for storm spotter markers can also be configured.",
         "Show spotter labels": "Determines whether storm spotter labels are shown along with radar.",
         "Show observations": "Show nearby observations for the state the currently selected radar is in.",
         "Show windbarbs": "Show nearby windbarbs for the state the currently selected radar is in.",
-        "Location marker follows GPS": "Location dot will use the GPS of your device and will update on every scan as opposed to using the lat/lon "
+        "Location marker follows GPS": "Location dot will use the GPS of your device and will update on "
+            + "every scan as opposed to using the lat/lon "
             + "of youe saved location. If \"Screen on, auto refresh\" is enabled it will update location frequently.",
-        "Show WAT/MCD": "Display SPC Watch or MCD polygons. This will cause a periodic task to run in the background and pull data. Interval can be set under settings -> Notifications.",
+        "Show WAT/MCD": "Display SPC Watch or MCD polygons. This will cause a periodic task to run in the "
+            + "background and pull data. Interval can be set under settings -> Notifications.",
         "Show counties": "Enable counties to be displayed.",
         "Show county labels": "Show centered labels for each county.",
-        "Counties - use hires data": "Use a dataset 4 times larger then the default county dataset: cb_2015_us_county_5m.kml",
-        "States - use hires data": "Use a dataset 9 times larger then the default state dataset: cb_2015_us_state_500k.kml This is useful for those looking for accurate coastlines.",
+        "Counties - use hires data": "Use a dataset 4 times larger then the default "
+            + "county dataset: cb_2015_us_county_5m.kml",
+        "States - use hires data": "Use a dataset 9 times larger then the default state dataset: "
+            + "cb_2015_us_state_500k.kml This is useful for those looking for accurate coastlines.",
         "Show storm tracks": "If enabled the WXOGL radar will show storm tracks ( predicted future path / speed ).",
-        "Show Hail index": "If enabled the WXOGL radar will hail signatures with hail size at or greater then 0.50 inch at 50% or higher probability "
-            + "as show via upside down green triangle. For estimate hail from 1-2 inches 2 markers will be shown and 3 markers for hail from 2-3 inches.",
-        "Show TVS": "If enabled the WXOGL radar will show tornado vortext signature as shown via upside down triangle with color matching tornado warning/watch polygons.",
-        //"Use enhanced hw data": "Show enhanced highway dataset. Dataset is 8x as large. The enhanced data is roughly 3.3MB in size as compared to the 440KB.",
-        "Hw data, show secondary roads": "Show additional roads when zoomed in.This additional dataset is roughly 3.0MB in size.",
-        "Show CA/MX borders": "Determines whether borders for Canada and Mexico should be displayed. Without this setting enabled the state borders "
+        "Show Hail index": "If enabled the WXOGL radar will hail signatures with hail size at or "
+            + "greater then 0.50 inch at 50% or higher probability "
+            + "as show via upside down green triangle. For estimate hail from 1-2 inches 2 markers will be "
+            + "shown and 3 markers for hail from 2-3 inches.",
+        "Show TVS": "If enabled the WXOGL radar will show tornado vortext signature as shown via "
+            + "upside down triangle with color matching tornado warning/watch polygons.",
+        "Hw data, show secondary roads": "Show additional roads when zoomed in.This additional "
+            + "dataset is roughly 3.0MB in size.",
+        "Show CA/MX borders": "Determines whether borders for Canada and Mexico should be displayed."
+            + " Without this setting enabled the state borders "
             + "is roughly 800KB.With this setting enabled the combined borders is roughly 1.5MB.",
-        "Screen on, auto refresh": "If enabled the WXOGL activity will attempt to prevent the screen from turning off and will auto "
-            + "refresh roughly every 3 minutes ( by default ). Interval is configurable. Additionally, the GPS will be queried to show your current location on the radar.",
-        "Remember location": "WXOGL will use the last location and zoom level instead of the radar site for the current location in the main tab.",
+        "Screen on, auto refresh": "If enabled the WXOGL activity will attempt to prevent the "
+            + "screen from turning off and will auto "
+            + "refresh roughly every 3 minutes ( by default ). Interval is configurable. Additionally, "
+            + "the GPS will be queried to show your current location on the radar.",
+        "Remember location": "WXOGL will use the last location and zoom level instead of the "
+            + "radar site for the current location in the main tab.",
         "Show MPD": "Display WPC MPD polygons. This will cause a periodic task to run in the background and pull data.",
         "Show cities": "Display city markers or labels depending on product.",
         "Show highways": "Show highways.",
         "Show lakes and rivers": "Show significant lakes.",
         "Show location marker": "Toggle location ( as in current selected location on first tab ) dot on/off.",
-        "Level 2 - use NWS radar feed": "If enabled, use the direct NWS Level 2 radar data feed instead of the one from Iowa Mesonet.",
+        "Level 2 - use NWS radar feed": "If enabled, use the direct NWS Level 2 radar "
+            + "data feed instead of the one from Iowa Mesonet.",
         "Show colormap legend": "Show a colormap legend in the Nexrad radar viewer",
         "Aviation dot size": "Configure size of the circle at the end of wind barbs if configured. Default is 7.",
-        "Detailed Observations Zoom": "With observations or wind barbs enabled if you zoom in closely on an obs site the detailed METAR will appear."
-            + " This setting controls how close you need to zoom. Lower numbers will show detailed METAR without having to zoom in as far. Default is 7.",
+        "Detailed Observations Zoom": "With observations or wind barbs enabled if you zoom in "
+            + "closely on an obs site the detailed METAR will appear."
+            + " This setting controls how close you need to zoom. Lower numbers will show "
+            + "detailed METAR without having to zoom in as far. Default is 7.",
         "Show Day 1 Conv Otlk": "Show SPC Day 1 Convective Outlook outlines."
     ]
 
@@ -91,7 +107,6 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_STI": "false",
         "RADAR_SHOW_HI": "false",
         "RADAR_SHOW_TVS": "false",
-        //"RADAR_HW_ENH": "true",
         "RADAR_HW_ENH_EXT": "false",
         "RADAR_CAMX_BORDERS": "false",
         "RADAR_AUTOREFRESH": "false",

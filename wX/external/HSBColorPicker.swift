@@ -47,7 +47,9 @@ class HSBColorPicker: UIView {
 
         for y in stride(from: 0, to: rect.height, by: elementSize) {
 
-            var saturation = y < rect.height / 2.0 ? CGFloat(2 * y) / rect.height : 2.0 * CGFloat(rect.height - y) / rect.height
+            var saturation = y < rect.height / 2.0
+                ? CGFloat(2 * y) / rect.height
+                : 2.0 * CGFloat(rect.height - y) / rect.height
             saturation = CGFloat(powf(Float(saturation), y < rect.height / 2.0
                 ? saturationExponentTop
                 : saturationExponentBottom))
@@ -70,7 +72,9 @@ class HSBColorPicker: UIView {
         saturation = CGFloat(powf(Float(saturation), roundedPoint.y < self.bounds.height / 2.0
             ? saturationExponentTop
             : saturationExponentBottom))
-        let brightness = roundedPoint.y < self.bounds.height / 2.0 ? CGFloat(1.0) : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
+        let brightness = roundedPoint.y < self.bounds.height / 2.0
+            ? CGFloat(1.0)
+            : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
         let hue = roundedPoint.x / self.bounds.width
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
     }

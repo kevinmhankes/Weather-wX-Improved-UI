@@ -246,12 +246,14 @@ public class ExternalGeodeticCalculator {
             B = u2 / 1024 * (256 + u2 * (-128 + u2 * (74 - 47 * u2)))
             // eq. 6
             deltasigma = B * sinsigma
-                * (cos2sigmam + B / 4 * (cossigma * (-1 + 2 * cos2sigmam2) - B / 6 * cos2sigmam * (-3 + 4 * sin2sigma) * (-3 + 4 * cos2sigmam2)))
+                * (cos2sigmam + B / 4 * (cossigma * (-1 + 2 * cos2sigmam2)
+                    - B / 6 * cos2sigmam * (-3 + 4 * sin2sigma) * (-3 + 4 * cos2sigmam2)))
 
             // eq. 10
             let C = f / 16 * cos2alpha * (4 + f * (4 - 3 * cos2alpha))
             // eq. 11 (modified)
-            lambda = omega + (1 - C) * f * sinalpha * (sigma + C * sinsigma * (cos2sigmam + C * cossigma * (-1 + 2 * cos2sigmam2)))
+            lambda = omega + (1 - C) * f * sinalpha * (sigma + C * sinsigma
+                * (cos2sigmam + C * cossigma * (-1 + 2 * cos2sigmam2)))
             // see how much improvement we got
             let change = abs((lambda - lambda0) / lambda)
             if (i > 1) && (change < 0.0000000000001) {

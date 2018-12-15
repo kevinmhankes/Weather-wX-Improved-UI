@@ -118,7 +118,9 @@ extension String {
             let nsstr = self as NSString
             let all = NSRange(location: 0, length: nsstr.length)
             var matches = [String]()
-            regex.enumerateMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: all) {(result: NSTextCheckingResult?, _, _) in
+            regex.enumerateMatches(in: self,
+                                   options: NSRegularExpression.MatchingOptions(rawValue: 0),
+                                   range: all) {(result: NSTextCheckingResult?, _, _) in
                 if let r = result {
                     let result = nsstr.substring(with: r.range) as String
                     matches.append(result)

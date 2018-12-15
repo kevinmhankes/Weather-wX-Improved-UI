@@ -46,7 +46,9 @@ extension UITabBarController {
         self.tabBar.addGestureRecognizer(swipeLeftGestureRecognizer)
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(
             target: self,
-            action: cycleThroughTabs ? #selector(handleSwipeRightAllowingCyclingThroughTabs) : #selector(handleSwipeRight)
+            action: cycleThroughTabs
+                ? #selector(handleSwipeRightAllowingCyclingThroughTabs)
+                : #selector(handleSwipeRight)
         )
         swipeRightGestureRecognizer.direction = .right
         self.tabBar.addGestureRecognizer(swipeRightGestureRecognizer)

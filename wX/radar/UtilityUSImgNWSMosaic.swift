@@ -108,20 +108,19 @@ class UtilityUSImgNWSMosaic {
         "CONUS"
         ]
 
-    static func getNwsSectorLabelFromCode(_ code: String) -> String {
+    static func getSectorLabelFromCode(_ code: String) -> String {
         return sectorToLabel[code] ?? ""
     }
 
-    static func getNwsSectorFromState(_ state: String) -> String {
+    static func getSectorFromState(_ state: String) -> String {
         return stateToSector[state] ?? ""
     }
 
-    // FIXME move base URL to myapp
-    static func nwsMosaic(_ sector: String) -> Bitmap {
-        return Bitmap("http://radar.weather.gov/Conus/RadarImg/" + sector + ".gif")
+    static func get(_ sector: String) -> Bitmap {
+        return Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif")
     }
 
-    static func nwsMosaicAnimation(_ sector: String, _ numberOfFrames: String) -> AnimationDrawable {
+    static func getAnimation(_ sector: String, _ numberOfFrames: String) -> AnimationDrawable {
         var sectorUrl = ""
         if sector == "latest" {
             sectorUrl = "NAT"
@@ -132,9 +131,9 @@ class UtilityUSImgNWSMosaic {
         if sectorUrl == "alaska" {
             sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
         }
-        let urls = UtilityImgAnim.getUrlArray("http://radar.weather.gov/ridge/Conus/RadarImg/",
+        let urls = UtilityImgAnim.getUrlArray(MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
                                               sPattern, numberOfFrames)
-        let baseUrl = "http://radar.weather.gov/ridge/Conus/RadarImg/"
+        let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }

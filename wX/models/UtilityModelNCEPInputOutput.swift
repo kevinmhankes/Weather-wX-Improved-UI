@@ -17,7 +17,8 @@ final class UtilityModelNCEPInputOutput {
         let html = url.getHtml().parse(ncepPattern2).replaceAll("UTC selected_cell", "Z")
         var runCompletionDataStr = html.replaceAll("Z", " UTC")
         if runCompletionDataStr != "" {runCompletionDataStr = UtilityString.insert(runCompletionDataStr, 8, " ")}
-        var runCompletionUrl = "http://mag.ncep.noaa.gov/model-guidance-model-parameter.php?group=Model%20Guidance&model="
+        var runCompletionUrl = "http://mag.ncep.noaa.gov/model-guidance-model-parameter.php"
+            + "?group=Model%20Guidance&model="
             + om.model.uppercased()
         runCompletionUrl += "&area=" + om.sector.lowercased()
         runCompletionUrl += "&cycle=" + String(runCompletionDataStr)

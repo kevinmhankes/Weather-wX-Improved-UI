@@ -289,11 +289,14 @@ final class UtilityCanada {
             .replaceAll("\\s+", "")
             .replace(" miles", "mi")
         let temp = html
-            .parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+            .parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>"
+                + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
         let relativeHumdity = html
-            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>.*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>"
+                + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
         let dew = html
-            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>.*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
+            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>"
+                + ".*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
         let wind = html
             .parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
         return temp
@@ -316,7 +319,8 @@ final class UtilityCanada {
 
     static func get7Day(_ html: String) -> String {
         let resultList = html
-            .parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary type=\"html\">(.*?\\.) Forecast.*?</summary>")
+            .parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary "
+                + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
         var tmpStr = ""
         var sb2 = ""
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
@@ -367,12 +371,14 @@ final class UtilityCanada {
             }
         }
         warningData = warningData
-            .replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM feed.> <a href=./rss/battleboard/.*?.>ATOM</a></li>", "")
+            .replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM"
+                + " feed.> <a href=./rss/battleboard/.*?.>ATOM</a></li>", "")
         warningData = warningData
             .replace(" <div class=\"col-xs-12\">", "")
             .replace("<section class=\"followus hidden-print\"><h2>Follow:</h2>", "")
         warningData = warningData
-            .replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
+            .replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/"
+                + "feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
         return warningData.replace("<div class=\"row\">", "")
     }
 

@@ -152,7 +152,9 @@ public struct Solar {
         let cosDec = cos(asin(sinDec))
 
         // Calculate the Sun's local hour angle
-        let cosH = (cos(zenith.rawValue.degreesToRadians) - (sinDec * sin(coordinate.latitude.degreesToRadians))) / (cosDec * cos(coordinate.latitude.degreesToRadians))
+        let cosH = (cos(zenith.rawValue.degreesToRadians)
+            - (sinDec * sin(coordinate.latitude.degreesToRadians)))
+            / (cosDec * cos(coordinate.latitude.degreesToRadians))
 
         // No sunrise
         guard cosH < 1 else {

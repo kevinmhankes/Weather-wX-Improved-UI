@@ -94,9 +94,12 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                     self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
                         self.modelObj.setTimeArr(idx,
                                                  timeStr.split(" ")[0] + " "
-                                                    + UtilityModels.convertTimeRuntoTimeString(self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
-                                                                                               timeStr.split(" ")[0],
-                                                                                               false))
+                                                    + UtilityModels.convertTimeRuntoTimeString(
+                                                        self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                                                        timeStr.split(" ")[0],
+                                                        false
+                            )
+                        )
                     }
                 }
                 if self.modelObj.timeIdx>=self.modelObj.timeArr.count {
@@ -236,9 +239,12 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 self.modelObj.setTimeArr(idx,
                                          timeStr.split(" ")[0]
                                             + " "
-                                            + UtilityModels.convertTimeRuntoTimeString(self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
-                                                                                       timeStr.split(" ")[0],
-                                                                                       false))
+                                            + UtilityModels.convertTimeRuntoTimeString(
+                                                self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                                                timeStr.split(" ")[0],
+                                                false
+                    )
+                )
             }
         }
         self.getContent()
@@ -249,8 +255,12 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        if sender.direction == .left {rightClicked()}
-        if sender.direction == .right {leftClicked()}
+        if sender.direction == .left {
+            rightClicked()
+        }
+        if sender.direction == .right {
+            leftClicked()
+        }
     }
 
     @objc func getAnimation() {

@@ -30,7 +30,10 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
                 x: 0,
                 y: toolbar.frame.size.height + UIPreferences.statusBarHeight,
                 width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - toolbar.frame.size.height * 2 - colorBarSize - UIPreferences.statusBarHeight
+                height: UIScreen.main.bounds.height
+                    - toolbar.frame.size.height * 2
+                    - colorBarSize
+                    - UIPreferences.statusBarHeight
             )
         )
         colPicker.delegate = self

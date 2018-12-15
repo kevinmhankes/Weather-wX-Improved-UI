@@ -9,7 +9,8 @@ import UIKit
 final class UtilityModelsSPCSREFInputOutput {
 
     static let srefPattern2 = "([0-9]{10}z</a>&nbsp in through <b>f[0-9]{3})"
-    static let srefPattern3 = "<tr><td class=.previous.><a href=sref.php\\?run=[0-9]{10}&id=SREF_H5__>([0-9]{10}z)</a></td></tr>"
+    static let srefPattern3 = "<tr><td class=.previous.><a href=sref.php\\?run="
+        + "[0-9]{10}&id=SREF_H5__>([0-9]{10}z)</a></td></tr>"
 
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()

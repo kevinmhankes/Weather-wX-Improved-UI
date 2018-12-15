@@ -165,7 +165,8 @@ final class UtilityDownload {
         text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
         text = text
-            .replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\"><u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
+            .replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">"
+                + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
         if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {
             text = text.removeLineBreaks()

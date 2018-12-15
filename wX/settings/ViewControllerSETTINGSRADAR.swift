@@ -7,7 +7,8 @@
 import UIKit
 import CoreLocation
 
-class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate,
+UIPickerViewDataSource, CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
 

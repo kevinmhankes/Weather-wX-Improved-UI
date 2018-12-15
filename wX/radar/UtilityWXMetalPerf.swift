@@ -44,12 +44,12 @@ class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var angleNext = 0.0
         var angle0 = 0.0
-        // FIXME add var for 360
-        (0..<360).forEach { radial in
+        let numberOfRadials = 360
+        (0..<numberOfRadials).forEach { radial in
             numberOfRleHalfwords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
             dis2.skipBytes(2)
-            if radial < 359 {
+            if radial < numberOfRadials - 1 {
                 dis2.mark(dis2.position)
                 dis2.skipBytes(Int(numberOfRleHalfwords) + 2)
                 angleNext = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
@@ -58,15 +58,19 @@ class UtilityWXMetalPerf {
             level = 0
             levelCount = 0
             binStart = radarBuffers.rd.binSize
-            if radial == 0 {angle0 = angle}
-            if radial < 359 {
+            if radial == 0 {
+                angle0 = angle
+            }
+            if radial < numberOfRadials - 1 {
                 angleV = angleNext
             } else {
                 angleV = angle0
             }
             (0..<numberOfRleHalfwords).forEach { bin in
                 curLevel = dis2.get()
-                if bin==0 {level = curLevel}
+                if bin == 0 {
+                    level = curLevel
+                }
                 if curLevel == level {
                     levelCount += 1
                 } else {
@@ -140,7 +144,7 @@ class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var radarBlackHole = 0.0
         var radarBlackHoleAdd = 0.0
-        if radarBuffers.rd.productCode==56 || radarBuffers.rd.productCode==19 {
+        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 {
             radarBlackHole = 1.0
             radarBlackHoleAdd = 0.0
         } else {
