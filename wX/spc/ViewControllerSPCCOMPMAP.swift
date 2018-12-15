@@ -48,14 +48,13 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
             if index > 0 && layers.contains(UtilitySPCCompmap.urlIndices[UtilitySPCCompmap.labels.index(of: rid)!]) {
                 pre = "(on) "
             }
-            alert.addAction(UIAlertAction(title: pre + rid, style: .default, handler: {_ in
-                self.productChanged(index)}))
+            alert.addAction(UIAlertAction(pre + rid, { _ in self.productChanged(index)}))
         }
         alert.finish()
     }
 
     func productChanged(_ product: Int) {
-        if product==0 {
+        if product == 0 {
             layers = []
             self.getContent()
             return

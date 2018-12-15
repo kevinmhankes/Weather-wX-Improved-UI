@@ -71,7 +71,7 @@ class ViewControllerSPCMESO: UIwXViewController {
             DispatchQueue.main.async {
                 if self.firstRun {
                     self.image.setBitmap(bitmap)
-                    UtilityImg.imgRestorePosnZoom(self.image.img, self)
+                    //UtilityImg.imgRestorePosnZoom(self.image.img, self)
                     self.firstRun = false
                 } else {
                     self.image.updateBitmap(bitmap)
@@ -127,9 +127,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         }
         let alert = ObjectPopUp(self, "Product Selection", sender)
         paramArray.keys.sorted().forEach { productCode in
-            alert.addAction(UIAlertAction(title: paramArray[productCode],
-                                          style: .default,
-                                          handler: {_ in self.productChanged(productCode)}))
+            alert.addAction(UIAlertAction(paramArray[productCode]!, {_ in self.productChanged(productCode)}))
         }
         alert.finish()
     }
@@ -138,10 +136,10 @@ class ViewControllerSPCMESO: UIwXViewController {
         let alert = ObjectPopUp(self, "Toggle Layers", layerButton)
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
             var pre = ""
-            if isLayerSelected(layer) {pre = "(on) "}
-            alert.addAction(UIAlertAction(title: pre + layer,
-                                          style: .default,
-                                          handler: {_ in self.layerChanged(layer)}))
+            if isLayerSelected(layer) {
+                pre = "(on) "
+            }
+            alert.addAction(UIAlertAction(pre + layer, { _ in self.layerChanged(layer)}))
         }
         alert.finish()
     }
@@ -180,15 +178,15 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     @objc func animateClicked() {
         let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-        ["6", "12", "18"].forEach { count in
-            alert.addAction(UIAlertAction(title: count, style: .default, handler: {_ in self.getAnimation(count)}))
+        [6, 12, 18].forEach { count in
+            alert.addAction(UIAlertAction(count, { _ in self.getAnimation(count)}))
         }
         alert.finish()
     }
 
-    func getAnimation(_ frameCnt: String) {
+    func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilitySPCMESOInputOutput.getAnimation(self.sector, self.product, frameCnt)
+            let animDrawable = UtilitySPCMESOInputOutput.getAnimation(self.sector, self.product, frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
@@ -198,7 +196,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     @objc func showProductMenu() {
         let alert = ObjectPopUp(self, "Product Selection", paramButton)
         subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title: title.title, style: .default, handler: {_ in self.showSubMenu(index)}))
+            alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
         }
         alert.finish()
     }
