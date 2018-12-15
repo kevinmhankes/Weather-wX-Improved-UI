@@ -202,14 +202,14 @@ class ViewControllerSPCMESO: UIwXViewController {
     }
 
     func showSubMenu(_ index: Int) {
-        let startIdx  = ObjectMenuTitle.getStart(subMenu.objTitles, index)
+        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
         let title = subMenu.objTitles[index].title
         let alert = ObjectPopUp(self, title, paramButton)
-        (startIdx..<(startIdx+count)).forEach { index in
+        (startIdx..<(startIdx + count)).forEach { index in
             let ii = subMenu.params[index]
             let paramTitle = subMenu.paramLabels[index]
-            alert.addAction(UIAlertAction(title: paramTitle, style: .default, handler: {_ in self.productChanged(ii)}))
+            alert.addAction(UIAlertAction(paramTitle, {_ in self.productChanged(ii)}))
         }
         alert.finish()
     }

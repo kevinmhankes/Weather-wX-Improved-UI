@@ -41,9 +41,7 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
         let alert = ObjectPopUp(self, "State Selection", sender)
         GlobalArrays.states.forEach {
             let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0,
-                                          style: .default,
-                                          handler: {_ in self.stateChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction($0, {_ in self.stateChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }
