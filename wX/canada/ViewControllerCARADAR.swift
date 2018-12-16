@@ -37,6 +37,7 @@ class ViewControllerCARADAR: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = preferences.getString("CA_LAST_RID_URL", url)
+        // FIXME this doesn't seem to be working, in radar if select mosaic does not show on next start
         if ActVars.CARADARprov == "" {
             rid = preferences.getString("CA_LAST_RID", rid)
         } else {
@@ -78,14 +79,10 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Site Selection", productButton)
-        UtilityCanadaImg.caRids.enumerated().forEach { index, rid in
-            alert.addAction(UIAlertAction(rid, {_ in self.productChanged(prod: index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.caRids, self.productChanged(_:))
     }
 
-    func productChanged(prod: Int) {
+    func productChanged(_ prod: Int) {
         ActVars.CARADARimgType = "radar"
         rid = UtilityCanadaImg.caRids[prod].split(":")[0]
         self.getContent()
@@ -118,11 +115,7 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     @objc func cloudClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", cloudButton)
-        UtilityCanadaImg.names.enumerated().forEach { index, rid in
-            alert.addAction(UIAlertAction(rid, {_ in self.cloudChanged(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", cloudButton, UtilityCanadaImg.names, self.cloudChanged(_:))
     }
 
     func cloudChanged(_ prod: Int) {

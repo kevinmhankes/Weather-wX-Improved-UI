@@ -127,14 +127,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func addClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", addButton)
-        GlobalArrays.nwsTextProducts.forEach {
-            var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(title: $0,
-                                          style: .default,
-                                          handler: {_ in self.addProduct(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", addButton, GlobalArrays.nwsTextProducts, self.addProduct(_:))
     }
 
     func addProduct(_ product: String) {
@@ -143,12 +136,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func wfotextClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", wfotextButton)
-        GlobalArrays.wfos.forEach {
-            var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction($0, {_ in self.addWfoProduct(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", wfotextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
 
     func addWfoProduct(_ product: String) {

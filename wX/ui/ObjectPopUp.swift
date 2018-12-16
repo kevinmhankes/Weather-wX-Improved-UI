@@ -44,13 +44,9 @@ final class ObjectPopUp {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         self.button = button
         self.uiv = uiv
-        list.forEach { item in
-            var code = item
-            if item.contains(":") {
-                code = item.firstToken(":")
-            }
-            let index = list.index(of: code)!
-            addAction(UIAlertAction(item, {_ in fn(index)}))
+        list.forEach {
+            let index = list.index(of: $0)!
+            addAction(UIAlertAction($0, {_ in fn(index)}))
         }
         finish()
     }
