@@ -79,6 +79,20 @@ final class ObjectPopUp {
         finish()
     }
 
+    init(_ uiv: UIViewController,
+         _ title: String,
+         _ button: UIBarButtonItem,
+         _ list: [ObjectMenuTitle],
+         _ fn: @escaping (Int) -> Void) {
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.button = button
+        self.uiv = uiv
+        list.enumerated().forEach { index, title in
+            addAction(UIAlertAction(title.title, {_ in fn(index)}))
+        }
+        finish()
+    }
+
     func addAction(_ action: UIAlertAction) {
         alert.addAction(action)
     }

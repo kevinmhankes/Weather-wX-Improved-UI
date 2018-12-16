@@ -52,11 +52,11 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityNWSGOESFullDisk.labels, self.productChanged(_:))
-        //UtilityNWSGOESFullDisk.LABELS.enumerated().forEach { index, product in
-        //    alert.addAction(UIAlertAction(product, {_ in self.productChanged(index)}))
-        //}
-        //alert.finish()
+        _ = ObjectPopUp(self,
+                        "Product Selection",
+                        productButton,
+                        UtilityNWSGOESFullDisk.labels,
+                        self.productChanged(_:))
     }
 
     func productChanged(_ prod: Int) {

@@ -56,13 +56,8 @@ class ViewControllerWPCTEXT: UIwXViewController {
         }
     }
 
-    // FIXME
     @objc func showProductMenu() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title.title, {_ in self.showSubMenu(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 
     func showSubMenu(_ index: Int) {

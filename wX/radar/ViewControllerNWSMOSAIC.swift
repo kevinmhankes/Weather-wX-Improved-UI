@@ -58,11 +58,8 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
                         "Product Selection",
                         productButton,
                         UtilityUSImgNWSMosaic.labels,
-                        self.productChanged(_:))
-        //UtilityUSImgNWSMosaic.labels.forEach { rid in
-        //    alert.addAction(UIAlertAction(rid, {_ in self.productChanged(rid)}))
-        //}
-        //alert.finish()
+                        self.productChanged(_:)
+        )
     }
 
     func productChanged(_ product: String) {
@@ -75,12 +72,12 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-        [5, 10, 20, 30].forEach { count in
-            alert.addAction(UIAlertAction(title: String(count), style: .default, handler: { _ in
-                self.getAnimation(count)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self,
+                        "Select number of animation frames:",
+                        animateButton,
+                        [5, 10, 20, 30],
+                        self.getAnimation(_:)
+        )
     }
 
     func getAnimation(_ frameCount: Int) {

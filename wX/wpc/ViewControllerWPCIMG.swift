@@ -42,13 +42,10 @@ class ViewControllerWPCIMG: UIwXViewController {
     }
 
     @objc func showProdMenu() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title.title, {_ in self.showSubMenu(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 
+    // FIXME move to ObjectPopUp
     func showSubMenu(_ index: Int) {
         let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count

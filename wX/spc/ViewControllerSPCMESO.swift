@@ -96,9 +96,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Sector Selection", sectorButton)
         UtilitySPCMESO.sectorMap.keys.forEach { sector in
-            alert.addAction(UIAlertAction(title: UtilitySPCMESO.sectorMap[sector],
-                                          style: .default,
-                                          handler: {_ in self.sectorChanged(sector)}))
+            alert.addAction(UIAlertAction(UtilitySPCMESO.sectorMap[sector]!, {_ in self.sectorChanged(sector)}))
         }
         alert.finish()
     }
@@ -190,15 +188,15 @@ class ViewControllerSPCMESO: UIwXViewController {
         }
     }
 
-    // FIXME
     @objc func showProductMenu() {
-        let alert = ObjectPopUp(self, "Product Selection", paramButton)
-        subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", paramButton, subMenu.objTitles, self.showSubMenu(_:))
+        //subMenu.objTitles.enumerated().forEach { index, title in
+        //    alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
+        //}
+        //alert.finish()
     }
 
+    // FIXME
     func showSubMenu(_ index: Int) {
         let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
