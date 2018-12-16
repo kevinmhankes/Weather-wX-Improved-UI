@@ -11,7 +11,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
-    var url = ""
+    //var url = ""
     let prefToken = "SFC_OBS_IMG"
     let prefTokenIdx = "SFC_OBS_IMG_IDX"
 
@@ -25,34 +25,30 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        self.url = preferences.getString(prefToken, UtilityObservations.urls[0])
+        //self.url = preferences.getString(prefToken, UtilityObservations.urls[0])
         self.index = preferences.getInt(prefTokenIdx, 0)
         self.getContent()
     }
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(self.url)
+            let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 self.productButton.title = UtilityObservations.labels[self.index]
-                editor.putString(self.prefToken, self.url)
+                //editor.putString(self.prefToken, self.url)
                 editor.putInt(self.prefTokenIdx, self.index)
             }
         }
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityObservations.labels.enumerated().forEach { index, product in
-            alert.addAction(UIAlertAction(product, {_ in self.productChanged(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.productChanged(_:))
     }
 
     func productChanged(_ index: Int) {
         self.index = index
-        self.url = UtilityObservations.urls[index]
+        //self.url = UtilityObservations.urls[index]
         self.getContent()
     }
 
@@ -62,7 +58,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         index = UtilityUI.sideSwipe(sender, index, UtilityObservations.urls)
-        self.url = UtilityObservations.urls[index]
+        //self.url = UtilityObservations.urls[index]
         getContent()
     }
 }

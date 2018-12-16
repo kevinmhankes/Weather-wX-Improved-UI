@@ -82,9 +82,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
             self.modelObj.getRunStatus()
             DispatchQueue.main.async {
                 self.modelObj.setRun(self.modelObj.runTimeData.mostRecentRun)
-                if ActVars.modelActivitySelected=="SPCHRRR"
-                    || ActVars.modelActivitySelected=="SPCSREF"
-                    || ActVars.modelActivitySelected=="SPCHREF" {
+                if ActVars.modelActivitySelected == "SPCHRRR"
+                    || ActVars.modelActivitySelected == "SPCSREF"
+                    || ActVars.modelActivitySelected == "SPCHREF" {
                     self.modelObj.timeArr = UtilityModels.updateTime(UtilityString.getLastXChars(self.modelObj.run, 2),
                                                                      self.modelObj.run,
                                                                      self.modelObj.timeArr,

@@ -35,6 +35,25 @@ final class ObjectPopUp {
         }
         finish()
     }
+    
+    init(_ uiv: UIViewController,
+         _ title: String,
+         _ button: UIBarButtonItem,
+         _ list: [String],
+         _ fn: @escaping (Int) -> Void) {
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.button = button
+        self.uiv = uiv
+        list.forEach { item in
+            var code = item
+            if item.contains(":") {
+                code = item.firstToken(":")
+            }
+            let index = list.index(of: code)!
+            addAction(UIAlertAction(item, {_ in fn(index)}))
+        }
+        finish()
+    }
 
     func addAction(_ action: UIAlertAction) {
         alert.addAction(action)
