@@ -28,7 +28,9 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CAPAlert(url: ActVars.usalertsDetailUrl)
-            DispatchQueue.main.async {self.objAlertDetail.updateContent(self.cap)}
+            DispatchQueue.main.async {
+                self.objAlertDetail.updateContent(self.cap)
+            }
         }
     }
 

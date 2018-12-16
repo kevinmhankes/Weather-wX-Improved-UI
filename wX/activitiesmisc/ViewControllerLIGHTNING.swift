@@ -60,18 +60,10 @@ class ViewControllerLIGHTNING: UIwXViewController {
 
     @objc func prodClicked() {
         _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectorList, self.sectorChanged(_:))
-        //UtilityLightning.sectorList.enumerated().forEach { index, sector in
-        //    alert.addAction(UIAlertAction(sector, {_ in self.sectorChanged(index)}))
-        //}
-        //alert.finish()
     }
 
     @objc func timeClicked() {
         _ = ObjectPopUp(self, "Time Selection", timeButton, UtilityLightning.timeList, self.timeChanged(_:))
-        //UtilityLightning.timeList.enumerated().forEach { index, time in
-        //    alert.addAction(UIAlertAction(time, {_ in self.timeChanged(index)}))
-        //}
-        //alert.finish()
     }
 
     func sectorChanged(_ idx: Int) {

@@ -45,11 +45,12 @@ class ViewControllerWEBVIEW: UIwXViewController {
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        (GlobalArrays.states + UtilityCanada.provCodes).forEach { sector in
-            alert.addAction(UIAlertAction(sector, {_ in self.productChanged(sector)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self,
+                        "Product Selection",
+                        productButton,
+                        GlobalArrays.states + UtilityCanada.provCodes,
+                        self.productChanged(_:)
+        )
     }
 
     func productChanged(_ stateCodeCurrent: String) {

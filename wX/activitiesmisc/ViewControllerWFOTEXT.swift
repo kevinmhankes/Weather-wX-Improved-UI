@@ -76,12 +76,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        wfoProdList.forEach {
-            var imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction($0, {_ in self.productChanged(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, wfoProdList, self.productChanged(_:))
     }
 
     func productChanged(_ product: String) {

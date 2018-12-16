@@ -57,11 +57,6 @@ final class UtilityLightning {
         case "south_america":       sectorPretty = "South America"
         case "australia_big":       sectorPretty = "Australia"
         case "new_zealand_big":     sectorPretty = "New Zealand"
-        case "goes16_conus":        sectorPretty = "GOES-16 CONUS (Experimental)"
-        case "goes16_fulldisk":     sectorPretty = "GOES-16 FULLDISK (Experimental)"
-        case "goes16_seus":         sectorPretty = "GOES-16 SEUS (Experimental)"
-        case "goes16_carib":        sectorPretty = "GOES-16 CARIB (Experimental)"
-        case "goes16_southamer":    sectorPretty = "GOES-16 SOUTHAMER (Experimental)"
         default: sectorPretty = ""
         }
         return sectorPretty
@@ -78,16 +73,12 @@ final class UtilityLightning {
         case "South America":                       sector = "south_america"
         case "Australia":                           sector = "australia_big"
         case "New Zealand":                         sector = "new_zealand_big"
-        case "GOES-16 CONUS (Experimental)":        sector = "goes16_conus"
-        case "GOES-16 FULLDISK (Experimental)":     sector = "goes16_fulldisk"
-        case "GOES-16 SEUS (Experimental)":         sector = "goes16_seus"
-        case "GOES-16 CARIB (Experimental)":        sector = "goes16_carib"
-        case "GOES-16 SOUTHAMER (Experimental)":    sector = "goes16_southamer"
         default: sector = ""
         }
         return sector
     }
 
+    // FIXME obsolete this and above with a list of short time codes
     static func getTimePretty(_ period: String) -> String {
         let periodPretty: String
         switch period {
