@@ -18,7 +18,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     var firstRun = true
     var subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.titles,
                                  UtilityModelSPCHREFInterface.params,
-                                 UtilityModelSPCHREFInterface.labels)
+                                 UtilityModelSPCHREFInterface.labels
+    )
     var modelObj = ObjectModel()
 
     override func viewDidLoad() {
@@ -133,15 +134,11 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     //
     // Submenu code
     //
-
     @objc func showProdMenu() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        subMenu.objTitles.enumerated().forEach { index, title in
-            alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 
+    // FIXME move to ObjectPopUp
     func showSubMenu(_ index: Int) {
         let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
@@ -207,11 +204,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     @objc func timeClicked() {
-        let alert = ObjectPopUp(self, "Time Selection", timeButton)
-        modelObj.timeArr.enumerated().forEach { index, time in
-            alert.addAction(UIAlertAction(time, {_ in self.timeChanged(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Time Selection", timeButton, modelObj.timeArr, self.timeChanged(_:))
     }
 
     func timeChanged(_ time: Int) {

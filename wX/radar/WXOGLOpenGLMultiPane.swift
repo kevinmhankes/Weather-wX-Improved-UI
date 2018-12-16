@@ -531,12 +531,12 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     @objc func animateClicked() {
         if !inOglAnim {
-            let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-            [5, 10, 20, 30, 40, 50, 60].forEach { count in
-                alert.addAction(UIAlertAction(title: String(count), style: .default, handler: {_ in
-                    self.animateFrameCntClicked(count)}))
-            }
-            alert.finish()
+            _ = ObjectPopUp(self,
+                            "Select number of animation frames:",
+                            animateButton,
+                            [5, 10, 20, 30, 40, 50, 60],
+                            self.animateFrameCntClicked(_:)
+            )
         } else {
             stopAnimate()
         }

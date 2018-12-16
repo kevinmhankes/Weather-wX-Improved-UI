@@ -19,6 +19,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     let mapView = MKMapView()
     var mapShown = false
     var playlistButton = ObjectToolbarIcon()
+    let synth = AVSpeechSynthesizer()
     let wfoProdList = [
         "AFD: Area Forecast Discussion",
         "HWO: Hazardous Weather Outlook",
@@ -68,8 +69,6 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
             }
         }
     }
-
-    let synth = AVSpeechSynthesizer()
 
     @objc func playClicked() {
         UtilityActions.playClicked(textView.view, synth, playButton)

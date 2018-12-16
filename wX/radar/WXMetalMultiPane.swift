@@ -348,6 +348,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
 
+    // FIXME
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
@@ -457,11 +458,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func animateClicked() {
         if !inOglAnim {
-            let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-            [5, 10, 20, 30, 40, 50, 60].forEach { count in
-                alert.addAction(UIAlertAction(String(count), { _ in self.animateFrameCntClicked(count)}))
-            }
-            alert.finish()
+            _ = ObjectPopUp(self,
+                            "Select number of animation frames:",
+                            animateButton,
+                            [5, 10, 20, 30, 40, 50, 60],
+                            self.animateFrameCntClicked(_:)
+            )
         } else {
             stopAnimate()
         }

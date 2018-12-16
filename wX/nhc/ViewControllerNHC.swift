@@ -38,14 +38,13 @@ class ViewControllerNHC: UIwXViewController {
         }
     }
 
-    // FIXME this is non-standard
     @objc func textProductClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", textProductButton)
-        UtilityNHC.textProducts.forEach {
-            let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(imageTypeCode[1], {_ in self.textProductChanged(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self,
+                        "Product Selection",
+                        textProductButton,
+                        UtilityNHC.textProducts,
+                        self.textProductChanged(_:)
+        )
     }
 
     func textProductChanged(_ prod: String) {
