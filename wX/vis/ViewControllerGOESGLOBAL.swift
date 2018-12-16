@@ -29,11 +29,11 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityNWSGOESFullDisk.URLS[self.index])
+            let bitmap = Bitmap(UtilityNWSGOESFullDisk.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityNWSGOESFullDisk.LABELS[self.index]
-                if UtilityNWSGOESFullDisk.URLS[self.index].contains("jma") {
+                self.productButton.title = UtilityNWSGOESFullDisk.labels[self.index]
+                if UtilityNWSGOESFullDisk.urls[self.index].contains("jma") {
                     self.showAnimateButton()
                 } else {
                     self.hideAnimateButton()
@@ -52,11 +52,11 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityNWSGOESFullDisk.LABELS.enumerated().forEach { index, product in
-            alert.addAction(UIAlertAction(product, {_ in self.productChanged(index)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityNWSGOESFullDisk.labels, self.productChanged(_:))
+        //UtilityNWSGOESFullDisk.LABELS.enumerated().forEach { index, product in
+        //    alert.addAction(UIAlertAction(product, {_ in self.productChanged(index)}))
+        //}
+        //alert.finish()
     }
 
     func productChanged(_ prod: Int) {
@@ -69,13 +69,13 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityNWSGOESFullDisk.URLS)
+        index = UtilityUI.sideSwipe(sender, index, UtilityNWSGOESFullDisk.urls)
         getContent()
     }
 
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityNWSGOESFullDisk.getAnimation(url: UtilityNWSGOESFullDisk.URLS[self.index])
+            let animDrawable = UtilityNWSGOESFullDisk.getAnimation(url: UtilityNWSGOESFullDisk.urls[self.index])
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }

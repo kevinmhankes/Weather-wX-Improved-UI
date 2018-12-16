@@ -49,6 +49,20 @@ final class ObjectPopUp {
         }
         finish()
     }
+    
+    init(_ uiv: UIViewController,
+         _ title: String,
+         _ button: UIBarButtonItem,
+         _ list: StrideTo<Int>,
+         _ fn: @escaping (Int) -> Void) {
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.button = button
+        self.uiv = uiv
+        list.forEach { item in
+            addAction(UIAlertAction(String(item), {_ in fn(item)}))
+        }
+        finish()
+    }
 
     init(_ uiv: UIViewController,
          _ title: String,

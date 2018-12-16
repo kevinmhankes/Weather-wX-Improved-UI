@@ -92,6 +92,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         self.getContent()
     }
 
+    // FIXME
     @objc func sectorClicked() {
         let alert = ObjectPopUp(self, "Sector Selection", sectorButton)
         UtilitySPCMESO.sectorMap.keys.forEach { sector in

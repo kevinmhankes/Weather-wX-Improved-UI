@@ -6,7 +6,7 @@
 
 final class UtilityNWSGOESFullDisk {
 
-    static let LABELS = [
+    static let labels = [
         "GOES East Infrared",
         "GOES East Visible",
         "GOES West Infrared",
@@ -25,7 +25,7 @@ final class UtilityNWSGOESFullDisk {
         "Himawari-8 RBTop Infrared, Ch. 4"
         ]
 
-    static let URLS = [
+    static let urls = [
         "http://www.goes.noaa.gov/FULLDISK/GEIR.JPG",
         "http://www.goes.noaa.gov/FULLDISK/GEVS.JPG",
         "http://www.goes.noaa.gov/FULLDISK/GWIR.JPG",
