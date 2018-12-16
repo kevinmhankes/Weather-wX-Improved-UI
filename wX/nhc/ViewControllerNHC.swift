@@ -9,21 +9,21 @@ import UIKit
 class ViewControllerNHC: UIwXViewController {
 
     var textprod = "AFD"
-    var productButton = ObjectToolbarIcon()
+    var textProductButton = ObjectToolbarIcon()
     var imageProductButton = ObjectToolbarIcon()
     var glcfsButton = ObjectToolbarIcon()
     var objNHC: ObjectNHC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
+        textProductButton = ObjectToolbarIcon(title: "Text Prod", self, #selector(textProductClicked))
         imageProductButton = ObjectToolbarIcon(title: "Image Prod", self, #selector(imageProductClicked))
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ObjectToolbarItems([doneButton,
                                             flexBarButton,
                                             glcfsButton,
                                             imageProductButton,
-                                            productButton]).items
+                                            textProductButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         objNHC = ObjectNHC(self, stackView)
         self.getContent()
@@ -38,16 +38,17 @@ class ViewControllerNHC: UIwXViewController {
         }
     }
 
-    @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
+    // FIXME this is non-standard
+    @objc func textProductClicked() {
+        let alert = ObjectPopUp(self, "Product Selection", textProductButton)
         UtilityNHC.textProducts.forEach {
             let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction(imageTypeCode[1], {_ in self.productChanged(imageTypeCode[0])}))
+            alert.addAction(UIAlertAction(imageTypeCode[1], {_ in self.textProductChanged(imageTypeCode[0])}))
         }
         alert.finish()
     }
 
-    func productChanged(_ prod: String) {
+    func textProductChanged(_ prod: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(prod)
             DispatchQueue.main.async {
@@ -58,16 +59,18 @@ class ViewControllerNHC: UIwXViewController {
         }
     }
 
+    // FIXME method should have arg as UIButton so that button can be genericall specified
     @objc func imageProductClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        UtilityNHC.imageTitles.enumerated().forEach { index, product in
-            alert.addAction(UIAlertAction(product, {_ in self.imageProductChanged(UtilityNHC.imageUrls[index])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self,
+                        "Product Selection",
+                        imageProductButton,
+                        UtilityNHC.imageTitles,
+                        self.imageProductChanged(_:)
+        )
     }
 
-    func imageProductChanged(_ url: String) {
-        ActVars.IMAGEVIEWERurl = url
+    func imageProductChanged(_ index: Int) {
+        ActVars.IMAGEVIEWERurl = UtilityNHC.imageUrls[index]
         self.goToVC("imageviewer")
     }
 

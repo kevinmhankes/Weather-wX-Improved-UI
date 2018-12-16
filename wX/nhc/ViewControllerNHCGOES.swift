@@ -22,8 +22,6 @@ class ViewControllerNHCGOES: UIwXViewController {
     var satSector = ""
     var imageType = ""
     var productButton = ObjectToolbarIcon()
-    let mesoImg = Set<String>()
-    let overlayImg = Set<String>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,20 +56,11 @@ class ViewControllerNHCGOES: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        let alert = ObjectPopUp(self, "Select number of animation frames:", productButton)
-        [10, 20, 30].forEach { count in
-            alert.addAction(UIAlertAction(String(count), { _ in self.getAnimation(count)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Select number of animation frames:", productButton, [10, 20, 30], self.getAnimation(_:))
     }
 
     @objc func imageTypeClicked() {
-        let alert = ObjectPopUp(self, "Image Type Selection", productButton)
-        UtilityNHC.imageType.forEach {
-            let imageTypeCode = $0.split(":")
-            alert.addAction(UIAlertAction($0, {_ in self.imageTypeChanged(imageTypeCode[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Image Type Selection", productButton, UtilityNHC.imageType, self.imageTypeChanged(_:))
     }
 
     func imageTypeChanged(_ rid: String) {
