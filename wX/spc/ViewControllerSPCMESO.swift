@@ -177,11 +177,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        let alert = ObjectPopUp(self, "Select number of animation frames:", animateButton)
-        [6, 12, 18].forEach { count in
-            alert.addAction(UIAlertAction(count, { _ in self.getAnimation(count)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Select number of animation frames:", animateButton, [6, 12, 18], self.getAnimation(_:))
     }
 
     func getAnimation(_ frameCount: Int) {
@@ -193,6 +189,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         }
     }
 
+    // FIXME
     @objc func showProductMenu() {
         let alert = ObjectPopUp(self, "Product Selection", paramButton)
         subMenu.objTitles.enumerated().forEach { index, title in

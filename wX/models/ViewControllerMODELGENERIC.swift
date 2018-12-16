@@ -127,11 +127,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     @objc func prodClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
-        modelObj.paramLabelArr.enumerated().forEach { i, product in
-            alert.addAction(UIAlertAction(product, { _ in self.prodChanged(i)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", productButton, modelObj.paramLabelArr, self.prodChanged(_:))
     }
 
     //
@@ -190,6 +186,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         getRunStatus()
     }
 
+    // FIXME
     func respondToSwipeGesture(gesture: UISwipeGestureRecognizer ) {
         let swipeGesture = gesture
         switch swipeGesture.direction {
