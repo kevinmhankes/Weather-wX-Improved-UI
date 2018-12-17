@@ -484,12 +484,12 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         }
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
-        ridNearbyList.forEach {
-            // FIXME consolidate to one statement
-            let name = $0.name
-            let b = UIAlertAction(name + ": " +  preferences.getString("RID_LOC_" + name, "")
-                + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
-            alert.addAction(b)
+        ridNearbyList.forEach { rid in
+            let radarDescription = rid.name
+                + ": "
+                +  preferences.getString("RID_LOC_" + rid.name, "")
+                + " (" + String(rid.distance) + " mi)"
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
         }
         alert.addAction(UIAlertAction(
             "Show warning text", {_ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
