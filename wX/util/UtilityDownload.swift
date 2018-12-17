@@ -305,12 +305,4 @@ final class UtilityDownload {
         }
         return bitmap
     }
-
-    static func getRadarStatusMessage(_ radarSite: String) -> String {
-        var ridSmall = radarSite
-        if radarSite.count == 4 {
-            ridSmall.remove(at: radarSite.startIndex)
-        }
-        return getTextProduct("FTM" + ridSmall.uppercased())
-    }
 }

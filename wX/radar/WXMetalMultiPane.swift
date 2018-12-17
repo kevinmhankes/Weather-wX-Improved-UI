@@ -568,18 +568,30 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
-        ridNearbyList.forEach {
-            // FIXME consolidate to one statement
-            let name = $0.name
-            let b = UIAlertAction(name + ": " +  preferences.getString("RID_LOC_" + name, "")
-                + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
-            alert.addAction(b)
+        ridNearbyList.forEach { rid in
+            let radarDescription = rid.name
+                + ": "
+                +  preferences.getString("RID_LOC_" + rid.name, "")
+                + " (" + String(rid.distance) + " mi)"
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
         }
-        alert.addAction(UIAlertAction("Show warning text", { _ in self.showPolygonText(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest observation", { _ in self.getMetar(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest forecast", { _ in self.getForecast(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest meteogram", { _ in self.getMeteogram(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show radar status message", { _ in self.getRadarStatus(index)}))
+        alert.addAction(UIAlertAction(
+            "Show warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show nearest observation", { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
+        )
+        alert.addAction(
+            UIAlertAction("Show nearest meteogram", { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)})
+        )
+        alert.addAction(
+            UIAlertAction(
+                "Show radar status message", { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
+            )
+        )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
@@ -593,59 +605,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         self.present(alert, animated: true, completion: nil)
     }
-
-    //
-    // move to external files
-    //
-
-    func showPolygonText(_ location: LatLon) {
-        let warningText = UtilityWXOGL.showTextProducts(location)
-        if warningText != "" {
-            ActVars.usalertsDetailUrl = warningText
-            self.goToVC("usalertsdetail")
-        }
-    }
-
-    func getMetar(_ location: LatLon) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityMetar.findClosestMetar(location)
-            DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = html
-                self.goToVC("textviewer")
-            }
-        }
-    }
-
-    func getForecast(_ location: LatLon) {
-        ActVars.ADHOCLOCATION = location
-        self.goToVC("adhoclocation")
-    }
-
-    func getMeteogram(_ location: LatLon) {
-        let obsSite = UtilityMetar.findClosestObservation(location)
-        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php"
-            + "?BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
-            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
-            + obsSite.name
-        self.goToVC("imageviewer")
-    }
-
-    func getRadarStatus(_ index: Int) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            var radarStatus = UtilityDownload.getRadarStatusMessage(self.wxMetal[index]!.rid)
-            if radarStatus == "" {
-                radarStatus = "The current radar status for " + self.wxMetal[index]!.rid + " is not available."
-            }
-            DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = radarStatus
-                self.goToVC("textviewer")
-            }
-        }
-    }
-
-    // 
-    // end move
-    // 
 
     @objc func invalidateGPS() {
         locationManager.stopUpdatingLocation()

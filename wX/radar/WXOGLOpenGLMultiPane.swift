@@ -491,28 +491,27 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                 + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
             alert.addAction(b)
         }
-        alert.addAction(UIAlertAction("Show warning text", {_ in self.showPolygonText(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest observation", {_ in self.getMetar(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest forecast", {_ in self.getForecast(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show nearest meteogram", {_ in self.getMeteogram(pointerLocation)}))
-        alert.addAction(UIAlertAction("Show radar status message", {_ in self.getRadarStatus()}))
+        alert.addAction(UIAlertAction(
+            "Show warning text", {_ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show nearest observation", {_ in UtilityRadarUI.getMetar(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show nearest forecast", {_ in UtilityRadarUI.getForecast(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show nearest meteogram", {_ in UtilityRadarUI.getMeteogram(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show radar status message", {_ in UtilityRadarUI.getRadarStatus(self, self.oglrArr[0].rid)})
+        )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = radarsiteButton
         }
         self.present(alert, animated: true, completion: nil)
-    }
-
-    // MIGRATE to new file
-    //
-
-    func showPolygonText(_ location: LatLon) {
-        let warningText = UtilityWXOGL.showTextProducts(location)
-        if warningText != "" {
-            ActVars.usalertsDetailUrl = warningText
-            self.goToVC("usalertsdetail")
-        }
     }
 
     func productChanged(_ index: Int, _ product: String) {
@@ -719,48 +718,6 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func update() {}
-
-    //
-    // MIGRATE below 4 methods to UtilityRadarUI
-    // 
-
-    func getMetar(_ location: LatLon) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityMetar.findClosestMetar(location)
-            DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = html
-                self.goToVC("textviewer")
-            }
-        }
-    }
-
-    func getForecast(_ location: LatLon) {
-        ActVars.ADHOCLOCATION = location
-        self.goToVC("adhoclocation")
-    }
-
-    func getMeteogram(_ location: LatLon) {
-        let obsSite = UtilityMetar.findClosestObservation(location)
-        ActVars.IMAGEVIEWERurl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
-            + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
-            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
-            + obsSite.name
-        self.goToVC("imageviewer")
-    }
-
-    func getRadarStatus() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let radarStatus = UtilityDownload.getRadarStatusMessage(self.oglrArr[0].rid)
-            DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = radarStatus
-                self.goToVC("textviewer")
-            }
-        }
-    }
-
-    //
-    // END MIGRATE
-    //
 
     func showTimeToolbar(_ glv: WXGLRender) {}
 
