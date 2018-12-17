@@ -16,7 +16,7 @@ final class UITapGestureRecognizerWithData: UITapGestureRecognizer {
         super.init(target: target, action: action)
     }
 
-    init(strData: String, target: Any?, action: Selector?) {
+    init(_ strData: String, _ target: Any?, _ action: Selector?) {
         self.strData = strData
         super.init(target: target, action: action)
     }
@@ -27,7 +27,7 @@ final class UITapGestureRecognizerWithData: UITapGestureRecognizer {
         super.init(target: target, action: action)
     }
 
-    init(data: Int, target: Any?, action: Selector?) {
+    init(_ data: Int, _ target: Any?, _ action: Selector?) {
         self.data = data
         super.init(target: target, action: action)
     }

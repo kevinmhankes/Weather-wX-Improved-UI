@@ -24,8 +24,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
         self.view.addSubview(toolbar)
-        image = ObjectTouchImageView(self, toolbar)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = preferences.getInt("NWSMOSAIC_PARAM_LAST_USED", index)
         if ActVars.NWSMOSAICtype=="local" {
             ActVars.NWSMOSAICtype = ""

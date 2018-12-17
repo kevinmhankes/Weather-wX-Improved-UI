@@ -34,10 +34,9 @@ class ViewControllerGOES16: UIwXViewController {
                                             productButton,
                                             animateButton,
                                             shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         goesProducts = UtilityGOES16.products.values.sorted()
         self.view.addSubview(toolbar)
         deSerializeSettings()

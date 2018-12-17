@@ -18,8 +18,7 @@ class ViewControllerOPC: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
-        image = ObjectTouchImageView(self, toolbar)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = preferences.getInt("OPC_IMG_FAV_URL", index)
         self.getContent()
     }

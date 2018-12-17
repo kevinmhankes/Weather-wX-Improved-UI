@@ -42,24 +42,27 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 var mpdI = 0
                 snWat.bitmaps.forEach {
                     let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                        target: self, action: #selector(self.imgClicked(sender:))))
+                    imgObject.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                    )
                     self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
                     index += 1
                     watI += 1
                 }
                 snMcd.bitmaps.forEach {
                     let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                        target: self, action: #selector(self.imgClicked(sender:))))
+                    imgObject.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                    )
                     self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
                     index += 1
                     mcdI += 1
                 }
                 snMpd.bitmaps.forEach {
                     let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(UITapGestureRecognizerWithData(data: index,
-                        target: self, action: #selector(self.imgClicked(sender:))))
+                    imgObject.addGestureRecognizer(
+                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                    )
                     self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
                     index += 1
                     mpdI += 1

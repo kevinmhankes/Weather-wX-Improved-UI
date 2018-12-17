@@ -103,11 +103,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
                                            $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", ""))
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
-                UITapGestureRecognizerWithData(
-                    data: $0,
-                    target: self,
-                    action: #selector(self.buttonPressed(sender:))
-                )
+                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
             )
         }
     }

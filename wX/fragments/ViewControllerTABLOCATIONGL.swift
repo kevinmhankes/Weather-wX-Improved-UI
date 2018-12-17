@@ -268,9 +268,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             DispatchQueue.main.async {
                 self.textArr[product] = html
                 let objTv = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
-                objTv.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product,
-                                                                          target: self,
-                                                                          action: #selector(self.textTap(sender:))))
+                objTv.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:))))
             }
         }
     }
@@ -291,9 +289,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             let bitmap = UtilityDownload.getImageProduct(product)
             DispatchQueue.main.async {
                 let imgObj = ObjectImage(stackView, bitmap, hs: true)
-                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(strData: product,
-                                                                           target: self,
-                                                                           action: #selector(self.imageTap(sender:))))
+                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:))))
             }
         }
     }

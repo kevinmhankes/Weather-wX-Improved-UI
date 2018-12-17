@@ -30,6 +30,11 @@ final class ObjectTouchImageView {
         self.bitmap = bitmap
     }
 
+    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector) {
+        self.init(uiv, toolbar)
+        addGestureRecognizer(action)
+    }
+
     func setBitmap(_ bitmap: Bitmap) {
         img.display(image: bitmap.image)
         self.bitmap = bitmap

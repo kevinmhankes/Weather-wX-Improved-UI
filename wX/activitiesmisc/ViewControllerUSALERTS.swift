@@ -9,7 +9,6 @@ import AVFoundation
 
 class ViewControllerUSALERTS: UIwXViewController {
 
-    //var html = ""
     var capAlerts = [CAPAlert]()
     var filter = ""
     var filterButton = ObjectToolbarIcon()
@@ -27,8 +26,8 @@ class ViewControllerUSALERTS: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityDownloadNWS.getCAP("us")
-            let alertArr = self.html.parseColumn("<entry>(.*?)</entry>")
+            let html = UtilityDownloadNWS.getCAP("us")
+            let alertArr = html.parseColumn("<entry>(.*?)</entry>")
             alertArr.forEach {self.capAlerts.append(CAPAlert(eventTxt: $0))}
             DispatchQueue.main.async {
                 self.filterButton.title = "Tornado/FFW/ThunderStorm"

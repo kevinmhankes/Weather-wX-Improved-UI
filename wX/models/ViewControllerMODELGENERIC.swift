@@ -68,8 +68,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                                             timeButton,
                                             leftButton,
                                             rightButton]).items
-        image = ObjectTouchImageView(self, toolbar)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
         modelObj = ObjectModel(ActVars.modelActivitySelected)

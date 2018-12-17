@@ -69,9 +69,7 @@ final class ObjectForecastPackageHazards {
         if !isUS {
             let hz = objHazards.hazardsShort.replace("<BR>", "")
             let hazCard = ObjectCardHazard(stackViewLocalHaz, hz)
-            let tapOnHazards = UITapGestureRecognizerWithData(strData: objHazards.hazards,
-                                                              target: self,
-                                                              action: #selector(self.hazardsAction(sender:)))
+            let tapOnHazards = UITapGestureRecognizerWithData(objHazards.hazards, self, #selector(self.hazardsAction(sender:)))
             hazCard.addGestureRecognizer(tapOnHazards)
             numHaz += 1
         } else {
@@ -80,10 +78,7 @@ final class ObjectForecastPackageHazards {
             hazardTitles.enumerated().forEach { index, hazard in
                 let hazCard = ObjectCardHazard(stackViewLocalHaz, hazard)
                 hazCard.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(
-                        strData: idAl[index],
-                        target: self,
-                        action: #selector(self.hazardsAction(sender:))
+                    UITapGestureRecognizerWithData(idAl[index], self, #selector(self.hazardsAction(sender:))
                     )
                 )
                 numHaz += 1

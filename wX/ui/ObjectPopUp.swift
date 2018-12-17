@@ -35,7 +35,7 @@ final class ObjectPopUp {
         }
         finish()
     }
-    
+
     init(_ uiv: UIViewController,
          _ title: String,
          _ button: UIBarButtonItem,
@@ -49,7 +49,7 @@ final class ObjectPopUp {
         }
         finish()
     }
-    
+
     init(_ uiv: UIViewController,
          _ title: String,
          _ button: UIBarButtonItem,

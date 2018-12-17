@@ -50,9 +50,7 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
                     if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {
                         tv.color = UIColor.blue
                     }
-                    tv.addGestureRecognizer(UITapGestureRecognizerWithData(data: $0,
-                                                                           target: self,
-                                                                           action: #selector(self.gotoMap(sender:))))
+                    tv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
                 }
             }
         }

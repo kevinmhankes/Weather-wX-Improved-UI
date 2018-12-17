@@ -78,11 +78,7 @@ final class ObjectNHC: NSObject {
                     let textStr = self.atlSumList[$0].replaceAllRegexp("<.*?>", "")
                     let obj = ObjectTextView(stackView, textStr)
                     obj.addGestureRecognizer(
-                        UITapGestureRecognizerWithData(
-                            data: $0,
-                            target: self,
-                            action: #selector(self.gotoATLNHCStorm(sender:))
-                        )
+                        UITapGestureRecognizerWithData($0, self, #selector(self.gotoATLNHCStorm(sender:)))
                     )
                 }
             }
@@ -96,11 +92,7 @@ final class ObjectNHC: NSObject {
                     let textStr = self.pacSumList[$0].replaceAllRegexp("<.*?>", "")
                     let obj = ObjectTextView(stackView, textStr)
                     obj.addGestureRecognizer(
-                        UITapGestureRecognizerWithData(
-                            data: $0,
-                            target: self,
-                            action: #selector(self.gotoEPACNHCStorm(sender:))
-                        )
+                        UITapGestureRecognizerWithData($0, self, #selector(self.gotoEPACNHCStorm(sender:)))
                     )
                 }
             }

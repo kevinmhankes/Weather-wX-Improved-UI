@@ -487,15 +487,15 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         ridNearbyList.forEach {
             // FIXME consolidate to one statement
             let name = $0.name
-            let b = UIAlertAction(title: name + ": " +  preferences.getString("RID_LOC_" + name, "")
+            let b = UIAlertAction(name + ": " +  preferences.getString("RID_LOC_" + name, "")
                 + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
             alert.addAction(b)
         }
-        alert.addAction(UIAlertAction(title: "Show warning text", {_ in self.showPolygonText(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest observation", {_ in self.getMetar(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest forecast", {_ in self.getForecast(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest meteogram", {_ in self.getMeteogram(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show radar status message", {_ in self.getRadarStatus()}))
+        alert.addAction(UIAlertAction("Show warning text", {_ in self.showPolygonText(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest observation", {_ in self.getMetar(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest forecast", {_ in self.getForecast(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show nearest meteogram", {_ in self.getMeteogram(pointerLocation)}))
+        alert.addAction(UIAlertAction("Show radar status message", {_ in self.getRadarStatus()}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {

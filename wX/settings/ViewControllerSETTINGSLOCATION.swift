@@ -110,11 +110,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
                                                 + MyApplication.newline
                                                 + off)
             objLocCard.addGestureRecognizer(
-                UITapGestureRecognizerWithData(
-                    data: $0,
-                    target: self,
-                    action: #selector(self.actionLocationPopup(sender:))
-                )
+                UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
             )
         }
     }

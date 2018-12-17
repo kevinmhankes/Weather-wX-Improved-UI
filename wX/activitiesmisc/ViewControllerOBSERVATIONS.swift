@@ -21,8 +21,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
-        image = ObjectTouchImageView(self, toolbar)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         self.index = preferences.getInt(prefTokenIdx, 0)

@@ -13,7 +13,6 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     var product = "PMDSPD"
     var textView = ObjectTextView()
-    //var html = "a"
     var playListButton = ObjectToolbarIcon()
     var subMenu = ObjectMenuData(UtilityWPCText.titles, [], UtilityWPCText.labels)
     let synth = AVSpeechSynthesizer()
@@ -47,9 +46,9 @@ class ViewControllerWPCTEXT: UIwXViewController {
         // https://www.raywenderlich.com/148513/grand-central-dispatch-tutorial-swift-3-part-1
         // https://developer.apple.com/videos/play/wwdc2016/720/
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityDownload.getTextProduct(self.product)
+            let html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
-                self.textView.text = self.html
+                self.textView.text = html
                 self.productButton.title = self.product
                 editor.putString("WPCTEXT_PARAM_LAST_USED", self.product)
             }
@@ -84,11 +83,10 @@ class ViewControllerWPCTEXT: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        // FIXME do textView.text
-        UtilityShare.share(self, sender, html)
+        UtilityShare.share(self, sender, textView.text)
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, self.html, self, playListButton)
+        UtilityPlayList.add(self.product, textView.text, self, playListButton)
     }
 }

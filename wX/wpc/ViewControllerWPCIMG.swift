@@ -20,9 +20,7 @@ class ViewControllerWPCIMG: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
-        // FIXME , make new constrcutor that adds gesture recognizer
-        image = ObjectTouchImageView(self, toolbar)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = preferences.getInt("WPCIMG_PARAM_LAST_USED", index)
         self.getContent()
     }
@@ -30,8 +28,7 @@ class ViewControllerWPCIMG: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var getUrl = UtilityWPCImages.urls[self.index]
-            // FIXME
-            if getUrl.contains("http://graphical.weather.gov/images/conus/") {
+            if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
                 getUrl += String(self.timePeriod) + "_conus.png"
             }
             let bitmap = Bitmap(getUrl)

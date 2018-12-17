@@ -29,8 +29,7 @@ final class ObjectAlertSummary: NSObject {
         let objTextSummary = ObjectTextView(stackView)
         if showImage {
             objImage = ObjectImage(stackView)
-            objImage.addGestureRecognizer(UITapGestureRecognizerWithData(data: 0,
-                                                                         target: uiv, action: #selector(imageClicked)))
+            objImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
         }
         var index = 0
         var filterBool = true
@@ -68,11 +67,7 @@ final class ObjectAlertSummary: NSObject {
                 let objAlert = ObjectTextView(stackView, content)
                 self.urlArr.append(alert.url)
                 objAlert.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(
-                        data: index,
-                        target: uiv,
-                        action: #selector(warningSelected(sender:))
-                    )
+                    UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:)))
                 )
                 index += 1
             }

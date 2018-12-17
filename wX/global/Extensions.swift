@@ -206,7 +206,7 @@ extension UIAlertAction {
     convenience init(_ title: String, _ handler: ((UIAlertAction) -> Void)? = nil) {
         self.init(title: title, style: .default, handler: handler)
     }
-    
+
     convenience init(_ title: Int, _ handler: ((UIAlertAction) -> Void)? = nil) {
         self.init(title: String(title), style: .default, handler: handler)
     }

@@ -24,9 +24,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         titles.forEach {
             let objText = ObjectTextView(self.stackView, $0)
             objText.textSize = 1.5
-            objText.addGestureRecognizer(UITapGestureRecognizerWithData(strData: $0,
-                                                                        target: self,
-                                                                        action: #selector(actionClick(sender:))))
+            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:))))
         }
     }
 
