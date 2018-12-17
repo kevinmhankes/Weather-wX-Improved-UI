@@ -113,9 +113,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
-
         device = MTLCreateSystemDefaultDevice()
-
         let screenSize: CGSize = UIScreen.main.bounds.size
         let screenWidth = Float(screenSize.width)
         let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
@@ -447,7 +445,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             wxMetal[index]!.zoom = 1.0
             wxMetal[index]!.getRadar("")
         }
-        self.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        self.view.subviews.forEach {
+            if $0 is UITextView {
+                $0.removeFromSuperview()
+            }
+        }
         textObj = WXMetalTextObject(self, numberOfPanes,
                                     Double(view.frame.width),
                                     Double(view.frame.height),
@@ -529,12 +531,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
         var xMiddle = 0.0
-        if numberOfPanes==1 {
+        if numberOfPanes == 1 {
             yMiddle = height / 2.0
         } else {
             yMiddle = height / 4.0
         }
-        if numberOfPanes==4 {
+        if numberOfPanes == 4 {
             xMiddle = width / 4.0
         } else {
             xMiddle = width / 2.0
@@ -567,6 +569,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach {
+            // FIXME consolidate to one statement
             let name = $0.name
             let b = UIAlertAction(name + ": " +  preferences.getString("RID_LOC_" + name, "")
                 + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
@@ -590,6 +593,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         self.present(alert, animated: true, completion: nil)
     }
+
+    //
+    // move to external files
+    //
 
     func showPolygonText(_ location: LatLon) {
         let warningText = UtilityWXOGL.showTextProducts(location)
@@ -635,6 +642,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
     }
+
+    // 
+    // end move
+    // 
 
     @objc func invalidateGPS() {
         locationManager.stopUpdatingLocation()
