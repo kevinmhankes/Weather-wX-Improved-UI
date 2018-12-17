@@ -75,7 +75,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     deinit {
         self.tearDownGL()
-        if EAGLContext.current() === self.context {EAGLContext.setCurrent(nil)}
+        if EAGLContext.current() === self.context {
+            EAGLContext.setCurrent(nil)
+        }
     }
 
     @objc func invalidateGPS() {
@@ -88,6 +90,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
+    // 
+    // move external file
+    //
     func writePrefs(_ numberOfPanesInt: Int, _ indexInt: Int, _ glv: WXGLRender) {
         let numberOfPanes = String(numberOfPanesInt)
         let index = String(indexInt)
@@ -100,7 +105,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     @objc func doneClicked() {
         oglrArr.enumerated().forEach {writePrefs(numberOfPanes, $0, $1)}
-        if RadarPreferences.wxoglRadarAutorefresh {oneMinRadarFetch.invalidate()}
+        if RadarPreferences.wxoglRadarAutorefresh {
+            oneMinRadarFetch.invalidate()
+        }
         tearDownGL()
         if inOglAnim {stopAnimate()}
         locationManager.stopUpdatingLocation()
@@ -134,7 +141,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         //  setup top toolbar if needed
         //
         let toolbarTop = ObjectToolbar(.top)
-        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             toolbarTop.setConfig(.top)
             pangeRange.forEach {
                 siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
@@ -168,7 +175,6 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         timeButton = ObjectToolbarIcon(self, nil)
-
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
@@ -180,16 +186,19 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             toolbarButtons.append(fixedSpace)
             toolbarButtons.append(productButton[$0])
         }
-        if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarsiteButton)}
+        if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
+            toolbarButtons.append(radarsiteButton)
+        }
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
-
         width = Double(self.view.bounds.size.width)
         height = Double(self.view.bounds.size.height)
         self.context = EAGLContext(api: .openGLES2)
-        if self.context == nil {print("Failed to create ES context")}
+        if self.context == nil {
+            print("Failed to create ES context")
+        }
         let halfWidth = self.view.frame.width / 2
         var halfHeight = self.view.frame.height / 2
-        if numberOfPanes==2 {
+        if numberOfPanes == 2 {
             halfHeight -= UIPreferences.toolbarHeight / 2.0
             glviewArr.append(GLKView(frame: CGRect(x: 0,
                                                    y: 0,
@@ -199,7 +208,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                                    y: halfHeight,
                                                    width: self.view.frame.width,
                                                    height: halfHeight), context: self.context!))
-        } else if numberOfPanes==4 {
+        } else if numberOfPanes == 4 {
             halfHeight -= UIPreferences.toolbarHeight / 2.0
             glviewArr.append(GLKView(frame: CGRect(x: 0,
                                                    y: 0,
@@ -260,7 +269,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         }
         productButton.enumerated().forEach {$1.title = oglrArr[$0].product}
         radarsiteButton.title = oglrArr[0].rid
-        if !RadarPreferences.dualpaneshareposn {siteButton.enumerated().forEach {$1.title = oglrArr[$0].rid}}
+        if !RadarPreferences.dualpaneshareposn {
+            siteButton.enumerated().forEach {$1.title = oglrArr[$0].rid}
+        }
         glviewArr.enumerated().forEach {
             $1.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
             $1.context = context!
@@ -295,7 +306,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             )
         }
         self.view.addSubview(toolbar)
-        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {self.view.addSubview(toolbarTop)}
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
+            self.view.addSubview(toolbarTop)
+        }
         self.setupGL()
         if RadarPreferences.locdotFollowsGps {
             self.locationManager.requestWhenInUseAuthorization()
@@ -311,7 +324,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             $1.idxStr = String($0)
             $1.getRadar("")
             showTimeToolbar($1)
-            if $0==0 {
+            if $0 == 0 {
                 screenScale = Double(UIScreen.main.scale)
                 textObj = WXGLTextObject(self, numberOfPanes,
                                          Double(view.frame.width),
@@ -422,17 +435,23 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                 glvIdx = 1
             }
         }
-        if numberOfPanes==4 {if x > self.view.frame.width / 2.0 {xModified -= Double(self.view.frame.width) / 2.0}}
+        if numberOfPanes == 4 {
+            if x > self.view.frame.width / 2.0 {
+                xModified -= Double(self.view.frame.width) / 2.0
+            }
+        }
         var density = Double(oglrArr[0].ortInt * 2) / width
-        if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
+        if numberOfPanes == 4 {
+            density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width
+        }
         var yMiddle = 0.0
         var xMiddle = 0.0
-        if numberOfPanes==1 {
+        if numberOfPanes == 1 {
             yMiddle = height / 2.0
         } else {
             yMiddle = height / 4.0
         }
-        if numberOfPanes==4 {
+        if numberOfPanes == 4 {
             xMiddle = width / 4.0
         } else {
             xMiddle = width / 2.0
@@ -466,21 +485,17 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach {
+            // FIXME consolidate to one statement
             let name = $0.name
             let b = UIAlertAction(title: name + ": " +  preferences.getString("RID_LOC_" + name, "")
-                + " (" + String($0.distance) + " mi)", style: .default, handler: { _ in self.ridChanged(name, index)})
+                + " (" + String($0.distance) + " mi)", { _ in self.ridChanged(name, index)})
             alert.addAction(b)
         }
-        alert.addAction(UIAlertAction(title: "Show warning text", style: .default, handler: {_ in
-            self.showPolygonText(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest observation", style: .default, handler: {_ in
-            self.getMetar(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest forecast", style: .default, handler: {_ in
-            self.getForecast(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show nearest meteogram", style: .default, handler: {_ in
-            self.getMeteogram(pointerLocation)}))
-        alert.addAction(UIAlertAction(title: "Show radar status message", style: .default, handler: {_ in
-            self.getRadarStatus()}))
+        alert.addAction(UIAlertAction(title: "Show warning text", {_ in self.showPolygonText(pointerLocation)}))
+        alert.addAction(UIAlertAction(title: "Show nearest observation", {_ in self.getMetar(pointerLocation)}))
+        alert.addAction(UIAlertAction(title: "Show nearest forecast", {_ in self.getForecast(pointerLocation)}))
+        alert.addAction(UIAlertAction(title: "Show nearest meteogram", {_ in self.getMeteogram(pointerLocation)}))
+        alert.addAction(UIAlertAction(title: "Show radar status message", {_ in self.getRadarStatus()}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {
@@ -488,6 +503,10 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         }
         self.present(alert, animated: true, completion: nil)
     }
+
+    //
+    // MIGRATE to new file
+    //
 
     func showPolygonText(_ location: LatLon) {
         let warningText = UtilityWXOGL.showTextProducts(location)
@@ -523,7 +542,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @objc func willEnterForeground() {
-        if RadarPreferences.locdotFollowsGps {resumeGPS()}
+        if RadarPreferences.locdotFollowsGps {
+            resumeGPS()
+        }
         stopAnimate()
         oglrArr.forEach {$0.getRadar("")}
         getPolygonWarnings()
@@ -700,6 +721,10 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
 
     func update() {}
 
+    //
+    // MIGRATE below 4 methods to UtilityRadarUI
+    // 
+
     func getMetar(_ location: LatLon) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
@@ -733,6 +758,10 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             }
         }
     }
+
+    //
+    // END MIGRATE
+    //
 
     func showTimeToolbar(_ glv: WXGLRender) {}
 
