@@ -9,7 +9,7 @@ import AVFoundation
 
 class ViewControllerUSALERTS: UIwXViewController {
 
-    var html = ""
+    //var html = ""
     var capAlerts = [CAPAlert]()
     var filter = ""
     var filterButton = ObjectToolbarIcon()

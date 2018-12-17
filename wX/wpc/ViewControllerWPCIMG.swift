@@ -30,6 +30,7 @@ class ViewControllerWPCIMG: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var getUrl = UtilityWPCImages.urls[self.index]
+            // FIXME
             if getUrl.contains("http://graphical.weather.gov/images/conus/") {
                 getUrl += String(self.timePeriod) + "_conus.png"
             }

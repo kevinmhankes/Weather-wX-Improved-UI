@@ -9,7 +9,6 @@ import AVFoundation
 
 class ViewControllerADHOCLOCATION: UIwXViewController {
 
-    var html = ""
     var location = LatLon()
     var objFcst = ObjectForecastPackage()
     var objHazards = ObjectForecastPackageHazards()

@@ -13,7 +13,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     var product = "PMDSPD"
     var textView = ObjectTextView()
-    var html = "a"
+    //var html = "a"
     var playListButton = ObjectToolbarIcon()
     var subMenu = ObjectMenuData(UtilityWPCText.titles, [], UtilityWPCText.labels)
     let synth = AVSpeechSynthesizer()
@@ -84,6 +84,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
+        // FIXME do textView.text
         UtilityShare.share(self, sender, html)
     }
 
