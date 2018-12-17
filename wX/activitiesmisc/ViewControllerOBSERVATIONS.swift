@@ -11,6 +11,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
+    // FIXME are both needed? if so store prefix
     let prefToken = "SFC_OBS_IMG"
     let prefTokenIdx = "SFC_OBS_IMG_IDX"
 
