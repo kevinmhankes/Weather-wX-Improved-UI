@@ -11,7 +11,6 @@ final class UITapGestureRecognizerWithData: UITapGestureRecognizer {
     var data = 0
     var strData = ""
 
-    // FIXME remove named arg
     override init(target: Any?, action: Selector?) {
         super.init(target: target, action: action)
     }
@@ -21,7 +20,7 @@ final class UITapGestureRecognizerWithData: UITapGestureRecognizer {
         super.init(target: target, action: action)
     }
 
-    init(data: Int, strData: String, target: Any?, action: Selector?) {
+    init(_ data: Int, _ strData: String, _ target: Any?, _ action: Selector?) {
         self.data = data
         self.strData = strData
         super.init(target: target, action: action)
