@@ -504,7 +504,6 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         self.present(alert, animated: true, completion: nil)
     }
 
-    //
     // MIGRATE to new file
     //
 
