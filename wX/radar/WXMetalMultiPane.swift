@@ -111,7 +111,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pangeRange.forEach {
             toolbarButtons.append(productButton[$0])
         }
-        if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {toolbarButtons.append(radarSiteButton)}
+        if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {
+            toolbarButtons.append(radarSiteButton)
+        }
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
         device = MTLCreateSystemDefaultDevice()
         let screenSize: CGSize = UIScreen.main.bounds.size
@@ -216,7 +218,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         self.view.addSubview(toolbar)
-        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             self.view.addSubview(toolbarTop)
         }
         screenScale = Double(UIScreen.main.scale)
@@ -526,7 +528,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 yModified -= Double(self.view.frame.height) / 2.0
             }
         }
-        if numberOfPanes==4 {if x > self.view.frame.width / 2.0 {xModified -= Double(self.view.frame.width) / 2.0}}
+        if numberOfPanes == 4 {
+            if x > self.view.frame.width / 2.0 {
+                xModified -= Double(self.view.frame.width) / 2.0
+            }
+        }
         let density = Double(ortInt * 2) / width
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
