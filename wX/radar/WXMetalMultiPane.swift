@@ -535,6 +535,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         let density = Double(ortInt * 2) / width
+        // FIXME Is this needed
         //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
         var yMiddle = 0.0
         var xMiddle = 0.0
