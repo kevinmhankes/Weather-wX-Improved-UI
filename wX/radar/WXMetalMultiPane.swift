@@ -519,6 +519,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
+        // FIXME move as much of this code out as possible
         width = Double(self.view.bounds.size.width)
         height = Double(self.view.bounds.size.height)
         var yModified = Double(y)
