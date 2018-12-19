@@ -45,18 +45,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
         let pangeRange = 0..<numberOfPanes
-
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
-        //
-        //  setup top toolbar if needed
-        //
         let toolbarTop = ObjectToolbar(.top)
-        if !RadarPreferences.dualpaneshareposn && numberOfPanes>1 {
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             toolbarTop.setConfig(.top)
             pangeRange.forEach {
                 siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
@@ -68,6 +63,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
             toolbarTop.items = ObjectToolbarItems(items).items
             if UIPreferences.radarToolbarTransparent {
+                // FIXME below methods should be consolidated into toolbar class
                 toolbarTop.setBackgroundImage(UIImage(),
                                            forToolbarPosition: .any,
                                            barMetrics: .default)
@@ -76,12 +72,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         toolbar.setConfig()
         if UIPreferences.radarToolbarTransparent {
+            // FIXME consolidate
             toolbar.setBackgroundImage(UIImage(),
                                        forToolbarPosition: .any,
                                        barMetrics: .default)
             toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         }
-
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(WXMetalMultipane.invalidateGPS),
@@ -92,14 +88,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                                selector: #selector(willEnterForeground),
                                                name: NSNotification.Name.UIApplicationWillEnterForeground,
                                                object: nil)
-
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         pangeRange.forEach {
             productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))
         }
         radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
@@ -111,7 +105,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pangeRange.forEach {
             toolbarButtons.append(productButton[$0])
         }
-        if RadarPreferences.dualpaneshareposn || numberOfPanes==1 {
+        if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
             toolbarButtons.append(radarSiteButton)
         }
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
@@ -432,6 +426,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
+                // FIXME add method for this and use below with index - changeSite
                 $0!.rid = rid
                 $0!.loadGeometry()
                 $0!.xPos = 0.0
