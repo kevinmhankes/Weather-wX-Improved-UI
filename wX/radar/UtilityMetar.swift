@@ -11,7 +11,6 @@ final class UtilityMetar {
     static let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
     static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
     static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
-
     static var initialized = false
     static var initializedObsMap = false
     static var obsArr = [String]()
@@ -125,7 +124,9 @@ final class UtilityMetar {
                         lowestCig = ovcInt
                     }
                     aviationColor = Color.GREEN
-                    if visInt > 5 && lowestCig > 3000 {aviationColor = Color.GREEN}
+                    if visInt > 5 && lowestCig > 3000 {
+                        aviationColor = Color.GREEN
+                    }
                     if (visInt >= 3 &&  visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) {
                         aviationColor = Color.rgb(0, 100, 255)
                     }
@@ -210,6 +211,8 @@ final class UtilityMetar {
         return obsArrAviationColor
     }
 
+    // FIXME add 2nd argument with default value of true to fetch data
+    // add , fetchData: Bool = true 
     static func findClosestMetar(_ location: LatLon) -> String {
         var lines = rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
@@ -277,7 +280,9 @@ final class UtilityMetar {
         var currentDistance = 0.0
         obsSites.indices.forEach {
             currentDistance = LatLon.distance(radarLocation, obsSites[$0].location, .M)
-            if currentDistance < obsSiteRange {obsListSb += obsSites[$0].name + ","}
+            if currentDistance < obsSiteRange {
+                obsListSb += obsSites[$0].name + ","
+            }
         }
         return obsListSb.replaceAll(",$", "")
     }

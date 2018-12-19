@@ -561,6 +561,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
         let pointerLocation = LatLon.reversed(newX, newY)
+        // FIXME list Miles
         let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: glv.rid)
         let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
@@ -569,11 +570,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
+            // FIXME add method for wXMetal that outputs Lat/LON
             alertMessage += MyApplication.newline + "GPS: "
                 + wxMetal[index]!.gpsLocation.latString.truncate(10)
                 + ", -"
                 + wxMetal[index]!.gpsLocation.lonString.truncate(10)
         }
+        // FIXME remove "Select"
         let alert = UIAlertController(title: "Select closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach { rid in
@@ -586,16 +589,20 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(
             "Show warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
+        // FIXME remove verb "Show" which should be obvious
+        // FIXME show what nearest Obs is in the menu choice
         alert.addAction(UIAlertAction(
             "Show nearest observation", { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
         )
         alert.addAction(UIAlertAction(
             "Show nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
         )
+        // FIXME show what nearest meteogram is
         alert.addAction(
             UIAlertAction("Show nearest meteogram", { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)})
         )
         alert.addAction(
+            // FIXME add "status message for DTX"
             UIAlertAction(
                 "Show radar status message", { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
             )
