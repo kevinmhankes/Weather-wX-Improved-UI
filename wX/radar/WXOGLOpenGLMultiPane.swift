@@ -697,7 +697,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         var status: GLint = 0
         glLinkProgram(prog)
         glGetProgramiv(prog, GLenum(GL_LINK_STATUS), &status)
-        if status == 0 {return false}
+        if status == 0 {
+            return false
+        }
         return true
     }
 
@@ -713,7 +715,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         }
         glGetProgramiv(prog, GLenum(GL_VALIDATE_STATUS), &status)
         var returnVal = true
-        if status == 0 {returnVal = false}
+        if status == 0 {
+            returnVal = false
+        }
         return returnVal
     }
 
