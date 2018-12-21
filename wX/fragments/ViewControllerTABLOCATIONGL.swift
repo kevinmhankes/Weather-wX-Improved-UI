@@ -254,6 +254,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.present(alert2, animated: true, completion: nil)
     }
 
+    // FIXME move to class as static method
     func getCurrentConditionCards(_ stackView: UIStackView) {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))

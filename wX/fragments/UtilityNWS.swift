@@ -8,6 +8,7 @@ import UIKit
 
 final class UtilityNWS {
 
+    // FIXME move to dedicated file
     static let NWSICON = [
         "bkn.png": R.Drawable.bkn,
         "blizzard.png": R.Drawable.blizzard,
@@ -157,7 +158,9 @@ final class UtilityNWS {
             if tmpArr.count > 1 {
                 bitmap = dualBitmapWithNumbers(tmpArr[0], tmpArr[1])
             }
-        } else {bitmap = dualBitmapWithNumbers(url)}
+        } else {
+            bitmap = dualBitmapWithNumbers(url)
+        }
         return bitmap
     }
 
@@ -176,11 +179,15 @@ final class UtilityNWS {
         var num2 = ""
         var aSplit = iconLeftString.split(",")
         var bSplit = iconRightString.split(",")
-        if aSplit.count>1 {num1 = aSplit[1]}
-        if bSplit.count>1 {num2 = bSplit[1]}
+        if aSplit.count > 1 {
+            num1 = aSplit[1]
+        }
+        if bSplit.count > 1 {
+            num2 = bSplit[1]
+        }
         var aLocal = ""
         var bLocal = ""
-        if aSplit.count>0 && bSplit.count>0 {
+        if aSplit.count > 0 && bSplit.count > 0 {
             aLocal = aSplit[0]
             bLocal = bSplit[0]
         }
@@ -188,8 +195,12 @@ final class UtilityNWS {
         var leftCropB = 4
         let halfWidth = 41
         let middlePoint = 45
-        if iconLeftString.contains("fg") {leftCropA = middlePoint}
-        if iconRightString.contains("fg") {leftCropB = middlePoint}
+        if iconLeftString.contains("fg") {
+            leftCropA = middlePoint
+        }
+        if iconRightString.contains("fg") {
+            leftCropB = middlePoint
+        }
         var bitmapLeft = Bitmap()
         var bitmapRight = Bitmap()
         if let fileNameLeft = NWSICON[aLocal + ".png"] {
@@ -243,19 +254,27 @@ final class UtilityNWS {
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
         var num1 = ""
         var aSplit = iconString.split(",")
-        if aSplit.count>1 {num1 = aSplit[1]}
+        if aSplit.count > 1 {
+            num1 = aSplit[1]
+        }
         var aLocal = ""
-        if aSplit.count>0 {aLocal = aSplit[0]}
+        if aSplit.count > 0 {
+            aLocal = aSplit[0]
+        }
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
         let textFontAttributes = [
             NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): textFont ,
             NSAttributedStringKey.foregroundColor: textColor
             ]  as [NSAttributedStringKey: Any]?
         var bitmap = Bitmap()
-        if let fileName = NWSICON[aLocal + ".png"] {bitmap = UtilityIO.readBitmapResourceFromFile(fileName)}
+        if let fileName = NWSICON[aLocal + ".png"] {
+            bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
+        }
         let imageSize = bitmap.image.size
         var xText = 58
-        if num1=="100" {xText = 50}
+        if num1 == "100" {
+            xText = 50
+        }
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: imageSize, format: rendererFormat)
