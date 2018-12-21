@@ -92,11 +92,11 @@ final class UtilityLocationFragment {
             return spacing + wind[0] + "-" + wind[1] + gust
         } else if wind2 != "" {
             return spacing + wind2 + gust
-        } else if wind3.count>1 {
+        } else if wind3.count > 1 {
             return spacing + wind3[0] + "-" + wind3[1] + gust
         } else if wind4 != "" {
             return spacing + wind4 + gust
-        } else if wind5.count>1 {
+        } else if wind5.count > 1 {
             return spacing + wind5[0] + "-" + wind5[1] + gust
         } else if wind7 != "" {
             return spacing + wind7 + gust

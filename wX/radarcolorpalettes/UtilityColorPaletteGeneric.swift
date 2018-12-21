@@ -129,14 +129,14 @@ final class UtilityColorPaletteGeneric {
         var diff = 0
         var colorInt = 0
         var colorInt2 = 0
-        if prod=="161" {
+        if prod == "161" {
             (0..<10).forEach { _ in
                 colorMapR.put(rAl[0])
                 colorMapG.put(gAl[0])
                 colorMapB.put(bAl[0])
             }
         }
-        if prod=="99" || prod=="135" {
+        if prod == "99" || prod == "135" {
             colorMapR.put(rAl[0])
             colorMapG.put(gAl[0])
             colorMapB.put(bAl[0])
