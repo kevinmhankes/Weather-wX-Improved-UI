@@ -418,31 +418,24 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                // FIXME add method for this and use below with index - changeSite
-                $0!.rid = rid
-                $0!.loadGeometry()
-                $0!.xPos = 0.0
-                $0!.yPos = 0.0
-                $0!.zoom = 1.0
-                $0!.getRadar("")
+                $0!.resetRidAndGet(rid)
             }
         } else {
-            wxMetal[index]!.rid = rid
-            wxMetal[index]!.loadGeometry()
-            wxMetal[index]!.xPos = 0.0
-            wxMetal[index]!.yPos = 0.0
-            wxMetal[index]!.zoom = 1.0
-            wxMetal[index]!.getRadar("")
+            wxMetal[index]!.resetRidAndGet(rid)
         }
         self.view.subviews.forEach {
             if $0 is UITextView {
                 $0.removeFromSuperview()
             }
         }
-        textObj = WXMetalTextObject(self, numberOfPanes,
-                                    Double(view.frame.width),
-                                    Double(view.frame.height),
-                                    wxMetal[0]!, screenScale)
+        textObj = WXMetalTextObject(
+            self,
+            numberOfPanes,
+            Double(view.frame.width),
+            Double(view.frame.height),
+            wxMetal[0]!,
+            screenScale
+        )
         textObj.initTV()
         textObj.addTV()
     }
@@ -548,23 +541,17 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
         let pointerLocation = LatLon.reversed(newX, newY)
-        // FIXME list Miles
-        let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
+        let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: glv.rid)
-        let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
+        let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .MILES)
         var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
-            // FIXME add method for wXMetal that outputs Lat/LON
-            alertMessage += MyApplication.newline + "GPS: "
-                + wxMetal[index]!.gpsLocation.latString.truncate(10)
-                + ", -"
-                + wxMetal[index]!.gpsLocation.lonString.truncate(10)
+            alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
-        // FIXME remove "Select"
-        let alert = UIAlertController(title: "Select closest radar site:",
+        let alert = UIAlertController(title: "Closest radar site:",
                                       message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
@@ -574,24 +561,24 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
         }
         alert.addAction(UIAlertAction(
-            "Show warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
+            "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
-        // FIXME remove verb "Show" which should be obvious
-        // FIXME show what nearest Obs is in the menu choice
+        let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
         alert.addAction(UIAlertAction(
-            "Show nearest observation", { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
+            "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
         )
         alert.addAction(UIAlertAction(
-            "Show nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
-        )
-        // FIXME show what nearest meteogram is
-        alert.addAction(
-            UIAlertAction("Show nearest meteogram", { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)})
+            "Nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
         )
         alert.addAction(
-            // FIXME add "status message for DTX"
             UIAlertAction(
-                "Show radar status message", { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
+                "Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}
+            )
+        )
+        alert.addAction(
+            UIAlertAction(
+                "Radar status message: " + self.wxMetal[index]!.rid,
+                { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
             )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)

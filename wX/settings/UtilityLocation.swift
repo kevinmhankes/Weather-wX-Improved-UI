@@ -79,7 +79,7 @@ final class UtilityLocation {
         }
         var currentDistance = 0.0
         radarSites.enumerated().forEach { index, radar in
-            currentDistance = LatLon.distance(location, radar.location, .M)
+            currentDistance = LatLon.distance(location, radar.location, .MILES)
             radarSites[index].distance = Int(currentDistance)
         }
         radarSites = radarSites.sorted(by: { $0.distance < $1.distance })

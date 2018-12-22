@@ -7,5 +7,5 @@
 enum DistanceUnit {
     case K
     case N
-    case M
+    case MILES
 }

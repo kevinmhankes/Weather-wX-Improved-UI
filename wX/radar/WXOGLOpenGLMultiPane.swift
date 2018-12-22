@@ -468,9 +468,9 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
         let pointerLocation = LatLon.reversed(newX, newY)
-        let dist = LatLon.distance(Location.latlon, pointerLocation, .M)
+        let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: oglrArr[0].rid)
-        let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .M)
+        let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .MILES)
         var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "")
             + MyApplication.newline
             + String(dist.roundTo(places: 2))

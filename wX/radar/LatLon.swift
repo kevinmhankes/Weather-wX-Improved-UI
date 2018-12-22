@@ -115,7 +115,7 @@ struct LatLon {
         switch unit {
         case .K: return dist * 1.609344
         case .N: return dist * 0.8684
-        case .M: return dist
+        case .MILES: return dist
         }
     }
 }

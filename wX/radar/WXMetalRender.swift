@@ -664,4 +664,20 @@ class WXMetalRender {
             locCircleBuffers.generateMtlBuffer(device)
         }
     }
+    
+    func resetRidAndGet(_ rid: String) {
+        self.rid = rid
+        loadGeometry()
+        xPos = 0.0
+        yPos = 0.0
+        zoom = 1.0
+        getRadar("")
+    }
+    
+    func getGpsString() -> String {
+        let truncateAmount = 10
+        return gpsLocation.latString.truncate(truncateAmount)
+            + ", -"
+            + gpsLocation.lonString.truncate(truncateAmount)
+    }
 }

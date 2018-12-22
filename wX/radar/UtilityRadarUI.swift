@@ -59,4 +59,56 @@ public class UtilityRadarUI {
         }
         return message
     }
+    
+    static func getLatLonFromScreenPosition(
+        _ uiv: UIViewController,
+        _ wxMetal: WXMetalRender,
+        _ numberOfPanes: Int,
+        _ ortInt: Int,
+        _ x: CGFloat,
+        _ y: CGFloat
+        ) -> LatLon {
+        let width = Double(uiv.view.bounds.size.width)
+        let height = Double(uiv.view.bounds.size.height)
+        var yModified = Double(y)
+        var xModified = Double(x)
+        if numberOfPanes != 1 {
+            if y > uiv.view.frame.height / 2.0 {
+                yModified -= Double(uiv.view.frame.height) / 2.0
+            }
+        }
+        if numberOfPanes == 4 {
+            if x > uiv.view.frame.width / 2.0 {
+                xModified -= Double(uiv.view.frame.width) / 2.0
+            }
+        }
+        let density = Double(ortInt * 2) / width
+        // FIXME Is this needed
+        //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
+        var yMiddle = 0.0
+        var xMiddle = 0.0
+        if numberOfPanes == 1 {
+            yMiddle = height / 2.0
+        } else {
+            yMiddle = height / 4.0
+        }
+        if numberOfPanes == 4 {
+            xMiddle = width / 4.0
+        } else {
+            xMiddle = width / 2.0
+        }
+        //let glv = wxMetal[0]!
+        let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
+        let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
+        let radarLocation = LatLon(preferences.getString("RID_" + wxMetal.rid + "_X", "0.00"),
+                                   preferences.getString("RID_" + wxMetal.rid + "_Y", "0.00"))
+        let ppd = wxMetal.pn.oneDegreeScaleFactor
+        let newX = radarLocation.lon + (Double(wxMetal.xPos) / Double(wxMetal.zoom) + diffX) / ppd
+        let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
+        var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
+        newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
+        //let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
+        //let pointerLocation = LatLon.reversed(newX, newY)
+        return LatLon.reversed(newX, newY)
+    }
 }

@@ -279,7 +279,7 @@ final class UtilityMetar {
         let obsSiteRange = 200.0
         var currentDistance = 0.0
         obsSites.indices.forEach {
-            currentDistance = LatLon.distance(radarLocation, obsSites[$0].location, .M)
+            currentDistance = LatLon.distance(radarLocation, obsSites[$0].location, .MILES)
             if currentDistance < obsSiteRange {
                 obsListSb += obsSites[$0].name + ","
             }
