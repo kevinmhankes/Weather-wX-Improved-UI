@@ -64,7 +64,7 @@ public class UtilityRadarUI {
         _ uiv: UIViewController,
         _ wxMetal: WXMetalRender,
         _ numberOfPanes: Int,
-        _ ortInt: Int,
+        _ ortInt: Float,
         _ x: CGFloat,
         _ y: CGFloat
         ) -> LatLon {

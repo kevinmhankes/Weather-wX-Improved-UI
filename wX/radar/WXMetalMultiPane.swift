@@ -34,8 +34,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var siteButton = [ObjectToolbarIcon]()
     var inOglAnim = false
     var longPressCount = 0
-    var width = 0.0
-    var height = 0.0
     var numberOfPanes = 1
     var oneMinRadarFetch = Timer()
     let ortInt: Float = 250.0
@@ -499,51 +497,18 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
-        // FIXME move as much of this code out as possible
-        width = Double(self.view.bounds.size.width)
-        height = Double(self.view.bounds.size.height)
-        var yModified = Double(y)
-        var xModified = Double(x)
-        if numberOfPanes != 1 {
-            if y > self.view.frame.height / 2.0 {
-                yModified -= Double(self.view.frame.height) / 2.0
-            }
-        }
-        if numberOfPanes == 4 {
-            if x > self.view.frame.width / 2.0 {
-                xModified -= Double(self.view.frame.width) / 2.0
-            }
-        }
-        let density = Double(ortInt * 2) / width
-        // FIXME Is this needed
-        //if numberOfPanes==4 {density = 2.0 * Double(oglrArr[0].ortInt * 2.0) / width}
-        var yMiddle = 0.0
-        var xMiddle = 0.0
-        if numberOfPanes == 1 {
-            yMiddle = height / 2.0
-        } else {
-            yMiddle = height / 4.0
-        }
-        if numberOfPanes == 4 {
-            xMiddle = width / 4.0
-        } else {
-            xMiddle = width / 2.0
-        }
-        let glv = wxMetal[0]!
-        let diffX = density * (xMiddle - xModified) / Double(wxMetal[index]!.zoom)
-        let diffY = density * (yMiddle - yModified) / Double(wxMetal[index]!.zoom)
-        let radarLocation = LatLon(preferences.getString("RID_" + wxMetal[index]!.rid + "_X", "0.00"),
-                                   preferences.getString("RID_" + wxMetal[index]!.rid + "_Y", "0.00"))
-        let ppd = wxMetal[index]!.pn.oneDegreeScaleFactor
-        let newX = radarLocation.lon + (Double(wxMetal[index]!.xPos) / Double(wxMetal[index]!.zoom) + diffX) / ppd
-        let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
-        var newY = test2 + (Double(-wxMetal[index]!.yPos) / Double(wxMetal[index]!.zoom) + diffY) / ppd
-        newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
-        let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
-        let pointerLocation = LatLon.reversed(newX, newY)
+        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
+            self,
+            wxMetal[index]!,
+            numberOfPanes,
+            ortInt,
+            x,
+            y
+        )
+        let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
-        let radarSiteLocation = UtilityLocation.getSiteLocation(site: glv.rid)
-        let distRid = LatLon.distance(radarSiteLocation, LatLon.reversed(newX, newY), .MILES)
+        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
+        let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
