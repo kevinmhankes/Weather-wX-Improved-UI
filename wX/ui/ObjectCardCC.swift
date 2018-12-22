@@ -50,6 +50,22 @@ final class ObjectCardCC {
         stackViewLocal.addArrangedSubview(ObjectCardStackView(arrangedSubviews: [img.view, sVVertView]).view)
     }
 
+    func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
+        if isUS {
+            img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+        } else {
+            img.view.image = UtilityNWS.getIcon(
+                UtilityCanada.translateIconNameCurrentConditions(
+                    objFcst.objCC.data1,
+                    objFcst.objCC.status
+                )
+                ).image
+        }
+        tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+        tv3.text = objFcst.objCC.rawMetar
+    }
+
     func addGestureRecognizer(_ gesture1: UITapGestureRecognizer,
                               _ gesture2: UITapGestureRecognizer,
                               _ gesture3: UITapGestureRecognizer) {

@@ -27,6 +27,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var stackViewCurrentConditions: ObjectStackView!
     var stackViewForecast: ObjectStackView!
     var stackViewHazards: ObjectStackView!
+    var ccCard: ObjectCardCC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,28 +63,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getContentMaster() {
         self.oldLocation = Location.latlon
-        self.stackViewCurrentConditions.view.subviews.forEach {$0.removeFromSuperview()}
-        self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
-        self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
-        self.stackView.subviews.forEach {$0.removeFromSuperview()}
-        self.forecastImage = []
-        self.forecastText = []
-        self.stackViewHazards.view.isHidden = true
-        //
-        // location card loaded regardless of settings
-        //
-        let stackViewLocationButton = ObjectStackViewHS()
-        stackViewLocationButton.setup()
-        self.stackView.addArrangedSubview(stackViewLocationButton)
-        self.objLabel = ObjectTextView(
-            stackViewLocationButton,
-            Location.name,
-            UIFont.systemFont(ofSize: 20),
-            UIColor.blue
-        )
-        self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
-        self.getForecastData()
-        self.getContent()
+        clearViews()
+        addLocationSelectionCard()
+        getForecastData()
+        getContent()
     }
 
     func getForecastData() {
@@ -96,7 +79,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objFcst = Utility.getCurrentConditionsV2(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
                 self.getCurrentConditionCards(self.stackViewCurrentConditions.view)
             }
         }
@@ -266,8 +248,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
-        let ccCard = ObjectCardCC(stackView, objFcst, isUS)
-        ccCard.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
+        if ccCard == nil {
+            ccCard = ObjectCardCC(stackView, objFcst, isUS)
+            ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
+        } else {
+            ccCard?.updateCard(objFcst, isUS)
+        }
     }
 
     func getContentText(_ product: String, _ stackView: UIStackView) {
@@ -349,5 +335,31 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             token = "wpcimg"
         }
         self.goToVC(token)
+    }
+
+    func addLocationSelectionCard() {
+        //
+        // location card loaded regardless of settings
+        //
+        let stackViewLocationButton = ObjectStackViewHS()
+        stackViewLocationButton.setup()
+        self.stackView.addArrangedSubview(stackViewLocationButton)
+        self.objLabel = ObjectTextView(
+            stackViewLocationButton,
+            Location.name,
+            UIFont.systemFont(ofSize: 20),
+            UIColor.blue
+        )
+        self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
+    }
+
+    func clearViews() {
+        //self.stackViewCurrentConditions.view.subviews.forEach {$0.removeFromSuperview()}
+        self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
+        self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
+        self.stackView.subviews.forEach {$0.removeFromSuperview()}
+        self.forecastImage = []
+        self.forecastText = []
+        self.stackViewHazards.view.isHidden = true
     }
 }
