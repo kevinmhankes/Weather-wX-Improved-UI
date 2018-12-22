@@ -12,6 +12,7 @@ final class ObjectForecastPackage7Day {
     var icons = [String]()
     private var shortForecastAl = [String]()
     private var detailedForecastAl = [String]()
+    var locationIndex = 0
 
     convenience init(_ locNum: Int, _ html: String) {
         self.init()

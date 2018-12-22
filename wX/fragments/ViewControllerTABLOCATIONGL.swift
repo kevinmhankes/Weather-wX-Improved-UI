@@ -7,8 +7,6 @@
 import UIKit
 
 class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
-    
-    // FIXME Canada has one less location card, need to redo cards if country switch
 
     var locationButton = UITextView()
     var forecastText = [String]()
@@ -75,14 +73,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             self.isUS = false
         }
         clearViews()
-        //addLocationSelectionCard()
         getForecastData()
         getContent()
-        //if self.isUS {
-        //    self.isUSDisplayed = true
-        //} else {
-        //    self.isUSDisplayed = false
-        //}
     }
 
     func getForecastData() {
@@ -101,20 +93,13 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getLocationForecastSevenDay() {
-        // FIXME on immediate phone restart sometimes 7day does not show
-        // figure out a way to detect/retry once
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
+            self.objSevenDay.locationIndex = Location.getCurrentLocation()
             DispatchQueue.main.async {
-                /*ObjectForecastPackage7Day.getSevenDayCards(
-                    self.stackViewForecast.view,
-                    self.objSevenDay,
-                    self.isUS
-                )*/
-                print(self.objSevenDay.fcstList.count)
-                print(self.objCard7DayCollection?.sevenDayCardList.count ?? 0)
                 if self.objCard7DayCollection == nil
-                    || !self.isUS {
+                    || !self.isUS
+                    || self.objSevenDay.locationIndex != self.objCard7DayCollection?.locationIndex {
                     self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
                     self.objCard7DayCollection = ObjectCard7DayCollection(
                         self.stackViewForecast.view,
@@ -122,6 +107,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         self.objSevenDay,
                         self.isUS
                     )
+                    self.objCard7DayCollection?.locationIndex = Location.getCurrentLocation()
                 } else {
                     self.objCard7DayCollection?.update(
                         self.objSevenDay,
@@ -277,7 +263,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.present(alert2, animated: true, completion: nil)
     }
 
-    // FIXME move to class as static method
     func getCurrentConditionCards(_ stackView: UIStackView) {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
@@ -388,12 +373,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func clearViews() {
-        //self.stackViewCurrentConditions.view.subviews.forEach {$0.removeFromSuperview()}
-        if self.isUSDisplayed != self.isUS {
-            //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
-        }
         self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
-        //self.stackView.subviews.forEach {$0.removeFromSuperview()}
         self.extraDataCards.forEach {$0.removeFromSuperview()}
         self.forecastImage = []
         self.forecastText = []

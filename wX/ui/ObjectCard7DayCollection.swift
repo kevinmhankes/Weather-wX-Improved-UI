@@ -10,7 +10,8 @@ final class ObjectCard7DayCollection {
 
     let scrollView: UIScrollView
     var sevenDayCardList = [ObjectCard7Day]()
-
+    var locationIndex = 0
+    
     init(
         _ stackView: UIStackView,
         _ scrollView: UIScrollView,
