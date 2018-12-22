@@ -56,7 +56,14 @@ class WXGLNexradLevel3HailIndex {
                         stormList.append(ec.getLongitude() * -1.0)
                         // FIXME the lat shifts need to be considered when scale changes in radarSite
                         // FIXME need a set of radar datafiles to test against that have tvs/hi, etc
-                        if hailSizeDbl > 0.99 {
+                        let baseSize = 0.015
+                        [0.99, 1.99, 2.99].enumerated().forEach { index, size in
+                            if hailSizeDbl > size {
+                                stormList.append(ec.getLatitude() + 0.015 + Double(index) * baseSize)
+                                stormList.append(ec.getLongitude() * -1.0)
+                            }
+                        }
+                        /*if hailSizeDbl > 0.99 {
                             stormList.append(ec.getLatitude() + 0.015)
                             stormList.append(ec.getLongitude() * -1.0)
                         }
@@ -67,7 +74,7 @@ class WXGLNexradLevel3HailIndex {
                         if hailSizeDbl > 2.99 {
                             stormList.append(ec.getLatitude() + 0.045)
                             stormList.append(ec.getLongitude() * -1.0)
-                        }
+                        }*/
                     }
                     index += 1
                 }

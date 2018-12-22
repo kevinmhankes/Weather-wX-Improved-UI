@@ -164,7 +164,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         } else if $0.hasPrefix("METAL-") {
                             self.getNexradRadar($0.split("-")[1], stackViewLocal)
                         }
-                        
                         // "METAL-RADAR": "Local NEXRAD Radar"
                     }
                 }

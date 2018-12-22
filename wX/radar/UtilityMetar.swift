@@ -211,8 +211,6 @@ final class UtilityMetar {
         return obsArrAviationColor
     }
 
-    // FIXME add 2nd argument with default value of true to fetch data
-    // add , fetchData: Bool = true 
     static func findClosestMetar(_ location: LatLon) -> String {
         var lines = rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
