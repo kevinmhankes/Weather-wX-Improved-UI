@@ -7,8 +7,9 @@
 import UIKit
 
 final class ObjectCard7DayCollection {
-    
+
     let scrollView: UIScrollView
+    var sevenDayCardList = [ObjectCard7Day]()
 
     init(
         _ stackView: UIStackView,
@@ -29,6 +30,7 @@ final class ObjectCard7DayCollection {
                                                                 action: #selector(self.sevenDayAction)),
                                          UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction)))
                 numCards += 1
+                sevenDayCardList.append(obj)
             }
         }
         if !isUS {
@@ -38,6 +40,30 @@ final class ObjectCard7DayCollection {
             _ = ObjectCardSunTime(stackViewLocal7Day)
             numCards += 1
         }
+    }
+
+    func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
+        //var numCards = 0
+        let dayArr = objSevenDay.fcstList
+        dayArr.indices.forEach {
+            if dayArr[$0] != "" {
+                if sevenDayCardList.count > $0 {
+                    sevenDayCardList[$0].update($0, objSevenDay.icons, dayArr, isUS)
+                }
+                //let obj = ObjectCard7Day(stackViewLocal7Day, $0, objSevenDay.icons, dayArr, isUS)
+                //numCards += 1
+            }
+        }
+        
+        // FIXME if country has changed deal with this
+        
+        /*if !isUS {
+            _ = ObjectCALegal(stackViewLocal7Day)
+            numCards += 1
+        } else {
+            _ = ObjectCardSunTime(stackViewLocal7Day)
+            numCards += 1
+        }*/
     }
 
     @objc func sevenDayAction() {

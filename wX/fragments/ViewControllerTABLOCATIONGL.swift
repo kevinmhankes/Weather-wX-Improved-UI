@@ -7,6 +7,8 @@
 import UIKit
 
 class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
+    
+    // FIXME Canada has one less location card, need to redo cards if country switch
 
     var locationButton = UITextView()
     var forecastText = [String]()
@@ -59,13 +61,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        addLocationSelectionCard()
         self.getContentMaster()
     }
 
     func getContentMaster() {
         self.oldLocation = Location.latlon
         clearViews()
-        addLocationSelectionCard()
+        //addLocationSelectionCard()
         getForecastData()
         getContent()
     }
@@ -97,12 +100,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     self.isUS
                 )*/
 
-                self.objCard7DayCollection = ObjectCard7DayCollection(
-                    self.stackViewForecast.view,
-                    self.scrollView,
-                    self.objSevenDay,
-                    self.isUS
-                )
+                if self.objCard7DayCollection == nil {
+                    self.objCard7DayCollection = ObjectCard7DayCollection(
+                        self.stackViewForecast.view,
+                        self.scrollView,
+                        self.objSevenDay,
+                        self.isUS
+                    )
+                } else {
+                    self.objCard7DayCollection?.update(
+                        self.objSevenDay,
+                        self.isUS
+                    )
+                }
             }
         }
     }
@@ -363,9 +373,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func clearViews() {
         //self.stackViewCurrentConditions.view.subviews.forEach {$0.removeFromSuperview()}
-        self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
+        //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
         self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
-        self.stackView.subviews.forEach {$0.removeFromSuperview()}
+        //self.stackView.subviews.forEach {$0.removeFromSuperview()}
         self.forecastImage = []
         self.forecastText = []
         self.stackViewHazards.view.isHidden = true
