@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 import UIKit
+import AVFoundation
 
 class ViewControllerWPCMPD: UIwXViewController {
 
@@ -12,11 +13,17 @@ class ViewControllerWPCMPD: UIwXViewController {
     var txtArr = [String]()
     var mpdNumber = ""
     var text = ""
+    var product = ""
+    var playListButton = ObjectToolbarIcon()
+    var playButton = ObjectToolbarIcon()
+    let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
+        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         mpdNumber = ActVars.WPCMPDNo
         if mpdNumber != "" {
@@ -36,7 +43,8 @@ class ViewControllerWPCMPD: UIwXViewController {
             }
             mpdList.forEach {
                 let imgUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + $0 + ".gif"
-                self.text = UtilityDownload.getTextProduct("WPCMPD" + $0)
+                self.product = "WPCMPD" + $0
+                self.text = UtilityDownload.getTextProduct(self.product)
                 self.txtArr.append(self.text)
                 self.bitmaps.append(Bitmap(imgUrl))
             }
@@ -64,5 +72,13 @@ class ViewControllerWPCMPD: UIwXViewController {
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps, text)
+    }
+    
+    @objc func playClicked() {
+        UtilityActions.playClicked(text, synth, playButton)
+    }
+    
+    @objc func playlistClicked() {
+        UtilityPlayList.add(self.product, text, self, playListButton)
     }
 }

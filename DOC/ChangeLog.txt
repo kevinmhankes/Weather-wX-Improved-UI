@@ -10,7 +10,9 @@
 // TODO check AWC images in WPCImg
 // TODO remove labels for UITapGestureRecognizerWithData
 // move more vars out of global namespace - like ActVars , camelcase in process
+// TODO Metal radar widget on main screen
 
+2018_12_21 53200 [BUG] WPC MPD didn't have TTS setup
 2018_12_15 53100 [BUG] GOES16
   	         add extension to UIAlertAction
 		 change toolbar text color from light gray to white
