@@ -55,6 +55,7 @@
 		03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */; };
 		03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
+		03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */; };
 		F0008EF81DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */; };
 		F0008EFA1DBD9DC00033B950 /* ViewControllerNHCSTORM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0008EF91DBD9DC00033B950 /* ViewControllerNHCSTORM.swift */; };
 		F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */; };
@@ -416,6 +417,7 @@
 		03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerf.swift; sourceTree = "<group>"; };
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
+		03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNwsIcon.swift; sourceTree = "<group>"; };
 		F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithData.swift; sourceTree = "<group>"; };
 		F0008EF91DBD9DC00033B950 /* ViewControllerNHCSTORM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNHCSTORM.swift; sourceTree = "<group>"; };
 		F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3WindBarbs.swift; sourceTree = "<group>"; };
@@ -999,6 +1001,7 @@
 			children = (
 				F07761A51DA895A800E36F02 /* UtilityLocationFragment.swift */,
 				F0B335C41DA3FDA60035BD36 /* UtilityNWS.swift */,
+				03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */,
 				F03B74D61DD2BC0100727969 /* ViewControllerTABLOCATIONGL.swift */,
 				F08643E91DA3CAB600A8558E /* ViewControllerTABMISC.swift */,
 				F02ACC971EB34C5400C0E828 /* ViewControllerTABPARENT.swift */,
@@ -1696,6 +1699,7 @@
 				F0008EFA1DBD9DC00033B950 /* ViewControllerNHCSTORM.swift in Sources */,
 				F07B5C0C1E53D4DE00555058 /* ObjectImage.swift in Sources */,
 				F096C09C1DADB18700E63046 /* ViewControllerHOURLY.swift in Sources */,
+				03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */,
 				F01B6BF71DD52C47002D5178 /* WXGLTextObject.swift in Sources */,
 				031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */,
 				037FF28B21A9A3F30002E6E6 /* Matrix4.m in Sources */,

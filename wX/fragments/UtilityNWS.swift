@@ -8,124 +8,6 @@ import UIKit
 
 final class UtilityNWS {
 
-    // FIXME move to dedicated file
-    static let NWSICON = [
-        "bkn.png": R.Drawable.bkn,
-        "blizzard.png": R.Drawable.blizzard,
-        "cold.png": R.Drawable.cold,
-        "du.png": R.Drawable.du,
-        "fc.png": R.Drawable.fc,
-        "few.png": R.Drawable.few,
-        "fg.png": R.Drawable.fg,
-        "fu.png": R.Drawable.fu,
-        "fzra.png": R.Drawable.fzra,
-        "fzra_sn.png": R.Drawable.fzra_sn,
-        "hi_nshwrs.png": R.Drawable.hi_nshwrs,
-        "hi_ntsra.png": R.Drawable.hi_ntsra,
-        "hi_shwrs.png": R.Drawable.hi_shwrs,
-        "hi_tsra.png": R.Drawable.hi_tsra,
-        "hot.png": R.Drawable.hot,
-        "hz.png": R.Drawable.hz,
-        "ip.png": R.Drawable.ip,
-        "nbkn.png": R.Drawable.nbkn,
-        "nblizzard.png": R.Drawable.nblizzard,
-        "ncold.png": R.Drawable.ncold,
-        "ndu.png": R.Drawable.ndu,
-        "nfc.png": R.Drawable.nfc,
-        "nfew.png": R.Drawable.nfew,
-        "nfg.png": R.Drawable.nfg,
-        "nfu.png": R.Drawable.nfu,
-        "nfzra.png": R.Drawable.nfzra,
-        "nfzra_sn.png": R.Drawable.nfzra_sn,
-        "nip.png": R.Drawable.nip,
-        "novc.png": R.Drawable.novc,
-        "nra_fzra.png": R.Drawable.nra_fzra,
-        "nraip.png": R.Drawable.nraip,
-        "nra.png": R.Drawable.nra,
-        "nra_sn.png": R.Drawable.nra_sn,
-        "nsct.png": R.Drawable.nsct,
-        "nscttsra.png": R.Drawable.nscttsra,
-        "nshra.png": R.Drawable.nshra,
-        "nskc.png": R.Drawable.nskc,
-        "nsn.png": R.Drawable.nsn,
-        "ntor.png": R.Drawable.ntor,
-        "ntsra.png": R.Drawable.ntsra,
-        "nwind_bkn.png": R.Drawable.nwind_bkn,
-        "nwind_few.png": R.Drawable.nwind_few,
-        "nwind_ovc.png": R.Drawable.nwind_ovc,
-        "nwind_sct.png": R.Drawable.nwind_sct,
-        "nwind_skc.png": R.Drawable.nwind_skc,
-        "ovc.png": R.Drawable.ovc,
-        "ra_fzra.png": R.Drawable.ra_fzra,
-        "raip.png": R.Drawable.raip,
-        "ra.png": R.Drawable.ra,
-        "sct.png": R.Drawable.sct,
-        "scttsra.png": R.Drawable.scttsra,
-        "shra.png": R.Drawable.shra,
-        "skc.png": R.Drawable.skc,
-        "sn.png": R.Drawable.sn,
-        "tor.png": R.Drawable.tor,
-        "tsra.png": R.Drawable.tsra,
-        "wind_bkn.png": R.Drawable.wind_bkn,
-        "wind_few.png": R.Drawable.wind_few,
-        "wind_ovc.png": R.Drawable.wind_ovc,
-        "wind_sct.png": R.Drawable.wind_sct,
-        "wind_skc.png": R.Drawable.wind_skc,
-        "rain.png": R.Drawable.ra,
-        "nrain.png": R.Drawable.nra,
-        "rain_showers.png": R.Drawable.shra,
-        "nrain_showers.png": R.Drawable.nshra,
-        "snow.png": R.Drawable.sn,
-        "nsnow.png": R.Drawable.nsn,
-        "ra_sn.png": R.Drawable.ra_sn,
-        "sn_ip.png": R.Drawable.sn_ip,
-        "snow_sleet.png": R.Drawable.sn_ip,
-        "nsn_ip.png": R.Drawable.nsn_ip,
-        "nsnow_sleet.png": R.Drawable.nsn_ip,
-        "rasn.png": R.Drawable.rasn,
-        "nrasn.png": R.Drawable.nrasn,
-        "hurr.png": R.Drawable.hurr,
-        "hurr-noh.png": R.Drawable.hurr_noh,
-        //"tropstorm.png": R.Drawable.tropstorm,
-        //"tropstorm-noh.png": R.Drawable.tropstorm_noh,
-        "nmix.png": R.Drawable.nmix,
-        "mix.png": R.Drawable.mix,
-        //"ts.png": R.Drawable.ts,
-        //"ts_hur_flags.png": R.Drawable.ts_hur_flags,
-        "nsleet.png": R.Drawable.nip,
-        "sleet.png": R.Drawable.ip,
-        "haze.png": R.Drawable.hz,
-        "nhaze.png": R.Drawable.ovc,
-        "nhz.png": R.Drawable.ovc,
-        "rain_fzra.png": R.Drawable.ra_fzra,
-        "nrain_fzra.png": R.Drawable.nra_fzra,
-        "nrain_snow.png": R.Drawable.nra_sn,
-        "rain_snow.png": R.Drawable.ra_sn,
-        "ntsra_hi.png": R.Drawable.hi_ntsra,
-        "tsra_hi.png": R.Drawable.hi_tsra,
-        "tsra_sct.png": R.Drawable.scttsra,
-        "ntsra_sct.png": R.Drawable.nscttsra,
-        "nfog.png": R.Drawable.nfg,
-        "fog.png": R.Drawable.fg,
-        "snow_fzra.png": R.Drawable.fzra_sn,
-        "nsnow_fzra.png": R.Drawable.nfzra_sn,
-        "minus_ra.png": R.Drawable.minus_ra,
-        "nminus_ra.png": R.Drawable.nminus_ra,
-        "nhi_tsra.png": R.Drawable.nhi_tsra,
-        "ts.png": R.Drawable.ts,
-        "ts_hur_flags.png": R.Drawable.ts_hur_flags,
-        "ts_warn.png": R.Drawable.tropstorm_noh,
-        "nts_warn.png": R.Drawable.tropstorm_noh,
-        "hurricane.png": R.Drawable.hurr_noh,
-        "nhurricane.png": R.Drawable.hurr_noh,
-        "tropstorm.png": R.Drawable.tropstorm,
-        "tropical_storm.png": R.Drawable.tropstorm_noh,
-        "ntropical_storm.png": R.Drawable.tropstorm_noh,
-        "tropstorm-noh.png": R.Drawable.tropstorm_noh,
-        "nsmoke.png": R.Drawable.nfu,
-        "smoke.png": R.Drawable.fu
-    ]
-
     static func getIcon(_ url: String) -> Bitmap {
         //print(url)
         var bitmap = Bitmap()
@@ -141,7 +23,7 @@ final class UtilityNWS {
             fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n")
         }
         //print(fileName)
-        if let fnResId = NWSICON[fileName + ".png"] {
+        if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
             bitmap = parseBitmap(fileName)
@@ -203,10 +85,10 @@ final class UtilityNWS {
         }
         var bitmapLeft = Bitmap()
         var bitmapRight = Bitmap()
-        if let fileNameLeft = NWSICON[aLocal + ".png"] {
+        if let fileNameLeft = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmapLeft = UtilityIO.readBitmapResourceFromFile(fileNameLeft)
         }
-        if let fileNameRight = NWSICON[bLocal + ".png"] {
+        if let fileNameRight = UtilityNwsIcon.iconMap[bLocal + ".png"] {
             bitmapRight = UtilityIO.readBitmapResourceFromFile(fileNameRight)
         }
         let size = CGSize(width: dimens, height: dimens)
@@ -267,7 +149,7 @@ final class UtilityNWS {
             NSAttributedStringKey.foregroundColor: textColor
             ]  as [NSAttributedStringKey: Any]?
         var bitmap = Bitmap()
-        if let fileName = NWSICON[aLocal + ".png"] {
+        if let fileName = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
         }
         let imageSize = bitmap.image.size
