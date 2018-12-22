@@ -11,7 +11,7 @@ final class ObjectCard7DayCollection {
     let scrollView: UIScrollView
     var sevenDayCardList = [ObjectCard7Day]()
     var locationIndex = 0
-    
+
     init(
         _ stackView: UIStackView,
         _ scrollView: UIScrollView,
@@ -55,16 +55,6 @@ final class ObjectCard7DayCollection {
                 //numCards += 1
             }
         }
-        
-        // FIXME if country has changed deal with this
-        
-        /*if !isUS {
-            _ = ObjectCALegal(stackViewLocal7Day)
-            numCards += 1
-        } else {
-            _ = ObjectCardSunTime(stackViewLocal7Day)
-            numCards += 1
-        }*/
     }
 
     @objc func sevenDayAction() {

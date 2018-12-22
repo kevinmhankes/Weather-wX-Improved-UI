@@ -59,7 +59,7 @@ public class UtilityRadarUI {
         }
         return message
     }
-    
+
     static func getLatLonFromScreenPosition(
         _ uiv: UIViewController,
         _ wxMetal: WXMetalRender,

@@ -36,7 +36,7 @@ final class ObjectToolbar: UIToolbar {
                                blue: AppColors.primaryColorBlue,
                                alpha: CGFloat(1.0))
     }
-    
+
     func setTransparent() {
         setBackgroundImage(
             UIImage(),

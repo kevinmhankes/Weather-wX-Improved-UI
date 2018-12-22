@@ -333,7 +333,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func productClicked(sender: ObjectToolbarIcon) {
-        //let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
         let alert = ObjectPopUp(self, "Select radar product:", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTDWR.forEach {product in
@@ -351,9 +350,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func productChanged(_ index: Int, _ product: String) {
         stopAnimate()
-        self.wxMetal[index]!.product = product
-        self.wxMetal[index]!.getRadar("")
-        productButton[index].title = product
+        self.wxMetal[index]!.changeProduct(product)
         updateColorLegend()
         getPolygonWarnings()
     }
@@ -542,8 +539,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         )
         alert.addAction(
             UIAlertAction(
-                "Radar status message: " + self.wxMetal[index]!.rid,
-                { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
+                "Radar status message: " + self.wxMetal[index]!.rid, { _ in
+                    UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
             )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)

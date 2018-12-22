@@ -664,7 +664,7 @@ class WXMetalRender {
             locCircleBuffers.generateMtlBuffer(device)
         }
     }
-    
+
     func resetRidAndGet(_ rid: String) {
         self.rid = rid
         loadGeometry()
@@ -674,6 +674,12 @@ class WXMetalRender {
         getRadar("")
     }
     
+    func changeProduct(_ product: String) {
+        self.product = product
+        getRadar("")
+        productButton.title = product
+    }
+
     func getGpsString() -> String {
         let truncateAmount = 10
         return gpsLocation.latString.truncate(truncateAmount)
