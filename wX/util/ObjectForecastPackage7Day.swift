@@ -67,7 +67,7 @@ final class ObjectForecastPackage7Day {
 
     static var scrollView = UIScrollView()
 
-    static func getSevenDayCards(
+  /*  static func getSevenDayCards(
         _ stackView: UIStackView,
         _ objSevenDay: ObjectForecastPackage7Day,
         _ isUS: Bool = true
@@ -97,5 +97,5 @@ final class ObjectForecastPackage7Day {
 
     @objc static func sevenDayAction() {
         scrollView.scrollToTop()
-    }
+    }*/
 }

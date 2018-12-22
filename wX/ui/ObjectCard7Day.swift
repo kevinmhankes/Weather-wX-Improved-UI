@@ -11,12 +11,13 @@ final class ObjectCard7Day {
     private let textPadding: CGFloat = 80.0
     private var isUS = true
     private let sV: ObjectCardStackView
+    private let tv: ObjectTextViewLarge
     private let tv2: ObjectTextViewSmallGray
+    let img = ObjectCardImage()
 
     init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
         self.isUS = isUS
-        let img = ObjectCardImage()
-        let tv = ObjectTextViewLarge(textPadding)
+        tv = ObjectTextViewLarge(textPadding)
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         tv2 = ObjectTextViewSmallGray(textPadding)
         let sV2 = StackView(arrangedSubviews: [tv.view, tv2.view])
@@ -28,6 +29,16 @@ final class ObjectCard7Day {
         UtilityUI.setupStackView(sVVertView)
         sV = ObjectCardStackView(arrangedSubviews: [img.view, sVVertView])
         stackView.addArrangedSubview(sV.view)
+        if dayImgUrl.count > index {
+            img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
+        }
+        let textArr = self.format7Day(dayArr[index].replace("</text>", ""))
+        tv.text = textArr.0
+        tv2.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+
+    func update( _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
+        self.isUS = isUS
         if dayImgUrl.count > index {
             img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
         }

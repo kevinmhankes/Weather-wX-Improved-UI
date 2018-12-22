@@ -28,6 +28,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var stackViewForecast: ObjectStackView!
     var stackViewHazards: ObjectStackView!
     var ccCard: ObjectCardCC?
+    var objCard7DayCollection: ObjectCard7DayCollection?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +91,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                ObjectForecastPackage7Day.getSevenDayCards(
+                /*ObjectForecastPackage7Day.getSevenDayCards(
                     self.stackViewForecast.view,
+                    self.objSevenDay,
+                    self.isUS
+                )*/
+
+                self.objCard7DayCollection = ObjectCard7DayCollection(
+                    self.stackViewForecast.view,
+                    self.scrollView,
                     self.objSevenDay,
                     self.isUS
                 )

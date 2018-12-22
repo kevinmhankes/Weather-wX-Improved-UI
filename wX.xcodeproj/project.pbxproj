@@ -21,6 +21,7 @@
 		032EE2BF21A9617E00460D5D /* LatLonStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EE2BE21A9617E00460D5D /* LatLonStr.swift */; };
 		032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */; };
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
+		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
 		03562F481FCCBF0800456395 /* WXGLNexradLevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F471FCCBF0800456395 /* WXGLNexradLevelData.swift */; };
@@ -382,6 +383,7 @@
 		032EE2BE21A9617E00460D5D /* LatLonStr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLonStr.swift; sourceTree = "<group>"; };
 		032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerADHOCLOCATION.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
+		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		03562F471FCCBF0800456395 /* WXGLNexradLevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevelData.swift; sourceTree = "<group>"; };
@@ -1155,6 +1157,7 @@
 				F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */,
 				F02DF2541EB89FCF00A951EA /* ObjectCALegal.swift */,
 				F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */,
+				0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */,
 				F07B5C111E53D74400555058 /* ObjectCardCC.swift */,
 				03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */,
 				031546331FC634CB0020EF7B /* ObjectCardImage.swift */,
@@ -1704,6 +1707,7 @@
 				031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */,
 				037FF28B21A9A3F30002E6E6 /* Matrix4.m in Sources */,
 				F02841811DEFBC6000474084 /* Location.swift in Sources */,
+				0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */,
 				F0B335E01DA3FDA70035BD36 /* UtilityNWSGOESFullDisk.swift in Sources */,
 				F0838FCE1DCA674700517EBF /* UtilityHelp.swift in Sources */,
 				F062098C1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift in Sources */,
