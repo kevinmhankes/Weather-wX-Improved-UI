@@ -36,6 +36,15 @@ final class ObjectToolbar: UIToolbar {
                                blue: AppColors.primaryColorBlue,
                                alpha: CGFloat(1.0))
     }
+    
+    func setTransparent() {
+        setBackgroundImage(
+            UIImage(),
+            forToolbarPosition: .any,
+            barMetrics: .default
+        )
+        setShadowImage(UIImage(), forToolbarPosition: .any)
+    }
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

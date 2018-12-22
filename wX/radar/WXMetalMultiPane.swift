@@ -63,20 +63,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
             toolbarTop.items = ObjectToolbarItems(items).items
             if UIPreferences.radarToolbarTransparent {
-                // FIXME below methods should be consolidated into toolbar class
-                toolbarTop.setBackgroundImage(UIImage(),
-                                           forToolbarPosition: .any,
-                                           barMetrics: .default)
-                toolbarTop.setShadowImage(UIImage(), forToolbarPosition: .any)
+                toolbarTop.setTransparent()
             }
         }
         toolbar.setConfig()
         if UIPreferences.radarToolbarTransparent {
-            // FIXME consolidate
-            toolbar.setBackgroundImage(UIImage(),
-                                       forToolbarPosition: .any,
-                                       barMetrics: .default)
-            toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+            toolbar.setTransparent()
         }
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(self,
@@ -342,9 +334,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
 
-    // FIXME
     @objc func productClicked(sender: ObjectToolbarIcon) {
-        let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
+        //let alert = ObjectPopUp(self, "Select radar product:", productButton[0])
+        let alert = ObjectPopUp(self, "Select radar product:", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTDWR.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in
