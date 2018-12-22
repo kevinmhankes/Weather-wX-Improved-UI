@@ -16,44 +16,18 @@ final class UtilityGOES16 {
     ]
 
     static func getImageSize(_ product: String, _ sector: String) -> String {
-        var size: String
-        switch product {
-        //case "GEOCOLOR", "01", "02", "03", "05": size = "1200x1200"
-        //case "GEOCOLOR", "01", "02", "03", "05": size = "600x600"
-        //default: size = "600x600"
-        default: size = "1200x1200"
-        }
+        let size = "1200x1200"
         return sizeMap[sector] ?? size
     }
 
     static func getUrl(_ product: String, _ sector: String) -> [String] {
-        var url: String
-        switch sector {
-        case "FD": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk.php"
-        case "CONUS": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS.php"
-        default: url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_sectors.php?sector=" + sector
-        }
         var sectorLocal = "SECTOR/" + sector
         if sector == "FD" || sector == "CONUS" {
             sectorLocal = sector
         }
-        let html = url.getHtml()
-        var randomString = "/."
-        if product == "GEOCOLOR" || sector == "FD" || sector == "CONUS" {
-            randomString = ""
-        }
-        // FIXME can we just use latest
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         let latestUrl = MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
-        //let parseString = "href=.(https://cdn.star.nesdis.noaa.gov/GOES16/ABI/"
-        //    + sectorLocal + "/" + product + randomString + "/[0-9]{11}_GOES16-ABI-"
-        //    + sector + "-" + product + "-" + getImageSize(product, sector) + ".jpg).>"
-        //print(parseString)
-        //let imgUrl = html.parse(parseString)
-        //let timeStamp = imgUrl.parse(product + "/([0-9]{11})_GOES16-ABI-" + sector)
-        //print(imgUrl)
-        //return [imgUrl, timeStamp]
         print(latestUrl)
         return [latestUrl, ""]
     }

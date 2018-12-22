@@ -73,11 +73,11 @@ class ViewControllerWPCMPD: UIwXViewController {
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps, text)
     }
-    
+
     @objc func playClicked() {
         UtilityActions.playClicked(text, synth, playButton)
     }
-    
+
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, text, self, playListButton)
     }
