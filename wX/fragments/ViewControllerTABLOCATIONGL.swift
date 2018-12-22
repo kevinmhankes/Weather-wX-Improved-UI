@@ -25,12 +25,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var timeButton = ObjectToolbarIcon()
     var oldLocation = LatLon()
     var isUS = true
+    var isUSDisplayed = true
     var objLabel = ObjectTextView()
     var stackViewCurrentConditions: ObjectStackView!
     var stackViewForecast: ObjectStackView!
     var stackViewHazards: ObjectStackView!
     var ccCard: ObjectCardCC?
     var objCard7DayCollection: ObjectCard7DayCollection?
+    var extraDataCards = [ObjectStackViewHS]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,10 +69,20 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getContentMaster() {
         self.oldLocation = Location.latlon
+        if Location.isUS {
+            self.isUS = true
+        } else {
+            self.isUS = false
+        }
         clearViews()
         //addLocationSelectionCard()
         getForecastData()
         getContent()
+        //if self.isUS {
+        //    self.isUSDisplayed = true
+        //} else {
+        //    self.isUSDisplayed = false
+        //}
     }
 
     func getForecastData() {
@@ -99,8 +111,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     self.objSevenDay,
                     self.isUS
                 )*/
-
-                if self.objCard7DayCollection == nil {
+                print(self.objSevenDay.fcstList.count)
+                print(self.objCard7DayCollection?.sevenDayCardList.count ?? 0)
+                if self.objCard7DayCollection == nil
+                    || !self.isUS {
+                    self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
                     self.objCard7DayCollection = ObjectCard7DayCollection(
                         self.stackViewForecast.view,
                         self.scrollView,
@@ -154,6 +169,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     default:
                         let stackViewLocal = ObjectStackViewHS()
                         stackViewLocal.setup()
+                        self.extraDataCards.append(stackViewLocal)
                         self.stackView.addArrangedSubview(stackViewLocal)
                         if $0.hasPrefix("TXT-") {
                             self.getContentText($0.split("-")[1], stackViewLocal)
@@ -373,11 +389,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func clearViews() {
         //self.stackViewCurrentConditions.view.subviews.forEach {$0.removeFromSuperview()}
-        //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
+        if self.isUSDisplayed != self.isUS {
+            //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
+        }
         self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
         //self.stackView.subviews.forEach {$0.removeFromSuperview()}
+        self.extraDataCards.forEach {$0.removeFromSuperview()}
         self.forecastImage = []
         self.forecastText = []
+        self.extraDataCards = []
         self.stackViewHazards.view.isHidden = true
     }
 }
