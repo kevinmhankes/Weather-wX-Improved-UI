@@ -72,10 +72,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         //
         // location card loaded regardless of settings
         //
-        let stackViewLocal = ObjectStackViewHS()
-        stackViewLocal.setup()
-        self.stackView.addArrangedSubview(stackViewLocal)
-        self.objLabel = ObjectTextView(stackViewLocal, Location.name, UIFont.systemFont(ofSize: 20), UIColor.blue)
+        let stackViewLocationButton = ObjectStackViewHS()
+        stackViewLocationButton.setup()
+        self.stackView.addArrangedSubview(stackViewLocationButton)
+        self.objLabel = ObjectTextView(
+            stackViewLocationButton,
+            Location.name,
+            UIFont.systemFont(ofSize: 20),
+            UIColor.blue
+        )
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
         self.getForecastData()
         self.getContent()
@@ -91,6 +96,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objFcst = Utility.getCurrentConditionsV2(Location.getCurrentLocation())
             DispatchQueue.main.async {
+                //self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
                 self.getCurrentConditionCards(self.stackViewCurrentConditions.view)
             }
         }
@@ -102,10 +108,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                ObjectForecastPackage7Day.getSevenDayCards(self.scrollView,
-                                                           self.stackViewForecast.view,
-                                                           self.objSevenDay,
-                                                           self.isUS)
+                ObjectForecastPackage7Day.getSevenDayCards(
+                    self.stackViewForecast.view,
+                    self.objSevenDay,
+                    self.isUS
+                )
             }
         }
     }

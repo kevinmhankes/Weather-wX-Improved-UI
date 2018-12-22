@@ -67,13 +67,14 @@ final class ObjectForecastPackage7Day {
 
     static var scrollView = UIScrollView()
 
-    static func getSevenDayCards(_ sv: UIScrollView, _ stackView: UIStackView,
-                                 _ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
+    static func getSevenDayCards(
+        _ stackView: UIStackView,
+        _ objSevenDay: ObjectForecastPackage7Day,
+        _ isUS: Bool = true
+        ) {
         var numCards = 0
-        scrollView = sv
         let stackViewLocal7Day = ObjectStackViewHS()
         stackViewLocal7Day.setupWithPadding()
-        //stackView.subviews.forEach {$0.removeFromSuperview()}
         stackView.addArrangedSubview(stackViewLocal7Day)
         let dayArr = objSevenDay.fcstList
         dayArr.indices.forEach {

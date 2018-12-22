@@ -34,7 +34,7 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
             DispatchQueue.main.async {
                 _ = ObjectCardCC(self.stackView, self.objFcst, true)
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
-                ObjectForecastPackage7Day.getSevenDayCards(self.scrollView, self.stackView, self.objSevenDay)
+                ObjectForecastPackage7Day.getSevenDayCards(self.stackView, self.objSevenDay)
             }
         }
     }
