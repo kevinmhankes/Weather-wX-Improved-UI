@@ -161,7 +161,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                             self.getContentText($0.split("-")[1], stackViewLocal)
                         } else if $0.hasPrefix("IMG-") {
                             self.getContentImage($0.split("-")[1], stackViewLocal)
+                        } else if $0.hasPrefix("METAL-") {
+                            self.getNexradRadar($0.split("-")[1], stackViewLocal)
                         }
+                        
+                        // "METAL-RADAR": "Local NEXRAD Radar"
                     }
                 }
                 self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
@@ -309,6 +313,18 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 )
             }
         }
+    }
+
+    func getNexradRadar(_ product: String, _ stackView: UIStackView) {
+       /* DispatchQueue.global(qos: .userInitiated).async {
+            let bitmap = UtilityDownload.getImageProduct(product)
+            DispatchQueue.main.async {
+                let imgObj = ObjectImage(stackView, bitmap, hs: true)
+                imgObj.addGestureRecognizer(
+                    UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:)))
+                )
+            }
+        }*/
     }
 
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
