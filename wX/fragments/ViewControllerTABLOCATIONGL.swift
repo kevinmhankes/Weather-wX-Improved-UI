@@ -49,12 +49,30 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                          target: nil,
                                          action: nil)
         fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems([flexBarButton,
+        /*toolbar.items = ObjectToolbarItems([flexBarButton,
                                             dashButton,
                                             wfoTextButton,
                                             cloudButton,
                                             radarButton,
-                                            menuButton]).items
+                                            menuButton]).items*/
+        
+        
+        if UIPreferences.mainScreenRadarFab {
+            toolbar.items = ObjectToolbarItems([flexBarButton,
+                                                dashButton,
+                                                wfoTextButton,
+                                                cloudButton,
+                                                menuButton]).items
+        } else {
+            toolbar.items = ObjectToolbarItems([flexBarButton,
+                                                dashButton,
+                                                wfoTextButton,
+                                                cloudButton,
+                                                radarButton,
+                                                menuButton]).items
+        }
+        
+        
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.view.addSubview(toolbar)
@@ -81,6 +99,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
+        if fab != nil {
+            self.view.bringSubviewToFront(fab!.view)
+        }
     }
 
     func getLocationForecast() {

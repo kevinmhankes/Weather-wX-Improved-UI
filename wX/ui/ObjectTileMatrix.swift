@@ -27,12 +27,20 @@ final class ObjectImageTileMatrix: NSObject {
                                          target: nil,
                                          action: nil)
         fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems([flexBarButton,
-                                            dashButton,
-                                            wfoTextButton,
-                                            cloudButton,
-                                            radarButton,
-                                            menuButton]).items
+        if UIPreferences.mainScreenRadarFab {
+            toolbar.items = ObjectToolbarItems([flexBarButton,
+                                                dashButton,
+                                                wfoTextButton,
+                                                cloudButton,
+                                                menuButton]).items
+        } else {
+            toolbar.items = ObjectToolbarItems([flexBarButton,
+                                                dashButton,
+                                                wfoTextButton,
+                                                cloudButton,
+                                                radarButton,
+                                                menuButton]).items
+        }
         uiv.view.addSubview(toolbar)
         let rowCount = UIPreferences.tilesPerRow
         let iconsPerRow = CGFloat(rowCount)

@@ -11,6 +11,7 @@ class ViewControllerTABPARENT: UIViewController {
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     var objTileMatrix = ObjectImageTileMatrix()
+    var fab: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class ViewControllerTABPARENT: UIViewController {
                                                              blue: AppColors.primaryColorBlue,
                                                              alpha: CGFloat(1.0))
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        if UIPreferences.mainScreenRadarFab {
+            fab = ObjectFab(self, #selector(radarClicked))
+            self.view.addSubview(fab!.view)
+        }
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
@@ -45,7 +50,6 @@ class ViewControllerTABPARENT: UIViewController {
                 self.tabBarController!.selectedIndex = selectedIndex - 1
             }
         }
-        //view.setNeedsLayout()
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizer) {
@@ -71,4 +75,9 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
     }
+    
+    // for FAB
+    //@objc func radarClicked(sender: UITapGestureRecognizer) {
+    //    UtilityActions.radarClicked(self)
+    //}
 }
