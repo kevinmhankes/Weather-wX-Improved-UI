@@ -43,6 +43,12 @@
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
 		0389EE7C1FB8BC0A0016BED3 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0389EE7B1FB8BC0A0016BED3 /* Solar.swift */; };
 		039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039795B62032D7C100F37CCE /* ObjectMetar.swift */; };
+		0399A14A21CFD3BB0096ECFB /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14321CFD3B90096ECFB /* FloatyViewController.swift */; };
+		0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */; };
+		0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14521CFD3BA0096ECFB /* FloatyItem.swift */; };
+		0399A14D21CFD3BB0096ECFB /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14621CFD3BA0096ECFB /* FloatyDelegate.swift */; };
+		0399A14E21CFD3BB0096ECFB /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14821CFD3BA0096ECFB /* FloatyManager.swift */; };
+		0399A14F21CFD3BB0096ECFB /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14921CFD3BA0096ECFB /* Floaty.swift */; };
 		03A328EC1FC8E84D00FFABCD /* UIwXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A328EB1FC8E84C00FFABCD /* UIwXViewController.swift */; };
 		03AB4AA721AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */; };
 		03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */; };
@@ -406,6 +412,13 @@
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
 		0389EE7B1FB8BC0A0016BED3 /* Solar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		039795B62032D7C100F37CCE /* ObjectMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetar.swift; sourceTree = "<group>"; };
+		0399A14321CFD3B90096ECFB /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
+		0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
+		0399A14521CFD3BA0096ECFB /* FloatyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyItem.swift; sourceTree = "<group>"; };
+		0399A14621CFD3BA0096ECFB /* FloatyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
+		0399A14721CFD3BA0096ECFB /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floaty.h; sourceTree = "<group>"; };
+		0399A14821CFD3BA0096ECFB /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
+		0399A14921CFD3BA0096ECFB /* Floaty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
 		03A328EB1FC8E84C00FFABCD /* UIwXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewController.swift; sourceTree = "<group>"; };
 		03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL3FourBit.swift; sourceTree = "<group>"; };
 		03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL2.swift; sourceTree = "<group>"; };
@@ -1151,6 +1164,13 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				0399A14721CFD3BA0096ECFB /* Floaty.h */,
+				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
+				0399A14621CFD3BA0096ECFB /* FloatyDelegate.swift */,
+				0399A14521CFD3BA0096ECFB /* FloatyItem.swift */,
+				0399A14821CFD3BA0096ECFB /* FloatyManager.swift */,
+				0399A14321CFD3B90096ECFB /* FloatyViewController.swift */,
+				0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				F05806741DB187FB009E2786 /* ImageScrollView.swift */,
 				F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */,
@@ -1517,6 +1537,7 @@
 				F0A5EF4C1DB7E8D800FB18BF /* ViewControllerSPCFIRESUMMARY.swift in Sources */,
 				F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */,
 				F0B335371DA3FD3B0035BD36 /* WXGLNexradLevel3HailIndex.swift in Sources */,
+				0399A14A21CFD3BB0096ECFB /* FloatyViewController.swift in Sources */,
 				03562F481FCCBF0800456395 /* WXGLNexradLevelData.swift in Sources */,
 				F0DAD9341DA7018D00C2BD4B /* huffman.c in Sources */,
 				F0CD67731DB777380023931E /* ViewControllerSUNMOONDATA.swift in Sources */,
@@ -1581,8 +1602,10 @@
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,
 				F08643EA1DA3CAB600A8558E /* ViewControllerTABMISC.swift in Sources */,
+				0399A14E21CFD3BB0096ECFB /* FloatyManager.swift in Sources */,
 				F0B335701DA3FD6F0035BD36 /* SevereWarning.swift in Sources */,
 				F0B31EE11DB3DB9800239850 /* UtilitySettingsMain.swift in Sources */,
+				0399A14F21CFD3BB0096ECFB /* Floaty.swift in Sources */,
 				F07761A61DA895A800E36F02 /* UtilityLocationFragment.swift in Sources */,
 				F03F6FAA1E0D3E4D00E4B7FA /* UtilityLightning.swift in Sources */,
 				03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */,
@@ -1630,6 +1653,7 @@
 				F0B335711DA3FD6F0035BD36 /* Spotter.swift in Sources */,
 				F0E0CC031EBEAAA900D5E9D4 /* UtilityColorPalette165.swift in Sources */,
 				F06033D81EB2CCBD0083BA91 /* ObjectTileMatrix.swift in Sources */,
+				0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */,
 				F0B3357C1DA3FD6F0035BD36 /* UtilityCities.swift in Sources */,
 				032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */,
 				F0B335531DA3FD510035BD36 /* Editor.swift in Sources */,
@@ -1731,6 +1755,7 @@
 				F0B335ED1DA3FDA70035BD36 /* UtilitySPCSoundings.swift in Sources */,
 				F02DF2551EB89FCF00A951EA /* ObjectCALegal.swift in Sources */,
 				03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */,
+				0399A14D21CFD3BB0096ECFB /* FloatyDelegate.swift in Sources */,
 				0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */,
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
 				F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */,
@@ -1771,6 +1796,7 @@
 				F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */,
 				F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */,
 				F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */,
+				0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,
 				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
 				F0DF4C751DBEB8D200D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift in Sources */,
@@ -1978,7 +2004,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "wX/wX-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1997,7 +2023,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "wX/wX-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
