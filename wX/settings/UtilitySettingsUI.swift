@@ -15,7 +15,8 @@ final class UtilitySettingsUI {
         "DUALPANE_RADAR_ICON": "Dual-pane radar from main screen",
         "WFO_REMEMBER_LOCATION": "WFO - Remember location",
         "SHOW_METAR_IN_CC": "Show Metar in CC",
-        "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars"
+        "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
+        "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)"
         ]
 
     static let helpStrings = [
@@ -27,7 +28,8 @@ final class UtilitySettingsUI {
         "Dual-pane radar from main screen": "Dual-pane radar from main screen",
         "WFO - Remember location": "Remember the last WFO used for product viewer.",
         "Show Metar in CC": "Show raw Metar in current conditions.",
-        "Radar: transparent toolbars": "In the radar screen make the toolbar transparent."
+        "Radar: transparent toolbars": "In the radar screen make the toolbar transparent.",
+        "Main screen radar button (requires restart)": "Show a floating action button on the main screen for access to radar."
     ]
 
     static let booleanDefault  = [
@@ -40,7 +42,8 @@ final class UtilitySettingsUI {
         "DUALPANE_RADAR_ICON": "false",
         "WFO_REMEMBER_LOCATION": "false",
         "SHOW_METAR_IN_CC": "false",
-        "RADAR_TOOLBAR_TRANSPARENT": "true"
+        "RADAR_TOOLBAR_TRANSPARENT": "true",
+        "UI_MAIN_SCREEN_RADAR_FAB": "true"
         ]
 
     static let picker = [

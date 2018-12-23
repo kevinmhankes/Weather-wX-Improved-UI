@@ -13,9 +13,9 @@ public class ObjectFab {
     init(_ uiv: UIViewController, _ action: Selector) {
         //floaty = Floaty(frame: UIScreen.main.bounds)
         floaty.sticky = true
-        floaty.paddingY = 56.0
+        floaty.paddingY = 62.0
         //floaty.friendlyTap = false
-        floaty.buttonColor = AppColors.primaryBackgroundBlueUIColor
+        floaty.buttonColor = AppColors.primaryColorUIColor
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: "ic_flash_on_24dp")!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }

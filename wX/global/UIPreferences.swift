@@ -27,6 +27,7 @@ class UIPreferences {
     static var tilesPerRow = 3
     static var homescreenTextLength = 0
     static var radarToolbarTransparent = true
+    static var mainScreenRadarFab = true
 
     static func initialize() {
         showMetarInCC = preferences.getString("SHOW_METAR_IN_CC", "false").hasPrefix("t")
@@ -43,5 +44,6 @@ class UIPreferences {
         nwsTextRemovelinebreaks = preferences.getString("NWS_TEXT_REMOVELINEBREAKS", "true").hasPrefix("t")
         textviewFontSize = CGFloat(preferences.getInt("TEXTVIEW_FONT_SIZE", Int(textviewFontSize)))
         radarToolbarTransparent = preferences.getString("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
+        mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
     }
 }
