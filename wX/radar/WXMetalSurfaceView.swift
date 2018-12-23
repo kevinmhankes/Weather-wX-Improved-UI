@@ -29,19 +29,19 @@ final class WXMetalSurfaceView {
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                if gestureRecognizer.state == UIGestureRecognizerState.changed {
+                if gestureRecognizer.state == UIGestureRecognizer.State.changed {
                     let pointInView = gestureRecognizer.location(in: uiv.view)
                     let xDelta = Float(($0!.lastPanLocation.x - pointInView.x)/uiv.view.bounds.width) * panSensivity
                     let yDelta = Float(($0!.lastPanLocation.y - pointInView.y)/uiv.view.bounds.height) * panSensivity
                     $0!.xPos -= xDelta
                     $0!.yPos += yDelta
                     $0!.lastPanLocation = pointInView
-                } else if gestureRecognizer.state == UIGestureRecognizerState.began {
+                } else if gestureRecognizer.state == UIGestureRecognizer.State.began {
                     $0!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
                 }
             }
         } else {
-            if gestureRecognizer.state == UIGestureRecognizerState.changed {
+            if gestureRecognizer.state == UIGestureRecognizer.State.changed {
                 let pointInView = gestureRecognizer.location(in: uiv.view)
                 let xDelta = Float((wxMetal[radarIndex]!.lastPanLocation.x
                     - pointInView.x)/uiv.view.bounds.width) * panSensivity
@@ -50,7 +50,7 @@ final class WXMetalSurfaceView {
                 wxMetal[radarIndex]!.xPos -= xDelta
                 wxMetal[radarIndex]!.yPos += yDelta
                 wxMetal[radarIndex]!.lastPanLocation = pointInView
-            } else if gestureRecognizer.state == UIGestureRecognizerState.began {
+            } else if gestureRecognizer.state == UIGestureRecognizer.State.began {
                 wxMetal[radarIndex]!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
             }
         }
@@ -213,7 +213,7 @@ final class WXMetalSurfaceView {
         let fudge: Float = 0.01
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                if gestureRecognizer.state == UIGestureRecognizerState.changed
+                if gestureRecognizer.state == UIGestureRecognizer.State.changed
                     && $0!.zoom < maxZoom
                     && $0!.zoom > minZoom {
                     setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
@@ -230,7 +230,7 @@ final class WXMetalSurfaceView {
                 $0!.setZoom()
             }
         } else {
-            if gestureRecognizer.state == UIGestureRecognizerState.changed
+            if gestureRecognizer.state == UIGestureRecognizer.State.changed
                 && wxMetal[radarIndex]!.zoom < maxZoom
                 && wxMetal[radarIndex]!.zoom > minZoom {
                 setModifiedZoom(wxMetal[radarIndex]!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown),

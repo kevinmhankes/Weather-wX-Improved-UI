@@ -71,12 +71,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(WXMetalMultipane.invalidateGPS),
-                                                   name: NSNotification.Name.UIApplicationWillResignActive,
+                                                   name: UIApplication.willResignActiveNotification,
                                                    object: nil)
         }
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willEnterForeground),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         pangeRange.forEach {
@@ -191,7 +191,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         commandQueue = device.makeCommandQueue()
         timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
-        timer.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
         setupGestures()
         if RadarPreferences.locdotFollowsGps {
             self.locationManager.requestWhenInUseAuthorization()
@@ -516,7 +516,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
         let alert = UIAlertController(title: "Closest radar site:",
-                                      message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
+                                      message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
@@ -545,7 +545,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                     UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
             )
         )
-        let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
             if let popoverController = alert.popoverPresentationController {

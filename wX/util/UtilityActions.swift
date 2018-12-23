@@ -129,9 +129,9 @@ final class UtilityActions {
 
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let alert = UIAlertController(title: UtilityHelp.helpStrings[token], message: "",
-                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+                                      preferredStyle: UIAlertController.Style.actionSheet)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = menuButton}
         uiv.present(alert, animated: true, completion: nil)
     }
@@ -153,7 +153,7 @@ final class UtilityActions {
             menuList.enumerated().forEach {if $1.contains("Help Mode") {menuList[$0] = "Help Mode - On"}}
         }
         let alert = UIAlertController(title: "Select from:", message: "",
-                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+                                      preferredStyle: UIAlertController.Style.actionSheet)
         menuList.forEach { rid in
             let action = UIAlertAction(title: rid, style: .default, handler: {_ in menuItemClicked(uiv, rid, button)})
             if let popoverController = alert.popoverPresentationController {
@@ -161,7 +161,7 @@ final class UtilityActions {
             }
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         uiv.present(alert, animated: true, completion: nil)
     }
 

@@ -12,8 +12,8 @@ final class CustomTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 14)]
-        appearance.setTitleTextAttributes(attributes as Any as? [NSAttributedStringKey: Any], for: .normal)
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 14)]
+        appearance.setTitleTextAttributes(attributes as Any as? [NSAttributedString.Key: Any], for: .normal)
         self.tabBar.tintColor = .white
         self.tabBar.barTintColor = .white
         self.tabBar.isTranslucent = true

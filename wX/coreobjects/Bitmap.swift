@@ -17,7 +17,7 @@ final class Bitmap {
                                           filledWithColor: UIColor.white,
                                           scale: 1.0,
                                           opaque: false)
-        self.dataBm = UIImagePNGRepresentation(self.image)!
+        self.dataBm = self.image.pngData()!
     }
 
     init(_ bm: Data) {
@@ -41,14 +41,14 @@ final class Bitmap {
 
     init(_ image: UIImage) {
         self.image = image
-        if let data = UIImagePNGRepresentation(image) {
+        if let data = image.pngData() {
             self.dataBm = data
         } else {
             self.image = Bitmap.imageWithSize(size: CGSize(width: 86, height: 86),
                                               filledWithColor: UIColor.white,
                                               scale: 1.0,
                                               opaque: false)
-            self.dataBm = UIImagePNGRepresentation(self.image)!
+            self.dataBm = self.image.pngData()!
         }
     }
 

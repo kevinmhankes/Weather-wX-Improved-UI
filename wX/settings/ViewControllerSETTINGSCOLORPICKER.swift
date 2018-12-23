@@ -64,7 +64,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     func HSBColorColorPickerTouched(sender: HSBColorPicker,
                                     color: UIColor,
                                     point: CGPoint,
-                                    state: UIGestureRecognizerState) {
+                                    state: UIGestureRecognizer.State) {
         let myColorComponents = color.components
         let colorInt: Int = (0xFF << 24)
             | (myColorComponents.red << 16)

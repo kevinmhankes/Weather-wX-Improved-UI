@@ -54,9 +54,9 @@ final class UtilityNWS {
     static func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
         let textFontAttributes = [
-            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): textFont,
-            NSAttributedStringKey.foregroundColor: textColor
-            ] as [NSAttributedStringKey: Any]?
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
+            NSAttributedString.Key.foregroundColor: textColor
+            ] as [NSAttributedString.Key: Any]?
         var num1 = ""
         var num2 = ""
         var aSplit = iconLeftString.split(",")
@@ -145,9 +145,9 @@ final class UtilityNWS {
         }
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
         let textFontAttributes = [
-            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): textFont ,
-            NSAttributedStringKey.foregroundColor: textColor
-            ]  as [NSAttributedStringKey: Any]?
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
+            NSAttributedString.Key.foregroundColor: textColor
+            ]  as [NSAttributedString.Key: Any]?
         var bitmap = Bitmap()
         if let fileName = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)

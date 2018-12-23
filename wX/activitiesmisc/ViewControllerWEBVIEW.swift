@@ -25,7 +25,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         self.view.addSubview(toolbar)
         webView = UIWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
             height: UIScreen.main.bounds.height - toolbar.frame.size.height))
-        webView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         if ActVars.WEBVIEWstateCode != "tornado" && !ActVars.WEBVIEWuseUrl {
             stateCodeCurrent = ActVars.WEBVIEWstateCode
             stateCodeCurrent = preferences.getString("STATE_CODE", stateCodeCurrent)

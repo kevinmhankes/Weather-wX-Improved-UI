@@ -64,7 +64,7 @@ class ViewControllerSPCMCD: UIwXViewController {
                 } else {
                     _ = ObjectTextView(self.stackView, "No active SPC MCDs")
                 }
-                self.view.bringSubview(toFront: self.toolbar)
+                self.view.bringSubviewToFront(self.toolbar)
             }
         }
     }

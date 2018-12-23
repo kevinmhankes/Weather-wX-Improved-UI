@@ -10,7 +10,7 @@ final class ObjectStackViewHS: UIStackView {
 
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         axis = .vertical
         alignment = .center
         spacing = 0.0

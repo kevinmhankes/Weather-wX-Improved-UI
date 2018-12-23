@@ -12,7 +12,7 @@ final class ObjectTileImage {
 
     init(_ stackView: UIStackView, _ sV: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat) {
         let bitmap = UtilityIO.readBitmapResourceFromFile(filename)
-        imgL.contentMode = UIViewContentMode.scaleAspectFit
+        imgL.contentMode = UIView.ContentMode.scaleAspectFit
         imgL.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(imgL)
         imgL.tag = index

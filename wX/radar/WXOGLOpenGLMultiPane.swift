@@ -127,12 +127,12 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(WXOGLOpenGLMultiPane.invalidateGPS),
-                                                   name: NSNotification.Name.UIApplicationWillResignActive,
+                                                   name: UIApplication.willResignActiveNotification,
                                                    object: nil)
         }
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willEnterForeground),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         self.preferredFramesPerSecond = 0
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
@@ -273,7 +273,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
             siteButton.enumerated().forEach {$1.title = oglrArr[$0].rid}
         }
         glviewArr.enumerated().forEach {
-            $1.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            $1.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             $1.context = context!
             $1.drawableDepthFormat = .format24
             $1.delegate = oglrArr[$0].self
@@ -483,7 +483,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                 + glv.gpsLocation.lonString.truncate(10)
         }
         let alert = UIAlertController(title: "Select closest radar site:",
-                                      message: alertMessage, preferredStyle: UIAlertControllerStyle.actionSheet)
+                                      message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
@@ -506,7 +506,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
         alert.addAction(UIAlertAction(
             "Show radar status message", {_ in UtilityRadarUI.getRadarStatus(self, self.oglrArr[0].rid)})
         )
-        let dismiss = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = radarsiteButton

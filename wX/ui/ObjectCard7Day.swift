@@ -21,7 +21,7 @@ final class ObjectCard7Day {
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         tv2 = ObjectTextViewSmallGray(textPadding)
         let sV2 = StackView(arrangedSubviews: [tv.view, tv2.view])
-        sV2.alignment = UIStackViewAlignment.top
+        sV2.alignment = UIStackView.Alignment.top
         UtilityUI.setupStackView(sV2)
         let sV3 = StackView()
         UtilityUI.setupStackView(sV3)

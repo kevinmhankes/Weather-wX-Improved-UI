@@ -23,12 +23,12 @@ final class ObjectToolbar: UIToolbar {
             frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight,
                            width: UIScreen.main.bounds.width,
                            height: UIPreferences.toolbarHeight)
-            autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
+            autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
         case .top:
             frame = CGRect(x: 0, y: UIPreferences.statusBarHeight,
                            width: UIScreen.main.bounds.width,
                            height: UIPreferences.toolbarHeight)
-            autoresizingMask = [UIViewAutoresizing.flexibleWidth]
+            autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
         sizeToFit()
         barTintColor = UIColor(red: AppColors.primaryColorRed,

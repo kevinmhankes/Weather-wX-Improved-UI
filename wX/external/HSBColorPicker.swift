@@ -5,7 +5,7 @@ internal protocol HSBColorPickerDelegate: NSObjectProtocol {
     func HSBColorColorPickerTouched(sender: HSBColorPicker,
                                     color: UIColor,
                                     point: CGPoint,
-                                    state: UIGestureRecognizerState)
+                                    state: UIGestureRecognizer.State)
 }
 
 // http://stackoverflow.com/questions/27208386/simple-swift-color-picker-popover-ios

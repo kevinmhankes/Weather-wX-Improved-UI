@@ -74,7 +74,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
             DispatchQueue.main.async {
                 self.tv.text = html
                 self.bitmaps.filter {($0.isValid)}.forEach {_ = ObjectImage(self.stackView, $0)}
-                self.view.bringSubview(toFront: self.toolbar)
+                self.view.bringSubviewToFront(self.toolbar)
             }
         }
     }

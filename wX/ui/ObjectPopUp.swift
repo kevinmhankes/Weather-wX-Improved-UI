@@ -13,7 +13,7 @@ final class ObjectPopUp {
     private var button: UIBarButtonItem
 
     init(_ uiv: UIViewController, _ title: String, _ button: UIBarButtonItem) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
     }
@@ -23,7 +23,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: [String],
          _ fn: @escaping (String) -> Void) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
         list.forEach { item in
@@ -41,7 +41,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: [Int],
          _ fn: @escaping (Int) -> Void) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
         list.forEach { item in
@@ -55,7 +55,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: StrideTo<Int>,
          _ fn: @escaping (Int) -> Void) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
         list.forEach { item in
@@ -69,7 +69,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: [String],
          _ fn: @escaping (Int) -> Void) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
         list.forEach {
@@ -84,7 +84,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: [ObjectMenuTitle],
          _ fn: @escaping (Int) -> Void) {
-        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
         list.enumerated().forEach { index, title in
@@ -98,7 +98,7 @@ final class ObjectPopUp {
     }
 
     func finish() {
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = button
         }

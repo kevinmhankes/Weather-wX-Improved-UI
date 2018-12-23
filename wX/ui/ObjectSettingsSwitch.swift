@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectSettingsSwitch {
 
-    let vw = UIButton(type: UIButtonType.system)
+    let vw = UIButton(type: UIButton.ButtonType.system)
     let sw = UISwitch()
     var prefMap = [String: String]()
 

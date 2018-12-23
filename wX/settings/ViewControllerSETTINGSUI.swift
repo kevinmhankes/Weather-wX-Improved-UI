@@ -22,7 +22,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
                                       for: .touchUpInside)
             switchObject.sw.addTarget(self,
                                       action: #selector(self.switchChanged(sender:)),
-                                      for: UIControlEvents.valueChanged)
+                                      for: UIControl.Event.valueChanged)
             switchObject.sw.tag = $0
         }
         generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)

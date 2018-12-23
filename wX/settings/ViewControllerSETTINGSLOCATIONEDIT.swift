@@ -57,11 +57,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         view.addSubview(stackView)
         let viewsDictionary = ["stackView": stackView]
         let stackViewH = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[stackView]-20-|",
-                                                        options: NSLayoutFormatOptions(rawValue: 0),
+                                                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                         metrics: nil,
                                                         views: viewsDictionary)
         let stackViewV = NSLayoutConstraint.constraints(withVisualFormat: "V:|-70-[stackView]-70-|",
-                                                        options: NSLayoutFormatOptions(rawValue: 0),
+                                                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                         metrics: nil,
                                                         views: viewsDictionary)
         view.addConstraints(stackViewH)

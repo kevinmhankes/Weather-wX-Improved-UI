@@ -35,21 +35,21 @@ final class UIColorLegend: UIView {
 
     func drawText(_ string: String, _ x: CGFloat, _ y: CGFloat) {
         let textAttributes = [
-            NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white.cgColor,
-            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.systemFont(ofSize: 15)
-            ] as [NSAttributedStringKey: Any]?
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white.cgColor,
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont.systemFont(ofSize: 15)
+            ] as [NSAttributedString.Key: Any]?
         let strn = NSString(string: string)
         drawTextString(context!, strn, textAttributes, x, y)
     }
 
     func drawTextString(_ context: CGContext,
                         _ text: NSString,
-                        _ attributes: [NSAttributedStringKey: Any]?,
+                        _ attributes: [NSAttributedString.Key: Any]?,
                         _ x: CGFloat,
                         _ y: CGFloat) {
         let textTransform = CGAffineTransform.init(scaleX: 1.0, y: -1.0)
         context.textMatrix = textTransform
-        if let font = attributes![NSAttributedStringKey.font] as? UIFont {
+        if let font = attributes![NSAttributedString.Key.font] as? UIFont {
             let attributedString = NSAttributedString(string: text as String, attributes: attributes)
             let textSize = text.size(withAttributes: attributes)
             let textPath = CGPath(rect: CGRect(x: x,

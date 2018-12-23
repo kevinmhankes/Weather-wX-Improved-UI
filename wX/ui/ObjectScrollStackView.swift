@@ -10,7 +10,7 @@ public class ObjectScrollStackView {
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
         uiv.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[scrollView]|",
                                                                options: .alignAllCenterX,
@@ -21,16 +21,16 @@ public class ObjectScrollStackView {
                                                                metrics: nil,
                                                                views: ["scrollView": scrollView]))
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         scrollView.addSubview(stackView)
         scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[stackView]|",
-                                                                 options: NSLayoutFormatOptions.alignAllCenterX,
+                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                                                                  metrics: nil,
                                                                  views: ["stackView": stackView]))
         scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[stackView]-50-|",
-                                                                 options: NSLayoutFormatOptions.alignAllCenterX,
+                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                                                                  metrics: nil,
                                                                  views: ["stackView": stackView]))
     }
@@ -56,13 +56,13 @@ public class ObjectScrollStackView {
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         stackView.alignment = .center
-        stackView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         scrollView.addSubview(stackView)
         scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-4-[stackView]-4-|",
-                                                                 options: NSLayoutFormatOptions.alignAllCenterX,
+                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                                                                  metrics: nil, views: ["stackView": stackView]))
         scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]|",
-                                                                 options: NSLayoutFormatOptions.alignAllCenterX,
+                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                                                                  metrics: nil,
                                                                  views: ["stackView": stackView]))
     }

@@ -37,7 +37,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         ActVars.vc = self
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willEnterForeground),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         let toolbar = ObjectToolbar(.top)
         let radarButton = ObjectToolbarIcon(self, "ic_flash_on_24dp", #selector(radarClicked))
@@ -45,7 +45,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
         menuButton = ObjectToolbarIcon(self, "ic_more_vert_white_24dp", #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(self, "ic_report_24dp", #selector(dashClicked))
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace,
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
                                          target: nil,
                                          action: nil)
         fixedSpace.width = UIPreferences.toolbarIconSpacing
@@ -235,7 +235,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc func locationAction() {
         let alert = UIAlertController(title: "Select location:",
                                       message: "",
-                                      preferredStyle: UIAlertControllerStyle.actionSheet)
+                                      preferredStyle: UIAlertController.Style.actionSheet)
         MyApplication.locations.indices.forEach { location in
             let action = UIAlertAction(title: Location.getName(location),
                                        style: .default,
@@ -245,7 +245,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         alert.addAction(UIAlertAction(title: "Add location..",
                                       style: .default,
                                       handler: {_ in self.locationChanged(Location.numLocations)}))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = self.menuButton
         }
@@ -255,11 +255,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc func ccAction() {
         let alert2 = UIAlertController(title: "Select from:",
                                        message: "",
-                                       preferredStyle: UIAlertControllerStyle.actionSheet)
+                                       preferredStyle: UIAlertController.Style.actionSheet)
         alert2.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert2.addAction(UIAlertAction(title: "Sun/Moon data..", style: .default, handler: {_ in self.sunMoonData()}))
         alert2.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
-        alert2.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alert2.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert2.popoverPresentationController {
             popoverController.barButtonItem = self.menuButton
         }

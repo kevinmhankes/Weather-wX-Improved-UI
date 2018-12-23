@@ -19,8 +19,9 @@ class ViewControllerLIGHTNING: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(ViewControllerLIGHTNING.shareClicked))

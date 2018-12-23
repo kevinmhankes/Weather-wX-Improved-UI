@@ -10,16 +10,17 @@ final class ObjectStackView {
 
     private let sV = UIStackView()
 
-    init(_ distribution: UIStackViewDistribution, _ axis: UILayoutConstraintAxis) {
+    init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis) {
         sV.distribution = distribution
         sV.axis = axis
     }
 
-    convenience init(_ distribution: UIStackViewDistribution, _ axis: UILayoutConstraintAxis, _ spacing: CGFloat) {
+    convenience init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis, _ spacing: CGFloat) {
         self.init(distribution, axis)
         sV.spacing = spacing
     }
 
-    var view: UIStackView { return sV}
-
+    var view: UIStackView {
+        return sV
+    }
 }

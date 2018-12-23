@@ -29,7 +29,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willEnterForeground),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
         let toolbarTop = ObjectToolbar(.top)
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(self.layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))

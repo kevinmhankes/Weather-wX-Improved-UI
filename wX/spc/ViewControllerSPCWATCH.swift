@@ -55,7 +55,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
                 } else {
                     _ = ObjectTextView(self.stackView, "No active watches")
                 }
-                self.view.bringSubview(toFront: self.toolbar)
+                self.view.bringSubviewToFront(self.toolbar)
             }
         }
     }

@@ -13,7 +13,7 @@ final class ObjectImage {
     var bitmap = Bitmap()
 
     init() {
-        img.contentMode = UIViewContentMode.scaleAspectFit
+        img.contentMode = UIView.ContentMode.scaleAspectFit
         img.translatesAutoresizingMaskIntoConstraints = false
         img.isUserInteractionEnabled = true
     }

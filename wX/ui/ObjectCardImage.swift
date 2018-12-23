@@ -12,7 +12,7 @@ final class ObjectCardImage {
 
     init() {
         image.isUserInteractionEnabled = true
-        image.contentMode = UIViewContentMode.scaleAspectFit
+        image.contentMode = UIView.ContentMode.scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }

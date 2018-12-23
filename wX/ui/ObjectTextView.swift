@@ -16,7 +16,7 @@ final class ObjectTextView {
         tv.isScrollEnabled = false
         tv.isEditable = false
         tv.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-        tv.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
     }
 
     // UIScreen.main.bounds.width uiv.view.frame.width

@@ -23,7 +23,7 @@ final class ObjectImageTileMatrix: NSObject {
         let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
         self.menuButton = ObjectToolbarIcon(uiv, .submenu, #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(uiv, .severeDashboard, #selector(dashClicked))
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace,
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
                                          target: nil,
                                          action: nil)
         fixedSpace.width = UIPreferences.toolbarIconSpacing

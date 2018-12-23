@@ -55,21 +55,21 @@ final class ObjectToolbarIcon: UIBarButtonItem {
     }
 
     convenience init(_ target: UIViewController, _ action: Selector?) {
-        self.init(title: "", style: UIBarButtonItemStyle.plain, target: target, action: action)
+        self.init(title: "", style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
 
     convenience init(title: String, _ target: UIViewController, _ action: Selector?) {
-        self.init(title: title, style: UIBarButtonItemStyle.plain, target: target, action: action)
+        self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
 
     convenience init(title: String, _ target: UIViewController, _ action: Selector?, tag: Int) {
-        self.init(title: title, style: UIBarButtonItemStyle.plain, target: target, action: action)
+        self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
         self.tag = tag
     }
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 
-    func setImage(_ image: UIImage, for: UIControlState) {
+    func setImage(_ image: UIImage, for: UIControl.State) {
         button.setImage(image, for: .normal)
     }
 }

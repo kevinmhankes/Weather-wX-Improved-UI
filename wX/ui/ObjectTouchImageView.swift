@@ -17,8 +17,8 @@ final class ObjectTouchImageView {
         img = ImageScrollView(frame: CGRect(x: 0, y: 0,
                                             width: UIScreen.main.bounds.width,
                                             height: UIScreen.main.bounds.height - toolbar.frame.height))
-        img.contentMode = UIViewContentMode.scaleAspectFit
-        img.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        img.contentMode = UIView.ContentMode.scaleAspectFit
+        img.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(img)
         self.uiv = uiv
     }

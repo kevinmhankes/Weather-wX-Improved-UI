@@ -60,7 +60,7 @@ class ViewControllerWPCMPD: UIwXViewController {
                         _ = ObjectTextView(self.stackView, self.text)
                     }
                 }
-                self.view.bringSubview(toFront: self.toolbar)
+                self.view.bringSubviewToFront(self.toolbar)
             }
         }
     }
