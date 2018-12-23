@@ -466,9 +466,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            //self.wxMetal.forEach {
-            //    animArray.append($0!.rdDownload.getRadarFilesForAnimation(frameCnt))
-            //}
             self.wxMetal.enumerated().forEach { index, glv in
                 animArray.append(glv!.rdDownload.getRadarFilesForAnimation(frameCnt))
                 animArray[index].indices.forEach {
