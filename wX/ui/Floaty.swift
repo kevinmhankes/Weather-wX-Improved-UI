@@ -270,6 +270,19 @@ open class Floaty: UIView {
     setObserver()
     setAccessibilityView()
   }
+    
+    /**
+     Initialize with custom frame and size
+     */
+    public init(frame: CGRect, size: CGFloat) {
+        super.init(frame: frame)
+        self.size = size
+        //self.size = min(frame.size.width, frame.size.height)
+        backgroundColor = UIColor.clear
+        isCustomFrame = false
+        //setObserver()
+        //setAccessibilityView()
+    }
   
   /**
    Initialize from storyboard.
@@ -786,7 +799,7 @@ open class Floaty: UIView {
     }
   }
   
-  fileprivate func recalculateItemsOrigin() {
+    func recalculateItemsOrigin() {
     for item in items {
       let big = size > item.size ? size : item.size
       let small = size <= item.size ? size : item.size

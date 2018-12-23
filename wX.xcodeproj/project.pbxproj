@@ -1166,7 +1166,7 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				03089CC121CFF17800C9FE4D /* ObjectFab.swift */,
+				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
 				0399A14621CFD3BA0096ECFB /* FloatyDelegate.swift */,
@@ -1174,7 +1174,6 @@
 				0399A14821CFD3BA0096ECFB /* FloatyManager.swift */,
 				0399A14321CFD3B90096ECFB /* FloatyViewController.swift */,
 				0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */,
-				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				F05806741DB187FB009E2786 /* ImageScrollView.swift */,
 				F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */,
 				F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */,
@@ -1188,6 +1187,7 @@
 				037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */,
 				F02DF2521EB8934400A951EA /* ObjectCAWARN.swift */,
 				F0830E991E593467003149E5 /* ObjectDatePicker.swift */,
+				03089CC121CFF17800C9FE4D /* ObjectFab.swift */,
 				F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */,
 				F0605A531E59F71F00229812 /* ObjectMenuData.swift */,
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,

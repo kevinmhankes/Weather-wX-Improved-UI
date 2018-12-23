@@ -45,6 +45,7 @@ class ViewControllerTABPARENT: UIViewController {
                 self.tabBarController!.selectedIndex = selectedIndex - 1
             }
         }
+        //view.setNeedsLayout()
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizer) {
