@@ -98,7 +98,6 @@ public class UtilityRadarUI {
         } else {
             xMiddle = width / 2.0
         }
-        //let glv = wxMetal[0]!
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
         let radarLocation = LatLon(preferences.getString("RID_" + wxMetal.rid + "_X", "0.00"),
@@ -108,8 +107,6 @@ public class UtilityRadarUI {
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
         var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
-        //let ridNearbyList = UtilityLocation.getNearestRadarSites(LatLon.reversed(newX, newY), 5)
-        //let pointerLocation = LatLon.reversed(newX, newY)
         return LatLon.reversed(newX, newY)
     }
 }

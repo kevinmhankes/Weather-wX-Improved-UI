@@ -43,9 +43,9 @@ final class WXGLSurfaceView {
         let fudgeFactor: Float = -(1024.0 / bounds.0)
         if RadarPreferences.dualpaneshareposn {
             oglrArr.forEach {
-                let xMiddle = Float(uiv.view.frame.width/2.0)
-                let yMiddle = Float(uiv.view.frame.height/2.0)
-                if numberOfPanes==1 {
+                let xMiddle = Float(uiv.view.frame.width / 2.0)
+                let yMiddle = Float(uiv.view.frame.height / 2.0)
+                if numberOfPanes == 1 {
                     $0.setViewInitial($0.zoom * Double(scaleFactor),
                                       scaleFactor * $0.x + (Float(location.x) - xMiddle) * fudgeFactor,
                                       (scaleFactor * $0.y + (yMiddle - Float(location.y)) * fudgeFactor))
@@ -56,9 +56,9 @@ final class WXGLSurfaceView {
             }
         } else {
             if let radarIndex = gestureRecognizer.view?.tag {
-                let xMiddle = Float(uiv.view.frame.width/2.0)
-                let yMiddle = Float(uiv.view.frame.height/2.0)
-                if numberOfPanes==1 {
+                let xMiddle = Float(uiv.view.frame.width / 2.0)
+                let yMiddle = Float(uiv.view.frame.height / 2.0)
+                if numberOfPanes == 1 {
                     oglrArr[radarIndex].setViewInitial(oglrArr[radarIndex].zoom * Double(scaleFactor),
                                                        oglrArr[radarIndex].x * scaleFactor
                                                         + (Float(location.x) - xMiddle) * fudgeFactor,

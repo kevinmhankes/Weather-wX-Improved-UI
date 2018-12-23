@@ -292,7 +292,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
-        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
     }
 
     @objc func gestureZoom(_ gestureRecognizer: UIPinchGestureRecognizer) {

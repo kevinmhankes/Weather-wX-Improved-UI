@@ -126,22 +126,69 @@ final class WXMetalSurfaceView {
     static func doubleTap(_ uiv: UIViewController,
                           _ wxMetal: [WXMetalRender?],
                           _ textObj: WXMetalTextObject,
+                          _ numberOfPanes: Int,
+                          _ ortInt: Float,
                           _ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let bounds = UtilityUI.getScreenBounds()
-        let fudgeFactor: Float = -(450.0 / bounds.0)
-        let xMiddle = Float(uiv.view.frame.width/2.0)
-        let yMiddle = Float(uiv.view.frame.height/2.0)
+        let width = Float(uiv.view.bounds.size.width)
+        var density: Float = -(width / bounds.0)
+        //var density: Float = -(450.0 / bounds.0)
+        //var density = Float(ortInt * 2.0) / width
+        //let height = Float(uiv.view.bounds.size.height)
+        //var density = Double(ortInt * 2) / width
+        if numberOfPanes == 4 {
+            density *= 2.0
+        }
+        var xMiddle = Float(uiv.view.frame.width / 2.0)
+        var yMiddle = Float(uiv.view.frame.height / 2.0)
+        /*if numberOfPanes == 1 {
+            yMiddle = height / 2.0
+        } else {
+            yMiddle = height / 4.0
+        }
+        if numberOfPanes == 4 {
+            xMiddle = width / 4.0
+        } else {
+            xMiddle = width / 2.0
+        }*/
+        if numberOfPanes == 2 {
+            if radarIndex == 0 {
+                yMiddle *= 0.5
+            } else {
+                yMiddle *= 1.5
+            }
+        }
+        if numberOfPanes == 4 {
+            if radarIndex == 0 {
+                xMiddle *= 0.5
+                yMiddle *= 0.5
+            } else if radarIndex == 1 {
+                xMiddle *= 1.5
+                yMiddle *= 0.5
+            } else if radarIndex == 2 {
+                xMiddle *= 0.5
+                yMiddle *= 1.5
+            } else if radarIndex == 3 {
+                xMiddle *= 1.5
+                yMiddle *= 1.5
+            }
+        }
+        //print(xMiddle)
+        //print(location.x)
+        //print(yMiddle)
+        //print(location.y)
+        //print(radarIndex)
         if RadarPreferences.dualpaneshareposn {
-            wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * fudgeFactor }
-            wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * fudgeFactor }
+            wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * density }
+            wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * density }
             wxMetal.forEach { setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)}
             wxMetal.forEach { $0!.zoom *= 2.0 }
             wxMetal.forEach { $0!.setZoom() }
         } else {
-            wxMetal[radarIndex]!.xPos +=  (Float(location.x) - xMiddle) * fudgeFactor
-            wxMetal[radarIndex]!.yPos +=  (yMiddle - Float(location.y)) * fudgeFactor
+            wxMetal[radarIndex]!.xPos += (Float(location.x) - xMiddle) * density
+            wxMetal[radarIndex]!.yPos += (yMiddle - Float(location.y)) * density
             setModifiedZoom(wxMetal[radarIndex]!.zoom * 2.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
             wxMetal[radarIndex]!.zoom *= 2.0
             wxMetal[radarIndex]!.setZoom()
