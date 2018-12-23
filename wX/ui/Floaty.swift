@@ -691,8 +691,11 @@ open class Floaty: UIView {
     overlayView.isUserInteractionEnabled = true
     
   }
+    
   fileprivate func setOverlayFrame() {
     if let superview = superview {
+        //print(superview.bounds.width)
+        //print(superview.bounds.height)
       overlayView.frame = CGRect(
         x: 0,y: 0,
         width: superview.bounds.width,
@@ -772,10 +775,10 @@ open class Floaty: UIView {
     
     var horizontalMargin = size;
     var verticalMargin = size + keyboardSize;
-    if #available(iOS 11, *) {
-      horizontalMargin += safeAreaInsets.right
-      verticalMargin += safeAreaInsets.bottom
-    }
+    //if #available(iOS 11, *) {
+    //  horizontalMargin += safeAreaInsets.right
+    //  verticalMargin += safeAreaInsets.bottom
+    //}
     
     if superview == nil {
       frame = CGRect(
