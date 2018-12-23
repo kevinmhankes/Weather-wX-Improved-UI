@@ -7,7 +7,18 @@
 import UIKit
 
 final class UtilityImg {
-
+    
+    static func resizeImage(_ image: UIImage, _ scale: Double) -> UIImage? {
+        let newSize = CGSize(width: image.size.width * CGFloat(scale), height: image.size.height * CGFloat(scale))
+        let rendererFormat = UIGraphicsImageRendererFormat()
+        rendererFormat.opaque = false
+        let renderer = UIGraphicsImageRenderer(size: newSize, format: rendererFormat)
+        let newImage = renderer.image {_ in
+            image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        }
+        return newImage
+    }
+    
     static func getAnimInterval() -> Int {
         return 50 * MyApplication.animInterval
     }
