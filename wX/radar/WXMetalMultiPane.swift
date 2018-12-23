@@ -466,11 +466,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            self.wxMetal.forEach {animArray.append($0!.rdDownload.getRadarByFTPAnimation(frameCnt))}
-            self.wxMetal.enumerated().forEach { index, _ in
+            //self.wxMetal.forEach {
+            //    animArray.append($0!.rdDownload.getRadarFilesForAnimation(frameCnt))
+            //}
+            self.wxMetal.enumerated().forEach { index, glv in
+                animArray.append(glv!.rdDownload.getRadarFilesForAnimation(frameCnt))
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
+                    print(animArray[index][$0] + " move to " +  String(index)  + "nexrad_anim" + String($0))
                 }
             }
             var scaleFactor = 1

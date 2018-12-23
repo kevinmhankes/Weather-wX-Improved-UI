@@ -80,25 +80,29 @@ final class WXGLDownload {
         return ridPrefixGlobal
     }
 
-    func getRadarByFTPAnimation(_ frameCnt: Int) -> [String] {
-        var nidsArr = [String]()
+    // Download a list of files and return the list as a list of Strings
+    // Determines of Level 2 or Level 3 and calls appropriate method
+    func getRadarFilesForAnimation(_ frameCount: Int) -> [String] {
+        var listOfFiles = [String]()
         let ridPrefix = getRidPrefix(radarSite, prod)
         if !prod.contains("L2") {
-            nidsArr = getNidsArr(frameCnt, prod, ridPrefix, radarSite.lowercased())
+            listOfFiles = getLevel3FilesForAnimation(frameCount, prod, ridPrefix, radarSite.lowercased())
         } else {
-            nidsArr = getL2Arr(WXGLDownload.nwsRadarLevel2Pub
-                + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCnt)
+            listOfFiles = getLevel2FilesForAnimation(WXGLDownload.nwsRadarLevel2Pub
+                + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCount)
         }
-        return nidsArr
+        return listOfFiles
     }
 
-    func getNidsArr(_ frameCnt: Int, _ prod: String, _ ridPrefix: String, _ rid: String ) -> [String] {
-        var nidsArr = [String]()
+    // Level 3: Download a list of files and return the list as a list of Strings
+    func getLevel3FilesForAnimation(_ frameCount: Int, _ product: String, _ ridPrefix: String, _ rid: String ) -> [String] {
+        var listOfFiles = [String]()
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
             + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
         var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
         var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
+        // FIXME below method is for rety, redo this - ugly
         if snDates.count == 0 {
             let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
                 + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
@@ -119,28 +123,29 @@ final class WXGLDownload {
             }
         }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
-        var index = seq - frameCnt + 1
-        (0..<frameCnt).forEach {_ in
+        var index = seq - frameCount + 1
+        (0..<frameCount).forEach {_ in
             var tmpK = index
             if tmpK < 0 {
                 tmpK += 251
             }
-            nidsArr.append("sn." + String(format: "%04d", tmpK))
+            listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
-        (0..<frameCnt).forEach {
+        (0..<frameCount).forEach {
             let data = UtilityDownload.getInputStreamFromURL(WXGLDownload.nwsRadarPub
                 + "SL.us008001/DF.of/DC.radar/"
                 + GlobalDictionaries.nexradProductString[prod]!
                 + "/SI." + ridPrefix + rid.lowercased()
-                + "/" + nidsArr[$0])
-            UtilityIO.saveInputStream(data, nidsArr[$0])
+                + "/" + listOfFiles[$0])
+            UtilityIO.saveInputStream(data, listOfFiles[$0])
         }
-        return nidsArr
+        return listOfFiles
     }
 
-    func getL2Arr(_ baseUrl: String, _ frameCnt: Int) -> [String] {
-        var l2Arr = [String]()
+    // Level 2: Download a list of files and return the list as a list of Strings
+    func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int) -> [String] {
+        var listOfFiles = [String]()
         let tmpArr = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
         let fnSize = Int(tmpArr[tmpArr.count - 3]) ?? 0
@@ -150,11 +155,11 @@ final class WXGLDownload {
             additionalAdd = 1
         }
         (0..<frameCnt).forEach {
-            l2Arr.append(tmpArr[tmpArr.count - (frameCnt - $0 + additionalAdd) * 2])
-            let data = getInputStreamFromURLL2(baseUrl + l2Arr[$0])
-            UtilityIO.saveInputStream(data, l2Arr[$0])
+            listOfFiles.append(tmpArr[tmpArr.count - (frameCnt - $0 + additionalAdd) * 2])
+            let data = getInputStreamFromURLL2(baseUrl + listOfFiles[$0])
+            UtilityIO.saveInputStream(data, listOfFiles[$0])
         }
-        return l2Arr
+        return listOfFiles
     }
 
     func getLevel2Url() -> String {

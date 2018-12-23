@@ -673,7 +673,7 @@ class WXMetalRender {
         zoom = 1.0
         getRadar("")
     }
-    
+
     func changeProduct(_ product: String) {
         self.product = product
         getRadar("")

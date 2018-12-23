@@ -579,7 +579,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
     func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            self.oglrArr.forEach {animArray.append($0.rdDownload.getRadarByFTPAnimation(frameCnt))}
+            self.oglrArr.forEach {animArray.append($0.rdDownload.getRadarFilesForAnimation(frameCnt))}
             self.oglrArr.enumerated().forEach { idx, _ in
                 animArray[idx].indices.forEach {
                     UtilityFileManagement.deleteFile(String(idx) + "nexrad_anim" + String($0))
