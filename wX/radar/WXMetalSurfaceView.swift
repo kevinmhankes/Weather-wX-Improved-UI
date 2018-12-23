@@ -135,7 +135,6 @@ final class WXMetalSurfaceView {
         let width = Float(uiv.view.bounds.size.width)
         var density: Float = -(width / bounds.0)
         //var density: Float = -(450.0 / bounds.0)
-        //var density = Float(ortInt * 2.0) / width
         //let height = Float(uiv.view.bounds.size.height)
         //var density = Double(ortInt * 2) / width
         if numberOfPanes == 4 {
@@ -143,16 +142,6 @@ final class WXMetalSurfaceView {
         }
         var xMiddle = Float(uiv.view.frame.width / 2.0)
         var yMiddle = Float(uiv.view.frame.height / 2.0)
-        /*if numberOfPanes == 1 {
-            yMiddle = height / 2.0
-        } else {
-            yMiddle = height / 4.0
-        }
-        if numberOfPanes == 4 {
-            xMiddle = width / 4.0
-        } else {
-            xMiddle = width / 2.0
-        }*/
         if numberOfPanes == 2 {
             if radarIndex == 0 {
                 yMiddle *= 0.5
@@ -175,11 +164,6 @@ final class WXMetalSurfaceView {
                 yMiddle *= 1.5
             }
         }
-        //print(xMiddle)
-        //print(location.x)
-        //print(yMiddle)
-        //print(location.y)
-        //print(radarIndex)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * density }
             wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * density }

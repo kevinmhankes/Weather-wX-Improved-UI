@@ -56,14 +56,14 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
+            self.productButton.title = self.product
+            self.siteButton.title = self.wfo
             var html = UtilityDownload.getTextProduct(self.product + self.wfo)
             DispatchQueue.main.async {
                 if html == "" {
                     html = "None issused by this office recently."
                 }
                 self.textView.text = html
-                self.productButton.title = self.product
-                self.siteButton.title = self.wfo
                 editor.putString("WFOTEXT_PARAM_LAST_USED", self.product)
                 editor.putString("WFO_REMEMBER_LOCATION", self.wfo)
             }
