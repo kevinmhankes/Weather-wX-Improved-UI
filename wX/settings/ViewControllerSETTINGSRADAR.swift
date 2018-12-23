@@ -31,6 +31,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             objNp.sw.dataSource = self
             objNp.sw.delegate = self
             objNp.sw.tag = index
+            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.sw.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(

@@ -33,6 +33,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             objNp.sw.dataSource = self
             objNp.sw.delegate = self
             objNp.sw.tag = index
+            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = preferences.getString(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
