@@ -6,8 +6,6 @@
 
 import UIKit
 
-let panSensivity: Float = 500.0
-
 final class WXMetalSurfaceView {
 
     var citiesExtAl = [TextViewMetal]()
@@ -25,6 +23,10 @@ final class WXMetalSurfaceView {
                            _ wxMetal: [WXMetalRender?],
                            _ textObj: WXMetalTextObject,
                            _ gestureRecognizer: UIPanGestureRecognizer) {
+        var panSensivity: Float = 500.0
+        if wxMetal[0]!.numberOfPanes == 4 {
+            panSensivity *= 2
+        }
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
