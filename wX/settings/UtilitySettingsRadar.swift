@@ -88,7 +88,22 @@ final class UtilitySettingsRadar {
             + "closely on an obs site the detailed METAR will appear."
             + " This setting controls how close you need to zoom. Lower numbers will show "
             + "detailed METAR without having to zoom in as far. Default is 7.",
-        "Show Day 1 Conv Otlk": "Show SPC Day 1 Convective Outlook outlines."
+        "Show Day 1 Conv Otlk": "Show SPC Day 1 Convective Outlook outlines.",
+        
+        "Location dot size.": "Allows one to change the size of the location marker. Default value is 5.",
+        "Spotter size": "Configure size of storm spotters on radar. Default value is 4.",
+        "Warning line size": "Thickness of lines for warnings. Smaller is thinner. Default is 2.",
+        "Watch/MCD line size": "Thickness of lines for SPC Watch/MCD. Smaller is thinner. Default is 2.",
+        "Reflectivity Colormap": "Colormap to use for Nexrad Reflectivity. Default is CODENH.",
+        "Velocity Colormap": "Colormap to use for Nexrad Velocity. Default is CODENH.",
+        "Hail marker size": "Allows one to change the size of the Hail markers. Default value is 4.",
+        "TVS marker size": "Allows one to change the size of the TVS markers. Default value is 4.",
+        "Aviation dot size": "Configure size of the circle at the end of wind barbs if configured. Default is 4.",
+        "Detailed Observations Zoom": "With observations or wind barbs enabled if you zoom in closely on an obs site"
+            + "the detailed METAR will appear. This setting controls how close you need to zoom."
+            +  "Lower numbers will show detailed METAR without having to zoom in as far. Default is 7.",
+        "Radar data refresh interval": "Controls the number of minutes before an auto  refresh is triggered "
+            + "if that option is enabled. Default is 20."
     ]
 
     static let booleanDefault = [
