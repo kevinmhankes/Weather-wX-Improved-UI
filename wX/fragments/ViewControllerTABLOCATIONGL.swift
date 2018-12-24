@@ -66,7 +66,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                             radarButton,
                                             menuButton]).items*/
         
-        
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems([flexBarButton,
                                                 dashButton,
@@ -81,7 +80,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                                 radarButton,
                                                 menuButton]).items
         }
-        
         
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
