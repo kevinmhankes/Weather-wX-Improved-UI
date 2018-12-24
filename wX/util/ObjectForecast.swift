@@ -14,8 +14,15 @@ final class ObjectForecast {
     private var shortForecast = ""
     var detailedForecast = ""
 
-    init(_ name: String, _ temperature: String, _ windSpeed: String, _ windDirection: String,
-         _ icon: String, _ shortForecast: String, _ detailedForecast: String) {
+    init(
+        _ name: String,
+        _ temperature: String,
+        _ windSpeed: String,
+        _ windDirection: String,
+        _ icon: String,
+        _ shortForecast: String,
+        _ detailedForecast: String
+    ) {
         self.name = name
         self.temperature = temperature
         self.windSpeed = windSpeed

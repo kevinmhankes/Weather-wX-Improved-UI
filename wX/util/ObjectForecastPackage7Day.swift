@@ -67,36 +67,4 @@ final class ObjectForecastPackage7Day {
     }
 
     static var scrollView = UIScrollView()
-
-  /*  static func getSevenDayCards(
-        _ stackView: UIStackView,
-        _ objSevenDay: ObjectForecastPackage7Day,
-        _ isUS: Bool = true
-        ) {
-        var numCards = 0
-        let stackViewLocal7Day = ObjectStackViewHS()
-        stackViewLocal7Day.setupWithPadding()
-        stackView.addArrangedSubview(stackViewLocal7Day)
-        let dayArr = objSevenDay.fcstList
-        dayArr.indices.forEach {
-            if dayArr[$0] != "" {
-                let obj = ObjectCard7Day(stackViewLocal7Day, $0, objSevenDay.icons, dayArr, isUS)
-                obj.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                action: #selector(self.sevenDayAction)),
-                                         UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction)))
-                numCards += 1
-            }
-        }
-        if !isUS {
-            _ = ObjectCALegal(stackViewLocal7Day)
-            numCards += 1
-        } else {
-            _ = ObjectCardSunTime(stackViewLocal7Day)
-            numCards += 1
-        }
-    }
-
-    @objc static func sevenDayAction() {
-        scrollView.scrollToTop()
-    }*/
 }
