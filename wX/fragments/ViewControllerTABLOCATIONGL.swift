@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 import UIKit
+import Metal
 
 class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
@@ -31,6 +32,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var ccCard: ObjectCardCC?
     var objCard7DayCollection: ObjectCard7DayCollection?
     var extraDataCards = [ObjectStackViewHS]()
+    
+    var wxMetal = [WXMetalRender?]()
+    var metalLayer = [CAMetalLayer?]()
+    var pipelineState: MTLRenderPipelineState!
+    var commandQueue: MTLCommandQueue!
+    var timer: CADisplayLink!
+    var projectionMatrix: Matrix4!
+    var lastFrameTimestamp: CFTimeInterval = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -336,15 +345,109 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
-       /* DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityDownload.getImageProduct(product)
+        let ortInt: Float = 250.0
+        let numberOfPanes = 1
+        let paneRange = [0]
+        let device = MTLCreateSystemDefaultDevice()
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        let screenWidth = Float(screenSize.width)
+        let screenHeight = screenWidth
+        let carect = CGRect(
+            x: 0,
+            y: 0,
+            width: CGFloat(screenWidth),
+            height: CGFloat(screenWidth)
+        )
+        let caview = UIView(frame: carect)
+        caview.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
+        caview.heightAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
+        let surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
+                                                      bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+                                                      top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
+        paneRange.enumerated().forEach { index, _ in
+            metalLayer.append(CAMetalLayer())
+            metalLayer[index]!.device = device
+            metalLayer[index]!.pixelFormat = .bgra8Unorm
+            metalLayer[index]!.framebufferOnly = true
+        }
+        metalLayer[0]!.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: CGFloat(screenWidth),
+            height: CGFloat(screenWidth)
+        )
+        metalLayer.forEach { caview.layer.addSublayer($0!) }
+        stackView.addArrangedSubview(caview)
+        paneRange.forEach {
+            wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: $0, numberOfPanes))
+        }
+        let defaultLibrary = device?.makeDefaultLibrary()!
+        let fragmentProgram = defaultLibrary?.makeFunction(name: "basic_fragment")
+        let vertexProgram = defaultLibrary?.makeFunction(name: "basic_vertex")
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.vertexFunction = vertexProgram
+        pipelineStateDescriptor.fragmentFunction = fragmentProgram
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        do {
+            pipelineState = try device?.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        } catch {
+            print("error init pipelineState")
+        }
+        commandQueue = device?.makeCommandQueue()
+        let timer = CADisplayLink(target: self, selector: #selector(ViewControllerTABLOCATIONGL.newFrame(displayLink:)))
+        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        wxMetal[0]!.rid = Location.rid
+        self.wxMetal.forEach { $0!.getRadar("") }
+        getPolygonWarnings()
+    }
+    
+    func getPolygonWarnings() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityPolygons.getData()
             DispatchQueue.main.async {
-                let imgObj = ObjectImage(stackView, bitmap, hs: true)
-                imgObj.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:)))
-                )
+                if self.wxMetal[0] != nil {
+                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
+                }
             }
-        }*/
+        }
+    }
+    
+    func modelMatrix(_ index: Int) -> Matrix4 {
+        let matrix = Matrix4()
+        matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+        matrix.rotateAroundX(0, y: 0, z: 0)
+        matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
+        return matrix
+    }
+    
+    func render() {
+        wxMetal.enumerated().forEach { index, wxmetal in
+            guard let drawable = metalLayer[index]!.nextDrawable() else { return }
+            wxmetal!.render(commandQueue: commandQueue,
+                            pipelineState: pipelineState,
+                            drawable: drawable,
+                            parentModelViewMatrix: modelMatrix(index),
+                            projectionMatrix: projectionMatrix,
+                            clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
+        }
+    }
+    
+    @objc func newFrame(displayLink: CADisplayLink) {
+        if lastFrameTimestamp == 0.0 {
+            lastFrameTimestamp = displayLink.timestamp
+        }
+        let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
+        lastFrameTimestamp = displayLink.timestamp
+        radarLoop(timeSinceLastUpdate: elapsed)
+    }
+    
+    func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
+        autoreleasepool {
+            if wxMetal[0] != nil {
+                self.render()
+            }
+        }
     }
 
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {

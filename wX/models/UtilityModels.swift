@@ -20,7 +20,7 @@ final class UtilityModels {
         if hourOfDay > 11 {
             amPm = "pm"
             if hourOfDay > 12 {
-                hourOfDay = hourOfDay - 12
+                hourOfDay -= 12
             }
         } else {
             amPm = "am"

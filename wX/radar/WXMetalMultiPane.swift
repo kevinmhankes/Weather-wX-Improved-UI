@@ -44,6 +44,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
+        // FIXME typo
         let pangeRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
