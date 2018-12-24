@@ -64,7 +64,6 @@ class RadarPreferences {
         radarSti = preferences.getString("RADAR_SHOW_STI", "false").hasPrefix("t")
         radarHi = preferences.getString("RADAR_SHOW_HI", "false").hasPrefix("t")
         radarTvs = preferences.getString("RADAR_SHOW_TVS", "false").hasPrefix("t")
-        //radarHwEnh = preferences.getString("RADAR_HW_ENH", "true").hasPrefix("t")
         radarHwEnhExt = preferences.getString("RADAR_HW_ENH_EXT", "false").hasPrefix("t")
         radarCamxBorders = preferences.getString("RADAR_CAMX_BORDERS", "false").hasPrefix("t")
         radarCountyLabels = preferences.getString("RADAR_COUNTY_LABELS", "false").hasPrefix("t")

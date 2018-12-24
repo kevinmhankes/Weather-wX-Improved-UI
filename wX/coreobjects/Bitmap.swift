@@ -13,10 +13,12 @@ final class Bitmap {
     var url = ""
 
     init() {
-        self.image = Bitmap.imageWithSize(size: CGSize(width: 86, height: 86),
-                                          filledWithColor: UIColor.white,
-                                          scale: 1.0,
-                                          opaque: false)
+        self.image = Bitmap.imageWithSize(
+            size: CGSize(width: 86, height: 86),
+            filledWithColor: UIColor.white,
+            scale: 1.0,
+            opaque: false
+        )
         self.dataBm = self.image.pngData()!
     }
 

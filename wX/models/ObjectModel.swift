@@ -43,8 +43,12 @@ final public class ObjectModel {
     }
 
     var timeIndex: Int {
-        get {return self.timeIdx}
-        set {self.timeIdx = newValue}
+        get {
+            return self.timeIdx
+        }
+        set {
+            self.timeIdx = newValue
+        }
     }
 
     convenience init(_ prefModel: String) {
@@ -534,13 +538,17 @@ final public class ObjectModel {
     func setParam(_ paramIdx: Int) {
         self.param = paramArr[paramIdx]
         self.prodButton.title = param.truncate(10)
-        if self.modelName=="SSEO" {setModelVars(self.modelName)}
+        if self.modelName=="SSEO" {
+            setModelVars(self.modelName)
+        }
     }
 
     func setParam(_ param: String) {
         self.param = param
         self.prodButton.title = param.truncate(10)
-        if self.modelName=="SSEO" {setModelVars(self.modelName)}
+        if self.modelName=="SSEO" {
+            setModelVars(self.modelName)
+        }
     }
 
     func setTimeIdx(_ timeIdx: Int) {

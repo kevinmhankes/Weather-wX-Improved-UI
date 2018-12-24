@@ -66,7 +66,9 @@ extension String {
         if self.count > length {
             let index =  self.index(self.startIndex, offsetBy: length)
             return String(self[..<index])
-        } else {return self}
+        } else {
+            return self
+        }
     }
 
     func insert(_ index: Int, _ string: String) -> String {

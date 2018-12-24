@@ -19,8 +19,12 @@ final class UtilityModels {
         var amPm: String
         if hourOfDay > 11 {
             amPm = "pm"
-            if hourOfDay > 12 {hourOfDay = hourOfDay - 12}
-        } else {amPm = "am"}
+            if hourOfDay > 12 {
+                hourOfDay = hourOfDay - 12
+            }
+        } else {
+            amPm = "am"
+        }
         var day = realTime / 24
         if hourOfDay < 0 {
             hourOfDay = 12 + hourOfDay
@@ -35,7 +39,7 @@ final class UtilityModels {
             day += 1
         }
         var futureDay = ""
-        switch (dayOfWeek+day)%7 {
+        switch (dayOfWeek+day) % 7 {
         case 1: futureDay = "Sun"
         case 2: futureDay = "Mon"
         case 3: futureDay = "Tue"
