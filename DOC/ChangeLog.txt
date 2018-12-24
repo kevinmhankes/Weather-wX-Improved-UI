@@ -11,6 +11,7 @@
 // TODO color palette editor
 // TODO roaming location
 
+2018_12_24 53600 main screen metal radar framework
 2018_12_23 53500 main screen radar fab using floaty
 2018_12_22 53400 [BUG] quad pane lat lon issue fixed
 2018_12_22 53300 redo main screen processing

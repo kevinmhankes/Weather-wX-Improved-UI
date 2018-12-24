@@ -345,7 +345,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
-        let ortInt: Float = 250.0
+        let ortInt: Float = 350.0
         let numberOfPanes = 1
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
@@ -397,8 +397,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         commandQueue = device?.makeCommandQueue()
         let timer = CADisplayLink(target: self, selector: #selector(ViewControllerTABLOCATIONGL.newFrame(displayLink:)))
         timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
-        wxMetal[0]!.rid = Location.rid
-        self.wxMetal.forEach { $0!.getRadar("") }
+        wxMetal[0]!.resetRidAndGet(Location.rid)
         getPolygonWarnings()
     }
     
