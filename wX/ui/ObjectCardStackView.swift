@@ -20,5 +20,7 @@ final class ObjectCardStackView {
         sV.isLayoutMarginsRelativeArrangement = true
     }
 
-    var view: StackView {return sV}
+    var view: StackView {
+        return sV
+    }
 }

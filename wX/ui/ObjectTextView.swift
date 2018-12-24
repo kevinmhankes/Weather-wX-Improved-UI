@@ -19,10 +19,8 @@ final class ObjectTextView {
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
     }
 
-    // UIScreen.main.bounds.width uiv.view.frame.width
     convenience init(_ text: String) {
         self.init()
-        //self.tv.widthAnchor.constraint(equalToConstant: uiv.view.frame.width).isActive = true
         self.tv.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         self.tv.text = text
     }
@@ -102,9 +100,7 @@ final class ObjectTextView {
         tv.textContainerInset = UIEdgeInsets.zero
     }
 
-    // default is 8 0 8 0
     func setSpacing(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
-        //tv.textContainerInset = UIEdgeInsetsMake(top, left, bottom, right)
         tv.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
 

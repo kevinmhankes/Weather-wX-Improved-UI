@@ -94,7 +94,11 @@ final class ObjectAlertSummary: NSObject {
     }
 
     var image: Bitmap {
-        get {return self.objImage.bitmap}
-        set {self.objImage.setBitmap(newValue)}
+        get {
+            return self.objImage.bitmap
+        }
+        set {
+            self.objImage.setBitmap(newValue)
+        }
     }
 }

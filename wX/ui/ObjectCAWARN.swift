@@ -66,12 +66,12 @@ final class ObjectCAWARN: NSObject {
     }
 
     func getData() {
-        if self.provCode=="ca" {
+        if self.provCode == "ca" {
             bitmap = Bitmap("http://weather.gc.ca/data/warningmap/canada_e.png")
         } else {
             bitmap = Bitmap("http://weather.gc.ca/data/warningmap/" + self.provCode + "_e.png")
         }
-        if self.provCode=="ca" {
+        if self.provCode == "ca" {
             dataAsString = ("http://weather.gc.ca/warnings/index_e.html").getHtml()
         } else {
             dataAsString = ("http://weather.gc.ca/warnings/index_e.html?prov=" + self.provCode).getHtml()
@@ -127,7 +127,9 @@ final class ObjectCAWARN: NSObject {
 
     @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {}
 
-    var count: String {return String(listLocUrl.count)}
+    var count: String {
+        return String(listLocUrl.count)
+    }
 
     func setProv(_ prov: String) {
         provCode = provToCodeMap[prov] ?? ""

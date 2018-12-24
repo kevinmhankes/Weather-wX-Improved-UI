@@ -59,7 +59,7 @@ final class ObjectCardCC {
                     objFcst.objCC.data1,
                     objFcst.objCC.status
                 )
-                ).image
+            ).image
         }
         tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)

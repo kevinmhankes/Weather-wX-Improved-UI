@@ -44,15 +44,12 @@ final class ObjectCard7DayCollection {
     }
 
     func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
-        //var numCards = 0
         let dayArr = objSevenDay.fcstList
         dayArr.indices.forEach {
             if dayArr[$0] != "" {
                 if sevenDayCardList.count > $0 {
                     sevenDayCardList[$0].update($0, objSevenDay.icons, dayArr, isUS)
                 }
-                //let obj = ObjectCard7Day(stackViewLocal7Day, $0, objSevenDay.icons, dayArr, isUS)
-                //numCards += 1
             }
         }
     }

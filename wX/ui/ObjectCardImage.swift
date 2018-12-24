@@ -17,5 +17,7 @@ final class ObjectCardImage {
         image.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
-    var view: UIImageView {return image}
+    var view: UIImageView {
+        return image
+    }
 }

@@ -71,7 +71,7 @@ final class UtilityNHC {
             summary = summary.replaceAll("</.*?>", "<br>")
             wallet =  html.parse(utilNhcPattern4)
             urlList = html.parseColumn(utilNhcPattern5)
-            if urlList.count>1 {
+            if urlList.count > 1 {
                 img1 = urlList[0]
                 img2 = urlList[1]
             }
@@ -84,7 +84,9 @@ final class UtilityNHC {
         let urls = UtilityImgAnim.getUrlArray(baseUrl,
                                               "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
                                               frameCount)
-        let bitmaps = urls.map {Bitmap(baseUrl + $0)}
+        let bitmaps = urls.map {
+            Bitmap(baseUrl + $0)
+        }
         let animDrawable = AnimationDrawable()
         bitmaps.forEach {animDrawable.addFrame(Drawable($0), UtilityImg.getAnimInterval())}
         return animDrawable
