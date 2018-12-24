@@ -4,13 +4,12 @@
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO add code to handle rectangular transformation in render
 // TODO BIG look for way to save x/y/zoom of images
-// TODO look at animation menus ( such as radar ) and convert to Int as native type
 // TODO complete URL refactor to move base URL to myApp
-// TODO switch to new extension for UIActionAlert
 // TODO check AWC images in WPCImg
-// TODO remove labels for UITapGestureRecognizerWithData
 // move more vars out of global namespace - like ActVars , camelcase in process
 // TODO Metal radar widget on main screen
+// TODO color palette editor
+// TODO roaming location
 
 2018_12_23 53500 main screen radar fab using floaty
 2018_12_22 53400 [BUG] quad pane lat lon issue fixed
