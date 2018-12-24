@@ -87,7 +87,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        //self.stackViewRadar = ObjectStackViewHS()
         addLocationSelectionCard()
         self.getContentMaster()
     }
