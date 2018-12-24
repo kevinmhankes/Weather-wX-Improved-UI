@@ -91,6 +91,7 @@ class WXMetalRender {
     private var radarLayers = [ObjectMetalBuffers]()
     var paneNumber = 0
     var numberOfPanes = 0
+    var renderFn: (() -> ())?
 
     init(_ device: MTLDevice,
          _ timeButton: ObjectToolbarIcon,
@@ -425,8 +426,15 @@ class WXMetalRender {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText)
                 self.showProductText(self.radarProduct)
+                if self.renderFn != nil {
+                    self.renderFn!()
+                }
             }
         }
+    }
+    
+    func setRenderFunction(_ fn: @escaping () -> ()) {
+        self.renderFn = fn
     }
 
     func constructPolygons() {

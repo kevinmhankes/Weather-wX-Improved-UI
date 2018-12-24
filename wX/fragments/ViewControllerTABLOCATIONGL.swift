@@ -395,9 +395,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             print("error init pipelineState")
         }
         commandQueue = device?.makeCommandQueue()
-        let timer = CADisplayLink(target: self, selector: #selector(ViewControllerTABLOCATIONGL.newFrame(displayLink:)))
-        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        //let timer = CADisplayLink(target: self, selector: #selector(ViewControllerTABLOCATIONGL.newFrame(displayLink:)))
+        //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        wxMetal[0]!.setRenderFunction(render)
         wxMetal[0]!.resetRidAndGet(Location.rid)
+        self.render()
         getPolygonWarnings()
     }
     
