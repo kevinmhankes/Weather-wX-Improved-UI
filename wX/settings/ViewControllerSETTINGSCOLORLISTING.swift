@@ -13,7 +13,8 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         setupColorObjects()
         colorArr.sort(by: {$0.uiLabel < $1.uiLabel})

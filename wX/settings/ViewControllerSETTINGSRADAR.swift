@@ -15,7 +15,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.delegate = self
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(stackView,

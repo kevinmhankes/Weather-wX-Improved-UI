@@ -15,7 +15,7 @@ public class ObjectFab {
         floaty.sticky = true
         floaty.paddingY = 62.0
         //floaty.friendlyTap = false
-        floaty.buttonColor = AppColors.primaryColorUIColor
+        floaty.buttonColor = AppColors.primaryColorFab
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: "ic_flash_on_24dp")!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }

@@ -19,7 +19,10 @@ class AppColors {
                                              alpha: CGFloat(1.0))
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
     static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
+    static var  primaryColorFab = wXColor.uiColorInt(88, 121, 169)
 
+    // FIXME add black/green fab colors
+    
     static func update() {
         let appColor = preferences.getString("UI_THEME", "blue")
         switch appColor {
@@ -56,6 +59,7 @@ class AppColors {
                                            alpha: CGFloat(1.0))
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
+            primaryColorFab = wXColor.uiColorInt(88, 121, 169)
         }
     }
 }
