@@ -29,6 +29,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var stackViewCurrentConditions: ObjectStackView!
     var stackViewForecast: ObjectStackView!
     var stackViewHazards: ObjectStackView!
+    var stackViewRadar = ObjectStackViewHS()
     var ccCard: ObjectCardCC?
     var objCard7DayCollection: ObjectCard7DayCollection?
     var extraDataCards = [ObjectStackViewHS]()
@@ -88,6 +89,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        //self.stackViewRadar = ObjectStackViewHS()
         addLocationSelectionCard()
         self.getContentMaster()
     }
@@ -182,6 +184,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         self.stackView.addArrangedSubview(self.stackViewHazards.view)
                     case "TXT-7DAY2":
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
+                    case "METAL-RADAR":
+                        self.stackView.addArrangedSubview(self.stackViewRadar)
+                        self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
                         stackViewLocal.setup()
@@ -191,9 +196,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                             self.getContentText($0.split("-")[1], stackViewLocal)
                         } else if $0.hasPrefix("IMG-") {
                             self.getContentImage($0.split("-")[1], stackViewLocal)
-                        } else if $0.hasPrefix("METAL-") {
-                            self.getNexradRadar($0.split("-")[1], stackViewLocal)
                         }
+                        //} else if $0.hasPrefix("METAL-") {
+                        //    self.getNexradRadar($0.split("-")[1], stackViewLocal)
+                        //}
                         // "METAL-RADAR": "Local NEXRAD Radar"
                     }
                 }
