@@ -19,7 +19,8 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
                       "Radar",
                       "Home Screen",
                       "User Interface",
-                      "Celsius to Fahrenheit table"
+                      "Celsius to Fahrenheit table",
+                      "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
         ]
         titles.forEach {
             let objText = ObjectTextView(self.stackView, $0)
@@ -44,6 +45,9 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         case "Celsius to Fahrenheit table":
             ActVars.TEXTVIEWProd = "Celsius to Fahrenheit table"
             ActVars.TEXTVIEWText = UtilityMath.celsiusToFarenheitTable()
+            self.goToVC("textviewer")
+        case "About "  + MyApplication.appName + " " + UtilityUI.getVersion():
+            ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
             self.goToVC("textviewer")
         default: break
         }

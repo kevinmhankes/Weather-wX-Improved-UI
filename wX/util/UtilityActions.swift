@@ -144,13 +144,17 @@ final class UtilityActions {
             "Observations",
             "Soundings",
             "PlayList",
-            "Local Forecast",
+            //"Local Forecast",
             "Settings",
             "Help Mode - Off",
-            "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
+            //"About "  + MyApplication.appName + " " + UtilityUI.getVersion()
             ]
         if MyApplication.helpMode {
-            menuList.enumerated().forEach {if $1.contains("Help Mode") {menuList[$0] = "Help Mode - On"}}
+            menuList.enumerated().forEach {
+                if $1.contains("Help Mode") {
+                    menuList[$0] = "Help Mode - On"
+                }
+            }
         }
         let alert = UIAlertController(title: "Select from:", message: "",
                                       preferredStyle: UIAlertController.Style.actionSheet)
