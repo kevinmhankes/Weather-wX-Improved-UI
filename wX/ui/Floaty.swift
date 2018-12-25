@@ -342,7 +342,7 @@ open class Floaty: UIView {
                       self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(self.rotationDegrees), 0.0, 0.0, 1.0)
                       self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(self.rotationDegrees))
                       self.overlayView.alpha = 1
-      }, completion: {(f) -> Void in
+      }, completion: {(_) -> Void in
         self.overlayViewDidCompleteOpenAnimation = true
         animationGroup.leave()
       })
@@ -388,7 +388,7 @@ open class Floaty: UIView {
                       self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(0), 0.0, 0.0, 1.0)
                       self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(0))
                       self.overlayView.alpha = 0
-      }, completion: {(f) -> Void in
+      }, completion: {(_) -> Void in
         if self.overlayViewDidCompleteOpenAnimation {
           self.overlayView.removeFromSuperview()
         }

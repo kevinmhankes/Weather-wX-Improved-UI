@@ -37,7 +37,6 @@ class ViewControllerCARADAR: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = preferences.getString("CA_LAST_RID_URL", url)
-        // FIXME this doesn't seem to be working, in radar if select mosaic does not show on next start
         if ActVars.CARADARprov == "" {
             rid = preferences.getString("CA_LAST_RID", rid)
         } else {

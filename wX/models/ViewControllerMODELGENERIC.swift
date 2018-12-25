@@ -182,7 +182,6 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         getRunStatus()
     }
 
-    // FIXME
     func respondToSwipeGesture(gesture: UISwipeGestureRecognizer ) {
         let swipeGesture = gesture
         switch swipeGesture.direction {

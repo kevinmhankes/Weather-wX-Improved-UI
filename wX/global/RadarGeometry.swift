@@ -76,16 +76,15 @@ class RadarGeometry {
         var countStateUs = 205748
         let caResid = R.Raw.ca
         let mxResid = R.Raw.mx
-        // FIXME rename
-        let caCnt = 161792
-        let mxCnt = 151552
+        let countCanada = 161792
+        let countMexico = 151552
         if RadarPreferences.radarStateHires {
             stateLinesFileResid = R.Raw.statev3
             countState = 1166552
             countStateUs = 1166552
         }
         if RadarPreferences.radarCamxBorders {
-            countState += caCnt + mxCnt
+            countState += countCanada + countMexico
         }
         if RadarPreferences.radarCountyHires {
             countyFileResid = R.Raw.countyv2
@@ -105,7 +104,7 @@ class RadarGeometry {
                          caResid,
                          mxResid,
                          hwExtFileResid]
-        var countArr = [countLakes, countHw, countCounty, countStateUs, caCnt, mxCnt, countHwExt]
+        var countArr = [countLakes, countHw, countCounty, countStateUs, countCanada, countMexico, countHwExt]
         var bbArr=[lakesRelativeBuffer,
                    hwRelativeBuffer,
                    countyRelativeBuffer,

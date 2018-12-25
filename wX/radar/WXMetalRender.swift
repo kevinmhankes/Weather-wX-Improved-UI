@@ -220,7 +220,6 @@ class WXMetalRender {
     }
 
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
-        // FIXME var naming
         var fList = [Double]()
         switch buffers.type.string {
         case "MCD":

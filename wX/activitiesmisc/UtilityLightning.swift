@@ -78,7 +78,6 @@ final class UtilityLightning {
         return sector
     }
 
-    // FIXME obsolete this and above with a list of short time codes
     static func getTimePretty(_ period: String) -> String {
         let periodPretty: String
         switch period {

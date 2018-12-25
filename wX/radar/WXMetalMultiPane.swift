@@ -44,20 +44,19 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
-        // FIXME typo
-        let pangeRange = 0..<numberOfPanes
+        let paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             toolbarTop.setConfig(.top)
-            pangeRange.forEach {
+            paneRange.forEach {
                 siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
             }
             var items = [UIBarButtonItem]()
             items.append(flexBarButton)
-            pangeRange.forEach {
+            paneRange.forEach {
                 items.append(siteButton[$0])
             }
             toolbarTop.items = ObjectToolbarItems(items).items
@@ -80,7 +79,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        pangeRange.forEach {
+        paneRange.forEach {
             productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))
         }
         radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
@@ -93,7 +92,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         toolbarButtons.append(flexBarButton)
         toolbarButtons.append(animateButton)
         toolbarButtons.append(fixedSpace)
-        pangeRange.forEach {
+        paneRange.forEach {
             toolbarButtons.append(productButton[$0])
         }
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
@@ -116,7 +115,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                                       top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
         let halfWidth = screenWidth / 2
         let halfHeight = screenHeight / 2
-        pangeRange.enumerated().forEach { index, _ in
+        paneRange.enumerated().forEach { index, _ in
             metalLayer.append(CAMetalLayer())
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
@@ -156,7 +155,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                                           height: CGFloat(halfHeight))
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
-        pangeRange.forEach {
+        paneRange.forEach {
             wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
         }
         productButton.enumerated().forEach {$1.title = wxMetal[$0]!.product}

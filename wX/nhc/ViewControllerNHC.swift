@@ -58,7 +58,6 @@ class ViewControllerNHC: UIwXViewController {
         }
     }
 
-    // FIXME method should have arg as UIButton so that button can be genericall specified
     @objc func imageProductClicked() {
         _ = ObjectPopUp(self,
                         "Product Selection",
