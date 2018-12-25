@@ -850,10 +850,10 @@ open class Floaty: UIView {
     superview?.removeObserver(self, forKeyPath: "bounds")
     if sticky == true {
       if let superviews = self.getAllSuperviews() {
-        for superview in superviews {
-          if superview is UIScrollView {
+        for superview in superviews where superview is UIScrollView {
+          //if superview is UIScrollView {
             superview.removeObserver(self, forKeyPath: "contentOffset", context: nil)
-          }
+          //}
         }
       }
     }
@@ -866,10 +866,10 @@ open class Floaty: UIView {
     superview?.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
     if sticky == true {
       if let superviews = self.getAllSuperviews() {
-        for superview in superviews {
-          if superview is UIScrollView {
+        for superview in superviews where superview is UIScrollView {
+          //if superview is UIScrollView {
             superview.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
-          }
+          //}
         }
       }
     }

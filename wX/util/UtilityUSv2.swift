@@ -6,7 +6,6 @@
 
 import Foundation
 
-// TODO rename to UtilityDownloadObservation
 final class UtilityUSv2 {
 
     static var obsClosestClass = ""

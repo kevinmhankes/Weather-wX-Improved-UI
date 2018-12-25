@@ -92,15 +92,16 @@ class ViewControllerSPCMESO: UIwXViewController {
         self.getContent()
     }
 
-    // FIXME
     @objc func sectorClicked() {
-        let alert = ObjectPopUp(self, "Sector Selection", sectorButton)
-        UtilitySPCMESO.sectorMap.keys.forEach { sector in
-            alert.addAction(UIAlertAction(UtilitySPCMESO.sectorMap[sector]!, {_ in self.sectorChanged(sector)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilitySPCMESO.sectors, self.sectorChangedByIndex(_:))
     }
 
+    func sectorChangedByIndex(_ index: Int) {
+        self.sector = UtilitySPCMESO.sectorCodes[index]
+        self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
+        self.getContent()
+    }
+    
     func sectorChanged(_ sector: String) {
         self.sector = sector
         self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
