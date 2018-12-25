@@ -92,6 +92,26 @@ final class ObjectPopUp {
         }
         finish()
     }
+    
+    init(_ uiv: UIViewController,
+         _ button: UIBarButtonItem,
+         _ list: [ObjectMenuTitle],
+         _ index: Int,
+         _ menuData: ObjectMenuData,
+         _ fn: @escaping (Int) -> Void) {
+        
+        let startIdx = ObjectMenuTitle.getStart(list, index)
+        let count = list[index].count
+        let title = list[index].title
+        alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        self.button = button
+        self.uiv = uiv
+        (startIdx..<(startIdx + count)).forEach { idx in
+            let paramTitle = menuData.paramLabels[idx]
+            alert.addAction(UIAlertAction(paramTitle, { _ in fn(idx)}))
+        }
+        finish()
+    }
 
     func addAction(_ action: UIAlertAction) {
         alert.addAction(action)

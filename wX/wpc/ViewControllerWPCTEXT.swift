@@ -59,22 +59,14 @@ class ViewControllerWPCTEXT: UIwXViewController {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 
-    // FIXME
     func showSubMenu(_ index: Int) {
-        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
-        let count = subMenu.objTitles[index].count
-        let title = subMenu.objTitles[index].title
-        let alert = ObjectPopUp(self, title, productButton)
-        (startIdx..<(startIdx + count)).forEach { idx in
-            let strArr = subMenu.paramLabels[idx].split(":")
-            alert.addAction(UIAlertAction(strArr[1], { _ in self.productChanged(strArr[0])}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
     }
 
-    func productChanged(_ product: String) {
+    func productChanged(_ index: Int) {
+        let code = subMenu.paramLabels[index].split(":")[0]
         self.scrollView.scrollToTop()
-        self.product = product
+        self.product = code
         self.getContent()
     }
 

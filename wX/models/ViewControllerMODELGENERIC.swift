@@ -130,16 +130,15 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         _ = ObjectPopUp(self, "Product Selection", productButton, modelObj.paramLabelArr, self.prodChanged(_:))
     }
 
-    //
-    // Submenu code
-    //
     @objc func showProdMenu() {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 
-    // FIXME move to ObjectPopUp
     func showSubMenu(_ index: Int) {
-        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
+        
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.prodChanged(_:))
+        
+        /*let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
         let count = subMenu.objTitles[index].count
         let title = subMenu.objTitles[index].title
         let alert = ObjectPopUp(self, title, productButton)
@@ -147,7 +146,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
             let paramTitle = subMenu.paramLabels[idx]
             alert.addAction(UIAlertAction(paramTitle, { _ in self.prodChanged(idx)}))
         }
-        alert.finish()
+        alert.finish()*/
+        
     }
 
     //
