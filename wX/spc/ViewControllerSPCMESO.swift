@@ -101,11 +101,6 @@ class ViewControllerSPCMESO: UIwXViewController {
         alert.finish()
     }
 
-    func productChanged(_ product: String) {
-        self.product = product
-        self.getContent()
-    }
-
     func sectorChanged(_ sector: String) {
         self.sector = sector
         self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
@@ -190,24 +185,21 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     @objc func showProductMenu() {
         _ = ObjectPopUp(self, "Product Selection", paramButton, subMenu.objTitles, self.showSubMenu(_:))
-        //subMenu.objTitles.enumerated().forEach { index, title in
-        //    alert.addAction(UIAlertAction(title.title, { _ in self.showSubMenu(index)}))
-        //}
-        //alert.finish()
     }
 
-    // FIXME
     func showSubMenu(_ index: Int) {
-        let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
-        let count = subMenu.objTitles[index].count
-        let title = subMenu.objTitles[index].title
-        let alert = ObjectPopUp(self, title, paramButton)
-        (startIdx..<(startIdx + count)).forEach { index in
-            let ii = subMenu.params[index]
-            let paramTitle = subMenu.paramLabels[index]
-            alert.addAction(UIAlertAction(paramTitle, {_ in self.productChanged(ii)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
+    }
+    
+    func productChanged(_ product: String) {
+        self.product = product
+        self.getContent()
+    }
+    
+    func productChanged(_ index: Int) {
+        let product = subMenu.params[index]
+        self.product = product
+        self.getContent()
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
