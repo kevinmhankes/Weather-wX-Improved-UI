@@ -7,7 +7,6 @@
 class WXGLNexradLevel3Common {
 
     // FIXME this should be used in storm tracks ( used in wind barb already )
-    
     static func drawLine(_ startEc: ExternalGlobalCoordinates, _ ecc: ExternalGeodeticCalculator,
                          _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates, _ startBearing: Double,
                          _ distance: Double, _ bearing: [Double]) -> [Double] {
@@ -34,4 +33,3 @@ class WXGLNexradLevel3Common {
         return list
     }
 }
-

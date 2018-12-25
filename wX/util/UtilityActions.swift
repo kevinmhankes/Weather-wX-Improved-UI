@@ -99,9 +99,6 @@ final class UtilityActions {
             } else {
                 token = "cawarn"
             }
-        case "About " + MyApplication.appName + " " + UtilityUI.getVersion():
-            ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
-            token = "textviewer"
         case "Spotters":
             token = "spotters"
         case "Local Forecast":
@@ -146,8 +143,7 @@ final class UtilityActions {
             "PlayList",
             //"Local Forecast",
             "Settings",
-            "Help Mode - Off",
-            //"About "  + MyApplication.appName + " " + UtilityUI.getVersion()
+            "Help Mode - Off"
             ]
         if MyApplication.helpMode {
             menuList.enumerated().forEach {

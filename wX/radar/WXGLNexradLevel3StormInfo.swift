@@ -131,6 +131,4 @@ class WXGLNexradLevel3StormInfo {
         list.append(tmpCoords.1)
         return list
     }
-
-   
 }
