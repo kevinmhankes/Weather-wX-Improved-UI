@@ -350,8 +350,16 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             }
         }
     }
+    
+    func cleanupRadarObjects() {
+        if wxMetal[0] != nil {
+            //wxMetal.forEach { $0!.cleanup() }
+        }
+    }
 
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
+        
+        cleanupRadarObjects()
         
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
@@ -385,9 +393,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         )
         metalLayer.forEach { caview.layer.addSublayer($0!) }
         stackView.addArrangedSubview(caview)
-        paneRange.forEach {
-            wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: $0, numberOfPanes))
+        //paneRange.forEach {
+        if wxMetal.count < 1 {
+            wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
         }
+        //}
         setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary?.makeFunction(name: "basic_fragment")
@@ -592,7 +602,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 + ": "
                 +  preferences.getString("RID_LOC_" + rid.name, "")
                 + " (" + String(rid.distance) + " mi)"
-            //alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.wxMetal[0]!.resetRidAndGet(rid.name)}))
         }
         alert.addAction(UIAlertAction(
             "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
@@ -628,7 +638,4 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
 }
