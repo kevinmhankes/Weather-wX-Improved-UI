@@ -365,7 +365,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let screenSize: CGSize = UIScreen.main.bounds.size
-        let screenWidth = Float(screenSize.width) - Float(self.sideSpacing)
+        //let screenWidth = Float(screenSize.width) - Float(self.sideSpacing)
+        let screenWidth = Float(screenSize.width)
         let screenHeight = screenWidth
         let carect = CGRect(
             x: 0,
