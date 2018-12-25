@@ -404,8 +404,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         commandQueue = device?.makeCommandQueue()
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
-        //let timer = CADisplayLink(target: self, selector: #selector(ViewControllerTABLOCATIONGL.newFrame(displayLink:)))
-        //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
         wxMetal[0]!.setRenderFunction(render)
         wxMetal[0]!.resetRidAndGet(Location.rid)
         self.render()

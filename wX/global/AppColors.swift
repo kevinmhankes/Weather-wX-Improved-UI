@@ -21,8 +21,6 @@ class AppColors {
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
     static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
-
-    // FIXME add black/green fab colors
     
     static func update() {
         let appColor = preferences.getString("UI_THEME", "blue")
@@ -31,30 +29,35 @@ class AppColors {
             primaryColorRed = CGFloat(30.0 / 255.0)
             primaryColorGreen = CGFloat(30.0 / 255.0)
             primaryColorBlue = CGFloat(30.0 / 255.0)
-            primaryColorUIColor =  UIColor(red: primaryColorRed,
-                                           green: primaryColorGreen,
-                                           blue: primaryColorBlue,
-                                           alpha: CGFloat(1.0))
+            primaryColorUIColor =  wXColor.uiColorFloat(
+                primaryColorRed,
+                primaryColorGreen,
+                primaryColorBlue
+            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            primaryColorFab = wXColor.uiColorInt(100, 100, 100)
         case "green":
             primaryColorRed = CGFloat(0.0 / 255.0)
             primaryColorGreen = CGFloat(71.0 / 255.0)
             primaryColorBlue = CGFloat(6.0 / 255.0)
-            primaryColorUIColor =  UIColor(red: primaryColorRed,
-                                           green: primaryColorGreen,
-                                           blue: primaryColorBlue,
-                                           alpha: CGFloat(1.0))
+            primaryColorUIColor =  wXColor.uiColorFloat(
+                primaryColorRed,
+                primaryColorGreen,
+                primaryColorBlue
+            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 46, 4)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 46, 4)
+            primaryColorFab = wXColor.uiColorInt(70, 175, 70)
         default:
             primaryColorRed = CGFloat(46.0 / 255.0)
             primaryColorGreen = CGFloat(63.0 / 255.0)
             primaryColorBlue = CGFloat(89.0 / 255.0)
-            primaryColorUIColor =  UIColor(red: primaryColorRed,
-                                           green: primaryColorGreen,
-                                           blue: primaryColorBlue,
-                                           alpha: CGFloat(1.0))
+            primaryColorUIColor =  wXColor.uiColorFloat(
+                primaryColorRed,
+                primaryColorGreen,
+                primaryColorBlue
+            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
             primaryColorFab = wXColor.uiColorInt(88, 121, 169)
