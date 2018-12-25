@@ -71,9 +71,9 @@ class WXGLNexradLevel3StormInfo {
                     endPoint = tmpCoords
                     if nm2 > 0 {
                         start = ExternalGlobalCoordinates(ec)
-                        stormList += drawLine(endPoint, ecc, pn, start,
+                        stormList += WXGLNexradLevel3Common.drawLine(endPoint, ecc, pn, start,
                                               degree2 + arrowBend, arrowLength * 1852.0, bearing)
-                        stormList += drawLine(endPoint, ecc, pn, start,
+                        stormList += WXGLNexradLevel3Common.drawLine(endPoint, ecc, pn, start,
                                               degree2 - arrowBend, arrowLength * 1852.0, bearing)
                         // 15,30,45 min ticks
                         let stormTrackTickMarkAngleOff90 = 30.0
@@ -132,16 +132,5 @@ class WXGLNexradLevel3StormInfo {
         return list
     }
 
-    static func drawLine(_ startPoint: (Double, Double), _  ecc: ExternalGeodeticCalculator,
-                         _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates,
-                         _ startBearing: Double, _ distance: Double, _ bearing: [Double]) -> [Double] {
-        var list = [Double]()
-        list.append(startPoint.0)
-        list.append(startPoint.1)
-        let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list.append(tmpCoords.0)
-        list.append(tmpCoords.1)
-        return list
-    }
+   
 }

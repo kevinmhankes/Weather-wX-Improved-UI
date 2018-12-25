@@ -45,6 +45,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     let numberOfPanes = 1
     var textObj = WXMetalTextObject()
     var longPressCount = 0
+    let sideSpacing: CGFloat = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +86,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                                 menuButton]).items
         }
         
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - self.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.view.addSubview(toolbar)
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
@@ -364,7 +365,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let screenSize: CGSize = UIScreen.main.bounds.size
-        let screenWidth = Float(screenSize.width)
+        let screenWidth = Float(screenSize.width) - Float(self.sideSpacing)
         let screenHeight = screenWidth
         let carect = CGRect(
             x: 0,

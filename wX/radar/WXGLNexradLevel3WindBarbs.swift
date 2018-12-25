@@ -91,7 +91,7 @@ class WXGLNexradLevel3WindBarbs {
                                                               barbOffset + startLength + Double(index) * arrowSpacing
                                                                 * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
-                    stormList += drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
                                           startLength + arrowLength * nmScaleFactor, bearing)
                     // perpendicular line from main barb
                     ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
@@ -100,7 +100,7 @@ class WXGLNexradLevel3WindBarbs {
                                                               barbOffset + startLength + -1.0 * arrowSpacing
                                                                 * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
-                    stormList += drawLine(ec, ecc, pn, start, degree2 - 90.0,
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - 90.0,
                                           startLength + 0.80 * arrowLength * nmScaleFactor, bearing)
                     // connecting line parallel to main barb
                     ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
@@ -110,13 +110,15 @@ class WXGLNexradLevel3WindBarbs {
                                                                 + Double(index) * arrowSpacing
                                                                 * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
-                    stormList += drawLine(ec,
-                                          ecc,
-                                          pn,
-                                          start,
-                                          degree2 - 180.0,
-                                          startLength + 0.5 * arrowLength * nmScaleFactor,
-                                          bearing)
+                    stormList += WXGLNexradLevel3Common.drawLine(
+                        ec,
+                        ecc,
+                        pn,
+                        start,
+                        degree2 - 180.0,
+                        startLength + 0.5 * arrowLength * nmScaleFactor,
+                        bearing
+                    )
                     index += 1
                 }
                 (index..<barbCount).forEach { _ in
@@ -127,7 +129,7 @@ class WXGLNexradLevel3WindBarbs {
                                                                 + Double(index) * arrowSpacing
                                                                 * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
-                    stormList += drawLine(ec,
+                    stormList += WXGLNexradLevel3Common.drawLine(ec,
                                           ecc,
                                           pn,
                                           start,
@@ -146,25 +148,11 @@ class WXGLNexradLevel3WindBarbs {
                                                                 + Double(index) * arrowSpacing
                                                                 * nmScaleFactor * barbLengthScaleFactor,
                                                               bearing)
-                    stormList += drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
                                           startLength + arrowLength / 2.0 * nmScaleFactor, bearing)
                 }
             }
         }
         return stormList
-    }
-
-    // FIXME can this code be shared with storm tracks?
-    static func drawLine(_ startEc: ExternalGlobalCoordinates, _ ecc: ExternalGeodeticCalculator,
-                         _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates, _ startBearing: Double,
-                         _ distance: Double, _ bearing: [Double]) -> [Double] {
-        var list = [Double]()
-        let start = ExternalGlobalCoordinates(startEc)
-        let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, pn)
-        list += [startCoords.0, startCoords.1]
-        let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list += [tmpCoords.0, tmpCoords.1]
-        return list
     }
 }
