@@ -622,7 +622,7 @@ open class Floaty: UIView {
   fileprivate func determineTapArea(item: FloatyItem) -> CGRect {
     let tappableMargin: CGFloat = 30.0
     var x: CGFloat?
-    if(item.titleLabelPosition == .left) {
+    if item.titleLabelPosition == .left {
       x = item.titleLabel.frame.origin.x + item.bounds.origin.x
     } else {
       x = item.bounds.origin.x
@@ -764,8 +764,8 @@ open class Floaty: UIView {
   }
   
   fileprivate func setRightBottomFrame(_ keyboardSize: CGFloat = 0) {
-    var horizontalMargin = size
-    var verticalMargin = size + keyboardSize
+    let horizontalMargin = size
+    let verticalMargin = size + keyboardSize
     //if #available(iOS 11, *) {
     //  horizontalMargin += safeAreaInsets.right
     //  verticalMargin += safeAreaInsets.bottom
@@ -1253,4 +1253,3 @@ extension Floaty {
     }
   }
 }
-
