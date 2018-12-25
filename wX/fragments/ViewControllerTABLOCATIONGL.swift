@@ -393,11 +393,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         )
         metalLayer.forEach { caview.layer.addSublayer($0!) }
         stackView.addArrangedSubview(caview)
-        //paneRange.forEach {
         if wxMetal.count < 1 {
             wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
         }
-        //}
         setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary?.makeFunction(name: "basic_fragment")
@@ -627,14 +625,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
-        if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
-            if let popoverController = alert.popoverPresentationController {
-                //popoverController.barButtonItem = radarSiteButton
-            }
-        } else {
-            if let popoverController = alert.popoverPresentationController {
-                //popoverController.barButtonItem = siteButton[0]
-            }
+        if let popoverController = alert.popoverPresentationController {
+                popoverController.barButtonItem = menuButton
         }
         self.present(alert, animated: true, completion: nil)
     }

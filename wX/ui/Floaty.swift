@@ -146,7 +146,7 @@ open class Floaty: UIView {
    Child item's image color
    */
   @IBInspectable
-  @objc open var itemImageColor: UIColor? = nil
+  @objc open var itemImageColor: UIColor?
   
   /**
    Enable/disable shadow.
@@ -219,7 +219,7 @@ open class Floaty: UIView {
    */
   //    private var overlayLayer: CAShapeLayer = CAShapeLayer()
   
-  fileprivate var overlayView : UIControl = UIControl()
+  fileprivate var overlayView: UIControl = UIControl()
   
   /**
    Keep track of whether overlay open animation completes, to avoid animation conflicts.
@@ -234,7 +234,7 @@ open class Floaty: UIView {
   /**
    An accessibility button for the main Fab Button
    */
-  fileprivate var accessibilityView : UIView = UIView()
+  fileprivate var accessibilityView: UIView = UIView()
   
   // MARK: - Initialize
   
@@ -329,8 +329,7 @@ open class Floaty: UIView {
     fabDelegate?.floatyWillOpen?(self)
     let animationGroup = DispatchGroup()
     
-    if(items.count > 0){
-      
+    if items.count > 0 {
       setOverlayView()
       self.superview?.insertSubview(overlayView, aboveSubview: self)
       self.superview?.bringSubviewToFront(self)
@@ -364,8 +363,7 @@ open class Floaty: UIView {
       case .none:
         noneAnimationWithOpen()
       }
-      
-      UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: items.first);
+      UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: items.first)
     }
     
     animationGroup.notify(queue: .main) {
@@ -382,7 +380,7 @@ open class Floaty: UIView {
     fabDelegate?.floatyWillClose?(self)
     let animationGroup = DispatchGroup()
     
-    if(items.count > 0){
+    if items.count > 0 {
       self.overlayView.removeTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
       animationGroup.enter()
       UIView.animate(withDuration: 0.3, delay: 0,
@@ -398,8 +396,6 @@ open class Floaty: UIView {
         }
         animationGroup.leave()
       })
-      
-      
       switch openAnimationType {
       case .pop:
         popAnimationWithClose(group: animationGroup)
@@ -414,7 +410,7 @@ open class Floaty: UIView {
       case .none:
         noneAnimationWithClose()
       }
-      UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self);
+      UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self)
     }
     
     animationGroup.notify(queue: .main) {
@@ -451,7 +447,6 @@ open class Floaty: UIView {
     items.append(item)
     addSubview(item)
   }
-  
   
   /**
    Add item with title, titlePositon.
@@ -624,16 +619,15 @@ open class Floaty: UIView {
     return super.hitTest(point, with: event)
   }
   
-  fileprivate func determineTapArea(item : FloatyItem) -> CGRect {
-    let tappableMargin : CGFloat = 30.0
-    var x : CGFloat?
+  fileprivate func determineTapArea(item: FloatyItem) -> CGRect {
+    let tappableMargin: CGFloat = 30.0
+    var x: CGFloat?
     if(item.titleLabelPosition == .left) {
       x = item.titleLabel.frame.origin.x + item.bounds.origin.x
     } else {
       x = item.bounds.origin.x
     }
     let y = item.bounds.origin.y
-    
     var width: CGFloat
     if isCustomFrame {
       width = item.titleLabel.bounds.size.width + item.bounds.size.width + tappableMargin + paddingX
@@ -697,7 +691,8 @@ open class Floaty: UIView {
         //print(superview.bounds.width)
         //print(superview.bounds.height)
       overlayView.frame = CGRect(
-        x: 0,y: 0,
+        x: 0,
+        y: 0,
         width: superview.bounds.width,
         height: superview.bounds.height
       )
@@ -735,15 +730,13 @@ open class Floaty: UIView {
     item.size = itemSize
   }
   
-  
   fileprivate func setBottomFrameAccordingToRTL(_ keyboardSize: CGFloat = 0) {
-    
     if FloatyManager.defaultInstance().rtlMode {
       setLeftBottomFrame(keyboardSize)
-      self.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
-    }else {
+      self.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    } else {
       setRightBottomFrame(keyboardSize)
-      self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0);
+      self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
     }
   }
   
@@ -770,11 +763,9 @@ open class Floaty: UIView {
     }
   }
   
-  
   fileprivate func setRightBottomFrame(_ keyboardSize: CGFloat = 0) {
-    
-    var horizontalMargin = size;
-    var verticalMargin = size + keyboardSize;
+    var horizontalMargin = size
+    var verticalMargin = size + keyboardSize
     //if #available(iOS 11, *) {
     //  horizontalMargin += safeAreaInsets.right
     //  verticalMargin += safeAreaInsets.bottom
@@ -841,7 +832,7 @@ open class Floaty: UIView {
     return touches.count == 1 && touches.first?.tapCount == 1 && touches.first?.location(in: self) != nil
   }
   
-  open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+  open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
     if (object as? UIView) == superview && (keyPath == "frame" || keyPath == "bounds") {
       if isCustomFrame == false {
         setBottomFrameAccordingToRTL()
@@ -863,7 +854,7 @@ open class Floaty: UIView {
       if let superviews = self.getAllSuperviews() {
         for superview in superviews {
           if superview is UIScrollView {
-            superview.removeObserver(self, forKeyPath: "contentOffset", context:nil)
+            superview.removeObserver(self, forKeyPath: "contentOffset", context: nil)
           }
         }
       }
@@ -879,7 +870,7 @@ open class Floaty: UIView {
       if let superviews = self.getAllSuperviews() {
         for superview in superviews {
           if superview is UIScrollView {
-            superview.addObserver(self, forKeyPath: "contentOffset", options: .new, context:nil)
+            superview.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
           }
         }
       }
@@ -1194,7 +1185,7 @@ extension Floaty {
 
 extension UIView {
   fileprivate func getAllSuperviews() -> [UIView]? {
-    if (self.superview == nil) {
+    if self.superview == nil {
       return nil
     }
     
@@ -1209,11 +1200,10 @@ extension UIView {
   }
 }
 
-
 // MARK: - Accessibility Handling
 extension Floaty {
   open override func layoutSubviews() {
-    super.layoutSubviews();
+    super.layoutSubviews()
     accessibilityView.frame = CGRect(x: 0, y: 0, width: size, height: size)
   }
   
@@ -1223,7 +1213,7 @@ extension Floaty {
     accessibilityView.accessibilityTraits.insert(.button)
   }
   
-  open override var accessibilityLabel : String? {
+  open override var accessibilityLabel: String? {
     get {
       return accessibilityView.accessibilityLabel
     }

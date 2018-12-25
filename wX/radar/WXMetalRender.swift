@@ -91,7 +91,7 @@ class WXMetalRender {
     private var radarLayers = [ObjectMetalBuffers]()
     var paneNumber = 0
     var numberOfPanes = 0
-    var renderFn: (() -> ())?
+    var renderFn: (() -> Void)?
 
     init(_ device: MTLDevice,
          _ timeButton: ObjectToolbarIcon,
@@ -433,7 +433,7 @@ class WXMetalRender {
         }
     }
     
-    func setRenderFunction(_ fn: @escaping () -> ()) {
+    func setRenderFunction(_ fn: @escaping () -> Void) {
         self.renderFn = fn
     }
 
