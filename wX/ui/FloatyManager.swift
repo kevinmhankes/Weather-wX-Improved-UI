@@ -87,7 +87,7 @@ open class FloatyManager: NSObject {
     if animated == true {
       UIView.animate(withDuration: 0.3, animations: { () -> Void in
         self.floatyWindow.alpha = 0
-      }, completion: { finished in
+      }, completion: { _ in
         self.floatyWindow.isHidden = true
       })
     } else {

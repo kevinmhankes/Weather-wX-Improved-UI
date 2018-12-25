@@ -3,11 +3,10 @@
 // TODO standard model var names with android version
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO add code to handle rectangular transformation in render
-// TODO BIG look for way to save x/y/zoom of images
+// TODO look for way to save x/y/zoom of images
 // TODO complete URL refactor to move base URL to myApp
 // TODO check AWC images in WPCImg
 // TODO move more vars out of global namespace - like ActVars , camelcase in process
-// TODO color palette editor
 // TODO roaming location
 
 2018_12_24 53600 main screen metal radar framework
