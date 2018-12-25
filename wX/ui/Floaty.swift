@@ -184,9 +184,7 @@ open class Floaty: UIView {
   @objc open var sticky: Bool = false
   
   public static var global: FloatyManager {
-    get {
       return FloatyManager.defaultInstance()
-    }
   }
   
   /**
@@ -1222,7 +1220,7 @@ extension Floaty {
     }
   }
   
-  open override var accessibilityHint : String? {
+  open override var accessibilityHint: String? {
     get {
       return accessibilityView.accessibilityHint
     }
@@ -1231,7 +1229,7 @@ extension Floaty {
     }
   }
   
-  open override var accessibilityValue : String? {
+  open override var accessibilityValue: String? {
     get {
       return accessibilityView.accessibilityValue
     }
@@ -1242,7 +1240,7 @@ extension Floaty {
   
   open override var accessibilityElements: [Any]? {
     get {
-      if (closed) {
+      if closed {
         return [accessibilityView]
       } else {
         return [accessibilityView] + items

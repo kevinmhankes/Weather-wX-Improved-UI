@@ -24,32 +24,25 @@ open class FloatyManager: NSObject {
     return StaticInstance.instance!
   }
   
-  var _floatyWindow: FloatyWindow? = nil
+  var _floatyWindow: FloatyWindow?
   var floatyWindow: FloatyWindow {
-    get {
       if _floatyWindow == nil {
         _floatyWindow = FloatyWindow(frame: UIScreen.main.bounds)
         _floatyWindow?.rootViewController = floatyController
       }
       return _floatyWindow!
-    }
   }
   
-  var _floatyController: FloatyViewController? = nil
+  var _floatyController: FloatyViewController?
   var floatyController: FloatyViewController {
-    get {
       if _floatyController == nil {
         _floatyController = FloatyViewController()
       }
       return _floatyController!
-    }
   }
   
-  
   open var button: Floaty {
-    get {
       return floatyController.floaty
-    }
   }
   
   private let fontDescriptor: UIFontDescriptor
@@ -74,7 +67,7 @@ open class FloatyManager: NSObject {
     get {
       return _rtlMode
     }
-    set{
+    set {
       _rtlMode = newValue
     }
   }
@@ -111,8 +104,6 @@ open class FloatyManager: NSObject {
   }
   
   open var hidden: Bool {
-    get {
       return floatyWindow.isHidden
-    }
   }
 }

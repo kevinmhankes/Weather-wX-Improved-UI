@@ -6,8 +6,7 @@
 // TODO BIG look for way to save x/y/zoom of images
 // TODO complete URL refactor to move base URL to myApp
 // TODO check AWC images in WPCImg
-// move more vars out of global namespace - like ActVars , camelcase in process
-// TODO Metal radar widget on main screen
+// TODO move more vars out of global namespace - like ActVars , camelcase in process
 // TODO color palette editor
 // TODO roaming location
 

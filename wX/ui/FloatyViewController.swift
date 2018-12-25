@@ -20,8 +20,6 @@ open class FloatyViewController: UIViewController {
   }
   
   override open var preferredStatusBarStyle: UIStatusBarStyle {
-    get {
       return statusBarStyle
-    }
   }
 }

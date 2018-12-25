@@ -63,7 +63,7 @@ open class FloatyItem: UIView {
     /**
      If you touch up inside button, it execute handler.
      */
-    @objc open var handler: ((FloatyItem) -> Void)? = nil
+    @objc open var handler: ((FloatyItem) -> Void)?
     
     @objc open var imageOffset: CGPoint = CGPoint.zero
     @objc open var imageSize: CGSize = CGSize(width: 25, height: 25) {
@@ -107,7 +107,6 @@ open class FloatyItem: UIView {
      */
     var _titleLabel: UILabel?
     @objc open var titleLabel: UILabel {
-        get {
             if _titleLabel == nil {
                 _titleLabel = UILabel()
                 _titleLabel?.textColor = titleColor
@@ -115,7 +114,6 @@ open class FloatyItem: UIView {
                 addSubview(_titleLabel!)
             }
             return _titleLabel!
-        }
     }
     
     /**
@@ -145,9 +143,8 @@ open class FloatyItem: UIView {
     /**
      Item's icon image view.
      */
-    var _iconImageView: UIImageView? = nil
+    var _iconImageView: UIImageView?
     @objc open var iconImageView: UIImageView {
-        get {
             if _iconImageView == nil {
                 _iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
                 _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
@@ -155,7 +152,6 @@ open class FloatyItem: UIView {
                 addSubview(_iconImageView!)
             }
             return _iconImageView!
-        }
     }
     
     /**
@@ -220,7 +216,7 @@ open class FloatyItem: UIView {
     
     fileprivate func createCircleLayer() {
         //        circleLayer.frame = CGRectMake(frame.size.width - size, 0, size, size)
-        let castParent : Floaty = superview as! Floaty
+        let castParent: Floaty = superview as! Floaty
         circleLayer.frame = CGRect(x: castParent.itemSize/2 - (size/2), y: 0, width: size, height: size)
         circleLayer.backgroundColor = buttonColor.cgColor
         circleLayer.cornerRadius = size/2
@@ -229,7 +225,7 @@ open class FloatyItem: UIView {
     
     fileprivate func createTintLayer() {
         //        tintLayer.frame = CGRectMake(frame.size.width - size, 0, size, size)
-        let castParent : Floaty = superview as! Floaty
+        let castParent: Floaty = superview as! Floaty
         tintLayer.frame = CGRect(x: castParent.itemSize/2 - (size/2), y: 0, width: size, height: size)
         tintLayer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
         tintLayer.cornerRadius = size/2
