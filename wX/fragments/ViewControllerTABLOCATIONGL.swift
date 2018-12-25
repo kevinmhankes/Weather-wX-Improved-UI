@@ -41,6 +41,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var timer: CADisplayLink!
     var projectionMatrix: Matrix4!
     var lastFrameTimestamp: CFTimeInterval = 0.0
+    let ortInt: Float = 350.0
+    let numberOfPanes = 1
+    var textObj = WXMetalTextObject()
+    var longPressCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -348,8 +352,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
-        let ortInt: Float = 350.0
-        let numberOfPanes = 1
+        
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let screenSize: CGSize = UIScreen.main.bounds.size
@@ -385,6 +388,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: $0, numberOfPanes))
         }
+        setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
         let fragmentProgram = defaultLibrary?.makeFunction(name: "basic_fragment")
         let vertexProgram = defaultLibrary?.makeFunction(name: "basic_vertex")
@@ -523,4 +527,108 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.extraDataCards = []
         self.stackViewHazards.view.isHidden = true
     }
+    
+    func setupGestures() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self,
+                                                       action: #selector(tapGesture(_:)))
+        gestureRecognizer.numberOfTapsRequired = 1
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self,
+                                                        action: #selector(tapGesture(_:double:)))
+        gestureRecognizer2.numberOfTapsRequired = 2
+        stackViewRadar.addGestureRecognizer(gestureRecognizer)
+        stackViewRadar.addGestureRecognizer(gestureRecognizer2)
+        gestureRecognizer.require(toFail: gestureRecognizer2)
+        gestureRecognizer.delaysTouchesBegan = true
+        gestureRecognizer2.delaysTouchesBegan = true
+        self.view.addGestureRecognizer(
+            UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(gestureLongPress(_:))
+            )
+        )
+    }
+    
+    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
+    }
+    
+    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
+        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
+    }
+    
+    @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        longPressCount = WXMetalSurfaceView.gestureLongPress(self,
+                                                             wxMetal,
+                                                             textObj,
+                                                             longPressCount,
+                                                             longPressAction,
+                                                             gestureRecognizer)
+    }
+    
+    func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
+        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
+            self,
+            wxMetal[index]!,
+            numberOfPanes,
+            ortInt,
+            x,
+            y
+        )
+        let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
+        let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
+        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
+        let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
+        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+            + String(dist.roundTo(places: 2)) + " miles from location"
+            + ", " + String(distRid.roundTo(places: 2)) + " miles from "
+            + wxMetal[index]!.rid
+        if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
+            alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
+        }
+        let alert = UIAlertController(title: "Closest radar site:",
+                                      message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
+        ridNearbyList.forEach { rid in
+            let radarDescription = rid.name
+                + ": "
+                +  preferences.getString("RID_LOC_" + rid.name, "")
+                + " (" + String(rid.distance) + " mi)"
+            //alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
+        }
+        alert.addAction(UIAlertAction(
+            "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
+        )
+        let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
+        alert.addAction(UIAlertAction(
+            "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
+        )
+        alert.addAction(
+            UIAlertAction(
+                "Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}
+            )
+        )
+        alert.addAction(
+            UIAlertAction(
+                "Radar status message: " + self.wxMetal[index]!.rid, { _ in
+                    UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
+            )
+        )
+        let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(dismiss)
+        if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
+            if let popoverController = alert.popoverPresentationController {
+                //popoverController.barButtonItem = radarSiteButton
+            }
+        } else {
+            if let popoverController = alert.popoverPresentationController {
+                //popoverController.barButtonItem = siteButton[0]
+            }
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
 }

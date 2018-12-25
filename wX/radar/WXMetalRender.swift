@@ -671,6 +671,9 @@ class WXMetalRender {
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
+        if self.renderFn != nil {
+            self.renderFn!()
+        }
     }
 
     func resetRidAndGet(_ rid: String) {
