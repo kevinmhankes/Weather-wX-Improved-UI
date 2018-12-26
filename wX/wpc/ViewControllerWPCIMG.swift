@@ -48,6 +48,7 @@ class ViewControllerWPCIMG: UIwXViewController {
         _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
     }
 
+// FIXME have getContent take index
     func productChanged(_ product: Int) {
         self.index = product
         self.getContent()

@@ -73,6 +73,7 @@ class ViewControllerGOES16: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let urlList = UtilityGOES16.getUrl(self.productCode, self.sectorCode)
             self.serializeSettings()
+            // FIXME fix upstream method to only return URL, no longer need for timestamp
             let bitmap = Bitmap(urlList[0])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
@@ -85,12 +86,13 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc override func doneClicked() {
-        UtilityImg.imgSavePosnZoom(image.img, self)
+        //UtilityImg.imgSavePosnZoom(image.img, self)
         super.doneClicked()
     }
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Product Selection", productButton)
+        // FIXME see if this can fit into new framework
         UtilityGOES16.products.keys.sorted().forEach {
             let code = $0
             alert.addAction(UIAlertAction($0, {_ in self.productChanged(UtilityGOES16.products[code]!)}))
@@ -111,7 +113,6 @@ class ViewControllerGOES16: UIwXViewController {
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
-        //UtilityImg.imgCenter(self.image.img, self)
         self.getContent()
     }
 
