@@ -12,6 +12,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
     var webView = UIWebView()
     var browserButton = ObjectToolbarIcon()
     var stateCodeCurrent = ""
+    let prefToken = "STATE_CODE"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         if ActVars.WEBVIEWstateCode != "tornado" && !ActVars.WEBVIEWuseUrl {
             stateCodeCurrent = ActVars.WEBVIEWstateCode
-            stateCodeCurrent = preferences.getString("STATE_CODE", stateCodeCurrent)
+            stateCodeCurrent = preferences.getString(prefToken, stateCodeCurrent)
             urlChanged(stateCodeCurrent)
         }
         if ActVars.WEBVIEWuseUrl {
@@ -45,11 +46,12 @@ class ViewControllerWEBVIEW: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self,
-                        "Product Selection",
-                        productButton,
-                        GlobalArrays.states + UtilityCanada.provCodes,
-                        self.productChanged(_:)
+        _ = ObjectPopUp(
+            self,
+            "Product Selection",
+            productButton,
+            GlobalArrays.states + UtilityCanada.provCodes,
+            self.productChanged(_:)
         )
     }
 
@@ -57,7 +59,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         urlChanged(stateCodeCurrent)
         webView.loadHTMLString(ActVars.WEBVIEWurl, baseURL: nil)
         if ActVars.WEBVIEWstateCode != "tornado" {
-            editor.putString("STATE_CODE", self.stateCodeCurrent)
+            editor.putString(prefToken, self.stateCodeCurrent)
         }
     }
 
