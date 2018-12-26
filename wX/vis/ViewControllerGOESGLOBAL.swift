@@ -20,8 +20,11 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
+        // FIXME can addSubview for toolbar be added to parent VC?
         self.view.addSubview(toolbar)
+        // FIXME can this instantiation occur up above?
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        // FIXME can this instantiation occur up above?
         index = preferences.getInt("GOESFULLDISK_IMG_FAV_URL", index)
         self.getContent()
     }
@@ -37,6 +40,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
                 } else {
                     self.hideAnimateButton()
                 }
+                // FIXME this should be a variable
                 editor.putInt("GOESFULLDISK_IMG_FAV_URL", self.index)
             }
         }
@@ -58,6 +62,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
                         self.productChanged(_:))
     }
 
+    // FIXME getContent should take an index 
     func productChanged(_ prod: Int) {
         self.index = prod
         self.getContent()
