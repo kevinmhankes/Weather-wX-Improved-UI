@@ -89,7 +89,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         var array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
         default:
-            if array[pickerView.tag]=="UI_THEME" {
+            if array[pickerView.tag] == "UI_THEME" {
                 editor.putString(array[pickerView.tag], UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])
             } else {
                 editor.putInt(array[pickerView.tag],

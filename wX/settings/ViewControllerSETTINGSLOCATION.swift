@@ -35,7 +35,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"",
                                       style: .default,
                                       handler: {_ in self.actionLocation(sender.data)}))
-        if Location.numLocations>1 {
+        if Location.numLocations > 1 {
             alert.addAction(UIAlertAction(title: "Delete \"" + locName + "\"",
                                           style: .default,
                                           handler: {_ in self.deleteLocation(sender.data)}))

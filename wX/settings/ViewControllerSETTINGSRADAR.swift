@@ -117,7 +117,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         var array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
         default:
-            if array[pickerView.tag]=="RADAR_COLOR_PALETTE_94" || array[pickerView.tag]=="RADAR_COLOR_PALETTE_99" {
+            if array[pickerView.tag] == "RADAR_COLOR_PALETTE_94" || array[pickerView.tag] == "RADAR_COLOR_PALETTE_99" {
                 editor.putString(array[pickerView.tag],
                                  UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])
             } else {

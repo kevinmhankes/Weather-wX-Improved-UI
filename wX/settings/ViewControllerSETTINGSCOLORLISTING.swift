@@ -17,6 +17,7 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         setupColorObjects()
+        // FIXME move to method
         colorArr.sort(by: {$0.uiLabel < $1.uiLabel})
         colorArr.enumerated().forEach {
             let objText = ObjectTextView(self.stackView, $1.uiLabel, $1)

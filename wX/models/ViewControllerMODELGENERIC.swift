@@ -135,24 +135,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     }
 
     func showSubMenu(_ index: Int) {
-        
         _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.prodChanged(_:))
-        
-        /*let startIdx = ObjectMenuTitle.getStart(subMenu.objTitles, index)
-        let count = subMenu.objTitles[index].count
-        let title = subMenu.objTitles[index].title
-        let alert = ObjectPopUp(self, title, productButton)
-        (startIdx..<(startIdx + count)).forEach { idx in
-            let paramTitle = subMenu.paramLabels[idx]
-            alert.addAction(UIAlertAction(paramTitle, { _ in self.prodChanged(idx)}))
-        }
-        alert.finish()*/
-        
     }
-
-    //
-    // end submenu code
-    //
 
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, "Region Selection", sectorButton, modelObj.sectorArr, self.sectorChanged(_:))

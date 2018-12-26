@@ -64,6 +64,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         )
     }
 
+// FIXME
     func productChanged(_ product: String) {
         self.index = UtilityUSImgNWSMosaic.labels.index(of: product)!
         self.getContent()
