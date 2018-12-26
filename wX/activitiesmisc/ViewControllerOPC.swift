@@ -11,6 +11,7 @@ class ViewControllerOPC: UIwXViewController {
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
+    let prefToken = "OPC_IMG_FAV_URL"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,28 +20,24 @@ class ViewControllerOPC: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = preferences.getInt("OPC_IMG_FAV_URL", index)
-        self.getContent()
+        index = preferences.getInt(prefToken, index)
+        self.getContent(index)
     }
 
-    func getContent() {
+    func getContent(_ index: Int) {
+        self.index = index
+        self.productButton.title = UtilityOPCImages.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityOPCImages.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityOPCImages.labels[self.index]
-                editor.putInt("OPC_IMG_FAV_URL", self.index)
+                editor.putInt(self.prefToken, self.index)
             }
         }
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOPCImages.labels, self.productChanged(_:))
-    }
-
-    func productChanged(_ index: Int) {
-        self.index = index
-        self.getContent()
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOPCImages.labels, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -48,7 +45,6 @@ class ViewControllerOPC: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityOPCImages.urls)
-        getContent()
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityOPCImages.urls))
     }
 }
