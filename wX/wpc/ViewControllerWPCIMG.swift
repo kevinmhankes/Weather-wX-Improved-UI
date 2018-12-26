@@ -26,9 +26,9 @@ class ViewControllerWPCIMG: UIwXViewController {
     }
 
     func getContent(_ index: Int) {
+        self.index = index
         self.productButton.title = UtilityWPCImages.labels[index]
         DispatchQueue.global(qos: .userInitiated).async {
-            self.index = index
             var getUrl = UtilityWPCImages.urls[self.index]
             if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
                 getUrl += String(self.timePeriod) + "_conus.png"

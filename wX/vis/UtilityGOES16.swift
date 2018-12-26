@@ -20,7 +20,7 @@ final class UtilityGOES16 {
         return sizeMap[sector] ?? size
     }
 
-    static func getUrl(_ product: String, _ sector: String) -> [String] {
+    static func getUrl(_ product: String, _ sector: String) -> String {
         var sectorLocal = "SECTOR/" + sector
         if sector == "FD" || sector == "CONUS" {
             sectorLocal = sector
@@ -28,8 +28,7 @@ final class UtilityGOES16 {
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         let latestUrl = MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
-        print(latestUrl)
-        return [latestUrl, ""]
+        return latestUrl
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {

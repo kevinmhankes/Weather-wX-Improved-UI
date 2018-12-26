@@ -13,6 +13,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     var index = 0
     var animateButton = ObjectToolbarIcon()
     var shareButton = ObjectToolbarIcon()
+    let prefToken = "GOESFULLDISK_IMG_FAV_URL"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,28 +21,25 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
-        // FIXME can addSubview for toolbar be added to parent VC?
         self.view.addSubview(toolbar)
-        // FIXME can this instantiation occur up above?
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        // FIXME can this instantiation occur up above?
-        index = preferences.getInt("GOESFULLDISK_IMG_FAV_URL", index)
-        self.getContent()
+        index = preferences.getInt(prefToken, index)
+        self.getContent(index)
     }
 
-    func getContent() {
+    func getContent(_ index: Int) {
+        self.index = index
+        self.productButton.title = UtilityNWSGOESFullDisk.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityNWSGOESFullDisk.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityNWSGOESFullDisk.labels[self.index]
                 if UtilityNWSGOESFullDisk.urls[self.index].contains("jma") {
                     self.showAnimateButton()
                 } else {
                     self.hideAnimateButton()
                 }
-                // FIXME this should be a variable
-                editor.putInt("GOESFULLDISK_IMG_FAV_URL", self.index)
+                editor.putInt(self.prefToken, self.index)
             }
         }
     }
@@ -55,17 +53,13 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self,
-                        "Product Selection",
-                        productButton,
-                        UtilityNWSGOESFullDisk.labels,
-                        self.productChanged(_:))
-    }
-
-    // FIXME getContent should take an index 
-    func productChanged(_ prod: Int) {
-        self.index = prod
-        self.getContent()
+        _ = ObjectPopUp(
+            self,
+            "Product Selection",
+            productButton,
+            UtilityNWSGOESFullDisk.labels,
+            self.getContent(_:)
+        )
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -73,8 +67,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityNWSGOESFullDisk.urls)
-        getContent()
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityNWSGOESFullDisk.urls))
     }
 
     @objc func getAnimation() {

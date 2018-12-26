@@ -20,20 +20,24 @@ class ViewControllerGOES16: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            sectorButton,
-                                            productButton,
-                                            animateButton,
-                                            shareButton]).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            flexBarButton,
+            sectorButton,
+            productButton,
+            animateButton,
+            shareButton
+        ]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
@@ -71,14 +75,12 @@ class ViewControllerGOES16: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let urlList = UtilityGOES16.getUrl(self.productCode, self.sectorCode)
+            let url = UtilityGOES16.getUrl(self.productCode, self.sectorCode)
             self.serializeSettings()
-            // FIXME fix upstream method to only return URL, no longer need for timestamp
-            let bitmap = Bitmap(urlList[0])
+            let bitmap = Bitmap(url)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 if self.firstRun {
-                    //UtilityImg.imgRestorePosnZoom(self.image.img, self)
                     self.firstRun = false
                 }
             }
@@ -86,26 +88,32 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc override func doneClicked() {
-        //UtilityImg.imgSavePosnZoom(image.img, self)
         super.doneClicked()
     }
 
     @objc func productClicked() {
-        let alert = ObjectPopUp(self, "Product Selection", productButton)
+        let list: [String] = [String] (UtilityGOES16.products.keys.sorted())
+        _ = ObjectPopUp(self, "Product Selection", productButton, list, self.productChanged(_:))
         // FIXME see if this can fit into new framework
-        UtilityGOES16.products.keys.sorted().forEach {
-            let code = $0
-            alert.addAction(UIAlertAction($0, {_ in self.productChanged(UtilityGOES16.products[code]!)}))
-        }
-        alert.finish()
+        //UtilityGOES16.products.keys.sorted().forEach {
+        //    let code = $0
+        //    alert.addAction(UIAlertAction($0, {_ in self.productChanged(UtilityGOES16.products[code]!)}))
+        //}
+        //alert.finish()
     }
 
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGOES16.sectors, self.sectorChanged(_:))
     }
 
-    func productChanged(_ product: String) {
-        productCode = product
+    /*func productChanged(_ product: String) {
+        productCode = UtilityGOES16.products[product]!
+        productButton.title = productCode
+        self.getContent()
+    }*/
+    
+    func productChanged(_ index: Int) {
+        productCode = goesProducts[index]
         productButton.title = productCode
         self.getContent()
     }
@@ -121,16 +129,16 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        let index = UtilityUI.sideSwipe(sender, goesProducts.index(of: productCode)!, goesProducts)
-        productChanged(goesProducts[index])
+        productChanged(UtilityUI.sideSwipe(sender, goesProducts.index(of: productCode)!, goesProducts))
     }
 
     @objc func animateClicked() {
-        _ = ObjectPopUp(self,
-                        "Select number of animation frames:",
-                        animateButton,
-                        stride(from: 24, to: 96 + 12, by: 12),
-                        self.getAnimation(_:)
+        _ = ObjectPopUp(
+            self,
+            "Select number of animation frames:",
+            animateButton,
+            stride(from: 24, to: 96 + 12, by: 12),
+            self.getAnimation(_:)
         )
     }
 
