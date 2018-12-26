@@ -70,7 +70,7 @@ final class UtilityGOES16 {
     ]
 
     static let products = [
-        "00 True color daytime, multispectral IR at night": "GEOCOLOR",
+        "00 True color daytime, multispectral IR at night": "00GEOCOLOR",
         "00.47 um (Band 1) Blue - Visible": "01",
         "00.64 um (Band 2) Red - Visible": "02",
         "00.86 um (Band 3) Veggie - Near IR": "03",
@@ -88,4 +88,24 @@ final class UtilityGOES16 {
         "12.3 um (Band 15) Dirty Longwave Window - IR": "15",
         "13.3 um (Band 16) CO2 Longwave - IR": "16"
         ]
+    
+    static let productCodes = [
+        "GEOCOLOR",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+    ]
 }

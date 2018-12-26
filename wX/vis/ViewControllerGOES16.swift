@@ -14,7 +14,6 @@ class ViewControllerGOES16: UIwXViewController {
     var animateButton = ObjectToolbarIcon()
     var productCode = ""
     var sectorCode = ""
-    var goesProducts = [String]()
     var savePrefs = true
     var firstRun = true
 
@@ -41,7 +40,6 @@ class ViewControllerGOES16: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        goesProducts = UtilityGOES16.products.values.sorted()
         self.view.addSubview(toolbar)
         deSerializeSettings()
         self.getContent()
@@ -94,26 +92,14 @@ class ViewControllerGOES16: UIwXViewController {
     @objc func productClicked() {
         let list: [String] = [String] (UtilityGOES16.products.keys.sorted())
         _ = ObjectPopUp(self, "Product Selection", productButton, list, self.productChanged(_:))
-        // FIXME see if this can fit into new framework
-        //UtilityGOES16.products.keys.sorted().forEach {
-        //    let code = $0
-        //    alert.addAction(UIAlertAction($0, {_ in self.productChanged(UtilityGOES16.products[code]!)}))
-        //}
-        //alert.finish()
     }
 
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGOES16.sectors, self.sectorChanged(_:))
     }
 
-    /*func productChanged(_ product: String) {
-        productCode = UtilityGOES16.products[product]!
-        productButton.title = productCode
-        self.getContent()
-    }*/
-    
     func productChanged(_ index: Int) {
-        productCode = goesProducts[index]
+        productCode = UtilityGOES16.productCodes[index]
         productButton.title = productCode
         self.getContent()
     }
@@ -129,7 +115,7 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        productChanged(UtilityUI.sideSwipe(sender, goesProducts.index(of: productCode)!, goesProducts))
+        productChanged(UtilityUI.sideSwipe(sender, UtilityGOES16.productCodes.index(of: productCode)!, UtilityGOES16.productCodes))
     }
 
     @objc func animateClicked() {
