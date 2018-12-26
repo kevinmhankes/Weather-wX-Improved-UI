@@ -592,7 +592,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 + ": "
                 +  preferences.getString("RID_LOC_" + rid.name, "")
                 + " (" + String(rid.distance) + " mi)"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.wxMetal[0]!.resetRidAndGet(rid.name)}))
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }
         alert.addAction(UIAlertAction(
             "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
@@ -621,5 +621,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 popoverController.barButtonItem = menuButton
         }
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func ridChanged(_ rid: String) {
+        getPolygonWarnings()
+        wxMetal[0]!.resetRidAndGet(rid)
     }
 }

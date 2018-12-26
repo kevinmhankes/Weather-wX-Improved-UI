@@ -217,7 +217,9 @@ class WXMetalRender {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
-        // FIXME add in render call if not nil
+        if self.renderFn != nil {
+            self.renderFn!()
+        }
     }
 
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
