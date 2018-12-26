@@ -41,6 +41,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.productChanged(_:))
     }
 
+    // FIXME move index to getContent
     func productChanged(_ index: Int) {
         self.index = index
         self.getContent()
