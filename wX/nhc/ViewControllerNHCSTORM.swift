@@ -54,7 +54,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
         goesSector = goesSector.replace("A", "L")  // value is either E or L
         stormId = stormId.replace("AL", "AT")
         goesId = stormId.replace("EP", "").replace("AT", "")
-        if goesId.count<2 {
+        if goesId.count < 2 {
             goesId = "0" + goesId
         }
         product = "MIATCP" + stormId

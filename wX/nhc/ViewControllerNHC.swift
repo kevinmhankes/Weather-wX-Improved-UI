@@ -39,11 +39,12 @@ class ViewControllerNHC: UIwXViewController {
     }
 
     @objc func textProductClicked() {
-        _ = ObjectPopUp(self,
-                        "Product Selection",
-                        textProductButton,
-                        UtilityNHC.textProducts,
-                        self.textProductChanged(_:)
+        _ = ObjectPopUp(
+            self,
+            "Product Selection",
+            textProductButton,
+            UtilityNHC.textProducts,
+            self.textProductChanged(_:)
         )
     }
 
@@ -59,11 +60,12 @@ class ViewControllerNHC: UIwXViewController {
     }
 
     @objc func imageProductClicked() {
-        _ = ObjectPopUp(self,
-                        "Product Selection",
-                        imageProductButton,
-                        UtilityNHC.imageTitles,
-                        self.imageProductChanged(_:)
+        _ = ObjectPopUp(
+            self,
+            "Product Selection",
+            imageProductButton,
+            UtilityNHC.imageTitles,
+            self.imageProductChanged(_:)
         )
     }
 

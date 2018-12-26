@@ -27,9 +27,12 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let toolbarTop = ObjectToolbar(.top)
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(self.layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
@@ -71,7 +74,6 @@ class ViewControllerSPCMESO: UIwXViewController {
             DispatchQueue.main.async {
                 if self.firstRun {
                     self.image.setBitmap(bitmap)
-                    //UtilityImg.imgRestorePosnZoom(self.image.img, self)
                     self.firstRun = false
                 } else {
                     self.image.updateBitmap(bitmap)
@@ -81,11 +83,6 @@ class ViewControllerSPCMESO: UIwXViewController {
                 editor.putString(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
             }
         }
-    }
-
-    @objc override func doneClicked() {
-        UtilityImg.imgSavePosnZoom(image.img, self)
-        super.doneClicked()
     }
 
     @objc func willEnterForeground() {
@@ -108,10 +105,12 @@ class ViewControllerSPCMESO: UIwXViewController {
         self.getContent()
     }
 
-    @objc func shareClicked(sender: UIButton) {UtilityShare.shareImage(self, sender, image.bitmap)}
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
+    }
 
     @objc func paramClicked(sender: ObjectToolbarIcon) {
-        var paramArray = [String: String]()
+        var paramArray = [String]()
         switch sender.title! {
         case "SFC": paramArray = UtilitySPCMESO.paramSurface
         case "UA":  paramArray = UtilitySPCMESO.paramUpperAir
@@ -120,11 +119,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         case "SHR": paramArray = UtilitySPCMESO.paramShear
         default: break
         }
-        let alert = ObjectPopUp(self, "Product Selection", sender)
-        paramArray.keys.sorted().forEach { productCode in
-            alert.addAction(UIAlertAction(paramArray[productCode]!, {_ in self.productChanged(productCode)}))
-        }
-        alert.finish()
+        _ = ObjectPopUp(self, "Product Selection", sender, paramArray, self.productChangedByCode(_:))
     }
 
     @objc func layerClicked(sender: ObjectToolbarIcon) {
@@ -192,7 +187,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
     }
     
-    func productChanged(_ product: String) {
+    func productChangedByCode(_ product: String) {
         self.product = product
         self.getContent()
     }
@@ -208,6 +203,6 @@ class ViewControllerSPCMESO: UIwXViewController {
         if let product = UtilitySPCMESO.productShortList.index(of: self.product) {
             index = UtilityUI.sideSwipe(sender, product, UtilitySPCMESO.productShortList)
         }
-        productChanged(UtilitySPCMESO.productShortList[index])
+        productChangedByCode(UtilitySPCMESO.productShortList[index])
     }
 }

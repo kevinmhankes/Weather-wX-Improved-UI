@@ -35,7 +35,7 @@ class ViewControllerSPCMCD: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var mcdList = [String]()
-            if self.spcMcdNumber=="" {
+            if self.spcMcdNumber == "" {
                 mcdList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
                     .getHtml()
                     .parseColumn("title=.Mesoscale Discussion #(.*?).>")

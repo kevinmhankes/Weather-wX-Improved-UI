@@ -20,10 +20,12 @@ class ViewControllerCARADAR: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, // NSNotification.Name.UIApplicationWillEnterForeground
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
@@ -81,9 +83,9 @@ class ViewControllerCARADAR: UIwXViewController {
         _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.caRids, self.productChanged(_:))
     }
 
-    func productChanged(_ prod: Int) {
+    func productChanged(_ index: Int) {
         ActVars.CARADARimgType = "radar"
-        rid = UtilityCanadaImg.caRids[prod].split(":")[0]
+        rid = UtilityCanadaImg.caRids[index].split(":")[0]
         self.getContent()
     }
 

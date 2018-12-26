@@ -400,44 +400,44 @@ final class UtilitySPCMESO {
     ]
 
     static let paramSurface = [
-        "bigsfc": "Surface Observations",
-        "1kmv": "Visible Satellite",
-        "rgnlrad": "Radar Base Reflectivity",
-        "thea": "Theta-E Advection",
-        "ttd": "Temp/Wind/Dwpt",
-        "pmsl": "MSL Pressure/Wind"
+        "bigsfc: Surface Observations",
+        "1kmv: Visible Satellite",
+        "rgnlrad: Radar Base Reflectivity",
+        "thea: Theta-E Advection",
+        "ttd: Temp/Wind/Dwpt",
+        "pmsl: MSL Pressure/Wind"
     ]
 
     static let paramUpperAir = [
-        "925mb": "925mb Analysis",
-        "850mb": "850mb Analysis",
-        "700mb": "700mb Analysis",
-        "500mb": "500mb Analysis",
-        "300mb": "300mb Analysis",
-        "pwtr": "Precipitable water",
-        "muli": "Surface-based Lifted Index"
+        "925mb: 925mb Analysis",
+        "850mb: 850mb Analysis",
+        "700mb: 700mb Analysis",
+        "500mb: 500mb Analysis",
+        "300mb: 300mb Analysis",
+        "pwtr: Precipitable water",
+        "muli: Surface-based Lifted Index"
     ]
 
     static let paramCape = [
-        "laps": "Mid-Level Lapse Rates",
-        "lllr": "Low-Level Lapse Rates",
-        "lclh": "LCL Height",
-        "sbcp": "CAPE - Surface Based",
-        "mlcp": "CAPE - 100mb Mixed Layer",
-        "mucp": "CAPE - Most Unstable / LPL Height"
+        "laps: Mid-Level Lapse Rates",
+        "lllr: Low-Level Lapse Rates",
+        "lclh: LCL Height",
+        "sbcp: CAPE - Surface Based",
+        "mlcp: CAPE - 100mb Mixed Layer",
+        "mucp: CAPE - Most Unstable / LPL Height"
     ]
 
     static let paramComp = [
-        "sigh": "Sgfnt Hail",
-        "stpc": "Sgfnt Tornado (effective layer)",
-        "scp": "Supercell Composite"
+        "sigh: Sgfnt Hail",
+        "stpc: Sgfnt Tornado (effective layer)",
+        "scp: Supercell Composite"
     ]
 
     static let paramShear = [
-        "srh1": "SR Helicity - Sfc-1km",
-        "srh3": "SR Helicity - Sfc-3km",
-        "shr6": "Bulk Shear - Sfc-6km",
-        "eshr": "Bulk Shear - Effective"
+        "srh1: SR Helicity - Sfc-1km",
+        "srh3: SR Helicity - Sfc-3km",
+        "shr6: Bulk Shear - Sfc-6km",
+        "eshr: Bulk Shear - Effective"
     ]
 
     static let productShortList = [

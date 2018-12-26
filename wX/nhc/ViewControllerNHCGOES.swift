@@ -14,6 +14,7 @@ import UIKit
 // 3: product ( optional, "wv" as example )
 //
 
+// FIXME Is this still needed?
 class ViewControllerNHCGOES: UIwXViewController {
 
     var image = ObjectTouchImageView()

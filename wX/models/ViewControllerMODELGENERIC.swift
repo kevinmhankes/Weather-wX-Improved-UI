@@ -16,9 +16,10 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     var timeButton = ObjectToolbarIcon()
     var productButton = ObjectToolbarIcon()
     var firstRun = true
-    var subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.titles,
-                                 UtilityModelSPCHREFInterface.params,
-                                 UtilityModelSPCHREFInterface.labels
+    var subMenu = ObjectMenuData(
+        UtilityModelSPCHREFInterface.titles,
+        UtilityModelSPCHREFInterface.params,
+        UtilityModelSPCHREFInterface.labels
     )
     var modelObj = ObjectModel()
 
