@@ -13,6 +13,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     var animateButton = ObjectToolbarIcon()
     var index = 8
     var isLocal = false
+    let prefToken = "NWSMOSAIC_PARAM_LAST_USED"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,46 +29,42 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = preferences.getInt("NWSMOSAIC_PARAM_LAST_USED", index)
+        index = preferences.getInt(prefToken, index)
         if ActVars.NWSMOSAICtype=="local" {
             ActVars.NWSMOSAICtype = ""
             isLocal = true
             let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(getStateFromRid())
             index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
-        self.getContent()
+        self.getContent(index)
     }
 
-    func getContent() {
+    func getContent(_ index: Int) {
+        self.index = index
+        self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityUSImgNWSMosaic.get(UtilityUSImgNWSMosaic.sectors[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
                 if !self.isLocal {
-                    editor.putInt("NWSMOSAIC_PARAM_LAST_USED", self.index)
+                    editor.putInt(self.prefToken, self.index)
                 }
             }
         }
     }
 
     @objc func willEnterForeground() {
-        self.getContent()
+        self.getContent(self.index)
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self,
-                        "Product Selection",
-                        productButton,
-                        UtilityUSImgNWSMosaic.labels,
-                        self.productChanged(_:)
+        _ = ObjectPopUp(
+            self,
+            "Product Selection",
+            productButton,
+            UtilityUSImgNWSMosaic.labels,
+            self.getContent(_:)
         )
-    }
-
-// FIXME
-    func productChanged(_ product: String) {
-        self.index = UtilityUSImgNWSMosaic.labels.index(of: product)!
-        self.getContent()
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -85,8 +82,10 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityUSImgNWSMosaic.getAnimation(UtilityUSImgNWSMosaic.sectors[self.index],
-                                                                        frameCount)
+            let animDrawable = UtilityUSImgNWSMosaic.getAnimation(
+                UtilityUSImgNWSMosaic.sectors[self.index],
+                frameCount
+            )
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
@@ -94,13 +93,10 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     }
 
     func getStateFromRid() -> String {
-        let ridLoc = preferences.getString("RID_LOC_" + Location.rid, "")
-        let nwsLocationArr = ridLoc.split(",")
-        return nwsLocationArr[0]
+        return preferences.getString("RID_LOC_" + Location.rid, "").split(",")[0]
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityUSImgNWSMosaic.sectors)
-        getContent()
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityUSImgNWSMosaic.sectors))
     }
 }

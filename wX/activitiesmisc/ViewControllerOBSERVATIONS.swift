@@ -23,28 +23,23 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         self.index = preferences.getInt(prefTokenIdx, 0)
-        self.getContent()
+        self.getContent(index)
     }
 
-    func getContent() {
+    func getContent(_ index: Int) {
+        self.index = index
+        self.productButton.title = UtilityObservations.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityObservations.labels[self.index]
                 editor.putInt(self.prefTokenIdx, self.index)
             }
         }
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.productChanged(_:))
-    }
-
-    // FIXME move index to getContent
-    func productChanged(_ index: Int) {
-        self.index = index
-        self.getContent()
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -52,7 +47,6 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityObservations.urls)
-        getContent()
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityObservations.urls))
     }
 }

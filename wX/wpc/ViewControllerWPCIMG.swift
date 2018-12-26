@@ -22,11 +22,13 @@ class ViewControllerWPCIMG: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = preferences.getInt("WPCIMG_PARAM_LAST_USED", index)
-        self.getContent()
+        self.getContent(index)
     }
 
-    func getContent() {
+    func getContent(_ index: Int) {
+        self.productButton.title = UtilityWPCImages.labels[index]
         DispatchQueue.global(qos: .userInitiated).async {
+            self.index = index
             var getUrl = UtilityWPCImages.urls[self.index]
             if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
                 getUrl += String(self.timePeriod) + "_conus.png"
@@ -34,7 +36,6 @@ class ViewControllerWPCIMG: UIwXViewController {
             let bitmap = Bitmap(getUrl)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = UtilityWPCImages.labels[self.index]
                 editor.putInt("WPCIMG_PARAM_LAST_USED", self.index)
             }
         }
@@ -45,13 +46,7 @@ class ViewControllerWPCIMG: UIwXViewController {
     }
 
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
-    }
-
-// FIXME have getContent take index
-    func productChanged(_ product: Int) {
-        self.index = product
-        self.getContent()
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -59,7 +54,6 @@ class ViewControllerWPCIMG: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        index = UtilityUI.sideSwipe(sender, index, UtilityWPCImages.urls)
-        getContent()
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityWPCImages.urls))
     }
 }
