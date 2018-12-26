@@ -63,14 +63,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
                                          target: nil,
                                          action: nil)
-        fixedSpace.width = UIPreferences.toolbarIconSpacing
-        /*toolbar.items = ObjectToolbarItems([flexBarButton,
-                                            dashButton,
-                                            wfoTextButton,
-                                            cloudButton,
-                                            radarButton,
-                                            menuButton]).items*/
-        
+        fixedSpace.width = UIPreferences.toolbarIconSpacing 
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems([flexBarButton,
                                                 dashButton,
@@ -199,10 +192,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         } else if $0.hasPrefix("IMG-") {
                             self.getContentImage($0.split("-")[1], stackViewLocal)
                         }
-                        //} else if $0.hasPrefix("METAL-") {
-                        //    self.getNexradRadar($0.split("-")[1], stackViewLocal)
-                        //}
-                        // "METAL-RADAR": "Local NEXRAD Radar"
                     }
                 }
                 self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
@@ -415,8 +404,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
         wxMetal[0]!.setRenderFunction(render)
+        // FIXME background?
         wxMetal[0]!.resetRidAndGet(Location.rid)
-        self.render()
+        //self.render()
         getPolygonWarnings()
     }
     
