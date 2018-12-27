@@ -434,7 +434,7 @@ class WXMetalRender {
             }
         }
     }
-    
+
     func setRenderFunction(_ fn: @escaping () -> Void) {
         self.renderFn = fn
     }

@@ -75,9 +75,4 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
     }
-    
-    // for FAB
-    //@objc func radarClicked(sender: UITapGestureRecognizer) {
-    //    UtilityActions.radarClicked(self)
-    //}
 }

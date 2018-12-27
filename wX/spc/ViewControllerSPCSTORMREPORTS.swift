@@ -68,9 +68,11 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
         ActVars.WEBVIEWshowProd = false
         ActVars.WEBVIEWuseUrl = true
-        ActVars.WEBVIEWurl = UtilityMap.genMapURL(self.stormReports[sender.data].lat,
-                                                  self.stormReports[sender.data].lon,
-                                                  "10")
+        ActVars.WEBVIEWurl = UtilityMap.genMapURL(
+            self.stormReports[sender.data].lat,
+            self.stormReports[sender.data].lon,
+            "10"
+        )
         self.goToVC("webview")
     }
 

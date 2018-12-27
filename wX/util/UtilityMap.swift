@@ -55,7 +55,11 @@ final class UtilityMap {
     }
 
     static func centerMapOnLocation(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
-        let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
         mapView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
                                height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight)
         mapView.setRegion(coordinateRegion, animated: true)

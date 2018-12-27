@@ -8,7 +8,11 @@ import AVFoundation
 import UIKit
 
 var globalSynth = AVSpeechSynthesizer()
-let flexBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+let flexBarButton = UIBarButtonItem(
+    barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+    target: nil,
+    action: nil
+)
 let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
 let preferences = Preferences()
 let editor = Editor()

@@ -28,12 +28,12 @@ import UIKit
 @IBDesignable
 open class Floaty: UIView {
   // MARK: - Properties
-  
+
   /**
    `FloatyItem` objects.
    */
   @objc open var items: [FloatyItem] = []
-  
+
   /**
    This object's button size.
    */
@@ -43,7 +43,7 @@ open class Floaty: UIView {
       self.recalculateItemsOrigin()
     }
   }
-  
+
   /**
    Padding from bottom right of UIScreen or superview.
    */
@@ -57,37 +57,37 @@ open class Floaty: UIView {
       self.setNeedsDisplay()
     }
   }
-  
+
   /**
    Automatically closes child items when tapped
    */
   @IBInspectable
   @objc open var autoCloseOnTap: Bool = true
-  
+
   /**
    Degrees to rotate image
    */
   @IBInspectable
   @objc open var rotationDegrees: CGFloat = -45
-  
+
   /**
    Animation speed of buttons
    */
   @IBInspectable
   @objc open var animationSpeed: Double = 0.1
-  
+
   /**
    Button color.
    */
   @IBInspectable
   @objc open var buttonColor: UIColor = UIColor(red: 73/255.0, green: 151/255.0, blue: 241/255.0, alpha: 1)
-  
+
   /**
    Button shadow color.
    */
   @IBInspectable
   @objc open var buttonShadowColor: UIColor = UIColor.black
-  
+
   /**
    Button image.
    */
@@ -97,25 +97,25 @@ open class Floaty: UIView {
       self.setNeedsDisplay()
     }
   }
-  
+
   /**
    Plus icon color inside button.
    */
   @IBInspectable
   @objc open var plusColor: UIColor = UIColor(white: 0.2, alpha: 1)
-  
+
   /**
    Background overlaying color.
    */
   @IBInspectable
   @objc open var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.3)
-  
+
   /**
    The space between the item and item.
    */
   @IBInspectable
   @objc open var itemSpace: CGFloat = 14
-  
+
   /**
    Child item's default size.
    */
@@ -129,37 +129,37 @@ open class Floaty: UIView {
       self.setNeedsDisplay()
     }
   }
-  
+
   /**
    Child item's default button color.
    */
   @IBInspectable
   @objc open var itemButtonColor: UIColor = UIColor.white
-  
+
   /**
    Child item's default title label color.
    */
   @IBInspectable
   @objc open var itemTitleColor: UIColor = UIColor.white
-  
+
   /**
    Child item's image color
    */
   @IBInspectable
   @objc open var itemImageColor: UIColor?
-  
+
   /**
    Enable/disable shadow.
    */
   @IBInspectable
   @objc open var hasShadow: Bool = true
-  
+
   /**
    Child item's default shadow color.
    */
   @IBInspectable
   @objc open var itemShadowColor: UIColor = UIColor.black
-  
+
   /**
    
    */
@@ -168,74 +168,74 @@ open class Floaty: UIView {
       accessibilityViewIsModal = !closed
     }
   }
-  
+
   /**
    Whether or not floaty responds to keyboard notifications and adjusts its position accordingly
    */
   @IBInspectable
   @objc open var respondsToKeyboard: Bool = true
-  
+
   @objc open var openAnimationType: FloatyOpenAnimationType = .pop
-  
+
   @objc open var verticalDirection: FloatyVerticalDirection = .up
-  
+
   @objc open var friendlyTap: Bool = true
-  
+
   @objc open var sticky: Bool = false
-  
+
   public static var global: FloatyManager {
       return FloatyManager.defaultInstance()
   }
-  
+
   /**
    Delegate that can be used to learn more about the behavior of the FAB widget.
    */
   @IBOutlet open weak var fabDelegate: FloatyDelegate?
-  
+
   /**
    Button shape layer.
    */
   fileprivate var circleLayer: CAShapeLayer = CAShapeLayer()
-  
+
   /**
    Plus icon shape layer.
    */
   fileprivate var plusLayer: CAShapeLayer = CAShapeLayer()
-  
+
   /**
    Button image view.
    */
   fileprivate var buttonImageView: UIImageView = UIImageView()
-  
+
   /**
    If you keeping touch inside button, button overlaid with tint layer.
    */
   fileprivate var tintLayer: CAShapeLayer = CAShapeLayer()
-  
+
   /**
    If you show items, background overlaid with overlayColor.
    */
   //    private var overlayLayer: CAShapeLayer = CAShapeLayer()
-  
+
   fileprivate var overlayView: UIControl = UIControl()
-  
+
   /**
    Keep track of whether overlay open animation completes, to avoid animation conflicts.
    */
   fileprivate var overlayViewDidCompleteOpenAnimation: Bool = true
-  
+
   /**
    If you created this object from storyboard or `initWithFrame`, this property set true.
    */
   fileprivate var isCustomFrame: Bool = false
-  
+
   /**
    An accessibility button for the main Fab Button
    */
   fileprivate var accessibilityView: UIView = UIView()
-  
+
   // MARK: - Initialize
-  
+
   /**
    Initialize with default property.
    */
@@ -245,7 +245,7 @@ open class Floaty: UIView {
     setObserver()
     setAccessibilityView()
   }
-  
+
   /**
    Initialize with custom size.
    */
@@ -256,7 +256,7 @@ open class Floaty: UIView {
     setObserver()
     setAccessibilityView()
   }
-  
+
   /**
    Initialize with custom frame.
    */
@@ -268,7 +268,7 @@ open class Floaty: UIView {
     setObserver()
     setAccessibilityView()
   }
-    
+
     /**
      Initialize with custom frame and size
      */
@@ -281,7 +281,7 @@ open class Floaty: UIView {
         //setObserver()
         //setAccessibilityView()
     }
-  
+
   /**
    Initialize from storyboard.
    */

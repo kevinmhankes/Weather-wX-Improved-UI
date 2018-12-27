@@ -25,14 +25,18 @@ public class ObjectScrollStackView {
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         scrollView.addSubview(stackView)
-        scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[stackView]|",
-                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
-                                                                 metrics: nil,
-                                                                 views: ["stackView": stackView]))
-        scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[stackView]-50-|",
-                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
-                                                                 metrics: nil,
-                                                                 views: ["stackView": stackView]))
+        scrollView.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[stackView]|",
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["stackView": stackView])
+        )
+        scrollView.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-20-[stackView]-50-|",
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["stackView": stackView])
+        )
     }
 
     convenience init(_ uiv: UIViewController, _ scrollView: UIScrollView,
@@ -58,12 +62,16 @@ public class ObjectScrollStackView {
         stackView.alignment = .center
         stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         scrollView.addSubview(stackView)
-        scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-4-[stackView]-4-|",
-                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
-                                                                 metrics: nil, views: ["stackView": stackView]))
-        scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]|",
-                                                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
-                                                                 metrics: nil,
-                                                                 views: ["stackView": stackView]))
+        scrollView.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-4-[stackView]-4-|",
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
+            metrics: nil, views: ["stackView": stackView])
+        )
+        scrollView.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[stackView]|",
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["stackView": stackView])
+        )
     }
 }

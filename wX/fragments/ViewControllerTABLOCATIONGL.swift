@@ -33,7 +33,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var ccCard: ObjectCardCC?
     var objCard7DayCollection: ObjectCard7DayCollection?
     var extraDataCards = [ObjectStackViewHS]()
-    
+
     var wxMetal = [WXMetalRender?]()
     var metalLayer = [CAMetalLayer?]()
     var pipelineState: MTLRenderPipelineState!
@@ -63,7 +63,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
                                          target: nil,
                                          action: nil)
-        fixedSpace.width = UIPreferences.toolbarIconSpacing 
+        fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems([flexBarButton,
                                                 dashButton,
@@ -78,7 +78,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                                 radarButton,
                                                 menuButton]).items
         }
-        
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - self.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.view.addSubview(toolbar)
@@ -340,7 +339,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             }
         }
     }
-    
+
     func cleanupRadarObjects() {
         if wxMetal[0] != nil {
             //wxMetal.forEach { $0!.cleanup() }
@@ -348,13 +347,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
-        
         cleanupRadarObjects()
-        
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let screenSize: CGSize = UIScreen.main.bounds.size
-        //let screenWidth = Float(screenSize.width) - Float(self.sideSpacing)
         let screenWidth = Float(screenSize.width)
         let screenHeight = screenWidth
         let carect = CGRect(
@@ -385,7 +381,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         metalLayer.forEach { caview.layer.addSublayer($0!) }
         stackView.addArrangedSubview(caview)
         if wxMetal.count < 1 {
-            wxMetal.append(WXMetalRender(device!, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
+            wxMetal.append(
+                WXMetalRender(
+                    device!,
+                    ObjectToolbarIcon(),
+                    ObjectToolbarIcon(),
+                    paneNumber: 0,
+                    numberOfPanes
+                )
+            )
         }
         setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
@@ -409,7 +413,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         //self.render()
         getPolygonWarnings()
     }
-    
+
     func getPolygonWarnings() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityPolygons.getData()
@@ -420,7 +424,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             }
         }
     }
-    
+
     func modelMatrix(_ index: Int) -> Matrix4 {
         let matrix = Matrix4()
         matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
@@ -428,7 +432,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
         return matrix
     }
-    
+
     func render() {
         wxMetal.enumerated().forEach { index, wxmetal in
             guard let drawable = metalLayer[index]!.nextDrawable() else { return }
@@ -438,23 +442,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                             parentModelViewMatrix: modelMatrix(index),
                             projectionMatrix: projectionMatrix,
                             clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-        }
-    }
-    
-    @objc func newFrame(displayLink: CADisplayLink) {
-        if lastFrameTimestamp == 0.0 {
-            lastFrameTimestamp = displayLink.timestamp
-        }
-        let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
-        lastFrameTimestamp = displayLink.timestamp
-        radarLoop(timeSinceLastUpdate: elapsed)
-    }
-    
-    func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
-        autoreleasepool {
-            if wxMetal[0] != nil {
-                self.render()
-            }
         }
     }
 
@@ -527,7 +514,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.extraDataCards = []
         self.stackViewHazards.view.isHidden = true
     }
-    
+
     func setupGestures() {
         let gestureRecognizer = UITapGestureRecognizer(target: self,
                                                        action: #selector(tapGesture(_:)))
@@ -547,15 +534,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             )
         )
     }
-    
+
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
     }
-    
+
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
         WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
     }
-    
+
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         longPressCount = WXMetalSurfaceView.gestureLongPress(self,
                                                              wxMetal,
@@ -564,7 +551,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                                                              longPressAction,
                                                              gestureRecognizer)
     }
-    
+
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
             self,
@@ -622,7 +609,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func ridChanged(_ rid: String) {
         getPolygonWarnings()
         wxMetal[0]!.resetRidAndGet(rid)

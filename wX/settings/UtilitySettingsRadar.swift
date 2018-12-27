@@ -89,7 +89,7 @@ final class UtilitySettingsRadar {
             + " This setting controls how close you need to zoom. Lower numbers will show "
             + "detailed METAR without having to zoom in as far. Default is 7.",
         "Show Day 1 Conv Otlk": "Show SPC Day 1 Convective Outlook outlines.",
-        
+
         "Location dot size.": "Allows one to change the size of the location marker. Default value is 5.",
         "Spotter size": "Configure size of storm spotters on radar. Default value is 4.",
         "Warning line size": "Thickness of lines for warnings. Smaller is thinner. Default is 2.",

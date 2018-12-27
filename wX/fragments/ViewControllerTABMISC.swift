@@ -7,7 +7,7 @@
 import UIKit
 
 class ViewControllerTABMISC: ViewControllerTABPARENT {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         objTileMatrix = ObjectImageTileMatrix(self, stackView, .misc)

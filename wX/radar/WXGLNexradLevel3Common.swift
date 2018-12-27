@@ -19,7 +19,7 @@ class WXGLNexradLevel3Common {
         list += [tmpCoords.0, tmpCoords.1]
         return list
     }
-    
+
     static func drawLine(_ startPoint: (Double, Double), _  ecc: ExternalGeodeticCalculator,
                          _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates,
                          _ startBearing: Double, _ distance: Double, _ bearing: [Double]) -> [Double] {

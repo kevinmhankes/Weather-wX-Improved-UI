@@ -31,8 +31,11 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
         self.state = state
         stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix
-                + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
+            let bitmap = Bitmap(
+                MyApplication.nwsSPCwebsitePrefix
+                    + "/public/state/images/"
+                    + self.state + "_swody" + self.day + ".png"
+            )
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
             }

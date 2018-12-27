@@ -115,7 +115,13 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        productChanged(UtilityUI.sideSwipe(sender, UtilityGOES16.productCodes.index(of: productCode)!, UtilityGOES16.productCodes))
+        productChanged(
+            UtilityUI.sideSwipe(
+                sender,
+                UtilityGOES16.productCodes.index(of: productCode)!,
+                UtilityGOES16.productCodes
+            )
+        )
     }
 
     @objc func animateClicked() {

@@ -98,7 +98,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
         self.getContent()
     }
-    
+
     func sectorChanged(_ sector: String) {
         self.sector = sector
         self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
@@ -186,12 +186,12 @@ class ViewControllerSPCMESO: UIwXViewController {
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
     }
-    
+
     func productChangedByCode(_ product: String) {
         self.product = product
         self.getContent()
     }
-    
+
     func productChanged(_ index: Int) {
         let product = subMenu.params[index]
         self.product = product

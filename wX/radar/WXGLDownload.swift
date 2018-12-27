@@ -95,7 +95,12 @@ final class WXGLDownload {
     }
 
     // Level 3: Download a list of files and return the list as a list of Strings
-    func getLevel3FilesForAnimation(_ frameCount: Int, _ product: String, _ ridPrefix: String, _ rid: String ) -> [String] {
+    func getLevel3FilesForAnimation(
+        _ frameCount: Int,
+        _ product: String,
+        _ ridPrefix: String,
+        _ rid: String
+        ) -> [String] {
         var listOfFiles = [String]()
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"

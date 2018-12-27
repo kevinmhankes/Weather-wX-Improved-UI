@@ -21,7 +21,7 @@ class AppColors {
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
     static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
-    
+
     static func update() {
         let appColor = preferences.getString("UI_THEME", "blue")
         switch appColor {

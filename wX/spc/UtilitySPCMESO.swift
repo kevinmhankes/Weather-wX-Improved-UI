@@ -481,7 +481,7 @@ final class UtilitySPCMESO {
         "12": "Southwest",
         "11": "Northwest"
     ]
-    
+
     static let sectorCodes = [
         "19",
         "20",
@@ -494,7 +494,7 @@ final class UtilitySPCMESO {
         "12",
         "11"
     ]
-    
+
     static let sectors = [
         "CONUS",
         "Midwest",
