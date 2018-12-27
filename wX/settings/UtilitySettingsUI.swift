@@ -29,13 +29,17 @@ final class UtilitySettingsUI {
         "WFO - Remember location": "Remember the last WFO used for product viewer.",
         "Show Metar in CC": "Show raw Metar in current conditions.",
         "Radar: transparent toolbars": "In the radar screen make the toolbar transparent.",
-        "Main screen radar button (requires restart)": "Show a floating action button on the main screen for access to radar.",
+        "Main screen radar button (requires restart)": "Show a floating action button on"
+            + " the main screen for access to radar.",
         "Defaut font size": "Defaut font size. Default is 16.",
         "Color theme": "The default theme is blue. For those who do not like this you can select an alternate.",
-        "Refresh interval main screen(min)": "Interval for updating current conditions and seven day for selected location.",
+        "Refresh interval main screen(min)": "Interval for updating current conditions and"
+            + " seven day for selected location.",
         "Animation frame rate": "Animation speed. Lower is faster. Default is 6.",
-        "Tiles per row": "Set the number of images tiles in the 2nd and 3rd tab. Default is 3. Requires an app restart.",
-        "Homescreen text length": "Set the length in characters of textual cards on the homescreen when not expanded. Default is 500."
+        "Tiles per row": "Set the number of images tiles in the 2nd and 3rd tab. Default is 3."
+            + " Requires an app restart.",
+        "Homescreen text length": "Set the length in characters of textual cards on the "
+            + "homescreen when not expanded. Default is 500."
     ]
 
     static let booleanDefault  = [
