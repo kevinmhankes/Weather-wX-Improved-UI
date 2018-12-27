@@ -30,18 +30,30 @@ final class UtilitySPCMESOInputOutput {
         let imgUrl = baseUrl + sector + "/" + product + "/" + product + gifUrl
         let bitmap = Bitmap(imgUrl)
         if showRadar && product != "1kmv" {
-            if showTopo {layersRad.append(Drawable(Bitmap(topoImgUrl)))}
+            if showTopo {
+                layersRad.append(Drawable(Bitmap(topoImgUrl)))
+            }
             let bitmapradar = Bitmap(radarImgUrl)
             layersRad.append(Drawable(bitmapradar))
             layersRad.append(Drawable(bitmap))
-            if showOutlook {layersRad.append(Drawable(Bitmap(outlookImgUrl)))}
-            if showWatwarn {layersRad.append(Drawable(Bitmap(watwarnImgUrl)))}
+            if showOutlook {
+                layersRad.append(Drawable(Bitmap(outlookImgUrl)))
+            }
+            if showWatwarn {
+                layersRad.append(Drawable(Bitmap(watwarnImgUrl)))
+            }
             return UtilityImg.layerDrawableToBitmap(layersRad)
         } else {
-            if showTopo {layers.append(Drawable(Bitmap(topoImgUrl)))}
+            if showTopo {
+                layers.append(Drawable(Bitmap(topoImgUrl)))
+            }
             layers.append(Drawable(bitmap))
-            if showOutlook {layers.append(Drawable(Bitmap(outlookImgUrl)))}
-            if showWatwarn {layers.append(Drawable(Bitmap(watwarnImgUrl)))}
+            if showOutlook {
+                layers.append(Drawable(Bitmap(outlookImgUrl)))
+            }
+            if showWatwarn {
+                layers.append(Drawable(Bitmap(watwarnImgUrl)))
+            }
             return UtilityImg.layerDrawableToBitmap(layers)
         }
     }
