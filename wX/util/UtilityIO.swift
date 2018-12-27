@@ -16,8 +16,10 @@ final class UtilityIO {
 
     static func saveInputStream(_ data: Data, _ filename: String) {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask, appropriateFor: nil, create: true
+            )
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
             try data.write(to: fileUrl, options: .atomic)
         } catch let error as NSError {

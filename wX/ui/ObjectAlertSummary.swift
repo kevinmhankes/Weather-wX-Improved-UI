@@ -37,7 +37,7 @@ final class ObjectAlertSummary: NSObject {
         var state = ""
         var stateCntMap = [String: Int]()
         for alert in capAlerts {
-            if filter=="" {
+            if filter == "" {
                 filterBool = (alert.title.contains("Tornado Warning")
                     || alert.title.contains("Severe Thunderstorm Warning")
                     || alert.title.contains("Flash Flood Warning"))

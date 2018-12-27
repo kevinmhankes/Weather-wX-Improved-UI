@@ -28,7 +28,9 @@ final class UtilityString {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
-            if intValue >= start && intValue < end {retStr += String(str[$0])}
+            if intValue >= start && intValue < end {
+                retStr += String(str[$0])
+            }
         }
         return retStr
     }

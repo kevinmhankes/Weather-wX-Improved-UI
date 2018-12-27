@@ -19,7 +19,9 @@ final class CustomTabBarVC: UITabBarController {
         self.tabBar.isTranslucent = true
         if let items = self.tabBar.items {
             items.forEach {
-                if let image = $0.image {$0.image = image.withRenderingMode(.alwaysOriginal)}
+                if let image = $0.image {
+                    $0.image = image.withRenderingMode(.alwaysOriginal)
+                }
             }
         }
     }

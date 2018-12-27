@@ -25,7 +25,9 @@ final class UtilityImg {
 
     static func layerDrawableToBitmap(_ layers: [Drawable]) -> Bitmap {
         var image = UIImage()
-        if layers.count==0 {return Bitmap()}
+        if layers.count == 0 {
+            return Bitmap()
+        }
         if layers.count < 2 {
             image = layers[0].img
         } else {
@@ -127,6 +129,6 @@ final class UtilityImg {
     }
 
     static func imgCenter(_ img: ImageScrollView, _ uiv: UIViewController) {
-            img.restorePosition(1, center: CGPoint(x: 0.0, y: 0.0))
+        img.restorePosition(1, center: CGPoint(x: 0.0, y: 0.0))
     }
 }
