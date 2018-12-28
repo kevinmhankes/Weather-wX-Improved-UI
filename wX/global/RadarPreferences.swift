@@ -79,7 +79,7 @@ class RadarPreferences {
         radarTvsSize = preferences.getInt("RADAR_TVS_SIZE", 4)
         radarWarnLinesize = preferences.getInt("RADAR_WARN_LINESIZE", 2)
         radarWatmcdLinesize = preferences.getInt("RADAR_WATMCD_LINESIZE", 2)
-        wxoglSize = preferences.getInt("WXOGL_SIZE", 8)
+        wxoglSize = preferences.getInt("WXOGL_SIZE", 10)
         wxoglRememberLocation = preferences.getString("WXOGL_REMEMBER_LOCATION", "true").hasPrefix("t")
         wxoglRadarAutorefresh = preferences.getString("RADAR_AUTOREFRESH", "false").hasPrefix("t")
         radarDataRefreshInterval = preferences.getInt("RADAR_DATA_REFRESH_INTERVAL", 5)

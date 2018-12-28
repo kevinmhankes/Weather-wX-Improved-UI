@@ -103,7 +103,8 @@ final class UtilitySettingsRadar {
             + "the detailed METAR will appear. This setting controls how close you need to zoom."
             +  "Lower numbers will show detailed METAR without having to zoom in as far. Default is 7.",
         "Radar data refresh interval": "Controls the number of minutes before an auto  refresh is triggered "
-            + "if that option is enabled. Default is 20."
+            + "if that option is enabled. Default is 20.",
+        "Radar initial view size": "Allows one to change the default view size for the radar."
     ]
 
     static let booleanDefault = [
@@ -147,7 +148,8 @@ final class UtilitySettingsRadar {
         "RADAR_TVS_SIZE": "TVS marker size",
         "RADAR_AVIATION_SIZE": "Aviation dot size",
         "RADAR_OBS_EXT_ZOOM": "Detailed Observations Zoom",
-        "RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval"
+        "RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval",
+        "WXOGL_SIZE": "Radar initial view size"
         ]
 
     static let pickerinit = [
@@ -159,7 +161,8 @@ final class UtilitySettingsRadar {
         "RADAR_TVS_SIZE": 4,
         "RADAR_AVIATION_SIZE": 4,
         "RADAR_OBS_EXT_ZOOM": 7,
-        "RADAR_DATA_REFRESH_INTERVAL": 5
+        "RADAR_DATA_REFRESH_INTERVAL": 5,
+        "WXOGL_SIZE": 10
         ]
 
     static let pickerCount = [
@@ -173,7 +176,8 @@ final class UtilitySettingsRadar {
         "RADAR_TVS_SIZE": 15,
         "RADAR_AVIATION_SIZE": 11,
         "RADAR_OBS_EXT_ZOOM": 11,
-        "RADAR_DATA_REFRESH_INTERVAL": 20
+        "RADAR_DATA_REFRESH_INTERVAL": 20,
+        "WXOGL_SIZE": 25
         ]
 
     static let pickerinitString = [
@@ -193,11 +197,14 @@ final class UtilitySettingsRadar {
         "RADAR_AVIATION_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         "RADAR_OBS_EXT_ZOOM": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         "RADAR_DATA_REFRESH_INTERVAL": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-                                        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
+                                        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
+        "WXOGL_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                        "16", "17", "18", "19", "20", "21", "22", "23", "24"]
         ]
 
     static let pickerNonZeroOffset = [
         "RADAR_COLOR_PALETTE_94",
-        "RADAR_COLOR_PALETTE_99"
+        "RADAR_COLOR_PALETTE_99",
+        "WXOGL_SIZE"
         ]
 }

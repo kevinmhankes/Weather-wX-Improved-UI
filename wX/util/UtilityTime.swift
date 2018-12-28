@@ -9,20 +9,19 @@ import MapKit
 
 final class UtilityTime {
 
-// FIXME
     static func monthWordToNumber(_ month: String) -> String {
-        var monthStr = month.replaceAll("Jan", "01")
-        monthStr = monthStr.replaceAll("Feb", "02")
-        monthStr = monthStr.replaceAll("Mar", "03")
-        monthStr = monthStr.replaceAll("Apr", "04")
-        monthStr = monthStr.replaceAll("May", "05")
-        monthStr = monthStr.replaceAll("Jun", "06")
-        monthStr = monthStr.replaceAll("Jul", "07")
-        monthStr = monthStr.replaceAll("Aug", "08")
-        monthStr = monthStr.replaceAll("Sep", "09")
-        monthStr = monthStr.replaceAll("Oct", "10")
-        monthStr = monthStr.replaceAll("Nov", "11")
-        return monthStr.replaceAll("Dec", "12")
+        return month.replaceAll("Jan", "01")
+        .replaceAll("Feb", "02")
+        .replaceAll("Mar", "03")
+        .replaceAll("Apr", "04")
+        .replaceAll("May", "05")
+        .replaceAll("Jun", "06")
+        .replaceAll("Jul", "07")
+        .replaceAll("Aug", "08")
+        .replaceAll("Sep", "09")
+        .replaceAll("Oct", "10")
+        .replaceAll("Nov", "11")
+        .replaceAll("Dec", "12")
     }
 
     static func gmtTime() -> String {

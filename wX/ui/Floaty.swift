@@ -339,8 +339,12 @@ open class Floaty: UIView {
                      usingSpringWithDamping: 0.55,
                      initialSpringVelocity: 0.3,
                      options: UIView.AnimationOptions(), animations: { () -> Void in
-                      self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(self.rotationDegrees), 0.0, 0.0, 1.0)
-                      self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(self.rotationDegrees))
+                      self.plusLayer.transform = CATransform3DMakeRotation(
+                        self.degreesToRadians(self.rotationDegrees), 0.0, 0.0, 1.0
+                        )
+                      self.buttonImageView.transform = CGAffineTransform(
+                        rotationAngle: self.degreesToRadians(self.rotationDegrees)
+                        )
                       self.overlayView.alpha = 1
       }, completion: {(_) -> Void in
         self.overlayViewDidCompleteOpenAnimation = true
@@ -477,7 +481,11 @@ open class Floaty: UIView {
    titlePosition's default value is left.
    */
   @discardableResult
-  @objc open func addItem(_ title: String, icon: UIImage?, titlePosition: FloatyItemLabelPositionType = .left) -> FloatyItem {
+  @objc open func addItem(
+    _ title: String,
+    icon: UIImage?,
+    titlePosition: FloatyItemLabelPositionType = .left
+    ) -> FloatyItem {
     let item = FloatyItem()
     itemDefaultSet(item)
     item.titleLabelPosition = titlePosition
@@ -518,7 +526,11 @@ open class Floaty: UIView {
    titlePosition's default value is left.
    */
   @discardableResult
-  @objc open func addItem(title: String, titlePosition: FloatyItemLabelPositionType = .left, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+  @objc open func addItem(
+    title: String,
+    titlePosition: FloatyItemLabelPositionType = .left,
+    handler: @escaping ((FloatyItem) -> Void)
+    ) -> FloatyItem {
     let item = FloatyItem()
     itemDefaultSet(item)
     item.titleLabelPosition = titlePosition
@@ -547,7 +559,12 @@ open class Floaty: UIView {
    titlePosition's default value is left
    */
   @discardableResult
-  @objc open func addItem(_ title: String, icon: UIImage?, titlePosition: FloatyItemLabelPositionType = .left, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+  @objc open func addItem(
+    _ title: String,
+    icon: UIImage?,
+    titlePosition: FloatyItemLabelPositionType = .left,
+    handler: @escaping ((FloatyItem) -> Void)
+    ) -> FloatyItem {
     let item = FloatyItem()
     itemDefaultSet(item)
     item.titleLabelPosition = titlePosition
@@ -800,9 +817,24 @@ open class Floaty: UIView {
   }
   
   fileprivate func setObserver() {
-    NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(deviceOrientationDidChange(_:)),
+        name: UIDevice.orientationDidChangeNotification,
+        object: nil
+    )
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(keyboardWillShow(_:)),
+        name: UIResponder.keyboardWillShowNotification,
+        object: nil
+    )
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(keyboardWillHide(_:)),
+        name: UIResponder.keyboardWillHideNotification,
+        object: nil
+    )
   }
   
   deinit {
@@ -830,7 +862,12 @@ open class Floaty: UIView {
     return touches.count == 1 && touches.first?.tapCount == 1 && touches.first?.location(in: self) != nil
   }
   
-  open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+  open override func observeValue(
+    forKeyPath keyPath: String?,
+    of object: Any?,
+    change: [NSKeyValueChangeKey: Any]?,
+    context: UnsafeMutableRawPointer?
+    ) {
     if (object as? UIView) == superview && (keyPath == "frame" || keyPath == "bounds") {
       if isCustomFrame == false {
         setBottomFrameAccordingToRTL()
