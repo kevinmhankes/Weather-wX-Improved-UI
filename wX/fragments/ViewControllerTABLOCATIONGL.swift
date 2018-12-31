@@ -407,7 +407,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         commandQueue = device?.makeCommandQueue()
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
-        wxMetal[0]!.setRenderFunction(render)
+        wxMetal[0]!.setRenderFunction(render(_:))
         // FIXME background?
         wxMetal[0]!.resetRidAndGet(Location.rid)
         //self.render()
@@ -433,16 +433,17 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         return matrix
     }
 
-    func render() {
-        wxMetal.enumerated().forEach { index, wxmetal in
+    func render(_ index: Int) {
+        //wxMetal.enumerated().forEach { index, wxmetal in
             guard let drawable = metalLayer[index]!.nextDrawable() else { return }
-            wxmetal!.render(commandQueue: commandQueue,
+            //wxmetal!.render(commandQueue: commandQueue,
+            wxMetal[index]?.render(commandQueue: commandQueue,
                             pipelineState: pipelineState,
                             drawable: drawable,
                             parentModelViewMatrix: modelMatrix(index),
                             projectionMatrix: projectionMatrix,
                             clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-        }
+        //}
     }
 
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {

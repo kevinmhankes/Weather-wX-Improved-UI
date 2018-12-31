@@ -191,7 +191,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         commandQueue = device.makeCommandQueue()
         
-        wxMetal.forEach { $0?.setRenderFunction(render) }
+        wxMetal.enumerated().forEach { index, metal in
+            metal?.setRenderFunction(render(_:))
+        }
+        
         // Below two lines enable continuous updates
         //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
@@ -237,16 +240,17 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         return matrix
     }
 
-    func render() {
-        wxMetal.enumerated().forEach { index, wxmetal in
+    func render(_ index: Int) {
+        //wxMetal.enumerated().forEach { index, wxmetal in
             guard let drawable = metalLayer[index]!.nextDrawable() else { return }
-            wxmetal!.render(commandQueue: commandQueue,
+            //wxmetal!.render(commandQueue: commandQueue,
+            wxMetal[index]?.render(commandQueue: commandQueue,
                        pipelineState: pipelineState,
                        drawable: drawable,
                        parentModelViewMatrix: modelMatrix(index),
                        projectionMatrix: projectionMatrix,
                        clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-        }
+        //}
     }
 
     @objc func newFrame(displayLink: CADisplayLink) {
@@ -261,7 +265,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
         autoreleasepool {
             if wxMetal[0] != nil {
-                self.render()
+                // FIXME needed if using continuous
+                //self.render()
             }
         }
     }

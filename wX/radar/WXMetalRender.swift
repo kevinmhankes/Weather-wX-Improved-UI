@@ -91,7 +91,7 @@ class WXMetalRender {
     private var radarLayers = [ObjectMetalBuffers]()
     var paneNumber = 0
     var numberOfPanes = 0
-    var renderFn: (() -> Void)?
+    var renderFn: ((Int) -> Void)?
 
     init(_ device: MTLDevice,
          _ timeButton: ObjectToolbarIcon,
@@ -218,7 +218,7 @@ class WXMetalRender {
             $0.generateMtlBuffer(device)
         }
         if self.renderFn != nil {
-            self.renderFn!()
+            self.renderFn!(paneNumber)
         }
     }
 
@@ -429,19 +429,19 @@ class WXMetalRender {
                 self.showTimeToolbar(additionalText)
                 self.showProductText(self.radarProduct)
                 if self.renderFn != nil {
-                    self.renderFn!()
+                    self.renderFn!(self.paneNumber)
                 }
             }
         }
     }
 
-    func setRenderFunction(_ fn: @escaping () -> Void) {
+    func setRenderFunction(_ fn: @escaping (Int) -> Void) {
         self.renderFn = fn
     }
     
     func demandRender() {
         if self.renderFn != nil {
-            self.renderFn!()
+            self.renderFn!(paneNumber)
         }
     }
 
@@ -680,7 +680,7 @@ class WXMetalRender {
             locCircleBuffers.generateMtlBuffer(device)
         }
         if self.renderFn != nil {
-            self.renderFn!()
+            self.renderFn!(paneNumber)
         }
     }
 

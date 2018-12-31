@@ -262,5 +262,6 @@ final class WXMetalSurfaceView {
         default:
             break
         }
+        wxMetal.forEach {$0!.demandRender()}
     }
 }
