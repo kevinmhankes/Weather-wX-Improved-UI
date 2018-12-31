@@ -184,15 +184,16 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "GOES16":
             needsBitmap = false
-            let url = UtilityGOES16
-                .getUrl(preferences.getString("GOES16_PROD", "02"), preferences.getString("GOES16_SECTOR", "cgl"))
-            bitmap = url.getImage()
+            bitmap = UtilityGOES16.getImage(
+                preferences.getString("GOES16_PROD", "02"),
+                preferences.getString("GOES16_SECTOR", "cgl")
+            )
         case "VIS_MAIN":
             needsBitmap = false
             bitmap = Bitmap()
         case "VIS_CONUS":
             needsBitmap = false
-            bitmap = UtilityGOES16.getUrl("02", "CONUS").getImage()
+            bitmap = UtilityGOES16.getImage("02", "CONUS")
         case "CARAIN":
             if Location.x.contains("CANADA") {
                 needsBitmap = false
@@ -286,7 +287,7 @@ final class UtilityDownload {
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "CONUSWV":
             needsBitmap = false
-            bitmap = UtilityGOES16.getUrl("09", "CONUS").getImage()
+            bitmap = UtilityGOES16.getImage("09", "CONUS")
         case "LTG":
             needsBitmap = false
             bitmap = UtilityLightning.getImage(preferences.getString("LIGHTNING_SECTOR", "usa_big"),

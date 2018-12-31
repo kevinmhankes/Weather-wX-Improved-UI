@@ -20,16 +20,14 @@ final class UtilityGOES16 {
         return sizeMap[sector] ?? size
     }
 
-    static func getUrl(_ product: String, _ sector: String) -> String {
+    static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
         if sector == "FD" || sector == "CONUS" {
             sectorLocal = sector
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
-        let latestUrl = MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
-        return latestUrl
-        // FIXME rename to getImage and return Bitmap
+        return (MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg").getImage()
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {

@@ -68,7 +68,7 @@ final class UtilitySettingsUI {
     static let pickerinit = [
         "TEXTVIEW_FONT_SIZE": "16" ,
         "UI_THEME": "blue" ,
-        "REFRESH_LOC_MIN": "30" ,
+        "REFRESH_LOC_MIN": "10",
         "ANIM_INTERVAL": "6" ,
         "UI_TILES_PER_ROW": "3" ,
         "HOMESCREEN_TEXT_LENGTH_PREF": "500"

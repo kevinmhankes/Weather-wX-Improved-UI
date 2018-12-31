@@ -73,9 +73,8 @@ class ViewControllerGOES16: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let url = UtilityGOES16.getUrl(self.productCode, self.sectorCode)
+            let bitmap = UtilityGOES16.getImage(self.productCode, self.sectorCode)
             self.serializeSettings()
-            let bitmap = Bitmap(url)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 if self.firstRun {
