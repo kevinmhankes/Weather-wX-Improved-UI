@@ -19,7 +19,7 @@ final class ObjectAlertDetail {
                 textViews[$0].color = UIColor.blue
             }
             if $0 == 0 {
-                textViews[$0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize+2)
+                textViews[$0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 2)
             }
         }
     }
