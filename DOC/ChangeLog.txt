@@ -11,6 +11,7 @@
 // TODO look at threads on main screen
 // TODO test text in main screen radar
 
+2018_12_31 54300 convert metal radar from continuous to onDemand render
 2018_12_25 53900 main screen metal radar framework and cleanup
                  [BUG] AWC forecast image URLs had changed
 2018_12_24 53600 main screen metal radar framework
