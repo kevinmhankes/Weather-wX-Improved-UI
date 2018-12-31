@@ -29,6 +29,7 @@ final class UtilityGOES16 {
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         let latestUrl = MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
         return latestUrl
+        // FIXME rename to getImage and return Bitmap
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
