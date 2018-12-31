@@ -67,6 +67,7 @@ final class WXMetalSurfaceView {
         default:
             break
         }
+        wxMetal.forEach {$0!.demandRender()}
     }
 
     // bottom left 0,600

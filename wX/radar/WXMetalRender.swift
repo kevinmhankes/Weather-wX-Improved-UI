@@ -438,6 +438,12 @@ class WXMetalRender {
     func setRenderFunction(_ fn: @escaping () -> Void) {
         self.renderFn = fn
     }
+    
+    func demandRender() {
+        if self.renderFn != nil {
+            self.renderFn!()
+        }
+    }
 
     func constructPolygons() {
         self.radarBuffers.metalBuffer = []
