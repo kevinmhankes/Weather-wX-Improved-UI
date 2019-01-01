@@ -63,18 +63,6 @@ class WXGLNexradLevel3HailIndex {
                                 stormList.append(ec.getLongitude() * -1.0)
                             }
                         }
-                        /*if hailSizeDbl > 0.99 {
-                            stormList.append(ec.getLatitude() + 0.015)
-                            stormList.append(ec.getLongitude() * -1.0)
-                        }
-                        if hailSizeDbl > 1.99 {
-                            stormList.append(ec.getLatitude() + 0.03)
-                            stormList.append(ec.getLongitude() * -1.0)
-                        }
-                        if hailSizeDbl > 2.99 {
-                            stormList.append(ec.getLatitude() + 0.045)
-                            stormList.append(ec.getLongitude() * -1.0)
-                        }*/
                     }
                     index += 1
                 }

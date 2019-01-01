@@ -114,7 +114,6 @@ final class UtilityNWS {
             let xTextLeft = 2
             let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
             if num1 != "" {
-                // FIXME method
                 let rectangle = CGRect(x: 0, y: dimens - numHeight, width: halfWidth, height: dimens)
                 fillColor.setFill()
                 UIRectFill(rectangle)
@@ -123,7 +122,6 @@ final class UtilityNWS {
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
             if num2 != "" {
-                // FIXME method
                 let rectangle = CGRect(x: middlePoint, y: dimens - numHeight, width: halfWidth, height: dimens)
                 fillColor.setFill()
                 UIRectFill(rectangle)

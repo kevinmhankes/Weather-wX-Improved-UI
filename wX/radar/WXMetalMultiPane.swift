@@ -191,8 +191,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         commandQueue = device.makeCommandQueue()
         
-        wxMetal.enumerated().forEach { index, metal in
-            metal?.setRenderFunction(render(_:))
+        wxMetal.forEach {
+            $0?.setRenderFunction(render(_:))
         }
         
         // Below two lines enable continuous updates
