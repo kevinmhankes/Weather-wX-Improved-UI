@@ -18,7 +18,7 @@ import UIKit
 open class FloatyItem: UIView {
 
     // MARK: - Properties
-    
+
     /**
      This object's button size.
      */

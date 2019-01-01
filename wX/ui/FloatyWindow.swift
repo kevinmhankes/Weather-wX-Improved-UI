@@ -13,26 +13,23 @@ import UIKit
 class FloatyWindow: UIWindow {
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     self.backgroundColor = UIColor.clear
     self.windowLevel = UIWindow.Level.normal
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
-  
+
   override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
     let floatyViewController = rootViewController as? FloatyViewController
     if let floaty = floatyViewController?.floaty {
       if floaty.closed == false {
         return true
       }
-      
       if floaty.frame.contains(point) == true {
         return true
       }
-      
       for item in floaty.items {
         let itemFrame = self.convert(item.frame, from: floaty)
         if itemFrame.contains(point) == true {
@@ -40,7 +37,6 @@ class FloatyWindow: UIWindow {
         }
       }
     }
-    
     return false
   }
 }

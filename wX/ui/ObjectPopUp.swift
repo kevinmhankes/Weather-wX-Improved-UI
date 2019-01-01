@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -92,14 +92,13 @@ final class ObjectPopUp {
         }
         finish()
     }
-    
+
     init(_ uiv: UIViewController,
          _ button: UIBarButtonItem,
          _ list: [ObjectMenuTitle],
          _ index: Int,
          _ menuData: ObjectMenuData,
          _ fn: @escaping (Int) -> Void) {
-        
         let startIdx = ObjectMenuTitle.getStart(list, index)
         let count = list[index].count
         let title = list[index].title

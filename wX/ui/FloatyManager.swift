@@ -18,12 +18,12 @@ open class FloatyManager: NSObject {
     static var dispatchToken: Int = 0
     static var instance: FloatyManager?
   }
-  
+
   class func defaultInstance() -> FloatyManager {
     _ = FloatyManager.__once
     return StaticInstance.instance!
   }
-  
+
   var _floatyWindow: FloatyWindow?
   var floatyWindow: FloatyWindow {
       if _floatyWindow == nil {
@@ -32,7 +32,7 @@ open class FloatyManager: NSObject {
       }
       return _floatyWindow!
   }
-  
+
   var _floatyController: FloatyViewController?
   var floatyController: FloatyViewController {
       if _floatyController == nil {
@@ -40,19 +40,19 @@ open class FloatyManager: NSObject {
       }
       return _floatyController!
   }
-  
+
   open var button: Floaty {
       return floatyController.floaty
   }
-  
+
   private let fontDescriptor: UIFontDescriptor
   private var _font: UIFont
-  
+
   public override init() {
     fontDescriptor = UIFont.systemFont(ofSize: 20.0).fontDescriptor
     _font = UIFont(descriptor: fontDescriptor, size: 20)
   }
-  
+
   open var font: UIFont {
     get {
       return _font
@@ -61,7 +61,7 @@ open class FloatyManager: NSObject {
       _font = newValue
     }
   }
-  
+
   private var _rtlMode = false
   open var rtlMode: Bool {
     get {
@@ -71,7 +71,7 @@ open class FloatyManager: NSObject {
       _rtlMode = newValue
     }
   }
-  
+
   open func show(_ animated: Bool = true) {
     if animated == true {
       floatyWindow.isHidden = false
@@ -82,7 +82,7 @@ open class FloatyManager: NSObject {
       floatyWindow.isHidden = false
     }
   }
-  
+
   open func hide(_ animated: Bool = true) {
     if animated == true {
       UIView.animate(withDuration: 0.3, animations: { () -> Void in
@@ -94,7 +94,7 @@ open class FloatyManager: NSObject {
       floatyWindow.isHidden = true
     }
   }
-  
+
   open func toggle(_ animated: Bool = true) {
     if floatyWindow.isHidden == false {
       self.hide(animated)
@@ -102,7 +102,7 @@ open class FloatyManager: NSObject {
       self.show(animated)
     }
   }
-  
+
   open var hidden: Bool {
       return floatyWindow.isHidden
   }

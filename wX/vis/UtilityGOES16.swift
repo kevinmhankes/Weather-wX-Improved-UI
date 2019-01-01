@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -87,7 +87,7 @@ final class UtilityGOES16 {
         "12.3 um (Band 15) Dirty Longwave Window - IR": "15",
         "13.3 um (Band 16) CO2 Longwave - IR": "16"
         ]
-    
+
     static let productCodes = [
         "GEOCOLOR",
         "01",

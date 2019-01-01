@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -190,11 +190,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             print("error init pipelineState")
         }
         commandQueue = device.makeCommandQueue()
-        
         wxMetal.forEach {
             $0?.setRenderFunction(render(_:))
         }
-        
         // Below two lines enable continuous updates
         //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
@@ -253,23 +251,23 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         //}
     }
 
-    @objc func newFrame(displayLink: CADisplayLink) {
+    /*@objc func newFrame(displayLink: CADisplayLink) {
         if lastFrameTimestamp == 0.0 {
             lastFrameTimestamp = displayLink.timestamp
         }
         let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
         lastFrameTimestamp = displayLink.timestamp
         radarLoop(timeSinceLastUpdate: elapsed)
-    }
+    }*/
 
-    func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
+    /*func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
         autoreleasepool {
             if wxMetal[0] != nil {
                 // FIXME needed if using continuous
                 //self.render()
             }
         }
-    }
+    }*/
 
     func setupGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(WXMetalMultipane.gesturePan))

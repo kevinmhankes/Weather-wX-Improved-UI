@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -7,7 +7,7 @@
 import UIKit
 
 final class UtilityImg {
-    
+
     static func resizeImage(_ image: UIImage, _ scale: Double) -> UIImage? {
         let newSize = CGSize(width: image.size.width * CGFloat(scale), height: image.size.height * CGFloat(scale))
         let rendererFormat = UIGraphicsImageRendererFormat()
@@ -18,7 +18,7 @@ final class UtilityImg {
         }
         return newImage
     }
-    
+
     static func getAnimInterval() -> Int {
         return 50 * MyApplication.animInterval
     }

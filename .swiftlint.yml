@@ -9,4 +9,4 @@ disabled_rules: # rule identifiers to exclude from running
   - type_name 
   - force_cast
 #  - line_length
-  - trailing_whitespace
+#  - trailing_whitespace
