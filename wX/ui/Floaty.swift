@@ -882,7 +882,8 @@ open class Floaty: UIView {
   }
 
   @objc internal func deviceOrientationDidChange(_ notification: Notification) {
-    guard let keyboardSize: CGFloat = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size.height else {
+    guard let keyboardSize: CGFloat =
+        (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size.height else {
       return
     }
 
@@ -896,7 +897,8 @@ open class Floaty: UIView {
   }
 
   @objc internal func keyboardWillShow(_ notification: Notification) {
-    guard let keyboardSize: CGFloat = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height,
+    guard let keyboardSize: CGFloat =
+        (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height,
       respondsToKeyboard, !sticky else {
         return
     }

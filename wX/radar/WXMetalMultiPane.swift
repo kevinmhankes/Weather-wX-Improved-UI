@@ -263,7 +263,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     /*func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
         autoreleasepool {
             if wxMetal[0] != nil {
-                // FIXME needed if using continuous
                 //self.render()
             }
         }

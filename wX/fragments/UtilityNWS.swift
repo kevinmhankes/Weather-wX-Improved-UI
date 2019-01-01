@@ -9,7 +9,6 @@ import UIKit
 final class UtilityNWS {
 
     static func getIcon(_ url: String) -> Bitmap {
-        //print(url)
         var bitmap = Bitmap()
         if url == "NULL" {
             return bitmap
@@ -22,13 +21,11 @@ final class UtilityNWS {
         if fileName.contains("night") {
             fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n")
         }
-        //print(fileName)
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
             bitmap = parseBitmap(fileName)
         }
-        //return Bitmap.resize(image: bitmap.image, ratio: 0.50)
         return bitmap
     }
 
@@ -163,7 +160,6 @@ final class UtilityNWS {
         let newImage = renderer.image {_ in
             bitmap.image.draw(at: CGPoint.zero)
             if num1 != "" {
-                // FIXME method
                 let rectangle = CGRect(x: 0, y: dimens - numHeight, width: dimens, height: dimens)
                 let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
                 fillColor.setFill()
