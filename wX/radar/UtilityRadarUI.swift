@@ -67,7 +67,7 @@ public class UtilityRadarUI {
         _ ortInt: Float,
         _ x: CGFloat,
         _ y: CGFloat
-        ) -> LatLon {
+    ) -> LatLon {
         let width = Double(uiv.view.bounds.size.width)
         let height = Double(uiv.view.bounds.size.height)
         var yModified = Double(y)

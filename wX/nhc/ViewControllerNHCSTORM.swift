@@ -26,7 +26,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
         "MIATCM: Forecast Advisory",
         "MIATCD: Forecast Discussion",
         "MIAPWS: Wind Speed Probababilities"
-        ]
+    ]
     let stormUrls = [
         "_5day_cone_with_line_and_wind_sm2.png",
         "_W5_NL_sm2.png",

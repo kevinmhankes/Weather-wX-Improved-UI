@@ -24,7 +24,8 @@ final class SpotterReports {
         _ uniq: String,
         _ type: String,
         _ time: String,
-        _ city: String) {
+        _ city: String
+    ) {
 		self.firstName = firstName
 		self.lastName = lastName.replaceAll("^ ", "")
         location = LatLon(lat, lon)

@@ -6,6 +6,8 @@
 
 final class Level2Metal {
 
+    // FIXME update metal to be the default radar, 3 months later deprecate GLES radar
+    
     static let reflectivityHigh = 5
     static let velocityHigh = 6
     static let fileHeaderSize = 24
@@ -25,7 +27,9 @@ final class Level2Metal {
             while true {
                 if let l2record = Level2Record.factory(dis2, recno, messageOffset31) {
                     record = l2record
-                } else {break}
+                } else {
+                    break
+                }
                 recno += 1
                 if record.messageType == 31 {
                     messageOffset31 += CLong(record.messageSize * 2 + 12 - 2432)
@@ -51,18 +55,22 @@ final class Level2Metal {
             days.putSignedShort(Int16(highReflectivity[rIdx].dataJulianDate))
             msecs.position = 0
             msecs.putInt(Int32(highReflectivity[rIdx].dataMsecs))
-            if numberOfRadials>highReflectivity.count {numberOfRadials = highReflectivity.count}
+            if numberOfRadials > highReflectivity.count {
+                numberOfRadials = highReflectivity.count
+            }
             if !velocityProd {
                 (0..<numberOfRadials).forEach {
-                    if highReflectivity[$0].elevationNum==1 {
+                    if highReflectivity[$0].elevationNum == 1 {
                         radarBuffers.rd.radialStartAngle.putFloat(450.0 - highReflectivity[$0].azimuth)
                         highReflectivity[$0].readData(dis2, reflectivityHigh, radarBuffers.rd.binWord)
                     }
                 }
             } else {
-                if numberOfRadials>highVelocity.count {numberOfRadials = highVelocity.count}
+                if numberOfRadials > highVelocity.count {
+                    numberOfRadials = highVelocity.count
+                }
                 (0..<numberOfRadials).forEach {
-                    if highVelocity[$0].elevationNum==2 {
+                    if highVelocity[$0].elevationNum == 2 {
                         radarBuffers.rd.radialStartAngle.putFloat(450.0 - highVelocity[$0].azimuth)
                         highVelocity[$0].readData(dis2, velocityHigh, radarBuffers.rd.binWord)
                     }

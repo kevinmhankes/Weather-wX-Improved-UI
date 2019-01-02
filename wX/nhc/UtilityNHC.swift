@@ -22,7 +22,7 @@ final class UtilityNHC {
         "MIATWDEP: EPAC Tropical Weather Discussion",
         "MIATWSAT: ATL Monthly Tropical Summary",
         "MIATWSEP: EPAC Monthly Tropical Summary"
-        ]
+    ]
 
     static let imageType = [
         "vis: Visible",
@@ -35,7 +35,7 @@ final class UtilityNHC {
         "rgb: RGB",
         "ft: Funktop",
         "rb: Rainbow"
-        ]
+    ]
 
     static let imageTitles = [
         "EPAC Daily Analysis",
@@ -44,7 +44,7 @@ final class UtilityNHC {
         "ATL 7-Day Analysis",
         "EPAC SST Anomaly",
         "ATL SST Anomaly"
-        ]
+    ]
 
     static let imageUrls = [
         "http://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
@@ -53,7 +53,7 @@ final class UtilityNHC {
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anal.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
-        ]
+    ]
 
     static func getHurricaneInfo(_ rssUrl: String) -> ObjectNHCStormInfo {
         var title = ""
@@ -81,9 +81,11 @@ final class UtilityNHC {
 
     static func getAnimation(_ sector: String, _ prodId: String, _ frameCount: Int) -> AnimationDrawable {
         let baseUrl = "http://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/"
-        let urls = UtilityImgAnim.getUrlArray(baseUrl,
-                                              "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
-                                              frameCount)
+        let urls = UtilityImgAnim.getUrlArray(
+            baseUrl,
+            "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
+            frameCount
+        )
         let bitmaps = urls.map {
             Bitmap(baseUrl + $0)
         }

@@ -18,8 +18,16 @@ final class Spotter {
     var lonD: Double
     var location = LatLon()
 
-    init(_ firstName: String, _ lastName: String, _ lat: String, _ lon: String,
-         _ reportedAt: String, _ email: String, _ phone: String, _ uniq: String) {
+    init(
+        _ firstName: String,
+        _ lastName: String,
+        _ lat: String,
+        _ lon: String,
+        _ reportedAt: String,
+        _ email: String,
+        _ phone: String,
+        _ uniq: String
+    ) {
         self.firstName = firstName
         self.lastName = lastName.replaceAll("^ ", "").capitalized
         self.lat = lat

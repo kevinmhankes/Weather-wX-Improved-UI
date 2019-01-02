@@ -35,8 +35,10 @@ public class UtilitySpotter {
             htmlArr.forEach {
                 tmpArr = $0.split(";;")
                 if tmpArr.count > 15 {
-                    spotterList.append(Spotter(tmpArr[14], tmpArr[15],
-                                               tmpArr[4], tmpArr[5], tmpArr[3], tmpArr[11], tmpArr[10], tmpArr[0]))
+                    spotterList.append(
+                        Spotter(tmpArr[14], tmpArr[15],
+                                               tmpArr[4], tmpArr[5], tmpArr[3], tmpArr[11], tmpArr[10], tmpArr[0])
+                    )
                     latAl.append(tmpArr[4])
                     lonAl.append(tmpArr[5])
                 }
@@ -66,9 +68,11 @@ public class UtilitySpotter {
         var tmpArr = [String]()
         lines.forEach {
             tmpArr = $0.split(";;")
-            if tmpArr.count > 10 && tmpArr.count < 16 &&  !tmpArr[0].hasPrefix("#") {
-                reportsList.append(SpotterReports(tmpArr[9], tmpArr[10], tmpArr[5],
-                                                  tmpArr[6], tmpArr[8], tmpArr[0], tmpArr[3], tmpArr[2], tmpArr[7]))
+            if tmpArr.count > 10 && tmpArr.count < 16 && !tmpArr[0].hasPrefix("#") {
+                reportsList.append(
+                    SpotterReports(tmpArr[9], tmpArr[10], tmpArr[5],
+                                                  tmpArr[6], tmpArr[8], tmpArr[0], tmpArr[3], tmpArr[2], tmpArr[7])
+                )
             }
         }
     }

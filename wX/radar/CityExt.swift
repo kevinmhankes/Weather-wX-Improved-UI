@@ -15,7 +15,7 @@ public final class CityExt {
 		self.name = name
 		self.latitude = lat
 		self.longitude = lon
-		if population=="" {
+		if population == "" {
 			self.population = 0
 		} else {
 			self.population = Int(population) ?? 0
