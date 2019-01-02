@@ -162,6 +162,7 @@ final class UtilityLocationFragment {
     }
 
     static func extractTemp(_ blob: String) -> String {
+        // FIXME formatting
         var temp = blob.parse(nws7dayTemp1)
         if temp != "" {return temp}
         temp = blob.parse(nws7dayTemp2)
@@ -188,6 +189,7 @@ final class UtilityLocationFragment {
     }
 
     static func extractCATemp(_ blob: String) -> String {
+        // FIXME formatting
         var temp = blob.parse(ca7dayTemp1)
         if temp != "" {return temp.replace("minus ", "-")}
         temp = blob.parse(ca7dayTemp2)

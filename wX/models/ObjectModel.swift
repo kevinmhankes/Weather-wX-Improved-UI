@@ -165,10 +165,12 @@ final public class ObjectModel {
         editor.putInt(prefRunPosnIdx, timeIdx)
     }
 
-    func setButtons(_ prodButton: ObjectToolbarIcon,
-                    _ sectorButton: ObjectToolbarIcon,
-                    _ runButton: ObjectToolbarIcon,
-                    _ timeButton: ObjectToolbarIcon) {
+    func setButtons(
+        _ prodButton: ObjectToolbarIcon,
+        _ sectorButton: ObjectToolbarIcon,
+        _ runButton: ObjectToolbarIcon,
+        _ timeButton: ObjectToolbarIcon
+    ) {
         self.prodButton = prodButton
         self.sectorButton = sectorButton
         self.runButton = runButton
@@ -179,9 +181,14 @@ final public class ObjectModel {
         prodButton.title = param.truncate(10)
     }
 
-    func setButtons(_ prodButton: ObjectToolbarIcon, _ sectorButton: ObjectToolbarIcon,
-                    _ runButton: ObjectToolbarIcon, _ timeButton: ObjectToolbarIcon,
-                    _ statusButton: ObjectToolbarIcon, _ modelButton: ObjectToolbarIcon) {
+    func setButtons(
+        _ prodButton: ObjectToolbarIcon,
+        _ sectorButton: ObjectToolbarIcon,
+        _ runButton: ObjectToolbarIcon,
+        _ timeButton: ObjectToolbarIcon,
+        _ statusButton: ObjectToolbarIcon,
+        _ modelButton: ObjectToolbarIcon
+    ) {
         self.prodButton = prodButton
         self.sectorButton = sectorButton
         self.runButton = runButton
@@ -479,7 +486,7 @@ final public class ObjectModel {
         case "ESRL":    bitmap = UtilityModelESRLInputOutput.getImage(self)
         case "GLCFS":   bitmap = UtilityModelGLCFSInputOutput.getImage(self)
         case "NCEP":
-            if self.model=="NAM4KM" {
+            if self.model == "NAM4KM" {
                 self.model = "NAM-HIRES"
             }
             if self.model.contains("HRW") && self.model.contains("-AK") {
@@ -538,7 +545,7 @@ final public class ObjectModel {
     func setParam(_ paramIdx: Int) {
         self.param = paramArr[paramIdx]
         self.prodButton.title = param.truncate(10)
-        if self.modelName=="SSEO" {
+        if self.modelName == "SSEO" {
             setModelVars(self.modelName)
         }
     }
@@ -546,7 +553,7 @@ final public class ObjectModel {
     func setParam(_ param: String) {
         self.param = param
         self.prodButton.title = param.truncate(10)
-        if self.modelName=="SSEO" {
+        if self.modelName == "SSEO" {
             setModelVars(self.modelName)
         }
     }

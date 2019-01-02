@@ -32,7 +32,7 @@ final class ObjectNHC: NSObject {
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
-        ]
+    ]
 
     init(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv

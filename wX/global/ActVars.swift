@@ -7,6 +7,7 @@
 import UIKit
 
 class ActVars {
+    // FIXME fix camelCase
     static var goesSector = ""
     static var goesProduct = ""
     static var settingsLocationEditNum = ""

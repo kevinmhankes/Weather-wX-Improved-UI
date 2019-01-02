@@ -22,10 +22,12 @@ class ViewControllerTABPARENT: UIViewController {
         rightSwipe.direction = .right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
-        self.tabBarController?.tabBar.barTintColor = UIColor(red: AppColors.primaryColorRed,
-                                                             green: AppColors.primaryColorGreen,
-                                                             blue: AppColors.primaryColorBlue,
-                                                             alpha: CGFloat(1.0))
+        self.tabBarController?.tabBar.barTintColor = UIColor(
+            red: AppColors.primaryColorRed,
+            green: AppColors.primaryColorGreen,
+            blue: AppColors.primaryColorBlue,
+            alpha: CGFloat(1.0)
+        )
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))

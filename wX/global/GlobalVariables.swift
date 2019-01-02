@@ -7,6 +7,7 @@
 import AVFoundation
 import UIKit
 
+// FIXME move away from global variables
 var globalSynth = AVSpeechSynthesizer()
 let flexBarButton = UIBarButtonItem(
     barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,

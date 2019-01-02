@@ -97,28 +97,34 @@ class RadarGeometry {
         }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
-        var fileidArr = [lakesFileResid,
-                         hwFileResid,
-                         countyFileResid,
-                         stateLinesFileResid,
-                         caResid,
-                         mxResid,
-                         hwExtFileResid]
+        var fileidArr = [
+                lakesFileResid,
+                hwFileResid,
+                countyFileResid,
+                stateLinesFileResid,
+                caResid,
+                mxResid,
+                hwExtFileResid
+        ]
         var countArr = [countLakes, countHw, countCounty, countStateUs, countCanada, countMexico, countHwExt]
-        var bbArr=[lakesRelativeBuffer,
-                   hwRelativeBuffer,
-                   countyRelativeBuffer,
-                   stateRelativeBuffer,
-                   stateRelativeBuffer,
-                   stateRelativeBuffer,
-                   hwExtRelativeBuffer]
-        var prefArr = [GeographyType.lakes.display,
-                       true,
-                       true,
-                       true,
-                       RadarPreferences.radarCamxBorders,
-                       RadarPreferences.radarCamxBorders,
-                       RadarPreferences.radarHwEnhExt]
+        var bbArr = [
+                lakesRelativeBuffer,
+                hwRelativeBuffer,
+                countyRelativeBuffer,
+                stateRelativeBuffer,
+                stateRelativeBuffer,
+                stateRelativeBuffer,
+                hwExtRelativeBuffer
+        ]
+        var prefArr = [
+                GeographyType.lakes.display,
+                true,
+                true,
+                true,
+                RadarPreferences.radarCamxBorders,
+                RadarPreferences.radarCamxBorders,
+                RadarPreferences.radarHwEnhExt
+        ]
         var fileAdd = [false, false, false, false, true, true, false]
         fileidArr.indices.forEach {loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])}
     }

@@ -46,17 +46,23 @@ class ViewControllerMODELGENERIC: UIwXViewController {
             productButton = ObjectToolbarIcon(title: "Product", self, #selector(self.prodClicked))
         }
         if ActVars.modelActivitySelected.contains("SPCSREF") {
-            subMenu = ObjectMenuData(UtilityModelsSPCSREFInterface.titles,
-                                     UtilityModelsSPCSREFInterface.params,
-                                     UtilityModelsSPCSREFInterface.labels)
+            subMenu = ObjectMenuData(
+                UtilityModelsSPCSREFInterface.titles,
+                UtilityModelsSPCSREFInterface.params,
+                UtilityModelsSPCSREFInterface.labels
+            )
         } else if ActVars.modelActivitySelected.contains("SPCHREF") {
-            subMenu = ObjectMenuData(UtilityModelSPCHREFInterface.titles,
-                                     UtilityModelSPCHREFInterface.params,
-                                     UtilityModelSPCHREFInterface.labels)
+            subMenu = ObjectMenuData(
+                UtilityModelSPCHREFInterface.titles,
+                UtilityModelSPCHREFInterface.params,
+                UtilityModelSPCHREFInterface.labels
+            )
         } else if ActVars.modelActivitySelected.contains("WPCGEFS") {
-            subMenu = ObjectMenuData(UtilityModelWPCGEFSInterface.titles,
-                                     UtilityModelWPCGEFSInterface.params,
-                                     UtilityModelWPCGEFSInterface.labels)
+            subMenu = ObjectMenuData(
+                UtilityModelWPCGEFSInterface.titles,
+                UtilityModelWPCGEFSInterface.params,
+                UtilityModelWPCGEFSInterface.labels
+            )
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(self.timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(self.doneClicked))
@@ -86,20 +92,23 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 if ActVars.modelActivitySelected == "SPCHRRR"
                     || ActVars.modelActivitySelected == "SPCSREF"
                     || ActVars.modelActivitySelected == "SPCHREF" {
-                    self.modelObj.timeArr = UtilityModels.updateTime(UtilityString.getLastXChars(self.modelObj.run, 2),
-                                                                     self.modelObj.run,
-                                                                     self.modelObj.timeArr,
-                                                                     "",
-                                                                     false)
+                    self.modelObj.timeArr = UtilityModels.updateTime(
+                        UtilityString.getLastXChars(self.modelObj.run, 2),
+                        self.modelObj.run,
+                        self.modelObj.timeArr,
+                        "",
+                        false
+                    )
                 } else if !ActVars.modelActivitySelected.contains("GLCFS") {
                     self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
-                        self.modelObj.setTimeArr(idx,
-                                                 timeStr.split(" ")[0] + " "
-                                                    + UtilityModels.convertTimeRuntoTimeString(
+                        self.modelObj.setTimeArr(
+                            idx,
+                            timeStr.split(" ")[0] + " "
+                                + UtilityModels.convertTimeRuntoTimeString(
                                                         self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
                                                         timeStr.split(" ")[0],
                                                         false
-                            )
+                                )
                         )
                     }
                 }
@@ -199,13 +208,14 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         modelObj.setParam(prod)
         if ActVars.modelActivitySelected.contains("SSEO") {
             self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
-                self.modelObj.setTimeArr(idx,
-                                         timeStr.split(" ")[0]
-                                            + " "
-                                            + UtilityModels.convertTimeRuntoTimeString(
-                                                self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
-                                                timeStr.split(" ")[0],
-                                                false
+                self.modelObj.setTimeArr(
+                    idx,
+                    timeStr.split(" ")[0]
+                    + " "
+                    + UtilityModels.convertTimeRuntoTimeString(
+                        self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                        timeStr.split(" ")[0],
+                        false
                     )
                 )
             }

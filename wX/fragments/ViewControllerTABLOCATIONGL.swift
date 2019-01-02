@@ -50,19 +50,23 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     override func viewDidLoad() {
         super.viewDidLoad()
         ActVars.vc = self
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let toolbar = ObjectToolbar(.top)
         let radarButton = ObjectToolbarIcon(self, "ic_flash_on_24dp", #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(self, "ic_cloud_24dp", #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
         menuButton = ObjectToolbarIcon(self, "ic_more_vert_white_24dp", #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(self, "ic_report_24dp", #selector(dashClicked))
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
-                                         target: nil,
-                                         action: nil)
+        let fixedSpace = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
+            target: nil,
+            action: nil
+        )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems([flexBarButton,
@@ -167,8 +171,13 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                let homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",
-                                                                          MyApplication.homescreenFavDefault), ":")
+                let homescreenFav = TextUtils.split(
+                    preferences.getString(
+                        "HOMESCREEN_FAV",
+                        MyApplication.homescreenFavDefault
+                    ),
+                    ":"
+                )
                 self.textArr = [:]
                 homescreenFav.forEach {
                     switch $0 {
@@ -259,18 +268,25 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func locationAction() {
-        let alert = UIAlertController(title: "Select location:",
-                                      message: "",
-                                      preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(
+            title: "Select location:",
+            message: "",
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
         MyApplication.locations.indices.forEach { location in
-            let action = UIAlertAction(title: Location.getName(location),
-                                       style: .default,
-                                       handler: {_ in self.locationChanged(location)})
+            let action = UIAlertAction(
+                title: Location.getName(location),
+                style: .default,
+                handler: {_ in self.locationChanged(location)}
+            )
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Add location..",
-                                      style: .default,
-                                      handler: {_ in self.locationChanged(Location.numLocations)}))
+        alert.addAction(UIAlertAction(
+            title: "Add location..",
+            style: .default,
+            handler: {_ in self.locationChanged(Location.numLocations)}
+            )
+        )
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = self.menuButton
@@ -279,17 +295,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func ccAction() {
-        let alert2 = UIAlertController(title: "Select from:",
-                                       message: "",
-                                       preferredStyle: UIAlertController.Style.actionSheet)
-        alert2.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
-        alert2.addAction(UIAlertAction(title: "Sun/Moon data..", style: .default, handler: {_ in self.sunMoonData()}))
-        alert2.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
-        alert2.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert2.popoverPresentationController {
+        let alert = UIAlertController(
+            title: "Select from:",
+            message: "",
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
+        alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
+        alert.addAction(UIAlertAction(title: "Sun/Moon data..", style: .default, handler: {_ in self.sunMoonData()}))
+        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = self.menuButton
         }
-        self.present(alert2, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 
     func getCurrentConditionCards(_ stackView: UIStackView) {
@@ -363,9 +381,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         caview.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         caview.heightAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         let surfaceRatio = Float(screenWidth)/Float(screenHeight)
-        projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
-                                                      bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
-                                                      top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
+        projectionMatrix = Matrix4.makeOrthoViewAngle(
+            -1.0 * ortInt,
+            right: ortInt,
+            bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+            top: ortInt * (1 / surfaceRatio),
+            nearZ: -100.0,
+            farZ: 100.0
+        )
         paneRange.enumerated().forEach { index, _ in
             metalLayer.append(CAMetalLayer())
             metalLayer[index]!.device = device
@@ -432,16 +455,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func render(_ index: Int) {
-        //wxMetal.enumerated().forEach { index, wxmetal in
-            guard let drawable = metalLayer[index]!.nextDrawable() else { return }
-            //wxmetal!.render(commandQueue: commandQueue,
-            wxMetal[index]?.render(commandQueue: commandQueue,
-                            pipelineState: pipelineState,
-                            drawable: drawable,
-                            parentModelViewMatrix: modelMatrix(index),
-                            projectionMatrix: projectionMatrix,
-                            clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-        //}
+        guard let drawable = metalLayer[index]!.nextDrawable() else { return }
+        wxMetal[index]?.render(
+            commandQueue: commandQueue,
+            pipelineState: pipelineState,
+            drawable: drawable,
+            parentModelViewMatrix: modelMatrix(index),
+            projectionMatrix: projectionMatrix,
+            clearColor: nil
+        )
     }
 
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
@@ -515,11 +537,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func setupGestures() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self,
-                                                       action: #selector(tapGesture(_:)))
+        let gestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapGesture(_:))
+        )
         gestureRecognizer.numberOfTapsRequired = 1
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self,
-                                                        action: #selector(tapGesture(_:double:)))
+        let gestureRecognizer2 = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapGesture(_:double:))
+        )
         gestureRecognizer2.numberOfTapsRequired = 2
         stackViewRadar.addGestureRecognizer(gestureRecognizer)
         stackViewRadar.addGestureRecognizer(gestureRecognizer2)
@@ -543,12 +569,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(self,
-                                                             wxMetal,
-                                                             textObj,
-                                                             longPressCount,
-                                                             longPressAction,
-                                                             gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(
+            self,
+            wxMetal,
+            textObj,
+            longPressCount,
+            longPressAction,
+            gestureRecognizer
+        )
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
@@ -571,8 +599,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
-        let alert = UIAlertController(title: "Closest radar site:",
-                                      message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(
+            title: "Closest radar site:",
+            message: alertMessage,
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "

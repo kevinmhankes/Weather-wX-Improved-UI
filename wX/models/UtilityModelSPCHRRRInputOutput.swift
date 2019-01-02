@@ -43,7 +43,7 @@ final class UtilityModelSPCHRRRInputOutput {
 
     static func getValidTime(_ run: String, _ validTimeForecast: String, _ validTime: String) -> String {
         var validTimeCurrent = ""
-        if run.count==10 && validTime.count==10 {
+        if run.count == 10 && validTime.count == 10 {
             let runTimePrefix = run.substring(0, 8)
             let runTimeHr = run.substring(8, 10)
             let endTimePrefix = validTime.substring(0, 8)
@@ -58,5 +58,7 @@ final class UtilityModelSPCHRRRInputOutput {
         return validTimeCurrent
     }
 
-    static func formatTime(_ time: String) -> String {return "0" + time}
+    static func formatTime(_ time: String) -> String {
+        return "0" + time
+    }
 }
