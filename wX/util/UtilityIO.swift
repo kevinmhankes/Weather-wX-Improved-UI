@@ -18,7 +18,9 @@ final class UtilityIO {
         do {
             let documentDirUrl = try FileManager.default.url(
                 for: .documentDirectory,
-                in: .userDomainMask, appropriateFor: nil, create: true
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
             )
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
             try data.write(to: fileUrl, options: .atomic)
@@ -29,8 +31,12 @@ final class UtilityIO {
 
     static func readFiletoByteByffer(_ filename: String) -> MemoryBuffer {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
             let data = (try? Data(contentsOf: fileUrl)) ?? Data()
             return MemoryBuffer(data)
@@ -42,8 +48,12 @@ final class UtilityIO {
 
     static func readFiletoData(_ filename: String) -> Data {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
             return try Data(contentsOf: fileUrl)
         } catch {

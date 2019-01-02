@@ -10,12 +10,14 @@ final class UtilityCanvasMain {
 
     static let showPolygonsCanvas = false
 
-    static func addCanvasItems(_ bitmapCanvas: Bitmap,
-                               _ scaleType: ProjectionType,
-                               _ radarSite: String,
-                               _ hwLineWidth: Int,
-                               _ archive: Bool,
-                               _ citySize: Int) {
+    static func addCanvasItems(
+        _ bitmapCanvas: Bitmap,
+        _ scaleType: ProjectionType,
+        _ radarSite: String,
+        _ hwLineWidth: Int,
+        _ archive: Bool,
+        _ citySize: Int
+    ) {
         let highwayProvider = (scaleType == .nwsMosaicSector
             || scaleType == .nwsMosaic
             || scaleType == .wxRender48

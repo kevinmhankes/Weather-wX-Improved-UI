@@ -17,8 +17,11 @@ final class UtilityCanvas {
         let paint = Paint()
         let pn = ProjectionNumbers(radarSite, provider)
         let colorList = [PolygonType.FFW.color, PolygonType.TST.color, PolygonType.TOR.color]
-        let warningDataList = [MyApplication.severeDashboardFfw.value,
-                               MyApplication.severeDashboardTst.value, MyApplication.severeDashboardTor.value]
+        let warningDataList = [
+            MyApplication.severeDashboardFfw.value,
+            MyApplication.severeDashboardTst.value,
+            MyApplication.severeDashboardTor.value
+        ]
         warningDataList.enumerated().forEach { index, warningData in
             paint.setColor(colorList[index])
             let warningHTML = warningData.replace("\n", "").replace(" ", "")
@@ -40,8 +43,11 @@ final class UtilityCanvas {
         var tmpCoords = (0.0, 0.0)
         UtilityCities.CityObj.indices.forEach {
             if isMercato {
-                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(UtilityCities.CityObj[$0].latlon,
-                                                                           pn, multLonNegativeOne: false)
+                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                    UtilityCities.CityObj[$0].latlon,
+                    pn,
+                    multLonNegativeOne: false
+                )
             } else {
                 tmpCoords = UtilityCanvasProjection.compute4326Numbers(UtilityCities.CityObj[$0].latlon, pn)
             }
@@ -92,12 +98,14 @@ final class UtilityCanvas {
         canvasDrawWarnings(tmpArr, bitmap, paint, isMercato, pn, false)
     }
 
-    static func canvasDrawWarnings(_ warningAl: [String],
-                                   _ canvas: Bitmap,
-                                   _ paint: Paint,
-                                   _ isMercato: Bool,
-                                   _ pn: ProjectionNumbers,
-                                   _ addPeriod: Bool) {
+    static func canvasDrawWarnings(
+        _ warningAl: [String],
+        _ canvas: Bitmap,
+        _ paint: Paint,
+        _ isMercato: Bool,
+        _ pn: ProjectionNumbers,
+        _ addPeriod: Bool
+    ) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
@@ -166,11 +174,15 @@ final class UtilityCanvas {
         canvas.image = newImage
     }
 
-    static func canvasDrawWarningsNEWAPI(_ warningAl: [String], _ vtecAl: [String], _ canvas: Bitmap,
-                                         _ paint: Paint,
-                                         _ isMercato: Bool,
-                                         _ pn: ProjectionNumbers,
-                                         _ addPeriod: Bool) {
+    static func canvasDrawWarningsNEWAPI(
+        _ warningAl: [String],
+        _ vtecAl: [String],
+        _ canvas: Bitmap,
+        _ paint: Paint,
+        _ isMercato: Bool,
+        _ pn: ProjectionNumbers,
+        _ addPeriod: Bool
+    ) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
@@ -245,20 +257,26 @@ final class UtilityCanvas {
         canvas.image = newImage
     }
 
-    static func drawCircle(_ canvas: Bitmap,
-                           _ pixXInit: Double,
-                           _ pixYInit: Double,
-                           _ lineWidth: Double,
-                           _ paint: Paint) {
+    static func drawCircle(
+        _ canvas: Bitmap,
+        _ pixXInit: Double,
+        _ pixYInit: Double,
+        _ lineWidth: Double,
+        _ paint: Paint
+    ) {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
         let renderer = UIGraphicsImageRenderer(size: canvas.image.size, format: rendererFormat)
         let newImage = renderer.image { _ in
             canvas.image.draw(at: CGPoint.zero)
-            let wallpath = UIBezierPath(arcCenter: CGPoint(x: CGFloat(pixXInit), y: CGFloat(pixYInit)),
-                                        radius: CGFloat(lineWidth/2.0), startAngle: CGFloat(0.0),
-                                        endAngle: CGFloat(Float.pi * 2.0), clockwise: true)
+            let wallpath = UIBezierPath(
+                arcCenter: CGPoint(x: CGFloat(pixXInit), y: CGFloat(pixYInit)),
+                radius: CGFloat(lineWidth/2.0),
+                startAngle: CGFloat(0.0),
+                endAngle: CGFloat(Float.pi * 2.0),
+                clockwise: true
+            )
             paint.uicolor.setStroke()
             wallpath.lineWidth = 3.0
             wallpath.stroke()

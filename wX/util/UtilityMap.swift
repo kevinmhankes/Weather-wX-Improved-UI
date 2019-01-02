@@ -42,7 +42,9 @@ final class UtilityMap {
             let ridArr = $0.split(":")
             let latStr = preferences.getString(prefVar + ridArr[0] + "_X", "40.00")
             var lonStr = preferences.getString(prefVar + ridArr[0] + "_Y", "80.00")
-            if !lonStr.hasPrefix("-") {lonStr = "-" + lonStr}
+            if !lonStr.hasPrefix("-") {
+                lonStr = "-" + lonStr
+            }
             if ridArr.count > 1 {
                 let arr = ["name": ridArr[0], "latitude": latStr, "longitude": lonStr, "mediaURL": ridArr[1]]
                 locations.append(arr)
@@ -79,8 +81,12 @@ final class UtilityMap {
         return pin
     }
 
-    static func mapViewExtra(_ mapView: MKMapView, _ annotationView: MKAnnotationView,
-                             _ control: UIControl, _ localChanges: (MKAnnotationView) -> Void) -> Bool {
+    static func mapViewExtra(
+        _ mapView: MKMapView,
+        _ annotationView: MKAnnotationView,
+        _ control: UIControl,
+        _ localChanges: (MKAnnotationView) -> Void
+    ) -> Bool {
         var mapShown = true
         if control == annotationView.rightCalloutAccessoryView {
             mapView.removeFromSuperview()

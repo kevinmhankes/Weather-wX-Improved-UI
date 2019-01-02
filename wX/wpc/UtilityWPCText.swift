@@ -19,7 +19,7 @@ final class UtilityWPCText {
         ObjectMenuTitle("Great Lakes", 7),
         ObjectMenuTitle("Canada", 8),
         ObjectMenuTitle("Space Weather", 6)
-        ]
+    ]
 
     static let labels = [
         "pmdspd: Short Range Forecast Discussion",
@@ -135,5 +135,5 @@ final class UtilityWPCText {
         "swpc27day: 27-day Space Weather Outlook Table",
         "swpcdisc: Forecast Discussion",
         "swpcwwa: Advisory Outlook"
-        ]
+    ]
 }

@@ -13,7 +13,8 @@ final class UtilityCanvasGeneric {
         _ bitmap: Bitmap,
         _ radarSite: String,
         _ lineWidth: Int,
-        _ type: GeographyType) {
+        _ type: GeographyType
+    ) {
         let isMercato = UtilityCanvasProjection.isMercator(provider)
         let paint = Paint()
         var genericCount: Int

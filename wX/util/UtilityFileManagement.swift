@@ -10,8 +10,12 @@ final class UtilityFileManagement {
 
     static func getFullPathUrl(_ destinationPath: String) -> URL {
         do {
-            let documentDirURL = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirURL = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             return documentDirURL.appendingPathComponent(destinationPath)
         } catch {
             print("Unable to get document URL for " + destinationPath)
@@ -21,8 +25,12 @@ final class UtilityFileManagement {
 
     static func moveFile(_ src: String, _ target: String) {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             let srcUrl = documentDirUrl.appendingPathComponent(src)
             let targetUrl = documentDirUrl.appendingPathComponent(target)
             let filemgr = FileManager.default
@@ -34,8 +42,12 @@ final class UtilityFileManagement {
 
     static func deleteFile(_ fileName: String) {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             let filemgr = FileManager.default
             let file = documentDirUrl.appendingPathComponent(fileName)
             try filemgr.removeItem(at: file)
@@ -46,11 +58,18 @@ final class UtilityFileManagement {
 
     static func deleteAllFiles() {
         do {
-            let documentDirUrl = try FileManager.default.url(for: .documentDirectory,
-                                                             in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentDirUrl = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
             let filemgr = FileManager.default
-            let filePaths = try filemgr.contentsOfDirectory(at: documentDirUrl,
-                                                            includingPropertiesForKeys: nil, options: [])
+            let filePaths = try filemgr.contentsOfDirectory(
+                at: documentDirUrl,
+                includingPropertiesForKeys: nil,
+                options: []
+            )
             for filePath in filePaths {
                 try filemgr.removeItem(at: filePath)
             }

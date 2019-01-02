@@ -15,7 +15,7 @@ final class UtilityWPCImages {
         ObjectMenuTitle("CPC Outlooks", 22),
         ObjectMenuTitle("Aviation", 14),
         ObjectMenuTitle("Space Weather", 3)
-        ]
+    ]
 
     static let labels = [
         "WPC Analysis, Radar, Warnings",
@@ -156,7 +156,7 @@ final class UtilityWPCImages {
         "Aurora Forecast - North",
         "Aurora Forecast - South",
         "Estimated Planetary K index"
-        ]
+    ]
 
     static let urls =  [
         MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif",
@@ -297,5 +297,5 @@ final class UtilityWPCImages {
         "http://services.swpc.noaa.gov/images/animations/ovation-north/latest.jpg",
         "http://services.swpc.noaa.gov/images/animations/ovation-south/latest.jpg",
         "http://services.swpc.noaa.gov/images/planetary-k-index.gif"
-        ]
+    ]
 }

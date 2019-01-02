@@ -23,7 +23,7 @@ final class UtilityNWSGOESFullDisk {
         "Himawari-8 AVN Infrared",
         "Himawari-8 Funktop Infrared",
         "Himawari-8 RBTop Infrared, Ch. 4"
-        ]
+    ]
 
     static let urls = [
         "http://www.goes.noaa.gov/FULLDISK/GEIR.JPG",
@@ -42,7 +42,7 @@ final class UtilityNWSGOESFullDisk {
         "http://www.goes.noaa.gov/dimg/jma/fd/avn/10.gif",
         "http://www.goes.noaa.gov/dimg/jma/fd/ft/10.gif",
         "http://www.goes.noaa.gov/dimg/jma/fd/rbtop/10.gif"
-        ]
+    ]
 
     static func getAnimation(url: String) -> AnimationDrawable {
         let url2 = url.replace("10.gif", "")
