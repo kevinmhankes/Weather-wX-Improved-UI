@@ -27,10 +27,12 @@ final class Bitmap {
         if let imgTmp = UIImage(data: self.dataBm) {
             self.image = imgTmp
         } else {
-            self.image = Bitmap.imageWithSize(size: CGSize(width: 3, height: 3),
-                                              filledWithColor: UIColor.white,
-                                              scale: 1.0,
-                                              opaque: false)
+            self.image = Bitmap.imageWithSize(
+                size: CGSize(width: 3, height: 3),
+                filledWithColor: UIColor.white,
+                scale: 1.0,
+                opaque: false
+            )
         }
     }
 
@@ -46,10 +48,12 @@ final class Bitmap {
         if let data = image.pngData() {
             self.dataBm = data
         } else {
-            self.image = Bitmap.imageWithSize(size: CGSize(width: 86, height: 86),
-                                              filledWithColor: UIColor.white,
-                                              scale: 1.0,
-                                              opaque: false)
+            self.image = Bitmap.imageWithSize(
+                size: CGSize(width: 86, height: 86),
+                filledWithColor: UIColor.white,
+                scale: 1.0,
+                opaque: false
+            )
             self.dataBm = self.image.pngData()!
         }
     }
@@ -87,10 +91,12 @@ final class Bitmap {
         static let ARGB8888 = 0
     }
 
-    class func imageWithSize(size: CGSize,
-                             filledWithColor color: UIColor = UIColor.clear,
-                             scale: CGFloat = 0.0,
-                             opaque: Bool = false) -> UIImage {
+    class func imageWithSize(
+        size: CGSize,
+        filledWithColor color: UIColor = UIColor.clear,
+        scale: CGFloat = 0.0,
+        opaque: Bool = false
+    ) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = opaque

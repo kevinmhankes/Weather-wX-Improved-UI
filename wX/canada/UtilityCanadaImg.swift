@@ -129,7 +129,7 @@ final class UtilityCanadaImg {
 
     static func getRadarMosaicBitmapOptionsApplied(_ sector: String) -> Bitmap {
         var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
-        if sector=="CAN" {
+        if sector == "CAN" {
             url = "http://weather.gc.ca/radar/index_e.html"
         }
         let radHtml = url.getHtmlSep()
@@ -140,7 +140,7 @@ final class UtilityCanadaImg {
 
     static func getRadarMosaicAnimation(_ sector: String, _ duration: String) -> AnimationDrawable {
         var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
-        if sector=="CAN" {
+        if sector == "CAN" {
             url = "http://weather.gc.ca/radar/index_e.html"
         }
         let radHtml = url.getHtmlSep()
@@ -151,7 +151,9 @@ final class UtilityCanadaImg {
             sectorLocal = sector
         }
         var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
-        if duration=="long" {durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"}
+        if duration == "long" {
+            durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"
+        }
         let radarHtml1hr = radHtml.parse(durationPatMatch)
         var tmpAl = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
         var string = tmpAl.map {":/data/radar/detailed/temp_image/COMPOSITE_"
