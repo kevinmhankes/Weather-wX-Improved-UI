@@ -19,8 +19,12 @@ class ViewControllerHOURLY: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                let objText = ObjectTextView(self.stackView, html.0,
-                                             UIFont(name: "Courier", size: UIPreferences.textviewFontSize - 2)!)
+                let objText = ObjectTextView(
+                    self.stackView,
+                    html.0,
+                    UIFont(name: "Courier",
+                    size: UIPreferences.textviewFontSize - 2)!
+                )
                 objText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.textAction)))
             }
         }

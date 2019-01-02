@@ -41,16 +41,18 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton,
-            productButton, playButton, shareButton, playlistButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [doneButton, flexBarButton, siteButton,
+            productButton, playButton, shareButton, playlistButton]
+            ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
-        if preferences.getString("WFO_REMEMBER_LOCATION", "")=="true" {
-            wfo = preferences.getString("WFO_LAST_USED", Location.wfo)
+        if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
+            wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
         } else {
             wfo = Location.wfo
         }
-        product = preferences.getString("WFOTEXT_PARAM_LAST_USED", product)
+        product = Utility.readPref("WFOTEXT_PARAM_LAST_USED", product)
         self.getContent()
     }
 
@@ -64,8 +66,8 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
                     html = "None issused by this office recently."
                 }
                 self.textView.text = html
-                editor.putString("WFOTEXT_PARAM_LAST_USED", self.product)
-                editor.putString("WFO_REMEMBER_LOCATION", self.wfo)
+                Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
+                Utility.writePref("WFO_REMEMBER_LOCATION", self.wfo)
             }
         }
     }
@@ -102,9 +104,11 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         return UtilityMap.mapView(mapView, annotation)
     }
 
-    func mapView(_ mapView: MKMapView,
-                 annotationView: MKAnnotationView,
-                 calloutAccessoryControlTapped control: UIControl) {
+    func mapView(
+        _ mapView: MKMapView,
+        annotationView: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl
+    ) {
         mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 

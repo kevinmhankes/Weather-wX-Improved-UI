@@ -33,8 +33,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             DispatchQueue.main.async {
                 self.showTextWarnings()
                 let imgObject = ObjectImage(self.stackView, bm)
-                let tapGestureRecognizerSPCRPT = UITapGestureRecognizer(target: self,
-                    action: #selector(self.spcstreportsClicked(sender:)))
+                let tapGestureRecognizerSPCRPT = UITapGestureRecognizer(
+                    target: self,
+                    action: #selector(self.spcstreportsClicked(sender:))
+                )
                 imgObject.addGestureRecognizer(tapGestureRecognizerSPCRPT)
                 var index = 0
                 var watI = 0
@@ -100,8 +102,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
             if $1 != "" {
                 let sArr = $1.split(MyApplication.newline)
-                let objAlert = ObjectTextView(stackView, "(" + String(sArr.count-1) + ") "
-                    + titles[$0] + MyApplication.newline + $1)
+                let objAlert = ObjectTextView(
+                    stackView,
+                    "(" + String(sArr.count-1) + ") " + titles[$0] + MyApplication.newline + $1
+                )
                 objAlert.addGestureRecognizer(UITapGestureRecognizer(target: self,
                     action: #selector(ViewControllerSEVEREDASHBOARD.gotoAlerts)))
             }
