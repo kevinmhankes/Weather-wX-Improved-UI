@@ -16,7 +16,8 @@ final class WXGLSurfaceView {
     static func singleTap(_ uiv: GLKViewController,
                           _ oglrArr: [WXGLRender],
                           _ textObj: WXGLTextObject,
-                          _ gestureRecognizer: UITapGestureRecognizer) {
+                          _ gestureRecognizer: UITapGestureRecognizer
+    ) {
         if RadarPreferences.dualpaneshareposn {
             oglrArr.forEach {
                 $0.setView(0.5)
@@ -28,7 +29,11 @@ final class WXGLSurfaceView {
             oglrArr[radarIndex].setZoom()
         }
         uiv.view.setNeedsDisplay()
-        uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+        uiv.view.subviews.forEach {
+            if $0 is UITextView {
+                $0.removeFromSuperview()
+            }
+        }
         textObj.addTV()
     }
 

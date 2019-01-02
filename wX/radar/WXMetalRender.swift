@@ -97,7 +97,8 @@ class WXMetalRender {
          _ timeButton: ObjectToolbarIcon,
          _ productButton: ObjectToolbarIcon,
          paneNumber: Int,
-         _ numberOfPanes: Int) {
+         _ numberOfPanes: Int
+    ) {
         self.device = device
         self.timeButton = timeButton
         self.productButton = productButton
@@ -149,12 +150,14 @@ class WXMetalRender {
         }
     }
 
-    func render(commandQueue: MTLCommandQueue,
-                pipelineState: MTLRenderPipelineState,
-                drawable: CAMetalDrawable,
-                parentModelViewMatrix: Matrix4,
-                projectionMatrix: Matrix4,
-                clearColor: MTLClearColor?) {
+    func render(
+        commandQueue: MTLCommandQueue,
+        pipelineState: MTLRenderPipelineState,
+        drawable: CAMetalDrawable,
+        parentModelViewMatrix: Matrix4,
+        projectionMatrix: Matrix4,
+        clearColor: MTLClearColor?
+    ) {
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
@@ -164,7 +167,6 @@ class WXMetalRender {
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         //For now cull mode is used instead of depth buffer
         renderEncoder!.setCullMode(MTLCullMode.front)
-        //renderEncoder!.setCullMode(MTLCullMode.none)
         renderEncoder!.setRenderPipelineState(pipelineState)
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
@@ -178,15 +180,22 @@ class WXMetalRender {
                             options: []
                         )
                         let bufferPointer = uniformBuffer?.contents()
-                        memcpy(bufferPointer, nodeModelMatrix.raw(),
-                               MemoryLayout<Float>.size * Matrix4.numberOfElements())
-                        memcpy(bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(),
-                               projectionMatrix.raw(),
-                               MemoryLayout<Float>.size * Matrix4.numberOfElements())
+                        memcpy(
+                            bufferPointer,
+                            nodeModelMatrix.raw(),
+                            MemoryLayout<Float>.size * Matrix4.numberOfElements()
+                        )
+                        memcpy(
+                            bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(),
+                            projectionMatrix.raw(),
+                            MemoryLayout<Float>.size * Matrix4.numberOfElements()
+                        )
                         renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                        renderEncoder!.drawPrimitives(type: vbuffer.shape,
-                                                      vertexStart: 0,
-                                                      vertexCount: vbuffer.vertexCount)
+                        renderEncoder!.drawPrimitives(
+                            type: vbuffer.shape,
+                            vertexStart: 0,
+                            vertexCount: vbuffer.vertexCount
+                        )
                     }
                 }
             }
@@ -268,9 +277,16 @@ class WXMetalRender {
         buffers.setCount(buffers.geotype.count)
         buffers.initialize(4 * buffers.count, buffers.geotype.color)
         let colors = buffers.getColorArrayInFloat()
-        JNI_GenMercato(MemoryBuffer.getPointer(buffers.geotype.relativeBuffer.array),
-                       MemoryBuffer.getPointer(buffers.floatBuffer.array), pn.xFloat,
-                       pn.yFloat, pn.xCenterFloat, pn.yCenterFloat, pn.oneDegreeScaleFactorFloat, Int32(buffers.count))
+        JNI_GenMercato(
+            MemoryBuffer.getPointer(buffers.geotype.relativeBuffer.array),
+            MemoryBuffer.getPointer(buffers.floatBuffer.array),
+            pn.xFloat,
+            pn.yFloat,
+            pn.xCenterFloat,
+            pn.yCenterFloat,
+            pn.oneDegreeScaleFactorFloat,
+            Int32(buffers.count)
+        )
         buffers.setToPositionZero()
         var i = 0
         (0..<(buffers.count/2)).forEach { _ in
@@ -315,8 +331,10 @@ class WXMetalRender {
             zoom = preferences.getFloat(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = preferences.getFloat(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = preferences.getFloat(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = preferences.getString(radarType + numberOfPanes + "_PROD" + index,
-                                            initialRadarProducts[paneNumber])
+            product = preferences.getString(
+                radarType + numberOfPanes + "_PROD" + index,
+                initialRadarProducts[paneNumber]
+            )
             rid = preferences.getString(radarType + numberOfPanes + "_RID" + index, Location.rid)
         } else {
             rid = Location.rid
@@ -393,11 +411,13 @@ class WXMetalRender {
     func getRadar(_ url: String, _ additionalText: String = "") {
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url,
-                                                                    self.rid,
-                                                                    self.radarProduct,
-                                                                    self.idxStr,
-                                                                    self.TDWR)
+                self.ridPrefixGlobal = self.rdDownload.getRadarFile(
+                    url,
+                    self.rid,
+                    self.radarProduct,
+                    self.idxStr,
+                    self.TDWR
+                )
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = self.l3BaseFn + self.idxStr
                 } else {
@@ -406,7 +426,7 @@ class WXMetalRender {
             } else {
                 self.radarBuffers.fileName = url
             }
-            if url=="" {  // not anim
+            if url == "" {  // not anim
                 [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
                     if $0.display {self.constructLevel3TextProduct($0)}
                 }
@@ -459,13 +479,13 @@ class WXMetalRender {
             self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
         }
         self.radarBuffers.setToPositionZero()
-        self.radarBuffers.count = (self.radarBuffers.metalBuffer.count/self.radarBuffers.floatCountPerVertex) * 2
+        self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
         self.radarBuffers.generateMtlBuffer(device)
     }
 
     func showTimeToolbar(_ additionalText: String) {
         var timeStr = preferences.getString("WX_RADAR_CURRENT_INFO", "").split(" ")
-        if timeStr.count>1 {
+        if timeStr.count > 1 {
             let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
             timeButton.title = text
         } else {
@@ -636,18 +656,21 @@ class WXMetalRender {
         (0...4).forEach { z in
             if let flArr = UtilitySWOD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]),
-                                                                               Double(flArr[j+1]) * -1.0,
-                                                                               pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                        Double(flArr[j]),
+                        Double(flArr[j+1]) * -1.0,
+                        pn
+                    )
                     swoBuffers.putFloat(tmpCoords.0)
                     swoBuffers.putFloat(tmpCoords.1 * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))
-
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]),
-                                                                               Double(flArr[j+3]) * -1.0,
-                                                                               pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                        Double(flArr[j+2]),
+                        Double(flArr[j+3]) * -1.0,
+                        pn
+                    )
                     swoBuffers.putFloat(tmpCoords.0)
                     swoBuffers.putFloat(tmpCoords.1 * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))

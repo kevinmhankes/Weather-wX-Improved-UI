@@ -22,7 +22,8 @@ final class WXMetalSurfaceView {
     static func gesturePan(_ uiv: UIViewController,
                            _ wxMetal: [WXMetalRender?],
                            _ textObj: WXMetalTextObject,
-                           _ gestureRecognizer: UIPanGestureRecognizer) {
+                           _ gestureRecognizer: UIPanGestureRecognizer
+    ) {
         var panSensivity: Float = 500.0
         if wxMetal[0]!.numberOfPanes == 4 {
             panSensivity *= 2
@@ -59,7 +60,11 @@ final class WXMetalSurfaceView {
         gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
         switch gestureRecognizer.state {
         case .began:
-            uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+            uiv.view.subviews.forEach {
+                if $0 is UITextView {
+                    $0.removeFromSuperview()
+                }
+            }
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:
             textObj.addTV()
@@ -104,7 +109,8 @@ final class WXMetalSurfaceView {
     static func singleTap(_ uiv: UIViewController,
                           _ wxMetal: [WXMetalRender?],
                           _ textObj: WXMetalTextObject,
-                          _ gestureRecognizer: UITapGestureRecognizer) {
+                          _ gestureRecognizer: UITapGestureRecognizer
+    ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
@@ -131,15 +137,13 @@ final class WXMetalSurfaceView {
                           _ textObj: WXMetalTextObject,
                           _ numberOfPanes: Int,
                           _ ortInt: Float,
-                          _ gestureRecognizer: UITapGestureRecognizer) {
+                          _ gestureRecognizer: UITapGestureRecognizer
+    ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let bounds = UtilityUI.getScreenBounds()
         let width = Float(uiv.view.bounds.size.width)
         var density: Float = -(width / bounds.0)
-        //var density: Float = -(450.0 / bounds.0)
-        //let height = Float(uiv.view.bounds.size.height)
-        //var density = Double(ortInt * 2) / width
         if numberOfPanes == 4 {
             density *= 2.0
         }
@@ -193,7 +197,8 @@ final class WXMetalSurfaceView {
                                  _ textObj: WXMetalTextObject,
                                  _ longPressCount: Int,
                                  _ fn: (CGFloat, CGFloat, Int) -> Void,
-                                 _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
+                                 _ gestureRecognizer: UILongPressGestureRecognizer
+    ) -> Int {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
@@ -207,10 +212,11 @@ final class WXMetalSurfaceView {
     static func gestureZoom(_ uiv: UIViewController,
                             _ wxMetal: [WXMetalRender?],
                             _ textObj: WXMetalTextObject,
-                            _ gestureRecognizer: UIPinchGestureRecognizer) {
+                            _ gestureRecognizer: UIPinchGestureRecognizer
+    ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        let slowItDown: Float = 1.0 // was 1.0
+        let slowItDown: Float = 1.0
         let maxZoom: Float = 15.0
         let minZoom: Float = 0.03
         let fudge: Float = 0.01
@@ -254,7 +260,11 @@ final class WXMetalSurfaceView {
         gestureRecognizer.scale = 1
         switch gestureRecognizer.state {
         case .began:
-            uiv.view.subviews.forEach {if $0 is UITextView {$0.removeFromSuperview()}}
+            uiv.view.subviews.forEach {
+                if $0 is UITextView {
+                    $0.removeFromSuperview()
+                }
+            }
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:
             textObj.addTV()
