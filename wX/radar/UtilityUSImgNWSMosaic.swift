@@ -22,7 +22,7 @@ class UtilityUSImgNWSMosaic {
         "centgrtlakes",
         "northeast",
         "latest"
-        ]
+    ]
 
     static let sectorToLabel = [
         "alaska": "Alaska",
@@ -38,7 +38,7 @@ class UtilityUSImgNWSMosaic {
         "southeast": "Southeast",
         "northeast": "Northeast",
         "conus": "CONUS"
-        ]
+    ]
 
     static let stateToSector = [
         "WA": "pacnorthwest",
@@ -90,7 +90,7 @@ class UtilityUSImgNWSMosaic {
         "NY": "northeast",
         "AK": "alaska",
         "HI": "hawaii"
-        ]
+    ]
 
     static let labels = [
         "Alaska",
@@ -106,7 +106,7 @@ class UtilityUSImgNWSMosaic {
         "Central Great Lakes",
         "Northeast",
         "CONUS"
-        ]
+    ]
 
     static func getSectorLabelFromCode(_ code: String) -> String {
         return sectorToLabel[code] ?? ""
@@ -131,8 +131,11 @@ class UtilityUSImgNWSMosaic {
         if sectorUrl == "alaska" {
             sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
         }
-        let urls = UtilityImgAnim.getUrlArray(MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
-                                              sPattern, numberOfFrames)
+        let urls = UtilityImgAnim.getUrlArray(
+            MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
+            sPattern,
+            numberOfFrames
+        )
         let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)

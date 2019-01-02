@@ -24,9 +24,14 @@ class UtilityWXOGLPerf {
         var retSize: UInt32 = 1000000
         let oBuff = [UInt8](repeating: 1, count: Int(retSize))
         let compressedFileSize: CLong = disFirst.capacity - disFirst.position
-        BZ2_bzBuffToBuffDecompress(MemoryBuffer.getPointer(oBuff), &retSize,
-                                   MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
-                                   UInt32(compressedFileSize), 1, 0)
+        BZ2_bzBuffToBuffDecompress(
+            MemoryBuffer.getPointer(oBuff),
+            &retSize,
+            MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
+            UInt32(compressedFileSize),
+            1,
+            0
+        )
         let dis2 = MemoryBuffer(oBuff)
         dis2.skipBytes(30)
         var numberOfRleHalfwords: UInt16 = 0

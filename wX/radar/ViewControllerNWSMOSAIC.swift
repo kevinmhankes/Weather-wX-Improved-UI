@@ -72,11 +72,12 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        _ = ObjectPopUp(self,
-                        "Select number of animation frames:",
-                        animateButton,
-                        [5, 10, 20, 30],
-                        self.getAnimation(_:)
+        _ = ObjectPopUp(
+            self,
+            "Select number of animation frames:",
+            animateButton,
+            [5, 10, 20, 30],
+            self.getAnimation(_:)
         )
     }
 

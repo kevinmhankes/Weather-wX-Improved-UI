@@ -21,12 +21,12 @@ final class WXGLNexrad {
         "DAA: Digital Accumulation Array",
         "N0S: Storm Relative Mean Velocity",
         "NSW: Base Spectrum Width"
-        ]
+    ]
 
     static var radarProductListTDWR = [
         "TZL: Long Range Digital Base Reflectivity",
         "TV0: Digital Base Velocity"
-        ]
+    ]
 
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {

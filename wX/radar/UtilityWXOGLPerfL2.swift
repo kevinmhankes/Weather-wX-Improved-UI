@@ -43,9 +43,14 @@ class UtilityWXOGLPerfL2 {
                 numCompBytes = -numCompBytes
             }
             retSize = outputBufferSize
-            BZ2_bzBuffToBuffDecompress(MemoryBuffer.getPointer(oBuff), &retSize,
-                                       MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
-                                       UInt32(numCompBytes), 1, 0)
+            BZ2_bzBuffToBuffDecompress(
+                MemoryBuffer.getPointer(oBuff),
+                &retSize,
+                MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
+                UInt32(numCompBytes),
+                1,
+                0
+            )
             disFirst.skipBytes(numCompBytes)
             let size = Int(retSize)
             if let outputStream = OutputStream(url: fileURL, append: true) {
@@ -62,7 +67,7 @@ class UtilityWXOGLPerfL2 {
             if bytesWritten2 == refDecompSize || bytesWritten2 == velDecompSize {
                 loopCnt += 1
             }
-            if loopCnt>loopCntBreak {
+            if loopCnt > loopCntBreak {
                 break
             }
         }

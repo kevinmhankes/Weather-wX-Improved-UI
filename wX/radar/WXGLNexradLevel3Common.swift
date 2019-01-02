@@ -7,9 +7,15 @@
 class WXGLNexradLevel3Common {
 
     // FIXME this should be used in storm tracks ( used in wind barb already )
-    static func drawLine(_ startEc: ExternalGlobalCoordinates, _ ecc: ExternalGeodeticCalculator,
-                         _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates, _ startBearing: Double,
-                         _ distance: Double, _ bearing: [Double]) -> [Double] {
+    static func drawLine(
+        _ startEc: ExternalGlobalCoordinates,
+        _ ecc: ExternalGeodeticCalculator,
+        _ pn: ProjectionNumbers,
+        _ start: ExternalGlobalCoordinates,
+        _ startBearing: Double,
+        _ distance: Double,
+        _ bearing: [Double]
+    ) -> [Double] {
         var list = [Double]()
         let start = ExternalGlobalCoordinates(startEc)
         let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, pn)
@@ -20,9 +26,15 @@ class WXGLNexradLevel3Common {
         return list
     }
 
-    static func drawLine(_ startPoint: (Double, Double), _  ecc: ExternalGeodeticCalculator,
-                         _ pn: ProjectionNumbers, _ start: ExternalGlobalCoordinates,
-                         _ startBearing: Double, _ distance: Double, _ bearing: [Double]) -> [Double] {
+    static func drawLine(
+        _ startPoint: (Double, Double),
+        _  ecc: ExternalGeodeticCalculator,
+        _ pn: ProjectionNumbers,
+        _ start: ExternalGlobalCoordinates,
+        _ startBearing: Double,
+        _ distance: Double,
+        _ bearing: [Double]
+    ) -> [Double] {
         var list = [Double]()
         list.append(startPoint.0)
         list.append(startPoint.1)
