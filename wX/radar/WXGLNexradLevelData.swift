@@ -61,8 +61,12 @@ final class WXGLNexradLevelData {
             dis.skipBytes(6)
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)"
-                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
+            writeTime(
+                volumeScanDate,
+                volumeScanTime,
+                "Mode: \(operationalMode)"
+                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)"
+            )
             dis.skipBytes(14)
             halfword3132 = dis.getFloat()
             ActVars.WXOGLDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
@@ -89,8 +93,12 @@ final class WXGLNexradLevelData {
             dis.skipBytes(6)
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)"
-                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
+            writeTime(
+                volumeScanDate,
+                volumeScanTime,
+                "Mode: \(operationalMode)"
+                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)"
+            )
             dis.skipBytes(6)
             dis.skipBytes(56)
             dis.skipBytes(32)

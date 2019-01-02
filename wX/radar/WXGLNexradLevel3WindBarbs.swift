@@ -51,19 +51,23 @@ class WXGLNexradLevel3WindBarbs {
                 degree2 = Double(angle)
                 startLength = nm * nmScaleFactor
                 start =  ExternalGlobalCoordinates(locXDbl, locYDbl)
-                ec =  ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                           start,
-                                                           degree,
-                                                           nm * nmScaleFactor * barbLengthScaleFactor,
-                                                           bearing)
+                ec =  ecc.calculateEndingGlobalCoordinates(
+                    ExternalEllipsoid.WGS84,
+                    start,
+                    degree,
+                    nm * nmScaleFactor * barbLengthScaleFactor,
+                    bearing
+                )
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                 stormList += [tmpCoords.0, tmpCoords.1]
                 start = ExternalGlobalCoordinates(ec)
-                ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                          start,
-                                                          degree2 + degreeShift,
-                                                          barbLength * nmScaleFactor * barbLengthScaleFactor,
-                                                          bearing)
+                ec = ecc.calculateEndingGlobalCoordinates(
+                    ExternalEllipsoid.WGS84,
+                    start,
+                    degree2 + degreeShift,
+                    barbLength * nmScaleFactor * barbLengthScaleFactor,
+                    bearing
+                )
                 end = ExternalGlobalCoordinates(ec)
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                 stormList += [tmpCoords.0, tmpCoords.1]
@@ -85,31 +89,51 @@ class WXGLNexradLevel3WindBarbs {
                 var index = 0
                 if above50 {
                     // initial angled line
-                    ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                              end,
-                                                              degree2,
-                                                              barbOffset + startLength + Double(index) * arrowSpacing
-                                                                * nmScaleFactor * barbLengthScaleFactor,
-                                                              bearing)
-                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
-                                          startLength + arrowLength * nmScaleFactor, bearing)
+                    ec = ecc.calculateEndingGlobalCoordinates(
+                        ExternalEllipsoid.WGS84,
+                        end,
+                        degree2,
+                        barbOffset + startLength + Double(index) * arrowSpacing
+                            * nmScaleFactor * barbLengthScaleFactor,
+                        bearing
+                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(
+                        ec,
+                        ecc,
+                        pn,
+                        start,
+                        degree2 - arrowBend * 2.0,
+                        startLength + arrowLength * nmScaleFactor,
+                        bearing
+                    )
                     // perpendicular line from main barb
-                    ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                              end,
-                                                              degree2,
-                                                              barbOffset + startLength + -1.0 * arrowSpacing
-                                                                * nmScaleFactor * barbLengthScaleFactor,
-                                                              bearing)
-                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - 90.0,
-                                          startLength + 0.80 * arrowLength * nmScaleFactor, bearing)
+                    ec = ecc.calculateEndingGlobalCoordinates(
+                        ExternalEllipsoid.WGS84,
+                        end,
+                        degree2,
+                        barbOffset + startLength + -1.0 * arrowSpacing
+                            * nmScaleFactor * barbLengthScaleFactor,
+                        bearing
+                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(
+                        ec,
+                        ecc,
+                        pn,
+                        start,
+                        degree2 - 90.0,
+                        startLength + 0.80 * arrowLength * nmScaleFactor,
+                        bearing
+                    )
                     // connecting line parallel to main barb
-                    ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                              end,
-                                                              degree2,
-                                                              barbOffset + startLength
-                                                                + Double(index) * arrowSpacing
-                                                                * nmScaleFactor * barbLengthScaleFactor,
-                                                              bearing)
+                    ec = ecc.calculateEndingGlobalCoordinates(
+                        ExternalEllipsoid.WGS84,
+                        end,
+                        degree2,
+                        barbOffset + startLength
+                            + Double(index) * arrowSpacing
+                            * nmScaleFactor * barbLengthScaleFactor,
+                        bearing
+                    )
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
                         ecc,
@@ -122,13 +146,15 @@ class WXGLNexradLevel3WindBarbs {
                     index += 1
                 }
                 (index..<barbCount).forEach { _ in
-                    ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                              end,
-                                                              degree2,
-                                                              barbOffset + startLength
-                                                                + Double(index) * arrowSpacing
-                                                                * nmScaleFactor * barbLengthScaleFactor,
-                                                              bearing)
+                    ec = ecc.calculateEndingGlobalCoordinates(
+                        ExternalEllipsoid.WGS84,
+                        end,
+                        degree2,
+                        barbOffset + startLength
+                            + Double(index) * arrowSpacing
+                            * nmScaleFactor * barbLengthScaleFactor,
+                        bearing
+                    )
                     stormList += WXGLNexradLevel3Common.drawLine(ec,
                                           ecc,
                                           pn,
@@ -141,15 +167,24 @@ class WXGLNexradLevel3WindBarbs {
                 var halfBarbOffsetFudge = 0.0
                 if oneHalfBarb {halfBarbOffsetFudge = nmScaleFactor * 1.0}
                 if halfBarb {
-                    ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                              end,
-                                                              degree2,
-                                                              barbOffset + halfBarbOffsetFudge + startLength
-                                                                + Double(index) * arrowSpacing
-                                                                * nmScaleFactor * barbLengthScaleFactor,
-                                                              bearing)
-                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, pn, start, degree2 - arrowBend * 2.0,
-                                          startLength + arrowLength / 2.0 * nmScaleFactor, bearing)
+                    ec = ecc.calculateEndingGlobalCoordinates(
+                        ExternalEllipsoid.WGS84,
+                        end,
+                        degree2,
+                        barbOffset + halfBarbOffsetFudge + startLength
+                            + Double(index) * arrowSpacing
+                            * nmScaleFactor * barbLengthScaleFactor,
+                        bearing
+                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(
+                        ec,
+                        ecc,
+                        pn,
+                        start,
+                        degree2 - arrowBend * 2.0,
+                        startLength + arrowLength / 2.0 * nmScaleFactor,
+                        bearing
+                    )
                 }
             }
         }

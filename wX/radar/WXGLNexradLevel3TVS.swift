@@ -29,10 +29,13 @@ class WXGLNexradLevel3TVS {
                 degree = Int(tmpStrArr[0].replace(" ", "")) ?? 0
                 nm = Int(tmpStrArr[1].replace(" ", "")) ?? 0
                 start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start,
-                                                          Double(degree),
-                                                          Double(nm) * 1852.0, bearing)
-                //stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
+                ec = ecc.calculateEndingGlobalCoordinates(
+                    ExternalEllipsoid.WGS84,
+                    start,
+                    Double(degree),
+                    Double(nm) * 1852.0,
+                    bearing
+                )
                 stormList.append(ec.getLatitude())
                 stormList.append(ec.getLongitude() * -1.0)
             }

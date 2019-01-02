@@ -50,8 +50,13 @@ class WXGLNexradLevel3HailIndex {
                         degree = Int(posnNumbers[$0]) ?? 0
                         nm = Int(posnNumbers[$0 + 1]) ?? 0
                         start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                        ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84,
-                                                                  start, Double(degree), Double(nm) * 1852.0, bearing)
+                        ec = ecc.calculateEndingGlobalCoordinates(
+                            ExternalEllipsoid.WGS84,
+                            start,
+                            Double(degree),
+                            Double(nm) * 1852.0,
+                            bearing
+                        )
                         stormList.append(ec.getLatitude())
                         stormList.append(ec.getLongitude() * -1.0)
                         // FIXME the lat shifts need to be considered when scale changes in radarSite
