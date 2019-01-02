@@ -55,8 +55,17 @@ final class ObjectForecastPackage7Day {
             let icon = Utility.safeGet(icons, $0)
             let shortForecast = Utility.safeGet(shortForecastAl, $0)
             let detailedForecast = Utility.safeGet(detailedForecastAlLocal, $0)
-            forecasts.append(ObjectForecast(name, temperature, windSpeed, windDirection,
-                                            icon, shortForecast, detailedForecast))
+            forecasts.append(
+                ObjectForecast(
+                    name,
+                    temperature,
+                    windSpeed,
+                    windDirection,
+                    icon,
+                    shortForecast,
+                    detailedForecast
+                )
+            )
         }
         var forecastString = MyApplication.newline + MyApplication.newline
         forecasts.forEach {

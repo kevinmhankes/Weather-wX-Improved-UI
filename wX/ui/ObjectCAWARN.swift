@@ -39,7 +39,7 @@ final class ObjectCAWARN: NSObject {
         "Quebec - North",
         "Saskatchewan",
         "Yukon"
-        ]
+    ]
 
     private let provToCodeMap = [
         "Canada": "ca",

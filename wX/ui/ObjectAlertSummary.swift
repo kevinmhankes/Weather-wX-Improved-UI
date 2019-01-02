@@ -23,7 +23,8 @@ final class ObjectAlertSummary: NSObject {
                      _ stackView: UIStackView,
                      _ filter: String,
                      _ capAlerts: [CAPAlert],
-                     showImage: Bool = true) {
+                     showImage: Bool = true
+    ) {
         self.init()
         stackView.subviews.forEach {$0.removeFromSuperview()}
         let objTextSummary = ObjectTextView(stackView)
