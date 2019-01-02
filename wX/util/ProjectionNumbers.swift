@@ -24,7 +24,8 @@ final class ProjectionNumbers {
          _ lon: String,
          _ xCenter: Double,
          _ yCenter: Double,
-         _ polygonWidth: Double = 0.0) {
+         _ polygonWidth: Double = 0.0
+    ) {
         self.scale = scale
         self.lat = lat
         self.lon = lon

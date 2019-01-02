@@ -124,12 +124,18 @@ final class UtilityActions {
         uiv.navigationController?.show(vc, sender: nil)
     }
 
+    // FIXME can this use helper object?
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
-        let alert = UIAlertController(title: UtilityHelp.helpStrings[token], message: "",
-                                      preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(
+            title: UtilityHelp.helpStrings[token],
+            message: "",
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {popoverController.barButtonItem = menuButton}
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = menuButton
+        }
         uiv.present(alert, animated: true, completion: nil)
     }
 
@@ -141,7 +147,6 @@ final class UtilityActions {
             "Observations",
             "Soundings",
             "PlayList",
-            //"Local Forecast",
             "Settings",
             "Help Mode - Off"
             ]
@@ -152,8 +157,12 @@ final class UtilityActions {
                 }
             }
         }
-        let alert = UIAlertController(title: "Select from:", message: "",
-                                      preferredStyle: UIAlertController.Style.actionSheet)
+        // FIXME can this use helper object?
+        let alert = UIAlertController(
+            title: "Select from:",
+            message: "",
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
         menuList.forEach { rid in
             let action = UIAlertAction(title: rid, style: .default, handler: {_ in menuItemClicked(uiv, rid, button)})
             if let popoverController = alert.popoverPresentationController {

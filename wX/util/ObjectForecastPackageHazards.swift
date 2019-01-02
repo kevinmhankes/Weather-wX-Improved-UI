@@ -18,8 +18,10 @@ final class ObjectForecastPackageHazards {
     // US by LAT LON
     convenience init(_ location: LatLon) {
         self.init()
-        let homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",
-                                                                  MyApplication.homescreenFavDefault), ":")
+        let homescreenFav = TextUtils.split(
+            preferences.getString("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
+             ":"
+        )
         if homescreenFav.contains("TXT-HAZ") {
             hazards = getHazardsHtml(location)
         }
@@ -59,9 +61,11 @@ final class ObjectForecastPackageHazards {
         return numHaz
     }
 
-    static func getHazardCards(_ stackView: UIStackView,
-                               _ objHazards: ObjectForecastPackageHazards,
-                               _ isUS: Bool = true) {
+    static func getHazardCards(
+        _ stackView: UIStackView,
+        _ objHazards: ObjectForecastPackageHazards,
+        _ isUS: Bool = true
+    ) {
         self.isUS = isUS
         var numHaz = 0
         let stackViewLocalHaz = ObjectStackViewHS()
