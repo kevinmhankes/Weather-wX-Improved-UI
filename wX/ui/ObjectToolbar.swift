@@ -20,21 +20,29 @@ final class ObjectToolbar: UIToolbar {
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
         switch toolbarType {
         case .bottom:
-            frame = CGRect(x: 0, y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight,
-                           width: UIScreen.main.bounds.width,
-                           height: UIPreferences.toolbarHeight)
+            frame = CGRect(
+                x: 0,
+                y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight,
+                width: UIScreen.main.bounds.width,
+                height: UIPreferences.toolbarHeight
+            )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
         case .top:
-            frame = CGRect(x: 0, y: UIPreferences.statusBarHeight,
-                           width: UIScreen.main.bounds.width,
-                           height: UIPreferences.toolbarHeight)
+            frame = CGRect(
+                x: 0,
+                y: UIPreferences.statusBarHeight,
+                width: UIScreen.main.bounds.width,
+                height: UIPreferences.toolbarHeight
+            )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
         sizeToFit()
-        barTintColor = UIColor(red: AppColors.primaryColorRed,
-                               green: AppColors.primaryColorGreen,
-                               blue: AppColors.primaryColorBlue,
-                               alpha: CGFloat(1.0))
+        barTintColor = UIColor(
+            red: AppColors.primaryColorRed,
+            green: AppColors.primaryColorGreen,
+            blue: AppColors.primaryColorBlue,
+            alpha: CGFloat(1.0)
+        )
     }
 
     func setTransparent() {

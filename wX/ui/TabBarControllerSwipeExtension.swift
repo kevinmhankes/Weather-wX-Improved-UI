@@ -66,7 +66,6 @@ extension UITabBarController {
         let maxIndex = (self.viewControllers?.count ?? 0)
         let nextIndex = self.selectedIndex - 1
         self.selectedIndex = nextIndex >= 0 ? nextIndex : maxIndex - 1
-
     }
 
     @objc private func handleSwipeRightAllowingCyclingThroughTabs(swipe: UISwipeGestureRecognizer) {

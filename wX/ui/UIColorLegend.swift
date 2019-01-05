@@ -42,23 +42,32 @@ final class UIColorLegend: UIView {
         drawTextString(context!, strn, textAttributes, x, y)
     }
 
-    func drawTextString(_ context: CGContext,
-                        _ text: NSString,
-                        _ attributes: [NSAttributedString.Key: Any]?,
-                        _ x: CGFloat,
-                        _ y: CGFloat) {
+    func drawTextString(
+        _ context: CGContext,
+        _ text: NSString,
+        _ attributes: [NSAttributedString.Key: Any]?,
+        _ x: CGFloat,
+        _ y: CGFloat
+    ) {
         let textTransform = CGAffineTransform.init(scaleX: 1.0, y: -1.0)
         context.textMatrix = textTransform
         if let font = attributes![NSAttributedString.Key.font] as? UIFont {
             let attributedString = NSAttributedString(string: text as String, attributes: attributes)
             let textSize = text.size(withAttributes: attributes)
-            let textPath = CGPath(rect: CGRect(x: x,
-                                               y: y + font.descender,
-                                               width: ceil(textSize.width),
-                                               height: ceil(textSize.height)), transform: nil)
+            let textPath = CGPath(
+                rect: CGRect(
+                    x: x,
+                    y: y + font.descender,
+                    width: ceil(textSize.width),
+                    height: ceil(textSize.height)
+                ),
+                transform: nil
+            )
             let frameSetter = CTFramesetterCreateWithAttributedString(attributedString)
-            let frame = CTFramesetterCreateFrame(frameSetter,
-                                                 CFRange(location: 0, length: attributedString.length), textPath, nil)
+            let frame = CTFramesetterCreateFrame(
+                frameSetter,
+                CFRange(location: 0, length: attributedString.length), textPath, nil
+            )
             CTFrameDraw(frame, context)
         }
     }
@@ -68,9 +77,11 @@ final class UIColorLegend: UIView {
     }
 
     func setColorWithBuffers(prodId: Int, index: Int) {
-        setColor(MyApplication.colorMap[prodId]!.redValues.get(index),
-                 MyApplication.colorMap[prodId]!.greenValues.get(index),
-                 MyApplication.colorMap[prodId]!.blueValues.get(index))
+        setColor(
+            MyApplication.colorMap[prodId]!.redValues.get(index),
+            MyApplication.colorMap[prodId]!.greenValues.get(index),
+            MyApplication.colorMap[prodId]!.blueValues.get(index)
+        )
     }
 
     override func draw(_ rect: CGRect) {
@@ -83,29 +94,36 @@ final class UIColorLegend: UIView {
         let textFromLegend: CGFloat = 10.0
         let heightFudge: CGFloat = 15.0
         let screenHeight = self.frame.height
-        var scaledHeight = (screenHeight - 2.0 * startHeight)/256.0
-        let scaledHeightText = (screenHeight - 2.0 * startHeight)/(95.0 + 32.0)
-        let scaledHeightVel = (screenHeight - 2.0 * startHeight)/(127.0 * 2.0)
+        var scaledHeight = (screenHeight - 2.0 * startHeight) / 256.0
+        let scaledHeightText = (screenHeight - 2.0 * startHeight) / (95.0 + 32.0)
+        let scaledHeightVel = (screenHeight - 2.0 * startHeight) / (127.0 * 2.0)
         var unitsDrawn = false
         switch product {
         case "N0Q", "L2REF", "TZL":
             (0...255).forEach {
                 setColorWithBuffers(prodId: 94, index: 255 - $0)
-                drawRect(widthStarting, CGFloat($0) * scaledHeight + startHeight,
-                         width + widthStarting, CGFloat($0) * scaledHeight + scaledHeight + startHeight)
+                drawRect(
+                    widthStarting,
+                    CGFloat($0) * scaledHeight + startHeight,
+                    width + widthStarting,
+                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                )
             }
             units = " dBZ"
             (1...95).reversed().forEach {
                 if $0 % 10 == 0 {
-                    drawText(String($0) + units,
-                             widthStarting + width + textFromLegend,
-                             (scaledHeightText * (CGFloat(95) - CGFloat($0))) + heightFudge + startHeight)
+                    drawText(
+                        String($0) + units,
+                        widthStarting + width + textFromLegend,
+                        (scaledHeightText * (CGFloat(95) - CGFloat($0))) + heightFudge + startHeight
+                    )
                     if !unitsDrawn {
                         unitsDrawn = true
                         units = ""
                     }
                 }
             }
+            // FIXME formatting issues in this file
         case "N0U", "L2VEL", "TV0":
             (0...255).forEach {
                 setColorWithBuffers(prodId: 99, index: 255 - $0)

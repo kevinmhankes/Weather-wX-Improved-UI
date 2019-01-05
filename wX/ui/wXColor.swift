@@ -45,27 +45,27 @@ final class wXColor {
 
     static func uiColorInt(_ newRed: Int, _ newGreen: Int, _ newBlue: Int) -> UIColor {
         return UIColor(
-            red: CGFloat(CGFloat(newRed)/255.0),
-            green: CGFloat(CGFloat(newGreen)/255.0),
-            blue: CGFloat(CGFloat(newBlue)/255.0),
+            red: CGFloat(CGFloat(newRed) / 255.0),
+            green: CGFloat(CGFloat(newGreen) / 255.0),
+            blue: CGFloat(CGFloat(newBlue) / 255.0),
             alpha: CGFloat(1.0)
         )
     }
 
     static func uiColorInt(_ newRed: Int, _ newGreen: Int, _ newBlue: Int, _ alpha: CGFloat) -> UIColor {
         return UIColor(
-            red: CGFloat(CGFloat(newRed)/255.0),
-            green: CGFloat(CGFloat(newGreen)/255.0),
-            blue: CGFloat(CGFloat(newBlue)/255.0),
+            red: CGFloat(CGFloat(newRed) / 255.0),
+            green: CGFloat(CGFloat(newGreen) / 255.0),
+            blue: CGFloat(CGFloat(newBlue) / 255.0),
             alpha: alpha
         )
     }
 
     static func uiColorInt(_ newRed: UInt8, _ newGreen: UInt8, _ newBlue: UInt8) -> UIColor {
         return UIColor(
-            red: CGFloat(CGFloat(Int(newRed))/255.0),
-            green: CGFloat(CGFloat(Int(newGreen))/255.0),
-            blue: CGFloat(CGFloat(Int(newBlue))/255.0),
+            red: CGFloat(CGFloat(Int(newRed)) / 255.0),
+            green: CGFloat(CGFloat(Int(newGreen)) / 255.0),
+            blue: CGFloat(CGFloat(Int(newBlue)) / 255.0),
             alpha: CGFloat(1.0)
         )
     }

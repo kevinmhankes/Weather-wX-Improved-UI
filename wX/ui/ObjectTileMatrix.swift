@@ -23,9 +23,11 @@ final class ObjectImageTileMatrix: NSObject {
         let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
         self.menuButton = ObjectToolbarIcon(uiv, .submenu, #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(uiv, .severeDashboard, #selector(dashClicked))
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
-                                         target: nil,
-                                         action: nil)
+        let fixedSpace = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
+            target: nil,
+            action: nil
+        )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems([flexBarButton,
@@ -258,7 +260,7 @@ final class ObjectImageTileMatrix: NSObject {
         "wat",
         "fire_outlook",
         "tstorm"
-        ]
+    ]
 
     var iconsMisc = [
         "ncep",
@@ -279,5 +281,5 @@ final class ObjectImageTileMatrix: NSObject {
         "opc",
         "goesfulldisk",
         "lightning"
-        ]
+    ]
 }

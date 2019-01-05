@@ -35,12 +35,20 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     convenience init(_ uiv: UIViewController, _ iconStr: String, _ action: Selector) {
         self.init()
-        button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight,
-                                        height: UIPreferences.toolbarHeight))
-        button.imageEdgeInsets = UIEdgeInsets(top: UIPreferences.toolbarIconPadding,
-                                                  left: UIPreferences.toolbarIconPadding,
-                                                  bottom: UIPreferences.toolbarIconPadding,
-                                                  right: UIPreferences.toolbarIconPadding)
+        button = UIButton(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: UIPreferences.toolbarHeight,
+                height: UIPreferences.toolbarHeight
+            )
+        )
+        button.imageEdgeInsets = UIEdgeInsets(
+            top: UIPreferences.toolbarIconPadding,
+            left: UIPreferences.toolbarIconPadding,
+            bottom: UIPreferences.toolbarIconPadding,
+            right: UIPreferences.toolbarIconPadding
+        )
         button.setImage(UIImage(named: iconStr), for: .normal)
         customView = button
         button.addTarget(uiv, action: action, for: .touchUpInside)
