@@ -59,5 +59,5 @@ final class UtilityHelp {
         "wxoglmultipane": "Multipane nexrad radar.",
         "modelnsslwrf": "Interface to NSSL's WRF model website data.",
         "webview": "Twitter content"
-        ]
+    ]
 }

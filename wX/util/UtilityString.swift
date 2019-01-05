@@ -60,10 +60,12 @@ final class UtilityString {
 
     static func replaceAllRegexp(_ str: String, _ a: String, _ b: String) -> String {
         if let regex = try? NSRegularExpression(pattern: a, options: []) {
-            let modString = regex.stringByReplacingMatches(in: str,
-                                                           options: .withTransparentBounds,
-                                                           range: NSRange(location: 0, length: str.count),
-                                                           withTemplate: b)
+            let modString = regex.stringByReplacingMatches(
+                in: str,
+                options: .withTransparentBounds,
+                range: NSRange(location: 0, length: str.count),
+                withTemplate: b
+            )
             return(modString)
         }
         return str

@@ -164,8 +164,10 @@ final class UtilityTime {
     }
 
     static func getSunriseSunset() -> String {
-        let coordinates = CLLocationCoordinate2D(latitude: Location.latlon.lat as CLLocationDegrees,
-                                                 longitude: Location.latlon.lon as CLLocationDegrees)
+        let coordinates = CLLocationCoordinate2D(
+            latitude: Location.latlon.lat as CLLocationDegrees,
+            longitude: Location.latlon.lon as CLLocationDegrees
+        )
         let solar = Solar(coordinate: coordinates)
         let sunrise = solar?.sunrise
         let sunset = solar?.sunset
@@ -173,8 +175,10 @@ final class UtilityTime {
     }
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
-        let coordinates = CLLocationCoordinate2D(latitude: obs.location.lat as CLLocationDegrees,
-                                                 longitude: obs.location.lon as CLLocationDegrees)
+        let coordinates = CLLocationCoordinate2D(
+            latitude: obs.location.lat as CLLocationDegrees,
+            longitude: obs.location.lon as CLLocationDegrees
+        )
         let solar = Solar(coordinate: coordinates)
         let sunrise = solar?.sunrise
         let sunset = solar?.sunset

@@ -310,6 +310,9 @@ class WXMetalRender {
         if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
             constructLocationDot()
         }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
     }
 
     func writePrefs() {

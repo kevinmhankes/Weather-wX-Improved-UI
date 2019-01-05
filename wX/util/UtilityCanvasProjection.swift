@@ -17,13 +17,17 @@ final class UtilityCanvasProjection {
         _ yImageCenterPixels: Double,
         _ scaleFactor: Double
     ) -> (Double, Double) {
-        return ((-((lon - centerY) * scaleFactor) + xImageCenterPixels),
-                (-((lat - centerX) *  scaleFactor) + yImageCenterPixels))
+        return (
+            (-((lon - centerY) * scaleFactor) + xImageCenterPixels),
+            (-((lat - centerX) *  scaleFactor) + yImageCenterPixels)
+        )
     }
 
     static func compute4326Numbers(_ pn: ProjectionNumbers) -> (Double, Double) {
-        return ((-((pn.yDbl - pn.yCenterDouble) * pn.scale) + pn.xCenterDouble),
-                (-((pn.xDbl - pn.xCenterDouble) *  pn.scale) + pn.yCenterDouble))
+        return (
+            (-((pn.yDbl - pn.yCenterDouble) * pn.scale) + pn.xCenterDouble),
+            (-((pn.xDbl - pn.xCenterDouble) *  pn.scale) + pn.yCenterDouble)
+        )
     }
 
     static func compute4326Numbers(_ location: LatLon, _ pn: ProjectionNumbers) -> (Double, Double) {
