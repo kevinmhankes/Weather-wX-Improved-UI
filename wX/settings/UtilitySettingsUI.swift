@@ -17,7 +17,7 @@ final class UtilitySettingsUI {
         "SHOW_METAR_IN_CC": "Show Metar in CC",
         "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
         "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)"
-        ]
+    ]
 
     static let helpStrings = [
         "Remove extra line breaks in text products": "Remove extra line breaks in text products",
@@ -54,7 +54,7 @@ final class UtilitySettingsUI {
         "SHOW_METAR_IN_CC": "false",
         "RADAR_TOOLBAR_TRANSPARENT": "true",
         "UI_MAIN_SCREEN_RADAR_FAB": "true"
-        ]
+    ]
 
     static let picker = [
         "TEXTVIEW_FONT_SIZE": "Defaut font size" ,
@@ -63,7 +63,7 @@ final class UtilitySettingsUI {
         "ANIM_INTERVAL": "Animation frame rate" ,
         "UI_TILES_PER_ROW": "Tiles per row",
         "HOMESCREEN_TEXT_LENGTH_PREF": "Homescreen text length"
-        ]
+    ]
 
     static let pickerinit = [
         "TEXTVIEW_FONT_SIZE": "16" ,
@@ -72,7 +72,7 @@ final class UtilitySettingsUI {
         "ANIM_INTERVAL": "6" ,
         "UI_TILES_PER_ROW": "3" ,
         "HOMESCREEN_TEXT_LENGTH_PREF": "500"
-        ]
+    ]
 
     static let pickerCount = [
         "TEXTVIEW_FONT_SIZE": 21,
@@ -81,7 +81,7 @@ final class UtilitySettingsUI {
         "ANIM_INTERVAL": 16,
         "UI_TILES_PER_ROW": 9,
         "HOMESCREEN_TEXT_LENGTH_PREF": 7
-        ]
+    ]
 
     static var pickerDataSource = [
         "TEXTVIEW_FONT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
@@ -91,7 +91,7 @@ final class UtilitySettingsUI {
         "ANIM_INTERVAL": [],
         "UI_TILES_PER_ROW": ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
         "HOMESCREEN_TEXT_LENGTH_PREF": []
-        ]
+    ]
 
     static let pickerNonZeroOffset = [
         "UI_THEME",

@@ -17,7 +17,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         "TXT-HOURLY": "Hourly Forecast",
         "TXT-SUNMOON": "Sun/Moon Data",
         "METAL-RADAR": "Local NEXRAD Radar"
-        ]
+    ]
     let localChoicesImages = [
         "CARAIN: Local CA Radar",
         "WEATHERSTORY: Local NWS Weather Story"
@@ -55,16 +55,22 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
     }
 
     func deSerializeSettings() {
-        homescreenFav = TextUtils.split(preferences.getString("HOMESCREEN_FAV",
-                                                              MyApplication.homescreenFavDefault), ":")
+        homescreenFav = TextUtils.split(preferences.getString(
+            "HOMESCREEN_FAV",
+            MyApplication.homescreenFavDefault), ":"
+        )
     }
 
     @objc func addClicked() {
         let alert = ObjectPopUp(self, "Product Selection", addButton)
         Array(localChoicesText.keys).sorted().forEach { rid in
-            alert.addAction(UIAlertAction(title: localChoicesText[rid],
-                                          style: .default,
-                                          handler: {_ in self.addProduct(rid)}))
+            alert.addAction(
+                UIAlertAction(
+                    title: localChoicesText[rid],
+                    style: .default,
+                    handler: {_ in self.addProduct(rid)}
+                )
+            )
         }
         alert.finish()
     }
@@ -78,9 +84,13 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         let alert = ObjectPopUp(self, "Graphical Products", addImageButton)
         (localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
             let ridArr = $0.split(":")
-            alert.addAction(UIAlertAction(title: ridArr[1],
-                                          style: .default,
-                                          handler: {_ in self.addProduct("IMG-" + ridArr[0])}))
+            alert.addAction(
+                UIAlertAction(
+                    title: ridArr[1],
+                    style: .default,
+                    handler: {_ in self.addProduct("IMG-" + ridArr[0])}
+                )
+            )
         }
         alert.finish()
     }
@@ -89,9 +99,13 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         let alert = ObjectPopUp(self, "Text Products", addTextButton)
         GlobalArrays.nwsTextProducts.forEach {
             let ridArr = $0.split(":")
-            alert.addAction(UIAlertAction(title: ridArr[1],
-                                          style: .default,
-                                          handler: {_ in self.addProduct("TXT-" + ridArr[0])}))
+            alert.addAction(
+                UIAlertAction(
+                    title: ridArr[1],
+                    style: .default,
+                    handler: {_ in self.addProduct("TXT-" + ridArr[0])}
+                )
+            )
         }
         alert.finish()
     }

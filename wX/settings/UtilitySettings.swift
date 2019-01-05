@@ -8,17 +8,22 @@ import UIKit
 
 final class UtilitySettings {
 
-    static func getHelp(_ sender: UIButton, _ uiv: UIViewController,
-                        _ targetButton: UIBarButtonItem,
-                        _ helpMap: [String: String]) {
+    static func getHelp(
+        _ sender: UIButton,
+        _ uiv: UIViewController,
+        _ targetButton: UIBarButtonItem,
+        _ helpMap: [String: String]
+    ) {
         let alert = ObjectPopUp(uiv, helpMap[(sender.titleLabel?.text)!]!, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
 
-    static func getHelp(_ uiv: UIViewController,
-                        _ targetButton: UIBarButtonItem,
-                        _ help: String) {
+    static func getHelp(
+        _ uiv: UIViewController,
+        _ targetButton: UIBarButtonItem,
+        _ help: String
+    ) {
         let alert = ObjectPopUp(uiv, help, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()

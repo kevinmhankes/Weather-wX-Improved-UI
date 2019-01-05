@@ -174,19 +174,25 @@ final class UtilityColorPaletteGeneric {
                 }
                 (1..<diff).forEach { j in
                     if scale == 1 {
-                        colorInt = UtilityNexradColors.interpolateColor(Int(lowColor),
-                                                                        Int(highColor),
-                                                                        Double(j)/Double(diff*scale))
+                        colorInt = UtilityNexradColors.interpolateColor(
+                            Int(lowColor),
+                            Int(highColor),
+                            Double(j)/Double(diff*scale)
+                        )
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))
                     } else if scale == 2 {
-                        colorInt = UtilityNexradColors.interpolateColor(Int(lowColor),
-                                                                        Int(highColor),
-                                                                        Double(((j*2)-1))/Double((diff*2)))
-                        colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor),
-                                                                         Int(highColor),
-                                                                         Double((j*2))/Double((diff*2)))
+                        colorInt = UtilityNexradColors.interpolateColor(
+                            Int(lowColor),
+                            Int(highColor),
+                            Double(((j*2)-1))/Double((diff*2))
+                        )
+                        colorInt2 = UtilityNexradColors.interpolateColor(
+                            Int(lowColor),
+                            Int(highColor),
+                            Double((j*2))/Double((diff*2))
+                        )
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))

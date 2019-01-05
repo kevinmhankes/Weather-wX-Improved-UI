@@ -19,11 +19,11 @@ final class UtilitySettingsMain {
         "Show WPC MPD count on main screen": "Check for WPC MPD at the selected interval. The text in the "
             + "tab headings is then modified. "
             + "This also requires a periodic job run at the notification interval to download warning data."
-        ]
+    ]
 
     static let booleanDefault = [
         "CHECKTOR": "false" ,
         "CHECKSPC": "false",
         "CHECKWPC": "false"
-        ]
+    ]
 }

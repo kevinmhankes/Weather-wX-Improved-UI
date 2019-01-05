@@ -150,7 +150,7 @@ final class UtilitySettingsRadar {
         "RADAR_OBS_EXT_ZOOM": "Detailed Observations Zoom",
         "RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval",
         "WXOGL_SIZE": "Radar initial view size"
-        ]
+    ]
 
     static let pickerinit = [
         "RADAR_LOCDOT_SIZE": 4,
@@ -163,7 +163,7 @@ final class UtilitySettingsRadar {
         "RADAR_OBS_EXT_ZOOM": 7,
         "RADAR_DATA_REFRESH_INTERVAL": 5,
         "WXOGL_SIZE": 10
-        ]
+    ]
 
     static let pickerCount = [
         "RADAR_LOCDOT_SIZE": 11,
@@ -178,7 +178,7 @@ final class UtilitySettingsRadar {
         "RADAR_OBS_EXT_ZOOM": 11,
         "RADAR_DATA_REFRESH_INTERVAL": 20,
         "WXOGL_SIZE": 25
-        ]
+    ]
 
     static let pickerinitString = [
         "RADAR_COLOR_PALETTE_94": "CODENH",
@@ -200,11 +200,11 @@ final class UtilitySettingsRadar {
                                         "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
         "WXOGL_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
                         "16", "17", "18", "19", "20", "21", "22", "23", "24"]
-        ]
+    ]
 
     static let pickerNonZeroOffset = [
         "RADAR_COLOR_PALETTE_94",
         "RADAR_COLOR_PALETTE_99",
         "WXOGL_SIZE"
-        ]
+    ]
 }
