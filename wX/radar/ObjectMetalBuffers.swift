@@ -130,11 +130,11 @@ class ObjectMetalBuffers {
     }
 
     func setXYList(_ combinedLatLonList: [Double]) {
-        latList = [Double](repeating: 0, count: combinedLatLonList.count/2)
-        lonList = [Double](repeating: 0, count: combinedLatLonList.count/2)
+        latList = [Double](repeating: 0, count: combinedLatLonList.count / 2)
+        lonList = [Double](repeating: 0, count: combinedLatLonList.count / 2)
         for index in stride(from: 0, to: combinedLatLonList.count, by: 2) {
-            latList[index/2] = combinedLatLonList[index]
-            lonList[index/2] = combinedLatLonList[index+1]
+            latList[index / 2] = combinedLatLonList[index]
+            lonList[index / 2] = combinedLatLonList[index + 1]
         }
     }
 

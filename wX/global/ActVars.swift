@@ -12,7 +12,7 @@ class ActVars {
     static var goesProduct = ""
     static var settingsLocationEditNum = ""
     static var spcswoDay = ""
-    static var IMAGEVIEWERurl = ""
+    static var imageViewerUrl = ""
     static var TEXTVIEWText = ""
     static var TEXTVIEWProd = ""
     static var NWSMOSAICtype = ""

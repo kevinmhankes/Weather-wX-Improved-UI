@@ -15,7 +15,7 @@ class ViewControllerIMAGEVIEWER: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
         self.view.addSubview(toolbar)
-        self.getContent(ActVars.IMAGEVIEWERurl)
+        self.getContent(ActVars.imageViewerUrl)
     }
 
     func getContent(_ url: String) {

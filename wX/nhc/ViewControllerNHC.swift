@@ -70,7 +70,7 @@ class ViewControllerNHC: UIwXViewController {
     }
 
     func imageProductChanged(_ index: Int) {
-        ActVars.IMAGEVIEWERurl = UtilityNHC.imageUrls[index]
+        ActVars.imageViewerUrl = UtilityNHC.imageUrls[index]
         self.goToVC("imageviewer")
     }
 

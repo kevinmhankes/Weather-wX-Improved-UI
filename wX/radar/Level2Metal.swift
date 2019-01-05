@@ -6,7 +6,7 @@
 
 final class Level2Metal {
 
-// FIXME update metal to be the default radar, 3 months later deprecate GLES radar
+//  March 2019, deprecate GLES radar
 
     static let reflectivityHigh = 5
     static let velocityHigh = 6

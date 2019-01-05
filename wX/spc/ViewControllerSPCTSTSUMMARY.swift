@@ -35,7 +35,7 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.IMAGEVIEWERurl = urls[sender.data]
+        ActVars.imageViewerUrl = urls[sender.data]
         self.goToVC("imageviewer")
     }
 

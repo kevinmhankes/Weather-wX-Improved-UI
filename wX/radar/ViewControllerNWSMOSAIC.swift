@@ -30,7 +30,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = preferences.getInt(prefToken, index)
-        if ActVars.NWSMOSAICtype=="local" {
+        if ActVars.NWSMOSAICtype == "local" {
             ActVars.NWSMOSAICtype = ""
             isLocal = true
             let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(getStateFromRid())

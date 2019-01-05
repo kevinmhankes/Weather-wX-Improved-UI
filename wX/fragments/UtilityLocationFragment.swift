@@ -124,7 +124,7 @@ final class UtilityLocationFragment {
         "west northwest": "WNW",
         "northwest": "NW",
         "north northwest": "NNW"
-        ]
+    ]
 
     static func extractWindDirection(_ chunk: String) -> String {
         let winddir1 = UtilityString.parseLastMatch(chunk, sevenDayWinddir1)
@@ -162,78 +162,117 @@ final class UtilityLocationFragment {
     }
 
     static func extractTemp(_ blob: String) -> String {
-        // FIXME formatting
-        var temp = blob.parse(nws7dayTemp1)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp2)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp3)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp4)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp5)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp6)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp7)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp8)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp9)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp10)
-        if temp != "" {return temp}
-        temp = blob.parse(nws7dayTemp11)
-        if temp != "" {return temp}
-        return temp
+        let regexps = [
+            nws7dayTemp1,
+            nws7dayTemp2,
+            nws7dayTemp3,
+            nws7dayTemp4,
+            nws7dayTemp5,
+            nws7dayTemp6,
+            nws7dayTemp7,
+            nws7dayTemp8,
+            nws7dayTemp9,
+            nws7dayTemp10,
+            nws7dayTemp11
+        ]
+        for regexp in regexps {
+            let temp = blob.parse(regexp)
+            if temp != "" {
+                return temp
+            }
+        }
+        return ""
     }
 
     static func extractCATemp(_ blob: String) -> String {
-        // FIXME formatting
         var temp = blob.parse(ca7dayTemp1)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp2)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp3)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp4)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp5)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp6)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp7)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp8)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp9)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp10)
-        if temp != "" {return temp.replace("minus ", "-")}
+        if temp != "" {
+            return temp.replace("minus ", "-")
+        }
         temp = blob.parse(ca7dayTemp11)
-        if temp != "" {return "0"}
+        if temp != "" {
+            return "0"
+        }
         temp = blob.parse(ca7dayTemp12)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp13)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp14)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp15)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp16)
-        if temp != "" {return "0"}
+        if temp != "" {
+            return "0"
+        }
         temp = blob.parse(ca7dayTemp17)
-        if temp != "" {return "0"}
+        if temp != "" {
+            return "0"
+        }
         temp = blob.parse(ca7dayTemp18)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp19)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp20)
-        if temp != "" {return "0"}
+        if temp != "" {
+            return "0"
+        }
         temp = blob.parse(ca7dayTemp21)
-        if temp != "" {return temp}
+        if temp != "" {
+            return temp
+        }
         temp = blob.parse(ca7dayTemp22)
-        if temp != "" {return "0"}
+        if temp != "" {
+            return "0"
+        }
         return temp
     }
 
