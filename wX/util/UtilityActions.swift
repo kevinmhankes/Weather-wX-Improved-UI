@@ -156,7 +156,6 @@ final class UtilityActions {
                 }
             }
         }
-        // FIXME can this use helper object?
         let alert = UIAlertController(
             title: "Select from:",
             message: "",

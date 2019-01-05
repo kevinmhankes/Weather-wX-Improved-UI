@@ -271,6 +271,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 drawable: drawable,
                 parentModelViewMatrix: modelMatrix(index),
                 projectionMatrix: projectionMatrix,
+                //clearColor: MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
                 clearColor: nil
         ) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
     }
