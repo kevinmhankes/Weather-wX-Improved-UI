@@ -47,7 +47,7 @@ final class UtilitySettingsUI {
         "NWS_TEXT_REMOVELINEBREAKS": "true",
         "UNITS_F": "true",
         "UNITS_M": "true",
-        "METAL_RADAR": "false",
+        "METAL_RADAR": "true",
         "BACK_ARROW_ANIM": "true" ,
         "DUALPANE_RADAR_ICON": "false",
         "WFO_REMEMBER_LOCATION": "false",
