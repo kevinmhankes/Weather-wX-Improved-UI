@@ -19,11 +19,12 @@ final class ObjectAlertSummary: NSObject {
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
 
-    convenience init(_ uiv: UIViewController,
-                     _ stackView: UIStackView,
-                     _ filter: String,
-                     _ capAlerts: [CAPAlert],
-                     showImage: Bool = true
+    convenience init(
+        _ uiv: UIViewController,
+        _ stackView: UIStackView,
+        _ filter: String,
+        _ capAlerts: [CAPAlert],
+        showImage: Bool = true
     ) {
         self.init()
         stackView.subviews.forEach {$0.removeFromSuperview()}

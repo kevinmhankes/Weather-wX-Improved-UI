@@ -22,7 +22,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: [String],
-         _ fn: @escaping (String) -> Void) {
+         _ fn: @escaping (String) -> Void
+    ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
@@ -40,7 +41,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: [Int],
-         _ fn: @escaping (Int) -> Void) {
+         _ fn: @escaping (Int) -> Void
+    ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
@@ -54,7 +56,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: StrideTo<Int>,
-         _ fn: @escaping (Int) -> Void) {
+         _ fn: @escaping (Int) -> Void
+    ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
@@ -68,7 +71,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: [String],
-         _ fn: @escaping (Int) -> Void) {
+         _ fn: @escaping (Int) -> Void
+    ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
@@ -83,7 +87,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: [ObjectMenuTitle],
-         _ fn: @escaping (Int) -> Void) {
+         _ fn: @escaping (Int) -> Void
+    ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         self.button = button
         self.uiv = uiv
@@ -98,7 +103,8 @@ final class ObjectPopUp {
          _ list: [ObjectMenuTitle],
          _ index: Int,
          _ menuData: ObjectMenuData,
-         _ fn: @escaping (Int) -> Void) {
+         _ fn: @escaping (Int) -> Void
+    ) {
         let startIdx = ObjectMenuTitle.getStart(list, index)
         let count = list[index].count
         let title = list[index].title

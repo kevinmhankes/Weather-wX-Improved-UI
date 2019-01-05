@@ -17,7 +17,7 @@ final class ObjectCard7DayCollection {
         _ scrollView: UIScrollView,
         _ objSevenDay: ObjectForecastPackage7Day,
         _ isUS: Bool = true
-        ) {
+    ) {
         self.scrollView = scrollView
         var numCards = 0
         let stackViewLocal7Day = ObjectStackViewHS()
@@ -27,9 +27,13 @@ final class ObjectCard7DayCollection {
         dayArr.indices.forEach {
             if dayArr[$0] != "" {
                 let obj = ObjectCard7Day(stackViewLocal7Day, $0, objSevenDay.icons, dayArr, isUS)
-                obj.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                action: #selector(self.sevenDayAction)),
-                                         UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction)))
+                obj.addGestureRecognizer(
+                    UITapGestureRecognizer(
+                        target: self,
+                        action: #selector(self.sevenDayAction)),
+                        UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction)
+                    )
+                )
                 numCards += 1
                 sevenDayCardList.append(obj)
             }

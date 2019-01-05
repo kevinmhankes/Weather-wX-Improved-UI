@@ -66,9 +66,11 @@ final class ObjectCardCC {
         tv3.text = objFcst.objCC.rawMetar
     }
 
-    func addGestureRecognizer(_ gesture1: UITapGestureRecognizer,
-                              _ gesture2: UITapGestureRecognizer,
-                              _ gesture3: UITapGestureRecognizer) {
+    func addGestureRecognizer(
+        _ gesture1: UITapGestureRecognizer,
+        _ gesture2: UITapGestureRecognizer,
+        _ gesture3: UITapGestureRecognizer
+    ) {
         img.view.addGestureRecognizer(gesture1)
         tv.view.addGestureRecognizer(gesture2)
         tv2.view.addGestureRecognizer(gesture3)

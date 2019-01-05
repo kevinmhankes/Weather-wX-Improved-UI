@@ -8,5 +8,3 @@ disabled_rules: # rule identifiers to exclude from running
   - function_parameter_count
   - type_name 
   - force_cast
-#  - line_length
-#  - trailing_whitespace
