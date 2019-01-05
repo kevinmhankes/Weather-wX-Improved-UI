@@ -17,13 +17,3 @@ let flexBarButton = UIBarButtonItem(
 let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
 let preferences = Preferences()
 let editor = Editor()
-
-enum ToolbarType {
-    case top
-    case bottom
-}
-
-enum TabType {
-    case spc
-    case misc
-}

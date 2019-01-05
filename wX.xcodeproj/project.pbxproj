@@ -17,6 +17,8 @@
 		031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546331FC634CB0020EF7B /* ObjectCardImage.swift */; };
 		031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546351FC636450020EF7B /* ObjectCardStackView.swift */; };
 		031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AED0A21C86149004EC175 /* UtilityRadarUI.swift */; };
+		0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321B2EC21E0D3EC00677EBC /* TabType.swift */; };
+		0321B2EF21E0D3EC00677EBC /* ToolbarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */; };
 		0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */; };
 		0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */; };
 		032EE2BF21A9617E00460D5D /* LatLonStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EE2BE21A9617E00460D5D /* LatLonStr.swift */; };
@@ -388,6 +390,8 @@
 		031546331FC634CB0020EF7B /* ObjectCardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardImage.swift; sourceTree = "<group>"; };
 		031546351FC636450020EF7B /* ObjectCardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStackView.swift; sourceTree = "<group>"; };
 		031AED0A21C86149004EC175 /* UtilityRadarUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityRadarUI.swift; sourceTree = "<group>"; };
+		0321B2EC21E0D3EC00677EBC /* TabType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
+		0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarType.swift; sourceTree = "<group>"; };
 		0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalTextObject.swift; sourceTree = "<group>"; };
 		0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewMetal.swift; sourceTree = "<group>"; };
 		032EE2BE21A9617E00460D5D /* LatLonStr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLonStr.swift; sourceTree = "<group>"; };
@@ -1251,6 +1255,8 @@
 				0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */,
 				035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */,
 				03562F451FCC17AD00456395 /* RadarType.swift */,
+				0321B2EC21E0D3EC00677EBC /* TabType.swift */,
+				0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */,
 				035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */,
 			);
 			path = global;
@@ -1690,6 +1696,7 @@
 				037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				F0DBC46B1DBAFDE500FC713B /* UtilityDownloadNWS.swift in Sources */,
+				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0880EC51E5FBA9800201544 /* UtilityModelsSPCSREFInterface.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
 				F0B3357D1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift in Sources */,
@@ -1707,6 +1714,7 @@
 				F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */,
 				F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */,
 				03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */,
+				0321B2EF21E0D3EC00677EBC /* ToolbarType.swift in Sources */,
 				F0B335B01DA3FD960035BD36 /* UtilityMath.swift in Sources */,
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
 				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
