@@ -15,7 +15,7 @@ final class UtilityCanada {
         "awcn14: Weather Summary N. Saskatchewan",
         "awcn15: Weather Summary S. Alberta",
         "awcn16: Weather Summary N. Alberta"
-        ]
+    ]
 
     static let provList = [
         "AB: Alberta",
@@ -31,7 +31,7 @@ final class UtilityCanada {
         "QC: Quebec",
         "SK: Saskatchewan",
         "YT: Yukon"
-        ]
+    ]
 
     static let provHash = [
         "AB": "PAC",
@@ -47,7 +47,7 @@ final class UtilityCanada {
         "QC": "ERN",
         "SK": "PAC",
         "YT": "CAN"
-        ]
+    ]
 
     static let provCodes = [
         "bcstorm: British Columbia",
@@ -61,7 +61,7 @@ final class UtilityCanada {
         "nsstorm: Nova Scotia",
         "ntstorm: North West Territories",
         "nlwx: Newfoundland"
-        ]
+    ]
 
     static func getIcons7DayAsList(_ html: String) -> [String] {
         let days = html.split(MyApplication.newline + MyApplication.newline)
@@ -228,14 +228,20 @@ final class UtilityCanada {
         var timeArr = time.split(":")
         var hour: Int
         var daytime = true
-        if timeArr.count>0 {
+        if timeArr.count > 0 {
             hour = Int(timeArr[0]) ?? 0
             if time.contains("AM") {
-                if hour < 8 {daytime = false}
+                if hour < 8 {
+                    daytime = false
+                }
             }
             if time.contains("PM") {
-                if hour == 12 {hour = 0}
-                if hour > 6 {daytime = false}
+                if hour == 12 {
+                    hour = 0
+                }
+                if hour > 6 {
+                    daytime = false
+                }
             }
         }
         if !daytime {
@@ -268,7 +274,9 @@ final class UtilityCanada {
         return "http://weather.gc.ca/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
     }
 
-    static func getStatus(_ html: String) -> String {return html.parse("<b>Observed at:</b>(.*?)<br/>")}
+    static func getStatus(_ html: String) -> String {
+        return html.parse("<b>Observed at:</b>(.*?)<br/>")
+    }
 
     static func getRid(_ lat: String, _ lon: String) -> String {
         let url = "http://weather.gc.ca/city/pages/"

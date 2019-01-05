@@ -30,12 +30,16 @@ class ViewControllerCARADAR: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            productButton,
-                                            cloudButton,
-                                            radarButton,
-                                            animateButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                productButton,
+                cloudButton,
+                radarButton,
+                animateButton
+            ]
+        ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = preferences.getString("CA_LAST_RID_URL", url)

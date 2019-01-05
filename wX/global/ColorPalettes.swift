@@ -5,7 +5,6 @@
  *****************************************************************************/
 
 class ColorPalettes {
-
     class func initialize() {
         let colorMapInts = [30, 56, 134, 135, 159, 161, 163, 165]
         let cm94 = ObjectColorPalette("94")

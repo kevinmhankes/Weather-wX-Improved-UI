@@ -7,7 +7,6 @@
 import UIKit
 
 class MyApplication {
-
     static let copyright = "©"
     static let appName = "wXL23"
     static let appCreatorEmail = "joshua.tee@gmail.com"

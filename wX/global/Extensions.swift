@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 
 extension String {
-
     func removeSingleLineBreaks() -> String {
         return self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
     }

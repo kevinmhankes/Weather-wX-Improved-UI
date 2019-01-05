@@ -7,7 +7,6 @@
 import Foundation
 
 class RadarGeometry {
-
     static var stateRelativeBuffer = MemoryBuffer()
     static var hwRelativeBuffer = MemoryBuffer()
     static var hwExtRelativeBuffer = MemoryBuffer()

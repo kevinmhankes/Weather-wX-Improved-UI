@@ -5,7 +5,6 @@
  *****************************************************************************/
 
 struct PolygonType {
-
     static var NONE = PolygonType(RadarGeometry.radarColorMcd, "MCD", false)
     static var MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.radarWatMcd)
     static var MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.radarMpd)

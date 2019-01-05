@@ -5,7 +5,6 @@
  *****************************************************************************/
 
 struct GeographyType {
-
     static var stateLines = GeographyType(
         "STATE_LINES",
         RadarGeometry.stateRelativeBuffer,

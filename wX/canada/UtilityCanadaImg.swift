@@ -11,14 +11,14 @@ final class UtilityCanadaImg {
         "Vis East",
         "IR West",
         "IR East"
-        ]
+    ]
 
     static let urls = [
         "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_ecan_visible_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_wcan_1070_100.jpg",
         "https://weather.gc.ca/data/satellite/goes_ecan_1070_100.jpg"
-        ]
+    ]
 
     static let mosaicRids = [
         "CAN",
@@ -27,7 +27,7 @@ final class UtilityCanadaImg {
         "ONT",
         "QUE",
         "ERN"
-        ]
+    ]
 
     static let caRids = [
         "WUJ: Aldergrove, BC (near Vancouver)",

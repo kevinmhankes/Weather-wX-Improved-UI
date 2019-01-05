@@ -17,7 +17,7 @@ class AppColors {
         green: primaryColorGreen,
         blue: primaryColorBlue,
         alpha: CGFloat(1.0)
-        )
+    )
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
     static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)

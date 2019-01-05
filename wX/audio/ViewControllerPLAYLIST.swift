@@ -22,12 +22,16 @@ class ViewControllerPLAYLIST: UIwXViewController {
         let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
         addButton = ObjectToolbarIcon(self, "ic_add_box_24dp", #selector(addClicked))
         wfotextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            wfotextButton,
-                                            addButton,
-                                            playButton,
-                                            downloadButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                wfotextButton,
+                addButton,
+                playButton,
+                downloadButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         updateView()
@@ -99,8 +103,10 @@ class ViewControllerPLAYLIST: UIwXViewController {
     func updateView() {
         self.stackView.subviews.forEach {$0.removeFromSuperview()}
         playlistItems.enumerated().forEach {
-            let txtObject = ObjectTextView(self.stackView,
-                                           $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", ""))
+            let txtObject = ObjectTextView(
+                self.stackView,
+                $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", "")
+            )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))

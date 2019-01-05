@@ -5,7 +5,6 @@
  *****************************************************************************/
 
 class GlobalArrays {
-
     static let states = [
         "AL: Alabama",
         "AK: Alaska",
