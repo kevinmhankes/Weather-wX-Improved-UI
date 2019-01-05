@@ -40,8 +40,14 @@ final class WXMetalTextObject {
         context = UIViewController()
     }
 
-    init(_ context: UIViewController, _ numPanes: Int, _  glviewWidth: Double,
-         _ glviewHeight: Double, _ OGLR: WXMetalRender, _ screenScale: Double) {
+    init(
+        _ context: UIViewController,
+        _ numPanes: Int,
+        _  glviewWidth: Double,
+        _ glviewHeight: Double,
+        _ OGLR: WXMetalRender,
+        _ screenScale: Double
+    ) {
         self.context = context
         self.glviewWidth = glviewWidth
         self.glviewHeight = glviewHeight
@@ -66,11 +72,13 @@ final class WXMetalTextObject {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach {
                     if glview.citiesExtAl.count <= maxCitiesPerGlview {
-                        checkAndDrawText(&glview.citiesExtAl,
-                                         UtilityCitiesExtended.cities[$0].latitude,
-                                         UtilityCitiesExtended.cities[$0].longitude,
-                                         UtilityCitiesExtended.cities[$0].name,
-                                         GeographyType.cities.color)
+                        checkAndDrawText(
+                            &glview.citiesExtAl,
+                            UtilityCitiesExtended.cities[$0].latitude,
+                            UtilityCitiesExtended.cities[$0].longitude,
+                            UtilityCitiesExtended.cities[$0].name,
+                            GeographyType.cities.color
+                        )
                     }
                 }
             }
@@ -86,8 +94,10 @@ final class WXMetalTextObject {
             let ii = tvList.count - 1
             tvList[ii].textColor = color
             tvList[ii].textSize = Double(textSize)
-            tvList[ii].setPadding(CGFloat(glviewWidth/2) + CGFloat(xPos * scale),
-                                  CGFloat(glviewHeight/2) + CGFloat(yPos * scale))
+            tvList[ii].setPadding(
+                CGFloat(glviewWidth / 2) + CGFloat(xPos * scale),
+                CGFloat(glviewHeight / 2) + CGFloat(yPos * scale)
+            )
             tvList[ii].setText(text)
         }
     }
@@ -118,9 +128,13 @@ final class WXMetalTextObject {
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 1.50 {
                 UtilityCountyLabels.countyName.indices.forEach {
-                    checkAndDrawText(&glview.countyLabelsAl, UtilityCountyLabels.location[$0].lat,
-                                     UtilityCountyLabels.location[$0].lon, UtilityCountyLabels.countyName[$0],
-                                    GeographyType.countyLabels.color)
+                    checkAndDrawText(
+                        &glview.countyLabelsAl,
+                        UtilityCountyLabels.location[$0].lat,
+                        UtilityCountyLabels.location[$0].lon,
+                        UtilityCountyLabels.countyName[$0],
+                        GeographyType.countyLabels.color
+                    )
                 }
             }
         }
@@ -144,11 +158,13 @@ final class WXMetalTextObject {
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
-                    checkAndDrawText(&glview.spottersLabelAl,
-                                     UtilitySpotter.spotterList[$0].latD,
-                                     UtilitySpotter.spotterList[$0].lonD,
-                                     " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
-                                     PolygonType.SPOTTER_LABELS.color)
+                    checkAndDrawText(
+                        &glview.spottersLabelAl,
+                        UtilitySpotter.spotterList[$0].latD,
+                        UtilitySpotter.spotterList[$0].lonD,
+                        " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
+                        PolygonType.SPOTTER_LABELS.color
+                    )
                 }
             }
         }
@@ -199,8 +215,10 @@ final class WXMetalTextObject {
                         tmpArrObsExt = UtilityMetar.obsArrExt[$0].split(":")
                         spotterLat = Double(tmpArrObs[0]) ?? 0.0
                         spotterLon = Double(tmpArrObs[1]) ?? 0.0
-                        tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(spotterLat,
-                                                                                   spotterLon * -1.0, OGLR.pn)
+                        tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                            spotterLat,
+                            spotterLon * -1.0, OGLR.pn
+                        )
                         if true {
                             let xPos = tmpCoords.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
                             let yPos = tmpCoords.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)

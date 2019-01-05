@@ -106,9 +106,11 @@ struct LatLon {
 
     static func distance(_ location1: LatLon, _ location2: LatLon, _ unit: DistanceUnit) -> Double {
         let theta = location1.lon - location2.lon
-        var dist = sin(UtilityMath.deg2rad(location1.lat))
+        var dist = sin(
+            UtilityMath.deg2rad(location1.lat))
             * sin(UtilityMath.deg2rad(location2.lat)) + cos(UtilityMath.deg2rad(location1.lat))
-            * cos(UtilityMath.deg2rad(location2.lat)) * cos(UtilityMath.deg2rad(theta))
+            * cos(UtilityMath.deg2rad(location2.lat)) * cos(UtilityMath.deg2rad(theta)
+        )
         dist = acos(dist)
         dist = UtilityMath.rad2deg(dist)
         dist = dist * 60 * 1.1515

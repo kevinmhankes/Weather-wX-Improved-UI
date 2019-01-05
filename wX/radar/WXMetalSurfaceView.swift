@@ -19,10 +19,11 @@ final class WXMetalSurfaceView {
         wxMetal.yPos *= zoomDifference
     }
 
-    static func gesturePan(_ uiv: UIViewController,
-                           _ wxMetal: [WXMetalRender?],
-                           _ textObj: WXMetalTextObject,
-                           _ gestureRecognizer: UIPanGestureRecognizer
+    static func gesturePan(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ textObj: WXMetalTextObject,
+        _ gestureRecognizer: UIPanGestureRecognizer
     ) {
         var panSensivity: Float = 500.0
         if wxMetal[0]!.numberOfPanes == 4 {
@@ -47,9 +48,9 @@ final class WXMetalSurfaceView {
             if gestureRecognizer.state == UIGestureRecognizer.State.changed {
                 let pointInView = gestureRecognizer.location(in: uiv.view)
                 let xDelta = Float((wxMetal[radarIndex]!.lastPanLocation.x
-                    - pointInView.x)/uiv.view.bounds.width) * panSensivity
+                    - pointInView.x) / uiv.view.bounds.width) * panSensivity
                 let yDelta = Float((wxMetal[radarIndex]!.lastPanLocation.y
-                    - pointInView.y)/uiv.view.bounds.height) * panSensivity
+                    - pointInView.y) / uiv.view.bounds.height) * panSensivity
                 wxMetal[radarIndex]!.xPos -= xDelta
                 wxMetal[radarIndex]!.yPos += yDelta
                 wxMetal[radarIndex]!.lastPanLocation = pointInView
@@ -84,20 +85,20 @@ final class WXMetalSurfaceView {
         if wxMetal.numberOfPanes == 1 {
             return 0
         } else if wxMetal.numberOfPanes == 2 {
-            if location.y < uiv.view.frame.height/2.0 {
+            if location.y < uiv.view.frame.height / 2.0 {
                 return 0
             } else {
                 return 1
             }
         } else { // 4 pane
-            if location.y < uiv.view.frame.height/2.0 {
-                if location.x < uiv.view.frame.width/2.0 {
+            if location.y < uiv.view.frame.height / 2.0 {
+                if location.x < uiv.view.frame.width / 2.0 {
                     return 0  // top left
                 } else {
                     return 1  // top right
                 }
             } else {
-                if location.x < uiv.view.frame.width/2.0 {
+                if location.x < uiv.view.frame.width / 2.0 {
                     return 2  // bottom left
                 } else {
                     return 3  // bottom right
@@ -106,10 +107,11 @@ final class WXMetalSurfaceView {
         }
     }
 
-    static func singleTap(_ uiv: UIViewController,
-                          _ wxMetal: [WXMetalRender?],
-                          _ textObj: WXMetalTextObject,
-                          _ gestureRecognizer: UITapGestureRecognizer
+    static func singleTap(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ textObj: WXMetalTextObject,
+        _ gestureRecognizer: UITapGestureRecognizer
     ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
@@ -132,12 +134,13 @@ final class WXMetalSurfaceView {
         textObj.addTV()
     }
 
-    static func doubleTap(_ uiv: UIViewController,
-                          _ wxMetal: [WXMetalRender?],
-                          _ textObj: WXMetalTextObject,
-                          _ numberOfPanes: Int,
-                          _ ortInt: Float,
-                          _ gestureRecognizer: UITapGestureRecognizer
+    static func doubleTap(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ textObj: WXMetalTextObject,
+        _ numberOfPanes: Int,
+        _ ortInt: Float,
+        _ gestureRecognizer: UITapGestureRecognizer
     ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
@@ -192,12 +195,13 @@ final class WXMetalSurfaceView {
         textObj.addTV()
     }
 
-    static func gestureLongPress(_ uiv: UIViewController,
-                                 _ wxMetal: [WXMetalRender?],
-                                 _ textObj: WXMetalTextObject,
-                                 _ longPressCount: Int,
-                                 _ fn: (CGFloat, CGFloat, Int) -> Void,
-                                 _ gestureRecognizer: UILongPressGestureRecognizer
+    static func gestureLongPress(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ textObj: WXMetalTextObject,
+        _ longPressCount: Int,
+        _ fn: (CGFloat, CGFloat, Int) -> Void,
+        _ gestureRecognizer: UILongPressGestureRecognizer
     ) -> Int {
         let location = gestureRecognizer.location(in: uiv.view)
         var longPressCountLocal = longPressCount
@@ -209,10 +213,11 @@ final class WXMetalSurfaceView {
         return longPressCountLocal
     }
 
-    static func gestureZoom(_ uiv: UIViewController,
-                            _ wxMetal: [WXMetalRender?],
-                            _ textObj: WXMetalTextObject,
-                            _ gestureRecognizer: UIPinchGestureRecognizer
+    static func gestureZoom(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ textObj: WXMetalTextObject,
+        _ gestureRecognizer: UIPinchGestureRecognizer
     ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
@@ -225,11 +230,11 @@ final class WXMetalSurfaceView {
                 if gestureRecognizer.state == UIGestureRecognizer.State.changed
                     && $0!.zoom < maxZoom
                     && $0!.zoom > minZoom {
-                    setModifiedZoom($0!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
-                    $0!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
+                    setModifiedZoom($0!.zoom / ((1.0 / Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
+                    $0!.zoom /=  ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
                     if $0!.zoom < minZoom {
-                        setModifiedZoom(minZoom + fudge/10.0, $0!.zoom, $0!)
-                        $0!.zoom = minZoom + fudge/10.0
+                        setModifiedZoom(minZoom + fudge / 10.0, $0!.zoom, $0!)
+                        $0!.zoom = minZoom + fudge / 10.0
                     }
                     if $0!.zoom > maxZoom {
                         setModifiedZoom(maxZoom - fudge, $0!.zoom, $0!)
@@ -242,13 +247,15 @@ final class WXMetalSurfaceView {
             if gestureRecognizer.state == UIGestureRecognizer.State.changed
                 && wxMetal[radarIndex]!.zoom < maxZoom
                 && wxMetal[radarIndex]!.zoom > minZoom {
-                setModifiedZoom(wxMetal[radarIndex]!.zoom / ((1.0/Float(gestureRecognizer.scale)) * slowItDown),
-                                wxMetal[radarIndex]!.zoom,
-                                wxMetal[radarIndex]!)
-                wxMetal[radarIndex]!.zoom /=  ((1.0/Float(gestureRecognizer.scale)) * slowItDown)
+                setModifiedZoom(
+                    wxMetal[radarIndex]!.zoom / ((1.0 / Float(gestureRecognizer.scale)) * slowItDown),
+                    wxMetal[radarIndex]!.zoom,
+                    wxMetal[radarIndex]!
+                )
+                wxMetal[radarIndex]!.zoom /=  ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
                 if wxMetal[radarIndex]!.zoom < minZoom {
-                    setModifiedZoom(minZoom + fudge/10.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
-                    wxMetal[radarIndex]!.zoom = minZoom + fudge/10.0
+                    setModifiedZoom(minZoom + fudge / 10.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                    wxMetal[radarIndex]!.zoom = minZoom + fudge / 10.0
                 }
                 if wxMetal[radarIndex]!.zoom > maxZoom {
                     setModifiedZoom(maxZoom - fudge, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)

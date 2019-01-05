@@ -124,7 +124,6 @@ final class UtilityActions {
         uiv.navigationController?.show(vc, sender: nil)
     }
 
-    // FIXME can this use helper object?
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let alert = UIAlertController(
             title: UtilityHelp.helpStrings[token],

@@ -69,15 +69,19 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             toolbar.setTransparent()
         }
         if RadarPreferences.locdotFollowsGps {
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(WXMetalMultipane.invalidateGPS),
-                                                   name: UIApplication.willResignActiveNotification,
-                                                   object: nil)
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(WXMetalMultipane.invalidateGPS),
+                name: UIApplication.willResignActiveNotification,
+                object: nil
+            )
         }
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         paneRange.forEach {
             productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0))
@@ -103,16 +107,21 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let screenSize: CGSize = UIScreen.main.bounds.size
         let screenWidth = Float(screenSize.width)
         let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
-        var surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        var surfaceRatio = Float(screenWidth) / Float(screenHeight)
         if numberOfPanes == 2 {
-            surfaceRatio = Float(screenWidth)/Float(screenHeight/2.0)
+            surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
         }
         if numberOfPanes == 4 {
-            surfaceRatio = Float(screenWidth/2.0)/Float(screenHeight/2.0)
+            surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0)
         }
-        projectionMatrix = Matrix4.makeOrthoViewAngle(-1.0 * ortInt, right: ortInt,
-                                                      bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
-                                                      top: ortInt * (1 / surfaceRatio), nearZ: -100.0, farZ: 100.0)
+        projectionMatrix = Matrix4.makeOrthoViewAngle(
+            -1.0 * ortInt,
+            right: ortInt,
+            bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+            top: ortInt * (1 / surfaceRatio),
+            nearZ: -100.0,
+            farZ: 100.0
+        )
         let halfWidth = screenWidth / 2
         let halfHeight = screenHeight / 2
         paneRange.enumerated().forEach { index, _ in
@@ -125,34 +134,46 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[0]!.frame = view.layer.frame
         } else if numberOfPanes == 2 {
             // top half for dual
-            metalLayer[0]!.frame = CGRect(x: 0,
-                                          y: 0,
-                                          width: CGFloat(screenWidth),
-                                          height: CGFloat(halfHeight))
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: CGFloat(screenWidth),
+                height: CGFloat(halfHeight)
+            )
             // bottom half for dual
-            metalLayer[1]!.frame = CGRect(x: 0,
-                                          y: CGFloat(halfHeight),
-                                          width: CGFloat(screenWidth),
-                                          height: CGFloat(halfHeight))
+            metalLayer[1]!.frame = CGRect(
+                x: 0,
+                y: CGFloat(halfHeight),
+                width: CGFloat(screenWidth),
+                height: CGFloat(halfHeight)
+            )
         } else if numberOfPanes == 4 {
             // top half for quad
-            metalLayer[0]!.frame = CGRect(x: 0,
-                                          y: 0,
-                                          width: CGFloat(halfWidth),
-                                          height: CGFloat(halfHeight))
-            metalLayer[1]!.frame = CGRect(x: CGFloat(halfWidth),
-                                          y: 0,
-                                          width: CGFloat(halfWidth),
-                                          height: CGFloat(halfHeight))
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+            metalLayer[1]!.frame = CGRect(
+                x: CGFloat(halfWidth),
+                y: 0,
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
             // bottom half for quad
-            metalLayer[2]!.frame = CGRect(x: 0,
-                                          y: CGFloat(halfHeight),
-                                          width: CGFloat(halfWidth),
-                                          height: CGFloat(halfHeight))
-            metalLayer[3]!.frame = CGRect(x: CGFloat(halfWidth),
-                                          y: CGFloat(halfHeight),
-                                          width: CGFloat(halfWidth),
-                                          height: CGFloat(halfHeight))
+            metalLayer[2]!.frame = CGRect(
+                x: 0,
+                y: CGFloat(halfHeight),
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+            metalLayer[3]!.frame = CGRect(
+                x: CGFloat(halfWidth),
+                y: CGFloat(halfHeight),
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
         }
         metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
@@ -183,7 +204,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         pipelineStateDescriptor.vertexFunction = vertexProgram
         pipelineStateDescriptor.fragmentFunction = fragmentProgram
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        //pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
         } catch {
@@ -211,22 +231,27 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             self.view.addSubview(toolbarTop)
         }
         screenScale = Double(UIScreen.main.scale)
-        textObj = WXMetalTextObject(self, numberOfPanes,
-                                 Double(view.frame.width),
-                                 Double(view.frame.height),
-                                 wxMetal[0]!,
-                                 screenScale)
+        textObj = WXMetalTextObject(
+            self,
+            numberOfPanes,
+            Double(view.frame.width),
+            Double(view.frame.height),
+            wxMetal[0]!,
+            screenScale
+        )
         textObj.initTV()
         textObj.addTV()
         self.wxMetal.forEach { $0!.getRadar("") }
         getPolygonWarnings()
         updateColorLegend()
         if RadarPreferences.wxoglRadarAutorefresh {
-            oneMinRadarFetch = Timer.scheduledTimer(timeInterval: 60.0,
-                                                    target: self,
-                                                    selector: #selector(WXMetalMultipane.getRadarEveryMinute),
-                                                    userInfo: nil,
-                                                    repeats: true)
+            oneMinRadarFetch = Timer.scheduledTimer(
+                timeInterval: 60.0,
+                target: self,
+                selector: #selector(WXMetalMultipane.getRadarEveryMinute),
+                userInfo: nil,
+                repeats: true
+            )
         }
     }
 
@@ -239,16 +264,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func render(_ index: Int) {
-        //wxMetal.enumerated().forEach { index, wxmetal in
             guard let drawable = metalLayer[index]!.nextDrawable() else { return }
-            //wxmetal!.render(commandQueue: commandQueue,
-            wxMetal[index]?.render(commandQueue: commandQueue,
-                       pipelineState: pipelineState,
-                       drawable: drawable,
-                       parentModelViewMatrix: modelMatrix(index),
-                       projectionMatrix: projectionMatrix,
-                       clearColor: nil) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-        //}
+            wxMetal[index]?.render(
+                commandQueue: commandQueue,
+                pipelineState: pipelineState,
+                drawable: drawable,
+                parentModelViewMatrix: modelMatrix(index),
+                projectionMatrix: projectionMatrix,
+                clearColor: nil
+        ) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
     }
 
     /*@objc func newFrame(displayLink: CADisplayLink) {
@@ -271,11 +295,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func setupGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(WXMetalMultipane.gesturePan))
         let gestureZoom = UIPinchGestureRecognizer(target: self, action: #selector(WXMetalMultipane.gestureZoom))
-        let gestureRecognizer = UITapGestureRecognizer(target: self,
-                                                       action: #selector(WXMetalMultipane.tapGesture(_:)))
+        let gestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(WXMetalMultipane.tapGesture(_:))
+        )
         gestureRecognizer.numberOfTapsRequired = 1
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self,
-                                                        action: #selector(WXMetalMultipane.tapGesture(_:double:)))
+        let gestureRecognizer2 = UITapGestureRecognizer(
+            target: self,
+            action: #selector(WXMetalMultipane.tapGesture(_:double:))
+        )
         gestureRecognizer2.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(pan)
         self.view.addGestureRecognizer(gestureZoom)
@@ -309,12 +337,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(self,
-                                                             wxMetal,
-                                                             textObj,
-                                                             longPressCount,
-                                                             longPressAction,
-                                                             gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(
+            self,
+            wxMetal,
+            textObj,
+            longPressCount,
+            longPressAction,
+            gestureRecognizer
+        )
     }
 
     @objc func doneClicked() {
@@ -443,11 +473,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func animateClicked() {
         if !inOglAnim {
-            _ = ObjectPopUp(self,
-                            "Select number of animation frames:",
-                            animateButton,
-                            [5, 10, 20, 30, 40, 50, 60],
-                            self.animateFrameCntClicked(_:)
+            _ = ObjectPopUp(
+                self,
+                "Select number of animation frames:",
+                animateButton,
+                [5, 10, 20, 30, 40, 50, 60],
+                self.animateFrameCntClicked(_:)
             )
         } else {
             stopAnimate()
@@ -593,13 +624,17 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func updateColorLegend() {
         if RadarPreferences.radarShowLegend && numberOfPanes==1 {
             colorLegend.removeFromSuperview()
-            colorLegend = UIColorLegend(wxMetal[0]!.product,
-                                        CGRect(x: 0,
-                                               y: UIPreferences.statusBarHeight,
-                                               width: 100,
-                                               height: self.view.frame.size.height
-                                                - UIPreferences.toolbarHeight
-                                                - UIPreferences.statusBarHeight))
+            colorLegend = UIColorLegend(
+                wxMetal[0]!.product,
+                CGRect(
+                    x: 0,
+                    y: UIPreferences.statusBarHeight,
+                    width: 100,
+                    height: self.view.frame.size.height
+                    - UIPreferences.toolbarHeight
+                    - UIPreferences.statusBarHeight
+                )
+            )
             colorLegend.backgroundColor = UIColor.clear
             colorLegend.isOpaque = false
             self.view.addSubview(colorLegend)
