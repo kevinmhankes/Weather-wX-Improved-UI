@@ -81,8 +81,10 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         myDateFormatter.dateFormat = "MM/dd/yyyy"
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
-        let components = objDatePicker.datePicker.calendar.dateComponents([.day, .month, .year],
-                                                                          from: objDatePicker.datePicker.date as Date)
+        let components = objDatePicker.datePicker.calendar.dateComponents(
+            [.day, .month, .year],
+            from: objDatePicker.datePicker.date as Date
+        )
         let day = String(format: "%02d", components.day!)
         let month = String(format: "%02d", components.month!)
         let year = String(components.year!).substring(2)

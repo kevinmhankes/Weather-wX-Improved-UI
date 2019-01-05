@@ -36,7 +36,7 @@ final class UtilitySPCCompmap {
         "DAY 1 Outlook (94O)",
         "HPC Fronts (90F)",
         "HPC 6-hr QPF (92E)"
-        ]
+    ]
 
     static let urlIndices = [
         "16",
@@ -61,5 +61,5 @@ final class UtilitySPCCompmap {
         "18",
         "19",
         "20"
-        ]
+    ]
 }
