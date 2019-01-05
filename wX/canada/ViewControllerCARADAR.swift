@@ -39,10 +39,10 @@ class ViewControllerCARADAR: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = preferences.getString("CA_LAST_RID_URL", url)
-        if ActVars.CARADARprov == "" {
+        if ActVars.caRadarProv == "" {
             rid = preferences.getString("CA_LAST_RID", rid)
         } else {
-            rid = String(ActVars.CARADARprov)
+            rid = String(ActVars.caRadarProv)
             mosaicShown = true
         }
         if !RadarPreferences.wxoglRememberLocation {
@@ -54,7 +54,7 @@ class ViewControllerCARADAR: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
-            if ActVars.CARADARimgType == "radar" {
+            if ActVars.caRadarImageType == "radar" {
                 bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.rid, "")
             } else {
                 bitmap = Bitmap(self.url)
@@ -84,7 +84,7 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     func productChanged(_ index: Int) {
-        ActVars.CARADARimgType = "radar"
+        ActVars.caRadarImageType = "radar"
         rid = UtilityCanadaImg.caRids[index].split(":")[0]
         self.getContent()
     }
@@ -100,7 +100,7 @@ class ViewControllerCARADAR: UIwXViewController {
     func getAnimation(_ frameCnt: String) {
         var animDrawable = AnimationDrawable()
         DispatchQueue.global(qos: .userInitiated).async {
-            if ActVars.CARADARimgType == "radar" {
+            if ActVars.caRadarImageType == "radar" {
                 if !self.mosaicShown {
                     animDrawable = UtilityCanadaImg.getRadarAnimOptionsApplied(self.rid, frameCnt)
                 } else {
@@ -120,13 +120,13 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     func cloudChanged(_ prod: Int) {
-        ActVars.CARADARimgType = "vis"
+        ActVars.caRadarImageType = "vis"
         url = UtilityCanadaImg.urls[prod]
         self.getContent()
     }
 
     @objc func radarClicked() {
-        ActVars.CARADARimgType = "radar"
+        ActVars.caRadarImageType = "radar"
         self.getContent()
     }
 }

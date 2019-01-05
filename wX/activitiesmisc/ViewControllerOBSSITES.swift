@@ -55,9 +55,9 @@ class ViewControllerOBSSITES: UIwXViewController {
         if sender.data == 0 {
             constructStateView()
         } else {
-            ActVars.WEBVIEWshowProd = false
-            ActVars.WEBVIEWuseUrl = true
-            ActVars.WEBVIEWurl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
+            ActVars.webViewShowProduct = false
+            ActVars.webViewUseUrl = true
+            ActVars.webViewUrl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
                 + listCity[sender.data].split(":")[0]
             self.goToVC("webview")
         }

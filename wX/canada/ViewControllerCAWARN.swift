@@ -55,7 +55,7 @@ class ViewControllerCAWARN: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let data = UtilityCanada.getHazardsFromUrl(url)
             DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = data.replaceAllRegexp("<.*?>", "")
+                ActVars.textViewText = data.replaceAllRegexp("<.*?>", "")
                 self.goToVC("textviewer")
             }
         }

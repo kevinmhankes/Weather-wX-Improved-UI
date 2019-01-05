@@ -43,11 +43,11 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         case "Home Screen":    self.goToVC("settingshomescreen")
         case "PlayList":       self.goToVC("playlist")
         case "Celsius to Fahrenheit table":
-            ActVars.TEXTVIEWProd = "Celsius to Fahrenheit table"
-            ActVars.TEXTVIEWText = UtilityMath.celsiusToFarenheitTable()
+            ActVars.textViewProduct = "Celsius to Fahrenheit table"
+            ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
             self.goToVC("textviewer")
         case "About "  + MyApplication.appName + " " + UtilityUI.getVersion():
-            ActVars.TEXTVIEWText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
+            ActVars.textViewText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
             self.goToVC("textviewer")
         default: break
         }

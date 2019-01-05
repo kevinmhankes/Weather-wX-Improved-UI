@@ -254,7 +254,7 @@ final class WXGLRender: NSObject, GLKViewDelegate {
             } else {
                 self.radarBuffers.fileName = url
             }
-            if ActVars.WXOGLPaneCnt == "1" {
+            if ActVars.wxoglPaneCount == "1" {
                 [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
                     if $0.display {self.constructLevel3TextProduct($0)}
                 }

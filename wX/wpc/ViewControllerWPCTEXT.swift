@@ -31,11 +31,11 @@ class ViewControllerWPCTEXT: UIwXViewController {
                                             playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
-        if ActVars.WPCTXTProd == "" {
+        if ActVars.wpcTextProduct == "" {
             product = preferences.getString("WPCTEXT_PARAM_LAST_USED", product)
         } else {
-            product = ActVars.WPCTXTProd
-            ActVars.WPCTXTProd = ""
+            product = ActVars.wpcTextProduct
+            ActVars.wpcTextProduct = ""
         }
         self.getContent()
     }

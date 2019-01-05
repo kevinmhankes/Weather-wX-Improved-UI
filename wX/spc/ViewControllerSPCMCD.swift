@@ -23,9 +23,9 @@ class ViewControllerSPCMCD: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        spcMcdNumber = ActVars.SPCMCDNo
+        spcMcdNumber = ActVars.spcMcdNumber
         if spcMcdNumber != "" {
-            ActVars.SPCMCDNo = ""
+            ActVars.spcMcdNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -70,7 +70,7 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.TEXTVIEWText = self.listOfText[sender.data]
+        ActVars.textViewText = self.listOfText[sender.data]
         self.goToVC("textviewer")
     }
 

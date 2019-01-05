@@ -33,7 +33,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.WPCTXTProd = UtilitySPCFireOutlook.products[sender.data]
+        ActVars.wpcTextProduct = UtilitySPCFireOutlook.products[sender.data]
         self.goToVC("WPCText")
     }
 

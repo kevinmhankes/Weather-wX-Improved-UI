@@ -158,14 +158,14 @@ final class ObjectImageTileMatrix: NSObject {
         case "goesfulldisk": token = "goesglobal"
         case "nwsobs":       token = "obssites"
         case "wxogldualpane":
-            ActVars.WXOGLPaneCnt = "2"
+            ActVars.wxoglPaneCount = "2"
             if UIPreferences.useMetalRadar {
                 token = "wxmetalradar"
             } else {
                 token = "wxoglmultipane"
             }
         case "wxoglquadpane":
-            ActVars.WXOGLPaneCnt = "4"
+            ActVars.wxoglPaneCount = "4"
             if UIPreferences.useMetalRadar {
                 token = "wxmetalradar"
             } else {
@@ -195,11 +195,11 @@ final class ObjectImageTileMatrix: NSObject {
                 + "(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com"
                 + "/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}"
                 + "(document,\"script\",\"twitter-wjs\");</script>"
-            ActVars.WEBVIEWurl = url
-            ActVars.WEBVIEWstateCode = stateCodeCurrent
+            ActVars.webViewUrl = url
+            ActVars.webViewStateCode = stateCodeCurrent
             token = "webview"
         case "twtornado":
-            ActVars.WEBVIEWurl = "<html><meta name=\"viewport\" content=\"width=device-width,"
+            ActVars.webViewUrl = "<html><meta name=\"viewport\" content=\"width=device-width,"
                 + " user-scalable=no\" /> <body width=\"100%\"><div><script>!function(d,s,id)"
                 + "{var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"
                 + "'http':'https';if(!d.getElementById(id))"
@@ -211,7 +211,7 @@ final class ObjectImageTileMatrix: NSObject {
                 + "-chrome=\"noscrollbar noheader "
                 + "nofooter noborders \" data-tweet-limit=20>Tweets about \"#tornado\"</a></div></body></html>"
             token = "webview"
-            ActVars.WEBVIEWstateCode = "tornado"
+            ActVars.webViewStateCode = "tornado"
         default:  break
         }
         if !MyApplication.helpMode {

@@ -21,7 +21,7 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        location = ActVars.ADHOCLOCATION
+        location = ActVars.adhocLocation
         titleButton.title = location.latString.truncate(6) + "," + location.lonString.truncate(6)
         self.getContent()
     }

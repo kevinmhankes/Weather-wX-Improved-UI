@@ -7,39 +7,37 @@
 import UIKit
 
 class ActVars {
-    // FIXME fix camelCase
     static var goesSector = ""
     static var goesProduct = ""
     static var settingsLocationEditNum = ""
     static var spcswoDay = ""
     static var imageViewerUrl = ""
-    static var TEXTVIEWText = ""
-    static var TEXTVIEWProd = ""
-    static var NWSMOSAICtype = ""
-    static var WPCMPDNo = ""
-    static var SPCMCDNo = ""
-    static var SPCWATNo = ""
-    static var WPCTXTProd = ""
-    static var WEBVIEWurl = ""
-    static var WEBVIEWstateCode = ""
-    static var WEBVIEWshowProd = true
-    static var WEBVIEWuseUrl = false
+    static var textViewText = ""
+    static var textViewProduct = ""
+    static var nwsMosaicType = ""
+    static var wpcMpdNumber = ""
+    static var spcMcdNumber = ""
+    static var spcWatchNumber = ""
+    static var wpcTextProduct = ""
+    static var webViewUrl = ""
+    static var webViewStateCode = ""
+    static var webViewShowProduct = true
+    static var webViewUseUrl = false
     static var spcStormReportsDay = ""
-    static var WXOGLPaneCnt = ""
-    static var WXOGLDspLegendMax = 0.0
-    static var NHCStormUrl = ""
-    static var NHCStormTitle = ""
-    static var NHCStormImgUrl1 = ""
-    static var NHCStormImgUrl2 = ""
-    static var NHCStormWallet = ""
-    static var ColorObject = wXColor()
-    static var NHCGOESid = ""
-    static var NHCGOESimageType = ""
-    static var NHCGOEStitle = ""
+    static var wxoglPaneCount = ""
+    static var wxoglDspLegendMax = 0.0
+    static var nhcStormUrl = ""
+    static var nhcStormTitle = ""
+    static var nhcStormImgUrl1 = ""
+    static var nhcStormImgUrl2 = ""
+    static var nhcStormWallet = ""
+    static var colorObject = wXColor()
+    static var nhcGoesId = ""
+    static var nhcGoesImageType = ""
     static var usalertsDetailUrl = ""
-    static var CARADARprov = ""
-    static var CARADARimgType = ""
+    static var caRadarProv = ""
+    static var caRadarImageType = ""
     static var modelActivitySelected = ""
-    static var ADHOCLOCATION = LatLon()
+    static var adhocLocation = LatLon()
     static var vc = UIViewController()
 }

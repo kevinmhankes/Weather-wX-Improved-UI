@@ -25,9 +25,9 @@ class ViewControllerWPCMPD: UIwXViewController {
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        mpdNumber = ActVars.WPCMPDNo
+        mpdNumber = ActVars.wpcMpdNumber
         if mpdNumber != "" {
-            ActVars.WPCMPDNo = ""
+            ActVars.wpcMpdNumber = ""
         }
         self.getContent()
     }
@@ -66,7 +66,7 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.TEXTVIEWText = self.txtArr[sender.data]
+        ActVars.textViewText = self.txtArr[sender.data]
         self.goToVC("textviewer")
     }
 

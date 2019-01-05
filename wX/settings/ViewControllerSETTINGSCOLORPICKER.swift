@@ -20,7 +20,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbarTop.setConfig(.top)
-        let labelButton = ObjectToolbarIcon(title: ActVars.ColorObject.uiLabel, self, nil)
+        let labelButton = ObjectToolbarIcon(title: ActVars.colorObject.uiLabel, self, nil)
         toolbarTop.items = ObjectToolbarItems([flexBarButton, labelButton]).items
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
@@ -38,16 +38,20 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         )
         colPicker.delegate = self
         self.view.addSubview(colPicker)
-        colorBar = UIView(frame: CGRect(x: 0,
-                                        y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
-                                        width: UIScreen.main.bounds.width,
-                                        height: colorBarSize ))
-        colorBar.backgroundColor = ActVars.ColorObject.uicolorCurrent
-        colorButton.title = "(" + String(ActVars.ColorObject.colorsCurrent.0)
+        colorBar = UIView(
+            frame: CGRect(
+                x: 0,
+                y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
+                width: UIScreen.main.bounds.width,
+                height: colorBarSize
+            )
+        )
+        colorBar.backgroundColor = ActVars.colorObject.uicolorCurrent
+        colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.0)
             + ","
-            + String(ActVars.ColorObject.colorsCurrent.1)
+            + String(ActVars.colorObject.colorsCurrent.1)
             + ","
-            + String(ActVars.ColorObject.colorsCurrent.2)
+            + String(ActVars.colorObject.colorsCurrent.2)
             + ")"
         self.view.addSubview(colorBar)
         self.view.addSubview(toolbar)
@@ -61,10 +65,12 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         super.doneClicked()
     }
 
-    func HSBColorColorPickerTouched(sender: HSBColorPicker,
-                                    color: UIColor,
-                                    point: CGPoint,
-                                    state: UIGestureRecognizer.State) {
+    func HSBColorColorPickerTouched(
+        sender: HSBColorPicker,
+        color: UIColor,
+        point: CGPoint,
+        state: UIGestureRecognizer.State
+    ) {
         let myColorComponents = color.components
         let colorInt: Int = (0xFF << 24)
             | (myColorComponents.red << 16)
@@ -79,21 +85,25 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     }
 
     func saveNewColorClicked() {
-        editor.putInt(ActVars.ColorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
+        editor.putInt(ActVars.colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
-        ActVars.ColorObject.regenCurrentColor()
+        ActVars.colorObject.regenCurrentColor()
     }
 
     @objc func saveDefaultColorClicked() {
-        editor.putInt(ActVars.ColorObject.prefVar,
-                      Color.rgb(ActVars.ColorObject.defaultRed,
-                                ActVars.ColorObject.defaultGreen,
-                                ActVars.ColorObject.defaultBlue))
-        colorBar.backgroundColor = ActVars.ColorObject.uicolorDefault
-        ActVars.ColorObject.regenCurrentColor()
-        newRed = ActVars.ColorObject.defaultRed
-        newGreen = ActVars.ColorObject.defaultGreen
-        newBlue = ActVars.ColorObject.defaultBlue
+        editor.putInt(
+            ActVars.colorObject.prefVar,
+            Color.rgb(
+                ActVars.colorObject.defaultRed,
+                ActVars.colorObject.defaultGreen,
+                ActVars.colorObject.defaultBlue
+            )
+        )
+        colorBar.backgroundColor = ActVars.colorObject.uicolorDefault
+        ActVars.colorObject.regenCurrentColor()
+        newRed = ActVars.colorObject.defaultRed
+        newGreen = ActVars.colorObject.defaultGreen
+        newBlue = ActVars.colorObject.defaultBlue
         colorChanged = true
         colorButton.title = "(" + String(newRed) + "," + String(newGreen) + "," + String(newBlue) + ")"
     }

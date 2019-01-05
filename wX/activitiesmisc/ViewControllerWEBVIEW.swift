@@ -18,7 +18,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(title: "Product", self, #selector(productClicked))
         browserButton = ObjectToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
-        if ActVars.WEBVIEWshowProd {
+        if ActVars.webViewShowProduct {
             toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton, productButton]).items
         } else {
             toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton]).items
@@ -33,22 +33,22 @@ class ViewControllerWEBVIEW: UIwXViewController {
             )
         )
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-        if ActVars.WEBVIEWstateCode != "tornado" && !ActVars.WEBVIEWuseUrl {
-            stateCodeCurrent = ActVars.WEBVIEWstateCode
+        if ActVars.webViewStateCode != "tornado" && !ActVars.webViewUseUrl {
+            stateCodeCurrent = ActVars.webViewStateCode
             stateCodeCurrent = preferences.getString(prefToken, stateCodeCurrent)
             urlChanged(stateCodeCurrent)
         }
-        if ActVars.WEBVIEWuseUrl {
-            webView.loadRequest(URLRequest(url: URL(string: ActVars.WEBVIEWurl)!))
+        if ActVars.webViewUseUrl {
+            webView.loadRequest(URLRequest(url: URL(string: ActVars.webViewUrl)!))
         } else {
-            webView.loadHTMLString(ActVars.WEBVIEWurl, baseURL: nil)
+            webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         }
         self.view.addSubview(webView)
-        if ActVars.WEBVIEWstateCode == "tornado" {
+        if ActVars.webViewStateCode == "tornado" {
             productButton.title = "#tornado"
         }
-        ActVars.WEBVIEWshowProd = true
-        ActVars.WEBVIEWuseUrl = false
+        ActVars.webViewShowProduct = true
+        ActVars.webViewUseUrl = false
     }
 
     @objc func productClicked() {
@@ -63,8 +63,8 @@ class ViewControllerWEBVIEW: UIwXViewController {
 
     func productChanged(_ stateCodeCurrent: String) {
         urlChanged(stateCodeCurrent)
-        webView.loadHTMLString(ActVars.WEBVIEWurl, baseURL: nil)
-        if ActVars.WEBVIEWstateCode != "tornado" {
+        webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
+        if ActVars.webViewStateCode != "tornado" {
             editor.putString(prefToken, self.stateCodeCurrent)
         }
     }
@@ -83,7 +83,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             + "=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))"
             + "{js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";"
             + "fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>"
-        ActVars.WEBVIEWurl = url
+        ActVars.webViewUrl = url
         productButton.title = "#" + stateCodeCurrentLocal + "wx"
     }
 

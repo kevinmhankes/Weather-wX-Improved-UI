@@ -80,7 +80,7 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
     }
 
     @objc func gotoColor(sender: UITapGestureRecognizerWithData) {
-        ActVars.ColorObject = colorArr[sender.data]
+        ActVars.colorObject = colorArr[sender.data]
         self.goToVC("settingscolorpicker")
     }
 }

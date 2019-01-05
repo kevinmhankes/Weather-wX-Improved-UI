@@ -100,7 +100,7 @@ final class ObjectForecastPackageHazards {
             ActVars.usalertsDetailUrl = sender.strData
             ActVars.vc.goToVC("usalertsdetail")
         } else {
-            ActVars.TEXTVIEWText = sender.strData
+            ActVars.textViewText = sender.strData
             ActVars.vc.goToVC("textviewer")
         }
     }

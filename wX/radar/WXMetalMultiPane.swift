@@ -43,7 +43,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
+        numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
         let paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self

@@ -15,21 +15,21 @@ final class UtilityActions {
             ActVars.goesSector = ""
             goToVCS(uiv, "goes16")
         } else {
-            ActVars.CARADARimgType = "vis"
+            ActVars.caRadarImageType = "vis"
             goToVCS(uiv, "caradar")
         }
     }
 
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
-            ActVars.CARADARimgType = "radar"
-            ActVars.CARADARprov = ""
+            ActVars.caRadarImageType = "radar"
+            ActVars.caRadarProv = ""
             goToVCS(uiv, "caradar")
         } else {
             if UIPreferences.dualpaneRadarIcon {
-                ActVars.WXOGLPaneCnt = "2"
+                ActVars.wxoglPaneCount = "2"
             } else {
-                ActVars.WXOGLPaneCnt = "1"
+                ActVars.wxoglPaneCount = "1"
             }
             if UIPreferences.useMetalRadar {
                 goToVCS(uiv, "wxmetalradar")
@@ -85,12 +85,12 @@ final class UtilityActions {
             token = "playlist"
         case "Radar Mosaic":
             if Location.isUS {
-                ActVars.NWSMOSAICtype = "local"
+                ActVars.nwsMosaicType = "local"
                 token = "nwsmosaic"
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
-                ActVars.CARADARprov = UtilityCanada.getECSectorFromProv(prov)
-                ActVars.CARADARimgType = "radar"
+                ActVars.caRadarProv = UtilityCanada.getECSectorFromProv(prov)
+                ActVars.caRadarImageType = "radar"
                 token = "caradar"
             }
         case "Alerts":
@@ -102,8 +102,8 @@ final class UtilityActions {
         case "Spotters":
             token = "spotters"
         case "Local Forecast":
-            ActVars.WEBVIEWuseUrl = true
-            ActVars.WEBVIEWurl = "http://forecast.weather.gov/MapClick.php?lon="
+            ActVars.webViewUseUrl = true
+            ActVars.webViewUrl = "http://forecast.weather.gov/MapClick.php?lon="
                 + Location.latlon.lonString + "&lat=" + Location.latlon.latString
             token = "webview"
         default:
@@ -148,7 +148,7 @@ final class UtilityActions {
             "PlayList",
             "Settings",
             "Help Mode - Off"
-            ]
+        ]
         if MyApplication.helpMode {
             menuList.enumerated().forEach {
                 if $1.contains("Help Mode") {

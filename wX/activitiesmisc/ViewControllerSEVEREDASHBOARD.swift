@@ -77,15 +77,15 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         var token = ""
         if self.buttonActionArray[sender.data].hasPrefix("WPCMPD") {
-            ActVars.WPCMPDNo = self.buttonActionArray[sender.data].replace("WPCMPD", "")
+            ActVars.wpcMpdNumber = self.buttonActionArray[sender.data].replace("WPCMPD", "")
             token = "wpcmpd"
         }
         if self.buttonActionArray[sender.data].hasPrefix("SPCMCD") {
-            ActVars.SPCMCDNo = self.buttonActionArray[sender.data].replace("SPCMCD", "")
+            ActVars.spcMcdNumber = self.buttonActionArray[sender.data].replace("SPCMCD", "")
             token = "spcmcd"
         }
         if self.buttonActionArray[sender.data].hasPrefix("SPCWAT") {
-            ActVars.SPCWATNo = self.buttonActionArray[sender.data].replace("SPCWAT", "")
+            ActVars.spcWatchNumber = self.buttonActionArray[sender.data].replace("SPCWAT", "")
             token = "spcwat"
         }
         self.goToVC(token)

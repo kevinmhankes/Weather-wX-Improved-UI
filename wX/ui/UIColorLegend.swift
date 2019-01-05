@@ -252,19 +252,19 @@ final class UIColorLegend: UIView {
                          CGFloat($0) * scaledHeight + scaledHeight + startHeight)
             }
             units = " IN"
-            var j = ActVars.WXOGLDspLegendMax
+            var j = ActVars.wxoglDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0 / ActVars.WXOGLDspLegendMax)
+                let yVar1 = CGFloat(255.0 / ActVars.wxoglDspLegendMax)
                     * scaledHeightVel
-                    * CGFloat(ActVars.WXOGLDspLegendMax - j)
+                    * CGFloat(ActVars.wxoglDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight
                 drawText(String(j).truncate(4) + units, xVar, yVar)
                 if !unitsDrawn {
                     unitsDrawn = true
                     units = ""
                 }
-                j -= ActVars.WXOGLDspLegendMax/16.0
+                j -= ActVars.wxoglDspLegendMax / 16.0
             }
         case "DAA":
             (0...255).forEach {
@@ -275,19 +275,19 @@ final class UIColorLegend: UIView {
                          CGFloat($0) * scaledHeight + scaledHeight + startHeight)
             }
             units = " IN"
-            var j = ActVars.WXOGLDspLegendMax
+            var j = ActVars.wxoglDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0 / ActVars.WXOGLDspLegendMax)
+                let yVar1 = CGFloat(255.0 / ActVars.wxoglDspLegendMax)
                     * scaledHeightVel
-                    * CGFloat(ActVars.WXOGLDspLegendMax - j)
+                    * CGFloat(ActVars.wxoglDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight
                 drawText(String(j).truncate(4) + units, xVar, yVar)
                 if !unitsDrawn {
                     unitsDrawn = true
                     units = ""
                 }
-                j -= ActVars.WXOGLDspLegendMax/16.0
+                j -= ActVars.wxoglDspLegendMax / 16.0
             }
         default: break
         }

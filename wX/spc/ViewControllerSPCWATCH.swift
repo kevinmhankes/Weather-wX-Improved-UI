@@ -15,9 +15,9 @@ class ViewControllerSPCWATCH: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        SPCWATno = ActVars.SPCWATNo
+        SPCWATno = ActVars.spcWatchNumber
         if SPCWATno != "" {
-            ActVars.SPCWATNo = ""
+            ActVars.spcWatchNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -61,7 +61,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.TEXTVIEWText = self.txtArr[sender.data]
+        ActVars.textViewText = self.txtArr[sender.data]
         self.goToVC("textviewer")
     }
 

@@ -135,7 +135,7 @@ class WXOGLOpenGLMultiPane: GLKViewController, MKMapViewDelegate, CLLocationMana
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         self.preferredFramesPerSecond = 0
-        numberOfPanes = Int(ActVars.WXOGLPaneCnt) ?? 1
+        numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
         let pangeRange = 0..<numberOfPanes
         //
         //  setup top toolbar if needed

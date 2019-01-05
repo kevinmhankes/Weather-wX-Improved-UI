@@ -32,8 +32,8 @@ class ViewControllerNHCGOES: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, animateButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
-        sector = ActVars.NHCGOESid
-        imageType = ActVars.NHCGOESimageType
+        sector = ActVars.nhcGoesId
+        imageType = ActVars.nhcGoesImageType
         self.getContent()
     }
 

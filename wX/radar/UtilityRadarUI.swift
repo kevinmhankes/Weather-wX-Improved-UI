@@ -18,14 +18,14 @@ public class UtilityRadarUI {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
             DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = html
+                ActVars.textViewText = html
                 uiv.goToVC("textviewer")
             }
         }
     }
 
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
-        ActVars.ADHOCLOCATION = location
+        ActVars.adhocLocation = location
         uiv.goToVC("adhoclocation")
     }
 
@@ -42,7 +42,7 @@ public class UtilityRadarUI {
         DispatchQueue.global(qos: .userInitiated).async {
             let radarStatus = getRadarStatusMessage(rid)
             DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = radarStatus
+                ActVars.textViewText = radarStatus
                 uiv.goToVC("textviewer")
             }
         }

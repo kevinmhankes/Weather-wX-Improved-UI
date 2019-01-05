@@ -52,8 +52,8 @@ class ViewControllerNHC: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(prod)
             DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = html
-                ActVars.TEXTVIEWProd = prod
+                ActVars.textViewText = html
+                ActVars.textViewProduct = prod
                 self.goToVC("textviewer")
             }
         }

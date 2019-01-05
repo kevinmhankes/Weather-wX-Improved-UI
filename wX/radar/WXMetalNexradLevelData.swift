@@ -65,7 +65,7 @@ final class WXMetalNexradLevelData {
                 + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
             dis.skipBytes(14)
             halfword3132 = dis.getFloat()
-            ActVars.WXOGLDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
+            ActVars.wxoglDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
             dis.skipBytes(26)
             dis.skipBytes(30)
             seekStart = dis.filePointer

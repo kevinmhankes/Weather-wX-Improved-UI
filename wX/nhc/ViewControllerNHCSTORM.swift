@@ -40,15 +40,15 @@ class ViewControllerNHCSTORM: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        url = ActVars.NHCStormUrl
-        titleS = ActVars.NHCStormTitle
-        imgUrl1 = ActVars.NHCStormImgUrl1
+        url = ActVars.nhcStormUrl
+        titleS = ActVars.nhcStormTitle
+        imgUrl1 = ActVars.nhcStormImgUrl1
         let yearInString = String(UtilityTime.getYear()).substring(2, 4)
         baseUrl = imgUrl1.replace(yearInString+"_5day_cone_with_line_and_wind_sm2.png", "")
         baseUrl += yearInString
         stormId = baseUrl.substring(baseUrl.count - 4)
         goesIdImg = stormId.substring(stormId.count - 4, stormId.count - 2)
-        stormId = ActVars.NHCStormWallet
+        stormId = ActVars.nhcStormWallet
         stormId = stormId.replace("EP0", "EP").replace("AL0", "AL")
         goesSector = stormId.truncate(1)
         goesSector = goesSector.replace("A", "L")  // value is either E or L
@@ -93,7 +93,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product + self.stormId)
             DispatchQueue.main.async {
-                ActVars.TEXTVIEWText = html
+                ActVars.textViewText = html
                 self.goToVC("textviewer")
             }
         }
