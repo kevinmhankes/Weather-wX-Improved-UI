@@ -18,7 +18,7 @@ final class UtilityModelsSPCSREFInterface {
         ObjectMenuTitle("Winter", 38),
         ObjectMenuTitle("Fire", 48),
         ObjectMenuTitle("Aviation", 9)
-        ]
+    ]
 
     static let params = [
         "SREF_PROB_TRW_CALIBRATED_HRLY__",
@@ -346,7 +346,7 @@ final class UtilityModelsSPCSREFInterface {
         "SREF_maxtop_prob_low_",
         "SREF_maxtop_prob_mid_",
         "SREF_maxtop_prob_high_"
-        ]
+    ]
 
     static let labels = [
         "[PR]:3hr Calibrated Thunderstorm",
@@ -674,5 +674,5 @@ final class UtilityModelsSPCSREFInterface {
         "[CPR]:Conditional_Prob_CCT_<=31KFT",
         "[CPR]:Conditional_Prob_CCT_31-37KFT",
         "[CPR]:Conditional_Prob_CCT_>37KFT"
-        ]
+    ]
 }

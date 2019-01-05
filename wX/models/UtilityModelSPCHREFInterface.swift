@@ -14,7 +14,7 @@ final class UtilityModelSPCHREFInterface {
         ObjectMenuTitle("Fire", 11),
         ObjectMenuTitle("Precipitation", 16),
         ObjectMenuTitle("Storm Attributes", 24)
-        ]
+    ]
 
     static let sectorsLong = [
         "CONUS",
@@ -140,7 +140,7 @@ final class UtilityModelSPCHREFInterface {
         "wspd_003hmax_pb30_members",
         "wspd_024hmax_max",
         "wspd_024hmax_pb30_members"
-        ]
+    ]
 
     static let labels = [
         "4-hr HREF/SREF Calibrated: Hail",
@@ -247,5 +247,5 @@ final class UtilityModelSPCHREFInterface {
         "10m 3-hr max Wind Speed: PB[>30]",
         "10m 24-hr max Wind Speed: max",
         "10m 24-hr max Wind Speed: PB[>30]"
-        ]
+    ]
 }

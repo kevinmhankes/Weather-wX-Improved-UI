@@ -15,12 +15,12 @@ final class UtilityModelWPCGEFSInterface {
         ObjectMenuTitle("Upper Level Temps", 10),
         ObjectMenuTitle("Stnd Anom Temps", 18),
         ObjectMenuTitle("Other", 43)
-        ]
+    ]
 
     static let sectors = [
         "US",
         "AK"
-        ]
+    ]
 
     static let params = [
         "p06igt0p01",
@@ -181,7 +181,7 @@ final class UtilityModelWPCGEFSInterface {
         "capegt6000",
         "capegt8000",
         "capegt10000"
-        ]
+    ]
 
     static let labels = [
         "6-hr precip > 0.01",

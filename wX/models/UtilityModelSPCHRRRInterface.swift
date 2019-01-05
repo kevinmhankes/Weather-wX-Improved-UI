@@ -43,7 +43,7 @@ final class UtilityModelSPCHRRRInterface {
         "uh",
         "ptype",
         "ttd"
-        ]
+    ]
 
     static let labels = [
         "Composite Reflectivity",
@@ -56,5 +56,5 @@ final class UtilityModelSPCHRRRInterface {
         "Updraft Helicity",
         "Winter Parameters",
         "Temp/Dwpt"
-        ]
+    ]
 }

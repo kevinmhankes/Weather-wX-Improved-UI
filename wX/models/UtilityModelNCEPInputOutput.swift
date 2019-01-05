@@ -45,7 +45,7 @@ final class UtilityModelNCEPInputOutput {
         if om.model == "HRRR" {
             timeLocal = om.time + "00"
         }
-        if om.model=="GFS" {
+        if om.model == "GFS" {
             imgUrl = "http://mag.ncep.noaa.gov/data/" + om.model.lowercased() + "/" + om.run.replaceAll("Z", "")
                 + "/" + om.sector.lowercased() + "/" + om.param + "/" + om.model.lowercased()
                 + "_"+om.sector.lowercased() + "_" + timeLocal + "_" + om.param + ".gif"

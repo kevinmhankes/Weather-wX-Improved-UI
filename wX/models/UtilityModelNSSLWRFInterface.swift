@@ -47,7 +47,7 @@ final class UtilityModelNSSLWRFInterface {
         "ltgthrt1",
         "ltgthrt2",
         "ltgthrt3"
-        ]
+    ]
 
     static let labelsNsslWrf = [
         "MSLP (mb)",
@@ -83,7 +83,7 @@ final class UtilityModelNSSLWRFInterface {
         "Lightning - 1-h max Threat1",
         "Lightning - 1-h max Threat2",
         "Lightning - 1-h max Threat3"
-        ]
+    ]
 
     static let paramsNsslFv3 = [
         "mslp",
