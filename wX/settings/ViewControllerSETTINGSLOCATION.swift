@@ -32,19 +32,32 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
         let locName = MyApplication.locations[sender.data].name
         let alert = ObjectPopUp(self, locName, addButton)
-        alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"",
-                                      style: .default,
-                                      handler: {_ in self.actionLocation(sender.data)}))
+        alert.addAction(
+            UIAlertAction(
+                title: "Edit \"" + locName + "\"",
+                style: .default,
+                handler: {_ in self.actionLocation(sender.data)}
+            )
+        )
         if Location.numLocations > 1 {
-            alert.addAction(UIAlertAction(title: "Delete \"" + locName + "\"",
-                                          style: .default,
-                                          handler: {_ in self.deleteLocation(sender.data)}))
-            alert.addAction(UIAlertAction(title: "Move Up",
-                                          style: .default,
-                                          handler: {_ in self.moveUp(sender.data)}))
-            alert.addAction(UIAlertAction(title: "Move Down",
-                                          style: .default,
-                                          handler: {_ in self.moveDown(sender.data)}))
+            alert.addAction(
+                UIAlertAction(
+                    title: "Delete \"" + locName + "\"",
+                    style: .default,
+                    handler: {_ in self.deleteLocation(sender.data)})
+            )
+            alert.addAction(
+                UIAlertAction(
+                    title: "Move Up",
+                    style: .default,
+                    handler: {_ in self.moveUp(sender.data)})
+            )
+            alert.addAction(
+                UIAlertAction(
+                    title: "Move Down",
+                    style: .default,
+                    handler: {_ in self.moveDown(sender.data)})
+            )
         }
         alert.finish()
     }
@@ -103,12 +116,14 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             locations.append(locationStr)
             let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon)"
             let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"
-            let objLocCard = ObjectTextView(stackView,
-                                            Location.getName($0)
-                                                + MyApplication.newline
-                                                + latLon
-                                                + MyApplication.newline
-                                                + off)
+            let objLocCard = ObjectTextView(
+                stackView,
+                Location.getName($0)
+                    + MyApplication.newline
+                    + latLon
+                    + MyApplication.newline
+                    + off
+            )
             objLocCard.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
             )

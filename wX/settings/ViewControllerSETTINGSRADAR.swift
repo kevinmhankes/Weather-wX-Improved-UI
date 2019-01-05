@@ -19,10 +19,12 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let switchObject = ObjectSettingsSwitch(stackView,
-                                                    prefVar,
-                                                    UtilitySettingsRadar.booleanDefault,
-                                                    UtilitySettingsRadar.boolean)
+            let switchObject = ObjectSettingsSwitch(
+                stackView,
+                prefVar,
+                UtilitySettingsRadar.booleanDefault,
+                UtilitySettingsRadar.boolean
+            )
             switchObject.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
             switchObject.sw.addTarget(self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged)
             switchObject.sw.tag = index
@@ -42,9 +44,14 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                     animated: true
                 )
             } else {
-                objNp.sw.selectRow(preferences.getInt(prefVar, UtilitySettingsRadar.pickerinit[prefVar]!),
-                                   inComponent: 0,
-                                   animated: true)
+                objNp.sw.selectRow(
+                    preferences.getInt(
+                        prefVar,
+                        UtilitySettingsRadar.pickerinit[prefVar]!
+                    ),
+                    inComponent: 0,
+                    animated: true
+                )
             }
         }
     }
@@ -118,11 +125,15 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "RADAR_COLOR_PALETTE_94" || array[pickerView.tag] == "RADAR_COLOR_PALETTE_99" {
-                editor.putString(array[pickerView.tag],
-                                 UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])
+                editor.putString(
+                    array[pickerView.tag],
+                    UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
+                )
             } else {
-                editor.putInt(array[pickerView.tag],
-                              Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!)
+                editor.putInt(
+                    array[pickerView.tag],
+                    Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!
+                )
             }
         }
     }

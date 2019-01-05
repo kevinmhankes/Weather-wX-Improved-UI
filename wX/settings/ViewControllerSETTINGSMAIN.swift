@@ -13,14 +13,15 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        let titles = ["Location",
-                      "Colors",
-                      "PlayList",
-                      "Radar",
-                      "Home Screen",
-                      "User Interface",
-                      "Celsius to Fahrenheit table",
-                      "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
+        let titles = [
+            "Location",
+            "Colors",
+            "PlayList",
+            "Radar",
+            "Home Screen",
+            "User Interface",
+            "Celsius to Fahrenheit table",
+            "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
         ]
         titles.forEach {
             let objText = ObjectTextView(self.stackView, $0)

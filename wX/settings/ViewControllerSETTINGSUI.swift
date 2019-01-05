@@ -14,16 +14,22 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
-            let switchObject = ObjectSettingsSwitch(stackView,
-                                                    $1,
-                                                    UtilitySettingsUI.booleanDefault,
-                                                    UtilitySettingsUI.boolean)
-            switchObject.vw.addTarget(self,
-                                      action: #selector(self.getHelp(sender:)),
-                                      for: .touchUpInside)
-            switchObject.sw.addTarget(self,
-                                      action: #selector(self.switchChanged(sender:)),
-                                      for: UIControl.Event.valueChanged)
+            let switchObject = ObjectSettingsSwitch(
+                stackView,
+                $1,
+                UtilitySettingsUI.booleanDefault,
+                UtilitySettingsUI.boolean
+            )
+            switchObject.vw.addTarget(
+                self,
+                action: #selector(self.getHelp(sender:)),
+                for: .touchUpInside
+            )
+            switchObject.sw.addTarget(
+                self,
+                action: #selector(self.switchChanged(sender:)),
+                for: UIControl.Event.valueChanged
+            )
             switchObject.sw.tag = $0
         }
         generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
@@ -43,9 +49,11 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
                 }
                 objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
             } else {
-                objNp.sw.selectRow(preferences.getInt(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
-                                   inComponent: 0,
-                                   animated: true)
+                objNp.sw.selectRow(
+                    preferences.getInt(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
+                    inComponent: 0,
+                    animated: true
+                )
             }
         }
     }
