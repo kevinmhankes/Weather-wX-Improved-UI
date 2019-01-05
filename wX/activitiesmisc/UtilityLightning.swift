@@ -23,7 +23,7 @@ final class UtilityLightning {
         "12 HR",
         "24 HR",
         "48 HR"
-        ]
+    ]
 
     static func getImage(_ sector: String, _ period: String) -> Bitmap {
         let url: String

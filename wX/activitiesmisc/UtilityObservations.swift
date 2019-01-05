@@ -19,7 +19,7 @@ final class UtilityObservations {
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namnesfcwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namaksfcwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namak2sfcwbg.gif"
-        ]
+    ]
 
     static let labels = [
         "CONUS Surface Obs",
@@ -34,5 +34,5 @@ final class UtilityObservations {
         "NE Surface Analysis",
         "AK Surface Analysis",
         "Gulf of AK Surface Analysis"
-        ]
+    ]
 }

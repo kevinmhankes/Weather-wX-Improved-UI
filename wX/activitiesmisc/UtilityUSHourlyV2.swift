@@ -27,7 +27,7 @@ final class UtilityUSHourlyV2 {
     static let hourlyAbbreviationsSecond = [
         "Showers": "Shwr",
         "Rn And Sn": "Rn/Sn"
-        ]
+    ]
 
     static func getFooter() -> String {
         var footer = MyApplication.newline

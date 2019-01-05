@@ -30,7 +30,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         "RTP: Regional Temp/Precip Summary",
         "FWF: Fire weather Forecast",
         "NSH: Nearshore Marine Forecast"
-        ]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
