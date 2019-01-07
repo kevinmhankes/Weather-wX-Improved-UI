@@ -54,6 +54,7 @@ final class Color {
         return [newRed, newGreen, newBlue]
     }
 
+// FIXME var naming
     class func colorToHSV(_ color: Int, _ hsv: [Double]) -> [Double] {
         let rI: Int = ((color >> 16) & 0xFF)
         let gI: Int = ((color >> 8) & 0xFF)
