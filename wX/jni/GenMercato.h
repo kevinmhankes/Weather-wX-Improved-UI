@@ -5,16 +5,22 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
 
-void JNI_GenMercato (  char* iBuff, char* oBuff,
-                float center_x, float center_y, float x_image_center_pixels,
-                float y_image_center_pixels,  float one_degree_scale_factor, int count);
+void JNI_GenMercato(
+    char* iBuff,
+    char* oBuff,
+    float center_x, 
+    float center_y, 
+    float x_image_center_pixels,
+    float y_image_center_pixels,  
+    float one_degree_scale_factor, 
+    int count
+);
 
-void JNI_GenMercatoMetal (  char* iBuff, char* oBuff,
+void JNI_GenMercatoMetal(  char* iBuff, char* oBuff,
                      float center_x, float center_y, float x_image_center_pixels,
                      float y_image_center_pixels,  float one_degree_scale_factor, int count,
                           float red, float green, float blue, float z);

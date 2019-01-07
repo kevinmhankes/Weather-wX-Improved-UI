@@ -5,17 +5,22 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-
 #include "GenMercato.h"
 
- void JNI_GenMercato (  char* iBuff, char* oBuff,
-		float center_x, float center_y, float x_image_center_pixels,
-		float y_image_center_pixels,  float one_degree_scale_factor, int count) {
-
+void JNI_GenMercato(
+    char* iBuff,
+    char* oBuff,
+	float center_x,
+    float center_y,
+    float x_image_center_pixels,
+	float y_image_center_pixels,
+    float one_degree_scale_factor,
+    int count
+) {
 	double W_180_DIV_PI = 180.0 / M_PI;
 	double W_PI_DIV_360 = M_PI / 360.0 ;
 	double W_PI_DIV_4 = M_PI / 4.0 ;
-	int i_count=0;
+	int i_count = 0;
     float val1;
 	float val2;
     float in_val1;
@@ -45,15 +50,24 @@
 	}
 }
 
-void JNI_GenMercatoMetal (  char* iBuff, char* oBuff,
-                     float center_x, float center_y, float x_image_center_pixels,
-                     float y_image_center_pixels,  float one_degree_scale_factor, int count,
-                          float red, float green, float blue, float z) {
-    
+void JNI_GenMercatoMetal(
+    char* iBuff,
+    char* oBuff,
+    float center_x,
+    float center_y,
+    float x_image_center_pixels,
+    float y_image_center_pixels,
+    float one_degree_scale_factor,
+    int count,
+    float red,
+    float green,
+    float blue,
+    float z
+) {
     double W_180_DIV_PI = 180.0 / M_PI;
     double W_PI_DIV_360 = M_PI / 360.0 ;
     double W_PI_DIV_4 = M_PI / 4.0 ;
-    int i_count=0;
+    int i_count = 0;
     float val1;
     float val2;
     float val1Reversed;
@@ -63,7 +77,6 @@ void JNI_GenMercatoMetal (  char* iBuff, char* oBuff,
     float one = 1.0;
     char bytes1[4];
     char bytes2[4];
-    
     // for every two floats ( one vertex )
     // compute mercato and insert additional color, z, and alpha floats
     for (i_count = 0; i_count < count; i_count = i_count + 2) {
@@ -86,13 +99,10 @@ void JNI_GenMercatoMetal (  char* iBuff, char* oBuff,
         
         val1Reversed = ReverseFloat(val1);
         val2Reversed = ReverseFloat(val2);
-        
         // write the data out
         memcpy(&oBuff[i_count*4], &val1Reversed, 4);
         memcpy(&oBuff[i_count*4+4], &val2Reversed, 4);
-        
         memcpy(&oBuff[i_count*4+4], &z, 4);
-        
         memcpy(&oBuff[i_count*4], &red, 4);
         memcpy(&oBuff[i_count*4+4], &green, 4);
         memcpy(&oBuff[i_count*4+4], &blue, 4);
