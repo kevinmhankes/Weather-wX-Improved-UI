@@ -16,7 +16,7 @@ class UtilityNexradColors {
         let total = 1.0
         if diff > total / 2 {
             ret = (total - (colorB - colorA)) * -1.0
-            if ret<0 {
+            if ret < 0 {
                 return ret + total
             } else {
                 return ret

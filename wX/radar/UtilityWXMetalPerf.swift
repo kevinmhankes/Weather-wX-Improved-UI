@@ -16,8 +16,11 @@ class UtilityWXMetalPerf {
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
-        if disFirst.capacity == 0 {return 0}
-        while disFirst.getShort() != -1 {}
+        if disFirst.capacity == 0 {
+            return 0
+        }
+        while disFirst.getShort() != -1 {
+        }
         disFirst.skipBytes(100)
         var retSize: UInt32 = 1000000
         let oBuff = [UInt8](repeating: 1, count: Int(retSize))
@@ -84,6 +87,7 @@ class UtilityWXMetalPerf {
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
+                    // FIXME a method for below would be good
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
@@ -179,6 +183,7 @@ class UtilityWXMetalPerf {
                     // 1
                     radarBuffers.putFloat(binStart * angleVCos)
                     radarBuffers.putFloat(binStart * angleVSin)
+                    // FIXME method
                     radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
                     radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
@@ -242,10 +247,11 @@ class UtilityWXMetalPerf {
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-            pixXD = ( -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble)
+            pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
 
             buffers.putFloat(pixXD)
             buffers.putFloat( -pixYD)
+            // FIXME method
             buffers.putColor(buffers.red)
             buffers.putColor(buffers.green)
             buffers.putColor(buffers.blue)
@@ -280,10 +286,11 @@ class UtilityWXMetalPerf {
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-            pixXD = ( -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble)
+            pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
 
             buffers.putFloat(pixXD)
             buffers.putFloat( -pixYD)
+            // FIXME method
             buffers.putColor(buffers.red)
             buffers.putColor(buffers.green)
             buffers.putColor(buffers.blue)
@@ -319,10 +326,11 @@ class UtilityWXMetalPerf {
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-            pixXD = (-((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble)
+            pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
+                // FIXME method
                 buffers.putColor(buffers.red)
                 buffers.putColor(buffers.green)
                 buffers.putColor(buffers.blue)
@@ -370,10 +378,11 @@ class UtilityWXMetalPerf {
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-            pixXD = (-((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble)
+            pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
+                // FIXME method
                 buffers.putColor(red)
                 buffers.putColor(green)
                 buffers.putColor(blue)
@@ -406,10 +415,11 @@ class UtilityWXMetalPerf {
         test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))
         test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
         pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-        pixXD = (-((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble)
+        pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         (0..<buffers.triangleCount).forEach {
             buffers.putFloat(pixXD + (lenLocal*cos(Double($0) * twicePi / triangleAmountF)))
             buffers.putFloat(-pixYD + (lenLocal*sin(Double($0) * twicePi / triangleAmountF)))
+            // FIXME method
             buffers.putColor(buffers.red)
             buffers.putColor(buffers.green)
             buffers.putColor(buffers.blue)

@@ -19,7 +19,8 @@ class UtilityWXOGLPerf {
         if disFirst.capacity == 0 {
             return 0
         }
-        while disFirst.getShort() != -1 {}
+        while disFirst.getShort() != -1 {
+        }
         disFirst.skipBytes(100)
         var retSize: UInt32 = 1000000
         let oBuff = [UInt8](repeating: 1, count: Int(retSize))

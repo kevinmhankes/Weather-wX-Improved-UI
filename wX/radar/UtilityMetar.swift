@@ -156,7 +156,7 @@ final class UtilityMetar {
                         windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") "
                             + windInKt + " G " + windgustInKt + " kt"
                     }
-                    if TDArr.count>1 {
+                    if TDArr.count > 1 {
                         temperature = TDArr[0]
                         dewpoint = TDArr[1]
                         temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
