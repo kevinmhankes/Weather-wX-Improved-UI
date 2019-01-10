@@ -1,4 +1,3 @@
-
 /*****************************************************************************
  * Copyright (c) 2016, 2017, 2018, 2019 joshua.tee@gmail.com. All rights reserved.
  *
@@ -20,10 +19,20 @@ void JNI_GenMercato(
     int count
 );
 
-void JNI_GenMercatoMetal(  char* iBuff, char* oBuff,
-                     float center_x, float center_y, float x_image_center_pixels,
-                     float y_image_center_pixels,  float one_degree_scale_factor, int count,
-                          float red, float green, float blue, float z);
+void JNI_GenMercatoMetal(
+    char* iBuff,
+    char* oBuff,
+    float center_x,
+    float center_y,
+    float x_image_center_pixels,
+    float y_image_center_pixels,
+    float one_degree_scale_factor,
+    int count,
+    float red,
+    float green,
+    float blue,
+    float z
+);
 
-float ReverseFloat( const float inFloat );
+float ReverseFloat(const float inFloat);
 
