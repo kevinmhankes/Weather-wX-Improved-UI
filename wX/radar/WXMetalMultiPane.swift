@@ -41,8 +41,103 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var colorLegend = UIColorLegend()
     var screenScale = 0.0
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        /*if numberOfPanes == 1 {
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: size.width,
+                height: size.height
+            )
+        }*/
+
+        let screenWidth = size.width
+        let screenHeight = size.height
+
+        // FIXME move to method
+        var surfaceRatio = Float(screenWidth) / Float(screenHeight)
+        if numberOfPanes == 2 {
+            surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
+        }
+        if numberOfPanes == 4 {
+            surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0)
+        }
+        projectionMatrix = Matrix4.makeOrthoViewAngle(
+            -1.0 * ortInt,
+            right: ortInt,
+            bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+            top: ortInt * (1 / surfaceRatio),
+            nearZ: -100.0,
+            farZ: 100.0
+        )
+        let halfWidth = screenWidth / 2
+        let halfHeight = screenHeight / 2
+        if numberOfPanes == 1 {
+            //metalLayer[0]!.frame = view.layer.frame
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: size.width,
+                height: size.height
+            )
+        } else if numberOfPanes == 2 {
+            // top half for dual
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: CGFloat(screenWidth),
+                height: CGFloat(halfHeight)
+            )
+            // bottom half for dual
+            metalLayer[1]!.frame = CGRect(
+                x: 0,
+                y: CGFloat(halfHeight),
+                width: CGFloat(screenWidth),
+                height: CGFloat(halfHeight)
+            )
+        } else if numberOfPanes == 4 {
+            // top half for quad
+            metalLayer[0]!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+            metalLayer[1]!.frame = CGRect(
+                x: CGFloat(halfWidth),
+                y: 0,
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+            // bottom half for quad
+            metalLayer[2]!.frame = CGRect(
+                x: 0,
+                y: CGFloat(halfHeight),
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+            metalLayer[3]!.frame = CGRect(
+                x: CGFloat(halfWidth),
+                y: CGFloat(halfHeight),
+                width: CGFloat(halfWidth),
+                height: CGFloat(halfHeight)
+            )
+        }
+        //self.render(0)
+        let paneRange = 0..<numberOfPanes
+        paneRange.enumerated().forEach { index, _ in
+            self.render(index)
+        }
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            //self.glviewArr.forEach {$0.setNeedsDisplay()}
+            self.view.setNeedsDisplay()
+        })
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black
         numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
         let paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
