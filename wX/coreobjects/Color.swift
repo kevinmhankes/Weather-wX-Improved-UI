@@ -54,35 +54,34 @@ final class Color {
         return [newRed, newGreen, newBlue]
     }
 
-// FIXME var naming
-    class func colorToHSV(_ color: Int, _ hsv: [Double]) -> [Double] {
-        let rI: Int = ((color >> 16) & 0xFF)
-        let gI: Int = ((color >> 8) & 0xFF)
-        let bI: Int = (color & 0xFF)
-        let rF = Double(rI)/255.0
-        let gF = Double(gI)/255.0
-        let bF = Double(bI)/255.0
-        let color = UIColor(red: CGFloat(rF), green: CGFloat(gF), blue: CGFloat(bF), alpha: 1.0)
-        var fh: CGFloat = 0
-        var fs: CGFloat = 0
-        var fb: CGFloat = 0
-        var fAlpha: CGFloat = 0
-        color.getHue(&fh, saturation: &fs, brightness: &fb, alpha: &fAlpha)
-        return [Double(fh), Double(fs), Double(fb)]
+    class func colorToHsv(_ color: Int, _ hsv: [Double]) -> [Double] {
+        let redInt: Int = ((color >> 16) & 0xFF)
+        let greenInt: Int = ((color >> 8) & 0xFF)
+        let blueInt: Int = (color & 0xFF)
+        let redDouble = Double(redInt)/255.0
+        let greenDouble = Double(greenInt)/255.0
+        let blueDouble = Double(blueInt)/255.0
+        let color = UIColor(red: CGFloat(redDouble), green: CGFloat(greenDouble), blue: CGFloat(blueDouble), alpha: 1.0)
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        return [Double(hue), Double(saturation), Double(brightness)]
     }
 
-    class func HSVToColor(_ hsv: [Double]) -> Int {
+    class func hsvToColor(_ hsv: [Double]) -> Int {
         let color = UIColor(
             hue: CGFloat(hsv[0]),
             saturation: CGFloat(hsv[1]),
             brightness: CGFloat(hsv[2]),
             alpha: CGFloat(1.0)
         )
-        var fRed: CGFloat = 0
-        var fGreen: CGFloat = 0
-        var fBlue: CGFloat = 0
-        var fAlpha: CGFloat = 0
-        color.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
-        return Color.rgb(Int(fRed*255), Int(fGreen*255), Int(fBlue*255))
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return Color.rgb(Int(red*255), Int(green*255), Int(blue*255))
     }
 }
