@@ -43,19 +43,19 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        /*if numberOfPanes == 1 {
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: size.width,
-                height: size.height
-            )
-        }*/
+        setPaneSize(size)
+        let paneRange = 0..<numberOfPanes
+        paneRange.enumerated().forEach { index, _ in
+            self.render(index)
+        }
+        //coordinator.animate(alongsideTransition: nil, completion: { _ in
+        //    self.view.setNeedsDisplay()
+        //})
+    }
 
+    func setPaneSize(_ size: CGSize) {
         let screenWidth = size.width
         let screenHeight = size.height
-
-        // FIXME move to method
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
@@ -124,15 +124,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 height: CGFloat(halfHeight)
             )
         }
-        //self.render(0)
-        let paneRange = 0..<numberOfPanes
-        paneRange.enumerated().forEach { index, _ in
-            self.render(index)
-        }
-        coordinator.animate(alongsideTransition: nil, completion: { _ in
-            //self.glviewArr.forEach {$0.setNeedsDisplay()}
-            self.view.setNeedsDisplay()
-        })
     }
 
     override func viewDidLoad() {
