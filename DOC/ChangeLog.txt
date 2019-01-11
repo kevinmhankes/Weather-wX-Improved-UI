@@ -8,13 +8,14 @@
 // TODO move more vars out of global namespace - like ActVars , camelcase in process
 // TODO roaming location
 // TODO make ortInt configurable
+// TODO look into widgets
 // TODO look at threads on main screen
 // TODO test text in main screen radar
 // TODO look at migrating all pref activity to utils
-// TODO initial radar load shows all white background
 // TODO Feb 2019 - remove option for OpenGL
 // TODO Mar 2019 - remove OpenGL code
 
+2018_01_11 54700 
 2018_01_10 54600 metal - black bg and correct screen rotation
 		 metal is now the default radar
 2018_01_05 54500 misc code refactor

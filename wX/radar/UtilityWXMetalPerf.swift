@@ -12,7 +12,7 @@ class UtilityWXMetalPerf {
     static let piDiv4 = Double.pi / 4.0
     static let piDiv360 = Double.pi / 360.0
     static let twicePi = 2.0 * Double.pi
-    
+
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
@@ -223,25 +223,15 @@ class UtilityWXMetalPerf {
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
-
             buffers.putFloat(pixXD)
             buffers.putFloat( -pixYD)
-            // FIXME method
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
-
+            buffers.putColors()
             buffers.putFloat(pixXD - len)
             buffers.putFloat(-pixYD + len)
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
-
+            buffers.putColors()
             buffers.putFloat(pixXD + len)
             buffers.putFloat( -pixYD + len)
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
+            buffers.putColors()
         }
     }
 
@@ -262,25 +252,15 @@ class UtilityWXMetalPerf {
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
-
             buffers.putFloat(pixXD)
             buffers.putFloat( -pixYD)
-            // FIXME method
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
-
+            buffers.putColors()
             buffers.putFloat(pixXD - len)
             buffers.putFloat(-pixYD - len)
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
-
+            buffers.putColors()
             buffers.putFloat(pixXD + len)
             buffers.putFloat( -pixYD - len)
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
+            buffers.putColors()
         }
     }
 
@@ -305,20 +285,13 @@ class UtilityWXMetalPerf {
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
-                // FIXME method
-                buffers.putColor(buffers.red)
-                buffers.putColor(buffers.green)
-                buffers.putColor(buffers.blue)
+                buffers.putColors()
                 buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmountF)))
                 buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmountF)))
-                buffers.putColor(buffers.red)
-                buffers.putColor(buffers.green)
-                buffers.putColor(buffers.blue)
+                buffers.putColors()
                 buffers.putFloat(pixXD + (lenLocal * cos((Double($0)+1) *  twicePi / triangleAmountF)))
                 buffers.putFloat(-pixYD + (lenLocal * sin((Double($0)+1) * twicePi / triangleAmountF)))
-                buffers.putColor(buffers.red)
-                buffers.putColor(buffers.green)
-                buffers.putColor(buffers.blue)
+                buffers.putColors()
             }
         }
     }
@@ -334,19 +307,11 @@ class UtilityWXMetalPerf {
         let triangleAmountF = Double(buffers.triangleCount)
         buffers.setToPositionZero()
         buffers.metalBuffer = []
-        var red: UInt8 = 0
-        var blue: UInt8 = 0
-        var green: UInt8 = 0
         (0..<buffers.count).forEach {
-            switch buffers.type.string {
-            case "WIND_BARB_CIRCLE":
-                red = Color.red(Int(buffers.colorIntArray[$0]))
-                green = Color.green(Int(buffers.colorIntArray[$0]))
-                blue = Color.blue(Int(buffers.colorIntArray[$0]))
-            default:
-                red = buffers.red
-                green = buffers.green
-                blue = buffers.blue
+            if buffers.type.string == "WIND_BARB_CIRCLE" {
+                buffers.red = Color.red(Int(buffers.colorIntArray[$0]))
+                buffers.green = Color.green(Int(buffers.colorIntArray[$0]))
+                buffers.blue = Color.blue(Int(buffers.colorIntArray[$0]))
             }
             pointX = buffers.latList[$0]
             pointY = buffers.lonList[$0]
@@ -357,22 +322,16 @@ class UtilityWXMetalPerf {
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
-                // FIXME method
-                buffers.putColor(red)
-                buffers.putColor(green)
-                buffers.putColor(blue)
-
+                buffers.putColors()
+                //buffers.putColor(red)
+                //buffers.putColor(green)
+                //buffers.putColor(blue)
                 buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmountF)))
                 buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmountF)))
-                buffers.putColor(red)
-                buffers.putColor(green)
-                buffers.putColor(blue)
-
+                buffers.putColors()
                 buffers.putFloat(pixXD + (lenLocal * cos((Double($0)+1) *  twicePi / triangleAmountF)))
                 buffers.putFloat(-pixYD + (lenLocal * sin((Double($0)+1) * twicePi / triangleAmountF)))
-                buffers.putColor(red)
-                buffers.putColor(green)
-                buffers.putColor(blue)
+                buffers.putColors()
             }
         }
     }
