@@ -125,6 +125,12 @@ class ObjectMetalBuffers {
         return [Float(red)/255.0, Float(green)/255.0, Float(blue)/255.0]
     }
 
+    func putColors() {
+        putColor(red)
+        putColor(green)
+        putColor(blue)
+    }
+
     func setCount(_ count: Int) {
         self.count = count
     }

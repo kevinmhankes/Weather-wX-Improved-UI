@@ -12,7 +12,7 @@ class UtilityWXMetalPerf {
     static let piDiv4 = Double.pi / 4.0
     static let piDiv360 = Double.pi / 360.0
     static let twicePi = 2.0 * Double.pi
-
+    
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
@@ -87,43 +87,31 @@ class UtilityWXMetalPerf {
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
-                    // FIXME a method for below would be good
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 2
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
 
                     angleCos = cos(angle/k180DivPi)
                     angleSin = sin(angle/k180DivPi)
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
+
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 4
                     radarBuffers.putFloat((binStart * angleCos))
                     radarBuffers.putFloat((binStart * angleSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
 
                     totalBins += 1
                     level = curLevel
@@ -183,43 +171,30 @@ class UtilityWXMetalPerf {
                     // 1
                     radarBuffers.putFloat(binStart * angleVCos)
                     radarBuffers.putFloat(binStart * angleVSin)
-                    // FIXME method
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 2
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVCos)
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVSin)
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
 
                     angleCos = cos(angle / k180DivPi)
                     angleSin = sin(angle / k180DivPi)
                     // 3
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleCos)
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleSin)
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
                     // 4
                     radarBuffers.putFloat(binStart * angleCos)
                     radarBuffers.putFloat(binStart * angleSin)
-                    radarBuffers.putColor(radarBuffers.colormap.redValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.greenValues.get(Int(level)))
-                    radarBuffers.putColor(radarBuffers.colormap.blueValues.get(Int(level)))
+                    radarBuffers.putColorsByIndex(level)
 
                     totalBins += 1
                     level = curLevel
@@ -419,15 +394,10 @@ class UtilityWXMetalPerf {
         (0..<buffers.triangleCount).forEach {
             buffers.putFloat(pixXD + (lenLocal*cos(Double($0) * twicePi / triangleAmountF)))
             buffers.putFloat(-pixYD + (lenLocal*sin(Double($0) * twicePi / triangleAmountF)))
-            // FIXME method
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
+            buffers.putColors()
             buffers.putFloat(pixXD + (lenLocal*cos((Double($0) + 1) * twicePi / triangleAmountF)))
             buffers.putFloat(-pixYD + (lenLocal*sin((Double($0) + 1) * twicePi / triangleAmountF)))
-            buffers.putColor(buffers.red)
-            buffers.putColor(buffers.green)
-            buffers.putColor(buffers.blue)
+            buffers.putColors()
         }
     }
 }

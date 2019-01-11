@@ -15,7 +15,9 @@
 // TODO Feb 2019 - remove option for OpenGL
 // TODO Mar 2019 - remove OpenGL code
 
-2018_01_50 54500 misc code refactor
+2018_01_10 54600 metal - black bg and correct screen rotation
+		 metal is now the default radar
+2018_01_05 54500 misc code refactor
 2018_12_31 54300 convert metal radar from continuous to onDemand render
 2018_12_25 53900 main screen metal radar framework and cleanup
                  [BUG] AWC forecast image URLs had changed

@@ -55,7 +55,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func setPaneSize(_ size: CGSize) {
         let screenWidth = size.width
-        let screenHeight = size.height
+        let screenHeight = size.height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
@@ -190,77 +190,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
         device = MTLCreateSystemDefaultDevice()
-        let screenSize: CGSize = UIScreen.main.bounds.size
-        let screenWidth = Float(screenSize.width)
-        let screenHeight = Float(screenSize.height) + Float(UIPreferences.toolbarHeight)
-        var surfaceRatio = Float(screenWidth) / Float(screenHeight)
-        if numberOfPanes == 2 {
-            surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
-        }
-        if numberOfPanes == 4 {
-            surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0)
-        }
-        projectionMatrix = Matrix4.makeOrthoViewAngle(
-            -1.0 * ortInt,
-            right: ortInt,
-            bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
-            top: ortInt * (1 / surfaceRatio),
-            nearZ: -100.0,
-            farZ: 100.0
-        )
-        let halfWidth = screenWidth / 2
-        let halfHeight = screenHeight / 2
         paneRange.enumerated().forEach { index, _ in
             metalLayer.append(CAMetalLayer())
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
         }
-        if numberOfPanes == 1 {
-            metalLayer[0]!.frame = view.layer.frame
-        } else if numberOfPanes == 2 {
-            // top half for dual
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: CGFloat(screenWidth),
-                height: CGFloat(halfHeight)
-            )
-            // bottom half for dual
-            metalLayer[1]!.frame = CGRect(
-                x: 0,
-                y: CGFloat(halfHeight),
-                width: CGFloat(screenWidth),
-                height: CGFloat(halfHeight)
-            )
-        } else if numberOfPanes == 4 {
-            // top half for quad
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
-            )
-            metalLayer[1]!.frame = CGRect(
-                x: CGFloat(halfWidth),
-                y: 0,
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
-            )
-            // bottom half for quad
-            metalLayer[2]!.frame = CGRect(
-                x: 0,
-                y: CGFloat(halfHeight),
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
-            )
-            metalLayer[3]!.frame = CGRect(
-                x: CGFloat(halfWidth),
-                y: CGFloat(halfHeight),
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
-            )
-        }
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        setPaneSize(screenSize)
         metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
