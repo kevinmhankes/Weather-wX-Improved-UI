@@ -37,6 +37,7 @@ final class ObjectCard7Day {
         tv2.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
+    // TODO create methods to set image and 2 text fields, call from above and below
     func update( _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
         self.isUS = isUS
         if dayImgUrl.count > index {

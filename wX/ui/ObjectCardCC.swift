@@ -50,6 +50,7 @@ final class ObjectCardCC {
         stackViewLocal.addArrangedSubview(ObjectCardStackView(arrangedSubviews: [img.view, sVVertView]).view)
     }
 
+    // TODO create methods to set image and set 3 text fields, call from above and below
     func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if isUS {
             img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
