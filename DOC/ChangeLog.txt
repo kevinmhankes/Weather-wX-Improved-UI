@@ -5,7 +5,6 @@
 // TODO add code to handle rectangular transformation in render
 // TODO look for way to save x/y/zoom of images
 // TODO complete URL refactor to move base URL to myApp
-// TODO move more vars out of global namespace - like ActVars , camelcase in process
 // TODO roaming location
 // TODO make ortInt configurable
 // TODO look into widgets

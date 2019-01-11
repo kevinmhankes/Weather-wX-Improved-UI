@@ -25,7 +25,7 @@ public class UtilityWXOGL {
             }
             if (y.count > 3 && x.count > 3) && (x.count == y.count) {
                 let poly2 = ExternalPolygon.Builder()
-                x.indices.forEach {_ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))}
+                x.indices.forEach { _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))}
                 let polygon2 = poly2.build()
                 let contains = polygon2.contains(point: ExternalPoint(Float(location.lat), Float(location.lon)))
                 if contains && notFound {

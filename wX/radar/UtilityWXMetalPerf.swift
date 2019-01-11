@@ -155,7 +155,7 @@ class UtilityWXMetalPerf {
             level = radarBuffers.rd.binWord.get(bI)
             levelCount = 0
             binStart = radarBlackHole
-            if g < (radarBuffers.rd.numberOfRadials - 1) {
+            if g < radarBuffers.rd.numberOfRadials - 1 {
                 angleV = radarBuffers.rd.radialStartAngle.getFloatNative(g * 4 + 4)
             } else {
                 angleV = radarBuffers.rd.radialStartAngle.getFloatNative(0)
@@ -224,13 +224,13 @@ class UtilityWXMetalPerf {
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             buffers.putFloat(pixXD)
-            buffers.putFloat( -pixYD)
+            buffers.putFloat(-pixYD)
             buffers.putColors()
             buffers.putFloat(pixXD - len)
             buffers.putFloat(-pixYD + len)
             buffers.putColors()
             buffers.putFloat(pixXD + len)
-            buffers.putFloat( -pixYD + len)
+            buffers.putFloat(-pixYD + len)
             buffers.putColors()
         }
     }
@@ -253,13 +253,13 @@ class UtilityWXMetalPerf {
             pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             buffers.putFloat(pixXD)
-            buffers.putFloat( -pixYD)
+            buffers.putFloat(-pixYD)
             buffers.putColors()
             buffers.putFloat(pixXD - len)
             buffers.putFloat(-pixYD - len)
             buffers.putColors()
             buffers.putFloat(pixXD + len)
-            buffers.putFloat( -pixYD - len)
+            buffers.putFloat(-pixYD - len)
             buffers.putColors()
         }
     }
@@ -272,7 +272,7 @@ class UtilityWXMetalPerf {
         var test1 = 0.0
         var test2 = 0.0
         let lenLocal = buffers.lenInit * 0.50
-        let triangleAmountF = Double(buffers.triangleCount)
+        let triangleAmount = Double(buffers.triangleCount)
         buffers.setToPositionZero()
         buffers.metalBuffer = []
         (0..<buffers.count).forEach {
@@ -286,11 +286,11 @@ class UtilityWXMetalPerf {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmountF)))
-                buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmountF)))
+                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmount)))
+                buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos((Double($0)+1) *  twicePi / triangleAmountF)))
-                buffers.putFloat(-pixYD + (lenLocal * sin((Double($0)+1) * twicePi / triangleAmountF)))
+                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) *  twicePi / triangleAmount)))
+                buffers.putFloat(-pixYD + (lenLocal * sin((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putColors()
             }
         }
@@ -304,7 +304,7 @@ class UtilityWXMetalPerf {
         var test1 = 0.0
         var test2 = 0.0
         let lenLocal = buffers.lenInit * 0.50
-        let triangleAmountF = Double(buffers.triangleCount)
+        let triangleAmount = Double(buffers.triangleCount)
         buffers.setToPositionZero()
         buffers.metalBuffer = []
         (0..<buffers.count).forEach {
@@ -326,11 +326,11 @@ class UtilityWXMetalPerf {
                 //buffers.putColor(red)
                 //buffers.putColor(green)
                 //buffers.putColor(blue)
-                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmountF)))
-                buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmountF)))
+                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmount)))
+                buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos((Double($0)+1) *  twicePi / triangleAmountF)))
-                buffers.putFloat(-pixYD + (lenLocal * sin((Double($0)+1) * twicePi / triangleAmountF)))
+                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) *  twicePi / triangleAmount)))
+                buffers.putFloat(-pixYD + (lenLocal * sin((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putColors()
             }
         }
@@ -344,18 +344,18 @@ class UtilityWXMetalPerf {
         var test2 = 0.0
         buffers.count = buffers.triangleCount * 4
         let lenLocal = buffers.lenInit * 2.0
-        let triangleAmountF = Double(buffers.triangleCount)
+        let triangleAmount = Double(buffers.triangleCount)
         buffers.metalBuffer = []
         test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))
         test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
         pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
         pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         (0..<buffers.triangleCount).forEach {
-            buffers.putFloat(pixXD + (lenLocal*cos(Double($0) * twicePi / triangleAmountF)))
-            buffers.putFloat(-pixYD + (lenLocal*sin(Double($0) * twicePi / triangleAmountF)))
+            buffers.putFloat(pixXD + (lenLocal*cos(Double($0) * twicePi / triangleAmount)))
+            buffers.putFloat(-pixYD + (lenLocal*sin(Double($0) * twicePi / triangleAmount)))
             buffers.putColors()
-            buffers.putFloat(pixXD + (lenLocal*cos((Double($0) + 1) * twicePi / triangleAmountF)))
-            buffers.putFloat(-pixYD + (lenLocal*sin((Double($0) + 1) * twicePi / triangleAmountF)))
+            buffers.putFloat(pixXD + (lenLocal*cos((Double($0) + 1) * twicePi / triangleAmount)))
+            buffers.putFloat(-pixYD + (lenLocal*sin((Double($0) + 1) * twicePi / triangleAmount)))
             buffers.putColors()
         }
     }
