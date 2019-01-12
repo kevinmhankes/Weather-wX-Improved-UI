@@ -24,7 +24,7 @@ final class UtilitySunMoon {
         do {
             let time = try sunCalc.time(ofDate: now, forSolarEvent: .dawn, atLocation: location)
             let timeFormatted = formatter.string(from: time)
-            data += "Dawn: \(timeFormatted)"
+            data += "Dawn:     \(timeFormatted)"
             data += MyApplication.newline
         } catch let e as SunCalc.SolarEventError {
             switch e {
@@ -39,7 +39,7 @@ final class UtilitySunMoon {
         do {
             let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
             let sunrise = formatter.string(from: rise)
-            data += "Sunrise: \(sunrise)"
+            data += "Sunrise:  \(sunrise)"
             data += MyApplication.newline
         } catch let e as SunCalc.SolarEventError {
             switch e {
@@ -54,7 +54,7 @@ final class UtilitySunMoon {
         do {
             let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
             let sunset = formatter.string(from: set)
-            data += "Sunset: \(sunset)"
+            data += "Sunset:   \(sunset)"
             data += MyApplication.newline
         } catch let e as SunCalc.SolarEventError {
             switch e {
@@ -69,7 +69,7 @@ final class UtilitySunMoon {
         do {
             let aDusk = try sunCalc.time(ofDate: now, forSolarEvent: .dusk, atLocation: location)
             let astronomicalDusk = formatter.string(from: aDusk)
-            data += "Dusk: \(astronomicalDusk)"
+            data += "Dusk:     \(astronomicalDusk)"
             data += MyApplication.newline
         } catch let e as SunCalc.SolarEventError {
             switch e {
@@ -83,7 +83,7 @@ final class UtilitySunMoon {
         }
         do {
             let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            data += "Moonset: \(formatter.string(from: moonTimes.moonSetTime))"
+            data += "Moonset:  \(formatter.string(from: moonTimes.moonSetTime))"
             data += MyApplication.newline
             data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
             data += MyApplication.newline

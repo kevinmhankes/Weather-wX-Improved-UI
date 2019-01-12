@@ -13,7 +13,10 @@
 // TODO look at migrating all pref activity to utils
 // TODO Feb 2019 - remove option for OpenGL
 // TODO Mar 2019 - remove OpenGL code
+// TODO move sun/moon to main submenu
 
+2018_01_12 54800 metal - change zoom level for hiding gps location circle
+		 move sun/moon to main submenu
 2018_01_12 54700 metal - if autoupdate on keep screen on
 		 redo sun/moon to use local calculations
 		 cc/7day reorg classes
