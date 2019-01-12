@@ -64,9 +64,7 @@ final class UtilityDownload {
         } else if prod == "HWOLOC" {
             text = getTextProduct("hwo" + Location.wfo.lowercased())
         } else if prod == "SUNMOON" {
-            text = UtilitySunMoon.getExtendedData()
-            let textArr = UtilitySunMoon.parseData(text)
-            text = textArr.1
+            text = UtilitySunMoon.computeData()
         } else if prod == "HOURLY" {
             let textArr = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
             text = textArr.0

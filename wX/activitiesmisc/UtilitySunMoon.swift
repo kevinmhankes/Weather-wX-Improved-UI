@@ -12,15 +12,75 @@ final class UtilitySunMoon {
         var data = ""
         let sunCalc = SunCalc()
         let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
         do {
-            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            data += "Moonset: \(dateFormatter.string(from: moonTimes.moonSetTime))"
+            let time = try sunCalc.time(ofDate: now, forSolarEvent: .dawn, atLocation: location)
+            let timeFormatted = formatter.string(from: time)
+            data += "Dawn: \(timeFormatted)"
             data += MyApplication.newline
-            data += "Moonrise: \(dateFormatter.string(from: moonTimes.moonRiseTime))"
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        do {
+            let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
+            let sunrise = formatter.string(from: rise)
+            data += "Sunrise: \(sunrise)"
+            data += MyApplication.newline
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        do {
+            let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
+            let sunset = formatter.string(from: set)
+            data += "Sunset: \(sunset)"
+            data += MyApplication.newline
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        do {
+            let aDusk = try sunCalc.time(ofDate: now, forSolarEvent: .dusk, atLocation: location)
+            let astronomicalDusk = formatter.string(from: aDusk)
+            data += "Dusk: \(astronomicalDusk)"
+            data += MyApplication.newline
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        do {
+            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
+            data += "Moonset: \(formatter.string(from: moonTimes.moonSetTime))"
+            data += MyApplication.newline
+            data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
             data += MyApplication.newline
         } catch let e as SunCalc.LunarEventError {
             switch e {
@@ -33,72 +93,5 @@ final class UtilitySunMoon {
             // Catch any other errors
         }
         return data
-    }
-
-    static func getExtendedData() -> String {
-        let timeZone = UtilityTime.getDateAsString("Z")
-        let tzOffset = timeZone.substring(0, 3) + "." + timeZone.substring(3, 5)
-        let url = "https://api.usno.navy.mil/rstt/oneday?date=today&coords="
-            + Location.latlon.latString + "," + Location.latlon.lonString + "&tz=" + tzOffset
-        return url.getHtml().replace("\n", " ").replace("\t", " ")
-    }
-
-    static func parseData(_ content: String) -> (String, String) {
-        let sundataChunk = content.parse("sundata\":\\[(.*?)\\]")
-        let moondataChunk = content.parse("\"(moondata.:\\[.*?\\])")
-        let moonphaseChunk = content.parse("closestphase.:\\{(.*?)\\}")
-        let moonFracillum = content.parse("fracillum\":\"(.*?)%")
-        let moonCurrentphase = content.parse("curphase\":\"(.*?)\"")
-        let sunTwilight = sundataChunk.parse(" \\{\"phen\":\"BC\", \"time\":\"(.*?)\"\\}")
-        let sunRise = sundataChunk.parse(" \\{\"phen\":\"R\", \"time\":\"(.*?)\"\\}")
-        let sunUppertransit = sundataChunk.parse(" \\{\"phen\":\"U\", \"time\":\"(.*?)\"\\}")
-        let sunSet = sundataChunk.parse(" \\{\"phen\":\"S\", \"time\":\"(.*?)\"\\}")
-        let sunEndTwilight = sundataChunk.parse(" \\{\"phen\":\"EC\", \"time\":\"(.*?)\"\\}")
-        let moonRise = moondataChunk.parse("phen.*?R.*?time.*?([0-9]{2}:[0-9]{2})")
-        let moonUppertransit = moondataChunk.parse("phen.*?U.*?time.*?([0-9]{2}:[0-9]{2})")
-        let moonSet = moondataChunk.parse("phen.*?S.*?time.*?([0-9]{2}:[0-9]{2})")
-        let header = "Sun/Moon Data"
-        var content2 = sunTwilight + " Sun Twilight" + MyApplication.newline
-            + sunRise + " Sunrise" + MyApplication.newline
-            + sunUppertransit + " Sun Upper Transit" + MyApplication.newline
-            + sunSet + " Sunset" + MyApplication.newline
-            + sunEndTwilight + " Sun Twilight End" + MyApplication.newline
-            + MyApplication.newline
-            + moonRise + " Moonrise" + MyApplication.newline
-            + moonUppertransit + " Moon Upper Transit" + MyApplication.newline
-            + moonSet + " Moonset" + MyApplication.newline
-            + MyApplication.newline
-            + moonphaseChunk.replaceAll("\"time\"", "")
-            + MyApplication.newline
-        if moonFracillum != "" {
-            content2 += moonFracillum + "% Moon fracillum" + MyApplication.newline
-        }
-        if moonCurrentphase != "" {
-            content2 += moonCurrentphase + " is the current phase" + MyApplication.newline
-        }
-        return (header, content2)
-    }
-
-    static func getFullDates() -> String {
-        let url = "https://api.usno.navy.mil/moon/phase?date=" + String(UtilityTime.getMonth())
-            + "/" + String(UtilityTime.getDay()) + "/" + String(UtilityTime.getYear()) + "&nump=99"
-        let text = url.getHtml()
-        var fullText = ""
-        let phaseArr = text.parseColumn("\"phase\":\"(.*?)\"")
-        let dateArr = text.parseColumn("\"date\":\"(.*?)\"")
-        let timeArr = text.parseColumn("\"time\":\"(.*?)\"")
-        phaseArr.enumerated().forEach { index, _ in
-            if phaseArr[index].contains("Full Moon") {
-                fullText += Utility.safeGet(dateArr, index) + " "
-                    + Utility.safeGet(timeArr, index)
-                    + " "
-                    + Utility.safeGet(phaseArr, index)
-                    + "  <-----" + MyApplication.newline
-            } else {
-                fullText += Utility.safeGet(dateArr, index) + " "
-                    + Utility.safeGet(timeArr, index) + " " + Utility.safeGet(phaseArr, index) + MyApplication.newline
-            }
-        }
-        return fullText
     }
 }
