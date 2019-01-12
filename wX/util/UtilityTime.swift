@@ -164,14 +164,39 @@ final class UtilityTime {
     }
 
     static func getSunriseSunset() -> String {
-        let coordinates = CLLocationCoordinate2D(
+        /*let coordinates = CLLocationCoordinate2D(
             latitude: Location.latlon.lat as CLLocationDegrees,
             longitude: Location.latlon.lon as CLLocationDegrees
         )
         let solar = Solar(coordinate: coordinates)
         let sunrise = solar?.sunrise
         let sunset = solar?.sunset
-        return "Sunrise: " + getDateAsString(sunrise!, "h:mm") + "  Sunset: " + getDateAsString(sunset!, "h:mm")
+        return "Sunrise: " + getDateAsString(sunrise!, "h:mm") + "  Sunset: " + getDateAsString(sunset!, "h:mm")*/
+
+        let sunCalc = SunCalc()
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
+        var sunrise = ""
+        var sunset = ""
+        do {
+            let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
+            sunrise = formatter.string(from: rise)
+            let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
+            sunset = formatter.string(from: set)
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        return "Sunrise: " + sunrise + "  Sunset: " + sunset
     }
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {

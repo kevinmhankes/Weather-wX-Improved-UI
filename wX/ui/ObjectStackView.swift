@@ -15,6 +15,15 @@ final class ObjectStackView {
         sV.axis = axis
     }
 
+    convenience init(
+        _ distribution: UIStackView.Distribution,
+        _ axis: NSLayoutConstraint.Axis,
+        _ alignment: UIStackView.Alignment
+    ) {
+        self.init(distribution, axis)
+        sV.alignment = alignment
+    }
+
     convenience init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis, _ spacing: CGFloat) {
         self.init(distribution, axis)
         sV.spacing = spacing
