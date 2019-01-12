@@ -8,20 +8,19 @@ import UIKit
 
 final class ObjectCardCC {
 
-    private let textPadding: CGFloat = 80.0
     private let img = ObjectCardImage()
-    private let tv: ObjectTextViewLarge
-    private let tv2: ObjectTextViewSmallGray
-    private let tv3: ObjectTextViewSmallGray
+    private let tv: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
+    private let tv2: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    private let tv3: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
 
     init(_ stackView: UIStackView, _ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         let stackViewLocal = ObjectStackViewHS()
         stackViewLocal.setup()
         stackView.addArrangedSubview(stackViewLocal)
-        tv = ObjectTextViewLarge(textPadding)
+        //tv = ObjectTextViewLarge(textPadding)
         tv.view.isUserInteractionEnabled = true
-        tv2 = ObjectTextViewSmallGray(textPadding)
-        tv3 = ObjectTextViewSmallGray(textPadding)
+        //tv2 = ObjectTextViewSmallGray(textPadding)
+        //tv3 = ObjectTextViewSmallGray(textPadding)
         updateCard(objFcst, isUS)
         let sV2: ObjectStackView
         //var sV2 = StackView()

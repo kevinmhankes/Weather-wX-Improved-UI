@@ -9,3 +9,5 @@ University Corporation for Atmospheric Research/Unidata - substantial Level 2 de
 Cezar Pereira - TabBarControllerSwipeExtension.swift
 Chris Howell - Solar.swift
 Lee Sun-Hyoup https://github.com/kciter/Floaty/
+Venj Chu - https://github.com/imvenj/SunCalc.swift 
+Vladimir Agafonkin - https://github.com/mourner/suncalc
