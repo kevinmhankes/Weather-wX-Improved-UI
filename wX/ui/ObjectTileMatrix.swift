@@ -30,18 +30,26 @@ final class ObjectImageTileMatrix: NSObject {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems([flexBarButton,
-                                                dashButton,
-                                                wfoTextButton,
-                                                cloudButton,
-                                                menuButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    flexBarButton,
+                    dashButton,
+                    wfoTextButton,
+                    cloudButton,
+                    menuButton
+                ]
+            ).items
         } else {
-            toolbar.items = ObjectToolbarItems([flexBarButton,
-                                                dashButton,
-                                                wfoTextButton,
-                                                cloudButton,
-                                                radarButton,
-                                                menuButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    flexBarButton,
+                    dashButton,
+                    wfoTextButton,
+                    cloudButton,
+                    radarButton,
+                    menuButton
+                ]
+            ).items
         }
         uiv.view.addSubview(toolbar)
         let rowCount = UIPreferences.tilesPerRow
@@ -61,11 +69,19 @@ final class ObjectImageTileMatrix: NSObject {
                 let tile = ObjectTileImage(stackView, sV.view, icons[jIndex], jIndex, iconsPerRow)
                 switch tabType {
                 case .spc:
-                    tile.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                     action: #selector(imgClickedSpc(sender:))))
+                    tile.addGestureRecognizer(
+                        UITapGestureRecognizer(
+                            target: self,
+                            action: #selector(imgClickedSpc(sender:))
+                        )
+                    )
                 case .misc:
-                    tile.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                     action: #selector(imgClickedMisc(sender:))))
+                    tile.addGestureRecognizer(
+                        UITapGestureRecognizer(
+                            target: self,
+                            action: #selector(imgClickedMisc(sender:))
+                        )
+                    )
                 }
                 index += 1
                 jIndex += 1
