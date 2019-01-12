@@ -18,7 +18,7 @@ final class ObjectTileImage {
         imgL.tag = index
         imgL.isUserInteractionEnabled = true
         imgL.image = UIImage(data: bitmap.data) ?? UIImage()
-        let width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow)/iconsPerRow
+        let width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         imgL.widthAnchor.constraint(equalToConstant: width).isActive = true
         imgL.heightAnchor.constraint(equalToConstant: width * (bitmap.height/bitmap.width)).isActive = true
         sV.addArrangedSubview(imgL)

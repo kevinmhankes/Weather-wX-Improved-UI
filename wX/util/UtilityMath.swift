@@ -9,7 +9,7 @@ import Foundation
 final class UtilityMath {
 
     static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {
-        let relativeHumidity = 100 * (exp((17.625 * dewpt)/(243.04 + dewpt))/exp((17.625 * temp)/(243.04 + temp)))
+        let relativeHumidity = 100 * (exp((17.625 * dewpt) / (243.04 + dewpt)) / exp((17.625 * temp) / (243.04 + temp)))
         return roundDToString(relativeHumidity)
     }
 
@@ -81,7 +81,7 @@ final class UtilityMath {
     }
 
     static func farenheitTocelsius(_ valueD: Double) -> String {
-        return String(Int(round((valueD-32) * 5 / 9)))
+        return String(Int(round((valueD - 32) * 5 / 9)))
     }
 
     static func celsiusToFarenheitTable() -> String {

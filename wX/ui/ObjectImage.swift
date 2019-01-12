@@ -29,6 +29,7 @@ final class ObjectImage {
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
         self.init()
         img.image = bitmap.image
+        // TODO move this to class method
         UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
         width = UIScreen.main.bounds.width
