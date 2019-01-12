@@ -1,13 +1,11 @@
 import Foundation
 
-// Type aliases
 public typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
 public typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
 public typealias MoonPosition = (azimuth: Double, altitude: Double, distance: Double, parallacticAngle: Double)
 public typealias MoonCoordinate = (rightAscension: Double, declination: Double, distance: Double)
 public typealias MoonIllumination = (fraction: Double, phase: Double, angle: Double)
 
-// Solar Events
 public enum SolarEvent {
     case sunrise
     case sunset
@@ -32,22 +30,19 @@ public enum SolarEvent {
         case .nauticalDawn, .nauticalDusk: return -12.0
         case .astronomicalDawn, .astronomicalDusk: return -18.0
         case .goldenHourEnd, .goldenHour: return 6.0
-        case .noon: return 90.0 // Just for reference
-        case .nadir: return -90.0 // Just for reference
+        case .noon: return 90.0
+        case .nadir: return -90.0
         }
     }
 }
 
-// Main implementation
 public class SunCalc {
 
-    // Location Structure
     public struct Location {
         var latitude: Double
         var longitude: Double
     }
 
-    // Errors
     public enum SolarEventError: Error {
         case sunNeverRise
         case sunNeverSet
@@ -122,11 +117,18 @@ public class SunCalc {
         if cosH < -1 {
             throw SolarEventError.sunNeverSet
         }
-        //print(cosH)
         return acos(cosH)
     }
 
-    private func getSetJ(h: Double, lw: Double, phi: Double, dec: Double, n: Double, m: Double, l:Double) throws -> Double {
+    private func getSetJ(
+        h: Double,
+        lw: Double,
+        phi: Double,
+        dec: Double,
+        n: Double,
+        m: Double,
+        l: Double
+    ) throws -> Double {
         let w = try hourAngle(h: h, phi: phi, d: dec)
         let a = approximateTransit(hT: w, lw: lw, n: n)
         return solarTransitJ(ds: a, m: m, l: l)
@@ -148,7 +150,6 @@ public class SunCalc {
         let d = date.daysSince2000
         let c = sunCoordinates(d)
         let h = siderealTime(d: d, lw: lw) - c.rightAscension
-
         return (azimuth(h: h, phi: phi, dec: c.declination), altitude(h: h, phi: phi, dec: c.declination))
     }
 
@@ -161,7 +162,6 @@ public class SunCalc {
         var h1 = altitude(h: h, phi: phi, dec: c.declination)
         let pa = atan2(sin(h), tan(phi) * cos(c.declination) - sin(c.declination) * cos(h))
         h1 += astroRefraction(h1)
-
         return (azimuth(h: h, phi: phi, dec: c.declination), h1, c.distance, pa)
     }
 
@@ -170,11 +170,17 @@ public class SunCalc {
         let s = sunCoordinates(d)
         let m = moonCoordinates(d)
         let sDist = 149598000.0 // Distance from earth to sun
-        let phi = acos(sin(s.declination) * sin(m.declination) + cos(s.declination) * cos(m.declination) * cos(s.rightAscension - m.rightAscension))
+        let phi = acos(
+            sin(s.declination)
+                * sin(m.declination)
+                + cos(s.declination) * cos(m.declination) * cos(s.rightAscension - m.rightAscension)
+        )
         let inc = atan2(sDist * sin(phi), m.distance - sDist * cos(phi))
         let angle = atan2(
             cos(s.declination) * sin(s.rightAscension - m.rightAscension),
-            sin(s.declination) * cos(m.declination) - cos(s.declination) * sin(m.declination) * cos(s.rightAscension - m.rightAscension)
+            sin(s.declination)
+                * cos(m.declination)
+                - cos(s.declination) * sin(m.declination) * cos(s.rightAscension - m.rightAscension)
         )
         return ((1.0 + cos(inc)) / 2.0, 0.5 + 0.5 * inc * (angle < 0.0 ? -1.0 : 1.0) / Double.pi, angle)
     }
@@ -190,10 +196,8 @@ public class SunCalc {
         let dec = declination(l: l, b: 0.0)
         let jNoon = solarTransitJ(ds: ds, m: m, l: l)
         let noon = Date(julianDays: jNoon)
-
         let angle = event.solarAngle
         let jSet = try getSetJ(h: angle * Double.radPerDegree, lw: lw, phi: phi, dec: dec, n: n, m: m, l: l)
-
         switch event {
         case .noon: return noon
         case .nadir:
@@ -213,11 +217,9 @@ public class SunCalc {
         let date = date.beginning()
         let hc = 0.133 * Double.radPerDegree
         var h0 = moonPosition(date: date, location: location).altitude - hc
-
         var riseHour: Double?
         var setHour: Double?
         var ye: Double = 0.0
-
         for i in 1...24 {
             if i % 2 == 0 { continue }
             let h1 = moonPosition(date: date.hoursLater(Double(i)), location: location).altitude - hc
@@ -227,7 +229,6 @@ public class SunCalc {
             let xe = -b / (2.0 * a)
             ye = (a * xe + b) * xe + h1
             let d = b * b - 4.0 * a * h1
-
             if d >= 0 {
                 let dx = sqrt(d) / (fabs(a) * 2.0)
                 var roots = 0
@@ -236,16 +237,13 @@ public class SunCalc {
                 if fabs(x1) < 1.0 { roots += 1 }
                 if fabs(x2) < 1.0 { roots += 1 }
                 if x1 < -1.0 { x1 = x2 }
-
                 if roots == 1 {
                     if h0 < 0.0 {
                         riseHour = Double(i) + x1
-                    }
-                    else {
+                    } else {
                         setHour = Double(i) + x1
                     }
-                }
-                else if roots == 2 {
+                } else if roots == 2 {
                     riseHour = Double(i) + (ye < 0 ? x2 : x1)
                     setHour = Double(i) + (ye < 0 ? x1 : x2)
                 }
@@ -254,23 +252,18 @@ public class SunCalc {
                     break
                 }
             }
-
             h0 = h2
         }
-
         if let riseHour = riseHour, let setHour = setHour {
             return (moonRiseTime: date.hoursLater(riseHour), moonSetTime: date.hoursLater(setHour))
-        }
-        else {
+        } else {
             if ye > 0 {
                 let rise = (riseHour == nil) ? nil : date.hoursLater(riseHour!)
                 throw LunarEventError.moonNeverSet(rise)
-            }
-            else {
+            } else {
                 let set = (setHour == nil) ? nil : date.hoursLater(setHour!)
                 throw LunarEventError.moonNeverRise(set)
             }
         }
     }
 }
-

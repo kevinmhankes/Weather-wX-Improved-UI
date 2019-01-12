@@ -8,6 +8,8 @@ import Foundation
 
 final class UtilitySunMoon {
 
+    // TODO use this on main screen in place of older library
+    
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()
@@ -95,20 +97,15 @@ final class UtilitySunMoon {
         } catch {
             // Catch any other errors
         }
-
         let moonIllumination = sunCalc.moonIllumination(date: now)
-            //data += "Moonset: \(formatter.string(from: moonTimes.moonSetTime))"
-            //data += MyApplication.newline
-            //data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
-            //data += MyApplication.newline
-
         data += "Moon Phase: "
             + moonPhaseFromIllumination(moonIllumination.phase)
             +  " "
-            + String(moonIllumination.phase)
+            + String(moonIllumination.phase.roundTo(places: 3))
             + MyApplication.newline
         data += MyApplication.newline
         data += "Approximate Full Moon: "
+        data += MyApplication.newline
         (1...360).forEach {
             let future = Calendar.current.date(byAdding: .day, value: $0, to: now)
             let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
@@ -134,8 +131,8 @@ final class UtilitySunMoon {
     static func moonPhaseFromIllumination(_ phase: Double) -> String {
         var phaseString = ""
         switch phase {
-        case 0..<0.2: phaseString = "New Moon"
-        case 0.2..<0.23: phaseString = "Waxing Crescent"
+        case 0..<0.02: phaseString = "New Moon"
+        case 0.02..<0.23: phaseString = "Waxing Crescent"
         case 0.23..<0.27: phaseString = "First Quarter"
         case 0.27..<0.47: phaseString = "Waxing Gibbous"
         case 0.47..<0.52: phaseString = "Full Moon"
