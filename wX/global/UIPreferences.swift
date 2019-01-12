@@ -18,7 +18,6 @@ class UIPreferences {
     static var showMetarInCC = false
     static var unitsM = false
     static var unitsF = true
-    static var useMetalRadar = false
     static var nwsIconTextColor = 0
     static var nwsIconBottomColor = 0
     static var textviewFontSize: CGFloat = 16.0
@@ -37,7 +36,6 @@ class UIPreferences {
         homescreenTextLength = preferences.getInt("HOMESCREEN_TEXT_LENGTH_PREF", 500)
         unitsM = preferences.getString("UNITS_M", "true").hasPrefix("t")
         unitsF = preferences.getString("UNITS_F", "true").hasPrefix("t")
-        useMetalRadar = preferences.getString("METAL_RADAR", "true").hasPrefix("t")
         nwsIconTextColor = preferences.getInt("NWS_ICON_TEXT_COLOR", Color.rgb(38, 97, 139))
         nwsIconBottomColor = preferences.getInt("NWS_ICON_BOTTOM_COLOR", Color.rgb(255, 255, 255))
         refreshLocMin = preferences.getInt("REFRESH_LOC_MIN", 10)

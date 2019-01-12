@@ -161,18 +161,10 @@ final class ObjectImageTileMatrix: NSObject {
         case "nwsobs":       token = "obssites"
         case "wxogldualpane":
             ActVars.wxoglPaneCount = "2"
-            if UIPreferences.useMetalRadar {
-                token = "wxmetalradar"
-            } else {
-                token = "wxoglmultipane"
-            }
+            token = "wxmetalradar"
         case "wxoglquadpane":
             ActVars.wxoglPaneCount = "4"
-            if UIPreferences.useMetalRadar {
-                token = "wxmetalradar"
-            } else {
-                token = "wxoglmultipane"
-            }
+            token = "wxmetalradar"
         case "nsslwrf":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "NSSLWRF"

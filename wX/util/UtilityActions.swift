@@ -31,11 +31,7 @@ final class UtilityActions {
             } else {
                 ActVars.wxoglPaneCount = "1"
             }
-            if UIPreferences.useMetalRadar {
-                goToVCS(uiv, "wxmetalradar")
-            } else {
-                goToVCS(uiv, "wxoglmultipane")
-            }
+            goToVCS(uiv, "wxmetalradar")
         }
     }
 
