@@ -16,7 +16,6 @@ final class ObjectCard7Day {
     let img = ObjectCardImage()
 
     init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
-        self.isUS = isUS
         tv = ObjectTextViewLarge(textPadding)
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         tv2 = ObjectTextViewSmallGray(textPadding)
@@ -29,23 +28,24 @@ final class ObjectCard7Day {
         UtilityUI.setupStackView(sVVertView)
         sV = ObjectCardStackView(arrangedSubviews: [img.view, sVVertView])
         stackView.addArrangedSubview(sV.view)
-        if dayImgUrl.count > index {
-            img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
-        }
-        let textArr = self.format7Day(dayArr[index].replace("</text>", ""))
+        update(index, dayImgUrl, dayArr, isUS)
+    }
+
+    func update(_ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
+        self.isUS = isUS
+        setImage(index, dayImgUrl)
+        setTextFields(self.format7Day(dayArr[index].replace("</text>", "")))
+    }
+
+    func setTextFields(_ textArr: (String, String)) {
         tv.text = textArr.0
         tv2.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
-    // TODO create methods to set image and 2 text fields, call from above and below
-    func update( _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
-        self.isUS = isUS
+    func setImage(_ index: Int, _ dayImgUrl: [String]) {
         if dayImgUrl.count > index {
             img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
         }
-        let textArr = self.format7Day(dayArr[index].replace("</text>", ""))
-        tv.text = textArr.0
-        tv2.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func format7Day(_ dayStr: String) -> (String, String) {

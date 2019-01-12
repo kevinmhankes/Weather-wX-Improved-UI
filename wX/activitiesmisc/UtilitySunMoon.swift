@@ -9,7 +9,7 @@ import Foundation
 final class UtilitySunMoon {
 
     // TODO use this on main screen in place of older library
-    
+
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()
