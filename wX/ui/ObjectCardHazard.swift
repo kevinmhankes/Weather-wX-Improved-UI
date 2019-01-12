@@ -12,10 +12,6 @@ final class ObjectCardHazard {
     let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView, _ hazard: String) {
-        //sVLoc = UIStackView()
-        //sVLoc.distribution = .fill
-        //sVLoc.axis = .horizontal
-        //sVLoc.alignment = .center
         objLabel = ObjectTextView(sVLoc.view, hazard, UIFont.systemFont(ofSize: 20), UIColor.blue)
         stackView.addArrangedSubview(sVLoc.view)
     }

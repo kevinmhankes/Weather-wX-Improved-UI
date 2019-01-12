@@ -8,7 +8,6 @@ import UIKit
 
 final class ObjectCard7Day {
 
-    //private let textPadding: CGFloat = 80.0
     private var isUS = true
     private let sV: ObjectCardStackView
     private let tv = ObjectTextViewLarge(80.0)
@@ -16,18 +15,10 @@ final class ObjectCard7Day {
     let img = ObjectCardImage()
 
     init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
-        //tv = ObjectTextViewLarge(textPadding)
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
-        //tv2 = ObjectTextViewSmallGray(textPadding)
-        //let sV2 = StackView(arrangedSubviews: [tv.view, tv2.view])
         let sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         sV2.view.alignment = UIStackView.Alignment.top
-        //UtilityUI.setupStackView(sV2)
-        //let sV3 = StackView()
-        //UtilityUI.setupStackView(sV3)
-        let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view]) // was [sV2.view, sV3]
-        //let sVVertView = StackView(arrangedSubviews: [sV2.view, sV3])
-        //UtilityUI.setupStackView(sVVertView)
+        let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view])
         sV = ObjectCardStackView(arrangedSubviews: [img.view, sVVertView.view])
         stackView.addArrangedSubview(sV.view)
         update(index, dayImgUrl, dayArr, isUS)

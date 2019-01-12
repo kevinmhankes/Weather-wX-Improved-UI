@@ -12,10 +12,6 @@ final class ObjectCardSunTime {
     let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView) {
-        //sVLoc = UIStackView()
-        //sVLoc.distribution = .fill
-        //sVLoc.axis = .horizontal
-        //sVLoc.view.alignment = .center
         let sunriseSunset = UtilityTime.getSunriseSunset()
         let text =  UtilityTime.gmtTime()
         objLabel = ObjectTextView(
