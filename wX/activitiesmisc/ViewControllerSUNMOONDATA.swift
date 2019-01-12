@@ -24,13 +24,15 @@ class ViewControllerSUNMOONDATA: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let text = UtilitySunMoon.getExtendedData()
-            let text2 = UtilitySunMoon.getFullDates()
+            let text = UtilitySunMoon.computeData()
+            //let text = UtilitySunMoon.getExtendedData()
+            //let text2 = UtilitySunMoon.getFullDates()
             DispatchQueue.main.async {
-                self.textView.text = UtilitySunMoon.parseData(text).1
-                    + MyApplication.newline
-                    + MyApplication.newline
-                    + text2
+                self.textView.text = text
+                //self.textView.text = UtilitySunMoon.parseData(text).1
+                //    + MyApplication.newline
+                //    + MyApplication.newline
+                //    + text2
             }
         }
     }

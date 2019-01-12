@@ -8,6 +8,33 @@ import Foundation
 
 final class UtilitySunMoon {
 
+    static func computeData() -> String {
+        var data = ""
+        let sunCalc = SunCalc()
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
+        do {
+            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
+            data += "Moonset: \(dateFormatter.string(from: moonTimes.moonSetTime))"
+            data += MyApplication.newline
+            data += "Moonrise: \(dateFormatter.string(from: moonTimes.moonRiseTime))"
+            data += MyApplication.newline
+        } catch let e as SunCalc.LunarEventError {
+            switch e {
+            case .moonNeverRise:
+                print("Moon never rise")
+            case .moonNeverSet:
+                print("Moon never set")
+            }
+        } catch {
+            // Catch any other errors
+        }
+        return data
+    }
+
     static func getExtendedData() -> String {
         let timeZone = UtilityTime.getDateAsString("Z")
         let tzOffset = timeZone.substring(0, 3) + "." + timeZone.substring(3, 5)

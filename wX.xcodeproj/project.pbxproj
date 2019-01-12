@@ -23,6 +23,7 @@
 		0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */; };
 		032EE2BF21A9617E00460D5D /* LatLonStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EE2BE21A9617E00460D5D /* LatLonStr.swift */; };
 		032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */; };
+		0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */; };
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
@@ -396,6 +397,7 @@
 		0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewMetal.swift; sourceTree = "<group>"; };
 		032EE2BE21A9617E00460D5D /* LatLonStr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLonStr.swift; sourceTree = "<group>"; };
 		032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerADHOCLOCATION.swift; sourceTree = "<group>"; };
+		0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunCalc.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 		F09504AA1E152BDC008A966E /* external */ = {
 			isa = PBXGroup;
 			children = (
+				0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */,
 				F016C3131DC024CF001BC13E /* ExternalAngle.swift */,
 				F0B335471DA3FD510035BD36 /* ExternalEllipsoid.swift */,
 				F0B335481DA3FD510035BD36 /* ExternalGeodeticCalculator.swift */,
@@ -1645,6 +1648,7 @@
 				037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */,
 				F0B3357F1DA3FD6F0035BD36 /* UtilityColorPalette56.swift in Sources */,
 				F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */,
+				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
 				F098F7891E4F8923007EDD2A /* UtilityUSv2.swift in Sources */,
 				F0F761C51DC20BD500F71A5F /* ViewControllerPLAYLIST.swift in Sources */,
