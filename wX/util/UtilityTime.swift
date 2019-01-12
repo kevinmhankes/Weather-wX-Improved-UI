@@ -200,13 +200,32 @@ final class UtilityTime {
     }
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
-        let coordinates = CLLocationCoordinate2D(
+        /*let coordinates = CLLocationCoordinate2D(
             latitude: obs.location.lat as CLLocationDegrees,
             longitude: obs.location.lon as CLLocationDegrees
         )
         let solar = Solar(coordinate: coordinates)
         let sunrise = solar?.sunrise
         let sunset = solar?.sunset
-        return (sunrise!, sunset!)
+        return (sunrise!, sunset!)*/
+        var rise = Date()
+        var set = Date()
+        let sunCalc = SunCalc()
+        let now = Date()
+        let location = SunCalc.Location(latitude: obs.location.lat, longitude: obs.location.lon)
+        do {
+            rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
+            set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
+        } catch let e as SunCalc.SolarEventError {
+            switch e {
+            case .sunNeverRise:
+                print("Sun never rise")
+            case .sunNeverSet:
+                print("Sun never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        return(rise, set)
     }
 }
