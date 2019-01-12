@@ -110,7 +110,6 @@
 		F04378BD1E0F060100C0A252 /* UtilityCanadaImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04378BC1E0F060100C0A252 /* UtilityCanadaImg.swift */; };
 		F04378BF1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04378BE1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift */; };
 		F04B19A01DB30AFF00C9D8C6 /* ViewControllerSPCSWOSUMMARY.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04B199F1DB30AFF00C9D8C6 /* ViewControllerSPCSWOSUMMARY.swift */; };
-		F04D0D311E7E952800D25BB5 /* ObjectSpotterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D0D301E7E952800D25BB5 /* ObjectSpotterCard.swift */; };
 		F05367051EA2A9C7006684BE /* ViewControllerSPCSWOSTATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05367041EA2A9C7006684BE /* ViewControllerSPCSWOSTATE.swift */; };
 		F05383871EDFA83400B1DDEC /* ObjectNHC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05383861EDFA83400B1DDEC /* ObjectNHC.swift */; };
 		F057A0A01DC2B0AF00521C8F /* UtilityModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057A09F1DC2B0AF00521C8F /* UtilityModels.swift */; };
@@ -309,7 +308,6 @@
 		F0B336161DA3FDE30035BD36 /* UtilityWXOGLPerfL3FourBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3360B1DA3FDE30035BD36 /* UtilityWXOGLPerfL3FourBit.swift */; };
 		F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B492221DCFBE2F00B184D9 /* Just.swift */; };
 		F0B70A861DBF63FB00A3DB6B /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */; };
-		F0BB9EFB1E7E9B93005F1325 /* ObjectSpotterReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB9EFA1E7E9B93005F1325 /* ObjectSpotterReportCard.swift */; };
 		F0C1BC4B1EBAB6A00063C853 /* PolygonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1BC481EBAB6A00063C853 /* PolygonType.swift */; };
 		F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */; };
 		F0C1BC4F1EBAC69C0063C853 /* colormapbvaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */; };
@@ -486,7 +484,6 @@
 		F04378BC1E0F060100C0A252 /* UtilityCanadaImg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanadaImg.swift; sourceTree = "<group>"; };
 		F04378BE1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCATEXT.swift; sourceTree = "<group>"; };
 		F04B199F1DB30AFF00C9D8C6 /* ViewControllerSPCSWOSUMMARY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSPCSWOSUMMARY.swift; sourceTree = "<group>"; };
-		F04D0D301E7E952800D25BB5 /* ObjectSpotterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterCard.swift; sourceTree = "<group>"; };
 		F05367041EA2A9C7006684BE /* ViewControllerSPCSWOSTATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSPCSWOSTATE.swift; sourceTree = "<group>"; };
 		F05383861EDFA83400B1DDEC /* ObjectNHC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNHC.swift; sourceTree = "<group>"; };
 		F057A09F1DC2B0AF00521C8F /* UtilityModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModels.swift; sourceTree = "<group>"; };
@@ -692,7 +689,6 @@
 		F0B3360B1DA3FDE30035BD36 /* UtilityWXOGLPerfL3FourBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGLPerfL3FourBit.swift; sourceTree = "<group>"; };
 		F0B492221DCFBE2F00B184D9 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 		F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
-		F0BB9EFA1E7E9B93005F1325 /* ObjectSpotterReportCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterReportCard.swift; sourceTree = "<group>"; };
 		F0C1BC481EBAB6A00063C853 /* PolygonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonType.swift; sourceTree = "<group>"; };
 		F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionType.swift; sourceTree = "<group>"; };
 		F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbvaf.txt; sourceTree = "<group>"; };
@@ -1208,8 +1204,6 @@
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
 				F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */,
 				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
-				F04D0D301E7E952800D25BB5 /* ObjectSpotterCard.swift */,
-				F0BB9EFA1E7E9B93005F1325 /* ObjectSpotterReportCard.swift */,
 				03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */,
 				F07482D31E793E2F0072F96D /* ObjectStackViewHS.swift */,
 				F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */,
@@ -1785,8 +1779,6 @@
 				F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */,
 				F012C9611EB51DAE007CEAD2 /* ObjectNHCStormInfo.swift in Sources */,
 				F0A5EF4B1DB7E8D800FB18BF /* ViewControllerSPCTSTSUMMARY.swift in Sources */,
-				F0BB9EFB1E7E9B93005F1325 /* ObjectSpotterReportCard.swift in Sources */,
-				F04D0D311E7E952800D25BB5 /* ObjectSpotterCard.swift in Sources */,
 				F08E482F1EB0DE70000629DA /* ObjectForecastPackage.swift in Sources */,
 				F0B335D51DA3FDA70035BD36 /* UtilityModelSPCHRRRInterface.swift in Sources */,
 				F08E48341EB0DF8F000629DA /* ObjectForecastPackageHazards.swift in Sources */,

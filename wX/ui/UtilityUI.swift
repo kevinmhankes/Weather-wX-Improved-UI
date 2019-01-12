@@ -27,11 +27,6 @@ public class UtilityUI {
         return UIApplication.shared.statusBarFrame.size.height
     }
 
-    class func setupStackView (_ sV: UIStackView) {
-        sV.axis = .vertical
-        sV.spacing = 0
-    }
-
     class func getVersion() -> String {
         var vers = ""
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -43,14 +38,6 @@ public class UtilityUI {
     class func setImageAnchors(_ image: UIImageView, _ bitmap: Bitmap, _ width: CGFloat) {
         image.widthAnchor.constraint(equalToConstant: width).isActive = true
         image.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true
-    }
-
-    class func setupStackViewForCard(_ sV: UIStackView) {
-        sV.backgroundColor = UIColor.white
-        sV.distribution = .fill
-        sV.alignment = .top
-        sV.axis = .vertical
-        sV.spacing = 0
     }
 
     class func sideSwipe(_ sender: UISwipeGestureRecognizer, _ currentIndex: Int, _ imageList: [String]) -> Int {

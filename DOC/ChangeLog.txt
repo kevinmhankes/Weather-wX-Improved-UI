@@ -16,6 +16,7 @@
 // TODO cleanup cc/7day in ui
 // TODO convert more UIStackView to ObjectStackView
 // TODO cleanup external "Solar" code
+// TODO look into spotters
 
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
