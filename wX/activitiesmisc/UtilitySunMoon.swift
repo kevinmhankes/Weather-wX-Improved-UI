@@ -15,6 +15,9 @@ final class UtilitySunMoon {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
+        let fullMoonFormatter = DateFormatter()
+        fullMoonFormatter.dateStyle = .short
+        fullMoonFormatter.timeStyle = .none
         let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
         do {
             let time = try sunCalc.time(ofDate: now, forSolarEvent: .dawn, atLocation: location)
@@ -92,14 +95,28 @@ final class UtilitySunMoon {
         } catch {
             // Catch any other errors
         }
-        
-        let moonIllumination = try sunCalc.moonIllumination(date: now)
+
+        let moonIllumination = sunCalc.moonIllumination(date: now)
             //data += "Moonset: \(formatter.string(from: moonTimes.moonSetTime))"
             //data += MyApplication.newline
             //data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
             //data += MyApplication.newline
-        
-        data += "Moon Phase: " + String(moonIllumination.phase) + MyApplication.newline
+
+        data += "Moon Phase: "
+            + moonPhaseFromIllumination(moonIllumination.phase)
+            +  " "
+            + String(moonIllumination.phase)
+            + MyApplication.newline
+        data += MyApplication.newline
+        data += "Approximate Full Moon: "
+        (1...360).forEach {
+            let future = Calendar.current.date(byAdding: .day, value: $0, to: now)
+            let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
+            if moonIlluminationFuture.phase > 0.479 && moonIlluminationFuture.phase < 0.521 {
+                data += fullMoonFormatter.string(from: future!) // + " " + String(moonIlluminationFuture.phase)
+                data += MyApplication.newline
+            }
+        }
         data += MyApplication.newline
         data += "Moon phase description:" + MyApplication.newline
         data += "Phase    Name" + MyApplication.newline
@@ -111,7 +128,22 @@ final class UtilitySunMoon {
         data += "Waning Gibbous" + MyApplication.newline
         data += "0.75    Last Quarter" + MyApplication.newline
         data += "Waning Crescent" + MyApplication.newline
-        
         return data
+    }
+
+    static func moonPhaseFromIllumination(_ phase: Double) -> String {
+        var phaseString = ""
+        switch phase {
+        case 0..<0.2: phaseString = "New Moon"
+        case 0.2..<0.23: phaseString = "Waxing Crescent"
+        case 0.23..<0.27: phaseString = "First Quarter"
+        case 0.27..<0.47: phaseString = "Waxing Gibbous"
+        case 0.47..<0.52: phaseString = "Full Moon"
+        case 0.52..<0.73: phaseString = "Waning Gibbous"
+        case 0.73..<0.77: phaseString = "Last Quarter"
+        case 0.77..<1.01: phaseString = "Waning Crescent"
+        default: phaseString = "unknown"
+        }
+        return phaseString
     }
 }
