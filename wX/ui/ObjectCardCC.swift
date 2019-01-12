@@ -23,20 +23,22 @@ final class ObjectCardCC {
         tv2 = ObjectTextViewSmallGray(textPadding)
         tv3 = ObjectTextViewSmallGray(textPadding)
         updateCard(objFcst, isUS)
-        var sV2 = StackView()
+        let sV2: ObjectStackView
+        //var sV2 = StackView()
         // TODO use ObjectStackView instead of raw StackView and UtilityUI below
         if UIPreferences.showMetarInCC {
-            sV2 = StackView(arrangedSubviews: [tv.view, tv2.view, tv3.view])
-            UtilityUI.setupStackView(sV2)
+            sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view, tv3.view])
+            //UtilityUI.setupStackView(sV2)
         } else {
-            sV2 = StackView(arrangedSubviews: [tv.view, tv2.view])
-            UtilityUI.setupStackView(sV2)
+            sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
+            //UtilityUI.setupStackView(sV2)
         }
-        let sV3 = StackView()
-        UtilityUI.setupStackView(sV3)
-        let sVVertView = StackView(arrangedSubviews: [sV2, sV3])
-        UtilityUI.setupStackView(sVVertView)
-        stackViewLocal.addArrangedSubview(ObjectCardStackView(arrangedSubviews: [img.view, sVVertView]).view)
+        //let sV3 = StackView()
+        //UtilityUI.setupStackView(sV3)
+        //let sVVertView = StackView(arrangedSubviews: [sV2, sV3])
+        //UtilityUI.setupStackView(sVVertView)
+        let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view])
+        stackViewLocal.addArrangedSubview(ObjectCardStackView(arrangedSubviews: [img.view, sVVertView.view]).view)
     }
 
     func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {

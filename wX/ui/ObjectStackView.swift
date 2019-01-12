@@ -20,6 +20,16 @@ final class ObjectStackView {
         sV.spacing = spacing
     }
 
+    convenience init(
+        _ distribution: UIStackView.Distribution,
+        _ axis: NSLayoutConstraint.Axis,
+        _ spacing: CGFloat,
+        arrangedSubviews: [UIView]
+    ) {
+        self.init(distribution, axis, spacing)
+        arrangedSubviews.forEach { sV.addArrangedSubview($0) }
+    }
+
     var view: UIStackView {
         return sV
     }
