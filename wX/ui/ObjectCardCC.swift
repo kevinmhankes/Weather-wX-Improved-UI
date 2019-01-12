@@ -18,7 +18,8 @@ final class ObjectCardCC {
         let stackViewLocal = ObjectStackViewHS()
         stackViewLocal.setup()
         stackView.addArrangedSubview(stackViewLocal)
-        if isUS {
+        
+        /*if isUS {
             img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
         } else {
             img.view.image = UtilityNWS.getIcon(
@@ -27,14 +28,20 @@ final class ObjectCardCC {
                     objFcst.objCC.status
                 )
             ).image
-        }
+        }*/
+        
+        
         tv = ObjectTextViewLarge(textPadding)
         tv.view.isUserInteractionEnabled = true
-        tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        //tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         tv2 = ObjectTextViewSmallGray(textPadding)
-        tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+        //tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
         tv3 = ObjectTextViewSmallGray(textPadding)
-        tv3.text = objFcst.objCC.rawMetar
+        //tv3.text = objFcst.objCC.rawMetar
+        
+        setImage(objFcst, isUS)
+        setText(objFcst)
+        
         var sV2 = StackView()
         if UIPreferences.showMetarInCC {
             sV2 = StackView(arrangedSubviews: [tv.view, tv2.view, tv3.view])
@@ -52,6 +59,24 @@ final class ObjectCardCC {
 
     // TODO create methods to set image and set 3 text fields, call from above and below
     func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
+        /*if isUS {
+            img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+        } else {
+            img.view.image = UtilityNWS.getIcon(
+                UtilityCanada.translateIconNameCurrentConditions(
+                    objFcst.objCC.data1,
+                    objFcst.objCC.status
+                )
+            ).image
+        }*/
+        setImage(objFcst, isUS)
+        setText(objFcst)
+        //tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        //tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+        //tv3.text = objFcst.objCC.rawMetar
+    }
+
+    func setImage(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if isUS {
             img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
         } else {
@@ -62,6 +87,9 @@ final class ObjectCardCC {
                 )
             ).image
         }
+    }
+
+    func setText(_ objFcst: ObjectForecastPackage) {
         tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
         tv3.text = objFcst.objCC.rawMetar
