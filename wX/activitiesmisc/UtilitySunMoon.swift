@@ -92,6 +92,26 @@ final class UtilitySunMoon {
         } catch {
             // Catch any other errors
         }
+        
+        let moonIllumination = try sunCalc.moonIllumination(date: now)
+            //data += "Moonset: \(formatter.string(from: moonTimes.moonSetTime))"
+            //data += MyApplication.newline
+            //data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
+            //data += MyApplication.newline
+        
+        data += "Moon Phase: " + String(moonIllumination.phase) + MyApplication.newline
+        data += MyApplication.newline
+        data += "Moon phase description:" + MyApplication.newline
+        data += "Phase    Name" + MyApplication.newline
+        data += "0    New Moon" + MyApplication.newline
+        data += "Waxing Crescent" + MyApplication.newline
+        data += "0.25    First Quarter" + MyApplication.newline
+        data += "Waxing Gibbous" + MyApplication.newline
+        data += "0.5    Full Moon" + MyApplication.newline
+        data += "Waning Gibbous" + MyApplication.newline
+        data += "0.75    Last Quarter" + MyApplication.newline
+        data += "Waning Crescent" + MyApplication.newline
+        
         return data
     }
 }
