@@ -90,7 +90,6 @@
 		F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */; };
 		F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */; };
 		F01AD2381EC9B7A60091A2A7 /* UtilitySPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AD2371EC9B7A60091A2A7 /* UtilitySPC.swift */; };
-		F01B6BFB1DD53A91002D5178 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01B6BF81DD53A91002D5178 /* TextView.swift */; };
 		F0218E6F1E9010CF00F7D73C /* UtilitySPCSWO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0218E6E1E9010CF00F7D73C /* UtilitySPCSWO.swift */; };
 		F02841811DEFBC6000474084 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02841801DEFBC6000474084 /* Location.swift */; };
 		F02ACC981EB34C5400C0E828 /* ViewControllerTABPARENT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02ACC971EB34C5400C0E828 /* ViewControllerTABPARENT.swift */; };
@@ -453,7 +452,6 @@
 		F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGlobalPosition.swift; sourceTree = "<group>"; };
 		F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectWatchProduct.swift; sourceTree = "<group>"; };
 		F01AD2371EC9B7A60091A2A7 /* UtilitySPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySPC.swift; sourceTree = "<group>"; };
-		F01B6BF81DD53A91002D5178 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		F0218E6E1E9010CF00F7D73C /* UtilitySPCSWO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySPCSWO.swift; sourceTree = "<group>"; };
 		F02841801DEFBC6000474084 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F02ACC971EB34C5400C0E828 /* ViewControllerTABPARENT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTABPARENT.swift; sourceTree = "<group>"; };
@@ -1185,7 +1183,6 @@
 				F08748171E5513350081E1FD /* ObjectTouchImageView.swift */,
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
-				F01B6BF81DD53A91002D5178 /* TextView.swift */,
 				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
 				F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */,
 				F0FAD0461DCB4F860014752A /* UILabelInset.swift */,
@@ -1788,7 +1785,6 @@
 				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,
 				F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */,
 				036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */,
-				F01B6BFB1DD53A91002D5178 /* TextView.swift in Sources */,
 				035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */,
 				F0B335DF1DA3FDA70035BD36 /* UtilityNWS.swift in Sources */,
 			);
