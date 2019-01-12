@@ -140,8 +140,8 @@ final class UtilitySettingsRadar {
     static let picker = [
         "RADAR_LOCDOT_SIZE": "Location dot size." ,
         "RADAR_SPOTTER_SIZE": "Spotter size",
-        "RADAR_WARN_LINESIZE": "Warning line size",
-        "RADAR_WATMCD_LINESIZE": "Watch/MCD line size",
+        //"RADAR_WARN_LINESIZE": "Warning line size",
+        //"RADAR_WATMCD_LINESIZE": "Watch/MCD line size",
         "RADAR_COLOR_PALETTE_94": "Reflectivity Colormap",
         "RADAR_COLOR_PALETTE_99": "Velocity Colormap",
         "RADAR_HI_SIZE": "Hail marker size",
@@ -155,8 +155,8 @@ final class UtilitySettingsRadar {
     static let pickerinit = [
         "RADAR_LOCDOT_SIZE": 4,
         "RADAR_SPOTTER_SIZE": 5,
-        "RADAR_WARN_LINESIZE": 2,
-        "RADAR_WATMCD_LINESIZE": 2,
+        //"RADAR_WARN_LINESIZE": 2,
+        //"RADAR_WATMCD_LINESIZE": 2,
         "RADAR_HI_SIZE": 4,
         "RADAR_TVS_SIZE": 4,
         "RADAR_AVIATION_SIZE": 4,
@@ -168,8 +168,8 @@ final class UtilitySettingsRadar {
     static let pickerCount = [
         "RADAR_LOCDOT_SIZE": 11,
         "RADAR_SPOTTER_SIZE": 11,
-        "RADAR_WARN_LINESIZE": 15,
-        "RADAR_WATMCD_LINESIZE": 15,
+        //"RADAR_WARN_LINESIZE": 15,
+        //"RADAR_WATMCD_LINESIZE": 15,
         "RADAR_COLOR_PALETTE_94": 7,
         "RADAR_COLOR_PALETTE_99": 3,
         "RADAR_HI_SIZE": 15,
@@ -188,8 +188,8 @@ final class UtilitySettingsRadar {
     static let pickerDataSource = [
         "RADAR_LOCDOT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         "RADAR_SPOTTER_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-        "RADAR_WARN_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
-        "RADAR_WATMCD_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+        //"RADAR_WARN_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+        //"RADAR_WATMCD_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
         "RADAR_COLOR_PALETTE_94": ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK"],
         "RADAR_COLOR_PALETTE_99": ["CODENH", "AF", "EAK"],
         "RADAR_HI_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],

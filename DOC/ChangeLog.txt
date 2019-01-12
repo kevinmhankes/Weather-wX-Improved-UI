@@ -11,12 +11,10 @@
 // TODO look at threads on main screen
 // TODO test text in main screen radar
 // TODO look at migrating all pref activity to utils
-// TODO Feb 2019 - remove option for OpenGL
-// TODO Mar 2019 - remove OpenGL code
 // TODO cleanup cc/7day in ui
 // TODO convert more UIStackView to ObjectStackView
 // TODO cleanup external "Solar" code
-// TODO look into spotters
+// TODO full cleanup for radar prefs that don't apply to Metal - ie line width
 
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
