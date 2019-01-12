@@ -14,7 +14,9 @@
 // TODO Feb 2019 - remove option for OpenGL
 // TODO Mar 2019 - remove OpenGL code
 
-2018_01_11 54700 
+2018_01_12 54700 metal - if autoupdate on keep screen on
+		 redo sun/moon to use local calculations
+		 cc/7day reorg classes
 2018_01_10 54600 metal - black bg and correct screen rotation
 		 metal is now the default radar
 2018_01_05 54500 misc code refactor
