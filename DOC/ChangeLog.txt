@@ -11,7 +11,6 @@
 // TODO look at threads on main screen
 // TODO test text in main screen radar
 // TODO look at migrating all pref activity to utils
-// TODO cleanup cc/7day in ui
 // TODO convert more UIStackView to ObjectStackView
 // TODO cleanup external "Solar" code
 // TODO full cleanup for radar prefs that don't apply to Metal - ie line width

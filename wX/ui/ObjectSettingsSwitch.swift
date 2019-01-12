@@ -14,6 +14,7 @@ final class ObjectSettingsSwitch {
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
+        // FIXME convert to ObjectStackView
         let sV = UIStackView()
         sV.distribution = .fill
         sV.axis = .horizontal

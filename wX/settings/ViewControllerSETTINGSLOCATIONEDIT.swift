@@ -81,6 +81,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         }
     }
 
+    // FIXME remove and convert above to ObjectStackView
     func setupStackView(_ stackView: UIStackView) {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
