@@ -21,7 +21,9 @@ final class ObjectImage {
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap) {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
-        UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
+        self.bitmap = bitmap
+        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
+        setImageAnchors(UIScreen.main.bounds.width)
         stackView.addArrangedSubview(img)
         width = UIScreen.main.bounds.width
     }
@@ -29,8 +31,10 @@ final class ObjectImage {
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
         self.init()
         img.image = bitmap.image
+        self.bitmap = bitmap
         // TODO move this to class method
-        UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
+        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
+        setImageAnchors(UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
         width = UIScreen.main.bounds.width
     }
@@ -38,7 +42,9 @@ final class ObjectImage {
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, viewOrder: Int) {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
-        UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
+        self.bitmap = bitmap
+        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
+        setImageAnchors(UIScreen.main.bounds.width)
         stackView.insertArrangedSubview(img, at: viewOrder)
         width = UIScreen.main.bounds.width
     }
@@ -52,10 +58,16 @@ final class ObjectImage {
     func setBitmap(_ bitmap: Bitmap) {
         self.bitmap = bitmap
         img.image = UIImage(data: bitmap.data) ?? UIImage()
-        UtilityUI.setImageAnchors(img, bitmap, width)
+        //UtilityUI.setImageAnchors(img, bitmap, width)
+        setImageAnchors(width)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         img.addGestureRecognizer(gesture)
+    }
+
+    func setImageAnchors(_ width: CGFloat) {
+        img.widthAnchor.constraint(equalToConstant: width).isActive = true
+        img.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true
     }
 }
