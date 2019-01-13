@@ -8,6 +8,8 @@ import UIKit
 
 class Drawable {
 
+    // TODO what is this used for? can it be removed
+    
     private var color = 0
 	private var bitmap: Bitmap?
     var img = UIImage()
@@ -18,10 +20,10 @@ class Drawable {
         img = UIImage(data: bitmap.data) ?? UIImage()
     }
 
-	convenience init(_ color: Int) {
+	/*convenience init( color: Int) {
         self.init()
 		self.color = color
 		self.bitmap = nil
         img = UIImage()
-	}
+	}*/
 }
