@@ -7,7 +7,6 @@ Nguyen Cong Huy - ImageScrollView
 Just contributors - Just - used to only download the first chunk of Level2 data
 University Corporation for Atmospheric Research/Unidata - substantial Level 2 decoder in Java was used as a basis for the Swift code in wXIOS
 Cezar Pereira - TabBarControllerSwipeExtension.swift
-Chris Howell - Solar.swift
 Lee Sun-Hyoup https://github.com/kciter/Floaty/
 Venj Chu - https://github.com/imvenj/SunCalc.swift 
 Vladimir Agafonkin - https://github.com/mourner/suncalc

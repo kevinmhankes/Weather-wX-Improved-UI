@@ -62,8 +62,12 @@ final class UtilityMap {
             latitudinalMeters: regionRadius * 2.0,
             longitudinalMeters: regionRadius * 2.0
         )
-        mapView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
-                               height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight)
+        mapView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: UIScreen.main.bounds.width,
+            height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight
+        )
         mapView.setRegion(coordinateRegion, animated: true)
     }
 

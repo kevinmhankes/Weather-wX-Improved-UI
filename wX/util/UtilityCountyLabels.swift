@@ -19,6 +19,7 @@ final class UtilityCountyLabels {
             lines.forEach {
                 let tokens = $0.split(",")
                 countyName.append(tokens[1])
+                // TODO create factory method to handle -1.0 and string
                 location.append(LatLon(Double(tokens[2])!, -1.0 * Double(tokens[3])!))
             }
         }

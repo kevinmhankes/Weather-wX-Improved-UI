@@ -45,7 +45,6 @@
 		037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */; };
 		0382B26A1FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */; };
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
-		0389EE7C1FB8BC0A0016BED3 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0389EE7B1FB8BC0A0016BED3 /* Solar.swift */; };
 		039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039795B62032D7C100F37CCE /* ObjectMetar.swift */; };
 		0399A14A21CFD3BB0096ECFB /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14321CFD3B90096ECFB /* FloatyViewController.swift */; };
 		0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */; };
@@ -406,7 +405,6 @@
 		037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalBuffers.swift; sourceTree = "<group>"; };
 		0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInputOutput.swift; sourceTree = "<group>"; };
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
-		0389EE7B1FB8BC0A0016BED3 /* Solar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		039795B62032D7C100F37CCE /* ObjectMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetar.swift; sourceTree = "<group>"; };
 		0399A14321CFD3B90096ECFB /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
 		0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
@@ -1021,7 +1019,6 @@
 				F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */,
 				039795B62032D7C100F37CCE /* ObjectMetar.swift */,
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
-				0389EE7B1FB8BC0A0016BED3 /* Solar.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
 				F0118B411DA9771600B43DE5 /* UtilityActions.swift */,
 				F07A76881DB2EDB2005B973D /* UtilityArray.swift */,
@@ -1535,7 +1532,6 @@
 				0302CF3F1FEE5F5E0062C0DC /* ColorPalettes.swift in Sources */,
 				03AB4AAB21AE161C0037633A /* Level2Metal.swift in Sources */,
 				F067DEE01DC6BFFF0066CB56 /* GenMercato.c in Sources */,
-				0389EE7C1FB8BC0A0016BED3 /* Solar.swift in Sources */,
 				F02ACC981EB34C5400C0E828 /* ViewControllerTABPARENT.swift in Sources */,
 				F004C5261E0F2855009C8F71 /* ViewControllerCAHOURLY.swift in Sources */,
 				F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */,
