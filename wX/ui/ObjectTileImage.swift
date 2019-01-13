@@ -8,23 +8,18 @@ import UIKit
 
 final class ObjectTileImage {
 
-    private var imgL = UIImageView()
+    private var image = ObjectImage()
 
     init(_ stackView: UIStackView, _ sV: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat) {
         let bitmap = UtilityIO.readBitmapResourceFromFile(filename)
-        imgL.contentMode = UIView.ContentMode.scaleAspectFit
-        imgL.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(imgL)
-        imgL.tag = index
-        imgL.isUserInteractionEnabled = true
-        imgL.image = UIImage(data: bitmap.data) ?? UIImage()
-        let width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
-        imgL.widthAnchor.constraint(equalToConstant: width).isActive = true
-        imgL.heightAnchor.constraint(equalToConstant: width * (bitmap.height/bitmap.width)).isActive = true
-        sV.addArrangedSubview(imgL)
+        stackView.addArrangedSubview(image.img)
+        image.img.tag = index
+        image.width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
+        image.setBitmap(bitmap)
+        sV.addArrangedSubview(image.img)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
-        imgL.addGestureRecognizer(gesture)
+        image.addGestureRecognizer(gesture)
     }
 }

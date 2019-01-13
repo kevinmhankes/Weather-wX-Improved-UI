@@ -35,11 +35,6 @@ public class UtilityUI {
         return vers
     }
 
-    class func setImageAnchors(_ image: UIImageView, _ bitmap: Bitmap, _ width: CGFloat) {
-        image.widthAnchor.constraint(equalToConstant: width).isActive = true
-        image.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true
-    }
-
     class func sideSwipe(_ sender: UISwipeGestureRecognizer, _ currentIndex: Int, _ imageList: [String]) -> Int {
         var productIndex = currentIndex
         if sender.direction == .left {

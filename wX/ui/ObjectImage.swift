@@ -9,7 +9,7 @@ import UIKit
 final class ObjectImage {
 
     let img = UIImageView()
-    private var width: CGFloat = 0.0
+    var width: CGFloat = 0.0
     var bitmap = Bitmap()
 
     init() {
@@ -22,7 +22,6 @@ final class ObjectImage {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
         setImageAnchors(UIScreen.main.bounds.width)
         stackView.addArrangedSubview(img)
         width = UIScreen.main.bounds.width
@@ -32,7 +31,6 @@ final class ObjectImage {
         self.init()
         img.image = bitmap.image
         self.bitmap = bitmap
-        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         setImageAnchors(UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
         width = UIScreen.main.bounds.width
@@ -42,7 +40,6 @@ final class ObjectImage {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width)
         setImageAnchors(UIScreen.main.bounds.width)
         stackView.insertArrangedSubview(img, at: viewOrder)
         width = UIScreen.main.bounds.width
@@ -57,7 +54,6 @@ final class ObjectImage {
     func setBitmap(_ bitmap: Bitmap) {
         self.bitmap = bitmap
         img.image = UIImage(data: bitmap.data) ?? UIImage()
-        //UtilityUI.setImageAnchors(img, bitmap, width)
         setImageAnchors(width)
     }
 
