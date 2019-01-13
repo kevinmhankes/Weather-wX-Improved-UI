@@ -33,12 +33,16 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(setToDefault))
         addImageButton = ObjectToolbarIcon(title: "Image", self, #selector(addImageClicked))
         addTextButton = ObjectToolbarIcon(title: "Text", self, #selector(addTextClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            addTextButton,
-                                            addImageButton,
-                                            defaultButton,
-                                            addButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                addTextButton,
+                addImageButton,
+                defaultButton,
+                addButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         updateView()

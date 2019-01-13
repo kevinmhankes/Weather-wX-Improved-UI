@@ -12,12 +12,15 @@
 // TODO look at migrating all pref activity to utils
 // TODO full cleanup for radar prefs that don't apply to Metal - ie line width
 // TODO homescreen conus vis not working
+// TODO hourly graphics
 
 2018_01_13 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
 	 	 ObjectImage - move setImageAnchors into class
 		 [BUG] metal - location dot was not updating quickly - only on refresh
 		 mosaic radar - move conus to top of choices
+		 remove Drawable
+		 [BUG] Homescreen "VIS CONUS" was not working both with image and on tap
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset

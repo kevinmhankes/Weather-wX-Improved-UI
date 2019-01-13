@@ -191,7 +191,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "VIS_CONUS":
             needsBitmap = false
-            bitmap = UtilityGOES16.getImage("02", "CONUS")
+            bitmap = UtilityGOES16.getImage("GEOCOLOR", "CONUS")
         case "CARAIN":
             if Location.x.contains("CANADA") {
                 needsBitmap = false

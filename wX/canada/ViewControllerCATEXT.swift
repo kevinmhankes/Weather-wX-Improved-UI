@@ -25,12 +25,16 @@ class ViewControllerCATEXT: UIwXViewController {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            productButton,
-                                            playButton,
-                                            shareButton,
-                                            playlistButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                productButton,
+                playButton,
+                shareButton,
+                playlistButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         _ = ObjectCALegal(stackView)

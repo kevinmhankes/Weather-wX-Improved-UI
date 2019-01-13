@@ -475,7 +475,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             token = "wpcimg"
         case "VIS_CONUS":
             ActVars.goesSector = "CONUS"
-            ActVars.goesProduct = "02"
+            ActVars.goesProduct = "GEOCOLOR"
             token = "goes16"
         case "CONUSWV":
             ActVars.goesSector = "CONUS"
