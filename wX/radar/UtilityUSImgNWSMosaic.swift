@@ -9,6 +9,7 @@ import UIKit
 class UtilityUSImgNWSMosaic {
 
     static let sectors = [
+        "latest",
         "alaska",
         "hawaii",
         "pacsouthwest",
@@ -20,8 +21,7 @@ class UtilityUSImgNWSMosaic {
         "northrockies",
         "uppermissvly",
         "centgrtlakes",
-        "northeast",
-        "latest"
+        "northeast"
     ]
 
     static let sectorToLabel = [
@@ -93,6 +93,7 @@ class UtilityUSImgNWSMosaic {
     ]
 
     static let labels = [
+        "CONUS",
         "Alaska",
         "Hawaii",
         "Pacific Southwest",
@@ -104,8 +105,7 @@ class UtilityUSImgNWSMosaic {
         "North Rockies",
         "Upper MS Valley",
         "Central Great Lakes",
-        "Northeast",
-        "CONUS"
+        "Northeast"
     ]
 
     static func getSectorLabelFromCode(_ code: String) -> String {

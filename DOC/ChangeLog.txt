@@ -17,6 +17,7 @@
 		 remove remnants of radar line width from OpenGL
 	 	 ObjectImage - move setImageAnchors into class
 		 [BUG] metal - location dot was not updating quickly - only on refresh
+		 mosaic radar - move conus to top of choices
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset
