@@ -16,8 +16,12 @@ final class AnimationDrawable {
         delay = animationDelay / 2.0
     }
 
-    func addFrame(_ layer: Drawable, _ delay: Int) {
-        imageArray.append(layer.img)
+    //func addFrame(_ layer: Drawable, _ delay: Int) {
+    //    imageArray.append(layer.img)
+    //}
+    
+    func addFrame(_ layer: Bitmap, _ delay: Int) {
+        imageArray.append(layer.image)
     }
 
     func addFrame(_ layer: UIImage, _ delay: Int) {

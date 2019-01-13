@@ -14,8 +14,8 @@ final class UtilitySPCMESOInputOutput {
         let showOutlook = preferences.getString(prefModel + "_SHOW_OUTLOOK", "false").hasPrefix("t")
         let showWatwarn = preferences.getString(prefModel + "_SHOW_WATWARN", "false").hasPrefix("t")
         let showTopo = preferences.getString(prefModel + "_SHOW_TOPO", "false").hasPrefix("t")
-        var layers = [Drawable]()
-        var layersRad = [Drawable]()
+        var layers = [Bitmap]()
+        var layersRad = [Bitmap]()
         var gifUrl = ""
         let baseUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s"
         let radarImgUrl = baseUrl + sector + "/" + "rgnlrad" + "/" + "rgnlrad" + ".gif"
@@ -31,28 +31,28 @@ final class UtilitySPCMESOInputOutput {
         let bitmap = Bitmap(imgUrl)
         if showRadar && product != "1kmv" {
             if showTopo {
-                layersRad.append(Drawable(Bitmap(topoImgUrl)))
+                layersRad.append(Bitmap(topoImgUrl))
             }
             let bitmapradar = Bitmap(radarImgUrl)
-            layersRad.append(Drawable(bitmapradar))
-            layersRad.append(Drawable(bitmap))
+            layersRad.append(bitmapradar)
+            layersRad.append(bitmap)
             if showOutlook {
-                layersRad.append(Drawable(Bitmap(outlookImgUrl)))
+                layersRad.append(Bitmap(outlookImgUrl))
             }
             if showWatwarn {
-                layersRad.append(Drawable(Bitmap(watwarnImgUrl)))
+                layersRad.append(Bitmap(watwarnImgUrl))
             }
             return UtilityImg.layerDrawableToBitmap(layersRad)
         } else {
             if showTopo {
-                layers.append(Drawable(Bitmap(topoImgUrl)))
+                layers.append(Bitmap(topoImgUrl))
             }
-            layers.append(Drawable(bitmap))
+            layers.append(bitmap)
             if showOutlook {
-                layers.append(Drawable(Bitmap(outlookImgUrl)))
+                layers.append(Bitmap(outlookImgUrl))
             }
             if showWatwarn {
-                layers.append(Drawable(Bitmap(watwarnImgUrl)))
+                layers.append(Bitmap(watwarnImgUrl))
             }
             return UtilityImg.layerDrawableToBitmap(layers)
         }

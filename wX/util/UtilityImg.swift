@@ -23,29 +23,29 @@ final class UtilityImg {
         return 50 * MyApplication.animInterval
     }
 
-    static func layerDrawableToBitmap(_ layers: [Drawable]) -> Bitmap {
+    static func layerDrawableToBitmap(_ layers: [Bitmap]) -> Bitmap {
         var image = UIImage()
         if layers.count == 0 {
             return Bitmap()
         }
         if layers.count < 2 {
-            image = layers[0].img
+            image = layers[0].image
         } else {
-            var imgTmp = layers[0].img
-            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.img)}
+            var imgTmp = layers[0].image
+            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)}
             image = imgTmp
         }
         image = addColorBG(image, UIColor.white)
         return Bitmap(image)
     }
 
-    static func layerDrawableToUIImage(_ layers: [Drawable]) -> UIImage {
+    static func layerDrawableToUIImage(_ layers: [Bitmap]) -> UIImage {
         var image = UIImage()
         if layers.count < 2 {
-            image = layers[0].img
+            image = layers[0].image
         } else {
-            var imgTmp = layers[0].img
-            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.img)}
+            var imgTmp = layers[0].image
+            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)}
             image = imgTmp
         }
         return image

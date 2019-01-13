@@ -232,7 +232,6 @@
 		F0B3353A1DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335321DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift */; };
 		F0B3353C1DA3FD450035BD36 /* AnimationDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */; };
 		F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3353D1DA3FD510035BD36 /* Color.swift */; };
-		F0B335521DA3FD510035BD36 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335441DA3FD510035BD36 /* Drawable.swift */; };
 		F0B335531DA3FD510035BD36 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335451DA3FD510035BD36 /* Editor.swift */; };
 		F0B335541DA3FD510035BD36 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335461DA3FD510035BD36 /* Extensions.swift */; };
 		F0B335551DA3FD510035BD36 /* ExternalEllipsoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335471DA3FD510035BD36 /* ExternalEllipsoid.swift */; };
@@ -600,7 +599,6 @@
 		F0B335321DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLPolygonWarnings.swift; sourceTree = "<group>"; };
 		F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDrawable.swift; sourceTree = "<group>"; };
 		F0B3353D1DA3FD510035BD36 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		F0B335441DA3FD510035BD36 /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		F0B335451DA3FD510035BD36 /* Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
 		F0B335461DA3FD510035BD36 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F0B335471DA3FD510035BD36 /* ExternalEllipsoid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalEllipsoid.swift; sourceTree = "<group>"; };
@@ -1100,7 +1098,6 @@
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
 				F0B3353D1DA3FD510035BD36 /* Color.swift */,
 				036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */,
-				F0B335441DA3FD510035BD36 /* Drawable.swift */,
 				F0B335451DA3FD510035BD36 /* Editor.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
 				F0B335041DA3FD1C0035BD36 /* Paint.swift */,
@@ -1581,7 +1578,6 @@
 				F03F6FAA1E0D3E4D00E4B7FA /* UtilityLightning.swift in Sources */,
 				03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */,
 				F011E6181DB03E25006531FD /* ViewControllerIMAGEVIEWER.swift in Sources */,
-				F0B335521DA3FD510035BD36 /* Drawable.swift in Sources */,
 				F0B70A861DBF63FB00A3DB6B /* TextUtils.swift in Sources */,
 				F0EB20C11E1337AD00059DB9 /* UtilityModelGLCFSInputOutput.swift in Sources */,
 				F0F942861DBBE0E100D30E36 /* ViewControllerGOESGLOBAL.swift in Sources */,

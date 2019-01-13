@@ -48,8 +48,7 @@ final class UtilityModelSPCHREFInputOutput {
             urlArr.append(url)
         }
         urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/blank_maps/" + sector + ".png")
-        let bitmapArr = urlArr.map {Bitmap($0)}
-        let layers = bitmapArr.map {Drawable($0)}
-        return Bitmap(UtilityImg.addColorBG(UtilityImg.layerDrawableToUIImage(layers), UIColor.white))
+        let bitmaps = urlArr.map {Bitmap($0)}
+        return Bitmap(UtilityImg.addColorBG(UtilityImg.layerDrawableToUIImage(bitmaps), UIColor.white))
     }
 }

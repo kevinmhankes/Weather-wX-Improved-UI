@@ -19,13 +19,13 @@ final class UtilityImgAnim {
     static func getAnimationDrawableFromUrlList(_ urls: [String], _ delay: Int) -> AnimationDrawable {
         let animDrawable = AnimationDrawable()
         let bitmaps = urls.map {Bitmap($0)}
-        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame(Drawable($0), delay)}
+        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame($0, delay)}
         return animDrawable
     }
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap], _ delay: Int) -> AnimationDrawable {
         let animDrawable = AnimationDrawable()
-        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame(Drawable($0), delay)}
+        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame($0, delay)}
         return animDrawable
     }
 
