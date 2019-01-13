@@ -9,7 +9,7 @@ import Foundation
 final class UtilitySunMoon {
 
     // TODO consolidate error handling below
-    
+
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()

@@ -52,10 +52,10 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         textViews.forEach {$0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)}
         textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
         (0...6).forEach {_ in textViews.append(UITextView())}
-        let stackView = UIStackView(arrangedSubviews: textViews)
-        setupStackView(stackView)
-        view.addSubview(stackView)
-        let viewsDictionary = ["stackView": stackView]
+        let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
+        stackView.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView.view)
+        let viewsDictionary = ["stackView": stackView.view]
         let stackViewH = NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-20-[stackView]-20-|",
             options: NSLayoutConstraint.FormatOptions(rawValue: 0),
@@ -79,14 +79,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             latTextView.text = MyApplication.locations[locIdx].lat
             lonTextView.text = MyApplication.locations[locIdx].lon
         }
-    }
-
-    // FIXME remove and convert above to ObjectStackView
-    func setupStackView(_ stackView: UIStackView) {
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     @objc func doneClicked() {
