@@ -526,6 +526,9 @@ class WXMetalRender {
         }
         locdotBuffers.generateMtlBuffer(device)
         locCircleBuffers.generateMtlBuffer(device)
+        if self.renderFn != nil {
+            self.renderFn!(self.paneNumber)
+        }
     }
 
     func constructTriangles(_ buffers: ObjectMetalBuffers) {
