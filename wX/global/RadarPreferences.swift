@@ -38,8 +38,6 @@ class RadarPreferences {
     static var radarLocdotSize = 0
     static var radarHiSize = 0
     static var radarTvsSize = 0
-    static var radarWarnLinesize = 0
-    static var radarWatmcdLinesize = 0
     static var wxoglSize = 0
     static var wxoglRememberLocation = true
     static var wxoglRadarAutorefresh = false
@@ -77,8 +75,6 @@ class RadarPreferences {
         radarLocdotSize = preferences.getInt("RADAR_LOCDOT_SIZE", 4)
         radarHiSize = preferences.getInt("RADAR_HI_SIZE", 4)
         radarTvsSize = preferences.getInt("RADAR_TVS_SIZE", 4)
-        radarWarnLinesize = preferences.getInt("RADAR_WARN_LINESIZE", 2)
-        radarWatmcdLinesize = preferences.getInt("RADAR_WATMCD_LINESIZE", 2)
         wxoglSize = preferences.getInt("WXOGL_SIZE", 10)
         wxoglRememberLocation = preferences.getString("WXOGL_REMEMBER_LOCATION", "true").hasPrefix("t")
         wxoglRadarAutorefresh = preferences.getString("RADAR_AUTOREFRESH", "false").hasPrefix("t")

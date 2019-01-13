@@ -2,7 +2,6 @@
 // TODO color palette editor
 // TODO standard model var names with android version
 // TODO N0U anim not working ( seems worse on slower devices )
-// TODO add code to handle rectangular transformation in render
 // TODO look for way to save x/y/zoom of images
 // TODO complete URL refactor to move base URL to myApp
 // TODO roaming location
@@ -11,11 +10,10 @@
 // TODO look at threads on main screen
 // TODO test text in main screen radar
 // TODO look at migrating all pref activity to utils
-// TODO convert more UIStackView to ObjectStackView
-// TODO cleanup external "Solar" code
 // TODO full cleanup for radar prefs that don't apply to Metal - ie line width
 
 2018_01_13 54900 remove "Solar" code now that SunCalc has replaced
+		 remove remnants of radar line width from OpenGL
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset
