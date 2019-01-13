@@ -38,6 +38,12 @@ final class ObjectStackView {
         self.init(distribution, axis, spacing)
         arrangedSubviews.forEach { sV.addArrangedSubview($0) }
     }
+    
+    func addArrangedSubviews(_ listOfViews: [UIView]) {
+        listOfViews.forEach {
+            sV.addArrangedSubview($0)
+        }
+    }
 
     var view: UIStackView {
         return sV

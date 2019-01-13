@@ -12,17 +12,13 @@ final class ObjectNumberPicker {
     let vw = UIButton(type: UIButton.ButtonType.system)
 
     init(_ stackView: UIStackView, _ prefVar: String, _ pickerMap: [String: String]) {
-        // TODO convert to ObjectStackView
-        let sV = UIStackView()
-        sV.spacing = 0
-        sV.axis = .horizontal
+        let sV = ObjectStackView(.fill, .horizontal)
         let label = pickerMap[prefVar]
         vw.setTitle(label, for: .normal)
         vw.contentHorizontalAlignment = .left
         vw.backgroundColor = UIColor.white
         sw.backgroundColor = UIColor.white
-        sV.addArrangedSubview(vw)
-        sV.addArrangedSubview(sw)
-        stackView.addArrangedSubview(sV)
+        sV.addArrangedSubviews([vw, sw])
+        stackView.addArrangedSubview(sV.view)
     }
 }

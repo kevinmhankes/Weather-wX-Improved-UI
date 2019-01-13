@@ -14,11 +14,8 @@ final class ObjectSettingsSwitch {
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
-        // FIXME convert to ObjectStackView
-        let sV = UIStackView()
-        sV.distribution = .fill
-        sV.axis = .horizontal
-        [sV, vw, sw].forEach {
+        let sV = ObjectStackView(.fill, .horizontal)
+        [vw, sw].forEach {
             $0.backgroundColor = UIColor.white
         }
         vw.contentHorizontalAlignment = .left
@@ -27,10 +24,8 @@ final class ObjectSettingsSwitch {
         sw.thumbTintColor = AppColors.primaryDarkBlueUIColor
         sw.onTintColor = AppColors.primaryColorUIColor
         sw.setOn(preferences.getString(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
-        [vw, sw].forEach {
-            sV.addArrangedSubview($0)
-        }
-        sV.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        stackView.addArrangedSubview(sV)
+        sV.addArrangedSubviews([vw, sw])
+        sV.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        stackView.addArrangedSubview(sV.view)
     }
 }

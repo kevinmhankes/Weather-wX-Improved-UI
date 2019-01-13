@@ -8,14 +8,14 @@ import Foundation
 
 final class UtilitySunMoon {
 
-    // TODO use this on main screen in place of older library
-
+    // TODO consolidate error handling below
+    
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()
         let now = Date()
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .none
         formatter.timeStyle = .short
         let fullMoonFormatter = DateFormatter()
         fullMoonFormatter.dateStyle = .short
