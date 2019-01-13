@@ -8,8 +8,6 @@ import Foundation
 
 final class UtilitySunMoon {
 
-    // TODO consolidate error handling below
-
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()
@@ -26,47 +24,14 @@ final class UtilitySunMoon {
             let timeFormatted = formatter.string(from: time)
             data += "Dawn:     \(timeFormatted)"
             data += MyApplication.newline
-        } catch let e as SunCalc.SolarEventError {
-            switch e {
-            case .sunNeverRise:
-                print("Sun never rise")
-            case .sunNeverSet:
-                print("Sun never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
-        }
-        do {
             let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
             let sunrise = formatter.string(from: rise)
             data += "Sunrise:  \(sunrise)"
             data += MyApplication.newline
-        } catch let e as SunCalc.SolarEventError {
-            switch e {
-            case .sunNeverRise:
-                print("Sun never rise")
-            case .sunNeverSet:
-                print("Sun never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
-        }
-        do {
             let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
             let sunset = formatter.string(from: set)
             data += "Sunset:   \(sunset)"
             data += MyApplication.newline
-        } catch let e as SunCalc.SolarEventError {
-            switch e {
-            case .sunNeverRise:
-                print("Sun never rise")
-            case .sunNeverSet:
-                print("Sun never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
-        }
-        do {
             let aDusk = try sunCalc.time(ofDate: now, forSolarEvent: .dusk, atLocation: location)
             let astronomicalDusk = formatter.string(from: aDusk)
             data += "Dusk:     \(astronomicalDusk)"
@@ -110,7 +75,7 @@ final class UtilitySunMoon {
             let future = Calendar.current.date(byAdding: .day, value: $0, to: now)
             let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
             if moonIlluminationFuture.phase > 0.479 && moonIlluminationFuture.phase < 0.521 {
-                data += fullMoonFormatter.string(from: future!) // + " " + String(moonIlluminationFuture.phase)
+                data += fullMoonFormatter.string(from: future!)
                 data += MyApplication.newline
             }
         }

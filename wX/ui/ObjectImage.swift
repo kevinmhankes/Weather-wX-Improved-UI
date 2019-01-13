@@ -32,7 +32,6 @@ final class ObjectImage {
         self.init()
         img.image = bitmap.image
         self.bitmap = bitmap
-        // TODO move this to class method
         //UtilityUI.setImageAnchors(img, bitmap, UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         setImageAnchors(UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
