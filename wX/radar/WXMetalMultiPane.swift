@@ -44,13 +44,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setPaneSize(size)
+        // TODO make this global
         let paneRange = 0..<numberOfPanes
         paneRange.enumerated().forEach { index, _ in
             self.render(index)
         }
-        //coordinator.animate(alongsideTransition: nil, completion: { _ in
-        //    self.view.setNeedsDisplay()
-        //})
     }
 
     func setPaneSize(_ size: CGSize) {

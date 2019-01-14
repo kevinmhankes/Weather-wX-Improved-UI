@@ -331,14 +331,14 @@ class WXMetalRender {
             let numberOfPanes = String(self.numberOfPanes)
             let index = String(paneNumber)
             let radarType = "WXMETAL"
-            zoom = preferences.getFloat(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
-            xPos = preferences.getFloat(radarType + numberOfPanes + "_X" + index, 0.0)
-            yPos = preferences.getFloat(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = preferences.getString(
+            zoom = Utility.readPref(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
+            xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
+            yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
+            product = Utility.readPref(
                 radarType + numberOfPanes + "_PROD" + index,
                 initialRadarProducts[paneNumber]
             )
-            rid = preferences.getString(radarType + numberOfPanes + "_RID" + index, Location.rid)
+            rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
         } else {
             rid = Location.rid
         }

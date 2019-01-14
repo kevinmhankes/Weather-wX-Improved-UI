@@ -59,7 +59,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
     }
 
     func deSerializeSettings() {
-        homescreenFav = TextUtils.split(preferences.getString(
+        homescreenFav = TextUtils.split(Utility.readPref(
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault), ":"
         )

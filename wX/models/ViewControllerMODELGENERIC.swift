@@ -31,12 +31,16 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
         runButton = ObjectToolbarIcon(title: "Run", self, #selector(runClicked))
         let animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        toolbarTop.items = ObjectToolbarItems([statusButton,
-                                               flexBarButton,
-                                               modelButton,
-                                               sectorButton,
-                                               runButton,
-                                               animateButton]).items
+        toolbarTop.items = ObjectToolbarItems(
+            [
+                statusButton,
+                flexBarButton,
+                modelButton,
+                sectorButton,
+                runButton,
+                animateButton
+            ]
+        ).items
         if ActVars.modelActivitySelected.contains("NCAR")
             || ActVars.modelActivitySelected.contains("SPCSREF")
             || ActVars.modelActivitySelected.contains("SPCHREF")
@@ -69,12 +73,16 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         let leftButton = ObjectToolbarIcon(self, .leftArrow, #selector(self.leftClicked))
         let rightButton = ObjectToolbarIcon(self, .rightArrow, #selector(self.rightClicked))
         fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            productButton,
-                                            timeButton,
-                                            leftButton,
-                                            rightButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                productButton,
+                timeButton,
+                leftButton,
+                rightButton
+            ]
+        ).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)

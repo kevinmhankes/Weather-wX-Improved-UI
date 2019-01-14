@@ -38,34 +38,42 @@ class ViewControllerSPCMESO: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        toolbarTop.items = ObjectToolbarItems([flexBarButton,
-                                               paramButton,
-                                               fixedSpace,
-                                               layerButton,
-                                               fixedSpace,
-                                               animateButton,
-                                               fixedSpace,
-                                               shareButton]).items
+        toolbarTop.items = ObjectToolbarItems(
+            [
+                flexBarButton,
+                paramButton,
+                fixedSpace,
+                layerButton,
+                fixedSpace,
+                animateButton,
+                fixedSpace,
+                shareButton
+            ]
+        ).items
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
         sfcButton = ObjectToolbarIcon(title: "SFC", self, #selector(paramClicked))
         uaButton = ObjectToolbarIcon(title: "UA", self, #selector(paramClicked))
         cpeButton = ObjectToolbarIcon(title: "CPE", self, #selector(paramClicked))
         cmpButton = ObjectToolbarIcon(title: "CMP", self, #selector(paramClicked))
         shrButton = ObjectToolbarIcon(title: "SHR", self, #selector(paramClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            sfcButton,
-                                            uaButton,
-                                            cpeButton,
-                                            cmpButton,
-                                            shrButton,
-                                            sectorButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                sfcButton,
+                uaButton,
+                cpeButton,
+                cmpButton,
+                shrButton,
+                sectorButton
+            ]
+        ).items
         image = ObjectTouchImageView(self, toolbar)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         self.view.addSubview(toolbarTop)
         self.view.addSubview(toolbar)
-        product = preferences.getString(prefModel + numPanesStr + "_PARAM_LAST_USED", product)
-        sectorChanged(preferences.getString(prefModel + numPanesStr + "_SECTOR_LAST_USED", sector))
+        product = Utility.readPref(prefModel + numPanesStr + "_PARAM_LAST_USED", product)
+        sectorChanged(Utility.readPref(prefModel + numPanesStr + "_SECTOR_LAST_USED", sector))
     }
 
     func getContent() {
@@ -148,10 +156,10 @@ class ViewControllerSPCMESO: UIwXViewController {
     func isLayerSelected(_ layer: String) -> Bool {
         var isSelected = "false"
         switch layer {
-        case "Radar":            isSelected = preferences.getString("SPCMESO_SHOW_RADAR", "false")
-        case "SPC Outlooks":     isSelected = preferences.getString("SPCMESO_SHOW_OUTLOOK", "false")
-        case "Watches/Warnings": isSelected = preferences.getString("SPCMESO_SHOW_WATWARN", "false")
-        case "Topography":       isSelected = preferences.getString("SPCMESO_SHOW_TOPO", "false")
+        case "Radar":            isSelected = Utility.readPref("SPCMESO_SHOW_RADAR", "false")
+        case "SPC Outlooks":     isSelected = Utility.readPref("SPCMESO_SHOW_OUTLOOK", "false")
+        case "Watches/Warnings": isSelected = Utility.readPref("SPCMESO_SHOW_WATWARN", "false")
+        case "Topography":       isSelected = Utility.readPref("SPCMESO_SHOW_TOPO", "false")
         default: break
         }
         return isSelected == "true"

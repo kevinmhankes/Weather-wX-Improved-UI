@@ -157,9 +157,9 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let caProv = preferences.getString("LOCATION_CANADA_PROV", "")
-        let caCity = preferences.getString("LOCATION_CANADA_CITY", "")
-        let caId = preferences.getString("LOCATION_CANADA_ID", "")
+        let caProv = Utility.readPref("LOCATION_CANADA_PROV", "")
+        let caCity = Utility.readPref("LOCATION_CANADA_CITY", "")
+        let caId = Utility.readPref("LOCATION_CANADA_ID", "")
         if caProv != "" || caCity != "" || caId != "" {
             self.latTextView.text = "CANADA:" + caProv
             self.lonTextView.text = caId

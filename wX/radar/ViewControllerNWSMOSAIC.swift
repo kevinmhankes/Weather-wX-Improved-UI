@@ -29,7 +29,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = preferences.getInt(prefToken, index)
+        index = Utility.readPref(prefToken, index)
         if ActVars.nwsMosaicType == "local" {
             ActVars.nwsMosaicType = ""
             isLocal = true
@@ -94,7 +94,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     }
 
     func getStateFromRid() -> String {
-        return preferences.getString("RID_LOC_" + Location.rid, "").split(",")[0]
+        return Utility.readPref("RID_LOC_" + Location.rid, "").split(",")[0]
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {

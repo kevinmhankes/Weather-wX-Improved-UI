@@ -28,7 +28,7 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
     }
 
     func deSerializeSettings() {
-        layers = Set(TextUtils.split(preferences.getString("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
+        layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
     }
 
     func getContent() {

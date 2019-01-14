@@ -58,8 +58,8 @@ class ViewControllerGOES16: UIwXViewController {
 
     func deSerializeSettings() {
         if ActVars.goesSector == "" {
-            productCode = preferences.getString("GOES16_PROD", "GEOCOLOR")
-            sectorCode = preferences.getString("GOES16_SECTOR", "cgl")
+            productCode = Utility.readPref("GOES16_PROD", "GEOCOLOR")
+            sectorCode = Utility.readPref("GOES16_SECTOR", "cgl")
             productButton.title = productCode
             sectorButton.title = sectorCode
         } else {

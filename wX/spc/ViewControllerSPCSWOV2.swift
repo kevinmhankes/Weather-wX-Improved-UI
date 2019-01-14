@@ -23,12 +23,16 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let stateButton = ObjectToolbarIcon(title: "STATE", self, #selector(stateClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            stateButton,
-                                            playButton,
-                                            shareButton,
-                                            playlistButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                stateButton,
+                playButton,
+                shareButton,
+                playlistButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         if ActVars.spcswoDay == "48" {
             stateButton.title = ""

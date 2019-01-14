@@ -21,7 +21,7 @@ class ViewControllerWPCIMG: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = preferences.getInt("WPCIMG_PARAM_LAST_USED", index)
+        index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         self.getContent(index)
     }
 

@@ -23,16 +23,20 @@ class ViewControllerWPCTEXT: UIwXViewController {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton,
-                                            flexBarButton,
-                                            productButton,
-                                            playButton,
-                                            shareButton,
-                                            playListButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                productButton,
+                playButton,
+                shareButton,
+                playListButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         if ActVars.wpcTextProduct == "" {
-            product = preferences.getString("WPCTEXT_PARAM_LAST_USED", product)
+            product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
         } else {
             product = ActVars.wpcTextProduct
             ActVars.wpcTextProduct = ""

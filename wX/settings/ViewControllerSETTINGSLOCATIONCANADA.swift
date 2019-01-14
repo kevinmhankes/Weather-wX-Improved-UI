@@ -45,9 +45,9 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     }
 
     func finishSave() {
-        let locStr = preferences.getString("LOCATION_CANADA_PROV", "") + " " +
-            preferences.getString("LOCATION_CANADA_CITY", "") + " " +
-            preferences.getString("LOCATION_CANADA_ID", "")
+        let locStr = Utility.readPref("LOCATION_CANADA_PROV", "") + " " +
+            Utility.readPref("LOCATION_CANADA_CITY", "") + " " +
+            Utility.readPref("LOCATION_CANADA_ID", "")
         statusButton.title = locStr
     }
 

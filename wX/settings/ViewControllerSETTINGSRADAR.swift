@@ -38,14 +38,14 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.sw.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
-                        of: preferences.getString(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
+                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
                         )!,
                     inComponent: 0,
                     animated: true
                 )
             } else {
                 objNp.sw.selectRow(
-                    preferences.getInt(
+                    Utility.readPref(
                         prefVar,
                         UtilitySettingsRadar.pickerinit[prefVar]!
                     ),

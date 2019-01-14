@@ -54,10 +54,10 @@ final public class ObjectModel {
     convenience init(_ prefModel: String) {
         self.init()
         self.prefModel = prefModel
-        prefSector = "MODEL_"+prefModel+"_SECTOR_LAST_USED"
-        prefParam = "MODEL_"+prefModel+"_PARAM_LAST_USED"
-        prefRunPosn = prefModel+"_RUN_POSN"
-        prefRunPosnIdx = prefModel+"_RUN_POSN" + "IDX"
+        prefSector = "MODEL_" + prefModel + "_SECTOR_LAST_USED"
+        prefParam = "MODEL_" + prefModel + "_PARAM_LAST_USED"
+        prefRunPosn = prefModel + "_RUN_POSN"
+        prefRunPosnIdx = prefModel + "_RUN_POSN" + "IDX"
         switch prefModel {
         case "NCAR_ENSEMBLE":
             run = "00Z"
@@ -150,11 +150,11 @@ final public class ObjectModel {
     }
 
     func getPrefs() {
-        model = preferences.getString(prefModel, model)
-        param = preferences.getString(prefParam, param)
-        sector = preferences.getString(prefSector, sector)
-        timeStr = preferences.getString(prefRunPosn, timeStr)
-        timeIdx = preferences.getInt(prefRunPosnIdx, timeIdx)
+        model = Utility.readPref(prefModel, model)
+        param = Utility.readPref(prefParam, param)
+        sector = Utility.readPref(prefSector, sector)
+        timeStr = Utility.readPref(prefRunPosn, timeStr)
+        timeIdx = Utility.readPref(prefRunPosnIdx, timeIdx)
     }
 
     func setPrefs() {
@@ -580,7 +580,7 @@ final public class ObjectModel {
 
     func leftClick() {
         if timeIdx == 0 {
-            setTimeIdx(timeArr.count-1)
+            setTimeIdx(timeArr.count - 1)
         } else {
             timeIdxDecr()
         }
