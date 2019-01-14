@@ -8,8 +8,6 @@
 // TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO look at migrating all pref activity to utils
-// TODO full cleanup for radar prefs that don't apply to Metal - ie line width
-// TODO homescreen conus vis not working
 // TODO hourly graphics
 
 2018_01_13 54900 remove "Solar" code now that SunCalc has replaced
