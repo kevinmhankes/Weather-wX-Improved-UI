@@ -74,7 +74,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         if isOnQ {
             truthString = "true"
         }
-        editor.putString(prefLabels[sender.tag], truthString)
+        Utility.writePref(prefLabels[sender.tag], truthString)
         if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
             locationManager.requestWhenInUseAuthorization()
             switch CLLocationManager.authorizationStatus() {
@@ -125,12 +125,12 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "RADAR_COLOR_PALETTE_94" || array[pickerView.tag] == "RADAR_COLOR_PALETTE_99" {
-                editor.putString(
+                Utility.writePref(
                     array[pickerView.tag],
                     UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
                 )
             } else {
-                editor.putInt(
+                Utility.writePref(
                     array[pickerView.tag],
                     Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!
                 )

@@ -158,11 +158,11 @@ final public class ObjectModel {
     }
 
     func setPrefs() {
-        editor.putString(prefModel, model)
-        editor.putString(prefParam, param)
-        editor.putString(prefSector, sector)
-        editor.putString(prefRunPosn, timeStr)
-        editor.putInt(prefRunPosnIdx, timeIdx)
+        Utility.writePref(prefModel, model)
+        Utility.writePref(prefParam, param)
+        Utility.writePref(prefSector, sector)
+        Utility.writePref(prefRunPosn, timeStr)
+        Utility.writePref(prefRunPosnIdx, timeIdx)
     }
 
     func setButtons(

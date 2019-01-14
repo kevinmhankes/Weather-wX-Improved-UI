@@ -67,8 +67,8 @@ class ViewControllerCARADAR: UIwXViewController {
                 self.image.setBitmap(bitmap)
                 self.productButton.title = self.rid
                 if !self.startFromMosaic {
-                    editor.putString("CA_LAST_RID", self.rid)
-                    editor.putString("CA_LAST_RID_URL", self.url)
+                    Utility.writePref("CA_LAST_RID", self.rid)
+                    Utility.writePref("CA_LAST_RID_URL", self.url)
                 }
                 if UtilityCanadaImg.mosaicRids.contains(self.rid) {
                     self.mosaicShown = true

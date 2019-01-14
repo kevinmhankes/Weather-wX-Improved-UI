@@ -85,13 +85,13 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     }
 
     func saveNewColorClicked() {
-        editor.putInt(ActVars.colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
+        Utility.writePref(ActVars.colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
         ActVars.colorObject.regenCurrentColor()
     }
 
     @objc func saveDefaultColorClicked() {
-        editor.putInt(
+        Utility.writePref(
             ActVars.colorObject.prefVar,
             Color.rgb(
                 ActVars.colorObject.defaultRed,

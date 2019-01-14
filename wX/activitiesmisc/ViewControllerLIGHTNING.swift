@@ -52,8 +52,8 @@ class ViewControllerLIGHTNING: UIwXViewController {
                 }
                 self.productButton.title = self.sectorPretty
                 self.timeButton.title = self.periodPretty
-                editor.putString("LIGHTNING_SECTOR", self.sector)
-                editor.putString("LIGHTNING_PERIOD", self.period)
+                Utility.writePref("LIGHTNING_SECTOR", self.sector)
+                Utility.writePref("LIGHTNING_PERIOD", self.period)
             }
         }
     }

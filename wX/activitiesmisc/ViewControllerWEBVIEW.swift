@@ -65,7 +65,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         urlChanged(stateCodeCurrent)
         webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         if ActVars.webViewStateCode != "tornado" {
-            editor.putString(prefToken, self.stateCodeCurrent)
+            Utility.writePref(prefToken, self.stateCodeCurrent)
         }
     }
 

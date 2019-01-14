@@ -92,7 +92,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         playlistItems = playlistItems.filter { $0 != "" }
         let token = TextUtils.join(":", playlistItems)
         MyApplication.playlistStr = token
-        editor.putString("PLAYLIST", token)
+        Utility.writePref("PLAYLIST", token)
     }
 
     func deSerializeSettings() {

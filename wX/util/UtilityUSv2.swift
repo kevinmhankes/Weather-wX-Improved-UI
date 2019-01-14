@@ -69,7 +69,7 @@ final class UtilityUSv2 {
             obsClosest = obsHtml.parseFirst("gov/stations/(.*?)\"")
             obsClosestClass = obsClosest
             if key != "" && obsClosest != "" {
-                editor.putString(key, obsClosest)
+                Utility.writePref(key, obsClosest)
             }
         }
         obsClosestClass = obsClosest

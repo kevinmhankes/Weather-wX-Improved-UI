@@ -23,9 +23,9 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        editor.putString("LOCATION_CANADA_PROV", "")
-        editor.putString("LOCATION_CANADA_CITY", "")
-        editor.putString("LOCATION_CANADA_ID", "")
+        Utility.writePref("LOCATION_CANADA_PROV", "")
+        Utility.writePref("LOCATION_CANADA_CITY", "")
+        Utility.writePref("LOCATION_CANADA_ID", "")
         self.locationManager.delegate = self
         let toolbar = ObjectToolbar(.top)
         let toolbarBottom = ObjectToolbar(.bottom)

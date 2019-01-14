@@ -319,11 +319,11 @@ class WXMetalRender {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
         let radarType = "WXMETAL"
-        editor.putFloat(radarType + numberOfPanes + "_ZOOM" + index, zoom)
-        editor.putFloat(radarType + numberOfPanes + "_X" + index, xPos)
-        editor.putFloat(radarType + numberOfPanes + "_Y" + index, yPos)
-        editor.putString(radarType + numberOfPanes + "_RID" + index, rid)
-        editor.putString(radarType + numberOfPanes + "_PROD" + index, product)
+        Utility.writePref(radarType + numberOfPanes + "_ZOOM" + index, zoom)
+        Utility.writePref(radarType + numberOfPanes + "_X" + index, xPos)
+        Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
+        Utility.writePref(radarType + numberOfPanes + "_RID" + index, rid)
+        Utility.writePref(radarType + numberOfPanes + "_PROD" + index, product)
     }
 
     func readPrefs() {

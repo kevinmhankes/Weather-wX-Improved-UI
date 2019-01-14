@@ -51,8 +51,8 @@ class ViewControllerGOES16: UIwXViewController {
 
     func serializeSettings() {
         if savePrefs {
-            editor.putString("GOES16_PROD", productCode)
-            editor.putString("GOES16_SECTOR", sectorCode)
+            Utility.writePref("GOES16_PROD", productCode)
+            Utility.writePref("GOES16_SECTOR", sectorCode)
         }
     }
 

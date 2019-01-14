@@ -20,16 +20,16 @@ final class UtilityPlayList {
             _ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)
         }
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
-        editor.putString("PLAYLIST_" + prodLocal, text)
-        editor.putString("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
+        Utility.writePref("PLAYLIST_" + prodLocal, text)
+        Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
     }
 
     static func checkAndSave(_ prod: String, _ text: String) {
         let prodLocal = prod.uppercased()
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         if MyApplication.playlistStr.contains(prodLocal) {
-            editor.putString("PLAYLIST_" + prodLocal, text)
-            editor.putString("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
+            Utility.writePref("PLAYLIST_" + prodLocal, text)
+            Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
         }
     }
 
@@ -44,12 +44,12 @@ final class UtilityPlayList {
                 text = text.replaceAll("^<br>", "")
             }
             if text != "" {
-                editor.putString("PLAYLIST_" + $0, text)
-                editor.putString("PLAYLIST_" + $0 + "_TIME", formattedDate)
+                Utility.writePref("PLAYLIST_" + $0, text)
+                Utility.writePref("PLAYLIST_" + $0 + "_TIME", formattedDate)
             }
             resultStr += $0 + " " + String(text.count) + " "
         }
         let formattedDate2 = UtilityTime.getDateAsString("MM-dd-yy HH:mm:SS Z")
-        editor.putString("PLAYLIST_STATUS", formattedDate2 + MyApplication.newline + resultStr)
+        Utility.writePref("PLAYLIST_STATUS", formattedDate2 + MyApplication.newline + resultStr)
     }
 }

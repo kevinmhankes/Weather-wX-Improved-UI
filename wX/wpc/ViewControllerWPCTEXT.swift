@@ -54,7 +54,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
             DispatchQueue.main.async {
                 self.textView.text = html
                 self.productButton.title = self.product
-                editor.putString("WPCTEXT_PARAM_LAST_USED", self.product)
+                Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
             }
         }
     }

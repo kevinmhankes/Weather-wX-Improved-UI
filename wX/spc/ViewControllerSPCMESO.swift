@@ -87,8 +87,8 @@ class ViewControllerSPCMESO: UIwXViewController {
                     self.image.updateBitmap(bitmap)
                 }
                 self.paramButton.title = self.product
-                editor.putString(self.prefModel + self.numPanesStr + "_PARAM_LAST_USED", self.product)
-                editor.putString(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
+                Utility.writePref(self.prefModel + self.numPanesStr + "_PARAM_LAST_USED", self.product)
+                Utility.writePref(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
             }
         }
     }
@@ -168,9 +168,9 @@ class ViewControllerSPCMESO: UIwXViewController {
     func toggleLayer(_ prefVar: String) {
         let currentValue = Utility.readPref(prefVar, "false").hasPrefix("true")
         if currentValue {
-            editor.putString(prefVar, "false")
+            Utility.writePref(prefVar, "false")
         } else {
-            editor.putString(prefVar, "true")
+            Utility.writePref(prefVar, "true")
         }
     }
 

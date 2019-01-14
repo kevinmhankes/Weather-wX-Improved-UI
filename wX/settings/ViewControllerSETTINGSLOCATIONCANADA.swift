@@ -37,9 +37,9 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
             statusButton.title = "Canadian Locations (" + provSelected + ")"
             getContent()
         } else {
-            editor.putString("LOCATION_CANADA_PROV", provSelected)
-            editor.putString("LOCATION_CANADA_CITY", listCity[position])
-            editor.putString("LOCATION_CANADA_ID", listIds[position])
+            Utility.writePref("LOCATION_CANADA_PROV", provSelected)
+            Utility.writePref("LOCATION_CANADA_CITY", listCity[position])
+            Utility.writePref("LOCATION_CANADA_ID", listIds[position])
             finishSave()
         }
     }

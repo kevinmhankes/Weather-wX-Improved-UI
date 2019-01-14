@@ -71,7 +71,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         if isOnQ {
             truthString = "true"
         }
-        editor.putString(prefLabels[sender.tag], truthString)
+        Utility.writePref(prefLabels[sender.tag], truthString)
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -98,9 +98,9 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "UI_THEME" {
-                editor.putString(array[pickerView.tag], UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])
+                Utility.writePref(array[pickerView.tag], UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])
             } else {
-                editor.putInt(array[pickerView.tag],
+                Utility.writePref(array[pickerView.tag],
                               Int(UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])!)
             }
         }

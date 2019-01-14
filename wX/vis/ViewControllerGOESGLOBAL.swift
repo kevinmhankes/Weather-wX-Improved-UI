@@ -39,7 +39,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
                 } else {
                     self.hideAnimateButton()
                 }
-                editor.putInt(self.prefToken, self.index)
+                Utility.writePref(self.prefToken, self.index)
             }
         }
     }

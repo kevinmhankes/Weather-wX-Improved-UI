@@ -122,7 +122,7 @@ final class WXMetalNexradLevelData {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.string(from: date)
         let radarInfoFinal = dateString + MyApplication.newline + "Product: " + String(productCode)
-        editor.putString("WX_RADAR_CURRENT_INFO", radarInfoFinal)
+        Utility.writePref("WX_RADAR_CURRENT_INFO", radarInfoFinal)
     }
 
     func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int, _ radarInfo: String) {
@@ -132,6 +132,6 @@ final class WXMetalNexradLevelData {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.string(from: date)
         let radarInfoFinal = dateString + MyApplication.newline + radarInfo
-        editor.putString("WX_RADAR_CURRENT_INFO", radarInfoFinal)
+        Utility.writePref("WX_RADAR_CURRENT_INFO", radarInfoFinal)
     }
 }

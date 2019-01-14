@@ -36,7 +36,7 @@ class ViewControllerWPCIMG: UIwXViewController {
             let bitmap = Bitmap(getUrl)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                editor.putInt("WPCIMG_PARAM_LAST_USED", self.index)
+                Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
             }
         }
     }

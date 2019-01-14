@@ -47,7 +47,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 if !self.isLocal {
-                    editor.putInt(self.prefToken, self.index)
+                    Utility.writePref(self.prefToken, self.index)
                 }
             }
         }

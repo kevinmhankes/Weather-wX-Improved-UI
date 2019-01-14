@@ -33,7 +33,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
             let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                editor.putInt(self.prefTokenIdx, self.index)
+                Utility.writePref(self.prefTokenIdx, self.index)
             }
         }
     }

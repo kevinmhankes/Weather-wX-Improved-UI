@@ -51,7 +51,7 @@ class ViewControllerCATEXT: UIwXViewController {
                 }
                 self.textView.text = self.html
                 self.productButton.title = self.product
-                editor.putString("CA_TEXT_LASTUSED", self.product)
+                Utility.writePref("CA_TEXT_LASTUSED", self.product)
             }
         }
     }

@@ -24,7 +24,7 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
     }
 
     func serializeSettings() {
-        editor.putString("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
+        Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
     }
 
     func deSerializeSettings() {

@@ -31,7 +31,7 @@ class ViewControllerOPC: UIwXViewController {
             let bitmap = Bitmap(UtilityOPCImages.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                editor.putInt(self.prefToken, self.index)
+                Utility.writePref(self.prefToken, self.index)
             }
         }
     }
