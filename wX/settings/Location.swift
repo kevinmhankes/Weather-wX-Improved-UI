@@ -41,14 +41,14 @@ final class Location {
 
     func saveLocationToNewSlot(_ newLocNumInt: Int) {
         let iStr = String(newLocNumInt+1)
-        editor.putString("LOC" + iStr + "_X", lat)
-        editor.putString("LOC" + iStr + "_Y", lon)
-        editor.putString("LOC" + iStr + "_LABEL", name)
-        editor.putString("COUNTY" + iStr, countyCurrent)
-        editor.putString("ZONE" + iStr, zoneCurrent)
-        editor.putString("NWS" + iStr, wfo)
-        editor.putString("RID" + iStr, rid)
-        editor.putString("NWS" + iStr + "_STATE", nwsStateCurrent)
+        Utility.writePref("LOC" + iStr + "_X", lat)
+        Utility.writePref("LOC" + iStr + "_Y", lon)
+        Utility.writePref("LOC" + iStr + "_LABEL", name)
+        Utility.writePref("COUNTY" + iStr, countyCurrent)
+        Utility.writePref("ZONE" + iStr, zoneCurrent)
+        Utility.writePref("NWS" + iStr, wfo)
+        Utility.writePref("RID" + iStr, rid)
+        Utility.writePref("NWS" + iStr + "_STATE", nwsStateCurrent)
         Location.refreshLocationData()
     }
 
@@ -173,9 +173,9 @@ final class Location {
         } else {
             locNumToSave = locNumIntCurrent
         }
-        editor.putString("LOC" + locNum + "_X", location.latString)
-        editor.putString("LOC" + locNum + "_Y", location.lonString)
-        editor.putString("LOC" + locNum + "_LABEL", labelStr)
+        Utility.writePref("LOC" + locNum + "_X", location.latString)
+        Utility.writePref("LOC" + locNum + "_Y", location.lonString)
+        Utility.writePref("LOC" + locNum + "_LABEL", labelStr)
         var nwsOfficeShortLower = ""
         var rid = ""
         if Location.us(location.latString) {
@@ -185,8 +185,8 @@ final class Location {
             if rid == "" {
                 rid = Utility.readPref("NWS_RID_" + nwsOfficeShortLower.uppercased(), "")
             }
-            editor.putString("RID" + locNum, rid.uppercased())
-            editor.putString("NWS" + locNum, nwsOfficeShortLower.uppercased())
+            Utility.writePref("RID" + locNum, rid.uppercased())
+            Utility.writePref("NWS" + locNum, nwsOfficeShortLower.uppercased())
         } else {
             var tmpLatlon = LatLonStr()
             if location.latString.count < 12 {
@@ -208,15 +208,15 @@ final class Location {
                 tmpLatlon.latStr = parseProv[2]
                 tmpLatlon.lonStr = parseId[1]
             }
-            editor.putString("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latStr)
-            editor.putString("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonStr)
+            Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latStr)
+            Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonStr)
             Location.numLocations = locNumToSave
             rid = UtilityCanada.getRid(location.latString, location.lonString)
-            editor.putString("RID" + locNum, rid.uppercased())
-            editor.putString("NWS" + locNum + "_STATE", prov)
-            editor.putString("ZONE" + locNum, "")
-            editor.putString("COUNTY" + locNum, "")
-            editor.putString("NWS" + locNum, "")
+            Utility.writePref("RID" + locNum, rid.uppercased())
+            Utility.writePref("NWS" + locNum + "_STATE", prov)
+            Utility.writePref("ZONE" + locNum, "")
+            Utility.writePref("COUNTY" + locNum, "")
+            Utility.writePref("NWS" + locNum, "")
         }
         Location.refreshLocationData()
         return "Saving location " + locNum + " as " + labelStr
@@ -259,51 +259,51 @@ final class Location {
                 let alertNotificationSwoCurrent = Utility.readPref("ALERT_NOTIFICATION_SWO" + jStr, "false")
                 let alertNotificationSpcfwCurrent = Utility.readPref("ALERT_NOTIFICATION_SPCFW" + jStr, "false")
                 let alertNotificationWpcmpdCurrent = Utility.readPref("ALERT_NOTIFICATION_WPCMPD" + jStr, "false")
-                editor.putString("ALERT" + iStr + "_NOTIFICATION", alertNotificationCurrent)
-                editor.putString("ALERT_CC" + iStr + "_NOTIFICATION", alertCcNotificationCurrent)
-                editor.putString("ALERT_7DAY_" + iStr + "_NOTIFICATION", alert7day1NotificationCurrent)
-                editor.putString("ALERT_NOTIFICATION_SOUND" + iStr, alertNotificationSoundCurrent)
-                editor.putString("ALERT_NOTIFICATION_MCD" + iStr, alertNotificationMcdCurrent)
-                editor.putString("ALERT_NOTIFICATION_SWO" + iStr, alertNotificationSwoCurrent)
-                editor.putString("ALERT_NOTIFICATION_SPCFW" + iStr, alertNotificationSpcfwCurrent)
-                editor.putString("ALERT_NOTIFICATION_WPCMPD" + iStr, alertNotificationWpcmpdCurrent)
-                editor.putString("ALERT_NOTIFICATION_RADAR" + iStr, alertNotificationRadarCurrent)
-                editor.putString("LOC" + iStr + "_X", locXCurrent)
-                editor.putString("LOC" + iStr + "_Y", locYCurrent)
-                editor.putString("LOC" + iStr + "_LABEL", locLabelCurrent)
-                editor.putString("COUNTY" + iStr, countyCurrent)
-                editor.putString("ZONE" + iStr, zoneCurrent)
-                editor.putString("NWS" + iStr, nwsCurrent)
-                editor.putString("RID" + iStr, ridCurrent)
-                editor.putString("NWS" + iStr + "_STATE", nwsStateCurrent)
+                Utility.writePref("ALERT" + iStr + "_NOTIFICATION", alertNotificationCurrent)
+                Utility.writePref("ALERT_CC" + iStr + "_NOTIFICATION", alertCcNotificationCurrent)
+                Utility.writePref("ALERT_7DAY_" + iStr + "_NOTIFICATION", alert7day1NotificationCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_SOUND" + iStr, alertNotificationSoundCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_MCD" + iStr, alertNotificationMcdCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_SWO" + iStr, alertNotificationSwoCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_SPCFW" + iStr, alertNotificationSpcfwCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + iStr, alertNotificationWpcmpdCurrent)
+                Utility.writePref("ALERT_NOTIFICATION_RADAR" + iStr, alertNotificationRadarCurrent)
+                Utility.writePref("LOC" + iStr + "_X", locXCurrent)
+                Utility.writePref("LOC" + iStr + "_Y", locYCurrent)
+                Utility.writePref("LOC" + iStr + "_LABEL", locLabelCurrent)
+                Utility.writePref("COUNTY" + iStr, countyCurrent)
+                Utility.writePref("ZONE" + iStr, zoneCurrent)
+                Utility.writePref("NWS" + iStr, nwsCurrent)
+                Utility.writePref("RID" + iStr, ridCurrent)
+                Utility.writePref("NWS" + iStr + "_STATE", nwsStateCurrent)
                 Location.numLocations = locNumIntCurrent - 1
             }
         }
-        editor.putString("ALERT" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        editor.putString("ALERT_CC" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        editor.putString("ALERT_7DAY_" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        editor.putString("ALERT_NOTIFICATION_SOUND" + locNumIntCurrentStr, "false")
-        editor.putString("ALERT_NOTIFICATION_RADAR" + locNumIntCurrentStr, "false")
-        editor.putString("ALERT_NOTIFICATION_MCD" + locNumIntCurrentStr, "false")
-        editor.putString("ALERT_NOTIFICATION_SWO" + locNumIntCurrentStr, "false")
-        editor.putString("ALERT_NOTIFICATION_SPCFW" + locNumIntCurrentStr, "false")
-        editor.putString("ALERT_NOTIFICATION_WPCMPD" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        Utility.writePref("ALERT_CC" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        Utility.writePref("ALERT_7DAY_" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        Utility.writePref("ALERT_NOTIFICATION_SOUND" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT_NOTIFICATION_RADAR" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT_NOTIFICATION_MCD" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT_NOTIFICATION_SWO" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT_NOTIFICATION_SPCFW" + locNumIntCurrentStr, "false")
+        Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + locNumIntCurrentStr, "false")
         let locFragCurrentInt = Location.getCurrentLocation() + 1
         if locToDeleteInt == locFragCurrentInt {
-            editor.putString("CURRENT_LOC_FRAGMENT", "1")
+            Utility.writePref("CURRENT_LOC_FRAGMENT", "1")
             Location.setCurrentLocationStr("1")
         } else if locFragCurrentInt > locToDeleteInt {
             let shiftNum = String(locFragCurrentInt - 1)
-            editor.putString("CURRENT_LOC_FRAGMENT", shiftNum)
+            Utility.writePref("CURRENT_LOC_FRAGMENT", shiftNum)
             Location.setCurrentLocationStr(shiftNum)
         }
         let widgetLocNum = Utility.readPref("WIDGET_LOCATION", "1")
         let widgetLocNumInt = Int(widgetLocNum) ?? 0
         if locToDeleteInt == widgetLocNumInt {
-            editor.putString("WIDGET_LOCATION", "1")
+            Utility.writePref("WIDGET_LOCATION", "1")
         } else if widgetLocNumInt > locToDeleteInt {
             let shiftNum = String(widgetLocNumInt-1)
-            editor.putString("WIDGET_LOCATION", shiftNum)
+            Utility.writePref("WIDGET_LOCATION", shiftNum)
         }
         Location.refreshLocationData()
     }}
