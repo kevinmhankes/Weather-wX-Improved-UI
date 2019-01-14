@@ -26,15 +26,15 @@ final class Location {
 
     init(_ locNumInt: Int) {
         let jStr = String(locNumInt+1)
-        lat = preferences.getString("LOC" + jStr + "_X", "")
-        lon = preferences.getString("LOC" + jStr + "_Y", "")
-        name = preferences.getString("LOC" + jStr + "_LABEL", "")
-        countyCurrent = preferences.getString("COUNTY" + jStr, "")
-        zoneCurrent = preferences.getString("ZONE" + jStr, "")
-        wfo = preferences.getString("NWS" + jStr, "")
-        rid = preferences.getString("RID" + jStr, "")
-        nwsStateCurrent = preferences.getString("NWS" + jStr + "_STATE", "")
-        state = preferences.getString("NWS_LOCATION_" + rid, "").split(",")[0]
+        lat = Utility.readPref("LOC" + jStr + "_X", "")
+        lon = Utility.readPref("LOC" + jStr + "_Y", "")
+        name = Utility.readPref("LOC" + jStr + "_LABEL", "")
+        countyCurrent = Utility.readPref("COUNTY" + jStr, "")
+        zoneCurrent = Utility.readPref("ZONE" + jStr, "")
+        wfo = Utility.readPref("NWS" + jStr, "")
+        rid = Utility.readPref("RID" + jStr, "")
+        nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
+        state = Utility.readPref("NWS_LOCATION_" + rid, "").split(",")[0]
         isLocationUS = Location.us(lat)
         Location.addToListOfNames(name)
     }
@@ -68,7 +68,7 @@ final class Location {
     }
 
     class func initNumLocations() {
-        numLocations = preferences.getInt( "LOC_NUM_INT", 1)
+        numLocations = Utility.readPref( "LOC_NUM_INT", 1)
     }
 
     class var numLocations: Int {
@@ -183,7 +183,7 @@ final class Location {
             nwsOfficeShortLower = UtilityLocation.getNearestOffice("WFO", location).lowercased()
             rid = UtilityLocation.getNearestOffice("RADAR", location)
             if rid == "" {
-                rid = preferences.getString("NWS_RID_" + nwsOfficeShortLower.uppercased(), "")
+                rid = Utility.readPref("NWS_RID_" + nwsOfficeShortLower.uppercased(), "")
             }
             editor.putString("RID" + locNum, rid.uppercased())
             editor.putString("NWS" + locNum, nwsOfficeShortLower.uppercased())
@@ -241,24 +241,24 @@ final class Location {
                 let jIndex = index + 1
                 let jStr = String(jIndex)
                 let iStr = String(index)
-                let locXCurrent = preferences.getString("LOC" + jStr + "_X", "")
-                let locYCurrent = preferences.getString("LOC" + jStr + "_Y", "")
-                let locLabelCurrent = preferences.getString("LOC" + jStr + "_LABEL", "")
-                let countyCurrent = preferences.getString("COUNTY" + jStr, "")
-                let zoneCurrent = preferences.getString("ZONE" + jStr, "")
-                let nwsCurrent = preferences.getString("NWS" + jStr, "")
-                let ridCurrent = preferences.getString("RID" + jStr, "")
-                let nwsStateCurrent = preferences.getString("NWS" + jStr + "_STATE", "")
-                let alertNotificationCurrent = preferences.getString("ALERT" + jStr + "_NOTIFICATION", "false")
-                let alertNotificationRadarCurrent = preferences.getString("ALERT_NOTIFICATION_RADAR" + jStr, "false")
-                let alertCcNotificationCurrent = preferences.getString("ALERT_CC" + jStr + "_NOTIFICATION", "false")
-                let alert7day1NotificationCurrent = preferences.getString("ALERT_7DAY_" + jStr + "_NOTIFICATION",
+                let locXCurrent = Utility.readPref("LOC" + jStr + "_X", "")
+                let locYCurrent = Utility.readPref("LOC" + jStr + "_Y", "")
+                let locLabelCurrent = Utility.readPref("LOC" + jStr + "_LABEL", "")
+                let countyCurrent = Utility.readPref("COUNTY" + jStr, "")
+                let zoneCurrent = Utility.readPref("ZONE" + jStr, "")
+                let nwsCurrent = Utility.readPref("NWS" + jStr, "")
+                let ridCurrent = Utility.readPref("RID" + jStr, "")
+                let nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
+                let alertNotificationCurrent = Utility.readPref("ALERT" + jStr + "_NOTIFICATION", "false")
+                let alertNotificationRadarCurrent = Utility.readPref("ALERT_NOTIFICATION_RADAR" + jStr, "false")
+                let alertCcNotificationCurrent = Utility.readPref("ALERT_CC" + jStr + "_NOTIFICATION", "false")
+                let alert7day1NotificationCurrent = Utility.readPref("ALERT_7DAY_" + jStr + "_NOTIFICATION",
                                                                           "false")
-                let alertNotificationSoundCurrent = preferences.getString("ALERT_NOTIFICATION_SOUND" + jStr, "false")
-                let alertNotificationMcdCurrent = preferences.getString("ALERT_NOTIFICATION_MCD" + jStr, "false")
-                let alertNotificationSwoCurrent = preferences.getString("ALERT_NOTIFICATION_SWO" + jStr, "false")
-                let alertNotificationSpcfwCurrent = preferences.getString("ALERT_NOTIFICATION_SPCFW" + jStr, "false")
-                let alertNotificationWpcmpdCurrent = preferences.getString("ALERT_NOTIFICATION_WPCMPD" + jStr, "false")
+                let alertNotificationSoundCurrent = Utility.readPref("ALERT_NOTIFICATION_SOUND" + jStr, "false")
+                let alertNotificationMcdCurrent = Utility.readPref("ALERT_NOTIFICATION_MCD" + jStr, "false")
+                let alertNotificationSwoCurrent = Utility.readPref("ALERT_NOTIFICATION_SWO" + jStr, "false")
+                let alertNotificationSpcfwCurrent = Utility.readPref("ALERT_NOTIFICATION_SPCFW" + jStr, "false")
+                let alertNotificationWpcmpdCurrent = Utility.readPref("ALERT_NOTIFICATION_WPCMPD" + jStr, "false")
                 editor.putString("ALERT" + iStr + "_NOTIFICATION", alertNotificationCurrent)
                 editor.putString("ALERT_CC" + iStr + "_NOTIFICATION", alertCcNotificationCurrent)
                 editor.putString("ALERT_7DAY_" + iStr + "_NOTIFICATION", alert7day1NotificationCurrent)
@@ -297,7 +297,7 @@ final class Location {
             editor.putString("CURRENT_LOC_FRAGMENT", shiftNum)
             Location.setCurrentLocationStr(shiftNum)
         }
-        let widgetLocNum = preferences.getString("WIDGET_LOCATION", "1")
+        let widgetLocNum = Utility.readPref("WIDGET_LOCATION", "1")
         let widgetLocNumInt = Int(widgetLocNum) ?? 0
         if locToDeleteInt == widgetLocNumInt {
             editor.putString("WIDGET_LOCATION", "1")

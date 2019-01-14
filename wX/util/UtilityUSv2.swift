@@ -7,6 +7,8 @@
 import Foundation
 
 final class UtilityUSv2 {
+    
+    // TODO rename class
 
     static var obsClosestClass = ""
     static var obsCodeToLocation = [String: String]()
@@ -60,7 +62,7 @@ final class UtilityUSv2 {
     static func getObsFromLatLon(_ location: LatLon) -> String {
         let newLatLon = UtilityMath.latLonFix(location)
         let key = "LLTOOBS" + newLatLon.latString + "," + newLatLon.lonString
-        var obsClosest = preferences.getString(key, "")
+        var obsClosest = Utility.readPref(key, "")
         if obsClosest == "" {
             let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + ","
                 + newLatLon.lonString + "/stations").getNwsHtml()

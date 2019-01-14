@@ -193,7 +193,7 @@ final class ObjectImageTileMatrix: NSObject {
             ActVars.modelActivitySelected = "WPCGEFS"
         case "twstate":
             let stateCodeCurrent = Location.state
-            let twitter_state_id = preferences.getString("STATE_TW_ID_" + stateCodeCurrent, "")
+            let twitter_state_id = Utility.readPref("STATE_TW_ID_" + stateCodeCurrent, "")
             let url = "<a class=\"twitter-timeline\" data-dnt=\"true\" href=\"https://twitter.com/search?q=%23"
                 + stateCodeCurrent.lowercased()
                 + "wx\" data-widget-id=\""

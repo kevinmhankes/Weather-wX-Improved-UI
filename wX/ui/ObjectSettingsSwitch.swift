@@ -23,7 +23,7 @@ final class ObjectSettingsSwitch {
         vw.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         sw.thumbTintColor = AppColors.primaryDarkBlueUIColor
         sw.onTintColor = AppColors.primaryColorUIColor
-        sw.setOn(preferences.getString(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
+        sw.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
         sV.addArrangedSubviews([vw, sw])
         sV.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         stackView.addArrangedSubview(sV.view)

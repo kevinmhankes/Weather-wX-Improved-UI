@@ -14,8 +14,8 @@ struct LatLon {
     init() {}
 
     init(_ radarSite: String, isRadar: Bool) {
-        let ridX = preferences.getString("RID_" + radarSite + "_X", "0.00")
-        let ridY = preferences.getString("RID_" + radarSite + "_Y", "0.00")
+        let ridX = Utility.readPref("RID_" + radarSite + "_X", "0.00")
+        let ridY = Utility.readPref("RID_" + radarSite + "_Y", "0.00")
         self.latNum = Double(ridX) ?? 0.0
         self.lonNum = -1.0 * (Double(ridY) ?? 0.0)
         self.xStr = String(self.latNum)

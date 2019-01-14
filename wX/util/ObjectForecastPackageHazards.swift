@@ -19,7 +19,7 @@ final class ObjectForecastPackageHazards {
     convenience init(_ location: LatLon) {
         self.init()
         let homescreenFav = TextUtils.split(
-            preferences.getString("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
+            Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
              ":"
         )
         if homescreenFav.contains("TXT-HAZ") {

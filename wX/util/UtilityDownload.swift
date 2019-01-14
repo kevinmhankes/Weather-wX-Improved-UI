@@ -183,8 +183,8 @@ final class UtilityDownload {
         case "GOES16":
             needsBitmap = false
             bitmap = UtilityGOES16.getImage(
-                preferences.getString("GOES16_PROD", "02"),
-                preferences.getString("GOES16_SECTOR", "cgl")
+                Utility.readPref("GOES16_PROD", "02"),
+                Utility.readPref("GOES16_SECTOR", "cgl")
             )
         case "VIS_MAIN":
             needsBitmap = false
@@ -251,45 +251,47 @@ final class UtilityDownload {
         case "SPCMESO1":
             let param = "500mb"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_500":
             let param = "500mb"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_MSLP":
             let param = "pmsl"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_TTD":
             let param = "ttd"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_RGNLRAD":
             let param = "rgnlrad"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_LLLR":
             let param = "lllr"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "SPCMESO_LAPS":
             let param = "laps"
             needsBitmap = false
-            bitmap = UtilitySPCMESOInputOutput.getImage(param, preferences.getString("SPCMESO"
+            bitmap = UtilitySPCMESOInputOutput.getImage(param, Utility.readPref("SPCMESO"
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "CONUSWV":
             needsBitmap = false
             bitmap = UtilityGOES16.getImage("09", "CONUS")
         case "LTG":
             needsBitmap = false
-            bitmap = UtilityLightning.getImage(preferences.getString("LIGHTNING_SECTOR", "usa_big"),
-                                               preferences.getString("LIGHTNING_PERIOD", "0.25"))
+            bitmap = UtilityLightning.getImage(
+                Utility.readPref("LIGHTNING_SECTOR", "usa_big"),
+                Utility.readPref("LIGHTNING_PERIOD", "0.25")
+            )
         case "SND":
             let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latlon)
             needsBitmap = false

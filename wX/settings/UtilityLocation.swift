@@ -62,8 +62,8 @@ final class UtilityLocation {
     static func getSiteLocation(site: String, officeType: String = "RID") -> LatLon {
         var addChar = "-"
         if officeType == "NWS" {addChar = ""} // WFO
-        let lat = preferences.getString(officeType + "_" + site.uppercased() + "_X", "0.0")
-        let lon = addChar + preferences.getString(officeType + "_" + site.uppercased() + "_Y", "0.0")
+        let lat = Utility.readPref(officeType + "_" + site.uppercased() + "_X", "0.0")
+        let lon = addChar + Utility.readPref(officeType + "_" + site.uppercased() + "_Y", "0.0")
         return LatLon(lat, lon)
     }
 

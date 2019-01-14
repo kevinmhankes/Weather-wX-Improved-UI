@@ -166,7 +166,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     }
 
     func toggleLayer(_ prefVar: String) {
-        let currentValue = preferences.getString(prefVar, "false").hasPrefix("true")
+        let currentValue = Utility.readPref(prefVar, "false").hasPrefix("true")
         if currentValue {
             editor.putString(prefVar, "false")
         } else {

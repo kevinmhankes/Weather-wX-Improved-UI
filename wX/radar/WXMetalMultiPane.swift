@@ -568,7 +568,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
-        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+        var alertMessage = Utility.readPref("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
@@ -580,7 +580,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
-                +  preferences.getString("RID_LOC_" + rid.name, "")
+                +  Utility.readPref("RID_LOC_" + rid.name, "")
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
         }

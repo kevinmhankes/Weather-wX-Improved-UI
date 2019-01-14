@@ -10,10 +10,10 @@ final class UtilitySPCMESOInputOutput {
 
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         let prefModel = "SPCMESO"
-        let showRadar = preferences.getString(prefModel + "_SHOW_RADAR", "false").hasPrefix("t")
-        let showOutlook = preferences.getString(prefModel + "_SHOW_OUTLOOK", "false").hasPrefix("t")
-        let showWatwarn = preferences.getString(prefModel + "_SHOW_WATWARN", "false").hasPrefix("t")
-        let showTopo = preferences.getString(prefModel + "_SHOW_TOPO", "false").hasPrefix("t")
+        let showRadar = Utility.readPref(prefModel + "_SHOW_RADAR", "false").hasPrefix("t")
+        let showOutlook = Utility.readPref(prefModel + "_SHOW_OUTLOOK", "false").hasPrefix("t")
+        let showWatwarn = Utility.readPref(prefModel + "_SHOW_WATWARN", "false").hasPrefix("t")
+        let showTopo = Utility.readPref(prefModel + "_SHOW_TOPO", "false").hasPrefix("t")
         var layers = [Bitmap]()
         var layersRad = [Bitmap]()
         var gifUrl = ""

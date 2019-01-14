@@ -84,8 +84,8 @@ final class ProjectionNumbers {
             yCenter = 0
             polygonWidth = 1
         }
-        lat = preferences.getString("RID_" + radarSite + "_X", "0.00")
-        lon = preferences.getString("RID_" + radarSite + "_Y", "0.00")
+        lat = Utility.readPref("RID_" + radarSite + "_X", "0.00")
+        lon = Utility.readPref("RID_" + radarSite + "_Y", "0.00")
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
 

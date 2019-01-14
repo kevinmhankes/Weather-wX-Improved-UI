@@ -40,8 +40,8 @@ final class UtilityMap {
         var locations = [[String: String]]()
         itemList.forEach {
             let ridArr = $0.split(":")
-            let latStr = preferences.getString(prefVar + ridArr[0] + "_X", "40.00")
-            var lonStr = preferences.getString(prefVar + ridArr[0] + "_Y", "80.00")
+            let latStr = Utility.readPref(prefVar + ridArr[0] + "_X", "40.00")
+            var lonStr = Utility.readPref(prefVar + ridArr[0] + "_Y", "80.00")
             if !lonStr.hasPrefix("-") {
                 lonStr = "-" + lonStr
             }

@@ -31,7 +31,7 @@ final class wXColor {
         self.defaultGreen = defaultGreen
         self.defaultBlue = defaultBlue
         self.uicolorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
-        self.colorsCurrent = intToColors(preferences.getInt(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
         self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.0, colorsCurrent.1, colorsCurrent.2)
     }
 
@@ -87,7 +87,7 @@ final class wXColor {
     }
 
     func regenCurrentColor() {
-        self.colorsCurrent = intToColors(preferences.getInt(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
         self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.0, colorsCurrent.1, colorsCurrent.2)
     }
 }
