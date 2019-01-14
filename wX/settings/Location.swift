@@ -77,7 +77,7 @@ final class Location {
         }
         set {
             Location.numberOfLocations = newValue
-            editor.putInt( "LOC_NUM_INT", newValue)
+            Utility.writePref("LOC_NUM_INT", newValue)
         }
     }
 

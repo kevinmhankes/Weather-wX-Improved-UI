@@ -13,7 +13,7 @@ final class UtilityPlayList {
     static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let prodLocal = prod.uppercased()
         if !MyApplication.playlistStr.contains(prodLocal) {
-            editor.putString("PLAYLIST", MyApplication.playlistStr + ":" + prodLocal)
+            Utility.writePref("PLAYLIST", MyApplication.playlistStr + ":" + prodLocal)
             MyApplication.playlistStr += ":" + prodLocal
             _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
         } else {

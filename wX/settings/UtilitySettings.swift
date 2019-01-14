@@ -36,6 +36,6 @@ final class UtilitySettings {
         if isOnQ {
             truthString = "true"
         }
-        editor.putString(prefLabels[sender.sw.tag], truthString)
+        Utility.writePref(prefLabels[sender.sw.tag], truthString)
     }
 }

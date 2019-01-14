@@ -24,7 +24,7 @@ class DataStorage {
         }
         set {
             val = newValue
-            editor.putString(preference, newValue)
+            Utility.writePref(preference, newValue)
         }
     }
 }
