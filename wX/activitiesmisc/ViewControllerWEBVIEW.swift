@@ -72,7 +72,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
     func urlChanged(_ stateCodeCurrent: String) {
         self.stateCodeCurrent = stateCodeCurrent
         let stateCodeCurrentLocal = stateCodeCurrent.split(":")[0]
-        let twitterStateId = preferences.getString("STATE_TW_ID_" + stateCodeCurrentLocal, "")
+        let twitterStateId = Utility.readPref("STATE_TW_ID_" + stateCodeCurrentLocal, "")
         let url = "<a class=\"twitter-timeline\" data-dnt=\"true\" href=\"https://twitter.com/search?q=%23"
             + stateCodeCurrentLocal.lowercased()
             + "wx\" data-widget-id=\""

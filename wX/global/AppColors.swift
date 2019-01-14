@@ -23,7 +23,7 @@ class AppColors {
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
 
     static func update() {
-        let appColor = preferences.getString("UI_THEME", "blue")
+        let appColor = Utility.readPref("UI_THEME", "blue")
         switch appColor {
         case "black":
             primaryColorRed = CGFloat(30.0 / 255.0)

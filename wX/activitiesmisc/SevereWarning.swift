@@ -26,7 +26,7 @@ final class SevereWarning {
             if nwsOfficeArr.count > 1 {
                 nwsOffice = nwsOfficeArr[2]
                 nwsOffice = nwsOffice.replaceAllRegexp("^[KP]", "")
-                nwsLoc = preferences.getString("NWS_LOCATION_" + nwsOffice, "")
+                nwsLoc = Utility.readPref("NWS_LOCATION_" + nwsOffice, "")
             }
             text += "  " + nwsLoc + MyApplication.newline
         }

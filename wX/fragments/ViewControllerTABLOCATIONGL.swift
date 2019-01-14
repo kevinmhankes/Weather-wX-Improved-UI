@@ -69,18 +69,26 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems([flexBarButton,
-                                                dashButton,
-                                                wfoTextButton,
-                                                cloudButton,
-                                                menuButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    flexBarButton,
+                    dashButton,
+                    wfoTextButton,
+                    cloudButton,
+                    menuButton
+                ]
+            ).items
         } else {
-            toolbar.items = ObjectToolbarItems([flexBarButton,
-                                                dashButton,
-                                                wfoTextButton,
-                                                cloudButton,
-                                                radarButton,
-                                                menuButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    flexBarButton,
+                    dashButton,
+                    wfoTextButton,
+                    cloudButton,
+                    radarButton,
+                    menuButton
+                ]
+            ).items
         }
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - self.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
@@ -172,7 +180,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             }
             DispatchQueue.main.async {
                 let homescreenFav = TextUtils.split(
-                    preferences.getString(
+                    Utility.readPref(
                         "HOMESCREEN_FAV",
                         MyApplication.homescreenFavDefault
                     ),
@@ -592,7 +600,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
-        var alertMessage = preferences.getString("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+        var alertMessage = Utility.readPref("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
@@ -607,7 +615,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
-                +  preferences.getString("RID_LOC_" + rid.name, "")
+                +  Utility.readPref("RID_LOC_" + rid.name, "")
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }

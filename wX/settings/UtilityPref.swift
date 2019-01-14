@@ -317,7 +317,7 @@ final class UtilityPref {
     }
 
     static func prefInitTwitterCA() {
-        var value = preferences.getString("STATE_TW_ID_bcstorm", "")
+        var value = Utility.readPref("STATE_TW_ID_bcstorm", "")
         if value == "" {
             editor.putString("STATE_TW_ID_bcstorm", "489578049524879360")
             editor.putString("STATE_TW_ID_abstorm", "489578415377231872")

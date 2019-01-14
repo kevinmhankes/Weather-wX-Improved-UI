@@ -60,13 +60,13 @@ class ViewControllerPLAYLIST: UIwXViewController {
         UtilityActions.stopAudio(synth, playButton)
         playlistItems.enumerated().forEach {
             if $0 >= selection {
-                UtilityActions.playClickedNewItem(preferences.getString("PLAYLIST_" + $1, ""), synth, playButton)
+                UtilityActions.playClickedNewItem(Utility.readPref("PLAYLIST_" + $1, ""), synth, playButton)
             }
         }
     }
 
     func viewProduct(selection: Int) {
-        ActVars.textViewText = preferences.getString("PLAYLIST_" + playlistItems[selection], "")
+        ActVars.textViewText = Utility.readPref("PLAYLIST_" + playlistItems[selection], "")
         self.goToVC("textviewer")
     }
 

@@ -15,7 +15,7 @@ class DataStorage {
 
     // update in memory value from what is on disk
     func update() {
-        value = preferences.getString(preference, "")
+        value = Utility.readPref(preference, "")
     }
 
     var value: String {
