@@ -71,7 +71,7 @@ class MyApplication {
         initPreferences()
         AppColors.update()
         initData()
-        if preferences.getString("SND_IAD_X", "") == "" {
+        if Utility.readPref("SND_IAD_X", "") == "" {
             UtilityPref.prefInitStateCode()
             UtilityPref.prefInitStateCodeLookup()
             UtilityPref.prefInitNWSXY()
@@ -100,12 +100,12 @@ class MyApplication {
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
         [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach {
-            radarColorPalette[String($0)] = preferences.getString("RADAR_COLOR_PALETTE_" + String($0), "CODENH")
+            radarColorPalette[String($0)] = Utility.readPref("RADAR_COLOR_PALETTE_" + String($0), "CODENH")
         }
-        homescreenFav = preferences.getString("HOMESCREEN_FAV", homescreenFavDefault)
-        animInterval = preferences.getInt("ANIM_INTERVAL", 6)
-        playlistStr = preferences.getString("PLAYLIST", "")
-        Location.setCurrentLocationStr(preferences.getString("CURRENT_LOC_FRAGMENT", "1"))
+        homescreenFav = Utility.readPref("HOMESCREEN_FAV", homescreenFavDefault)
+        animInterval = Utility.readPref("ANIM_INTERVAL", 6)
+        playlistStr = Utility.readPref("PLAYLIST", "")
+        Location.setCurrentLocationStr(Utility.readPref("CURRENT_LOC_FRAGMENT", "1"))
         severeDashboardTor.update()
         severeDashboardTst.update()
         severeDashboardFfw.update()

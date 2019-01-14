@@ -7,7 +7,7 @@
 final class UtilityPref3 {
 
 	static func prefInitRIDLoc() {
-		let value = preferences.getString("RID_LOC_TLVE", "")
+		let value = Utility.readPref("RID_LOC_TLVE", "")
 		if value == "" {
 			editor.putString("RID_LOC_iowa_mosaic_AKCOMP", "AK, ")
 			editor.putString("RID_LOC_iowa_mosaic_PRCOMP", "PR, ")

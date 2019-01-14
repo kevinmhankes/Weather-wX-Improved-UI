@@ -7,7 +7,7 @@
 final class UtilityPref {
 
     static func prefInitNWSLoc() {
-        let value = preferences.getString("NWS_LOCATION_JSJ", "")
+        let value = Utility.readPref("NWS_LOCATION_JSJ", "")
         if value == "" {
             editor.putString("NWS_LOCATION_AFC", "AK, Anchorage")
             editor.putString("NWS_LOCATION_AFG", "AK, Fairbanks")
@@ -137,7 +137,7 @@ final class UtilityPref {
     }
 
     static func prefInitBig() {
-        let value = preferences.getString("NWS_RID_JSJ", "")
+        let value = Utility.readPref("NWS_RID_JSJ", "")
         if value == "" {
             editor.putString("NWS_RID_ABQ", "ABX")
             editor.putString("NWS_RID_ABR", "ABR")
@@ -331,12 +331,14 @@ final class UtilityPref {
             editor.putString("STATE_TW_ID_ntstorm", "489754447413641217")
             editor.putString("STATE_TW_ID_meteoqc", "489754142907170816")
         }
-        value = preferences.getString("STATE_TW_ID_st", "")
-        if value == "" {editor.putString("STATE_TW_ID_st", "611565983380164608")}
+        value = Utility.readPref("STATE_TW_ID_st", "")
+        if value == "" {
+            editor.putString("STATE_TW_ID_st", "611565983380164608")
+        }
     }
 
     static func prefInitStateCodeLookup() {
-        let value = preferences.getString("STATE_LOOKUP_District+of+Columbia", "")
+        let value = Utility.readPref("STATE_LOOKUP_District+of+Columbia", "")
         if value == "" {
             editor.putString("STATE_LOOKUP_Alabama", "AL")
             editor.putString("STATE_LOOKUP_Alaska", "AK")
@@ -393,7 +395,7 @@ final class UtilityPref {
     }
 
     static func prefInitStateCode() {
-        let value = preferences.getString("STATE_CODE_AL", "")
+        let value = Utility.readPref("STATE_CODE_AL", "")
         if value == "" {
             editor.putString("STATE_CODE_AL", "MS")
             editor.putString("STATE_CODE_AK", "AK")
@@ -449,7 +451,7 @@ final class UtilityPref {
     }
 
     static func prefInitNWSXY() {
-        let value = preferences.getString("NWS_JAN_X", "")
+        let value = Utility.readPref("NWS_JAN_X", "")
         if value == "" {
             editor.putString("NWS_CTP_X", "40.7878")
             editor.putString("NWS_CTP_Y", "-77.8526")
@@ -887,7 +889,7 @@ final class UtilityPref {
     }
 
     static func prefInitRIDXY() {
-        let value = preferences.getString("RID_ABR_Xmay14_2", "")
+        let value = Utility.readPref("RID_ABR_Xmay14_2", "")
         if value == "" {
             editor.putString("RID_ABR_Xmay14_2", "45.451")
             editor.putString("RID_TYX_X", "43.756")
@@ -1206,7 +1208,7 @@ final class UtilityPref {
     }
 
     static func prefInitRIDXY2() {
-        let value = preferences.getString("RID_TATL_Y", "")
+        let value = Utility.readPref("RID_TATL_Y", "")
         if value == "" {
             editor.putString("RID_aug12_4_X", "aug112014")
             editor.putString("RID_latest_X", "36.105")

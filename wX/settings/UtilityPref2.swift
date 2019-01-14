@@ -7,7 +7,7 @@
 final class UtilityPref2 {
 
 	static func prefInitSetDefaults() {
-		let value = preferences.getString("COD_WARNINGS_DEFAULT", "")
+		let value = Utility.readPref("COD_WARNINGS_DEFAULT", "")
 		if value == "" {
 			let stateDefault = "Oklahoma"
 			let simpleModeDefault = "false"

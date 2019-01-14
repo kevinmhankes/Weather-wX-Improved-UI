@@ -7,7 +7,7 @@
 final class UtilityPref4 {
 
     static func prefInitSoundingSitesLoc() {
-        let value = preferences.getString("SND_IAD_X", "")
+        let value = Utility.readPref("SND_IAD_X", "")
         if value == "" {
             editor.putString("SND_1Y7_X", "32.87")
             editor.putString("SND_1Y7_Y", "114.40")
@@ -205,7 +205,7 @@ final class UtilityPref4 {
     }
 
     static func prefInitSoundingSites() {
-        let value = preferences.getString("NWS_SOUNDINGLOCATION_VBG", "")
+        let value = Utility.readPref("NWS_SOUNDINGLOCATION_VBG", "")
         if value == "" {
             editor.putString("NWS_SOUNDINGLOCATION_VBG", "CA, Vandenberg AFB")
             editor.putString("NWS_SOUNDINGLOCATION_1Y7", "AZ, Yuma")

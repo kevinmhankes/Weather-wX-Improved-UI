@@ -29,19 +29,19 @@ class UIPreferences {
     static var mainScreenRadarFab = true
 
     static func initialize() {
-        showMetarInCC = preferences.getString("SHOW_METAR_IN_CC", "false").hasPrefix("t")
-        backButtonAnimation = preferences.getString("BACK_ARROW_ANIM", "true").hasPrefix("t")
-        dualpaneRadarIcon = preferences.getString("DUALPANE_RADAR_ICON", "false").hasPrefix("t")
-        tilesPerRow = preferences.getInt("UI_TILES_PER_ROW", tilesPerRow)
-        homescreenTextLength = preferences.getInt("HOMESCREEN_TEXT_LENGTH_PREF", 500)
-        unitsM = preferences.getString("UNITS_M", "true").hasPrefix("t")
-        unitsF = preferences.getString("UNITS_F", "true").hasPrefix("t")
-        nwsIconTextColor = preferences.getInt("NWS_ICON_TEXT_COLOR", Color.rgb(38, 97, 139))
-        nwsIconBottomColor = preferences.getInt("NWS_ICON_BOTTOM_COLOR", Color.rgb(255, 255, 255))
-        refreshLocMin = preferences.getInt("REFRESH_LOC_MIN", 10)
-        nwsTextRemovelinebreaks = preferences.getString("NWS_TEXT_REMOVELINEBREAKS", "true").hasPrefix("t")
-        textviewFontSize = CGFloat(preferences.getInt("TEXTVIEW_FONT_SIZE", Int(textviewFontSize)))
-        radarToolbarTransparent = preferences.getString("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
+        showMetarInCC = Utility.readPref("SHOW_METAR_IN_CC", "false").hasPrefix("t")
+        backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
+        dualpaneRadarIcon = Utility.readPref("DUALPANE_RADAR_ICON", "false").hasPrefix("t")
+        tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)
+        homescreenTextLength = Utility.readPref("HOMESCREEN_TEXT_LENGTH_PREF", 500)
+        unitsM = Utility.readPref("UNITS_M", "true").hasPrefix("t")
+        unitsF = Utility.readPref("UNITS_F", "true").hasPrefix("t")
+        nwsIconTextColor = Utility.readPref("NWS_ICON_TEXT_COLOR", Color.rgb(38, 97, 139))
+        nwsIconBottomColor = Utility.readPref("NWS_ICON_BOTTOM_COLOR", Color.rgb(255, 255, 255))
+        refreshLocMin = Utility.readPref("REFRESH_LOC_MIN", 10)
+        nwsTextRemovelinebreaks = Utility.readPref("NWS_TEXT_REMOVELINEBREAKS", "true").hasPrefix("t")
+        textviewFontSize = CGFloat(Utility.readPref("TEXTVIEW_FONT_SIZE", Int(textviewFontSize)))
+        radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
     }
 }
