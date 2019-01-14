@@ -42,9 +42,9 @@ class ViewControllerCARADAR: UIwXViewController {
         ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
-        url = preferences.getString("CA_LAST_RID_URL", url)
+        url = Utility.readPref("CA_LAST_RID_URL", url)
         if ActVars.caRadarProv == "" {
-            rid = preferences.getString("CA_LAST_RID", rid)
+            rid = Utility.readPref("CA_LAST_RID", rid)
         } else {
             rid = String(ActVars.caRadarProv)
             mosaicShown = true

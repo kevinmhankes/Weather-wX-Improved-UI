@@ -31,8 +31,8 @@ class ViewControllerLIGHTNING: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, timeButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
-        sector = preferences.getString("LIGHTNING_SECTOR", sector)
-        period = preferences.getString("LIGHTNING_PERIOD", period)
+        sector = Utility.readPref("LIGHTNING_SECTOR", sector)
+        period = Utility.readPref("LIGHTNING_PERIOD", period)
         sectorPretty = UtilityLightning.getSectorPretty(sector)
         periodPretty = UtilityLightning.getTimePretty(period)
         self.getContent()

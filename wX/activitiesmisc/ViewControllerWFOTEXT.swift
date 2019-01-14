@@ -42,9 +42,16 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         toolbar.items = ObjectToolbarItems(
-            [doneButton, flexBarButton, siteButton,
-            productButton, playButton, shareButton, playlistButton]
-            ).items
+            [
+                doneButton,
+                flexBarButton,
+                siteButton,
+                productButton,
+                playButton,
+                shareButton,
+                playlistButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {

@@ -96,7 +96,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     func deSerializeSettings() {
-        playlistItems = TextUtils.split(preferences.getString("PLAYLIST", "") + ":", ":")
+        playlistItems = TextUtils.split(Utility.readPref("PLAYLIST", "") + ":", ":")
         playlistItems = playlistItems.filter { $0 != "" }
     }
 
@@ -105,7 +105,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         playlistItems.enumerated().forEach {
             let txtObject = ObjectTextView(
                 self.stackView,
-                $1 + " " + preferences.getString("PLAYLIST_" + $1 + "_TIME", "")
+                $1 + " " + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
             )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
@@ -116,7 +116,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     @objc func playClicked() {
         playlistItems.forEach {
-            UtilityActions.playClicked(preferences.getString("PLAYLIST_" + $0, ""), synth, playButton)
+            UtilityActions.playClicked(Utility.readPref("PLAYLIST_" + $0, ""), synth, playButton)
         }
     }
 

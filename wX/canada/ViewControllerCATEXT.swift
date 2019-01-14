@@ -38,7 +38,7 @@ class ViewControllerCATEXT: UIwXViewController {
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         _ = ObjectCALegal(stackView)
-        product = preferences.getString("CA_TEXT_LASTUSED", product)
+        product = Utility.readPref("CA_TEXT_LASTUSED", product)
         self.getContent()
     }
 

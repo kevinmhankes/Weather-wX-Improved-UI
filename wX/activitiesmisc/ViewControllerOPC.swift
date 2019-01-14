@@ -20,7 +20,7 @@ class ViewControllerOPC: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = preferences.getInt(prefToken, index)
+        index = Utility.readPref(prefToken, index)
         self.getContent(index)
     }
 

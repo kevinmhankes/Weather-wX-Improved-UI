@@ -35,7 +35,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         if ActVars.webViewStateCode != "tornado" && !ActVars.webViewUseUrl {
             stateCodeCurrent = ActVars.webViewStateCode
-            stateCodeCurrent = preferences.getString(prefToken, stateCodeCurrent)
+            stateCodeCurrent = Utility.readPref(prefToken, stateCodeCurrent)
             urlChanged(stateCodeCurrent)
         }
         if ActVars.webViewUseUrl {

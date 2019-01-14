@@ -22,7 +22,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        self.index = preferences.getInt(prefTokenIdx, 0)
+        self.index = Utility.readPref(prefTokenIdx, 0)
         self.getContent(index)
     }
 
