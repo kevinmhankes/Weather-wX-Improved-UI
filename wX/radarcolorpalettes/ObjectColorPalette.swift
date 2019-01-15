@@ -9,7 +9,7 @@ final class ObjectColorPalette {
     var redValues = MemoryBuffer(16)
     var greenValues = MemoryBuffer(16)
     var blueValues = MemoryBuffer(16)
-    var colormapCode = ""
+    private var colormapCode = ""
 
     init(_ colormapCode: String) {
         self.colormapCode = colormapCode

@@ -12,7 +12,7 @@ final class ProjectionNumbers {
     var lon = "0.0"
     var xCenter = 0.0
     var yCenter = 0.0
-    var polygonWidth = 0.0
+    private var polygonWidth = 0.0
     var radarSite = ""
 
     init() {

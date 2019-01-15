@@ -8,24 +8,24 @@ import UIKit
 
 final class ObjectNHC: NSObject {
 
-    var atlSumList = [String]()
-    var atlLinkList = [String]()
-    var atlImg1List = [String]()
-    var atlImg2List = [String]()
-    var atlWalletList = [String]()
-    var atlTitleList = [String]()
-    var pacSumList = [String]()
-    var pacLinkList = [String]()
-    var pacImg1List = [String]()
-    var pacImg2List = [String]()
-    var pacWalletList = [String]()
-    var pacTitleList = [String]()
-    var uiv: UIViewController
-    var stackView: UIStackView
-    var blob = ""
-    var bitmaps = [Bitmap]()
+    private var atlSumList = [String]()
+    private var atlLinkList = [String]()
+    private var atlImg1List = [String]()
+    private var atlImg2List = [String]()
+    private var atlWalletList = [String]()
+    private var atlTitleList = [String]()
+    private var pacSumList = [String]()
+    private var pacLinkList = [String]()
+    private var pacImg1List = [String]()
+    private var pacImg2List = [String]()
+    private var pacWalletList = [String]()
+    private var pacTitleList = [String]()
+    private var uiv: UIViewController
+    private var stackView: UIStackView
+    private var blob = ""
+    private var bitmaps = [Bitmap]()
 
-    let imageUrls = [
+    private let imageUrls = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png",
