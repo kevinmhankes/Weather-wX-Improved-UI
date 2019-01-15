@@ -12,7 +12,7 @@ final class ObjectCard7Day {
     private let sV: ObjectCardStackView
     private let tv = ObjectTextViewLarge(80.0)
     private let tv2 = ObjectTextViewSmallGray(80.0)
-    let img = ObjectCardImage()
+    private let img = ObjectCardImage()
 
     init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)

@@ -8,10 +8,10 @@ import UIKit
 
 final class ObjectAlertSummary: NSObject {
 
-    var urlArr = [String]()
-    var objImage = ObjectImage()
-    var imageIndex = 0
-    let imageUrls = [
+    private var urlArr = [String]()
+    private var objImage = ObjectImage()
+    private var imageIndex = 0
+    private let imageUrls = [
         "http://forecast.weather.gov/wwamap/png/US.png",
         "http://forecast.weather.gov/wwamap/png/ak.png",
         "http://forecast.weather.gov/wwamap/png/hi.png"

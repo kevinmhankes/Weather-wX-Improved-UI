@@ -8,7 +8,7 @@ import UIKit
 
 public class ObjectFab {
 
-    let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
+    private let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
 
     init(_ uiv: UIViewController, _ action: Selector) {
         floaty.sticky = true

@@ -8,8 +8,8 @@ import UIKit
 
 final class ObjectCardHazard {
 
-    let sVLoc = ObjectStackView(.fill, .horizontal, .center)
-    let objLabel: ObjectTextView
+    private let sVLoc = ObjectStackView(.fill, .horizontal, .center)
+    private let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView, _ hazard: String) {
         objLabel = ObjectTextView(sVLoc.view, hazard, UIFont.systemFont(ofSize: 20), UIColor.blue)
