@@ -10,13 +10,14 @@
 // TODO hourly graphics
 // TODO add private in classes
 
-2018_01_13 54900 remove "Solar" code now that SunCalc has replaced
+2018_01_15 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
 	 	 ObjectImage - move setImageAnchors into class
 		 [BUG] metal - location dot was not updating quickly - only on refresh
 		 mosaic radar - move conus to top of choices
 		 remove Drawable
 		 [BUG] Homescreen "VIS CONUS" was not working both with image and on tap
+		 [BUG] metal radar would allow single/double tap zoom to exceed max/min
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset

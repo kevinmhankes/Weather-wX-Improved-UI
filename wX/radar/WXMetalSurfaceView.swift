@@ -12,6 +12,8 @@ final class WXMetalSurfaceView {
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
     var spottersLabelAl = [TextViewMetal]()
+    static private let maxZoom: Float = 15.0
+    static private let minZoom: Float = 0.03
 
     static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
         let zoomDifference = newZoom / oldZoom
@@ -117,14 +119,18 @@ final class WXMetalSurfaceView {
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
-                $0!.zoom *= 0.5
-                $0!.setZoom()
+                if $0!.zoom * 0.5 > minZoom {
+                    setModifiedZoom($0!.zoom * 0.5, $0!.zoom, $0!)
+                    $0!.zoom *= 0.5
+                    $0!.setZoom()
+                }
             }
         } else {
-            setModifiedZoom(wxMetal[radarIndex]!.zoom * 0.5, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
-            wxMetal[radarIndex]!.zoom *= 0.5
-            wxMetal[radarIndex]!.setZoom()
+            if wxMetal[radarIndex]!.zoom * 0.5 > minZoom {
+                setModifiedZoom(wxMetal[radarIndex]!.zoom * 0.5, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                wxMetal[radarIndex]!.zoom *= 0.5
+                wxMetal[radarIndex]!.setZoom()
+            }
         }
         uiv.view.subviews.forEach {
             if $0 is UITextView {
@@ -175,17 +181,23 @@ final class WXMetalSurfaceView {
             }
         }
         if RadarPreferences.dualpaneshareposn {
-            wxMetal.forEach { $0!.xPos +=  (Float(location.x) - xMiddle) * density }
-            wxMetal.forEach { $0!.yPos +=  (yMiddle - Float(location.y)) * density }
-            wxMetal.forEach { setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)}
-            wxMetal.forEach { $0!.zoom *= 2.0 }
-            wxMetal.forEach { $0!.setZoom() }
+            wxMetal.forEach {
+                if $0!.zoom * 2.0 < maxZoom {
+                    $0!.xPos +=  (Float(location.x) - xMiddle) * density
+                    $0!.yPos +=  (yMiddle - Float(location.y)) * density
+                    setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)
+                    $0!.zoom *= 2.0
+                    $0!.setZoom()
+                }
+            }
         } else {
-            wxMetal[radarIndex]!.xPos += (Float(location.x) - xMiddle) * density
-            wxMetal[radarIndex]!.yPos += (yMiddle - Float(location.y)) * density
-            setModifiedZoom(wxMetal[radarIndex]!.zoom * 2.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
-            wxMetal[radarIndex]!.zoom *= 2.0
-            wxMetal[radarIndex]!.setZoom()
+            if wxMetal[radarIndex]!.zoom * 2.0 < maxZoom {
+                wxMetal[radarIndex]!.xPos += (Float(location.x) - xMiddle) * density
+                wxMetal[radarIndex]!.yPos += (yMiddle - Float(location.y)) * density
+                setModifiedZoom(wxMetal[radarIndex]!.zoom * 2.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
+                wxMetal[radarIndex]!.zoom *= 2.0
+                wxMetal[radarIndex]!.setZoom()
+            }
         }
         uiv.view.subviews.forEach {
             if $0 is UITextView {
@@ -222,8 +234,8 @@ final class WXMetalSurfaceView {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let slowItDown: Float = 1.0
-        let maxZoom: Float = 15.0
-        let minZoom: Float = 0.03
+        //let maxZoom: Float = 15.0
+        //let minZoom: Float = 0.03
         let fudge: Float = 0.01
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
