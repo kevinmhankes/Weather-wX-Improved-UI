@@ -7,7 +7,6 @@
 // TODO roaming location
 // TODO make ortInt configurable
 // TODO test text in main screen radar
-// TODO look at migrating all pref activity to utils
 // TODO hourly graphics
 
 2018_01_13 54900 remove "Solar" code now that SunCalc has replaced

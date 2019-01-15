@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityUSv2 {
-    
+
     // TODO rename class
 
     static var obsClosestClass = ""

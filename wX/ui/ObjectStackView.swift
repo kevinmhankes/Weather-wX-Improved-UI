@@ -24,7 +24,7 @@ final class ObjectStackView {
         sV.alignment = alignment
     }
 
-    /*convenience init(
+    convenience init(
         _ distribution: UIStackView.Distribution,
         _ axis: NSLayoutConstraint.Axis,
         _ alignment: UIStackView.Alignment,
@@ -33,7 +33,7 @@ final class ObjectStackView {
         self.init(distribution, axis)
         sV.alignment = alignment
         arrangedSubviews.forEach { sV.addArrangedSubview($0) }
-    }*/
+    }
 
     convenience init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis, _ spacing: CGFloat) {
         self.init(distribution, axis)
