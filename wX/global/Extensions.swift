@@ -8,6 +8,10 @@ import Foundation
 import UIKit
 
 extension String {
+    func removeHtml() -> String {
+        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
+
     func removeSingleLineBreaks() -> String {
         return self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
     }

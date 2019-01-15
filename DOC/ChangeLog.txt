@@ -18,6 +18,8 @@
 		 remove Drawable
 		 [BUG] Homescreen "VIS CONUS" was not working both with image and on tap
 		 [BUG] metal radar would allow single/double tap zoom to exceed max/min
+		 [BUG] usalerts was not sharing all detail via email
+		 [BUG] AFD viewer was not scrolling to top when changing location
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset

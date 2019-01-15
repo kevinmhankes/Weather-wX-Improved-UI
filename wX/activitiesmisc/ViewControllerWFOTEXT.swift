@@ -120,6 +120,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     }
 
     func mapCall(annotationView: MKAnnotationView) {
+        scrollView.scrollToTop()
         self.wfo = (annotationView.annotation!.title!)!
         self.getContent()
     }

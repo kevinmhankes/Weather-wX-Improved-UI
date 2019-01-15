@@ -39,6 +39,6 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, cap.title + " " + cap.area)
+        UtilityShare.share(self, sender, cap.text.removeHtml())
     }
 }

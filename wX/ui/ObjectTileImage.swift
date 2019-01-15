@@ -14,7 +14,8 @@ final class ObjectTileImage {
         let bitmap = UtilityIO.readBitmapResourceFromFile(filename)
         stackView.addArrangedSubview(image.img)
         image.img.tag = index
-        image.width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
+        image.width = (UIScreen.main.bounds.width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow)
+            / iconsPerRow
         image.setBitmap(bitmap)
         sV.addArrangedSubview(image.img)
     }

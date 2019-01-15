@@ -98,10 +98,15 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "UI_THEME" {
-                Utility.writePref(array[pickerView.tag], UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])
+                Utility.writePref(
+                    array[pickerView.tag],
+                    UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
+                )
             } else {
-                Utility.writePref(array[pickerView.tag],
-                              Int(UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])!)
+                Utility.writePref(
+                    array[pickerView.tag],
+                    Int(UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])!
+                )
             }
         }
     }
