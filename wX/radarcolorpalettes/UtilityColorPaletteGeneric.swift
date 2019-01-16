@@ -159,7 +159,7 @@ final class UtilityColorPaletteGeneric {
                 low = dbzAl[index]
                 lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
                 high = dbzAl[index + 1]
-                highColor = Color.rgb(rAl[index+1], gAl[index+1], bAl[index+1])
+                highColor = Color.rgb(rAl[index + 1], gAl[index + 1], bAl[index + 1])
                 diff = high - low
                 colorMapR.put(rAl[index])
                 colorMapG.put(gAl[index])
@@ -177,7 +177,7 @@ final class UtilityColorPaletteGeneric {
                         colorInt = UtilityNexradColors.interpolateColor(
                             Int(lowColor),
                             Int(highColor),
-                            Double(j)/Double(diff*scale)
+                            Double(j) / Double(diff * scale)
                         )
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
@@ -186,12 +186,12 @@ final class UtilityColorPaletteGeneric {
                         colorInt = UtilityNexradColors.interpolateColor(
                             Int(lowColor),
                             Int(highColor),
-                            Double(((j*2)-1))/Double((diff*2))
+                            Double(((j * 2)-1)) / Double((diff * 2))
                         )
                         colorInt2 = UtilityNexradColors.interpolateColor(
                             Int(lowColor),
                             Int(highColor),
-                            Double((j*2))/Double((diff*2))
+                            Double((j * 2)) / Double((diff * 2))
                         )
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
