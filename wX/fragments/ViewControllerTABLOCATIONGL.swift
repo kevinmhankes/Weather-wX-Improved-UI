@@ -33,7 +33,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var ccCard: ObjectCardCC?
     var objCard7DayCollection: ObjectCard7DayCollection?
     var extraDataCards = [ObjectStackViewHS]()
-
     var wxMetal = [WXMetalRender?]()
     var metalLayer = [CAMetalLayer?]()
     var pipelineState: MTLRenderPipelineState!
