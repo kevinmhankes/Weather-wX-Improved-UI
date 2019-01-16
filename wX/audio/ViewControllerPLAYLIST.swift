@@ -18,6 +18,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         playButton = ObjectToolbarIcon(self, "ic_play_arrow_24dp", #selector(playClicked))
         let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
         addButton = ObjectToolbarIcon(self, "ic_add_box_24dp", #selector(addClicked))
@@ -38,6 +39,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc override func doneClicked() {
+        UIApplication.shared.isIdleTimerDisabled = false
         serializeSettings()
         super.doneClicked()
     }
@@ -107,7 +109,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
                 self.stackView,
                 $1 + " "
                     + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
-                    + " " + String(Utility.readPref("PLAYLIST_" + $1, "").count)
+                    + " (size: " + String(Utility.readPref("PLAYLIST_" + $1, "").count) + ")"
             )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
