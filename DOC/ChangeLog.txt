@@ -8,6 +8,8 @@
 // TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO add share to hourly
+// TODO have screen remain on in playlist VC
+// TODO text prod QPFPFD is not working
 
 2018_01_15 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
@@ -19,6 +21,7 @@
 		 [BUG] metal radar would allow single/double tap zoom to exceed max/min
 		 [BUG] usalerts was not sharing all detail via email
 		 [BUG] AFD viewer was not scrolling to top when changing location
+		 remove PlayList from settings as it's already in main submenu
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset

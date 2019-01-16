@@ -105,7 +105,9 @@ class ViewControllerPLAYLIST: UIwXViewController {
         playlistItems.enumerated().forEach {
             let txtObject = ObjectTextView(
                 self.stackView,
-                $1 + " " + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
+                $1 + " "
+                    + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
+                    + " " + String(Utility.readPref("PLAYLIST_" + $1, "").count)
             )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
@@ -120,6 +122,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         }
     }
 
+    // FIXME download/update view one at a time
     @objc func downloadClicked() {
         serializeSettings()
         DispatchQueue.global(qos: .userInitiated).async {

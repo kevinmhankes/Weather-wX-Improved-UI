@@ -16,7 +16,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         let titles = [
             "Location",
             "Colors",
-            "PlayList",
+            //"PlayList",
             "Radar",
             "Home Screen",
             "User Interface",
@@ -42,7 +42,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         case "User Interface": self.goToVC("settingsui")
         case "Colors":         self.goToVC("settingscolorlisting")
         case "Home Screen":    self.goToVC("settingshomescreen")
-        case "PlayList":       self.goToVC("playlist")
+        //case "PlayList":       self.goToVC("playlist")
         case "Celsius to Fahrenheit table":
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
