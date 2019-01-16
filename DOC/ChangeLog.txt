@@ -7,8 +7,6 @@
 // TODO roaming location
 // TODO make ortInt configurable
 // TODO test text in main screen radar
-// TODO hourly graphics
-// TODO add private in classes
 
 2018_01_15 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL

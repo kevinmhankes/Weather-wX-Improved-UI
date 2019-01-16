@@ -21,7 +21,7 @@ final class UtilityShare {
 
     static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap], _ text: String) {
         let images = bitmaps.map {$0.image}
-        let objectsToShare = [images, text] as [Any]
+        let objectsToShare = [text, images] as [Any]
         shareAction(uiv, sender, objectsToShare)
     }
 
@@ -32,7 +32,6 @@ final class UtilityShare {
 
     static func shareAction(_ uiv: UIViewController, _ sender: UIButton, _ objectsToShare: [Any]) {
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        //activityVC.setValue("Shared content from wXL23", forKey: "Subject")
         activityVC.popoverPresentationController?.sourceView = sender
         uiv.present(activityVC, animated: true, completion: nil)
     }

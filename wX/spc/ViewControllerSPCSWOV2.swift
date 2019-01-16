@@ -77,7 +77,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps)
+        UtilityShare.shareImage(self, sender, bitmaps, self.html)
     }
 
     @objc func playlistClicked() {
