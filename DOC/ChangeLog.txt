@@ -8,8 +8,7 @@
 // TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO add share to hourly
-// TODO have screen remain on in playlist VC
-// TODO text prod QPFPFD is not working
+// TODO text prod QPFPFD is showing HTML font tag
 // TODO enhance formatting in playlist to match android
 // TODO enhance formatting in settings->locations to match android
 
@@ -26,6 +25,7 @@
 		 remove PlayList from settings as it's already in main submenu
 		 playlist: don't turn off screen ( to allow TTS to keep going )
 		 playlist: add size to playlist entries to see which ones are not working
+		 [BUG] fix QPFPFD
 2018_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset

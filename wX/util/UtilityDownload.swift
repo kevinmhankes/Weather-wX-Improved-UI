@@ -139,7 +139,7 @@ final class UtilityDownload {
             text = "http://tgftp.nws.noaa.gov/data/raw/fx/fxcn01.cwao..txt".getHtmlSep()
         } else if prod.contains("FPCN48") {
             text = "http://tgftp.nws.noaa.gov/data/raw/fp/fpcn48.cwao..txt".getHtmlSep()
-        } else if prod.contains("QPFEFD") {
+        } else if prod.contains("QPFPFD") {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
