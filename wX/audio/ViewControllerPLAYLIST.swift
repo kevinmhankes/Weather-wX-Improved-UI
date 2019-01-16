@@ -105,11 +105,14 @@ class ViewControllerPLAYLIST: UIwXViewController {
     func updateView() {
         self.stackView.subviews.forEach {$0.removeFromSuperview()}
         playlistItems.enumerated().forEach {
+            let productText = Utility.readPref("PLAYLIST_" + $1, "")
             let txtObject = ObjectTextView(
                 self.stackView,
                 $1 + " "
                     + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
-                    + " (size: " + String(Utility.readPref("PLAYLIST_" + $1, "").count) + ")"
+                    + " (size: " + String(productText.count) + ")"
+                    + MyApplication.newline
+                    + productText.truncate(200)
             )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(

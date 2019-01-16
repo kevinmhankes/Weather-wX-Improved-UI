@@ -10,6 +10,8 @@
 // TODO add share to hourly
 // TODO have screen remain on in playlist VC
 // TODO text prod QPFPFD is not working
+// TODO enhance formatting in playlist to match android
+// TODO enhance formatting in settings->locations to match android
 
 2018_01_16 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
