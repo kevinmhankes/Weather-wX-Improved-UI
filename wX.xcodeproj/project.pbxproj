@@ -17,6 +17,7 @@
 		031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546351FC636450020EF7B /* ObjectCardStackView.swift */; };
 		031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AED0A21C86149004EC175 /* UtilityRadarUI.swift */; };
 		031D033421F002BE0074F44D /* ObjectCardPlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D033321F002BE0074F44D /* ObjectCardPlayListItem.swift */; };
+		031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D033521F073390074F44D /* ObjectCardLocationItem.swift */; };
 		0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321B2EC21E0D3EC00677EBC /* TabType.swift */; };
 		0321B2EF21E0D3EC00677EBC /* ToolbarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */; };
 		0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */; };
@@ -376,6 +377,7 @@
 		031546351FC636450020EF7B /* ObjectCardStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStackView.swift; sourceTree = "<group>"; };
 		031AED0A21C86149004EC175 /* UtilityRadarUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityRadarUI.swift; sourceTree = "<group>"; };
 		031D033321F002BE0074F44D /* ObjectCardPlayListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardPlayListItem.swift; sourceTree = "<group>"; };
+		031D033521F073390074F44D /* ObjectCardLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardLocationItem.swift; sourceTree = "<group>"; };
 		0321B2EC21E0D3EC00677EBC /* TabType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
 		0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarType.swift; sourceTree = "<group>"; };
 		0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalTextObject.swift; sourceTree = "<group>"; };
@@ -1153,6 +1155,7 @@
 				F07B5C111E53D74400555058 /* ObjectCardCC.swift */,
 				03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */,
 				031546331FC634CB0020EF7B /* ObjectCardImage.swift */,
+				031D033521F073390074F44D /* ObjectCardLocationItem.swift */,
 				031D033321F002BE0074F44D /* ObjectCardPlayListItem.swift */,
 				031546351FC636450020EF7B /* ObjectCardStackView.swift */,
 				037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */,
@@ -1663,6 +1666,7 @@
 				F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */,
 				F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */,
 				F0B335B61DA3FD960035BD36 /* UtilityModelNCEPInterface.swift in Sources */,
+				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,
 				F011E61B1DB03E25006531FD /* ViewControllerTEXTVIEWER.swift in Sources */,
 				F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */,
 				F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */,

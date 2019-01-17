@@ -15,6 +15,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         super.viewDidLoad()
         addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, addButton]).items
+        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         updateView()
     }
@@ -108,15 +109,22 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         locations = []
         (0..<Location.numLocations).forEach {
+            
             let locationStr = (String($0+1)
                 + ": \(MyApplication.locations[$0].name) \(MyApplication.locations[$0].lat)"
                 + " \(MyApplication.locations[$0].lon) "
                 + "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
                 + " \(MyApplication.locations[$0].state)")
             locations.append(locationStr)
-            let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon)"
+            //let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon)"
             let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"
-            let objLocCard = ObjectTextView(
+            
+            let name = MyApplication.locations[$0].name
+            let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) "
+            let details = "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
+                + " \(MyApplication.locations[$0].state)"
+            
+           /* let objLocCard = ObjectTextView(
                 stackView,
                 Location.getName($0)
                     + MyApplication.newline
@@ -126,7 +134,15 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             )
             objLocCard.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
+            ) */
+            
+            let locationItem = ObjectCardLocationItem(self.stackView, name, latLon, details)
+            locationItem.addGestureRecognizer(
+                UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
             )
+            
+            
+            
         }
     }
 

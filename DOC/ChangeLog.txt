@@ -12,8 +12,9 @@
 // TODO enhance formatting in playlist to match android
 // TODO enhance formatting in settings->locations to match android
 
-2019_01_16 55000 playlist - update view after each download
+2019_01_17 55000 playlist - update view after each download
 	         playlist - add ObjectCardPLayListItem for custom card
+		 location items - add ObjectCardLocationItem for custom card
 2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
 2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
