@@ -27,6 +27,7 @@ class UIPreferences {
     static var homescreenTextLength = 0
     static var radarToolbarTransparent = true
     static var mainScreenRadarFab = true
+    static let sideSpacing: CGFloat = 10.0
 
     static func initialize() {
         showMetarInCC = Utility.readPref("SHOW_METAR_IN_CC", "false").hasPrefix("t")

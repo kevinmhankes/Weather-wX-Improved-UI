@@ -12,7 +12,10 @@
 // TODO enhance formatting in playlist to match android
 // TODO enhance formatting in settings->locations to match android
 
-2018_01_16 54900 remove "Solar" code now that SunCalc has replaced
+2019_01_16 55000 playlist - update view after each download
+	         playlist - add ObjectCardPLayListItem for custom card
+2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
+2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
 	 	 ObjectImage - move setImageAnchors into class
 		 [BUG] metal - location dot was not updating quickly - only on refresh
@@ -26,16 +29,16 @@
 		 playlist: don't turn off screen ( to allow TTS to keep going )
 		 playlist: add size to playlist entries to see which ones are not working
 		 [BUG] fix QPFPFD
-2018_01_12 54800 metal - change zoom level for hiding gps location circle
+2019_01_12 54800 metal - change zoom level for hiding gps location circle
 		 move sun/moon to main submenu
 	  	 convert bottom time card to use new SunCalc for sunrise/sunset
 		 remove OpenGL radar code
-2018_01_12 54700 metal - if autoupdate on keep screen on
+2019_01_12 54700 metal - if autoupdate on keep screen on
 		 redo sun/moon to use local calculations
 		 cc/7day reorg classes
-2018_01_10 54600 metal - black bg and correct screen rotation
+2019_01_10 54600 metal - black bg and correct screen rotation
 		 metal is now the default radar
-2018_01_05 54500 misc code refactor
+2019_01_05 54500 misc code refactor
 2018_12_31 54300 convert metal radar from continuous to onDemand render
 2018_12_25 53900 main screen metal radar framework and cleanup
                  [BUG] AWC forecast image URLs had changed

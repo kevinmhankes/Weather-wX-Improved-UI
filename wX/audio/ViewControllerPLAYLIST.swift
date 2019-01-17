@@ -33,6 +33,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
                 downloadButton
             ]
         ).items
+        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         updateView()
@@ -106,7 +107,10 @@ class ViewControllerPLAYLIST: UIwXViewController {
         self.stackView.subviews.forEach {$0.removeFromSuperview()}
         playlistItems.enumerated().forEach {
             let productText = Utility.readPref("PLAYLIST_" + $1, "")
-            let txtObject = ObjectTextView(
+            let topLine = $1 + " "
+                + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
+                + " (size: " + String(productText.count) + ")"
+            /*let txtObject = ObjectTextView(
                 self.stackView,
                 $1 + " "
                     + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
@@ -116,6 +120,10 @@ class ViewControllerPLAYLIST: UIwXViewController {
             )
             txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
             txtObject.addGestureRecognizer(
+                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
+            )*/
+            let playListItem = ObjectCardPlayListItem(self.stackView, topLine, productText.truncate(200))
+            playListItem.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
             )
         }
@@ -127,12 +135,16 @@ class ViewControllerPLAYLIST: UIwXViewController {
         }
     }
 
-    // FIXME download/update view one at a time
     @objc func downloadClicked() {
         serializeSettings()
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityPlayList.downloadAll()
-            DispatchQueue.main.async {self.updateView()}
+        playlistItems.forEach {
+            let product = $0
+            DispatchQueue.global(qos: .userInitiated).async {
+                UtilityPlayList.download(product)
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
+            }
         }
     }
 
