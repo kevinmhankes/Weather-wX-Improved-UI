@@ -749,26 +749,6 @@
             </objects>
             <point key="canvasLocation" x="7951" y="2336"/>
         </scene>
-        <!--GLKit View Controller-->
-        <scene sceneID="Zdn-D7-wZg">
-            <objects>
-                <glkViewController storyboardIdentifier="wxoglmultipane" preferredFramesPerSecond="30" id="6B4-q2-T3E" customClass="WXOGLOpenGLMultiPane" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qxD-BD-HqU"/>
-                        <viewControllerLayoutGuide type="bottom" id="0Ku-bP-AWk"/>
-                    </layoutGuides>
-                    <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" id="2rG-9G-TFF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <connections>
-                            <outlet property="delegate" destination="6B4-q2-T3E" id="qYj-VX-s0x"/>
-                        </connections>
-                    </glkView>
-                </glkViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ib0-U7-ERc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8610" y="2328"/>
-        </scene>
         <!--View ControllerSPCCOMPMAP-->
         <scene sceneID="xoN-DL-tSs">
             <objects>

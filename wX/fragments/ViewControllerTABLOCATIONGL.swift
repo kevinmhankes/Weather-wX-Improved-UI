@@ -44,7 +44,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     let numberOfPanes = 1
     var textObj = WXMetalTextObject()
     var longPressCount = 0
-    let sideSpacing: CGFloat = 10.0
+    //let sideSpacing: CGFloat = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 ]
             ).items
         }
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - self.sideSpacing).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.view.addSubview(toolbar)
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
