@@ -107,7 +107,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         self.stackView.subviews.forEach {$0.removeFromSuperview()}
         playlistItems.enumerated().forEach {
             let productText = Utility.readPref("PLAYLIST_" + $1, "")
-            let topLine = $1 + " "
+            let topLine = " "
                 + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
                 + " (size: " + String(productText.count) + ")"
             /*let txtObject = ObjectTextView(
@@ -122,7 +122,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
             txtObject.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
             )*/
-            let playListItem = ObjectCardPlayListItem(self.stackView, topLine, productText.truncate(200))
+            let playListItem = ObjectCardPlayListItem(self.stackView, $1, topLine, productText.truncate(200))
             playListItem.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
             )
