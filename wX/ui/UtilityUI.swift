@@ -53,4 +53,26 @@ public class UtilityUI {
         }
         return productIndex
     }
+
+    // https://developer.apple.com/documentation/uikit/uiview/2891103-safeareainsets
+    // https://developer.apple.com/documentation/uikit/uiview/2891104-safeareainsetsdidchange
+    // https://stackoverflow.com/questions/46317061/use-safe-area-layout-programmatically
+    // https://stackoverflow.com/questions/46239960/extra-bottom-space-padding-on-iphone-x/46240554
+    func getBottomPadding() -> CGFloat {
+        var bottomPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+        }
+        return bottomPadding
+    }
+
+    func getTopPadding() -> CGFloat {
+        var topPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            topPadding = window?.safeAreaInsets.top ?? 0.0
+        }
+        return topPadding
+    }
 }
