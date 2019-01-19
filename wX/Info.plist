@@ -31,6 +31,8 @@
 	<string>This application requires location services if GPS is configured to show current location in radar.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location services if GPS is configured to show current location in radar.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+        <string>wXL23 needs permission to write photos if you choose the option to share and then save image.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

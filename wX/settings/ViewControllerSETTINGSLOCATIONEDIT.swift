@@ -62,8 +62,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             metrics: nil,
             views: viewsDictionary
         )
+        let topSpace = String(50 + Int(Float(UtilityUI.getTopPadding())))
+        let bottomSpace = String(Int(UIPreferences.toolbarHeight) + Int(Float(UtilityUI.getTopPadding())))
         let stackViewV = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-70-[stackView]-70-|",
+            withVisualFormat: "V:|-" + topSpace + "-[stackView]-" + bottomSpace + "-|",
+            //withVisualFormat: "V:|-70-[stackView]-70-|",
             options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             metrics: nil,
             views: viewsDictionary
