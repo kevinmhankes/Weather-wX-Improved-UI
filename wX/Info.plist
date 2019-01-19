@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>55200</string>
+	<string>55300</string>
 	<key>CFBundleVersion</key>
 	<string>0</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -32,7 +32,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location services if GPS is configured to show current location in radar.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-        <string>wXL23 needs permission to write photos if you choose the option to share and then save image.</string>
+	<string>wXL23 needs permission to write photos if you choose the option to share and then save image.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

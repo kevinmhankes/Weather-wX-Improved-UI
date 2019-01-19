@@ -11,7 +11,10 @@
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO enhance formatting in playlist to match android
 // TODO enhance formatting in settings->locations to match android
-// TODO handle layout required for newer apple phones
+// TODO handle screen rotation better via viewWillTransition()
+// TODO move to dedicated RegExp for prepattern like wX(Android)
+// TODO use Apple Maps in SPC Storm reports
+// TODO show Apple Map in settings location edit: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
 
 2019_01_19 55000 playlist - update view after each download
 	         playlist - add ObjectCardPLayListItem for custom card
