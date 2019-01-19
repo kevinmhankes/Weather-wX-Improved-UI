@@ -41,9 +41,10 @@ public class ObjectScrollStackView {
                 views: ["stackView": stackView]
             )
         )
+        let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         scrollView.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-20-[stackView]-50-|",
+                withVisualFormat: "V:|-" + topSpace + "-[stackView]-50-|",
                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                 metrics: nil,
                 views: ["stackView": stackView]

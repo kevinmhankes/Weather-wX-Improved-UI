@@ -45,6 +45,13 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var textObj = WXMetalTextObject()
     var longPressCount = 0
     //let sideSpacing: CGFloat = 10.0
+    var toolbar = ObjectToolbar(.top)
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        toolbar.resize()
+        fab?.resize()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +62,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        let toolbar = ObjectToolbar(.top)
+        toolbar = ObjectToolbar(.top)
         let radarButton = ObjectToolbarIcon(self, "ic_flash_on_24dp", #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(self, "ic_cloud_24dp", #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))

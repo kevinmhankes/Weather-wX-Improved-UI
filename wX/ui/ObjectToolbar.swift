@@ -22,7 +22,7 @@ final class ObjectToolbar: UIToolbar {
         case .bottom:
             frame = CGRect(
                 x: 0,
-                y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight,
+                y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding(),
                 width: UIScreen.main.bounds.width,
                 height: UIPreferences.toolbarHeight
             )
@@ -30,7 +30,7 @@ final class ObjectToolbar: UIToolbar {
         case .top:
             frame = CGRect(
                 x: 0,
-                y: UIPreferences.statusBarHeight,
+                y: UtilityUI.getTopPadding(),
                 width: UIScreen.main.bounds.width,
                 height: UIPreferences.toolbarHeight
             )
@@ -52,6 +52,16 @@ final class ObjectToolbar: UIToolbar {
             barMetrics: .default
         )
         setShadowImage(UIImage(), forToolbarPosition: .any)
+    }
+    
+    func resize(){
+        frame = CGRect(
+            x: 0,
+            y: UtilityUI.getTopPadding(),
+            width: UIScreen.main.bounds.width,
+            height: UIPreferences.toolbarHeight
+        )
+        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
     }
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}

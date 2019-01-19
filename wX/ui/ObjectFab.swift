@@ -12,10 +12,14 @@ public class ObjectFab {
 
     init(_ uiv: UIViewController, _ action: Selector) {
         floaty.sticky = true
-        floaty.paddingY = 62.0
+        floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
         floaty.buttonColor = AppColors.primaryColorFab
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: "ic_flash_on_24dp")!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
+    }
+
+    func resize() {
+        floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
     }
 
     var view: Floaty {

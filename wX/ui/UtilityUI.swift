@@ -58,7 +58,7 @@ public class UtilityUI {
     // https://developer.apple.com/documentation/uikit/uiview/2891104-safeareainsetsdidchange
     // https://stackoverflow.com/questions/46317061/use-safe-area-layout-programmatically
     // https://stackoverflow.com/questions/46239960/extra-bottom-space-padding-on-iphone-x/46240554
-    func getBottomPadding() -> CGFloat {
+    class func getBottomPadding() -> CGFloat {
         var bottomPadding: CGFloat = 0.0
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
@@ -67,11 +67,11 @@ public class UtilityUI {
         return bottomPadding
     }
 
-    func getTopPadding() -> CGFloat {
-        var topPadding: CGFloat = 0.0
+    class func getTopPadding() -> CGFloat {
+        var topPadding: CGFloat = UIPreferences.statusBarHeight
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
-            topPadding = window?.safeAreaInsets.top ?? 0.0
+            topPadding = window?.safeAreaInsets.top ?? UIPreferences.statusBarHeight
         }
         return topPadding
     }
