@@ -13,11 +13,11 @@
 // TODO enhance formatting in settings->locations to match android
 // TODO handle layout required for newer apple phones
 
-2019_01_18 55000 playlist - update view after each download
+2019_01_19 55000 playlist - update view after each download
 	         playlist - add ObjectCardPLayListItem for custom card
 		 location items - add ObjectCardLocationItem for custom card
 		 remove glkit view from storyboard
-		 add some safearea stuff
+		 iphone X/XS/XR formatting enhancements - safearea stuff
 2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
 2019_01_16 54900 remove "Solar" code now that SunCalc has replaced
 		 remove remnants of radar line width from OpenGL
