@@ -12,6 +12,7 @@ class ViewControllerTABPARENT: UIViewController {
     var stackView = UIStackView()
     var objTileMatrix = ObjectImageTileMatrix()
     var fab: ObjectFab?
+    var objStackScrollView: ObjectScrollStackView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class ViewControllerTABPARENT: UIViewController {
             blue: AppColors.primaryColorBlue,
             alpha: CGFloat(1.0)
         )
-        _ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        objStackScrollView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
             self.view.addSubview(fab!.view)

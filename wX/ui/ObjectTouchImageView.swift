@@ -17,9 +17,9 @@ final class ObjectTouchImageView {
         img = ImageScrollView(
             frame: CGRect(
                 x: 0,
-                y: 0,
+                y: UtilityUI.getTopPadding(),
                 width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - toolbar.frame.height
+                height: UIScreen.main.bounds.height - toolbar.frame.height - UtilityUI.getTopPadding()
             )
         )
         img.contentMode = UIView.ContentMode.scaleAspectFit

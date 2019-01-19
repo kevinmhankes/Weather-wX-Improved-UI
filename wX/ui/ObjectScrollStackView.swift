@@ -8,6 +8,8 @@ import UIKit
 
 public class ObjectScrollStackView {
 
+    var fragmentHeightConstraint: [NSLayoutConstraint]?
+
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
@@ -20,9 +22,10 @@ public class ObjectScrollStackView {
                 views: ["scrollView": scrollView]
             )
         )
+        let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         uiv.view.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|[scrollView]|",
+                withVisualFormat: "V:|-" + topSpace + "-[scrollView]|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: ["scrollView": scrollView]
@@ -41,10 +44,10 @@ public class ObjectScrollStackView {
                 views: ["stackView": stackView]
             )
         )
-        let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
+        //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         scrollView.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-" + topSpace + "-[stackView]-50-|",
+                withVisualFormat: "V:|-" + "0" + "-[stackView]-50-|",
                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                 metrics: nil,
                 views: ["stackView": stackView]
@@ -73,14 +76,22 @@ public class ObjectScrollStackView {
                 views: ["scrollView": scrollView]
             )
         )
-        uiv.view.addConstraints(
+        let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
+        fragmentHeightConstraint = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-" + topSpace + "-[scrollView]-52-|",
+            options: .alignAllCenterX,
+            metrics: nil,
+            views: ["scrollView": scrollView]
+        )
+        uiv.view.addConstraints(fragmentHeightConstraint!)
+        /*uiv.view.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|-68-[scrollView]-52-|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: ["scrollView": scrollView]
             )
-        )
+        )*/
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
