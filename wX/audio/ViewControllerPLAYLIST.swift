@@ -33,8 +33,10 @@ class ViewControllerPLAYLIST: UIwXViewController {
                 downloadButton
             ]
         ).items
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+            ).isActive = true
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         updateView()
     }
@@ -164,5 +166,23 @@ class ViewControllerPLAYLIST: UIwXViewController {
     func addWfoProduct(_ product: String) {
         playlistItems.append("AFD" + product.uppercased())
         updateView()
+    }
+
+    private func displayContent() {
+        stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        ).isActive = true
+        updateView()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

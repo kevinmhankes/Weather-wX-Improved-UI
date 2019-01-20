@@ -8,6 +8,8 @@ import UIKit
 
 class ViewControllerCAHOURLY: UIwXViewController {
 
+    var html = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
@@ -17,11 +19,26 @@ class ViewControllerCAHOURLY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
+            self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {
-                _ = ObjectTextView(self.stackView, html)
-                _ = ObjectCALegal(self.stackView)
+                self.displayContent()
             }
         }
+    }
+
+    private func displayContent() {
+        _ = ObjectTextView(self.stackView, html)
+        _ = ObjectCALegal(self.stackView)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
