@@ -64,14 +64,14 @@ class ViewControllerUSALERTS: UIwXViewController {
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
     }
-    
+
     private func displayContent() {
         self.filterButton.title = "Tornado/FFW/ThunderStorm"
         self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts)
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

@@ -108,7 +108,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         colorChanged = true
         colorButton.title = "(" + String(newRed) + "," + String(newGreen) + "," + String(newBlue) + ")"
     }
-    
+
     internal override func refreshViews() {
         colPicker.frame = CGRect(
                 x: 0,
@@ -126,7 +126,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
                 height: colorBarSize
             )
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

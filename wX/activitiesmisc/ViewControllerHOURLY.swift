@@ -11,7 +11,7 @@ class ViewControllerHOURLY: UIwXViewController {
     var html = ("", "")
 
     // TODO convert to audip/share setup
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items

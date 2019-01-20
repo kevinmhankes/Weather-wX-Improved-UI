@@ -60,7 +60,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         let stackViewH = NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-20-[stackView]-20-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+            //options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+            options: .alignAllCenterX,
             metrics: nil,
             views: viewsDictionary
         )
@@ -69,7 +70,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let stackViewV = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-" + topSpace + "-[stackView]-" + bottomSpace + "-|",
             //withVisualFormat: "V:|-70-[stackView]-70-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+            //options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+            options: .alignAllCenterX,
             metrics: nil,
             views: viewsDictionary
         )

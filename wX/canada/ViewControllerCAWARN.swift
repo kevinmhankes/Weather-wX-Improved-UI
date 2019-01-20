@@ -12,7 +12,7 @@ class ViewControllerCAWARN: UIwXViewController {
     var objCAWARN: ObjectCAWARN!
     var provButton = ObjectToolbarIcon()
     var prov = "Canada"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         provButton = ObjectToolbarIcon(title: prov, self, #selector(provClicked))

@@ -32,7 +32,7 @@ class UIwXViewController: UIViewController {
         self.stackView = UIStackView()
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, self.toolbar)
     }
-    
+
     func removeAllViews() {
         self.view.subviews.forEach({ $0.removeFromSuperview() })
     }

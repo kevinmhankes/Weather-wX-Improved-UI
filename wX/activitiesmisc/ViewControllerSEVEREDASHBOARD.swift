@@ -15,7 +15,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     var bm = Bitmap()
 
     // TODO add share icon
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
@@ -85,7 +85,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         ActVars.spcStormReportsDay = "today"
         self.goToVC("spcstormreports")
     }
-    
+
     private func displayContent() {
         self.showTextWarnings()
         let imgObject = ObjectImage(self.stackView, bm)
@@ -127,7 +127,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         }
         self.view.bringSubviewToFront(self.toolbar)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

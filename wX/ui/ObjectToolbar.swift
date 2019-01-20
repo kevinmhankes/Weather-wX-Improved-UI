@@ -53,7 +53,7 @@ final class ObjectToolbar: UIToolbar {
         )
         setShadowImage(UIImage(), forToolbarPosition: .any)
     }
-    
+
     func resize() {
         frame = CGRect(
             x: 0,
