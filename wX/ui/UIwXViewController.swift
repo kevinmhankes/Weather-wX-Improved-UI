@@ -8,10 +8,11 @@ import UIKit
 
 class UIwXViewController: UIViewController {
 
-    let scrollView = UIScrollView()
-    let stackView = UIStackView()
+    var scrollView = UIScrollView()
+    var stackView = UIStackView()
     let toolbar = ObjectToolbar()
     var doneButton = ObjectToolbarIcon()
+    var objScrollStackView: ObjectScrollStackView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +24,12 @@ class UIwXViewController: UIViewController {
 
     @objc func doneClicked() {
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+    }
+    
+    func refreshViews() {
+        self.view.subviews.forEach({ $0.removeFromSuperview() })
+        self.scrollView = UIScrollView()
+        self.stackView = UIStackView()
+        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, self.toolbar)
     }
 }

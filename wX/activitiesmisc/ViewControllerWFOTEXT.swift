@@ -20,6 +20,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     var mapShown = false
     var playlistButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
+    var html = ""
     let wfoProdList = [
         "AFD: Area Forecast Discussion",
         "HWO: Hazardous Weather Outlook",
@@ -67,12 +68,12 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             self.productButton.title = self.product
             self.siteButton.title = self.wfo
-            var html = UtilityDownload.getTextProduct(self.product + self.wfo)
+            self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
             DispatchQueue.main.async {
-                if html == "" {
-                    html = "None issused by this office recently."
+                if self.html == "" {
+                    self.html = "None issused by this office recently."
                 }
-                self.textView.text = html
+                self.textView.text = self.html
                 Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
                 Utility.writePref("WFO_REMEMBER_LOCATION", self.wfo)
             }
@@ -127,5 +128,18 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product + self.wfo, self.textView.text, self, playlistButton)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (context) -> Void in
+            // Place code here to perform animations during the rotation.
+            // You can pass nil for this closure if not necessary.
+        },
+        completion: { (context) -> Void in
+            self.refreshViews()
+            self.textView = ObjectTextView(self.stackView)
+            self.textView.text = self.html
+        })
     }
 }
