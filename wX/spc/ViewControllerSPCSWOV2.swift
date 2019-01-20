@@ -33,7 +33,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
                 playlistButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         if ActVars.spcswoDay == "48" {
             stateButton.title = ""
         }
@@ -51,18 +51,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             }
             self.bitmaps = UtilitySPCSWO.getImageUrls(ActVars.spcswoDay)
             DispatchQueue.main.async {
-                let objImage = ObjectImage(self.stackView, self.bitmaps[0])
-                objImage.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(0, self, #selector(self.imgClicked(sender:))
-                    )
-                )
-                self.textView = ObjectTextView(self.stackView, self.html)
-                stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
-                    let objImage = ObjectImage(self.stackView, self.bitmaps[$0])
-                    objImage.addGestureRecognizer(
-                        UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
-                    )
-                }
+               self.displayContent()
             }
         }
     }
@@ -86,5 +75,29 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     @objc func stateClicked() {
         self.goToVC("spcswostate")
+    }
+
+    private func displayContent() {
+        let objImage = ObjectImage(self.stackView, self.bitmaps[0])
+        objImage.addGestureRecognizer(
+            UITapGestureRecognizerWithData(0, self, #selector(self.imgClicked(sender:))
+            )
+        )
+        self.textView = ObjectTextView(self.stackView, self.html)
+        stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
+            let objImage = ObjectImage(self.stackView, self.bitmaps[$0])
+            objImage.addGestureRecognizer(
+                UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
+            )
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                self.refreshViews()
+                                self.displayContent()
+        })
     }
 }
