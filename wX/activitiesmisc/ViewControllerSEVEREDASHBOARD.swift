@@ -9,67 +9,32 @@ import UIKit
 class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     var buttonActionArray = [String]()
+    let snWat = SevereNotice("wat")
+    let snMcd = SevereNotice("mcd")
+    let snMpd = SevereNotice("mpd")
+    var bm = Bitmap()
 
+    // TODO add share icon
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let snWat = SevereNotice("wat")
-            let snMcd = SevereNotice("mcd")
-            let snMpd = SevereNotice("mpd")
             UtilityDownloadRadar.getPolygonVTEC()
             UtilityDownloadRadar.getMPD()
             UtilityDownloadRadar.getMCD()
             UtilityDownloadRadar.getWAT()
-            let bm = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
-            snMcd.getBitmaps(MyApplication.mcdNoList.value)
-            snWat.getBitmaps(MyApplication.watNoList.value)
-            snMpd.getBitmaps(MyApplication.mpdNoList.value)
+            self.bm = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
+            self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
+            self.snWat.getBitmaps(MyApplication.watNoList.value)
+            self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
             DispatchQueue.main.async {
-                self.showTextWarnings()
-                let imgObject = ObjectImage(self.stackView, bm)
-                let tapGestureRecognizerSPCRPT = UITapGestureRecognizer(
-                    target: self,
-                    action: #selector(self.spcstreportsClicked(sender:))
-                )
-                imgObject.addGestureRecognizer(tapGestureRecognizerSPCRPT)
-                var index = 0
-                var watI = 0
-                var mcdI = 0
-                var mpdI = 0
-                snWat.bitmaps.forEach {
-                    let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(
-                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
-                    )
-                    self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
-                    index += 1
-                    watI += 1
-                }
-                snMcd.bitmaps.forEach {
-                    let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(
-                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
-                    )
-                    self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
-                    index += 1
-                    mcdI += 1
-                }
-                snMpd.bitmaps.forEach {
-                    let imgObject = ObjectImage(self.stackView, $0)
-                    imgObject.addGestureRecognizer(
-                        UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
-                    )
-                    self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
-                    index += 1
-                    mpdI += 1
-                }
-                self.view.bringSubviewToFront(self.toolbar)
+               self.displayContent()
             }
         }
     }
@@ -119,5 +84,58 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
         ActVars.spcStormReportsDay = "today"
         self.goToVC("spcstormreports")
+    }
+    
+    private func displayContent() {
+        self.showTextWarnings()
+        let imgObject = ObjectImage(self.stackView, bm)
+        let tapGestureRecognizerSPCRPT = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.spcstreportsClicked(sender:))
+        )
+        imgObject.addGestureRecognizer(tapGestureRecognizerSPCRPT)
+        var index = 0
+        var watI = 0
+        var mcdI = 0
+        var mpdI = 0
+        snWat.bitmaps.forEach {
+            let imgObject = ObjectImage(self.stackView, $0)
+            imgObject.addGestureRecognizer(
+                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+            )
+            self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
+            index += 1
+            watI += 1
+        }
+        snMcd.bitmaps.forEach {
+            let imgObject = ObjectImage(self.stackView, $0)
+            imgObject.addGestureRecognizer(
+                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+            )
+            self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
+            index += 1
+            mcdI += 1
+        }
+        snMpd.bitmaps.forEach {
+            let imgObject = ObjectImage(self.stackView, $0)
+            imgObject.addGestureRecognizer(
+                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+            )
+            self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
+            index += 1
+            mpdI += 1
+        }
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
