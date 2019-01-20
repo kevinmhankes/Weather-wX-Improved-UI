@@ -54,7 +54,7 @@ final class ObjectToolbar: UIToolbar {
         setShadowImage(UIImage(), forToolbarPosition: .any)
     }
     
-    func resize(){
+    func resize() {
         frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),

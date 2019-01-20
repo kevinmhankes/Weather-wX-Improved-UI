@@ -26,7 +26,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
         nwsOffice = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
 
@@ -34,9 +34,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             self.wfoProd = self.getLSRFromWFO()
             DispatchQueue.main.async {
-                self.siteButton.title = self.nwsOffice
-                self.stackView.subviews.forEach { $0.removeFromSuperview() }
-                self.wfoProd.forEach {_ = ObjectTextView(self.stackView, $0)}
+                self.displayContent()
             }
         }
     }
@@ -91,5 +89,23 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
     func mapCall(annotationView: MKAnnotationView) {
         self.nwsOffice = (annotationView.annotation!.title!)!
         self.getContent()
+    }
+
+    private func displayContent() {
+        self.siteButton.title = self.nwsOffice
+        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.wfoProd.forEach {_ = ObjectTextView(self.stackView, $0)}
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
+                self.displayContent()
+            }
+        )
     }
 }

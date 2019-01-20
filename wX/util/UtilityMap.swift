@@ -64,9 +64,9 @@ final class UtilityMap {
         )
         mapView.frame = CGRect(
             x: 0,
-            y: 0,
+            y: UtilityUI.getTopPadding(),
             width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight
+            height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding()
         )
         mapView.setRegion(coordinateRegion, animated: true)
     }
