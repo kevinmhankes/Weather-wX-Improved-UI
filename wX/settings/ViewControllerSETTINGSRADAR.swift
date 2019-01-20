@@ -17,43 +17,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let switchObject = ObjectSettingsSwitch(
-                stackView,
-                prefVar,
-                UtilitySettingsRadar.booleanDefault,
-                UtilitySettingsRadar.boolean
-            )
-            switchObject.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
-            switchObject.sw.addTarget(self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged)
-            switchObject.sw.tag = index
-        }
-        Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
-            objNp.sw.dataSource = self
-            objNp.sw.delegate = self
-            objNp.sw.tag = index
-            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
-            if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
-                objNp.sw.selectRow(
-                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
-                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
-                        )!,
-                    inComponent: 0,
-                    animated: true
-                )
-            } else {
-                objNp.sw.selectRow(
-                    Utility.readPref(
-                        prefVar,
-                        UtilitySettingsRadar.pickerinit[prefVar]!
-                    ),
-                    inComponent: 0,
-                    animated: true
-                )
-            }
-        }
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        self.displayContent()
     }
 
     @objc override func doneClicked() {
@@ -140,5 +105,55 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
 
     @objc func getHelp(sender: UIButton) {
         UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsRadar.helpStrings)
+    }
+
+    private func displayContent() {
+        Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
+            let switchObject = ObjectSettingsSwitch(
+                stackView,
+                prefVar,
+                UtilitySettingsRadar.booleanDefault,
+                UtilitySettingsRadar.boolean
+            )
+            switchObject.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            switchObject.sw.addTarget(self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged)
+            switchObject.sw.tag = index
+        }
+        Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
+            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
+            objNp.sw.dataSource = self
+            objNp.sw.delegate = self
+            objNp.sw.tag = index
+            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
+                objNp.sw.selectRow(
+                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
+                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
+                        )!,
+                    inComponent: 0,
+                    animated: true
+                )
+            } else {
+                objNp.sw.selectRow(
+                    Utility.readPref(
+                        prefVar,
+                        UtilitySettingsRadar.pickerinit[prefVar]!
+                    ),
+                    inComponent: 0,
+                    animated: true
+                )
+            }
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

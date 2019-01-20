@@ -12,50 +12,8 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
-            let switchObject = ObjectSettingsSwitch(
-                stackView,
-                $1,
-                UtilitySettingsUI.booleanDefault,
-                UtilitySettingsUI.boolean
-            )
-            switchObject.vw.addTarget(
-                self,
-                action: #selector(self.getHelp(sender:)),
-                for: .touchUpInside
-            )
-            switchObject.sw.addTarget(
-                self,
-                action: #selector(self.switchChanged(sender:)),
-                for: UIControl.Event.valueChanged
-            )
-            switchObject.sw.tag = $0
-        }
-        generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
-        generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)
-        generatePickerValues("HOMESCREEN_TEXT_LENGTH_PREF", from: 250, to: 2000, by: 250)
-        Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
-            objNp.sw.dataSource = self
-            objNp.sw.delegate = self
-            objNp.sw.tag = index
-            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
-            if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
-                let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
-                var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
-                if defaultRowIndex == nil {
-                    defaultRowIndex = 0
-                }
-                objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
-            } else {
-                objNp.sw.selectRow(
-                    Utility.readPref(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
-                    inComponent: 0,
-                    animated: true
-                )
-            }
-        }
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        self.displayContent()
     }
 
     @objc override func doneClicked() {
@@ -118,5 +76,62 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
 
     @objc func getHelp(sender: UIButton) {
         UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsUI.helpStrings)
+    }
+
+    private func displayContent() {
+        Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
+            let switchObject = ObjectSettingsSwitch(
+                stackView,
+                $1,
+                UtilitySettingsUI.booleanDefault,
+                UtilitySettingsUI.boolean
+            )
+            switchObject.vw.addTarget(
+                self,
+                action: #selector(self.getHelp(sender:)),
+                for: .touchUpInside
+            )
+            switchObject.sw.addTarget(
+                self,
+                action: #selector(self.switchChanged(sender:)),
+                for: UIControl.Event.valueChanged
+            )
+            switchObject.sw.tag = $0
+        }
+        generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
+        generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)
+        generatePickerValues("HOMESCREEN_TEXT_LENGTH_PREF", from: 250, to: 2000, by: 250)
+        Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
+            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
+            objNp.sw.dataSource = self
+            objNp.sw.delegate = self
+            objNp.sw.tag = index
+            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
+                let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
+                var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
+                if defaultRowIndex == nil {
+                    defaultRowIndex = 0
+                }
+                objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
+            } else {
+                objNp.sw.selectRow(
+                    Utility.readPref(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
+                    inComponent: 0,
+                    animated: true
+                )
+            }
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

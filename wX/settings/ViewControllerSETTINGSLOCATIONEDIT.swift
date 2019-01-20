@@ -51,7 +51,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         lonTextView.text = "Lon"
         textViews.forEach {$0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)}
         textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
-        (0...6).forEach {_ in textViews.append(UITextView())}
+        //(0...6).forEach {_ in textViews.append(UITextView())}
+        //let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
         let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
