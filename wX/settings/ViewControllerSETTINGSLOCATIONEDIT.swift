@@ -56,6 +56,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
         let viewsDictionary = ["stackView": stackView.view]
+        //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         let stackViewH = NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-20-[stackView]-20-|",
             options: NSLayoutConstraint.FormatOptions(rawValue: 0),
@@ -63,7 +64,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             views: viewsDictionary
         )
         let topSpace = String(50 + Int(Float(UtilityUI.getTopPadding())))
-        let bottomSpace = String(Int(UIPreferences.toolbarHeight) + Int(Float(UtilityUI.getTopPadding())))
+        let bottomSpace = String(Int(UIPreferences.toolbarHeight) + Int(Float(UtilityUI.getBottomPadding())))
         let stackViewV = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-" + topSpace + "-[stackView]-" + bottomSpace + "-|",
             //withVisualFormat: "V:|-70-[stackView]-70-|",
