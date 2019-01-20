@@ -109,20 +109,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 ]
             ).items
         }
-        
-        //stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
-        //_ = ObjectScrollStackView(self, scrollView, stackView, .TAB)
-        //self.view.addSubview(toolbar)
-        
         self.view.addSubview(toolbar)
         stackView = UIStackView()
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
+        stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        ).isActive = true
         if self.objStackScrollView != nil && self.objStackScrollView!.fragmentHeightConstraint != nil {
-            //print("SPACE PAD22: " + String(48 + Int(Float(UtilityUI.getTopPadding()))))
             self.view.removeConstraints(self.objStackScrollView!.fragmentHeightConstraint!)
         }
         self.objStackScrollView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
-        
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)

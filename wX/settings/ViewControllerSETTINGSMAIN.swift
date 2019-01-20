@@ -8,26 +8,23 @@ import UIKit
 
 class ViewControllerSETTINGSMAIN: UIwXViewController {
 
+    var titles = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        let titles = [
+        titles = [
             "Location",
             "Colors",
-            //"PlayList",
             "Radar",
             "Home Screen",
             "User Interface",
             "Celsius to Fahrenheit table",
             "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
         ]
-        titles.forEach {
-            let objText = ObjectTextView(self.stackView, $0)
-            objText.textSize = 1.5
-            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:))))
-        }
+        displayContent()
     }
 
     @objc override func doneClicked() {
@@ -42,7 +39,6 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         case "User Interface": self.goToVC("settingsui")
         case "Colors":         self.goToVC("settingscolorlisting")
         case "Home Screen":    self.goToVC("settingshomescreen")
-        //case "PlayList":       self.goToVC("playlist")
         case "Celsius to Fahrenheit table":
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
@@ -52,5 +48,24 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             self.goToVC("textviewer")
         default: break
         }
+    }
+
+    private func displayContent() {
+        titles.forEach {
+            let objText = ObjectTextView(self.stackView, $0)
+            objText.textSize = 1.5
+            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:))))
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+        }
+        )
     }
 }
