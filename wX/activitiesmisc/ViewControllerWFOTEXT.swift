@@ -53,7 +53,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
                 playlistButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
@@ -129,14 +129,12 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product + self.wfo, self.textView.text, self, playlistButton)
     }
-    
+
+    // FIXME map size is goofed up after rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: { (context) -> Void in
-            // Place code here to perform animations during the rotation.
-            // You can pass nil for this closure if not necessary.
-        },
-        completion: { (context) -> Void in
+        coordinator.animate(alongsideTransition: nil,
+        completion: { _ -> Void in
             self.refreshViews()
             self.textView = ObjectTextView(self.stackView)
             self.textView.text = self.html

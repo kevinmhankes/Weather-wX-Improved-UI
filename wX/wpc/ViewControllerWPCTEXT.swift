@@ -16,6 +16,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var playListButton = ObjectToolbarIcon()
     var subMenu = ObjectMenuData(UtilityWPCText.titles, [], UtilityWPCText.labels)
     let synth = AVSpeechSynthesizer()
+    var html = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
                 playListButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
         if ActVars.wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
@@ -50,9 +51,9 @@ class ViewControllerWPCTEXT: UIwXViewController {
         // https://www.raywenderlich.com/148513/grand-central-dispatch-tutorial-swift-3-part-1
         // https://developer.apple.com/videos/play/wwdc2016/720/
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(self.product)
+            self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
-                self.textView.text = html
+                self.textView.text = self.html
                 self.productButton.title = self.product
                 Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
             }
@@ -84,5 +85,15 @@ class ViewControllerWPCTEXT: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, textView.text, self, playListButton)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                self.refreshViews()
+                                self.textView = ObjectTextView(self.stackView)
+                                self.textView.text = self.html
+        })
     }
 }
