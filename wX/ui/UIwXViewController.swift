@@ -25,11 +25,15 @@ class UIwXViewController: UIViewController {
     @objc func doneClicked() {
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
-    
+
     func refreshViews() {
-        self.view.subviews.forEach({ $0.removeFromSuperview() })
+        self.removeAllViews()
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, self.toolbar)
+    }
+    
+    func removeAllViews() {
+        self.view.subviews.forEach({ $0.removeFromSuperview() })
     }
 }

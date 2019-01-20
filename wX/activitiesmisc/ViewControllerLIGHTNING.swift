@@ -16,6 +16,7 @@ class ViewControllerLIGHTNING: UIwXViewController {
     var period = "0.25"
     var periodPretty = "15 MIN"
     var firstRun = true
+    var bitmap = Bitmap()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +41,15 @@ class ViewControllerLIGHTNING: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityLightning.getImage(self.sector, self.period)
+            self.bitmap = UtilityLightning.getImage(self.sector, self.period)
             self.sectorPretty = UtilityLightning.getSectorPretty(self.sector)
             self.periodPretty = UtilityLightning.getTimePretty(self.period)
             DispatchQueue.main.async {
                 if self.firstRun {
-                    self.image.setBitmap(bitmap)
+                    self.image.setBitmap(self.bitmap)
                     self.firstRun = false
                 } else {
-                    self.image.updateBitmap(bitmap)
+                    self.image.updateBitmap(self.bitmap)
                 }
                 self.productButton.title = self.sectorPretty
                 self.timeButton.title = self.periodPretty
@@ -85,5 +86,22 @@ class ViewControllerLIGHTNING: UIwXViewController {
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
+    }
+
+    private func displayContent() {
+        image = ObjectTouchImageView(self, toolbar)
+        self.image.setBitmap(self.bitmap)
+        //self.image.updateBitmap(bitmap)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                //self.refreshViews()
+                                self.removeAllViews()
+                                self.view.addSubview(self.toolbar)
+                                self.displayContent()
+        })
     }
 }
