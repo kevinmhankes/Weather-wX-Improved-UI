@@ -16,6 +16,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     var colorChanged = false
     var colorButton = ObjectToolbarIcon()
     let toolbarTop = ObjectToolbar()
+    var colPicker: HSBColorPicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +26,15 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, colorButton, defaultButton]).items
-        let colPicker = HSBColorPicker(
+        colPicker = HSBColorPicker(
             frame: CGRect(
                 x: 0,
-                y: toolbar.frame.size.height + UIPreferences.statusBarHeight,
+                y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
                 width: UIScreen.main.bounds.width,
                 height: UIScreen.main.bounds.height
                     - toolbar.frame.size.height * 2
                     - colorBarSize
-                    - UIPreferences.statusBarHeight
+                    - UtilityUI.getTopPadding()
             )
         )
         colPicker.delegate = self
@@ -106,5 +107,34 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         newBlue = ActVars.colorObject.defaultBlue
         colorChanged = true
         colorButton.title = "(" + String(newRed) + "," + String(newGreen) + "," + String(newBlue) + ")"
+    }
+    
+    internal override func refreshViews() {
+        colPicker.frame = CGRect(
+                x: 0,
+                y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
+                width: UIScreen.main.bounds.width,
+                height: UIScreen.main.bounds.height
+                    - toolbar.frame.size.height * 2
+                    - colorBarSize
+                    - UtilityUI.getTopPadding()
+            )
+        colorBar.frame = CGRect(
+                x: 0,
+                y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
+                width: UIScreen.main.bounds.width,
+                height: colorBarSize
+            )
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                //self.displayContent()
+            }
+        )
     }
 }

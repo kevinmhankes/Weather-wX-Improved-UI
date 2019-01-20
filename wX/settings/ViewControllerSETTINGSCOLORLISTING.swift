@@ -15,21 +15,10 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         setupColorObjects()
         colorArr.sort(by: {$0.uiLabel < $1.uiLabel})
-        colorArr.enumerated().forEach {
-            let objText = ObjectTextView(self.stackView, $1.uiLabel, $1)
-            if $1.colorsCurrent.red == 0 && $1.colorsCurrent.green == 0 && $1.colorsCurrent.blue == 0 {
-                objText.color = UIColor.white
-            } else {
-                objText.color = $1.uicolorCurrent
-            }
-            objText.background = UIColor.black
-            objText.textSize = 1.4
-            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
-            tvArr.append(objText)
-        }
+        self.displayContent()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,5 +71,31 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
     @objc func gotoColor(sender: UITapGestureRecognizerWithData) {
         ActVars.colorObject = colorArr[sender.data]
         self.goToVC("settingscolorpicker")
+    }
+
+    private func displayContent() {
+        colorArr.enumerated().forEach {
+            let objText = ObjectTextView(self.stackView, $1.uiLabel, $1)
+            if $1.colorsCurrent.red == 0 && $1.colorsCurrent.green == 0 && $1.colorsCurrent.blue == 0 {
+                objText.color = UIColor.white
+            } else {
+                objText.color = $1.uicolorCurrent
+            }
+            objText.background = UIColor.black
+            objText.textSize = 1.4
+            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
+            tvArr.append(objText)
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
