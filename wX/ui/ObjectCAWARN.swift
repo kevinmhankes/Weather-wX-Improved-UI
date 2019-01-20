@@ -8,8 +8,8 @@ import UIKit
 
 final class ObjectCAWARN: NSObject {
 
-    private let stackView: UIStackView
-    private let uiv: UIViewController
+    private var stackView: UIStackView
+    private var uiv: UIViewController
     private var provCode = "ca"
     var bitmap = Bitmap()
     private var dataAsString = ""
@@ -61,6 +61,11 @@ final class ObjectCAWARN: NSObject {
     ]
 
     init(_ uiv: UIViewController, _ stackView: UIStackView) {
+        self.uiv = uiv
+        self.stackView = stackView
+    }
+    
+    func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv
         self.stackView = stackView
     }

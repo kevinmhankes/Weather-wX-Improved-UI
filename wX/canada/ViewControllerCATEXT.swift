@@ -35,9 +35,7 @@ class ViewControllerCATEXT: UIwXViewController {
                 playlistButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        textView = ObjectTextView(stackView)
-        _ = ObjectCALegal(stackView)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         product = Utility.readPref("CA_TEXT_LASTUSED", product)
         self.getContent()
     }
@@ -46,12 +44,7 @@ class ViewControllerCATEXT: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
-                if self.html == "" {
-                    self.html = "None issused by this office recently."
-                }
-                self.textView.text = self.html
-                self.productButton.title = self.product
-                Utility.writePref("CA_TEXT_LASTUSED", self.product)
+                self.displayContent()
             }
         }
     }
@@ -75,5 +68,27 @@ class ViewControllerCATEXT: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, self.html, self, playlistButton)
+    }
+
+    private func displayContent() {
+        textView = ObjectTextView(stackView)
+        _ = ObjectCALegal(stackView)
+        if self.html == "" {
+            self.html = "None issused by this office recently."
+        }
+        self.textView.text = self.html
+        self.productButton.title = self.product
+        Utility.writePref("CA_TEXT_LASTUSED", self.product)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

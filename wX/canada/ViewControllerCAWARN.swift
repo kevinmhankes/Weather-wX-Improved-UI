@@ -12,13 +12,13 @@ class ViewControllerCAWARN: UIwXViewController {
     var objCAWARN: ObjectCAWARN!
     var provButton = ObjectToolbarIcon()
     var prov = "Canada"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         provButton = ObjectToolbarIcon(title: prov, self, #selector(provClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, provButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.objCAWARN = ObjectCAWARN(self, stackView)
         self.getContent()
     }
@@ -27,8 +27,7 @@ class ViewControllerCAWARN: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objCAWARN.getData()
             DispatchQueue.main.async {
-                self.objCAWARN.showData()
-                self.provButton.title = self.prov + "(" + (self.objCAWARN.count) + ")"
+                self.displayContent()
             }
         }
     }
@@ -59,5 +58,22 @@ class ViewControllerCAWARN: UIwXViewController {
                 self.goToVC("textviewer")
             }
         }
+    }
+
+    private func displayContent() {
+        self.objCAWARN.updateParents(self, stackView)
+        self.objCAWARN.showData()
+        self.provButton.title = self.prov + "(" + (self.objCAWARN.count) + ")"
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
