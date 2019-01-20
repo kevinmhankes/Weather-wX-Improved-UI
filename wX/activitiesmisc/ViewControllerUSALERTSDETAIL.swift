@@ -19,7 +19,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         stackView.spacing = 0
         objAlertDetail = ObjectAlertDetail(stackView)
         self.getContent()
@@ -29,7 +29,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CAPAlert(url: ActVars.usalertsDetailUrl)
             DispatchQueue.main.async {
-                self.objAlertDetail.updateContent(self.cap)
+                self.displayContent()
             }
         }
     }
@@ -40,5 +40,22 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, cap.text.removeHtml())
+    }
+
+    private func displayContent() {
+        self.objAlertDetail.updateContent(self.cap)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.stackView.spacing = 0
+                self.objAlertDetail = ObjectAlertDetail(self.stackView)
+                self.displayContent()
+            }
+        )
     }
 }
