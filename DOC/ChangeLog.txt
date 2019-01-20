@@ -15,6 +15,7 @@
 // TODO move to dedicated RegExp for prepattern like wX(Android)
 // TODO use Apple Maps in SPC Storm reports
 // TODO show Apple Map in settings location edit: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
+// TODO if in landscape and launch wfo/wpctest bottom toolbar icons are strange size
 
 2019_01_20 55300 UIwXVC/wfo - add code to better support rotation
 2019_01_19 55000 playlist - update view after each download
