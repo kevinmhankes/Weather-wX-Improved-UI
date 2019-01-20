@@ -22,12 +22,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySPCFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
-                self.bitmaps.enumerated().forEach {
-                    let imgObject = ObjectImage(self.stackView, $1)
-                    imgObject.addGestureRecognizer(
-                        UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
-                    )
-                }
+                self.displayContent()
             }
         }
     }
@@ -39,5 +34,23 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
+    }
+
+    private func displayContent() {
+        self.bitmaps.enumerated().forEach {
+            let imgObject = ObjectImage(self.stackView, $1)
+            imgObject.addGestureRecognizer(
+                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
+            )
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                self.refreshViews()
+                                self.displayContent()
+        })
     }
 }

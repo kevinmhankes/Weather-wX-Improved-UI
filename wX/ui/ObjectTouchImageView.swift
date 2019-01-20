@@ -22,6 +22,7 @@ final class ObjectTouchImageView {
                 height: UIScreen.main.bounds.height - toolbar.frame.height - UtilityUI.getTopPadding()
             )
         )
+        //print("SIZE:" + String(Float(UIScreen.main.bounds.width)))
         img.contentMode = UIView.ContentMode.scaleAspectFit
         img.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(img)
