@@ -38,6 +38,11 @@ final class ObjectNHC: NSObject {
         self.uiv = uiv
         self.stackView = stackView
     }
+    
+    func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
+        self.uiv = uiv
+        self.stackView = stackView
+    }
 
     func getData() {
         imageUrls.forEach {bitmaps.append(Bitmap($0))}

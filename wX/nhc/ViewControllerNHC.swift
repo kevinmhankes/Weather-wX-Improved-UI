@@ -37,7 +37,7 @@ class ViewControllerNHC: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objNHC?.getData()
             DispatchQueue.main.async {
-                self.objNHC?.showData()
+                self.displayContent()
             }
         }
     }
@@ -81,5 +81,21 @@ class ViewControllerNHC: UIwXViewController {
     @objc func glcfsClicked() {
         ActVars.modelActivitySelected = "GLCFS"
         self.goToVC("modelgeneric")
+    }
+
+    private func displayContent() {
+        self.objNHC?.showData()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.objNHC?.updateParents(self, self.stackView)
+                self.displayContent()
+        }
+        )
     }
 }

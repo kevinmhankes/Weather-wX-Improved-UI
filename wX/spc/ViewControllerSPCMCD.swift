@@ -28,7 +28,7 @@ class ViewControllerSPCMCD: UIwXViewController {
             ActVars.spcMcdNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
 
@@ -51,20 +51,7 @@ class ViewControllerSPCMCD: UIwXViewController {
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
-                if self.bitmaps.count > 0 {
-                    self.bitmaps.enumerated().forEach {
-                        let objImage = ObjectImage(self.stackView, $1)
-                        objImage.addGestureRecognizer(
-                            UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
-                        )
-                    }
-                    if self.bitmaps.count == 1 {
-                        _ = ObjectTextView(self.stackView, self.text)
-                    }
-                } else {
-                    _ = ObjectTextView(self.stackView, "No active SPC MCDs")
-                }
-                self.view.bringSubviewToFront(self.toolbar)
+                self.displayContent()
             }
         }
     }
@@ -84,5 +71,33 @@ class ViewControllerSPCMCD: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, text, self, playListButton)
+    }
+
+    private func displayContent() {
+        if self.bitmaps.count > 0 {
+            self.bitmaps.enumerated().forEach {
+                let objImage = ObjectImage(self.stackView, $1)
+                objImage.addGestureRecognizer(
+                    UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
+                )
+            }
+            if self.bitmaps.count == 1 {
+                _ = ObjectTextView(self.stackView, self.text)
+            }
+        } else {
+            _ = ObjectTextView(self.stackView, "No active SPC MCDs")
+        }
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
