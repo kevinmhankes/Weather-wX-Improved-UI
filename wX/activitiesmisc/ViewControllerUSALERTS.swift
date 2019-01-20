@@ -20,7 +20,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
 
@@ -30,10 +30,7 @@ class ViewControllerUSALERTS: UIwXViewController {
             let alertArr = html.parseColumn("<entry>(.*?)</entry>")
             alertArr.forEach {self.capAlerts.append(CAPAlert(eventTxt: $0))}
             DispatchQueue.main.async {
-                self.filterButton.title = "Tornado/FFW/ThunderStorm"
-                self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts)
-                self.objAlertSummary.changeImage()
-                self.bitmap = self.objAlertSummary.image
+                self.displayContent()
             }
         }
     }
@@ -66,5 +63,23 @@ class ViewControllerUSALERTS: UIwXViewController {
     @objc func imageClicked() {
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
+    }
+    
+    private func displayContent() {
+        self.filterButton.title = "Tornado/FFW/ThunderStorm"
+        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts)
+        self.objAlertSummary.changeImage()
+        self.bitmap = self.objAlertSummary.image
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

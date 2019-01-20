@@ -20,8 +20,8 @@ class ViewControllerTEXTVIEWER: UIwXViewController {
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playlistButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        textView = ObjectTextView(stackView, ActVars.textViewText)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        displayContent()
     }
 
     @objc func playClicked() {
@@ -34,5 +34,20 @@ class ViewControllerTEXTVIEWER: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(ActVars.textViewProduct, ActVars.textViewText, self, playlistButton)
+    }
+
+    private func displayContent() {
+        textView = ObjectTextView(stackView, ActVars.textViewText)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
