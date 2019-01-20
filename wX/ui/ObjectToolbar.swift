@@ -36,7 +36,7 @@ final class ObjectToolbar: UIToolbar {
             )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
-        sizeToFit()
+        //sizeToFit()
         barTintColor = UIColor(
             red: AppColors.primaryColorRed,
             green: AppColors.primaryColorGreen,
