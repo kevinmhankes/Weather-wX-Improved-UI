@@ -43,9 +43,9 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 addButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
-        updateView()
+        displayContent()
     }
 
     @objc override func doneClicked() {
@@ -81,7 +81,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
 
     func addProduct(_ selection: String) {
         homescreenFav.append(selection)
-        updateView()
+        displayContent()
     }
 
     @objc func addImageClicked() {
@@ -116,10 +116,41 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
 
     @objc func setToDefault() {
         homescreenFav = TextUtils.split(MyApplication.homescreenFavDefault, ":")
-        updateView()
+        displayContent()
     }
 
-    func updateView() {
+    @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
+        let index = sender.data
+        let title = sender.strData
+        let alert = ObjectPopUp(self, title, addButton)
+        if index != 0 {
+            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.move(index, .up)}))
+        }
+        if index != (homescreenFav.count - 1) {
+            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.move(index, .down)}))
+        }
+        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {_ in self.delete(selection: index)}))
+        alert.finish()
+    }
+
+    func move(_ from: Int, _ to: MotionType) {
+        var delta = 1
+        if to == .up {
+            delta = -1
+        }
+        let tmp = homescreenFav[from + delta]
+        homescreenFav[from + delta] = homescreenFav[from]
+        homescreenFav[from] = tmp
+        displayContent()
+    }
+
+    // need to keep the label
+    func delete(selection: Int) {
+        homescreenFav.remove(at: selection)
+        displayContent()
+    }
+
+    private func displayContent() {
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         homescreenFav.enumerated().forEach { index, prefVar in
             var title = localChoicesText[prefVar]
@@ -152,34 +183,14 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         }
     }
 
-    @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
-        let index = sender.data
-        let title = sender.strData
-        let alert = ObjectPopUp(self, title, addButton)
-        if index != 0 {
-            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.move(index, .up)}))
-        }
-        if index != (homescreenFav.count - 1) {
-            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.move(index, .down)}))
-        }
-        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {_ in self.delete(selection: index)}))
-        alert.finish()
-    }
-
-    func move(_ from: Int, _ to: MotionType) {
-        var delta = 1
-        if to == .up {
-            delta = -1
-        }
-        let tmp = homescreenFav[from + delta]
-        homescreenFav[from + delta] = homescreenFav[from]
-        homescreenFav[from] = tmp
-        updateView()
-    }
-
-    // need to keep the label
-    func delete(selection: Int) {
-        homescreenFav.remove(at: selection)
-        updateView()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

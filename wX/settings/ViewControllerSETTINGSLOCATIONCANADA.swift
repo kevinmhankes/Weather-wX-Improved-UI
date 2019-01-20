@@ -16,12 +16,17 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     var listIds = [String]()
     var listCity = [String]()
     var statusButton = ObjectToolbarIcon()
+    //var showProv = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        showDisplayProv()
+    }
+
+    func showDisplayProv() {
         UtilityCanada.provList.enumerated().forEach {
             let objText = ObjectTextView(self.stackView, $1)
             self.tvArr.append(objText)
@@ -63,17 +68,40 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
             idTmpAl.forEach {self.listIds.append($0)}
             self.listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
             DispatchQueue.main.async {
-                self.stackView.subviews.forEach { $0.removeFromSuperview() }
-                self.cityDisplay = true
-                self.listCity.enumerated().forEach {
-                    let objText = ObjectTextView(self.stackView, $1)
-                    self.tvArr.append(objText)
-                    objText.addGestureRecognizer(
-                        UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
-                    )
-                    objText.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 3)
-                }
+                self.showDisplayCity()
             }
         }
+    }
+
+    private func showDisplayCity() {
+        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.cityDisplay = true
+        self.listCity.enumerated().forEach {
+            let objText = ObjectTextView(self.stackView, $1)
+            self.tvArr.append(objText)
+            objText.addGestureRecognizer(
+                UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
+            )
+            objText.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 3)
+        }
+    }
+
+    private func displayContent() {
+        if self.cityDisplay {
+            showDisplayCity()
+        } else {
+            showDisplayProv()
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

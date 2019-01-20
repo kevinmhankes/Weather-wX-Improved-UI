@@ -16,8 +16,8 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, addButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        updateView()
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        displayContent()
     }
 
     @objc override func doneClicked() {
@@ -80,7 +80,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             locA.saveLocationToNewSlot(0)
             locB.saveLocationToNewSlot(Location.numLocations-1)
         }
-        updateView()
+        displayContent()
     }
 
     func moveDown(_ position: Int) {
@@ -95,59 +95,54 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             locA.saveLocationToNewSlot(0)
             locB.saveLocationToNewSlot(position)
         }
-        updateView()
+        displayContent()
     }
 
     func deleteLocation(_ position: Int) {
         if Location.numLocations > 1 {
             Location.deleteLocation(String(position + 1))
-            updateView()
+            displayContent()
         }
     }
 
-    func updateView() {
+    func displayContent() {
+        self.stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        ).isActive = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         locations = []
         (0..<Location.numLocations).forEach {
-            
             let locationStr = (String($0+1)
                 + ": \(MyApplication.locations[$0].name) \(MyApplication.locations[$0].lat)"
                 + " \(MyApplication.locations[$0].lon) "
                 + "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
                 + " \(MyApplication.locations[$0].state)")
             locations.append(locationStr)
-            //let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon)"
-            let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"
-            
+            //let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"
             let name = MyApplication.locations[$0].name
             let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) "
             let details = "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
                 + " \(MyApplication.locations[$0].state)"
-            
-           /* let objLocCard = ObjectTextView(
-                stackView,
-                Location.getName($0)
-                    + MyApplication.newline
-                    + latLon
-                    + MyApplication.newline
-                    + off
-            )
-            objLocCard.addGestureRecognizer(
-                UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
-            ) */
-            
             let locationItem = ObjectCardLocationItem(self.stackView, name, latLon, details)
             locationItem.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
             )
-            
-            
-            
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateView()
+        displayContent()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
