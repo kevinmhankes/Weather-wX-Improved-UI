@@ -15,16 +15,15 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     var date = ""
     var imageUrl = ""
     var textUrl = ""
+    var bitmap = Bitmap()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(self.lsrClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, lsrButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView)
-        objDatePicker = ObjectDatePicker(stackView)
-        objDatePicker.datePicker.addTarget(self, action: #selector(self.onDateChanged(sender:)), for: .valueChanged)
-        image = ObjectImage(self.stackView)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        self.displayPreContent()
         self.view.addSubview(toolbar)
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay + ".gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay  + ".csv"
@@ -33,25 +32,12 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(self.imageUrl)
-            bitmap.url = self.imageUrl
+            self.bitmap = Bitmap(self.imageUrl)
+            self.bitmap.url = self.imageUrl
             self.html = self.textUrl.getHtml()
             self.stormReports = UtilitySPCStormReports.processData(self.html.split(MyApplication.newline))
             DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                self.image.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(
-                        target: self,
-                        action: #selector(self.imgClicked(sender:))
-                    )
-                )
-                self.stormReports.enumerated().forEach {
-                    let tv = ObjectTextView(self.stackView, $1.text)
-                    if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {
-                        tv.color = UIColor.blue
-                    }
-                    tv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
-                }
+               self.displayContent()
             }
         }
     }
@@ -99,5 +85,40 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
 
     @objc func lsrClicked() {
         self.goToVC("lsrbywfo")
+    }
+
+    private func displayPreContent() {
+        objDatePicker = ObjectDatePicker(stackView)
+        objDatePicker.datePicker.addTarget(self, action: #selector(self.onDateChanged(sender:)), for: .valueChanged)
+        image = ObjectImage(self.stackView)
+    }
+
+    private func displayContent() {
+        self.image.setBitmap(bitmap)
+        self.image.addGestureRecognizer(
+            UITapGestureRecognizerWithData(
+                target: self,
+                action: #selector(self.imgClicked(sender:))
+            )
+        )
+        self.stormReports.enumerated().forEach {
+            let tv = ObjectTextView(self.stackView, $1.text)
+            if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {
+                tv.color = UIColor.blue
+            }
+            tv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayPreContent()
+                self.displayContent()
+            }
+        )
     }
 }
