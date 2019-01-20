@@ -11,15 +11,23 @@ class ViewControllerOBSSITES: UIwXViewController {
     var capAlerts = [CAPAlert]()
     var filter = ""
     var listCity = [String]()
+    var stateView = true
+    var stateSelected = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         constructStateView()
     }
 
     @objc func gotoState(sender: UITapGestureRecognizerWithData) {
+        stateSelected = GlobalArrays.states[sender.data].split(":")[0]
+        showState()
+    }
+
+    func showState() {
+        stateView = false
         var idTmp = ""
         var cityTmp = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
@@ -29,9 +37,8 @@ class ViewControllerOBSSITES: UIwXViewController {
         listCity.append("..Back to state list")
         listIds.append("..Back to state list")
         var tmpArr = [String]()
-        let provSelected = GlobalArrays.states[sender.data].split(":")[0]
         lines.forEach {
-            if $0.hasPrefix(provSelected.uppercased()) {
+            if $0.hasPrefix(stateSelected.uppercased()) {
                 listSort.append($0)
             }
         }
@@ -64,10 +71,30 @@ class ViewControllerOBSSITES: UIwXViewController {
     }
 
     func constructStateView() {
+        self.stateView = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         GlobalArrays.states.enumerated().forEach {
             let stateTv = ObjectTextView(stackView, $1)
             stateTv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoState(sender:))))
         }
+    }
+
+    private func displayContent() {
+        if stateView {
+            constructStateView()
+        } else {
+            showState()
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+        }
+        )
     }
 }
