@@ -342,11 +342,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @objc func gotoHourly() {
+        UtilityActions.goToVCS(self, "hourly")
+    }
 
     func getCurrentConditionCards(_ stackView: UIStackView) {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
-        let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
-        let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
+        let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
+        let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
         if ccCard == nil {
             ccCard = ObjectCardCC(stackView, objFcst, isUS)
             ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
