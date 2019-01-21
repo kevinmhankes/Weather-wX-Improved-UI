@@ -29,7 +29,10 @@ class ViewControllerWEBVIEW: UIwXViewController {
                 x: 0,
                 y: UtilityUI.getTopPadding(),
                 width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - toolbar.frame.size.height - UtilityUI.getTopPadding()
+                height: UIScreen.main.bounds.height
+                    - toolbar.frame.size.height
+                    - UtilityUI.getTopPadding()
+                    - UtilityUI.getBottomPadding()
             )
         )
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]

@@ -78,14 +78,14 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
     }
-    
+
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, .TAB)
     }
-    
+
     func removeAllViews() {
         self.view.subviews.forEach({ $0.removeFromSuperview() })
     }

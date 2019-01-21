@@ -40,7 +40,7 @@ class ViewControllerHOURLY: UIwXViewController {
     @objc func playClicked() {
         UtilityActions.playClicked(self.html.0, synth, playButton)
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, self.html.0)
     }
