@@ -13,10 +13,14 @@ class ViewControllerOBSSITES: UIwXViewController {
     var listCity = [String]()
     var stateView = true
     var stateSelected = ""
+    var siteButton = ObjectToolbarIcon()
+    let prefToken = "NWS_OBSSITE_LAST_USED"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        siteButton = ObjectToolbarIcon(self, #selector(siteClicked))
+        self.siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         constructStateView()
     }
@@ -62,10 +66,13 @@ class ViewControllerOBSSITES: UIwXViewController {
         if sender.data == 0 {
             constructStateView()
         } else {
+            let site = listCity[sender.data].split(":")[0]
+            Utility.writePref(prefToken, site)
+            self.siteButton.title = "Last Used: " + site
             ActVars.webViewShowProduct = false
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
-                + listCity[sender.data].split(":")[0]
+                + site
             self.goToVC("webview")
         }
     }
@@ -77,6 +84,13 @@ class ViewControllerOBSSITES: UIwXViewController {
             let stateTv = ObjectTextView(stackView, $1)
             stateTv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoState(sender:))))
         }
+    }
+
+    @objc func siteClicked() {
+        ActVars.webViewShowProduct = false
+        ActVars.webViewUseUrl = true
+        ActVars.webViewUrl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
+        self.goToVC("webview")
     }
 
     private func displayContent() {

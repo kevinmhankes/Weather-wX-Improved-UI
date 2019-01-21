@@ -18,6 +18,8 @@
 // TODO BUG in nexrad radar if map open taps still zoom in/out
 
 2019_01_21 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
+		 [BUG] fix layout for webview for iphone X
+		 NWS OBS: add last used
 2019_01_20 55300 UIwXVC/wfo - add code to better support rotation
 2019_01_19 55000 playlist - update view after each download
 	         playlist - add ObjectCardPLayListItem for custom card
