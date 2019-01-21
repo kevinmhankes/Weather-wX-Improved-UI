@@ -692,8 +692,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
+                //self.refreshViews()
+                //self.displayContent()
             }
         )
     }
