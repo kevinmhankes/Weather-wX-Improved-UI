@@ -52,17 +52,17 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         toolbar.resize()
         fab?.resize()
         let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
-        if self.objStackScrollView != nil && self.objStackScrollView!.fragmentHeightConstraint != nil {
-            self.view.removeConstraints(self.objStackScrollView!.fragmentHeightConstraint!)
+        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
+            self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
         }
-        if self.objStackScrollView != nil {
-            self.objStackScrollView!.fragmentHeightConstraint = NSLayoutConstraint.constraints(
+        if self.objScrollStackView != nil {
+            self.objScrollStackView!.fragmentHeightConstraint = NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|-" + topSpace + "-[scrollView]-52-|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: ["scrollView": scrollView]
             )
-            self.view.addConstraints(self.objStackScrollView!.fragmentHeightConstraint!)
+            self.view.addConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
         }
     }
 
@@ -114,10 +114,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
         ).isActive = true
-        if self.objStackScrollView != nil && self.objStackScrollView!.fragmentHeightConstraint != nil {
-            self.view.removeConstraints(self.objStackScrollView!.fragmentHeightConstraint!)
+        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
+            self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
         }
-        self.objStackScrollView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
@@ -676,5 +676,25 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     func ridChanged(_ rid: String) {
         getPolygonWarnings()
         wxMetal[0]!.resetRidAndGet(rid)
+    }
+
+    private func displayContent() {
+        stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        ).isActive = true
+        self.view.addSubview(toolbar)
+        addLocationSelectionCard()
+        getContentMaster()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

@@ -12,7 +12,7 @@ class ViewControllerTABPARENT: UIViewController {
     var stackView = UIStackView()
     var objTileMatrix = ObjectImageTileMatrix()
     var fab: ObjectFab?
-    var objStackScrollView: ObjectScrollStackView?
+    var objScrollStackView: ObjectScrollStackView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class ViewControllerTABPARENT: UIViewController {
             blue: AppColors.primaryColorBlue,
             alpha: CGFloat(1.0)
         )
-        objStackScrollView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
             self.view.addSubview(fab!.view)
@@ -77,5 +77,16 @@ class ViewControllerTABPARENT: UIViewController {
 
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
+    }
+    
+    func refreshViews() {
+        self.removeAllViews()
+        self.scrollView = UIScrollView()
+        self.stackView = UIStackView()
+        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, .TAB)
+    }
+    
+    func removeAllViews() {
+        self.view.subviews.forEach({ $0.removeFromSuperview() })
     }
 }
