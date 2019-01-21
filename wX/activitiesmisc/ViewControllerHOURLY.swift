@@ -13,8 +13,6 @@ class ViewControllerHOURLY: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
 
-    // TODO convert to audip/share setup
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))

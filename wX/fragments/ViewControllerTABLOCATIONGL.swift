@@ -342,7 +342,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     @objc func gotoHourly() {
         UtilityActions.goToVCS(self, "hourly")
     }

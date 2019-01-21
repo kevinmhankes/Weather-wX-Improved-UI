@@ -10,6 +10,10 @@ final class ObjectToolbar: UIToolbar {
 
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        //layer.shadowOpacity = 1.0
+        // TOP layer.shadowOffset = CGSize(width: 0, height: -5)
+        //layer.shadowOffset = CGSize(width: 0, height: 5)
+        //layer.shadowColor = UIColor.lightGray.cgColor
     }
 
     convenience init(_ toolbarType: ToolbarType = .bottom) {
