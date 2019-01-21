@@ -66,7 +66,10 @@ final class UtilityMap {
             x: 0,
             y: UtilityUI.getTopPadding(),
             width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding() - UtilityUI.getTopPadding()
+            height: UIScreen.main.bounds.height
+                - UIPreferences.toolbarHeight
+                - UtilityUI.getBottomPadding()
+                - UtilityUI.getTopPadding()
         )
         mapView.setRegion(coordinateRegion, animated: true)
     }

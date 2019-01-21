@@ -15,7 +15,9 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         super.viewDidLoad()
         addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, addButton]).items
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - UIPreferences.sideSpacing).isActive = true
+        stackView.widthAnchor.constraint(
+            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         displayContent()
     }

@@ -5,16 +5,21 @@
  *****************************************************************************/
 
 import UIKit
+import AVFoundation
 
 class ViewControllerHOURLY: UIwXViewController {
 
     var html = ("", "")
+    var playButton = ObjectToolbarIcon()
+    let synth = AVSpeechSynthesizer()
 
     // TODO convert to audip/share setup
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -30,6 +35,14 @@ class ViewControllerHOURLY: UIwXViewController {
 
     @objc func textAction() {
         scrollView.scrollToTop()
+    }
+
+    @objc func playClicked() {
+        UtilityActions.playClicked(self.html.0, synth, playButton)
+    }
+    
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.share(self, sender, self.html.0)
     }
 
     private func displayContent() {

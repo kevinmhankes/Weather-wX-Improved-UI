@@ -68,4 +68,16 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         self.wfo = (annotationView.annotation!.title!)!
         self.getContent()
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                UtilityMap.setupMap(
+                                    self.mapView,
+                                    GlobalArrays.soundingSites,
+                                    "SND_"
+                                )
+        })
+    }
 }

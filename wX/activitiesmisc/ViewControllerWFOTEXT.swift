@@ -130,12 +130,12 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         UtilityPlayList.add(self.product + self.wfo, self.textView.text, self, playlistButton)
     }
 
-    // FIXME map size is goofed up after rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil,
         completion: { _ -> Void in
             self.refreshViews()
+            UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
             self.textView = ObjectTextView(self.stackView)
             self.textView.text = self.html
         })

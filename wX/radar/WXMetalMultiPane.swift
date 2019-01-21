@@ -49,6 +49,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         paneRange.enumerated().forEach { index, _ in
             self.render(index)
         }
+        coordinator.animate(alongsideTransition: nil,
+                            completion: { _ -> Void in
+                                UtilityMap.setupMap(
+                                    self.mapView,
+                                    GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_"
+                                )
+
+        })
     }
 
     func setPaneSize(_ size: CGSize) {

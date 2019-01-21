@@ -64,7 +64,7 @@ final class ObjectCAWARN: NSObject {
         self.uiv = uiv
         self.stackView = stackView
     }
-    
+
     func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv
         self.stackView = stackView
