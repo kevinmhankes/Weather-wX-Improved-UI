@@ -31,6 +31,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        mapView.addGestureRecognizer(longTapGesture)
         Utility.writePref("LOCATION_CANADA_PROV", "")
         Utility.writePref("LOCATION_CANADA_CITY", "")
         Utility.writePref("LOCATION_CANADA_ID", "")
@@ -204,5 +206,70 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
             saveClicked()
         }
+    }
+
+    @objc func longPress(sender: UIGestureRecognizer) {
+        if sender.state == .began {
+            let locationInView = sender.location(in: mapView)
+            let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            addAnnotation(location: locationOnMap)
+        }
+    }
+
+    func addAnnotation(location: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = String(location.latitude) + "," + String(location.longitude)
+        annotation.subtitle = ""
+        self.mapView.addAnnotation(annotation)
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
+            pinView!.pinTintColor = UIColor.black
+        } else {
+            pinView!.annotation = annotation
+        }
+        return pinView
+    }
+
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("tapped on pin ")
+    }
+
+    func mapView(
+        _ mapView: MKMapView,
+        annotationView view: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl
+    ) {
+        if control == view.rightCalloutAccessoryView {
+            if let locationString = view.annotation?.title! {
+                let locationList = locationString.split(",")
+                saveFromMap(locationList[0], locationList[1])
+            }
+        }
+    }
+
+    func saveFromMap(_ lat: String, _ lon: String) {
+        status = Location.locationSave(
+            numLocsLocalStr,
+            LatLon(lat, lon),
+            labelTextView.view.text!
+        )
+        latTextView.text = lat
+        lonTextView.text = lon
+        statusTextView.text = status
+        view.endEditing(true)
+        let locationC = CLLocationCoordinate2D(
+            latitude: Double(latTextView.view.text!) ?? 0.0,
+            longitude: Double(lonTextView.view.text!) ?? 0.0
+        )
+        UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 }
