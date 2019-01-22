@@ -12,16 +12,10 @@ import UserNotifications
 
 class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    //let labelTextView = UITextView()
-    //let latTextView = UITextView()
-    //let lonTextView = UITextView()
-    //let statusTextView = UITextView()
-
     var labelTextView = ObjectTextView()
     var latTextView = ObjectTextView()
     var lonTextView = ObjectTextView()
     var statusTextView = ObjectTextView()
-
     var status = ""
     var numLocsLocalStr = ""
     let boolean = [String: String]()
@@ -55,32 +49,23 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarBottom)
-        
         labelTextView = ObjectTextView("Label")
         latTextView = ObjectTextView("Lat")
         lonTextView = ObjectTextView("Lon")
         statusTextView = ObjectTextView("")
-        
         var textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
-        //labelTextView.tv.text = "Label"
-        //latTextView.tv.text = "Lat"
-        //lonTextView.tv.text = "Lon"
         textViews.forEach {
             $0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)
             $0.isEditable = true
         }
         textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
         textViews[3].isEditable = false
-        //(0...6).forEach {_ in textViews.append(UITextView())}
-        //let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
         let stackView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
         let viewsDictionary = ["stackView": stackView.view]
-        //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         let stackViewH = NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-20-[stackView]-20-|",
-            //options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             options: .alignAllCenterX,
             metrics: nil,
             views: viewsDictionary
@@ -89,8 +74,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let bottomSpace = String(Int(UIPreferences.toolbarHeight) + Int(Float(UtilityUI.getBottomPadding())))
         let stackViewV = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-" + topSpace + "-[stackView]-" + bottomSpace + "-|",
-            //withVisualFormat: "V:|-70-[stackView]-70-|",
-            //options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             options: .alignAllCenterX,
             metrics: nil,
             views: viewsDictionary
