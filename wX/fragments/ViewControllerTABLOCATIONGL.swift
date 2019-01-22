@@ -272,6 +272,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        objLabel.text = Location.name
         ActVars.vc = self
         Location.checkCurrentLocationValidity()
         if Location.latlon != oldLocation {

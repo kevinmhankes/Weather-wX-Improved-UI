@@ -221,7 +221,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
+            pinView!.rightCalloutAccessoryView = UIButton(type: .contactAdd) // was infoDark
             pinView!.pinTintColor = UIColor.red
         } else {
             pinView!.annotation = annotation
