@@ -213,6 +213,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // TODO use pin or marker?
+        // https://developer.apple.com/documentation/mapkit/mkpointannotation
         guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
         let reuseId = "pin"
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
@@ -246,6 +248,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
 
     func saveFromMap(_ lat: String, _ lon: String) {
         // TODO get street address or city from lat/lon
+        // https://developer.apple.com/documentation/corelocation/converting_between_coordinates_and_user-friendly_place_names
         labelTextView.text = lat + ", " + lon
         status = Location.locationSave(
             numLocsLocalStr,
