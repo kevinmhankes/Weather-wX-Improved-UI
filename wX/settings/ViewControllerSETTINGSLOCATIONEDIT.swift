@@ -222,7 +222,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
-            pinView!.pinTintColor = UIColor.black
+            pinView!.pinTintColor = UIColor.red
         } else {
             pinView!.annotation = annotation
         }
@@ -267,13 +267,13 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
-        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        var center: CLLocationCoordinate2D = CLLocationCoordinate2D()
         let lat: Double = Double(latStr) ?? 0.0
         let lon: Double = Double(lonStr) ?? 0.0
         let ceo: CLGeocoder = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
-        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        let loc: CLLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
         ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) in
                 if error != nil {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
@@ -287,24 +287,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                     //print(pm.thoroughfare)
                     //print(pm.postalCode)
                     //print(pm.subThoroughfare)
-                    /*var addressString: String = ""
-                    if pm.subLocality != nil {
-                        addressString += pm.subLocality! + ", "
-                    }
-                    if pm.thoroughfare != nil {
-                        addressString += pm.thoroughfare! + ", "
-                    }
-                    if pm.locality != nil {
-                        addressString += pm.locality! + ", "
-                    }
-                    if pm.country != nil {
-                        addressString += pm.country! + ", "
-                    }
-                    if pm.postalCode != nil {
-                        addressString += pm.postalCode! + " "
-                    }
-                    returnAddressString = addressString*/
-
                     let locationName: String
                     if pm.locality != nil {
                         locationName = pm.locality!

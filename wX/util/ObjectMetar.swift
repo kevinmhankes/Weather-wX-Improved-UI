@@ -214,6 +214,7 @@ final class ObjectMetar {
             timeOfDay = "day"
         }
         let conditionModified = condition.split(";")[0]
+        print("CONDITION: " + conditionModified)
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
         return "https://api.weather.gov/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
     }

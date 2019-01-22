@@ -115,7 +115,7 @@ final class UtilityMetarConditions {
         "Heavy Freezing Drizzle": "fzra",
         "Freezing Rain in Vicinity": "fzra",
         "Freezing Drizzle in Vicinity": "fzra",
-        "Light Freezing Drizzle, Snow and Mist": "fzra",  // NEW ADD
+        "Light Freezing Drizzle, Snow": "fzra",  // NEW ADD 2019_01_22
 
         "Freezing Rain Rain": "ra_fzra",
         "Light Freezing Rain Rain": "ra_fzra",
