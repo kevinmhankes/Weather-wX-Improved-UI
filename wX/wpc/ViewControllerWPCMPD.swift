@@ -49,18 +49,7 @@ class ViewControllerWPCMPD: UIwXViewController {
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
-                if !self.bitmaps.isEmpty {
-                    self.bitmaps.enumerated().forEach {
-                        let imgObject = ObjectImage(self.stackView, $1)
-                        imgObject.addGestureRecognizer(
-                            UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
-                        )
-                    }
-                    if self.bitmaps.count == 1 {
-                        _ = ObjectTextView(self.stackView, self.text)
-                    }
-                }
-                self.view.bringSubviewToFront(self.toolbar)
+                self.displayContent()
             }
         }
     }
@@ -80,5 +69,31 @@ class ViewControllerWPCMPD: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, text, self, playListButton)
+    }
+
+    private func displayContent() {
+        if !self.bitmaps.isEmpty {
+            self.bitmaps.enumerated().forEach {
+                let imgObject = ObjectImage(self.stackView, $1)
+                imgObject.addGestureRecognizer(
+                    UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
+                )
+            }
+            if self.bitmaps.count == 1 {
+                _ = ObjectTextView(self.stackView, self.text)
+            }
+        }
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

@@ -17,6 +17,7 @@
 		[BUG] if edit location and change name, return to main screen does not show new name
 		add share icon to sun/moon
 		have SPC Storm reports use Apple MapKit
+		add support for WPC MPD screen rotation
 2019_01_22 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
 		 [BUG] fix layout for webview for iphone X
 		 NWS OBS: add last used

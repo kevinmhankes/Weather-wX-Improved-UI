@@ -91,7 +91,7 @@ final class UtilityMap {
         annotation.coordinate = location
         mapView.addAnnotation(annotation)
     }
-    
+
     static func centerMapForMapKit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
         let coordinateRegion = MKCoordinateRegion(
             center: location,
