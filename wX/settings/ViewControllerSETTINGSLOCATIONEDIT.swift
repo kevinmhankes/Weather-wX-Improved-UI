@@ -12,10 +12,16 @@ import UserNotifications
 
 class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    let labelTextView = UITextView()
-    let latTextView = UITextView()
-    let lonTextView = UITextView()
-    let statusTextView = UITextView()
+    //let labelTextView = UITextView()
+    //let latTextView = UITextView()
+    //let lonTextView = UITextView()
+    //let statusTextView = UITextView()
+    
+    var labelTextView = ObjectTextView()
+    var latTextView = ObjectTextView()
+    var lonTextView = ObjectTextView()
+    var statusTextView = ObjectTextView()
+    
     var status = ""
     var numLocsLocalStr = ""
     let boolean = [String: String]()
@@ -47,15 +53,25 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarBottom)
-        var textViews = [labelTextView, latTextView, lonTextView, statusTextView]
-        labelTextView.text = "Label"
-        latTextView.text = "Lat"
-        lonTextView.text = "Lon"
-        textViews.forEach {$0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)}
+        
+        labelTextView = ObjectTextView("Label")
+        latTextView = ObjectTextView("Lat")
+        lonTextView = ObjectTextView("Lon")
+        statusTextView = ObjectTextView("")
+        
+        var textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
+        //labelTextView.tv.text = "Label"
+        //latTextView.tv.text = "Lat"
+        //lonTextView.tv.text = "Lon"
+        textViews.forEach {
+            $0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)
+            $0.isEditable = true
+        }
         textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
+        textViews[3].isEditable = false
         //(0...6).forEach {_ in textViews.append(UITextView())}
         //let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
-        let stackView = ObjectStackView(.fillEqually, .vertical, 0, arrangedSubviews: textViews + [mapView])
+        let stackView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
         let viewsDictionary = ["stackView": stackView.view]
@@ -103,10 +119,16 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     @objc func saveClicked() {
         status = Location.locationSave(
             numLocsLocalStr,
-            LatLon(latTextView.text!, lonTextView.text!),
-            labelTextView.text!
+            LatLon(latTextView.view.text!, lonTextView.view.text!),
+            labelTextView.view.text!
         )
         statusTextView.text = status
+        view.endEditing(true)
+        let locationC = CLLocationCoordinate2D(
+            latitude: Double(latTextView.view.text!) ?? 0.0,
+            longitude: Double(lonTextView.view.text!) ?? 0.0
+        )
+        UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
     @objc func deleteClicked() {
@@ -125,7 +147,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
             let textField = alert.textFields![0]
             self.searchAddress(textField.text!)
-            self.labelTextView.text = textField.text?.capitalized
+            self.labelTextView.view.text = textField.text?.capitalized
         }))
         self.present(alert, animated: true, completion: nil)
     }
