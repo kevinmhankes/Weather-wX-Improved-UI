@@ -247,8 +247,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func saveFromMap(_ locationName: String, _ lat: String, _ lon: String) {
-        // TODO get street address or city from lat/lon
-        // https://developer.apple.com/documentation/corelocation/converting_between_coordinates_and_user-friendly_place_names
         labelTextView.text = locationName
         status = Location.locationSave(
             numLocsLocalStr,

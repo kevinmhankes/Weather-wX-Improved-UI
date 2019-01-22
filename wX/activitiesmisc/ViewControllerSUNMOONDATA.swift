@@ -13,18 +13,21 @@ class ViewControllerSUNMOONDATA: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
 
-    // TODO add share button
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         displayContent()
     }
 
     @objc func playClicked() {
         UtilityActions.playClicked(textView.view, synth, playButton)
+    }
+
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.share(self, sender, textView.text)
     }
 
     private func displayContent() {
