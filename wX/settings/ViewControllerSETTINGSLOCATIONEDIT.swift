@@ -245,6 +245,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func saveFromMap(_ lat: String, _ lon: String) {
+        // TODO get street address or city from lat/lon
+        labelTextView.text = lat + ", " + lon
         status = Location.locationSave(
             numLocsLocalStr,
             LatLon(lat, lon),

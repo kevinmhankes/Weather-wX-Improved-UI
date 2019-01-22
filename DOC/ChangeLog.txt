@@ -15,6 +15,7 @@
 // TODO use Apple Maps in SPC Storm reports
 // TODO show Apple Map in settings location edit: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
 // TODO BUG in nexrad radar if map open taps still zoom in/out
+// TODO BUG if rename location on return to main screen label is not updated
 
 2019_01_21 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
 		 [BUG] fix layout for webview for iphone X
