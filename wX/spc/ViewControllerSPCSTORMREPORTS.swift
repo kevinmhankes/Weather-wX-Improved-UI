@@ -52,14 +52,18 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     }
 
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
-        ActVars.webViewShowProduct = false
+        /*ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
         ActVars.webViewUrl = UtilityMap.genMapURL(
             self.stormReports[sender.data].lat,
             self.stormReports[sender.data].lon,
             "10"
         )
-        self.goToVC("webview")
+        self.goToVC("webview")*/
+        ActVars.mapKitLat = self.stormReports[sender.data].lat
+        ActVars.mapKitLon = self.stormReports[sender.data].lon
+        ActVars.mapKitRadius = 20000.0
+        self.goToVC("mapkitview")
     }
 
     @objc func onDateChanged(sender: UIDatePicker) {

@@ -91,6 +91,27 @@ final class UtilityMap {
         annotation.coordinate = location
         mapView.addAnnotation(annotation)
     }
+    
+    static func centerMapForMapKit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
+        mapView.frame = CGRect(
+            x: 0,
+            y: UtilityUI.getTopPadding(),
+            width: UIScreen.main.bounds.width,
+            height: UIScreen.main.bounds.height
+                - UIPreferences.toolbarHeight
+                - UtilityUI.getBottomPadding()
+                - UtilityUI.getTopPadding()
+        )
+        mapView.setRegion(coordinateRegion, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        mapView.addAnnotation(annotation)
+    }
 
     static func mapView(_ mapView: MKMapView, _ annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseIdentifier = "pin"

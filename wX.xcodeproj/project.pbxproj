@@ -47,6 +47,7 @@
 		037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */; };
 		0382B26A1FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */; };
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
+		03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */; };
 		039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039795B62032D7C100F37CCE /* ObjectMetar.swift */; };
 		0399A14A21CFD3BB0096ECFB /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14321CFD3B90096ECFB /* FloatyViewController.swift */; };
 		0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */; };
@@ -408,6 +409,7 @@
 		037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalBuffers.swift; sourceTree = "<group>"; };
 		0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInputOutput.swift; sourceTree = "<group>"; };
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
+		03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMAPKITVIEW.swift; sourceTree = "<group>"; };
 		039795B62032D7C100F37CCE /* ObjectMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetar.swift; sourceTree = "<group>"; };
 		0399A14321CFD3B90096ECFB /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
 		0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
@@ -1263,6 +1265,7 @@
 				F011E6141DB03E25006531FD /* ViewControllerIMAGEVIEWER.swift */,
 				F03F6FA71E0D3D0C00E4B7FA /* ViewControllerLIGHTNING.swift */,
 				F0F7760D1E0014610022484C /* ViewControllerLSRbyWFO.swift */,
+				03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */,
 				F011E6121DB03D7F006531FD /* ViewControllerOBSERVATIONS.swift */,
 				F085F4081DC5615600477188 /* ViewControllerOBSSITES.swift */,
 				F0F942851DBBE0E100D30E36 /* ViewControllerOPC.swift */,
@@ -1747,6 +1750,7 @@
 				F05806751DB187FB009E2786 /* ImageScrollView.swift in Sources */,
 				F06B98D31E0EAD1800EFF7FC /* UtilityCanadaHourly.swift in Sources */,
 				F0B335AB1DA3FD960035BD36 /* UtilityImgAnim.swift in Sources */,
+				03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */,
 				F011E61A1DB03E25006531FD /* ViewControllerNWSMOSAIC.swift in Sources */,
 				F0A1EDBF1DC0F09F000BDE46 /* ViewControllerNHCGOES.swift in Sources */,
 				037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */,

@@ -40,4 +40,7 @@ class ActVars {
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()
     static var vc = UIViewController()
+    static var mapKitLat = ""
+    static var mapKitLon = ""
+    static var mapKitRadius = 0.0
 }
