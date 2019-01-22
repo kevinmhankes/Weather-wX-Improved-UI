@@ -16,12 +16,12 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     //let latTextView = UITextView()
     //let lonTextView = UITextView()
     //let statusTextView = UITextView()
-    
+
     var labelTextView = ObjectTextView()
     var latTextView = ObjectTextView()
     var lonTextView = ObjectTextView()
     var statusTextView = ObjectTextView()
-    
+
     var status = ""
     var numLocsLocalStr = ""
     let boolean = [String: String]()
