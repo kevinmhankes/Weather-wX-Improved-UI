@@ -17,7 +17,12 @@
 // TODO BUG in nexrad radar if map open taps still zoom in/out
 // TODO BUG if rename location on return to main screen label is not updated
 
-2019_01_21 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
+2019_01_22 55500 
+
+store summary:
+More fixes in layout for iPhone X/XS/XR. Better support for auto-rotation in most views. NWS Observations now has a button on toolbar to access last viewed site. Preliminary mapping support in locatione editor (long press on map to drop pin). Add ability to share hourly content. On main screen current conditions text, tap to access hourly. Tap current conditions icon to access shortcut menu.
+
+2019_01_22 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
 		 [BUG] fix layout for webview for iphone X
 		 NWS OBS: add last used
 		 LOC FRAG: change tap on CC text goto hourly
