@@ -200,9 +200,14 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func addAnnotation(location: CLLocationCoordinate2D) {
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        let latlonTruncateLength = 9
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = String(location.latitude) + "," + String(location.longitude)
+        annotation.title = String(location.latitude).truncate(latlonTruncateLength)
+            + ","
+            + String(location.longitude).truncate(latlonTruncateLength)
         annotation.subtitle = ""
         self.mapView.addAnnotation(annotation)
     }
