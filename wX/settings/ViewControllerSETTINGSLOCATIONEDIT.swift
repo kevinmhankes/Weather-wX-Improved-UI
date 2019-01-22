@@ -241,15 +241,15 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         if control == view.rightCalloutAccessoryView {
             if let locationString = view.annotation?.title! {
                 let locationList = locationString.split(",")
-                saveFromMap(locationList[0], locationList[1])
+                getAddressAndSaveLocation(locationList[0], locationList[1])
             }
         }
     }
 
-    func saveFromMap(_ lat: String, _ lon: String) {
+    func saveFromMap(_ locationName: String, _ lat: String, _ lon: String) {
         // TODO get street address or city from lat/lon
         // https://developer.apple.com/documentation/corelocation/converting_between_coordinates_and_user-friendly_place_names
-        labelTextView.text = lat + ", " + lon
+        labelTextView.text = locationName
         status = Location.locationSave(
             numLocsLocalStr,
             LatLon(lat, lon),
@@ -264,5 +264,55 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             longitude: Double(lonTextView.view.text!) ?? 0.0
         )
         UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
+    }
+
+    func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = Double(latStr) ?? 0.0
+        let lon: Double = Double(lonStr) ?? 0.0
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) in
+                if error != nil {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    //print(pm.country)
+                    //print(pm.locality)
+                    //print(pm.subLocality)
+                    //print(pm.thoroughfare)
+                    //print(pm.postalCode)
+                    //print(pm.subThoroughfare)
+                    /*var addressString: String = ""
+                    if pm.subLocality != nil {
+                        addressString += pm.subLocality! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString += pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString += pm.locality! + ", "
+                    }
+                    if pm.country != nil {
+                        addressString += pm.country! + ", "
+                    }
+                    if pm.postalCode != nil {
+                        addressString += pm.postalCode! + " "
+                    }
+                    returnAddressString = addressString*/
+
+                    let locationName: String
+                    if pm.locality != nil {
+                        locationName = pm.locality!
+                    } else {
+                        locationName = "Location"
+                    }
+                    self.saveFromMap(locationName, latStr, lonStr)
+                }
+        })
     }
 }
