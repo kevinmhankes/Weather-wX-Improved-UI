@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import UserNotifications
 
-class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDelegate {
+class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     let labelTextView = UITextView()
     let latTextView = UITextView()
@@ -20,9 +20,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     var numLocsLocalStr = ""
     let boolean = [String: String]()
     let locationManager = CLLocationManager()
+    let mapView = MKMapView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         Utility.writePref("LOCATION_CANADA_PROV", "")
         Utility.writePref("LOCATION_CANADA_CITY", "")
         Utility.writePref("LOCATION_CANADA_ID", "")
@@ -53,7 +55,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
         //(0...6).forEach {_ in textViews.append(UITextView())}
         //let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
-        let stackView = ObjectStackView(.fillEqually, .vertical, 5, arrangedSubviews: textViews)
+        let stackView = ObjectStackView(.fillEqually, .vertical, 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
         let viewsDictionary = ["stackView": stackView.view]
@@ -85,6 +87,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             labelTextView.text = Location.getName(locIdx)
             latTextView.text = MyApplication.locations[locIdx].lat
             lonTextView.text = MyApplication.locations[locIdx].lon
+            let locationC = CLLocationCoordinate2D(
+                latitude: Double(MyApplication.locations[locIdx].lat) ?? 0.0,
+                longitude: Double(MyApplication.locations[locIdx].lon) ?? 0.0
+            )
+            UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
         }
     }
 

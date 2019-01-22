@@ -9,8 +9,7 @@
 // TODO test text in main screen radar
 // TODO add share to hourly
 // TODO text prod QPFPFD is showing HTML font tag
-// TODO enhance formatting in playlist to match android
-// TODO enhance formatting in settings->locations to match android
+// TODO add FAB in playlist , models, settings-location, location edit
 // TODO handle screen rotation better via viewWillTransition()
 // TODO move to dedicated RegExp for prepattern like wX(Android)
 // TODO use Apple Maps in SPC Storm reports
@@ -21,6 +20,8 @@
 		 [BUG] fix layout for webview for iphone X
 		 NWS OBS: add last used
 		 LOC FRAG: change tap on CC text goto hourly
+		 [BUG] nexrad radar: if map open single tap also zooms out radar
+		 add apple map in locations setting (WIP)
 2019_01_20 55300 UIwXVC/wfo - add code to better support rotation
 2019_01_19 55000 playlist - update view after each download
 	         playlist - add ObjectCardPLayListItem for custom card

@@ -352,7 +352,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
+        if !mapShown {
+            WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
+        }
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
