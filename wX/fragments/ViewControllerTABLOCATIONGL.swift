@@ -684,12 +684,23 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     private func displayContent() {
+        self.view.addSubview(toolbar)
+        stackView = UIStackView()
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        ).isActive = true
-        self.view.addSubview(toolbar)
+            ).isActive = true
+        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
+            self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
+        }
+        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+        self.stackViewForecast = ObjectStackView(.fill, .vertical)
+        self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        self.objCard7DayCollection = nil
+        self.ccCard = nil
+        fab?.resize()
         addLocationSelectionCard()
-        getContentMaster()
+        self.getContentMaster()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -697,8 +708,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                //self.refreshViews()
-                //self.displayContent()
+                self.refreshViews()
+                self.displayContent()
             }
         )
     }
