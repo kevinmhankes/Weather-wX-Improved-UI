@@ -683,6 +683,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         wxMetal[0]!.resetRidAndGet(rid)
     }
 
+    // TODO use this in main code
     private func displayContent() {
         self.view.addSubview(toolbar)
         stackView = UIStackView()
@@ -698,7 +699,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         self.objCard7DayCollection = nil
         self.ccCard = nil
-        fab?.resize()
         addLocationSelectionCard()
         self.getContentMaster()
     }

@@ -84,6 +84,10 @@ class ViewControllerTABPARENT: UIViewController {
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, .TAB)
+        if UIPreferences.mainScreenRadarFab {
+            fab = ObjectFab(self, #selector(radarClicked))
+            self.view.addSubview(fab!.view)
+        }
     }
 
     func removeAllViews() {
