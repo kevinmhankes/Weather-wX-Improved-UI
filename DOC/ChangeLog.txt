@@ -18,6 +18,7 @@
 		add share icon to sun/moon
 		have SPC Storm reports use Apple MapKit
 		add support for WPC MPD screen rotation
+		SPC MCD - add text to share
 2019_01_22 55400 fixes in rotation/map and add share/play to various vcs ( like hourly )
 		 [BUG] fix layout for webview for iphone X
 		 NWS OBS: add last used

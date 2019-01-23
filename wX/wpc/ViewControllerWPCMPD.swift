@@ -85,7 +85,7 @@ class ViewControllerWPCMPD: UIwXViewController {
         }
         self.view.bringSubviewToFront(self.toolbar)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

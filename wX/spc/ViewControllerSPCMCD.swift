@@ -62,7 +62,7 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps)
+        UtilityShare.shareImage(self, sender, bitmaps, text)
     }
 
     @objc func playClicked() {
