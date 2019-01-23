@@ -14,11 +14,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     let snMpd = SevereNotice("mpd")
     var bm = Bitmap()
 
-    // TODO add share icon
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -84,6 +83,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
         ActVars.spcStormReportsDay = "today"
         self.goToVC("spcstormreports")
+    }
+    
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, [self.bm] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
 
     private func displayContent() {

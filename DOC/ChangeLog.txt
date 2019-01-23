@@ -8,9 +8,11 @@
 // TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
-// TODO add FAB in playlist , models, settings-location, location edit
+// TODO add FAB in playlist, settings-location
 // TODO move to dedicated RegExp for prepattern like wX(Android)
 
+2019_01_23 55600 more work on apple map in location edit
+		 severe dashboard - add share option
 2019_01_23 55500 more work on apple map in location edit
 		 add missing nws icon for winter conditions
 		[BUG] if edit location and change name, return to main screen does not show new name
