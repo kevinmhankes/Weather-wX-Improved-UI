@@ -44,7 +44,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     let numberOfPanes = 1
     var textObj = WXMetalTextObject()
     var longPressCount = 0
-    //let sideSpacing: CGFloat = 10.0
     var toolbar = ObjectToolbar(.top)
 
     override func viewDidLayoutSubviews() {
@@ -109,7 +108,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 ]
             ).items
         }
-        self.view.addSubview(toolbar)
+        self.displayContent()
+
+        /*self.view.addSubview(toolbar)
         stackView = UIStackView()
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
@@ -122,7 +123,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         addLocationSelectionCard()
-        self.getContentMaster()
+        self.getContentMaster()*/
     }
 
     func getContentMaster() {

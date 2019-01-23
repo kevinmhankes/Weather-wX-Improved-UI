@@ -22,6 +22,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         UtilityModelSPCHREFInterface.labels
     )
     var modelObj = ObjectModel()
+    var fabLeft: ObjectFab?
+    var fabRight: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,22 +72,27 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(self.timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(self.doneClicked))
-        let leftButton = ObjectToolbarIcon(self, .leftArrow, #selector(self.leftClicked))
-        let rightButton = ObjectToolbarIcon(self, .rightArrow, #selector(self.rightClicked))
+        //let leftButton = ObjectToolbarIcon(self, .leftArrow, #selector(self.leftClicked))
+        //let rightButton = ObjectToolbarIcon(self, .rightArrow, #selector(self.rightClicked))
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
                 flexBarButton,
                 productButton,
-                timeButton,
-                leftButton,
-                rightButton
+                timeButton
+                //leftButton,
+                //rightButton
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
+        fabLeft = ObjectFab(self, "ic_keyboard_arrow_left_24dp", #selector(leftClicked))
+        fabRight = ObjectFab(self, "ic_keyboard_arrow_right_24dp", #selector(rightClicked))
+        fabLeft?.setToTheLeft()
+        self.view.addSubview(fabLeft!.view)
+        self.view.addSubview(fabRight!.view)
         modelObj = ObjectModel(ActVars.modelActivitySelected)
         modelObj.setButtons(productButton, sectorButton, runButton, timeButton, statusButton, modelButton)
         self.setupModel()
@@ -195,11 +202,13 @@ class ViewControllerMODELGENERIC: UIwXViewController {
 
     @objc func leftClicked() {
         modelObj.leftClick()
+        fabLeft?.close()
         getContent()
     }
 
     @objc func rightClicked() {
         modelObj.rightClick()
+        fabRight?.close()
         getContent()
     }
 
