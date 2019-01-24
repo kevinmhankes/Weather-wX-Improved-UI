@@ -108,9 +108,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 ]
             ).items
         }
-        self.displayContent()
+        //self.displayContent()
 
-        /*self.view.addSubview(toolbar)
+        self.view.addSubview(toolbar)
         stackView = UIStackView()
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
@@ -123,7 +123,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         addLocationSelectionCard()
-        self.getContentMaster()*/
+        self.getContentMaster()
     }
 
     func getContentMaster() {
