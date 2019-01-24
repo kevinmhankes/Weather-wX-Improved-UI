@@ -9,6 +9,7 @@
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO storm reports - use custom card
+// TODO generic test view has a playlist save?
 
 2019_01_24 55600 more work on apple map in location edit
 		 severe dashboard - add share option
