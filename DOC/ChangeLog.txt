@@ -17,6 +17,7 @@
 		 model generic - truncate product button less
 		[BUG] backout locfrag screen rotation code as 7day not always showing
 		[BUG] fix radar mosaic in homescreen
+		add spotters back in
 2019_01_23 55500 more work on apple map in location edit
 		 add missing nws icon for winter conditions
 		[BUG] if edit location and change name, return to main screen does not show new name

@@ -69,6 +69,10 @@
 		03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
 		03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */; };
+		03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */; };
+		03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */; };
+		03FF8F8221FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F8021FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift */; };
+		03FF8F8321FA72D800661F78 /* ViewControllerSPOTTERS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F8121FA72D800661F78 /* ViewControllerSPOTTERS.swift */; };
 		F0008EF81DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */; };
 		F0008EFA1DBD9DC00033B950 /* ViewControllerNHCSTORM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0008EF91DBD9DC00033B950 /* ViewControllerNHCSTORM.swift */; };
 		F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */; };
@@ -432,6 +436,10 @@
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
 		03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNwsIcon.swift; sourceTree = "<group>"; };
+		03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterCard.swift; sourceTree = "<group>"; };
+		03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterReportCard.swift; sourceTree = "<group>"; };
+		03FF8F8021FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSPOTTERREPORTS.swift; sourceTree = "<group>"; };
+		03FF8F8121FA72D800661F78 /* ViewControllerSPOTTERS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSPOTTERS.swift; sourceTree = "<group>"; };
 		F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithData.swift; sourceTree = "<group>"; };
 		F0008EF91DBD9DC00033B950 /* ViewControllerNHCSTORM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNHCSTORM.swift; sourceTree = "<group>"; };
 		F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3WindBarbs.swift; sourceTree = "<group>"; };
@@ -1140,6 +1148,8 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
+				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1252,6 +1262,8 @@
 		F09CCCEA1E15C73100A8DBA7 /* activitiesmisc */ = {
 			isa = PBXGroup;
 			children = (
+				03FF8F8021FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift */,
+				03FF8F8121FA72D800661F78 /* ViewControllerSPOTTERS.swift */,
 				F0F28D821DB987400020AD08 /* CAPAlert.swift */,
 				F0B3350C1DA3FD1C0035BD36 /* SevereNotice.swift */,
 				F0B3355D1DA3FD6F0035BD36 /* SevereWarning.swift */,
@@ -1573,6 +1585,7 @@
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				F05383871EDFA83400B1DDEC /* ObjectNHC.swift in Sources */,
 				F0B335E61DA3FDA70035BD36 /* UtilityPref4.swift in Sources */,
+				03FF8F8321FA72D800661F78 /* ViewControllerSPOTTERS.swift in Sources */,
 				F04378BF1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift in Sources */,
 				F0DAD9371DA7018D00C2BD4B /* decompress.c in Sources */,
 				F0DAD9331DA7018D00C2BD4B /* randtable.c in Sources */,
@@ -1610,6 +1623,7 @@
 				F098F7891E4F8923007EDD2A /* UtilityUSv2.swift in Sources */,
 				F0F761C51DC20BD500F71A5F /* ViewControllerPLAYLIST.swift in Sources */,
 				0358E22B1F49E65D00397017 /* ViewControllerGOES16.swift in Sources */,
+				03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */,
 				F08623391DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift in Sources */,
 				F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */,
 				F0B335AA1DA3FD960035BD36 /* UtilityImg.swift in Sources */,
@@ -1670,6 +1684,7 @@
 				F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */,
 				F0B335B61DA3FD960035BD36 /* UtilityModelNCEPInterface.swift in Sources */,
 				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,
+				03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */,
 				F011E61B1DB03E25006531FD /* ViewControllerTEXTVIEWER.swift in Sources */,
 				F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */,
 				F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */,
@@ -1691,6 +1706,7 @@
 				F03B74D71DD2BC0100727969 /* ViewControllerTABLOCATIONGL.swift in Sources */,
 				031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */,
 				F0F7760E1E0014610022484C /* ViewControllerLSRbyWFO.swift in Sources */,
+				03FF8F8221FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift in Sources */,
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
 				F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */,
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,

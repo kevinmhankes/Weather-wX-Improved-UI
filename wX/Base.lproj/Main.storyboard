@@ -335,6 +335,42 @@
             </objects>
             <point key="canvasLocation" x="9046" y="468"/>
         </scene>
+        <!--View ControllerSPOTTERS-->
+        <scene sceneID="55i-ER-R0a">
+            <objects>
+                <viewController storyboardIdentifier="spotters" id="cjS-va-JXy" customClass="ViewControllerSPOTTERS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f8n-Ov-cuL"/>
+                        <viewControllerLayoutGuide type="bottom" id="irn-7G-Cce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LlR-nv-OA6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9F-yN-eGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10620" y="425"/>
+        </scene>
+        <!--View ControllerSPOTTERREPORTS-->
+        <scene sceneID="phy-HI-OK4">
+            <objects>
+                <viewController storyboardIdentifier="spotterreports" id="ebz-oL-8sJ" customClass="ViewControllerSPOTTERREPORTS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kUf-5f-qYx"/>
+                        <viewControllerLayoutGuide type="bottom" id="dCa-KU-2fJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mgb-vY-QaX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTc-bT-k53" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11490" y="425"/>
+        </scene>
         <!--View ControllerSETTINGSRADAR-->
         <scene sceneID="Q37-dl-4yn">
             <objects>

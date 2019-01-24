@@ -145,6 +145,7 @@ final class UtilityActions {
             "Soundings",
             "Sun / Moon",
             "PlayList",
+            "Spotters",
             "Settings",
             "Help Mode - Off"
         ]
