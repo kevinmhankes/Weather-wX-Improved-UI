@@ -37,7 +37,7 @@ final public class ObjectModel {
     private var prodButton = ObjectToolbarIcon()
     private var statusButton = ObjectToolbarIcon()
     private var modelButton = ObjectToolbarIcon()
-    let productButtonTruncate = 16
+    let productButtonTruncate = 18
 
     var time: String {
         return self.timeStr.split(" ")[0]
