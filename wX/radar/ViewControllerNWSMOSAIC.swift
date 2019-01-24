@@ -33,7 +33,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         if ActVars.nwsMosaicType == "local" {
             ActVars.nwsMosaicType = ""
             isLocal = true
-            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(getStateFromRid())
+            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(UtilityUSImgNWSMosaic.getStateFromRid())
             index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent(index)
@@ -91,10 +91,6 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
                 self.image.startAnimating(animDrawable)
             }
         }
-    }
-
-    func getStateFromRid() -> String {
-        return Utility.readPref("RID_LOC_" + Location.rid, "").split(",")[0]
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {

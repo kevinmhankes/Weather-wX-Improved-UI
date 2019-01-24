@@ -120,6 +120,18 @@ class UtilityUSImgNWSMosaic {
         return Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif")
     }
 
+    static func getStateFromRid() -> String {
+        return Utility.readPref("RID_LOC_" + Location.rid, "").split(",")[0]
+    }
+
+    static func getLocalRadarMosaic() -> Bitmap {
+        let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(
+            UtilityUSImgNWSMosaic.getStateFromRid()
+        )
+        let index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
+        return UtilityUSImgNWSMosaic.get(UtilityUSImgNWSMosaic.sectors[index])
+    }
+
     static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
         var sectorUrl = ""
         if sector == "latest" {

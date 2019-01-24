@@ -224,7 +224,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "RAD_2KM":
             needsBitmap = false
-            bitmap = Bitmap()
+            bitmap = UtilityUSImgNWSMosaic.getLocalRadarMosaic()
         case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
         case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
         case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"

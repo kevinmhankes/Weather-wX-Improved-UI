@@ -684,7 +684,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         wxMetal[0]!.resetRidAndGet(rid)
     }
 
-    private func displayContent() {
+    /*private func displayContent() {
         self.view.addSubview(toolbar)
         stackView = UIStackView()
         stackView.widthAnchor.constraint(
@@ -712,5 +712,5 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }
