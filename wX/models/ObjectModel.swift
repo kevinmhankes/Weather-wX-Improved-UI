@@ -37,6 +37,7 @@ final public class ObjectModel {
     private var prodButton = ObjectToolbarIcon()
     private var statusButton = ObjectToolbarIcon()
     private var modelButton = ObjectToolbarIcon()
+    let productButtonTruncate = 16
 
     var time: String {
         return self.timeStr.split(" ")[0]
@@ -178,7 +179,7 @@ final public class ObjectModel {
         sectorButton.title = sector
         runButton.title = run
         timeButton.title = timeStr
-        prodButton.title = param.truncate(10)
+        prodButton.title = param.truncate(productButtonTruncate)
     }
 
     func setButtons(
@@ -198,7 +199,7 @@ final public class ObjectModel {
         sectorButton.title = sector
         runButton.title = run
         timeButton.title = timeStr
-        prodButton.title = param.truncate(10)
+        prodButton.title = param.truncate(productButtonTruncate)
         modelButton.title = model
     }
 
@@ -441,7 +442,7 @@ final public class ObjectModel {
             if self.paramArr.count > 0 {
                 self.param = self.paramArr[0]
             }
-            self.prodButton.title = self.param.truncate(10)
+            self.prodButton.title = self.param.truncate(productButtonTruncate)
         }
     }
 
@@ -544,7 +545,7 @@ final public class ObjectModel {
 
     func setParam(_ paramIdx: Int) {
         self.param = paramArr[paramIdx]
-        self.prodButton.title = param.truncate(10)
+        self.prodButton.title = param.truncate(productButtonTruncate)
         if self.modelName == "SSEO" {
             setModelVars(self.modelName)
         }
@@ -552,7 +553,7 @@ final public class ObjectModel {
 
     func setParam(_ param: String) {
         self.param = param
-        self.prodButton.title = param.truncate(10)
+        self.prodButton.title = param.truncate(productButtonTruncate)
         if self.modelName == "SSEO" {
             setModelVars(self.modelName)
         }

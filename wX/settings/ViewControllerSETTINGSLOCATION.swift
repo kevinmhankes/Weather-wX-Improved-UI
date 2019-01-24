@@ -8,17 +8,20 @@ import UIKit
 
 class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
-    var addButton = ObjectToolbarIcon()
+    //var addButton = ObjectToolbarIcon()
     var locations = [String]()
+    var fab: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, addButton]).items
+        //addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
         ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        fab = ObjectFab(self, ObjectToolbarIcon.iconToString[.plus]!, #selector(addClicked))
+        self.view.addSubview(fab!.view)
         displayContent()
     }
 
@@ -34,7 +37,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
         let locName = MyApplication.locations[sender.data].name
-        let alert = ObjectPopUp(self, locName, addButton)
+        let alert = ObjectPopUp(self, locName, flexBarButton)
         alert.addAction(
             UIAlertAction(
                 title: "Edit \"" + locName + "\"",
@@ -143,6 +146,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
+                self.view.addSubview(self.fab!.view)
                 self.displayContent()
             }
         )

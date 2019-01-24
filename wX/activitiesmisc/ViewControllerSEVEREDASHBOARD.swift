@@ -84,7 +84,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         ActVars.spcStormReportsDay = "today"
         self.goToVC("spcstormreports")
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, [self.bm] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }

@@ -684,7 +684,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         wxMetal[0]!.resetRidAndGet(rid)
     }
 
-    // TODO use this in main code
     private func displayContent() {
         self.view.addSubview(toolbar)
         stackView = UIStackView()
