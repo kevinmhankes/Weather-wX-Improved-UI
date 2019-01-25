@@ -8,15 +8,13 @@ import UIKit
 
 final class ObjectSpotterCard {
 
-    //private let sV = ObjectCardStackView()
     let sV: ObjectCardStackView
 
     init(_ stackView: UIStackView, _ spotter: Spotter) {
-       // UtilityUI.setupStackViewForCard(sV)
         var textViews = [ObjectTextView]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
         let sV2 = ObjectStackView(.fill, .vertical, 0)
-        [spotter.lastName + ", " + spotter.firstName + " (" + spotterLocation.latString + ","
+        [spotter.lastName + ", " + spotter.firstName + " (" + spotterLocation.latString + ", "
             + spotterLocation.lonString + ")", spotter.reportedAt, spotter.email
                 + " " + spotter.phone].forEach {
                     textViews.append(ObjectTextView(sV2.view, $0))

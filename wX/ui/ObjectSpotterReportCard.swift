@@ -11,7 +11,6 @@ final class ObjectSpotterReportCard {
     private let sV = StackView()
 
     init(_ stackView: UIStackView, _ spotterReport: SpotterReports) {
-        //UtilityUI.setupStackViewForCard(sV)
         var textViews = [ObjectTextView]()
         [spotterReport.type + " " + spotterReport.time,
          spotterReport.city, spotterReport.lastName + ", "

@@ -7,12 +7,12 @@
 import UIKit
 
 class ViewControllerSPOTTERREPORTS: UIwXViewController {
-    
+
     var spotterReportsData = [SpotterReports]()
     var spotterReportsDataSorted = [SpotterReports]()
     // FIXME
     //var spotterReportCountButton = ObjectToolbarIcon()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //spotterReportCountButton = ObjectToolbarIcon(self, "", nil)
@@ -21,16 +21,18 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
         self.view.addSubview(toolbar)
         self.getContent()
     }
-    
+
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
             DispatchQueue.main.async {
                 //self.spotterReportCountButton.title = "Count: \(self.spotterReportsData.count)"
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
-                self.spotterReportsDataSorted.enumerated().forEach  {
+                self.spotterReportsDataSorted.enumerated().forEach {
                     let objSpotter = ObjectSpotterReportCard(self.stackView, $1)
-                    let tapOutTextField = UITapGestureRecognizerWithData(target: self, action: #selector(self.buttonPressed(sender:)))
+                    let tapOutTextField = UITapGestureRecognizerWithData(
+                        target: self, action: #selector(self.buttonPressed(sender:))
+                    )
                     tapOutTextField.data=$0
                     objSpotter.addGestureRecognizer(tapOutTextField)
                 }
@@ -40,7 +42,7 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
             }
         }
     }
-    
+
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         //let idx = sender.data
         //let alert = ObjectPopUp(self, "",spotterReportCountButton)
@@ -48,8 +50,8 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
         //alert.addAction(c)
         //alert.finish()
     }
-    
-    func showMap(_ selection: Int){
+
+    func showMap(_ selection: Int) {
         ActVars.mapKitLat = self.spotterReportsDataSorted[selection].location.latString
         ActVars.mapKitLon = self.spotterReportsDataSorted[selection].location.lonString
         ActVars.mapKitRadius = 20000.0

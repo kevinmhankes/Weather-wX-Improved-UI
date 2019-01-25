@@ -1148,8 +1148,6 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
-				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1181,6 +1179,8 @@
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
 				F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */,
 				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
+				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
+				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
 				03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */,
 				F07482D31E793E2F0072F96D /* ObjectStackViewHS.swift */,
 				F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */,
@@ -1262,8 +1262,6 @@
 		F09CCCEA1E15C73100A8DBA7 /* activitiesmisc */ = {
 			isa = PBXGroup;
 			children = (
-				03FF8F8021FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift */,
-				03FF8F8121FA72D800661F78 /* ViewControllerSPOTTERS.swift */,
 				F0F28D821DB987400020AD08 /* CAPAlert.swift */,
 				F0B3350C1DA3FD1C0035BD36 /* SevereNotice.swift */,
 				F0B3355D1DA3FD6F0035BD36 /* SevereWarning.swift */,
@@ -1283,6 +1281,8 @@
 				F0F942851DBBE0E100D30E36 /* ViewControllerOPC.swift */,
 				F0C5BD871DB39BAF008C56BC /* ViewControllerSEVEREDASHBOARD.swift */,
 				F096C0991DADB18700E63046 /* ViewControllerSOUNDING.swift */,
+				03FF8F8021FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift */,
+				03FF8F8121FA72D800661F78 /* ViewControllerSPOTTERS.swift */,
 				F0CD67721DB777380023931E /* ViewControllerSUNMOONDATA.swift */,
 				F011E6171DB03E25006531FD /* ViewControllerTEXTVIEWER.swift */,
 				F0F28D7A1DB985D90020AD08 /* ViewControllerUSALERTS.swift */,

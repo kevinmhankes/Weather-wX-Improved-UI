@@ -7,12 +7,12 @@
 import UIKit
 
 class ViewControllerSPOTTERS: UIwXViewController {
-    
+
     var spotterData = [Spotter]()
     var spotterDataSorted = [Spotter]()
     var spotterReportsButton = ObjectToolbarIcon()
     var spotterCountButton = ObjectToolbarIcon()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         spotterReportsButton = ObjectToolbarIcon(self, "Reports", #selector(showSpotterReports))
