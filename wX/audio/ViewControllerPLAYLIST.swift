@@ -72,6 +72,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     func viewProduct(selection: Int) {
         ActVars.textViewText = Utility.readPref("PLAYLIST_" + playlistItems[selection], "")
+        ActVars.textViewProduct = playlistItems[selection]
         self.goToVC("textviewer")
     }
 

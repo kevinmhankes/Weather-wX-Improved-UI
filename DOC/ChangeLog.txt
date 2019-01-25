@@ -11,13 +11,18 @@
 // TODO storm reports - use custom card
 // TODO generic test view has a playlist save?
 
-2019_01_24 55600 more work on apple map in location edit
+AppStore writeup:
+
+Bugfix - homescreen radar mosaic was not working. Add share or text to speech buttons in screen such as hourly, severe dashboard, and MCD. More work in location edit with mapping support. Add floating action buttons in model activities.
+
+2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location
 		 model generic - truncate product button less
 		[BUG] backout locfrag screen rotation code as 7day not always showing
 		[BUG] fix radar mosaic in homescreen
 		add spotters back in
+		[BUG] in playlist viewer set product before going to text viewer
 2019_01_23 55500 more work on apple map in location edit
 		 add missing nws icon for winter conditions
 		[BUG] if edit location and change name, return to main screen does not show new name

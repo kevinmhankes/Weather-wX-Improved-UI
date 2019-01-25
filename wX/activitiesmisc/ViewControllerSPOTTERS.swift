@@ -15,14 +15,14 @@ class ViewControllerSPOTTERS: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        spotterReportsButton = ObjectToolbarIcon(self, "Reports", #selector(showSpotterReports))
-        spotterCountButton = ObjectToolbarIcon(self, "", #selector(showSpotterReports))
+        spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
+        spotterReportsButton.title = "Spotter Reports"
+        spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, spotterCountButton, spotterReportsButton]).items
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
         ).isActive = true
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        self.view.addSubview(toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
 
