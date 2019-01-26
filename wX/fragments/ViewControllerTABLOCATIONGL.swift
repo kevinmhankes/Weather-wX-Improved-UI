@@ -569,6 +569,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
     }
 
+    // Clear all views except 7day and current conditions
     func clearViews() {
         self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
         self.extraDataCards.forEach {$0.removeFromSuperview()}

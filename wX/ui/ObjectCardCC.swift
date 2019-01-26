@@ -21,7 +21,6 @@ final class ObjectCardCC {
             img = ObjectCardImage(sizeFactor: 1.0)
         }
         tv.view.isUserInteractionEnabled = true
-        //updateCard(objFcst, isUS)
         let verticalTextConainer: ObjectStackView
         if UIPreferences.showMetarInCC {
             verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view, tv3.view])
@@ -37,7 +36,6 @@ final class ObjectCardCC {
             equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
-        //stackView.addArrangedSubview(horizontalContainer.view)
         updateCard(objFcst, isUS)
     }
 
@@ -53,7 +51,6 @@ final class ObjectCardCC {
             } else {
                 img.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(objFcst.objCC.iconUrl).image, condenseScale)
             }
-            //img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
         } else {
             img.view.image = UtilityNWS.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
