@@ -15,7 +15,7 @@ class MyApplication {
         + " Software is provided \"as is\". Use at your own risk. Use for educational purposes "
         + "and non-commercial purposes only. Do not use for operational purposes.  "
         + copyright
-        + "2016-2018 joshua.tee@gmail.com . Please report bugs or suggestions "
+        + "2016-2019 joshua.tee@gmail.com . Please report bugs or suggestions "
         + "via email to me as opposed to app store reviews."
         + " \(appName) is bi-licensed under the Mozilla Public License Version 2 as well "
         + "as the GNU General Public License Version 3 or later. "

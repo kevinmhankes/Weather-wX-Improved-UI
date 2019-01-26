@@ -39,7 +39,10 @@ final class UtilitySettingsUI {
             + " Requires an app restart.",
         "Homescreen text length": "Set the length in characters of textual cards on the "
             + "homescreen when not expanded. Default is 500.",
-        "Show less information on main screen": "Show less information on main screen"
+        "Show less information on main screen": "Show less information on main screen."
+            + " Requires an appication restart after changing. This is a work in progress.",
+        "NWS Icon size": "NWS Icon size, default size is 80. Requires an appication restart after changing."
+            + " This is a work in progress."
     ]
 
     static let booleanDefault  = [
@@ -62,7 +65,8 @@ final class UtilitySettingsUI {
         "REFRESH_LOC_MIN": "Refresh interval main screen(min)" ,
         "ANIM_INTERVAL": "Animation frame rate" ,
         "UI_TILES_PER_ROW": "Tiles per row",
-        "HOMESCREEN_TEXT_LENGTH_PREF": "Homescreen text length"
+        "HOMESCREEN_TEXT_LENGTH_PREF": "Homescreen text length",
+        "NWS_ICON_SIZE_PREF": "NWS Icon size"
     ]
 
     static let pickerinit = [
@@ -71,7 +75,8 @@ final class UtilitySettingsUI {
         "REFRESH_LOC_MIN": "10",
         "ANIM_INTERVAL": "6" ,
         "UI_TILES_PER_ROW": "3" ,
-        "HOMESCREEN_TEXT_LENGTH_PREF": "500"
+        "HOMESCREEN_TEXT_LENGTH_PREF": "500",
+        "NWS_ICON_SIZE_PREF": "80"
     ]
 
     static let pickerCount = [
@@ -80,9 +85,11 @@ final class UtilitySettingsUI {
         "REFRESH_LOC_MIN": 121,
         "ANIM_INTERVAL": 16,
         "UI_TILES_PER_ROW": 9,
-        "HOMESCREEN_TEXT_LENGTH_PREF": 7
+        "HOMESCREEN_TEXT_LENGTH_PREF": 7,
+        "NWS_ICON_SIZE_PREF": 100
     ]
 
+    // If List is empty must set in ViewControllerSETTINGSUI
     static var pickerDataSource = [
         "TEXTVIEW_FONT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
                                "13", "14", "15", "16", "17", "18", "19", "20"],
@@ -90,7 +97,8 @@ final class UtilitySettingsUI {
         "REFRESH_LOC_MIN": [],
         "ANIM_INTERVAL": [],
         "UI_TILES_PER_ROW": ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
-        "HOMESCREEN_TEXT_LENGTH_PREF": []
+        "HOMESCREEN_TEXT_LENGTH_PREF": [],
+        "NWS_ICON_SIZE_PREF": []
     ]
 
     static let pickerNonZeroOffset = [

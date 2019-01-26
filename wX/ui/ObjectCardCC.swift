@@ -17,6 +17,8 @@ final class ObjectCardCC {
     init(_ stackView: UIStackView, _ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             img = ObjectCardImage(sizeFactor: condenseScale)
+        } else {
+            img = ObjectCardImage(sizeFactor: 1.0)
         }
         tv.view.isUserInteractionEnabled = true
         //updateCard(objFcst, isUS)

@@ -28,6 +28,7 @@ class UIPreferences {
     static var radarToolbarTransparent = true
     static var mainScreenRadarFab = true
     static var mainScreenCondense = false
+    static var nwsIconSize: Float = 80.0
     static let sideSpacing: CGFloat = 10.0
 
     static func initialize() {
@@ -46,5 +47,6 @@ class UIPreferences {
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
+        nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 80.0)
     }
 }

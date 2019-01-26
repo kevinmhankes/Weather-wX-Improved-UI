@@ -26,11 +26,14 @@ final class ObjectCard7Day {
     ) {
         if UIPreferences.mainScreenCondense {
             img = ObjectCardImage(sizeFactor: condenseScale)
+        } else {
+             img = ObjectCardImage(sizeFactor: 1.0)
         }
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
+        //horizontalContainer.view.alignment = UIStackView.Alignment.top
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
