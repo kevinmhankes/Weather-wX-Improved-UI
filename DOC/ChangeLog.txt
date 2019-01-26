@@ -10,6 +10,7 @@
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO storm reports - use custom card
 // TODO make icon size configurable
+// TODO double-tap radar ipad not quite working
 
 AppStore writeup:
 
