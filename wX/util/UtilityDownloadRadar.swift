@@ -12,6 +12,7 @@ final class UtilityDownloadRadar {
 
     static func getPolygonVTEC () {
         MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
+        //print(urlTst.getNwsHtml())
         MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
         MyApplication.severeDashboardTor.value = urlTor.getNwsHtml()
     }
