@@ -9,10 +9,10 @@ import UIKit
 final class ObjectCardImage {
 
     private let image = UIImageView()
-    var size: CGFloat = 80.0
+    //var size: CGFloat = 80.0
 
     init(sizeFactor: CGFloat = 1.0) {
-        size = CGFloat(UIPreferences.nwsIconSize)
+        let size = CGFloat(UIPreferences.nwsIconSize)
         image.isUserInteractionEnabled = true
         image.contentMode = UIView.ContentMode.scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false

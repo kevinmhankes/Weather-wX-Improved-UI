@@ -17,6 +17,8 @@ Bugfix - homescreen radar mosaic was not working. Add share or text to speech bu
 
 2019_01_26 55700 add UI_MAIN_SCREEN_CONDENSE option
 		 add NWS_ICON_SIZE_PREF option
+		 change text color of sunrise card on locfrag from gray to black
+		 cleanup in UI
 2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location

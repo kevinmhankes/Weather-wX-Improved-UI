@@ -8,19 +8,17 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    private let sVLoc = ObjectStackView(.fill, .horizontal, .center)
     private let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView) {
         let sunriseSunset = UtilityTime.getSunriseSunset()
         let text =  UtilityTime.gmtTime()
         objLabel = ObjectTextView(
-            sVLoc.view,
+            stackView,
             sunriseSunset + MyApplication.newline + text,
             UIFont.systemFont(ofSize: 15),
-            UIColor.gray
+            UIColor.black
         )
         objLabel.tv.textAlignment = .center
-        stackView.addArrangedSubview(sVLoc.view)
     }
 }

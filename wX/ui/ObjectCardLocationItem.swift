@@ -8,25 +8,27 @@ import UIKit
 
 final class ObjectCardLocationItem {
 
-    private let sV: ObjectCardStackView
-    private let tvProduct = ObjectTextViewLarge(80.0)
+    private let cardStackView: ObjectCardStackView
+    private let tvName = ObjectTextViewLarge(80.0)
     private let tv = ObjectTextView()
     private let tv2 = ObjectTextViewSmallGray(80.0)
 
-    init(_ stackView: UIStackView, _ product: String, _ topLine: String, _ bottomLines: String) {
-        tvProduct.text = product
-        tvProduct.view.textColor = UIColor.blue
-        tv.text = topLine
+    init(_ stackView: UIStackView, _ name: String, _ middleLine: String, _ bottomLines: String) {
+        tvName.text = name
+        tvName.view.textColor = UIColor.blue
+        tv.text = middleLine
         tv.setZeroSpacing()
         tv2.text = bottomLines
         tv.view.isUserInteractionEnabled = false
         tv2.view.isUserInteractionEnabled = false
-        let sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tvProduct.view, tv.view, tv2.view])
-        sV = ObjectCardStackView(arrangedSubviews: [sV2.view])
-        stackView.addArrangedSubview(sV.view)
+        let verticalTextConainer = ObjectStackView(
+            .fill, .vertical, 0, arrangedSubviews: [tvName.view, tv.view, tv2.view]
+        )
+        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        stackView.addArrangedSubview(cardStackView.view)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
-        sV.view.addGestureRecognizer(gesture)
+        cardStackView.view.addGestureRecognizer(gesture)
     }
 }
