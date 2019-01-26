@@ -17,6 +17,7 @@ final class ObjectCardImage {
         image.contentMode = UIView.ContentMode.scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.widthAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
+        image.heightAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
     }
 
     var view: UIImageView {

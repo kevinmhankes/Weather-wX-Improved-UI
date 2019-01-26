@@ -9,6 +9,7 @@ import UIKit
 final class ObjectCardStackView {
 
     private var sV: StackView
+    let padding: CGFloat = 3
 
     init(arrangedSubviews: [UIView]) {
         sV = StackView(arrangedSubviews: arrangedSubviews)
@@ -16,7 +17,8 @@ final class ObjectCardStackView {
         sV.distribution = .fill
         sV.alignment = .top
         sV.axis = .horizontal
-        sV.layoutMargins = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
+        //sV.layoutMargins = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
+        sV.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         sV.isLayoutMarginsRelativeArrangement = true
     }
 

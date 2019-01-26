@@ -540,6 +540,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             token = "spcmeso"
         case "SPCMESO_TTD":
             token = "spcmeso"
+        case "RAD_2KM":
+            ActVars.nwsMosaicType = "local"
+            token = "nwsmosaic"
         case "GOES16":
             ActVars.goesSector = ""
             ActVars.goesProduct = ""
