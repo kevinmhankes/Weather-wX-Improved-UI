@@ -14,20 +14,20 @@ final class ObjectCard7Day {
     private let tv2 = ObjectTextViewSmallGray(80.0)
     private let img = ObjectCardImage()
 
-    init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
+    init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String],  _ dayArrShort: [String], _ isUS: Bool) {
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         sV2.view.alignment = UIStackView.Alignment.top
         let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view])
         sV = ObjectCardStackView(arrangedSubviews: [img.view, sVVertView.view])
         stackView.addArrangedSubview(sV.view)
-        update(index, dayImgUrl, dayArr, isUS)
+        update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
 
-    func update(_ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ isUS: Bool) {
+    func update(_ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ dayArrShort: [String], _ isUS: Bool) {
         self.isUS = isUS
         setImage(index, dayImgUrl)
-        setTextFields(self.format7Day(dayArr[index].replace("</text>", "")))
+        setTextFields(self.format7Day(dayArr[index].replace("</text>", ""), dayArrShort[index].replace("</text>", "")))
     }
 
     func setTextFields(_ textArr: (String, String)) {
@@ -41,27 +41,50 @@ final class ObjectCard7Day {
         }
     }
 
-    func format7Day(_ dayStr: String) -> (String, String) {
+    func format7Day(_ dayStr: String, _ dayStrShort: String) -> (String, String) {
         var dayTmpArr = dayStr.split(": ")
+        var dayTmpArrShort = dayStrShort.split(": ")
         var retStr = ""
-        if dayTmpArr.count > 1 {
-            if isUS {
-                retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
-                    + MyApplication.degreeSymbol
-                    + UtilityLocationFragment.extractWindDirection(dayTmpArr[1].substring(1))
-                    + UtilityLocationFragment.extract7DayMetrics(dayTmpArr[1].substring(1))
-                    + ")" + MyApplication.newline
+        if !UIPreferences.mainScreenCondense || !isUS {
+            if dayTmpArr.count > 1 {
+                if isUS {
+                    retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
+                        + MyApplication.degreeSymbol
+                        + UtilityLocationFragment.extractWindDirection(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extract7DayMetrics(dayTmpArr[1].substring(1))
+                        + ")" + MyApplication.newline
+                } else {
+                    retStr = dayTmpArr[0].replace(":", " ") + " ("
+                        + UtilityLocationFragment.extractCATemp(dayTmpArr[1])
+                        + MyApplication.degreeSymbol
+                        + UtilityLocationFragment.extractCAWindDirection(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extractCAWindSpeed(dayTmpArr[1])
+                        + ")" + MyApplication.newline
+                }
+                return (retStr, dayTmpArr[1])
             } else {
-                retStr = dayTmpArr[0].replace(":", " ") + " ("
-                    + UtilityLocationFragment.extractCATemp(dayTmpArr[1])
-                    + MyApplication.degreeSymbol
-                    + UtilityLocationFragment.extractCAWindDirection(dayTmpArr[1].substring(1))
-                    + UtilityLocationFragment.extractCAWindSpeed(dayTmpArr[1])
-                    + ")" + MyApplication.newline
+                return (retStr, "")
             }
-            return (retStr, dayTmpArr[1])
         } else {
-            return (retStr, "")
+            if dayTmpArrShort.count > 1 {
+                if isUS {
+                    retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
+                        + MyApplication.degreeSymbol
+                        + UtilityLocationFragment.extractWindDirection(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extract7DayMetrics(dayTmpArr[1].substring(1))
+                        + ")" + MyApplication.newline
+                } else {
+                    retStr = dayTmpArr[0].replace(":", " ") + " ("
+                        + UtilityLocationFragment.extractCATemp(dayTmpArr[1])
+                        + MyApplication.degreeSymbol
+                        + UtilityLocationFragment.extractCAWindDirection(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extractCAWindSpeed(dayTmpArr[1])
+                        + ")" + MyApplication.newline
+                }
+                return (retStr, dayTmpArrShort[1])
+            } else {
+                return (retStr, "")
+            }
         }
     }
 

@@ -34,8 +34,14 @@ final class ObjectForecastPackage7Day {
         return detailedForecastAl
     }
 
+    var fcstListCondensed: [String] {
+        return shortForecastAl
+    }
+
+    // Canada
     func convertExt7DaytoList() {
         detailedForecastAl =  sevenDayExtStr.split(MyApplication.newline + MyApplication.newline)
+        shortForecastAl =  sevenDayExtStr.split(MyApplication.newline + MyApplication.newline)
     }
 
     func get7DayExt(_ html: String) -> String {
@@ -46,14 +52,15 @@ final class ObjectForecastPackage7Day {
         let windDirectionAl = html.parseColumn("\"windDirection\": \"(.*?)\",")
         let detailedForecastAlLocal = html.parseColumn("\"detailedForecast\": \"(.*?)\"")
         self.icons = html.parseColumn("\"icon\": \"(.*?)\",")
-        self.shortForecastAl = html.parseColumn("\"shortForecast\": \"(.*?)\",")
+        let shortForecastAlLocal = html.parseColumn("\"shortForecast\": \"(.*?)\",")
+        print(shortForecastAl)
         nameAl.indices.forEach {
             let name = Utility.safeGet(nameAl, $0)
             let temperature = Utility.safeGet(temperatureAl, $0)
             let windSpeed = Utility.safeGet(windSpeedAl, $0)
             let windDirection = Utility.safeGet(windDirectionAl, $0)
             let icon = Utility.safeGet(icons, $0)
-            let shortForecast = Utility.safeGet(shortForecastAl, $0)
+            let shortForecast = Utility.safeGet(shortForecastAlLocal, $0)
             let detailedForecast = Utility.safeGet(detailedForecastAlLocal, $0)
             forecasts.append(
                 ObjectForecast(
@@ -68,9 +75,11 @@ final class ObjectForecastPackage7Day {
             )
         }
         var forecastString = MyApplication.newline + MyApplication.newline
+        //var forecastStringCondense = MyApplication.newline + MyApplication.newline
         forecasts.forEach {
             forecastString += $0.name + ": " + $0.detailedForecast + MyApplication.newline + MyApplication.newline
             self.detailedForecastAl.append($0.name + ": " + $0.detailedForecast)
+            self.shortForecastAl.append($0.name + ": " + $0.shortForecast)
         }
         return forecastString
     }

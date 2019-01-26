@@ -11,7 +11,7 @@ final class ObjectForecast {
     private var windSpeed = ""
     private var windDirection = ""
     private var icon = ""
-    private var shortForecast = ""
+    var shortForecast = ""
     var detailedForecast = ""
 
     init(
