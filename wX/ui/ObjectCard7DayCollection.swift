@@ -49,7 +49,6 @@ final class ObjectCard7DayCollection {
     }
 
     func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
-        // TODO use this in init and remove code duplicity
         let dayArr = objSevenDay.fcstList
         let dayArrShort = objSevenDay.fcstListCondensed
         dayArr.indices.forEach {

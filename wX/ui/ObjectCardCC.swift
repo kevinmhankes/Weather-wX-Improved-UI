@@ -64,10 +64,8 @@ final class ObjectCardCC {
 
     func setText(_ objFcst: ObjectForecastPackage) {
         tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        //if !UIPreferences.mainScreenCondense {
-            tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
-            tv3.text = objFcst.objCC.rawMetar
-        //}
+        tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+        tv3.text = objFcst.objCC.rawMetar
     }
 
     func addGestureRecognizer(
