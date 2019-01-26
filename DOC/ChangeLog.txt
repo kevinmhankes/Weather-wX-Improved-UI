@@ -9,6 +9,7 @@
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO storm reports - use custom card
+// TODO make icon size configurable
 
 AppStore writeup:
 
