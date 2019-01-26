@@ -9,12 +9,13 @@ import UIKit
 final class ObjectCardImage {
 
     private let image = UIImageView()
+    let size: CGFloat = 80.0
 
-    init() {
+    init(sizeFactor: CGFloat = 1.0) {
         image.isUserInteractionEnabled = true
         image.contentMode = UIView.ContentMode.scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        image.widthAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
     }
 
     var view: UIImageView {

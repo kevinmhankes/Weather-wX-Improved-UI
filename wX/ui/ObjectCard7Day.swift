@@ -9,18 +9,31 @@ import UIKit
 final class ObjectCard7Day {
 
     private var isUS = true
-    private let sV: ObjectCardStackView
+    private let horizontalContainer: ObjectCardStackView
     private let tv = ObjectTextViewLarge(80.0)
     private let tv2 = ObjectTextViewSmallGray(80.0)
-    private let img = ObjectCardImage()
+    private var img = ObjectCardImage()
+    let condenseScale: CGFloat = 0.50
 
-    init(_ stackView: UIStackView, _ index: Int, _ dayImgUrl: [String], _ dayArr: [String],  _ dayArrShort: [String], _ isUS: Bool) {
+    init(
+        _ stackView: UIStackView,
+        _ index: Int,
+        _ dayImgUrl: [String],
+        _ dayArr: [String],
+        _ dayArrShort: [String],
+        _ isUS: Bool
+    ) {
+        if UIPreferences.mainScreenCondense {
+            img = ObjectCardImage(sizeFactor: condenseScale)
+        }
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
-        let sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
-        sV2.view.alignment = UIStackView.Alignment.top
-        let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view])
-        sV = ObjectCardStackView(arrangedSubviews: [img.view, sVVertView.view])
-        stackView.addArrangedSubview(sV.view)
+        let verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
+        verticalTextConainer.view.alignment = UIStackView.Alignment.top
+        //let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
+        let bounds = UtilityUI.getScreenBounds()
+        horizontalContainer.view.widthAnchor.constraint(equalToConstant: CGFloat(bounds.0 - (stackviewCardSpacing * 2.0))).isActive = true
+        stackView.addArrangedSubview(horizontalContainer.view)
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
 
@@ -37,7 +50,11 @@ final class ObjectCard7Day {
 
     func setImage(_ index: Int, _ dayImgUrl: [String]) {
         if dayImgUrl.count > index {
-            img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
+            if !UIPreferences.mainScreenCondense {
+                img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
+            } else {
+                img.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(dayImgUrl[index]).image, condenseScale)
+            }
         }
     }
 
@@ -89,7 +106,7 @@ final class ObjectCard7Day {
     }
 
     func addGestureRecognizer(_ gesture1: UITapGestureRecognizer, _ gesture2: UITapGestureRecognizer) {
-        sV.view.addGestureRecognizer(gesture1)
+        horizontalContainer.view.addGestureRecognizer(gesture1)
         tv2.view.addGestureRecognizer(gesture2)
     }
 }
