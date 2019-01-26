@@ -151,7 +151,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objFcst = Utility.getCurrentConditionsV2(Location.getCurrentLocation())
             DispatchQueue.main.async {
-                self.getCurrentConditionCards(self.stackViewCurrentConditions.view)
+                self.getCurrentConditionCards()
             }
         }
     }
@@ -349,12 +349,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         UtilityActions.goToVCS(self, "hourly")
     }
 
-    func getCurrentConditionCards(_ stackView: UIStackView) {
+    func getCurrentConditionCards() {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
         if ccCard == nil {
-            ccCard = ObjectCardCC(stackView, objFcst, isUS)
+            ccCard = ObjectCardCC(self.stackViewCurrentConditions.view, objFcst, isUS)
             ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
             ccCard?.updateCard(objFcst, isUS)

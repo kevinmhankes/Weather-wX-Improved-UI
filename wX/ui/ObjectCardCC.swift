@@ -27,6 +27,7 @@ final class ObjectCardCC {
         } else {
             verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         }
+        verticalTextConainer.view.alignment = UIStackView.Alignment.top
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
         let stackViewLocalCC = ObjectStackViewHS()
         stackViewLocalCC.setupWithPadding()
