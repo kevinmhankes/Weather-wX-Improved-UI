@@ -9,12 +9,12 @@
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO storm reports - use custom card
-// TODO generic test view has a playlist save?
 
 AppStore writeup:
 
 Bugfix - homescreen radar mosaic was not working. Add share or text to speech buttons in screen such as hourly, severe dashboard, and MCD. More work in location edit with mapping support. Add floating action buttons in model activities.
 
+2019_01_26 55700 add UI_MAIN_SCREEN_CONDENSE option
 2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location

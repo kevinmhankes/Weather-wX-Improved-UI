@@ -27,6 +27,7 @@ class UIPreferences {
     static var homescreenTextLength = 0
     static var radarToolbarTransparent = true
     static var mainScreenRadarFab = true
+    static var mainScreenCondense = false
     static let sideSpacing: CGFloat = 10.0
 
     static func initialize() {
@@ -44,5 +45,6 @@ class UIPreferences {
         textviewFontSize = CGFloat(Utility.readPref("TEXTVIEW_FONT_SIZE", Int(textviewFontSize)))
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
+        mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
     }
 }

@@ -15,7 +15,8 @@ final class UtilitySettingsUI {
         "WFO_REMEMBER_LOCATION": "WFO - Remember location",
         "SHOW_METAR_IN_CC": "Show Metar in CC",
         "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
-        "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)"
+        "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
+        "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen"
     ]
 
     static let helpStrings = [
@@ -37,7 +38,8 @@ final class UtilitySettingsUI {
         "Tiles per row": "Set the number of images tiles in the 2nd and 3rd tab. Default is 3."
             + " Requires an app restart.",
         "Homescreen text length": "Set the length in characters of textual cards on the "
-            + "homescreen when not expanded. Default is 500."
+            + "homescreen when not expanded. Default is 500.",
+        "Show less information on main screen": "Show less information on main screen"
     ]
 
     static let booleanDefault  = [
@@ -50,7 +52,8 @@ final class UtilitySettingsUI {
         "WFO_REMEMBER_LOCATION": "false",
         "SHOW_METAR_IN_CC": "false",
         "RADAR_TOOLBAR_TRANSPARENT": "true",
-        "UI_MAIN_SCREEN_RADAR_FAB": "true"
+        "UI_MAIN_SCREEN_RADAR_FAB": "true",
+        "UI_MAIN_SCREEN_CONDENSE": "false"
     ]
 
     static let picker = [

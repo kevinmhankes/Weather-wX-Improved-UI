@@ -33,7 +33,9 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         if ActVars.nwsMosaicType == "local" {
             ActVars.nwsMosaicType = ""
             isLocal = true
-            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(UtilityUSImgNWSMosaic.getStateFromRid())
+            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(
+                UtilityUSImgNWSMosaic.getStateFromRid()
+            )
             index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent(index)
