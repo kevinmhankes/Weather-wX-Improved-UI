@@ -22,6 +22,13 @@ public class UtilityUI {
         let height = bounds.height
         return (Float(width), Float(height))
     }
+    
+    class func getScreenBoundsCGFloat() -> (CGFloat, CGFloat) {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.width
+        let height = bounds.height
+        return (width, height)
+    }
 
     class func statusBarHeight() -> CGFloat {
         return UIApplication.shared.statusBarFrame.size.height

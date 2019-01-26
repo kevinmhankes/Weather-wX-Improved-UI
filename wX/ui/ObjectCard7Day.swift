@@ -9,6 +9,7 @@ import UIKit
 final class ObjectCard7Day {
 
     private var isUS = true
+    // TODO HS?
     private let horizontalContainer: ObjectCardStackView
     private let tv = ObjectTextViewLarge(80.0)
     private let tv2 = ObjectTextViewSmallGray(80.0)
@@ -29,10 +30,11 @@ final class ObjectCard7Day {
         tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
-        //let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [verticalTextConainer.view])
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
-        let bounds = UtilityUI.getScreenBounds()
-        horizontalContainer.view.widthAnchor.constraint(equalToConstant: CGFloat(bounds.0 - (stackviewCardSpacing * 2.0))).isActive = true
+        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        horizontalContainer.view.widthAnchor.constraint(
+            equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
+        ).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }

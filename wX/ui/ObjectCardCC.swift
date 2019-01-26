@@ -8,25 +8,30 @@ import UIKit
 
 final class ObjectCardCC {
 
-    private let img = ObjectCardImage()
+    private var img = ObjectCardImage()
     private let tv: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
     private let tv2: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     private let tv3: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    let condenseScale: CGFloat = 0.50
 
     init(_ stackView: UIStackView, _ objFcst: ObjectForecastPackage, _ isUS: Bool) {
-        let stackViewLocal = ObjectStackViewHS()
-        stackViewLocal.setup()
-        stackView.addArrangedSubview(stackViewLocal)
+        if UIPreferences.mainScreenCondense {
+            img = ObjectCardImage(sizeFactor: condenseScale)
+        }
         tv.view.isUserInteractionEnabled = true
         updateCard(objFcst, isUS)
-        let sV2: ObjectStackView
+        let verticalTextConainer: ObjectStackView
         if UIPreferences.showMetarInCC {
-            sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view, tv3.view])
+            verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view, tv3.view])
         } else {
-            sV2 = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
+            verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
         }
-        let sVVertView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [sV2.view])
-        stackViewLocal.addArrangedSubview(ObjectCardStackView(arrangedSubviews: [img.view, sVVertView.view]).view)
+        let horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
+        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        horizontalContainer.view.widthAnchor.constraint(
+            equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
+        ).isActive = true
+        stackView.addArrangedSubview(horizontalContainer.view)
     }
 
     func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
@@ -36,7 +41,12 @@ final class ObjectCardCC {
 
     func setImage(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if isUS {
-            img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+            if !UIPreferences.mainScreenCondense {
+                img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+            } else {
+                img.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(objFcst.objCC.iconUrl).image, condenseScale)
+            }
+            //img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
         } else {
             img.view.image = UtilityNWS.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
@@ -49,8 +59,10 @@ final class ObjectCardCC {
 
     func setText(_ objFcst: ObjectForecastPackage) {
         tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
-        tv3.text = objFcst.objCC.rawMetar
+        if !UIPreferences.mainScreenCondense {
+            tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+            tv3.text = objFcst.objCC.rawMetar
+        }
     }
 
     func addGestureRecognizer(
