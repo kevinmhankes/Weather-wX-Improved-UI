@@ -9,6 +9,7 @@
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO double-tap radar ipad not quite working
+// BUG uswarn start/end time no space before AM/PM
 
 AppStore writeup:
 
