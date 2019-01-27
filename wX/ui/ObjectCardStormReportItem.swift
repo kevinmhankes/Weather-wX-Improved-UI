@@ -8,26 +8,35 @@ import UIKit
 
 final class ObjectCardStormReportItem {
 
-    private let cardStackView: ObjectCardStackView
+    private var cardStackView = ObjectCardStackView()
     private let tvLocation = ObjectTextViewLarge(80.0)
     private let tv = ObjectTextViewLarge(80.0)
     private let tv2 = ObjectTextViewSmallGray(80.0)
 
     init(_ stackView: UIStackView, _ stormReport: StormReport) {
-        tvLocation.text = stormReport.state + " " + stormReport.city
-        tv.text = stormReport.address
-        tv2.text = stormReport.damageReport
-        tv.view.isUserInteractionEnabled = false
-        tv2.view.isUserInteractionEnabled = false
-        let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, 0, arrangedSubviews: [tvLocation.view, tv.view, tv2.view]
-        )
-        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-        stackView.addArrangedSubview(cardStackView.view)
-    }
-
-    func makeHeader() {
-        tvLocation.view.textColor = UIColor.blue
+        if stormReport.damageHeader == "" && stormReport.time != "" {
+            tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
+            tvLocation.view.textColor = UIColor.blue
+            tv.text = stormReport.address
+            tv2.text = stormReport.magnitude + " " + stormReport.damageReport
+            tv.view.isUserInteractionEnabled = false
+            tv2.view.isUserInteractionEnabled = false
+            let verticalTextConainer = ObjectStackView(
+                .fill, .vertical, 0, arrangedSubviews: [tvLocation.view, tv.view, tv2.view]
+            )
+            cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+            stackView.addArrangedSubview(cardStackView.view)
+        } else if stormReport.damageHeader != "" {
+            tvLocation.text = stormReport.damageHeader
+            tvLocation.view.textColor = UIColor.white
+            tvLocation.view.backgroundColor = UIColor.black
+            tvLocation.size(24)
+            let verticalTextConainer = ObjectStackView(
+                .fill, .vertical, 0, arrangedSubviews: [tvLocation.view]
+            )
+            cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+            stackView.addArrangedSubview(cardStackView.view)
+        }
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {

@@ -99,9 +99,6 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         )
         self.stormReports.enumerated().forEach {
             let objCard = ObjectCardStormReportItem(self.stackView, $1)
-            if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {
-                objCard.makeHeader()
-            }
             objCard.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
         }
     }

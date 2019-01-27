@@ -18,6 +18,7 @@ final class UtilitySPCStormReports {
         var damageReport = ""
         var magnitude = ""
         var city = ""
+        var damageHeader = ""
         lines.forEach {
             lat = ""
             lon = ""
@@ -28,12 +29,13 @@ final class UtilitySPCStormReports {
             magnitude = ""
             city = ""
             output = ""
+            damageHeader = ""
             if $0.contains(",F_Scale,") {
-                output = "Tornado Reports"
+                damageHeader = "Tornado Reports"
             } else if $0.contains(",Speed,") {
-                output = "Wind Reports"
+                damageHeader = "Wind Reports"
             } else if $0.contains(",Size,") {
-                output = "Hail Reports"
+                damageHeader = "Hail Reports"
             } else {
                 lineChunks = $0.split(",")
                 print(lineChunks.joined(separator: ","))
@@ -63,7 +65,7 @@ final class UtilitySPCStormReports {
                     damageReport = lineChunks[7]
                 }
             }
-            stormReports.append(StormReport(output, lat, lon, time, magnitude, address, city, state, damageReport))
+            stormReports.append(StormReport(output, lat, lon, time, magnitude, address, city, state, damageReport, damageHeader))
         }
         return stormReports
     }

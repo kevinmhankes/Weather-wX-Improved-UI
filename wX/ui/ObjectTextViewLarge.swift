@@ -16,6 +16,10 @@ final class ObjectTextViewLarge {
         tv.font = UIFont.systemFont(ofSize: 16)
         tv.adjustsFontSizeToFitWidth = true
     }
+    
+    func size(_ size: Int) {
+        tv.font = UIFont.systemFont(ofSize: CGFloat(size))
+    }
 
     var text: String {
         get {return tv.text!}

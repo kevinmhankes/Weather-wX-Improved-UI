@@ -11,6 +11,10 @@ final class ObjectCardStackView {
     private var stackView: StackView
     let padding: CGFloat = 3
 
+    init() {
+        stackView = StackView()
+    }
+    
     init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
         stackView.backgroundColor = UIColor.white

@@ -15,6 +15,7 @@ final public class StormReport {
     var city = ""
     var state = ""
     var damageReport = ""
+    var damageHeader = ""
 
     init(
         _ text: String,
@@ -25,7 +26,8 @@ final public class StormReport {
         _ address: String,
         _ city: String,
         _ state: String,
-        _ damageReport: String
+        _ damageReport: String,
+        _ damageHeader: String
     ) {
         self.text = text
         self.lat = lat
@@ -36,5 +38,6 @@ final public class StormReport {
         self.city = city
         self.state = state
         self.damageReport = damageReport
+        self.damageHeader = damageHeader
 	  }
 }
