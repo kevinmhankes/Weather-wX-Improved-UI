@@ -11,11 +11,11 @@ final class ObjectCardStackView {
     private var stackView: StackView
     let padding: CGFloat = 3
 
-    init(arrangedSubviews: [UIView]) {
+    init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
         stackView.backgroundColor = UIColor.white
         stackView.distribution = .fill
-        stackView.alignment = .top
+        stackView.alignment = alignment
         stackView.axis = .horizontal
         stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         stackView.isLayoutMarginsRelativeArrangement = true

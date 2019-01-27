@@ -8,13 +8,14 @@ import UIKit
 
 final class ObjectSettingsSwitch {
 
+    // TODO rename
     let vw = UIButton(type: UIButton.ButtonType.system)
     let sw = UISwitch()
     var prefMap = [String: String]()
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
-        let sV = ObjectStackView(.fill, .horizontal)
+        //let horizontalContainer = ObjectCardStackView(.fill, .horizontal)
         [vw, sw].forEach {
             $0.backgroundColor = UIColor.white
         }
@@ -24,8 +25,13 @@ final class ObjectSettingsSwitch {
         sw.thumbTintColor = AppColors.primaryDarkBlueUIColor
         sw.onTintColor = AppColors.primaryColorUIColor
         sw.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
-        sV.addArrangedSubviews([vw, sw])
-        sV.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        stackView.addArrangedSubview(sV.view)
+        let horizontalContainer = ObjectCardStackView(arrangedSubviews: [vw, sw])
+        //horizontalContainer.addArrangedSubviews([vw, sw])
+        //horizontalContainer.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        horizontalContainer.view.widthAnchor.constraint(
+            equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
+        ).isActive = true
+        stackView.addArrangedSubview(horizontalContainer.view)
     }
 }
