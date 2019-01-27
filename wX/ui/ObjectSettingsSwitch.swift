@@ -15,7 +15,6 @@ final class ObjectSettingsSwitch {
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
-        //let horizontalContainer = ObjectCardStackView(.fill, .horizontal)
         [vw, sw].forEach {
             $0.backgroundColor = UIColor.white
         }
@@ -26,8 +25,6 @@ final class ObjectSettingsSwitch {
         sw.onTintColor = AppColors.primaryColorUIColor
         sw.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [vw, sw])
-        //horizontalContainer.addArrangedSubviews([vw, sw])
-        //horizontalContainer.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))

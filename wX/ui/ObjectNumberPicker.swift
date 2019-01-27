@@ -12,13 +12,11 @@ final class ObjectNumberPicker {
     let vw = UIButton(type: UIButton.ButtonType.system)
 
     init(_ stackView: UIStackView, _ prefVar: String, _ pickerMap: [String: String]) {
-        //let horizontalContainer = ObjectStackView(.fill, .horizontal)
         let label = pickerMap[prefVar]
         vw.setTitle(label, for: .normal)
         vw.contentHorizontalAlignment = .left
         vw.backgroundColor = UIColor.white
         sw.backgroundColor = UIColor.white
-        //horizontalContainer.addArrangedSubviews([vw, sw])
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [vw, sw], alignment: .center)
         stackView.addArrangedSubview(horizontalContainer.view)
     }
