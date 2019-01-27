@@ -9,14 +9,32 @@ final public class StormReport {
     var text = ""
     var lat = ""
     var lon = ""
-    private var time = ""
-    private var state = ""
+    var time = ""
+    var magnitude = ""
+    var address = ""
+    var city = ""
+    var state = ""
+    var damageReport = ""
 
-    init(_ text: String, _ lat: String, _ lon: String, _ time: String, _ state: String) {
+    init(
+        _ text: String,
+        _ lat: String,
+        _ lon: String,
+        _ time: String,
+        _ magnitude: String,
+        _ address: String,
+        _ city: String,
+        _ state: String,
+        _ damageReport: String
+    ) {
         self.text = text
         self.lat = lat
         self.lon = lon
         self.time = time
+        self.magnitude = magnitude
+        self.address = address
+        self.city = city
         self.state = state
+        self.damageReport = damageReport
 	  }
 }

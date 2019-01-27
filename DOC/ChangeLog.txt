@@ -8,8 +8,8 @@
 // TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
-// TODO storm reports - use custom card
 // TODO double-tap radar ipad not quite working
+// TODO apple map viewer add lat/lon to text button in bottom ( add open dedicated map )
 
 AppStore writeup:
 
@@ -20,6 +20,7 @@ Bugfix - homescreen radar mosaic was not working. Add share or text to speech bu
 		 change text color of sunrise card on locfrag from gray to black
 		 cleanup in UI
 		 minor formatting enhancements in settings
+		 move Storm reports to custom UI card
 2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location

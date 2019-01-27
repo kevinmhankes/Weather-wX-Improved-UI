@@ -52,14 +52,6 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     }
 
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
-        /*ActVars.webViewShowProduct = false
-        ActVars.webViewUseUrl = true
-        ActVars.webViewUrl = UtilityMap.genMapURL(
-            self.stormReports[sender.data].lat,
-            self.stormReports[sender.data].lon,
-            "10"
-        )
-        self.goToVC("webview")*/
         ActVars.mapKitLat = self.stormReports[sender.data].lat
         ActVars.mapKitLon = self.stormReports[sender.data].lon
         ActVars.mapKitRadius = 20000.0
@@ -106,11 +98,11 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
             )
         )
         self.stormReports.enumerated().forEach {
-            let tv = ObjectTextView(self.stackView, $1.text)
+            let objCard = ObjectCardStormReportItem(self.stackView, $1)
             if $1.text == "Tornado Reports" || $1.text == "Wind Reports" || $1.text == "Hail Reports" {
-                tv.color = UIColor.blue
+                objCard.makeHeader()
             }
-            tv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
+            objCard.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
         }
     }
 

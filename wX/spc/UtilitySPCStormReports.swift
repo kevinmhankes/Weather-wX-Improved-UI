@@ -14,11 +14,19 @@ final class UtilitySPCStormReports {
         var lon = ""
         var state = ""
         var time = ""
+        var address = ""
+        var damageReport = ""
+        var magnitude = ""
+        var city = ""
         lines.forEach {
             lat = ""
             lon = ""
             state = ""
             time = ""
+            address = ""
+            damageReport = ""
+            magnitude = ""
+            city = ""
             output = ""
             if $0.contains(",F_Scale,") {
                 output = "Tornado Reports"
@@ -28,6 +36,7 @@ final class UtilitySPCStormReports {
                 output = "Hail Reports"
             } else {
                 lineChunks = $0.split(",")
+                print(lineChunks.joined(separator: ","))
                 if lineChunks.count > 7 {
                     output += lineChunks[0]
                     output += " "
@@ -44,13 +53,17 @@ final class UtilitySPCStormReports {
                     output += lineChunks[6]
                     output += MyApplication.newline
                     output += lineChunks[7]
+                    time = lineChunks[0]
+                    magnitude = lineChunks[1]
+                    address = lineChunks[2]
+                    city = lineChunks[3]
+                    state = lineChunks[4]
                     lat = lineChunks[5]
                     lon = lineChunks[6]
-                    time = lineChunks[0]
-                    state = lineChunks[4]
+                    damageReport = lineChunks[7]
                 }
             }
-            stormReports.append(StormReport(output, lat, lon, time, state))
+            stormReports.append(StormReport(output, lat, lon, time, magnitude, address, city, state, damageReport))
         }
         return stormReports
     }
