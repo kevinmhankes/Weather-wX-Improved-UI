@@ -9,8 +9,6 @@
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO double-tap radar ipad not quite working
-// TODO apple map viewer add lat/lon to text button in bottom ( add open dedicated map )
-// TODO custom USWARN card
 
 AppStore writeup:
 
@@ -23,6 +21,7 @@ Bugfix - homescreen radar mosaic was not working. Add share or text to speech bu
 		 minor formatting enhancements in settings
 		 move Storm reports to custom UI card
 		 mapkit vc - add lat/lon to toolbar and on tap open dedicated mapping app
+		 custom uswarn card
 2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location

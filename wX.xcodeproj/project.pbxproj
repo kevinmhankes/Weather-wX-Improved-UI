@@ -48,6 +48,7 @@
 		0382B26A1FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */; };
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
 		038651F821FDB00700C48DF1 /* ObjectCardStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */; };
+		038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */; };
 		03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */; };
 		039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039795B62032D7C100F37CCE /* ObjectMetar.swift */; };
 		0399A14A21CFD3BB0096ECFB /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14321CFD3B90096ECFB /* FloatyViewController.swift */; };
@@ -415,6 +416,7 @@
 		0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInputOutput.swift; sourceTree = "<group>"; };
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
 		038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStormReportItem.swift; sourceTree = "<group>"; };
+		038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardAlertSummaryItem.swift; sourceTree = "<group>"; };
 		03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMAPKITVIEW.swift; sourceTree = "<group>"; };
 		039795B62032D7C100F37CCE /* ObjectMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetar.swift; sourceTree = "<group>"; };
 		0399A14321CFD3B90096ECFB /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				F02DF2541EB89FCF00A951EA /* ObjectCALegal.swift */,
 				F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */,
 				0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */,
+				038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */,
 				F07B5C111E53D74400555058 /* ObjectCardCC.swift */,
 				03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */,
 				031546331FC634CB0020EF7B /* ObjectCardImage.swift */,
@@ -1702,6 +1705,7 @@
 				037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */,
 				F0B335001DA3FC980035BD36 /* GlobalVariables.swift in Sources */,
 				F0B335EB1DA3FDA70035BD36 /* UtilitySPCMESO.swift in Sources */,
+				038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */,
 				F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */,
 				F08E48311EB0DF72000629DA /* ObjectForecastPackage7Day.swift in Sources */,
 				F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */,
