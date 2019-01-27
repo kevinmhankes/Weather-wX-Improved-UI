@@ -18,7 +18,7 @@ final class ObjectCardStormReportItem {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvLocation.view.textColor = UIColor.blue
             tv.text = stormReport.address
-            tv2.text = stormReport.magnitude + " " + stormReport.damageReport
+            tv2.text = stormReport.magnitude + " - " + stormReport.damageReport
             tv.view.isUserInteractionEnabled = false
             tv2.view.isUserInteractionEnabled = false
             let verticalTextConainer = ObjectStackView(
