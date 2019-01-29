@@ -15,6 +15,7 @@ final class ObjectAlertDetail {
         (0...6).forEach {
             let objText = ObjectTextView(stackView, "")
             textViews.append(objText)
+            // FIXME pull these out of loop
             if $0 == 4 {
                 textViews[$0].color = UIColor.blue
             }

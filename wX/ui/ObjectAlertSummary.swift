@@ -8,6 +8,7 @@ import UIKit
 
 final class ObjectAlertSummary: NSObject {
 
+    // TODO variable rename
     private var urlArr = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0

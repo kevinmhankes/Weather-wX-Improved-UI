@@ -24,6 +24,7 @@ final class ObjectImage {
         self.bitmap = bitmap
         setImageAnchors(UIScreen.main.bounds.width)
         stackView.addArrangedSubview(img)
+        // TODO replace with utilityui
         width = UIScreen.main.bounds.width
     }
 
