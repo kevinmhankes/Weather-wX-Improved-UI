@@ -10,10 +10,10 @@ final class ObjectCardAlertSummaryItem {
 
     private var cardStackView = ObjectCardStackView()
     private let tvName = ObjectTextViewLarge(80.0)
-    private let tv = ObjectTextView()
+    private let tvTitle = ObjectTextView()
     private let tvStart = ObjectTextView()
     private let tvEnd = ObjectTextView()
-    private let tv2 = ObjectTextViewSmallGray(80.0)
+    private let tvArea = ObjectTextViewSmallGray(80.0)
     var title = ""
     var startTime = ""
     var endTime = ""
@@ -22,19 +22,19 @@ final class ObjectCardAlertSummaryItem {
         self.condenseTime(alert)
         tvName.text = office + " (" + location + ")"
         tvName.view.textColor = UIColor.blue
-        tv.text = title
-        tv.setZeroSpacing()
+        tvTitle.text = title
+        tvTitle.setZeroSpacing()
         tvStart.text = "Start: " + startTime
         tvStart.setZeroSpacing()
         tvEnd.text = "End: " + endTime
         tvEnd.setZeroSpacing()
-        tv2.text = alert.area
-        tv.view.isUserInteractionEnabled = false
+        tvArea.text = alert.area
+        tvTitle.view.isUserInteractionEnabled = false
         tvStart.view.isUserInteractionEnabled = false
         tvEnd.view.isUserInteractionEnabled = false
-        tv2.view.isUserInteractionEnabled = false
+        tvArea.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, 0, arrangedSubviews: [tvName.view, tv.view, tvStart.view, tvEnd.view, tv2.view]
+            .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
         )
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)

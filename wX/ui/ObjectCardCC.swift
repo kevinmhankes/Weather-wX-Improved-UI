@@ -8,27 +8,31 @@ import UIKit
 
 final class ObjectCardCC {
 
-    private var img = ObjectCardImage()
-    private let tv: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
-    private let tv2: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
-    private let tv3: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    private var image = ObjectCardImage()
+    private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
+    private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     let condenseScale: CGFloat = 0.50
 
     init(_ stackView: UIStackView, _ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
-            img = ObjectCardImage(sizeFactor: condenseScale)
+            image = ObjectCardImage(sizeFactor: condenseScale)
         } else {
-            img = ObjectCardImage(sizeFactor: 1.0)
+            image = ObjectCardImage(sizeFactor: 1.0)
         }
-        tv.view.isUserInteractionEnabled = true
+        topText.view.isUserInteractionEnabled = true
         let verticalTextConainer: ObjectStackView
         if UIPreferences.showMetarInCC {
-            verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view, tv3.view])
+            verticalTextConainer = ObjectStackView(
+                .fill, .vertical, 0, arrangedSubviews: [topText.view, middleText.view, bottomText.view]
+            )
         } else {
-            verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
+            verticalTextConainer = ObjectStackView(
+                .fill, .vertical, 0, arrangedSubviews: [topText.view, middleText.view]
+            )
         }
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
-        let horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
+        let horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         let stackViewLocalCC = ObjectStackViewHS()
         stackViewLocalCC.setupWithPadding()
         stackView.addArrangedSubview(stackViewLocalCC)
@@ -48,12 +52,15 @@ final class ObjectCardCC {
     func setImage(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
-                img.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+                image.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
             } else {
-                img.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(objFcst.objCC.iconUrl).image, condenseScale)
+                image.view.image = UtilityImg.resizeImage(
+                    UtilityNWS.getIcon(objFcst.objCC.iconUrl).image,
+                    condenseScale
+                )
             }
         } else {
-            img.view.image = UtilityNWS.getIcon(
+            image.view.image = UtilityNWS.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
                     objFcst.objCC.data1,
                     objFcst.objCC.status
@@ -63,9 +70,9 @@ final class ObjectCardCC {
     }
 
     func setText(_ objFcst: ObjectForecastPackage) {
-        tv.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        tv2.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
-        tv3.text = objFcst.objCC.rawMetar
+        topText.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        middleText.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
+        bottomText.text = objFcst.objCC.rawMetar
     }
 
     func addGestureRecognizer(
@@ -73,8 +80,8 @@ final class ObjectCardCC {
         _ gesture2: UITapGestureRecognizer,
         _ gesture3: UITapGestureRecognizer
     ) {
-        img.view.addGestureRecognizer(gesture1)
-        tv.view.addGestureRecognizer(gesture2)
-        tv2.view.addGestureRecognizer(gesture3)
+        image.view.addGestureRecognizer(gesture1)
+        topText.view.addGestureRecognizer(gesture2)
+        middleText.view.addGestureRecognizer(gesture3)
     }
 }

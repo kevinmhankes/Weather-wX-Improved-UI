@@ -14,7 +14,7 @@ final class ObjectCardStackView {
     init() {
         stackView = StackView()
     }
-    
+
     init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
         stackView.backgroundColor = UIColor.white

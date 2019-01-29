@@ -45,8 +45,8 @@ final class UtilityUSHourlyV2 {
         let url = "https://api.weather.gov/points/" + location.latString
             + "," + location.lonString +  "/forecast/hourly"
         let html = url.getNwsHtml()
-        let header = fixedLengthString("Time", 7) + fixedLengthString("T", 3)
-            + fixedLengthString("Wind", 10) + fixedLengthString("WindDir", 6) +  MyApplication.newline
+        let header = fixedLengthString("Time", 7) + fixedLengthString("T", 4)
+            + fixedLengthString("Wind", 8) + fixedLengthString("WindDir", 6) +  MyApplication.newline
         let footer = getFooter()
         return (header + parse(html) + footer, html)
     }
@@ -75,8 +75,8 @@ final class UtilityUSHourlyV2 {
             let windDirection = Utility.safeGet(windDirections, $0)
             let shortForecast = Utility.safeGet(shortForecasts, $0)
             string += fixedLengthString(time, 7)
-            string += fixedLengthString(temperature, 3)
-            string += fixedLengthString(windSpeed, 10)
+            string += fixedLengthString(temperature, 4)
+            string += fixedLengthString(windSpeed, 8)
             string += fixedLengthString(windDirection, 4)
             string += fixedLengthString(shortenConditions(shortForecast), 18)
             string += MyApplication.newline

@@ -13,9 +13,9 @@
 
 AppStore writeup:
 
-Bugfix - homescreen radar mosaic was not working. Add share or text to speech buttons in screen such as hourly, severe dashboard, and MCD. More work in location edit with mapping support. Add floating action buttons in model activities.
+Add two new options in Settings -> UI to change Icon size on front screen or condense output. Minor formatting adjustments.
 
-2019_01_26 55700 add UI_MAIN_SCREEN_CONDENSE option
+2019_01_29 55700 add UI_MAIN_SCREEN_CONDENSE option
 		 add NWS_ICON_SIZE_PREF option
 		 change text color of sunrise card on locfrag from gray to black
 		 cleanup in UI
@@ -23,6 +23,7 @@ Bugfix - homescreen radar mosaic was not working. Add share or text to speech bu
 		 move Storm reports to custom UI card
 		 mapkit vc - add lat/lon to toolbar and on tap open dedicated mapping app
 		 custom uswarn card
+		[BUG] formatting issue in hourly with temp in negative double digits
 2019_01_25 55600 more work on apple map in location edit
 		 severe dashboard - add share option
 		 add Fab in settings -> location

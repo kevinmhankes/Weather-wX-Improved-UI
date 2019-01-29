@@ -11,9 +11,9 @@ final class ObjectCard7Day {
     private var isUS = true
     // TODO HS?
     private let horizontalContainer: ObjectCardStackView
-    private let tv = ObjectTextViewLarge(80.0)
-    private let tv2 = ObjectTextViewSmallGray(80.0)
-    private var img = ObjectCardImage()
+    private let topText = ObjectTextViewLarge(80.0)
+    private let bottomText = ObjectTextViewSmallGray(80.0)
+    private var image = ObjectCardImage()
     let condenseScale: CGFloat = 0.50
 
     init(
@@ -25,14 +25,16 @@ final class ObjectCard7Day {
         _ isUS: Bool
     ) {
         if UIPreferences.mainScreenCondense {
-            img = ObjectCardImage(sizeFactor: condenseScale)
+            image = ObjectCardImage(sizeFactor: condenseScale)
         } else {
-             img = ObjectCardImage(sizeFactor: 1.0)
+            image = ObjectCardImage(sizeFactor: 1.0)
         }
-        tv.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
-        let verticalTextConainer = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: [tv.view, tv2.view])
+        topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
+        let verticalTextConainer = ObjectStackView(
+            .fill, .vertical, 0, arrangedSubviews: [topText.view, bottomText.view]
+        )
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [img.view, verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
@@ -48,16 +50,16 @@ final class ObjectCard7Day {
     }
 
     func setTextFields(_ textArr: (String, String)) {
-        tv.text = textArr.0
-        tv2.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        topText.text = textArr.0
+        bottomText.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func setImage(_ index: Int, _ dayImgUrl: [String]) {
         if dayImgUrl.count > index {
             if !UIPreferences.mainScreenCondense {
-                img.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
+                image.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
             } else {
-                img.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(dayImgUrl[index]).image, condenseScale)
+                image.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(dayImgUrl[index]).image, condenseScale)
             }
         }
     }
@@ -111,6 +113,6 @@ final class ObjectCard7Day {
 
     func addGestureRecognizer(_ gesture1: UITapGestureRecognizer, _ gesture2: UITapGestureRecognizer) {
         horizontalContainer.view.addGestureRecognizer(gesture1)
-        tv2.view.addGestureRecognizer(gesture2)
+        bottomText.view.addGestureRecognizer(gesture2)
     }
 }

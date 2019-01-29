@@ -9,7 +9,6 @@ import UIKit
 final class ObjectCardImage {
 
     private let image = UIImageView()
-    //var size: CGFloat = 80.0
 
     init(sizeFactor: CGFloat = 1.0) {
         let size = CGFloat(UIPreferences.nwsIconSize)

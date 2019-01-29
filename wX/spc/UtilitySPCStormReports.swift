@@ -65,7 +65,9 @@ final class UtilitySPCStormReports {
                     damageReport = lineChunks[7]
                 }
             }
-            stormReports.append(StormReport(output, lat, lon, time, magnitude, address, city, state, damageReport, damageHeader))
+            stormReports.append(
+                StormReport(output, lat, lon, time, magnitude, address, city, state, damageReport, damageHeader)
+            )
         }
         return stormReports
     }
