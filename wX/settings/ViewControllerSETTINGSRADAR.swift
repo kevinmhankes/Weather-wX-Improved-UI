@@ -115,9 +115,11 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                 UtilitySettingsRadar.booleanDefault,
                 UtilitySettingsRadar.boolean
             )
-            switchObject.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
-            switchObject.sw.addTarget(self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged)
-            switchObject.sw.tag = index
+            switchObject.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            switchObject.switchUi.addTarget(
+                self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged
+            )
+            switchObject.switchUi.tag = index
         }
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)

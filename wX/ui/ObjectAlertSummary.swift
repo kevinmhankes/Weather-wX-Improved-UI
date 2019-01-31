@@ -8,8 +8,7 @@ import UIKit
 
 final class ObjectAlertSummary: NSObject {
 
-    // TODO variable rename
-    private var urlArr = [String]()
+    private var urls = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0
     private let imageUrls = [
@@ -66,7 +65,7 @@ final class ObjectAlertSummary: NSObject {
                     nwsLoc = ""
                 }
                 let objAlert = ObjectCardAlertSummaryItem(stackView, nwsOffice, nwsLoc, alert)
-                self.urlArr.append(alert.url)
+                self.urls.append(alert.url)
                 objAlert.addGestureRecognizer(
                     UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:)))
                 )
@@ -79,7 +78,7 @@ final class ObjectAlertSummary: NSObject {
     }
 
     func getUrl(_ index: Int) -> String {
-        return urlArr[index]
+        return urls[index]
     }
 
     @objc func imageClicked() {}

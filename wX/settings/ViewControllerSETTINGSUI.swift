@@ -86,17 +86,17 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
                 UtilitySettingsUI.booleanDefault,
                 UtilitySettingsUI.boolean
             )
-            switchObject.vw.addTarget(
+            switchObject.button.addTarget(
                 self,
                 action: #selector(self.getHelp(sender:)),
                 for: .touchUpInside
             )
-            switchObject.sw.addTarget(
+            switchObject.switchUi.addTarget(
                 self,
                 action: #selector(self.switchChanged(sender:)),
                 for: UIControl.Event.valueChanged
             )
-            switchObject.sw.tag = $0
+            switchObject.switchUi.tag = $0
         }
         generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
         generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)

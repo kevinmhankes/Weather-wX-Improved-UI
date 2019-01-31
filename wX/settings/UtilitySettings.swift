@@ -31,11 +31,11 @@ final class UtilitySettings {
 
     static func switchChanged(sender: ObjectSettingsSwitch) {
         let prefLabels = [String](sender.prefMap.keys).sorted(by: <)
-        let isOnQ = sender.sw.isOn
+        let isOnQ = sender.switchUi.isOn
         var truthString = "false"
         if isOnQ {
             truthString = "true"
         }
-        Utility.writePref(prefLabels[sender.sw.tag], truthString)
+        Utility.writePref(prefLabels[sender.switchUi.tag], truthString)
     }
 }
