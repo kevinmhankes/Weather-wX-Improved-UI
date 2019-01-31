@@ -148,14 +148,13 @@ class UtilityAwcRadarMosaic {
         return get(sectors[index])
     }
 
-    static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
+    static func getAnimation(_ sector: String) -> AnimationDrawable {
         // image_url[14] = "/data/obs/radar/20190131/22/20190131_2216_rad_rala_dtw.gif";
         let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
         let html = productUrl.getHtml()
         let urls = html.parseColumn(
             "image_url.[0-9]{1,2}. = ./data/obs/radar/([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_rad_rala_" + sector + ".gif)."
         )
-        //print(urls)
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }

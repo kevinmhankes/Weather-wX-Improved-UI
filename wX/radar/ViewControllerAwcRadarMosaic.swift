@@ -23,7 +23,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             object: nil
         )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
+        animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
         self.view.addSubview(toolbar)
@@ -62,7 +62,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
 
-    @objc func animateClicked() {
+    /*@objc func animateClicked() {
         _ = ObjectPopUp(
             self,
             "Select number of animation frames:",
@@ -70,13 +70,12 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             [5, 10, 20, 30],
             self.getAnimation(_:)
         )
-    }
+    }*/
 
-    func getAnimation(_ frameCount: Int) {
+    @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityAwcRadarMosaic.getAnimation(
-                UtilityAwcRadarMosaic.sectors[self.index],
-                frameCount
+                UtilityAwcRadarMosaic.sectors[self.index]
             )
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
