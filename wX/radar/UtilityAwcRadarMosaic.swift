@@ -132,7 +132,7 @@ class UtilityAwcRadarMosaic {
     // https://www.aviationweather.gov/data/obs/radar/rad_rala_msp.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_tops-18_alb.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_cref_bwi.gif
-    
+
     static func get(_ sector: String) -> Bitmap {
         let product = "rala"
         return Bitmap(baseUrl + "rad_" + product + "_" + sector + ".gif")
@@ -149,22 +149,13 @@ class UtilityAwcRadarMosaic {
     }
 
     static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
-        var sectorUrl = ""
-        if sector == "latest" {
-            sectorUrl = "NAT"
-        } else {
-            sectorUrl = sector
-        }
-        var sPattern = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl == "alaska" {
-            sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
-        }
-        let urls = UtilityImgAnim.getUrlArray(
-            MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
-            sPattern,
-            numberOfFrames
+        // image_url[14] = "/data/obs/radar/20190131/22/20190131_2216_rad_rala_dtw.gif";
+        let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
+        let html = productUrl.getHtml()
+        let urls = html.parseColumn(
+            "image_url.[0-9]{1,2}. = ./data/obs/radar/([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_rad_rala_" + sector + ".gif)."
         )
-        let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
+        //print(urls)
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
