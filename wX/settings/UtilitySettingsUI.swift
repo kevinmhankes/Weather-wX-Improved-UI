@@ -21,7 +21,8 @@ final class UtilitySettingsUI {
     ]
 
     static let helpStrings = [
-        "Use the AWC Radar mosaic images instead of the main NWS images.": "Use the AWC Radar mosaic images instead of the main NWS images.",
+        "Use the AWC Radar mosaic images instead of the main NWS images.": "Use the AWC Radar "
+            + "mosaic images instead of the main NWS images.",
         "Remove extra line breaks in text products": "Remove extra line breaks in text products",
         "Use Fahrenheit": "Use Fahrenheit",
         "Use Millibars": "Use Millibars",

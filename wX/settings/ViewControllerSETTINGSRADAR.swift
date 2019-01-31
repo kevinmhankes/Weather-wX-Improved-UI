@@ -121,12 +121,12 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         }
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
-            objNp.sw.dataSource = self
-            objNp.sw.delegate = self
-            objNp.sw.tag = index
-            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            objNp.numberPicker.dataSource = self
+            objNp.numberPicker.delegate = self
+            objNp.numberPicker.tag = index
+            objNp.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
-                objNp.sw.selectRow(
+                objNp.numberPicker.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
                         of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
                         )!,
@@ -134,7 +134,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                     animated: true
                 )
             } else {
-                objNp.sw.selectRow(
+                objNp.numberPicker.selectRow(
                     Utility.readPref(
                         prefVar,
                         UtilitySettingsRadar.pickerinit[prefVar]!

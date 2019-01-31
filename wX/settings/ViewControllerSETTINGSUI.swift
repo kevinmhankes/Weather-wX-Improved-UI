@@ -104,19 +104,19 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         generatePickerValues("NWS_ICON_SIZE_PREF", from: 0, to: 100, by: 1)
         Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
-            objNp.sw.dataSource = self
-            objNp.sw.delegate = self
-            objNp.sw.tag = index
-            objNp.vw.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            objNp.numberPicker.dataSource = self
+            objNp.numberPicker.delegate = self
+            objNp.numberPicker.tag = index
+            objNp.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)
                 if defaultRowIndex == nil {
                     defaultRowIndex = 0
                 }
-                objNp.sw.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
+                objNp.numberPicker.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
             } else {
-                objNp.sw.selectRow(
+                objNp.numberPicker.selectRow(
                     Utility.readPref(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
                     inComponent: 0,
                     animated: true

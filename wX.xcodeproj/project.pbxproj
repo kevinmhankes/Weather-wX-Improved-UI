@@ -1072,8 +1072,6 @@
 		F09504B11E1530D4008A966E /* radar */ = {
 			isa = PBXGroup;
 			children = (
-				0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */,
-				0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */,
 				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				F0F7760B1E00092A0022484C /* LatLon.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
@@ -1084,6 +1082,7 @@
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
 				F0B3355F1DA3FD6F0035BD36 /* SpotterReports.swift */,
+				0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */,
 				F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */,
 				F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */,
 				F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */,
@@ -1096,6 +1095,7 @@
 				03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */,
 				03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */,
 				F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */,
+				0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */,
 				F011E6161DB03E25006531FD /* ViewControllerNWSMOSAIC.swift */,
 				F0B3352B1DA3FD3B0035BD36 /* WXGLDownload.swift */,
 				F0B3352C1DA3FD3B0035BD36 /* WXGLNexrad.swift */,

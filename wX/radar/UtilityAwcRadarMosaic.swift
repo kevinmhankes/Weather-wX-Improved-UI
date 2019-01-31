@@ -153,7 +153,9 @@ class UtilityAwcRadarMosaic {
         let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
         let html = productUrl.getHtml()
         let urls = html.parseColumn(
-            "image_url.[0-9]{1,2}. = ./data/obs/radar/([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_rad_rala_" + sector + ".gif)."
+            "image_url.[0-9]{1,2}. = ./data/obs/radar/([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_rad_rala_"
+                + sector
+                + ".gif)."
         )
         let bitmaps = urls.map {Bitmap(baseUrl + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
