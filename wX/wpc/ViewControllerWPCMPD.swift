@@ -11,6 +11,7 @@ class ViewControllerWPCMPD: UIwXViewController {
 
     var bitmaps = [Bitmap]()
     var txtArr = [String]()
+    var urls = [String]()
     var mpdNumber = ""
     var text = ""
     var product = ""
@@ -46,6 +47,7 @@ class ViewControllerWPCMPD: UIwXViewController {
                 self.product = "WPCMPD" + $0
                 self.text = UtilityDownload.getTextProduct(self.product)
                 self.txtArr.append(self.text)
+                self.urls.append(imgUrl)
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
@@ -55,8 +57,10 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.textViewText = self.txtArr[sender.data]
-        self.goToVC("textviewer")
+        //ActVars.textViewText = self.txtArr[sender.data]
+        //self.goToVC("textviewer")
+        ActVars.imageViewerUrl = self.urls[sender.data]
+        self.goToVC("imageviewer")
     }
 
     @objc func shareClicked(sender: UIButton) {

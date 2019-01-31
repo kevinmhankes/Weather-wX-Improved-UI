@@ -11,6 +11,7 @@ class ViewControllerSPCMCD: UIwXViewController {
 
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
+    var urls = [String]()
     var playListButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
     var spcMcdNumber = ""
@@ -48,6 +49,7 @@ class ViewControllerSPCMCD: UIwXViewController {
                 self.product = "SPCMCD" + number
                 self.text = UtilityDownload.getTextProduct(self.product)
                 self.listOfText.append(self.text)
+                self.urls.append(imgUrl)
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
@@ -57,8 +59,10 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.textViewText = self.listOfText[sender.data]
-        self.goToVC("textviewer")
+        //ActVars.textViewText = self.listOfText[sender.data]
+        //self.goToVC("textviewer")
+        ActVars.imageViewerUrl = self.urls[sender.data]
+        self.goToVC("imageviewer")
     }
 
     @objc func shareClicked(sender: UIButton) {
