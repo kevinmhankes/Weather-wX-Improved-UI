@@ -171,7 +171,12 @@ final class ObjectImageTileMatrix: NSObject {
         case "auroralforecast":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "AURORAL_FORECAST"
-        case "nws_sector":   token = "nwsmosaic"
+        case "nws_sector":
+            if !UIPreferences.useAwcRadarMosaic {
+                token = "nwsmosaic"
+            } else {
+                token = "awcradarmosaic"
+            }
         case "opc":          token = "opc"
         case "goesfulldisk": token = "goesglobal"
         case "nwsobs":       token = "obssites"

@@ -81,8 +81,12 @@ final class UtilityActions {
             token = "playlist"
         case "Radar Mosaic":
             if Location.isUS {
-                ActVars.nwsMosaicType = "local"
-                token = "nwsmosaic"
+                if !UIPreferences.useAwcRadarMosaic {
+                    ActVars.nwsMosaicType = "local"
+                    token = "nwsmosaic"
+                } else {
+                    token = "awcradarmosaic"
+                }
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
                 ActVars.caRadarProv = UtilityCanada.getECSectorFromProv(prov)

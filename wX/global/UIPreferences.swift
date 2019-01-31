@@ -30,8 +30,10 @@ class UIPreferences {
     static var mainScreenCondense = false
     static var nwsIconSize: Float = 80.0
     static let sideSpacing: CGFloat = 10.0
+    static var useAwcRadarMosaic = false
 
     static func initialize() {
+        useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
         showMetarInCC = Utility.readPref("SHOW_METAR_IN_CC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
         dualpaneRadarIcon = Utility.readPref("DUALPANE_RADAR_ICON", "false").hasPrefix("t")

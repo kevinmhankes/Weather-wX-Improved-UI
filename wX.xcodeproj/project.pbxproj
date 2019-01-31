@@ -47,6 +47,8 @@
 		037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */; };
 		0382B26A1FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */; };
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
+		0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */; };
+		0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */; };
 		038651F821FDB00700C48DF1 /* ObjectCardStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */; };
 		038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */; };
 		03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */; };
@@ -415,6 +417,8 @@
 		037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalBuffers.swift; sourceTree = "<group>"; };
 		0382B2681FB44B85000DF617 /* UtilityModelSPCHREFInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInputOutput.swift; sourceTree = "<group>"; };
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
+		0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAwcRadarMosaic.swift; sourceTree = "<group>"; };
+		0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAwcRadarMosaic.swift; sourceTree = "<group>"; };
 		038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStormReportItem.swift; sourceTree = "<group>"; };
 		038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardAlertSummaryItem.swift; sourceTree = "<group>"; };
 		03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMAPKITVIEW.swift; sourceTree = "<group>"; };
@@ -1068,6 +1072,8 @@
 		F09504B11E1530D4008A966E /* radar */ = {
 			isa = PBXGroup;
 			children = (
+				0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */,
+				0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */,
 				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				F0F7760B1E00092A0022484C /* LatLon.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
@@ -1788,6 +1794,7 @@
 				F0F942871DBBE0E100D30E36 /* ViewControllerOPC.swift in Sources */,
 				F0B335E81DA3FDA70035BD36 /* UtilitySPCCompmap.swift in Sources */,
 				F0B335B21DA3FD960035BD36 /* UtilityModelESRLInputOutput.swift in Sources */,
+				0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */,
 				035924B81FE9BF5C00B93BF9 /* UtilityGOES16.swift in Sources */,
 				F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */,
 				F03D8A591E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift in Sources */,
@@ -1795,6 +1802,7 @@
 				F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */,
 				F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */,
 				0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */,
+				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,
 				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
 				F0DF4C751DBEB8D200D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift in Sources */,

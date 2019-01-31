@@ -16,10 +16,12 @@ final class UtilitySettingsUI {
         "SHOW_METAR_IN_CC": "Show Metar in CC",
         "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
         "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
-        "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen"
+        "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
+        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the main NWS images."
     ]
 
     static let helpStrings = [
+        "Use the AWC Radar mosaic images instead of the main NWS images.": "Use the AWC Radar mosaic images instead of the main NWS images.",
         "Remove extra line breaks in text products": "Remove extra line breaks in text products",
         "Use Fahrenheit": "Use Fahrenheit",
         "Use Millibars": "Use Millibars",
@@ -56,7 +58,8 @@ final class UtilitySettingsUI {
         "SHOW_METAR_IN_CC": "false",
         "RADAR_TOOLBAR_TRANSPARENT": "true",
         "UI_MAIN_SCREEN_RADAR_FAB": "true",
-        "UI_MAIN_SCREEN_CONDENSE": "false"
+        "UI_MAIN_SCREEN_CONDENSE": "false",
+        "USE_AWC_RADAR_MOSAIC": "false"
     ]
 
     static let picker = [
