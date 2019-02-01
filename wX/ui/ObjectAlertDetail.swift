@@ -16,11 +16,23 @@ final class ObjectAlertDetail {
             let objText = ObjectTextView(stackView, "")
             textViews.append(objText)
         }
-        textViews[0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 2)
+        textViews[0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 4)
         textViews[4].color = UIColor.blue
     }
 
-    func updateContent(_ cap: CAPAlert) {
+    func updateContent(_ alert: CAPAlert) {
+        let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
+        let wfo = alert.title.parse("by (.*?)$")
+        self.textViews[0].text = title
+        self.textViews[1].text = "Issued: " + startTime
+        self.textViews[2].text = "End: " + endTime
+        self.textViews[3].text = wfo
+        self.textViews[4].text = alert.area.removeSingleLineBreaks()
+        self.textViews[5].text = alert.summary.removeSingleLineBreaks()
+        self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
+    }
+
+    static func condenseTime(_ cap: CAPAlert) -> (String, String, String) {
         let title = cap.title.parse("(.*?) issued")
         var startTime = cap.title.parse("issued (.*?) until")
         if startTime == "" {
@@ -33,13 +45,6 @@ final class ObjectAlertDetail {
         if endTime == "" {
             endTime = cap.title.parse("expiring (.*?) by")
         }
-        let wfo = cap.title.parse("by (.*?)$")
-        self.textViews[0].text = title
-        self.textViews[1].text = "Issued: " + startTime
-        self.textViews[2].text = "End: " + endTime
-        self.textViews[3].text = wfo
-        self.textViews[4].text = cap.area.removeSingleLineBreaks()
-        self.textViews[5].text = cap.summary.removeSingleLineBreaks()
-        self.textViews[6].text = cap.instructions.removeSingleLineBreaks()
+        return(title, startTime, endTime)
     }
 }

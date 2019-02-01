@@ -19,7 +19,7 @@ final class ObjectCardAlertSummaryItem {
     var endTime = ""
 
     init(_ stackView: UIStackView, _ office: String, _ location: String, _ alert: CAPAlert) {
-        self.condenseTime(alert)
+        (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         tvName.text = office + " (" + location + ")"
         tvName.view.textColor = UIColor.blue
         tvTitle.text = title
@@ -38,22 +38,6 @@ final class ObjectCardAlertSummaryItem {
         )
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
-    }
-
-    // TODO make this in common with ObjectAlertDetail
-    func condenseTime(_ cap: CAPAlert) {
-        title = cap.title.parse("(.*?) issued")
-        startTime = cap.title.parse("issued (.*?) until")
-        if startTime == "" {
-            startTime = cap.title.parse("issued (.*?) expiring")
-        }
-        if startTime == "" {
-            startTime = cap.title.parse("issued (.*?) by")
-        }
-        endTime = cap.title.parse("until (.*?) by")
-        if endTime == "" {
-            endTime = cap.title.parse("expiring (.*?) by")
-        }
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
