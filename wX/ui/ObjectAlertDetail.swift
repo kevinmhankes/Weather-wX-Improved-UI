@@ -24,9 +24,9 @@ final class ObjectAlertDetail {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let wfo = alert.title.parse("by (.*?)$")
         self.textViews[0].text = title
-        self.textViews[1].text = "Issued: " + startTime
-        self.textViews[2].text = "End: " + endTime
-        self.textViews[3].text = wfo
+        self.textViews[1].text = wfo
+        self.textViews[2].text = "Issued: " + startTime
+        self.textViews[3].text = "End: " + endTime
         self.textViews[4].text = alert.area.removeSingleLineBreaks()
         self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
