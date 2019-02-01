@@ -125,11 +125,9 @@ class UtilityUSImgNWSMosaic {
     }
 
     static func getLocalRadarMosaic() -> Bitmap {
-        let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(
-            UtilityUSImgNWSMosaic.getStateFromRid()
-        )
-        let index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
-        return UtilityUSImgNWSMosaic.get(UtilityUSImgNWSMosaic.sectors[index])
+        let nwsRadarMosaicSectorLabelCurrent = getSectorFromState(getStateFromRid())
+        let index = sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
+        return get(sectors[index])
     }
 
     static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {

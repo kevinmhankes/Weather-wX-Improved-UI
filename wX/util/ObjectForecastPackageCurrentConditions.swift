@@ -43,9 +43,9 @@ final class ObjectForecastPackageCurrentConditions {
             iconUrl = tmpArr.1
         }
         if MyApplication.currentConditionsViaMetar {
-            status = UtilityUSv2.getStatusViaMetar(conditionsTimeStr)
+            status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
         } else {
-            status = UtilityUSv2.getStatus(conditionsTimeStr)
+            status = UtilityObs.getStatus(conditionsTimeStr)
         }
         formatCC()
     }
@@ -100,7 +100,7 @@ final class ObjectForecastPackageCurrentConditions {
 
     func getConditions(_ location: LatLon) -> (String, String) {
         var sb = ""
-        let obsClosest = UtilityUSv2.getObsFromLatLon(location)
+        let obsClosest = UtilityObs.getObsFromLatLon(location)
         let observationData = ("https://api.weather.gov/stations/" + obsClosest +  "/observations/current").getNwsHtml()
         let icon = observationData.parseFirst("\"icon\": \"(.*?)\",")
         let condition = observationData.parseFirst("\"textDescription\": \"(.*?)\",")

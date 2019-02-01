@@ -224,7 +224,13 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "RAD_2KM":
             needsBitmap = false
-            bitmap = UtilityUSImgNWSMosaic.getLocalRadarMosaic()
+            if !UIPreferences.useAwcRadarMosaic {
+                bitmap = UtilityUSImgNWSMosaic.getLocalRadarMosaic()
+            } else {
+                let prefToken = "AWCMOSAIC_PARAM_LAST_USED"
+                let index = Utility.readPref(prefToken, 0)
+                bitmap = UtilityAwcRadarMosaic.get(UtilityAwcRadarMosaic.sectors[index])
+            }
         case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
         case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
         case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"

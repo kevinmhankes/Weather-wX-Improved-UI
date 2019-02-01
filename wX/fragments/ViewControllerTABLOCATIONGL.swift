@@ -541,8 +541,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         case "SPCMESO_TTD":
             token = "spcmeso"
         case "RAD_2KM":
-            ActVars.nwsMosaicType = "local"
-            token = "nwsmosaic"
+            if !UIPreferences.useAwcRadarMosaic {
+                ActVars.nwsMosaicType = "local"
+                token = "nwsmosaic"
+            } else {
+                token = "awcradarmosaic"
+            }
         case "GOES16":
             ActVars.goesSector = ""
             ActVars.goesProduct = ""

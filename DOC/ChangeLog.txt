@@ -13,10 +13,11 @@
 
 AppStore writeup:
 
-Add two new options in Settings -> UI to change Icon size on front screen or condense output. Minor formatting adjustments.
+Add ew options in Settings -> UI to use AWC Radar Mosaics instead of the main NWS Radar Mosaics.
 
-2019_01_31 55800 MCD/MPD tap image goes to dedicated imageviewer now
-		 add Awc mosaic radar option
+2019_02_01 55800 MCD/MPD tap image goes to dedicated imageviewer now
+		 add Awc mosaic radar option (incl homescreen support)
+		 misc code refactor
 2019_01_29 55700 add UI_MAIN_SCREEN_CONDENSE option
 		 add NWS_ICON_SIZE_PREF option
 		 change text color of sunrise card on locfrag from gray to black

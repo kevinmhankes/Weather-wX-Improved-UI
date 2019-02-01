@@ -6,9 +6,7 @@
 
 import Foundation
 
-final class UtilityUSv2 {
-
-    // TODO rename class
+final class UtilityObs {
 
     static var obsClosestClass = ""
     static var obsCodeToLocation = [String: String]()

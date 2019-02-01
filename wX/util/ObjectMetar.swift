@@ -28,7 +28,7 @@ final class ObjectMetar {
 
     init(_ location: LatLon) {
         let obsClosest = UtilityMetar.findClosestObservation(location)
-        UtilityUSv2.obsClosestClass = obsClosest.name
+        UtilityObs.obsClosestClass = obsClosest.name
         if !decodeIcon {
             let observationData = ("https://api.weather.gov/stations/"
                 + obsClosest.name +  "/observations/current").getNwsHtml()

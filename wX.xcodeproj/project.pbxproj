@@ -49,6 +49,7 @@
 		0382B26B1FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */; };
 		0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */; };
 		0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */; };
+		0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E04122043ADF00DA45C2 /* UtilityObs.swift */; };
 		038651F821FDB00700C48DF1 /* ObjectCardStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */; };
 		038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */; };
 		03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */; };
@@ -210,7 +211,6 @@
 		F096C09B1DADB18700E63046 /* ViewControllerSOUNDING.swift in Sources */ = {isa = PBXBuildFile; fileRef = F096C0991DADB18700E63046 /* ViewControllerSOUNDING.swift */; };
 		F096C09C1DADB18700E63046 /* ViewControllerHOURLY.swift in Sources */ = {isa = PBXBuildFile; fileRef = F096C09A1DADB18700E63046 /* ViewControllerHOURLY.swift */; };
 		F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */; };
-		F098F7891E4F8923007EDD2A /* UtilityUSv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F7881E4F8923007EDD2A /* UtilityUSv2.swift */; };
 		F098F78B1E4F89A0007EDD2A /* ObjectForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */; };
 		F0A0C7E31DDF17070052EC98 /* ViewControllerUSALERTSDETAIL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0C7E21DDF17070052EC98 /* ViewControllerUSALERTSDETAIL.swift */; };
 		F0A1EDBF1DC0F09F000BDE46 /* ViewControllerNHCGOES.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1EDBE1DC0F09F000BDE46 /* ViewControllerNHCGOES.swift */; };
@@ -419,6 +419,7 @@
 		0382B2691FB44B85000DF617 /* UtilityModelSPCHREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSPCHREFInterface.swift; sourceTree = "<group>"; };
 		0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAwcRadarMosaic.swift; sourceTree = "<group>"; };
 		0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAwcRadarMosaic.swift; sourceTree = "<group>"; };
+		0382E04122043ADF00DA45C2 /* UtilityObs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityObs.swift; sourceTree = "<group>"; };
 		038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStormReportItem.swift; sourceTree = "<group>"; };
 		038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardAlertSummaryItem.swift; sourceTree = "<group>"; };
 		03940CBA21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMAPKITVIEW.swift; sourceTree = "<group>"; };
@@ -588,7 +589,6 @@
 		F096C0991DADB18700E63046 /* ViewControllerSOUNDING.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSOUNDING.swift; sourceTree = "<group>"; };
 		F096C09A1DADB18700E63046 /* ViewControllerHOURLY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHOURLY.swift; sourceTree = "<group>"; };
 		F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextView.swift; sourceTree = "<group>"; };
-		F098F7881E4F8923007EDD2A /* UtilityUSv2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUSv2.swift; sourceTree = "<group>"; };
 		F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecast.swift; sourceTree = "<group>"; };
 		F0A0C7E21DDF17070052EC98 /* ViewControllerUSALERTSDETAIL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUSALERTSDETAIL.swift; sourceTree = "<group>"; };
 		F0A1EDBE1DC0F09F000BDE46 /* ViewControllerNHCGOES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNHCGOES.swift; sourceTree = "<group>"; };
@@ -1061,10 +1061,10 @@
 				F0B3359D1DA3FD960035BD36 /* UtilityMap.swift */,
 				F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */,
 				035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */,
+				0382E04122043ADF00DA45C2 /* UtilityObs.swift */,
 				F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */,
 				F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */,
 				F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */,
-				F098F7881E4F8923007EDD2A /* UtilityUSv2.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1580,6 +1580,7 @@
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
 				F0B335A81DA3FD960035BD36 /* UtilityFileManagement.swift in Sources */,
+				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
 				F0FE64211DB5924A0064553C /* ViewControllerSETTINGSUI.swift in Sources */,
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
@@ -1633,7 +1634,6 @@
 				F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */,
 				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
-				F098F7891E4F8923007EDD2A /* UtilityUSv2.swift in Sources */,
 				F0F761C51DC20BD500F71A5F /* ViewControllerPLAYLIST.swift in Sources */,
 				0358E22B1F49E65D00397017 /* ViewControllerGOES16.swift in Sources */,
 				03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */,
