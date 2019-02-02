@@ -72,13 +72,18 @@ class UtilityAwcRadarMosaic {
 
     static func getAnimation(_ sector: String, _ product: String) -> AnimationDrawable {
         // image_url[14] = "/data/obs/radar/20190131/22/20190131_2216_rad_rala_dtw.gif";
+        // https://www.aviationweather.gov/satellite/plot?region=us&type=wv
         var baseAddOn = "radar/"
+        var baseAddOnTopUrl = "radar/"
         var imageType = ".gif"
+        var topUrlAddOn = ""
         if product.contains("sat_") {
+            baseAddOnTopUrl = "satellite/"
             baseAddOn = "sat/us/"
             imageType = ".jpg"
+            topUrlAddOn = "&type=" + product.replace("sat_", "")
         }
-        let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
+        let productUrl = "https://www.aviationweather.gov/" + baseAddOnTopUrl + "plot?region=" + sector + topUrlAddOn
         let html = productUrl.getHtml()
         let urls = html.parseColumn(
             "image_url.[0-9]{1,2}. = ./data/obs/" + baseAddOn + "([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_" + product + "_"
