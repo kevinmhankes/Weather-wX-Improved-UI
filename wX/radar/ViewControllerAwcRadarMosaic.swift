@@ -48,6 +48,8 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
     }
 
     func getContent() {
+        self.productButton.title = self.product
+        self.sectorButton.title = self.sector
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
             DispatchQueue.main.async {
