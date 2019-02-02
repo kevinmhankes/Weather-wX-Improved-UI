@@ -79,7 +79,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            UtilityAwcRadarMosaic.products,
+            UtilityAwcRadarMosaic.productLabels,
             self.productChanged(_:)
         )
     }

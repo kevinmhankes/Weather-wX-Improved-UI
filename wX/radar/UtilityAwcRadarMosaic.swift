@@ -18,7 +18,6 @@ class UtilityAwcRadarMosaic {
         "sat_ircol",
         "sat_irnws",
         "sat_vis",
-        "sat_irbw",
         "sat_wv"
     ]
 
