@@ -61,26 +61,31 @@ class UtilityAwcRadarMosaic {
 
     static func get(_ sector: String, _ product: String) -> Bitmap {
         var baseAddOn = "radar/"
+        var imageType = ".gif"
         if product.contains("sat_") {
             baseAddOn = "sat/us/"
+            imageType = ".jpg"
         }
-        return Bitmap(baseUrl + baseAddOn + product + "_" + sector + ".gif")
+        let url = baseUrl + baseAddOn + product + "_" + sector + imageType
+        return Bitmap(url)
     }
 
     static func getAnimation(_ sector: String, _ product: String) -> AnimationDrawable {
         // image_url[14] = "/data/obs/radar/20190131/22/20190131_2216_rad_rala_dtw.gif";
         var baseAddOn = "radar/"
+        var imageType = ".gif"
         if product.contains("sat_") {
             baseAddOn = "sat/us/"
+            imageType = ".jpg"
         }
         let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
         let html = productUrl.getHtml()
         let urls = html.parseColumn(
             "image_url.[0-9]{1,2}. = ./data/obs/" + baseAddOn + "([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_" + product + "_"
                 + sector
-                + ".gif)."
+                + imageType + ")."
         )
-        let bitmaps = urls.map {Bitmap(baseUrl + $0)}
+        let bitmaps = urls.map {Bitmap(baseUrl + baseAddOn + $0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }
