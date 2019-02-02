@@ -8,7 +8,7 @@ import UIKit
 
 class UtilityAwcRadarMosaic {
 
-    static let baseUrl = "https://www.aviationweather.gov/data/obs/radar/"
+    static let baseUrl = "https://www.aviationweather.gov/data/obs/"
 
     static let products = [
         "rad_rala",
@@ -57,17 +57,26 @@ class UtilityAwcRadarMosaic {
     // https://www.aviationweather.gov/data/obs/radar/rad_rala_msp.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_tops-18_alb.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_cref_bwi.gif
+    // https://www.aviationweather.gov/data/obs/sat/us/sat_vis_dtw.jpg
 
     static func get(_ sector: String, _ product: String) -> Bitmap {
-        return Bitmap(baseUrl + product + "_" + sector + ".gif")
+        var baseAddOn = "radar/"
+        if product.contains("sat_") {
+            baseAddOn = "sat/us/"
+        }
+        return Bitmap(baseUrl + baseAddOn + product + "_" + sector + ".gif")
     }
 
     static func getAnimation(_ sector: String, _ product: String) -> AnimationDrawable {
         // image_url[14] = "/data/obs/radar/20190131/22/20190131_2216_rad_rala_dtw.gif";
+        var baseAddOn = "radar/"
+        if product.contains("sat_") {
+            baseAddOn = "sat/us/"
+        }
         let productUrl = "https://www.aviationweather.gov/radar/plot?region=" + sector
         let html = productUrl.getHtml()
         let urls = html.parseColumn(
-            "image_url.[0-9]{1,2}. = ./data/obs/radar/([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_" + product + "_"
+            "image_url.[0-9]{1,2}. = ./data/obs/" + baseAddOn + "([0-9]{8}/[0-9]{2}/[0-9]{8}_[0-9]{4}_" + product + "_"
                 + sector
                 + ".gif)."
         )
