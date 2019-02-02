@@ -69,7 +69,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             self,
             "Sector Selection",
             sectorButton,
-            UtilityAwcRadarMosaic.sectors,
+            UtilityAwcRadarMosaic.sectorLabels,
             self.sectorChanged(_:)
         )
     }

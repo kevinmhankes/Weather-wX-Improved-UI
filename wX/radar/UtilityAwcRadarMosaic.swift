@@ -52,6 +52,28 @@ class UtilityAwcRadarMosaic {
         "wmc",
         "las"
     ]
+    
+    static let sectorLabels = [
+        "CONUS US",
+        "Albany NY",
+        "Baltimore MD",
+        "Charlotte NC",
+        "Tampa FL",
+        "Detroit MI",
+        "Evansville IN",
+        "Montgomery AL",
+        "Minneapolis MN",
+        "Little Rock AR",
+        "Pierre SD",
+        "Wichita KS",
+        "Austin TX",
+        "Cody WY",
+        "Denver CO",
+        "Albuquerque NM",
+        "Lewiston ID",
+        "Winnemuca NV",
+        "Las Vegas NV"
+    ]
 
     // https://www.aviationweather.gov/data/obs/radar/rad_rala_msp.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_tops-18_alb.gif
