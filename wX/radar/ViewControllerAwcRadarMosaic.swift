@@ -10,9 +10,13 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
 
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
+    var sectorButton = ObjectToolbarIcon()
     var animateButton = ObjectToolbarIcon()
     var index = 0
-    let prefToken = "AWCMOSAIC_PARAM_LAST_USED"
+    var product = "rad_rala"
+    let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
+    let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
+    var sector = "us"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,29 +27,49 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             object: nil
         )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
+        sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                flexBarButton,
+                productButton,
+                sectorButton,
+                animateButton,
+                shareButton
+            ]
+        ).items
         self.view.addSubview(toolbar)
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = Utility.readPref(prefToken, index)
-        self.getContent(index)
+        image = ObjectTouchImageView(self, toolbar)
+        sector = Utility.readPref(prefTokenSector, sector)
+        product = Utility.readPref(prefTokenProduct, product)
+        self.getContent()
     }
 
-    func getContent(_ index: Int) {
-        self.index = index
-        self.productButton.title = UtilityAwcRadarMosaic.labels[self.index]
+    func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityAwcRadarMosaic.get(UtilityAwcRadarMosaic.sectors[self.index])
+            let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                Utility.writePref(self.prefToken, self.index)
+                Utility.writePref(self.prefTokenSector, self.sector)
+                Utility.writePref(self.prefTokenProduct, self.product)
             }
         }
     }
 
     @objc func willEnterForeground() {
-        self.getContent(self.index)
+        self.getContent()
+    }
+
+    @objc func sectorClicked() {
+        _ = ObjectPopUp(
+            self,
+            "Sector Selection",
+            sectorButton,
+            UtilityAwcRadarMosaic.sectors,
+            self.sectorChanged(_:)
+        )
     }
 
     @objc func productClicked() {
@@ -53,37 +77,36 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            UtilityAwcRadarMosaic.labels,
-            self.getContent(_:)
+            UtilityAwcRadarMosaic.products,
+            self.productChanged(_:)
         )
+    }
+
+    func productChanged(_ index: Int) {
+        product = UtilityAwcRadarMosaic.products[index]
+        productButton.title = product
+        self.getContent()
+    }
+
+    func sectorChanged(_ index: Int) {
+        sector = UtilityAwcRadarMosaic.sectors[index]
+        sectorButton.title = sector
+        self.getContent()
     }
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
 
-    /*@objc func animateClicked() {
-        _ = ObjectPopUp(
-            self,
-            "Select number of animation frames:",
-            animateButton,
-            [5, 10, 20, 30],
-            self.getAnimation(_:)
-        )
-    }*/
-
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityAwcRadarMosaic.getAnimation(
-                UtilityAwcRadarMosaic.sectors[self.index]
+                self.sector,
+                self.product
             )
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
         }
-    }
-
-    @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityAwcRadarMosaic.sectors))
     }
 }

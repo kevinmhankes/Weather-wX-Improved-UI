@@ -227,9 +227,13 @@ final class UtilityDownload {
             if !UIPreferences.useAwcRadarMosaic {
                 bitmap = UtilityUSImgNWSMosaic.getLocalRadarMosaic()
             } else {
-                let prefToken = "AWCMOSAIC_PARAM_LAST_USED"
-                let index = Utility.readPref(prefToken, 0)
-                bitmap = UtilityAwcRadarMosaic.get(UtilityAwcRadarMosaic.sectors[index])
+                var product = "rad_rala"
+                let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
+                let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
+                var sector = "us"
+                sector = Utility.readPref(prefTokenSector, sector)
+                product = Utility.readPref(prefTokenProduct, product)
+                bitmap = UtilityAwcRadarMosaic.get(sector, product)
             }
         case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
         case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
