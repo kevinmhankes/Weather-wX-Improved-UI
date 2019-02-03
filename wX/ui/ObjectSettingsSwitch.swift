@@ -24,7 +24,7 @@ final class ObjectSettingsSwitch {
         switchUi.onTintColor = AppColors.primaryColorUIColor
         switchUi.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [button, switchUi])
-        let (wdith, _) = UtilityUI.getScreenBoundsCGFloat()
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
