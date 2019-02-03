@@ -25,6 +25,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         }
         self.view.addSubview(toolbar)
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        // TODO make UI method for effective height with one toolbar
         webView = UIWebView(
             frame: CGRect(
                 x: 0,
