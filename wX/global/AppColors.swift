@@ -8,9 +8,9 @@ import UIKit
 
 class AppColors {
 
-    static var primaryColorRed = CGFloat(46.0/255.0)
-    static var primaryColorGreen = CGFloat(63.0/255.0)
-    static var primaryColorBlue = CGFloat(89.0/255.0)
+    static var primaryColorRed = 46.toColor()
+    static var primaryColorGreen = 63.toColor()
+    static var primaryColorBlue = 89.toColor()
     static var toolbarTextColor = UIColor.white
     static var primaryColorUIColor = UIColor(
         red: primaryColorRed,
@@ -26,9 +26,9 @@ class AppColors {
         let appColor = Utility.readPref("UI_THEME", "blue")
         switch appColor {
         case "black":
-            primaryColorRed = CGFloat(30.0 / 255.0)
-            primaryColorGreen = CGFloat(30.0 / 255.0)
-            primaryColorBlue = CGFloat(30.0 / 255.0)
+            primaryColorRed = 30.toColor()
+            primaryColorGreen = 30.toColor()
+            primaryColorBlue = 30.toColor()
             primaryColorUIColor =  wXColor.uiColorFloat(
                 primaryColorRed,
                 primaryColorGreen,
@@ -38,9 +38,9 @@ class AppColors {
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
             primaryColorFab = wXColor.uiColorInt(100, 100, 100)
         case "green":
-            primaryColorRed = CGFloat(0.0 / 255.0)
-            primaryColorGreen = CGFloat(71.0 / 255.0)
-            primaryColorBlue = CGFloat(6.0 / 255.0)
+            primaryColorRed = 0.toColor()
+            primaryColorGreen = 71.toColor()
+            primaryColorBlue = 6.toColor()
             primaryColorUIColor =  wXColor.uiColorFloat(
                 primaryColorRed,
                 primaryColorGreen,
@@ -50,9 +50,9 @@ class AppColors {
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 46, 4)
             primaryColorFab = wXColor.uiColorInt(70, 175, 70)
         default:
-            primaryColorRed = CGFloat(46.0 / 255.0)
-            primaryColorGreen = CGFloat(63.0 / 255.0)
-            primaryColorBlue = CGFloat(89.0 / 255.0)
+            primaryColorRed = 46.toColor()
+            primaryColorGreen = 63.toColor()
+            primaryColorBlue = 89.toColor()
             primaryColorUIColor =  wXColor.uiColorFloat(
                 primaryColorRed,
                 primaryColorGreen,

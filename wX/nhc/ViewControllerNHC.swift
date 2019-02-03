@@ -95,7 +95,7 @@ class ViewControllerNHC: UIwXViewController {
                 self.refreshViews()
                 self.objNHC?.updateParents(self, self.stackView)
                 self.displayContent()
-        }
+            }
         )
     }
 }
