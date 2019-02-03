@@ -91,17 +91,17 @@ class ViewControllerLIGHTNING: UIwXViewController {
     private func displayContent() {
         image = ObjectTouchImageView(self, toolbar)
         self.image.setBitmap(self.bitmap)
-        //self.image.updateBitmap(bitmap)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in
-                                //self.refreshViews()
-                                self.removeAllViews()
-                                self.view.addSubview(self.toolbar)
-                                self.displayContent()
-        })
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.removeAllViews()
+                self.view.addSubview(self.toolbar)
+                self.displayContent()
+            }
+        )
     }
 }

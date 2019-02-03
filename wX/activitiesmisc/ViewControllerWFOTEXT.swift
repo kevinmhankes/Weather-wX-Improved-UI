@@ -132,12 +132,14 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil,
-        completion: { _ -> Void in
-            self.refreshViews()
-            UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
-            self.textView = ObjectTextView(self.stackView)
-            self.textView.text = self.html
-        })
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
+                self.textView = ObjectTextView(self.stackView)
+                self.textView.text = self.html
+            }
+        )
     }
 }

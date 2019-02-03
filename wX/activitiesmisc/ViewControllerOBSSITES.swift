@@ -108,7 +108,7 @@ class ViewControllerOBSSITES: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-        }
+            }
         )
     }
 }
