@@ -33,26 +33,6 @@ final class UtilityPlayList {
         }
     }
 
-    /*static func downloadAll() {
-        var resultStr = ""
-        let arr = MyApplication.playlistStr.split(":")
-        var text = ""
-        let formattedDate = UtilityTime.getDateAsString(formatTimeString)
-        arr.forEach {
-            text = UtilityDownload.getTextProduct($0)
-            if $0.contains("SWO") {
-                text = text.replaceAll("^<br>", "")
-            }
-            if text != "" {
-                Utility.writePref("PLAYLIST_" + $0, text)
-                Utility.writePref("PLAYLIST_" + $0 + "_TIME", formattedDate)
-            }
-            resultStr += $0 + " " + String(text.count) + " "
-        }
-        let formattedDate2 = UtilityTime.getDateAsString("MM-dd-yy HH:mm:SS Z")
-        Utility.writePref("PLAYLIST_STATUS", formattedDate2 + MyApplication.newline + resultStr)
-    }*/
-
     static func download(_ product: String) {
         var text = ""
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)

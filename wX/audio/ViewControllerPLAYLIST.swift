@@ -35,7 +35,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         ).items
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-            ).isActive = true
+        ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         updateView()
@@ -113,18 +113,6 @@ class ViewControllerPLAYLIST: UIwXViewController {
             let topLine = " "
                 + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
                 + " (size: " + String(productText.count) + ")"
-            /*let txtObject = ObjectTextView(
-                self.stackView,
-                $1 + " "
-                    + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
-                    + " (size: " + String(productText.count) + ")"
-                    + MyApplication.newline
-                    + productText.truncate(200)
-            )
-            txtObject.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-            txtObject.addGestureRecognizer(
-                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
-            )*/
             let playListItem = ObjectCardPlayListItem(self.stackView, $1, topLine, productText.truncate(200))
             playListItem.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
