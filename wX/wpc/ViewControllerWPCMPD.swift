@@ -57,8 +57,6 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        //ActVars.textViewText = self.txtArr[sender.data]
-        //self.goToVC("textviewer")
         ActVars.imageViewerUrl = self.urls[sender.data]
         self.goToVC("imageviewer")
     }

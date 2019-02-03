@@ -89,11 +89,13 @@ class ViewControllerWPCTEXT: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in
-                                self.refreshViews()
-                                self.textView = ObjectTextView(self.stackView)
-                                self.textView.text = self.html
-        })
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.textView = ObjectTextView(self.stackView)
+                self.textView.text = self.html
+            }
+        )
     }
 }
