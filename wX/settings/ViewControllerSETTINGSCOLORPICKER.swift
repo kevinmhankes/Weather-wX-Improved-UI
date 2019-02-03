@@ -27,14 +27,13 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         colorButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, colorButton, defaultButton]).items
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        // TODO create shorter path to get toolbar height
         colPicker = HSBColorPicker(
             frame: CGRect(
                 x: 0,
-                y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
+                y: toolbar.height + UtilityUI.getTopPadding(),
                 width: width,
                 height: height
-                    - toolbar.frame.size.height * 2
+                    - toolbar.height * 2
                     - colorBarSize
                     - UtilityUI.getTopPadding()
             )
@@ -44,7 +43,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         colorBar = UIView(
             frame: CGRect(
                 x: 0,
-                y: height - toolbar.frame.size.height - colorBarSize,
+                y: height - toolbar.height - colorBarSize,
                 width: width,
                 height: colorBarSize
             )
@@ -115,16 +114,16 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         colPicker.frame = CGRect(
                 x: 0,
-                y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
+                y: toolbar.height + UtilityUI.getTopPadding(),
                 width: width,
                 height: height
-                    - toolbar.frame.size.height * 2
+                    - toolbar.height * 2
                     - colorBarSize
                     - UtilityUI.getTopPadding()
             )
         colorBar.frame = CGRect(
                 x: 0,
-                y: height - toolbar.frame.size.height - colorBarSize,
+                y: height - toolbar.height - colorBarSize,
                 width: width,
                 height: colorBarSize
             )

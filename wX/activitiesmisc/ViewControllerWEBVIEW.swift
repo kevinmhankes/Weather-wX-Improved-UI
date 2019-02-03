@@ -31,7 +31,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
                 y: UtilityUI.getTopPadding(),
                 width: width,
                 height: height
-                    - toolbar.frame.size.height
+                    - toolbar.height
                     - UtilityUI.getTopPadding()
                     - UtilityUI.getBottomPadding()
             )
