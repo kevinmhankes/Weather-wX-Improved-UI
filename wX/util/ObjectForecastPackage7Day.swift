@@ -75,7 +75,6 @@ final class ObjectForecastPackage7Day {
             )
         }
         var forecastString = MyApplication.newline + MyApplication.newline
-        //var forecastStringCondense = MyApplication.newline + MyApplication.newline
         forecasts.forEach {
             forecastString += $0.name + ": " + $0.detailedForecast + MyApplication.newline + MyApplication.newline
             self.detailedForecastAl.append($0.name + ": " + $0.detailedForecast)

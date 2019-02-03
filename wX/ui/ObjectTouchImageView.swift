@@ -21,7 +21,6 @@ final class ObjectTouchImageView {
                 y: UtilityUI.getTopPadding(),
                 width: width,
                 height: UtilityUI.effectiveHeight(toolbar)
-                //height: height - toolbar.frame.height - UtilityUI.getTopPadding()
             )
         )
         img.contentMode = UIView.ContentMode.scaleAspectFit

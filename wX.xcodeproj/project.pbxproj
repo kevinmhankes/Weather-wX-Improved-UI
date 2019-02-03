@@ -182,7 +182,6 @@
 		F078FE391DA330B7002CCD13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F078FE371DA330B7002CCD13 /* LaunchScreen.storyboard */; };
 		F078FE441DA330B7002CCD13 /* wXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078FE431DA330B7002CCD13 /* wXTests.swift */; };
 		F078FE4F1DA330B7002CCD13 /* wXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078FE4E1DA330B7002CCD13 /* wXUITests.swift */; };
-		F07A76891DB2EDB2005B973D /* UtilityArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07A76881DB2EDB2005B973D /* UtilityArray.swift */; };
 		F07B5C0C1E53D4DE00555058 /* ObjectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */; };
 		F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */; };
 		F07B5C101E53D73000555058 /* ObjectCard7Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */; };
@@ -560,7 +559,6 @@
 		F078FE4A1DA330B7002CCD13 /* wXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F078FE4E1DA330B7002CCD13 /* wXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wXUITests.swift; sourceTree = "<group>"; };
 		F078FE501DA330B7002CCD13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F07A76881DB2EDB2005B973D /* UtilityArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityArray.swift; sourceTree = "<group>"; };
 		F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImage.swift; sourceTree = "<group>"; };
 		F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSettingsSwitch.swift; sourceTree = "<group>"; };
 		F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7Day.swift; sourceTree = "<group>"; };
@@ -1041,7 +1039,6 @@
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
 				F0118B411DA9771600B43DE5 /* UtilityActions.swift */,
-				F07A76881DB2EDB2005B973D /* UtilityArray.swift */,
 				F0B335651DA3FD6F0035BD36 /* UtilityCanvas.swift */,
 				F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */,
 				F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */,
@@ -1678,7 +1675,6 @@
 				F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */,
 				F011E6191DB03E25006531FD /* ViewControllerNHC.swift in Sources */,
 				F08E48351EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift in Sources */,
-				F07A76891DB2EDB2005B973D /* UtilityArray.swift in Sources */,
 				037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				F0DBC46B1DBAFDE500FC713B /* UtilityDownloadNWS.swift in Sources */,
