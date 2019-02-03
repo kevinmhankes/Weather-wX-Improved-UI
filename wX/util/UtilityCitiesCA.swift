@@ -8,10 +8,10 @@ final class UtilityCitiesCA {
 
     static var cityInit = false
     static let num = 838
-    static var citiesCa =  [String](repeating: "", count: num)
+    static var citiesCa = [String](repeating: "", count: num)
     static var latCa = [Double](repeating: 0.0, count: num)
-    static var lonCa =  [Double](repeating: 0.0, count: num)
-    static var code =  [String](repeating: "", count: num)
+    static var lonCa = [Double](repeating: 0.0, count: num)
+    static var code = [String](repeating: "", count: num)
 
     static func loadCitiesArray() {
         cityInit = true

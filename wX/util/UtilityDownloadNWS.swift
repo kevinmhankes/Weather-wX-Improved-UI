@@ -33,11 +33,9 @@ final class UtilityDownloadNWS {
 
         // https://github.com/JustHTTP/Just
         // http://docs.justhttp.net/QuickStart.html
-
         // is the request successful?
         //r.ok
         //r.statusCode
-
         // what did the server return?
         //r.headers       // response headers
         //r.content       // response body as NSData?
@@ -45,7 +43,6 @@ final class UtilityDownloadNWS {
         //r.json          // response body parsed by NSJSONSerielization
         //r.url           // the URL, as NSURL
         //r.isRedirect    // is this a redirect response
-
     }
 
     static func getNWSStringFromURLXML(_ url: String) -> String {
