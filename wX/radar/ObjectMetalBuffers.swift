@@ -122,7 +122,7 @@ class ObjectMetalBuffers {
     }
 
     func getColorArrayInFloat() -> [Float] {
-        return [Float(red)/255.0, Float(green)/255.0, Float(blue)/255.0]
+        return [red.toColor(), green.toColor(), blue.toColor()]
     }
 
     func putColors() {
