@@ -121,4 +121,8 @@ final class Bitmap {
         UIGraphicsEndImageContext()
         return Bitmap(newImage!)
     }
+
+    class func fromFile(_ filename: String) -> Bitmap {
+        return UtilityIO.readBitmapResourceFromFile(filename)
+    }
 }

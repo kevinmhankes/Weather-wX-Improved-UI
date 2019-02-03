@@ -10,14 +10,13 @@ final class ObjectTileImage {
 
     private var image = ObjectImage()
 
-    init(_ stackView: UIStackView, _ sV: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat) {
-        let bitmap = UtilityIO.readBitmapResourceFromFile(filename)
-        stackView.addArrangedSubview(image.img)
+    init(_ stackView: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat) {
+        let bitmap = Bitmap.fromFile(filename)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         image.img.tag = index
         image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         image.setBitmap(bitmap)
-        sV.addArrangedSubview(image.img)
+        stackView.addArrangedSubview(image.img)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {

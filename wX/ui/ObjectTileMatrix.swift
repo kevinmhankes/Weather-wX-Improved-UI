@@ -66,7 +66,7 @@ final class ObjectImageTileMatrix: NSObject {
                 if jIndex >= icons.count {
                     break
                 }
-                let tile = ObjectTileImage(stackView, sV.view, icons[jIndex], jIndex, iconsPerRow)
+                let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow)
                 switch tabType {
                 case .spc:
                     tile.addGestureRecognizer(

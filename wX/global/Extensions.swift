@@ -165,7 +165,7 @@ extension UInt8 {
     func toColor() -> CGFloat {
         return CGFloat(Float(self) / 255.0)
     }
-    
+
     func toColor() -> Float {
         return Float(self) / 255.0
     }
