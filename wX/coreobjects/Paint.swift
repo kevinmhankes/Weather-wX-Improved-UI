@@ -20,9 +20,9 @@ final class Paint {
 
     var uicolor: UIColor {
         return UIColor(
-            red: CGFloat(Float(colorR8) / 255.0),
-            green: CGFloat(Float(colorG8) / 255.0),
-            blue: CGFloat(Float(colorB8) / 255.0),
+            red: colorR8.toColor(),
+            green: colorG8.toColor(),
+            blue: colorB8.toColor(),
             alpha: CGFloat(1.0)
         )
     }

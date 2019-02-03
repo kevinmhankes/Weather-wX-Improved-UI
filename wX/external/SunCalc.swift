@@ -1,3 +1,5 @@
+// please see LICENSE.SunCalc in the root directory
+
 import Foundation
 
 public typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)

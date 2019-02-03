@@ -161,6 +161,18 @@ extension Double {
     static let radPerDegree = Double.pi / 180.0
 }
 
+extension UInt8 {
+    func toColor() -> CGFloat {
+        return CGFloat(Float(self) / 255.0)
+    }
+}
+
+extension Int {
+    func toColor() -> CGFloat {
+        return CGFloat(Float(self) / 255.0)
+    }
+}
+
 extension UIImage {
     func getWidth() -> CGFloat {
         return self.size.width
