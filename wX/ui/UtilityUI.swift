@@ -87,4 +87,9 @@ public class UtilityUI {
         let (_, height) = UtilityUI.getScreenBoundsCGFloat()
         return height - toolbar.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
     }
+
+    class func effectiveHeight(_ toolbar: UIToolbar) -> CGFloat {
+        let (_, height) = UtilityUI.getScreenBoundsCGFloat()
+        return height - toolbar.frame.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
+    }
 }

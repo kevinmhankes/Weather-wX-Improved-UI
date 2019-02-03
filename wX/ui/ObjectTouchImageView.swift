@@ -14,13 +14,14 @@ final class ObjectTouchImageView {
 
     convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar) {
         self.init()
-        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         img = ImageScrollView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
                 width: width,
-                height: height - toolbar.frame.height - UtilityUI.getTopPadding()
+                height: UtilityUI.effectiveHeight(toolbar)
+                //height: height - toolbar.frame.height - UtilityUI.getTopPadding()
             )
         )
         img.contentMode = UIView.ContentMode.scaleAspectFit
