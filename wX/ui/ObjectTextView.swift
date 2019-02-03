@@ -10,6 +10,7 @@ final class ObjectTextView {
 
     let tv = UITextView()
     var textcolor = wXColor()
+    let width: CGFloat
 
     init() {
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -17,30 +18,31 @@ final class ObjectTextView {
         tv.isEditable = false
         tv.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
     convenience init(_ text: String) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
     }
 
     convenience init(_ stackView: UIStackView) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         stackView.addArrangedSubview(self.tv)
     }
 
     convenience init(_ stackView: UIStackView, _ text: String) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         stackView.addArrangedSubview(self.tv)
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         self.color = color
         self.font = font

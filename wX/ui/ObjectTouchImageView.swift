@@ -14,15 +14,15 @@ final class ObjectTouchImageView {
 
     convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar) {
         self.init()
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         img = ImageScrollView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - toolbar.frame.height - UtilityUI.getTopPadding()
+                width: width,
+                height: height - toolbar.frame.height - UtilityUI.getTopPadding()
             )
         )
-        //print("SIZE:" + String(Float(UIScreen.main.bounds.width)))
         img.contentMode = UIView.ContentMode.scaleAspectFit
         img.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(img)

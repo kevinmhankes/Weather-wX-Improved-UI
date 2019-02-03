@@ -26,12 +26,14 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, colorButton, defaultButton]).items
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        // TODO create shorter path to get toolbar height
         colPicker = HSBColorPicker(
             frame: CGRect(
                 x: 0,
                 y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
+                width: width,
+                height: height
                     - toolbar.frame.size.height * 2
                     - colorBarSize
                     - UtilityUI.getTopPadding()
@@ -42,8 +44,8 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         colorBar = UIView(
             frame: CGRect(
                 x: 0,
-                y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
-                width: UIScreen.main.bounds.width,
+                y: height - toolbar.frame.size.height - colorBarSize,
+                width: width,
                 height: colorBarSize
             )
         )
@@ -110,19 +112,20 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
     }
 
     internal override func refreshViews() {
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         colPicker.frame = CGRect(
                 x: 0,
                 y: toolbar.frame.size.height + UtilityUI.getTopPadding(),
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
+                width: width,
+                height: height
                     - toolbar.frame.size.height * 2
                     - colorBarSize
                     - UtilityUI.getTopPadding()
             )
         colorBar.frame = CGRect(
                 x: 0,
-                y: UIScreen.main.bounds.height - toolbar.frame.size.height - colorBarSize,
-                width: UIScreen.main.bounds.width,
+                y: height - toolbar.frame.size.height - colorBarSize,
+                width: width,
                 height: colorBarSize
             )
     }
@@ -133,7 +136,6 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                //self.displayContent()
             }
         )
     }

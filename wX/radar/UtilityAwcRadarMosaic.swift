@@ -52,7 +52,7 @@ class UtilityAwcRadarMosaic {
         "wmc",
         "las"
     ]
-    
+
     static let sectorLabels = [
         "CONUS US",
         "Albany NY",

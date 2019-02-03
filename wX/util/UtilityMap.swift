@@ -62,11 +62,12 @@ final class UtilityMap {
             latitudinalMeters: regionRadius * 2.0,
             longitudinalMeters: regionRadius * 2.0
         )
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         mapView.frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
-            width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.height
+            width: width,
+            height: height
                 - UIPreferences.toolbarHeight
                 - UtilityUI.getBottomPadding()
                 - UtilityUI.getTopPadding()
@@ -80,11 +81,12 @@ final class UtilityMap {
             latitudinalMeters: regionRadius * 2.0,
             longitudinalMeters: regionRadius * 2.0
         )
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         mapView.frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
-            width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.width
+            width: width,
+            height: width
         )
         mapView.setRegion(coordinateRegion, animated: true)
         let annotation = MKPointAnnotation()
@@ -98,11 +100,12 @@ final class UtilityMap {
             latitudinalMeters: regionRadius * 2.0,
             longitudinalMeters: regionRadius * 2.0
         )
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         mapView.frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
-            width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.height
+            width: width,
+            height: height
                 - UIPreferences.toolbarHeight
                 - UtilityUI.getBottomPadding()
                 - UtilityUI.getTopPadding()

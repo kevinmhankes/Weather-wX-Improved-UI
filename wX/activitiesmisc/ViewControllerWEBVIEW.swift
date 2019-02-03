@@ -24,12 +24,13 @@ class ViewControllerWEBVIEW: UIwXViewController {
             toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton]).items
         }
         self.view.addSubview(toolbar)
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         webView = UIWebView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
+                width: width,
+                height: height
                     - toolbar.frame.size.height
                     - UtilityUI.getTopPadding()
                     - UtilityUI.getBottomPadding()

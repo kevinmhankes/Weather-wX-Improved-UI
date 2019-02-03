@@ -22,12 +22,13 @@ final class ObjectToolbar: UIToolbar {
     }
 
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         switch toolbarType {
         case .bottom:
             frame = CGRect(
                 x: 0,
-                y: UIScreen.main.bounds.height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding(),
-                width: UIScreen.main.bounds.width,
+                y: height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding(),
+                width: width,
                 height: UIPreferences.toolbarHeight
             )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
@@ -35,12 +36,11 @@ final class ObjectToolbar: UIToolbar {
             frame = CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
-                width: UIScreen.main.bounds.width,
+                width: width,
                 height: UIPreferences.toolbarHeight
             )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
-        //sizeToFit()
         barTintColor = UIColor(
             red: AppColors.primaryColorRed,
             green: AppColors.primaryColorGreen,
@@ -59,10 +59,11 @@ final class ObjectToolbar: UIToolbar {
     }
 
     func resize() {
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
-            width: UIScreen.main.bounds.width,
+            width: width,
             height: UIPreferences.toolbarHeight
         )
         autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]

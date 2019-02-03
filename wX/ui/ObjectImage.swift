@@ -16,40 +16,36 @@ final class ObjectImage {
         img.contentMode = UIView.ContentMode.scaleAspectFit
         img.translatesAutoresizingMaskIntoConstraints = false
         img.isUserInteractionEnabled = true
+        (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap) {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        setImageAnchors(UIScreen.main.bounds.width)
+        setImageAnchors(width)
         stackView.addArrangedSubview(img)
-        // TODO replace with utilityui
-        width = UIScreen.main.bounds.width
     }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
         self.init()
         img.image = bitmap.image
         self.bitmap = bitmap
-        setImageAnchors(UIScreen.main.bounds.width - UIPreferences.stackviewCardSpacing * 2.0)
+        setImageAnchors(width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
-        width = UIScreen.main.bounds.width
     }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, viewOrder: Int) {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        setImageAnchors(UIScreen.main.bounds.width)
+        setImageAnchors(width)
         stackView.insertArrangedSubview(img, at: viewOrder)
-        width = UIScreen.main.bounds.width
     }
 
     convenience init(_ stackView: UIStackView) {
         self.init()
         stackView.addArrangedSubview(img)
-        width = UIScreen.main.bounds.width
     }
 
     func setBitmap(_ bitmap: Bitmap) {
