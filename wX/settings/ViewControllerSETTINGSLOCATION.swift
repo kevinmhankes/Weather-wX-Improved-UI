@@ -8,17 +8,12 @@ import UIKit
 
 class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
-    //var addButton = ObjectToolbarIcon()
     var locations = [String]()
     var fab: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, ObjectToolbarIcon.iconToString[.plus]!, #selector(addClicked))
         self.view.addSubview(fab!.view)
@@ -123,7 +118,6 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
                 + "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
                 + " \(MyApplication.locations[$0].state)")
             locations.append(locationStr)
-            //let off = "WFO:\(MyApplication.locations[$0].wfo) RID:\(MyApplication.locations[$0].rid)"
             let name = MyApplication.locations[$0].name
             let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) "
             let details = "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"

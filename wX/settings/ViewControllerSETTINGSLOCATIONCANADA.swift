@@ -8,7 +8,7 @@ import UIKit
 
 class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
 
-    var tvArr = [ObjectTextView]()
+    var textViews = [ObjectTextView]()
     var html = ""
     var filter = ""
     var cityDisplay = false
@@ -16,7 +16,6 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     var listIds = [String]()
     var listCity = [String]()
     var statusButton = ObjectToolbarIcon()
-    //var showProv = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,7 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     func showDisplayProv() {
         UtilityCanada.provList.enumerated().forEach {
             let objText = ObjectTextView(self.stackView, $1)
-            self.tvArr.append(objText)
+            self.textViews.append(objText)
             objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:))))
             objText.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 3)
         }
@@ -78,7 +77,7 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
         self.cityDisplay = true
         self.listCity.enumerated().forEach {
             let objText = ObjectTextView(self.stackView, $1)
-            self.tvArr.append(objText)
+            self.textViews.append(objText)
             objText.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
             )

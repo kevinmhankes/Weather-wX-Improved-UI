@@ -129,30 +129,39 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             preferredStyle: .alert
         )
         alert.addTextField {(textField) in textField.text = ""}
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            let textField = alert.textFields![0]
-            self.searchAddress(textField.text!)
-            self.labelTextView.view.text = textField.text?.capitalized
-        }))
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: {_ in
+                    let textField = alert.textFields![0]
+                    self.searchAddress(textField.text!)
+                    self.labelTextView.view.text = textField.text?.capitalized
+                }
+            )
+        )
         self.present(alert, animated: true, completion: nil)
     }
 
     func searchAddress(_ address: String) {
-        CLGeocoder().geocodeAddressString(address, completionHandler: {(placemarks, error) in
-            if error != nil {
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                self.latTextView.text = String(coordinate!.latitude)
-                self.lonTextView.text = String(coordinate!.longitude)
-                if self.latTextView.text != "" && self.lonTextView.text != "" {
-                    self.saveClicked()
+        CLGeocoder().geocodeAddressString(
+            address,
+            completionHandler: {(placemarks, error) in
+                if error != nil {
+                    return
+                }
+                if (placemarks?.count)! > 0 {
+                    let placemark = placemarks?[0]
+                    let location = placemark?.location
+                    let coordinate = location?.coordinate
+                    self.latTextView.text = String(coordinate!.latitude)
+                    self.lonTextView.text = String(coordinate!.longitude)
+                    if self.latTextView.text != "" && self.lonTextView.text != "" {
+                        self.saveClicked()
+                    }
                 }
             }
-        })
+        )
     }
 
     @objc func gpsClicked() {
@@ -263,26 +272,22 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     }
 
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
-        var center: CLLocationCoordinate2D = CLLocationCoordinate2D()
-        let lat: Double = Double(latStr) ?? 0.0
-        let lon: Double = Double(lonStr) ?? 0.0
+        var center = CLLocationCoordinate2D()
+        let lat = Double(latStr) ?? 0.0
+        let lon = Double(lonStr) ?? 0.0
         let ceo: CLGeocoder = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
-        let loc: CLLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
-        ceo.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) in
+        let loc = CLLocation(latitude: center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(
+            loc,
+            completionHandler: { (placemarks, error) in
                 if error != nil {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                 }
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
                     let pm = placemarks![0]
-                    //print(pm.country)
-                    //print(pm.locality)
-                    //print(pm.subLocality)
-                    //print(pm.thoroughfare)
-                    //print(pm.postalCode)
-                    //print(pm.subThoroughfare)
                     let locationName: String
                     if pm.locality != nil {
                         locationName = pm.locality!
@@ -291,6 +296,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                     }
                     self.saveFromMap(locationName, latStr, lonStr)
                 }
-        })
+            }
+        )
     }
 }
