@@ -40,28 +40,28 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var textObj = WXMetalTextObject()
     var colorLegend = UIColorLegend()
     var screenScale = 0.0
+    var paneRange: Range<Int> = 0..<1
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        setPaneSize(size)
-        // TODO make this global
-        let paneRange = 0..<numberOfPanes
+        setPaneSize()
         paneRange.enumerated().forEach { index, _ in
             self.render(index)
         }
         coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in
-                                UtilityMap.setupMap(
-                                    self.mapView,
-                                    GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_"
-                                )
-
-        })
+            completion: { _ -> Void in
+                UtilityMap.setupMap(
+                    self.mapView,
+                    GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_"
+                )
+            }
+        )
     }
 
-    func setPaneSize(_ size: CGSize) {
-        let screenWidth = size.width
-        let screenHeight = size.height + CGFloat(UIPreferences.toolbarHeight)
+    func setPaneSize() {
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        let screenWidth = width
+        let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
@@ -80,12 +80,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let halfWidth = screenWidth / 2
         let halfHeight = screenHeight / 2
         if numberOfPanes == 1 {
-            //metalLayer[0]!.frame = view.layer.frame
             metalLayer[0]!.frame = CGRect(
                 x: 0,
                 y: 0,
-                width: size.width,
-                height: size.height
+                width: width,
+                height: height
             )
         } else if numberOfPanes == 2 {
             // top half for dual
@@ -136,7 +135,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
         numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
-        let paneRange = 0..<numberOfPanes
+        paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
@@ -185,9 +184,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if numberOfPanes == 1 {
             toolbarButtons.append(timeButton)
         }
-        toolbarButtons.append(flexBarButton)
-        toolbarButtons.append(animateButton)
-        toolbarButtons.append(fixedSpace)
+        toolbarButtons += [flexBarButton, animateButton, fixedSpace]
         paneRange.forEach {
             toolbarButtons.append(productButton[$0])
         }
@@ -202,8 +199,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
         }
-        let screenSize: CGSize = UIScreen.main.bounds.size
-        setPaneSize(screenSize)
+        setPaneSize()
         metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))

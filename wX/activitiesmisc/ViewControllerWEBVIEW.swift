@@ -24,17 +24,13 @@ class ViewControllerWEBVIEW: UIwXViewController {
             toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton]).items
         }
         self.view.addSubview(toolbar)
-        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        // TODO make UI method for effective height with one toolbar
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         webView = UIWebView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
                 width: width,
-                height: height
-                    - toolbar.height
-                    - UtilityUI.getTopPadding()
-                    - UtilityUI.getBottomPadding()
+                height: UtilityUI.effectiveHeight(toolbar)
             )
         )
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]

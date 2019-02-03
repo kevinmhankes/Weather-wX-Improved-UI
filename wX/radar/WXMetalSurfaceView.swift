@@ -234,8 +234,6 @@ final class WXMetalSurfaceView {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let slowItDown: Float = 1.0
-        //let maxZoom: Float = 15.0
-        //let minZoom: Float = 0.03
         let fudge: Float = 0.01
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {

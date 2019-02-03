@@ -36,9 +36,9 @@ final class ObjectCardCC {
         let stackViewLocalCC = ObjectStackViewHS()
         stackViewLocalCC.setupWithPadding()
         stackView.addArrangedSubview(stackViewLocalCC)
-        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
-            equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
+            equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
         updateCard(objFcst, isUS)

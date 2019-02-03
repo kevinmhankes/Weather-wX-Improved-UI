@@ -14,7 +14,6 @@ public class ObjectFab {
     init(_ uiv: UIViewController, _ action: Selector) {
         floaty.sticky = true
         floaty.friendlyTap = false
-        //floaty.itemShadowColor = UIColor.white
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
         floaty.buttonColor = AppColors.primaryColorFab
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: "ic_flash_on_24dp")!, 0.50)

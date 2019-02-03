@@ -44,7 +44,6 @@ public class ObjectScrollStackView {
                 views: ["stackView": stackView]
             )
         )
-        //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
         scrollView.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|-" + "0" + "-[stackView]-50-|",
@@ -84,14 +83,6 @@ public class ObjectScrollStackView {
             views: ["scrollView": scrollView]
         )
         uiv.view.addConstraints(fragmentHeightConstraint!)
-        /*uiv.view.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-68-[scrollView]-52-|",
-                options: .alignAllCenterX,
-                metrics: nil,
-                views: ["scrollView": scrollView]
-            )
-        )*/
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing

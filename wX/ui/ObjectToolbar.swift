@@ -68,11 +68,9 @@ final class ObjectToolbar: UIToolbar {
         )
         autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
     }
-    
+
     var height: CGFloat {
-        get {
-            return frame.size.height
-        }
+        return frame.size.height
     }
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}

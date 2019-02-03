@@ -9,7 +9,6 @@ import UIKit
 final class ObjectCard7Day {
 
     private var isUS = true
-    // TODO HS?
     private let horizontalContainer: ObjectCardStackView
     private let topText = ObjectTextViewLarge(80.0)
     private let bottomText = ObjectTextViewSmallGray(80.0)
@@ -35,9 +34,9 @@ final class ObjectCard7Day {
         )
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
-        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
-            equalToConstant: CGFloat(bounds.0 - (UIPreferences.stackviewCardSpacing * 2.0))
+            equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
