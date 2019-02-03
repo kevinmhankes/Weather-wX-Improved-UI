@@ -94,10 +94,12 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in
-                                self.refreshViews()
-                                self.displayContent()
-        })
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }
