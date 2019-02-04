@@ -43,7 +43,7 @@ final class WXMetalTextObject {
     init(
         _ context: UIViewController,
         _ numPanes: Int,
-        _  glviewWidth: Double,
+        _ glviewWidth: Double,
         _ glviewHeight: Double,
         _ OGLR: WXMetalRender,
         _ screenScale: Double
@@ -217,7 +217,8 @@ final class WXMetalTextObject {
                         spotterLon = Double(tmpArrObs[1]) ?? 0.0
                         tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
                             spotterLat,
-                            spotterLon * -1.0, OGLR.pn
+                            spotterLon * -1.0,
+                            OGLR.pn
                         )
                         if true {
                             let xPos = tmpCoords.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
@@ -231,8 +232,10 @@ final class WXMetalTextObject {
                                 let ii = glview.obsAl.count-1
                                 glview.obsAl[ii].textColor = RadarGeometry.radarColorObs
                                 glview.obsAl[ii].textSize = textSize
-                                glview.obsAl[ii].setPadding(CGFloat(glviewWidth / 2)
-                                    + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
+                                glview.obsAl[ii].setPadding(
+                                    CGFloat(glviewWidth / 2) + CGFloat(xPos * scale),
+                                    CGFloat(glviewHeight / 2) + CGFloat(yPos * scale)
+                                )
                                 if Double(OGLR.zoom) > obsExtZoom {
                                     glview.obsAl[ii].setText(tmpArrObsExt[2])
                                 } else if PolygonType.OBS.display {
