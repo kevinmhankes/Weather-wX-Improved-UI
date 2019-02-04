@@ -97,36 +97,36 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             // bottom half for dual
             metalLayer[1]!.frame = CGRect(
                 x: 0,
-                y: CGFloat(halfHeight),
-                width: CGFloat(screenWidth),
-                height: CGFloat(halfHeight)
+                y: halfHeight,
+                width: screenWidth,
+                height: halfHeight
             )
         } else if numberOfPanes == 4 {
             // top half for quad
             metalLayer[0]!.frame = CGRect(
                 x: 0,
                 y: 0,
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
+                width: halfWidth,
+                height: halfHeight
             )
             metalLayer[1]!.frame = CGRect(
                 x: CGFloat(halfWidth),
                 y: 0,
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
+                width: halfWidth,
+                height: halfHeight
             )
             // bottom half for quad
             metalLayer[2]!.frame = CGRect(
                 x: 0,
-                y: CGFloat(halfHeight),
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
+                y: halfHeight,
+                width: halfWidth,
+                height: halfHeight
             )
             metalLayer[3]!.frame = CGRect(
-                x: CGFloat(halfWidth),
-                y: CGFloat(halfHeight),
-                width: CGFloat(halfWidth),
-                height: CGFloat(halfHeight)
+                x: halfWidth,
+                y: halfHeight,
+                width: halfWidth,
+                height: halfHeight
             )
         }
     }
@@ -235,9 +235,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             print("error init pipelineState")
         }
         commandQueue = device.makeCommandQueue()
-        wxMetal.forEach {
-            $0?.setRenderFunction(render(_:))
-        }
+        wxMetal.forEach {$0?.setRenderFunction(render(_:))}
         // Below two lines enable continuous updates
         //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
@@ -299,7 +297,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 projectionMatrix: projectionMatrix,
                 //clearColor: MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
                 clearColor: nil
-        ) // was MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
+        )
     }
 
     /*@objc func newFrame(displayLink: CADisplayLink) {
@@ -454,13 +452,18 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
     }
 
-    func mapView(_ mapView: MKMapView,
-                 viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(
+        _ mapView: MKMapView,
+        viewFor annotation: MKAnnotation
+    ) -> MKAnnotationView? {
         return UtilityMap.mapView(mapView, annotation)
     }
 
-    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView,
-                 calloutAccessoryControlTapped control: UIControl) {
+    func mapView(
+        _ mapView: MKMapView,
+        annotationView: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl
+    ) {
         mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
@@ -581,8 +584,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
-        let alert = UIAlertController(title: "Closest radar site:",
-                                      message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(
+            title: "Closest radar site:",
+            message: alertMessage,
+            preferredStyle: UIAlertController.Style.actionSheet
+        )
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
@@ -652,7 +658,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func updateColorLegend() {
-        if RadarPreferences.radarShowLegend && numberOfPanes==1 {
+        if RadarPreferences.radarShowLegend && numberOfPanes == 1 {
             colorLegend.removeFromSuperview()
             colorLegend = UIColorLegend(
                 wxMetal[0]!.product,
