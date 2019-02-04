@@ -26,6 +26,7 @@ class R {
         static let colormaprefcode = pre + "colormaprefcode.txt"
         static let colormaprefnssl = pre + "colormaprefnssl.txt"
         static let colormaprefnwsd = pre + "colormaprefnwsd.txt"
+        static let colormaprefnws = pre + "colormaprefnws.txt"
         static let colormaprefcodenh = pre + "colormaprefcodenh.txt"
         static let colormaprefmenh = pre + "colormaprefmenh.txt"
         static let colormaprefgreen = pre + "colormaprefgreen.txt"

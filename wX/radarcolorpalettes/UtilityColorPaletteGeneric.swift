@@ -226,6 +226,7 @@ final class UtilityColorPaletteGeneric {
             case "GREEN": UtilityColorPaletteGeneric.generate(product, "GREEN")
             case "AF":    UtilityColorPaletteGeneric.generate(product, "AF")
             case "EAK":   UtilityColorPaletteGeneric.generate(product, "EAK")
+            case "NWS":   UtilityColorPaletteGeneric.generate(product, "NWS")
             default:      UtilityColorPaletteGeneric.generate(product, map)
             }
         case "99":

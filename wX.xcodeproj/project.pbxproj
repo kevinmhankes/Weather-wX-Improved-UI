@@ -68,6 +68,7 @@
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
+		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
 		03DF17EE21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */; };
 		03DF17F021AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */; };
 		03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */; };
@@ -438,6 +439,7 @@
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
+		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
 		03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalRadarBuffers.swift; sourceTree = "<group>"; };
 		03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalNexradLevelData.swift; sourceTree = "<group>"; };
 		03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerf.swift; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 				F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */,
 				F06DB42F1DA41547005B243A /* colormaprefmenh.txt */,
 				F06DB4301DA41547005B243A /* colormaprefnssl.txt */,
+				03DD5B1E2209061500828BF9 /* colormaprefnws.txt */,
 				F06DB4311DA41547005B243A /* colormaprefnwsd.txt */,
 				F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */,
 				F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */,
@@ -1433,6 +1436,7 @@
 				F06DB4531DA41547005B243A /* dvn94.bin in Resources */,
 				F06DB4431DA41547005B243A /* colormap134cod.txt in Resources */,
 				F06DB4451DA41547005B243A /* colormap159cod.txt in Resources */,
+				03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */,
 				F06DB4391DA41547005B243A /* hwv4ext.bin in Resources */,
 				F06DB43B1DA41547005B243A /* maps.txt in Resources */,
 				F06DB44F1DA41547005B243A /* colormaprefnssl.txt in Resources */,

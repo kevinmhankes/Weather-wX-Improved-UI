@@ -17,6 +17,7 @@ final class UtilityColorPalette {
             case "CODE":  cmFileInt = R.Raw.colormaprefcode
             case "NSSL":  cmFileInt = R.Raw.colormaprefnssl
             case "NWSD":  cmFileInt = R.Raw.colormaprefnwsd
+            case "NWS":  cmFileInt = R.Raw.colormaprefnws
             case "COD":   cmFileInt = R.Raw.colormaprefcodenh
             case "CODENH":cmFileInt = R.Raw.colormaprefcodenh
             case "MENH":  cmFileInt = R.Raw.colormaprefmenh
