@@ -54,6 +54,7 @@ class UtilitySWOD1 {
                                 warningList.append(y[0])
                                 (1..<x.count-1).forEach { j in
                                     if x[j] < 99.0 {
+                                        // TODO += []
                                         warningList.append(x[j])
                                         warningList.append(y[j])
                                         warningList.append(x[j])

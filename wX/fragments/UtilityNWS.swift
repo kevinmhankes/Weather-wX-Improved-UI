@@ -32,10 +32,9 @@ final class UtilityNWS {
     static func parseBitmap(_ url: String) -> Bitmap {
         var bitmap = Bitmap()
         if url.contains("/") {
-            var tmpArr = [String]()
-            tmpArr = url.split("/")
-            if tmpArr.count > 1 {
-                bitmap = dualBitmapWithNumbers(tmpArr[0], tmpArr[1])
+            let tokens = url.split("/")
+            if tokens.count > 1 {
+                bitmap = dualBitmapWithNumbers(tokens[0], tokens[1])
             }
         } else {
             bitmap = dualBitmapWithNumbers(url)
