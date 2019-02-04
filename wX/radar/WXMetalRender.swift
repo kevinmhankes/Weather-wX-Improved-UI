@@ -109,18 +109,24 @@ class WXMetalRender {
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display {geographicBuffers.append($0)}
+            if $0.geotype.display {
+                geographicBuffers.append($0)
+            }
         }
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display {radarLayers.append($0)}
+            if $0.geotype.display {
+                radarLayers.append($0)
+            }
         }
-        [warningTstBuffers,
-         warningTorBuffers,
-         warningFfwBuffers,
-         mcdBuffers,
-         watchBuffers,
-         watchTornadoBuffers,
-         mpdBuffers].forEach {
+        [
+            warningTstBuffers,
+            warningTorBuffers,
+            warningFfwBuffers,
+            mcdBuffers,
+            watchBuffers,
+            watchTornadoBuffers,
+            mpdBuffers
+        ].forEach {
             if $0.type.display {
                 radarLayers.append($0)
             }
@@ -142,6 +148,7 @@ class WXMetalRender {
         if PolygonType.SWO.display {
             radarLayers.append(swoBuffers)
         }
+        // TODO convert to += []
         radarLayers.append(stiBuffers)
         radarLayers.append(hiBuffers)
         radarLayers.append(tvsBuffers)
@@ -289,14 +296,14 @@ class WXMetalRender {
         )
         buffers.setToPositionZero()
         var i = 0
-        (0..<(buffers.count/2)).forEach { _ in
+        (0..<(buffers.count / 2)).forEach { _ in
             let f1 = Float(buffers.floatBuffer.getCGFloatNative())
             let f2 = Float(buffers.floatBuffer.getCGFloatNative())
             buffers.metalBuffer[i] = f1
-            buffers.metalBuffer[i+1] = f2
-            buffers.metalBuffer[i+2] = colors[0]
-            buffers.metalBuffer[i+3] = colors[1]
-            buffers.metalBuffer[i+4] = colors[2]
+            buffers.metalBuffer[i + 1] = f2
+            buffers.metalBuffer[i + 2] = colors[0]
+            buffers.metalBuffer[i + 3] = colors[1]
+            buffers.metalBuffer[i + 4] = colors[2]
             i += 5
         }
     }
@@ -380,32 +387,32 @@ class WXMetalRender {
 
     func checkIfTDWR() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
-        if self.product=="TV0" || self.product=="TZL" {
+        if self.product == "TV0" || self.product == "TZL" {
             self.TDWR = true
         } else {
             self.TDWR = false
         }
-        if (self.product=="N0Q"
-            || self.product=="N1Q"
-            || self.product=="N2Q"
-            || self.product=="N3Q"
-            || self.product=="L2REF") && ridIsTdwr {
+        if (self.product == "N0Q"
+            || self.product == "N1Q"
+            || self.product == "N2Q"
+            || self.product == "N3Q"
+            || self.product == "L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
             self.TDWR = true
         }
-        if self.product=="TZL" && !ridIsTdwr {
+        if self.product == "TZL" && !ridIsTdwr {
             self.radarProduct = "N0Q"
             self.TDWR = false
         }
-        if (self.product=="N0U"
-            || self.product=="N1U"
-            || self.product=="N2U"
-            || self.product=="N3U"
-            || self.product=="L2VEL") && ridIsTdwr {
+        if (self.product == "N0U"
+            || self.product == "N1U"
+            || self.product == "N2U"
+            || self.product == "N3U"
+            || self.product == "L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
             self.TDWR = true
         }
-        if self.product=="TV0" && !ridIsTdwr {
+        if self.product == "TV0" && !ridIsTdwr {
             self.radarProduct = "N0U"
             self.TDWR = false
         }
@@ -431,7 +438,9 @@ class WXMetalRender {
             }
             if url == "" {  // not anim
                 [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
-                    if $0.display {self.constructLevel3TextProduct($0)}
+                    if $0.display {
+                        self.constructLevel3TextProduct($0)
+                    }
                 }
                 if PolygonType.SPOTTER.display {
                     self.constructSpotters()
@@ -703,7 +712,7 @@ class WXMetalRender {
             $0.draw(pn)
             $0.generateMtlBuffer(device)
         }
-        if  RadarPreferences.locdotFollowsGps { // locdotBuffers.isInitialized &&
+        if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
