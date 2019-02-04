@@ -77,8 +77,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             nearZ: -100.0,
             farZ: 100.0
         )
-        let halfWidth = screenWidth / 2
-        let halfHeight = screenHeight / 2
+        let halfWidth: CGFloat = screenWidth / 2
+        let halfHeight: CGFloat = screenHeight / 2
         if numberOfPanes == 1 {
             metalLayer[0]!.frame = CGRect(
                 x: 0,
@@ -91,8 +91,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[0]!.frame = CGRect(
                 x: 0,
                 y: 0,
-                width: CGFloat(screenWidth),
-                height: CGFloat(halfHeight)
+                width: screenWidth,
+                height: halfHeight
             )
             // bottom half for dual
             metalLayer[1]!.frame = CGRect(
