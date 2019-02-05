@@ -43,7 +43,10 @@ final class ObjectCard7DayCollection {
             _ = ObjectCALegal(stackViewLocal7Day)
             numCards += 1
         } else {
-            _ = ObjectCardSunTime(stackViewLocal7Day)
+            let obj = ObjectCardSunTime(stackViewLocal7Day)
+            obj.objLabel.addGestureRecognizer(
+                UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction))
+            )
             numCards += 1
         }
     }

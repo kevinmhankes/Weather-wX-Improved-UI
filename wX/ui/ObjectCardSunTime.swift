@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    private let objLabel: ObjectTextView
+    let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView) {
         let sunriseSunset = UtilityTime.getSunriseSunset()
