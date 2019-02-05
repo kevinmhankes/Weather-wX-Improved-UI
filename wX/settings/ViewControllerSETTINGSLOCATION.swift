@@ -112,14 +112,10 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         locations = []
         (0..<Location.numLocations).forEach {
-            let locationStr = (String($0+1)
-                + ": \(MyApplication.locations[$0].name) \(MyApplication.locations[$0].lat)"
-                + " \(MyApplication.locations[$0].lon) "
-                + "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
-                + " \(MyApplication.locations[$0].state)")
-            locations.append(locationStr)
+            locations.append(String($0+1))
             let name = MyApplication.locations[$0].name
-            let latLon = "\(MyApplication.locations[$0].lat) \(MyApplication.locations[$0].lon) "
+            let latLon = MyApplication.locations[$0].lat.truncate(10)
+                + " " + MyApplication.locations[$0].lon.truncate(10)
             let details = "\(MyApplication.locations[$0].wfo) \(MyApplication.locations[$0].rid)"
                 + " \(MyApplication.locations[$0].state)"
             let locationItem = ObjectCardLocationItem(self.stackView, name, latLon, details)
