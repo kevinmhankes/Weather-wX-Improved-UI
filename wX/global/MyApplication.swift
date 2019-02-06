@@ -29,7 +29,7 @@ class MyApplication {
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
     static let nwsAWCwebsitePrefix = "https://www.aviationweather.gov"
     static let nwsGraphicalWebsitePrefix = "http://graphical.weather.gov"
-    static let nwsCPCNcepWebsitePrefix = "http://www.cpc.ncep.noaa.gov"
+    static let nwsCPCNcepWebsitePrefix = "https://www.cpc.ncep.noaa.gov"
     static let nwsGoesWebsitePrefix = "https://www.goes.noaa.gov"
     static let nwsOpcWebsitePrefix = "http://www.opc.ncep.noaa.gov"
     static let nwsNhcWebsitePrefix = "https://www.nhc.noaa.gov"

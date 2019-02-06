@@ -15,13 +15,15 @@
 
 AppStore writeup:
 
-Add new options in Settings -> UI to use AWC Radar Mosaics instead of the main NWS Radar Mosaics.
+Add new options in Settings -> UI to use AWC Radar Mosaics instead of the main NWS Radar Mosaics. Change Level 2 radar to use HTTPS after NWS disabled HTTP access.
 
-2019_02_03 55800 MCD/MPD tap image goes to dedicated imageviewer now
+2019_02_06 55800 MCD/MPD tap image goes to dedicated imageviewer now
 		 add Awc mosaic radar option (incl homescreen support)
 		 misc code refactor
 		 add new colormap nws
 		 main screen tap on sunrise scroll to top
+		[BUG] level2 radar and CPC needed to be changed to HTTPS
+		[BUG] space weather graphics were not available in WCP Img
 2019_01_29 55700 add UI_MAIN_SCREEN_CONDENSE option
 		 add NWS_ICON_SIZE_PREF option
 		 change text color of sunrise card on locfrag from gray to black
