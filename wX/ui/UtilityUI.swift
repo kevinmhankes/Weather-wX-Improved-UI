@@ -92,4 +92,17 @@ public class UtilityUI {
         let (_, height) = UtilityUI.getScreenBoundsCGFloat()
         return height - toolbar.frame.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
     }
+    
+    class func determineDeviceType() {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            print("device type: iphone")
+        case .pad:
+            print("device type: ipad")
+        case .unspecified:
+            print("device type: unknown")
+        default:
+            print("device type: unknown")
+        }
+    }
 }

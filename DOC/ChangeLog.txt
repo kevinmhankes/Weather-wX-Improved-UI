@@ -13,6 +13,8 @@
 // TODO make option to scale homescreen images ( like radar mosaic )
 // TODO remove cr in external files
 
+2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
+
 AppStore writeup:
 
 Add new options in Settings -> UI to use AWC Radar Mosaics instead of the main NWS Radar Mosaics. Change Level 2 radar to use HTTPS after NWS disabled HTTP access.

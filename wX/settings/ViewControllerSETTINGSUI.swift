@@ -13,6 +13,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        UtilityUI.determineDeviceType()
         self.displayContent()
     }
 
