@@ -41,6 +41,7 @@ class UtilityAwcRadarMosaic {
         "dtw",
         "evv",
         "mgm",
+        "msp",
         "lit",
         "pir",
         "ict",
@@ -73,6 +74,27 @@ class UtilityAwcRadarMosaic {
         "Lewiston ID",
         "Winnemuca NV",
         "Las Vegas NV"
+    ]
+
+    static let cityToLatLon = [
+        "Albany NY": LatLon(42.65, -73.75),
+        "Baltimore MD": LatLon(39.29, -76.60),
+        "Charlotte NC": LatLon(35.22, -80.84),
+        "Tampa FL": LatLon(27.96, -82.45),
+        "Detroit MI": LatLon(42.33, -83.04),
+        "Evansville IN": LatLon(37.97, -87.55),
+        "Montgomery AL": LatLon(32.36, -86.29),
+        "Minneapolis MN": LatLon(44.98, -93.25),
+        "Little Rock AR": LatLon(34.74, -92.28),
+        "Pierre SD": LatLon(44.36, -100.33),
+        "Wichita KS": LatLon(37.69, -97.31),
+        "Austin TX": LatLon(30.28, -97.73),
+        "Cody WY": LatLon(44.52, -109.05),
+        "Denver CO": LatLon(39.74, -104.99),
+        "Albuquerque NM": LatLon(35.10, -106.62),
+        "Lewiston ID": LatLon(46.41, -117.01),
+        "Winnemuca NV": LatLon(40.97, -117.73),
+        "Las Vegas NV": LatLon(36.11, -115.17)
     ]
 
     // https://www.aviationweather.gov/data/obs/radar/rad_rala_msp.gif
