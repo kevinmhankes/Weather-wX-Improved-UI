@@ -72,7 +72,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 UIAlertAction(
                     title: localChoicesText[rid],
                     style: .default,
-                    handler: {_ in self.addProduct(rid)}
+                    handler: { _ in self.addProduct(rid)}
                 )
             )
         }
@@ -92,7 +92,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 UIAlertAction(
                     title: ridArr[1],
                     style: .default,
-                    handler: {_ in self.addProduct("IMG-" + ridArr[0])}
+                    handler: { _ in self.addProduct("IMG-" + ridArr[0])}
                 )
             )
         }
@@ -107,7 +107,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 UIAlertAction(
                     title: ridArr[1],
                     style: .default,
-                    handler: {_ in self.addProduct("TXT-" + ridArr[0])}
+                    handler: { _ in self.addProduct("TXT-" + ridArr[0])}
                 )
             )
         }
@@ -124,12 +124,14 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         let title = sender.strData
         let alert = ObjectPopUp(self, title, addButton)
         if index != 0 {
-            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.move(index, .up)}))
+            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up)}))
         }
         if index != (homescreenFav.count - 1) {
-            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.move(index, .down)}))
+            alert.addAction(
+                UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)})
+            )
         }
-        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {_ in self.delete(selection: index)}))
+        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in self.delete(selection: index)}))
         alert.finish()
     }
 

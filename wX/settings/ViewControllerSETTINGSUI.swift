@@ -99,6 +99,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             )
             switchObject.switchUi.tag = $0
         }
+        // TODO move into maps in util
         generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
         generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)
         generatePickerValues("HOMESCREEN_TEXT_LENGTH_PREF", from: 250, to: 2000, by: 250)
