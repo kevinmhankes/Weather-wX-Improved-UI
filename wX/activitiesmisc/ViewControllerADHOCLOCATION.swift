@@ -22,7 +22,7 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         location = ActVars.adhocLocation
-        titleButton.title = location.latString.truncate(6) + "," + location.lonString.truncate(6)
+        titleButton.title = location.latString.truncate(6) + ", " + location.lonString.truncate(6)
         self.getContent()
     }
 

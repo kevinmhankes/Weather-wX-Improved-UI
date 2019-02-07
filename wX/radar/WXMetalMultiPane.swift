@@ -603,8 +603,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(
             "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
         )
-        alert.addAction(UIAlertAction(
-            "Nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
+        alert.addAction(
+            UIAlertAction(
+                "Nearest forecast: "
+                    + pointerLocation.latString.truncate(6)
+                    + ", "
+                    + pointerLocation.lonString.truncate(6), { _ in
+                    UtilityRadarUI.getForecast(pointerLocation, self)}
+            )
         )
         alert.addAction(
             UIAlertAction(
