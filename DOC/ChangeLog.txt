@@ -14,6 +14,7 @@
 // TODO remove cr in external files
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
+		 add 3 additional items in utilMetarConditions
 
 AppStore writeup:
 

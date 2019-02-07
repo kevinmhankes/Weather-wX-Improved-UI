@@ -115,7 +115,8 @@ final class UtilityMetarConditions {
         "Heavy Freezing Drizzle": "fzra",
         "Freezing Rain in Vicinity": "fzra",
         "Freezing Drizzle in Vicinity": "fzra",
-        "Light Freezing Drizzle, Snow": "fzra",  // NEW ADD 2019_01_22
+        "Light Freezing Drizzle, Snow": "fzra",
+        "Freezing Rain, Ice Pellets": "fzra",  // NEW ADD 2019_02_05
 
         "Freezing Rain Rain": "ra_fzra",
         "Light Freezing Rain Rain": "ra_fzra",
@@ -143,6 +144,8 @@ final class UtilityMetarConditions {
         "Light Snow Freezing Drizzle": "fzra_sn",
         "Heavy Snow Freezing Drizzle": "fzra_sn",
 
+        "Light Snow Pellets": "ip", // new add 2019_02_05
+        "Light Snow, Ice Pellets": "ip", // new add 2019_02_05
         "Ice Pellets": "ip",
         "Light Ice Pellets": "ip",
         "Heavy Ice Pellets": "ip",
