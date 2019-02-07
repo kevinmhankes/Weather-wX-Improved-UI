@@ -190,7 +190,7 @@ final class UtilitySettingsRadar {
         "RADAR_SPOTTER_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         //"RADAR_WARN_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
         //"RADAR_WATMCD_LINESIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
-        "RADAR_COLOR_PALETTE_94": ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK","NWS"],
+        "RADAR_COLOR_PALETTE_94": ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK", "NWS"],
         "RADAR_COLOR_PALETTE_99": ["CODENH", "AF", "EAK"],
         "RADAR_HI_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
         "RADAR_TVS_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
