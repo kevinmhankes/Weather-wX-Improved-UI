@@ -1,5 +1,3 @@
-// TODO add tilts to radar
-// TODO color palette editor
 // TODO standard model var names with android version
 // TODO N0U anim not working ( seems worse on slower devices )
 // TODO look for way to save x/y/zoom of images
@@ -11,6 +9,10 @@
 // TODO double-tap radar ipad not quite working
 // BUG uswarn start/end time no space before AM/PM
 // TODO make option to scale homescreen images ( like radar mosaic )
+// TODO add tilts to radar
+// TODO color palette editor
+// TODO FAB in playlist
+// TODO incoming call interrupts playlist
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions

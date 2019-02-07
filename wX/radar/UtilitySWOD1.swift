@@ -50,24 +50,15 @@ class UtilitySWOD1 {
                                 (Double(value) ?? 0.0) * -1.0
                             }
                             if x.count > 0 && y.count > 0 {
-                                warningList.append(x[0])
-                                warningList.append(y[0])
+                                warningList += [x[0], y[0]]
                                 (1..<x.count-1).forEach { j in
                                     if x[j] < 99.0 {
-                                        // TODO += []
-                                        warningList.append(x[j])
-                                        warningList.append(y[j])
-                                        warningList.append(x[j])
-                                        warningList.append(y[j])
+                                        warningList += [x[j], y[j], x[j], y[j]]
                                     } else {
-                                        warningList.append(x[j - 1])
-                                        warningList.append(y[j - 1])
-                                        warningList.append(x[j + 1])
-                                        warningList.append(y[j + 1])
+                                        warningList += [x[j - 1], y[j - 1], x[j + 1], y[j + 1]]
                                     }
                                 }
-                                warningList.append(x[x.count - 1])
-                                warningList.append(y[x.count - 1])
+                                warningList += [x[x.count - 1], y[x.count - 1]]
                             }
                             hashSwo[m] = warningList
                         }

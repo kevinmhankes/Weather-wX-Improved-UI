@@ -141,17 +141,12 @@ class WXMetalRender {
             radarLayers.append(locCircleBuffers)
         }
         if PolygonType.WIND_BARB.display {
-            radarLayers.append(wbCircleBuffers)
-            radarLayers.append(wbGustsBuffers)
-            radarLayers.append(wbBuffers)
+            radarLayers += [wbCircleBuffers, wbGustsBuffers, wbBuffers]
         }
         if PolygonType.SWO.display {
             radarLayers.append(swoBuffers)
         }
-        // TODO convert to += []
-        radarLayers.append(stiBuffers)
-        radarLayers.append(hiBuffers)
-        radarLayers.append(tvsBuffers)
+        radarLayers += [stiBuffers, hiBuffers, tvsBuffers]
         if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn {
             loadGeometry()
         }
