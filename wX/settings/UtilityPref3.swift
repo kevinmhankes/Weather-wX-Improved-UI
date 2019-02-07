@@ -9,6 +9,7 @@ final class UtilityPref3 {
 	static func prefInitRIDLoc() {
 		let value = Utility.readPref("RID_LOC_TLVE", "")
 		if value == "" {
+            // TODO is this needed?
 			Utility.writePref("RID_LOC_iowa_mosaic_AKCOMP", "AK, ")
 			Utility.writePref("RID_LOC_iowa_mosaic_PRCOMP", "PR, ")
 			Utility.writePref("RID_LOC_iowa_mosaic_HICOMP", "HI, ")

@@ -302,7 +302,7 @@ final class Location {
         if locToDeleteInt == widgetLocNumInt {
             Utility.writePref("WIDGET_LOCATION", "1")
         } else if widgetLocNumInt > locToDeleteInt {
-            let shiftNum = String(widgetLocNumInt-1)
+            let shiftNum = String(widgetLocNumInt - 1)
             Utility.writePref("WIDGET_LOCATION", shiftNum)
         }
         Location.refreshLocationData()

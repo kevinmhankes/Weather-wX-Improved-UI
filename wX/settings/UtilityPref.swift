@@ -1210,6 +1210,7 @@ final class UtilityPref {
     static func prefInitRIDXY2() {
         let value = Utility.readPref("RID_TATL_Y", "")
         if value == "" {
+            // TODO is this needed?
             Utility.writePref("RID_aug12_4_X", "aug112014")
             Utility.writePref("RID_latest_X", "36.105")
             Utility.writePref("RID_latest_Y", "97.141")
