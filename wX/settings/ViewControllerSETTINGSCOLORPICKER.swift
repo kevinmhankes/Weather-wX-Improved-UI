@@ -49,6 +49,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
             )
         )
         colorBar.backgroundColor = ActVars.colorObject.uicolorCurrent
+        // TODO use named tuple
         colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.0)
             + ","
             + String(ActVars.colorObject.colorsCurrent.1)
