@@ -49,12 +49,11 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
             )
         )
         colorBar.backgroundColor = ActVars.colorObject.uicolorCurrent
-        // TODO use named tuple
-        colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.0)
-            + ","
-            + String(ActVars.colorObject.colorsCurrent.1)
-            + ","
-            + String(ActVars.colorObject.colorsCurrent.2)
+        colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.red)
+            + ", "
+            + String(ActVars.colorObject.colorsCurrent.green)
+            + ", "
+            + String(ActVars.colorObject.colorsCurrent.blue)
             + ")"
         self.view.addSubview(colorBar)
         self.view.addSubview(toolbar)
@@ -108,7 +107,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         newGreen = ActVars.colorObject.defaultGreen
         newBlue = ActVars.colorObject.defaultBlue
         colorChanged = true
-        colorButton.title = "(" + String(newRed) + "," + String(newGreen) + "," + String(newBlue) + ")"
+        colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }
 
     internal override func refreshViews() {

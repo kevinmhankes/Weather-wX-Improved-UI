@@ -88,6 +88,7 @@ final class UtilityLocation {
         return Array(radarSites[0...cnt])
     }
 
+    // TODO can combine with above
     static func getNearestSoundingSite(_ location: LatLon) -> String {
         var sites = GlobalArrays.soundingSites.map {RID($0, getSiteLocation(site: $0, officeType: "SND"))}
         var shortestDistance = 1000.00

@@ -20,7 +20,7 @@ final class wXColor {
     convenience init(_ color: Int, _ alpha: CGFloat = 1.0) {
         self.init()
         let cArr = intToColors(color)
-        self.uicolorCurrent = wXColor.uiColorInt(cArr.0, cArr.1, cArr.2, alpha)
+        self.uicolorCurrent = wXColor.uiColorInt(cArr.red, cArr.green, cArr.blue, alpha)
     }
 
     convenience init(_ uiLabel: String, _ prefVar: String, _ defaultRed: Int, _ defaultGreen: Int, _ defaultBlue: Int) {
@@ -32,7 +32,7 @@ final class wXColor {
         self.defaultBlue = defaultBlue
         self.uicolorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
         self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
-        self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.0, colorsCurrent.1, colorsCurrent.2)
+        self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 
     func colorToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int {
@@ -79,7 +79,7 @@ final class wXColor {
         )
     }
 
-    func intToColors(_ colorInt: Int) -> (Int, Int, Int) {
+    func intToColors(_ colorInt: Int) -> (red: Int, green: Int, blue: Int) {
         let newRed: Int = (colorInt >> 16) & 0xFF
         let newGreen: Int = (colorInt >> 8) & 0xFF
         let newBlue: Int = colorInt & 0xFF
@@ -88,6 +88,6 @@ final class wXColor {
 
     func regenCurrentColor() {
         self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
-        self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.0, colorsCurrent.1, colorsCurrent.2)
+        self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 }

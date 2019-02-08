@@ -15,6 +15,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     let textPreviewLength = 150
     let synth = AVSpeechSynthesizer()
+    var fabRight: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,8 @@ class ViewControllerPLAYLIST: UIwXViewController {
         ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
+        fabRight = ObjectFab(self, "ic_play_arrow_24dp", #selector(playClicked))
+        self.view.addSubview(fabRight!.view)
         updateView()
     }
 
