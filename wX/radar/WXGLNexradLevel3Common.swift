@@ -36,6 +36,7 @@ class WXGLNexradLevel3Common {
         _ bearing: [Double]
     ) -> [Double] {
         var list = [Double]()
+        // TODO name tuples
         list.append(startPoint.0)
         list.append(startPoint.1)
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)

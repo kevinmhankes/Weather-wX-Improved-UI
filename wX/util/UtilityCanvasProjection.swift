@@ -34,7 +34,7 @@ final class UtilityCanvasProjection {
         return compute4326Numbers(pn)
     }
 
-    static func computeMercatorNumbers(_ lat: Double, _ lon: Double, _ pn: ProjectionNumbers) -> (Double, Double) {
+    static func computeMercatorNumbers(_ lat: Double, _ lon: Double, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
         let test1 = (180.0 / Double.pi * log(tan(Double.pi / 4 + lat * (Double.pi / 180) / 2)))
         let test2 = (180.0 / Double.pi * log(tan(Double.pi / 4 + pn.xDbl * (Double.pi / 180) / 2)))
         let pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
@@ -42,7 +42,7 @@ final class UtilityCanvasProjection {
         return (pixXD, pixYD)
     }
 
-    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (Double, Double) {
+    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
         return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
     }
 
@@ -50,7 +50,7 @@ final class UtilityCanvasProjection {
         _ location: LatLon,
         _ pn: ProjectionNumbers,
         multLonNegativeOne: Bool = true
-    ) -> (Double, Double) {
+    ) -> (lat: Double, lon: Double) {
         if multLonNegativeOne {
             return computeMercatorNumbers(location.lat, location.lon * -1.0, pn)
         } else {

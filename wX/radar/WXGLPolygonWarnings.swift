@@ -37,6 +37,7 @@ final class WXGLPolygonWarnings {
                 }
                 if y.count > 0 && x.count > 0 {
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    // TODO name tuples
                     pixXInit = tmpCoords.0
                     pixYInit = tmpCoords.1
                     warningList.append(tmpCoords.0)

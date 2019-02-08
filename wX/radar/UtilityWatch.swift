@@ -30,8 +30,9 @@ class UtilityWatch {
                 }
                 if y.count > 0 && x.count > 0 {
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    pixXInit = tmpCoords.0
-                    pixYInit = tmpCoords.1
+                    pixXInit = tmpCoords.lat
+                    pixYInit = tmpCoords.lon
+                    // TODO name tuples
                     warningList.append(tmpCoords.0)
                     warningList.append(tmpCoords.1)
                     if x.count == y.count {

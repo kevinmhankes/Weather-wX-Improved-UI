@@ -59,6 +59,7 @@ class WXGLNexradLevel3WindBarbs {
                     bearing
                 )
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                // TODO name tuples
                 stormList += [tmpCoords.0, tmpCoords.1]
                 start = ExternalGlobalCoordinates(ec)
                 ec = ecc.calculateEndingGlobalCoordinates(
