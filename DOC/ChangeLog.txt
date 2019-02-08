@@ -14,7 +14,7 @@
 // TODO FAB in playlist
 // TODO incoming call interrupts playlist
 // TODO replace visual formatting
-// TODO use enum for test size
+// TODO use enum for text size
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions
