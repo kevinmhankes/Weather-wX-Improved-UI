@@ -17,6 +17,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
     let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
     let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
     var sector = "us"
+    var isLocal = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +45,13 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
-        let closestMosaic = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
-        print(closestMosaic)
+        if ActVars.nwsMosaicType == "local" {
+            ActVars.nwsMosaicType = ""
+            isLocal = true
+            let closestMosaic = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
+            print(closestMosaic)
+            sector = closestMosaic
+        }
         self.getContent()
     }
 
@@ -56,8 +62,10 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
             let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                Utility.writePref(self.prefTokenSector, self.sector)
-                Utility.writePref(self.prefTokenProduct, self.product)
+                if !self.isLocal {
+                    Utility.writePref(self.prefTokenSector, self.sector)
+                    Utility.writePref(self.prefTokenProduct, self.product)
+                }
             }
         }
     }

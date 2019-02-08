@@ -20,6 +20,7 @@
 		 add 3 additional items in utilMetarConditions
 		[BUG] AWC Mosaic was missing one token
 		add LatLon for AWC Mosaic locations
+		AWC Mosaic - if from submenu choose closest location
 
 AppStore writeup:
 

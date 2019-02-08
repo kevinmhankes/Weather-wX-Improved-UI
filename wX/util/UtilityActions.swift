@@ -85,6 +85,7 @@ final class UtilityActions {
                     ActVars.nwsMosaicType = "local"
                     token = "nwsmosaic"
                 } else {
+                    ActVars.nwsMosaicType = "local"
                     token = "awcradarmosaic"
                 }
             } else {
