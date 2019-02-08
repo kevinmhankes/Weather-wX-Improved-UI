@@ -57,9 +57,7 @@ class WXGLNexradLevel3HailIndex {
                             Double(nm) * 1852.0,
                             bearing
                         )
-                        // TODO += 
-                        stormList.append(ec.getLatitude())
-                        stormList.append(ec.getLongitude() * -1.0)
+                        stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
                         // FIXME the lat shifts need to be considered when scale changes in radarSite
                         // FIXME need a set of radar datafiles to test against that have tvs/hi, etc
                         let baseSize = 0.015

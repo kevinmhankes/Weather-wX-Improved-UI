@@ -24,6 +24,7 @@
 		AWC Mosaic - if from submenu choose closest location
 		more work on nws color palette
 		remove file LatLonStr (LatLon has everything)
+		start to replace withVisualFormat with constraints
 
 AppStore writeup:
 

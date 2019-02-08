@@ -14,23 +14,41 @@ public class ObjectScrollStackView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
-        uiv.view.addConstraints(
+        
+        /*uiv.view.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|[scrollView]|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: ["scrollView": scrollView]
             )
-        )
-        let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
-        uiv.view.addConstraints(
+        )*/
+
+        //testView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 32),
+        //testView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32),
+        //testView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32),
+        //testView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -32),
+
+        scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
+        scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
+
+        //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
+
+        let topSpace = UtilityUI.getTopPadding()
+        scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor).isActive = true
+
+        /*uiv.view.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|-" + topSpace + "-[scrollView]|",
                 options: .alignAllCenterX,
                 metrics: nil,
                 views: ["scrollView": scrollView]
             )
-        )
+        )*/
+
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         stackView.axis = .vertical
