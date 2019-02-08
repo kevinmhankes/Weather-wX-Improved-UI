@@ -83,7 +83,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         newBlue = colorInt & 0xFF
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
         colorChanged = true
-        colorButton.title = "(" + String(newRed) + "," + String(newGreen) + "," + String(newBlue) + ")"
+        colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }
 
     func saveNewColorClicked() {
