@@ -10,12 +10,12 @@
 // BUG uswarn start/end time no space before AM/PM
 // TODO make option to scale homescreen images ( like radar mosaic )
 // TODO spotters?
-// TODO add tilts to radar
 // TODO color palette editor
+// TODO add tilts to radar
 // TODO FAB in playlist
 // TODO incoming call interrupts playlist
-// TODO replace visual formatting
 // TODO use enum for text size
+// TODO replace visual formatting
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions
@@ -23,6 +23,7 @@
 		add LatLon for AWC Mosaic locations
 		AWC Mosaic - if from submenu choose closest location
 		more work on nws color palette
+		remove file LatLonStr (LatLon has everything)
 
 AppStore writeup:
 

@@ -188,7 +188,7 @@ final class Location {
             Utility.writePref("RID" + locNum, rid.uppercased())
             Utility.writePref("NWS" + locNum, nwsOfficeShortLower.uppercased())
         } else {
-            var tmpLatlon = LatLonStr()
+            var tmpLatlon = LatLon()
             if location.latString.count < 12 {
                 if UtilityCanada.isLabelPresent(labelStr) {
                     tmpLatlon = UtilityCanada.getLatLonFromLabel(labelStr)
@@ -205,11 +205,11 @@ final class Location {
                 id = parseId[0]
             }
             if location.latString.count > 12 {
-                tmpLatlon.latStr = parseProv[2]
-                tmpLatlon.lonStr = parseId[1]
+                tmpLatlon.latString = parseProv[2]
+                tmpLatlon.lonString = parseId[1]
             }
-            Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latStr)
-            Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonStr)
+            Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latString)
+            Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonString)
             Location.numLocations = locNumToSave
             rid = UtilityCanada.getRid(location.latString, location.lonString)
             Utility.writePref("RID" + locNum, rid.uppercased())

@@ -408,7 +408,7 @@ final class UtilityCanada {
         return isPresent
     }
 
-    static func getLatLonFromLabel(_ label: String) -> LatLonStr {
+    static func getLatLonFromLabel(_ label: String) -> LatLon {
         var latLon = [Double]()
         var index = 0
         if !UtilityCitiesCA.cityInit {
@@ -422,6 +422,6 @@ final class UtilityCanada {
             }
             index += 1
         }
-        return LatLonStr(String(latLon[0]), String(latLon[1]))
+        return LatLon(latLon[0], latLon[1])
     }
 }
