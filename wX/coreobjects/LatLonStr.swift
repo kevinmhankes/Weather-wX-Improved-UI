@@ -4,6 +4,8 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+// TODO is this needed?
+
 final class LatLonStr {
 
     var latStr: String = ""
