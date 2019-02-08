@@ -21,6 +21,7 @@
 		[BUG] AWC Mosaic was missing one token
 		add LatLon for AWC Mosaic locations
 		AWC Mosaic - if from submenu choose closest location
+		more work on nws color palette
 
 AppStore writeup:
 
