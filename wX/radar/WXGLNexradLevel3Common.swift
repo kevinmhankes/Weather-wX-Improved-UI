@@ -16,18 +16,17 @@ class WXGLNexradLevel3Common {
         _ distance: Double,
         _ bearing: [Double]
     ) -> [Double] {
-        var list = [Double]()
         let start = ExternalGlobalCoordinates(startEc)
         let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, pn)
-        list += [startCoords.0, startCoords.1]
+        var list = [startCoords.lat, startCoords.lon]
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
         let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list += [tmpCoords.0, tmpCoords.1]
+        list += [tmpCoords.lat, tmpCoords.lon]
         return list
     }
 
     static func drawLine(
-        _ startPoint: (Double, Double),
+        _ startPoint: (lat: Double, lon: Double),
         _  ecc: ExternalGeodeticCalculator,
         _ pn: ProjectionNumbers,
         _ start: ExternalGlobalCoordinates,
@@ -35,14 +34,10 @@ class WXGLNexradLevel3Common {
         _ distance: Double,
         _ bearing: [Double]
     ) -> [Double] {
-        var list = [Double]()
-        // TODO name tuples
-        list.append(startPoint.0)
-        list.append(startPoint.1)
+        var list = [startPoint.lat, startPoint.lon]
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
         let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list.append(tmpCoords.0)
-        list.append(tmpCoords.1)
+        list += [tmpCoords.lat, tmpCoords.lon]
         return list
     }
 }
