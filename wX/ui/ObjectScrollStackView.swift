@@ -36,8 +36,9 @@ public class ObjectScrollStackView {
         //let topSpace = String(Int(Float(UtilityUI.getTopPadding())))
 
         let topSpace = UtilityUI.getTopPadding()
+        let bottomSpace = -(UtilityUI.getBottomPadding() + UIPreferences.toolbarHeight)
         scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
 
         /*uiv.view.addConstraints(
             NSLayoutConstraint.constraints(
@@ -48,28 +49,34 @@ public class ObjectScrollStackView {
             )
         )*/
 
-
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         scrollView.addSubview(stackView)
-        scrollView.addConstraints(
+
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+
+        /*scrollView.addConstraints(
                 NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|[stackView]|",
                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                 metrics: nil,
                 views: ["stackView": stackView]
             )
-        )
-        scrollView.addConstraints(
+        )*/
+
+        /*scrollView.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|-" + "0" + "-[stackView]-50-|",
                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                 metrics: nil,
                 views: ["stackView": stackView]
             )
-        )
+        )*/
     }
 
     convenience init(
