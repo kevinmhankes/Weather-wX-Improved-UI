@@ -9,6 +9,7 @@
 // TODO double-tap radar ipad not quite working
 // BUG uswarn start/end time no space before AM/PM
 // TODO make option to scale homescreen images ( like radar mosaic )
+// TODO spotters?
 // TODO add tilts to radar
 // TODO color palette editor
 // TODO FAB in playlist

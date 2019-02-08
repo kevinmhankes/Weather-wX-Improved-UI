@@ -6,6 +6,8 @@
 
 class UtilityWatch {
 
+    // TODO can this consolidate with warnings?
+
     static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = ""

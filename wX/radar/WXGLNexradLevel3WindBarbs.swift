@@ -21,7 +21,7 @@ class WXGLNexradLevel3WindBarbs {
         var start = ExternalGlobalCoordinates(pn)
         var end = ExternalGlobalCoordinates(pn)
         var ec = ExternalGlobalCoordinates(pn)
-        var tmpCoords = (lat: 0.0,lon: 0.0)
+        var tmpCoords = (lat: 0.0, lon: 0.0)
         let degreeShift = 180.00
         let arrowLength = 2.5
         let arrowSpacing = 3.0
