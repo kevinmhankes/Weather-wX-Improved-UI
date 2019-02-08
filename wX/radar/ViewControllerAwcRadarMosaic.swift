@@ -44,6 +44,8 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
+        let closestMosaic = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
+        print(closestMosaic)
         self.getContent()
     }
 

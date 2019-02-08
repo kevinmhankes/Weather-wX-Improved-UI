@@ -69,7 +69,7 @@ final class UtilityLocation {
         return LatLon(lat, lon)
     }
 
-    static func getNearestRadarSites (_ location: LatLon, _ cnt: Int) -> [RID] {
+    static func getNearestRadarSites(_ location: LatLon, _ cnt: Int) -> [RID] {
         var radarSites = [RID]()
         (0..<GlobalArrays.radars.count).forEach {
             let labels = GlobalArrays.radars[$0].split(":")
@@ -88,7 +88,7 @@ final class UtilityLocation {
         return Array(radarSites[0...cnt])
     }
 
-    static func getNearestSoundingSite (_ location: LatLon) -> String {
+    static func getNearestSoundingSite(_ location: LatLon) -> String {
         var sites = GlobalArrays.soundingSites.map {RID($0, getSiteLocation(site: $0, officeType: "SND"))}
         var shortestDistance = 1000.00
         var currentDistance = 0.0

@@ -97,6 +97,24 @@ class UtilityAwcRadarMosaic {
         "Las Vegas NV": LatLon(36.11, -115.17)
     ]
 
+    static func getNearestMosaic(_ location: LatLon) -> String {
+        var shortestDistance = 1000.00
+        var currentDistance = 0.0
+        var bestIndex = ""
+        cityToLatLon.keys.forEach {
+            currentDistance = LatLon.distance(location, cityToLatLon[$0]!, .MILES)
+            if currentDistance < shortestDistance {
+                shortestDistance = currentDistance
+                bestIndex = $0
+            }
+        }
+        if bestIndex == "" {
+            return "BLAH"
+        }
+        let index = sectorLabels.firstIndex(of: bestIndex)
+        return sectors[index!]
+    }
+
     // https://www.aviationweather.gov/data/obs/radar/rad_rala_msp.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_tops-18_alb.gif
     // https://www.aviationweather.gov/data/obs/radar/rad_cref_bwi.gif
