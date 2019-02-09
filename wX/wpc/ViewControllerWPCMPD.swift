@@ -79,7 +79,7 @@ class ViewControllerWPCMPD: UIwXViewController {
                 _ = ObjectImage(
                     self.stackView,
                     $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
+                    UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
                 )
             }
             if self.bitmaps.count == 1 {

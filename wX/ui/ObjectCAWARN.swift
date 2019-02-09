@@ -120,8 +120,11 @@ final class ObjectCAWARN: NSObject {
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")
-            let tvObj = ObjectTextView(stackView, text)
-            tvObj.addGestureRecognizer(UITapGestureRecognizerWithData(index, uiv, #selector(gotoWarning(sender:))))
+            _ = ObjectTextView(
+                stackView,
+                text,
+                UITapGestureRecognizerWithData(index, uiv, #selector(gotoWarning(sender:)))
+            )
         }
         _ = ObjectCALegal(stackView)
     }
