@@ -16,7 +16,7 @@ final class ObjectAlertDetail {
             let objText = ObjectTextView(stackView, "")
             textViews.append(objText)
         }
-        textViews[0].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 4)
+        textViews[0].font = FontSize.extraLarge.size
         textViews[4].color = UIColor.blue
     }
 
