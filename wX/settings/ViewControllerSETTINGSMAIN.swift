@@ -52,9 +52,12 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
 
     private func displayContent() {
         titles.forEach {
-            let objText = ObjectTextView(self.stackView, $0)
-            objText.tv.font = FontSize.extraLarge.size
-            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:))))
+            _ = ObjectTextView(
+                self.stackView,
+                $0,
+                FontSize.extraLarge.size,
+                UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:)))
+            )
         }
     }
 

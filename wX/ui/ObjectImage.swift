@@ -26,6 +26,11 @@ final class ObjectImage {
         setImageAnchors(width)
         stackView.addArrangedSubview(img)
     }
+    
+    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, _ gesture: UITapGestureRecognizer) {
+        self.init(stackView, bitmap)
+        addGestureRecognizer(gesture)
+    }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
         self.init()

@@ -38,8 +38,9 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
 
     private func displayContent() {
         self.bitmaps.enumerated().forEach {
-            let imgObject = ObjectImage(self.stackView, $1)
-            imgObject.addGestureRecognizer(
+            _ = ObjectImage(
+                self.stackView,
+                $1,
                 UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
             )
         }

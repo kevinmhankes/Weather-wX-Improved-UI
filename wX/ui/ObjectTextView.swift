@@ -39,7 +39,7 @@ final class ObjectTextView {
         self.tv.text = text
         stackView.addArrangedSubview(self.tv)
     }
-    
+
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text)
         addGestureRecognizer(gesture)
@@ -58,7 +58,7 @@ final class ObjectTextView {
         self.init(stackView, text)
         self.font = font
     }
-    
+
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text, font)
         addGestureRecognizer(gesture)
