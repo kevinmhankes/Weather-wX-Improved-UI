@@ -56,8 +56,11 @@ class ViewControllerOBSSITES: UIwXViewController {
         }
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         listCity.enumerated().forEach {
-            let cityTv = ObjectTextView(stackView, $1)
-            cityTv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoObsSite(sender:))))
+            _ = ObjectTextView(
+                stackView,
+                $1,
+                UITapGestureRecognizerWithData($0, self, #selector(self.gotoObsSite(sender:)))
+            )
         }
         self.scrollView.scrollToTop()
     }
@@ -81,8 +84,11 @@ class ViewControllerOBSSITES: UIwXViewController {
         self.stateView = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         GlobalArrays.states.enumerated().forEach {
-            let stateTv = ObjectTextView(stackView, $1)
-            stateTv.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoState(sender:))))
+            _ = ObjectTextView(
+                stackView,
+                $1,
+                UITapGestureRecognizerWithData($0, self, #selector(self.gotoState(sender:)))
+            )
         }
     }
 
