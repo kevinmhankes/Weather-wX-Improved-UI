@@ -36,7 +36,7 @@ final class UIColorLegend: UIView {
     func drawText(_ string: String, _ x: CGFloat, _ y: CGFloat) {
         let textAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white.cgColor,
-            NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont.systemFont(ofSize: 15)
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): FontSize.small.size
             ] as [NSAttributedString.Key: Any]?
         let strn = NSString(string: string)
         drawTextString(context!, strn, textAttributes, x, y)

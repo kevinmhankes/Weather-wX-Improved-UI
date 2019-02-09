@@ -16,7 +16,7 @@ final class ObjectTextViewSmallGray {
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
         tv.isEditable = false
         tv.isScrollEnabled = false
-        tv.font = UIFont.systemFont(ofSize: 15)
+        tv.font = FontSize.small.size
         tv.textContainerInset = UIEdgeInsets.zero
         tv.textColor = UIColor.gray
     }
