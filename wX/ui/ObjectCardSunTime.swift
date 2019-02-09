@@ -16,7 +16,7 @@ final class ObjectCardSunTime {
         objLabel = ObjectTextView(
             stackView,
             sunriseSunset + MyApplication.newline + text,
-            UIFont.systemFont(ofSize: 15),
+            FontSize.small.size,
             UIColor.black
         )
         objLabel.tv.textAlignment = .center
