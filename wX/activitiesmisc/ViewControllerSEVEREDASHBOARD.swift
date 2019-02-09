@@ -66,12 +66,11 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
             if $1 != "" {
                 let sArr = $1.split(MyApplication.newline)
-                let objAlert = ObjectTextView(
+                _ = ObjectTextView(
                     stackView,
-                    "(" + String(sArr.count-1) + ") " + titles[$0] + MyApplication.newline + $1
+                    "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1,
+                    UITapGestureRecognizer(target: self, action: #selector(gotoAlerts))
                 )
-                objAlert.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                    action: #selector(ViewControllerSEVEREDASHBOARD.gotoAlerts)))
             }
         }
     }
