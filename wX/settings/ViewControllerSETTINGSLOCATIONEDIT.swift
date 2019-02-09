@@ -98,11 +98,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         )
         statusTextView.text = status
         view.endEditing(true)
-        let locationC = CLLocationCoordinate2D(
+        /*let locationC = CLLocationCoordinate2D(
             latitude: Double(latTextView.view.text!) ?? 0.0,
             longitude: Double(lonTextView.view.text!) ?? 0.0
-        )
-        UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
+        )*/
+        //UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
     @objc func deleteClicked() {
