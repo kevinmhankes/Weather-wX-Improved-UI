@@ -34,7 +34,7 @@ class ViewControllerSPCMESO: UIwXViewController {
             object: nil
         )
         let toolbarTop = ObjectToolbar(.top)
-        layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(self.layerClicked))
+        layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))

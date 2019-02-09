@@ -20,7 +20,7 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(self.lsrClicked))
+        let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, lsrButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         self.displayPreContent()
@@ -85,7 +85,7 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
 
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(stackView)
-        objDatePicker.datePicker.addTarget(self, action: #selector(self.onDateChanged(sender:)), for: .valueChanged)
+        objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
         image = ObjectImage(self.stackView)
     }
 
@@ -94,12 +94,12 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         self.image.addGestureRecognizer(
             UITapGestureRecognizerWithData(
                 target: self,
-                action: #selector(self.imgClicked(sender:))
+                action: #selector(imgClicked(sender:))
             )
         )
         self.stormReports.enumerated().forEach {
             let objCard = ObjectCardStormReportItem(self.stackView, $1)
-            objCard.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(self.gotoMap(sender:))))
+            objCard.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:))))
         }
     }
 

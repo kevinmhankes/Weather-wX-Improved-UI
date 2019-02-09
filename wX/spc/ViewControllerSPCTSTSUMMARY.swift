@@ -43,7 +43,7 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
             _ = ObjectImage(
                 self.stackView,
                 $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
             )
         }
     }

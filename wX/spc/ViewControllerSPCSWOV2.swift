@@ -81,14 +81,14 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         _ = ObjectImage(
             self.stackView,
             self.bitmaps[0],
-            UITapGestureRecognizerWithData(0, self, #selector(self.imgClicked(sender:)))
+            UITapGestureRecognizerWithData(0, self, #selector(imgClicked(sender:)))
         )
         self.textView = ObjectTextView(self.stackView, self.html)
         stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
             _ = ObjectImage(
                 self.stackView,
                 self.bitmaps[$0],
-                UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
             )
         }
     }
