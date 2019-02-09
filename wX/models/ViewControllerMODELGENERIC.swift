@@ -85,7 +85,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 //rightButton
             ]
         ).items
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true)
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
         fabLeft = ObjectFab(self, "ic_keyboard_arrow_left_24dp", #selector(leftClicked))

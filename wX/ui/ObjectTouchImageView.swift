@@ -12,15 +12,21 @@ final class ObjectTouchImageView {
     private var uiv: UIViewController?
     var bitmap = Bitmap()
 
-    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar) {
+    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, hasTopToolbar: Bool = false) {
         self.init()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        var height = UtilityUI.effectiveHeight(toolbar)
+        var y = UtilityUI.getTopPadding()
+        if hasTopToolbar {
+            y += toolbar.frame.height
+            height -= toolbar.frame.height
+        }
         img = ImageScrollView(
             frame: CGRect(
                 x: 0,
-                y: UtilityUI.getTopPadding(),
+                y: y,
                 width: width,
-                height: UtilityUI.effectiveHeight(toolbar)
+                height: height
             )
         )
         img.contentMode = UIView.ContentMode.scaleAspectFit
@@ -36,8 +42,8 @@ final class ObjectTouchImageView {
         self.bitmap = bitmap
     }
 
-    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector) {
-        self.init(uiv, toolbar)
+    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector, hasTopToolbar: Bool = false) {
+        self.init(uiv, toolbar, hasTopToolbar: hasTopToolbar)
         addGestureRecognizer(action)
     }
 

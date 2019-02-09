@@ -24,6 +24,7 @@
 		more work on nws color palette
 		remove file LatLonStr (LatLon has everything)
 		replace withVisualFormat with constraints
+		fix imageview size in VCs with toptoolbar - model/spc meso
 
 AppStore writeup:
 

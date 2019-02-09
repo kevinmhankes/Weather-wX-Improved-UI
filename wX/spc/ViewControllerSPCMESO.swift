@@ -68,7 +68,7 @@ class ViewControllerSPCMESO: UIwXViewController {
                 sectorButton
             ]
         ).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         self.view.addSubview(toolbarTop)
         self.view.addSubview(toolbar)
