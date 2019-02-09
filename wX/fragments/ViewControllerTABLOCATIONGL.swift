@@ -370,9 +370,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getCurrentConditionCards() {
-        let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(self.ccAction))
-        let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
-        let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(self.gotoHourly))
+        let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
+        let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
+        let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if ccCard == nil {
             ccCard = ObjectCardCC(self.stackViewCurrentConditions.view, objFcst, isUS)
             ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
@@ -590,7 +590,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             FontSize.extraLarge.size,
             UIColor.blue
         )
-        self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.locationAction)))
+        self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
     }
 
     // Clear all views except 7day and current conditions

@@ -116,6 +116,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
             let topLine = " "
                 + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
                 + " (size: " + String(productText.count) + ")"
+            // TODO add gesture to init
             let playListItem = ObjectCardPlayListItem(self.stackView, $1, topLine, productText.truncate(200))
             playListItem.addGestureRecognizer(
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))

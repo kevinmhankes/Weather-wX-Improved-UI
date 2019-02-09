@@ -47,9 +47,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
             || ActVars.modelActivitySelected.contains("SPCSREF")
             || ActVars.modelActivitySelected.contains("SPCHREF")
             || ActVars.modelActivitySelected.contains("WPCGEFS") {
-            productButton = ObjectToolbarIcon(title: "Product", self, #selector(self.showProdMenu))
+            productButton = ObjectToolbarIcon(title: "Product", self, #selector(showProdMenu))
         } else {
-            productButton = ObjectToolbarIcon(title: "Product", self, #selector(self.prodClicked))
+            productButton = ObjectToolbarIcon(title: "Product", self, #selector(prodClicked))
         }
         if ActVars.modelActivitySelected.contains("SPCSREF") {
             subMenu = ObjectMenuData(
@@ -70,8 +70,8 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 UtilityModelWPCGEFSInterface.labels
             )
         }
-        timeButton = ObjectToolbarIcon(title: "Time", self, #selector(self.timeClicked))
-        let doneButton = ObjectToolbarIcon(self, .done, #selector(self.doneClicked))
+        timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))
+        let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         //let leftButton = ObjectToolbarIcon(self, .leftArrow, #selector(self.leftClicked))
         //let rightButton = ObjectToolbarIcon(self, .rightArrow, #selector(self.rightClicked))
         fixedSpace.width = UIPreferences.toolbarIconSpacing
