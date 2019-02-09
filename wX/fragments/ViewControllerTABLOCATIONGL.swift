@@ -50,8 +50,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         super.viewDidLayoutSubviews()
         toolbar.resize()
         fab?.resize()
-        let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
-        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
+        let topSpace = 48 + UtilityUI.getTopPadding()
+        //let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
+        /*if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
             self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
         }
         if self.objScrollStackView != nil {
@@ -62,6 +63,37 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 views: ["scrollView": scrollView]
             )
             self.view.addConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
+        }*/
+        
+        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
+            self.view.removeConstraints(
+                [
+                    self.objScrollStackView!.fragmentHeightAnchor1!,
+                    self.objScrollStackView!.fragmentHeightAnchor2!,
+                    self.objScrollStackView!.fragmentCenterAnchor!
+                ]
+            )
+        }
+        if self.objScrollStackView != nil {
+            
+            self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace)
+            self.objScrollStackView!.fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -52.0)
+            self.view.addConstraints(
+                [
+                    self.objScrollStackView!.fragmentHeightAnchor1!,
+                    self.objScrollStackView!.fragmentHeightAnchor2!,
+                    self.objScrollStackView!.fragmentCenterAnchor!
+                ]
+            )
+            
+            /*self.objScrollStackView!.fragmentHeightConstraint = NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-" + topSpace + "-[scrollView]-52-|",
+                options: .alignAllCenterX,
+                metrics: nil,
+                views: ["scrollView": scrollView]
+            )
+            self.view.addConstraints(self.objScrollStackView!.fragmentHeightConstraint!)*/
         }
     }
 
@@ -115,9 +147,20 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
         ).isActive = true
-        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
+        /*if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
             self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
+        }*/
+        
+        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
+            self.view.removeConstraints(
+                [
+                    self.objScrollStackView!.fragmentHeightAnchor1!,
+                    self.objScrollStackView!.fragmentHeightAnchor2!,
+                    self.objScrollStackView!.fragmentCenterAnchor!
+                ]
+            )
         }
+        
         self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)

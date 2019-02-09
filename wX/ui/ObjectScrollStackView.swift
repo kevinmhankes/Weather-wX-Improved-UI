@@ -8,7 +8,10 @@ import UIKit
 
 public class ObjectScrollStackView {
 
-    var fragmentHeightConstraint: [NSLayoutConstraint]?
+    //var fragmentHeightConstraint: [NSLayoutConstraint]?
+    var fragmentHeightAnchor1: NSLayoutConstraint?
+    var fragmentHeightAnchor2: NSLayoutConstraint?
+    var fragmentCenterAnchor: NSLayoutConstraint?
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,16 +51,22 @@ public class ObjectScrollStackView {
         scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
         scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
-        let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
+        //let topSpace = String(48 + Int(Float(UtilityUI.getTopPadding())))
+        let topSpace = 48 + UtilityUI.getTopPadding()
 
-        fragmentHeightConstraint = NSLayoutConstraint.constraints(
+
+        /*fragmentHeightConstraint = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-" + topSpace + "-[scrollView]-52-|",
             options: .alignAllCenterX,
             metrics: nil,
             views: ["scrollView": scrollView]
-        )
-
-        uiv.view.addConstraints(fragmentHeightConstraint!)
+        )*/
+        
+        fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
+        fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
+        fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -52.0)
+        uiv.view.addConstraints([fragmentHeightAnchor1!, fragmentHeightAnchor2!, fragmentCenterAnchor!])
+        //uiv.view.addConstraints(fragmentHeightConstraint!)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
