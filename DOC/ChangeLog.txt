@@ -15,7 +15,6 @@
 // TODO FAB in playlist
 // TODO incoming call interrupts playlist
 // TODO use enum for text size
-// TODO replace visual formatting
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions
@@ -24,7 +23,7 @@
 		AWC Mosaic - if from submenu choose closest location
 		more work on nws color palette
 		remove file LatLonStr (LatLon has everything)
-		start to replace withVisualFormat with constraints
+		replace withVisualFormat with constraints
 
 AppStore writeup:
 
