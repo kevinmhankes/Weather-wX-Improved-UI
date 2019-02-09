@@ -103,7 +103,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             _ = ObjectImage(
                 self.stackView,
                 $0,
-                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
             index += 1
@@ -113,7 +113,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             _ = ObjectImage(
                 self.stackView,
                 $0,
-                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
             index += 1
@@ -123,7 +123,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             _ = ObjectImage(
                 self.stackView,
                 $0,
-                UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
             index += 1
