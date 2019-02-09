@@ -4,7 +4,6 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-
 // 16 is medium
 
 enum FontSize {
@@ -14,13 +13,13 @@ enum FontSize {
     case extraLarge
     var size: UIFont {
         switch self {
-        case .small:
+        case .small: // 15
+            return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 1.0)
+        case .medium: // 16
             return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-        case .medium:
-            return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-        case .large:
-            return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
-        case .extraLarge:
+        case .large: // 18 TBD
+            return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 2.0)
+        case .extraLarge: // 20
             return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 4.0)
         }
     }
