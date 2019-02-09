@@ -12,7 +12,7 @@ final class ObjectCardHazard {
     private let objLabel: ObjectTextView
 
     init(_ stackView: UIStackView, _ hazard: String) {
-        objLabel = ObjectTextView(stackView, hazard, UIFont.systemFont(ofSize: 20), UIColor.blue)
+        objLabel = ObjectTextView(stackView, hazard, FontSize.extraLarge.size, UIColor.blue)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
