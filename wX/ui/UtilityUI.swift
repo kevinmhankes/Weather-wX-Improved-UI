@@ -105,10 +105,11 @@ public class UtilityUI {
             print("device type: unknown")
         }
     }
-    
+
     class func printBounds() {
         let nativeBounds = UIScreen.main.nativeBounds   // 1125x2436
         let bounds = UIScreen.main.bounds         // 375x812
         print(nativeBounds)
+        print(bounds)
     }
 }
