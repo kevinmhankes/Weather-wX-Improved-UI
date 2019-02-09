@@ -16,7 +16,7 @@ final class ObjectTextView {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.isScrollEnabled = false
         tv.isEditable = false
-        tv.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize)
+        tv.font = FontSize.medium.size
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
