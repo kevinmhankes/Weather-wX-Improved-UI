@@ -27,6 +27,7 @@
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
+		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
 		0358E22B1F49E65D00397017 /* ViewControllerGOES16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358E22A1F49E65D00397017 /* ViewControllerGOES16.swift */; };
 		035924B81FE9BF5C00B93BF9 /* UtilityGOES16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035924B71FE9BF5C00B93BF9 /* UtilityGOES16.swift */; };
@@ -395,6 +396,7 @@
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
+		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		0358E22A1F49E65D00397017 /* ViewControllerGOES16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerGOES16.swift; sourceTree = "<group>"; };
 		035924B71FE9BF5C00B93BF9 /* UtilityGOES16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityGOES16.swift; sourceTree = "<group>"; };
@@ -1223,6 +1225,7 @@
 				0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */,
 				03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */,
 				F0B335461DA3FD510035BD36 /* Extensions.swift */,
+				035416A8220EF8B800D9A26B /* FontSize.swift */,
 				F06814C11EC29A95000E4405 /* GeographyType.swift */,
 				F0B335591DA3FD610035BD36 /* GlobalArrays.swift */,
 				F0B3355A1DA3FD610035BD36 /* GlobalDictionaries.swift */,
@@ -1566,6 +1569,7 @@
 				F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */,
 				035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */,
 				031D033421F002BE0074F44D /* ObjectCardPlayListItem.swift in Sources */,
+				035416A9220EF8B900D9A26B /* FontSize.swift in Sources */,
 				F098F78B1E4F89A0007EDD2A /* ObjectForecast.swift in Sources */,
 				F031EF151DF6266B008C5B6B /* UtilitySWOD1.swift in Sources */,
 				F0008EF81DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift in Sources */,
