@@ -162,7 +162,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(
                 self,
-                selector: #selector(WXMetalMultipane.invalidateGPS),
+                selector: #selector(invalidateGPS),
                 name: UIApplication.willResignActiveNotification,
                 object: nil
             )
@@ -272,7 +272,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             oneMinRadarFetch = Timer.scheduledTimer(
                 timeInterval: 60.0,
                 target: self,
-                selector: #selector(WXMetalMultipane.getRadarEveryMinute),
+                selector: #selector(getRadarEveryMinute),
                 userInfo: nil,
                 repeats: true
             )
@@ -318,20 +318,20 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }*/
 
     func setupGestures() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(WXMetalMultipane.gesturePan))
-        let gestureZoom = UIPinchGestureRecognizer(target: self, action: #selector(WXMetalMultipane.gestureZoom))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
+        let gestureZoomvar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
         let gestureRecognizer = UITapGestureRecognizer(
             target: self,
-            action: #selector(WXMetalMultipane.tapGesture(_:))
+            action: #selector(tapGesture(_:))
         )
         gestureRecognizer.numberOfTapsRequired = 1
         let gestureRecognizer2 = UITapGestureRecognizer(
             target: self,
-            action: #selector(WXMetalMultipane.tapGesture(_:double:))
+            action: #selector(tapGesture(_:double:))
         )
         gestureRecognizer2.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(pan)
-        self.view.addGestureRecognizer(gestureZoom)
+        self.view.addGestureRecognizer(gestureZoomvar)
         self.view.addGestureRecognizer(gestureRecognizer)
         self.view.addGestureRecognizer(gestureRecognizer2)
         gestureRecognizer.require(toFail: gestureRecognizer2)
@@ -340,7 +340,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.view.addGestureRecognizer(
             UILongPressGestureRecognizer(
                 target: self,
-                action: #selector(WXMetalMultipane.gestureLongPress(_:))
+                action: #selector(gestureLongPress(_:))
             )
         )
     }

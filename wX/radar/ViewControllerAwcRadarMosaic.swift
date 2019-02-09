@@ -48,9 +48,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
         if ActVars.nwsMosaicType == "local" {
             ActVars.nwsMosaicType = ""
             isLocal = true
-            let closestMosaic = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
-            print(closestMosaic)
-            sector = closestMosaic
+            sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
         }
         self.getContent()
     }
