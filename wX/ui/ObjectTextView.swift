@@ -53,6 +53,11 @@ final class ObjectTextView {
         self.init(stackView, text)
         self.font = font
     }
+    
+    convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ gesture: UITapGestureRecognizer) {
+        self.init(stackView, text, font)
+        addGestureRecognizer(gesture)
+    }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ color: wXColor) {
         self.init(stackView, text)
