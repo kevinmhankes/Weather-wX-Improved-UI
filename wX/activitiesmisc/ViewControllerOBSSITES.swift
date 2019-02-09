@@ -59,7 +59,7 @@ class ViewControllerOBSSITES: UIwXViewController {
             _ = ObjectTextView(
                 stackView,
                 $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.gotoObsSite(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(gotoObsSite(sender:)))
             )
         }
         self.scrollView.scrollToTop()
@@ -87,7 +87,7 @@ class ViewControllerOBSSITES: UIwXViewController {
             _ = ObjectTextView(
                 stackView,
                 $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.gotoState(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(gotoState(sender:)))
             )
         }
     }

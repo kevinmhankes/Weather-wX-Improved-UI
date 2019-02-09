@@ -48,7 +48,7 @@ class ViewControllerHOURLY: UIwXViewController {
             self.stackView,
             self.html,
             FontSize.hourly.size,
-            UITapGestureRecognizer(target: self, action: #selector(self.textAction))
+            UITapGestureRecognizer(target: self, action: #selector(textAction))
         )
     }
 

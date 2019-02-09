@@ -31,7 +31,7 @@ class ViewControllerSUNMOONDATA: UIwXViewController {
     }
 
     private func displayContent() {
-        textView = ObjectTextView(stackView, "", UIFont(name: "Courier", size: UIPreferences.textviewFontSize)!)
+        textView = ObjectTextView(stackView, "", FontSize.sunMoon.size)
         self.textView.text = UtilitySunMoon.computeData()
     }
 
