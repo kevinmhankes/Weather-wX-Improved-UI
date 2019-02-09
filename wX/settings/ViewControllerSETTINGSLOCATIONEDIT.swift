@@ -63,23 +63,12 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let stackView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
-        let viewsDictionary = ["stackView": stackView.view]
-        let stackViewH = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-20-[stackView]-20-|",
-            options: .alignAllCenterX,
-            metrics: nil,
-            views: viewsDictionary
-        )
-        let topSpace = String(50 + Int(Float(UtilityUI.getTopPadding())))
-        let bottomSpace = String(Int(UIPreferences.toolbarHeight) + Int(Float(UtilityUI.getBottomPadding())))
-        let stackViewV = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-" + topSpace + "-[stackView]-" + bottomSpace + "-|",
-            options: .alignAllCenterX,
-            metrics: nil,
-            views: viewsDictionary
-        )
-        view.addConstraints(stackViewH)
-        view.addConstraints(stackViewV)
+        let topSpace = 50.0 + UtilityUI.getTopPadding()
+        let bottomSpace = UIPreferences.toolbarHeight + UtilityUI.getBottomPadding()
+        stackView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        stackView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        stackView.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace).isActive = true
+        stackView.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomSpace).isActive = true
         if ActVars.settingsLocationEditNum == "0" {
             numLocsLocalStr = String(Location.numLocations + 1)
         } else {
@@ -264,11 +253,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         lonTextView.text = lon
         statusTextView.text = status
         view.endEditing(true)
-        let locationC = CLLocationCoordinate2D(
+        /*let locationC = CLLocationCoordinate2D(
             latitude: Double(latTextView.view.text!) ?? 0.0,
             longitude: Double(lonTextView.view.text!) ?? 0.0
-        )
-        UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
+        )*/
+        //UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
