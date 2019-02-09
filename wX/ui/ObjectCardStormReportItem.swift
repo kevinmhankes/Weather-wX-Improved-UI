@@ -30,7 +30,7 @@ final class ObjectCardStormReportItem {
             tvLocation.text = stormReport.damageHeader
             tvLocation.view.textColor = UIColor.white
             tvLocation.view.backgroundColor = UIColor.black
-            tvLocation.size(24)
+            tvLocation.tv.font = FontSize.extraLarge.size
             let verticalTextConainer = ObjectStackView(
                 .fill, .vertical, 0, arrangedSubviews: [tvLocation.view]
             )

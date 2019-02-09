@@ -13,7 +13,6 @@
 // TODO color palette editor
 // TODO add tilts to radar
 // TODO FAB in playlist
-// TODO use enum for text size
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions

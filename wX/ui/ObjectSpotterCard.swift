@@ -22,7 +22,9 @@ final class ObjectSpotterCard {
         textViews.forEach {
             $0.view.isUserInteractionEnabled = false
         }
-        [17, 15, 15].enumerated().forEach {textViews[$0].font = UIFont.systemFont(ofSize: $1)}
+        textViews[0].font = FontSize.medium.size
+        textViews[1].font = FontSize.small.size
+        textViews[2].font = FontSize.small.size
         [.blue, .black, .gray].enumerated().forEach {textViews[$0].color = $1}
         textViews.forEach {$0.setZeroSpacing()}
         sV = ObjectCardStackView(arrangedSubviews: [sV2.view])

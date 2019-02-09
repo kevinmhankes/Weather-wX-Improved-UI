@@ -82,7 +82,7 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
                 objText.color = $1.uicolorCurrent
             }
             objText.background = UIColor.black
-            objText.textSize = 1.4
+            objText.tv.font = FontSize.extraLarge.size
             objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
             tvArr.append(objText)
         }

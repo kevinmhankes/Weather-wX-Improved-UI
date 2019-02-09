@@ -14,12 +14,8 @@ final class ObjectTextViewLarge {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
-        tv.font = UIFont.systemFont(ofSize: 16)
+        tv.font = FontSize.medium.size
         tv.adjustsFontSizeToFitWidth = true
-    }
-
-    func size(_ size: Int) {
-        tv.font = UIFont.systemFont(ofSize: CGFloat(size))
     }
 
     var text: String {

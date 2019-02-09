@@ -88,11 +88,6 @@ final class ObjectTextView {
         set {tv.text = newValue}
     }
 
-    var textSize: Double {
-        get {return 0}
-        set {tv.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize * CGFloat(newValue))}
-    }
-
     var tag: Int {
         get {return tv.tag}
         set {tv.tag = newValue}
