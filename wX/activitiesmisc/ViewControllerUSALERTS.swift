@@ -14,10 +14,12 @@ class ViewControllerUSALERTS: UIwXViewController {
     var filterButton = ObjectToolbarIcon()
     var objAlertSummary = ObjectAlertSummary()
     var bitmap = Bitmap()
+    var filterGesture: UITapGestureRecognizer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
+        filterGesture = UITapGestureRecognizer(target: self, action: #selector(filterClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -56,7 +58,7 @@ class ViewControllerUSALERTS: UIwXViewController {
 
     func filterChanged(_ filter: String) {
         self.filterButton.title = filter
-        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, filter, self.capAlerts, showImage: false)
+        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, filter, self.capAlerts, self.filterGesture, showImage: false)
         self.objAlertSummary.image = bitmap
     }
 
@@ -67,7 +69,7 @@ class ViewControllerUSALERTS: UIwXViewController {
 
     private func displayContent() {
         self.filterButton.title = "Tornado/FFW/ThunderStorm"
-        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts)
+        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts, self.filterGesture)
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
     }

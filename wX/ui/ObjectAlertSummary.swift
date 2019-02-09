@@ -24,11 +24,13 @@ final class ObjectAlertSummary: NSObject {
         _ stackView: UIStackView,
         _ filter: String,
         _ capAlerts: [CAPAlert],
+        _ gesture: UITapGestureRecognizer?,
         showImage: Bool = true
     ) {
         self.init()
         stackView.subviews.forEach {$0.removeFromSuperview()}
         let objTextSummary = ObjectTextView(stackView)
+        objTextSummary.addGestureRecognizer(gesture!)
         if showImage {
             objImage = ObjectImage(stackView)
             objImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
