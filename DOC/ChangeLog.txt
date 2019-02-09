@@ -23,6 +23,8 @@
 		remove file LatLonStr (LatLon has everything)
 		replace withVisualFormat with constraints
 		fix imageview size in VCs with toptoolbar - model/spc meso
+		in settings location support Canada location *display* in map
+		[BUG] fix incorrect map repositioning in settings location edit
 
 AppStore writeup:
 

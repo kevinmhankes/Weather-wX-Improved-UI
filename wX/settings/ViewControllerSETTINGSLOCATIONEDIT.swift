@@ -77,9 +77,15 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             labelTextView.text = Location.getName(locIdx)
             latTextView.text = MyApplication.locations[locIdx].lat
             lonTextView.text = MyApplication.locations[locIdx].lon
+            var latString = MyApplication.locations[locIdx].lat
+            var lonString = MyApplication.locations[locIdx].lon
+            if !Location.isUS(locIdx) {
+                latString = MyApplication.locations[locIdx].lat.split(":")[2]
+                lonString = "-" + MyApplication.locations[locIdx].lon.split(":")[1]
+            }
             let locationC = CLLocationCoordinate2D(
-                latitude: Double(MyApplication.locations[locIdx].lat) ?? 0.0,
-                longitude: Double(MyApplication.locations[locIdx].lon) ?? 0.0
+                latitude: Double(latString) ?? 0.0,
+                longitude: Double(lonString) ?? 0.0
             )
             UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
         }
