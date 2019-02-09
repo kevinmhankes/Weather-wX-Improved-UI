@@ -26,7 +26,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, colorButton, defaultButton]).items
-        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+       /* let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         colPicker = HSBColorPicker(
             frame: CGRect(
                 x: 0,
@@ -37,17 +37,19 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
                     - colorBarSize
                     - UtilityUI.getTopPadding()
             )
-        )
+        )*/
+        colPicker = HSBColorPicker()
         colPicker.delegate = self
-        self.view.addSubview(colPicker)
-        colorBar = UIView(
+        refreshViews()
+        //colorBar = UIView()
+       /* colorBar = UIView(
             frame: CGRect(
                 x: 0,
                 y: height - toolbar.height - colorBarSize,
                 width: width,
                 height: colorBarSize
             )
-        )
+        )*/
         colorBar.backgroundColor = ActVars.colorObject.uicolorCurrent
         colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.red)
             + ", "
@@ -55,6 +57,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
             + ", "
             + String(ActVars.colorObject.colorsCurrent.blue)
             + ")"
+        self.view.addSubview(colPicker)
         self.view.addSubview(colorBar)
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
