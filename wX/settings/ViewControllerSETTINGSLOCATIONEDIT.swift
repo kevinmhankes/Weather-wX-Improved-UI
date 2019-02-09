@@ -55,10 +55,10 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         statusTextView = ObjectTextView("")
         var textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
         textViews.forEach {
-            $0.font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize + 5.0)
+            $0.font = FontSize.extraLarge.size
             $0.isEditable = true
         }
-        textViews[3].font = UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
+        textViews[3].font = FontSize.extraSmall.size
         textViews[3].isEditable = false
         let stackView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false

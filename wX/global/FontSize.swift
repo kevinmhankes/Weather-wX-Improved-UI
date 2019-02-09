@@ -7,12 +7,15 @@
 // 16 is medium
 
 enum FontSize {
+    case extraSmall
     case small
     case medium
     case large
     case extraLarge
     var size: UIFont {
         switch self {
+        case .extraSmall: // 11
+            return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
         case .small: // 15
             return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 1.0)
         case .medium: // 16
