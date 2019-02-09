@@ -78,15 +78,16 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     }
 
     private func displayContent() {
-        let objImage = ObjectImage(self.stackView, self.bitmaps[0])
-        objImage.addGestureRecognizer(
-            UITapGestureRecognizerWithData(0, self, #selector(self.imgClicked(sender:))
-            )
+        _ = ObjectImage(
+            self.stackView,
+            self.bitmaps[0],
+            UITapGestureRecognizerWithData(0, self, #selector(self.imgClicked(sender:)))
         )
         self.textView = ObjectTextView(self.stackView, self.html)
         stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
-            let objImage = ObjectImage(self.stackView, self.bitmaps[$0])
-            objImage.addGestureRecognizer(
+            _ = ObjectImage(
+                self.stackView,
+                self.bitmaps[$0],
                 UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
             )
         }
