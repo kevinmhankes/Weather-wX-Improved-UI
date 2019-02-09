@@ -58,7 +58,14 @@ class ViewControllerUSALERTS: UIwXViewController {
 
     func filterChanged(_ filter: String) {
         self.filterButton.title = filter
-        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, filter, self.capAlerts, self.filterGesture, showImage: false)
+        self.objAlertSummary = ObjectAlertSummary(
+            self,
+            self.stackView,
+            filter,
+            self.capAlerts,
+            self.filterGesture,
+            showImage: false
+        )
         self.objAlertSummary.image = bitmap
     }
 

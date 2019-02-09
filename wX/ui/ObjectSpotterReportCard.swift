@@ -10,18 +10,23 @@ final class ObjectSpotterReportCard {
 
     private let sV = StackView()
 
-    init(_ stackView: UIStackView, _ spotterReport: SpotterReports) {
+    init(_ stackView: UIStackView, _ spotterReport: SpotterReports, _ gesture: UITapGestureRecognizer) {
         var textViews = [ObjectTextView]()
-        [spotterReport.type + " " + spotterReport.time,
-         spotterReport.city, spotterReport.lastName + ", "
-            + spotterReport.firstName].forEach {textViews.append(ObjectTextView(sV, $0))}
+        [
+            spotterReport.type + " " + spotterReport.time,
+            spotterReport.city,
+            spotterReport.lastName + ", " + spotterReport.firstName
+        ].forEach {textViews.append(ObjectTextView(sV, $0))}
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         [.blue, .black, .gray].enumerated().forEach {textViews[$0].color = $1}
         textViews.forEach {$0.setZeroSpacing()}
         stackView.addArrangedSubview(sV)
+        addGestureRecognizer(gesture)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {sV.addGestureRecognizer(gesture)}
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        sV.addGestureRecognizer(gesture)
+    }
 }

@@ -29,12 +29,11 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
                 //self.spotterReportCountButton.title = "Count: \(self.spotterReportsData.count)"
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
                 self.spotterReportsDataSorted.enumerated().forEach {
-                    let objSpotter = ObjectSpotterReportCard(self.stackView, $1)
-                    let tapOutTextField = UITapGestureRecognizerWithData(
-                        target: self, action: #selector(self.buttonPressed(sender:))
+                    _ = ObjectSpotterReportCard(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
                     )
-                    tapOutTextField.data=$0
-                    objSpotter.addGestureRecognizer(tapOutTextField)
                 }
                 if self.spotterReportsData.count == 0 {
                     _ = ObjectTextView(self.stackView, "No active spotter reports.")

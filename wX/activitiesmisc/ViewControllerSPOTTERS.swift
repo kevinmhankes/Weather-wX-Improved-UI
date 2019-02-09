@@ -33,13 +33,11 @@ class ViewControllerSPOTTERS: UIwXViewController {
                 self.spotterCountButton.title = "Count: \(self.spotterData.count)"
                 self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
                 self.spotterDataSorted.enumerated().forEach {
-                    let objSpotter = ObjectSpotterCard(self.stackView, $1)
-                    let tapOutTextField = UITapGestureRecognizerWithData(
-                        target: self,
-                        action: #selector(self.buttonPressed(sender:))
+                    _ = ObjectSpotterCard(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
                     )
-                    tapOutTextField.data=$0
-                    objSpotter.addGestureRecognizer(tapOutTextField)
                 }
             }
         }
@@ -50,9 +48,9 @@ class ViewControllerSPOTTERS: UIwXViewController {
     }
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
-        let idx = sender.data
+        let index = sender.data
         let alert = ObjectPopUp(self, "", spotterReportsButton)
-        let c = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(idx)})
+        let c = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(index)})
         alert.addAction(c)
         alert.finish()
     }
