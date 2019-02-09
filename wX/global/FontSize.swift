@@ -8,6 +8,7 @@
 
 enum FontSize {
     case extraSmall
+    case hourly
     case small
     case medium
     case large
@@ -16,6 +17,8 @@ enum FontSize {
         switch self {
         case .extraSmall: // 11
             return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 5.0)
+        case .hourly: // 14
+            return UIFont(name: "Courier", size: UIPreferences.textviewFontSize - 2.0)!
         case .small: // 15
             return UIFont.systemFont(ofSize: UIPreferences.textviewFontSize - 1.0)
         case .medium: // 16

@@ -9,7 +9,7 @@ import AVFoundation
 
 class ViewControllerHOURLY: UIwXViewController {
 
-    var html = ("", "")
+    var html = ""
     var playButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
 
@@ -24,7 +24,7 @@ class ViewControllerHOURLY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
+            (self.html, _) = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -36,23 +36,20 @@ class ViewControllerHOURLY: UIwXViewController {
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(self.html.0, synth, playButton)
+        UtilityActions.playClicked(self.html, synth, playButton)
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, self.html.0)
+        UtilityShare.share(self, sender, self.html)
     }
 
     private func displayContent() {
-        let objText = ObjectTextView(
+        _ = ObjectTextView(
             self.stackView,
-            self.html.0,
-            UIFont(
-                name: "Courier",
-                size: UIPreferences.textviewFontSize - 2
-            )!
+            self.html,
+            FontSize.hourly.size,
+            UITapGestureRecognizer(target: self, action: #selector(self.textAction))
         )
-        objText.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.textAction)))
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
