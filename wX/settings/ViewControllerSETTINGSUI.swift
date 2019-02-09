@@ -89,12 +89,12 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             )
             switchObject.button.addTarget(
                 self,
-                action: #selector(self.getHelp(sender:)),
+                action: #selector(getHelp(sender:)),
                 for: .touchUpInside
             )
             switchObject.switchUi.addTarget(
                 self,
-                action: #selector(self.switchChanged(sender:)),
+                action: #selector(switchChanged(sender:)),
                 for: UIControl.Event.valueChanged
             )
             switchObject.switchUi.tag = $0
@@ -109,7 +109,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            objNp.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.index(of: prefValue)

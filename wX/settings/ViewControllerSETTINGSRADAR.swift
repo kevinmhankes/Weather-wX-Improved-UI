@@ -115,9 +115,9 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                 UtilitySettingsRadar.booleanDefault,
                 UtilitySettingsRadar.boolean
             )
-            switchObject.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            switchObject.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             switchObject.switchUi.addTarget(
-                self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged
+                self, action: #selector(switchChanged), for: UIControl.Event.valueChanged
             )
             switchObject.switchUi.tag = index
         }
@@ -126,7 +126,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            objNp.button.addTarget(self, action: #selector(self.getHelp(sender:)), for: .touchUpInside)
+            objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.numberPicker.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(

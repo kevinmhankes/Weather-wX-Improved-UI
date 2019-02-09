@@ -120,7 +120,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
                 + " " + (MyApplication.locations[$0].state)
             let locationItem = ObjectCardLocationItem(self.stackView, name, latLon, details)
             locationItem.addGestureRecognizer(
-                UITapGestureRecognizerWithData($0, self, #selector(self.actionLocationPopup(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(actionLocationPopup(sender:)))
             )
         }
     }

@@ -175,13 +175,13 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 _ = ObjectTextView(
                     stackView,
                     goodTitle,
-                    UITapGestureRecognizerWithData(index, goodTitle, self, #selector(self.buttonPressed(sender:)))
+                    UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
                 )
             } else {
                 _ = ObjectTextView(
                     stackView,
                     prefVar,
-                    UITapGestureRecognizerWithData(index, prefVar, self, #selector(self.buttonPressed(sender:)))
+                    UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))
                 )
             }
         }
