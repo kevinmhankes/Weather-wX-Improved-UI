@@ -114,7 +114,13 @@ public class ObjectScrollStackView {
         stackView.alignment = .center
         stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         scrollView.addSubview(stackView)
-        scrollView.addConstraints(
+
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 4.0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -4.0).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+
+        /*scrollView.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|-4-[stackView]-4-|",
                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
@@ -128,6 +134,7 @@ public class ObjectScrollStackView {
                 metrics: nil,
                 views: ["stackView": stackView]
             )
-        )
+        )*/
+
     }
 }
