@@ -90,19 +90,19 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     private func displayContent() {
         self.showTextWarnings()
-        let imgObject = ObjectImage(self.stackView, bm)
-        let tapGestureRecognizerSPCRPT = UITapGestureRecognizer(
-            target: self,
-            action: #selector(self.spcstreportsClicked(sender:))
+        _ = ObjectImage(
+            self.stackView,
+            bm,
+            UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:)))
         )
-        imgObject.addGestureRecognizer(tapGestureRecognizerSPCRPT)
         var index = 0
         var watI = 0
         var mcdI = 0
         var mpdI = 0
         snWat.bitmaps.forEach {
-            let imgObject = ObjectImage(self.stackView, $0)
-            imgObject.addGestureRecognizer(
+            _ = ObjectImage(
+                self.stackView,
+                $0,
                 UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
             )
             self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
@@ -110,8 +110,9 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             watI += 1
         }
         snMcd.bitmaps.forEach {
-            let imgObject = ObjectImage(self.stackView, $0)
-            imgObject.addGestureRecognizer(
+            _ = ObjectImage(
+                self.stackView,
+                $0,
                 UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
             )
             self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
@@ -119,8 +120,9 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             mcdI += 1
         }
         snMpd.bitmaps.forEach {
-            let imgObject = ObjectImage(self.stackView, $0)
-            imgObject.addGestureRecognizer(
+            _ = ObjectImage(
+                self.stackView,
+                $0,
                 UITapGestureRecognizerWithData(index, self, #selector(self.imgClicked(sender:)))
             )
             self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
