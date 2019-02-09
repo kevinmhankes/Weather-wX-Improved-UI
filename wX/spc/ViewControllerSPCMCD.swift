@@ -78,8 +78,9 @@ class ViewControllerSPCMCD: UIwXViewController {
     private func displayContent() {
         if self.bitmaps.count > 0 {
             self.bitmaps.enumerated().forEach {
-                let objImage = ObjectImage(self.stackView, $1)
-                objImage.addGestureRecognizer(
+                _ = ObjectImage(
+                    self.stackView,
+                    $1,
                     UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
                 )
             }
