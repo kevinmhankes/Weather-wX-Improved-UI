@@ -172,13 +172,15 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 }
             }
             if let goodTitle = title {
-                let objText = ObjectTextView(stackView, goodTitle)
-                objText.addGestureRecognizer(
+                _ = ObjectTextView(
+                    stackView,
+                    goodTitle,
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(self.buttonPressed(sender:)))
                 )
             } else {
-                let objText = ObjectTextView(stackView, prefVar)
-                objText.addGestureRecognizer(
+                _ = ObjectTextView(
+                    stackView,
+                    prefVar,
                     UITapGestureRecognizerWithData(index, prefVar, self, #selector(self.buttonPressed(sender:)))
                 )
             }
