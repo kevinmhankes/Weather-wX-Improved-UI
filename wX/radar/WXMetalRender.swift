@@ -782,8 +782,9 @@ class WXMetalRender {
 
     func regenerateProductList() {
         radarProductList.enumerated().forEach { index, productString in
-            let middleValue = product[product.index(after: product.startIndex)]
-            if middleValue == "0" || middleValue == "1" || middleValue == "2" || middleValue == "3" {
+            let firstValue = productString[productString.startIndex]
+            let middleValue = productString[productString.index(after: productString.startIndex)]
+            if firstValue != "L" && (middleValue == "0" || middleValue == "1" || middleValue == "2" || middleValue == "3") {
                 let firstValue = productString[product.startIndex]
                 let afterTiltIndex = productString.index(productString.startIndex, offsetBy: 2)
                 let endIndex = productString.index(before: productString.endIndex)
