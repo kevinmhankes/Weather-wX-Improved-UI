@@ -29,7 +29,7 @@ final class ObjectStackView {
         _ axis: NSLayoutConstraint.Axis,
         _ alignment: UIStackView.Alignment,
         arrangedSubviews: [UIView]
-        ) {
+    ) {
         self.init(distribution, axis)
         sV.alignment = alignment
         arrangedSubviews.forEach { sV.addArrangedSubview($0) }
