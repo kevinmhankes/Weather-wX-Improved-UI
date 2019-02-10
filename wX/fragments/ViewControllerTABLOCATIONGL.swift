@@ -169,7 +169,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objFcst = Utility.getCurrentConditionsV2(Location.getCurrentLocation())
+            self.objFcst = Utility.getCurrentConditions(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.getCurrentConditionCards()
             }

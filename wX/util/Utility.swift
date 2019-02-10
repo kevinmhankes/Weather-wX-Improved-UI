@@ -8,7 +8,7 @@ import Foundation
 
 final class Utility {
 
-    static func getCurrentConditionsUSV2(_ locNum: Int) -> ObjectForecastPackage {
+    static func getCurrentConditionsUS(_ locNum: Int) -> ObjectForecastPackage {
         let objCC = ObjectForecastPackageCurrentConditions(locNum)
         return ObjectForecastPackage(objCC)
     }
@@ -19,9 +19,9 @@ final class Utility {
         return ObjectForecastPackage(objCC)
     }
 
-    static func getCurrentConditionsV2(_ locNum: Int) -> ObjectForecastPackage {
+    static func getCurrentConditions(_ locNum: Int) -> ObjectForecastPackage {
         if Location.isUS(locNum) {
-            return getCurrentConditionsUSV2(locNum)
+            return getCurrentConditionsUS(locNum)
         } else {
             return getCurrentConditionsCanada(locNum)
         }
