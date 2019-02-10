@@ -692,7 +692,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func changeTilt(_ tilt: Int) {
-        print(tilt)
+        wxMetal.forEach {
+            $0!.tilt = tilt
+            $0!.getRadar("")
+        }
     }
 
     public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {

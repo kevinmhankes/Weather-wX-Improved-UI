@@ -23,6 +23,7 @@ class WXMetalRender {
     var ridStr = "DTX"
     var rdDownload = WXGLDownload()
     var radarProduct = "N0Q"
+    var tiltInt = 0
     var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
@@ -737,5 +738,24 @@ class WXMetalRender {
         return gpsLocation.latString.truncate(truncateAmount)
             + ", -"
             + gpsLocation.lonString.truncate(truncateAmount)
+    }
+
+    var tilt: Int {
+        get {
+            return tiltInt
+        }
+        set {
+            tiltInt = newValue
+            let middleValue = product[product.index(after: product.startIndex)]
+            if middleValue == "0" || middleValue == "1" || middleValue == "2" || middleValue == "3" {
+                let firstValue = product[product.startIndex]
+                let lastValue = product[product.index(before: product.endIndex)]
+                var newProduct = ""
+                newProduct.append(firstValue)
+                newProduct.append(String(tiltInt))
+                newProduct.append(lastValue)
+                print(newProduct)
+            }
+        }
     }
 }
