@@ -93,6 +93,22 @@ class WXMetalRender {
     var paneNumber = 0
     var numberOfPanes = 0
     var renderFn: ((Int) -> Void)?
+    var radarProductList = [
+        "N0Q: Base Reflectivity",
+        "N0U: Base Velocity",
+        "L2REF: Level 2 Reflectivity",
+        "L2VEL: Level 2 Velocity",
+        "EET: Enhanced Echo Tops",
+        "DVL: Vertically Integrated Liquid",
+        "N0X: Differential Reflectivity",
+        "N0C: Correlation Coefficient",
+        "N0K: Specific Differential Phase",
+        "H0C: Hydrometer Classification",
+        "DSP: Digital Storm Total Precipitation",
+        "DAA: Digital Accumulation Array",
+        "N0S: Storm Relative Mean Velocity",
+        "NSW: Base Spectrum Width"
+    ]
 
     init(_ device: MTLDevice,
          _ timeButton: ObjectToolbarIcon,
@@ -107,6 +123,7 @@ class WXMetalRender {
         self.idxStr = String(paneNumber)
         self.numberOfPanes = numberOfPanes
         readPrefs()
+        regenerateProductList()
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
@@ -327,6 +344,7 @@ class WXMetalRender {
         Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
         Utility.writePref(radarType + numberOfPanes + "_RID" + index, rid)
         Utility.writePref(radarType + numberOfPanes + "_PROD" + index, product)
+        Utility.writePref(radarType + numberOfPanes + "_TILT" + index, tiltInt)
     }
 
     func readPrefs() {
@@ -342,6 +360,7 @@ class WXMetalRender {
                 initialRadarProducts[paneNumber]
             )
             rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
+            tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
         } else {
             rid = Location.rid
         }
@@ -755,6 +774,24 @@ class WXMetalRender {
                 newProduct.append(String(tiltInt))
                 newProduct.append(lastValue)
                 product = newProduct
+                regenerateProductList()
+                //print(newProduct)
+            }
+        }
+    }
+
+    func regenerateProductList() {
+        radarProductList.enumerated().forEach { index, productString in
+            let middleValue = product[product.index(after: product.startIndex)]
+            if middleValue == "0" || middleValue == "1" || middleValue == "2" || middleValue == "3" {
+                let firstValue = productString[product.startIndex]
+                let afterTiltIndex = productString.index(productString.startIndex, offsetBy: 2)
+                let endIndex = productString.index(before: productString.endIndex)
+                let stringEnd = productString[afterTiltIndex...endIndex]
+                var newProduct = ""
+                newProduct.append(firstValue)
+                newProduct += String(tiltInt) + stringEnd
+                radarProductList[index] = newProduct
                 //print(newProduct)
             }
         }

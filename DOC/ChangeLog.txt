@@ -11,7 +11,6 @@
 // TODO make option to scale homescreen images ( like radar mosaic )
 // TODO spotters?
 // TODO color palette editor
-// TODO add tilts to radar
 // TODO FAB in playlist
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
@@ -25,7 +24,7 @@
 		fix imageview size in VCs with toptoolbar - model/spc meso
 		in settings location support Canada location *display* in map
 		[BUG] fix incorrect map repositioning in settings location edit
-		start to add Tilt support in radar
+		add Tilt support in radar
 
 AppStore writeup:
 

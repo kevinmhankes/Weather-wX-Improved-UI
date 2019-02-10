@@ -404,7 +404,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                     self.productChanged(sender.tag, product.split(":")[0])}))
             }
         } else {
-            WXGLNexrad.radarProductList.forEach {product in
+            wxMetal[sender.tag]!.radarProductList.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in
                     self.productChanged(sender.tag, product.split(":")[0])}))
             }
