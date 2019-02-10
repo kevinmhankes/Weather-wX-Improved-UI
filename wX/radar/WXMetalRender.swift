@@ -754,7 +754,8 @@ class WXMetalRender {
                 newProduct.append(firstValue)
                 newProduct.append(String(tiltInt))
                 newProduct.append(lastValue)
-                print(newProduct)
+                product = newProduct
+                //print(newProduct)
             }
         }
     }
