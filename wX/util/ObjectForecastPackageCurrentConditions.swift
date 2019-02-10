@@ -34,13 +34,13 @@ final class ObjectForecastPackageCurrentConditions {
         self.init()
         if MyApplication.currentConditionsViaMetar {
             let tmpArr = getConditionsViaMetar(location)
-            data1 = tmpArr.0
-            iconUrl = tmpArr.1
-            rawMetar = tmpArr.2
+            data1 = tmpArr.conditionAsString
+            iconUrl = tmpArr.iconUrl
+            rawMetar = tmpArr.metar
         } else {
             let tmpArr = getConditions(location)
-            data1 = tmpArr.0
-            iconUrl = tmpArr.1
+            data1 = tmpArr.conditionAsString
+            iconUrl = tmpArr.iconUrl
         }
         if MyApplication.currentConditionsViaMetar {
             status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
@@ -67,7 +67,7 @@ final class ObjectForecastPackageCurrentConditions {
         return obj
     }
 
-    func getConditionsViaMetar(_ location: LatLon) -> (String, String, String) {
+    func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var sb = ""
         let objMetar = ObjectMetar(location)
         conditionsTimeStr = objMetar.conditionsTimeStr
@@ -98,7 +98,7 @@ final class ObjectForecastPackageCurrentConditions {
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
-    func getConditions(_ location: LatLon) -> (String, String) {
+    func getConditions(_ location: LatLon) -> (conditionAsString: String, iconUrl: String) {
         var sb = ""
         let obsClosest = UtilityObs.getObsFromLatLon(location)
         let observationData = ("https://api.weather.gov/stations/" + obsClosest +  "/observations/current").getNwsHtml()
