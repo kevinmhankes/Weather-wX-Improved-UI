@@ -597,6 +597,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
         }
         alert.addAction(UIAlertAction(
+            "Change Tilt", { _ in self.showTiltMenu()})
+        )
+        alert.addAction(UIAlertAction(
             "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
@@ -681,6 +684,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             colorLegend.isOpaque = false
             self.view.addSubview(colorLegend)
         }
+    }
+
+    func showTiltMenu() {
+        let tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
+        _ = ObjectPopUp(self, "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
+    }
+
+    func changeTilt(_ tilt: Int) {
+        print(tilt)
     }
 
     public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
