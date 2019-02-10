@@ -48,9 +48,9 @@ final class ObjectCard7Day {
         setTextFields(self.format7Day(dayArr[index].replace("</text>", ""), dayArrShort[index].replace("</text>", "")))
     }
 
-    func setTextFields(_ textArr: (String, String)) {
-        topText.text = textArr.0
-        bottomText.text = textArr.1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    func setTextFields(_ textArr: (top: String, bottom: String)) {
+        topText.text = textArr.top
+        bottomText.text = textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func setImage(_ index: Int, _ dayImgUrl: [String]) {

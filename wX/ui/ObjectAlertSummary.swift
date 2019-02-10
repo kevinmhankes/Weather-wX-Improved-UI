@@ -58,7 +58,7 @@ final class ObjectAlertSummary: NSObject {
                     nwsLoc = Utility.readPref("NWS_LOCATION_" + nwsOffice, "MI")
                     state = nwsLoc.substring(0, 2)
                     if stateCntMap.keys.contains(state) {
-                        stateCntMap[state] = (stateCntMap[state]!+1)
+                        stateCntMap[state] = (stateCntMap[state]! + 1)
                     } else {
                         stateCntMap[state] = 1
                     }
