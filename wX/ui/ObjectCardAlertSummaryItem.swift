@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardAlertSummaryItem {
 
     private var cardStackView = ObjectCardStackView()
-    private let tvName = ObjectTextViewLarge(80.0)
+    private let tvName = ObjectTextViewLarge(80.0, UIColor.blue)
     private let tvTitle = ObjectTextView()
     private let tvStart = ObjectTextView()
     private let tvEnd = ObjectTextView()
@@ -21,7 +21,6 @@ final class ObjectCardAlertSummaryItem {
     init(_ stackView: UIStackView, _ office: String, _ location: String, _ alert: CAPAlert) {
         (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         tvName.text = office + " (" + location + ")"
-        tvName.view.textColor = UIColor.blue
         tvTitle.text = title
         tvTitle.setZeroSpacing()
         tvStart.text = "Start: " + startTime

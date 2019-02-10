@@ -10,7 +10,7 @@ final class ObjectCardSunTime {
 
     let objLabel: ObjectTextView
 
-    init(_ stackView: UIStackView) {
+    init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
         let sunriseSunset = UtilityTime.getSunriseSunset()
         let text =  UtilityTime.gmtTime()
         objLabel = ObjectTextView(
@@ -20,5 +20,10 @@ final class ObjectCardSunTime {
             UIColor.black
         )
         objLabel.tv.textAlignment = .center
+        addGestureRecognizer(gesture)
+    }
+
+    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+        self.objLabel.addGestureRecognizer(gesture)
     }
 }

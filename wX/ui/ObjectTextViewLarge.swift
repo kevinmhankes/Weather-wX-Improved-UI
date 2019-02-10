@@ -18,6 +18,11 @@ final class ObjectTextViewLarge {
         tv.adjustsFontSizeToFitWidth = true
     }
 
+    convenience init(_ textPadding: CGFloat, _ color: UIColor) {
+        self.init(textPadding)
+        tv.textColor = color
+    }
+
     var text: String {
         get {
             return tv.text!

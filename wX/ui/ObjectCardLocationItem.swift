@@ -9,13 +9,12 @@ import UIKit
 final class ObjectCardLocationItem {
 
     private let cardStackView: ObjectCardStackView
-    private let tvName = ObjectTextViewLarge(80.0)
+    private let tvName = ObjectTextViewLarge(80.0, UIColor.blue)
     private let tvMiddle = ObjectTextView()
     private let tvBottom = ObjectTextViewSmallGray(80.0)
 
     init(_ stackView: UIStackView, _ name: String, _ middleLine: String, _ bottomLines: String) {
         tvName.text = name
-        tvName.view.textColor = UIColor.blue
         tvMiddle.text = middleLine
         tvMiddle.setZeroSpacing()
         tvBottom.text = bottomLines
