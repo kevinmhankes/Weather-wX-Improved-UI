@@ -11,19 +11,19 @@ final class UtilityDownloadRadar {
     static let urlTor = "https://api.weather.gov/alerts/active?event=Tornado%20Warning"
 
     // TODO camelCase
-    static func getPolygonVTEC () {
+    static func getPolygonVtec() {
         MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
         MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
         MyApplication.severeDashboardTor.value = urlTor.getNwsHtml()
     }
 
-    static func clearPolygonVTEC() {
+    static func clearPolygonVtec() {
         MyApplication.severeDashboardTst.value = ""
         MyApplication.severeDashboardFfw.value = ""
         MyApplication.severeDashboardTor.value = ""
     }
 
-    static func getMCD() {
+    static func getMcd() {
         let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
         MyApplication.severeDashboardMcd.value = dataAsString
         var mcdNumberList = ""
@@ -39,12 +39,12 @@ final class UtilityDownloadRadar {
         MyApplication.mcdNoList.value = mcdNumberList
     }
 
-    static func clearMCD() {
+    static func clearMcd() {
         MyApplication.mcdLatlon.value = ""
         MyApplication.mcdNoList.value = ""
     }
 
-    static func getMPD() {
+    static func getMpd() {
         let dataAsString = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
         MyApplication.severeDashboardMpd.value = dataAsString
         var mpdNumberList = ""
@@ -59,7 +59,7 @@ final class UtilityDownloadRadar {
         MyApplication.mpdNoList.value = mpdNumberList
     }
 
-    static func getWAT() {
+    static func getWatch() {
         let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
         MyApplication.severeDashboardWat.value = dataAsString
         var watchNumberList = ""
@@ -84,14 +84,14 @@ final class UtilityDownloadRadar {
         MyApplication.watNoList.value = watchNumberList
     }
 
-    static func clearWAT() {
+    static func clearWatch() {
         MyApplication.severeDashboardWat.value = ""
         MyApplication.watchLatlon.value = ""
         MyApplication.watchLatlonTor.value = ""
         MyApplication.watNoList.value = ""
     }
 
-    static func clearMPD() {
+    static func clearMpd() {
         MyApplication.mpdLatlon.value = ""
         MyApplication.mpdNoList.value = ""
     }

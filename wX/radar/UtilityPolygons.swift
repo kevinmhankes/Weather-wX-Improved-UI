@@ -18,32 +18,32 @@ public class UtilityPolygons {
         currentTimeSec = currentTime / 1000
         refreshIntervalSec = refreshLocMin * 60
         if !PolygonType.TST.display {
-            UtilityDownloadRadar.clearPolygonVTEC()
+            UtilityDownloadRadar.clearPolygonVtec()
         }
         if !PolygonType.MPD.display {
-            UtilityDownloadRadar.clearMPD()
+            UtilityDownloadRadar.clearMpd()
         }
         if !PolygonType.MCD.display {
-            UtilityDownloadRadar.clearMCD()
-            UtilityDownloadRadar.clearWAT()
+            UtilityDownloadRadar.clearMcd()
+            UtilityDownloadRadar.clearWatch()
         }
         if (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized {
             if PolygonType.TST.display {
-                UtilityDownloadRadar.getPolygonVTEC()
+                UtilityDownloadRadar.getPolygonVtec()
             } else {
-                UtilityDownloadRadar.clearPolygonVTEC()
+                UtilityDownloadRadar.clearPolygonVtec()
             }
             if PolygonType.MPD.display {
-                UtilityDownloadRadar.getMPD()
+                UtilityDownloadRadar.getMpd()
             } else {
-                UtilityDownloadRadar.clearMPD()
+                UtilityDownloadRadar.clearMpd()
             }
             if PolygonType.MCD.display {
-                UtilityDownloadRadar.getMCD()
-                UtilityDownloadRadar.getWAT()
+                UtilityDownloadRadar.getMcd()
+                UtilityDownloadRadar.getWatch()
             } else {
-                UtilityDownloadRadar.clearMCD()
-                UtilityDownloadRadar.clearWAT()
+                UtilityDownloadRadar.clearMcd()
+                UtilityDownloadRadar.clearWatch()
             }
             initialized = true
             let currentTime: CLong = UtilityTime.currentTimeMillis()

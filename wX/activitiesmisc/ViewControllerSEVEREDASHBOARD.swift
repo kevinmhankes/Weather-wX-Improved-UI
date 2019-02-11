@@ -24,10 +24,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadRadar.getPolygonVTEC()
-            UtilityDownloadRadar.getMPD()
-            UtilityDownloadRadar.getMCD()
-            UtilityDownloadRadar.getWAT()
+            UtilityDownloadRadar.getPolygonVtec()
+            UtilityDownloadRadar.getMpd()
+            UtilityDownloadRadar.getMcd()
+            UtilityDownloadRadar.getWatch()
             self.bm = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
             self.snWat.getBitmaps(MyApplication.watNoList.value)
