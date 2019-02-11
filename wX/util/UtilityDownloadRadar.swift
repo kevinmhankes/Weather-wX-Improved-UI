@@ -10,7 +10,6 @@ final class UtilityDownloadRadar {
     static let urlFfw = "https://api.weather.gov/alerts/active?event=Flash%20Flood%20Warning"
     static let urlTor = "https://api.weather.gov/alerts/active?event=Tornado%20Warning"
 
-    // TODO camelCase
     static func getPolygonVtec() {
         MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
         MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
@@ -33,7 +32,7 @@ final class UtilityDownloadRadar {
             let mcdNumber = String(format: "%04d", Int($0.replace(" ", "")) ?? 0)
             let mcdPre = UtilityDownload.getTextProduct("SPCMCD" + mcdNumber)
             mcdNumberList += mcdNumber + ":"
-            mcdLatLon += storeWatMCDLATLON(mcdPre)
+            mcdLatLon += storeWatchMcdLatLon(mcdPre)
         }
         MyApplication.mcdLatlon.value = mcdLatLon
         MyApplication.mcdNoList.value = mcdNumberList
@@ -53,7 +52,7 @@ final class UtilityDownloadRadar {
         mpdList.forEach {
             let mcdPre = UtilityDownload.getTextProduct("WPCMPD" + $0)
             mpdNumberList += $0 + ":"
-            mpdLatLon += storeWatMCDLATLON(mcdPre)
+            mpdLatLon += storeWatchMcdLatLon(mcdPre)
         }
         MyApplication.mpdLatlon.value = mpdLatLon
         MyApplication.mpdNoList.value = mpdNumberList
@@ -74,9 +73,9 @@ final class UtilityDownloadRadar {
             var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + watchNumber + ".html").getHtml()
             watPre2 = UtilityString.parseLastMatch(watPre2, MyApplication.pre2Pattern)
             if watPre.contains("Severe Thunderstorm Watch") || watPre2.contains("SEVERE TSTM") {
-                watchLatLon += storeWatMCDLATLON(watPre2)
+                watchLatLon += storeWatchMcdLatLon(watPre2)
             } else {
-                watchLatLonTor += storeWatMCDLATLON(watPre2)
+                watchLatLonTor += storeWatchMcdLatLon(watPre2)
             }
         }
         MyApplication.watchLatlon.value = watchLatLon
@@ -96,7 +95,7 @@ final class UtilityDownloadRadar {
         MyApplication.mpdNoList.value = ""
     }
 
-    static func storeWatMCDLATLON(_ html: String) -> String {
+    private static func storeWatchMcdLatLon(_ html: String) -> String {
         let coords = html.parseColumn("([0-9]{8}).*?")
         var retStr = ""
         coords.forEach {retStr += LatLon($0).print()}
