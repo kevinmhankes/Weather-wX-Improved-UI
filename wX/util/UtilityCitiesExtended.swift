@@ -13,7 +13,7 @@ final class UtilityCitiesExtended {
         if !initialized {
             initialized = true
             var tmpArr = [String]()
-            let text = UtilityIO.readTextFile(R.Raw.cityall)
+            let text = UtilityIO.readTextFile("cityall.txt")
             let lines = text.split(MyApplication.newline)
             lines.forEach {
                 tmpArr = $0.split(",")

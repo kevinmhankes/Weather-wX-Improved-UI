@@ -13,7 +13,7 @@ final class UtilityCountyLabels {
     static func populateArrays() {
         if !initialized {
             initialized = true
-            let text = UtilityIO.readTextFile(R.Raw.gaz_counties_national)
+            let text = UtilityIO.readTextFile("gaz_counties_national.txt")
             var lines = text.split(MyApplication.newline)
             _ = lines.popLast()
             lines.forEach {
