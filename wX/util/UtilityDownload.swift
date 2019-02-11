@@ -44,12 +44,11 @@ final class UtilityDownload {
         }
     }
 
-    // TODO make extension to String
-    static func getInputStreamFromUrl(_ urlstr: String) -> Data {
-        guard let myURL = URL(string: urlstr) else {
+    static func getDataFromUrl(_ url: String) -> Data {
+        guard let safeUrl = URL(string: url) else {
             return Data()
         }
-        let imageData = try? Data(contentsOf: myURL)
+        let imageData = try? Data(contentsOf: safeUrl)
         var data = Data()
         if let dataTmp = imageData {
             data = dataTmp

@@ -8,6 +8,11 @@ import Foundation
 import UIKit
 
 extension String {
+
+    func getDataFromUrl() -> Data {
+        return UtilityDownload.getDataFromUrl(self)
+    }
+
     func removeHtml() -> String {
         return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
