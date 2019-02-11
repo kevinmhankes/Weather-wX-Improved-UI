@@ -38,7 +38,7 @@ final class Utility {
 
     static func getCurrentSevenDay(_ locNum: Int) -> ObjectForecastPackage7Day {
         if Location.isUS(locNum) {
-            let sevenDayJson = UtilityDownloadNWS.get7DayJSON(Location.getLatLon(locNum))
+            let sevenDayJson = UtilityDownloadNWS.get7DayJson(Location.getLatLon(locNum))
             return ObjectForecastPackage7Day(locNum, sevenDayJson)
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
@@ -47,7 +47,7 @@ final class Utility {
     }
 
     static func getCurrentSevenDay(_ location: LatLon) -> ObjectForecastPackage7Day {
-        let sevenDayJson = UtilityDownloadNWS.get7DayJSON(location)
+        let sevenDayJson = UtilityDownloadNWS.get7DayJson(location)
         return ObjectForecastPackage7Day(-1, sevenDayJson)
     }
 
