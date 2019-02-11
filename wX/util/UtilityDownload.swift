@@ -8,35 +8,35 @@ import UIKit
 
 final class UtilityDownload {
 
-    static func getStringFromUrl(_ urlstr: String) -> String {
-        guard let myURL = URL(string: urlstr) else {
+    static func getStringFromUrl(_ url: String) -> String {
+        guard let safeUrl = URL(string: url) else {
             return ""
         }
         do {
-            return try String(contentsOf: myURL, encoding: .ascii)
+            return try String(contentsOf: safeUrl, encoding: .ascii)
         } catch {
             print(error.localizedDescription)
         }
         return ""
     }
 
-    static func getStringFromUrlSep(_ urlstr: String) -> String {
-        guard let myURL = URL(string: urlstr) else {
+    static func getStringFromUrlSep(_ url: String) -> String {
+        guard let safeUrl = URL(string: url) else {
             return ""
         }
         do {
-            return try String(contentsOf: myURL, encoding: .ascii)
+            return try String(contentsOf: safeUrl, encoding: .ascii)
         } catch _ {
             //print("Error: \(error)")
         }
         return ""
     }
 
-    static func getBitmapFromUrl(_ urlstr: String) -> Bitmap {
-        guard let myURL = URL(string: urlstr) else {
+    static func getBitmapFromUrl(_ url: String) -> Bitmap {
+        guard let safeUrl = URL(string: url) else {
             return Bitmap()
         }
-        let imageData = try?  Data(contentsOf: myURL)
+        let imageData = try?  Data(contentsOf: safeUrl)
         if let image = imageData {
             return Bitmap(image)
         } else {
