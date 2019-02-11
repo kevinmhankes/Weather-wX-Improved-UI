@@ -8,6 +8,7 @@ import UIKit
 
 class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
+    // TODO rename
     var buttonActionArray = [String]()
     let snWat = SevereNotice("wat")
     let snMcd = SevereNotice("mcd")
@@ -24,6 +25,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
+            // TODO add consolidate Download method in downloadRadar
             UtilityDownloadRadar.getPolygonVtec()
             UtilityDownloadRadar.getMpd()
             UtilityDownloadRadar.getMcd()
