@@ -20,7 +20,7 @@ final class WXGLDownload {
         let url = WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
             + GlobalDictionaries.nexradProductString[product]! + "/SI."
             + ridPrefix + radarSite.lowercased() + "/sn.last"
-        let inputstream = UtilityDownload.getInputStreamFromURL(url)
+        let inputstream = UtilityDownload.getInputStreamFromUrl(url)
         UtilityIO.saveInputStream(inputstream, fileName)
     }
 
@@ -65,7 +65,7 @@ final class WXGLDownload {
         let ridPrefixGlobal = ridPrefix
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         if !prod.contains("L2") {
-            let data = UtilityDownload.getInputStreamFromURL(WXGLDownload.nwsRadarPub
+            let data = UtilityDownload.getInputStreamFromUrl(WXGLDownload.nwsRadarPub
                 + "SL.us008001/DF.of/DC.radar/" + productId + "/SI."
                 + ridPrefix + rid.lowercased() + "/sn.last")
             UtilityIO.saveInputStream(data, l3BaseFn + idxStr)
@@ -138,7 +138,7 @@ final class WXGLDownload {
             index += 1
         }
         (0..<frameCount).forEach {
-            let data = UtilityDownload.getInputStreamFromURL(WXGLDownload.nwsRadarPub
+            let data = UtilityDownload.getInputStreamFromUrl(WXGLDownload.nwsRadarPub
                 + "SL.us008001/DF.of/DC.radar/"
                 + GlobalDictionaries.nexradProductString[prod]!
                 + "/SI." + ridPrefix + rid.lowercased()
