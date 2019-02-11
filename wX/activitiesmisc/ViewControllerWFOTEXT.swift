@@ -77,8 +77,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
                 self.textView.text = self.html
                 Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
                 Utility.writePref("WFO_REMEMBER_LOCATION", self.wfo)
-                // TODO add scrollToTop here
-                // scrollView.scrollToTop()
+                self.scrollView.scrollToTop()
             }
         }
     }
@@ -92,8 +91,6 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     }
 
     func productChanged(_ product: String) {
-        // TODO remove line below
-        scrollView.scrollToTop()
         self.product = product
         self.getContent()
     }

@@ -10,12 +10,12 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
 
     var spotterReportsData = [SpotterReports]()
     var spotterReportsDataSorted = [SpotterReports]()
-    // FIXME
-    //var spotterReportCountButton = ObjectToolbarIcon()
+    var spotterReportCountButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //spotterReportCountButton = ObjectToolbarIcon(self, "", nil)
+        spotterReportCountButton = ObjectToolbarIcon(self, nil)
+        spotterReportCountButton.title = ""
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.view.addSubview(toolbar)
@@ -26,7 +26,7 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
             DispatchQueue.main.async {
-                //self.spotterReportCountButton.title = "Count: \(self.spotterReportsData.count)"
+                self.spotterReportCountButton.title = "Count: \(self.spotterReportsData.count)"
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
                 self.spotterReportsDataSorted.enumerated().forEach {
                     _ = ObjectSpotterReportCard(

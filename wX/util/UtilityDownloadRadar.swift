@@ -10,6 +10,13 @@ final class UtilityDownloadRadar {
     static let urlFfw = "https://api.weather.gov/alerts/active?event=Flash%20Flood%20Warning"
     static let urlTor = "https://api.weather.gov/alerts/active?event=Tornado%20Warning"
 
+    static func getAllRadarData() {
+        getPolygonVtec()
+        getMpd()
+        getMcd()
+        getWatch()
+    }
+
     static func getPolygonVtec() {
         MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
         MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()

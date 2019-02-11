@@ -22,6 +22,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             "Home Screen",
             "User Interface",
             "Celsius to Fahrenheit table",
+            "Spotters (beta)",
             "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
         ]
         displayContent()
@@ -39,6 +40,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
         case "User Interface": self.goToVC("settingsui")
         case "Colors":         self.goToVC("settingscolorlisting")
         case "Home Screen":    self.goToVC("settingshomescreen")
+        case "Spotters (beta)":    self.goToVC("spotters")
         case "Celsius to Fahrenheit table":
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()

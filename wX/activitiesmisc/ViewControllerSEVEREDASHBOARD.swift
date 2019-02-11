@@ -8,8 +8,7 @@ import UIKit
 
 class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
-    // TODO rename
-    var buttonActionArray = [String]()
+    var buttonActions = [String]()
     let snWat = SevereNotice("wat")
     let snMcd = SevereNotice("mcd")
     let snMpd = SevereNotice("mpd")
@@ -25,11 +24,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            // TODO add consolidate Download method in downloadRadar
-            UtilityDownloadRadar.getPolygonVtec()
-            UtilityDownloadRadar.getMpd()
-            UtilityDownloadRadar.getMcd()
-            UtilityDownloadRadar.getWatch()
+            UtilityDownloadRadar.getAllRadarData()
             self.bm = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
             self.snWat.getBitmaps(MyApplication.watNoList.value)
@@ -42,16 +37,16 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         var token = ""
-        if self.buttonActionArray[sender.data].hasPrefix("WPCMPD") {
-            ActVars.wpcMpdNumber = self.buttonActionArray[sender.data].replace("WPCMPD", "")
+        if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
+            ActVars.wpcMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
             token = "wpcmpd"
         }
-        if self.buttonActionArray[sender.data].hasPrefix("SPCMCD") {
-            ActVars.spcMcdNumber = self.buttonActionArray[sender.data].replace("SPCMCD", "")
+        if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
+            ActVars.spcMcdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
             token = "spcmcd"
         }
-        if self.buttonActionArray[sender.data].hasPrefix("SPCWAT") {
-            ActVars.spcWatchNumber = self.buttonActionArray[sender.data].replace("SPCWAT", "")
+        if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
+            ActVars.spcWatchNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
             token = "spcwat"
         }
         self.goToVC(token)
@@ -107,7 +102,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
-            self.buttonActionArray.append("SPCWAT" + snWat.numberList[watI])
+            self.buttonActions.append("SPCWAT" + snWat.numberList[watI])
             index += 1
             watI += 1
         }
@@ -117,7 +112,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
-            self.buttonActionArray.append("SPCMCD" + snMcd.numberList[mcdI])
+            self.buttonActions.append("SPCMCD" + snMcd.numberList[mcdI])
             index += 1
             mcdI += 1
         }
@@ -127,7 +122,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
-            self.buttonActionArray.append("WPCMPD" + snMpd.numberList[mpdI])
+            self.buttonActions.append("WPCMPD" + snMpd.numberList[mpdI])
             index += 1
             mpdI += 1
         }
