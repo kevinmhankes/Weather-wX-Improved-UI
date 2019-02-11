@@ -29,7 +29,7 @@ extension String {
     }
 
     func getNwsHtml() -> String {
-        return UtilityDownloadNWS.getNWSStringFromURLS(self)
+        return UtilityDownloadNWS.getNwsStringFromUrls(self)
     }
 
     func getImage() -> Bitmap {
