@@ -98,8 +98,11 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
             )
         )
         self.stormReports.enumerated().forEach {
-            let objCard = ObjectCardStormReportItem(self.stackView, $1)
-            objCard.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:))))
+            _ = ObjectCardStormReportItem(
+                self.stackView,
+                $1,
+                UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:)))
+            )
         }
     }
 

@@ -8,12 +8,11 @@ import UIKit
 
 final class ObjectCardStormReportItem {
 
-    private var cardStackView = ObjectCardStackView()
-    private let tvLocation = ObjectTextViewLarge(80.0, UIColor.blue)
-    private let tvAddress = ObjectTextViewLarge(80.0)
-    private let tvDescription = ObjectTextViewSmallGray(80.0)
-
-    init(_ stackView: UIStackView, _ stormReport: StormReport) {
+    init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: UITapGestureRecognizerWithData) {
+        var cardStackView = ObjectCardStackView()
+        let tvLocation = ObjectTextViewLarge(80.0, UIColor.blue)
+        let tvAddress = ObjectTextViewLarge(80.0)
+        let tvDescription = ObjectTextViewSmallGray(80.0)
         if stormReport.damageHeader == "" && stormReport.time != "" {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvAddress.text = stormReport.address
@@ -36,9 +35,6 @@ final class ObjectCardStormReportItem {
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)
         }
-    }
-
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
         cardStackView.view.addGestureRecognizer(gesture)
     }
 }
