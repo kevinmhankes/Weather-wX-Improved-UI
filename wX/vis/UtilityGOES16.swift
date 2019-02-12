@@ -25,20 +25,28 @@ final class UtilityGOES16 {
         if sector == "FD" || sector == "CONUS" {
             sectorLocal = sector
         }
+        var satellite = "GOES16"
+        if sectorsInGoes17.contains(sectorLocal) {
+            satellite = "GOES17"
+        }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
-        return Bitmap(MyApplication.goes16Url + "/GOES16/ABI/" + sectorLocal + "/" + product + "/latest.jpg")
+        return Bitmap(MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg")
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
         let frameCount = String(frameCnt)
         var url: String
+        var satellite = "GOES16"
+        if sectorsInGoes17.contains(sectorLocal) {
+            satellite = "GOES17"
+        }
         switch sector {
         case "FD": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band="
             + product + "&length=" + frameCount
         case "CONUS": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS_Band.php?band="
             + product + "&length=" + frameCount
-        default: url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_sector_band.php?sector="
+        default: url = "https://www.star.nesdis.noaa.gov/GOES/" + satellite + "_sector_band.php?sector="
             + sector + "&band=" + product + "&length=" + frameCount
         }
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
@@ -48,6 +56,7 @@ final class UtilityGOES16 {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
 
+    // TODO support Full Disk for 17
     static let sectors = [
         "FD: Full Disk",
         "CONUS: US",
@@ -65,7 +74,20 @@ final class UtilityGOES16 {
         "car: Caribbean",
         "eus: U.S. Atlantic Coast",
         "pr: Puerto Rico",
-        "taw: Tropical Atlantic: wide view"
+        "taw: Tropical Atlantic: wide view",
+        "ak: Alaska",
+        "hi: Hawaii",
+        "tpw: US Pacific Coast",
+        "wus: Tropical Pacific"
+    ]
+
+    static let sectorsInGoes17 = [
+        "ak",
+        "hi",
+        "pnw",
+        "psw",
+        "tpw",
+        "wus"
     ]
 
     static let products = [
