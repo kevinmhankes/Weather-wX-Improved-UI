@@ -42,6 +42,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         fabRight = ObjectFab(self, "ic_play_arrow_24dp", #selector(playClicked))
         self.view.addSubview(fabRight!.view)
         updateView()
+        downloadClicked()
     }
 
     @objc override func doneClicked() {

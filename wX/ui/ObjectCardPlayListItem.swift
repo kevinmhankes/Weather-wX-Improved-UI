@@ -8,11 +8,6 @@ import UIKit
 
 final class ObjectCardPlayListItem {
 
-    private let cardStackView: ObjectCardStackView
-    private let tvProduct = ObjectTextViewLarge(80.0, UIColor.blue)
-    private let tvMiddle = ObjectTextViewLarge(80.0)
-    private let tvBottom = ObjectTextViewSmallGray(80.0)
-
     init(
         _ stackView: UIStackView,
         _ product: String,
@@ -20,20 +15,18 @@ final class ObjectCardPlayListItem {
         _ bottomLines: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        tvProduct.text = product
-        tvMiddle.text = middleLine
-        tvBottom.text = bottomLines
+        let tvProduct = ObjectTextViewLarge(80.0, UIColor.blue, text: product)
+        let tvMiddle = ObjectTextViewLarge(80.0, text: middleLine)
+        let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines)
+        // TODO constructor
+        tvProduct.view.isUserInteractionEnabled = false
         tvMiddle.view.isUserInteractionEnabled = false
         tvBottom.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, 0, arrangedSubviews: [tvProduct.view, tvMiddle.view, tvBottom.view]
         )
-        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
-        addGestureRecognizer(gesture)
-    }
-
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
         cardStackView.view.addGestureRecognizer(gesture)
     }
 }

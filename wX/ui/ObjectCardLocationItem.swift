@@ -19,6 +19,7 @@ final class ObjectCardLocationItem {
         let tvMiddle = ObjectTextView(middleLine)
         let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines)
         tvMiddle.setZeroSpacing()
+        tvName.view.isUserInteractionEnabled = false
         tvMiddle.view.isUserInteractionEnabled = false
         tvBottom.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(

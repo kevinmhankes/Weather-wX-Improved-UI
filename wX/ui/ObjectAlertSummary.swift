@@ -66,11 +66,14 @@ final class ObjectAlertSummary: NSObject {
                     nwsOffice = ""
                     nwsLoc = ""
                 }
-                let objAlert = ObjectCardAlertSummaryItem(stackView, nwsOffice, nwsLoc, alert)
-                self.urls.append(alert.url)
-                objAlert.addGestureRecognizer(
+                _ = ObjectCardAlertSummaryItem(
+                    stackView,
+                    nwsOffice,
+                    nwsLoc,
+                    alert,
                     UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:)))
                 )
+                self.urls.append(alert.url)
                 index += 1
             }
         }
