@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardHazard {
 
     init(_ stackView: UIStackView, _ hazard: String, _ gesture: UITapGestureRecognizer) {
-        let objLabel = ObjectTextView(stackView, hazard, FontSize.extraLarge.size, UIColor.blue)
+        let objLabel = ObjectTextView(stackView, hazard.uppercased(), FontSize.extraLarge.size, UIColor.blue)
         objLabel.addGestureRecognizer(gesture)
     }
 }
