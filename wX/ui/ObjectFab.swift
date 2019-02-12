@@ -20,6 +20,7 @@ public class ObjectFab {
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }
 
+    // TODO fold into above
     convenience init (_ uiv: UIViewController, _ imageString: String, _ action: Selector) {
         self.init(uiv, action)
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)

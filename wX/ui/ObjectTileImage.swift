@@ -19,6 +19,7 @@ final class ObjectTileImage {
         stackView.addArrangedSubview(image.img)
     }
 
+    // TODO add to init
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         image.addGestureRecognizer(gesture)
     }
