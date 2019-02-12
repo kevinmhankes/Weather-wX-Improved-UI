@@ -55,7 +55,6 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
-        // TODO add readPref that converts to Bool
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
         } else {

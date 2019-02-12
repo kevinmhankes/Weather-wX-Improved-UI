@@ -71,21 +71,21 @@ final class ObjectForecastPackageHazards {
         let stackViewLocalHaz = ObjectStackViewHS()
         stackViewLocalHaz.setupWithPadding()
         if !isUS {
-            let hz = objHazards.hazardsShort.replace("<BR>", "")
-            let hazCard = ObjectCardHazard(stackViewLocalHaz, hz)
-            let tapOnHazards = UITapGestureRecognizerWithData(
-                objHazards.hazards, self, #selector(self.hazardsAction(sender:))
+            let hazard = objHazards.hazardsShort.replace("<BR>", "")
+            _ = ObjectCardHazard(
+                stackViewLocalHaz,
+                hazard,
+                UITapGestureRecognizerWithData(objHazards.hazards, self, #selector(self.hazardsAction(sender:)))
             )
-            hazCard.addGestureRecognizer(tapOnHazards)
             numHaz += 1
         } else {
             var idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
             let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
-                let hazCard = ObjectCardHazard(stackViewLocalHaz, hazard)
-                hazCard.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(idAl[index], self, #selector(self.hazardsAction(sender:))
-                    )
+                _ = ObjectCardHazard(
+                    stackViewLocalHaz,
+                    hazard,
+                    UITapGestureRecognizerWithData(idAl[index], self, #selector(self.hazardsAction(sender:)))
                 )
                 numHaz += 1
             }

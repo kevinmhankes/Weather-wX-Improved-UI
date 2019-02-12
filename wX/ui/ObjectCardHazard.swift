@@ -8,14 +8,14 @@ import UIKit
 
 final class ObjectCardHazard {
 
-    private let sVLoc = ObjectStackView(.fill, .horizontal, .center)
     private let objLabel: ObjectTextView
 
-    init(_ stackView: UIStackView, _ hazard: String) {
+    init(_ stackView: UIStackView, _ hazard: String, _ gesture: UITapGestureRecognizer) {
         objLabel = ObjectTextView(stackView, hazard, FontSize.extraLarge.size, UIColor.blue)
+        addGestureRecognizer(gesture)
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+    private func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         objLabel.addGestureRecognizer(gesture)
     }
 }
