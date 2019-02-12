@@ -12,6 +12,7 @@
 // TODO spotters?
 // TODO color palette editor
 // TODO FAB in playlist
+// TODO uppercase mainscreen hazard ( test length on tst or ffw )
 
 2019_02_06 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions
