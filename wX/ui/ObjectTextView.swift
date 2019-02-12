@@ -21,10 +21,11 @@ final class ObjectTextView {
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
-    convenience init(_ text: String) {
+    convenience init(_ text: String, isUserInteractionEnabled: Bool = true) {
         self.init()
         self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
+        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
 
     convenience init(_ stackView: UIStackView) {

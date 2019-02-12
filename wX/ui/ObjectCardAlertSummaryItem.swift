@@ -17,17 +17,14 @@ final class ObjectCardAlertSummaryItem {
     ) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = ObjectTextViewLarge(80.0, UIColor.blue, text: office + " (" + location + ")")
-        let tvTitle = ObjectTextView(title)
-        let tvStart = ObjectTextView("Start: " + startTime)
-        let tvEnd = ObjectTextView("End: " + endTime)
+        let tvTitle = ObjectTextView(title, isUserInteractionEnabled: false)
+        let tvStart = ObjectTextView("Start: " + startTime, isUserInteractionEnabled: false)
+        let tvEnd = ObjectTextView("End: " + endTime, isUserInteractionEnabled: false)
         let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area, isUserInteractionEnabled: false)
         // TODO for setzerospacing and interactionenabled add to constructor
         tvTitle.setZeroSpacing()
         tvStart.setZeroSpacing()
         tvEnd.setZeroSpacing()
-        tvTitle.view.isUserInteractionEnabled = false
-        tvStart.view.isUserInteractionEnabled = false
-        tvEnd.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
         )

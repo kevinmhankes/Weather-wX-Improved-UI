@@ -15,13 +15,10 @@ final class ObjectCardLocationItem {
         _ bottomLines: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        let tvName = ObjectTextViewLarge(80.0, UIColor.blue, text: name)
-        let tvMiddle = ObjectTextView(middleLine)
-        let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines)
+        let tvName = ObjectTextViewLarge(80.0, UIColor.blue, text: name, isUserInteractionEnabled: false)
+        let tvMiddle = ObjectTextView(middleLine, isUserInteractionEnabled: false)
+        let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines, isUserInteractionEnabled: false)
         tvMiddle.setZeroSpacing()
-        tvName.view.isUserInteractionEnabled = false
-        tvMiddle.view.isUserInteractionEnabled = false
-        tvBottom.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvMiddle.view, tvBottom.view]
         )

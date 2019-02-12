@@ -12,6 +12,8 @@
 // TODO spotters?
 // TODO color palette editor
 // TODO FAB in playlist
+// TODO uswarn - add total warning count
+// TODO uswarn - Uswarn add long press: nexrad, mosaic, save location
 
 2019_02_12 55802 upper case hazards on main screen
 2019_02_12 55801 add code in UtilityUI to detect ipad or iphone
