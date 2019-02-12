@@ -10,7 +10,7 @@ final class ObjectTextViewSmallGray {
 
     let tv = UITextView()
 
-    init(_ textPadding: CGFloat) {
+    init(_ textPadding: CGFloat, text: String = "") {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
@@ -19,6 +19,7 @@ final class ObjectTextViewSmallGray {
         tv.font = FontSize.small.size
         tv.textContainerInset = UIEdgeInsets.zero
         tv.textColor = UIColor.gray
+        self.text = text
     }
 
     var text: String {
