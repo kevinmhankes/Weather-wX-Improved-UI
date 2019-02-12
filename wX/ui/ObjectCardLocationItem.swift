@@ -13,7 +13,13 @@ final class ObjectCardLocationItem {
     private let tvMiddle = ObjectTextView()
     private let tvBottom = ObjectTextViewSmallGray(80.0)
 
-    init(_ stackView: UIStackView, _ name: String, _ middleLine: String, _ bottomLines: String) {
+    init(
+        _ stackView: UIStackView,
+        _ name: String,
+        _ middleLine: String,
+        _ bottomLines: String,
+        _ gesture: UITapGestureRecognizerWithData
+    ) {
         tvName.text = name
         tvMiddle.text = middleLine
         tvMiddle.setZeroSpacing()
@@ -25,6 +31,7 @@ final class ObjectCardLocationItem {
         )
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
+        addGestureRecognizer(gesture)
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
