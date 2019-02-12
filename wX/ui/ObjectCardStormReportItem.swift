@@ -22,6 +22,7 @@ final class ObjectCardStormReportItem {
             )
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)
+            cardStackView.view.addGestureRecognizer(gesture)
         } else if stormReport.damageHeader != "" {
             tvLocation.text = stormReport.damageHeader
             tvLocation.view.textColor = UIColor.white
@@ -33,6 +34,5 @@ final class ObjectCardStormReportItem {
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)
         }
-        cardStackView.view.addGestureRecognizer(gesture)
     }
 }

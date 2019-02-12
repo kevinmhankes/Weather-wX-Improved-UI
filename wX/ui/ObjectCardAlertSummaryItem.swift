@@ -20,7 +20,7 @@ final class ObjectCardAlertSummaryItem {
         let tvTitle = ObjectTextView(title)
         let tvStart = ObjectTextView("Start: " + startTime)
         let tvEnd = ObjectTextView("End: " + endTime)
-        let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area)
+        let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area, isUserInteractionEnabled: false)
         // TODO for setzerospacing and interactionenabled add to constructor
         tvTitle.setZeroSpacing()
         tvStart.setZeroSpacing()
@@ -28,7 +28,6 @@ final class ObjectCardAlertSummaryItem {
         tvTitle.view.isUserInteractionEnabled = false
         tvStart.view.isUserInteractionEnabled = false
         tvEnd.view.isUserInteractionEnabled = false
-        tvArea.view.isUserInteractionEnabled = false
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
         )

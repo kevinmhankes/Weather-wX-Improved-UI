@@ -22,9 +22,7 @@ final class ObjectSpotterCard {
                 + spotterLocation.lonString
                 + ")",
             spotter.reportedAt, spotter.email + " " + spotter.phone
-            ].forEach { textViews.append(ObjectTextView(sV2.view, $0)) }
-        // TODO init
-        textViews.forEach { $0.view.isUserInteractionEnabled = false }
+            ].forEach { textViews.append(ObjectTextView(sV2.view, $0, isUserInteractionEnabled: false)) }
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size

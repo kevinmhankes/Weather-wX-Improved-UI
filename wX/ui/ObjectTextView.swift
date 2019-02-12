@@ -33,11 +33,12 @@ final class ObjectTextView {
         stackView.addArrangedSubview(self.tv)
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String) {
+    convenience init(_ stackView: UIStackView, _ text: String, isUserInteractionEnabled: Bool = true) {
         self.init()
         self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         stackView.addArrangedSubview(self.tv)
+        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
