@@ -10,16 +10,13 @@ final class ObjectCardStormReportItem {
 
     init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: UITapGestureRecognizerWithData) {
         var cardStackView = ObjectCardStackView()
-        let tvLocation = ObjectTextViewLarge(80.0, UIColor.blue)
-        let tvAddress = ObjectTextViewLarge(80.0)
-        let tvDescription = ObjectTextViewSmallGray(80.0)
+        let tvLocation = ObjectTextViewLarge(80.0, UIColor.blue, isUserInteractionEnabled: false)
+        let tvAddress = ObjectTextViewLarge(80.0, isUserInteractionEnabled: false)
+        let tvDescription = ObjectTextViewSmallGray(80.0, isUserInteractionEnabled: false)
         if stormReport.damageHeader == "" && stormReport.time != "" {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvAddress.text = stormReport.address
             tvDescription.text = stormReport.magnitude + " - " + stormReport.damageReport
-            // TODO init
-            tvAddress.view.isUserInteractionEnabled = false
-            tvDescription.view.isUserInteractionEnabled = false
             let verticalTextConainer = ObjectStackView(
                 .fill, .vertical, 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )

@@ -10,7 +10,7 @@ final class ObjectTextViewSmallGray {
 
     let tv = UITextView()
 
-    init(_ textPadding: CGFloat, text: String = "") {
+    init(_ textPadding: CGFloat, text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
@@ -20,6 +20,7 @@ final class ObjectTextViewSmallGray {
         tv.textContainerInset = UIEdgeInsets.zero
         tv.textColor = UIColor.gray
         self.text = text
+        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
 
     var text: String {

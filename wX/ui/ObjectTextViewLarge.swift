@@ -10,17 +10,23 @@ final class ObjectTextViewLarge {
 
     let tv = UILabelInset()
 
-    init(_ textPadding: CGFloat, text: String = "") {
+    init(_ textPadding: CGFloat, text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
         tv.font = FontSize.medium.size
         tv.adjustsFontSizeToFitWidth = true
         self.text = text
+        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
 
-    convenience init(_ textPadding: CGFloat, _ color: UIColor, text: String = "") {
-        self.init(textPadding, text: text)
+    convenience init(
+        _ textPadding: CGFloat,
+        _ color: UIColor,
+        text: String = "",
+        isUserInteractionEnabled: Bool = true
+    ) {
+        self.init(textPadding, text: text, isUserInteractionEnabled: isUserInteractionEnabled)
         tv.textColor = color
     }
 
