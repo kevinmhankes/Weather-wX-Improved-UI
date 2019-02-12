@@ -8,11 +8,6 @@ import UIKit
 
 final class ObjectCardLocationItem {
 
-    private let cardStackView: ObjectCardStackView
-    private let tvName = ObjectTextViewLarge(80.0, UIColor.blue)
-    private let tvMiddle = ObjectTextView()
-    private let tvBottom = ObjectTextViewSmallGray(80.0)
-
     init(
         _ stackView: UIStackView,
         _ name: String,
@@ -20,6 +15,9 @@ final class ObjectCardLocationItem {
         _ bottomLines: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
+        let tvName = ObjectTextViewLarge(80.0, UIColor.blue)
+        let tvMiddle = ObjectTextView()
+        let tvBottom = ObjectTextViewSmallGray(80.0)
         tvName.text = name
         tvMiddle.text = middleLine
         tvMiddle.setZeroSpacing()
@@ -29,12 +27,8 @@ final class ObjectCardLocationItem {
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvMiddle.view, tvBottom.view]
         )
-        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
-        addGestureRecognizer(gesture)
-    }
-
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizerWithData) {
         cardStackView.view.addGestureRecognizer(gesture)
     }
 }
