@@ -17,6 +17,7 @@ final class ObjectCardStormReportItem {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvAddress.text = stormReport.address
             tvDescription.text = stormReport.magnitude + " - " + stormReport.damageReport
+            // TODO init
             tvAddress.view.isUserInteractionEnabled = false
             tvDescription.view.isUserInteractionEnabled = false
             let verticalTextConainer = ObjectStackView(

@@ -8,8 +8,6 @@ import UIKit
 
 final class ObjectSpotterCard {
 
-    let sV: ObjectCardStackView
-
     init(_ stackView: UIStackView, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
         var textViews = [ObjectTextView]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
@@ -25,18 +23,15 @@ final class ObjectSpotterCard {
                 + ")",
             spotter.reportedAt, spotter.email + " " + spotter.phone
             ].forEach { textViews.append(ObjectTextView(sV2.view, $0)) }
+        // TODO init
         textViews.forEach { $0.view.isUserInteractionEnabled = false }
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         [.blue, .black, .gray].enumerated().forEach { textViews[$0].color = $1 }
         textViews.forEach {$0.setZeroSpacing()}
-        sV = ObjectCardStackView(arrangedSubviews: [sV2.view])
+        let sV = ObjectCardStackView(arrangedSubviews: [sV2.view])
         stackView.addArrangedSubview(sV.view)
-        addGestureRecognizer(gesture)
-    }
-
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         sV.view.addGestureRecognizer(gesture)
     }
 }

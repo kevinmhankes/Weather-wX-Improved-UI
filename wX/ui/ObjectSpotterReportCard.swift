@@ -8,9 +8,8 @@ import UIKit
 
 final class ObjectSpotterReportCard {
 
-    private let sV = StackView()
-
     init(_ stackView: UIStackView, _ spotterReport: SpotterReports, _ gesture: UITapGestureRecognizer) {
+        let sV = StackView()
         var textViews = [ObjectTextView]()
         [
             spotterReport.type + " " + spotterReport.time,
@@ -23,10 +22,6 @@ final class ObjectSpotterReportCard {
         [.blue, .black, .gray].enumerated().forEach {textViews[$0].color = $1}
         textViews.forEach {$0.setZeroSpacing()}
         stackView.addArrangedSubview(sV)
-        addGestureRecognizer(gesture)
-    }
-
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         sV.addGestureRecognizer(gesture)
     }
 }
