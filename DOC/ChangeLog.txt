@@ -25,6 +25,7 @@
 		in settings location support Canada location *display* in map
 		[BUG] fix incorrect map repositioning in settings location edit
 		add Tilt support in radar
+		playlist - download all on entrance to VC
 
 AppStore writeup:
 
