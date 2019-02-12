@@ -20,7 +20,6 @@ final class ObjectCardCC {
         } else {
             image = ObjectCardImage(sizeFactor: 1.0)
         }
-        topText.view.isUserInteractionEnabled = true
         let verticalTextConainer: ObjectStackView
         if UIPreferences.showMetarInCC {
             verticalTextConainer = ObjectStackView(

@@ -15,12 +15,11 @@ final class ObjectSpotterReportCard {
             spotterReport.type + " " + spotterReport.time,
             spotterReport.city,
             spotterReport.lastName + ", " + spotterReport.firstName
-        ].forEach {textViews.append(ObjectTextView(sV, $0))}
+        ].forEach {textViews.append(ObjectTextView(sV, $0, isZeroSpacing: true))}
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         [.blue, .black, .gray].enumerated().forEach {textViews[$0].color = $1}
-        textViews.forEach {$0.setZeroSpacing()}
         stackView.addArrangedSubview(sV)
         sV.addGestureRecognizer(gesture)
     }

@@ -21,11 +21,14 @@ final class ObjectTextView {
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
-    convenience init(_ text: String, isUserInteractionEnabled: Bool = true) {
+    convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false) {
         self.init()
         self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
+        if isZeroSpacing {
+            setZeroSpacing()
+        }
     }
 
     convenience init(_ stackView: UIStackView) {
@@ -34,12 +37,20 @@ final class ObjectTextView {
         stackView.addArrangedSubview(self.tv)
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, isUserInteractionEnabled: Bool = true) {
+    convenience init(
+        _ stackView: UIStackView,
+        _ text: String,
+        isUserInteractionEnabled: Bool = true,
+        isZeroSpacing: Bool = false
+    ) {
         self.init()
         self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         stackView.addArrangedSubview(self.tv)
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
+        if isZeroSpacing {
+            setZeroSpacing()
+        }
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {

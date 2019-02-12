@@ -22,12 +22,13 @@ final class ObjectSpotterCard {
                 + spotterLocation.lonString
                 + ")",
             spotter.reportedAt, spotter.email + " " + spotter.phone
-            ].forEach { textViews.append(ObjectTextView(sV2.view, $0, isUserInteractionEnabled: false)) }
+            ].forEach {
+                textViews.append(ObjectTextView(sV2.view, $0, isUserInteractionEnabled: false, isZeroSpacing: true))
+        }
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         [.blue, .black, .gray].enumerated().forEach { textViews[$0].color = $1 }
-        textViews.forEach {$0.setZeroSpacing()}
         let sV = ObjectCardStackView(arrangedSubviews: [sV2.view])
         stackView.addArrangedSubview(sV.view)
         sV.view.addGestureRecognizer(gesture)
