@@ -128,7 +128,7 @@ class ViewControllerGOES16: UIwXViewController {
             self,
             "Select number of animation frames:",
             animateButton,
-            stride(from: 12, to: 96, by: 12),
+            stride(from: 12, to: 96 + 12, by: 12),
             self.getAnimation(_:)
         )
     }

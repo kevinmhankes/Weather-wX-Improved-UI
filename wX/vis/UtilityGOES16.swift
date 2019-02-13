@@ -22,15 +22,20 @@ final class UtilityGOES16 {
 
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
-        if sector == "FD" || sector == "CONUS" {
+        if sector == "FD" || sector == "CONUS" || sector == "CONUS-G17" {
             sectorLocal = sector
         }
         var satellite = "GOES16"
         if sectorsInGoes17.contains(sector) {
             satellite = "GOES17"
+            if sector == "CONUS-G17" {
+                sectorLocal = "CONUS"
+            }
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
+        // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
+        // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
         let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
         print(url)
         return Bitmap(url)
@@ -46,9 +51,11 @@ final class UtilityGOES16 {
             satellite = "G17"
         }
         switch sector {
-        case "FD": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band="
+        case "FD":
+            url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band="
             + product + "&length=" + frameCount
-        case "CONUS": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS_Band.php?band="
+        case "CONUS", "CONUS-G17":
+            url = "https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=" + satellite + "&band="
             + product + "&length=" + frameCount
         default:
             url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector="
@@ -67,7 +74,8 @@ final class UtilityGOES16 {
     // TODO support Full Disk for 17
     static let sectors = [
         "FD: Full Disk",
-        "CONUS: US",
+        "CONUS: GOES-EAST US",
+        "CONUS-G17: GOES-WEST US",
         "pnw: Pacific Northwest",
         "nr: Northern Rockies",
         "umv: Upper Mississippi Valley",
@@ -90,6 +98,7 @@ final class UtilityGOES16 {
     ]
 
     static let sectorsInGoes17 = [
+        "CONUS-G17",
         "ak",
         "hi",
         "pnw",
