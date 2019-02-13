@@ -94,7 +94,9 @@ final class UtilityGOES16 {
         "ak: Alaska",
         "hi: Hawaii",
         "tpw: US Pacific Coast",
-        "wus: Tropical Pacific"
+        "wus: Tropical Pacific",
+        "eep: Eastern Pacific",
+        //"can: Canada"
     ]
 
     static let sectorsInGoes17 = [
@@ -104,7 +106,8 @@ final class UtilityGOES16 {
         "pnw",
         "psw",
         "tpw",
-        "wus"
+        "wus",
+        "eep"
     ]
 
     static let products = [
