@@ -36,21 +36,27 @@ final class UtilityGOES16 {
         return Bitmap(url)
     }
 
+    // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G17&sector=ak&band=GEOCOLOR&length=12
+    // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G16&sector=cgl&band=GEOCOLOR&length=12
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
         let frameCount = String(frameCnt)
         var url: String
-        var satellite = "GOES16"
+        var satellite = "G16"
         if sectorsInGoes17.contains(sector) {
-            satellite = "GOES17"
+            satellite = "G17"
         }
         switch sector {
         case "FD": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band="
             + product + "&length=" + frameCount
         case "CONUS": url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_CONUS_Band.php?band="
             + product + "&length=" + frameCount
-        default: url = "https://www.star.nesdis.noaa.gov/GOES/" + satellite + "_sector_band.php?sector="
+        default:
+            url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector="
             + sector + "&band=" + product + "&length=" + frameCount
+            //url = "https://www.star.nesdis.noaa.gov/GOES/" + satellite + "_sector_band.php?sector="
+            //+ sector + "&band=" + product + "&length=" + frameCount
         }
+        print(url)
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
