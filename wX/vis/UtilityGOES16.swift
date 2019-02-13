@@ -26,19 +26,21 @@ final class UtilityGOES16 {
             sectorLocal = sector
         }
         var satellite = "GOES16"
-        if sectorsInGoes17.contains(sectorLocal) {
+        if sectorsInGoes17.contains(sector) {
             satellite = "GOES17"
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
-        return Bitmap(MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg")
+        let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
+        print(url)
+        return Bitmap(url)
     }
 
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
         let frameCount = String(frameCnt)
         var url: String
         var satellite = "GOES16"
-        if sectorsInGoes17.contains(sectorLocal) {
+        if sectorsInGoes17.contains(sector) {
             satellite = "GOES17"
         }
         switch sector {
