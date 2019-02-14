@@ -10,20 +10,25 @@ final class ObjectStackView {
 
     private let sV = UIStackView()
 
-    init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis) {
+    init(
+        _ distribution: UIStackView.Distribution,
+        _ axis: NSLayoutConstraint.Axis
+        //alignment: UIStackView.Alignment = UIStackView.Alignment.fill
+    ) {
         sV.distribution = distribution
         sV.axis = axis
+        //sV.alignment = alignment
     }
 
     // TODO fold in 2 below
-    convenience init(
+    /*convenience init(
         _ distribution: UIStackView.Distribution,
         _ axis: NSLayoutConstraint.Axis,
         _ alignment: UIStackView.Alignment
     ) {
         self.init(distribution, axis)
         sV.alignment = alignment
-    }
+    }*/
 
     convenience init(
         _ distribution: UIStackView.Distribution,

@@ -72,8 +72,6 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        //let leftButton = ObjectToolbarIcon(self, .leftArrow, #selector(self.leftClicked))
-        //let rightButton = ObjectToolbarIcon(self, .rightArrow, #selector(self.rightClicked))
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         toolbar.items = ObjectToolbarItems(
             [
@@ -81,8 +79,6 @@ class ViewControllerMODELGENERIC: UIwXViewController {
                 flexBarButton,
                 productButton,
                 timeButton
-                //leftButton,
-                //rightButton
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true)
