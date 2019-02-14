@@ -15,7 +15,7 @@ final class ObjectCardLocationItem {
         _ bottomLines: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        let tvName = ObjectTextViewLarge(80.0, UIColor.blue, text: name, isUserInteractionEnabled: false)
+        let tvName = ObjectTextViewLarge(80.0, text: name, color: UIColor.blue, isUserInteractionEnabled: false)
         let tvMiddle = ObjectTextView(middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines, isUserInteractionEnabled: false)
         let verticalTextConainer = ObjectStackView(
