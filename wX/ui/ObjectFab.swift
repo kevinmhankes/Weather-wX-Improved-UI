@@ -11,20 +11,20 @@ public class ObjectFab {
     private let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
     let positionLeft: CGFloat = 76.0
 
-    init(_ uiv: UIViewController, _ action: Selector) {
+    init(_ uiv: UIViewController, _ action: Selector, imageString: String = "ic_flash_on_24dp") {
         floaty.sticky = true
         floaty.friendlyTap = false
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
         floaty.buttonColor = AppColors.primaryColorFab
-        floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: "ic_flash_on_24dp")!, 0.50)
+        floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }
 
     // TODO fold into above
-    convenience init (_ uiv: UIViewController, _ imageString: String, _ action: Selector) {
-        self.init(uiv, action)
-        floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
-    }
+    //convenience init (_ uiv: UIViewController, _ imageString: String, _ action: Selector) {
+    //    self.init(uiv, action)
+    //    floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
+    //}
 
     func resize() {
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()

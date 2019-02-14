@@ -95,7 +95,7 @@ final class UtilityGOES16 {
         "hi: Hawaii",
         "tpw: US Pacific Coast",
         "wus: Tropical Pacific",
-        "eep: Eastern Pacific",
+        "eep: Eastern Pacific"
         //"can: Canada"
     ]
 

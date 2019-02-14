@@ -15,7 +15,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         super.viewDidLoad()
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        fab = ObjectFab(self, ObjectToolbarIcon.iconToString[.plus]!, #selector(addClicked))
+        fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
         displayContent()
     }

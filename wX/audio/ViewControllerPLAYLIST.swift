@@ -39,7 +39,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
-        fabRight = ObjectFab(self, "ic_play_arrow_24dp", #selector(playClicked))
+        fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
         self.view.addSubview(fabRight!.view)
         updateView()
         downloadClicked()
