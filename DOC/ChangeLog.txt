@@ -14,6 +14,13 @@
 // TODO FAB in playlist
 // TODO uswarn - add total warning count
 // TODO uswarn - Uswarn add long press: nexrad, mosaic, save location
+// TODO BUG: dedicated SPC MCD tap action shows image not text/image
+// TODO use enum for utilityaction ( below )
+//    enum ASCIIControlCharacter: Character {
+//        case tab = "\t"
+//        case lineFeed = "\n"
+//        case carriageReturn = "\r"
+//    }
 
 2019_02_12 55802 upper case hazards on main screen
 2019_02_12 55801 add code in UtilityUI to detect ipad or iphone
