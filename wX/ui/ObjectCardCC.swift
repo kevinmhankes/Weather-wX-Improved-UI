@@ -23,11 +23,11 @@ final class ObjectCardCC {
         let verticalTextConainer: ObjectStackView
         if UIPreferences.showMetarInCC {
             verticalTextConainer = ObjectStackView(
-                .fill, .vertical, 0, arrangedSubviews: [topText.view, middleText.view, bottomText.view]
+                .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view, bottomText.view]
             )
         } else {
             verticalTextConainer = ObjectStackView(
-                .fill, .vertical, 0, arrangedSubviews: [topText.view, middleText.view]
+                .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view]
             )
         }
         verticalTextConainer.view.alignment = UIStackView.Alignment.top

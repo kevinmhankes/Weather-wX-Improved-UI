@@ -60,7 +60,7 @@ final class ObjectImageTileMatrix: NSObject {
         }
         var jIndex = 0
         while true {
-            let sV = ObjectStackView(.fill, .horizontal, UIPreferences.stackviewCardSpacing)
+            let sV = ObjectStackView(.fill, .horizontal, spacing: UIPreferences.stackviewCardSpacing)
             var index = 0
             for _ in (0...(rowCount - 1)) {
                 if jIndex >= icons.count {

@@ -11,7 +11,7 @@ final class ObjectSpotterCard {
     init(_ stackView: UIStackView, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
         var textViews = [ObjectTextView]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
-        let sV2 = ObjectStackView(.fill, .vertical, 0)
+        let sV2 = ObjectStackView(.fill, .vertical, spacing: 0)
         [
             spotter.lastName
                 + ", "

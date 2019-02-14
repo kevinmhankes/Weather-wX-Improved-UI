@@ -30,7 +30,7 @@ final class ObjectCard7Day {
         }
         topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, 0, arrangedSubviews: [topText.view, bottomText.view]
+            .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view]
         )
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])

@@ -18,7 +18,7 @@ final class ObjectCardStormReportItem {
             tvAddress.text = stormReport.address
             tvDescription.text = stormReport.magnitude + " - " + stormReport.damageReport
             let verticalTextConainer = ObjectStackView(
-                .fill, .vertical, 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
+                .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)
@@ -29,7 +29,7 @@ final class ObjectCardStormReportItem {
             tvLocation.view.backgroundColor = UIColor.black
             tvLocation.tv.font = FontSize.extraLarge.size
             let verticalTextConainer = ObjectStackView(
-                .fill, .vertical, 0, arrangedSubviews: [tvLocation.view]
+                .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view]
             )
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)

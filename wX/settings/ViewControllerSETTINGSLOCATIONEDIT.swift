@@ -60,7 +60,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         }
         textViews[3].font = FontSize.extraSmall.size
         textViews[3].isEditable = false
-        let stackView = ObjectStackView(.fill, .vertical, 0, arrangedSubviews: textViews + [mapView])
+        let stackView = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
         let topSpace = 50.0 + UtilityUI.getTopPadding()

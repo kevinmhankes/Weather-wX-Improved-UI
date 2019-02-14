@@ -22,7 +22,7 @@ final class ObjectCardAlertSummaryItem {
         let tvEnd = ObjectTextView("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area, isUserInteractionEnabled: false)
         let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, 0, arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
+            .fill, .vertical, spacing: 0, arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
         )
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)

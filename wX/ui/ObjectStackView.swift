@@ -12,53 +12,15 @@ final class ObjectStackView {
 
     init(
         _ distribution: UIStackView.Distribution,
-        _ axis: NSLayoutConstraint.Axis
-        //alignment: UIStackView.Alignment = UIStackView.Alignment.fill
+        _ axis: NSLayoutConstraint.Axis,
+        spacing: CGFloat = 0.0,
+        arrangedSubviews: [UIView] = []
     ) {
         sV.distribution = distribution
         sV.axis = axis
-        //sV.alignment = alignment
-    }
-
-    // TODO fold in 2 below
-    /*convenience init(
-        _ distribution: UIStackView.Distribution,
-        _ axis: NSLayoutConstraint.Axis,
-        _ alignment: UIStackView.Alignment
-    ) {
-        self.init(distribution, axis)
-        sV.alignment = alignment
-    }*/
-
-    convenience init(
-        _ distribution: UIStackView.Distribution,
-        _ axis: NSLayoutConstraint.Axis,
-        _ alignment: UIStackView.Alignment,
-        arrangedSubviews: [UIView]
-    ) {
-        self.init(distribution, axis)
-        sV.alignment = alignment
-        arrangedSubviews.forEach { sV.addArrangedSubview($0) }
-    }
-
-    convenience init(_ distribution: UIStackView.Distribution, _ axis: NSLayoutConstraint.Axis, _ spacing: CGFloat) {
-        self.init(distribution, axis)
         sV.spacing = spacing
-    }
-
-    convenience init(
-        _ distribution: UIStackView.Distribution,
-        _ axis: NSLayoutConstraint.Axis,
-        _ spacing: CGFloat,
-        arrangedSubviews: [UIView]
-    ) {
-        self.init(distribution, axis, spacing)
-        arrangedSubviews.forEach { sV.addArrangedSubview($0) }
-    }
-
-    func addArrangedSubviews(_ listOfViews: [UIView]) {
-        listOfViews.forEach {
-            sV.addArrangedSubview($0)
+        if !arrangedSubviews.isEmpty {
+            arrangedSubviews.forEach { sV.addArrangedSubview($0) }
         }
     }
 
