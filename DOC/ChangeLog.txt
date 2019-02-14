@@ -22,6 +22,10 @@
 //        case carriageReturn = "\r"
 //    }
 
+AppStore writeup:
+
+Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
+
 2019_02_12 55802 upper case hazards on main screen
 2019_02_12 55801 add code in UtilityUI to detect ipad or iphone
 		 add 3 additional items in utilMetarConditions
