@@ -172,7 +172,9 @@ final class ObjectMetar {
             TDArr = tmpBlob.split("/")
             pressureBlob = metar.parse(patternMetarWxogl2)
             windBlob = metar.parse(patternMetarWxogl3)
-            if windBlob=="" {windBlob = metar.parse(patternMetarWxogl4)}
+            if windBlob == "" {
+                windBlob = metar.parse(patternMetarWxogl4)
+            }
             visBlob = metar.parse(" ([0-9].*?SM) ")
             visBlobArr = visBlob.split(" ")
             visBlob = visBlobArr[visBlobArr.count - 1].replace("SM", "")
