@@ -126,7 +126,9 @@ final class UtilityDownload {
             text = getTextProduct(prod + "%")
         } else if prod.contains("FOCN45") {
             text = "http://tgftp.nws.noaa.gov/data/raw/fo/focn45.cwwg..txt".getHtmlSep()
-            if UIPreferences.nwsTextRemovelinebreaks {text = text.removeLineBreaks()}
+            if UIPreferences.nwsTextRemovelinebreaks {
+                text = text.removeLineBreaks()
+            }
         } else if prod.hasPrefix("AWCN") {
             text = ("http://tgftp.nws.noaa.gov/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if prod.contains("NFD") {
