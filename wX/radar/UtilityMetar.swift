@@ -264,6 +264,7 @@ final class UtilityMetar {
         }
     }
 
+    // TODO rawFileToStringArray should be in UtilityIO
     static func getObservationSites(_ radarSite: String) -> String {
         var obsListSb = ""
         let radarLocation = LatLon(radarSite, isRadar: true)
