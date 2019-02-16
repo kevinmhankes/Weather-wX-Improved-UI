@@ -58,8 +58,8 @@ final class Location {
 
     class func checkCurrentLocationValidity() {
         if getCurrentLocation() >= MyApplication.locations.count {
-            setCurrentLocation(MyApplication.locations.count-1)
-            setCurrentLocationStr(String(currentLocation+1))
+            setCurrentLocation(MyApplication.locations.count - 1)
+            setCurrentLocationStr(String(currentLocation + 1))
         }
     }
 
