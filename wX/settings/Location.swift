@@ -25,7 +25,7 @@ final class Location {
     private var isLocationUS: Bool
 
     init(_ locNumInt: Int) {
-        let jStr = String(locNumInt+1)
+        let jStr = String(locNumInt + 1)
         lat = Utility.readPref("LOC" + jStr + "_X", "")
         lon = Utility.readPref("LOC" + jStr + "_Y", "")
         name = Utility.readPref("LOC" + jStr + "_LABEL", "")
@@ -40,7 +40,7 @@ final class Location {
     }
 
     func saveLocationToNewSlot(_ newLocNumInt: Int) {
-        let iStr = String(newLocNumInt+1)
+        let iStr = String(newLocNumInt + 1)
         Utility.writePref("LOC" + iStr + "_X", lat)
         Utility.writePref("LOC" + iStr + "_Y", lon)
         Utility.writePref("LOC" + iStr + "_LABEL", name)
