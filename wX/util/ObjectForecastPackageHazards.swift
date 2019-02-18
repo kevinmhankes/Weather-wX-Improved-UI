@@ -55,6 +55,7 @@ final class ObjectForecastPackageHazards {
     static func getHazardCount(_ objHazards: ObjectForecastPackageHazards) -> Int {
         var numHaz = 0
         let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
+        // TODO fix this
         hazardTitles.enumerated().forEach { _, _ in
             numHaz += 1
         }
