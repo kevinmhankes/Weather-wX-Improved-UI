@@ -31,6 +31,7 @@ final class UtilityModelNCEPInputOutput {
         let time = html.parse(ncepPattern1)
         runData.mostRecentRun = time
         runData.timeStrConv = time
+        // FIXME camelCase
         let timeCompleteUrl = "http://mag.ncep.noaa.gov/model-fhrs.php?group=Model%20Guidance&model="
             + om.model.lowercased() + "&fhr_mode=image&loop_start=-1&loop_end=-1&area="
             + om.sector + "&fourpan=no&imageSize=&preselected_formatted_cycle_date="
