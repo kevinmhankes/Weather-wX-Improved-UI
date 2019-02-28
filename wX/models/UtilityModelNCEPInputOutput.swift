@@ -23,6 +23,7 @@ final class UtilityModelNCEPInputOutput {
             + "?group=Model%20Guidance&model="
             + om.model.uppercased()
         runCompletionUrl += "&area=" + om.sector.lowercased()
+        // FIXME does this need String()?
         runCompletionUrl += "&cycle=" + String(runCompletionDataStr)
         runCompletionUrl += "&param=" + om.param + "&fourpan=no&imageSize=M&ps=area"
         runCompletionUrl = runCompletionUrl.replace(" ", "%20")
