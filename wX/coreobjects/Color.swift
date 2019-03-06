@@ -62,10 +62,10 @@ final class Color {
         let greenDouble = Double(greenInt) / 255.0
         let blueDouble = Double(blueInt) / 255.0
         let color = UIColor(red: CGFloat(redDouble), green: CGFloat(greenDouble), blue: CGFloat(blueDouble), alpha: 1.0)
-        var hue: CGFloat = 0
-        var saturation: CGFloat = 0
-        var brightness: CGFloat = 0
-        var alpha: CGFloat = 0
+        var hue: CGFloat = 0.0
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         return [Double(hue), Double(saturation), Double(brightness)]
     }
