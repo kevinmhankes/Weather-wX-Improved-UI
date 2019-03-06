@@ -82,6 +82,6 @@ final class Color {
         var blue: CGFloat = 0.0
         var alpha: CGFloat = 0.0
         color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        return Color.rgb(Int(red*255), Int(green*255), Int(blue*255))
+        return Color.rgb(Int(red * 255), Int(green * 255), Int(blue * 255))
     }
 }
