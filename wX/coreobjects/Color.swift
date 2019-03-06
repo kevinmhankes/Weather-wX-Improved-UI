@@ -58,9 +58,9 @@ final class Color {
         let redInt: Int = ((color >> 16) & 0xFF)
         let greenInt: Int = ((color >> 8) & 0xFF)
         let blueInt: Int = (color & 0xFF)
-        let redDouble = Double(redInt)/255.0
-        let greenDouble = Double(greenInt)/255.0
-        let blueDouble = Double(blueInt)/255.0
+        let redDouble = Double(redInt) / 255.0
+        let greenDouble = Double(greenInt) / 255.0
+        let blueDouble = Double(blueInt) / 255.0
         let color = UIColor(red: CGFloat(redDouble), green: CGFloat(greenDouble), blue: CGFloat(blueDouble), alpha: 1.0)
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
