@@ -77,10 +77,10 @@ final class Color {
             brightness: CGFloat(hsv[2]),
             alpha: CGFloat(1.0)
         )
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
         color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return Color.rgb(Int(red*255), Int(green*255), Int(blue*255))
     }
