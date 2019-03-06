@@ -22,7 +22,8 @@
 //        case carriageReturn = "\r"
 //    }
 // TODO update too: static final nwsOpcWebsitePrefix = "https://ocean.weather.gov";
-//
+// TODO use static instead of class for static methods
+// TODO stop using R.raw
 
 AppStore writeup:
 
