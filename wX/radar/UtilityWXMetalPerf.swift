@@ -351,11 +351,11 @@ class UtilityWXMetalPerf {
         pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
         pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         (0..<buffers.triangleCount).forEach {
-            buffers.putFloat(pixXD + (lenLocal*cos(Double($0) * twicePi / triangleAmount)))
-            buffers.putFloat(-pixYD + (lenLocal*sin(Double($0) * twicePi / triangleAmount)))
+            buffers.putFloat(pixXD + (lenLocal * cos(Double($0) * twicePi / triangleAmount)))
+            buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
             buffers.putColors()
-            buffers.putFloat(pixXD + (lenLocal*cos((Double($0) + 1) * twicePi / triangleAmount)))
-            buffers.putFloat(-pixYD + (lenLocal*sin((Double($0) + 1) * twicePi / triangleAmount)))
+            buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) * twicePi / triangleAmount)))
+            buffers.putFloat(-pixYD + (lenLocal * sin((Double($0) + 1) * twicePi / triangleAmount)))
             buffers.putColors()
         }
     }
