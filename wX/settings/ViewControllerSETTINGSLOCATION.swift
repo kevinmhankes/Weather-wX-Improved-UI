@@ -10,10 +10,12 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     var locations = [String]()
     var fab: ObjectFab?
+    var productButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        productButton = ObjectToolbarIcon(self, nil)
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
@@ -32,7 +34,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
         let locName = MyApplication.locations[sender.data].name
-        let alert = ObjectPopUp(self, locName, flexBarButton)
+        let alert = ObjectPopUp(self, locName, productButton)
         alert.addAction(
             UIAlertAction(
                 title: "Edit \"" + locName + "\"",
