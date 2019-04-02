@@ -24,6 +24,8 @@
 // TODO update too: static final nwsOpcWebsitePrefix = "https://ocean.weather.gov";
 // TODO use static instead of class for static methods
 // TODO stop using R.raw
+// TODO WPC Images - remove experimental forecast characters
+// TODO update CPC 3-7day hazard
 
 AppStore writeup:
 
