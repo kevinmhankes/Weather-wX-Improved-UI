@@ -56,6 +56,47 @@ final class UtilityMap {
         return locations
     }
 
+    static func setupMapForWfo(_ mapView: MKMapView, _ itemList: [String]) {
+        let locations = createLocationsArrayForWfo(itemList)
+        var annotations = [MKPointAnnotation]()
+        locations.forEach { dictionary in
+            let latitude = CLLocationDegrees(Double(dictionary["latitude"]!)!)
+            let longitude = CLLocationDegrees(Double(dictionary["longitude"]!)!)
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let name = dictionary["name"]!
+            let mediaURL = dictionary["mediaURL"]
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(name)"
+            annotation.subtitle = mediaURL
+            annotations.append(annotation)
+        }
+        mapView.addAnnotations(annotations)
+        let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
+        centerMapOnLocation(mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
+    }
+
+    static func createLocationsArrayForWfo(_ itemList: [String]) -> [[String: String]] {
+        var locations = [[String: String]]()
+        itemList.forEach {
+            let ridArr = $0.split(":")
+            let latlon = Utility.getWfoSiteLatLon(ridArr[0])
+            //let latStr = Utility.readPref(prefVar + ridArr[0] + "_X", "40.00")
+            //var lonStr = Utility.readPref(prefVar + ridArr[0] + "_Y", "80.00")
+            //if !lonStr.hasPrefix("-") {
+            //    lonStr = "-" + lonStr
+            //}
+            if ridArr.count > 1 {
+                let arr = ["name": ridArr[0], "latitude": latlon.latStr, "longitude": latlon.lonStr, "mediaURL": ridArr[1]]
+                locations.append(arr)
+            } else {
+                let arr = ["name": ridArr[0], "latitude": latlon.latStr, "longitude": latlon.lonStr, "mediaURL": ""]
+                locations.append(arr)
+            }
+        }
+        return locations
+    }
+
     static func centerMapOnLocation(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
         let coordinateRegion = MKCoordinateRegion(
             center: location,

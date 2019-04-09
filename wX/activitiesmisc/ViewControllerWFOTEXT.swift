@@ -136,7 +136,8 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
+                //UtilityMap.setupMapForWfo(self.mapView, GlobalArrays.wfos, "NWS_")
+                UtilityMap.setupMapForWfo(self.mapView, GlobalArrays.wfos)
                 self.textView = ObjectTextView(self.stackView)
                 self.textView.text = self.html
             }

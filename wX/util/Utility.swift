@@ -8,6 +8,57 @@ import Foundation
 
 final class Utility {
 
+    static func getRadarSiteName(_ String radarSite) -> String {
+    return UtilityRadar.radarIdToName[radarSite] ?? ""
+  }
+
+  static func getRadarSiteLatLon(_ radarSite: String) -> LatLon {
+    final lat = UtilityRadar.radarSiteToLat[radarSite] ?? ""
+    final lon = UtilityRadar.radarSiteToLon[radarSite] ?? ""
+    return LatLon(lat, lon)
+  }
+
+  static func getRadarSiteX(_ radarSite: String) -> String {
+    return UtilityRadar.radarSiteToLat[radarSite] ?? ""
+  }
+
+  static func getRadarSiteY(_ radarSite: String) -> String {
+    return UtilityRadar.radarSiteToLon[radarSite] ?? ""
+  }
+
+  static func getWfoSiteName(_ wfo: String) -> String {
+    return UtilityRadar.wfoIdToName[wfo] ?? ""
+  }
+
+  static func getWfoSiteLatLon(_ wfo: String) -> LatLon {
+    final lat = UtilityRadar.wfoSitetoLat[wfo] ?? ""
+    final lon = UtilityRadar.wfoSitetoLon[wfo] ?? ""
+    return LatLon(lat, lon)
+  }
+
+  static func getSoundingSiteLatLon(_ String wfo) -> LatLon {
+    final lat = UtilityRadar.soundingSiteToLat[wfo] ?? ""
+    final lon = "-" + UtilityRadar.soundingSiteToLon[wfo] ?? ""
+    return LatLon(lat, lon)
+  }
+
+  static func getSoundingSiteName(_ wfo: String) -> String {
+    var site = UtilityRadar.wfoIdToName[wfo] ?? ""
+    if (site == "") {
+      site = UtilityRadar.soundingIdToName[wfo] ?? ""
+    }
+    return site
+  }
+
+  static func generateSoundingNameList() -> [String] {
+    var list = <String>[]
+    GlobalArrays.soundingSites.sort()
+    GlobalArrays.soundingSites.forEach((data) {
+      list.add(data + ": " + getSoundingSiteName(data))
+    });
+    return list
+  }
+
     static func getCurrentConditionsUS(_ locNum: Int) -> ObjectForecastPackage {
         let objCC = ObjectForecastPackageCurrentConditions(locNum)
         return ObjectForecastPackage(objCC)
