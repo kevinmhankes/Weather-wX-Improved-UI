@@ -10,7 +10,7 @@ final class UtilityNHC {
 
     static let utilNhcPattern1 = "<title>(.*?)</title>"
     static let utilNhcPattern2 = "<nhc:Cyclone>(.*?)</nhc:Cyclone>"
-    static let utilNhcPattern3 = "<link>.*?(http://www.nhc.noaa.gov/text/refresh/"
+    static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/"
         + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
     static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
     static let utilNhcPattern5 = "<img src=.(.*?png)."
@@ -47,8 +47,8 @@ final class UtilityNHC {
     ]
 
     static let imageUrls = [
-        "http://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
-        "http://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/ATL/20.jpg",
+        "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
+        "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/ATL/20.jpg",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anal.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anal.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
@@ -80,7 +80,7 @@ final class UtilityNHC {
     }
 
     static func getAnimation(_ sector: String, _ prodId: String, _ frameCount: Int) -> AnimationDrawable {
-        let baseUrl = "http://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/"
+        let baseUrl = "https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/"
         let urls = UtilityImgAnim.getUrlArray(
             baseUrl,
             "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
@@ -95,6 +95,6 @@ final class UtilityNHC {
     }
 
     static func getImage(_ sector: String, _ product: String) -> Bitmap {
-        return Bitmap("http://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
+        return Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
     }
 }
