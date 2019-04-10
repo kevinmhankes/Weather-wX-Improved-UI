@@ -421,7 +421,7 @@ final public class ObjectModel {
             paramLabelArr = UtilityModelSPCHREFInterface.labels
             sectorArr = UtilityModelSPCHREFInterface.sectorsLong
             timeArr = []
-            (1...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            (1...49).forEach {timeArr.append(String(format: "%02d", $0))}
             runArr = self.runTimeData.listRun
         case "SPCSREF:SREF":
             paramArr = UtilityModelsSPCSREFInterface.params

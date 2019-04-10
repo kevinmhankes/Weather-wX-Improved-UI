@@ -8,9 +8,9 @@ final class UtilityModelSPCHREFInterface {
 
     static let titles = [
         ObjectMenuTitle("SPC Guidance", 6),
-        ObjectMenuTitle("Synoptic", 5),
+        ObjectMenuTitle("Synoptic", 6),
         ObjectMenuTitle("Severe", 12),
-        ObjectMenuTitle("Winter", 18),
+        ObjectMenuTitle("Winter", 25),
         ObjectMenuTitle("Fire", 11),
         ObjectMenuTitle("Precipitation", 16),
         ObjectMenuTitle("Storm Attributes", 24)
@@ -54,6 +54,9 @@ final class UtilityModelSPCHREFInterface {
         "850w_mean,850h_mean",
         "sfct_mean,10mwind_mean,mslp_mean",
         "sfctd_mean,10mwind_mean,mslp_mean",
+        // NEW
+        "cloudcover_low_mean,cloudcover_mid_mean,cloudcover_high_mean",
+        // END NEW
 
         "sbcape_max,sfc500shear_mean",
         "sbcape_mean,sfc500shear_mean",
@@ -86,6 +89,15 @@ final class UtilityModelSPCHREFInterface {
         "snowfall_024h_prob08",
         "snowfall_024h_prob12",
         "snowfall_024h_ps",
+        // new
+        "frzrfram_003h_mean",
+        "frzrqpf_003h_max",
+        "frzrqpf_003h_mean",
+        "frzrqpf_003h_prob006",
+        "frzrfram_024h_mean",
+        "frzrqpf_024h_max",
+        "frzrqpf_024h_mean",
+        // end new
 
         "fosberg_max",
         "fosberg_mean",
@@ -154,6 +166,9 @@ final class UtilityModelSPCHREFInterface {
         "850 mb Height/Wind",
         "2m AGL Temperature/MSLP/Wind",
         "2m AGL Dew Point/MSLP/Wind",
+        // NEW
+        "Cloud Cover: mean",
+        // END NEW
 
         "Surface Based CAPE: max",
         "Surface Based CAPE: mean",
@@ -186,6 +201,16 @@ final class UtilityModelSPCHREFInterface {
         "24-hr Snowfall: P[>8\"]",
         "24-hr Snowfall: P[>12\"]",
         "24-hr Snowfall: stamps",
+        // new
+        "3-hr Freezing Rain: FRAM mean",
+        "3-hr Freezing Rain: QPF max",
+        "3-hr Freezing Rain: QPF mean",
+        "3-hr Freezing Rain: P[>0.06\"]",
+        "24-hr Freezing Rain: FRAM mean",
+        "24-hr Freezing Rain: QPF max",
+        "24-hr Freezing Rain: QPF mean",
+        // end new
+
         "Fosberg Index: max",
         "Fosberg Index: mean",
         "Fosberg Index: P[>50]",
