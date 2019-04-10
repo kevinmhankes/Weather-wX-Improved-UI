@@ -81,11 +81,6 @@ final class UtilityMap {
         itemList.forEach {
             let ridArr = $0.split(":")
             let latlon = Utility.getWfoSiteLatLon(ridArr[0])
-            //let latStr = Utility.readPref(prefVar + ridArr[0] + "_X", "40.00")
-            //var lonStr = Utility.readPref(prefVar + ridArr[0] + "_Y", "80.00")
-            //if !lonStr.hasPrefix("-") {
-            //    lonStr = "-" + lonStr
-            //}
             if ridArr.count > 1 {
                 let arr = ["name": ridArr[0], "latitude": latlon.latString, "longitude": latlon.lonString, "mediaURL": ridArr[1]]
                 locations.append(arr)

@@ -36,7 +36,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        UtilityMap.setupMap(mapView, GlobalArrays.wfos, "NWS_")
+        UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
