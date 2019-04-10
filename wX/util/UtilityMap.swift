@@ -87,10 +87,10 @@ final class UtilityMap {
             //    lonStr = "-" + lonStr
             //}
             if ridArr.count > 1 {
-                let arr = ["name": ridArr[0], "latitude": latlon.latStr, "longitude": latlon.lonStr, "mediaURL": ridArr[1]]
+                let arr = ["name": ridArr[0], "latitude": latlon.latString, "longitude": latlon.lonString, "mediaURL": ridArr[1]]
                 locations.append(arr)
             } else {
-                let arr = ["name": ridArr[0], "latitude": latlon.latStr, "longitude": latlon.lonStr, "mediaURL": ""]
+                let arr = ["name": ridArr[0], "latitude": latlon.latString, "longitude": latlon.lonString, "mediaURL": ""]
                 locations.append(arr)
             }
         }

@@ -390,6 +390,7 @@
 		0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarType.swift; sourceTree = "<group>"; };
 		0326E5EA21B4B1660000F8DB /* WXMetalTextObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalTextObject.swift; sourceTree = "<group>"; };
 		0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewMetal.swift; sourceTree = "<group>"; };
+		032EAC6F225E974F003A6A30 /* UtilityRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityRadar.swift; sourceTree = "<group>"; };
 		032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerADHOCLOCATION.swift; sourceTree = "<group>"; };
 		0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunCalc.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
@@ -1084,6 +1085,7 @@
 				F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */,
 				F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */,
 				F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */,
+				032EAC6F225E974F003A6A30 /* UtilityRadar.swift */,
 				031AED0A21C86149004EC175 /* UtilityRadarUI.swift */,
 				F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */,
 				F031EF141DF6266B008C5B6B /* UtilitySWOD1.swift */,
