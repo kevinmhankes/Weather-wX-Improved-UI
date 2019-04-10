@@ -138,6 +138,10 @@ final class UtilityDownload {
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("FXCN01") {
+            // FIXME not working - now 4 products
+            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/fx_d1-3_west_2019041000.html
+            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/
+            // http://dd.weather.gc.ca/doc/LICENCE_GENERAL.txt
             text = "http://tgftp.nws.noaa.gov/data/raw/fx/fxcn01.cwao..txt".getHtmlSep()
         } else if prod.contains("FPCN48") {
             text = "http://tgftp.nws.noaa.gov/data/raw/fp/fpcn48.cwao..txt".getHtmlSep()
