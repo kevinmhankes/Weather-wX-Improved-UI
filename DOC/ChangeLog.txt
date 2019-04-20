@@ -26,6 +26,8 @@
 // TODO stop using R.raw
 // TODO WPC Images - remove experimental forecast characters
 // TODO update CPC 3-7day hazard
+// TODO radar - add long press for watch/mcd/mpd
+// TODO radar - add additional polygon warnings
 
 AppStore writeup:
 
