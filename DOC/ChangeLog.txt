@@ -28,6 +28,8 @@
 // TODO update CPC 3-7day hazard
 // TODO radar - add long press for watch/mcd/mpd
 // TODO radar - add additional polygon warnings
+// TODO save location - determine wfo/radarSite from NWS API
+// TODO use new image for uswarn
 
 AppStore writeup:
 
