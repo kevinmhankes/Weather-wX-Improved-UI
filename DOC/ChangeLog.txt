@@ -30,6 +30,7 @@
 // TODO radar - add additional polygon warnings
 // TODO save location - determine wfo/radarSite from NWS API
 // TODO use new image for uswarn
+// TODO settings -> location, add current conditions
 
 AppStore writeup:
 
