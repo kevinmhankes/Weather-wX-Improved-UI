@@ -31,6 +31,7 @@
 // TODO save location - determine wfo/radarSite from NWS API
 // TODO use new image for uswarn
 // TODO settings -> location, add current conditions
+// TODO add radar beam in long press
 
 AppStore writeup:
 
