@@ -30,8 +30,10 @@
 // TODO radar - add additional polygon warnings
 // TODO save location - determine wfo/radarSite from NWS API
 // TODO use new image for uswarn
-// TODO settings -> location, add current conditions
+// TODO settings -> location, add current conditions ( update Location for cc string)
 // TODO add radar beam in long press
+// TODO get rid of ObjectForecastPackage
+// TODO generic method for up/down
 
 AppStore writeup:
 
