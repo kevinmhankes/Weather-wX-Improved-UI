@@ -34,6 +34,7 @@
 // TODO add radar beam in long press
 // TODO get rid of ObjectForecastPackage
 // TODO generic method for up/down
+// TODO GOES16 - update sectors and add AirMass
 
 AppStore writeup:
 
