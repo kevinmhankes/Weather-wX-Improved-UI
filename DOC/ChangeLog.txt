@@ -38,6 +38,18 @@
 // TODO utitimesunmoon
 // TODO remove NWS Obs: KVVG (Villages)
 
+// TODO HIGH IMPACT CHANGE REQUIRED BY June 24, 2019 for Service Change Notice 19-35
+// https://api.weather.gov/points/38.8904,-77.032/forecast -> https://api.weather.gov/gridpoints/LWX/96,70/forecast
+// https://api.weather.gov/points/38.8904,-77.032/forecast/hourly -> https://api.weather.gov/gridpoints/LWX/96,70/forecast/hourly
+// Details: https://www.weather.gov/documentation/services-web-api
+//
+// Example: https://api.weather.gov/points/39.7456,-97.0892
+//         "forecastOffice": "https://api.weather.gov/offices/TOP",
+//        "forecast": "https://api.weather.gov/gridpoints/TOP/31,80/forecast",
+//        "forecastHourly": "https://api.weather.gov/gridpoints/TOP/31,80/forecast/hourly",
+//        "forecastGridData": "https://api.weather.gov/gridpoints/TOP/31,80",
+//        "forecastZone": "https://api.weather.gov/zones/forecast/KSZ009",
+
 AppStore writeup:
 
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
