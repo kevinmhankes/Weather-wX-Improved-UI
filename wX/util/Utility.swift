@@ -58,12 +58,12 @@ final class Utility {
         });
         return list
     }*/
-    
+
     static func getCurrentConditionsUS(_ locNum: Int) -> ObjectForecastPackage {
         let objCC = ObjectForecastPackageCurrentConditions(locNum)
         return ObjectForecastPackage(objCC)
     }
-    
+
     static func getCurrentConditionsCanada(locNum: Int) -> ObjectForecastPackage {
         let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
         let objCC = ObjectForecastPackageCurrentConditions.createForCanada(html)
@@ -112,17 +112,17 @@ final class Utility {
         let objCC = ObjectForecastPackageCurrentConditions(location)
         return ObjectForecastPackage(objCC)
     }
-    
+
     static func getHazards(_ url: String) -> String {
         return url.parse("<!-- AddThis Button END -->   <hr /><br />(.*?)</div>")
     }
-    
+
     static func getCurrentConditionsCanada(_ locNum: Int) -> ObjectForecastPackage {
         let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
         let objCC = ObjectForecastPackageCurrentConditions.createForCanada(html)
         return ObjectForecastPackage(objCC)
     }
-    
+
     static func safeGet(_ list: [String], _ index: Int) -> String {
         if list.count <= index {
             return ""
@@ -130,31 +130,31 @@ final class Utility {
             return list[index]
         }
     }
-    
+
     static func readPref(_ key: String, _ value: Float) -> Float {
         return preferences.getFloat(key, value)
     }
-    
+
     static func readPref(_ key: String, _ value: Int) -> Int {
         return preferences.getInt(key, value)
     }
-    
+
     static func readPref(_ key: String, _ value: String) -> String {
         return preferences.getString(key, value)
     }
-    
+
     static func writePref(_ key: String, _ value: Float) {
         editor.putFloat(key, value)
     }
-    
+
     static func writePref(_ key: String, _ value: Int) {
         editor.putInt(key, value)
     }
-    
+
     static func writePref(_ key: String, _ value: String) {
         editor.putString(key, value)
     }
-    
+
     static func getClassName(_ uiv: UIViewController) -> String {
         return String(describing: uiv).split(":").safeGet(0).replace("<", "")
     }

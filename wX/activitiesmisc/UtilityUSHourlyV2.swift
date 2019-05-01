@@ -41,14 +41,6 @@ final class UtilityUSHourlyV2 {
     }
 
     static func getHourlyString(_ locNumber: Int) -> (String, String) {
-        
-        /*let location = UtilityMath.latLonFix(Location.getLatLon(locNumumber))
-        let url = "https://api.weather.gov/points/" + location.latString
-            + "," + location.lonString +  "/forecast/hourly"
-        let html = url.getNwsHtml()*/
-        
-        //let location = Location.getLatLon(locNumber)
-        
         let html = UtilityDownloadNWS.getHourlyData(Location.getLatLon(locNumber))
         let header = fixedLengthString("Time", 7) + fixedLengthString("T", 4)
             + fixedLengthString("Wind", 8) + fixedLengthString("WindDir", 6) +  MyApplication.newline

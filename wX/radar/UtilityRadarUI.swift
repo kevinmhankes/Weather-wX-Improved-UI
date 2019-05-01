@@ -111,7 +111,7 @@ public class UtilityRadarUI {
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         return LatLon.reversed(newX, newY)
     }
-    
+
     static let soundingIdToName = [
         "VBG": "CA, Vandenberg AFB",
         "1Y7": "AZ, Yuma",
@@ -138,9 +138,9 @@ public class UtilityRadarUI {
         "XMR": "FL, Cape Canaveral",
         "TLH": "FL, Tallahassee",
         "WPL": "ON, Pickle Lake",
-        "DNR": "CO, Denver",
+        "DNR": "CO, Denver"
         ]
-    
+
     static let wfoIdToName = [
         "AFC": "AK, Anchorage",
         "AFG": "AK, Fairbanks",
@@ -265,9 +265,9 @@ public class UtilityRadarUI {
         "MKX": "WI, Milwaukee",
         "RLX": "WV, Charleston",
         "CYS": "WY, Cheyenne",
-        "RIW": "WY, Riverton",
+        "RIW": "WY, Riverton"
         ]
-    
+
     static let radarIdToName = [
         "JUA": "PR, San Juan",
         "CBW": "ME, Loring AFB",
@@ -428,9 +428,9 @@ public class UtilityRadarUI {
         "PLA": "NA, Lajes Field, Azores",
         "KJK": "NA, Kunsan Air Base, South Korea",
         "KSG": "NA, Camp Humphreys, South Korea",
-        "ODN": "NA, Kadena Air Base, Japan",
+        "ODN": "NA, Kadena Air Base, Japan"
         ]
-    
+
     static let wfoSitetoLat = [
         "ABC": "60.79278",
         "ABQ": "35.1027",
@@ -646,9 +646,9 @@ public class UtilityRadarUI {
         "VNX": "36.74083",
         "VTX": "34.41167",
         "VWX": "38.26",
-        "YUX": "32.49528",
+        "YUX": "32.49528"
         ]
-    
+
     static let wfoSitetoLon = [
         "ABC": "-161.87417",
         "ABQ": "-106.6276",
@@ -864,9 +864,9 @@ public class UtilityRadarUI {
         "VNX": "-98.1275",
         "VTX": "-119.17861",
         "VWX": "-87.7247",
-        "YUX": "-114.65583",
+        "YUX": "-114.65583"
         ]
-    
+
     static let radarSiteToLat = [
         "TYX": "43.756",
         "ABR": "45.456",
@@ -1023,9 +1023,9 @@ public class UtilityRadarUI {
         "LGX": "47.116",
         "DGX": "32.28",
         "VWX": "38.26",
-        "HKM": "20.125",
+        "HKM": "20.125"
         ]
-    
+
     static let radarSiteToLon = [
         "TYX": "75.68",
         "ABR": "98.413",
@@ -1183,9 +1183,9 @@ public class UtilityRadarUI {
         "LGX": "124.107",
         "DGX": "89.984",
         "VWX": "87.724",
-        "HKM": "155.778",
+        "HKM": "155.778"
         ]
-    
+
     static let soundingSiteToLat = [
         "76225": "28.70",
         "76405": "24.07",
@@ -1281,9 +1281,9 @@ public class UtilityRadarUI {
         "WMW": "46.0",
         "WPL": "51.47",
         "YLW": "49.97",
-        "YMO": "51.27",
+        "YMO": "51.27"
         ]
-    
+
     static let soundingSiteToLon = [
         "1Y7": "114.40",
         "76225": "106.07",
@@ -1380,6 +1380,6 @@ public class UtilityRadarUI {
         "WMW": "76.87",
         "WPL": "90.20",
         "YLW": "119.38",
-        "YMO": "80.65",
+        "YMO": "80.65"
         ]
 }

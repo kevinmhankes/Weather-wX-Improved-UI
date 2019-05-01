@@ -84,7 +84,7 @@ final class ObjectForecastPackage7Day {
     }
 
     static var scrollView = UIScrollView()
-    
+
     static func getHtml(_ latLon: LatLon) -> String {
         let html = UtilityDownloadNWS.get7DayData(latLon)
         return html
