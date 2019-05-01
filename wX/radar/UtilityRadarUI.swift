@@ -14,6 +14,15 @@ public class UtilityRadarUI {
         }
     }
 
+    static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
+        let warningText = UtilityWatch.showProducts(location, type)
+        print(warningText)
+        //if warningText != "" {
+        //    ActVars.usalertsDetailUrl = warningText
+        //    uiv.goToVC("usalertsdetail")
+        //}
+    }
+
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)

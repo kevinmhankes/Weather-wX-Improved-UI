@@ -54,7 +54,9 @@ class UtilityWatch {
         return warningList
     }
     
-    func showProducts(lat: Double, lon: Double, type: PolygonType) -> String {
+    static func showProducts(_ latLon: LatLon, _ type: PolygonType) -> String {
+        var lat = latLon.lat
+        var lon = latLon.lon
         var text = ""
         var textWatNoList = ""
         var mcdNoArr = [String]()

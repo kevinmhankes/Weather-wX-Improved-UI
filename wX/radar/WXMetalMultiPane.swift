@@ -602,6 +602,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         alert.addAction(UIAlertAction(
             "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
+        alert.addAction(UIAlertAction(
+            "Show watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)})
+        )
+        alert.addAction(UIAlertAction(
+            "Show MPD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MPD, pointerLocation, self)})
+        )
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
         alert.addAction(UIAlertAction(
             "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
