@@ -13,14 +13,14 @@ public class UtilityRadarUI {
             uiv.goToVC("usalertsdetail")
         }
     }
-    
+
     static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
         let txt = UtilityWatch.showProducts(location, type)
         var token = ""
         if type.string == PolygonType.MPD.string {
-            token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt;
+            token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
         } else {
-            token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt;
+            token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         }
         print(token)
         if token.hasPrefix("WPCMPD") {
@@ -36,13 +36,8 @@ public class UtilityRadarUI {
             token = "spcwat"
         }
         uiv.goToVC(token)
-        
-        //if warningText != "" {
-        //    ActVars.usalertsDetailUrl = warningText
-        //    uiv.goToVC("usalertsdetail")
-        //}
     }
-    
+
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
