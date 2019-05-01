@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 class UtilityWatch {
-    
+
     static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = ""
@@ -55,8 +55,8 @@ class UtilityWatch {
     }
 
     static func showProducts(_ latLon: LatLon, _ type: PolygonType) -> String {
-        var lat = latLon.lat
-        var lon = latLon.lon
+        let lat = latLon.lat
+        let lon = latLon.lon
         var text = ""
         var textWatNoList = ""
         var mcdNoArr = [String]()
@@ -66,22 +66,18 @@ class UtilityWatch {
             textWatNoList = MyApplication.watNoList.value
             mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break
         case "MCD":
             textWatNoList = MyApplication.mcdNoList.value
             mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.mcdLatlon.value
-            break
         case "MPD":
             textWatNoList = MyApplication.mpdNoList.value
             mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break
         default:
             textWatNoList = MyApplication.watNoList.value
             mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break
         }
         var latlonArr = watchLatLon.split(":")
         var x = [Double]()
