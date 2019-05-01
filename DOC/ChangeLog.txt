@@ -37,7 +37,8 @@
 // TODO GOES16 - update sectors and add AirMass
 // TODO utitimesunmoon
 // TODO GOES16 - implement size restrictions
-// TODO remove NWS Obs: KVVG (Villages)
+// TODO camelCase utilDownloadNws
+
 
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
