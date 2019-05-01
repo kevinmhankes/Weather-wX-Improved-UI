@@ -57,23 +57,23 @@ final class UtilityDownloadNWS {
         return result.text ?? ""
     }
 
-     /* static Future<String> getHourlyData(LatLon latLon) async {
-    final pointsData = await getLocationPointData(latLon);
-    final hourlyUrl = BigString(pointsData).parse("\"forecastHourly\": \"(.*?)\"");
-    final data = BigString(hourlyUrl).getNwsHtml();
-    return data;
-  }
+    static func getHourlyData(_ latLon: LatLon) -> String {
+        let pointsData = getLocationPointData(latLon)
+        let hourlyUrl = pointsData.parse("\"forecastHourly\": \"(.*?)\"")
+        let data = hourlyUrl.getNwsHtml()
+        return data
+    }
 
-  static Future<String> get7DayData(LatLon latLon) async {
-    final pointsData = await getLocationPointData(latLon);
-    final forecastUrl = BigString(pointsData).parse("\"forecast\": \"(.*?)\"");
-    final data = BigString(forecastUrl).getNwsHtml();
-    return data;
-  }
+    static func get7DayData(_ latLon: LatLon) -> String  {
+        let pointsData = getLocationPointData(latLon)
+        let forecastUrl = pointsData.parse("\"forecast\": \"(.*?)\"")
+        let data = forecastUrl.getNwsHtml()
+        return data
+    }
 
-  static Future<String> getLocationPointData(LatLon latLon) async {
-    final url = MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString;
-    final data = await BigString(url).getNwsHtml();
-    return data;
-  }    */
+    static func getLocationPointData(_ latLon: LatLon) -> String  {
+        let url = MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString
+        let data = url.getNwsHtml()
+        return data
+    }
 }

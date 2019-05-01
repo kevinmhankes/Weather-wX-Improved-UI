@@ -31,13 +31,13 @@ class MyApplication {
     static let nwsGraphicalWebsitePrefix = "https://graphical.weather.gov"
     static let nwsCPCNcepWebsitePrefix = "https://www.cpc.ncep.noaa.gov"
     static let nwsGoesWebsitePrefix = "https://www.goes.noaa.gov"
-    //static let nwsOpcWebsitePrefix = "https://www.opc.ncep.noaa.gov"
     static let nwsOpcWebsitePrefix = "https://ocean.weather.gov"
     static let nwsNhcWebsitePrefix = "https://www.nhc.noaa.gov"
     static let nwsRadarWebsitePrefix = "https://radar.weather.gov"
     static let nwsMagNcepWebsitePrefix = "https://mag.ncep.noaa.gov"
     static let sunMoonDataUrl = "https://api.usno.navy.mil"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
+    static let nwsApiUrl = "https://api.weather.gov"
     static let currentConditionsViaMetar = true
     static let degreeSymbol = "\u{00B0}"
     static let textviewMagicFudgeFactor: Float = 4.05
