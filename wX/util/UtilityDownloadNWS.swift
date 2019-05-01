@@ -56,4 +56,24 @@ final class UtilityDownloadNWS {
         let result = just.get(url)
         return result.text ?? ""
     }
+
+     /* static Future<String> getHourlyData(LatLon latLon) async {
+    final pointsData = await getLocationPointData(latLon);
+    final hourlyUrl = BigString(pointsData).parse("\"forecastHourly\": \"(.*?)\"");
+    final data = BigString(hourlyUrl).getNwsHtml();
+    return data;
+  }
+
+  static Future<String> get7DayData(LatLon latLon) async {
+    final pointsData = await getLocationPointData(latLon);
+    final forecastUrl = BigString(pointsData).parse("\"forecast\": \"(.*?)\"");
+    final data = BigString(forecastUrl).getNwsHtml();
+    return data;
+  }
+
+  static Future<String> getLocationPointData(LatLon latLon) async {
+    final url = MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString;
+    final data = await BigString(url).getNwsHtml();
+    return data;
+  }    */
 }
