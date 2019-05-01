@@ -37,7 +37,6 @@ final class UtilityGOES16 {
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
         let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
-        print(url)
         return Bitmap(url)
     }
 
@@ -63,7 +62,6 @@ final class UtilityGOES16 {
             //url = "https://www.star.nesdis.noaa.gov/GOES/" + satellite + "_sector_band.php?sector="
             //+ sector + "&band=" + product + "&length=" + frameCount
         }
-        print(url)
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
@@ -95,8 +93,12 @@ final class UtilityGOES16 {
         "hi: Hawaii",
         "tpw: US Pacific Coast",
         "wus: Tropical Pacific",
-        "eep: Eastern Pacific"
-        //"can: Canada"
+        "eep: Eastern Pacific",
+        "np: Northern Pacific",
+        "can: Canada",
+        "mex: Mexico",
+        "nsa: South America (north)",
+        "ssa: South America (south)"
     ]
 
     static let sectorsInGoes17 = [
@@ -107,7 +109,7 @@ final class UtilityGOES16 {
         "psw",
         "tpw",
         "wus",
-        "eep"
+        "np"
     ]
 
     static let products = [
@@ -127,7 +129,8 @@ final class UtilityGOES16 {
         "10.3 um (Band 13) Clean Longwave Window - IR": "13",
         "11.2 um (Band 14) Longwave Window - IR": "14",
         "12.3 um (Band 15) Dirty Longwave Window - IR": "15",
-        "13.3 um (Band 16) CO2 Longwave - IR": "16"
+        "13.3 um (Band 16) CO2 Longwave - IR": "16",
+        "AirMass - RGB composite based on the data from IR and WV": "AirMass"
     ]
 
     static let productCodes = [
@@ -147,6 +150,7 @@ final class UtilityGOES16 {
         "13",
         "14",
         "15",
-        "16"
+        "16",
+        "AirMass"
     ]
 }
