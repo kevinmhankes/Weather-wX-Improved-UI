@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 public class UtilityRadarUI {
-
+    
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
@@ -13,16 +13,36 @@ public class UtilityRadarUI {
             uiv.goToVC("usalertsdetail")
         }
     }
-
+    
     static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
-        let warningText = UtilityWatch.showProducts(location, type)
-        print(warningText)
+        let txt = UtilityWatch.showProducts(location, type)
+        var token = ""
+        if type.string == PolygonType.MPD.string {
+            token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt;
+        } else {
+            token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt;
+        }
+        print(token)
+        if token.hasPrefix("WPCMPD") {
+            ActVars.wpcMpdNumber = token.replace("WPCMPD", "")
+            token = "wpcmpd"
+        }
+        if token.hasPrefix("SPCMCD") {
+            ActVars.spcMcdNumber = token.replace("SPCMCD", "")
+            token = "spcmcd"
+        }
+        if token.hasPrefix("SPCWAT") {
+            ActVars.spcWatchNumber = token.replace("SPCWAT", "")
+            token = "spcwat"
+        }
+        uiv.goToVC(token)
+        
         //if warningText != "" {
         //    ActVars.usalertsDetailUrl = warningText
         //    uiv.goToVC("usalertsdetail")
         //}
     }
-
+    
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
@@ -32,12 +52,12 @@ public class UtilityRadarUI {
             }
         }
     }
-
+    
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
         ActVars.adhocLocation = location
         uiv.goToVC("adhoclocation")
     }
-
+    
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
         let obsSite = UtilityMetar.findClosestObservation(location)
         ActVars.imageViewerUrl = "http://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
@@ -46,7 +66,7 @@ public class UtilityRadarUI {
             + obsSite.name
         uiv.goToVC("imageviewer")
     }
-
+    
     static func getRadarStatus(_ uiv: UIViewController, _ rid: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let radarStatus = getRadarStatusMessage(rid)
@@ -56,7 +76,7 @@ public class UtilityRadarUI {
             }
         }
     }
-
+    
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
         if radarSite.count == 4 {
@@ -68,7 +88,7 @@ public class UtilityRadarUI {
         }
         return message
     }
-
+    
     static func getLatLonFromScreenPosition(
         _ uiv: UIViewController,
         _ wxMetal: WXMetalRender,
@@ -76,7 +96,7 @@ public class UtilityRadarUI {
         _ ortInt: Float,
         _ x: CGFloat,
         _ y: CGFloat
-    ) -> LatLon {
+        ) -> LatLon {
         let width = Double(uiv.view.bounds.size.width)
         let height = Double(uiv.view.bounds.size.height)
         var yModified = Double(y)
@@ -120,7 +140,7 @@ public class UtilityRadarUI {
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         return LatLon.reversed(newX, newY)
     }
-
+    
     static let soundingIdToName = [
         "VBG": "CA, Vandenberg AFB",
         "1Y7": "AZ, Yuma",
@@ -148,8 +168,8 @@ public class UtilityRadarUI {
         "TLH": "FL, Tallahassee",
         "WPL": "ON, Pickle Lake",
         "DNR": "CO, Denver"
-        ]
-
+    ]
+    
     static let wfoIdToName = [
         "AFC": "AK, Anchorage",
         "AFG": "AK, Fairbanks",
@@ -275,8 +295,8 @@ public class UtilityRadarUI {
         "RLX": "WV, Charleston",
         "CYS": "WY, Cheyenne",
         "RIW": "WY, Riverton"
-        ]
-
+    ]
+    
     static let radarIdToName = [
         "JUA": "PR, San Juan",
         "CBW": "ME, Loring AFB",
@@ -438,8 +458,8 @@ public class UtilityRadarUI {
         "KJK": "NA, Kunsan Air Base, South Korea",
         "KSG": "NA, Camp Humphreys, South Korea",
         "ODN": "NA, Kadena Air Base, Japan"
-        ]
-
+    ]
+    
     static let wfoSitetoLat = [
         "ABC": "60.79278",
         "ABQ": "35.1027",
@@ -656,8 +676,8 @@ public class UtilityRadarUI {
         "VTX": "34.41167",
         "VWX": "38.26",
         "YUX": "32.49528"
-        ]
-
+    ]
+    
     static let wfoSitetoLon = [
         "ABC": "-161.87417",
         "ABQ": "-106.6276",
@@ -874,8 +894,8 @@ public class UtilityRadarUI {
         "VTX": "-119.17861",
         "VWX": "-87.7247",
         "YUX": "-114.65583"
-        ]
-
+    ]
+    
     static let radarSiteToLat = [
         "TYX": "43.756",
         "ABR": "45.456",
@@ -1033,8 +1053,8 @@ public class UtilityRadarUI {
         "DGX": "32.28",
         "VWX": "38.26",
         "HKM": "20.125"
-        ]
-
+    ]
+    
     static let radarSiteToLon = [
         "TYX": "75.68",
         "ABR": "98.413",
@@ -1193,8 +1213,8 @@ public class UtilityRadarUI {
         "DGX": "89.984",
         "VWX": "87.724",
         "HKM": "155.778"
-        ]
-
+    ]
+    
     static let soundingSiteToLat = [
         "76225": "28.70",
         "76405": "24.07",
@@ -1291,8 +1311,8 @@ public class UtilityRadarUI {
         "WPL": "51.47",
         "YLW": "49.97",
         "YMO": "51.27"
-        ]
-
+    ]
+    
     static let soundingSiteToLon = [
         "1Y7": "114.40",
         "76225": "106.07",
@@ -1390,5 +1410,5 @@ public class UtilityRadarUI {
         "WPL": "90.20",
         "YLW": "119.38",
         "YMO": "80.65"
-        ]
+    ]
 }

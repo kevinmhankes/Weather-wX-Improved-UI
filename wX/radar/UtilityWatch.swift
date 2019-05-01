@@ -53,7 +53,7 @@ class UtilityWatch {
         }
         return warningList
     }
-    
+
     static func showProducts(_ latLon: LatLon, _ type: PolygonType) -> String {
         var lat = latLon.lat
         var lon = latLon.lon
@@ -63,25 +63,25 @@ class UtilityWatch {
         var watchLatLon: String
         switch type.string {
         case "WATCH":
-            textWatNoList = MyApplication.watNoList.value;
-            mcdNoArr = textWatNoList.split(":");
+            textWatNoList = MyApplication.watNoList.value
+            mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break;
+            break
         case "MCD":
             textWatNoList = MyApplication.mcdNoList.value
-            mcdNoArr = textWatNoList.split(":");
+            mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.mcdLatlon.value
-            break;
+            break
         case "MPD":
             textWatNoList = MyApplication.mpdNoList.value
-            mcdNoArr = textWatNoList.split(":");
+            mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break;
+            break
         default:
             textWatNoList = MyApplication.watNoList.value
-            mcdNoArr = textWatNoList.split(":");
+            mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
-            break;
+            break
         }
         var latlonArr = watchLatLon.split(":")
         var x = [Double]()
@@ -90,27 +90,27 @@ class UtilityWatch {
         var testArr = [String]()
         var z = 0
         var notFound = true
-        while (z < latlonArr.count) {
+        while z < latlonArr.count {
             testArr = latlonArr[z].split(" ")
             x = []
             y = []
             i = 0
-            while (i < testArr.count) {
-                if (i & 1 == 0) {
+            while i < testArr.count {
+                if i & 1 == 0 {
                     x.append(Double(testArr[i]) ?? 0.0)
                 } else {
                     y.append((Double(testArr[i]) ?? 0.0) * -1.0)
                 }
                 i += 1
             }
-            if (y.count > 3 && x.count > 3 && x.count == y.count) {
+            if y.count > 3 && x.count > 3 && x.count == y.count {
                 let poly2 = ExternalPolygon.Builder()
                 x.indices.forEach {
                     _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))
                 }
                 let polygon2 = poly2.build()
                 let contains = polygon2.contains(point: ExternalPoint(Float(lat), Float(lon)))
-                if (contains && notFound) {
+                if contains && notFound {
                     text = mcdNoArr[z]
                     notFound = false
                 }
