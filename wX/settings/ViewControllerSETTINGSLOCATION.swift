@@ -11,6 +11,8 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     var locations = [String]()
     var fab: ObjectFab?
     var productButton = ObjectToolbarIcon()
+    var objectCards = [ObjectCardLocationItem]()
+    var currentConditions = [ObjectForecastPackageCurrentConditions]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,24 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
         displayContent()
+        self.getContent()
+    }
+
+    func getContent() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            for index in MyApplication.locations.indices {
+                self.currentConditions.append(Utility.getCurrentConditions(index).objCC)
+                self.currentConditions[index].formatCC()
+                print(self.currentConditions[index].ccLine1)
+            }
+            DispatchQueue.main.async {
+                //print(self.objectCards.count)
+                //print(self.self.currentConditions.count)
+                for index in self.objectCards.indices {
+                    self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].ccLine1
+                }
+            }
+        }
     }
 
     @objc override func doneClicked() {
@@ -108,6 +128,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     }
 
     func displayContent() {
+        objectCards = []
         self.stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
         ).isActive = true
@@ -120,12 +141,13 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
                 + " " + MyApplication.locations[$0].lon.truncate(10)
             let details = MyApplication.locations[$0].wfo + " " + MyApplication.locations[$0].rid
                 + " " + (MyApplication.locations[$0].state)
-            _ = ObjectCardLocationItem(
-                self.stackView,
-                name,
-                latLon,
-                details,
-                UITapGestureRecognizerWithData($0, self, #selector(actionLocationPopup(sender:)))
+            objectCards.append(ObjectCardLocationItem(
+                    self.stackView,
+                    name,
+                    latLon,
+                    details,
+                    UITapGestureRecognizerWithData($0, self, #selector(actionLocationPopup(sender:)))
+                )
             )
         }
     }

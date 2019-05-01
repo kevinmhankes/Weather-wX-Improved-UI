@@ -43,6 +43,7 @@
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
 
+2019_05_01 55960 support long press for mcd/mpd/wat, settings -> location show current conditions (wip)
 2019_05_01 55950 NWS change below, additional GOES product and additional GOES sectors
 		 remove KVVG
 // TODO HIGH IMPACT CHANGE REQUIRED BY June 24, 2019 for Service Change Notice 19-35
