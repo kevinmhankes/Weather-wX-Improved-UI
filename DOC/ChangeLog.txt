@@ -39,6 +39,7 @@
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
 
+2019_05_02 55980 	resubmit
 2019_05_02 55970 	
 			save location - determine wfo/radarSite from NWS API
 2019_05_02 55960 	support long press for mcd/mpd/wat, settings -> location show current conditions (wip)
