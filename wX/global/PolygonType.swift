@@ -6,6 +6,11 @@
 
 struct PolygonType {
     static var NONE = PolygonType(RadarGeometry.radarColorMcd, "MCD", false)
+    static var SMW = PolygonType(0, "SMW", false)
+    static var SQW = PolygonType(0, "SQW", false)
+    static var DSW = PolygonType(0, "DSW", false)
+    static var SPS = PolygonType(0, "SPS", false)
+
     static var MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.radarWatMcd)
     static var MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.radarMpd)
     static var WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.radarWatMcd)

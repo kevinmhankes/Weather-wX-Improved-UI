@@ -40,6 +40,7 @@
 		036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */; };
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
+		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
 		037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */; };
 		037FF27D21A993450002E6E6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27C21A993450002E6E6 /* Shaders.metal */; };
@@ -409,6 +410,7 @@
 		036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
+		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
 		037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalMultiPane.swift; sourceTree = "<group>"; };
 		037FF27C21A993450002E6E6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 				036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */,
 				F0B335451DA3FD510035BD36 /* Editor.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
+				0379672D227B8C990067920C /* ObjectPolygonWarning.swift */,
 				F0B335041DA3FD1C0035BD36 /* Paint.swift */,
 				F0B335061DA3FD1C0035BD36 /* Preferences.swift */,
 				F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */,
@@ -1550,6 +1553,7 @@
 				F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */,
 				F0B335391DA3FD3B0035BD36 /* WXGLNexradLevel3TVS.swift in Sources */,
 				F064D1421DB6EBAB003C04FB /* ExternalPolygon.swift in Sources */,
+				0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */,
 				F0F191F91E8D09F900F7EF7B /* ViewControllerWPCTEXT.swift in Sources */,
 				F078FE311DA330B7002CCD13 /* ViewControllerTABSPC.swift in Sources */,
 				F0844F961E188D97007D0647 /* UtilityModelWPCGEFSInterface.swift in Sources */,
