@@ -174,8 +174,18 @@ final class Location {
         addToListOfNames(addLocationLabel)
         checkCurrentLocationValidity()
     }
+    
+    static private func getWfoRadarSiteFromPoint(_ latLon: LatLon) -> [String] {
+        let pointData = ("https://api.weather.gov/points/" + latLon.latString + "," + latLon.lonString).getNwsHtml()
+        // "cwa": "IWX",
+        // "radarStation": "KGRR"
+        let wfo = pointData.parse("\"cwa\": \"(.*?)\"")
+        var radarStation = pointData.parse("\"radarStation\": \"(.*?)\"")
+        radarStation = UtilityString.getLastXChars(radarStation, 3)
+        return [wfo, radarStation]
+    }
 
-    static func locationSave(_ locNum: String, _ location: LatLon, _ labelStr: String) -> String {
+    static func locationSave(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
         var locNumToSave: Int
         let locNumInt = Int(locNum) ?? 0
         let locNumIntCurrent = Location.numLocations
@@ -184,45 +194,49 @@ final class Location {
         } else {
             locNumToSave = locNumIntCurrent
         }
-        Utility.writePref("LOC" + locNum + "_X", location.latString)
-        Utility.writePref("LOC" + locNum + "_Y", location.lonString)
+        Utility.writePref("LOC" + locNum + "_X", latLon.latString)
+        Utility.writePref("LOC" + locNum + "_Y", latLon.lonString)
         Utility.writePref("LOC" + locNum + "_LABEL", labelStr)
-        var nwsOfficeShortLower = ""
-        var rid = ""
-        if Location.us(location.latString) {
+        var wfo = ""
+        var radarSite = ""
+        if Location.us(latLon.latString) {
             Location.numLocations = locNumToSave
-            nwsOfficeShortLower = UtilityLocation.getNearestOffice("WFO", location).lowercased()
-            rid = UtilityLocation.getNearestOffice("RADAR", location)
-            if rid == "" {
-                rid = Utility.readPref("NWS_RID_" + nwsOfficeShortLower.uppercased(), "")
+            let wfoAndRadar = getWfoRadarSiteFromPoint(latLon)
+            wfo = wfoAndRadar[0]
+            radarSite = wfoAndRadar[1]
+            if wfo == "" {
+                wfo = UtilityLocation.getNearestOffice("WFO", latLon).lowercased()
             }
-            Utility.writePref("RID" + locNum, rid.uppercased())
-            Utility.writePref("NWS" + locNum, nwsOfficeShortLower.uppercased())
+            if radarSite == "" {
+                radarSite = UtilityLocation.getNearestOffice("RADAR", latLon)
+            }
+            Utility.writePref("RID" + locNum, radarSite.uppercased())
+            Utility.writePref("NWS" + locNum, wfo.uppercased())
         } else {
             var tmpLatlon = LatLon()
-            if location.latString.count < 12 {
+            if latLon.latString.count < 12 {
                 if UtilityCanada.isLabelPresent(labelStr) {
                     tmpLatlon = UtilityCanada.getLatLonFromLabel(labelStr)
                 }
             }
             var prov = ""
-            var parseProv = location.latString.split(":")
+            var parseProv = latLon.latString.split(":")
             if parseProv.count > 0 {
                 prov = parseProv[1]
             }
             var id = ""
-            var parseId = location.lonString.split(":")
+            var parseId = latLon.lonString.split(":")
             if parseId.count > 0 {
                 id = parseId[0]
             }
-            if location.latString.count > 12 {
+            if latLon.latString.count > 12 {
                 tmpLatlon.latString = parseProv[2]
                 tmpLatlon.lonString = parseId[1]
             }
             Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latString)
             Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonString)
             Location.numLocations = locNumToSave
-            rid = UtilityCanada.getRid(location.latString, location.lonString)
+            radarSite = UtilityCanada.getRid(latLon.latString, latLon.lonString)
             Utility.writePref("RID" + locNum, rid.uppercased())
             Utility.writePref("NWS" + locNum + "_STATE", prov)
             Utility.writePref("ZONE" + locNum, "")
@@ -231,11 +245,11 @@ final class Location {
         }
         Location.refreshLocationData()
         return "Saving location " + locNum + " as " + labelStr
-            + " ("  + location.latString
-            + "," + location.lonString
+            + " ("  + latLon.latString
+            + "," + latLon.lonString
             + ") " + "/" + " "
-            + nwsOfficeShortLower.uppercased()
-            + "(" + rid.uppercased() + ")"
+            + wfo.uppercased()
+            + "(" + radarSite.uppercased() + ")"
     }
 
     static func deleteLocation(_ locToDeleteStr: String) {

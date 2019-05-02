@@ -600,10 +600,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             "Change Tilt", { _ in self.showTiltMenu()})
         )
         alert.addAction(UIAlertAction(
-            "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
+            "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
         alert.addAction(UIAlertAction(
-            "Show watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
+            "Show Watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
         )
         alert.addAction(UIAlertAction(
             "Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)})

@@ -27,22 +27,22 @@
 // TODO WPC Images - remove experimental forecast characters
 // TODO update CPC 3-7day hazard
 // TODO radar - add long press for watch/mcd/mpd
-// TODO radar - add additional polygon warnings
-// TODO use new image for uswarn
-// TODO add radar beam in long press
-// TODO get rid of ObjectForecastPackage
 // TODO generic method for up/down
-// TODO GOES16 - update sectors and add AirMass
-// TODO utitimesunmoon
-// TODO GOES16 - implement size restrictions
 // TODO camelCase utilDownloadNws
-// TODO save location - determine wfo/radarSite from NWS API
+// TODO utitimesunmoon
+// TODO get rid of ObjectForecastPackage
+// TODO add radar beam in long press
+// TODO GOES16 - implement size restrictions
+// TODO GOES16 - update sectors and add AirMass
+// TODO radar - add additional polygon warnings
 
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
 
-2019_05_02 55960 support long press for mcd/mpd/wat, settings -> location show current conditions (wip)
-		update uswarn icon in misc tab
+2019_05_02 55970 	
+			save location - determine wfo/radarSite from NWS API
+2019_05_02 55960 	support long press for mcd/mpd/wat, settings -> location show current conditions (wip)
+			update uswarn icon in misc tab
 2019_05_01 55950 NWS change below, additional GOES product and additional GOES sectors
 		 remove KVVG
 // TODO HIGH IMPACT CHANGE REQUIRED BY June 24, 2019 for Service Change Notice 19-35
