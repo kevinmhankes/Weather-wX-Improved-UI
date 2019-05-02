@@ -23,9 +23,13 @@ final class Location {
     private var nwsStateCurrent = ""
     var state = ""
     private var isLocationUS: Bool
+    var observation = ""
+    private let prefNumberString: String
+
 
     init(_ locNumInt: Int) {
         let jStr = String(locNumInt + 1)
+        prefNumberString = jStr
         lat = Utility.readPref("LOC" + jStr + "_X", "")
         lon = Utility.readPref("LOC" + jStr + "_Y", "")
         name = Utility.readPref("LOC" + jStr + "_LABEL", "")
@@ -35,6 +39,7 @@ final class Location {
         rid = Utility.readPref("RID" + jStr, "")
         nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
         state = Utility.readPref("NWS_LOCATION_" + rid, "").split(",")[0]
+        observation = Utility.readPref("LOC" + jStr + "_OBSERVATION", "")
         isLocationUS = Location.us(lat)
         Location.addToListOfNames(name)
     }
@@ -49,7 +54,13 @@ final class Location {
         Utility.writePref("NWS" + iStr, wfo)
         Utility.writePref("RID" + iStr, rid)
         Utility.writePref("NWS" + iStr + "_STATE", nwsStateCurrent)
+        Utility.writePref("LOC" + iStr + "_OBSERVATION", observation)
         Location.refreshLocationData()
+    }
+    
+    func updateObservation(observation: String) {
+        self.observation = observation
+        Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
     }
 
     class func addToListOfNames(_ name: String) {
@@ -241,6 +252,7 @@ final class Location {
                 let jIndex = index + 1
                 let jStr = String(jIndex)
                 let iStr = String(index)
+                let locObsCurrent = Utility.readPref("LOC" + jStr + "_OBSERVATION", "")
                 let locXCurrent = Utility.readPref("LOC" + jStr + "_X", "")
                 let locYCurrent = Utility.readPref("LOC" + jStr + "_Y", "")
                 let locLabelCurrent = Utility.readPref("LOC" + jStr + "_LABEL", "")
@@ -268,6 +280,7 @@ final class Location {
                 Utility.writePref("ALERT_NOTIFICATION_SPCFW" + iStr, alertNotificationSpcfwCurrent)
                 Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + iStr, alertNotificationWpcmpdCurrent)
                 Utility.writePref("ALERT_NOTIFICATION_RADAR" + iStr, alertNotificationRadarCurrent)
+                Utility.writePref("LOC" + iStr + "_OBSERVATION", locObsCurrent)
                 Utility.writePref("LOC" + iStr + "_X", locXCurrent)
                 Utility.writePref("LOC" + iStr + "_Y", locYCurrent)
                 Utility.writePref("LOC" + iStr + "_LABEL", locLabelCurrent)
