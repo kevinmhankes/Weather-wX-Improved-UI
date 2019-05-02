@@ -28,7 +28,6 @@
 // TODO update CPC 3-7day hazard
 // TODO radar - add long press for watch/mcd/mpd
 // TODO radar - add additional polygon warnings
-// TODO save location - determine wfo/radarSite from NWS API
 // TODO use new image for uswarn
 // TODO add radar beam in long press
 // TODO get rid of ObjectForecastPackage
@@ -37,7 +36,7 @@
 // TODO utitimesunmoon
 // TODO GOES16 - implement size restrictions
 // TODO camelCase utilDownloadNws
-
+// TODO save location - determine wfo/radarSite from NWS API
 
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
