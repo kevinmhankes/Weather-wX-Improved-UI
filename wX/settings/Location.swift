@@ -58,7 +58,7 @@ final class Location {
         Location.refreshLocationData()
     }
     
-    func updateObservation(observation: String) {
+    func updateObservation(_ observation: String) {
         self.observation = observation
         Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
     }
