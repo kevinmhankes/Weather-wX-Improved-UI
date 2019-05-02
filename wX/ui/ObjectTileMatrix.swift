@@ -160,7 +160,7 @@ final class ObjectImageTileMatrix: NSObject {
         case "hrrrviewer":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "ESRL"
-        case "warn": token = "usalerts"
+        case "uswarn": token = "usalerts"
         case "goes":
             ActVars.goesProduct = "09"
             ActVars.goesSector = "CONUS"
@@ -282,7 +282,7 @@ final class ObjectImageTileMatrix: NSObject {
         "wpcgefs",
         "wxogldualpane",
         "wxoglquadpane",
-        "warn",
+        "uswarn",
         "srfd",
         "nhc",
         "nws_sector",

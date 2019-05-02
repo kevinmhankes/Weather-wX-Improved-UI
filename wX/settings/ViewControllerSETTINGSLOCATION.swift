@@ -21,9 +21,9 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
-        initializeObservations()
-        displayContent()
-        self.getContent()
+        //initializeObservations()
+        //displayContent()
+        //self.getContent()
     }
 
     func getContent() {
@@ -31,11 +31,11 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             for index in MyApplication.locations.indices {
                 self.currentConditions.append(Utility.getCurrentConditions(index).objCC)
                 self.currentConditions[index].formatCC()
-                print(self.currentConditions[index].ccLine1)
+                print(String(index) + " " + self.currentConditions[index].ccLine1)
             }
             DispatchQueue.main.async {
-                //print(self.objectCards.count)
-                //print(self.self.currentConditions.count)
+                print(self.objectCards.count)
+                print(self.self.currentConditions.count)
                 for index in self.objectCards.indices {
                     self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].ccLine1
                     MyApplication.locations[index].updateObservation(self.currentConditions[index].ccLine1)
@@ -130,8 +130,6 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     }
 
     func initializeObservations() {
-        //val locNumIntCurrent = Location.numLocations
-        //locArr.clear()
         (0..<Location.numLocations).forEach {
             MyApplication.locations[$0].updateObservation("")
         }
@@ -166,7 +164,9 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initializeObservations()
         displayContent()
+        self.getContent()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
