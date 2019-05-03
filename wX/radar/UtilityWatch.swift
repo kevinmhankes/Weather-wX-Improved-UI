@@ -73,7 +73,7 @@ class UtilityWatch {
         case "MPD":
             textWatNoList = MyApplication.mpdNoList.value
             mcdNoArr = textWatNoList.split(":")
-            watchLatLon = MyApplication.watchLatlon.value
+            watchLatLon = MyApplication.mpdLatlon.value
         default:
             textWatNoList = MyApplication.watNoList.value
             mcdNoArr = textWatNoList.split(":")

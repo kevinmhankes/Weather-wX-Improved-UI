@@ -5,17 +5,17 @@
  *****************************************************************************/
 
 class ObjectPolygonWarning {
-    
+
     //var storage: DataStorage
     //var isEnabled = false;
     //var type: PolygonType
-    
+
     init(_ type: PolygonType) {
         //isEnabled = Utility.readPref(prefTokenEnabled, "false").hasPrefix("t")
         //storage = DataStorage(prefTokenStorage)
         //storage.update()
     }
-    
+
     /*var color: Int {return Utility.readPref(prefTokenColor, defaultColors[type])}
     var name: String {return longName[type].replaceAll("%20", " ")}
     var prefTokenEnabled: String {return "RADAR_SHOW_" + typeName}
