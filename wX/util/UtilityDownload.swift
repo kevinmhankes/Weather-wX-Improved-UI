@@ -122,6 +122,9 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
+            if UIPreferences.nwsTextRemovelinebreaks {
+                text = text.removeLineBreaks()
+            }
         } else if prod.hasPrefix("GLF") && !prod.contains("%") {
             text = getTextProduct(prod + "%")
         } else if prod.contains("FOCN45") {
