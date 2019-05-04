@@ -53,7 +53,7 @@ class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
         colorArr.append(wXColor("Flash flood warning", "RADAR_COLOR_FFW", 0, 255, 0 ))
         ObjectPolygonWarning.polygonList.forEach {
             let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
-            colorArr.append(wXColor(polygonType.longName[$0]!, polygonType.prefTokenColor, polygonType.color))
+            colorArr.append(wXColor(polygonType.name, polygonType.prefTokenColor, polygonType.defaultColors[$0]!))
         }
         colorArr.append(wXColor("MCD", "RADAR_COLOR_MCD", 153, 51, 255 ))
         colorArr.append(wXColor("MPD", "RADAR_COLOR_MPD", 0, 255, 0 ))

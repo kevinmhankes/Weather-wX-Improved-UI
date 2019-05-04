@@ -34,7 +34,7 @@ final class wXColor {
         self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
         self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
-    
+
     convenience init(_ uiLabel: String, _ prefVar: String, _ defaultColor: Int) {
         self.init()
         self.uiLabel = uiLabel
