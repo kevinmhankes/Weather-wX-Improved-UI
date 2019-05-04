@@ -35,7 +35,7 @@
 // TODO moon data at bottom of main screen
 
 AppStore writeup:
-Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
+In Settings -> Radar, add the ability to show additional warning polygons such as Special Weather Statement, Snow Squall Warning, Dust Storm Warning, and Special Marine Statement. In the GOES16/17 screen, limit the size of images that are excessively large for mobile.
 
 2019_05_04 55990 	[BUG] wpc mpd long press was not working
 			[ADD] enhance wpc mpd formatting
