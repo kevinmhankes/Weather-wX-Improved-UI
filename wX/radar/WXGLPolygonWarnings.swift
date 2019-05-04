@@ -47,8 +47,6 @@ final class WXGLPolygonWarnings {
                 }
             }
         }
-        print(type.name + "WARNING LIST: ")
-        print(warningList)
         return warningList
     }
 

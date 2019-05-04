@@ -291,9 +291,7 @@ class WXMetalRender {
         case "DSW":
             fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
         case "SPS":
-            print("doing sps")
             fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
-            print(fList)
         case "STI":
             fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
         default:
