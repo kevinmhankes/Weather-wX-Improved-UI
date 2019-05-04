@@ -26,13 +26,13 @@
 // TODO stop using R.raw
 // TODO WPC Images - remove experimental forecast characters
 // TODO update CPC 3-7day hazard
-// TODO radar - add long press for watch/mcd/mpd
 // TODO generic method for up/down
 // TODO camelCase utilDownloadNws
 // TODO utitimesunmoon
 // TODO get rid of ObjectForecastPackage
 // TODO add radar beam in long press
 // TODO GOES16 - update sectors and add AirMass
+// TODO moon data at bottom of main screen
 
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
