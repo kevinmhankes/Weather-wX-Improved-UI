@@ -37,7 +37,7 @@ public class UtilityPolygons {
             ObjectPolygonWarning.polygonList.forEach {
                 let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
                 if polygonType.isEnabled {
-                    print(polygonType.name + " is enabled")
+                    //print(polygonType.name + " is enabled")
                     UtilityDownloadRadar.getPolygonVtecByType(polygonType)
                 } else {
                     UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)

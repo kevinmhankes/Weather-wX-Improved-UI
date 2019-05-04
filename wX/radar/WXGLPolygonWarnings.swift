@@ -13,6 +13,7 @@ final class WXGLPolygonWarnings {
     static func addGenericWarnings(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
         var warningList = [Double]()
         let prefToken = type.storage.value
+        print(prefToken)
         var x = [Double]()
         var y = [Double]()
         var pixXInit = 0.0
@@ -23,7 +24,7 @@ final class WXGLPolygonWarnings {
         var polyCount = -1
         polygonArr.forEach { poly in
             polyCount += 1
-            if vtecAl.count > polyCount
+            if type.type == PolygonTypeGeneric.SPS || vtecAl.count > polyCount
                 && !vtecAl[polyCount].hasPrefix("0.EXP")
                 && !vtecAl[polyCount].hasPrefix("0.CAN") {
                 let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
