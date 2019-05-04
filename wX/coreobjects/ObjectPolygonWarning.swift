@@ -17,7 +17,7 @@ class ObjectPolygonWarning {
         storage.update()
         //print("SEVERE_DASHBOARD_\(type)")
     }
-    
+
     var color: Int {return Utility.readPref(prefTokenColor, defaultColors[type]!)}
     var name: String {return longName[type]!.replaceAll("%20", " ")}
     var prefTokenEnabled: String {return "RADAR_SHOW_" + typeName}

@@ -16,6 +16,10 @@ final class UtilityDownloadRadar {
         getMcd()
         getWatch()
     }
+    
+    func getVtecByType(type: ObjectPolygonWarning) -> String {
+        return type.url.getNwsHtml()
+    }
 
     static func getPolygonVtec() {
         MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
