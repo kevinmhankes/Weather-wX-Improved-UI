@@ -32,9 +32,7 @@
 // TODO utitimesunmoon
 // TODO get rid of ObjectForecastPackage
 // TODO add radar beam in long press
-// TODO GOES16 - implement size restrictions
 // TODO GOES16 - update sectors and add AirMass
-// TODO radar - add additional polygon warnings
 
 AppStore writeup:
 Add support for additional tilts in Level 3 radar, long press to choose. In PlayList download all items when entering view. Bugfixes.
@@ -43,6 +41,7 @@ Add support for additional tilts in Level 3 radar, long press to choose. In Play
 			[ADD] enhance wpc mpd formatting
 			[ADD] add PolygonTypeGeneric
 			[ADD] settings -> radar, settings -> color - add new polygons
+			[ENH] restrict some goes16/17 images to certain sizes
 2019_05_02 55980 	resubmit
 2019_05_02 55970 	
 			save location - determine wfo/radarSite from NWS API

@@ -7,16 +7,26 @@
 final class UtilityGOES16 {
 
     static let sizeMap = [
-        "CONUS": "2500x1500",
+        "CONUS": "1250x750",
+        "CONUS-G17": "1250x750",
         "FD": "1808x1808",
         "gm": "1000x1000",
         "car": "1000x1000",
-        "eus": "1000x1000",
-        "taw": "1800x1080"
+        //"eus": "1000x1000",
+        "eep": "2000x2000",
+        "wus": "2000x2000",
+        "tpw": "1800x1080",
+        "taw": "1800x1080",
+        "can": "1125x560",
+        "mex": "1000x1000",
+        "nsa": "1800x1080",
+        "ssa": "1800x1080",
+        "np": "1800x1080",
+        "cam": "1000x1000",
     ]
 
-    static func getImageSize(_ product: String, _ sector: String) -> String {
-        let size = "1200x1200"
+    static func getImageSize(_ sector: String) -> String {
+        let size = "latest"
         return sizeMap[sector] ?? size
     }
 
@@ -36,7 +46,8 @@ final class UtilityGOES16 {
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
-        let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/latest.jpg"
+        let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/" + getImageSize(sector) + ".jpg"
+        print(url)
         return Bitmap(url)
     }
 
