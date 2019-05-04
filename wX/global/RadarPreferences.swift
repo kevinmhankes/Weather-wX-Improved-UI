@@ -44,6 +44,7 @@ class RadarPreferences {
     static var nexradRadarBackgroundColor = 0
 
     static func initialize() {
+        ObjectPolygonWarning.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")
         locdotFollowsGps = Utility.readPref("LOCDOT_FOLLOWS_GPS", "false").hasPrefix("t")
         dualpaneshareposn = Utility.readPref("DUALPANE_SHARE_POSN", "true").hasPrefix("t")
