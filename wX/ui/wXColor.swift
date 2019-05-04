@@ -34,6 +34,19 @@ final class wXColor {
         self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
         self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
+    
+    convenience init(_ uiLabel: String, _ prefVar: String, _ defaultColor: Int) {
+        self.init()
+        self.uiLabel = uiLabel
+        self.prefVar = prefVar
+        let (red, green, blue) = intToColors(defaultColor)
+        self.defaultRed = red
+        self.defaultGreen = green
+        self.defaultBlue = blue
+        self.uicolorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
+        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        self.uicolorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
+    }
 
     func colorToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int {
         return  (0xFF << 24) | (red << 16) | (green << 8) | blue

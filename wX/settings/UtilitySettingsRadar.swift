@@ -32,7 +32,11 @@ final class UtilitySettingsRadar {
         "COD_LAKES_DEFAULT": "Show lakes and rivers",
         "COD_LOCDOT_DEFAULT": "Show location marker",
         "RADAR_SHOW_LEGEND": "Show colormap legend",
-        "RADAR_SHOW_SWO": "Show Day 1 Conv Otlk"
+        "RADAR_SHOW_SWO": "Show Day 1 Conv Otlk",
+        "RADAR_SHOW_SMW": "Special Marine Warning",
+        "RADAR_SHOW_SQW": "Snow Squall Warning",
+        "RADAR_SHOW_DSW": "Dust Storm Warning",
+        "RADAR_SHOW_SPS": "Special Weather Statement"
     ]
 
     static let helpStrings = [
@@ -104,7 +108,11 @@ final class UtilitySettingsRadar {
             +  "Lower numbers will show detailed METAR without having to zoom in as far. Default is 7.",
         "Radar data refresh interval": "Controls the number of minutes before an auto  refresh is triggered "
             + "if that option is enabled. Default is 20.",
-        "Radar initial view size": "Allows one to change the default view size for the radar."
+        "Radar initial view size": "Allows one to change the default view size for the radar.",
+        "Special Marine Warning": "Special Marine Warning",
+        "Snow Squall Warning": "Snow Squall Warning",
+        "Dust Storm Warning": "Dust Storm Warning",
+        "Special Weather Statement": "Special Weather Statement"
     ]
 
     static let booleanDefault = [
@@ -134,7 +142,11 @@ final class UtilitySettingsRadar {
         "COD_LOCDOT_DEFAULT": "true",
         "RADAR_LEVEL2_USE_NWS": "true",
         "RADAR_SHOW_LEGEND": "false",
-        "RADAR_SHOW_SWO": "false"
+        "RADAR_SHOW_SWO": "false",
+        "RADAR_SHOW_SMW": "false",
+        "RADAR_SHOW_SQW": "false",
+        "RADAR_SHOW_DSW": "false",
+        "RADAR_SHOW_SPS": "false"
     ]
 
     static let picker = [
