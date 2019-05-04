@@ -12,7 +12,7 @@ final class UtilityGOES16 {
         "FD": "1808x1808",
         "gm": "1000x1000",
         "car": "1000x1000",
-        //"eus": "1000x1000",
+        "eus": "1000x1000",
         "eep": "2000x2000",
         "wus": "2000x2000",
         "tpw": "1800x1080",
@@ -22,7 +22,7 @@ final class UtilityGOES16 {
         "nsa": "1800x1080",
         "ssa": "1800x1080",
         "np": "1800x1080",
-        "cam": "1000x1000",
+        "cam": "1000x1000"
     ]
 
     static func getImageSize(_ sector: String) -> String {
