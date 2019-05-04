@@ -13,7 +13,6 @@ final class WXGLPolygonWarnings {
     static func addGenericWarnings(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
         var warningList = [Double]()
         let prefToken = type.storage.value
-        print(prefToken)
         var x = [Double]()
         var y = [Double]()
         var pixXInit = 0.0

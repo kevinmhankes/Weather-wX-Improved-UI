@@ -114,6 +114,26 @@ struct PolygonType {
 
     static func regen() {
         NONE = PolygonType(RadarGeometry.radarColorMcd, "MCD", false)
+        SMW = PolygonType(
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!.color,
+            "SMW",
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!.isEnabled
+        )
+        SQW = PolygonType(
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!.color,
+            "SQW",
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!.isEnabled
+        )
+        DSW = PolygonType(
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!.color,
+            "DSW",
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!.isEnabled
+        )
+        SPS = PolygonType(
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!.color,
+            "SPS",
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!.isEnabled
+        )
         MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.radarWatMcd)
         MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.radarMpd)
         WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.radarWatMcd)
