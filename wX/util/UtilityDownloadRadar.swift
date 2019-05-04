@@ -19,6 +19,11 @@ final class UtilityDownloadRadar {
 
     static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {
         type.storage.value = type.url.getNwsHtml()
+        //print(type.storage.value)
+    }
+    
+    static func getPolygonVtecByTypeClear(_ type: ObjectPolygonWarning) {
+        type.storage.value = ""
     }
 
     static func getPolygonVtec() {
