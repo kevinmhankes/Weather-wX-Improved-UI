@@ -46,10 +46,13 @@ final class WXGLPolygonWarnings {
                 }
             }
         }
+        print(type.name + "WARNING LIST: ")
+        print(warningList)
         return warningList
     }
-    
+
     static func addWarnings(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
+        print(type.string)
         var warningList = [Double]()
         var prefToken = MyApplication.severeDashboardFfw.value
         if type.string == "TOR" {

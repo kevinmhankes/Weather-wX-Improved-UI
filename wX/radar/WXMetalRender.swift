@@ -47,6 +47,10 @@ class WXMetalRender {
     private var warningTstBuffers = ObjectMetalBuffers(PolygonType.TST)
     private var warningTorBuffers = ObjectMetalBuffers(PolygonType.TOR)
     private var warningFfwBuffers = ObjectMetalBuffers(PolygonType.FFW)
+    private var warningSmwBuffers = ObjectMetalBuffers(PolygonType.SMW)
+    private var warningSqwBuffers = ObjectMetalBuffers(PolygonType.SQW)
+    private var warningDswBuffers = ObjectMetalBuffers(PolygonType.DSW)
+    private var warningSpsBuffers = ObjectMetalBuffers(PolygonType.SPS)
     private var watchBuffers = ObjectMetalBuffers(PolygonType.WATCH)
     private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
     private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
@@ -140,6 +144,10 @@ class WXMetalRender {
             warningTstBuffers,
             warningTorBuffers,
             warningFfwBuffers,
+            warningSmwBuffers,
+            warningSqwBuffers,
+            warningDswBuffers,
+            warningSpsBuffers,
             mcdBuffers,
             watchBuffers,
             watchTornadoBuffers,
@@ -238,7 +246,15 @@ class WXMetalRender {
     }
 
     func constructAlertPolygons() {
-        [warningTstBuffers, warningTorBuffers, warningFfwBuffers].forEach {
+        [
+            warningTstBuffers,
+            warningTorBuffers,
+            warningFfwBuffers,
+            warningSmwBuffers,
+            warningSqwBuffers,
+            warningDswBuffers,
+            warningSpsBuffers
+        ].forEach {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
@@ -268,6 +284,14 @@ class WXMetalRender {
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
         case "FFW":
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+        case "SMW":
+            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
+        case "SQW":
+            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
+        case "DSW":
+            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
+        case "SPS":
+            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case "STI":
             fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
         default:

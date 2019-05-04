@@ -12,6 +12,12 @@ public class UtilityWXOGL {
         var warningChunk = MyApplication.severeDashboardTor.value
             + MyApplication.severeDashboardTst.value
             + MyApplication.severeDashboardFfw.value
+        ObjectPolygonWarning.polygonList.forEach {
+            let it = ObjectPolygonWarning.polygonDataByType[$0]!
+            if it.isEnabled {
+                warningChunk += it.storage.value
+            }
+        }
         var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
         warningChunk = warningChunk.replace("\n", "").replace(" ", "")
         let polygons = warningChunk.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
