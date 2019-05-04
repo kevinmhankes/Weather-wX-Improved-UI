@@ -17,8 +17,8 @@ final class UtilityDownloadRadar {
         getWatch()
     }
 
-    func getVtecByType(type: ObjectPolygonWarning) -> String {
-        return type.url.getNwsHtml()
+    static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {
+        type.storage.value = type.url.getNwsHtml()
     }
 
     static func getPolygonVtec() {

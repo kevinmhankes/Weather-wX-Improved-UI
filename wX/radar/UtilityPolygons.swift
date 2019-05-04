@@ -33,6 +33,17 @@ public class UtilityPolygons {
             } else {
                 UtilityDownloadRadar.clearPolygonVtec()
             }
+            
+            ObjectPolygonWarning.polygonList.forEach {
+                let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
+                if polygonType.isEnabled {
+                    print(polygonType.name + " is enabled")
+                    UtilityDownloadRadar.getPolygonVtecByType(polygonType)
+                } else {
+                    
+                }
+            }
+            
             if PolygonType.MPD.display {
                 UtilityDownloadRadar.getMpd()
             } else {
