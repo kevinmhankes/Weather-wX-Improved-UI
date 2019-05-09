@@ -34,6 +34,7 @@
 // TODO GOES16 - update sectors and add AirMass
 // TODO moon data at bottom of main screen
 // TODO fix utilColor for velocity corner chase 
+// TODO add "Cumulonimbus Clouds Observed": "tsra_hi",
 
 AppStore writeup:
 In Settings -> Radar, add the ability to show additional warning polygons such as Special Weather Statement, Snow Squall Warning, Dust Storm Warning, and Special Marine Statement. In the GOES16/17 screen, limit the size of images that are excessively large for mobile.
