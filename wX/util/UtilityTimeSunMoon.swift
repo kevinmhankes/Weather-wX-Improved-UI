@@ -34,7 +34,7 @@ final class UtilityTimeSunMoon {
         }
         return "Sunrise: " + sunrise + "  Sunset: " + sunset
     }
-    
+
     static func getMoonTimesForHomescreen() -> String {
         let sunCalc = SunCalc()
         let now = Date()

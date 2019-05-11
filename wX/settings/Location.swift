@@ -26,7 +26,6 @@ final class Location {
     var observation = ""
     private let prefNumberString: String
 
-
     init(_ locNumInt: Int) {
         let jStr = String(locNumInt + 1)
         prefNumberString = jStr
