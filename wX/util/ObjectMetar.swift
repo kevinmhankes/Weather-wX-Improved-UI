@@ -206,7 +206,7 @@ final class ObjectMetar {
 
     func decodeIconFromMetar(_ condition: String, _ obs: RID) -> String {
         // https://api.weather.gov/icons/land/day/ovc?size=medium
-        let sunTimes = UtilityTime.getSunriseSunsetFromObs(obs)
+        let sunTimes = UtilityTimeSunMoon.getSunriseSunsetFromObs(obs)
         let currentTime = Date()
         let fallsBetween = (sunTimes.0 ... sunTimes.1).contains(currentTime)
         let currentTimeTomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())

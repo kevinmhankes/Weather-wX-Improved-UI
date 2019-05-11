@@ -1,6 +1,11 @@
 #!/bin/bash
+dropBoxPath=${HOME}/Dropbox/wXL23
+versionStr=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
+dateString=$(date '+%Y_%m_%d_%H_%M')
+
+git commit -a -m "release ${version} commit ${dateString}"
+git push
+
 cd ..
-versionStr=`defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString`
 zip -r wXL23_${versionStr}.zip wX -x *.git* > /dev/null
-#zip -r wXIOS.`date +'%Y%m%d-%H-%M'`.zip wX  > /dev/null
-#cd wX
+cp wXL23_${versionStr}.zip  ${dropBoxPath}/

@@ -8,6 +8,7 @@ import Foundation
 
 final class UtilitySunMoon {
 
+    // TODO use from util 
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()

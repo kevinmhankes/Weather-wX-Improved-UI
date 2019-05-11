@@ -163,7 +163,7 @@ final class UtilityTime {
         return components.hour ?? 0
     }
 
-    static func getSunTimesForHomescreen() -> String {
+   /* static func getSunTimesForHomescreen() -> String {
         let sunCalc = SunCalc()
         let now = Date()
         let formatter = DateFormatter()
@@ -200,17 +200,8 @@ final class UtilityTime {
         var moonrise = ""
         var moonset = ""
         do {
-            
-            //let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            //data += "Moonset:  \(formatter.string(from: moonTimes.moonSetTime))"
-            //data += MyApplication.newline
-            //data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
-            //data += MyApplication.newline
-            
             let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            //let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
             moonrise = formatter.string(from: moonTimes.moonSetTime)
-            //let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
             moonset = formatter.string(from: moonTimes.moonRiseTime)
         } catch let e as SunCalc.LunarEventError {
             switch e {
@@ -223,9 +214,7 @@ final class UtilityTime {
             print("Unknown error: \(e)")
         }
         return "Moonrise: " + moonrise + "  Moonset: " + moonset
-        
     }
-
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
         var rise = Date()
@@ -247,5 +236,5 @@ final class UtilityTime {
             print("Unknown error: \(e)")
         }
         return(rise, set)
-    }
+    }*/
 }

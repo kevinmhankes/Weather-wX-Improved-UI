@@ -63,6 +63,7 @@
 		0399A14E21CFD3BB0096ECFB /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14821CFD3BA0096ECFB /* FloatyManager.swift */; };
 		0399A14F21CFD3BB0096ECFB /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399A14921CFD3BA0096ECFB /* Floaty.swift */; };
 		03A328EC1FC8E84D00FFABCD /* UIwXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A328EB1FC8E84C00FFABCD /* UIwXViewController.swift */; };
+		03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */; };
 		03AB4AA721AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */; };
 		03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */; };
 		03AB4AAB21AE161C0037633A /* Level2Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AAA21AE161C0037633A /* Level2Metal.swift */; };
@@ -436,6 +437,7 @@
 		0399A14821CFD3BA0096ECFB /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
 		0399A14921CFD3BA0096ECFB /* Floaty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
 		03A328EB1FC8E84C00FFABCD /* UIwXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewController.swift; sourceTree = "<group>"; };
+		03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTimeSunMoon.swift; sourceTree = "<group>"; };
 		03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL3FourBit.swift; sourceTree = "<group>"; };
 		03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL2.swift; sourceTree = "<group>"; };
 		03AB4AAA21AE161C0037633A /* Level2Metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2Metal.swift; sourceTree = "<group>"; };
@@ -1068,6 +1070,7 @@
 				F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */,
 				F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */,
 				F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */,
+				03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1702,6 +1705,7 @@
 				F07B5C121E53D74400555058 /* ObjectCardCC.swift in Sources */,
 				F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */,
 				F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */,
+				03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */,
 				F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */,
 				F0B335B61DA3FD960035BD36 /* UtilityModelNCEPInterface.swift in Sources */,
 				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,

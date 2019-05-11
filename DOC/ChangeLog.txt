@@ -42,6 +42,7 @@ In Settings -> Radar, add the ability to show additional warning polygons such a
 2019_05_11 55992 	build was freezing: fix Exclusive Access to Memory ( compile time enforcement only ) - was full enforcement run time checks in all builds
 			swift 5.0 conversion, recommended locale changes in project
 			add moon data to main screen
+                        ran: brew install swiftlint
 
 Xcode 10.2.1 migration
 

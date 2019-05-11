@@ -57,7 +57,7 @@ final class Location {
         Utility.writePref("LOC" + iStr + "_OBSERVATION", observation)
         Location.refreshLocationData()
     }
-    
+
     func updateObservation(_ observation: String) {
         self.observation = observation
         Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
@@ -174,7 +174,7 @@ final class Location {
         addToListOfNames(addLocationLabel)
         checkCurrentLocationValidity()
     }
-    
+
     static private func getWfoRadarSiteFromPoint(_ latLon: LatLon) -> [String] {
         let pointData = ("https://api.weather.gov/points/" + latLon.latString + "," + latLon.lonString).getNwsHtml()
         // "cwa": "IWX",

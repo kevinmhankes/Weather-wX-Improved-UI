@@ -64,14 +64,14 @@ final class UtilityDownloadNWS {
         return data
     }
 
-    static func get7DayData(_ latLon: LatLon) -> String  {
+    static func get7DayData(_ latLon: LatLon) -> String {
         let pointsData = getLocationPointData(latLon)
         let forecastUrl = pointsData.parse("\"forecast\": \"(.*?)\"")
         let data = forecastUrl.getNwsHtml()
         return data
     }
 
-    static func getLocationPointData(_ latLon: LatLon) -> String  {
+    static func getLocationPointData(_ latLon: LatLon) -> String {
         let url = MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString
         let data = url.getNwsHtml()
         return data
