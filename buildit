@@ -3,7 +3,7 @@ dropBoxPath=${HOME}/Dropbox/wXL23
 versionStr=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
 dateString=$(date '+%Y_%m_%d_%H_%M')
 
-git commit -a -m "release ${version} commit ${dateString}"
+git commit -a -m "release ${versionStr} commit ${dateString}"
 git push
 
 cd ..

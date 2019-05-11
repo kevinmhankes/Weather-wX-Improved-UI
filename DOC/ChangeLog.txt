@@ -43,6 +43,7 @@ In Settings -> Radar, add the ability to show additional warning polygons such a
 			swift 5.0 conversion, recommended locale changes in project
 			add moon data to main screen
                         ran: brew install swiftlint
+			for archive had to set compile mode for release to incremental (from whole something), also had to set the access to memory again
 
 Xcode 10.2.1 migration
 
