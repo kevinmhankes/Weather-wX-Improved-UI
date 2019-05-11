@@ -208,7 +208,7 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         var index = 0
-        if let product = UtilitySPCMESO.productShortList.index(of: self.product) {
+        if let product = UtilitySPCMESO.productShortList.firstIndex(of: self.product) {
             index = UtilityUI.sideSwipe(sender, product, UtilitySPCMESO.productShortList)
         }
         productChangedByCode(UtilitySPCMESO.productShortList[index])

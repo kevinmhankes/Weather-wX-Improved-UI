@@ -39,6 +39,13 @@
 AppStore writeup:
 In Settings -> Radar, add the ability to show additional warning polygons such as Special Weather Statement, Snow Squall Warning, Dust Storm Warning, and Special Marine Statement. In the GOES16/17 screen, limit the size of images that are excessively large for mobile.
 
+2019_05_11 55992 	build was freezing: fix Exclusive Access to Memory ( compile time enforcement only ) - was full enforcement run time checks in all builds
+			swift 5.0 conversion, recommended locale changes in project
+			add moon data to main screen
+
+Xcode 10.2.1 migration
+
+
 2019_05_04 55990 	[BUG] wpc mpd long press was not working
 			[ADD] enhance wpc mpd formatting
 			[ADD] add PolygonTypeGeneric

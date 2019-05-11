@@ -36,7 +36,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
             let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(
                 UtilityUSImgNWSMosaic.getStateFromRid()
             )
-            index = UtilityUSImgNWSMosaic.sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
+            index = UtilityUSImgNWSMosaic.sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent(index)
     }

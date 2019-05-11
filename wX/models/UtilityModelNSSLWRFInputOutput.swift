@@ -26,7 +26,7 @@ final class UtilityModelNSSLWRFInputOutput {
     }
 
     static func getImage(_ om: ObjectModel) -> Bitmap {
-        let sectorIndex = UtilityModelNSSLWRFInterface.sectorsLong.index(of: om.sector) ?? 0
+        let sectorIndex = UtilityModelNSSLWRFInterface.sectorsLong.firstIndex(of: om.sector) ?? 0
         let sector = UtilityModelNSSLWRFInterface.sectors[sectorIndex]
         let baseLayerUrl = "https://cams.nssl.noaa.gov/graphics/blank_maps/spc_" + sector + ".png"
         var modelPostfix = "_nssl"

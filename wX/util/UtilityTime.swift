@@ -163,7 +163,7 @@ final class UtilityTime {
         return components.hour ?? 0
     }
 
-    static func getSunriseSunset() -> String {
+    static func getSunTimesForHomescreen() -> String {
         let sunCalc = SunCalc()
         let now = Date()
         let formatter = DateFormatter()
@@ -189,6 +189,43 @@ final class UtilityTime {
         }
         return "Sunrise: " + sunrise + "  Sunset: " + sunset
     }
+    
+    static func getMoonTimesForHomescreen() -> String {
+        let sunCalc = SunCalc()
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
+        var moonrise = ""
+        var moonset = ""
+        do {
+            
+            //let moonTimes = try sunCalc.moonTimes(date: now, location: location)
+            //data += "Moonset:  \(formatter.string(from: moonTimes.moonSetTime))"
+            //data += MyApplication.newline
+            //data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
+            //data += MyApplication.newline
+            
+            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
+            //let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
+            moonrise = formatter.string(from: moonTimes.moonSetTime)
+            //let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
+            moonset = formatter.string(from: moonTimes.moonRiseTime)
+        } catch let e as SunCalc.LunarEventError {
+            switch e {
+            case .moonNeverRise:
+                print("Moon never rise")
+            case .moonNeverSet:
+                print("Moon never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        return "Moonrise: " + moonrise + "  Moonset: " + moonset
+        
+    }
+
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
         var rise = Date()

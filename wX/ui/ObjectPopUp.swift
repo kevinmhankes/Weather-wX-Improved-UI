@@ -77,7 +77,7 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
         list.forEach {
-            let index = list.index(of: $0)!
+            let index = list.firstIndex(of: $0)!
             addAction(UIAlertAction($0, {_ in fn(index)}))
         }
         finish()

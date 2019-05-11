@@ -129,7 +129,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.numberPicker.selectRow(
-                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.index(
+                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.firstIndex(
                         of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
                         )!,
                     inComponent: 0,

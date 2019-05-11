@@ -62,7 +62,7 @@ final class UtilityModelESRLInputOutput {
         let paramTmp = om.param
         var paramTmpLocal = paramTmp
         var sectorLocal = om.sector
-        let sectorInt = UtilityModelESRLInterface.sectorsHrrr.index(of: sectorLocal) ?? 0
+        let sectorInt = UtilityModelESRLInterface.sectorsHrrr.firstIndex(of: sectorLocal) ?? 0
         switch om.model {
         case "HRRR":
             if sectorInt == 0 {

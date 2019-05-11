@@ -126,7 +126,7 @@ class UtilityUSImgNWSMosaic {
 
     static func getLocalRadarMosaic() -> Bitmap {
         let nwsRadarMosaicSectorLabelCurrent = getSectorFromState(getStateFromRid())
-        let index = sectors.index(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
+        let index = sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         return get(sectors[index])
     }
 

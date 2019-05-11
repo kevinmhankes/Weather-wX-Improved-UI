@@ -117,7 +117,7 @@ class ViewControllerGOES16: UIwXViewController {
         productChanged(
             UtilityUI.sideSwipe(
                 sender,
-                UtilityGOES16.productCodes.index(of: productCode)!,
+                UtilityGOES16.productCodes.firstIndex(of: productCode)!,
                 UtilityGOES16.productCodes
             )
         )

@@ -31,7 +31,7 @@ final class UtilityModelSPCHREFInputOutput {
         var urlArr = [String]()
         urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/spc_white_1050px.png")
         urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/noaa_overlay_1050px.png")
-        let sectorIndex = UtilityModelSPCHREFInterface.sectorsLong.index(of: om.sector) ?? 0
+        let sectorIndex = UtilityModelSPCHREFInterface.sectorsLong.firstIndex(of: om.sector) ?? 0
         let sector = UtilityModelSPCHREFInterface.sectors[sectorIndex]
         products.forEach {
             var url = ""
