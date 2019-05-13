@@ -31,15 +31,14 @@
 // TODO utitimesunmoon
 // TODO get rid of ObjectForecastPackage
 // TODO add radar beam in long press
-// TODO GOES16 - update sectors and add AirMass
-// TODO moon data at bottom of main screen
 // TODO fix utilColor for velocity corner chase 
 // TODO add "Cumulonimbus Clouds Observed": "tsra_hi",
 
 AppStore writeup:
 In Settings -> Radar, add the ability to show additional warning polygons such as Special Weather Statement, Snow Squall Warning, Dust Storm Warning, and Special Marine Statement. In the GOES16/17 screen, limit the size of images that are excessively large for mobile.
 
-2019_05_11 55992 	build was freezing: fix Exclusive Access to Memory ( compile time enforcement only ) - was full enforcement run time checks in all builds
+2019_05_11 55994 	
+2019_05_11 55993 	build was freezing: fix Exclusive Access to Memory ( compile time enforcement only ) - was full enforcement run time checks in all builds
 			swift 5.0 conversion, recommended locale changes in project
 			add moon data to main screen
                         ran: brew install swiftlint
