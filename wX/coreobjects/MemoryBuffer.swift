@@ -63,6 +63,9 @@ final class MemoryBuffer {
     }
 
     init(_ data: Data) {
+        //backingArray = data.withUnsafeBytes {
+        //    Array(UnsafeBufferPointer<UInt8>(start: $0, count: data.count/MemoryLayout<UInt8>.size))
+        //}
         backingArray = data.withUnsafeBytes {
             Array(UnsafeBufferPointer<UInt8>(start: $0, count: data.count/MemoryLayout<UInt8>.size))
         }

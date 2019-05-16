@@ -25,10 +25,6 @@ final class UtilityMetar {
     static var refreshLocMin = RadarPreferences.radarDataRefreshInterval
     static var obsLatlon = [String: LatLon]()
 
-    static func rawFileToStringArray(_ rawFile: String) -> [String] {
-        return UtilityIO.readTextFile(rawFile).split("\n")
-    }
-
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
         let currentTime1: CLong = UtilityTime.currentTimeMillis()
         let currentTimeSec: CLong = currentTime1 / 1000
@@ -48,7 +44,7 @@ final class UtilityMetar {
             let metarArrTmp = html.parseColumn("<FONT FACE=\"Monospace,Courier\">(.*?)</FONT><BR>")
             let metarArr = condenseObs(metarArrTmp)
             if !initializedObsMap {
-                var lines = rawFileToStringArray(R.Raw.us_metar3)
+                var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
                 _ = lines.popLast()
                 lines.forEach {
                     let tmpArr = $0.split(" ")
@@ -212,7 +208,7 @@ final class UtilityMetar {
     }
 
     static func findClosestMetar(_ location: LatLon) -> String {
-        var lines = rawFileToStringArray(R.Raw.us_metar3)
+        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var metarSites = [RID]()
         lines.forEach {
@@ -240,7 +236,7 @@ final class UtilityMetar {
     }
 
     static func findClosestObservation(_ location: LatLon) -> RID {
-        var lines = rawFileToStringArray(R.Raw.us_metar3)
+        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var metarSites = [RID]()
         lines.forEach {
@@ -264,11 +260,10 @@ final class UtilityMetar {
         }
     }
 
-    // TODO rawFileToStringArray should be in UtilityIO
     static func getObservationSites(_ radarSite: String) -> String {
         var obsListSb = ""
         let radarLocation = LatLon(radarSite, isRadar: true)
-        var lines = rawFileToStringArray(R.Raw.us_metar3)
+        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var obsSites = [RID]()
         lines.forEach {

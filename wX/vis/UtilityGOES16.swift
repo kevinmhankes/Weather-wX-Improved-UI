@@ -10,6 +10,7 @@ final class UtilityGOES16 {
         "CONUS": "1250x750",
         "CONUS-G17": "1250x750",
         "FD": "1808x1808",
+        "FD-G17": "1808x1808",
         "gm": "1000x1000",
         "car": "1000x1000",
         "eus": "1000x1000",
@@ -41,12 +42,24 @@ final class UtilityGOES16 {
             if sector == "CONUS-G17" {
                 sectorLocal = "CONUS"
             }
+            if sector == "FD-G17" {
+                sectorLocal = "FD"
+            }
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
-        let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/" + getImageSize(sector) + ".jpg"
+        let url = MyApplication.goes16Url
+            + "/"
+            + satellite
+            + "/ABI/"
+            + sectorLocal
+            + "/"
+            + product
+            + "/"
+            + getImageSize(sector)
+            + ".jpg"
         print(url)
         return Bitmap(url)
     }
@@ -80,9 +93,9 @@ final class UtilityGOES16 {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
 
-    // TODO support Full Disk for 17
     static let sectors = [
-        "FD: Full Disk",
+        "FD: GOES-EAST Full Disk",
+        "FD-G17: GOES-WEST Full Disk",
         "CONUS: GOES-EAST US",
         "CONUS-G17: GOES-WEST US",
         "pnw: Pacific Northwest",
@@ -114,6 +127,7 @@ final class UtilityGOES16 {
 
     static let sectorsInGoes17 = [
         "CONUS-G17",
+        "FD-G17",
         "ak",
         "hi",
         "pnw",

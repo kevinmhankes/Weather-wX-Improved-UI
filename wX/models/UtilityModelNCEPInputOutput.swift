@@ -23,21 +23,19 @@ final class UtilityModelNCEPInputOutput {
             + "?group=Model%20Guidance&model="
             + om.model.uppercased()
         runCompletionUrl += "&area=" + om.sector.lowercased()
-        // FIXME does this need String()?
-        runCompletionUrl += "&cycle=" + String(runCompletionDataStr)
+        runCompletionUrl += "&cycle=" + runCompletionDataStr
         runCompletionUrl += "&param=" + om.param + "&fourpan=no&imageSize=M&ps=area"
         runCompletionUrl = runCompletionUrl.replace(" ", "%20")
         let ncepPattern1 = "([0-9]{2}Z)"
         let time = html.parse(ncepPattern1)
         runData.mostRecentRun = time
         runData.timeStrConv = time
-        // FIXME camelCase
         let timeCompleteUrl = "http://mag.ncep.noaa.gov/model-fhrs.php?group=Model%20Guidance&model="
             + om.model.lowercased() + "&fhr_mode=image&loop_start=-1&loop_end=-1&area="
             + om.sector + "&fourpan=no&imageSize=&preselected_formatted_cycle_date="
             + runCompletionDataStr + "&cycle=" + runCompletionDataStr + "&param=" + om.param + "&ps=area"
-        let timeCompleteHTML = timeCompleteUrl.replace(" ", "%20").getHtml()
-        runData.imageCompleteStr = timeCompleteHTML.parse("SubmitImageForm.(.*?).\"")
+        let timeCompleteHtml = timeCompleteUrl.replace(" ", "%20").getHtml()
+        runData.imageCompleteStr = timeCompleteHtml.parse("SubmitImageForm.(.*?).\"")
         return runData
     }
 
