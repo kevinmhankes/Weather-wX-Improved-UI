@@ -1,14 +1,14 @@
 #!/bin/bash
 dateString=$(date '+%Y/%m/%d %H:%M')
 dropBoxPath=${HOME}/Dropbox/wXL23
-versionStr=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
+version=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
 gitRepo="https://gitlab.com/joshua.tee/wxl23.git"
 APP_NAME="wxl23"
 tmpPath=${HOME}/tmp
 
 cd $HOME/wXL23/wX
 touch doc/ChangeLog.txt
-git commit -a -m "release ${versionStr} commit ${dateString}"
+git commit -a -m "release ${version} commit ${dateString}"
 git push origin master
 
 #cd ..
