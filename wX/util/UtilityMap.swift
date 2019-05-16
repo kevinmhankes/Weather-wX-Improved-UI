@@ -82,10 +82,20 @@ final class UtilityMap {
             let ridArr = $0.split(":")
             let latlon = Utility.getWfoSiteLatLon(ridArr[0])
             if ridArr.count > 1 {
-                let arr = ["name": ridArr[0], "latitude": latlon.latString, "longitude": latlon.lonString, "mediaURL": ridArr[1]]
+                let arr = [
+                    "name": ridArr[0],
+                    "latitude": latlon.latString,
+                    "longitude": latlon.lonString,
+                    "mediaURL": ridArr[1]
+                ]
                 locations.append(arr)
             } else {
-                let arr = ["name": ridArr[0], "latitude": latlon.latString, "longitude": latlon.lonString, "mediaURL": ""]
+                let arr = [
+                    "name": ridArr[0],
+                    "latitude": latlon.latString,
+                    "longitude": latlon.lonString,
+                    "mediaURL": ""
+                ]
                 locations.append(arr)
             }
         }

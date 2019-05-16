@@ -10,9 +10,9 @@ final class UtilityDownloadNWS {
 
     static func getCap(_ sector: String) -> String {
         if sector == "us" {
-            return getNwsStringFromUrlXml("https://api.weather.gov/alerts/active?region_type=land")
+            return getStringFromUrlXml("https://api.weather.gov/alerts/active?region_type=land")
         } else {
-            return getNwsStringFromUrlXml("https://api.weather.gov/alerts/active?state=" + sector.uppercased())
+            return getStringFromUrlXml("https://api.weather.gov/alerts/active?state=" + sector.uppercased())
         }
     }
 
@@ -22,7 +22,7 @@ final class UtilityDownloadNWS {
         return url.getHtml()
     }*/
 
-    static func getNwsStringFromUrls(_ url: String) -> String {
+    static func getStringFromUrl(_ url: String) -> String {
         let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS "
             + MyApplication.appName
             + " "
@@ -45,7 +45,7 @@ final class UtilityDownloadNWS {
         //r.isRedirect    // is this a redirect response
     }
 
-    static func getNwsStringFromUrlXml(_ url: String) -> String {
+    static func getStringFromUrlXml(_ url: String) -> String {
         let myJustDefaults = JustSessionDefaults(
             headers: [
                 "User-Agent": "IOS " + MyApplication.appName + " " + MyApplication.appCreatorEmail,

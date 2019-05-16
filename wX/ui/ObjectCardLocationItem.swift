@@ -23,7 +23,10 @@ final class ObjectCardLocationItem {
         let tvMiddle = ObjectTextViewSmallGray(80.0, text: middleLine, isUserInteractionEnabled: false)
         let tvBottom = ObjectTextViewSmallGray(80.0, text: bottomLines, isUserInteractionEnabled: false)
         let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, spacing: 0, arrangedSubviews: [tvName.view, tvCurrentConditions.view, tvMiddle.view, tvBottom.view]
+            .fill,
+            .vertical,
+            spacing: 0,
+            arrangedSubviews: [tvName.view, tvCurrentConditions.view, tvMiddle.view, tvBottom.view]
         )
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)

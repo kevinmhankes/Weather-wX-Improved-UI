@@ -20,11 +20,11 @@ final class UtilityString {
         return longTime.replace("-06:00", "").replace("-07:00", "")
     }
 
-    static func splitS(_ str: String, _ splitStr: String) -> [String] {
+    static func split(_ str: String, _ splitStr: String) -> [String] {
         return str.components(separatedBy: splitStr)
     }
 
-    static func substringS(_ str: String, _ start: Int, _ end: Int) -> String {
+    static func substring(_ str: String, _ start: Int, _ end: Int) -> String {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
@@ -35,7 +35,7 @@ final class UtilityString {
         return retStr
     }
 
-    static func substringS(_ str: String, _ start: Int) -> String {
+    static func substring(_ str: String, _ start: Int) -> String {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
@@ -53,7 +53,7 @@ final class UtilityString {
         return retStr
     }
 
-    static func replaceAllS(_ str: String, _ a: String, _ b: String) -> String {
+    static func replaceAll(_ str: String, _ a: String, _ b: String) -> String {
         let toArray = str.components(separatedBy: a)
         return toArray.joined(separator: b)
     }
@@ -71,7 +71,7 @@ final class UtilityString {
         return str
     }
 
-    static func removeLineBreaksS(_ html: String) -> String {
+    static func removeLineBreaks(_ html: String) -> String {
         return html.replaceAll("\n\n", "<BR>").replaceAll("\n", " ").replaceAll("<BR>", "\n")
     }
 
@@ -95,7 +95,7 @@ final class UtilityString {
         }
     }
 
-    static func parseS(_ str: String, _ regexpStr: String) -> String {
+    static func parse(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
         if retArr.count > 0 {
             return retArr[retArr.count - 1]
@@ -104,7 +104,7 @@ final class UtilityString {
         }
     }
 
-    static func parseFirstS(_ str: String, _ regexpStr: String) -> String {
+    static func parseFirst(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
         if retArr.count > 0 {
             return retArr[0]
@@ -117,11 +117,11 @@ final class UtilityString {
         return str.parse(regexpStr)
     }
 
-    static func parseColumnS(_ str: String, _ regexpStr: String) -> [String] {
+    static func parseColumn(_ str: String, _ regexpStr: String) -> [String] {
         return parseHelper(regexpStr, str)
     }
 
-    static func parseColumnAllS(_ str: String, _ regexpStr: String) -> [String] {
+    static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] {
         return parseHelper(regexpStr, str)
     }
 

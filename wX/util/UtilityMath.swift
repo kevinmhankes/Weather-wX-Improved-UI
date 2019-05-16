@@ -147,7 +147,7 @@ final class UtilityMath {
         return String(format: "%.2f", tmpNum) + " in"
     }
 
-    static func metersPerSecondtoMPH(_ valueD: Double) -> String {
+    static func metersPerSecondtoMph(_ valueD: Double) -> String {
         let valueDLocal = valueD * 2.23694
         return String(Int(round(valueDLocal)))
     }

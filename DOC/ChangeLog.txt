@@ -33,11 +33,12 @@
 // TODO add radar beam in long press
 // TODO fix utilColor for velocity corner chase 
 // TODO add "Cumulonimbus Clouds Observed": "tsra_hi",
+// TODO [BUG] nexrad radar long press, if select a different type of polygon don't show anything
 
 AppStore writeup:
 In Settings -> Radar, add the ability to show additional warning polygons such as Special Weather Statement, Snow Squall Warning, Dust Storm Warning, and Special Marine Statement. In the GOES16/17 screen, limit the size of images that are excessively large for mobile.
 
-2019_05_11 55994 	
+2019_05_16 55995 	test new cert, misc refactor
 2019_05_11 55993 	build was freezing: fix Exclusive Access to Memory ( compile time enforcement only ) - was full enforcement run time checks in all builds
 			swift 5.0 conversion, recommended locale changes in project
 			add moon data to main screen

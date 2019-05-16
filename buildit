@@ -1,11 +1,22 @@
 #!/bin/bash
+dateString=$(date '+%Y/%m/%d %H:%M')
 dropBoxPath=${HOME}/Dropbox/wXL23
 versionStr=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
-dateString=$(date '+%Y_%m_%d_%H_%M')
+gitRepo="https://gitlab.com/joshua.tee/wxl23.git"
+APP_NAME="wxl23"
 
 git commit -a -m "release ${versionStr} commit ${dateString}"
-git push
+git push origin master
 
-cd ..
-zip -r wXL23_${versionStr}.zip wX -x *.git* > /dev/null
-cp wXL23_${versionStr}.zip  ${dropBoxPath}/
+#cd ..
+#zip -r wXL23_${versionStr}.zip wX -x *.git* > /dev/null
+#cp wXL23_${versionStr}.zip  ${dropBoxPath}/
+
+mkdir ${tmpPath} || exit 1
+cd ${tmpPath} || exit 1
+git clone ${gitRepo}
+zip -r $APP_NAME${version}.zip $APP_NAME -x *.git* > /dev/null
+ls -l $APP_NAME${version}.zip 
+cp $APP_NAME${version}.zip ${dropBoxPath}/
+rm -rf ${tmpPath} 
+echo Build Complete

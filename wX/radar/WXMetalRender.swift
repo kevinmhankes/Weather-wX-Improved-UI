@@ -285,13 +285,25 @@ class WXMetalRender {
         case "FFW":
             fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
         case "SMW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
+            fList = WXGLPolygonWarnings.addGenericWarnings(
+                pn,
+                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!
+            )
         case "SQW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
+            fList = WXGLPolygonWarnings.addGenericWarnings(
+                pn,
+                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!
+            )
         case "DSW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
+            fList = WXGLPolygonWarnings.addGenericWarnings(
+                pn,
+                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!
+            )
         case "SPS":
-            fList = WXGLPolygonWarnings.addGenericWarnings(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
+            fList = WXGLPolygonWarnings.addGenericWarnings(
+                pn,
+                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
+            )
         case "STI":
             fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
         default:

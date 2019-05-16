@@ -86,44 +86,4 @@ final class UtilityImg {
         }
         return newImage
     }
-
-    /*static func imgSavePosnZoom(_ img: ImageScrollView, _ uiv: UIViewController) {
-        let z = Float(img.zoomScale)
-        let cgpoint = img.contentOffset
-        let x = Float(cgpoint.x)
-        let y = Float(cgpoint.y)
-        let prefStr = Utility.getClassName(uiv)
-        Utility.writePref(prefStr + "_X", x)
-        Utility.writePref(prefStr + "_Y", y)
-        Utility.writePref(prefStr + "_ZOOM", z)
-    }
-
-    static func imgRestorePosnZoom(_ img: ImageScrollView, _ uiv: UIViewController) {
-        let prefStr = Utility.getClassName(uiv)
-        let z = CGFloat(Utility.readPref(prefStr + "_ZOOM", 1.0))
-        var x = CGFloat(Utility.readPref(prefStr + "_X", 0.0))
-        var y = CGFloat(Utility.readPref(prefStr + "_Y", 0.0))
-        if x < 20.0 && y < 20.0 {
-            return
-        }
-        if x < 20.0 {
-            x = 50.0
-        }
-        if y < 20.0 {
-            y = 50.0
-        }
-        print("restore start")
-        print(x)
-        print(y)
-        print(z)
-        print("restore end")
-        //if abs(ceil(x)) > 0 && abs(ceil(y)) > 0 {
-        if (x + y) > 1 {
-            img.restorePosition(z, center: CGPoint(x: x, y: y))
-        }
-    }
-
-    static func imgCenter(_ img: ImageScrollView, _ uiv: UIViewController) {
-        img.restorePosition(1, center: CGPoint(x: 0.0, y: 0.0))
-    }*/
 }

@@ -168,7 +168,7 @@ final class ObjectForecastPackageCurrentConditions {
         }
         if windSpeed != "null" {
             if let tempD = Double(windSpeed) {
-                windSpeed = UtilityMath.metersPerSecondtoMPH(tempD)
+                windSpeed = UtilityMath.metersPerSecondtoMph(tempD)
             } else {
                 windSpeed = "NA"
             }
@@ -198,7 +198,7 @@ final class ObjectForecastPackageCurrentConditions {
         }
         if windGust != "null" {
             if let tempD = Double(windGust) {
-                windGust = UtilityMath.metersPerSecondtoMPH(tempD)
+                windGust = UtilityMath.metersPerSecondtoMph(tempD)
                 windGust = "G " + windGust
             }
         } else {

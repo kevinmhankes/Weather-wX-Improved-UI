@@ -57,12 +57,12 @@ class ObjectPolygonWarning {
         PolygonTypeGeneric.DSW,
         PolygonTypeGeneric.SPS
     ]
-    
+
     static var polygonDataByType: [PolygonTypeGeneric: ObjectPolygonWarning] = [:]
 
     static func load() {
         polygonList.forEach {
-            polygonDataByType[$0] = ObjectPolygonWarning($0);
+            polygonDataByType[$0] = ObjectPolygonWarning($0)
         }
     }
 

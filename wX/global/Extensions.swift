@@ -22,7 +22,7 @@ extension String {
     }
 
     func removeLineBreaks() -> String {
-        return UtilityString.removeLineBreaksS(self)
+        return UtilityString.removeLineBreaks(self)
     }
 
     func getHtml() -> String {
@@ -34,7 +34,7 @@ extension String {
     }
 
     func getNwsHtml() -> String {
-        return UtilityDownloadNWS.getNwsStringFromUrls(self)
+        return UtilityDownloadNWS.getStringFromUrl(self)
     }
 
     func getImage() -> Bitmap {
@@ -42,19 +42,19 @@ extension String {
     }
 
     func parseColumn(_ pattern: String) -> [String] {
-        return UtilityString.parseColumnS(self, pattern)
+        return UtilityString.parseColumn(self, pattern)
     }
 
     func parseColumnAll(_ pattern: String) -> [String] {
-        return UtilityString.parseColumnAllS(self, pattern)
+        return UtilityString.parseColumnAll(self, pattern)
     }
 
     func parse(_ pattern: String) -> String {
-        return UtilityString.parseS(self, pattern)
+        return UtilityString.parse(self, pattern)
     }
 
     func parseFirst(_ pattern: String) -> String {
-        return UtilityString.parseFirstS(self, pattern)
+        return UtilityString.parseFirst(self, pattern)
     }
 
     func firstToken(_ delim: String) -> String {
@@ -90,7 +90,7 @@ extension String {
     }
 
     func replaceAll(_ a: String, _ b: String) -> String {
-        return UtilityString.replaceAllS(self, a, b)
+        return UtilityString.replaceAll(self, a, b)
     }
 
     func replaceAllRegexp(_ a: String, _ b: String) -> String {
@@ -106,15 +106,15 @@ extension String {
     }
 
     func split(_ delim: String) -> [String] {
-        return UtilityString.splitS(self, delim)
+        return UtilityString.split(self, delim)
     }
 
     func substring(_ start: Int) -> String {
-        return UtilityString.substringS(self, start)
+        return UtilityString.substring(self, start)
     }
 
     func substring(_ start: Int, _ end: Int) -> String {
-        return UtilityString.substringS(self, start, end)
+        return UtilityString.substring(self, start, end)
     }
 
     func delete(_ str: String) -> String {
