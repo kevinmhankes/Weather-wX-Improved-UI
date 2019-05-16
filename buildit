@@ -18,8 +18,8 @@ git push origin master
 mkdir ${tmpPath} || exit 1
 cd ${tmpPath} || exit 1
 git clone ${gitRepo}
-zip -r $APP_NAME${version}.zip $APP_NAME -x *.git* > /dev/null
-ls -l $APP_NAME${version}.zip 
-cp $APP_NAME${version}.zip ${dropBoxPath}/
+zip -r ${APP_NAME}_${version}.zip $APP_NAME -x *.git* > /dev/null
+ls -l ${APP_NAME}_${version}.zip 
+cp ${APP_NAME}_${version}.zip ${dropBoxPath}/
 rm -rf ${tmpPath} 
 echo Build Complete
