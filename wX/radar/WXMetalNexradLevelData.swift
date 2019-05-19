@@ -23,6 +23,8 @@ final class WXMetalNexradLevelData {
     private var compressedFileSize = 0
     var radarBuffers: ObjectMetalRadarBuffers?
     var index = "0"
+    var radarHeight = 0
+    var degree = 0.0
 
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
         self.init()
@@ -56,6 +58,7 @@ final class WXMetalNexradLevelData {
             while dis.getShort() != -1 {}
             dis.skipBytes(8)
             let heightOfRadar = Int16(dis.getUnsignedShort())
+            radarHeight = Int(heightOfRadar)
             productCode = Int16(dis.getUnsignedShort())
             let operationalMode = Int16(dis.getUnsignedShort())
             dis.skipBytes(6)
@@ -63,7 +66,11 @@ final class WXMetalNexradLevelData {
             let volumeScanTime = dis.getInt()
             writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)"
                 + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
-            dis.skipBytes(14)
+            //dis.skipBytes(14)
+            dis.skipBytes(10)
+            let elevationNumber = dis.getUnsignedShort()
+            let elevationAngle = dis.getShort()
+            degree = Double(elevationAngle) / 10.0
             halfword3132 = dis.getFloat()
             ActVars.wxoglDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
             dis.skipBytes(26)

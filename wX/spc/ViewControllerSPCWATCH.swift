@@ -9,14 +9,14 @@ import UIKit
 class ViewControllerSPCWATCH: UIwXViewController {
 
     var bitmaps = [Bitmap]()
-    var txtArr = [String]()
-    var SPCWATno = ""
+    var listOfText = [String]()
+    var spcWatchNumber = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        SPCWATno = ActVars.spcWatchNumber
-        if SPCWATno != "" {
+        spcWatchNumber = ActVars.spcWatchNumber
+        if spcWatchNumber != "" {
             ActVars.spcWatchNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
@@ -28,17 +28,17 @@ class ViewControllerSPCWATCH: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var mcdList = [String]()
             var mcdTxt = ""
-            if self.SPCWATno == "" {
+            if self.spcWatchNumber == "" {
                 let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
                 mcdList = dataAsString.parseColumn("[om] Watch #([0-9]*?)</a>")
             } else {
-                mcdList = [self.SPCWATno]
+                mcdList = [self.spcWatchNumber]
             }
             mcdList.forEach {
                 let number = String(format: "%04d", Int($0) ?? 0)
                 let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + number + "_radar.gif"
                 mcdTxt = UtilityDownload.getTextProduct("SPCWAT" + number)
-                self.txtArr.append(mcdTxt)
+                self.listOfText.append(mcdTxt)
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
@@ -62,7 +62,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.textViewText = self.txtArr[sender.data]
+        ActVars.textViewText = self.listOfText[sender.data]
         self.goToVC("textviewer")
     }
 

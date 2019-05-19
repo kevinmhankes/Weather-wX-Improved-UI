@@ -85,7 +85,7 @@ class WXMetalRender {
     private var geographicBuffers = [ObjectMetalBuffers]()
     private var ridPrefixGlobal = "0"
     var idxStr = "0"
-    private var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
+    var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     private final var l3BaseFn = "nids"
     private final var stiBaseFn = "nids_sti_tab"
     private final var hiBaseFn = "nids_hi_tab"

@@ -166,13 +166,10 @@ final class UtilityTime {
     // TODO
     static func getCurrentLocalTimeAsString() -> String {
         let date = getDateAsString("yyyy-MM-dd HH:mm:ss")
-        //print("GENERATED DATE: " + date)
         return date
-        //return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())
     }
 
     static func isRadarTimeOld(_ radarTime: String) -> Bool {
-        //print("RADAR DATE: " + radarTime)
         let radarTimeComponents = radarTime.split(":")
         if radarTimeComponents.count < 3 {
             // something went wrong

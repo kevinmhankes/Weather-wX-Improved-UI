@@ -151,4 +151,9 @@ final class UtilityMath {
         let valueDLocal = valueD * 2.23694
         return String(Int(round(valueDLocal)))
     }
+
+    static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
+        return 3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
+    }
+
 }

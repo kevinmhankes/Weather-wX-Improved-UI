@@ -584,6 +584,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
+        let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
         var alertMessage = Utility.readPref("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
@@ -591,6 +592,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
+        let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetal[index]!.radarBuffers.rd.degree, distRidKm))
+        let heightMsl = Int(wxMetal[index]!.radarBuffers.rd.radarHeight) + heightAgl
+        alertMessage += "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
         let alert = UIAlertController(
             title: "Closest radar site:",
             message: alertMessage,

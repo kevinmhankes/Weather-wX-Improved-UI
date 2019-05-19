@@ -23,19 +23,21 @@ public class UtilityRadarUI {
             token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         }
         print(token)
-        if token.hasPrefix("WPCMPD") {
+        if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             ActVars.wpcMpdNumber = token.replace("WPCMPD", "")
             token = "wpcmpd"
         }
-        if token.hasPrefix("SPCMCD") {
+        if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
             ActVars.spcMcdNumber = token.replace("SPCMCD", "")
             token = "spcmcd"
         }
-        if token.hasPrefix("SPCWAT") {
+        if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
             ActVars.spcWatchNumber = token.replace("SPCWAT", "")
             token = "spcwat"
         }
-        uiv.goToVC(token)
+        if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
+            uiv.goToVC(token)
+        }
     }
 
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {

@@ -8,7 +8,7 @@ final class UtilityWpcImages {
 
    static let titles = [
         ObjectMenuTitle("Surface Analysis", 7),
-        ObjectMenuTitle("Forecast Maps", 20),
+        ObjectMenuTitle("Forecast Maps", 17),
         ObjectMenuTitle("QPF", 27),
         ObjectMenuTitle("Snow / Ice", 21),
         ObjectMenuTitle("National Digital Forecast Database", 15),
@@ -29,9 +29,6 @@ final class UtilityWpcImages {
         "Forecast Chart - Day 1",
         "Forecast Chart - Day 2",
         "Forecast Chart - Day 3",
-        "Forecast Chart - Day 1 Experimental",
-        "Forecast Chart - Day 2 Experimental",
-        "Forecast Chart - Day 3 Experimental",
         "Fronts/Weather Type - 12hr",
         "Fronts/Weather Type - 24hr",
         "Fronts/Weather Type - 36hr",
@@ -170,9 +167,6 @@ final class UtilityWpcImages {
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif",
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif",
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/exper/nationalforecastchart/data/day1.png",
-        MyApplication.nwsWPCwebsitePrefix + "/exper/nationalforecastchart/data/day2.png",
-        MyApplication.nwsWPCwebsitePrefix + "/exper/nationalforecastchart/data/day3.png",
         MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif",
