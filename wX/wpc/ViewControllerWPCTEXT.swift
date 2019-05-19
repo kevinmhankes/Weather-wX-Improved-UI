@@ -14,7 +14,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var product = "PMDSPD"
     var textView = ObjectTextView()
     var playListButton = ObjectToolbarIcon()
-    var subMenu = ObjectMenuData(UtilityWPCText.titles, [], UtilityWPCText.labels)
+    var subMenu = ObjectMenuData(UtilityWpcText.titles, [], UtilityWpcText.labels)
     let synth = AVSpeechSynthesizer()
     var html = ""
 

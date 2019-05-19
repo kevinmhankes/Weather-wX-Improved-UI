@@ -11,17 +11,17 @@ final class UtilityTime {
 
     static func monthWordToNumber(_ month: String) -> String {
         return month.replaceAll("Jan", "01")
-        .replaceAll("Feb", "02")
-        .replaceAll("Mar", "03")
-        .replaceAll("Apr", "04")
-        .replaceAll("May", "05")
-        .replaceAll("Jun", "06")
-        .replaceAll("Jul", "07")
-        .replaceAll("Aug", "08")
-        .replaceAll("Sep", "09")
-        .replaceAll("Oct", "10")
-        .replaceAll("Nov", "11")
-        .replaceAll("Dec", "12")
+            .replaceAll("Feb", "02")
+            .replaceAll("Mar", "03")
+            .replaceAll("Apr", "04")
+            .replaceAll("May", "05")
+            .replaceAll("Jun", "06")
+            .replaceAll("Jul", "07")
+            .replaceAll("Aug", "08")
+            .replaceAll("Sep", "09")
+            .replaceAll("Oct", "10")
+            .replaceAll("Nov", "11")
+            .replaceAll("Dec", "12")
     }
 
     static func gmtTime() -> String {
@@ -112,7 +112,7 @@ final class UtilityTime {
         }
         return runs
     }
-
+    
     static func genModelRuns(_ time: String, _ hours: Int, _ dateStr: String) -> [String] {
         let dateFmt = DateFormatter()
         dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
@@ -146,7 +146,7 @@ final class UtilityTime {
     static func currentTimeMillis() -> Int {
         return Int((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
-
+    
     static func getCurrentHourInUTC() -> Int {
         let date = Date()
         var calendar = Calendar.current
@@ -163,78 +163,41 @@ final class UtilityTime {
         return components.hour ?? 0
     }
 
-   /* static func getSunTimesForHomescreen() -> String {
-        let sunCalc = SunCalc()
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
-        var sunrise = ""
-        var sunset = ""
-        do {
-            let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
-            sunrise = formatter.string(from: rise)
-            let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
-            sunset = formatter.string(from: set)
-        } catch let e as SunCalc.SolarEventError {
-            switch e {
-            case .sunNeverRise:
-                print("Sun never rise")
-            case .sunNeverSet:
-                print("Sun never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
-        }
-        return "Sunrise: " + sunrise + "  Sunset: " + sunset
-    }
-    
-    static func getMoonTimesForHomescreen() -> String {
-        let sunCalc = SunCalc()
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
-        var moonrise = ""
-        var moonset = ""
-        do {
-            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            moonrise = formatter.string(from: moonTimes.moonSetTime)
-            moonset = formatter.string(from: moonTimes.moonRiseTime)
-        } catch let e as SunCalc.LunarEventError {
-            switch e {
-            case .moonNeverRise:
-                print("Moon never rise")
-            case .moonNeverSet:
-                print("Moon never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
-        }
-        return "Moonrise: " + moonrise + "  Moonset: " + moonset
+    // TODO
+    static func getCurrentLocalTimeAsString() -> String {
+        return ""
+        //return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())
     }
 
-    static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
-        var rise = Date()
-        var set = Date()
-        let sunCalc = SunCalc()
-        let now = Date()
-        let location = SunCalc.Location(latitude: obs.location.lat, longitude: obs.location.lon)
-        do {
-            rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
-            set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
-        } catch let e as SunCalc.SolarEventError {
-            switch e {
-            case .sunNeverRise:
-                print("Sun never rise")
-            case .sunNeverSet:
-                print("Sun never set")
-            }
-        } catch let e {
-            print("Unknown error: \(e)")
+    static func isRadarTimeOld(_ radarTime: String) -> Bool {
+        let radarTimeComponents = radarTime.split(":")
+        if radarTimeComponents.count < 3 {
+            // something went wrong
+            return false
         }
-        return(rise, set)
-    }*/
+        let radarTimeHours = Int(radarTimeComponents[0]) ?? 0
+        let radarTimeMinutes = Int(radarTimeComponents[1]) ?? 0
+        let radarTimeTotalMinutes = radarTimeHours * 60 + radarTimeMinutes
+        let currentTime = getCurrentLocalTimeAsString().split(" ")[1]
+        let currentTimeComponents = currentTime.split(":")
+        if currentTimeComponents.count < 3 {
+            // something went wrong
+            return false
+        }
+        let currentTimeHours = Int(currentTimeComponents[0]) ?? 0
+        let currentTimeMinutes = Int(currentTimeComponents[1]) ?? 0
+        let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
+        if currentTimeTotalMinutes < 30 {
+            // TODO find out how to handle midnight
+            return false
+        }
+        if radarTimeTotalMinutes > currentTimeTotalMinutes {
+            // radar time should not be in the future, radar is down
+            return true
+        }
+        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) {
+            return true
+        }
+        return false
+    }
 }

@@ -29,7 +29,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             for index in MyApplication.locations.indices {
-                self.currentConditions.append(Utility.getCurrentConditions(index).objCC)
+                self.currentConditions.append(ObjectForecastPackageCurrentConditions(index))
                 self.currentConditions[index].formatCC()
                 print(String(index) + " " + self.currentConditions[index].ccLine1)
             }

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityWPCImages {
+final class UtilityWpcImages {
 
    static let titles = [
         ObjectMenuTitle("Surface Analysis", 7),

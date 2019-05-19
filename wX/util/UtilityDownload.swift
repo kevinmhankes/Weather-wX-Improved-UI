@@ -66,7 +66,7 @@ final class UtilityDownload {
         } else if prod == "SUNMOON" {
             text = UtilitySunMoon.computeData()
         } else if prod == "HOURLY" {
-            let textArr = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
+            let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
             text = textArr.0
         } else if prod == "SWPC3DAY" {
             text = ("http://services.swpc.noaa.gov/text/3-day-forecast.txt").getHtml()
@@ -195,7 +195,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "GOES16":
             needsBitmap = false
-            bitmap = UtilityGOES16.getImage(
+            bitmap = UtilityGoes.getImage(
                 Utility.readPref("GOES16_PROD", "02"),
                 Utility.readPref("GOES16_SECTOR", "cgl")
             )
@@ -204,7 +204,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "VIS_CONUS":
             needsBitmap = false
-            bitmap = UtilityGOES16.getImage("GEOCOLOR", "CONUS")
+            bitmap = UtilityGoes.getImage("GEOCOLOR", "CONUS")
         case "CARAIN":
             if Location.x.contains("CANADA") {
                 needsBitmap = false
@@ -308,7 +308,7 @@ final class UtilityDownload {
                 + String(1) + "_SECTOR_LAST_USED", UtilitySPCMESO.defaultSector))
         case "CONUSWV":
             needsBitmap = false
-            bitmap = UtilityGOES16.getImage("09", "CONUS")
+            bitmap = UtilityGoes.getImage("09", "CONUS")
         case "LTG":
             needsBitmap = false
             bitmap = UtilityLightning.getImage(

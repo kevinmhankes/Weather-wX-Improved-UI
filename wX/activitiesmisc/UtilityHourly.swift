@@ -6,7 +6,7 @@
 
 import Foundation
 
-final class UtilityUSHourlyV2 {
+final class UtilityHourly {
 
     static let hourlyAbbreviationsFirst = [
         "Showers And Thunderstorms": "Sh/Tst",
@@ -41,7 +41,7 @@ final class UtilityUSHourlyV2 {
     }
 
     static func getHourlyString(_ locNumber: Int) -> (String, String) {
-        let html = UtilityDownloadNWS.getHourlyData(Location.getLatLon(locNumber))
+        let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locNumber))
         let header = fixedLengthString("Time", 7) + fixedLengthString("T", 4)
             + fixedLengthString("Wind", 8) + fixedLengthString("WindDir", 6) +  MyApplication.newline
         let footer = getFooter()

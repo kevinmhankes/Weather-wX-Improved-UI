@@ -13,16 +13,35 @@ final class ObjectForecastPackage7Day {
     private var shortForecastAl = [String]()
     private var detailedForecastAl = [String]()
     var locationIndex = 0
+    
+    /*if Location.isUS(locNum) {
+    let html = UtilityDownloadNWS.get7DayData(Location.getLatLon(locNum))
+    return ObjectForecastPackage7Day(locNum, html)
+    } else {
+    let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
+    return ObjectForecastPackage7Day(locNum, html)
+    }*/
 
-    convenience init(_ locNum: Int, _ html: String) {
+    convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
+            let html = UtilityDownloadNws.get7DayData(Location.getLatLon(locNum))
             sevenDayExtStr = get7DayExt(html)
         } else {
+            let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
             sevenDayExtStr = UtilityCanada.get7Day(html)
             icons = UtilityCanada.getIcons7DayAsList(sevenDayExtStr)
             convertExt7DaytoList()
         }
+    }
+    
+    convenience init(_ latLon: LatLon) {
+        self.init()
+        let html = UtilityDownloadNws.get7DayData(latLon)
+        sevenDayExtStr = get7DayExt(html)
+        //iconsAsString = getIcons7Day(html)
+        //sevenDayLong = get7DayExt(html)
+        //sevenDayShort = get7DayShort(html)
     }
 
     convenience init(_ html: String) {
@@ -86,7 +105,7 @@ final class ObjectForecastPackage7Day {
     static var scrollView = UIScrollView()
 
     static func getHtml(_ latLon: LatLon) -> String {
-        let html = UtilityDownloadNWS.get7DayData(latLon)
+        let html = UtilityDownloadNws.get7DayData(latLon)
         return html
     }
 }

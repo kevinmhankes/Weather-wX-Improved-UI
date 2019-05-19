@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityGOES16 {
+final class UtilityGoes {
 
     static let sizeMap = [
         "CONUS": "1250x750",

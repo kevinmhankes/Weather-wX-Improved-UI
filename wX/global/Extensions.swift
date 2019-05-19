@@ -34,7 +34,7 @@ extension String {
     }
 
     func getNwsHtml() -> String {
-        return UtilityDownloadNWS.getStringFromUrl(self)
+        return UtilityDownloadNws.getStringFromUrl(self)
     }
 
     func getImage() -> Bitmap {

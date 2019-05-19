@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityWPCText {
+final class UtilityWpcText {
 
     static let titles = [
         ObjectMenuTitle("General", 3),

@@ -17,7 +17,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var currentTime: Int64 = 0
     var currentTimeSec: Int64 = 0
     var refreshIntervalSec: Int64 = 0
-    var objFcst = ObjectForecastPackage()
+    var objCurrentConditions = ObjectForecastPackageCurrentConditions()
     var objHazards = ObjectForecastPackageHazards()
     var objSevenDay = ObjectForecastPackage7Day()
     var textArr = [String: String]()
@@ -169,7 +169,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objFcst = Utility.getCurrentConditions(Location.getCurrentLocation())
+            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.getCurrentConditionCards()
             }
@@ -178,7 +178,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func getLocationForecastSevenDay() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
+            //self.objSevenDay = Utility.getCurrentSevenDay(Location.getCurrentLocation())
+            self.objSevenDay = ObjectForecastPackage7Day(Location.getCurrentLocation())
             self.objSevenDay.locationIndex = Location.getCurrentLocation()
             DispatchQueue.main.async {
                 if self.objCard7DayCollection == nil
@@ -374,10 +375,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if ccCard == nil {
-            ccCard = ObjectCardCC(self.stackViewCurrentConditions.view, objFcst, isUS)
+            ccCard = ObjectCardCC(self.stackViewCurrentConditions.view, objCurrentConditions, isUS)
             ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
-            ccCard?.updateCard(objFcst, isUS)
+            ccCard?.updateCard(objCurrentConditions, isUS)
         }
     }
 

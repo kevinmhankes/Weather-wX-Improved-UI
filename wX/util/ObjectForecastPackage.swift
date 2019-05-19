@@ -6,10 +6,10 @@
 
 final class ObjectForecastPackage {
 
-    var objCC = ObjectForecastPackageCurrentConditions()
+    //var objCC = ObjectForecastPackageCurrentConditions()
 
-    convenience init( _ objCC: ObjectForecastPackageCurrentConditions) {
-        self.init()
-        self.objCC = objCC
-    }
+    //convenience init( _ objCC: ObjectForecastPackageCurrentConditions) {
+        //self.init()
+        //self.objCC = objCC
+    //}
 }

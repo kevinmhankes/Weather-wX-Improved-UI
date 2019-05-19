@@ -6,6 +6,7 @@
 
 import UIKit
 
+// TODO rename
 final class ObjectCAWARN: NSObject {
 
     private var stackView: UIStackView

@@ -26,7 +26,15 @@ final class ObjectForecastPackageCurrentConditions {
     var rawMetar = ""
 
     convenience init(_ locNum: Int) {
-        self.init(Location.getLatLon(locNum))
+        self.init()
+        if Location.isUS(locNum) {
+            self.init(Location.getLatLon(locNum))
+        } else {
+            let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
+            self.data1 = UtilityCanada.getConditions(html)
+            self.status = UtilityCanada.getStatus(html)
+            self.formatCC()
+        }
     }
 
     // US via LAT LON
@@ -56,15 +64,6 @@ final class ObjectForecastPackageCurrentConditions {
         data1 = UtilityCanada.getConditions(html)
         status = UtilityCanada.getStatus(html)
         formatCC()
-    }
-
-    // CA
-    static func createForCanada(_ html: String) -> ObjectForecastPackageCurrentConditions {
-        let obj = ObjectForecastPackageCurrentConditions()
-        obj.data1 = UtilityCanada.getConditions(html)
-        obj.status = UtilityCanada.getStatus(html)
-        obj.formatCC()
-        return obj
     }
 
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {

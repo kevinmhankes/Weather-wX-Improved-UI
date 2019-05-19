@@ -29,12 +29,12 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityNWSGOESFullDisk.labels[self.index]
+        self.productButton.title = UtilityGoesFullDisk.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityNWSGOESFullDisk.urls[self.index])
+            let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                if UtilityNWSGOESFullDisk.urls[self.index].contains("jma") {
+                if UtilityGoesFullDisk.urls[self.index].contains("jma") {
                     self.showAnimateButton()
                 } else {
                     self.hideAnimateButton()
@@ -57,7 +57,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            UtilityNWSGOESFullDisk.labels,
+            UtilityGoesFullDisk.labels,
             self.getContent(_:)
         )
     }
@@ -67,12 +67,12 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityNWSGOESFullDisk.urls))
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityGoesFullDisk.urls))
     }
 
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityNWSGOESFullDisk.getAnimation(url: UtilityNWSGOESFullDisk.urls[self.index])
+            let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }

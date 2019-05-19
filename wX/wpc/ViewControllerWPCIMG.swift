@@ -12,7 +12,7 @@ class ViewControllerWPCIMG: UIwXViewController {
     var productButton = ObjectToolbarIcon()
     var index = 0
     var timePeriod = 1
-    var subMenu = ObjectMenuData(UtilityWPCImages.titles, UtilityWPCImages.urls, UtilityWPCImages.labels)
+    var subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,9 @@ class ViewControllerWPCIMG: UIwXViewController {
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityWPCImages.labels[index]
+        self.productButton.title = UtilityWpcImages.labels[index]
         DispatchQueue.global(qos: .userInitiated).async {
-            var getUrl = UtilityWPCImages.urls[self.index]
+            var getUrl = UtilityWpcImages.urls[self.index]
             if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
                 getUrl += String(self.timePeriod) + "_conus.png"
             }
@@ -54,6 +54,6 @@ class ViewControllerWPCIMG: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityWPCImages.urls))
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityWpcImages.urls))
     }
 }

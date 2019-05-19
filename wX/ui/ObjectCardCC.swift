@@ -6,6 +6,7 @@
 
 import UIKit
 
+// FIXME rename
 final class ObjectCardCC {
 
     private var image = ObjectCardImage()
@@ -14,7 +15,8 @@ final class ObjectCardCC {
     private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     let condenseScale: CGFloat = 0.50
 
-    init(_ stackView: UIStackView, _ objFcst: ObjectForecastPackage, _ isUS: Bool) {
+    // FIXME rename objFcst
+    init(_ stackView: UIStackView, _ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             image = ObjectCardImage(sizeFactor: condenseScale)
         } else {
@@ -40,38 +42,38 @@ final class ObjectCardCC {
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
-        updateCard(objFcst, isUS)
+        updateCard(objCc, isUS)
     }
 
-    func updateCard(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
-        setImage(objFcst, isUS)
-        setText(objFcst)
+    func updateCard(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
+        setImage(objCc, isUS)
+        setText(objCc)
     }
 
-    func setImage(_ objFcst: ObjectForecastPackage, _ isUS: Bool) {
+    func setImage(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNWS.getIcon(objFcst.objCC.iconUrl).image
+                image.view.image = UtilityNWS.getIcon(objCc.iconUrl).image
             } else {
                 image.view.image = UtilityImg.resizeImage(
-                    UtilityNWS.getIcon(objFcst.objCC.iconUrl).image,
+                    UtilityNWS.getIcon(objCc.iconUrl).image,
                     condenseScale
                 )
             }
         } else {
             image.view.image = UtilityNWS.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
-                    objFcst.objCC.data1,
-                    objFcst.objCC.status
+                    objCc.data1,
+                    objCc.status
                 )
             ).image
         }
     }
 
-    func setText(_ objFcst: ObjectForecastPackage) {
-        topText.text = objFcst.objCC.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        middleText.text = objFcst.objCC.ccLine2.trimmingCharacters(in: .whitespaces)
-        bottomText.text = objFcst.objCC.rawMetar
+    func setText(_ objCc: ObjectForecastPackageCurrentConditions) {
+        topText.text = objCc.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        middleText.text = objCc.ccLine2.trimmingCharacters(in: .whitespaces)
+        bottomText.text = objCc.rawMetar
     }
 
     func addGestureRecognizer(

@@ -6,7 +6,7 @@
 
 import Foundation
 
-final class UtilityDownloadNWS {
+final class UtilityDownloadNws {
 
     static func getCap(_ sector: String) -> String {
         if sector == "us" {

@@ -10,7 +10,7 @@ import AVFoundation
 class ViewControllerADHOCLOCATION: UIwXViewController {
 
     var location = LatLon()
-    var objFcst = ObjectForecastPackage()
+    var objCurrentConditions = ObjectForecastPackageCurrentConditions()
     var objHazards = ObjectForecastPackageHazards()
     var objSevenDay = ObjectForecastPackage7Day()
 
@@ -28,11 +28,11 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objFcst = Utility.getCurrentConditionsUSbyLatLon(self.location)
-            self.objSevenDay = Utility.getCurrentSevenDay(self.location)
-            self.objHazards = Utility.getCurrentHazards(self.location)
+            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.location)
+            self.objSevenDay = ObjectForecastPackage7Day(self.location)
+            self.objHazards = ObjectForecastPackageHazards(self.location)
             DispatchQueue.main.async {
-                _ = ObjectCardCC(self.stackView, self.objFcst, true)
+                _ = ObjectCardCC(self.stackView, self.objCurrentConditions, true)
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
                 _ = ObjectCard7DayCollection(
                     self.stackView,

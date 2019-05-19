@@ -273,6 +273,8 @@ final class UtilityMetarConditions {
         "Thunderstorm in Vicinity Fog": "hi_tsra",
         "Lightning Observed": "hi_tsra",
         "Cumulonimbus Clouds, Lightning Observed": "hi_tsra",
+        "Cumulonimbus Clouds, Towering Cumulus Clouds Observed": "hi_tsra",
+        "Cumulonimbus Clouds Observed": "hi_tsra",
 
         "Funnel Cloud": "fc",
         "Funnel Cloud in Vicinity": "fc",

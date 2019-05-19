@@ -24,7 +24,7 @@ class ViewControllerHOURLY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            (self.html, _) = UtilityUSHourlyV2.getHourlyString(Location.getCurrentLocation())
+            (self.html, _) = UtilityHourly.getHourlyString(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.displayContent()
             }

@@ -73,7 +73,7 @@ class ViewControllerGOES16: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityGOES16.getImage(self.productCode, self.sectorCode)
+            let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
             self.serializeSettings()
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
@@ -89,16 +89,16 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func productClicked() {
-        let list: [String] = [String] (UtilityGOES16.products.keys.sorted())
+        let list: [String] = [String] (UtilityGoes.products.keys.sorted())
         _ = ObjectPopUp(self, "Product Selection", productButton, list, self.productChanged(_:))
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGOES16.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGoes.sectors, self.sectorChanged(_:))
     }
 
     func productChanged(_ index: Int) {
-        productCode = UtilityGOES16.productCodes[index]
+        productCode = UtilityGoes.productCodes[index]
         productButton.title = productCode
         self.getContent()
     }
@@ -117,8 +117,8 @@ class ViewControllerGOES16: UIwXViewController {
         productChanged(
             UtilityUI.sideSwipe(
                 sender,
-                UtilityGOES16.productCodes.firstIndex(of: productCode)!,
-                UtilityGOES16.productCodes
+                UtilityGoes.productCodes.firstIndex(of: productCode)!,
+                UtilityGoes.productCodes
             )
         )
     }
@@ -135,7 +135,7 @@ class ViewControllerGOES16: UIwXViewController {
 
     @objc func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityGOES16.getAnimation(self.productCode, self.sectorCode, frameCount)
+            let animDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }

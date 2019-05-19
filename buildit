@@ -11,10 +11,6 @@ touch doc/ChangeLog.txt
 git commit -a -m "release ${version} commit ${dateString}"
 git push origin master
 
-#cd ..
-#zip -r wXL23_${versionStr}.zip wX -x *.git* > /dev/null
-#cp wXL23_${versionStr}.zip  ${dropBoxPath}/
-
 mkdir ${tmpPath} || exit 1
 cd ${tmpPath} || exit 1
 git clone ${gitRepo}

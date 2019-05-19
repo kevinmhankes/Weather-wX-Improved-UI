@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityNWSGOESFullDisk {
+final class UtilityGoesFullDisk {
 
     static let labels = [
         "GOES East Infrared",
