@@ -26,6 +26,7 @@
 // TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
+// TODO radar - save pref before jumping to dual pane
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
