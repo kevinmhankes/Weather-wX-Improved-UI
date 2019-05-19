@@ -21,24 +21,17 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
-        //initializeObservations()
-        //displayContent()
-        //self.getContent()
     }
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             for index in MyApplication.locations.indices {
                 self.currentConditions.append(ObjectForecastPackageCurrentConditions(index))
-                self.currentConditions[index].formatCC()
-                print(String(index) + " " + self.currentConditions[index].ccLine1)
             }
             DispatchQueue.main.async {
-                print(self.objectCards.count)
-                print(self.self.currentConditions.count)
                 for index in self.objectCards.indices {
-                    self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].ccLine1
-                    MyApplication.locations[index].updateObservation(self.currentConditions[index].ccLine1)
+                    self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
+                    MyApplication.locations[index].updateObservation(self.currentConditions[index].topLine)
                 }
             }
         }

@@ -38,7 +38,7 @@ class MyApplication {
     static let sunMoonDataUrl = "https://api.usno.navy.mil"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
-    static let currentConditionsViaMetar = true
+    //static let currentConditionsViaMetar = true
     static let degreeSymbol = "\u{00B0}"
     static let textviewMagicFudgeFactor: Float = 4.05
     static var deviceScale: Float = 0.0

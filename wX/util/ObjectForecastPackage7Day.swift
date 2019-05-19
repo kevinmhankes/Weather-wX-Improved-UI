@@ -8,59 +8,48 @@ import UIKit
 
 final class ObjectForecastPackage7Day {
 
-    var sevenDayExtStr = ""
+    var sevenDayLong = ""
     var icons = [String]()
     private var shortForecastAl = [String]()
     private var detailedForecastAl = [String]()
     var locationIndex = 0
-    
-    /*if Location.isUS(locNum) {
-    let html = UtilityDownloadNWS.get7DayData(Location.getLatLon(locNum))
-    return ObjectForecastPackage7Day(locNum, html)
-    } else {
-    let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-    return ObjectForecastPackage7Day(locNum, html)
-    }*/
 
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
             let html = UtilityDownloadNws.get7DayData(Location.getLatLon(locNum))
-            sevenDayExtStr = get7DayExt(html)
+            sevenDayLong = get7DayExt(html)
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            sevenDayExtStr = UtilityCanada.get7Day(html)
-            icons = UtilityCanada.getIcons7DayAsList(sevenDayExtStr)
+            sevenDayLong = UtilityCanada.get7Day(html)
+            icons = UtilityCanada.getIcons7DayAsList(sevenDayLong)
             convertExt7DaytoList()
         }
     }
-    
+
     convenience init(_ latLon: LatLon) {
         self.init()
         let html = UtilityDownloadNws.get7DayData(latLon)
-        sevenDayExtStr = get7DayExt(html)
-        //iconsAsString = getIcons7Day(html)
-        //sevenDayLong = get7DayExt(html)
-        //sevenDayShort = get7DayShort(html)
+        sevenDayLong = get7DayExt(html)
     }
 
     convenience init(_ html: String) {
         self.init()
-        sevenDayExtStr = get7DayExt(html)
+        sevenDayLong = get7DayExt(html)
     }
 
-    var fcstList: [String] {
+    var forecastList: [String] {
         return detailedForecastAl
     }
 
-    var fcstListCondensed: [String] {
+    var forecastListCondensed: [String] {
         return shortForecastAl
     }
 
     // Canada
     func convertExt7DaytoList() {
-        detailedForecastAl =  sevenDayExtStr.split(MyApplication.newline + MyApplication.newline)
-        shortForecastAl =  sevenDayExtStr.split(MyApplication.newline + MyApplication.newline)
+        detailedForecastAl =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        shortForecastAl =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
 
     func get7DayExt(_ html: String) -> String {

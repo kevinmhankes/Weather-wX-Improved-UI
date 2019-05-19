@@ -63,7 +63,7 @@ final class ObjectCardCC {
         } else {
             image.view.image = UtilityNWS.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
-                    objCc.data1,
+                    objCc.data,
                     objCc.status
                 )
             ).image
@@ -71,8 +71,8 @@ final class ObjectCardCC {
     }
 
     func setText(_ objCc: ObjectForecastPackageCurrentConditions) {
-        topText.text = objCc.ccLine1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        middleText.text = objCc.ccLine2.trimmingCharacters(in: .whitespaces)
+        topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
         bottomText.text = objCc.rawMetar
     }
 

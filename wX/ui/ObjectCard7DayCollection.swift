@@ -23,8 +23,8 @@ final class ObjectCard7DayCollection {
         let stackViewLocal7Day = ObjectStackViewHS()
         stackViewLocal7Day.setupWithPadding()
         stackView.addArrangedSubview(stackViewLocal7Day)
-        let dayArr = objSevenDay.fcstList
-        let dayArrShort = objSevenDay.fcstListCondensed
+        let dayArr = objSevenDay.forecastList
+        let dayArrShort = objSevenDay.forecastListCondensed
         dayArr.indices.forEach {
             if dayArr[$0] != "" {
                 let obj = ObjectCard7Day(stackViewLocal7Day, $0, objSevenDay.icons, dayArr, dayArrShort, isUS)
@@ -52,8 +52,8 @@ final class ObjectCard7DayCollection {
     }
 
     func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
-        let dayArr = objSevenDay.fcstList
-        let dayArrShort = objSevenDay.fcstListCondensed
+        let dayArr = objSevenDay.forecastList
+        let dayArrShort = objSevenDay.forecastListCondensed
         dayArr.indices.forEach {
             if dayArr[$0] != "" {
                 if sevenDayCardList.count > $0 {

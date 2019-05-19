@@ -551,6 +551,12 @@ class WXMetalRender {
         if timeStr.count > 1 {
             let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
             timeButton.title = text
+            if UtilityTime.isRadarTimeOld(text) {
+                timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
+            } else {
+                timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            }
+
         } else {
             timeButton.title = ""
         }

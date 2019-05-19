@@ -209,7 +209,6 @@
 		F0880EC51E5FBA9800201544 /* UtilityModelsSPCSREFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0880EC41E5FBA9800201544 /* UtilityModelsSPCSREFInterface.swift */; };
 		F08C27D01E86B7DB00D16E9A /* colormaprefgreen.txt in Resources */ = {isa = PBXBuildFile; fileRef = F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */; };
 		F08D61D51DA9D0BB00E8D494 /* ActVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08D61D41DA9D0BB00E8D494 /* ActVars.swift */; };
-		F08E482F1EB0DE70000629DA /* ObjectForecastPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E482E1EB0DE70000629DA /* ObjectForecastPackage.swift */; };
 		F08E48311EB0DF72000629DA /* ObjectForecastPackage7Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */; };
 		F08E48341EB0DF8F000629DA /* ObjectForecastPackageHazards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */; };
 		F08E48351EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */; };
@@ -590,7 +589,6 @@
 		F0880EC41E5FBA9800201544 /* UtilityModelsSPCSREFInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelsSPCSREFInterface.swift; sourceTree = "<group>"; };
 		F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefgreen.txt; sourceTree = "<group>"; };
 		F08D61D41DA9D0BB00E8D494 /* ActVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActVars.swift; sourceTree = "<group>"; };
-		F08E482E1EB0DE70000629DA /* ObjectForecastPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackage.swift; sourceTree = "<group>"; };
 		F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackage7Day.swift; sourceTree = "<group>"; };
 		F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackageHazards.swift; sourceTree = "<group>"; };
 		F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackageCurrentConditions.swift; sourceTree = "<group>"; };
@@ -1039,7 +1037,6 @@
 			children = (
 				F0B3351F1DA3FD2C0035BD36 /* City.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
-				F08E482E1EB0DE70000629DA /* ObjectForecastPackage.swift */,
 				F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */,
@@ -1777,7 +1774,6 @@
 				036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */,
 				F012C9611EB51DAE007CEAD2 /* ObjectNHCStormInfo.swift in Sources */,
 				F0A5EF4B1DB7E8D800FB18BF /* ViewControllerSPCTSTSUMMARY.swift in Sources */,
-				F08E482F1EB0DE70000629DA /* ObjectForecastPackage.swift in Sources */,
 				F0B335D51DA3FDA70035BD36 /* UtilityModelSPCHRRRInterface.swift in Sources */,
 				F08E48341EB0DF8F000629DA /* ObjectForecastPackageHazards.swift in Sources */,
 				F015B8131DACF65700EFE0B4 /* UtilityDownloadRadar.swift in Sources */,

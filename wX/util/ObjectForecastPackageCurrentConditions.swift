@@ -6,12 +6,12 @@
 
 final class ObjectForecastPackageCurrentConditions {
 
-    var data1 = ""
+    var data = ""
     var iconUrl = ""
     private var conditionsTimeStr = ""
     var status = ""
-    var ccLine1 = ""
-    var ccLine2 = ""
+    var topLine = ""
+    var middleLine = ""
     var temperature = ""
     var windChill = ""
     var heatIndex = ""
@@ -31,39 +31,29 @@ final class ObjectForecastPackageCurrentConditions {
             self.init(Location.getLatLon(locNum))
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            self.data1 = UtilityCanada.getConditions(html)
+            self.data = UtilityCanada.getConditions(html)
             self.status = UtilityCanada.getStatus(html)
-            self.formatCC()
         }
+        self.formatCurrentConditions()
     }
 
     // US via LAT LON
     convenience init(_ location: LatLon) {
         self.init()
-        if MyApplication.currentConditionsViaMetar {
-            let tmpArr = getConditionsViaMetar(location)
-            data1 = tmpArr.conditionAsString
-            iconUrl = tmpArr.iconUrl
-            rawMetar = tmpArr.metar
-        } else {
-            let tmpArr = getConditions(location)
-            data1 = tmpArr.conditionAsString
-            iconUrl = tmpArr.iconUrl
-        }
-        if MyApplication.currentConditionsViaMetar {
-            status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
-        } else {
-            status = UtilityObs.getStatus(conditionsTimeStr)
-        }
-        formatCC()
+        let tmpArr = getConditionsViaMetar(location)
+        data = tmpArr.conditionAsString
+        iconUrl = tmpArr.iconUrl
+        rawMetar = tmpArr.metar
+        status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
+        formatCurrentConditions()
     }
 
     // CA
     convenience init(_ html: String) {
         self.init()
-        data1 = UtilityCanada.getConditions(html)
+        data = UtilityCanada.getConditions(html)
         status = UtilityCanada.getStatus(html)
-        formatCC()
+        formatCurrentConditions()
     }
 
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
@@ -97,142 +87,9 @@ final class ObjectForecastPackageCurrentConditions {
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
-    func getConditions(_ location: LatLon) -> (conditionAsString: String, iconUrl: String) {
-        var sb = ""
-        let obsClosest = UtilityObs.getObsFromLatLon(location)
-        let observationData = ("https://api.weather.gov/stations/" + obsClosest +  "/observations/current").getNwsHtml()
-        let icon = observationData.parseFirst("\"icon\": \"(.*?)\",")
-        let condition = observationData.parseFirst("\"textDescription\": \"(.*?)\",")
-        var temperature = observationData.parseFirst("\"temperature\":.*?\"value\": (.*?),")
-        var dewpoint = observationData.parseFirst("\"dewpoint\":.*?\"value\": (.*?),")
-        var windDirection = observationData.parseFirst("\"windDirection\":.*?\"value\": (.*?),")
-        var windSpeed = observationData.parseFirst("\"windSpeed\":.*?\"value\": (.*?),")
-        var windGust = observationData.parseFirst("\"windGust\":.*?\"value\": (.*?),")
-        var seaLevelPressure = observationData.parseFirst("\"barometricPressure\":.*?\"value\": (.*?),")
-        var visibility = observationData.parseFirst("\"visibility\":.*?\"value\": (.*?),")
-        var relativeHumidity = observationData.parseFirst("\"relativeHumidity\":.*?\"value\": (.*?),")
-        var windChill = observationData.parseFirst("\"windChill\":.*?\"value\": (.*?),")
-        var heatIndex = observationData.parseFirst("\"heatIndex\":.*?\"value\": (.*?),")
-        conditionsTimeStr = observationData.parseFirst("\"timestamp\": \"(.*?)\"")
-        if !temperature.contains("NA") &&  temperature != "null" {
-            if let tempD = Double(temperature) {
-                if UIPreferences.unitsF {
-                    temperature = tempD.celsiusToFarenheit()
-                } else {
-                    temperature = tempD.roundToString()
-                }
-            }
-        } else {
-            temperature = "NA"
-        }
-        if !windChill.contains("NA") &&  windChill != "null" {
-            if let tempD = Double(windChill) {
-                if UIPreferences.unitsF {
-                    windChill = tempD.celsiusToFarenheit()
-                } else {
-                    windChill = tempD.roundToString()
-                }
-            }
-        } else {
-            windChill = "NA"
-        }
-        if !heatIndex.contains("NA") &&  heatIndex != "null" {
-            if let tempD = Double(heatIndex) {
-                if UIPreferences.unitsF {
-                    heatIndex = tempD.celsiusToFarenheit()
-                } else {
-                    heatIndex = tempD.roundToString()
-                }
-            }
-        } else {
-            heatIndex = "NA"
-        }
-        if !dewpoint.contains("NA") &&  dewpoint != "null" {
-            if let tempD = Double(dewpoint) {
-                if UIPreferences.unitsF {
-                    dewpoint = tempD.celsiusToFarenheit()
-                } else {
-                    dewpoint = tempD.roundToString()
-                }
-            }
-        } else {
-            dewpoint = "NA"
-        }
-        if !windDirection.contains("NA") &&  windDirection != "null" {
-            if windDirection != "" && windDirection != "null" {
-                windDirection = UtilityMath.convertWindDir(Double(windDirection) ?? 0.0)
-            }
-        } else {
-            windDirection = "NA"
-        }
-        if windSpeed != "null" {
-            if let tempD = Double(windSpeed) {
-                windSpeed = UtilityMath.metersPerSecondtoMph(tempD)
-            } else {
-                windSpeed = "NA"
-            }
-        } else {
-            windSpeed = "NA"
-        }
-        if !relativeHumidity.contains("NA") &&  relativeHumidity != "null" {
-            if let tempD = Double(relativeHumidity) {
-                relativeHumidity = tempD.roundToString()
-            }
-        } else {
-            relativeHumidity = "NA"
-        }
-        if let tempD = Double(visibility) {
-            visibility = UtilityMath.metersToMileRounded(tempD)
-        } else {
-            visibility = "NA"
-        }
-        if let tempD = Double(seaLevelPressure) {
-            if !UIPreferences.unitsM {
-                seaLevelPressure = UtilityMath.pressureMBtoIn(seaLevelPressure)
-            } else {
-                seaLevelPressure = UtilityMath.pressurePAtoMB(tempD) + " mb"
-            }
-        } else {
-            seaLevelPressure = "NA"
-        }
-        if windGust != "null" {
-            if let tempD = Double(windGust) {
-                windGust = UtilityMath.metersPerSecondtoMph(tempD)
-                windGust = "G " + windGust
-            }
-        } else {
-            windGust = ""
-        }
-        self.temperature = temperature + MyApplication.degreeSymbol
-        self.windChill = windChill + MyApplication.degreeSymbol
-        self.heatIndex = heatIndex + MyApplication.degreeSymbol
-        self.dewpoint = dewpoint + MyApplication.degreeSymbol
-        self.relativeHumidity = relativeHumidity + "%"
-        self.seaLevelPressure = seaLevelPressure
-        self.windDirection = windDirection
-        self.windSpeed = windSpeed
-        self.windGust = windGust
-        self.visibility = visibility
-        self.condition = condition
-        sb += temperature
-        sb += MyApplication.degreeSymbol
-        if windChill != "NA" {
-            sb += "(" + windChill + MyApplication.degreeSymbol + ")"
-        } else if heatIndex != "NA" {
-            sb += "(" + heatIndex + MyApplication.degreeSymbol + ")"
-        }
-        sb += " / " + dewpoint + MyApplication.degreeSymbol + "(" + relativeHumidity + "%)" + " - "
-        sb += seaLevelPressure +  " - " + windDirection + " " + windSpeed
-        if windGust != "" {
-            sb += " "
-        }
-        sb += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return (sb, icon)
-    }
-
-    func formatCC() {
+    private func formatCurrentConditions() {
         let sep = " - "
-        var tmpArrCc = data1.split(sep)
+        var tmpArrCc = data.split(sep)
         var retStr = ""
         var retStr2 = ""
         var tempArr = [String]()
@@ -242,7 +99,7 @@ final class ObjectForecastPackageCurrentConditions {
             retStr2 = tempArr[1].replaceAll("^ ", "") + sep + tmpArrCc[1] + sep + tmpArrCc[3] + MyApplication.newline
             retStr2 += status
         }
-        ccLine1 = retStr
-        ccLine2 = retStr2
+        topLine = retStr
+        middleLine = retStr2
     }
 }

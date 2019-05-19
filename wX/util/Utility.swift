@@ -59,25 +59,6 @@ final class Utility {
         return list
     }*/
 
-    /*static func getCurrentConditionsUS(_ locNum: Int) -> ObjectForecastPackage {
-        let objCC = ObjectForecastPackageCurrentConditions(locNum)
-        return ObjectForecastPackage(objCC)
-    }*/
-
-    /*static func getCurrentConditionsCanada(locNum: Int) -> ObjectForecastPackage {
-        let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-        let objCC = ObjectForecastPackageCurrentConditions.createForCanada(html)
-        return ObjectForecastPackage(objCC)
-    }*/
-
-    /*static func getCurrentConditions(_ locNum: Int) -> ObjectForecastPackage {
-        if Location.isUS(locNum) {
-            return getCurrentConditionsUS(locNum)
-        } else {
-            return getCurrentConditionsCanada(locNum)
-        }
-    }*/
-
     static func getCurrentHazards(_ locNum: Int) -> ObjectForecastPackageHazards {
         if Location.isUS(locNum) {
             return ObjectForecastPackageHazards(locNum)
@@ -87,40 +68,9 @@ final class Utility {
         }
     }
 
-    /*static func getCurrentSevenDay(_ locNum: Int) -> ObjectForecastPackage7Day {
-        if Location.isUS(locNum) {
-            let html = UtilityDownloadNWS.get7DayData(Location.getLatLon(locNum))
-            return ObjectForecastPackage7Day(locNum, html)
-        } else {
-            let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            return ObjectForecastPackage7Day(locNum, html)
-        }
-    }*/
-
-    //static func getCurrentSevenDay(_ location: LatLon) -> ObjectForecastPackage7Day {
-        //let sevenDayJson = UtilityDownloadNWS.get7DayJson(location)
-    //    let html = UtilityDownloadNWS.get7DayData(location)
-    //    return ObjectForecastPackage7Day(-1, html)
-    //}
-
-    //static func getCurrentHazards(_ location: LatLon) -> ObjectForecastPackageHazards {
-    //    return ObjectForecastPackageHazards(location)
-    //}
-
-    //static func getCurrentConditionsUSbyLatLon(_ location: LatLon) -> ObjectForecastPackage {
-    //    let objCC = ObjectForecastPackageCurrentConditions(location)
-    //    return ObjectForecastPackage(objCC)
-    //}
-
     static func getHazards(_ url: String) -> String {
         return url.parse("<!-- AddThis Button END -->   <hr /><br />(.*?)</div>")
     }
-
-    /*static func getCurrentConditionsCanada(_ locNum: Int) -> ObjectForecastPackage {
-        let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-        let objCC = ObjectForecastPackageCurrentConditions.createForCanada(html)
-        return ObjectForecastPackage(objCC)
-    }*/
 
     static func safeGet(_ list: [String], _ index: Int) -> String {
         if list.count <= index {

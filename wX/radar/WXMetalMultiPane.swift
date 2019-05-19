@@ -182,6 +182,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
+            timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked(sender:)))
             toolbarButtons.append(timeButton)
         }
         toolbarButtons += [flexBarButton, animateButton, fixedSpace]
@@ -410,6 +411,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         alert.finish()
+    }
+
+    @objc func timeClicked(sender: ObjectToolbarIcon) {
+        ActVars.wxoglPaneCount = "2"
+        let token = "wxmetalradar"
+        self.goToVC(token)
     }
 
     func productChanged(_ index: Int, _ product: String) {
