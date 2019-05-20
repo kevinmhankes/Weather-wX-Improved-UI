@@ -113,7 +113,7 @@ final class UtilityDownload {
             let no = prod.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parseFirst(MyApplication.pre2Pattern)
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }

@@ -275,6 +275,7 @@ final class UtilityMetarConditions {
         "Cumulonimbus Clouds, Lightning Observed": "hi_tsra",
         "Cumulonimbus Clouds, Towering Cumulus Clouds Observed": "hi_tsra",
         "Cumulonimbus Clouds Observed": "hi_tsra",
+        "Towering Cumulus Clouds Observed": "hi_tsra",
 
         "Funnel Cloud": "fc",
         "Funnel Cloud in Vicinity": "fc",

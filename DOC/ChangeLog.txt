@@ -21,7 +21,6 @@
 //        case carriageReturn = "\r"
 //    }
 // TODO stop using R.raw
-// TODO update CPC 3-7day hazard
 // TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
@@ -35,6 +34,10 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+2019_05_20 56002 	[FIX] long press in radar in watch box was not working correctly
+			[REF] better var naming
+			[FIX] fix drought monitor img in wpcImg
+			[FIX] watch data was not showing correct text ( was showing status )
 2019_05_20 56001 	[REF] use static instead of class for static methods
 			[IMP] radar - save pref before jumping to dual pane
 			[FIX] WPC Img - CPC 3-7 and 7-14 outlooks were broke

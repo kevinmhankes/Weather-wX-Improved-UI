@@ -65,7 +65,6 @@ class UtilityWatch {
         case "WATCH":
             textWatNoList = MyApplication.watNoList.value
             mcdNoArr = textWatNoList.split(":")
-            //watchLatLon = MyApplication.watchLatlon.value + MyApplication.watchLatlonTor.value
             watchLatLon = MyApplication.watchLatlonCombined.value
         case "MCD":
             textWatNoList = MyApplication.mcdNoList.value
@@ -80,8 +79,6 @@ class UtilityWatch {
             mcdNoArr = textWatNoList.split(":")
             watchLatLon = MyApplication.watchLatlon.value
         }
-        print(textWatNoList)
-        print(watchLatLon)
         var latlonArr = watchLatLon.split(":")
         var x = [Double]()
         var y = [Double]()

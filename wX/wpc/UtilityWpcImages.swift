@@ -262,7 +262,7 @@ final class UtilityWpcImages {
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/30day/off15_prcp.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/expert_assessment/month_drought.png",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/expert_assessment/sdohomeweb.png",
-        "https://droughtmonitor.unl.edu/data/pngs/current/current_usdm.png",
+        "https://droughtmonitor.unl.edu/data/png/current/current_usdm.png",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f1_wmo.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f2_wmo.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f3_wmo.gif",
