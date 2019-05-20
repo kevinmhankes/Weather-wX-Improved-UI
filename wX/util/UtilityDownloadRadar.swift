@@ -79,6 +79,7 @@ final class UtilityDownloadRadar {
         var watchNumberList = ""
         var watchLatLon = ""
         var watchLatLonTor = ""
+        var watchLatLonCombined = ""
         let mcdList = dataAsString.parseColumn("[om] Watch #([0-9]*?)</a>")
         mcdList.forEach {
             var watchNumber = String(format: "%04d", Int($0) ?? 0)
@@ -88,13 +89,16 @@ final class UtilityDownloadRadar {
             var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + watchNumber + ".html").getHtml()
             watPre2 = UtilityString.parseLastMatch(watPre2, MyApplication.pre2Pattern)
             if watPre.contains("Severe Thunderstorm Watch") || watPre2.contains("SEVERE TSTM") {
+            //if watPre.contains("Tornado Watch") {
                 watchLatLon += storeWatchMcdLatLon(watPre2)
             } else {
                 watchLatLonTor += storeWatchMcdLatLon(watPre2)
             }
+            watchLatLonCombined += storeWatchMcdLatLon(watPre2)
         }
         MyApplication.watchLatlon.value = watchLatLon
         MyApplication.watchLatlonTor.value = watchLatLonTor
+        MyApplication.watchLatlonCombined.value = watchLatLonCombined
         MyApplication.watNoList.value = watchNumberList
     }
 
@@ -102,6 +106,7 @@ final class UtilityDownloadRadar {
         MyApplication.severeDashboardWat.value = ""
         MyApplication.watchLatlon.value = ""
         MyApplication.watchLatlonTor.value = ""
+        MyApplication.watchLatlonCombined.value = ""
         MyApplication.watNoList.value = ""
     }
 
