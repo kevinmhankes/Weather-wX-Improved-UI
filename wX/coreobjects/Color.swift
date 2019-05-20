@@ -21,13 +21,13 @@ final class Color {
     static let CYAN        = -16711681
     static let MAGENTA     = -65281
 
-    class func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Int {
+    static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Int {
         var retVal = 0xFF << 24
         retVal +=  (red << 16) + (green << 8) + blue
         return retVal
     }
 
-    class func rgb(_ red: UInt8, _ green: UInt8, _ blue: UInt8) -> Int {
+    static func rgb(_ red: UInt8, _ green: UInt8, _ blue: UInt8) -> Int {
         var retVal = Int(0xFF) << 24
         retVal += Int(red) << 16
         retVal += Int(green) << 8
@@ -35,26 +35,26 @@ final class Color {
         return retVal
     }
 
-    class func red(_ color: Int) -> UInt8 {
+    static func red(_ color: Int) -> UInt8 {
         return UInt8((color >> 16) & 0xFF)
     }
 
-    class func green(_ color: Int) -> UInt8 {
+    static func green(_ color: Int) -> UInt8 {
         return UInt8(((color >> 8) & 0xFF))
     }
 
-    class func blue(_ color: Int) -> UInt8 {
+    static func blue(_ color: Int) -> UInt8 {
         return UInt8(color & 0xFF)
     }
 
-    class func intToColors(colorInt: Int) -> [Int] {
+    static func intToColors(colorInt: Int) -> [Int] {
         let newRed: Int = (colorInt >> 16) & 0xFF
         let newGreen: Int = (colorInt >> 8) & 0xFF
         let newBlue: Int = colorInt & 0xFF
         return [newRed, newGreen, newBlue]
     }
 
-    class func colorToHsv(_ color: Int, _ hsv: [Double]) -> [Double] {
+    static func colorToHsv(_ color: Int, _ hsv: [Double]) -> [Double] {
         let redInt: Int = ((color >> 16) & 0xFF)
         let greenInt: Int = ((color >> 8) & 0xFF)
         let blueInt: Int = (color & 0xFF)
@@ -70,7 +70,7 @@ final class Color {
         return [Double(hue), Double(saturation), Double(brightness)]
     }
 
-    class func hsvToColor(_ hsv: [Double]) -> Int {
+    static func hsvToColor(_ hsv: [Double]) -> Int {
         let color = UIColor(
             hue: CGFloat(hsv[0]),
             saturation: CGFloat(hsv[1]),

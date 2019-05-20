@@ -38,7 +38,7 @@ public class ExternalPolygon {
      *
      * @return The builder
      */
-    class func  BuilderS() -> Builder {
+    static func  BuilderS() -> Builder {
         return Builder()
     }
 

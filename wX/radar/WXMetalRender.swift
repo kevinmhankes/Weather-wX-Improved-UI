@@ -375,12 +375,31 @@ class WXMetalRender {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
         let radarType = "WXMETAL"
+        print(numberOfPanes)
+        print(index)
         Utility.writePref(radarType + numberOfPanes + "_ZOOM" + index, zoom)
         Utility.writePref(radarType + numberOfPanes + "_X" + index, xPos)
         Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
         Utility.writePref(radarType + numberOfPanes + "_RID" + index, rid)
         Utility.writePref(radarType + numberOfPanes + "_PROD" + index, product)
         Utility.writePref(radarType + numberOfPanes + "_TILT" + index, tiltInt)
+    }
+
+    // This method is called between the transition from single to dual pane
+    // It saves the current specifics about the single pane radar save the product itself
+    func writePrefsForSingleToDualPaneTransition() {
+        let numberOfPanes = "2"
+        //let index = "0"
+        let radarType = "WXMETAL"
+        print(numberOfPanes)
+        print(index)
+        ["0", "1"].forEach {
+            Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
+            Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
+            Utility.writePref(radarType + numberOfPanes + "_Y" + $0, yPos)
+            Utility.writePref(radarType + numberOfPanes + "_RID" + $0, rid)
+            Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
+        }
     }
 
     func readPrefs() {

@@ -162,7 +162,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if RadarPreferences.locdotFollowsGps {
             NotificationCenter.default.addObserver(
                 self,
-                selector: #selector(invalidateGPS),
+                selector: #selector(invalidateGps),
                 name: UIApplication.willResignActiveNotification,
                 object: nil
             )
@@ -416,6 +416,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func timeClicked(sender: ObjectToolbarIcon) {
         ActVars.wxoglPaneCount = "2"
         let token = "wxmetalradar"
+        wxMetal.forEach { $0!.writePrefs() }
+        wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(token)
     }
 
@@ -428,7 +430,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func willEnterForeground() {
         if RadarPreferences.locdotFollowsGps {
-            resumeGPS()
+            resumeGps()
         }
         stopAnimate()
         if wxMetal[0] != nil {
@@ -660,12 +662,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.present(alert, animated: true, completion: nil)
     }
 
-    @objc func invalidateGPS() {
+    @objc func invalidateGps() {
         locationManager.stopUpdatingLocation()
         locationManager.stopMonitoringSignificantLocationChanges()
     }
 
-    func resumeGPS() {
+    func resumeGps() {
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
     }

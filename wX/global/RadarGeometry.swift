@@ -42,7 +42,7 @@ class RadarGeometry {
     static var radarColorObsWindbarbs = 0
     static var radarColorCountyLabels = 0
 
-    class func setColors() {
+    static func setColors() {
         radarColorHw = Utility.readPref("RADAR_COLOR_HW", Color.rgb(135, 135, 135))
         radarColorHwExt = Utility.readPref("RADAR_COLOR_HW_EXT", Color.rgb(91, 91, 91))
         radarColorState = Utility.readPref("RADAR_COLOR_STATE", Color.rgb(142, 142, 142))
@@ -65,7 +65,7 @@ class RadarGeometry {
         radarColorCountyLabels = Utility.readPref("RADAR_COLOR_COUNTY_LABELS", Color.rgb(234, 214, 123))
     }
 
-    class func initialize() {
+    static func initialize() {
         if !RadarPreferences.radarHwEnh {
             hwFileResid = R.Raw.hw
             countHw = 112640
@@ -128,7 +128,7 @@ class RadarGeometry {
         fileidArr.indices.forEach {loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])}
     }
 
-    class func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
+    static func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
         if pref {
             let floatSize: Float = 0.0
             var newArray = [UInt8](repeating: 0, count: count * 4)

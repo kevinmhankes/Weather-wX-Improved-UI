@@ -38,7 +38,6 @@ class MyApplication {
     static let sunMoonDataUrl = "https://api.usno.navy.mil"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
-    //static let currentConditionsViaMetar = true
     static let degreeSymbol = "\u{00B0}"
     static let textviewMagicFudgeFactor: Float = 4.05
     static var deviceScale: Float = 0.0
@@ -68,7 +67,7 @@ class MyApplication {
     static var colorMap = [Int: ObjectColorPalette]()
     static var locations = [Location]()
 
-    class func onCreate() {
+    static func onCreate() {
         initPreferences()
         AppColors.update()
         initData()
@@ -89,13 +88,13 @@ class MyApplication {
         Location.refreshLocationData()
     }
 
-    class func initData() {
+    static func initData() {
         ColorPalettes.initialize()
         RadarGeometry.initialize()
         UtilityCities.initialize()
     }
 
-    class func initPreferences() {
+    static func initPreferences() {
         RadarPreferences.initialize()
         UIPreferences.initialize()
         fixedSpace.width = UIPreferences.toolbarIconSpacing

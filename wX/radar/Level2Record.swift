@@ -87,7 +87,7 @@ final public class Level2Record {
     var reflectHROffset: Int16 = 0
     var velocityHROffset: Int16 = 0
 
-    class func factory(_ din: MemoryBuffer, _ record: Int, _  messageOffset31: CLong) -> Level2Record? {
+    static func factory(_ din: MemoryBuffer, _ record: Int, _  messageOffset31: CLong) -> Level2Record? {
         let offset: CLong = record * radarDataSize + fileHeaderSize + messageOffset31
         if offset >= din.length {
             return nil

@@ -267,8 +267,8 @@ final class UtilityWpcImages {
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f2_wmo.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f3_wmo.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/stratosphere/uv_index/gif_files/uvi_usa_f4_wmo.gif",
-        "https://www.cpc.noaa.gov/products/predictions/threats/hazards_d3_7_contours.png",
-        "https://www.cpc.noaa.gov/products/predictions/threats/hazards_d8_14_contours.png",
+        "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png",
+        "https://www.cpc.ncep.noaa.gov/products/predictions/threats/hazards_d8_14_contours.png",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/precip/CWlink/ghazards/images/gth_full_update.png",
 
         MyApplication.nwsAWCwebsitePrefix + "/adds/data/airmets/airmets_CB.gif",

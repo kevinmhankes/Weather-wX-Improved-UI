@@ -155,19 +155,19 @@ class ObjectMetalBuffers {
         }
     }
 
-    class func redrawTriangle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
+    static func redrawTriangle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         UtilityWXMetalPerf.genTriangle(buffers, pn)
     }
 
-    class func redrawTriangleUp(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
+    static func redrawTriangleUp(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         UtilityWXMetalPerf.genTriangleUp(buffers, pn)
     }
 
-    class func redrawCircle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
+    static func redrawCircle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         UtilityWXMetalPerf.genCircle(buffers, pn)
     }
 
-    class func redrawCircleWithColor(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
+    static func redrawCircleWithColor(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         UtilityWXMetalPerf.genCircleWithColor(buffers, pn)
     }
 }

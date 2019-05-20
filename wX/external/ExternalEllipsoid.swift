@@ -33,7 +33,7 @@ public class ExternalEllipsoid {
     static let Clarke1880: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378249.145, inverseFlattening: 293.465)
     static let Sphere: ExternalEllipsoid = fromAAndF(semiMajor: 6371000, flattening: 0.0)
 
-    class func fromAAndInverseF(semiMajor: Double, inverseFlattening: Double) -> ExternalEllipsoid {
+    static func fromAAndInverseF(semiMajor: Double, inverseFlattening: Double) -> ExternalEllipsoid {
         let f = 1.0 / inverseFlattening
         let b = (1.0 - f) * semiMajor
         return ExternalEllipsoid(semiMajor: semiMajor,
@@ -42,7 +42,7 @@ public class ExternalEllipsoid {
                                  inverseFlattening: inverseFlattening)
     }
 
-    class func fromAAndF(semiMajor: Double, flattening: Double) -> ExternalEllipsoid {
+    static func fromAAndF(semiMajor: Double, flattening: Double) -> ExternalEllipsoid {
         let inverseF = 1.0 / flattening
         let b = (1.0 - flattening) * semiMajor
         return ExternalEllipsoid(semiMajor: semiMajor,
@@ -51,8 +51,20 @@ public class ExternalEllipsoid {
                                  inverseFlattening: inverseF)
     }
 
-    func getSemiMajorAxis() -> Double {return mSemiMajorAxis}
-    func getSemiMinorAxis() -> Double {return mSemiMinorAxis}
-    func getFlattening() -> Double {return mFlattening}
-    func getInverseFlattening() -> Double {return mInverseFlattening}
+    func getSemiMajorAxis() -> Double {
+        return mSemiMajorAxis
+    }
+
+    func getSemiMinorAxis() -> Double {
+        return mSemiMinorAxis
+    }
+
+    func getFlattening() -> Double {
+        return mFlattening
+    }
+
+    func getInverseFlattening() -> Double {
+        return mInverseFlattening
+    }
+
 }

@@ -62,13 +62,13 @@ final class Bitmap {
         return dataBm
     }
 
-    class func createBitmap(width: Int, height: Int, type: Int) -> Bitmap {
+    static func createBitmap(width: Int, height: Int, type: Int) -> Bitmap {
         let rect = CGSize(width: CGFloat(width), height: CGFloat(height))
         let img = Bitmap.imageWithSize(size: rect)
         return Bitmap(img)
     }
 
-    class func createBitmap(bitmap: Bitmap, xPos: Int, yPos: Int, width: Int, height: Int) -> Bitmap {
+    static func createBitmap(bitmap: Bitmap, xPos: Int, yPos: Int, width: Int, height: Int) -> Bitmap {
         let img = UIImage(cgImage: bitmap.image.cgImage!)
         let rect = CGRect(x: CGFloat(xPos), y: CGFloat(yPos), width: CGFloat(width), height: CGFloat(height))
         let imageRef: CGImage = img.cgImage!.cropping(to: rect)!
@@ -91,7 +91,7 @@ final class Bitmap {
         static let ARGB8888 = 0
     }
 
-    class func imageWithSize(
+    static func imageWithSize(
         size: CGSize,
         filledWithColor color: UIColor = UIColor.clear,
         scale: CGFloat = 0.0,
@@ -109,7 +109,7 @@ final class Bitmap {
         return newImage
     }
 
-    class func resize(image: UIImage, ratio: Float) -> Bitmap {
+    static func resize(image: UIImage, ratio: Float) -> Bitmap {
         let originalSize = image.size
         let newSize = CGSize(width: originalSize.width * CGFloat(ratio), height: originalSize.height * CGFloat(ratio))
         // preparing rect for new image size
@@ -122,7 +122,7 @@ final class Bitmap {
         return Bitmap(newImage!)
     }
 
-    class func fromFile(_ filename: String) -> Bitmap {
+    static func fromFile(_ filename: String) -> Bitmap {
         return UtilityIO.readBitmapResourceFromFile(filename)
     }
 }

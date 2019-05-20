@@ -14,7 +14,7 @@ final class Level2Metal {
     static var first = Level2Record()
     static var vcp: Int16 = 0
 
-    class func decode(_ radarBuffers: ObjectMetalRadarBuffers, _ days: MemoryBuffer, _ msecs: MemoryBuffer) {
+    static func decode(_ radarBuffers: ObjectMetalRadarBuffers, _ days: MemoryBuffer, _ msecs: MemoryBuffer) {
         let fileName = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         let velocityProd = (radarBuffers.rd.productCode == 154)
         let dis2 = UtilityIO.readFiletoByteByffer(fileName)

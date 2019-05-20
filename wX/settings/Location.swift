@@ -62,26 +62,26 @@ final class Location {
         Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
     }
 
-    class func addToListOfNames(_ name: String) {
+    static func addToListOfNames(_ name: String) {
         listOf.append(name)
     }
 
-    class func checkCurrentLocationValidity() {
+    static func checkCurrentLocationValidity() {
         if getCurrentLocation() >= MyApplication.locations.count {
             setCurrentLocation(MyApplication.locations.count - 1)
             setCurrentLocationStr(String(currentLocation + 1))
         }
     }
 
-    class func clearListOfNames() {
+    static func clearListOfNames() {
         listOf = []
     }
 
-    class func initNumLocations() {
+    static func initNumLocations() {
         numLocations = Utility.readPref( "LOC_NUM_INT", 1)
     }
 
-    class var numLocations: Int {
+    static var numLocations: Int {
         get {
             return numberOfLocations
         }
@@ -91,24 +91,24 @@ final class Location {
         }
     }
 
-    class func getCurrentLocation() -> Int {
+    static func getCurrentLocation() -> Int {
         return currentLocation
     }
 
-    class func setCurrentLocation(_ currentLocation: Int) {
+    static func setCurrentLocation(_ currentLocation: Int) {
         Location.currentLocation = currentLocation
     }
 
-    class func getCurrentLocationStr() -> String {
+    static func getCurrentLocationStr() -> String {
         return currentLocationStr
     }
 
-    class func setCurrentLocationStr(_ currentLocationStr: String) {
+    static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
         self.currentLocation = Int(currentLocationStr)! - 1
     }
 
-    class func us(_ xStr: String) -> Bool {
+    static func us(_ xStr: String) -> Bool {
         return !xStr.contains("CANADA")
     }
 
@@ -117,7 +117,7 @@ final class Location {
 
     static var name: String {return MyApplication.locations[getCurrentLocation()].name}
 
-    class func getName(_ locNum: Int) -> String {
+    static func getName(_ locNum: Int) -> String {
         return MyApplication.locations[locNum].name
     }
 
@@ -132,11 +132,11 @@ final class Location {
                        MyApplication.locations[getCurrentLocation()].lon)
     }
 
-    class func getX(_ locNum: Int) -> String {
+    static func getX(_ locNum: Int) -> String {
         return MyApplication.locations[locNum].lat
     }
 
-    class func getLatLon(_ locNum: Int) -> LatLon {
+    static func getLatLon(_ locNum: Int) -> LatLon {
         return LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon)
     }
 
@@ -144,7 +144,7 @@ final class Location {
 
     static var y: String {return MyApplication.locations[getCurrentLocation()].lon}
 
-    class func getY(_ locNum: Int) -> String {
+    static func getY(_ locNum: Int) -> String {
         return MyApplication.locations[locNum].lon
     }
 
@@ -152,7 +152,7 @@ final class Location {
 
     static var getLocationIndex: Int {return Location.getCurrentLocation()}
 
-    class func isUS(_ locationNumber: Int) -> Bool {
+    static func isUS(_ locationNumber: Int) -> Bool {
         if locationNumber == -1 {
             return true
         }

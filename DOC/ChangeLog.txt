@@ -20,13 +20,12 @@
 //        case lineFeed = "\n"
 //        case carriageReturn = "\r"
 //    }
-// TODO use static instead of class for static methods
 // TODO stop using R.raw
 // TODO update CPC 3-7day hazard
 // TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
-// TODO radar - save pref before jumping to dual pane
+// TODO radar - if in landscape dual pane radar show radar side by side
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -36,6 +35,9 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+2019_05_20 56001 	[REF] use static instead of class for static methods
+			[IMP] radar - save pref before jumping to dual pane
+			[FIX] WPC Img - CPC 3-7 and 7-14 outlooks were broke
 2019_05_19 56000 	[ADD] add radar beam in long press
 			[IMP] WPC Images - remove experimental forecast characters
 			[FIX] nexrad radar long press, if select a different type of polygon don't show anything

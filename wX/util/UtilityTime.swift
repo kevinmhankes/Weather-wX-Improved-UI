@@ -112,7 +112,7 @@ final class UtilityTime {
         }
         return runs
     }
-    
+
     static func genModelRuns(_ time: String, _ hours: Int, _ dateStr: String) -> [String] {
         let dateFmt = DateFormatter()
         dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
@@ -146,7 +146,7 @@ final class UtilityTime {
     static func currentTimeMillis() -> Int {
         return Int((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
-    
+
     static func getCurrentHourInUTC() -> Int {
         let date = Date()
         var calendar = Calendar.current
