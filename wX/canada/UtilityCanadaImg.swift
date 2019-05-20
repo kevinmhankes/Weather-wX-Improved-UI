@@ -4,6 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+// FIXME rename
 final class UtilityCanadaImg {
 
     static let names = [
@@ -20,7 +21,7 @@ final class UtilityCanadaImg {
         "https://weather.gc.ca/data/satellite/goes_ecan_1070_100.jpg"
     ]
 
-    static let mosaicRids = [
+    static let mosaicSectors = [
         "CAN",
         "PAC",
         "WRN",
@@ -29,7 +30,7 @@ final class UtilityCanadaImg {
         "ERN"
     ]
 
-    static let caRids = [
+    static let radarSites = [
         "WUJ: Aldergrove, BC (near Vancouver)",
         "XPG: Prince George, BC",
         "XSS: Silver Star Mountain, BC (near Vernon)",
@@ -69,7 +70,8 @@ final class UtilityCanadaImg {
         "ERN"
     ]
 
-    static func getGOESAnim(_ url: String) -> AnimationDrawable {
+// FIXME move weather.gc.ca to myapp var
+    static func getGoesAnim(_ url: String) -> AnimationDrawable {
         let region = url.parse("goes_(.*?)_")
         let imgType = url.parse("goes_.*?_(.*?)_")
         let urlAnim = "https://weather.gc.ca/satellite/satellite_anim_e.html?sat=goes&area="

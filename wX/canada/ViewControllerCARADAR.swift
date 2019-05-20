@@ -13,7 +13,7 @@ class ViewControllerCARADAR: UIwXViewController {
     var animateButton = ObjectToolbarIcon()
     var cloudButton = ObjectToolbarIcon()
     var index = 8
-    var rid = "WSO"
+    var radarSite = "WSO"
     var url = "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg"
     var mosaicShown = false
     var startFromMosaic = false

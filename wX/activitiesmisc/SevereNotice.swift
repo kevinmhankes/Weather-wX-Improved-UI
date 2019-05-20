@@ -16,7 +16,7 @@ final class SevereNotice {
         self.type = type
     }
 
-    func getBitmaps(_ dataAsStringMCD: String) {
+    func getBitmaps(_ html: String) {
         var comp = ""
         var url = ""
         var text = ""

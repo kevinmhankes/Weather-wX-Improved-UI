@@ -6,7 +6,7 @@
 
 final class UtilityLightning {
 
-    static let sectorList = [
+    static let sectors = [
         "US",
         "Florida",
         "Texas",
@@ -17,7 +17,7 @@ final class UtilityLightning {
         "New Zealand"
     ]
 
-    static let timeList = [
+    static let times = [
         "15 MIN",
         "2 HR",
         "12 HR",
@@ -62,6 +62,7 @@ final class UtilityLightning {
         return sectorPretty
     }
 
+    // FIXME formatting
     static func getSector(_ sectorPretty: String) -> String {
         let sector: String
         switch sectorPretty {

@@ -17,7 +17,7 @@ final class UtilityCanada {
         "awcn16: Weather Summary N. Alberta"
     ]
 
-    static let provList = [
+    static let providences = [
         "AB: Alberta",
         "BC: British Columbia",
         "MB: Manitoba",
@@ -33,7 +33,7 @@ final class UtilityCanada {
         "YT: Yukon"
     ]
 
-    static let provHash = [
+    static let providenceToMosaicSector = [
         "AB": "PAC",
         "BC": "PAC",
         "MB": "PAC",
@@ -49,7 +49,7 @@ final class UtilityCanada {
         "YT": "CAN"
     ]
 
-    static let provCodes = [
+    static let providenceCodes = [
         "bcstorm: British Columbia",
         "abstorm: Alberta",
         "skstorm: Saskatchewan",
@@ -258,7 +258,7 @@ final class UtilityCanada {
         return newName
     }
 
-    static func getProvHtml(_ prov: String) -> String {
+    static func getProvidenceHtml(_ prov: String) -> String {
         return ("http://weather.gc.ca/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
     }
 
@@ -278,7 +278,7 @@ final class UtilityCanada {
         return html.parse("<b>Observed at:</b>(.*?)<br/>")
     }
 
-    static func getRid(_ lat: String, _ lon: String) -> String {
+    static func getRadarSite(_ lat: String, _ lon: String) -> String {
         let url = "http://weather.gc.ca/city/pages/"
             + lat.split(":")[1].lowercased()
             + "-"
@@ -341,6 +341,7 @@ final class UtilityCanada {
         return sb2
     }
 
+    // FIXME move away from tuple
     static func getHazards(_ html: String) -> (String, String) {
         let baseUrl = "http://weather.gc.ca"
         var result: (String, String) = ("", "")
@@ -390,7 +391,7 @@ final class UtilityCanada {
         return warningData.replace("<div class=\"row\">", "")
     }
 
-    static func getECSectorFromProv(_ prov: String) -> String {
+    static func getECSectorFromProvidence(_ prov: String) -> String {
         return provHash[prov] ?? ""
     }
 

@@ -11,6 +11,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
     var productButton = ObjectToolbarIcon()
     var webView = UIWebView()
     var browserButton = ObjectToolbarIcon()
+    // FIXME rename
     var stateCodeCurrent = ""
     let prefToken = "STATE_CODE"
 

@@ -11,9 +11,9 @@ import MapKit
 class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
 
     var capAlerts = [CAPAlert]()
-    var imgArr = [UIImageView]()
-    var urlArr = [String]()
-    var nwsOffice = ""
+    var images = [UIImageView]()
+    var urls = [String]()
+    var wfo = ""
     var wfoProd = [String]()
     var mapShown = false
     let mapView = MKMapView()

@@ -14,7 +14,7 @@ final class SevereWarning {
         self.type = type
     }
 
-    func generateString(_ textTor: String) {
+    func generateString(_ html: String) {
         var nwsOfficeArr = [String]()
         var nwsOffice = ""
         var nwsLoc = ""

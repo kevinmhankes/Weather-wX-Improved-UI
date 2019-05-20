@@ -11,7 +11,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
-    let prefTokenIdx = "SFC_OBS_IMG_IDX"
+    let prefTokenIndex = "SFC_OBS_IMG_IDX"
 
     override func viewDidLoad() {
         super.viewDidLoad()

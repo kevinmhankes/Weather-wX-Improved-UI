@@ -4,6 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+// FIXME camelcase
 final class CAPAlert {
 
     var text = ""
@@ -11,7 +12,7 @@ final class CAPAlert {
     var summary = ""
     var area = ""
     var instructions = ""
-    private var expireStr = "This alert has expired"
+    private var expireToken = "This alert has expired"
     private var zones = ""
     var vtec = ""
     var url = ""
@@ -50,7 +51,7 @@ final class CAPAlert {
     }
 
     // used by usAlerts
-    convenience init(eventTxt: String) {
+    convenience init(eventText: String) {
         self.init()
         url = eventTxt.parse("<id>(.*?)</id>")
         title  = eventTxt.parse("<title>(.*?)</title>")

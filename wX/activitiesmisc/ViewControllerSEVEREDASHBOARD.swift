@@ -12,7 +12,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     let snWat = SevereNotice("wat")
     let snMcd = SevereNotice("mcd")
     let snMpd = SevereNotice("mpd")
-    var bm = Bitmap()
+    var bitmap = Bitmap()
 
     override func viewDidLoad() {
         super.viewDidLoad()
