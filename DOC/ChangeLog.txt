@@ -11,7 +11,6 @@
 // TODO make option to scale homescreen images ( like radar mosaic )
 // TODO spotters?
 // TODO color palette editor
-// TODO FAB in playlist
 // TODO uswarn - add total warning count
 // TODO uswarn - Uswarn add long press: nexrad, mosaic, save location
 // TODO use enum for utilityaction ( below )
@@ -25,6 +24,10 @@
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
 // TODO radar - if in landscape dual pane radar show radar side by side
+// [BUG] screen is not staying on when configured to do so
+//   https://stackoverflow.com/questions/54002649/ios-swift-uiapplication-shared-isidletimerdisabled-true-not-working-after-revi
+// TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
+//			http://swiftdeveloperblog.com/code-examples/create-uislider-programmatically-in-swift/
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items

@@ -84,7 +84,7 @@ final class ObjectNHC: NSObject {
                     _ = ObjectTextView(
                         stackView,
                         text,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoATLNHCStorm(sender:)))
+                        UITapGestureRecognizerWithData($0, self, #selector(gotoAtlNhcStorm(sender:)))
                     )
                 }
             }
@@ -99,7 +99,7 @@ final class ObjectNHC: NSObject {
                     _ = ObjectTextView(
                         stackView,
                         text,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoEPACNHCStorm(sender:)))
+                        UITapGestureRecognizerWithData($0, self, #selector(gotoEpacNhcStorm(sender:)))
                     )
                 }
             }
@@ -107,7 +107,7 @@ final class ObjectNHC: NSObject {
         bitmaps.forEach {_ = ObjectImage(stackView, $0)}
     }
 
-    @objc func gotoEPACNHCStorm(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         ActVars.nhcStormUrl = pacLinkList[index]
         ActVars.nhcStormTitle = pacTitleList[index]
@@ -117,7 +117,7 @@ final class ObjectNHC: NSObject {
         uiv.goToVC("nhcstorm")
     }
 
-    @objc func gotoATLNHCStorm(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         ActVars.nhcStormUrl = atlLinkList[index]
         ActVars.nhcStormTitle = atlTitleList[index]
