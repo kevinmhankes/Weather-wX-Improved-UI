@@ -30,7 +30,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")
             let alertArr = html.parseColumn("<entry>(.*?)</entry>")
-            alertArr.forEach {self.capAlerts.append(CAPAlert(eventTxt: $0))}
+            alertArr.forEach {self.capAlerts.append(CAPAlert(eventText: $0))}
             DispatchQueue.main.async {
                 self.displayContent()
             }

@@ -391,8 +391,8 @@ final class UtilityCanada {
         return warningData.replace("<div class=\"row\">", "")
     }
 
-    static func getECSectorFromProvidence(_ prov: String) -> String {
-        return provHash[prov] ?? ""
+    static func getECSectorFromProvidence(_ providence: String) -> String {
+        return providenceToMosaicSector[providence] ?? ""
     }
 
     static func isLabelPresent(_ label: String) -> Bool {

@@ -22,7 +22,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        self.index = Utility.readPref(prefTokenIdx, 0)
+        self.index = Utility.readPref(prefTokenIndex, 0)
         self.getContent(index)
     }
 
@@ -33,7 +33,7 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
             let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                Utility.writePref(self.prefTokenIdx, self.index)
+                Utility.writePref(self.prefTokenIndex, self.index)
             }
         }
     }

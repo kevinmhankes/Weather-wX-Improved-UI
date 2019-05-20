@@ -58,7 +58,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            GlobalArrays.states + UtilityCanada.provCodes,
+            GlobalArrays.states + UtilityCanada.providenceCodes,
             self.productChanged(_:)
         )
     }

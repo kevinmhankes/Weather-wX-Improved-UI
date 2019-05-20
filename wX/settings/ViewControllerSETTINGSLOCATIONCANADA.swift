@@ -26,7 +26,7 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     }
 
     func showDisplayProv() {
-        UtilityCanada.provList.enumerated().forEach {
+        UtilityCanada.providences.enumerated().forEach {
             self.textViews.append(
                 ObjectTextView(
                     self.stackView, $1,
@@ -40,7 +40,7 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
     @objc func gotoProv(sender: UITapGestureRecognizerWithData) {
         let position = sender.data
         if !cityDisplay {
-            provSelected = UtilityCanada.provList[position].truncate(2)
+            provSelected = UtilityCanada.providences[position].truncate(2)
             statusButton.title = "Canadian Locations (" + provSelected + ")"
             getContent()
         } else {
@@ -60,7 +60,7 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityCanada.getProvHtml(self.provSelected)
+            let html = UtilityCanada.getProvidenceHtml(self.provSelected)
             let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/"
                 + self.provSelected.lowercased()
                 + "-(.*?)_metric_e.html\">.*?</a></li>")

@@ -23,7 +23,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.wfos, "NWS_")
-        nwsOffice = Location.wfo
+        wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -41,14 +41,14 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
 
     func warningSelected(sender: UITapGestureRecognizer) {
         let tv1 = sender.view!
-        ActVars.usalertsDetailUrl = urlArr[tv1.tag]
+        ActVars.usalertsDetailUrl = urls[tv1.tag]
         self.goToVC("usalertsdetail")
     }
 
     func getLSRFromWFO() -> [String] {
         var lsrArr = [String]()
-        let html = ("http://forecast.weather.gov/product.php?site=" + nwsOffice + "&issuedby="
-            + nwsOffice + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
+        let html = ("http://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
+            + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {
             lsrArr.append("None issued by this office recently.")
@@ -58,7 +58,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
                 maxVers = 30
             }
             stride(from: 1, to: maxVers, by: 2).forEach {
-                lsrArr.append(UtilityDownload.getTextProductWithVersion("LSR" + nwsOffice, $0))
+                lsrArr.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, $0))
             }
         }
         return lsrArr
@@ -87,12 +87,12 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
     }
 
     func mapCall(annotationView: MKAnnotationView) {
-        self.nwsOffice = (annotationView.annotation!.title!)!
+        self.wfo = (annotationView.annotation!.title!)!
         self.getContent()
     }
 
     private func displayContent() {
-        self.siteButton.title = self.nwsOffice
+        self.siteButton.title = self.wfo
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         self.wfoProd.forEach {_ = ObjectTextView(self.stackView, $0)}
     }

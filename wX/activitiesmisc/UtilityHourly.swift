@@ -42,7 +42,7 @@ final class UtilityHourly {
 
     // FIXME move away from tuple
     static func getHourlyString(_ locationNumber: Int) -> (String, String) {
-        let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locNumber))
+        let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
         let header = fixedLengthString("Time", 7) + fixedLengthString("T", 4)
             + fixedLengthString("Wind", 8) + fixedLengthString("WindDir", 6) +  MyApplication.newline
         let footer = getFooter()
@@ -84,7 +84,7 @@ final class UtilityHourly {
     }
 
     static func shortenConditions(_ string: String) -> String {
-        var hourly = str
+        var hourly = string
         hourlyAbbreviationsFirst.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsFirst[$0]!)}
         hourlyAbbreviationsSecond.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsSecond[$0]!)}
         return hourly

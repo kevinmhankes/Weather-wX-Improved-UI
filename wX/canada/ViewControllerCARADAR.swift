@@ -44,13 +44,13 @@ class ViewControllerCARADAR: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar)
         url = Utility.readPref("CA_LAST_RID_URL", url)
         if ActVars.caRadarProv == "" {
-            rid = Utility.readPref("CA_LAST_RID", rid)
+            radarSite = Utility.readPref("CA_LAST_RID", radarSite)
         } else {
-            rid = String(ActVars.caRadarProv)
+            radarSite = String(ActVars.caRadarProv)
             mosaicShown = true
         }
         if !RadarPreferences.wxoglRememberLocation {
-            rid = Location.rid
+            radarSite = Location.rid
         }
         self.getContent()
     }
@@ -59,18 +59,18 @@ class ViewControllerCARADAR: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
             if ActVars.caRadarImageType == "radar" {
-                bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.rid, "")
+                bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.radarSite, "")
             } else {
                 bitmap = Bitmap(self.url)
             }
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.productButton.title = self.rid
+                self.productButton.title = self.radarSite
                 if !self.startFromMosaic {
-                    Utility.writePref("CA_LAST_RID", self.rid)
+                    Utility.writePref("CA_LAST_RID", self.radarSite)
                     Utility.writePref("CA_LAST_RID_URL", self.url)
                 }
-                if UtilityCanadaImg.mosaicRids.contains(self.rid) {
+                if UtilityCanadaImg.mosaicSectors.contains(self.radarSite) {
                     self.mosaicShown = true
                 } else {
                     self.mosaicShown = false
@@ -84,12 +84,12 @@ class ViewControllerCARADAR: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.caRids, self.productChanged(_:))
+        _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.radarSites, self.productChanged(_:))
     }
 
     func productChanged(_ index: Int) {
         ActVars.caRadarImageType = "radar"
-        rid = UtilityCanadaImg.caRids[index].split(":")[0]
+        radarSite = UtilityCanadaImg.radarSites[index].split(":")[0]
         self.getContent()
     }
 
@@ -106,12 +106,12 @@ class ViewControllerCARADAR: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             if ActVars.caRadarImageType == "radar" {
                 if !self.mosaicShown {
-                    animDrawable = UtilityCanadaImg.getRadarAnimOptionsApplied(self.rid, frameCnt)
+                    animDrawable = UtilityCanadaImg.getRadarAnimOptionsApplied(self.radarSite, frameCnt)
                 } else {
-                    animDrawable = UtilityCanadaImg.getRadarMosaicAnimation(self.rid, frameCnt)
+                    animDrawable = UtilityCanadaImg.getRadarMosaicAnimation(self.radarSite, frameCnt)
                 }
             } else {
-                animDrawable = UtilityCanadaImg.getGOESAnim(self.url)
+                animDrawable = UtilityCanadaImg.getGoesAnim(self.url)
             }
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)

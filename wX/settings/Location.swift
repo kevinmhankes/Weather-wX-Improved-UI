@@ -235,7 +235,7 @@ final class Location {
             Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latString)
             Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonString)
             Location.numLocations = locNumToSave
-            radarSite = UtilityCanada.getRid(latLon.latString, latLon.lonString)
+            radarSite = UtilityCanada.getRadarSite(latLon.latString, latLon.lonString)
             Utility.writePref("RID" + locNum, rid.uppercased())
             Utility.writePref("NWS" + locNum + "_STATE", prov)
             Utility.writePref("ZONE" + locNum, "")

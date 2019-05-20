@@ -36,11 +36,11 @@ final class UtilityTTSTranslations {
 				.replace("`", "")
 				.replace("-", " - ")
 				.replace("$$", " ")
-		return tranlasteAbbrevChunk(string)
+		return tranlasteAbbreviationsChunk(string)
 	}
 
 	static func tranlasteAbbreviationsForVisual(_ text: String) -> String {
-        return tranlasteAbbrevChunk(text.replace("&nbsp", " "))
+        return tranlasteAbbreviationsChunk(text.replace("&nbsp", " "))
     }
 
 	static func tranlasteAbbreviationsChunk(_ text: String) -> String {

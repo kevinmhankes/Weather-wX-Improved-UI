@@ -26,14 +26,14 @@ final class SevereNotice {
         case "mpd": comp = "No MPDs are currently in effect."
         default: break
         }
-        if !dataAsStringMCD.contains(comp) {
+        if !html.contains(comp) {
             switch type {
             case "mcd": break
             case "wat": break
             case "mpd": break
             default:    break
             }
-            text = dataAsStringMCD
+            text = html
         } else {
             text = ""
         }

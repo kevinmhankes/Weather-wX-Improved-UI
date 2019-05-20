@@ -18,7 +18,7 @@ final class SevereWarning {
         var nwsOfficeArr = [String]()
         var nwsOffice = ""
         var nwsLoc = ""
-        let warningArr = textTor.parseColumn(WXGLPolygonWarnings.pVtec)
+        let warningArr = html.parseColumn(WXGLPolygonWarnings.pVtec)
         warningArr.forEach {
             count += 1
             text += $0

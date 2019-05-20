@@ -25,7 +25,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
-            self.bm = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
+            self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
             self.snWat.getBitmaps(MyApplication.watNoList.value)
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
@@ -82,14 +82,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, [self.bm] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
+        UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
 
     private func displayContent() {
         self.showTextWarnings()
         _ = ObjectImage(
             self.stackView,
-            bm,
+            bitmap,
             UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:)))
         )
         var index = 0

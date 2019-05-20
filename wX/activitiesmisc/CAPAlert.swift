@@ -53,17 +53,17 @@ final class CAPAlert {
     // used by usAlerts
     convenience init(eventText: String) {
         self.init()
-        url = eventTxt.parse("<id>(.*?)</id>")
-        title  = eventTxt.parse("<title>(.*?)</title>")
-        summary = eventTxt.parse("<summary>(.*?)</summary>")
-        instructions = eventTxt.parse("</description>.*?<instruction>(.*?)</instruction>.*?<areaDesc>")
-        area = eventTxt.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")
+        url = eventText.parse("<id>(.*?)</id>")
+        title  = eventText.parse("<title>(.*?)</title>")
+        summary = eventText.parse("<summary>(.*?)</summary>")
+        instructions = eventText.parse("</description>.*?<instruction>(.*?)</instruction>.*?<areaDesc>")
+        area = eventText.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")
         area = area.replace("&apos;", "'")
-        effective = eventTxt.parse("<cap:effective>(.*?)</cap:effective>")
-        expires = eventTxt.parse("<cap:expires>(.*?)</cap:expires>")
-        event = eventTxt.parse("<cap:event>(.*?)</cap:event>")
-        vtec = eventTxt.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
-        zones = eventTxt.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
+        effective = eventText.parse("<cap:effective>(.*?)</cap:effective>")
+        expires = eventText.parse("<cap:expires>(.*?)</cap:expires>")
+        event = eventText.parse("<cap:event>(.*?)</cap:event>")
+        vtec = eventText.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
+        zones = eventText.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
         text = "<h4><b>"
         text += title
         text += "</b></h4>"

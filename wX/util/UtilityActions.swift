@@ -90,7 +90,7 @@ final class UtilityActions {
                 }
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
-                ActVars.caRadarProv = UtilityCanada.getECSectorFromProv(prov)
+                ActVars.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
                 ActVars.caRadarImageType = "radar"
                 token = "caradar"
             }
@@ -185,7 +185,7 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !globalSynth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbrev(textView.text))
+            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(textView.text))
             globalSynth.speak(myUtterance)
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else if globalSynth.isPaused {
@@ -201,7 +201,7 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !globalSynth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbrev(str))
+            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(str))
             globalSynth.speak(myUtterance)
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else if globalSynth.isPaused {
@@ -216,7 +216,7 @@ final class UtilityActions {
     static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbrev(str))
+        myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(str))
         globalSynth.speak(myUtterance)
         playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
     }

@@ -64,22 +64,22 @@ class ViewControllerLIGHTNING: UIwXViewController {
     }
 
     @objc func prodClicked() {
-        _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectorList, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
     }
 
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, "Time Selection", timeButton, UtilityLightning.timeList, self.timeChanged(_:))
+        _ = ObjectPopUp(self, "Time Selection", timeButton, UtilityLightning.times, self.timeChanged(_:))
     }
 
     func sectorChanged(_ idx: Int) {
         firstRun = true
-        self.sectorPretty = UtilityLightning.sectorList[idx]
+        self.sectorPretty = UtilityLightning.sectors[idx]
         self.sector = UtilityLightning.getSector(self.sectorPretty)
         self.getContent()
     }
 
     func timeChanged(_ index: Int) {
-        self.periodPretty = UtilityLightning.timeList[index]
+        self.periodPretty = UtilityLightning.times[index]
         self.period = UtilityLightning.getTime(self.periodPretty)
         self.getContent()
     }
