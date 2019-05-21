@@ -29,6 +29,7 @@
 // TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
 //			http://swiftdeveloperblog.com/code-examples/create-uislider-programmatically-in-swift/
 // TODO portrait dual pane transition does not appropriately center
+// TODO mem buffer - change from read to get to match kotlin
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
