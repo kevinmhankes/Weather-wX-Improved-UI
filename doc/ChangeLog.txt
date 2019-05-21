@@ -30,6 +30,7 @@
 //			http://swiftdeveloperblog.com/code-examples/create-uislider-programmatically-in-swift/
 // TODO portrait dual pane transition does not appropriately center
 // TODO mem buffer - change from read to get to match kotlin
+// TODO nexrad radar in landscape single to dual pane does not keep centered
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
