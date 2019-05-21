@@ -37,6 +37,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+2019_05_21 56003 	[IMP] dual pane radar in portrait now shows panes left to right
 2019_05_20 56002 	[FIX] long press in radar in watch box was not working correctly
 			[REF] better var naming
 			[FIX] fix drought monitor img in wpcImg

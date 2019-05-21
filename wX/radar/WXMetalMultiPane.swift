@@ -87,20 +87,45 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 height: height
             )
         } else if numberOfPanes == 2 {
-            // top half for dual
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: screenWidth,
-                height: halfHeight
-            )
-            // bottom half for dual
-            metalLayer[1]!.frame = CGRect(
-                x: 0,
-                y: halfHeight,
-                width: screenWidth,
-                height: halfHeight
-            )
+            if UtilityUI.isLandscape() {
+                surfaceRatio = Float(screenWidth) / Float(screenHeight)
+                projectionMatrix = Matrix4.makeOrthoViewAngle(
+                    -1.0 * ortInt,
+                    right: ortInt,
+                    bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
+                    top: ortInt * (1 / surfaceRatio),
+                    nearZ: -100.0,
+                    farZ: 100.0
+                )
+                // left half for dual
+                metalLayer[0]!.frame = CGRect(
+                    x: 0,
+                    y: 0,
+                    width: screenWidth,
+                    height: height
+                )
+                // right half for dual
+                metalLayer[1]!.frame = CGRect(
+                    x: halfWidth,
+                    y: 0,
+                    width: screenWidth,
+                    height: height
+                )
+            } else {
+                metalLayer[0]!.frame = CGRect(
+                    x: 0,
+                    y: 0,
+                    width: screenWidth,
+                    height: halfHeight
+                )
+                // bottom half for dual
+                metalLayer[1]!.frame = CGRect(
+                    x: 0,
+                    y: halfHeight,
+                    width: screenWidth,
+                    height: halfHeight
+                )
+            }
         } else if numberOfPanes == 4 {
             // top half for quad
             metalLayer[0]!.frame = CGRect(

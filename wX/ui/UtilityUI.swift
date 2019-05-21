@@ -112,4 +112,20 @@ public class UtilityUI {
         //print(nativeBounds)
         //print(bounds)
     }
+
+    static func isLandscape() -> Bool {
+        var landscape = false
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+            //print("Landscape Left")
+            landscape = true
+        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight{
+            //print("Landscape Right")
+            landscape = true
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown {
+            //print("Portrait Upside Down")
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            //print("Portrait")
+        }
+        return landscape
+    }
 }
