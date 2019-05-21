@@ -118,7 +118,7 @@ public class UtilityUI {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
             //print("Landscape Left")
             landscape = true
-        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight{
+        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
             //print("Landscape Right")
             landscape = true
         } else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown {

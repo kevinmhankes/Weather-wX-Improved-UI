@@ -375,8 +375,6 @@ class WXMetalRender {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
         let radarType = "WXMETAL"
-        print(numberOfPanes)
-        print(index)
         Utility.writePref(radarType + numberOfPanes + "_ZOOM" + index, zoom)
         Utility.writePref(radarType + numberOfPanes + "_X" + index, xPos)
         Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
@@ -391,8 +389,6 @@ class WXMetalRender {
         let numberOfPanes = "2"
         //let index = "0"
         let radarType = "WXMETAL"
-        print(numberOfPanes)
-        print(index)
         ["0", "1"].forEach {
             Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
             Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
