@@ -28,6 +28,7 @@
 //   https://stackoverflow.com/questions/54002649/ios-swift-uiapplication-shared-isidletimerdisabled-true-not-working-after-revi
 // TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
 //			http://swiftdeveloperblog.com/code-examples/create-uislider-programmatically-in-swift/
+// TODO portrait dual pane transition does not appropriately center
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -38,6 +39,7 @@
 [MER] - merge
 
 2019_05_21 56003 	[IMP] dual pane radar in portrait now shows panes left to right
+			[FIX] NHC Storm images were showing as blank (86 in size)
 2019_05_20 56002 	[FIX] long press in radar in watch box was not working correctly
 			[REF] better var naming
 			[FIX] fix drought monitor img in wpcImg

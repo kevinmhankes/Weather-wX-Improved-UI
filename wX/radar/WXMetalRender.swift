@@ -18,7 +18,7 @@ class WXMetalRender {
     var rotationX: Float = 0.0
     var rotationY: Float = 0.0
     var rotationZ: Float = 0.0
-    var scale: Float     = 1.0
+    var scale: Float = 1.0
     var pn = ProjectionNumbers()
     var ridStr = "DTX"
     var rdDownload = WXGLDownload()

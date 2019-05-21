@@ -75,7 +75,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
             self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {
                 self.tv.text = html
-                self.bitmaps.filter {($0.isValid)}.forEach {_ = ObjectImage(self.stackView, $0)}
+                self.bitmaps.filter {($0.isValidForNhc)}.forEach {_ = ObjectImage(self.stackView, $0)}
                 self.view.bringSubviewToFront(self.toolbar)
             }
         }
