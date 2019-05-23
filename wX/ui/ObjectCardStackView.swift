@@ -28,4 +28,8 @@ final class ObjectCardStackView {
     var view: StackView {
         return stackView
     }
+
+    func setAxis(_ axis: NSLayoutConstraint.Axis) {
+        stackView.axis = axis
+    }
 }

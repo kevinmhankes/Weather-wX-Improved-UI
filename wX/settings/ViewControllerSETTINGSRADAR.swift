@@ -146,6 +146,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                 )
             }
         }
+        ObjectSlider(self, stackView, "RADAR_LOCDOT_SIZE", UtilitySettingsRadar.picker, UtilitySettingsRadar.pickerinit)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

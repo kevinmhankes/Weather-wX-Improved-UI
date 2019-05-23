@@ -73,6 +73,7 @@
 		03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */; };
 		03AB4AAB21AE161C0037633A /* Level2Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AAA21AE161C0037633A /* Level2Metal.swift */; };
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
+		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
@@ -446,6 +447,7 @@
 		03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL2.swift; sourceTree = "<group>"; };
 		03AB4AAA21AE161C0037633A /* Level2Metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2Metal.swift; sourceTree = "<group>"; };
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
+		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
@@ -1195,6 +1197,7 @@
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
 				F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */,
 				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
+				03BF9A412296798B00203B26 /* ObjectSlider.swift */,
 				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
 				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
 				03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */,
@@ -1651,6 +1654,7 @@
 				F0B335181DA3FD1C0035BD36 /* SevereNotice.swift in Sources */,
 				F085F4091DC5615600477188 /* ViewControllerOBSSITES.swift in Sources */,
 				F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */,
+				03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */,
 				F059990F1EB422D200EECC32 /* ObjectAlertSummary.swift in Sources */,
 				F07482D41E793E2F0072F96D /* ObjectStackViewHS.swift in Sources */,
 				F0B335B41DA3FD960035BD36 /* UtilityModelGLCFSInterface.swift in Sources */,
