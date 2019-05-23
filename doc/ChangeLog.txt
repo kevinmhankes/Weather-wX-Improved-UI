@@ -28,6 +28,8 @@
 //   https://stackoverflow.com/questions/54002649/ios-swift-uiapplication-shared-isidletimerdisabled-true-not-working-after-revi
 // TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
 // TODO portrait dual pane transition does not appropriately center
+// TODO mem buffer - change from read to get to match kotlin
+// TODO nexrad radar in landscape single to dual pane does not keep centered
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -36,6 +38,8 @@
 [FIX] - bug fixes
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
+
+Last app store release: 55990
 
 2019_05_23 56004 	[ADD] ObjectSlider and test in settings -> radar
 2019_05_21 56003 	[IMP] dual pane radar in portrait now shows panes left to right
