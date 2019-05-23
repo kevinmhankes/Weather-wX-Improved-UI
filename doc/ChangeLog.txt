@@ -24,8 +24,7 @@
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
 // TODO radar - if in landscape dual pane radar show radar side by side
-// [BUG] screen is not staying on when configured to do so
-//   https://stackoverflow.com/questions/54002649/ios-swift-uiapplication-shared-isidletimerdisabled-true-not-working-after-revi
+// [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
 // TODO portrait dual pane transition does not appropriately center
 // TODO mem buffer - change from read to get to match kotlin
