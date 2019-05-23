@@ -30,6 +30,7 @@
 // TODO mem buffer - change from read to get to match kotlin
 // TODO nexrad radar in landscape single to dual pane does not keep centered
 // TODO [IMP] SPC Meso add "850mb Analysis (version 2)" (850mb2) under "Upper Air"
+// TODO BUG dual pane does not show radar time
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
