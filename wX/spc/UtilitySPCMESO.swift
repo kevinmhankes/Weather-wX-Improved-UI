@@ -414,6 +414,7 @@ final class UtilitySPCMESO {
     static let paramUpperAir = [
         "925mb: 925mb Analysis",
         "850mb: 850mb Analysis",
+        "850mb2: 850mb Analysis (version 2)",
         "700mb: 700mb Analysis",
         "500mb: 500mb Analysis",
         "300mb: 300mb Analysis",
