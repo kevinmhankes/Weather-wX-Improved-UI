@@ -88,7 +88,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             )
         } else if numberOfPanes == 2 {
             if UtilityUI.isLandscape() {
-                surfaceRatio = Float(screenWidth) / Float(screenHeight)
+                surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight)
                 projectionMatrix = Matrix4.makeOrthoViewAngle(
                     -1.0 * ortInt,
                     right: ortInt,
@@ -101,14 +101,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 metalLayer[0]!.frame = CGRect(
                     x: 0,
                     y: 0,
-                    width: screenWidth,
+                    width: screenWidth / 2.0,
                     height: height
                 )
                 // right half for dual
                 metalLayer[1]!.frame = CGRect(
                     x: halfWidth,
                     y: 0,
-                    width: screenWidth,
+                    width: screenWidth / 2.0,
                     height: height
                 )
             } else {
