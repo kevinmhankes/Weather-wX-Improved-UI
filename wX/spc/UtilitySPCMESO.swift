@@ -20,6 +20,7 @@ final class UtilitySPCMESO {
         "thte_chg",
         "925mb",
         "850mb",
+        "850mb2",
         "700mb",
         "500mb",
         "300mb",
@@ -58,7 +59,7 @@ final class UtilitySPCMESO {
     static let titles = [
         ObjectMenuTitle("Observations", 3),
         ObjectMenuTitle("Surface", 15),
-        ObjectMenuTitle("Upper Air", 24), // 1
+        ObjectMenuTitle("Upper Air", 25),
         ObjectMenuTitle("Thermodynamics", 19),
         ObjectMenuTitle("Wind Shear", 18), // 1
         ObjectMenuTitle("Composite Indices", 21),
@@ -93,6 +94,7 @@ final class UtilitySPCMESO {
 
         "925mb",
         "850mb",
+        "850mb2",
         "700mb",
         "500mb",
         "300mb",
@@ -258,6 +260,7 @@ final class UtilitySPCMESO {
 
         "925mb Analysis",
         "850mb Analysis",
+        "850mb Analysis (version 2)",
         "700mb Analysis",
         "500mb Analysis",
         "300mb Analysis",
