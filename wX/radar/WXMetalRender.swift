@@ -563,9 +563,12 @@ class WXMetalRender {
 
     func showTimeToolbar(_ additionalText: String) {
         var timeStr = Utility.readPref("WX_RADAR_CURRENT_INFO", "").split(" ")
+        print("TIME STR:")
+        print(timeStr)
         if timeStr.count > 1 {
             let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
             timeButton.title = text
+            print(text)
             if UtilityTime.isRadarTimeOld(text) {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
             } else {

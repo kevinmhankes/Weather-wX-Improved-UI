@@ -209,6 +209,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if numberOfPanes == 1 {
             timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked(sender:)))
             toolbarButtons.append(timeButton)
+        } else {
+            toolbarButtons.append(timeButton)
         }
         toolbarButtons += [flexBarButton, animateButton, fixedSpace]
         paneRange.forEach {
