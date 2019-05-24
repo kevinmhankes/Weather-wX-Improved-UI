@@ -20,19 +20,23 @@ final class ObjectSlider {
         _ pickerInit: [String: Int]
     ) {
         let label = pickerMap[prefVar]!
+        let initialValue = Float(Utility.readPref(prefVar, pickerInit[prefVar]!))
         slider = UISlider(frame: CGRect(x: 10, y: 100, width: 300, height: 20))
         slider.minimumValue = 0
-        slider.value = Float(Utility.readPref(prefVar, pickerInit[prefVar]!))
+        //slider.value = Float(Utility.readPref(prefVar, pickerInit[prefVar]!))
+        //print(Float(Utility.readPref(prefVar, pickerInit[prefVar]!)))
         slider.maximumValue = 100
         slider.isContinuous = true
         slider.thumbTintColor = AppColors.primaryColorFab
-        button.setTitle(label + ": " + String(Int(slider.value)), for: .normal)
+        button.setTitle(label + ": " + String(initialValue), for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = UIColor.white
         //slider.addTarget(uiv, action: #selector(uiv.sliderValueDidChange(_:)), for: .valueChanged)
         let container = ObjectCardStackView(arrangedSubviews: [button, slider])
         //container.setAxis(.vertical)
         stackView.addArrangedSubview(container.view)
+        slider.value = initialValue
+
     }
 
     /*@objc static func sliderValueDidChange(_ sender: UISlider!) {
