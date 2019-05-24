@@ -9,6 +9,7 @@ import UIKit
 final class ObjectSlider {
 
     let button = UIButton(type: UIButton.ButtonType.system)
+    let slider: UISlider
     let step: Float = 1 // If you want UISlider to snap to steps by 10
 
     init(
@@ -19,7 +20,7 @@ final class ObjectSlider {
         _ pickerInit: [String: Int]
     ) {
         let label = pickerMap[prefVar]!
-        let slider = UISlider(frame: CGRect(x: 10, y: 100, width: 300, height: 20))
+        slider = UISlider(frame: CGRect(x: 10, y: 100, width: 300, height: 20))
         slider.minimumValue = 0
         slider.value = Float(Utility.readPref(prefVar, pickerInit[prefVar]!))
         slider.maximumValue = 100
@@ -28,18 +29,18 @@ final class ObjectSlider {
         button.setTitle(label + ": " + String(Int(slider.value)), for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = UIColor.white
-        slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        //slider.addTarget(uiv, action: #selector(uiv.sliderValueDidChange(_:)), for: .valueChanged)
         let container = ObjectCardStackView(arrangedSubviews: [button, slider])
         //container.setAxis(.vertical)
         stackView.addArrangedSubview(container.view)
     }
 
-    @objc func sliderValueDidChange(_ sender: UISlider!) {
-        print("Slider value changed")
+    /*@objc static func sliderValueDidChange(_ sender: UISlider!) {
+        print("Slider value changed" + String(sender.value))
         // Use this code below only if you want UISlider to snap to values step by step
-        let roundedStepValue = round(sender.value / step) * step
-        sender.value = roundedStepValue
-        print("Slider step value \(Int(roundedStepValue))")
+        //let roundedStepValue = round(sender.value / step) * step
+        //sender.value = roundedStepValue
+        //print("Slider step value \(Int(roundedStepValue))")
         //print("Slider step value \(sender.value)")
-    }
+    }*/
 }

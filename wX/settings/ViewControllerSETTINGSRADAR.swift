@@ -11,6 +11,7 @@ class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate,
 UIPickerViewDataSource, CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
+    var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +147,41 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                 )
             }
         }
-        ObjectSlider(self, stackView, "RADAR_LOCDOT_SIZE", UtilitySettingsRadar.picker, UtilitySettingsRadar.pickerinit)
+        let objSlider = ObjectSlider(
+            self,
+            stackView,
+            "RADAR_LOCDOT_SIZE",
+            UtilitySettingsRadar.picker,
+            UtilitySettingsRadar.pickerinit
+        )
+        let objSlider2 = ObjectSlider(
+            self,
+            stackView,
+            "RADAR_SPOTTER_SIZE",
+            UtilitySettingsRadar.picker,
+            UtilitySettingsRadar.pickerinit
+        )
+        objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        objSlider2.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+
+        objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+        objIdToSlider[ObjectIdentifier(objSlider2.slider)] = objSlider2
+
+        //print(ObjectIdentifier(objSlider))
+    }
+
+    @objc func sliderValueDidChange(_ sender: UISlider!) {
+        print("Slider value changed " + String(sender.value) + " ")
+        let objId = ObjectIdentifier(sender)
+        //print(objId)
+        //objIdToSlider[objId].button.setTitle(label + ": " + String(Int(slider.value)), for: .normal)
+        objIdToSlider[objId]!.button.setTitle(String(sender!.value), for: .normal)
+        
+        // Use this code below only if you want UISlider to snap to values step by step
+        //let roundedStepValue = round(sender.value / step) * step
+        //sender.value = roundedStepValue
+        //print("Slider step value \(Int(roundedStepValue))")
+        //print("Slider step value \(sender.value)")
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

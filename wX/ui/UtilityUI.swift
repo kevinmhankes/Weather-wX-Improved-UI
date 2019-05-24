@@ -38,7 +38,6 @@ public class UtilityUI {
         cgsize.width = width
         cgsize.height = height
         return cgsize
-        //return (width, height)
     }
 
     static func statusBarHeight() -> CGFloat {
