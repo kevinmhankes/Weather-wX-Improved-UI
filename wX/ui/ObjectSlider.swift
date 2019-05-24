@@ -94,6 +94,7 @@ final class ObjectSlider {
             "TEXTVIEW_FONT_SIZE": 0.0,
             "REFRESH_LOC_MIN": 0.0,
             "ANIM_INTERVAL": 0.0,
+            "UI_TILES_PER_ROW": 1.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
             "NWS_ICON_SIZE_PREF": 0.0
     ]
@@ -111,6 +112,7 @@ final class ObjectSlider {
             "TEXTVIEW_FONT_SIZE": 20.0,
             "REFRESH_LOC_MIN": 120.0,
             "ANIM_INTERVAL": 16.0,
+            "UI_TILES_PER_ROW": 8.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 2000.0,
             "NWS_ICON_SIZE_PREF": 100.0
     ]

@@ -8,6 +8,8 @@ import UIKit
 
 class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
@@ -99,6 +101,9 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             )
             switchObject.switchUi.tag = $0
         }
+        
+        setupSliders()
+        
         // TODO move into maps in util
         generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
         generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)
@@ -125,6 +130,32 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
                 )
             }
         }
+    }
+    
+    func setupSliders() {
+        [
+            "TEXTVIEW_FONT_SIZE",
+            "REFRESH_LOC_MIN",
+            "ANIM_INTERVAL",
+            "UI_TILES_PER_ROW",
+            "HOMESCREEN_TEXT_LENGTH_PREF",
+            "NWS_ICON_SIZE_PREF"
+        ].forEach {
+                let objSlider = ObjectSlider(
+                    self,
+                    stackView,
+                    $0
+                )
+                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+                objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+        }
+    }
+    
+    @objc func sliderValueDidChange(_ sender: UISlider!) {
+        let objId = ObjectIdentifier(sender)
+        let objSlider = objIdToSlider[objId]!
+        objSlider.setLabel()
+        Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -198,19 +198,9 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
 
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
-        //let roundedStepValue = round(sender.value / ObjectSlider.step) * ObjectSlider.step
-        //sender.value = roundedStepValue
         let objSlider = objIdToSlider[objId]!
-        //objSlider.button.setTitle(objSlider.label + ": " + String(Int(sender!.value)), for: .normal)
         objSlider.setLabel()
-        //print("called change")
         Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
-
-        // Use this code below only if you want UISlider to snap to values step by step
-        //let roundedStepValue = round(sender.value / step) * step
-        //sender.value = roundedStepValue
-        //print("Slider step value \(Int(roundedStepValue))")
-        //print("Slider step value \(sender.value)")
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
