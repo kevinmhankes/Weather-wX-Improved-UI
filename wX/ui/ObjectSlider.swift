@@ -80,7 +80,7 @@ final class ObjectSlider {
         "HOMESCREEN_TEXT_LENGTH_PREF": 500,
         "NWS_ICON_SIZE_PREF": 80
     ]
-    
+
     static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
             "RADAR_SPOTTER_SIZE": 0.0,
@@ -88,12 +88,14 @@ final class ObjectSlider {
             "RADAR_TVS_SIZE": 0.0,
             "RADAR_AVIATION_SIZE": 0.0,
             "RADAR_OBS_EXT_ZOOM": 0.0,
+            "RADAR_DATA_REFRESH_INTERVAL": 0.0,
+            "WXOGL_SIZE": 0.0,
 
             "TEXTVIEW_FONT_SIZE": 0.0,
             "REFRESH_LOC_MIN": 0.0,
             "ANIM_INTERVAL": 0.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
-            "NWS_ICON_SIZE_PREF": 0.0,
+            "NWS_ICON_SIZE_PREF": 0.0
     ]
 
     static let prefToMax: [String: Float] = [
@@ -103,6 +105,8 @@ final class ObjectSlider {
             "RADAR_TVS_SIZE": 14.0,
             "RADAR_AVIATION_SIZE": 10.0,
             "RADAR_OBS_EXT_ZOOM": 10.0,
+            "RADAR_DATA_REFRESH_INTERVAL": 20.0,
+            "WXOGL_SIZE": 25.0,
 
             "TEXTVIEW_FONT_SIZE": 20.0,
             "REFRESH_LOC_MIN": 120.0,
