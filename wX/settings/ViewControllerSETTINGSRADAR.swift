@@ -122,6 +122,9 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             )
             switchObject.switchUi.tag = index
         }
+
+        setupSliders()
+
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
             objNp.numberPicker.dataSource = self
@@ -168,26 +171,37 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         objIdToSlider[ObjectIdentifier(objSlider2.slider)] = objSlider2*/
 
+
+    }
+
+    func setupSliders() {
         [
+            "RADAR_HI_SIZE",
+            "RADAR_TVS_SIZE",
             "RADAR_LOCDOT_SIZE",
-            "RADAR_SPOTTER_SIZE"
-        ].forEach {
-            let objSlider = ObjectSlider(
-                self,
-                stackView,
-                $0
-            )
-            objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-            objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+            "RADAR_OBS_EXT_ZOOM",
+            "RADAR_SPOTTER_SIZE",
+            "RADAR_AVIATION_SIZE",
+            "RADAR_OBS_EXT_ZOOM"
+            ].forEach {
+                let objSlider = ObjectSlider(
+                    self,
+                    stackView,
+                    $0
+                )
+                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+                objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
 
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
-        let roundedStepValue = round(sender.value / ObjectSlider.step) * ObjectSlider.step
-        sender.value = roundedStepValue
+        //let roundedStepValue = round(sender.value / ObjectSlider.step) * ObjectSlider.step
+        //sender.value = roundedStepValue
         let objSlider = objIdToSlider[objId]!
-        objSlider.button.setTitle(objSlider.label + ": " + String(Int(sender!.value)), for: .normal)
+        //objSlider.button.setTitle(objSlider.label + ": " + String(Int(sender!.value)), for: .normal)
+        objSlider.setLabel()
+        //print("called change")
         Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
 
         // Use this code below only if you want UISlider to snap to values step by step

@@ -31,6 +31,7 @@
 // TODO BUG landscape images are zoomed in to far
 // TODO enhance NHC storm card like kotlin
 // TODO single pane landscape is to zoomed in on rotate, in dual pane to far zoomed out
+// TODO when hit stop button after animating show latest frame
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items

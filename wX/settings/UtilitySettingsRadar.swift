@@ -163,12 +163,12 @@ final class UtilitySettingsRadar {
     ]
 
     static let pickerinit = [
-        "RADAR_LOCDOT_SIZE": 4,
-        "RADAR_SPOTTER_SIZE": 5,
-        "RADAR_HI_SIZE": 4,
-        "RADAR_TVS_SIZE": 4,
-        "RADAR_AVIATION_SIZE": 4,
-        "RADAR_OBS_EXT_ZOOM": 7,
+        //"RADAR_LOCDOT_SIZE": 4,
+        //"RADAR_SPOTTER_SIZE": 5,
+        //"RADAR_HI_SIZE": 4,
+        //"RADAR_TVS_SIZE": 4,
+        //"RADAR_AVIATION_SIZE": 4,
+        //"RADAR_OBS_EXT_ZOOM": 7,
         "RADAR_DATA_REFRESH_INTERVAL": 5,
         "WXOGL_SIZE": 10
     ]

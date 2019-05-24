@@ -15,12 +15,13 @@ final class ObjectCardStackView {
         stackView = StackView()
     }
 
-    init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top) {
+    init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top, axis: NSLayoutConstraint.Axis = .horizontal) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
         stackView.backgroundColor = UIColor.white
         stackView.distribution = .fill
         stackView.alignment = alignment
-        stackView.axis = .horizontal
+        //stackView.axis = .horizontal
+        stackView.axis = axis
         stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         stackView.isLayoutMarginsRelativeArrangement = true
     }

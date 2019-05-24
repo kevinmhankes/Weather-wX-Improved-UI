@@ -85,6 +85,9 @@ final class Utility {
     }
 
     static func readPref(_ key: String, _ value: Int) -> Int {
+        //print(key)
+        //print(value)
+        //print(preferences.getInt(key, value))
         return preferences.getInt(key, value)
     }
 

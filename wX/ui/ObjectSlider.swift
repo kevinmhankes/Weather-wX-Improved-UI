@@ -13,35 +13,36 @@ final class ObjectSlider {
     static let step: Float = 1 // If you want UISlider to snap to steps by 10
     let prefVar: String
     let label: String
+    let initialValue: Int
 
     init(
         _ uiv: UIViewController,
         _ stackView: UIStackView,
         _ prefVar: String
-        //_ pickerMap: [String: String],
-        //_ pickerInit: [String: Int]
     ) {
         self.label = ObjectSlider.prefToLabel[prefVar]!
-        let initialValue = Float(Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar]!))
+        initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar]!)
+        print(initialValue)
+        print(prefVar)
         self.prefVar = prefVar
-        // FIXME use bounds
-        slider = UISlider(frame: CGRect(x: 10, y: 100, width: 300, height: 20))
+        slider = UISlider()
         slider.minimumValue = ObjectSlider.prefToMin[prefVar]!
         slider.maximumValue = ObjectSlider.prefToMax[prefVar]!
         slider.isContinuous = true
         slider.thumbTintColor = AppColors.primaryColorFab
-        button.setTitle(label + ": " + String(initialValue), for: .normal)
-        button.contentHorizontalAlignment = .left
         button.backgroundColor = UIColor.white
         let container = ObjectCardStackView(arrangedSubviews: [button, slider])
-        //container.setAxis(.vertical)
         stackView.addArrangedSubview(container.view)
-        slider.value = initialValue
+        slider.value = Float(initialValue)
+        setLabel()
+    }
 
+    func setLabel() {
+        button.setTitle(label + "(" + String(ObjectSlider.prefToInitialValue[prefVar]!) + "): " + String(Int(slider.value)) + " ", for: .normal)
     }
 
     static let prefToLabel = [
-        "RADAR_LOCDOT_SIZE": "Location dot size." ,
+        "RADAR_LOCDOT_SIZE": "Location dot size" ,
         "RADAR_SPOTTER_SIZE": "Spotter size",
         "RADAR_COLOR_PALETTE_94": "Reflectivity Colormap",
         "RADAR_COLOR_PALETTE_99": "Velocity Colormap",
@@ -62,29 +63,31 @@ final class ObjectSlider {
     ]
 
     // FIXME use these in MyApp for default value in readPref
-    static let prefToInitialValue: [String: Float] = [
-        "RADAR_LOCDOT_SIZE": 4.0,
-        "RADAR_SPOTTER_SIZE": 5.0,
-        "RADAR_HI_SIZE": 4.0,
-        "RADAR_TVS_SIZE": 4.0,
-        "RADAR_AVIATION_SIZE": 4.0,
-        "RADAR_OBS_EXT_ZOOM": 7.0,
-        "RADAR_DATA_REFRESH_INTERVAL": 5.0,
-        "WXOGL_SIZE": 10.0,
+    static let prefToInitialValue: [String: Int] = [
+        "RADAR_LOCDOT_SIZE": 4,
+        "RADAR_SPOTTER_SIZE": 5,
+        "RADAR_HI_SIZE": 4,
+        "RADAR_TVS_SIZE": 4,
+        "RADAR_AVIATION_SIZE": 4,
+        "RADAR_OBS_EXT_ZOOM": 7,
+        "RADAR_DATA_REFRESH_INTERVAL": 5,
+        "WXOGL_SIZE": 10,
 
-        "TEXTVIEW_FONT_SIZE": 16.0 ,
-        //"UI_THEME": "blue" ,
-        "REFRESH_LOC_MIN": 10.0,
-        "ANIM_INTERVAL": 6.0,
-        "UI_TILES_PER_ROW": 3.0,
-        "HOMESCREEN_TEXT_LENGTH_PREF": 500.0,
-        "NWS_ICON_SIZE_PREF": 80.0
+        "TEXTVIEW_FONT_SIZE": 16,
+        "REFRESH_LOC_MIN": 10,
+        "ANIM_INTERVAL": 6,
+        "UI_TILES_PER_ROW": 3,
+        "HOMESCREEN_TEXT_LENGTH_PREF": 500,
+        "NWS_ICON_SIZE_PREF": 80
     ]
-
-
+    
     static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
             "RADAR_SPOTTER_SIZE": 0.0,
+            "RADAR_HI_SIZE": 0.0,
+            "RADAR_TVS_SIZE": 0.0,
+            "RADAR_AVIATION_SIZE": 0.0,
+            "RADAR_OBS_EXT_ZOOM": 0.0,
 
             "TEXTVIEW_FONT_SIZE": 0.0,
             "REFRESH_LOC_MIN": 0.0,
@@ -96,6 +99,10 @@ final class ObjectSlider {
     static let prefToMax: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 10.0,
             "RADAR_SPOTTER_SIZE": 10.0,
+            "RADAR_HI_SIZE": 14.0,
+            "RADAR_TVS_SIZE": 14.0,
+            "RADAR_AVIATION_SIZE": 10.0,
+            "RADAR_OBS_EXT_ZOOM": 10.0,
 
             "TEXTVIEW_FONT_SIZE": 20.0,
             "REFRESH_LOC_MIN": 120.0,
