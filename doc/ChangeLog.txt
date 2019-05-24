@@ -29,6 +29,7 @@
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
 // TODO BUG landscape images are zoomed in to far
+// TODO enhance NHC storm card like kotlin
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -40,9 +41,10 @@
 
 Last app store release: 55990
 
-2019_05_23 56005 	[FIX] fix time in radar multipane (partial)
+2019_05_24 56005 	[FIX] fix time in radar multipane (partial)
 			[IMP] enhance landscape dual pane to center correctly
 			[IMP] add 850mb2 to SPC Meso
+			[IMP] images are now scaled properly when in landscape
 2019_05_23 56004 	[ADD] ObjectSlider and test in settings -> radar
 2019_05_21 56003 	[IMP] dual pane radar in portrait now shows panes left to right
 			[FIX] NHC Storm images were showing as blank (86 in size)

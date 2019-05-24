@@ -163,8 +163,8 @@ open class ImageScrollView: UIScrollView {
         // the one line below is what causes image data to reset after another image is shown,
         // add logic to only run first time
         //if (!imageSized) {
-            configureImageForSize(image.size)
-            imageSized = true
+        configureImageForSize(image.size)
+        imageSized = true
         //}
     }
 
@@ -208,11 +208,16 @@ open class ImageScrollView: UIScrollView {
         // fill width if the image and phone are both portrait or both landscape; otherwise take smaller scale
         let imagePortrait = imageSize.height > imageSize.width
         let phonePortrait = bounds.height >= bounds.width
-        var minScale = (imagePortrait == phonePortrait) ? xScale : min(xScale, yScale)
-        let maxScale = maxScaleFromMinScale*minScale
+        // commenting out the below line and implementing the one below it causes landscape
+        // images to be not zoomed in at all
+        //var minScale = (imagePortrait == phonePortrait) ? xScale : min(xScale, yScale)
+        var minScale = min(xScale, yScale)
+        let maxScale = maxScaleFromMinScale * minScale
         // don't let minScale exceed maxScale. (If the image is smaller
         // than the screen, we don't want to force it to be zoomed.)
-        if minScale > maxScale {minScale = maxScale}
+        if minScale > maxScale {
+            minScale = maxScale
+        }
         maximumZoomScale = maxScale
         minimumZoomScale = minScale * 0.999 // the multiply factor to prevent user cannot scroll page
                                             // while they use this control in UIPageViewController
