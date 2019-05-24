@@ -12,6 +12,7 @@ final class ObjectSlider {
     let slider: UISlider
     static let step: Float = 1 // If you want UISlider to snap to steps by 10
     let prefVar: String
+    let label: String
 
     init(
         _ uiv: UIViewController,
@@ -20,13 +21,13 @@ final class ObjectSlider {
         //_ pickerMap: [String: String],
         //_ pickerInit: [String: Int]
     ) {
-        let label = prefToLabel[prefVar]!
-        let initialValue = Float(Utility.readPref(prefVar, pickerInit[prefVar]!))
+        self.label = ObjectSlider.prefToLabel[prefVar]!
+        let initialValue = Float(Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar]!))
         self.prefVar = prefVar
         // FIXME use bounds
         slider = UISlider(frame: CGRect(x: 10, y: 100, width: 300, height: 20))
-        slider.minimumValue = prefToMin[prefVar]!
-        slider.maximumValue = prefToMax[prefVar]!
+        slider.minimumValue = ObjectSlider.prefToMin[prefVar]!
+        slider.maximumValue = ObjectSlider.prefToMax[prefVar]!
         slider.isContinuous = true
         slider.thumbTintColor = AppColors.primaryColorFab
         button.setTitle(label + ": " + String(initialValue), for: .normal)
@@ -61,7 +62,7 @@ final class ObjectSlider {
     ]
 
     // FIXME use these in MyApp for default value in readPref
-     static let prefToInitialValue = [
+    static let prefToInitialValue: [String: Float] = [
         "RADAR_LOCDOT_SIZE": 4.0,
         "RADAR_SPOTTER_SIZE": 5.0,
         "RADAR_HI_SIZE": 4.0,
@@ -81,7 +82,7 @@ final class ObjectSlider {
     ]
 
 
-    static let prefToMin = [
+    static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
             "RADAR_SPOTTER_SIZE": 0.0,
 
@@ -92,7 +93,7 @@ final class ObjectSlider {
             "NWS_ICON_SIZE_PREF": 0.0,
     ]
 
-    static let prefToMax = [
+    static let prefToMax: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 10.0,
             "RADAR_SPOTTER_SIZE": 10.0,
 

@@ -186,7 +186,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
         let objId = ObjectIdentifier(sender)
         let roundedStepValue = round(sender.value / ObjectSlider.step) * ObjectSlider.step
         sender.value = roundedStepValue
-        objIdToSlider[objId]!.button.setTitle(label + ": " + String(Int(sender!.value)), for: .normal)
+        let objSlider = objIdToSlider[objId]!
+        objSlider.button.setTitle(objSlider.label + ": " + String(Int(sender!.value)), for: .normal)
         Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
 
         // Use this code below only if you want UISlider to snap to values step by step
