@@ -150,28 +150,6 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                 )
             }
         }
-
-        /*let objSlider = ObjectSlider(
-            self,
-            stackView,
-            "RADAR_LOCDOT_SIZE"
-            //UtilitySettingsRadar.picker,
-            //UtilitySettingsRadar.pickerinit
-        )
-        let objSlider2 = ObjectSlider(
-            self,
-            stackView,
-            "RADAR_SPOTTER_SIZE"
-            //UtilitySettingsRadar.picker,
-            //UtilitySettingsRadar.pickerinit
-        )
-        objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-        objSlider2.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-
-        objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
-        objIdToSlider[ObjectIdentifier(objSlider2.slider)] = objSlider2*/
-
-
     }
 
     func setupSliders() {
@@ -185,7 +163,7 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             "RADAR_OBS_EXT_ZOOM",
             "RADAR_DATA_REFRESH_INTERVAL",
             "WXOGL_SIZE"
-            ].forEach {
+        ].forEach {
                 let objSlider = ObjectSlider(
                     self,
                     stackView,

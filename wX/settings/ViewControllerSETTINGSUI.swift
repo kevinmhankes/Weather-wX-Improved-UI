@@ -9,7 +9,7 @@ import UIKit
 class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
@@ -72,11 +72,6 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
         }
     }
 
-    func generatePickerValues(_ key: String, from: Int, to: Int, by: Int) {
-        UtilitySettingsUI.pickerDataSource[key] = []
-        stride(from: from, to: to, by: by).forEach {UtilitySettingsUI.pickerDataSource[key]!.append(String($0))}
-    }
-
     @objc func getHelp(sender: UIButton) {
         UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsUI.helpStrings)
     }
@@ -101,14 +96,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             )
             switchObject.switchUi.tag = $0
         }
-        
         setupSliders()
-        
-        // TODO move into maps in util
-        generatePickerValues("REFRESH_LOC_MIN", from: 0, to: 121, by: 1)
-        generatePickerValues("ANIM_INTERVAL", from: 0, to: 16, by: 1)
-        generatePickerValues("HOMESCREEN_TEXT_LENGTH_PREF", from: 250, to: 2000, by: 250)
-        generatePickerValues("NWS_ICON_SIZE_PREF", from: 0, to: 100, by: 1)
         Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
             objNp.numberPicker.dataSource = self
@@ -131,7 +119,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
             }
         }
     }
-    
+
     func setupSliders() {
         [
             "TEXTVIEW_FONT_SIZE",
@@ -150,7 +138,7 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
-    
+
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
         let objSlider = objIdToSlider[objId]!

@@ -68,6 +68,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let screenWidth = width
         let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
+        //print(surfaceRatio)
         if numberOfPanes == 2 {
             surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
         }
@@ -102,7 +103,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                     -1.0 * ortInt * scaleFactor,
                     right: ortInt * scaleFactor,
                     bottom: -1.0 * ortInt * (1.0 / surfaceRatio) * scaleFactor,
-                    top: ortInt * (1 / surfaceRatio) * scaleFactor,
+                    top: ortInt * (1.0 / surfaceRatio) * scaleFactor,
                     nearZ: -100.0,
                     farZ: 100.0
                 )
@@ -566,6 +567,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func stopAnimate() {
         inOglAnim = false
         animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
+        if wxMetal[0] != nil {
+            self.wxMetal.forEach { $0!.getRadar("") }
+            getPolygonWarnings()
+        }
     }
 
     func animateFrameCntClicked(_ frameCnt: Int) {

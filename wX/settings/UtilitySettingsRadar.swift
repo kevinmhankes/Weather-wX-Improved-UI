@@ -150,40 +150,15 @@ final class UtilitySettingsRadar {
     ]
 
     static let picker = [
-        //"RADAR_LOCDOT_SIZE": "Location dot size." ,
-        //"RADAR_SPOTTER_SIZE": "Spotter size",
         "RADAR_COLOR_PALETTE_94": "Reflectivity Colormap",
-        "RADAR_COLOR_PALETTE_99": "Velocity Colormap",
-        //"RADAR_HI_SIZE": "Hail marker size",
-        //"RADAR_TVS_SIZE": "TVS marker size",
-        //"RADAR_AVIATION_SIZE": "Aviation dot size",
-        //"RADAR_OBS_EXT_ZOOM": "Detailed Observations Zoom",
-        //"RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval",
-        //"WXOGL_SIZE": "Radar initial view size"
+        "RADAR_COLOR_PALETTE_99": "Velocity Colormap"
     ]
 
     static let pickerinit: [String: Int] = [:]
-        //"RADAR_LOCDOT_SIZE": 4,
-        //"RADAR_SPOTTER_SIZE": 5,
-        //"RADAR_HI_SIZE": 4,
-        //"RADAR_TVS_SIZE": 4,
-        //"RADAR_AVIATION_SIZE": 4,
-        //"RADAR_OBS_EXT_ZOOM": 7,
-        //"RADAR_DATA_REFRESH_INTERVAL": 5,
-        //"WXOGL_SIZE": 10
-    //]
 
     static let pickerCount = [
-        //"RADAR_LOCDOT_SIZE": 11,
-        //"RADAR_SPOTTER_SIZE": 11,
         "RADAR_COLOR_PALETTE_94": 8,
-        "RADAR_COLOR_PALETTE_99": 3,
-        //"RADAR_HI_SIZE": 15,
-        //"RADAR_TVS_SIZE": 15,
-        //"RADAR_AVIATION_SIZE": 11,
-        //"RADAR_OBS_EXT_ZOOM": 11,
-        //"RADAR_DATA_REFRESH_INTERVAL": 20,
-        //"WXOGL_SIZE": 25
+        "RADAR_COLOR_PALETTE_99": 3
     ]
 
     static let pickerinitString = [
@@ -192,23 +167,12 @@ final class UtilitySettingsRadar {
     ]
 
     static let pickerDataSource = [
-        //"RADAR_LOCDOT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-        //"RADAR_SPOTTER_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         "RADAR_COLOR_PALETTE_94": ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK", "NWS"],
         "RADAR_COLOR_PALETTE_99": ["CODENH", "AF", "EAK"]
-        //"RADAR_HI_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
-        //"RADAR_TVS_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
-        //"RADAR_AVIATION_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-        //"RADAR_OBS_EXT_ZOOM": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-        //"RADAR_DATA_REFRESH_INTERVAL": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        //                                "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
-        //"WXOGL_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-        //                "16", "17", "18", "19", "20", "21", "22", "23", "24"]
     ]
 
     static let pickerNonZeroOffset = [
         "RADAR_COLOR_PALETTE_94",
         "RADAR_COLOR_PALETTE_99"
-        //"WXOGL_SIZE"
     ]
 }

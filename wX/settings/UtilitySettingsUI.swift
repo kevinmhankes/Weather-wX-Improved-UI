@@ -64,50 +64,22 @@ final class UtilitySettingsUI {
     ]
 
     static let picker = [
-        //"TEXTVIEW_FONT_SIZE": "Defaut font size" ,
-        "UI_THEME": "Color theme" ,
-        //"REFRESH_LOC_MIN": "Refresh interval main screen(min)" ,
-        //"ANIM_INTERVAL": "Animation frame rate" ,
-        //"UI_TILES_PER_ROW": "Tiles per row",
-        //"HOMESCREEN_TEXT_LENGTH_PREF": "Homescreen text length",
-        //"NWS_ICON_SIZE_PREF": "NWS Icon size"
+        "UI_THEME": "Color theme"
     ]
 
     static let pickerinit = [
-        //"TEXTVIEW_FONT_SIZE": "16" ,
-        "UI_THEME": "blue" ,
-        //"REFRESH_LOC_MIN": "10",
-        //"ANIM_INTERVAL": "6" ,
-        //"UI_TILES_PER_ROW": "3" ,
-        //"HOMESCREEN_TEXT_LENGTH_PREF": "500",
-        //"NWS_ICON_SIZE_PREF": "80"
+        "UI_THEME": "blue"
     ]
 
     static let pickerCount = [
-        //"TEXTVIEW_FONT_SIZE": 21,
-        "UI_THEME": 3,
-        //"REFRESH_LOC_MIN": 121,
-        //"ANIM_INTERVAL": 16,
-        //"UI_TILES_PER_ROW": 9,
-        //"HOMESCREEN_TEXT_LENGTH_PREF": 7,
-        //"NWS_ICON_SIZE_PREF": 100
+        "UI_THEME": 3
     ]
 
-    // If List is empty must set in ViewControllerSETTINGSUI
     static var pickerDataSource = [
-        //"TEXTVIEW_FONT_SIZE": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-        //                       "13", "14", "15", "16", "17", "18", "19", "20"],
         "UI_THEME": ["blue", "black", "green"]
-        //"REFRESH_LOC_MIN": [],
-        //"ANIM_INTERVAL": [],
-        //"UI_TILES_PER_ROW": ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
-        //"HOMESCREEN_TEXT_LENGTH_PREF": [],
-        //"NWS_ICON_SIZE_PREF": []
     ]
 
     static let pickerNonZeroOffset = [
-        "UI_THEME",
-        "HOMESCREEN_TEXT_LENGTH_PREF",
-        "TEXTVIEW_FONT_SIZE"
+        "UI_THEME"
     ]
 }

@@ -27,7 +27,7 @@
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
 // TODO enhance NHC storm card like kotlin
-// TODO when hit stop button after animating show latest frame
+// TODO [FIX] transition to dual pane radar now shows same size
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -41,7 +41,7 @@ Last app store release: 55990
 
 2019_05_24 56006 	[IMP] more slider work
 			[FIX] animating nexrad was showing red text for older radar timestamp
-			[FIX] transition to dual pane radar now shows same size
+			[IMP] when hit stop button after animating show latest frame
 2019_05_24 56005 	[FIX] fix time in radar multipane (partial)
 			[IMP] enhance landscape dual pane to center correctly
 			[IMP] add 850mb2 to SPC Meso
