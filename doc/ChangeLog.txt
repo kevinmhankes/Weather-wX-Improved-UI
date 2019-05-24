@@ -23,14 +23,10 @@
 // TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
 // TODO [BUG] GPS location dot to big on tablet
-// TODO radar - if in landscape dual pane radar show radar side by side
 // [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
-// TODO change number picker to UISlider: https://developer.apple.com/documentation/uikit/uislider
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
-// TODO BUG landscape images are zoomed in to far
 // TODO enhance NHC storm card like kotlin
-// TODO single pane landscape is to zoomed in on rotate, in dual pane to far zoomed out
 // TODO when hit stop button after animating show latest frame
 
 [ADD] - adding something new - method, file, etc. to the repo
@@ -45,6 +41,7 @@ Last app store release: 55990
 
 2019_05_24 56006 	[IMP] more slider work
 			[FIX] animating nexrad was showing red text for older radar timestamp
+			[FIX] transition to dual pane radar now shows same size
 2019_05_24 56005 	[FIX] fix time in radar multipane (partial)
 			[IMP] enhance landscape dual pane to center correctly
 			[IMP] add 850mb2 to SPC Meso
