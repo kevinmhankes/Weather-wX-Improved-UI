@@ -30,6 +30,7 @@
 // TODO BUG dual pane does not show radar time for both panes
 // TODO BUG landscape images are zoomed in to far
 // TODO enhance NHC storm card like kotlin
+// TODO single pane landscape is to zoomed in on rotate, in dual pane to far zoomed out
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -41,7 +42,8 @@
 
 Last app store release: 55990
 
-2019_05_24 56005 	[IMP] more slider work
+2019_05_24 56006 	[IMP] more slider work
+			[FIX] animating nexrad was showing red text for older radar timestamp
 2019_05_24 56005 	[FIX] fix time in radar multipane (partial)
 			[IMP] enhance landscape dual pane to center correctly
 			[IMP] add 850mb2 to SPC Meso

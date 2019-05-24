@@ -485,6 +485,7 @@ class WXMetalRender {
     }
 
     func getRadar(_ url: String, _ additionalText: String = "") {
+        var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
                 self.ridPrefixGlobal = self.rdDownload.getRadarFile(
@@ -500,6 +501,7 @@ class WXMetalRender {
                     self.radarBuffers.fileName = "l2" + self.idxStr
                 }
             } else {
+                isAnimating = true
                 self.radarBuffers.fileName = url
             }
             if url == "" {  // not anim
@@ -524,7 +526,7 @@ class WXMetalRender {
             }
             DispatchQueue.main.async {
                 self.constructPolygons()
-                self.showTimeToolbar(additionalText)
+                self.showTimeToolbar(additionalText, isAnimating)
                 self.showProductText(self.radarProduct)
                 if self.renderFn != nil {
                     self.renderFn!(self.paneNumber)
@@ -561,12 +563,12 @@ class WXMetalRender {
         self.radarBuffers.generateMtlBuffer(device)
     }
 
-    func showTimeToolbar(_ additionalText: String) {
+    func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
         var timeStr = Utility.readPref("WX_RADAR_CURRENT_INFO", "").split(" ")
         if timeStr.count > 1 {
             let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
             timeButton.title = text
-            if UtilityTime.isRadarTimeOld(text) {
+            if UtilityTime.isRadarTimeOld(text) && !isAnimating {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
             } else {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
