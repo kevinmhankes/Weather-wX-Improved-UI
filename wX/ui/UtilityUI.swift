@@ -30,6 +30,17 @@ public class UtilityUI {
         return (width, height)
     }
 
+    static func getScreenBoundsCGSize() -> CGSize {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.width
+        let height = bounds.height
+        var cgsize = CGSize()
+        cgsize.width = width
+        cgsize.height = height
+        return cgsize
+        //return (width, height)
+    }
+
     static func statusBarHeight() -> CGFloat {
         return UIApplication.shared.statusBarFrame.size.height
     }

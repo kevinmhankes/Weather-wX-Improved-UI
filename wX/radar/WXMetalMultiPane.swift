@@ -44,7 +44,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        setPaneSize()
+        setPaneSize(size)
+        //print("view will transition")
+        //print(size.width)
+        //print(size.height)
         paneRange.enumerated().forEach { index, _ in
             self.render(index)
         }
@@ -58,8 +61,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         )
     }
 
-    func setPaneSize() {
-        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+    func setPaneSize(_ cgsize: CGSize) {
+        //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        let width = cgsize.width
+        let height = cgsize.height
         let screenWidth = width
         let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
@@ -79,9 +84,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         )
         let halfWidth: CGFloat = screenWidth / 2
         let halfHeight: CGFloat = screenHeight / 2
-        print(numberOfPanes)
-        print(screenWidth)
-        print(screenHeight)
+        //print(numberOfPanes)
+        //print(screenWidth)
+        //print(screenHeight)
         if numberOfPanes == 1 {
             metalLayer[0]!.frame = CGRect(
                 x: 0,
@@ -230,7 +235,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             metalLayer[index]!.pixelFormat = .bgra8Unorm
             metalLayer[index]!.framebufferOnly = true
         }
-        setPaneSize()
+        setPaneSize(UtilityUI.getScreenBoundsCGSize())
         metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))

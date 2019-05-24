@@ -45,6 +45,7 @@ Last app store release: 55990
 			[IMP] enhance landscape dual pane to center correctly
 			[IMP] add 850mb2 to SPC Meso
 			[IMP] images are now scaled properly when in landscape
+			[FIX] nexrad radar rotation issue on phone
 2019_05_23 56004 	[ADD] ObjectSlider and test in settings -> radar
 2019_05_21 56003 	[IMP] dual pane radar in portrait now shows panes left to right
 			[FIX] NHC Storm images were showing as blank (86 in size)
