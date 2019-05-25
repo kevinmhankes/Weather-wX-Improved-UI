@@ -10,7 +10,7 @@ import AVFoundation
 class ViewControllerUSALERTSDETAIL: UIwXViewController {
 
     var playButton = ObjectToolbarIcon()
-    var cap = CAPAlert()
+    var cap = CapAlert()
     var objAlertDetail = ObjectAlertDetail()
     let synth = AVSpeechSynthesizer()
 
@@ -27,7 +27,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.cap = CAPAlert(url: ActVars.usalertsDetailUrl)
+            self.cap = CapAlert(url: ActVars.usalertsDetailUrl)
             DispatchQueue.main.async {
                 self.displayContent()
             }

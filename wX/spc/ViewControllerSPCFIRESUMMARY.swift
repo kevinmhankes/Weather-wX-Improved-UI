@@ -20,7 +20,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySPCFireOutlook.urls.map {Bitmap($0)}
+            self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -28,7 +28,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.wpcTextProduct = UtilitySPCFireOutlook.products[sender.data]
+        ActVars.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
         self.goToVC("WPCText")
     }
 

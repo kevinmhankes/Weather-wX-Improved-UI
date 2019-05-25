@@ -185,7 +185,7 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !globalSynth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(textView.text))
+            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(textView.text))
             globalSynth.speak(myUtterance)
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else if globalSynth.isPaused {
@@ -201,7 +201,7 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !globalSynth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(str))
+            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             globalSynth.speak(myUtterance)
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else if globalSynth.isPaused {
@@ -216,7 +216,7 @@ final class UtilityActions {
     static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        myUtterance = AVSpeechUtterance(string: UtilityTTSTranslations.tranlasteAbbreviations(str))
+        myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
         globalSynth.speak(myUtterance)
         playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
     }

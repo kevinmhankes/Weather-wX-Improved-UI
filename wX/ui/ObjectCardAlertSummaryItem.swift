@@ -12,7 +12,7 @@ final class ObjectCardAlertSummaryItem {
         _ stackView: UIStackView,
         _ office: String,
         _ location: String,
-        _ alert: CAPAlert,
+        _ alert: CapAlert,
         _ gesture: UITapGestureRecognizerWithData
     ) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)

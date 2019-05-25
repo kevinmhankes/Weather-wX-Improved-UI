@@ -20,7 +20,7 @@ final class ObjectAlertDetail {
         textViews[4].color = UIColor.blue
     }
 
-    func updateContent(_ alert: CAPAlert) {
+    func updateContent(_ alert: CapAlert) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let wfo = alert.title.parse("by (.*?)$")
         self.textViews[0].text = title
@@ -32,7 +32,7 @@ final class ObjectAlertDetail {
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
     }
 
-    static func condenseTime(_ cap: CAPAlert) -> (String, String, String) {
+    static func condenseTime(_ cap: CapAlert) -> (String, String, String) {
         let title = cap.title.parse("(.*?) issued")
         var startTime = cap.title.parse("issued (.*?) until")
         if startTime == "" {

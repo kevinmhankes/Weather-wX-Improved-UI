@@ -23,7 +23,7 @@ class ViewControllerSPCMESO: UIwXViewController {
     var prefModel = "SPCMESO"
     let numPanesStr = "1"
     var firstRun = true
-    let subMenu = ObjectMenuData(UtilitySPCMESO.titles, UtilitySPCMESO.params, UtilitySPCMESO.labels)
+    let subMenu = ObjectMenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySPCMESOInputOutput.getImage(self.product, self.sector)
+            let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
             DispatchQueue.main.async {
                 if self.firstRun {
                     self.image.setBitmap(bitmap)
@@ -98,18 +98,18 @@ class ViewControllerSPCMESO: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilitySPCMESO.sectors, self.sectorChangedByIndex(_:))
+        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
     }
 
     func sectorChangedByIndex(_ index: Int) {
-        self.sector = UtilitySPCMESO.sectorCodes[index]
-        self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
+        self.sector = UtilitySpcMeso.sectorCodes[index]
+        self.sectorButton.title = (UtilitySpcMeso.sectorMap[sector] ?? "").truncate(3)
         self.getContent()
     }
 
     func sectorChanged(_ sector: String) {
         self.sector = sector
-        self.sectorButton.title = (UtilitySPCMESO.sectorMap[sector] ?? "").truncate(3)
+        self.sectorButton.title = (UtilitySpcMeso.sectorMap[sector] ?? "").truncate(3)
         self.getContent()
     }
 
@@ -120,11 +120,11 @@ class ViewControllerSPCMESO: UIwXViewController {
     @objc func paramClicked(sender: ObjectToolbarIcon) {
         var paramArray = [String]()
         switch sender.title! {
-        case "SFC": paramArray = UtilitySPCMESO.paramSurface
-        case "UA":  paramArray = UtilitySPCMESO.paramUpperAir
-        case "CPE": paramArray = UtilitySPCMESO.paramCape
-        case "CMP": paramArray = UtilitySPCMESO.paramComp
-        case "SHR": paramArray = UtilitySPCMESO.paramShear
+        case "SFC": paramArray = UtilitySpcMeso.paramSurface
+        case "UA":  paramArray = UtilitySpcMeso.paramUpperAir
+        case "CPE": paramArray = UtilitySpcMeso.paramCape
+        case "CMP": paramArray = UtilitySpcMeso.paramComp
+        case "SHR": paramArray = UtilitySpcMeso.paramShear
         default: break
         }
         _ = ObjectPopUp(self, "Product Selection", sender, paramArray, self.productChangedByCode(_:))
@@ -180,7 +180,7 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilitySPCMESOInputOutput.getAnimation(self.sector, self.product, frameCount)
+            let animDrawable = UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
@@ -208,9 +208,9 @@ class ViewControllerSPCMESO: UIwXViewController {
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         var index = 0
-        if let product = UtilitySPCMESO.productShortList.firstIndex(of: self.product) {
-            index = UtilityUI.sideSwipe(sender, product, UtilitySPCMESO.productShortList)
+        if let product = UtilitySpcMeso.productShortList.firstIndex(of: self.product) {
+            index = UtilityUI.sideSwipe(sender, product, UtilitySpcMeso.productShortList)
         }
-        productChangedByCode(UtilitySPCMESO.productShortList[index])
+        productChangedByCode(UtilitySpcMeso.productShortList[index])
     }
 }

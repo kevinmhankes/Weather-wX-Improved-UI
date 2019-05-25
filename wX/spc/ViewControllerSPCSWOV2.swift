@@ -49,7 +49,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
                 self.product = "SWODY" + ActVars.spcswoDay
                 self.html = UtilityDownload.getTextProduct(self.product)
             }
-            self.bitmaps = UtilitySPCSWO.getImageUrls(ActVars.spcswoDay)
+            self.bitmaps = UtilitySpcSwo.getImageUrls(ActVars.spcswoDay)
             DispatchQueue.main.async {
                self.displayContent()
             }

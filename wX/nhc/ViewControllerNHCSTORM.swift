@@ -70,7 +70,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(self.product)
-            self.bitmaps.append(UtilityNHC.getImage(self.goesIdImg + self.goesSector, "vis"))
+            self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach {self.bitmaps.append(Bitmap(self.baseUrl + $0))}
             self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {

@@ -53,15 +53,15 @@ final class ObjectCardCC {
     func setImage(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNWS.getIcon(objCc.iconUrl).image
+                image.view.image = UtilityNws.getIcon(objCc.iconUrl).image
             } else {
                 image.view.image = UtilityImg.resizeImage(
-                    UtilityNWS.getIcon(objCc.iconUrl).image,
+                    UtilityNws.getIcon(objCc.iconUrl).image,
                     condenseScale
                 )
             }
         } else {
-            image.view.image = UtilityNWS.getIcon(
+            image.view.image = UtilityNws.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
                     objCc.data,
                     objCc.status

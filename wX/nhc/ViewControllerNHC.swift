@@ -12,7 +12,7 @@ class ViewControllerNHC: UIwXViewController {
     var textProductButton = ObjectToolbarIcon()
     var imageProductButton = ObjectToolbarIcon()
     var glcfsButton = ObjectToolbarIcon()
-    var objNHC: ObjectNHC?
+    var objNHC: ObjectNhc?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class ViewControllerNHC: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        objNHC = ObjectNHC(self, stackView)
+        objNHC = ObjectNhc(self, stackView)
         self.getContent()
     }
 
@@ -47,7 +47,7 @@ class ViewControllerNHC: UIwXViewController {
             self,
             "Product Selection",
             textProductButton,
-            UtilityNHC.textProducts,
+            UtilityNhc.textProducts,
             self.textProductChanged(_:)
         )
     }
@@ -68,13 +68,13 @@ class ViewControllerNHC: UIwXViewController {
             self,
             "Product Selection",
             imageProductButton,
-            UtilityNHC.imageTitles,
+            UtilityNhc.imageTitles,
             self.imageProductChanged(_:)
         )
     }
 
     func imageProductChanged(_ index: Int) {
-        ActVars.imageViewerUrl = UtilityNHC.imageUrls[index]
+        ActVars.imageViewerUrl = UtilityNhc.imageUrls[index]
         self.goToVC("imageviewer")
     }
 

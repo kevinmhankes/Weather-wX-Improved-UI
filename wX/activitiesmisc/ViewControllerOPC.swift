@@ -26,9 +26,9 @@ class ViewControllerOPC: UIwXViewController {
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityOPCImages.labels[self.index]
+        self.productButton.title = UtilityOpcImages.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityOPCImages.urls[self.index])
+            let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 Utility.writePref(self.prefToken, self.index)
@@ -37,7 +37,7 @@ class ViewControllerOPC: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOPCImages.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOpcImages.labels, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -45,6 +45,6 @@ class ViewControllerOPC: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityOPCImages.urls))
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityOpcImages.urls))
     }
 }

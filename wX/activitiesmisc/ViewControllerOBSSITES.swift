@@ -8,7 +8,7 @@ import UIKit
 
 class ViewControllerOBSSITES: UIwXViewController {
 
-    var capAlerts = [CAPAlert]()
+    var capAlerts = [CapAlert]()
     var filter = ""
     var listCity = [String]()
     var stateView = true

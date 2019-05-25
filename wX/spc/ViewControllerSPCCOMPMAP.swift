@@ -33,7 +33,7 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySPCCompmap.getImage(self.layers)
+            let bitmap = UtilitySpcCompmap.getImage(self.layers)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 self.serializeSettings()
@@ -43,10 +43,10 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
 
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Layer Selection", productButton)
-        (["Clear All"] + UtilitySPCCompmap.labels).enumerated().forEach { index, rid in
+        (["Clear All"] + UtilitySpcCompmap.labels).enumerated().forEach { index, rid in
             var pre = ""
             if index > 0 && layers.contains(
-                UtilitySPCCompmap.urlIndices[UtilitySPCCompmap.labels.firstIndex(of: rid)!]
+                UtilitySpcCompmap.urlIndices[UtilitySpcCompmap.labels.firstIndex(of: rid)!]
                 ) {
                 pre = "(on) "
             }
@@ -62,10 +62,10 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
             return
         }
         let prodLocal = product - 1
-        if layers.contains(UtilitySPCCompmap.urlIndices[prodLocal]) {
-            layers.remove(UtilitySPCCompmap.urlIndices[prodLocal])
+        if layers.contains(UtilitySpcCompmap.urlIndices[prodLocal]) {
+            layers.remove(UtilitySpcCompmap.urlIndices[prodLocal])
         } else {
-            layers.insert(UtilitySPCCompmap.urlIndices[prodLocal])
+            layers.insert(UtilitySpcCompmap.urlIndices[prodLocal])
         }
         self.getContent()
     }

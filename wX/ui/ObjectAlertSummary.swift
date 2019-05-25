@@ -23,7 +23,7 @@ final class ObjectAlertSummary: NSObject {
         _ uiv: UIViewController,
         _ stackView: UIStackView,
         _ filter: String,
-        _ capAlerts: [CAPAlert],
+        _ capAlerts: [CapAlert],
         _ gesture: UITapGestureRecognizer?,
         showImage: Bool = true
     ) {

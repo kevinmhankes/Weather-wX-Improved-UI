@@ -56,9 +56,9 @@ final class ObjectCard7Day {
     func setImage(_ index: Int, _ dayImgUrl: [String]) {
         if dayImgUrl.count > index {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNWS.getIcon(dayImgUrl[index]).image
+                image.view.image = UtilityNws.getIcon(dayImgUrl[index]).image
             } else {
-                image.view.image = UtilityImg.resizeImage(UtilityNWS.getIcon(dayImgUrl[index]).image, condenseScale)
+                image.view.image = UtilityImg.resizeImage(UtilityNws.getIcon(dayImgUrl[index]).image, condenseScale)
             }
         }
     }

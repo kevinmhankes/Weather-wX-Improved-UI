@@ -20,8 +20,8 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = (1...3).map {UtilitySPCSWO.getImageUrls(String($0), getAllImages: false)[0]}
-            self.bitmaps += UtilitySPCSWO.getImageUrls("48", getAllImages: true)
+            self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
+            self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
             DispatchQueue.main.async {
                 self.bitmaps.enumerated().forEach {
                     _ = ObjectImage(

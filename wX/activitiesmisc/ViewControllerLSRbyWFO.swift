@@ -10,7 +10,7 @@ import MapKit
 
 class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
 
-    var capAlerts = [CAPAlert]()
+    var capAlerts = [CapAlert]()
     var images = [UIImageView]()
     var urls = [String]()
     var wfo = ""

@@ -30,7 +30,7 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySPCSoundings.getImage(self.wfo)
+            let bitmap = UtilitySpcSoundings.getImage(self.wfo)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 self.siteButton.title = self.wfo

@@ -17,9 +17,9 @@ class ViewControllerMODELGENERIC: UIwXViewController {
     var productButton = ObjectToolbarIcon()
     var firstRun = true
     var subMenu = ObjectMenuData(
-        UtilityModelSPCHREFInterface.titles,
-        UtilityModelSPCHREFInterface.params,
-        UtilityModelSPCHREFInterface.labels
+        UtilityModelSpcHrefInterface.titles,
+        UtilityModelSpcHrefInterface.params,
+        UtilityModelSpcHrefInterface.labels
     )
     var modelObj = ObjectModel()
     var fabLeft: ObjectFab?
@@ -53,21 +53,21 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         }
         if ActVars.modelActivitySelected.contains("SPCSREF") {
             subMenu = ObjectMenuData(
-                UtilityModelsSPCSREFInterface.titles,
-                UtilityModelsSPCSREFInterface.params,
-                UtilityModelsSPCSREFInterface.labels
+                UtilityModelSpcSrefInterface.titles,
+                UtilityModelSpcSrefInterface.params,
+                UtilityModelSpcSrefInterface.labels
             )
         } else if ActVars.modelActivitySelected.contains("SPCHREF") {
             subMenu = ObjectMenuData(
-                UtilityModelSPCHREFInterface.titles,
-                UtilityModelSPCHREFInterface.params,
-                UtilityModelSPCHREFInterface.labels
+                UtilityModelSpcHrefInterface.titles,
+                UtilityModelSpcHrefInterface.params,
+                UtilityModelSpcHrefInterface.labels
             )
         } else if ActVars.modelActivitySelected.contains("WPCGEFS") {
             subMenu = ObjectMenuData(
-                UtilityModelWPCGEFSInterface.titles,
-                UtilityModelWPCGEFSInterface.params,
-                UtilityModelWPCGEFSInterface.labels
+                UtilityModelWpcGefsInterface.titles,
+                UtilityModelWpcGefsInterface.params,
+                UtilityModelWpcGefsInterface.labels
             )
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))

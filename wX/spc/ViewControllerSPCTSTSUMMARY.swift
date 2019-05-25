@@ -21,7 +21,7 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.urls = UtilitySPC.getTstormOutlookUrls()
+            self.urls = UtilitySpc.getTstormOutlookUrls()
             self.bitmaps = self.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
                 self.displayContent()

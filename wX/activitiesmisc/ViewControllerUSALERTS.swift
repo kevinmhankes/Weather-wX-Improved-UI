@@ -9,7 +9,7 @@ import AVFoundation
 
 class ViewControllerUSALERTS: UIwXViewController {
 
-    var capAlerts = [CAPAlert]()
+    var capAlerts = [CapAlert]()
     var filter = ""
     var filterButton = ObjectToolbarIcon()
     var objAlertSummary = ObjectAlertSummary()
@@ -30,7 +30,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")
             let alertArr = html.parseColumn("<entry>(.*?)</entry>")
-            alertArr.forEach {self.capAlerts.append(CAPAlert(eventText: $0))}
+            alertArr.forEach {self.capAlerts.append(CapAlert(eventText: $0))}
             DispatchQueue.main.async {
                 self.displayContent()
             }
