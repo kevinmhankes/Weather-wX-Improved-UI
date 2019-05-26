@@ -31,7 +31,9 @@ final class ObjectSlider {
         slider.isContinuous = true
         slider.thumbTintColor = AppColors.primaryColorFab
         button.backgroundColor = UIColor.white
-        let container = ObjectCardStackView(arrangedSubviews: [button, slider])
+        let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        slider.widthAnchor.constraint(equalToConstant: width).isActive = true
         stackView.addArrangedSubview(container.view)
         slider.value = Float(initialValue)
         setLabel()
