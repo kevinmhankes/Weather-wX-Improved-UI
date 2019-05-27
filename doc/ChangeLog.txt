@@ -40,6 +40,7 @@ Last app store release: 55990
 
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first
+			[IMP} enhancements in dual-pane landscape radar
 2019_05_26 56008 	[IMP] move slider below textual label with width anchor
 2019_05_25 56007 	[REF] camelCase numerous util* files
 2019_05_24 56006 	[IMP] more slider work

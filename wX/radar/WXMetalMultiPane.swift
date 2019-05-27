@@ -429,7 +429,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
-            WXGLNexrad.radarProductListTDWR.forEach {product in
+            WXGLNexrad.radarProductListTdwr.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in
                     self.productChanged(sender.tag, product.split(":")[0])}))
             }
@@ -510,24 +510,24 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func mapCall(annotationView: MKAnnotationView) {
-        self.ridChanged((annotationView.annotation!.title!)!, mapIndex)
+        self.radarSiteChanged((annotationView.annotation!.title!)!, mapIndex)
     }
 
-    func ridChanged(_ rid: String, _ index: Int) {
+    func radarSiteChanged(_ radarSite: String, _ index: Int) {
         stopAnimate()
         UtilityFileManagement.deleteAllFiles()
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
-            siteButton[index].title = rid
+            siteButton[index].title = radarSite
         } else {
-            radarSiteButton.title = rid
+            radarSiteButton.title = radarSite
         }
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
-                $0!.resetRidAndGet(rid)
+                $0!.resetRidAndGet(radarSite)
             }
         } else {
-            wxMetal[index]!.resetRidAndGet(rid)
+            wxMetal[index]!.resetRidAndGet(radarSite)
         }
         self.view.subviews.forEach {
             if $0 is UITextView {
@@ -633,7 +633,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetal[index]!.radarBuffers.rd.degree, distRidKm))
         let heightMsl = Int(wxMetal[index]!.radarBuffers.rd.radarHeight) + heightAgl
-        alertMessage += "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
+        alertMessage += MyApplication.newline + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
         let alert = UIAlertController(
             title: "Closest radar site:",
             message: alertMessage,
@@ -644,7 +644,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 + ": "
                 +  Utility.readPref("RID_LOC_" + rid.name, "")
                 + " (" + String(rid.distance) + " mi)"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name, index)}))
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
         alert.addAction(UIAlertAction(
             "Change Tilt", { _ in self.showTiltMenu()})

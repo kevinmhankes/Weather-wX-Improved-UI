@@ -22,14 +22,14 @@ final class UtilityMetar {
     static var obsArrAviationColor = [Int]()
     static var obsStateOld = ""
     static var lastRefresh: CLong = 0
-    static var refreshLocMin = RadarPreferences.radarDataRefreshInterval
+    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
     static var obsLatlon = [String: LatLon]()
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
         let currentTime1: CLong = UtilityTime.currentTimeMillis()
-        let currentTimeSec: CLong = currentTime1 / 1000
-        let refreshIntervalSec: CLong = refreshLocMin * 60
-        if (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized || radarSite != obsStateOld {
+        let currentTimeSeconds: CLong = currentTime1 / 1000
+        let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
+        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized || radarSite != obsStateOld {
             var obsAl = [String]()
             var obsAlExt = [String]()
             var obsAlWb = [String]()

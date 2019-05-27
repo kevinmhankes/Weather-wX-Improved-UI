@@ -101,7 +101,7 @@ final class WXMetalNexradLevelData {
             dis.skipBytes(6)
             dis.skipBytes(56)
             dis.skipBytes(32)
-            numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decode4Bit(radarBuffers!))
+            numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decode(radarBuffers!))
             binSize = WXGLNexrad.getBinSize(productCode)
             numberOfRadials = 360
         }
@@ -110,7 +110,7 @@ final class WXMetalNexradLevelData {
    func decocodeAndPlotNexradL2() {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
-        UtilityWXMetalPerfL2.level2Decompress(radarBuffers!)
+        UtilityWXMetalPerfL2.decompress(radarBuffers!)
         Level2Metal.decode(radarBuffers!, days, msecs)
         writeTimeL2()
         binSize = WXGLNexrad.getBinSize(productCode)

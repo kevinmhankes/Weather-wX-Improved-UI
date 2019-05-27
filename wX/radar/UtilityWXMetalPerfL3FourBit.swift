@@ -6,7 +6,7 @@
 
 class UtilityWXMetalPerfL3FourBit {
 
-    static func decode4Bit(_ radarBuffers: ObjectMetalRadarBuffers) -> UInt16 {
+    static func decode(_ radarBuffers: ObjectMetalRadarBuffers) -> UInt16 {
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
         var numberOfRangeBins: UInt16 = 0
         if dis.capacity > 0 {

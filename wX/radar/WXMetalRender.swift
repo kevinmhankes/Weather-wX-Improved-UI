@@ -30,7 +30,7 @@ class WXMetalRender {
     var zPos: Float = -7.0
     var zoom: Float = 1.0
     var lastPanLocation: CGPoint!
-    var TDWR = false
+    private var tdwr = false
     private static let zoomToHideMiscFeatures: Float = 0.5
     var displayHold: Bool = false
     private var stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
@@ -84,7 +84,7 @@ class WXMetalRender {
     var gpsLocation = LatLon(0.0, 0.0)
     private var geographicBuffers = [ObjectMetalBuffers]()
     private var ridPrefixGlobal = "0"
-    var idxStr = "0"
+    var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     private final var l3BaseFn = "nids"
     private final var stiBaseFn = "nids_sti_tab"
@@ -124,7 +124,7 @@ class WXMetalRender {
         self.timeButton = timeButton
         self.productButton = productButton
         self.paneNumber = paneNumber
-        self.idxStr = String(paneNumber)
+        self.indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
         readPrefs()
         regenerateProductList()
@@ -305,7 +305,7 @@ class WXMetalRender {
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
             )
         case "STI":
-            fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, idxStr)
+            fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, indexString)
         default:
             break
         }
@@ -454,9 +454,9 @@ class WXMetalRender {
     func checkIfTDWR() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         if self.product == "TV0" || self.product == "TZL" {
-            self.TDWR = true
+            self.tdwr = true
         } else {
-            self.TDWR = false
+            self.tdwr = false
         }
         if (self.product == "N0Q"
             || self.product == "N1Q"
@@ -464,11 +464,11 @@ class WXMetalRender {
             || self.product == "N3Q"
             || self.product == "L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
-            self.TDWR = true
+            self.tdwr = true
         }
         if self.product == "TZL" && !ridIsTdwr {
             self.radarProduct = "N0Q"
-            self.TDWR = false
+            self.tdwr = false
         }
         if (self.product == "N0U"
             || self.product == "N1U"
@@ -476,11 +476,11 @@ class WXMetalRender {
             || self.product == "N3U"
             || self.product == "L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
-            self.TDWR = true
+            self.tdwr = true
         }
         if self.product == "TV0" && !ridIsTdwr {
             self.radarProduct = "N0U"
-            self.TDWR = false
+            self.tdwr = false
         }
     }
 
@@ -492,13 +492,13 @@ class WXMetalRender {
                     url,
                     self.rid,
                     self.radarProduct,
-                    self.idxStr,
-                    self.TDWR
+                    self.indexString,
+                    self.tdwr
                 )
                 if !self.radarProduct.contains("L2") {
-                    self.radarBuffers.fileName = self.l3BaseFn + self.idxStr
+                    self.radarBuffers.fileName = self.l3BaseFn + self.indexString
                 } else {
-                    self.radarBuffers.fileName = "l2" + self.idxStr
+                    self.radarBuffers.fileName = "l2" + self.indexString
                 }
             } else {
                 isAnimating = true
@@ -521,7 +521,7 @@ class WXMetalRender {
                 }
                 if PolygonType.SWO.display {
                     UtilitySwoD1.get()
-                    self.constructSWOLines()
+                    self.constructSwoLines()
                 }
             }
             DispatchQueue.main.async {
@@ -547,7 +547,7 @@ class WXMetalRender {
 
     func constructPolygons() {
         self.radarBuffers.metalBuffer = []
-        self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.idxStr)
+        self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.indexString)
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
@@ -679,38 +679,38 @@ class WXMetalRender {
     func constructLevel3TextProduct(_ type: PolygonType) {
         switch type.string {
         case "HI":
-            constructHI()
+            constructHi()
         case "TVS":
-            constructTVS()
+            constructTvs()
         case "STI":
-            constructSTILines()
+            constructStiLines()
         default: break
         }
     }
 
-    func constructSTILines() {
-        fSti = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, stiBaseFn + idxStr)
+    func constructStiLines() {
+        fSti = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, stiBaseFn + indexString)
         constructGenericLinesShort(stiBuffers, fSti)
         stiBuffers.generateMtlBuffer(device)
     }
 
-    func constructTVS() {
+    func constructTvs() {
         tvsBuffers.lenInit = tvsBuffers.type.size
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3TVS.decocodeAndPlotNexradTVS(pn, tvsBaseFn + idxStr)
+        let stormList = WXGLNexradLevel3TVS.decocodeAndPlotNexradTVS(pn, tvsBaseFn + indexString)
         tvsBuffers.setXYList(stormList)
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
 
-    func constructHI() {
+    func constructHi() {
         hiBuffers.lenInit = hiBuffers.type.size
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3HailIndex.decocodeAndPlotNexradHailIndex(pn, hiBaseFn + idxStr)
+        let stormList = WXGLNexradLevel3HailIndex.decocodeAndPlotNexradHailIndex(pn, hiBaseFn + indexString)
         hiBuffers.setXYList(stormList)
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
@@ -726,7 +726,7 @@ class WXMetalRender {
         spotterBuffers.generateMtlBuffer(device)
     }
 
-    func constructSWOLines() {
+    func constructSwoLines() {
         swoBuffers.initialize(2, Color.MAGENTA)
         colorSwo = []
         colorSwo.append(Color.MAGENTA)

@@ -23,7 +23,7 @@ final class WXGLNexrad {
         "NSW: Base Spectrum Width"
     ]
 
-    static var radarProductListTDWR = [
+    static var radarProductListTdwr = [
         "TZL: Long Range Digital Base Reflectivity",
         "TV0: Digital Base Velocity"
     ]
