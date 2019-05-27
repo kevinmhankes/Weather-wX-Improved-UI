@@ -98,7 +98,7 @@ public class UtilityRadarUI {
         let height = Double(uiv.view.bounds.size.height)
         var yModified = Double(y)
         var xModified = Double(x)
-        if numberOfPanes != 1 {
+        /*if numberOfPanes != 1 {
             if y > uiv.view.frame.height / 2.0 {
                 yModified -= Double(uiv.view.frame.height) / 2.0
             }
@@ -107,10 +107,33 @@ public class UtilityRadarUI {
             if x > uiv.view.frame.width / 2.0 {
                 xModified -= Double(uiv.view.frame.width) / 2.0
             }
+        }*/
+        if numberOfPanes == 2 {
+            if !UtilityUI.isLandscape() {
+                if y > uiv.view.frame.height / 2.0 {
+                    yModified -= Double(uiv.view.frame.height) / 2.0
+                }
+            } else {
+                if x > uiv.view.frame.width / 2.0 {
+                    xModified -= Double(uiv.view.frame.width) / 2.0
+                }
+            }
+        }
+        if numberOfPanes == 4 {
+            if y > uiv.view.frame.height / 2.0 {
+                yModified -= Double(uiv.view.frame.height) / 2.0
+            }
+            if x > uiv.view.frame.width / 2.0 {
+                xModified -= Double(uiv.view.frame.width) / 2.0
+            }
         }
         var density = Double(ortInt * 2) / width
         if numberOfPanes == 4 {
             density = 2.0 * Double(ortInt * 2.0) / width
+        }
+        if numberOfPanes == 2 && UtilityUI.isLandscape() {
+            //density = 0.5 * Double(ortInt * 0.5) / width
+            //density = Double(ortInt * 2) / width
         }
         var yMiddle = 0.0
         var xMiddle = 0.0
@@ -124,6 +147,12 @@ public class UtilityRadarUI {
         } else {
             xMiddle = width / 2.0
         }
+        if numberOfPanes == 2 && UtilityUI.isLandscape() {
+            xMiddle = width / 4.0
+            yMiddle = height / 2.0
+        } else {
+            //xMiddle = width / 2.0
+        }
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
         let radarLocation = LatLon(
@@ -135,6 +164,7 @@ public class UtilityRadarUI {
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
         var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
+        print(newY, newX)
         return LatLon.reversed(newX, newY)
     }
 
