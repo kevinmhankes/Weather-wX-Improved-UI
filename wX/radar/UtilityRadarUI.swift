@@ -147,11 +147,14 @@ public class UtilityRadarUI {
         } else {
             xMiddle = width / 2.0
         }
-        if numberOfPanes == 2 && UtilityUI.isLandscape() {
-            xMiddle = width / 4.0
-            yMiddle = height / 2.0
-        } else {
-            //xMiddle = width / 2.0
+        if numberOfPanes == 2 {
+            if !UtilityUI.isLandscape() {
+                xMiddle = width / 2.0
+                yMiddle = height / 4.0
+            } else {
+                xMiddle = width / 4.0
+                yMiddle = height / 2.0
+            }
         }
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
@@ -164,7 +167,7 @@ public class UtilityRadarUI {
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
         var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
-        print(newY, newX)
+        //print("LATLON: " + String(newY) + " " + String(newX))
         return LatLon.reversed(newX, newY)
     }
 
