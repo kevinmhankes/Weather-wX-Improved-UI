@@ -58,25 +58,20 @@ class UtilityWatch {
         let lat = latLon.lat
         let lon = latLon.lon
         var text = ""
-        var textWatNoList = ""
-        var mcdNoArr = [String]()
+        var numberList = [String]()
         var watchLatLon: String
         switch type.string {
         case "WATCH":
-            textWatNoList = MyApplication.watNoList.value
-            mcdNoArr = textWatNoList.split(":")
+            numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlonCombined.value
         case "MCD":
-            textWatNoList = MyApplication.mcdNoList.value
-            mcdNoArr = textWatNoList.split(":")
+            numberList = MyApplication.mcdNoList.value.split(":")
             watchLatLon = MyApplication.mcdLatlon.value
         case "MPD":
-            textWatNoList = MyApplication.mpdNoList.value
-            mcdNoArr = textWatNoList.split(":")
+            numberList = MyApplication.mpdNoList.value.split(":")
             watchLatLon = MyApplication.mpdLatlon.value
         default:
-            textWatNoList = MyApplication.watNoList.value
-            mcdNoArr = textWatNoList.split(":")
+            numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlon.value
         }
         var latlonArr = watchLatLon.split(":")
@@ -107,7 +102,7 @@ class UtilityWatch {
                 let polygon2 = poly2.build()
                 let contains = polygon2.contains(point: ExternalPoint(Float(lat), Float(lon)))
                 if contains && notFound {
-                    text = mcdNoArr[z]
+                    text = numberList[z]
                     notFound = false
                 }
             }

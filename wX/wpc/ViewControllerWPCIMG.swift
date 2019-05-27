@@ -16,7 +16,7 @@ class ViewControllerWPCIMG: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(showProdMenu))
+        productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
@@ -41,7 +41,7 @@ class ViewControllerWPCIMG: UIwXViewController {
         }
     }
 
-    @objc func showProdMenu() {
+    @objc func showProductMenu() {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
 

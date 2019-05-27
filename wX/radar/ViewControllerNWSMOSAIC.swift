@@ -33,19 +33,19 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
         if ActVars.nwsMosaicType == "local" {
             ActVars.nwsMosaicType = ""
             isLocal = true
-            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNWSMosaic.getSectorFromState(
-                UtilityUSImgNWSMosaic.getStateFromRid()
+            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNwsMosaic.getSectorFromState(
+                UtilityUSImgNwsMosaic.getStateFromRid()
             )
-            index = UtilityUSImgNWSMosaic.sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
+            index = UtilityUSImgNwsMosaic.sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent(index)
     }
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityUSImgNWSMosaic.labels[self.index]
+        self.productButton.title = UtilityUSImgNwsMosaic.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityUSImgNWSMosaic.get(UtilityUSImgNWSMosaic.sectors[self.index])
+            let bitmap = UtilityUSImgNwsMosaic.get(UtilityUSImgNwsMosaic.sectors[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 if !self.isLocal {
@@ -64,7 +64,7 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            UtilityUSImgNWSMosaic.labels,
+            UtilityUSImgNwsMosaic.labels,
             self.getContent(_:)
         )
     }
@@ -85,8 +85,8 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
 
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityUSImgNWSMosaic.getAnimation(
-                UtilityUSImgNWSMosaic.sectors[self.index],
+            let animDrawable = UtilityUSImgNwsMosaic.getAnimation(
+                UtilityUSImgNwsMosaic.sectors[self.index],
                 frameCount
             )
             DispatchQueue.main.async {
@@ -96,6 +96,6 @@ class ViewControllerNWSMOSAIC: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityUSImgNWSMosaic.sectors))
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityUSImgNwsMosaic.sectors))
     }
 }

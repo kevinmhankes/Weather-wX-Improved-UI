@@ -6,7 +6,7 @@
 
 import UIKit
 
-class UtilityUSImgNWSMosaic {
+class UtilityUSImgNwsMosaic {
 
     static let sectors = [
         "latest",

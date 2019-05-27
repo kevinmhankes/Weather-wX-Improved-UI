@@ -22,7 +22,6 @@
 // TODO stop using R.raw
 // TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
-// TODO [BUG] GPS location dot to big on tablet
 // [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
@@ -39,6 +38,8 @@
 
 Last app store release: 55990
 
+2019_05_27 56009 	[REF] camelCase vars/methods
+			[IMP] in radar display existing polygons first
 2019_05_26 56008 	[IMP] move slider below textual label with width anchor
 2019_05_25 56007 	[REF] camelCase numerous util* files
 2019_05_24 56006 	[IMP] more slider work

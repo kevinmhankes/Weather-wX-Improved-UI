@@ -15,20 +15,20 @@ final class SevereWarning {
     }
 
     func generateString(_ html: String) {
-        var nwsOfficeArr = [String]()
-        var nwsOffice = ""
-        var nwsLoc = ""
-        let warningArr = html.parseColumn(WXGLPolygonWarnings.pVtec)
-        warningArr.forEach {
+        var wfos = [String]()
+        var wfo = ""
+        var location = ""
+        let warnings = html.parseColumn(WXGLPolygonWarnings.vtecPattern)
+        warnings.forEach {
             count += 1
             text += $0
-            nwsOfficeArr = $0.split(".")
-            if nwsOfficeArr.count > 1 {
-                nwsOffice = nwsOfficeArr[2]
-                nwsOffice = nwsOffice.replaceAllRegexp("^[KP]", "")
-                nwsLoc = Utility.readPref("NWS_LOCATION_" + nwsOffice, "")
+            wfos = $0.split(".")
+            if wfos.count > 1 {
+                wfo = wfos[2]
+                wfo = wfo.replaceAllRegexp("^[KP]", "")
+                location = Utility.readPref("NWS_LOCATION_" + wfo, "")
             }
-            text += "  " + nwsLoc + MyApplication.newline
+            text += "  " + location + MyApplication.newline
         }
     }
 }

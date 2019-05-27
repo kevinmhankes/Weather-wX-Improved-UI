@@ -469,6 +469,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func getPolygonWarnings() {
+        // display existing data first
+        if self.wxMetal[0] != nil {
+            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityPolygons.getData()
             DispatchQueue.main.async {

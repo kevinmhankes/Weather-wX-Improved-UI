@@ -4,18 +4,18 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilitySWOD1 {
+class UtilitySwoD1 {
 
     static var initialized = false
     static var lastRefresh: CLong = 0
-    static var refreshLocMin = RadarPreferences.radarDataRefreshInterval * 2
+    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval * 2
     static var hashSwo = [Int: [Double]]()
 
-    static func getSWO() {
+    static func get() {
         let currentTime1: CLong = UtilityTime.currentTimeMillis()
-        let currentTimeSec: CLong = currentTime1 / 1000
-        let refreshIntervalSec: CLong = refreshLocMin * 60
-        if (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized {
+        let currentTimeSeconds: CLong = currentTime1 / 1000
+        let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
+        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
             var retStr = ""
             let threatList = ["HIGH", "MDT", "ENH", "SLGT", "MRGL"]
             let day = 1

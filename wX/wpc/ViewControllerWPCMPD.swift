@@ -56,7 +56,7 @@ class ViewControllerWPCMPD: UIwXViewController {
         }
     }
 
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.imageViewerUrl = self.urls[sender.data]
         self.goToVC("imageviewer")
     }
@@ -79,7 +79,7 @@ class ViewControllerWPCMPD: UIwXViewController {
                 _ = ObjectImage(
                     self.stackView,
                     $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
+                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
                 )
             }
             if self.bitmaps.count == 1 {

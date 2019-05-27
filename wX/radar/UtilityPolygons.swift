@@ -8,15 +8,15 @@ public class UtilityPolygons {
 
     static var initialized = false
     static var currentTime: CLong = 0
-    static var currentTimeSec: CLong = 0
-    static var refreshIntervalSec: CLong = 0
+    static var currentTimeSeconds: CLong = 0
+    static var refreshIntervalSeconds: CLong = 0
     static var lastRefresh: CLong = 0
-    static var refreshLocMin = RadarPreferences.radarDataRefreshInterval
+    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
 
     static func getData() {
         currentTime = UtilityTime.currentTimeMillis()
-        currentTimeSec = currentTime / 1000
-        refreshIntervalSec = refreshLocMin * 60
+        currentTimeSeconds = currentTime / 1000
+        refreshIntervalSeconds = refreshDataInMinutes * 60
         if !PolygonType.TST.display {
             UtilityDownloadRadar.clearPolygonVtec()
         }
@@ -27,13 +27,12 @@ public class UtilityPolygons {
             UtilityDownloadRadar.clearMcd()
             UtilityDownloadRadar.clearWatch()
         }
-        if (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized {
+        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
             if PolygonType.TST.display {
                 UtilityDownloadRadar.getPolygonVtec()
             } else {
                 UtilityDownloadRadar.clearPolygonVtec()
             }
-
             ObjectPolygonWarning.polygonList.forEach {
                 let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
                 if polygonType.isEnabled {
@@ -42,7 +41,6 @@ public class UtilityPolygons {
                     UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)
                 }
             }
-
             if PolygonType.MPD.display {
                 UtilityDownloadRadar.getMpd()
             } else {

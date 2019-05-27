@@ -6,26 +6,26 @@
 
 final class WXGLPolygonWarnings {
 
-    static let pVtec="([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
+    static let vtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
         + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
 
     // FIXME have TOR/FFW/TST use this
-    static func addGenericWarnings(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
+    static func addGeneric(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
         var warningList = [Double]()
         let prefToken = type.storage.value
         var x = [Double]()
         var y = [Double]()
         var pixXInit = 0.0
         var pixYInit = 0.0
-        let warningHTML = prefToken.replace("\n", "").replace(" ", "")
-        let polygonArr = warningHTML.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        let vtecAl = warningHTML.parseColumn(pVtec)
+        let html = prefToken.replace("\n", "").replace(" ", "")
+        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+        let vtecs = html.parseColumn(vtecPattern)
         var polyCount = -1
-        polygonArr.forEach { poly in
+        polygons.forEach { poly in
             polyCount += 1
-            if type.type == PolygonTypeGeneric.SPS || vtecAl.count > polyCount
-                && !vtecAl[polyCount].hasPrefix("0.EXP")
-                && !vtecAl[polyCount].hasPrefix("0.CAN") {
+            if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount
+                && !vtecs[polyCount].hasPrefix("0.EXP")
+                && !vtecs[polyCount].hasPrefix("0.CAN") {
                 let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
                 if polyTmp.count > 1 {
                     y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
@@ -49,8 +49,7 @@ final class WXGLPolygonWarnings {
         return warningList
     }
 
-    static func addWarnings(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
-        print(type.string)
+    static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = MyApplication.severeDashboardFfw.value
         if type.string == "TOR" {
@@ -62,15 +61,15 @@ final class WXGLPolygonWarnings {
         var y = [Double]()
         var pixXInit = 0.0
         var pixYInit = 0.0
-        let warningHTML = prefToken.replace("\n", "").replace(" ", "")
-        let polygonArr = warningHTML.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        let vtecAl = warningHTML.parseColumn(pVtec)
+        let html = prefToken.replace("\n", "").replace(" ", "")
+        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+        let vtecs = html.parseColumn(vtecPattern)
         var polyCount = -1
-        polygonArr.forEach { poly in
+        polygons.forEach { poly in
             polyCount += 1
-            if vtecAl.count > polyCount
-                && !vtecAl[polyCount].hasPrefix("0.EXP")
-                && !vtecAl[polyCount].hasPrefix("0.CAN") {
+            if vtecs.count > polyCount
+                && !vtecs[polyCount].hasPrefix("0.EXP")
+                && !vtecs[polyCount].hasPrefix("0.CAN") {
                 let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
                 if polyTmp.count > 1 {
                     y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}

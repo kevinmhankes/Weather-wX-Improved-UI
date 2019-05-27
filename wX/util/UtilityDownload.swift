@@ -234,7 +234,7 @@ final class UtilityDownload {
         case "RAD_2KM":
             needsBitmap = false
             if !UIPreferences.useAwcRadarMosaic {
-                bitmap = UtilityUSImgNWSMosaic.getLocalRadarMosaic()
+                bitmap = UtilityUSImgNwsMosaic.getLocalRadarMosaic()
             } else {
                 var product = "rad_rala"
                 let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"

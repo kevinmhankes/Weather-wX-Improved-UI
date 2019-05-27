@@ -279,28 +279,28 @@ class WXMetalRender {
         case "WATCH_TORNADO":
             fList = UtilityWatch.add(pn, buffers.type)
         case "TST":
-            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+            fList = WXGLPolygonWarnings.add(pn, buffers.type)
         case "TOR":
-            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+            fList = WXGLPolygonWarnings.add(pn, buffers.type)
         case "FFW":
-            fList = WXGLPolygonWarnings.addWarnings(pn, buffers.type)
+            fList = WXGLPolygonWarnings.add(pn, buffers.type)
         case "SMW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(
+            fList = WXGLPolygonWarnings.addGeneric(
                 pn,
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!
             )
         case "SQW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(
+            fList = WXGLPolygonWarnings.addGeneric(
                 pn,
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!
             )
         case "DSW":
-            fList = WXGLPolygonWarnings.addGenericWarnings(
+            fList = WXGLPolygonWarnings.addGeneric(
                 pn,
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!
             )
         case "SPS":
-            fList = WXGLPolygonWarnings.addGenericWarnings(
+            fList = WXGLPolygonWarnings.addGeneric(
                 pn,
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
             )
@@ -520,7 +520,7 @@ class WXMetalRender {
                     self.constructWBLines()
                 }
                 if PolygonType.SWO.display {
-                    UtilitySWOD1.getSWO()
+                    UtilitySwoD1.get()
                     self.constructSWOLines()
                 }
             }
@@ -737,13 +737,13 @@ class WXMetalRender {
         var tmpCoords = (0.0, 0.0)
         var fSize = 0
         (0...4).forEach {
-            if let flArr = UtilitySWOD1.hashSwo[$0] {
+            if let flArr = UtilitySwoD1.hashSwo[$0] {
                 fSize += flArr.count
             }
         }
         swoBuffers.metalBuffer = []
         (0...4).forEach { z in
-            if let flArr = UtilitySWOD1.hashSwo[z] {
+            if let flArr = UtilitySwoD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
                     tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
                         Double(flArr[j]),

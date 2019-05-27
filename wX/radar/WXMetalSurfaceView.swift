@@ -87,10 +87,18 @@ final class WXMetalSurfaceView {
         if wxMetal.numberOfPanes == 1 {
             return 0
         } else if wxMetal.numberOfPanes == 2 {
-            if location.y < uiv.view.frame.height / 2.0 {
-                return 0
+            if !UtilityUI.isLandscape() {
+                if location.y < uiv.view.frame.height / 2.0 {
+                    return 0
+                } else {
+                    return 1
+                }
             } else {
-                return 1
+                if location.x < uiv.view.frame.width / 2.0 {
+                    return 0
+                } else {
+                    return 1
+                }
             }
         } else { // 4 pane
             if location.y < uiv.view.frame.height / 2.0 {
@@ -159,10 +167,18 @@ final class WXMetalSurfaceView {
         var xMiddle = Float(uiv.view.frame.width / 2.0)
         var yMiddle = Float(uiv.view.frame.height / 2.0)
         if numberOfPanes == 2 {
-            if radarIndex == 0 {
-                yMiddle *= 0.5
+            if !UtilityUI.isLandscape() {
+                if radarIndex == 0 {
+                    yMiddle *= 0.5
+                } else {
+                    yMiddle *= 1.5
+                }
             } else {
-                yMiddle *= 1.5
+                if radarIndex == 0 {
+                    xMiddle *= 0.5
+                } else {
+                    xMiddle *= 1.5
+                }
             }
         }
         if numberOfPanes == 4 {
