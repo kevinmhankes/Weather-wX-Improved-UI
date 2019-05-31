@@ -26,7 +26,6 @@
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
 // TODO enhance NHC storm card like kotlin
-// TODO [FIX] transition to dual pane radar now shows same size
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -38,6 +37,7 @@
 
 Last app store release: 55990
 
+2019_05_27 56010
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first
 			[IMP} enhancements in dual-pane landscape radar

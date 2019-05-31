@@ -199,8 +199,8 @@ final class WXMetalSurfaceView {
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 if $0!.zoom * 2.0 < maxZoom {
-                    $0!.xPos +=  (Float(location.x) - xMiddle) * density
-                    $0!.yPos +=  (yMiddle - Float(location.y)) * density
+                    $0!.xPos +=  ((Float(location.x) - xMiddle) * density)
+                    $0!.yPos +=  ((yMiddle - Float(location.y)) * density)
                     setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)
                     $0!.zoom *= 2.0
                     $0!.setZoom()
