@@ -16,6 +16,7 @@ final class ObjectTileImage {
         image.img.tag = index
         image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         image.setBitmap(bitmap)
+        image.img.isAccessibilityElement = true
         image.img.accessibilityLabel = filename
         stackView.addArrangedSubview(image.img)
     }
