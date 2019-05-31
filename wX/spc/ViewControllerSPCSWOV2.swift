@@ -37,6 +37,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         if ActVars.spcswoDay == "48" {
             stateButton.title = ""
         }
+        
         self.getContent()
     }
 
@@ -91,6 +92,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
             )
         }
+        scrollView.accessibilityElements = [self.textView.view]
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
