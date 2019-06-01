@@ -77,6 +77,7 @@ final class ObjectNhc: NSObject {
     }
 
     func showData() {
+        textAtl = ""
         if self.atlSumList.count < 1 {
             textAtl =  "There are no tropical cyclones in the Atlantic at this time."
         } else {
@@ -91,6 +92,7 @@ final class ObjectNhc: NSObject {
                 }
             }
         }
+        textPac = ""
         if self.pacSumList.count < 1 {
             textPac += "There are no tropical cyclones in the Eastern Pacific at this time."
         } else {
