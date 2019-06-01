@@ -18,15 +18,12 @@ public class UtilityDownloadWatch {
         currentTimeSeconds = currentTime / 1000
         refreshIntervalSeconds = refreshDataInMinutes * 60
         if !PolygonType.MCD.display {
-            UtilityDownloadRadar.clearMcd()
             UtilityDownloadRadar.clearWatch()
         }
         if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
             if PolygonType.MCD.display {
-                UtilityDownloadRadar.getMcd()
                 UtilityDownloadRadar.getWatch()
             } else {
-                UtilityDownloadRadar.clearMcd()
                 UtilityDownloadRadar.clearWatch()
             }
             initialized = true

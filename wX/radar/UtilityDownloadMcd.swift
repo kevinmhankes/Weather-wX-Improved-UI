@@ -17,41 +17,14 @@ public class UtilityDownloadMcd {
         currentTime = UtilityTime.currentTimeMillis()
         currentTimeSeconds = currentTime / 1000
         refreshIntervalSeconds = refreshDataInMinutes * 60
-        if !PolygonType.TST.display {
-            UtilityDownloadRadar.clearPolygonVtec()
-        }
-        if !PolygonType.MPD.display {
-            UtilityDownloadRadar.clearMpd()
-        }
         if !PolygonType.MCD.display {
             UtilityDownloadRadar.clearMcd()
-            UtilityDownloadRadar.clearWatch()
         }
         if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
-            if PolygonType.TST.display {
-                UtilityDownloadRadar.getPolygonVtec()
-            } else {
-                UtilityDownloadRadar.clearPolygonVtec()
-            }
-            ObjectPolygonWarning.polygonList.forEach {
-                let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
-                if polygonType.isEnabled {
-                    UtilityDownloadRadar.getPolygonVtecByType(polygonType)
-                } else {
-                    UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)
-                }
-            }
-            if PolygonType.MPD.display {
-                UtilityDownloadRadar.getMpd()
-            } else {
-                UtilityDownloadRadar.clearMpd()
-            }
             if PolygonType.MCD.display {
                 UtilityDownloadRadar.getMcd()
-                UtilityDownloadRadar.getWatch()
             } else {
                 UtilityDownloadRadar.clearMcd()
-                UtilityDownloadRadar.clearWatch()
             }
             initialized = true
             let currentTime: CLong = UtilityTime.currentTimeMillis()

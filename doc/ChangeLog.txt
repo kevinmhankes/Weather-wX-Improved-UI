@@ -59,6 +59,9 @@ Changes since last release:
 			[IMP] SPC Watch - add TTS Play
 			[IMP] don't hide GPS when pan
 			[IMP] radar refresh interval make min 1 not 0
+
+// appstore release June 1, 2019
+
 2019_06_01 56011	[IMP] initial voiceover support
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first
