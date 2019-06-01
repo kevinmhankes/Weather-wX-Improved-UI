@@ -37,7 +37,6 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         if ActVars.spcswoDay == "48" {
             stateButton.title = ""
         }
-        
         self.getContent()
     }
 

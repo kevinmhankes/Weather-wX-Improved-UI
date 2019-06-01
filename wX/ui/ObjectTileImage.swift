@@ -10,14 +10,14 @@ final class ObjectTileImage {
 
     private var image = ObjectImage()
 
-    init(_ stackView: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat) {
+    init(_ stackView: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat, _ accessibilityLabel: String) {
         let bitmap = Bitmap.fromFile(filename)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         image.img.tag = index
         image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         image.setBitmap(bitmap)
         image.img.isAccessibilityElement = true
-        image.img.accessibilityLabel = filename
+        image.img.accessibilityLabel = accessibilityLabel
         stackView.addArrangedSubview(image.img)
     }
 

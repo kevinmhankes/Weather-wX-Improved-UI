@@ -26,6 +26,25 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .leftArrow: "ic_keyboard_arrow_left_24dp",
         .rightArrow: "ic_keyboard_arrow_right_24dp"
     ]
+    
+    static let iconToAccessibilityLabel: [IconType: String] = [
+        .share: "ic_share_24dp",
+        .play: "play",
+        .playList: "play list",
+        .done: "go back",
+        .radar: "radar",
+        .plus: "add",
+        .cloud: "cloud",
+        .save: "save",
+        .search: "search",
+        .delete: "delete",
+        .gps: "GPS",
+        .submenu: "submenu",
+        .wfo: "wfo",
+        .severeDashboard: "severe dashboard",
+        .leftArrow: "go left",
+        .rightArrow: "go right"
+    ]
 
     var button = UIButton()
 
@@ -60,6 +79,8 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     convenience init(_ uiv: UIViewController, _ iconType: IconType, _ action: Selector) {
         self.init(uiv, ObjectToolbarIcon.iconToString[iconType] ?? "", action)
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = ObjectToolbarIcon.iconToAccessibilityLabel[iconType] ?? "No label"
     }
 
     convenience init(_ target: UIViewController, _ action: Selector?) {

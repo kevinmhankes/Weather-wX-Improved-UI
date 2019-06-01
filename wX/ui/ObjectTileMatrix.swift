@@ -12,6 +12,7 @@ final class ObjectImageTileMatrix: NSObject {
     private var menuButton = ObjectToolbarIcon()
     private var tabType: TabType = .spc
     private var icons = [String]()
+    private var labels = [String]()
 
     convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ tabType: TabType) {
         self.init()
@@ -55,8 +56,12 @@ final class ObjectImageTileMatrix: NSObject {
         let rowCount = UIPreferences.tilesPerRow
         let iconsPerRow = CGFloat(rowCount)
         switch tabType {
-        case .spc: icons = iconsSpc
-        case .misc: icons = iconsMisc
+        case .spc:
+            icons = iconsSpc
+            labels = labelsSpc
+        case .misc:
+            icons = iconsMisc
+            labels = labelsMisc
         }
         var jIndex = 0
         while true {
@@ -66,7 +71,7 @@ final class ObjectImageTileMatrix: NSObject {
                 if jIndex >= icons.count {
                     break
                 }
-                let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow)
+                let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow, labels[jIndex])
                 switch tabType {
                 case .spc:
                     tile.addGestureRecognizer(
@@ -274,6 +279,25 @@ final class ObjectImageTileMatrix: NSObject {
         "fire_outlook",
         "tstorm"
     ]
+    
+    var labelsSpc = [
+        "SREF",
+        "Mesoanalysis",
+        "HRRR",
+        "HREF",
+        "Compmap",
+        "Convective Summary by Image",
+        "Day 1",
+        "Day 2",
+        "Day 3",
+        "Day 4 through 8",
+        "Storm reports today",
+        "Storm reports yesterday",
+        "MCD",
+        "Watches",
+        "Fire outlooks",
+        "Thunderstorm outlooks"
+    ]
 
     var iconsMisc = [
         "ncep",
@@ -294,5 +318,26 @@ final class ObjectImageTileMatrix: NSObject {
         "opc",
         "goesfulldisk",
         "lightning"
+    ]
+    
+    var labelsMisc = [
+        "NCEP Models",
+        "HRRR",
+        "NSSL WRF",
+        "WPC GEFS",
+        "Dual pane nexrad radar",
+        "Quad pane nexrad radar",
+        "US Warnings",
+        "National text products",
+        "NHC",
+        "nws_sector",
+        "GOES",
+        "Nation Images",
+        "Twitter state",
+        "Twitter torndado",
+        "Observation sites",
+        "OPC",
+        "GOES Full Disk",
+        "Lightning"
     ]
 }
