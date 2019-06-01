@@ -13,7 +13,7 @@ public class UtilityPolygons {
     static var lastRefresh: CLong = 0
     static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
 
-    static func getData() {
+    /*static func getData() {
         currentTime = UtilityTime.currentTimeMillis()
         currentTimeSeconds = currentTime / 1000
         refreshIntervalSeconds = refreshDataInMinutes * 60
@@ -57,5 +57,12 @@ public class UtilityPolygons {
             let currentTime: CLong = UtilityTime.currentTimeMillis()
             lastRefresh = currentTime / 1000
         }
+    }*/
+
+    static func getData() {
+        UtilityDownloadWarnings.get()
+        UtilityDownloadWatch.get()
+        UtilityDownloadMcd.get()
+        UtilityDownloadMpd.get()
     }
 }
