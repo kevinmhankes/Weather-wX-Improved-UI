@@ -26,9 +26,20 @@ final class UtilityDownloadRadar {
     }
 
     static func getPolygonVtec() {
-        MyApplication.severeDashboardTst.value = urlTst.getNwsHtml()
-        MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
-        MyApplication.severeDashboardTor.value = urlTor.getNwsHtml()
+        let tstHtml = urlTst.getNwsHtml()
+        if tstHtml != "" {
+            MyApplication.severeDashboardTst.value = tstHtml
+        }
+        let ffwHtml = urlFfw.getNwsHtml()
+        if ffwHtml != "" {
+            MyApplication.severeDashboardFfw.value = ffwHtml
+        }
+        let torHtml = urlTor.getNwsHtml()
+        if torHtml != "" {
+            MyApplication.severeDashboardTor.value = torHtml
+        }
+        //MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
+        //MyApplication.severeDashboardTor.value = urlTor.getNwsHtml()
     }
 
     static func clearPolygonVtec() {
@@ -38,11 +49,13 @@ final class UtilityDownloadRadar {
     }
 
     static func getMcd() {
-        let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
-        MyApplication.severeDashboardMcd.value = dataAsString
+        let html = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
+        if html != "" {
+            MyApplication.severeDashboardMcd.value = html
+        }
         var mcdNumberList = ""
         var mcdLatLon = ""
-        let mcdList = dataAsString.parseColumn("title=.Mesoscale Discussion #(.*?).>")
+        let mcdList = MyApplication.severeDashboardMcd.value.parseColumn("title=.Mesoscale Discussion #(.*?).>")
         mcdList.forEach {
             let mcdNumber = String(format: "%04d", Int($0.replace(" ", "")) ?? 0)
             let mcdPre = UtilityDownload.getTextProduct("SPCMCD" + mcdNumber)
@@ -59,11 +72,13 @@ final class UtilityDownloadRadar {
     }
 
     static func getMpd() {
-        let dataAsString = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
-        MyApplication.severeDashboardMpd.value = dataAsString
+        let html = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
+        if html != "" {
+            MyApplication.severeDashboardMpd.value = html
+        }
         var mpdNumberList = ""
         var mpdLatLon = ""
-        let mpdList = dataAsString.parseColumn(">MPD #(.*?)</a></strong>")
+        let mpdList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
         mpdList.forEach {
             let mcdPre = UtilityDownload.getTextProduct("WPCMPD" + $0)
             mpdNumberList += $0 + ":"
@@ -74,13 +89,15 @@ final class UtilityDownloadRadar {
     }
 
     static func getWatch() {
-        let dataAsString = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
-        MyApplication.severeDashboardWat.value = dataAsString
+        let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
+        if html != "" {
+            MyApplication.severeDashboardWat.value = html
+        }
         var watchNumberList = ""
         var watchLatLon = ""
         var watchLatLonTor = ""
         var watchLatLonCombined = ""
-        let mcdList = dataAsString.parseColumn("[om] Watch #([0-9]*?)</a>")
+        let mcdList = html.parseColumn("[om] Watch #([0-9]*?)</a>")
         mcdList.forEach {
             var watchNumber = String(format: "%04d", Int($0) ?? 0)
             watchNumber = watchNumber.replace(" ", "0")

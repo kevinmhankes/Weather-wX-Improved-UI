@@ -22,7 +22,9 @@ final class ObjectNhc: NSObject {
     private var pacTitleList = [String]()
     private var uiv: UIViewController
     private var stackView: UIStackView
-    private var blob = ""
+    //private var blob = ""
+    private var textAtl = ""
+    private var textPac = ""
     private var bitmaps = [Bitmap]()
 
     private let imageUrls = [
@@ -76,7 +78,7 @@ final class ObjectNhc: NSObject {
 
     func showData() {
         if self.atlSumList.count < 1 {
-            blob =  "There are no tropical cyclones in the Atlantic at this time." + MyApplication.newline
+            textAtl =  "There are no tropical cyclones in the Atlantic at this time."
         } else {
             self.atlSumList.indices.forEach {
                 if atlImg1List[$0] != "" {
@@ -90,8 +92,7 @@ final class ObjectNhc: NSObject {
             }
         }
         if self.pacSumList.count < 1 {
-            blob += "There are no tropical cyclones in the Eastern Pacific at this time."
-                +  MyApplication.newline + MyApplication.newline
+            textPac += "There are no tropical cyclones in the Eastern Pacific at this time."
         } else {
             self.pacSumList.indices.forEach {
                 if pacImg1List[$0] != "" {
@@ -103,6 +104,12 @@ final class ObjectNhc: NSObject {
                     )
                 }
             }
+        }
+        if textAtl != "" {
+            _ = ObjectTextView(stackView, textAtl)
+        }
+        if textPac != "" {
+            _ = ObjectTextView(stackView, textPac)
         }
         bitmaps.forEach {_ = ObjectImage(stackView, $0)}
     }
