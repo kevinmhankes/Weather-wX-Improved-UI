@@ -37,7 +37,20 @@
 
 Last app store release: 55990
 
-2019_05_27 56010
+Changes since last release:
+- initial iOS voiceover support
+- if nexrad radar data is old show timestamp text as red
+- in single pane nexrad radar if tap timestamp convert to dual pane radar
+- CPC/WPC 3-7 and 7-14 day outlooks were broken
+- in nexrad radar when long press show beam height
+- images are now scaled properly in landscape mode, no excessing cropping
+- add 850mb (version 2) product to SPC Mesoanalysis
+- in settings use slider instead of number picker when possible
+- in nexrad radar when tap stop button in animation show latest frame
+- add moon data to main screen
+
+
+2019_06_01 56011	[IMP] initial voiceover support
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first
 			[IMP} enhancements in dual-pane landscape radar

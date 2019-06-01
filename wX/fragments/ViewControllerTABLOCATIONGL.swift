@@ -90,11 +90,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             object: nil
         )
         toolbar = ObjectToolbar(.top)
-        let radarButton = ObjectToolbarIcon(self, "ic_flash_on_24dp", #selector(radarClicked))
-        let cloudButton = ObjectToolbarIcon(self, "ic_cloud_24dp", #selector(cloudClicked))
-        let wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
-        menuButton = ObjectToolbarIcon(self, "ic_more_vert_white_24dp", #selector(menuClicked))
-        let dashButton = ObjectToolbarIcon(self, "ic_report_24dp", #selector(dashClicked))
+        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
+        let cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
+        let wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
+        menuButton = ObjectToolbarIcon(self, .submenu, #selector(menuClicked))
+        let dashButton = ObjectToolbarIcon(self, .severeDashboard, #selector(dashClicked))
         let fixedSpace = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
             target: nil,

@@ -28,7 +28,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
     ]
     
     static let iconToAccessibilityLabel: [IconType: String] = [
-        .share: "ic_share_24dp",
+        .share: "share content",
         .play: "play",
         .playList: "play list",
         .done: "go back",

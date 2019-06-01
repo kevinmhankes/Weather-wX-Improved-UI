@@ -44,12 +44,13 @@ class ViewControllerHOURLY: UIwXViewController {
     }
 
     private func displayContent() {
-        _ = ObjectTextView(
+        let objTextView = ObjectTextView(
             self.stackView,
             self.html,
             FontSize.hourly.size,
             UITapGestureRecognizer(target: self, action: #selector(textAction))
         )
+        scrollView.accessibilityElements = [objTextView.view]
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

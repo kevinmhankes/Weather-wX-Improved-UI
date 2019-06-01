@@ -60,16 +60,20 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
+        var voiceOverViews = [Any]()
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
             if $1 != "" {
                 let sArr = $1.split(MyApplication.newline)
-                _ = ObjectTextView(
+                let objTextView = ObjectTextView(
                     stackView,
                     "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1,
                     UITapGestureRecognizer(target: self, action: #selector(gotoAlerts))
                 )
+                voiceOverViews.append(objTextView.view)
+                //scrollView.accessibilityElements += [objTextView.tv]
             }
         }
+        scrollView.accessibilityElements = voiceOverViews
     }
 
     @objc func gotoAlerts() {
