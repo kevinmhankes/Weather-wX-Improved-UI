@@ -13,7 +13,7 @@ public class UtilityDownloadWarnings {
     static var lastRefresh: CLong = 0
     static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
 
-    static func getData() {
+    static func get() {
         currentTime = UtilityTime.currentTimeMillis()
         currentTimeSeconds = currentTime / 1000
         refreshIntervalSeconds = refreshDataInMinutes * 60

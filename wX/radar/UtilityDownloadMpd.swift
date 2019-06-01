@@ -11,9 +11,9 @@ public class UtilityDownloadMpd {
     static var currentTimeSeconds: CLong = 0
     static var refreshIntervalSeconds: CLong = 0
     static var lastRefresh: CLong = 0
-    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
+    static var refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 6)
 
-    static func getData() {
+    static func get() {
         currentTime = UtilityTime.currentTimeMillis()
         currentTimeSeconds = currentTime / 1000
         refreshIntervalSeconds = refreshDataInMinutes * 60
