@@ -10,6 +10,7 @@ import AVFoundation
 class ViewControllerSPCMCD: UIwXViewController {
 
     var bitmaps = [Bitmap]()
+    var numbers = [String]()
     var listOfText = [String]()
     var urls = [String]()
     var playListButton = ObjectToolbarIcon()
@@ -51,6 +52,7 @@ class ViewControllerSPCMCD: UIwXViewController {
                 self.listOfText.append(self.text)
                 self.urls.append(imgUrl)
                 self.bitmaps.append(Bitmap(imgUrl))
+                self.numbers.append(number)
             }
             DispatchQueue.main.async {
                 self.displayContent()
@@ -78,13 +80,18 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     private func displayContent() {
+        var views = [UIView]()
+        text = ""
         if self.bitmaps.count > 0 {
             self.bitmaps.enumerated().forEach {
-                _ = ObjectImage(
+                let objImage = ObjectImage(
                     self.stackView,
                     $1,
                     UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
                 )
+                objImage.img.accessibilityLabel = numbers[$0]
+                views.append(objImage.img)
+                text += listOfText[$0]
             }
             if self.bitmaps.count == 1 {
                 _ = ObjectTextView(self.stackView, self.text)
@@ -93,6 +100,7 @@ class ViewControllerSPCMCD: UIwXViewController {
             _ = ObjectTextView(self.stackView, "No active SPC MCDs")
         }
         self.view.bringSubviewToFront(self.toolbar)
+        //scrollView.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -194,6 +194,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 object: nil
             )
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(onPause), name:
+            UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(willEnterForeground),
@@ -307,6 +309,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 repeats: true
             )
         }
+    }
+
+    @objc func onPause() {
+        print("viewWillDisappear")
+        stopAnimate()
     }
 
     func modelMatrix(_ index: Int) -> Matrix4 {
@@ -461,7 +468,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if RadarPreferences.locdotFollowsGps {
             resumeGps()
         }
-        stopAnimate()
+        //stopAnimate()
         if wxMetal[0] != nil {
             self.wxMetal.forEach { $0!.getRadar("") }
             getPolygonWarnings()
@@ -470,6 +477,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func getPolygonWarnings() {
         // display existing data first
+        print("display existing warning data")
         if self.wxMetal[0] != nil {
             self.wxMetal.forEach { $0!.constructAlertPolygons() }
         }
@@ -479,6 +487,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
+                print("display new warning data")
             }
         }
     }
@@ -561,11 +570,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func stopAnimate() {
-        inOglAnim = false
-        animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
-        if wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.getRadar("") }
-            getPolygonWarnings()
+        if inOglAnim {
+            inOglAnim = false
+            animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
+            if wxMetal[0] != nil {
+                self.wxMetal.forEach { $0!.getRadar("") }
+                getPolygonWarnings()
+            }
         }
     }
 

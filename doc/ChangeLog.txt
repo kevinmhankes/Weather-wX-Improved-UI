@@ -55,6 +55,7 @@ Changes since last release:
 
 2019_06_01 56012	[IMP] for watch/warn data if no data is returned don't update var
 			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
+			[IMP] SPC MCD - play button now TTS all text available
 2019_06_01 56011	[IMP] initial voiceover support
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first
