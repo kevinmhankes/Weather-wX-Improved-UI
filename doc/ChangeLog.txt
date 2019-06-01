@@ -29,7 +29,6 @@
 // TODO continued voiceover support https://developer.apple.com/documentation/uikit/accessibility/supporting_voiceover_in_your_app
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
-// TODO radar refresh interval make min 1 not 0
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -57,6 +56,9 @@ Changes since last release:
 2019_06_01 56012	[IMP] for watch/warn data if no data is returned don't update var
 			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
 			[IMP] SPC MCD - play button now TTS all text available
+			[IMP] SPC Watch - add TTS Play
+			[IMP] don't hide GPS when pan
+			[IMP] radar refresh interval make min 1 not 0
 2019_06_01 56011	[IMP] initial voiceover support
 2019_05_27 56009 	[REF] camelCase vars/methods
 			[IMP] in radar display existing polygons first

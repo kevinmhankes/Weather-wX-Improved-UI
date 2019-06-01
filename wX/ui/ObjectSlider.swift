@@ -90,7 +90,7 @@ final class ObjectSlider {
             "RADAR_TVS_SIZE": 0.0,
             "RADAR_AVIATION_SIZE": 0.0,
             "RADAR_OBS_EXT_ZOOM": 0.0,
-            "RADAR_DATA_REFRESH_INTERVAL": 0.0,
+            "RADAR_DATA_REFRESH_INTERVAL": 1.0,
             "WXOGL_SIZE": 0.0,
 
             "TEXTVIEW_FONT_SIZE": 0.0,

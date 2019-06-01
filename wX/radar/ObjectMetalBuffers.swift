@@ -66,6 +66,10 @@ class ObjectMetalBuffers {
             || type.string == "TVS" {
             self.shape = .triangle
         }
+        if type.string == "LOCDOT_CIRCLE"
+            || type.string == "LOCDOT" {
+            self.honorDisplayHold = false
+        }
     }
 
     func generateMtlBuffer(_ device: MTLDevice) {

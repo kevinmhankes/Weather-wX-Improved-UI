@@ -5,21 +5,28 @@
  *****************************************************************************/
 
 import UIKit
+import AVFoundation
 
 class ViewControllerSPCWATCH: UIwXViewController {
 
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
     var spcWatchNumber = ""
+    //var playListButton = ObjectToolbarIcon()
+    var playButton = ObjectToolbarIcon()
+    var text = ""
+    let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        //playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         spcWatchNumber = ActVars.spcWatchNumber
         if spcWatchNumber != "" {
             ActVars.spcWatchNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -49,6 +56,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
                             $1,
                             UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
                         )
+                        self.text += self.listOfText[$0]
                     }
                     if self.bitmaps.count == 1 {
                         _ = ObjectTextView(self.stackView, mcdTxt)
@@ -69,4 +77,12 @@ class ViewControllerSPCWATCH: UIwXViewController {
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
+
+    @objc func playClicked() {
+        UtilityActions.playClicked(text, synth, playButton)
+    }
+
+    //@objc func playlistClicked() {
+    //    UtilityPlayList.add(self.product, text, self, playListButton)
+    //}
 }
