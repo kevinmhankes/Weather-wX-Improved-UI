@@ -198,7 +198,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(willEnterForeground),
+            selector: #selector(onResume),
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
@@ -464,7 +464,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         getPolygonWarnings()
     }
 
-    @objc func willEnterForeground() {
+    @objc func onResume() {
         if RadarPreferences.locdotFollowsGps {
             resumeGps()
         }
