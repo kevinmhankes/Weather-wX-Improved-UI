@@ -78,20 +78,30 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     }
 
     private func displayContent() {
-        _ = ObjectImage(
+        var views = [UIView]()
+        let objectImage = ObjectImage(
             self.stackView,
             self.bitmaps[0],
             UITapGestureRecognizerWithData(0, self, #selector(imgClicked(sender:)))
         )
+        // FIXME improve naming for images
+        objectImage.img.accessibilityLabel = "Outlook image"
+        objectImage.img.isAccessibilityElement = true
+        views.append(objectImage.img)
         self.textView = ObjectTextView(self.stackView, self.html)
+        textView.tv.isAccessibilityElement = true
+        views.append(textView.tv)
         stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
-            _ = ObjectImage(
+            let objectImage = ObjectImage(
                 self.stackView,
                 self.bitmaps[$0],
                 UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
             )
+            objectImage.img.accessibilityLabel = "Outlook image"
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
         }
-        scrollView.accessibilityElements = [self.textView.view]
+        scrollView.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -50,6 +50,7 @@ Last app store release: 55990
 			[IMP] don't hide GPS when pan
 			[IMP] radar refresh interval make min 1 not 0
 			[IMP] voiceover enhance in SPC MCD/Wat/Fireoutlook
+			[IMP] improve voiceover in Severe dashbard, MPD, and SWO
 
 // appstore release June 1, 2019
 Changes since last release:

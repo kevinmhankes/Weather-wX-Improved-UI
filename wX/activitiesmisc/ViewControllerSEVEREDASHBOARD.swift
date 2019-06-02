@@ -52,7 +52,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         self.goToVC(token)
     }
 
-    func showTextWarnings() {
+    func showTextWarnings(_ views: inout [UIView]) {
         let wTor = SevereWarning("tor")
         let wTst = SevereWarning("tst")
         let wFfw = SevereWarning("ffw")
@@ -60,20 +60,18 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
-        var voiceOverViews = [Any]()
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
             if $1 != "" {
                 let sArr = $1.split(MyApplication.newline)
-                let objTextView = ObjectTextView(
+                let objectTextView = ObjectTextView(
                     stackView,
                     "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1,
                     UITapGestureRecognizer(target: self, action: #selector(gotoAlerts))
                 )
-                voiceOverViews.append(objTextView.view)
-                //scrollView.accessibilityElements += [objTextView.tv]
+                objectTextView.tv.isAccessibilityElement = true
+                views.append(objectTextView.tv)
             }
         }
-        scrollView.accessibilityElements = voiceOverViews
     }
 
     @objc func gotoAlerts() {
@@ -90,47 +88,62 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     private func displayContent() {
-        self.showTextWarnings()
-        _ = ObjectImage(
+        var views = [UIView]()
+        self.showTextWarnings(&views)
+        let objectImage = ObjectImage(
             self.stackView,
             bitmap,
             UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:)))
         )
+        // TODO list numbers in text
+        objectImage.img.accessibilityLabel = "spc storm reports"
+        objectImage.img.isAccessibilityElement = true
+        views.append(objectImage.img)
         var index = 0
         var watI = 0
         var mcdI = 0
         var mpdI = 0
         snWat.bitmaps.forEach {
-            _ = ObjectImage(
+            let objectImage  = ObjectImage(
                 self.stackView,
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActions.append("SPCWAT" + snWat.numberList[watI])
+            objectImage.img.accessibilityLabel = "SPCWAT" + snWat.numberList[watI]
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
             index += 1
             watI += 1
         }
         snMcd.bitmaps.forEach {
-            _ = ObjectImage(
+            let objectImage = ObjectImage(
                 self.stackView,
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActions.append("SPCMCD" + snMcd.numberList[mcdI])
+            objectImage.img.accessibilityLabel = "SPCMCD" + snMcd.numberList[mcdI]
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
             index += 1
             mcdI += 1
         }
         snMpd.bitmaps.forEach {
-            _ = ObjectImage(
+            let objectImage = ObjectImage(
                 self.stackView,
                 $0,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
             )
             self.buttonActions.append("WPCMPD" + snMpd.numberList[mpdI])
+            objectImage.img.accessibilityLabel = "WPCMPD" + snMpd.numberList[mpdI]
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
             index += 1
             mpdI += 1
         }
         self.view.bringSubviewToFront(self.toolbar)
+        scrollView.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
