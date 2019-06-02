@@ -40,6 +40,17 @@
 
 Last app store release: 55990
 
+
+
+2019_06_02 56012	[IMP] for watch/warn data if no data is returned don't update var
+			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
+			[IMP] SPC MCD - play button now TTS all text available
+			[IMP] SPC Watch - add TTS Play
+			[IMP] don't hide GPS when pan
+			[IMP] radar refresh interval make min 1 not 0
+			[IMP] voiceover enhance in SPC MCD/Wat/Fireoutlook
+
+// appstore release June 1, 2019
 Changes since last release:
 - initial iOS voiceover support
 - if nexrad radar data is old show timestamp text as red
@@ -51,16 +62,6 @@ Changes since last release:
 - in settings use slider instead of number picker when possible
 - in nexrad radar when tap stop button in animation show latest frame
 - add moon data to main screen
-
-
-2019_06_01 56012	[IMP] for watch/warn data if no data is returned don't update var
-			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
-			[IMP] SPC MCD - play button now TTS all text available
-			[IMP] SPC Watch - add TTS Play
-			[IMP] don't hide GPS when pan
-			[IMP] radar refresh interval make min 1 not 0
-
-// appstore release June 1, 2019
 
 2019_06_01 56011	[IMP] initial voiceover support
 2019_05_27 56009 	[REF] camelCase vars/methods

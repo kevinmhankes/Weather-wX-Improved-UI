@@ -37,13 +37,20 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     private func displayContent() {
+        var views = [UIView]()
+        var dayNumber = 0
         self.bitmaps.enumerated().forEach {
-            _ = ObjectImage(
+            let objectImage = ObjectImage(
                 self.stackView,
                 $1,
                 UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
             )
+            objectImage.img.isAccessibilityElement = true
+            views += [objectImage.img]
+            dayNumber += 1
+            objectImage.img.accessibilityLabel = "day " + String(dayNumber)
         }
+        self.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

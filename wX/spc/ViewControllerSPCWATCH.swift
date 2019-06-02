@@ -49,20 +49,30 @@ class ViewControllerSPCWATCH: UIwXViewController {
                 self.bitmaps.append(Bitmap(imgUrl))
             }
             DispatchQueue.main.async {
+                var views = [UIView]()
                 if self.bitmaps.count > 0 {
                     self.bitmaps.enumerated().forEach {
-                        _ = ObjectImage(
+                        let objectImage = ObjectImage(
                             self.stackView,
                             $1,
                             UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
                         )
                         self.text += self.listOfText[$0]
+                        objectImage.img.isAccessibilityElement = true
+                        views += [objectImage.img]
+                        //print(self.listOfText[$0])
+                        let number = self.listOfText[$0].parse("Severe Thunderstorm Watch Number ([0-9]*)\\b")
+                        objectImage.img.accessibilityLabel = number + " " + self.listOfText[$0].parse("Severe Thunderstorm Watch for (.*?)\n")
                     }
                     if self.bitmaps.count == 1 {
                         _ = ObjectTextView(self.stackView, mcdTxt)
                     }
                 } else {
-                    _ = ObjectTextView(self.stackView, "No active watches")
+                    let message = "No active watches"
+                    let objectTextView = ObjectTextView(self.stackView, message)
+                    objectTextView.tv.isAccessibilityElement = true
+                    views += [objectTextView.tv]
+                    objectTextView.tv.accessibilityLabel = message
                 }
                 self.view.bringSubviewToFront(self.toolbar)
             }

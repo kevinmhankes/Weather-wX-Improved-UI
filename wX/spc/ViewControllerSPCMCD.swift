@@ -84,23 +84,28 @@ class ViewControllerSPCMCD: UIwXViewController {
         text = ""
         if self.bitmaps.count > 0 {
             self.bitmaps.enumerated().forEach {
-                let objImage = ObjectImage(
+                let objectImage = ObjectImage(
                     self.stackView,
                     $1,
                     UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
                 )
-                objImage.img.accessibilityLabel = numbers[$0]
-                views.append(objImage.img)
+                objectImage.img.accessibilityLabel = numbers[$0]
+                objectImage.img.isAccessibilityElement = true
+                views.append(objectImage.img)
                 text += listOfText[$0]
             }
             if self.bitmaps.count == 1 {
                 _ = ObjectTextView(self.stackView, self.text)
             }
         } else {
-            _ = ObjectTextView(self.stackView, "No active SPC MCDs")
+            let message = "No active SPC MCDs"
+            let objectTextView = ObjectTextView(self.stackView, message)
+            objectTextView.tv.isAccessibilityElement = true
+            views += [objectTextView.tv]
+            objectTextView.tv.accessibilityLabel = message
         }
         self.view.bringSubviewToFront(self.toolbar)
-        //scrollView.accessibilityElements = views
+        scrollView.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
