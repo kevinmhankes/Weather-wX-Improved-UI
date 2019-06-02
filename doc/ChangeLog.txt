@@ -29,6 +29,7 @@
 // TODO continued voiceover support https://developer.apple.com/documentation/uikit/accessibility/supporting_voiceover_in_your_app
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
+// TODO bug - when add new location and navigate back to list it shows condition from 1st location
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
