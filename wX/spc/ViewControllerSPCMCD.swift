@@ -96,7 +96,9 @@ class ViewControllerSPCMCD: UIwXViewController {
                 text += listOfText[$0]
             }
             if self.bitmaps.count == 1 {
-                _ = ObjectTextView(self.stackView, self.text)
+                let objectTextView = ObjectTextView(self.stackView, self.text)
+                objectTextView.tv.isAccessibilityElement = true
+                views.append(objectTextView.tv)
             }
         } else {
             let message = "No active SPC MCDs"
