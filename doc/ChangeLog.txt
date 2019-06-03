@@ -43,6 +43,12 @@ Last app store release: 55990
 
 
 
+Changes since last release:
+- enhanced iOS voiceover support in MCD/Watch/MPD/Severe dashboad and Homescreen textual widgets
+- don't hide GPS circle when panning in nexrad radar
+- in NHC activity if no current storms display a textual label stating such
+- in data fetch for watches and warnings if a network issue keep current data instead of showing nothing
+
 2019_06_02 56012	[IMP] for watch/warn data if no data is returned don't update var
 			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
 			[IMP] SPC MCD - play button now TTS all text available

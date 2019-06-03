@@ -391,6 +391,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 objTv.addGestureRecognizer(
                     UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:)))
                 )
+                objTv.tv.accessibilityLabel = html
             }
         }
     }
