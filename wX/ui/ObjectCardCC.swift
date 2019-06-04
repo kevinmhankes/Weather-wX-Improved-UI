@@ -14,6 +14,7 @@ final class ObjectCardCC {
     private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     let condenseScale: CGFloat = 0.50
+    private var horizontalContainer = ObjectCardStackView()
 
     // FIXME rename objFcst
     init(_ stackView: UIStackView, _ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
@@ -33,7 +34,11 @@ final class ObjectCardCC {
             )
         }
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
-        let horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
+        topText.tv.isAccessibilityElement = false
+        middleText.tv.isAccessibilityElement = false
+        bottomText.tv.isAccessibilityElement = false
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
+        horizontalContainer.stackView.isAccessibilityElement = true
         let stackViewLocalCC = ObjectStackViewHS()
         stackViewLocalCC.setupWithPadding()
         stackView.addArrangedSubview(stackViewLocalCC)
@@ -74,6 +79,7 @@ final class ObjectCardCC {
         topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
         bottomText.text = objCc.rawMetar
+        horizontalContainer.stackView.accessibilityLabel = objCc.spokenText
     }
 
     func addGestureRecognizer(

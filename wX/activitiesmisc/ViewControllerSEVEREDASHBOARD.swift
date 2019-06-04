@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 import UIKit
+import AVFoundation
 
 class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
@@ -13,6 +14,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     let snMcd = SevereNotice("mcd")
     let snMpd = SevereNotice("mpd")
     var bitmap = Bitmap()
+    let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +32,34 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             self.snWat.getBitmaps(MyApplication.watNoList.value)
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
             DispatchQueue.main.async {
+                if UIAccessibility.isVoiceOverRunning {
+                    UtilityActions.speakText(self.getStatusText(), self.synth)
+                }
                self.displayContent()
             }
         }
+    }
+
+    func getStatusText() -> String {
+        var spokenText = "Download complete with"
+        let wTor = SevereWarning("tor")
+        let wTst = SevereWarning("tst")
+        let wFfw = SevereWarning("ffw")
+        let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
+        wTor.generateString(MyApplication.severeDashboardTor.value)
+        wTst.generateString(MyApplication.severeDashboardTst.value)
+        wFfw.generateString(MyApplication.severeDashboardFfw.value)
+        [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
+            if $1 != "" {
+                let sArr = $1.split(MyApplication.newline)
+                let count = String(sArr.count - 1)
+                spokenText += count + titles[$0] + " "
+            }
+        }
+        spokenText += String(self.snMcd.bitmaps.count) + " mcd "
+            + String(self.snWat.bitmaps.count) + " watch "
+            + String(self.snMpd.bitmaps.count) + " mpd "
+        return spokenText
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
@@ -63,12 +90,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
             if $1 != "" {
                 let sArr = $1.split(MyApplication.newline)
+                let visibleText = "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1
                 let objectTextView = ObjectTextView(
                     stackView,
-                    "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1,
+                    visibleText,
                     UITapGestureRecognizer(target: self, action: #selector(gotoAlerts))
                 )
                 objectTextView.tv.isAccessibilityElement = true
+                objectTextView.tv.accessibilityLabel = visibleText
                 views.append(objectTextView.tv)
             }
         }
@@ -84,7 +113,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
+        UtilityShare.shareImage(self,
+                                sender,
+                                [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps
+        )
     }
 
     private func displayContent() {

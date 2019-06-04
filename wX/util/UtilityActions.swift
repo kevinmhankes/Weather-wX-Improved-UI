@@ -180,6 +180,18 @@ final class UtilityActions {
     static func doneClicked(_ uiv: UIViewController) {
         uiv.dismiss(animated: true, completion: {})
     }
+    
+    static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
+        var myUtterance = AVSpeechUtterance(string: "")
+        if !globalSynth.isSpeaking {
+            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(text))
+            globalSynth.speak(myUtterance)
+        } else if globalSynth.isPaused {
+            globalSynth.continueSpeaking()
+        } else {
+            globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
+        }
+    }
 
     static func playClicked(_ textView: UITextView, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")

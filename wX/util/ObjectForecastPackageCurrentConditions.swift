@@ -24,6 +24,7 @@ final class ObjectForecastPackageCurrentConditions {
     var visibility = ""
     var condition = ""
     var rawMetar = ""
+    var spokenText = ""
 
     convenience init(_ locNum: Int) {
         self.init()
@@ -101,5 +102,10 @@ final class ObjectForecastPackageCurrentConditions {
         }
         topLine = retStr
         middleLine = retStr2
+        spokenText = condition + ", temperature is " + self.temperature + " with wind at " + self.windDirection + " "
+            + self.windSpeed + "miles per hour" +
+            " dew point is " + self.dewpoint + ", relative humidity is "
+            + self.relativeHumidity + ", pressure in milli-bars is "
+            + self.seaLevelPressure + ", vibilibity is " + self.visibility + " miles" + status
     }
 }

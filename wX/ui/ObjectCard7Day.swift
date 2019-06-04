@@ -33,7 +33,10 @@ final class ObjectCard7Day {
             .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view]
         )
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
+        topText.tv.isAccessibilityElement = false
+        bottomText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
+        horizontalContainer.stackView.isAccessibilityElement = true
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
@@ -51,6 +54,8 @@ final class ObjectCard7Day {
     func setTextFields(_ textArr: (top: String, bottom: String)) {
         topText.text = textArr.top
         bottomText.text = textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        horizontalContainer.stackView.accessibilityLabel = textArr.top
+            + textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func setImage(_ index: Int, _ dayImgUrl: [String]) {

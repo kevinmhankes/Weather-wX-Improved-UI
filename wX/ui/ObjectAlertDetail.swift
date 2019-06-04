@@ -9,15 +9,19 @@ import UIKit
 final class ObjectAlertDetail {
 
     private var textViews = [ObjectTextView]()
+    private var stackView: UIStackView = UIStackView()
 
     convenience init(_ stackView: UIStackView) {
         self.init()
         (0...6).forEach { _ in
-            let objText = ObjectTextView(stackView, "")
-            textViews.append(objText)
+            let objectTextView = ObjectTextView(stackView, "")
+            objectTextView.tv.isAccessibilityElement = false
+            textViews.append(objectTextView)
         }
         textViews[0].font = FontSize.extraLarge.size
         textViews[4].color = UIColor.blue
+        stackView.isAccessibilityElement = true
+        self.stackView = stackView
     }
 
     func updateContent(_ alert: CapAlert) {
@@ -30,6 +34,9 @@ final class ObjectAlertDetail {
         self.textViews[4].text = alert.area.removeSingleLineBreaks()
         self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
+        stackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
+            "End: " + endTime + alert.area.removeSingleLineBreaks()
+            + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
     }
 
     static func condenseTime(_ cap: CapAlert) -> (String, String, String) {

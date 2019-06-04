@@ -89,8 +89,7 @@ class ViewControllerSPCMCD: UIwXViewController {
                     $1,
                     UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
                 )
-                objectImage.img.accessibilityLabel = numbers[$0] + listOfText[$0].parse("(Areas affected....*?)\n")
-                //print(listOfText[$0])
+                objectImage.img.accessibilityLabel = listOfText[$0]
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
                 text += listOfText[$0]

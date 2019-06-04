@@ -79,7 +79,9 @@ final class ObjectAlertSummary: NSObject {
         }
         var stateCnt = ""
         stateCntMap.forEach {stateCnt += "\($0):\($1) "}
-        objTextSummary.text = "Filter: " + filterLabel + "(" + String(index) + ")" + MyApplication.newline + stateCnt
+        objTextSummary.text = "Filter: " + filterLabel
+            + "(" + String(index) + " total)"
+            + MyApplication.newline + stateCnt
     }
 
     func getUrl(_ index: Int) -> String {

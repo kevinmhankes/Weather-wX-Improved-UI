@@ -12,7 +12,6 @@ class ViewControllerSPCWATCH: UIwXViewController {
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
     var spcWatchNumber = ""
-    //var playListButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
     var text = ""
     let synth = AVSpeechSynthesizer()
@@ -21,7 +20,6 @@ class ViewControllerSPCWATCH: UIwXViewController {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        //playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         spcWatchNumber = ActVars.spcWatchNumber
         if spcWatchNumber != "" {
             ActVars.spcWatchNumber = ""
@@ -58,11 +56,9 @@ class ViewControllerSPCWATCH: UIwXViewController {
                             UITapGestureRecognizerWithData($0, self, #selector(self.imgClicked(sender:)))
                         )
                         self.text += self.listOfText[$0]
+                        objectImage.img.accessibilityLabel = self.listOfText[$0]
                         objectImage.img.isAccessibilityElement = true
                         views += [objectImage.img]
-                        //print(self.listOfText[$0])
-                        let number = self.listOfText[$0].parse("Severe Thunderstorm Watch Number ([0-9]*)\\b")
-                        objectImage.img.accessibilityLabel = number + " " + self.listOfText[$0].parse("Severe Thunderstorm Watch for (.*?)\n")
                     }
                     if self.bitmaps.count == 1 {
                         _ = ObjectTextView(self.stackView, mcdTxt)
@@ -91,8 +87,4 @@ class ViewControllerSPCWATCH: UIwXViewController {
     @objc func playClicked() {
         UtilityActions.playClicked(text, synth, playButton)
     }
-
-    //@objc func playlistClicked() {
-    //    UtilityPlayList.add(self.product, text, self, playListButton)
-    //}
 }
