@@ -28,6 +28,9 @@ final class UtilityGoes {
 
     static func getImageSize(_ sector: String) -> String {
         let size = "latest"
+        if UIPreferences.goesUseFullResolutionImages {
+            return size
+        }
         return sizeMap[sector] ?? size
     }
 

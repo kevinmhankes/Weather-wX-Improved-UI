@@ -49,6 +49,7 @@ Changes since last release:
 - in NHC activity if no current storms display a textual label stating such
 - in data fetch for watches and warnings if a network issue keep current data instead of showing nothing
 
+2019_06_05 56014	[ADD] add option in settings -> UI to use full resolution GOES images
 2019_06_04 56013	[IMP] voice over enhancements in mcd/watch/severe dashboard and us alerts detail, main screen cc 7day
 2019_06_02 56012	[IMP] for watch/warn data if no data is returned don't update var
 			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)

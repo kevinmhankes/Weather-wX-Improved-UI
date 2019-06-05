@@ -17,7 +17,8 @@ final class UtilitySettingsUI {
         "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
         "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
         "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
-        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the main NWS images."
+        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the main NWS images.",
+        "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images"
     ]
 
     static let helpStrings = [
@@ -45,7 +46,8 @@ final class UtilitySettingsUI {
         "Show less information on main screen": "Show less information on main screen."
             + " Requires an appication restart after changing. This is a work in progress.",
         "NWS Icon size": "NWS Icon size, default size is 80. Requires an appication restart after changing."
-            + " This is a work in progress."
+            + " This is a work in progress.",
+        "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images, they can be quite large."
     ]
 
     static let booleanDefault  = [
@@ -60,7 +62,8 @@ final class UtilitySettingsUI {
         "RADAR_TOOLBAR_TRANSPARENT": "true",
         "UI_MAIN_SCREEN_RADAR_FAB": "true",
         "UI_MAIN_SCREEN_CONDENSE": "false",
-        "USE_AWC_RADAR_MOSAIC": "false"
+        "USE_AWC_RADAR_MOSAIC": "false",
+        "GOES_USE_FULL_RESOLUTION_IMAGES": "false"
     ]
 
     static let picker = [

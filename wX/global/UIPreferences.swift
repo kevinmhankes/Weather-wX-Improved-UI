@@ -31,8 +31,10 @@ class UIPreferences {
     static var nwsIconSize: Float = 80.0
     static let sideSpacing: CGFloat = 10.0
     static var useAwcRadarMosaic = false
+    static var goesUseFullResolutionImages = false
 
     static func initialize() {
+        goesUseFullResolutionImages = Utility.readPref("GOES_USE_FULL_RESOLUTION_IMAGES", "false").hasPrefix("t")
         useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
         showMetarInCC = Utility.readPref("SHOW_METAR_IN_CC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
