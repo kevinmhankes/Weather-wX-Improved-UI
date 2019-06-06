@@ -30,6 +30,7 @@
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO bug - when add new location and navigate back to list it shows condition from 1st location
+// TODO remove obs site KIGX 
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
