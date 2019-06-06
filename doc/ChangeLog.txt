@@ -29,8 +29,6 @@
 // TODO continued voiceover support https://developer.apple.com/documentation/uikit/accessibility/supporting_voiceover_in_your_app
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
-// TODO bug - when add new location and navigate back to list it shows condition from 1st location
-// TODO remove obs site KIGX 
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -43,15 +41,23 @@
 Last app store release: 55990
 
 
-
 Changes since last release:
+- enhanced iOS voiceover support in MCD/Watch/MPD/Severe dashboad and Homescreen textual widgets
+- add option in settings -> UI to use full resolution GOES images
+- bugfixes: remove obsolete obs site KIGX, in settings->location current conditions was not updating correctly after adding new location
+
+
+2019_06_05 56020	[FIX] remove obs site KIGX
+			[FIX] when add new location and navigate back to list it shows condition from 1st location
+2019_06_05 56014	[ADD] add option in settings -> UI to use full resolution GOES images
+2019_06_04 56013	[IMP] voice over enhancements in mcd/watch/severe dashboard and us alerts detail, main screen cc 7day
+
+// appstore release June 2, 2019
 - enhanced iOS voiceover support in MCD/Watch/MPD/Severe dashboad and Homescreen textual widgets
 - don't hide GPS circle when panning in nexrad radar
 - in NHC activity if no current storms display a textual label stating such
 - in data fetch for watches and warnings if a network issue keep current data instead of showing nothing
 
-2019_06_05 56014	[ADD] add option in settings -> UI to use full resolution GOES images
-2019_06_04 56013	[IMP] voice over enhancements in mcd/watch/severe dashboard and us alerts detail, main screen cc 7day
 2019_06_02 56012	[IMP] for watch/warn data if no data is returned don't update var
 			[IMP] If not storms in NHC show card stating such (like Android/Kotlin)
 			[IMP] SPC MCD - play button now TTS all text available

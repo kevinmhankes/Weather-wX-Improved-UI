@@ -41,6 +41,7 @@ final class ObjectForecastPackageCurrentConditions {
     // US via LAT LON
     convenience init(_ location: LatLon) {
         self.init()
+        //print(location)
         let tmpArr = getConditionsViaMetar(location)
         data = tmpArr.conditionAsString
         iconUrl = tmpArr.iconUrl
