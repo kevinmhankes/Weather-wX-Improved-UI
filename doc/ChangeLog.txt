@@ -29,6 +29,9 @@
 // TODO continued voiceover support https://developer.apple.com/documentation/uikit/accessibility/supporting_voiceover_in_your_app
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
+// TODO look into the following for CLI build push: xcodebuild or xcrun altool
+// TODO bug - failure to update polygons after long sleep with radar in focus
+
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
