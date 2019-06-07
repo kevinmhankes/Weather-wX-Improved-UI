@@ -31,6 +31,7 @@
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
 // TODO bug - failure to update polygons after long sleep with radar in focus
+// TODO audit for http
 
 
 [ADD] - adding something new - method, file, etc. to the repo
