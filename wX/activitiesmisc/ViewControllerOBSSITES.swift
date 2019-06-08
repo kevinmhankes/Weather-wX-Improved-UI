@@ -74,7 +74,7 @@ class ViewControllerOBSSITES: UIwXViewController {
             self.siteButton.title = "Last Used: " + site
             ActVars.webViewShowProduct = false
             ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
+            ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
                 + site
             self.goToVC("webview")
         }
@@ -95,7 +95,7 @@ class ViewControllerOBSSITES: UIwXViewController {
     @objc func siteClicked() {
         ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
-        ActVars.webViewUrl = "http://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
+        ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
         self.goToVC("webview")
     }
 

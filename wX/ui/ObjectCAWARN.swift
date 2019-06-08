@@ -73,14 +73,14 @@ final class ObjectCAWARN: NSObject {
 
     func getData() {
         if self.provCode == "ca" {
-            bitmap = Bitmap("http://weather.gc.ca/data/warningmap/canada_e.png")
+            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
         } else {
-            bitmap = Bitmap("http://weather.gc.ca/data/warningmap/" + self.provCode + "_e.png")
+            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provCode + "_e.png")
         }
         if self.provCode == "ca" {
-            dataAsString = ("http://weather.gc.ca/warnings/index_e.html").getHtml()
+            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
-            dataAsString = ("http://weather.gc.ca/warnings/index_e.html?prov=" + self.provCode).getHtml()
+            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provCode).getHtml()
         }
         self.listLocUrl = dataAsString
             .parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
@@ -131,7 +131,7 @@ final class ObjectCAWARN: NSObject {
     }
 
     func getWarningUrl(_ index: Int) -> String {
-        return "http://weather.gc.ca" + listLocUrl[index]
+        return MyApplication.canadaEcSitePrefix + listLocUrl[index]
     }
 
     @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {}

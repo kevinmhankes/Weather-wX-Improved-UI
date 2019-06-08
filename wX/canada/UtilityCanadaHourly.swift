@@ -7,7 +7,7 @@
 final class UtilityCanadaHourly {
 
     static func getString(_ location: Int) -> String {
-        let url = "http://weather.gc.ca/forecast/hourly/"
+        let url = MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-" + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
@@ -17,7 +17,7 @@ final class UtilityCanadaHourly {
     }
 
     static func getUrl(_ location: Int) -> String {
-        return "http://weather.gc.ca/forecast/hourly/"
+        return MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-"
             + MyApplication.locations[location].lon.split(":")[0]

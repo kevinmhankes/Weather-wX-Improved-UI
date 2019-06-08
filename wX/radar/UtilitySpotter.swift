@@ -26,7 +26,7 @@ public class UtilitySpotter {
             reportsList = []
             var latAl = [String]()
             var lonAl = [String]()
-            var html = "http://www.spotternetwork.org/feeds/csv.txt".getHtmlSep()
+            var html = "https://www.spotternetwork.org/feeds/csv.txt".getHtmlSep()
             let reportData = html.replaceAll(".*?#storm reports", "")
             processReportsData(reportData)
             html = html.replaceAll("#storm reports.*?$", "")

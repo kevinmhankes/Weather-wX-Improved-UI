@@ -15,10 +15,10 @@ final class UtilityCanadaImg {
     ]
 
     static let urls = [
-        "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg",
-        "https://weather.gc.ca/data/satellite/goes_ecan_visible_100.jpg",
-        "https://weather.gc.ca/data/satellite/goes_wcan_1070_100.jpg",
-        "https://weather.gc.ca/data/satellite/goes_ecan_1070_100.jpg"
+        MyApplication.canadaEcSitePrefix + "/data/satellite/goes_wcan_visible_100.jpg",
+        MyApplication.canadaEcSitePrefix + "/data/satellite/goes_ecan_visible_100.jpg",
+        MyApplication.canadaEcSitePrefix + "/data/satellite/goes_wcan_1070_100.jpg",
+        MyApplication.canadaEcSitePrefix + "/data/satellite/goes_ecan_1070_100.jpg"
     ]
 
     static let mosaicSectors = [
@@ -92,7 +92,7 @@ final class UtilityCanadaImg {
     }
 
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
-        let html = ("http://weather.gc.ca/radar/index_e.html?id=" + radarSite).getHtmlSep()
+        let html = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + radarSite).getHtmlSep()
         var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
         if duration == "long" {
             durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"
@@ -108,9 +108,8 @@ final class UtilityCanadaImg {
     static func getRadarAnimOptionsApplied(_ rid: String, _ frameCntStr: String) -> AnimationDrawable {
         let urlStr = UtilityCanadaImg.getRadarAnimStringArray(rid, frameCntStr)
         let urlArr = urlStr.split(":")
-        let baseUrl = "http://weather.gc.ca"
         let bitmaps = stride(from: (urlArr.count - 1), to: 1, by: -1).map {
-            getRadarBitmapOptionsApplied(rid, baseUrl + urlArr[$0].replaceAll("detailed/", ""))
+            getRadarBitmapOptionsApplied(rid, MyApplication.canadaEcSitePrefix + urlArr[$0].replaceAll("detailed/", ""))
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
@@ -122,7 +121,7 @@ final class UtilityCanadaImg {
             let radHtml = ("https://weather.gc.ca/radar/index_e.html?id=" + rid1).getHtml()
             let matchStr = "(/data/radar/.*?GIF)\""
             let summary = radHtml.parse(matchStr).replaceAll("detailed/", "")
-            urlImg = "http://weather.gc.ca/" + summary
+            urlImg = MyApplication.canadaEcSitePrefix + "/" + summary
         } else {
             urlImg = url
         }
@@ -130,20 +129,20 @@ final class UtilityCanadaImg {
     }
 
     static func getRadarMosaicBitmapOptionsApplied(_ sector: String) -> Bitmap {
-        var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
+        var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
         if sector == "CAN" {
-            url = "http://weather.gc.ca/radar/index_e.html"
+            url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
         }
         let radHtml = url.getHtmlSep()
         let matchStr = "(/data/radar/.*?GIF)\""
         let summary = radHtml.parse(matchStr).replace("detailed/", "")
-        return Bitmap("http://weather.gc.ca/" + summary)
+        return Bitmap(MyApplication.canadaEcSitePrefix + "/" + summary)
     }
 
     static func getRadarMosaicAnimation(_ sector: String, _ duration: String) -> AnimationDrawable {
-        var url = "http://weather.gc.ca/radar/index_e.html?id=" + sector
+        var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
         if sector == "CAN" {
-            url = "http://weather.gc.ca/radar/index_e.html"
+            url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
         }
         let radHtml = url.getHtmlSep()
         var sectorLocal = ""
@@ -163,7 +162,7 @@ final class UtilityCanadaImg {
         tmpAl = radHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
         string += tmpAl.map {":" + $0}.joined()
         let urlArr = string.split(":")
-        var urls = urlArr.filter {$0 != ""}.map {"http://weather.gc.ca" + $0.replaceAll("detailed/", "")}
+        var urls = urlArr.filter {$0 != ""}.map {MyApplication.canadaEcSitePrefix + $0.replaceAll("detailed/", "")}
         urls.reverse()
         return UtilityImgAnim.getAnimationDrawableFromUrlList(urls, UtilityImg.getAnimInterval())
     }

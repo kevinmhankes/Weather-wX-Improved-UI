@@ -47,7 +47,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
 
     func getLSRFromWFO() -> [String] {
         var lsrArr = [String]()
-        let html = ("http://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
+        let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
             + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {

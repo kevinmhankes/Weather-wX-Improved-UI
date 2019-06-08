@@ -12,14 +12,14 @@ final class UtilityModelNcepInputOutput {
 
     static func getRunTime(_ om: ObjectModel) -> RunTimeData {
         let runData = RunTimeData()
-        let url = "http://mag.ncep.noaa.gov/model-guidance-model-parameter.php?group=Model%20Guidance&model="
+        let url = "https://mag.ncep.noaa.gov/model-guidance-model-parameter.php?group=Model%20Guidance&model="
             + om.model.uppercased() + "&area=" + om.sector + "&ps=area"
         let html = url.getHtml().parse(ncepPattern2).replaceAll("UTC selected_cell", "Z")
         var runCompletionDataStr = html.replaceAll("Z", " UTC")
         if runCompletionDataStr != "" {
             runCompletionDataStr = UtilityString.insert(runCompletionDataStr, 8, " ")
         }
-        var runCompletionUrl = "http://mag.ncep.noaa.gov/model-guidance-model-parameter.php"
+        var runCompletionUrl = "https://mag.ncep.noaa.gov/model-guidance-model-parameter.php"
             + "?group=Model%20Guidance&model="
             + om.model.uppercased()
         runCompletionUrl += "&area=" + om.sector.lowercased()
@@ -30,7 +30,7 @@ final class UtilityModelNcepInputOutput {
         let time = html.parse(ncepPattern1)
         runData.mostRecentRun = time
         runData.timeStrConv = time
-        let timeCompleteUrl = "http://mag.ncep.noaa.gov/model-fhrs.php?group=Model%20Guidance&model="
+        let timeCompleteUrl = "https://mag.ncep.noaa.gov/model-fhrs.php?group=Model%20Guidance&model="
             + om.model.lowercased() + "&fhr_mode=image&loop_start=-1&loop_end=-1&area="
             + om.sector + "&fourpan=no&imageSize=&preselected_formatted_cycle_date="
             + runCompletionDataStr + "&cycle=" + runCompletionDataStr + "&param=" + om.param + "&ps=area"
@@ -46,11 +46,11 @@ final class UtilityModelNcepInputOutput {
             timeLocal = om.time + "00"
         }
         if om.model == "GFS" {
-            imgUrl = "http://mag.ncep.noaa.gov/data/" + om.model.lowercased() + "/" + om.run.replaceAll("Z", "")
+            imgUrl = "https://mag.ncep.noaa.gov/data/" + om.model.lowercased() + "/" + om.run.replaceAll("Z", "")
                 + "/" + om.sector.lowercased() + "/" + om.param + "/" + om.model.lowercased()
                 + "_"+om.sector.lowercased() + "_" + timeLocal + "_" + om.param + ".gif"
         } else {
-            imgUrl = "http://mag.ncep.noaa.gov/data/" + om.model.lowercased() + "/" + om.run.replaceAll("Z", "")
+            imgUrl = "https://mag.ncep.noaa.gov/data/" + om.model.lowercased() + "/" + om.run.replaceAll("Z", "")
                 + "/" + om.model.lowercased() + "_" + om.sector.lowercased() + "_" + timeLocal + "_" + om.param + ".gif"
         }
         return Bitmap(imgUrl)

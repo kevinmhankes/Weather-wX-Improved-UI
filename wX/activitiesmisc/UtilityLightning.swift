@@ -35,8 +35,8 @@ final class UtilityLightning {
                 + html.parse("SRC=.(/sport/dynamic/goes16/glm/" + sectorCode + "/sport_goes16_glm_"
                     + sectorCode + "_group_[0-9]{8}_[0-9]{4}.png)")
         } else {
-            let baseUrl = "http://images.lightningmaps.org/blitzortung/america/index.php?map="
-            let baseUrlOceania = "http://images.lightningmaps.org/blitzortung/oceania/index.php?map="
+            let baseUrl = "https://images.lightningmaps.org/blitzortung/america/index.php?map="
+            let baseUrlOceania = "https://images.lightningmaps.org/blitzortung/oceania/index.php?map="
             if sector.contains("australia") || sector.contains("new_zealand") {
                 url = baseUrlOceania + sector + "&period=" + period
             } else {

@@ -12,9 +12,9 @@ final class ObjectAlertSummary: NSObject {
     private var objImage = ObjectImage()
     private var imageIndex = 0
     private let imageUrls = [
-        "http://forecast.weather.gov/wwamap/png/US.png",
-        "http://forecast.weather.gov/wwamap/png/ak.png",
-        "http://forecast.weather.gov/wwamap/png/hi.png"
+        "https://forecast.weather.gov/wwamap/png/US.png",
+        "https://forecast.weather.gov/wwamap/png/ak.png",
+        "https://forecast.weather.gov/wwamap/png/hi.png"
     ]
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}

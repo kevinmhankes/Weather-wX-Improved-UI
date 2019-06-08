@@ -11,6 +11,6 @@ final class UtilityModelGlcfsInputOutput {
         if om.sector.split(" ").count > 1 {
             sectorLocal = om.sector.split(" ")[1].substring(0, 1).lowercased()
         }
-        return Bitmap("http://www.glerl.noaa.gov/res/glcfs/fcast/" + sectorLocal + om.param + "+" + om.time + ".gif")
+        return Bitmap("https://www.glerl.noaa.gov/res/glcfs/fcast/" + sectorLocal + om.param + "+" + om.time + ".gif")
     }
 }

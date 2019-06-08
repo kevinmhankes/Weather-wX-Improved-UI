@@ -26,7 +26,6 @@
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
 // TODO enhance NHC storm card like kotlin
-// TODO continued voiceover support https://developer.apple.com/documentation/uikit/accessibility/supporting_voiceover_in_your_app
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
@@ -42,14 +41,14 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-Last app store release: 55990
 
+2019_06_05 56022	[FIX] remove some retired observation sites 
+			[FIX] update to https in UtilityGoesFullDisk, ObjectAlertSummary, UtilityDownload, UtilityLightning (and others, numerous)
 
-Changes since last release:
+// appstore release June 8, 2019
 - enhanced iOS voiceover support in MCD/Watch/MPD/Severe dashboad and Homescreen textual widgets
 - add option in settings -> UI to use full resolution GOES images
 - bugfixes: remove obsolete obs site KIGX, in settings->location current conditions was not updating correctly after adding new location
-
 
 2019_06_05 56020	[FIX] remove obs site KIGX
 			[FIX] when add new location and navigate back to list it shows condition from 1st location

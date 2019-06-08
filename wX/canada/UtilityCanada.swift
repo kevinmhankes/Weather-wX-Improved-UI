@@ -259,19 +259,19 @@ final class UtilityCanada {
     }
 
     static func getProvidenceHtml(_ prov: String) -> String {
-        return ("http://weather.gc.ca/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
+        return (MyApplication.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
     }
 
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
         let id = location.lonString.split(":")
-        return ("http://weather.gc.ca/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
+        return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
 
     static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
         let prov = lat.split(":")
         let id = lon.split(":")
-        return "http://weather.gc.ca/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
+        return MyApplication.canadaEcSitePrefix + "/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
     }
 
     static func getStatus(_ html: String) -> String {
@@ -279,7 +279,7 @@ final class UtilityCanada {
     }
 
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
-        let url = "http://weather.gc.ca/city/pages/"
+        let url = MyApplication.canadaEcSitePrefix + "/city/pages/"
             + lat.split(":")[1].lowercased()
             + "-"
             + lon.split(":")[0]
@@ -343,7 +343,6 @@ final class UtilityCanada {
 
     // FIXME move away from tuple
     static func getHazards(_ html: String) -> (String, String) {
-        let baseUrl = "http://weather.gc.ca"
         var result: (String, String) = ("", "")
         var urls = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\"(.*?)\">.*?</a>.*?</div>")
         var titles = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\".*?\">(.*?)</a>.*?</div>")
@@ -357,7 +356,7 @@ final class UtilityCanada {
         chunk = html.parse("<div id=\"watch\" class=\"floatLeft\">(.*?)</div>")
         urls = chunk.parseColumn("<a href=\"(.*?)\">.*?</a>")
         titles = chunk.parseColumn("<a href=\".*?\">(.*?)</a>")
-        let watchUrl = urls.joined(separator: "," + baseUrl)
+        let watchUrl = urls.joined(separator: "," + MyApplication.canadaEcSitePrefix)
         let watch = titles.joined(separator: "<BR>")
         result.0 = (warning + statement + watch)
         result.1 = (warningUrl + "," + statementUrl + "," + watchUrl)

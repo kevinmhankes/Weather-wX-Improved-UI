@@ -69,25 +69,25 @@ final class UtilityDownload {
             let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
             text = textArr.0
         } else if prod == "SWPC3DAY" {
-            text = ("http://services.swpc.noaa.gov/text/3-day-forecast.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()
         } else if prod == "SWPC27DAY" {
-            text = ("http://services.swpc.noaa.gov/text/27-day-outlook.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/27-day-outlook.txt").getHtml()
         } else if prod == "SWPCWWA" {
-            text = ("http://services.swpc.noaa.gov/text/advisory-outlook.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/advisory-outlook.txt").getHtml()
         } else if prod == "SWPCHIGH" {
-            text = ("http://services.swpc.noaa.gov/text/weekly.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/weekly.txt").getHtml()
         } else if prod == "SWPCDISC" {
-            text = ("http://services.swpc.noaa.gov/text/discussion.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/discussion.txt").getHtml()
         } else if prod == "SWPC3DAYGEO" {
-            text = ("http://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt").getHtml()
+            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-geomag-forecast.txt").getHtml()
         } else if prod.contains("MIATCP") || prod.contains("MIATCM")
             || prod.contains("MIATCD") || prod.contains("MIAPWS")
             || prod.contains("MIAHS") {
-            let textUrl = "http://www.nhc.noaa.gov/text/" + prod + ".shtml"
+            let textUrl = "https://www.nhc.noaa.gov/text/" + prod + ".shtml"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("MIAT") {
-            text = ("http://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
+            text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
             if UIPreferences.nwsTextRemovelinebreaks && prod == "MIATWOAT"
                 || prod == "MIATWDAT" || prod == "MIATWOEP"
                 || prod == "MIATWDEP" {
@@ -128,26 +128,27 @@ final class UtilityDownload {
         } else if prod.hasPrefix("GLF") && !prod.contains("%") {
             text = getTextProduct(prod + "%")
         } else if prod.contains("FOCN45") {
-            text = "http://tgftp.nws.noaa.gov/data/raw/fo/focn45.cwwg..txt".getHtmlSep()
+            text = (WXGLDownload.nwsRadarPub + "/data/raw/fo/focn45.cwwg..txt").getHtmlSep()
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
         } else if prod.hasPrefix("AWCN") {
-            text = ("http://tgftp.nws.noaa.gov/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
+            text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if prod.contains("NFD") {
-            text = ("http://www.opc.ncep.noaa.gov/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml()
+            // FIXME not foratted correctly
+            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml()
         } else if prod.contains("FWDDY38") {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("FXCN01") {
             // FIXME not working - now 4 products
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/fx_d1-3_west_2019041000.html
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/
-            // http://dd.weather.gc.ca/doc/LICENCE_GENERAL.txt
-            text = "http://tgftp.nws.noaa.gov/data/raw/fx/fxcn01.cwao..txt".getHtmlSep()
+            // https://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/fx_d1-3_west_2019041000.html
+            // https://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/
+            // https://dd.weather.gc.ca/doc/LICENCE_GENERAL.txt
+            text = (WXGLDownload.nwsRadarPub + "/data/raw/fx/fxcn01.cwao..txt").getHtmlSep()
         } else if prod.contains("FPCN48") {
-            text = "http://tgftp.nws.noaa.gov/data/raw/fp/fpcn48.cwao..txt".getHtmlSep()
+            text = (WXGLDownload.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
         } else if prod.contains("QPFPFD") {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
@@ -171,7 +172,7 @@ final class UtilityDownload {
         let prodLocal = product.uppercased()
         let t1 = prodLocal.substring(0, 3)
         let t2 = prodLocal.substring(3)
-        let textUrl = "http://forecast.weather.gov/product.php?site=NWS&product=" + t1
+        let textUrl = "https://forecast.weather.gov/product.php?site=NWS&product=" + t1
             + "&issuedby=" + t2 + "&version=" + String(version)
         text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
@@ -220,7 +221,7 @@ final class UtilityDownload {
             }
         case "WEATHERSTORY":
             needsBitmap = false
-            bitmap = Bitmap("http://www.weather.gov/images/" + Location.wfo.lowercased() + "/wxstory/Tab2FileL.png")
+            bitmap = Bitmap("https://www.weather.gov/images/" + Location.wfo.lowercased() + "/wxstory/Tab2FileL.png")
         case "RAD_1KM": break
         case "IR_2KM":
             needsBitmap = false

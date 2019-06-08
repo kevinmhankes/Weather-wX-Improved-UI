@@ -41,7 +41,6 @@ final class ObjectForecastPackageCurrentConditions {
     // US via LAT LON
     convenience init(_ location: LatLon) {
         self.init()
-        //print(location)
         let tmpArr = getConditionsViaMetar(location)
         data = tmpArr.conditionAsString
         iconUrl = tmpArr.iconUrl
@@ -90,15 +89,15 @@ final class ObjectForecastPackageCurrentConditions {
     }
 
     private func formatCurrentConditions() {
-        let sep = " - "
-        var tmpArrCc = data.split(sep)
+        let separator = " - "
+        var dataList = data.split(separator)
         var retStr = ""
         var retStr2 = ""
         var tempArr = [String]()
-        if tmpArrCc.count > 4 {
-            tempArr = tmpArrCc[0].split("/")
-            retStr = tmpArrCc[4].replaceAll("^ ", "") + " " + tempArr[0] + tmpArrCc[2]
-            retStr2 = tempArr[1].replaceAll("^ ", "") + sep + tmpArrCc[1] + sep + tmpArrCc[3] + MyApplication.newline
+        if dataList.count > 4 {
+            tempArr = dataList[0].split("/")
+            retStr = dataList[4].replaceAll("^ ", "") + " " + tempArr[0] + dataList[2]
+            retStr2 = tempArr[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
             retStr2 += status
         }
         topLine = retStr

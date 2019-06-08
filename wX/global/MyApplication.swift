@@ -23,7 +23,7 @@ class MyApplication {
         + " and http://www.gnu.org/licenses/gpl-3.0.en.html"
     static let mapRegionRadius = 1000000.0
     static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by"
-        + " http://weather.gc.ca/canada_e.html."
+        + " https://weather.gc.ca/canada_e.html."
     static let emailAsString = "joshua.tee@gmail.com"
     static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
@@ -36,6 +36,8 @@ class MyApplication {
     static let nwsRadarWebsitePrefix = "https://radar.weather.gov"
     static let nwsMagNcepWebsitePrefix = "https://mag.ncep.noaa.gov"
     static let sunMoonDataUrl = "https://api.usno.navy.mil"
+    static let nwsSwpcWebSitePrefix = "https://services.swpc.noaa.gov"
+    static let canadaEcSitePrefix = "https://weather.gc.ca"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
     static let degreeSymbol = "\u{00B0}"

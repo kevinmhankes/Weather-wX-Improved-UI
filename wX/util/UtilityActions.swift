@@ -106,7 +106,7 @@ final class UtilityActions {
             token = "sunmoondata"
         case "Local Forecast":
             ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = "http://forecast.weather.gov/MapClick.php?lon="
+            ActVars.webViewUrl = "https://forecast.weather.gov/MapClick.php?lon="
                 + Location.latlon.lonString + "&lat=" + Location.latlon.latString
             token = "webview"
         default:
@@ -180,7 +180,7 @@ final class UtilityActions {
     static func doneClicked(_ uiv: UIViewController) {
         uiv.dismiss(animated: true, completion: {})
     }
-    
+
     static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
         var myUtterance = AVSpeechUtterance(string: "")
         if !globalSynth.isSpeaking {

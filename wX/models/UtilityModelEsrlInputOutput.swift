@@ -20,17 +20,17 @@ final class UtilityModelEsrlInputOutput {
         let htmlRunstatus: String
         switch om.model {
         case "HRRR_AK":
-            htmlRunstatus = ("http://rapidrefresh.noaa.gov/alaska/").getHtml()
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/alaska/").getHtml()
         case "RAP_NCEP":
-            htmlRunstatus = ("http://rapidrefresh.noaa.gov/RAP/Welcome.cgi?dsKey="
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/RAP/Welcome.cgi?dsKey="
                 + om.model.lowercased() + "_jet&domain=full").getHtml()
         case "RAP":
-            htmlRunstatus = ("https://rapidrefresh.noaa.gov/RAP/").getHtml()
+            htmlRunstatus = ("httpss://rapidrefresh.noaa.gov/RAP/").getHtml()
         case "HRRR_NCEP":
-            htmlRunstatus = ("http://rapidrefresh.noaa.gov/hrrr/HRRR/Welcome.cgi?dsKey="
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/hrrr/HRRR/Welcome.cgi?dsKey="
                 + om.model.lowercased() + "_jet&domain=full").getHtml()
         default:
-            htmlRunstatus = ("http://rapidrefresh.noaa.gov/" + om.model.lowercased()
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/" + om.model.lowercased()
                 + "/" + om.model + "/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         }
         var html = htmlRunstatus.parse(eslHrrrPattern1)
