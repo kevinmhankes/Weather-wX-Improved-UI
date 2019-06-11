@@ -19,8 +19,6 @@
 //        case lineFeed = "\n"
 //        case carriageReturn = "\r"
 //    }
-// TODO stop using R.raw
-// TODO generic method for up/down
 // TODO fix utilColor for velocity corner chase 
 // [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO mem buffer - change from read to get to match kotlin
@@ -30,7 +28,7 @@
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
 // TODO bug - failure to update polygons after long sleep with radar in focus
-// TODO audit for http
+// TODO NHC - add cpac
 
 
 [ADD] - adding something new - method, file, etc. to the repo
