@@ -39,6 +39,17 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+// appstore release June 12, 2019
+Updates to NCEP models in response to website change. More updates to come in future changes
+- fix run time latest detection
+- add new sectors US-NW, US-SW, US-NC, US-SC, US-NE and US-SE to  NAM-HIRES, HRRR, HRW-ARW, HRW-NMMB and HREF
+- add American Samoa (US-SAMOA) to GFS.
+- NCEP HRW-ARW, HRW-NMMB, NAM-HIRES, RAP and HRRR: Change echotop to echo_top
+
+56025 2019_06_12    [FIX] NCEP work - fix run time latest detection
+                    [ADD] NCEP add new sectors US-NW, US-SW, US-NC, US-SC, US-NE and US-SE to  NAM-HIRES, HRRR, HRW-ARW, HRW-NMMB and HREF
+                    [ADD] NCEP Add American Samoa (US-SAMOA) to GFS.
+                    [FIX] NCEP HRW-ARW, HRW-NMMB, NAM-HIRES, RAP and HRRR: Change echotop to echo_top
 
 2019_06_05 56022	[FIX] remove some retired observation sites 
 			[FIX] update to https in UtilityGoesFullDisk, ObjectAlertSummary, UtilityDownload, UtilityLightning (and others, numerous)

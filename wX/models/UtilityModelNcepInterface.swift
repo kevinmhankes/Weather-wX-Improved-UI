@@ -40,7 +40,8 @@ final class UtilityModelNcepInterface {
         "ASIA",
         "SPAC",
         "ARTIC",
-        "INDIA"
+        "INDIA",
+        "US-SAMOA"
     ]
 
     static let sectorsNam = [
@@ -52,7 +53,13 @@ final class UtilityModelNcepInterface {
 
     static let sectorsNam4km = [
         "CONUS",
-        "ALASKA"
+        "ALASKA",
+        "US-NW",
+        "US-SW",
+        "US-NC",
+        "US-SC",
+        "US-NE",
+        "US-SE"
     ]
 
     static let sectorsRap = [
@@ -60,10 +67,13 @@ final class UtilityModelNcepInterface {
     ]
 
     static let sectorsHrrr = [
-        "CENT-US",
-        "EAST-US",
-        "WEST-US",
-        "CONUS"
+        "CONUS",
+        "US-NW",
+        "US-SW",
+        "US-NC",
+        "US-SC",
+        "US-NE",
+        "US-SE"
     ]
 
     static let sectorsSref = [
@@ -96,7 +106,13 @@ final class UtilityModelNcepInterface {
         "HAWAII",
         "GUAM",
         "ALASKA",
-        "PR"
+        "PR",
+        "US-NW",
+        "US-SW",
+        "US-NC",
+        "US-SC",
+        "US-NE",
+        "US-SE"
     ]
 
     static let sectorsGefsSpag = [
@@ -303,7 +319,7 @@ final class UtilityModelNcepInterface {
         "1000_850_thick",
         "850_700_thick",
         "cape_cin",
-        "echotop",
+        "echo_top",
         "helicity",
         "vis",
         "sim_radar_1km",
@@ -355,7 +371,7 @@ final class UtilityModelNcepInterface {
         "1000_500_thick",
         "1000_850_thick",
         "850_700_thick",
-        "echotop",
+        "echo_top",
         "helicity_3km",
         "helicity_1km",
         "lightning",
@@ -435,7 +451,7 @@ final class UtilityModelNcepInterface {
         "2m_dewp_10m_wnd",
         "2m_temp_10m_wnd",
         "best_cape_cin",
-        "echotop",
+        "echo_top",
         "helicity_1km",
         "helicity_3km",
         "max_updraft_hlcy",
@@ -611,7 +627,7 @@ final class UtilityModelNcepInterface {
         "2m_temp_10m_wnd",
         "best_cape_cin",
         "ceiling",
-        "echotop",
+        "echo_top",
         "helicity_1km",
         "helicity_3km",
         "max_updraft_hlcy",
