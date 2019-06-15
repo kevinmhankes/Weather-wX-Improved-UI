@@ -17,6 +17,7 @@ class ViewControllerTABPARENT: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+        //view.backgroundColor = UIColor.white
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
         leftSwipe.direction = .left

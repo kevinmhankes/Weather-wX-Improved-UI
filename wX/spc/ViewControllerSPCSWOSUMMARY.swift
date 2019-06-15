@@ -20,7 +20,18 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
 
     // FIXME move to displayContent to handle rotation
     func getContent() {
-        scrollView.backgroundColor = UIColor.white
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
+            self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
+            DispatchQueue.main.async {
+                self.displayContent()
+            }
+        }
+    }
+    
+    private func displayContent() {
+        self.scrollView.backgroundColor = UIColor.white
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         [0, 1, 2, 3].forEach {
@@ -33,20 +44,14 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
-            self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
-            DispatchQueue.main.async {
-                self.bitmaps.enumerated().forEach {
-                    _ = ObjectImage(
-                        //self.stackView,
-                        imageStackViewList[$0 / imagesPerRow].view,
-                        $1,
-                        UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
-                        widthDivider: imagesPerRow
-                    )
-                }
-            }
+        self.bitmaps.enumerated().forEach {
+            _ = ObjectImage(
+                //self.stackView,
+                imageStackViewList[$0 / imagesPerRow].view,
+                $1,
+                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
+                widthDivider: imagesPerRow
+            )
         }
     }
 
@@ -64,5 +69,16 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+        }
+        )
     }
 }
