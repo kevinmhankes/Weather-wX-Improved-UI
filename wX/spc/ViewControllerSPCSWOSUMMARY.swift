@@ -18,7 +18,9 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
         getContent()
     }
 
+    // FIXME move to displayContent to handle rotation
     func getContent() {
+        scrollView.backgroundColor = UIColor.white
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         [0, 1, 2, 3].forEach {

@@ -38,6 +38,7 @@
 [MER] - merge
 
 56026 2019_06_15 [IMP] SPC SWO Summary show 2 imaegs per row
+		 [IMP] move to whitebg for scrollview in SPC SWO screens
 
 56026 2019_06_15 
 // appstore release June 15, 2019
