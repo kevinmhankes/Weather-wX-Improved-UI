@@ -78,20 +78,46 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     }
 
     private func displayContent() {
+        let imagesPerRow = 2
+        var imageStackViewList = [ObjectStackView]()
+        [0, 1, 2, 3].forEach {
+            imageStackViewList.append(
+                ObjectStackView(
+                    UIStackView.Distribution.fill,
+                    NSLayoutConstraint.Axis.horizontal
+                    //spacing: UIPreferences.stackviewCardSpacing
+                )
+            )
+            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        }
         var views = [UIView]()
-        let objectImage = ObjectImage(
+        /*let objectImage = ObjectImage(
             self.stackView,
             self.bitmaps[0],
             UITapGestureRecognizerWithData(0, self, #selector(imgClicked(sender:)))
-        )
-        // FIXME improve naming for images
-        objectImage.img.accessibilityLabel = "Outlook image"
-        objectImage.img.isAccessibilityElement = true
-        views.append(objectImage.img)
+        )*/
+        
+        stride(from: 0, to: self.bitmaps.count, by: 1).forEach {
+            let objectImage = ObjectImage(
+                //self.stackView,
+                imageStackViewList[$0 / imagesPerRow].view,
+                self.bitmaps[$0],
+                UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:))),
+                widthDivider: imagesPerRow
+            )
+            objectImage.img.accessibilityLabel = "Outlook image"
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
+        }
+        
+        //objectImage.img.accessibilityLabel = "Outlook image"
+        //objectImage.img.isAccessibilityElement = true
+        //views.append(objectImage.img)
+        
         self.textView = ObjectTextView(self.stackView, self.html)
         textView.tv.isAccessibilityElement = true
         views.append(textView.tv)
-        stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
+        /*stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
             let objectImage = ObjectImage(
                 self.stackView,
                 self.bitmaps[$0],
@@ -100,7 +126,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             objectImage.img.accessibilityLabel = "Outlook image"
             objectImage.img.isAccessibilityElement = true
             views.append(objectImage.img)
-        }
+        }*/
         scrollView.accessibilityElements = views
     }
 
