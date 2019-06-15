@@ -19,16 +19,21 @@ final class ObjectImage {
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
-    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap) {
+    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, widthDivider: Int = 1) {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        setImageAnchors(width)
+        setImageAnchors(width / CGFloat(widthDivider) - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
     }
 
-    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, _ gesture: UITapGestureRecognizer) {
-        self.init(stackView, bitmap)
+    convenience init(
+        _ stackView: UIStackView,
+        _ bitmap: Bitmap,
+        _ gesture: UITapGestureRecognizer,
+        widthDivider: Int = 1
+    ) {
+        self.init(stackView, bitmap, widthDivider: widthDivider)
         addGestureRecognizer(gesture)
     }
 

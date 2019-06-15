@@ -37,6 +37,8 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56026 2019_06_15 [IMP] SPC SWO Summary show 2 imaegs per row
+
 56026 2019_06_15 
 // appstore release June 15, 2019
 Add Central Pacific in NHC screen (3 images, 1 text product)

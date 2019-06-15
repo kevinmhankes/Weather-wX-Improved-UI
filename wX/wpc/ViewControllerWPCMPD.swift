@@ -74,6 +74,7 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     private func displayContent() {
+        
         if !self.bitmaps.isEmpty {
             self.bitmaps.enumerated().forEach {
                 _ = ObjectImage(

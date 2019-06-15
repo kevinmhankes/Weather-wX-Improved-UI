@@ -19,15 +19,29 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
     }
 
     func getContent() {
+        let imagesPerRow = 2
+        var imageStackViewList = [ObjectStackView]()
+        [0, 1, 2, 3].forEach {
+            imageStackViewList.append(
+                ObjectStackView(
+                    UIStackView.Distribution.fill,
+                    NSLayoutConstraint.Axis.horizontal,
+                    spacing: UIPreferences.stackviewCardSpacing
+                )
+            )
+            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
             DispatchQueue.main.async {
                 self.bitmaps.enumerated().forEach {
                     _ = ObjectImage(
-                        self.stackView,
+                        //self.stackView,
+                        imageStackViewList[$0 / imagesPerRow].view,
                         $1,
-                        UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
+                        UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
+                        widthDivider: imagesPerRow
                     )
                 }
             }
