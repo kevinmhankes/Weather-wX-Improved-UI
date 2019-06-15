@@ -18,10 +18,11 @@ final class UtilityNhc {
     static let textProducts = [
         "MIATWOAT: ATL Tropical Weather Outlook",
         "MIATWDAT: ATL Tropical Weather Discussion",
+        "MIATWSAT: ATL Monthly Tropical Summary",
         "MIATWOEP: EPAC Tropical Weather Outlook",
         "MIATWDEP: EPAC Tropical Weather Discussion",
-        "MIATWSAT: ATL Monthly Tropical Summary",
-        "MIATWSEP: EPAC Monthly Tropical Summary"
+        "MIATWSEP: EPAC Monthly Tropical Summary",
+        "HFOTWOCP: CPAC Tropical Weather Outlook"
     ]
 
     static let imageType = [

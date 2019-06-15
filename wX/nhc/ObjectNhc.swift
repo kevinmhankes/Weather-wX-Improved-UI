@@ -22,7 +22,6 @@ final class ObjectNhc: NSObject {
     private var pacTitleList = [String]()
     private var uiv: UIViewController
     private var stackView: UIStackView
-    //private var blob = ""
     private var textAtl = ""
     private var textPac = ""
     private var bitmaps = [Bitmap]()
@@ -33,7 +32,10 @@ final class ObjectNhc: NSObject {
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png",
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
     ]
 
     init(_ uiv: UIViewController, _ stackView: UIStackView) {

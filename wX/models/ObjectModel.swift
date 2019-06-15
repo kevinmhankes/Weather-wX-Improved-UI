@@ -328,6 +328,40 @@ final public class ObjectModel {
             runArr.append("00Z")
             runArr.append("12Z")
             runTimeData.listRun = runArr
+        case "NCEP:HRW-ARW2":
+            paramArr = UtilityModelNcepInterface.paramsHrwArw2
+            paramLabelArr = UtilityModelNcepInterface.labelsHrwArw2
+            sectorArr = UtilityModelNcepInterface.sectorsHrwArw2
+            timeArr = []
+            (0...48).forEach {timeArr.append(String(format: "%03d", $0))}
+            runArr = []
+            runArr.append("00Z")
+            runArr.append("12Z")
+            runTimeData.listRun = runArr
+        case "NCEP:HREF":
+            paramArr = UtilityModelNcepInterface.paramsHref
+            paramLabelArr = UtilityModelNcepInterface.labelsHref
+            sectorArr = UtilityModelNcepInterface.sectorsHref
+            timeArr = []
+            (0...36).forEach {timeArr.append(String(format: "%03d", $0))}
+            runArr = []
+            runArr.append("00Z")
+            runArr.append("06Z")
+            runArr.append("12Z")
+            runArr.append("18Z")
+            runTimeData.listRun = runArr
+        case "NCEP:NBM":
+            paramArr = UtilityModelNcepInterface.paramsNbm
+            paramLabelArr = UtilityModelNcepInterface.labelsNbm
+            sectorArr = UtilityModelNcepInterface.sectorsNbm
+            timeArr = []
+            stride(from: 0, to: 264, by: 3).forEach {timeArr.append(String(format: "%03d", $0))}
+            runArr = []
+            runArr.append("00Z")
+            runArr.append("06Z")
+            runArr.append("12Z")
+            runArr.append("18Z")
+            runTimeData.listRun = runArr
         case "NCEP:GEFS-SPAG":
             paramArr = UtilityModelNcepInterface.modelGefsSpagParams
             paramLabelArr = UtilityModelNcepInterface.modelGefsSpagLabels

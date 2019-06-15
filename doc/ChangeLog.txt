@@ -28,9 +28,6 @@
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
 // TODO bug - failure to update polygons after long sleep with radar in focus
-// TODO NHC - add cpac
-// TODO NCEP updates
-
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -39,6 +36,39 @@
 [FIX] - bug fixes
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
+
+56026 2019_06_15 
+// appstore release June 15, 2019
+Add Central Pacific in NHC screen (3 images, 1 text product)
+Updates to NCEP models in response to website change. 
+- Add new models: HRW-ARW2, HREF, NBM
+- SREF/GEFS-MEAN-SPRD adad precip_ptot Total Accumulated Precipitation of Period
+- HRRR add 300_wnd, fix to 250_wnd,
+- RAP add 200_wnd_ht
+- HRRR add 850_temp_mslp_precip
+- NAM-HIRES add ceiling
+- Rename the following areas:
+  ATLPAC -> ATL-PAC
+  NPAC -> NORTH-PAC
+  EPAC -> EAST-PAC
+  SPAC -> SOUTH-PAC
+  WNATL -> WN-ATL
+  WGOA -> WEST-GOA
+  EGOA -> EAST-GOA
+  NCAL-> NORTH-CAL
+  SCAL -> SOUTH-CAL
+  SREF: Change prob_precip_25 to prob_precip_0.25in
+- Remove sim_radar_comp from the following models
+  NAM-HIRES
+  FIREWX
+  HRRR
+  RAP
+  HRW-NMMB
+  HRW-ARW
+- Remove sim_radar_max from the following models
+  FIREWX
+  HRW-NMMB
+  HRW-ARW
 
 // appstore release June 12, 2019
 Updates to NCEP models in response to website change. More updates to come in future changes

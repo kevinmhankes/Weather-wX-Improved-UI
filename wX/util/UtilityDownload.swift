@@ -86,7 +86,7 @@ final class UtilityDownload {
             let textUrl = "https://www.nhc.noaa.gov/text/" + prod + ".shtml"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-        } else if prod.contains("MIAT") {
+        } else if prod.contains("MIAT") || prod == "HFOTWOCP" {
             text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
             if UIPreferences.nwsTextRemovelinebreaks && prod == "MIATWOAT"
                 || prod == "MIATWDAT" || prod == "MIATWOEP"
