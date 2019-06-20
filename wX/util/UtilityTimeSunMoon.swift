@@ -35,7 +35,7 @@ final class UtilityTimeSunMoon {
         return "Sunrise: " + sunrise + "  Sunset: " + sunset
     }
 
-    static func getMoonTimesForHomescreen() -> String {
+    static func getMoonTimesForHomescreenOld() -> String {
         let sunCalc = SunCalc()
         let now = Date()
         let formatter = DateFormatter()
@@ -46,8 +46,35 @@ final class UtilityTimeSunMoon {
         var moonset = ""
         do {
             let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            moonrise = formatter.string(from: moonTimes.moonSetTime)
-            moonset = formatter.string(from: moonTimes.moonRiseTime)
+            moonrise = formatter.string(from: moonTimes.moonRiseTime)
+            moonset = formatter.string(from: moonTimes.moonSetTime)
+        } catch let e as SunCalc.LunarEventError {
+            switch e {
+            case .moonNeverRise:
+                print("Moon never rise")
+            case .moonNeverSet:
+                print("Moon never set")
+            }
+        } catch let e {
+            print("Unknown error: \(e)")
+        }
+        return "Moonrise: " + moonrise + "  Moonset: " + moonset
+    }
+    
+    static func getMoonTimesForHomescreen() -> String {
+        let sunCalc = SunCalc()
+        let moonCalc: SwiftySuncalc! = SwiftySuncalc()
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
+        var moonrise = ""
+        var moonset = ""
+        do {
+            let moonTimes = try moonCalc.getMoonTimes(date: now, lat: Location.xDbl, lng: Location.yDbl)
+            moonrise = formatter.string(from: moonTimes["rise"] as! Date)
+            moonset = formatter.string(from: moonTimes["set"] as! Date)
         } catch let e as SunCalc.LunarEventError {
             switch e {
             case .moonNeverRise:
