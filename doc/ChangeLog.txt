@@ -37,6 +37,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56028 2019_06_20 [FIX] add swiftSunCalc and use for moon times on homescreen
 56026 2019_06_15 [IMP] SPC SWO Summary/daily show 2 imaegs per row
 		 [IMP] move to whitebg for scrollview in SPC SWO screens
 		 [IMP] SPC SWO Summary support rotation properly
