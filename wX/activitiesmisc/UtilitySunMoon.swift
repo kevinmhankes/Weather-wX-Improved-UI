@@ -47,7 +47,7 @@ final class UtilitySunMoon {
         } catch let e {
             print("Unknown error: \(e)")
         }
-        do {
+        /*do {
             let moonTimes = try sunCalc.moonTimes(date: now, location: location)
             data += "Moonset:  \(formatter.string(from: moonTimes.moonSetTime))"
             data += MyApplication.newline
@@ -62,20 +62,34 @@ final class UtilitySunMoon {
             }
         } catch {
             // Catch any other errors
-        }
-        let moonIllumination = sunCalc.moonIllumination(date: now)
+        }*/
+        let moonCalc: SwiftySuncalc! = SwiftySuncalc()
+        let moonTimes = try moonCalc.getMoonTimes(date: now, lat: Location.xDbl, lng: Location.yDbl)
+        //moonrise = formatter.string(from: moonTimes["rise"] as! Date)
+        //moonset = formatter.string(from: moonTimes["set"] as! Date)
+        data += "Moonset:  \(formatter.string(from: moonTimes["rise"] as! Date))"
+        data += MyApplication.newline
+        data += "Moonrise: \(formatter.string(from: moonTimes["set"] as! Date))"
+        data += MyApplication.newline
+        
+        //let moonIllumination = sunCalc.moonIllumination(date: now)
+        var moonIllumination = moonCalc.getMoonIllumination(date: now)
         data += "Moon Phase: "
-            + moonPhaseFromIllumination(moonIllumination.phase)
+            //+ moonPhaseFromIllumination(moonIllumination.phase)
+            + moonPhaseFromIllumination(moonIllumination["phase"] ?? 0.0)
             +  " "
-            + String(moonIllumination.phase.roundTo(places: 3))
+            + String((moonIllumination["phase"] ?? 0.0).roundTo(places: 3))
             + MyApplication.newline
         data += MyApplication.newline
         data += "Approximate Full Moon: "
         data += MyApplication.newline
         (1...360).forEach {
             let future = Calendar.current.date(byAdding: .day, value: $0, to: now)
-            let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
-            if moonIlluminationFuture.phase > 0.479 && moonIlluminationFuture.phase < 0.521 {
+            //let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
+            var moonIllumination = moonCalc.getMoonIllumination(date: future!)
+            let illuminationPhase = (moonIllumination["phase"] ?? 0.0)
+            print(String(illuminationPhase) + " " + future!.description)
+            if illuminationPhase > 0.479 && illuminationPhase < 0.521 {
                 data += fullMoonFormatter.string(from: future!)
                 data += MyApplication.newline
             }

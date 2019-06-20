@@ -46,18 +46,18 @@ class ViewControllerHOURLY: UIwXViewController {
     private func displayContent() {
         
         // Declare a new SwiftySuncalc object
-        var suncalc: SwiftySuncalc! = SwiftySuncalc()
+        //var suncalc: SwiftySuncalc! = SwiftySuncalc()
         // Get moon illumination times for today
-        var moonIllumination = suncalc.getMoonIllumination(date: Date())
+        //var moonIllumination = suncalc.getMoonIllumination(date: Date())
         // Get the angle of the moon from the dictionary, `moonIllumination`
-        var moonAngle = moonIllumination["angle"]
+        //var moonAngle = moonIllumination["angle"]
         // Find out the times for today (e.g. sunset or sunrise)
-        var times = suncalc.getTimes(date: Date(), lat: Location.latLon.lat, lng: Location.latLon.lon);
-        var moonTimes = suncalc.getMoonTimes(date: Date(), lat: Location.latLon.lat, lng: Location.latLon.lon)
-        print(times["sunrise"])
-        print(times["sunset"])
-        print(moonTimes["set"])
-        print(moonTimes["rise"])
+        //var times = suncalc.getTimes(date: Date(), lat: Location.latLon.lat, lng: Location.latLon.lon);
+        //var moonTimes = suncalc.getMoonTimes(date: Date(), lat: Location.latLon.lat, lng: Location.latLon.lon)
+        //print(times["sunrise"])
+        //print(times["sunset"])
+        //print(moonTimes["set"])
+        //print(moonTimes["rise"])
    
         /*
          ["sunriseEnd": 2019-06-20 10:03:10 +0000, "sunrise": 2019-06-20 09:59:44 +0000,
