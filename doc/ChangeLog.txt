@@ -37,7 +37,13 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+// appstore release June 22, 2019
+In SPC Convctive Outlooks condense images, tap on image to show full screen.
+Remove moon rise/set times until an accurate replacement is found.
+In NCEP Models alphatize list.
+
 56028 2019_06_22 [FIX] remove moon data until an accurace replacement can be found
+		 [FIX] NCEP Models, alphabetize list of models
 56026 2019_06_15 [IMP] SPC SWO Summary/daily show 2 imaegs per row
 		 [IMP] move to whitebg for scrollview in SPC SWO screens
 		 [IMP] SPC SWO Summary support rotation properly
