@@ -319,10 +319,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.goToVC("settingslocationedit")
     }
 
-    func sunMoonData() {
-        self.goToVC("sunmoondata")
-    }
-
     @objc func locationAction() {
         let alert = UIAlertController(
             title: "Select location:",
@@ -357,7 +353,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             preferredStyle: UIAlertController.Style.actionSheet
         )
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
-        alert.addAction(UIAlertAction(title: "Sun/Moon data..", style: .default, handler: {_ in self.sunMoonData()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {

@@ -8,7 +8,6 @@ import Foundation
 
 final class UtilitySunMoon {
 
-    // TODO use from util 
     static func computeData() -> String {
         var data = ""
         let sunCalc = SunCalc()
@@ -47,80 +46,6 @@ final class UtilitySunMoon {
         } catch let e {
             print("Unknown error: \(e)")
         }
-        /*do {
-            let moonTimes = try sunCalc.moonTimes(date: now, location: location)
-            data += "Moonset:  \(formatter.string(from: moonTimes.moonSetTime))"
-            data += MyApplication.newline
-            data += "Moonrise: \(formatter.string(from: moonTimes.moonRiseTime))"
-            data += MyApplication.newline
-        } catch let e as SunCalc.LunarEventError {
-            switch e {
-            case .moonNeverRise:
-                print("Moon never rise")
-            case .moonNeverSet:
-                print("Moon never set")
-            }
-        } catch {
-            // Catch any other errors
-        }*/
-        let moonCalc: SwiftySuncalc! = SwiftySuncalc()
-        let moonTimes = try moonCalc.getMoonTimes(date: now, lat: Location.xDbl, lng: Location.yDbl)
-        //moonrise = formatter.string(from: moonTimes["rise"] as! Date)
-        //moonset = formatter.string(from: moonTimes["set"] as! Date)
-        data += "Moonset:  \(formatter.string(from: moonTimes["rise"] as! Date))"
-        data += MyApplication.newline
-        data += "Moonrise: \(formatter.string(from: moonTimes["set"] as! Date))"
-        data += MyApplication.newline
-        
-        //let moonIllumination = sunCalc.moonIllumination(date: now)
-        var moonIllumination = moonCalc.getMoonIllumination(date: now)
-        data += "Moon Phase: "
-            //+ moonPhaseFromIllumination(moonIllumination.phase)
-            + moonPhaseFromIllumination(moonIllumination["phase"] ?? 0.0)
-            +  " "
-            + String((moonIllumination["phase"] ?? 0.0).roundTo(places: 3))
-            + MyApplication.newline
-        data += MyApplication.newline
-        data += "Approximate Full Moon: "
-        data += MyApplication.newline
-        (1...360).forEach {
-            let future = Calendar.current.date(byAdding: .day, value: $0, to: now)
-            //let moonIlluminationFuture = sunCalc.moonIllumination(date: future!)
-            var moonIllumination = moonCalc.getMoonIllumination(date: future!)
-            let illuminationPhase = (moonIllumination["phase"] ?? 0.0)
-            print(String(illuminationPhase) + " " + future!.description)
-            if illuminationPhase > 0.479 && illuminationPhase < 0.521 {
-                data += fullMoonFormatter.string(from: future!)
-                data += MyApplication.newline
-            }
-        }
-        data += MyApplication.newline
-        data += "Moon phase description:" + MyApplication.newline
-        data += "Phase    Name" + MyApplication.newline
-        data += "0    New Moon" + MyApplication.newline
-        data += "Waxing Crescent" + MyApplication.newline
-        data += "0.25    First Quarter" + MyApplication.newline
-        data += "Waxing Gibbous" + MyApplication.newline
-        data += "0.5    Full Moon" + MyApplication.newline
-        data += "Waning Gibbous" + MyApplication.newline
-        data += "0.75    Last Quarter" + MyApplication.newline
-        data += "Waning Crescent" + MyApplication.newline
         return data
-    }
-
-    static func moonPhaseFromIllumination(_ phase: Double) -> String {
-        var phaseString = ""
-        switch phase {
-        case 0..<0.02: phaseString = "New Moon"
-        case 0.02..<0.23: phaseString = "Waxing Crescent"
-        case 0.23..<0.27: phaseString = "First Quarter"
-        case 0.27..<0.47: phaseString = "Waxing Gibbous"
-        case 0.47..<0.52: phaseString = "Full Moon"
-        case 0.52..<0.73: phaseString = "Waning Gibbous"
-        case 0.73..<0.77: phaseString = "Last Quarter"
-        case 0.77..<1.01: phaseString = "Waning Crescent"
-        default: phaseString = "unknown"
-        }
-        return phaseString
     }
 }

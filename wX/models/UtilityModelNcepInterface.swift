@@ -5,30 +5,53 @@
  *****************************************************************************/
 
 final class UtilityModelNcepInterface {
-
+    
+    /*static let models = [
+     "HRRR",
+     "GFS",
+     "NAM",
+     "NAM-HIRES",
+     "RAP",
+     "HRW-NMMB",
+     "HRW-ARW",
+     "GEFS-SPAG",
+     "GEFS-MEAN-SPRD",
+     "SREF",
+     "NAEFS",
+     "POLAR",
+     "WW3",
+     "WW3-ENP",
+     "WW3-WNA",
+     "ESTOFS",
+     "FIREWX",
+     "HRW-ARW2",
+     "HREF",
+     "NBM"
+     ]*/
+    
     static let models = [
-        "HRRR",
-        "GFS",
-        "NAM",
-        "NAM-HIRES",
-        "RAP",
-        "HRW-NMMB",
-        "HRW-ARW",
-        "GEFS-SPAG",
-        "GEFS-MEAN-SPRD",
-        "SREF",
-        "NAEFS",
-        "POLAR",
-        "WW3",
-        "WW3-ENP",
-        "WW3-WNA",
         "ESTOFS",
         "FIREWX",
-        "HRW-ARW2",
+        "GEFS-MEAN-SPRD",
+        "GEFS-SPAG",
+        "GFS",
         "HREF",
-        "NBM"
+        "HRRR",
+        "HRW-ARW",
+        "HRW-ARW2",
+        "HRW-NMMB",
+        "NAEFS",
+        "NAM",
+        "NAM-HIRES",
+        "NBM",
+        "POLAR",
+        "RAP",
+        "SREF",
+        "WW3",
+        "WW3-ENP",
+        "WW3-WNA"
     ]
-
+    
     static let sectorsGfs = [
         "NAMER",
         "SAMER",
