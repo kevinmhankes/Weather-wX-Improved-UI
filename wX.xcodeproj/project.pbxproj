@@ -24,6 +24,8 @@
 		0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */; };
 		032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */; };
 		0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */; };
+		03339AE922C3661600B888FE /* ObjectCardNhcStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */; };
+		03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */; };
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
@@ -400,6 +402,8 @@
 		032EAC6F225E974F003A6A30 /* UtilityRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityRadar.swift; sourceTree = "<group>"; };
 		032F52E51F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerADHOCLOCATION.swift; sourceTree = "<group>"; };
 		0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunCalc.swift; sourceTree = "<group>"; };
+		03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardNhcStormReportItem.swift; sourceTree = "<group>"; };
+		03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcStormDetails.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
@@ -1282,7 +1286,9 @@
 		F09504B71E153A80008A966E /* nhc */ = {
 			isa = PBXGroup;
 			children = (
+				03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */,
 				03F3EB6C22993D8E0056A56D /* ObjectNhc.swift */,
+				03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */,
 				03F3EB6D22993D8E0056A56D /* ObjectNhcStormInfo.swift */,
 				03F3EB6B22993D8E0056A56D /* UtilityNhc.swift */,
 				F011E6151DB03E25006531FD /* ViewControllerNHC.swift */,
@@ -1656,6 +1662,7 @@
 				F0B335101DA3FD1C0035BD36 /* Paint.swift in Sources */,
 				037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */,
 				F0B3357F1DA3FD6F0035BD36 /* UtilityColorPalette56.swift in Sources */,
+				03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */,
 				F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */,
 				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
@@ -1837,6 +1844,7 @@
 				F0F7760C1E00092A0022484C /* LatLon.swift in Sources */,
 				F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */,
 				F0DAD9361DA7018D00C2BD4B /* crctable.c in Sources */,
+				03339AE922C3661600B888FE /* ObjectCardNhcStormReportItem.swift in Sources */,
 				F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */,
 				03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */,
 				0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */,
