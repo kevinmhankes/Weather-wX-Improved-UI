@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class ObjectNhcStormDetails {
-    
+
     /*
      <nhc:center>30.8, -68.3<br>
      <nhc:type>Post-Tropical Cyclone<br>

@@ -26,7 +26,7 @@ final class UtilityGoesFullDisk {
     ]
 
     static let baseUrl = "https://www.goes.noaa.gov"
-    
+
     static let urls = [
         baseUrl + "/FULLDISK/GEIR.JPG",
         baseUrl + "/FULLDISK/GEVS.JPG",

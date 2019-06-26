@@ -97,7 +97,8 @@ final class ObjectForecastPackageCurrentConditions {
         if dataList.count > 4 {
             tempArr = dataList[0].split("/")
             retStr = dataList[4].replaceAll("^ ", "") + " " + tempArr[0] + dataList[2]
-            retStr2 = tempArr[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
+            retStr2 = tempArr[1].replaceAll("^ ", "")
+                + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
             retStr2 += status
         }
         topLine = retStr

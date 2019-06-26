@@ -20,7 +20,6 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
 
     // FIXME move to displayContent to handle rotation
     func getContent() {
-        
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
@@ -29,7 +28,7 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
             }
         }
     }
-    
+
     private func displayContent() {
         self.scrollView.backgroundColor = UIColor.white
         let imagesPerRow = 2
@@ -70,7 +69,7 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

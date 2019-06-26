@@ -40,7 +40,10 @@ final class ObjectSlider {
     }
 
     func setLabel() {
-        button.setTitle(label + "(" + String(ObjectSlider.prefToInitialValue[prefVar]!) + "): " + String(Int(slider.value)) + " ", for: .normal)
+        button.setTitle(
+            label + "(" + String(ObjectSlider.prefToInitialValue[prefVar]!) + "): " + String(Int(slider.value)) + " ",
+            for: .normal
+        )
     }
 
     static let prefToLabel = [

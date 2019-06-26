@@ -86,7 +86,7 @@ final class Bitmap {
     var isValid: Bool {
         return width > 10
     }
-    
+
     var isValidForNhc: Bool {
         return width > 100
     }

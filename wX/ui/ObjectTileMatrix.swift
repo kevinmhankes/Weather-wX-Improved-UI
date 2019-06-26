@@ -279,7 +279,7 @@ final class ObjectImageTileMatrix: NSObject {
         "fire_outlook",
         "tstorm"
     ]
-    
+
     var labelsSpc = [
         "SREF",
         "Mesoanalysis",
@@ -319,7 +319,7 @@ final class ObjectImageTileMatrix: NSObject {
         "goesfulldisk",
         "lightning"
     ]
-    
+
     var labelsMisc = [
         "NCEP Models",
         "HRRR",

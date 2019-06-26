@@ -5,30 +5,7 @@
  *****************************************************************************/
 
 final class UtilityModelNcepInterface {
-    
-    /*static let models = [
-     "HRRR",
-     "GFS",
-     "NAM",
-     "NAM-HIRES",
-     "RAP",
-     "HRW-NMMB",
-     "HRW-ARW",
-     "GEFS-SPAG",
-     "GEFS-MEAN-SPRD",
-     "SREF",
-     "NAEFS",
-     "POLAR",
-     "WW3",
-     "WW3-ENP",
-     "WW3-WNA",
-     "ESTOFS",
-     "FIREWX",
-     "HRW-ARW2",
-     "HREF",
-     "NBM"
-     ]*/
-    
+
     static let models = [
         "ESTOFS",
         "FIREWX",
@@ -51,7 +28,7 @@ final class UtilityModelNcepInterface {
         "WW3-ENP",
         "WW3-WNA"
     ]
-    
+
     static let sectorsGfs = [
         "NAMER",
         "SAMER",
@@ -69,14 +46,14 @@ final class UtilityModelNcepInterface {
         "INDIA",
         "US-SAMOA"
     ]
-    
+
     static let sectorsNam = [
         "NAMER",
         "NORTH-PAC",
         "EAST-PAC",
         "WN-ATL"
     ]
-    
+
     static let sectorsNam4km = [
         "CONUS",
         "ALASKA",
@@ -87,11 +64,11 @@ final class UtilityModelNcepInterface {
         "US-NE",
         "US-SE"
     ]
-    
+
     static let sectorsRap = [
         "CONUS"
     ]
-    
+
     static let sectorsHrrr = [
         "CONUS",
         "US-NW",
@@ -101,12 +78,12 @@ final class UtilityModelNcepInterface {
         "US-NE",
         "US-SE"
     ]
-    
+
     static let sectorsSref = [
         "NAMER",
         "ALASKA"
     ]
-    
+
     static let sectorsNaefs = [
         "NAMER",
         "SAMER",
@@ -122,11 +99,11 @@ final class UtilityModelNcepInterface {
         "POLAR",
         "ARCTIC"
     ]
-    
+
     static let sectorsPolar = [
         "POLAR"
     ]
-    
+
     static let sectorsHrwNmm = [
         "CONUS",
         "HAWAII",
@@ -140,7 +117,7 @@ final class UtilityModelNcepInterface {
         "US-NE",
         "US-SE"
     ]
-    
+
     static let sectorsGefsSpag = [
         "NAMER",
         "SAMER",
@@ -154,7 +131,7 @@ final class UtilityModelNcepInterface {
         "SOUTH-PAC",
         "INDIA"
     ]
-    
+
     static let sectorsGefsMnsprd = [
         "NAMER",
         "SAMER",
@@ -170,7 +147,7 @@ final class UtilityModelNcepInterface {
         "POLAR",
         "ARCTIC"
     ]
-    
+
     static let sectorsWw3 = [
         "ATLANTIC",
         "ATL-PAC",
@@ -178,16 +155,16 @@ final class UtilityModelNcepInterface {
         "EAST-PAC",
         "WN-ATL"
     ]
-    
+
     static let sectorsWw3Enp = [
         "NORTH-PAC",
         "EAST-PAC"
     ]
-    
+
     static let sectorsWw3Wna = [
         "WN-ATL"
     ]
-    
+
     static let sectorsEstofs =  [
         "WEST-GOA",
         "EAST-GOA",
@@ -201,11 +178,11 @@ final class UtilityModelNcepInterface {
         "WGOM",
         "HAWAII"
     ]
-    
+
     static let sectorsFirewx =  [
         "CONUS-AK"
     ]
-    
+
     static let sectorsHrwArw2 = [
         "CONUS",
         "HAWAII",
@@ -218,7 +195,7 @@ final class UtilityModelNcepInterface {
         "US-NE",
         "US-SE"
     ]
-    
+
     static let sectorsHref = [
         "CONUS",
         "US-NW",
@@ -228,12 +205,12 @@ final class UtilityModelNcepInterface {
         "US-NE",
         "US-SE"
     ]
-    
+
     static let sectorsNbm = [
         "CONUS",
         "NAMER"
     ]
-    
+
     static let modelGfsParams = [
         "1000_500_thick",
         "1000_850_thick",
@@ -266,7 +243,7 @@ final class UtilityModelNcepInterface {
         "dom_precip_type",
         "snodpth_chng"
     ]
-    
+
     static let modelGfsLabels = [
         "MSLP, 1000-500mb thickness, 0x hr PCPN (in.)",
         "MSLP, 1000-850mb thickness, 0x hr PCPN (in.)",
@@ -299,7 +276,7 @@ final class UtilityModelNcepInterface {
         "Dominant Precipitation Type",
         "Snow Depth Change for previous 001 hours"
     ]
-    
+
     static let modelNamParams = [
         "precip_p03",
         "precip_p06",
@@ -331,7 +308,7 @@ final class UtilityModelNcepInterface {
         "850vor_500ht_200wd",
         "925_temp_ht"
     ]
-    
+
     static let modelNamLabels = [
         "Total Precipitation every 3 hours",
         "Total Precipitation every 6 hours",
@@ -363,7 +340,7 @@ final class UtilityModelNcepInterface {
         "850mb Vorticity, 500mb Height, 200mb Wind",
         "925mb Temperature, Wind and Height"
     ]
-    
+
     static let modelRapParams = [
         "precip_p01",
         "precip_ptot",
@@ -389,7 +366,7 @@ final class UtilityModelNcepInterface {
         "850_temp_ht",
         "925_temp_ht"
     ]
-    
+
     static let modelRapLabels = [
         "Hourly Total Precipitation",
         "Total Accumulated Precipitation",
@@ -415,7 +392,7 @@ final class UtilityModelNcepInterface {
         "850mb Temperature, Wind, and Height",
         "925mb Temperature, Wind and Height"
     ]
-    
+
     static let modelHrrrParams = [
         "precip_p01",
         "precip_ptot",
@@ -450,7 +427,7 @@ final class UtilityModelNcepInterface {
         "925_temp_wnd",
         "ceiling"
     ]
-    
+
     static let modelHrrrLabels = [
         "Hourly Total Precipitation",
         "15-hr Total Precipitation",
@@ -485,7 +462,7 @@ final class UtilityModelNcepInterface {
         "925mb Temperature and Wind",
         "Cloud Ceiling "
     ]
-    
+
     static let modelNam4kmParams = [
         "1000_500_thick",
         "1000_850_thick",
@@ -528,7 +505,7 @@ final class UtilityModelNcepInterface {
         "precip_p60",
         "precip_ptot"
     ]
-    
+
     static let modelNam4kmLabels = [
         "MSLP, 1000-500mb thickness, 6 hourly total precipitation",
         "MSLP, 1000-850mb thickness, 6 hourly total precipitation",
@@ -571,7 +548,7 @@ final class UtilityModelNcepInterface {
         "60 Hour Accumulated Precipitation",
         "Precipitation Total"
     ]
-    
+
     static let modelSrefParams = [
         "precip_p03",
         "precip_p06",
@@ -602,7 +579,7 @@ final class UtilityModelNcepInterface {
         "850_temp",
         "850_wnd"
     ]
-    
+
     static let modelSrefLabels = [
         "Mean 3-hour Precipitation",
         "Mean 6-hour Precipitation",
@@ -633,7 +610,7 @@ final class UtilityModelNcepInterface {
         "850mb Temperature",
         "850mb Wind"
     ]
-    
+
     static let modelNaefsParams = [
         "10m_wnd",
         "2m_temp",
@@ -651,7 +628,7 @@ final class UtilityModelNcepInterface {
         "850_wnd",
         "925_wnd"
     ]
-    
+
     static let modelNaefsLabels = [
         "10m Winds",
         "2 meter Temperature",
@@ -669,15 +646,15 @@ final class UtilityModelNcepInterface {
         "850mb Winds",
         "925mb Winds"
     ]
-    
+
     static let modelPolarParams = [
         "ice_drift"
     ]
-    
+
     static let modelPolarLabels = [
         "Polar Ice Drift"
     ]
-    
+
     static let modelHrwNmmParams = [
         "10m_wnd",
         "10m_wnd_sfc_gust",
@@ -709,7 +686,7 @@ final class UtilityModelNcepInterface {
         "700_rh_ht",
         "850_temp_ht"
     ]
-    
+
     static let modelHrwNmmLabels = [
         "10 meter Wind",
         "10 meter wind gust",
@@ -741,7 +718,7 @@ final class UtilityModelNcepInterface {
         "700mb Relative Humidity, Wind, and Height",
         "850mb Temperature, Wind, and Height"
     ]
-    
+
     static let modelGefsSpagParams = [
         "200_1176_ht",
         "200_1188_ht",
@@ -762,7 +739,7 @@ final class UtilityModelNcepInterface {
         "mslp_984_1024_iso",
         "mslp_996_1036_iso"
     ]
-    
+
     static let modelGefsSpagLabels = [
         "200mb 1176 Height Contours",
         "200mb 1188 Height Contours",
@@ -783,7 +760,7 @@ final class UtilityModelNcepInterface {
         "MSLP 984/1024 Isobar Contours",
         "MSLP 996/1036 Isobar Contours"
     ]
-    
+
     static let modelGefsMnsprdParams = [
         "dom_precip_type",
         "precip_p06",
@@ -816,7 +793,7 @@ final class UtilityModelNcepInterface {
         "850_wnd",
         "925_wnd"
     ]
-    
+
     static let modelGefsMnsprdLabels = [
         "Dominant Precipitation Type",
         "Mean 6-hour Precipitation",
@@ -849,53 +826,53 @@ final class UtilityModelNcepInterface {
         "850mb Winds",
         "925mb Winds"
     ]
-    
+
     static let modelWw3Params = [
         "peak_dir_per",
         "sig_wv_ht",
         "wnd_wv_dir_per"
     ]
-    
+
     static let modelWw3Labels = [
         "Peak Wave Direction and Period (sec)",
         "Significant Wave Height and Wind",
         "Wind Wave Direction and Period (sec)"
     ]
-    
+
     static let modelWw3EnpParams = [
         "regional_pk_dir_per",
         "regional_wv_dir_per",
         "regional_wv_ht"
     ]
-    
+
     static let modelWw3EnpLabels = [
         "Regional WW3 Model Peak Wave Direction and Period",
         "Regional WW3 Model Wind Wave Direction and Period",
         "Regional WW3 Model Sig Wave Height and Wind"
     ]
-    
+
     static let modelWw3WnaParams = [
         "regional_pk_dir_per",
         "regional_wv_dir_per",
         "regional_wv_ht"
     ]
-    
+
     static let modelWw3WnaLabels = [
         "Regional WW3 Model Peak Wave Direction and Period",
         "Regional WW3 Model Wind Wave Direction and Period",
         "Regional WW3 Model Sig Wave Height and Wind"
     ]
-    
+
     static let modelEstofsParams = [
         "storm_surge",
         "total_water_level"
     ]
-    
+
     static let modelEstofsLabels = [
         "Storm surge relative to Mean Sea Level (feet)",
         "Total Water Level relative to Mean Sea Level (feet)"
     ]
-    
+
     static let modelFirewxParams = [
         "precip_p01",
         "precip_p12",
@@ -920,7 +897,7 @@ final class UtilityModelNcepInterface {
         "pbl_height",
         "transport_wind"
     ]
-    
+
     static let modelFirewxLabels = [
         "Sea-level Pressure, 1-hr Accumulated Precip",
         "12-H Accumulated Precipitation",
@@ -945,7 +922,7 @@ final class UtilityModelNcepInterface {
         "PBL Height",
         "Transport Wind and Terrain Height"
     ]
-    
+
     static let paramsHrwArw2 = [
         "precip_p01",
         "precip_p03",
@@ -978,7 +955,7 @@ final class UtilityModelNcepInterface {
         "700_rh_ht",
         "850_temp_ht"
     ]
-    
+
     static let labelsHrwArw2 = [
         "Total Precipitation every 1 hour",
         "Total Precipitation every 3 hours",
@@ -1011,7 +988,7 @@ final class UtilityModelNcepInterface {
         "700mb Relative Humidity, Wind, and Height",
         "850mb Temperature, Wind, and Height"
     ]
-    
+
     static let paramsHref = [
         "mean_precip_p01",
         "mean_precip_p03",
@@ -1067,7 +1044,7 @@ final class UtilityModelNcepInterface {
         "prob_max_hlcy_25",
         "prob_max_hlcy_100"
     ]
-    
+
     static let labelsHref = [
         "1h mean precip",
         "3h mean precip",
@@ -1123,7 +1100,7 @@ final class UtilityModelNcepInterface {
         "Probability of max updraft helicity greater than 25m**2/s**2",
         "Probability of max updraft helicity greater than 100m**2/s**2"
     ]
-    
+
     static let paramsNbm = [
         "precip_p06",
         "precip_ptot",
@@ -1136,7 +1113,7 @@ final class UtilityModelNcepInterface {
         "10m_wnd_gust",
         "total_cloud_cover"
     ]
-    
+
     static let labelsNbm = [
         "Total precipitation every 6 hours",
         "Accumulated precip",

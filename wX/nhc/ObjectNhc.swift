@@ -85,14 +85,7 @@ final class ObjectNhc: NSObject {
         } else {
             self.atlSumList.indices.forEach {
                 if atlImg1List[$0] != "" {
-                    /*let text = self.atlSumList[$0].replaceAllRegexp("<.*?>", "")
-                    _ = ObjectTextView(
-                        stackView,
-                        text,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoAtlNhcStorm(sender:)))
-                    )*/
                     let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[$0])
-                    print(objectNhcStormDetails.name)
                     _ = ObjectCardNhcStormReportItem(
                         stackView,
                         objectNhcStormDetails,
@@ -108,19 +101,11 @@ final class ObjectNhc: NSObject {
             self.pacSumList.indices.forEach {
                 if pacImg1List[$0] != "" {
                     let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[$0])
-                    print(objectNhcStormDetails.name)
                     _ = ObjectCardNhcStormReportItem(
                         stackView,
                         objectNhcStormDetails,
                         UITapGestureRecognizerWithData($0, self, #selector(gotoEpacNhcStorm(sender:)))
                     )
-                
-                    /*let text = self.pacSumList[$0].replaceAllRegexp("<.*?>", "")
-                    _ = ObjectTextView(
-                        stackView,
-                        text,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoEpacNhcStorm(sender:)))
-                    )*/
                 }
             }
         }

@@ -44,7 +44,7 @@ class ViewControllerHOURLY: UIwXViewController {
     }
 
     private func displayContent() {
-        
+
         // Declare a new SwiftySuncalc object
         //var suncalc: SwiftySuncalc! = SwiftySuncalc()
         // Get moon illumination times for today
@@ -58,7 +58,7 @@ class ViewControllerHOURLY: UIwXViewController {
         //print(times["sunset"])
         //print(moonTimes["set"])
         //print(moonTimes["rise"])
-   
+
         /*
          ["sunriseEnd": 2019-06-20 10:03:10 +0000, "sunrise": 2019-06-20 09:59:44 +0000,
          "nightEnd": 2019-06-20 07:45:21 +0000, "sunset": 2019-06-21 01:16:13 +0000,
@@ -69,7 +69,7 @@ class ViewControllerHOURLY: UIwXViewController {
          "dusk": 2019-06-21 01:50:58 +0000, "solarNoon": 2019-06-20 17:37:59 +0000]
          ["set": Optional(2019-06-20 13:04:53 +0000), "rise": Optional(2019-06-21 03:57:33 +0000)]
  */
-        
+
         let objTextView = ObjectTextView(
             self.stackView,
             self.html,

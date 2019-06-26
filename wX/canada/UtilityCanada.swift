@@ -265,7 +265,8 @@ final class UtilityCanada {
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
         let id = location.lonString.split(":")
-        return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
+        return (MyApplication.canadaEcSitePrefix
+            + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
 
     static func getLocationUrl(_ lat: String, _ lon: String ) -> String {

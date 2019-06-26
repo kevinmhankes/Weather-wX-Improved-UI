@@ -206,8 +206,8 @@ open class ImageScrollView: UIScrollView {
         let xScale = bounds.width / imageSize.width    // the scale needed to perfectly fit the image width-wise
         let yScale = bounds.height / imageSize.height   // the scale needed to perfectly fit the image height-wise
         // fill width if the image and phone are both portrait or both landscape; otherwise take smaller scale
-        let imagePortrait = imageSize.height > imageSize.width
-        let phonePortrait = bounds.height >= bounds.width
+        //let imagePortrait = imageSize.height > imageSize.width
+        //let phonePortrait = bounds.height >= bounds.width
         // commenting out the below line and implementing the one below it causes landscape
         // images to be not zoomed in at all
         //var minScale = (imagePortrait == phonePortrait) ? xScale : min(xScale, yScale)

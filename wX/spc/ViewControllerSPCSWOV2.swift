@@ -93,15 +93,8 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
         var views = [UIView]()
-        /*let objectImage = ObjectImage(
-            self.stackView,
-            self.bitmaps[0],
-            UITapGestureRecognizerWithData(0, self, #selector(imgClicked(sender:)))
-        )*/
-        
         stride(from: 0, to: self.bitmaps.count, by: 1).forEach {
             let objectImage = ObjectImage(
-                //self.stackView,
                 imageStackViewList[$0 / imagesPerRow].view,
                 self.bitmaps[$0],
                 UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:))),
@@ -111,24 +104,9 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             objectImage.img.isAccessibilityElement = true
             views.append(objectImage.img)
         }
-        
-        //objectImage.img.accessibilityLabel = "Outlook image"
-        //objectImage.img.isAccessibilityElement = true
-        //views.append(objectImage.img)
-        
         self.textView = ObjectTextView(self.stackView, self.html)
         textView.tv.isAccessibilityElement = true
         views.append(textView.tv)
-        /*stride(from: 1, to: self.bitmaps.count, by: 1).forEach {
-            let objectImage = ObjectImage(
-                self.stackView,
-                self.bitmaps[$0],
-                UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
-            )
-            objectImage.img.accessibilityLabel = "Outlook image"
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
-        }*/
         scrollView.accessibilityElements = views
     }
 

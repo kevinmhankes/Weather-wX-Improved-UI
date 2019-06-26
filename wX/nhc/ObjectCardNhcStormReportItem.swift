@@ -11,12 +11,22 @@ final class ObjectCardNhcStormReportItem {
         _ stormData: ObjectNhcStormDetails,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        //let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
-        let textViewTop = ObjectTextViewLarge(80.0, text: stormData.name + " (" + stormData.type + ") " + stormData.center, color: UIColor.blue)
+        let textViewTop = ObjectTextViewLarge(
+            80.0,
+            text: stormData.name + " (" + stormData.type + ") " + stormData.center,
+            color: UIColor.blue
+        )
         let textViewTime = ObjectTextView(stormData.dateTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let textViewTitle = ObjectTextView(stormData.movement + ", " + stormData.wind + ", " + stormData.pressure, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let textViewBottom = ObjectTextViewSmallGray(80.0, text: stormData.headline + " " + stormData.wallet + " " + stormData.atcf, isUserInteractionEnabled: false)
-        //let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area, isUserInteractionEnabled: false)
+        let textViewTitle = ObjectTextView(
+            stormData.movement + ", " + stormData.wind + ", " + stormData.pressure,
+            isUserInteractionEnabled: false,
+            isZeroSpacing: true
+        )
+        let textViewBottom = ObjectTextViewSmallGray(
+            80.0,
+            text: stormData.headline + " " + stormData.wallet + " " + stormData.atcf,
+            isUserInteractionEnabled: false
+        )
         textViewTop.tv.isAccessibilityElement = false
         textViewTime.tv.isAccessibilityElement = false
         textViewTitle.tv.isAccessibilityElement = false

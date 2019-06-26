@@ -26,7 +26,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .leftArrow: "ic_keyboard_arrow_left_24dp",
         .rightArrow: "ic_keyboard_arrow_right_24dp"
     ]
-    
+
     static let iconToAccessibilityLabel: [IconType: String] = [
         .share: "share content",
         .play: "play",

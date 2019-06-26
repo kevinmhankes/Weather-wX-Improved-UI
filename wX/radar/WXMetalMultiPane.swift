@@ -644,7 +644,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetal[index]!.radarBuffers.rd.degree, distRidKm))
         let heightMsl = Int(wxMetal[index]!.radarBuffers.rd.radarHeight) + heightAgl
-        alertMessage += MyApplication.newline + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
+        alertMessage += MyApplication.newline
+            + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
         let alert = UIAlertController(
             title: "Closest radar site:",
             message: alertMessage,
