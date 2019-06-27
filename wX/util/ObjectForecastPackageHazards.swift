@@ -30,9 +30,9 @@ final class ObjectForecastPackageHazards {
     // CA
     convenience init(_ html: String) {
         self.init()
-        let hazArr = UtilityCanada.getHazards(html)
-        hazardsShort = hazArr.0
-        hazards = hazArr.1
+        let hazards = UtilityCanada.getHazards(html)
+        hazardsShort = hazards[0]
+        self.hazards = hazards[1]
     }
 
     func getHazardsHtml(_ location: LatLon) -> String {
@@ -45,21 +45,24 @@ final class ObjectForecastPackageHazards {
 
     // CA
     static func createForCanada(_ html: String) -> ObjectForecastPackageHazards {
-        let obj = ObjectForecastPackageHazards()
-        let hazArr = UtilityCanada.getHazards(html)
-        obj.hazardsShort = hazArr.0
-        obj.hazards = hazArr.1
-        return obj
+        let objectForecastPackageHazards = ObjectForecastPackageHazards()
+        let hazards = UtilityCanada.getHazards(html)
+        objectForecastPackageHazards.hazardsShort = hazards[0]
+        objectForecastPackageHazards.hazards = hazards[1]
+        return objectForecastPackageHazards
     }
 
-    static func getHazardCount(_ objHazards: ObjectForecastPackageHazards) -> Int {
-        var numHaz = 0
-        let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
-        // TODO fix this
-        hazardTitles.enumerated().forEach { _, _ in
-            numHaz += 1
-        }
-        return numHaz
+    static func getHazardCount(_ objectForecastPackageHazards: ObjectForecastPackageHazards) -> Int {
+        //var numHaz = 0
+        //let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
+        //hazardTitles.enumerated().forEach { _, _ in
+        //    numHaz += 1
+        //}
+        //print(hazardTitles.count)
+        //print(hazardTitles)
+        //print(numHaz)
+        //return numHaz
+        return objectForecastPackageHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
     }
 
     static func getHazardCards(

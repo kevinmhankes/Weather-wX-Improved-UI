@@ -342,9 +342,8 @@ final class UtilityCanada {
         return sb2
     }
 
-    // FIXME move away from tuple
-    static func getHazards(_ html: String) -> (String, String) {
-        var result: (String, String) = ("", "")
+    static func getHazards(_ html: String) -> [String] {
+        var result = ["", ""]
         var urls = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\"(.*?)\">.*?</a>.*?</div>")
         var titles = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\".*?\">(.*?)</a>.*?</div>")
         let statementUrl = urls.joined()
@@ -359,12 +358,12 @@ final class UtilityCanada {
         titles = chunk.parseColumn("<a href=\".*?\">(.*?)</a>")
         let watchUrl = urls.joined(separator: "," + MyApplication.canadaEcSitePrefix)
         let watch = titles.joined(separator: "<BR>")
-        result.0 = (warning + statement + watch)
-        result.1 = (warningUrl + "," + statementUrl + "," + watchUrl)
-        if !result.0.contains("No watches or warnings in effect") {
-            result.1 = getHazardsFromUrl(warningUrl)
+        result[0] = (warning + statement + watch)
+        result[1] = (warningUrl + "," + statementUrl + "," + watchUrl)
+        if !result[0].contains("No watches or warnings in effect") {
+            result[1] = getHazardsFromUrl(warningUrl)
         } else {
-            result.1 = result.0
+            result[1] = result[0]
         }
         return result
     }

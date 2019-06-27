@@ -17,7 +17,7 @@ final class UtilityWpcText {
         ObjectMenuTitle("SPC", 8),
         ObjectMenuTitle("NHC", 6),
         ObjectMenuTitle("Great Lakes", 7),
-        ObjectMenuTitle("Canada", 8),
+        ObjectMenuTitle("Canada", 7),
         ObjectMenuTitle("Space Weather", 6)
     ]
 
@@ -35,7 +35,6 @@ final class UtilityWpcText {
         "pmd90d: Prognostic disc for long-lead Seasonal Outlooks",
         "pmdhco: Prognostic disc for long-lead Hawaiian Outlooks",
 
-        //"qpfpfd: QPF Discussion",
         "qpferd: Excessive Rainfall Discussion",
         "qpfhsd: Heavy Snow and Icing Discussion",
 
@@ -121,7 +120,6 @@ final class UtilityWpcText {
         "GLFSL: Saint Lawrence River",
 
         "focn45: Significant Weather Discussion, PASPC",
-        "fxcn01: FXCN01",
         "awcn11: Weather Summary S. Manitoba",
         "awcn12: Weather Summary N. Manitoba",
         "awcn13: Weather Summary S. Saskatchewan",

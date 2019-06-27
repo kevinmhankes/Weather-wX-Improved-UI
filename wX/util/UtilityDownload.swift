@@ -135,18 +135,12 @@ final class UtilityDownload {
         } else if prod.hasPrefix("AWCN") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if prod.contains("NFD") {
-            // FIXME not foratted correctly
-            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml()
+            text = (MyApplication.nwsOpcWebsitePrefix
+                + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml().removeHtml()
         } else if prod.contains("FWDDY38") {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-        } else if prod.contains("FXCN01") {
-            // FIXME not working - now 4 products
-            // https://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/fx_d1-3_west_2019041000.html
-            // https://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20190410/
-            // https://dd.weather.gc.ca/doc/LICENCE_GENERAL.txt
-            text = (WXGLDownload.nwsRadarPub + "/data/raw/fx/fxcn01.cwao..txt").getHtmlSep()
         } else if prod.contains("FPCN48") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
         } else if prod.contains("QPFPFD") {
