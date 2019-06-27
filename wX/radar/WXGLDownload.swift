@@ -107,7 +107,6 @@ final class WXGLDownload {
             + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
         var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
         var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
-        // FIXME below method is for rety, redo this - ugly
         if snDates.count == 0 {
             let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
                 + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()

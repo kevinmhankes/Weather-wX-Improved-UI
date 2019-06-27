@@ -5,14 +5,14 @@
  *****************************************************************************/
 
 import UIKit
+import WebKit
 
 class ViewControllerWEBVIEW: UIwXViewController {
 
     var productButton = ObjectToolbarIcon()
-    var webView = UIWebView()
+    var webView = WKWebView()
     var browserButton = ObjectToolbarIcon()
-    // FIXME rename
-    var stateCodeCurrent = ""
+    var stateCode = ""
     let prefToken = "STATE_CODE"
 
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
         }
         self.view.addSubview(toolbar)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        webView = UIWebView(
+        webView = WKWebView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
@@ -36,12 +36,12 @@ class ViewControllerWEBVIEW: UIwXViewController {
         )
         webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         if ActVars.webViewStateCode != "tornado" && !ActVars.webViewUseUrl {
-            stateCodeCurrent = ActVars.webViewStateCode
-            stateCodeCurrent = Utility.readPref(prefToken, stateCodeCurrent)
-            urlChanged(stateCodeCurrent)
+            stateCode = ActVars.webViewStateCode
+            stateCode = Utility.readPref(prefToken, stateCode)
+            urlChanged(stateCode)
         }
         if ActVars.webViewUseUrl {
-            webView.loadRequest(URLRequest(url: URL(string: ActVars.webViewUrl)!))
+            webView.load(URLRequest(url: URL(string: ActVars.webViewUrl)!))
         } else {
             webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         }
@@ -67,12 +67,12 @@ class ViewControllerWEBVIEW: UIwXViewController {
         urlChanged(stateCodeCurrent)
         webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         if ActVars.webViewStateCode != "tornado" {
-            Utility.writePref(prefToken, self.stateCodeCurrent)
+            Utility.writePref(prefToken, self.stateCode)
         }
     }
 
     func urlChanged(_ stateCodeCurrent: String) {
-        self.stateCodeCurrent = stateCodeCurrent
+        self.stateCode = stateCodeCurrent
         let stateCodeCurrentLocal = stateCodeCurrent.split(":")[0]
         let twitterStateId = Utility.readPref("STATE_TW_ID_" + stateCodeCurrentLocal, "")
         let url = "<a class=\"twitter-timeline\" data-dnt=\"true\" href=\"https://twitter.com/search?q=%23"
@@ -91,8 +91,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
 
     @objc func browserClicked() {
         let tail = "wx"
-        let stateTmp = stateCodeCurrent.lowercased().split(":")[0]
-        let url = "http://twitter.com/hashtag/" + stateTmp + tail
+        let url = "http://twitter.com/hashtag/" + stateCode.lowercased().split(":")[0] + tail
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
     }
 }

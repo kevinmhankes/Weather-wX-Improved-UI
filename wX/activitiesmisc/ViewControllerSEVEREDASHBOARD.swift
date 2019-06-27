@@ -127,7 +127,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             bitmap,
             UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:)))
         )
-        // TODO list numbers in text
         objectImage.img.accessibilityLabel = "spc storm reports"
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)

@@ -58,8 +58,6 @@ class WXGLNexradLevel3HailIndex {
                             bearing
                         )
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
-                        // FIXME the lat shifts need to be considered when scale changes in radarSite
-                        // FIXME need a set of radar datafiles to test against that have tvs/hi, etc
                         let baseSize = 0.015
                         [0.99, 1.99, 2.99].enumerated().forEach { index, size in
                             if hailSizeDbl > size {
