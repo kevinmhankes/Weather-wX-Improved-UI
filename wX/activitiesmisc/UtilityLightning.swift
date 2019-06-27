@@ -49,31 +49,46 @@ final class UtilityLightning {
     static func getSectorPretty(_ sector: String) -> String {
         let sectorPretty: String
         switch sector {
-        case "usa_big":             sectorPretty = "US"
-        case "florida_big":         sectorPretty = "Florida"
-        case "texas_big":           sectorPretty = "Texas"
-        case "oklahoma_kansas_big": sectorPretty = "OK / KS"
-        case "north_middle_america":sectorPretty = "North America"
-        case "south_america":       sectorPretty = "South America"
-        case "australia_big":       sectorPretty = "Australia"
-        case "new_zealand_big":     sectorPretty = "New Zealand"
+        case "usa_big":
+            sectorPretty = "US"
+        case "florida_big":
+            sectorPretty = "Florida"
+        case "texas_big":
+            sectorPretty = "Texas"
+        case "oklahoma_kansas_big":
+            sectorPretty = "OK / KS"
+        case "north_middle_america":
+            sectorPretty = "North America"
+        case "south_america":
+            sectorPretty = "South America"
+        case "australia_big":
+            sectorPretty = "Australia"
+        case "new_zealand_big":
+            sectorPretty = "New Zealand"
         default: sectorPretty = ""
         }
         return sectorPretty
     }
 
-    // FIXME formatting
     static func getSector(_ sectorPretty: String) -> String {
         let sector: String
         switch sectorPretty {
-        case  "US":                                 sector = "usa_big"
-        case "Florida" :                            sector = "florida_big"
-        case "Texas":                               sector = "texas_big"
-        case "OK / KS":                             sector = "oklahoma_kansas_big"
-        case "North America":                       sector = "north_middle_america"
-        case "South America":                       sector = "south_america"
-        case "Australia":                           sector = "australia_big"
-        case "New Zealand":                         sector = "new_zealand_big"
+        case  "US":
+            sector = "usa_big"
+        case "Florida" :
+            sector = "florida_big"
+        case "Texas":
+            sector = "texas_big"
+        case "OK / KS":
+            sector = "oklahoma_kansas_big"
+        case "North America":
+            sector = "north_middle_america"
+        case "South America":
+            sector = "south_america"
+        case "Australia":
+            sector = "australia_big"
+        case "New Zealand":
+            sector = "new_zealand_big"
         default: sector = ""
         }
         return sector
@@ -82,11 +97,16 @@ final class UtilityLightning {
     static func getTimePretty(_ period: String) -> String {
         let periodPretty: String
         switch period {
-        case "0.25": periodPretty = "15 MIN"
-        case "2":    periodPretty = "2 HR"
-        case "12":   periodPretty = "12 HR"
-        case "24":   periodPretty = "24 HR"
-        case "48":   periodPretty = "48 HR"
+        case "0.25":
+            periodPretty = "15 MIN"
+        case "2":
+            periodPretty = "2 HR"
+        case "12":
+            periodPretty = "12 HR"
+        case "24":
+            periodPretty = "24 HR"
+        case "48":
+            periodPretty = "48 HR"
         default: periodPretty = ""
         }
         return periodPretty
@@ -95,11 +115,16 @@ final class UtilityLightning {
     static func getTime(_ periodPretty: String) -> String {
         let period: String
         switch periodPretty {
-        case "15 MIN": period = "0.25"
-        case "2 HR":    period = "2"
-        case "12 HR":   period = "12"
-        case "24 HR":   period = "24"
-        case "48 HR":   period = "48"
+        case "15 MIN":
+            period = "0.25"
+        case "2 HR":
+            period = "2"
+        case "12 HR":
+            period = "12"
+        case "24 HR":
+            period = "24"
+        case "48 HR":
+            period = "48"
         default: period = ""
         }
         return period

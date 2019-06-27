@@ -24,7 +24,6 @@ final class UtilityImgAnim {
     }
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap], _ delay: Int) -> AnimationDrawable {
-        //let delay = UtilityImg.getAnimInterval()
         let animDrawable = AnimationDrawable()
         bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame($0, delay)}
         return animDrawable

@@ -163,10 +163,8 @@ final class UtilityTime {
         return components.hour ?? 0
     }
 
-    // TODO
     static func getCurrentLocalTimeAsString() -> String {
-        let date = getDateAsString("yyyy-MM-dd HH:mm:ss")
-        return date
+        return getDateAsString("yyyy-MM-dd HH:mm:ss")
     }
 
     static func isRadarTimeOld(_ radarTime: String) -> Bool {
