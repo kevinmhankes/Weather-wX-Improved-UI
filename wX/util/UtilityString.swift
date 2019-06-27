@@ -164,4 +164,14 @@ final class UtilityString {
     static func addPeriodBeforeLastTwoChars(_ str: String) -> String {
         return str.insert(str.count - 2, ".")
     }
+    
+    static func fixedLengthString(_ string: String, _ length: Int) -> String {
+        if string.count < length {
+            var stringLocal = string
+            (string.count...length).forEach {_ in stringLocal += " "}
+            return stringLocal
+        } else {
+            return string
+        }
+    }
 }

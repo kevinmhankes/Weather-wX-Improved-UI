@@ -68,7 +68,8 @@ final class WXMetalNexradLevelData {
                 + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
             //dis.skipBytes(14)
             dis.skipBytes(10)
-            let elevationNumber = dis.getUnsignedShort()
+            // elevationNumber
+            _ = dis.getUnsignedShort()
             let elevationAngle = dis.getShort()
             degree = Double(elevationAngle) / 10.0
             halfword3132 = dis.getFloat()

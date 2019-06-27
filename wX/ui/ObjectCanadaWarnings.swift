@@ -6,8 +6,7 @@
 
 import UIKit
 
-// TODO rename
-final class ObjectCAWARN: NSObject {
+final class ObjectCanadaWarnings: NSObject {
 
     private var stackView: UIStackView
     private var uiv: UIViewController

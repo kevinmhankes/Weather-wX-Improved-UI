@@ -67,7 +67,7 @@ final class UtilityDownload {
             text = UtilitySunMoon.computeData()
         } else if prod == "HOURLY" {
             let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
-            text = textArr.0
+            text = textArr[0]
         } else if prod == "SWPC3DAY" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()
         } else if prod == "SWPC27DAY" {

@@ -30,7 +30,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var stackViewForecast: ObjectStackView!
     var stackViewHazards: ObjectStackView!
     var stackViewRadar = ObjectStackViewHS()
-    var ccCard: ObjectCardCC?
+    var ccCard: ObjectCardCurrentConditions?
     var objCard7DayCollection: ObjectCard7DayCollection?
     var extraDataCards = [ObjectStackViewHS]()
     var wxMetal = [WXMetalRender?]()
@@ -370,7 +370,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if ccCard == nil {
-            ccCard = ObjectCardCC(self.stackViewCurrentConditions.view, objCurrentConditions, isUS)
+            ccCard = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, objCurrentConditions, isUS)
             ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
             ccCard?.updateCard(objCurrentConditions, isUS)

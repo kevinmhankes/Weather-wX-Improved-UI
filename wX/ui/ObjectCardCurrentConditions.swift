@@ -6,8 +6,7 @@
 
 import UIKit
 
-// FIXME rename
-final class ObjectCardCC {
+final class ObjectCardCurrentConditions {
 
     private var image = ObjectCardImage()
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
@@ -16,8 +15,11 @@ final class ObjectCardCC {
     let condenseScale: CGFloat = 0.50
     private var horizontalContainer = ObjectCardStackView()
 
-    // FIXME rename objFcst
-    init(_ stackView: UIStackView, _ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
+    init(
+        _ stackView: UIStackView,
+        _ objectForecastPackageCurrentConditions: ObjectForecastPackageCurrentConditions,
+        _ isUS: Bool
+    ) {
         if UIPreferences.mainScreenCondense {
             image = ObjectCardImage(sizeFactor: condenseScale)
         } else {
@@ -47,7 +49,7 @@ final class ObjectCardCC {
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
-        updateCard(objCc, isUS)
+        updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 
     func updateCard(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {

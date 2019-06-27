@@ -67,8 +67,6 @@ final class ObjectTextView {
         stackView.addArrangedSubview(self.tv)
     }
 
-    // TODO too many constructors
-
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont) {
         self.init(stackView, text)
         self.font = font

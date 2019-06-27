@@ -9,7 +9,7 @@ import AVFoundation
 
 class ViewControllerCAWARN: UIwXViewController {
 
-    var objCAWARN: ObjectCAWARN!
+    var objCAWARN: ObjectCanadaWarnings!
     var provButton = ObjectToolbarIcon()
     var prov = "Canada"
 
@@ -19,7 +19,7 @@ class ViewControllerCAWARN: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, provButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        self.objCAWARN = ObjectCAWARN(self, stackView)
+        self.objCAWARN = ObjectCanadaWarnings(self, stackView)
         self.getContent()
     }
 

@@ -40,24 +40,15 @@ final class UtilityHourly {
         return footer
     }
 
-    // FIXME move away from tuple
-    static func getHourlyString(_ locationNumber: Int) -> (String, String) {
+    static func getHourlyString(_ locationNumber: Int) -> [String] {
         let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
-        let header = fixedLengthString("Time", 7) + fixedLengthString("T", 4)
-            + fixedLengthString("Wind", 8) + fixedLengthString("WindDir", 6) +  MyApplication.newline
+        let header = UtilityString.fixedLengthString("Time", 7)
+            + UtilityString.fixedLengthString("T", 4)
+            + UtilityString.fixedLengthString("Wind", 8)
+            + UtilityString.fixedLengthString("WindDir", 6)
+            +  MyApplication.newline
         let footer = getFooter()
-        return (header + parse(html) + footer, html)
-    }
-
-    // FIXME move to utilityString
-    static func fixedLengthString(_ string: String, _ length: Int) -> String {
-        if string.count < length {
-            var stringLocal = string
-            (string.count...length).forEach {_ in stringLocal += " "}
-            return stringLocal
-        } else {
-            return string
-        }
+        return [header + parse(html) + footer, html]
     }
 
     static func parse(_ html: String) -> String {
@@ -73,11 +64,11 @@ final class UtilityHourly {
             let windSpeed = Utility.safeGet(windSpeeds, $0).replace(" to ", "-")
             let windDirection = Utility.safeGet(windDirections, $0)
             let shortForecast = Utility.safeGet(shortForecasts, $0)
-            string += fixedLengthString(time, 7)
-            string += fixedLengthString(temperature, 4)
-            string += fixedLengthString(windSpeed, 8)
-            string += fixedLengthString(windDirection, 4)
-            string += fixedLengthString(shortenConditions(shortForecast), 18)
+            string += UtilityString.fixedLengthString(time, 7)
+            string += UtilityString.fixedLengthString(temperature, 4)
+            string += UtilityString.fixedLengthString(windSpeed, 8)
+            string += UtilityString.fixedLengthString(windDirection, 4)
+            string += UtilityString.fixedLengthString(shortenConditions(shortForecast), 18)
             string += MyApplication.newline
         }
         return string
