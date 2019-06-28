@@ -40,6 +40,7 @@
 56030 2019_06_27 [FIX] Text products: remove broken canada product and fix formatting for NFD*
 		 [FIX] lint cleanup
 		 [FIX] migrate from UIWebView to WKWebView
+		 [FIX] in memory buffer move off deprecated data.withUnsafeBytes
 56029 2019_06_26 [ADD] NHC - add formatted card like android version
 
 // appstore release June 22, 2019
