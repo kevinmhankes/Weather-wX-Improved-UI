@@ -25,14 +25,12 @@ final class ObjectSpotterCard {
         textViews.append(ObjectTextView(sV.view, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews.append(ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews.append(ObjectTextView(sV.view, bottomLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        // TODO add to constructors
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         textViews[0].color = .blue
         textViews[1].color = .black
         textViews[2].color = .gray
-        //let sV = ObjectCardStackView(arrangedSubviews: [sV2.view])
         stackView.addArrangedSubview(sV.view)
         sV.view.addGestureRecognizer(gesture)
     }

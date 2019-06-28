@@ -68,8 +68,6 @@ final class ObjectCard7Day {
         }
     }
 
-    // TODO look to send ObjectForecast to this object and to not rely on so much parsing
-
     func format7Day(_ dayStr: String, _ dayStrShort: String) -> (String, String) {
         var dayTmpArr = dayStr.split(": ")
         var dayTmpArrShort = dayStrShort.split(": ")

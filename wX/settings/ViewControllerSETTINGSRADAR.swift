@@ -54,6 +54,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
                     "After the dialog for GPS permission has been shown once, all future updates to GPS"
                         + " permissions must be done via settings in iOS."
                 )
+            default:
+                print("future options")
             }
             locationManager.requestLocation()
         }

@@ -780,7 +780,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
   func query(_ parameters: [String: Any]) -> String {
     var components: [(String, String)] = []
     for key in Array(parameters.keys).sorted(by: <) {
-      let value: Any! = parameters[key]
+      let value: Any = parameters[key] as Any
       components += self.queryComponents(key, value)
     }
 
