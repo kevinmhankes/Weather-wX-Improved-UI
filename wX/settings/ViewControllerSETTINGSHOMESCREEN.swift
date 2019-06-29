@@ -101,7 +101,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
 
     @objc func addTextClicked() {
         let alert = ObjectPopUp(self, "Text Products", addTextButton)
-        GlobalArrays.nwsTextProducts.forEach {
+        UtilityWpcText.labels.forEach {
             let ridArr = $0.split(":")
             alert.addAction(
                 UIAlertAction(
@@ -165,7 +165,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 }
             }
             if title == nil {
-                GlobalArrays.nwsTextProducts.forEach {
+                UtilityWpcText.labels.forEach {
                     if $0.hasPrefix(prefVarMod) {
                         title = $0.split(":")[1]
                     }

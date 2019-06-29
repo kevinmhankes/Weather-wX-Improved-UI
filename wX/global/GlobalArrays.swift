@@ -425,7 +425,7 @@ class GlobalArrays {
         "76458"
     ]
 
-    static let nwsTextProducts = [
+    /*static let nwsTextProducts = [
         "pmdspd:Short Range Forecast Discussion",
         "pmdepd:Extended Forecast Discussion",
         "qpfpfd:QPF Discussion",
@@ -522,7 +522,7 @@ class GlobalArrays {
         "GLFLE:Lake Erie - Open Lake Forecast",
         "GLFLO:Lake Ontario - Open Lake Forecast",
         "GLFSL:Saint Lawrence River"
-    ]
+    ]*/
 
     static let nwsImageProducts = [
         "VIS_CONUS:Visible CONUS",

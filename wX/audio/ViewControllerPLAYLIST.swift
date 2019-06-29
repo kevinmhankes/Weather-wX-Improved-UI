@@ -147,7 +147,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func addClicked() {
-        _ = ObjectPopUp(self, "Product Selection", addButton, GlobalArrays.nwsTextProducts, self.addProduct(_:))
+        _ = ObjectPopUp(self, "Product Selection", addButton, UtilityWpcText.labels, self.addProduct(_:))
     }
 
     func addProduct(_ product: String) {
