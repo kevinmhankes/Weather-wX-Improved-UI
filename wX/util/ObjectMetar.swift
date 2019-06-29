@@ -47,7 +47,8 @@ final class ObjectMetar {
         visibility = metarData.parseFirst("Visibility: (.*?) mile")
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")
         windChill = metarData.parseFirst("Windchill: (.*?) F")
-        heatIndex = metarData.parseFirst("Heat index: (.*?) F")
+        //heatIndex = metarData.parseFirst("Heat index: (.*?) F")
+        heatIndex = UtilityMath.heatIndex(temperature, relativeHumidity)
         rawMetar = metarData.parseFirst("ob: (.*?)" + MyApplication.newline)
         metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + MyApplication.newline).capitalized
         metarWeatherCondition = metarData.parseFirst("Weather: (.*?)" + MyApplication.newline).capitalized

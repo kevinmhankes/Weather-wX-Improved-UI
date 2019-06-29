@@ -156,4 +156,31 @@ final class UtilityMath {
         return 3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
     }
 
+    static func heatIndex(_ temp: String, _ RH: String) -> String {
+        // temp >= 80 and RH >= 40
+        let T = Double(temp) ?? 0.0
+        let R = Double(RH) ?? 0.0
+        if T > 80.0 && R > 4.0 {
+            let s1 = -42.379
+            let s2 = 2.04901523 * T
+            let s3 = 10.14333127 * R
+            let s4 = 0.22475541 * T * R
+            let s5 = 6.83783 * pow(10.0, -3.0) * pow(T, 2.0)
+            let s6 = 5.481717 * pow(10.0, -2.0) * pow(R, 2.0)
+            let s7 = 1.22874 * pow(10.0, -3.0) * pow(T, 2.0) * R
+            let s8 = 8.5282 * pow(10.0, -4.0) * T * pow(R, 2.0)
+            let s9 = 1.99 * pow(10.0, -6.0) * pow(T, 2.0) * pow(R, 2.0)
+            let res1 = String(round(s1 + s2 + s3 - s4 - s5 - s6 + s7 + s8 - s9))
+            return res1
+        } else {
+            return ""
+        }
+    }
+    
+    /*static String getWindChill(double tempD, double mphD )
+     {
+     double windChillD = 35.74 + 0.6215 * tempD - 35.75 * Math.pow(mphD,0.16) + 0.4275*tempD * Math.pow(mphD,0.16);
+     return "(" + UtilityMath.unitsTemp(Integer.toString((int)(Math.round(windChillD)))) + MyApplication.DEGREE_SYMBOL + ")";
+     }*/
+
 }
