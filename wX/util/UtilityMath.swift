@@ -176,7 +176,7 @@ final class UtilityMath {
             return ""
         }
     }
-    
+
     /*static String getWindChill(double tempD, double mphD )
      {
      double windChillD = 35.74 + 0.6215 * tempD - 35.75 * Math.pow(mphD,0.16) + 0.4275*tempD * Math.pow(mphD,0.16);

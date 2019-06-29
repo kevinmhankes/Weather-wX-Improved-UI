@@ -120,13 +120,28 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     private func displayContent() {
+        scrollView.backgroundColor = UIColor.white
         var views = [UIView]()
         self.showTextWarnings(&views)
+        var imageCount = 0
+        let imagesPerRow = 2
+        var imageStackViewList = [ObjectStackView]()
+        (0..<(1 + self.snMcd.bitmaps.count + self.snMcd.bitmaps.count + self.snMcd.bitmaps.count)).forEach {
+            imageStackViewList.append(
+                ObjectStackView(
+                    UIStackView.Distribution.fill,
+                    NSLayoutConstraint.Axis.horizontal
+                )
+            )
+            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        }
         let objectImage = ObjectImage(
-            self.stackView,
+            imageStackViewList[imageCount / imagesPerRow].view,
             bitmap,
-            UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:)))
+            UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
+            widthDivider: imagesPerRow
         )
+        imageCount += 1
         objectImage.img.accessibilityLabel = "spc storm reports"
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
@@ -134,11 +149,12 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         var watI = 0
         var mcdI = 0
         var mpdI = 0
-        snWat.bitmaps.forEach {
+        snWat.bitmaps.enumerated().forEach {
             let objectImage  = ObjectImage(
-                self.stackView,
-                $0,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
+                imageStackViewList[imageCount / imagesPerRow].view,
+                $1,
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                widthDivider: imagesPerRow
             )
             self.buttonActions.append("SPCWAT" + snWat.numberList[watI])
             objectImage.img.accessibilityLabel = "SPCWAT" + snWat.numberList[watI]
@@ -146,12 +162,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             views.append(objectImage.img)
             index += 1
             watI += 1
+            imageCount += 1
         }
-        snMcd.bitmaps.forEach {
+        snMcd.bitmaps.enumerated().forEach {
             let objectImage = ObjectImage(
-                self.stackView,
-                $0,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
+                imageStackViewList[imageCount / imagesPerRow].view,
+                $1,
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                widthDivider: imagesPerRow
             )
             self.buttonActions.append("SPCMCD" + snMcd.numberList[mcdI])
             objectImage.img.accessibilityLabel = "SPCMCD" + snMcd.numberList[mcdI]
@@ -159,12 +177,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             views.append(objectImage.img)
             index += 1
             mcdI += 1
+            imageCount += 1
         }
-        snMpd.bitmaps.forEach {
+        snMpd.bitmaps.enumerated().forEach {
             let objectImage = ObjectImage(
-                self.stackView,
-                $0,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:)))
+                imageStackViewList[imageCount / imagesPerRow].view,
+                $1,
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                widthDivider: imagesPerRow
             )
             self.buttonActions.append("WPCMPD" + snMpd.numberList[mpdI])
             objectImage.img.accessibilityLabel = "WPCMPD" + snMpd.numberList[mpdI]
@@ -172,6 +192,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             views.append(objectImage.img)
             index += 1
             mpdI += 1
+            imageCount += 1
         }
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
