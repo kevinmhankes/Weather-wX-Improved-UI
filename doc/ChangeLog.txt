@@ -40,6 +40,7 @@
 // appstore release July 1, 2019
 Add heat index. Improve formatting of NHC storm cards. In severe dashboard show 2 images per row. Bugfixes
 
+56031 2019_07_01 [FIX] in info.plist add CFBundleDisplayName which now is required for app store submission
 56030 2019_07_01 [FIX] Text products: remove broken canada product and fix formatting for NFD*
 		 [FIX] lint cleanup
 		 [FIX] migrate from UIWebView to WKWebView
