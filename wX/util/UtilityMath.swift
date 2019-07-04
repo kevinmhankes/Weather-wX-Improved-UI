@@ -177,10 +177,10 @@ final class UtilityMath {
         }
     }
 
-    /*static String getWindChill(double tempD, double mphD )
-     {
-     double windChillD = 35.74 + 0.6215 * tempD - 35.75 * Math.pow(mphD,0.16) + 0.4275*tempD * Math.pow(mphD,0.16);
-     return "(" + UtilityMath.unitsTemp(Integer.toString((int)(Math.round(windChillD)))) + MyApplication.DEGREE_SYMBOL + ")";
-     }*/
-
+    static func getWindChill( _ tempD: Double, _ mphD: Double  ) -> String {
+     let windChillD = 35.74 + 0.6215 * tempD - 35.75 * pow(mphD, 0.16) + 0.4275 * tempD * pow(mphD, 0.16)
+     return "("
+        + UtilityMath.unitsTemp(String(Int(round(windChillD))))
+        + MyApplication.degreeSymbol + ")"
+    }
 }

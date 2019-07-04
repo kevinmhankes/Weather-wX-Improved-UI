@@ -94,11 +94,11 @@ final class ObjectSlider {
             "RADAR_AVIATION_SIZE": 0.0,
             "RADAR_OBS_EXT_ZOOM": 0.0,
             "RADAR_DATA_REFRESH_INTERVAL": 1.0,
-            "WXOGL_SIZE": 0.0,
+            "WXOGL_SIZE": 1.0,
 
-            "TEXTVIEW_FONT_SIZE": 0.0,
-            "REFRESH_LOC_MIN": 0.0,
-            "ANIM_INTERVAL": 0.0,
+            "TEXTVIEW_FONT_SIZE": 1.0,
+            "REFRESH_LOC_MIN": 1.0,
+            "ANIM_INTERVAL": 1.0,
             "UI_TILES_PER_ROW": 1.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
             "NWS_ICON_SIZE_PREF": 0.0

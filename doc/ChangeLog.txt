@@ -37,6 +37,9 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56033 2019_07_04 [FIX] visibility typo in ObjFcstCC
+		 [FIX] in objectSlider several min were changed to 1 from 0
+
 // appstore release July 1, 2019
 Add heat index. Improve formatting of NHC storm cards. In severe dashboard show 2 images per row. Bugfixes
 

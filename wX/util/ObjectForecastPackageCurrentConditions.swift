@@ -107,6 +107,6 @@ final class ObjectForecastPackageCurrentConditions {
             + self.windSpeed + "miles per hour" +
             " dew point is " + self.dewpoint + ", relative humidity is "
             + self.relativeHumidity + ", pressure in milli-bars is "
-            + self.seaLevelPressure + ", vibilibity is " + self.visibility + " miles" + status
+            + self.seaLevelPressure + ", visibility is " + self.visibility + " miles" + status
     }
 }
