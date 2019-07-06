@@ -12,6 +12,7 @@ final class UtilityDownloadRadar {
 
     static func getAllRadarData() {
         getPolygonVtec()
+        //getPolygonVtecByType(ObjectPolygonWarning(.))
         getMpd()
         getMcd()
         getWatch()
@@ -29,17 +30,21 @@ final class UtilityDownloadRadar {
         let tstHtml = urlTst.getNwsHtml()
         if tstHtml != "" {
             MyApplication.severeDashboardTst.value = tstHtml
+        } else {
+            print("TST FAILURE")
         }
         let ffwHtml = urlFfw.getNwsHtml()
         if ffwHtml != "" {
             MyApplication.severeDashboardFfw.value = ffwHtml
+        } else {
+            print("FFW FAILURE")
         }
         let torHtml = urlTor.getNwsHtml()
         if torHtml != "" {
             MyApplication.severeDashboardTor.value = torHtml
+        } else {
+            print("TOR FAILURE")
         }
-        //MyApplication.severeDashboardFfw.value = urlFfw.getNwsHtml()
-        //MyApplication.severeDashboardTor.value = urlTor.getNwsHtml()
     }
 
     static func clearPolygonVtec() {
