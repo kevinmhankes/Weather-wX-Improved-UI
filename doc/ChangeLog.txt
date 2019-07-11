@@ -28,6 +28,13 @@
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
 // TODO bug - failure to update polygons after long sleep with radar in focus
+// TODO iOS severe dashboard crash when showing tornado
+// TODO iOS ESRL rap does not work
+// TODO Swo, show update time in title
+// TODO iOS remove ESRL hrrrx
+// TODO Spec href end at 48
+// TODO Namhires start at one not zero
+// TODO iOS wpc gets other index off by one
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
