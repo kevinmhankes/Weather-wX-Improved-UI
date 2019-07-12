@@ -126,7 +126,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         var imageCount = 0
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        (0..<(1 + self.snMcd.bitmaps.count + self.snMcd.bitmaps.count + self.snMcd.bitmaps.count)).forEach {
+        (0..<(1 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count)).forEach {
             imageStackViewList.append(
                 ObjectStackView(
                     UIStackView.Distribution.fill,
