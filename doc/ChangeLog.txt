@@ -45,6 +45,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56034 2019_07_12 [ADD] break up download/display in NHC
 56033 2019_07_04 [FIX] visibility typo in ObjFcstCC
 		 [FIX] in objectSlider several min were changed to 1 from 0
 

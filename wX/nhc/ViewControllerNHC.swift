@@ -34,10 +34,29 @@ class ViewControllerNHC: UIwXViewController {
     }
 
     func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objNHC?.getData()
+        let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
+        serial.async {
+            self.objNHC?.getTextData()
             DispatchQueue.main.async {
-                self.displayContent()
+                self.displayTextContent()
+            }
+        }
+        serial.async {
+            self.objNHC?.getAtlanticImageData()
+            DispatchQueue.main.async {
+                self.displayAtlanticImageContent()
+            }
+        }
+        serial.async {
+            self.objNHC?.getPacificImageData()
+            DispatchQueue.main.async {
+                self.displayPacificImageContent()
+            }
+        }
+        serial.async {
+            self.objNHC?.getCentralImageData()
+            DispatchQueue.main.async {
+                self.displayCentralImageContent()
             }
         }
     }
@@ -83,8 +102,20 @@ class ViewControllerNHC: UIwXViewController {
         self.goToVC("modelgeneric")
     }
 
-    private func displayContent() {
-        self.objNHC?.showData()
+    private func displayTextContent() {
+        self.objNHC?.showTextData()
+    }
+    
+    private func displayAtlanticImageContent() {
+        self.objNHC?.showAtlanticImageData()
+    }
+    
+    private func displayPacificImageContent() {
+        self.objNHC?.showPacificImageData()
+    }
+    
+    private func displayCentralImageContent() {
+        self.objNHC?.showCentralImageData()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -94,7 +125,10 @@ class ViewControllerNHC: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.objNHC?.updateParents(self, self.stackView)
-                self.displayContent()
+                self.displayTextContent()
+                self.displayAtlanticImageContent()
+                self.displayPacificImageContent()
+                self.displayCentralImageContent()
             }
         )
     }

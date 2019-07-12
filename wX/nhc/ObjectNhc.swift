@@ -24,15 +24,23 @@ final class ObjectNhc: NSObject {
     private var stackView: UIStackView
     private var textAtl = ""
     private var textPac = ""
-    private var bitmaps = [Bitmap]()
+    private var bitmapsAtlantic = [Bitmap]()
+    private var bitmapsPacific = [Bitmap]()
+    private var bitmapsCentral = [Bitmap]()
 
-    private let imageUrls = [
+    private let imageUrlsAtlanic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png",
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
+    ]
+
+    private let imageUrlsPacific = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png",
+        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
+    ]
+
+    private let imageUrlsCentral = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
@@ -48,8 +56,19 @@ final class ObjectNhc: NSObject {
         self.stackView = stackView
     }
 
-    func getData() {
-        imageUrls.forEach {bitmaps.append(Bitmap($0))}
+    func getAtlanticImageData() {
+        imageUrlsAtlanic.forEach {bitmapsAtlantic.append(Bitmap($0))}
+    }
+
+    func getPacificImageData() {
+        imageUrlsPacific.forEach {bitmapsPacific.append(Bitmap($0))}
+    }
+
+    func getCentralImageData() {
+        imageUrlsCentral.forEach {bitmapsCentral.append(Bitmap($0))}
+    }
+
+    func getTextData() {
         (1...5).forEach {
             let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix
                 + "/nhc_at" + String($0) + ".xml")
@@ -78,7 +97,7 @@ final class ObjectNhc: NSObject {
         }
     }
 
-    func showData() {
+    func showTextData() {
         textAtl = ""
         if self.atlSumList.count < 1 {
             textAtl =  "There are no tropical cyclones in the Atlantic at this time."
@@ -115,7 +134,19 @@ final class ObjectNhc: NSObject {
         if textPac != "" {
             _ = ObjectTextView(stackView, textPac)
         }
-        bitmaps.forEach {_ = ObjectImage(stackView, $0)}
+        //bitmaps.forEach {_ = ObjectImage(stackView, $0)}
+    }
+    
+    func showAtlanticImageData() {
+        bitmapsAtlantic.forEach {_ = ObjectImage(stackView, $0)}
+    }
+    
+    func showPacificImageData() {
+        bitmapsPacific.forEach {_ = ObjectImage(stackView, $0)}
+    }
+    
+    func showCentralImageData() {
+        bitmapsCentral.forEach {_ = ObjectImage(stackView, $0)}
     }
 
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
