@@ -75,7 +75,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
                 }
                 self.textView.text = self.html
                 Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
-                Utility.writePref("WFO_REMEMBER_LOCATION", self.wfo)
+                Utility.writePref("WFO_LAST_USED", self.wfo)
                 self.scrollView.scrollToTop()
             }
         }
