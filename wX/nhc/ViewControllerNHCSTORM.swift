@@ -68,13 +68,21 @@ class ViewControllerNHCSTORM: UIwXViewController {
     }
 
     func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
+        let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
+        serial.async {
             let html = UtilityDownload.getTextProduct(self.product)
+            DispatchQueue.main.async {
+                self.tv.text = html
+                self.view.bringSubviewToFront(self.toolbar)
+            }
+        }
+        serial.async {
+            //let html = UtilityDownload.getTextProduct(self.product)
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach {self.bitmaps.append(Bitmap(self.baseUrl + $0))}
             self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {
-                self.tv.text = html
+                //self.tv.text = html
                 self.bitmaps.filter {($0.isValidForNhc)}.forEach {_ = ObjectImage(self.stackView, $0)}
                 self.view.bringSubviewToFront(self.toolbar)
             }
