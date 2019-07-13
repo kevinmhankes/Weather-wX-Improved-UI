@@ -299,7 +299,7 @@ final public class ObjectModel {
             paramLabelArr = UtilityModelNcepInterface.modelNam4kmLabels
             sectorArr = UtilityModelNcepInterface.sectorsNam4km
             timeArr = []
-            stride(from: 0, to: 61, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
+            stride(from: 1, to: 61, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:NAM":
             paramArr = UtilityModelNcepInterface.modelNamParams
@@ -462,7 +462,7 @@ final public class ObjectModel {
             paramLabelArr = UtilityModelSpcSrefInterface.labels
             sectorArr = []
             timeArr = []
-            stride(from: 0, to: 90, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}
+            stride(from: 0, to: 87, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}
             runArr = self.runTimeData.listRun
         default: break
         }

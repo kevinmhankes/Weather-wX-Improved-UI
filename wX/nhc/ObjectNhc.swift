@@ -134,17 +134,16 @@ final class ObjectNhc: NSObject {
         if textPac != "" {
             _ = ObjectTextView(stackView, textPac)
         }
-        //bitmaps.forEach {_ = ObjectImage(stackView, $0)}
     }
-    
+
     func showAtlanticImageData() {
         bitmapsAtlantic.forEach {_ = ObjectImage(stackView, $0)}
     }
-    
+
     func showPacificImageData() {
         bitmapsPacific.forEach {_ = ObjectImage(stackView, $0)}
     }
-    
+
     func showCentralImageData() {
         bitmapsCentral.forEach {_ = ObjectImage(stackView, $0)}
     }

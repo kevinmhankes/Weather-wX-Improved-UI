@@ -7,10 +7,10 @@
 final class UtilityModelEsrlInterface {
 
     static let models = [
-        "HRRR",
-		"HRRR_AK",
+        //"HRRR",
+		///"HRRR_AK",
 		"HRRR_NCEP",
-		"RAP",
+		//"RAP",
 		"RAP_NCEP"
     ]
 

@@ -105,15 +105,15 @@ class ViewControllerNHC: UIwXViewController {
     private func displayTextContent() {
         self.objNHC?.showTextData()
     }
-    
+
     private func displayAtlanticImageContent() {
         self.objNHC?.showAtlanticImageData()
     }
-    
+
     private func displayPacificImageContent() {
         self.objNHC?.showPacificImageData()
     }
-    
+
     private func displayCentralImageContent() {
         self.objNHC?.showCentralImageData()
     }

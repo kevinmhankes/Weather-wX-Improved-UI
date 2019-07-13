@@ -11,6 +11,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
     var productButton = ObjectToolbarIcon()
     var buttonActionArray = [String]()
     var url = ""
+    var html = ""
     var titleS = ""
     var baseUrl = ""
     var stormId = ""
@@ -63,17 +64,15 @@ class ViewControllerNHCSTORM: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         _ = ObjectScrollStackView(self, scrollView, stackView)
-        tv = ObjectTextView(self.stackView, "")
         self.getContent()
     }
 
     func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
-            let html = UtilityDownload.getTextProduct(self.product)
+            self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
-                self.tv.text = html
-                self.view.bringSubviewToFront(self.toolbar)
+                self.displayTextContent()
             }
         }
         serial.async {
@@ -81,8 +80,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
             self.stormUrls.forEach {self.bitmaps.append(Bitmap(self.baseUrl + $0))}
             self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {
-                self.bitmaps.filter {($0.isValidForNhc)}.forEach {_ = ObjectImage(self.stackView, $0)}
-                self.view.bringSubviewToFront(self.toolbar)
+               self.displayImageContent()
             }
         }
     }
@@ -103,5 +101,27 @@ class ViewControllerNHCSTORM: UIwXViewController {
                 self.goToVC("textviewer")
             }
         }
+    }
+
+    func displayTextContent() {
+        tv = ObjectTextView(self.stackView, html)
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+
+    func displayImageContent() {
+        self.bitmaps.filter {($0.isValidForNhc)}.forEach {_ = ObjectImage(self.stackView, $0)}
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayTextContent()
+                self.displayImageContent()
+        }
+        )
     }
 }
