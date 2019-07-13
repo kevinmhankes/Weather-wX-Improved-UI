@@ -42,6 +42,8 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56036 2019_07_13
+
 // appstore release July 13, 2019 56035
 Improve download/display of NHC data. NHC Storm screen now properly supports screen rotation. Bugfixes in SPC HREF, NCEP NAM-HIRES, and ESRL (remove poorly performing experimental models).
 
