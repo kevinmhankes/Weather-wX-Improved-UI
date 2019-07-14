@@ -27,7 +27,6 @@
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
-// TODO bug - failure to update polygons after long sleep with radar in focus
 // TODO iOS severe dashboard crash when showing tornado
 // TODO iOS ESRL rap does not work
 // TODO Swo, show update time in title
@@ -42,7 +41,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-56036 2019_07_13
+56036 2019_07_14 [FIX] wxmetalradar - add semaphore to protect getPolygonWarnings() when auto update is turned on and onrestart()
 
 // appstore release July 13, 2019 56035
 Improve download/display of NHC data. NHC Storm screen now properly supports screen rotation. Bugfixes in SPC HREF, NCEP NAM-HIRES, and ESRL (remove poorly performing experimental models).

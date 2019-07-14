@@ -41,6 +41,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var colorLegend = UIColorLegend()
     var screenScale = 0.0
     var paneRange: Range<Int> = 0..<1
+    let semaphore = DispatchSemaphore(value: 1)
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -476,17 +477,19 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func getPolygonWarnings() {
-        print("display existing warning data")
-        if self.wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.constructAlertPolygons() }
-        }
         DispatchQueue.global(qos: .userInitiated).async {
+            self.semaphore.wait()
+            print("display existing warning data")
+            if self.wxMetal[0] != nil {
+                self.wxMetal.forEach { $0!.constructAlertPolygons() }
+            }
             UtilityPolygons.getData()
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
                 print("display new warning data")
+                self.semaphore.signal()
             }
         }
     }

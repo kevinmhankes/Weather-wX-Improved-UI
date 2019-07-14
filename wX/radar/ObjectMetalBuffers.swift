@@ -90,7 +90,7 @@ class ObjectMetalBuffers {
 
     func initialize(_ floatCount: Int) {
         floatBuffer = MemoryBuffer(floatCount)
-        metalBuffer = Array(repeating: 0.0, count: floatCountPerVertex * (count*2)) // x y  r g b
+        metalBuffer = Array(repeating: 0.0, count: floatCountPerVertex * (count * 2)) // x y  r g b
         setToPositionZero()
     }
 
