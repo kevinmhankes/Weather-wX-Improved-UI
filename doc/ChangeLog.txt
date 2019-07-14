@@ -11,7 +11,6 @@
 // TODO make option to scale homescreen images ( like radar mosaic )
 // TODO spotters?
 // TODO color palette editor
-// TODO uswarn - add total warning count
 // TODO uswarn - Uswarn add long press: nexrad, mosaic, save location
 // TODO use enum for utilityaction ( below )
 //    enum ASCIIControlCharacter: Character {
@@ -23,7 +22,6 @@
 // [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
-// TODO enhance NHC storm card like kotlin
 // TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO look into the following for CLI build push: xcodebuild or xcrun altool
