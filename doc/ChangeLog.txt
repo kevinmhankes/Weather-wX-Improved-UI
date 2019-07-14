@@ -19,7 +19,7 @@
 //        case carriageReturn = "\r"
 //    }
 // TODO fix utilColor for velocity corner chase 
-// [BUG] screen is not staying on when configured to do so ( when jumping to dual pane and back )
+// [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
 // TODO convert watch/warn to match Android/kotlin
