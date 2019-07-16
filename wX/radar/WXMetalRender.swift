@@ -452,8 +452,11 @@ class WXMetalRender {
     }
 
     func checkIfTDWR() {
+        print(self.rid)
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         // TODO check for existence in list including tilts
+        print(self.product)
+        print(ridIsTdwr)
         if self.product == "TV0" || self.product == "TZL" || self.product == "TR0" {
             self.tdwr = true
         } else {
