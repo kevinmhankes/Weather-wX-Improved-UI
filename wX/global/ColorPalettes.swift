@@ -11,6 +11,7 @@ class ColorPalettes {
         MyApplication.colorMap[94] = cm94
         MyApplication.colorMap[94]!.initialize()
         MyApplication.colorMap[153] = cm94
+        MyApplication.colorMap[181] = cm94
         MyApplication.colorMap[186] = cm94
         let cm99 = ObjectColorPalette("99")
         MyApplication.colorMap[99] = cm99
