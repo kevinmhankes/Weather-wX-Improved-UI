@@ -467,7 +467,7 @@ class WXMetalRender {
             self.radarProduct = "TZL"
             self.tdwr = true
         }
-        if (self.product == "TZL" || self.product == "TR0")&& !ridIsTdwr {
+        if (self.product == "TZL" || self.product == "TR0") && !ridIsTdwr {
             self.radarProduct = "N0Q"
             self.tdwr = false
         }
