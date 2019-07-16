@@ -34,7 +34,7 @@ final class WXMetalNexradLevelData {
         switch productCode {
         case 153, 154:
             radarType = .level2
-        case 30, 56:
+        case 30, 56, 181:
             radarType = .level3bit4
         default:
             radarType = .level3
@@ -45,7 +45,7 @@ final class WXMetalNexradLevelData {
         switch productCode {
         case 153, 154:
             decocodeAndPlotNexradL2()
-        case 30, 56:
+        case 30, 56, 181:
             decocodeAndPlotNexradLevel3FourBit()
         default:
             decocodeAndPlotNexradLevel3()
@@ -84,8 +84,13 @@ final class WXMetalNexradLevelData {
     }
 
     func decocodeAndPlotNexradLevel3FourBit() {
-        binWord = MemoryBuffer(360 * 230)
-        radialStartAngle = MemoryBuffer(4 * 360)
+        if productCode == 181 {
+            binWord = MemoryBuffer(720 * 230)
+            radialStartAngle = MemoryBuffer(4 * 720)
+        } else {
+            binWord = MemoryBuffer(360 * 230)
+            radialStartAngle = MemoryBuffer(4 * 360)
+        }
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
             dis.skipBytes(30)
