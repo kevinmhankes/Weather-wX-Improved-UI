@@ -141,7 +141,7 @@ class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var radarBlackHole = 0.0
         var radarBlackHoleAdd = 0.0
-        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 {
+        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 || radarBuffers.rd.productCode == 181 {
             radarBlackHole = 1.0
             radarBlackHoleAdd = 0.0
         } else {
