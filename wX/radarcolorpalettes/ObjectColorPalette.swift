@@ -23,6 +23,9 @@ final class ObjectColorPalette {
 
     func initialize() {
         switch colormapCode {
+        case "19":
+            setupBuffers(16)
+            UtilityColorPalette19.generate()
         case "30":
             setupBuffers(16)
             UtilityColorPalette30.generate()
