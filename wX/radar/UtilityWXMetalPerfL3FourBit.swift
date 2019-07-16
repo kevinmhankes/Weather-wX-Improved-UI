@@ -18,9 +18,9 @@ class UtilityWXMetalPerfL3FourBit {
             radarBuffers.rd.radialStartAngle.position = 0
             var numOfBins = 0
             var radials = 360
-            if radarBuffers.rd.productCode == 181 {
-                radials = 720
-            }
+            //if radarBuffers.rd.productCode == 181 {
+            //    radials = 720
+            //}
             (0..<radials).forEach { radial in
                 numberOfRleHalfwords.append(dis.getUnsignedShort())
                 radarBuffers.rd.radialStartAngle.putFloat((450.0 - Float((dis.getUnsignedShort() / 10))))
