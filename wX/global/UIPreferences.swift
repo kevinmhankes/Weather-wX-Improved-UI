@@ -36,7 +36,6 @@ class UIPreferences {
     static func initialize() {
         goesUseFullResolutionImages = Utility.readPref("GOES_USE_FULL_RESOLUTION_IMAGES", "false").hasPrefix("t")
         useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
-        showMetarInCC = Utility.readPref("SHOW_METAR_IN_CC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
         dualpaneRadarIcon = Utility.readPref("DUALPANE_RADAR_ICON", "false").hasPrefix("t")
         tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)

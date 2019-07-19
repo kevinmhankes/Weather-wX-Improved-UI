@@ -95,8 +95,7 @@ final class ObjectSlider {
             "RADAR_OBS_EXT_ZOOM": 0.0,
             "RADAR_DATA_REFRESH_INTERVAL": 1.0,
             "WXOGL_SIZE": 1.0,
-
-            "TEXTVIEW_FONT_SIZE": 1.0,
+            "TEXTVIEW_FONT_SIZE": 8.0,
             "REFRESH_LOC_MIN": 1.0,
             "ANIM_INTERVAL": 1.0,
             "UI_TILES_PER_ROW": 1.0,
@@ -113,8 +112,7 @@ final class ObjectSlider {
             "RADAR_OBS_EXT_ZOOM": 10.0,
             "RADAR_DATA_REFRESH_INTERVAL": 20.0,
             "WXOGL_SIZE": 25.0,
-
-            "TEXTVIEW_FONT_SIZE": 20.0,
+            "TEXTVIEW_FONT_SIZE": 24.0,
             "REFRESH_LOC_MIN": 120.0,
             "ANIM_INTERVAL": 16.0,
             "UI_TILES_PER_ROW": 8.0,
