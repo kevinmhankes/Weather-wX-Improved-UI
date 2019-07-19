@@ -48,6 +48,7 @@
 		036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */; };
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
+		037336B622E1B6C300BB996B /* UtilityColorPalette78.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037336B522E1B6C200BB996B /* UtilityColorPalette78.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
@@ -427,6 +428,7 @@
 		036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
+		037336B522E1B6C200BB996B /* UtilityColorPalette78.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette78.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
@@ -937,6 +939,7 @@
 				030A5A8722DE6CA000E55493 /* UtilityColorPalette19.swift */,
 				03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */,
 				F0B3356C1DA3FD6F0035BD36 /* UtilityColorPalette56.swift */,
+				037336B522E1B6C200BB996B /* UtilityColorPalette78.swift */,
 				F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */,
 				F0B3356E1DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift */,
 			);
@@ -1789,6 +1792,7 @@
 				F062098C1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift in Sources */,
 				F05806791DB1884B009E2786 /* ViewControllerSPCMESO.swift in Sources */,
 				F062098A1E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift in Sources */,
+				037336B622E1B6C300BB996B /* UtilityColorPalette78.swift in Sources */,
 				F05367051EA2A9C7006684BE /* ViewControllerSPCSWOSTATE.swift in Sources */,
 				031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */,
 				F0C1BC4B1EBAB6A00063C853 /* PolygonType.swift in Sources */,

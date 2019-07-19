@@ -32,6 +32,9 @@ final class ObjectColorPalette {
         case "56":
             setupBuffers(16)
             UtilityColorPalette56.generate()
+        case "78":
+            setupBuffers(16)
+            UtilityColorPalette78.generate()
         case "165":
             setupBuffers(256)
             UtilityColorPalette165.loadColorMap()

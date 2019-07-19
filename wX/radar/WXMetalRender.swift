@@ -457,7 +457,7 @@ class WXMetalRender {
         // TODO check for existence in list including tilts
         print(self.product)
         print(ridIsTdwr)
-        if self.product == "TV0" || self.product == "TZL" || self.product == "TR0" {
+        if self.product == "TV0" || self.product == "TZL" || self.product == "TR0"  || self.product == "N1P"  || self.product == "NTP" {
             self.tdwr = true
         } else {
             self.tdwr = false
@@ -555,7 +555,7 @@ class WXMetalRender {
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
-        case 153, 154, 30, 56, 181:
+        case 153, 154, 30, 56, 78, 80, 181:
             self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
         case 0:
             break

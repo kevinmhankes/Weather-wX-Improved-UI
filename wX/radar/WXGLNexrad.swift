@@ -24,12 +24,12 @@ final class WXGLNexrad {
     ]
 
     // To add products in this file means also adding entries in global/GlobalDictionaries.swift and global/ColorPalettes.swift
-    
+
     // https://www1.ncdc.noaa.gov/pub/data/radar/RadarProductsDetailedTable.pdf
     // https://www.ncdc.noaa.gov/data-access/radar-data/tdwr
     // https://www.ncdc.noaa.gov/data-access/radar-data/tdwr/tdwr-products
     // SPG https://www.roc.noaa.gov/spg/default.aspx
-    
+
     /*
  
      From the URL above
@@ -107,17 +107,21 @@ final class WXGLNexrad {
      A running daily log of status, errors, and messages from the Radar Product Generator (RPG) and Radar Data Acquisition (RDA) processing systems.
      
     */
-    
+
     static var radarProductListTdwr = [
         "TZL: Long Range Digital Base Reflectivity",
         "TR0: Digital Base Reflectivity",
-        "TV0: Digital Base Velocity"
+        "TV0: Digital Base Velocity",
+        "N1P: One Hour Precipitation Total",
+        "NTP: Storm Total Precipitation"
     ]
 
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {
         case 134: return 460
         case 186: return 1390
+        case 78: return 592
+        case 80: return 592
         case 181: return 720
         case 182: return 720
         case 135: return 1200
@@ -136,6 +140,7 @@ final class WXGLNexrad {
         let binSize13 = 0.50
         let binSize08 = 0.295011
         let binSize16 = 0.590022
+        let binSize110 = 2.0 * binSize54
         switch productCode {
         case 134: return binSize54
         case 135: return binSize54
@@ -147,6 +152,8 @@ final class WXGLNexrad {
         case 99:  return binSize13
         case 170: return binSize13
         case 172: return binSize13
+        case 78: return binSize110
+        case 80: return binSize110
         case 181: return binSize08
         case 182: return binSize08
         case 153: return binSize13

@@ -34,7 +34,7 @@ final class WXMetalNexradLevelData {
         switch productCode {
         case 153, 154:
             radarType = .level2
-        case 30, 56, 181:
+        case 30, 56, 78, 80, 181:
             radarType = .level3bit4
         default:
             radarType = .level3
@@ -42,10 +42,11 @@ final class WXMetalNexradLevelData {
     }
 
     func decode() {
+        //print(productCode)
         switch productCode {
         case 153, 154:
             decocodeAndPlotNexradL2()
-        case 30, 56, 181:
+        case 30, 56, 78, 80, 181:
             decocodeAndPlotNexradLevel3FourBit()
         default:
             decocodeAndPlotNexradLevel3()
@@ -84,8 +85,12 @@ final class WXMetalNexradLevelData {
     }
 
     func decocodeAndPlotNexradLevel3FourBit() {
+        // TODO fix this logic
         if productCode == 181 {
             binWord = MemoryBuffer(360 * 720)
+            radialStartAngle = MemoryBuffer(4 * 360)
+        } else if productCode == 78 || productCode == 80 {
+            binWord = MemoryBuffer(360 * 592)
             radialStartAngle = MemoryBuffer(4 * 360)
         } else {
             binWord = MemoryBuffer(360 * 230)
@@ -109,11 +114,7 @@ final class WXMetalNexradLevelData {
             dis.skipBytes(32)
             numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decode(radarBuffers!))
             binSize = WXGLNexrad.getBinSize(productCode)
-            //if productCode == 181 {
-            //    numberOfRadials = 720
-            //} else {
-                numberOfRadials = 360
-            //}
+            numberOfRadials = 360
         }
     }
 

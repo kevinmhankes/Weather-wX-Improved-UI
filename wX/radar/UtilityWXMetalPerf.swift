@@ -141,7 +141,7 @@ class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var radarBlackHole = 0.0
         var radarBlackHoleAdd = 0.0
-        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 || radarBuffers.rd.productCode == 181 {
+        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 || radarBuffers.rd.productCode == 181 || radarBuffers.rd.productCode == 78 || radarBuffers.rd.productCode == 80 {
             radarBlackHole = 1.0
             radarBlackHoleAdd = 0.0
         } else {
@@ -161,6 +161,7 @@ class UtilityWXMetalPerf {
                 angleV = radarBuffers.rd.radialStartAngle.getFloatNative(0)
             }
             (0..<radarBuffers.rd.numberOfRangeBins).forEach { bin in
+                //print(bI)
                 curLevel = radarBuffers.rd.binWord.get(bI)
                 bI += 1
                 if curLevel == level {
