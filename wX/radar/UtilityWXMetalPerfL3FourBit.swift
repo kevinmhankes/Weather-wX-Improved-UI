@@ -87,7 +87,9 @@ class UtilityWXMetalPerfL3FourBit {
                     u = 0
                     while u < numOfBins {
                         //binWord.put((bin % 16).toByte())
-                        radarBuffers.rd.binWord.put(UInt8(bin % 16))
+                        let color = UInt8(bin % 16)
+                        radarBuffers.rd.binWord.put(color)
+                        //print(color)
                         u += 1
                         totalPerRow += 1
                     }
