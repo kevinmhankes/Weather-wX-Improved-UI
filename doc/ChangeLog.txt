@@ -36,6 +36,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
+56037 2019_07_20 [FIX] crash in radar if network is down and access 4bit products like N0S or TR0
 56037 2019_07_19 [FIX] Settings -> UI, remove unused option show metar in CC, for text size change max/min to something more reasonable
 		 [ADD] for TDWR add TR0, N1P, NTP
 56036 2019_07_14 [FIX] wxmetalradar - add semaphore to protect getPolygonWarnings() when auto update is turned on and onrestart()

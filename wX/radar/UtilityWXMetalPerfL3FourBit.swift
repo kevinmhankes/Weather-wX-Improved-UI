@@ -29,6 +29,8 @@ class UtilityWXMetalPerfL3FourBit {
                         radarBuffers.rd.binWord.put(UInt8(bin % 16))}
                 }
             }
+        } else {
+            numberOfRangeBins = 230
         }
         return numberOfRangeBins
     }

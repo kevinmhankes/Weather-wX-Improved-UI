@@ -148,6 +148,9 @@ class UtilityWXMetalPerf {
             radarBlackHole = 4.0
             radarBlackHoleAdd = 4.0
         }
+        print(radarBuffers.rd.numberOfRadials)
+        print(radarBuffers.rd.numberOfRangeBins)
+        print(radarBuffers.rd.binWord.length)
         (0..<radarBuffers.rd.numberOfRadials).forEach { g in
             // since radial_start is constructed natively as opposed to read in
             // from bigendian file we have to use getFloatNatve
