@@ -11,10 +11,6 @@ class UtilityWXMetalPerfRaster {
         radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
         var totalBins = 0
-        //var level: UInt8 = 0
-        //var levelCount = 0
-        //ar binStart = 0.0
-        //var bI = 0
         var curLevel: UInt8 = 0
         //print(radarBuffers.rd.numberOfRadials)
         //print(radarBuffers.rd.numberOfRangeBins)
@@ -36,9 +32,7 @@ class UtilityWXMetalPerfRaster {
         }
         let halfPoint = numberOfRows / 2
         (0..<numberOfRows).forEach { g in
-            
             (0..<binsPerRow).forEach { bin in
-                //curLevel = radarBuffers.rd.binWord.get(bI)
                 curLevel = radarBuffers.rd.binWord.get(g * binsPerRow + bin)
                 //bI += 1
                 //if curLevel == level {
@@ -88,12 +82,12 @@ class UtilityWXMetalPerfRaster {
                 radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
                 radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
-                
+
                 // 1
                 radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
                 radarBuffers.floatBuffer.putFloat(Double(g - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
-                
+
                 // 3
                 radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
                 radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
@@ -103,6 +97,7 @@ class UtilityWXMetalPerfRaster {
                 radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
                 radarBuffers.floatBuffer.putFloat(Double(g  - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
+                
                 totalBins += 1
             }
         }
