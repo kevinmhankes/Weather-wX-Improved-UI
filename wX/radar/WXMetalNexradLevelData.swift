@@ -112,7 +112,11 @@ final class WXMetalNexradLevelData {
             dis.skipBytes(6)
             dis.skipBytes(56)
             dis.skipBytes(32)
-            numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decode(radarBuffers!))
+            if productCode == 37 || productCode == 38 || productCode == 41 || productCode == 57 {
+                numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decodeRaster(radarBuffers!))
+            } else {
+                numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decodeRadial(radarBuffers!))
+            }
             binSize = WXGLNexrad.getBinSize(productCode)
             numberOfRadials = 360
         } else {
