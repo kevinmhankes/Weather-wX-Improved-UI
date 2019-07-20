@@ -74,43 +74,37 @@ class UtilityWXMetalPerfRaster {
                     radarBuffers.putFloat(binStart * angleSin)
                     radarBuffers.putColorsByIndex(level)*/
 
-                    radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
-                    //rI += 4
-                    radarBuffers.floatBuffer.putFloat(Double(g - halfPoint) * scaleFactor * -1.0)
-                    //rI += 4
+                // 1
+                radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
 
-                    radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
-                    //rI += 4
-                    radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
-                    //rI += 4
+                // 2
+                radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
 
-                    radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
-                    //rI += 4
-                    radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
-                    //rI += 4
+                // 3
+                radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
+                radarBuffers.putColorsByIndex(curLevel)
+                
+                // 1
+                radarBuffers.floatBuffer.putFloat(Double(bin - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g - halfPoint) * scaleFactor * -1.0)
+                radarBuffers.putColorsByIndex(curLevel)
+                
+                // 3
+                radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g + 1 - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
 
-                    radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
-                    //rI += 4
-                    radarBuffers.floatBuffer.putFloat(Double(g  - halfPoint) * scaleFactor * -1.0)
-                    //rI += 4
+                // 4
+                radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
+                radarBuffers.floatBuffer.putFloat(Double(g  - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
-                //print(curLevel)
-
-                    /*[0...3].forEach { _ in
-                        //radarBuffers.colorBuffer.put(cI++, radarBuffers.colormap.redValues.get(curLevel and 0xFF))
-                        //radarBuffers.colorBuffer.put(cI++, radarBuffers.colormap.greenValues.get(curLevel and 0xFF))
-                        //radarBuffers.colorBuffer.put(cI++, radarBuffers.colormap.blueValues.get(curLevel and 0xFF))
-                        radarBuffers.putColorsByIndex(curLevel)
-                    }*/
-
-                    totalBins += 1
-                    //level = curLevel
-                    //binStart = Double(bin) * radarBuffers.rd.binSize + radarBlackHoleAdd
-                    //levelCount = 1
-                }
+                totalBins += 1
+            }
         }
         return totalBins
     }
