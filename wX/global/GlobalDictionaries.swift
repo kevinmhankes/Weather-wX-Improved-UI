@@ -130,6 +130,8 @@ class GlobalDictionaries {
         "H0C": 165,
         "H1C": 165,
         "H2C": 165,
-        "H3C": 165
+        "H3C": 165,
+        "NCR": 37,
+        "NCZ": 38,
     ]
 }
