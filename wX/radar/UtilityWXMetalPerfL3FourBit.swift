@@ -81,11 +81,11 @@ class UtilityWXMetalPerfL3FourBit {
                 totalPerRow = 0
                 s = 0
                 u = 0
-                while (s < numberOfBytes) {
+                while s < numberOfBytes {
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
                     u = 0
-                    while (u < numOfBins) {
+                    while u < numOfBins {
                         //binWord.put((bin % 16).toByte())
                         radarBuffers.rd.binWord.put(UInt8(bin % 16))
                         u += 1
