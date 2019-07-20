@@ -20,7 +20,9 @@ final class WXGLNexrad {
         "DSP: Digital Storm Total Precipitation",
         "DAA: Digital Accumulation Array",
         "N0S: Storm Relative Mean Velocity",
-        "NSW: Base Spectrum Width"
+        "NSW: Base Spectrum Width",
+        "NCR: Composite Reflectivity 124nm",
+        "NCZ: Composite Reflectivity 248nm"
     ]
 
     // To add products in this file means also adding entries in global/GlobalDictionaries.swift and global/ColorPalettes.swift

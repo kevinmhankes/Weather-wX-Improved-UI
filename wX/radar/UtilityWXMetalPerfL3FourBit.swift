@@ -34,12 +34,13 @@ class UtilityWXMetalPerfL3FourBit {
         }
         return numberOfRangeBins
     }
-    
+
     static func decodeRaster(_ radarBuffers: ObjectMetalRadarBuffers) -> UInt16 {
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
         var numberOfRangeBins: UInt16 = 0
         if dis.capacity > 0 {
-            dis.skipBytes(170)
+            
+            /*dis.skipBytes(170)
             numberOfRangeBins = dis.getUnsignedShort()
             dis.skipBytes(6)
             _ = dis.getUnsignedShort()
@@ -56,6 +57,41 @@ class UtilityWXMetalPerfL3FourBit {
                     numOfBins = Int(bin >> 4)
                     (0..<numOfBins).forEach { _ in
                         radarBuffers.rd.binWord.put(UInt8(bin % 16))}
+                }
+            }*/
+            
+            dis.skipBytes(172)
+            let iCoordinateStart = dis.getUnsignedShort()
+            let jCoordinateStart = dis.getUnsignedShort()
+            let xScaleInt = dis.getUnsignedShort()
+            let xScaleFractional = dis.getUnsignedShort()
+            let yScaleInt = dis.getUnsignedShort()
+            let yScaleFractional = dis.getUnsignedShort()
+            let numberOfRows = dis.getUnsignedShort()
+            let packingDescriptor = dis.getUnsignedShort()
+            // 464 rows in NCR
+            // 232 rows in NCZ
+            var s = 0
+            //var bin: Short
+            var numOfBins = 0
+            var u = 0
+            var totalPerRow = 0
+            (0..<numberOfRows).forEach { radial in
+                let numberOfBytes = dis.getUnsignedShort()
+                totalPerRow = 0
+                s = 0
+                u = 0
+                while (s < numberOfBytes) {
+                    let bin = Int(dis.get())
+                    numOfBins = Int(bin >> 4)
+                    u = 0
+                    while (u < numOfBins) {
+                        //binWord.put((bin % 16).toByte())
+                        radarBuffers.rd.binWord.put(UInt8(bin % 16))
+                        u += 1
+                        totalPerRow += 1
+                    }
+                    s += 1
                 }
             }
         } else {
