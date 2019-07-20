@@ -97,6 +97,7 @@ class WXMetalRender {
     var paneNumber = 0
     var numberOfPanes = 0
     var renderFn: ((Int) -> Void)?
+    // TODO why is this not from WXGLNexrad
     var radarProductList = [
         "N0Q: Base Reflectivity",
         "N0U: Base Velocity",
@@ -111,7 +112,9 @@ class WXMetalRender {
         "DSP: Digital Storm Total Precipitation",
         "DAA: Digital Accumulation Array",
         "N0S: Storm Relative Mean Velocity",
-        "NSW: Base Spectrum Width"
+        "NSW: Base Spectrum Width",
+        "NCR: Composite Reflectivity 124nm",
+        "NCZ: Composite Reflectivity 248nm"
     ]
 
     init(_ device: MTLDevice,

@@ -92,6 +92,9 @@ final class WXMetalNexradLevelData {
         } else if productCode == 78 || productCode == 80 {
             binWord = MemoryBuffer(360 * 592)
             radialStartAngle = MemoryBuffer(4 * 360)
+        } else if productCode == 37 || productCode == 38 {
+            binWord = MemoryBuffer(464 * 464)
+            radialStartAngle = MemoryBuffer(4 * 360)
         } else {
             binWord = MemoryBuffer(360 * 230)
             radialStartAngle = MemoryBuffer(4 * 360)
