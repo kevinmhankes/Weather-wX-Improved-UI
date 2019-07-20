@@ -46,7 +46,7 @@ final class WXMetalNexradLevelData {
         switch productCode {
         case 153, 154:
             decocodeAndPlotNexradL2()
-        case 30, 56, 78, 80, 181:
+        case 30, 37, 38, 41, 56, 57, 78, 80, 181:
             decocodeAndPlotNexradLevel3FourBit()
         default:
             decocodeAndPlotNexradLevel3()
