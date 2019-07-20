@@ -132,6 +132,6 @@ class GlobalDictionaries {
         "H2C": 165,
         "H3C": 165,
         "NCR": 37,
-        "NCZ": 38,
+        "NCZ": 38
     ]
 }
