@@ -29,6 +29,8 @@
 		03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */; };
 		03376E7221B42DB100D14C7E /* UtilityColorPalette30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
+		0349764722E3B215009D93A4 /* UtilityColorPalette41.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764522E3B215009D93A4 /* UtilityColorPalette41.swift */; };
+		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
@@ -409,6 +411,8 @@
 		03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcStormDetails.swift; sourceTree = "<group>"; };
 		03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette30.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
+		0349764522E3B215009D93A4 /* UtilityColorPalette41.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette41.swift; sourceTree = "<group>"; };
+		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
@@ -938,7 +942,9 @@
 				F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */,
 				030A5A8722DE6CA000E55493 /* UtilityColorPalette19.swift */,
 				03376E7121B42DB000D14C7E /* UtilityColorPalette30.swift */,
+				0349764522E3B215009D93A4 /* UtilityColorPalette41.swift */,
 				F0B3356C1DA3FD6F0035BD36 /* UtilityColorPalette56.swift */,
+				0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */,
 				037336B522E1B6C200BB996B /* UtilityColorPalette78.swift */,
 				F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */,
 				F0B3356E1DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift */,
@@ -1612,6 +1618,7 @@
 				F064D1441DB6EBB7003C04FB /* ExternalPoint.swift in Sources */,
 				03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */,
 				03F3EB81229945D10056A56D /* UtilityModelNsslWrfInterface.swift in Sources */,
+				0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */,
 				F0B335AF1DA3FD960035BD36 /* UtilityMap.swift in Sources */,
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
@@ -1703,6 +1710,7 @@
 				F0B335531DA3FD510035BD36 /* Editor.swift in Sources */,
 				F0A0C7E31DDF17070052EC98 /* ViewControllerUSALERTSDETAIL.swift in Sources */,
 				03F3EB87229945D10056A56D /* UtilityModelNcepInterface.swift in Sources */,
+				0349764722E3B215009D93A4 /* UtilityColorPalette41.swift in Sources */,
 				F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */,
 				034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */,
 				03F4631322A2F14900C06D16 /* UtilityDownloadWatch.swift in Sources */,

@@ -4,9 +4,9 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityColorPalette56 {
+public class UtilityColorPalette56 {
 
-    static func generate() {
+    class func generate() {
         let radarColorPaletteCode = 56
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0

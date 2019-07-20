@@ -29,9 +29,15 @@ final class ObjectColorPalette {
         case "30":
             setupBuffers(16)
             UtilityColorPalette30.generate()
+        case "41":
+            setupBuffers(16)
+            UtilityColorPalette41.generate()
         case "56":
             setupBuffers(16)
             UtilityColorPalette56.generate()
+        case "57":
+            setupBuffers(16)
+            UtilityColorPalette57.generate()
         case "78":
             setupBuffers(16)
             UtilityColorPalette78.generate()

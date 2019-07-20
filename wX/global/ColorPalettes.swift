@@ -6,7 +6,7 @@
 
 class ColorPalettes {
     static func initialize() {
-        let colorMapInts = [19, 30, 56, 78, 134, 135, 159, 161, 163, 165]
+        let colorMapInts = [19, 30, 41, 56, 57, 78, 134, 135, 159, 161, 163, 165]
         let cm94 = ObjectColorPalette("94")
         MyApplication.colorMap[94] = cm94
         MyApplication.colorMap[94]!.initialize()
@@ -27,6 +27,8 @@ class ColorPalettes {
             MyApplication.colorMap[$0]!.initialize()
         }
         MyApplication.colorMap[181] = MyApplication.colorMap[19]
+        MyApplication.colorMap[37] = MyApplication.colorMap[19]
+        MyApplication.colorMap[38] = MyApplication.colorMap[19]
         MyApplication.colorMap[80] = MyApplication.colorMap[78]
     }
 }
