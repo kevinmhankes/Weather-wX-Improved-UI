@@ -760,7 +760,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func showTiltMenu() {
-        let tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
+        var tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
+        if wxMetal[0]!.tdwr {
+            tilts = ["Tilt 1", "Tilt 2", "Tilt 3"]
+        }
         _ = ObjectPopUp(self, "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
     }
 

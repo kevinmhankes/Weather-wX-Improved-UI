@@ -30,7 +30,7 @@ class WXMetalRender {
     var zPos: Float = -7.0
     var zoom: Float = 1.0
     var lastPanLocation: CGPoint!
-    private var tdwr = false
+    var tdwr = false
     private static let zoomToHideMiscFeatures: Float = 0.5
     var displayHold: Bool = false
     private var stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
@@ -460,7 +460,7 @@ class WXMetalRender {
         // TODO check for existence in list including tilts
         print(self.product)
         print(ridIsTdwr)
-        if self.product == "TV0" || self.product == "TZL" || self.product == "TR0"  || self.product == "N1P"  || self.product == "NTP" {
+        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR")  || self.product == "N1P"  || self.product == "NTP" {
             self.tdwr = true
         } else {
             self.tdwr = false
@@ -473,7 +473,7 @@ class WXMetalRender {
             self.radarProduct = "TZL"
             self.tdwr = true
         }
-        if (self.product == "TZL" || self.product == "TR0") && !ridIsTdwr {
+        if (self.product == "TZL" || self.product.hasPrefix("TR")) && !ridIsTdwr {
             self.radarProduct = "N0Q"
             self.tdwr = false
         }
@@ -485,7 +485,7 @@ class WXMetalRender {
             self.radarProduct = "TV0"
             self.tdwr = true
         }
-        if self.product == "TV0" && !ridIsTdwr {
+        if self.product.hasPrefix("TV") && !ridIsTdwr {
             self.radarProduct = "N0U"
             self.tdwr = false
         }
@@ -844,6 +844,16 @@ class WXMetalRender {
                 product = newProduct
                 regenerateProductList()
                 //print(newProduct)
+            }
+            if product.hasPrefix("TR") || product.hasPrefix("TV") {
+                let firstValue = product[product.startIndex]
+                let middleValue = product[product.index(product.startIndex, offsetBy: 1)]
+                var newProduct = ""
+                newProduct.append(firstValue)
+                newProduct.append(middleValue)
+                newProduct.append(String(tiltInt))
+                product = newProduct
+                regenerateProductList()
             }
         }
     }

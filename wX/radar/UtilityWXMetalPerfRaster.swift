@@ -97,7 +97,7 @@ class UtilityWXMetalPerfRaster {
                 radarBuffers.floatBuffer.putFloat(Double(bin + 1 - halfPoint) * scaleFactor)
                 radarBuffers.floatBuffer.putFloat(Double(g  - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
-                
+
                 totalBins += 1
             }
         }
