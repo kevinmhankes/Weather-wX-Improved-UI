@@ -38,6 +38,10 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     }
 
     func putColorsByIndex(_ level: UInt8) {
+        //print(colormap.redValues.get(Int(level)))
+        //print(colormap.greenValues.get(Int(level)))
+        //print(colormap.blueValues.get(Int(level)))
+        
         putColor(colormap.redValues.get(Int(level)))
         putColor(colormap.greenValues.get(Int(level)))
         putColor(colormap.blueValues.get(Int(level)))
