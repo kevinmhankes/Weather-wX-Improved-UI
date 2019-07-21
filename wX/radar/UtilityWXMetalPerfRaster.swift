@@ -7,9 +7,9 @@
 class UtilityWXMetalPerfRaster {
 
     static func genRaster(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
-        //radarBuffers.colormap.redValues.put(0, Color.red(radarBuffers.bgColor))
-        //radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
-        //radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
+        radarBuffers.colormap.redValues.put(0, Color.red(radarBuffers.bgColor))
+        radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
+        radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
         var totalBins = 0
         var curLevel: UInt8 = 0
         var numberOfRows = 464
@@ -26,15 +26,13 @@ class UtilityWXMetalPerfRaster {
             scaleFactor = 8.0 // was 8
         }
         let halfPoint = numberOfRows / 2
-        (0..<numberOfRows).forEach { g in //
-            (0..<binsPerRow).forEach { bin in //
+        (0..<numberOfRows).forEach { g in
+            (0..<binsPerRow).forEach { bin in
                 curLevel = radarBuffers.rd.binWord.get(g * binsPerRow + bin)
-                
                 // 1
                 radarBuffers.putFloat(Float(bin - halfPoint) * scaleFactor)
                 radarBuffers.putFloat(Float(g - halfPoint) * scaleFactor * -1.0)
                 radarBuffers.putColorsByIndex(curLevel)
-                
                 // 2
                 radarBuffers.putFloat(Float(bin - halfPoint) * scaleFactor)
                 radarBuffers.putFloat(Float(g + 1 - halfPoint) * scaleFactor * -1.0)
@@ -55,7 +53,6 @@ class UtilityWXMetalPerfRaster {
                 radarBuffers.putFloat(Float(bin + 1 - halfPoint) * scaleFactor)
                 radarBuffers.putFloat(Float(g  - halfPoint) * scaleFactor * -1.0) //
                 radarBuffers.putColorsByIndex(curLevel)
-
                 totalBins += 1
             }
         }
