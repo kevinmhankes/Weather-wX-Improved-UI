@@ -198,4 +198,33 @@ final class UtilityTime {
         }
         return false
     }
+    
+    /*static func isVtecCurrent(_ vtec: String ) ->  Bool {
+        // example 190512T1252Z-190512T1545Z
+        let timeRange = vtec.parse("-([0-9]{6}T[0-9]{4})Z")
+        let timeInMinutes = decodeVtecTime(timeRange)
+        let currentTimeInMinutes = decodeVtecTime(getGmtTimeForVtec())
+        return currentTimeInMinutes.before(timeInMinutes)
+    }
+    
+    private static func decodeVtecTime(_ timeRangeOriginal: String) -> Calendar {
+        // Y2K issue
+        let timeRange = timeRangeOriginal.replace("T","")
+        let year = Int("20" + (timeRange).parse("([0-9]{2})[0-9]{4}[0-9]{4}")) ?? 0
+        let month = Int((timeRange).parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}")) ?? 0
+        let day = Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}"))  ?? 0
+        let hour = Int((timeRange).parse("[0-9]{6}([0-9]{2})[0-9]{2}")) ?? 0
+        let minute = Int((timeRange).parse("[0-9]{6}[0-9]{2}([0-9]{2})")) ?? 0
+        let cal = Calendar.getInstance()
+        cal.set(year, month - 1, day, hour, minute)
+        return cal
+    }
+    
+    static func getGmtTimeForVtec() -> String {
+        let UTCDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyMMddHHmm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter.string(from: UTCDate)
+    }*/
 }

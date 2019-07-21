@@ -1,5 +1,4 @@
 // TODO standard model var names with android version
-// TODO N0U anim not working ( seems worse on slower devices )
 // TODO look for way to save x/y/zoom of images
 // TODO complete URL refactor to move base URL to myApp
 // TODO roaming location
@@ -28,6 +27,7 @@
 // TODO Swo, show update time in title
 // TODO add TDWR on homescreen
 // TODO class for radar product specs
+// TODO main screen if using radar show radar site and time
 // TODO main screen show if radar product old
 // TODO use android vtec check if product expired
 // TODO troubleshoot TZL and N0U anim freeze
