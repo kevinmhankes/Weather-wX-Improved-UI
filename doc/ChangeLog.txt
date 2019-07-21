@@ -30,7 +30,6 @@
 // TODO class for radar product specs
 // TODO main screen show if radar product old
 // TODO use android vtec check if product expired
-// TODO comp ref radar product
 // TODO troubleshoot TZL and N0U anim freeze
 
 [ADD] - adding something new - method, file, etc. to the repo

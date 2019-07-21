@@ -84,7 +84,6 @@ class ObjectMetalBuffers {
                 vertexCount = triangleCount * 3 * count
             } else {
                 vertexCount = count / 2
-               // print(vertexCount)
             }
         }
     }
