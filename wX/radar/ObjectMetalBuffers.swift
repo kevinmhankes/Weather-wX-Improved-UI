@@ -86,7 +86,10 @@ class ObjectMetalBuffers {
                 vertexCount = count / 2
             }
         } else {
-            vertexCount = 0
+            //print("count is 0, clear vertext count " + type.string)
+            if type.string != "" {
+                vertexCount = 0
+            }
             // can't create buffer of zero length
             //mtlBuffer = device.makeBuffer(bytes: metalBuffer, length: 0, options: [])!
         }

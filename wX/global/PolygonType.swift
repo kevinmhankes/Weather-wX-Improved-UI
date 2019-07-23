@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 struct PolygonType {
-    static var NONE = PolygonType(RadarGeometry.radarColorMcd, "MCD", false)
+    static var NONE = PolygonType(RadarGeometry.radarColorMcd, "", false) // was "MCD"
     static var SMW = PolygonType(
         ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!.color,
         "SMW",
@@ -113,7 +113,7 @@ struct PolygonType {
     }
 
     static func regen() {
-        NONE = PolygonType(RadarGeometry.radarColorMcd, "MCD", false)
+        NONE = PolygonType(RadarGeometry.radarColorMcd, "", false) // was "MCD"
         SMW = PolygonType(
             ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!.color,
             "SMW",
