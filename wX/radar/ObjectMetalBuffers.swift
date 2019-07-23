@@ -85,6 +85,10 @@ class ObjectMetalBuffers {
             } else {
                 vertexCount = count / 2
             }
+        } else {
+            vertexCount = 0
+            // can't create buffer of zero length
+            //mtlBuffer = device.makeBuffer(bytes: metalBuffer, length: 0, options: [])!
         }
     }
 

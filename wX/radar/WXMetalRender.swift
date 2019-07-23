@@ -261,6 +261,9 @@ class WXMetalRender {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
         [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
