@@ -498,6 +498,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
+                //print("download radar")
                 self.ridPrefixGlobal = self.rdDownload.getRadarFile(
                     url,
                     self.rid,
