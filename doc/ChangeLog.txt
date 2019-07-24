@@ -40,7 +40,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-56041 2019_07_22 [FIX] attempted fix for ghost tor warnings
+56041 2019_07_24 [FIX] fix for ghost tor warnings
 56039 2019_07_21 [FIX] tilts for TDWR TV/TR
 		 [FIX] if TDWR show only 3 tilts otherwise show 4
 56038 2019_07_20 [ADD] init work on radar comp ref
