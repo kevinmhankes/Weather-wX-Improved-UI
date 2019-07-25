@@ -32,6 +32,7 @@
 // TODO use android vtec check if product expired
 // TODO troubleshoot TZL and N0U anim freeze
 // TODO timestamps on main screen when radar shown and show red when radar down
+// TODO in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
