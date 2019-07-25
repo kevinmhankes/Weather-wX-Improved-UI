@@ -31,6 +31,7 @@
 // TODO main screen show if radar product old
 // TODO use android vtec check if product expired
 // TODO troubleshoot TZL and N0U anim freeze
+// TODO timestamps on main screen when radar shown and show red when radar down
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -40,7 +41,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-56042 2019_07_24 
+56042 2019_07_25
 
 
 // appstore release July 24, 2019 56035
