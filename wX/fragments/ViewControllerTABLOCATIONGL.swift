@@ -359,6 +359,13 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         )
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
+        if UtilitySettings.isRadarInHomescreen() {
+            alert.addAction(UIAlertAction(
+                title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
+                style: .default,
+                handler: {_ in UtilityActions.radarClicked(self)})
+            )
+        }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = self.menuButton

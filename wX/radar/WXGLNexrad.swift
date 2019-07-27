@@ -5,6 +5,23 @@
  *****************************************************************************/
 
 final class WXGLNexrad {
+    
+    static func getRadarTimeStamp() -> String {
+        let radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
+        var radarTimeFinal = ""
+        if radarTimeStamp != "" {
+            var radarTimeFinalWithDate = ""
+            let radarTimeSplit = radarTimeStamp.split(MyApplication.newline)
+            if radarTimeSplit.count > 0 {
+                radarTimeFinalWithDate = radarTimeSplit[0]
+                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
+                if radarTimeFinalWithDateInParts.count > 1 {
+                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
+                }
+            }
+        }
+        return radarTimeFinal
+    }
 
     static var radarProductList = [
         "N0Q: Base Reflectivity",
