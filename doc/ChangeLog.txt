@@ -44,7 +44,7 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-56042 2019_07_25
+56042 2019_07_27 better tilt management
 
 
 // appstore release July 24, 2019 56035
