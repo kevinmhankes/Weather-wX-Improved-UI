@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class WXGLNexrad {
-    
+
     static func getRadarTimeStamp() -> String {
         let radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
         var radarTimeFinal = ""
@@ -22,6 +22,22 @@ final class WXGLNexrad {
         }
         return radarTimeFinal
     }
+
+    static func canTilt(_ product: String) -> Bool {
+        if product == "L2REF" || product == "L2VEL" {
+            return false
+        }
+        if product.matches(regexp: "[A-Z][0-3][A-Z]") || product.matches(regexp: "T[RV][0-2]") {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    /*static func isTdwr(_ radarSite: String) -> Bool {
+        print(radarSite)
+        return false
+    }*/
 
     static var radarProductList = [
         "N0Q: Base Reflectivity",

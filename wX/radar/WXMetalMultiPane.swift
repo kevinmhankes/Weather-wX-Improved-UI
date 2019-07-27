@@ -660,9 +660,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
-        alert.addAction(UIAlertAction(
-            "Change Tilt", { _ in self.showTiltMenu()})
-        )
+        if WXGLNexrad.canTilt(wxMetal[index]!.product) {
+            alert.addAction(UIAlertAction(
+                "Change Tilt", { _ in self.showTiltMenu()})
+            )
+        }
         alert.addAction(UIAlertAction(
             "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
         )
