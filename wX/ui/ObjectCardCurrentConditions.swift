@@ -11,11 +11,9 @@ final class ObjectCardCurrentConditions {
     private var image = ObjectCardImage()
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
     private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
-    private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    //private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     let condenseScale: CGFloat = 0.50
     private var horizontalContainer = ObjectCardStackView()
-    //var radarTimeStamp = ""
-    //var conditionTimeStamp = ""
 
     init(
         _ stackView: UIStackView,
@@ -27,25 +25,12 @@ final class ObjectCardCurrentConditions {
         } else {
             image = ObjectCardImage(sizeFactor: 1.0)
         }
-        let homescreenFav = TextUtils.split(
-            Utility.readPref(
-                "HOMESCREEN_FAV",
-                MyApplication.homescreenFavDefault
-            ),
-            ":"
-        )
         let verticalTextConainer: ObjectStackView
-        //if homescreenFav.contains("METAL-RADAR") {
-        //    verticalTextConainer = ObjectStackView(
-        //        .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view, bottomText.view]
-        //    )
-        //} else {
-            verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
-        //}
+        verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         middleText.tv.isAccessibilityElement = false
-        bottomText.tv.isAccessibilityElement = false
+        //bottomText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         let stackViewLocalCC = ObjectStackViewHS()
@@ -87,19 +72,12 @@ final class ObjectCardCurrentConditions {
     func setText(_ objCc: ObjectForecastPackageCurrentConditions) {
         topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
-        //conditionTimeStamp = objCc.rawMetar
-        //bottomText.text = objCc.rawMetar
-        //if radarTimeStamp != "" {
-        //    bottomText.text = objCc.rawMetar + " " + Location.rid + ":" + radarTimeStamp
-        //}
-        //print("RADAR: " + radarTimeStamp)
-        updateTimeStamp()
+        //updateTimeStamp()
         horizontalContainer.stackView.accessibilityLabel = objCc.spokenText
     }
 
-    func updateTimeStamp() {
+    /*func updateTimeStamp() {
         let radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
-        print("RADAR2: " + radarTimeStamp)
         if radarTimeStamp != "" {
             var radarTimeFinal = ""
             var radarTimeFinalWithDate = ""
@@ -120,7 +98,7 @@ final class ObjectCardCurrentConditions {
         } else {
             bottomText.text = ""
         }
-    }
+    }*/
 
     func addGestureRecognizer(
         _ gesture1: UITapGestureRecognizer,

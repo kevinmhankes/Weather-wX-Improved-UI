@@ -246,10 +246,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         self.stackView.addArrangedSubview(self.stackViewRadar)
                         self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
                         //self.radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
-                        if self.ccCard != nil {
+                        //if self.ccCard != nil {
                             //self.ccCard!.radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
-                            self.ccCard!.updateTimeStamp()
-                        }
+                            //self.ccCard!.updateTimeStamp()
+                        //}
                     default:
                         let stackViewLocal = ObjectStackViewHS()
                         stackViewLocal.setup()
