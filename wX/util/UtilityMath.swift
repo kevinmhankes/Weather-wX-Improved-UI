@@ -170,8 +170,11 @@ final class UtilityMath {
             let s7 = 1.22874 * pow(10.0, -3.0) * pow(T, 2.0) * R
             let s8 = 8.5282 * pow(10.0, -4.0) * T * pow(R, 2.0)
             let s9 = 1.99 * pow(10.0, -6.0) * pow(T, 2.0) * pow(R, 2.0)
-            let res1 = String(round(s1 + s2 + s3 - s4 - s5 - s6 + s7 + s8 - s9))
-            return res1
+            let heatIndexInt = round(s1 + s2 + s3 - s4 - s5 - s6 + s7 + s8 - s9)
+            if Int(heatIndexInt) <= Int(round(T)) {
+                return ""
+            }
+            return String(heatIndexInt)
         } else {
             return ""
         }

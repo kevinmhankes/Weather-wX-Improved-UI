@@ -36,14 +36,13 @@
 // TODO timestamps on main screen when radar shown and show red when radar down
 // TODO Add 4th char to all radar sites
 // TODO in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
-// TODO iOS home screen add wpc analysis with rada
+// BUG fix SPS formatting in uswarn like android
 // BUG Location dot jumps during scale
 // BUG iOS colors config slow to load
 // BUG Icon spacing issue 7 plus
 // TODO iOS storm reports filter by state
 // BUG iOS - landscape radar initial view to zoomed in
 // BUG iOS dual pane when radars not synced
-// BUG don't show heat index if equal to temp or lower
 
 [ADD] - adding something new - method, file, etc. to the repo
 [REM] - remove items
@@ -55,6 +54,7 @@
 
 56044 2019_08_17 [ADD] WPC Analysis to homescreen
 		 [FIX] better sizing for gps location circle
+		 [FIX] fix rounding display error related to heat index
 56043 2019_08_03 code cleanup
 56042 2019_07_27 better tilt management
 
