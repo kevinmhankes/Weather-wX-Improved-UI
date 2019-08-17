@@ -621,6 +621,7 @@ class WXMetalRender {
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
             //print("construct locdot")
+            //print(locdotBuffers.lenInit)
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
@@ -799,6 +800,8 @@ class WXMetalRender {
     }
 
     func scaleLengthLocationDot(_ currentLength: Double) -> Double {
+        print(currentLength)
+        print(zoom)
         return (currentLength / Double(zoom)) * 2.0
     }
 
@@ -827,11 +830,15 @@ class WXMetalRender {
     }
 
     func resetRidAndGet(_ rid: String) {
+        //print("reset rid and get")
         self.rid = rid
-        loadGeometry()
         xPos = 0.0
         yPos = 0.0
         zoom = 1.0
+        loadGeometry()
+        //xPos = 0.0
+        //yPos = 0.0
+        //zoom = 1.0
         getRadar("")
     }
 
