@@ -257,6 +257,7 @@ final class UtilityDownload {
         case "QPF6-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
         case "QPF1-5": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
         case "QPF1-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
+        case "WPC_ANALYSIS": url = MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif"
         case "SWOD1":
             needsBitmap = false
             bitmap = UtilitySpcSwo.getImageUrls("1", getAllImages: false)[0]

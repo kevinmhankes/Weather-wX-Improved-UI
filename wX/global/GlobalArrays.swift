@@ -561,7 +561,8 @@ class GlobalArrays {
         "QPF4-5:QPF Day 4-5",
         "QPF6-7:QPF Day 6-7",
         "QPF1-5:QPF 5 Day Total",
-        "QPF1-7:QPF 7 Day Total"
+        "QPF1-7:QPF 7 Day Total",
+        "WPC_ANALYSIS: WPC Analysis, Radar, Warnings"
     ]
 
     static let tdwrRadars = [

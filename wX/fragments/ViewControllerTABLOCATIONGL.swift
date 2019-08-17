@@ -539,6 +539,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         switch sender.strData {
         case "VIS_1KM":
             token = "wpcimg"
+        case "WPC_ANALYSIS":
+            token = "wpcimg"
         case "FMAP":
             token = "wpcimg"
         case "VIS_CONUS":
