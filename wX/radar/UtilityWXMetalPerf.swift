@@ -348,6 +348,7 @@ class UtilityWXMetalPerf {
         var test2 = 0.0
         buffers.count = buffers.triangleCount * 4
         let lenLocal = buffers.lenInit * 2.0
+        //print(lenLocal)
         let triangleAmount = Double(buffers.triangleCount)
         buffers.metalBuffer = []
         test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))

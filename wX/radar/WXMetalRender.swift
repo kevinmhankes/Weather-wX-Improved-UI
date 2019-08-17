@@ -55,8 +55,10 @@ class WXMetalRender {
     private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
     private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
     private var swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
-    private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT, zoomToHideMiscFeatures / 2.0)
-    private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE, zoomToHideMiscFeatures / 2.0)
+    //private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT, zoomToHideMiscFeatures / 2.0)
+    //private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE, zoomToHideMiscFeatures / 2.0)
+    private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
+    private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
     private var spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
     private var colorSwo = [Int]()
@@ -372,6 +374,7 @@ class WXMetalRender {
         if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
             constructLocationDot()
         }
+        setZoom()
         if self.renderFn != nil {
             self.renderFn!(paneNumber)
         }
@@ -612,10 +615,12 @@ class WXMetalRender {
             idx & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 24
         locdotBuffers.count = locmarkerAl.count
+        locdotBuffers.lenInit = scaleLengthLocationDot(locdotBuffers.type.size)
         constructTriangles(locdotBuffers)
         locCircleBuffers.triangleCount = 24
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
+            //print("construct locdot")
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
@@ -793,14 +798,26 @@ class WXMetalRender {
         }
     }
 
+    func scaleLengthLocationDot(_ currentLength: Double) -> Double {
+        return (currentLength / Double(zoom)) * 2.0
+    }
+
     func setZoom() {
-        [hiBuffers, spotterBuffers, tvsBuffers, wbCircleBuffers, locdotBuffers].forEach {
+        //print("set zoom")
+        //print(zoom)
+        [hiBuffers, spotterBuffers, tvsBuffers, wbCircleBuffers].forEach {
             $0.lenInit = scaleLength($0.type.size)
+            $0.draw(pn)
+            $0.generateMtlBuffer(device)
+        }
+        [locdotBuffers].forEach {
+            $0.lenInit = scaleLengthLocationDot($0.type.size)
             $0.draw(pn)
             $0.generateMtlBuffer(device)
         }
         if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
+            //print(locCircleBuffers.lenInit)
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
