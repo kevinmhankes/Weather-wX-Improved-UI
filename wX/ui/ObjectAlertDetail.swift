@@ -30,7 +30,12 @@ final class ObjectAlertDetail {
         self.textViews[0].text = title
         self.textViews[1].text = wfo
         self.textViews[2].text = "Issued: " + startTime
-        self.textViews[3].text = "End: " + endTime
+        if endTime == "" {
+            self.textViews[3].text = ""
+            self.textViews[3].view.isHidden = true
+        } else {
+            self.textViews[3].text = "End: " + endTime
+        }
         self.textViews[4].text = alert.area.removeSingleLineBreaks()
         self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()

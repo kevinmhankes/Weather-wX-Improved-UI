@@ -36,7 +36,6 @@
 // TODO timestamps on main screen when radar shown and show red when radar down
 // TODO Add 4th char to all radar sites
 // TODO in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
-// BUG fix SPS formatting in uswarn like android
 // BUG Location dot jumps during scale
 // BUG iOS colors config slow to load
 // BUG Icon spacing issue 7 plus
@@ -55,6 +54,7 @@
 		 [FIX] better sizing for gps location circle
 		 [FIX] fix rounding display error related to heat index
 		 [ADD] allow storm reports filter by state
+		 [FIX] fix SPS formatting in uswarn
 56043 2019_08_03 code cleanup
 56042 2019_07_27 better tilt management
 
