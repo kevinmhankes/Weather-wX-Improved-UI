@@ -40,7 +40,6 @@
 // BUG Location dot jumps during scale
 // BUG iOS colors config slow to load
 // BUG Icon spacing issue 7 plus
-// TODO iOS storm reports filter by state
 // BUG iOS - landscape radar initial view to zoomed in
 // BUG iOS dual pane when radars not synced
 
@@ -52,9 +51,10 @@
 [REF] - refactor a method, group, variable, etc.
 [MER] - merge
 
-56044 2019_08_17 [ADD] WPC Analysis to homescreen
+56044 2019_08_18 [ADD] WPC Analysis to homescreen
 		 [FIX] better sizing for gps location circle
 		 [FIX] fix rounding display error related to heat index
+		 [ADD] allow storm reports filter by state
 56043 2019_08_03 code cleanup
 56042 2019_07_27 better tilt management
 

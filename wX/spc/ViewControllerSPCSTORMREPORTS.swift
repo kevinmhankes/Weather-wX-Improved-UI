@@ -16,12 +16,17 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     var imageUrl = ""
     var textUrl = ""
     var bitmap = Bitmap()
+    var stateCount = [String: Int]()
+    var filterList = [String]()
+    var filter = "All"
+    var filterButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, lsrButton, shareButton]).items
+        filterButton = ObjectToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, lsrButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         self.displayPreContent()
         self.view.addSubview(toolbar)
@@ -83,6 +88,25 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         self.goToVC("lsrbywfo")
     }
 
+    @objc func filterClicked() {
+        _ = ObjectPopUp(
+            self,
+            "Filter Selection",
+            filterButton,
+            filterList,
+            self.changeFilter(_:)
+        )
+    }
+
+    private func changeFilter(_ index: Int) {
+        filter = filterList[index].split(":")[0]
+        filterButton.title = "Filter: " + filter
+        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        stackView.addArrangedSubview(objDatePicker.datePicker)
+        stackView.addArrangedSubview(image.img)
+        displayContent()
+    }
+
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(stackView)
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
@@ -90,6 +114,8 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     }
 
     private func displayContent() {
+        var stateList = [String]()
+        filterList = ["All"]
         self.image.setBitmap(bitmap)
         self.image.addGestureRecognizer(
             UITapGestureRecognizerWithData(
@@ -98,11 +124,23 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
             )
         )
         self.stormReports.enumerated().forEach {
-            _ = ObjectCardStormReportItem(
-                self.stackView,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:)))
-            )
+            if filter == "All" || filter == $1.state {
+                _ = ObjectCardStormReportItem(
+                    self.stackView,
+                    $1,
+                    UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:)))
+                )
+            }
+            if $1.state != "" {
+                stateList += [$1.state]
+            }
+        }
+        let mappedItems = stateList.map { ($0, 1) }
+        stateCount = Dictionary(mappedItems, uniquingKeysWith: +)
+        let sortedKeys = stateCount.keys.sorted()
+        for key in sortedKeys {
+            let val = stateCount[key] ?? 0
+            filterList += [key + ": " + String(val)]
         }
     }
 
