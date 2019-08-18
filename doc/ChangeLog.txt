@@ -16,6 +16,7 @@
 		 [FIX] fix rounding display error related to heat index
 		 [ADD] allow storm reports filter by state
 		 [FIX] fix SPS formatting in uswarn
+		 [FIX] UtilityWXOGL.showTextProducts filter out SPS with no polygon
 56043 2019_08_03 code cleanup
 56042 2019_07_27 better tilt management
 

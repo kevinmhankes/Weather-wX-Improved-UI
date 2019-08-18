@@ -19,8 +19,17 @@ public class UtilityWXOGL {
             }
         }
         var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
+        let urlListCopy = urlList
+        urlListCopy.forEach { url in
+            //if (html.contains(Regex("\"id\"\\: ." + it + "\",            \"type\": \"Feature\",            \"geometry\": null"))) {
+            if warningChunk.matches(regexp: "\"id\"\\: ." + url + "\",\\s*\"type\": \"Feature\",\\s*\"geometry\": null") {
+                urlList.removeAll{$0 == url}
+            }
+        }
         warningChunk = warningChunk.replace("\n", "").replace(" ", "")
         let polygons = warningChunk.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+        print(urlList.count)
+        print(polygons.count)
         var retStr = ""
         var notFound = true
         polygons.enumerated().forEach { index, warning in
