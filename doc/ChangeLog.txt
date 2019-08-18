@@ -2,8 +2,7 @@
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO double-tap radar ipad not quite working
 // BUG uswarn start/end time no space before AM/PM
-// TODO spotters?
-// [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
+// FIX screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO BUG dual pane does not show radar time for both panes
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO class for radar product specs
@@ -14,15 +13,6 @@
 // TODO in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
 // BUG Icon spacing issue 7 plus
 // BUG iOS - landscape radar initial view to zoomed in
-// BUG iOS dual pane when radars not synced
-
-[ADD] - adding something new - method, file, etc. to the repo
-[REM] - remove items
-[IMP] - improvement
-[DEB] - Added temporary debug code
-[FIX] - bug fixes
-[REF] - refactor a method, group, variable, etc.
-[MER] - merge
 
 56044 2019_08_18 [ADD] WPC Analysis to homescreen
 		 [FIX] better sizing for gps location circle
