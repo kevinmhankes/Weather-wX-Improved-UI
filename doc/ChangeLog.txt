@@ -1,7 +1,4 @@
-// TODO test text in main screen radar
-// TODO text prod QPFPFD is showing HTML font tag
 // TODO double-tap radar ipad not quite working
-// BUG uswarn start/end time no space before AM/PM
 // FIX screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // TODO BUG dual pane does not show radar time for both panes
 // TODO nexrad radar - download/show warnings/polygons seperately
