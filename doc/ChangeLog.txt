@@ -1,43 +1,17 @@
-// TODO standard model var names with android version
-// TODO look for way to save x/y/zoom of images
-// TODO complete URL refactor to move base URL to myApp
-// TODO roaming location
-// TODO make ortInt configurable
 // TODO test text in main screen radar
 // TODO text prod QPFPFD is showing HTML font tag
 // TODO double-tap radar ipad not quite working
 // BUG uswarn start/end time no space before AM/PM
-// TODO make option to scale homescreen images ( like radar mosaic )
 // TODO spotters?
-// TODO color palette editor
-// TODO uswarn - Uswarn add long press: nexrad, mosaic, save location
-// TODO use enum for utilityaction ( below )
-//    enum ASCIIControlCharacter: Character {
-//        case tab = "\t"
-//        case lineFeed = "\n"
-//        case carriageReturn = "\r"
-//    }
-// TODO fix utilColor for velocity corner chase 
 // [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
-// TODO mem buffer - change from read to get to match kotlin
 // TODO BUG dual pane does not show radar time for both panes
-// TODO convert watch/warn to match Android/kotlin
 // TODO nexrad radar - download/show warnings/polygons seperately
-// TODO look into the following for CLI build push: xcodebuild or xcrun altool
-// TODO Swo, show update time in title
-// TODO add TDWR on homescreen
 // TODO class for radar product specs
-// TODO main screen if using radar show radar site and time
-// TODO main screen show if radar product old
-// TODO use android vtec check if product expired
 // TODO troubleshoot TZL and N0U anim freeze
 // TODO with verification from https://vortex.plymouth.edu/myo/rad/tdwr.html, add in TDWR
 //		digital hybrid reflectivity, comp ref, vil, echo tops, digital storm total
-// TODO timestamps on main screen when radar shown and show red when radar down
 // TODO Add 4th char to all radar sites
 // TODO in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
-// BUG Location dot jumps during scale
-// BUG iOS colors config slow to load
 // BUG Icon spacing issue 7 plus
 // BUG iOS - landscape radar initial view to zoomed in
 // BUG iOS dual pane when radars not synced
