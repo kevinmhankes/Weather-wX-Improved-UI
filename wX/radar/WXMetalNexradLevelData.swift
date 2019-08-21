@@ -62,10 +62,13 @@ final class WXMetalNexradLevelData {
             radarHeight = Int(heightOfRadar)
             productCode = Int16(dis.getUnsignedShort())
             let operationalMode = Int16(dis.getUnsignedShort())
-            dis.skipBytes(6)
+            let volumeCoveragePattern = Int16(dis.getUnsignedShort())
+            let sequenceNumber = Int16(dis.getUnsignedShort())
+            let volumeScanNumber = Int16(dis.getUnsignedShort())
+            //dis.skipBytes(6)
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)"
+            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)" + ", VCP: \(volumeCoveragePattern)"
                 + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
             //dis.skipBytes(14)
             dis.skipBytes(10)
@@ -107,10 +110,13 @@ final class WXMetalNexradLevelData {
             dis.skipBytes(8)
             productCode = Int16( dis.getUnsignedShort())
             let operationalMode = Int16( dis.getUnsignedShort())
-            dis.skipBytes(6)
+            let volumeCoveragePattern = Int16(dis.getUnsignedShort())
+            let sequenceNumber = Int16(dis.getUnsignedShort())
+            let volumeScanNumber = Int16(dis.getUnsignedShort())
+            //dis.skipBytes(6)
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)"
+            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)" + ", VCP: \(volumeCoveragePattern)"
                 + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
             dis.skipBytes(6)
             dis.skipBytes(56)
