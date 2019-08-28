@@ -8,7 +8,7 @@ import UIKit
 
 public class ObjectFab {
 
-    private let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
+    let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
 
     init(_ uiv: UIViewController, _ action: Selector, imageString: String = "ic_flash_on_24dp") {
         floaty.sticky = true
