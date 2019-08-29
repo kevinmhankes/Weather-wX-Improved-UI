@@ -115,7 +115,7 @@ class R {
         static let rasn = "rasn.png"
         static let nrasn = "nrasn.png"
         static let hurr = "hurr.png"
-        static let hurr_noh = "hurr-noh.png"
+        static let hurr_noh = "hurr_noh.png"
         static let tropstorm = "tropstorm.png"
         static let tropstorm_noh = "tropstorm_noh.png"
         static let ntropstorm_noh = "tropstorm_noh.png"

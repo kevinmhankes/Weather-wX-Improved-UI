@@ -13,6 +13,8 @@
 // TODO [ADD] severe dash like flutter
 // TODO [ADD] red text before load and warning count in nexrad like flutter
 
+56046 2019_08_29 [FIX] hurricane icon
+
 // appstore release August 21, 2019 56044
 In SPC Storm reports allow filtering by state. In long-press in radar show VCP in menu. Better tilt management in nexrad radar. Fix SPS warning in US Alerts. Fix issue with long press inside special weather statements in Nexrad radar, was not always showing correct text. Fix heat index from showing when approximately equal to temperature. Better sizing or GPS Location circle in Nexrad radar.
 
