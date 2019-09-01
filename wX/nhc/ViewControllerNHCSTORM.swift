@@ -14,12 +14,14 @@ class ViewControllerNHCSTORM: UIwXViewController {
     var html = ""
     var titleS = ""
     var baseUrl = ""
+    var baseUrlShort = ""
     var stormId = ""
     var goesIdImg = ""
     var goesSector = ""
     var goesId = ""
     var imgUrl1 = ""
     var product = ""
+    var topBitmap = Bitmap()
     var bitmaps = [Bitmap]()
     var tv = ObjectTextView()
     let textProducts = [
@@ -29,14 +31,13 @@ class ViewControllerNHCSTORM: UIwXViewController {
         "MIAPWS: Wind Speed Probababilities"
     ]
     let stormUrls = [
-        "_5day_cone_with_line_and_wind_sm2.png",
-        "_W5_NL_sm2.png",
-        "_W_NL_sm2.png",
+        "_key_messages.png",
+        "WPCQPF_sm2.gif",
+        "_earliest_reasonable_toa_34_sm2.png",
+        "_most_likely_toa_34_sm2.png",
         "_wind_probs_34_F120_sm2.png",
         "_wind_probs_50_F120_sm2.png",
-        "_wind_probs_64_F120_sm2.png",
-        "_R_sm2.png",
-        "_S_sm2.png"
+        "_wind_probs_64_F120_sm2.png"
     ]
 
     override func viewDidLoad() {
@@ -44,7 +45,11 @@ class ViewControllerNHCSTORM: UIwXViewController {
         url = ActVars.nhcStormUrl
         titleS = ActVars.nhcStormTitle
         imgUrl1 = ActVars.nhcStormImgUrl1
-        let yearInString = String(UtilityTime.getYear()).substring(2, 4)
+        let year = UtilityTime.getYear()
+        var yearInString = String(year)
+        let yearInStringFull = String(year)
+        let yearInStringShort = yearInString.substring(2)
+        yearInString = yearInString.substring(2, 4)
         baseUrl = imgUrl1.replace(yearInString+"_5day_cone_with_line_and_wind_sm2.png", "")
         baseUrl += yearInString
         stormId = baseUrl.substring(baseUrl.count - 4)
@@ -59,6 +64,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
             goesId = "0" + goesId
         }
         product = "MIATCP" + stormId
+        baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
@@ -70,6 +76,12 @@ class ViewControllerNHCSTORM: UIwXViewController {
     func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
+            self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")
+            DispatchQueue.main.async {
+                self.displayTopImageContent()
+            }
+        }
+        serial.async {
             self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async {
                 self.displayTextContent()
@@ -77,8 +89,14 @@ class ViewControllerNHCSTORM: UIwXViewController {
         }
         serial.async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
-            self.stormUrls.forEach {self.bitmaps.append(Bitmap(self.baseUrl + $0))}
-            self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
+            self.stormUrls.forEach {
+                var url = self.baseUrl
+                if $0 == "WPCQPF_sm2.gif" {
+                    url = self.baseUrlShort
+                }
+                self.bitmaps.append(Bitmap(url + $0))
+            }
+            //self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {
                self.displayImageContent()
             }
@@ -103,6 +121,11 @@ class ViewControllerNHCSTORM: UIwXViewController {
         }
     }
 
+    func displayTopImageContent() {
+        ObjectImage(self.stackView, topBitmap)
+        self.view.bringSubviewToFront(self.toolbar)
+    }
+    
     func displayTextContent() {
         tv = ObjectTextView(self.stackView, html)
         self.view.bringSubviewToFront(self.toolbar)
@@ -119,6 +142,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
+                self.displayTopImageContent()
                 self.displayTextContent()
                 self.displayImageContent()
         }

@@ -17,8 +17,18 @@ final class ObjectCardNhcStormReportItem {
             color: UIColor.blue
         )
         let textViewTime = ObjectTextView(stormData.dateTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let textViewTitle = ObjectTextView(
-            stormData.movement + ", " + stormData.wind + ", " + stormData.pressure,
+        let textViewMovement = ObjectTextView(
+            "Moving: " + stormData.movement,
+            isUserInteractionEnabled: false,
+            isZeroSpacing: true
+        )
+        let textViewPressure = ObjectTextView(
+            "Min pressure: " + stormData.pressure,
+            isUserInteractionEnabled: false,
+            isZeroSpacing: true
+        )
+        let textViewWindSpeed = ObjectTextView(
+            "Max sustained: " + stormData.wind,
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
@@ -29,16 +39,24 @@ final class ObjectCardNhcStormReportItem {
         )
         textViewTop.tv.isAccessibilityElement = false
         textViewTime.tv.isAccessibilityElement = false
-        textViewTitle.tv.isAccessibilityElement = false
+        textViewMovement.tv.isAccessibilityElement = false
+        textViewPressure.tv.isAccessibilityElement = false
+        textViewWindSpeed.tv.isAccessibilityElement = false
         textViewBottom.tv.isAccessibilityElement = false
         let verticalTextConainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [textViewTop.view, textViewTime.view, textViewTitle.view, textViewBottom.view]
+            arrangedSubviews: [
+                textViewTop.view,
+                textViewTime.view,
+                textViewMovement.view,
+                textViewPressure.view,
+                textViewWindSpeed.view,
+                textViewBottom.view
+            ]
         )
         verticalTextConainer.view.isAccessibilityElement = true
-        //verticalTextConainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
