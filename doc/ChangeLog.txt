@@ -12,6 +12,7 @@
 // BUG iOS - landscape radar initial view to zoomed in
 // TODO [ADD] severe dash like flutter
 // TODO [ADD] red text before load and warning count in nexrad like flutter
+// [ADD] look at gps tunable distance and time
 
 56046 2019_09_01 [FIX] hurricane icon
 		 [ADD] NHC - add more verbiage in storm card
