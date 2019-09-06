@@ -14,9 +14,10 @@
 // TODO [ADD] red text before load and warning count in nexrad like flutter
 // [ADD] look at gps tunable distance and time
 
-56046 2019_09_01 [FIX] hurricane icon
+56046 2019_09_06 [FIX] hurricane icon
 		 [ADD] NHC - add more verbiage in storm card
 		 [ADD] NHC Storm - move path grapgic to top, add qpf and arrival graphics
+		 [FIX] Level 2 download size check was not working
 
 // appstore release August 21, 2019 56044
 In SPC Storm reports allow filtering by state. In long-press in radar show VCP in menu. Better tilt management in nexrad radar. Fix SPS warning in US Alerts. Fix issue with long press inside special weather statements in Nexrad radar, was not always showing correct text. Fix heat index from showing when approximately equal to temperature. Better sizing or GPS Location circle in Nexrad radar.

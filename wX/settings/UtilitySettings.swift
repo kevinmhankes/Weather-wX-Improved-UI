@@ -7,7 +7,7 @@
 import UIKit
 
 final class UtilitySettings {
-    
+
     static func isRadarInHomescreen() -> Bool {
         let homescreenFav = TextUtils.split(
             Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
