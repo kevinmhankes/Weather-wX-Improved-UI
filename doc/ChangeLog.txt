@@ -15,6 +15,7 @@
 // [ADD] in nexrad radar if map is open have back button close it
 // [ADD] severe dash like flutter
 // [FIX] Icon spacing issue 7 plus
+// [ADD] use 4bit colorpal init like flutter
 
 56046 2019_09_06 [FIX] hurricane icon
 		 [ADD] NHC - add more verbiage in storm card
