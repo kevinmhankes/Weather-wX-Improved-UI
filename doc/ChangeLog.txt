@@ -7,12 +7,14 @@
 // BUG screen is not staying on when configured to do so ( when jumping to dual pane and back )
 // BUG dual pane does not show radar time for both panes
 // BUG troubleshoot TZL and N0U anim freeze
-// BUG Icon spacing issue 7 plus
 // BUG double-tap radar ipad not quite working
 // BUG iOS - landscape radar initial view to zoomed in
 // TODO [ADD] severe dash like flutter
 // TODO [ADD] red text before load and warning count in nexrad like flutter
 // [ADD] look at gps tunable distance and time
+// [ADD] in nexrad radar if map is open have back button close it
+// [ADD] severe dash like flutter
+// [FIX] Icon spacing issue 7 plus
 
 56046 2019_09_06 [FIX] hurricane icon
 		 [ADD] NHC - add more verbiage in storm card

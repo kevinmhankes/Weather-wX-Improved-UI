@@ -229,7 +229,7 @@ final class WXMetalTextObject {
                                 } else {
                                     glview.obsAl.append(TextViewMetal(context))
                                 }
-                                let ii = glview.obsAl.count-1
+                                let ii = glview.obsAl.count - 1
                                 glview.obsAl[ii].textColor = RadarGeometry.radarColorObs
                                 glview.obsAl[ii].textSize = textSize
                                 glview.obsAl[ii].setPadding(

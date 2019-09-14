@@ -15,8 +15,8 @@ final class TextViewMetal {
     private var xPos: CGFloat = 0.0
     private var yPos: CGFloat = 0.0
     private var tv = UITextView()
-    private var width: CGFloat = 150
-    private var height: CGFloat = 40
+    private var width: CGFloat = 150.0
+    private var height: CGFloat = 40.0
 
     init(_ context: UIViewController, _ width: Int = 150, _ height: Int = 40) {
         self.context = context
