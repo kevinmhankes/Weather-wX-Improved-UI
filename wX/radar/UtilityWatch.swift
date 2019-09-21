@@ -21,7 +21,7 @@ class UtilityWatch {
         var pixXInit = 0.0
         var pixYInit = 0.0
         if prefToken != "" {
-            var tmpArr = prefToken.split(":")
+            let tmpArr = prefToken.split(":")
             tmpArr.indices.forEach {
                 let test = tmpArr[$0].split(" ")
                 if test.count > 1 {
@@ -74,7 +74,7 @@ class UtilityWatch {
             numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlon.value
         }
-        var latlonArr = watchLatLon.split(":")
+        let latlonArr = watchLatLon.split(":")
         var x = [Double]()
         var y = [Double]()
         var i: Int

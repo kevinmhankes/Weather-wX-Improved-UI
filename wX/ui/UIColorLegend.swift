@@ -266,7 +266,7 @@ final class UIColorLegend: UIView {
             }
         case "H0C":
             scaledHeight = (screenHeight - 2.0 * startHeight) / 160.0
-            var labels = ["ND", "BI", "GC", "IC", "DS", "WS", "RA", "HR", "BD", "GR", "HA", "", "", "", "UK", "RF"]
+            let labels = ["ND", "BI", "GC", "IC", "DS", "WS", "RA", "HR", "BD", "GR", "HA", "", "", "", "UK", "RF"]
             (0...159).forEach {
                 setColorWithBuffers(prodId: 165, index: 160 - $0)
                 drawRect(

@@ -39,7 +39,7 @@ class UtilityWXMetalPerfL3FourBit {
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
         var numberOfRangeBins: UInt16 = 0
         if dis.capacity > 0 {
-            
+
             /*dis.skipBytes(170)
             numberOfRangeBins = dis.getUnsignedShort()
             dis.skipBytes(6)
@@ -59,7 +59,7 @@ class UtilityWXMetalPerfL3FourBit {
                         radarBuffers.rd.binWord.put(UInt8(bin % 16))}
                 }
             }*/
-            
+
             dis.skipBytes(172)
             let iCoordinateStart = dis.getUnsignedShort()
             let jCoordinateStart = dis.getUnsignedShort()

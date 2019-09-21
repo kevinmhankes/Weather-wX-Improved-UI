@@ -9,13 +9,13 @@ public class UtilityColorPalette78 {
     class func generate() {
         let radarColorPaletteCode = 78
         let obj56 = MyApplication.colorMap[radarColorPaletteCode]!
-        
+
         // FIXME naming
         
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.position = 0
-        
+
        /* MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(0)
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(0)
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(1)
@@ -65,7 +65,7 @@ public class UtilityColorPalette78 {
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(255)
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(201)
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(255)*/
-        
+
         obj56.redValues.put(100)
         obj56.redValues.put(4)
         obj56.redValues.put(1)
@@ -82,7 +82,7 @@ public class UtilityColorPalette78 {
         obj56.redValues.put(248)
         obj56.redValues.put(152)
         obj56.redValues.put(253)
-        
+
         obj56.greenValues.put(100)
         obj56.greenValues.put(233)
         obj56.greenValues.put(159)
@@ -99,7 +99,7 @@ public class UtilityColorPalette78 {
         obj56.greenValues.put(0)
         obj56.greenValues.put(84)
         obj56.greenValues.put(253)
-        
+
         obj56.blueValues.put(100)
         obj56.blueValues.put(231)
         obj56.blueValues.put(244)

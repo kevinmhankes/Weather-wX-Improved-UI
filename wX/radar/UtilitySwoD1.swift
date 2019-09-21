@@ -37,7 +37,7 @@ class UtilitySwoD1 {
                 }
                 var x = [Double]()
                 var y = [Double]()
-                var tmpArr = retStr.split(":")
+                let tmpArr = retStr.split(":")
                 var test = [String]()
                 if tmpArr.count > 1 {
                     tmpArr.indices.forEach { z in

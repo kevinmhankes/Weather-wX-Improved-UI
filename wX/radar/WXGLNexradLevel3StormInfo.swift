@@ -22,7 +22,7 @@ class WXGLNexradLevel3StormInfo {
             motion.forEach {motionStr += $0.replace("/", " ")}
             motionStr = motionStr.replace("NEW", "  0  0  ")
             let reg = "(\\d+) "
-            var posnNumbers = posnStr.parseColumnAll(reg)
+            let posnNumbers = posnStr.parseColumnAll(reg)
             let motNumbers = motionStr.parseColumnAll(reg)
             var degree = 0
             var nm = 0

@@ -219,12 +219,12 @@ final class Location {
                 }
             }
             var prov = ""
-            var parseProv = latLon.latString.split(":")
+            let parseProv = latLon.latString.split(":")
             if parseProv.count > 0 {
                 prov = parseProv[1]
             }
             var id = ""
-            var parseId = latLon.lonString.split(":")
+            let parseId = latLon.lonString.split(":")
             if parseId.count > 0 {
                 id = parseId[0]
             }

@@ -122,10 +122,10 @@ class ViewControllerNHCSTORM: UIwXViewController {
     }
 
     func displayTopImageContent() {
-        ObjectImage(self.stackView, topBitmap)
+        _ = ObjectImage(self.stackView, topBitmap)
         self.view.bringSubviewToFront(self.toolbar)
     }
-    
+
     func displayTextContent() {
         tv = ObjectTextView(self.stackView, html)
         self.view.bringSubviewToFront(self.toolbar)

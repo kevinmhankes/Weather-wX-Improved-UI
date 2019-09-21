@@ -36,12 +36,12 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
+        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
-        var array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
+        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
 
@@ -50,12 +50,12 @@ class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPick
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
+        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
         return UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
+        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "UI_THEME" {

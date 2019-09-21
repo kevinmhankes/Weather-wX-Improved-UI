@@ -55,8 +55,8 @@ final class UtilityNws {
             ] as [NSAttributedString.Key: Any]?
         var num1 = ""
         var num2 = ""
-        var aSplit = iconLeftString.split(",")
-        var bSplit = iconRightString.split(",")
+        let aSplit = iconLeftString.split(",")
+        let bSplit = iconRightString.split(",")
         if aSplit.count > 1 {
             num1 = aSplit[1]
         }
@@ -131,7 +131,7 @@ final class UtilityNws {
 
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
         var num1 = ""
-        var aSplit = iconString.split(",")
+        let aSplit = iconString.split(",")
         if aSplit.count > 1 {
             num1 = aSplit[1]
         }

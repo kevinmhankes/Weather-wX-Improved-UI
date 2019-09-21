@@ -34,7 +34,7 @@ class WXGLNexradLevel3WindBarbs {
         var above50 = false
         arrWb.forEach { windBarb in
             let ecc = ExternalGeodeticCalculator()
-            var metarArr = windBarb.split(":")
+            let metarArr = windBarb.split(":")
             var angle = 0
             var length = 0
             var locXDbl = 0.0

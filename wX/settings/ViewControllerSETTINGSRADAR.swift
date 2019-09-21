@@ -70,12 +70,12 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
+        let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
-        var array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
+        let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
 
@@ -84,12 +84,12 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
+        let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
+        let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
         default:
             if array[pickerView.tag] == "RADAR_COLOR_PALETTE_94" || array[pickerView.tag] == "RADAR_COLOR_PALETTE_99" {

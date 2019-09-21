@@ -53,7 +53,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         latTextView = ObjectTextView("Lat")
         lonTextView = ObjectTextView("Lon")
         statusTextView = ObjectTextView("")
-        var textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
+        let textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
         textViews.forEach {
             $0.font = FontSize.extraLarge.size
             $0.isEditable = true

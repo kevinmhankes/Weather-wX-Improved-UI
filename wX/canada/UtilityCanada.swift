@@ -225,7 +225,7 @@ final class UtilityCanada {
             newName = "ip"
         }
         let time = day1.parse(" ([0-9]{1,2}:[0-9]{2} [AP]M) ")
-        var timeArr = time.split(":")
+        let timeArr = time.split(":")
         var hour: Int
         var daytime = true
         if timeArr.count > 0 {

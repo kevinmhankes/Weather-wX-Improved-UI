@@ -34,7 +34,7 @@ final class UtilityModelEsrlInputOutput {
                 + "/" + om.model + "/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         }
         var html = htmlRunstatus.parse(eslHrrrPattern1)
-        var oldRunTimes = htmlRunstatus.parseColumn(eslHrrrPattern2)
+        let oldRunTimes = htmlRunstatus.parseColumn(eslHrrrPattern2)
         let year = html.parse(eslHrrrPattern3)
         let day = html.parse(eslHrrrPattern4)
         let hour = html.parse(eslHrrrPattern5)

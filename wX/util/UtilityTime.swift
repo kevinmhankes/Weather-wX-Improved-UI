@@ -198,7 +198,7 @@ final class UtilityTime {
         }
         return false
     }
-    
+
     /*static func isVtecCurrent(_ vtec: String ) ->  Bool {
         // example 190512T1252Z-190512T1545Z
         let timeRange = vtec.parse("-([0-9]{6}T[0-9]{4})Z")

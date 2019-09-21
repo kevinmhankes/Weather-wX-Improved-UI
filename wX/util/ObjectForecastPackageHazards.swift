@@ -74,7 +74,7 @@ final class ObjectForecastPackageHazards {
             )
             numHaz += 1
         } else {
-            var idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
+            let idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
             let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
                 _ = ObjectCardHazard(

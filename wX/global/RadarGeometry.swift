@@ -96,7 +96,7 @@ class RadarGeometry {
         }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
-        var fileidArr = [
+        let fileidArr = [
                 lakesFileResid,
                 hwFileResid,
                 countyFileResid,
@@ -105,8 +105,8 @@ class RadarGeometry {
                 mxResid,
                 hwExtFileResid
         ]
-        var countArr = [countLakes, countHw, countCounty, countStateUs, countCanada, countMexico, countHwExt]
-        var bbArr = [
+        let countArr = [countLakes, countHw, countCounty, countStateUs, countCanada, countMexico, countHwExt]
+        let bbArr = [
                 lakesRelativeBuffer,
                 hwRelativeBuffer,
                 countyRelativeBuffer,
@@ -115,7 +115,7 @@ class RadarGeometry {
                 stateRelativeBuffer,
                 hwExtRelativeBuffer
         ]
-        var prefArr = [
+        let prefArr = [
                 GeographyType.lakes.display,
                 true,
                 true,
@@ -124,7 +124,7 @@ class RadarGeometry {
                 RadarPreferences.radarCamxBorders,
                 RadarPreferences.radarHwEnhExt
         ]
-        var fileAdd = [false, false, false, false, true, true, false]
+        let fileAdd = [false, false, false, false, true, true, false]
         fileidArr.indices.forEach {loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])}
     }
 

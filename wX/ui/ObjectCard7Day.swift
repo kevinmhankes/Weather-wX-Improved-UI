@@ -69,8 +69,8 @@ final class ObjectCard7Day {
     }
 
     func format7Day(_ dayStr: String, _ dayStrShort: String) -> (String, String) {
-        var dayTmpArr = dayStr.split(": ")
-        var dayTmpArrShort = dayStrShort.split(": ")
+        let dayTmpArr = dayStr.split(": ")
+        let dayTmpArrShort = dayStrShort.split(": ")
         var retStr = ""
         if !UIPreferences.mainScreenCondense || !isUS {
             if dayTmpArr.count > 1 {

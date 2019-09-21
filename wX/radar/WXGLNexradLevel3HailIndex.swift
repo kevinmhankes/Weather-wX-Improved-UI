@@ -31,9 +31,9 @@ class WXGLNexradLevel3HailIndex {
             let hiPattern4 = " ([0-9]{1}\\.[0-9]{2}) "
             posnStr = posnStr.replaceAllRegexp("\\s+", " ")
             hailPercentStr = hailPercentStr.replaceAllRegexp("\\s+", " ")
-            var posnNumbers = posnStr.parseColumnAll(stiPattern3)
-            var hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
-            var hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
+            let posnNumbers = posnStr.parseColumnAll(stiPattern3)
+            let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
+            let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
                 var degree = 0
                 var nm = 0

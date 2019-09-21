@@ -90,7 +90,7 @@ final class ObjectForecastPackageCurrentConditions {
 
     private func formatCurrentConditions() {
         let separator = " - "
-        var dataList = data.split(separator)
+        let dataList = data.split(separator)
         var retStr = ""
         var retStr2 = ""
         var tempArr = [String]()

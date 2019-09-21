@@ -63,7 +63,7 @@ final class UtilitySpcMesoInputOutput {
         var bitmaps = [Bitmap]()
         let html = (MyApplication.nwsSPCwebsitePrefix
             + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
-        var timeList = html.parseColumn("dattim\\[[0-9]{1,2}\\].*?=.*?([0-9]{8})")
+        let timeList = html.parseColumn("dattim\\[[0-9]{1,2}\\].*?=.*?([0-9]{8})")
         if timeList.count > frameCount {
             stride(from: (frameCount - 1), to: 0, by: -1).forEach {
                 imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s"
