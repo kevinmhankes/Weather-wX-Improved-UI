@@ -17,6 +17,8 @@
 // [FIX] Icon spacing issue 7 plus
 // [ADD] use 4bit colorpal init like flutter
 
+CURRENT_VERSION 56052
+56052 2019_09_25 [FIX] build script
 56050 2019_09_25 [ADD] xcode 11 produced first release
 		 [ADD] lint cleanup from new dev environment esp var to let
 		 [FIX] UtilityActions - nextViewController.modalPresentationStyle = .fullScreen (ipados 13)

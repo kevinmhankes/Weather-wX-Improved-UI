@@ -1,7 +1,8 @@
 #!/bin/bash
 dateString=$(date '+%Y/%m/%d %H:%M')
 dropBoxPath=${HOME}/Dropbox/wXL23
-version=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
+#version=$(defaults read $HOME/wXL23/wX/wX/Info.plist  CFBundleShortVersionString)
+version=$(grep CURRENT_VERSION doc/ChangeLog.txt|awk '{print $2}')
 gitRepo="https://gitlab.com/joshua.tee/wxl23.git"
 APP_NAME="wxl23"
 tmpPath=${HOME}/tmp
