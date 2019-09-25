@@ -118,6 +118,7 @@ final class UtilityActions {
     static func goToVCS(_ uiv: UIViewController, _ target: String) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
+        nextViewController.modalPresentationStyle = .fullScreen
         uiv.present(nextViewController, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 

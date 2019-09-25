@@ -17,8 +17,9 @@
 // [FIX] Icon spacing issue 7 plus
 // [ADD] use 4bit colorpal init like flutter
 
-56050 2019_09_21 [ADD] xcode 11 produced first release
+56050 2019_09_25 [ADD] xcode 11 produced first release
 		 [ADD] lint cleanup from new dev environment esp var to let
+		 [FIX] UtilityActions - nextViewController.modalPresentationStyle = .fullScreen (ipados 13)
 56046 2019_09_06 [FIX] hurricane icon
 		 [ADD] NHC - add more verbiage in storm card
 		 [ADD] NHC Storm - move path grapgic to top, add qpf and arrival graphics
