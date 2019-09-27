@@ -22,7 +22,8 @@
 // [FIX] remove TDWR products 78,80 and add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 // [FIX] check that level 2 file completeness is functioning correctly
 
-CURRENT_VERSION 56053
+CURRENT_VERSION 56054
+56054 2019_09_27 [ADD] minor change to default blue theme to more closely match other ports
 56053 2019_09_27 [FIX] force light mode in plist info
 56052 2019_09_25 [FIX] build script
 56050 2019_09_25 [ADD] xcode 11 produced first release
