@@ -153,7 +153,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         var imageCount = 0
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        (0..<(1 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count)).forEach {
+        (0..<(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count)).forEach {
             imageStackViewList.append(
                 ObjectStackView(
                     UIStackView.Distribution.fill,
@@ -164,7 +164,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         }
         
         let objectImage = ObjectImage(
-            imageStackViewList[imageCount / imagesPerRow].view,
+            imageStackViewList[0].view,
             usAlertsBitmap,
             UITapGestureRecognizer(target: self, action: #selector(gotoAlerts)),
             widthDivider: imagesPerRow
@@ -175,7 +175,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         views.append(objectImage.img)
         
         let objectImage2 = ObjectImage(
-            imageStackViewList[imageCount / imagesPerRow].view,
+            imageStackViewList[0].view,
             bitmap,
             UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
             widthDivider: imagesPerRow
@@ -184,8 +184,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         objectImage2.img.accessibilityLabel = "spc storm reports"
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
-        
-        
         
         var index = 0
         var watI = 0
