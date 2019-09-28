@@ -23,8 +23,8 @@ final class ObjectCardDashAlertItem {
         //let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = ObjectTextViewLarge(80.0, text: senderName, color: UIColor.blue)
         let tvTitle = ObjectTextView(eventType, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvStart = ObjectTextView("Start: " + effectiveTime.replace("T", " ").replace(":00-0[0-9]:00", ""), isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvEnd = ObjectTextView("End: " + expiresTime, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvStart = ObjectTextView("Start: " + effectiveTime.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""), isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvEnd = ObjectTextView("End: " + expiresTime.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""), isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvArea = ObjectTextViewSmallGray(80.0, text: areaDescription, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
