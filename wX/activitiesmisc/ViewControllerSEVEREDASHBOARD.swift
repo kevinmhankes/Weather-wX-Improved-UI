@@ -156,13 +156,13 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         (0..<(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count)).forEach {
             imageStackViewList.append(
                 ObjectStackView(
-                    UIStackView.Distribution.fill,
+                    UIStackView.Distribution.fillEqually,
                     NSLayoutConstraint.Axis.horizontal
                 )
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
-        
+        print("COUNT" + String(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count))
         let objectImage = ObjectImage(
             imageStackViewList[0].view,
             usAlertsBitmap,
