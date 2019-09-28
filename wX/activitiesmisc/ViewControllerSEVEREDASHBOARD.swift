@@ -14,6 +14,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     let snMcd = SevereNotice("mcd")
     let snMpd = SevereNotice("mpd")
     var bitmap = Bitmap()
+    var usAlertsBitmap = Bitmap()
     let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
+            self.usAlertsBitmap = Bitmap("https://forecast.weather.gov/wwamap/png/US.png")
             self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
             self.snWat.getBitmaps(MyApplication.watNoList.value)
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
@@ -114,7 +116,8 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                                 warningType.areaDescList[index],
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
                             )
-                            views.append(objectCardDashAlertItem.cardStackView.view)
+                            //views.append(objectCardDashAlertItem.cardStackView.view)
+                            self.stackView.addArrangedSubview(objectCardDashAlertItem.cardStackView.view)
                         }
                     }
                 }
@@ -159,16 +162,31 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
+        
         let objectImage = ObjectImage(
+            imageStackViewList[imageCount / imagesPerRow].view,
+            usAlertsBitmap,
+            UITapGestureRecognizer(target: self, action: #selector(gotoAlerts)),
+            widthDivider: imagesPerRow
+        )
+        imageCount += 1
+        objectImage.img.accessibilityLabel = "US Alerts"
+        objectImage.img.isAccessibilityElement = true
+        views.append(objectImage.img)
+        
+        let objectImage2 = ObjectImage(
             imageStackViewList[imageCount / imagesPerRow].view,
             bitmap,
             UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
             widthDivider: imagesPerRow
         )
         imageCount += 1
-        objectImage.img.accessibilityLabel = "spc storm reports"
-        objectImage.img.isAccessibilityElement = true
-        views.append(objectImage.img)
+        objectImage2.img.accessibilityLabel = "spc storm reports"
+        objectImage2.img.isAccessibilityElement = true
+        views.append(objectImage2.img)
+        
+        
+        
         var index = 0
         var watI = 0
         var mcdI = 0
