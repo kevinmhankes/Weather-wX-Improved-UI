@@ -54,12 +54,16 @@ class AppColors {
             primaryColorRed = 46.toColor()
             primaryColorGreen = 63.toColor()
             primaryColorBlue = 89.toColor()
+            //primaryColorRed = 19.toColor()
+            //primaryColorGreen = 36.toColor()
+            //primaryColorBlue = 62.toColor()
             primaryColorUIColor =  wXColor.uiColorFloat(
                 primaryColorRed,
                 primaryColorGreen,
                 primaryColorBlue
             )
-            primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
+            primaryDarkBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+            //primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
             //primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)
             primaryColorFab = wXColor.uiColorInt(88, 121, 169)

@@ -24,6 +24,7 @@
 
 CURRENT_VERSION 56054
 56054 2019_09_27 [ADD] minor change to default blue theme to more closely match other ports
+		 [ADD] modernize severe dashboard
 56053 2019_09_27 [FIX] force light mode in plist info
 56052 2019_09_25 [FIX] build script
 56050 2019_09_25 [ADD] xcode 11 produced first release

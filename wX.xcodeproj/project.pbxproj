@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */; };
+		030045C7233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */; };
 		0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */; };
 		0302CF3F1FEE5F5E0062C0DC /* ColorPalettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */; };
 		03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03089CC121CFF17800C9FE4D /* ObjectFab.swift */; };
@@ -389,6 +391,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardDashAlertItem.swift; sourceTree = "<group>"; };
+		030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardBlackHeaderText.swift; sourceTree = "<group>"; };
 		0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometry.swift; sourceTree = "<group>"; };
 		0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalettes.swift; sourceTree = "<group>"; };
 		03089CC121CFF17800C9FE4D /* ObjectFab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFab.swift; sourceTree = "<group>"; };
@@ -1195,6 +1199,8 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */,
+				030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1645,6 +1651,7 @@
 				F072B6691E74ECD1004219A1 /* ObjectToolbarItems.swift in Sources */,
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */,
+				030045C7233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift in Sources */,
 				03F3EB91229945DA0056A56D /* UtilityModelWpcGefsInterface.swift in Sources */,
 				F0B335E61DA3FDA70035BD36 /* UtilityPref4.swift in Sources */,
 				03FF8F8321FA72D800661F78 /* ViewControllerSPOTTERS.swift in Sources */,
@@ -1652,6 +1659,7 @@
 				F04378BF1E0F0E5F00C0A252 /* ViewControllerCATEXT.swift in Sources */,
 				F0DAD9371DA7018D00C2BD4B /* decompress.c in Sources */,
 				F0DAD9331DA7018D00C2BD4B /* randtable.c in Sources */,
+				030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */,
 				039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */,
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,

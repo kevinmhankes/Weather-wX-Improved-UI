@@ -83,14 +83,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         let wTor = SevereWarning("tor")
         let wTst = SevereWarning("tst")
         let wFfw = SevereWarning("ffw")
-        let titles = ["Tornado Warnings:", "Severe Thunderstorm Warnings:", "Flash Flood Warnings:"]
+        //let titles = ["Tornado Warnings:", "Severe Thunderstorm Warnings:", "Flash Flood Warnings:"]
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
-        [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
-            if $1 != "" {
-                let sArr = $1.split(MyApplication.newline)
-                let visibleText = "(" + String(sArr.count - 1) + ") " + titles[$0] + MyApplication.newline + $1
+        [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
+            if warningType.text != "" {
+                /*let sArr = warningType.text.split(MyApplication.newline)
+                let visibleText = "(" + String(sArr.count - 1) + ") " + titles[index] + MyApplication.newline + warningType.text
                 let objectTextView = ObjectTextView(
                     stackView,
                     visibleText,
@@ -98,13 +98,38 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 )
                 objectTextView.tv.isAccessibilityElement = true
                 objectTextView.tv.accessibilityLabel = visibleText
-                views.append(objectTextView.tv)
+                views.append(objectTextView.tv)*/
+                _ = ObjectCardBlackHeaderText(stackView, "(" + String(warningType.eventList.count) + ")" + warningType.getName())
+                warningType.eventList.enumerated().forEach { index, _ in
+                    if warningType.warnings.count > 0 {
+                        let data = warningType.warnings[index]
+                        //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
+                        if !data.hasPrefix("O.EXP") {
+                            let objectCardDashAlertItem = ObjectCardDashAlertItem(
+                                stackView,
+                                warningType.senderNameList[index],
+                                warningType.eventList[index],
+                                warningType.effectiveList[index],
+                                warningType.expiresList[index],
+                                warningType.areaDescList[index],
+                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
+                            )
+                            views.append(objectCardDashAlertItem.cardStackView.view)
+                        }
+                    }
+                }
             }
         }
     }
 
     @objc func gotoAlerts() {
         self.goToVC("usalerts")
+    }
+
+    @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
+        ActVars.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
+        //print("URL" + sender.strData)
+        self.goToVC("usalertsdetail")
     }
 
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
@@ -120,9 +145,8 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     private func displayContent() {
-        scrollView.backgroundColor = UIColor.white
+        //scrollView.backgroundColor = UIColor.white
         var views = [UIView]()
-        self.showTextWarnings(&views)
         var imageCount = 0
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
@@ -194,6 +218,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             mpdI += 1
             imageCount += 1
         }
+        self.showTextWarnings(&views)
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
     }
