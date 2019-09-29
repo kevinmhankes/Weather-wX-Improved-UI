@@ -96,6 +96,7 @@ class WXMetalRender {
     private var timeButton: ObjectToolbarIcon
     private var productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
+    var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
     var paneNumber = 0
     var numberOfPanes = 0
     var renderFn: ((Int) -> Void)?
@@ -621,7 +622,20 @@ class WXMetalRender {
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
             //print("construct locdot")
-            //print(locdotBuffers.lenInit)
+            //if (true) {
+                print(gpsLocation.lat)
+                print(gpsLocation.lon)
+                let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                    gpsLocation.lat,
+                    gpsLocation.lon,
+                    pn
+                )
+                //print(gpsCoords.lat)
+                //print(gpsCoords.lon)
+                //xPos = Float(-gpsCoords.lat) * zoom
+                //yPos = Float(gpsCoords.lon) * zoom
+                gpsLatLonTransformed = (Float(-gpsCoords.lat), Float(gpsCoords.lon))
+            //}
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)

@@ -36,7 +36,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SMW": "Special Marine Warning",
         "RADAR_SHOW_SQW": "Snow Squall Warning",
         "RADAR_SHOW_DSW": "Dust Storm Warning",
-        "RADAR_SHOW_SPS": "Special Weather Statement"
+        "RADAR_SHOW_SPS": "Special Weather Statement",
+        "RADAR_CENTER_ON_LOCATION": "Center radar on location"
     ]
 
     static let helpStrings = [
@@ -112,7 +113,8 @@ final class UtilitySettingsRadar {
         "Special Marine Warning": "Special Marine Warning",
         "Snow Squall Warning": "Snow Squall Warning",
         "Dust Storm Warning": "Dust Storm Warning",
-        "Special Weather Statement": "Special Weather Statement"
+        "Special Weather Statement": "Special Weather Statement",
+        "Center radar on location": "If location marker follows GPS is enabled this will keep the radar centered on your current location when enabled.",
     ]
 
     static let booleanDefault = [
@@ -146,7 +148,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SMW": "false",
         "RADAR_SHOW_SQW": "false",
         "RADAR_SHOW_DSW": "false",
-        "RADAR_SHOW_SPS": "false"
+        "RADAR_SHOW_SPS": "false",
+        "RADAR_CENTER_ON_LOCATION": "false"
     ]
 
     static let picker = [

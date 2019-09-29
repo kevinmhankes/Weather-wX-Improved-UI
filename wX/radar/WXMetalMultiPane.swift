@@ -325,7 +325,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     func modelMatrix(_ index: Int) -> Matrix4 {
         let matrix = Matrix4()
-        matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+        if !RadarPreferences.wxoglCenterOnLocation {
+            matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+        } else {
+            wxMetal[index]!.xPos = wxMetal[index]!.gpsLatLonTransformed.0 * wxMetal[index]!.zoom
+            wxMetal[index]!.yPos = wxMetal[index]!.gpsLatLonTransformed.1 * wxMetal[index]!.zoom
+            matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+        }
         matrix.rotateAroundX(0, y: 0, z: 0)
         matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
         return matrix

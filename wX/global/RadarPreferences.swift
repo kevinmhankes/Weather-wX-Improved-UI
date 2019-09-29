@@ -42,6 +42,7 @@ class RadarPreferences {
     static var wxoglRememberLocation = true
     static var wxoglRadarAutorefresh = false
     static var nexradRadarBackgroundColor = 0
+    static var wxoglCenterOnLocation = false
 
     static func initialize() {
         ObjectPolygonWarning.load()
@@ -81,5 +82,6 @@ class RadarPreferences {
         wxoglRadarAutorefresh = Utility.readPref("RADAR_AUTOREFRESH", "false").hasPrefix("t")
         radarDataRefreshInterval = Utility.readPref("RADAR_DATA_REFRESH_INTERVAL", 5)
         nexradRadarBackgroundColor = Utility.readPref("NEXRAD_RADAR_BACKGROUND_COLOR", Color.rgb(0, 0, 0))
+        wxoglCenterOnLocation = Utility.readPref("RADAR_CENTER_ON_LOCATION", "false").hasPrefix("t")
     }
 }
