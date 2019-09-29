@@ -162,6 +162,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(RadarPreferences.radarWarnings)
         self.view.backgroundColor = UIColor.black
         numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
         paneRange = 0..<numberOfPanes
@@ -462,13 +463,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(token)
     }
-    
+
     @objc func warningClicked(sender: ObjectToolbarIcon) {
-        //ActVars.wxoglPaneCount = "2"
-        //let token = "severedashboard"
-        //wxMetal.forEach { $0!.writePrefs() }
-        //wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
-        //self.goToVC(token)
         UtilityActions.dashClicked(self)
     }
 
