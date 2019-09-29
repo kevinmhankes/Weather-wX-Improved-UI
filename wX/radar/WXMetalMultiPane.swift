@@ -425,25 +425,29 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     @objc func doneClicked() {
-        UIApplication.shared.isIdleTimerDisabled = false
-        if RadarPreferences.wxoglRadarAutorefresh {
-            oneMinRadarFetch.invalidate()
-            oneMinRadarFetch = Timer()
+        if mapShown {
+            hideMap()
+        } else {
+            UIApplication.shared.isIdleTimerDisabled = false
+            if RadarPreferences.wxoglRadarAutorefresh {
+                oneMinRadarFetch.invalidate()
+                oneMinRadarFetch = Timer()
+            }
+            locationManager.stopUpdatingLocation()
+            locationManager.stopMonitoringSignificantLocationChanges()
+            stopAnimate()
+            wxMetal.forEach { $0!.writePrefs() }
+            wxMetal.forEach { $0!.cleanup() }
+            device = nil
+            textObj.OGLR = nil
+            metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
+            wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
+            commandQueue = nil
+            pipelineState = nil
+            timer = nil
+            textObj = WXMetalTextObject()
+            self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
         }
-        locationManager.stopUpdatingLocation()
-        locationManager.stopMonitoringSignificantLocationChanges()
-        stopAnimate()
-        wxMetal.forEach { $0!.writePrefs() }
-        wxMetal.forEach { $0!.cleanup() }
-        device = nil
-        textObj.OGLR = nil
-        metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
-        wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
-        commandQueue = nil
-        pipelineState = nil
-        timer = nil
-        textObj = WXMetalTextObject()
-        self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
 
     @objc func productClicked(sender: ObjectToolbarIcon) {
@@ -487,11 +491,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         //stopAnimate()
         if wxMetal[0] != nil {
+            self.wxMetal.forEach { $0!.updateTimeToolbar() }
             self.wxMetal.forEach { $0!.getRadar("") }
             getPolygonWarnings()
         }
     }
-    
+
     func updateWarningsInToolbar() {
         if RadarPreferences.radarWarnings {
             let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
@@ -525,6 +530,16 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func radarSiteClicked(sender: ObjectToolbarIcon) {
         mapIndex = sender.tag
+        if mapShown {
+            mapView.removeFromSuperview()
+            mapShown = false
+        } else {
+            mapShown = true
+            self.view.addSubview(mapView)
+        }
+    }
+    
+    func hideMap() {
         if mapShown {
             mapView.removeFromSuperview()
             mapShown = false

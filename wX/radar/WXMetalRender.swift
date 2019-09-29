@@ -579,6 +579,10 @@ class WXMetalRender {
         self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
         self.radarBuffers.generateMtlBuffer(device)
     }
+    
+    func updateTimeToolbar() {
+        showTimeToolbar("", false)
+    }
 
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
         let timeStr = Utility.readPref("WX_RADAR_CURRENT_INFO", "").split(" ")
@@ -621,21 +625,12 @@ class WXMetalRender {
         locCircleBuffers.triangleCount = 24
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
-            //print("construct locdot")
-            //if (true) {
-                print(gpsLocation.lat)
-                print(gpsLocation.lon)
-                let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(
-                    gpsLocation.lat,
-                    gpsLocation.lon,
-                    pn
-                )
-                //print(gpsCoords.lat)
-                //print(gpsCoords.lon)
-                //xPos = Float(-gpsCoords.lat) * zoom
-                //yPos = Float(gpsCoords.lon) * zoom
-                gpsLatLonTransformed = (Float(-gpsCoords.lat), Float(gpsCoords.lon))
-            //}
+            let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                gpsLocation.lat,
+                gpsLocation.lon,
+                pn
+            )
+            gpsLatLonTransformed = (Float(-gpsCoords.lat), Float(gpsCoords.lon))
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
