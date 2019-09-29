@@ -5,11 +5,11 @@
  *****************************************************************************/
 
 class ObjectPolygonWarning {
-
+    
     var storage: DataStorage
     var isEnabled = false
     var type: PolygonTypeGeneric
-
+    
     init(_ type: PolygonTypeGeneric) {
         self.type = type
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
@@ -27,6 +27,17 @@ class ObjectPolygonWarning {
     var urlToken: String {return longName[type]!}
     var url: String {return baseUrl + urlToken}
 
+    static func getCount(_ data: String) -> String {
+        let vtecAl = data.parseColumn(ObjectPolygonWarning.pVtec)
+        var count = 0
+        vtecAl.forEach {
+            if !$0.hasPrefix("O.EXP") && !$0.hasPrefix("O.CAN") { // UtilityTime.isVtecCurrent($0)
+                count += 1
+            }
+        }
+        return String(count)
+    }
+
     let defaultColors: [PolygonTypeGeneric: Int] = [
         .SMW: wXColor.colorsToInt(255, 165, 0),
         .SQW: wXColor.colorsToInt(199, 21, 133),
@@ -36,7 +47,7 @@ class ObjectPolygonWarning {
         //PolygonType.TST: wXColor.colorsToInt(255, 255, 0),
         //PolygonType.FFW: wXColor.colorsToInt(0, 255, 0),
     ]
-
+    
     let longName: [PolygonTypeGeneric: String] = [
         .SMW: "Special%20Marine%20Warning",
         .SQW: "Snow%20Squall%20Warning",
@@ -47,7 +58,7 @@ class ObjectPolygonWarning {
         //PolygonType.FFW: "Flash%20Flood%20Warning",
         //PolygonType.SPS: "Flood%20Warning"
     ]
-
+    
     static let polygonList = [
         //PolygonTypeGeneric.TOR,
         //PolygonTypeGeneric.TST,
@@ -57,14 +68,17 @@ class ObjectPolygonWarning {
         PolygonTypeGeneric.DSW,
         PolygonTypeGeneric.SPS
     ]
-
+    
+    static let pVtec = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]" +
+    "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
+    
     static var polygonDataByType: [PolygonTypeGeneric: ObjectPolygonWarning] = [:]
-
+    
     static func load() {
         polygonList.forEach {
             polygonDataByType[$0] = ObjectPolygonWarning($0)
         }
     }
-
+    
     let baseUrl = "https://api.weather.gov/alerts/active?event="
 }

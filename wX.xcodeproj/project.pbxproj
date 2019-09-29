@@ -1199,8 +1199,6 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */,
-				030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1217,7 +1215,9 @@
 				F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */,
 				0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */,
 				038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */,
+				030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */,
 				03A41C3E22C4C7D400C9044F /* ObjectCardCurrentConditions.swift */,
+				030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */,
 				03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */,
 				031546331FC634CB0020EF7B /* ObjectCardImage.swift */,
 				031D033521F073390074F44D /* ObjectCardLocationItem.swift */,

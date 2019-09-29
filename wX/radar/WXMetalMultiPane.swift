@@ -28,6 +28,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     let toolbar = ObjectToolbar()
     var doneButton = ObjectToolbarIcon()
     var timeButton = ObjectToolbarIcon()
+    var warningButton = ObjectToolbarIcon()
     var radarSiteButton = ObjectToolbarIcon()
     var productButton = [ObjectToolbarIcon]()
     var animateButton = ObjectToolbarIcon()
@@ -213,9 +214,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
             timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked(sender:)))
+            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked(sender:)))
             toolbarButtons.append(timeButton)
+            toolbarButtons.append(warningButton)
         } else {
+            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked(sender:)))
             toolbarButtons.append(timeButton)
+            toolbarButtons.append(warningButton)
         }
         toolbarButtons += [flexBarButton, animateButton, fixedSpace]
         paneRange.forEach {
@@ -457,6 +462,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(token)
     }
+    
+    @objc func warningClicked(sender: ObjectToolbarIcon) {
+        //ActVars.wxoglPaneCount = "2"
+        //let token = "severedashboard"
+        //wxMetal.forEach { $0!.writePrefs() }
+        //wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
+        //self.goToVC(token)
+        UtilityActions.dashClicked(self)
+    }
 
     func productChanged(_ index: Int, _ product: String) {
         stopAnimate()
@@ -484,6 +498,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 self.wxMetal.forEach { $0!.constructAlertPolygons() }
             }
             UtilityPolygons.getData()
+            if RadarPreferences.radarWarnings {
+                let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
+                let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
+                let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
+                let countString = "(" + tstCount + "," + torCount + "," + ffwCount + ")"
+                print(countString)
+                self.warningButton.title = countString
+            }
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
