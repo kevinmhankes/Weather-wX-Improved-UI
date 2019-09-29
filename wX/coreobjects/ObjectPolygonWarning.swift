@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 class ObjectPolygonWarning {
-    
+
     var storage: DataStorage
     var isEnabled = false
     var type: PolygonTypeGeneric
@@ -47,7 +47,7 @@ class ObjectPolygonWarning {
         //PolygonType.TST: wXColor.colorsToInt(255, 255, 0),
         //PolygonType.FFW: wXColor.colorsToInt(0, 255, 0),
     ]
-    
+
     let longName: [PolygonTypeGeneric: String] = [
         .SMW: "Special%20Marine%20Warning",
         .SQW: "Snow%20Squall%20Warning",
@@ -58,7 +58,7 @@ class ObjectPolygonWarning {
         //PolygonType.FFW: "Flash%20Flood%20Warning",
         //PolygonType.SPS: "Flood%20Warning"
     ]
-    
+
     static let polygonList = [
         //PolygonTypeGeneric.TOR,
         //PolygonTypeGeneric.TST,
@@ -68,17 +68,17 @@ class ObjectPolygonWarning {
         PolygonTypeGeneric.DSW,
         PolygonTypeGeneric.SPS
     ]
-    
+
     static let pVtec = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]" +
     "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
-    
+
     static var polygonDataByType: [PolygonTypeGeneric: ObjectPolygonWarning] = [:]
-    
+
     static func load() {
         polygonList.forEach {
             polygonDataByType[$0] = ObjectPolygonWarning($0)
         }
     }
-    
+
     let baseUrl = "https://api.weather.gov/alerts/active?event="
 }

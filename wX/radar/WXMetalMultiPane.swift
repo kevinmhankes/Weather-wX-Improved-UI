@@ -496,12 +496,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
             let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
             let countString = "(" + tstCount + "," + torCount + "," + ffwCount + ")"
-            print(countString)
+            //print(countString)
             self.warningButton.title = countString
         }
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
-            print("display existing warning data")
+            //print("display existing warning data")
             if self.wxMetal[0] != nil {
                 self.wxMetal.forEach { $0!.constructAlertPolygons() }
             }
@@ -510,7 +510,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
-                print("display new warning data")
+                //print("display new warning data")
                 self.semaphore.signal()
             }
         }
