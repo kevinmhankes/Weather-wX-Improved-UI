@@ -25,22 +25,22 @@ final class ObjectColorPalette {
         switch colormapCode {
         case "19":
             setupBuffers(16)
-            UtilityColorPalette19.generate()
+            UtilityColorPalette4bitGeneric.generate(colormapCode)
         case "30":
             setupBuffers(16)
-            UtilityColorPalette30.generate()
+            UtilityColorPalette4bitGeneric.generate(colormapCode)
         case "41":
             setupBuffers(16)
-            UtilityColorPalette41.generate()
+            UtilityColorPalette4bitGeneric.generate(colormapCode)
         case "56":
             setupBuffers(16)
-            UtilityColorPalette56.generate()
+            UtilityColorPalette4bitGeneric.generate(colormapCode)
         case "57":
             setupBuffers(16)
             UtilityColorPalette57.generate()
         case "78":
             setupBuffers(16)
-            UtilityColorPalette78.generate()
+            UtilityColorPalette4bitGeneric.generate(colormapCode)
         case "165":
             setupBuffers(256)
             UtilityColorPalette165.loadColorMap()

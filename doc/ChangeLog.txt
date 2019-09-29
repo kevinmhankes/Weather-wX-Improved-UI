@@ -9,10 +9,8 @@
 // BUG troubleshoot TZL and N0U anim freeze
 // BUG double-tap radar ipad not quite working
 // BUG iOS - landscape radar initial view to zoomed in
-// TODO [ADD] red text before load
 // [ADD] look at gps tunable distance and time
 // [FIX] Icon spacing issue 7 plus
-// [ADD] use 4bit colorpal init like flutter
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] remove TDWR products 78,80 and add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 
@@ -23,6 +21,7 @@ CURRENT_VERSION 56054
 		 [ADD] option to center radar on location
 		 [ADD] in radar if map is shown, hide when back button is pressed
 		 [ADD] SPC Meso pw3k PW * 3kmRH
+		 [ADD] use 4bit colorpal init like flutter
 56053 2019_09_27 [FIX] force light mode in plist info
 56052 2019_09_25 [FIX] build script
 56050 2019_09_25 [ADD] xcode 11 produced first release
