@@ -485,8 +485,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             getPolygonWarnings()
         }
     }
-
-    func getPolygonWarnings() {
+    
+    func updateWarningsInToolbar() {
         if RadarPreferences.radarWarnings {
             let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
@@ -495,6 +495,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             //print(countString)
             self.warningButton.title = countString
         }
+    }
+
+    func getPolygonWarnings() {
+        updateWarningsInToolbar()
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
             //print("display existing warning data")
@@ -507,6 +511,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
                 //print("display new warning data")
+                self.updateWarningsInToolbar()
                 self.semaphore.signal()
             }
         }
