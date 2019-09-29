@@ -68,7 +68,7 @@ final class UtilitySpcMeso {
         ObjectMenuTitle("Winter Weather", 14),
         ObjectMenuTitle("Fire Weather", 6),
         ObjectMenuTitle("Classic", 3),
-        ObjectMenuTitle("Beta", 9)
+        ObjectMenuTitle("Beta", 10)
     ]
 
     static let params = [
@@ -233,7 +233,8 @@ final class UtilitySpcMeso {
         "ptstpe",
         "pstpe",
         "pvstpe",
-        "vtp"
+        "vtp",
+        "pw3k"
     ]
 
     static let labels = [
@@ -399,7 +400,8 @@ final class UtilitySpcMeso {
         "Prob EF0+ (conditional on RM supercell)",
         "Prob EF2+ (conditional on RM supercell)",
         "Prob EF4+ (conditional on RM supercell)",
-        "Violent Tornado Parameter (VTP)"
+        "Violent Tornado Parameter (VTP)",
+        "PW * 3kmRH"
     ]
 
     static let paramSurface = [
