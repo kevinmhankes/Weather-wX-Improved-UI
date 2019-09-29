@@ -800,8 +800,8 @@ class WXMetalRender {
     }
 
     func scaleLengthLocationDot(_ currentLength: Double) -> Double {
-        print(currentLength)
-        print(zoom)
+        //print(currentLength)
+        //print(zoom)
         return (currentLength / Double(zoom)) * 2.0
     }
 

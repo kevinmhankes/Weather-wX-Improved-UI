@@ -491,6 +491,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func getPolygonWarnings() {
+        if RadarPreferences.radarWarnings {
+            let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
+            let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
+            let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
+            let countString = "(" + tstCount + "," + torCount + "," + ffwCount + ")"
+            print(countString)
+            self.warningButton.title = countString
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
             print("display existing warning data")
@@ -498,14 +506,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 self.wxMetal.forEach { $0!.constructAlertPolygons() }
             }
             UtilityPolygons.getData()
-            if RadarPreferences.radarWarnings {
-                let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
-                let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
-                let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
-                let countString = "(" + tstCount + "," + torCount + "," + ffwCount + ")"
-                print(countString)
-                self.warningButton.title = countString
-            }
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
