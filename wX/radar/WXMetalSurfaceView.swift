@@ -160,16 +160,18 @@ final class WXMetalSurfaceView {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         let bounds = UtilityUI.getScreenBounds()
+        let nativeBounds = UtilityUI.getScreenBounds()
         let width = Float(uiv.view.bounds.size.width)
-        var density: Float = -(width / bounds.0)
+        var density: Float = -(width / nativeBounds.0)
+        //var density: Float = -(width / bounds.0)
         //print(UIScreen.main.scale)
-        print(bounds)
-        print(UtilityUI.getNativeScreenBounds())
-        print(UtilityUI.getNativeScreenScale())
+        //print(bounds)
+        //print(UtilityUI.getNativeScreenBounds())
+        //print(UtilityUI.getNativeScreenScale())
         if numberOfPanes == 4 {
             density *= 2.0
         }
-        //density /= Float(UIScreen.main.scale)
+        density /= Float(UIScreen.main.scale)
         var xMiddle = Float(uiv.view.frame.width / 2.0)
         var yMiddle = Float(uiv.view.frame.height / 2.0)
         if numberOfPanes == 2 {
