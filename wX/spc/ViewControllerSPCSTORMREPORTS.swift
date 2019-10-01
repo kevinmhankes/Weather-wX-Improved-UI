@@ -124,7 +124,10 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
             )
         )
         self.stormReports.enumerated().forEach {
-            if filter == "All" || filter == $1.state {
+            if $1.damageHeader != "" {
+                _ = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+            }
+            if $1.damageHeader == "" && (filter == "All" || filter == $1.state) {
                 _ = ObjectCardStormReportItem(
                     self.stackView,
                     $1,
