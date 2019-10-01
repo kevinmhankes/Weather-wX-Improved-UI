@@ -101,7 +101,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 objectTextView.tv.isAccessibilityElement = true
                 objectTextView.tv.accessibilityLabel = visibleText
                 views.append(objectTextView.tv)*/
-                _ = ObjectCardBlackHeaderText(stackView, "(" + String(warningType.eventList.count) + ")" + warningType.getName())
+                _ = ObjectCardBlackHeaderText(stackView, "(" + String(warningType.getCount()) + ") " + warningType.getName())
                 warningType.eventList.enumerated().forEach { index, _ in
                     if warningType.warnings.count > 0 {
                         let data = warningType.warnings[index]
@@ -162,7 +162,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
-        print("COUNT" + String(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count))
+        //print("COUNT" + String(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count))
         let objectImage = ObjectImage(
             imageStackViewList[0].view,
             usAlertsBitmap,

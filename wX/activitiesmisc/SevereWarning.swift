@@ -23,33 +23,35 @@ final class SevereWarning {
     init(_ type: String) {
         self.type = type
     }
-    
+
+    func getCount() -> Int {
+        //print(eventList)
+        return eventList.count
+    }
+
     // gen2 add
     func toggleCollapsed() {
-      if (collapsed) {
-        collapsed = false
-      } else {
-        collapsed = true
-      }
+        if collapsed {
+            collapsed = false
+        } else {
+            collapsed = true
+        }
     }
     
     func getName() -> String {
-       var name = ""
-       switch (type) {
-         case "tor":
-           name = "Tornado Warning"
-           break
-         case "tst":
-           name = "Severe Thunderstorm Warning"
-           break
-         case "ffw":
-           name = "Flash Flood Warning"
-           break
-         default:
-           break
-       }
-       return name
-     }
+        var name = ""
+        switch type {
+        case "tor":
+            name = "Tornado Warning"
+        case "tst":
+            name = "Severe Thunderstorm Warning"
+        case "ffw":
+            name = "Flash Flood Warning"
+        default:
+            break
+        }
+        return name
+    }
     //
 
     func generateString(_ html: String) {

@@ -15,7 +15,7 @@
 // [FIX] remove TDWR products 78,80 and add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 
 CURRENT_VERSION 56055
-56055 2019_09_29
+56055 2019_10_01
 56054 2019_09_29 [ADD] minor change to default blue theme to more closely match other ports
 		 [ADD] modernize severe dashboard
 		 [ADD] in nexrad radar add warning count in lower toolbar if enabled
