@@ -502,7 +502,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
             let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
-            let countString = "(" + tstCount + "," + torCount + "," + ffwCount + ")"
+            let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
             //print(countString)
             self.warningButton.title = countString
         }

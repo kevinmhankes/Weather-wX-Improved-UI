@@ -638,6 +638,7 @@ class WXMetalRender {
         locdotBuffers.generateMtlBuffer(device)
         locCircleBuffers.generateMtlBuffer(device)
         if self.renderFn != nil {
+            setZoom()
             self.renderFn!(self.paneNumber)
         }
     }
@@ -809,14 +810,10 @@ class WXMetalRender {
     }
 
     func scaleLengthLocationDot(_ currentLength: Double) -> Double {
-        //print(currentLength)
-        //print(zoom)
         return (currentLength / Double(zoom)) * 2.0
     }
 
     func setZoom() {
-        //print("set zoom")
-        //print(zoom)
         [hiBuffers, spotterBuffers, tvsBuffers, wbCircleBuffers].forEach {
             $0.lenInit = scaleLength($0.type.size)
             $0.draw(pn)
@@ -829,7 +826,7 @@ class WXMetalRender {
         }
         if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            //print(locCircleBuffers.lenInit)
+            print(locCircleBuffers.lenInit)
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }

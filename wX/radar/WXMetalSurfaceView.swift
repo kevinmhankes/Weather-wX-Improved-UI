@@ -12,7 +12,8 @@ final class WXMetalSurfaceView {
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
     var spottersLabelAl = [TextViewMetal]()
-    static private let maxZoom: Float = 15.0
+    //static private let maxZoom: Float = 15.0
+    static private let maxZoom: Float = 45.0
     static private let minZoom: Float = 0.03
 
     static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
