@@ -462,11 +462,8 @@ class WXMetalRender {
     }
 
     func checkIfTDWR() {
-        print(self.rid)
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         // TODO check for existence in list including tilts
-        print(self.product)
-        print(ridIsTdwr)
         if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR")  || self.product == "N1P"  || self.product == "NTP" {
             self.tdwr = true
         } else {
@@ -502,7 +499,6 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                //print("download radar")
                 self.ridPrefixGlobal = self.rdDownload.getRadarFile(
                     url,
                     self.rid,
@@ -826,7 +822,6 @@ class WXMetalRender {
         }
         if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            print(locCircleBuffers.lenInit)
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
@@ -836,7 +831,6 @@ class WXMetalRender {
     }
 
     func resetRidAndGet(_ rid: String) {
-        //print("reset rid and get")
         self.rid = rid
         xPos = 0.0
         yPos = 0.0
@@ -877,7 +871,6 @@ class WXMetalRender {
                 newProduct.append(lastValue)
                 product = newProduct
                 regenerateProductList()
-                //print(newProduct)
             }
             if product.hasPrefix("TR") || product.hasPrefix("TV") {
                 let firstValue = product[product.startIndex]
@@ -906,7 +899,6 @@ class WXMetalRender {
                 newProduct.append(firstValue)
                 newProduct += String(tiltInt) + stringEnd
                 radarProductList[index] = newProduct
-                //print(newProduct)
             }
         }
     }
