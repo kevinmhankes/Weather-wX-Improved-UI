@@ -21,7 +21,7 @@ final class ObjectCardDashAlertItem {
     ) {
         // .replace("T", " ").replaceAll(":00-0[0-9]:00")
         //let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
-        let tvName = ObjectTextViewLarge(80.0, text: senderName, color: UIColor.blue)
+        let tvName = ObjectTextViewLarge(80.0, text: senderName, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
         let tvTitle = ObjectTextView(eventType, isUserInteractionEnabled: false, isZeroSpacing: true)

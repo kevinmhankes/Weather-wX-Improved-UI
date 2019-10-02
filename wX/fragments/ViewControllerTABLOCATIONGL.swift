@@ -330,6 +330,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             message: "",
             preferredStyle: UIAlertController.Style.actionSheet
         )
+        alert.view.tintColor = ColorCompatibility.label
         MyApplication.locations.indices.forEach { location in
             let action = UIAlertAction(
                 title: Location.getName(location),
@@ -357,6 +358,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             message: "",
             preferredStyle: UIAlertController.Style.actionSheet
         )
+        alert.view.tintColor = ColorCompatibility.label
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
         if UtilitySettings.isRadarInHomescreen() {
@@ -682,6 +684,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             message: alertMessage,
             preferredStyle: UIAlertController.Style.actionSheet
         )
+        alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "

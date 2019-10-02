@@ -151,7 +151,8 @@ enum ColorCompatibility {
     static var highlightText: UIColor {
         if #available(iOS 13, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
-                return .lightText
+                //return .lightText
+                return UIColor.yellow
             } else {
                 return UIColor.blue
             }

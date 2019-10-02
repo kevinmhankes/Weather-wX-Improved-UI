@@ -704,6 +704,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             message: alertMessage,
             preferredStyle: UIAlertController.Style.actionSheet
         )
+        alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
