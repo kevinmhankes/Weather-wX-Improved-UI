@@ -28,6 +28,7 @@
 		0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */; };
 		03339AE922C3661600B888FE /* ObjectCardNhcStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */; };
 		03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */; };
+		0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334980623454B2100FE6050 /* ColorCompatibility.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
@@ -414,6 +415,7 @@
 		0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunCalc.swift; sourceTree = "<group>"; };
 		03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardNhcStormReportItem.swift; sourceTree = "<group>"; };
 		03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcStormDetails.swift; sourceTree = "<group>"; };
+		0334980623454B2100FE6050 /* ColorCompatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCompatibility.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */,
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
 				F0B3353D1DA3FD510035BD36 /* Color.swift */,
+				0334980623454B2100FE6050 /* ColorCompatibility.swift */,
 				036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */,
 				F0B335451DA3FD510035BD36 /* Editor.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
@@ -1792,6 +1795,7 @@
 				031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */,
 				F0F7760E1E0014610022484C /* ViewControllerLSRbyWFO.swift in Sources */,
 				03FF8F8221FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift in Sources */,
+				0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */,
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
 				F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,

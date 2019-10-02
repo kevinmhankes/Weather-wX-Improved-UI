@@ -15,7 +15,7 @@ final class ObjectCardSunTime {
             stackView,
             sunriseSunset + MyApplication.newline + text,
             FontSize.small.size,
-            UIColor.black
+            ColorCompatibility.label
         )
         objLabel.tv.textAlignment = .center
         objLabel.addGestureRecognizer(gesture)

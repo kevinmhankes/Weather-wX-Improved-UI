@@ -17,6 +17,7 @@ CURRENT_VERSION 56055
 		 [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 		 [FIX] double-tap radar ipad not quite working (partial fix between phone and tablet)
 		 [ADD] remove TDWR 78/80 N1P NTP per notice
+		 [ADD] ColorCompatibility.swift and start to migrate to it
 56054 2019_09_29 [ADD] minor change to default blue theme to more closely match other ports
 		 [ADD] modernize severe dashboard
 		 [ADD] in nexrad radar add warning count in lower toolbar if enabled

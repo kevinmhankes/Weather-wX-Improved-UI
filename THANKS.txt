@@ -10,3 +10,4 @@ Cezar Pereira - TabBarControllerSwipeExtension.swift
 Lee Sun-Hyoup https://github.com/kciter/Floaty/
 Venj Chu - https://github.com/imvenj/SunCalc.swift 
 Vladimir Agafonkin - https://github.com/mourner/suncalc
+Noah Gilmore - https://noahgilmore.com/blog/dark-mode-uicolor-compatibility/ ColorCompatibility

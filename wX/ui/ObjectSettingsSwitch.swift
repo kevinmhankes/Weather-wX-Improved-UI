@@ -14,8 +14,9 @@ final class ObjectSettingsSwitch {
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
-        button.backgroundColor = UIColor.white
-        switchUi.backgroundColor = UIColor.white
+        button.backgroundColor = ColorCompatibility.systemBackground
+        button.setTitleColor(ColorCompatibility.label, for: .normal)
+        switchUi.backgroundColor = ColorCompatibility.systemBackground
         button.contentHorizontalAlignment = .left
         button.setTitle(prefMap[prefVar], for: .normal)
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping

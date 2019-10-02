@@ -30,7 +30,8 @@ final class ObjectSlider {
         slider.maximumValue = ObjectSlider.prefToMax[prefVar]!
         slider.isContinuous = true
         slider.thumbTintColor = AppColors.primaryColorFab
-        button.backgroundColor = UIColor.white
+        button.backgroundColor = ColorCompatibility.systemBackground
+        button.setTitleColor(ColorCompatibility.label, for: .normal)
         let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         slider.widthAnchor.constraint(equalToConstant: width).isActive = true

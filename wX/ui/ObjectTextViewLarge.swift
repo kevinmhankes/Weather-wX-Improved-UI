@@ -13,7 +13,7 @@ final class ObjectTextViewLarge {
     init(
         _ textPadding: CGFloat,
         text: String = "",
-        color: UIColor = UIColor.black,
+        color: UIColor = ColorCompatibility.label,
         isUserInteractionEnabled: Bool = true
     ) {
         tv.translatesAutoresizingMaskIntoConstraints = false
