@@ -24,7 +24,16 @@ class AppColors {
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
 
     static func update() {
-        let appColor = Utility.readPref("UI_THEME", "blue")
+        var appColor = Utility.readPref("UI_THEME", "blue")
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                print("Dark mode")
+                appColor = "black"
+            }
+            else {
+                print("Light mode")
+            }
+        }
         switch appColor {
         case "black":
             primaryColorRed = 30.toColor()
