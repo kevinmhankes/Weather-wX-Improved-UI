@@ -14,7 +14,7 @@ final class ObjectCardNhcStormReportItem {
         let textViewTop = ObjectTextViewLarge(
             80.0,
             text: stormData.name + " (" + stormData.type + ") " + stormData.center,
-            color: UIColor.blue
+            color: ColorCompatibility.highlightText
         )
         let textViewTime = ObjectTextView(stormData.dateTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let textViewMovement = ObjectTextView(
