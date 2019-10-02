@@ -25,6 +25,7 @@ class ActVars {
     static var webViewUseUrl = false
     static var spcStormReportsDay = ""
     static var wxoglPaneCount = ""
+    static var wxoglCalledFromTimeButton = false
     static var wxoglDspLegendMax = 0.0
     static var nhcStormUrl = ""
     static var nhcStormTitle = ""

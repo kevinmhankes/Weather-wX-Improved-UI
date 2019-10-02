@@ -428,7 +428,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if mapShown {
             hideMap()
         } else {
-            UIApplication.shared.isIdleTimerDisabled = false
+            // Don't disable screen being left on if one goes from single pane to dual pane via time
+            // button and back
+            if ActVars.wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
+                ActVars.wxoglCalledFromTimeButton = false
+            } else {
+                UIApplication.shared.isIdleTimerDisabled = false
+            }
             if RadarPreferences.wxoglRadarAutorefresh {
                 oneMinRadarFetch.invalidate()
                 oneMinRadarFetch = Timer()
@@ -468,6 +474,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func timeClicked(sender: ObjectToolbarIcon) {
         ActVars.wxoglPaneCount = "2"
+        ActVars.wxoglCalledFromTimeButton = true
         let token = "wxmetalradar"
         wxMetal.forEach { $0!.writePrefs() }
         wxMetal[0]?.writePrefsForSingleToDualPaneTransition()

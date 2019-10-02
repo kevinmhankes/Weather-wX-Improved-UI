@@ -86,7 +86,6 @@ class ObjectMetalBuffers {
                 vertexCount = count / 2
             }
         } else {
-            //print("count is 0, clear vertext count " + type.string)
             if type.string != "" {
                 vertexCount = 0
             }

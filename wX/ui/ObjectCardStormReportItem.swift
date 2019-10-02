@@ -23,16 +23,6 @@ final class ObjectCardStormReportItem {
             cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
             stackView.addArrangedSubview(cardStackView.view)
             cardStackView.view.addGestureRecognizer(gesture)
-        } /*else if stormReport.damageHeader != "" {
-            tvLocation.text = stormReport.damageHeader
-            tvLocation.view.textColor = UIColor.white
-            tvLocation.view.backgroundColor = UIColor.black
-            tvLocation.tv.font = FontSize.extraLarge.size
-            let verticalTextConainer = ObjectStackView(
-                .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view]
-            )
-            cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-            stackView.addArrangedSubview(cardStackView.view)
-        }*/
+        }
     }
 }

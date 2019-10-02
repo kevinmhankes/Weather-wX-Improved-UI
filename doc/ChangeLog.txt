@@ -3,19 +3,20 @@
 // TODO with verification from https://vortex.plymouth.edu/myo/rad/tdwr.html, add in TDWR
 //		digital hybrid reflectivity, comp ref, vil, echo tops, digital storm total
 // TODO Add 4th char to all radar sites
-// BUG in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead
-// BUG screen is not staying on when configured to do so ( when jumping to dual pane and back )
+// BUG in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 // BUG dual pane does not show radar time for both panes
-// BUG troubleshoot TZL and N0U anim freeze
-// BUG double-tap radar ipad not quite working
+// BUG troubleshoot TZL and N0U anim freeze (memory exhaustion?)
 // BUG iOS - landscape radar initial view to zoomed in
 // [ADD] look at gps tunable distance and time
 // [FIX] Icon spacing issue 7 plus
 // [ADD] wpc day 1 -3 image + text 
-// [FIX] remove TDWR products 78,80 and add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
+// [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 
 CURRENT_VERSION 56055
-56055 2019_10_01 [FIX] nexrad location dot circle size issue on start
+56055 2019_10_02 [FIX] nexrad location dot circle size issue on start
+		 [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
+		 [FIX] double-tap radar ipad not quite working (partial fix between phone and tablet)
+		 [ADD] remove TDWR 78/80 N1P NTP per notice
 56054 2019_09_29 [ADD] minor change to default blue theme to more closely match other ports
 		 [ADD] modernize severe dashboard
 		 [ADD] in nexrad radar add warning count in lower toolbar if enabled

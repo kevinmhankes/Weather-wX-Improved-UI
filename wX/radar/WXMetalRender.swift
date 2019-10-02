@@ -100,7 +100,7 @@ class WXMetalRender {
     var paneNumber = 0
     var numberOfPanes = 0
     var renderFn: ((Int) -> Void)?
-    // TODO why is this not from WXGLNexrad
+    // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
         "N0Q: Base Reflectivity",
         "N0U: Base Velocity",
