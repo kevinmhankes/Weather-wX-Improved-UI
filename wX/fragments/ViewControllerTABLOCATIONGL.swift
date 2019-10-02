@@ -599,7 +599,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             stackViewLocationButton,
             Location.name,
             FontSize.extraLarge.size,
-            UIColor.blue
+            ColorCompatibility.highlightText
         )
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
     }

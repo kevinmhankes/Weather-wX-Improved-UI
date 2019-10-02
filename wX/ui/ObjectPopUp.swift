@@ -25,6 +25,7 @@ final class ObjectPopUp {
          _ fn: @escaping (String) -> Void
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         list.forEach { item in
@@ -32,7 +33,9 @@ final class ObjectPopUp {
             if item.contains(":") {
                 code = item.firstToken(":")
             }
-            addAction(UIAlertAction(item, {_ in fn(code)}))
+            let action = UIAlertAction(item, {_ in fn(code)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            addAction(action)
         }
         finish()
     }
@@ -44,10 +47,13 @@ final class ObjectPopUp {
          _ fn: @escaping (Int) -> Void
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         list.forEach { item in
-            addAction(UIAlertAction(String(item), {_ in fn(item)}))
+            let action = UIAlertAction(String(item), {_ in fn(item)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            addAction(action)
         }
         finish()
     }
@@ -59,10 +65,13 @@ final class ObjectPopUp {
          _ fn: @escaping (Int) -> Void
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         list.forEach { item in
-            addAction(UIAlertAction(String(item), {_ in fn(item)}))
+            let action = UIAlertAction(String(item), {_ in fn(item)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            addAction(action)
         }
         finish()
     }
@@ -74,11 +83,14 @@ final class ObjectPopUp {
          _ fn: @escaping (Int) -> Void
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         list.forEach {
             let index = list.firstIndex(of: $0)!
-            addAction(UIAlertAction($0, {_ in fn(index)}))
+            let action = UIAlertAction($0, {_ in fn(index)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            addAction(action)
         }
         finish()
     }
@@ -90,10 +102,13 @@ final class ObjectPopUp {
          _ fn: @escaping (Int) -> Void
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         list.enumerated().forEach { index, title in
-            addAction(UIAlertAction(title.title, {_ in fn(index)}))
+            let action = UIAlertAction(title.title, {_ in fn(index)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            addAction(action)
         }
         finish()
     }
@@ -109,11 +124,14 @@ final class ObjectPopUp {
         let count = list[index].count
         let title = list[index].title
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
         (startIdx..<(startIdx + count)).forEach { idx in
             let paramTitle = menuData.paramLabels[idx]
-            alert.addAction(UIAlertAction(paramTitle, { _ in fn(idx)}))
+            let action = UIAlertAction(paramTitle, { _ in fn(idx)})
+            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
+            alert.addAction(action)
         }
         finish()
     }

@@ -148,4 +148,14 @@ enum ColorCompatibility {
         }
         return UIColor(red: 0.10980392156862745, green: 0.10980392156862745, blue: 0.11764705882352941, alpha: 1.0)
     }
+    static var highlightText: UIColor {
+        if #available(iOS 13, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                return .lightText
+            } else {
+                return UIColor.blue
+            }
+        }
+        return UIColor.blue
+    }
 }
