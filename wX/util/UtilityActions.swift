@@ -167,6 +167,7 @@ final class UtilityActions {
             message: "",
             preferredStyle: UIAlertController.Style.actionSheet
         )
+        alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { rid in
             let action = UIAlertAction(title: rid, style: .default, handler: {_ in menuItemClicked(uiv, rid, button)})
             if let popoverController = alert.popoverPresentationController {
