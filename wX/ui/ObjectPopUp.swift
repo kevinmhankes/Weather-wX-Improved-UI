@@ -14,6 +14,7 @@ final class ObjectPopUp {
 
     init(_ uiv: UIViewController, _ title: String, _ button: UIBarButtonItem) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
     }
