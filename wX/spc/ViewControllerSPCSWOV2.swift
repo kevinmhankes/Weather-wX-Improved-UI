@@ -19,7 +19,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+        view.backgroundColor = ColorCompatibility.label
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))

@@ -28,13 +28,25 @@ class AppColors {
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 print("Dark mode")
-                appColor = "black"
+                appColor = "darkMode"
             }
             else {
                 print("Light mode")
             }
         }
         switch appColor {
+        case "darkMode":
+            primaryColorRed = 10.toColor()
+            primaryColorGreen = 10.toColor()
+            primaryColorBlue = 10.toColor()
+            primaryColorUIColor =  wXColor.uiColorFloat(
+                primaryColorRed,
+                primaryColorGreen,
+                primaryColorBlue
+            )
+            primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            primaryColorFab = wXColor.uiColorInt(30, 30, 30)
         case "black":
             primaryColorRed = 30.toColor()
             primaryColorGreen = 30.toColor()

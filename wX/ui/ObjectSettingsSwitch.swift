@@ -21,7 +21,8 @@ final class ObjectSettingsSwitch {
         button.setTitle(prefMap[prefVar], for: .normal)
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         switchUi.thumbTintColor = AppColors.primaryDarkBlueUIColor
-        switchUi.onTintColor = AppColors.primaryColorUIColor
+        //switchUi.onTintColor = AppColors.primaryColorUIColor
+        switchUi.onTintColor = ColorCompatibility.label
         switchUi.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [button, switchUi])
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()

@@ -29,7 +29,9 @@ final class ObjectSlider {
         slider.minimumValue = ObjectSlider.prefToMin[prefVar]!
         slider.maximumValue = ObjectSlider.prefToMax[prefVar]!
         slider.isContinuous = true
-        slider.thumbTintColor = AppColors.primaryColorFab
+        slider.thumbTintColor = ColorCompatibility.label
+        slider.minimumTrackTintColor = ColorCompatibility.systemGray2
+        slider.maximumTrackTintColor = ColorCompatibility.systemGray5
         button.backgroundColor = ColorCompatibility.systemBackground
         button.setTitleColor(ColorCompatibility.label, for: .normal)
         let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
