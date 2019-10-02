@@ -102,7 +102,7 @@ final class UtilityActions {
             }
         case "Spotters":
             token = "spotters"
-        case "Sun / Moon":
+        case "Sun Times":
             token = "sunmoondata"
         case "Local Forecast":
             ActVars.webViewUseUrl = true
@@ -149,7 +149,7 @@ final class UtilityActions {
             "Alerts",
             "Observations",
             "Soundings",
-            "Sun / Moon",
+            "Sun Times",
             "PlayList",
             //"Spotters",
             "Settings",

@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardDashAlertItem {
 
     let cardStackView: ObjectCardStackView
-    
+
     init(
         _ stackView: UIStackView,
         _ senderName: String,

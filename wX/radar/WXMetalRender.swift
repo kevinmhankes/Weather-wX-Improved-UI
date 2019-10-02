@@ -575,7 +575,7 @@ class WXMetalRender {
         self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
         self.radarBuffers.generateMtlBuffer(device)
     }
-    
+
     func updateTimeToolbar() {
         showTimeToolbar("", false)
     }

@@ -25,7 +25,6 @@ final class SevereWarning {
     }
 
     func getCount() -> Int {
-        //print(eventList)
         return eventList.count
     }
 
@@ -37,7 +36,7 @@ final class SevereWarning {
             collapsed = true
         }
     }
-    
+
     func getName() -> String {
         var name = ""
         switch type {

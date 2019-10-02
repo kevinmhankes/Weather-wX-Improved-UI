@@ -545,7 +545,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             self.view.addSubview(mapView)
         }
     }
-    
+
     func hideMap() {
         if mapShown {
             mapView.removeFromSuperview()

@@ -173,7 +173,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         objectImage.img.accessibilityLabel = "US Alerts"
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
-        
+
         let objectImage2 = ObjectImage(
             imageStackViewList[0].view,
             bitmap,
@@ -184,7 +184,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         objectImage2.img.accessibilityLabel = "spc storm reports"
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
-        
+
         var index = 0
         var watI = 0
         var mcdI = 0

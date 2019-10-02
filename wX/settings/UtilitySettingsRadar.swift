@@ -114,7 +114,7 @@ final class UtilitySettingsRadar {
         "Snow Squall Warning": "Snow Squall Warning",
         "Dust Storm Warning": "Dust Storm Warning",
         "Special Weather Statement": "Special Weather Statement",
-        "Center radar on location": "If location marker follows GPS is enabled this will keep the radar centered on your current location when enabled.",
+        "Center radar on location": "If location marker follows GPS is enabled this will keep the radar centered on your current location when enabled."
     ]
 
     static let booleanDefault = [

@@ -9,7 +9,7 @@ class ObjectPolygonWarning {
     var storage: DataStorage
     var isEnabled = false
     var type: PolygonTypeGeneric
-    
+
     init(_ type: PolygonTypeGeneric) {
         self.type = type
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
