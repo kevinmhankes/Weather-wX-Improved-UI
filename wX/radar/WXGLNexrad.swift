@@ -146,7 +146,7 @@ final class WXGLNexrad {
     static var radarProductListTdwr = [
         "TZL: Long Range Digital Base Reflectivity",
         "TR0: Digital Base Reflectivity",
-        "TV0: Digital Base Velocity",
+        "TV0: Digital Base Velocity"
         //"N1P: One Hour Precipitation Total",
         //"NTP: Storm Total Precipitation"
     ]
