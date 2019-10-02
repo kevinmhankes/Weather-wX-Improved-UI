@@ -28,9 +28,9 @@ final class ObjectSpotterCard {
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
-        textViews[0].color = .blue
-        textViews[1].color = .black
-        textViews[2].color = .gray
+        textViews[0].color = ColorCompatibility.highlightText
+        textViews[1].color = ColorCompatibility.label
+        textViews[2].color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
         sV.view.addGestureRecognizer(gesture)
     }

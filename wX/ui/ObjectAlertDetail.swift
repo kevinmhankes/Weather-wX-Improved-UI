@@ -19,7 +19,7 @@ final class ObjectAlertDetail {
             textViews.append(objectTextView)
         }
         textViews[0].font = FontSize.extraLarge.size
-        textViews[4].color = UIColor.blue
+        textViews[4].color = ColorCompatibility.highlightText
         stackView.isAccessibilityElement = true
         self.stackView = stackView
     }
