@@ -11,6 +11,7 @@
 // [FIX] Icon spacing issue 7 plus
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
+// [FIX] in nexrad trigger popup and then tap back button, any action after causes crash
 
 CURRENT_VERSION 56055
 56055 2019_10_02 [FIX] nexrad location dot circle size issue on start
