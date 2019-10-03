@@ -428,31 +428,35 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if mapShown {
             hideMap()
         } else {
-            // Don't disable screen being left on if one goes from single pane to dual pane via time
-            // button and back
-            if ActVars.wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
-                ActVars.wxoglCalledFromTimeButton = false
+            if self.presentedViewController == nil {
+                // Don't disable screen being left on if one goes from single pane to dual pane via time
+                // button and back
+                if ActVars.wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
+                    ActVars.wxoglCalledFromTimeButton = false
+                } else {
+                    UIApplication.shared.isIdleTimerDisabled = false
+                }
+                if RadarPreferences.wxoglRadarAutorefresh {
+                    oneMinRadarFetch.invalidate()
+                    oneMinRadarFetch = Timer()
+                }
+                locationManager.stopUpdatingLocation()
+                locationManager.stopMonitoringSignificantLocationChanges()
+                stopAnimate()
+                wxMetal.forEach { $0!.writePrefs() }
+                wxMetal.forEach { $0!.cleanup() }
+                device = nil
+                textObj.OGLR = nil
+                metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
+                wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
+                commandQueue = nil
+                pipelineState = nil
+                timer = nil
+                textObj = WXMetalTextObject()
+                self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
             } else {
-                UIApplication.shared.isIdleTimerDisabled = false
+                self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
             }
-            if RadarPreferences.wxoglRadarAutorefresh {
-                oneMinRadarFetch.invalidate()
-                oneMinRadarFetch = Timer()
-            }
-            locationManager.stopUpdatingLocation()
-            locationManager.stopMonitoringSignificantLocationChanges()
-            stopAnimate()
-            wxMetal.forEach { $0!.writePrefs() }
-            wxMetal.forEach { $0!.cleanup() }
-            device = nil
-            textObj.OGLR = nil
-            metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
-            wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
-            commandQueue = nil
-            pipelineState = nil
-            timer = nil
-            textObj = WXMetalTextObject()
-            self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
         }
     }
 
