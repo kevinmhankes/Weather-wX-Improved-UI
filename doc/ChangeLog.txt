@@ -1,7 +1,5 @@
 // TODO nexrad radar - download/show warnings/polygons seperately
 // TODO class for radar product specs
-// TODO with verification from https://vortex.plymouth.edu/myo/rad/tdwr.html, add in TDWR
-//		digital hybrid reflectivity, comp ref, vil, echo tops, digital storm total
 // TODO Add 4th char to all radar sites
 // BUG in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 // BUG dual pane does not show radar time for both panes
