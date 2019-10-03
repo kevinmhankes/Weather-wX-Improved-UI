@@ -8,8 +8,11 @@
 // [FIX] Icon spacing issue 7 plus
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
+// [ADD] MacOS support https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app
+		       https://forums.developer.apple.com/thread/117229
+// [ADD] better support for dynamic dark/light mode transitions
 
-// appstore release 10/3/1029 56055
+// appstore release 10/X/1029 560XX
 Added support for iOS 13 darkmode. Bugfixes
 
 CURRENT_VERSION 56055
