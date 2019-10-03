@@ -9,6 +9,9 @@
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 
+// appstore release 10/3/1029 56055
+Added support for iOS 13 darkmode. Bugfixes
+
 CURRENT_VERSION 56055
 56055 2019_10_03 [FIX] nexrad location dot circle size issue on start
 		 [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
