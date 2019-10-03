@@ -11,7 +11,6 @@ final class ObjectCardCurrentConditions {
     private var image = ObjectCardImage()
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
     private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
-    //private let bottomText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     let condenseScale: CGFloat = 0.50
     private var horizontalContainer = ObjectCardStackView()
 
@@ -93,7 +92,7 @@ final class ObjectCardCurrentConditions {
             if UtilityTime.isRadarTimeOld(radarTimeFinal) {
                 bottomText.tv.textColor = UIColor.red
             } else {
-                bottomText.tv.textColor = UIColor.gray
+                bottomText.tv.textColor = ColorCompatibility.secondaryLabel
             }
         } else {
             bottomText.text = ""

@@ -18,7 +18,7 @@ final class ObjectTextViewSmallGray {
         tv.isScrollEnabled = false
         tv.font = FontSize.small.size
         tv.textContainerInset = UIEdgeInsets.zero
-        tv.textColor = UIColor.gray
+        tv.textColor = ColorCompatibility.secondaryLabel
         self.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
