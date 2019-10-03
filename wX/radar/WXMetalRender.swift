@@ -55,8 +55,6 @@ class WXMetalRender {
     private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
     private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
     private var swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
-    //private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT, zoomToHideMiscFeatures / 2.0)
-    //private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE, zoomToHideMiscFeatures / 2.0)
     private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
     private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
@@ -835,10 +833,10 @@ class WXMetalRender {
         xPos = 0.0
         yPos = 0.0
         zoom = 1.0
+        if UtilityUI.isLandscape() {
+            zoom = 0.60
+        }
         loadGeometry()
-        //xPos = 0.0
-        //yPos = 0.0
-        //zoom = 1.0
         getRadar("")
     }
 

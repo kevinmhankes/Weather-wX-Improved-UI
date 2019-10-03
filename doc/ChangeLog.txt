@@ -6,7 +6,6 @@
 // BUG in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 // BUG dual pane does not show radar time for both panes
 // BUG troubleshoot TZL and N0U anim freeze (memory exhaustion?)
-// BUG iOS - landscape radar initial view to zoomed in
 // [ADD] look at gps tunable distance and time
 // [FIX] Icon spacing issue 7 plus
 // [ADD] wpc day 1 -3 image + text 
@@ -19,6 +18,7 @@ CURRENT_VERSION 56055
 		 [ADD] remove TDWR 78/80 N1P NTP per notice
 		 [ADD] ColorCompatibility.swift and start to migrate to it
 		 [FIX] in nexrad trigger popup and then tap back button, any action after causes crash
+		 [FIX] landscape radar initial view to zoomed in
 56054 2019_09_29 [ADD] minor change to default blue theme to more closely match other ports
 		 [ADD] modernize severe dashboard
 		 [ADD] in nexrad radar add warning count in lower toolbar if enabled
