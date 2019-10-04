@@ -289,8 +289,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     @objc override func willEnterForeground() {
         super.willEnterForeground()
-        toolbar.setColorToTheme()
-        objLabel.color = ColorCompatibility.highlightText
+        updateColors()
+        //toolbar.setColorToTheme()
+        //objLabel.color = ColorCompatibility.highlightText
         scrollView.scrollToTop()
         currentTime = UtilityTime.currentTimeMillis64()
         currentTimeSec = currentTime / 1000
@@ -302,6 +303,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateColors()
         objLabel.text = Location.name
         ActVars.vc = self
         Location.checkCurrentLocationValidity()
@@ -770,12 +772,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     //AppColors.update()
                     //print("Light mode")
                 }
-                toolbar.setColorToTheme()
-                objLabel.color = ColorCompatibility.highlightText
-                //view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+                updateColors()
             } else {
                 // Fallback on earlier versions
             }
+        }
+    }
+    
+    override func updateColors() {
+        toolbar.setColorToTheme()
+        objLabel.color = ColorCompatibility.highlightText
+        view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+        if UIPreferences.mainScreenRadarFab {
+            fab?.setColor()
         }
     }
 }
