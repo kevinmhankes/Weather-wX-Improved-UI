@@ -152,7 +152,8 @@ enum ColorCompatibility {
         if #available(iOS 13, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 //return .lightText
-                return UIColor.yellow
+                //return UIColor.yellow
+                return ColorCompatibility.link
             } else {
                 return UIColor.blue
             }
