@@ -118,20 +118,22 @@ class ViewControllerTABPARENT: UIViewController {
                     AppColors.update()
                     print("Light mode")
                 }
-                setTabBarColor()
-                view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
-                if UIPreferences.mainScreenRadarFab {
-                    fab?.setColor()
-                }
+                updateColors()
             } else {
                 // Fallback on earlier versions
             }
         }
     }
     
-    @objc func willEnterForeground() {
+    func updateColors() {
+        setTabBarColor()
+        view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         if UIPreferences.mainScreenRadarFab {
             fab?.setColor()
         }
+    }
+
+    @objc func willEnterForeground() {
+        updateColors()
     }
 }
