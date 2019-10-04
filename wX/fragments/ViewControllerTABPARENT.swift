@@ -96,4 +96,22 @@ class ViewControllerTABPARENT: UIViewController {
     func removeAllViews() {
         self.view.subviews.forEach({ $0.removeFromSuperview() })
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           if #available(iOS 13.0, *) {
+               //let userInterfaceStyle = traitCollection.userInterfaceStyle
+               if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+                   if UITraitCollection.current.userInterfaceStyle == .dark {
+                       AppColors.update()
+                       print("Dark mode")
+                   } else {
+                       AppColors.update()
+                       print("Light mode")
+                   }
+           } else {
+               // Fallback on earlier versions
+           }
+       }
+    }
 }

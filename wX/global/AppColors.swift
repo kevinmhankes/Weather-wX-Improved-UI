@@ -29,8 +29,7 @@ class AppColors {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 print("Dark mode")
                 appColor = "darkMode"
-            }
-            else {
+            } else {
                 print("Light mode")
             }
         }

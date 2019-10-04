@@ -15,6 +15,8 @@
 // appstore release 10/X/1029 560XX
 Added support for iOS 13 darkmode. Bugfixes
 
+56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
+
 CURRENT_VERSION 56055
 56055 2019_10_03 [FIX] nexrad location dot circle size issue on start
 		 [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
