@@ -50,7 +50,8 @@ class UIwXViewController: UIViewController {
                     AppColors.update()
                     print("Light mode")
                 }
-
+                view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+                toolbar.setColorToTheme()
                 //print("THEME CHANGED")
                 /*switch UIApplication.shared.applicationState {
                 case .active:
