@@ -783,6 +783,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         toolbar.setColorToTheme()
         objLabel.color = ColorCompatibility.highlightText
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+        setTabBarColor()
         if UIPreferences.mainScreenRadarFab {
             fab?.setColor()
         }
