@@ -290,6 +290,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         toolbar.setColorToTheme()
+        objLabel.color = ColorCompatibility.highlightText
         scrollView.scrollToTop()
         currentTime = UtilityTime.currentTimeMillis64()
         currentTimeSec = currentTime / 1000
@@ -770,6 +771,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     //print("Light mode")
                 }
                 toolbar.setColorToTheme()
+                objLabel.color = ColorCompatibility.highlightText
                 //view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
             } else {
                 // Fallback on earlier versions

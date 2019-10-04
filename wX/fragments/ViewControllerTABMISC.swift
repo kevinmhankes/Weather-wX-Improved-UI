@@ -12,4 +12,25 @@ class ViewControllerTABMISC: ViewControllerTABPARENT {
         super.viewDidLoad()
         objTileMatrix = ObjectImageTileMatrix(self, stackView, .misc)
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    AppColors.update()
+                } else {
+                    AppColors.update()
+                }
+                updateColors()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+
+    override func updateColors() {
+        objTileMatrix.toolbar.setColorToTheme()
+        super.updateColors()
+    }
 }

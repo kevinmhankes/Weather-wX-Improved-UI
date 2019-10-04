@@ -13,12 +13,13 @@ final class ObjectImageTileMatrix: NSObject {
     private var tabType: TabType = .spc
     private var icons = [String]()
     private var labels = [String]()
+    var toolbar = ObjectToolbar()
 
     convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ tabType: TabType) {
         self.init()
         self.uiv = uiv
         self.tabType = tabType
-        let toolbar = ObjectToolbar(.top)
+        toolbar = ObjectToolbar(.top)
         let radarButton = ObjectToolbarIcon(uiv, .radar, #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(uiv, .cloud, #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
