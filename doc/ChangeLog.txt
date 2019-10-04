@@ -15,6 +15,7 @@
 // appstore release 10/X/1029 560XX
 Added support for iOS 13 darkmode. Bugfixes
 
+56057 2019_10_04 
 56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
 
 CURRENT_VERSION 56055
