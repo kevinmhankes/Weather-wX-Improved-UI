@@ -287,7 +287,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         UtilityActions.dashClicked(self)
     }
 
-    @objc func willEnterForeground() {
+    @objc override func willEnterForeground() {
+        super.willEnterForeground()
+        toolbar.setColorToTheme()
         scrollView.scrollToTop()
         currentTime = UtilityTime.currentTimeMillis64()
         currentTimeSec = currentTime / 1000
@@ -755,4 +757,23 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             }
         )
     }*/
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    //AppColors.update()
+                    //print("Dark mode")
+                } else {
+                    //AppColors.update()
+                    //print("Light mode")
+                }
+                toolbar.setColorToTheme()
+                //view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
 }

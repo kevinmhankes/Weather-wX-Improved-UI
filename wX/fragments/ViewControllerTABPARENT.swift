@@ -7,16 +7,22 @@
 import UIKit
 
 class ViewControllerTABPARENT: UIViewController {
-
+    
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     var objTileMatrix = ObjectImageTileMatrix()
     var fab: ObjectFab?
     var objScrollStackView: ObjectScrollStackView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         //view.backgroundColor = UIColor.white
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
@@ -24,19 +30,23 @@ class ViewControllerTABPARENT: UIViewController {
         rightSwipe.direction = .right
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
-        self.tabBarController?.tabBar.barTintColor = UIColor(
-            red: AppColors.primaryColorRed,
-            green: AppColors.primaryColorGreen,
-            blue: AppColors.primaryColorBlue,
-            alpha: CGFloat(1.0)
-        )
+        setTabBarColor()
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
             self.view.addSubview(fab!.view)
         }
     }
-
+    
+    func setTabBarColor() {
+        self.tabBarController?.tabBar.barTintColor = UIColor(
+            red: AppColors.primaryColorRed,
+            green: AppColors.primaryColorGreen,
+            blue: AppColors.primaryColorBlue,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .left {
             let selectedIndex = self.tabBarController!.selectedIndex
@@ -55,31 +65,31 @@ class ViewControllerTABPARENT: UIViewController {
             }
         }
     }
-
+    
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         objTileMatrix.imgClicked(sender: sender)
     }
-
+    
     @objc func cloudClicked() {
         objTileMatrix.cloudClicked()
     }
-
+    
     @objc func radarClicked() {
         objTileMatrix.radarClicked()
     }
-
+    
     @objc func wfotextClicked() {
         objTileMatrix.wfotextClicked()
     }
-
+    
     @objc func menuClicked() {
         objTileMatrix.menuClicked()
     }
-
+    
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
     }
-
+    
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
@@ -92,25 +102,36 @@ class ViewControllerTABPARENT: UIViewController {
             self.view.addSubview(fab!.view)
         }
     }
-
+    
     func removeAllViews() {
         self.view.subviews.forEach({ $0.removeFromSuperview() })
     }
-
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           if #available(iOS 13.0, *) {
-               if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
-                   if UITraitCollection.current.userInterfaceStyle == .dark {
-                       AppColors.update()
-                       print("Dark mode")
-                   } else {
-                       AppColors.update()
-                       print("Light mode")
-                   }
-           } else {
-               // Fallback on earlier versions
-           }
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    AppColors.update()
+                    print("Dark mode")
+                } else {
+                    AppColors.update()
+                    print("Light mode")
+                }
+                setTabBarColor()
+                view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+                if UIPreferences.mainScreenRadarFab {
+                    fab?.setColor()
+                }
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    
+    @objc func willEnterForeground() {
+        if UIPreferences.mainScreenRadarFab {
+            fab?.setColor()
+        }
     }
 }

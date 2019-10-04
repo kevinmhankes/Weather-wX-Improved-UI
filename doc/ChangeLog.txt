@@ -16,6 +16,7 @@
 Added support for iOS 13 darkmode. Bugfixes
 
 56057 2019_10_04 [ADD] change highlight text color to "link"
+	 	 [ADD] cotinued dark mode support for dynamic transitions
 56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
 
 CURRENT_VERSION 56055

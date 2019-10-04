@@ -14,9 +14,13 @@ public class ObjectFab {
         floaty.sticky = true
         floaty.friendlyTap = false
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
-        floaty.buttonColor = AppColors.primaryColorFab
+        setColor()
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
+    }
+    
+    func setColor() {
+        floaty.buttonColor = AppColors.primaryColorFab
     }
 
     func resize() {

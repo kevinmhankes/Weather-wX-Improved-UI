@@ -37,6 +37,10 @@ final class ObjectToolbar: UIToolbar {
             )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
+        setColorToTheme()
+    }
+    
+    func setColorToTheme() {
         barTintColor = UIColor(
             red: AppColors.primaryColorRed,
             green: AppColors.primaryColorGreen,
