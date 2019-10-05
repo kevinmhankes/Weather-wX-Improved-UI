@@ -18,7 +18,7 @@ public class ObjectFab {
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }
-    
+
     func setColor() {
         floaty.buttonColor = AppColors.primaryColorFab
     }

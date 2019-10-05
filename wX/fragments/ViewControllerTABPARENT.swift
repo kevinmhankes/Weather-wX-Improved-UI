@@ -7,13 +7,13 @@
 import UIKit
 
 class ViewControllerTABPARENT: UIViewController {
-    
+
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     var objTileMatrix = ObjectImageTileMatrix()
     var fab: ObjectFab?
     var objScrollStackView: ObjectScrollStackView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
@@ -37,7 +37,7 @@ class ViewControllerTABPARENT: UIViewController {
             self.view.addSubview(fab!.view)
         }
     }
-    
+
     func setTabBarColor() {
         self.tabBarController?.tabBar.barTintColor = UIColor(
             red: AppColors.primaryColorRed,
@@ -46,7 +46,7 @@ class ViewControllerTABPARENT: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-    
+
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .left {
             let selectedIndex = self.tabBarController!.selectedIndex
@@ -65,31 +65,31 @@ class ViewControllerTABPARENT: UIViewController {
             }
         }
     }
-    
+
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         objTileMatrix.imgClicked(sender: sender)
     }
-    
+
     @objc func cloudClicked() {
         objTileMatrix.cloudClicked()
     }
-    
+
     @objc func radarClicked() {
         objTileMatrix.radarClicked()
     }
-    
+
     @objc func wfotextClicked() {
         objTileMatrix.wfotextClicked()
     }
-    
+
     @objc func menuClicked() {
         objTileMatrix.menuClicked()
     }
-    
+
     @objc func dashClicked() {
         objTileMatrix.dashClicked()
     }
-    
+
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
@@ -102,11 +102,11 @@ class ViewControllerTABPARENT: UIViewController {
             self.view.addSubview(fab!.view)
         }
     }
-    
+
     func removeAllViews() {
         self.view.subviews.forEach({ $0.removeFromSuperview() })
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
@@ -122,7 +122,7 @@ class ViewControllerTABPARENT: UIViewController {
             }
         }
     }
-    
+
     func updateColors() {
         setTabBarColor()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor

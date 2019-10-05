@@ -39,7 +39,7 @@ final class ObjectToolbar: UIToolbar {
         }
         setColorToTheme()
     }
-    
+
     func setColorToTheme() {
         barTintColor = UIColor(
             red: AppColors.primaryColorRed,

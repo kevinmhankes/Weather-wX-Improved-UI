@@ -12,7 +12,7 @@ class ViewControllerTABMISC: ViewControllerTABPARENT {
         super.viewDidLoad()
         objTileMatrix = ObjectImageTileMatrix(self, stackView, .misc)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateColors()

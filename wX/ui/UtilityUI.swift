@@ -15,7 +15,7 @@ public class UtilityUI {
     static func getNativeScreenScale() -> Float {
         return Float(UIScreen.main.nativeScale)
     }
-    
+
     static func getNativeScreenBounds() -> (Float, Float) {
         let bounds = UIScreen.main.nativeBounds
         let width = bounds.width
