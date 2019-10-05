@@ -15,6 +15,7 @@
 // appstore release 10/X/1029 560XX
 Added support for iOS 13 darkmode. Bugfixes
 
+56058 2019_10_05 
 56057 2019_10_05 [ADD] change highlight text color to "link"
 	 	 [ADD] continued dark mode support for dynamic transitions
 		 [ADD] add onRestart to adhoc location, hourly, observations, severe dashboard, sounding
