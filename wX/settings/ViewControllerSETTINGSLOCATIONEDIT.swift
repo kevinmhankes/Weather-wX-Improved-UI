@@ -21,9 +21,12 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     let boolean = [String: String]()
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
+    var toolbar = ObjectToolbar(.top)
+    var toolbarBottom = ObjectToolbar(.bottom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         mapView.delegate = self
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         mapView.addGestureRecognizer(longTapGesture)
@@ -31,8 +34,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         Utility.writePref("LOCATION_CANADA_CITY", "")
         Utility.writePref("LOCATION_CANADA_ID", "")
         self.locationManager.delegate = self
-        let toolbar = ObjectToolbar(.top)
-        let toolbarBottom = ObjectToolbar(.bottom)
+        toolbar = ObjectToolbar(.top)
+        toolbarBottom = ObjectToolbar(.bottom)
         let caButton = ObjectToolbarIcon(title: "Canada", self, #selector(caClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         let doneButton2 = ObjectToolbarIcon(self, .done, #selector(doneClicked))
@@ -63,7 +66,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let stackView = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
-        let topSpace = 50.0 + UtilityUI.getTopPadding()
+        //let topSpace = 50.0 + UtilityUI.getTopPadding()
+        let topSpace = UIPreferences.toolbarHeight + UtilityUI.getTopPadding()
         let bottomSpace = UIPreferences.toolbarHeight + UtilityUI.getBottomPadding()
         stackView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         stackView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -293,5 +297,27 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                 }
             }
         )
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            //let userInterfaceStyle = traitCollection.userInterfaceStyle
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    AppColors.update()
+                    print("Dark mode")
+                } else {
+                    AppColors.update()
+                    print("Light mode")
+                }
+                view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
+                toolbar.setColorToTheme()
+                toolbarBottom.setColorToTheme()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
