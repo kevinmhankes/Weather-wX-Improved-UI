@@ -25,6 +25,8 @@ class ViewControllerSPOTTERS: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
+    
+    // TODO add onrestart
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
