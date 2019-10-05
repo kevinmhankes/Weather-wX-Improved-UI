@@ -23,19 +23,31 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
         filterButton = ObjectToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, lsrButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.displayPreContent()
-        self.view.addSubview(toolbar)
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay + ".gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay  + ".csv"
         self.getContent()
     }
 
+    // TODO get onrestart working
+
+    @objc func willEnterForeground() {
+        //self.getContent()
+    }
+
     func getContent() {
+        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl

@@ -23,7 +23,7 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
-    
+
     @objc func willEnterForeground() {
         self.getContent()
     }
