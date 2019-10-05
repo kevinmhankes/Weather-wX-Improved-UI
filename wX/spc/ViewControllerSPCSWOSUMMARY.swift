@@ -12,14 +12,25 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
+    }
+
+    @objc func willEnterForeground() {
+        self.getContent()
     }
 
     // FIXME move to displayContent to handle rotation
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)

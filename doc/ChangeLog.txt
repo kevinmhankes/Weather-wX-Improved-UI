@@ -19,7 +19,7 @@ Added support for iOS 13 darkmode. Bugfixes
 	 	 [ADD] continued dark mode support for dynamic transitions
 		 [ADD] add onRestart to adhoc location, hourly, observations, severe dashboard, sounding
 		 [ADD] add onRestart to usalerts, usalerts detail, cawarn, nhc, spc compmap, spc firesummary
-		 [ADD] add onRestart to spc state
+		 [ADD] add onRestart to spc state, spc summary
 56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
 
 CURRENT_VERSION 56055
