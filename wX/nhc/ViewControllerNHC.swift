@@ -16,6 +16,12 @@ class ViewControllerNHC: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         textProductButton = ObjectToolbarIcon(title: "Text Prod", self, #selector(textProductClicked))
         imageProductButton = ObjectToolbarIcon(title: "Image Prod", self, #selector(imageProductClicked))
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
@@ -29,11 +35,16 @@ class ViewControllerNHC: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        objNHC = ObjectNhc(self, stackView)
+        self.getContent()
+    }
+
+    @objc func willEnterForeground() {
         self.getContent()
     }
 
     func getContent() {
+        refreshViews()
+        objNHC = ObjectNhc(self, stackView)
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.objNHC?.getTextData()

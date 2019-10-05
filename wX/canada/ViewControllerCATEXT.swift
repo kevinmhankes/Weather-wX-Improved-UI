@@ -19,6 +19,8 @@ class ViewControllerCATEXT: UIwXViewController {
     var playlistButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
 
+    // TODO not working so well
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, #selector(productClicked))

@@ -12,12 +12,23 @@ class ViewControllerCAHOURLY: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        self.getContent()
+    }
+
+    @objc func willEnterForeground() {
         self.getContent()
     }
 
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {

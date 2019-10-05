@@ -15,12 +15,22 @@ class ViewControllerCAWARN: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         provButton = ObjectToolbarIcon(title: prov, self, #selector(provClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, provButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.objCAWARN = ObjectCanadaWarnings(self, stackView)
         self.getContent()
+    }
+
+    @objc func willEnterForeground() {
+           self.getContent()
     }
 
     func getContent() {
