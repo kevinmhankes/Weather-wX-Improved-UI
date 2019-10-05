@@ -17,6 +17,12 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -24,6 +30,10 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
+        self.getContent(index)
+    }
+
+    @objc func willEnterForeground() {
         self.getContent(index)
     }
 
