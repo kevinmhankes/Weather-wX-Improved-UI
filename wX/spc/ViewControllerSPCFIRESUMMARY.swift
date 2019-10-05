@@ -12,13 +12,24 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, shareButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
+    }
+    
+    @objc func willEnterForeground() {
+        self.getContent()
     }
 
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {

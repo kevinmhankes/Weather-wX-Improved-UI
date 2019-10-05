@@ -14,12 +14,22 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         self.view.addSubview(toolbar)
         deSerializeSettings()
+        self.getContent()
+    }
+
+    @objc func willEnterForeground() {
         self.getContent()
     }
 

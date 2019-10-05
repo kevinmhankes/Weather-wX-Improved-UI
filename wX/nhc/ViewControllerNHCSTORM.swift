@@ -73,6 +73,8 @@ class ViewControllerNHCSTORM: UIwXViewController {
         self.getContent()
     }
 
+    // TODO onrestart
+    
     func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
