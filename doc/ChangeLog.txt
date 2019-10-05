@@ -18,6 +18,7 @@ Added support for iOS 13 darkmode. Bugfixes
 56057 2019_10_05 [ADD] change highlight text color to "link"
 	 	 [ADD] continued dark mode support for dynamic transitions
 		 [ADD] add onRestart to adhoc location, hourly, observations, severe dashboard, sounding
+		 [ADD] add onRestart to usalerts, usalerts detail
 56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
 
 CURRENT_VERSION 56055

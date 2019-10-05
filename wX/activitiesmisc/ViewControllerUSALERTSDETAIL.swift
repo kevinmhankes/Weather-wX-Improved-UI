@@ -16,16 +16,27 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        stackView.spacing = 0
-        objAlertDetail = ObjectAlertDetail(stackView)
+        self.getContent()
+    }
+
+    @objc func willEnterForeground() {
         self.getContent()
     }
 
     func getContent() {
+        refreshViews()
+        stackView.spacing = 0
+        objAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CapAlert(url: ActVars.usalertsDetailUrl)
             DispatchQueue.main.async {
