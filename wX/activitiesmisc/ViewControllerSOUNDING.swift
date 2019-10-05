@@ -17,6 +17,12 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         mapView.delegate = self
         UtilityMap.setupMap(mapView, GlobalArrays.soundingSites, "SND_")
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -25,6 +31,10 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
+        self.getContent()
+    }
+
+    @objc func willEnterForeground() {
         self.getContent()
     }
 

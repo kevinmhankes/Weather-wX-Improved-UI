@@ -15,6 +15,12 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
@@ -23,6 +29,10 @@ class ViewControllerOBSERVATIONS: UIwXViewController {
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         self.index = Utility.readPref(prefTokenIndex, 0)
+        self.getContent(index)
+    }
+
+    @objc func willEnterForeground() {
         self.getContent(index)
     }
 

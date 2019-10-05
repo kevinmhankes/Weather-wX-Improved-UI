@@ -15,6 +15,12 @@ class ViewControllerHOURLY: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
@@ -22,7 +28,12 @@ class ViewControllerHOURLY: UIwXViewController {
         self.getContent()
     }
 
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
+
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
             DispatchQueue.main.async {

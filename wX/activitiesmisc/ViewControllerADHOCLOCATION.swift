@@ -16,17 +16,28 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         ActVars.vc = self
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         location = ActVars.adhocLocation
         titleButton.title = location.latString.truncate(6) + ", " + location.lonString.truncate(6)
         self.getContent()
     }
 
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
+
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.location)
             self.objSevenDay = ObjectForecastPackage7Day(self.location)
