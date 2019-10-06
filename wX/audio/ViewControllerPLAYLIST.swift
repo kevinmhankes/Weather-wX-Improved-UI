@@ -52,7 +52,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
-        let alert = ObjectPopUp(self, "", addButton)
+        let alert = ObjectPopUp(self, playlistItems[sender.data], addButton)
         alert.addAction(UIAlertAction("Play", {_ in self.playProduct(selection: sender.data)}))
         alert.addAction(UIAlertAction("View Text", {_ in self.viewProduct(selection: sender.data)}))
         if sender.data != 0 {

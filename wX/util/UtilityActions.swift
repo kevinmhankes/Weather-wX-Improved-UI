@@ -102,8 +102,8 @@ final class UtilityActions {
             }
         case "Spotters":
             token = "spotters"
-        case "Sun Times":
-            token = "sunmoondata"
+        //case "Sun Times":
+        //    token = "sunmoondata"
         case "Local Forecast":
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = "https://forecast.weather.gov/MapClick.php?lon="
@@ -149,7 +149,7 @@ final class UtilityActions {
             "Alerts",
             "Observations",
             "Soundings",
-            "Sun Times",
+            //"Sun Times",
             "PlayList",
             //"Spotters",
             "Settings",

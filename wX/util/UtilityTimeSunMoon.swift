@@ -17,11 +17,17 @@ final class UtilityTimeSunMoon {
         let location = SunCalc.Location(latitude: Location.xDbl, longitude: Location.yDbl)
         var sunrise = ""
         var sunset = ""
+        var dawn = ""
+        var dusk = ""
         do {
             let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
             sunrise = formatter.string(from: rise)
             let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
             sunset = formatter.string(from: set)
+            let dawnTime = try sunCalc.time(ofDate: now, forSolarEvent: .dawn, atLocation: location)
+            dawn = formatter.string(from: dawnTime)
+            let duskTime = try sunCalc.time(ofDate: now, forSolarEvent: .dusk, atLocation: location)
+            dusk = formatter.string(from: duskTime)
         } catch let e as SunCalc.SolarEventError {
             switch e {
             case .sunNeverRise:
@@ -32,7 +38,7 @@ final class UtilityTimeSunMoon {
         } catch let e {
             print("Unknown error: \(e)")
         }
-        return "Sunrise: " + sunrise + "  Sunset: " + sunset
+        return "Sunrise: " + sunrise + "  Sunset: " + sunset + MyApplication.newline + "Dawn: " + dawn + "  Dusk: " + dusk
     }
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {
