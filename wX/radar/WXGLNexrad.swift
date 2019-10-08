@@ -147,8 +147,6 @@ final class WXGLNexrad {
         "TZL: Long Range Digital Base Reflectivity",
         "TR0: Digital Base Reflectivity",
         "TV0: Digital Base Velocity"
-        //"N1P: One Hour Precipitation Total",
-        //"NTP: Storm Total Precipitation"
     ]
 
     static func getNumberRangeBins(_ productCode: Int) -> Int {

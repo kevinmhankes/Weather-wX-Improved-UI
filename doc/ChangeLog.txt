@@ -15,7 +15,7 @@
 // appstore release 10/X/1029 560XX
 Added support for iOS 13 darkmode. Bugfixes
 
-56058 2019_10_06 [ADD] playlist add product label for long press
+56058 2019_10_08 [ADD] playlist add product label for long press
 		 [ADD] dawn/dusk to card at bottom of main screen, remove dedicated view from submenu
 56057 2019_10_05 [ADD] change highlight text color to "link"
 	 	 [ADD] continued dark mode support for dynamic transitions
