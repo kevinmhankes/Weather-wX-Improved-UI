@@ -3,6 +3,8 @@
 // Backwards compatibility for iOS 13 system colors
 // In the distant future when iOS 12 support is dropped simply replace code ColorCompatibility with UIColor
 
+import UIKit
+
 enum ColorCompatibility {
     static var label: UIColor {
         if #available(iOS 13, *) {

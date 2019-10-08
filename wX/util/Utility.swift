@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 import Foundation
+import UIKit
 
 final class Utility {
 

@@ -8,6 +8,7 @@ import UIKit
 import Metal
 import CoreLocation
 import MapKit
+import simd
 
 class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -17,7 +18,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var pipelineState: MTLRenderPipelineState!
     var commandQueue: MTLCommandQueue!
     var timer: CADisplayLink!
-    var projectionMatrix: Matrix4!
+    var projectionMatrix: float4x4!
     var locationManager = CLLocationManager()
     var lastFrameTimestamp: CFTimeInterval = 0.0
     var mapIndex = 0
@@ -72,11 +73,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         if numberOfPanes == 4 {
             surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0)
         }
-        projectionMatrix = Matrix4.makeOrthoViewAngle(
+        let bottom = -1.0 * ortInt * (1.0 / surfaceRatio)
+        let top = ortInt * (1 / surfaceRatio)
+        projectionMatrix = float4x4.makeOrtho(
             -1.0 * ortInt,
             right: ortInt,
-            bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
-            top: ortInt * (1 / surfaceRatio),
+            bottom: bottom,
+            top: top,
             nearZ: -100.0,
             farZ: 100.0
         )
@@ -93,7 +96,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             if UtilityUI.isLandscape() {
                 surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight)
                 let scaleFactor: Float = 0.5
-                projectionMatrix = Matrix4.makeOrthoViewAngle(
+                projectionMatrix = float4x4.makeOrtho(
                     -1.0 * ortInt * scaleFactor,
                     right: ortInt * scaleFactor,
                     bottom: -1.0 * ortInt * (1.0 / surfaceRatio) * scaleFactor,
@@ -323,8 +326,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         stopAnimate()
     }
 
-    func modelMatrix(_ index: Int) -> Matrix4 {
-        let matrix = Matrix4()
+    func modelMatrix(_ index: Int) -> float4x4 {
+        var matrix = float4x4()
         if !RadarPreferences.wxoglCenterOnLocation {
             matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
         } else {

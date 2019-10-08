@@ -6,6 +6,7 @@
 
 import UIKit
 import Metal
+import simd
 
 class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
@@ -38,7 +39,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var pipelineState: MTLRenderPipelineState!
     var commandQueue: MTLCommandQueue!
     var timer: CADisplayLink!
-    var projectionMatrix: Matrix4!
+    var projectionMatrix: float4x4!
     var lastFrameTimestamp: CFTimeInterval = 0.0
     let ortInt: Float = 350.0
     let numberOfPanes = 1
@@ -456,7 +457,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         caview.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         caview.heightAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         let surfaceRatio = Float(screenWidth)/Float(screenHeight)
-        projectionMatrix = Matrix4.makeOrthoViewAngle(
+        projectionMatrix = float4x4.makeOrtho(
             -1.0 * ortInt,
             right: ortInt,
             bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
@@ -521,8 +522,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
     }
 
-    func modelMatrix(_ index: Int) -> Matrix4 {
-        let matrix = Matrix4()
+    func modelMatrix(_ index: Int) -> float4x4 {
+        var matrix = float4x4()
         matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
         matrix.rotateAroundX(0, y: 0, z: 0)
         matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)

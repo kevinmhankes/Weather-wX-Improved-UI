@@ -4,6 +4,8 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+import UIKit
+
 public class UtilityRadarUI {
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {

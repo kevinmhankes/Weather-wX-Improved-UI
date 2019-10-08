@@ -7,6 +7,8 @@
 import Foundation
 import QuartzCore
 import Metal
+import simd
+import UIKit
 
 class WXMetalRender {
 
@@ -186,8 +188,8 @@ class WXMetalRender {
         commandQueue: MTLCommandQueue,
         pipelineState: MTLRenderPipelineState,
         drawable: CAMetalDrawable,
-        parentModelViewMatrix: Matrix4,
-        projectionMatrix: Matrix4,
+        parentModelViewMatrix: float4x4,
+        projectionMatrix: float4x4,
         clearColor: MTLClearColor?
     ) {
         let renderPassDescriptor = MTLRenderPassDescriptor()
@@ -200,27 +202,29 @@ class WXMetalRender {
         //For now cull mode is used instead of depth buffer
         renderEncoder!.setCullMode(MTLCullMode.front)
         renderEncoder!.setRenderPipelineState(pipelineState)
+        var projectionMatrixRef = projectionMatrix
+        //var modelViewMatrixRef = modelViewMatrix
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
                 if vbuffer.scaleCutOff < zoom {
                     if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
                         renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
-                        let nodeModelMatrix = self.modelMatrix()
+                        var nodeModelMatrix = self.modelMatrix()
                         nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
                         let uniformBuffer = device.makeBuffer(
-                            length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2,
+                            length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
                             options: []
                         )
                         let bufferPointer = uniformBuffer?.contents()
                         memcpy(
                             bufferPointer,
-                            nodeModelMatrix.raw(),
-                            MemoryLayout<Float>.size * Matrix4.numberOfElements()
+                            &nodeModelMatrix,
+                            MemoryLayout<Float>.size * float4x4.numberOfElements()
                         )
                         memcpy(
-                            bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements(),
-                            projectionMatrix.raw(),
-                            MemoryLayout<Float>.size * Matrix4.numberOfElements()
+                            bufferPointer! + MemoryLayout<Float>.size * float4x4.numberOfElements(),
+                            &projectionMatrixRef,
+                            MemoryLayout<Float>.size * float4x4.numberOfElements()
                         )
                         renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
                         renderEncoder!.drawPrimitives(
@@ -237,8 +241,8 @@ class WXMetalRender {
         commandBuffer?.commit()
     }
 
-    func modelMatrix() -> Matrix4 {
-        let matrix = Matrix4()
+    func modelMatrix() -> float4x4 {
+        var matrix = float4x4()
         matrix.translate(positionX, y: positionY, z: positionZ)
         matrix.rotateAroundX(rotationX, y: rotationY, z: rotationZ)
         matrix.scale(scale, y: scale, z: scale)

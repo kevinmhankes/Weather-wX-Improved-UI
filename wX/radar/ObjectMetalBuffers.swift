@@ -4,6 +4,8 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+import Metal
+
 class ObjectMetalBuffers {
 
     var metalBuffer = [Float]()

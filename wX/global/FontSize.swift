@@ -6,6 +6,8 @@
 
 // 16 is medium
 
+import UIKit
+
 enum FontSize {
     case extraSmall
     case hourly
