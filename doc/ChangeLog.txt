@@ -12,8 +12,10 @@
 // [ADD] MacOS support https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app
 		       https://forums.developer.apple.com/thread/117229
 
-// appstore release 10/X/1029 560XX
-Added support for iOS 13 darkmode. Bugfixes
+56059 2019_10_08 
+
+// appstore release 10/X/1029 56058
+Added support for iOS 13 darkmode. In settings -> radar add option to center radar on GPS location if GPS location is enabled. Add SPC Meso pw3k PW * 3kmRH under Beta. In nexrad radar add warning count in lower toolbar if enabled. Remove TDWR products 78, 80 which are being phased out.  Add dawn/dusk times in bottom most card on main screen, remove from main sub-menu. Bugfixes
 
 56058 2019_10_08 [ADD] playlist add product label for long press
 		 [ADD] dawn/dusk to card at bottom of main screen, remove dedicated view from submenu
@@ -24,8 +26,6 @@ Added support for iOS 13 darkmode. Bugfixes
 		 [ADD] add onRestart to spc state, spc summary, spc tstorm summary, goes global, wpc img
 		 [ADD] UI refinement and darkmode transition in Loction Edit
 56056 2019_10_04 [ADD] attempt to add code in UIwXViewController for dark mode change
-
-CURRENT_VERSION 56055
 56055 2019_10_03 [FIX] nexrad location dot circle size issue on start
 		 [FIX] screen is not staying on when configured to do so ( when jumping to dual pane and back )
 		 [FIX] double-tap radar ipad not quite working (partial fix between phone and tablet)
