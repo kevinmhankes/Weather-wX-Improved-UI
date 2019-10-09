@@ -5,8 +5,8 @@
  *****************************************************************************/
 
 import UIKit
-import OpenGLES
-import GLKit
+//import OpenGLES
+//import GLKit
 
 final class WXMetalTextObject {
 

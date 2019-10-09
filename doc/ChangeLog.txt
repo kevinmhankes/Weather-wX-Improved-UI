@@ -13,6 +13,7 @@
 		       https://forums.developer.apple.com/thread/117229
 
 56059 2019_10_08 [ADD] use simd float4x4 instead of Matrix4
+		 [ADD] enable macOS as a target
 
 // appstore release 10/X/1029 56058
 Added support for iOS 13 darkmode. In settings -> radar add option to center radar on GPS location if GPS location is enabled. Add SPC Meso pw3k PW * 3kmRH under Beta. In nexrad radar add warning count in lower toolbar if enabled. Remove TDWR products 78, 80 which are being phased out.  Add dawn/dusk times in bottom most card on main screen, remove from main sub-menu. Bugfixes

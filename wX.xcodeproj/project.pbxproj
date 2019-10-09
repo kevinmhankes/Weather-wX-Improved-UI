@@ -481,6 +481,7 @@
 		03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalNexradLevelData.swift; sourceTree = "<group>"; };
 		03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerf.swift; sourceTree = "<group>"; };
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
+		03EE9057234D5F1D002F897F /* wX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wX.entitlements; sourceTree = "<group>"; };
 		03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesCanada.swift; sourceTree = "<group>"; };
 		03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpcSoundings.swift; sourceTree = "<group>"; };
 		03F3EB5C22993B870056A56D /* UtilitySpcFireOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpcFireOutlook.swift; sourceTree = "<group>"; };
@@ -819,6 +820,7 @@
 		F078FE2B1DA330B7002CCD13 /* wX */ = {
 			isa = PBXGroup;
 			children = (
+				03EE9057234D5F1D002F897F /* wX.entitlements */,
 				F09CCCEA1E15C73100A8DBA7 /* activitiesmisc */,
 				F078FE2C1DA330B7002CCD13 /* AppDelegate.swift */,
 				F078FE351DA330B7002CCD13 /* Assets.xcassets */,
@@ -2064,6 +2066,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = wX/wX.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = LSW3LL5PX7;
 				INFOPLIST_FILE = wX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2072,6 +2076,7 @@
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Ounchecked";
 				PRODUCT_BUNDLE_IDENTIFIER = joshuatee.wXIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OBJC_BRIDGING_HEADER = "wX/wX-Bridging-Header.h";
@@ -2085,6 +2090,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = wX/wX.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = LSW3LL5PX7;
 				INFOPLIST_FILE = wX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2093,6 +2100,7 @@
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Ounchecked";
 				PRODUCT_BUNDLE_IDENTIFIER = joshuatee.wXIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OBJC_BRIDGING_HEADER = "wX/wX-Bridging-Header.h";
