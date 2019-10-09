@@ -58,7 +58,18 @@ extension float4x4 {
     }*/
 
     static func makeOrtho(_ left: Float, right: Float, bottom: Float, top: Float, nearZ: Float, farZ: Float) -> float4x4 {
-        return unsafeBitCast(GLKMatrix4MakeOrtho(left, right, bottom, top, nearZ, farZ), to: float4x4.self)
+        //return unsafeBitCast(GLKMatrix4MakeOrtho(left, right, bottom, top, nearZ, farZ), to: float4x4.self)
+        let ral = right + left
+        let rsl = right - left
+        let tab = top + bottom
+        let tsb = top - bottom
+        let fan = farZ + nearZ
+        let fsn = farZ - nearZ
+        let col0 = SIMD4<Float>(2.0 / rsl, 0.0, 0.0, 0.0)
+        let col1 = SIMD4<Float>(0.0, 2.0 / tsb, 0.0, 0.0)
+        let col2 = SIMD4<Float>(0.0, 0.0, -2.0 / fsn, 0.0)
+        let col3 = SIMD4<Float>(-ral / rsl, -tab / tsb, -fan / fsn, 1.0)
+        return float4x4.init(col0, col1, col2, col3)
     }
 
    /* static func makeLookAt(_ eyeX: Float, _ eyeY: Float, _ eyeZ: Float, _ centerX: Float, _ centerY: Float, _ centerZ: Float, _ upX: Float, _ upY: Float, _ upZ: Float) -> float4x4 {
