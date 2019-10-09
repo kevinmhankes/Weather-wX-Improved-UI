@@ -11,8 +11,9 @@
 // [ADD] RadarFile class from flutter/dart port
 // [ADD] MacOS support https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app
 		       https://forums.developer.apple.com/thread/117229
+// [ADD] radar file class from flutter
 
-56060 2019_10_08 
+56060 2019_10_09
 56059 2019_10_08 [ADD] use simd float4x4 instead of Matrix4
 		 [ADD] enable macOS as a target
 
