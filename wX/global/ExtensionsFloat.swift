@@ -22,7 +22,7 @@
 
 import Foundation
 import simd
-import GLKit
+//import GLKit
 import SceneKit
 
 extension float4x4 {
