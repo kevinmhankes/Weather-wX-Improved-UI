@@ -23,6 +23,7 @@
 import Foundation
 import simd
 import GLKit
+import SceneKit
 
 extension float4x4 {
 
@@ -36,7 +37,8 @@ extension float4x4 {
     }*/
 
     static func makeRotate(_ radians: Float, _ x: Float, _ y: Float, _ z: Float) -> float4x4 {
-        return unsafeBitCast(GLKMatrix4MakeRotation(radians, x, y, z), to: float4x4.self)
+        //return unsafeBitCast(GLKMatrix4MakeRotation(radians, x, y, z), to: float4x4.self)
+        return float4x4.init(SCNMatrix4MakeRotation(radians, x, y, z))
     }
 
    /* static func makeTranslation(_ x: Float, _ y: Float, _ z: Float) -> float4x4 {
