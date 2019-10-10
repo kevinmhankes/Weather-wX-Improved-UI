@@ -13,11 +13,14 @@
 		       https://forums.developer.apple.com/thread/117229
 // [ADD] radar file class from flutter
 
+56061 2019_10_10 
+
+// appstore release 10/10/1029 56060
 56060 2019_10_10 [FIX] colors on pre iOS 13 in Color Compat
 56059 2019_10_08 [ADD] use simd float4x4 instead of Matrix4
 		 [ADD] enable macOS as a target
 
-// appstore release 10/X/1029 56058
+// appstore release 10/8/1029 56058
 Added support for iOS 13 darkmode. In settings -> radar add option to center radar on GPS location if GPS location is enabled. Add SPC Meso pw3k PW * 3kmRH under Beta. In nexrad radar add warning count in lower toolbar if enabled. Remove TDWR products 78, 80 which are being phased out.  Add dawn/dusk times in bottom most card on main screen, remove from main sub-menu. Bugfixes
 
 56058 2019_10_08 [ADD] playlist add product label for long press
