@@ -27,13 +27,13 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
 
     func showDisplayProv() {
         UtilityCanada.providences.enumerated().forEach {
-            self.textViews.append(
-                ObjectTextView(
-                    self.stackView, $1,
-                    FontSize.extraLarge.size,
-                    UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:)))
-                )
+            let objectTextView = ObjectTextView(
+                self.stackView, $1,
+                FontSize.extraLarge.size,
+                UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:)))
             )
+            objectTextView.tv.isSelectable = false
+            self.textViews.append(objectTextView)
         }
     }
 
@@ -79,13 +79,13 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         self.cityDisplay = true
         self.listCity.enumerated().forEach {
-            self.textViews.append(
-                ObjectTextView(
-                    self.stackView, $1,
-                    FontSize.extraLarge.size,
-                    UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
-                )
+            let objectTextView = ObjectTextView(
+                self.stackView, $1,
+                FontSize.extraLarge.size,
+                UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
             )
+            objectTextView.tv.isSelectable = false
+            self.textViews.append(objectTextView)
         }
     }
 
