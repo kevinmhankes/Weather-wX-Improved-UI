@@ -16,17 +16,25 @@ public class UtilityUI {
         return Float(UIScreen.main.nativeScale)
     }
 
-    static func getNativeScreenBounds() -> (Float, Float) {
+    /*static func getNativeScreenBoundsA() -> (Float, Float) {
         let bounds = UIScreen.main.nativeBounds
         let width = bounds.width
         let height = bounds.height
         return (Float(width), Float(height))
-    }
+    }*/
 
     static func getScreenBounds() -> (Float, Float) {
         let bounds = UIScreen.main.bounds
-        let width = bounds.width
-        let height = bounds.height
+        var width = bounds.width
+        var height = bounds.height
+        #if targetEnvironment(macCatalyst)
+            UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
+                if windowScene.windows.count > 0 {
+                    width = windowScene.windows[0].bounds.width
+                    height = windowScene.windows[0].bounds.height
+                }
+            }
+        #endif
         return (Float(width), Float(height))
     }
 
@@ -36,12 +44,10 @@ public class UtilityUI {
         var height = bounds.height
         #if targetEnvironment(macCatalyst)
             UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
-                //windowScene.sizeRestrictions?.minimumSize = CGSize(width: 480, height: 640)
                 if windowScene.windows.count > 0 {
                     width = windowScene.windows[0].bounds.width
                     //height = windowScene.windows[0].bounds.height
                 }
-                //print("SCENE: " + String(Float(width)))
             }
         #endif
         return (width, height)
@@ -49,8 +55,16 @@ public class UtilityUI {
 
     static func getScreenBoundsCGSize() -> CGSize {
         let bounds = UIScreen.main.bounds
-        let width = bounds.width
-        let height = bounds.height
+        var width = bounds.width
+        var height = bounds.height
+        #if targetEnvironment(macCatalyst)
+            UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
+                if windowScene.windows.count > 0 {
+                    width = windowScene.windows[0].bounds.width
+                    height = windowScene.windows[0].bounds.height
+                }
+            }
+        #endif
         var cgsize = CGSize()
         cgsize.width = width
         cgsize.height = height
