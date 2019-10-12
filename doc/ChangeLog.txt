@@ -13,7 +13,8 @@
 		       https://forums.developer.apple.com/thread/117229
 // [ADD] radar file class from flutter
 
-56061 2019_10_10 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
+56061 2019_10_12 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
+		 [ADD] catalyst specific bounds code in utilUI
 
 // appstore release 10/10/1029 56060
 56060 2019_10_10 [FIX] colors on pre iOS 13 in Color Compat

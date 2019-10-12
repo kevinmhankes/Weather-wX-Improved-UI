@@ -32,8 +32,18 @@ public class UtilityUI {
 
     static func getScreenBoundsCGFloat() -> (CGFloat, CGFloat) {
         let bounds = UIScreen.main.bounds
-        let width = bounds.width
-        let height = bounds.height
+        var width = bounds.width
+        var height = bounds.height
+        #if targetEnvironment(macCatalyst)
+            UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
+                //windowScene.sizeRestrictions?.minimumSize = CGSize(width: 480, height: 640)
+                if windowScene.windows.count > 0 {
+                    width = windowScene.windows[0].bounds.width
+                    //height = windowScene.windows[0].bounds.height
+                }
+                //print("SCENE: " + String(Float(width)))
+            }
+        #endif
         return (width, height)
     }
 

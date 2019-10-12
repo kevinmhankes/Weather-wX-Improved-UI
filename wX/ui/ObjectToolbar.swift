@@ -19,6 +19,7 @@ final class ObjectToolbar: UIToolbar {
 
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        print(width)
         switch toolbarType {
         case .bottom:
             frame = CGRect(

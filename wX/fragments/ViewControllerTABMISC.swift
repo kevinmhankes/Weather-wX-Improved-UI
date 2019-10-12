@@ -16,6 +16,7 @@ class ViewControllerTABMISC: ViewControllerTABPARENT {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateColors()
+        //objTileMatrix.toolbar.resize()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
