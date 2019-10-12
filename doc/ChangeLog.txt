@@ -12,6 +12,13 @@
 // [ADD] MacOS support https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app
 		       https://forums.developer.apple.com/thread/117229
 // [ADD] radar file class from flutter
+//
+// Catalyst todos
+//
+// bottom toolbars are often not sized correctly
+// in nexrad radar one must click twice for buttons in bottom toolbar to activate
+// main screen does not refresh during state changes
+
 
 56061 2019_10_12 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
 		 [ADD] catalyst specific bounds code in utilUI
