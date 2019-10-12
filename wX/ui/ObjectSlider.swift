@@ -71,6 +71,7 @@ final class ObjectSlider {
     ]
 
     // FIXME use these in MyApp for default value in readPref
+    #if !targetEnvironment(macCatalyst)
     static let prefToInitialValue: [String: Int] = [
         "RADAR_LOCDOT_SIZE": 4,
         "RADAR_SPOTTER_SIZE": 5,
@@ -80,7 +81,6 @@ final class ObjectSlider {
         "RADAR_OBS_EXT_ZOOM": 7,
         "RADAR_DATA_REFRESH_INTERVAL": 5,
         "WXOGL_SIZE": 10,
-
         "TEXTVIEW_FONT_SIZE": 16,
         "REFRESH_LOC_MIN": 10,
         "ANIM_INTERVAL": 6,
@@ -88,6 +88,25 @@ final class ObjectSlider {
         "HOMESCREEN_TEXT_LENGTH_PREF": 500,
         "NWS_ICON_SIZE_PREF": 80
     ]
+    #endif
+    #if targetEnvironment(macCatalyst)
+    static let prefToInitialValue: [String: Int] = [
+        "RADAR_LOCDOT_SIZE": 1,
+        "RADAR_SPOTTER_SIZE": 2,
+        "RADAR_HI_SIZE": 1,
+        "RADAR_TVS_SIZE": 1,
+        "RADAR_AVIATION_SIZE": 1,
+        "RADAR_OBS_EXT_ZOOM": 7,
+        "RADAR_DATA_REFRESH_INTERVAL": 5,
+        "WXOGL_SIZE": 10,
+        "TEXTVIEW_FONT_SIZE": 20,
+        "REFRESH_LOC_MIN": 10,
+        "ANIM_INTERVAL": 6,
+        "UI_TILES_PER_ROW": 3,
+        "HOMESCREEN_TEXT_LENGTH_PREF": 500,
+        "NWS_ICON_SIZE_PREF": 80
+    ]
+    #endif
 
     static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
