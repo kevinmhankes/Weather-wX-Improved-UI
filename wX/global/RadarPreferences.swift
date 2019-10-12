@@ -32,12 +32,12 @@ class RadarPreferences {
     static var radarDataRefreshInterval = 5
     static var radarShowLegend = false
     static var radarObsExtZoom = 0
-    static var radarSpotterSize = 0
-    static var radarAviationSize = 0
+    static var radarSpotterSize = 4
+    static var radarAviationSize = 4
     static var radarTextSize: Float = 0.0
-    static var radarLocdotSize = 0
-    static var radarHiSize = 0
-    static var radarTvsSize = 0
+    static var radarLocdotSize = 4
+    static var radarHiSize = 4
+    static var radarTvsSize = 4
     static var wxoglSize = 0
     static var wxoglRememberLocation = true
     static var wxoglRadarAutorefresh = false
@@ -45,6 +45,13 @@ class RadarPreferences {
     static var wxoglCenterOnLocation = false
 
     static func initialize() {
+        #if targetEnvironment(macCatalyst)
+        radarLocdotSize = 1
+        radarHiSize = 1
+        radarTvsSize = 1
+        radarAviationSize = 1
+        radarSpotterSize = 1
+        #endif
         ObjectPolygonWarning.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")
         locdotFollowsGps = Utility.readPref("LOCDOT_FOLLOWS_GPS", "false").hasPrefix("t")
@@ -71,12 +78,12 @@ class RadarPreferences {
         radarStateHires = Utility.readPref("RADAR_STATE_HIRES", "false").hasPrefix("t")
         radarShowLegend = Utility.readPref("RADAR_SHOW_LEGEND", "false").hasPrefix("t")
         radarObsExtZoom = Utility.readPref("RADAR_OBS_EXT_ZOOM", 7)
-        radarSpotterSize = Utility.readPref("RADAR_SPOTTER_SIZE", 4)
-        radarAviationSize = Utility.readPref("RADAR_AVIATION_SIZE", 4)
+        radarSpotterSize = Utility.readPref("RADAR_SPOTTER_SIZE", radarSpotterSize)
+        radarAviationSize = Utility.readPref("RADAR_AVIATION_SIZE", radarAviationSize)
         radarTextSize = Utility.readPref("RADAR_TEXT_SIZE", 1.0)
-        radarLocdotSize = Utility.readPref("RADAR_LOCDOT_SIZE", 4)
-        radarHiSize = Utility.readPref("RADAR_HI_SIZE", 4)
-        radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", 4)
+        radarLocdotSize = Utility.readPref("RADAR_LOCDOT_SIZE", radarLocdotSize)
+        radarHiSize = Utility.readPref("RADAR_HI_SIZE", radarHiSize)
+        radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", radarTvsSize)
         wxoglSize = Utility.readPref("WXOGL_SIZE", 10)
         wxoglRememberLocation = Utility.readPref("WXOGL_REMEMBER_LOCATION", "true").hasPrefix("t")
         wxoglRadarAutorefresh = Utility.readPref("RADAR_AUTOREFRESH", "false").hasPrefix("t")
