@@ -86,4 +86,11 @@ class UIwXViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
+
+    override var keyCommands: [UIKeyCommand]? {
+        return [UIKeyCommand(input: UIKeyCommand.inputEscape,
+             modifierFlags: [],
+             action: #selector(doneClicked))
+        ]
+    }
 }

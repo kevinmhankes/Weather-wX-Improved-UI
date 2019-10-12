@@ -66,6 +66,24 @@ class ViewControllerTABPARENT: UIViewController {
         }
     }
 
+    @objc func swipeRight() {
+        let selectedIndex = self.tabBarController!.selectedIndex
+        if selectedIndex == 0 {
+            self.tabBarController!.selectedIndex = 2
+        } else {
+            self.tabBarController!.selectedIndex = selectedIndex - 1
+        }
+    }
+
+    @objc func swipeLeft() {
+        let selectedIndex = self.tabBarController!.selectedIndex
+        if selectedIndex == 2 {
+            self.tabBarController!.selectedIndex = 0
+        } else {
+            self.tabBarController!.selectedIndex = selectedIndex + 1
+        }
+    }
+
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         objTileMatrix.imgClicked(sender: sender)
     }
@@ -133,5 +151,16 @@ class ViewControllerTABPARENT: UIViewController {
 
     @objc func willEnterForeground() {
         updateColors()
+    }
+    
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow,
+             modifierFlags: [],
+             action: #selector(swipeRight)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow,
+            modifierFlags: [],
+            action: #selector(swipeLeft))
+        ]
     }
 }

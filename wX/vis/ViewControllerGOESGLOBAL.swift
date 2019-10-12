@@ -88,11 +88,4 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
             }
         }
     }
-
-    /*override var keyCommands: [UIKeyCommand]? {
-        return [UIKeyCommand(input: UIKeyCommand.inputEscape,
-             modifierFlags: [],
-             action: #selector(super.doneClicked))
-        ]
-    }*/
 }
