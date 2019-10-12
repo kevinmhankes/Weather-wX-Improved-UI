@@ -34,6 +34,10 @@ class UIPreferences {
     static var goesUseFullResolutionImages = false
 
     static func initialize() {
+        #if targetEnvironment(macCatalyst)
+        tilesPerRow = 5
+        textviewFontSize = 20.0
+        #endif
         goesUseFullResolutionImages = Utility.readPref("GOES_USE_FULL_RESOLUTION_IMAGES", "false").hasPrefix("t")
         useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")

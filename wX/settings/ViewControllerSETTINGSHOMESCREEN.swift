@@ -172,17 +172,19 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
                 }
             }
             if let goodTitle = title {
-                _ = ObjectTextView(
+                let objectTextView = ObjectTextView(
                     stackView,
                     goodTitle,
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
                 )
+                objectTextView.tv.isSelectable = false
             } else {
-                _ = ObjectTextView(
+                let objectTextView = ObjectTextView(
                     stackView,
                     prefVar,
                     UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))
                 )
+                objectTextView.tv.isSelectable = false
             }
         }
     }
