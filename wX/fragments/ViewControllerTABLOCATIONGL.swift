@@ -610,6 +610,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             ColorCompatibility.highlightText
         )
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
+        self.objLabel.tv.isSelectable = false
     }
 
     // Clear all views except 7day and current conditions
