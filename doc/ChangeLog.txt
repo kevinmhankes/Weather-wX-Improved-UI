@@ -18,6 +18,7 @@
 // bottom toolbars are often not sized correctly
 // in nexrad radar one must click twice for buttons in bottom toolbar to activate
 // main screen does not refresh during state changes
+// nexrad radar map overlays bottom toolbar
 
 
 56061 2019_10_12 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
