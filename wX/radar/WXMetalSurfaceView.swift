@@ -159,10 +159,17 @@ final class WXMetalSurfaceView {
     ) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
-        let bounds = UtilityUI.getScreenBounds()
-        let nativeBounds = UtilityUI.getScreenBounds()
-        let width = Float(uiv.view.bounds.size.width)
-        var density: Float = -(width / nativeBounds.0)
+        let bounds = UtilityUI.getScreenBoundsNoCatalyst()
+        //let nativeBounds = UtilityUI.getScreenBounds()
+        var width = Float(uiv.view.bounds.size.width)
+        var density: Float = -(width / bounds.0)
+        
+        #if targetEnvironment(macCatalyst)
+        let boundsOrig = UtilityUI.getScreenBounds()
+        width = boundsOrig.0
+        density *= 0.25
+        #endif
+        
         //var density: Float = -(width / bounds.0)
         //print(UIScreen.main.scale)
         //print(bounds)

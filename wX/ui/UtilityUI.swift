@@ -22,6 +22,13 @@ public class UtilityUI {
         let height = bounds.height
         return (Float(width), Float(height))
     }*/
+    
+    static func getScreenBoundsNoCatalyst() -> (Float, Float) {
+        let bounds = UIScreen.main.bounds
+        var width = bounds.width
+        var height = bounds.height
+        return (Float(width), Float(height))
+    }
 
     static func getScreenBounds() -> (Float, Float) {
         let bounds = UIScreen.main.bounds

@@ -296,6 +296,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             self.view.addSubview(toolbarTop)
         }
         screenScale = Double(UIScreen.main.scale)
+        #if targetEnvironment(macCatalyst)
+        screenScale *= 2.0
+        #endif
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,
