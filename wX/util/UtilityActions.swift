@@ -19,6 +19,22 @@ final class UtilityActions {
             goToVCS(uiv, "caradar")
         }
     }
+    
+    @objc static func radarClickedFromMenu() {
+        print("radar shortcut")
+        if !Location.isUS {
+            ActVars.caRadarImageType = "radar"
+            ActVars.caRadarProv = ""
+            //goToVCS(uiv, "caradar")
+        } else {
+            if UIPreferences.dualpaneRadarIcon {
+                ActVars.wxoglPaneCount = "2"
+            } else {
+                ActVars.wxoglPaneCount = "1"
+            }
+            //goToVCS(uiv, "wxmetalradar")
+        }
+    }
 
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {

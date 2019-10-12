@@ -51,4 +51,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate.
         // See also applicationDidEnterBackground:.
     }
+
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+        builder.remove(menu: .services)
+        builder.remove(menu: .format)
+        builder.remove(menu: .edit)
+        builder.remove(menu: .toolbar)
+        /*let refreshCommand = UIKeyCommand(input: "R", modifierFlags: [.command], action: #selector(nil))
+        refreshCommand.title = "Reload data"
+        let reloadDataMenu = UIMenu(title: "Reload data", image: nil, identifier: UIMenu.Identifier("reloadData"), options: .displayInline, children: [refreshCommand])
+        builder.insertChild(reloadDataMenu, atStartOfMenu: .file)*/
+        let refreshCommand = UIKeyCommand(input: "R", modifierFlags: [.command], action: #selector(UtilityActions.radarClickedFromMenu))
+       refreshCommand.title = "Go to radar"
+       let reloadDataMenu = UIMenu(title: "Go to radar", image: nil, identifier: UIMenu.Identifier("gotoRadar"), options: .displayInline, children: [refreshCommand])
+       builder.insertChild(reloadDataMenu, atStartOfMenu: .file)
+    }
 }
