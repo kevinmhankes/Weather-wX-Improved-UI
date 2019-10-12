@@ -29,6 +29,8 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, fixedSpace, siteButton, shareButton]).items
         self.view.addSubview(toolbar)
+        //mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        //mapView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
         image = ObjectTouchImageView(self, toolbar)
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
         self.getContent()
