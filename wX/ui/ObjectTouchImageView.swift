@@ -16,6 +16,8 @@ final class ObjectTouchImageView {
         self.init()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         var height = UtilityUI.effectiveHeight(toolbar)
+        print(width)
+        print(height)
         var y = UtilityUI.getTopPadding()
         if hasTopToolbar {
             y += toolbar.frame.height

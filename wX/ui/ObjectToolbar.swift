@@ -19,7 +19,9 @@ final class ObjectToolbar: UIToolbar {
 
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        print(width)
+        print("toolbar size: " + String(Float(width)) + " " + String(Float(height)))
+        //print(width)
+        //print(height)
         switch toolbarType {
         case .bottom:
             frame = CGRect(
@@ -29,6 +31,7 @@ final class ObjectToolbar: UIToolbar {
                 height: UIPreferences.toolbarHeight
             )
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
+            //autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         case .top:
             frame = CGRect(
                 x: 0,
@@ -61,6 +64,7 @@ final class ObjectToolbar: UIToolbar {
 
     func resize() {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        print("toolbar resize " + String(Float(width)))
         frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
