@@ -418,7 +418,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         //}
         //}
         //return true
-        
         return touch.view == gestureRecognizer.view
     }
 

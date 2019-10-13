@@ -19,7 +19,7 @@ final class ObjectToolbar: UIToolbar {
 
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        print("toolbar size: " + String(Float(width)) + " " + String(Float(height)))
+        //print("toolbar size: " + String(Float(width)) + " " + String(Float(height)))
         //print(width)
         //print(height)
         switch toolbarType {
@@ -67,7 +67,7 @@ final class ObjectToolbar: UIToolbar {
 
     func resize() {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        print("toolbar resize " + String(Float(width)))
+        //print("toolbar resize " + String(Float(width)))
         frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),
