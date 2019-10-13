@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import simd
 
-class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
     var wxMetal = [WXMetalRender?]()
     var device: MTLDevice!
@@ -322,6 +322,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 repeats: true
             )
         }
+        self.view.bringSubviewToFront(toolbar)
     }
 
     @objc func onPause() {
@@ -381,11 +382,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             action: #selector(tapGesture(_:))
         )
         gestureRecognizer.numberOfTapsRequired = 1
+        gestureRecognizer.delegate = self
+        //gestureRecognizer.cancelsTouchesInView = true
         let gestureRecognizer2 = UITapGestureRecognizer(
             target: self,
             action: #selector(tapGesture(_:double:))
         )
         gestureRecognizer2.numberOfTapsRequired = 2
+        //gestureRecognizer2.cancelsTouchesInView = true
+        gestureRecognizer2.delegate = self
         self.view.addGestureRecognizer(pan)
         self.view.addGestureRecognizer(gestureZoomvar)
         self.view.addGestureRecognizer(gestureRecognizer)
@@ -399,6 +404,22 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 action: #selector(gestureLongPress(_:))
             )
         )
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        //if (scrollView.superview != nil) {
+        //if ((touch.view?.isDescendant(of: scrollView)) != nil) {
+        //print(touch.view)
+        //if touch.view!.superview!.superclass!.isSubclass(of: UIButton.self)  {
+        //if touch.view!.isDescendant(of: self.view) {
+        //if touch is UIBarButtonItem {
+        //    print("return false")
+        //    return false
+        //}
+        //}
+        //return true
+        
+        return touch.view == gestureRecognizer.view
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
