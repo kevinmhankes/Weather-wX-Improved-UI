@@ -52,19 +52,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See also applicationDidEnterBackground:.
     }
 
+    #if targetEnvironment(macCatalyst)
     override func buildMenu(with builder: UIMenuBuilder) {
         super.buildMenu(with: builder)
         builder.remove(menu: .services)
         builder.remove(menu: .format)
         builder.remove(menu: .edit)
         builder.remove(menu: .toolbar)
+        builder.remove(menu: .file)
         /*let refreshCommand = UIKeyCommand(input: "R", modifierFlags: [.command], action: #selector(nil))
         refreshCommand.title = "Reload data"
         let reloadDataMenu = UIMenu(title: "Reload data", image: nil, identifier: UIMenu.Identifier("reloadData"), options: .displayInline, children: [refreshCommand])
         builder.insertChild(reloadDataMenu, atStartOfMenu: .file)*/
-        let refreshCommand = UIKeyCommand(input: "R", modifierFlags: [.command], action: #selector(UtilityActions.radarClickedFromMenu))
+        /*let refreshCommand = UIKeyCommand(input: "R", modifierFlags: [.command], action: #selector(UtilityActions.radarClickedFromMenu))
        refreshCommand.title = "Go to radar"
        let reloadDataMenu = UIMenu(title: "Go to radar", image: nil, identifier: UIMenu.Identifier("gotoRadar"), options: .displayInline, children: [refreshCommand])
-       builder.insertChild(reloadDataMenu, atStartOfMenu: .file)
+       builder.insertChild(reloadDataMenu, atStartOfMenu: .file)*/
     }
+    #endif
 }

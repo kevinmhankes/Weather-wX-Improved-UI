@@ -217,12 +217,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
-            timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked(sender:)))
-            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked(sender:)))
+            timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked))
+            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         } else {
-            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked(sender:)))
+            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         }
@@ -482,7 +482,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         alert.finish()
     }
 
-    @objc func timeClicked(sender: ObjectToolbarIcon) {
+    @objc func timeClicked() {
         ActVars.wxoglPaneCount = "2"
         ActVars.wxoglCalledFromTimeButton = true
         let token = "wxmetalradar"
@@ -491,7 +491,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         self.goToVC(token)
     }
 
-    @objc func warningClicked(sender: ObjectToolbarIcon) {
+    @objc func warningClicked() {
         UtilityActions.dashClicked(self)
     }
 
@@ -520,7 +520,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
             let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
             let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
-            //print(countString)
             self.warningButton.title = countString
         }
     }
@@ -632,7 +631,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
     }
 
-    func stopAnimate() {
+    @objc func stopAnimate() {
         if inOglAnim {
             inOglAnim = false
             animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
@@ -872,5 +871,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                // Fallback on earlier versions
            }
        }
+    }
+
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
+            UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(animateClicked)),
+            UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(stopAnimate)),
+            UIKeyCommand(input: "d", modifierFlags: .command, action: #selector(timeClicked)),
+            UIKeyCommand(input: "w", modifierFlags: .command, action: #selector(warningClicked))
+        ]
     }
 }
