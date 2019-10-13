@@ -21,6 +21,7 @@
 // nexrad radar map overlays bottom toolbar
 
 
+56062 2019_10_13 
 56061 2019_10_13 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
 		 [ADD] catalyst specific bounds code in utilUI
 		 [ADD] catalyst work - wip
