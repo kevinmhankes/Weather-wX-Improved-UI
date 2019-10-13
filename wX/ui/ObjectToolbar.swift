@@ -30,8 +30,11 @@ final class ObjectToolbar: UIToolbar {
                 width: width,
                 height: UIPreferences.toolbarHeight
             )
+            // Had been commented out, not working well on MacOS
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
-            //autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
+            #if targetEnvironment(macCatalyst)
+            autoresizingMask = [UIView.AutoresizingMask.flexibleTopMargin]
+            #endif
         case .top:
             frame = CGRect(
                 x: 0,

@@ -32,7 +32,9 @@ final class ObjectTouchImageView {
             )
         )
         img.contentMode = UIView.ContentMode.scaleAspectFit
+        #if !targetEnvironment(macCatalyst)
         img.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        #endif
         uiv.view.addSubview(img)
         self.uiv = uiv
     }

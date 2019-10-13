@@ -879,7 +879,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(animateClicked)),
             UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(stopAnimate)),
             UIKeyCommand(input: "d", modifierFlags: .command, action: #selector(timeClicked)),
-            UIKeyCommand(input: "w", modifierFlags: .command, action: #selector(warningClicked))
+            UIKeyCommand(input: "w", modifierFlags: .command, action: #selector(warningClicked)),
+            UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(fourClicked))
         ]
+    }
+    
+    @objc func fourClicked() {
+        print("4 clicked")
     }
 }
