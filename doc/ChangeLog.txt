@@ -18,7 +18,6 @@
 // in nexrad radar one must click twice for buttons in bottom toolbar to activate
 // main screen does not refresh during state changes
 // nexrad radar map overlays bottom toolbar
-// selectors in settings dont work
 
 
 56062 2019_10_13 
