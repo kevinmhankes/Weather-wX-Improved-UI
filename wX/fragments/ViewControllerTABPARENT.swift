@@ -152,15 +152,15 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func willEnterForeground() {
         updateColors()
     }
-    
+
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(input: UIKeyCommand.inputRightArrow,
              modifierFlags: [],
-             action: #selector(swipeRight)),
+             action: #selector(swipeLeft)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow,
             modifierFlags: [],
-            action: #selector(swipeLeft))
+            action: #selector(swipeRight))
         ]
     }
 }
