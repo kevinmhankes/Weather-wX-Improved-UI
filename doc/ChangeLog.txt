@@ -15,12 +15,9 @@
 //
 // Catalyst todos
 //
-// in nexrad radar one must click twice for buttons in bottom toolbar to activate
 // main screen does not refresh during state changes
-// nexrad radar map overlays bottom toolbar
 
-
-56062 2019_10_13 
+56062 2019_10_13 [ADD] catalyst work - wip
 56061 2019_10_13 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
 		 [ADD] catalyst specific bounds code in utilUI
 		 [ADD] catalyst work - wip
