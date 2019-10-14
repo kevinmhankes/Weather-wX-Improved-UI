@@ -38,7 +38,7 @@ class RadarPreferences {
     static var radarLocdotSize = 4
     static var radarHiSize = 4
     static var radarTvsSize = 4
-    static var wxoglSize = 0
+    static var wxoglSize = 10
     static var wxoglRememberLocation = true
     static var wxoglRadarAutorefresh = false
     static var nexradRadarBackgroundColor = 0
@@ -85,7 +85,7 @@ class RadarPreferences {
         radarLocdotSize = Utility.readPref("RADAR_LOCDOT_SIZE", radarLocdotSize)
         radarHiSize = Utility.readPref("RADAR_HI_SIZE", radarHiSize)
         radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", radarTvsSize)
-        wxoglSize = Utility.readPref("WXOGL_SIZE", 10)
+        wxoglSize = Utility.readPref("WXOGL_SIZE", wxoglSize)
         wxoglRememberLocation = Utility.readPref("WXOGL_REMEMBER_LOCATION", "true").hasPrefix("t")
         wxoglRadarAutorefresh = Utility.readPref("RADAR_AUTOREFRESH", "false").hasPrefix("t")
         radarDataRefreshInterval = Utility.readPref("RADAR_DATA_REFRESH_INTERVAL", 5)
