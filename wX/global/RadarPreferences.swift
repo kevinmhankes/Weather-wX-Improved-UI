@@ -34,7 +34,7 @@ class RadarPreferences {
     static var radarObsExtZoom = 0
     static var radarSpotterSize = 4
     static var radarAviationSize = 4
-    static var radarTextSize: Float = 0.0
+    static var radarTextSize: Float = 1.0
     static var radarLocdotSize = 4
     static var radarHiSize = 4
     static var radarTvsSize = 4
@@ -49,8 +49,9 @@ class RadarPreferences {
         radarLocdotSize = 1
         radarHiSize = 1
         radarTvsSize = 1
-        radarAviationSize = 1
+        radarAviationSize = 2
         radarSpotterSize = 2
+        radarTextSize = 1.5
         #endif
         ObjectPolygonWarning.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")
@@ -80,7 +81,7 @@ class RadarPreferences {
         radarObsExtZoom = Utility.readPref("RADAR_OBS_EXT_ZOOM", 7)
         radarSpotterSize = Utility.readPref("RADAR_SPOTTER_SIZE", radarSpotterSize)
         radarAviationSize = Utility.readPref("RADAR_AVIATION_SIZE", radarAviationSize)
-        radarTextSize = Utility.readPref("RADAR_TEXT_SIZE", 1.0)
+        radarTextSize = Utility.readPref("RADAR_TEXT_SIZE", radarTextSize)
         radarLocdotSize = Utility.readPref("RADAR_LOCDOT_SIZE", radarLocdotSize)
         radarHiSize = Utility.readPref("RADAR_HI_SIZE", radarHiSize)
         radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", radarTvsSize)

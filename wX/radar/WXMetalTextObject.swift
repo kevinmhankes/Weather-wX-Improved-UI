@@ -20,7 +20,16 @@ final class WXMetalTextObject {
     private var spotterLat = 0.0
     private var spotterLon = 0.0
     private let cityExtZoom = 30.0
+    #if targetEnvironment(macCatalyst)
+    private let cityMinZoom: Float = 0.20
+    private let obsMinZoom: Float = 0.20
+    private let countyMinZoom: Float = 0.20
+    #endif
+    #if !targetEnvironment(macCatalyst)
     private let cityMinZoom: Float = 0.50
+    private let obsMinZoom: Float = 0.50
+    private let countyMinZoom: Float = 1.50
+    #endif
     private var cityExtLength = 0
     private var maxCitiesPerGlview = 16
     private var obsExtZoom = 6.5
@@ -29,7 +38,7 @@ final class WXMetalTextObject {
     private var tmpCoords = (0.0, 0.0)
     private var scale = 0.0
     private var oglrZoom: Float = 0.0
-    private var textSize = 0.0
+    private var textSize = Double(RadarPreferences.radarTextSize)
     private var context: UIViewController
     private var screenScale = 0.0
     private var xFudge = 15.0
@@ -67,7 +76,9 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.00 {
                 oglrZoom = OGLR.zoom * 0.8
             }
+            #if !targetEnvironment(macCatalyst)
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
+            #endif
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach {
@@ -125,8 +136,10 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.00 {
                 oglrZoom = OGLR.zoom * 0.8
             }
+            #if !targetEnvironment(macCatalyst)
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
-            if OGLR.zoom > 1.50 {
+            #endif
+            if OGLR.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
                         &glview.countyLabelsAl,
@@ -155,7 +168,9 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
+            #if !targetEnvironment(macCatalyst)
             textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
+            #endif
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
@@ -207,8 +222,10 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
+            #if !targetEnvironment(macCatalyst)
             textSize = Double(oglrZoom) * fontScaleFactorObs * Double(RadarPreferences.radarTextSize)
-            if OGLR.zoom > 0.5 {
+            #endif
+            if OGLR.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach {
                     if $0 < UtilityMetar.obsArr.count && $0 < UtilityMetar.obsArrExt.count {
                         tmpArrObs = UtilityMetar.obsArr[$0].split(":")

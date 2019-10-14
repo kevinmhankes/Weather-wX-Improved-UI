@@ -16,8 +16,10 @@
 // Catalyst todos
 //
 // main screen does not refresh during state changes
+// text in nexrad is off (change radar site, change posn, exit, enter - is now off )
+//
 
-56062 2019_10_13 [ADD] catalyst work - wip
+56062 2019_10_14 [ADD] catalyst work - wip
 56061 2019_10_13 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
 		 [ADD] catalyst specific bounds code in utilUI
 		 [ADD] catalyst work - wip
