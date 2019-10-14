@@ -77,6 +77,7 @@ final class ObjectForecastPackageHazards {
             let idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
             let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
+                print("HAZARD " + String(index) + " " + hazard + " " + idAl[index])
                 _ = ObjectCardHazard(
                     stackViewLocalHaz,
                     hazard,

@@ -206,6 +206,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     func getLocationHazards() {
+        print("HAZARDS get")
         DispatchQueue.global(qos: .userInitiated).async {
             self.objHazards = Utility.getCurrentHazards(Location.getCurrentLocation())
             DispatchQueue.main.async {
@@ -291,6 +292,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     @objc override func willEnterForeground() {
         super.willEnterForeground()
+        print("HAZARD enter foreground")
         updateColors()
         //toolbar.setColorToTheme()
         //objLabel.color = ColorCompatibility.highlightText
@@ -299,12 +301,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         currentTimeSec = currentTime / 1000
         refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
         if currentTimeSec > (lastRefresh + refreshIntervalSec) {
+            self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
             self.getContentMaster()
+            print("HAZARD get content")
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("HAZARD view will appear")
         updateColors()
         objLabel.text = Location.name
         ActVars.vc = self
