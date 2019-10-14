@@ -52,6 +52,7 @@ class RadarPreferences {
         radarAviationSize = 2
         radarSpotterSize = 2
         radarTextSize = 1.5
+        wxoglSize = 5
         #endif
         ObjectPolygonWarning.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")

@@ -17,6 +17,7 @@
 //
 // main screen does not refresh during state changes
 // text in nexrad is off (change radar site, change posn, exit, enter - is now off )
+// wxoglsize does not appear to work
 //
 
 56062 2019_10_14 [ADD] catalyst work - wip
