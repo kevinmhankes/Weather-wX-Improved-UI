@@ -910,11 +910,67 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(stopAnimate)),
             UIKeyCommand(input: "d", modifierFlags: .command, action: #selector(timeClicked)),
             UIKeyCommand(input: "w", modifierFlags: .command, action: #selector(warningClicked)),
-            UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(fourClicked))
+            UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
+            UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
+            UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),
+            UIKeyCommand(input: "2", modifierFlags: .numericPad, action: #selector(keyDownArrow)),
+
+            UIKeyCommand(input: "7", modifierFlags: .numericPad, action: #selector(keyLeftUpArrow)),
+            UIKeyCommand(input: "9", modifierFlags: .numericPad, action: #selector(keyRightUpArrow)),
+            UIKeyCommand(input: "3", modifierFlags: .numericPad, action: #selector(keyRightDownArrow)),
+            UIKeyCommand(input: "1", modifierFlags: .numericPad, action: #selector(keyLeftDownArrow)),
+
+            UIKeyCommand(input: "5", modifierFlags: .numericPad, action: #selector(keyZoomOut)),
+            UIKeyCommand(input: "0", modifierFlags: .numericPad, action: #selector(keyZoomIn)),
+
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: [], action: #selector(keyRightArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: [], action: #selector(keyLeftArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow)),
         ]
     }
-    
+
     @objc func fourClicked() {
         print("4 clicked")
+    }
+
+    @objc func keyRightArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .right)
+    }
+
+    @objc func keyLeftArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .left)
+    }
+
+    @objc func keyUpArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .up)
+    }
+
+    @objc func keyDownArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .down)
+    }
+
+    @objc func keyRightUpArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .rightUp)
+    }
+
+    @objc func keyRightDownArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .rightDown)
+    }
+
+    @objc func keyLeftUpArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .leftUp)
+    }
+
+    @objc func keyLeftDownArrow() {
+        UtilityRadarUI.moveByKey(self, wxMetal, .leftDown)
+    }
+    
+    @objc func keyZoomIn() {
+        UtilityRadarUI.zoomInByKey(self, wxMetal, .leftDown)
+    }
+    
+    @objc func keyZoomOut() {
+        UtilityRadarUI.zoomOutByKey(self, wxMetal, .leftDown)
     }
 }

@@ -8,6 +8,74 @@ import UIKit
 
 public class UtilityRadarUI {
 
+    static func zoomOutByKey(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ direction: KeyDirections
+    ) {
+        var panSensivity: Float = 500.0
+        if wxMetal[0]!.numberOfPanes == 4 {
+            panSensivity *= 2
+        }
+        wxMetal.forEach {
+            $0!.zoom *= 0.5
+        }
+        wxMetal.forEach {$0!.demandRender()}
+    }
+
+    static func zoomInByKey(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ direction: KeyDirections
+    ) {
+        var panSensivity: Float = 500.0
+        if wxMetal[0]!.numberOfPanes == 4 {
+            panSensivity *= 2
+        }
+        wxMetal.forEach {
+            $0!.zoom *= 2.0
+        }
+        wxMetal.forEach {$0!.demandRender()}
+    }
+
+    static func moveByKey(
+        _ uiv: UIViewController,
+        _ wxMetal: [WXMetalRender?],
+        _ direction: KeyDirections
+        //_ textObj: WXMetalTextObject,
+        //_ gestureRecognizer: UIPanGestureRecognizer
+    ) {
+        var panSensivity: Float = 500.0
+        if wxMetal[0]!.numberOfPanes == 4 {
+            panSensivity *= 2
+        }
+        var xChange: Float = 0.0
+        var yChange: Float = 0.0
+        switch direction {
+        case .up: yChange = -25.0
+        case .leftUp:
+            yChange = -25.0
+            xChange = 25.0
+        case .rightUp:
+            yChange = -25.0
+            xChange = -25.0
+        case .leftDown:
+            yChange = 25.0
+            xChange = 25.0
+        case .rightDown:
+            yChange = 25.0
+            xChange = -25.0
+        case .down: yChange = 25.0
+        case .right: xChange = -25.0
+        case .left: xChange = 25.0
+        }
+        wxMetal.forEach {
+                $0!.xPos += xChange
+                $0!.yPos += yChange
+        }
+        wxMetal.forEach {$0!.demandRender()}
+    }
+
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
