@@ -1,3 +1,5 @@
+For iOS and MacOS, as as seen on the App Store: https://apps.apple.com/us/app/wxl23/id1171250052
+
 For USA Weather only:
 
 wXL23 is a free, no-ads, and open-source ( GNU GPLv3 / APL2.0 ) advanced weather application that is geared towards storm chasers, meteorologists, and weather enthusiasts. NWS ( National Weather Service ) data is optimized for mobile format and provided for divisions not normally covered together in the mobile space: SPC, WPC, NHC, OPC, etc. Level 3 and Level 2 Nexrad radar ( single, dual, quad pane ) are provided and displayed using the mobile variant of OpenGL. This weather app is not affiliated with NOAA or the National Weather Service.
