@@ -44,6 +44,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     var screenScale = 0.0
     var paneRange: Range<Int> = 0..<1
     let semaphore = DispatchSemaphore(value: 1)
+    var screenWidth = 0.0
+    var screenHeight = 0.0
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -64,6 +66,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func setPaneSize(_ cgsize: CGSize) {
         let width = cgsize.width
         let height = cgsize.height
+        self.screenWidth = Double(width)
+        self.screenHeight = Double(height)
+        //print(width)
+        //print(height)
         let screenWidth = width
         let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
@@ -299,11 +305,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         #if targetEnvironment(macCatalyst)
         screenScale *= 2.0
         #endif
+        print(Double(view.frame.width))
+        print(Double(view.frame.height))
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,
-            Double(view.frame.width),
-            Double(view.frame.height),
+            screenWidth,
+            screenHeight,
             wxMetal[0]!,
             screenScale
         )
@@ -625,6 +633,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 $0.removeFromSuperview()
             }
         }
+        print(screenWidth)
+        print(screenHeight)
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,
