@@ -1,0 +1,1 @@
+hdiutil create wXL2356062.dmg -volname "wXL2356062" -fs HFS+ -srcfolder "wX.app"
