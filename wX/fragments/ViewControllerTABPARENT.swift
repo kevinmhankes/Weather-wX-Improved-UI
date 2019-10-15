@@ -160,7 +160,13 @@ class ViewControllerTABPARENT: UIViewController {
              action: #selector(swipeLeft)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow,
             modifierFlags: [],
-            action: #selector(swipeRight))
+            action: #selector(swipeRight)),
+            UIKeyCommand(input: "r", modifierFlags: [], action: #selector(radarClicked)),
+            UIKeyCommand(input: "d", modifierFlags: [], action: #selector(dashClicked)),
+            UIKeyCommand(input: "c", modifierFlags: [], action: #selector(cloudClicked)),
+            UIKeyCommand(input: "a", modifierFlags: [], action: #selector(wfotextClicked)),
+            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(menuClicked))
+
         ]
     }
 }

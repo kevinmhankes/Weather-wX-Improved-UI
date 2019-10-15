@@ -965,11 +965,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func keyLeftDownArrow() {
         UtilityRadarUI.moveByKey(self, wxMetal, .leftDown)
     }
-    
+
     @objc func keyZoomIn() {
         UtilityRadarUI.zoomInByKey(self, wxMetal, .leftDown)
     }
-    
+
     @objc func keyZoomOut() {
         UtilityRadarUI.zoomOutByKey(self, wxMetal, .leftDown)
     }
