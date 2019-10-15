@@ -906,10 +906,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
-            UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(animateClicked)),
-            UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(stopAnimate)),
-            UIKeyCommand(input: "d", modifierFlags: .command, action: #selector(timeClicked)),
-            UIKeyCommand(input: "w", modifierFlags: .command, action: #selector(warningClicked)),
+            UIKeyCommand(input: "a", modifierFlags: [], action: #selector(animateClicked)),
+            UIKeyCommand(input: "s", modifierFlags: [], action: #selector(stopAnimate)),
+            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(timeClicked)),
+            UIKeyCommand(input: "d", modifierFlags: [], action: #selector(warningClicked)),
             UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
             UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),

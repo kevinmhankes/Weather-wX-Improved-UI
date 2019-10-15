@@ -19,6 +19,7 @@ public class UtilityRadarUI {
         }
         wxMetal.forEach {
             $0!.zoom *= 0.8
+            $0!.setZoom()
         }
         wxMetal.forEach {$0!.demandRender()}
     }
@@ -34,6 +35,7 @@ public class UtilityRadarUI {
         }
         wxMetal.forEach {
             $0!.zoom *= 1.25
+            $0!.setZoom()
         }
         wxMetal.forEach {$0!.demandRender()}
     }
