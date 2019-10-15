@@ -18,7 +18,7 @@ public class UtilityRadarUI {
             panSensivity *= 2
         }
         wxMetal.forEach {
-            $0!.zoom *= 0.5
+            $0!.zoom *= 0.8
         }
         wxMetal.forEach {$0!.demandRender()}
     }
@@ -33,7 +33,7 @@ public class UtilityRadarUI {
             panSensivity *= 2
         }
         wxMetal.forEach {
-            $0!.zoom *= 2.0
+            $0!.zoom *= 1.25
         }
         wxMetal.forEach {$0!.demandRender()}
     }
