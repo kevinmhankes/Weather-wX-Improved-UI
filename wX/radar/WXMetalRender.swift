@@ -845,6 +845,9 @@ class WXMetalRender {
         if UtilityUI.isLandscape() {
             zoom = 0.60
         }
+        #if targetEnvironment(macCatalyst)
+        zoom = 0.40
+        #endif
         loadGeometry()
         getRadar("")
     }

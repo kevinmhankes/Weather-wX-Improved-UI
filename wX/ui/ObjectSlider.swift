@@ -70,7 +70,6 @@ final class ObjectSlider {
         "NWS_ICON_SIZE_PREF": "NWS Icon size"
     ]
 
-    // FIXME use these in MyApp for default value in readPref
     #if !targetEnvironment(macCatalyst)
     static let prefToInitialValue: [String: Int] = [
         "RADAR_LOCDOT_SIZE": 4,

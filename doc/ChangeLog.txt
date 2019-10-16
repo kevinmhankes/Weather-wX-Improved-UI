@@ -17,13 +17,14 @@
 //
 // main screen does not refresh during state changes
 // wxoglsize does not appear to work
-// util settings radar - setup init vals for catalyst
+// where is radar Text size used?
 //
 
-56062 2019_10_15 [ADD] catalyst work - wip
+56062 2019_10_16 [ADD] catalyst work - wip
 		 [FIX] hazards show up twice after screen on - not so when switching locations
 		 [FIX] text in nexrad is off
 		 [ADD] key shortcuts in nexrad - arrows and keypad for movement
+		 [ADD] macOS - change init zoom level when change radar site in nexrad
 56061 2019_10_13 [FIX] main screen location button and settings buttons were not working on MacOS, need to mark self.objLabel.tv.isSelectable = false
 		 [ADD] catalyst specific bounds code in utilUI
 		 [ADD] catalyst work - wip
