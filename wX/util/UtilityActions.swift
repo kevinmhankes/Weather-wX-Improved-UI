@@ -19,7 +19,7 @@ final class UtilityActions {
             goToVCS(uiv, "caradar")
         }
     }
-    
+
     @objc static func radarClickedFromMenu() {
         print("radar shortcut")
         if !Location.isUS {

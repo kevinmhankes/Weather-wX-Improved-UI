@@ -16,17 +16,10 @@ public class UtilityUI {
         return Float(UIScreen.main.nativeScale)
     }
 
-    /*static func getNativeScreenBoundsA() -> (Float, Float) {
-        let bounds = UIScreen.main.nativeBounds
-        let width = bounds.width
-        let height = bounds.height
-        return (Float(width), Float(height))
-    }*/
-    
     static func getScreenBoundsNoCatalyst() -> (Float, Float) {
         let bounds = UIScreen.main.bounds
-        var width = bounds.width
-        var height = bounds.height
+        let width = bounds.width
+        let height = bounds.height
         return (Float(width), Float(height))
     }
 
@@ -48,7 +41,7 @@ public class UtilityUI {
     static func getScreenBoundsCGFloat() -> (CGFloat, CGFloat) {
         let bounds = UIScreen.main.bounds
         var width = bounds.width
-        var height = bounds.height
+        let height = bounds.height
         #if targetEnvironment(macCatalyst)
             UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
                 if windowScene.windows.count > 0 {
