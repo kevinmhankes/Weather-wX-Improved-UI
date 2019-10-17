@@ -14,10 +14,10 @@ final class ObjectToolbar: UIToolbar {
 
     convenience init(_ toolbarType: ToolbarType = .bottom) {
         self.init()
-        setConfig(toolbarType)
+        //setConfig(toolbarType)
     }
 
-    func setConfig(_ toolbarType: ToolbarType = .bottom) {
+    /*func setConfig(_ toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         switch toolbarType {
         case .bottom:
@@ -42,8 +42,8 @@ final class ObjectToolbar: UIToolbar {
             autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
         }
         setColorToTheme()
-    }
-    
+    }*/
+
     func setConfigWithUiv(uiv: UIViewController, toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         switch toolbarType {
@@ -69,13 +69,18 @@ final class ObjectToolbar: UIToolbar {
             //autoresizingMask = [UIView.AutoresizingMask.flexibleTopMargin]
             //#endif
         case .top:
-            frame = CGRect(
+            //print("TOP " + String(Float(width)))
+            /*frame = CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
                 width: width,
                 height: UIPreferences.toolbarHeight
-            )
-            autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
+            )*/
+            //autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
+            self.translatesAutoresizingMaskIntoConstraints = false
+            self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
+            self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
+            self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         }
         setColorToTheme()
     }

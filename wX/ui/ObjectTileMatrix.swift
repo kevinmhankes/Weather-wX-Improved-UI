@@ -54,6 +54,7 @@ final class ObjectImageTileMatrix: NSObject {
             ).items
         }
         uiv.view.addSubview(toolbar)
+        toolbar.setConfigWithUiv(uiv: uiv, toolbarType: .top)
         let rowCount = UIPreferences.tilesPerRow
         let iconsPerRow = CGFloat(rowCount)
         switch tabType {

@@ -32,10 +32,6 @@ public class ObjectScrollStackView {
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-
-        //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        //scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        //stackView.widthAnchor.constraint(equalToConstant: width).isActive = true
     }
 
     convenience init(

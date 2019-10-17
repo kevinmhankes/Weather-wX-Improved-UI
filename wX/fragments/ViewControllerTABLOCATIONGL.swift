@@ -127,6 +127,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         //self.displayContent()
         self.view.addSubview(toolbar)
+        toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
         stackView.widthAnchor.constraint(
             equalToConstant: self.view.frame.width - UIPreferences.sideSpacing

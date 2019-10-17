@@ -180,7 +180,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
-            toolbarTop.setConfig(.top)
+            self.view.addSubview(toolbarTop)
+            toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
             paneRange.forEach {
                 siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
             }
@@ -299,9 +300,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             }
         }
         //self.view.addSubview(toolbar)
-        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
-            self.view.addSubview(toolbarTop)
-        }
+        //if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
+        //    self.view.addSubview(toolbarTop)
+        //}
         screenScale = Double(UIScreen.main.scale)
         #if targetEnvironment(macCatalyst)
         screenScale *= 2.0
@@ -332,6 +333,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             )
         }
         self.view.bringSubviewToFront(toolbar)
+        if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
+            self.view.bringSubviewToFront(toolbarTop)
+        }
     }
 
     @objc func onPause() {

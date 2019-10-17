@@ -20,7 +20,7 @@ class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        toolbarTop.setConfig(.top)
+        toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         let labelButton = ObjectToolbarIcon(title: ActVars.colorObject.uiLabel, self, nil)
         toolbarTop.items = ObjectToolbarItems([flexBarButton, labelButton]).items
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
