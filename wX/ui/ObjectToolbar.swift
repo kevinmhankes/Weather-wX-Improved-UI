@@ -19,9 +19,6 @@ final class ObjectToolbar: UIToolbar {
 
     func setConfig(_ toolbarType: ToolbarType = .bottom) {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        //print("toolbar size: " + String(Float(width)) + " " + String(Float(height)))
-        //print(width)
-        //print(height)
         switch toolbarType {
         case .bottom:
             frame = CGRect(
@@ -35,6 +32,42 @@ final class ObjectToolbar: UIToolbar {
             #if targetEnvironment(macCatalyst)
             autoresizingMask = [UIView.AutoresizingMask.flexibleTopMargin]
             #endif
+        case .top:
+            frame = CGRect(
+                x: 0,
+                y: UtilityUI.getTopPadding(),
+                width: width,
+                height: UIPreferences.toolbarHeight
+            )
+            autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
+        }
+        setColorToTheme()
+    }
+    
+    func setConfigWithUiv(uiv: UIViewController, toolbarType: ToolbarType = .bottom) {
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        switch toolbarType {
+        case .bottom:
+            /*frame = CGRect(
+                x: 0,
+                y: height - UIPreferences.toolbarHeight - UtilityUI.getBottomPadding(),
+                width: width,
+                height: UIPreferences.toolbarHeight
+            )*/
+            // Had been commented out, not working well on MacOS
+            let bottomSpace = -UtilityUI.getBottomPadding()
+            self.translatesAutoresizingMaskIntoConstraints = false
+            self.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
+            self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
+            //self.widthAnchor.constraint(equalToConstant: width).isActive = true
+
+            //self.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
+            self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
+            self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
+            //autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
+            //#if targetEnvironment(macCatalyst)
+            //autoresizingMask = [UIView.AutoresizingMask.flexibleTopMargin]
+            //#endif
         case .top:
             frame = CGRect(
                 x: 0,
@@ -67,7 +100,6 @@ final class ObjectToolbar: UIToolbar {
 
     func resize() {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        //print("toolbar resize " + String(Float(width)))
         frame = CGRect(
             x: 0,
             y: UtilityUI.getTopPadding(),

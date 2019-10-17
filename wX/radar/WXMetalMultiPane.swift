@@ -194,7 +194,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 toolbarTop.setTransparent()
             }
         }
-        toolbar.setConfig()
+        self.view.addSubview(toolbar)
+        toolbar.setConfigWithUiv(uiv: self)
         if UIPreferences.radarToolbarTransparent {
             toolbar.setTransparent()
         }
@@ -297,7 +298,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 locationManager.distanceFilter = 10
             }
         }
-        self.view.addSubview(toolbar)
+        //self.view.addSubview(toolbar)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             self.view.addSubview(toolbarTop)
         }

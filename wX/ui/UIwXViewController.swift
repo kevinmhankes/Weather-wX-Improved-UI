@@ -18,7 +18,8 @@ class UIwXViewController: UIViewController {
         super.viewDidLoad()
         UtilityActions.ttsPrep()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
-        toolbar.setConfig()
+        self.view.addSubview(toolbar)
+        toolbar.setConfigWithUiv(uiv: self)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
     }
 
@@ -30,6 +31,8 @@ class UIwXViewController: UIViewController {
         self.removeAllViews()
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
+        self.view.addSubview(toolbar)
+        toolbar.setConfigWithUiv(uiv: self)
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, self.toolbar)
     }
 

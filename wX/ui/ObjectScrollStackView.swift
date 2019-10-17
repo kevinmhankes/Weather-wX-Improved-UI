@@ -14,7 +14,7 @@ public class ObjectScrollStackView {
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        //scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
@@ -24,7 +24,7 @@ public class ObjectScrollStackView {
         scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        //stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         scrollView.addSubview(stackView)
@@ -34,7 +34,6 @@ public class ObjectScrollStackView {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 
         //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        //print(width)
         //scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
         //stackView.widthAnchor.constraint(equalToConstant: width).isActive = true
     }
@@ -47,6 +46,7 @@ public class ObjectScrollStackView {
         ) {
         self.init(uiv, scrollView, stackView)
         uiv.view.addSubview(toolbar)
+        scrollView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
     }
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
