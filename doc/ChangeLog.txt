@@ -15,12 +15,12 @@
 //
 // Catalyst todos
 //
-// main screen does not refresh during state changes
 // wxoglsize does not appear to work
 // where is radar Text size used?
 // crash in radar after idle
 //
 
+56064 2019_10_17 
 56063 2019_10_17 [ADD] more autolayout constraints esp for toolbar to help MacOS port
 		 [FIX] UI consistency enhancements in SPC stuff
 		 [FIX] radar was not consulting fetch interval
