@@ -7,6 +7,8 @@
 import UIKit
 
 final class ObjectToolbar: UIToolbar {
+    
+    var toolbarHeightConstraint: NSLayoutConstraint?
 
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -27,12 +29,22 @@ final class ObjectToolbar: UIToolbar {
             self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         case .top:
             self.translatesAutoresizingMaskIntoConstraints = false
-            self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
+            //self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
+            toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
+            uiv.view.addConstraint(toolbarHeightConstraint!)
             self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
             self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
             self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
         }
         setColorToTheme()
+    }
+    
+    func resize(uiv: UIViewController) {
+        if toolbarHeightConstraint != nil {
+            uiv.view.removeConstraint(toolbarHeightConstraint!)
+        }
+        toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
+        uiv.view.addConstraint(toolbarHeightConstraint!)
     }
 
     func setColorToTheme() {

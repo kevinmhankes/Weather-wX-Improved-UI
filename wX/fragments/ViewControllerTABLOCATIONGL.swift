@@ -52,8 +52,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //toolbar.resize()
-        //toolbar.resizeToVC(self)
+        toolbar.resize(uiv: self)
         fab?.resize()
         let topSpace = 48 + UtilityUI.getTopPadding()
         if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
