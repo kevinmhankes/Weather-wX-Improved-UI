@@ -41,7 +41,7 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
     }
 
     private func displayContent() {
-        self.scrollView.backgroundColor = UIColor.white
+        //self.scrollView.backgroundColor = UIColor.white
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         [0, 1, 2, 3].forEach {

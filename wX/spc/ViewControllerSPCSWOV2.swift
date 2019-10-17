@@ -19,7 +19,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ColorCompatibility.systemBackground
+        //view.backgroundColor = ColorCompatibility.systemBackground
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -79,7 +79,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     }
 
     private func displayContent() {
-        scrollView.backgroundColor = ColorCompatibility.systemBackground
+        //scrollView.backgroundColor = ColorCompatibility.systemBackground
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         [0, 1, 2, 3].forEach {
