@@ -46,10 +46,13 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var textObj = WXMetalTextObject()
     var longPressCount = 0
     var toolbar = ObjectToolbar(.top)
+    #if targetEnvironment(macCatalyst)
+    var oneMinRadarFetch = Timer()
+    #endif
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        toolbar.resize()
+        //toolbar.resize()
         //toolbar.resizeToVC(self)
         fab?.resize()
         let topSpace = 48 + UtilityUI.getTopPadding()
@@ -147,9 +150,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         addLocationSelectionCard()
         self.getContentMaster()
+        #if targetEnvironment(macCatalyst)
+        oneMinRadarFetch = Timer.scheduledTimer(
+            timeInterval: 60.0 * Double(UIPreferences.refreshLocMin),
+            target: self,
+            selector: #selector(getContentMaster),
+            userInfo: nil,
+            repeats: true
+        )
+        #endif
     }
 
-    func getContentMaster() {
+    @objc func getContentMaster() {
+        print("getContentMaster")
         self.oldLocation = Location.latlon
         if Location.isUS {
             self.isUS = true

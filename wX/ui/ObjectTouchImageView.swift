@@ -16,8 +16,6 @@ final class ObjectTouchImageView {
         self.init()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         var height = UtilityUI.effectiveHeight(toolbar)
-        //print("IMG" + String(Float(width)))
-        //print("IMG" + String(Float(height)))
         var y = UtilityUI.getTopPadding()
         if hasTopToolbar {
             y += toolbar.frame.height
@@ -35,7 +33,7 @@ final class ObjectTouchImageView {
         img.contentMode = UIView.ContentMode.scaleAspectFit
         self.img.translatesAutoresizingMaskIntoConstraints = false
         self.img.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
-        self.img.topAnchor.constraint(equalTo: uiv.view.topAnchor).isActive = true
+        self.img.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: y).isActive = true
         self.img.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
         self.img.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         self.uiv = uiv
