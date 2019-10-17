@@ -77,10 +77,12 @@ final class ObjectToolbar: UIToolbar {
                 height: UIPreferences.toolbarHeight
             )*/
             //autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
+            //print("PADDING: " + UtilityUI.getTopPadding())
             self.translatesAutoresizingMaskIntoConstraints = false
             self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
             self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
             self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
+            self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
         }
         setColorToTheme()
     }
