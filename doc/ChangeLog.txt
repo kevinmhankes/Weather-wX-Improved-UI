@@ -22,6 +22,8 @@
 //
 
 56063 2019_10_17 [ADD] more autolayout constraints esp for toolbar to help MacOS port
+		 [FIX] UI consistency enhancements in SPC stuff
+		 [FIX] radar was not consulting fetch interval
 56062 2019_10_16 [ADD] catalyst work - wip
 		 [FIX] hazards show up twice after screen on - not so when switching locations
 		 [FIX] text in nexrad is off

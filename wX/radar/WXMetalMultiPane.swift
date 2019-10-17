@@ -324,8 +324,9 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         updateColorLegend()
         if RadarPreferences.wxoglRadarAutorefresh {
             UIApplication.shared.isIdleTimerDisabled = true
+            // was 60.0
             oneMinRadarFetch = Timer.scheduledTimer(
-                timeInterval: 60.0,
+                timeInterval: 60.0 * Double(RadarPreferences.radarDataRefreshInterval),
                 target: self,
                 selector: #selector(getRadarEveryMinute),
                 userInfo: nil,
@@ -834,6 +835,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
 
     @objc func getRadarEveryMinute() {
         wxMetal.forEach { $0!.getRadar("") }
+        print("radar update")
         getPolygonWarnings()
     }
 
