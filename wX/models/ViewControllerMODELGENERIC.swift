@@ -84,6 +84,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true)
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
+        toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         fabLeft = ObjectFab(self, #selector(leftClicked), imageString: "ic_keyboard_arrow_left_24dp")
         fabRight = ObjectFab(self, #selector(rightClicked), imageString: "ic_keyboard_arrow_right_24dp")
         fabLeft?.setToTheLeft()
