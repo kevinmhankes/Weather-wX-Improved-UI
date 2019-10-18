@@ -23,7 +23,6 @@ class ViewControllerTABPARENT: UIViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        //view.backgroundColor = UIColor.white
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
         leftSwipe.direction = .left
@@ -136,7 +135,6 @@ class ViewControllerTABPARENT: UIViewController {
                 }
                 updateColors()
             } else {
-                // Fallback on earlier versions
             }
         }
     }
@@ -166,7 +164,6 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: "c", modifierFlags: [], action: #selector(cloudClicked)),
             UIKeyCommand(input: "a", modifierFlags: [], action: #selector(wfotextClicked)),
             UIKeyCommand(input: "m", modifierFlags: [], action: #selector(menuClicked))
-
         ]
     }
 }

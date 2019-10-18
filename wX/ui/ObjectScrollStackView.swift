@@ -14,7 +14,6 @@ public class ObjectScrollStackView {
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        //scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
@@ -24,7 +23,6 @@ public class ObjectScrollStackView {
         scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        //stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         scrollView.addSubview(stackView)

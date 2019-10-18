@@ -783,11 +783,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         if #available(iOS 13.0, *) {
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
-                    //AppColors.update()
-                    //print("Dark mode")
                 } else {
-                    //AppColors.update()
-                    //print("Light mode")
                 }
                 updateColors()
             } else {

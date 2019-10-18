@@ -50,7 +50,6 @@ public class UtilityUI {
                 }
             }
         #endif
-        //print(height)
         return (width, height)
     }
 

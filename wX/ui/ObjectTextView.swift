@@ -19,8 +19,6 @@ final class ObjectTextView {
         tv.font = FontSize.medium.size
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        //let (width2, _) = UtilityUI.getNativeScreenBounds()
-        //print(width2)
     }
 
     convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false) {
@@ -47,7 +45,6 @@ final class ObjectTextView {
     ) {
         self.init()
         self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
-        //print(width)
         self.tv.text = text
         stackView.addArrangedSubview(self.tv)
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled

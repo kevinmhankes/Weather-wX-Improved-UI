@@ -29,7 +29,6 @@ class ViewControllerTABSPC: ViewControllerTABPARENT {
                 }
                 updateColors()
             } else {
-                // Fallback on earlier versions
             }
         }
     }

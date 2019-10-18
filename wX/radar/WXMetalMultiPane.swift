@@ -68,8 +68,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let height = cgsize.height
         self.screenWidth = Double(width)
         self.screenHeight = Double(height)
-        //print(width)
-        //print(height)
         let screenWidth = width
         let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
@@ -299,10 +297,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 locationManager.distanceFilter = 10
             }
         }
-        //self.view.addSubview(toolbar)
-        //if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
-        //    self.view.addSubview(toolbarTop)
-        //}
         screenScale = Double(UIScreen.main.scale)
         #if targetEnvironment(macCatalyst)
         screenScale *= 2.0
@@ -397,13 +391,11 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         )
         gestureRecognizer.numberOfTapsRequired = 1
         gestureRecognizer.delegate = self
-        //gestureRecognizer.cancelsTouchesInView = true
         let gestureRecognizer2 = UITapGestureRecognizer(
             target: self,
             action: #selector(tapGesture(_:double:))
         )
         gestureRecognizer2.numberOfTapsRequired = 2
-        //gestureRecognizer2.cancelsTouchesInView = true
         gestureRecognizer2.delegate = self
         self.view.addGestureRecognizer(pan)
         self.view.addGestureRecognizer(gestureZoomvar)
@@ -421,17 +413,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        //if (scrollView.superview != nil) {
-        //if ((touch.view?.isDescendant(of: scrollView)) != nil) {
-        //print(touch.view)
-        //if touch.view!.superview!.superclass!.isSubclass(of: UIButton.self)  {
-        //if touch.view!.isDescendant(of: self.view) {
-        //if touch is UIBarButtonItem {
-        //    print("return false")
-        //    return false
-        //}
-        //}
-        //return true
         return touch.view == gestureRecognizer.view
     }
 
@@ -562,7 +543,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         updateWarningsInToolbar()
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
-            //print("display existing warning data")
             if self.wxMetal[0] != nil {
                 self.wxMetal.forEach { $0!.constructAlertPolygons() }
             }
@@ -571,7 +551,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
-                //print("display new warning data")
                 self.updateWarningsInToolbar()
                 self.semaphore.signal()
             }
@@ -895,17 +874,13 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
            super.traitCollectionDidChange(previousTraitCollection)
            if #available(iOS 13.0, *) {
-               //let userInterfaceStyle = traitCollection.userInterfaceStyle
                if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
                    if UITraitCollection.current.userInterfaceStyle == .dark {
                        AppColors.update()
-                       print("Dark mode")
                    } else {
                        AppColors.update()
-                       print("Light mode")
                    }
            } else {
-               // Fallback on earlier versions
            }
        }
     }
@@ -935,10 +910,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow))
         ]
-    }
-
-    @objc func fourClicked() {
-        print("4 clicked")
     }
 
     @objc func keyRightArrow() {

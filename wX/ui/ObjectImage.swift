@@ -23,7 +23,6 @@ final class ObjectImage {
         self.init()
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
-        //setImageAnchors(width / CGFloat(widthDivider) - UIPreferences.stackviewCardSpacing * 2.0)
         setImageAnchors(width / CGFloat(widthDivider) - UIPreferences.stackviewCardSpacing)
         stackView.addArrangedSubview(img)
     }

@@ -21,7 +21,6 @@ final class ObjectCardStackView {
         axis: NSLayoutConstraint.Axis = .horizontal
     ) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
-        //stackView.backgroundColor = UIColor.white
         stackView.backgroundColor = ColorCompatibility.systemBackground
         stackView.distribution = .fill
         stackView.alignment = alignment

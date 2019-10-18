@@ -7,7 +7,7 @@
 import UIKit
 
 final class ObjectToolbar: UIToolbar {
-    
+
     var toolbarHeightConstraint: NSLayoutConstraint?
 
     init() {
@@ -29,7 +29,6 @@ final class ObjectToolbar: UIToolbar {
             self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         case .top:
             self.translatesAutoresizingMaskIntoConstraints = false
-            //self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
             toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
             uiv.view.addConstraint(toolbarHeightConstraint!)
             self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
@@ -38,7 +37,7 @@ final class ObjectToolbar: UIToolbar {
         }
         setColorToTheme()
     }
-    
+
     func resize(uiv: UIViewController) {
         if toolbarHeightConstraint != nil {
             uiv.view.removeConstraint(toolbarHeightConstraint!)
@@ -64,17 +63,6 @@ final class ObjectToolbar: UIToolbar {
         )
         setShadowImage(UIImage(), forToolbarPosition: .any)
     }
-
-    /*func resize() {
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        frame = CGRect(
-            x: 0,
-            y: UtilityUI.getTopPadding(),
-            width: width,
-            height: UIPreferences.toolbarHeight
-        )
-        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth]
-    }*/
 
     var height: CGFloat {
         return frame.size.height

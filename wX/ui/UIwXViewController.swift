@@ -42,9 +42,7 @@ class UIwXViewController: UIViewController {
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
         if #available(iOS 13.0, *) {
-            //let userInterfaceStyle = traitCollection.userInterfaceStyle
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
@@ -55,36 +53,7 @@ class UIwXViewController: UIViewController {
                 }
                 view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
                 toolbar.setColorToTheme()
-                //print("THEME CHANGED")
-                /*switch UIApplication.shared.applicationState {
-                case .active:
-                    //print("FOREGROUND")
-                    break
-                case .inactive:
-                    //print("INACTIVE")
-                    if UITraitCollection.current.userInterfaceStyle == .dark {
-                        print("Dark mode")
-                    }
-                    else {
-                        print("Light mode")
-                    }
-                case .background:
-                    //print("BACKGROUND")
-                    break
-                default:
-                    break
-                }*/
             }
-            /*let hasUserInterfaceStyleChangedOpt = previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection)
-            let hasUserInterfaceStyleChanged = hasUserInterfaceStyleChangedOpt ?? false
-            print("TRAIT " + String(hasUserInterfaceStyleChanged))
-            print(userInterfaceStyle.rawValue)
-            if UITraitCollection.current.userInterfaceStyle == .dark {
-                print("Dark mode")
-            }
-            else {
-                print("Light mode")
-            }*/
         } else {
             // Fallback on earlier versions
         }

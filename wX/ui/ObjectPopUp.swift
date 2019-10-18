@@ -35,7 +35,6 @@ final class ObjectPopUp {
                 code = item.firstToken(":")
             }
             let action = UIAlertAction(item, {_ in fn(code)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             addAction(action)
         }
         finish()
@@ -53,7 +52,6 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.forEach { item in
             let action = UIAlertAction(String(item), {_ in fn(item)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             addAction(action)
         }
         finish()
@@ -71,7 +69,6 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.forEach { item in
             let action = UIAlertAction(String(item), {_ in fn(item)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             addAction(action)
         }
         finish()
@@ -90,7 +87,6 @@ final class ObjectPopUp {
         list.forEach {
             let index = list.firstIndex(of: $0)!
             let action = UIAlertAction($0, {_ in fn(index)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             addAction(action)
         }
         finish()
@@ -108,7 +104,6 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.enumerated().forEach { index, title in
             let action = UIAlertAction(title.title, {_ in fn(index)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             addAction(action)
         }
         finish()
@@ -131,7 +126,6 @@ final class ObjectPopUp {
         (startIdx..<(startIdx + count)).forEach { idx in
             let paramTitle = menuData.paramLabels[idx]
             let action = UIAlertAction(paramTitle, { _ in fn(idx)})
-            //action.setValue(ColorCompatibility.systemBackground, forKey: "titleTextColor")
             alert.addAction(action)
         }
         finish()
