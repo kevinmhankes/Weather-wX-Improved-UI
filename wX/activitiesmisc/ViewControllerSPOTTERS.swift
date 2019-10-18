@@ -19,9 +19,6 @@ class ViewControllerSPOTTERS: UIwXViewController {
         spotterReportsButton.title = "Spotter Reports"
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, spotterCountButton, spotterReportsButton]).items
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

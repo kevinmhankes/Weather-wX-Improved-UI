@@ -32,6 +32,7 @@ final class ObjectSpotterCard {
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
+        sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         sV.view.addGestureRecognizer(gesture)
     }
 }
