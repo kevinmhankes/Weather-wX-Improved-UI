@@ -52,6 +52,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarBottom)
+        toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
+        toolbarBottom.setConfigWithUiv(uiv: self)
         labelTextView = ObjectTextView("Label")
         latTextView = ObjectTextView("Lat")
         lonTextView = ObjectTextView("Lon")
