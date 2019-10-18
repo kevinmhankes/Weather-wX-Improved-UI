@@ -133,9 +133,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     func displayContent() {
         objectCards = []
-        self.stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        ).isActive = true
+        self.stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         locations = []
         (0..<Location.numLocations).forEach {
@@ -160,7 +158,6 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Location.refreshLocationData()
         initializeObservations()
         displayContent()
         self.getContent()

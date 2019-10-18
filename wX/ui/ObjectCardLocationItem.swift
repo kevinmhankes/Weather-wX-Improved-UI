@@ -30,6 +30,7 @@ final class ObjectCardLocationItem {
         )
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
+        //cardStackView.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         cardStackView.view.addGestureRecognizer(gesture)
     }
 }
