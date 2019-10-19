@@ -18,8 +18,10 @@
 // wxoglsize does not appear to work
 // where is radar Text size used?
 // crash in radar after idle
+// TTS does not work after stopping
 //
 
+56065 2019_10_19
 56064 2019_10_18 [FIX] main screen toolbar fix for notch phones
 		 [FIX] top toolbar in models
 		 [FIX] code cleanup
