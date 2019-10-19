@@ -39,11 +39,11 @@ final class ObjectCardCurrentConditions {
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
-        
+
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
-        
+
         //horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: //UIPreferences.stackviewCardSpacing - UIPreferences.stackviewCardSpacing).isActive = true
-        
+
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 

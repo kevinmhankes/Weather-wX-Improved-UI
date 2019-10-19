@@ -1,4 +1,3 @@
-// TODO nexrad radar - download/show warnings/polygons seperately
 // TODO class for radar product specs
 // TODO Add 4th char to all radar sites
 // BUG in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
@@ -9,9 +8,6 @@
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 // [ADD] RadarFile class from flutter/dart port
-// [ADD] MacOS support https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app
-		       https://forums.developer.apple.com/thread/117229
-// [ADD] radar file class from flutter
 //
 // Catalyst todos
 //
