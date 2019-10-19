@@ -165,9 +165,7 @@ final class UtilityActions {
             "Alerts",
             "Observations",
             "Soundings",
-            //"Sun Times",
             "PlayList",
-            //"Spotters",
             "Settings",
             "Help Mode - Off"
         ]
@@ -215,13 +213,16 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !globalSynth.isSpeaking {
+            print("speak")
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(textView.text))
             globalSynth.speak(myUtterance)
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else if globalSynth.isPaused {
+            print("continue speaking")
             globalSynth.continueSpeaking()
             playB.setImage(UIImage(named: pauseIcon)!, for: .normal)
         } else {
+            print("pause speaking")
             globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
         }

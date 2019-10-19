@@ -41,6 +41,7 @@ class RadarPreferences {
     static var wxoglSize = 10
     static var wxoglRememberLocation = true
     static var wxoglRadarAutorefresh = false
+    static var wxoglRadarAutorefreshBoolString = "false"
     static var nexradRadarBackgroundColor = 0
     static var wxoglCenterOnLocation = false
 
@@ -53,6 +54,7 @@ class RadarPreferences {
         radarSpotterSize = 2
         radarTextSize = 1.5
         wxoglSize = 20
+        wxoglRadarAutorefreshBoolString = "true"
         #endif
         ObjectPolygonWarning.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")
@@ -88,7 +90,7 @@ class RadarPreferences {
         radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", radarTvsSize)
         wxoglSize = Utility.readPref("WXOGL_SIZE", wxoglSize)
         wxoglRememberLocation = Utility.readPref("WXOGL_REMEMBER_LOCATION", "true").hasPrefix("t")
-        wxoglRadarAutorefresh = Utility.readPref("RADAR_AUTOREFRESH", "false").hasPrefix("t")
+        wxoglRadarAutorefresh = Utility.readPref("RADAR_AUTOREFRESH", wxoglRadarAutorefreshBoolString).hasPrefix("t")
         radarDataRefreshInterval = Utility.readPref("RADAR_DATA_REFRESH_INTERVAL", 5)
         nexradRadarBackgroundColor = Utility.readPref("NEXRAD_RADAR_BACKGROUND_COLOR", Color.rgb(0, 0, 0))
         wxoglCenterOnLocation = Utility.readPref("RADAR_CENTER_ON_LOCATION", "false").hasPrefix("t")

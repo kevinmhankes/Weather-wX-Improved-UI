@@ -117,6 +117,7 @@ final class UtilitySettingsRadar {
         "Center radar on location": "If location marker follows GPS is enabled this will keep the radar centered on your current location when enabled."
     ]
 
+    #if !targetEnvironment(macCatalyst)
     static let booleanDefault = [
         "COD_WARNINGS_DEFAULT": "true" ,
         "DUALPANE_SHARE_POSN": "true",
@@ -151,6 +152,43 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SPS": "false",
         "RADAR_CENTER_ON_LOCATION": "false"
     ]
+    #endif
+    #if targetEnvironment(macCatalyst)
+    static let booleanDefault = [
+        "COD_WARNINGS_DEFAULT": "true" ,
+        "DUALPANE_SHARE_POSN": "true",
+        "WXOGL_SPOTTERS": "false",
+        "WXOGL_SPOTTERS_LABEL": "false",
+        "WXOGL_OBS": "false",
+        "WXOGL_OBS_WINDBARBS": "false",
+        "LOCDOT_FOLLOWS_GPS": "false",
+        "RADAR_SHOW_WATCH": "false",
+        "RADAR_SHOW_COUNTY": "true",
+        "RADAR_COUNTY_LABELS": "false",
+        "RADAR_COUNTY_HIRES": "false",
+        "RADAR_STATE_HIRES": "false",
+        "RADAR_SHOW_STI": "false",
+        "RADAR_SHOW_HI": "false",
+        "RADAR_SHOW_TVS": "false",
+        "RADAR_HW_ENH_EXT": "false",
+        "RADAR_CAMX_BORDERS": "false",
+        "RADAR_AUTOREFRESH": "true",
+        "WXOGL_REMEMBER_LOCATION": "true",
+        "RADAR_SHOW_MPD": "false",
+        "COD_CITIES_DEFAULT": "false",
+        "COD_HW_DEFAULT": "true",
+        "COD_LAKES_DEFAULT": "false",
+        "COD_LOCDOT_DEFAULT": "true",
+        "RADAR_LEVEL2_USE_NWS": "true",
+        "RADAR_SHOW_LEGEND": "false",
+        "RADAR_SHOW_SWO": "false",
+        "RADAR_SHOW_SMW": "false",
+        "RADAR_SHOW_SQW": "false",
+        "RADAR_SHOW_DSW": "false",
+        "RADAR_SHOW_SPS": "false",
+        "RADAR_CENTER_ON_LOCATION": "false"
+    ]
+    #endif
 
     static let picker = [
         "RADAR_COLOR_PALETTE_94": "Reflectivity Colormap",
