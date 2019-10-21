@@ -181,7 +181,7 @@ public class UtilityRadarUI {
             }
         }*/
         if numberOfPanes == 2 {
-            if !UtilityUI.isLandscape() {
+            if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 if y > uiv.view.frame.height / 2.0 {
                     yModified -= Double(uiv.view.frame.height) / 2.0
                 }
@@ -220,7 +220,7 @@ public class UtilityRadarUI {
             xMiddle = width / 2.0
         }
         if numberOfPanes == 2 {
-            if !UtilityUI.isLandscape() {
+            if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 xMiddle = width / 2.0
                 yMiddle = height / 4.0
             } else {

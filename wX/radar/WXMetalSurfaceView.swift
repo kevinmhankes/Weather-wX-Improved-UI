@@ -88,7 +88,7 @@ final class WXMetalSurfaceView {
         if wxMetal.numberOfPanes == 1 {
             return 0
         } else if wxMetal.numberOfPanes == 2 {
-            if !UtilityUI.isLandscape() {
+            if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 if location.y < uiv.view.frame.height / 2.0 {
                     return 0
                 } else {
