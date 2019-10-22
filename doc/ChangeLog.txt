@@ -17,6 +17,7 @@
 // TTS does not work after stopping
 //
 
+56066 2019_10_21 [FIX] nexrad keyboard zoom in and out did not keep center
 56065 2019_10_21 [ADD] radar autorefresh by default
 		 [FIX] pane detection in multipane nexrad
 56064 2019_10_18 [FIX] main screen toolbar fix for notch phones

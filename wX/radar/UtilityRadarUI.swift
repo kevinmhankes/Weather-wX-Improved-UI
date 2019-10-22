@@ -18,6 +18,7 @@ public class UtilityRadarUI {
             panSensivity *= 2
         }
         wxMetal.forEach {
+            WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
             $0!.zoom *= 0.8
             $0!.setZoom()
         }
@@ -34,6 +35,7 @@ public class UtilityRadarUI {
             panSensivity *= 2
         }
         wxMetal.forEach {
+            WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
             $0!.zoom *= 1.25
             $0!.setZoom()
         }
