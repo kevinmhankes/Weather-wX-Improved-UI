@@ -48,7 +48,12 @@ struct PolygonType {
         "SPOTTER_LABELS",
         RadarPreferences.radarSpottersLabel
     )
-    static var WIND_BARB_GUSTS = PolygonType(Color.RED, "WIND_BARB_GUSTS", RadarPreferences.radarObsWindbarbs)
+    static var WIND_BARB_GUSTS = PolygonType(
+        Color.RED,
+        "WIND_BARB_GUSTS",
+        RadarPreferences.radarObsWindbarbs,
+        RadarPreferences.radarAviationSize
+    )
     static var WIND_BARB = PolygonType(
         RadarGeometry.radarColorObsWindbarbs,
         "WIND_BARB",
@@ -155,7 +160,8 @@ struct PolygonType {
         WIND_BARB_GUSTS = PolygonType(
             Color.RED,
             "WIND_BARB_GUSTS",
-            RadarPreferences.radarObsWindbarbs
+            RadarPreferences.radarObsWindbarbs,
+            RadarPreferences.radarAviationSize
         )
         WIND_BARB = PolygonType(
             RadarGeometry.radarColorObsWindbarbs,

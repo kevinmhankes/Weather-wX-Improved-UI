@@ -47,7 +47,7 @@ class WXMetalRender {
     private var lakeBuffers = ObjectMetalBuffers(GeographyType.lakes, zoomToHideMiscFeatures)
     private var stiBuffers = ObjectMetalBuffers(PolygonType.STI, zoomToHideMiscFeatures)
     private var wbBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB, zoomToHideMiscFeatures)
-    private var wbGustsBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_GUSTS)
+    private var wbGustsBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_GUSTS, zoomToHideMiscFeatures)
     private var mpdBuffers = ObjectMetalBuffers(PolygonType.MPD)
     private var hiBuffers = ObjectMetalBuffers(PolygonType.HI, zoomToHideMiscFeatures)
     private var tvsBuffers = ObjectMetalBuffers(PolygonType.TVS, zoomToHideMiscFeatures)
@@ -692,7 +692,7 @@ class WXMetalRender {
     func constructWBLinesGusts() {
         fWbGusts = WXGLNexradLevel3WindBarbs.decocodeAndPlot(pn, isGust: true)
         constructGenericLinesShort(wbGustsBuffers, fWbGusts)
-        wbBuffers.generateMtlBuffer(device)
+        wbGustsBuffers.generateMtlBuffer(device)
     }
 
     func constructWBCircle() {
