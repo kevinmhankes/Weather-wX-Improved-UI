@@ -46,6 +46,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         }
         self.view.addSubview(webView)
+        self.view.bringSubviewToFront(toolbar)
         if ActVars.webViewStateCode == "tornado" {
             productButton.title = "#tornado"
         }
