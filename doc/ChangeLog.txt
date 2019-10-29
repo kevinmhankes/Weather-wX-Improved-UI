@@ -8,7 +8,7 @@
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 // [ADD] RadarFile class from flutter/dart port
-// [ADD] 
+// [ADD] https://www.spc.noaa.gov/exper/href/ update needed
 //
 // Catalyst todos
 //
@@ -20,7 +20,7 @@
 
 56066 2019_10_29 [FIX] nexrad keyboard zoom in and out did not keep center
 		 [FIX] wind barb gusts were not working
-		 [FIX] San Fran text label not correct
+		 [FIX] San Fran text label not correct - 37.787239,-122.4581,805235
 		 [FIX] obs did not show on init radar load
 		 [FIX] no back button twitter
 56065 2019_10_21 [ADD] radar autorefresh by default
