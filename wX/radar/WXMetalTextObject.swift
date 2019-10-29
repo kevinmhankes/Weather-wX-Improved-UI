@@ -77,7 +77,7 @@ final class WXMetalTextObject {
                 oglrZoom = OGLR.zoom * 0.8
             }
             #if !targetEnvironment(macCatalyst)
-            textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
+            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             #endif
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
@@ -138,7 +138,7 @@ final class WXMetalTextObject {
                 oglrZoom = OGLR.zoom * 0.8
             }
             #if !targetEnvironment(macCatalyst)
-            textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
+            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             #endif
             if OGLR.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
@@ -170,7 +170,7 @@ final class WXMetalTextObject {
                 oglrZoom = OGLR.zoom * 0.8
             }
             #if !targetEnvironment(macCatalyst)
-            textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
+            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
             #endif
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
@@ -224,7 +224,7 @@ final class WXMetalTextObject {
                 oglrZoom = OGLR.zoom * 0.8
             }
             #if !targetEnvironment(macCatalyst)
-            textSize = Double(oglrZoom) * fontScaleFactorObs * Double(RadarPreferences.radarTextSize)
+            //textSize = Double(oglrZoom) * fontScaleFactorObs * Double(RadarPreferences.radarTextSize)
             #endif
             if OGLR.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach {

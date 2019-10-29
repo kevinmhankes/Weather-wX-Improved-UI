@@ -34,7 +34,7 @@ class RadarPreferences {
     static var radarObsExtZoom = 0
     static var radarSpotterSize = 4
     static var radarAviationSize = 4
-    static var radarTextSize: Float = 1.0
+    static var radarTextSize: Float = 10.0
     static var radarLocdotSize = 4
     static var radarHiSize = 4
     static var radarTvsSize = 4
@@ -52,7 +52,7 @@ class RadarPreferences {
         radarTvsSize = 1
         radarAviationSize = 2
         radarSpotterSize = 2
-        radarTextSize = 1.5
+        radarTextSize = 15.0
         wxoglSize = 20
         wxoglRadarAutorefreshBoolString = "true"
         #endif
@@ -84,7 +84,7 @@ class RadarPreferences {
         radarObsExtZoom = Utility.readPref("RADAR_OBS_EXT_ZOOM", 7)
         radarSpotterSize = Utility.readPref("RADAR_SPOTTER_SIZE", radarSpotterSize)
         radarAviationSize = Utility.readPref("RADAR_AVIATION_SIZE", radarAviationSize)
-        radarTextSize = Utility.readPref("RADAR_TEXT_SIZE", radarTextSize)
+        radarTextSize = Utility.readPref("RADAR_TEXT_SIZE", radarTextSize) / 10.0
         radarLocdotSize = Utility.readPref("RADAR_LOCDOT_SIZE", radarLocdotSize)
         radarHiSize = Utility.readPref("RADAR_HI_SIZE", radarHiSize)
         radarTvsSize = Utility.readPref("RADAR_TVS_SIZE", radarTvsSize)

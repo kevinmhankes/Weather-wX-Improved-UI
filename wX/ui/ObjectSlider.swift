@@ -60,7 +60,8 @@ final class ObjectSlider {
         "RADAR_OBS_EXT_ZOOM": "Detailed Observations Zoom",
         "RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval",
         "WXOGL_SIZE": "Radar initial view size",
-
+        "RADAR_TEXT_SIZE": "Radar text size in nexrad interface",
+        
         "TEXTVIEW_FONT_SIZE": "Defaut font size" ,
         "UI_THEME": "Color theme" ,
         "REFRESH_LOC_MIN": "Refresh interval main screen(min)" ,
@@ -85,7 +86,8 @@ final class ObjectSlider {
         "ANIM_INTERVAL": 6,
         "UI_TILES_PER_ROW": 3,
         "HOMESCREEN_TEXT_LENGTH_PREF": 500,
-        "NWS_ICON_SIZE_PREF": 80
+        "NWS_ICON_SIZE_PREF": 80,
+        "RADAR_TEXT_SIZE": 10
     ]
     #endif
     #if targetEnvironment(macCatalyst)
@@ -103,7 +105,8 @@ final class ObjectSlider {
         "ANIM_INTERVAL": 6,
         "UI_TILES_PER_ROW": 3,
         "HOMESCREEN_TEXT_LENGTH_PREF": 500,
-        "NWS_ICON_SIZE_PREF": 80
+        "NWS_ICON_SIZE_PREF": 80,
+        "RADAR_TEXT_SIZE": 15
     ]
     #endif
 
@@ -121,7 +124,8 @@ final class ObjectSlider {
             "ANIM_INTERVAL": 1.0,
             "UI_TILES_PER_ROW": 1.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
-            "NWS_ICON_SIZE_PREF": 0.0
+            "NWS_ICON_SIZE_PREF": 0.0,
+            "RADAR_TEXT_SIZE": 5.0
     ]
 
     static let prefToMax: [String: Float] = [
@@ -138,6 +142,7 @@ final class ObjectSlider {
             "ANIM_INTERVAL": 16.0,
             "UI_TILES_PER_ROW": 8.0,
             "HOMESCREEN_TEXT_LENGTH_PREF": 2000.0,
-            "NWS_ICON_SIZE_PREF": 100.0
+            "NWS_ICON_SIZE_PREF": 100.0,
+            "RADAR_TEXT_SIZE": 30.0
     ]
 }

@@ -164,7 +164,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
             "RADAR_AVIATION_SIZE",
             "RADAR_OBS_EXT_ZOOM",
             "RADAR_DATA_REFRESH_INTERVAL",
-            "WXOGL_SIZE"
+            "WXOGL_SIZE",
+            "RADAR_TEXT_SIZE"
         ].forEach {
                 let objSlider = ObjectSlider(
                     self,
