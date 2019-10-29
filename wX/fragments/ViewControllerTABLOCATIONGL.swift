@@ -498,6 +498,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             wxMetal.append(
                 WXMetalRender(
                     device!,
+                    textObj,
                     ObjectToolbarIcon(),
                     ObjectToolbarIcon(),
                     paneNumber: 0,

@@ -250,7 +250,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
         metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
-            wxMetal.append(WXMetalRender(device, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
+            wxMetal.append(WXMetalRender(device, textObj, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
         }
         productButton.enumerated().forEach {$1.title = wxMetal[$0]!.product}
         radarSiteButton.title = wxMetal[0]!.rid
@@ -313,7 +313,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         )
         textObj.initTV()
         textObj.addTV()
-        self.wxMetal.forEach { $0!.getRadar("") }
+        self.wxMetal.forEach {
+            $0?.textObj = textObj
+            $0?.getRadar("")
+        }
         getPolygonWarnings()
         updateColorLegend()
         if RadarPreferences.wxoglRadarAutorefresh {

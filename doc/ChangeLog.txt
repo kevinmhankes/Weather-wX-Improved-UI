@@ -17,8 +17,10 @@
 // TTS does not work after stopping
 //
 
-56066 2019_10_27 [FIX] nexrad keyboard zoom in and out did not keep center
+56066 2019_10_29 [FIX] nexrad keyboard zoom in and out did not keep center
 		 [FIX] wind barb gusts were not working
+		 [FIX] San Fran text label not correct
+		 [FIX] obs did not show on init radar load
 56065 2019_10_21 [ADD] radar autorefresh by default
 		 [FIX] pane detection in multipane nexrad
 56064 2019_10_18 [FIX] main screen toolbar fix for notch phones
