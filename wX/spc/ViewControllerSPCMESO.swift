@@ -72,6 +72,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         self.view.addSubview(toolbarTop)
         self.view.addSubview(toolbar)
+        toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         product = Utility.readPref(prefModel + numPanesStr + "_PARAM_LAST_USED", product)
         sectorChanged(Utility.readPref(prefModel + numPanesStr + "_SECTOR_LAST_USED", sector))
     }
