@@ -26,15 +26,23 @@ class ViewControllerWEBVIEW: UIwXViewController {
         }
         self.view.addSubview(toolbar)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        webView = WKWebView(
+        /*webView = WKWebView(
             frame: CGRect(
                 x: 0,
                 y: UtilityUI.getTopPadding(),
                 width: width,
                 height: UtilityUI.effectiveHeight(toolbar)
             )
-        )
-        webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        )*/
+        webView = WKWebView()
+        self.view.addSubview(webView)
+        self.view.bringSubviewToFront(toolbar)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        //webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, //UIView.AutoresizingMask.flexibleHeight]
+        webView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
+        webView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
         if ActVars.webViewStateCode != "tornado" && !ActVars.webViewUseUrl {
             stateCode = ActVars.webViewStateCode
             stateCode = Utility.readPref(prefToken, stateCode)
@@ -45,8 +53,6 @@ class ViewControllerWEBVIEW: UIwXViewController {
         } else {
             webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         }
-        self.view.addSubview(webView)
-        self.view.bringSubviewToFront(toolbar)
         if ActVars.webViewStateCode == "tornado" {
             productButton.title = "#tornado"
         }

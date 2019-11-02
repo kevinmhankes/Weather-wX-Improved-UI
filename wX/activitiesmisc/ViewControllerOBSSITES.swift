@@ -107,7 +107,7 @@ class ViewControllerOBSSITES: UIwXViewController {
     @objc func mapClicked() {
         ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
-        ActVars.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Utility.readPref(prefToken, "")
+        ActVars.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
         self.goToVC("webview")
     }
 
