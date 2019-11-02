@@ -14,15 +14,16 @@ public class UtilityRadarUI {
         _ direction: KeyDirections
     ) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 {
+        if wxMetal[0]?.numberOfPanes == 4 {
             panSensivity *= 2
         }
         wxMetal.forEach {
             WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
-            $0!.zoom *= 0.8
-            $0!.setZoom()
+            $0?.zoom *= 0.8
+            $0?.setZoom()
+            $0?.textObj.refreshTextLabels()
         }
-        wxMetal.forEach {$0!.demandRender()}
+        wxMetal.forEach {$0?.demandRender()}
     }
 
     static func zoomInByKey(
@@ -31,15 +32,16 @@ public class UtilityRadarUI {
         _ direction: KeyDirections
     ) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 {
+        if wxMetal[0]?.numberOfPanes == 4 {
             panSensivity *= 2
         }
         wxMetal.forEach {
             WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
-            $0!.zoom *= 1.25
-            $0!.setZoom()
+            $0?.zoom *= 1.25
+            $0?.setZoom()
+            $0?.textObj.refreshTextLabels()
         }
-        wxMetal.forEach {$0!.demandRender()}
+        wxMetal.forEach {$0?.demandRender()}
     }
 
     static func moveByKey(
@@ -50,7 +52,7 @@ public class UtilityRadarUI {
         //_ gestureRecognizer: UIPanGestureRecognizer
     ) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 {
+        if wxMetal[0]?.numberOfPanes == 4 {
             panSensivity *= 2
         }
         var xChange: Float = 0.0
@@ -74,10 +76,11 @@ public class UtilityRadarUI {
         case .left: xChange = 25.0
         }
         wxMetal.forEach {
-                $0!.xPos += xChange
-                $0!.yPos += yChange
+            $0?.xPos += xChange
+            $0?.yPos += yChange
+            $0?.textObj.refreshTextLabels()
         }
-        wxMetal.forEach {$0!.demandRender()}
+        wxMetal.forEach {$0?.demandRender()}
     }
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
