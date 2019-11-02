@@ -20,25 +20,28 @@ class ViewControllerWEBVIEW: UIwXViewController {
         productButton = ObjectToolbarIcon(title: "Product", self, #selector(productClicked))
         browserButton = ObjectToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
         if ActVars.webViewShowProduct {
-            toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton, productButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    doneButton,
+                    flexBarButton,
+                    browserButton,
+                    productButton
+                ]
+            ).items
         } else {
-            toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, browserButton]).items
+            toolbar.items = ObjectToolbarItems(
+                [
+                    doneButton,
+                    flexBarButton,
+                    browserButton
+                ]
+            ).items
         }
         self.view.addSubview(toolbar)
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        /*webView = WKWebView(
-            frame: CGRect(
-                x: 0,
-                y: UtilityUI.getTopPadding(),
-                width: width,
-                height: UtilityUI.effectiveHeight(toolbar)
-            )
-        )*/
         webView = WKWebView()
         self.view.addSubview(webView)
         self.view.bringSubviewToFront(toolbar)
         webView.translatesAutoresizingMaskIntoConstraints = false
-        //webView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, //UIView.AutoresizingMask.flexibleHeight]
         webView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
