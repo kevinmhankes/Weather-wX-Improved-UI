@@ -14,13 +14,16 @@ class ViewControllerOBSSITES: UIwXViewController {
     var stateView = true
     var stateSelected = ""
     var siteButton = ObjectToolbarIcon()
+    var mapButton = ObjectToolbarIcon()
     let prefToken = "NWS_OBSSITE_LAST_USED"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         siteButton = ObjectToolbarIcon(self, #selector(siteClicked))
+        mapButton = ObjectToolbarIcon(self, #selector(mapClicked))
         self.siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton]).items
+        self.mapButton.title = "Map"
+        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, mapButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         constructStateView()
     }
@@ -56,11 +59,12 @@ class ViewControllerOBSSITES: UIwXViewController {
         }
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         listCity.enumerated().forEach {
-            _ = ObjectTextView(
+            let objectTextView = ObjectTextView(
                 stackView,
                 $1,
                 UITapGestureRecognizerWithData($0, self, #selector(gotoObsSite(sender:)))
             )
+            objectTextView.tv.isSelectable = false
         }
         self.scrollView.scrollToTop()
     }
@@ -84,11 +88,12 @@ class ViewControllerOBSSITES: UIwXViewController {
         self.stateView = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         GlobalArrays.states.enumerated().forEach {
-            _ = ObjectTextView(
+            let objectTextView = ObjectTextView(
                 stackView,
                 $1,
                 UITapGestureRecognizerWithData($0, self, #selector(gotoState(sender:)))
             )
+            objectTextView.tv.isSelectable = false
         }
     }
 
@@ -96,6 +101,13 @@ class ViewControllerOBSSITES: UIwXViewController {
         ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
         ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
+        self.goToVC("webview")
+    }
+
+    @objc func mapClicked() {
+        ActVars.webViewShowProduct = false
+        ActVars.webViewUseUrl = true
+        ActVars.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Utility.readPref(prefToken, "")
         self.goToVC("webview")
     }
 
