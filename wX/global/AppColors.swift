@@ -83,6 +83,7 @@ class AppColors {
                 primaryColorBlue
             )
             primaryDarkBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+            //primaryDarkBlueUIColor = wXColor.uiColorInt(19, 36, 62)
             //primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
             //primaryBackgroundBlueUIColor = wXColor.uiColorInt(19, 36, 62)
             primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)

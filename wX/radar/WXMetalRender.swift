@@ -552,6 +552,7 @@ class WXMetalRender {
                 if self.renderFn != nil {
                     self.renderFn!(self.paneNumber)
                 }
+                self.textObj.removeTextView()
                 self.textObj.addTV()
             }
         }

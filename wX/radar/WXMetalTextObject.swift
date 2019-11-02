@@ -194,6 +194,14 @@ final class WXMetalTextObject {
         initTVSpottersLabels()
         initTVObs()
     }
+    
+    func removeTextView() {
+      context.view.subviews.forEach {
+          if $0 is UITextView {
+              $0.removeFromSuperview()
+          }
+      }
+    }
 
     func addTV() {
         if numPanes == 1 {
