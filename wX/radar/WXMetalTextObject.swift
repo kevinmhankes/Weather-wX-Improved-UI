@@ -187,12 +187,14 @@ final class WXMetalTextObject {
     }
 
     func initTV() {
-        if numPanes == 1 {
-            initTVCitiesExt()
-        }
-        initTVCountyLabels()
-        initTVSpottersLabels()
-        initTVObs()
+        //if OGLR != nil {
+            if numPanes == 1 {
+                initTVCitiesExt()
+            }
+            initTVCountyLabels()
+            initTVSpottersLabels()
+            initTVObs()
+        //}
     }
 
     func removeTextLabels() {
@@ -202,14 +204,14 @@ final class WXMetalTextObject {
           }
       }
     }
-    
+
     func refreshTextLabels() {
         removeTextLabels()
         addTV()
     }
 
     func addTV() {
-        if numPanes == 1 {
+        if numPanes == 1 && OGLR != nil {
             addTVCitiesExt()
             addTVCountyLabels()
             addTVObs()
