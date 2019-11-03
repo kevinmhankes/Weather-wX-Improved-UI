@@ -12,11 +12,14 @@ final class WXMetalSurfaceView {
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
     var spottersLabelAl = [TextViewMetal]()
-    //static private let maxZoom: Float = 15.0
     static private let maxZoom: Float = 45.0
     static private let minZoom: Float = 0.03
 
-    static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
+    static func setModifiedZoom(
+        _ newZoom: Float,
+        _ oldZoom: Float,
+        _ wxMetal: WXMetalRender
+    ) {
         let zoomDifference = newZoom / oldZoom
         wxMetal.xPos *= zoomDifference
         wxMetal.yPos *= zoomDifference
@@ -64,11 +67,6 @@ final class WXMetalSurfaceView {
         gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
         switch gestureRecognizer.state {
         case .began:
-            /*uiv.view.subviews.forEach {
-                if $0 is UITextView {
-                    $0.removeFromSuperview()
-                }
-            }*/
             textObj.removeTextLabels()
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:
@@ -142,11 +140,6 @@ final class WXMetalSurfaceView {
                 wxMetal[radarIndex]!.setZoom()
             }
         }
-        /*uiv.view.subviews.forEach {
-            if $0 is UITextView {
-                $0.removeFromSuperview()
-            }
-        }*/
         textObj.refreshTextLabels()
     }
 
@@ -223,11 +216,6 @@ final class WXMetalSurfaceView {
                 wxMetal[radarIndex]!.setZoom()
             }
         }
-        /*uiv.view.subviews.forEach {
-            if $0 is UITextView {
-                $0.removeFromSuperview()
-            }
-        }*/
         textObj.refreshTextLabels()
     }
 
@@ -301,11 +289,6 @@ final class WXMetalSurfaceView {
         gestureRecognizer.scale = 1
         switch gestureRecognizer.state {
         case .began:
-            /*uiv.view.subviews.forEach {
-                if $0 is UITextView {
-                    $0.removeFromSuperview()
-                }
-            }*/
             textObj.removeTextLabels()
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:

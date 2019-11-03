@@ -50,8 +50,7 @@ final class WXGLDownload {
         default:
             ridPrefix = "k"
         }
-        // TODO check for existence in a list
-        if product=="TV0" || product=="TZL" || product=="TR0" || product=="N1P" || product=="NTP" {
+        if product=="TV0" || product=="TZL" || product=="TR0" {
             ridPrefix = ""
         }
         return ridPrefix
