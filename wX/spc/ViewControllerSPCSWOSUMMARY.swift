@@ -41,7 +41,6 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
     }
 
     private func displayContent() {
-        //self.scrollView.backgroundColor = UIColor.white
         let imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         [0, 1, 2, 3].forEach {
@@ -56,7 +55,6 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
         }
         self.bitmaps.enumerated().forEach {
             _ = ObjectImage(
-                //self.stackView,
                 imageStackViewList[$0 / imagesPerRow].view,
                 $1,
                 UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
@@ -88,7 +86,7 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-        }
+            }
         )
     }
 }

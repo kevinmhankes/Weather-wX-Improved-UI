@@ -47,7 +47,6 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     }
 
     func getContent() {
-        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl

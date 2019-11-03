@@ -61,8 +61,6 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        //ActVars.imageViewerUrl = self.urls[sender.data]
-        //self.goToVC("imageviewer")
         ActVars.textViewText = self.listOfText[sender.data]
         self.goToVC("textviewer")
     }

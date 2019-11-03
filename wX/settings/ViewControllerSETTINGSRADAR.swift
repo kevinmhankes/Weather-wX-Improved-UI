@@ -23,7 +23,6 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
     }
 
     @objc override func doneClicked() {
-        //UtilityPolygons.initialized = false
         MyApplication.initPreferences()
         RadarGeometry.initialize()
         GeographyType.regen()

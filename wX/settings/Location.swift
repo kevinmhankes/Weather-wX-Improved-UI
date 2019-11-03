@@ -243,9 +243,6 @@ final class Location {
             Utility.writePref("NWS" + locNum, "")
         }
         Location.refreshLocationData()
-        //print(locNumInt - 1)
-        //let objectForecastPackageCurrentConditions = ObjectForecastPackageCurrentConditions(locNumInt - 1)
-        //MyApplication.locations[locNumInt - 1].updateObservation(objectForecastPackageCurrentConditions.topLine)
         return "Saving location " + locNum + " as " + labelStr
             + " ("  + latLon.latString
             + "," + latLon.lonString

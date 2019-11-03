@@ -85,7 +85,6 @@ class ViewControllerSPCSWOV2: UIwXViewController {
                 ObjectStackView(
                     UIStackView.Distribution.fill,
                     NSLayoutConstraint.Axis.horizontal
-                    //spacing: UIPreferences.stackviewCardSpacing
                 )
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)

@@ -38,7 +38,6 @@ final class UtilitySpcStormReports {
                 damageHeader = "Hail Reports"
             } else {
                 lineChunks = $0.split(",")
-                //print(lineChunks.joined(separator: ","))
                 if lineChunks.count > 7 {
                     output += lineChunks[0]
                     output += " "

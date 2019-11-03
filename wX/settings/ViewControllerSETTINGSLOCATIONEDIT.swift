@@ -68,7 +68,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let stackView = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: textViews + [mapView])
         stackView.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView.view)
-        //let topSpace = 50.0 + UtilityUI.getTopPadding()
         let topSpace = UIPreferences.toolbarHeight + UtilityUI.getTopPadding()
         let bottomSpace = UIPreferences.toolbarHeight + UtilityUI.getBottomPadding()
         stackView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -305,7 +304,6 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 13.0, *) {
-            //let userInterfaceStyle = traitCollection.userInterfaceStyle
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
