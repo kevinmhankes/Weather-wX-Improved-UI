@@ -19,8 +19,6 @@ final class ObjectCardDashAlertItem {
         _ areaDescription: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        // .replace("T", " ").replaceAll(":00-0[0-9]:00")
-        //let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = ObjectTextViewLarge(80.0, text: senderName, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
@@ -46,7 +44,6 @@ final class ObjectCardDashAlertItem {
             tvEnd.view.isHidden = true
         }
         verticalTextConainer.view.isAccessibilityElement = true
-        //verticalTextConainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + //areaDescription
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)

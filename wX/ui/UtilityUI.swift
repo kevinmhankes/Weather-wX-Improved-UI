@@ -150,8 +150,6 @@ public class UtilityUI {
     static func printBounds() {
         _ = UIScreen.main.nativeBounds   // 1125x2436
         _ = UIScreen.main.bounds         // 375x812
-        //print(nativeBounds)
-        //print(bounds)
     }
 
     static func isLandscape() -> Bool {

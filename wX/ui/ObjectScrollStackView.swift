@@ -38,15 +38,6 @@ public class ObjectScrollStackView {
         _ stackView: UIStackView,
         _ toolbar: UIToolbar
         ) {
-
-        /*let view = UIView()
-        view.layer.cornerRadius = 20.0
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        view.layer.shadowRadius = 12.0
-        view.layer.shadowOpacity = 0.7
-        view.addSubview(stackView)*/
-
         self.init(uiv, scrollView, stackView)
         uiv.view.addSubview(toolbar)
         scrollView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true

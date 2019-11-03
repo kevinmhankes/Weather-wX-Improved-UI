@@ -29,7 +29,6 @@ final class ObjectCardCurrentConditions {
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         middleText.tv.isAccessibilityElement = false
-        //bottomText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         let stackViewLocalCC = ObjectStackViewHS()
@@ -39,11 +38,7 @@ final class ObjectCardCurrentConditions {
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
-
         stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
-
-        //horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: //UIPreferences.stackviewCardSpacing - UIPreferences.stackviewCardSpacing).isActive = true
-
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 
@@ -75,33 +70,8 @@ final class ObjectCardCurrentConditions {
     func setText(_ objCc: ObjectForecastPackageCurrentConditions) {
         topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
-        //updateTimeStamp()
         horizontalContainer.stackView.accessibilityLabel = objCc.spokenText
     }
-
-    /*func updateTimeStamp() {
-        let radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
-        if radarTimeStamp != "" {
-            var radarTimeFinal = ""
-            var radarTimeFinalWithDate = ""
-            let radarTimeSplit = radarTimeStamp.split(MyApplication.newline)
-            if radarTimeSplit.count > 0 {
-                radarTimeFinalWithDate = radarTimeSplit[0]
-                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
-                if radarTimeFinalWithDateInParts.count > 1 {
-                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
-                }
-            }
-            bottomText.text = Location.rid + ": " + radarTimeFinal
-            if UtilityTime.isRadarTimeOld(radarTimeFinal) {
-                bottomText.tv.textColor = UIColor.red
-            } else {
-                bottomText.tv.textColor = ColorCompatibility.secondaryLabel
-            }
-        } else {
-            bottomText.text = ""
-        }
-    }*/
 
     func addGestureRecognizer(
         _ gesture1: UITapGestureRecognizer,
