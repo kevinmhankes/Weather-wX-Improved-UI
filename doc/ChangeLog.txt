@@ -16,6 +16,8 @@
 // where is radar Text size used?
 // crash in radar after idle
 // TTS does not work after stopping
+// Help dialogue
+// From other taps, hit esc and goes to main screen
 //
 
 56066 2019_11_02 [FIX] nexrad keyboard zoom in and out did not keep center
