@@ -16,12 +16,6 @@ final class UtilityDownloadNws {
         }
     }
 
-    /*static func get7DayJson(_ location: LatLon) -> String {
-        let newLocation = UtilityMath.latLonFix(location)
-        let url = "https://api.weather.gov/points/" + newLocation.latString + "," + newLocation.lonString + "/forecast"
-        return url.getHtml()
-    }*/
-
     static func getStringFromUrl(_ url: String) -> String {
         let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS "
             + MyApplication.appName

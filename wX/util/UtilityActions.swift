@@ -25,14 +25,12 @@ final class UtilityActions {
         if !Location.isUS {
             ActVars.caRadarImageType = "radar"
             ActVars.caRadarProv = ""
-            //goToVCS(uiv, "caradar")
         } else {
             if UIPreferences.dualpaneRadarIcon {
                 ActVars.wxoglPaneCount = "2"
             } else {
                 ActVars.wxoglPaneCount = "1"
             }
-            //goToVCS(uiv, "wxmetalradar")
         }
     }
 
@@ -118,8 +116,6 @@ final class UtilityActions {
             }
         case "Spotters":
             token = "spotters"
-        //case "Sun Times":
-        //    token = "sunmoondata"
         case "Local Forecast":
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = "https://forecast.weather.gov/MapClick.php?lon="

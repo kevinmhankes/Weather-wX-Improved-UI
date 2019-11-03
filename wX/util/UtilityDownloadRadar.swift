@@ -111,7 +111,6 @@ final class UtilityDownloadRadar {
             var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + watchNumber + ".html").getHtml()
             watPre2 = UtilityString.parseLastMatch(watPre2, MyApplication.pre2Pattern)
             if watPre.contains("Severe Thunderstorm Watch") || watPre2.contains("SEVERE TSTM") {
-            //if watPre.contains("Tornado Watch") {
                 watchLatLon += storeWatchMcdLatLon(watPre2)
             } else {
                 watchLatLonTor += storeWatchMcdLatLon(watPre2)
