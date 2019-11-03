@@ -457,7 +457,7 @@ class WXMetalRender {
         }
         set {
             self.ridStr = newValue
-            checkIfTDWR()
+            checkIfTdwr()
         }
     }
 
@@ -467,14 +467,13 @@ class WXMetalRender {
         }
         set {
             self.radarProduct = newValue
-            checkIfTDWR()
+            checkIfTdwr()
         }
     }
 
-    func checkIfTDWR() {
+    func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
-        // TODO check for existence in list including tilts
-        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR")  || self.product == "N1P"  || self.product == "NTP" {
+        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") {
             self.tdwr = true
         } else {
             self.tdwr = false
