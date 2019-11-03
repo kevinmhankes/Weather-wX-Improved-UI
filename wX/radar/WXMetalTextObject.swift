@@ -76,9 +76,6 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.00 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            #if !targetEnvironment(macCatalyst)
-            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
-            #endif
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach {
@@ -137,9 +134,6 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.00 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            #if !targetEnvironment(macCatalyst)
-            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
-            #endif
             if OGLR.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
@@ -169,9 +163,6 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            #if !targetEnvironment(macCatalyst)
-            //textSize = Double(oglrZoom) * 0.75 * Double(RadarPreferences.radarTextSize)
-            #endif
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
@@ -186,15 +177,14 @@ final class WXMetalTextObject {
         }
     }
 
+    // TODO rename
     func initTV() {
-        //if OGLR != nil {
-            if numPanes == 1 {
-                initTVCitiesExt()
-            }
-            initTVCountyLabels()
-            initTVSpottersLabels()
-            initTVObs()
-        //}
+        if numPanes == 1 {
+            initTVCitiesExt()
+        }
+        initTVCountyLabels()
+        initTVSpottersLabels()
+        initTVObs()
     }
 
     func removeTextLabels() {
@@ -210,6 +200,7 @@ final class WXMetalTextObject {
         addTV()
     }
 
+    // TODO rename
     func addTV() {
         if numPanes == 1 && OGLR != nil {
             addTVCitiesExt()
@@ -230,7 +221,6 @@ final class WXMetalTextObject {
             obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
             spotterLat = 0.0
             spotterLon = 0.0
-            let fontScaleFactorObs = 0.65
             glview.obsAl = []
             var tmpArrObs = [String]()
             var tmpArrObsExt = [String]()
@@ -238,9 +228,6 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            #if !targetEnvironment(macCatalyst)
-            //textSize = Double(oglrZoom) * fontScaleFactorObs * Double(RadarPreferences.radarTextSize)
-            #endif
             if OGLR.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach {
                     if $0 < UtilityMetar.obsArr.count && $0 < UtilityMetar.obsArrExt.count {

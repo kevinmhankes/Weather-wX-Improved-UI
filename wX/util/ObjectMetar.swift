@@ -47,7 +47,6 @@ final class ObjectMetar {
         visibility = metarData.parseFirst("Visibility: (.*?) mile")
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")
         windChill = metarData.parseFirst("Windchill: (.*?) F")
-        //heatIndex = metarData.parseFirst("Heat index: (.*?) F")
         heatIndex = UtilityMath.heatIndex(temperature, relativeHumidity)
         rawMetar = metarData.parseFirst("ob: (.*?)" + MyApplication.newline)
         metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + MyApplication.newline).capitalized
@@ -66,10 +65,6 @@ final class ObjectMetar {
             icon = decodeIconFromMetar(condition, obsClosest)
             condition = condition.replace(";", " and")
         }
-
-        //decodeMetar(rawMetar)
-        // forecast.weather.gov/zipcity.php?inputstring=KSAD
-        //rawMetar += metarSkyCondition + " " + metarWeatherCondition + " icon:" + icon
 
         // METAR Condition Icon
         // SCT Partly Cloudy sct
@@ -217,7 +212,6 @@ final class ObjectMetar {
             timeOfDay = "day"
         }
         let conditionModified = condition.split(";")[0]
-        print("CONDITION: " + conditionModified)
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
         return "https://api.weather.gov/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
     }
