@@ -32,7 +32,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.wfoProd = self.getLSRFromWFO()
+            self.wfoProd = self.getLsrFromWfo()
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -40,12 +40,11 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
     }
 
     func warningSelected(sender: UITapGestureRecognizer) {
-        let tv1 = sender.view!
-        ActVars.usalertsDetailUrl = urls[tv1.tag]
+        ActVars.usalertsDetailUrl = urls[sender.view!.tag]
         self.goToVC("usalertsdetail")
     }
 
-    func getLSRFromWFO() -> [String] {
+    func getLsrFromWfo() -> [String] {
         var lsrArr = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
             + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()

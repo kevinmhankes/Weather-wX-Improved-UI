@@ -42,10 +42,10 @@ final class UtilityHourly {
 
     static func getHourlyString(_ locationNumber: Int) -> [String] {
         let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
-        let header = UtilityString.fixedLengthString("Time", 7)
-            + UtilityString.fixedLengthString("T", 4)
-            + UtilityString.fixedLengthString("Wind", 8)
-            + UtilityString.fixedLengthString("WindDir", 6)
+        let header = "Time".fixedLengthString(7)
+            + "T".fixedLengthString(4)
+            + "Wind".fixedLengthString(8)
+            + "WindDir".fixedLengthString(6)
             +  MyApplication.newline
         let footer = getFooter()
         return [header + parse(html) + footer, html]
@@ -64,11 +64,11 @@ final class UtilityHourly {
             let windSpeed = Utility.safeGet(windSpeeds, $0).replace(" to ", "-")
             let windDirection = Utility.safeGet(windDirections, $0)
             let shortForecast = Utility.safeGet(shortForecasts, $0)
-            string += UtilityString.fixedLengthString(time, 7)
-            string += UtilityString.fixedLengthString(temperature, 4)
-            string += UtilityString.fixedLengthString(windSpeed, 8)
-            string += UtilityString.fixedLengthString(windDirection, 4)
-            string += UtilityString.fixedLengthString(shortenConditions(shortForecast), 18)
+            string += time.fixedLengthString(7)
+            string += temperature.fixedLengthString(4)
+            string += windSpeed.fixedLengthString(8)
+            string += windDirection.fixedLengthString(4)
+            string += shortenConditions(shortForecast).fixedLengthString(18)
             string += MyApplication.newline
         }
         return string

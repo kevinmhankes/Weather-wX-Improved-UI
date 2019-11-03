@@ -9,7 +9,6 @@ final class SevereWarning {
     var text = ""
     private var type = ""
     private var count = 0
-    // gen2 add
     var collapsed = false
     var idList = [String]()
     var areaDescList = [String]()
@@ -18,7 +17,6 @@ final class SevereWarning {
     var eventList = [String]()
     var senderNameList = [String]()
     var warnings = [String]()
-    //
 
     init(_ type: String) {
         self.type = type
@@ -28,7 +26,6 @@ final class SevereWarning {
         return eventList.count
     }
 
-    // gen2 add
     func toggleCollapsed() {
         if collapsed {
             collapsed = false
@@ -51,20 +48,17 @@ final class SevereWarning {
         }
         return name
     }
-    //
 
     func generateString(_ html: String) {
         var wfos = [String]()
         var wfo = ""
         var location = ""
-        // gen2 add
         idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
         areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
         effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
         expiresList = html.parseColumn("\"expires\": \"(.*?)\"")
         eventList = html.parseColumn("\"event\": \"(.*?)\"")
         senderNameList = html.parseColumn("\"senderName\": \"(.*?)\"")
-        //
         warnings = html.parseColumn(WXGLPolygonWarnings.vtecPattern)
         warnings.forEach {
             //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)

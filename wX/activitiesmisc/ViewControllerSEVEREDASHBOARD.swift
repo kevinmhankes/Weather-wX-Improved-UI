@@ -96,22 +96,11 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         let wTor = SevereWarning("tor")
         let wTst = SevereWarning("tst")
         let wFfw = SevereWarning("ffw")
-        //let titles = ["Tornado Warnings:", "Severe Thunderstorm Warnings:", "Flash Flood Warnings:"]
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
-                /*let sArr = warningType.text.split(MyApplication.newline)
-                let visibleText = "(" + String(sArr.count - 1) + ") " + titles[index] + MyApplication.newline + warningType.text
-                let objectTextView = ObjectTextView(
-                    stackView,
-                    visibleText,
-                    UITapGestureRecognizer(target: self, action: #selector(gotoAlerts))
-                )
-                objectTextView.tv.isAccessibilityElement = true
-                objectTextView.tv.accessibilityLabel = visibleText
-                views.append(objectTextView.tv)*/
                 _ = ObjectCardBlackHeaderText(stackView, "(" + String(warningType.getCount()) + ") " + warningType.getName())
                 warningType.eventList.enumerated().forEach { index, _ in
                     if warningType.warnings.count > 0 {
@@ -127,7 +116,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                                 warningType.areaDescList[index],
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
                             )
-                            //views.append(objectCardDashAlertItem.cardStackView.view)
                             self.stackView.addArrangedSubview(objectCardDashAlertItem.cardStackView.view)
                         }
                     }
@@ -142,7 +130,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
         ActVars.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
-        //print("URL" + sender.strData)
         self.goToVC("usalertsdetail")
     }
 
@@ -159,7 +146,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     private func displayContent() {
-        //scrollView.backgroundColor = UIColor.white
         var views = [UIView]()
         var imageCount = 0
         let imagesPerRow = 2
@@ -173,7 +159,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             )
             self.stackView.addArrangedSubview(imageStackViewList[$0].view)
         }
-        //print("COUNT" + String(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count))
         let objectImage = ObjectImage(
             imageStackViewList[0].view,
             usAlertsBitmap,
@@ -184,7 +169,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         objectImage.img.accessibilityLabel = "US Alerts"
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
-
         let objectImage2 = ObjectImage(
             imageStackViewList[0].view,
             bitmap,
@@ -195,7 +179,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         objectImage2.img.accessibilityLabel = "spc storm reports"
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
-
         var index = 0
         var watI = 0
         var mcdI = 0

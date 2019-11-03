@@ -9,6 +9,10 @@ import UIKit
 
 extension String {
 
+    func fixedLengthString(_ length: Int) -> String {
+        return UtilityString.fixedLengthString(self, length)
+    }
+
     func getDataFromUrl() -> Data {
         return UtilityDownload.getDataFromUrl(self)
     }
