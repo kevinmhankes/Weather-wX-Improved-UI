@@ -32,8 +32,6 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             DispatchQueue.main.async {
                 for index in self.objectCards.indices {
                     self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-                    print(index)
-                    print(self.currentConditions[index].topLine)
                     MyApplication.locations[index].updateObservation(self.currentConditions[index].topLine)
                 }
             }

@@ -311,8 +311,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             wxMetal[0]!,
             screenScale
         )
-        textObj.initTV()
-        textObj.addTV()
+        textObj.initializeTextLabels()
+        textObj.addTextLabels()
         self.wxMetal.forEach {
             $0?.textObj = textObj
             $0?.getRadar("")
@@ -631,8 +631,8 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             wxMetal[0]!,
             screenScale
         )
-        textObj.initTV()
-        textObj.addTV()
+        textObj.initializeTextLabels()
+        textObj.addTextLabels()
     }
 
     @objc func animateClicked() {

@@ -213,6 +213,6 @@ final class ObjectMetar {
         }
         let conditionModified = condition.split(";")[0]
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
-        return "https://api.weather.gov/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
+        return MyApplication.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
     }
 }

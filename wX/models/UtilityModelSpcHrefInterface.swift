@@ -50,7 +50,7 @@ final class UtilityModelSpcHrefInterface {
         "guidance_tor_spchazcal_024h",
         "guidance_wind_spchazcal_024h",
         "guidance_hrefct_004h", // NEW 10/19
-        
+
         "500w_mean,500h_mean",
         "700w_mean,700h_mean",
         "850w_mean,850h_mean",

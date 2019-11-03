@@ -64,14 +64,15 @@ final class WXMetalSurfaceView {
         gestureRecognizer.setTranslation(CGPoint.zero, in: uiv.view)
         switch gestureRecognizer.state {
         case .began:
-            uiv.view.subviews.forEach {
+            /*uiv.view.subviews.forEach {
                 if $0 is UITextView {
                     $0.removeFromSuperview()
                 }
-            }
+            }*/
+            textObj.removeTextLabels()
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:
-            textObj.addTV()
+            textObj.addTextLabels()
             wxMetal.forEach {$0!.displayHold = false}
         default:
             break
@@ -141,12 +142,12 @@ final class WXMetalSurfaceView {
                 wxMetal[radarIndex]!.setZoom()
             }
         }
-        uiv.view.subviews.forEach {
+        /*uiv.view.subviews.forEach {
             if $0 is UITextView {
                 $0.removeFromSuperview()
             }
-        }
-        textObj.addTV()
+        }*/
+        textObj.refreshTextLabels()
     }
 
     static func doubleTap(
@@ -222,12 +223,12 @@ final class WXMetalSurfaceView {
                 wxMetal[radarIndex]!.setZoom()
             }
         }
-        uiv.view.subviews.forEach {
+        /*uiv.view.subviews.forEach {
             if $0 is UITextView {
                 $0.removeFromSuperview()
             }
-        }
-        textObj.addTV()
+        }*/
+        textObj.refreshTextLabels()
     }
 
     static func gestureLongPress(
@@ -300,14 +301,15 @@ final class WXMetalSurfaceView {
         gestureRecognizer.scale = 1
         switch gestureRecognizer.state {
         case .began:
-            uiv.view.subviews.forEach {
+            /*uiv.view.subviews.forEach {
                 if $0 is UITextView {
                     $0.removeFromSuperview()
                 }
-            }
+            }*/
+            textObj.removeTextLabels()
             wxMetal.forEach {$0!.displayHold = true}
         case .ended:
-            textObj.addTV()
+            textObj.addTextLabels()
             wxMetal.forEach {$0!.displayHold = false}
         default:
             break

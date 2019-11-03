@@ -61,7 +61,7 @@ final class ObjectSlider {
         "RADAR_DATA_REFRESH_INTERVAL": "Radar data refresh interval",
         "WXOGL_SIZE": "Radar initial view size",
         "RADAR_TEXT_SIZE": "Radar text size in nexrad interface",
-        
+
         "TEXTVIEW_FONT_SIZE": "Defaut font size" ,
         "UI_THEME": "Color theme" ,
         "REFRESH_LOC_MIN": "Refresh interval main screen(min)" ,

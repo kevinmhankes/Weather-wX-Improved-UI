@@ -177,8 +177,7 @@ final class WXMetalTextObject {
         }
     }
 
-    // TODO rename
-    func initTV() {
+    func initializeTextLabels() {
         if numPanes == 1 {
             initTVCitiesExt()
         }
@@ -197,11 +196,10 @@ final class WXMetalTextObject {
 
     func refreshTextLabels() {
         removeTextLabels()
-        addTV()
+        addTextLabels()
     }
 
-    // TODO rename
-    func addTV() {
+    func addTextLabels() {
         if numPanes == 1 && OGLR != nil {
             addTVCitiesExt()
             addTVCountyLabels()

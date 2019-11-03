@@ -554,7 +554,7 @@ class WXMetalRender {
                 }
                 if !isAnimating {
                     self.textObj.removeTextLabels()
-                    self.textObj.addTV()
+                    self.textObj.addTextLabels()
                 }
             }
         }
