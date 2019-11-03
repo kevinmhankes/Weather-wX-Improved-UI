@@ -42,7 +42,6 @@ final class WXMetalNexradLevelData {
     }
 
     func decode() {
-        //print(productCode)
         switch productCode {
         case 153, 154:
             decocodeAndPlotNexradL2()

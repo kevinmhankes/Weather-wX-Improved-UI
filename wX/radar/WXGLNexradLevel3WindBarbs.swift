@@ -11,10 +11,8 @@ class WXGLNexradLevel3WindBarbs {
         var arrWb = [String]()
         if !isGust {
             arrWb = UtilityMetar.obsArrWb
-            //print(arrWb)
         } else {
             arrWb = UtilityMetar.obsArrWbGust
-            //print(arrWb)
         }
         var degree = 0.0
         var nm = 0.0

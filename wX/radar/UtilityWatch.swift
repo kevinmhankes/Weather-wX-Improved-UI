@@ -33,20 +33,12 @@ class UtilityWatch {
                     pixXInit = tmpCoords.lat
                     pixYInit = tmpCoords.lon
                     warningList += [tmpCoords.lat, tmpCoords.lon]
-                    //warningList.append(tmpCoords.lat)
-                    //warningList.append(tmpCoords.lon)
                     if x.count == y.count {
                         (1..<x.count).forEach {
                             let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
                             warningList += [tmpCoords.lat, tmpCoords.lon, tmpCoords.lat, tmpCoords.lon]
-                            //warningList.append(tmpCoords.lat)
-                            //warningList.append(tmpCoords.lon)
-                            //warningList.append(tmpCoords.lat)
-                            //warningList.append(tmpCoords.lon)
                         }
                         warningList += [pixXInit, pixYInit]
-                        //warningList.append(pixXInit)
-                        //warningList.append(pixYInit)
                     }
                 }
             }

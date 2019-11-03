@@ -98,7 +98,6 @@ class ViewControllerNHCSTORM: UIwXViewController {
                 }
                 self.bitmaps.append(Bitmap(url + $0))
             }
-            //self.bitmaps.append(Bitmap(MyApplication.nwsNhcWebsitePrefix + "/tafb_latest/danger_pac_latestBW_sm3.gif"))
             DispatchQueue.main.async {
                self.displayImageContent()
             }
@@ -147,7 +146,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
                 self.displayTopImageContent()
                 self.displayTextContent()
                 self.displayImageContent()
-        }
+            }
         )
     }
 }

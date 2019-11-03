@@ -148,9 +148,6 @@ class UtilityWXMetalPerf {
             radarBlackHole = 4.0
             radarBlackHoleAdd = 4.0
         }
-        //print(radarBuffers.rd.numberOfRadials)
-        //print(radarBuffers.rd.numberOfRangeBins)
-        //print(radarBuffers.rd.binWord.length)
         (0..<radarBuffers.rd.numberOfRadials).forEach { g in
             // since radial_start is constructed natively as opposed to read in
             // from bigendian file we have to use getFloatNatve
@@ -164,7 +161,6 @@ class UtilityWXMetalPerf {
                 angleV = radarBuffers.rd.radialStartAngle.getFloatNative(0)
             }
             (0..<radarBuffers.rd.numberOfRangeBins).forEach { bin in
-                //print(bI)
                 curLevel = radarBuffers.rd.binWord.get(bI)
                 bI += 1
                 if curLevel == level {
@@ -327,9 +323,6 @@ class UtilityWXMetalPerf {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
                 buffers.putColors()
-                //buffers.putColor(red)
-                //buffers.putColor(green)
-                //buffers.putColor(blue)
                 buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmount)))
                 buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
                 buffers.putColors()

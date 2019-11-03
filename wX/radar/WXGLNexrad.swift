@@ -34,11 +34,6 @@ final class WXGLNexrad {
         }
     }
 
-    /*static func isTdwr(_ radarSite: String) -> Bool {
-        print(radarSite)
-        return false
-    }*/
-
     static var radarProductList = [
         "N0Q: Base Reflectivity",
         "N0U: Base Velocity",

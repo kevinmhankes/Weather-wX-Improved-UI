@@ -48,8 +48,6 @@ public class UtilityRadarUI {
         _ uiv: UIViewController,
         _ wxMetal: [WXMetalRender?],
         _ direction: KeyDirections
-        //_ textObj: WXMetalTextObject,
-        //_ gestureRecognizer: UIPanGestureRecognizer
     ) {
         var panSensivity: Float = 500.0
         if wxMetal[0]?.numberOfPanes == 4 {
@@ -175,16 +173,6 @@ public class UtilityRadarUI {
         let height = Double(uiv.view.bounds.size.height)
         var yModified = Double(y)
         var xModified = Double(x)
-        /*if numberOfPanes != 1 {
-            if y > uiv.view.frame.height / 2.0 {
-                yModified -= Double(uiv.view.frame.height) / 2.0
-            }
-        }
-        if numberOfPanes == 4 {
-            if x > uiv.view.frame.width / 2.0 {
-                xModified -= Double(uiv.view.frame.width) / 2.0
-            }
-        }*/
         if numberOfPanes == 2 {
             if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 if y > uiv.view.frame.height / 2.0 {
@@ -244,7 +232,6 @@ public class UtilityRadarUI {
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
         var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
-        //print("LATLON: " + String(newY) + " " + String(newX))
         return LatLon.reversed(newX, newY)
     }
 

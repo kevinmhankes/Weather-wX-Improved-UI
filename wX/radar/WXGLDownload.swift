@@ -180,10 +180,7 @@ final class WXGLDownload {
             return ""
         }
         var fileName = tmpArr[tmpArr.count - 1].split("\n")[0]
-        //let fnPrev = tmpArr[tmpArr.count - 3]
         let fnPrev = tmpArr[tmpArr.count - 2].split("\n")[0]
-        //let fnSize = Int(tmpArr[tmpArr.count - 2]) ?? 1
-        //let fnPrevSize = Int(tmpArr[tmpArr.count - 4]) ?? 1
         let fnSize = Int(sizes[sizes.count - 1]) ?? 1
         let fnPrevSize = Int(sizes[sizes.count - 2]) ?? 1
         let ratio = Double(fnSize) / Double(fnPrevSize)

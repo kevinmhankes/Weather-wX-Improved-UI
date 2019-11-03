@@ -8,14 +8,12 @@ import Foundation
 
 final class UtilityModelNcepInputOutput {
 
-    //static let ncepPattern2 = "([0-9]{10}UTC selected_cell)"
     static let ncepPattern2 = "var current_cycle_white . .([0-9 ]{11} UTC)"
 
     static func getRunTime(_ om: ObjectModel) -> RunTimeData {
         let runData = RunTimeData()
         let url = "https://mag.ncep.noaa.gov/model-guidance-model-parameter.php?group=Model%20Guidance&model="
             + om.model.uppercased() + "&area=" + om.sector + "&ps=area"
-        //let html = url.getHtml().parse(ncepPattern2).replaceAll("UTC selected_cell", "Z")
         let html = url.getHtml().parse(ncepPattern2).replaceAll("UTC", "Z").replaceAll(" ", "")
         var runCompletionDataStr = html.replaceAll("Z", " UTC")
         if runCompletionDataStr != "" {

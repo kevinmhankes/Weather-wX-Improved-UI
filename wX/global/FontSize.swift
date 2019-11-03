@@ -4,8 +4,6 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-// 16 is medium
-
 import UIKit
 
 enum FontSize {
