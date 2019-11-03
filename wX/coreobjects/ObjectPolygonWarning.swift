@@ -15,7 +15,6 @@ class ObjectPolygonWarning {
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
         storage = DataStorage("SEVERE_DASHBOARD_\(type)")
         storage.update()
-        //print("SEVERE_DASHBOARD_\(type)")
     }
 
     var color: Int {return Utility.readPref(prefTokenColor, defaultColors[type]!)}

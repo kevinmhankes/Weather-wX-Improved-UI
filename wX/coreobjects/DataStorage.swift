@@ -23,8 +23,6 @@ class DataStorage {
             return val
         }
         set {
-            //print(UtilityTime.getCurrentLocalTimeAsString()
-            // + " " + preference + " " + newValue.truncate(20).replaceAll("\n", ""))
             val = newValue
             Utility.writePref(preference, newValue)
         }
