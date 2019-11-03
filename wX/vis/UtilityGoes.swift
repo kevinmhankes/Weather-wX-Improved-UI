@@ -86,8 +86,6 @@ final class UtilityGoes {
         default:
             url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector="
             + sector + "&band=" + product + "&length=" + frameCount
-            //url = "https://www.star.nesdis.noaa.gov/GOES/" + satellite + "_sector_band.php?sector="
-            //+ sector + "&band=" + product + "&length=" + frameCount
         }
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")

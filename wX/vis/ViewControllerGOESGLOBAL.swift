@@ -27,7 +27,6 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
-        //self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         self.getContent(index)

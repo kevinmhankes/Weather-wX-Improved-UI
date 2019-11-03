@@ -40,10 +40,7 @@ class ViewControllerGOES16: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        //self.view.addSubview(toolbar)
-        //print(self.view.bounds.width)
         deSerializeSettings()
-        //toolbar.resize()
         self.getContent()
     }
 
