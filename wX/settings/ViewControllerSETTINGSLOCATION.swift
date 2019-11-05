@@ -139,15 +139,13 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
             let name = MyApplication.locations[$0].name
             let observation = MyApplication.locations[$0].observation
             let latLon = MyApplication.locations[$0].lat.truncate(10)
-                + " " + MyApplication.locations[$0].lon.truncate(10)
-            let details = MyApplication.locations[$0].wfo + " " + MyApplication.locations[$0].rid
-                + " " + (MyApplication.locations[$0].state)
+                + ", " + MyApplication.locations[$0].lon.truncate(10)
+            let details = "WFO: " + MyApplication.locations[$0].wfo + " Radar: " + MyApplication.locations[$0].rid
             objectCards.append(ObjectCardLocationItem(
                     self.stackView,
                     name,
                     observation,
-                    latLon,
-                    details,
+                    details + " (" + latLon + ")",
                     UITapGestureRecognizerWithData($0, self, #selector(actionLocationPopup(sender:)))
                 )
             )
