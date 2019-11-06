@@ -301,8 +301,6 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         #if targetEnvironment(macCatalyst)
         screenScale *= 2.0
         #endif
-        print(Double(view.frame.width))
-        print(Double(view.frame.height))
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,

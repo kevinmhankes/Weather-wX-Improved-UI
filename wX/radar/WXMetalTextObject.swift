@@ -11,10 +11,10 @@ final class WXMetalTextObject {
     private var glview = WXMetalSurfaceView()
     var OGLR: WXMetalRender!
     private var numPanes = 0
-    private var cityextTvArrInit = false
-    private var countyLabelsTvArrInit = false
-    private var obsTvArrInit = false
-    private var spottersLabelsTvArrInit = false
+    //private var cityextTvArrInit = false
+    //private var countyLabelsTvArrInit = false
+    //private var obsTvArrInit = false
+    //private var spottersLabelsTvArrInit = false
     private var spotterLat = 0.0
     private var spotterLon = 0.0
     private let cityExtZoom = 30.0
@@ -112,7 +112,7 @@ final class WXMetalTextObject {
     func initTVCitiesExt() {
         if numPanes == 1 {
             if GeographyType.cities.display {
-                cityextTvArrInit = true
+                //cityextTvArrInit = true
                 UtilityCitiesExtended.populateArrays()
             }
         }
@@ -121,7 +121,7 @@ final class WXMetalTextObject {
     func initTVCountyLabels() {
         if GeographyType.countyLabels.display {
             UtilityCountyLabels.populateArrays()
-            countyLabelsTvArrInit = true
+            //countyLabelsTvArrInit = true
         }
     }
 
@@ -146,11 +146,11 @@ final class WXMetalTextObject {
         }
     }
 
-    func initTVSpottersLabels() {
-        if RadarPreferences.radarSpottersLabel {
-            spottersLabelsTvArrInit = true
-        }
-    }
+    //func initTVSpottersLabels() {
+    //    if RadarPreferences.radarSpottersLabel {
+            //spottersLabelsTvArrInit = true
+    //    }
+    //}
 
     func addTVSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
@@ -180,8 +180,8 @@ final class WXMetalTextObject {
             initTVCitiesExt()
         }
         initTVCountyLabels()
-        initTVSpottersLabels()
-        initTVObs()
+        //initTVSpottersLabels()
+        //initTVObs()
     }
 
     func removeTextLabels() {
@@ -206,11 +206,11 @@ final class WXMetalTextObject {
         }
     }
 
-    func initTVObs() {
-        if (PolygonType.OBS.display||PolygonType.WIND_BARB.display) && UtilityMetar.obsArr.count > 0 {
-            obsTvArrInit = true
-        }
-    }
+    //func initTVObs() {
+    //    if (PolygonType.OBS.display||PolygonType.WIND_BARB.display) && UtilityMetar.obsArr.count > 0 {
+            //obsTvArrInit = true
+    //    }
+    //}
 
     func addTVObs() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
