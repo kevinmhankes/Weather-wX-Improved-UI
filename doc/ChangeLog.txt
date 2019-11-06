@@ -20,7 +20,7 @@
 // From other taps, hit esc and goes to main screen
 //
 
-56067 2019_11_05 
+56067 2019_11_06 [ADD] reduce spacing and change background color to more closely mimic iOS design 
 56066 2019_11_05 [FIX] nexrad keyboard zoom in and out did not keep center
 		 [FIX] wind barb gusts were not working
 		 [FIX] San Fran text label not correct - 37.787239,-122.4581,805235

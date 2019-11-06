@@ -54,7 +54,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         super.viewDidLayoutSubviews()
         toolbar.resize(uiv: self)
         fab?.resize()
-        let topSpace = 48 + UtilityUI.getTopPadding()
+        //let topSpace = 48 + UtilityUI.getTopPadding()
+        let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
             self.view.removeConstraints(
                 [
@@ -131,9 +132,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        ).isActive = true
+        //stackView.widthAnchor.constraint(
+        //    equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+        //).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
             self.view.removeConstraints(
                 [
@@ -147,6 +149,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         addLocationSelectionCard()
         self.getContentMaster()
         #if targetEnvironment(macCatalyst)

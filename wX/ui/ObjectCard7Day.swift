@@ -37,11 +37,12 @@ final class ObjectCard7Day {
         bottomText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        horizontalContainer.view.widthAnchor.constraint(
-            equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
-        ).isActive = true
+        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        //horizontalContainer.view.widthAnchor.constraint(
+        //    equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
+        //).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
+        horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
 

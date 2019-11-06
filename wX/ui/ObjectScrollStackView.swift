@@ -49,7 +49,8 @@ public class ObjectScrollStackView {
         scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
         scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
-        let topSpace = 48 + UtilityUI.getTopPadding()
+        //let topSpace = 48 + UtilityUI.getTopPadding()
+        let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
         fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -52.0)
@@ -60,8 +61,10 @@ public class ObjectScrollStackView {
         stackView.alignment = .center
         stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         scrollView.addSubview(stackView)
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 4.0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -4.0).isActive = true
+        //stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 4.0).isActive = true
+        //stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -4.0).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }

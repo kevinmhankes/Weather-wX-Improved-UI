@@ -31,14 +31,8 @@ final class ObjectCardCurrentConditions {
         middleText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
-        let stackViewLocalCC = ObjectStackViewHS()
-        stackViewLocalCC.setupWithPadding()
-        stackView.addArrangedSubview(stackViewLocalCC)
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        horizontalContainer.view.widthAnchor.constraint(
-            equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
-        ).isActive = true
-        stackViewLocalCC.addArrangedSubview(horizontalContainer.view)
+        stackView.addArrangedSubview(horizontalContainer.view)
+        horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 

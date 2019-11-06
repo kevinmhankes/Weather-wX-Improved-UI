@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectStackView {
 
-    private let sV = UIStackView()
+    let sV = UIStackView()
 
     init(
         _ distribution: UIStackView.Distribution,

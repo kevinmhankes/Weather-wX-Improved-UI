@@ -35,7 +35,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
             ]
         ).items
         stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+            equalToConstant: self.view.frame.width
         ).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
@@ -166,7 +166,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
 
     private func displayContent() {
         stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
+            equalToConstant: self.view.frame.width
         ).isActive = true
         updateView()
     }

@@ -12,7 +12,8 @@ class UIPreferences {
     static var toolbarIconPadding: CGFloat = 11
     static var statusBarHeight: CGFloat = 20.0
     static var toolbarIconSpacing: CGFloat = 17.0
-    static var stackviewCardSpacing: CGFloat = 4.0
+    //static var stackviewCardSpacing: CGFloat = 4.0
+    static var stackviewCardSpacing: CGFloat = 1.0
     static var backButtonAnimation = true
     static var dualpaneRadarIcon = false
     static var showMetarInCC = false
@@ -29,7 +30,7 @@ class UIPreferences {
     static var mainScreenRadarFab = true
     static var mainScreenCondense = false
     static var nwsIconSize: Float = 80.0
-    static let sideSpacing: CGFloat = 10.0
+    //static let sideSpacing: CGFloat = 10.0
     static var useAwcRadarMosaic = false
     static var goesUseFullResolutionImages = false
 

@@ -19,7 +19,8 @@ class AppColors {
         alpha: CGFloat(1.0)
     )
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
-    static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+    //static var primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+    static var primaryBackgroundBlueUIColor = ColorCompatibility.separator
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
 
     static func update() {
@@ -43,7 +44,8 @@ class AppColors {
                 primaryColorBlue
             )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
-            primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            //primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(30, 30, 30)
         case "black":
             primaryColorRed = 30.toColor()
@@ -55,7 +57,8 @@ class AppColors {
                 primaryColorBlue
             )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
-            primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            //primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 0, 0)
+            primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(100, 100, 100)
         case "green":
             primaryColorRed = 0.toColor()
@@ -67,7 +70,8 @@ class AppColors {
                 primaryColorBlue
             )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 46, 4)
-            primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 46, 4)
+            //primaryBackgroundBlueUIColor = wXColor.uiColorInt(0, 46, 4)
+            primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(70, 175, 70)
         default:
             primaryColorRed = 46.toColor()
@@ -79,7 +83,8 @@ class AppColors {
                 primaryColorBlue
             )
             primaryDarkBlueUIColor = wXColor.uiColorInt(46, 63, 89)
-            primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+            //primaryBackgroundBlueUIColor = wXColor.uiColorInt(46, 63, 89)
+            primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(88, 121, 169)
         }
     }
