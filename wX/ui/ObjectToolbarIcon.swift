@@ -25,7 +25,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         "ic_flash_on_24dp": "bolt.fill",
         "ic_keyboard_arrow_left_24dp": "chevron.left",
         "ic_keyboard_arrow_right_24dp": "chevron.right",
-        "ic_get_app_24dp", "" // TODO download
+        "ic_get_app_24dp": "arrow.2.circlepath.circle.fill"
     ]
 
     static let iconToString: [IconType: String] = [
@@ -93,16 +93,16 @@ final class ObjectToolbarIcon: UIBarButtonItem {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
 
-            /*let newIconValue = oldIconToNew[iconStr]
+            let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
             if newIconValue != nil {
                 let image = UIImage(
                     systemName: newIconValue!,
                     withConfiguration: configuration
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)  
-            }*/
+            }
 
-            if iconStr == "ic_arrow_back_white_24dp" {
+            /*if iconStr == "ic_arrow_back_white_24dp" {
                 let image = UIImage(
                     systemName: "chevron.left",
                     withConfiguration: configuration
@@ -187,7 +187,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
                     withConfiguration: configuration
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)
-            }
+            }*/
             
             
             
