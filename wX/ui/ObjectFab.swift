@@ -20,17 +20,16 @@ public class ObjectFab {
             print(imageString)
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
-
-            /*let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            let newIconValue = ObjectToolbarIcon.oldIconToNew[imageString]
             if newIconValue != nil {
                 let image = UIImage(
-                    systemName: newIconValue,
+                    systemName: newIconValue!,
                     withConfiguration: configuration
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)  
-            }*/
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
+            }
 
-            if imageString == "ic_flash_on_24dp" {
+            /*if imageString == "ic_flash_on_24dp" {
                 let image = UIImage(
                     systemName: "bolt.fill",
                     withConfiguration: configuration
@@ -58,7 +57,7 @@ public class ObjectFab {
                     withConfiguration: configuration
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
-            }
+            }*/
         }
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }

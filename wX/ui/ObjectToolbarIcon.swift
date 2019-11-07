@@ -99,7 +99,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
                     systemName: newIconValue!,
                     withConfiguration: configuration
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                button.setImage(image, for: .normal)  
+                button.setImage(image, for: .normal)
             }
 
             /*if iconStr == "ic_arrow_back_white_24dp" {
@@ -188,9 +188,6 @@ final class ObjectToolbarIcon: UIBarButtonItem {
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)
             }*/
-            
-            
-            
         }
         customView = button
         button.addTarget(uiv, action: action, for: .touchUpInside)
