@@ -109,10 +109,22 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         )
         statusTextView.text = status
         view.endEditing(true)
+        
+        var latString = latTextView.view.text!
+        var lonString = lonTextView.view.text!
+        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
+            latString = latTextView.view.text!.split(":")[2]
+            lonString = "-" + lonTextView.view.text!.split(":")[1]
+        }
         let locationC = CLLocationCoordinate2D(
-            latitude: Double(latTextView.view.text!) ?? 0.0,
-            longitude: Double(lonTextView.view.text!) ?? 0.0
+            latitude: Double(latString) ?? 0.0,
+            longitude: Double(lonString) ?? 0.0
         )
+        
+        //let locationC = CLLocationCoordinate2D(
+        //    latitude: Double(latTextView.view.text!) ?? 0.0,
+        //    longitude: Double(lonTextView.view.text!) ?? 0.0
+        //)
         UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
