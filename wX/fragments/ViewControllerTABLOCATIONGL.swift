@@ -54,7 +54,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         super.viewDidLayoutSubviews()
         toolbar.resize(uiv: self)
         fab?.resize()
-        //let topSpace = 48 + UtilityUI.getTopPadding()
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
             self.view.removeConstraints(
@@ -72,9 +71,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(
                 equalTo: self.view.topAnchor, constant: topSpace
             )
+            // TODO FIXME no constants -- was 52
             self.objScrollStackView!.fragmentCenterAnchor = scrollView.bottomAnchor.constraint(
                 equalTo: self.view.bottomAnchor, constant: -48.0
-            ) // was 52
+            )
             self.view.addConstraints(
                 [
                     self.objScrollStackView!.fragmentHeightAnchor1!,
@@ -132,9 +132,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
-        //stackView.widthAnchor.constraint(
-        //    equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-        //).isActive = true
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
             self.view.removeConstraints(

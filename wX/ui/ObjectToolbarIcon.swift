@@ -8,6 +8,26 @@ import UIKit
 
 final class ObjectToolbarIcon: UIBarButtonItem {
 
+    static let oldIconToNew: [String: String] = [
+        "ic_arrow_back_white_24dp": "chevron.left",
+        "ic_play_arrow_24dp": "play.fill",
+        "ic_share_24dp": "square.and.arrow.up",
+        "ic_queue_24dp": "folder.badge.plus",
+        "ic_gps_fixed_white_24dp": "location",
+        "ic_delete_24dp": "trash",
+        "ic_search_24dp": "magnifyingglass",
+        "ic_done_24dp": "checkmark",
+        "ic_report_24dp": "exclamationmark.shield.fill",
+        "ic_cloud_24dp": "smoke.fill",
+        "ic_info_outline_24dp": "doc.circle.fill",
+        "ic_more_vert_white_24dp": "ellipsis",
+        "ic_add_box_24dp": "plus.app.fill",
+        "ic_flash_on_24dp": "bolt.fill",
+        "ic_keyboard_arrow_left_24dp": "chevron.left",
+        "ic_keyboard_arrow_right_24dp": "chevron.right",
+        "ic_get_app_24dp", "" // TODO download
+    ]
+
     static let iconToString: [IconType: String] = [
         .share: "ic_share_24dp",
         .play: "ic_play_arrow_24dp",
@@ -71,8 +91,17 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         button.setImage(UIImage(named: iconStr), for: .normal)
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
-            //let color = UIColor.lightGray
             let color = UIColor.white
+
+            /*let newIconValue = oldIconToNew[iconStr]
+            if newIconValue != nil {
+                let image = UIImage(
+                    systemName: newIconValue!,
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)  
+            }*/
+
             if iconStr == "ic_arrow_back_white_24dp" {
                 let image = UIImage(
                     systemName: "chevron.left",

@@ -21,6 +21,7 @@
 
 56067 2019_11_07 [ADD] reduce spacing and change background color to more closely mimic iOS design 
 		 [FIX] CA locations not showing on map in location edit
+		 [FIX] few icons missing for SF Symbols, optimize code to support
 56066 2019_11_05 [FIX] nexrad keyboard zoom in and out did not keep center
 		 [FIX] wind barb gusts were not working
 		 [FIX] San Fran text label not correct - 37.787239,-122.4581,805235

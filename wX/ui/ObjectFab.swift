@@ -20,6 +20,16 @@ public class ObjectFab {
             print(imageString)
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
+
+            /*let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            if newIconValue != nil {
+                let image = UIImage(
+                    systemName: newIconValue,
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)  
+            }*/
+
             if imageString == "ic_flash_on_24dp" {
                 let image = UIImage(
                     systemName: "bolt.fill",
