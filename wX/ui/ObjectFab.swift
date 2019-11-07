@@ -16,6 +16,40 @@ public class ObjectFab {
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
         setColor()
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
+        if #available(iOS 13, *) {
+            print(imageString)
+            let configuration = UIImage.SymbolConfiguration(weight: .medium)
+            let color = UIColor.white
+            if imageString == "ic_flash_on_24dp" {
+                let image = UIImage(
+                    systemName: "bolt.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
+            }
+            if imageString == "ic_add_box_24dp" {
+                let image = UIImage(
+                    systemName: "plus.app.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
+            }
+            
+            if imageString == "ic_keyboard_arrow_left_24dp" {
+                let image = UIImage(
+                    systemName: "chevron.left",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
+            }
+            if imageString == "ic_keyboard_arrow_right_24dp" {
+                let image = UIImage(
+                    systemName: "chevron.right",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
+            }
+        }
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }
 
