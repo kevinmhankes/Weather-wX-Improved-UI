@@ -8,6 +8,7 @@
 // [ADD] wpc day 1 -3 image + text 
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 // [ADD] RadarFile class from flutter/dart port
+// [ADD] rainfall outlook activity
 // [FIX] code cleanup and look for fixed constants
 // [ADD] test on other virt hw
 //
