@@ -20,6 +20,7 @@
 // From other taps, hit esc and goes to main screen
 //
 
+56068 2019_11_07 
 56067 2019_11_07 [ADD] reduce spacing and change background color to more closely mimic iOS design 
 		 [FIX] CA locations not showing on map in location edit
 		 [FIX] few icons missing for SF Symbols, optimize code to support
