@@ -71,27 +71,97 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         button.setImage(UIImage(named: iconStr), for: .normal)
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
+            //let color = UIColor.lightGray
+            let color = UIColor.white
             if iconStr == "ic_arrow_back_white_24dp" {
                 let image = UIImage(
                     systemName: "chevron.left",
                     withConfiguration: configuration
-                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)
             }
             if iconStr == "ic_play_arrow_24dp" {
                 let image = UIImage(
                     systemName: "play.fill",
                     withConfiguration: configuration
-                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)
             }
             if iconStr == "ic_share_24dp" {
                 let image = UIImage(
                     systemName: "square.and.arrow.up",
                     withConfiguration: configuration
-                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 button.setImage(image, for: .normal)
             }
+            if iconStr == "ic_queue_24dp" {
+                let image = UIImage(
+                    systemName: "folder.badge.plus",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_gps_fixed_white_24dp" {
+                let image = UIImage(
+                    systemName: "location",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_delete_24dp" {
+                let image = UIImage(
+                    systemName: "trash",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_search_24dp" {
+                let image = UIImage(
+                    systemName: "magnifyingglass",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_done_24dp" {
+                let image = UIImage(
+                    systemName: "checkmark",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            
+            
+            if iconStr == "ic_report_24dp" {
+                let image = UIImage(
+                    systemName: "exclamationmark.shield.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_cloud_24dp" {
+                let image = UIImage(
+                    systemName: "smoke.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_info_outline_24dp" {
+                let image = UIImage(
+                    systemName: "doc.circle.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_more_vert_white_24dp" {
+                let image = UIImage(
+                    systemName: "ellipsis",
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            
+            
+            
         }
         customView = button
         button.addTarget(uiv, action: action, for: .touchUpInside)
