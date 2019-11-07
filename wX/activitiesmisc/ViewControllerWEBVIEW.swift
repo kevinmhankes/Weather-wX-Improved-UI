@@ -102,6 +102,12 @@ class ViewControllerWEBVIEW: UIwXViewController {
     @objc func browserClicked() {
         let tail = "wx"
         let url = "http://twitter.com/hashtag/" + stateCode.lowercased().split(":")[0] + tail
-        UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        print(ActVars.webViewUrl)
+        if ActVars.webViewUrl.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") ||
+        ActVars.webViewUrl.hasPrefix("https://www.wrh.noaa.gov/mesowest") {
+            UIApplication.shared.open(URL(string: ActVars.webViewUrl)!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        }
     }
 }

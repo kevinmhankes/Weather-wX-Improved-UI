@@ -82,6 +82,10 @@ class ViewControllerTABPARENT: UIViewController {
             self.tabBarController!.selectedIndex = selectedIndex + 1
         }
     }
+    
+    @objc func escape() {
+        self.tabBarController!.selectedIndex = 0
+    }
 
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         objTileMatrix.imgClicked(sender: sender)
@@ -159,6 +163,9 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow,
             modifierFlags: [],
             action: #selector(swipeRight)),
+            UIKeyCommand(input: UIKeyCommand.inputEscape,
+            modifierFlags: [],
+            action: #selector(escape)),
             UIKeyCommand(input: "r", modifierFlags: [], action: #selector(radarClicked)),
             UIKeyCommand(input: "d", modifierFlags: [], action: #selector(dashClicked)),
             UIKeyCommand(input: "c", modifierFlags: [], action: #selector(cloudClicked)),
