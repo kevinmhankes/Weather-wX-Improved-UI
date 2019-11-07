@@ -13,8 +13,8 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         "ic_play_arrow_24dp": "play.fill",
         "ic_share_24dp": "square.and.arrow.up",
         "ic_queue_24dp": "folder.badge.plus",
-        "ic_gps_fixed_white_24dp": "location",
-        "ic_delete_24dp": "trash",
+        "ic_gps_fixed_white_24dp": "location.fill",
+        "ic_delete_24dp": "trash.fill",
         "ic_search_24dp": "magnifyingglass",
         "ic_done_24dp": "checkmark",
         "ic_report_24dp": "exclamationmark.shield.fill",
@@ -26,7 +26,8 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         "ic_keyboard_arrow_left_24dp": "chevron.left",
         "ic_keyboard_arrow_right_24dp": "chevron.right",
         "ic_get_app_24dp": "arrow.2.circlepath.circle.fill",
-        "ic_stop_24dp": "stop.fill"
+        "ic_stop_24dp": "stop.fill",
+        "ic_pause_24dp": "pause.fill"
     ]
 
     static let iconToString: [IconType: String] = [
