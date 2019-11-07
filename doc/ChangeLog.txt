@@ -14,8 +14,6 @@
 // Catalyst todos
 //
 // wxoglsize does not appear to work
-// where is radar Text size used?
-// crash in radar after idle
 // TTS does not work after stopping
 // Help dialogue
 // From other taps, hit esc and goes to main screen
