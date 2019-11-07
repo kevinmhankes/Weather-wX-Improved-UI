@@ -28,36 +28,6 @@ public class ObjectFab {
                 )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
             }
-
-            /*if imageString == "ic_flash_on_24dp" {
-                let image = UIImage(
-                    systemName: "bolt.fill",
-                    withConfiguration: configuration
-                )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
-            }
-            if imageString == "ic_add_box_24dp" {
-                let image = UIImage(
-                    systemName: "plus.app.fill",
-                    withConfiguration: configuration
-                )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
-            }
-            
-            if imageString == "ic_keyboard_arrow_left_24dp" {
-                let image = UIImage(
-                    systemName: "chevron.left",
-                    withConfiguration: configuration
-                )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
-            }
-            if imageString == "ic_keyboard_arrow_right_24dp" {
-                let image = UIImage(
-                    systemName: "chevron.right",
-                    withConfiguration: configuration
-                )?.withTintColor(color, renderingMode: .alwaysOriginal)
-                floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
-            }*/
         }
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
     }

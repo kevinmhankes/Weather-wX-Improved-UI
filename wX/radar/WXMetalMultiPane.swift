@@ -650,7 +650,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     @objc func stopAnimate() {
         if inOglAnim {
             inOglAnim = false
-            animateButton.setImage(UIImage(named: "ic_play_arrow_24dp")!, for: .normal)
+            animateButton.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
             if wxMetal[0] != nil {
                 self.wxMetal.forEach { $0!.getRadar("") }
                 getPolygonWarnings()
@@ -661,7 +661,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     func animateFrameCntClicked(_ frameCnt: Int) {
         if !inOglAnim {
             inOglAnim = true
-            animateButton.setImage(UIImage(named: "ic_stop_24dp")!, for: .normal)
+            animateButton.setImage(ObjectToolbarIcon.getIcon("ic_stop_24dp"), for: .normal)
             getAnimate(frameCnt)
         } else {
             stopAnimate()
