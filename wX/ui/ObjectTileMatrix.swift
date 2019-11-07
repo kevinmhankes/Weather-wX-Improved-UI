@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectImageTileMatrix: NSObject {
+final class ObjectTileMatrix: NSObject {
 
     private var uiv: UIViewController?
     private var menuButton = ObjectToolbarIcon()

@@ -7,6 +7,7 @@
 import UIKit
 
 class UIPreferences {
+    static var tabBarHeight: CGFloat = 48.0
     static var toolbarHeight: CGFloat = 44.0
     static var toolbarIconSize = 26
     static var toolbarIconPadding: CGFloat = 11

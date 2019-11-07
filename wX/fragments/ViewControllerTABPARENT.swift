@@ -10,7 +10,7 @@ class ViewControllerTABPARENT: UIViewController {
 
     var scrollView = UIScrollView()
     var stackView = UIStackView()
-    var objTileMatrix = ObjectImageTileMatrix()
+    var objTileMatrix = ObjectTileMatrix()
     var fab: ObjectFab?
     var objScrollStackView: ObjectScrollStackView?
 

@@ -10,7 +10,7 @@ class ViewControllerTABSPC: ViewControllerTABPARENT {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        objTileMatrix = ObjectImageTileMatrix(self, stackView, .spc)
+        objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
     }
 
     override func viewWillAppear(_ animated: Bool) {

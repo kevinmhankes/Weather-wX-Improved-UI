@@ -71,9 +71,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(
                 equalTo: self.view.topAnchor, constant: topSpace
             )
-            // TODO FIXME no constants -- was 52
             self.objScrollStackView!.fragmentCenterAnchor = scrollView.bottomAnchor.constraint(
-                equalTo: self.view.bottomAnchor, constant: -48.0
+                equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight
             )
             self.view.addConstraints(
                 [
