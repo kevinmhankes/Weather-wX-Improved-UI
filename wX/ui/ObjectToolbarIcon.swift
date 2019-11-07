@@ -69,6 +69,30 @@ final class ObjectToolbarIcon: UIBarButtonItem {
             right: UIPreferences.toolbarIconPadding
         )
         button.setImage(UIImage(named: iconStr), for: .normal)
+        if #available(iOS 13, *) {
+            let configuration = UIImage.SymbolConfiguration(weight: .medium)
+            if iconStr == "ic_arrow_back_white_24dp" {
+                let image = UIImage(
+                    systemName: "chevron.left",
+                    withConfiguration: configuration
+                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_play_arrow_24dp" {
+                let image = UIImage(
+                    systemName: "play.fill",
+                    withConfiguration: configuration
+                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+            if iconStr == "ic_share_24dp" {
+                let image = UIImage(
+                    systemName: "square.and.arrow.up",
+                    withConfiguration: configuration
+                )?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+        }
         customView = button
         button.addTarget(uiv, action: action, for: .touchUpInside)
         let widthConstraint = button.widthAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight)
