@@ -257,6 +257,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
                     case "METAL-RADAR":
                         self.stackView.addArrangedSubview(self.stackViewRadar)
+                        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+                        //self.stackViewRadar.translatesAutoresizingMaskIntoConstraints = false
+                        //self.stackViewRadar.widthAnchor.constraint(equalToConstant: width).isActive = true
+                        //self.stackViewRadar.heightAnchor.constraint(equalToConstant: width).isActive = true
                         self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
@@ -450,8 +454,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         cleanupRadarObjects()
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
-        let screenSize: CGSize = UIScreen.main.bounds.size
-        let screenWidth = Float(screenSize.width)
+        //let screenSize: CGSize = UIScreen.main.bounds.size
+        //let screenWidth = Float(screenSize.width)
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        let screenWidth = width
         let screenHeight = screenWidth
         let carect = CGRect(
             x: 0,

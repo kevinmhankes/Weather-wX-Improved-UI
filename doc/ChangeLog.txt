@@ -19,6 +19,7 @@
 // Help dialogue
 //
 
+56069 2019_11_10 [FIX] nexrad on homescreen bugs
 56068 2019_11_07 [ADD] macOS: From other tabs, hit esc and goes to main screen
 		 [FIX] in obs, launch browser now works
 56067 2019_11_07 [ADD] reduce spacing and change background color to more closely mimic iOS design 
