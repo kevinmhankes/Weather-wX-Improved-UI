@@ -160,7 +160,6 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     }
 
     @objc func getContentMaster() {
-        print("getContentMaster")
         self.oldLocation = Location.latlon
         if Location.isUS {
             self.isUS = true
@@ -256,11 +255,8 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                     case "TXT-7DAY2":
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
                     case "METAL-RADAR":
+                        self.stackViewRadar = ObjectStackViewHS()
                         self.stackView.addArrangedSubview(self.stackViewRadar)
-                        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-                        //self.stackViewRadar.translatesAutoresizingMaskIntoConstraints = false
-                        //self.stackViewRadar.widthAnchor.constraint(equalToConstant: width).isActive = true
-                        //self.stackViewRadar.heightAnchor.constraint(equalToConstant: width).isActive = true
                         self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
@@ -478,10 +474,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             farZ: 100.0
         )
         paneRange.enumerated().forEach { index, _ in
-            metalLayer.append(CAMetalLayer())
-            metalLayer[index]!.device = device
-            metalLayer[index]!.pixelFormat = .bgra8Unorm
-            metalLayer[index]!.framebufferOnly = true
+            if metalLayer.count < 1 {
+                metalLayer.append(CAMetalLayer())
+                metalLayer[index]!.device = device
+                metalLayer[index]!.pixelFormat = .bgra8Unorm
+                metalLayer[index]!.framebufferOnly = true
+            }
         }
         metalLayer[0]!.frame = CGRect(
             x: 0,
@@ -634,6 +632,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.forecastText = []
         self.extraDataCards = []
         self.stackViewHazards.view.isHidden = true
+        self.stackViewRadar.removeFromSuperview()
     }
 
     func setupGestures() {
