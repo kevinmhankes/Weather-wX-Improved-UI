@@ -15,6 +15,7 @@
 // wxoglsize does not appear to work
 // TTS does not work after stopping
 // Help dialogue
+// home screen nexrad on MacOS is too big
 //
 
 56070 2019_11_10 
