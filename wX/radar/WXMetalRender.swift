@@ -843,7 +843,7 @@ class WXMetalRender {
         }
     }
 
-    func resetRidAndGet(_ rid: String) {
+    func resetRidAndGet(_ rid: String, isHomeScreen: Bool = false) {
         self.rid = rid
         xPos = 0.0
         yPos = 0.0
@@ -853,6 +853,9 @@ class WXMetalRender {
         }
         #if targetEnvironment(macCatalyst)
         zoom = 0.40
+        if isHomeScreen {
+            zoom = 0.70
+        }
         #endif
         loadGeometry()
         getRadar("")

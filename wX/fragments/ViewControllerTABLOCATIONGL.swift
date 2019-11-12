@@ -518,7 +518,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
         wxMetal[0]!.setRenderFunction(render(_:))
-        wxMetal[0]!.resetRidAndGet(Location.rid)
+        wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }
 
@@ -742,7 +742,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     func ridChanged(_ rid: String) {
         getPolygonWarnings()
-        wxMetal[0]!.resetRidAndGet(rid)
+        wxMetal[0]!.resetRidAndGet(rid, isHomeScreen: true)
     }
 
     /*private func displayContent() {
