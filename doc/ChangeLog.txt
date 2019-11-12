@@ -16,10 +16,9 @@
 // TTS does not work after stopping
 // Help dialogue
 // home screen nexrad on MacOS is too big
-// settings -> location needs to be width constrained
 //
 
-56070 2019_11_10 
+56070 2019_11_12 [FIX] change ObjectCardPlayListItem,ObjectCardLocationItem to match ObjectSpotterCard
 56069 2019_11_10 [FIX] nexrad on homescreen bugs
 56068 2019_11_07 [ADD] macOS: From other tabs, hit esc and goes to main screen
 		 [FIX] in obs, launch browser now works

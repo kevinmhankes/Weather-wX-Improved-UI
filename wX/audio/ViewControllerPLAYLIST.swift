@@ -34,9 +34,9 @@ class ViewControllerPLAYLIST: UIwXViewController {
                 downloadButton
             ]
         ).items
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width
-        ).isActive = true
+        //stackView.widthAnchor.constraint(
+        //    equalToConstant: self.view.frame.width
+        //).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
@@ -165,9 +165,9 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     private func displayContent() {
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width
-        ).isActive = true
+        //stackView.widthAnchor.constraint(
+        //    equalToConstant: self.view.frame.width
+        //).isActive = true
         updateView()
     }
 
