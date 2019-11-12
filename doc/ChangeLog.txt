@@ -16,6 +16,7 @@
 // TTS does not work after stopping
 // Help dialogue
 // home screen nexrad on MacOS is too big
+// settings -> location needs to be width constrained
 //
 
 56070 2019_11_10 
