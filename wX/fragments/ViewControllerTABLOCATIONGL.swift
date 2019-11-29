@@ -298,6 +298,9 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         updateColors()
+        if objCard7DayCollection != nil && objCard7DayCollection!.objectCardSunTime != nil {
+            objCard7DayCollection!.objectCardSunTime!.update()
+        }
         scrollView.scrollToTop()
         currentTime = UtilityTime.currentTimeMillis64()
         currentTimeSec = currentTime / 1000

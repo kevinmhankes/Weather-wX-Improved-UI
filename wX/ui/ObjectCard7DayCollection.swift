@@ -11,6 +11,7 @@ final class ObjectCard7DayCollection {
     private let scrollView: UIScrollView
     private var sevenDayCardList = [ObjectCard7Day]()
     var locationIndex = 0
+    var objectCardSunTime: ObjectCardSunTime?
 
     init(
         _ stackView: UIStackView,
@@ -43,7 +44,7 @@ final class ObjectCard7DayCollection {
             _ = ObjectCALegal(stackViewLocal7Day)
             numCards += 1
         } else {
-            _ = ObjectCardSunTime(
+            objectCardSunTime = ObjectCardSunTime(
                 stackViewLocal7Day,
                 UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction))
             )

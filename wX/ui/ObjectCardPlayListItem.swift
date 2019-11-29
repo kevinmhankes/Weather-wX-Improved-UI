@@ -39,7 +39,5 @@ final class ObjectCardPlayListItem {
         stackView.addArrangedSubview(sV.view)
         sV.view.addGestureRecognizer(gesture)
         sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-
-        
     }
 }
