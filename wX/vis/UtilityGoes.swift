@@ -156,7 +156,8 @@ final class UtilityGoes {
         "11.2 um (Band 14) Longwave Window - IR": "14",
         "12.3 um (Band 15) Dirty Longwave Window - IR": "15",
         "13.3 um (Band 16) CO2 Longwave - IR": "16",
-        "AirMass - RGB composite based on the data from IR and WV": "AirMass"
+        "AirMass - RGB composite based on the data from IR and WV": "AirMass",
+        "Sandwich RGB - Bands 3 and 13 combo": "Sandwich"
     ]
 
     static let productCodes = [
@@ -177,6 +178,7 @@ final class UtilityGoes {
         "14",
         "15",
         "16",
-        "AirMass"
+        "AirMass",
+        "Sandwich"
     ]
 }

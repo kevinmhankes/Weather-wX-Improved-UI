@@ -93,7 +93,7 @@ class ViewControllerGOES16: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Sector Selection", productButton, UtilityGoes.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilityGoes.sectors, self.sectorChanged(_:))
     }
 
     func productChanged(_ index: Int) {
