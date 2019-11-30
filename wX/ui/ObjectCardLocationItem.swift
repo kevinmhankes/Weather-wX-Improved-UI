@@ -17,7 +17,6 @@ final class ObjectCardLocationItem {
         _ middleLine: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        
         let sV = ObjectStackView(.fill, .vertical, spacing: 0)
         let tvName = ObjectTextView(sV.view, name, isUserInteractionEnabled: false, isZeroSpacing: true)
         tvCurrentConditions = ObjectTextView(sV.view, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
@@ -31,18 +30,5 @@ final class ObjectCardLocationItem {
         stackView.addArrangedSubview(sV.view)
         sV.view.addGestureRecognizer(gesture)
         sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        
-        //let tvName = ObjectTextViewLarge(80.0, text: name, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
-        //tvCurrentConditions = ObjectTextView(observation, isUserInteractionEnabled: false, isZeroSpacing: true)
-        //let tvMiddle = ObjectTextViewSmallGray(80.0, text: middleLine, isUserInteractionEnabled: false)
-        /*let verticalTextConainer = ObjectStackView(
-            .fill,
-            .vertical,
-            spacing: 0,
-            arrangedSubviews: [tvName.view, tvCurrentConditions.view, tvMiddle.view]
-        )
-        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-        stackView.addArrangedSubview(cardStackView.view)
-        cardStackView.view.addGestureRecognizer(gesture)*/
     }
 }
