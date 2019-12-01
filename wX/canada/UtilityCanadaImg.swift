@@ -70,6 +70,7 @@ final class UtilityCanadaImg {
     ]
 
     static func getGoesAnim(_ url: String) -> AnimationDrawable {
+        let frameCount = 15
         let region = url.parse("goes_(.*?)_")
         let imgType = url.parse("goes_.*?_(.*?)_")
         let urlAnim = MyApplication.canadaEcSitePrefix + "/satellite/satellite_anim_e.html?sat=goes&area="
@@ -78,13 +79,14 @@ final class UtilityCanadaImg {
         let times = html.parseColumn(">([0-9]{4}/[0-9]{2}/[0-9]{2} [0-9]{2}h[0-9]{2}m)</option>")
         var bitmaps = [Bitmap]()
         let delay = UtilityImg.getAnimInterval()
-        stride(from: (times.count - 1), to: 1, by: -1).forEach {
-            bitmaps.append(Bitmap(MyApplication.canadaEcSitePrefix + "/data/satellite/goes_"
-                + region
-                + "_"
-                + imgType
-                + "_m_"
-                + times[$0].replace(" ", "_").replace("/", "@") + ".jpg"))
+        stride(from: (times.count - 1), to: (times.count - frameCount), by: -1).forEach {
+            let url = MyApplication.canadaEcSitePrefix + "/data/satellite/goes_"
+            + region
+            + "_"
+            + imgType
+            + "_m_"
+            + times[$0].replace(" ", "_").replace("/", "@") + ".jpg"
+            bitmaps.append(Bitmap(url))
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)
     }
