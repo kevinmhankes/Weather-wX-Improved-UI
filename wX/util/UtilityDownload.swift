@@ -143,16 +143,12 @@ final class UtilityDownload {
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("FPCN48") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
-        } else if prod.contains("FXCN01") {
+        } else if prod.hasPrefix("FXCN01") {
             text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/").getHtmlSep()
             let dateList = UtilityString.parseColumn(text, "href=\"([0-9]{8})/\"")
-            print(dateList)
             let dateString = dateList.last ?? ""
-            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_d1-3_east_" + dateString + "00.html").getHtmlSep().removeHtml()
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20191201/fx_d1-3_east_2019120100.html
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20191201/fx_d4-7_east_2019120100.html
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20191201/fx_d1-3_west_2019120100.html
-            // http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/20191201/fx_d4-7_west_2019120100.html
+            let daysAndRegion = prod.replace("FXCN01_", "").lowercased()
+            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml()
         } else if prod.contains("QPFPFD") {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
