@@ -17,7 +17,7 @@ final class UtilityWpcText {
         ObjectMenuTitle("SPC", 8),
         ObjectMenuTitle("NHC", 6),
         ObjectMenuTitle("Great Lakes", 7),
-        ObjectMenuTitle("Canada", 7),
+        ObjectMenuTitle("Canada", 11),
         ObjectMenuTitle("Space Weather", 6)
     ]
 
@@ -120,15 +120,19 @@ final class UtilityWpcText {
         "GLFSL: Saint Lawrence River",
 
         "focn45: Significant Weather Discussion, PASPC",
+        "fxcn01_d1-3_west: FXCN01 D1-3 WEST",
+        "fxcn01_d4-7_west: FXCN01 D4-7 WEST",
+        "fxcn01_d1-3_east: FXCN01 D1-3 EAST",
+        "fxcn01_d4-7_east: FXCN01 D4-7 EAST",
         "awcn11: Weather Summary S. Manitoba",
         "awcn12: Weather Summary N. Manitoba",
         "awcn13: Weather Summary S. Saskatchewan",
         "awcn14: Weather Summary N. Saskatchewan",
         "awcn15: Weather Summary S. Alberta",
         "awcn16: Weather Summary N. Alberta",
+        
         "swpc3day: NOAA Geomagnetic Activity Observation and Forecast",
         "swpc3daygeo: NOAA Geomagnetic Activity Probabilities",
-
         "swpchigh: Weekly Highlights and Forecasts",
         "swpc27day: 27-day Space Weather Outlook Table",
         "swpcdisc: Forecast Discussion",
