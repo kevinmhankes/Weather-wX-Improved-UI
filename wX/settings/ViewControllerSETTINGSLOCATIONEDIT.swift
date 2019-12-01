@@ -109,18 +109,22 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         )
         statusTextView.text = status
         view.endEditing(true)
-        
         var latString = latTextView.view.text!
         var lonString = lonTextView.view.text!
         if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
-            latString = latTextView.view.text!.split(":")[2]
-            lonString = "-" + lonTextView.view.text!.split(":")[1]
+            print(self.latTextView.text)
+            print(self.lonTextView.text)
+            if latTextView.view.text!.split(":").count > 2 {
+                latString = latTextView.view.text!.split(":")[2]
+            }
+            if self.lonTextView.text.contains(":") {
+                lonString = "-" + lonTextView.view.text!.split(":")[1]
+            }
         }
         let locationC = CLLocationCoordinate2D(
             latitude: Double(latString) ?? 0.0,
             longitude: Double(lonString) ?? 0.0
         )
-        
         //let locationC = CLLocationCoordinate2D(
         //    latitude: Double(latTextView.view.text!) ?? 0.0,
         //    longitude: Double(lonTextView.view.text!) ?? 0.0

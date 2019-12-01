@@ -9,6 +9,8 @@
 // [FIX] add 180 after 11/19/2019 https://www.weather.gov/media/notification/scn19-82tdwr_terminations.pdf
 // [ADD] RadarFile class from flutter/dart port
 // [ADD] rainfall outlook activity
+// [FIX] Canada radar animation not working
+// [FIX] Canada radar site detection not working
 //
 // Catalyst todos
 //
@@ -20,6 +22,7 @@
 56072 2019_12_01 [ADD] new goes product 
 		 [FIX] Canada text product viewer was not clearing views when changing text product
 		 [FIX] Canada alerts were not selectable on MacOS
+		 [FIX] program was crashing when saving canada location
 56071 2019_11_29 [FIX] gmt time was not updating on main screen
 56070 2019_11_12 [FIX] change ObjectCardPlayListItem,ObjectCardLocationItem to match ObjectSpotterCard
 		 [FIX] home screen nexrad on MacOS is too big
