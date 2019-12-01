@@ -89,6 +89,7 @@ final class UtilityCanadaImg {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)
     }
 
+    // FIXME TODO var naming
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
         let html = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + radarSite).getHtmlSep()
         var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
@@ -97,7 +98,8 @@ final class UtilityCanadaImg {
         }
         let radarHtml1hr = html.parse(durationPatMatch)
         var tmpAl = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        var string = tmpAl.map {":/data/radar/detailed/temp_image/" + radarSite + "/" + $0 + ".GIF"}.joined()
+        let radarSiteCode = (tmpAl.first ?? "_").split("_")[0]
+        var string = tmpAl.map {":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF"}.joined()
         tmpAl = html.parseColumn("src=.(/data/radar/.*?GIF)\"")
         string += tmpAl.map {":" + $0}.joined()
         return string
