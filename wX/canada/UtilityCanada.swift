@@ -8,7 +8,7 @@ final class UtilityCanada {
 
     static let products = [
         "focn45: Significant Weather Discussion, PASPC",
-        "fxcn01: FXCN01",
+        //"fxcn01: FXCN01",
         "awcn11: Weather Summary S. Manitoba",
         "awcn12: Weather Summary N. Manitoba",
         "awcn13: Weather Summary S. Saskatchewan",
