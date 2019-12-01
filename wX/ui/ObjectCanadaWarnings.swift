@@ -120,11 +120,12 @@ final class ObjectCanadaWarnings: NSObject {
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")
-            _ = ObjectTextView(
+            let objectTextView = ObjectTextView(
                 stackView,
                 text,
                 UITapGestureRecognizerWithData(index, uiv, #selector(gotoWarning(sender:)))
             )
+            objectTextView.tv.isSelectable = false
         }
         _ = ObjectCALegal(stackView)
     }

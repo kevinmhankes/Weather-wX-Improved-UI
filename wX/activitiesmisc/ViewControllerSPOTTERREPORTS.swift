@@ -44,9 +44,9 @@ class ViewControllerSPOTTERREPORTS: UIwXViewController {
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let idx = sender.data
-        let alert = ObjectPopUp(self, "",spotterReportCountButton)
+        let alert = ObjectPopUp(self, "", spotterReportCountButton)
         let c = UIAlertAction(
-         title: "Show on map", style: .default, handler: { (action) -> Void in self.showMap(idx)})
+         title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(idx)})
         alert.addAction(c)
         alert.finish()
     }
