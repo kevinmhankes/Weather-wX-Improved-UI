@@ -89,38 +89,37 @@ final class UtilityCanadaImg {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)
     }
 
-    // FIXME TODO var naming
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
         let html = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + radarSite).getHtmlSep()
-        var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
+        var durationPattern = "<p>Short .1hr.:</p>(.*?)</div>"
         if duration == "long" {
-            durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"
+            durationPattern = "<p>Long .3hr.:</p>(.*?)</div>"
         }
-        let radarHtml1hr = html.parse(durationPatMatch)
-        var tmpAl = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        let radarSiteCode = (tmpAl.first ?? "_").split("_")[0]
-        var string = tmpAl.map {":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF"}.joined()
-        tmpAl = html.parseColumn("src=.(/data/radar/.*?GIF)\"")
-        string += tmpAl.map {":" + $0}.joined()
+        let radarHtml1hr = html.parse(durationPattern)
+        var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
+        let radarSiteCode = (timeStamps.first ?? "_").split("_")[0]
+        var string = timeStamps.map {":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF"}.joined()
+        timeStamps = html.parseColumn("src=.(/data/radar/.*?GIF)\"")
+        string += timeStamps.map {":" + $0}.joined()
         return string
     }
 
-    static func getRadarAnimOptionsApplied(_ rid: String, _ frameCntStr: String) -> AnimationDrawable {
-        let urlStr = UtilityCanadaImg.getRadarAnimStringArray(rid, frameCntStr)
-        let urlArr = urlStr.split(":")
-        let bitmaps = stride(from: (urlArr.count - 1), to: 1, by: -1).map {
-            getRadarBitmapOptionsApplied(rid, MyApplication.canadaEcSitePrefix + urlArr[$0].replaceAll("detailed/", ""))
+    static func getRadarAnimOptionsApplied(_ radarSite: String, _ frameCntStr: String) -> AnimationDrawable {
+        let url = UtilityCanadaImg.getRadarAnimStringArray(radarSite, frameCntStr)
+        let urls = url.split(":")
+        let bitmaps = stride(from: (urls.count - 1), to: 1, by: -1).map {
+            getRadarBitmapOptionsApplied(radarSite, MyApplication.canadaEcSitePrefix + urls[$0].replaceAll("detailed/", ""))
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
 
-    static func getRadarBitmapOptionsApplied(_ rid: String, _ url: String) -> Bitmap {
+    static func getRadarBitmapOptionsApplied(_ radarSite: String, _ url: String) -> Bitmap {
         let urlImg: String
         if url == "" {
-            let rid1 = rid
-            let radHtml = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + rid1).getHtml()
-            let matchStr = "(/data/radar/.*?GIF)\""
-            let summary = radHtml.parse(matchStr).replaceAll("detailed/", "")
+            let rid1 = radarSite
+            let radarHtml = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + rid1).getHtml()
+            let match = "(/data/radar/.*?GIF)\""
+            let summary = radarHtml.parse(match).replaceAll("detailed/", "")
             urlImg = MyApplication.canadaEcSitePrefix + "/" + summary
         } else {
             urlImg = url
@@ -133,9 +132,9 @@ final class UtilityCanadaImg {
         if sector == "CAN" {
             url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
         }
-        let radHtml = url.getHtmlSep()
-        let matchStr = "(/data/radar/.*?GIF)\""
-        let summary = radHtml.parse(matchStr).replace("detailed/", "")
+        let radarHtml = url.getHtmlSep()
+        let match = "(/data/radar/.*?GIF)\""
+        let summary = radarHtml.parse(match).replace("detailed/", "")
         return Bitmap(MyApplication.canadaEcSitePrefix + "/" + summary)
     }
 
@@ -144,25 +143,25 @@ final class UtilityCanadaImg {
         if sector == "CAN" {
             url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
         }
-        let radHtml = url.getHtmlSep()
+        let radarHtml = url.getHtmlSep()
         var sectorLocal = ""
         if sector == "CAN" {
             sectorLocal = "NAT"
         } else {
             sectorLocal = sector
         }
-        var durationPatMatch = "<p>Short .1hr.:</p>(.*?)</div>"
+        var durationPattern = "<p>Short .1hr.:</p>(.*?)</div>"
         if duration == "long" {
-            durationPatMatch = "<p>Long .3hr.:</p>(.*?)</div>"
+            durationPattern = "<p>Long .3hr.:</p>(.*?)</div>"
         }
-        let radarHtml1hr = radHtml.parse(durationPatMatch)
-        var tmpAl = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        var string = tmpAl.map {":/data/radar/detailed/temp_image/COMPOSITE_"
+        let radarHtml1hr = radarHtml.parse(durationPattern)
+        var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
+        var string = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_"
             + sectorLocal + "/" + $0 + ".GIF"}.joined()
-        tmpAl = radHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
-        string += tmpAl.map {":" + $0}.joined()
-        let urlArr = string.split(":")
-        var urls = urlArr.filter {$0 != ""}.map {MyApplication.canadaEcSitePrefix + $0.replaceAll("detailed/", "")}
+        timeStamps = radarHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
+        string += timeStamps.map {":" + $0}.joined()
+        let tokens = string.split(":")
+        var urls = tokens.filter {$0 != ""}.map {MyApplication.canadaEcSitePrefix + $0.replaceAll("detailed/", "")}
         urls.reverse()
         return UtilityImgAnim.getAnimationDrawableFromUrlList(urls, UtilityImg.getAnimInterval())
     }

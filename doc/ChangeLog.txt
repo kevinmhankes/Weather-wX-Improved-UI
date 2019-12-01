@@ -25,6 +25,7 @@
 		 [FIX] program was crashing when saving canada location
 		 [FIX] Canada text product FXCN01 was not working, not broken down into 4 text products east/west, d1-3 and d4-7
 		 [FIX] Canada radar animation not working
+		 [REF] Canada radar var names
 56071 2019_11_29 [FIX] gmt time was not updating on main screen
 56070 2019_11_12 [FIX] change ObjectCardPlayListItem,ObjectCardLocationItem to match ObjectSpotterCard
 		 [FIX] home screen nexrad on MacOS is too big
