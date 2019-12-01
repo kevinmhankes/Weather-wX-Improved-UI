@@ -73,6 +73,7 @@ class ViewControllerCATEXT: UIwXViewController {
     }
 
     private func displayContent() {
+        self.refreshViews()
         textView = ObjectTextView(stackView)
         _ = ObjectCALegal(stackView)
         if self.html == "" {
