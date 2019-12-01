@@ -148,7 +148,7 @@ final class UtilityDownload {
             let dateList = UtilityString.parseColumn(text, "href=\"([0-9]{8})/\"")
             let dateString = dateList.last ?? ""
             let daysAndRegion = prod.replace("FXCN01_", "").lowercased()
-            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml()
+            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml().replace(MyApplication.newline + MyApplication.newline, MyApplication.newline)
         } else if prod.contains("QPFPFD") {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()

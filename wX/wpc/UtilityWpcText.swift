@@ -130,7 +130,7 @@ final class UtilityWpcText {
         "awcn14: Weather Summary N. Saskatchewan",
         "awcn15: Weather Summary S. Alberta",
         "awcn16: Weather Summary N. Alberta",
-        
+
         "swpc3day: NOAA Geomagnetic Activity Observation and Forecast",
         "swpc3daygeo: NOAA Geomagnetic Activity Probabilities",
         "swpchigh: Weekly Highlights and Forecasts",
