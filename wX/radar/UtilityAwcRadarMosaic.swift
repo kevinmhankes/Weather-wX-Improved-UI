@@ -143,6 +143,8 @@ class UtilityAwcRadarMosaic {
             baseAddOn = "sat/us/"
             imageType = ".jpg"
             topUrlAddOn = "&type=" + product.replace("sat_", "")
+        } else if product.hasPrefix("rad_") {
+          topUrlAddOn = "&type=" + product.replace("rad_", "") + "&date="
         }
         let productUrl = "https://www.aviationweather.gov/" + baseAddOnTopUrl + "plot?region=" + sector + topUrlAddOn
         let html = productUrl.getHtml()

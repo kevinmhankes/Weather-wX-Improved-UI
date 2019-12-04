@@ -27,6 +27,7 @@
 		 [FIX] Canada radar animation not working
 		 [REF] Canada radar var names
 		 [FIX] Canada GOES animation was not working
+		 [FIX] AWC radar - make animation work for all radar products
 56071 2019_11_29 [FIX] gmt time was not updating on main screen
 56070 2019_11_12 [FIX] change ObjectCardPlayListItem,ObjectCardLocationItem to match ObjectSpotterCard
 		 [FIX] home screen nexrad on MacOS is too big
