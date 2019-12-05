@@ -165,9 +165,6 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     private func displayContent() {
-        //stackView.widthAnchor.constraint(
-        //    equalToConstant: self.view.frame.width
-        //).isActive = true
         updateView()
     }
 

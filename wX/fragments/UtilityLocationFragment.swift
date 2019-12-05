@@ -127,7 +127,7 @@ final class UtilityLocationFragment {
     ]
 
     static func extractWindDirection(_ chunk: String) -> String {
-        // todo create extension
+        // TODO FIXME create extension
         let winddir1 = UtilityString.parseLastMatch(chunk, sevenDayWinddir1)
         let winddir2 = UtilityString.parseLastMatch(chunk, sevenDayWinddir2)
         let winddir3 = UtilityString.parseLastMatch(chunk, sevenDayWinddir3)

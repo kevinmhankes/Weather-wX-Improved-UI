@@ -44,7 +44,6 @@ final class UtilityNws {
 
     static let dimens = 86
     static let numHeight = 15
-    //static let textFont = UIFont(name:  "Helvetica Bold", size:  12)! // HelveticaNeue-Bold
     static let textFont = UIFont(name: "HelveticaNeue-Bold", size: 12)! // HelveticaNeue-Bold
 
     static func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
