@@ -50,7 +50,7 @@ final class WXGLDownload {
         default:
             ridPrefix = "k"
         }
-        if product=="TV0" || product=="TZL" || product=="TR0" {
+        if product=="TV0" || product=="TZL" || product=="TR0" || product=="TZ0" {
             ridPrefix = ""
         }
         return ridPrefix

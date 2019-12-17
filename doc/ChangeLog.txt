@@ -19,6 +19,7 @@
 // Help dialogue
 //
 
+56073 2019_12_17 [ADD] TDWR 180 to replace 181 (16 to 256 bits for color)
 56072 2019_12_01 [ADD] new goes product 
 		 [FIX] Canada text product viewer was not clearing views when changing text product
 		 [FIX] Canada alerts were not selectable on MacOS

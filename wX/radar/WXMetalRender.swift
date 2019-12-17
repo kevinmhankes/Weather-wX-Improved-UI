@@ -473,7 +473,7 @@ class WXMetalRender {
 
     func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
-        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") {
+        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ") {
             self.tdwr = true
         } else {
             self.tdwr = false
@@ -486,7 +486,7 @@ class WXMetalRender {
             self.radarProduct = "TZL"
             self.tdwr = true
         }
-        if (self.product == "TZL" || self.product.hasPrefix("TR")) && !ridIsTdwr {
+        if (self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ")) && !ridIsTdwr {
             self.radarProduct = "N0Q"
             self.tdwr = false
         }
@@ -891,7 +891,7 @@ class WXMetalRender {
                 product = newProduct
                 regenerateProductList()
             }
-            if product.hasPrefix("TR") || product.hasPrefix("TV") {
+            if product.hasPrefix("TR") || product.hasPrefix("TV") || product.hasPrefix("TZ") {
                 let firstValue = product[product.startIndex]
                 let middleValue = product[product.index(product.startIndex, offsetBy: 1)]
                 var newProduct = ""

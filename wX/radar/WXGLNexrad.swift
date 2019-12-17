@@ -140,7 +140,7 @@ final class WXGLNexrad {
 
     static var radarProductListTdwr = [
         "TZL: Long Range Digital Base Reflectivity",
-        "TR0: Digital Base Reflectivity",
+        "TZ0: Digital Base Reflectivity",
         "TV0: Digital Base Velocity"
     ]
 
@@ -150,6 +150,7 @@ final class WXGLNexrad {
         case 186: return 1390
         case 78: return 592
         case 80: return 592
+        case 180: return 720
         case 181: return 720
         case 182: return 720
         case 135: return 1200
@@ -182,6 +183,7 @@ final class WXGLNexrad {
         case 172: return binSize13
         case 78: return binSize110
         case 80: return binSize110
+        case 180: return binSize08
         case 181: return binSize08
         case 182: return binSize08
         case 153: return binSize13
