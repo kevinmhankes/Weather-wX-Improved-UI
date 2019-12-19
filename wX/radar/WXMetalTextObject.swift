@@ -192,7 +192,7 @@ final class WXMetalTextObject {
         }
     }
 
-    // TODO FIXME use better method names, more verbose
+    // TODO use better method names, more verbose
     func addTVObs() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
             obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
