@@ -15,9 +15,21 @@
 // wxoglsize does not appear to work
 // TTS does not work after stopping
 // Help dialogue
+// add keyboard shortcuts "2" and "4" for multipane radar
+// add keyboard shortcuts "e" for SPC Mesoanalysis
+// add keyboard shortcuts "n" for NCEP Models
+// add keyboard shortcuts "h" for NHC summary
+// add keyboard shortcuts "i" for National images
+// add keyboard shortcuts "t" for National text
+// add keyboard shortcuts "l" for Lightning
+// add keyboard shortcuts "s" for Settings
+// add keyboard shortcuts "w" for US Alerts
+// document in help keyboard shortcuts
+// c - vis, r - radar, a - wfo text, d - severe dashboard
+// m - menu, radar: arrows, keypad, animate
 //
 
-56074 2019_12_19 
+56074 2019_12_20
 56073 2019_12_17 [ADD] TDWR 180 to replace 181 (16 to 256 bits for color)
 56072 2019_12_01 [ADD] new goes product 
 		 [FIX] Canada text product viewer was not clearing views when changing text product
