@@ -20,7 +20,8 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
     ]
     let localChoicesImages = [
         "CARAIN: Local CA Radar",
-        "WEATHERSTORY: Local NWS Weather Story"
+        "WEATHERSTORY: Local NWS Weather Story",
+        "WFOWARNINGS: Local NWS Office Warnings"
     ]
     var homescreenFav = [String]()
     var addImageButton = ObjectToolbarIcon()

@@ -29,7 +29,8 @@
 // m - menu, radar: arrows, keypad, animate
 //
 
-56074 2019_12_20
+56074 2019_12_20 [ADD] WFO warnings image to homescreen
+		 [ADD] better obs data in us_metar3.txt stations_us4.txt via getObs.py
 56073 2019_12_17 [ADD] TDWR 180 to replace 181 (16 to 256 bits for color)
 56072 2019_12_01 [ADD] new goes product 
 		 [FIX] Canada text product viewer was not clearing views when changing text product

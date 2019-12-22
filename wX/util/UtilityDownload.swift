@@ -222,6 +222,9 @@ final class UtilityDownload {
         case "WEATHERSTORY":
             needsBitmap = false
             bitmap = Bitmap("https://www.weather.gov/images/" + Location.wfo.lowercased() + "/wxstory/Tab2FileL.png")
+        case "WFOWARNINGS":
+            needsBitmap = false
+            bitmap = Bitmap("https://www.weather.gov/wwamap/png/" + Location.wfo.lowercased() + ".png")
         case "RAD_1KM": break
         case "IR_2KM":
             needsBitmap = false
