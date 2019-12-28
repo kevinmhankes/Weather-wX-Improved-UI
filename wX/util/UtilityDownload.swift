@@ -248,11 +248,18 @@ final class UtilityDownload {
                 product = Utility.readPref(prefTokenProduct, product)
                 bitmap = UtilityAwcRadarMosaic.get(sector, product)
             }
-        case "FMAP":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaa.gif"
+        case "FMAPD1":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
+        case "FMAPD2":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
+        case "FMAPD3":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
         case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
         case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
         case "FMAP36": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
         case "FMAP48": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
+        case "FMAP72": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf072.gif"
+        case "FMAP96": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf096.gif"
+        case "FMAP120": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf120.gif"
+        case "FMAP144": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf144.gif"
+        case "FMAP168": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf168.gif"
         case "FMAP3D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
         case "FMAP4D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
         case "FMAP5D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
