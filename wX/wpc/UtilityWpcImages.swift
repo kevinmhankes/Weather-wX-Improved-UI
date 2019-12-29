@@ -8,7 +8,7 @@ final class UtilityWpcImages {
 
    static let titles = [
         ObjectMenuTitle("Surface Analysis", 7),
-        ObjectMenuTitle("Forecast Maps", 17),
+        ObjectMenuTitle("Forecast Maps", 22),
         ObjectMenuTitle("QPF", 27),
         ObjectMenuTitle("Snow / Ice", 21),
         ObjectMenuTitle("National Digital Forecast Database", 15),
