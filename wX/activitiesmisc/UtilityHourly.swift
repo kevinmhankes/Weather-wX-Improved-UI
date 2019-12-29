@@ -82,8 +82,9 @@ final class UtilityHourly {
     }
 
     static func translateTime(_ originalTime: String) -> String {
-        let year = UtilityTime.getYear()
+        //let year = UtilityTime.getYear()
         let originalTimeComponents = originalTime.replace("T", "-").split("-")
+        let year = Int(originalTimeComponents[0]) ?? 0
         let month = Int(originalTimeComponents[1]) ?? 0
         let day = Int(originalTimeComponents[2]) ?? 0
         let hour = Int(originalTimeComponents[3].replace(":00:00", "")) ?? 0
