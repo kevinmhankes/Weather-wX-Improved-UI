@@ -248,6 +248,9 @@ final class UtilityDownload {
                 product = Utility.readPref(prefTokenProduct, product)
                 bitmap = UtilityAwcRadarMosaic.get(sector, product)
             }
+        case "USWARN": url = "https://forecast.weather.gov/wwamap/png/US.png"
+        case "AKWARN": url = "https://forecast.weather.gov/wwamap/png/ak.png"
+        case "HIWARN": url = "https://forecast.weather.gov/wwamap/png/hi.png"
         case "FMAPD1":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
         case "FMAPD2":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
         case "FMAPD3":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
