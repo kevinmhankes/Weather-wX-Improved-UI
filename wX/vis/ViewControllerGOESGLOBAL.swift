@@ -29,6 +29,10 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
+        if index >= UtilityGoesFullDisk.labels.count {
+            index = UtilityGoesFullDisk.labels.count - 1
+        }
+        print(index)
         self.getContent(index)
     }
 
