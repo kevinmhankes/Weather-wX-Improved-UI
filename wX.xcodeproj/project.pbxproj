@@ -133,6 +133,7 @@
 		03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */; };
 		03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A959229C7145004A88EB /* UtilitySwoD1.swift */; };
 		03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */; };
+		03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
 		03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */; };
 		03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */; };
@@ -522,6 +523,7 @@
 		03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadMcd.swift; sourceTree = "<group>"; };
 		03F8A959229C7145004A88EB /* UtilitySwoD1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySwoD1.swift; sourceTree = "<group>"; };
 		03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUSImgNwsMosaic.swift; sourceTree = "<group>"; };
+		03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHomeScreen.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
 		03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNwsIcon.swift; sourceTree = "<group>"; };
 		03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterCard.swift; sourceTree = "<group>"; };
@@ -993,6 +995,7 @@
 			isa = PBXGroup;
 			children = (
 				F02841801DEFBC6000474084 /* Location.swift */,
+				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
 				F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */,
 				F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */,
@@ -1707,6 +1710,7 @@
 				F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */,
 				F0B335AA1DA3FD960035BD36 /* UtilityImg.swift in Sources */,
 				F0B335181DA3FD1C0035BD36 /* SevereNotice.swift in Sources */,
+				03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */,
 				F085F4091DC5615600477188 /* ViewControllerOBSSITES.swift in Sources */,
 				F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */,
 				03F3EB6A22993B870056A56D /* UtilitySpcMeso.swift in Sources */,

@@ -44,4 +44,6 @@ class ActVars {
     static var mapKitLat = ""
     static var mapKitLon = ""
     static var mapKitRadius = 0.0
+    static var wpcImagesToken = ""
+    static var wpcImagesFromHomeScreen = false
 }

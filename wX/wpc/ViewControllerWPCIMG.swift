@@ -28,7 +28,12 @@ class ViewControllerWPCIMG: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
-        self.getContent(index)
+        if ActVars.wpcImagesFromHomeScreen {
+            self.getContentFromHomescreen()
+            ActVars.wpcImagesFromHomeScreen = false
+        } else {
+            self.getContent(index)
+        }
     }
 
     @objc func willEnterForeground() {
@@ -47,6 +52,21 @@ class ViewControllerWPCIMG: UIwXViewController {
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
                 Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
+            }
+        }
+    }
+
+    func getContentFromHomescreen() {
+        let titles = GlobalArrays.nwsImageProducts.filter {
+            $0.hasPrefix(ActVars.wpcImagesToken + ":")
+        }
+        if titles.count > 0 {
+            self.productButton.title = titles[0].split(":")[1]
+        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            let bitmap = UtilityDownload.getImageProduct(ActVars.wpcImagesToken)
+            DispatchQueue.main.async {
+                self.image.setBitmap(bitmap)
             }
         }
     }

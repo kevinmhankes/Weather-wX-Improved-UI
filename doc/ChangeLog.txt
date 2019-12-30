@@ -8,8 +8,6 @@
 // [FIX] Canada radar code names have changed
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
-// [ADD] new nws obs
-// [FIX] make sure homescreen images go to correct viewer (esp WPCImaegs)
 //
 // Catalyst todos
 //
@@ -35,6 +33,7 @@
 		 [FIX] Hourly was not correct during week of new years
 		 [ADD] USWarn as homescreen option
 		 [FIX] Fulldisk global viewer - remove first four images (2 are stale)
+		 [FIX] make sure homescreen images go to correct viewer (esp WPCImaegs)
 56074 2019_12_20 [ADD] WFO warnings image to homescreen
 		 [ADD] better obs data in us_metar3.txt stations_us4.txt via getObs.py
 56073 2019_12_17 [ADD] TDWR 180 to replace 181 (16 to 256 bits for color)
