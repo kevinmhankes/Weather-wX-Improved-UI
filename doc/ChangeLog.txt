@@ -17,7 +17,8 @@
 // add keyboard shortcuts "2" and "4" for multipane radar
 // add keyboard shortcuts "e" for SPC Mesoanalysis
 // add keyboard shortcuts "n" for NCEP Models
-// add keyboard shortcuts "h" for NHC summary
+// add keyboard shortcuts "h" for hourly
+// add keyboard shortcuts "t" for NHC
 // add keyboard shortcuts "i" for National images
 // add keyboard shortcuts "t" for National text
 // add keyboard shortcuts "l" for Lightning
