@@ -26,7 +26,7 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         if index >= UtilityGoesFullDisk.labels.count {
@@ -58,11 +58,11 @@ class ViewControllerGOESGLOBAL: UIwXViewController {
     }
 
     func showAnimateButton() {
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, animateButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
     }
 
     func hideAnimateButton() {
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
     }
 
     @objc func productClicked() {

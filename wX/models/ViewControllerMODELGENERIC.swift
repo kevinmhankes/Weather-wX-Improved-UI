@@ -36,7 +36,7 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         toolbarTop.items = ObjectToolbarItems(
             [
                 statusButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 modelButton,
                 sectorButton,
                 runButton,
@@ -72,11 +72,11 @@ class ViewControllerMODELGENERIC: UIwXViewController {
         }
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        fixedSpace.width = UIPreferences.toolbarIconSpacing
+        GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 productButton,
                 timeButton
             ]

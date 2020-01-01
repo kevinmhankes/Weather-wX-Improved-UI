@@ -26,7 +26,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 stateButton,
                 playButton,
                 shareButton,

@@ -27,7 +27,15 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         UtilityMap.setupMap(mapView, GlobalArrays.soundingSites, "SND_")
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, fixedSpace, siteButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                GlobalVariables.fixedSpace,
+                siteButton,
+                shareButton
+            ]
+        ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)

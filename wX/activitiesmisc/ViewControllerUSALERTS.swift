@@ -27,7 +27,7 @@ class ViewControllerUSALERTS: UIwXViewController {
         filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
         filterGesture = UITapGestureRecognizer(target: self, action: #selector(filterClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

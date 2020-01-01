@@ -24,7 +24,7 @@ class ViewControllerWPCMPD: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         mpdNumber = ActVars.wpcMpdNumber
         if mpdNumber != "" {

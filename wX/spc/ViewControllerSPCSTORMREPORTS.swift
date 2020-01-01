@@ -32,7 +32,7 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
         filterButton = ObjectToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, filterButton, lsrButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, lsrButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.displayPreContent()
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay + ".gif"

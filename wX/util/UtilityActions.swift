@@ -65,6 +65,24 @@ final class UtilityActions {
         }
     }
 
+    static func multiPaneRadarClicked(_ uiv: UIViewController, _ paneCount: String) {
+           var token = ""
+           switch paneCount {
+           case "2":
+               ActVars.wxoglPaneCount = "2"
+               token = "wxmetalradar"
+           case "4":
+               ActVars.wxoglPaneCount = "4"
+               token = "wxmetalradar"
+           default: break
+           }
+           UtilityActions.goToVCS(uiv, token)
+       }
+
+   static func genericClicked(_ uiv: UIViewController, _ token: String) {
+       UtilityActions.goToVCS(uiv, token)
+   }
+
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         var token = ""
         if menuItem.hasPrefix("Help Mode") {
@@ -195,31 +213,31 @@ final class UtilityActions {
 
     static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
         var myUtterance = AVSpeechUtterance(string: "")
-        if !globalSynth.isSpeaking {
+        if !GlobalVariables.globalSynth.isSpeaking {
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(text))
-            globalSynth.speak(myUtterance)
-        } else if globalSynth.isPaused {
-            globalSynth.continueSpeaking()
+            GlobalVariables.globalSynth.speak(myUtterance)
+        } else if GlobalVariables.globalSynth.isPaused {
+            GlobalVariables.globalSynth.continueSpeaking()
         } else {
-            globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
+            GlobalVariables.globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
         }
     }
 
     static func playClicked(_ textView: UITextView, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        if !globalSynth.isSpeaking {
+        if !GlobalVariables.globalSynth.isSpeaking {
             print("speak")
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(textView.text))
-            globalSynth.speak(myUtterance)
+            GlobalVariables.globalSynth.speak(myUtterance)
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
-        } else if globalSynth.isPaused {
+        } else if GlobalVariables.globalSynth.isPaused {
             print("continue speaking")
-            globalSynth.continueSpeaking()
+            GlobalVariables.globalSynth.continueSpeaking()
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
         } else {
             print("pause speaking")
-            globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
+            GlobalVariables.globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }
     }
@@ -227,15 +245,15 @@ final class UtilityActions {
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        if !globalSynth.isSpeaking {
+        if !GlobalVariables.globalSynth.isSpeaking {
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
-            globalSynth.speak(myUtterance)
+            GlobalVariables.globalSynth.speak(myUtterance)
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
-        } else if globalSynth.isPaused {
-            globalSynth.continueSpeaking()
+        } else if GlobalVariables.globalSynth.isPaused {
+            GlobalVariables.globalSynth.continueSpeaking()
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
         } else {
-            globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
+            GlobalVariables.globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }
     }
@@ -244,17 +262,17 @@ final class UtilityActions {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
-        globalSynth.speak(myUtterance)
+        GlobalVariables.globalSynth.speak(myUtterance)
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
 
     static func stopAudio(_ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         let pauseIcon = "ic_pause_24dp"
-        globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
+        GlobalVariables.globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
 
     static func ttsPrep() {
-        globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
+        GlobalVariables.globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
     }
 }

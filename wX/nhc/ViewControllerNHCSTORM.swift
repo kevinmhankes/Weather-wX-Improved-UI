@@ -67,7 +67,7 @@ class ViewControllerNHCSTORM: UIwXViewController {
         baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         self.view.addSubview(toolbar)
         _ = ObjectScrollStackView(self, scrollView, stackView)
         self.getContent()

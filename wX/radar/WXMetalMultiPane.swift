@@ -184,7 +184,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
             }
             var items = [UIBarButtonItem]()
-            items.append(flexBarButton)
+            items.append(GlobalVariables.flexBarButton)
             paneRange.forEach {
                 items.append(siteButton[$0])
             }
@@ -232,7 +232,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         }
-        toolbarButtons += [flexBarButton, animateButton, fixedSpace]
+        toolbarButtons += [GlobalVariables.flexBarButton, animateButton, GlobalVariables.fixedSpace]
         paneRange.forEach {
             toolbarButtons.append(productButton[$0])
         }

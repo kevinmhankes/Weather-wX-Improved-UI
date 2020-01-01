@@ -22,7 +22,14 @@ class ViewControllerSPCCOMPMAP: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                productButton,
+                shareButton
+            ]
+        ).items
         image = ObjectTouchImageView(self, toolbar)
         self.view.addSubview(toolbar)
         deSerializeSettings()

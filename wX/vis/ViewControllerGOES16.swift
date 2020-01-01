@@ -31,7 +31,7 @@ class ViewControllerGOES16: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         toolbar.items = ObjectToolbarItems([
             doneButton,
-            flexBarButton,
+            GlobalVariables.flexBarButton,
             sectorButton,
             productButton,
             animateButton,

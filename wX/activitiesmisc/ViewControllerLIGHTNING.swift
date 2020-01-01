@@ -29,7 +29,7 @@ class ViewControllerLIGHTNING: UIwXViewController {
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(ViewControllerLIGHTNING.shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton, timeButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref("LIGHTNING_SECTOR", sector)

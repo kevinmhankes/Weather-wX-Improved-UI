@@ -40,13 +40,13 @@ class ViewControllerSPCMESO: UIwXViewController {
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         toolbarTop.items = ObjectToolbarItems(
             [
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 paramButton,
-                fixedSpace,
+                GlobalVariables.fixedSpace,
                 layerButton,
-                fixedSpace,
+                GlobalVariables.fixedSpace,
                 animateButton,
-                fixedSpace,
+                GlobalVariables.fixedSpace,
                 shareButton
             ]
         ).items
@@ -59,7 +59,7 @@ class ViewControllerSPCMESO: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 sfcButton,
                 uaButton,
                 cpeButton,

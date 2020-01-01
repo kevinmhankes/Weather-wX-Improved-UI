@@ -8,7 +8,7 @@
 // [FIX] Canada radar code names have changed
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
-// [FIX] start program, enter nexrad, exit, turn on a warning of some type - after that need to restart program to see it take effect (caused by static timer in warnings, need to reset timer if settings change)
+// [FIX] start program, enter nexrad, exit, turn on a warning/watch/mcd/mpd of some type - after that need to restart program to see it take effect (caused by static timer in warnings, need to reset timer if settings change)
 //
 // Catalyst todos
 //
@@ -30,12 +30,14 @@
 // m - menu, radar: arrows, keypad, animate
 //
 
-56075 2019_12_30 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
+56075 2020_01_01 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
 		 [FIX] WPC Fmap Day1 was not working in homescreen
 		 [FIX] Hourly was not correct during week of new years
 		 [ADD] USWarn as homescreen option
 		 [FIX] Fulldisk global viewer - remove first four images (2 are stale)
 		 [FIX] make sure homescreen images go to correct viewer (esp WPCImaegs)
+		 [ADD] shortcuts for 2,4,w
+		 [REF] Move GlobalVariables into an actual GlobalVariables class for scope reasons
 56074 2019_12_20 [ADD] WFO warnings image to homescreen
 		 [ADD] better obs data in us_metar3.txt stations_us4.txt via getObs.py
 56073 2019_12_17 [ADD] TDWR 180 to replace 181 (16 to 256 bits for color)

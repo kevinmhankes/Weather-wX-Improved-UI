@@ -111,6 +111,18 @@ class ViewControllerTABPARENT: UIViewController {
         objTileMatrix.dashClicked()
     }
 
+    @objc func warningsClicked() {
+        objTileMatrix.genericClicked("usalerts")
+    }
+
+    @objc func dualPaneRadarClicked() {
+        objTileMatrix.multiPaneRadarClicked("2")
+    }
+
+    @objc func quadPaneRadarClicked() {
+        objTileMatrix.multiPaneRadarClicked("4")
+    }
+
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
@@ -168,7 +180,10 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: "d", modifierFlags: [], action: #selector(dashClicked)),
             UIKeyCommand(input: "c", modifierFlags: [], action: #selector(cloudClicked)),
             UIKeyCommand(input: "a", modifierFlags: [], action: #selector(wfotextClicked)),
-            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(menuClicked))
+            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(menuClicked)),
+            UIKeyCommand(input: "2", modifierFlags: [], action: #selector(dualPaneRadarClicked)),
+            UIKeyCommand(input: "4", modifierFlags: [], action: #selector(quadPaneRadarClicked)),
+            UIKeyCommand(input: "w", modifierFlags: [], action: #selector(warningsClicked)),
         ]
     }
 }

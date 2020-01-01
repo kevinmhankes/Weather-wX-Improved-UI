@@ -27,7 +27,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 wfotextButton,
                 addButton,
                 playButton,
@@ -92,8 +92,8 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     func delete(selection: Int) {
-        editor.removeObject("PLAYLIST_" + playlistItems[selection])
-        editor.removeObject("PLAYLIST_" + playlistItems[selection] + "_TIME")
+        GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection])
+        GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection] + "_TIME")
         playlistItems.remove(at: selection)
         updateView()
     }

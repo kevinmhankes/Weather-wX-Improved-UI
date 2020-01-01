@@ -33,7 +33,7 @@ class ViewControllerCARADAR: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 productButton,
                 cloudButton,
                 radarButton,

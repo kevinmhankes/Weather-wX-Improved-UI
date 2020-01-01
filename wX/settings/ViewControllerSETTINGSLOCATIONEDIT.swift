@@ -43,8 +43,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let searchButton = ObjectToolbarIcon(self, .search, #selector(searchClicked))
         let deleteButton = ObjectToolbarIcon(self, .delete, #selector(deleteClicked))
         let gpsButton = ObjectToolbarIcon(self, .gps, #selector(gpsClicked))
-        let items = [doneButton, flexBarButton, searchButton, gpsButton, saveButton]
-        var itemsBottom = [doneButton2, flexBarButton, caButton]
+        let items = [doneButton, GlobalVariables.flexBarButton, searchButton, gpsButton, saveButton]
+        var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, caButton]
         if Location.numLocations > 1 {
             itemsBottom.append(deleteButton)
         }

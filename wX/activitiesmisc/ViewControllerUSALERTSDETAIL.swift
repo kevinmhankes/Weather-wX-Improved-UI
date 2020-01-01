@@ -24,7 +24,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

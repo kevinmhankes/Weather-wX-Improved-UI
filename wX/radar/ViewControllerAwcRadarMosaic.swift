@@ -34,7 +34,7 @@ class ViewControllerAwcRadarMosaic: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 productButton,
                 sectorButton,
                 animateButton,

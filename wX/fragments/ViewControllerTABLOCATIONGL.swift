@@ -108,7 +108,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems(
                 [
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     dashButton,
                     wfoTextButton,
                     cloudButton,
@@ -118,7 +118,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         } else {
             toolbar.items = ObjectToolbarItems(
                 [
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     dashButton,
                     wfoTextButton,
                     cloudButton,
@@ -293,6 +293,18 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
 
     @objc override func dashClicked() {
         UtilityActions.dashClicked(self)
+    }
+
+    @objc override func warningsClicked() {
+        UtilityActions.genericClicked(self, "usalerts")
+    }
+
+    @objc override func dualPaneRadarClicked() {
+        UtilityActions.multiPaneRadarClicked(self, "2")
+    }
+
+    @objc override func quadPaneRadarClicked() {
+        UtilityActions.multiPaneRadarClicked(self, "4")
     }
 
     @objc override func willEnterForeground() {

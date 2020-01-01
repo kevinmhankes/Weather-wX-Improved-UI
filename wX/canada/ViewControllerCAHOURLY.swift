@@ -18,7 +18,7 @@ class ViewControllerCAHOURLY: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

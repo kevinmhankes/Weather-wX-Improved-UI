@@ -24,7 +24,7 @@ class ViewControllerADHOCLOCATION: UIwXViewController {
         )
         ActVars.vc = self
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, titleButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         location = ActVars.adhocLocation

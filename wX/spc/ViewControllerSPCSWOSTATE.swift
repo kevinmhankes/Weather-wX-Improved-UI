@@ -23,7 +23,7 @@ class ViewControllerSPCSWOSTATE: UIwXViewController {
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         stateButton = ObjectToolbarIcon(self, #selector(stateClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, stateButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         self.view.addSubview(toolbar)
         day = ActVars.spcswoDay

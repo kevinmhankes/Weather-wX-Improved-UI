@@ -29,7 +29,7 @@ class ViewControllerSPCMCD: UIwXViewController {
         if spcMcdNumber != "" {
             ActVars.spcMcdNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton, playListButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

@@ -25,7 +25,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
         UtilityMap.setupMap(mapView, GlobalArrays.wfos, "NWS_")
         wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, siteButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

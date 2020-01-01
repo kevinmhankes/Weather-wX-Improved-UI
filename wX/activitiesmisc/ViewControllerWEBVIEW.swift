@@ -23,7 +23,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             toolbar.items = ObjectToolbarItems(
                 [
                     doneButton,
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     browserButton,
                     productButton
                 ]
@@ -32,7 +32,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             toolbar.items = ObjectToolbarItems(
                 [
                     doneButton,
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     browserButton
                 ]
             ).items

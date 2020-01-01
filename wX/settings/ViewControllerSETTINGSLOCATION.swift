@@ -17,7 +17,7 @@ class ViewControllerSETTINGSLOCATION: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, productButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)

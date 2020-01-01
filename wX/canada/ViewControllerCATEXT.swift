@@ -28,7 +28,7 @@ class ViewControllerCATEXT: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 productButton,
                 playButton,
                 shareButton,

@@ -23,7 +23,7 @@ class ViewControllerOBSSITES: UIwXViewController {
         mapButton = ObjectToolbarIcon(self, #selector(mapClicked))
         self.siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
         self.mapButton.title = "Map"
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, mapButton, siteButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, mapButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         constructStateView()
     }

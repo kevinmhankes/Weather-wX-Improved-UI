@@ -45,7 +45,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 siteButton,
                 productButton,
                 playButton,

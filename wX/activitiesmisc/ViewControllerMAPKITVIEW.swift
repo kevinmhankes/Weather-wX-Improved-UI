@@ -22,7 +22,7 @@ class ViewControllerMAPKITVIEW: UIwXViewController, MKMapViewDelegate {
         UtilityMap.centerMapForMapKit(mapView, location: locationC, regionRadius: ActVars.mapKitRadius)
         latLonButton = ObjectToolbarIcon(self, #selector(showExternalMap))
         latLonButton.title = ActVars.mapKitLat + ", " + ActVars.mapKitLon
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, latLonButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, latLonButton]).items
         self.view.addSubview(toolbar)
         self.view.addSubview(mapView)
     }

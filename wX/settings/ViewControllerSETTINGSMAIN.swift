@@ -13,7 +13,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, statusButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         titles = [
             "Location",
@@ -23,7 +23,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             "User Interface",
             "Celsius to Fahrenheit table",
             "Spotters (beta)",
-            "About "  + MyApplication.appName + " " + UtilityUI.getVersion()
+            "About "  + GlobalVariables.appName + " " + UtilityUI.getVersion()
         ]
         displayContent()
     }
@@ -45,8 +45,8 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
             self.goToVC("textviewer")
-        case "About "  + MyApplication.appName + " " + UtilityUI.getVersion():
-            ActVars.textViewText = MyApplication.aboutStr + " " + UtilityUI.getVersion()
+        case "About "  + GlobalVariables.appName + " " + UtilityUI.getVersion():
+            ActVars.textViewText = GlobalVariables.aboutStr + " " + UtilityUI.getVersion()
             self.goToVC("textviewer")
         default: break
         }

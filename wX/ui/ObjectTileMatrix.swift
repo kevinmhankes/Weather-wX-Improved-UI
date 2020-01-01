@@ -34,7 +34,7 @@ final class ObjectTileMatrix: NSObject {
         if UIPreferences.mainScreenRadarFab {
             toolbar.items = ObjectToolbarItems(
                 [
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     dashButton,
                     wfoTextButton,
                     cloudButton,
@@ -44,7 +44,7 @@ final class ObjectTileMatrix: NSObject {
         } else {
             toolbar.items = ObjectToolbarItems(
                 [
-                    flexBarButton,
+                    GlobalVariables.flexBarButton,
                     dashButton,
                     wfoTextButton,
                     cloudButton,
@@ -241,6 +241,24 @@ final class ObjectTileMatrix: NSObject {
         } else {
             UtilityActions.showHelp(token, uiv!, menuButton)
         }
+    }
+
+    @objc func multiPaneRadarClicked(_ paneCount: String) {
+        var token = ""
+        switch paneCount {
+        case "2":
+            ActVars.wxoglPaneCount = "2"
+            token = "wxmetalradar"
+        case "4":
+            ActVars.wxoglPaneCount = "4"
+            token = "wxmetalradar"
+        default: break
+        }
+        UtilityActions.goToVCS(uiv!, token)
+    }
+
+    @objc func genericClicked(_ token: String) {
+        UtilityActions.goToVCS(uiv!, token)
     }
 
     @objc func cloudClicked() {

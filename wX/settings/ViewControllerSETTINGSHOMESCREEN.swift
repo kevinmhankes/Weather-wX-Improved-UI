@@ -37,7 +37,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                flexBarButton,
+                GlobalVariables.flexBarButton,
                 addTextButton,
                 addImageButton,
                 defaultButton,

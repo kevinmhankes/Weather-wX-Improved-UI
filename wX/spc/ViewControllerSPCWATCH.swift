@@ -24,7 +24,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
         if spcWatchNumber != "" {
             ActVars.spcWatchNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, flexBarButton, playButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

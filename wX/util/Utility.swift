@@ -82,27 +82,27 @@ final class Utility {
     }
 
     static func readPref(_ key: String, _ value: Float) -> Float {
-        return preferences.getFloat(key, value)
+        return GlobalVariables.preferences.getFloat(key, value)
     }
 
     static func readPref(_ key: String, _ value: Int) -> Int {
-        return preferences.getInt(key, value)
+        return GlobalVariables.preferences.getInt(key, value)
     }
 
     static func readPref(_ key: String, _ value: String) -> String {
-        return preferences.getString(key, value)
+        return GlobalVariables.preferences.getString(key, value)
     }
 
     static func writePref(_ key: String, _ value: Float) {
-        editor.putFloat(key, value)
+        GlobalVariables.editor.putFloat(key, value)
     }
 
     static func writePref(_ key: String, _ value: Int) {
-        editor.putInt(key, value)
+        GlobalVariables.editor.putInt(key, value)
     }
 
     static func writePref(_ key: String, _ value: String) {
-        editor.putString(key, value)
+        GlobalVariables.editor.putString(key, value)
     }
 
     static func getClassName(_ uiv: UIViewController) -> String {
