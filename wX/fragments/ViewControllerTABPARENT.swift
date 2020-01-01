@@ -122,7 +122,7 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func quadPaneRadarClicked() {
         objTileMatrix.multiPaneRadarClicked("4")
     }
-
+    
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
@@ -184,6 +184,55 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: "2", modifierFlags: [], action: #selector(dualPaneRadarClicked)),
             UIKeyCommand(input: "4", modifierFlags: [], action: #selector(quadPaneRadarClicked)),
             UIKeyCommand(input: "w", modifierFlags: [], action: #selector(warningsClicked)),
+            UIKeyCommand(input: "s", modifierFlags: [], action: #selector(settingsClicked)),
+            UIKeyCommand(input: "e", modifierFlags: [], action: #selector(mesoanalysisClicked)),
+            UIKeyCommand(input: "n", modifierFlags: [], action: #selector(ncepModelsClicked)),
+            UIKeyCommand(input: "h", modifierFlags: [], action: #selector(hourlyClicked)),
+            UIKeyCommand(input: "t", modifierFlags: [], action: #selector(nhcClicked)),
+            UIKeyCommand(input: "l", modifierFlags: [], action: #selector(lightningClicked)),
+            UIKeyCommand(input: "z", modifierFlags: [], action: #selector(nationalTextClicked)),
+            UIKeyCommand(input: "i", modifierFlags: [], action: #selector(nationalImagesClicked)),
+
+
         ]
+    }
+    
+    @objc func settingsClicked() {
+        objTileMatrix.genericClicked("settingsmain")
+    }
+    
+    @objc func mesoanalysisClicked() {
+        objTileMatrix.genericClicked("spcmeso")
+    }
+    
+    @objc func ncepModelsClicked() {
+        ActVars.modelActivitySelected = "NCEP"
+        objTileMatrix.genericClicked("modelgeneric")
+    }
+    
+    @objc func hourlyClicked() {
+        var token = ""
+        if Location.isUS {
+            token = "hourly"
+        } else {
+            token = "cahourly"
+        }
+        objTileMatrix.genericClicked(token)
+    }
+    
+    @objc func nhcClicked() {
+        objTileMatrix.genericClicked("nhc")
+    }
+    
+    @objc func lightningClicked() {
+        objTileMatrix.genericClicked("lightning")
+    }
+    
+    @objc func nationalImagesClicked() {
+        objTileMatrix.genericClicked("wpcimg")
+    }
+    
+    @objc func nationalTextClicked() {
+        objTileMatrix.genericClicked("WPCText")
     }
 }

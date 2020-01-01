@@ -306,6 +306,45 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc override func quadPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "4")
     }
+    
+    @objc override func settingsClicked() {
+        UtilityActions.genericClicked(self, "settingsmain")
+    }
+    
+    @objc override func mesoanalysisClicked() {
+        UtilityActions.genericClicked(self, "spcmeso")
+    }
+    
+    @objc override func ncepModelsClicked() {
+        ActVars.modelActivitySelected = "NCEP"
+        UtilityActions.genericClicked(self, "modelgeneric")
+    }
+    
+    @objc override func hourlyClicked() {
+        var token = ""
+        if Location.isUS {
+            token = "hourly"
+        } else {
+            token = "cahourly"
+        }
+        UtilityActions.genericClicked(self, token)
+    }
+    
+    @objc override func nhcClicked() {
+        UtilityActions.genericClicked(self, "nhc")
+    }
+    
+    @objc override func lightningClicked() {
+        UtilityActions.genericClicked(self, "lightning")
+    }
+    
+    @objc override func nationalImagesClicked() {
+        UtilityActions.genericClicked(self, "wpcimg")
+    }
+    
+    @objc override func nationalTextClicked() {
+        UtilityActions.genericClicked(self, "WPCText")
+    }
 
     @objc override func willEnterForeground() {
         super.willEnterForeground()

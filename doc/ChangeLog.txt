@@ -15,21 +15,14 @@
 // wxoglsize does not appear to work
 // TTS does not work after stopping
 // Help dialogue
-// add keyboard shortcuts "2" and "4" for multipane radar
-// add keyboard shortcuts "e" for SPC Mesoanalysis
-// add keyboard shortcuts "n" for NCEP Models
-// add keyboard shortcuts "h" for hourly
-// add keyboard shortcuts "t" for NHC
 // add keyboard shortcuts "i" for National images
 // add keyboard shortcuts "t" for National text
-// add keyboard shortcuts "l" for Lightning
-// add keyboard shortcuts "s" for Settings
-// add keyboard shortcuts "w" for US Alerts
 // document in help keyboard shortcuts
 // c - vis, r - radar, a - wfo text, d - severe dashboard
 // m - menu, radar: arrows, keypad, animate
 //
 
+56076 2020_01_01 [ADD] shortcuts: s, e, n, h, t, l, i, z
 56075 2020_01_01 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
 		 [FIX] WPC Fmap Day1 was not working in homescreen
 		 [FIX] Hourly was not correct during week of new years
