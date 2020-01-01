@@ -8,7 +8,7 @@
 // [FIX] Canada radar code names have changed
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
-// [FIX] start program, enter nexrad, exit, turn on a warning of some type - after that need to restart program to see it take effect
+// [FIX] start program, enter nexrad, exit, turn on a warning of some type - after that need to restart program to see it take effect (caused by static timer in warnings, need to reset timer if settings change)
 //
 // Catalyst todos
 //
