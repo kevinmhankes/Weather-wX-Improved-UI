@@ -724,6 +724,12 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let heightMsl = Int(wxMetal[index]!.radarBuffers.rd.radarHeight) + heightAgl
         alertMessage += MyApplication.newline
             + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
+        if RadarPreferences.radarShowWpcFronts {
+          var wpcFrontsTimeStamp = Utility.readPref("WPC_FRONTS_TIMESTAMP", "")
+          wpcFrontsTimeStamp = wpcFrontsTimeStamp.replace(String(UtilityTime.getYear()), "")
+          wpcFrontsTimeStamp = wpcFrontsTimeStamp.insert(4, " ")
+          alertMessage += MyApplication.newline + "WPC Fronts: " + wpcFrontsTimeStamp
+        }
         let alert = UIAlertController(
             title: "Closest radar site:",
             message: alertMessage,

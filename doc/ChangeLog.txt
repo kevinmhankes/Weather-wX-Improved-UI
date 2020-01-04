@@ -35,7 +35,7 @@
 		 [FIX] better support for dynamic text size
 		 [FIX] don't show labels in SPC Storm reports if no reports
 		 [FIX] settings homescreen - trim lead/trail whitespace for labels
-		 [ADD] wpc fronts util files
+		 [ADD] wpc fronts feature
 56076 2020_01_01 [ADD] shortcuts: s, e, n, h, t, l, i, z
 56075 2020_01_01 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
 		 [FIX] WPC Fmap Day1 was not working in homescreen
