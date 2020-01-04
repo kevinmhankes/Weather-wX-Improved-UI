@@ -7,9 +7,32 @@
 import Foundation
 
 final class UtilityMath {
-    
-    static func distanceOfLine(_ x1: Double, _ y1: Double, _ x2: Double, _ y2: Double) -> Double{
-        return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+    static func distanceOfLine(_ x1: Double, _ y1: Double, _ x2: Double, _ y2: Double) -> Double {
+        return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
+    }
+
+    static func computeTipPoint( _ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ right: Bool) -> [Double] {
+        let dx = x1 - x0
+        let dy = y1 - y0
+        let length = sqrt(dx * dx + dy * dy)
+        let dirX = dx / length
+        let dirY = dy / length
+        let height = sqrt(3) / 2 * length
+        let cx = x0 + dx * 0.5
+        let cy = y0 + dy * 0.5
+        let pDirX = -dirY
+        let pDirY = dirX
+        var rx = 0.0
+        var ry = 0.0
+        if right {
+            rx = cx + height * pDirX
+            ry = cy + height * pDirY
+        } else {
+            rx = cx - height * pDirX
+            ry = cy - height * pDirY
+        }
+        return [rx, ry]
     }
 
     static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {

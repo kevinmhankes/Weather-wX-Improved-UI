@@ -54,37 +54,40 @@ class UtilityWpcFronts {
   static var pressureCenters = [PressureCenter]()
   static var fronts = [Fronts]()
 
-  /*static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
-    final length = 0.4; // size of trianle
-    var startIndex = 0;
-    var indexIncrement = 1;
-    if (front.type == FrontTypeEnum.OCFNT) {
-     startIndex = 1;
-     indexIncrement = 2;
-    }
-    for (int index = startIndex; index < tokens.length; index += indexIncrement) {
-      final coordinates = parseLatLon(tokens[index]);
-      if (index < (tokens.length - 1)) {
-        final coordinates2 = parseLatLon(tokens[index + 1]);
-        final distance = UtilityMath.distanceOfLine(coordinates[0], coordinates[1], coordinates2[0], coordinates2[1]);
-        final numberOfTriangles = (distance / length).floor();
-        // construct two lines which will consist of adding 4 points
-        for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 2) {
-        final x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance;
-        final y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance;
-        final x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance;
-        final y3 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 1)) / distance;
-        final p2 = UtilityMath.computeTipPoint(x1, y1, x3, y3, true);
-        final x2 = p2[0];
-        final y2 = p2[1];
-        front.coordinates.add(LatLon.fromDouble(x1, y1));
-        front.coordinates.add(LatLon.fromDouble(x2, y2));
-        front.coordinates.add(LatLon.fromDouble(x2, y2));
-        front.coordinates.add(LatLon.fromDouble(x3, y3));
+    static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
+        let length = 0.4 // size of trianle
+        var startIndex = 0
+        var indexIncrement = 1
+        if front.type == FrontTypeEnum.OCFNT {
+            startIndex = 1
+            indexIncrement = 2
         }
-      }
+        for index in stride(from: startIndex, to: tokens.count - 1, by: indexIncrement) {
+            //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
+            let coordinates = parseLatLon(tokens[index])
+            if index < (tokens.count - 1) {
+                let coordinates2 = parseLatLon(tokens[index + 1])
+                let distance = UtilityMath.distanceOfLine(coordinates[0], coordinates[1], coordinates2[0], coordinates2[1])
+                var numberOfTriangles = distance / length
+                numberOfTriangles.round(.towardZero)
+                // construct two lines which will consist of adding 4 points
+                for pointNumber in stride(from: 1, to: numberOfTriangles - 1, by: 4) {
+                    //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 2) {
+                    let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
+                    let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
+                    let x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance
+                    let y3 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 1)) / distance
+                    let p2 = UtilityMath.computeTipPoint(x1, y1, x3, y3, true)
+                    let x2 = p2[0]
+                    let y2 = p2[1]
+                    front.coordinates.append(LatLon(x1, y1))
+                    front.coordinates.append(LatLon(x2, y2))
+                    front.coordinates.append(LatLon(x2, y2))
+                    front.coordinates.append(LatLon(x3, y3))
+                }
+            }
+        }
     }
-  }*/
 
     static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
         var length = 0.4 // size of trianle
@@ -97,8 +100,8 @@ class UtilityWpcFronts {
         }
         for index in stride(from: startIndex, to: tokens.count - 1, by: indexIncrement) {
             //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
-            let coordinates = parseLatLon(tokens[index]);
-            if (index < (tokens.count - 1)) {
+            let coordinates = parseLatLon(tokens[index])
+            if index < (tokens.count - 1) {
                 let coordinates2 = parseLatLon(tokens[index + 1])
                 let distance = UtilityMath.distanceOfLine(coordinates[0], coordinates[1], coordinates2[0], coordinates2[1])
                 var numberOfTriangles = (distance / length)
@@ -112,8 +115,7 @@ class UtilityWpcFronts {
                     let center2 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 0.5)) / distance
                     let x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance
                     let y3 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 1)) / distance
-                    
-                    front.coordinates.append(LatLon(x1, y1));
+                    front.coordinates.append(LatLon(x1, y1))
                     let slices = 20
                     let step = Double.pi / Double(slices)
                     let rotation = 1.0
