@@ -15,7 +15,6 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
         "TXT-AFDLOC": "Area Forecast Discussion",
         "TXT-HWOLOC": "Hazardous Weather Outlook",
         "TXT-HOURLY": "Hourly Forecast",
-        "TXT-SUNMOON": "Sun/Moon Data",
         "METAL-RADAR": "Local NEXRAD Radar"
     ]
     let localChoicesImages = [
