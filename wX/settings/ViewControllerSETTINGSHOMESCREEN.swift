@@ -187,7 +187,7 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
             if let goodTitle = title {
                 let objectTextView = ObjectTextView(
                     stackView,
-                    goodTitle,
+                    goodTitle.trim(),
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
                 )
                 objectTextView.tv.isSelectable = false

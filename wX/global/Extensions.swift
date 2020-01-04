@@ -8,6 +8,10 @@ import Foundation
 import UIKit
 
 extension String {
+    
+    func trim() -> String {
+     return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
 
     func fixedLengthString(_ length: Int) -> String {
         return UtilityString.fixedLengthString(self, length)
