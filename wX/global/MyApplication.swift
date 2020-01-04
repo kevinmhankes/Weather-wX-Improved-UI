@@ -55,6 +55,7 @@ class MyApplication {
     static var playlistStr = ""
     static var colorMap = [Int: ObjectColorPalette]()
     static var locations = [Location]()
+    static let sep = "ABC123"
 
     static func onCreate() {
         initPreferences()
