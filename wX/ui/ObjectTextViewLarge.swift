@@ -25,6 +25,10 @@ final class ObjectTextViewLarge {
         self.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
+    
+    func resetTextSize() {
+        tv.font = FontSize.medium.size
+    }
 
     var text: String {
         get {

@@ -380,10 +380,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         Location.checkCurrentLocationValidity()
         if (Location.latlon != oldLocation)
             || (newhomeScreenFav != globalHomeScreenFav)
-            || textSizeHasChange
-        {
+            || textSizeHasChange {
             print("refresh homescreen")
             scrollView.scrollToTop()
+            self.ccCard?.resetTextSize()
+            self.objCard7DayCollection?.resetTextSize()
+            self.objLabel.resetTextSize()
             self.getContentMaster()
         }
     }

@@ -54,6 +54,11 @@ final class ObjectCard7Day {
         horizontalContainer.stackView.accessibilityLabel = textArr.top
             + textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
+    
+    func resetTextSize() {
+        topText.resetTextSize()
+        bottomText.resetTextSize()
+    }
 
     func setImage(_ index: Int, _ dayImgUrl: [String]) {
         if dayImgUrl.count > index {

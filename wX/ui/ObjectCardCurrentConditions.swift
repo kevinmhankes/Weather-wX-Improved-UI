@@ -66,6 +66,11 @@ final class ObjectCardCurrentConditions {
         middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
         horizontalContainer.stackView.accessibilityLabel = objCc.spokenText
     }
+    
+    func resetTextSize() {
+        topText.resetTextSize()
+        middleText.resetTextSize()
+    }
 
     func addGestureRecognizer(
         _ gesture1: UITapGestureRecognizer,
