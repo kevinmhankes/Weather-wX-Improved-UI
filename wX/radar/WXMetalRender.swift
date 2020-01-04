@@ -66,6 +66,7 @@ class WXMetalRender {
     private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
     private var spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
+    private var wpcFrontBuffersList = [ObjectMetalBuffers]()
     private var colorSwo = [Int]()
     private var fFfw = [Double]()
     private var fTst = [Double]()

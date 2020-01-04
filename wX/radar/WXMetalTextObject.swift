@@ -204,8 +204,8 @@ final class WXMetalTextObject {
             }
             //let textScaleEnhance = 2.0
             //textSize = Double(oglrZoom * 0.75 * RadarPreferences.radarTextSize) * textScaleEnhance
-            if  true { // OGLR.zoom < 0.75
-                UtilityWpcFronts.pressureCenters.enumerated().forEach { index, value in
+            if OGLR.zoom < 0.75 {
+                UtilityWpcFronts.pressureCenters.enumerated().forEach { _, value in
                     var color = wXColor.colorsToInt(0, 0, 255)
                     if value.type == PressureCenterTypeEnum.LOW {
                         color = wXColor.colorsToInt(255, 0, 0)
