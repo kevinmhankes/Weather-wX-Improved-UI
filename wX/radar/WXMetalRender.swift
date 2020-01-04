@@ -543,6 +543,10 @@ class WXMetalRender {
                     UtilitySwoD1.get()
                     self.constructSwoLines()
                 }
+                if RadarPreferences.radarShowWpcFronts {
+                    UtilityWpcFronts.get()
+                    //self.constructWpcFronts()
+                }
             }
             DispatchQueue.main.async {
                 self.constructPolygons()

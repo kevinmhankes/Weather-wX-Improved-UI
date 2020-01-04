@@ -177,7 +177,7 @@ class UtilityWpcFronts {
         let currentTimeSec = currentTime1 / 1000
         let refreshIntervalSec = refreshLocMin * 60
         var fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized
-        //fetchData = true;
+        //fetchData = true
         if fetchData {
             pressureCenters = []
             fronts = []

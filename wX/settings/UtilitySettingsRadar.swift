@@ -37,10 +37,12 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SQW": "Snow Squall Warning",
         "RADAR_SHOW_DSW": "Dust Storm Warning",
         "RADAR_SHOW_SPS": "Special Weather Statement",
-        "RADAR_CENTER_ON_LOCATION": "Center radar on location"
+        "RADAR_CENTER_ON_LOCATION": "Center radar on location",
+        "RADAR_SHOW_WPC_FRONTS": "Show WPC Fronts and pressure highs and lows"
     ]
 
     static let helpStrings = [
+        "Show WPC Fronts and pressure highs and lows": "Show WPC Fronts and pressure highs and lows",
         "Show warnings": "Display warning polygons for tornado, severe thunderstorm, and flash flood."
             + " This will cause a periodic task to run in "
             + "the background and pull data. Interval can be set under settings -> Notifications." ,
@@ -150,7 +152,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SQW": "false",
         "RADAR_SHOW_DSW": "false",
         "RADAR_SHOW_SPS": "false",
-        "RADAR_CENTER_ON_LOCATION": "false"
+        "RADAR_CENTER_ON_LOCATION": "false",
+        "RADAR_SHOW_WPC_FRONTS": "false"
     ]
     #endif
     #if targetEnvironment(macCatalyst)
@@ -186,7 +189,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_SQW": "false",
         "RADAR_SHOW_DSW": "false",
         "RADAR_SHOW_SPS": "false",
-        "RADAR_CENTER_ON_LOCATION": "false"
+        "RADAR_CENTER_ON_LOCATION": "false",
+        "RADAR_SHOW_WPC_FRONTS": "false"
     ]
     #endif
 

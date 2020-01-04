@@ -45,6 +45,7 @@ class RadarPreferences {
     static var wxoglRadarAutorefreshBoolString = "false"
     static var nexradRadarBackgroundColor = 0
     static var wxoglCenterOnLocation = false
+    static var radarShowWpcFronts = false
 
     static func initialize() {
         #if targetEnvironment(macCatalyst)
@@ -97,5 +98,6 @@ class RadarPreferences {
         radarDataRefreshInterval = Utility.readPref("RADAR_DATA_REFRESH_INTERVAL", 5)
         nexradRadarBackgroundColor = Utility.readPref("NEXRAD_RADAR_BACKGROUND_COLOR", Color.rgb(0, 0, 0))
         wxoglCenterOnLocation = Utility.readPref("RADAR_CENTER_ON_LOCATION", "false").hasPrefix("t")
+        radarShowWpcFronts = Utility.readPref("RADAR_SHOW_WPC_FRONTS", "false").hasPrefix("t")
     }
 }
