@@ -46,6 +46,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var textObj = WXMetalTextObject()
     var longPressCount = 0
     var toolbar = ObjectToolbar(.top)
+    var globalHomeScreenFav = ""
     #if targetEnvironment(macCatalyst)
     var oneMinRadarFetch = Timer()
     #endif
@@ -146,6 +147,10 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.globalHomeScreenFav = Utility.readPref(
+            "HOMESCREEN_FAV",
+            MyApplication.homescreenFavDefault
+        )
         addLocationSelectionCard()
         self.getContentMaster()
         #if targetEnvironment(macCatalyst)
@@ -238,13 +243,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
                 self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                let homescreenFav = TextUtils.split(
-                    Utility.readPref(
-                        "HOMESCREEN_FAV",
-                        MyApplication.homescreenFavDefault
-                    ),
-                    ":"
+                self.globalHomeScreenFav = Utility.readPref(
+                    "HOMESCREEN_FAV",
+                    MyApplication.homescreenFavDefault
                 )
+                let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
                 self.textArr = [:]
                 homescreenFav.forEach {
                     switch $0 {
@@ -306,20 +309,20 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     @objc override func quadPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "4")
     }
-    
+
     @objc override func settingsClicked() {
         UtilityActions.genericClicked(self, "settingsmain")
     }
-    
+
     @objc override func mesoanalysisClicked() {
         UtilityActions.genericClicked(self, "spcmeso")
     }
-    
+
     @objc override func ncepModelsClicked() {
         ActVars.modelActivitySelected = "NCEP"
         UtilityActions.genericClicked(self, "modelgeneric")
     }
-    
+
     @objc override func hourlyClicked() {
         var token = ""
         if Location.isUS {
@@ -329,19 +332,19 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         }
         UtilityActions.genericClicked(self, token)
     }
-    
+
     @objc override func nhcClicked() {
         UtilityActions.genericClicked(self, "nhc")
     }
-    
+
     @objc override func lightningClicked() {
         UtilityActions.genericClicked(self, "lightning")
     }
-    
+
     @objc override func nationalImagesClicked() {
         UtilityActions.genericClicked(self, "wpcimg")
     }
-    
+
     @objc override func nationalTextClicked() {
         UtilityActions.genericClicked(self, "WPCText")
     }
@@ -367,8 +370,14 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         updateColors()
         objLabel.text = Location.name
         ActVars.vc = self
+        let newhomeScreenFav = Utility.readPref(
+            "HOMESCREEN_FAV",
+            MyApplication.homescreenFavDefault
+        )
         Location.checkCurrentLocationValidity()
-        if Location.latlon != oldLocation {
+        if (Location.latlon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) {
+            print("refresh homescreen")
+            scrollView.scrollToTop()
             self.getContentMaster()
         }
     }
