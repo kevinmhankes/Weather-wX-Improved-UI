@@ -4,6 +4,8 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
+import Foundation
+
 // Data file - https://www.wpc.ncep.noaa.gov/basicwx/coded_srp.txt
 // Decoder - https://www.wpc.ncep.noaa.gov/basicwx/read_coded_fcst_bull.shtml
 // Image - https://www.wpc.ncep.noaa.gov/basicwx/basicwx_ndfd.php
@@ -52,7 +54,7 @@ class UtilityWpcFronts {
   static var pressureCenters = [PressureCenter]()
   static var fronts = [Fronts]()
 
-  /*static addColdFrontTriangles(Fronts front, List<String> tokens) {
+  /*static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
     final length = 0.4; // size of trianle
     var startIndex = 0;
     var indexIncrement = 1;
@@ -84,64 +86,65 @@ class UtilityWpcFronts {
     }
   }*/
 
-   /*static addWarmFrontSemicircles(Fronts front, List<String> tokens) {
-    var length = 0.4; // size of trianle
-    var startIndex = 0;
-    var indexIncrement = 1;
-    if (front.type == FrontTypeEnum.OCFNT) {
-     startIndex = 2;
-     indexIncrement = 2;
-     length = 0.2;
-    }
-    for (int index = startIndex; index < tokens.length; index += indexIncrement) {
-      final coordinates = parseLatLon(tokens[index]);
-      if (index < (tokens.length - 1)) {
-        final coordinates2 = parseLatLon(tokens[index + 1]);
-        final distance = UtilityMath.distanceOfLine(coordinates[0], coordinates[1], coordinates2[0], coordinates2[1]);
-        final numberOfTriangles = (distance / length).floor();
-        // construct two lines which will consist of adding 4 points
-        for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 4) {
-        final x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance;
-        final y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance;
-        final center1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 0.5)) / distance;
-        final center2 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 0.5)) / distance;
-        final x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance;
-        final y3 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 1)) / distance;
-        
-        front.coordinates.add(LatLon.fromDouble(x1, y1));
-        final slices = 20;
-        final step = math.pi / slices;
-        final rotation = 1.0;
-        final xDiff = x3 - x1;
-        final yDiff = y3 - y1;
-        final angle = math.atan2(yDiff, xDiff) * 180.0 / math.pi;
-        final sliceStart = slices * angle ~/ 180.0;
-        for (int i = sliceStart; i <= slices + sliceStart; i++) {
-          final x = rotation * length * math.cos(step * i) + center1;
-          final y = rotation * length * math.sin(step * i) + center2;
-          front.coordinates.add(LatLon.fromDouble(x, y));
-          front.coordinates.add(LatLon.fromDouble(x, y));
+    static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
+        var length = 0.4 // size of trianle
+        var startIndex = 0
+        var indexIncrement = 1
+        if front.type == FrontTypeEnum.OCFNT {
+            startIndex = 2
+            indexIncrement = 2
+            length = 0.2
         }
-        front.coordinates.add(LatLon.fromDouble(x3, y3));
+        for index in stride(from: startIndex, to: tokens.count - 1, by: indexIncrement) {
+            //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
+            let coordinates = parseLatLon(tokens[index]);
+            if (index < (tokens.count - 1)) {
+                let coordinates2 = parseLatLon(tokens[index + 1])
+                let distance = UtilityMath.distanceOfLine(coordinates[0], coordinates[1], coordinates2[0], coordinates2[1])
+                var numberOfTriangles = (distance / length)
+                numberOfTriangles.round(.towardZero)
+                // construct two lines which will consist of adding 4 points
+                for pointNumber in stride(from: 1, to: numberOfTriangles - 1, by: 4) {
+                    //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 4) {
+                    let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
+                    let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
+                    let center1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 0.5)) / distance
+                    let center2 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 0.5)) / distance
+                    let x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance
+                    let y3 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * (pointNumber + 1)) / distance
+                    
+                    front.coordinates.append(LatLon(x1, y1));
+                    let slices = 20
+                    let step = Double.pi / Double(slices)
+                    let rotation = 1.0
+                    let xDiff = x3 - x1
+                    let yDiff = y3 - y1
+                    let angle = atan2(yDiff, xDiff) * 180.0 / Double.pi
+                    let sliceStart = Int((Double(slices) * angle) / 180.0)
+                    for i in stride(from: sliceStart, to: slices + sliceStart, by: 1) {
+                        //for (int i = sliceStart; i <= slices + sliceStart; i++) {
+                        let x = rotation * length * cos(step * Double(i)) + center1
+                        let y = rotation * length * sin(step * Double(i)) + center2
+                        front.coordinates.append(LatLon(x, y))
+                        front.coordinates.append(LatLon(x, y))
+                    }
+                    front.coordinates.append(LatLon(x3, y3))
+                }
+            }
         }
-      }
     }
-  }*/
 
-  /*static addFrontDataStnryWarm(Fronts front, List<String> tokens) {
-    for (int index = 0; index < tokens.length; index += 1) {
-      final coordinates = parseLatLon(tokens[index]);
-      //front.coordinates.add(LatLon.fromDouble(coordinates[0], coordinates[1]));
-      if (index != 0 && index != (tokens.length - 1)) {
-        //print(coordinates);
-        front.coordinates
-            .add(LatLon.fromDouble(coordinates[0], coordinates[1]));
-      }
+    static func addFrontDataStnryWarm(_ front: inout Fronts, _ tokens: [String]) {
+        tokens.enumerated().forEach { index, _ in
+            let coordinates = parseLatLon(tokens[index])
+            if index != 0 && index != (tokens.count - 1) {
+                front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
+            }
+        }
     }
-  }*/
 
     static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
-        tokens.enumerated().forEach { index, token in
+        tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
             if index != 0 && index != (tokens.count - 1) {

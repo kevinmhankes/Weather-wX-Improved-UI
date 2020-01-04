@@ -44,3 +44,26 @@ length
 
 swift:
 count
+
+
+List add to
+Dart:
+add
+
+Swift:
+append
+
+
+
+Floor
+let numberOfTriangles = (distance / length).floor()
+
+var x = 6.5
+x.round(.towardZero)
+
+
+Math - PI
+dart:
+math.pi
+
+Double.pi

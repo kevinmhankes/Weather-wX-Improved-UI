@@ -7,6 +7,10 @@
 import Foundation
 
 final class UtilityMath {
+    
+    static func distanceOfLine(_ x1: Double, _ y1: Double, _ x2: Double, _ y2: Double) -> Double{
+        return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    }
 
     static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {
         let relativeHumidity = 100 * (exp((17.625 * dewpt) / (243.04 + dewpt)) / exp((17.625 * temp) / (243.04 + temp)))
