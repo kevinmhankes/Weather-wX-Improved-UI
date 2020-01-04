@@ -140,16 +140,15 @@ class UtilityWpcFronts {
     }
   }*/
 
-  /*static void addFrontData(Fronts front, List<String> tokens) {
-    for (int index = 0; index < tokens.length; index += 1) {
-      final coordinates = parseLatLon(tokens[index]);
-      front.coordinates.add(LatLon.fromDouble(coordinates[0], coordinates[1]));
-      if (index != 0 && index != (tokens.length - 1)) {
-        front.coordinates
-            .add(LatLon.fromDouble(coordinates[0], coordinates[1]));
-      }
+    static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
+        tokens.enumerated().forEach { index, token in
+            let coordinates = parseLatLon(tokens[index])
+            front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
+            if index != 0 && index != (tokens.count - 1) {
+                front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
+            }
+        }
     }
-  }*/
 
     static func parseLatLon(_ string: String) -> [Double] {
         if string.count != 7 {
