@@ -51,11 +51,12 @@ final class ObjectCard7DayCollection {
             numCards += 1
         }
     }
-    
+
     func resetTextSize() {
         sevenDayCardList.forEach {
             $0.resetTextSize()
         }
+        objectCardSunTime?.resetTextSize()
     }
 
     func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
