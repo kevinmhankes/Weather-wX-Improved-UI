@@ -189,6 +189,30 @@ final class WXMetalTextObject {
             addTVCountyLabels()
             addTVObs()
             addTVSpottersLabels()
+            addWpcPressureCenters()
+        }
+    }
+
+    func addWpcPressureCenters() {
+        if RadarPreferences.radarShowWpcFronts {
+            spotterLat = 0.0
+            spotterLon = 0.0
+            glview.pressureCenterLabelAl = []
+            oglrZoom = 1.0
+            if OGLR.zoom < 1.0 {
+                oglrZoom = OGLR.zoom * 0.8
+            }
+            //let textScaleEnhance = 2.0
+            //textSize = Double(oglrZoom * 0.75 * RadarPreferences.radarTextSize) * textScaleEnhance
+            if  true { // OGLR.zoom < 0.75
+                UtilityWpcFronts.pressureCenters.enumerated().forEach { index, value in
+                    var color = wXColor.colorsToInt(0, 0, 255)
+                    if value.type == PressureCenterTypeEnum.LOW {
+                        color = wXColor.colorsToInt(255, 0, 0)
+                    }
+                    checkAndDrawText(&glview.pressureCenterLabelAl, value.lat, value.lon, value.pressureInMb, color)
+                }
+            }
         }
     }
 

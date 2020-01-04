@@ -12,6 +12,7 @@ final class WXMetalSurfaceView {
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
     var spottersLabelAl = [TextViewMetal]()
+    var pressureCenterLabelAl = [TextViewMetal]()
     static private let maxZoom: Float = 45.0
     static private let minZoom: Float = 0.03
 
