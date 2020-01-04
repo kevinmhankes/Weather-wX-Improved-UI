@@ -471,11 +471,15 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             let html = UtilityDownload.getTextProduct(product)
             DispatchQueue.main.async {
                 self.textArr[product] = html
-                let objTv = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
-                objTv.addGestureRecognizer(
+                let objectTextView = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
+                if product == "HOURLY" {
+                    objectTextView.font = FontSize.hourly.size
+                }
+                objectTextView.addGestureRecognizer(
                     UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:)))
                 )
-                objTv.tv.accessibilityLabel = html
+                objectTextView.tv.accessibilityLabel = html
+                objectTextView.tv.isSelectable = false
             }
         }
     }

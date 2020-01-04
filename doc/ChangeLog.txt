@@ -24,6 +24,8 @@
 
 56077 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
+		 [ADD] use fixed width font for hourly homescreen widget
+		 [FIX] macOS version was not expanding textual homescreen widgets
 56076 2020_01_01 [ADD] shortcuts: s, e, n, h, t, l, i, z
 56075 2020_01_01 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
 		 [FIX] WPC Fmap Day1 was not working in homescreen

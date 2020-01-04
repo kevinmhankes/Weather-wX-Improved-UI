@@ -122,7 +122,7 @@ class ViewControllerTABPARENT: UIViewController {
     @objc func quadPaneRadarClicked() {
         objTileMatrix.multiPaneRadarClicked("4")
     }
-    
+
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()
@@ -191,25 +191,24 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: "t", modifierFlags: [], action: #selector(nhcClicked)),
             UIKeyCommand(input: "l", modifierFlags: [], action: #selector(lightningClicked)),
             UIKeyCommand(input: "z", modifierFlags: [], action: #selector(nationalTextClicked)),
-            UIKeyCommand(input: "i", modifierFlags: [], action: #selector(nationalImagesClicked)),
-
+            UIKeyCommand(input: "i", modifierFlags: [], action: #selector(nationalImagesClicked))
 
         ]
     }
-    
+
     @objc func settingsClicked() {
         objTileMatrix.genericClicked("settingsmain")
     }
-    
+
     @objc func mesoanalysisClicked() {
         objTileMatrix.genericClicked("spcmeso")
     }
-    
+
     @objc func ncepModelsClicked() {
         ActVars.modelActivitySelected = "NCEP"
         objTileMatrix.genericClicked("modelgeneric")
     }
-    
+
     @objc func hourlyClicked() {
         var token = ""
         if Location.isUS {
@@ -219,19 +218,19 @@ class ViewControllerTABPARENT: UIViewController {
         }
         objTileMatrix.genericClicked(token)
     }
-    
+
     @objc func nhcClicked() {
         objTileMatrix.genericClicked("nhc")
     }
-    
+
     @objc func lightningClicked() {
         objTileMatrix.genericClicked("lightning")
     }
-    
+
     @objc func nationalImagesClicked() {
         objTileMatrix.genericClicked("wpcimg")
     }
-    
+
     @objc func nationalTextClicked() {
         objTileMatrix.genericClicked("WPCText")
     }
