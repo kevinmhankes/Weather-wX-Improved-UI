@@ -22,7 +22,7 @@ final class ObjectTextViewSmallGray {
         self.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
-    
+
     func resetTextSize() {
         tv.font = FontSize.medium.size
     }

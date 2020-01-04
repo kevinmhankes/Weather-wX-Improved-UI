@@ -30,7 +30,7 @@ final class ObjectCardSunTime {
         gmtTimetext =  UtilityTime.gmtTime()
         objLabel.text = sunriseSunset + MyApplication.newline + gmtTimetext
     }
-    
+
     func resetTextSize() {
         objLabel.tv.font = FontSize.small.size
     }

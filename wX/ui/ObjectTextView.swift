@@ -86,7 +86,7 @@ final class ObjectTextView {
         self.init(text)
         stackView.insertArrangedSubview(self.tv, at: viewOrder)
     }
-    
+
     func resetTextSize() {
         tv.font = FontSize.medium.size
     }
