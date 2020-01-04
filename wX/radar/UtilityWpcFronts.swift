@@ -53,7 +53,7 @@ class UtilityWpcFronts {
     static var refreshLocMin = RadarPreferences.radarDataRefreshInterval * 2
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
-    
+
     static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
         let length = 0.4 // size of trianle
         var startIndex = 0
@@ -88,7 +88,7 @@ class UtilityWpcFronts {
             }
         }
     }
-    
+
     static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
         var length = 0.4 // size of trianle
         var startIndex = 0
@@ -135,7 +135,7 @@ class UtilityWpcFronts {
             }
         }
     }
-    
+
     static func addFrontDataStnryWarm(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
@@ -144,7 +144,7 @@ class UtilityWpcFronts {
             }
         }
     }
-    
+
     static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
@@ -154,7 +154,7 @@ class UtilityWpcFronts {
             }
         }
     }
-    
+
     static func parseLatLon(_ string: String) -> [Double] {
         if string.count != 7 {
             return [0.0, 0.0]
@@ -171,21 +171,21 @@ class UtilityWpcFronts {
             return [lat, lon]
         }
     }
-    
+
     static func get() {
         let currentTime1 = UtilityTime.currentTimeMillis()
         let currentTimeSec = currentTime1 / 1000
         let refreshIntervalSec = refreshLocMin * 60
-        var fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized;
+        var fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized
         //fetchData = true;
         if fetchData {
-            pressureCenters = [];
-            fronts = [];
-            let urlBlob = MyApplication.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt";
-            var html = urlBlob.getHtmlSep();
-            html = html.replaceAll(MyApplication.newline, MyApplication.sep);
-            let timestamp = html.parseFirst("SURFACE PROG VALID ([0-9]{12}Z)");
-            Utility.writePref("WPC_FRONTS_TIMESTAMP", timestamp);
+            pressureCenters = []
+            fronts = []
+            let urlBlob = MyApplication.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
+            var html = urlBlob.getHtmlSep()
+            html = html.replaceAll(MyApplication.newline, MyApplication.sep)
+            let timestamp = html.parseFirst("SURFACE PROG VALID ([0-9]{12}Z)")
+            Utility.writePref("WPC_FRONTS_TIMESTAMP", timestamp)
             html = html.parseFirst("SURFACE PROG VALID [0-9]{12}Z(.*?)" +
                 MyApplication.sep +
                 " " +
@@ -195,23 +195,23 @@ class UtilityWpcFronts {
             //for (int index = 0; index < lines.length; index++) {
             lines.enumerated().forEach { index, _ in
                 var data = lines[index]
-                if (index < lines.count - 1) {
+                if index < lines.count - 1 {
                     let charIndex = lines[index + 1].index(lines[index + 1].startIndex, offsetBy: 0)
-                    if (lines[index + 1][charIndex] != "H"
+                    if lines[index + 1][charIndex] != "H"
                         && lines[index + 1][charIndex] != "L"
                         && lines[index + 1][charIndex] != "C"
                         && lines[index + 1][charIndex] != "S"
                         && lines[index + 1][charIndex] != "O"
                         && lines[index + 1][charIndex] != "T"
-                        && lines[index + 1][charIndex] != "W") {
-                        data += lines[index + 1];
+                        && lines[index + 1][charIndex] != "W" {
+                        data += lines[index + 1]
                     }
                 }
                 var tokens = data.trim().split(" ")
-                if (tokens.count > 1) {
+                if tokens.count > 1 {
                     let type = tokens[0]
                     tokens.remove(at: 0)
-                    switch (type) {
+                    switch type {
                     case "HIGHS":
                         //for (int index = 0; index < tokens.length; index += 2) {
                         for index in stride(from: 0, to: tokens.count - 1, by: 2) {
@@ -219,7 +219,6 @@ class UtilityWpcFronts {
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.HIGH,
                                                                   tokens[index], coordinates[0], coordinates[1]))
                         }
-                        break;
                     case "LOWS":
                         //for (int index = 0; index < tokens.length; index += 2) {
                         for index in stride(from: 0, to: tokens.count - 1, by: 2) {
@@ -227,14 +226,12 @@ class UtilityWpcFronts {
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.LOW,
                                                                   tokens[index], coordinates[0], coordinates[1]))
                         }
-                        break
                     case "COLD":
                         var front = Fronts(FrontTypeEnum.COLD)
                         addFrontData(&front, tokens)
                         addColdFrontTriangles(&front, tokens)
                         //addWarmFrontSemicircles(front, tokens)
                         fronts.append(front)
-                        break;
                     case "STNRY":
                         var front = Fronts(FrontTypeEnum.STNRY)
                         addFrontData(&front, tokens)
@@ -242,25 +239,21 @@ class UtilityWpcFronts {
                         var frontStWarm = Fronts(FrontTypeEnum.STNRY_WARM)
                         addFrontDataStnryWarm(&frontStWarm, tokens)
                         fronts.append(frontStWarm)
-                        break;
                     case "WARM":
                         var front = Fronts(FrontTypeEnum.WARM)
                         addFrontData(&front, tokens)
                         addWarmFrontSemicircles(&front, tokens)
                         fronts.append(front)
-                        break;
                     case "TROF":
                         var front = Fronts(FrontTypeEnum.TROF)
                         addFrontData(&front, tokens)
                         fronts.append(front)
-                        break;
                     case "OCFNT":
                         var front = Fronts(FrontTypeEnum.OCFNT)
                         addFrontData(&front, tokens)
                         addColdFrontTriangles(&front, tokens)
                         addWarmFrontSemicircles(&front, tokens)
                         fronts.append(front)
-                        break
                     default:
                         break
                     }
