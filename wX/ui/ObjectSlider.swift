@@ -34,6 +34,7 @@ final class ObjectSlider {
         slider.maximumTrackTintColor = ColorCompatibility.systemGray5
         button.backgroundColor = ColorCompatibility.systemBackground
         button.setTitleColor(ColorCompatibility.label, for: .normal)
+        button.titleLabel?.font = FontSize.medium.size
         let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         slider.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -43,10 +44,15 @@ final class ObjectSlider {
     }
 
     func setLabel() {
+        print(prefVar)
+        if prefVar == "TEXTVIEW_FONT_SIZE" {
+            UIPreferences.textviewFontSize = CGFloat(slider.value)
+        }
         button.setTitle(
             label + "(" + String(ObjectSlider.prefToInitialValue[prefVar]!) + "): " + String(Int(slider.value)) + " ",
             for: .normal
         )
+        button.titleLabel?.font = FontSize.medium.size
     }
 
     static let prefToLabel = [

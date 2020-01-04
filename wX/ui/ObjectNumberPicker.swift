@@ -14,6 +14,7 @@ final class ObjectNumberPicker {
     init(_ stackView: UIStackView, _ prefVar: String, _ pickerMap: [String: String]) {
         let label = pickerMap[prefVar]
         button.setTitle(label, for: .normal)
+        button.titleLabel?.font = FontSize.medium.size
         button.setTitleColor(ColorCompatibility.label, for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = ColorCompatibility.systemBackground

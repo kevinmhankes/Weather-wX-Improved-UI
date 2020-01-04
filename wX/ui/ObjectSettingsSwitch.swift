@@ -20,6 +20,7 @@ final class ObjectSettingsSwitch {
         button.contentHorizontalAlignment = .left
         button.setTitle(prefMap[prefVar], for: .normal)
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        button.titleLabel?.font = FontSize.medium.size
         switchUi.thumbTintColor = AppColors.primaryDarkBlueUIColor
         switchUi.onTintColor = ColorCompatibility.label
         switchUi.setOn(Utility.readPref(prefVar, boolDefArray[prefVar]!).hasPrefix("t"), animated: true)
