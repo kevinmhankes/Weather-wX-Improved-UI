@@ -271,7 +271,7 @@ class WXMetalRender {
                             )
                             renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
                             renderEncoder!.drawPrimitives(
-                                type: vbuffer.shape,
+                                type: .line,
                                 vertexStart: 0,
                                 vertexCount: vbuffer.vertexCount
                             )
