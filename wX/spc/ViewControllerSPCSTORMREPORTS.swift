@@ -127,6 +127,12 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
     private func displayContent() {
         var stateList = [String]()
         filterList = ["All"]
+        var tornadoReports = 0
+        var windReports = 0
+        var hailReports = 0
+        var tornadoHeader: ObjectCardBlackHeaderText?
+        var windHeader: ObjectCardBlackHeaderText?
+        var hailHeader: ObjectCardBlackHeaderText?
         self.image.setBitmap(bitmap)
         self.image.addGestureRecognizer(
             UITapGestureRecognizerWithData(
@@ -136,9 +142,21 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         )
         self.stormReports.enumerated().forEach {
             if $1.damageHeader != "" {
-                _ = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+                switch $1.damageHeader {
+                case "Tornado Reports": tornadoHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+                case "Wind Reports": windHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+                case "Hail Report": hailHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+                default: break
+                }
             }
             if $1.damageHeader == "" && (filter == "All" || filter == $1.state) {
+                if windHeader == nil {
+                    tornadoReports += 1
+                } else if hailHeader == nil {
+                    windReports += 1
+                } else {
+                    hailReports += 1
+                }
                 _ = ObjectCardStormReportItem(
                     self.stackView,
                     $1,
@@ -149,6 +167,24 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
                 stateList += [$1.state]
             }
         }
+        if tornadoReports == 0 {
+            if tornadoHeader != nil {
+                self.stackView.removeArrangedSubview(tornadoHeader!.view)
+            }
+        }
+        if windReports == 1 {
+            if windHeader != nil {
+                self.stackView.removeArrangedSubview(windHeader!.view)
+            }
+        }
+        if hailReports == 0 {
+            if hailHeader != nil {
+                self.stackView.removeArrangedSubview(hailHeader!.view)
+            }
+        }
+        //print("COUNT: " + String(tornadoReports))
+        //print("COUNT: " + String(windReports))
+        //print("COUNT: " + String(hailReports))
         let mappedItems = stateList.map { ($0, 1) }
         stateCount = Dictionary(mappedItems, uniquingKeysWith: +)
         let sortedKeys = stateCount.keys.sorted()

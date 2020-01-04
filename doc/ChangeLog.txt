@@ -8,8 +8,6 @@
 // [FIX] Canada radar code names have changed
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
-// [FIX] start program, enter nexrad, exit, turn on a warning/watch/mcd/mpd of some type - after that need to restart program to see it take effect (caused by static timer in warnings, need to reset timer if settings change)
-// [FIX] don't show labels in SPC Storm reports if no reports
 //
 // Catalyst todos
 //
@@ -33,6 +31,7 @@
 		 [FIX] if settings -> UI has updated text size reload data on main screen, impacts text widgets only 
 		 [FIX] standard homescreen objects do not reflect text size immediately
 		 [FIX] better support for dynamic text size
+		 [FIX] don't show labels in SPC Storm reports if no reports
 56076 2020_01_01 [ADD] shortcuts: s, e, n, h, t, l, i, z
 56075 2020_01_01 [ADD] Additions to Homescreen and WPC Images for WPC Forecast charts
 		 [FIX] WPC Fmap Day1 was not working in homescreen
