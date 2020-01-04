@@ -67,6 +67,7 @@ class WXMetalRender {
     private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
     private var spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
     private var wpcFrontBuffersList = [ObjectMetalBuffers]()
+    private var wpcFrontPaints = [Int]()
     private var colorSwo = [Int]()
     private var fFfw = [Double]()
     private var fTst = [Double]()
@@ -241,6 +242,40 @@ class WXMetalRender {
                             vertexStart: 0,
                             vertexCount: vbuffer.vertexCount
                         )
+                    }
+                }
+            }
+        }
+        if RadarPreferences.radarShowWpcFronts {
+            wpcFrontBuffersList.enumerated().forEach { index, vbuffer in
+                if vbuffer.vertexCount > 0 {
+                    if vbuffer.scaleCutOff < zoom {
+                        if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
+                            renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
+                            var nodeModelMatrix = self.modelMatrix()
+                            nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
+                            let uniformBuffer = device.makeBuffer(
+                                length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
+                                options: []
+                            )
+                            let bufferPointer = uniformBuffer?.contents()
+                            memcpy(
+                                bufferPointer,
+                                &nodeModelMatrix,
+                                MemoryLayout<Float>.size * float4x4.numberOfElements()
+                            )
+                            memcpy(
+                                bufferPointer! + MemoryLayout<Float>.size * float4x4.numberOfElements(),
+                                &projectionMatrixRef,
+                                MemoryLayout<Float>.size * float4x4.numberOfElements()
+                            )
+                            renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
+                            renderEncoder!.drawPrimitives(
+                                type: vbuffer.shape,
+                                vertexStart: 0,
+                                vertexCount: vbuffer.vertexCount
+                            )
+                        }
                     }
                 }
             }
@@ -546,7 +581,7 @@ class WXMetalRender {
                 }
                 if RadarPreferences.radarShowWpcFronts {
                     UtilityWpcFronts.get()
-                    //self.constructWpcFronts()
+                    self.constructWpcFronts()
                 }
             }
             DispatchQueue.main.async {
@@ -767,6 +802,50 @@ class WXMetalRender {
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)
         spotterBuffers.generateMtlBuffer(device)
+    }
+
+    func constructWpcFronts() {
+        wpcFrontBuffersList = []
+        wpcFrontPaints = []
+        var tmpCoords = (0.0, 0.0)
+        UtilityWpcFronts.fronts.enumerated().forEach { i, _ in
+            let buff = ObjectMetalBuffers()
+            buff.initialize(2, Color.MAGENTA)
+            wpcFrontBuffersList.append(buff)
+        }
+        UtilityWpcFronts.fronts.enumerated().forEach { z, _ in
+            let front = UtilityWpcFronts.fronts[z]
+            switch front.type {
+            case FrontTypeEnum.COLD:
+                wpcFrontPaints.append(wXColor.colorsToInt(0, 0, 255))
+            case FrontTypeEnum.WARM:
+                wpcFrontPaints.append(wXColor.colorsToInt(255, 0, 0))
+            case FrontTypeEnum.STNRY:
+                wpcFrontPaints.append(wXColor.colorsToInt(0, 0, 255))
+            case FrontTypeEnum.STNRY_WARM:
+                wpcFrontPaints.append(wXColor.colorsToInt(255, 0, 0))
+            case FrontTypeEnum.OCFNT:
+                wpcFrontPaints.append(wXColor.colorsToInt(255, 0, 255))
+            case FrontTypeEnum.TROF:
+                wpcFrontPaints.append(wXColor.colorsToInt(254, 216, 177))
+            }
+            for j in stride(from: 0, to: front.coordinates.count - 2, by: 2) {
+                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, pn)
+                wpcFrontBuffersList[z].putFloat(tmpCoords.0)
+                wpcFrontBuffersList[z].putFloat(tmpCoords.1)
+                wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
+                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j + 1].lat, front.coordinates[j + 1].lon, pn)
+                wpcFrontBuffersList[z].putFloat(tmpCoords.0)
+                wpcFrontBuffersList[z].putFloat(tmpCoords.1)
+                wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
+            }
+            wpcFrontBuffersList[z].count = Int(Double(wpcFrontBuffersList[z].metalBuffer.count) * 0.4)
+            wpcFrontBuffersList[z].generateMtlBuffer(device)
+        }
     }
 
     func constructSwoLines() {

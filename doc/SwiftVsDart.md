@@ -29,8 +29,7 @@ UtilityWpcFronts.pressureCenters.asMap().forEach((index, value) {
 
 Swift:
 warningDataList.enumerated().forEach { index, warningData in
-
-
+for index in stride(from: 0, to: tokens.count - 1, by: 2) {
 
 Swift - modify list passed as arg to method (inout and &)
 
