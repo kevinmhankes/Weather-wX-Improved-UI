@@ -47,6 +47,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
     var longPressCount = 0
     var toolbar = ObjectToolbar(.top)
     var globalHomeScreenFav = ""
+    var globalTextViewFontSize: CGFloat = 0.0
     #if targetEnvironment(macCatalyst)
     var oneMinRadarFetch = Timer()
     #endif
@@ -147,10 +148,11 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
         self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        self.globalHomeScreenFav = Utility.readPref(
+        globalHomeScreenFav = Utility.readPref(
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault
         )
+        globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
         self.getContentMaster()
         #if targetEnvironment(macCatalyst)
@@ -374,8 +376,12 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault
         )
+        let textSizeHasChange = abs(UIPreferences.textviewFontSize - globalTextViewFontSize) > 0.5
         Location.checkCurrentLocationValidity()
-        if (Location.latlon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) {
+        if (Location.latlon != oldLocation)
+            || (newhomeScreenFav != globalHomeScreenFav)
+            || textSizeHasChange
+        {
             print("refresh homescreen")
             scrollView.scrollToTop()
             self.getContentMaster()
