@@ -151,26 +151,22 @@ class UtilityWpcFronts {
     }
   }*/
 
-  /*static List<double> parseLatLon(String string) {
-    if (string.length != 7) {
-      return [0.0, 0.0];
-    } else {
-      final lat = double.tryParse(
-              string.substring(0, 2) + "." + string.substring(2, 3)) ??
-          0.0;
-      var lon = 0.0;
-      if (string[3] == "0") {
-        lon = double.tryParse(
-                string.substring(4, 6) + "." + string.substring(6, 7)) ??
-            0.0;
-      } else {
-        lon = double.tryParse(
-                string.substring(3, 6) + "." + string.substring(6, 7)) ??
-            0.0;
-      }
-      return [lat, lon];
+    static func parseLatLon(_ string: String) -> [Double] {
+        if string.count != 7 {
+            return [0.0, 0.0]
+        } else {
+            let lat = Double(string.substring(0, 2) + "." + string.substring(2, 3)) ?? 0.0
+            var lon = 0.0
+            // TODO FIXME need to make sure this is working
+            let index = string.index(string.startIndex, offsetBy: 3)
+            if String(string[index]) == "0" {
+                lon = Double(string.substring(4, 6) + "." + string.substring(6, 7)) ?? 0.0
+            } else {
+                lon = Double(string.substring(3, 6) + "." + string.substring(6, 7)) ?? 0.0
+            }
+            return [lat, lon]
+        }
     }
-  }*/
 
   /*static Future get() async {
     final currentTime1 = UtilityTime.currentTimeMillis();
