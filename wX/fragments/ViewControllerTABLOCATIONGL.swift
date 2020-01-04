@@ -385,7 +385,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
             scrollView.scrollToTop()
             self.ccCard?.resetTextSize()
             self.objCard7DayCollection?.resetTextSize()
-            self.objLabel.resetTextSize()
+            self.objLabel.tv.font = FontSize.extraLarge.size
             self.getContentMaster()
         }
     }
