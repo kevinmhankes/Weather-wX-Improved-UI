@@ -36,6 +36,11 @@
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
+		0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F323C116D10024153D /* FrontTypeEnum.swift */; };
+		0354D3F623C117710024153D /* Fronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F523C117710024153D /* Fronts.swift */; };
+		0354D3F823C1188C0024153D /* UtilityWpcFronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */; };
+		0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */; };
+		0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3FB23C1194E0024153D /* PressureCenter.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
 		0358E22B1F49E65D00397017 /* ViewControllerGOES16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358E22A1F49E65D00397017 /* ViewControllerGOES16.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
@@ -424,6 +429,11 @@
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		0354D3F323C116D10024153D /* FrontTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontTypeEnum.swift; sourceTree = "<group>"; };
+		0354D3F523C117710024153D /* Fronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fronts.swift; sourceTree = "<group>"; };
+		0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcFronts.swift; sourceTree = "<group>"; };
+		0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenterTypeEnum.swift; sourceTree = "<group>"; };
+		0354D3FB23C1194E0024153D /* PressureCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenter.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		0358E22A1F49E65D00397017 /* ViewControllerGOES16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerGOES16.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
@@ -1114,6 +1124,11 @@
 		F09504B11E1530D4008A966E /* radar */ = {
 			isa = PBXGroup;
 			children = (
+				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
+				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
+				0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */,
+				0354D3F523C117710024153D /* Fronts.swift */,
+				0354D3F323C116D10024153D /* FrontTypeEnum.swift */,
 				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				F0F7760B1E00092A0022484C /* LatLon.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
@@ -1679,6 +1694,7 @@
 				F08643EA1DA3CAB600A8558E /* ViewControllerTABMISC.swift in Sources */,
 				0399A14E21CFD3BB0096ECFB /* FloatyManager.swift in Sources */,
 				F0B335701DA3FD6F0035BD36 /* SevereWarning.swift in Sources */,
+				0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */,
 				F0B31EE11DB3DB9800239850 /* UtilitySettingsMain.swift in Sources */,
 				0399A14F21CFD3BB0096ECFB /* Floaty.swift in Sources */,
 				F07761A61DA895A800E36F02 /* UtilityLocationFragment.swift in Sources */,
@@ -1769,6 +1785,7 @@
 				03F3EB95229945DA0056A56D /* UtilityModelSpcHrrrInterface.swift in Sources */,
 				F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */,
 				03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */,
+				0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */,
 				F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */,
 				03F3EB7022993D8E0056A56D /* ObjectNhcStormInfo.swift in Sources */,
 				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,
@@ -1788,6 +1805,7 @@
 				037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */,
 				F0B335001DA3FC980035BD36 /* GlobalVariables.swift in Sources */,
 				038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */,
+				0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */,
 				03F3EB86229945D10056A56D /* UtilityModelEsrlInterface.swift in Sources */,
 				F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */,
 				F08E48311EB0DF72000629DA /* ObjectForecastPackage7Day.swift in Sources */,
@@ -1800,6 +1818,7 @@
 				F0F7760E1E0014610022484C /* ViewControllerLSRbyWFO.swift in Sources */,
 				03FF8F8221FA72D800661F78 /* ViewControllerSPOTTERREPORTS.swift in Sources */,
 				0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */,
+				0354D3F823C1188C0024153D /* UtilityWpcFronts.swift in Sources */,
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
 				F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
@@ -1869,6 +1888,7 @@
 				F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */,
 				F03D8A591E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift in Sources */,
 				F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */,
+				0354D3F623C117710024153D /* Fronts.swift in Sources */,
 				036522B422914AD90056E657 /* UtilityWpcText.swift in Sources */,
 				03F3EB84229945D10056A56D /* UtilityModelGlcfsInputOutput.swift in Sources */,
 				F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */,
