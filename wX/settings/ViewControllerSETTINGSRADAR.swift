@@ -24,6 +24,8 @@ UIPickerViewDataSource, CLLocationManagerDelegate {
 
     @objc override func doneClicked() {
         MyApplication.initPreferences()
+        // brute force, reset timers so that fresh data is downloaded next time in nexrad radar
+        RadarGeometry.resetTimerOnRadarPolygons()
         RadarGeometry.initialize()
         GeographyType.regen()
         PolygonType.regen()

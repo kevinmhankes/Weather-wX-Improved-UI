@@ -18,6 +18,7 @@ final class WXGLPolygonWarnings {
         var pixXInit = 0.0
         var pixYInit = 0.0
         let html = prefToken.replace("\n", "").replace(" ", "")
+        print("WARN: " + html)
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
         var polyCount = -1
