@@ -80,8 +80,21 @@ class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
     }
 
     func addProduct(_ selection: String) {
-        homescreenFav.append(selection)
+        if homescreenFav.contains(selection) {
+            getHelp(addButton, selection + " is already in the homescreen widgets list.")
+        } else {
+            homescreenFav.append(selection)
+        }
         displayContent()
+    }
+
+    func getHelp(
+        _ targetButton: UIBarButtonItem,
+        _ help: String
+    ) {
+        let alert = ObjectPopUp(self, help, targetButton)
+        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
+        alert.finish()
     }
 
     @objc func addImageClicked() {
