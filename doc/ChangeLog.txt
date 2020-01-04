@@ -23,7 +23,8 @@
 // m - menu, radar: arrows, keypad, animate
 //
 
-56077 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
+56079 2020_01_04 
+56077/8 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget
 		 [FIX] macOS version was not expanding textual homescreen widgets
