@@ -241,10 +241,11 @@ final class UtilityDownload {
                 bitmap = UtilityUSImgNwsMosaic.getLocalRadarMosaic()
             } else {
                 var product = "rad_rala"
-                let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
+                //let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
                 let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
-                var sector = "us"
-                sector = Utility.readPref(prefTokenSector, sector)
+                //var sector = "us"
+                //sector = Utility.readPref(prefTokenSector, sector)
+                let sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
                 product = Utility.readPref(prefTokenProduct, product)
                 bitmap = UtilityAwcRadarMosaic.get(sector, product)
             }
