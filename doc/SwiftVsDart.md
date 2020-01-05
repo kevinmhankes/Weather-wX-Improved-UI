@@ -9,6 +9,9 @@ Kotlin:
 y = newValue.toDoubleOrNull() ?: 0.0
 
 
+removeAt
+remove(at:)
+
 
 Dart:
 static List<double> parseLatLon(String string) {
@@ -36,6 +39,9 @@ UtilityWpcFronts.pressureCenters.asMap().forEach((index, value) {
 Swift:
 warningDataList.enumerated().forEach { index, warningData in
 for index in stride(from: 0, to: tokens.count - 1, by: 2) {
+
+Kotlin:
+tokens.indices.forEach { index ->
 
 Kotlin:
 (100 downTo -1 step 1).forEach {
@@ -84,7 +90,12 @@ Math - PI
 dart:
 math.pi
 
+Swift:
 Double.pi
+
+Kotlin:
+import kotlin.math.*
+PI
 
 
 
