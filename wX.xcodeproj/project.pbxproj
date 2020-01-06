@@ -1124,17 +1124,16 @@
 		F09504B11E1530D4008A966E /* radar */ = {
 			isa = PBXGroup;
 			children = (
-				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
-				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
-				0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */,
+				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				0354D3F523C117710024153D /* Fronts.swift */,
 				0354D3F323C116D10024153D /* FrontTypeEnum.swift */,
-				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				F0F7760B1E00092A0022484C /* LatLon.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
 				F0B335881DA3FD880035BD36 /* Level2Record.swift */,
 				037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */,
 				03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */,
+				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
+				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
 				F0B3350A1DA3FD1C0035BD36 /* RID.swift */,
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
@@ -1153,6 +1152,7 @@
 				03F8A959229C7145004A88EB /* UtilitySwoD1.swift */,
 				03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */,
 				037162DD21C1013700B815BB /* UtilityWatch.swift */,
+				0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */,
 				03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */,
 				03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */,
 				03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */,

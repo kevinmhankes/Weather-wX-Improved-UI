@@ -62,7 +62,7 @@ class UtilityWpcFronts {
             startIndex = 1
             indexIncrement = 2
         }
-        for index in stride(from: startIndex, to: tokens.count - 1, by: indexIncrement) {
+        for index in stride(from: startIndex, to: tokens.count, by: indexIncrement) {
             //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
             let coordinates = parseLatLon(tokens[index])
             if index < (tokens.count - 1) {
@@ -71,7 +71,7 @@ class UtilityWpcFronts {
                 var numberOfTriangles = distance / length
                 numberOfTriangles.round(.towardZero)
                 // construct two lines which will consist of adding 4 points
-                for pointNumber in stride(from: 1, to: numberOfTriangles - 1, by: 4) {
+                for pointNumber in stride(from: 1, to: numberOfTriangles, by: 2) {
                     //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 2) {
                     let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
                     let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
@@ -98,7 +98,7 @@ class UtilityWpcFronts {
             indexIncrement = 2
             length = 0.2
         }
-        for index in stride(from: startIndex, to: tokens.count - 1, by: indexIncrement) {
+        for index in stride(from: startIndex, to: tokens.count, by: indexIncrement) {
             //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
             let coordinates = parseLatLon(tokens[index])
             if index < (tokens.count - 1) {
@@ -107,7 +107,7 @@ class UtilityWpcFronts {
                 var numberOfTriangles = (distance / length)
                 numberOfTriangles.round(.towardZero)
                 // construct two lines which will consist of adding 4 points
-                for pointNumber in stride(from: 1, to: numberOfTriangles - 1, by: 4) {
+                for pointNumber in stride(from: 1, to: numberOfTriangles, by: 4) {
                     //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 4) {
                     let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
                     let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
@@ -123,7 +123,7 @@ class UtilityWpcFronts {
                     let yDiff = y3 - y1
                     let angle = atan2(yDiff, xDiff) * 180.0 / Double.pi
                     let sliceStart = Int((Double(slices) * angle) / 180.0)
-                    for i in stride(from: sliceStart, to: slices + sliceStart, by: 1) {
+                    for i in stride(from: sliceStart, to: slices + sliceStart + 1, by: 1) {
                         //for (int i = sliceStart; i <= slices + sliceStart; i++) {
                         let x = rotation * length * cos(step * Double(i)) + center1
                         let y = rotation * length * sin(step * Double(i)) + center2
@@ -176,7 +176,7 @@ class UtilityWpcFronts {
         let currentTime1 = UtilityTime.currentTimeMillis()
         let currentTimeSec = currentTime1 / 1000
         let refreshIntervalSec = refreshLocMin * 60
-        var fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized
+        let fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized
         //fetchData = true
         if fetchData {
             pressureCenters = []
@@ -214,14 +214,14 @@ class UtilityWpcFronts {
                     switch type {
                     case "HIGHS":
                         //for (int index = 0; index < tokens.length; index += 2) {
-                        for index in stride(from: 0, to: tokens.count - 1, by: 2) {
+                        for index in stride(from: 0, to: tokens.count, by: 2) {
                             let coordinates = parseLatLon(tokens[index + 1])
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.HIGH,
                                                                   tokens[index], coordinates[0], coordinates[1]))
                         }
                     case "LOWS":
                         //for (int index = 0; index < tokens.length; index += 2) {
-                        for index in stride(from: 0, to: tokens.count - 1, by: 2) {
+                        for index in stride(from: 0, to: tokens.count, by: 2) {
                             let coordinates = parseLatLon(tokens[index + 1])
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.LOW,
                                                                   tokens[index], coordinates[0], coordinates[1]))
