@@ -26,6 +26,7 @@
 
 56079 2020_01_06 [FIX] wpc fronts - render had index off by one
 		 [FIX] wpc fronts - few for loop bugs on cold/warm front creation
+		 [FIX] wpc fronts - make blue lighter
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget

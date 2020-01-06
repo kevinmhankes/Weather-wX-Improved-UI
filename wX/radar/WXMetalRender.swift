@@ -817,11 +817,11 @@ class WXMetalRender {
             let front = UtilityWpcFronts.fronts[z]
             switch front.type {
             case FrontTypeEnum.COLD:
-                wpcFrontPaints.append(wXColor.colorsToInt(0, 0, 255))
+                wpcFrontPaints.append(wXColor.colorsToInt(0, 127, 255))
             case FrontTypeEnum.WARM:
                 wpcFrontPaints.append(wXColor.colorsToInt(255, 0, 0))
             case FrontTypeEnum.STNRY:
-                wpcFrontPaints.append(wXColor.colorsToInt(0, 0, 255))
+                wpcFrontPaints.append(wXColor.colorsToInt(0, 127, 255))
             case FrontTypeEnum.STNRY_WARM:
                 wpcFrontPaints.append(wXColor.colorsToInt(255, 0, 0))
             case FrontTypeEnum.OCFNT:
