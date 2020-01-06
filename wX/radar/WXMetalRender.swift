@@ -808,7 +808,7 @@ class WXMetalRender {
         wpcFrontBuffersList = []
         wpcFrontPaints = []
         var tmpCoords = (0.0, 0.0)
-        UtilityWpcFronts.fronts.enumerated().forEach { i, _ in
+        UtilityWpcFronts.fronts.forEach { _ in
             let buff = ObjectMetalBuffers()
             buff.initialize(2, Color.MAGENTA)
             wpcFrontBuffersList.append(buff)
@@ -829,7 +829,7 @@ class WXMetalRender {
             case FrontTypeEnum.TROF:
                 wpcFrontPaints.append(wXColor.colorsToInt(254, 216, 177))
             }
-            for j in stride(from: 0, to: front.coordinates.count - 2, by: 2) {
+            for j in stride(from: 0, to: front.coordinates.count - 1, by: 2) {
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, pn)
                 wpcFrontBuffersList[z].putFloat(tmpCoords.0)
                 wpcFrontBuffersList[z].putFloat(tmpCoords.1 * -1.0)
