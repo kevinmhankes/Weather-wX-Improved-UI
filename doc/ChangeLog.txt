@@ -26,6 +26,7 @@
 		 [REF] update copyright in all files
 		 [FIX] homescreen Meso widgets do not open correct image on tap
 		 [FIX] some Canada radar code names have changed
+		 [ADD] in settings location when choosing candian city exit to prior screen after city selected
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget

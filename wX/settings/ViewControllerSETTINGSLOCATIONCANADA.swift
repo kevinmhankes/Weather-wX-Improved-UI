@@ -51,11 +51,16 @@ class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
         }
     }
 
+    @objc override func doneClicked() {
+          super.doneClicked()
+    }
+
     func finishSave() {
         let locStr = Utility.readPref("LOCATION_CANADA_PROV", "") + " " +
             Utility.readPref("LOCATION_CANADA_CITY", "") + " " +
             Utility.readPref("LOCATION_CANADA_ID", "")
         statusButton.title = locStr
+        doneClicked()
     }
 
     func getContent() {
