@@ -40,13 +40,13 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         self.getContent()
     }
 
-    // TODO get onrestart working
-
+    // TODO onrestart
     @objc func willEnterForeground() {
         //self.getContent()
     }
 
     func getContent() {
+        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl

@@ -9,7 +9,7 @@ struct PressureCenter {
     var pressureInMb: String
     var lat: Double
     var lon: Double
-    
+
     init(_ type: PressureCenterTypeEnum, _ pressureInMb: String, _ lat: Double, _ lon: Double) {
         self.type = type
         self.pressureInMb = pressureInMb

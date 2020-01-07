@@ -28,7 +28,6 @@ class ViewControllerSPCSWOSUMMARY: UIwXViewController {
         self.getContent()
     }
 
-    // FIXME move to displayContent to handle rotation
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {

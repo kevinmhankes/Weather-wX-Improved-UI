@@ -43,7 +43,7 @@ public class ObjectScrollStackView {
         scrollView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
     }
 
-    // TODO FIXME use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+    // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)

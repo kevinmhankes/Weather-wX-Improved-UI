@@ -35,7 +35,6 @@ class ViewControllerSPOTTERS: UIwXViewController {
 
     func getContent() {
         refreshViews()
-        print("refresh spotter")
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterData = UtilitySpotter.getSpotterData()
             DispatchQueue.main.async {
