@@ -17,17 +17,13 @@
 // wxoglsize does not appear to work
 // TTS does not work after stopping
 // Help dialogue
-// add keyboard shortcuts "i" for National images
-// add keyboard shortcuts "t" for National text
-// document in help keyboard shortcuts
-// c - vis, r - radar, a - wfo text, d - severe dashboard
-// m - menu, radar: arrows, keypad, animate
-//
 
 56079 2020_01_07 [FIX] wpc fronts - render had index off by one
 		 [FIX] wpc fronts - few for loop bugs on cold/warm front creation
 		 [FIX] wpc fronts - make blue lighter
 		 [FIX] wpc fronts - trof is now dashed line
+		 [REF] various lint cleanup
+		 [ADD] onrestart in spotter activity
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget

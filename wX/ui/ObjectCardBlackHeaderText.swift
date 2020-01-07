@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardBlackHeaderText {
 
     var cardStackView = ObjectCardStackView()
-    
+
     init(_ stackView: UIStackView, _ text: String) {
         let tvLocation = ObjectTextViewLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
         tvLocation.text = text
@@ -23,7 +23,7 @@ final class ObjectCardBlackHeaderText {
         cardStackView.stackView.backgroundColor = UIColor.black
         stackView.addArrangedSubview(cardStackView.view)
     }
-    
+
     var view: StackView {
         return cardStackView.view
     }

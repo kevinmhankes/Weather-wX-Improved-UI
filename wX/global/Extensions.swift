@@ -8,7 +8,11 @@ import Foundation
 import UIKit
 
 extension String {
-    
+
+    func parseLastMatch(_ pattern: String) -> String {
+     return UtilityString.parseLastMatch(self, pattern)
+    }
+
     func trim() -> String {
      return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
     }

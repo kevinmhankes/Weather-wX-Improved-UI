@@ -15,6 +15,12 @@ class ViewControllerSPOTTERS: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         spotterReportsButton.title = "Spotter Reports"
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
@@ -23,22 +29,30 @@ class ViewControllerSPOTTERS: UIwXViewController {
         self.getContent()
     }
 
-    // TODO add onrestart
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
 
     func getContent() {
+        refreshViews()
+        print("refresh spotter")
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterData = UtilitySpotter.getSpotterData()
             DispatchQueue.main.async {
-                self.spotterCountButton.title = "Count: \(self.spotterData.count)"
-                self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
-                self.spotterDataSorted.enumerated().forEach {
-                    _ = ObjectSpotterCard(
-                        self.stackView,
-                        $1,
-                        UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
-                    )
-                }
+                self.displayContent()
             }
+        }
+    }
+
+    private func displayContent() {
+        self.spotterCountButton.title = "Count: \(self.spotterData.count)"
+        self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
+        self.spotterDataSorted.enumerated().forEach {
+            _ = ObjectSpotterCard(
+                self.stackView,
+                $1,
+                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
+            )
         }
     }
 
@@ -59,5 +73,16 @@ class ViewControllerSPOTTERS: UIwXViewController {
         ActVars.mapKitLon = self.spotterDataSorted[selection].lon
         ActVars.mapKitRadius = 20000.0
         self.goToVC("mapkitview")
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.refreshViews()
+                self.displayContent()
+            }
+        )
     }
 }

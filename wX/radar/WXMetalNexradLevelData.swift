@@ -87,7 +87,6 @@ final class WXMetalNexradLevelData {
     }
 
     func decocodeAndPlotNexradLevel3FourBit() {
-        // TODO fix this logic
         if productCode == 181 {
             binWord = MemoryBuffer(360 * 720)
             radialStartAngle = MemoryBuffer(4 * 360)

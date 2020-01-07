@@ -63,7 +63,7 @@ final class WXMetalTextObject {
         yFudge = 25.0 * (fudgeFactor / glviewWidth)
     }
 
-    func addTVCitiesExt() {
+    private func addTextLabelsCitiesExtentended() {
         if GeographyType.cities.display {
             glview.citiesExtAl = []
             oglrZoom = 1.0
@@ -105,7 +105,7 @@ final class WXMetalTextObject {
         }
     }
 
-    func initTVCitiesExt() {
+    private func initializeTextLabelsCitiesExtended() {
         if numPanes == 1 {
             if GeographyType.cities.display {
                 UtilityCitiesExtended.populateArrays()
@@ -113,13 +113,13 @@ final class WXMetalTextObject {
         }
     }
 
-    func initTVCountyLabels() {
+    private func initializeTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
             UtilityCountyLabels.populateArrays()
         }
     }
 
-    func addTVCountyLabels() {
+    private func addTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
             glview.countyLabelsAl = []
             oglrZoom = 1.0
@@ -140,7 +140,7 @@ final class WXMetalTextObject {
         }
     }
 
-    func addTVSpottersLabels() {
+    private func addTextLabelsSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
             spotterLat = 0.0
             spotterLon = 0.0
@@ -165,9 +165,9 @@ final class WXMetalTextObject {
 
     func initializeTextLabels() {
         if numPanes == 1 {
-            initTVCitiesExt()
+            initializeTextLabelsCitiesExtended()
         }
-        initTVCountyLabels()
+        initializeTextLabelsCountyLabels()
     }
 
     func removeTextLabels() {
@@ -185,10 +185,10 @@ final class WXMetalTextObject {
 
     func addTextLabels() {
         if numPanes == 1 && OGLR != nil {
-            addTVCitiesExt()
-            addTVCountyLabels()
-            addTVObs()
-            addTVSpottersLabels()
+            addTextLabelsCitiesExtentended()
+            addTextLabelsCountyLabels()
+            addTextLabelsObservations()
+            addTextLabelsSpottersLabels()
             addWpcPressureCenters()
         }
     }
@@ -202,8 +202,6 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            //let textScaleEnhance = 2.0
-            //textSize = Double(oglrZoom * 0.75 * RadarPreferences.radarTextSize) * textScaleEnhance
             if OGLR.zoom < 0.75 {
                 UtilityWpcFronts.pressureCenters.enumerated().forEach { _, value in
                     var color = wXColor.colorsToInt(0, 127, 255)
@@ -216,8 +214,7 @@ final class WXMetalTextObject {
         }
     }
 
-    // TODO use better method names, more verbose
-    func addTVObs() {
+    private func addTextLabelsObservations() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
             obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
             spotterLat = 0.0

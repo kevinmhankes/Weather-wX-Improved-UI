@@ -127,29 +127,29 @@ final class UtilityLocationFragment {
     ]
 
     static func extractWindDirection(_ chunk: String) -> String {
-        // TODO FIXME create extension
-        let winddir1 = UtilityString.parseLastMatch(chunk, sevenDayWinddir1)
-        let winddir2 = UtilityString.parseLastMatch(chunk, sevenDayWinddir2)
-        let winddir3 = UtilityString.parseLastMatch(chunk, sevenDayWinddir3)
-        let winddir4 = UtilityString.parseLastMatch(chunk, sevenDayWinddir4)
-        let winddir5 = UtilityString.parseLastMatch(chunk, sevenDayWinddir5)
-        let winddir6 = UtilityString.parseLastMatch(chunk, sevenDayWinddir6)
-        let winddir7 = UtilityString.parseLastMatch(chunk, sevenDayWinddir7)
+        // TODO use forEach over List
+        let windDir1 = chunk.parseLastMatch(sevenDayWinddir1)
+        let windDir2 = chunk.parseLastMatch(sevenDayWinddir2)
+        let windDir3 = chunk.parseLastMatch(sevenDayWinddir3)
+        let windDir4 = chunk.parseLastMatch(sevenDayWinddir4)
+        let windDir5 = chunk.parseLastMatch(sevenDayWinddir5)
+        let windDir6 = chunk.parseLastMatch(sevenDayWinddir6)
+        let windDir7 = chunk.parseLastMatch(sevenDayWinddir7)
         var retStr = ""
-        if winddir4 != "" {
-            retStr = winddir4
-        } else if winddir3 != "" {
-            retStr = winddir3
-        } else if winddir2 != "" {
-            retStr = winddir2
-        } else if winddir1 != "" {
-            retStr = winddir1
-        } else if winddir5 != "" {
-            retStr = winddir5
-        } else if winddir6 != "" {
-            retStr = winddir6
-        } else if winddir7 != "" {
-            retStr = winddir7
+        if windDir4 != "" {
+            retStr = windDir4
+        } else if windDir3 != "" {
+            retStr = windDir3
+        } else if windDir2 != "" {
+            retStr = windDir2
+        } else if windDir1 != "" {
+            retStr = windDir1
+        } else if windDir5 != "" {
+            retStr = windDir5
+        } else if windDir6 != "" {
+            retStr = windDir6
+        } else if windDir7 != "" {
+            retStr = windDir7
         }
         if retStr == "" {
             return ""
