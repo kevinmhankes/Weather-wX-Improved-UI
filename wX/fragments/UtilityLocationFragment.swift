@@ -53,13 +53,13 @@ final class UtilityLocationFragment {
     static let sevenDayWind7 = "around ([0-9]*) mph"
     static let sevenDayWind8 = "Winds could gust as high as ([0-9]*) mph\\."
     static let sevenDayWind9 = " ([0-9]*) to ([0-9]*) mph."
-    static let sevenDayWinddir1 = "\\. (\\w+\\s?\\w*) wind "
-    static let sevenDayWinddir2 = "wind becoming (.*?) [0-9]"
-    static let sevenDayWinddir3 = "wind becoming (\\w+\\s?\\w*) around"
-    static let sevenDayWinddir4 = "Breezy, with a[n]? (.*?) wind"
-    static let sevenDayWinddir5 = "Windy, with a[n]? (.*?) wind"
-    static let sevenDayWinddir6 = "Blustery, with a[n]? (.*?) wind"
-    static let sevenDayWinddir7 = "Light (.*?) wind"
+    //static let sevenDayWinddir1 = "\\. (\\w+\\s?\\w*) wind "
+    //static let sevenDayWinddir2 = "wind becoming (.*?) [0-9]"
+    //static let sevenDayWinddir3 = "wind becoming (\\w+\\s?\\w*) around"
+    //static let sevenDayWinddir4 = "Breezy, with a[n]? (.*?) wind"
+    //static let sevenDayWinddir5 = "Windy, with a[n]? (.*?) wind"
+    //static let sevenDayWinddir6 = "Blustery, with a[n]? (.*?) wind"
+    //static let sevenDayWinddir7 = "Light (.*?) wind"
 
     static func extract7DayMetrics(_ chunk: String) -> String {
         let spacing = " "
@@ -127,29 +127,25 @@ final class UtilityLocationFragment {
     ]
 
     static func extractWindDirection(_ chunk: String) -> String {
-        // TODO use forEach over List
-        let windDir1 = chunk.parseLastMatch(sevenDayWinddir1)
-        let windDir2 = chunk.parseLastMatch(sevenDayWinddir2)
-        let windDir3 = chunk.parseLastMatch(sevenDayWinddir3)
-        let windDir4 = chunk.parseLastMatch(sevenDayWinddir4)
-        let windDir5 = chunk.parseLastMatch(sevenDayWinddir5)
-        let windDir6 = chunk.parseLastMatch(sevenDayWinddir6)
-        let windDir7 = chunk.parseLastMatch(sevenDayWinddir7)
+        let patternList = [
+            "Breezy, with a[n]? (.*?) wind",
+            "wind becoming (\\w+\\s?\\w*) around",
+            "wind becoming (.*?) [0-9]",
+            "\\. (\\w+\\s?\\w*) wind ",
+            "Windy, with a[n]? (.*?) wind",
+            "Blustery, with a[n]? (.*?) wind",
+            "Light (.*?) wind"
+        ]
+        var windResults = [String]()
+        patternList.forEach {
+            windResults.append(chunk.parseLastMatch($0))
+        }
         var retStr = ""
-        if windDir4 != "" {
-            retStr = windDir4
-        } else if windDir3 != "" {
-            retStr = windDir3
-        } else if windDir2 != "" {
-            retStr = windDir2
-        } else if windDir1 != "" {
-            retStr = windDir1
-        } else if windDir5 != "" {
-            retStr = windDir5
-        } else if windDir6 != "" {
-            retStr = windDir6
-        } else if windDir7 != "" {
-            retStr = windDir7
+        for windToken in windResults {
+            if windToken != "" {
+                retStr = windToken
+                break
+            }
         }
         if retStr == "" {
             return ""
