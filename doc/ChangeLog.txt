@@ -6,6 +6,8 @@
 // [ADD] RadarFile class from flutter/dart port
 // [FIX] Canada radar site detection not working
 // [FIX] Canada radar code names have changed
+// [ADD] onrestart NHCStorm
+// [ADD] onrestart SPCStormReports
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
 // [ADD] allow to zoom out further in nexrad

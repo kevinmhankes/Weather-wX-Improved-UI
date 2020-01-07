@@ -40,7 +40,6 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         self.getContent()
     }
 
-    // TODO onrestart
     @objc func willEnterForeground() {
         //self.getContent()
     }
