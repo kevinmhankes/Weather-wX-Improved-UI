@@ -38,7 +38,7 @@ UtilityWpcFronts.pressureCenters.asMap().forEach((index, value) {
 
 Swift:
 warningDataList.enumerated().forEach { index, warningData in
-for index in stride(from: 0, to: tokens.count - 1, by: 2) {
+for index in stride(from: 0, to: tokens.count, by: 2) {
 
 Kotlin:
 tokens.indices.forEach { index ->
