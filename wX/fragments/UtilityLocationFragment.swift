@@ -141,11 +141,9 @@ final class UtilityLocationFragment {
             windResults.append(chunk.parseLastMatch($0))
         }
         var retStr = ""
-        for windToken in windResults {
-            if windToken != "" {
-                retStr = windToken
-                break
-            }
+        for windToken in windResults where windToken != "" {
+            retStr = windToken
+            break
         }
         if retStr == "" {
             return ""
