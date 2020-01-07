@@ -145,6 +145,18 @@ class UtilityWpcFronts {
         }
     }
 
+    static func addFrontDataTrof(_ front: inout Fronts, _ tokens: [String]) {
+      let fraction = 0.8
+        for index in stride(from: 0, to: tokens.count - 1, by: 1) {
+        let coordinates = parseLatLon(tokens[index])
+        front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
+        let oldCoordinates = parseLatLon(tokens[index + 1])
+        let coord = UtilityMath.computeMiddishPoint(coordinates[0], coordinates[1],
+            oldCoordinates[0], oldCoordinates[1], fraction)
+        front.coordinates.append(LatLon(coord[0], coord[1]))
+      }
+    }
+
     static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
@@ -246,7 +258,7 @@ class UtilityWpcFronts {
                         fronts.append(front)
                     case "TROF":
                         var front = Fronts(FrontTypeEnum.TROF)
-                        addFrontData(&front, tokens)
+                        addFrontDataTrof(&front, tokens)
                         fronts.append(front)
                     case "OCFNT":
                         var front = Fronts(FrontTypeEnum.OCFNT)
