@@ -5,7 +5,6 @@
 // [FIX] Icon spacing issue 7 plus
 // [ADD] RadarFile class from flutter/dart port
 // [FIX] Canada radar site detection not working
-// [FIX] Canada radar code names have changed
 // [ADD] onrestart NHCStorm
 // [ADD] onrestart SPCStormReports
 // [ADD] look at gps tunable distance and time
@@ -26,6 +25,7 @@
 		 [ADD] onrestart in spotter activity
 		 [REF] update copyright in all files
 		 [FIX] homescreen Meso widgets do not open correct image on tap
+		 [FIX] some Canada radar code names have changed
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget
