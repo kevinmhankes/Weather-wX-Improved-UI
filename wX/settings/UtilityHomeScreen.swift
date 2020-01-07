@@ -43,10 +43,28 @@ final class UtilityHomeScreen {
         case "SND":
             token = "sounding"
         case "SPCMESO_500":
+            ActVars.spcMesoToken = "500mb"
+            ActVars.spcMesoFromHomeScreen = true
             token = "spcmeso"
         case "SPCMESO_MSLP":
+            ActVars.spcMesoToken = "pmsl"
+            ActVars.spcMesoFromHomeScreen = true
             token = "spcmeso"
         case "SPCMESO_TTD":
+            ActVars.spcMesoToken = "ttd"
+            ActVars.spcMesoFromHomeScreen = true
+            token = "spcmeso"
+        case "SPCMESO_LLLR":
+            ActVars.spcMesoToken = "lllr"
+            ActVars.spcMesoFromHomeScreen = true
+            token = "spcmeso"
+        case "SPCMESO_LAPS":
+            ActVars.spcMesoToken = "laps"
+            ActVars.spcMesoFromHomeScreen = true
+            token = "spcmeso"
+        case "SPCMESO_RGNLRAD":
+            ActVars.spcMesoToken = "rgnlrad"
+            ActVars.spcMesoFromHomeScreen = true
             token = "spcmeso"
         case "RAD_2KM":
             if !UIPreferences.useAwcRadarMosaic {

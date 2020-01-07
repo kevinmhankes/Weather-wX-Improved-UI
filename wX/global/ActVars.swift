@@ -46,4 +46,6 @@ class ActVars {
     static var mapKitRadius = 0.0
     static var wpcImagesToken = ""
     static var wpcImagesFromHomeScreen = false
+    static var spcMesoFromHomeScreen = false
+    static var spcMesoToken = ""
 }

@@ -8,7 +8,6 @@
 // [FIX] Canada radar code names have changed
 // [ADD] look at gps tunable distance and time
 // [ADD] wpc day 1 -3 image + text (rainfall outlook)
-// [FIX] homescreen Meso widgets do not open correct image on tap
 // [ADD] allow to zoom out further in nexrad
 //
 // Catalyst todos
@@ -24,6 +23,7 @@
 		 [REF] various lint cleanup
 		 [ADD] onrestart in spotter activity
 		 [REF] update copyright in all files
+		 [FIX] homescreen Meso widgets do not open correct image on tap
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget
