@@ -9,12 +9,13 @@ import UIKit
 class ViewControllerSETTINGSMAIN: UIwXViewController {
 
     var titles = [String]()
+    static let copyright = "©"
     let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
         + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
         + " Software is provided \"as is\". Use at your own risk. Use for educational purposes "
         + "and non-commercial purposes only. Do not use for operational purposes.  "
-        + GlobalVariables.copyright
-        + "2016-2019 joshua.tee@gmail.com . Please report bugs or suggestions "
+        + copyright
+        + "2016-2020 joshua.tee@gmail.com . Please report bugs or suggestions "
         + "via email to me as opposed to app store reviews."
         + " \(GlobalVariables.appName) is bi-licensed under the Mozilla Public License Version 2 as well "
         + "as the GNU General Public License Version 3 or later. "

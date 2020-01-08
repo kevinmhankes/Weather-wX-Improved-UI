@@ -17,7 +17,6 @@ class GlobalVariables {
     static let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
     static let preferences = Preferences()
     static let editor = Editor()
-    static let copyright = "©"
     static let appName = "wXL23"
     static let appCreatorEmail = "joshua.tee@gmail.com"
 }
