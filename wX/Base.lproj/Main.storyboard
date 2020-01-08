@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View ControllerSUNMOONDATA-->
+        <!--View Controller Wpc Rainfall Summary-->
         <scene sceneID="0XB-UY-iad">
             <objects>
-                <viewController storyboardIdentifier="sunmoondata" id="g3Q-hM-JAy" customClass="ViewControllerSUNMOONDATA" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wpcrainfallsummary" id="g3Q-hM-JAy" customClass="ViewControllerWpcRainfallSummary" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bGk-ze-I23"/>
                         <viewControllerLayoutGuide type="bottom" id="bvQ-SE-G8c"/>
@@ -1062,6 +1060,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--View Controller Wpc Rainfall Discussion-->
+        <scene sceneID="y8i-ZK-Iov">
+            <objects>
+                <viewController storyboardIdentifier="wpcrainfalldiscussion" id="4bY-b1-bk4" customClass="ViewControllerWpcRainfallDiscussion" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gfl-Zq-Fks"/>
+                        <viewControllerLayoutGuide type="bottom" id="7sB-O0-xKT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eQN-1w-Zi3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="je0-7U-kJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="-272.11394302848578"/>
         </scene>
     </scenes>
 </document>

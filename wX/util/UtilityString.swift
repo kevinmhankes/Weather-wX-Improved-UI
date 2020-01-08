@@ -174,4 +174,11 @@ final class UtilityString {
             return string
         }
     }
+
+    static func extractPre(_ html: String) -> String {
+      let seperator = "ABC123E"
+      let htmlOneLine = html.replaceAll(MyApplication.newline, seperator)
+      let parsedText = htmlOneLine.parse(MyApplication.pre2Pattern)
+      return parsedText.replaceAll(seperator, MyApplication.newline)
+    }
 }

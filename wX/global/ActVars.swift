@@ -48,4 +48,5 @@ class ActVars {
     static var wpcImagesFromHomeScreen = false
     static var spcMesoFromHomeScreen = false
     static var spcMesoToken = ""
+    static var wpcRainfallDay = "1"
 }

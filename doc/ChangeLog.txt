@@ -8,16 +8,14 @@
 // [ADD] onrestart NHCStorm
 // [ADD] onrestart SPCStormReports
 // [ADD] look at gps tunable distance and time
-// [ADD] wpc day 1 -3 image + text (rainfall outlook)
 // [ADD] allow to zoom out further in nexrad
-//
-// Catalyst todos
-//
-// wxoglsize does not appear to work
-// TTS does not work after stopping
-// Help dialogue
+// [FIX] Catalyst - TTS does not work after stopping
+// [FIX] Catalyst - wxoglsize does not appear to work
+// [FIX] Catalyst - Help dialogue
+// [ADD] *add to UtilDownload* wpc day 1 -3 image + text (rainfall outlook)
+// [ADD] *add playlist support* wpc day 1 -3 image + text (rainfall outlook)
 
-56079 2020_01_07 [FIX] wpc fronts - render had index off by one
+56079 2020_01_08 [FIX] wpc fronts - render had index off by one
 		 [FIX] wpc fronts - few for loop bugs on cold/warm front creation
 		 [FIX] wpc fronts - make blue lighter
 		 [FIX] wpc fronts - trof is now dashed line
@@ -30,6 +28,7 @@
 		 [ADD] in settings location edit once you long press on the map it saves automatically
 		 [ADD] in settings location edit if saving location via map use name of format "CA, Palm Springs" (as example)
 		 [ADD] in settings location edit if using gps to save location use lat/lon lookup to formulate name
+		 [ADD] framework for WPC Excessive Rainfall Discussion
 56078 2020_01_04 [ADD] refresh homescreen if homescreen widgets have changed
 		 [FIX] remove sun/moon data as homescreen widget choice
 		 [ADD] use fixed width font for hourly homescreen widget

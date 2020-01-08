@@ -55,6 +55,9 @@
 		036522B422914AD90056E657 /* UtilityWpcText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522B322914AD90056E657 /* UtilityWpcText.swift */; };
 		036522B822914B5D0056E657 /* UtilityGoesFullDisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522B722914B5D0056E657 /* UtilityGoesFullDisk.swift */; };
 		036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522B922914C8D0056E657 /* UtilityHourly.swift */; };
+		036D974D23C5DD3100253A39 /* ViewControllerWpcRainfallSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D974C23C5DD3100253A39 /* ViewControllerWpcRainfallSummary.swift */; };
+		036D974F23C5DE6D00253A39 /* ViewControllerWpcRainfallDiscussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D974E23C5DE6D00253A39 /* ViewControllerWpcRainfallDiscussion.swift */; };
+		036D975123C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D975023C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift */; };
 		036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */; };
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
@@ -448,6 +451,9 @@
 		036522B322914AD90056E657 /* UtilityWpcText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcText.swift; sourceTree = "<group>"; };
 		036522B722914B5D0056E657 /* UtilityGoesFullDisk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityGoesFullDisk.swift; sourceTree = "<group>"; };
 		036522B922914C8D0056E657 /* UtilityHourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHourly.swift; sourceTree = "<group>"; };
+		036D974C23C5DD3100253A39 /* ViewControllerWpcRainfallSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWpcRainfallSummary.swift; sourceTree = "<group>"; };
+		036D974E23C5DE6D00253A39 /* ViewControllerWpcRainfallDiscussion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWpcRainfallDiscussion.swift; sourceTree = "<group>"; };
+		036D975023C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcRainfallOutlook.swift; sourceTree = "<group>"; };
 		036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
@@ -1059,9 +1065,12 @@
 			isa = PBXGroup;
 			children = (
 				036522B122914A580056E657 /* UtilityWpcImages.swift */,
+				036D975023C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift */,
 				036522B322914AD90056E657 /* UtilityWpcText.swift */,
 				F0DED0EA1DAF127D0069E9F7 /* ViewControllerWPCIMG.swift */,
 				F0B31EDE1DB3CFF800239850 /* ViewControllerWPCMPD.swift */,
+				036D974E23C5DE6D00253A39 /* ViewControllerWpcRainfallDiscussion.swift */,
+				036D974C23C5DD3100253A39 /* ViewControllerWpcRainfallSummary.swift */,
 				F0F191F81E8D09F900F7EF7B /* ViewControllerWPCTEXT.swift */,
 			);
 			path = wpc;
@@ -1664,6 +1673,7 @@
 				03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */,
 				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
 				F0FE64211DB5924A0064553C /* ViewControllerSETTINGSUI.swift in Sources */,
+				036D974F23C5DE6D00253A39 /* ViewControllerWpcRainfallDiscussion.swift in Sources */,
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
 				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
@@ -1795,6 +1805,7 @@
 				F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */,
 				03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */,
 				0321B2EF21E0D3EC00677EBC /* ToolbarType.swift in Sources */,
+				036D975123C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift in Sources */,
 				F0B335B01DA3FD960035BD36 /* UtilityMath.swift in Sources */,
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
 				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
@@ -1895,6 +1906,7 @@
 				0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */,
 				036522B222914A580056E657 /* UtilityWpcImages.swift in Sources */,
 				F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */,
+				036D974D23C5DD3100253A39 /* ViewControllerWpcRainfallSummary.swift in Sources */,
 				0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */,
 				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,

@@ -197,6 +197,7 @@ final class ObjectTileMatrix: NSObject {
             token = "modelgeneric"
             ActVars.modelActivitySelected = "NSSLWRF"
         case "lightning":   token = "lightning"
+        case "wpc_rainfall":   token = "wpcrainfallsummary"
         case "ncar_ensemble":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "NCAR_ENSEMBLE"
@@ -337,7 +338,8 @@ final class ObjectTileMatrix: NSObject {
         "nwsobs",
         "opc",
         "goesfulldisk",
-        "lightning"
+        "lightning",
+        "wpc_rainfall"
     ]
 
     var labelsMisc = [
@@ -358,6 +360,7 @@ final class ObjectTileMatrix: NSObject {
         "Observation sites",
         "OPC",
         "GOES Full Disk",
-        "Lightning"
+        "Lightning",
+        "WPC Excessive Rainfall Outlook"
     ]
 }
