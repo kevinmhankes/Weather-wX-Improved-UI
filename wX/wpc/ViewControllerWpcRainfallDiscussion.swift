@@ -34,10 +34,7 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
             let number = Int(ActVars.wpcRainfallDay)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
             self.product = UtilityWpcRainfallOutlook.productCode[number]
-            //self.text = UtilityDownload.getTextProduct(self.product)
-            let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + ActVars.wpcRainfallDay
-            let html = textUrl.getHtmlSep()
-            self.text = UtilityString.extractPre(html).removeSingleLineBreaks()
+            self.text = UtilityDownload.getTextProduct(self.product)
             self.listOfText.append(self.text)
             self.urls.append(imgUrl)
             self.bitmaps.append(Bitmap(imgUrl))

@@ -5,16 +5,16 @@
  *****************************************************************************/
 
 final class UtilityWpcRainfallOutlook {
-    
+
     static let urls = [
         "https://www.wpc.ncep.noaa.gov/qpf/94ewbg.gif",
         "https://www.wpc.ncep.noaa.gov/qpf/98ewbg.gif",
         "https://www.wpc.ncep.noaa.gov/qpf/99ewbg.gif"
     ]
-    
+
     static let productCode = [
         "QPF94E",
         "QPF98E",
-        "QPF99E",
+        "QPF99E"
     ]
 }
