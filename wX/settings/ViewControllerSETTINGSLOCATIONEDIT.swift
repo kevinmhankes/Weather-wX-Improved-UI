@@ -121,14 +121,14 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                 lonString = "-" + lonTextView.view.text!.split(":")[1]
             }
         }
+        centerMap(latString, lonString)
+    }
+
+    func centerMap(_ lat: String, _ lon: String) {
         let locationC = CLLocationCoordinate2D(
-            latitude: Double(latString) ?? 0.0,
-            longitude: Double(lonString) ?? 0.0
+            latitude: Double(lat) ?? 0.0,
+            longitude: Double(lon) ?? 0.0
         )
-        //let locationC = CLLocationCoordinate2D(
-        //    latitude: Double(latTextView.view.text!) ?? 0.0,
-        //    longitude: Double(lonTextView.view.text!) ?? 0.0
-        //)
         UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
@@ -152,7 +152,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                 handler: {_ in
                     let textField = alert.textFields![0]
                     self.searchAddress(textField.text!)
-                    self.labelTextView.view.text = textField.text?.capitalized
+                    //self.labelTextView.view.text = textField.text?.capitalized
                 }
             )
         )
@@ -170,13 +170,21 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                     let placemark = placemarks?[0]
                     let location = placemark?.location
                     let coordinate = location?.coordinate
+                    let locationName: String
+                    if placemark?.locality != nil && placemark?.administrativeArea != nil {
+                        locationName = (placemark?.administrativeArea! ?? "") + ", " + (placemark?.locality! ?? "")
+                    } else {
+                        locationName = "Location"
+                    }
+                    //print(locationName)
+                    self.labelTextView.text = locationName
                     self.latTextView.text = String(coordinate!.latitude)
                     self.lonTextView.text = String(coordinate!.longitude)
                     if self.latTextView.text != "" && self.lonTextView.text != "" {
                         self.saveClicked()
                     }
                 }
-            }
+        }
         )
     }
 
@@ -190,7 +198,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         self.latTextView.text = String(locValue.latitude)
         self.lonTextView.text = String(locValue.longitude)
         if self.latTextView.text != "" && self.lonTextView.text != "" {
-            self.saveClicked()
+            //self.saveClicked()
+            getAddressAndSaveLocation(self.latTextView.text, self.lonTextView.text)
         }
     }
 
@@ -282,11 +291,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         lonTextView.text = lon
         statusTextView.text = status
         view.endEditing(true)
-        /*let locationC = CLLocationCoordinate2D(
-            latitude: Double(latTextView.view.text!) ?? 0.0,
-            longitude: Double(lonTextView.view.text!) ?? 0.0
-        )*/
-        //UtilityMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
+        centerMap(lat, lon)
     }
 
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
@@ -306,9 +311,10 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
                     let pm = placemarks![0]
+                    print(pm)
                     let locationName: String
-                    if pm.locality != nil {
-                        locationName = pm.locality!
+                    if pm.locality != nil && pm.administrativeArea != nil {
+                        locationName = pm.administrativeArea! + ", " + pm.locality!
                     } else {
                         locationName = "Location"
                     }
