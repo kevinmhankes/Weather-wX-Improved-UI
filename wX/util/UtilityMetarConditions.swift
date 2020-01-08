@@ -81,6 +81,8 @@ final class UtilityMetarConditions {
         "Heavy Snow Grains": "snow",
         "Heavy Blowing Snow": "snow",
         "Blowing Snow in Vicinity": "snow",
+        "Snow on Ground": "snow",
+
 
         "Rain Snow": "ra_sn",
         "Light Rain Snow": "ra_sn",
