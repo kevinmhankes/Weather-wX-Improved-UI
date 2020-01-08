@@ -23,7 +23,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             "User Interface",
             "Celsius to Fahrenheit table",
             "Spotters (beta)",
-            "About "  + GlobalVariables.appName + " " + UtilityUI.getVersion()
+            "About "  + GlobalVariables.appName
         ]
         displayContent()
     }
@@ -45,7 +45,7 @@ class ViewControllerSETTINGSMAIN: UIwXViewController {
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
             self.goToVC("textviewer")
-        case "About "  + GlobalVariables.appName + " " + UtilityUI.getVersion():
+        case "About "  + GlobalVariables.appName:
             ActVars.textViewText = GlobalVariables.aboutText
             self.goToVC("textviewer")
         default: break

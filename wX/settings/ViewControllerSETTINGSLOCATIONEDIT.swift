@@ -23,6 +23,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     let mapView = MKMapView()
     var toolbar = ObjectToolbar(.top)
     var toolbarBottom = ObjectToolbar(.bottom)
+    let helpButton = ObjectToolbarIcon()
+    let helpStatement = "There are four ways to enter and save a location. The easiest method is to tap the GPS icon (which looks like an arrow pointing up and to the right). You will need to give permission for the program to access your GPS location if you have not done so before. It might take 5-10 seconds but eventually latitude and longitude numbers will appear and the location will be automatically saved. The second way is to press and hold (also known as long press) on the map until a red pin appears. Once the red pin appears the latitude and longitude will use reverse geocoding to determine an appropriate label for the location. The third method is to tap the search icon and then enter a location such as a city. Once resolved it will save automatically. The final method is the most manual and that is manually specifying a label, latitude, and longitude. After you have done this you need to tape the checkmark icon to save it."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         self.locationManager.delegate = self
         toolbar = ObjectToolbar(.top)
         toolbarBottom = ObjectToolbar(.bottom)
-        let caButton = ObjectToolbarIcon(title: "Canada", self, #selector(caClicked))
+        let helpButton = ObjectToolbarIcon(title: "Help", self, #selector(helpClicked))
+        let canadaButton = ObjectToolbarIcon(title: "Canada", self, #selector(caClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         let doneButton2 = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         let saveButton = ObjectToolbarIcon(self, .save, #selector(saveClicked))
@@ -44,7 +47,7 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
         let deleteButton = ObjectToolbarIcon(self, .delete, #selector(deleteClicked))
         let gpsButton = ObjectToolbarIcon(self, .gps, #selector(gpsClicked))
         let items = [doneButton, GlobalVariables.flexBarButton, searchButton, gpsButton, saveButton]
-        var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, caButton]
+        var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, helpButton, canadaButton]
         if Location.numLocations > 1 {
             itemsBottom.append(deleteButton)
         }
@@ -99,6 +102,11 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
     @objc func doneClicked() {
         Location.refreshLocationData()
         self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+    }
+
+    @objc func helpClicked() {
+        ActVars.textViewText = helpStatement
+        self.goToVC("textviewer")
     }
 
     @objc func saveClicked() {
