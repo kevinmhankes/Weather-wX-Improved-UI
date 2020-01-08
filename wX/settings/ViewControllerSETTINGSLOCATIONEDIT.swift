@@ -221,6 +221,8 @@ class ViewControllerSETTINGSLOCATIONEDIT: UIViewController, CLLocationManagerDel
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
+            //print(locationOnMap)
+            getAddressAndSaveLocation(String(locationOnMap.latitude), String(locationOnMap.longitude))
         }
     }
 
