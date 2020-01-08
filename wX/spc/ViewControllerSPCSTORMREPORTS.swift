@@ -144,7 +144,7 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
                 switch $1.damageHeader {
                 case "Tornado Reports": tornadoHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
                 case "Wind Reports": windHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
-                case "Hail Report": hailHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
+                case "Hail Reports": hailHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
                 default: break
                 }
             }
@@ -168,17 +168,17 @@ class ViewControllerSPCSTORMREPORTS: UIwXViewController {
         }
         if tornadoReports == 0 {
             if tornadoHeader != nil {
-                self.stackView.removeArrangedSubview(tornadoHeader!.view)
+                //self.stackView.removeArrangedSubview(tornadoHeader!.view)
             }
         }
-        if windReports == 1 {
+        if windReports == 0 {
             if windHeader != nil {
-                self.stackView.removeArrangedSubview(windHeader!.view)
+                //self.stackView.removeArrangedSubview(windHeader!.view)
             }
         }
         if hailReports == 0 {
             if hailHeader != nil {
-                self.stackView.removeArrangedSubview(hailHeader!.view)
+               //self.stackView.removeArrangedSubview(hailHeader!.view)
             }
         }
         //print("COUNT: " + String(tornadoReports))
