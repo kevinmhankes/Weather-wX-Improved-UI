@@ -243,6 +243,8 @@ final class Location {
             Utility.writePref("NWS" + locNum, "")
         }
         Location.refreshLocationData()
+        Utility.writePref("CURRENT_LOC_FRAGMENT", locNum)
+        Location.setCurrentLocationStr(locNum)
         return "Saving location " + locNum + " as " + labelStr
             + " ("  + latLon.latString
             + "," + latLon.lonString
