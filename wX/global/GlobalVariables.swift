@@ -18,5 +18,4 @@ class GlobalVariables {
     static let preferences = Preferences()
     static let editor = Editor()
     static let appName = "wXL23"
-    static let appCreatorEmail = "joshua.tee@gmail.com"
 }

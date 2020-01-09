@@ -7,6 +7,8 @@
 import Foundation
 
 final class UtilityDownloadNws {
+    
+    static let appCreatorEmail = "joshua.tee@gmail.com"
 
     static func getCap(_ sector: String) -> String {
         if sector == "us" {
@@ -20,7 +22,7 @@ final class UtilityDownloadNws {
         let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS "
             + GlobalVariables.appName
             + " "
-            + GlobalVariables.appCreatorEmail])
+            + appCreatorEmail])
         let just = JustOf<HTTP>(defaults: myJustDefaults)
         let result = just.get(url)
         return result.text ?? ""
@@ -42,7 +44,7 @@ final class UtilityDownloadNws {
     static func getStringFromUrlXml(_ url: String) -> String {
         let myJustDefaults = JustSessionDefaults(
             headers: [
-                "User-Agent": "IOS " + GlobalVariables.appName + " " + GlobalVariables.appCreatorEmail,
+                "User-Agent": "IOS " + GlobalVariables.appName + " " + appCreatorEmail,
                 "Accept": "application/atom+xml"
             ]
         )
