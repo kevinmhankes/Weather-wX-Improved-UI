@@ -63,6 +63,7 @@
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
+		037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
 		037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */; };
 		037FF27D21A993450002E6E6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27C21A993450002E6E6 /* Shaders.metal */; };
@@ -459,6 +460,7 @@
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
+		037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTimer.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
 		037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalMultiPane.swift; sourceTree = "<group>"; };
 		037FF27C21A993450002E6E6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -1194,6 +1196,7 @@
 				F0B3353D1DA3FD510035BD36 /* Color.swift */,
 				0334980623454B2100FE6050 /* ColorCompatibility.swift */,
 				036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */,
+				037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */,
 				F0B335451DA3FD510035BD36 /* Editor.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
 				0379672D227B8C990067920C /* ObjectPolygonWarning.swift */,
@@ -1761,6 +1764,7 @@
 				03F3EB87229945D10056A56D /* UtilityModelNcepInterface.swift in Sources */,
 				F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */,
 				034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */,
+				037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */,
 				03F4631322A2F14900C06D16 /* UtilityDownloadWatch.swift in Sources */,
 				03F3EB6F22993D8E0056A56D /* ObjectNhc.swift in Sources */,
 				03F3EB7422993F390056A56D /* UtilityTtsTranslations.swift in Sources */,
