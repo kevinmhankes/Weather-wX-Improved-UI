@@ -9,9 +9,11 @@ class DownloadTimer {
     var initialized = false
     var lastRefresh: CLong = 0
     var refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 6)
-    var identifier: String = ""
+    var identifier: String
 
-    init() {
+    init(_ identifier: String) {
+        self.identifier = identifier
+        print("DOWNLOAD STATUS INIT " + identifier)
     }
 
     func isRefreshNeeded() -> Bool {
@@ -22,7 +24,10 @@ class DownloadTimer {
         if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
             refreshNeeded = true
             initialized = true
+            let currentTime: CLong = UtilityTime.currentTimeMillis()
+            lastRefresh = currentTime / 1000
         }
+        print("DOWNLOAD STATUS for " + identifier +  " " + String(refreshNeeded))
         return refreshNeeded
     }
 

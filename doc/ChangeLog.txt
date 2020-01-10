@@ -20,6 +20,7 @@
 		 [ADD] After add location make it the current one
 		 [REF] camelCase and reduce global vars
 		 [ADD] DownloadTimer ( to be used in UtilityDownload* mcd/wat/warn/swo/spotter etc )
+		 [ADD] DownloadTimer use for SPC Watch
 56079 2020_01_08 [FIX] wpc fronts - render had index off by one
 		 [FIX] wpc fronts - few for loop bugs on cold/warm front creation
 		 [FIX] wpc fronts - make blue lighter

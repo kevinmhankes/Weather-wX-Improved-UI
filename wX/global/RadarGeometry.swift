@@ -148,6 +148,7 @@ class RadarGeometry {
         UtilityDownloadMcd.lastRefresh = 0
         UtilityDownloadMpd.lastRefresh = 0
         UtilityDownloadWarnings.lastRefresh = 0
-        UtilityDownloadWatch.lastRefresh = 0
+        //UtilityDownloadWatch.lastRefresh = 0
+        UtilityDownloadWatch.timer.resetTimer()
     }
 }
