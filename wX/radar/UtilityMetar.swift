@@ -11,7 +11,7 @@ final class UtilityMetar {
     static let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
     static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
     static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
-    static var initialized = false
+    //static var initialized = false
     static var initializedObsMap = false
     static var obsArr = [String]()
     static var obsArrExt = [String]()
@@ -21,15 +21,16 @@ final class UtilityMetar {
     static var obsArrY = [Double]()
     static var obsArrAviationColor = [Int]()
     static var obsStateOld = ""
-    static var lastRefresh: CLong = 0
-    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
+    //static var lastRefresh: CLong = 0
+    //static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
     static var obsLatlon = [String: LatLon]()
+    static var timer = DownloadTimer("METAR")
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
-        let currentTime1: CLong = UtilityTime.currentTimeMillis()
-        let currentTimeSeconds: CLong = currentTime1 / 1000
-        let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
-        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized || radarSite != obsStateOld {
+        //let currentTime1: CLong = UtilityTime.currentTimeMillis()
+        //let currentTimeSeconds: CLong = currentTime1 / 1000
+        //let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
+        if timer.isRefreshNeeded() || radarSite != obsStateOld {
             var obsAl = [String]()
             var obsAlExt = [String]()
             var obsAlWb = [String]()
@@ -197,9 +198,9 @@ final class UtilityMetar {
             obsArrY = obsAlY
             obsArrAviationColor = []
             obsArrAviationColor = obsAlAviationColor
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
+            //initialized = true
+            //let currentTime: CLong = UtilityTime.currentTimeMillis()
+            //lastRefresh = currentTime / 1000
         }
     }
 

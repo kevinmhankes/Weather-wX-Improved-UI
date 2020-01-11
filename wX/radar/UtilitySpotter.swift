@@ -8,20 +8,12 @@ public class UtilitySpotter {
 
     static var spotterList = [Spotter]()
     static var reportsList = [SpotterReports]()
-    static var initialized = false
-    static var currentTime: CLong = 0
-    static var currentTimeSec: CLong = 0
-    static var refreshIntervalSec: CLong = 0
-    static var lastRefresh: CLong = 0
-    static var refreshLocMin = RadarPreferences.radarDataRefreshInterval
+    static var timer = DownloadTimer("SPOTTER")
     static var lat = [Double]()
     static var lon = [Double]()
 
     static func getSpotterData() -> [Spotter] {
-        currentTime = UtilityTime.currentTimeMillis()
-        currentTimeSec = currentTime / 1000
-        refreshIntervalSec = refreshLocMin * 60
-        if (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized {
+        if timer.isRefreshNeeded() {
             spotterList = []
             reportsList = []
             var latAl = [String]()
@@ -64,9 +56,6 @@ public class UtilitySpotter {
                 lat.append(0.0)
                 lon.append(0.0)
             }
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
         }
         return spotterList
     }

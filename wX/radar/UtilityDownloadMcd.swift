@@ -6,29 +6,18 @@
 
 public class UtilityDownloadMcd {
 
-    static var initialized = false
-    static var currentTime: CLong = 0
-    static var currentTimeSeconds: CLong = 0
-    static var refreshIntervalSeconds: CLong = 0
-    static var lastRefresh: CLong = 0
-    static var refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 6)
+    static var timer = DownloadTimer("MPD")
 
     static func get() {
-        currentTime = UtilityTime.currentTimeMillis()
-        currentTimeSeconds = currentTime / 1000
-        refreshIntervalSeconds = refreshDataInMinutes * 60
         if !PolygonType.MCD.display {
             UtilityDownloadRadar.clearMcd()
         }
-        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
+        if timer.isRefreshNeeded() {
             if PolygonType.MCD.display {
                 UtilityDownloadRadar.getMcd()
             } else {
                 UtilityDownloadRadar.clearMcd()
             }
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
         }
     }
 }

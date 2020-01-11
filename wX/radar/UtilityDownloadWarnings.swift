@@ -6,21 +6,13 @@
 
 public class UtilityDownloadWarnings {
 
-    static var initialized = false
-    static var currentTime: CLong = 0
-    static var currentTimeSeconds: CLong = 0
-    static var refreshIntervalSeconds: CLong = 0
-    static var lastRefresh: CLong = 0
-    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
+    static var timer = DownloadTimer("WARNINGS")
 
     static func get() {
-        currentTime = UtilityTime.currentTimeMillis()
-        currentTimeSeconds = currentTime / 1000
-        refreshIntervalSeconds = refreshDataInMinutes * 60
         if !PolygonType.TST.display {
             UtilityDownloadRadar.clearPolygonVtec()
         }
-        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
+        if timer.isRefreshNeeded() {
             if PolygonType.TST.display {
                 UtilityDownloadRadar.getPolygonVtec()
             } else {
@@ -34,9 +26,6 @@ public class UtilityDownloadWarnings {
                     UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)
                 }
             }
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
         }
     }
 }

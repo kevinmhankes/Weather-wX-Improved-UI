@@ -13,14 +13,14 @@
 // [FIX] Catalyst - wxoglsize does not appear to work
 // [FIX] Catalyst - Help dialogue
 
-56080 2020_01_09 [ADD] help button in location -> edit
+56080 2020_01_11 [ADD] help button in location -> edit
 		 [FIX] in settings main remove version from about wxl23 (since it's in toolbar)
 		 [ADD] *add to UtilDownload* wpc day 1 -3 image + text (rainfall outlook)
 		 [ADD] *add playlist support* wpc day 1 -3 image + text (rainfall outlook)
 		 [ADD] After add location make it the current one
 		 [REF] camelCase and reduce global vars
 		 [ADD] DownloadTimer ( to be used in UtilityDownload* mcd/wat/warn/swo/spotter etc )
-		 [ADD] DownloadTimer use for SPC Watch
+		 [ADD] DownloadTimer use in most radar download areas
 56079 2020_01_08 [FIX] wpc fronts - render had index off by one
 		 [FIX] wpc fronts - few for loop bugs on cold/warm front creation
 		 [FIX] wpc fronts - make blue lighter

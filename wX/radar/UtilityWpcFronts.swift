@@ -48,11 +48,9 @@ import Foundation
  */
 
 class UtilityWpcFronts {
-    static var initialized = false
-    static var lastRefresh: CLong = 0
-    static var refreshLocMin = RadarPreferences.radarDataRefreshInterval * 2
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
+    static var timer = DownloadTimer("WPC FRONTS")
 
     static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
         let length = 0.4 // size of trianle
@@ -63,7 +61,6 @@ class UtilityWpcFronts {
             indexIncrement = 2
         }
         for index in stride(from: startIndex, to: tokens.count, by: indexIncrement) {
-            //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
             let coordinates = parseLatLon(tokens[index])
             if index < (tokens.count - 1) {
                 let coordinates2 = parseLatLon(tokens[index + 1])
@@ -72,7 +69,6 @@ class UtilityWpcFronts {
                 numberOfTriangles.round(.towardZero)
                 // construct two lines which will consist of adding 4 points
                 for pointNumber in stride(from: 1, to: numberOfTriangles, by: 2) {
-                    //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 2) {
                     let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
                     let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
                     let x3 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 1)) / distance
@@ -99,7 +95,6 @@ class UtilityWpcFronts {
             length = 0.2
         }
         for index in stride(from: startIndex, to: tokens.count, by: indexIncrement) {
-            //for (int index = startIndex; index < tokens.length; index += indexIncrement) {
             let coordinates = parseLatLon(tokens[index])
             if index < (tokens.count - 1) {
                 let coordinates2 = parseLatLon(tokens[index + 1])
@@ -108,7 +103,6 @@ class UtilityWpcFronts {
                 numberOfTriangles.round(.towardZero)
                 // construct two lines which will consist of adding 4 points
                 for pointNumber in stride(from: 1, to: numberOfTriangles, by: 4) {
-                    //for (int pointNumber = 1; pointNumber < numberOfTriangles; pointNumber += 4) {
                     let x1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * pointNumber) / distance
                     let y1 = coordinates[1] + ((coordinates2[1] - coordinates[1]) * length * pointNumber) / distance
                     let center1 = coordinates[0] + ((coordinates2[0] - coordinates[0]) * length * (pointNumber + 0.5)) / distance
@@ -124,7 +118,6 @@ class UtilityWpcFronts {
                     let angle = atan2(yDiff, xDiff) * 180.0 / Double.pi
                     let sliceStart = Int((Double(slices) * angle) / 180.0)
                     for i in stride(from: sliceStart, to: slices + sliceStart + 1, by: 1) {
-                        //for (int i = sliceStart; i <= slices + sliceStart; i++) {
                         let x = rotation * length * cos(step * Double(i)) + center1
                         let y = rotation * length * sin(step * Double(i)) + center2
                         front.coordinates.append(LatLon(x, y))
@@ -184,12 +177,7 @@ class UtilityWpcFronts {
     }
 
     static func get() {
-        let currentTime1 = UtilityTime.currentTimeMillis()
-        let currentTimeSec = currentTime1 / 1000
-        let refreshIntervalSec = refreshLocMin * 60
-        let fetchData = (currentTimeSec > (lastRefresh + refreshIntervalSec)) || !initialized
-        //fetchData = true
-        if fetchData {
+        if timer.isRefreshNeeded() {
             pressureCenters = []
             fronts = []
             let urlBlob = MyApplication.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
@@ -203,7 +191,6 @@ class UtilityWpcFronts {
                 MyApplication.sep)
             html = html.replaceAll(MyApplication.sep, MyApplication.newline)
             let lines = html.split(MyApplication.newline)
-            //for (int index = 0; index < lines.length; index++) {
             lines.enumerated().forEach { index, _ in
                 var data = lines[index]
                 if index < lines.count - 1 {
@@ -224,14 +211,12 @@ class UtilityWpcFronts {
                     tokens.remove(at: 0)
                     switch type {
                     case "HIGHS":
-                        //for (int index = 0; index < tokens.length; index += 2) {
                         for index in stride(from: 0, to: tokens.count, by: 2) {
                             let coordinates = parseLatLon(tokens[index + 1])
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.HIGH,
                                                                   tokens[index], coordinates[0], coordinates[1]))
                         }
                     case "LOWS":
-                        //for (int index = 0; index < tokens.length; index += 2) {
                         for index in stride(from: 0, to: tokens.count, by: 2) {
                             let coordinates = parseLatLon(tokens[index + 1])
                             pressureCenters.append(PressureCenter(PressureCenterTypeEnum.LOW,
@@ -241,7 +226,6 @@ class UtilityWpcFronts {
                         var front = Fronts(FrontTypeEnum.COLD)
                         addFrontData(&front, tokens)
                         addColdFrontTriangles(&front, tokens)
-                        //addWarmFrontSemicircles(front, tokens)
                         fronts.append(front)
                     case "STNRY":
                         var front = Fronts(FrontTypeEnum.STNRY)
@@ -270,9 +254,6 @@ class UtilityWpcFronts {
                     }
                 }
             }
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
         }
     }
 }

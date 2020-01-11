@@ -6,16 +6,11 @@
 
 class UtilitySwoD1 {
 
-    static var initialized = false
-    static var lastRefresh: CLong = 0
-    static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval * 2
+    static var timer = DownloadTimer("SWO")
     static var hashSwo = [Int: [Double]]()
 
     static func get() {
-        let currentTime1: CLong = UtilityTime.currentTimeMillis()
-        let currentTimeSeconds: CLong = currentTime1 / 1000
-        let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
-        if (currentTimeSeconds > (lastRefresh + refreshIntervalSeconds)) || !initialized {
+        if timer.isRefreshNeeded() {
             var retStr = ""
             let threatList = ["HIGH", "MDT", "ENH", "SLGT", "MRGL"]
             let day = 1
@@ -65,9 +60,6 @@ class UtilitySwoD1 {
                     }
                 }
             }
-            initialized = true
-            let currentTime: CLong = UtilityTime.currentTimeMillis()
-            lastRefresh = currentTime / 1000
         }
     }
 }
