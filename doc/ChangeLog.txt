@@ -7,7 +7,6 @@
 // [FIX] Canada radar site detection not working
 // [ADD] onrestart NHCStorm
 // [ADD] onrestart SPCStormReports
-// [ADD] look at gps tunable distance and time
 // [FIX] Catalyst - Help dialogue
 
 56081 2020_01_12 [REF] simplication in UtilityDownload*
