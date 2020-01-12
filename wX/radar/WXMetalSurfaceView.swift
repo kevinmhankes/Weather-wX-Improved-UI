@@ -13,8 +13,8 @@ final class WXMetalSurfaceView {
     var obsAl = [TextViewMetal]()
     var spottersLabelAl = [TextViewMetal]()
     var pressureCenterLabelAl = [TextViewMetal]()
-    static private let maxZoom: Float = 45.0
-    static private let minZoom: Float = 0.03
+    static let maxZoom: Float = 45.0
+    static let minZoom: Float = 0.015
 
     static func setModifiedZoom(
         _ newZoom: Float,
