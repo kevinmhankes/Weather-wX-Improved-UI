@@ -69,7 +69,9 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesiz
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        UtilityActions.resetAudio(&synth, playButton)
+        DispatchQueue.main.async {
+            UtilityActions.resetAudio(&self.synth, self.playButton)
+        }
     }
 
     private func displayContent() {
