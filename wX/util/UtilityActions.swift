@@ -222,11 +222,9 @@ final class UtilityActions {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
         }
     }
-    
+
     static func playClicked(_ textView: UITextView, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        //var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        
         if synth.isPaused {
             print("continue speaking")
             synth.continueSpeaking()
@@ -241,34 +239,22 @@ final class UtilityActions {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }
-        
-        /*if !GlobalVariables.globalSynth.isSpeaking {
-            print("speak")
-            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(textView.text))
-            GlobalVariables.globalSynth.speak(myUtterance)
-            playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
-        } else if GlobalVariables.globalSynth.isPaused {
-            print("continue speaking")
-            GlobalVariables.globalSynth.continueSpeaking()
-            playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
-        } else {
-            print("pause speaking")
-            GlobalVariables.globalSynth.pauseSpeaking(at: AVSpeechBoundary.word)
-            playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
-        }*/
     }
 
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if !synth.isSpeaking {
+            print("play speaking")
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             synth.speak(myUtterance)
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
         } else if synth.isPaused {
+            print("continue speaking")
             synth.continueSpeaking()
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
         } else {
+            print("pause speaking")
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }

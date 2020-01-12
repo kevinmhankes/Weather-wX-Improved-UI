@@ -34,9 +34,6 @@ class ViewControllerPLAYLIST: UIwXViewController {
                 downloadButton
             ]
         ).items
-        //stackView.widthAnchor.constraint(
-        //    equalToConstant: self.view.frame.width
-        //).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
@@ -128,9 +125,12 @@ class ViewControllerPLAYLIST: UIwXViewController {
     }
 
     @objc func playClicked() {
+        var textToSpeak = ""
         playlistItems.forEach {
-            UtilityActions.playClicked(Utility.readPref("PLAYLIST_" + $0, ""), synth, playButton)
+            textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
+            //UtilityActions.playClicked(Utility.readPref("PLAYLIST_" + $0, ""), synth, playButton)
         }
+        UtilityActions.playClicked(textToSpeak, synth, playButton)
     }
 
     @objc func downloadClicked() {
