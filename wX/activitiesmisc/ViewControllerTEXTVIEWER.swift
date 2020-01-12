@@ -12,7 +12,7 @@ class ViewControllerTEXTVIEWER: UIwXViewController {
     var textView = ObjectTextView()
     var playButton = ObjectToolbarIcon()
     var playlistButton = ObjectToolbarIcon()
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,12 @@ class ViewControllerTEXTVIEWER: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playlistButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         displayContent()
+    }
+    
+    @objc override func doneClicked() {
+        //UIApplication.shared.isIdleTimerDisabled = false
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
     }
 
     @objc func playClicked() {
