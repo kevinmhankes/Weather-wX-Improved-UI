@@ -44,7 +44,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
             }
         }
     }
-    
+
     @objc override func doneClicked() {
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()

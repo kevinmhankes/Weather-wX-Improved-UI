@@ -244,14 +244,14 @@ final class UtilityActions {
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
-        if !synth.isSpeaking {
+        if synth.isPaused {
+            print("continue speaking")
+            synth.continueSpeaking()
+            playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
+        } else if !synth.isSpeaking {
             print("play speaking")
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             synth.speak(myUtterance)
-            playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
-        } else if synth.isPaused {
-            print("continue speaking")
-            synth.continueSpeaking()
             playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
         } else {
             print("pause speaking")
