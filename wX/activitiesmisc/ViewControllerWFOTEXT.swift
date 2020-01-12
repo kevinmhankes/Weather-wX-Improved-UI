@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
+class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
 
     var product = "AFD"
     var textView = ObjectTextView()
@@ -36,6 +36,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+        synth.delegate = self
         mapView.delegate = self
         UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
@@ -90,6 +91,12 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     @objc func playClicked() {
         UtilityActions.playClicked(textView.view, synth, playButton)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async {
+            UtilityActions.resetAudio(&self.synth, self.playButton)
+        }
     }
 
     @objc func productClicked() {

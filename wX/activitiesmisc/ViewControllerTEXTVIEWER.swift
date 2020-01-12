@@ -23,7 +23,7 @@ class ViewControllerTEXTVIEWER: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         displayContent()
     }
-    
+
     @objc override func doneClicked() {
         //UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)

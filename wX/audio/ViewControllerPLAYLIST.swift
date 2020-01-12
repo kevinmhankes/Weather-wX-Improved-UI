@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerPLAYLIST: UIwXViewController {
+class ViewControllerPLAYLIST: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var playlistItems = [String]()
     var addButton = ObjectToolbarIcon()
@@ -20,6 +20,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+        synth.delegate = self
         playButton = ObjectToolbarIcon(self, "ic_play_arrow_24dp", #selector(playClicked))
         let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
         addButton = ObjectToolbarIcon(self, "ic_add_box_24dp", #selector(addClicked))
@@ -131,6 +132,12 @@ class ViewControllerPLAYLIST: UIwXViewController {
             //UtilityActions.playClicked(Utility.readPref("PLAYLIST_" + $0, ""), synth, playButton)
         }
         UtilityActions.playClicked(textToSpeak, synth, playButton)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async {
+            UtilityActions.resetAudio(&self.synth, self.playButton)
+        }
     }
 
     @objc func downloadClicked() {

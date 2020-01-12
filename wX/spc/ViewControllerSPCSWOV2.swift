@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerSPCSWOV2: UIwXViewController {
+class ViewControllerSPCSWOV2: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var bitmaps = [Bitmap]()
     var html = ""
@@ -19,6 +19,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        synth.delegate = self
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -39,7 +40,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
         }
         self.getContent()
     }
-    
+
     @objc override func doneClicked() {
         //UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)
@@ -69,6 +70,12 @@ class ViewControllerSPCSWOV2: UIwXViewController {
 
     @objc func playClicked() {
         UtilityActions.playClicked(textView.view, synth, playButton)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async {
+            UtilityActions.resetAudio(&self.synth, self.playButton)
+        }
     }
 
     @objc func shareClicked(sender: UIButton) {

@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerWPCTEXT: UIwXViewController {
+class ViewControllerWPCTEXT: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var productButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
@@ -21,6 +21,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+        synth.delegate = self
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -93,6 +94,12 @@ class ViewControllerWPCTEXT: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, textView.text, self, playListButton)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async {
+            UtilityActions.resetAudio(&self.synth, self.playButton)
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
