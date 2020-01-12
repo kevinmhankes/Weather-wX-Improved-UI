@@ -11,13 +11,8 @@ public class UtilityDownloadWarnings {
     static func get() {
         if !PolygonType.TST.display {
             UtilityDownloadRadar.clearPolygonVtec()
-        }
-        if timer.isRefreshNeeded() {
-            if PolygonType.TST.display {
-                UtilityDownloadRadar.getPolygonVtec()
-            } else {
-                UtilityDownloadRadar.clearPolygonVtec()
-            }
+        } else if timer.isRefreshNeeded() {
+            UtilityDownloadRadar.getPolygonVtec()
             ObjectPolygonWarning.polygonList.forEach {
                 let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
                 if polygonType.isEnabled {

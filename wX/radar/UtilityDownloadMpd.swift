@@ -11,13 +11,8 @@ public class UtilityDownloadMpd {
     static func get() {
         if !PolygonType.MPD.display {
             UtilityDownloadRadar.clearMpd()
-        }
-        if timer.isRefreshNeeded() {
-            if PolygonType.MPD.display {
-                UtilityDownloadRadar.getMpd()
-            } else {
-                UtilityDownloadRadar.clearMpd()
-            }
+        } else if timer.isRefreshNeeded() {
+            UtilityDownloadRadar.getMpd()
         }
     }
 }

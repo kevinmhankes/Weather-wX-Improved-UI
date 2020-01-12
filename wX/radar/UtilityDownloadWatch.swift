@@ -11,13 +11,8 @@ public class UtilityDownloadWatch {
     static func get() {
         if !PolygonType.MCD.display {
             UtilityDownloadRadar.clearWatch()
-        }
-        if timer.isRefreshNeeded() {
-            if PolygonType.MCD.display {
-                UtilityDownloadRadar.getWatch()
-            } else {
-                UtilityDownloadRadar.clearWatch()
-            }
+        } else if timer.isRefreshNeeded() {
+            UtilityDownloadRadar.getWatch()
         }
     }
 }

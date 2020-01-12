@@ -13,7 +13,7 @@
 // [FIX] Catalyst - wxoglsize does not appear to work
 // [FIX] Catalyst - Help dialogue
 
-56081 2020_01_11 
+56081 2020_01_12 [REF] simplication in UtilityDownload*
 56080 2020_01_11 [ADD] help button in location -> edit
 		 [FIX] in settings main remove version from about wxl23 (since it's in toolbar)
 		 [ADD] *add to UtilDownload* wpc day 1 -3 image + text (rainfall outlook)
