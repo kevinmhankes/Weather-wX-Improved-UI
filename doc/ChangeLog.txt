@@ -9,9 +9,9 @@
 // [ADD] onrestart SPCStormReports
 // [ADD] look at gps tunable distance and time
 // [ADD] allow to zoom out further in nexrad
-// [FIX] Catalyst - TTS does not work after stopping
 // [FIX] Catalyst - wxoglsize does not appear to work
 // [FIX] Catalyst - Help dialogue
+// [FIX] TTS - after product has played use delegate to trigger play button again
 
 56081 2020_01_12 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
