@@ -15,7 +15,7 @@ class ViewControllerSPCSWOV2: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     var playlistButton = ObjectToolbarIcon()
     var textView = ObjectTextView()
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,12 @@ class ViewControllerSPCSWOV2: UIwXViewController {
             stateButton.title = ""
         }
         self.getContent()
+    }
+    
+    @objc override func doneClicked() {
+        //UIApplication.shared.isIdleTimerDisabled = false
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
     }
 
     func getContent() {
