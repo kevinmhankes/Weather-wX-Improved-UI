@@ -44,7 +44,6 @@ final class ObjectSlider {
     }
 
     func setLabel() {
-        print(prefVar)
         if prefVar == "TEXTVIEW_FONT_SIZE" {
             UIPreferences.textviewFontSize = CGFloat(slider.value)
         }

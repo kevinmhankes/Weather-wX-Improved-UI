@@ -931,14 +931,15 @@ class WXMetalRender {
         self.rid = rid
         xPos = 0.0
         yPos = 0.0
-        zoom = 1.0
+        let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
+        zoom = 1.0 / prefFactor
         if UtilityUI.isLandscape() {
-            zoom = 0.60
+            zoom = 0.60 / prefFactor
         }
         #if targetEnvironment(macCatalyst)
-        zoom = 0.40
+        zoom = 0.40 / prefFactor
         if isHomeScreen {
-            zoom = 0.70
+            zoom = 0.70 / prefFactor
         }
         #endif
         loadGeometry()
