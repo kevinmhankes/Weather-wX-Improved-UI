@@ -15,11 +15,12 @@ class ViewControllerWPCTEXT: UIwXViewController {
     var textView = ObjectTextView()
     var playListButton = ObjectToolbarIcon()
     var subMenu = ObjectMenuData(UtilityWpcText.titles, [], UtilityWpcText.labels)
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
     var html = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -43,6 +44,12 @@ class ViewControllerWPCTEXT: UIwXViewController {
             ActVars.wpcTextProduct = ""
         }
         self.getContent()
+    }
+
+    @objc override func doneClicked() {
+       UIApplication.shared.isIdleTimerDisabled = false
+       UtilityActions.resetAudio(&synth, playButton)
+       super.doneClicked()
     }
 
     func getContent() {
@@ -72,6 +79,7 @@ class ViewControllerWPCTEXT: UIwXViewController {
         let code = subMenu.paramLabels[index].split(":")[0]
         self.scrollView.scrollToTop()
         self.product = code
+        UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
 
