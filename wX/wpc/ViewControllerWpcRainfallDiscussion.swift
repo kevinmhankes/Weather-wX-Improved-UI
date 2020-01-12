@@ -16,7 +16,7 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     var spcMcdNumber = ""
     var text = ""
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
     var product = ""
 
     override func viewDidLoad() {
@@ -42,6 +42,12 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
                 self.displayContent()
             }
         }
+    }
+    
+    @objc override func doneClicked() {
+        //UIApplication.shared.isIdleTimerDisabled = false
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
