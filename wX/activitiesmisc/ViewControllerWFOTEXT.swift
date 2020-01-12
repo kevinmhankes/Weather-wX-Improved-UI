@@ -19,7 +19,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     let mapView = MKMapView()
     var mapShown = false
     var playlistButton = ObjectToolbarIcon()
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
     var html = ""
     let wfoProdList = [
         "AFD: Area Forecast Discussion",
@@ -64,6 +64,11 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
         self.getContent()
     }
 
+    @objc override func doneClicked() {
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
+    }
+
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.productButton.title = self.product
@@ -91,6 +96,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     func productChanged(_ product: String) {
         self.product = product
+        UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
 
@@ -123,6 +129,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     func mapCall(annotationView: MKAnnotationView) {
         scrollView.scrollToTop()
         self.wfo = (annotationView.annotation!.title!)!
+        UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
 

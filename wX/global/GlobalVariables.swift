@@ -8,7 +8,6 @@ import AVFoundation
 import UIKit
 
 class GlobalVariables {
-    static var globalSynth = AVSpeechSynthesizer()
     static let flexBarButton = UIBarButtonItem(
         barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
         target: nil,

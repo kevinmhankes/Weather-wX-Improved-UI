@@ -14,7 +14,7 @@ class ViewControllerPLAYLIST: UIwXViewController {
     var wfotextButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
     let textPreviewLength = 150
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
     var fabRight: ObjectFab?
 
     override func viewDidLoad() {

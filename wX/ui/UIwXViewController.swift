@@ -16,7 +16,7 @@ class UIwXViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UtilityActions.ttsPrep()
+        //UtilityActions.ttsPrep()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
