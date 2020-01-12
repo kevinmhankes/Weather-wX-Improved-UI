@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerWpcRainfallDiscussion: UIwXViewController {
+class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
@@ -21,6 +21,7 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        synth.delegate = self
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -43,7 +44,7 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
             }
         }
     }
-    
+
     @objc override func doneClicked() {
         //UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)
@@ -65,6 +66,10 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController {
 
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, text, self, playListButton)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        UtilityActions.resetAudio(&synth, playButton)
     }
 
     private func displayContent() {
