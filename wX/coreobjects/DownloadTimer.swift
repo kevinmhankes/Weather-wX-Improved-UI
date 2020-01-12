@@ -13,7 +13,7 @@ class DownloadTimer {
 
     init(_ identifier: String) {
         self.identifier = identifier
-        print("DOWNLOAD STATUS INIT " + identifier)
+        //print("DOWNLOAD STATUS INIT " + identifier)
     }
 
     func isRefreshNeeded() -> Bool {
@@ -30,7 +30,7 @@ class DownloadTimer {
             initialized = true
             lastRefresh = currentTime / 1000
         }
-        print("DOWNLOAD STATUS for " + identifier +  " " + String(refreshNeeded))
+        //print("DOWNLOAD STATUS for " + identifier +  " " + String(refreshNeeded))
         return refreshNeeded
     }
 
