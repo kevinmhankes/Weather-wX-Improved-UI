@@ -12,7 +12,7 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
     var playButton = ObjectToolbarIcon()
     var cap = CapAlert()
     var objAlertDetail = ObjectAlertDetail()
-    let synth = AVSpeechSynthesizer()
+    var synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,11 @@ class ViewControllerUSALERTSDETAIL: UIwXViewController {
                 self.displayContent()
             }
         }
+    }
+    
+    @objc override func doneClicked() {
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
     }
 
     @objc func playClicked() {

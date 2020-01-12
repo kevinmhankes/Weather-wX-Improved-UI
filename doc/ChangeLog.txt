@@ -15,7 +15,7 @@
 
 56081 2020_01_12 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
-		 [FIX] TTS was not working well in WPC Text
+		 [FIX] TTS was not working well in WPC Text and others
 		 [FIX] TTS was not working well in Playlist (wip)
 		 [ADD] in WFO text viewer prevent screen from going off
 		 [ADD] in WPC text viewer prevent screen from going off
