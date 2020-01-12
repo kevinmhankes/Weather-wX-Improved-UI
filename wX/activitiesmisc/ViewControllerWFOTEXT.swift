@@ -35,6 +35,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         mapView.delegate = self
         UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
@@ -65,6 +66,7 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate {
     }
 
     @objc override func doneClicked() {
+        UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
