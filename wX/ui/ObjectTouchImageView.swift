@@ -78,7 +78,7 @@ final class ObjectTouchImageView {
     }
 
     func startAnimating(_ animDrawable: AnimationDrawable) {
-        self.img.zoomView?.animationImages = animDrawable.imageArray
+        self.img.zoomView?.animationImages = animDrawable.images
         self.img.zoomView?.animationDuration = animDrawable.animationDelay
         self.img.zoomView?.startAnimating()
     }

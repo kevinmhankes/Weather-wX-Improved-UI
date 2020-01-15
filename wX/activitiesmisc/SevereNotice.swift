@@ -27,12 +27,12 @@ final class SevereNotice {
         default: break
         }
         if !html.contains(comp) {
-            switch type {
+            /*switch type {
             case "mcd": break
             case "wat": break
             case "mpd": break
             default:    break
-            }
+            }*/
             text = html
         } else {
             text = ""

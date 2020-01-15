@@ -183,7 +183,7 @@ open class ImageScrollView: UIScrollView {
         zoomView!.isUserInteractionEnabled = true
         addSubview(zoomView!)
         //}
-        zoomView?.animationImages = anim.imageArray
+        zoomView?.animationImages = anim.images
         zoomView?.animationDuration = 3.0
         zoomView?.startAnimating()
         let tapGesture = UITapGestureRecognizer(target: self,
