@@ -20,6 +20,12 @@ class ViewControllerPLAYLIST: UIwXViewController, AVSpeechSynthesizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         synth.delegate = self
         playButton = ObjectToolbarIcon(self, "ic_play_arrow_24dp", #selector(playClicked))
         let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
@@ -40,6 +46,10 @@ class ViewControllerPLAYLIST: UIwXViewController, AVSpeechSynthesizerDelegate {
         fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
         self.view.addSubview(fabRight!.view)
         updateView()
+        downloadClicked()
+    }
+
+    @objc func willEnterForeground() {
         downloadClicked()
     }
 
