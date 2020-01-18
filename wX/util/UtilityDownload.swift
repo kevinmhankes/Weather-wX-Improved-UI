@@ -95,12 +95,13 @@ final class UtilityDownload {
                 text = text.replaceAll("<br>", " ")
             }
         } else if prod.hasPrefix("SCCNS") {
-            let textUrl = "/discussions/nfd" + prod.lowercased().replace("ns", "") + ".html"
+            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/nfd" + prod.lowercased().replace("ns", "") + ".html"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
-            if UIPreferences.nwsTextRemovelinebreaks {
-                text = text.removeLineBreaks()
-            }
+            text = UtilityString.extractPre(text)
+            //text = text.parse(MyApplication.pre2Pattern)
+            //if UIPreferences.nwsTextRemovelinebreaks {
+            //    text = text.removeLineBreaks()
+            //}
         } else if prod.contains("SPCMCD") {
             let no = prod.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
