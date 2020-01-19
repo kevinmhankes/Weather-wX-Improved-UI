@@ -52,7 +52,7 @@ final class ObjectMetar {
         metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + MyApplication.newline).capitalized
         metarWeatherCondition = metarData.parseFirst("Weather: (.*?)" + MyApplication.newline).capitalized
         if decodeIcon {
-            if metarWeatherCondition == "" {
+            if metarWeatherCondition == "" || metarWeatherCondition.contains("Inches Of Snow On Ground") {
                 condition = metarSkyCondition
             } else {
                 condition = metarWeatherCondition

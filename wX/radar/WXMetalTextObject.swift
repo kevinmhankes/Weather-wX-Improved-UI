@@ -63,7 +63,7 @@ final class WXMetalTextObject {
         yFudge = 25.0 * (fudgeFactor / glviewWidth)
     }
 
-    private func addTextLabelsCitiesExtentended() {
+    private func addTextLabelsCitiesExtended() {
         if GeographyType.cities.display {
             glview.citiesExtAl = []
             oglrZoom = 1.0
@@ -185,7 +185,7 @@ final class WXMetalTextObject {
 
     func addTextLabels() {
         if numPanes == 1 && OGLR != nil {
-            addTextLabelsCitiesExtentended()
+            addTextLabelsCitiesExtended()
             addTextLabelsCountyLabels()
             addTextLabelsObservations()
             addTextLabelsSpottersLabels()

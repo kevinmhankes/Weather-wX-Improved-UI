@@ -8,8 +8,9 @@
 // [ADD] onrestart SPCStormReports
 // [FIX] Catalyst - Help dialogue
 
-56081 2020_01_15 [REF] simplication in UtilityDownload*
+56081 2020_01_19 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
+		 [FIX] obs that show XX Inches of Snow on Ground
 		 [FIX] TTS was not working well in WPC Text and others
 		 [FIX] TTS was not working well in Playlist (wip)
 		 [ADD] in WFO text viewer prevent screen from going off
