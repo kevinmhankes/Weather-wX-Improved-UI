@@ -247,34 +247,36 @@ class WXMetalRender {
             }
         }
         if RadarPreferences.radarShowWpcFronts {
-            wpcFrontBuffersList.enumerated().forEach { index, vbuffer in
-                if vbuffer.vertexCount > 0 {
-                    if vbuffer.scaleCutOff < zoom {
-                        if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
-                            renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
-                            var nodeModelMatrix = self.modelMatrix()
-                            nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-                            let uniformBuffer = device.makeBuffer(
-                                length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
-                                options: []
-                            )
-                            let bufferPointer = uniformBuffer?.contents()
-                            memcpy(
-                                bufferPointer,
-                                &nodeModelMatrix,
-                                MemoryLayout<Float>.size * float4x4.numberOfElements()
-                            )
-                            memcpy(
-                                bufferPointer! + MemoryLayout<Float>.size * float4x4.numberOfElements(),
-                                &projectionMatrixRef,
-                                MemoryLayout<Float>.size * float4x4.numberOfElements()
-                            )
-                            renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                            renderEncoder!.drawPrimitives(
-                                type: .line,
-                                vertexStart: 0,
-                                vertexCount: vbuffer.vertexCount
-                            )
+            if zoom < WXMetalRender.zoomToHideMiscFeatures {
+                wpcFrontBuffersList.enumerated().forEach { index, vbuffer in
+                    if vbuffer.vertexCount > 0 {
+                        if vbuffer.scaleCutOff < zoom {
+                            if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
+                                renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
+                                var nodeModelMatrix = self.modelMatrix()
+                                nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
+                                let uniformBuffer = device.makeBuffer(
+                                    length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
+                                    options: []
+                                )
+                                let bufferPointer = uniformBuffer?.contents()
+                                memcpy(
+                                    bufferPointer,
+                                    &nodeModelMatrix,
+                                    MemoryLayout<Float>.size * float4x4.numberOfElements()
+                                )
+                                memcpy(
+                                    bufferPointer! + MemoryLayout<Float>.size * float4x4.numberOfElements(),
+                                    &projectionMatrixRef,
+                                    MemoryLayout<Float>.size * float4x4.numberOfElements()
+                                )
+                                renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
+                                renderEncoder!.drawPrimitives(
+                                    type: .line,
+                                    vertexStart: 0,
+                                    vertexCount: vbuffer.vertexCount
+                                )
+                            }
                         }
                     }
                 }

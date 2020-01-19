@@ -10,6 +10,7 @@
 
 56081 2020_01_19 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
+		 [ADD] hide wpc fronts at certain zoom level
 		 [FIX] obs that show XX Inches of Snow on Ground
 		 [FIX] TTS was not working well in WPC Text and others
 		 [FIX] TTS was not working well in Playlist (wip)
