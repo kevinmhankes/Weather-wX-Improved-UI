@@ -7,6 +7,8 @@
 // [ADD] onrestart NHCStorm
 // [ADD] onrestart SPCStormReports
 // [FIX] Catalyst - Help dialogue
+// Check radar center on gps option when pan
+// [FIX] CPC text products
 
 56081 2020_01_19 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
