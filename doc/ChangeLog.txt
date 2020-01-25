@@ -11,6 +11,7 @@
 // [FIX] CPC text products
 // [FIX] alerts no way back to image after set filter
 // [ADD] add buttons in about wX like android
+// [ADD] in WFO alphabetize menu and make some prod fixed with
 
 56081 2020_01_19 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
