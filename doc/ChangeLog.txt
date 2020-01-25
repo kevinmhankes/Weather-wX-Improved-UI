@@ -9,6 +9,7 @@
 // [FIX] Catalyst - Help dialogue
 // Check radar center on gps option when pan
 // [FIX] CPC text products
+// [FIX] alerts no way back to image after set filter
 
 56081 2020_01_19 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
