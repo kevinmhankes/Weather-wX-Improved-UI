@@ -207,15 +207,38 @@ final class UtilityMetar {
     static func getObsArrAviationColor() -> [Int] {
         return obsArrAviationColor
     }
+    
+    private static var metarDataRaw = [String]()
+    private static var metarSites = [RID]()
+
+    static func readMetarData() {
+        if metarDataRaw.isEmpty {
+            print("LOADING OBS FILE")
+            metarDataRaw = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
+            _ = metarDataRaw.popLast()
+            metarSites = [RID]()
+            metarDataRaw.forEach {
+                let tokens = $0.split(" ")
+                metarSites.append(RID(tokens[0], LatLon(tokens[1], tokens[2])))
+            }
+            //metarDataRaw = UtilityIO.readTextFileFromRaw(context.resources, R.raw.us_metar3)
+            //val metarDataAsList = metarDataRaw.split("\n").dropLastWhile { it.isEmpty() }
+            //metarDataAsList.indices.forEach {
+            //    val tokens = metarDataAsList[it].split(" ")
+            //    metarSites.add(RID(tokens[0], LatLon(tokens[1], tokens[2])))
+            //}
+        }
+    }
 
     static func findClosestMetar(_ location: LatLon) -> String {
-        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
+        /*var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var metarSites = [RID]()
         lines.forEach {
             let tmpArr = $0.split(" ")
             metarSites.append(RID(tmpArr[0], LatLon(tmpArr[1], tmpArr[2])))
-        }
+        }*/
+        readMetarData()
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = -1
@@ -237,13 +260,14 @@ final class UtilityMetar {
     }
 
     static func findClosestObservation(_ location: LatLon) -> RID {
-        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
+        /*var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var metarSites = [RID]()
         lines.forEach {
             let tmpArr = $0.split(" ")
             metarSites.append(RID(tmpArr[0], LatLon(tmpArr[1], tmpArr[2])))
-        }
+        }*/
+        readMetarData()
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = -1
@@ -264,19 +288,23 @@ final class UtilityMetar {
     static func getObservationSites(_ radarSite: String) -> String {
         var obsListSb = ""
         let radarLocation = LatLon(radarSite, isRadar: true)
-        var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
+        
+        /*var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
         _ = lines.popLast()
         var obsSites = [RID]()
         lines.forEach {
             let tmpArr = $0.split(" ")
             obsSites.append(RID(tmpArr[0], LatLon(tmpArr[1], tmpArr[2])))
-        }
+        }*/
+        
+        readMetarData()
+        
         let obsSiteRange = 200.0
         var currentDistance = 0.0
-        obsSites.indices.forEach {
-            currentDistance = LatLon.distance(radarLocation, obsSites[$0].location, .MILES)
+        metarSites.indices.forEach {
+            currentDistance = LatLon.distance(radarLocation, metarSites[$0].location, .MILES)
             if currentDistance < obsSiteRange {
-                obsListSb += obsSites[$0].name + ","
+                obsListSb += metarSites[$0].name + ","
             }
         }
         return obsListSb.replaceAll(",$", "")

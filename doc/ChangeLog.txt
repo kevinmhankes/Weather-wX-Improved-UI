@@ -28,6 +28,7 @@
 		 [ADD] RadarFile class from flutter/dart port (wip)
 		 [ADD] onrestart in playlist
 		 [REF] misc rafactor - ie var rename, etc
+		 [REF] UtilityMetar - move to common method and global vars for obs data
 		 [FIX] WPC storm summary text product was not working
 56080 2020_01_11 [ADD] help button in location -> edit
 		 [FIX] in settings main remove version from about wxl23 (since it's in toolbar)
