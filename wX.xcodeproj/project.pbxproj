@@ -99,6 +99,7 @@
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
 		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
+		03C905ED23DD17950077A2A5 /* ViewControllerSettingsAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
@@ -499,6 +500,7 @@
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
+		03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSettingsAbout.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */,
 				F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */,
 				F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */,
+				03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */,
 				F0DF4C731DBEB8D100D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift */,
 				F08623381DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift */,
 				F0D32C4B1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift */,
@@ -1935,6 +1938,7 @@
 				F0D070181DAE7A8D00650C1E /* ViewControllerWFOTEXT.swift in Sources */,
 				F08D61D51DA9D0BB00E8D494 /* ActVars.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
+				03C905ED23DD17950077A2A5 /* ViewControllerSettingsAbout.swift in Sources */,
 				03562F461FCC17AD00456395 /* RadarType.swift in Sources */,
 				F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */,
 				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,

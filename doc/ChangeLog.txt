@@ -13,8 +13,10 @@
 // [ADD] add buttons in about wX like android
 // [ADD] in WFO alphabetize menu and make some prod fixed with
 
-56081 2020_01_19 [REF] simplication in UtilityDownload*
+56081 2020_01_25 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
+		 [ADD] in WFO alphabetize menu 
+		 [ADD] enhanced settings -> about with faq/release notes link
 		 [ADD] hide wpc fronts at certain zoom level
 		 [FIX] obs that show XX Inches of Snow on Ground
 		 [FIX] TTS was not working well in WPC Text and others

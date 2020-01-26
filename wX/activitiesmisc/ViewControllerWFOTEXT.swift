@@ -23,14 +23,14 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate, AVSpeechSynt
     var html = ""
     let wfoProdList = [
         "AFD: Area Forecast Discussion",
+        "ESF: Hydrologic Outlook",
+        "FWF: Fire weather Forecast",
         "HWO: Hazardous Weather Outlook",
         "LSR: Local Storm Report",
+        "NSH: Nearshore Marine Forecast",
         "PNS: Public Information Statement",
-        "RVA: Hydrologic Summary",
-        "ESF: Hydrologic Outlook",
         "RTP: Regional Temp/Precip Summary",
-        "FWF: Fire weather Forecast",
-        "NSH: Nearshore Marine Forecast"
+        "RVA: Hydrologic Summary"
     ]
 
     override func viewDidLoad() {
