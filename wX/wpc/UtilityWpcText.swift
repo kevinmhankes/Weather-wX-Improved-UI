@@ -7,8 +7,8 @@
 final class UtilityWpcText {
 
     static let titles = [
-        ObjectMenuTitle("General", 3),
-        ObjectMenuTitle("General Forecast Discussions", 8),
+        //ObjectMenuTitle("General", 3),
+        ObjectMenuTitle("General Forecast Discussions", 11),
         ObjectMenuTitle("Precipitation Discussions", 2),
         ObjectMenuTitle("Hazards", 6),
         ObjectMenuTitle("Ocean Weather", 38),

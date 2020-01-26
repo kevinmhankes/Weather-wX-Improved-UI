@@ -27,6 +27,7 @@
 		 [FIX] Catalyst - wxoglsize does not appear to work
 		 [ADD] RadarFile class from flutter/dart port (wip)
 		 [ADD] onrestart in playlist
+		 [ADD] In national text activity combine the first two subsections into one section as they are basically the same
 		 [REF] misc rafactor - ie var rename, etc
 		 [REF] UtilityMetar - move to common method and global vars for obs data
 		 [FIX] WPC storm summary text product was not working
