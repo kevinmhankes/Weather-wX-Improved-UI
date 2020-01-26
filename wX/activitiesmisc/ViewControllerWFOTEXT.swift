@@ -30,7 +30,8 @@ class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate, AVSpeechSynt
         "NSH: Nearshore Marine Forecast",
         "PNS: Public Information Statement",
         "RTP: Regional Temp/Precip Summary",
-        "RVA: Hydrologic Summary"
+        "RVA: Hydrologic Summary",
+        "RWR: Regional Weather Roundup"
     ]
 
     override func viewDidLoad() {

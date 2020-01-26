@@ -181,4 +181,11 @@ final class UtilityString {
       let parsedText = htmlOneLine.parse(MyApplication.pre2Pattern)
       return parsedText.replaceAll(seperator, MyApplication.newline)
     }
+    
+    static func extractPreLsr(_ html: String) -> String {
+        let seperator = "ABC123E"
+        let htmlOneLine = html.replace(MyApplication.newline, seperator)
+        let parsedText = htmlOneLine.parse(MyApplication.prePattern)
+        return parsedText.replace(seperator, MyApplication.newline)
+    }
 }

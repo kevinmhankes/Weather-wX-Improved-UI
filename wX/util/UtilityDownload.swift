@@ -174,7 +174,7 @@ final class UtilityDownload {
           let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus05.kwbc.pmd.90d.txt"
           text = textUrl.getHtmlSep()
           text = text.removeLineBreaks()
-        } else if (prod.contains("PMDHCO")) {
+        } else if prod.contains("PMDHCO") {
              let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
              text = textUrl.getHtmlSep()
         } else if prod.contains("USHZD37") {
@@ -182,6 +182,23 @@ final class UtilityDownload {
           text = textUrl.getHtmlSep()
           text = text.removeLineBreaks()
           text = text.parse("<div class=.haztext.>(.*?)</div>")
+        } else if prod.hasPrefix("RWR") {
+            let product = prod.substring(0, 3)
+            let location = prod.substring(3).replace("%", "")
+            let locationName = Utility.getWfoSiteName(location)
+            let state = locationName.split(",")[0]
+            let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + state + "&product=" + product
+            // https://forecast.weather.gov/product.php?site=ILX&issuedby=IL&product=RWR
+            text = url.getHtmlSep()
+            text = UtilityString.extractPreLsr(text)
+            text = text.replace("<br>", "\n")
+        } else if prod.hasPrefix("CLI") {
+            let location = prod.substring(3, 6).replace("%", "")
+            let wfo = prod.substring(6).replace("%", "")
+            // TODO each WFO has multiple locations for this product
+            text =  ("https://forecast.weather.gov/product.php?site=" + wfo + "&product=CLI&issuedby=" + location).getHtmlSep()
+            text = UtilityString.extractPreLsr(text)
+            text = text.replace("<br>", "\n")
         } else {
             let t1 = prod.substring(0, 3)
             let t2 = prod.substring(3).replace("%", "")
