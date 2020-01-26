@@ -195,7 +195,6 @@ final class UtilityDownload {
         } else if prod.hasPrefix("CLI") {
             let location = prod.substring(3, 6).replace("%", "")
             let wfo = prod.substring(6).replace("%", "")
-            // TODO each WFO has multiple locations for this product
             text =  ("https://forecast.weather.gov/product.php?site=" + wfo + "&product=CLI&issuedby=" + location).getHtmlSep()
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
