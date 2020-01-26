@@ -9,7 +9,7 @@ import UIKit
 class ViewControllerSETTINGSMAIN: UIwXViewController {
 
     var titles = [String]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
