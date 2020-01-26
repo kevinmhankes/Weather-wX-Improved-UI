@@ -166,6 +166,22 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
+        } else if prod.contains("PMD30D") {
+          let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus07.kwbc.pmd.30d.txt"
+          text = textUrl.getHtmlSep()
+          text = text.removeLineBreaks()
+        } else if prod.contains("PMD90D") {
+          let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus05.kwbc.pmd.90d.txt"
+          text = textUrl.getHtmlSep()
+          text = text.removeLineBreaks()
+        } else if (prod.contains("PMDHCO")) {
+             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
+             text = textUrl.getHtmlSep()
+        } else if prod.contains("USHZD37") {
+          let textUrl = "https://www.wpc.ncep.noaa.gov/threats/threats.php"
+          text = textUrl.getHtmlSep()
+          text = text.removeLineBreaks()
+          text = text.parse("<div class=.haztext.>(.*?)</div>")
         } else {
             let t1 = prod.substring(0, 3)
             let t2 = prod.substring(3).replace("%", "")

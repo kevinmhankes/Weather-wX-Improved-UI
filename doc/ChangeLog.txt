@@ -23,6 +23,7 @@
 		 [FIX] TTS was not working well in Playlist (wip)
 		 [ADD] in WFO text viewer prevent screen from going off
 		 [ADD] in WPC text viewer prevent screen from going off
+		 [FIX] three PMD text products that were not working 30/90 day CPC, etc
 		 [ADD] allow to zoom out further in nexrad
 		 [FIX] Catalyst - wxoglsize does not appear to work
 		 [ADD] RadarFile class from flutter/dart port (wip)
