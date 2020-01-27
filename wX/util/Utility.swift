@@ -108,4 +108,40 @@ final class Utility {
     static func getClassName(_ uiv: UIViewController) -> String {
         return String(describing: uiv).split(":").safeGet(0).replace("<", "")
     }
+    
+    static func showMainScreenShortCuts() -> String {
+        return "Ctrl-r: Nexrad radar" + MyApplication.newline +
+                "Ctrl-m: Show submenu" + MyApplication.newline +
+                "Ctrl-d: Severe Dashboard" + MyApplication.newline +
+                "Ctrl-c: Goes Viewer" + MyApplication.newline +
+                "Ctrl-a: Local text product viewer" + MyApplication.newline +
+                "Ctrl-s: Settings" + MyApplication.newline +
+                "Ctrl-2: Dual Pane Radar" + MyApplication.newline +
+                "Ctrl-4: Quad Pane Radar" + MyApplication.newline +
+                "Ctrl-w: US Alerts" + MyApplication.newline +
+                "Ctrl-e: SPC Mesoanalysis" + MyApplication.newline +
+                "Ctrl-n: NCEP Models" + MyApplication.newline +
+                "Ctrl-h: Hourly" + MyApplication.newline +
+                "Ctrl-t: NHC" + MyApplication.newline +
+                "Ctrl-l: Lightning" + MyApplication.newline +
+                "Ctrl-i: National images" + MyApplication.newline +
+                "Ctrl-z: National text discussions" + MyApplication.newline +
+                "<-: Previous tab" + MyApplication.newline +
+                "->: Next tab" + MyApplication.newline
+    }
+    
+    static func showRadarShortCuts() -> String {
+        return "Ctrl-l: Show map" + MyApplication.newline +
+                "Ctrl-m: Show submenu" + MyApplication.newline +
+                "Ctrl-a: Animate / stop animate" + MyApplication.newline +
+                "Ctrl-r: Show reflectivity" + MyApplication.newline +
+                "Ctrl-v: Show velocity" + MyApplication.newline +
+                "Ctrl-f: Toggle favorite" + MyApplication.newline +
+                "Ctrl-2: Show dual pane radar" + MyApplication.newline +
+                "Ctrl-4: Show quad pane radar" + MyApplication.newline +
+                "Ctrl-UpArrow: Zoom out" + MyApplication.newline +
+                "Ctrl-DownArrow: Zoom in" + MyApplication.newline +
+                "Arrow keys: pan radar" + MyApplication.newline +
+                "Reload key: reload radar" + MyApplication.newline
+    }
 }

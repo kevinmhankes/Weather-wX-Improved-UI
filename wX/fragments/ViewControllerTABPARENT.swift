@@ -176,23 +176,23 @@ class ViewControllerTABPARENT: UIViewController {
             UIKeyCommand(input: UIKeyCommand.inputEscape,
             modifierFlags: [],
             action: #selector(escape)),
-            UIKeyCommand(input: "r", modifierFlags: [], action: #selector(radarClicked)),
-            UIKeyCommand(input: "d", modifierFlags: [], action: #selector(dashClicked)),
-            UIKeyCommand(input: "c", modifierFlags: [], action: #selector(cloudClicked)),
-            UIKeyCommand(input: "a", modifierFlags: [], action: #selector(wfotextClicked)),
-            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(menuClicked)),
-            UIKeyCommand(input: "2", modifierFlags: [], action: #selector(dualPaneRadarClicked)),
-            UIKeyCommand(input: "4", modifierFlags: [], action: #selector(quadPaneRadarClicked)),
-            UIKeyCommand(input: "w", modifierFlags: [], action: #selector(warningsClicked)),
-            UIKeyCommand(input: "s", modifierFlags: [], action: #selector(settingsClicked)),
-            UIKeyCommand(input: "e", modifierFlags: [], action: #selector(mesoanalysisClicked)),
-            UIKeyCommand(input: "n", modifierFlags: [], action: #selector(ncepModelsClicked)),
-            UIKeyCommand(input: "h", modifierFlags: [], action: #selector(hourlyClicked)),
-            UIKeyCommand(input: "t", modifierFlags: [], action: #selector(nhcClicked)),
-            UIKeyCommand(input: "l", modifierFlags: [], action: #selector(lightningClicked)),
-            UIKeyCommand(input: "z", modifierFlags: [], action: #selector(nationalTextClicked)),
-            UIKeyCommand(input: "i", modifierFlags: [], action: #selector(nationalImagesClicked))
-
+            UIKeyCommand(input: "r", modifierFlags: .control, action: #selector(radarClicked)),
+            UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(dashClicked)),
+            UIKeyCommand(input: "c", modifierFlags: .control, action: #selector(cloudClicked)),
+            UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(wfotextClicked)),
+            UIKeyCommand(input: "m", modifierFlags: .control, action: #selector(menuClicked)),
+            UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(dualPaneRadarClicked)),
+            UIKeyCommand(input: "4", modifierFlags: .control, action: #selector(quadPaneRadarClicked)),
+            UIKeyCommand(input: "w", modifierFlags: .control, action: #selector(warningsClicked)),
+            UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(settingsClicked)),
+            UIKeyCommand(input: "e", modifierFlags: .control, action: #selector(mesoanalysisClicked)),
+            UIKeyCommand(input: "n", modifierFlags: .control, action: #selector(ncepModelsClicked)),
+            UIKeyCommand(input: "h", modifierFlags: .control, action: #selector(hourlyClicked)),
+            UIKeyCommand(input: "t", modifierFlags: .control, action: #selector(nhcClicked)),
+            UIKeyCommand(input: "l", modifierFlags: .control, action: #selector(lightningClicked)),
+            UIKeyCommand(input: "z", modifierFlags: .control, action: #selector(nationalTextClicked)),
+            UIKeyCommand(input: "i", modifierFlags: .control, action: #selector(nationalImagesClicked)),
+            UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts))
         ]
     }
 
@@ -233,5 +233,9 @@ class ViewControllerTABPARENT: UIViewController {
 
     @objc func nationalTextClicked() {
         objTileMatrix.genericClicked("WPCText")
+    }
+
+    @objc func showKeyboardShortcuts() {
+        UtilityUI.showDiaglogue(self, Utility.showMainScreenShortCuts())
     }
 }
