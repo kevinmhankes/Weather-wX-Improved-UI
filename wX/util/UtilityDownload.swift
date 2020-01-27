@@ -205,8 +205,13 @@ final class UtilityDownload {
             let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
             let prodHtml = urlProd.getNwsHtml()
             text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
-            text = text.replace("\\n\\n", "\n")
-            text = text.replace("\\n", " ")
+            if !prod.hasPrefix("RTP") {
+                text = text.replace("\\n\\n", "\n")
+                text = text.replace("\\n", " ")
+                //text = text.replace("\\n", "\n")
+            } else {
+                text = text.replace("\\n", "\n")
+            }
         }
         UtilityPlayList.checkAndSave(prod, text)
         return text
