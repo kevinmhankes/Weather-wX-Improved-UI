@@ -178,10 +178,11 @@ final class UtilityDownload {
              let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
              text = textUrl.getHtmlSep()
         } else if prod.contains("USHZD37") {
-          let textUrl = "https://www.wpc.ncep.noaa.gov/threats/threats.php"
-          text = textUrl.getHtmlSep()
-          text = text.removeLineBreaks()
-          text = text.parse("<div class=.haztext.>(.*?)</div>")
+            let textUrl = "https://www.wpc.ncep.noaa.gov/threats/threats.php"
+            text = textUrl.getHtmlSep()
+            text = text.removeLineBreaks()
+            text = text.parse("<div class=.haztext.>(.*?)</div>")
+            text = text.replace("<br>", "\n")
         } else if prod.hasPrefix("RWR") {
             let product = prod.substring(0, 3)
             let location = prod.substring(3).replace("%", "")

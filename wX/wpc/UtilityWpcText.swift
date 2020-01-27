@@ -10,7 +10,7 @@ final class UtilityWpcText {
         //ObjectMenuTitle("General", 3),
         ObjectMenuTitle("General Forecast Discussions", 11),
         ObjectMenuTitle("Precipitation Discussions", 2),
-        ObjectMenuTitle("Hazards", 6),
+        ObjectMenuTitle("Hazards", 7),
         ObjectMenuTitle("Ocean Weather", 38),
         ObjectMenuTitle("Misc North American Weather", 5),
         ObjectMenuTitle("Misc Intl Weather", 4),
@@ -38,7 +38,8 @@ final class UtilityWpcText {
         "qpferd: Excessive Rainfall Discussion",
         "qpfhsd: Heavy Snow and Icing Discussion",
 
-        "pmdthr: CPC US Hazards Outlook",
+        "ushzd37: CPC US Hazards Outlook Days 3-7",
+        "pmdthr: CPC US Hazards Outlook Days 8-14",
         "sccns1: Storm Summary 1",
         "sccns2: Storm Summary 2",
         "sccns3: Storm Summary 3",
