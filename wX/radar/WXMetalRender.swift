@@ -445,9 +445,20 @@ class WXMetalRender {
     // It saves the current specifics about the single pane radar save the product itself
     func writePrefsForSingleToDualPaneTransition() {
         let numberOfPanes = "2"
-        //let index = "0"
         let radarType = "WXMETAL"
         ["0", "1"].forEach {
+            Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
+            Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
+            Utility.writePref(radarType + numberOfPanes + "_Y" + $0, yPos)
+            Utility.writePref(radarType + numberOfPanes + "_RID" + $0, rid)
+            Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
+        }
+    }
+    
+    func writePrefsForSingleToQuadPaneTransition() {
+        let numberOfPanes = "4"
+        let radarType = "WXMETAL"
+        ["0", "1", "2", "3"].forEach {
             Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
             Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
             Utility.writePref(radarType + numberOfPanes + "_Y" + $0, yPos)

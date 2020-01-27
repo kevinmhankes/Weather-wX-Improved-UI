@@ -898,6 +898,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(keyboardAnimate)),
             UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(stopAnimate)),
             UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(timeClicked)),
+            UIKeyCommand(input: "4", modifierFlags: .control, action: #selector(goToQuadPane)),
             UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(warningClicked)),
             UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
@@ -913,15 +914,28 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: "5", modifierFlags: .numericPad, action: #selector(keyZoomOut)),
             UIKeyCommand(input: "0", modifierFlags: .numericPad, action: #selector(keyZoomIn)),
 
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: [], action: #selector(keyRightArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: [], action: #selector(keyLeftArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow))
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .control, action: #selector(keyRightArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .control, action: #selector(keyLeftArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .control, action: #selector(keyUpArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .control, action: #selector(keyDownArrow)),
+
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .alternate, action: #selector(keyZoomOut)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .alternate, action: #selector(keyZoomIn))
+
         ]
     }
 
     @objc func keyboardAnimate() {
         self.animateFrameCntClicked(10)
+    }
+
+    @objc func goToQuadPane() {
+        ActVars.wxoglPaneCount = "4"
+        ActVars.wxoglCalledFromTimeButton = true
+        let token = "wxmetalradar"
+        wxMetal.forEach { $0!.writePrefs() }
+        wxMetal[0]?.writePrefsForSingleToQuadPaneTransition()
+        self.goToVC(token)
     }
 
     @objc func showKeyboardShortcuts() {

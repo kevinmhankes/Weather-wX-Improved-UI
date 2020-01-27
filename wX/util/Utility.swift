@@ -108,7 +108,7 @@ final class Utility {
     static func getClassName(_ uiv: UIViewController) -> String {
         return String(describing: uiv).split(":").safeGet(0).replace("<", "")
     }
-    
+
     static func showMainScreenShortCuts() -> String {
         return "Ctrl-r: Nexrad radar" + MyApplication.newline +
                 "Ctrl-m: Show submenu" + MyApplication.newline +
@@ -137,12 +137,11 @@ final class Utility {
                 "Ctrl-a: Stop animate" + MyApplication.newline +
                 //"Ctrl-r: Show reflectivity" + MyApplication.newline +
                 //"Ctrl-v: Show velocity" + MyApplication.newline +
-                //"Ctrl-f: Toggle favorite" + MyApplication.newline +
                 "Ctrl-2: Show dual pane radar" + MyApplication.newline +
-                //"Ctrl-4: Show quad pane radar" + MyApplication.newline +
-                //"Ctrl-UpArrow: Zoom out" + MyApplication.newline +
-                //"Ctrl-DownArrow: Zoom in" + MyApplication.newline +
-                "Arrow keys: pan radar" + MyApplication.newline
+                "Ctrl-4: Show quad pane radar" + MyApplication.newline +
+                "Alt-UpArrow: Zoom out" + MyApplication.newline +
+                "Alt-DownArrow: Zoom in" + MyApplication.newline +
+                "Ctrl-Arrow keys: pan radar" + MyApplication.newline
                 //"Reload key: reload radar" + MyApplication.newline
     }
 }
