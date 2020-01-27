@@ -8,7 +8,6 @@
 // [ADD] onrestart SPCStormReports
 // [FIX] Catalyst - Help dialogue
 // Check radar center on gps option when pan
-// [FIX] CPC text products
 // [FIX] alerts no way back to image after set filter
 
 56082 2020_01_25 [ADD] WFO Text - make RWR and RTP fixed width
