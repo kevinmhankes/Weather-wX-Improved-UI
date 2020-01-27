@@ -895,14 +895,15 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
-            UIKeyCommand(input: "a", modifierFlags: [], action: #selector(animateClicked)),
-            UIKeyCommand(input: "s", modifierFlags: [], action: #selector(stopAnimate)),
-            UIKeyCommand(input: "m", modifierFlags: [], action: #selector(timeClicked)),
-            UIKeyCommand(input: "d", modifierFlags: [], action: #selector(warningClicked)),
+            UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(keyboardAnimate)),
+            UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(stopAnimate)),
+            UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(timeClicked)),
+            UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(warningClicked)),
             UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
             UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),
             UIKeyCommand(input: "2", modifierFlags: .numericPad, action: #selector(keyDownArrow)),
+            UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts)),
 
             UIKeyCommand(input: "7", modifierFlags: .numericPad, action: #selector(keyLeftUpArrow)),
             UIKeyCommand(input: "9", modifierFlags: .numericPad, action: #selector(keyRightUpArrow)),
@@ -917,6 +918,14 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow))
         ]
+    }
+
+    @objc func keyboardAnimate() {
+        self.animateFrameCntClicked(10)
+    }
+
+    @objc func showKeyboardShortcuts() {
+        UtilityUI.showDiaglogue(self, Utility.showRadarShortCuts())
     }
 
     @objc func keyRightArrow() {
