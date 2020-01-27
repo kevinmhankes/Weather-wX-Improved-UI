@@ -141,7 +141,7 @@ final class Utility {
                 "Ctrl-4: Show quad pane radar" + MyApplication.newline +
                 "Alt-UpArrow: Zoom out" + MyApplication.newline +
                 "Alt-DownArrow: Zoom in" + MyApplication.newline +
-                "Ctrl-Arrow keys: pan radar" + MyApplication.newline
+                "Arrow keys: pan radar" + MyApplication.newline
                 //"Reload key: reload radar" + MyApplication.newline
     }
 }

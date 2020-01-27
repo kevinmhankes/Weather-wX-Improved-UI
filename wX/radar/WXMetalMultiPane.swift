@@ -914,10 +914,10 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             UIKeyCommand(input: "5", modifierFlags: .numericPad, action: #selector(keyZoomOut)),
             UIKeyCommand(input: "0", modifierFlags: .numericPad, action: #selector(keyZoomIn)),
 
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .control, action: #selector(keyRightArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .control, action: #selector(keyLeftArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .control, action: #selector(keyUpArrow)),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .control, action: #selector(keyDownArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: [], action: #selector(keyRightArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: [], action: #selector(keyLeftArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow)),
 
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .alternate, action: #selector(keyZoomOut)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .alternate, action: #selector(keyZoomIn))
