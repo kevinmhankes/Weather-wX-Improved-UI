@@ -80,7 +80,7 @@ final public class ObjectModel {
             timeStr = "01"
             timeIdx = 1
             param = "1ref_sfc"
-            model = "HRRR"
+            model = "HRRR_NCEP"
             sector = "US"
             sectorInt = 0
             modelArr = UtilityModelEsrlInterface.models
