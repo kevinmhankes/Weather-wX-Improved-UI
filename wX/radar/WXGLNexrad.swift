@@ -7,7 +7,7 @@
 final class WXGLNexrad {
 
     static func getRadarTimeStamp() -> String {
-        let radarTimeStamp = Utility.readPref("WX_RADAR_CURRENT_INFO", "")
+        let radarTimeStamp = getRadarInfo("")
         var radarTimeFinal = ""
         if radarTimeStamp != "" {
             var radarTimeFinalWithDate = ""
