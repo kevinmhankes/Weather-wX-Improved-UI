@@ -1,0 +1,9 @@
+Select "Generic iOS Device" and then "Archive"
+
+Validate App  (take defaults)
+Distribute App (take defaults)
+
+Select "My Mac" and then "Archive"
+
+Distribute App -> Copy App
+
