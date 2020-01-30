@@ -716,7 +716,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
-        var alertMessage = Utility.readPref("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+        var alertMessage = WXGLNexrad.getRadarInfo("") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid

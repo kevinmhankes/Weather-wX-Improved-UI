@@ -713,7 +713,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
-        var alertMessage = Utility.readPref("WX_RADAR_CURRENT_INFO", "") + MyApplication.newline
+        var alertMessage = WXGLNexrad.getRadarInfo("") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location" + MyApplication.newline
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid

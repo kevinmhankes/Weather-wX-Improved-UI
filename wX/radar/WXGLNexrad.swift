@@ -199,4 +199,12 @@ final class WXGLNexrad {
     static func getTdwrShortList() -> [String] {
         return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
     }
+
+    static func getRadarInfo(_ pane: String) -> String {
+        return Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
+    }
+
+    static func writeRadarInfo(_ pane: String, _ info: String) {
+        Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
+    }
 }

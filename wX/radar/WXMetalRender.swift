@@ -454,7 +454,7 @@ class WXMetalRender {
             Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
         }
     }
-    
+
     func writePrefsForSingleToQuadPaneTransition() {
         let numberOfPanes = "4"
         let radarType = "WXMETAL"
@@ -647,7 +647,7 @@ class WXMetalRender {
     }
 
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
-        let timeStr = Utility.readPref("WX_RADAR_CURRENT_INFO", "").split(" ")
+        let timeStr = WXGLNexrad.getRadarInfo("").split(" ")
         if timeStr.count > 1 {
             let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
             timeButton.title = text
