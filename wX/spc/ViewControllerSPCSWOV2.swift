@@ -42,7 +42,6 @@ class ViewControllerSPCSWOV2: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc override func doneClicked() {
-        //UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }

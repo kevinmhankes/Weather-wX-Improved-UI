@@ -18,6 +18,7 @@
                  [FIX] ESRL - HRRR was still listed as default - change to HRRR_NCEP
 		 [ADD] WPC Text - add hazards 3-7
 		 [ADD] sync kbd shortcuts between iOS and Android version
+		 [ADD] additional graphics for SPC Convective Outlook Day 2
 56081 2020_01_25 [REF] simplication in UtilityDownload*
 		 [FIX] TTS was not working well in WFO
 		 [ADD] in WFO alphabetize menu 
