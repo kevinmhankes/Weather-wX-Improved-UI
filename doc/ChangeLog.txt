@@ -1,6 +1,5 @@
 // [ADD] Add 4th char to all radar sites
 // [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
-// [FIX] dual pane does not show radar time for both panes
 // [FIX] troubleshoot TZL and N0U anim freeze (memory exhaustion?)
 // [FIX] Icon spacing issue 7 plus
 // [FIX] Canada radar site detection not working
@@ -11,8 +10,10 @@
 // [FIX] alerts no way back to image after set filter
 // [ADD] severedash: show count at bottom
 // [FIX] severedash onrestart mcd: does not clear images
+// [FIX] dual pane does not show radar time for both panes
+// [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 
-56082 2020_01_28 [ADD] WFO Text - make RWR and RTP fixed width
+56082 2020_01_30 [ADD] WFO Text - make RWR and RTP fixed width
                  [ADD] WFO text - fix RTP formatting
                  [FIX] ESRL - HRRR was still listed as default - change to HRRR_NCEP
 		 [ADD] WPC Text - add hazards 3-7
