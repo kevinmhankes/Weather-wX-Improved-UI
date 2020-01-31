@@ -10,9 +10,9 @@ import AVFoundation
 class ViewControllerSEVEREDASHBOARD: UIwXViewController {
 
     var buttonActions = [String]()
-    let snWat = SevereNotice("wat")
-    let snMcd = SevereNotice("mcd")
-    let snMpd = SevereNotice("mpd")
+    var snWat = SevereNotice("wat")
+    var snMcd = SevereNotice("mcd")
+    var snMpd = SevereNotice("mpd")
     var bitmap = Bitmap()
     var usAlertsBitmap = Bitmap()
     let synth = AVSpeechSynthesizer()
@@ -36,6 +36,9 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     }
 
     func getContent() {
+        snWat = SevereNotice("wat")
+        snMcd = SevereNotice("mcd")
+        snMpd = SevereNotice("mpd")
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
