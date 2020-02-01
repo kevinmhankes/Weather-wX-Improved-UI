@@ -333,7 +333,6 @@
 		F0B335B11DA3FD960035BD36 /* UtilityMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */; };
 		F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */; };
 		F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */; };
-		F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */; };
 		F0B335E41DA3FDA70035BD36 /* UtilityPref2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */; };
 		F0B335E61DA3FDA70035BD36 /* UtilityPref4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */; };
 		F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */; };
@@ -741,7 +740,6 @@
 		F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetar.swift; sourceTree = "<group>"; };
 		F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNexradColors.swift; sourceTree = "<group>"; };
 		F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPlayList.swift; sourceTree = "<group>"; };
-		F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref.swift; sourceTree = "<group>"; };
 		F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref2.swift; sourceTree = "<group>"; };
 		F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref4.swift; sourceTree = "<group>"; };
 		F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpotter.swift; sourceTree = "<group>"; };
@@ -1019,7 +1017,6 @@
 				F02841801DEFBC6000474084 /* Location.swift */,
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
-				F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */,
 				F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */,
 				F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
@@ -1842,7 +1839,6 @@
 				0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */,
 				0354D3F823C1188C0024153D /* UtilityWpcFronts.swift in Sources */,
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
-				F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,
