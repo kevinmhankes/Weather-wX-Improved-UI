@@ -55,7 +55,7 @@ final class ObjectAlertSummary: NSObject {
                 var nwsLoc = ""
                 if alert.vtec.count > 15 {
                     nwsOffice = alert.vtec.substring(8, 11)
-                    nwsLoc = Utility.readPref("NWS_LOCATION_" + nwsOffice, "MI")
+                    nwsLoc = Utility.getWfoSiteName(nwsOffice)
                     state = nwsLoc.substring(0, 2)
                     if stateCntMap.keys.contains(state) {
                         stateCntMap[state] = (stateCntMap[state]! + 1)

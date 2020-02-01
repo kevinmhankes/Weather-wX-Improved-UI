@@ -69,7 +69,7 @@ final class SevereWarning {
                 if wfos.count > 1 {
                     wfo = wfos[2]
                     wfo = wfo.replaceAllRegexp("^[KP]", "")
-                    location = Utility.readPref("NWS_LOCATION_" + wfo, "")
+                    location = Utility.getWfoSiteName(wfo)
                 }
                 text += "  " + location + MyApplication.newline
             }

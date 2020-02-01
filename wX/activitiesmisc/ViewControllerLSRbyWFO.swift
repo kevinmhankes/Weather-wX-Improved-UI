@@ -22,7 +22,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        UtilityMap.setupMap(mapView, GlobalArrays.wfos, "NWS_")
+        UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
@@ -102,7 +102,7 @@ class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                UtilityMap.setupMap(self.mapView, GlobalArrays.wfos, "NWS_")
+                UtilityMap.setupMapForWfo(self.mapView, GlobalArrays.wfos)
                 self.displayContent()
             }
         )

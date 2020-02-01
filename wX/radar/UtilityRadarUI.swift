@@ -228,8 +228,8 @@ public class UtilityRadarUI {
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
         let radarLocation = LatLon(
-            Utility.readPref("RID_" + wxMetal.rid + "_X", "0.00"),
-            Utility.readPref("RID_" + wxMetal.rid + "_Y", "0.00")
+            Utility.getRadarSiteX(wxMetal.rid),
+            Utility.getRadarSiteY(wxMetal.rid)
         )
         let ppd = wxMetal.pn.oneDegreeScaleFactor
         let newX = radarLocation.lon + (Double(wxMetal.xPos) / Double(wxMetal.zoom) + diffX) / ppd
@@ -555,7 +555,54 @@ public class UtilityRadarUI {
         "PLA": "NA, Lajes Field, Azores",
         "KJK": "NA, Kunsan Air Base, South Korea",
         "KSG": "NA, Camp Humphreys, South Korea",
-        "ODN": "NA, Kadena Air Base, Japan"
+        "ODN": "NA, Kadena Air Base, Japan",
+        
+        "TLVE": "OH, Cleveland",
+        "TADW": "MD, Andrews Air Force Base",
+        "TATL": "GA, Atlanta",
+        "TBWI": "MD, Baltimore/Wash",
+        "TBOS": "MA, Boston",
+        "TCLT": "NC, Charlotte",
+        "TMDW": "IL, Chicago Midway",
+        "TORD": "IL, Chicago O'Hare",
+        "TCLE": "OH, Cleveland",
+        "TCMH": "OH, Columbus",
+        "TCVG": "OH, Covington",
+        "TDAL": "TX, Dallas Love Field",
+        "TDFW": "TX, Dallas/Ft. Worth",
+        "TDAY": "OH, Dayton",
+        "TDEN": "CO, Denver",
+        "TDTW": "MI, Detroit",
+        "TIAD": "VA, Dulles",
+        "TFLL": "FL, Fort Lauderdale",
+        "THOU": "TX, Houston Hobby",
+        "TIAH": "TX, Houston International",
+        "TIDS": "IN, Indianapolis", // was IDS
+        "TMCI": "MO, Kansas City",
+        "TLAS": "NV, Las Vegas",
+        "TSDF": "KY, Louisville",
+        "TMEM": "TN, Memphis",
+        "TMIA": "FL, Miami",
+        "TMKE": "WI, Milwaukee",
+        "TMSP": "MN, Minneapolis",
+        "TBNA": "TN, Nashville",
+        "TMSY": "LA, New Orleans",
+        "TJFK": "NY, New York City",
+        "TEWR": "NJ, Newark",
+        "TOKC": "OK, Oklahoma City",
+        "TMCO": "FL, Orlando International",
+        "TPHL": "PA, Philadelphia",
+        "TPHX": "AZ, Phoenix",
+        "TPIT": "PA, Pittsburgh",
+        "TRDU": "NC, Raleigh Durham",
+        "TSLC": "UT, Salt Lake City",
+        "TSJU": "PR, San Juan",
+        "TSTL": "MO, St Louis",
+        "TTPA": "FL, Tampa Bay",
+        "TTUL": "OK, Tulsa",
+        "TDCA": "MD, Washington National",
+        "TPBI": "FL, West Palm Beach",
+        "TICT": "KS, Wichita"
     ]
 
     static let wfoSitetoLat = [
@@ -1150,7 +1197,53 @@ public class UtilityRadarUI {
         "LGX": "47.116",
         "DGX": "32.28",
         "VWX": "38.26",
-        "HKM": "20.125"
+        "HKM": "20.125",
+        
+        "TDTW": "42.11111",  // Detroit (DTW), MI TDTW DTX 772
+        "TADW": "5", //  Andrews Air Force Base (ADW), MD TADW LWX 346
+        "TATL": "33.646193", // Atlanta (ATL), GA TATL FFC 1,075
+        "TBNA": "35.979079", // Nashville (BNA), TN TBNA OHX 817
+        "TBOS": "42.15806", // Boston (BOS), MA TBOS BOX 264
+        "TBWI": "39.09056", // Baltimore/Wash (BWI), MD TBWI LWX 342
+        "TLVE": "41.289372", // Cleveland (CLE), OH TLVE CLE 931
+        "TCLT": "35.337269", // Charlotte (CLT), NC TCLT GSP 871
+        "TCMH": "40.00611", // Columbus (CMH), OH TCMH ILN 1,148
+        "TCVG": "38.89778", // Covington (CVG), OH TCVG ILN 1,053
+        "TDAL": "32.92494", // Dallas Love Field (DAL), TX TDAL FWD 622
+        "TDAY": "40.021376", // Dayton (DAY), OH TDAY ILN 1,019
+        "TDCA": "38.758853", // Washington National (DCA), MD TDCA LWX 345
+        "TDEN": "39.72722", // Denver (DEN), CO TDEN BOU 5,701
+        "TDFW": "33.064286", // Dallas/Ft. Worth (DFW), TX TDFW FWD 585
+        "TEWR": "40.593397", // Newark (EWR), NJ TEWR OKX 136
+        "TFLL": "26.142601", // Fort Lauderdale (FLL), FL TFLL MFL 120
+        "THOU": "29.515852", // Houston Hobby (HOU), TX THOU HGX 116
+        "TIAD": "39.083667", // Dulles (IAD), VA TIAD LWX 473
+        "TIAH": "30.06472", // Houston International (IAH), TX TIAH HGX 253
+        "TICT": "37.506844", // Wichita (ICT), KS TICH ICT 1,350
+        "TIDS": "39.636556", // Indianapolis (IND), IN TIDS IND 847
+        "TJFK": "40.588633", // New York City (JFK), NY TJFK OKX 112
+        "TLAS": "36.144", // Las Vegas (LAS), NV TLAS VEF 2,058
+        "TMCI": "39.49861", // Kansas City (MCI), MO TMCI EAX 1,090
+        "TMCO": "28.343125", // Orlando International (MCO), FL TMCO MLB 169
+        "TMDW": "41.6514", // Chicago Midway (MDW), IL TMDW LOT 763
+        "TMEM": "34.896044", // Memphis (MEM), TN TMEM MEG 483
+        "TMIA": "25.757083", // Miami (MIA), FL TMIA MFL 125
+        "TMKE": "42.81944", // Milwaukee (MKE), WI TMKE MKX 933
+        "TMSP": "44.870902", // Minneapolis (MSP), MN TMSP MPX 1,120
+        "TMSY": "30.021389", // New Orleans (MSY), LA TMSY LIX 99
+        "TOKC": "35.27611", // Oklahoma City (OKC), OK TOKC OUN 1,308
+        "TORD": "41.796589", // Chicago O'Hare (ORD), IL TORD LOT 744
+        "TPBI": "26.687812", // West Palm Beach (PBI), FL TPBI MFL 133
+        "TPHL": "39.950061", // Philadelphia (PHL), PA TPHL PHI 153
+        "TPHX": "33.420352", // Phoenix (PHX), AZ TPHX PSR 1,089
+        "TPIT": "40.501066", // Pittsburgh (PIT), PA TPIT PBZ 1,386
+        "TRDU": "36.001401", // Raleigh Durham (RDU), NC TRDU RAH 515
+        "TSDF": "38.04581", // Louisville (SDF), KY TSDF LMK 731
+        "TSJU": "18.47394", // San Juan (SJU), PR TSJU SJU 157
+        "TSLC": "40.967222", // Salt Lake City (SLC), UT TSLC SLC 4,295
+        "TSTL": "38.804691", // St Louis (STL), MO TSTL LSX 647
+        "TTPA": "27.85867", // Tampa Bay (TPA), FL TTPA TBW 93
+        "TTUL": "36.070184" // Tulsa (TUL), OK TTUL TSA 823
     ]
 
     static let radarSiteToLon = [
@@ -1310,7 +1403,53 @@ public class UtilityRadarUI {
         "LGX": "124.107",
         "DGX": "89.984",
         "VWX": "87.724",
-        "HKM": "155.778"
+        "HKM": "155.778",
+        
+        "TDTW": "83.515",
+        "TADW": "5",
+        "TATL": "84.262233",
+        "TBNA": "86.661691",
+        "TBOS": "70.93389",
+        "TBWI": "76.63",
+        "TLVE": "82.007419",
+        "TCLT": "80.885006",
+        "TCMH": "82.71556",
+        "TCVG": "84.58028",
+        "TDAL": "96.968473",
+        "TDAY": "84.123077",
+        "TDCA": "76.961837",
+        "TDEN": "104.52639",
+        "TDFW": "96.915554",
+        "TEWR": "74.270164",
+        "TFLL": "80.34382",
+        "THOU": "95.241692",
+        "TIAD": "77.529224",
+        "TIAH": "95.5675",
+        "TICT": "97.437228",
+        "TIDS": "86.435286",
+        "TJFK": "73.880303", // NY    FLOYD BENNETT FIELD    40.588633, -73.880303    5647
+        "TLAS": "115.007",
+        "TMCI": "94.74167",
+        "TMCO": "81.324674",
+        "TMDW": "87.7294",
+        "TMEM": "89.992727",
+        "TMIA": "80.491076",
+        "TMKE": "88.04611",
+        "TMSP": "92.932257",
+        "TMSY": "90.402919",
+        "TOKC": "97.51",
+        "TORD": "87.857628",
+        "TPBI": "80.272931",
+        "TPHL": "75.069979",
+        "TPHX": "112.16318",
+        "TPIT": "80.486586",
+        "TRDU": "78.697942",
+        "TSDF": "85.610641",
+        "TSJU": "66.17891",
+        "TSLC": "111.929722",
+        "TSTL": "90.488558",
+        "TTPA": "82.51755",
+        "TTUL": "95.826313"
     ]
 
     static let soundingSiteToLat = [

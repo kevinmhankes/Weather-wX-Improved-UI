@@ -37,7 +37,8 @@ final class Location {
         wfo = Utility.readPref("NWS" + jStr, "")
         rid = Utility.readPref("RID" + jStr, "")
         nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
-        state = Utility.readPref("NWS_LOCATION_" + rid, "").split(",")[0]
+        // FIXME use what Android does
+        state = Utility.getWfoSiteName(rid).split(",")[0]
         observation = Utility.readPref("LOC" + jStr + "_OBSERVATION", "")
         isLocationUS = Location.us(lat)
         Location.addToListOfNames(name)

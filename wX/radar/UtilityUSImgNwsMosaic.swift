@@ -121,7 +121,7 @@ class UtilityUSImgNwsMosaic {
     }
 
     static func getStateFromRid() -> String {
-        return Utility.readPref("RID_LOC_" + Location.rid, "").split(",")[0]
+        return Utility.getRadarSiteName(Location.rid).split(",")[0]
     }
 
     static func getLocalRadarMosaic() -> Bitmap {

@@ -61,16 +61,12 @@ class MyApplication {
         initPreferences()
         AppColors.update()
         initData()
-        if Utility.readPref("SND_IAD_X", "") == "" {
-            UtilityPref.prefInitStateCode()
-            UtilityPref.prefInitStateCodeLookup()
-            UtilityPref.prefInitNWSXY()
+        if Utility.readPref("LOC1_LABEL", "") == "" {
+            print("INIT PREF")
             UtilityPref.prefInitRIDXY()
             UtilityPref.prefInitRIDXY2()
-            UtilityPref.prefInitNWSLoc()
             UtilityPref2.prefInitSetDefaults()
             UtilityPref3.prefInitRIDLoc()
-            UtilityPref.prefInitBig()
             UtilityPref.prefInitTwitterCA()
             UtilityPref4.prefInitSoundingSites()
             UtilityPref4.prefInitSoundingSitesLoc()

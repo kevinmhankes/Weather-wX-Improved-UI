@@ -732,7 +732,7 @@ class ViewControllerTABLOCATIONGL: ViewControllerTABPARENT {
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + ": "
-                +  Utility.readPref("RID_LOC_" + rid.name, "")
+                + Utility.getRadarSiteName(rid.name)
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }
