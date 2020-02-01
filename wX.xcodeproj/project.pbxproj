@@ -335,7 +335,6 @@
 		F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */; };
 		F0B335E31DA3FDA70035BD36 /* UtilityPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */; };
 		F0B335E41DA3FDA70035BD36 /* UtilityPref2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */; };
-		F0B335E51DA3FDA70035BD36 /* UtilityPref3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335CA1DA3FDA70035BD36 /* UtilityPref3.swift */; };
 		F0B335E61DA3FDA70035BD36 /* UtilityPref4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */; };
 		F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */; };
 		F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */; };
@@ -744,7 +743,6 @@
 		F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPlayList.swift; sourceTree = "<group>"; };
 		F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref.swift; sourceTree = "<group>"; };
 		F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref2.swift; sourceTree = "<group>"; };
-		F0B335CA1DA3FDA70035BD36 /* UtilityPref3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref3.swift; sourceTree = "<group>"; };
 		F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref4.swift; sourceTree = "<group>"; };
 		F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpotter.swift; sourceTree = "<group>"; };
 		F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySunMoon.swift; sourceTree = "<group>"; };
@@ -1023,7 +1021,6 @@
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
 				F0B335C81DA3FDA60035BD36 /* UtilityPref.swift */,
 				F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */,
-				F0B335CA1DA3FDA70035BD36 /* UtilityPref3.swift */,
 				F0B335CB1DA3FDA70035BD36 /* UtilityPref4.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
 				F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */,
@@ -1729,7 +1726,6 @@
 				F0F942861DBBE0E100D30E36 /* ViewControllerGOESGLOBAL.swift in Sources */,
 				03F3EB96229945DA0056A56D /* UtilityModelSpcHrefInputOutput.swift in Sources */,
 				031546321FC632FD0020EF7B /* ObjectTextViewLarge.swift in Sources */,
-				F0B335E51DA3FDA70035BD36 /* UtilityPref3.swift in Sources */,
 				F0EC66351DB05364000005B3 /* ViewControllerSPCSWOV2.swift in Sources */,
 				F096C09B1DADB18700E63046 /* ViewControllerSOUNDING.swift in Sources */,
 				0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */,

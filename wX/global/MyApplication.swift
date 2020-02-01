@@ -63,10 +63,7 @@ class MyApplication {
         initData()
         if Utility.readPref("LOC1_LABEL", "") == "" {
             print("INIT PREF")
-            UtilityPref.prefInitRIDXY()
-            UtilityPref.prefInitRIDXY2()
             UtilityPref2.prefInitSetDefaults()
-            UtilityPref3.prefInitRIDLoc()
             UtilityPref.prefInitTwitterCA()
             UtilityPref4.prefInitSoundingSites()
             UtilityPref4.prefInitSoundingSitesLoc()

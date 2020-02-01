@@ -55,10 +55,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         }
         coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
-                UtilityMap.setupMap(
-                    self.mapView,
-                    GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_"
-                )
+                UtilityMap.setupMapForRadar(self.mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
             }
         )
     }
@@ -175,7 +172,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
         paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
-        UtilityMap.setupMap(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap, "RID_")
+        UtilityMap.setupMapForRadar(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             self.view.addSubview(toolbarTop)
