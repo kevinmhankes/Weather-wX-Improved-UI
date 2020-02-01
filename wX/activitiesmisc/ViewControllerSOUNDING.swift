@@ -24,7 +24,7 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
             object: nil
         )
         mapView.delegate = self
-        UtilityMap.setupMap(mapView, GlobalArrays.soundingSites, "SND_")
+        UtilityMap.setupMapForSnd(mapView, GlobalArrays.soundingSites)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems(
@@ -92,11 +92,7 @@ class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                UtilityMap.setupMap(
-                    self.mapView,
-                    GlobalArrays.soundingSites,
-                    "SND_"
-                )
+                UtilityMap.setupMapForSnd(self.mapView, GlobalArrays.soundingSites)
             }
         )
     }
