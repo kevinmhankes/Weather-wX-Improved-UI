@@ -15,7 +15,7 @@ final class Utility {
 
     static func getRadarSiteLatLon(_ radarSite: String) -> LatLon {
         let lat = UtilityRadarUI.radarSiteToLat[radarSite] ?? ""
-        let lon = UtilityRadarUI.radarSiteToLon[radarSite] ?? ""
+        let lon = "-" + (UtilityRadarUI.radarSiteToLon[radarSite] ?? "")
         return LatLon(lat, lon)
     }
 

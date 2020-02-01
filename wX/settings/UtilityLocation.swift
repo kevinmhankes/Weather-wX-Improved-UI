@@ -60,13 +60,26 @@ final class UtilityLocation {
     }
 
     static func getSiteLocation(site: String, officeType: String = "RID") -> LatLon {
-        var addChar = "-"
-        if officeType == "NWS" {
-            addChar = ""
-        } // WFO
-        let lat = Utility.readPref(officeType + "_" + site.uppercased() + "_X", "0.0")
-        let lon = addChar + Utility.readPref(officeType + "_" + site.uppercased() + "_Y", "0.0")
-        return LatLon(lat, lon)
+        let x: String
+        let y: String
+        switch officeType {
+        case "RID":
+            let latLon = Utility.getRadarSiteLatLon(site.uppercased())
+            x = latLon.latString
+            y = latLon.lonString
+        case "NWS":
+            let latLon = Utility.getWfoSiteLatLon(site.uppercased())
+            x = latLon.latString
+            y = latLon.lonString
+        case "SND":
+            let latLon = Utility.getSoundingSiteLatLon(site.uppercased())
+            x = latLon.latString
+            y = latLon.lonString
+        default:
+            x = "0.0"
+            y = "-0.0"
+        }
+        return LatLon(x, y)
     }
 
     static func getNearestRadarSites(_ location: LatLon, _ cnt: Int) -> [RID] {
