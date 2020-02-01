@@ -4,9 +4,9 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class UtilityPref2 {
+final class UtilityStorePreferences {
 
-	static func prefInitSetDefaults() {
+	static func setDefaults() {
 		let value = Utility.readPref("COD_WARNINGS_DEFAULT", "")
 		if value == "" {
 			let stateDefault = "Oklahoma"

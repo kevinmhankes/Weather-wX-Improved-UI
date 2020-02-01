@@ -63,7 +63,7 @@ class MyApplication {
         initData()
         if Utility.readPref("LOC1_LABEL", "") == "" {
             print("INIT PREF")
-            UtilityPref2.prefInitSetDefaults()
+            UtilityStorePreferences.setDefaults()
         }
         Location.refreshLocationData()
     }

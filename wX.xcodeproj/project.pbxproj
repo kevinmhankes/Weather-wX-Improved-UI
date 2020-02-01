@@ -87,6 +87,7 @@
 		03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */; };
 		03A41C3F22C4C7D400C9044F /* ObjectCardCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A41C3E22C4C7D400C9044F /* ObjectCardCurrentConditions.swift */; };
 		03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A41C4022C4C86A00C9044F /* ObjectCanadaWarnings.swift */; };
+		03A89E3823E641EE001B8F50 /* UtilityStorePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */; };
 		03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A90D4E2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift */; };
 		03A90D53234125FC00641BEE /* colormap30.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A90D50234125FB00641BEE /* colormap30.txt */; };
 		03A90D54234125FC00641BEE /* colormap19.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A90D51234125FB00641BEE /* colormap19.txt */; };
@@ -333,7 +334,6 @@
 		F0B335B11DA3FD960035BD36 /* UtilityMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */; };
 		F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */; };
 		F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */; };
-		F0B335E41DA3FDA70035BD36 /* UtilityPref2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */; };
 		F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */; };
 		F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */; };
 		F0B335F81DA3FDC80035BD36 /* UtilityTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */; };
@@ -485,6 +485,7 @@
 		03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTimeSunMoon.swift; sourceTree = "<group>"; };
 		03A41C3E22C4C7D400C9044F /* ObjectCardCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardCurrentConditions.swift; sourceTree = "<group>"; };
 		03A41C4022C4C86A00C9044F /* ObjectCanadaWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCanadaWarnings.swift; sourceTree = "<group>"; };
+		03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityStorePreferences.swift; sourceTree = "<group>"; };
 		03A90D4E2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette4bitGeneric.swift; sourceTree = "<group>"; };
 		03A90D50234125FB00641BEE /* colormap30.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormap30.txt; sourceTree = "<group>"; };
 		03A90D51234125FB00641BEE /* colormap19.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormap19.txt; sourceTree = "<group>"; };
@@ -739,7 +740,6 @@
 		F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetar.swift; sourceTree = "<group>"; };
 		F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNexradColors.swift; sourceTree = "<group>"; };
 		F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPlayList.swift; sourceTree = "<group>"; };
-		F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPref2.swift; sourceTree = "<group>"; };
 		F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpotter.swift; sourceTree = "<group>"; };
 		F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySunMoon.swift; sourceTree = "<group>"; };
 		F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTime.swift; sourceTree = "<group>"; };
@@ -1015,11 +1015,11 @@
 				F02841801DEFBC6000474084 /* Location.swift */,
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
-				F0B335C91DA3FDA60035BD36 /* UtilityPref2.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
 				F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */,
 				F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */,
 				F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */,
+				03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */,
 				03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */,
 				F0DF4C731DBEB8D100D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift */,
 				F08623381DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift */,
@@ -1756,6 +1756,7 @@
 				F0B335711DA3FD6F0035BD36 /* Spotter.swift in Sources */,
 				F0E0CC031EBEAAA900D5E9D4 /* UtilityColorPalette165.swift in Sources */,
 				F06033D81EB2CCBD0083BA91 /* ObjectTileMatrix.swift in Sources */,
+				03A89E3823E641EE001B8F50 /* UtilityStorePreferences.swift in Sources */,
 				0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */,
 				F0B3357C1DA3FD6F0035BD36 /* UtilityCities.swift in Sources */,
 				032F52E61F1A7F33000C8D5B /* ViewControllerADHOCLOCATION.swift in Sources */,
@@ -1791,7 +1792,6 @@
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
 				F0B3357D1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift in Sources */,
 				F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */,
-				F0B335E41DA3FDA70035BD36 /* UtilityPref2.swift in Sources */,
 				F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */,
 				F09541A61E75F9B200A25FA1 /* ObjectToolbarIcon.swift in Sources */,
 				F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */,
