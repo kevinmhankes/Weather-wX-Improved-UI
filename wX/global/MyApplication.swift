@@ -64,7 +64,6 @@ class MyApplication {
         if Utility.readPref("LOC1_LABEL", "") == "" {
             print("INIT PREF")
             UtilityPref2.prefInitSetDefaults()
-            UtilityPref.prefInitTwitterCA()
             UtilityPref4.prefInitSoundingSites()
             UtilityPref4.prefInitSoundingSitesLoc()
         }
