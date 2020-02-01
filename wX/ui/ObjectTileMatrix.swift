@@ -205,36 +205,13 @@ final class ObjectTileMatrix: NSObject {
             token = "modelgeneric"
             ActVars.modelActivitySelected = "WPCGEFS"
         case "twstate":
-            let stateCodeCurrent = Location.state
-            let twitter_state_id = Utility.readPref("STATE_TW_ID_" + stateCodeCurrent, "")
-            let url = "<a class=\"twitter-timeline\" data-dnt=\"true\" href=\"https://twitter.com/search?q=%23"
-                + stateCodeCurrent.lowercased()
-                + "wx\" data-widget-id=\""
-                + twitter_state_id
-                + "\" data-chrome=\"noscrollbar noheader nofooter noborders  \" data-tweet-limit=20>Tweets about \"#"
-                + stateCodeCurrent.lowercased()
-                + "wx\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http"
-                + ":/.test(d.location)?'http':'https';if"
-                + "(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com"
-                + "/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}"
-                + "(document,\"script\",\"twitter-wjs\");</script>"
-            ActVars.webViewUrl = url
-            ActVars.webViewStateCode = stateCodeCurrent
+            ActVars.webViewUrl = ""
+            ActVars.webViewStateCode = Location.state
             token = "webview"
         case "twtornado":
-            ActVars.webViewUrl = "<html><meta name=\"viewport\" content=\"width=device-width,"
-                + " user-scalable=no\" /> <body width=\"100%\"><div><script>!function(d,s,id)"
-                + "{var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"
-                + "'http':'https';if(!d.getElementById(id))"
-                + "{js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";"
-                + "fjs.parentNode.insertBefore(js,fjs);}}"
-                + "(document,\"script\",\"twitter-wjs\");</script><html><a"
-                + " class=\"twitter-timeline\" data-dnt=\"true\" "
-                + "href=\"https://twitter.com/search?q=%23tornado\" data-widget-id=\"406096257220763648\" data"
-                + "-chrome=\"noscrollbar noheader "
-                + "nofooter noborders \" data-tweet-limit=20>Tweets about \"#tornado\"</a></div></body></html>"
-            token = "webview"
+            ActVars.webViewUrl = ""
             ActVars.webViewStateCode = "tornado"
+            token = "webview"
         default:  break
         }
         if !MyApplication.helpMode {

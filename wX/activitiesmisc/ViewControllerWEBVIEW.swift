@@ -52,6 +52,10 @@ class ViewControllerWEBVIEW: UIwXViewController {
             urlChanged(stateCode)
             ActVars.webViewUseUrl = true
         }
+        if ActVars.webViewStateCode == "tornado" {
+            ActVars.webViewUrl = "https://www.twitter.com/hashtag/tornado"
+            ActVars.webViewUseUrl = true
+        }
         if ActVars.webViewUseUrl {
             webView.load(URLRequest(url: URL(string: ActVars.webViewUrl)!))
         } else {

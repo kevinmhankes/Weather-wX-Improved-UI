@@ -1198,7 +1198,7 @@ public class UtilityRadarUI {
         "DGX": "32.28",
         "VWX": "38.26",
         "HKM": "20.125",
-        
+
         "TDTW": "42.11111",  // Detroit (DTW), MI TDTW DTX 772
         "TADW": "5", //  Andrews Air Force Base (ADW), MD TADW LWX 346
         "TATL": "33.646193", // Atlanta (ATL), GA TATL FFC 1,075
@@ -1404,7 +1404,7 @@ public class UtilityRadarUI {
         "DGX": "89.984",
         "VWX": "87.724",
         "HKM": "155.778",
-        
+
         "TDTW": "83.515",
         "TADW": "5",
         "TATL": "84.262233",
