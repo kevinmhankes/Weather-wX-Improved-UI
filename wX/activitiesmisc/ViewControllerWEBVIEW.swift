@@ -53,6 +53,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             ActVars.webViewUseUrl = true
         }
         if ActVars.webViewStateCode == "tornado" {
+            self.stateCode = ActVars.webViewStateCode
             ActVars.webViewUrl = "https://www.twitter.com/hashtag/tornado"
             ActVars.webViewUseUrl = true
         }
