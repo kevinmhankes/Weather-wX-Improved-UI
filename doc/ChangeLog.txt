@@ -11,6 +11,7 @@
 // [ADD] severedash: show count at bottom
 // [FIX] dual pane does not show radar time for both panes
 
+56084 2020_02_01 
 56083 2020_02_01 [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 		 [FIX] severedash onrestart mcd: does not clear images and later crashes
 		 [REF] move off disk storage for various things like wfo/radar x/y/name
