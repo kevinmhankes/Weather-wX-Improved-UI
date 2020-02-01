@@ -50,6 +50,7 @@ class ViewControllerWEBVIEW: UIwXViewController {
             stateCode = ActVars.webViewStateCode
             stateCode = Utility.readPref(prefToken, stateCode)
             urlChanged(stateCode)
+            ActVars.webViewUseUrl = true
         }
         if ActVars.webViewUseUrl {
             webView.load(URLRequest(url: URL(string: ActVars.webViewUrl)!))
@@ -75,34 +76,33 @@ class ViewControllerWEBVIEW: UIwXViewController {
 
     func productChanged(_ stateCodeCurrent: String) {
         urlChanged(stateCodeCurrent)
-        webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
+        webView.load(URLRequest(url: URL(string: ActVars.webViewUrl)!))
+        //webView.loadHTMLString(ActVars.webViewUrl, baseURL: nil)
         if ActVars.webViewStateCode != "tornado" {
             Utility.writePref(prefToken, self.stateCode)
         }
     }
 
-    func urlChanged(_ stateCodeCurrent: String) {
-        self.stateCode = stateCodeCurrent
-        let stateCodeCurrentLocal = stateCodeCurrent.split(":")[0]
-        let twitterStateId = Utility.readPref("STATE_TW_ID_" + stateCodeCurrentLocal, "")
-        let url = "<a class=\"twitter-timeline\" data-dnt=\"true\" href=\"https://twitter.com/search?q=%23"
-            + stateCodeCurrentLocal.lowercased()
-            + "wx\" data-widget-id=\""
-            + twitterStateId
-            + "\" data-chrome=\"noscrollbar noheader nofooter noborders  \" data-tweet-limit=20>Tweets about \"#"
-            + stateCodeCurrentLocal.lowercased()
-            + "wx\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p"
-            + "=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))"
-            + "{js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";"
-            + "fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>"
+    func urlChanged(_ stateString: String) {
+        self.stateCode = stateString
+        let state = stateString.split(":")[0]
+        var url = "https://www.twitter.com/hashtag/" + state.lowercased()
+        var title = "#" + state.lowercased()
+        if state.count == 2 {
+            url += "wx"
+            title += "wx"
+        }
         ActVars.webViewUrl = url
-        productButton.title = "#" + stateCodeCurrentLocal + "wx"
+        productButton.title = title
     }
 
     @objc func browserClicked() {
-        let tail = "wx"
-        let url = "http://twitter.com/hashtag/" + stateCode.lowercased().split(":")[0] + tail
-        print(ActVars.webViewUrl)
+        var tail = ""
+        let state = stateCode.lowercased().split(":")[0]
+        if state.count == 2 {
+            tail = "wx"
+        }
+        let url = "http://www.twitter.com/hashtag/" + state + tail
         if ActVars.webViewUrl.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") ||
         ActVars.webViewUrl.hasPrefix("https://www.wrh.noaa.gov/mesowest") {
             UIApplication.shared.open(URL(string: ActVars.webViewUrl)!, options: [:], completionHandler: nil)
