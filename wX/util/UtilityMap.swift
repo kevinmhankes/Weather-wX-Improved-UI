@@ -147,7 +147,7 @@ final class UtilityMap {
         }
         return locations
     }
-    
+
     static func setupMapForSnd(_ mapView: MKMapView, _ itemList: [String]) {
         let locations = createLocationsArrayForRadar(itemList)
         var annotations = [MKPointAnnotation]()

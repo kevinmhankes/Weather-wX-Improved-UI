@@ -556,7 +556,7 @@ public class UtilityRadarUI {
         "KJK": "NA, Kunsan Air Base, South Korea",
         "KSG": "NA, Camp Humphreys, South Korea",
         "ODN": "NA, Kadena Air Base, Japan",
-        
+
         "TLVE": "OH, Cleveland",
         "TADW": "MD, Andrews Air Force Base",
         "TATL": "GA, Atlanta",
