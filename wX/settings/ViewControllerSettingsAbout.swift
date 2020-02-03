@@ -9,8 +9,8 @@ import UIKit
 class ViewControllerSettingsAbout: UIwXViewController {
 
     var titles = [String]()
-    let faqUrl = "https://docs.google.com/document/d/1OQrviP10XBvQZ7QKh5R4bsd72ZKffK5f0ISRuCaSk5k/edit?usp=sharing"
-    let releaseNotesUrl = "https://docs.google.com/document/d/1c8diLvUAMAx0Cr3HSF3f4L6RX-pCfL3SpRD9mzoQw1Y/edit?usp=sharing"
+    let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
+    let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
     static let copyright = "©"
     let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
         + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
