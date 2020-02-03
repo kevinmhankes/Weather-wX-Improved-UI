@@ -144,4 +144,10 @@ final class Utility {
                 "Arrow keys: pan radar" + MyApplication.newline
                 //"Reload key: reload radar" + MyApplication.newline
     }
+
+    static func showDiagnostics() -> String {
+        let string = MyApplication.newline +
+            "Is Tablet?: " + String(UtilityUI.isTablet())
+        return string
+    }
 }

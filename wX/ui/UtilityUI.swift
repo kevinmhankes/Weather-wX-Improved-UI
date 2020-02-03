@@ -146,6 +146,20 @@ public class UtilityUI {
             print("device type: unknown")
         }
     }
+    
+    static func isTablet() -> Bool {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            print("device type: iphone")
+        case .pad:
+            return true
+        case .unspecified:
+            print("device type: unknown")
+        default:
+            print("device type: unknown")
+        }
+        return false
+    }
 
     static func printBounds() {
         _ = UIScreen.main.nativeBounds   // 1125x2436

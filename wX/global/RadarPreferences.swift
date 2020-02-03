@@ -48,6 +48,11 @@ class RadarPreferences {
     static var radarShowWpcFronts = false
 
     static func initialize() {
+        if UtilityUI.isTablet() {
+            radarLocdotSize = 2
+            radarAviationSize = 2
+            radarSpotterSize = 2
+        }
         #if targetEnvironment(macCatalyst)
         radarLocdotSize = 1
         radarHiSize = 1

@@ -8,7 +8,6 @@ import UIKit
 
 class ViewControllerSettingsAbout: UIwXViewController {
 
-    var titles = [String]()
     let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
     let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
     static let copyright = "©"
@@ -46,16 +45,6 @@ class ViewControllerSettingsAbout: UIwXViewController {
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        titles = [
-            "Location",
-            "Colors",
-            "Radar",
-            "Home Screen",
-            "User Interface",
-            "Celsius to Fahrenheit table",
-            "Spotters (beta)",
-            "About "  + GlobalVariables.appName
-        ]
         displayContent()
     }
 
@@ -100,7 +89,7 @@ class ViewControllerSettingsAbout: UIwXViewController {
         objectTextView2.tv.isSelectable = false
         _ = ObjectTextView(
             self.stackView,
-            aboutText,
+            aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,
             UITapGestureRecognizerWithData("", self, #selector(actionClick(sender:)))
         )
