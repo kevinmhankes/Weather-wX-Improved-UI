@@ -14,14 +14,22 @@ final class ObjectSlider {
     let prefVar: String
     let label: String
     let initialValue: Int
+    // will be nothing for iphone, _C for catalyst, _T for ipad
+    var suffix = ""
 
     init(
         _ uiv: UIViewController,
         _ stackView: UIStackView,
         _ prefVar: String
     ) {
+        if UtilityUI.isTablet() {
+            suffix = "_T"
+        }
+        #if targetEnvironment(macCatalyst)
+            suffix = "_C"
+        #endif
         self.label = ObjectSlider.prefToLabel[prefVar]!
-        initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar]!)
+        initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar + suffix]!)
         print(initialValue)
         print(prefVar)
         self.prefVar = prefVar
@@ -48,7 +56,7 @@ final class ObjectSlider {
             UIPreferences.textviewFontSize = CGFloat(slider.value)
         }
         button.setTitle(
-            label + "(" + String(ObjectSlider.prefToInitialValue[prefVar]!) + "): " + String(Int(slider.value)) + " ",
+            label + "(" + String(ObjectSlider.prefToInitialValue[prefVar + suffix]!) + "): " + String(Int(slider.value)) + " ",
             for: .normal
         )
         button.titleLabel?.font = FontSize.medium.size
@@ -76,44 +84,68 @@ final class ObjectSlider {
         "NWS_ICON_SIZE_PREF": "NWS Icon size"
     ]
 
-    #if !targetEnvironment(macCatalyst)
     static let prefToInitialValue: [String: Int] = [
         "RADAR_LOCDOT_SIZE": 4,
+        "RADAR_LOCDOT_SIZE_T": 2,
+        "RADAR_LOCDOT_SIZE_C": 1,
+
         "RADAR_SPOTTER_SIZE": 5,
+        "RADAR_SPOTTER_SIZE_T": 2,
+        "RADAR_SPOTTER_SIZE_C": 2,
+
         "RADAR_HI_SIZE": 4,
+        "RADAR_HI_SIZE_T": 4,
+        "RADAR_HI_SIZE_C": 1,
+
         "RADAR_TVS_SIZE": 4,
+        "RADAR_TVS_SIZE_T": 4,
+        "RADAR_TVS_SIZE_C": 1,
+
         "RADAR_AVIATION_SIZE": 4,
+        "RADAR_AVIATION_SIZE_T": 2,
+        "RADAR_AVIATION_SIZE_C": 2,
+
         "RADAR_OBS_EXT_ZOOM": 7,
+        "RADAR_OBS_EXT_ZOOM_T": 7,
+        "RADAR_OBS_EXT_ZOOM_C": 7,
+
         "RADAR_DATA_REFRESH_INTERVAL": 5,
+        "RADAR_DATA_REFRESH_INTERVAL_T": 5,
+        "RADAR_DATA_REFRESH_INTERVAL_C": 5,
+
         "WXOGL_SIZE": 10,
+        "WXOGL_SIZE_T": 10,
+        "WXOGL_SIZE_C": 10,
+
         "TEXTVIEW_FONT_SIZE": 16,
+        "TEXTVIEW_FONT_SIZE_T": 16,
+        "TEXTVIEW_FONT_SIZE_C": 20,
+
         "REFRESH_LOC_MIN": 10,
+        "REFRESH_LOC_MIN_T": 10,
+        "REFRESH_LOC_MIN_C": 10,
+
         "ANIM_INTERVAL": 6,
+        "ANIM_INTERVAL_T": 6,
+        "ANIM_INTERVAL_C": 6,
+
         "UI_TILES_PER_ROW": 3,
+        "UI_TILES_PER_ROW_T": 3,
+        "UI_TILES_PER_ROW_C": 3,
+
         "HOMESCREEN_TEXT_LENGTH_PREF": 500,
+        "HOMESCREEN_TEXT_LENGTH_PREF_T": 500,
+        "HOMESCREEN_TEXT_LENGTH_PREF_C": 500,
+
         "NWS_ICON_SIZE_PREF": 80,
-        "RADAR_TEXT_SIZE": 10
+        "NWS_ICON_SIZE_PREF_T": 80,
+        "NWS_ICON_SIZE_PREF_C": 80,
+
+        "RADAR_TEXT_SIZE": 10,
+        "RADAR_TEXT_SIZE_T": 10,
+        "RADAR_TEXT_SIZE_C": 15
+
     ]
-    #endif
-    #if targetEnvironment(macCatalyst)
-    static let prefToInitialValue: [String: Int] = [
-        "RADAR_LOCDOT_SIZE": 1,
-        "RADAR_SPOTTER_SIZE": 2,
-        "RADAR_HI_SIZE": 1,
-        "RADAR_TVS_SIZE": 1,
-        "RADAR_AVIATION_SIZE": 1,
-        "RADAR_OBS_EXT_ZOOM": 7,
-        "RADAR_DATA_REFRESH_INTERVAL": 5,
-        "WXOGL_SIZE": 10,
-        "TEXTVIEW_FONT_SIZE": 20,
-        "REFRESH_LOC_MIN": 10,
-        "ANIM_INTERVAL": 6,
-        "UI_TILES_PER_ROW": 3,
-        "HOMESCREEN_TEXT_LENGTH_PREF": 500,
-        "NWS_ICON_SIZE_PREF": 80,
-        "RADAR_TEXT_SIZE": 15
-    ]
-    #endif
 
     static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
