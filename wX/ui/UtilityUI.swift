@@ -146,7 +146,7 @@ public class UtilityUI {
             print("device type: unknown")
         }
     }
-    
+
     static func isTablet() -> Bool {
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:

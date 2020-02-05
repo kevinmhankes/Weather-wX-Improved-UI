@@ -74,16 +74,37 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     private func displayContent() {
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        #if targetEnvironment(macCatalyst)
+            tabletInLandscape = true
+        #endif
+        tabletInLandscape = false
+        if tabletInLandscape {
+            stackView.axis = .horizontal
+        }
         if !self.bitmaps.isEmpty {
             self.bitmaps.enumerated().forEach {
-                _ = ObjectImage(
-                    self.stackView,
-                    $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
-                )
+                if tabletInLandscape {
+                    _ = ObjectImage(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
+                        widthDivider: 2
+                    )
+                } else {
+                    _ = ObjectImage(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
+                    )
+                }
             }
             if self.bitmaps.count == 1 {
-                _ = ObjectTextView(self.stackView, self.text)
+                if tabletInLandscape {
+                    _ = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+                } else {
+                    _ = ObjectTextView(self.stackView, self.text)
+                }
             }
         }
         self.view.bringSubviewToFront(self.toolbar)

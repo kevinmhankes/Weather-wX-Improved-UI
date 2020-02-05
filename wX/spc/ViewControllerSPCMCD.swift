@@ -60,7 +60,7 @@ class ViewControllerSPCMCD: UIwXViewController {
         }
     }
 
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.textViewText = self.listOfText[sender.data]
         self.goToVC("textviewer")
     }
@@ -78,22 +78,52 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     private func displayContent() {
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        #if targetEnvironment(macCatalyst)
+            tabletInLandscape = true
+        #endif
+        tabletInLandscape = false
+        if tabletInLandscape {
+            stackView.axis = .horizontal
+            stackView.alignment = .fill
+            //stackView.translatesAutoresizingMaskIntoConstraints = true
+        }
         var views = [UIView]()
         text = ""
         if self.bitmaps.count > 0 {
             self.bitmaps.enumerated().forEach {
-                let objectImage = ObjectImage(
+                /*var objectImage = ObjectImage(
                     self.stackView,
                     $1,
                     UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
-                )
+                )*/
+                let objectImage: ObjectImage
+                if tabletInLandscape {
+                    objectImage = ObjectImage(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
+                        widthDivider: 2
+                    )
+                } else {
+                    objectImage = ObjectImage(
+                        self.stackView,
+                        $1,
+                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
+                    )
+                }
                 objectImage.img.accessibilityLabel = listOfText[$0]
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
                 text += listOfText[$0]
             }
             if self.bitmaps.count == 1 {
-                let objectTextView = ObjectTextView(self.stackView, self.text)
+                let objectTextView: ObjectTextView
+                if tabletInLandscape {
+                    objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+                } else {
+                    objectTextView = ObjectTextView(self.stackView, self.text)
+                }
                 objectTextView.tv.isAccessibilityElement = true
                 views.append(objectTextView.tv)
             }
