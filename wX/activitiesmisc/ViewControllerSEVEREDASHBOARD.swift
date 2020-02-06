@@ -128,7 +128,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 }
             }
         }
-        statusWarnings = "(" + String(wTst.eventList.count) + ","  + String(wTor.eventList.count) + "," + String(wFfw.eventList.count) + ")"
+        statusWarnings = "(" + String(wTor.eventList.count) + ","  + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
     }
 
     @objc func gotoAlerts() {

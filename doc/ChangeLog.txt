@@ -11,13 +11,13 @@
 // [ADD] severedash: show count at bottom
 // [FIX] dual pane does not show radar time for both panes
 // [FIX] landscape MCD display not working
-// [FIX] tablet wind barb size on zoom
 
-56084 2020_02_03 [FIX] update google doc links to point to published versions in settings -> about
+56084 2020_02_06 [FIX] update google doc links to point to published versions in settings -> about
 		 [FIX] if tablet make radar circles smaller
 		 [ADD] WIP - SpcMcdWatchShowActivity - if tablet in landscape change orientation of linearLayout
 		 [ADD] SevereDashboard - add count data to status area in bottom toolbar
 		 [ADD] In nexrad radar only show long press items for warn/mcd/wat/mpd if they are configured to be shown
+		 [FIX] tablet wind barb size on zoom
 56083 2020_02_01 [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 		 [FIX] severedash onrestart mcd: does not clear images and later crashes
 		 [REF] move off disk storage for various things like wfo/radar x/y/name

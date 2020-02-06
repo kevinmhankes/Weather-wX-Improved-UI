@@ -715,7 +715,7 @@ class WXMetalRender {
         default:
             buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
         }
-        buffers.lenInit = scaleLength(buffers.lenInit)
+        buffers.lenInit = scaleLengthLocationDot(buffers.lenInit) // was scaleLength
         buffers.draw(pn)
     }
 
@@ -752,19 +752,6 @@ class WXMetalRender {
         fWbGusts = WXGLNexradLevel3WindBarbs.decocodeAndPlot(pn, isGust: true)
         constructGenericLinesShort(wbGustsBuffers, fWbGusts)
         wbGustsBuffers.generateMtlBuffer(device)
-    }
-
-    func constructWBCircle() {
-        wbCircleBuffers.lenInit = PolygonType.WIND_BARB.size
-        wbCircleBuffers.latList = UtilityMetar.obsArrX
-        wbCircleBuffers.lonList = UtilityMetar.obsArrY
-        wbCircleBuffers.colorIntArray = UtilityMetar.getObsArrAviationColor()
-        wbCircleBuffers.setCount(wbCircleBuffers.latList.count)
-        wbCircleBuffers.triangleCount = 6
-        wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
-        wbCircleBuffers.lenInit = scaleLength(wbCircleBuffers.lenInit)
-        ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, pn)
-        wbCircleBuffers.generateMtlBuffer(device)
     }
 
     func constructLevel3TextProduct(_ type: PolygonType) {
@@ -807,13 +794,31 @@ class WXMetalRender {
         hiBuffers.generateMtlBuffer(device)
     }
 
+    func constructWBCircle() {
+        wbCircleBuffers.lenInit = PolygonType.WIND_BARB.size
+        wbCircleBuffers.latList = UtilityMetar.obsArrX
+        wbCircleBuffers.lonList = UtilityMetar.obsArrY
+        wbCircleBuffers.colorIntArray = UtilityMetar.getObsArrAviationColor()
+        wbCircleBuffers.setCount(wbCircleBuffers.latList.count)
+        wbCircleBuffers.triangleCount = 6
+        wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
+        wbCircleBuffers.lenInit = scaleLengthLocationDot(wbCircleBuffers.lenInit) // was scaleLength
+        ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, pn)
+        wbCircleBuffers.generateMtlBuffer(device)
+    }
+
     func constructSpotters() {
-        spotterBuffers.lenInit = spotterBuffers.type.size
+        //spotterBuffers.lenInit = spotterBuffers.type.size
+        spotterBuffers.lenInit = PolygonType.SPOTTER.size
+        //spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.lenInit)
         spotterBuffers.triangleCount = 6
         _ = UtilitySpotter.getSpotterData()
         spotterBuffers.latList = UtilitySpotter.lat
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)
+        //spotterBuffers.setCount(spotterBuffers.latList.count)
+        //spotterBuffers.initialize(24 * spotterBuffers.count * spotterBuffers.triangleCount, spotterBuffers.type.color)
+        //ObjectMetalBuffers.redrawCircleWithColor(spotterBuffers, pn)
         spotterBuffers.generateMtlBuffer(device)
     }
 
@@ -907,25 +912,26 @@ class WXMetalRender {
         swoBuffers.generateMtlBuffer(device)
     }
 
-    func scaleLength(_ currentLength: Double) -> Double {
+    /*func scaleLength(_ currentLength: Double) -> Double {
         if zoom > 1.01 {
             return (currentLength / Double(zoom)) * 2.0
         } else {
             return currentLength
         }
-    }
+    }*/
 
     func scaleLengthLocationDot(_ currentLength: Double) -> Double {
         return (currentLength / Double(zoom)) * 2.0
     }
 
     func setZoom() {
-        [hiBuffers, spotterBuffers, tvsBuffers, wbCircleBuffers].forEach {
-            $0.lenInit = scaleLength($0.type.size)
+        // wbCircleBuffers used to be in the first forEach
+        [hiBuffers, tvsBuffers].forEach {
+            $0.lenInit = scaleLengthLocationDot($0.type.size) // was scaleLength
             $0.draw(pn)
             $0.generateMtlBuffer(device)
         }
-        [locdotBuffers].forEach {
+        [locdotBuffers, wbCircleBuffers, spotterBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size)
             $0.draw(pn)
             $0.generateMtlBuffer(device)
