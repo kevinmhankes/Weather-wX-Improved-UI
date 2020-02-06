@@ -8,7 +8,7 @@
 // [FIX] Catalyst - Help dialogue
 // Check radar center on gps option when pan
 // [FIX] alerts no way back to image after set filter
-// [ADD] severedash: show count at bottom
+// [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
 // [FIX] landscape MCD display not working
 // [ADD] keyboard shortcut for location selector on main screen
