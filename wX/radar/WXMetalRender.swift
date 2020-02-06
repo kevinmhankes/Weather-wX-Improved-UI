@@ -818,7 +818,8 @@ class WXMetalRender {
         constructTriangles(spotterBuffers)
         //spotterBuffers.setCount(spotterBuffers.latList.count)
         //spotterBuffers.initialize(24 * spotterBuffers.count * spotterBuffers.triangleCount, spotterBuffers.type.color)
-        //ObjectMetalBuffers.redrawCircleWithColor(spotterBuffers, pn)
+        spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.type.size)
+        spotterBuffers.draw(pn)
         spotterBuffers.generateMtlBuffer(device)
     }
 
