@@ -15,7 +15,9 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     var snMpd = SevereNotice("mpd")
     var bitmap = Bitmap()
     var usAlertsBitmap = Bitmap()
+    var statusButton = ObjectToolbarIcon()
     let synth = AVSpeechSynthesizer()
+    var statusWarnings = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,8 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
             object: nil
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        statusButton = ObjectToolbarIcon(self, nil)
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -125,6 +128,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 }
             }
         }
+        statusWarnings = "(" + String(wTst.eventList.count) + ","  + String(wTor.eventList.count) + "," + String(wFfw.eventList.count) + ")"
     }
 
     @objc func gotoAlerts() {
@@ -234,6 +238,18 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         self.showTextWarnings(&views)
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
+        var status = ""
+        if snWat.bitmaps.count > 0 {
+            status += "W(" + String(snWat.bitmaps.count) + ") "
+        }
+        if snMcd.bitmaps.count > 0 {
+            status += "M(" + String(snMcd.bitmaps.count) + ") "
+        }
+        if snMpd.bitmaps.count > 0 {
+            status += "P(" + String(snMpd.bitmaps.count) + ") "
+        }
+        
+        self.statusButton.title = status + " " + statusWarnings
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
