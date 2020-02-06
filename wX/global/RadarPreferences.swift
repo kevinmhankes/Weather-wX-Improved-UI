@@ -57,8 +57,8 @@ class RadarPreferences {
         radarLocdotSize = 1
         radarHiSize = 1
         radarTvsSize = 1
-        radarAviationSize = 2
-        radarSpotterSize = 2
+        radarAviationSize = 1
+        radarSpotterSize = 1
         radarTextSizePref = 15.0
         radarTextSize = 1.5
         //wxoglSize = 20

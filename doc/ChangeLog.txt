@@ -18,6 +18,7 @@
 		 [ADD] SevereDashboard - add count data to status area in bottom toolbar
 		 [ADD] In nexrad radar only show long press items for warn/mcd/wat/mpd if they are configured to be shown
 		 [FIX] tablet wind barb size on zoom
+		 [FIX] decrease spotter/wind barb size in catalyst
 56083 2020_02_01 [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 		 [FIX] severedash onrestart mcd: does not clear images and later crashes
 		 [REF] move off disk storage for various things like wfo/radar x/y/name
