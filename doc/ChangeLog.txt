@@ -11,6 +11,8 @@
 // [ADD] severedash: show count at bottom
 // [FIX] dual pane does not show radar time for both panes
 // [FIX] landscape MCD display not working
+// [ADD] keyboard shortcut for location selector on main screen
+// [FIX] hourly now has quotes around temp
 
 56084 2020_02_06 [FIX] update google doc links to point to published versions in settings -> about
 		 [FIX] if tablet make radar circles smaller
