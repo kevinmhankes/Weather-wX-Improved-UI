@@ -248,7 +248,6 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         if snMpd.bitmaps.count > 0 {
             status += "P(" + String(snMpd.bitmaps.count) + ") "
         }
-        
         self.statusButton.title = status + " " + statusWarnings
     }
 
