@@ -749,7 +749,7 @@ class WXMetalMultipane: UIViewController, MKMapViewDelegate, CLLocationManagerDe
                 "Change Tilt", { _ in self.showTiltMenu()})
             )
         }
-        if RadarPreferences.radarWarnings {
+        if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() {
             alert.addAction(UIAlertAction(
                 "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
             )

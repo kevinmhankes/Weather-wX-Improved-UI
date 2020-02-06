@@ -68,6 +68,16 @@ class ObjectPolygonWarning {
         PolygonTypeGeneric.SPS
     ]
 
+    static func areAnyEnabled() -> Bool {
+        var anyEnabled = false
+        polygonList.forEach {
+            if ObjectPolygonWarning.polygonDataByType[$0]!.isEnabled {
+                anyEnabled = true
+            }
+        }
+        return anyEnabled
+    }
+
     static let pVtec = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]" +
     "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
 
