@@ -60,7 +60,7 @@ final class UtilityHourly {
         var string = ""
         startTime.indices.forEach {
             let time = translateTime(startTime[$0])
-            let temperature = Utility.safeGet(temperatures, $0)
+            let temperature = Utility.safeGet(temperatures, $0).replace("\"", "")
             let windSpeed = Utility.safeGet(windSpeeds, $0).replace(" to ", "-")
             let windDirection = Utility.safeGet(windDirections, $0)
             let shortForecast = Utility.safeGet(shortForecasts, $0)
