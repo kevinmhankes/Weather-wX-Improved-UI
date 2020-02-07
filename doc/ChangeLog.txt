@@ -10,7 +10,6 @@
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
-// [FIX] landscape MCD display not working
 // [ADD] keyboard shortcut for location selector on main screen
 
 56084 2020_02_06 [FIX] update google doc links to point to published versions in settings -> about
@@ -21,6 +20,7 @@
 		 [FIX] tablet wind barb size on zoom
 		 [FIX] decrease spotter/wind barb size in catalyst
 		 [FIX] hourly now has quotes around temp
+		 [FIX] landscape WAT/MPD/MCD display not working
 56083 2020_02_01 [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 		 [FIX] severedash onrestart mcd: does not clear images and later crashes
 		 [REF] move off disk storage for various things like wfo/radar x/y/name

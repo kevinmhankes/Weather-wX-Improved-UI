@@ -78,9 +78,10 @@ class ViewControllerWPCMPD: UIwXViewController {
         #if targetEnvironment(macCatalyst)
             tabletInLandscape = true
         #endif
-        tabletInLandscape = false
+        //tabletInLandscape = false
         if tabletInLandscape {
             stackView.axis = .horizontal
+            stackView.alignment = .firstBaseline
         }
         if !self.bitmaps.isEmpty {
             self.bitmaps.enumerated().forEach {
