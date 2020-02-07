@@ -8,14 +8,14 @@ import UIKit
 import AVFoundation
 
 class ViewControllerSPCWATCH: UIwXViewController {
-    
+
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
     var spcWatchNumber = ""
     var playButton = ObjectToolbarIcon()
     var text = ""
     let synth = AVSpeechSynthesizer()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -28,7 +28,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-    
+
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var mcdList = [String]()
@@ -51,20 +51,20 @@ class ViewControllerSPCWATCH: UIwXViewController {
             }
         }
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.textViewText = self.listOfText[sender.data]
         self.goToVC("textviewer")
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-    
+
     @objc func playClicked() {
         UtilityActions.playClicked(text, synth, playButton)
     }
-    
+
     private func displayContent() {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
@@ -87,7 +87,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
                 objectImage.img.accessibilityLabel = self.listOfText[$0]
                 objectImage.img.isAccessibilityElement = true
                 views += [objectImage.img]*/
-                
+
                 if tabletInLandscape {
                     let objectImage = ObjectImage(
                         self.stackView,
@@ -128,7 +128,7 @@ class ViewControllerSPCWATCH: UIwXViewController {
         }
         self.view.bringSubviewToFront(self.toolbar)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
