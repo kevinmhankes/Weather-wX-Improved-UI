@@ -16,10 +16,8 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
     var playListButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
     var productNumber = ""
-    var text = ""
     let synth = AVSpeechSynthesizer()
-    var product = ""
-    var objectWatchProdct: ObjectWatchProduct?
+    var objectWatchProduct: ObjectWatchProduct?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +45,11 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
             }
             productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-                let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + number + ".gif"
-                self.product = "SPCMCD" + number
-                self.text = UtilityDownload.getTextProduct(self.product)
-                self.listOfText.append(self.text)
-                self.urls.append(imgUrl)
-                self.bitmaps.append(Bitmap(imgUrl))
+                self.objectWatchProduct = ObjectWatchProduct(.MCD, number)
+                self.objectWatchProduct!.getData()
+                self.listOfText.append(self.objectWatchProduct!.text)
+                self.urls.append(self.objectWatchProduct!.imgUrl)
+                self.bitmaps.append(self.objectWatchProduct!.bitmap)
                 self.numbers.append(number)
             }
             DispatchQueue.main.async {
@@ -67,15 +64,15 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps, text)
+        UtilityShare.shareImage(self, sender, bitmaps, self.objectWatchProduct!.text)
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(text, synth, playButton)
+        UtilityActions.playClicked(self.objectWatchProduct!.text, synth, playButton)
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, text, self, playListButton)
+        UtilityPlayList.add(self.objectWatchProduct!.prod, self.objectWatchProduct!.text, self, playListButton)
     }
 
     private func displayContent() {
@@ -89,14 +86,8 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
             stackView.alignment = .firstBaseline
         }
         var views = [UIView]()
-        text = ""
         if self.bitmaps.count > 0 {
             self.bitmaps.enumerated().forEach {
-                /*var objectImage = ObjectImage(
-                    self.stackView,
-                    $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
-                )*/
                 let objectImage: ObjectImage
                 if tabletInLandscape {
                     objectImage = ObjectImage(
@@ -115,14 +106,13 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
                 objectImage.img.accessibilityLabel = listOfText[$0]
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
-                text += listOfText[$0]
             }
             if self.bitmaps.count == 1 {
                 let objectTextView: ObjectTextView
                 if tabletInLandscape {
-                    objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+                    objectTextView = ObjectTextView(self.stackView, self.objectWatchProduct?.text ?? "", widthDivider: 2)
                 } else {
-                    objectTextView = ObjectTextView(self.stackView, self.text)
+                    objectTextView = ObjectTextView(self.stackView, self.objectWatchProduct?.text ?? "")
                 }
                 objectTextView.tv.isAccessibilityElement = true
                 views.append(objectTextView.tv)

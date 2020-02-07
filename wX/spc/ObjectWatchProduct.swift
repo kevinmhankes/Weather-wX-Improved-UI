@@ -7,12 +7,12 @@
 final class ObjectWatchProduct {
 
     private var productNumber = ""
-    private var imgUrl = ""
+    var imgUrl = ""
     private var textUrl = ""
     private var title = ""
-    private var prod = ""
-    private var bitmap = Bitmap()
-    private var text = ""
+    var prod = ""
+    var bitmap = Bitmap()
+    var text = ""
     private var wfoArr = [String]()
 
     init(_ type: PolygonType, _ productNumber: String) {
