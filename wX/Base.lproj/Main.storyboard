@@ -1097,10 +1097,10 @@
             </objects>
             <point key="canvasLocation" x="4236" y="1215"/>
         </scene>
-        <!--View Controller Watch Mcd Mpd-->
+        <!--View Controller Spc Watch Mcd Mpd-->
         <scene sceneID="oHk-9S-ILJ">
             <objects>
-                <viewController storyboardIdentifier="spcwatchmcdmpd" id="AaQ-tY-gLP" customClass="ViewControllerWatchMcdMpd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="spcwatchmcdmpd" id="AaQ-tY-gLP" customClass="ViewControllerSpcWatchMcdMpd" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6GU-hO-LAx"/>
                         <viewControllerLayoutGuide type="bottom" id="0EN-i5-ig4"/>

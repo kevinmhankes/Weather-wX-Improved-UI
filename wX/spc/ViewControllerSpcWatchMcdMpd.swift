@@ -15,18 +15,19 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
     var urls = [String]()
     var playListButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()
-    var spcMcdNumber = ""
+    var productNumber = ""
     var text = ""
     let synth = AVSpeechSynthesizer()
     var product = ""
+    var objectWatchProdct: ObjectWatchProduct?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        spcMcdNumber = ActVars.spcMcdNumber
-        if spcMcdNumber != "" {
+        productNumber = ActVars.spcMcdNumber
+        if productNumber != "" {
             ActVars.spcMcdNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
@@ -36,15 +37,15 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            var mcdList = [String]()
-            if self.spcMcdNumber == "" {
-                mcdList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
+            var productNumberList = [String]()
+            if self.productNumber == "" {
+                productNumberList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
                     .getHtml()
                     .parseColumn("title=.Mesoscale Discussion #(.*?).>")
             } else {
-                mcdList = [self.spcMcdNumber]
+                productNumberList = [self.productNumber]
             }
-            mcdList.forEach {
+            productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
                 let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + number + ".gif"
                 self.product = "SPCMCD" + number

@@ -89,7 +89,7 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         }
         if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
             ActVars.spcMcdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
-            token = "spcmcd"
+            token = "spcwatchmcdmpd"
         }
         if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
             ActVars.spcWatchNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
