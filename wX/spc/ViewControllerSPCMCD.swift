@@ -78,15 +78,14 @@ class ViewControllerSPCMCD: UIwXViewController {
     }
 
     private func displayContent() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
-            tabletInLandscape = true
+            tabletInLandscape = self.bitmaps.count == 1
         #endif
-        tabletInLandscape = false
+        //tabletInLandscape = false
         if tabletInLandscape {
             stackView.axis = .horizontal
-            stackView.alignment = .fill
-            //stackView.translatesAutoresizingMaskIntoConstraints = true
+            stackView.alignment = .firstBaseline
         }
         var views = [UIView]()
         text = ""

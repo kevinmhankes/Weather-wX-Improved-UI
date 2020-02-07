@@ -74,9 +74,9 @@ class ViewControllerWPCMPD: UIwXViewController {
     }
 
     private func displayContent() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
-            tabletInLandscape = true
+            tabletInLandscape = self.bitmaps.count == 1
         #endif
         //tabletInLandscape = false
         if tabletInLandscape {
