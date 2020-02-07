@@ -10,6 +10,7 @@
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
+// [REF] combine WAT/MCD/MPD and when multiple images and tap image show image/text not just text
 // [ADD] keyboard shortcut for location selector on main screen
 
 56084 2020_02_06 [FIX] update google doc links to point to published versions in settings -> about
