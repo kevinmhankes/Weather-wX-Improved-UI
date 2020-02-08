@@ -7,7 +7,9 @@
 import UIKit
 
 final class UtilityDownload {
-
+    
+    static let useNwsApi = false
+    
     static func getStringFromUrl(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -19,7 +21,7 @@ final class UtilityDownload {
         }
         return ""
     }
-
+    
     static func getStringFromUrlSep(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -31,7 +33,7 @@ final class UtilityDownload {
         }
         return ""
     }
-
+    
     static func getBitmapFromUrl(_ url: String) -> Bitmap {
         guard let safeUrl = URL(string: url) else {
             return Bitmap()
@@ -43,7 +45,7 @@ final class UtilityDownload {
             return Bitmap()
         }
     }
-
+    
     static func getDataFromUrl(_ url: String) -> Data {
         guard let safeUrl = URL(string: url) else {
             return Data()
@@ -55,7 +57,7 @@ final class UtilityDownload {
         }
         return data
     }
-
+    
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
         let prod = produ.uppercased()
@@ -167,16 +169,16 @@ final class UtilityDownload {
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
         } else if prod.contains("PMD30D") {
-          let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus07.kwbc.pmd.30d.txt"
-          text = textUrl.getHtmlSep()
-          text = text.removeLineBreaks()
+            let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus07.kwbc.pmd.30d.txt"
+            text = textUrl.getHtmlSep()
+            text = text.removeLineBreaks()
         } else if prod.contains("PMD90D") {
-          let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus05.kwbc.pmd.90d.txt"
-          text = textUrl.getHtmlSep()
-          text = text.removeLineBreaks()
+            let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus05.kwbc.pmd.90d.txt"
+            text = textUrl.getHtmlSep()
+            text = text.removeLineBreaks()
         } else if prod.contains("PMDHCO") {
-             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
-             text = textUrl.getHtmlSep()
+            let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
+            text = textUrl.getHtmlSep()
         } else if prod.contains("USHZD37") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/threats/threats.php"
             text = textUrl.getHtmlSep()
@@ -200,24 +202,70 @@ final class UtilityDownload {
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
         } else {
+            
             let t1 = prod.substring(0, 3)
             let t2 = prod.substring(3).replace("%", "")
-            let html = ("https://api.weather.gov/products/types/" + t1 + "/locations/" + t2).getNwsHtml()
-            let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
-            let prodHtml = urlProd.getNwsHtml()
-            text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
-            if !prod.hasPrefix("RTP") {
-                text = text.replace("\\n\\n", "\n")
-                text = text.replace("\\n", " ")
-                //text = text.replace("\\n", "\n")
+            
+            // Feb 8 2020 Sat
+            // The NWS API for text products has been unstable Since Wed Feb 5
+            // resorting to alternatives
+            if (useNwsApi) {
+                let html = ("https://api.weather.gov/products/types/" + t1 + "/locations/" + t2).getNwsHtml()
+                let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
+                let prodHtml = urlProd.getNwsHtml()
+                text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
+                if !prod.hasPrefix("RTP") {
+                    text = text.replace("\\n\\n", "\n")
+                    text = text.replace("\\n", " ")
+                    //text = text.replace("\\n", "\n")
+                } else {
+                    text = text.replace("\\n", "\n")
+                }
             } else {
-                text = text.replace("\\n", "\n")
+                switch prod {
+                case "SWODY1":
+                    let url = "https://www.spc.noaa.gov/products/outlook/day1otlk.html"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                case "SWODY2":
+                    let url = "https://www.spc.noaa.gov/products/outlook/day2otlk.html"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                case "SWODY3":
+                    let url = "https://www.spc.noaa.gov/products/outlook/day3otlk.html"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                case "SWOD48":
+                    let url = "https://www.spc.noaa.gov/products/exper/day4-8/"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                case "PMDSPD":
+                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdspd"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                case "PMDEPD":
+                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdepd"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                default:
+                    // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
+                    let urlToGet = "https://forecast.weather.gov/product.php?site=" +
+                        t2 +
+                        "&issuedby=" +
+                        t2 +
+                        "&product=" +
+                        t1 +
+                    "&format=txt&version=1&glossary=0"
+                    let prodHtmlFuture = urlToGet.getNwsHtml()
+                    text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
+                    break
+                }
             }
         }
         UtilityPlayList.checkAndSave(prod, text)
         return text
     }
-
+    
     static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
         var text = ""
         let prodLocal = product.uppercased()
@@ -236,7 +284,7 @@ final class UtilityDownload {
         }
         return text
     }
-
+    
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
         var bitmap = Bitmap()

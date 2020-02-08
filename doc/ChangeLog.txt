@@ -11,7 +11,7 @@
 // [FIX] dual pane does not show radar time for both panes
 // [ADD] keyboard shortcut for location selector on main screen
 
-56084 2020_02_07 [FIX] update google doc links to point to published versions in settings -> about
+56084 2020_02_08 [FIX] update google doc links to point to published versions in settings -> about
 		 [FIX] if tablet make radar circles smaller
 		 [ADD] WIP - SpcMcdWatchShowActivity - if tablet in landscape change orientation of linearLayout
 		 [ADD] SevereDashboard - add count data to status area in bottom toolbar
@@ -21,6 +21,7 @@
 		 [FIX] hourly now has quotes around temp
 		 [FIX] landscape WAT/MPD/MCD display not working
 		 [REF] WIP - combine WAT/MCD/MPD and when multiple images and tap image show image/text not just text
+		 [FIX] use alternative sources for text products: WFO: AFD, SPC Convective Outlooks, Short Range disc
 56083 2020_02_01 [ADD] move to WXGLNexrad: Utility.readPref("WX_RADAR_CURRENT_INFO", "")
 		 [FIX] severedash onrestart mcd: does not clear images and later crashes
 		 [REF] move off disk storage for various things like wfo/radar x/y/name
