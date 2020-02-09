@@ -9,7 +9,9 @@
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
+// [FIX] icons per row should change dynamically or inform of restart
 
+56086 2020_02_09
 56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 		 [ADD] CPC 3 month temp/precip outlook in WPC Images
 		 [ADD] add aditional products in WFO Text viewer
