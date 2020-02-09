@@ -7,9 +7,9 @@
 import UIKit
 
 final class UtilityDownload {
-    
+
     static let useNwsApi = false
-    
+
     static func getStringFromUrl(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -21,7 +21,7 @@ final class UtilityDownload {
         }
         return ""
     }
-    
+
     static func getStringFromUrlSep(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -33,7 +33,7 @@ final class UtilityDownload {
         }
         return ""
     }
-    
+
     static func getBitmapFromUrl(_ url: String) -> Bitmap {
         guard let safeUrl = URL(string: url) else {
             return Bitmap()
@@ -45,7 +45,7 @@ final class UtilityDownload {
             return Bitmap()
         }
     }
-    
+
     static func getDataFromUrl(_ url: String) -> Data {
         guard let safeUrl = URL(string: url) else {
             return Data()
@@ -57,7 +57,7 @@ final class UtilityDownload {
         }
         return data
     }
-    
+
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
         let prod = produ.uppercased()
@@ -251,7 +251,11 @@ final class UtilityDownload {
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDMRD":
                     let textUrl = MyApplication.tgftpSitePrefix +  "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
-                    text = textUrl.getNwsHtml().removeLineBreaks()
+                    text = textUrl.getNwsHtml()
+                case "PMDTHR":
+                    let url = MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/threats/threats.php"
+                    text = url.getNwsHtml()
+                    text = text.parse("<div id=\"discDiv\">(.*?)</div>").removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" +
