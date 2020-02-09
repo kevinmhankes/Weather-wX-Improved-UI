@@ -168,6 +168,12 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
+        } else if prod.contains("OFF") || prod == "UVICAC" || prod == "RWRMX" || prod.hasPrefix("TPT") {
+            let product = prod.substring(0, 3)
+            let site = prod.substring(3)
+            let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
+            let html = url.getNwsHtml()
+            text = UtilityString.extractPreLsr(html)
         } else if prod.contains("PMD30D") {
             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus07.kwbc.pmd.30d.txt"
             text = textUrl.getHtmlSep()
