@@ -26,6 +26,7 @@ class MyApplication {
     static let canadaEcSitePrefix = "https://weather.gc.ca"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
+    static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
     static let degreeSymbol = "\u{00B0}"
     static let textviewMagicFudgeFactor: Float = 4.05
     static var deviceScale: Float = 0.0

@@ -241,6 +241,17 @@ final class UtilityDownload {
                     let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                case "PMDSA":
+                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=fxsa20"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                case "PMDCA":
+                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=fxca20"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                case "PMDMRD":
+                    let textUrl = MyApplication.tgftpSitePrefix +  "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
+                    text = textUrl.getNwsHtml().removeLineBreaks()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" +
