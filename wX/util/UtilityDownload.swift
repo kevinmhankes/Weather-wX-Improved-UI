@@ -237,14 +237,10 @@ final class UtilityDownload {
                     let url = "https://www.spc.noaa.gov/products/exper/day4-8/"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks()
-                case "PMDSPD":
-                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdspd"
+                case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
+                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
-                case "PMDEPD":
-                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdepd"
-                    let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" +
