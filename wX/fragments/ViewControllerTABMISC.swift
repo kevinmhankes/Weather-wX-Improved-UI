@@ -8,13 +8,23 @@ import UIKit
 
 class ViewControllerTABMISC: ViewControllerTABPARENT {
 
+    var tilesPerRow = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tilesPerRow = UIPreferences.tilesPerRow
         objTileMatrix = ObjectTileMatrix(self, stackView, .misc)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if tilesPerRow != UIPreferences.tilesPerRow {
+            stackView.arrangedSubviews.forEach {
+                $0.removeFromSuperview()
+            }
+            tilesPerRow = UIPreferences.tilesPerRow
+            objTileMatrix = ObjectTileMatrix(self, stackView, .misc)
+        }
         updateColors()
     }
 

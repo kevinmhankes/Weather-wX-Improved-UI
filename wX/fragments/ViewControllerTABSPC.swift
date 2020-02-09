@@ -8,15 +8,25 @@ import UIKit
 
 class ViewControllerTABSPC: ViewControllerTABPARENT {
 
+    var tilesPerRow = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tilesPerRow = UIPreferences.tilesPerRow
         objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           updateColors()
-       }
+        super.viewWillAppear(animated)
+        if tilesPerRow != UIPreferences.tilesPerRow {
+            stackView.arrangedSubviews.forEach {
+                $0.removeFromSuperview()
+            }
+            tilesPerRow = UIPreferences.tilesPerRow
+            objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
+        }
+        updateColors()
+    }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
