@@ -131,7 +131,11 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 }
             }
         }
-        statusWarnings = "(" + String(wTor.eventList.count) + ","  + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
+        if wTor.eventList.count > 0 || wTst.eventList.count > 0 || wFfw.eventList.count > 0 {
+            statusWarnings = "(" + String(wTor.eventList.count) + ","  + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
+        } else {
+            statusWarnings = ""
+        }
     }
 
     @objc func gotoAlerts() {

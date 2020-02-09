@@ -202,14 +202,12 @@ final class UtilityDownload {
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
         } else {
-            
             let t1 = prod.substring(0, 3)
             let t2 = prod.substring(3).replace("%", "")
-            
             // Feb 8 2020 Sat
             // The NWS API for text products has been unstable Since Wed Feb 5
             // resorting to alternatives
-            if (useNwsApi) {
+            if useNwsApi {
                 let html = ("https://api.weather.gov/products/types/" + t1 + "/locations/" + t2).getNwsHtml()
                 let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
                 let prodHtml = urlProd.getNwsHtml()
@@ -258,14 +256,13 @@ final class UtilityDownload {
                     "&format=txt&version=1&glossary=0"
                     let prodHtmlFuture = urlToGet.getNwsHtml()
                     text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
-                    break
                 }
             }
         }
         UtilityPlayList.checkAndSave(prod, text)
         return text
     }
-    
+
     static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
         var text = ""
         let prodLocal = product.uppercased()
@@ -284,7 +281,7 @@ final class UtilityDownload {
         }
         return text
     }
-    
+
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
         var bitmap = Bitmap()
