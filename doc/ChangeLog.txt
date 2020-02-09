@@ -12,6 +12,7 @@
 
 56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 		 [ADD] CPC 3 month temp/precip outlook in WPC Images
+		 [ADD] add aditional products in WFO Text viewer
 		 [ADD] substantial revamp of utilDownload, WFO text, national text with regards to data download and presentation
 56084 2020_02_08 [FIX] update google doc links to point to published versions in settings -> about
 		 [FIX] if tablet make radar circles smaller

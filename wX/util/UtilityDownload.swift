@@ -165,6 +165,10 @@ final class UtilityDownload {
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
+        } else if prod.hasPrefix("VFD") {
+            let t2 = prod.substring(3)
+            text = (MyApplication.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
+            text = text.parse("<!-- raw data starts -->(.*?)<!-- raw data ends -->")
         } else if prod.hasPrefix("AWCN") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if prod.contains("NFD") {
@@ -208,12 +212,15 @@ final class UtilityDownload {
             text = text.removeLineBreaks()
             text = text.parse("<div class=.haztext.>(.*?)</div>")
             text = text.replace("<br>", "\n")
-        } else if prod.hasPrefix("RWR") {
+        } else if prod.hasPrefix("RWR") || prod.hasPrefix("RTP") {
             let product = prod.substring(0, 3)
             let location = prod.substring(3).replace("%", "")
             let locationName = Utility.getWfoSiteName(location)
-            let state = locationName.split(",")[0]
-            let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + state + "&product=" + product
+            var site = locationName.split(",")[0]
+            if prod.hasPrefix("RTP") {
+                site = location
+            }
+            let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + product
             // https://forecast.weather.gov/product.php?site=ILX&issuedby=IL&product=RWR
             text = url.getHtmlSep()
             text = UtilityString.extractPreLsr(text)
@@ -247,19 +254,19 @@ final class UtilityDownload {
                 case "SWODY1":
                     let url = "https://www.spc.noaa.gov/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "SWODY2":
                     let url = "https://www.spc.noaa.gov/products/outlook/day2otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "SWODY3":
                     let url = "https://www.spc.noaa.gov/products/outlook/day3otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "SWOD48":
                     let url = "https://www.spc.noaa.gov/products/exper/day4-8/"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
                     let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
                     let html = url.getNwsHtml()
@@ -281,13 +288,8 @@ final class UtilityDownload {
                     text = text.parse("<div id=\"discDiv\">(.*?)</div>").removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
-                    let urlToGet = "https://forecast.weather.gov/product.php?site=" +
-                        t2 +
-                        "&issuedby=" +
-                        t2 +
-                        "&product=" +
-                        t1 +
-                    "&format=txt&version=1&glossary=0"
+                    let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
+                        + "&product=" + t1 + "&format=txt&version=1&glossary=0"
                     let prodHtmlFuture = urlToGet.getNwsHtml()
                     text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
                 }
@@ -306,8 +308,7 @@ final class UtilityDownload {
             + "&issuedby=" + t2 + "&version=" + String(version)
         text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
-        text = text
-            .replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">"
+        text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">"
                 + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
         if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {
