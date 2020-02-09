@@ -86,14 +86,17 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
             ActVars.wpcMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
             token = "wpcmpd"
+            ActVars.watchMcdMpdType = .MPD
         }
         if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
-            ActVars.spcMcdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
+            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
             token = "spcwatchmcdmpd"
+            ActVars.watchMcdMpdType = .MCD
         }
         if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
             ActVars.spcWatchNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
             token = "spcwat"
+            ActVars.watchMcdMpdType = .WATCH
         }
         self.goToVC(token)
     }

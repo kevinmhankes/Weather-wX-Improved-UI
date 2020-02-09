@@ -24,9 +24,9 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        productNumber = ActVars.spcMcdNumber
+        productNumber = ActVars.watchMcdMpdNumber
         if productNumber != "" {
-            ActVars.spcMcdNumber = ""
+            ActVars.watchMcdMpdNumber = ""
         }
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -37,9 +37,10 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var productNumberList = [String]()
             if self.productNumber == "" {
-                productNumberList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
+                /*productNumberList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
                     .getHtml()
-                    .parseColumn("title=.Mesoscale Discussion #(.*?).>")
+                    .parseColumn("title=.Mesoscale Discussion #(.*?).>")*/
+                productNumberList = ObjectWatchProduct.getNumberList(ActVars.watchMcdMpdType)
             } else {
                 productNumberList = [self.productNumber]
             }

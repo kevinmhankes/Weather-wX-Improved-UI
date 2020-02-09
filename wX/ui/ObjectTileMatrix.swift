@@ -133,8 +133,12 @@ final class ObjectTileMatrix: NSObject {
         case "report_yesterday":
             ActVars.spcStormReportsDay = "yesterday"
             token = "spcstormreports"
-        case "mcd_tile":     token="spcwatchmcdmpd"
-        case "wat":          token="spcwat"
+        case "mcd_tile":
+            token="spcwatchmcdmpd"
+            ActVars.watchMcdMpdType = .MCD
+        case "wat":
+            token="spcwat"
+            ActVars.watchMcdMpdType = .WATCH
         case "meso":         token="spcmeso"
         case "fire_outlook": token="spcfiresummary"
         case "tstorm":       token="spctstsummary"

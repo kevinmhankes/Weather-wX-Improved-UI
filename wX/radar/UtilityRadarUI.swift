@@ -105,14 +105,17 @@ public class UtilityRadarUI {
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             ActVars.wpcMpdNumber = token.replace("WPCMPD", "")
             token = "wpcmpd"
+            ActVars.watchMcdMpdType = .MPD
         }
         if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
-            ActVars.spcMcdNumber = token.replace("SPCMCD", "")
-            token = "spcmcd"
+            ActVars.watchMcdMpdNumber = token.replace("SPCMCD", "")
+            token = "spcwatchmcdmpd"
+            ActVars.watchMcdMpdType = .MCD
         }
         if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
             ActVars.spcWatchNumber = token.replace("SPCWAT", "")
             token = "spcwat"
+            ActVars.watchMcdMpdType = .WATCH
         }
         if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
             uiv.goToVC(token)

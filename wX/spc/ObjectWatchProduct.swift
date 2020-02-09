@@ -53,4 +53,19 @@ final class ObjectWatchProduct {
     func getTextForSubtitle() -> String {
         return text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "")
     }
+
+    static func getNumberList(_ type: PolygonType) -> [String] {
+        switch type.string {
+        case "WATCH_TORNADO":
+            return [String]()
+        case "WATCH":
+            return [String]()
+        case "MCD":
+            return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
+        case "MPD":
+            return [String]()
+        default:
+            return [String]()
+        }
+    }
 }

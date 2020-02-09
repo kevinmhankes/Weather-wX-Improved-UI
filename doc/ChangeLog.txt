@@ -11,7 +11,7 @@
 // [FIX] dual pane does not show radar time for both panes
 // [ADD] keyboard shortcut for location selector on main screen
 
-56085 2020_02_08
+56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 56084 2020_02_08 [FIX] update google doc links to point to published versions in settings -> about
 		 [FIX] if tablet make radar circles smaller
 		 [ADD] WIP - SpcMcdWatchShowActivity - if tablet in landscape change orientation of linearLayout

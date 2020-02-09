@@ -16,7 +16,7 @@ class ActVars {
     static var textViewProduct = ""
     static var nwsMosaicType = ""
     static var wpcMpdNumber = ""
-    static var spcMcdNumber = ""
+    //static var spcMcdNumber = ""
     static var spcWatchNumber = ""
     static var wpcTextProduct = ""
     static var webViewUrl = ""
@@ -49,4 +49,8 @@ class ActVars {
     static var spcMesoFromHomeScreen = false
     static var spcMesoToken = ""
     static var wpcRainfallDay = "1"
+    
+    // used by ViewControllerSpcWatchMcdMpd
+    static var watchMcdMpdType = PolygonType.WATCH
+    static var watchMcdMpdNumber = ""
 }
