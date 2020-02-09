@@ -120,6 +120,24 @@ final class UtilityDownload {
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
+        } else if prod == "FWDDY1" {
+            let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy1.html"
+            text = url.getNwsHtml()
+            text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
+        } else if prod == "FWDDY2" {
+            let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy2.html"
+            text = url.getNwsHtml()
+            text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
+        } else if prod == "FWDDY38" {
+            let url = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
+            text = url.getNwsHtml()
+            text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
+        } else if prod.hasPrefix("GLF") {
+            let product = prod.substring(0, 3)
+            let site = prod.substring(3).replace("%", "")
+            let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
+            let html = url.getNwsHtml()
+            text = UtilityString.extractPreLsr(html)
         } else if prod.contains("QPF94E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "1"
             let html = textUrl.getHtmlSep()
@@ -150,8 +168,7 @@ final class UtilityDownload {
         } else if prod.hasPrefix("AWCN") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if prod.contains("NFD") {
-            text = (MyApplication.nwsOpcWebsitePrefix
-                + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml().removeHtml()
+            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml().removeHtml()
         } else if prod.contains("FWDDY38") {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = textUrl.getHtmlSep()
