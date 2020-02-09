@@ -14,9 +14,11 @@ final class ObjectWatchProduct {
     var bitmap = Bitmap()
     var text = ""
     private var wfoArr = [String]()
+    private var type: PolygonType
 
     init(_ type: PolygonType, _ productNumber: String) {
         self.productNumber = productNumber
+        self.type = type
         switch type.string {
         case "WATCH_TORNADO":
             self.productNumber = productNumber.replaceAll("w", "")
@@ -52,6 +54,21 @@ final class ObjectWatchProduct {
 
     func getTextForSubtitle() -> String {
         return text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "")
+    }
+
+    func getTextForNoProducts() -> String {
+        switch type.string {
+        case "WATCH_TORNADO":
+            return ""
+        case "WATCH":
+            return ""
+        case "MCD":
+            return "No active SPC MCDs"
+        case "MPD":
+            return ""
+        default:
+            return ""
+        }
     }
 
     static func getNumberList(_ type: PolygonType) -> [String] {

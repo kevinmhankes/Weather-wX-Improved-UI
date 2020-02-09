@@ -37,16 +37,13 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var productNumberList = [String]()
             if self.productNumber == "" {
-                /*productNumberList = (MyApplication.nwsSPCwebsitePrefix + "/products/md/")
-                    .getHtml()
-                    .parseColumn("title=.Mesoscale Discussion #(.*?).>")*/
                 productNumberList = ObjectWatchProduct.getNumberList(ActVars.watchMcdMpdType)
             } else {
                 productNumberList = [self.productNumber]
             }
             productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-                self.objectWatchProduct = ObjectWatchProduct(.MCD, number)
+                self.objectWatchProduct = ObjectWatchProduct(ActVars.watchMcdMpdType, number)
                 self.objectWatchProduct!.getData()
                 self.listOfText.append(self.objectWatchProduct!.text)
                 self.urls.append(self.objectWatchProduct!.imgUrl)
@@ -119,7 +116,7 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
                 views.append(objectTextView.tv)
             }
         } else {
-            let message = "No active SPC MCDs"
+            let message = objectWatchProduct?.getTextForNoProducts() ?? ""
             let objectTextView = ObjectTextView(self.stackView, message)
             objectTextView.tv.isAccessibilityElement = true
             views += [objectTextView.tv]
