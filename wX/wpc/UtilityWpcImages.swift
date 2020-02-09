@@ -12,7 +12,7 @@ final class UtilityWpcImages {
         ObjectMenuTitle("QPF", 27),
         ObjectMenuTitle("Snow / Ice", 21),
         ObjectMenuTitle("National Digital Forecast Database", 15),
-        ObjectMenuTitle("CPC Outlooks", 22),
+        ObjectMenuTitle("CPC Outlooks", 24),
         ObjectMenuTitle("Aviation", 16),
         ObjectMenuTitle("Space Weather", 3)
     ]
