@@ -164,6 +164,7 @@ class vcSevereDashboard: UIwXViewController {
 
     private func displayContent() {
         var views = [UIView]()
+        buttonActions = [String]()
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
