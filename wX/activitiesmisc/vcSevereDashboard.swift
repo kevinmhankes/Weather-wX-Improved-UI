@@ -299,16 +299,6 @@ class vcSevereDashboard: UIwXViewController {
                 status += warningLabel[index] + "(" + String(severeNotice.bitmaps.count) + ") "
             }
         }
-        
-        /*if snWat.bitmaps.count > 0 {
-            status += "W(" + String(snWat.bitmaps.count) + ") "
-        }
-        if snMcd.bitmaps.count > 0 {
-            status += "M(" + String(snMcd.bitmaps.count) + ") "
-        }
-        if snMpd.bitmaps.count > 0 {
-            status += "P(" + String(snMpd.bitmaps.count) + ") "
-        }*/
         self.statusButton.title = status + " " + statusWarnings
     }
 
