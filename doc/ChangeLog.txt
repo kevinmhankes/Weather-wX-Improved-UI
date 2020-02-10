@@ -14,6 +14,7 @@
 // [REF] remove the need for storyboards as much as possible
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 
+56087 2020_02_10 
 56086 2020_02_10 [FIX] icons per row now changes dynamically after setting in Settings -> UI
 		 [ADD] re-architect Severe Dashboard image handling, if Landscape show 3 images per row
 		 [ADD] WPC Rainfall disc optimize for landscape mode on big screens
