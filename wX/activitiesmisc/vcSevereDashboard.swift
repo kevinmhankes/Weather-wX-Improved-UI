@@ -217,30 +217,32 @@ class vcSevereDashboard: UIwXViewController {
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
         var index = 0
-        snWat.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
+        [snWat, snMcd, snMpd].forEach { severeNotice in
+            severeNotice.bitmaps.enumerated().forEach { imageIndex, image in
+                let stackView: UIStackView
+                if imageCount % imagesPerRow == 0 {
+                    let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                    imageStackViewList.append(objectStackView)
+                    stackView = objectStackView.view
+                    self.stackView.addArrangedSubview(stackView)
+                } else {
+                    stackView = imageStackViewList.last!.view
+                }
+                let objectImage = ObjectImage(
+                    stackView,
+                    image,
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+                self.buttonActions.append(severeNotice.type + severeNotice.numberList[imageIndex])
+                objectImage.img.accessibilityLabel = severeNotice.type + severeNotice.numberList[imageIndex]
+                objectImage.img.isAccessibilityElement = true
+                views.append(objectImage.img)
+                index += 1
+                imageCount += 1
             }
-            let objectImage = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            self.buttonActions.append(snWat.type + snWat.numberList[imageIndex])
-            objectImage.img.accessibilityLabel = snWat.type + snWat.numberList[imageIndex]
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
-            index += 1
-            imageCount += 1
         }
-        snMcd.bitmaps.enumerated().forEach { imageIndex, image in
+        /*snMcd.bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {
                 let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -285,12 +287,19 @@ class vcSevereDashboard: UIwXViewController {
             views.append(objectImage.img)
             index += 1
             imageCount += 1
-        }
+        }*/
         self.showTextWarnings(&views)
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
         var status = ""
-        if snWat.bitmaps.count > 0 {
+        let warningLabel = ["W", "M", "P"]
+        [snWat, snMcd, snMpd].enumerated().forEach { index, severeNotice in
+            if severeNotice.bitmaps.count > 0 {
+                status += warningLabel[index] + "(" + String(severeNotice.bitmaps.count) + ") "
+            }
+        }
+        
+        /*if snWat.bitmaps.count > 0 {
             status += "W(" + String(snWat.bitmaps.count) + ") "
         }
         if snMcd.bitmaps.count > 0 {
@@ -298,7 +307,7 @@ class vcSevereDashboard: UIwXViewController {
         }
         if snMpd.bitmaps.count > 0 {
             status += "P(" + String(snMpd.bitmaps.count) + ") "
-        }
+        }*/
         self.statusButton.title = status + " " + statusWarnings
     }
 
