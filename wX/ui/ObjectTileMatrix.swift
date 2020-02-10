@@ -171,14 +171,18 @@ final class ObjectTileMatrix: NSObject {
         case "hrrrviewer":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "ESRL"
-        case "uswarn": token = "usalerts"
+        case "uswarn":
+            token = "usalerts"
         case "goes":
             ActVars.goesProduct = "09"
             ActVars.goesSector = "CONUS"
             token = "goes16"
-        case "srfd":         token = "WPCText"
-        case "fmap":         token = "wpcimg"
-        case "nhc":          token = "nhc"
+        case "srfd":
+            token = "WPCText"
+        case "fmap":
+            token = "wpcimg"
+        case "nhc":
+            token = "nhc"
         case "auroralforecast":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "AURORAL_FORECAST"
@@ -188,9 +192,12 @@ final class ObjectTileMatrix: NSObject {
             } else {
                 token = "awcradarmosaic"
             }
-        case "opc":          token = "opc"
-        case "goesfulldisk": token = "goesglobal"
-        case "nwsobs":       token = "obssites"
+        case "opc":
+            token = "opc"
+        case "goesfulldisk":
+            token = "goesglobal"
+        case "nwsobs":
+            token = "obssites"
         case "wxogldualpane":
             ActVars.wxoglPaneCount = "2"
             token = "wxmetalradar"
@@ -200,8 +207,10 @@ final class ObjectTileMatrix: NSObject {
         case "nsslwrf":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "NSSLWRF"
-        case "lightning":   token = "lightning"
-        case "wpc_rainfall":   token = "wpcrainfallsummary"
+        case "lightning":
+            token = "lightning"
+        case "wpc_rainfall":
+            token = "wpcrainfallsummary"
         case "ncar_ensemble":
             token = "modelgeneric"
             ActVars.modelActivitySelected = "NCAR_ENSEMBLE"
