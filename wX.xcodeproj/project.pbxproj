@@ -57,6 +57,10 @@
 		0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FC23F16A4D003AB242 /* vcSettingsRadar.swift */; };
 		0340420723F16A4D003AB242 /* vcSettingsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FD23F16A4D003AB242 /* vcSettingsMain.swift */; };
 		0340420923F16ACA003AB242 /* vcSettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420823F16ACA003AB242 /* vcSettingsUI.swift */; };
+		0340420D23F16C5B003AB242 /* vcRadarMosaicAwc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */; };
+		0340420E23F16C5B003AB242 /* vcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */; };
+		0340420F23F16C5B003AB242 /* vcNexradRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420C23F16C5B003AB242 /* vcNexradRadar.swift */; };
+		0340421123F16D23003AB242 /* vcModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421023F16D23003AB242 /* vcModels.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
@@ -90,10 +94,8 @@
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
 		037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
-		037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */; };
 		037FF27D21A993450002E6E6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27C21A993450002E6E6 /* Shaders.metal */; };
 		037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */; };
-		0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */; };
 		0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */; };
 		0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382E04122043ADF00DA45C2 /* UtilityObs.swift */; };
 		038651F821FDB00700C48DF1 /* ObjectCardStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */; };
@@ -186,7 +188,6 @@
 		F011E6131DB03D80006531FD /* ViewControllerOBSERVATIONS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E6121DB03D7F006531FD /* ViewControllerOBSERVATIONS.swift */; };
 		F011E6181DB03E25006531FD /* ViewControllerIMAGEVIEWER.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E6141DB03E25006531FD /* ViewControllerIMAGEVIEWER.swift */; };
 		F011E6191DB03E25006531FD /* ViewControllerNHC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E6151DB03E25006531FD /* ViewControllerNHC.swift */; };
-		F011E61A1DB03E25006531FD /* ViewControllerNWSMOSAIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E6161DB03E25006531FD /* ViewControllerNWSMOSAIC.swift */; };
 		F011E61B1DB03E25006531FD /* ViewControllerTEXTVIEWER.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E6171DB03E25006531FD /* ViewControllerTEXTVIEWER.swift */; };
 		F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */; };
 		F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0149B4D1E5BA72900418162 /* ObjectModel.swift */; };
@@ -201,7 +202,6 @@
 		F02DF2551EB89FCF00A951EA /* ObjectCALegal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DF2541EB89FCF00A951EA /* ObjectCALegal.swift */; };
 		F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F031265C1DB84C1E009D6CF2 /* StackView.swift */; };
 		F03B74D71DD2BC0100727969 /* ViewControllerTABLOCATIONGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B74D61DD2BC0100727969 /* ViewControllerTABLOCATIONGL.swift */; };
-		F03D8A591E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03D8A581E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift */; };
 		F03F6FA81E0D3D0C00E4B7FA /* ViewControllerLIGHTNING.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F6FA71E0D3D0C00E4B7FA /* ViewControllerLIGHTNING.swift */; };
 		F03F6FAA1E0D3E4D00E4B7FA /* UtilityLightning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F6FA91E0D3E4D00E4B7FA /* UtilityLightning.swift */; };
 		F04378BB1E0F04C000C0A252 /* ViewControllerCARADAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04378BA1E0F04C000C0A252 /* ViewControllerCARADAR.swift */; };
@@ -453,6 +453,10 @@
 		034041FC23F16A4D003AB242 /* vcSettingsRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsRadar.swift; sourceTree = "<group>"; };
 		034041FD23F16A4D003AB242 /* vcSettingsMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsMain.swift; sourceTree = "<group>"; };
 		0340420823F16ACA003AB242 /* vcSettingsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsUI.swift; sourceTree = "<group>"; };
+		0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcRadarMosaicAwc.swift; sourceTree = "<group>"; };
+		0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcRadarMosaic.swift; sourceTree = "<group>"; };
+		0340420C23F16C5B003AB242 /* vcNexradRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcNexradRadar.swift; sourceTree = "<group>"; };
+		0340421023F16D23003AB242 /* vcModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcModels.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
@@ -486,10 +490,8 @@
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
 		037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTimer.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
-		037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalMultiPane.swift; sourceTree = "<group>"; };
 		037FF27C21A993450002E6E6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalBuffers.swift; sourceTree = "<group>"; };
-		0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAwcRadarMosaic.swift; sourceTree = "<group>"; };
 		0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAwcRadarMosaic.swift; sourceTree = "<group>"; };
 		0382E04122043ADF00DA45C2 /* UtilityObs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityObs.swift; sourceTree = "<group>"; };
 		038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardStormReportItem.swift; sourceTree = "<group>"; };
@@ -584,7 +586,6 @@
 		F011E6121DB03D7F006531FD /* ViewControllerOBSERVATIONS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerOBSERVATIONS.swift; sourceTree = "<group>"; };
 		F011E6141DB03E25006531FD /* ViewControllerIMAGEVIEWER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerIMAGEVIEWER.swift; sourceTree = "<group>"; };
 		F011E6151DB03E25006531FD /* ViewControllerNHC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNHC.swift; sourceTree = "<group>"; };
-		F011E6161DB03E25006531FD /* ViewControllerNWSMOSAIC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNWSMOSAIC.swift; sourceTree = "<group>"; };
 		F011E6171DB03E25006531FD /* ViewControllerTEXTVIEWER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTEXTVIEWER.swift; sourceTree = "<group>"; };
 		F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 		F0149B4D1E5BA72900418162 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
@@ -599,7 +600,6 @@
 		F02DF2541EB89FCF00A951EA /* ObjectCALegal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCALegal.swift; sourceTree = "<group>"; };
 		F031265C1DB84C1E009D6CF2 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		F03B74D61DD2BC0100727969 /* ViewControllerTABLOCATIONGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTABLOCATIONGL.swift; sourceTree = "<group>"; };
-		F03D8A581E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMODELGENERIC.swift; sourceTree = "<group>"; };
 		F03F6FA71E0D3D0C00E4B7FA /* ViewControllerLIGHTNING.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLIGHTNING.swift; sourceTree = "<group>"; };
 		F03F6FA91E0D3E4D00E4B7FA /* UtilityLightning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityLightning.swift; sourceTree = "<group>"; };
 		F04378BA1E0F04C000C0A252 /* ViewControllerCARADAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCARADAR.swift; sourceTree = "<group>"; };
@@ -923,7 +923,7 @@
 				03F3EB99229948BA0056A56D /* UtilityModelSpcSrefInterface.swift */,
 				03F3EB8F229945DA0056A56D /* UtilityModelWpcGefsInputOutput.swift */,
 				03F3EB89229945D90056A56D /* UtilityModelWpcGefsInterface.swift */,
-				F03D8A581E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift */,
+				0340421023F16D23003AB242 /* vcModels.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1166,8 +1166,9 @@
 				03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */,
 				0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */,
 				F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */,
-				0382E03D22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift */,
-				F011E6161DB03E25006531FD /* ViewControllerNWSMOSAIC.swift */,
+				0340420C23F16C5B003AB242 /* vcNexradRadar.swift */,
+				0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */,
+				0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */,
 				F0B3352B1DA3FD3B0035BD36 /* WXGLDownload.swift */,
 				F0B3352C1DA3FD3B0035BD36 /* WXGLNexrad.swift */,
 				035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */,
@@ -1176,7 +1177,6 @@
 				F0B335311DA3FD3B0035BD36 /* WXGLNexradLevel3TVS.swift */,
 				F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */,
 				F0B335321DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift */,
-				037FF27A21A9933B0002E6E6 /* WXMetalMultiPane.swift */,
 				03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */,
 				03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */,
 				03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */,
@@ -1698,6 +1698,7 @@
 				030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */,
 				039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */,
 				034041EC23F167F9003AB242 /* vcSpcWatch.swift in Sources */,
+				0340420E23F16C5B003AB242 /* vcRadarMosaic.swift in Sources */,
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,
 				F08643EA1DA3CAB600A8558E /* ViewControllerTABMISC.swift in Sources */,
@@ -1718,6 +1719,7 @@
 				03F3EB96229945DA0056A56D /* UtilityModelSpcHrefInputOutput.swift in Sources */,
 				031546321FC632FD0020EF7B /* ObjectTextViewLarge.swift in Sources */,
 				F096C09B1DADB18700E63046 /* ViewControllerSOUNDING.swift in Sources */,
+				0340420D23F16C5B003AB242 /* vcRadarMosaicAwc.swift in Sources */,
 				034041EB23F167F9003AB242 /* vcSpcFireSummary.swift in Sources */,
 				0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */,
 				F078FE2D1DA330B7002CCD13 /* AppDelegate.swift in Sources */,
@@ -1740,6 +1742,7 @@
 				F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */,
 				03F3EB6A22993B870056A56D /* UtilitySpcMeso.swift in Sources */,
 				03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */,
+				0340420F23F16C5B003AB242 /* vcNexradRadar.swift in Sources */,
 				F059990F1EB422D200EECC32 /* ObjectAlertSummary.swift in Sources */,
 				F07482D41E793E2F0072F96D /* ObjectStackViewHS.swift in Sources */,
 				F0B334F91DA3FBCE0035BD36 /* Bitmap.swift in Sources */,
@@ -1782,7 +1785,6 @@
 				F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */,
 				F011E6191DB03E25006531FD /* ViewControllerNHC.swift in Sources */,
 				F08E48351EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift in Sources */,
-				037FF27B21A9933B0002E6E6 /* WXMetalMultiPane.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
@@ -1831,6 +1833,7 @@
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
 				0340420423F16A4D003AB242 /* vcSettingsColorListing.swift in Sources */,
 				034041D923F162A4003AB242 /* vcWpcImg.swift in Sources */,
+				0340421123F16D23003AB242 /* vcModels.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
 				0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */,
@@ -1884,7 +1887,6 @@
 				0340420223F16A4D003AB242 /* vcSettingsHomescreen.swift in Sources */,
 				03F3EB83229945D10056A56D /* UtilityModelGlcfsInterface.swift in Sources */,
 				03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */,
-				F011E61A1DB03E25006531FD /* ViewControllerNWSMOSAIC.swift in Sources */,
 				037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */,
 				03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */,
 				F0B335561DA3FD510035BD36 /* ExternalGeodeticCalculator.swift in Sources */,
@@ -1896,9 +1898,7 @@
 				0340420523F16A4D003AB242 /* vcSettingsLocationCanada.swift in Sources */,
 				03F3EB6922993B870056A56D /* UtilitySpcStormReports.swift in Sources */,
 				F0F942871DBBE0E100D30E36 /* ViewControllerOPC.swift in Sources */,
-				0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */,
 				F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */,
-				F03D8A591E5E5DC10098C655 /* ViewControllerMODELGENERIC.swift in Sources */,
 				F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */,
 				0354D3F623C117710024153D /* Fronts.swift in Sources */,
 				036522B422914AD90056E657 /* UtilityWpcText.swift in Sources */,

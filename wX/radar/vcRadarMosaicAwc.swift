@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerAwcRadarMosaic: UIwXViewController {
+class vcRadarMosaicAwc: UIwXViewController {
 
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()

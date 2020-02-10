@@ -261,10 +261,10 @@
             </objects>
             <point key="canvasLocation" x="7078" y="1540"/>
         </scene>
-        <!--View ControllerNWSMOSAIC-->
+        <!--Vc Radar Mosaic-->
         <scene sceneID="sTW-49-uh4">
             <objects>
-                <viewController storyboardIdentifier="nwsmosaic" id="MLK-uI-4Od" customClass="ViewControllerNWSMOSAIC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nwsmosaic" id="MLK-uI-4Od" customClass="vcRadarMosaic" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SgD-1F-vxi"/>
                         <viewControllerLayoutGuide type="bottom" id="MlR-Yd-QBG"/>
@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="9087" y="1528"/>
         </scene>
-        <!--View Controller Awc Radar Mosaic-->
+        <!--Vc Radar Mosaic Awc-->
         <scene sceneID="YGn-kw-Gm6">
             <objects>
-                <viewController storyboardIdentifier="awcradarmosaic" id="gF3-QK-zoW" customClass="ViewControllerAwcRadarMosaic" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="awcradarmosaic" id="gF3-QK-zoW" customClass="vcRadarMosaicAwc" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d9E-n3-Mzz"/>
                         <viewControllerLayoutGuide type="bottom" id="klm-cx-VPX"/>
@@ -495,10 +495,10 @@
             </objects>
             <point key="canvasLocation" x="14274" y="1346"/>
         </scene>
-        <!--Metal Multipane-->
+        <!--Vc Nexrad Radar-->
         <scene sceneID="eSB-V9-AoO">
             <objects>
-                <viewController storyboardIdentifier="wxmetalradar" id="cNh-fb-QsB" customClass="WXMetalMultipane" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wxmetalradar" id="cNh-fb-QsB" customClass="vcNexradRadar" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KVi-HH-m9e"/>
                         <viewControllerLayoutGuide type="bottom" id="yF8-Sj-yKo"/>
@@ -729,10 +729,10 @@
             </objects>
             <point key="canvasLocation" x="13814" y="2994"/>
         </scene>
-        <!--View ControllerMODELGENERIC-->
+        <!--Vc Models-->
         <scene sceneID="AKL-tu-Ssr">
             <objects>
-                <viewController storyboardIdentifier="modelgeneric" id="HLj-BH-kHd" customClass="ViewControllerMODELGENERIC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="modelgeneric" id="HLj-BH-kHd" customClass="vcModels" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="woR-oX-qxr"/>
                         <viewControllerLayoutGuide type="bottom" id="RPG-9K-b1j"/>
