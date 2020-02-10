@@ -217,114 +217,73 @@ class vcSevereDashboard: UIwXViewController {
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
         var index = 0
-        var watI = 0
-        var mcdI = 0
-        var mpdI = 0
-        snWat.bitmaps.enumerated().forEach {
-            //let objectImage: ObjectImage
+        snWat.bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {
                 let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
                 imageStackViewList.append(objectStackView)
                 stackView = objectStackView.view
                 self.stackView.addArrangedSubview(stackView)
-                /*objectImage = ObjectImage(
-                    stackView.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )*/
             } else {
                 stackView = imageStackViewList.last!.view
-                /*objectImage = ObjectImage(
-                    imageStackViewList.last!.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )*/
             }
-            
             let objectImage = ObjectImage(
                 stackView,
-                $1,
+                image,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                 widthDivider: imagesPerRow
             )
-            
-            self.buttonActions.append("SPCWAT" + snWat.numberList[watI])
-            objectImage.img.accessibilityLabel = "SPCWAT" + snWat.numberList[watI]
+            self.buttonActions.append(snWat.type + snWat.numberList[imageIndex])
+            objectImage.img.accessibilityLabel = snWat.type + snWat.numberList[imageIndex]
             objectImage.img.isAccessibilityElement = true
             views.append(objectImage.img)
             index += 1
-            watI += 1
             imageCount += 1
         }
-        snMcd.bitmaps.enumerated().forEach {
-            /*let objectImage = ObjectImage(
-                imageStackViewList[imageCount / imagesPerRow].view,
-                $1,
+        snMcd.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
+            let objectImage = ObjectImage(
+                stackView,
+                image,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                 widthDivider: imagesPerRow
-            )*/
-            let objectImage: ObjectImage
-            if imageCount % imagesPerRow == 0 {
-                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(stackView)
-                self.stackView.addArrangedSubview(stackView.view)
-                objectImage = ObjectImage(
-                    stackView.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            } else {
-                objectImage = ObjectImage(
-                    imageStackViewList.last!.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            }
-            self.buttonActions.append("SPCMCD" + snMcd.numberList[mcdI])
-            objectImage.img.accessibilityLabel = "SPCMCD" + snMcd.numberList[mcdI]
+            )
+            self.buttonActions.append(snMcd.type + snMcd.numberList[imageIndex])
+            objectImage.img.accessibilityLabel = snMcd.type + snMcd.numberList[imageIndex]
             objectImage.img.isAccessibilityElement = true
             views.append(objectImage.img)
             index += 1
-            mcdI += 1
             imageCount += 1
         }
-        snMpd.bitmaps.enumerated().forEach {
-            /*let objectImage = ObjectImage(
-                imageStackViewList[imageCount / imagesPerRow].view,
-                $1,
+        snMpd.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
+            let objectImage = ObjectImage(
+                stackView,
+                image,
                 UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                 widthDivider: imagesPerRow
-            )*/
-            let objectImage: ObjectImage
-            if imageCount % imagesPerRow == 0 {
-                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(stackView)
-                self.stackView.addArrangedSubview(stackView.view)
-                objectImage = ObjectImage(
-                    stackView.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            } else {
-                objectImage = ObjectImage(
-                    imageStackViewList.last!.view,
-                    $1,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            }
-            self.buttonActions.append("WPCMPD" + snMpd.numberList[mpdI])
-            objectImage.img.accessibilityLabel = "WPCMPD" + snMpd.numberList[mpdI]
+            )
+            self.buttonActions.append(snMpd.type + snMpd.numberList[imageIndex])
+            objectImage.img.accessibilityLabel = snMpd.type + snMpd.numberList[imageIndex]
             objectImage.img.isAccessibilityElement = true
             views.append(objectImage.img)
             index += 1
-            mpdI += 1
             imageCount += 1
         }
         self.showTextWarnings(&views)
