@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerOBSSITES: UIwXViewController {
+class vcObsSites: UIwXViewController {
 
     var capAlerts = [CapAlert]()
     var filter = ""

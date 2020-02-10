@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerUSALERTS: UIwXViewController {
+class vcUSAlerts: UIwXViewController {
 
     var capAlerts = [CapAlert]()
     var filter = ""

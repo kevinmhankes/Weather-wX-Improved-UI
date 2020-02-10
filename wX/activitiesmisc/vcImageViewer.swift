@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerIMAGEVIEWER: UIwXViewController {
+class vcImageViewer: UIwXViewController {
 
     var image = ObjectTouchImageView()
 

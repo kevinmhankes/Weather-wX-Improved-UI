@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerHOURLY: UIwXViewController {
+class vcHourly: UIwXViewController {
 
     var html = ""
     var playButton = ObjectToolbarIcon()

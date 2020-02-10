@@ -7,7 +7,7 @@
 import UIKit
 import MapKit
 
-class ViewControllerMAPKITVIEW: UIwXViewController, MKMapViewDelegate {
+class vcMapKitView: UIwXViewController, MKMapViewDelegate {
 
     var latLonButton = ObjectToolbarIcon()
     let mapView = MKMapView()

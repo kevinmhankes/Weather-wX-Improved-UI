@@ -7,7 +7,7 @@
 import UIKit
 import MapKit
 
-class ViewControllerSOUNDING: UIwXViewController, MKMapViewDelegate {
+class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     var image = ObjectTouchImageView()
     var wfo = ""

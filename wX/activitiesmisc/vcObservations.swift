@@ -6,12 +6,12 @@
 
 import UIKit
 
-class ViewControllerOPC: UIwXViewController {
+class vcObservations: UIwXViewController {
 
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
-    let prefToken = "OPC_IMG_FAV_URL"
+    let prefTokenIndex = "SFC_OBS_IMG_IDX"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,31 +23,40 @@ class ViewControllerOPC: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                productButton,
+                shareButton
+            ]
+        ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
-        index = Utility.readPref(prefToken, index)
+        image.setMaxScaleFromMinScale(10.0)
+        image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
+        self.index = Utility.readPref(prefTokenIndex, 0)
         self.getContent(index)
     }
 
     @objc func willEnterForeground() {
-           self.getContent(index)
+        self.getContent(index)
     }
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityOpcImages.labels[self.index]
+        self.productButton.title = UtilityObservations.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
+            let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                Utility.writePref(self.prefToken, self.index)
+                Utility.writePref(self.prefTokenIndex, self.index)
             }
         }
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOpcImages.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -55,6 +64,6 @@ class ViewControllerOPC: UIwXViewController {
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        getContent(UtilityUI.sideSwipe(sender, index, UtilityOpcImages.urls))
+        getContent(UtilityUI.sideSwipe(sender, index, UtilityObservations.urls))
     }
 }

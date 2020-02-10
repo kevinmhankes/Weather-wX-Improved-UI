@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerLIGHTNING: UIwXViewController {
+class vcLightning: UIwXViewController {
 
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
@@ -28,7 +28,8 @@ class ViewControllerLIGHTNING: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(ViewControllerLIGHTNING.shareClicked))
+        // TODO FIXME
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(vcLightning.shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)

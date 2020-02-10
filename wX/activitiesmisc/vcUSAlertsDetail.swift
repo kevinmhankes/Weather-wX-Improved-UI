@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerUSALERTSDETAIL: UIwXViewController {
+class vcUSAlertsDetail: UIwXViewController {
 
     var playButton = ObjectToolbarIcon()
     var cap = CapAlert()

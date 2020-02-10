@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerTEXTVIEWER: UIwXViewController {
+class vcTextViewer: UIwXViewController {
 
     var textView = ObjectTextView()
     var playButton = ObjectToolbarIcon()

@@ -7,7 +7,7 @@
 import UIKit
 import WebKit
 
-class ViewControllerWEBVIEW: UIwXViewController {
+class vcWebView: UIwXViewController {
 
     var productButton = ObjectToolbarIcon()
     var webView = WKWebView()

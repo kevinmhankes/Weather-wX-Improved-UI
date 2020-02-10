@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="1302" y="1997"/>
         </scene>
-        <!--View ControllerUSALERTSDETAIL-->
+        <!--VcUS Alerts Detail-->
         <scene sceneID="ulh-h8-4aS">
             <objects>
-                <viewController storyboardIdentifier="usalertsdetail" id="oNd-K6-5I0" customClass="ViewControllerUSALERTSDETAIL" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="usalertsdetail" id="oNd-K6-5I0" customClass="vcUSAlertsDetail" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H5g-za-lM0"/>
                         <viewControllerLayoutGuide type="bottom" id="t4o-cA-8er"/>
@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="2006" y="2005"/>
         </scene>
-        <!--View ControllerSOUNDING-->
+        <!--Vc Soundings-->
         <scene sceneID="QSR-JI-AHJ">
             <objects>
-                <viewController storyboardIdentifier="sounding" id="dU8-8b-5HM" customClass="ViewControllerSOUNDING" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sounding" id="dU8-8b-5HM" customClass="vcSoundings" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PJL-IF-lu8"/>
                         <viewControllerLayoutGuide type="bottom" id="bVl-Jv-943"/>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="2703" y="2008"/>
         </scene>
-        <!--View ControllerHO URLY-->
+        <!--Vc Hourly-->
         <scene sceneID="dYc-DW-7m3">
             <objects>
-                <viewController storyboardIdentifier="hourly" id="5ef-oP-d4j" customClass="ViewControllerHOURLY" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="hourly" id="5ef-oP-d4j" customClass="vcHourly" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="60k-QB-z1L"/>
                         <viewControllerLayoutGuide type="bottom" id="9DD-pM-ZKi"/>
@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="3465" y="2015"/>
         </scene>
-        <!--View ControllerWFOTEXT-->
+        <!--Vc Wfo Text-->
         <scene sceneID="CxZ-61-Amq">
             <objects>
-                <viewController storyboardIdentifier="wfotext" id="B9q-Sc-cfX" customClass="ViewControllerWFOTEXT" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wfotext" id="B9q-Sc-cfX" customClass="vcWfoText" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XyN-Gb-kzW"/>
                         <viewControllerLayoutGuide type="bottom" id="geb-GQ-Ft1"/>
@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="6390" y="1663"/>
         </scene>
-        <!--View ControllerOBSERVATIONS-->
+        <!--Vc Observations-->
         <scene sceneID="k4c-7i-ldh">
             <objects>
-                <viewController storyboardIdentifier="observations" id="n6K-3y-W7D" customClass="ViewControllerOBSERVATIONS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="observations" id="n6K-3y-W7D" customClass="vcObservations" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ICy-br-6Vx"/>
                         <viewControllerLayoutGuide type="bottom" id="Dhw-H6-G6s"/>
@@ -297,10 +297,10 @@
             </objects>
             <point key="canvasLocation" x="8409" y="1530"/>
         </scene>
-        <!--View ControllerTEXTVIEWER-->
+        <!--Vc Text Viewer-->
         <scene sceneID="e88-mG-uLt">
             <objects>
-                <viewController storyboardIdentifier="textviewer" id="rwh-6O-cxC" customClass="ViewControllerTEXTVIEWER" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="textviewer" id="rwh-6O-cxC" customClass="vcTextViewer" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ea1-1M-A3X"/>
                         <viewControllerLayoutGuide type="bottom" id="uWk-0E-fW4"/>
@@ -333,10 +333,10 @@
             </objects>
             <point key="canvasLocation" x="8022" y="497"/>
         </scene>
-        <!--View ControllerMAPKITVIEW-->
+        <!--Vc Map Kit View-->
         <scene sceneID="rYi-aJ-AGu">
             <objects>
-                <viewController storyboardIdentifier="mapkitview" id="akH-5d-6bE" customClass="ViewControllerMAPKITVIEW" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapkitview" id="akH-5d-6bE" customClass="vcMapKitView" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tg9-C5-NXK"/>
                         <viewControllerLayoutGuide type="bottom" id="YPu-TH-1w7"/>
@@ -351,10 +351,10 @@
             </objects>
             <point key="canvasLocation" x="9046" y="468"/>
         </scene>
-        <!--View ControllerSPOTTERS-->
+        <!--Vc Spotters-->
         <scene sceneID="55i-ER-R0a">
             <objects>
-                <viewController storyboardIdentifier="spotters" id="cjS-va-JXy" customClass="ViewControllerSPOTTERS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="spotters" id="cjS-va-JXy" customClass="vcSpotters" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f8n-Ov-cuL"/>
                         <viewControllerLayoutGuide type="bottom" id="irn-7G-Cce"/>
@@ -369,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="10620" y="425"/>
         </scene>
-        <!--View ControllerSPOTTERREPORTS-->
+        <!--Vc Spotter Reports-->
         <scene sceneID="phy-HI-OK4">
             <objects>
-                <viewController storyboardIdentifier="spotterreports" id="ebz-oL-8sJ" customClass="ViewControllerSPOTTERREPORTS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="spotterreports" id="ebz-oL-8sJ" customClass="vcSpotterReports" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kUf-5f-qYx"/>
                         <viewControllerLayoutGuide type="bottom" id="dCa-KU-2fJ"/>
@@ -459,10 +459,10 @@
             </objects>
             <point key="canvasLocation" x="13024" y="1350"/>
         </scene>
-        <!--View ControllerSEVEREDASHBOARD-->
+        <!--Vc Severe Dashboard-->
         <scene sceneID="YBd-0P-mD3">
             <objects>
-                <viewController storyboardIdentifier="severedashboard" id="zck-kR-ebL" customClass="ViewControllerSEVEREDASHBOARD" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="severedashboard" id="zck-kR-ebL" customClass="vcSevereDashboard" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="usY-TJ-mPY"/>
                         <viewControllerLayoutGuide type="bottom" id="BZE-u3-dvZ"/>
@@ -549,10 +549,10 @@
             </objects>
             <point key="canvasLocation" x="5833" y="2354"/>
         </scene>
-        <!--View ControllerOBSSITES-->
+        <!--Vc Obs Sites-->
         <scene sceneID="6GN-VF-mzN">
             <objects>
-                <viewController storyboardIdentifier="obssites" id="BWn-I3-UBP" customClass="ViewControllerOBSSITES" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="obssites" id="BWn-I3-UBP" customClass="vcObsSites" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3HC-Kw-a7e"/>
                         <viewControllerLayoutGuide type="bottom" id="BhB-Jh-xuG"/>
@@ -567,10 +567,10 @@
             </objects>
             <point key="canvasLocation" x="4354" y="3289"/>
         </scene>
-        <!--View ControllerIMAGEVIEWER-->
+        <!--Vc Image Viewer-->
         <scene sceneID="kpf-I4-Jep">
             <objects>
-                <viewController storyboardIdentifier="imageviewer" id="LYB-vg-jUq" customClass="ViewControllerIMAGEVIEWER" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imageviewer" id="LYB-vg-jUq" customClass="vcImageViewer" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="49T-4i-Rha"/>
                         <viewControllerLayoutGuide type="bottom" id="OVA-hu-oku"/>
@@ -603,10 +603,10 @@
             </objects>
             <point key="canvasLocation" x="7420" y="3066"/>
         </scene>
-        <!--View ControllerLS RbyWFO-->
+        <!--Vc Lsr By Wfo-->
         <scene sceneID="hYs-B2-wkB">
             <objects>
-                <viewController storyboardIdentifier="lsrbywfo" id="lmB-uK-s79" customClass="ViewControllerLSRbyWFO" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="lsrbywfo" id="lmB-uK-s79" customClass="vcLsrByWfo" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CPB-SA-sJA"/>
                         <viewControllerLayoutGuide type="bottom" id="nj4-Oh-aJN"/>
@@ -621,10 +621,10 @@
             </objects>
             <point key="canvasLocation" x="8143" y="3059"/>
         </scene>
-        <!--View ControllerLIGHTNING-->
+        <!--Vc Lightning-->
         <scene sceneID="b9c-gX-ayH">
             <objects>
-                <viewController storyboardIdentifier="lightning" id="Uih-nm-QMa" customClass="ViewControllerLIGHTNING" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="lightning" id="Uih-nm-QMa" customClass="vcLightning" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0kQ-Zw-nqb"/>
                         <viewControllerLayoutGuide type="bottom" id="Fbs-8u-6Xf"/>
@@ -765,10 +765,10 @@
             </objects>
             <point key="canvasLocation" x="15476" y="3000"/>
         </scene>
-        <!--View ControllerOPC-->
+        <!--Vc Opc-->
         <scene sceneID="uyt-pr-NVf">
             <objects>
-                <viewController storyboardIdentifier="opc" id="9yz-Rx-Pvc" customClass="ViewControllerOPC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="opc" id="9yz-Rx-Pvc" customClass="vcOpc" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NYg-Uz-Mqf"/>
                         <viewControllerLayoutGuide type="bottom" id="kNH-qi-Apj"/>
@@ -819,10 +819,10 @@
             </objects>
             <point key="canvasLocation" x="9410" y="2231"/>
         </scene>
-        <!--View ControllerUSALERTS-->
+        <!--VcUS Alerts-->
         <scene sceneID="65Y-Jy-I0O">
             <objects>
-                <viewController storyboardIdentifier="usalerts" id="Ctt-ZS-EfE" customClass="ViewControllerUSALERTS" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="usalerts" id="Ctt-ZS-EfE" customClass="vcUSAlerts" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gIF-We-2qm"/>
                         <viewControllerLayoutGuide type="bottom" id="QaO-IM-qrN"/>
@@ -909,10 +909,10 @@
             </objects>
             <point key="canvasLocation" x="14255" y="2023"/>
         </scene>
-        <!--View ControllerWEBVIEW-->
+        <!--Vc Web View-->
         <scene sceneID="AwJ-RX-gN0">
             <objects>
-                <viewController storyboardIdentifier="webview" id="fkG-sJ-EZn" customClass="ViewControllerWEBVIEW" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webview" id="fkG-sJ-EZn" customClass="vcWebView" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4eq-4M-WZa"/>
                         <viewControllerLayoutGuide type="bottom" id="92h-RK-DjF"/>
@@ -945,10 +945,10 @@
             </objects>
             <point key="canvasLocation" x="15599" y="2012"/>
         </scene>
-        <!--View ControllerADHOCLOCATION-->
+        <!--Vc Adhoc Location-->
         <scene sceneID="5oJ-CX-5S2">
             <objects>
-                <viewController storyboardIdentifier="adhoclocation" id="Mag-JH-kRf" customClass="ViewControllerADHOCLOCATION" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="adhoclocation" id="Mag-JH-kRf" customClass="vcAdhocLocation" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SQA-O3-OUv"/>
                         <viewControllerLayoutGuide type="bottom" id="Sh8-vD-JQH"/>

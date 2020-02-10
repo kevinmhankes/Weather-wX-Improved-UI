@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class ViewControllerWFOTEXT: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
+class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
 
     var product = "AFD"
     var textView = ObjectTextView()

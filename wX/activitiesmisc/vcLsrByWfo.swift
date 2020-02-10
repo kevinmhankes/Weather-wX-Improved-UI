@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class ViewControllerLSRbyWFO: UIwXViewController, MKMapViewDelegate {
+class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     var capAlerts = [CapAlert]()
     var images = [UIImageView]()

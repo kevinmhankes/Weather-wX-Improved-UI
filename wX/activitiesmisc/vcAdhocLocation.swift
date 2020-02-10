@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerADHOCLOCATION: UIwXViewController {
+class vcAdhocLocation: UIwXViewController {
 
     var location = LatLon()
     var objCurrentConditions = ObjectForecastPackageCurrentConditions()
