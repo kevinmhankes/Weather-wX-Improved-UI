@@ -585,10 +585,10 @@
             </objects>
             <point key="canvasLocation" x="6684" y="3055"/>
         </scene>
-        <!--View ControllerPLAYLIST-->
+        <!--Vc Play List-->
         <scene sceneID="NXD-RA-Wxd">
             <objects>
-                <viewController storyboardIdentifier="playlist" id="2va-dR-LpW" customClass="ViewControllerPLAYLIST" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="playlist" id="2va-dR-LpW" customClass="vcPlayList" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nvg-1F-aeD"/>
                         <viewControllerLayoutGuide type="bottom" id="B17-fz-O53"/>
@@ -657,10 +657,10 @@
             </objects>
             <point key="canvasLocation" x="10927" y="3012"/>
         </scene>
-        <!--View ControllerCARADAR-->
+        <!--Vc Canada Radar-->
         <scene sceneID="YAP-Jc-dc9">
             <objects>
-                <viewController storyboardIdentifier="caradar" id="pZa-eW-4xD" customClass="ViewControllerCARADAR" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="caradar" id="pZa-eW-4xD" customClass="vcCanadaRadar" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hg2-zG-t44"/>
                         <viewControllerLayoutGuide type="bottom" id="Bs0-Wr-LWI"/>
@@ -675,10 +675,10 @@
             </objects>
             <point key="canvasLocation" x="11682" y="3012"/>
         </scene>
-        <!--View ControllerCATEXT-->
+        <!--Vc Canada Text-->
         <scene sceneID="6Ya-kt-ZFB">
             <objects>
-                <viewController storyboardIdentifier="catext" id="UFO-fx-2Pa" customClass="ViewControllerCATEXT" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="catext" id="UFO-fx-2Pa" customClass="vcCanadaText" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Mi-xN-Fgg"/>
                         <viewControllerLayoutGuide type="bottom" id="BXz-f5-yie"/>
@@ -693,10 +693,10 @@
             </objects>
             <point key="canvasLocation" x="12399" y="3009"/>
         </scene>
-        <!--View ControllerCAHO URLY-->
+        <!--Vc Canada Hourly-->
         <scene sceneID="vZ5-8O-27f">
             <objects>
-                <viewController storyboardIdentifier="cahourly" id="He4-kw-BhG" customClass="ViewControllerCAHOURLY" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cahourly" id="He4-kw-BhG" customClass="vcCanadaHourly" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ETg-u8-fXz"/>
                         <viewControllerLayoutGuide type="bottom" id="aZj-Dk-gb5"/>
@@ -711,10 +711,10 @@
             </objects>
             <point key="canvasLocation" x="13122" y="3001"/>
         </scene>
-        <!--View ControllerCAWARN-->
+        <!--Vc Canada Warnings-->
         <scene sceneID="ezR-Ap-M08">
             <objects>
-                <viewController storyboardIdentifier="cawarn" id="3sQ-ut-nOD" customClass="ViewControllerCAWARN" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cawarn" id="3sQ-ut-nOD" customClass="vcCanadaWarnings" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2uM-Dr-GUd"/>
                         <viewControllerLayoutGuide type="bottom" id="6yA-F2-uiq"/>

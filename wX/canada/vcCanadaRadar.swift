@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerCARADAR: UIwXViewController {
+class vcCanadaRadar: UIwXViewController {
 
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()

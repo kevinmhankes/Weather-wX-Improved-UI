@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerCAWARN: UIwXViewController {
+class vcCanadaWarnings: UIwXViewController {
 
     var objCAWARN: ObjectCanadaWarnings!
     var provButton = ObjectToolbarIcon()

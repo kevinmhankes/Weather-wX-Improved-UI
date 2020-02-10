@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerCAHOURLY: UIwXViewController {
+class vcCanadaHourly: UIwXViewController {
 
     var html = ""
 

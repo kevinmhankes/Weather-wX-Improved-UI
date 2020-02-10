@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerPLAYLIST: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var playlistItems = [String]()
     var addButton = ObjectToolbarIcon()
