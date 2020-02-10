@@ -8,6 +8,8 @@ import UIKit
 import AVFoundation
 
 class ViewControllerWPCMPD: UIwXViewController {
+    
+    // TODO FIXME class is deprecated and will be removed
 
     var bitmaps = [Bitmap]()
     var txtArr = [String]()
@@ -26,10 +28,10 @@ class ViewControllerWPCMPD: UIwXViewController {
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        mpdNumber = ActVars.wpcMpdNumber
-        if mpdNumber != "" {
-            ActVars.wpcMpdNumber = ""
-        }
+        //mpdNumber = ActVars.wpcMpdNumber
+        //if mpdNumber != "" {
+        //    ActVars.wpcMpdNumber = ""
+        //}
         self.getContent()
     }
 

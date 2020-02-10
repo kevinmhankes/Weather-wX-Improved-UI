@@ -10,7 +10,7 @@
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
 
-56086 2020_02_09 [FIX] icons per row now changes dynamically after setting in Settings -> UI
+56086 2020_02_10 [FIX] icons per row now changes dynamically after setting in Settings -> UI
 		 [ADD] re-architect Severe Dashboard image handling, if Landscape show 3 images per row
 56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 		 [ADD] CPC 3 month temp/precip outlook in WPC Images

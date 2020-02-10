@@ -103,8 +103,8 @@ public class UtilityRadarUI {
         }
         print(token)
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
-            ActVars.wpcMpdNumber = token.replace("WPCMPD", "")
-            token = "wpcmpd"
+            ActVars.watchMcdMpdNumber = token.replace("WPCMPD", "")
+            token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MPD
         }
         if token.hasPrefix("SPCMCD") && token != "SPCMCD" {

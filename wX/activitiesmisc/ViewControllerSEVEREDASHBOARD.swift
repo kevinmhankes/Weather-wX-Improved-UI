@@ -84,8 +84,10 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         var token = ""
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            ActVars.wpcMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            token = "wpcmpd"
+            //ActVars.wpcMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
+            //token = "wpcmpd"
+            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
+            token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MPD
         }
         if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
@@ -247,14 +249,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 objectImage = ObjectImage(
                     stackView.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             } else {
                 objectImage = ObjectImage(
                     imageStackViewList.last!.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             }
@@ -281,14 +283,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 objectImage = ObjectImage(
                     stackView.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             } else {
                 objectImage = ObjectImage(
                     imageStackViewList.last!.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             }
@@ -315,14 +317,14 @@ class ViewControllerSEVEREDASHBOARD: UIwXViewController {
                 objectImage = ObjectImage(
                     stackView.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             } else {
                 objectImage = ObjectImage(
                     imageStackViewList.last!.view,
                     $1,
-                    UITapGestureRecognizer(target: self, action: #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
             }

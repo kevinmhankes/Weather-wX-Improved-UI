@@ -43,6 +43,7 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
             }
             productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
+                print("NUMBER: " + number)
                 self.objectWatchProduct = ObjectWatchProduct(ActVars.watchMcdMpdType, number)
                 self.objectWatchProduct!.getData()
                 self.listOfText.append(self.objectWatchProduct!.text)
