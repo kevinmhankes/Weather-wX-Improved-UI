@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerWpcRainfallSummary: UIwXViewController {
+class vcWpcRainfallSummary: UIwXViewController {
 
     var bitmaps = [Bitmap]()
 

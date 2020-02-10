@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller Wpc Rainfall Summary-->
+        <!--Vc Wpc Rainfall Summary-->
         <scene sceneID="0XB-UY-iad">
             <objects>
-                <viewController storyboardIdentifier="wpcrainfallsummary" id="g3Q-hM-JAy" customClass="ViewControllerWpcRainfallSummary" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wpcrainfallsummary" id="g3Q-hM-JAy" customClass="vcWpcRainfallSummary" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bGk-ze-I23"/>
                         <viewControllerLayoutGuide type="bottom" id="bvQ-SE-G8c"/>
@@ -28,7 +28,7 @@
         <!--WPC Text-->
         <scene sceneID="Sde-7Y-L6u">
             <objects>
-                <viewController storyboardIdentifier="WPCText" title="WPC Text" id="nRo-QT-lbN" customClass="ViewControllerWPCTEXT" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WPCText" title="WPC Text" id="nRo-QT-lbN" customClass="vcWpcText" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VI8-y3-9kX"/>
                         <viewControllerLayoutGuide type="bottom" id="Ne2-CW-7Yc"/>
@@ -999,10 +999,10 @@
             </objects>
             <point key="canvasLocation" x="3439" y="1190"/>
         </scene>
-        <!--View ControllerWPCIMG-->
+        <!--Vc Wpc Img-->
         <scene sceneID="YMR-hD-RfS">
             <objects>
-                <viewController storyboardIdentifier="wpcimg" id="eDB-xc-oxu" customClass="ViewControllerWPCIMG" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wpcimg" id="eDB-xc-oxu" customClass="vcWpcImg" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wbc-rD-TAD"/>
                         <viewControllerLayoutGuide type="bottom" id="0pP-Hy-q5o"/>
@@ -1061,10 +1061,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--View Controller Wpc Rainfall Discussion-->
+        <!--Vc Wpc Rainfall Discussion-->
         <scene sceneID="y8i-ZK-Iov">
             <objects>
-                <viewController storyboardIdentifier="wpcrainfalldiscussion" id="4bY-b1-bk4" customClass="ViewControllerWpcRainfallDiscussion" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wpcrainfalldiscussion" id="4bY-b1-bk4" customClass="vcWpcRainfallDiscussion" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gfl-Zq-Fks"/>
                         <viewControllerLayoutGuide type="bottom" id="7sB-O0-xKT"/>

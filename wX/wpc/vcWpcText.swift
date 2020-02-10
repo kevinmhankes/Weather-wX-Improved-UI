@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerWPCTEXT: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var productButton = ObjectToolbarIcon()
     var playButton = ObjectToolbarIcon()

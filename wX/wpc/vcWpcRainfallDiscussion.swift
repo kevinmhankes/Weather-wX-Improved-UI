@@ -7,8 +7,8 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
-
+class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
+    
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
     var urls = [String]()
@@ -51,9 +51,12 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesiz
         super.doneClicked()
     }
 
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.textViewText = self.listOfText[sender.data]
-        self.goToVC("textviewer")
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+        //ActVars.textViewText = self.listOfText[sender.data]
+        //self.goToVC("textviewer")
+        let number = Int(ActVars.wpcRainfallDay)! - 1
+        ActVars.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
+        self.goToVC("imageviewer")
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -75,32 +78,45 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesiz
     }
 
     private func displayContent() {
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
+        #if targetEnvironment(macCatalyst)
+        tabletInLandscape = self.bitmaps.count == 1
+        #endif
+        if tabletInLandscape {
+            stackView.axis = .horizontal
+            stackView.alignment = .firstBaseline
+        }
         var views = [UIView]()
         text = ""
-        if self.bitmaps.count > 0 {
-            self.bitmaps.enumerated().forEach {
-                let objectImage = ObjectImage(
+        self.bitmaps.enumerated().forEach {
+            let objectImage: ObjectImage
+            if tabletInLandscape {
+                objectImage = ObjectImage(
                     self.stackView,
                     $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:)))
+                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
+                    widthDivider: 2
                 )
-                objectImage.img.accessibilityLabel = listOfText[$0]
-                objectImage.img.isAccessibilityElement = true
-                views.append(objectImage.img)
-                text += listOfText[$0]
+            } else {
+                objectImage = ObjectImage(
+                    self.stackView,
+                    $1,
+                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
+                )
             }
-            if self.bitmaps.count == 1 {
-                let objectTextView = ObjectTextView(self.stackView, self.text)
-                objectTextView.tv.isAccessibilityElement = true
-                views.append(objectTextView.tv)
-            }
-        } else {
-            let message = "No active SPC MCDs"
-            let objectTextView = ObjectTextView(self.stackView, message)
-            objectTextView.tv.isAccessibilityElement = true
-            views += [objectTextView.tv]
-            objectTextView.tv.accessibilityLabel = message
+            objectImage.img.accessibilityLabel = listOfText[$0]
+            objectImage.img.isAccessibilityElement = true
+            views.append(objectImage.img)
+            text += listOfText[$0]
         }
+        let objectTextView: ObjectTextView
+        if tabletInLandscape {
+            objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+        } else {
+            objectTextView = ObjectTextView(self.stackView, self.text)
+        }
+        objectTextView.tv.isAccessibilityElement = true
+        views.append(objectTextView.tv)
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
     }
@@ -112,7 +128,7 @@ class ViewControllerWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesiz
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
