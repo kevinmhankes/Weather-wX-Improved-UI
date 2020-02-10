@@ -170,15 +170,6 @@ class vcSevereDashboard: UIwXViewController {
         if UtilityUI.isTablet() {
             imagesPerRow = 3
         }
-        /*(0..<(2 + self.snMcd.bitmaps.count + self.snMpd.bitmaps.count + self.snWat.bitmaps.count)).forEach {
-            imageStackViewList.append(
-                ObjectStackView(
-                    UIStackView.Distribution.fillEqually,
-                    NSLayoutConstraint.Axis.horizontal
-                )
-            )
-            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
-        }*/
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -202,12 +193,6 @@ class vcSevereDashboard: UIwXViewController {
         objectImage.img.accessibilityLabel = "US Alerts"
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
-        /*let objectImage2 = ObjectImage(
-            imageStackViewList[0].view,
-            bitmap,
-            UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
-            widthDivider: imagesPerRow
-        )*/
         let objectImage2: ObjectImage
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -236,31 +221,36 @@ class vcSevereDashboard: UIwXViewController {
         var mcdI = 0
         var mpdI = 0
         snWat.bitmaps.enumerated().forEach {
-            /*let objectImage  = ObjectImage(
-                imageStackViewList[imageCount / imagesPerRow].view,
-                $1,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                widthDivider: imagesPerRow
-            )*/
-            let objectImage: ObjectImage
+            //let objectImage: ObjectImage
+            let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {
-                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(stackView)
-                self.stackView.addArrangedSubview(stackView.view)
-                objectImage = ObjectImage(
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+                /*objectImage = ObjectImage(
                     stackView.view,
                     $1,
                     UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
-                )
+                )*/
             } else {
-                objectImage = ObjectImage(
+                stackView = imageStackViewList.last!.view
+                /*objectImage = ObjectImage(
                     imageStackViewList.last!.view,
                     $1,
                     UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
                     widthDivider: imagesPerRow
-                )
+                )*/
             }
+            
+            let objectImage = ObjectImage(
+                stackView,
+                $1,
+                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                widthDivider: imagesPerRow
+            )
+            
             self.buttonActions.append("SPCWAT" + snWat.numberList[watI])
             objectImage.img.accessibilityLabel = "SPCWAT" + snWat.numberList[watI]
             objectImage.img.isAccessibilityElement = true
