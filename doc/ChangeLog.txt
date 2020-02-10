@@ -11,6 +11,7 @@
 // [FIX] dual pane does not show radar time for both panes
 
 56086 2020_02_09 [FIX] icons per row now changes dynamically after setting in Settings -> UI
+		 [ADD] re-architect Severe Dashboard image handling, if Landscape show 3 images per row
 56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 		 [ADD] CPC 3 month temp/precip outlook in WPC Images
 		 [ADD] add aditional products in WFO Text viewer

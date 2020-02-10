@@ -116,7 +116,7 @@ class ViewControllerSpcWatchMcdMpd: UIwXViewController {
                 views.append(objectTextView.tv)
             }
         } else {
-            let message = objectWatchProduct?.getTextForNoProducts() ?? ""
+            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + ActVars.watchMcdMpdType.string + "s"
             let objectTextView = ObjectTextView(self.stackView, message)
             objectTextView.tv.isAccessibilityElement = true
             views += [objectTextView.tv]
