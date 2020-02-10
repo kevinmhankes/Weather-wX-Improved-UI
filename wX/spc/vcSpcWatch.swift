@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerSPCWATCH: UIwXViewController {
+class vcSpcWatch: UIwXViewController {
 
     var bitmaps = [Bitmap]()
     var listOfText = [String]()

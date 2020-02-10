@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSPCSWOSUMMARY: UIwXViewController {
+class vcSpcSwoSummary: UIwXViewController {
 
     var bitmaps = [Bitmap]()
 

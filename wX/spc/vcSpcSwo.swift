@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerSPCSWOV2: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     var bitmaps = [Bitmap]()
     var html = ""

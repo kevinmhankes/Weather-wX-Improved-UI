@@ -46,14 +46,11 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc override func doneClicked() {
-        //UIApplication.shared.isIdleTimerDisabled = false
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        //ActVars.textViewText = self.listOfText[sender.data]
-        //self.goToVC("textviewer")
         let number = Int(ActVars.wpcRainfallDay)! - 1
         ActVars.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
         self.goToVC("imageviewer")

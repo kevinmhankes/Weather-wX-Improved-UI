@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSPCSWOSTATE: UIwXViewController {
+class vcSpcSwoState: UIwXViewController {
 
     var day = ""
     var state = ""

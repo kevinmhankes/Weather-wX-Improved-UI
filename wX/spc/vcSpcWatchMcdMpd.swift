@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class ViewControllerSpcWatchMcdMpd: UIwXViewController {
+class vcSpcWatchMcdMpd: UIwXViewController {
 
     var bitmaps = [Bitmap]()
     var numbers = [String]()

@@ -6,9 +6,8 @@
 
 import UIKit
 
-class ViewControllerSPCTSTSUMMARY: UIwXViewController {
+class vcSpcFireSummary: UIwXViewController {
 
-    var urls = [String]()
     var bitmaps = [Bitmap]()
 
     override func viewDidLoad() {
@@ -30,9 +29,9 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
     }
 
     func getContent() {
+        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.urls = UtilitySpc.getTstormOutlookUrls()
-            self.bitmaps = self.urls.map {Bitmap($0)}
+            self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -40,8 +39,8 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.imageViewerUrl = urls[sender.data]
-        self.goToVC("imageviewer")
+        ActVars.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
+        self.goToVC("WPCText")
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -49,13 +48,20 @@ class ViewControllerSPCTSTSUMMARY: UIwXViewController {
     }
 
     private func displayContent() {
+        var views = [UIView]()
+        var dayNumber = 0
         self.bitmaps.enumerated().forEach {
-            _ = ObjectImage(
+            let objectImage = ObjectImage(
                 self.stackView,
                 $1,
-                UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
             )
+            objectImage.img.isAccessibilityElement = true
+            views += [objectImage.img]
+            dayNumber += 1
+            objectImage.img.accessibilityLabel = "day " + String(dayNumber)
         }
+        self.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

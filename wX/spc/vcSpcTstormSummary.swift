@@ -6,8 +6,9 @@
 
 import UIKit
 
-class ViewControllerSPCFIRESUMMARY: UIwXViewController {
+class vcSpcTstormSummary: UIwXViewController {
 
+    var urls = [String]()
     var bitmaps = [Bitmap]()
 
     override func viewDidLoad() {
@@ -29,9 +30,9 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
+            self.urls = UtilitySpc.getTstormOutlookUrls()
+            self.bitmaps = self.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -39,8 +40,8 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
-        self.goToVC("WPCText")
+        ActVars.imageViewerUrl = urls[sender.data]
+        self.goToVC("imageviewer")
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -48,20 +49,13 @@ class ViewControllerSPCFIRESUMMARY: UIwXViewController {
     }
 
     private func displayContent() {
-        var views = [UIView]()
-        var dayNumber = 0
         self.bitmaps.enumerated().forEach {
-            let objectImage = ObjectImage(
+            _ = ObjectImage(
                 self.stackView,
                 $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
             )
-            objectImage.img.isAccessibilityElement = true
-            views += [objectImage.img]
-            dayNumber += 1
-            objectImage.img.accessibilityLabel = "day " + String(dayNumber)
         }
-        self.accessibilityElements = views
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
