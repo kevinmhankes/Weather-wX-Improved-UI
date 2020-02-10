@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
-    
+
     var bitmaps = [Bitmap]()
     var listOfText = [String]()
     var urls = [String]()

@@ -10,9 +10,9 @@ import AVFoundation
 class vcSevereDashboard: UIwXViewController {
 
     var buttonActions = [String]()
-    var snWat = SevereNotice("wat")
-    var snMcd = SevereNotice("mcd")
-    var snMpd = SevereNotice("mpd")
+    var snWat = SevereNotice("SPCWAT")
+    var snMcd = SevereNotice("SPCMCD")
+    var snMpd = SevereNotice("WPCMPD")
     var bitmap = Bitmap()
     var usAlertsBitmap = Bitmap()
     var statusButton = ObjectToolbarIcon()
@@ -39,14 +39,14 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     func getContent() {
-        snWat = SevereNotice("wat")
-        snMcd = SevereNotice("mcd")
-        snMpd = SevereNotice("mpd")
-        refreshViews()
+        //snWat = SevereNotice("wat")
+        //snMcd = SevereNotice("mcd")
+        //snMpd = SevereNotice("mpd")
+        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
-            self.usAlertsBitmap = Bitmap("https://forecast.weather.gov/wwamap/png/US.png")
+            self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
             self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
             self.snWat.getBitmaps(MyApplication.watNoList.value)
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
@@ -54,7 +54,8 @@ class vcSevereDashboard: UIwXViewController {
                 if UIAccessibility.isVoiceOverRunning {
                     UtilityActions.speakText(self.getStatusText(), self.synth)
                 }
-               self.displayContent()
+                self.refreshViews()
+                self.displayContent()
             }
         }
     }
@@ -84,23 +85,23 @@ class vcSevereDashboard: UIwXViewController {
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         var token = ""
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            //ActVars.wpcMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            //token = "wpcmpd"
             ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MPD
+            let vc = vcSpcWatchMcdMpd()
+            self.goToVC(vc)
         }
         if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
             ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
-            token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MCD
+            let vc = vcSpcWatchMcdMpd()
+            self.goToVC(vc)
         }
         if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
             ActVars.spcWatchNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
             token = "spcwat"
             ActVars.watchMcdMpdType = .WATCH
+            self.goToVC(token)
         }
-        self.goToVC(token)
     }
 
     func showTextWarnings(_ views: inout [UIView]) {

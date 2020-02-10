@@ -11,7 +11,7 @@ final class ObjectAlertSummary: NSObject {
     private var urls = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0
-    private let imageUrls = [
+    static let imageUrls = [
         "https://forecast.weather.gov/wwamap/png/US.png",
         "https://forecast.weather.gov/wwamap/png/ak.png",
         "https://forecast.weather.gov/wwamap/png/hi.png"
@@ -92,8 +92,8 @@ final class ObjectAlertSummary: NSObject {
 
     func changeImage() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(self.imageUrls[self.imageIndex])
-            self.imageIndex = (self.imageIndex + 1) % self.imageUrls.count
+            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
+            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
             DispatchQueue.main.async {
                 self.objImage.setBitmap(bitmap)
             }

@@ -20,19 +20,14 @@ final class SevereNotice {
         var comp = ""
         var url = ""
         var text = ""
+        bitmaps = [Bitmap]()
         switch type {
-        case "mcd": comp = "<center>No Mesoscale Discussions are currently in effect."
-        case "wat": comp = "<center><strong>No watches are currently valid"
-        case "mpd": comp = "No MPDs are currently in effect."
+        case "SPCMCD": comp = "<center>No Mesoscale Discussions are currently in effect."
+        case "SPCWAT": comp = "<center><strong>No watches are currently valid"
+        case "WPCMPD": comp = "No MPDs are currently in effect."
         default: break
         }
         if !html.contains(comp) {
-            /*switch type {
-            case "mcd": break
-            case "wat": break
-            case "mpd": break
-            default:    break
-            }*/
             text = html
         } else {
             text = ""
@@ -41,10 +36,10 @@ final class SevereNotice {
         if text != "" {
             (0..<(numberList.count - 1)).forEach {
                 switch type {
-                case "mcd": url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[$0] + ".gif"
-                case "wat": url = MyApplication.nwsSPCwebsitePrefix
+                case "SPCMCD": url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[$0] + ".gif"
+                case "SPCWAT": url = MyApplication.nwsSPCwebsitePrefix
                     + "/products/watch/ww" + numberList[$0] + "_radar.gif"
-                case "mpd": url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[$0] + ".gif"
+                case "WPCMPD": url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[$0] + ".gif"
                 default: break
                 }
                 bitmaps.append(Bitmap(url))

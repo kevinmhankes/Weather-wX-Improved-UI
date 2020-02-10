@@ -152,6 +152,13 @@ final class UtilityActions {
         uiv.present(nextViewController, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
+    static func goToVCS(_ uiv: UIViewController, _ target: UIViewController) {
+        //let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        //let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
+        target.modalPresentationStyle = .fullScreen
+        uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
+    }
+
     static func goToVCDynamic(_ uiv: UIViewController, _ target: String, _ className: String) {
         let storyboard = UIStoryboard(name: target, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: className)
