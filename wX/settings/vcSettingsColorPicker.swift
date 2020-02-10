@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSCOLORPICKER: UIwXViewController, HSBColorPickerDelegate {
+class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
 
     var colorBarSize: CGFloat = 100.0
     var colorBar = UIView()

@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="4415" y="1995"/>
         </scene>
-        <!--View ControllerSETTINGSMAIN-->
+        <!--Vc Settings Main-->
         <scene sceneID="r8o-Aw-IzE">
             <objects>
-                <viewController storyboardIdentifier="settingsmain" id="I07-Fx-Uo6" customClass="ViewControllerSETTINGSMAIN" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsmain" id="I07-Fx-Uo6" customClass="vcSettingsMain" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="15T-mR-TOW"/>
                         <viewControllerLayoutGuide type="bottom" id="QkS-Oy-CVF"/>
@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="5097" y="1666"/>
         </scene>
-        <!--View ControllerSETTINGSLOCATION-->
+        <!--Vc Settings Location-->
         <scene sceneID="mrr-38-ohi">
             <objects>
-                <viewController storyboardIdentifier="settingslocation" id="dbi-H3-1wv" customClass="ViewControllerSETTINGSLOCATION" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingslocation" id="dbi-H3-1wv" customClass="vcSettingsLocation" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uFp-Qp-y6Z"/>
                         <viewControllerLayoutGuide type="bottom" id="wGr-47-Gdw"/>
@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="5740" y="1666"/>
         </scene>
-        <!--View ControllerSETTINGSLOCATIONEDIT-->
+        <!--Vc Settings Location Edit-->
         <scene sceneID="mjv-UX-vgM">
             <objects>
-                <viewController storyboardIdentifier="settingslocationedit" id="v5H-8l-iQj" customClass="ViewControllerSETTINGSLOCATIONEDIT" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingslocationedit" id="v5H-8l-iQj" customClass="vcSettingsLocationEdit" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q0j-4t-ESe"/>
                         <viewControllerLayoutGuide type="bottom" id="aYq-ja-7LH"/>
@@ -387,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="11490" y="425"/>
         </scene>
-        <!--View ControllerSETTINGSRADAR-->
+        <!--Vc Settings Radar-->
         <scene sceneID="Q37-dl-4yn">
             <objects>
-                <viewController storyboardIdentifier="settingsradar" id="w5G-ZW-1cD" customClass="ViewControllerSETTINGSRADAR" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsradar" id="w5G-ZW-1cD" customClass="vcSettingsRadar" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gX4-sI-R4t"/>
                         <viewControllerLayoutGuide type="bottom" id="Lbm-RL-nMt"/>
@@ -513,10 +513,10 @@
             </objects>
             <point key="canvasLocation" x="14959" y="1321"/>
         </scene>
-        <!--View ControllerSETTINGSCOLORLISTING-->
+        <!--Vc Settings Color Listing-->
         <scene sceneID="40W-Cx-gs8">
             <objects>
-                <viewController storyboardIdentifier="settingscolorlisting" id="tRf-zv-R9X" customClass="ViewControllerSETTINGSCOLORLISTING" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingscolorlisting" id="tRf-zv-R9X" customClass="vcSettingsColorListing" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fOj-uq-J7m"/>
                         <viewControllerLayoutGuide type="bottom" id="JZI-4H-2tz"/>
@@ -639,10 +639,10 @@
             </objects>
             <point key="canvasLocation" x="9570" y="3045"/>
         </scene>
-        <!--View ControllerSETTINGSLOCATIONCANADA-->
+        <!--Vc Settings Location Canada-->
         <scene sceneID="eB1-zt-Ogp">
             <objects>
-                <viewController storyboardIdentifier="settingslocationcanada" id="pAu-bV-BQJ" customClass="ViewControllerSETTINGSLOCATIONCANADA" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingslocationcanada" id="pAu-bV-BQJ" customClass="vcSettingsLocationCanada" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JRc-af-VaA"/>
                         <viewControllerLayoutGuide type="bottom" id="tMx-GE-QBs"/>
@@ -855,10 +855,10 @@
             </objects>
             <point key="canvasLocation" x="12207" y="2037"/>
         </scene>
-        <!--View ControllerSETTINGSHOMESCREEN-->
+        <!--Vc Settings Homescreen-->
         <scene sceneID="AWK-BW-VPF">
             <objects>
-                <viewController storyboardIdentifier="settingshomescreen" id="A6a-eI-6y2" customClass="ViewControllerSETTINGSHOMESCREEN" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingshomescreen" id="A6a-eI-6y2" customClass="vcSettingsHomescreen" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uXo-vt-SIZ"/>
                         <viewControllerLayoutGuide type="bottom" id="g6Z-b8-1Ux"/>
@@ -891,10 +891,10 @@
             </objects>
             <point key="canvasLocation" x="13558" y="2030"/>
         </scene>
-        <!--View ControllerSETTINGSCOLORPICKER-->
+        <!--Vc Settings Color Picker-->
         <scene sceneID="nVU-Bw-tyA">
             <objects>
-                <viewController storyboardIdentifier="settingscolorpicker" id="KgN-bd-wcO" customClass="ViewControllerSETTINGSCOLORPICKER" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingscolorpicker" id="KgN-bd-wcO" customClass="vcSettingsColorPicker" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="85A-Wb-Zdn"/>
                         <viewControllerLayoutGuide type="bottom" id="8ol-PR-PhR"/>
@@ -927,10 +927,10 @@
             </objects>
             <point key="canvasLocation" x="14921" y="2008"/>
         </scene>
-        <!--View ControllerSETTINGSUI-->
+        <!--Vc SettingsUI-->
         <scene sceneID="gqq-nT-y5d">
             <objects>
-                <viewController storyboardIdentifier="settingsui" id="1vX-uZ-fOX" customClass="ViewControllerSETTINGSUI" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsui" id="1vX-uZ-fOX" customClass="vcSettingsUI" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zkb-q9-acN"/>
                         <viewControllerLayoutGuide type="bottom" id="eBH-bP-YPe"/>
@@ -1079,10 +1079,10 @@
             </objects>
             <point key="canvasLocation" x="1784.8" y="-272.11394302848578"/>
         </scene>
-        <!--View Controller Settings About-->
+        <!--Vc Settings About-->
         <scene sceneID="tNf-XW-itn">
             <objects>
-                <viewController storyboardIdentifier="settingsabout" id="KDC-Ue-5x0" customClass="ViewControllerSettingsAbout" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsabout" id="KDC-Ue-5x0" customClass="vcSettingsAbout" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fxg-4a-k2M"/>
                         <viewControllerLayoutGuide type="bottom" id="LpD-SF-8ID"/>

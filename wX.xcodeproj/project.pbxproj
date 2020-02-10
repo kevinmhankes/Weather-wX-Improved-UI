@@ -47,6 +47,16 @@
 		034041F123F167F9003AB242 /* vcSpcTstormSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E723F167F9003AB242 /* vcSpcTstormSummary.swift */; };
 		034041F223F167F9003AB242 /* vcSpcStormReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E823F167F9003AB242 /* vcSpcStormReports.swift */; };
 		034041F323F167F9003AB242 /* vcSpcWatchMcdMpd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E923F167F9003AB242 /* vcSpcWatchMcdMpd.swift */; };
+		034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041F523F16A4C003AB242 /* vcSettingsLocation.swift */; };
+		0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041F623F16A4D003AB242 /* vcSettingsColorPicker.swift */; };
+		0340420123F16A4D003AB242 /* vcSettingsLocationEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041F723F16A4D003AB242 /* vcSettingsLocationEdit.swift */; };
+		0340420223F16A4D003AB242 /* vcSettingsHomescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041F823F16A4D003AB242 /* vcSettingsHomescreen.swift */; };
+		0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041F923F16A4D003AB242 /* vcSettingsAbout.swift */; };
+		0340420423F16A4D003AB242 /* vcSettingsColorListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FA23F16A4D003AB242 /* vcSettingsColorListing.swift */; };
+		0340420523F16A4D003AB242 /* vcSettingsLocationCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FB23F16A4D003AB242 /* vcSettingsLocationCanada.swift */; };
+		0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FC23F16A4D003AB242 /* vcSettingsRadar.swift */; };
+		0340420723F16A4D003AB242 /* vcSettingsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FD23F16A4D003AB242 /* vcSettingsMain.swift */; };
+		0340420923F16ACA003AB242 /* vcSettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420823F16ACA003AB242 /* vcSettingsUI.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
 		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
@@ -113,7 +123,6 @@
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
 		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
-		03C905ED23DD17950077A2A5 /* ViewControllerSettingsAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
@@ -205,9 +214,6 @@
 		F06033D81EB2CCBD0083BA91 /* ObjectTileMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */; };
 		F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */; };
 		F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0605A531E59F71F00229812 /* ObjectMenuData.swift */; };
-		F06209881E87CB9400330FE0 /* ViewControllerSETTINGSLOCATION.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06209871E87CB9400330FE0 /* ViewControllerSETTINGSLOCATION.swift */; };
-		F062098A1E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06209891E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift */; };
-		F062098C1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F062098B1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift */; };
 		F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */; };
 		F064D1421DB6EBAB003C04FB /* ExternalPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */; };
 		F064D1441DB6EBB7003C04FB /* ExternalPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */; };
@@ -266,7 +272,6 @@
 		F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830E991E593467003149E5 /* ObjectDatePicker.swift */; };
 		F0838FCE1DCA674700517EBF /* UtilityHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0838FCD1DCA674700517EBF /* UtilityHelp.swift */; };
 		F085F4091DC5615600477188 /* ViewControllerOBSSITES.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085F4081DC5615600477188 /* ViewControllerOBSSITES.swift */; };
-		F08623391DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08623381DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift */; };
 		F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */; };
 		F08643EA1DA3CAB600A8558E /* ViewControllerTABMISC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08643E91DA3CAB600A8558E /* ViewControllerTABMISC.swift */; };
 		F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08748171E5513350081E1FD /* ObjectTouchImageView.swift */; };
@@ -356,7 +361,6 @@
 		F0CB3D781E566562002F8BB4 /* ObjectNumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */; };
 		F0D070181DAE7A8D00650C1E /* ViewControllerWFOTEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D070171DAE7A8D00650C1E /* ViewControllerWFOTEXT.swift */; };
 		F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */; };
-		F0D32C4C1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D32C4B1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift */; };
 		F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */; };
 		F0D7B8491E774C730032D1C9 /* UtilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */; };
 		F0DAD9331DA7018D00C2BD4B /* randtable.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD92A1DA7018C00C2BD4B /* randtable.c */; };
@@ -366,11 +370,9 @@
 		F0DAD9371DA7018D00C2BD4B /* decompress.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD92F1DA7018C00C2BD4B /* decompress.c */; };
 		F0DAD9381DA7018D00C2BD4B /* blocksort.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD9301DA7018C00C2BD4B /* blocksort.c */; };
 		F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD9311DA7018D00C2BD4B /* bzlib.c */; };
-		F0DF4C751DBEB8D200D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF4C731DBEB8D100D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift */; };
 		F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF4C741DBEB8D200D69B1E /* wXColor.swift */; };
 		F0E0CC031EBEAAA900D5E9D4 /* UtilityColorPalette165.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */; };
 		F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */; };
-		F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC66361DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift */; };
 		F0F28D7C1DB985D90020AD08 /* ViewControllerUSALERTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F28D7A1DB985D90020AD08 /* ViewControllerUSALERTS.swift */; };
 		F0F28D851DB987400020AD08 /* StormReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F28D831DB987400020AD08 /* StormReport.swift */; };
 		F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */; };
@@ -378,9 +380,7 @@
 		F0F7760C1E00092A0022484C /* LatLon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7760B1E00092A0022484C /* LatLon.swift */; };
 		F0F7760E1E0014610022484C /* ViewControllerLSRbyWFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7760D1E0014610022484C /* ViewControllerLSRbyWFO.swift */; };
 		F0F942871DBBE0E100D30E36 /* ViewControllerOPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F942851DBBE0E100D30E36 /* ViewControllerOPC.swift */; };
-		F0FA434E1E0ED6110074C44A /* ViewControllerSETTINGSLOCATIONCANADA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FA434D1E0ED6110074C44A /* ViewControllerSETTINGSLOCATIONCANADA.swift */; };
 		F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAD0461DCB4F860014752A /* UILabelInset.swift */; };
-		F0FE64211DB5924A0064553C /* ViewControllerSETTINGSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE64201DB5924A0064553C /* ViewControllerSETTINGSUI.swift */; };
 		F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */; };
 /* End PBXBuildFile section */
 
@@ -443,6 +443,16 @@
 		034041E723F167F9003AB242 /* vcSpcTstormSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcTstormSummary.swift; sourceTree = "<group>"; };
 		034041E823F167F9003AB242 /* vcSpcStormReports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcStormReports.swift; sourceTree = "<group>"; };
 		034041E923F167F9003AB242 /* vcSpcWatchMcdMpd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcWatchMcdMpd.swift; sourceTree = "<group>"; };
+		034041F523F16A4C003AB242 /* vcSettingsLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsLocation.swift; sourceTree = "<group>"; };
+		034041F623F16A4D003AB242 /* vcSettingsColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsColorPicker.swift; sourceTree = "<group>"; };
+		034041F723F16A4D003AB242 /* vcSettingsLocationEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsLocationEdit.swift; sourceTree = "<group>"; };
+		034041F823F16A4D003AB242 /* vcSettingsHomescreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsHomescreen.swift; sourceTree = "<group>"; };
+		034041F923F16A4D003AB242 /* vcSettingsAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsAbout.swift; sourceTree = "<group>"; };
+		034041FA23F16A4D003AB242 /* vcSettingsColorListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsColorListing.swift; sourceTree = "<group>"; };
+		034041FB23F16A4D003AB242 /* vcSettingsLocationCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsLocationCanada.swift; sourceTree = "<group>"; };
+		034041FC23F16A4D003AB242 /* vcSettingsRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsRadar.swift; sourceTree = "<group>"; };
+		034041FD23F16A4D003AB242 /* vcSettingsMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsMain.swift; sourceTree = "<group>"; };
+		0340420823F16ACA003AB242 /* vcSettingsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsUI.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
 		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
@@ -510,7 +520,6 @@
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
-		03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSettingsAbout.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
@@ -603,9 +612,6 @@
 		F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTileMatrix.swift; sourceTree = "<group>"; };
 		F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMenuTitle.swift; sourceTree = "<group>"; };
 		F0605A531E59F71F00229812 /* ObjectMenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMenuData.swift; sourceTree = "<group>"; };
-		F06209871E87CB9400330FE0 /* ViewControllerSETTINGSLOCATION.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSLOCATION.swift; sourceTree = "<group>"; };
-		F06209891E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSMAIN.swift; sourceTree = "<group>"; };
-		F062098B1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSLOCATIONEDIT.swift; sourceTree = "<group>"; };
 		F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLine.swift; sourceTree = "<group>"; };
 		F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalPolygon.swift; sourceTree = "<group>"; };
 		F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalPoint.swift; sourceTree = "<group>"; };
@@ -671,7 +677,6 @@
 		F0830E991E593467003149E5 /* ObjectDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDatePicker.swift; sourceTree = "<group>"; };
 		F0838FCD1DCA674700517EBF /* UtilityHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHelp.swift; sourceTree = "<group>"; };
 		F085F4081DC5615600477188 /* ViewControllerOBSSITES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerOBSSITES.swift; sourceTree = "<group>"; };
-		F08623381DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSCOLORPICKER.swift; sourceTree = "<group>"; };
 		F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGL.swift; sourceTree = "<group>"; };
 		F08643E91DA3CAB600A8558E /* ViewControllerTABMISC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTABMISC.swift; sourceTree = "<group>"; };
 		F08748171E5513350081E1FD /* ObjectTouchImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTouchImageView.swift; sourceTree = "<group>"; };
@@ -761,7 +766,6 @@
 		F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNumberPicker.swift; sourceTree = "<group>"; };
 		F0D070171DAE7A8D00650C1E /* ViewControllerWFOTEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWFOTEXT.swift; sourceTree = "<group>"; };
 		F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityShare.swift; sourceTree = "<group>"; };
-		F0D32C4B1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSHOMESCREEN.swift; sourceTree = "<group>"; };
 		F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 		F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettings.swift; sourceTree = "<group>"; };
 		F0DAD9271DA7011C00C2BD4B /* wX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wX-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -774,11 +778,9 @@
 		F0DAD9301DA7018C00C2BD4B /* blocksort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = blocksort.c; path = jni/blocksort.c; sourceTree = "<group>"; };
 		F0DAD9311DA7018D00C2BD4B /* bzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bzlib.c; path = jni/bzlib.c; sourceTree = "<group>"; };
 		F0DAD9321DA7018D00C2BD4B /* bzlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bzlib.h; path = jni/bzlib.h; sourceTree = "<group>"; };
-		F0DF4C731DBEB8D100D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSCOLORLISTING.swift; sourceTree = "<group>"; };
 		F0DF4C741DBEB8D200D69B1E /* wXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wXColor.swift; sourceTree = "<group>"; };
 		F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette165.swift; sourceTree = "<group>"; };
 		F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToolbar.swift; sourceTree = "<group>"; };
-		F0EC66361DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSRADAR.swift; sourceTree = "<group>"; };
 		F0F28D7A1DB985D90020AD08 /* ViewControllerUSALERTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUSALERTS.swift; sourceTree = "<group>"; };
 		F0F28D831DB987400020AD08 /* StormReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StormReport.swift; sourceTree = "<group>"; };
 		F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerSwipeExtension.swift; sourceTree = "<group>"; };
@@ -786,9 +788,7 @@
 		F0F7760B1E00092A0022484C /* LatLon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLon.swift; sourceTree = "<group>"; };
 		F0F7760D1E0014610022484C /* ViewControllerLSRbyWFO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLSRbyWFO.swift; sourceTree = "<group>"; };
 		F0F942851DBBE0E100D30E36 /* ViewControllerOPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerOPC.swift; sourceTree = "<group>"; };
-		F0FA434D1E0ED6110074C44A /* ViewControllerSETTINGSLOCATIONCANADA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSLOCATIONCANADA.swift; sourceTree = "<group>"; };
 		F0FAD0461DCB4F860014752A /* UILabelInset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelInset.swift; sourceTree = "<group>"; };
-		F0FE64201DB5924A0064553C /* ViewControllerSETTINGSUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSETTINGSUI.swift; sourceTree = "<group>"; };
 		F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettingsUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1018,16 +1018,16 @@
 				F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */,
 				F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */,
 				03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */,
-				03C905EC23DD17950077A2A5 /* ViewControllerSettingsAbout.swift */,
-				F0DF4C731DBEB8D100D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift */,
-				F08623381DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift */,
-				F0D32C4B1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift */,
-				F06209871E87CB9400330FE0 /* ViewControllerSETTINGSLOCATION.swift */,
-				F0FA434D1E0ED6110074C44A /* ViewControllerSETTINGSLOCATIONCANADA.swift */,
-				F062098B1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift */,
-				F06209891E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift */,
-				F0EC66361DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift */,
-				F0FE64201DB5924A0064553C /* ViewControllerSETTINGSUI.swift */,
+				034041F923F16A4D003AB242 /* vcSettingsAbout.swift */,
+				034041FA23F16A4D003AB242 /* vcSettingsColorListing.swift */,
+				034041F623F16A4D003AB242 /* vcSettingsColorPicker.swift */,
+				034041F823F16A4D003AB242 /* vcSettingsHomescreen.swift */,
+				034041F523F16A4C003AB242 /* vcSettingsLocation.swift */,
+				034041FB23F16A4D003AB242 /* vcSettingsLocationCanada.swift */,
+				034041F723F16A4D003AB242 /* vcSettingsLocationEdit.swift */,
+				034041FD23F16A4D003AB242 /* vcSettingsMain.swift */,
+				034041FC23F16A4D003AB242 /* vcSettingsRadar.swift */,
+				0340420823F16ACA003AB242 /* vcSettingsUI.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -1609,6 +1609,7 @@
 				036522AE229149440056E657 /* UtilityDownloadNws.swift in Sources */,
 				0335684D234D4B1700428890 /* ExtensionsFloat.swift in Sources */,
 				034041EF23F167F9003AB242 /* vcSpcMeso.swift in Sources */,
+				0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */,
 				F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */,
 				037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */,
 				F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */,
@@ -1649,6 +1650,7 @@
 				F067DEE01DC6BFFF0066CB56 /* GenMercato.c in Sources */,
 				F02ACC981EB34C5400C0E828 /* ViewControllerTABPARENT.swift in Sources */,
 				03F3EB6522993B870056A56D /* UtilitySpc.swift in Sources */,
+				0340420923F16ACA003AB242 /* vcSettingsUI.swift in Sources */,
 				F004C5261E0F2855009C8F71 /* ViewControllerCAHOURLY.swift in Sources */,
 				F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */,
 				035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */,
@@ -1671,7 +1673,6 @@
 				F0B335A81DA3FD960035BD36 /* UtilityFileManagement.swift in Sources */,
 				03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */,
 				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
-				F0FE64211DB5924A0064553C /* ViewControllerSETTINGSUI.swift in Sources */,
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
 				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
@@ -1682,7 +1683,6 @@
 				034041F323F167F9003AB242 /* vcSpcWatchMcdMpd.swift in Sources */,
 				F0B335281DA3FD2C0035BD36 /* City.swift in Sources */,
 				F0B335AC1DA3FD960035BD36 /* UtilityIO.swift in Sources */,
-				F0D32C4C1DB8D02A004B6590 /* ViewControllerSETTINGSHOMESCREEN.swift in Sources */,
 				03F3EB85229945D10056A56D /* UtilityModelNsslWrfInputOutput.swift in Sources */,
 				03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */,
 				F072B6691E74ECD1004219A1 /* ObjectToolbarItems.swift in Sources */,
@@ -1701,6 +1701,7 @@
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,
 				F08643EA1DA3CAB600A8558E /* ViewControllerTABMISC.swift in Sources */,
+				0340420123F16A4D003AB242 /* vcSettingsLocationEdit.swift in Sources */,
 				034041F023F167F9003AB242 /* vcSpcSwoSummary.swift in Sources */,
 				0399A14E21CFD3BB0096ECFB /* FloatyManager.swift in Sources */,
 				F0B335701DA3FD6F0035BD36 /* SevereWarning.swift in Sources */,
@@ -1731,7 +1732,6 @@
 				037A56B423CBB60E00BB23C0 /* RadarGeometryFileType.swift in Sources */,
 				F0F761C51DC20BD500F71A5F /* ViewControllerPLAYLIST.swift in Sources */,
 				03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */,
-				F08623391DB7D52C004E1C0E /* ViewControllerSETTINGSCOLORPICKER.swift in Sources */,
 				F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */,
 				F0B335AA1DA3FD960035BD36 /* UtilityImg.swift in Sources */,
 				F0B335181DA3FD1C0035BD36 /* SevereNotice.swift in Sources */,
@@ -1768,10 +1768,10 @@
 				03F3EB7422993F390056A56D /* UtilityTtsTranslations.swift in Sources */,
 				03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */,
 				F016C3191DC024D0001BC13E /* ExternalGeodeticMeasurement.swift in Sources */,
+				0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */,
 				03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */,
 				034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */,
 				F0B335551DA3FD510035BD36 /* ExternalEllipsoid.swift in Sources */,
-				F0FA434E1E0ED6110074C44A /* ViewControllerSETTINGSLOCATIONCANADA.swift in Sources */,
 				F0B335541DA3FD510035BD36 /* Extensions.swift in Sources */,
 				F0B335791DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift in Sources */,
 				03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */,
@@ -1796,7 +1796,6 @@
 				F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */,
 				03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */,
 				0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */,
-				F0EC66371DB05A7C000005B3 /* ViewControllerSETTINGSRADAR.swift in Sources */,
 				03F3EB7022993D8E0056A56D /* ObjectNhcStormInfo.swift in Sources */,
 				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,
 				03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */,
@@ -1806,11 +1805,11 @@
 				03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */,
 				0321B2EF21E0D3EC00677EBC /* ToolbarType.swift in Sources */,
 				036D975123C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift in Sources */,
+				0340420723F16A4D003AB242 /* vcSettingsMain.swift in Sources */,
 				F0B335B01DA3FD960035BD36 /* UtilityMath.swift in Sources */,
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
 				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
 				03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */,
-				F06209881E87CB9400330FE0 /* ViewControllerSETTINGSLOCATION.swift in Sources */,
 				03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */,
 				F07B5C101E53D73000555058 /* ObjectCard7Day.swift in Sources */,
 				037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */,
@@ -1830,9 +1829,11 @@
 				0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */,
 				0354D3F823C1188C0024153D /* UtilityWpcFronts.swift in Sources */,
 				F0DAD9391DA7018D00C2BD4B /* bzlib.c in Sources */,
+				0340420423F16A4D003AB242 /* vcSettingsColorListing.swift in Sources */,
 				034041D923F162A4003AB242 /* vcWpcImg.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
+				0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */,
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,
 				F0B335331DA3FD3B0035BD36 /* WXGLDownload.swift in Sources */,
 				034041DE23F1667B003AB242 /* vcGoes.swift in Sources */,
@@ -1840,6 +1841,7 @@
 				F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */,
 				F04378BD1E0F060100C0A252 /* UtilityCanadaImg.swift in Sources */,
 				F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */,
+				034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */,
 				035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */,
 				03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */,
 				F0B334F61DA3FB2B0035BD36 /* UtilityDownload.swift in Sources */,
@@ -1851,8 +1853,6 @@
 				F02841811DEFBC6000474084 /* Location.swift in Sources */,
 				0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */,
 				F0838FCE1DCA674700517EBF /* UtilityHelp.swift in Sources */,
-				F062098C1E87CC5600330FE0 /* ViewControllerSETTINGSLOCATIONEDIT.swift in Sources */,
-				F062098A1E87CC0400330FE0 /* ViewControllerSETTINGSMAIN.swift in Sources */,
 				03171D6123567EFC00170A4A /* KeyDirections.swift in Sources */,
 				031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */,
 				F0C1BC4B1EBAB6A00063C853 /* PolygonType.swift in Sources */,
@@ -1881,6 +1881,7 @@
 				F05806751DB187FB009E2786 /* ImageScrollView.swift in Sources */,
 				F06B98D31E0EAD1800EFF7FC /* UtilityCanadaHourly.swift in Sources */,
 				F0B335AB1DA3FD960035BD36 /* UtilityImgAnim.swift in Sources */,
+				0340420223F16A4D003AB242 /* vcSettingsHomescreen.swift in Sources */,
 				03F3EB83229945D10056A56D /* UtilityModelGlcfsInterface.swift in Sources */,
 				03940CBB21F7DF9B00A9E63A /* ViewControllerMAPKITVIEW.swift in Sources */,
 				F011E61A1DB03E25006531FD /* ViewControllerNWSMOSAIC.swift in Sources */,
@@ -1892,6 +1893,7 @@
 				F004C5281E0F531B009C8F71 /* ViewControllerCAWARN.swift in Sources */,
 				F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */,
 				F0B3355B1DA3FD610035BD36 /* GlobalArrays.swift in Sources */,
+				0340420523F16A4D003AB242 /* vcSettingsLocationCanada.swift in Sources */,
 				03F3EB6922993B870056A56D /* UtilitySpcStormReports.swift in Sources */,
 				F0F942871DBBE0E100D30E36 /* ViewControllerOPC.swift in Sources */,
 				0382E03F22039F9D00DA45C2 /* ViewControllerAwcRadarMosaic.swift in Sources */,
@@ -1909,7 +1911,6 @@
 				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,
 				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
-				F0DF4C751DBEB8D200D69B1E /* ViewControllerSETTINGSCOLORLISTING.swift in Sources */,
 				F0B3353A1DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift in Sources */,
 				F0F7760C1E00092A0022484C /* LatLon.swift in Sources */,
 				F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */,
@@ -1922,7 +1923,6 @@
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
 				F08D61D51DA9D0BB00E8D494 /* ActVars.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
-				03C905ED23DD17950077A2A5 /* ViewControllerSettingsAbout.swift in Sources */,
 				03562F461FCC17AD00456395 /* RadarType.swift in Sources */,
 				F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */,
 				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,

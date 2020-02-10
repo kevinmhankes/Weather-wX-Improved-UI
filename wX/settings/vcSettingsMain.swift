@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSMAIN: UIwXViewController {
+class vcSettingsMain: UIwXViewController {
 
     var titles = [String]()
 

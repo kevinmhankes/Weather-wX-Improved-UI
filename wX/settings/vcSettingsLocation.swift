@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSLOCATION: UIwXViewController {
+class vcSettingsLocation: UIwXViewController {
 
     var locations = [String]()
     var fab: ObjectFab?

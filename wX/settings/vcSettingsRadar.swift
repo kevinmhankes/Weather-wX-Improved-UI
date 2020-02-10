@@ -7,8 +7,7 @@
 import UIKit
 import CoreLocation
 
-class ViewControllerSETTINGSRADAR: UIwXViewController, UIPickerViewDelegate,
-UIPickerViewDataSource, CLLocationManagerDelegate {
+class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
     var objIdToSlider = [ObjectIdentifier: ObjectSlider]()

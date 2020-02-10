@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSLOCATIONCANADA: UIwXViewController {
+class vcSettingsLocationCanada: UIwXViewController {
 
     var textViews = [ObjectTextView]()
     var html = ""

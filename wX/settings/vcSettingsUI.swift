@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
 

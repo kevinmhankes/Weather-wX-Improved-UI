@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSCOLORLISTING: UIwXViewController {
+class vcSettingsColorListing: UIwXViewController {
 
     var colorArr = [wXColor]()
     var tvArr = [ObjectTextView]()

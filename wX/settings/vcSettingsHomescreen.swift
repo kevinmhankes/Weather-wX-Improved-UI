@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerSETTINGSHOMESCREEN: UIwXViewController {
+class vcSettingsHomescreen: UIwXViewController {
 
     let localChoicesText = [
         "TXT-CC2": "Current Conditions with Image",
