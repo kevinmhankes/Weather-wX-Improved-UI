@@ -17,17 +17,17 @@ final class SevereNotice {
     }
 
     func getBitmaps(_ html: String) {
-        var comp = ""
+        var noAlertsVerbiage = ""
         var url = ""
         var text = ""
         bitmaps = [Bitmap]()
         switch type {
-        case "SPCMCD": comp = "<center>No Mesoscale Discussions are currently in effect."
-        case "SPCWAT": comp = "<center><strong>No watches are currently valid"
-        case "WPCMPD": comp = "No MPDs are currently in effect."
+        case "SPCMCD": noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."
+        case "SPCWAT": noAlertsVerbiage = "<center><strong>No watches are currently valid"
+        case "WPCMPD": noAlertsVerbiage = "No MPDs are currently in effect."
         default: break
         }
-        if !html.contains(comp) {
+        if !html.contains(noAlertsVerbiage) {
             text = html
         } else {
             text = ""

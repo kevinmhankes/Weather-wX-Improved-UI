@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerNHC: UIwXViewController {
+class vcNhc: UIwXViewController {
 
     var textprod = "AFD"
     var textProductButton = ObjectToolbarIcon()

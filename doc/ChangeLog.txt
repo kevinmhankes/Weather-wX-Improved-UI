@@ -12,7 +12,6 @@
 // [ADD] optimize SPC Fire / Tstorm outlook for large screen
 // [ADD] NHC: have multiples images per row
 // [REF] remove the need for storyboards as much as possible
-// [REF] rename remaining viewControllers ( NHC/Fragment )
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 
 56086 2020_02_10 [FIX] icons per row now changes dynamically after setting in Settings -> UI
@@ -20,6 +19,7 @@
 		 [ADD] WPC Rainfall disc optimize for landscape mode on big screens
 		 [REF] rename ViewControllers to start with vc instead WIP
 		 [REF] reorg SevereNotice and SevereDashboard
+		 [REF] rename remaining viewControllers ( NHC/Fragment )
 56085 2020_02_09 [ADD] continued work on SpcMcdWatchShowActivity
 		 [ADD] CPC 3 month temp/precip outlook in WPC Images
 		 [ADD] add aditional products in WFO Text viewer

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerTABSPC: ViewControllerTABPARENT {
+class vcTabSpc: vcTabParent {
 
     var tilesPerRow = 0
 

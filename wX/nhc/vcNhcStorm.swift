@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewControllerNHCSTORM: UIwXViewController {
+class vcNhcStorm: UIwXViewController {
 
     var productButton = ObjectToolbarIcon()
     var buttonActionArray = [String]()

@@ -46,7 +46,7 @@
         <!--SPC-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="SPC" customClass="ViewControllerTABSPC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="SPC" customClass="vcTabSpc" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -65,7 +65,7 @@
         <!--MISC-->
         <scene sceneID="V7T-fW-frK">
             <objects>
-                <viewController id="Nhx-6a-ty9" userLabel="MISC" customClass="ViewControllerTABMISC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nhx-6a-ty9" userLabel="MISC" customClass="vcTabMisc" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oep-34-U0z"/>
                         <viewControllerLayoutGuide type="bottom" id="O22-dP-X3q"/>
@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="7730" y="1537"/>
         </scene>
-        <!--View ControllerNHC-->
+        <!--Vc Nhc-->
         <scene sceneID="jhb-k2-mIk">
             <objects>
-                <viewController storyboardIdentifier="nhc" id="Id3-Um-N0E" customClass="ViewControllerNHC" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nhc" id="Id3-Um-N0E" customClass="vcNhc" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iU8-p3-KQK"/>
                         <viewControllerLayoutGuide type="bottom" id="r6R-rY-v6d"/>
@@ -531,10 +531,10 @@
             </objects>
             <point key="canvasLocation" x="5135" y="2480"/>
         </scene>
-        <!--View ControllerNHCSTORM-->
+        <!--Vc Nhc Storm-->
         <scene sceneID="XIc-iI-etK">
             <objects>
-                <viewController storyboardIdentifier="nhcstorm" id="kN4-hG-BuG" customClass="ViewControllerNHCSTORM" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nhcstorm" id="kN4-hG-BuG" customClass="vcNhcStorm" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QKC-YY-ItP"/>
                         <viewControllerLayoutGuide type="bottom" id="zZM-Fx-jvd"/>
@@ -1020,7 +1020,7 @@
         <!--LOCAL-->
         <scene sceneID="G86-ra-JPI">
             <objects>
-                <viewController storyboardIdentifier="locfrag" title="LOCAL" id="lPy-Fg-yeF" customClass="ViewControllerTABLOCATIONGL" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="locfrag" title="LOCAL" id="lPy-Fg-yeF" customClass="vcTabLocation" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mCL-JC-Bg9"/>
                         <viewControllerLayoutGuide type="bottom" id="7an-Hk-4ux"/>
