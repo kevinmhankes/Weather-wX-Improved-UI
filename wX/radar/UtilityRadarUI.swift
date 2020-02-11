@@ -129,14 +129,16 @@ public class UtilityRadarUI {
             let html = UtilityMetar.findClosestMetar(location)
             DispatchQueue.main.async {
                 ActVars.textViewText = html
-                uiv.goToVC("textviewer")
+                let vc = vcTextViewer()
+                uiv.goToVC(vc)
             }
         }
     }
 
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
         ActVars.adhocLocation = location
-        uiv.goToVC("adhoclocation")
+        let vc = vcAdhocLocation()
+        uiv.goToVC(vc)
     }
 
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
@@ -145,7 +147,8 @@ public class UtilityRadarUI {
             + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
             + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
             + obsSite.name
-        uiv.goToVC("imageviewer")
+        let vc = vcImageViewer()
+        uiv.goToVC(vc)
     }
 
     static func getRadarStatus(_ uiv: UIViewController, _ rid: String) {
@@ -153,7 +156,8 @@ public class UtilityRadarUI {
             let radarStatus = getRadarStatusMessage(rid)
             DispatchQueue.main.async {
                 ActVars.textViewText = radarStatus
-                uiv.goToVC("textviewer")
+                let vc = vcTextViewer()
+                uiv.goToVC(vc)
             }
         }
     }
