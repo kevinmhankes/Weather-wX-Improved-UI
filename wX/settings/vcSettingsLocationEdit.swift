@@ -106,7 +106,8 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
 
     @objc func helpClicked() {
         ActVars.textViewText = helpStatement
-        self.goToVC("textviewer")
+        let vc = vcTextViewer()
+        self.goToVC(vc)
     }
 
     @objc func saveClicked() {
@@ -216,7 +217,8 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     }
 
     @objc func caClicked() {
-        self.goToVC("settingslocationcanada")
+        let vc = vcSettingsLocationCanada()
+        self.goToVC(vc)
     }
 
     override func viewWillAppear(_ animated: Bool) {

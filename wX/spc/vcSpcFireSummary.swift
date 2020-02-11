@@ -40,7 +40,8 @@ class vcSpcFireSummary: UIwXViewController {
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
-        self.goToVC("WPCText")
+        let vc = vcWpcText()
+        self.goToVC(vc)
     }
 
     @objc func shareClicked(sender: UIButton) {

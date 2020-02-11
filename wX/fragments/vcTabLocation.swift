@@ -398,13 +398,15 @@ class vcTabLocation: vcTabParent {
             self.getContentMaster()
         } else {
             ActVars.settingsLocationEditNum = "0"
-            self.goToVC("settingslocationedit")
+            let vc = vcSettingsLocationEdit()
+            self.goToVC(vc)
         }
     }
 
     func editLocation() {
         ActVars.settingsLocationEditNum = Location.getCurrentLocationStr()
-        self.goToVC("settingslocationedit")
+        let vc = vcSettingsLocationEdit()
+        self.goToVC(vc)
     }
 
     @objc func locationAction() {
@@ -459,7 +461,8 @@ class vcTabLocation: vcTabParent {
     }
 
     @objc func gotoHourly() {
-        UtilityActions.goToVCS(self, "hourly")
+        let vc = vcHourly()
+        self.goToVC(vc)
     }
 
     func getCurrentConditionCards() {

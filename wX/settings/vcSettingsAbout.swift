@@ -59,12 +59,14 @@ class vcSettingsAbout: UIwXViewController {
             ActVars.webViewShowProduct = false
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = faqUrl
-            self.goToVC("webview")
+            let vc = vcWebView()
+            self.goToVC(vc)
         case "notes":
             ActVars.webViewShowProduct = false
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = releaseNotesUrl
-            self.goToVC("webview")
+            let vc = vcWebView()
+            self.goToVC(vc)
         default:
             break
         }

@@ -85,7 +85,8 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     func viewProduct(selection: Int) {
         ActVars.textViewText = Utility.readPref("PLAYLIST_" + playlistItems[selection], "")
         ActVars.textViewProduct = playlistItems[selection]
-        self.goToVC("textviewer")
+        let vc = vcTextViewer()
+        self.goToVC(vc)
     }
 
     func move(_ from: Int, _ to: MotionType) {

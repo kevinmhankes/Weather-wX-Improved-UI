@@ -35,20 +35,34 @@ class vcSettingsMain: UIwXViewController {
 
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
-        case "Location":       self.goToVC("settingslocation")
-        case "Radar":          self.goToVC("settingsradar")
-        case "User Interface": self.goToVC("settingsui")
-        case "Colors":         self.goToVC("settingscolorlisting")
-        case "Home Screen":    self.goToVC("settingshomescreen")
-        case "Spotters (beta)":    self.goToVC("spotters")
+        case "Location":
+            let vc = vcSettingsLocation()
+            self.goToVC(vc)
+        case "Radar":
+            let vc = vcSettingsRadar()
+            self.goToVC(vc)
+        case "User Interface":
+            let vc = vcSettingsUI()
+            self.goToVC(vc)
+        case "Colors":
+            let vc = vcSettingsColorListing()
+            self.goToVC(vc)
+        case "Home Screen":
+            let vc = vcSettingsHomescreen()
+            self.goToVC(vc)
+        case "Spotters (beta)":
+            let vc = vcSpotters()
+            self.goToVC(vc)
         case "Celsius to Fahrenheit table":
             ActVars.textViewProduct = "Celsius to Fahrenheit table"
             ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
-            self.goToVC("textviewer")
-        case "About "  + GlobalVariables.appName: self.goToVC("settingsabout")
-            //ActVars.textViewText = aboutText
-            //self.goToVC("textviewer")
-        default: break
+            let vc = vcTextViewer()
+            self.goToVC(vc)
+        case "About "  + GlobalVariables.appName:
+            let vc = vcSettingsAbout()
+            self.goToVC(vc)
+        default:
+            break
         }
     }
 

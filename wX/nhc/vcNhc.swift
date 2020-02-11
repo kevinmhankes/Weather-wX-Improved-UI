@@ -88,7 +88,8 @@ class vcNhc: UIwXViewController {
             DispatchQueue.main.async {
                 ActVars.textViewText = html
                 ActVars.textViewProduct = prod
-                self.goToVC("textviewer")
+                let vc = vcTextViewer()
+                self.goToVC(vc)
             }
         }
     }
@@ -105,12 +106,14 @@ class vcNhc: UIwXViewController {
 
     func imageProductChanged(_ index: Int) {
         ActVars.imageViewerUrl = UtilityNhc.imageUrls[index]
-        self.goToVC("imageviewer")
+        let vc = vcImageViewer()
+        self.goToVC(vc)
     }
 
     @objc func glcfsClicked() {
         ActVars.modelActivitySelected = "GLCFS"
-        self.goToVC("modelgeneric")
+        let vc = vcModels()
+        self.goToVC(vc)
     }
 
     private func displayTextContent() {
