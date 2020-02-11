@@ -9,15 +9,15 @@ import AVFoundation
 
 class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
 
-    var bitmaps = [Bitmap]()
-    var listOfText = [String]()
-    var urls = [String]()
-    var playListButton = ObjectToolbarIcon()
-    var playButton = ObjectToolbarIcon()
-    var spcMcdNumber = ""
-    var text = ""
-    var synth = AVSpeechSynthesizer()
-    var product = ""
+    private var bitmaps = [Bitmap]()
+    private var listOfText = [String]()
+    private var urls = [String]()
+    private var playListButton = ObjectToolbarIcon()
+    private var playButton = ObjectToolbarIcon()
+    private var spcMcdNumber = ""
+    private var text = ""
+    private var synth = AVSpeechSynthesizer()
+    private var product = ""
     var wpcRainfallDay = ""
 
     override func viewDidLoad() {

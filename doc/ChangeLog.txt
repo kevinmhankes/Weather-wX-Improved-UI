@@ -12,6 +12,7 @@
 // [ADD] optimize SPC Fire / Tstorm outlook for large screen
 // [ADD] NHC: have multiples images per row
 // [REF] remove the need for storyboards as much as possible
+// [REF] in VCs mark vars private if can
 // [ADD] add title in toolbar for SPC SWO
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 

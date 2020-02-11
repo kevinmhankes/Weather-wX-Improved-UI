@@ -8,7 +8,7 @@ import UIKit
 
 class vcWpcRainfallSummary: UIwXViewController {
 
-    var bitmaps = [Bitmap]()
+    private var bitmaps = [Bitmap]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
