@@ -13,10 +13,12 @@ final class UtilityActions {
         if Location.isUS {
             ActVars.goesProduct = ""
             ActVars.goesSector = ""
-            goToVCS(uiv, "goes16")
+            let vc = vcGoes()
+            goToVCS(uiv, vc)
         } else {
             ActVars.caRadarImageType = "vis"
-            goToVCS(uiv, "caradar")
+            let vc = vcCanadaRadar()
+            goToVCS(uiv, vc)
         }
     }
 
@@ -38,45 +40,52 @@ final class UtilityActions {
         if !Location.isUS {
             ActVars.caRadarImageType = "radar"
             ActVars.caRadarProv = ""
-            goToVCS(uiv, "caradar")
+            let vc = vcCanadaRadar()
+            goToVCS(uiv, vc)
         } else {
             if UIPreferences.dualpaneRadarIcon {
                 ActVars.wxoglPaneCount = "2"
             } else {
                 ActVars.wxoglPaneCount = "1"
             }
-            goToVCS(uiv, "wxmetalradar")
+            let vc = vcNexradRadar()
+            goToVCS(uiv, vc)
         }
     }
 
     static func wfotextClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            goToVCS(uiv, "wfotext")
+            let vc = vcWfoText()
+            goToVCS(uiv, vc)
         } else {
-            goToVCS(uiv, "catext")
+            let vc = vcCanadaText()
+            goToVCS(uiv, vc)
         }
     }
 
     static func dashClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            goToVCS(uiv, "severedashboard")
+            let vc = vcSevereDashboard()
+            goToVCS(uiv, vc)
         } else {
-            goToVCS(uiv, "cawarn")
+            let vc = vcCanadaWarnings()
+            goToVCS(uiv, vc)
         }
     }
 
     static func multiPaneRadarClicked(_ uiv: UIViewController, _ paneCount: String) {
-           var token = ""
+           //var token = ""
            switch paneCount {
            case "2":
                ActVars.wxoglPaneCount = "2"
-               token = "wxmetalradar"
+               //token = "wxmetalradar"
            case "4":
                ActVars.wxoglPaneCount = "4"
-               token = "wxmetalradar"
+               //token = "wxmetalradar"
            default: break
            }
-           UtilityActions.goToVCS(uiv, token)
+            let vc = vcNexradRadar()
+           UtilityActions.goToVCS(uiv, vc)
        }
 
    static func genericClicked(_ uiv: UIViewController, _ token: String) {
@@ -84,7 +93,7 @@ final class UtilityActions {
    }
 
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
-        var token = ""
+        //var token = ""
         if menuItem.hasPrefix("Help Mode") {
             if !MyApplication.helpMode {
                 MyApplication.helpMode = true
@@ -98,51 +107,65 @@ final class UtilityActions {
         }
         switch menuItem {
         case "Soundings":
-            token = "sounding"
+            // FIXME TODO use extension
+            let vc = vcSoundings()
+            goToVCS(uiv, vc)
         case "Hourly":
             if Location.isUS {
-                token = "hourly"
+                let vc = vcHourly()
+                goToVCS(uiv, vc)
             } else {
-                token = "cahourly"
+                let vc = vcCanadaHourly()
+                goToVCS(uiv, vc)
             }
         case "Settings":
-            token = "settingsmain"
+            let vc = vcSettingsMain()
+            goToVCS(uiv, vc)
         case "Observations":
-            token = "observations"
+            let vc = vcObservations()
+            goToVCS(uiv, vc)
         case "PlayList":
-            token = "playlist"
+            let vc = vcPlayList()
+            goToVCS(uiv, vc)
         case "Radar Mosaic":
             if Location.isUS {
                 if !UIPreferences.useAwcRadarMosaic {
                     ActVars.nwsMosaicType = "local"
-                    token = "nwsmosaic"
+                    let vc = vcRadarMosaic()
+                    goToVCS(uiv, vc)
                 } else {
                     ActVars.nwsMosaicType = "local"
-                    token = "awcradarmosaic"
+                    let vc = vcRadarMosaicAwc()
+                    goToVCS(uiv, vc)
                 }
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
                 ActVars.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
                 ActVars.caRadarImageType = "radar"
-                token = "caradar"
+                let vc = vcCanadaRadar()
+                goToVCS(uiv, vc)
             }
         case "Alerts":
             if Location.isUS {
-                token = "usalerts"
+                let vc = vcUSAlerts()
+                goToVCS(uiv, vc)
             } else {
-                token = "cawarn"
+                let vc = vcCanadaWarnings()
+                goToVCS(uiv, vc)
             }
         case "Spotters":
-            token = "spotters"
-        case "Local Forecast":
+            let vc = vcSpotters()
+            goToVCS(uiv, vc)
+        /*case "Local Forecast":
             ActVars.webViewUseUrl = true
             ActVars.webViewUrl = "https://forecast.weather.gov/MapClick.php?lon="
                 + Location.latlon.lonString + "&lat=" + Location.latlon.latString
             token = "webview"
+            goToVCS(uiv, token)*/
         default:
-            token = "hourly"
+            let vc = vcHourly()
+            goToVCS(uiv, vc)
         }
-        goToVCS(uiv, token)
     }
 
     static func goToVCS(_ uiv: UIViewController, _ target: String) {
@@ -188,7 +211,7 @@ final class UtilityActions {
             "Soundings",
             "PlayList",
             "Settings",
-            "Help Mode - Off"
+            //"Help Mode - Off"
         ]
         if MyApplication.helpMode {
             menuList.enumerated().forEach {

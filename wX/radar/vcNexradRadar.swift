@@ -499,7 +499,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         ActVars.wxoglPaneCount = "2"
         ActVars.wxoglCalledFromTimeButton = true
         let token = "wxmetalradar"
-        wxMetal.forEach { $0!.writePrefs() }
+        wxMetal.forEach {
+            $0!.writePrefs()
+        }
         wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(token)
     }

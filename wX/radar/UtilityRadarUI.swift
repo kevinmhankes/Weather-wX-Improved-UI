@@ -89,7 +89,8 @@ public class UtilityRadarUI {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
             ActVars.usalertsDetailUrl = warningText
-            uiv.goToVC("usalertsdetail")
+            let vc = vcUSAlertsDetail()
+            uiv.goToVC(vc)
         }
     }
 
@@ -102,23 +103,24 @@ public class UtilityRadarUI {
             token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         }
         print(token)
+        let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             ActVars.watchMcdMpdNumber = token.replace("WPCMPD", "")
-            token = "spcwatchmcdmpd"
+            //token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MPD
         }
         if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
             ActVars.watchMcdMpdNumber = token.replace("SPCMCD", "")
-            token = "spcwatchmcdmpd"
+            //token = "spcwatchmcdmpd"
             ActVars.watchMcdMpdType = .MCD
         }
         if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
-            ActVars.spcWatchNumber = token.replace("SPCWAT", "")
-            token = "spcwat"
+            ActVars.watchMcdMpdNumber = token.replace("SPCWAT", "")
+            //token = "spcwat"
             ActVars.watchMcdMpdType = .WATCH
         }
         if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
-            uiv.goToVC(token)
+            uiv.goToVC(vc)
         }
     }
 
