@@ -76,7 +76,7 @@ final class ObjectWatchProduct {
         case "WATCH_TORNADO":
             return [String]()
         case "WATCH":
-            return [String]()
+            return (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
         case "MCD":
             return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
         case "MPD":
