@@ -34,16 +34,16 @@ final class UtilityHomeScreen {
             vc.sectorCode = "CONUS"
             uiv.goToVC(vc)
         case "SWOD1":
-            ActVars.spcswoDay = "1"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "1"
             uiv.goToVC(vc)
         case "SWOD2":
-            ActVars.spcswoDay = "2"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "2"
             uiv.goToVC(vc)
         case "SWOD3":
-            ActVars.spcswoDay = "3"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "3"
             uiv.goToVC(vc)
         case "STRPT":
             ActVars.spcStormReportsDay = "today"

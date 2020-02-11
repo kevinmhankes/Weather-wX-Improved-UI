@@ -117,37 +117,30 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "spc_sum":
-            //token = "spcswosummary"
             let vc = vcSpcSwoSummary()
             uiv!.goToVC(vc)
         case "day1":
-            ActVars.spcswoDay = "1"
-            //token = "spcswo"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "1"
             uiv!.goToVC(vc)
         case "day2":
-            ActVars.spcswoDay = "2"
-            //token = "spcswo"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "2"
             uiv!.goToVC(vc)
         case "day3":
-            ActVars.spcswoDay = "3"
-            //token = "spcswo"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "3"
             uiv!.goToVC(vc)
         case "day48":
-            ActVars.spcswoDay = "48"
-            //token = "spcswo"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "48"
             uiv!.goToVC(vc)
         case "report_today":
             ActVars.spcStormReportsDay = "today"
-            //token = "spcstormreports"
             let vc = vcSpcStormReports()
             uiv!.goToVC(vc)
         case "report_yesterday":
             ActVars.spcStormReportsDay = "yesterday"
-            //token = "spcstormreports"
             let vc = vcSpcStormReports()
             uiv!.goToVC(vc)
         case "mcd_tile":

@@ -26,7 +26,6 @@ class vcSpcSwoState: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         self.view.addSubview(toolbar)
-        day = ActVars.spcswoDay
         state = Location.state
         stateButton.title = state
         self.getContent(state)

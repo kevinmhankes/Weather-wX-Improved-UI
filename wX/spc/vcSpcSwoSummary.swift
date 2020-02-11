@@ -65,12 +65,12 @@ class vcSpcSwoSummary: UIwXViewController {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
-            ActVars.spcswoDay = String(sender.data + 1)
             let vc = vcSpcSwo()
+            vc.spcSwoDay = String(sender.data + 1)
             self.goToVC(vc)
         case 3...7:
-            ActVars.spcswoDay = "48"
             let vc = vcSpcSwo()
+            vc.spcSwoDay = "48"
             self.goToVC(vc)
         default: break
         }

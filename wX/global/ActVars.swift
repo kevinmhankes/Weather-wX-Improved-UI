@@ -7,10 +7,7 @@
 import UIKit
 
 class ActVars {
-    //static var goesSector = ""
-    //static var goesProduct = ""
     static var settingsLocationEditNum = ""
-    static var spcswoDay = ""
     static var imageViewerUrl = ""
     static var textViewText = ""
     static var textViewProduct = ""

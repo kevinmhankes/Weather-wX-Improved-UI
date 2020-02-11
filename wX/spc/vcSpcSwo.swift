@@ -16,6 +16,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     var playlistButton = ObjectToolbarIcon()
     var textView = ObjectTextView()
     var synth = AVSpeechSynthesizer()
+    var spcSwoDay = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        if ActVars.spcswoDay == "48" {
+        if spcSwoDay == "48" {
             stateButton.title = ""
         }
         self.getContent()
@@ -48,14 +49,14 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            if ActVars.spcswoDay == "48" {
-                self.product = "SWOD" + ActVars.spcswoDay
+            if self.spcSwoDay == "48" {
+                self.product = "SWOD" + self.spcSwoDay
                 self.html = UtilityDownload.getTextProduct(self.product)
             } else {
-                self.product = "SWODY" + ActVars.spcswoDay
+                self.product = "SWODY" + self.spcSwoDay
                 self.html = UtilityDownload.getTextProduct(self.product)
             }
-            self.bitmaps = UtilitySpcSwo.getImageUrls(ActVars.spcswoDay)
+            self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
             DispatchQueue.main.async {
                self.displayContent()
             }
@@ -88,6 +89,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     @objc func stateClicked() {
         let vc = vcSpcSwoState()
+        vc.day = spcSwoDay
         self.goToVC(vc)
     }
 
