@@ -9,26 +9,29 @@ import MapKit
 
 class vcMapKitView: UIwXViewController, MKMapViewDelegate {
 
-    var latLonButton = ObjectToolbarIcon()
-    let mapView = MKMapView()
+    private var latLonButton = ObjectToolbarIcon()
+    private let mapView = MKMapView()
+    var mapKitLat = ""
+    var mapKitLon = ""
+    var mapKitRadius = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         let locationC = CLLocationCoordinate2D(
-            latitude: Double(ActVars.mapKitLat) ?? 0.0,
-            longitude: Double(ActVars.mapKitLon) ?? 0.0
+            latitude: Double(mapKitLat) ?? 0.0,
+            longitude: Double(mapKitLon) ?? 0.0
         )
-        UtilityMap.centerMapForMapKit(mapView, location: locationC, regionRadius: ActVars.mapKitRadius)
+        UtilityMap.centerMapForMapKit(mapView, location: locationC, regionRadius: mapKitRadius)
         latLonButton = ObjectToolbarIcon(self, #selector(showExternalMap))
-        latLonButton.title = ActVars.mapKitLat + ", " + ActVars.mapKitLon
+        latLonButton.title = mapKitLat + ", " + mapKitLon
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, latLonButton]).items
         self.view.addSubview(toolbar)
         self.view.addSubview(mapView)
     }
 
     @objc func showExternalMap() {
-        let directionsURL = "http://maps.apple.com/?daddr=" + ActVars.mapKitLat + "," + ActVars.mapKitLon
+        let directionsURL = "http://maps.apple.com/?daddr=" + mapKitLat + "," + mapKitLon
         guard let url = URL(string: directionsURL) else {
             return
         }

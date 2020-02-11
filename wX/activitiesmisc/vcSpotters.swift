@@ -69,10 +69,10 @@ class vcSpotters: UIwXViewController {
     }
 
     func showMap(_ selection: Int) {
-        ActVars.mapKitLat = self.spotterDataSorted[selection].lat
-        ActVars.mapKitLon = self.spotterDataSorted[selection].lon
-        ActVars.mapKitRadius = 20000.0
         let vc = vcMapKitView()
+        vc.mapKitLat = self.spotterDataSorted[selection].lat
+        vc.mapKitLon = self.spotterDataSorted[selection].lon
+        vc.mapKitRadius = 20000.0
         self.goToVC(vc)
     }
 
