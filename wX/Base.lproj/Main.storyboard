@@ -135,60 +135,6 @@
             </objects>
             <point key="canvasLocation" x="2006" y="2005"/>
         </scene>
-        <!--Vc Soundings-->
-        <scene sceneID="QSR-JI-AHJ">
-            <objects>
-                <viewController storyboardIdentifier="sounding" id="dU8-8b-5HM" customClass="vcSoundings" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PJL-IF-lu8"/>
-                        <viewControllerLayoutGuide type="bottom" id="bVl-Jv-943"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TQR-Vj-pyS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T8A-On-XXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2703" y="2008"/>
-        </scene>
-        <!--Vc Hourly-->
-        <scene sceneID="dYc-DW-7m3">
-            <objects>
-                <viewController storyboardIdentifier="hourly" id="5ef-oP-d4j" customClass="vcHourly" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="60k-QB-z1L"/>
-                        <viewControllerLayoutGuide type="bottom" id="9DD-pM-ZKi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DTz-4t-kV2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YZr-Qd-gNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3465" y="2015"/>
-        </scene>
-        <!--Vc Wfo Text-->
-        <scene sceneID="CxZ-61-Amq">
-            <objects>
-                <viewController storyboardIdentifier="wfotext" id="B9q-Sc-cfX" customClass="vcWfoText" customModule="wX" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XyN-Gb-kzW"/>
-                        <viewControllerLayoutGuide type="bottom" id="geb-GQ-Ft1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="u8d-Dk-kpt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yc5-ME-FrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4415" y="1995"/>
-        </scene>
         <!--Vc Settings Main-->
         <scene sceneID="r8o-Aw-IzE">
             <objects>

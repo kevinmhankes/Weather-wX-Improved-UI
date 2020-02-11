@@ -168,12 +168,12 @@ final class UtilityActions {
         }
     }
 
-    static func goToVCSDisable(_ uiv: UIViewController, _ target: String) {
+    /*static func goToVCS(_ uiv: UIViewController, _ target: String) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
         nextViewController.modalPresentationStyle = .fullScreen
         uiv.present(nextViewController, animated: UIPreferences.backButtonAnimation, completion: nil)
-    }
+    }*/
 
     static func goToVCS(_ uiv: UIViewController, _ target: UIViewController) {
         //let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -182,11 +182,11 @@ final class UtilityActions {
         uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
-    static func goToVCDynamic(_ uiv: UIViewController, _ target: String, _ className: String) {
+    /*static func goToVCDynamic(_ uiv: UIViewController, _ target: String, _ className: String) {
         let storyboard = UIStoryboard(name: target, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: className)
         uiv.navigationController?.show(vc, sender: nil)
-    }
+    }*/
 
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let alert = UIAlertController(
