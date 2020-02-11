@@ -9,7 +9,7 @@ import UIKit
 class ActVars {
     
     static var nwsMosaicType = ""
-    static var spcWatchNumber = ""
+    //static var spcWatchNumber = ""
     static var wpcTextProduct = ""
     static var webViewUrl = ""
     static var webViewStateCode = ""

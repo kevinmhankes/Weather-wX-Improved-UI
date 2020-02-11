@@ -44,7 +44,6 @@
 		034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041DD23F1667B003AB242 /* vcGoesGlobal.swift */; };
 		034041EA23F167F9003AB242 /* vcSpcCompMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E023F167F9003AB242 /* vcSpcCompMap.swift */; };
 		034041EB23F167F9003AB242 /* vcSpcFireSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E123F167F9003AB242 /* vcSpcFireSummary.swift */; };
-		034041EC23F167F9003AB242 /* vcSpcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E223F167F9003AB242 /* vcSpcWatch.swift */; };
 		034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E323F167F9003AB242 /* vcSpcSwo.swift */; };
 		034041EE23F167F9003AB242 /* vcSpcSwoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E423F167F9003AB242 /* vcSpcSwoState.swift */; };
 		034041EF23F167F9003AB242 /* vcSpcMeso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041E523F167F9003AB242 /* vcSpcMeso.swift */; };
@@ -440,7 +439,6 @@
 		034041DD23F1667B003AB242 /* vcGoesGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcGoesGlobal.swift; sourceTree = "<group>"; };
 		034041E023F167F9003AB242 /* vcSpcCompMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcCompMap.swift; sourceTree = "<group>"; };
 		034041E123F167F9003AB242 /* vcSpcFireSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcFireSummary.swift; sourceTree = "<group>"; };
-		034041E223F167F9003AB242 /* vcSpcWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcWatch.swift; sourceTree = "<group>"; };
 		034041E323F167F9003AB242 /* vcSpcSwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcSwo.swift; sourceTree = "<group>"; };
 		034041E423F167F9003AB242 /* vcSpcSwoState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcSwoState.swift; sourceTree = "<group>"; };
 		034041E523F167F9003AB242 /* vcSpcMeso.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcMeso.swift; sourceTree = "<group>"; };
@@ -1053,7 +1051,6 @@
 				034041E423F167F9003AB242 /* vcSpcSwoState.swift */,
 				034041E623F167F9003AB242 /* vcSpcSwoSummary.swift */,
 				034041E723F167F9003AB242 /* vcSpcTstormSummary.swift */,
-				034041E223F167F9003AB242 /* vcSpcWatch.swift */,
 				034041E923F167F9003AB242 /* vcSpcWatchMcdMpd.swift */,
 			);
 			path = spc;
@@ -1697,7 +1694,6 @@
 				030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */,
 				039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */,
 				0340423323F16FC3003AB242 /* vcObservations.swift in Sources */,
-				034041EC23F167F9003AB242 /* vcSpcWatch.swift in Sources */,
 				0340420E23F16C5B003AB242 /* vcRadarMosaic.swift in Sources */,
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,
