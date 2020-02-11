@@ -114,8 +114,8 @@ class vcNhcStorm: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product + self.stormId)
             DispatchQueue.main.async {
-                ActVars.textViewText = html
                 let vc = vcTextViewer()
+                vc.textViewText = html
                 self.goToVC(vc)
             }
         }

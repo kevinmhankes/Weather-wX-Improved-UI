@@ -54,9 +54,9 @@ class vcSettingsMain: UIwXViewController {
             let vc = vcSpotters()
             self.goToVC(vc)
         case "Celsius to Fahrenheit table":
-            ActVars.textViewProduct = "Celsius to Fahrenheit table"
-            ActVars.textViewText = UtilityMath.celsiusToFarenheitTable()
             let vc = vcTextViewer()
+            vc.textViewProduct = "Celsius to Fahrenheit table"
+            vc.textViewText = UtilityMath.celsiusToFarenheitTable()
             self.goToVC(vc)
         case "About "  + GlobalVariables.appName:
             let vc = vcSettingsAbout()

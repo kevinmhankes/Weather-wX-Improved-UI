@@ -64,8 +64,8 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.imageViewerUrl = bitmaps[sender.data].url
         let vc = vcImageViewer()
+        vc.imageViewerUrl = bitmaps[sender.data].url
         self.goToVC(vc)
     }
 

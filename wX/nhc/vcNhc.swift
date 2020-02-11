@@ -86,9 +86,9 @@ class vcNhc: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(prod)
             DispatchQueue.main.async {
-                ActVars.textViewText = html
-                ActVars.textViewProduct = prod
                 let vc = vcTextViewer()
+                vc.textViewText = html
+                vc.textViewProduct = prod
                 self.goToVC(vc)
             }
         }
@@ -105,8 +105,8 @@ class vcNhc: UIwXViewController {
     }
 
     func imageProductChanged(_ index: Int) {
-        ActVars.imageViewerUrl = UtilityNhc.imageUrls[index]
         let vc = vcImageViewer()
+        vc.imageViewerUrl = UtilityNhc.imageUrls[index]
         self.goToVC(vc)
     }
 

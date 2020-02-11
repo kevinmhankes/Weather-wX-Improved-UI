@@ -128,8 +128,8 @@ public class UtilityRadarUI {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
             DispatchQueue.main.async {
-                ActVars.textViewText = html
                 let vc = vcTextViewer()
+                vc.textViewText = html
                 uiv.goToVC(vc)
             }
         }
@@ -143,11 +143,11 @@ public class UtilityRadarUI {
 
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
         let obsSite = UtilityMetar.findClosestObservation(location)
-        ActVars.imageViewerUrl = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
-            + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
-            + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
-            + obsSite.name
         let vc = vcImageViewer()
+        vc.imageViewerUrl = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
+        + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
+        + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
+        + obsSite.name
         uiv.goToVC(vc)
     }
 
@@ -155,8 +155,8 @@ public class UtilityRadarUI {
         DispatchQueue.global(qos: .userInitiated).async {
             let radarStatus = getRadarStatusMessage(rid)
             DispatchQueue.main.async {
-                ActVars.textViewText = radarStatus
                 let vc = vcTextViewer()
+                vc.textViewText = radarStatus
                 uiv.goToVC(vc)
             }
         }

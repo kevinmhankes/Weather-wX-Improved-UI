@@ -96,8 +96,8 @@ final class ObjectForecastPackageHazards {
             let vc = vcUSAlertsDetail()
             ActVars.vc.goToVC(vc)
         } else {
-            ActVars.textViewText = sender.strData
             let vc = vcTextViewer()
+            vc.textViewText = sender.strData
             ActVars.vc.goToVC(vc)
         }
     }

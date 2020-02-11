@@ -40,8 +40,8 @@ class vcSpcTstormSummary: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        ActVars.imageViewerUrl = urls[sender.data]
         let vc = vcImageViewer()
+        vc.imageViewerUrl = urls[sender.data]
         self.goToVC(vc)
     }
 

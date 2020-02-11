@@ -105,8 +105,8 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     }
 
     @objc func helpClicked() {
-        ActVars.textViewText = helpStatement
         let vc = vcTextViewer()
+        vc.textViewText = helpStatement
         self.goToVC(vc)
     }
 

@@ -8,14 +8,15 @@ import UIKit
 
 class vcImageViewer: UIwXViewController {
 
-    var image = ObjectTouchImageView()
+    private var image = ObjectTouchImageView()
+    var imageViewerUrl = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         self.view.addSubview(toolbar)
-        self.getContent(ActVars.imageViewerUrl)
+        self.getContent(imageViewerUrl)
     }
 
     func getContent(_ url: String) {

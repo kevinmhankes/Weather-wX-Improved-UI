@@ -26,7 +26,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -53,8 +53,8 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let number = Int(wpcRainfallDay)! - 1
-        ActVars.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
         let vc = vcImageViewer()
+        vc.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
         self.goToVC(vc)
     }
 

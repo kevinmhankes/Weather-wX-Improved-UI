@@ -9,10 +9,12 @@ import AVFoundation
 
 class vcTextViewer: UIwXViewController {
 
-    var textView = ObjectTextView()
-    var playButton = ObjectToolbarIcon()
-    var playlistButton = ObjectToolbarIcon()
-    var synth = AVSpeechSynthesizer()
+    private var textView = ObjectTextView()
+    private var playButton = ObjectToolbarIcon()
+    private var playlistButton = ObjectToolbarIcon()
+    private var synth = AVSpeechSynthesizer()
+    var textViewProduct = ""
+    var textViewText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +37,15 @@ class vcTextViewer: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, ActVars.textViewText)
+        UtilityShare.share(self, sender, textViewText)
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(ActVars.textViewProduct, ActVars.textViewText, self, playlistButton)
+        UtilityPlayList.add(textViewProduct, textViewText, self, playlistButton)
     }
 
     private func displayContent() {
-        textView = ObjectTextView(stackView, ActVars.textViewText)
+        textView = ObjectTextView(stackView, textViewText)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -8,11 +8,13 @@ import UIKit
 
 class vcWpcImg: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var index = 0
-    var timePeriod = 1
-    var subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var index = 0
+    private var timePeriod = 1
+    private var subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
+    var wpcImagesFromHomeScreen = false
+    var wpcImagesToken = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +37,9 @@ class vcWpcImg: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
-        if ActVars.wpcImagesFromHomeScreen {
+        if wpcImagesFromHomeScreen {
             self.getContentFromHomescreen()
-            ActVars.wpcImagesFromHomeScreen = false
+            wpcImagesFromHomeScreen = false
         } else {
             self.getContent(index)
         }
@@ -65,13 +67,13 @@ class vcWpcImg: UIwXViewController {
 
     func getContentFromHomescreen() {
         let titles = GlobalArrays.nwsImageProducts.filter {
-            $0.hasPrefix(ActVars.wpcImagesToken + ":")
+            $0.hasPrefix(wpcImagesToken + ":")
         }
         if titles.count > 0 {
             self.productButton.title = titles[0].split(":")[1]
         }
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityDownload.getImageProduct(ActVars.wpcImagesToken)
+            let bitmap = UtilityDownload.getImageProduct(self.wpcImagesToken)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
             }

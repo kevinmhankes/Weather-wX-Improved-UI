@@ -97,11 +97,10 @@ final class UtilityHomeScreen {
             vc.sectorCode = ""
             uiv.goToVC(vc)
         default:
-            ActVars.wpcImagesToken = homeScreenToken
-            ActVars.wpcImagesFromHomeScreen = true
             let vc = vcWpcImg()
+            vc.wpcImagesToken = homeScreenToken
+            vc.wpcImagesFromHomeScreen = true
             uiv.goToVC(vc)
         }
-        ActVars.wpcImagesFromHomeScreen = false
     }
 }
