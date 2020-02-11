@@ -24,7 +24,6 @@ class ActVars {
     static var colorObject = wXColor()
     static var nhcGoesId = ""
     static var nhcGoesImageType = ""
-    static var usalertsDetailUrl = ""
     
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()

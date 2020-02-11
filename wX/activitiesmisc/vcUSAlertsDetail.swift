@@ -9,10 +9,11 @@ import AVFoundation
 
 class vcUSAlertsDetail: UIwXViewController {
 
-    var playButton = ObjectToolbarIcon()
-    var cap = CapAlert()
-    var objAlertDetail = ObjectAlertDetail()
-    var synth = AVSpeechSynthesizer()
+    private var playButton = ObjectToolbarIcon()
+    private var cap = CapAlert()
+    private var objAlertDetail = ObjectAlertDetail()
+    private var synth = AVSpeechSynthesizer()
+    var usalertsDetailUrl = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class vcUSAlertsDetail: UIwXViewController {
         stackView.spacing = 0
         objAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
-            self.cap = CapAlert(url: ActVars.usalertsDetailUrl)
+            self.cap = CapAlert(url: self.usalertsDetailUrl)
             DispatchQueue.main.async {
                 self.displayContent()
             }

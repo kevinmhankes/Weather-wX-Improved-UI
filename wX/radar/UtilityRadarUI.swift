@@ -88,8 +88,8 @@ public class UtilityRadarUI {
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
-            ActVars.usalertsDetailUrl = warningText
             let vc = vcUSAlertsDetail()
+            vc.usalertsDetailUrl = warningText
             uiv.goToVC(vc)
         }
     }

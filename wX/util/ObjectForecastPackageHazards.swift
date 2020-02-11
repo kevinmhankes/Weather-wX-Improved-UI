@@ -92,8 +92,8 @@ final class ObjectForecastPackageHazards {
 
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
         if isUS {
-            ActVars.usalertsDetailUrl = sender.strData
             let vc = vcUSAlertsDetail()
+            vc.usalertsDetailUrl = sender.strData
             ActVars.vc.goToVC(vc)
         } else {
             let vc = vcTextViewer()

@@ -147,8 +147,8 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
-        ActVars.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         let vc = vcUSAlertsDetail()
+        vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         self.goToVC(vc)
     }
 
