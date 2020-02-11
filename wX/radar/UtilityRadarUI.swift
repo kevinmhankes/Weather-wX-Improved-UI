@@ -133,8 +133,8 @@ public class UtilityRadarUI {
     }
 
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
-        ActVars.adhocLocation = location
         let vc = vcAdhocLocation()
+        vc.adhocLocation = location
         uiv.goToVC(vc)
     }
 

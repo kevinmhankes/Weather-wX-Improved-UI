@@ -11,6 +11,5 @@ class ActVars {
     static var wxoglDspLegendMax = 0.0
     static var colorObject = wXColor()
     static var modelActivitySelected = ""
-    static var adhocLocation = LatLon()
     static var vc = UIViewController()
 }

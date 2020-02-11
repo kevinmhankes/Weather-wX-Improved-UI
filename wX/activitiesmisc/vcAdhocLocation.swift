@@ -9,10 +9,10 @@ import AVFoundation
 
 class vcAdhocLocation: UIwXViewController {
 
-    var location = LatLon()
-    var objCurrentConditions = ObjectForecastPackageCurrentConditions()
-    var objHazards = ObjectForecastPackageHazards()
-    var objSevenDay = ObjectForecastPackage7Day()
+    private var objCurrentConditions = ObjectForecastPackageCurrentConditions()
+    private var objHazards = ObjectForecastPackageHazards()
+    private var objSevenDay = ObjectForecastPackage7Day()
+    var adhocLocation = LatLon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,7 @@ class vcAdhocLocation: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        location = ActVars.adhocLocation
-        titleButton.title = location.latString.truncate(6) + ", " + location.lonString.truncate(6)
+        titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
         self.getContent()
     }
 
@@ -39,9 +38,9 @@ class vcAdhocLocation: UIwXViewController {
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.location)
-            self.objSevenDay = ObjectForecastPackage7Day(self.location)
-            self.objHazards = ObjectForecastPackageHazards(self.location)
+            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.adhocLocation)
+            self.objSevenDay = ObjectForecastPackage7Day(self.adhocLocation)
+            self.objHazards = ObjectForecastPackageHazards(self.adhocLocation)
             DispatchQueue.main.async {
                 _ = ObjectCardCurrentConditions(self.stackView, self.objCurrentConditions, true)
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
