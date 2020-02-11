@@ -155,7 +155,8 @@ final class ObjectNhc: NSObject {
         ActVars.nhcStormImgUrl1 = pacImg1List[index]
         ActVars.nhcStormImgUrl2 = pacImg2List[index]
         ActVars.nhcStormWallet = pacWalletList[index]
-        uiv.goToVC("nhcstorm")
+        let vc = vcNhcStorm()
+        uiv.goToVC(vc)
     }
 
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
@@ -165,6 +166,7 @@ final class ObjectNhc: NSObject {
         ActVars.nhcStormImgUrl1 = atlImg1List[index]
         ActVars.nhcStormImgUrl2 = atlImg2List[index]
         ActVars.nhcStormWallet = atlWalletList[index]
-        uiv.goToVC("nhcstorm")
+        let vc = vcNhcStorm()
+        uiv.goToVC(vc)
     }
 }

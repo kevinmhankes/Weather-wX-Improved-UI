@@ -59,7 +59,8 @@ class vcSpcStormReports: UIwXViewController {
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.imageViewerUrl = self.imageUrl
-        self.goToVC("imageviewer")
+        let vc = vcImageViewer()
+        self.goToVC(vc)
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -70,7 +71,8 @@ class vcSpcStormReports: UIwXViewController {
         ActVars.mapKitLat = self.stormReports[sender.data].lat
         ActVars.mapKitLon = self.stormReports[sender.data].lon
         ActVars.mapKitRadius = 20000.0
-        self.goToVC("mapkitview")
+        let vc = vcMapKitView()
+        self.goToVC(vc)
     }
 
     @objc func onDateChanged(sender: UIDatePicker) {
@@ -95,7 +97,8 @@ class vcSpcStormReports: UIwXViewController {
     }
 
     @objc func lsrClicked() {
-        self.goToVC("lsrbywfo")
+        let vc = vcLsrByWfo()
+        self.goToVC(vc)
     }
 
     @objc func filterClicked() {

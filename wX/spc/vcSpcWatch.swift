@@ -54,7 +54,8 @@ class vcSpcWatch: UIwXViewController {
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.textViewText = self.listOfText[sender.data]
-        self.goToVC("textviewer")
+        let vc = vcTextViewer()
+        self.goToVC(vc)
     }
 
     @objc func shareClicked(sender: UIButton) {

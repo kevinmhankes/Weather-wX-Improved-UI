@@ -53,7 +53,8 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let number = Int(ActVars.wpcRainfallDay)! - 1
         ActVars.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
-        self.goToVC("imageviewer")
+        let vc = vcImageViewer()
+        self.goToVC(vc)
     }
 
     @objc func shareClicked(sender: UIButton) {

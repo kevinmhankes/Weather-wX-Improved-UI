@@ -228,9 +228,9 @@ extension UIScrollView {
 }
 
 extension UIViewController {
-    func goToVC(_ target: String) {
-        UtilityActions.goToVCS(self, target)
-    }
+    //func goToVC(_ target: String) {
+    //    UtilityActions.goToVCS(self, target)
+    //}
 
     func goToVC(_ target: UIViewController) {
         UtilityActions.goToVCS(self, target)

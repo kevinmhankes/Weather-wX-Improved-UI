@@ -64,7 +64,8 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         ActVars.imageViewerUrl = bitmaps[sender.data].url
-        self.goToVC("imageviewer")
+        let vc = vcImageViewer()
+        self.goToVC(vc)
     }
 
     @objc func playClicked() {
@@ -86,7 +87,8 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func stateClicked() {
-        self.goToVC("spcswostate")
+        let vc = vcSpcSwoState()
+        self.goToVC(vc)
     }
 
     private func displayContent() {

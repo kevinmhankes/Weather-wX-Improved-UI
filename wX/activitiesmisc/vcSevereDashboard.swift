@@ -83,7 +83,7 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        var token = ""
+        // FIXME TODO optimize code below
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
             ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
             ActVars.watchMcdMpdType = .MPD
@@ -97,10 +97,10 @@ class vcSevereDashboard: UIwXViewController {
             self.goToVC(vc)
         }
         if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
-            ActVars.spcWatchNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
-            token = "spcwat"
+            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
             ActVars.watchMcdMpdType = .WATCH
-            self.goToVC(token)
+            let vc = vcSpcWatchMcdMpd()
+            self.goToVC(vc)
         }
     }
 

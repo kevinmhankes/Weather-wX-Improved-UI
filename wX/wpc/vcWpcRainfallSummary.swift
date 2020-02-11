@@ -65,7 +65,8 @@ class vcWpcRainfallSummary: UIwXViewController {
         switch sender.data {
         case 0...2:
             ActVars.wpcRainfallDay = String(sender.data + 1)
-            self.goToVC("wpcrainfalldiscussion")
+            let vc = vcWpcRainfallDiscussion()
+            self.goToVC(vc)
         default: break
         }
     }
