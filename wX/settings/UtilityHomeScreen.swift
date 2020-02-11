@@ -53,35 +53,17 @@ final class UtilityHomeScreen {
             let vc = vcSoundings()
             uiv.goToVC(vc)
         case "SPCMESO_500":
-            ActVars.spcMesoToken = "500mb"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "500mb")
         case "SPCMESO_MSLP":
-            ActVars.spcMesoToken = "pmsl"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "pmsl")
         case "SPCMESO_TTD":
-            ActVars.spcMesoToken = "ttd"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "ttd")
         case "SPCMESO_LLLR":
-            ActVars.spcMesoToken = "lllr"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "lllr")
         case "SPCMESO_LAPS":
-            ActVars.spcMesoToken = "laps"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "laps")
         case "SPCMESO_RGNLRAD":
-            ActVars.spcMesoToken = "rgnlrad"
-            ActVars.spcMesoFromHomeScreen = true
-            let vc = vcSpcMeso()
-            uiv.goToVC(vc)
+            goToSpcMesoFromHS(uiv, "rgnlrad")
         case "RAD_2KM":
             if !UIPreferences.useAwcRadarMosaic {
                 ActVars.nwsMosaicType = "local"
@@ -102,5 +84,12 @@ final class UtilityHomeScreen {
             vc.wpcImagesFromHomeScreen = true
             uiv.goToVC(vc)
         }
+    }
+
+    static func goToSpcMesoFromHS(_ uiv: UIViewController, _ token: String) {
+        let vc = vcSpcMeso()
+        vc.spcMesoToken = token
+        vc.spcMesoFromHomeScreen = true
+        uiv.goToVC(vc)
     }
 }

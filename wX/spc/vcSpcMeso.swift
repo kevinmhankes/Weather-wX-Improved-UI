@@ -8,22 +8,24 @@ import UIKit
 
 class vcSpcMeso: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var sectorButton = ObjectToolbarIcon()
-    var sfcButton = ObjectToolbarIcon()
-    var uaButton = ObjectToolbarIcon()
-    var cpeButton = ObjectToolbarIcon()
-    var cmpButton = ObjectToolbarIcon()
-    var shrButton = ObjectToolbarIcon()
-    var layerButton = ObjectToolbarIcon()
-    var paramButton = ObjectToolbarIcon()
-    var animateButton = ObjectToolbarIcon()
-    var product = "500mb"
-    var sector = "19"
-    var prefModel = "SPCMESO"
-    let numPanesStr = "1"
-    var firstRun = true
-    let subMenu = ObjectMenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
+    private var image = ObjectTouchImageView()
+    private var sectorButton = ObjectToolbarIcon()
+    private var sfcButton = ObjectToolbarIcon()
+    private var uaButton = ObjectToolbarIcon()
+    private var cpeButton = ObjectToolbarIcon()
+    private var cmpButton = ObjectToolbarIcon()
+    private var shrButton = ObjectToolbarIcon()
+    private var layerButton = ObjectToolbarIcon()
+    private var paramButton = ObjectToolbarIcon()
+    private var animateButton = ObjectToolbarIcon()
+    private var product = "500mb"
+    private var sector = "19"
+    private var prefModel = "SPCMESO"
+    private let numPanesStr = "1"
+    private var firstRun = true
+    private let subMenu = ObjectMenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
+    var spcMesoFromHomeScreen = false
+    var spcMesoToken = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +75,9 @@ class vcSpcMeso: UIwXViewController {
         self.view.addSubview(toolbarTop)
         self.view.addSubview(toolbar)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
-        if ActVars.spcMesoFromHomeScreen {
-            product = ActVars.spcMesoToken
-            ActVars.spcMesoFromHomeScreen = false
+        if spcMesoFromHomeScreen {
+            product = spcMesoToken
+            spcMesoFromHomeScreen = false
             sectorChanged(sector)
         } else {
             product = Utility.readPref(prefModel + numPanesStr + "_PARAM_LAST_USED", product)
