@@ -107,86 +107,64 @@ final class UtilityActions {
         }
         switch menuItem {
         case "Soundings":
-            // FIXME TODO use extension
             let vc = vcSoundings()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         case "Hourly":
             if Location.isUS {
                 let vc = vcHourly()
-                goToVCS(uiv, vc)
+                uiv.goToVC(vc)
             } else {
                 let vc = vcCanadaHourly()
-                goToVCS(uiv, vc)
+                uiv.goToVC(vc)
             }
         case "Settings":
             let vc = vcSettingsMain()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         case "Observations":
             let vc = vcObservations()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         case "PlayList":
             let vc = vcPlayList()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         case "Radar Mosaic":
             if Location.isUS {
                 if !UIPreferences.useAwcRadarMosaic {
                     ActVars.nwsMosaicType = "local"
                     let vc = vcRadarMosaic()
-                    goToVCS(uiv, vc)
+                    uiv.goToVC(vc)
                 } else {
                     ActVars.nwsMosaicType = "local"
                     let vc = vcRadarMosaicAwc()
-                    goToVCS(uiv, vc)
+                    uiv.goToVC(vc)
                 }
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
                 ActVars.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
                 ActVars.caRadarImageType = "radar"
                 let vc = vcCanadaRadar()
-                goToVCS(uiv, vc)
+                uiv.goToVC(vc)
             }
         case "Alerts":
             if Location.isUS {
                 let vc = vcUSAlerts()
-                goToVCS(uiv, vc)
+                uiv.goToVC(vc)
             } else {
                 let vc = vcCanadaWarnings()
-                goToVCS(uiv, vc)
+                uiv.goToVC(vc)
             }
         case "Spotters":
             let vc = vcSpotters()
-            goToVCS(uiv, vc)
-        /*case "Local Forecast":
-            ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = "https://forecast.weather.gov/MapClick.php?lon="
-                + Location.latlon.lonString + "&lat=" + Location.latlon.latString
-            token = "webview"
-            goToVCS(uiv, token)*/
+            uiv.goToVC(vc)
         default:
             let vc = vcHourly()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         }
     }
 
-    /*static func goToVCS(_ uiv: UIViewController, _ target: String) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
-        nextViewController.modalPresentationStyle = .fullScreen
-        uiv.present(nextViewController, animated: UIPreferences.backButtonAnimation, completion: nil)
-    }*/
-
     static func goToVCS(_ uiv: UIViewController, _ target: UIViewController) {
-        //let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        //let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
         target.modalPresentationStyle = .fullScreen
         uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
-
-    /*static func goToVCDynamic(_ uiv: UIViewController, _ target: String, _ className: String) {
-        let storyboard = UIStoryboard(name: target, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: className)
-        uiv.navigationController?.show(vc, sender: nil)
-    }*/
 
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let alert = UIAlertController(
@@ -210,8 +188,7 @@ final class UtilityActions {
             "Observations",
             "Soundings",
             "PlayList",
-            "Settings",
-            //"Help Mode - Off"
+            "Settings"
         ]
         if MyApplication.helpMode {
             menuList.enumerated().forEach {
