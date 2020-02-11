@@ -44,8 +44,8 @@ class vcSettingsLocation: UIwXViewController {
     }
 
     @objc func addClicked() {
-        ActVars.settingsLocationEditNum = "0"
         let vc = vcSettingsLocationEdit()
+        vc.settingsLocationEditNum = "0"
         self.goToVC(vc)
     }
 
@@ -83,8 +83,8 @@ class vcSettingsLocation: UIwXViewController {
     }
 
     func actionLocation(_ position: Int) {
-        ActVars.settingsLocationEditNum = locations[position].split(":")[0]
         let vc = vcSettingsLocationEdit()
+        vc.settingsLocationEditNum = locations[position].split(":")[0]
         self.goToVC(vc)
     }
 

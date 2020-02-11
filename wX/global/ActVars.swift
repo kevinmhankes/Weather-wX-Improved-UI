@@ -7,10 +7,7 @@
 import UIKit
 
 class ActVars {
-    static var settingsLocationEditNum = ""
-    //static var imageViewerUrl = ""
-    //static var textViewText = ""
-    //static var textViewProduct = ""
+    
     static var nwsMosaicType = ""
     static var spcWatchNumber = ""
     static var wpcTextProduct = ""
@@ -36,11 +33,6 @@ class ActVars {
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()
     static var vc = UIViewController()
-    //static var mapKitLat = ""
-    //static var mapKitLon = ""
-    //static var mapKitRadius = 0.0
     
-    //static var spcMesoFromHomeScreen = false
-    //static var spcMesoToken = ""
     
 }

@@ -12,19 +12,21 @@ import UserNotifications
 
 class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    var labelTextView = ObjectTextView()
-    var latTextView = ObjectTextView()
-    var lonTextView = ObjectTextView()
-    var statusTextView = ObjectTextView()
-    var status = ""
-    var numLocsLocalStr = ""
-    let boolean = [String: String]()
-    let locationManager = CLLocationManager()
-    let mapView = MKMapView()
-    var toolbar = ObjectToolbar(.top)
-    var toolbarBottom = ObjectToolbar(.bottom)
-    let helpButton = ObjectToolbarIcon()
-    let helpStatement = "There are four ways to enter and save a location. The easiest method is to tap the GPS icon (which looks like an arrow pointing up and to the right). You will need to give permission for the program to access your GPS location if you have not done so before. It might take 5-10 seconds but eventually latitude and longitude numbers will appear and the location will be automatically saved. The second way is to press and hold (also known as long press) on the map until a red pin appears. Once the red pin appears the latitude and longitude will use reverse geocoding to determine an appropriate label for the location. The third method is to tap the search icon and then enter a location such as a city. Once resolved it will save automatically. The final method is the most manual and that is manually specifying a label, latitude, and longitude. After you have done this you need to tape the checkmark icon to save it. Please note that only land based locations in the USA are supported."
+    private var labelTextView = ObjectTextView()
+    private var latTextView = ObjectTextView()
+    private var lonTextView = ObjectTextView()
+    private var statusTextView = ObjectTextView()
+    private var status = ""
+    private var numLocsLocalStr = ""
+    private let boolean = [String: String]()
+    private let locationManager = CLLocationManager()
+    private let mapView = MKMapView()
+    private var toolbar = ObjectToolbar(.top)
+    private var toolbarBottom = ObjectToolbar(.bottom)
+    private let helpButton = ObjectToolbarIcon()
+    private let helpStatement = "There are four ways to enter and save a location. The easiest method is to tap the GPS icon (which looks like an arrow pointing up and to the right). You will need to give permission for the program to access your GPS location if you have not done so before. It might take 5-10 seconds but eventually latitude and longitude numbers will appear and the location will be automatically saved. The second way is to press and hold (also known as long press) on the map until a red pin appears. Once the red pin appears the latitude and longitude will use reverse geocoding to determine an appropriate label for the location. The third method is to tap the search icon and then enter a location such as a city. Once resolved it will save automatically. The final method is the most manual and that is manually specifying a label, latitude, and longitude. After you have done this you need to tape the checkmark icon to save it. Please note that only land based locations in the USA are supported."
+    
+    var settingsLocationEditNum = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +79,10 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         stackView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         stackView.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace).isActive = true
         stackView.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomSpace).isActive = true
-        if ActVars.settingsLocationEditNum == "0" {
+        if settingsLocationEditNum == "0" {
             numLocsLocalStr = String(Location.numLocations + 1)
         } else {
-            numLocsLocalStr = ActVars.settingsLocationEditNum
+            numLocsLocalStr = settingsLocationEditNum
             let locIdx = Int(numLocsLocalStr)! - 1
             labelTextView.text = Location.getName(locIdx)
             latTextView.text = MyApplication.locations[locIdx].lat

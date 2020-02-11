@@ -417,15 +417,15 @@ class vcTabLocation: vcTabParent {
             self.objLabel.text = Location.name
             self.getContentMaster()
         } else {
-            ActVars.settingsLocationEditNum = "0"
             let vc = vcSettingsLocationEdit()
+            vc.settingsLocationEditNum = "0"
             self.goToVC(vc)
         }
     }
 
     func editLocation() {
-        ActVars.settingsLocationEditNum = Location.getCurrentLocationStr()
         let vc = vcSettingsLocationEdit()
+        vc.settingsLocationEditNum = Location.getCurrentLocationStr()
         self.goToVC(vc)
     }
 
