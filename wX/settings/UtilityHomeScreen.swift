@@ -46,8 +46,8 @@ final class UtilityHomeScreen {
             vc.spcSwoDay = "3"
             uiv.goToVC(vc)
         case "STRPT":
-            ActVars.spcStormReportsDay = "today"
             let vc = vcSpcStormReports()
+            vc.spcStormReportsDay = "today"
             uiv.goToVC(vc)
         case "SND":
             let vc = vcSoundings()

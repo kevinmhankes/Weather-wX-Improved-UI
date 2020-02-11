@@ -8,18 +8,19 @@ import UIKit
 
 class vcSpcStormReports: UIwXViewController {
 
-    var image = ObjectImage()
-    var objDatePicker: ObjectDatePicker!
-    var stormReports = [StormReport]()
-    var html = ""
-    var date = ""
-    var imageUrl = ""
-    var textUrl = ""
-    var bitmap = Bitmap()
-    var stateCount = [String: Int]()
-    var filterList = [String]()
-    var filter = "All"
-    var filterButton = ObjectToolbarIcon()
+    private var image = ObjectImage()
+    private var objDatePicker: ObjectDatePicker!
+    private var stormReports = [StormReport]()
+    private var html = ""
+    private var date = ""
+    private var imageUrl = ""
+    private var textUrl = ""
+    private var bitmap = Bitmap()
+    private var stateCount = [String: Int]()
+    private var filterList = [String]()
+    private var filter = "All"
+    private var filterButton = ObjectToolbarIcon()
+    var spcStormReportsDay = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +36,8 @@ class vcSpcStormReports: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, lsrButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.displayPreContent()
-        imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay + ".gif"
-        textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + ActVars.spcStormReportsDay  + ".csv"
+        imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
+        textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
         self.getContent()
     }
 

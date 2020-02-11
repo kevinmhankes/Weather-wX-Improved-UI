@@ -16,17 +16,17 @@ final class UtilityActions {
             vc.sectorCode = ""
             goToVCS(uiv, vc)
         } else {
-            ActVars.caRadarImageType = "vis"
             let vc = vcCanadaRadar()
+            vc.caRadarImageType = "vis"
             goToVCS(uiv, vc)
         }
     }
 
-    @objc static func radarClickedFromMenu() {
+    @objc static func radarClickedFromMenuDisable() {
         print("radar shortcut")
         if !Location.isUS {
-            ActVars.caRadarImageType = "radar"
-            ActVars.caRadarProv = ""
+            //ActVars.caRadarImageType = "radar"
+            //ActVars.caRadarProv = ""
         } else {
             if UIPreferences.dualpaneRadarIcon {
                 ActVars.wxoglPaneCount = "2"
@@ -38,9 +38,9 @@ final class UtilityActions {
 
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
-            ActVars.caRadarImageType = "radar"
-            ActVars.caRadarProv = ""
             let vc = vcCanadaRadar()
+            vc.caRadarImageType = "radar"
+            vc.caRadarProv = ""
             goToVCS(uiv, vc)
         } else {
             if UIPreferences.dualpaneRadarIcon {
@@ -135,9 +135,9 @@ final class UtilityActions {
                 }
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
-                ActVars.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
-                ActVars.caRadarImageType = "radar"
                 let vc = vcCanadaRadar()
+                vc.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
+                vc.caRadarImageType = "radar"
                 uiv.goToVC(vc)
             }
         case "Alerts":

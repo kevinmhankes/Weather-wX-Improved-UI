@@ -153,8 +153,8 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
-        ActVars.spcStormReportsDay = "today"
         let vc = vcSpcStormReports()
+        vc.spcStormReportsDay = "today"
         self.goToVC(vc)
     }
 

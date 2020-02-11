@@ -7,15 +7,12 @@
 import UIKit
 
 class ActVars {
-    
     static var nwsMosaicType = ""
-    //static var spcWatchNumber = ""
     static var wpcTextProduct = ""
     static var webViewUrl = ""
     static var webViewStateCode = ""
     static var webViewShowProduct = true
     static var webViewUseUrl = false
-    static var spcStormReportsDay = ""
     static var wxoglPaneCount = ""
     static var wxoglCalledFromTimeButton = false
     static var wxoglDspLegendMax = 0.0
@@ -28,11 +25,8 @@ class ActVars {
     static var nhcGoesId = ""
     static var nhcGoesImageType = ""
     static var usalertsDetailUrl = ""
-    static var caRadarProv = ""
-    static var caRadarImageType = ""
+    
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()
     static var vc = UIViewController()
-    
-    
 }

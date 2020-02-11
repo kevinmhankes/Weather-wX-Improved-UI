@@ -136,12 +136,12 @@ final class ObjectTileMatrix: NSObject {
             vc.spcSwoDay = "48"
             uiv!.goToVC(vc)
         case "report_today":
-            ActVars.spcStormReportsDay = "today"
             let vc = vcSpcStormReports()
+            vc.spcStormReportsDay = "today"
             uiv!.goToVC(vc)
         case "report_yesterday":
-            ActVars.spcStormReportsDay = "yesterday"
             let vc = vcSpcStormReports()
+            vc.spcStormReportsDay = "yesterday"
             uiv!.goToVC(vc)
         case "mcd_tile":
             let vc = vcSpcWatchMcdMpd()

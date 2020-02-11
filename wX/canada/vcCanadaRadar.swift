@@ -8,15 +8,17 @@ import UIKit
 
 class vcCanadaRadar: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var animateButton = ObjectToolbarIcon()
-    var cloudButton = ObjectToolbarIcon()
-    var index = 8
-    var radarSite = "WSO"
-    var url = "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg"
-    var mosaicShown = false
-    var startFromMosaic = false
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var animateButton = ObjectToolbarIcon()
+    private var cloudButton = ObjectToolbarIcon()
+    private var index = 8
+    private var radarSite = "WSO"
+    private var url = "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg"
+    private var mosaicShown = false
+    private var startFromMosaic = false
+    var caRadarProv = ""
+    var caRadarImageType = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +45,10 @@ class vcCanadaRadar: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = Utility.readPref("CA_LAST_RID_URL", url)
-        if ActVars.caRadarProv == "" {
+        if caRadarProv == "" {
             radarSite = Utility.readPref("CA_LAST_RID", radarSite)
         } else {
-            radarSite = String(ActVars.caRadarProv)
+            radarSite = String(caRadarProv)
             mosaicShown = true
         }
         if !RadarPreferences.wxoglRememberLocation {
@@ -58,7 +60,7 @@ class vcCanadaRadar: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
-            if ActVars.caRadarImageType == "radar" {
+            if self.caRadarImageType == "radar" {
                 bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.radarSite, "")
             } else {
                 bitmap = Bitmap(self.url)
@@ -88,7 +90,7 @@ class vcCanadaRadar: UIwXViewController {
     }
 
     func productChanged(_ index: Int) {
-        ActVars.caRadarImageType = "radar"
+        caRadarImageType = "radar"
         radarSite = UtilityCanadaImg.radarSites[index].split(":")[0]
         self.getContent()
     }
@@ -104,7 +106,7 @@ class vcCanadaRadar: UIwXViewController {
     func getAnimation(_ frameCnt: String) {
         var animDrawable = AnimationDrawable()
         DispatchQueue.global(qos: .userInitiated).async {
-            if ActVars.caRadarImageType == "radar" {
+            if self.caRadarImageType == "radar" {
                 if !self.mosaicShown {
                     animDrawable = UtilityCanadaImg.getRadarAnimOptionsApplied(self.radarSite, frameCnt)
                 } else {
@@ -124,13 +126,13 @@ class vcCanadaRadar: UIwXViewController {
     }
 
     func cloudChanged(_ prod: Int) {
-        ActVars.caRadarImageType = "vis"
+        caRadarImageType = "vis"
         url = UtilityCanadaImg.urls[prod]
         self.getContent()
     }
 
     @objc func radarClicked() {
-        ActVars.caRadarImageType = "radar"
+        caRadarImageType = "radar"
         self.getContent()
     }
 }
