@@ -83,23 +83,23 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        // FIXME TODO optimize code below
+        // FIXME optimize code below
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            ActVars.watchMcdMpdType = .MPD
             let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
+            vc.watchMcdMpdType = .MPD
             self.goToVC(vc)
         }
         if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
-            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
-            ActVars.watchMcdMpdType = .MCD
             let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
+            vc.watchMcdMpdType = .MCD
             self.goToVC(vc)
         }
         if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
-            ActVars.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
-            ActVars.watchMcdMpdType = .WATCH
             let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
+            vc.watchMcdMpdType = .WATCH
             self.goToVC(vc)
         }
     }

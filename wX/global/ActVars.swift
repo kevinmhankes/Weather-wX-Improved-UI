@@ -46,6 +46,6 @@ class ActVars {
     //static var wpcRainfallDay = "1"
 
     // used by ViewControllerSpcWatchMcdMpd
-    static var watchMcdMpdType = PolygonType.WATCH
-    static var watchMcdMpdNumber = ""
+    //static var watchMcdMpdType = PolygonType.WATCH
+    //static var watchMcdMpdNumber = ""
 }

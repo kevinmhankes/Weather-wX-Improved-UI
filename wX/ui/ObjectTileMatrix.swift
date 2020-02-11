@@ -144,56 +144,41 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcSpcStormReports()
             uiv!.goToVC(vc)
         case "mcd_tile":
-            //token="spcwatchmcdmpd"
-            ActVars.watchMcdMpdType = .MCD
             let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdType = .MCD
             uiv!.goToVC(vc)
         case "wat":
-            //token="spcwat"
-            ActVars.watchMcdMpdType = .WATCH
             let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdType = .WATCH
             uiv!.goToVC(vc)
         case "meso":
-            //token="spcmeso"
             let vc = vcSpcMeso()
             uiv!.goToVC(vc)
         case "fire_outlook":
-            //token="spcfiresummary"
             let vc = vcSpcFireSummary()
             uiv!.goToVC(vc)
         case "tstorm":
-            //token="spctstsummary"
             let vc = vcSpcTstormSummary()
             uiv!.goToVC(vc)
         case "spccompmap":
-            //token="spccompmap"
             let vc = vcSpcCompMap()
             uiv!.goToVC(vc)
         case "spchrrr":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "SPCHRRR"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "spchref":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "SPCHREF"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "spcsseo":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "SPCSSEO"
             let vc = vcModels()
             uiv!.goToVC(vc)
         default:
-            //token = "spcswo"
             let vc = vcSpcSwo()
             uiv!.goToVC(vc)
         }
-        /*if !MyApplication.helpMode {
-            uiv!.goToVC(token)
-        } else {
-            UtilityActions.showHelp(token, uiv!, menuButton)
-        }*/
     }
 
     @objc func imgClickedMisc(sender: UITapGestureRecognizer) {
@@ -201,17 +186,14 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "ncep":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "NCEP"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "hrrrviewer":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "ESRL"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "uswarn":
-            //token = "usalerts"
             let vc = vcUSAlerts()
             uiv!.goToVC(vc)
         case "goes":
@@ -220,15 +202,12 @@ final class ObjectTileMatrix: NSObject {
             vc.sectorCode = "CONUS"
             uiv!.goToVC(vc)
         case "srfd":
-            //token = "WPCText"
             let vc = vcWpcText()
             uiv!.goToVC(vc)
         case "fmap":
-            //token = "wpcimg"
             let vc = vcWpcImg()
             uiv!.goToVC(vc)
         case "nhc":
-            //token = "nhc"
             let vc = vcNhc()
             uiv!.goToVC(vc)
         case "nws_sector":
@@ -241,13 +220,10 @@ final class ObjectTileMatrix: NSObject {
                 let vc = vcRadarMosaicAwc()
                 uiv!.goToVC(vc)
             }
-            //uiv!.goToVC(token)
         case "opc":
-            //token = "opc"
             let vc = vcOpc()
             uiv!.goToVC(vc)
         case "goesfulldisk":
-            //token = "goesglobal"
             let vc = vcGoesGlobal()
             uiv!.goToVC(vc)
         case "nwsobs":
@@ -256,56 +232,42 @@ final class ObjectTileMatrix: NSObject {
             uiv!.goToVC(vc)
         case "wxogldualpane":
             ActVars.wxoglPaneCount = "2"
-            //token = "wxmetalradar"
             let vc = vcNexradRadar()
             uiv!.goToVC(vc)
         case "wxoglquadpane":
             ActVars.wxoglPaneCount = "4"
-            //token = "wxmetalradar"
             let vc = vcNexradRadar()
             uiv!.goToVC(vc)
         case "nsslwrf":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "NSSLWRF"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "lightning":
-            //token = "lightning"
             let vc = vcLightning()
             uiv!.goToVC(vc)
         case "wpc_rainfall":
-            //token = "wpcrainfallsummary"
             let vc = vcWpcRainfallSummary()
             uiv!.goToVC(vc)
         case "ncar_ensemble":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "NCAR_ENSEMBLE"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "wpcgefs":
-            //token = "modelgeneric"
             ActVars.modelActivitySelected = "WPCGEFS"
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "twstate":
             ActVars.webViewUrl = ""
             ActVars.webViewStateCode = Location.state
-            //token = "webview"
             let vc = vcWebView()
             uiv!.goToVC(vc)
         case "twtornado":
             ActVars.webViewUrl = ""
             ActVars.webViewStateCode = "tornado"
-            //token = "webview"
             let vc = vcWebView()
             uiv!.goToVC(vc)
         default:  break
         }
-        /*if !MyApplication.helpMode {
-            uiv!.goToVC(token)
-        } else {
-            UtilityActions.showHelp(token, uiv!, menuButton)
-        }*/
     }
 
     @objc func multiPaneRadarClicked(_ paneCount: String) {

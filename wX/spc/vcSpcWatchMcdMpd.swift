@@ -9,26 +9,29 @@ import AVFoundation
 
 class vcSpcWatchMcdMpd: UIwXViewController {
 
-    var bitmaps = [Bitmap]()
-    var numbers = [String]()
-    var listOfText = [String]()
-    var urls = [String]()
-    var playListButton = ObjectToolbarIcon()
-    var playButton = ObjectToolbarIcon()
-    var productNumber = ""
-    let synth = AVSpeechSynthesizer()
-    var objectWatchProduct: ObjectWatchProduct?
+    private var bitmaps = [Bitmap]()
+    private var numbers = [String]()
+    private var listOfText = [String]()
+    private var urls = [String]()
+    private var playListButton = ObjectToolbarIcon()
+    private var playButton = ObjectToolbarIcon()
+    private var productNumber = ""
+    private let synth = AVSpeechSynthesizer()
+    private var objectWatchProduct: ObjectWatchProduct?
+    var watchMcdMpdNumber = ""
+    var watchMcdMpdType = PolygonType.WATCH
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        productNumber = ActVars.watchMcdMpdNumber
+        // FIXME redundant vars
+        productNumber = watchMcdMpdNumber
         if productNumber != "" {
-            ActVars.watchMcdMpdNumber = ""
+            watchMcdMpdNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, playListButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -37,14 +40,14 @@ class vcSpcWatchMcdMpd: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             var productNumberList = [String]()
             if self.productNumber == "" {
-                productNumberList = ObjectWatchProduct.getNumberList(ActVars.watchMcdMpdType)
+                productNumberList = ObjectWatchProduct.getNumberList(self.watchMcdMpdType)
             } else {
                 productNumberList = [self.productNumber]
             }
             productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
                 print("NUMBER: " + number)
-                self.objectWatchProduct = ObjectWatchProduct(ActVars.watchMcdMpdType, number)
+                self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
                 self.objectWatchProduct!.getData()
                 self.listOfText.append(self.objectWatchProduct!.text)
                 self.urls.append(self.objectWatchProduct!.imgUrl)
@@ -118,7 +121,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
                 views.append(objectTextView.tv)
             }
         } else {
-            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + ActVars.watchMcdMpdType.string + "s"
+            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + watchMcdMpdType.string + "s"
             let objectTextView = ObjectTextView(self.stackView, message)
             objectTextView.tv.isAccessibilityElement = true
             views += [objectTextView.tv]

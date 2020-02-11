@@ -105,19 +105,16 @@ public class UtilityRadarUI {
         print(token)
         let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
-            ActVars.watchMcdMpdNumber = token.replace("WPCMPD", "")
-            //token = "spcwatchmcdmpd"
-            ActVars.watchMcdMpdType = .MPD
+            vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
+            vc.watchMcdMpdType = .MPD
         }
         if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
-            ActVars.watchMcdMpdNumber = token.replace("SPCMCD", "")
-            //token = "spcwatchmcdmpd"
-            ActVars.watchMcdMpdType = .MCD
+            vc.watchMcdMpdNumber = token.replace("SPCMCD", "")
+            vc.watchMcdMpdType = .MCD
         }
         if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
-            ActVars.watchMcdMpdNumber = token.replace("SPCWAT", "")
-            //token = "spcwat"
-            ActVars.watchMcdMpdType = .WATCH
+            vc.watchMcdMpdNumber = token.replace("SPCWAT", "")
+            vc.watchMcdMpdType = .WATCH
         }
         if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
             uiv.goToVC(vc)
