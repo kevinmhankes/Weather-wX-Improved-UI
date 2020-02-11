@@ -22,7 +22,7 @@ final class UtilityActions {
         }
     }
 
-    @objc static func radarClickedFromMenuDisable() {
+    /*@objc static func radarClickedFromMenuDisable() {
         print("radar shortcut")
         if !Location.isUS {
             //ActVars.caRadarImageType = "radar"
@@ -34,7 +34,7 @@ final class UtilityActions {
                 ActVars.wxoglPaneCount = "1"
             }
         }
-    }
+    }*/
 
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
@@ -43,12 +43,12 @@ final class UtilityActions {
             vc.caRadarProv = ""
             goToVCS(uiv, vc)
         } else {
-            if UIPreferences.dualpaneRadarIcon {
-                ActVars.wxoglPaneCount = "2"
-            } else {
-                ActVars.wxoglPaneCount = "1"
-            }
             let vc = vcNexradRadar()
+            if UIPreferences.dualpaneRadarIcon {
+                vc.wxoglPaneCount = "2"
+            } else {
+                vc.wxoglPaneCount = "1"
+            }
             goToVCS(uiv, vc)
         }
     }
@@ -74,19 +74,16 @@ final class UtilityActions {
     }
 
     static func multiPaneRadarClicked(_ uiv: UIViewController, _ paneCount: String) {
-           //var token = ""
-           switch paneCount {
-           case "2":
-               ActVars.wxoglPaneCount = "2"
-               //token = "wxmetalradar"
-           case "4":
-               ActVars.wxoglPaneCount = "4"
-               //token = "wxmetalradar"
-           default: break
-           }
-            let vc = vcNexradRadar()
-           UtilityActions.goToVCS(uiv, vc)
-       }
+        let vc = vcNexradRadar()
+        switch paneCount {
+            case "2":
+               vc.wxoglPaneCount = "2"
+            case "4":
+               vc.wxoglPaneCount = "4"
+            default: break
+        }
+        uiv.goToVC(vc)
+    }
 
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         //var token = ""

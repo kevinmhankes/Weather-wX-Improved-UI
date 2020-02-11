@@ -8,12 +8,6 @@ import UIKit
 
 class ActVars {
     static var nwsMosaicType = ""
-    //static var webViewUrl = ""
-    //static var webViewStateCode = ""
-    //static var webViewShowProduct = true
-    //static var webViewUseUrl = false
-    static var wxoglPaneCount = ""
-    static var wxoglCalledFromTimeButton = false
     static var wxoglDspLegendMax = 0.0
     static var nhcStormUrl = ""
     static var nhcStormTitle = ""
@@ -21,8 +15,6 @@ class ActVars {
     static var nhcStormImgUrl2 = ""
     static var nhcStormWallet = ""
     static var colorObject = wXColor()
- 
-    
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()
     static var vc = UIViewController()

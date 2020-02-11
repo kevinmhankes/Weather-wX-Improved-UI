@@ -12,40 +12,42 @@ import simd
 
 class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
-    var wxMetal = [WXMetalRender?]()
-    var device: MTLDevice!
-    var metalLayer = [CAMetalLayer?]()
-    var pipelineState: MTLRenderPipelineState!
-    var commandQueue: MTLCommandQueue!
-    var timer: CADisplayLink!
-    var projectionMatrix: float4x4!
-    var locationManager = CLLocationManager()
-    var lastFrameTimestamp: CFTimeInterval = 0.0
-    var mapIndex = 0
-    var mapView = MKMapView()
-    var mapShown = false
-    let scrollView = UIScrollView()
-    let stackView = UIStackView()
-    let toolbar = ObjectToolbar()
-    var doneButton = ObjectToolbarIcon()
-    var timeButton = ObjectToolbarIcon()
-    var warningButton = ObjectToolbarIcon()
-    var radarSiteButton = ObjectToolbarIcon()
-    var productButton = [ObjectToolbarIcon]()
-    var animateButton = ObjectToolbarIcon()
-    var siteButton = [ObjectToolbarIcon]()
-    var inOglAnim = false
-    var longPressCount = 0
-    var numberOfPanes = 1
-    var oneMinRadarFetch = Timer()
-    let ortInt: Float = 250.0
-    var textObj = WXMetalTextObject()
-    var colorLegend = UIColorLegend()
-    var screenScale = 0.0
-    var paneRange: Range<Int> = 0..<1
-    let semaphore = DispatchSemaphore(value: 1)
-    var screenWidth = 0.0
-    var screenHeight = 0.0
+    private var wxMetal = [WXMetalRender?]()
+    private var device: MTLDevice!
+    private var metalLayer = [CAMetalLayer?]()
+    private var pipelineState: MTLRenderPipelineState!
+    private var commandQueue: MTLCommandQueue!
+    private var timer: CADisplayLink!
+    private var projectionMatrix: float4x4!
+    private var locationManager = CLLocationManager()
+    private var lastFrameTimestamp: CFTimeInterval = 0.0
+    private var mapIndex = 0
+    private var mapView = MKMapView()
+    private var mapShown = false
+    private let scrollView = UIScrollView()
+    private let stackView = UIStackView()
+    private let toolbar = ObjectToolbar()
+    private var doneButton = ObjectToolbarIcon()
+    private var timeButton = ObjectToolbarIcon()
+    private var warningButton = ObjectToolbarIcon()
+    private var radarSiteButton = ObjectToolbarIcon()
+    private var productButton = [ObjectToolbarIcon]()
+    private var animateButton = ObjectToolbarIcon()
+    private var siteButton = [ObjectToolbarIcon]()
+    private var inOglAnim = false
+    private var longPressCount = 0
+    private var numberOfPanes = 1
+    private var oneMinRadarFetch = Timer()
+    private let ortInt: Float = 250.0
+    private var textObj = WXMetalTextObject()
+    private var colorLegend = UIColorLegend()
+    private var screenScale = 0.0
+    private var paneRange: Range<Int> = 0..<1
+    private let semaphore = DispatchSemaphore(value: 1)
+    private var screenWidth = 0.0
+    private var screenHeight = 0.0
+    var wxoglPaneCount = ""
+    var wxoglCalledFromTimeButton = false
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -168,7 +170,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         super.viewDidLoad()
         print(RadarPreferences.radarWarnings)
         self.view.backgroundColor = UIColor.black
-        numberOfPanes = Int(ActVars.wxoglPaneCount) ?? 1
+        numberOfPanes = Int(wxoglPaneCount) ?? 1
         paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
         mapView.delegate = self
@@ -450,8 +452,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             if self.presentedViewController == nil {
                 // Don't disable screen being left on if one goes from single pane to dual pane via time
                 // button and back
-                if ActVars.wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
-                    ActVars.wxoglCalledFromTimeButton = false
+                if wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
+                    wxoglCalledFromTimeButton = false
                 } else {
                     UIApplication.shared.isIdleTimerDisabled = false
                 }
@@ -497,8 +499,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 
     @objc func timeClicked() {
         let vc = vcNexradRadar()
-        ActVars.wxoglPaneCount = "2"
-        ActVars.wxoglCalledFromTimeButton = true
+        vc.wxoglPaneCount = "2"
+        vc.wxoglCalledFromTimeButton = true
         wxMetal.forEach {
             $0!.writePrefs()
         }
@@ -940,8 +942,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 
     @objc func goToQuadPane() {
         let vc = vcNexradRadar()
-        ActVars.wxoglPaneCount = "4"
-        ActVars.wxoglCalledFromTimeButton = true
+        vc.wxoglPaneCount = "4"
+        vc.wxoglCalledFromTimeButton = true
         wxMetal.forEach {
             $0!.writePrefs()
         }
