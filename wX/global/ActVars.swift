@@ -9,11 +9,6 @@ import UIKit
 class ActVars {
     static var nwsMosaicType = ""
     static var wxoglDspLegendMax = 0.0
-    static var nhcStormUrl = ""
-    static var nhcStormTitle = ""
-    static var nhcStormImgUrl1 = ""
-    static var nhcStormImgUrl2 = ""
-    static var nhcStormWallet = ""
     static var colorObject = wXColor()
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()

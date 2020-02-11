@@ -8,29 +8,29 @@ import UIKit
 
 class vcNhcStorm: UIwXViewController {
 
-    var productButton = ObjectToolbarIcon()
-    var buttonActionArray = [String]()
-    var url = ""
-    var html = ""
-    var titleS = ""
-    var baseUrl = ""
-    var baseUrlShort = ""
-    var stormId = ""
-    var goesIdImg = ""
-    var goesSector = ""
-    var goesId = ""
-    var imgUrl1 = ""
-    var product = ""
-    var topBitmap = Bitmap()
-    var bitmaps = [Bitmap]()
-    var tv = ObjectTextView()
-    let textProducts = [
+    private var productButton = ObjectToolbarIcon()
+    private var buttonActionArray = [String]()
+    private var url = ""
+    private var html = ""
+    private var titleS = ""
+    private var baseUrl = ""
+    private var baseUrlShort = ""
+    private var stormId = ""
+    private var goesIdImg = ""
+    private var goesSector = ""
+    private var goesId = ""
+    private var imgUrl1 = ""
+    private var product = ""
+    private var topBitmap = Bitmap()
+    private var bitmaps = [Bitmap]()
+    private var tv = ObjectTextView()
+    private let textProducts = [
         "MIATCP: Public Advisory",
         "MIATCM: Forecast Advisory",
         "MIATCD: Forecast Discussion",
         "MIAPWS: Wind Speed Probababilities"
     ]
-    let stormUrls = [
+    private let stormUrls = [
         "_key_messages.png",
         "WPCQPF_sm2.gif",
         "_earliest_reasonable_toa_34_sm2.png",
@@ -39,12 +39,19 @@ class vcNhcStorm: UIwXViewController {
         "_wind_probs_50_F120_sm2.png",
         "_wind_probs_64_F120_sm2.png"
     ]
+    // FIXME create class for these vars
+    var nhcStormUrl = ""
+    var nhcStormTitle = ""
+    var nhcStormImgUrl1 = ""
+    var nhcStormImgUrl2 = ""
+    var nhcStormWallet = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        url = ActVars.nhcStormUrl
-        titleS = ActVars.nhcStormTitle
-        imgUrl1 = ActVars.nhcStormImgUrl1
+        // FIXME redundant vars
+        url = nhcStormUrl
+        titleS = nhcStormTitle
+        imgUrl1 = nhcStormImgUrl1
         let year = UtilityTime.getYear()
         var yearInString = String(year)
         let yearInStringFull = String(year)
@@ -54,7 +61,7 @@ class vcNhcStorm: UIwXViewController {
         baseUrl += yearInString
         stormId = baseUrl.substring(baseUrl.count - 4)
         goesIdImg = stormId.substring(stormId.count - 4, stormId.count - 2)
-        stormId = ActVars.nhcStormWallet
+        stormId = nhcStormWallet
         stormId = stormId.replace("EP0", "EP").replace("AL0", "AL")
         goesSector = stormId.truncate(1)
         goesSector = goesSector.replace("A", "L")  // value is either E or L

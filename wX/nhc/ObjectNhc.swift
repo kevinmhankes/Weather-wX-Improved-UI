@@ -150,23 +150,23 @@ final class ObjectNhc: NSObject {
 
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
-        ActVars.nhcStormUrl = pacLinkList[index]
-        ActVars.nhcStormTitle = pacTitleList[index]
-        ActVars.nhcStormImgUrl1 = pacImg1List[index]
-        ActVars.nhcStormImgUrl2 = pacImg2List[index]
-        ActVars.nhcStormWallet = pacWalletList[index]
         let vc = vcNhcStorm()
+        vc.nhcStormUrl = pacLinkList[index]
+        vc.nhcStormTitle = pacTitleList[index]
+        vc.nhcStormImgUrl1 = pacImg1List[index]
+        vc.nhcStormImgUrl2 = pacImg2List[index]
+        vc.nhcStormWallet = pacWalletList[index]
         uiv.goToVC(vc)
     }
 
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
-        ActVars.nhcStormUrl = atlLinkList[index]
-        ActVars.nhcStormTitle = atlTitleList[index]
-        ActVars.nhcStormImgUrl1 = atlImg1List[index]
-        ActVars.nhcStormImgUrl2 = atlImg2List[index]
-        ActVars.nhcStormWallet = atlWalletList[index]
         let vc = vcNhcStorm()
+        vc.nhcStormUrl = atlLinkList[index]
+        vc.nhcStormTitle = atlTitleList[index]
+        vc.nhcStormImgUrl1 = atlImg1List[index]
+        vc.nhcStormImgUrl2 = atlImg2List[index]
+        vc.nhcStormWallet = atlWalletList[index]
         uiv.goToVC(vc)
     }
 }
