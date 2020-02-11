@@ -43,7 +43,7 @@ class ActVars {
     static var wpcImagesFromHomeScreen = false
     static var spcMesoFromHomeScreen = false
     static var spcMesoToken = ""
-    static var wpcRainfallDay = "1"
+    //static var wpcRainfallDay = "1"
 
     // used by ViewControllerSpcWatchMcdMpd
     static var watchMcdMpdType = PolygonType.WATCH

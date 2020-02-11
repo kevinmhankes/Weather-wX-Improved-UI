@@ -64,8 +64,8 @@ class vcWpcRainfallSummary: UIwXViewController {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
-            ActVars.wpcRainfallDay = String(sender.data + 1)
             let vc = vcWpcRainfallDiscussion()
+            vc.wpcRainfallDay = String(sender.data + 1)
             self.goToVC(vc)
         default: break
         }

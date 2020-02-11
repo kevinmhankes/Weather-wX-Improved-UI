@@ -18,6 +18,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     var text = ""
     var synth = AVSpeechSynthesizer()
     var product = ""
+    var wpcRainfallDay = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let number = Int(ActVars.wpcRainfallDay)! - 1
+            let number = Int(self.wpcRainfallDay)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
             self.product = UtilityWpcRainfallOutlook.productCode[number]
             self.text = UtilityDownload.getTextProduct(self.product)
@@ -51,7 +52,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let number = Int(ActVars.wpcRainfallDay)! - 1
+        let number = Int(wpcRainfallDay)! - 1
         ActVars.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
         let vc = vcImageViewer()
         self.goToVC(vc)
