@@ -24,14 +24,14 @@ final class UtilityHomeScreen {
             let vc = vcWpcImg()
             uiv.goToVC(vc)
         case "VIS_CONUS":
-            ActVars.goesSector = "CONUS"
-            ActVars.goesProduct = "GEOCOLOR"
             let vc = vcGoes()
+            vc.productCode = "GEOCOLOR"
+            vc.sectorCode = "CONUS"
             uiv.goToVC(vc)
         case "CONUSWV":
-            ActVars.goesSector = "CONUS"
-            ActVars.goesProduct = "09"
             let vc = vcGoes()
+            vc.productCode = "09"
+            vc.sectorCode = "CONUS"
             uiv.goToVC(vc)
         case "SWOD1":
             ActVars.spcswoDay = "1"
@@ -92,9 +92,9 @@ final class UtilityHomeScreen {
                 uiv.goToVC(vc)
             }
         case "GOES16":
-            ActVars.goesSector = ""
-            ActVars.goesProduct = ""
             let vc = vcGoes()
+            vc.productCode = ""
+            vc.sectorCode = ""
             uiv.goToVC(vc)
         default:
             ActVars.wpcImagesToken = homeScreenToken

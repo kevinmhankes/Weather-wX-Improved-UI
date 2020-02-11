@@ -11,9 +11,9 @@ final class UtilityActions {
 
     static func cloudClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            ActVars.goesProduct = ""
-            ActVars.goesSector = ""
             let vc = vcGoes()
+            vc.productCode = ""
+            vc.sectorCode = ""
             goToVCS(uiv, vc)
         } else {
             ActVars.caRadarImageType = "vis"

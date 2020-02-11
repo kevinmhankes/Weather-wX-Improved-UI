@@ -222,10 +222,9 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcUSAlerts()
             uiv!.goToVC(vc)
         case "goes":
-            ActVars.goesProduct = "09"
-            ActVars.goesSector = "CONUS"
-            //token = "goes16"
             let vc = vcGoes()
+            vc.productCode = "09"
+            vc.sectorCode = "CONUS"
             uiv!.goToVC(vc)
         case "srfd":
             //token = "WPCText"

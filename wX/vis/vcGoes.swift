@@ -16,7 +16,7 @@ class vcGoes: UIwXViewController {
     var sectorCode = ""
     var savePrefs = true
     var firstRun = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -56,14 +56,14 @@ class vcGoes: UIwXViewController {
     }
 
     func deSerializeSettings() {
-        if ActVars.goesSector == "" {
+        if sectorCode == "" {
             productCode = Utility.readPref("GOES16_PROD", "GEOCOLOR")
             sectorCode = Utility.readPref("GOES16_SECTOR", "cgl")
             productButton.title = productCode
             sectorButton.title = sectorCode
         } else {
-            productCode = ActVars.goesProduct
-            sectorCode = ActVars.goesSector
+            //productCode = ActVars.goesProduct
+            //sectorCode = ActVars.goesSector
             productButton.title = productCode
             sectorButton.title = sectorCode
             savePrefs = false

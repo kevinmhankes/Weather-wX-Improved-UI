@@ -11,11 +11,11 @@
 // [FIX] dual pane does not show radar time for both panes
 // [ADD] optimize SPC Fire / Tstorm outlook for large screen
 // [ADD] NHC: have multiples images per row
-// [REF] remove the need for ActVars as much as possible
 // [REF] remove the need for storyboards as much as possible
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
+		 [REF] remove the need for ActVars as much as possible
 56086 2020_02_10 [FIX] icons per row now changes dynamically after setting in Settings -> UI
 		 [ADD] re-architect Severe Dashboard image handling, if Landscape show 3 images per row
 		 [ADD] WPC Rainfall disc optimize for landscape mode on big screens
