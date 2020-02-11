@@ -66,10 +66,12 @@ class vcSpcSwoSummary: UIwXViewController {
         switch sender.data {
         case 0...2:
             ActVars.spcswoDay = String(sender.data + 1)
-            self.goToVC("spcswo")
+            let vc = vcSpcSwo()
+            self.goToVC(vc)
         case 3...7:
             ActVars.spcswoDay = "48"
-            self.goToVC("spcswo")
+            let vc = vcSpcSwo()
+            self.goToVC(vc)
         default: break
         }
     }
