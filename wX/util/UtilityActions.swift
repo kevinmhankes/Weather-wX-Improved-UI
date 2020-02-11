@@ -88,10 +88,6 @@ final class UtilityActions {
            UtilityActions.goToVCS(uiv, vc)
        }
 
-   //static func genericClicked(_ uiv: UIViewController, _ token: String) {
-   //    UtilityActions.goToVCS(uiv, token)
-   //}
-
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         //var token = ""
         if menuItem.hasPrefix("Help Mode") {
@@ -288,8 +284,4 @@ final class UtilityActions {
         synth = AVSpeechSynthesizer()
         playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
     }
-
-    //static func ttsPrep() {
-    //    GlobalVariables.globalSynth.stopSpeaking(at: AVSpeechBoundary.word)
-    //}
 }

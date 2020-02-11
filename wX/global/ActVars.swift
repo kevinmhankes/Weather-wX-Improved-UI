@@ -15,8 +15,6 @@ class ActVars {
     static var textViewText = ""
     static var textViewProduct = ""
     static var nwsMosaicType = ""
-    //static var wpcMpdNumber = ""
-    //static var spcMcdNumber = ""
     static var spcWatchNumber = ""
     static var wpcTextProduct = ""
     static var webViewUrl = ""
