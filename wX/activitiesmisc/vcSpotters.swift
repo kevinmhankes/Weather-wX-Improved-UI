@@ -56,7 +56,8 @@ class vcSpotters: UIwXViewController {
     }
 
     @objc func showSpotterReports() {
-        UtilityActions.goToVCS(self, "spotterreports")
+        let vc = vcSpotterReports()
+        self.goToVC(vc)
     }
 
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
@@ -71,7 +72,8 @@ class vcSpotters: UIwXViewController {
         ActVars.mapKitLat = self.spotterDataSorted[selection].lat
         ActVars.mapKitLon = self.spotterDataSorted[selection].lon
         ActVars.mapKitRadius = 20000.0
-        self.goToVC("mapkitview")
+        let vc = vcMapKitView()
+        self.goToVC(vc)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

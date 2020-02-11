@@ -55,6 +55,7 @@ class vcSpotterReports: UIwXViewController {
         ActVars.mapKitLat = self.spotterReportsDataSorted[selection].location.latString
         ActVars.mapKitLon = self.spotterReportsDataSorted[selection].location.lonString
         ActVars.mapKitRadius = 20000.0
-        self.goToVC("mapkitview")
+        let vc = vcMapKitView()
+        self.goToVC(vc)
     }
 }

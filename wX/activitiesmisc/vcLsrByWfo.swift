@@ -39,11 +39,6 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         }
     }
 
-    func warningSelected(sender: UITapGestureRecognizer) {
-        ActVars.usalertsDetailUrl = urls[sender.view!.tag]
-        self.goToVC("usalertsdetail")
-    }
-
     func getLsrFromWfo() -> [String] {
         var lsrArr = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="

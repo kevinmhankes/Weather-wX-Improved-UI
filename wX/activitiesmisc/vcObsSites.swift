@@ -78,9 +78,9 @@ class vcObsSites: UIwXViewController {
             self.siteButton.title = "Last Used: " + site
             ActVars.webViewShowProduct = false
             ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid="
-                + site
-            self.goToVC("webview")
+            ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
+            let vc = vcWebView()
+            self.goToVC(vc)
         }
     }
 
@@ -101,14 +101,16 @@ class vcObsSites: UIwXViewController {
         ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
         ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
-        self.goToVC("webview")
+        let vc = vcWebView()
+        self.goToVC(vc)
     }
 
     @objc func mapClicked() {
         ActVars.webViewShowProduct = false
         ActVars.webViewUseUrl = true
         ActVars.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
-        self.goToVC("webview")
+        let vc = vcWebView()
+        self.goToVC(vc)
     }
 
     private func displayContent() {

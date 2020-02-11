@@ -142,17 +142,20 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func gotoAlerts() {
-        self.goToVC("usalerts")
+        let vc = vcUSAlerts()
+        self.goToVC(vc)
     }
 
     @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
         ActVars.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
-        self.goToVC("usalertsdetail")
+        let vc = vcUSAlertsDetail()
+        self.goToVC(vc)
     }
 
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
         ActVars.spcStormReportsDay = "today"
-        self.goToVC("spcstormreports")
+        let vc = vcSpcStormReports()
+        self.goToVC(vc)
     }
 
     @objc func shareClicked(sender: UIButton) {
