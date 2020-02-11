@@ -9,14 +9,15 @@ import AVFoundation
 
 class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
 
-    var productButton = ObjectToolbarIcon()
-    var playButton = ObjectToolbarIcon()
-    var product = "PMDSPD"
-    var textView = ObjectTextView()
-    var playListButton = ObjectToolbarIcon()
-    var subMenu = ObjectMenuData(UtilityWpcText.titles, [], UtilityWpcText.labels)
-    var synth = AVSpeechSynthesizer()
-    var html = ""
+    private var productButton = ObjectToolbarIcon()
+    private var playButton = ObjectToolbarIcon()
+    private var product = "PMDSPD"
+    private var textView = ObjectTextView()
+    private var playListButton = ObjectToolbarIcon()
+    private var subMenu = ObjectMenuData(UtilityWpcText.titles, [], UtilityWpcText.labels)
+    private var synth = AVSpeechSynthesizer()
+    private var html = ""
+    var wpcTextProduct = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,11 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
-        if ActVars.wpcTextProduct == "" {
+        if wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
         } else {
-            product = ActVars.wpcTextProduct
-            ActVars.wpcTextProduct = ""
+            product = wpcTextProduct
+            wpcTextProduct = ""
         }
         self.getContent()
     }

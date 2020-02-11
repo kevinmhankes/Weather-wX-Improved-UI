@@ -8,7 +8,6 @@ import UIKit
 
 class ActVars {
     static var nwsMosaicType = ""
-    static var wpcTextProduct = ""
     static var webViewUrl = ""
     static var webViewStateCode = ""
     static var webViewShowProduct = true
@@ -22,8 +21,7 @@ class ActVars {
     static var nhcStormImgUrl2 = ""
     static var nhcStormWallet = ""
     static var colorObject = wXColor()
-    static var nhcGoesId = ""
-    static var nhcGoesImageType = ""
+ 
     
     static var modelActivitySelected = ""
     static var adhocLocation = LatLon()
