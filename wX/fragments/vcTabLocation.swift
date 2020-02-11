@@ -88,7 +88,7 @@ class vcTabLocation: vcTabParent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ActVars.vc = self
+        //ActVars.vc = self
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(willEnterForeground),
@@ -224,7 +224,7 @@ class vcTabLocation: vcTabParent {
 
     func getLocationHazards() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objHazards = Utility.getCurrentHazards(Location.getCurrentLocation())
+            self.objHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
             DispatchQueue.main.async {
                 if ObjectForecastPackageHazards.getHazardCount(self.objHazards) > 0 {
                     ObjectForecastPackageHazards.getHazardCards(self.stackViewHazards.view, self.objHazards, self.isUS)
@@ -391,7 +391,7 @@ class vcTabLocation: vcTabParent {
         super.viewWillAppear(animated)
         updateColors()
         objLabel.text = Location.name
-        ActVars.vc = self
+        //ActVars.vc = self
         let newhomeScreenFav = Utility.readPref(
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault

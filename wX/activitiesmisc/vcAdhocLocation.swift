@@ -22,7 +22,7 @@ class vcAdhocLocation: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        ActVars.vc = self
+        //ActVars.vc = self
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
@@ -40,7 +40,7 @@ class vcAdhocLocation: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.adhocLocation)
             self.objSevenDay = ObjectForecastPackage7Day(self.adhocLocation)
-            self.objHazards = ObjectForecastPackageHazards(self.adhocLocation)
+            self.objHazards = ObjectForecastPackageHazards(self, self.adhocLocation)
             DispatchQueue.main.async {
                 _ = ObjectCardCurrentConditions(self.stackView, self.objCurrentConditions, true)
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)

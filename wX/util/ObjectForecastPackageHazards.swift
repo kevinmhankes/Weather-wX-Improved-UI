@@ -10,13 +10,14 @@ final class ObjectForecastPackageHazards {
 
     var hazardsShort = ""
     var hazards = ""
+    static var uiv: UIViewController?
 
-    convenience init(_ locNum: Int) {
-        self.init(Location.getLatLon(locNum))
+    convenience init(_ uiv: UIViewController, _ locNum: Int) {
+        self.init(uiv, Location.getLatLon(locNum))
     }
 
     // US by LAT LON
-    convenience init(_ location: LatLon) {
+    convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
         let homescreenFav = TextUtils.split(
             Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
@@ -25,14 +26,16 @@ final class ObjectForecastPackageHazards {
         if homescreenFav.contains("TXT-HAZ") {
             hazards = getHazardsHtml(location)
         }
+        ObjectForecastPackageHazards.uiv = uiv
     }
 
     // CA
-    convenience init(_ html: String) {
+    convenience init(_ uiv: UIViewController, _ html: String) {
         self.init()
         let hazards = UtilityCanada.getHazards(html)
         hazardsShort = hazards[0]
         self.hazards = hazards[1]
+        ObjectForecastPackageHazards.uiv = uiv
     }
 
     func getHazardsHtml(_ location: LatLon) -> String {
@@ -94,11 +97,13 @@ final class ObjectForecastPackageHazards {
         if isUS {
             let vc = vcUSAlertsDetail()
             vc.usalertsDetailUrl = sender.strData
-            ActVars.vc.goToVC(vc)
+            //ActVars.vc.goToVC(vc)
+            uiv!.goToVC(vc)
         } else {
             let vc = vcTextViewer()
             vc.textViewText = sender.strData
-            ActVars.vc.goToVC(vc)
+            //ActVars.vc.goToVC(vc)
+            uiv!.goToVC(vc)
         }
     }
 }
