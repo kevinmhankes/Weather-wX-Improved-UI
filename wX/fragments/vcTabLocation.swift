@@ -301,7 +301,9 @@ class vcTabLocation: vcTabParent {
     }
 
     @objc override func warningsClicked() {
-        UtilityActions.genericClicked(self, "usalerts")
+        let vc = vcUSAlertsDetail()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "usalerts")
     }
 
     @objc override func dualPaneRadarClicked() {
@@ -313,42 +315,60 @@ class vcTabLocation: vcTabParent {
     }
 
     @objc override func settingsClicked() {
-        UtilityActions.genericClicked(self, "settingsmain")
+        let vc = vcSettingsMain()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "settingsmain")
     }
 
     @objc override func mesoanalysisClicked() {
-        UtilityActions.genericClicked(self, "spcmeso")
+        let vc = vcSpcMeso()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "spcmeso")
     }
 
     @objc override func ncepModelsClicked() {
         ActVars.modelActivitySelected = "NCEP"
-        UtilityActions.genericClicked(self, "modelgeneric")
+        let vc = vcModels()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "modelgeneric")
     }
 
     @objc override func hourlyClicked() {
-        var token = ""
+        //var token = ""
         if Location.isUS {
-            token = "hourly"
+            //token = "hourly"
+            let vc = vcHourly()
+            self.goToVC(vc)
         } else {
-            token = "cahourly"
+            //token = "cahourly"
+            let vc = vcCanadaHourly()
+            self.goToVC(vc)
         }
-        UtilityActions.genericClicked(self, token)
+        //UtilityActions.genericClicked(self, token)
     }
 
     @objc override func nhcClicked() {
-        UtilityActions.genericClicked(self, "nhc")
+        let vc = vcNhc()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "nhc")
     }
 
     @objc override func lightningClicked() {
-        UtilityActions.genericClicked(self, "lightning")
+        let vc = vcLightning()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "lightning")
     }
 
     @objc override func nationalImagesClicked() {
-        UtilityActions.genericClicked(self, "wpcimg")
+        let vc = vcWpcImg()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "wpcimg")
     }
 
     @objc override func nationalTextClicked() {
-        UtilityActions.genericClicked(self, "WPCText")
+        let vc = vcWpcText()
+        self.goToVC(vc)
+        //UtilityActions.genericClicked(self, "WPCText")
     }
 
     @objc override func willEnterForeground() {

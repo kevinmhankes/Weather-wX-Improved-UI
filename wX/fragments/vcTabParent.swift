@@ -112,7 +112,8 @@ class vcTabParent: UIViewController {
     }
 
     @objc func warningsClicked() {
-        objTileMatrix.genericClicked("usalerts")
+        let vc = vcUSAlerts()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func dualPaneRadarClicked() {
@@ -197,42 +198,49 @@ class vcTabParent: UIViewController {
     }
 
     @objc func settingsClicked() {
-        objTileMatrix.genericClicked("settingsmain")
+        let vc = vcSettingsMain()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func mesoanalysisClicked() {
-        objTileMatrix.genericClicked("spcmeso")
+        let vc = vcSpcMeso()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func ncepModelsClicked() {
         ActVars.modelActivitySelected = "NCEP"
-        objTileMatrix.genericClicked("modelgeneric")
+        let vc = vcModels()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func hourlyClicked() {
-        var token = ""
         if Location.isUS {
-            token = "hourly"
+            let vc = vcHourly()
+            objTileMatrix.genericClicked(vc)
         } else {
-            token = "cahourly"
+            let vc = vcCanadaHourly()
+            objTileMatrix.genericClicked(vc)
         }
-        objTileMatrix.genericClicked(token)
     }
 
     @objc func nhcClicked() {
-        objTileMatrix.genericClicked("nhc")
+        let vc = vcNhc()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func lightningClicked() {
-        objTileMatrix.genericClicked("lightning")
+        let vc = vcLightning()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func nationalImagesClicked() {
-        objTileMatrix.genericClicked("wpcimg")
+        let vc = vcWpcImg()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func nationalTextClicked() {
-        objTileMatrix.genericClicked("WPCText")
+        let vc = vcWpcText()
+        objTileMatrix.genericClicked(vc)
     }
 
     @objc func showKeyboardShortcuts() {

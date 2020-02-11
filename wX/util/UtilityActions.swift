@@ -88,9 +88,9 @@ final class UtilityActions {
            UtilityActions.goToVCS(uiv, vc)
        }
 
-   static func genericClicked(_ uiv: UIViewController, _ token: String) {
-       UtilityActions.goToVCS(uiv, token)
-   }
+   //static func genericClicked(_ uiv: UIViewController, _ token: String) {
+   //    UtilityActions.goToVCS(uiv, token)
+   //}
 
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         //var token = ""
@@ -168,7 +168,7 @@ final class UtilityActions {
         }
     }
 
-    static func goToVCS(_ uiv: UIViewController, _ target: String) {
+    static func goToVCSDisable(_ uiv: UIViewController, _ target: String) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: target) as UIViewController
         nextViewController.modalPresentationStyle = .fullScreen

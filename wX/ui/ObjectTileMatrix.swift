@@ -317,21 +317,23 @@ final class ObjectTileMatrix: NSObject {
     }
 
     @objc func multiPaneRadarClicked(_ paneCount: String) {
-        var token = ""
+        //var token = ""
         switch paneCount {
         case "2":
             ActVars.wxoglPaneCount = "2"
-            token = "wxmetalradar"
+            //token = "wxmetalradar"
         case "4":
             ActVars.wxoglPaneCount = "4"
-            token = "wxmetalradar"
+            //token = "wxmetalradar"
         default: break
         }
-        UtilityActions.goToVCS(uiv!, token)
+        let vc = vcNexradRadar()
+        uiv!.goToVC(vc)
+        //UtilityActions.goToVCS(uiv!, token)
     }
 
-    @objc func genericClicked(_ token: String) {
-        UtilityActions.goToVCS(uiv!, token)
+    @objc func genericClicked(_ vc: UIViewController) {
+        UtilityActions.goToVCS(uiv!, vc)
     }
 
     @objc func cloudClicked() {
