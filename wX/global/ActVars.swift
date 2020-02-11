@@ -8,10 +8,10 @@ import UIKit
 
 class ActVars {
     static var nwsMosaicType = ""
-    static var webViewUrl = ""
-    static var webViewStateCode = ""
-    static var webViewShowProduct = true
-    static var webViewUseUrl = false
+    //static var webViewUrl = ""
+    //static var webViewStateCode = ""
+    //static var webViewShowProduct = true
+    //static var webViewUseUrl = false
     static var wxoglPaneCount = ""
     static var wxoglCalledFromTimeButton = false
     static var wxoglDspLegendMax = 0.0

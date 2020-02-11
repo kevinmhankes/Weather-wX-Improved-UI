@@ -56,16 +56,16 @@ class vcSettingsAbout: UIwXViewController {
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "faq":
-            ActVars.webViewShowProduct = false
-            ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = faqUrl
             let vc = vcWebView()
+            vc.webViewShowProduct = false
+            vc.webViewUseUrl = true
+            vc.webViewUrl = faqUrl
             self.goToVC(vc)
         case "notes":
-            ActVars.webViewShowProduct = false
-            ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = releaseNotesUrl
             let vc = vcWebView()
+            vc.webViewShowProduct = false
+            vc.webViewUseUrl = true
+            vc.webViewUrl = releaseNotesUrl
             self.goToVC(vc)
         default:
             break

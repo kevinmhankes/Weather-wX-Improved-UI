@@ -76,10 +76,10 @@ class vcObsSites: UIwXViewController {
             let site = listCity[sender.data].split(":")[0]
             Utility.writePref(prefToken, site)
             self.siteButton.title = "Last Used: " + site
-            ActVars.webViewShowProduct = false
-            ActVars.webViewUseUrl = true
-            ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
             let vc = vcWebView()
+            vc.webViewShowProduct = false
+            vc.webViewUseUrl = true
+            vc.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
             self.goToVC(vc)
         }
     }
@@ -98,18 +98,18 @@ class vcObsSites: UIwXViewController {
     }
 
     @objc func siteClicked() {
-        ActVars.webViewShowProduct = false
-        ActVars.webViewUseUrl = true
-        ActVars.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
         let vc = vcWebView()
+        vc.webViewShowProduct = false
+        vc.webViewUseUrl = true
+        vc.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
         self.goToVC(vc)
     }
 
     @objc func mapClicked() {
-        ActVars.webViewShowProduct = false
-        ActVars.webViewUseUrl = true
-        ActVars.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
         let vc = vcWebView()
+        vc.webViewShowProduct = false
+        vc.webViewUseUrl = true
+        vc.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
         self.goToVC(vc)
     }
 

@@ -257,14 +257,14 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcModels()
             uiv!.goToVC(vc)
         case "twstate":
-            ActVars.webViewUrl = ""
-            ActVars.webViewStateCode = Location.state
             let vc = vcWebView()
+            vc.webViewUrl = ""
+            vc.webViewStateCode = Location.state
             uiv!.goToVC(vc)
         case "twtornado":
-            ActVars.webViewUrl = ""
-            ActVars.webViewStateCode = "tornado"
             let vc = vcWebView()
+            vc.webViewUrl = ""
+            vc.webViewStateCode = "tornado"
             uiv!.goToVC(vc)
         default:  break
         }
