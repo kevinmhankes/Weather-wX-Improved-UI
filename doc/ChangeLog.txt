@@ -18,6 +18,7 @@
 
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
+		 [FIX] spotter report map not working
 56086 2020_02_10 [FIX] icons per row now changes dynamically after setting in Settings -> UI
 		 [ADD] re-architect Severe Dashboard image handling, if Landscape show 3 images per row
 		 [ADD] WPC Rainfall disc optimize for landscape mode on big screens
