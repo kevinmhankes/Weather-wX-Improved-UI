@@ -9,13 +9,13 @@ import AVFoundation
 
 class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
-    var playlistItems = [String]()
-    var addButton = ObjectToolbarIcon()
-    var wfotextButton = ObjectToolbarIcon()
-    var playButton = ObjectToolbarIcon()
-    let textPreviewLength = 150
-    var synth = AVSpeechSynthesizer()
-    var fabRight: ObjectFab?
+    private var playlistItems = [String]()
+    private var addButton = ObjectToolbarIcon()
+    private var wfotextButton = ObjectToolbarIcon()
+    private var playButton = ObjectToolbarIcon()
+    private let textPreviewLength = 150
+    private var synth = AVSpeechSynthesizer()
+    private var fabRight: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()

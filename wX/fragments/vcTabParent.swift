@@ -8,6 +8,7 @@ import UIKit
 
 class vcTabParent: UIViewController {
 
+    // FIXME protected - accessible to children
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     var objTileMatrix = ObjectTileMatrix()

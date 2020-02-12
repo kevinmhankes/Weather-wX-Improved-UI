@@ -8,7 +8,7 @@ import UIKit
 
 class vcTabSpc: vcTabParent {
 
-    var tilesPerRow = 0
+    private var tilesPerRow = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()

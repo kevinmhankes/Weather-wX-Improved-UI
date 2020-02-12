@@ -10,14 +10,14 @@ import MapKit
 
 class vcCanadaText: UIwXViewController {
 
-    var product = "focn45"
-    var textView = ObjectTextView()
-    var productButton = ObjectToolbarIcon()
-    var siteButton = ObjectToolbarIcon()
-    var html = ""
-    var playButton = ObjectToolbarIcon()
-    var playlistButton = ObjectToolbarIcon()
-    let synth = AVSpeechSynthesizer()
+    private var product = "focn45"
+    private var textView = ObjectTextView()
+    private var productButton = ObjectToolbarIcon()
+    private var siteButton = ObjectToolbarIcon()
+    private var html = ""
+    private var playButton = ObjectToolbarIcon()
+    private var playlistButton = ObjectToolbarIcon()
+    private let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()

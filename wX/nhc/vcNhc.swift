@@ -8,11 +8,11 @@ import UIKit
 
 class vcNhc: UIwXViewController {
 
-    var textprod = "AFD"
-    var textProductButton = ObjectToolbarIcon()
-    var imageProductButton = ObjectToolbarIcon()
-    var glcfsButton = ObjectToolbarIcon()
-    var objNHC: ObjectNhc?
+    private var textprod = "AFD"
+    private var textProductButton = ObjectToolbarIcon()
+    private var imageProductButton = ObjectToolbarIcon()
+    private var glcfsButton = ObjectToolbarIcon()
+    private var objNHC: ObjectNhc?
 
     override func viewDidLoad() {
         super.viewDidLoad()

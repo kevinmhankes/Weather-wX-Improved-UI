@@ -8,10 +8,10 @@ import UIKit
 
 class vcSettingsAbout: UIwXViewController {
 
-    let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
-    let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
-    static let copyright = "©"
-    let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
+    private let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
+    private let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
+    private static let copyright = "©"
+    private let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
         + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
         + " Software is provided \"as is\". Use at your own risk. Use for educational purposes "
         + "and non-commercial purposes only. Do not use for operational purposes.  "

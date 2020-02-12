@@ -10,46 +10,46 @@ import simd
 
 class vcTabLocation: vcTabParent {
 
-    var locationButton = UITextView()
-    var forecastText = [String]()
-    var forecastImage = [UIImage]()
-    var menuButton = ObjectToolbarIcon()
-    var lastRefresh: Int64 = 0
-    var currentTime: Int64 = 0
-    var currentTimeSec: Int64 = 0
-    var refreshIntervalSec: Int64 = 0
-    var objCurrentConditions = ObjectForecastPackageCurrentConditions()
-    var objHazards = ObjectForecastPackageHazards()
-    var objSevenDay = ObjectForecastPackage7Day()
-    var textArr = [String: String]()
-    var timeButton = ObjectToolbarIcon()
-    var oldLocation = LatLon()
-    var isUS = true
-    var isUSDisplayed = true
-    var objLabel = ObjectTextView()
-    var stackViewCurrentConditions: ObjectStackView!
-    var stackViewForecast: ObjectStackView!
-    var stackViewHazards: ObjectStackView!
-    var stackViewRadar = ObjectStackViewHS()
-    var ccCard: ObjectCardCurrentConditions?
-    var objCard7DayCollection: ObjectCard7DayCollection?
-    var extraDataCards = [ObjectStackViewHS]()
-    var wxMetal = [WXMetalRender?]()
-    var metalLayer = [CAMetalLayer?]()
-    var pipelineState: MTLRenderPipelineState!
-    var commandQueue: MTLCommandQueue!
-    var timer: CADisplayLink!
-    var projectionMatrix: float4x4!
-    var lastFrameTimestamp: CFTimeInterval = 0.0
-    let ortInt: Float = 350.0
-    let numberOfPanes = 1
-    var textObj = WXMetalTextObject()
-    var longPressCount = 0
-    var toolbar = ObjectToolbar(.top)
-    var globalHomeScreenFav = ""
-    var globalTextViewFontSize: CGFloat = 0.0
+    private var locationButton = UITextView()
+    private var forecastText = [String]()
+    private var forecastImage = [UIImage]()
+    private var menuButton = ObjectToolbarIcon()
+    private var lastRefresh: Int64 = 0
+    private var currentTime: Int64 = 0
+    private var currentTimeSec: Int64 = 0
+    private var refreshIntervalSec: Int64 = 0
+    private var objCurrentConditions = ObjectForecastPackageCurrentConditions()
+    private var objHazards = ObjectForecastPackageHazards()
+    private var objSevenDay = ObjectForecastPackage7Day()
+    private var textArr = [String: String]()
+    private var timeButton = ObjectToolbarIcon()
+    private var oldLocation = LatLon()
+    private var isUS = true
+    private var isUSDisplayed = true
+    private var objLabel = ObjectTextView()
+    private var stackViewCurrentConditions: ObjectStackView!
+    private var stackViewForecast: ObjectStackView!
+    private var stackViewHazards: ObjectStackView!
+    private var stackViewRadar = ObjectStackViewHS()
+    private var ccCard: ObjectCardCurrentConditions?
+    private var objCard7DayCollection: ObjectCard7DayCollection?
+    private var extraDataCards = [ObjectStackViewHS]()
+    private var wxMetal = [WXMetalRender?]()
+    private var metalLayer = [CAMetalLayer?]()
+    private var pipelineState: MTLRenderPipelineState!
+    private var commandQueue: MTLCommandQueue!
+    private var timer: CADisplayLink!
+    private var projectionMatrix: float4x4!
+    private var lastFrameTimestamp: CFTimeInterval = 0.0
+    private let ortInt: Float = 350.0
+    private let numberOfPanes = 1
+    private var textObj = WXMetalTextObject()
+    private var longPressCount = 0
+    private var toolbar = ObjectToolbar(.top)
+    private var globalHomeScreenFav = ""
+    private var globalTextViewFontSize: CGFloat = 0.0
     #if targetEnvironment(macCatalyst)
-    var oneMinRadarFetch = Timer()
+    private var oneMinRadarFetch = Timer()
     #endif
 
     override func viewDidLayoutSubviews() {

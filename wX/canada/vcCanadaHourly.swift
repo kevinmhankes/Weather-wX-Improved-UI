@@ -8,7 +8,7 @@ import UIKit
 
 class vcCanadaHourly: UIwXViewController {
 
-    var html = ""
+    private var html = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

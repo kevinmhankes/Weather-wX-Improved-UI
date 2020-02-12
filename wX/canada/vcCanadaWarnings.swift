@@ -9,9 +9,9 @@ import AVFoundation
 
 class vcCanadaWarnings: UIwXViewController {
 
-    var objCAWARN: ObjectCanadaWarnings!
-    var provButton = ObjectToolbarIcon()
-    var prov = "Canada"
+    private var objCAWARN: ObjectCanadaWarnings!
+    private var provButton = ObjectToolbarIcon()
+    private var prov = "Canada"
 
     override func viewDidLoad() {
         super.viewDidLoad()
