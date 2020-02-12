@@ -10,6 +10,7 @@
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
 // [REF] remove the need for storyboards as much as possible
+// [REF] remove files that are no longer in the project
 
 56088 2020_02_12 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
