@@ -12,11 +12,11 @@
 // [ADD] NHC: have multiples images per row
 // [REF] remove the need for storyboards as much as possible
 // [REF] in VCs mark vars private if can
-// [ADD] add title in toolbar for SPC SWO
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 
 56088 2020_02_12 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
+		 [ADD] add title in toolbar for SPC SWO
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working

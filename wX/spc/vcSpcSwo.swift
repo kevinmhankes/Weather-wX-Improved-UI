@@ -22,12 +22,14 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
         super.viewDidLoad()
         synth.delegate = self
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let statusButton = ObjectToolbarIcon(title: "Day " + spcSwoDay, self, nil)
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let stateButton = ObjectToolbarIcon(title: "STATE", self, #selector(stateClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
+                statusButton,
                 GlobalVariables.flexBarButton,
                 stateButton,
                 playButton,
