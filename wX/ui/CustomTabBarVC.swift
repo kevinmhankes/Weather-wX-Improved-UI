@@ -24,5 +24,16 @@ final class CustomTabBarVC: UITabBarController {
                 }
             }
         }
+        
+        
+        /*let firstViewController = vcTabLocation()
+        firstViewController.tabBarItem = UITabBarItem(title: "LOCAL", image: nil, tag: 0)
+        let secondViewController = vcTabSpc()
+        secondViewController.tabBarItem = UITabBarItem(title: "SPC", image: nil, tag: 1)
+        let thirdViewController = vcTabMisc()
+        thirdViewController.tabBarItem = UITabBarItem(title: "MISC", image: nil, tag: 2)
+        let tabBarList = [firstViewController, secondViewController, thirdViewController]
+        viewControllers = tabBarList*/
+        
     }
 }
