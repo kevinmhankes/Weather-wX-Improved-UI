@@ -27,7 +27,10 @@ final class ObjectNhc: NSObject {
     private var bitmapsAtlantic = [Bitmap]()
     private var bitmapsPacific = [Bitmap]()
     private var bitmapsCentral = [Bitmap]()
-
+    var imageCount = 0
+    var imagesPerRow = 2
+    var imageStackViewList = [ObjectStackView]()
+    
     private let imageUrlsAtlanic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
@@ -49,6 +52,9 @@ final class ObjectNhc: NSObject {
     init(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv
         self.stackView = stackView
+        if UtilityUI.isTablet() {
+            imagesPerRow = 3
+        }
     }
 
     func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
@@ -137,16 +143,43 @@ final class ObjectNhc: NSObject {
     }
 
     func showAtlanticImageData() {
-        bitmapsAtlantic.forEach {_ = ObjectImage(stackView, $0)}
+        bitmapsAtlantic.enumerated().forEach { index, bitmap in
+            if imageCount % imagesPerRow == 0 {
+                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(stackView)
+                self.stackView.addArrangedSubview(stackView.view)
+                _ = ObjectImage(
+                    stackView.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsAtlanic[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            } else {
+                _ = ObjectImage(
+                    imageStackViewList.last!.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsAtlanic[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            }
+            imageCount += 1
+            //_ = ObjectImage(stackView, $0)
+        }
     }
 
     func showPacificImageData() {
-        bitmapsPacific.forEach {_ = ObjectImage(stackView, $0)}
+        bitmapsPacific.forEach {
+            _ = ObjectImage(stackView, $0)
+        }
     }
 
     func showCentralImageData() {
-        bitmapsCentral.forEach {_ = ObjectImage(stackView, $0)}
+        bitmapsCentral.forEach {
+            _ = ObjectImage(stackView, $0)
+        }
     }
+    
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
 
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
