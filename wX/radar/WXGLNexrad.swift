@@ -5,6 +5,8 @@
  *****************************************************************************/
 
 final class WXGLNexrad {
+    
+    static var wxoglDspLegendMax = 0.0
 
     static func getRadarTimeStamp() -> String {
         let radarTimeStamp = getRadarInfo("")

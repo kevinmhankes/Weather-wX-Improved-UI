@@ -8,12 +8,13 @@ import UIKit
 
 class vcRadarMosaic: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var animateButton = ObjectToolbarIcon()
-    var index = 8
-    var isLocal = false
-    let prefToken = "NWSMOSAIC_PARAM_LAST_USED"
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var animateButton = ObjectToolbarIcon()
+    private var index = 8
+    private var isLocal = false
+    private let prefToken = "NWSMOSAIC_PARAM_LAST_USED"
+    var nwsMosaicType = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class vcRadarMosaic: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
-        if ActVars.nwsMosaicType == "local" {
-            ActVars.nwsMosaicType = ""
+        if nwsMosaicType == "local" {
+            nwsMosaicType = ""
             isLocal = true
             let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNwsMosaic.getSectorFromState(
                 UtilityUSImgNwsMosaic.getStateFromRid()

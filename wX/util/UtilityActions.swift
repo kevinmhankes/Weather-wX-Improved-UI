@@ -122,12 +122,12 @@ final class UtilityActions {
         case "Radar Mosaic":
             if Location.isUS {
                 if !UIPreferences.useAwcRadarMosaic {
-                    ActVars.nwsMosaicType = "local"
                     let vc = vcRadarMosaic()
+                    vc.nwsMosaicType = "local"
                     uiv.goToVC(vc)
                 } else {
-                    ActVars.nwsMosaicType = "local"
                     let vc = vcRadarMosaicAwc()
+                    vc.nwsMosaicType = "local"
                     uiv.goToVC(vc)
                 }
             } else {

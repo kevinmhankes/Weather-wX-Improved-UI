@@ -55,8 +55,8 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                 siteButton,
                 productButton,
                 playButton,
-                shareButton,
-                playlistButton
+                playlistButton,
+                shareButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)

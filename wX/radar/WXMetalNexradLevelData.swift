@@ -76,7 +76,7 @@ final class WXMetalNexradLevelData {
             let elevationAngle = dis.getShort()
             degree = Double(elevationAngle) / 10.0
             halfword3132 = dis.getFloat()
-            ActVars.wxoglDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
+            WXGLNexrad.wxoglDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
             dis.skipBytes(26)
             dis.skipBytes(30)
             seekStart = dis.filePointer

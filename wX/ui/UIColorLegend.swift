@@ -301,19 +301,19 @@ final class UIColorLegend: UIView {
                 )
             }
             units = " IN"
-            var j = ActVars.wxoglDspLegendMax
+            var j = WXGLNexrad.wxoglDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0 / ActVars.wxoglDspLegendMax)
+                let yVar1 = CGFloat(255.0 / WXGLNexrad.wxoglDspLegendMax)
                     * scaledHeightVel
-                    * CGFloat(ActVars.wxoglDspLegendMax - j)
+                    * CGFloat(WXGLNexrad.wxoglDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight
                 drawText(String(j).truncate(4) + units, xVar, yVar)
                 if !unitsDrawn {
                     unitsDrawn = true
                     units = ""
                 }
-                j -= ActVars.wxoglDspLegendMax / 16.0
+                j -= WXGLNexrad.wxoglDspLegendMax / 16.0
             }
         case "DAA":
             (0...255).forEach {
@@ -326,19 +326,19 @@ final class UIColorLegend: UIView {
                 )
             }
             units = " IN"
-            var j = ActVars.wxoglDspLegendMax
+            var j = WXGLNexrad.wxoglDspLegendMax
             while j > 0 {
                 let xVar = widthStarting + width + textFromLegend
-                let yVar1 = CGFloat(255.0 / ActVars.wxoglDspLegendMax)
+                let yVar1 = CGFloat(255.0 / WXGLNexrad.wxoglDspLegendMax)
                     * scaledHeightVel
-                    * CGFloat(ActVars.wxoglDspLegendMax - j)
+                    * CGFloat(WXGLNexrad.wxoglDspLegendMax - j)
                 let yVar = yVar1 + heightFudge + startHeight
                 drawText(String(j).truncate(4) + units, xVar, yVar)
                 if !unitsDrawn {
                     unitsDrawn = true
                     units = ""
                 }
-                j -= ActVars.wxoglDspLegendMax / 16.0
+                j -= WXGLNexrad.wxoglDspLegendMax / 16.0
             }
         default: break
         }

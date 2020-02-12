@@ -45,7 +45,7 @@ final class ObjectAlertSummary: NSObject {
                 filterBool = (alert.title.contains("Tornado Warning")
                     || alert.title.contains("Severe Thunderstorm Warning")
                     || alert.title.contains("Flash Flood Warning"))
-                filterLabel = "Tornado/FFW/ThunderStorm"
+                filterLabel = "Tornado/ThunderStorm/FFW"
             } else {
                 filterBool = (alert.title.hasPrefix(filter))
                 filterLabel = filter

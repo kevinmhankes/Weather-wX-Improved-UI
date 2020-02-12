@@ -8,16 +8,17 @@ import UIKit
 
 class vcRadarMosaicAwc: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var sectorButton = ObjectToolbarIcon()
-    var animateButton = ObjectToolbarIcon()
-    var index = 0
-    var product = "rad_rala"
-    let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
-    let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
-    var sector = "us"
-    var isLocal = false
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var sectorButton = ObjectToolbarIcon()
+    private var animateButton = ObjectToolbarIcon()
+    private var index = 0
+    private var product = "rad_rala"
+    private let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
+    private let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
+    private var sector = "us"
+    private var isLocal = false
+    var nwsMosaicType = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,8 @@ class vcRadarMosaicAwc: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
-        if ActVars.nwsMosaicType == "local" {
-            ActVars.nwsMosaicType = ""
+        if nwsMosaicType == "local" {
+            nwsMosaicType = ""
             isLocal = true
             sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
         }

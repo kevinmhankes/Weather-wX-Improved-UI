@@ -18,10 +18,10 @@ final class ObjectCardLocationItem {
         _ gesture: UITapGestureRecognizerWithData
     ) {
         let sV = ObjectStackView(.fill, .vertical, spacing: 0)
-        let tvName = ObjectTextView(sV.view, name, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvName = ObjectTextView(sV.view, name, isUserInteractionEnabled: false, isZeroSpacing: false)
         tvCurrentConditions = ObjectTextView(sV.view, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvMiddle = ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
-        tvName.font = FontSize.medium.size
+        tvName.font = FontSize.large.size
         tvCurrentConditions.font = FontSize.small.size
         tvMiddle.font = FontSize.small.size
         tvName.color = ColorCompatibility.highlightText

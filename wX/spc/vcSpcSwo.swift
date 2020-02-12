@@ -31,8 +31,8 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
                 GlobalVariables.flexBarButton,
                 stateButton,
                 playButton,
-                shareButton,
-                playlistButton
+                playlistButton,
+                shareButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)

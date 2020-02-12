@@ -66,8 +66,8 @@ final class UtilityHomeScreen {
             goToSpcMesoFromHS(uiv, "rgnlrad")
         case "RAD_2KM":
             if !UIPreferences.useAwcRadarMosaic {
-                ActVars.nwsMosaicType = "local"
                 let vc = vcRadarMosaic()
+                vc.nwsMosaicType = "local"
                 uiv.goToVC(vc)
             } else {
                 let vc = vcRadarMosaicAwc()
