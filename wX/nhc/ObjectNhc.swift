@@ -163,19 +163,54 @@ final class ObjectNhc: NSObject {
                 )
             }
             imageCount += 1
-            //_ = ObjectImage(stackView, $0)
         }
     }
 
     func showPacificImageData() {
-        bitmapsPacific.forEach {
-            _ = ObjectImage(stackView, $0)
+        bitmapsPacific.enumerated().forEach { index, bitmap in
+            if imageCount % imagesPerRow == 0 {
+                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(stackView)
+                self.stackView.addArrangedSubview(stackView.view)
+                _ = ObjectImage(
+                    stackView.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsPacific[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            } else {
+                _ = ObjectImage(
+                    imageStackViewList.last!.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsPacific[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            }
+            imageCount += 1
         }
     }
 
     func showCentralImageData() {
-        bitmapsCentral.forEach {
-            _ = ObjectImage(stackView, $0)
+        bitmapsCentral.enumerated().forEach { index, bitmap in
+            if imageCount % imagesPerRow == 0 {
+                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(stackView)
+                self.stackView.addArrangedSubview(stackView.view)
+                _ = ObjectImage(
+                    stackView.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsCentral[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            } else {
+                _ = ObjectImage(
+                    imageStackViewList.last!.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(imageUrlsCentral[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            }
+            imageCount += 1
         }
     }
     
