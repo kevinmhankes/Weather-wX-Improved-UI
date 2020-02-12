@@ -8,9 +8,9 @@ import UIKit
 
 class vcSpcCompMap: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var layers: Set = ["1"]
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var layers: Set = ["1"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

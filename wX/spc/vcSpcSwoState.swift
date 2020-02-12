@@ -8,10 +8,10 @@ import UIKit
 
 class vcSpcSwoState: UIwXViewController {
 
+    private var state = ""
+    private var stateButton = ObjectToolbarIcon()
+    private var image = ObjectTouchImageView()
     var day = ""
-    var state = ""
-    var stateButton = ObjectToolbarIcon()
-    var image = ObjectTouchImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

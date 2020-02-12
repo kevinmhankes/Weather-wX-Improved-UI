@@ -9,13 +9,13 @@ import AVFoundation
 
 class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
 
-    var bitmaps = [Bitmap]()
-    var html = ""
-    var product = ""
-    var playButton = ObjectToolbarIcon()
-    var playlistButton = ObjectToolbarIcon()
-    var textView = ObjectTextView()
-    var synth = AVSpeechSynthesizer()
+    private var bitmaps = [Bitmap]()
+    private var html = ""
+    private var product = ""
+    private var playButton = ObjectToolbarIcon()
+    private var playlistButton = ObjectToolbarIcon()
+    private var textView = ObjectTextView()
+    private var synth = AVSpeechSynthesizer()
     var spcSwoDay = ""
 
     override func viewDidLoad() {
