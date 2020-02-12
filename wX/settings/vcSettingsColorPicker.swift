@@ -8,19 +8,20 @@ import UIKit
 
 class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
 
-    var colorBarSize: CGFloat = 100.0
-    var colorBar = UIView()
-    var newRed =  0
-    var newGreen = 0
-    var newBlue = 0
-    var colorChanged = false
-    var colorButton = ObjectToolbarIcon()
-    let toolbarTop = ObjectToolbar()
-    var colPicker: HSBColorPicker!
+    private var colorBarSize: CGFloat = 100.0
+    private var colorBar = UIView()
+    private var newRed =  0
+    private var newGreen = 0
+    private var newBlue = 0
+    private var colorChanged = false
+    private var colorButton = ObjectToolbarIcon()
+    private let toolbarTop = ObjectToolbar()
+    private var colPicker: HSBColorPicker!
+    var colorObject = wXColor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let labelButton = ObjectToolbarIcon(title: ActVars.colorObject.uiLabel, self, nil)
+        let labelButton = ObjectToolbarIcon(title: colorObject.uiLabel, self, nil)
         toolbarTop.items = ObjectToolbarItems([GlobalVariables.flexBarButton, labelButton]).items
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ObjectToolbarIcon(self, nil)
@@ -28,12 +29,12 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colPicker = HSBColorPicker()
         colPicker.delegate = self
         refreshViews()
-        colorBar.backgroundColor = ActVars.colorObject.uicolorCurrent
-        colorButton.title = "(" + String(ActVars.colorObject.colorsCurrent.red)
+        colorBar.backgroundColor = colorObject.uicolorCurrent
+        colorButton.title = "(" + String(colorObject.colorsCurrent.red)
             + ", "
-            + String(ActVars.colorObject.colorsCurrent.green)
+            + String(colorObject.colorsCurrent.green)
             + ", "
-            + String(ActVars.colorObject.colorsCurrent.blue)
+            + String(colorObject.colorsCurrent.blue)
             + ")"
         self.view.addSubview(colPicker)
         self.view.addSubview(colorBar)
@@ -69,25 +70,25 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     }
 
     func saveNewColorClicked() {
-        Utility.writePref(ActVars.colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
+        Utility.writePref(colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
-        ActVars.colorObject.regenCurrentColor()
+        colorObject.regenCurrentColor()
     }
 
     @objc func saveDefaultColorClicked() {
         Utility.writePref(
-            ActVars.colorObject.prefVar,
+            colorObject.prefVar,
             Color.rgb(
-                ActVars.colorObject.defaultRed,
-                ActVars.colorObject.defaultGreen,
-                ActVars.colorObject.defaultBlue
+                colorObject.defaultRed,
+                colorObject.defaultGreen,
+                colorObject.defaultBlue
             )
         )
-        colorBar.backgroundColor = ActVars.colorObject.uicolorDefault
-        ActVars.colorObject.regenCurrentColor()
-        newRed = ActVars.colorObject.defaultRed
-        newGreen = ActVars.colorObject.defaultGreen
-        newBlue = ActVars.colorObject.defaultBlue
+        colorBar.backgroundColor = colorObject.uicolorDefault
+        colorObject.regenCurrentColor()
+        newRed = colorObject.defaultRed
+        newGreen = colorObject.defaultGreen
+        newBlue = colorObject.defaultBlue
         colorChanged = true
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }

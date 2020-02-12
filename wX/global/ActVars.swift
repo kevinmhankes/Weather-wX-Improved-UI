@@ -9,5 +9,4 @@ import UIKit
 class ActVars {
     static var nwsMosaicType = ""
     static var wxoglDspLegendMax = 0.0
-    static var colorObject = wXColor()
 }

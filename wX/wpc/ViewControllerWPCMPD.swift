@@ -8,9 +8,8 @@ import UIKit
 import AVFoundation
 
 class ViewControllerWPCMPD: UIwXViewController {
-    
-    // TODO FIXME class is deprecated and will be removed
 
+    // FIXME class is deprecated and will be removed
     var bitmaps = [Bitmap]()
     var txtArr = [String]()
     var urls = [String]()
