@@ -16,6 +16,7 @@
 // [ADD] add title in toolbar for SPC SWO
 // [ADD] watch/mpd/mcd when tap on picture , show in imageViewer not text, when tap on picture in summary, use vc with # as arg
 
+56088 2020_02_11 
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working
