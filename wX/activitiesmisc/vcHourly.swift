@@ -9,9 +9,9 @@ import AVFoundation
 
 class vcHourly: UIwXViewController {
 
-    var html = ""
-    var playButton = ObjectToolbarIcon()
-    let synth = AVSpeechSynthesizer()
+    private var html = ""
+    private var playButton = ObjectToolbarIcon()
+    private let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()

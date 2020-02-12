@@ -8,10 +8,10 @@ import UIKit
 
 class vcObservations: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var index = 0
-    let prefTokenIndex = "SFC_OBS_IMG_IDX"
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var index = 0
+    private let prefTokenIndex = "SFC_OBS_IMG_IDX"
 
     override func viewDidLoad() {
         super.viewDidLoad()

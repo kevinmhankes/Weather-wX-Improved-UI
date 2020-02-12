@@ -10,14 +10,14 @@ import MapKit
 
 class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
-    var capAlerts = [CapAlert]()
-    var images = [UIImageView]()
-    var urls = [String]()
-    var wfo = ""
-    var wfoProd = [String]()
-    var mapShown = false
-    let mapView = MKMapView()
-    var siteButton = ObjectToolbarIcon()
+    private var capAlerts = [CapAlert]()
+    private var images = [UIImageView]()
+    private var urls = [String]()
+    private var wfo = ""
+    private var wfoProd = [String]()
+    private var mapShown = false
+    private let mapView = MKMapView()
+    private var siteButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()

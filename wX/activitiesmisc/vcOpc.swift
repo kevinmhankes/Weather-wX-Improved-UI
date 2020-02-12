@@ -8,10 +8,10 @@ import UIKit
 
 class vcOpc: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var index = 0
-    let prefToken = "OPC_IMG_FAV_URL"
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var index = 0
+    private let prefToken = "OPC_IMG_FAV_URL"
 
     override func viewDidLoad() {
         super.viewDidLoad()

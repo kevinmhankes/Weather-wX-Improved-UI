@@ -8,9 +8,9 @@ import UIKit
 
 class vcSpotterReports: UIwXViewController {
 
-    var spotterReportsData = [SpotterReports]()
-    var spotterReportsDataSorted = [SpotterReports]()
-    var spotterReportCountButton = ObjectToolbarIcon()
+    private var spotterReportsData = [SpotterReports]()
+    private var spotterReportsDataSorted = [SpotterReports]()
+    private var spotterReportCountButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()

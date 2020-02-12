@@ -9,11 +9,11 @@ import MapKit
 
 class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
-    var image = ObjectTouchImageView()
-    var wfo = ""
-    let mapView = MKMapView()
-    var mapShown = false
-    var siteButton = ObjectToolbarIcon()
+    private var image = ObjectTouchImageView()
+    private var wfo = ""
+    private let mapView = MKMapView()
+    private var mapShown = false
+    private var siteButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()

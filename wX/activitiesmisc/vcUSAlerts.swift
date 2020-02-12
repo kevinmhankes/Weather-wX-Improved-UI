@@ -9,12 +9,12 @@ import AVFoundation
 
 class vcUSAlerts: UIwXViewController {
 
-    var capAlerts = [CapAlert]()
-    var filter = ""
-    var filterButton = ObjectToolbarIcon()
-    var objAlertSummary = ObjectAlertSummary()
-    var bitmap = Bitmap()
-    var filterGesture: UITapGestureRecognizer?
+    private var capAlerts = [CapAlert]()
+    private var filter = ""
+    private var filterButton = ObjectToolbarIcon()
+    private var objAlertSummary = ObjectAlertSummary()
+    private var bitmap = Bitmap()
+    private var filterGesture: UITapGestureRecognizer?
 
     override func viewDidLoad() {
         super.viewDidLoad()

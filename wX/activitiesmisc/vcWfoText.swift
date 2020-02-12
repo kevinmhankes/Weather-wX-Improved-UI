@@ -10,18 +10,18 @@ import MapKit
 
 class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
 
-    var product = "AFD"
-    var textView = ObjectTextView()
-    var productButton = ObjectToolbarIcon()
-    var siteButton = ObjectToolbarIcon()
-    var wfo = Location.wfo
-    var playButton = ObjectToolbarIcon()
-    let mapView = MKMapView()
-    var mapShown = false
-    var playlistButton = ObjectToolbarIcon()
-    var synth = AVSpeechSynthesizer()
-    var html = ""
-    let wfoProdList = [
+    private var product = "AFD"
+    private var textView = ObjectTextView()
+    private var productButton = ObjectToolbarIcon()
+    private var siteButton = ObjectToolbarIcon()
+    private var wfo = Location.wfo
+    private var playButton = ObjectToolbarIcon()
+    private let mapView = MKMapView()
+    private var mapShown = false
+    private var playlistButton = ObjectToolbarIcon()
+    private var synth = AVSpeechSynthesizer()
+    private var html = ""
+    private let wfoProdList = [
         "AFD: Area Forecast Discussion",
         "ESF: Hydrologic Outlook",
         "FWF: Fire weather Forecast",

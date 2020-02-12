@@ -8,15 +8,15 @@ import UIKit
 
 class vcLightning: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var timeButton = ObjectToolbarIcon()
-    var sector = "usa_big"
-    var sectorPretty = "USA"
-    var period = "0.25"
-    var periodPretty = "15 MIN"
-    var firstRun = true
-    var bitmap = Bitmap()
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var timeButton = ObjectToolbarIcon()
+    private var sector = "usa_big"
+    private var sectorPretty = "USA"
+    private var period = "0.25"
+    private var periodPretty = "15 MIN"
+    private var firstRun = true
+    private var bitmap = Bitmap()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class vcLightning: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
-        // TODO FIXME
         let shareButton = ObjectToolbarIcon(self, .share, #selector(vcLightning.shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         self.view.addSubview(toolbar)

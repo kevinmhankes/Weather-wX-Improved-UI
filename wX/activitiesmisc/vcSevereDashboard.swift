@@ -9,15 +9,15 @@ import AVFoundation
 
 class vcSevereDashboard: UIwXViewController {
 
-    var buttonActions = [String]()
-    var snWat = SevereNotice("SPCWAT")
-    var snMcd = SevereNotice("SPCMCD")
-    var snMpd = SevereNotice("WPCMPD")
-    var bitmap = Bitmap()
-    var usAlertsBitmap = Bitmap()
-    var statusButton = ObjectToolbarIcon()
-    let synth = AVSpeechSynthesizer()
-    var statusWarnings = ""
+    private var buttonActions = [String]()
+    private var snWat = SevereNotice("SPCWAT")
+    private var snMcd = SevereNotice("SPCMCD")
+    private var snMpd = SevereNotice("WPCMPD")
+    private var bitmap = Bitmap()
+    private var usAlertsBitmap = Bitmap()
+    private var statusButton = ObjectToolbarIcon()
+    private let synth = AVSpeechSynthesizer()
+    private var statusWarnings = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

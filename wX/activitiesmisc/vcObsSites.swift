@@ -8,14 +8,14 @@ import UIKit
 
 class vcObsSites: UIwXViewController {
 
-    var capAlerts = [CapAlert]()
-    var filter = ""
-    var listCity = [String]()
-    var stateView = true
-    var stateSelected = ""
-    var siteButton = ObjectToolbarIcon()
-    var mapButton = ObjectToolbarIcon()
-    let prefToken = "NWS_OBSSITE_LAST_USED"
+    private var capAlerts = [CapAlert]()
+    private var filter = ""
+    private var listCity = [String]()
+    private var stateView = true
+    private var stateSelected = ""
+    private var siteButton = ObjectToolbarIcon()
+    private var mapButton = ObjectToolbarIcon()
+    private let prefToken = "NWS_OBSSITE_LAST_USED"
 
     override func viewDidLoad() {
         super.viewDidLoad()
