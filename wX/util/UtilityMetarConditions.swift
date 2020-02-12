@@ -168,6 +168,7 @@ final class UtilityMetarConditions {
         "Light Drizzle": "minus_ra",
         "Heavy Drizzle": "minus_ra",
         "Light Rain Fog/Mist": "minus_ra",
+        "Light Rain Mist": "minus_ra",
         "Drizzle Fog/Mist": "minus_ra",
         "Light Drizzle Fog/Mist": "minus_ra",
         "Heavy Drizzle Fog/Mist": "minus_ra",
