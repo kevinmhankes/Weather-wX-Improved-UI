@@ -82,7 +82,7 @@ class vcSevereDashboard: UIwXViewController {
         return spokenText
     }
 
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         // FIXME optimize code below
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
             let vc = vcSpcWatchMcdMpd()
@@ -159,10 +159,7 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self,
-                                sender,
-                                [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps
-        )
+        UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
 
     private func displayContent() {
@@ -235,7 +232,7 @@ class vcSevereDashboard: UIwXViewController {
                 let objectImage = ObjectImage(
                     stackView,
                     image,
-                    UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imageClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
                 self.buttonActions.append(severeNotice.type + severeNotice.numberList[imageIndex])
@@ -246,52 +243,6 @@ class vcSevereDashboard: UIwXViewController {
                 imageCount += 1
             }
         }
-        /*snMcd.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            let objectImage = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            self.buttonActions.append(snMcd.type + snMcd.numberList[imageIndex])
-            objectImage.img.accessibilityLabel = snMcd.type + snMcd.numberList[imageIndex]
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
-            index += 1
-            imageCount += 1
-        }
-        snMpd.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            let objectImage = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(index, self, #selector(imgClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            self.buttonActions.append(snMpd.type + snMpd.numberList[imageIndex])
-            objectImage.img.accessibilityLabel = snMpd.type + snMpd.numberList[imageIndex]
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
-            index += 1
-            imageCount += 1
-        }*/
         self.showTextWarnings(&views)
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views

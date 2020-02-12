@@ -7,9 +7,9 @@
 import UIKit
 
 class vcSpcFireSummary: UIwXViewController {
-
+    
     var bitmaps = [Bitmap]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -23,11 +23,11 @@ class vcSpcFireSummary: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -37,34 +37,51 @@ class vcSpcFireSummary: UIwXViewController {
             }
         }
     }
-
+    
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcWpcText()
         vc.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
         self.goToVC(vc)
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-
+    
     private func displayContent() {
         var views = [UIView]()
         var dayNumber = 0
-        self.bitmaps.enumerated().forEach {
+        var imageCount = 0
+        var imagesPerRow = 2
+        var imageStackViewList = [ObjectStackView]()
+        if UtilityUI.isTablet() {
+            imagesPerRow = 3
+        }
+        self.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
             let objectImage = ObjectImage(
-                self.stackView,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:)))
+                stackView,
+                image,
+                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
+                widthDivider: imagesPerRow
             )
             objectImage.img.isAccessibilityElement = true
             views += [objectImage.img]
             dayNumber += 1
             objectImage.img.accessibilityLabel = "day " + String(dayNumber)
+            imageCount += 1
         }
         self.accessibilityElements = views
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -72,7 +89,7 @@ class vcSpcFireSummary: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
