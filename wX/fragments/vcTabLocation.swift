@@ -88,7 +88,6 @@ class vcTabLocation: vcTabParent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ActVars.vc = self
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(willEnterForeground),
@@ -303,7 +302,6 @@ class vcTabLocation: vcTabParent {
     @objc override func warningsClicked() {
         let vc = vcUSAlertsDetail()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "usalerts")
     }
 
     @objc override func dualPaneRadarClicked() {
@@ -317,58 +315,47 @@ class vcTabLocation: vcTabParent {
     @objc override func settingsClicked() {
         let vc = vcSettingsMain()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "settingsmain")
     }
 
     @objc override func mesoanalysisClicked() {
         let vc = vcSpcMeso()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "spcmeso")
     }
 
     @objc override func ncepModelsClicked() {
-        ActVars.modelActivitySelected = "NCEP"
         let vc = vcModels()
+        vc.modelActivitySelected = "NCEP"
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "modelgeneric")
     }
 
     @objc override func hourlyClicked() {
-        //var token = ""
         if Location.isUS {
-            //token = "hourly"
             let vc = vcHourly()
             self.goToVC(vc)
         } else {
-            //token = "cahourly"
             let vc = vcCanadaHourly()
             self.goToVC(vc)
         }
-        //UtilityActions.genericClicked(self, token)
     }
 
     @objc override func nhcClicked() {
         let vc = vcNhc()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "nhc")
     }
 
     @objc override func lightningClicked() {
         let vc = vcLightning()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "lightning")
     }
 
     @objc override func nationalImagesClicked() {
         let vc = vcWpcImg()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "wpcimg")
     }
 
     @objc override func nationalTextClicked() {
         let vc = vcWpcText()
         self.goToVC(vc)
-        //UtilityActions.genericClicked(self, "WPCText")
     }
 
     @objc override func willEnterForeground() {
@@ -391,7 +378,6 @@ class vcTabLocation: vcTabParent {
         super.viewWillAppear(animated)
         updateColors()
         objLabel.text = Location.name
-        //ActVars.vc = self
         let newhomeScreenFav = Utility.readPref(
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault

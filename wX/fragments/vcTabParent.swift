@@ -208,8 +208,8 @@ class vcTabParent: UIViewController {
     }
 
     @objc func ncepModelsClicked() {
-        ActVars.modelActivitySelected = "NCEP"
         let vc = vcModels()
+        vc.modelActivitySelected = "NCEP"
         objTileMatrix.genericClicked(vc)
     }
 

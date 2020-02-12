@@ -111,8 +111,8 @@ class vcNhc: UIwXViewController {
     }
 
     @objc func glcfsClicked() {
-        ActVars.modelActivitySelected = "GLCFS"
         let vc = vcModels()
+        vc.modelActivitySelected = "GLCFS"
         self.goToVC(vc)
     }
 

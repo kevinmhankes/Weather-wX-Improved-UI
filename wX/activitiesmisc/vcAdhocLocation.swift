@@ -22,7 +22,6 @@ class vcAdhocLocation: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        //ActVars.vc = self
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
         stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true

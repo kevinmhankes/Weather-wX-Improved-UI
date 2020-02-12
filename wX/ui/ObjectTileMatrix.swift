@@ -112,9 +112,8 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "spcsref":
-            //token = "modelgeneric"
-            ActVars.modelActivitySelected = "SPCSREF"
             let vc = vcModels()
+            vc.modelActivitySelected = "SPCSREF"
             uiv!.goToVC(vc)
         case "spc_sum":
             let vc = vcSpcSwoSummary()
@@ -164,16 +163,12 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcSpcCompMap()
             uiv!.goToVC(vc)
         case "spchrrr":
-            ActVars.modelActivitySelected = "SPCHRRR"
             let vc = vcModels()
+            vc.modelActivitySelected = "SPCHRRR"
             uiv!.goToVC(vc)
         case "spchref":
-            ActVars.modelActivitySelected = "SPCHREF"
             let vc = vcModels()
-            uiv!.goToVC(vc)
-        case "spcsseo":
-            ActVars.modelActivitySelected = "SPCSSEO"
-            let vc = vcModels()
+            vc.modelActivitySelected = "SPCHREF"
             uiv!.goToVC(vc)
         default:
             let vc = vcSpcSwo()
@@ -182,16 +177,15 @@ final class ObjectTileMatrix: NSObject {
     }
 
     @objc func imgClickedMisc(sender: UITapGestureRecognizer) {
-        //var token = ""
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "ncep":
-            ActVars.modelActivitySelected = "NCEP"
             let vc = vcModels()
+            vc.modelActivitySelected = "NCEP"
             uiv!.goToVC(vc)
         case "hrrrviewer":
-            ActVars.modelActivitySelected = "ESRL"
             let vc = vcModels()
+            vc.modelActivitySelected = "ESRL"
             uiv!.goToVC(vc)
         case "uswarn":
             let vc = vcUSAlerts()
@@ -238,8 +232,8 @@ final class ObjectTileMatrix: NSObject {
             vc.wxoglPaneCount = "4"
             uiv!.goToVC(vc)
         case "nsslwrf":
-            ActVars.modelActivitySelected = "NSSLWRF"
             let vc = vcModels()
+            vc.modelActivitySelected = "NSSLWRF"
             uiv!.goToVC(vc)
         case "lightning":
             let vc = vcLightning()
@@ -248,12 +242,12 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcWpcRainfallSummary()
             uiv!.goToVC(vc)
         case "ncar_ensemble":
-            ActVars.modelActivitySelected = "NCAR_ENSEMBLE"
             let vc = vcModels()
+            vc.modelActivitySelected = "NCAR_ENSEMBLE"
             uiv!.goToVC(vc)
         case "wpcgefs":
-            ActVars.modelActivitySelected = "WPCGEFS"
             let vc = vcModels()
+            vc.modelActivitySelected = "WPCGEFS"
             uiv!.goToVC(vc)
         case "twstate":
             let vc = vcWebView()

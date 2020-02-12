@@ -8,22 +8,23 @@ import UIKit
 
 class vcModels: UIwXViewController {
 
-    var image = ObjectTouchImageView()
-    var sectorButton = ObjectToolbarIcon()
-    var statusButton = ObjectToolbarIcon()
-    var modelButton = ObjectToolbarIcon()
-    var runButton = ObjectToolbarIcon()
-    var timeButton = ObjectToolbarIcon()
-    var productButton = ObjectToolbarIcon()
-    var firstRun = true
-    var subMenu = ObjectMenuData(
+    private var image = ObjectTouchImageView()
+    private var sectorButton = ObjectToolbarIcon()
+    private var statusButton = ObjectToolbarIcon()
+    private var modelButton = ObjectToolbarIcon()
+    private var runButton = ObjectToolbarIcon()
+    private var timeButton = ObjectToolbarIcon()
+    private var productButton = ObjectToolbarIcon()
+    private var firstRun = true
+    private var subMenu = ObjectMenuData(
         UtilityModelSpcHrefInterface.titles,
         UtilityModelSpcHrefInterface.params,
         UtilityModelSpcHrefInterface.labels
     )
-    var modelObj = ObjectModel()
-    var fabLeft: ObjectFab?
-    var fabRight: ObjectFab?
+    private var modelObj = ObjectModel()
+    private var fabLeft: ObjectFab?
+    private var fabRight: ObjectFab?
+    var modelActivitySelected = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,27 +44,27 @@ class vcModels: UIwXViewController {
                 animateButton
             ]
         ).items
-        if ActVars.modelActivitySelected.contains("NCAR")
-            || ActVars.modelActivitySelected.contains("SPCSREF")
-            || ActVars.modelActivitySelected.contains("SPCHREF")
-            || ActVars.modelActivitySelected.contains("WPCGEFS") {
+        if modelActivitySelected.contains("NCAR")
+            || modelActivitySelected.contains("SPCSREF")
+            || modelActivitySelected.contains("SPCHREF")
+            || modelActivitySelected.contains("WPCGEFS") {
             productButton = ObjectToolbarIcon(title: "Product", self, #selector(showProdMenu))
         } else {
             productButton = ObjectToolbarIcon(title: "Product", self, #selector(prodClicked))
         }
-        if ActVars.modelActivitySelected.contains("SPCSREF") {
+        if modelActivitySelected.contains("SPCSREF") {
             subMenu = ObjectMenuData(
                 UtilityModelSpcSrefInterface.titles,
                 UtilityModelSpcSrefInterface.params,
                 UtilityModelSpcSrefInterface.labels
             )
-        } else if ActVars.modelActivitySelected.contains("SPCHREF") {
+        } else if modelActivitySelected.contains("SPCHREF") {
             subMenu = ObjectMenuData(
                 UtilityModelSpcHrefInterface.titles,
                 UtilityModelSpcHrefInterface.params,
                 UtilityModelSpcHrefInterface.labels
             )
-        } else if ActVars.modelActivitySelected.contains("WPCGEFS") {
+        } else if modelActivitySelected.contains("WPCGEFS") {
             subMenu = ObjectMenuData(
                 UtilityModelWpcGefsInterface.titles,
                 UtilityModelWpcGefsInterface.params,
@@ -90,7 +91,7 @@ class vcModels: UIwXViewController {
         fabLeft?.setToTheLeft()
         self.view.addSubview(fabLeft!.view)
         self.view.addSubview(fabRight!.view)
-        modelObj = ObjectModel(ActVars.modelActivitySelected)
+        modelObj = ObjectModel(modelActivitySelected)
         modelObj.setButtons(productButton, sectorButton, runButton, timeButton, statusButton, modelButton)
         self.setupModel()
         self.getRunStatus()
@@ -101,9 +102,9 @@ class vcModels: UIwXViewController {
             self.modelObj.getRunStatus()
             DispatchQueue.main.async {
                 self.modelObj.setRun(self.modelObj.runTimeData.mostRecentRun)
-                if ActVars.modelActivitySelected == "SPCHRRR"
-                    || ActVars.modelActivitySelected == "SPCSREF"
-                    || ActVars.modelActivitySelected == "SPCHREF" {
+                if self.modelActivitySelected == "SPCHRRR"
+                    || self.modelActivitySelected == "SPCSREF"
+                    || self.modelActivitySelected == "SPCHREF" {
                     self.modelObj.timeArr = UtilityModels.updateTime(
                         UtilityString.getLastXChars(self.modelObj.run, 2),
                         self.modelObj.run,
@@ -111,7 +112,7 @@ class vcModels: UIwXViewController {
                         "",
                         false
                     )
-                } else if !ActVars.modelActivitySelected.contains("GLCFS") {
+                } else if !self.modelActivitySelected.contains("GLCFS") {
                     self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
                         self.modelObj.setTimeArr(
                             idx,
@@ -220,7 +221,7 @@ class vcModels: UIwXViewController {
 
     func prodChanged(_ prod: Int) {
         modelObj.setParam(prod)
-        if ActVars.modelActivitySelected.contains("SSEO") {
+        if modelActivitySelected.contains("SSEO") {
             self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
                 self.modelObj.setTimeArr(
                     idx,
