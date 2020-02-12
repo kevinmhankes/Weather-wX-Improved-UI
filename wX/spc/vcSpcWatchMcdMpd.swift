@@ -61,9 +61,20 @@ class vcSpcWatchMcdMpd: UIwXViewController {
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcTextViewer()
-        vc.textViewText = self.listOfText[sender.data]
-        self.goToVC(vc)
+        if self.bitmaps.count == 1 {
+            let vc = vcImageViewer()
+            vc.imageViewerUrl = urls[0]
+            self.goToVC(vc)
+            
+        } else {
+            //let vc = vcTextViewer()
+            //vc.textViewText = self.listOfText[sender.data]
+            //self.goToVC(vc)
+            let vc = vcSpcWatchMcdMpd()
+            vc.watchMcdMpdNumber = self.numbers[sender.data]
+            vc.watchMcdMpdType = self.watchMcdMpdType
+            self.goToVC(vc)
+        }
     }
 
     @objc func shareClicked(sender: UIButton) {

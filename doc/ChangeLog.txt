@@ -16,6 +16,8 @@
 56088 2020_02_12 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
 		 [ADD] add title in toolbar for SPC SWO
+		 [ADD] MCD/MPD/WAT viewer - if tap on image show image in dedicated viewer
+		 [ADD] MCD/MPD/WAT viewer - if in summary mode and tap on image show image/text instead of just text
 		 [REF] in VCs mark vars private if can
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
