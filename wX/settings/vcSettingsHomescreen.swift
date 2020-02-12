@@ -8,7 +8,7 @@ import UIKit
 
 class vcSettingsHomescreen: UIwXViewController {
 
-    let localChoicesText = [
+    private let localChoicesText = [
         "TXT-CC2": "Current Conditions with Image",
         "TXT-HAZ": "Hazards",
         "TXT-7DAY2": "7 Day Forecast with Images",
@@ -17,15 +17,15 @@ class vcSettingsHomescreen: UIwXViewController {
         "TXT-HOURLY": "Hourly Forecast",
         "METAL-RADAR": "Local NEXRAD Radar"
     ]
-    let localChoicesImages = [
+    private let localChoicesImages = [
         "CARAIN: Local CA Radar",
         "WEATHERSTORY: Local NWS Weather Story",
         "WFOWARNINGS: Local NWS Office Warnings"
     ]
-    var homescreenFav = [String]()
-    var addImageButton = ObjectToolbarIcon()
-    var addTextButton = ObjectToolbarIcon()
-    var addButton = ObjectToolbarIcon()
+    private var homescreenFav = [String]()
+    private var addImageButton = ObjectToolbarIcon()
+    private var addTextButton = ObjectToolbarIcon()
+    private var addButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,8 +8,9 @@ import UIKit
 
 class vcSettingsColorListing: UIwXViewController {
 
-    var colorArr = [wXColor]()
-    var tvArr = [ObjectTextView]()
+    // FIXME variable naming
+    private var colorArr = [wXColor]()
+    private var tvArr = [ObjectTextView]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

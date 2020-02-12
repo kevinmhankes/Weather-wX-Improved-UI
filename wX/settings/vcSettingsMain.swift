@@ -8,7 +8,7 @@ import UIKit
 
 class vcSettingsMain: UIwXViewController {
 
-    var titles = [String]()
+    private var titles = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

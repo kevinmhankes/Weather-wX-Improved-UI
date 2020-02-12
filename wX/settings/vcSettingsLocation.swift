@@ -8,11 +8,11 @@ import UIKit
 
 class vcSettingsLocation: UIwXViewController {
 
-    var locations = [String]()
-    var fab: ObjectFab?
-    var productButton = ObjectToolbarIcon()
-    var objectCards = [ObjectCardLocationItem]()
-    var currentConditions = [ObjectForecastPackageCurrentConditions]()
+    private var locations = [String]()
+    private var fab: ObjectFab?
+    private var productButton = ObjectToolbarIcon()
+    private var objectCards = [ObjectCardLocationItem]()
+    private var currentConditions = [ObjectForecastPackageCurrentConditions]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

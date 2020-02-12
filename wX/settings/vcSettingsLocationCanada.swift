@@ -8,14 +8,14 @@ import UIKit
 
 class vcSettingsLocationCanada: UIwXViewController {
 
-    var textViews = [ObjectTextView]()
-    var html = ""
-    var filter = ""
-    var cityDisplay = false
-    var provSelected = ""
-    var listIds = [String]()
-    var listCity = [String]()
-    var statusButton = ObjectToolbarIcon()
+    private var textViews = [ObjectTextView]()
+    private var html = ""
+    private var filter = ""
+    private var cityDisplay = false
+    private var provSelected = ""
+    private var listIds = [String]()
+    private var listCity = [String]()
+    private var statusButton = ObjectToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()

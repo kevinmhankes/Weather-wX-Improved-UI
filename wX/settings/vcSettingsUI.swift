@@ -8,7 +8,7 @@ import UIKit
 
 class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    private var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
