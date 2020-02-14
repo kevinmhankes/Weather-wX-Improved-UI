@@ -82,6 +82,7 @@ final class ObjectNhc: NSObject {
 
     // TODO use a class to store 5 String Lists
     // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
+    // ATL for example would have list of global bitmaps (which have url in object) and list for storms
     
     func getTextData() {
         (1...5).forEach {
