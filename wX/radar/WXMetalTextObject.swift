@@ -202,7 +202,7 @@ final class WXMetalTextObject {
             if OGLR.zoom < 1.0 {
                 oglrZoom = OGLR.zoom * 0.8
             }
-            if OGLR.zoom < 0.75 {
+            if OGLR.zoom < WXMetalRender.zoomToHideMiscFeatures {
                 UtilityWpcFronts.pressureCenters.enumerated().forEach { _, value in
                     var color = wXColor.colorsToInt(0, 127, 255)
                     if value.type == PressureCenterTypeEnum.LOW {

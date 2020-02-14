@@ -34,10 +34,10 @@ class WXMetalRender {
     var lastPanLocation: CGPoint!
     var tdwr = false
     #if !targetEnvironment(macCatalyst)
-    private static let zoomToHideMiscFeatures: Float = 0.5
+    static let zoomToHideMiscFeatures: Float = 0.5
     #endif
     #if targetEnvironment(macCatalyst)
-    private static let zoomToHideMiscFeatures: Float = 0.2
+    static let zoomToHideMiscFeatures: Float = 0.2
     #endif
     var displayHold: Bool = false
     private var stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
