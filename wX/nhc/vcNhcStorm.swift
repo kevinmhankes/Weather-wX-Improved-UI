@@ -39,7 +39,7 @@ class vcNhcStorm: UIwXViewController {
         "_wind_probs_50_F120_sm2.png",
         "_wind_probs_64_F120_sm2.png"
     ]
-    // FIXME create class for these vars
+    // FIXME create class for these vars - use ObjectNhcStormInfo
     var nhcStormUrl = ""
     var nhcStormTitle = ""
     var nhcStormImgUrl1 = ""

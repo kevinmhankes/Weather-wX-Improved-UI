@@ -80,6 +80,9 @@ final class ObjectNhc: NSObject {
         }
     }
 
+    // TODO use a class to store 5 String Lists
+    // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
+    
     func getTextData() {
         (1...5).forEach {
             let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String($0) + ".xml")
