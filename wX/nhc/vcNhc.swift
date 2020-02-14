@@ -49,25 +49,25 @@ class vcNhc: UIwXViewController {
         serial.async {
             self.objNHC?.getTextData()
             DispatchQueue.main.async {
-                self.displayTextContent()
+                self.objNHC?.showTextData()
             }
         }
         serial.async {
             self.objNHC?.getAtlanticImageData()
             DispatchQueue.main.async {
-                self.displayAtlanticImageContent()
+                self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
             }
         }
         serial.async {
             self.objNHC?.getPacificImageData()
             DispatchQueue.main.async {
-                self.displayPacificImageContent()
+                self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
             }
         }
         serial.async {
             self.objNHC?.getCentralImageData()
             DispatchQueue.main.async {
-                self.displayCentralImageContent()
+                self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
             }
         }
     }
@@ -122,22 +122,6 @@ class vcNhc: UIwXViewController {
         self.goToVC(vc)
     }
 
-    private func displayTextContent() {
-        self.objNHC?.showTextData()
-    }
-
-    private func displayAtlanticImageContent() {
-        self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
-    }
-
-    private func displayPacificImageContent() {
-        self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
-    }
-
-    private func displayCentralImageContent() {
-        self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
-    }
-
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -145,10 +129,10 @@ class vcNhc: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.objNHC?.updateParents(self, self.stackView)
-                self.displayTextContent()
-                self.displayAtlanticImageContent()
-                self.displayPacificImageContent()
-                self.displayCentralImageContent()
+                self.objNHC?.showTextData()
+                self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
+                self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
+                self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
             }
         )
     }

@@ -10,8 +10,7 @@ final class UtilityNhc {
 
     static let utilNhcPattern1 = "<title>(.*?)</title>"
     static let utilNhcPattern2 = "<nhc:Cyclone>(.*?)</nhc:Cyclone>"
-    static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/"
-        + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
+    static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/" + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
     static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
     static let utilNhcPattern5 = "<img src=.(.*?png)."
 
@@ -91,7 +90,9 @@ final class UtilityNhc {
             Bitmap(baseUrl + $0)
         }
         let animDrawable = AnimationDrawable()
-        bitmaps.forEach {animDrawable.addFrame($0, UtilityImg.getAnimInterval())}
+        bitmaps.forEach {
+            animDrawable.addFrame($0, UtilityImg.getAnimInterval())
+        }
         return animDrawable
     }
 
