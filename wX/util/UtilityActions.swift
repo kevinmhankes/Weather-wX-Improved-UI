@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 final class UtilityActions {
-
+    
     static func cloudClicked(_ uiv: UIViewController) {
         if Location.isUS {
             let vc = vcGoes()
@@ -21,21 +21,21 @@ final class UtilityActions {
             goToVCS(uiv, vc)
         }
     }
-
+    
     /*@objc static func radarClickedFromMenuDisable() {
-        print("radar shortcut")
-        if !Location.isUS {
-            //ActVars.caRadarImageType = "radar"
-            //ActVars.caRadarProv = ""
-        } else {
-            if UIPreferences.dualpaneRadarIcon {
-                ActVars.wxoglPaneCount = "2"
-            } else {
-                ActVars.wxoglPaneCount = "1"
-            }
-        }
-    }*/
-
+     print("radar shortcut")
+     if !Location.isUS {
+     //ActVars.caRadarImageType = "radar"
+     //ActVars.caRadarProv = ""
+     } else {
+     if UIPreferences.dualpaneRadarIcon {
+     ActVars.wxoglPaneCount = "2"
+     } else {
+     ActVars.wxoglPaneCount = "1"
+     }
+     }
+     }*/
+    
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
             let vc = vcCanadaRadar()
@@ -52,7 +52,7 @@ final class UtilityActions {
             goToVCS(uiv, vc)
         }
     }
-
+    
     static func wfotextClicked(_ uiv: UIViewController) {
         if Location.isUS {
             let vc = vcWfoText()
@@ -62,7 +62,7 @@ final class UtilityActions {
             goToVCS(uiv, vc)
         }
     }
-
+    
     static func dashClicked(_ uiv: UIViewController) {
         if Location.isUS {
             let vc = vcSevereDashboard()
@@ -72,19 +72,19 @@ final class UtilityActions {
             goToVCS(uiv, vc)
         }
     }
-
+    
     static func multiPaneRadarClicked(_ uiv: UIViewController, _ paneCount: String) {
         let vc = vcNexradRadar()
         switch paneCount {
-            case "2":
-               vc.wxoglPaneCount = "2"
-            case "4":
-               vc.wxoglPaneCount = "4"
-            default: break
+        case "2":
+            vc.wxoglPaneCount = "2"
+        case "4":
+            vc.wxoglPaneCount = "4"
+        default: break
         }
         uiv.goToVC(vc)
     }
-
+    
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         //var token = ""
         if menuItem.hasPrefix("Help Mode") {
@@ -153,12 +153,12 @@ final class UtilityActions {
             uiv.goToVC(vc)
         }
     }
-
+    
     static func goToVCS(_ uiv: UIViewController, _ target: UIViewController) {
         target.modalPresentationStyle = .fullScreen
         uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
-
+    
     static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
         let alert = UIAlertController(
             title: UtilityHelp.helpStrings[token],
@@ -172,7 +172,7 @@ final class UtilityActions {
         }
         uiv.present(alert, animated: true, completion: nil)
     }
-
+    
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         var menuList = [
             "Hourly",
@@ -206,11 +206,11 @@ final class UtilityActions {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         uiv.present(alert, animated: true, completion: nil)
     }
-
+    
     static func doneClicked(_ uiv: UIViewController) {
         uiv.dismiss(animated: true, completion: {})
     }
-
+    
     static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
         var myUtterance = AVSpeechUtterance(string: "")
         if !synth.isSpeaking {
@@ -222,7 +222,7 @@ final class UtilityActions {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
         }
     }
-
+    
     static func playClicked(_ textView: UITextView, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         let pauseIcon = "ic_pause_24dp"
         if synth.isPaused {
@@ -240,7 +240,7 @@ final class UtilityActions {
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }
     }
-
+    
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
@@ -259,7 +259,7 @@ final class UtilityActions {
             playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
         }
     }
-
+    
     static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
@@ -267,13 +267,13 @@ final class UtilityActions {
         synth.speak(myUtterance)
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
-
+    
     static func stopAudio(_ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         let pauseIcon = "ic_pause_24dp"
         synth.stopSpeaking(at: AVSpeechBoundary.word)
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
-
+    
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         if synth.isSpeaking {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)

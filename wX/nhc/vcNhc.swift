@@ -128,17 +128,14 @@ class vcNhc: UIwXViewController {
 
     private func displayAtlanticImageContent() {
         self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
-        //self.objNHC?.showAtlanticImageData()
     }
 
     private func displayPacificImageContent() {
         self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
-        //self.objNHC?.showPacificImageData()
     }
 
     private func displayCentralImageContent() {
         self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
-        //self.objNHC?.showCentralImageData()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
