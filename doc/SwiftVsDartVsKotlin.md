@@ -101,3 +101,23 @@ PI
 
 Swift: let varName:CLong = 0
 Kotlin var varName = 0.toLong()
+
+
+List initialization
+```
+Kotlin: mutableListOf("")     MutableList<String>
+Swift [String]()       [String]
+Dart <String>[]      List<String>
+```
+
+forEach loop with both index and value
+```
+Kotlin:
+list.forEachIndexed { index, value ->
+
+Dart:
+list.asMap().forEach((index, value) => f);
+
+Swift:
+list.enumerated().forEach { index, value in
+```
