@@ -24,26 +24,26 @@ final class ObjectNhc: NSObject {
     private var stackView: UIStackView
     private var textAtl = ""
     private var textPac = ""
-    private var bitmapsAtlantic = [Bitmap]()
-    private var bitmapsPacific = [Bitmap]()
-    private var bitmapsCentral = [Bitmap]()
+    var bitmapsAtlantic = [Bitmap]()
+    var bitmapsPacific = [Bitmap]()
+    var bitmapsCentral = [Bitmap]()
     var imageCount = 0
     var imagesPerRow = 2
     var imageStackViewList = [ObjectStackView]()
     
-    private let imageUrlsAtlanic = [
+    let imageUrlsAtlanic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
     ]
 
-    private let imageUrlsPacific = [
+    let imageUrlsPacific = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
     ]
 
-    private let imageUrlsCentral = [
+    let imageUrlsCentral = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
@@ -63,21 +63,26 @@ final class ObjectNhc: NSObject {
     }
 
     func getAtlanticImageData() {
-        imageUrlsAtlanic.forEach {bitmapsAtlantic.append(Bitmap($0))}
+        imageUrlsAtlanic.forEach {
+            bitmapsAtlantic.append(Bitmap($0))
+        }
     }
 
     func getPacificImageData() {
-        imageUrlsPacific.forEach {bitmapsPacific.append(Bitmap($0))}
+        imageUrlsPacific.forEach {
+            bitmapsPacific.append(Bitmap($0))
+        }
     }
 
     func getCentralImageData() {
-        imageUrlsCentral.forEach {bitmapsCentral.append(Bitmap($0))}
+        imageUrlsCentral.forEach {
+            bitmapsCentral.append(Bitmap($0))
+        }
     }
 
     func getTextData() {
         (1...5).forEach {
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix
-                + "/nhc_at" + String($0) + ".xml")
+            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String($0) + ".xml")
             if dataRet.title != "" {
                 self.atlSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
@@ -89,8 +94,7 @@ final class ObjectNhc: NSObject {
             }
         }
         (1...5).forEach {
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix
-                + "/nhc_ep" + String($0) + ".xml")
+            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String($0) + ".xml")
             if dataRet.title != "" {
                 self.pacSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
@@ -141,8 +145,32 @@ final class ObjectNhc: NSObject {
             _ = ObjectTextView(stackView, textPac)
         }
     }
+    
+    func showImageData(_ images: [Bitmap], _ urls: [String]) {
+        images.enumerated().forEach { index, bitmap in
+            if imageCount % imagesPerRow == 0 {
+                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(stackView)
+                self.stackView.addArrangedSubview(stackView.view)
+                _ = ObjectImage(
+                    stackView.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(urls[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            } else {
+                _ = ObjectImage(
+                    imageStackViewList.last!.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(urls[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            }
+            imageCount += 1
+        }
+    }
 
-    func showAtlanticImageData() {
+    /*func showAtlanticImageData() {
         bitmapsAtlantic.enumerated().forEach { index, bitmap in
             if imageCount % imagesPerRow == 0 {
                 let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -212,7 +240,7 @@ final class ObjectNhc: NSObject {
             }
             imageCount += 1
         }
-    }
+    }*/
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
 
