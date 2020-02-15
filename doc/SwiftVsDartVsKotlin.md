@@ -133,3 +133,26 @@ var classToId: [String: String] = [:]
 dart:
 var classToId = Map<int, List<double>>();
 ```
+
+Iterate over enum:
+```
+kotlin:
+NhcOceanEnum.values().forEach {}
+```
+Passing functions
+```
+kotlin:
+var functions: List<(Int) -> Unit>
+bottomSheetFragment.functions = listOf(::edit, ::delete, ::moveUp, ::moveDown)
+    fun setListener(context: Context, drw: ObjectNavDrawer, fn: () -> Unit) {
+    img.setListener(this, drw, ::getContentFixThis)
+
+swift:
+var renderFn: ((Int) -> Void)?
+self.renderFn!(paneNumber)
+
+func setRenderFunction(_ fn: @escaping (Int) -> Void) {
+        self.renderFn = fn
+}
+
+```
