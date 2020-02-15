@@ -121,3 +121,15 @@ list.asMap().forEach((index, value) => f);
 Swift:
 list.enumerated().forEach { index, value in
 ```
+
+Dictionary
+```
+kotlin:
+val classToId: MutableMap<String, String> = mutableMapOf()
+
+swift:
+var classToId: [String: String] = [:]
+
+dart:
+var classToId = Map<int, List<double>>();
+```
