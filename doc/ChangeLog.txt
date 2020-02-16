@@ -13,6 +13,7 @@
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option
 
+56089 2020_02_16 
 56088 2020_02_16 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
 		 [ADD] add title in toolbar for SPC SWO
