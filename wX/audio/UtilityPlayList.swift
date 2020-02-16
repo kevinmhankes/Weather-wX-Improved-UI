@@ -34,12 +34,8 @@ final class UtilityPlayList {
     }
 
     static func download(_ product: String) {
-        var text = ""
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
-        text = UtilityDownload.getTextProduct(product)
-        if product.contains("SWO") {
-            text = text.replaceAll("^<br>", "")
-        }
+        let text = UtilityDownload.getTextProduct(product)
         if text != "" {
             Utility.writePref("PLAYLIST_" + product, text)
             Utility.writePref("PLAYLIST_" + product + "_TIME", formattedDate)

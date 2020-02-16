@@ -15,7 +15,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var playButton = ObjectToolbarIcon()
     private let textPreviewLength = 150
     private var synth = AVSpeechSynthesizer()
-    private var fabRight: ObjectFab?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +42,8 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
-        fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
-        self.view.addSubview(fabRight!.view)
+        let fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
+        self.view.addSubview(fabRight.view)
         updateView()
         downloadClicked()
     }
@@ -75,9 +74,9 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     func playProduct(selection: Int) {
         UtilityActions.stopAudio(synth, playButton)
-        playlistItems.enumerated().forEach {
-            if $0 >= selection {
-                UtilityActions.playClickedNewItem(Utility.readPref("PLAYLIST_" + $1, ""), synth, playButton)
+        playlistItems.enumerated().forEach { index, item in
+            if index >= selection {
+                UtilityActions.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synth, playButton)
             }
         }
     }
@@ -140,7 +139,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         var textToSpeak = ""
         playlistItems.forEach {
             textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
-            //UtilityActions.playClicked(Utility.readPref("PLAYLIST_" + $0, ""), synth, playButton)
         }
         UtilityActions.playClicked(textToSpeak, synth, playButton)
     }

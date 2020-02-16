@@ -76,13 +76,16 @@ final class UtilityHourly {
 
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
-        hourlyAbbreviationsFirst.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsFirst[$0]!)}
-        hourlyAbbreviationsSecond.keys.forEach { hourly = hourly.replaceAll($0, hourlyAbbreviationsSecond[$0]!)}
+        hourlyAbbreviationsFirst.keys.forEach {
+            hourly = hourly.replaceAll($0, hourlyAbbreviationsFirst[$0]!)
+        }
+        hourlyAbbreviationsSecond.keys.forEach {
+            hourly = hourly.replaceAll($0, hourlyAbbreviationsSecond[$0]!)
+        }
         return hourly
     }
 
     static func translateTime(_ originalTime: String) -> String {
-        //let year = UtilityTime.getYear()
         let originalTimeComponents = originalTime.replace("T", "-").split("-")
         let year = Int(originalTimeComponents[0]) ?? 0
         let month = Int(originalTimeComponents[1]) ?? 0
