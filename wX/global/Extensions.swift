@@ -10,11 +10,15 @@ import UIKit
 extension String {
 
     func parseLastMatch(_ pattern: String) -> String {
-     return UtilityString.parseLastMatch(self, pattern)
+        return UtilityString.parseLastMatch(self, pattern)
     }
 
     func trim() -> String {
-     return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+    
+    func removeDuplicateSpaces() -> String {
+        return self.replace("   ", " ")
     }
 
     func fixedLengthString(_ length: Int) -> String {

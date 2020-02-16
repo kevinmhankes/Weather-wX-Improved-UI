@@ -29,11 +29,11 @@ class vcSpcSwoSummary: UIwXViewController {
     }
 
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -44,8 +44,11 @@ class vcSpcSwoSummary: UIwXViewController {
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
-            imagesPerRow = 3
+            imagesPerRow = 4
         }
+        #if targetEnvironment(macCatalyst)
+            imagesPerRow = 4
+        #endif
         self.bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {

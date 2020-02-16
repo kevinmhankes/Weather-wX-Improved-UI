@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
-
+    
     private var bitmaps = [Bitmap]()
     private var html = ""
     private var product = ""
@@ -17,7 +17,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var textView = ObjectTextView()
     private var synth = AVSpeechSynthesizer()
     var spcSwoDay = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         synth.delegate = self
@@ -43,12 +43,12 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
         self.getContent()
     }
-
+    
     @objc override func doneClicked() {
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.spcSwoDay == "48" {
@@ -60,71 +60,76 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             }
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
             DispatchQueue.main.async {
-               self.displayContent()
+                self.displayContent()
             }
         }
     }
-
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
+    
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
         vc.imageViewerUrl = bitmaps[sender.data].url
         self.goToVC(vc)
     }
-
+    
     @objc func playClicked() {
         UtilityActions.playClicked(textView.view, synth, playButton)
     }
-
+    
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
             UtilityActions.resetAudio(&self.synth, self.playButton)
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps, self.html)
     }
-
+    
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, self.html, self, playlistButton)
     }
-
+    
     @objc func stateClicked() {
         let vc = vcSpcSwoState()
         vc.day = spcSwoDay
         self.goToVC(vc)
     }
-
+    
     private func displayContent() {
-        let imagesPerRow = 2
+        var imageCount = 0
+        var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        [0, 1, 2, 3].forEach {
-            imageStackViewList.append(
-                ObjectStackView(
-                    UIStackView.Distribution.fill,
-                    NSLayoutConstraint.Axis.horizontal
-                )
-            )
-            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
+            imagesPerRow = 4
         }
-        var views = [UIView]()
-        stride(from: 0, to: self.bitmaps.count, by: 1).forEach {
-            let objectImage = ObjectImage(
-                imageStackViewList[$0 / imagesPerRow].view,
-                self.bitmaps[$0],
-                UITapGestureRecognizerWithData($0, self, #selector(imgClicked(sender:))),
+        #if targetEnvironment(macCatalyst)
+            imagesPerRow = 4
+        #endif
+        self.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
+            _ = ObjectImage(
+                stackView,
+                image,
+                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
                 widthDivider: imagesPerRow
             )
-            objectImage.img.accessibilityLabel = "Outlook image"
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
+            imageCount += 1
         }
+        var views = [UIView]()
         self.textView = ObjectTextView(self.stackView, self.html)
         textView.tv.isAccessibilityElement = true
         views.append(textView.tv)
         scrollView.accessibilityElements = views
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -132,7 +137,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }

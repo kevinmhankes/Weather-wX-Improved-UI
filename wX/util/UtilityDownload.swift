@@ -254,19 +254,19 @@ final class UtilityDownload {
                 case "SWODY1":
                     let url = "https://www.spc.noaa.gov/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY2":
                     let url = "https://www.spc.noaa.gov/products/outlook/day2otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY3":
                     let url = "https://www.spc.noaa.gov/products/outlook/day3otlk.html"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWOD48":
                     let url = "https://www.spc.noaa.gov/products/exper/day4-8/"
                     let html = url.getNwsHtml()
-                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
                     let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
                     let html = url.getNwsHtml()

@@ -27,6 +27,7 @@
 		 [FIX] nexrad radar map selection was not working, pins were not present
 		 [ADD] dedicated SPC Fire outlook viewer with text and image side by side
 		 [ADD] optimize SPC Convective outlook if in landscape and tablet
+		 [FIX] minor formatting issue in SPC Convective Outlooks
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working
