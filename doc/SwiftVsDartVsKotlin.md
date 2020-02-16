@@ -155,4 +155,7 @@ func setRenderFunction(_ fn: @escaping (Int) -> Void) {
         self.renderFn = fn
 }
 
+dart:
+Function(int) fn
+
 ```
