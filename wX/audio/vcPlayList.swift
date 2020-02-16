@@ -11,7 +11,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     private var playlistItems = [String]()
     private var addButton = ObjectToolbarIcon()
-    private var wfotextButton = ObjectToolbarIcon()
+    private var wfoTextButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private let textPreviewLength = 150
     private var synth = AVSpeechSynthesizer()
@@ -30,12 +30,12 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playButton = ObjectToolbarIcon(self, "ic_play_arrow_24dp", #selector(playClicked))
         let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
         addButton = ObjectToolbarIcon(self, "ic_add_box_24dp", #selector(addClicked))
-        wfotextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
+        wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
                 GlobalVariables.flexBarButton,
-                wfotextButton,
+                wfoTextButton,
                 addButton,
                 playButton,
                 downloadButton
@@ -174,7 +174,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func wfotextClicked() {
-        _ = ObjectPopUp(self, "Product Selection", wfotextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
+        _ = ObjectPopUp(self, "Product Selection", wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
 
     func addWfoProduct(_ product: String) {
