@@ -24,6 +24,7 @@
 		 [REF] remove files that are no longer in the project
 		 [FIX] zoom level for WPC fronts text vs lines was not the same
 		 [REF] misc lint and code refactor
+		 [ADD] WIP WPC Img swipe screen edge left to go back
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working
