@@ -24,6 +24,12 @@ final class UtilityShare {
         let objectsToShare = [text, images] as [Any]
         shareAction(uiv, sender, objectsToShare)
     }
+    
+    static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmap: Bitmap, _ text: String) {
+        let image = bitmap.image
+        let objectsToShare = [text, image] as [Any]
+        shareAction(uiv, sender, objectsToShare)
+    }
 
     static func share(_ uiv: UIViewController, _ sender: UIButton, _ text: String) {
         let objectsToShare = [text]
