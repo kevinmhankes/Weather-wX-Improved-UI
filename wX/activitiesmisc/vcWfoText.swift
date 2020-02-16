@@ -42,6 +42,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         UIApplication.shared.isIdleTimerDisabled = true
         synth.delegate = self
         mapView.delegate = self
+        //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = true
         UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
