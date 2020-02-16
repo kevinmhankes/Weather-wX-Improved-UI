@@ -39,8 +39,8 @@ class vcSpcFireSummary: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcWpcText()
-        vc.wpcTextProduct = UtilitySpcFireOutlook.products[sender.data]
+        let vc = vcSpcFireOutlook()
+        vc.dayIndex = sender.data
         self.goToVC(vc)
     }
     

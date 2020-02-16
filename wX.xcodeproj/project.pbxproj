@@ -11,6 +11,7 @@
 		030045C7233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */; };
 		0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */; };
 		0302CF3F1FEE5F5E0062C0DC /* ColorPalettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */; };
+		03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */; };
 		03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03089CC121CFF17800C9FE4D /* ObjectFab.swift */; };
 		030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DC62B1FE4A58B006DCF93 /* MotionType.swift */; };
 		031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */; };
@@ -404,6 +405,7 @@
 		030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardBlackHeaderText.swift; sourceTree = "<group>"; };
 		0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometry.swift; sourceTree = "<group>"; };
 		0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalettes.swift; sourceTree = "<group>"; };
+		03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcFireOutlook.swift; sourceTree = "<group>"; };
 		03089CC121CFF17800C9FE4D /* ObjectFab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFab.swift; sourceTree = "<group>"; };
 		030DC62B1FE4A58B006DCF93 /* MotionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionType.swift; sourceTree = "<group>"; };
 		0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewSmallGray.swift; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 				03F3EB6122993B870056A56D /* UtilitySpcStormReports.swift */,
 				03F3EB6022993B870056A56D /* UtilitySpcSwo.swift */,
 				034041E023F167F9003AB242 /* vcSpcCompMap.swift */,
+				03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */,
 				034041E123F167F9003AB242 /* vcSpcFireSummary.swift */,
 				034041E523F167F9003AB242 /* vcSpcMeso.swift */,
 				034041E823F167F9003AB242 /* vcSpcStormReports.swift */,
@@ -1680,6 +1683,7 @@
 				03F3EB85229945D10056A56D /* UtilityModelNsslWrfInputOutput.swift in Sources */,
 				03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */,
 				F072B6691E74ECD1004219A1 /* ObjectToolbarItems.swift in Sources */,
+				03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */,
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */,
 				0340423623F16FC3003AB242 /* vcAdhocLocation.swift in Sources */,
