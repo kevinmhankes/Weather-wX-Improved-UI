@@ -10,7 +10,6 @@
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
 // [REF] remove the need for storyboards as much as possible
-// [FIX] Shorten nhc verbiage when no cyclones
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option
 
@@ -24,7 +23,8 @@
 		 [REF] remove files that are no longer in the project
 		 [FIX] zoom level for WPC fronts text vs lines was not the same
 		 [REF] misc lint and code refactor
-		 [ADD] WIP WPC Img swipe screen edge left to go back
+		 [ADD] swipe screen edge left to go back (does not work in nexrad radar or when zoomed in on images)
+		 [FIX] nexrad radar map selection was not working, pins were not present
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working

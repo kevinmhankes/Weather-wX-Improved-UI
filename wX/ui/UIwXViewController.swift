@@ -16,11 +16,19 @@ class UIwXViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UtilityActions.ttsPrep()
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        view.addGestureRecognizer(edgePan)
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
+    }
+    
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            doneClicked()
+        }
     }
 
     @objc func doneClicked() {

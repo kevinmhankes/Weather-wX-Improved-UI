@@ -18,12 +18,6 @@ class vcWpcImg: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)
-        
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(willEnterForeground),
@@ -51,12 +45,6 @@ class vcWpcImg: UIwXViewController {
         }
     }
     
-    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            doneClicked()
-        }
-    }
-
     @objc func willEnterForeground() {
         self.getContent(index)
     }

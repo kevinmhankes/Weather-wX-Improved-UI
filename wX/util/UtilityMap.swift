@@ -131,7 +131,7 @@ final class UtilityMap {
                 let arr = [
                     "name": ridArr[0],
                     "latitude": latlon.latString,
-                    "longitude": "-" + latlon.lonString,
+                    "longitude": latlon.lonString,
                     "mediaURL": ridArr[1]
                 ]
                 locations.append(arr)
