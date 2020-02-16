@@ -12,6 +12,7 @@
 // [REF] remove the need for storyboards as much as possible
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option
+// [REF] use enum for icon type 
 
 56089 2020_02_16 
 56088 2020_02_16 [ADD] code for navigationController but do not use yet
