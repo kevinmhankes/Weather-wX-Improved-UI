@@ -10,8 +10,6 @@ import AVFoundation
 class vcSpcFireOutlook: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     private var bitmap = Bitmap()
-    //private var listOfText = [String]()
-    //private var urls = [String]()
     private var playListButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private var text = ""
@@ -35,8 +33,6 @@ class vcSpcFireOutlook: UIwXViewController, AVSpeechSynthesizerDelegate {
             let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]
             self.text = UtilityDownload.getTextProduct(self.product)
-            //self.listOfText.append(self.text)
-            //self.urls.append(imgUrl)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
                 self.displayContent()

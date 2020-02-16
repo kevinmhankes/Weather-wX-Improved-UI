@@ -9,9 +9,7 @@ import AVFoundation
 
 class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
 
-    private var bitmaps = [Bitmap]()
-    private var listOfText = [String]()
-    private var urls = [String]()
+    private var bitmap = Bitmap()
     private var playListButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private var spcMcdNumber = ""
@@ -37,9 +35,9 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
             self.product = UtilityWpcRainfallOutlook.productCode[number]
             self.text = UtilityDownload.getTextProduct(self.product)
-            self.listOfText.append(self.text)
-            self.urls.append(imgUrl)
-            self.bitmaps.append(Bitmap(imgUrl))
+            //self.listOfText.append(self.text)
+            //self.urls.append(imgUrl)
+            self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
                 self.displayContent()
             }
@@ -51,7 +49,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         super.doneClicked()
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked() {
         let number = Int(wpcRainfallDay)! - 1
         let vc = vcImageViewer()
         vc.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
@@ -59,7 +57,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps, text)
+        UtilityShare.shareImage(self, sender, bitmap, text)
     }
 
     @objc func playClicked() {
@@ -77,37 +75,32 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     private func displayContent() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
-        tabletInLandscape = self.bitmaps.count == 1
+        tabletInLandscape = true
         #endif
         if tabletInLandscape {
             stackView.axis = .horizontal
             stackView.alignment = .firstBaseline
         }
         var views = [UIView]()
-        text = ""
-        self.bitmaps.enumerated().forEach {
-            let objectImage: ObjectImage
-            if tabletInLandscape {
-                objectImage = ObjectImage(
-                    self.stackView,
-                    $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
-                    widthDivider: 2
-                )
-            } else {
-                objectImage = ObjectImage(
-                    self.stackView,
-                    $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
-                )
-            }
-            objectImage.img.accessibilityLabel = listOfText[$0]
-            objectImage.img.isAccessibilityElement = true
-            views.append(objectImage.img)
-            text += listOfText[$0]
+        let objectImage: ObjectImage
+        if tabletInLandscape {
+            objectImage = ObjectImage(
+                self.stackView,
+                bitmap,
+                UITapGestureRecognizer(target: self, action: #selector(imageClicked)),
+                widthDivider: 2
+            )
+        } else {
+            objectImage = ObjectImage(
+                self.stackView,
+                bitmap,
+                UITapGestureRecognizer(target: self, action: #selector(imageClicked))
+            )
         }
+        objectImage.img.isAccessibilityElement = true
+        views.append(objectImage.img)
         let objectTextView: ObjectTextView
         if tabletInLandscape {
             objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
