@@ -40,25 +40,29 @@ class vcSpcSwoSummary: UIwXViewController {
     }
 
     private func displayContent() {
-        let imagesPerRow = 2
+        var imageCount = 0
+        var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        [0, 1, 2, 3].forEach {
-            imageStackViewList.append(
-                ObjectStackView(
-                    UIStackView.Distribution.fill,
-                    NSLayoutConstraint.Axis.horizontal,
-                    spacing: UIPreferences.stackviewCardSpacing
-                )
-            )
-            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
+            imagesPerRow = 3
         }
-        self.bitmaps.enumerated().forEach {
+        self.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
             _ = ObjectImage(
-                imageStackViewList[$0 / imagesPerRow].view,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
+                stackView,
+                image,
+                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
                 widthDivider: imagesPerRow
             )
+            imageCount += 1
         }
     }
 

@@ -13,7 +13,7 @@
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option
 
-56088 2020_02_14 [ADD] code for navigationController but do not use yet
+56088 2020_02_16 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
 		 [ADD] add title in toolbar for SPC SWO
 		 [ADD] MCD/MPD/WAT viewer - if tap on image show image in dedicated viewer
@@ -26,6 +26,7 @@
 		 [ADD] swipe screen edge left to go back (does not work in nexrad radar or when zoomed in on images)
 		 [FIX] nexrad radar map selection was not working, pins were not present
 		 [ADD] dedicated SPC Fire outlook viewer with text and image side by side
+		 [ADD] optimize SPC Convective outlook if in landscape and tablet
 56087 2020_02_11 [REF] remove the need for storyboards as much as possible
 		 [REF] remove the need for ActVars as much as possible
 		 [FIX] spotter report map not working
