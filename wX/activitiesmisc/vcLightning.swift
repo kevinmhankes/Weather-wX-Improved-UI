@@ -28,7 +28,7 @@ class vcLightning: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(vcLightning.shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)

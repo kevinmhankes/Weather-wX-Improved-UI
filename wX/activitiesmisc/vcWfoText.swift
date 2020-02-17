@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate { // UIGestureRecognizerDelegate
+class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
 
     private var product = "AFD"
     private var textView = ObjectTextView()
@@ -37,17 +37,11 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         "VFD: Aviation Only AFD"
     ]
     
-    //func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    //    return true
-   // }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         synth.delegate = self
         mapView.delegate = self
-        //self.navigationController?.interactivePopGestureRecognizer!.isEnabled = true
-        //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))

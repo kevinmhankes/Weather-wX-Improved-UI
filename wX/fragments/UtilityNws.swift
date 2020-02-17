@@ -96,7 +96,7 @@ final class UtilityNws {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: size, format: rendererFormat)
-        let newImage = renderer.image {_ in
+        let newImage = renderer.image { _ in
             let bgRect = CGRect(x: 0, y: 0, width: dimens, height: dimens)
             UIColor.white.setFill()
             UIRectFill(bgRect)
@@ -155,7 +155,7 @@ final class UtilityNws {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: imageSize, format: rendererFormat)
-        let newImage = renderer.image {_ in
+        let newImage = renderer.image { _ in
             bitmap.image.draw(at: CGPoint.zero)
             if num1 != "" {
                 let rectangle = CGRect(x: 0, y: dimens - numHeight, width: dimens, height: dimens)

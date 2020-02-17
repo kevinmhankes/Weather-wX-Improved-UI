@@ -53,14 +53,7 @@ final class UtilityLocationFragment {
     static let sevenDayWind7 = "around ([0-9]*) mph"
     static let sevenDayWind8 = "Winds could gust as high as ([0-9]*) mph\\."
     static let sevenDayWind9 = " ([0-9]*) to ([0-9]*) mph."
-    //static let sevenDayWinddir1 = "\\. (\\w+\\s?\\w*) wind "
-    //static let sevenDayWinddir2 = "wind becoming (.*?) [0-9]"
-    //static let sevenDayWinddir3 = "wind becoming (\\w+\\s?\\w*) around"
-    //static let sevenDayWinddir4 = "Breezy, with a[n]? (.*?) wind"
-    //static let sevenDayWinddir5 = "Windy, with a[n]? (.*?) wind"
-    //static let sevenDayWinddir6 = "Blustery, with a[n]? (.*?) wind"
-    //static let sevenDayWinddir7 = "Light (.*?) wind"
-
+   
     static func extract7DayMetrics(_ chunk: String) -> String {
         let spacing = " "
         // wind 24 to 29 mph

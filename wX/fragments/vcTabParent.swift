@@ -8,7 +8,6 @@ import UIKit
 
 class vcTabParent: UIViewController {
 
-    // FIXME protected - accessible to children
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     var objTileMatrix = ObjectTileMatrix()
@@ -137,7 +136,9 @@ class vcTabParent: UIViewController {
     }
 
     func removeAllViews() {
-        self.view.subviews.forEach({ $0.removeFromSuperview() })
+        self.view.subviews.forEach {
+            $0.removeFromSuperview()
+        }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

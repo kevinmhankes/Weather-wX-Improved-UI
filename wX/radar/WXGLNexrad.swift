@@ -148,21 +148,36 @@ final class WXGLNexrad {
 
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {
-        case 134: return 460
-        case 186: return 1390
-        case 78: return 592
-        case 80: return 592
-        case 180: return 720
-        case 181: return 720
-        case 182: return 720
-        case 135: return 1200
-        case 99:  return 1200
-        case 159: return 1200
-        case 161: return 1200
-        case 163: return 1200
-        case 170: return 1200
-        case 172: return 1200
-        default:  return 460
+        case 134:
+            return 460
+        case 186:
+            return 1390
+        case 78:
+            return 592
+        case 80:
+            return 592
+        case 180:
+            return 720
+        case 181:
+            return 720
+        case 182:
+            return 720
+        case 135:
+            return 1200
+        case 99:
+            return 1200
+        case 159:
+            return 1200
+        case 161:
+            return 1200
+        case 163:
+            return 1200
+        case 170:
+            return 1200
+        case 172:
+            return 1200
+        default:
+            return 460
         }
     }
 

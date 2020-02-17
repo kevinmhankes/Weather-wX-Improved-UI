@@ -139,7 +139,9 @@ class vcNhcStorm: UIwXViewController {
     }
 
     func displayImageContent() {
-        self.bitmaps.filter {($0.isValidForNhc)}.forEach {_ = ObjectImage(self.stackView, $0)}
+        self.bitmaps.filter {($0.isValidForNhc)}.forEach {
+            _ = ObjectImage(self.stackView, $0)
+        }
         self.view.bringSubviewToFront(self.toolbar)
     }
 

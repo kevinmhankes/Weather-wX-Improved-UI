@@ -534,8 +534,6 @@ class vcTabLocation: vcTabParent {
         cleanupRadarObjects()
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
-        //let screenSize: CGSize = UIScreen.main.bounds.size
-        //let screenWidth = Float(screenSize.width)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         let screenWidth = width
         let screenHeight = screenWidth
@@ -571,7 +569,9 @@ class vcTabLocation: vcTabParent {
             width: CGFloat(screenWidth),
             height: CGFloat(screenWidth)
         )
-        metalLayer.forEach { caview.layer.addSublayer($0!) }
+        metalLayer.forEach {
+            caview.layer.addSublayer($0!)
+        }
         stackView.addArrangedSubview(caview)
         if wxMetal.count < 1 {
             wxMetal.append(
@@ -611,7 +611,9 @@ class vcTabLocation: vcTabParent {
             UtilityPolygons.getData()
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
-                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
+                    self.wxMetal.forEach {
+                        $0!.constructAlertPolygons()
+                    }
                 }
             }
         }
@@ -660,8 +662,12 @@ class vcTabLocation: vcTabParent {
 
     // Clear all views except 7day and current conditions
     func clearViews() {
-        self.stackViewHazards.view.subviews.forEach {$0.removeFromSuperview()}
-        self.extraDataCards.forEach {$0.removeFromSuperview()}
+        self.stackViewHazards.view.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        self.extraDataCards.forEach {
+            $0.removeFromSuperview()
+        }
         self.forecastImage = []
         self.forecastText = []
         self.extraDataCards = []

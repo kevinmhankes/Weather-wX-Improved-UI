@@ -127,16 +127,22 @@ class vcSpcMeso: UIwXViewController {
     }
 
     @objc func paramClicked(sender: ObjectToolbarIcon) {
-        var paramArray = [String]()
+        var parametars = [String]()
         switch sender.title! {
-        case "SFC": paramArray = UtilitySpcMeso.paramSurface
-        case "UA":  paramArray = UtilitySpcMeso.paramUpperAir
-        case "CPE": paramArray = UtilitySpcMeso.paramCape
-        case "CMP": paramArray = UtilitySpcMeso.paramComp
-        case "SHR": paramArray = UtilitySpcMeso.paramShear
-        default: break
+        case "SFC":
+            parametars = UtilitySpcMeso.paramSurface
+        case "UA":
+            parametars = UtilitySpcMeso.paramUpperAir
+        case "CPE":
+            parametars = UtilitySpcMeso.paramCape
+        case "CMP":
+            parametars = UtilitySpcMeso.paramComp
+        case "SHR":
+            parametars = UtilitySpcMeso.paramShear
+        default:
+            break
         }
-        _ = ObjectPopUp(self, "Product Selection", sender, paramArray, self.productChangedByCode(_:))
+        _ = ObjectPopUp(self, "Product Selection", sender, parametars, self.productChangedByCode(_:))
     }
 
     @objc func layerClicked(sender: ObjectToolbarIcon) {
@@ -153,11 +159,16 @@ class vcSpcMeso: UIwXViewController {
 
     func layerChanged(_ layer: String) {
         switch layer {
-        case "Radar":            toggleLayer("SPCMESO_SHOW_RADAR")
-        case "SPC Outlooks":     toggleLayer("SPCMESO_SHOW_OUTLOOK")
-        case "Watches/Warnings": toggleLayer("SPCMESO_SHOW_WATWARN")
-        case "Topography":       toggleLayer("SPCMESO_SHOW_TOPO")
-        default: break
+        case "Radar":
+            toggleLayer("SPCMESO_SHOW_RADAR")
+        case "SPC Outlooks":
+            toggleLayer("SPCMESO_SHOW_OUTLOOK")
+        case "Watches/Warnings":
+            toggleLayer("SPCMESO_SHOW_WATWARN")
+        case "Topography":
+            toggleLayer("SPCMESO_SHOW_TOPO")
+        default:
+            break
         }
         getContent()
     }
@@ -165,11 +176,16 @@ class vcSpcMeso: UIwXViewController {
     func isLayerSelected(_ layer: String) -> Bool {
         var isSelected = "false"
         switch layer {
-        case "Radar":            isSelected = Utility.readPref("SPCMESO_SHOW_RADAR", "false")
-        case "SPC Outlooks":     isSelected = Utility.readPref("SPCMESO_SHOW_OUTLOOK", "false")
-        case "Watches/Warnings": isSelected = Utility.readPref("SPCMESO_SHOW_WATWARN", "false")
-        case "Topography":       isSelected = Utility.readPref("SPCMESO_SHOW_TOPO", "false")
-        default: break
+        case "Radar":
+            isSelected = Utility.readPref("SPCMESO_SHOW_RADAR", "false")
+        case "SPC Outlooks":
+            isSelected = Utility.readPref("SPCMESO_SHOW_OUTLOOK", "false")
+        case "Watches/Warnings":
+            isSelected = Utility.readPref("SPCMESO_SHOW_WATWARN", "false")
+        case "Topography":
+            isSelected = Utility.readPref("SPCMESO_SHOW_TOPO", "false")
+        default:
+            break
         }
         return isSelected == "true"
     }

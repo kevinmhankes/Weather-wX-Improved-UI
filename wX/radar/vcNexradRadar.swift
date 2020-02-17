@@ -207,8 +207,12 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 object: nil
             )
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(onPause), name:
-            UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onPause),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(onResume),
@@ -249,7 +253,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             metalLayer[index]!.framebufferOnly = true
         }
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
-        metalLayer.forEach { view.layer.addSublayer($0!) }
+        metalLayer.forEach {
+            view.layer.addSublayer($0!)
+        }
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, textObj, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
         }
@@ -472,12 +478,20 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 locationManager.stopUpdatingLocation()
                 locationManager.stopMonitoringSignificantLocationChanges()
                 stopAnimate()
-                wxMetal.forEach { $0!.writePrefs() }
-                wxMetal.forEach { $0!.cleanup() }
+                wxMetal.forEach {
+                    $0!.writePrefs()
+                }
+                wxMetal.forEach {
+                    $0!.cleanup()
+                }
                 device = nil
                 textObj.OGLR = nil
-                metalLayer.enumerated().forEach { index, _ in metalLayer[index] = nil }
-                wxMetal.enumerated().forEach { index, _ in wxMetal[index] = nil }
+                metalLayer.enumerated().forEach { index, _ in
+                    metalLayer[index] = nil
+                }
+                wxMetal.enumerated().forEach { index, _ in
+                    wxMetal[index] = nil
+                }
                 commandQueue = nil
                 pipelineState = nil
                 timer = nil
@@ -533,8 +547,12 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         //stopAnimate()
         if wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.updateTimeToolbar() }
-            self.wxMetal.forEach { $0!.getRadar("") }
+            self.wxMetal.forEach {
+                $0!.updateTimeToolbar()
+            }
+            self.wxMetal.forEach {
+                $0!.getRadar("")
+            }
             getPolygonWarnings()
         }
     }
@@ -632,8 +650,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 $0.removeFromSuperview()
             }
         }
-        print(screenWidth)
-        print(screenHeight)
+        //print(screenWidth)
+        //print(screenHeight)
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,
@@ -665,7 +683,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             inOglAnim = false
             animateButton.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
             if wxMetal[0] != nil {
-                self.wxMetal.forEach { $0!.getRadar("") }
+                self.wxMetal.forEach {
+                    $0!.getRadar("")
+                }
                 getPolygonWarnings()
             }
         }
@@ -839,8 +859,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
 
     @objc func getRadarEveryMinute() {
-        wxMetal.forEach { $0!.getRadar("") }
-        print("radar update")
+        wxMetal.forEach {
+            $0!.getRadar("")
+        }
+        //print("radar update")
         getPolygonWarnings()
     }
 

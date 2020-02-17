@@ -40,22 +40,22 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     func getLsrFromWfo() -> [String] {
-        var lsrArr = [String]()
+        var lsrList = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
             + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {
-            lsrArr.append("None issued by this office recently.")
+            lsrList.append("None issued by this office recently.")
         } else {
             var maxVers = Int(numberLSR) ?? 0
             if maxVers > 30 {
                 maxVers = 30
             }
             stride(from: 1, to: maxVers, by: 2).forEach {
-                lsrArr.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, $0))
+                lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, $0))
             }
         }
-        return lsrArr
+        return lsrList
     }
 
     @objc func mapClicked() {
@@ -87,8 +87,12 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     private func displayContent() {
         self.siteButton.title = self.wfo
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
-        self.wfoProd.forEach {_ = ObjectTextView(self.stackView, $0)}
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        self.wfoProd.forEach {
+            _ = ObjectTextView(self.stackView, $0)
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
