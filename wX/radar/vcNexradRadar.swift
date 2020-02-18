@@ -718,10 +718,17 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                     if self.inOglAnim {
                         self.wxMetal.enumerated().forEach { index, glv in
                             let buttonText = " (\(String(frame+1))/\(frameCnt))"
+                            //print(buttonText)
                             glv!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
                             scaleFactor = 1
                         }
-                        usleep(UInt32(100000 * MyApplication.animInterval * scaleFactor))
+                        var interval = MyApplication.animInterval
+                        if self.wxMetal[0]!.product.hasPrefix("L2") {
+                            if interval < 12 {
+                                interval = 12
+                            }
+                        }
+                        usleep(UInt32(100000 * interval * scaleFactor))
                     } else {
                         break
                     }

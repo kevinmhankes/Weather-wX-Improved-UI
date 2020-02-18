@@ -649,7 +649,11 @@ class WXMetalRender {
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
         let timeStr = WXGLNexrad.getRadarInfo("").split(" ")
         if timeStr.count > 1 {
-            let text = timeStr[1].replace(MyApplication.newline + "Mode:", "") + additionalText
+            var replaceToken = "Mode:"
+            if product.hasPrefix("L2") {
+                replaceToken = "Product:"
+            }
+            let text = timeStr[1].replace(MyApplication.newline + replaceToken, "") + additionalText
             timeButton.title = text
             if UtilityTime.isRadarTimeOld(text) && !isAnimating {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
