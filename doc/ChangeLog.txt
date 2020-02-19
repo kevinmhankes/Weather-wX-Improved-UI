@@ -13,6 +13,9 @@
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option
 // [REF] use enum for icon type 
+// [ADD] look into nav drawer and true card class
+// [FIX] main screen rotation
+// [ADD] state level RWR
 
 56089 2020_02_18 [FIX] animating L2 was not showing frame count
 		 [FIX] animating L2 - slow down anim interval otherwise it just doesn't work
