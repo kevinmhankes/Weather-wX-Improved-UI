@@ -86,7 +86,13 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                     self.html = "None issused by this office recently."
                 }
                 self.textView.text = self.html
-                if self.product == "RWR" || self.product == "RTP" || self.product == "RVA" {
+                if self.product == "RWR"
+                    || self.product == "RTP"
+                    || self.product == "RVA"
+                    || self.product == "LSR"
+                    || self.product == "ESF"
+                    || self.product == "NSH"
+                    || self.product == "PNS" {
                     self.textView.font = FontSize.hourly.size
                 } else {
                     self.textView.font = FontSize.medium.size
