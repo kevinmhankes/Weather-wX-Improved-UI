@@ -11,7 +11,7 @@
 // [FIX] dual pane does not show radar time for both panes
 // [REF] remove the need for storyboards as much as possible
 // [ADD] spc storm reports - landscape optimization
-// [ADD] spotters - show on radar option
+// [ADD] spotters - show on radar option, search, mark fav, contact
 // [REF] use enum for icon type 
 // [ADD] look into nav drawer and true card class
 // [FIX] main screen rotation
