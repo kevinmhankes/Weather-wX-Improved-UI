@@ -7,14 +7,14 @@
 import UIKit
 
 final class ObjectTileMatrix: NSObject {
-
+    
     private var uiv: UIViewController?
     private var menuButton = ObjectToolbarIcon()
     private var tabType: TabType = .spc
     private var icons = [String]()
     private var labels = [String]()
     var toolbar = ObjectToolbar()
-
+    
     convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ tabType: TabType) {
         self.init()
         self.uiv = uiv
@@ -70,43 +70,48 @@ final class ObjectTileMatrix: NSObject {
             let sV = ObjectStackView(.fill, .horizontal, spacing: UIPreferences.stackviewCardSpacing)
             var index = 0
             for _ in (0...(rowCount - 1)) {
+                //print("DEBUG: " + String(jIndex))
                 if jIndex >= icons.count {
-                    break
-                }
-                let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow, labels[jIndex])
-                switch tabType {
-                case .spc:
-                    tile.addGestureRecognizer(
-                        UITapGestureRecognizer(
-                            target: self,
-                            action: #selector(imgClickedSpc(sender:))
+                    //print("DEBUG: DROP OUT")
+                    let tile = ObjectTileImage(sV.view, iconsPerRow)
+                    //break
+                } else {
+                    let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow, labels[jIndex])
+                    switch tabType {
+                    case .spc:
+                        tile.addGestureRecognizer(
+                            UITapGestureRecognizer(
+                                target: self,
+                                action: #selector(imgClickedSpc(sender:))
+                            )
                         )
-                    )
-                case .misc:
-                    tile.addGestureRecognizer(
-                        UITapGestureRecognizer(
-                            target: self,
-                            action: #selector(imgClickedMisc(sender:))
+                    case .misc:
+                        tile.addGestureRecognizer(
+                            UITapGestureRecognizer(
+                                target: self,
+                                action: #selector(imgClickedMisc(sender:))
+                            )
                         )
-                    )
+                    }
                 }
                 index += 1
                 jIndex += 1
             }
             stackView.addArrangedSubview(sV.view)
+            //print("DEBUG: ADD VIEW")
             if jIndex >= icons.count {
                 break
             }
         }
     }
-
+    
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         switch tabType {
         case .spc:    imgClickedSpc(sender: sender)
         case .misc:   imgClickedMisc(sender: sender)
         }
     }
-
+    
     @objc func imgClickedSpc(sender: UITapGestureRecognizer) {
         //var token = ""
         let iconTitle = icons[sender.view!.tag]
@@ -175,7 +180,7 @@ final class ObjectTileMatrix: NSObject {
             uiv!.goToVC(vc)
         }
     }
-
+    
     @objc func imgClickedMisc(sender: UITapGestureRecognizer) {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
@@ -262,7 +267,7 @@ final class ObjectTileMatrix: NSObject {
         default:  break
         }
     }
-
+    
     @objc func multiPaneRadarClicked(_ paneCount: String) {
         let vc = vcNexradRadar()
         switch paneCount {
@@ -274,31 +279,31 @@ final class ObjectTileMatrix: NSObject {
         }
         uiv!.goToVC(vc)
     }
-
+    
     @objc func genericClicked(_ vc: UIViewController) {
         UtilityActions.goToVCS(uiv!, vc)
     }
-
+    
     @objc func cloudClicked() {
         UtilityActions.cloudClicked(uiv!)
     }
-
+    
     @objc func radarClicked() {
         UtilityActions.radarClicked(uiv!)
     }
-
+    
     @objc func wfotextClicked() {
         UtilityActions.wfotextClicked(uiv!)
     }
-
+    
     @objc func menuClicked() {
         UtilityActions.menuClicked(uiv!, menuButton)
     }
-
+    
     @objc func dashClicked() {
         UtilityActions.dashClicked(uiv!)
     }
-
+    
     var iconsSpc = [
         "spcsref",
         "meso",
@@ -317,7 +322,7 @@ final class ObjectTileMatrix: NSObject {
         "fire_outlook",
         "tstorm"
     ]
-
+    
     var labelsSpc = [
         "SREF",
         "Mesoanalysis",
@@ -336,7 +341,7 @@ final class ObjectTileMatrix: NSObject {
         "Fire outlooks",
         "Thunderstorm outlooks"
     ]
-
+    
     var iconsMisc = [
         "ncep",
         "hrrrviewer",
@@ -358,7 +363,7 @@ final class ObjectTileMatrix: NSObject {
         "lightning",
         "wpc_rainfall"
     ]
-
+    
     var labelsMisc = [
         "NCEP Models",
         "HRRR",

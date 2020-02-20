@@ -18,13 +18,25 @@ final class ObjectTileImage {
         _ accessibilityLabel: String
     ) {
         let bitmap = Bitmap.fromFile(filename)
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         image.img.tag = index
-        image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
+        //image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         image.setBitmap(bitmap)
         image.img.isAccessibilityElement = true
         image.img.accessibilityLabel = accessibilityLabel
         stackView.addArrangedSubview(image.img)
+        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+
+    }
+    
+    init(
+        _ stackView: UIStackView,
+        _ iconsPerRow: CGFloat
+    ) {
+        stackView.addArrangedSubview(image.img)
+        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
