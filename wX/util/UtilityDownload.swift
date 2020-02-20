@@ -212,6 +212,18 @@ final class UtilityDownload {
             text = text.removeLineBreaks()
             text = text.parse("<div class=.haztext.>(.*?)</div>")
             text = text.replace("<br>", "\n")
+        } else if prod.hasPrefix("RTP") && prod.count == 5 {
+            let product = prod.substring(0, 3)
+            let location = prod.substring(3, 5).replace("%", "")
+            // TODO use myApp URL ref
+            let url = "https://api.weather.gov/products/types/" + product + "/locations/" + location
+            print("DEBUG: " + url)
+            let html = url.getNwsHtml()
+            let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
+            print("DEBUG: " + urlProd)
+            let prodHtml = urlProd.getNwsHtml()
+            text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
+            text = text.replace("\\n", "\n")
         } else if prod.hasPrefix("RWR") || prod.hasPrefix("RTP") {
             let product = prod.substring(0, 3)
             let location = prod.substring(3).replace("%", "")
@@ -250,6 +262,7 @@ final class UtilityDownload {
                     text = text.replace("\\n", "\n")
                 }
             } else {
+                // TODO use myApp URL ref
                 switch prod {
                 case "SWODY1":
                     let url = "https://www.spc.noaa.gov/products/outlook/day1otlk.html"

@@ -72,7 +72,7 @@ open class ImageScrollView: UIScrollView {
         super.init(frame: frame)
         initialize()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()

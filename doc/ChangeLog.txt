@@ -14,11 +14,13 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [REF] use enum for icon type 
 // [ADD] look into nav drawer and true card class
-// [ADD] state level RWR
-// [FIX] when possible use new contraint system and remove former rotation logic
 // [FIX] standardize var naming for objectTextView
+// [FIX] should not need to restart app when changing NWS icon size
+// [FIX] in WfoText don't display code name
+// [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 
-56090 2020_02_20 
+56090 2020_02_20 [FIX] support NWS icon size in new framework
+		 [ADD] state level RWR
 56089 2020_02_20 [FIX] animating L2 was not showing frame count
 		 [FIX] animating L2 - slow down anim interval otherwise it just doesn't work
 		 [FIX] force additional WFO text prod to fixed width no newline replace

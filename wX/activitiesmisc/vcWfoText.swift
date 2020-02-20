@@ -21,6 +21,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     private var playlistButton = ObjectToolbarIcon()
     private var synth = AVSpeechSynthesizer()
     private var html = ""
+    // FIXME store in UtilityWfoText.swift
     private let wfoProdList = [
         "AFD: Area Forecast Discussion",
         "ESF: Hydrologic Outlook",
@@ -31,6 +32,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         "PNS: Public Information Statement",
         "RER: Record Event Report",
         "RTP: Regional Temp/Precip Summary",
+        "RTPZZ: Regional Temp/Precip Summary by State",
         "RVA: Hydrologic Summary",
         "RWR: Regional Weather Roundup",
         "SPS: Special Weather Statement",
@@ -68,6 +70,10 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
             wfo = Location.wfo
         }
         product = Utility.readPref("WFOTEXT_PARAM_LAST_USED", product)
+        if product.hasPrefix("RTP") && product.count == 5 {
+            let state = Utility.getWfoSiteName(wfo).split(",")[0]
+            product = "RTP" + state
+        }
         self.getContent()
     }
 
@@ -79,16 +85,26 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
+            if self.product.hasPrefix("RTP") && self.product.count == 5 {
+                let state = Utility.getWfoSiteName(self.wfo).split(",")[0]
+                self.product = "RTP" + state
+            }
             self.productButton.title = self.product
             self.siteButton.title = self.wfo
-            self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
+            if self.product.hasPrefix("RTP") && self.product.count == 5 {
+                //let state = Utility.getWfoSiteName(self.wfo).split(",")[0]
+                //self.product = "RTP" + state
+                self.html = UtilityDownload.getTextProduct(self.product)
+            } else {
+                self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
+            }
             DispatchQueue.main.async {
                 if self.html == "" {
                     self.html = "None issused by this office recently."
                 }
                 self.textView.text = self.html
                 if self.product == "RWR"
-                    || self.product == "RTP"
+                    || self.product.hasPrefix("RTP")
                     || self.product == "RVA"
                     || self.product == "LSR"
                     || self.product == "ESF"
@@ -98,7 +114,11 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                 } else {
                     self.textView.font = FontSize.medium.size
                 }
-                Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
+                if self.product.hasPrefix("RTP") && self.product.count == 5 {
+                    Utility.writePref("WFOTEXT_PARAM_LAST_USED", "RTPZZ")
+                } else {
+                    Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
+                }
                 Utility.writePref("WFO_LAST_USED", self.wfo)
                 self.scrollView.scrollToTop()
             }
