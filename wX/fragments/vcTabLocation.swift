@@ -64,7 +64,7 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
                     self.objScrollStackView!.fragmentWidthAnchor2!,
-                    self.objScrollStackView!.fragmentCenterAnchor!
+                    //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
@@ -88,9 +88,9 @@ class vcTabLocation: vcTabParent {
             
             self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
             self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace)
-            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
-            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
-            self.objScrollStackView!.fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor)
+            //self.objScrollStackView!.fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             
             self.view.addConstraints(
                 [
@@ -98,7 +98,7 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
                     self.objScrollStackView!.fragmentWidthAnchor2!,
-                    self.objScrollStackView!.fragmentCenterAnchor!
+                    //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
@@ -156,7 +156,9 @@ class vcTabLocation: vcTabParent {
                 [
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
-                    self.objScrollStackView!.fragmentCenterAnchor!
+                    self.objScrollStackView!.fragmentWidthAnchor1!,
+                    self.objScrollStackView!.fragmentWidthAnchor2!,
+                    //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
