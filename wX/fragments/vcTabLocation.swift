@@ -62,6 +62,8 @@ class vcTabLocation: vcTabParent {
                 [
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
+                    self.objScrollStackView!.fragmentWidthAnchor1!,
+                    self.objScrollStackView!.fragmentWidthAnchor2!,
                     self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
@@ -76,14 +78,25 @@ class vcTabLocation: vcTabParent {
             self.objScrollStackView!.fragmentCenterAnchor = scrollView.bottomAnchor.constraint(
                 equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight
             )
+            
+            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(
+                equalTo: self.view.leftAnchor
+            )
+            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(
+                equalTo: self.view.rightAnchor
+            )
+            
             self.view.addConstraints(
                 [
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
+                    self.objScrollStackView!.fragmentWidthAnchor1!,
+                    self.objScrollStackView!.fragmentWidthAnchor2!,
                     self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
+        //objCard7DayCollection?.updateWidth()
     }
 
     override func viewDidLoad() {
@@ -236,6 +249,7 @@ class vcTabLocation: vcTabParent {
     }
 
     func getContent() {
+        print("DEBUG: getContent")
         DispatchQueue.global(qos: .userInitiated).async {
             if Location.isUS {
                 self.isUS = true
@@ -784,36 +798,6 @@ class vcTabLocation: vcTabParent {
         getPolygonWarnings()
         wxMetal[0]!.resetRidAndGet(rid, isHomeScreen: true)
     }
-
-    /*private func displayContent() {
-        self.view.addSubview(toolbar)
-        stackView = UIStackView()
-        stackView.widthAnchor.constraint(
-            equalToConstant: self.view.frame.width - UIPreferences.sideSpacing
-            ).isActive = true
-        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightConstraint != nil {
-            self.view.removeConstraints(self.objScrollStackView!.fragmentHeightConstraint!)
-        }
-        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
-        self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-        self.stackViewForecast = ObjectStackView(.fill, .vertical)
-        self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        self.objCard7DayCollection = nil
-        self.ccCard = nil
-        addLocationSelectionCard()
-        self.getContentMaster()
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
