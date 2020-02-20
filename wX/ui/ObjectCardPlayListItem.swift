@@ -9,6 +9,7 @@ import UIKit
 final class ObjectCardPlayListItem {
 
     init(
+        _ scrollView: UIScrollView,
         _ stackView: UIStackView,
         _ product: String,
         _ middleLine: String,
@@ -26,6 +27,9 @@ final class ObjectCardPlayListItem {
         tvMiddle.color = ColorCompatibility.label
         tvBottom.color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
+        [tvProduct, tvMiddle, tvBottom].forEach {
+            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        }
         sV.view.addGestureRecognizer(gesture)
         sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }

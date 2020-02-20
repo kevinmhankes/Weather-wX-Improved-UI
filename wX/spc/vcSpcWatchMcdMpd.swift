@@ -16,13 +16,14 @@ class vcSpcWatchMcdMpd: UIwXViewController {
     private var playListButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private var productNumber = ""
-    private let synth = AVSpeechSynthesizer()
+    private var synth = AVSpeechSynthesizer()
     private var objectWatchProduct: ObjectWatchProduct?
     var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonType.WATCH
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
@@ -34,6 +35,12 @@ class vcSpcWatchMcdMpd: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
+    }
+    
+    @objc override func doneClicked() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        UtilityActions.resetAudio(&synth, playButton)
+        super.doneClicked()
     }
 
     func getContent() {

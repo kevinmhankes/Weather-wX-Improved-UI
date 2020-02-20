@@ -126,6 +126,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
                 + " (size: " + String(productText.count) + ")"
             _ = ObjectCardPlayListItem(
+                self.scrollView,
                 self.stackView,
                 $1,
                 topLine,
@@ -182,16 +183,5 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     private func displayContent() {
         updateView()
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
     }
 }

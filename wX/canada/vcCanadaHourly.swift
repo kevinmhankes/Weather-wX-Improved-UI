@@ -38,7 +38,8 @@ class vcCanadaHourly: UIwXViewController {
     }
 
     private func displayContent() {
-        _ = ObjectTextView(self.stackView, html)
+        let objectTextView = ObjectTextView(self.stackView, html)
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         _ = ObjectCALegal(self.stackView)
     }
 

@@ -33,6 +33,7 @@ class vcSettingsLocationCanada: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:)))
             )
             objectTextView.tv.isSelectable = false
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             self.textViews.append(objectTextView)
         }
     }
@@ -90,6 +91,7 @@ class vcSettingsLocationCanada: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
             )
             objectTextView.tv.isSelectable = false
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             self.textViews.append(objectTextView)
         }
     }

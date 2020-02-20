@@ -23,7 +23,6 @@ class vcNhcStorm: UIwXViewController {
     private var product = ""
     private var topBitmap = Bitmap()
     private var bitmaps = [Bitmap]()
-    private var tv = ObjectTextView()
     private let textProducts = [
         "MIATCP: Public Advisory",
         "MIATCM: Forecast Advisory",
@@ -134,7 +133,8 @@ class vcNhcStorm: UIwXViewController {
     }
 
     func displayTextContent() {
-        tv = ObjectTextView(self.stackView, html)
+        let objectTextView = ObjectTextView(self.stackView, html)
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         self.view.bringSubviewToFront(self.toolbar)
     }
 

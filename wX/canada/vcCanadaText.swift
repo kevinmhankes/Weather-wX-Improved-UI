@@ -11,7 +11,7 @@ import MapKit
 class vcCanadaText: UIwXViewController {
 
     private var product = "focn45"
-    private var textView = ObjectTextView()
+    private var objectTextView = ObjectTextView()
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var html = ""
@@ -50,7 +50,7 @@ class vcCanadaText: UIwXViewController {
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(textView.view, synth, playButton)
+        UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
 
     @objc func productClicked() {
@@ -72,17 +72,18 @@ class vcCanadaText: UIwXViewController {
 
     private func displayContent() {
         self.refreshViews()
-        textView = ObjectTextView(stackView)
+        objectTextView = ObjectTextView(stackView)
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         _ = ObjectCALegal(stackView)
         if self.html == "" {
             self.html = "None issused by this office recently."
         }
-        self.textView.text = self.html
+        self.objectTextView.text = self.html
         self.productButton.title = self.product
         Utility.writePref("CA_TEXT_LASTUSED", self.product)
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -91,5 +92,5 @@ class vcCanadaText: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }

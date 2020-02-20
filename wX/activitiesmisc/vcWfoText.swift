@@ -21,23 +21,6 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     private var playlistButton = ObjectToolbarIcon()
     private var synth = AVSpeechSynthesizer()
     private var html = ""
-    // FIXME store in UtilityWfoText.swift
-    private let wfoProdList = [
-        "AFD: Area Forecast Discussion",
-        "ESF: Hydrologic Outlook",
-        "FWF: Fire weather Forecast",
-        "HWO: Hazardous Weather Outlook",
-        "LSR: Local Storm Report",
-        "NSH: Nearshore Marine Forecast",
-        "PNS: Public Information Statement",
-        "RER: Record Event Report",
-        "RTP: Regional Temp/Precip Summary",
-        "RTPZZ: Regional Temp/Precip Summary by State",
-        "RVA: Hydrologic Summary",
-        "RWR: Regional Weather Roundup",
-        "SPS: Special Weather Statement",
-        "VFD: Aviation Only AFD"
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,7 +119,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, wfoProdList, self.productChanged(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityWfoText.wfoProdList, self.productChanged(_:))
     }
 
     func productChanged(_ product: String) {

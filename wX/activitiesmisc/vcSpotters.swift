@@ -76,15 +76,4 @@ class vcSpotters: UIwXViewController {
         vc.mapKitRadius = 20000.0
         self.goToVC(vc)
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 }

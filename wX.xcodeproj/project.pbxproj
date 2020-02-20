@@ -106,6 +106,7 @@
 		035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */; };
 		03626AE41F294B48002BBAAD /* colormapbveak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE31F294B48002BBAAD /* colormapbveak.txt */; };
 		03626AE61F294B6D002BBAAD /* colormaprefeak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE51F294B6C002BBAAD /* colormaprefeak.txt */; };
+		0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364C02F23FF230800D765FF /* UtilityWfoText.swift */; };
 		036522AE229149440056E657 /* UtilityDownloadNws.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522AD229149440056E657 /* UtilityDownloadNws.swift */; };
 		036522B0229149C70056E657 /* UtilityGoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522AF229149C70056E657 /* UtilityGoes.swift */; };
 		036522B222914A580056E657 /* UtilityWpcImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036522B122914A580056E657 /* UtilityWpcImages.swift */; };
@@ -501,6 +502,7 @@
 		035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
 		03626AE31F294B48002BBAAD /* colormapbveak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbveak.txt; sourceTree = "<group>"; };
 		03626AE51F294B6C002BBAAD /* colormaprefeak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefeak.txt; sourceTree = "<group>"; };
+		0364C02F23FF230800D765FF /* UtilityWfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWfoText.swift; sourceTree = "<group>"; };
 		036522AD229149440056E657 /* UtilityDownloadNws.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadNws.swift; sourceTree = "<group>"; };
 		036522AF229149C70056E657 /* UtilityGoes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityGoes.swift; sourceTree = "<group>"; };
 		036522B122914A580056E657 /* UtilityWpcImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcImages.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 				F011E60F1DB03D78006531FD /* UtilityObservations.swift */,
 				03F3EB77229941510056A56D /* UtilityOpcImages.swift */,
 				F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */,
+				0364C02F23FF230800D765FF /* UtilityWfoText.swift */,
 				0340422423F16FC2003AB242 /* vcAdhocLocation.swift */,
 				0340422523F16FC3003AB242 /* vcHourly.swift */,
 				0340421D23F16FC2003AB242 /* vcImageViewer.swift */,
@@ -1812,6 +1815,7 @@
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
 				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
 				03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */,
+				0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */,
 				03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */,
 				F07B5C101E53D73000555058 /* ObjectCard7Day.swift in Sources */,
 				037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */,

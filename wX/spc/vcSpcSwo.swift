@@ -14,7 +14,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var product = ""
     private var playButton = ObjectToolbarIcon()
     private var playlistButton = ObjectToolbarIcon()
-    private var textView = ObjectTextView()
+    private var objectTextView = ObjectTextView()
     private var synth = AVSpeechSynthesizer()
     var spcSwoDay = ""
     
@@ -72,7 +72,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     @objc func playClicked() {
-        UtilityActions.playClicked(textView.view, synth, playButton)
+        UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
@@ -105,6 +105,9 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
         #if targetEnvironment(macCatalyst)
             imagesPerRow = 4
         #endif
+        if bitmaps.count == 2 {
+            imagesPerRow = 2
+        }
         self.bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {
@@ -124,9 +127,10 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             imageCount += 1
         }
         var views = [UIView]()
-        self.textView = ObjectTextView(self.stackView, self.html)
-        textView.tv.isAccessibilityElement = true
-        views.append(textView.tv)
+        self.objectTextView = ObjectTextView(self.stackView, self.html)
+        self.objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.tv.isAccessibilityElement = true
+        views.append(objectTextView.tv)
         scrollView.accessibilityElements = views
     }
     
