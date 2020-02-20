@@ -55,13 +55,13 @@ class vcHourly: UIwXViewController {
     }
 
     private func displayContent() {
-        let objTextView = ObjectTextView(
+        let objectTextView = ObjectTextView(
             self.stackView,
             self.html,
             FontSize.hourly.size,
             UITapGestureRecognizer(target: self, action: #selector(textAction))
         )
-        scrollView.accessibilityElements = [objTextView.view]
-        objTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        scrollView.accessibilityElements = [objectTextView.view]
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
     }
 }

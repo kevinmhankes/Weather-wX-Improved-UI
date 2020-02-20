@@ -91,7 +91,9 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             $0.removeFromSuperview()
         }
         self.wfoProd.forEach {
-            _ = ObjectTextView(self.stackView, $0)
+            let objectTextView = ObjectTextView(self.stackView, $0)
+            objectTextView.font = FontSize.hourly.size
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         }
     }
 
