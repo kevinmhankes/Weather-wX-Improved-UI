@@ -61,6 +61,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
+        textView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
         } else {
@@ -161,7 +162,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         UtilityPlayList.add(self.product + self.wfo, self.textView.text, self, playlistButton)
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -172,5 +173,5 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                 self.textView.text = self.html
             }
         )
-    }
+    }*/
 }
