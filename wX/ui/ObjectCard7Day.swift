@@ -15,7 +15,6 @@ final class ObjectCard7Day {
     private var image = ObjectCardImage()
     let condenseScale: CGFloat = 0.50
     private var stackView: UIStackView
-    var constraint: NSLayoutConstraint?
 
     init(
         _ stackView: UIStackView,
@@ -41,18 +40,8 @@ final class ObjectCard7Day {
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
-        constraint = horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor)
-        stackView.addConstraint(constraint!)
+        horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
-    }
-    
-    func updateWidth() {
-        //horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        //if stackView.superview != nil &&  constraint != nil {
-        //    stackView.removeConstraint(constraint!)
-        //    constraint = horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.superview!.widthAnchor)
-        //    stackView.addConstraint(constraint!)
-        //}
     }
 
     func update(_ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ dayArrShort: [String], _ isUS: Bool) {

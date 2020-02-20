@@ -96,7 +96,6 @@ class vcTabLocation: vcTabParent {
                 ]
             )
         }
-        //objCard7DayCollection?.updateWidth()
     }
 
     override func viewDidLoad() {

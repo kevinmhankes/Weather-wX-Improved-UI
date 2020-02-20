@@ -51,12 +51,6 @@ final class ObjectCard7DayCollection {
             numCards += 1
         }
     }
-    
-    /*func updateWidth() {
-        sevenDayCardList.forEach {
-            $0.updateWidth()
-        }
-    }*/
 
     func resetTextSize() {
         sevenDayCardList.forEach {

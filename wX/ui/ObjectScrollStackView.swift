@@ -48,13 +48,7 @@ public class ObjectScrollStackView {
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        //scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
-        /*scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
-        scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true*/
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
