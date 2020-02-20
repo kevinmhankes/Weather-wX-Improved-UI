@@ -30,6 +30,7 @@ class vcSpotterReports: UIwXViewController {
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
                 self.spotterReportsDataSorted.enumerated().forEach {
                     _ = ObjectSpotterReportCard(
+                        self.scrollView,
                         self.stackView,
                         $1,
                         UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))

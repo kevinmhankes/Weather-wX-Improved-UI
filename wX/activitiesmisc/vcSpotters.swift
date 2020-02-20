@@ -48,6 +48,7 @@ class vcSpotters: UIwXViewController {
         self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
         self.spotterDataSorted.enumerated().forEach {
             _ = ObjectSpotterCard(
+                self.scrollView,
                 self.stackView,
                 $1,
                 UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
@@ -76,7 +77,7 @@ class vcSpotters: UIwXViewController {
         self.goToVC(vc)
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -85,5 +86,5 @@ class vcSpotters: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }

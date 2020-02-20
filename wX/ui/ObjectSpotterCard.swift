@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectSpotterCard {
 
-    init(_ stackView: UIStackView, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
+    init(_ scrollView: UIScrollView, _ stackView: UIStackView, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
         var textViews = [ObjectTextView]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
         let sV = ObjectStackView(.fill, .vertical, spacing: 0)
@@ -32,6 +32,9 @@ final class ObjectSpotterCard {
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
+        textViews.forEach {
+            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        }
         sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         sV.view.addGestureRecognizer(gesture)
     }

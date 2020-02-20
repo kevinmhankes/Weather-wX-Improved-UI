@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectSpotterReportCard {
 
-    init(_ stackView: UIStackView, _ spotterReport: SpotterReports, _ gesture: UITapGestureRecognizer) {
+    init(_ scrollView: UIScrollView, _ stackView: UIStackView, _ spotterReport: SpotterReports, _ gesture: UITapGestureRecognizer) {
         let sV = ObjectStackView(.fill, .vertical, spacing: 0)
         var textViews = [ObjectTextView]()
         let topLine = spotterReport.type + " " + spotterReport.time
@@ -24,6 +24,9 @@ final class ObjectSpotterReportCard {
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
+        textViews.forEach {
+            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        }
         sV.view.addGestureRecognizer(gesture)
     }
 }
