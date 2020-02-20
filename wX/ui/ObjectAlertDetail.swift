@@ -24,7 +24,7 @@ final class ObjectAlertDetail {
         self.stackView = stackView
     }
 
-    func updateContent(_ alert: CapAlert) {
+    func updateContent(_ scrollView: UIScrollView, _ alert: CapAlert) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let wfo = alert.title.parse("by (.*?)$")
         self.textViews[0].text = title
@@ -42,6 +42,9 @@ final class ObjectAlertDetail {
         stackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
+        textViews.forEach {
+            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        }
     }
 
     static func condenseTime(_ cap: CapAlert) -> (String, String, String) {

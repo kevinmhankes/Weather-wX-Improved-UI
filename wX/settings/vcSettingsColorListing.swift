@@ -81,21 +81,22 @@ class vcSettingsColorListing: UIwXViewController {
 
     private func displayContent() {
         colorArr.enumerated().forEach {
-            let objText = ObjectTextView(self.stackView, $1.uiLabel, $1)
+            let objectTextView = ObjectTextView(self.stackView, $1.uiLabel, $1)
             if $1.colorsCurrent.red == 0 && $1.colorsCurrent.green == 0 && $1.colorsCurrent.blue == 0 {
-                objText.color = UIColor.white
+                objectTextView.color = UIColor.white
             } else {
-                objText.color = $1.uicolorCurrent
+                objectTextView.color = $1.uicolorCurrent
             }
-            objText.background = UIColor.black
-            objText.tv.font = FontSize.extraLarge.size
-            objText.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
-            objText.tv.isSelectable = false
-            tvArr.append(objText)
+            objectTextView.background = UIColor.black
+            objectTextView.tv.font = FontSize.extraLarge.size
+            objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
+            objectTextView.tv.isSelectable = false
+            tvArr.append(objectTextView)
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         }
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -104,5 +105,5 @@ class vcSettingsColorListing: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }

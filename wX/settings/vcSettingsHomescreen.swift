@@ -191,6 +191,7 @@ class vcSettingsHomescreen: UIwXViewController {
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
                 )
                 objectTextView.tv.isSelectable = false
+                objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             } else {
                 let objectTextView = ObjectTextView(
                     stackView,
@@ -198,11 +199,12 @@ class vcSettingsHomescreen: UIwXViewController {
                     UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))
                 )
                 objectTextView.tv.isSelectable = false
+                objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             }
         }
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -211,5 +213,5 @@ class vcSettingsHomescreen: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }
