@@ -61,11 +61,12 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
+        //self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         self.color = color
         self.font = font
         stackView.addArrangedSubview(self.tv)
+        self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont) {
