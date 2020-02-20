@@ -11,7 +11,7 @@ import MapKit
 class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
 
     private var product = "AFD"
-    private var textView = ObjectTextView()
+    private var objectTextView = ObjectTextView()
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
@@ -45,8 +45,8 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        textView = ObjectTextView(stackView)
-        textView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView = ObjectTextView(stackView)
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
         } else {
@@ -85,7 +85,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                 if self.html == "" {
                     self.html = "None issused by this office recently."
                 }
-                self.textView.text = self.html
+                self.objectTextView.text = self.html
                 if self.product == "RWR"
                     || self.product.hasPrefix("RTP")
                     || self.product == "RVA"
@@ -93,9 +93,9 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                     || self.product == "ESF"
                     || self.product == "NSH"
                     || self.product == "PNS" {
-                    self.textView.font = FontSize.hourly.size
+                    self.objectTextView.font = FontSize.hourly.size
                 } else {
-                    self.textView.font = FontSize.medium.size
+                    self.objectTextView.font = FontSize.medium.size
                 }
                 if self.product.hasPrefix("RTP") && self.product.count == 5 {
                     Utility.writePref("WFOTEXT_PARAM_LAST_USED", "RTPZZ")
@@ -109,7 +109,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(textView.view, synth, playButton)
+        UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
@@ -129,7 +129,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, textView.text)
+        UtilityShare.share(self, sender, objectTextView.text)
     }
 
     @objc func mapClicked() {
@@ -162,7 +162,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.product + self.wfo, self.textView.text, self, playlistButton)
+        UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playlistButton)
     }
 
     /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -304,17 +304,16 @@ final class UtilityDownload {
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
                         + "&product=" + t1 + "&format=txt&version=1&glossary=0"
                     let prodHtmlFuture = urlToGet.getNwsHtml()
-                    if (prod.hasPrefix("RTP") ||
+                    if prod.hasPrefix("RTP") ||
                         prod.hasPrefix("LSR") ||
                         prod.hasPrefix("ESF") ||
                         prod.hasPrefix("NSH") ||
                         prod.hasPrefix("PNS") ||
-                        prod.hasPrefix("RVA")) {
+                        prod.hasPrefix("RVA") {
                       text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
                       text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
                     }
-                    //text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
                 }
             }
         }

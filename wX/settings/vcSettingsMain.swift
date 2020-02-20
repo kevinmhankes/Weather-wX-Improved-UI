@@ -78,21 +78,4 @@ class vcSettingsMain: UIwXViewController {
             objectTextView.tv.isSelectable = false
         }
     }
-
-    /*override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.refreshViews()
-        self.displayContent()
-    }*/
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 }

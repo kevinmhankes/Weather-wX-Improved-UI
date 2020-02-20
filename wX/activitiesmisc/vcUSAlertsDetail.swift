@@ -62,17 +62,4 @@ class vcUSAlertsDetail: UIwXViewController {
     private func displayContent() {
         self.objAlertDetail.updateContent(self.scrollView, self.cap)
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.stackView.spacing = 0
-                self.objAlertDetail = ObjectAlertDetail(self.stackView)
-                self.displayContent()
-            }
-        )
-    }*/
 }
