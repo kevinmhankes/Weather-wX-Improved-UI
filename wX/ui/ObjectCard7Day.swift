@@ -8,6 +8,7 @@ import UIKit
 
 final class ObjectCard7Day {
 
+    let iconSize = 80.0
     private var isUS = true
     private let horizontalContainer: ObjectCardStackView
     private let topText = ObjectTextViewLarge(80.0)
@@ -34,6 +35,7 @@ final class ObjectCard7Day {
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view]
         )
+        bottomText.view.widthAnchor.constraint(equalTo: verticalTextConainer.sV.widthAnchor).isActive = true
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         bottomText.tv.isAccessibilityElement = false
@@ -41,6 +43,7 @@ final class ObjectCard7Day {
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -80.0).isActive = true
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
 

@@ -63,6 +63,7 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text)
+        //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         addGestureRecognizer(gesture)
     }
 

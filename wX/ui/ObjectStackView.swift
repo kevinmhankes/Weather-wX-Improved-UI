@@ -8,6 +8,7 @@ import UIKit
 
 final class ObjectStackView {
 
+    // FIXME rename to stackView
     let sV = UIStackView()
 
     init(

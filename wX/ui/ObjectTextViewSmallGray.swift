@@ -12,8 +12,8 @@ final class ObjectTextViewSmallGray {
 
     init(_ textPadding: CGFloat, text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
+        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        //tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
         tv.isEditable = false
         tv.isScrollEnabled = false
         tv.font = FontSize.small.size

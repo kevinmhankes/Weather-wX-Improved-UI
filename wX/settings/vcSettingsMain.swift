@@ -74,17 +74,18 @@ class vcSettingsMain: UIwXViewController {
                 FontSize.extraLarge.size,
                 UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:)))
             )
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             objectTextView.tv.isSelectable = false
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    /*override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refreshViews()
         self.displayContent()
-    }
+    }*/
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -93,5 +94,5 @@ class vcSettingsMain: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }
