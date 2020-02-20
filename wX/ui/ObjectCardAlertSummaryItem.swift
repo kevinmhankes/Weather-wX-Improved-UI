@@ -16,11 +16,11 @@ final class ObjectCardAlertSummaryItem {
         _ gesture: UITapGestureRecognizerWithData
     ) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
-        let tvName = ObjectTextViewLarge(80.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
+        let tvName = ObjectTextViewLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
         let tvTitle = ObjectTextView(title, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvStart = ObjectTextView("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvEnd = ObjectTextView("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvArea = ObjectTextViewSmallGray(80.0, text: alert.area, isUserInteractionEnabled: false)
+        let tvArea = ObjectTextViewSmallGray(0.0, text: alert.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false
