@@ -14,7 +14,6 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [REF] use enum for icon type 
 // [ADD] look into nav drawer and true card class
-// [FIX] main screen rotation
 // [ADD] state level RWR
 
 56089 2020_02_18 [FIX] animating L2 was not showing frame count
