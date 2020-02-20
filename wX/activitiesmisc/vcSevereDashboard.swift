@@ -39,10 +39,6 @@ class vcSevereDashboard: UIwXViewController {
     }
 
     func getContent() {
-        //snWat = SevereNotice("wat")
-        //snMcd = SevereNotice("mcd")
-        //snMpd = SevereNotice("mpd")
-        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")

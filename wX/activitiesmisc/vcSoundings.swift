@@ -24,7 +24,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
             object: nil
         )
         mapView.delegate = self
-        UtilityMap.setupMapForSnd(mapView, GlobalArrays.soundingSites)
+        //UtilityMap.setupMapForSnd(mapView, GlobalArrays.soundingSites)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems(
@@ -38,6 +38,9 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
+        UtilityMap.setupMapForSnd(self, mapView, GlobalArrays.soundingSites)
+        self.view.addSubview(mapView)
+        mapView.isHidden = true
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
         self.getContent()
     }
@@ -62,11 +65,14 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     @objc func mapClicked() {
         if mapShown {
-            mapView.removeFromSuperview()
+            //mapView.removeFromSuperview()
+            mapView.isHidden = true
             mapShown = false
         } else {
+            print("DEBUG: show map")
             mapShown = true
-            self.view.addSubview(mapView)
+            mapView.isHidden = false
+            //self.view.addSubview(mapView)
         }
     }
 
@@ -87,7 +93,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.getContent()
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -95,5 +101,5 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
                 UtilityMap.setupMapForSnd(self.mapView, GlobalArrays.soundingSites)
             }
         )
-    }
+    }*/
 }

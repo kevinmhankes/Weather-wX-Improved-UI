@@ -148,7 +148,11 @@ final class UtilityMap {
         return locations
     }
 
-    static func setupMapForSnd(_ mapView: MKMapView, _ itemList: [String]) {
+    static func setupMapForSnd(
+        _ uiv: UIViewController,
+        _ mapView: MKMapView,
+        _ itemList: [String]
+    ) {
         let locations = createLocationsArrayForRadar(itemList)
         var annotations = [MKPointAnnotation]()
         locations.forEach { dictionary in
@@ -166,6 +170,7 @@ final class UtilityMap {
         mapView.addAnnotations(annotations)
         let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
         centerMapOnLocation(mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
+        //centerMapOnLocationWithConstraints(uiv, mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
     }
 
     static func createLocationsArrayForSnd(_ itemList: [String]) -> [[String: String]] {
@@ -192,6 +197,36 @@ final class UtilityMap {
             }
         }
         return locations
+    }
+    
+    static func centerMapOnLocationWithConstraints(
+        _ uiv: UIViewController,
+        _ mapView: MKMapView,
+        location: CLLocationCoordinate2D,
+        regionRadius: Double
+    ) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
+        uiv.view.addSubview(mapView)
+        mapView.isHidden = true
+        mapView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
+        mapView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: uiv.view.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.toolbarHeight).isActive = true
+        //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        /*mapView.frame = CGRect(
+            x: 0,
+            y: UtilityUI.getTopPadding(),
+            width: width,
+            height: height
+                - UIPreferences.toolbarHeight
+                - UtilityUI.getBottomPadding()
+                - UtilityUI.getTopPadding()
+        )*/
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 
     static func centerMapOnLocation(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
