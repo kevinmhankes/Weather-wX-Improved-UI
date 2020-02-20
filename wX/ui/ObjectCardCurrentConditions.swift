@@ -34,8 +34,8 @@ final class ObjectCardCurrentConditions {
         //topText.tv.widthAnchor.constraint(equalTo: horizontalContainer.stackView.widthAnchor, constant: -80.0).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        //var padding: CGFloat = -72.0
-        var padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize + 8.0)
+        //var padding: CGFloat = -86.0
+        var padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
         if UtilityUI.isTablet() {
             padding -= 8.0
             //padding = -80.0
