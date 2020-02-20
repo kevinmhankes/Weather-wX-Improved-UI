@@ -93,13 +93,13 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.getContent()
     }
 
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                UtilityMap.setupMapForSnd(self.mapView, GlobalArrays.soundingSites)
+                UtilityMap.setupMapForSnd(self, self.mapView, GlobalArrays.soundingSites)
             }
         )
-    }*/
+    }
 }
