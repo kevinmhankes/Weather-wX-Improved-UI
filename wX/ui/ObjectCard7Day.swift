@@ -43,10 +43,7 @@ final class ObjectCard7Day {
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        var padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        if UtilityUI.isTablet() {
-            padding -= 8.0
-        }
+        let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
