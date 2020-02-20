@@ -69,8 +69,8 @@ class vcTabLocation: vcTabParent {
             )
         }
         if self.objScrollStackView != nil {
-            self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(
-                equalTo: self.view.centerXAnchor
+            /*self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.heightAnchor.constraint(
+                equalTo: self.view.heightAnchor
             )
             self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(
                 equalTo: self.view.topAnchor, constant: topSpace
@@ -84,7 +84,13 @@ class vcTabLocation: vcTabParent {
             )
             self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(
                 equalTo: self.view.rightAnchor
-            )
+            )*/
+            
+            self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
+            self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace)
+            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            self.objScrollStackView!.fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             
             self.view.addConstraints(
                 [

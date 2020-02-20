@@ -50,11 +50,17 @@ public class ObjectScrollStackView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
-        fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
+        /*fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
         fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(equalTo: uiv.view.leftAnchor)
         fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(equalTo: uiv.view.rightAnchor)
-        fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
+        fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)*/
+        
+        fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
+        fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
+        fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(equalTo: uiv.view.leftAnchor)
+        fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(equalTo: uiv.view.rightAnchor)
+        fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
         uiv.view.addConstraints([fragmentHeightAnchor1!, fragmentHeightAnchor2!, fragmentCenterAnchor!, fragmentWidthAnchor1!, fragmentWidthAnchor2!])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -67,6 +73,6 @@ public class ObjectScrollStackView {
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        //stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
     }
 }
