@@ -265,9 +265,9 @@ class vcTabLocation: vcTabParent {
                         self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
-                        stackViewLocal.setup()
-                        self.extraDataCards.append(stackViewLocal)
                         self.stackView.addArrangedSubview(stackViewLocal)
+                        stackViewLocal.setup(self.stackView)
+                        self.extraDataCards.append(stackViewLocal)
                         if $0.hasPrefix("TXT-") {
                             self.getContentText($0.split("-")[1], stackViewLocal)
                         } else if $0.hasPrefix("IMG-") {

@@ -33,8 +33,9 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
+        //self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         stackView.addArrangedSubview(self.tv)
+        self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
 
     convenience init(
@@ -45,9 +46,15 @@ final class ObjectTextView {
         widthDivider: Int = 1
     ) {
         self.init()
-        self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
-        self.tv.text = text
         stackView.addArrangedSubview(self.tv)
+        if widthDivider == 1 {
+            self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        } else {
+            // FIXME use something better for constraint
+            self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+        }
+        self.tv.text = text
+        //stackView.addArrangedSubview(self.tv)
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
             setZeroSpacing()
