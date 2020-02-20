@@ -90,20 +90,10 @@ class vcSettingsColorListing: UIwXViewController {
             objectTextView.background = UIColor.black
             objectTextView.tv.font = FontSize.extraLarge.size
             objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(gotoColor(sender:))))
+            // FIXME add ObjectTextView to handle isSelectable and constraint
             objectTextView.tv.isSelectable = false
-            tvArr.append(objectTextView)
             objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+            tvArr.append(objectTextView)
         }
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 }

@@ -11,6 +11,7 @@ final class ObjectCardLocationItem {
     var tvCurrentConditions: ObjectTextView
 
     init(
+        _ scrollView: UIScrollView,
         _ stackView: UIStackView,
         _ name: String,
         _ observation: String,
@@ -28,6 +29,9 @@ final class ObjectCardLocationItem {
         tvCurrentConditions.color = ColorCompatibility.label
         tvMiddle.color = ColorCompatibility.systemGray2
         stackView.addArrangedSubview(sV.view)
+        [tvName, tvName, tvCurrentConditions].forEach {
+            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        }
         sV.view.addGestureRecognizer(gesture)
         sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }

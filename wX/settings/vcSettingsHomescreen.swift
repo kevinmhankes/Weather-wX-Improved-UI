@@ -8,20 +8,6 @@ import UIKit
 
 class vcSettingsHomescreen: UIwXViewController {
 
-    private let localChoicesText = [
-        "TXT-CC2": "Current Conditions with Image",
-        "TXT-HAZ": "Hazards",
-        "TXT-7DAY2": "7 Day Forecast with Images",
-        "TXT-AFDLOC": "Area Forecast Discussion",
-        "TXT-HWOLOC": "Hazardous Weather Outlook",
-        "TXT-HOURLY": "Hourly Forecast",
-        "METAL-RADAR": "Local NEXRAD Radar"
-    ]
-    private let localChoicesImages = [
-        "CARAIN: Local CA Radar",
-        "WEATHERSTORY: Local NWS Weather Story",
-        "WFOWARNINGS: Local NWS Office Warnings"
-    ]
     private var homescreenFav = [String]()
     private var addImageButton = ObjectToolbarIcon()
     private var addTextButton = ObjectToolbarIcon()
@@ -67,10 +53,10 @@ class vcSettingsHomescreen: UIwXViewController {
 
     @objc func addClicked() {
         let alert = ObjectPopUp(self, "Product Selection", addButton)
-        Array(localChoicesText.keys).sorted().forEach { rid in
+        Array(UtilityHomeScreen.localChoicesText.keys).sorted().forEach { rid in
             alert.addAction(
                 UIAlertAction(
-                    title: localChoicesText[rid],
+                    title: UtilityHomeScreen.localChoicesText[rid],
                     style: .default,
                     handler: { _ in self.addProduct(rid)}
                 )
@@ -99,7 +85,7 @@ class vcSettingsHomescreen: UIwXViewController {
 
     @objc func addImageClicked() {
         let alert = ObjectPopUp(self, "Graphical Products", addImageButton)
-        (localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
+        (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
             let ridArr = $0.split(":")
             alert.addAction(
                 UIAlertAction(
@@ -166,12 +152,14 @@ class vcSettingsHomescreen: UIwXViewController {
     }
 
     private func displayContent() {
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         homescreenFav.enumerated().forEach { index, prefVar in
-            var title = localChoicesText[prefVar]
+            var title = UtilityHomeScreen.localChoicesText[prefVar]
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {
-                (localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
+                (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
                     if $0.hasPrefix(prefVarMod) {
                         title = $0.split(":")[1]
                     }
@@ -203,15 +191,4 @@ class vcSettingsHomescreen: UIwXViewController {
             }
         }
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 }
