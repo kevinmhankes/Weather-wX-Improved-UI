@@ -16,6 +16,7 @@
 // [ADD] look into nav drawer and true card class
 // [ADD] state level RWR
 // [FIX] when possible use new contraint system and remove former rotation logic
+// [FIX] standardize var naming for objectTextView
 
 56089 2020_02_18 [FIX] animating L2 was not showing frame count
 		 [FIX] animating L2 - slow down anim interval otherwise it just doesn't work

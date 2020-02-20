@@ -62,16 +62,6 @@ class vcHourly: UIwXViewController {
             UITapGestureRecognizer(target: self, action: #selector(textAction))
         )
         scrollView.accessibilityElements = [objTextView.view]
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
+        objTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
     }
 }
