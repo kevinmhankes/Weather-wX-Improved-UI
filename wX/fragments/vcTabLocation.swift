@@ -69,36 +69,16 @@ class vcTabLocation: vcTabParent {
             )
         }
         if self.objScrollStackView != nil {
-            /*self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.heightAnchor.constraint(
-                equalTo: self.view.heightAnchor
-            )
-            self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(
-                equalTo: self.view.topAnchor, constant: topSpace
-            )
-            self.objScrollStackView!.fragmentCenterAnchor = scrollView.bottomAnchor.constraint(
-                equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight
-            )
-            
-            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(
-                equalTo: self.view.leftAnchor
-            )
-            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(
-                equalTo: self.view.rightAnchor
-            )*/
-            
             self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
             self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace)
             self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
             self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor)
-            //self.objScrollStackView!.fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            
             self.view.addConstraints(
                 [
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
                     self.objScrollStackView!.fragmentWidthAnchor2!
-                    //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
@@ -146,7 +126,6 @@ class vcTabLocation: vcTabParent {
                 ]
             ).items
         }
-        //self.displayContent()
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
@@ -157,8 +136,7 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!,
-                    //self.objScrollStackView!.fragmentCenterAnchor!
+                    self.objScrollStackView!.fragmentWidthAnchor2!
                 ]
             )
         }
@@ -166,7 +144,6 @@ class vcTabLocation: vcTabParent {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         globalHomeScreenFav = Utility.readPref(
             "HOMESCREEN_FAV",
             MyApplication.homescreenFavDefault
@@ -275,10 +252,13 @@ class vcTabLocation: vcTabParent {
                     switch $0 {
                     case "TXT-CC2":
                         self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+                        self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "TXT-HAZ":
                         self.stackView.addArrangedSubview(self.stackViewHazards.view)
+                        self.stackViewHazards.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "TXT-7DAY2":
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
+                        self.stackViewForecast.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "METAL-RADAR":
                         self.stackViewRadar = ObjectStackViewHS()
                         self.stackView.addArrangedSubview(self.stackViewRadar)
