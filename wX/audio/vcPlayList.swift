@@ -119,7 +119,9 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     func updateView() {
-        self.stackView.subviews.forEach {$0.removeFromSuperview()}
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         playlistItems.enumerated().forEach {
             let productText = Utility.readPref("PLAYLIST_" + $1, "")
             let topLine = " "

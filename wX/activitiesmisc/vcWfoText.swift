@@ -75,8 +75,6 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
             self.productButton.title = self.product
             self.siteButton.title = self.wfo
             if self.product.hasPrefix("RTP") && self.product.count == 5 {
-                //let state = Utility.getWfoSiteName(self.wfo).split(",")[0]
-                //self.product = "RTP" + state
                 self.html = UtilityDownload.getTextProduct(self.product)
             } else {
                 self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
@@ -164,17 +162,4 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playlistButton)
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                UtilityMap.setupMapForWfo(self.mapView, GlobalArrays.wfos)
-                self.textView = ObjectTextView(self.stackView)
-                self.textView.text = self.html
-            }
-        )
-    }*/
 }

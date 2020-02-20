@@ -137,6 +137,10 @@ final class ObjectTextView {
     func setSpacing(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
         tv.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
+    
+    func constrain(_ scrollView: UIScrollView) {
+        tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+    }
 
     var view: UITextView {return tv}
 }

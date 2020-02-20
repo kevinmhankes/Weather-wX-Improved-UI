@@ -41,7 +41,7 @@ class vcAdhocLocation: UIwXViewController {
             self.objSevenDay = ObjectForecastPackage7Day(self.adhocLocation)
             self.objHazards = ObjectForecastPackageHazards(self, self.adhocLocation)
             DispatchQueue.main.async {
-                _ = ObjectCardCurrentConditions(self.stackView, self.objCurrentConditions, true)
+                let objectCardCurrentConditions = ObjectCardCurrentConditions(self.stackView, self.objCurrentConditions, true)
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
                 _ = ObjectCard7DayCollection(
                     self.stackView,
