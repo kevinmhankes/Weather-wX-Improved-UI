@@ -34,6 +34,7 @@ final class ObjectCardCurrentConditions {
         //topText.tv.widthAnchor.constraint(equalTo: horizontalContainer.stackView.widthAnchor, constant: -80.0).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -80.0).isActive = true
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 
