@@ -18,10 +18,11 @@
 // [FIX] when possible use new contraint system and remove former rotation logic
 // [FIX] standardize var naming for objectTextView
 
-56089 2020_02_18 [FIX] animating L2 was not showing frame count
+56089 2020_02_20 [FIX] animating L2 was not showing frame count
 		 [FIX] animating L2 - slow down anim interval otherwise it just doesn't work
 		 [FIX] force additional WFO text prod to fixed width no newline replace
-		 [FIX] support auto rotation of main screen
+		 [FIX] support auto rotation of main screen *HIGH IMPACT*
+		 [FIX] support auto rotation of other views wit constraints and not reload views
 56088 2020_02_16 [ADD] code for navigationController but do not use yet
 		 [ADD] optimize SPC Fire / Tstorm outlook for large screen
 		 [ADD] add title in toolbar for SPC SWO

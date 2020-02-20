@@ -39,6 +39,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         textView = ObjectTextView(stackView)
+        textView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
         } else {
@@ -103,7 +104,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -113,5 +114,5 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
                 self.textView.text = self.html
             }
         )
-    }
+    }*/
 }

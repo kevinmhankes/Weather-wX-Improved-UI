@@ -65,6 +65,7 @@ class vcObsSites: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoObsSite(sender:)))
             )
             objectTextView.tv.isSelectable = false
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         }
         self.scrollView.scrollToTop()
     }
@@ -94,6 +95,7 @@ class vcObsSites: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoState(sender:)))
             )
             objectTextView.tv.isSelectable = false
+            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         }
     }
 
@@ -121,7 +123,7 @@ class vcObsSites: UIwXViewController {
         }
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
@@ -130,5 +132,5 @@ class vcObsSites: UIwXViewController {
                 self.displayContent()
             }
         )
-    }
+    }*/
 }
