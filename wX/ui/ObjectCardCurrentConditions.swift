@@ -31,6 +31,7 @@ final class ObjectCardCurrentConditions {
         middleText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
+        //topText.tv.widthAnchor.constraint(equalTo: horizontalContainer.stackView.widthAnchor, constant: -80.0).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         updateCard(objectForecastPackageCurrentConditions, isUS)

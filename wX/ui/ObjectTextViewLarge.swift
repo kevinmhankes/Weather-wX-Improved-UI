@@ -18,6 +18,7 @@ final class ObjectTextViewLarge {
     ) {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        // FIXME use new constraint
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
         tv.font = FontSize.medium.size
         tv.adjustsFontSizeToFitWidth = true
