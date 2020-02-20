@@ -15,9 +15,23 @@ final class ObjectStackViewHS: UIStackView {
         alignment = .center
         spacing = 0.0
     }
+    
+    func setup(_ stackView: UIStackView) {
+        self.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        translatesAutoresizingMaskIntoConstraints = false
+        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        axis = .vertical
+        alignment = .center
+        spacing = 0.0
+    }
 
     func setupWithPadding() {
         setup()
+        spacing = UIPreferences.stackviewCardSpacing
+    }
+    
+    func setupWithPadding(_ stackView: UIStackView) {
+        setup(stackView)
         spacing = UIPreferences.stackviewCardSpacing
     }
 }

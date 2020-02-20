@@ -63,7 +63,7 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!,
+                    self.objScrollStackView!.fragmentWidthAnchor2!
                     //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
@@ -97,7 +97,7 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor1!,
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!,
+                    self.objScrollStackView!.fragmentWidthAnchor2!
                     //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
@@ -669,8 +669,8 @@ class vcTabLocation: vcTabParent {
         // location card loaded regardless of settings
         //
         let stackViewLocationButton = ObjectStackViewHS()
-        stackViewLocationButton.setup()
         self.stackView.addArrangedSubview(stackViewLocationButton)
+        stackViewLocationButton.setup(self.stackView)
         self.objLabel = ObjectTextView(
             stackViewLocationButton,
             Location.name,

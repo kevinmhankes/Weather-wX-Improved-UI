@@ -48,21 +48,12 @@ public class ObjectScrollStackView {
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        //scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         uiv.view.addSubview(scrollView)
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
-        /*fragmentHeightAnchor1 = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
-        fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
-        fragmentWidthAnchor1 = scrollView.leftAnchor.constraint(equalTo: uiv.view.leftAnchor)
-        fragmentWidthAnchor2 = scrollView.rightAnchor.constraint(equalTo: uiv.view.rightAnchor)
-        fragmentCenterAnchor = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)*/
-        
         fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
         fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor)
         fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor)
-        //fragmentCenterAnchor = scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor)
-        //uiv.view.addConstraints([fragmentHeightAnchor1!, fragmentHeightAnchor2!, fragmentCenterAnchor!, fragmentWidthAnchor1!, fragmentWidthAnchor2!])
         uiv.view.addConstraints([fragmentHeightAnchor1!, fragmentHeightAnchor2!, fragmentWidthAnchor1!, fragmentWidthAnchor2!])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -74,7 +65,5 @@ public class ObjectScrollStackView {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        //stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        //stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
     }
 }
