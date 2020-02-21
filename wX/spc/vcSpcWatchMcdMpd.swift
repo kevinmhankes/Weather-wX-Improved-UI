@@ -148,6 +148,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
             let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + watchMcdMpdType.string + "s"
             let objectTextView = ObjectTextView(self.stackView, message)
             objectTextView.tv.isAccessibilityElement = true
+            objectTextView.constrain(self.scrollView)
             views += [objectTextView.tv]
             objectTextView.tv.accessibilityLabel = message
         }
