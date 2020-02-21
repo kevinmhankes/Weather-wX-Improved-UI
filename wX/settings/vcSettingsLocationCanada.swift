@@ -22,11 +22,11 @@ class vcSettingsLocationCanada: UIwXViewController {
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        showDisplayProv()
+        displayProvinces()
     }
 
-    func showDisplayProv() {
-        UtilityCanada.providences.enumerated().forEach {
+    func displayProvinces() {
+        UtilityCanada.provinces.enumerated().forEach {
             let objectTextView = ObjectTextView(
                 self.stackView, $1,
                 FontSize.extraLarge.size,
@@ -41,7 +41,7 @@ class vcSettingsLocationCanada: UIwXViewController {
     @objc func goToProvinces(sender: UITapGestureRecognizerWithData) {
         let position = sender.data
         if !cityDisplay {
-            provSelected = UtilityCanada.providences[position].truncate(2)
+            provSelected = UtilityCanada.provinces[position].truncate(2)
             statusButton.title = "Canadian Locations (" + provSelected + ")"
             getContent()
         } else {
@@ -100,7 +100,7 @@ class vcSettingsLocationCanada: UIwXViewController {
         if self.cityDisplay {
             displayCities()
         } else {
-            showDisplayProv()
+            displayProvinces()
         }
     }
 }
