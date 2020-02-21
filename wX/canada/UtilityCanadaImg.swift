@@ -73,8 +73,7 @@ final class UtilityCanadaImg {
         let frameCount = 15
         let region = url.parse("goes_(.*?)_")
         let imgType = url.parse("goes_.*?_(.*?)_")
-        let urlAnim = MyApplication.canadaEcSitePrefix + "/satellite/satellite_anim_e.html?sat=goes&area="
-            + region + "&type=" + imgType
+        let urlAnim = MyApplication.canadaEcSitePrefix + "/satellite/satellite_anim_e.html?sat=goes&area=" + region + "&type=" + imgType
         let html = urlAnim.getHtml()
         let times = html.parseColumn(">([0-9]{4}/[0-9]{2}/[0-9]{2} [0-9]{2}h[0-9]{2}m)</option>")
         var bitmaps = [Bitmap]()
@@ -158,8 +157,7 @@ final class UtilityCanadaImg {
         }
         let radarHtml1hr = radarHtml.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        var string = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_"
-            + sectorLocal + "/" + $0 + ".GIF"}.joined()
+        var string = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF"}.joined()
         timeStamps = radarHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
         string += timeStamps.map {":" + $0}.joined()
         let tokens = string.split(":")

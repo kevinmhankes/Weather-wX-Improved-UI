@@ -12,7 +12,7 @@ final class ObjectCanadaWarnings: NSObject {
     private var uiv: UIViewController
     private var provinceCode = "ca"
     var bitmap = Bitmap()
-    private var dataAsString = ""
+    private var html = ""
     private var locWarning = ""
     private var locWatch = ""
     private var locStatement = ""
@@ -77,20 +77,15 @@ final class ObjectCanadaWarnings: NSObject {
             bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
         }
         if self.provinceCode == "ca" {
-            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
+            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
-            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
+            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
         }
-        self.listLocUrl = dataAsString
-            .parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocName = dataAsString
-            .parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWarning = dataAsString
-            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWatch = dataAsString
-            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocStatement = dataAsString
-            .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
+        self.listLocUrl = html.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocWarning = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocWatch = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
+        self.listLocStatement = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
     }
     
     func showData() {
