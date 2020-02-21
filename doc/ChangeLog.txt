@@ -22,6 +22,7 @@
 // [REF] in wfo and radar cutover to new map with contraints
 
 56091 2020_02_21 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
+		 [ADD] NHC refactor code - WIP
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit

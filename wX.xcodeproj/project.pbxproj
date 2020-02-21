@@ -90,6 +90,8 @@
 		0340423E23F16FC3003AB242 /* vcLsrByWfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422C23F16FC3003AB242 /* vcLsrByWfo.swift */; };
 		0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422D23F16FC3003AB242 /* vcMapKitView.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
+		0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */; };
+		0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */; };
 		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
@@ -486,6 +488,8 @@
 		0340422C23F16FC3003AB242 /* vcLsrByWfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcLsrByWfo.swift; sourceTree = "<group>"; };
 		0340422D23F16FC3003AB242 /* vcMapKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcMapKitView.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
+		0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NhcOceanEnum.swift; sourceTree = "<group>"; };
+		0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcRegionSummary.swift; sourceTree = "<group>"; };
 		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
@@ -1340,8 +1344,10 @@
 		F09504B71E153A80008A966E /* nhc */ = {
 			isa = PBXGroup;
 			children = (
+				0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */,
 				03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */,
 				03F3EB6C22993D8E0056A56D /* ObjectNhc.swift */,
+				0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */,
 				03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */,
 				03F3EB6D22993D8E0056A56D /* ObjectNhcStormInfo.swift */,
 				03F3EB6B22993D8E0056A56D /* UtilityNhc.swift */,
@@ -1604,6 +1610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A41C3F22C4C7D400C9044F /* ObjectCardCurrentConditions.swift in Sources */,
+				0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */,
 				F0B335771DA3FD6F0035BD36 /* Utility.swift in Sources */,
 				036522AE229149440056E657 /* UtilityDownloadNws.swift in Sources */,
 				0335684D234D4B1700428890 /* ExtensionsFloat.swift in Sources */,
@@ -1874,6 +1881,7 @@
 				F02DF2551EB89FCF00A951EA /* ObjectCALegal.swift in Sources */,
 				03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */,
 				0399A14D21CFD3BB0096ECFB /* FloatyDelegate.swift in Sources */,
+				0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */,
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
 				F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */,
 				034041EE23F167F9003AB242 /* vcSpcSwoState.swift in Sources */,
