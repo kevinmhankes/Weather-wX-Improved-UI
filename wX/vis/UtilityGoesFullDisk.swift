@@ -5,12 +5,8 @@
  *****************************************************************************/
 
 final class UtilityGoesFullDisk {
-
+    
     static let labels = [
-        //"GOES East Infrared",
-        //"GOES East Visible",
-        //"GOES West Infrared",
-        //"GOES West Visible",
         "Meteosat Infrared",
         "Meteosat Visible",
         "Meteosat India Ocean Infrared",
@@ -24,14 +20,10 @@ final class UtilityGoesFullDisk {
         "Himawari-8 Funktop Infrared",
         "Himawari-8 RBTop Infrared, Ch. 4"
     ]
-
+    
     static let baseUrl = "https://www.goes.noaa.gov"
-
+    
     static let urls = [
-        //baseUrl + "/FULLDISK/GEIR.JPG",
-        //baseUrl + "/FULLDISK/GEVS.JPG",
-        //baseUrl + "/FULLDISK/GWIR.JPG",
-        //baseUrl + "/FULLDISK/GWVS.JPG",
         baseUrl + "/FULLDISK/GMIR.JPG",
         baseUrl + "/FULLDISK/GMVS.JPG",
         baseUrl + "/FULLDISK/GIIR.JPG",
@@ -45,7 +37,7 @@ final class UtilityGoesFullDisk {
         baseUrl + "/dimg/jma/fd/ft/10.gif",
         baseUrl + "/dimg/jma/fd/rbtop/10.gif"
     ]
-
+    
     static func getAnimation(url: String) -> AnimationDrawable {
         let url2 = url.replace("10.gif", "")
         let bitmaps = (0...9).map {Bitmap(url2 + String($0+1) + ".gif")}

@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityGoes {
-
+    
     static let sizeMap = [
         "CONUS": "1250x750",
         "CONUS-G17": "1250x750",
@@ -25,7 +25,7 @@ final class UtilityGoes {
         "np": "1800x1080",
         "cam": "1000x1000"
     ]
-
+    
     static func getImageSize(_ sector: String) -> String {
         let size = "latest"
         if UIPreferences.goesUseFullResolutionImages {
@@ -33,7 +33,7 @@ final class UtilityGoes {
         }
         return sizeMap[sector] ?? size
     }
-
+    
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
         if sector == "FD" || sector == "CONUS" || sector == "CONUS-G17" {
@@ -66,7 +66,7 @@ final class UtilityGoes {
         print(url)
         return Bitmap(url)
     }
-
+    
     // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G17&sector=ak&band=GEOCOLOR&length=12
     // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G16&sector=cgl&band=GEOCOLOR&length=12
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
@@ -78,14 +78,11 @@ final class UtilityGoes {
         }
         switch sector {
         case "FD":
-            url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band="
-            + product + "&length=" + frameCount
+            url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band=" + product + "&length=" + frameCount
         case "CONUS", "CONUS-G17":
-            url = "https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=" + satellite + "&band="
-            + product + "&length=" + frameCount
+            url = "https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=" + satellite + "&band=" + product + "&length=" + frameCount
         default:
-            url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector="
-            + sector + "&band=" + product + "&length=" + frameCount
+            url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector=" + sector + "&band=" + product + "&length=" + frameCount
         }
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
@@ -93,7 +90,7 @@ final class UtilityGoes {
         let bitmaps = imageUrls.map {Bitmap($0)}
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
-
+    
     static let sectors = [
         "FD: GOES-EAST Full Disk",
         "FD-G17: GOES-WEST Full Disk",
@@ -125,7 +122,7 @@ final class UtilityGoes {
         "nsa: South America (north)",
         "ssa: South America (south)"
     ]
-
+    
     static let sectorsInGoes17 = [
         "CONUS-G17",
         "FD-G17",
@@ -137,7 +134,7 @@ final class UtilityGoes {
         "wus",
         "np"
     ]
-
+    
     static let products = [
         "00 True color daytime, multispectral IR at night": "00GEOCOLOR",
         "00.47 um (Band 1) Blue - Visible": "01",
@@ -159,7 +156,7 @@ final class UtilityGoes {
         "AirMass - RGB composite based on the data from IR and WV": "AirMass",
         "Sandwich RGB - Bands 3 and 13 combo": "Sandwich"
     ]
-
+    
     static let productCodes = [
         "GEOCOLOR",
         "01",
