@@ -8,7 +8,7 @@ import UIKit
 
 class vcSettingsLocationCanada: UIwXViewController {
 
-    private var textViews = [ObjectTextView]()
+    private var objectTextViews = [ObjectTextView]()
     private var html = ""
     private var filter = ""
     private var cityDisplay = false
@@ -33,8 +33,8 @@ class vcSettingsLocationCanada: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-            self.textViews.append(objectTextView)
+            objectTextView.constrain(self.scrollView)
+            self.objectTextViews.append(objectTextView)
         }
     }
 
@@ -91,8 +91,8 @@ class vcSettingsLocationCanada: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-            self.textViews.append(objectTextView)
+            objectTextView.constrain(self.scrollView)
+            self.objectTextViews.append(objectTextView)
         }
     }
 
