@@ -5,8 +5,8 @@
  *****************************************************************************/
 
 final class UtilityWpcImages {
-
-   static let titles = [
+    
+    static let titles = [
         ObjectMenuTitle("Surface Analysis", 7),
         ObjectMenuTitle("Forecast Maps", 22),
         ObjectMenuTitle("QPF", 27),
@@ -16,7 +16,7 @@ final class UtilityWpcImages {
         ObjectMenuTitle("Aviation", 16),
         ObjectMenuTitle("Space Weather", 3)
     ]
-
+    
     static let labels = [
         "WPC Analysis, Radar, Warnings",
         "Surface Analysis with Obs (CONUS)",
@@ -25,7 +25,7 @@ final class UtilityWpcImages {
         "Analysis with Satellite (NHEM)",
         "Analysis with Satellite (NHEM+PAC)",
         "High resolution surface analysis",
-
+        
         "National Forecast Chart Day 1",
         "National Forecast Chart Day 2",
         "National Forecast Chart Day 3",
@@ -48,7 +48,7 @@ final class UtilityWpcImages {
         "Forecast map - 5day (NHEM)" ,
         "Forecast map - 6day (NHEM)" ,
         "Forecast map - 7day (NHEM)" ,
-
+        
         "QPF Day 1",
         "QPF Day 2",
         "QPF Day 3",
@@ -76,7 +76,7 @@ final class UtilityWpcImages {
         "QPF Day 3 72-78 hr",
         "QPF Day 3 1/2 78-84 hr",
         "QPF Day 3 1/2 84-90 hr",
-
+        
         "Snow Day 1 Prob > 4in",
         "Snow Day 1 Prob > 8in",
         "Snow Day 1 Prob > 12in",
@@ -98,7 +98,7 @@ final class UtilityWpcImages {
         "GL estimated max thickness of level ice",
         "GL Traditional Composite - West",
         "GL Traditional Composite - East",
-
+        
         "High Temperature",
         "Min Temperature",
         "Prob Precip (12hr)",
@@ -114,7 +114,7 @@ final class UtilityWpcImages {
         "Wave Height",
         "Apparent Temp",
         "Relative Humidity",
-
+        
         "6 to 10 Day Outlooks - Temperature",
         "6 to 10 Day Outlooks - Precipitation",
         "8 to 14 Day Outlooks - Temperature",
@@ -139,7 +139,7 @@ final class UtilityWpcImages {
         "Day 3-7 U.S. Hazards Outlook",
         "Day 8-14 U.S. Hazards Outlook",
         "Global Tropics Hazards and Benefits Outlook",
-
+        
         "AWC Convective Sigmets",
         "AWC Turbulence Sigmets",
         "AWC Icing Sigmets",
@@ -156,12 +156,12 @@ final class UtilityWpcImages {
         "Aviation - WPC 5 day Forecast",
         "Aviation - WPC 6 day Forecast",
         "Aviation - WPC 7 day Forecast",
-
+        
         "Aurora Forecast - North",
         "Aurora Forecast - South",
         "Estimated Planetary K index"
     ]
-
+    
     static let urls =  [
         MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/namussfcwbg.gif",
@@ -170,7 +170,7 @@ final class UtilityWpcImages {
         MyApplication.nwsWPCwebsitePrefix + "/sfc/satsfcnps.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/satsfc.gif",
         MyApplication.nwsWPCwebsitePrefix + "/sfc/lrgnamsfc09wbg.gif",
-
+        
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif",
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif",
         MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif",
@@ -193,7 +193,7 @@ final class UtilityWpcImages {
         MyApplication.nwsWPCwebsitePrefix + "/medr/9lh.gif",
         MyApplication.nwsWPCwebsitePrefix + "/medr/9mh.gif",
         MyApplication.nwsWPCwebsitePrefix + "/medr/9nh.gif",
-
+        
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif",
@@ -221,7 +221,7 @@ final class UtilityWpcImages {
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_9newbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_9pewbg.gif",
         MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_9qewbg.gif",
-
+        
         MyApplication.nwsWPCwebsitePrefix + "/wwd/day1_psnow_gt_04.gif",
         MyApplication.nwsWPCwebsitePrefix + "/wwd/day1_psnow_gt_08.gif",
         MyApplication.nwsWPCwebsitePrefix + "/wwd/day1_psnow_gt_12.gif",
@@ -243,7 +243,7 @@ final class UtilityWpcImages {
         "https://www.weather.gov/images/cle/ICE/dist9_thickness.jpg",
         "https://www.weather.gov/images/cle/ICE/egg_west.jpg",
         "https://www.weather.gov/images/cle/ICE/egg_east.jpg",
-
+        
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/MaxT",
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/MinT",
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/PoP12",
@@ -259,7 +259,7 @@ final class UtilityWpcImages {
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/WaveHeight",
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/ApparentT",
         MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/RH",
-
+        
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/610day/610temp.new.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/610day/610prcp.new.gif",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/814day/814temp.new.gif",
@@ -284,7 +284,7 @@ final class UtilityWpcImages {
         "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png",
         "https://www.cpc.ncep.noaa.gov/products/predictions/threats/hazards_d8_14_contours.png",
         MyApplication.nwsCPCNcepWebsitePrefix + "/products/precip/CWlink/ghazards/images/gth_full_update.png",
-
+        
         MyApplication.nwsAWCwebsitePrefix + "/adds/data/airmets/airmets_CB.gif",
         MyApplication.nwsAWCwebsitePrefix + "/adds/data/airmets/airmets_TB.gif",
         MyApplication.nwsAWCwebsitePrefix + "/adds/data/airmets/airmets_IC.gif",
@@ -301,7 +301,7 @@ final class UtilityWpcImages {
         MyApplication.nwsAWCwebsitePrefix + "/data/products/progs/F120_wpc_prog.gif",
         MyApplication.nwsAWCwebsitePrefix + "/data/products/progs/F144_wpc_prog.gif",
         MyApplication.nwsAWCwebsitePrefix + "/data/products/progs/F168_wpc_prog.gif",
-
+        
         "https://services.swpc.noaa.gov/images/animations/ovation-north/latest.jpg",
         "https://services.swpc.noaa.gov/images/animations/ovation-south/latest.jpg",
         "https://services.swpc.noaa.gov/images/planetary-k-index.gif"
