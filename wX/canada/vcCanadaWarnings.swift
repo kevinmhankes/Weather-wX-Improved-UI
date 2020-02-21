@@ -8,11 +8,11 @@ import UIKit
 import AVFoundation
 
 class vcCanadaWarnings: UIwXViewController {
-
+    
     private var objectCanadaWarnings: ObjectCanadaWarnings!
     private var provButton = ObjectToolbarIcon()
-    private var prov = "Canada"
-
+    private var province = "Canada"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -21,18 +21,18 @@ class vcCanadaWarnings: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        provButton = ObjectToolbarIcon(title: prov, self, #selector(provinceClicked))
+        provButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, provButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.objectCanadaWarnings = ObjectCanadaWarnings(self, stackView)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
-           self.getContent()
+        self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCanadaWarnings.getData()
@@ -41,26 +41,26 @@ class vcCanadaWarnings: UIwXViewController {
             }
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.objectCanadaWarnings.bitmap)
     }
-
+    
     // this is called in objectCanadaWarnings
     @objc func goToWarning(sender: UITapGestureRecognizerWithData) {
         getWarningDetail(objectCanadaWarnings.getWarningUrl(sender.data))
     }
-
+    
     @objc func provinceClicked() {
         _ = ObjectPopUp(self, "Province Selection", provButton, self.objectCanadaWarnings.provList, self.provinceChanged(_:))
     }
-
-    func provinceChanged(_ prov: String) {
-        self.prov = prov
-        self.objectCanadaWarnings.setProv(prov)
+    
+    func provinceChanged(_ province: String) {
+        self.province = province
+        self.objectCanadaWarnings.setProvince(province)
         getContent()
     }
-
+    
     func getWarningDetail(_ url: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let data = UtilityCanada.getHazardsFromUrl(url)
@@ -71,13 +71,13 @@ class vcCanadaWarnings: UIwXViewController {
             }
         }
     }
-
+    
     private func displayContent() {
         self.objectCanadaWarnings.updateParents(self, stackView)
         self.objectCanadaWarnings.showData()
-    self.provButton.title = self.prov + "(" + (self.objectCanadaWarnings.count) + ")"
+        self.provButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -85,7 +85,7 @@ class vcCanadaWarnings: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }

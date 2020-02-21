@@ -7,10 +7,10 @@
 import UIKit
 
 final class ObjectCanadaWarnings: NSObject {
-
+    
     private var stackView: UIStackView
     private var uiv: UIViewController
-    private var provCode = "ca"
+    private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var dataAsString = ""
     private var locWarning = ""
@@ -40,7 +40,7 @@ final class ObjectCanadaWarnings: NSObject {
         "Saskatchewan",
         "Yukon"
     ]
-
+    
     private let provToCodeMap = [
         "Canada": "ca",
         "Alberta": "ab",
@@ -59,27 +59,27 @@ final class ObjectCanadaWarnings: NSObject {
         "Saskatchewan": "sk",
         "Yukon": "yt"
     ]
-
+    
     init(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv
         self.stackView = stackView
     }
-
+    
     func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
         self.uiv = uiv
         self.stackView = stackView
     }
-
+    
     func getData() {
-        if self.provCode == "ca" {
+        if self.provinceCode == "ca" {
             bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
         } else {
-            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provCode + "_e.png")
+            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
         }
-        if self.provCode == "ca" {
+        if self.provinceCode == "ca" {
             dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
-            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provCode).getHtml()
+            dataAsString = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
         }
         self.listLocUrl = dataAsString
             .parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
@@ -92,7 +92,7 @@ final class ObjectCanadaWarnings: NSObject {
         self.listLocStatement = dataAsString
             .parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
     }
-
+    
     func showData() {
         stackView.subviews.forEach { $0.removeFromSuperview() }
         _ = ObjectImage(stackView, bitmap)
@@ -129,18 +129,18 @@ final class ObjectCanadaWarnings: NSObject {
         }
         _ = ObjectCALegal(stackView)
     }
-
+    
     func getWarningUrl(_ index: Int) -> String {
         return MyApplication.canadaEcSitePrefix + listLocUrl[index]
     }
-
+    
     @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
-
+    
     var count: String {
         return String(listLocUrl.count)
     }
-
-    func setProv(_ prov: String) {
-        provCode = provToCodeMap[prov] ?? ""
+    
+    func setProvince(_ prov: String) {
+        provinceCode = provToCodeMap[prov] ?? ""
     }
 }
