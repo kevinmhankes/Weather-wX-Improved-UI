@@ -123,7 +123,7 @@ final class ObjectCanadaWarnings: NSObject {
             let objectTextView = ObjectTextView(
                 stackView,
                 text,
-                UITapGestureRecognizerWithData(index, uiv, #selector(gotoWarning(sender:)))
+                UITapGestureRecognizerWithData(index, uiv, #selector(goToWarning(sender:)))
             )
             objectTextView.tv.isSelectable = false
         }
@@ -134,7 +134,7 @@ final class ObjectCanadaWarnings: NSObject {
         return MyApplication.canadaEcSitePrefix + listLocUrl[index]
     }
 
-    @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {}
+    @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
 
     var count: String {
         return String(listLocUrl.count)
