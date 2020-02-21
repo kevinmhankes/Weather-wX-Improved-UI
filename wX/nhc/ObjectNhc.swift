@@ -31,6 +31,7 @@ final class ObjectNhc: NSObject {
     var imageCount = 0
     var imagesPerRow = 2
     var imageStackViewList = [ObjectStackView]()
+    var regionMap = [NhcOceanEnum:ObjectNhcRegionSummary]()
     
     let imageUrlsAtlanic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
@@ -57,6 +58,10 @@ final class ObjectNhc: NSObject {
         if UtilityUI.isTablet() {
             imagesPerRow = 3
         }
+        super.init()
+        NhcOceanEnum.allCases.forEach {
+            regionMap[$0] = ObjectNhcRegionSummary($0)
+        }
     }
 
     func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
@@ -64,7 +69,7 @@ final class ObjectNhc: NSObject {
         self.stackView = stackView
     }
 
-    func getAtlanticImageData() {
+    /*func getAtlanticImageData() {
         imageUrlsAtlanic.forEach {
             bitmapsAtlantic.append(Bitmap($0))
         }
@@ -80,7 +85,7 @@ final class ObjectNhc: NSObject {
         imageUrlsCentral.forEach {
             bitmapsCentral.append(Bitmap($0))
         }
-    }
+    }*/
 
     // TODO use a class to store 5 String Lists
     // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
@@ -146,15 +151,39 @@ final class ObjectNhc: NSObject {
         }
         if textAtl != "" {
             let objectTextView = ObjectTextView(stackView, textAtl)
-            objectTextView.constrain(scrollView)
+            //objectTextView.constrain(scrollView)
         }
         if textPac != "" {
             let objectTextView = ObjectTextView(stackView, textPac)
-            objectTextView.constrain(scrollView)
+            //objectTextView.constrain(scrollView)
         }
     }
     
-    func showImageData(_ images: [Bitmap], _ urls: [String]) {
+    func showImageData(_ region: NhcOceanEnum) {
+        regionMap[region]!.bitmaps.enumerated().forEach { index, bitmap in
+            if imageCount % imagesPerRow == 0 {
+                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(stackView)
+                self.stackView.addArrangedSubview(stackView.view)
+                _ = ObjectImage(
+                    stackView.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            } else {
+                _ = ObjectImage(
+                    imageStackViewList.last!.view,
+                    bitmap,
+                    UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
+                )
+            }
+            imageCount += 1
+        }
+    }
+    
+    /*func showImageData(_ images: [Bitmap], _ urls: [String]) {
         images.enumerated().forEach { index, bitmap in
             if imageCount % imagesPerRow == 0 {
                 let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -176,7 +205,7 @@ final class ObjectNhc: NSObject {
             }
             imageCount += 1
         }
-    }
+    }*/
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
 

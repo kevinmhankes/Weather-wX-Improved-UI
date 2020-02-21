@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-enum NhcOceanEnum {
+enum NhcOceanEnum: CaseIterable {
     case ATL
     case EPAC
     case CPAC

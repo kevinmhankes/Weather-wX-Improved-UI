@@ -44,6 +44,7 @@ class vcNhc: UIwXViewController {
 
     func getContent() {
         refreshViews()
+        // FIXME var naming
         objNHC = ObjectNhc(self, scrollView, stackView)
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
@@ -52,7 +53,17 @@ class vcNhc: UIwXViewController {
                 self.objNHC?.showTextData()
             }
         }
-        serial.async {
+        
+        NhcOceanEnum.allCases.forEach { type in
+            serial.async {
+                self.objNHC?.regionMap[type]!.getImages()
+                DispatchQueue.main.async {
+                    self.objNHC?.showImageData(type)
+                }
+            }
+        }
+        
+        /*serial.async {
             self.objNHC?.getAtlanticImageData()
             DispatchQueue.main.async {
                 self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
@@ -69,7 +80,7 @@ class vcNhc: UIwXViewController {
             DispatchQueue.main.async {
                 self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
             }
-        }
+        }*/
     }
 
     @objc func textProductClicked() {
@@ -130,9 +141,13 @@ class vcNhc: UIwXViewController {
                 self.refreshViews()
                 self.objNHC?.updateParents(self, self.stackView)
                 self.objNHC?.showTextData()
-                self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
-                self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
-                self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
+                //self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
+                //self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
+                //self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
+                
+                NhcOceanEnum.allCases.forEach { type in
+                    self.objNHC?.showImageData(type)
+                }
             }
         )
     }
