@@ -7,14 +7,14 @@
 import UIKit
 
 class vcGoesGlobal: UIwXViewController {
-
+    
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var index = 0
     var animateButton = ObjectToolbarIcon()
     var shareButton = ObjectToolbarIcon()
     let prefToken = "GOESFULLDISK_IMG_FAV_URL"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -35,11 +35,11 @@ class vcGoesGlobal: UIwXViewController {
         print(index)
         self.getContent(index)
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent(index)
     }
-
+    
     func getContent(_ index: Int) {
         self.index = index
         self.productButton.title = UtilityGoesFullDisk.labels[self.index]
@@ -56,15 +56,15 @@ class vcGoesGlobal: UIwXViewController {
             }
         }
     }
-
+    
     func showAnimateButton() {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
     }
-
+    
     func hideAnimateButton() {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
@@ -74,15 +74,15 @@ class vcGoesGlobal: UIwXViewController {
             self.getContent(_:)
         )
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityGoesFullDisk.urls))
     }
-
+    
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
