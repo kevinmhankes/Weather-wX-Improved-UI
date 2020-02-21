@@ -7,13 +7,13 @@
 import UIKit
 
 class vcSettingsLocation: UIwXViewController {
-
+    
     private var locations = [String]()
     private var fab: ObjectFab?
     private var productButton = ObjectToolbarIcon()
     private var objectCards = [ObjectCardLocationItem]()
     private var currentConditions = [ObjectForecastPackageCurrentConditions]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, nil)
@@ -22,7 +22,7 @@ class vcSettingsLocation: UIwXViewController {
         fab = ObjectFab(self, #selector(addClicked), imageString: ObjectToolbarIcon.iconToString[.plus]!)
         self.view.addSubview(fab!.view)
     }
-
+    
     func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
@@ -37,18 +37,18 @@ class vcSettingsLocation: UIwXViewController {
             }
         }
     }
-
+    
     @objc override func doneClicked() {
         Location.refreshLocationData()
         super.doneClicked()
     }
-
+    
     @objc func addClicked() {
         let vc = vcSettingsLocationEdit()
         vc.settingsLocationEditNum = "0"
         self.goToVC(vc)
     }
-
+    
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
         let locName = MyApplication.locations[sender.data].name
         let alert = ObjectPopUp(self, locName, productButton)
@@ -81,13 +81,13 @@ class vcSettingsLocation: UIwXViewController {
         }
         alert.finish()
     }
-
+    
     func actionLocation(_ position: Int) {
         let vc = vcSettingsLocationEdit()
         vc.settingsLocationEditNum = locations[position].split(":")[0]
         self.goToVC(vc)
     }
-
+    
     func moveUp(_ position: Int) {
         if position > 0 {
             let locA = Location(position - 1)
@@ -102,7 +102,7 @@ class vcSettingsLocation: UIwXViewController {
         }
         displayContent()
     }
-
+    
     func moveDown(_ position: Int) {
         if position < (Location.numLocations - 1) {
             let locA = Location(position)
@@ -117,20 +117,20 @@ class vcSettingsLocation: UIwXViewController {
         }
         displayContent()
     }
-
+    
     func deleteLocation(_ position: Int) {
         if Location.numLocations > 1 {
             Location.deleteLocation(String(position + 1))
             displayContent()
         }
     }
-
+    
     func initializeObservations() {
         (0..<Location.numLocations).forEach {
             MyApplication.locations[$0].updateObservation("")
         }
     }
-
+    
     func displayContent() {
         objectCards = []
         self.stackView.subviews.forEach {
@@ -155,7 +155,7 @@ class vcSettingsLocation: UIwXViewController {
             )
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeObservations()
