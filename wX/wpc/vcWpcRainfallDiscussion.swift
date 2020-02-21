@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
-
+    
     private var bitmap = Bitmap()
     private var playListButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
@@ -17,7 +17,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var synth = AVSpeechSynthesizer()
     private var product = ""
     var wpcRainfallDay = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         synth.delegate = self
@@ -28,52 +28,50 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let number = Int(self.wpcRainfallDay)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
             self.product = UtilityWpcRainfallOutlook.productCode[number]
             self.text = UtilityDownload.getTextProduct(self.product)
-            //self.listOfText.append(self.text)
-            //self.urls.append(imgUrl)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
                 self.displayContent()
             }
         }
     }
-
+    
     @objc override func doneClicked() {
         UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
-
+    
     @objc func imageClicked() {
         let number = Int(wpcRainfallDay)! - 1
         let vc = vcImageViewer()
         vc.imageViewerUrl = UtilityWpcRainfallOutlook.urls[number]
         self.goToVC(vc)
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmap, text)
     }
-
+    
     @objc func playClicked() {
         UtilityActions.playClicked(text, synth, playButton)
     }
-
+    
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, text, self, playListButton)
     }
-
+    
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
             UtilityActions.resetAudio(&self.synth, self.playButton)
         }
     }
-
+    
     private func displayContent() {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
@@ -112,7 +110,7 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
