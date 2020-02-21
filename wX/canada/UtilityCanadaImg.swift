@@ -5,21 +5,21 @@
  *****************************************************************************/
 
 final class UtilityCanadaImg {
-
+    
     static let names = [
         "Vis West",
         "Vis East",
         "IR West",
         "IR East"
     ]
-
+    
     static let urls = [
         MyApplication.canadaEcSitePrefix + "/data/satellite/goes_wcan_visible_100.jpg",
         MyApplication.canadaEcSitePrefix + "/data/satellite/goes_ecan_visible_100.jpg",
         MyApplication.canadaEcSitePrefix + "/data/satellite/goes_wcan_1070_100.jpg",
         MyApplication.canadaEcSitePrefix + "/data/satellite/goes_ecan_1070_100.jpg"
     ]
-
+    
     static let mosaicSectors = [
         "CAN",
         "PAC",
@@ -28,7 +28,7 @@ final class UtilityCanadaImg {
         "QUE",
         "ERN"
     ]
-
+    
     static let radarSites = [
         "WUJ: Aldergrove, BC (near Vancouver)",
         "XPG: Prince George, BC",
@@ -68,7 +68,7 @@ final class UtilityCanadaImg {
         "QUE",
         "ERN"
     ]
-
+    
     static func getGoesAnim(_ url: String) -> AnimationDrawable {
         let frameCount = 15
         let region = url.parse("goes_(.*?)_")
@@ -80,16 +80,16 @@ final class UtilityCanadaImg {
         let delay = UtilityImg.getAnimInterval()
         stride(from: (times.count - 1), to: (times.count - frameCount), by: -1).forEach {
             let url = MyApplication.canadaEcSitePrefix + "/data/satellite/goes_"
-            + region
-            + "_"
-            + imgType
-            + "_m_"
-            + times[$0].replace(" ", "_").replace("/", "@") + ".jpg"
+                + region
+                + "_"
+                + imgType
+                + "_m_"
+                + times[$0].replace(" ", "_").replace("/", "@") + ".jpg"
             bitmaps.append(Bitmap(url))
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)
     }
-
+    
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
         let html = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + radarSite).getHtmlSep()
         var durationPattern = "<p>Short .1hr.:</p>(.*?)</div>"
@@ -104,7 +104,7 @@ final class UtilityCanadaImg {
         string += timeStamps.map {":" + $0}.joined()
         return string
     }
-
+    
     static func getRadarAnimOptionsApplied(_ radarSite: String, _ frameCntStr: String) -> AnimationDrawable {
         let url = UtilityCanadaImg.getRadarAnimStringArray(radarSite, frameCntStr)
         let urls = url.split(":")
@@ -113,7 +113,7 @@ final class UtilityCanadaImg {
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
-
+    
     static func getRadarBitmapOptionsApplied(_ radarSite: String, _ url: String) -> Bitmap {
         let urlImg: String
         if url == "" {
@@ -127,7 +127,7 @@ final class UtilityCanadaImg {
         }
         return Bitmap(urlImg)
     }
-
+    
     static func getRadarMosaicBitmapOptionsApplied(_ sector: String) -> Bitmap {
         var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
         if sector == "CAN" {
@@ -138,7 +138,7 @@ final class UtilityCanadaImg {
         let summary = radarHtml.parse(match).replace("detailed/", "")
         return Bitmap(MyApplication.canadaEcSitePrefix + "/" + summary)
     }
-
+    
     static func getRadarMosaicAnimation(_ sector: String, _ duration: String) -> AnimationDrawable {
         var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
         if sector == "CAN" {

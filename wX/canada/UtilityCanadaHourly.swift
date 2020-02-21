@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityCanadaHourly {
-
+    
     static func getString(_ location: Int) -> String {
         let url = MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
@@ -15,7 +15,7 @@ final class UtilityCanadaHourly {
         let header = "Time   Temp   Summary   PrecipChance   Wind   Humindex"
         return header + parse(html)
     }
-
+    
     static func getUrl(_ location: Int) -> String {
         return MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
@@ -23,7 +23,7 @@ final class UtilityCanadaHourly {
             + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
     }
-
+    
     static func parse(_ html: String) -> String {
         let htmlLocal = html.parse("<tbody>(.*?)</tbody>")
         let timeAl = htmlLocal.parseColumn("<tr>.*?<td.*?>(.*?)</td>.*?<td.*?>.*?</td>.*?<div"

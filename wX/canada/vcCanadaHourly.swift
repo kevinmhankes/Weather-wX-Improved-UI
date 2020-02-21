@@ -7,9 +7,9 @@
 import UIKit
 
 class vcCanadaHourly: UIwXViewController {
-
+    
     private var html = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -22,11 +22,11 @@ class vcCanadaHourly: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -36,21 +36,10 @@ class vcCanadaHourly: UIwXViewController {
             }
         }
     }
-
+    
     private func displayContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         _ = ObjectCALegal(self.stackView)
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
     }
 }
