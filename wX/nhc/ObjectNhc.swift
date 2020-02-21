@@ -22,6 +22,7 @@ final class ObjectNhc: NSObject {
     private var pacTitleList = [String]()
     private var uiv: UIViewController
     private var stackView: UIStackView
+    private var scrollView: UIScrollView
     private var textAtl = ""
     private var textPac = ""
     var bitmapsAtlantic = [Bitmap]()
@@ -49,8 +50,9 @@ final class ObjectNhc: NSObject {
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
     ]
 
-    init(_ uiv: UIViewController, _ stackView: UIStackView) {
+    init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         self.uiv = uiv
+        self.scrollView = scrollView
         self.stackView = stackView
         if UtilityUI.isTablet() {
             imagesPerRow = 3
@@ -143,10 +145,12 @@ final class ObjectNhc: NSObject {
             }
         }
         if textAtl != "" {
-            _ = ObjectTextView(stackView, textAtl)
+            let objectTextView = ObjectTextView(stackView, textAtl)
+            objectTextView.constrain(scrollView)
         }
         if textPac != "" {
-            _ = ObjectTextView(stackView, textPac)
+            let objectTextView = ObjectTextView(stackView, textPac)
+            objectTextView.constrain(scrollView)
         }
     }
     

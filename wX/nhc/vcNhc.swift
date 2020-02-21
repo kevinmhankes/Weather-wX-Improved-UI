@@ -44,7 +44,7 @@ class vcNhc: UIwXViewController {
 
     func getContent() {
         refreshViews()
-        objNHC = ObjectNhc(self, stackView)
+        objNHC = ObjectNhc(self, scrollView, stackView)
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.objNHC?.getTextData()
