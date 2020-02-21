@@ -22,25 +22,11 @@ final class UtilityActions {
         }
     }
     
-    /*@objc static func radarClickedFromMenuDisable() {
-     print("radar shortcut")
-     if !Location.isUS {
-     //ActVars.caRadarImageType = "radar"
-     //ActVars.caRadarProv = ""
-     } else {
-     if UIPreferences.dualpaneRadarIcon {
-     ActVars.wxoglPaneCount = "2"
-     } else {
-     ActVars.wxoglPaneCount = "1"
-     }
-     }
-     }*/
-    
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
             let vc = vcCanadaRadar()
             vc.caRadarImageType = "radar"
-            vc.caRadarProv = ""
+            vc.caRadarProvince = ""
             goToVCS(uiv, vc)
         } else {
             let vc = vcNexradRadar()
@@ -133,7 +119,7 @@ final class UtilityActions {
             } else {
                 let prov = MyApplication.locations[Location.getLocationIndex].prov
                 let vc = vcCanadaRadar()
-                vc.caRadarProv = UtilityCanada.getECSectorFromProvidence(prov)
+                vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
                 vc.caRadarImageType = "radar"
                 uiv.goToVC(vc)
             }

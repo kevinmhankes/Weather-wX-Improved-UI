@@ -6,10 +6,9 @@
 
 import UIKit
 import AVFoundation
-import MapKit
 
 class vcCanadaText: UIwXViewController {
-
+    
     private var product = "focn45"
     private var objectTextView = ObjectTextView()
     private var productButton = ObjectToolbarIcon()
@@ -18,7 +17,7 @@ class vcCanadaText: UIwXViewController {
     private var playButton = ObjectToolbarIcon()
     private var playlistButton = ObjectToolbarIcon()
     private let synth = AVSpeechSynthesizer()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
@@ -39,7 +38,7 @@ class vcCanadaText: UIwXViewController {
         product = Utility.readPref("CA_TEXT_LASTUSED", product)
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
@@ -48,28 +47,28 @@ class vcCanadaText: UIwXViewController {
             }
         }
     }
-
+    
     @objc func playClicked() {
         UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Product Selection", productButton, UtilityCanada.products, self.productChanged(_:))
     }
-
+    
     func productChanged(_ product: String) {
         self.product = product
         self.getContent()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, html)
     }
-
+    
     @objc func playlistClicked() {
         UtilityPlayList.add(self.product, self.html, self, playlistButton)
     }
-
+    
     private func displayContent() {
         self.refreshViews()
         objectTextView = ObjectTextView(stackView)
@@ -82,15 +81,4 @@ class vcCanadaText: UIwXViewController {
         self.productButton.title = self.product
         Utility.writePref("CA_TEXT_LASTUSED", self.product)
     }
-
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayContent()
-            }
-        )
-    }*/
 }

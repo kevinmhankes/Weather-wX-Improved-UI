@@ -7,7 +7,7 @@
 import UIKit
 
 class vcCanadaRadar: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var animateButton = ObjectToolbarIcon()
@@ -17,9 +17,9 @@ class vcCanadaRadar: UIwXViewController {
     private var url = "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg"
     private var mosaicShown = false
     private var startFromMosaic = false
-    var caRadarProv = ""
+    var caRadarProvince = ""
     var caRadarImageType = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -45,10 +45,10 @@ class vcCanadaRadar: UIwXViewController {
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = Utility.readPref("CA_LAST_RID_URL", url)
-        if caRadarProv == "" {
+        if caRadarProvince == "" {
             radarSite = Utility.readPref("CA_LAST_RID", radarSite)
         } else {
-            radarSite = String(caRadarProv)
+            radarSite = String(caRadarProvince)
             mosaicShown = true
         }
         if !RadarPreferences.wxoglRememberLocation {
@@ -56,7 +56,7 @@ class vcCanadaRadar: UIwXViewController {
         }
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
@@ -80,29 +80,29 @@ class vcCanadaRadar: UIwXViewController {
             }
         }
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.radarSites, self.productChanged(_:))
     }
-
+    
     func productChanged(_ index: Int) {
         caRadarImageType = "radar"
         radarSite = UtilityCanadaImg.radarSites[index].split(":")[0]
         self.getContent()
     }
-
+    
     func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func animateClicked() {
         _ = ObjectPopUp(self, "Select animation:", animateButton, ["short", "long"], self.getAnimation(_:))
     }
-
+    
     func getAnimation(_ frameCnt: String) {
         var animDrawable = AnimationDrawable()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -120,17 +120,17 @@ class vcCanadaRadar: UIwXViewController {
             }
         }
     }
-
+    
     @objc func cloudClicked() {
         _ = ObjectPopUp(self, "Product Selection", cloudButton, UtilityCanadaImg.names, self.cloudChanged(_:))
     }
-
+    
     func cloudChanged(_ prod: Int) {
         caRadarImageType = "vis"
         url = UtilityCanadaImg.urls[prod]
         self.getContent()
     }
-
+    
     @objc func radarClicked() {
         caRadarImageType = "radar"
         self.getContent()
