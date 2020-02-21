@@ -7,7 +7,7 @@
 import UIKit
 
 class vcGoes: UIwXViewController {
-
+    
     var image = ObjectTouchImageView()
     var productButton = ObjectToolbarIcon()
     var sectorButton = ObjectToolbarIcon()
@@ -43,18 +43,18 @@ class vcGoes: UIwXViewController {
         deSerializeSettings()
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func serializeSettings() {
         if savePrefs {
             Utility.writePref("GOES16_PROD", productCode)
             Utility.writePref("GOES16_SECTOR", sectorCode)
         }
     }
-
+    
     func deSerializeSettings() {
         if sectorCode == "" {
             productCode = Utility.readPref("GOES16_PROD", "GEOCOLOR")
@@ -62,14 +62,12 @@ class vcGoes: UIwXViewController {
             productButton.title = productCode
             sectorButton.title = sectorCode
         } else {
-            //productCode = ActVars.goesProduct
-            //sectorCode = ActVars.goesSector
             productButton.title = productCode
             sectorButton.title = sectorCode
             savePrefs = false
         }
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
@@ -82,36 +80,36 @@ class vcGoes: UIwXViewController {
             }
         }
     }
-
+    
     @objc override func doneClicked() {
         super.doneClicked()
     }
-
+    
     @objc func productClicked() {
         let list: [String] = [String] (UtilityGoes.products.keys.sorted())
         _ = ObjectPopUp(self, "Product Selection", productButton, list, self.productChanged(_:))
     }
-
+    
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilityGoes.sectors, self.sectorChanged(_:))
     }
-
+    
     func productChanged(_ index: Int) {
         productCode = UtilityGoes.productCodes[index]
         productButton.title = productCode
         self.getContent()
     }
-
+    
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
         self.getContent()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         productChanged(
             UtilityUI.sideSwipe(
@@ -121,7 +119,7 @@ class vcGoes: UIwXViewController {
             )
         )
     }
-
+    
     @objc func animateClicked() {
         _ = ObjectPopUp(
             self,
@@ -131,7 +129,7 @@ class vcGoes: UIwXViewController {
             self.getAnimation(_:)
         )
     }
-
+    
     @objc func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
