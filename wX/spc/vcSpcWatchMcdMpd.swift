@@ -74,9 +74,6 @@ class vcSpcWatchMcdMpd: UIwXViewController {
             self.goToVC(vc)
             
         } else {
-            //let vc = vcTextViewer()
-            //vc.textViewText = self.listOfText[sender.data]
-            //self.goToVC(vc)
             let vc = vcSpcWatchMcdMpd()
             vc.watchMcdMpdNumber = self.numbers[sender.data]
             vc.watchMcdMpdType = self.watchMcdMpdType
@@ -85,6 +82,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
+        // FIXME use a more elegant construct
         if self.objectWatchProduct != nil {
             UtilityShare.shareImage(self, sender, bitmaps, self.objectWatchProduct!.text)
         }
