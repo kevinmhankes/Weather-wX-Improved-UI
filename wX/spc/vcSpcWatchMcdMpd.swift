@@ -82,21 +82,20 @@ class vcSpcWatchMcdMpd: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        // FIXME use a more elegant construct
-        if self.objectWatchProduct != nil {
-            UtilityShare.shareImage(self, sender, bitmaps, self.objectWatchProduct!.text)
+        if let object = self.objectWatchProduct {
+            UtilityShare.shareImage(self, sender, bitmaps, object.text)
         }
     }
 
     @objc func playClicked() {
-        if self.objectWatchProduct != nil {
-            UtilityActions.playClicked(self.objectWatchProduct!.text, synth, playButton)
+        if let object = self.objectWatchProduct {
+            UtilityActions.playClicked(object.text, synth, playButton)
         }
     }
 
     @objc func playlistClicked() {
-        if self.objectWatchProduct != nil {
-            UtilityPlayList.add(self.objectWatchProduct!.prod, self.objectWatchProduct!.text, self, playListButton)
+        if let object = self.objectWatchProduct {
+            UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
 
@@ -105,7 +104,6 @@ class vcSpcWatchMcdMpd: UIwXViewController {
         #if targetEnvironment(macCatalyst)
             tabletInLandscape = self.bitmaps.count == 1
         #endif
-        //tabletInLandscape = false
         if tabletInLandscape {
             stackView.axis = .horizontal
             stackView.alignment = .firstBaseline
