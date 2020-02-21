@@ -78,7 +78,7 @@ class vcWebView: UIwXViewController {
             self,
             "Product Selection",
             productButton,
-            GlobalArrays.states + UtilityCanada.providenceCodes,
+            GlobalArrays.states + UtilityCanada.provinceCodes,
             self.productChanged(_:)
         )
     }

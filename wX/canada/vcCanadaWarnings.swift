@@ -21,7 +21,7 @@ class vcCanadaWarnings: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        provButton = ObjectToolbarIcon(title: prov, self, #selector(provClicked))
+        provButton = ObjectToolbarIcon(title: prov, self, #selector(provinceClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, provButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -46,15 +46,15 @@ class vcCanadaWarnings: UIwXViewController {
         UtilityShare.shareImage(self, sender, self.objCAWARN.bitmap)
     }
 
-    @objc func gotoWarning(sender: UITapGestureRecognizerWithData) {
-        getWarningDetail(objCAWARN.getWarningUrl(sender.data))
+    //@objc func goToWarning(sender: UITapGestureRecognizerWithData) {
+    //    getWarningDetail(objCAWARN.getWarningUrl(sender.data))
+    //}
+
+    @objc func provinceClicked() {
+        _ = ObjectPopUp(self, "Province Selection", provButton, self.objCAWARN.provList, self.provinceChanged(_:))
     }
 
-    @objc func provClicked() {
-        _ = ObjectPopUp(self, "Providence Selection", provButton, self.objCAWARN.provList, self.provChanged(_:))
-    }
-
-    func provChanged(_ prov: String) {
+    func provinceChanged(_ prov: String) {
         self.prov = prov
         self.objCAWARN.setProv(prov)
         getContent()

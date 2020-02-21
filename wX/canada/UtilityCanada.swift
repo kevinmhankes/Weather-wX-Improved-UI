@@ -52,7 +52,7 @@ final class UtilityCanada {
         "YT": "CAN"
     ]
     
-    static let providenceCodes = [
+    static let provinceCodes = [
         "bcstorm: British Columbia",
         "abstorm: Alberta",
         "skstorm: Saskatchewan",
