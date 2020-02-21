@@ -81,7 +81,7 @@ class vcSettingsAbout: UIwXViewController {
         )
         objectTextView1.color = ColorCompatibility.highlightText
         objectTextView1.tv.isSelectable = false
-        objectTextView1.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView1.constrain(self.scrollView)
         let objectTextView2 = ObjectTextView(
             self.stackView,
             "View release notes",
@@ -90,12 +90,13 @@ class vcSettingsAbout: UIwXViewController {
         )
         objectTextView2.color = ColorCompatibility.highlightText
         objectTextView2.tv.isSelectable = false
+        objectTextView2.constrain(self.scrollView)
         let objectTextView3 = ObjectTextView(
             self.stackView,
             aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,
             UITapGestureRecognizerWithData("", self, #selector(actionClick(sender:)))
         )
-        objectTextView3.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView3.constrain(self.scrollView)
     }
 }
