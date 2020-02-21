@@ -85,15 +85,21 @@ class vcSpcWatchMcdMpd: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps, self.objectWatchProduct!.text)
+        if self.objectWatchProduct != nil {
+            UtilityShare.shareImage(self, sender, bitmaps, self.objectWatchProduct!.text)
+        }
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(self.objectWatchProduct!.text, synth, playButton)
+        if self.objectWatchProduct != nil {
+            UtilityActions.playClicked(self.objectWatchProduct!.text, synth, playButton)
+        }
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.objectWatchProduct!.prod, self.objectWatchProduct!.text, self, playListButton)
+        if self.objectWatchProduct != nil {
+            UtilityPlayList.add(self.objectWatchProduct!.prod, self.objectWatchProduct!.text, self, playListButton)
+        }
     }
 
     private func displayContent() {
