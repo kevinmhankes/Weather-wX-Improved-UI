@@ -61,13 +61,11 @@ final class UtilitySpcMesoInputOutput {
     static func getAnimation(_ sector: String, _ product: String, _ frameCount: Int) -> AnimationDrawable {
         var imgUrl = ""
         var bitmaps = [Bitmap]()
-        let html = (MyApplication.nwsSPCwebsitePrefix
-            + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
+        let html = (MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
         let timeList = html.parseColumn("dattim\\[[0-9]{1,2}\\].*?=.*?([0-9]{8})")
         if timeList.count > frameCount {
             stride(from: (frameCount - 1), to: 0, by: -1).forEach {
-                imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s"
-                    + sector + "/" + product + "/" + product + "_" + timeList[$0] + ".gif"
+                imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s" + sector + "/" + product + "/" + product + "_" + timeList[$0] + ".gif"
                 bitmaps.append(UtilityImg.getBitmapAddWhiteBG(imgUrl))
             }
         }

@@ -128,7 +128,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
         var views = [UIView]()
         self.objectTextView = ObjectTextView(self.stackView, self.html)
-        self.objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        self.objectTextView.constrain(self.scrollView)
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
         scrollView.accessibilityElements = views

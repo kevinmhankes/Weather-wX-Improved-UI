@@ -13,7 +13,7 @@ final class ObjectWatchProduct {
     var prod = ""
     var bitmap = Bitmap()
     var text = ""
-    private var wfoArr = [String]()
+    private var wfos = [String]()
     private var type: PolygonType
 
     init(_ type: PolygonType, _ productNumber: String) {
@@ -49,7 +49,7 @@ final class ObjectWatchProduct {
         text = UtilityDownload.getTextProduct(prod)
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
-        wfoArr = wfoStr.split("\\.\\.\\.")
+        wfos = wfoStr.split("\\.\\.\\.")
     }
 
     func getTextForSubtitle() -> String {

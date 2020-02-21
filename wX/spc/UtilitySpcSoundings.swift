@@ -8,9 +8,9 @@ import UIKit
 
 final class UtilitySpcSoundings {
 
-	static func getImage(_ nwsOffice: String) -> Bitmap {
+	static func getImage(_ office: String) -> Bitmap {
         return UtilityImg.getBitmapAddWhiteBG(
-            MyApplication.nwsSPCwebsitePrefix + "/exper/soundings/LATEST/" + nwsOffice + ".gif"
+            MyApplication.nwsSPCwebsitePrefix + "/exper/soundings/LATEST/" + office + ".gif"
         )
 	}
 }
