@@ -30,7 +30,7 @@ class vcSettingsLocationCanada: UIwXViewController {
             let objectTextView = ObjectTextView(
                 self.stackView, $1,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData($0, self, #selector(gotoProv(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(goToProvinces(sender:)))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(self.scrollView)
@@ -38,7 +38,7 @@ class vcSettingsLocationCanada: UIwXViewController {
         }
     }
 
-    @objc func gotoProv(sender: UITapGestureRecognizerWithData) {
+    @objc func goToProvinces(sender: UITapGestureRecognizerWithData) {
         let position = sender.data
         if !cityDisplay {
             provSelected = UtilityCanada.providences[position].truncate(2)
@@ -76,19 +76,19 @@ class vcSettingsLocationCanada: UIwXViewController {
             idTmpAl.forEach {self.listIds.append($0)}
             self.listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
             DispatchQueue.main.async {
-                self.showDisplayCity()
+                self.displayCities()
             }
         }
     }
 
-    private func showDisplayCity() {
+    private func displayCities() {
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
         self.cityDisplay = true
         self.listCity.enumerated().forEach {
             let objectTextView = ObjectTextView(
                 self.stackView, $1,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData($0, self, #selector(self.gotoProv(sender:)))
+                UITapGestureRecognizerWithData($0, self, #selector(self.goToProvinces(sender:)))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(self.scrollView)
@@ -98,7 +98,7 @@ class vcSettingsLocationCanada: UIwXViewController {
 
     private func displayContent() {
         if self.cityDisplay {
-            showDisplayCity()
+            displayCities()
         } else {
             showDisplayProv()
         }
