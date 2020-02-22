@@ -9,7 +9,7 @@ import UIKit
 final class ObjectImage {
 
     let img = UIImageView()
-    var width: CGFloat = 0.0
+    private var width: CGFloat = 0.0
     var bitmap = Bitmap()
 
     init() {
