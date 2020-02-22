@@ -21,7 +21,7 @@ final class UtilityGoesFullDisk {
         "Himawari-8 RBTop Infrared, Ch. 4"
     ]
     
-    static let baseUrl = "https://www.goes.noaa.gov"
+    private static let baseUrl = "https://www.goes.noaa.gov"
     
     static let urls = [
         baseUrl + "/FULLDISK/GMIR.JPG",

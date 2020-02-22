@@ -9,7 +9,7 @@ final class SevereWarning {
     var text = ""
     private var type = ""
     private var count = 0
-    var collapsed = false
+    private var collapsed = false
     var idList = [String]()
     var areaDescList = [String]()
     var effectiveList = [String]()

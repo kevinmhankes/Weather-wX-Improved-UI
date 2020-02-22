@@ -6,7 +6,7 @@
 
 final class UtilityGoes {
     
-    static let sizeMap = [
+    private static let sizeMap = [
         "CONUS": "1250x750",
         "CONUS-G17": "1250x750",
         "FD": "1808x1808",
@@ -26,7 +26,7 @@ final class UtilityGoes {
         "cam": "1000x1000"
     ]
     
-    static func getImageSize(_ sector: String) -> String {
+    private static func getImageSize(_ sector: String) -> String {
         let size = "latest"
         if UIPreferences.goesUseFullResolutionImages {
             return size
@@ -63,7 +63,6 @@ final class UtilityGoes {
             + "/"
             + getImageSize(sector)
             + ".jpg"
-        print(url)
         return Bitmap(url)
     }
     
@@ -123,7 +122,7 @@ final class UtilityGoes {
         "ssa: South America (south)"
     ]
     
-    static let sectorsInGoes17 = [
+    private static let sectorsInGoes17 = [
         "CONUS-G17",
         "FD-G17",
         "ak",
