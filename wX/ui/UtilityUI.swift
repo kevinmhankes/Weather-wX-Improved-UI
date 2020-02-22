@@ -161,10 +161,10 @@ public class UtilityUI {
         return false
     }
 
-    static func printBounds() {
+    /*static func printBounds() {
         _ = UIScreen.main.nativeBounds   // 1125x2436
         _ = UIScreen.main.bounds         // 375x812
-    }
+    }*/
 
     static func isLandscape() -> Bool {
         var landscape = false

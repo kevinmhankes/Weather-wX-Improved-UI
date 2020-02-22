@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectToolbar: UIToolbar {
 
-    var toolbarHeightConstraint: NSLayoutConstraint?
+    private var toolbarHeightConstraint: NSLayoutConstraint?
 
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -31,6 +31,7 @@ final class ObjectToolbar: UIToolbar {
             self.translatesAutoresizingMaskIntoConstraints = false
             toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
             uiv.view.addConstraint(toolbarHeightConstraint!)
+            //self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
             self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
             self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
             self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true

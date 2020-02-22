@@ -24,6 +24,10 @@ final class CustomTabBarVC: UITabBarController {
                 }
             }
         }
+        
+        // To remove dependancy on storyboard uncomment the following and 3 lines in AppDelegate.application
+        // In Deployment Info change Main Interface from Main to ""
+        
         /*let firstViewController = vcTabLocation()
         firstViewController.tabBarItem = UITabBarItem(title: "LOCAL", image: nil, tag: 0)
         let secondViewController = vcTabSpc()
@@ -32,5 +36,6 @@ final class CustomTabBarVC: UITabBarController {
         thirdViewController.tabBarItem = UITabBarItem(title: "MISC", image: nil, tag: 2)
         let tabBarList = [firstViewController, secondViewController, thirdViewController]
         viewControllers = tabBarList*/
+        
     }
 }

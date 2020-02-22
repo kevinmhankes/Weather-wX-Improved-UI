@@ -8,9 +8,9 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    var objLabel = ObjectTextView()
-    var sunriseSunset = ""
-    var gmtTimetext = ""
+    private var objLabel = ObjectTextView()
+    private var sunriseSunset = ""
+    private var gmtTimetext = ""
 
     init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
         sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomescreen()
