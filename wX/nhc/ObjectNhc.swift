@@ -25,27 +25,27 @@ final class ObjectNhc: NSObject {
     private var scrollView: UIScrollView
     private var textAtl = ""
     private var textPac = ""
-    var bitmapsAtlantic = [Bitmap]()
-    var bitmapsPacific = [Bitmap]()
-    var bitmapsCentral = [Bitmap]()
-    var imageCount = 0
-    var imagesPerRow = 2
-    var imageStackViewList = [ObjectStackView]()
-    var regionMap = [NhcOceanEnum:ObjectNhcRegionSummary]()
+    private var bitmapsAtlantic = [Bitmap]()
+    private var bitmapsPacific = [Bitmap]()
+    private var bitmapsCentral = [Bitmap]()
+    private var imageCount = 0
+    private var imagesPerRow = 2
+    private var imageStackViewList = [ObjectStackView]()
+    var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
     
-    let imageUrlsAtlanic = [
+    private let imageUrlsAtlanic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
     ]
 
-    let imageUrlsPacific = [
+    private let imageUrlsPacific = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
     ]
 
-    let imageUrlsCentral = [
+    private let imageUrlsCentral = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
