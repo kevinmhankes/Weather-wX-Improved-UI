@@ -10,8 +10,8 @@ class ObjectNhcRegionSummary {
     var titles: [String]
     var bitmaps = [Bitmap]()
     var storms = [ObjectNhcStormInfo]()
-    var replaceString: String
-    var baseUrl: String
+    private var replaceString: String
+    private var baseUrl: String
     
     init(_ region: NhcOceanEnum) {
         switch region {

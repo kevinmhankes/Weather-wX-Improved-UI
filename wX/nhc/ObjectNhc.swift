@@ -69,24 +69,6 @@ final class ObjectNhc: NSObject {
         self.stackView = stackView
     }
 
-    /*func getAtlanticImageData() {
-        imageUrlsAtlanic.forEach {
-            bitmapsAtlantic.append(Bitmap($0))
-        }
-    }
-
-    func getPacificImageData() {
-        imageUrlsPacific.forEach {
-            bitmapsPacific.append(Bitmap($0))
-        }
-    }
-
-    func getCentralImageData() {
-        imageUrlsCentral.forEach {
-            bitmapsCentral.append(Bitmap($0))
-        }
-    }*/
-
     // TODO use a class to store 5 String Lists
     // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
     // ATL for example would have list of global bitmaps (which have url in object) and list for storms
@@ -183,30 +165,6 @@ final class ObjectNhc: NSObject {
         }
     }
     
-    /*func showImageData(_ images: [Bitmap], _ urls: [String]) {
-        images.enumerated().forEach { index, bitmap in
-            if imageCount % imagesPerRow == 0 {
-                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(stackView)
-                self.stackView.addArrangedSubview(stackView.view)
-                _ = ObjectImage(
-                    stackView.view,
-                    bitmap,
-                    UITapGestureRecognizerWithData(urls[index], uiv, #selector(imageClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            } else {
-                _ = ObjectImage(
-                    imageStackViewList.last!.view,
-                    bitmap,
-                    UITapGestureRecognizerWithData(urls[index], uiv, #selector(imageClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
-            }
-            imageCount += 1
-        }
-    }*/
-
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
 
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
