@@ -137,9 +137,9 @@ final class ObjectSlider {
         "HOMESCREEN_TEXT_LENGTH_PREF_T": 500,
         "HOMESCREEN_TEXT_LENGTH_PREF_C": 500,
 
-        "NWS_ICON_SIZE_PREF": 80,
-        "NWS_ICON_SIZE_PREF_T": 80,
-        "NWS_ICON_SIZE_PREF_C": 80,
+        "NWS_ICON_SIZE_PREF": 68,
+        "NWS_ICON_SIZE_PREF_T": 68,
+        "NWS_ICON_SIZE_PREF_C": 68,
 
         "RADAR_TEXT_SIZE": 10,
         "RADAR_TEXT_SIZE_T": 10,

@@ -56,6 +56,7 @@ class UIPreferences {
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
-        nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 80.0)
+        //nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 80.0)
+        nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 68.0)
     }
 }
