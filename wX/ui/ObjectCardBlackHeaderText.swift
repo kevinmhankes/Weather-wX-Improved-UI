@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardBlackHeaderText {
 
-    var cardStackView = ObjectCardStackView()
+    private var cardStackView = ObjectCardStackView()
 
     init(_ stackView: UIStackView, _ text: String) {
         let tvLocation = ObjectTextViewLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)

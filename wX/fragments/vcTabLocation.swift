@@ -517,7 +517,7 @@ class vcTabLocation: vcTabParent {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(product)
             DispatchQueue.main.async {
-                let imgObj = ObjectImage(stackView, bitmap, hs: true)
+                let imgObj = ObjectImage(self.scrollView, stackView, bitmap, hs: true)
                 imgObj.addGestureRecognizer(
                     UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:)))
                 )

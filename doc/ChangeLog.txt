@@ -24,6 +24,7 @@
 56091 2020_02_22 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
+		 [FIX] homescreen image on size change
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit

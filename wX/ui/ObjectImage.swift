@@ -37,12 +37,16 @@ final class ObjectImage {
         addGestureRecognizer(gesture)
     }
 
-    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
+    convenience init(_ scrollView: UIScrollView, _ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
         self.init()
         img.image = bitmap.image
         self.bitmap = bitmap
-        setImageAnchors(width - UIPreferences.stackviewCardSpacing * 2.0)
         stackView.addArrangedSubview(img)
+        if hs {
+            setImageAnchorsForHomeScreen(scrollView)
+        } else {
+            setImageAnchors(width - UIPreferences.stackviewCardSpacing * 2.0)
+        }
     }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, viewOrder: Int) {
@@ -71,5 +75,10 @@ final class ObjectImage {
     private func setImageAnchors(_ width: CGFloat) {
         img.widthAnchor.constraint(equalToConstant: width).isActive = true
         img.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true
+    }
+    
+    private func setImageAnchorsForHomeScreen(_ scrollView: UIScrollView) {
+        img.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        img.heightAnchor.constraint(equalTo: img.widthAnchor, multiplier: (bitmap.height / bitmap.width)).isActive = true
     }
 }
