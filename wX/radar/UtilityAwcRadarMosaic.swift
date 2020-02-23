@@ -8,7 +8,7 @@ import UIKit
 
 class UtilityAwcRadarMosaic {
 
-    static let baseUrl = "https://www.aviationweather.gov/data/obs/"
+    private static let baseUrl = "https://www.aviationweather.gov/data/obs/"
 
     static let products = [
         "rad_rala",
@@ -76,7 +76,7 @@ class UtilityAwcRadarMosaic {
         "Las Vegas NV"
     ]
 
-    static let cityToLatLon = [
+    private static let cityToLatLon = [
         "Albany NY": LatLon(42.65, -73.75),
         "Baltimore MD": LatLon(39.29, -76.60),
         "Charlotte NC": LatLon(35.22, -80.84),

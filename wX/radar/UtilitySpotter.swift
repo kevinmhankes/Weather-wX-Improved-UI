@@ -8,7 +8,7 @@ public class UtilitySpotter {
 
     static var spotterList = [Spotter]()
     static var reportsList = [SpotterReports]()
-    static var timer = DownloadTimer("SPOTTER")
+    private static var timer = DownloadTimer("SPOTTER")
     static var lat = [Double]()
     static var lon = [Double]()
 

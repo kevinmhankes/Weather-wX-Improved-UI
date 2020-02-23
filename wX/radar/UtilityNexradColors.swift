@@ -6,11 +6,11 @@
 
 class UtilityNexradColors {
 
-    static func interpolate(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
+    private static func interpolate(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
         return (colorA + ((colorB - colorA) * proportion))
     }
 
-    static func interpolateHue(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
+    private static func interpolateHue(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
         let diff = colorB - colorA
         var ret: Double
         let total = 1.0

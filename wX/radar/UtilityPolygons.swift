@@ -6,7 +6,7 @@
 
 public class UtilityPolygons {
 
-    static func getData() {
+    static func get() {
         UtilityDownloadWarnings.get()
         UtilityDownloadWatch.get()
         UtilityDownloadMcd.get()

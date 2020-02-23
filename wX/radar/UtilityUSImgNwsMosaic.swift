@@ -24,7 +24,7 @@ class UtilityUSImgNwsMosaic {
         "northeast"
     ]
 
-    static let sectorToLabel = [
+    private static let sectorToLabel = [
         "alaska": "Alaska",
         "hawaii": "Hawaii",
         "pacsouthwest": "Pacific Southwest",
@@ -40,7 +40,7 @@ class UtilityUSImgNwsMosaic {
         "conus": "CONUS"
     ]
 
-    static let stateToSector = [
+    private static let stateToSector = [
         "WA": "pacnorthwest",
         "ID": "pacnorthwest",
         "OR": "pacnorthwest",

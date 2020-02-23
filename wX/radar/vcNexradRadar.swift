@@ -576,7 +576,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                     $0!.constructAlertPolygons()
                 }
             }
-            UtilityPolygons.getData()
+            UtilityPolygons.get()
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach {

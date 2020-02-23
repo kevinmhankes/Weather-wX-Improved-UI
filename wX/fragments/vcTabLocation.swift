@@ -609,7 +609,7 @@ class vcTabLocation: vcTabParent {
 
     func getPolygonWarnings() {
         DispatchQueue.global(qos: .userInitiated).async {
-            UtilityPolygons.getData()
+            UtilityPolygons.get()
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach {
