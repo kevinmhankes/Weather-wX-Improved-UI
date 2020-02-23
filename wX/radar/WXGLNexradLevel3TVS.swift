@@ -6,8 +6,8 @@
 
 class WXGLNexradLevel3TVS {
 
-    static let tvsPattern1 = "P  TVS(.{20})"
-    static let tvsPattern2 = ".{9}(.{7})"
+    private static let tvsPattern1 = "P  TVS(.{20})"
+    private static let tvsPattern2 = ".{9}(.{7})"
 
     static func decocodeAndPlotNexradTVS(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()

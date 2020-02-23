@@ -15,7 +15,7 @@ final class ObjectColorPalette {
         self.colormapCode = colormapCode
     }
 
-    func setupBuffers(_ size: Int) {
+    private func setupBuffers(_ size: Int) {
         redValues = MemoryBuffer(size)
         greenValues = MemoryBuffer(size)
         blueValues = MemoryBuffer(size)

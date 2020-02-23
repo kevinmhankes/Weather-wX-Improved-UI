@@ -6,10 +6,10 @@
 
 class WXGLNexradLevel3HailIndex {
 
-    static let hiPattern1 = "AZ/RAN(.*?)V"
-    static let hiPattern2 = "POSH/POH(.*?)V"
-    static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
-    static let stiPattern3 = "(\\d+) "
+    private static let hiPattern1 = "AZ/RAN(.*?)V"
+    private static let hiPattern2 = "POSH/POH(.*?)V"
+    private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
+    private static let stiPattern3 = "(\\d+) "
 
     static func decocodeAndPlotNexradHailIndex(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()

@@ -6,8 +6,8 @@
 
 class WXGLNexradLevel3StormInfo {
 
-    static let stiPattern1 = "AZ/RAN(.*?)V"
-    static let stiPattern2 = "MVT(.*?)V"
+    private static let stiPattern1 = "AZ/RAN(.*?)V"
+    private static let stiPattern2 = "MVT(.*?)V"
 
     static func decocodeAndPlotNexradStormMotion(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
