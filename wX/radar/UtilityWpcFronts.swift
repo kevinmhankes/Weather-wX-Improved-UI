@@ -48,9 +48,10 @@ import Foundation
  */
 
 class UtilityWpcFronts {
+    
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
-    static var timer = DownloadTimer("WPC FRONTS")
+    private static var timer = DownloadTimer("WPC FRONTS")
 
     static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
         let length = 0.4 // size of trianle

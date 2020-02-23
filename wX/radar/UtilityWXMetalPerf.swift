@@ -8,10 +8,10 @@ import Foundation
 
 class UtilityWXMetalPerf {
 
-    static let k180DivPi = 180.0 / Double.pi
-    static let piDiv4 = Double.pi / 4.0
-    static let piDiv360 = Double.pi / 360.0
-    static let twicePi = 2.0 * Double.pi
+    private static let k180DivPi = 180.0 / Double.pi
+    private static let piDiv4 = Double.pi / 4.0
+    private static let piDiv360 = Double.pi / 360.0
+    private static let twicePi = 2.0 * Double.pi
 
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0

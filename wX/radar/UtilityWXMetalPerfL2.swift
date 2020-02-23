@@ -8,7 +8,7 @@ import Foundation
 
 class UtilityWXMetalPerfL2 {
 
-    static let fileHeaderSize = 24
+    private static let fileHeaderSize = 24
 
     static func decompress (_ radarBuffers: ObjectMetalRadarBuffers) {
         let destinationPath = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
