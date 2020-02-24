@@ -102,7 +102,7 @@ final class UtilityMap {
         return locations
     }
 
-    static func setupMapForRadar(_ mapView: MKMapView, _ itemList: [String]) {
+    /*static func setupMapForRadar(_ mapView: MKMapView, _ itemList: [String]) {
         let locations = createLocationsArrayForRadar(itemList)
         var annotations = [MKPointAnnotation]()
         locations.forEach { dictionary in
@@ -146,9 +146,9 @@ final class UtilityMap {
             }
         }
         return locations
-    }
+    }*/
 
-    static func setupMapForSnd(
+    /*static func setupMapForSnd(
         _ uiv: UIViewController,
         _ mapView: MKMapView,
         _ itemList: [String]
@@ -171,7 +171,7 @@ final class UtilityMap {
         let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
         centerMapOnLocation(mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
         //centerMapOnLocationWithConstraints(uiv, mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
-    }
+    }*/
 
     /*static func createLocationsArrayForSnd(_ itemList: [String]) -> [[String: String]] {
         var locations = [[String: String]]()

@@ -7,4 +7,5 @@
 enum OfficeTypeEnum {
     case WFO
     case RADAR
+    case SOUNDING
 }

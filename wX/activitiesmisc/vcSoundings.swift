@@ -11,9 +11,10 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     private var image = ObjectTouchImageView()
     private var wfo = ""
-    private let mapView = MKMapView()
-    private var mapShown = false
+    //private let mapView = MKMapView()
+    //private var mapShown = false
     private var siteButton = ObjectToolbarIcon()
+    private let map = ObjectMap(.SOUNDING)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,8 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        mapView.delegate = self
-        //UtilityMap.setupMapForSnd(mapView, GlobalArrays.soundingSites)
+        map.mapView.delegate = self
+        map.setupMap(GlobalArrays.soundingSites)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems(
@@ -38,9 +39,9 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
-        UtilityMap.setupMapForSnd(self, mapView, GlobalArrays.soundingSites)
-        self.view.addSubview(mapView)
-        mapView.isHidden = true
+        //UtilityMap.setupMapForSnd(self, mapView, GlobalArrays.soundingSites)
+        //elf.view.addSubview(mapView)
+        //mapView.isHidden = true
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
         self.getContent()
     }
@@ -64,7 +65,8 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
     }
 
     @objc func mapClicked() {
-        if mapShown {
+        map.toggleMap(self)
+        /*if mapShown {
             //mapView.removeFromSuperview()
             mapView.isHidden = true
             mapShown = false
@@ -73,7 +75,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
             mapShown = true
             mapView.isHidden = false
             //self.view.addSubview(mapView)
-        }
+        }*/
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -85,7 +87,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {
@@ -98,7 +100,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                UtilityMap.setupMapForSnd(self, self.mapView, GlobalArrays.soundingSites)
+                self.map.setupMap(GlobalArrays.soundingSites)
             }
         )
     }

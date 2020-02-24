@@ -43,8 +43,12 @@ public class ObjectMap {
             let ridArr = $0.split(":")
             let latLon: LatLon
             switch officeType {
-            case .WFO: latLon = Utility.getWfoSiteLatLon(ridArr[0])
-            case .RADAR: latLon = Utility.getRadarSiteLatLon(ridArr[0])
+            case .WFO:
+                latLon = Utility.getWfoSiteLatLon(ridArr[0])
+            case .RADAR:
+                latLon = Utility.getRadarSiteLatLon(ridArr[0])
+            case .SOUNDING:
+                latLon = Utility.getSoundingSiteLatLon(ridArr[0])
             }
             //let latlon = Utility.getWfoSiteLatLon(ridArr[0])
             if ridArr.count > 1 {
