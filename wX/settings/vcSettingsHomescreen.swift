@@ -100,7 +100,7 @@ class vcSettingsHomescreen: UIwXViewController {
 
     @objc func addTextClicked() {
         let alert = ObjectPopUp(self, "Text Products", addTextButton)
-        UtilityWpcText.labels.forEach {
+        UtilityWpcText.labelsWithCodes.forEach {
             let ridArr = $0.split(":")
             alert.addAction(
                 UIAlertAction(
