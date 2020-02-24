@@ -7,23 +7,33 @@
 import Foundation
 
 final class UtilityNhc {
-
+    
     static let utilNhcPattern1 = "<title>(.*?)</title>"
     static let utilNhcPattern2 = "<nhc:Cyclone>(.*?)</nhc:Cyclone>"
     static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/" + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
     static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
     static let utilNhcPattern5 = "<img src=.(.*?png)."
-
-    static let textProducts = [
-        "MIATWOAT: ATL Tropical Weather Outlook",
-        "MIATWDAT: ATL Tropical Weather Discussion",
-        "MIATWSAT: ATL Monthly Tropical Summary",
-        "MIATWOEP: EPAC Tropical Weather Outlook",
-        "MIATWDEP: EPAC Tropical Weather Discussion",
-        "MIATWSEP: EPAC Monthly Tropical Summary",
-        "HFOTWOCP: CPAC Tropical Weather Outlook"
+    
+    static let textProductCodes = [
+        "MIATWOAT",
+        "MIATWDAT",
+        "MIATWSAT",
+        "MIATWOEP",
+        "MIATWDEP",
+        "MIATWSEP",
+        "HFOTWOCP"
     ]
-
+    
+    static let textProductLabels = [
+        "ATL Tropical Weather Outlook",
+        "ATL Tropical Weather Discussion",
+        "ATL Monthly Tropical Summary",
+        "EPAC Tropical Weather Outlook",
+        "EPAC Tropical Weather Discussion",
+        "EPAC Monthly Tropical Summary",
+        "CPAC Tropical Weather Outlook"
+    ]
+    
     static let imageType = [
         "vis: Visible",
         "wv: Water Vapor",
@@ -36,7 +46,7 @@ final class UtilityNhc {
         "ft: Funktop",
         "rb: Rainbow"
     ]
-
+    
     static let imageTitles = [
         "EPAC Daily Analysis",
         "ATL Daily Analysis",
@@ -45,7 +55,7 @@ final class UtilityNhc {
         "EPAC SST Anomaly",
         "ATL SST Anomaly"
     ]
-
+    
     static let imageUrls = [
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/ATL/20.jpg",
@@ -54,7 +64,7 @@ final class UtilityNhc {
         MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
     ]
-
+    
     static func getHurricaneInfo(_ rssUrl: String) -> ObjectNhcStormInfo {
         var title = ""
         var summary = ""
@@ -78,7 +88,7 @@ final class UtilityNhc {
         }
         return ObjectNhcStormInfo(title, summary, url, img1, img2, wallet)
     }
-
+    
     static func getAnimation(_ sector: String, _ prodId: String, _ frameCount: Int) -> AnimationDrawable {
         let baseUrl = "https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/"
         let urls = UtilityImgAnim.getUrlArray(
@@ -95,7 +105,7 @@ final class UtilityNhc {
         }
         return animDrawable
     }
-
+    
     static func getImage(_ sector: String, _ product: String) -> Bitmap {
         return Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
     }

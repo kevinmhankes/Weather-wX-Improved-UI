@@ -62,25 +62,6 @@ class vcNhc: UIwXViewController {
                 }
             }
         }
-        
-        /*serial.async {
-            self.objNHC?.getAtlanticImageData()
-            DispatchQueue.main.async {
-                self.objNHC?.showImageData(self.objNHC!.bitmapsAtlantic, self.objNHC!.imageUrlsAtlanic)
-            }
-        }
-        serial.async {
-            self.objNHC?.getPacificImageData()
-            DispatchQueue.main.async {
-                self.objNHC?.showImageData(self.objNHC!.bitmapsPacific, self.objNHC!.imageUrlsPacific)
-            }
-        }
-        serial.async {
-            self.objNHC?.getCentralImageData()
-            DispatchQueue.main.async {
-                self.objNHC?.showImageData(self.objNHC!.bitmapsCentral, self.objNHC!.imageUrlsCentral)
-            }
-        }*/
     }
 
     @objc func textProductClicked() {
@@ -88,18 +69,19 @@ class vcNhc: UIwXViewController {
             self,
             "Product Selection",
             textProductButton,
-            UtilityNhc.textProducts,
+            UtilityNhc.textProductLabels,
             self.textProductChanged(_:)
         )
     }
 
-    func textProductChanged(_ prod: String) {
+    func textProductChanged(_ index: Int) {
+        let product = UtilityNhc.textProductCodes[index]
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(prod)
+            let html = UtilityDownload.getTextProduct(product)
             DispatchQueue.main.async {
                 let vc = vcTextViewer()
                 vc.textViewText = html
-                vc.textViewProduct = prod
+                vc.textViewProduct = product
                 self.goToVC(vc)
             }
         }

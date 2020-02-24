@@ -9,7 +9,7 @@ import AVFoundation
 
 class vcCanadaText: UIwXViewController {
     
-    private var product = "focn45"
+    private var product = "FOCN45"
     private var objectTextView = ObjectTextView()
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
@@ -41,7 +41,8 @@ class vcCanadaText: UIwXViewController {
     
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityDownload.getTextProduct(self.product)
+            // FIXME fix upstream data to uppercase
+            self.html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async {
                 self.displayContent()
             }

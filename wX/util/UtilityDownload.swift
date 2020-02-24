@@ -61,7 +61,8 @@ final class UtilityDownload {
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
         // TODO rename to product
-        let prod = produ.uppercased()
+        //let prod = produ.uppercased()
+        let prod = produ
         if prod == "AFDLOC" {
             text = getTextProduct("AFD" + Location.wfo.uppercased())
         } else if prod == "HWOLOC" {

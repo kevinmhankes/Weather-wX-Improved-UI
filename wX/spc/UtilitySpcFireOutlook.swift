@@ -7,9 +7,9 @@
 final class UtilitySpcFireOutlook {
 
     static let products = [
-        "fwddy1",
-        "fwddy2",
-        "fwddy38"
+        "FWDDY1",
+        "FWDDY2",
+        "FWDDY38"
     ]
 
     static let urls = [

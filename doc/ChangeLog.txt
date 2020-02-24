@@ -27,6 +27,7 @@
 		 [ADD] in WfoText don't display code name
 		 [ADD] in NationalText don't display code name
 		 [FIX] formatting enhancement for PMDTHR
+		 [REF] work towards standardizing on uppercase for all text products from data source
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit

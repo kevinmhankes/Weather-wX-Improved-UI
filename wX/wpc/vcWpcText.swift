@@ -61,7 +61,8 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         // https://www.raywenderlich.com/148513/grand-central-dispatch-tutorial-swift-3-part-1
         // https://developer.apple.com/videos/play/wwdc2016/720/
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityDownload.getTextProduct(self.product)
+            // FIXME fix upstream data source to uppercase
+            self.html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async {
                 self.textView.text = self.html
                 self.productButton.title = self.product

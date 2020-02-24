@@ -486,7 +486,7 @@ class vcTabLocation: vcTabParent {
 
     func getContentText(_ product: String, _ stackView: UIStackView) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(product)
+            let html = UtilityDownload.getTextProduct(product.uppercased())
             DispatchQueue.main.async {
                 self.textArr[product] = html
                 let objectTextView = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
