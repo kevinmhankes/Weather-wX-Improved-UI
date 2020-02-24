@@ -66,7 +66,7 @@ class vcSettingsLocationCanada: UIwXViewController {
 
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityCanada.getProvidenceHtml(self.provSelected)
+            let html = UtilityCanada.getProvinceHtml(self.provSelected)
             let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/"
                 + self.provSelected.lowercased()
                 + "-(.*?)_metric_e.html\">.*?</a></li>")

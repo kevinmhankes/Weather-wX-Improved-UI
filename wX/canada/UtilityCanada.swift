@@ -36,7 +36,7 @@ final class UtilityCanada {
         "YT: Yukon"
     ]
     
-    static let provinceToMosaicSector = [
+    private static let provinceToMosaicSector = [
         "AB": "PAC",
         "BC": "PAC",
         "MB": "PAC",
@@ -261,15 +261,14 @@ final class UtilityCanada {
         return newName
     }
     
-    static func getProvidenceHtml(_ prov: String) -> String {
+    static func getProvinceHtml(_ prov: String) -> String {
         return (MyApplication.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
     }
     
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
         let id = location.lonString.split(":")
-        return (MyApplication.canadaEcSitePrefix
-            + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
+        return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
     
     static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
@@ -300,17 +299,10 @@ final class UtilityCanada {
             .replaceAll("<.*?>", "")
             .replaceAll("\\s+", "")
             .replace(" miles", "mi")
-        let temp = html
-            .parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>"
-                + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
-        let relativeHumdity = html
-            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>"
-                + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
-        let dew = html
-            .parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>"
-                + ".*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
-        let wind = html
-            .parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
+        let temp = html.parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>" + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+        let relativeHumdity = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>" + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
+        let dew = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>" + ".*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
+        let wind = html.parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
         return temp
             + MyApplication.degreeSymbol
             +  " / "
@@ -330,19 +322,15 @@ final class UtilityCanada {
     }
     
     static func get7Day(_ html: String) -> String {
-        let resultList = html
-            .parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary "
-                + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
-        var tmpStr = ""
-        var sb2 = ""
+        let resultList = html.parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary " + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
+        var string = ""
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
         resultListDay = resultListDay.filter {!$0.contains("Current Conditions")}
         resultListDay = resultListDay.filter {$0.contains(":")}
-        resultListDay.enumerated().forEach { idx, value in
-            tmpStr = value.split(":")[0] + ": " + resultList[idx]
-            sb2 += tmpStr + MyApplication.newline + MyApplication.newline
+        resultListDay.enumerated().forEach { index, value in
+            string += value.split(":")[0] + ": " + resultList[index] + MyApplication.newline + MyApplication.newline
         }
-        return sb2
+        return string
     }
     
     static func getHazards(_ html: String) -> [String] {
