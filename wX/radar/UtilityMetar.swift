@@ -6,30 +6,25 @@
 
 final class UtilityMetar {
 
-    static let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
-    static let patternMetarWxogl2 = ".*? A([0-9]{4})"
-    static let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
-    static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
-    static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
-    //static var initialized = false
-    static var initializedObsMap = false
+    // FIXME var naming
+    private static let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
+    private static let patternMetarWxogl2 = ".*? A([0-9]{4})"
+    private static let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
+    private static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
+    private static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
+    private static var initializedObsMap = false
     static var obsArr = [String]()
     static var obsArrExt = [String]()
     static var obsArrWb = [String]()
     static var obsArrWbGust = [String]()
     static var obsArrX = [Double]()
     static var obsArrY = [Double]()
-    static var obsArrAviationColor = [Int]()
-    static var obsStateOld = ""
-    //static var lastRefresh: CLong = 0
-    //static var refreshDataInMinutes = RadarPreferences.radarDataRefreshInterval
-    static var obsLatlon = [String: LatLon]()
-    static var timer = DownloadTimer("METAR")
+    private static var obsArrAviationColor = [Int]()
+    private static var obsStateOld = ""
+    private static var obsLatlon = [String: LatLon]()
+    private static var timer = DownloadTimer("METAR")
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
-        //let currentTime1: CLong = UtilityTime.currentTimeMillis()
-        //let currentTimeSeconds: CLong = currentTime1 / 1000
-        //let refreshIntervalSeconds: CLong = refreshDataInMinutes * 60
         if timer.isRefreshNeeded() || radarSite != obsStateOld {
             var obsAl = [String]()
             var obsAlExt = [String]()
@@ -198,9 +193,6 @@ final class UtilityMetar {
             obsArrY = obsAlY
             obsArrAviationColor = []
             obsArrAviationColor = obsAlAviationColor
-            //initialized = true
-            //let currentTime: CLong = UtilityTime.currentTimeMillis()
-            //lastRefresh = currentTime / 1000
         }
     }
 
@@ -281,7 +273,7 @@ final class UtilityMetar {
 
     // used to condense a list of metar that contains multiple entries for one site,
     // newest is first so simply grab first/append
-    static func condenseObs(_ list: [String]) -> [String] {
+    private static func condenseObs(_ list: [String]) -> [String] {
         var siteMap = [String: Bool]()
         var goodObsList = [String]()
         list.forEach {
