@@ -117,14 +117,20 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityWfoText.wfoProdList, self.productChanged(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityWfoText.wfoProdListNoCode, self.productChanged(_:))
     }
-
-    func productChanged(_ product: String) {
-        self.product = product
+    
+    func productChanged(_ index: Int) {
+        self.product = UtilityWfoText.wfoProdList[index].split(":")[0]
         UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
+
+    /*func productChanged(_ product: String) {
+        self.product = product
+        UtilityActions.resetAudio(&synth, playButton)
+        self.getContent()
+    }*/
 
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)

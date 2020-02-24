@@ -22,4 +22,21 @@ class UtilityWfoText {
         "SPS: Special Weather Statement",
         "VFD: Aviation Only AFD"
     ]
+    
+    static let wfoProdListNoCode = [
+        "Area Forecast Discussion",
+        "Hydrologic Outlook",
+        "Fire weather Forecast",
+        "Hazardous Weather Outlook",
+        "Local Storm Report",
+        "Nearshore Marine Forecast",
+        "Public Information Statement",
+        "Record Event Report",
+        "Regional Temp/Precip Summary",
+        "Regional Temp/Precip Summary by State",
+        "Hydrologic Summary",
+        "Regional Weather Roundup",
+        "Special Weather Statement",
+        "Aviation Only AFD"
+    ]
 }
