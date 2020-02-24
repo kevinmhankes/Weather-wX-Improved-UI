@@ -46,7 +46,7 @@ final class ObjectWatchProduct {
 	}
 
 	func getData() {
-        text = UtilityDownload.getTextProduct(prod)
+        text = UtilityDownload.getTextProduct(prod.uppercased())
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
         wfos = wfoStr.split("\\.\\.\\.")

@@ -63,9 +63,9 @@ final class UtilityDownload {
         // TODO rename to product
         let prod = produ.uppercased()
         if prod == "AFDLOC" {
-            text = getTextProduct("afd" + Location.wfo.lowercased())
+            text = getTextProduct("AFD" + Location.wfo.uppercased())
         } else if prod == "HWOLOC" {
-            text = getTextProduct("hwo" + Location.wfo.lowercased())
+            text = getTextProduct("HWO" + Location.wfo.uppercased())
         } else if prod == "SUNMOON" {
             text = UtilitySunMoon.computeData()
         } else if prod == "HOURLY" {
