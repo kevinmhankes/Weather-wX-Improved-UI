@@ -58,165 +58,165 @@ final class UtilityDownload {
         return data
     }
     
-    static func getTextProduct(_ produ: String) -> String {
+    static func getTextProduct(_ product: String) -> String {
         var text = ""
         // TODO rename to product
         //let prod = produ.uppercased()
-        let prod = produ
-        if prod == "AFDLOC" {
+        //let prod = produ
+        if product == "AFDLOC" {
             text = getTextProduct("AFD" + Location.wfo.uppercased())
-        } else if prod == "HWOLOC" {
+        } else if product == "HWOLOC" {
             text = getTextProduct("HWO" + Location.wfo.uppercased())
-        } else if prod == "SUNMOON" {
+        } else if product == "SUNMOON" {
             text = UtilitySunMoon.computeData()
-        } else if prod == "HOURLY" {
+        } else if product == "HOURLY" {
             let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
             text = textArr[0]
-        } else if prod == "SWPC3DAY" {
+        } else if product == "SWPC3DAY" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()
-        } else if prod == "SWPC27DAY" {
+        } else if product == "SWPC27DAY" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/27-day-outlook.txt").getHtml()
-        } else if prod == "SWPCWWA" {
+        } else if product == "SWPCWWA" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/advisory-outlook.txt").getHtml()
-        } else if prod == "SWPCHIGH" {
+        } else if product == "SWPCHIGH" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/weekly.txt").getHtml()
-        } else if prod == "SWPCDISC" {
+        } else if product == "SWPCDISC" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/discussion.txt").getHtml()
-        } else if prod == "SWPC3DAYGEO" {
+        } else if product == "SWPC3DAYGEO" {
             text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-geomag-forecast.txt").getHtml()
-        } else if prod.contains("MIATCP") || prod.contains("MIATCM")
-            || prod.contains("MIATCD") || prod.contains("MIAPWS")
-            || prod.contains("MIAHS") {
-            let textUrl = "https://www.nhc.noaa.gov/text/" + prod + ".shtml"
+        } else if product.contains("MIATCP") || product.contains("MIATCM")
+            || product.contains("MIATCD") || product.contains("MIAPWS")
+            || product.contains("MIAHS") {
+            let textUrl = "https://www.nhc.noaa.gov/text/" + product + ".shtml"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-        } else if prod.contains("MIAT") || prod == "HFOTWOCP" {
-            text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + prod).getHtmlSep()
-            if UIPreferences.nwsTextRemovelinebreaks && prod == "MIATWOAT"
-                || prod == "MIATWDAT" || prod == "MIATWOEP"
-                || prod == "MIATWDEP" {
+        } else if product.contains("MIAT") || product == "HFOTWOCP" {
+            text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + product).getHtmlSep()
+            if UIPreferences.nwsTextRemovelinebreaks && product == "MIATWOAT"
+                || product == "MIATWDAT" || product == "MIATWOEP"
+                || product == "MIATWDEP" {
                 text = text.replaceAll("<br><br>", "<BR><BR>")
                 text = text.replaceAll("<br>", " ")
             }
-        } else if prod.hasPrefix("SCCNS") {
-            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/nfd" + prod.lowercased().replace("ns", "") + ".html"
+        } else if product.hasPrefix("SCCNS") {
+            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/nfd" + product.lowercased().replace("ns", "") + ".html"
             text = textUrl.getHtmlSep()
             text = UtilityString.extractPre(text)
             //text = text.parse(MyApplication.pre2Pattern)
             //if UIPreferences.nwsTextRemovelinebreaks {
             //    text = text.removeLineBreaks()
             //}
-        } else if prod.contains("SPCMCD") {
-            let no = prod.substring(6)
+        } else if product.contains("SPCMCD") {
+            let no = product.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
-        } else if prod.contains("SPCWAT") {
-            let no = prod.substring(6)
+        } else if product.contains("SPCWAT") {
+            let no = product.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
             text = textUrl.getHtmlSep()
             text = text.parseFirst(MyApplication.pre2Pattern)
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
-        } else if prod == "FWDDY1" {
+        } else if product == "FWDDY1" {
             let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy1.html"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
-        } else if prod == "FWDDY2" {
+        } else if product == "FWDDY2" {
             let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy2.html"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
-        } else if prod == "FWDDY38" {
+        } else if product == "FWDDY38" {
             let url = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
-        } else if prod.hasPrefix("GLF") {
-            let product = prod.substring(0, 3)
-            let site = prod.substring(3).replace("%", "")
+        } else if product.hasPrefix("GLF") {
+            let product = product.substring(0, 3)
+            let site = product.substring(3).replace("%", "")
             let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
             let html = url.getNwsHtml()
             text = UtilityString.extractPreLsr(html)
-        } else if prod.contains("QPF94E") {
+        } else if product.contains("QPF94E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "1"
             let html = textUrl.getHtmlSep()
             text = UtilityString.extractPre(html).removeSingleLineBreaks()
-        } else if prod.contains("QPF98E") {
+        } else if product.contains("QPF98E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "2"
             let html = textUrl.getHtmlSep()
             text = UtilityString.extractPre(html).removeSingleLineBreaks()
-        } else if prod.contains("QPF99E") {
+        } else if product.contains("QPF99E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "3"
             let html = textUrl.getHtmlSep()
             text = UtilityString.extractPre(html).removeSingleLineBreaks()
-        } else if prod.contains("WPCMPD") {
-            let no = prod.substring(6)
+        } else if product.contains("WPCMPD") {
+            let no = product.substring(6)
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
-        } else if prod.hasPrefix("GLF") && !prod.contains("%") {
-            text = getTextProduct(prod + "%")
-        } else if prod.contains("FOCN45") {
+        } else if product.hasPrefix("GLF") && !product.contains("%") {
+            text = getTextProduct(product + "%")
+        } else if product.contains("FOCN45") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fo/focn45.cwwg..txt").getHtmlSep()
             if UIPreferences.nwsTextRemovelinebreaks {
                 text = text.removeLineBreaks()
             }
-        } else if prod.hasPrefix("VFD") {
-            let t2 = prod.substring(3)
+        } else if product.hasPrefix("VFD") {
+            let t2 = product.substring(3)
             text = (MyApplication.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
             text = text.parse("<!-- raw data starts -->(.*?)<!-- raw data ends -->")
-        } else if prod.hasPrefix("AWCN") {
-            text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + prod.lowercased() + ".cwwg..txt").getHtmlSep()
-        } else if prod.contains("NFD") {
-            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + prod.uppercased()).getHtml().removeHtml()
-        } else if prod.contains("FWDDY38") {
+        } else if product.hasPrefix("AWCN") {
+            text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + product.lowercased() + ".cwwg..txt").getHtmlSep()
+        } else if product.contains("NFD") {
+            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + product.uppercased()).getHtml().removeHtml()
+        } else if product.contains("FWDDY38") {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-        } else if prod.contains("FPCN48") {
+        } else if product.contains("FPCN48") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
-        } else if prod.hasPrefix("FXCN01") {
+        } else if product.hasPrefix("FXCN01") {
             text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/").getHtmlSep()
             let dateList = UtilityString.parseColumn(text, "href=\"([0-9]{8})/\"")
             let dateString = dateList.last ?? ""
-            let daysAndRegion = prod.replace("FXCN01_", "").lowercased()
+            let daysAndRegion = product.replace("FXCN01_", "").lowercased()
             text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml().replace(MyApplication.newline + MyApplication.newline, MyApplication.newline)
-        } else if prod.contains("QPFPFD") {
+        } else if product.contains("QPFPFD") {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-        } else if prod.contains("OFF") || prod == "UVICAC" || prod == "RWRMX" || prod.hasPrefix("TPT") {
-            let product = prod.substring(0, 3)
-            let site = prod.substring(3)
+        } else if product.contains("OFF") || product == "UVICAC" || product == "RWRMX" || product.hasPrefix("TPT") {
+            let product = product.substring(0, 3)
+            let site = product.substring(3)
             let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
             let html = url.getNwsHtml()
             text = UtilityString.extractPreLsr(html)
-        } else if prod.contains("PMD30D") {
+        } else if product.contains("PMD30D") {
             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus07.kwbc.pmd.30d.txt"
             text = textUrl.getHtmlSep()
             text = text.removeLineBreaks()
-        } else if prod.contains("PMD90D") {
+        } else if product.contains("PMD90D") {
             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxus05.kwbc.pmd.90d.txt"
             text = textUrl.getHtmlSep()
             text = text.removeLineBreaks()
-        } else if prod.contains("PMDHCO") {
+        } else if product.contains("PMDHCO") {
             let textUrl = "https://tgftp.nws.noaa.gov/data/raw/fx/fxhw40.kwbc.pmd.hco.txt"
             text = textUrl.getHtmlSep()
-        } else if prod.contains("USHZD37") {
+        } else if product.contains("USHZD37") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/threats/threats.php"
             text = textUrl.getHtmlSep()
             text = text.removeLineBreaks()
             text = text.parse("<div class=.haztext.>(.*?)</div>")
             text = text.replace("<br>", "\n")
-        } else if prod.hasPrefix("RTP") && prod.count == 5 {
-            let product = prod.substring(0, 3)
-            let location = prod.substring(3, 5).replace("%", "")
+        } else if product.hasPrefix("RTP") && product.count == 5 {
+            let product = product.substring(0, 3)
+            let location = product.substring(3, 5).replace("%", "")
             // TODO use myApp URL ref
             let url = "https://api.weather.gov/products/types/" + product + "/locations/" + location
             let html = url.getNwsHtml()
@@ -224,12 +224,12 @@ final class UtilityDownload {
             let prodHtml = urlProd.getNwsHtml()
             text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
             text = text.replace("\\n", "\n")
-        } else if prod.hasPrefix("RWR") || prod.hasPrefix("RTP") {
-            let product = prod.substring(0, 3)
-            let location = prod.substring(3).replace("%", "")
+        } else if product.hasPrefix("RWR") || product.hasPrefix("RTP") {
+            let product = product.substring(0, 3)
+            let location = product.substring(3).replace("%", "")
             let locationName = Utility.getWfoSiteName(location)
             var site = locationName.split(",")[0]
-            if prod.hasPrefix("RTP") {
+            if product.hasPrefix("RTP") {
                 site = location
             }
             let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + product
@@ -237,15 +237,15 @@ final class UtilityDownload {
             text = url.getHtmlSep()
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
-        } else if prod.hasPrefix("CLI") {
-            let location = prod.substring(3, 6).replace("%", "")
-            let wfo = prod.substring(6).replace("%", "")
+        } else if product.hasPrefix("CLI") {
+            let location = product.substring(3, 6).replace("%", "")
+            let wfo = product.substring(6).replace("%", "")
             text =  ("https://forecast.weather.gov/product.php?site=" + wfo + "&product=CLI&issuedby=" + location).getHtmlSep()
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
         } else {
-            let t1 = prod.substring(0, 3)
-            let t2 = prod.substring(3).replace("%", "")
+            let t1 = product.substring(0, 3)
+            let t2 = product.substring(3).replace("%", "")
             // Feb 8 2020 Sat
             // The NWS API for text products has been unstable Since Wed Feb 5
             // resorting to alternatives
@@ -254,14 +254,14 @@ final class UtilityDownload {
                 let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
                 let prodHtml = urlProd.getNwsHtml()
                 text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
-                if !prod.hasPrefix("RTP") {
+                if !product.hasPrefix("RTP") {
                     text = text.replace("\\n\\n", "\n")
                     text = text.replace("\\n", " ")
                 } else {
                     text = text.replace("\\n", "\n")
                 }
             } else {
-                switch prod {
+                switch product {
                 case "SWODY1":
                     let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()
@@ -279,7 +279,7 @@ final class UtilityDownload {
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
-                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
+                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=" + product.lowercased()
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDSA":
@@ -302,12 +302,12 @@ final class UtilityDownload {
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
                         + "&product=" + t1 + "&format=txt&version=1&glossary=0"
                     let prodHtmlFuture = urlToGet.getNwsHtml()
-                    if prod.hasPrefix("RTP") ||
-                        prod.hasPrefix("LSR") ||
-                        prod.hasPrefix("ESF") ||
-                        prod.hasPrefix("NSH") ||
-                        prod.hasPrefix("PNS") ||
-                        prod.hasPrefix("RVA") {
+                    if product.hasPrefix("RTP") ||
+                        product.hasPrefix("LSR") ||
+                        product.hasPrefix("ESF") ||
+                        product.hasPrefix("NSH") ||
+                        product.hasPrefix("PNS") ||
+                        product.hasPrefix("RVA") {
                         text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
                         text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
@@ -315,7 +315,7 @@ final class UtilityDownload {
                 }
             }
         }
-        UtilityPlayList.checkAndSave(prod, text)
+        UtilityPlayList.checkAndSave(product, text)
         return text
     }
     
