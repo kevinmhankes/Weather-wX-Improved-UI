@@ -22,8 +22,6 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     private var locationManager = CLLocationManager()
     private var lastFrameTimestamp: CFTimeInterval = 0.0
     private var mapIndex = 0
-    //private var mapView = MKMapView()
-    //private var mapShown = false
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
     private let toolbar = ObjectToolbar()
@@ -593,24 +591,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     @objc func radarSiteClicked(sender: ObjectToolbarIcon) {
         mapIndex = sender.tag
         hideMap()
-        /*if mapShown {
-            mapView.removeFromSuperview()
-            mapShown = false
-        } else {
-            mapShown = true
-            self.view.addSubview(mapView)
-        }*/
     }
 
     func hideMap() {
         map.toggleMap(self)
-        /*if mapShown {
-            mapView.removeFromSuperview()
-            mapShown = false
-        } else {
-            mapShown = true
-            self.view.addSubview(mapView)
-        }*/
     }
 
     func mapView(
@@ -653,8 +637,6 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 $0.removeFromSuperview()
             }
         }
-        //print(screenWidth)
-        //print(screenHeight)
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,

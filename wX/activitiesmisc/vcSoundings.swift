@@ -11,8 +11,6 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     private var image = ObjectTouchImageView()
     private var wfo = ""
-    //private let mapView = MKMapView()
-    //private var mapShown = false
     private var siteButton = ObjectToolbarIcon()
     private let map = ObjectMap(.SOUNDING)
 
@@ -39,9 +37,6 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
-        //UtilityMap.setupMapForSnd(self, mapView, GlobalArrays.soundingSites)
-        //elf.view.addSubview(mapView)
-        //mapView.isHidden = true
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
         self.getContent()
     }
@@ -66,16 +61,6 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     @objc func mapClicked() {
         map.toggleMap(self)
-        /*if mapShown {
-            //mapView.removeFromSuperview()
-            mapView.isHidden = true
-            mapShown = false
-        } else {
-            print("DEBUG: show map")
-            mapShown = true
-            mapView.isHidden = false
-            //self.view.addSubview(mapView)
-        }*/
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
