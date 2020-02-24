@@ -16,8 +16,6 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
     private var playButton = ObjectToolbarIcon()
-    //private let mapView = MKMapView()
-    //private var mapShown = false
     private var playlistButton = ObjectToolbarIcon()
     private var synth = AVSpeechSynthesizer()
     private var html = ""

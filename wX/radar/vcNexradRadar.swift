@@ -22,8 +22,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     private var locationManager = CLLocationManager()
     private var lastFrameTimestamp: CFTimeInterval = 0.0
     private var mapIndex = 0
-    private var mapView = MKMapView()
-    private var mapShown = false
+    //private var mapView = MKMapView()
+    //private var mapShown = false
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
     private let toolbar = ObjectToolbar()
@@ -48,6 +48,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     private var screenHeight = 0.0
     var wxoglPaneCount = ""
     var wxoglCalledFromTimeButton = false
+    private let map = ObjectMap(.RADAR)
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -57,7 +58,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
-                UtilityMap.setupMapForRadar(self.mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
+                self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
             }
         )
     }
@@ -175,8 +176,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         numberOfPanes = Int(wxoglPaneCount) ?? 1
         paneRange = 0..<numberOfPanes
         UtilityFileManagement.deleteAllFiles()
-        mapView.delegate = self
-        UtilityMap.setupMapForRadar(mapView, GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
+        map.mapView.delegate = self
+        map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
         let toolbarTop = ObjectToolbar(.top)
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             self.view.addSubview(toolbarTop)
@@ -431,7 +432,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        if !mapShown {
+        if !map.mapShown {
             WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
         }
     }
@@ -460,7 +461,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
 
     @objc func doneClicked() {
-        if mapShown {
+        if map.mapShown {
             hideMap()
         } else {
             if self.presentedViewController == nil {
@@ -591,23 +592,25 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 
     @objc func radarSiteClicked(sender: ObjectToolbarIcon) {
         mapIndex = sender.tag
-        if mapShown {
+        hideMap()
+        /*if mapShown {
             mapView.removeFromSuperview()
             mapShown = false
         } else {
             mapShown = true
             self.view.addSubview(mapView)
-        }
+        }*/
     }
 
     func hideMap() {
-        if mapShown {
+        map.toggleMap(self)
+        /*if mapShown {
             mapView.removeFromSuperview()
             mapShown = false
         } else {
             mapShown = true
             self.view.addSubview(mapView)
-        }
+        }*/
     }
 
     func mapView(
@@ -622,7 +625,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {
