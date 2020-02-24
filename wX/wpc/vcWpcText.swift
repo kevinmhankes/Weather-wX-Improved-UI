@@ -14,7 +14,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var product = "PMDSPD"
     private var textView = ObjectTextView()
     private var playListButton = ObjectToolbarIcon()
-    private var subMenu = ObjectMenuData(UtilityWpcText.titles, [], UtilityWpcText.labels)
+    private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
     private var synth = AVSpeechSynthesizer()
     private var html = ""
     var wpcTextProduct = ""
@@ -79,7 +79,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     func productChanged(_ index: Int) {
-        let code = subMenu.paramLabels[index].split(":")[0]
+        let code = subMenu.params[index].split(":")[0]
         self.scrollView.scrollToTop()
         self.product = code
         UtilityActions.resetAudio(&synth, playButton)

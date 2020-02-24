@@ -6,7 +6,7 @@
 
 class UtilityWXMetalPerfRaster {
 
-    static func genRaster(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
+    static func generate(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         radarBuffers.colormap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))

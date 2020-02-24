@@ -629,7 +629,7 @@ class WXMetalRender {
         self.radarBuffers.initialize()
         switch self.radarBuffers.rd.productCode {
         case 37, 38:
-            self.totalBins = UtilityWXMetalPerfRaster.genRaster(self.radarBuffers)
+            self.totalBins = UtilityWXMetalPerfRaster.generate(self.radarBuffers)
         case 153, 154, 30, 56, 78, 80, 181:
             self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
         case 0:
