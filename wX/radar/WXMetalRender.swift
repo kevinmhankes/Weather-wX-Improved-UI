@@ -12,21 +12,21 @@ import UIKit
 
 class WXMetalRender {
 
-    let device: MTLDevice
-    var time: CFTimeInterval = 0.0
-    var positionX: Float = 0.0
-    var positionY: Float = 0.0
-    var positionZ: Float = 0.0
-    var rotationX: Float = 0.0
-    var rotationY: Float = 0.0
-    var rotationZ: Float = 0.0
-    var scale: Float = 1.0
+    private let device: MTLDevice
+    private var time: CFTimeInterval = 0.0
+    private var positionX: Float = 0.0
+    private var positionY: Float = 0.0
+    private var positionZ: Float = 0.0
+    private var rotationX: Float = 0.0
+    private var rotationY: Float = 0.0
+    private var rotationZ: Float = 0.0
+    private var scale: Float = 1.0
     var pn = ProjectionNumbers()
-    var ridStr = "DTX"
+    private var ridStr = "DTX"
     var rdDownload = WXGLDownload()
-    var radarProduct = "N0Q"
-    var tiltInt = 0
-    var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
+    private var radarProduct = "N0Q"
+    private var tiltInt = 0
+    private var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
     var zPos: Float = -7.0
@@ -93,7 +93,7 @@ class WXMetalRender {
     var gpsLocation = LatLon(0.0, 0.0)
     private var geographicBuffers = [ObjectMetalBuffers]()
     private var ridPrefixGlobal = "0"
-    var indexString = "0"
+    private var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     private final var l3BaseFn = "nids"
     private final var stiBaseFn = "nids_sti_tab"
@@ -104,10 +104,10 @@ class WXMetalRender {
     private var productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
-    var paneNumber = 0
+    private var paneNumber = 0
     var numberOfPanes = 0
     var textObj: WXMetalTextObject
-    var renderFn: ((Int) -> Void)?
+    private var renderFn: ((Int) -> Void)?
     // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
         "N0Q: Base Reflectivity",
