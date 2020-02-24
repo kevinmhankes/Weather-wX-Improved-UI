@@ -60,9 +60,7 @@ final class UtilityDownload {
     
     static func getTextProduct(_ product: String) -> String {
         var text = ""
-        // TODO rename to product
-        //let prod = produ.uppercased()
-        //let prod = produ
+        print(product)
         if product == "AFDLOC" {
             text = getTextProduct("AFD" + Location.wfo.uppercased())
         } else if product == "HWOLOC" {
@@ -215,24 +213,23 @@ final class UtilityDownload {
             text = text.parse("<div class=.haztext.>(.*?)</div>")
             text = text.replace("<br>", "\n")
         } else if product.hasPrefix("RTP") && product.count == 5 {
-            let product = product.substring(0, 3)
-            let location = product.substring(3, 5).replace("%", "")
-            // TODO use myApp URL ref
-            let url = "https://api.weather.gov/products/types/" + product + "/locations/" + location
+            let productType = product.substring(0, 3)
+            let location = product.substring(3, 5)
+            let url = MyApplication.nwsApiUrl + "/products/types/" + productType + "/locations/" + location
             let html = url.getNwsHtml()
-            let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
+            let urlProd = MyApplication.nwsApiUrl + "/products/" + html.parseFirst("\"id\": \"(.*?)\"")
             let prodHtml = urlProd.getNwsHtml()
             text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
             text = text.replace("\\n", "\n")
         } else if product.hasPrefix("RWR") || product.hasPrefix("RTP") {
-            let product = product.substring(0, 3)
+            let productType = product.substring(0, 3)
             let location = product.substring(3).replace("%", "")
             let locationName = Utility.getWfoSiteName(location)
             var site = locationName.split(",")[0]
             if product.hasPrefix("RTP") {
                 site = location
             }
-            let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + product
+            let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + productType
             // https://forecast.weather.gov/product.php?site=ILX&issuedby=IL&product=RWR
             text = url.getHtmlSep()
             text = UtilityString.extractPreLsr(text)
@@ -301,6 +298,7 @@ final class UtilityDownload {
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
                         + "&product=" + t1 + "&format=txt&version=1&glossary=0"
+                    print("URL: " + urlToGet)
                     let prodHtmlFuture = urlToGet.getNwsHtml()
                     if product.hasPrefix("RTP") ||
                         product.hasPrefix("LSR") ||
@@ -308,6 +306,7 @@ final class UtilityDownload {
                         product.hasPrefix("NSH") ||
                         product.hasPrefix("PNS") ||
                         product.hasPrefix("RVA") {
+                        print("IN RTP 2")
                         text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
                         text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
