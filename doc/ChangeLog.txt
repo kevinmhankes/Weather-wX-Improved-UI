@@ -19,6 +19,7 @@
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 // [REF] investigate a class for clickable map
 // [REF] in wfo and radar cutover to new map with contraints
+// [ADD] in NationalText don't display code name
 
 56091 2020_02_24 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
