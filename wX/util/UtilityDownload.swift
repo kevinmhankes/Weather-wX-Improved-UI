@@ -60,6 +60,7 @@ final class UtilityDownload {
 
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
+        // TODO rename to product
         let prod = produ.uppercased()
         if prod == "AFDLOC" {
             text = getTextProduct("afd" + Location.wfo.lowercased())
@@ -217,10 +218,8 @@ final class UtilityDownload {
             let location = prod.substring(3, 5).replace("%", "")
             // TODO use myApp URL ref
             let url = "https://api.weather.gov/products/types/" + product + "/locations/" + location
-            print("DEBUG: " + url)
             let html = url.getNwsHtml()
             let urlProd = "https://api.weather.gov/products/" + html.parseFirst("\"id\": \"(.*?)\"")
-            print("DEBUG: " + urlProd)
             let prodHtml = urlProd.getNwsHtml()
             text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
             text = text.replace("\\n", "\n")
@@ -257,39 +256,37 @@ final class UtilityDownload {
                 if !prod.hasPrefix("RTP") {
                     text = text.replace("\\n\\n", "\n")
                     text = text.replace("\\n", " ")
-                    //text = text.replace("\\n", "\n")
                 } else {
                     text = text.replace("\\n", "\n")
                 }
             } else {
-                // TODO use myApp URL ref
                 switch prod {
                 case "SWODY1":
-                    let url = "https://www.spc.noaa.gov/products/outlook/day1otlk.html"
+                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY2":
-                    let url = "https://www.spc.noaa.gov/products/outlook/day2otlk.html"
+                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day2otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY3":
-                    let url = "https://www.spc.noaa.gov/products/outlook/day3otlk.html"
+                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day3otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWOD48":
-                    let url = "https://www.spc.noaa.gov/products/exper/day4-8/"
+                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/exper/day4-8/"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
-                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
+                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=" + prod.lowercased()
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDSA":
-                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=fxsa20"
+                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxsa20"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDCA":
-                    let url = "https://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=fxca20"
+                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxca20"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDMRD":
@@ -326,12 +323,10 @@ final class UtilityDownload {
         let prodLocal = product.uppercased()
         let t1 = prodLocal.substring(0, 3)
         let t2 = prodLocal.substring(3)
-        let textUrl = "https://forecast.weather.gov/product.php?site=NWS&product=" + t1
-            + "&issuedby=" + t2 + "&version=" + String(version)
+        let textUrl = "https://forecast.weather.gov/product.php?site=NWS&product=" + t1 + "&issuedby=" + t2 + "&version=" + String(version)
         text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
-        text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">"
-                + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
+        text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
         if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {
             text = text.removeLineBreaks()
@@ -402,35 +397,64 @@ final class UtilityDownload {
                 product = Utility.readPref(prefTokenProduct, product)
                 bitmap = UtilityAwcRadarMosaic.get(sector, product)
             }
-        case "USWARN": url = "https://forecast.weather.gov/wwamap/png/US.png"
-        case "AKWARN": url = "https://forecast.weather.gov/wwamap/png/ak.png"
-        case "HIWARN": url = "https://forecast.weather.gov/wwamap/png/hi.png"
-        case "FMAPD1":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
-        case "FMAPD2":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
-        case "FMAPD3":   url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
-        case "FMAP12": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
-        case "FMAP24": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
-        case "FMAP36": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
-        case "FMAP48": url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
-        case "FMAP72": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf072.gif"
-        case "FMAP96": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf096.gif"
-        case "FMAP120": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf120.gif"
-        case "FMAP144": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf144.gif"
-        case "FMAP168": url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf168.gif"
-        case "FMAP3D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
-        case "FMAP4D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
-        case "FMAP5D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
-        case "FMAP6D": url = MyApplication.nwsWPCwebsitePrefix + "/medr/9mhwbg_conus.gif"
-        case "QPF1":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif"
-        case "QPF2":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif"
-        case "QPF3":   url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif"
-        case "QPF1-2": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d12_fill.gif"
-        case "QPF1-3": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d13_fill.gif"
-        case "QPF4-5": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/95ep48iwbg_fill.gif"
-        case "QPF6-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
-        case "QPF1-5": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
-        case "QPF1-7": url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
-        case "WPC_ANALYSIS": url = MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif"
+        case "USWARN":
+            url = "https://forecast.weather.gov/wwamap/png/US.png"
+        case "AKWARN":
+            url = "https://forecast.weather.gov/wwamap/png/ak.png"
+        case "HIWARN":
+            url = "https://forecast.weather.gov/wwamap/png/hi.png"
+        case "FMAPD1":
+            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
+        case "FMAPD2":
+            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
+        case "FMAPD3":
+            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
+        case "FMAP12":
+            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
+        case "FMAP24":
+            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
+        case "FMAP36":
+            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
+        case "FMAP48":
+            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
+        case "FMAP72":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf072.gif"
+        case "FMAP96":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf096.gif"
+        case "FMAP120":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf120.gif"
+        case "FMAP144":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf144.gif"
+        case "FMAP168":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf168.gif"
+        case "FMAP3D":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
+        case "FMAP4D":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
+        case "FMAP5D":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
+        case "FMAP6D":
+            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9mhwbg_conus.gif"
+        case "QPF1":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif"
+        case "QPF2":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif"
+        case "QPF3":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif"
+        case "QPF1-2":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d12_fill.gif"
+        case "QPF1-3":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d13_fill.gif"
+        case "QPF4-5":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/95ep48iwbg_fill.gif"
+        case "QPF6-7":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
+        case "QPF1-5":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
+        case "QPF1-7":
+            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
+        case "WPC_ANALYSIS":
+            url = MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif"
         case "SWOD1":
             needsBitmap = false
             bitmap = UtilitySpcSwo.getImageUrls("1", getAllImages: false)[0]
