@@ -155,6 +155,7 @@
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
 		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
+		03C85B56240489C60046C8F4 /* ObjectMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C85B55240489C60046C8F4 /* ObjectMap.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
@@ -554,6 +555,7 @@
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
+		03C85B55240489C60046C8F4 /* ObjectMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMap.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
@@ -1264,6 +1266,7 @@
 				F0830E991E593467003149E5 /* ObjectDatePicker.swift */,
 				03089CC121CFF17800C9FE4D /* ObjectFab.swift */,
 				F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */,
+				03C85B55240489C60046C8F4 /* ObjectMap.swift */,
 				F0605A531E59F71F00229812 /* ObjectMenuData.swift */,
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,
 				F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */,
@@ -1683,6 +1686,7 @@
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
 				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
+				03C85B56240489C60046C8F4 /* ObjectMap.swift in Sources */,
 				03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */,
 				03DF17EE21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift in Sources */,
 				F0B335721DA3FD6F0035BD36 /* SpotterReports.swift in Sources */,

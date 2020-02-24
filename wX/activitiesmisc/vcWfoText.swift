@@ -16,18 +16,19 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
     private var playButton = ObjectToolbarIcon()
-    private let mapView = MKMapView()
-    private var mapShown = false
+    //private let mapView = MKMapView()
+    //private var mapShown = false
     private var playlistButton = ObjectToolbarIcon()
     private var synth = AVSpeechSynthesizer()
     private var html = ""
+    private let map = ObjectMap()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         synth.delegate = self
-        mapView.delegate = self
-        UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
+        map.mapView.delegate = self
+        map.setupMapForWfo(GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -137,13 +138,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     @objc func mapClicked() {
-        if mapShown {
-            mapView.removeFromSuperview()
-            mapShown = false
-        } else {
-            mapShown = true
-            self.view.addSubview(mapView)
-        }
+        map.toggleMap(self)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -155,7 +150,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {
