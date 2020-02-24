@@ -124,9 +124,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
         playlistItems.enumerated().forEach {
             let productText = Utility.readPref("PLAYLIST_" + $1, "")
-            let topLine = " "
-                + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "")
-                + " (size: " + String(productText.count) + ")"
+            let topLine = " " + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "") + " (size: " + String(productText.count) + ")"
             _ = ObjectCardPlayListItem(
                 self.scrollView,
                 self.stackView,
