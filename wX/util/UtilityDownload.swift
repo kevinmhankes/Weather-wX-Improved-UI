@@ -298,7 +298,7 @@ final class UtilityDownload {
                 case "PMDTHR":
                     let url = MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/threats/threats.php"
                     text = url.getNwsHtml()
-                    text = text.parse("<div id=\"discDiv\">(.*?)</div>").removeHtml()
+                    text = text.parse("<div id=\"discDiv\">(.*?)</div>").replace("<br>", MyApplication.newline).removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
