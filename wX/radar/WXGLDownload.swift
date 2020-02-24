@@ -95,7 +95,7 @@ final class WXGLDownload {
     }
 
     // Level 3: Download a list of files and return the list as a list of Strings
-    func getLevel3FilesForAnimation(
+    private func getLevel3FilesForAnimation(
         _ frameCount: Int,
         _ product: String,
         _ ridPrefix: String,
@@ -148,7 +148,7 @@ final class WXGLDownload {
     }
 
     // Level 2: Download a list of files and return the list as a list of Strings
-    func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int) -> [String] {
+    private func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int) -> [String] {
         var listOfFiles = [String]()
         let tmpArr = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
@@ -166,7 +166,7 @@ final class WXGLDownload {
         return listOfFiles
     }
 
-    func getLevel2Url() -> String {
+    private func getLevel2Url() -> String {
         let ridPrefix = getRidPrefix(radarSite, false).uppercased()
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let html = (baseUrl + "dir.list").getHtmlSep()
@@ -190,7 +190,7 @@ final class WXGLDownload {
         return baseUrl + fileName
     }
 
-    func getInputStreamFromURLL2(_ url: String) -> Data {
+    private func getInputStreamFromURLL2(_ url: String) -> Data {
         let byteEnd = "3000000"
         let myJustDefaults = JustSessionDefaults(headers: ["Range": "bytes=0-" + byteEnd])
         let just = JustOf<HTTP>(defaults: myJustDefaults)

@@ -154,7 +154,7 @@ class WXGLNexradLevel3StormInfo {
         }
     }
 
-    static func drawTickMarks(
+    private static func drawTickMarks(
         _ startPoint: LatLon,
         _ ecc: ExternalGeodeticCalculator,
         _ pn: ProjectionNumbers,

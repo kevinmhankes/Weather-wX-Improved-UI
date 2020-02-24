@@ -26,7 +26,7 @@ class WXGLNexradLevel3Common {
 
     static func drawLine(
         _ startPoint: (lat: Double, lon: Double),
-        _  ecc: ExternalGeodeticCalculator,
+        _ ecc: ExternalGeodeticCalculator,
         _ pn: ProjectionNumbers,
         _ start: ExternalGlobalCoordinates,
         _ startBearing: Double,
