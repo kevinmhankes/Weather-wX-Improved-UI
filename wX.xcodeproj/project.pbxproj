@@ -156,6 +156,7 @@
 		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
 		03C85B56240489C60046C8F4 /* ObjectMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C85B55240489C60046C8F4 /* ObjectMap.swift */; };
+		03C85B5824048F1E0046C8F4 /* OfficeTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
@@ -556,6 +557,7 @@
 		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
 		03C85B55240489C60046C8F4 /* ObjectMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMap.swift; sourceTree = "<group>"; };
+		03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeTypeEnum.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
@@ -1304,21 +1306,22 @@
 		F09504B51E1539E4008A966E /* global */ = {
 			isa = PBXGroup;
 			children = (
-				03171D6023567EFC00170A4A /* KeyDirections.swift */,
-				0335684C234D4B1600428890 /* ExtensionsFloat.swift */,
 				036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */,
 				0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */,
 				03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */,
 				F0B335461DA3FD510035BD36 /* Extensions.swift */,
+				0335684C234D4B1600428890 /* ExtensionsFloat.swift */,
 				035416A8220EF8B800D9A26B /* FontSize.swift */,
 				F06814C11EC29A95000E4405 /* GeographyType.swift */,
 				F0B335591DA3FD610035BD36 /* GlobalArrays.swift */,
 				F0B3355A1DA3FD610035BD36 /* GlobalDictionaries.swift */,
 				F0B334FF1DA3FC980035BD36 /* GlobalVariables.swift */,
 				03DD1FF51FEB3CE00012F5BB /* IconType.swift */,
+				03171D6023567EFC00170A4A /* KeyDirections.swift */,
 				F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */,
 				030DC62B1FE4A58B006DCF93 /* MotionType.swift */,
 				F0B334FB1DA3FBF10035BD36 /* MyApplication.swift */,
+				03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */,
 				F0C1BC481EBAB6A00063C853 /* PolygonType.swift */,
 				037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */,
 				F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */,
@@ -1646,6 +1649,7 @@
 				F0DAD9341DA7018D00C2BD4B /* huffman.c in Sources */,
 				F0B3353C1DA3FD450035BD36 /* AnimationDrawable.swift in Sources */,
 				F0B335781DA3FD6F0035BD36 /* UtilityCanvas.swift in Sources */,
+				03C85B5824048F1E0046C8F4 /* OfficeTypeEnum.swift in Sources */,
 				F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */,
 				F0B335391DA3FD3B0035BD36 /* WXGLNexradLevel3TVS.swift in Sources */,
 				F064D1421DB6EBAB003C04FB /* ExternalPolygon.swift in Sources */,

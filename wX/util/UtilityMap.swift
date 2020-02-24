@@ -173,7 +173,7 @@ final class UtilityMap {
         //centerMapOnLocationWithConstraints(uiv, mapView, location: usCenter, regionRadius: MyApplication.mapRegionRadius)
     }
 
-    static func createLocationsArrayForSnd(_ itemList: [String]) -> [[String: String]] {
+    /*static func createLocationsArrayForSnd(_ itemList: [String]) -> [[String: String]] {
         var locations = [[String: String]]()
         itemList.forEach {
             let ridArr = $0.split(":")
@@ -197,7 +197,7 @@ final class UtilityMap {
             }
         }
         return locations
-    }
+    }*/
     
     static func centerMapOnLocationWithConstraints(
         _ uiv: UIViewController,

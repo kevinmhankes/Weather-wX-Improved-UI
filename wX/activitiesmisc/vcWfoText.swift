@@ -21,14 +21,14 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     private var playlistButton = ObjectToolbarIcon()
     private var synth = AVSpeechSynthesizer()
     private var html = ""
-    private let map = ObjectMap()
+    private let map = ObjectMap(.WFO)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         synth.delegate = self
         map.mapView.delegate = self
-        map.setupMapForWfo(GlobalArrays.wfos)
+        map.setupMap(GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))

@@ -11,9 +11,14 @@ public class ObjectMap {
     
     let mapView = MKMapView()
     var mapShown = false
+    var officeType: OfficeTypeEnum
     
-    func setupMapForWfo( _ itemList: [String]) {
-        let locations = createLocationsArrayForWfo(itemList)
+    init(_ officeType: OfficeTypeEnum) {
+        self.officeType = officeType
+    }
+    
+    func setupMap( _ itemList: [String]) {
+        let locations = createLocationsList(itemList)
         var annotations = [MKPointAnnotation]()
         locations.forEach { dictionary in
             let latitude = CLLocationDegrees(Double(dictionary["latitude"]!)!)
@@ -32,24 +37,29 @@ public class ObjectMap {
         centerMapOnLocation(location: usCenter, regionRadius: MyApplication.mapRegionRadius)
     }
     
-    func createLocationsArrayForWfo(_ itemList: [String]) -> [[String: String]] {
+    func createLocationsList(_ itemList: [String]) -> [[String: String]] {
         var locations = [[String: String]]()
         itemList.forEach {
             let ridArr = $0.split(":")
-            let latlon = Utility.getWfoSiteLatLon(ridArr[0])
+            let latLon: LatLon
+            switch officeType {
+            case .WFO: latLon = Utility.getWfoSiteLatLon(ridArr[0])
+            case .RADAR: latLon = Utility.getRadarSiteLatLon(ridArr[0])
+            }
+            //let latlon = Utility.getWfoSiteLatLon(ridArr[0])
             if ridArr.count > 1 {
                 let arr = [
                     "name": ridArr[0],
-                    "latitude": latlon.latString,
-                    "longitude": latlon.lonString,
+                    "latitude": latLon.latString,
+                    "longitude": latLon.lonString,
                     "mediaURL": ridArr[1]
                 ]
                 locations.append(arr)
             } else {
                 let arr = [
                     "name": ridArr[0],
-                    "latitude": latlon.latString,
-                    "longitude": latlon.lonString,
+                    "latitude": latLon.latString,
+                    "longitude": latLon.lonString,
                     "mediaURL": ""
                 ]
                 locations.append(arr)
