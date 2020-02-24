@@ -166,7 +166,7 @@ class vcSettingsHomescreen: UIwXViewController {
                 }
             }
             if title == nil {
-                UtilityWpcText.labels.forEach {
+                UtilityWpcText.labelsWithCodes.forEach {
                     if $0.hasPrefix(prefVarMod) {
                         title = $0.split(":")[1]
                     }
