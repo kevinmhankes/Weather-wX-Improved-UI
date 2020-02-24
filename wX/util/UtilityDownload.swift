@@ -7,9 +7,9 @@
 import UIKit
 
 final class UtilityDownload {
-
+    
     static let useNwsApi = false
-
+    
     static func getStringFromUrl(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -21,7 +21,7 @@ final class UtilityDownload {
         }
         return ""
     }
-
+    
     static func getStringFromUrlSep(_ url: String) -> String {
         guard let safeUrl = URL(string: url) else {
             return ""
@@ -33,7 +33,7 @@ final class UtilityDownload {
         }
         return ""
     }
-
+    
     static func getBitmapFromUrl(_ url: String) -> Bitmap {
         guard let safeUrl = URL(string: url) else {
             return Bitmap()
@@ -45,7 +45,7 @@ final class UtilityDownload {
             return Bitmap()
         }
     }
-
+    
     static func getDataFromUrl(_ url: String) -> Data {
         guard let safeUrl = URL(string: url) else {
             return Data()
@@ -57,7 +57,7 @@ final class UtilityDownload {
         }
         return data
     }
-
+    
     static func getTextProduct(_ produ: String) -> String {
         var text = ""
         // TODO rename to product
@@ -307,9 +307,9 @@ final class UtilityDownload {
                         prod.hasPrefix("NSH") ||
                         prod.hasPrefix("PNS") ||
                         prod.hasPrefix("RVA") {
-                      text = UtilityString.extractPreLsr(prodHtmlFuture)
+                        text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
-                      text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
+                        text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
                     }
                 }
             }
@@ -317,7 +317,7 @@ final class UtilityDownload {
         UtilityPlayList.checkAndSave(prod, text)
         return text
     }
-
+    
     static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
         var text = ""
         let prodLocal = product.uppercased()
@@ -333,7 +333,7 @@ final class UtilityDownload {
         }
         return text
     }
-
+    
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
         var bitmap = Bitmap()
