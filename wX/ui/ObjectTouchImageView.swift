@@ -7,11 +7,11 @@
 import UIKit
 
 final class ObjectTouchImageView {
-
+    
     var img = ImageScrollView()
     private var uiv: UIViewController?
     var bitmap = Bitmap()
-
+    
     convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, hasTopToolbar: Bool = false) {
         self.init()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
@@ -40,36 +40,40 @@ final class ObjectTouchImageView {
         self.img.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         self.uiv = uiv
     }
-
+    
     convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ bitmap: Bitmap) {
         self.init(uiv, toolbar)
         img.display(image: bitmap.image)
         self.uiv = uiv
         self.bitmap = bitmap
     }
-
+    
     convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector, hasTopToolbar: Bool = false) {
         self.init(uiv, toolbar, hasTopToolbar: hasTopToolbar)
         addGestureRecognizer(action)
     }
-
+    
     func setBitmap(_ bitmap: Bitmap) {
         img.display(image: bitmap.image)
         self.bitmap = bitmap
     }
-
+    
     func updateBitmap(_ bitmap: Bitmap) {
         img.zoomView?.image = bitmap.image
         self.bitmap = bitmap
     }
-
+    
+    func refresh() {
+        img.refresh()
+    }
+    
     func addGestureRecognizer( _ leftSwipe: UISwipeGestureRecognizer, _ rightSwipe: UISwipeGestureRecognizer) {
         leftSwipe.direction = .left
         rightSwipe.direction = .right
         img.addGestureRecognizer(leftSwipe)
         img.addGestureRecognizer(rightSwipe)
     }
-
+    
     func addGestureRecognizer(_ action: Selector) {
         let leftSwipe = UISwipeGestureRecognizer(target: uiv, action: action)
         let rightSwipe = UISwipeGestureRecognizer(target: uiv, action: action)
@@ -78,17 +82,17 @@ final class ObjectTouchImageView {
         img.addGestureRecognizer(leftSwipe)
         img.addGestureRecognizer(rightSwipe)
     }
-
+    
     func startAnimating(_ animDrawable: AnimationDrawable) {
         self.img.zoomView?.animationImages = animDrawable.images
         self.img.zoomView?.animationDuration = animDrawable.animationDelay
         self.img.zoomView?.startAnimating()
     }
-
+    
     func setMaxScaleFromMinScale(_ value: CGFloat) {
         img.maxScaleFromMinScale = value
     }
-
+    
     func setKZoomInFactorFromMinWhenDoubleTap(_ value: CGFloat) {
         img.kZoomInFactorFromMinWhenDoubleTap = value
     }

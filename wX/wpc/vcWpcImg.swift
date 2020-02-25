@@ -7,7 +7,7 @@
 import UIKit
 
 class vcWpcImg: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var index = 0
@@ -15,7 +15,7 @@ class vcWpcImg: UIwXViewController {
     private var subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
     var wpcImagesFromHomeScreen = false
     var wpcImagesToken = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -48,7 +48,7 @@ class vcWpcImg: UIwXViewController {
     @objc func willEnterForeground() {
         self.getContent(index)
     }
-
+    
     func getContent(_ index: Int) {
         self.index = index
         self.productButton.title = UtilityWpcImages.labels[index]
@@ -64,7 +64,7 @@ class vcWpcImg: UIwXViewController {
             }
         }
     }
-
+    
     func getContentFromHomescreen() {
         let titles = GlobalArrays.nwsImageProducts.filter {
             $0.hasPrefix(wpcImagesToken + ":")
@@ -79,19 +79,19 @@ class vcWpcImg: UIwXViewController {
             }
         }
     }
-
+    
     @objc func showProductMenu() {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
     }
-
+    
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.getContent(_:))
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityWpcImages.urls))
     }
@@ -101,7 +101,7 @@ class vcWpcImg: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.image.img.refresh()
+                self.image.refresh()
         }
         )
     }
