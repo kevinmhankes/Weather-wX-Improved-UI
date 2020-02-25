@@ -7,10 +7,10 @@
 import UIKit
 
 class vcImageViewer: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     var imageViewerUrl = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -18,7 +18,7 @@ class vcImageViewer: UIwXViewController {
         self.view.addSubview(toolbar)
         self.getContent(imageViewerUrl)
     }
-
+    
     func getContent(_ url: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(url)
@@ -27,8 +27,18 @@ class vcImageViewer: UIwXViewController {
             }
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }

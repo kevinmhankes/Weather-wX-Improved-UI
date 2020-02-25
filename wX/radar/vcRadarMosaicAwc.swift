@@ -7,7 +7,7 @@
 import UIKit
 
 class vcRadarMosaicAwc: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var sectorButton = ObjectToolbarIcon()
@@ -19,7 +19,7 @@ class vcRadarMosaicAwc: UIwXViewController {
     private var sector = "us"
     private var isLocal = false
     var nwsMosaicType = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -53,7 +53,7 @@ class vcRadarMosaicAwc: UIwXViewController {
         }
         self.getContent()
     }
-
+    
     func getContent() {
         self.productButton.title = self.product
         self.sectorButton.title = self.sector
@@ -68,11 +68,11 @@ class vcRadarMosaicAwc: UIwXViewController {
             }
         }
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     @objc func sectorClicked() {
         _ = ObjectPopUp(
             self,
@@ -82,7 +82,7 @@ class vcRadarMosaicAwc: UIwXViewController {
             self.sectorChanged(_:)
         )
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
@@ -92,23 +92,23 @@ class vcRadarMosaicAwc: UIwXViewController {
             self.productChanged(_:)
         )
     }
-
+    
     func productChanged(_ index: Int) {
         product = UtilityAwcRadarMosaic.products[index]
         productButton.title = product
         self.getContent()
     }
-
+    
     func sectorChanged(_ index: Int) {
         sector = UtilityAwcRadarMosaic.sectors[index]
         sectorButton.title = sector
         self.getContent()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityAwcRadarMosaic.getAnimation(
@@ -119,5 +119,15 @@ class vcRadarMosaicAwc: UIwXViewController {
                 self.image.startAnimating(animDrawable)
             }
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }

@@ -98,9 +98,10 @@ class vcLightning: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.removeAllViews()
-                self.view.addSubview(self.toolbar)
-                self.displayContent()
+                //self.removeAllViews()
+                //self.view.addSubview(self.toolbar)
+                //self.displayContent()
+                self.image.refresh()
             }
         )
     }

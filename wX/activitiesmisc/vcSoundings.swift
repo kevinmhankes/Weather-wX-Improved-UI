@@ -85,6 +85,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
+                self.image.refresh()
                 self.map.setupMap(GlobalArrays.soundingSites)
             }
         )

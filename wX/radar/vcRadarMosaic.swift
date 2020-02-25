@@ -7,7 +7,7 @@
 import UIKit
 
 class vcRadarMosaic: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var animateButton = ObjectToolbarIcon()
@@ -15,7 +15,7 @@ class vcRadarMosaic: UIwXViewController {
     private var isLocal = false
     private let prefToken = "NWSMOSAIC_PARAM_LAST_USED"
     var nwsMosaicType = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -41,7 +41,7 @@ class vcRadarMosaic: UIwXViewController {
         }
         self.getContent(index)
     }
-
+    
     func getContent(_ index: Int) {
         self.index = index
         self.productButton.title = UtilityUSImgNwsMosaic.labels[self.index]
@@ -55,11 +55,11 @@ class vcRadarMosaic: UIwXViewController {
             }
         }
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent(self.index)
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
@@ -69,11 +69,11 @@ class vcRadarMosaic: UIwXViewController {
             self.getContent(_:)
         )
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func animateClicked() {
         _ = ObjectPopUp(
             self,
@@ -83,7 +83,7 @@ class vcRadarMosaic: UIwXViewController {
             self.getAnimation(_:)
         )
     }
-
+    
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityUSImgNwsMosaic.getAnimation(
@@ -95,8 +95,18 @@ class vcRadarMosaic: UIwXViewController {
             }
         }
     }
-
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityUSImgNwsMosaic.sectors))
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }

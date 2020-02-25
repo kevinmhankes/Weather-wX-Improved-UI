@@ -7,12 +7,12 @@
 import UIKit
 
 class vcObservations: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var index = 0
     private let prefTokenIndex = "SFC_OBS_IMG_IDX"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -38,11 +38,11 @@ class vcObservations: UIwXViewController {
         self.index = Utility.readPref(prefTokenIndex, 0)
         self.getContent(index)
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent(index)
     }
-
+    
     func getContent(_ index: Int) {
         self.index = index
         self.productButton.title = UtilityObservations.labels[self.index]
@@ -54,16 +54,26 @@ class vcObservations: UIwXViewController {
             }
         }
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.getContent(_:))
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityObservations.urls))
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }
