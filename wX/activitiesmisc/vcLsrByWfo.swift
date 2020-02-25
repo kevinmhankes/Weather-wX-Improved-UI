@@ -15,14 +15,15 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     private var urls = [String]()
     private var wfo = ""
     private var wfoProd = [String]()
-    private var mapShown = false
-    private let mapView = MKMapView()
+    //private var mapShown = false
+    //private let mapView = MKMapView()
     private var siteButton = ObjectToolbarIcon()
+    private let map = ObjectMap(.WFO)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-        UtilityMap.setupMapForWfo(mapView, GlobalArrays.wfos)
+        map.mapView.delegate = self
+        map.setupMap(GlobalArrays.wfos)
         wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
@@ -59,13 +60,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     @objc func mapClicked() {
-        if mapShown {
-            mapView.removeFromSuperview()
-            mapShown = false
-        } else {
-            mapShown = true
-            self.view.addSubview(mapView)
-        }
+        map.toggleMap(self)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -77,7 +72,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {
@@ -103,7 +98,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                UtilityMap.setupMapForWfo(self.mapView, GlobalArrays.wfos)
+                self.map.setupMap(GlobalArrays.wfos)
                 self.displayContent()
             }
         )

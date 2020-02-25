@@ -16,7 +16,7 @@ final class UtilityMap {
         return "http://www.openstreetmap.org/search?query=" + streetAddr.replace(",", "%2C").replace(" ", "%20")
     }
 
-    static func setupMap(_ mapView: MKMapView, _ itemList: [String], _ prefVar: String) {
+   /* static func setupMap(_ mapView: MKMapView, _ itemList: [String], _ prefVar: String) {
         let locations = createLocationsArray(itemList, prefVar)
         var annotations = [MKPointAnnotation]()
         locations.forEach { dictionary in
@@ -100,7 +100,7 @@ final class UtilityMap {
             }
         }
         return locations
-    }
+    }*/
 
     /*static func setupMapForRadar(_ mapView: MKMapView, _ itemList: [String]) {
         let locations = createLocationsArrayForRadar(itemList)
