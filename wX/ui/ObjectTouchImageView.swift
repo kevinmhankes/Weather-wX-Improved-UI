@@ -12,14 +12,14 @@ final class ObjectTouchImageView {
     private var uiv: UIViewController?
     var bitmap = Bitmap()
     
-    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, hasTopToolbar: Bool = false) {
+    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, hasTopToolbar: Bool = false, topToolbar: UIToolbar = UIToolbar()) {
         self.init()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        var height = UtilityUI.effectiveHeight(toolbar)
-        var y = UtilityUI.getTopPadding()
+        let height = UtilityUI.effectiveHeight(toolbar)
+        let y = UtilityUI.getTopPadding()
         if hasTopToolbar {
-            y += toolbar.frame.height
-            height -= toolbar.frame.height
+            //y += toolbar.frame.height
+            //height -= toolbar.frame.height
         }
         //img = ImageScrollView()
         img = ImageScrollView(
@@ -35,7 +35,11 @@ final class ObjectTouchImageView {
         img.contentMode = UIView.ContentMode.scaleAspectFit
         self.img.translatesAutoresizingMaskIntoConstraints = false
         self.img.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
-        self.img.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: y).isActive = true
+        if !hasTopToolbar {
+            self.img.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: y).isActive = true
+        } else {
+            self.img.topAnchor.constraint(equalTo: topToolbar.bottomAnchor).isActive = true
+        }
         self.img.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
         self.img.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         self.uiv = uiv

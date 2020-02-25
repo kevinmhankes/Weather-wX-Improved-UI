@@ -70,10 +70,10 @@ class vcSpcMeso: UIwXViewController {
                 sectorButton
             ]
         ).items
-        image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         self.view.addSubview(toolbarTop)
         self.view.addSubview(toolbar)
+        image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
+        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         if spcMesoFromHomeScreen {
             product = spcMesoToken
