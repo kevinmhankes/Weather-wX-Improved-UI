@@ -160,7 +160,10 @@ enum ColorCompatibility {
                 //return UIColor.yellow
                 return ColorCompatibility.link
             } else {
-                return UIColor.blue
+                //return UIColor.blue
+                // rgb(88, 121, 169)
+                // rgb(14, 71, 161)
+                return UIColor(red: 0.054901960784313725, green: 0.2784313725490196, blue: 0.6313725490196078, alpha: 1.0)
             }
         }
         return UIColor.blue

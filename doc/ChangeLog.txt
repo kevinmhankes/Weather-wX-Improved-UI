@@ -18,7 +18,7 @@
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 
-56091 2020_02_24 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
+56091 2020_02_25 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
 		 [FIX] homescreen image on size change
@@ -29,6 +29,7 @@
 	       	 [ADD] in wfo,radar,sounding cutover to new map class
 	       	 [ADD] better support for rotation in VCs with single image
 		 [FIX] SPC Meso image cutoff at top due to top toolbar
+		 [ADD] in UIPreferences use flutter/dart blue for highlight
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit
