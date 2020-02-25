@@ -15,8 +15,6 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     private var urls = [String]()
     private var wfo = ""
     private var wfoProd = [String]()
-    //private var mapShown = false
-    //private let mapView = MKMapView()
     private var siteButton = ObjectToolbarIcon()
     private let map = ObjectMap(.WFO)
 
@@ -64,7 +62,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return UtilityMap.mapView(mapView, annotation)
+        return map.mapView(annotation)
     }
 
     func mapView(
@@ -72,7 +70,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {

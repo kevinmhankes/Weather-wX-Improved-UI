@@ -140,7 +140,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return UtilityMap.mapView(mapView, annotation)
+        return map.mapView(annotation)
     }
 
     func mapView(
@@ -148,7 +148,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         annotationView: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
-        map.mapShown = UtilityMap.mapViewExtra(mapView, annotationView, control, mapCall)
+        map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
 
     func mapCall(annotationView: MKAnnotationView) {

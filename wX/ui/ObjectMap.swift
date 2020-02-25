@@ -100,4 +100,104 @@ public class ObjectMap {
             uiv.view.addSubview(mapView)
         }
     }
+    
+    func mapView(_ annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "pin"
+        var pin = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
+        if pin == nil {
+            pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            pin!.pinTintColor = .red
+            pin!.canShowCallout = true
+            pin!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        } else {
+            pin!.annotation = annotation
+        }
+        return pin
+    }
+    
+    func mapViewExtra(
+        _ annotationView: MKAnnotationView,
+        _ control: UIControl,
+        _ localChanges: (MKAnnotationView) -> Void
+    ) -> Bool {
+        var mapShown = true
+        if control == annotationView.rightCalloutAccessoryView {
+            mapView.removeFromSuperview()
+            mapShown = false
+            localChanges(annotationView)
+        }
+        return mapShown
+    }
+    
+    // Static methods (Location Edit and MapView)
+    static func centerMapOnLocationWithConstraintsNotUsed(
+        _ uiv: UIViewController,
+        _ mapView: MKMapView,
+        location: CLLocationCoordinate2D,
+        regionRadius: Double
+    ) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
+        uiv.view.addSubview(mapView)
+        mapView.isHidden = true
+        mapView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
+        mapView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: uiv.view.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.toolbarHeight).isActive = true
+        //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        /*mapView.frame = CGRect(
+         x: 0,
+         y: UtilityUI.getTopPadding(),
+         width: width,
+         height: height
+         - UIPreferences.toolbarHeight
+         - UtilityUI.getBottomPadding()
+         - UtilityUI.getTopPadding()
+         )*/
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    static func centerMapOnLocationEdit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+        mapView.frame = CGRect(
+            x: 0,
+            y: UtilityUI.getTopPadding(),
+            width: width,
+            height: width
+        )
+        mapView.setRegion(coordinateRegion, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        mapView.addAnnotation(annotation)
+    }
+    
+    static func centerMapForMapKit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0
+        )
+        let (width, height) = UtilityUI.getScreenBoundsCGFloat()
+        mapView.frame = CGRect(
+            x: 0,
+            y: UtilityUI.getTopPadding(),
+            width: width,
+            height: height
+                - UIPreferences.toolbarHeight
+                - UtilityUI.getBottomPadding()
+                - UtilityUI.getTopPadding()
+        )
+        mapView.setRegion(coordinateRegion, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        mapView.addAnnotation(annotation)
+    }
 }
