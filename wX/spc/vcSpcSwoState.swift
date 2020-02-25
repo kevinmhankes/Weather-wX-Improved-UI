@@ -7,12 +7,12 @@
 import UIKit
 
 class vcSpcSwoState: UIwXViewController {
-
+    
     private var state = ""
     private var stateButton = ObjectToolbarIcon()
     private var image = ObjectTouchImageView()
     var day = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -30,11 +30,11 @@ class vcSpcSwoState: UIwXViewController {
         stateButton.title = state
         self.getContent(state)
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent(state)
     }
-
+    
     func getContent(_ state: String) {
         self.state = state
         stateButton.title = self.state
@@ -45,12 +45,22 @@ class vcSpcSwoState: UIwXViewController {
             }
         }
     }
-
+    
     @objc func stateClicked(sender: ObjectToolbarIcon) {
         _ = ObjectPopUp(self, "State Selection", sender, GlobalArrays.states, self.getContent(_:))
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }

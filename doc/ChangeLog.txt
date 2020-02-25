@@ -17,6 +17,7 @@
 // [FIX] standardize var naming for objectTextView
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
+// [FIX] SPC Meso image cutoff at top due to top toolbar
 
 56091 2020_02_24 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code

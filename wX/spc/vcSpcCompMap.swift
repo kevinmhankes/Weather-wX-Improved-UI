@@ -7,11 +7,11 @@
 import UIKit
 
 class vcSpcCompMap: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var layers: Set = ["1"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -35,19 +35,19 @@ class vcSpcCompMap: UIwXViewController {
         deSerializeSettings()
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func serializeSettings() {
         Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
     }
-
+    
     func deSerializeSettings() {
         layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcCompmap.getImage(self.layers)
@@ -57,7 +57,7 @@ class vcSpcCompMap: UIwXViewController {
             }
         }
     }
-
+    
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Layer Selection", productButton)
         (["Clear All"] + UtilitySpcCompmap.labels).enumerated().forEach { index, rid in
@@ -71,7 +71,7 @@ class vcSpcCompMap: UIwXViewController {
         }
         alert.finish()
     }
-
+    
     func productChanged(_ product: Int) {
         if product == 0 {
             layers = []
@@ -86,8 +86,18 @@ class vcSpcCompMap: UIwXViewController {
         }
         self.getContent()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.refresh()
+        }
+        )
     }
 }
