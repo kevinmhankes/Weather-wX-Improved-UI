@@ -95,4 +95,14 @@ class vcWpcImg: UIwXViewController {
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityWpcImages.urls))
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(
+            alongsideTransition: nil,
+            completion: { _ -> Void in
+                self.image.img.refresh()
+        }
+        )
+    }
 }

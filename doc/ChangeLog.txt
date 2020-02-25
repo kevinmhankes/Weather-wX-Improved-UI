@@ -27,6 +27,7 @@
 		 [FIX] formatting enhancement for PMDTHR
 		 [REF] work towards standardizing on uppercase for all text products from data source
 	       	 [ADD] in wfo,radar,sounding cutover to new map class
+	       	 [ADD] better support for rotation in VCs with single image
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit
