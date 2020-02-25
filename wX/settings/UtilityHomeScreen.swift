@@ -9,13 +9,13 @@ import UIKit
 final class UtilityHomeScreen {
     
     static let localChoicesText = [
-        "TXT-CC2": "Current Conditions with Image",
-        "TXT-HAZ": "Hazards",
-        "TXT-7DAY2": "7 Day Forecast with Images",
+        "METAL-RADAR": "Local NEXRAD Radar",
         "TXT-AFDLOC": "Area Forecast Discussion",
         "TXT-HWOLOC": "Hazardous Weather Outlook",
         "TXT-HOURLY": "Hourly Forecast",
-        "METAL-RADAR": "Local NEXRAD Radar"
+        "TXT-CC2": "Current Conditions with Image",
+        "TXT-HAZ": "Hazards",
+        "TXT-7DAY2": "7 Day Forecast with Images"
     ]
 
     static let localChoicesImages = [

@@ -51,6 +51,7 @@ class vcSettingsHomescreen: UIwXViewController {
         )
     }
 
+    // FIXME convert to list not map
     @objc func addClicked() {
         let alert = ObjectPopUp(self, "Product Selection", addButton)
         Array(UtilityHomeScreen.localChoicesText.keys).sorted().forEach { rid in
