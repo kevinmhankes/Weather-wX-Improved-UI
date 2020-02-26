@@ -103,19 +103,16 @@ final class WXGLDownload {
         ) -> [String] {
         var listOfFiles = [String]()
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
-        let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
-            + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+        let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
         var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
         var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         if snDates.count == 0 {
-            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
-                + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
             snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         }
         if snDates.count == 0 {
-            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
-                + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
             snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         }
@@ -128,7 +125,7 @@ final class WXGLDownload {
         }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
         var index = seq - frameCount + 1
-        (0..<frameCount).forEach {_ in
+        (0..<frameCount).forEach { _ in
             var tmpK = index
             if tmpK < 0 {
                 tmpK += 251
