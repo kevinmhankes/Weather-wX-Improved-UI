@@ -33,7 +33,6 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView) {
         self.init()
-        //self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         stackView.addArrangedSubview(self.tv)
         self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
@@ -54,7 +53,6 @@ final class ObjectTextView {
             self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
         }
         self.tv.text = text
-        //stackView.addArrangedSubview(self.tv)
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
             setZeroSpacing()
@@ -63,13 +61,11 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text)
-        //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         addGestureRecognizer(gesture)
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
         self.init()
-        //self.tv.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.tv.text = text
         self.color = color
         self.font = font

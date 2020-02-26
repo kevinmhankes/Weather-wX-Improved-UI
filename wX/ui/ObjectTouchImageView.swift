@@ -17,11 +17,6 @@ final class ObjectTouchImageView {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         let height = UtilityUI.effectiveHeight(toolbar)
         let y = UtilityUI.getTopPadding()
-        if hasTopToolbar {
-            //y += toolbar.frame.height
-            //height -= toolbar.frame.height
-        }
-        //img = ImageScrollView()
         img = ImageScrollView(
             frame: CGRect(
                 x: 0,
@@ -31,7 +26,6 @@ final class ObjectTouchImageView {
             )
         )
         uiv.view.addSubview(img)
-        //img.contentMode = UIView.ContentMode.scaleAspectFit
         img.contentMode = UIView.ContentMode.scaleAspectFit
         self.img.translatesAutoresizingMaskIntoConstraints = false
         self.img.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true

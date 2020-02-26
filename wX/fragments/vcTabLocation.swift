@@ -252,13 +252,13 @@ class vcTabLocation: vcTabParent {
                     switch $0 {
                     case "TXT-CC2":
                         self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                        self.stackViewCurrentConditions.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "TXT-HAZ":
                         self.stackView.addArrangedSubview(self.stackViewHazards.view)
-                        self.stackViewHazards.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                        self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "TXT-7DAY2":
                         self.stackView.addArrangedSubview(self.stackViewForecast.view)
-                        self.stackViewForecast.sV.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                     case "METAL-RADAR":
                         self.stackViewRadar = ObjectStackViewHS()
                         self.stackView.addArrangedSubview(self.stackViewRadar)

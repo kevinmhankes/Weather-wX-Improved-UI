@@ -8,8 +8,7 @@ import UIKit
 
 final class ObjectStackView {
 
-    // FIXME rename to stackView
-    let sV = UIStackView()
+    let uiStackView = UIStackView()
 
     init(
         _ distribution: UIStackView.Distribution,
@@ -17,15 +16,15 @@ final class ObjectStackView {
         spacing: CGFloat = 0.0,
         arrangedSubviews: [UIView] = []
     ) {
-        sV.distribution = distribution
-        sV.axis = axis
-        sV.spacing = spacing
+        uiStackView.distribution = distribution
+        uiStackView.axis = axis
+        uiStackView.spacing = spacing
         if !arrangedSubviews.isEmpty {
-            arrangedSubviews.forEach { sV.addArrangedSubview($0) }
+            arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) }
         }
     }
 
     var view: UIStackView {
-        return sV
+        return uiStackView
     }
 }

@@ -34,7 +34,7 @@ final class ObjectCard7Day {
         let verticalTextConainer = ObjectStackView(
             .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view]
         )
-        bottomText.view.widthAnchor.constraint(equalTo: verticalTextConainer.sV.widthAnchor).isActive = true
+        bottomText.view.widthAnchor.constraint(equalTo: verticalTextConainer.view.widthAnchor).isActive = true
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         bottomText.tv.isAccessibilityElement = false

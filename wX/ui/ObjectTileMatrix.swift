@@ -70,11 +70,8 @@ final class ObjectTileMatrix: NSObject {
             let sV = ObjectStackView(.fill, .horizontal, spacing: UIPreferences.stackviewCardSpacing)
             var index = 0
             for _ in (0...(rowCount - 1)) {
-                //print("DEBUG: " + String(jIndex))
                 if jIndex >= icons.count {
-                    //print("DEBUG: DROP OUT")
-                    let tile = ObjectTileImage(sV.view, iconsPerRow)
-                    //break
+                    _ = ObjectTileImage(sV.view, iconsPerRow)
                 } else {
                     let tile = ObjectTileImage(sV.view, icons[jIndex], jIndex, iconsPerRow, labels[jIndex])
                     switch tabType {
@@ -98,7 +95,6 @@ final class ObjectTileMatrix: NSObject {
                 jIndex += 1
             }
             stackView.addArrangedSubview(sV.view)
-            //print("DEBUG: ADD VIEW")
             if jIndex >= icons.count {
                 break
             }
@@ -113,7 +109,6 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func imgClickedSpc(sender: UITapGestureRecognizer) {
-        //var token = ""
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "spcsref":
@@ -211,11 +206,9 @@ final class ObjectTileMatrix: NSObject {
             uiv!.goToVC(vc)
         case "nws_sector":
             if !UIPreferences.useAwcRadarMosaic {
-                //token = "nwsmosaic"
                 let vc = vcRadarMosaic()
                 uiv!.goToVC(vc)
             } else {
-                //token = "awcradarmosaic"
                 let vc = vcRadarMosaicAwc()
                 uiv!.goToVC(vc)
             }

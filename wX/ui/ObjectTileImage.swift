@@ -18,9 +18,7 @@ final class ObjectTileImage {
         _ accessibilityLabel: String
     ) {
         let bitmap = Bitmap.fromFile(filename)
-        //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         image.img.tag = index
-        //image.width = (width - 4.0 - UIPreferences.stackviewCardSpacing * iconsPerRow) / iconsPerRow
         image.setBitmap(bitmap)
         image.img.isAccessibilityElement = true
         image.img.accessibilityLabel = accessibilityLabel
