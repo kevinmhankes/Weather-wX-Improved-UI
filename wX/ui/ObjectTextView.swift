@@ -10,7 +10,6 @@ final class ObjectTextView {
 
     let tv = UITextView()
     var textcolor = wXColor()
-    let width: CGFloat
 
     init() {
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -18,12 +17,13 @@ final class ObjectTextView {
         tv.isEditable = false
         tv.font = FontSize.medium.size
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-        (width, _) = UtilityUI.getScreenBoundsCGFloat()
     }
 
     convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false, widthDivider: Int = 1) {
         self.init()
+        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+        //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         self.tv.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
@@ -50,7 +50,9 @@ final class ObjectTextView {
             self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         } else {
             // FIXME use something better for constraint
-            self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+            //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+            //self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+            self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         }
         self.tv.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
