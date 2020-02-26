@@ -46,8 +46,8 @@ final class ObjectTouchImageView {
         self.bitmap = bitmap
     }
     
-    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector, hasTopToolbar: Bool = false) {
-        self.init(uiv, toolbar, hasTopToolbar: hasTopToolbar)
+    convenience init(_ uiv: UIViewController, _ toolbar: UIToolbar, _ action: Selector, hasTopToolbar: Bool = false, topToolbar: UIToolbar = UIToolbar()) {
+        self.init(uiv, toolbar, hasTopToolbar: hasTopToolbar, topToolbar: topToolbar)
         addGestureRecognizer(action)
     }
     
