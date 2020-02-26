@@ -7,7 +7,7 @@
 final class WXGLNexrad {
     
     static var wxoglDspLegendMax = 0.0
-
+    
     static func getRadarTimeStamp() -> String {
         let radarTimeStamp = getRadarInfo("")
         var radarTimeFinal = ""
@@ -24,7 +24,7 @@ final class WXGLNexrad {
         }
         return radarTimeFinal
     }
-
+    
     static func canTilt(_ product: String) -> Bool {
         if product == "L2REF" || product == "L2VEL" {
             return false
@@ -35,7 +35,7 @@ final class WXGLNexrad {
             return false
         }
     }
-
+    
     static var radarProductList = [
         "N0Q: Base Reflectivity",
         "N0U: Base Velocity",
@@ -54,16 +54,16 @@ final class WXGLNexrad {
         "NCR: Composite Reflectivity 124nm",
         "NCZ: Composite Reflectivity 248nm"
     ]
-
+    
     // To add products in this file means also adding entries in global/GlobalDictionaries.swift and global/ColorPalettes.swift
-
+    
     // https://www1.ncdc.noaa.gov/pub/data/radar/RadarProductsDetailedTable.pdf
     // https://www.ncdc.noaa.gov/data-access/radar-data/tdwr
     // https://www.ncdc.noaa.gov/data-access/radar-data/tdwr/tdwr-products
     // SPG https://www.roc.noaa.gov/spg/default.aspx
-
+    
     /*
- 
+     
      From the URL above
      
      TDWR Level-III Products
@@ -138,14 +138,14 @@ final class WXGLNexrad {
      Radar Status Log (RSL/152)
      A running daily log of status, errors, and messages from the Radar Product Generator (RPG) and Radar Data Acquisition (RDA) processing systems.
      
-    */
-
+     */
+    
     static var radarProductListTdwr = [
         "TZL: Long Range Digital Base Reflectivity",
         "TZ0: Digital Base Reflectivity",
         "TV0: Digital Base Velocity"
     ]
-
+    
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {
         case 134:
@@ -180,7 +180,7 @@ final class WXGLNexrad {
             return 460
         }
     }
-
+    
     static func getBinSize(_ productCode: Int16) -> Double {
         let binSize54 = 2.0
         let binSize13 = 0.50
@@ -188,39 +188,57 @@ final class WXGLNexrad {
         let binSize16 = 0.590022
         let binSize110 = 2.0 * binSize54
         switch productCode {
-        case 134: return binSize54
-        case 135: return binSize54
-        case 186: return binSize16
-        case 159: return binSize13
-        case 161: return binSize13
-        case 163: return binSize13
-        case 165: return binSize13
-        case 99:  return binSize13
-        case 170: return binSize13
-        case 172: return binSize13
-        case 78: return binSize110
-        case 80: return binSize110
-        case 180: return binSize08
-        case 181: return binSize08
-        case 182: return binSize08
-        case 153: return binSize13
-        case 154: return binSize13
-        default:  return binSize54
+        case 134:
+            return binSize54
+        case 135:
+            return binSize54
+        case 186:
+            return binSize16
+        case 159:
+            return binSize13
+        case 161:
+            return binSize13
+        case 163:
+            return binSize13
+        case 165:
+            return binSize13
+        case 99:
+            return binSize13
+        case 170:
+            return binSize13
+        case 172:
+            return binSize13
+        case 78:
+            return binSize110
+        case 80:
+            return binSize110
+        case 180:
+            return binSize08
+        case 181:
+            return binSize08
+        case 182:
+            return binSize08
+        case 153:
+            return binSize13
+        case 154:
+            return binSize13
+        default:
+            return binSize54
         }
     }
-
+    
     static func isRidTdwr(_ radarSite: String) -> Bool {
         return getTdwrShortList().contains(radarSite)
     }
-
+    
     static func getTdwrShortList() -> [String] {
         return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
     }
-
+    
     static func getRadarInfo(_ pane: String) -> String {
         return Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
     }
-
+    
     static func writeRadarInfo(_ pane: String, _ info: String) {
         Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
     }
