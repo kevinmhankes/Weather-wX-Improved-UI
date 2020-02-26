@@ -7,9 +7,9 @@
 import Foundation
 
 final class UtilityModelNcepInputOutput {
-
+    
     static let ncepPattern2 = "var current_cycle_white . .([0-9 ]{11} UTC)"
-
+    
     static func getRunTime(_ om: ObjectModel) -> RunTimeData {
         let runData = RunTimeData()
         let url = "https://mag.ncep.noaa.gov/model-guidance-model-parameter.php?group=Model%20Guidance&model="
@@ -38,7 +38,7 @@ final class UtilityModelNcepInputOutput {
         runData.imageCompleteStr = timeCompleteHtml.parse("SubmitImageForm.(.*?).\"")
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         var imgUrl = ""
         var timeLocal = om.time

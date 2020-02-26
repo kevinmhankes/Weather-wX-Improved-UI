@@ -7,14 +7,14 @@
 import Foundation
 
 final class UtilityModelEsrlInputOutput {
-
+    
     static let eslHrrrPattern1 = "<option selected>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
     static let eslHrrrPattern2 = "<option>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
     static let eslHrrrPattern3 = "[0-9]{2} \\w{3} ([0-9]{4}) - [0-9]{2}Z"
     static let eslHrrrPattern4 = "([0-9]{2}) \\w{3} [0-9]{4} - [0-9]{2}Z"
     static let eslHrrrPattern5 = "[0-9]{2} \\w{3} [0-9]{4} - ([0-9]{2})Z"
     static let eslHrrrPattern6 = "[0-9]{2} (\\w{3}) [0-9]{4} - [0-9]{2}Z"
-
+    
     static func getRunTime(_ om: ObjectModel) -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunstatus: String
@@ -53,7 +53,7 @@ final class UtilityModelEsrlInputOutput {
         }
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let zipStr = "TZA"
         let paramTmp = om.param

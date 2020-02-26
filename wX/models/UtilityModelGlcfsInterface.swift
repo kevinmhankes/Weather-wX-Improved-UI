@@ -5,35 +5,35 @@
  *****************************************************************************/
 
 final class UtilityModelGlcfsInterface {
-
+    
     static let sectors = [
-            "Lake Superior",
-            "Lake Michigan",
-            "Lake Huron",
-            "Lake Erie",
-            "Lake Ontario",
-            "All Lakes"
+        "Lake Superior",
+        "Lake Michigan",
+        "Lake Huron",
+        "Lake Erie",
+        "Lake Ontario",
+        "All Lakes"
     ]
-
+    
     static let params = [
-            "wv",
-            "wn",
-            "swt",
-            "sfcur",
-            "wl",
-            "wl1d",
-            "cl",
-            "at"
+        "wv",
+        "wn",
+        "swt",
+        "sfcur",
+        "wl",
+        "wl1d",
+        "cl",
+        "at"
     ]
-
+    
     static let labels = [
-            "Wave height",
-            "Wind speed",
-            "Surface temperature",
-            "Surface currents",
-            "Water level displacement",
-            "Water level displacement 1D",
-            "Cloud cover (5 lake view only)",
-            "Air temp (5 lake view only)"
+        "Wave height",
+        "Wind speed",
+        "Surface temperature",
+        "Surface currents",
+        "Water level displacement",
+        "Water level displacement 1D",
+        "Cloud cover (5 lake view only)",
+        "Air temp (5 lake view only)"
     ]
 }
