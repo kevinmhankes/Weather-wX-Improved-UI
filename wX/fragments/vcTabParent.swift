@@ -35,10 +35,8 @@ class vcTabParent: UIViewController {
             fab = ObjectFab(self, #selector(radarClicked))
             self.view.addSubview(fab!.view)
         }
-        
-        //print("DEBUG: " + String(Int(self.tabBarController!.tabBar.frame.height)))
     }
-
+    
     func setTabBarColor() {
         self.tabBarController?.tabBar.barTintColor = UIColor(
             red: AppColors.primaryColorRed,

@@ -15,6 +15,7 @@ public class ObjectScrollStackView {
     //var fragmentCenterAnchor: NSLayoutConstraint?
 
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
+        scrollView.backgroundColor = ColorCompatibility.systemGray5
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
@@ -34,11 +35,7 @@ public class ObjectScrollStackView {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 
-    convenience init(
-        _ uiv: UIViewController,
-        _ scrollView: UIScrollView,
-        _ stackView: UIStackView,
-        _ toolbar: UIToolbar
+    convenience init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ toolbar: UIToolbar
         ) {
         self.init(uiv, scrollView, stackView)
         uiv.view.addSubview(toolbar)
@@ -47,6 +44,7 @@ public class ObjectScrollStackView {
 
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
+        scrollView.backgroundColor = ColorCompatibility.systemGray5
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight

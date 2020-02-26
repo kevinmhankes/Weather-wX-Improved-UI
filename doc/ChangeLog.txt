@@ -20,7 +20,7 @@
 // [ADD] WPC Excessive rainfall add Day # in toolbar
 // [ADD] SPC fire outlook add Day # in toolbar
 
-56092 2020_02_26 
+56092 2020_02_26 [FIX] lighter background behind cards
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68

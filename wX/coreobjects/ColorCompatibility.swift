@@ -102,6 +102,7 @@ enum ColorCompatibility {
     static var separator: UIColor {
         if #available(iOS 13, *) {
             return .separator
+            //return .systemGray5
         }
         return UIColor(red: 0.32941176470588235, green: 0.32941176470588235, blue: 0.34509803921568627, alpha: 0.6)
     }
