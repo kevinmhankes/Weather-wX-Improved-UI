@@ -90,7 +90,7 @@ final class UtilityDownload {
             text = text.parse(MyApplication.pre2Pattern)
         } else if product.contains("MIAT") || product == "HFOTWOCP" {
             text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + product).getHtmlSep()
-            if UIPreferences.nwsTextRemovelinebreaks && product == "MIATWOAT"
+            if product == "MIATWOAT"
                 || product == "MIATWDAT" || product == "MIATWOEP"
                 || product == "MIATWDEP" {
                 text = text.replaceAll("<br><br>", "<BR><BR>")
@@ -109,17 +109,13 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-            if UIPreferences.nwsTextRemovelinebreaks {
-                text = text.removeLineBreaks()
-            }
+            text = text.removeLineBreaks()
         } else if product.contains("SPCWAT") {
             let no = product.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
             text = textUrl.getHtmlSep()
             text = text.parseFirst(MyApplication.pre2Pattern)
-            if UIPreferences.nwsTextRemovelinebreaks {
-                text = text.removeLineBreaks()
-            }
+            text = text.removeLineBreaks()
         } else if product == "FWDDY1" {
             let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy1.html"
             text = url.getNwsHtml()
@@ -155,16 +151,12 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-            if UIPreferences.nwsTextRemovelinebreaks {
-                text = text.removeLineBreaks()
-            }
+            text = text.removeLineBreaks()
         } else if product.hasPrefix("GLF") && !product.contains("%") {
             text = getTextProduct(product + "%")
         } else if product.contains("FOCN45") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fo/focn45.cwwg..txt").getHtmlSep()
-            if UIPreferences.nwsTextRemovelinebreaks {
-                text = text.removeLineBreaks()
-            }
+            text = text.removeLineBreaks()
         } else if product.hasPrefix("VFD") {
             let t2 = product.substring(3)
             text = (MyApplication.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
@@ -328,7 +320,7 @@ final class UtilityDownload {
         text = text.parse(MyApplication.prePattern)
         text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
-        if UIPreferences.nwsTextRemovelinebreaks && t1 != "RTP" {
+        if t1 != "RTP" {
             text = text.removeLineBreaks()
         }
         return text

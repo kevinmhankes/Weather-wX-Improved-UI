@@ -44,9 +44,7 @@ final class CapAlert {
         text += "<br><br><br>"
         text += instructions
         text += "<br><br><br>"
-        if UIPreferences.nwsTextRemovelinebreaks {
-            instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
-        }
+        instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
     }
 
     // used by usAlerts
@@ -74,8 +72,6 @@ final class CapAlert {
         text += instructions
         text += "<br><br><br>"
         summary = summary.replaceAll("<br>\\*", "<br><br>*")
-        if UIPreferences.nwsTextRemovelinebreaks {
-            instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
-        }
+        instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
     }
 }

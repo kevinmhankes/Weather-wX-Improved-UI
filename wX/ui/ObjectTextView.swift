@@ -21,6 +21,7 @@ final class ObjectTextView {
 
     convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false, widthDivider: Int = 1) {
         self.init()
+        // FIXME need to use widthAnchor
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
         //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
