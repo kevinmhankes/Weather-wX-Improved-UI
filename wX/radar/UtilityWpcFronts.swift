@@ -49,6 +49,7 @@ import Foundation
 
 class UtilityWpcFronts {
     
+    static let separator = "ABC123"
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
     private static var timer = DownloadTimer("WPC FRONTS")
@@ -183,14 +184,14 @@ class UtilityWpcFronts {
             fronts = []
             let urlBlob = MyApplication.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
             var html = urlBlob.getHtmlSep()
-            html = html.replaceAll(MyApplication.newline, MyApplication.sep)
+            html = html.replaceAll(MyApplication.newline, separator)
             let timestamp = html.parseFirst("SURFACE PROG VALID ([0-9]{12}Z)")
             Utility.writePref("WPC_FRONTS_TIMESTAMP", timestamp)
             html = html.parseFirst("SURFACE PROG VALID [0-9]{12}Z(.*?)" +
-                MyApplication.sep +
+                separator +
                 " " +
-                MyApplication.sep)
-            html = html.replaceAll(MyApplication.sep, MyApplication.newline)
+                separator)
+            html = html.replaceAll(separator, MyApplication.newline)
             let lines = html.split(MyApplication.newline)
             lines.enumerated().forEach { index, _ in
                 var data = lines[index]

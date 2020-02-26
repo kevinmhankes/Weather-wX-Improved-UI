@@ -72,9 +72,7 @@ class vcSevereDashboard: UIwXViewController {
                 spokenText += count + titles[$0] + " "
             }
         }
-        spokenText += String(self.snMcd.bitmaps.count) + " mcd "
-            + String(self.snWat.bitmaps.count) + " watch "
-            + String(self.snMpd.bitmaps.count) + " mpd "
+        spokenText += String(self.snMcd.bitmaps.count) + " mcd " + String(self.snWat.bitmaps.count) + " watch " + String(self.snMpd.bitmaps.count) + " mpd "
         return spokenText
     }
 
@@ -108,7 +106,7 @@ class vcSevereDashboard: UIwXViewController {
                         let data = warningType.warnings[index]
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
                         if !data.hasPrefix("O.EXP") {
-                            let objectCardDashAlertItem = ObjectCardDashAlertItem(
+                            _ = ObjectCardDashAlertItem(
                                 scrollView,
                                 stackView,
                                 warningType.senderNameList[index],
@@ -118,7 +116,6 @@ class vcSevereDashboard: UIwXViewController {
                                 warningType.areaDescList[index],
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
                             )
-                            //self.stackView.addArrangedSubview(objectCardDashAlertItem.cardStackView.view)
                         }
                     }
                 }

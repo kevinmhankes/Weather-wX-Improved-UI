@@ -7,10 +7,7 @@
 import UIKit
 
 class MyApplication {
-    static let mapRegionRadius = 1000000.0
-    static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by"
-        + " https://weather.gc.ca/canada_e.html."
-    static let emailAsString = "joshua.tee@gmail.com"
+    static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by" + " https://weather.gc.ca/canada_e.html."
     static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
     static let nwsAWCwebsitePrefix = "https://www.aviationweather.gov"
@@ -28,14 +25,10 @@ class MyApplication {
     static let nwsApiUrl = "https://api.weather.gov"
     static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
     static let degreeSymbol = "\u{00B0}"
-    static let textviewMagicFudgeFactor: Float = 4.05
-    static var deviceScale: Float = 0.0
-    static let notifStrSep = ","
     static var animInterval = 250
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"
     static let pre2Pattern = "<pre>(.*?)</pre>"
-    static var helpMode = false
     static var radarColorPalette = [String: String]()
     static var homescreenFav = ""
     static let homescreenFavDefault = "TXT-CC2:TXT-HAZ:TXT-7DAY2:"
@@ -56,7 +49,6 @@ class MyApplication {
     static var playlistStr = ""
     static var colorMap = [Int: ObjectColorPalette]()
     static var locations = [Location]()
-    static let sep = "ABC123"
 
     static func onCreate() {
         initPreferences()

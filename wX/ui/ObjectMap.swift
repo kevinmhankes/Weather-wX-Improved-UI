@@ -12,6 +12,7 @@ public class ObjectMap {
     let mapView = MKMapView()
     var mapShown = false
     var officeType: OfficeTypeEnum
+    let mapRegionRadius = 1000000.0
     
     init(_ officeType: OfficeTypeEnum) {
         self.officeType = officeType
@@ -34,7 +35,7 @@ public class ObjectMap {
         }
         mapView.addAnnotations(annotations)
         let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
-        centerMapOnLocation(location: usCenter, regionRadius: MyApplication.mapRegionRadius)
+        centerMapOnLocation(location: usCenter, regionRadius: mapRegionRadius)
     }
     
     func createLocationsList(_ itemList: [String]) -> [[String: String]] {
