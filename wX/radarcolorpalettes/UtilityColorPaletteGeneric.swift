@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityColorPaletteGeneric {
-
+    
     static func generate(_ prod: String, _ code: String) {
         var colorMapR = MemoryBuffer()
         var colorMapG = MemoryBuffer()
@@ -213,7 +213,7 @@ final class UtilityColorPaletteGeneric {
             }
         }
     }
-
+    
     static func loadColorMap(_ product: String) {
         let map = MyApplication.radarColorPalette[product]!
         switch product {

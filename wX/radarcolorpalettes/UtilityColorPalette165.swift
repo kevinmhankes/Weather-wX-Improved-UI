@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityColorPalette165 {
-
+    
     static func generate(_ code: String) {
         let radarColorPaletteCode = 165
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
@@ -48,7 +48,7 @@ final class UtilityColorPalette165 {
             }
         }
     }
-
+    
     static func loadColorMap() {
         switch MyApplication.radarColorPalette["165"]! {
         case "CODENH": UtilityColorPalette165.generate("CODENH")

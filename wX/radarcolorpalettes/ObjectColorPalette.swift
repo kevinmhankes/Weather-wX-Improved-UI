@@ -5,22 +5,22 @@
  *****************************************************************************/
 
 final class ObjectColorPalette {
-
+    
     var redValues = MemoryBuffer(16)
     var greenValues = MemoryBuffer(16)
     var blueValues = MemoryBuffer(16)
     private var colormapCode = ""
-
+    
     init(_ colormapCode: String) {
         self.colormapCode = colormapCode
     }
-
+    
     private func setupBuffers(_ size: Int) {
         redValues = MemoryBuffer(size)
         greenValues = MemoryBuffer(size)
         blueValues = MemoryBuffer(size)
     }
-
+    
     func initialize() {
         switch colormapCode {
         case "19":

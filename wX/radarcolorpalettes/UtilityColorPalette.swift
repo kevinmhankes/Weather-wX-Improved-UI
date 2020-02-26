@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityColorPalette {
-
+    
     static func getColorMapStringFromDisk(_ product: String, _ code: String) -> String {
         var cmFileInt = ""
         var text: String?
