@@ -7,7 +7,7 @@
 import UIKit
 
 final class UtilityModelSpcHrefInputOutput {
-
+    
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunstatus = (MyApplication.nwsSPCwebsitePrefix + "/exper/href/").getHtml()
@@ -21,7 +21,7 @@ final class UtilityModelSpcHrefInputOutput {
         runData.mostRecentRun = mostRecentRun
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let year = om.run.substring(0, 4)
         let month = om.run.substring(4, 6)

@@ -8,10 +8,10 @@ import Foundation
 import UIKit
 
 final class UtilityModelNsslWrfInputOutput {
-
+    
     static let ncarEnsPattern2 = "([0-9]{2})$"
     static let baseUrl = "https://cams.nssl.noaa.gov"
-
+    
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunstatus = (baseUrl).getHtml()
@@ -24,7 +24,7 @@ final class UtilityModelNsslWrfInputOutput {
         runData.mostRecentRun = mostRecentRun
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let sectorIndex = UtilityModelNsslWrfInterface.sectorsLong.firstIndex(of: om.sector) ?? 0
         let sector = UtilityModelNsslWrfInterface.sectors[sectorIndex]

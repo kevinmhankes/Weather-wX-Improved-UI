@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityModelWpcGefsInputOutput {
-
+    
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let currentHour = UtilityTime.getCurrentHourInUTC()
@@ -25,7 +25,7 @@ final class UtilityModelWpcGefsInputOutput {
         runData.timeStrConv = runData.mostRecentRun
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         var sectorAdd = ""
         if om.sector == "AK" {

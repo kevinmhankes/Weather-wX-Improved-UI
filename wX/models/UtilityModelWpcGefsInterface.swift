@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityModelWpcGefsInterface {
-
+    
     static let titles = [
         ObjectMenuTitle("Precip", 37),
         ObjectMenuTitle("QPF > Annual Chance (CONUS only)", 8),
@@ -16,12 +16,12 @@ final class UtilityModelWpcGefsInterface {
         ObjectMenuTitle("Stnd Anom Temps", 18),
         ObjectMenuTitle("Other", 43)
     ]
-
+    
     static let sectors = [
         "US",
         "AK"
     ]
-
+    
     static let params = [
         "p06igt0p01",
         "p06igt0p1",
@@ -181,7 +181,7 @@ final class UtilityModelWpcGefsInterface {
         "capegt8000",
         "capegt10000"
     ]
-
+    
     static let labels = [
         "6-hr precip > 0.01",
         "6-hr precip > 0.10",

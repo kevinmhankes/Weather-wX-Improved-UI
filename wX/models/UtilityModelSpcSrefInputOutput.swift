@@ -7,11 +7,11 @@
 import UIKit
 
 final class UtilityModelSpcSrefInputOutput {
-
+    
     static let srefPattern2 = "([0-9]{10}z</a>&nbsp in through <b>f[0-9]{3})"
     static let srefPattern3 = "<tr><td class=.previous.><a href=sref.php\\?run="
         + "[0-9]{10}&id=SREF_H5__>([0-9]{10}z)</a></td></tr>"
-
+    
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let html = (MyApplication.nwsSPCwebsitePrefix + "/exper/sref/").getHtml()
@@ -29,7 +29,7 @@ final class UtilityModelSpcSrefInputOutput {
         }
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/"
             + om.run.replace("z", "")

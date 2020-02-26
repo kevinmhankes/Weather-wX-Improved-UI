@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityModelSpcHrefInterface {
-
+    
     static let titles = [
         ObjectMenuTitle("SPC Guidance", 7),
         ObjectMenuTitle("Synoptic", 8),
@@ -15,7 +15,7 @@ final class UtilityModelSpcHrefInterface {
         ObjectMenuTitle("Precipitation", 16),
         ObjectMenuTitle("Storm Attributes", 24)
     ]
-
+    
     static let sectorsLong = [
         "CONUS",
         "Central Plains",
@@ -28,7 +28,7 @@ final class UtilityModelSpcHrefInterface {
         "Southern Plains",
         "Southwest"
     ]
-
+    
     static let sectors = [
         "conus",
         "cp",
@@ -41,7 +41,7 @@ final class UtilityModelSpcHrefInterface {
         "sp",
         "sw"
     ]
-
+    
     static let params = [
         "guidance_hail_spchazcal_004h",
         "guidance_tor_spchazcal_004h",
@@ -50,7 +50,7 @@ final class UtilityModelSpcHrefInterface {
         "guidance_tor_spchazcal_024h",
         "guidance_wind_spchazcal_024h",
         "guidance_hrefct_004h", // NEW 10/19
-
+        
         "500w_mean,500h_mean",
         "700w_mean,700h_mean",
         "850w_mean,850h_mean",
@@ -59,7 +59,7 @@ final class UtilityModelSpcHrefInterface {
         "cloudcover_low_mean,cloudcover_mid_mean,cloudcover_high_mean",
         "pwat_mean", // NEW 10/19
         "pwat_prob050080", // NEW 10/19
-
+        
         "sbcape_max,sfc500shear_mean",
         "sbcape_mean,sfc500shear_mean",
         "sbcape_prob0500",
@@ -72,7 +72,7 @@ final class UtilityModelSpcHrefInterface {
         "stpfixed_mean",
         "stpfixed_prob01",
         "stpfixed_prob03",
-
+        
         "qpf_001h_mean_ptype",
         "snowfall_001h_mean",
         "snowfall_001h_prob01",
@@ -99,7 +99,7 @@ final class UtilityModelSpcHrefInterface {
         "frzrfram_024h_mean",
         "frzrqpf_024h_max",
         "frzrqpf_024h_mean",
-
+        
         "fosberg_max",
         "fosberg_mean",
         "fosberg_prob050",
@@ -112,7 +112,7 @@ final class UtilityModelSpcHrefInterface {
         "rhwnd_prob1520",
         "rhwnd_prob2015",
         "rhwnd_prob2020",
-
+        
         "qpf_001h_mean_ptype",
         "qpf_001h_prob01",
         "qpf_003h_nh1",
@@ -129,7 +129,7 @@ final class UtilityModelSpcHrefInterface {
         "qpf_012h_mean",
         "qpf_012h_pmm",
         "qpf_012h_ps",
-
+        
         "cref_members hrwnssl",
         "cref_members hrwarw",
         "cref_members hrwnmmb",
@@ -155,7 +155,7 @@ final class UtilityModelSpcHrefInterface {
         "wspd_024hmax_max",
         "wspd_024hmax_pb30_members"
     ]
-
+    
     static let labels = [
         "4-hr HREF/SREF Calibrated: Hail",
         "4-hr HREF/SREF Calibrated: Tornado",
@@ -164,7 +164,7 @@ final class UtilityModelSpcHrefInterface {
         "24-hr HREF/SREF Calibrated: Tornado",
         "24-hr HREF/SREF Calibrated: Wind",
         "4-hr HREF Calibrated: Thunder", // NEW 10/19
-
+        
         "500 mb Height/Wind",
         "700 mb Height/Wind",
         "850 mb Height/Wind",
@@ -173,7 +173,7 @@ final class UtilityModelSpcHrefInterface {
         "Cloud Cover: mean",
         "Precipitable Water: mean", // NEW 10/19
         "Precipitable Water: CP[>0.5, <0.8]", // NEW 10/19
-
+        
         "Surface Based CAPE: max",
         "Surface Based CAPE: mean",
         "Surface Based CAPE: P[>500]",
@@ -186,7 +186,7 @@ final class UtilityModelSpcHrefInterface {
         "Fixed-Layer STP mean",
         "Fixed-Layer STP P[>1]",
         "Fixed-Layer STP P[>3]",
-
+        
         "1-hr QPF and Precip Type: mean",
         "1-hr Snowfall: mean",
         "1-hr Snowfall: P[>1\"]",
@@ -213,7 +213,7 @@ final class UtilityModelSpcHrefInterface {
         "24-hr Freezing Rain: FRAM mean",
         "24-hr Freezing Rain: QPF max",
         "24-hr Freezing Rain: QPF mean",
-
+        
         "Fosberg Index: max",
         "Fosberg Index: mean",
         "Fosberg Index: P[>50]",
@@ -226,7 +226,7 @@ final class UtilityModelSpcHrefInterface {
         "Relative Humidity and Wind: CP[RH<15%, V>20mph]",
         "Relative Humidity and Wind: CP[RH<20%, V>15mph]",
         "Relative Humidity and Wind: CP[RH<20%, V>20mph]",
-
+        
         "1-hr QPF and Precip Type: mean",
         "1-hr QPF: P[>1\"]",
         "3-hr QPF: max",
@@ -243,7 +243,7 @@ final class UtilityModelSpcHrefInterface {
         "24-hr QPF: mean",
         "24-hr QPF: pmm",
         "24-hr QPF: stamps",
-
+        
         "Reflectivity: hrwnssl",
         "Reflectivity: hrwarw",
         "Reflectivity: hrwnmmb",

@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityModelSpcHrrrInterface {
-
+    
     static let sectors = [
         "National",
         "Northwest US",
@@ -18,7 +18,7 @@ final class UtilityModelSpcHrrrInterface {
         "Southeast US",
         "Midwest"
     ]
-
+    
     static let sectorCodes = [
         "S19",
         "S11",
@@ -31,7 +31,7 @@ final class UtilityModelSpcHrrrInterface {
         "S18",
         "S20"
     ]
-
+    
     static let params = [
         "refc",
         "pmsl",
@@ -44,7 +44,7 @@ final class UtilityModelSpcHrrrInterface {
         "ptype",
         "ttd"
     ]
-
+    
     static let labels = [
         "Composite Reflectivity",
         "MSL Pressure & Wind",

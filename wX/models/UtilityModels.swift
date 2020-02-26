@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityModels {
-
+    
     static func convertTimeRuntoTimeString(_ runStr: String, _ timeStrFunc: String, _ showDate: Bool) -> String {
         let timeStr = timeStrFunc.truncate(3)
         let runInt = Int(runStr) ?? 0
@@ -51,7 +51,7 @@ final class UtilityModels {
         }
         return futureDay + "  " + String(hourOfDay) + amPm
     }
-
+    
     static func updateTime(
         _ run: String,
         _ modelCurrentTime: String,
@@ -76,7 +76,7 @@ final class UtilityModels {
         }
         return listTimeNew
     }
-
+    
     static func getAnimation(_ om: ObjectModel, _ getImage: (ObjectModel) -> Bitmap) -> AnimationDrawable {
         var bitmaps = [Bitmap]()
         let origTime = om.timeStr

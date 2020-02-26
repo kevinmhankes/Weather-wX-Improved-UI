@@ -7,7 +7,7 @@
 import UIKit
 
 final class UtilityModelSpcHrrrInputOutput {
-
+    
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunstatus = (MyApplication.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/latestHour.php").getHtml()
@@ -22,7 +22,7 @@ final class UtilityModelSpcHrrrInputOutput {
         runData.mostRecentRun = html
         return runData
     }
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/"
             + getSectorCode(om.sector).lowercased() + "/R" + om.run.replaceAll("Z", "") + "_F" + formatTime(om.time)
@@ -30,7 +30,7 @@ final class UtilityModelSpcHrrrInputOutput {
             + getSectorCode(om.sector) + "_" + om.param + ".gif"
         return UtilityImg.getBitmapAddWhiteBG(imgUrl)
     }
-
+    
     static func getSectorCode(_ sectorName: String) -> String {
         var sectorCode = "S19"
         for index in UtilityModelSpcHrrrInterface.sectors.indices
@@ -40,7 +40,7 @@ final class UtilityModelSpcHrrrInputOutput {
         }
         return sectorCode
     }
-
+    
     static func getValidTime(_ run: String, _ validTimeForecast: String, _ validTime: String) -> String {
         var validTimeCurrent = ""
         if run.count == 10 && validTime.count == 10 {
@@ -57,7 +57,7 @@ final class UtilityModelSpcHrrrInputOutput {
         }
         return validTimeCurrent
     }
-
+    
     static func formatTime(_ time: String) -> String {
         return "0" + time
     }
