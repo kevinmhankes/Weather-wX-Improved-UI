@@ -17,7 +17,6 @@
 // [FIX] standardize var naming for objectTextView
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
-// [FIX] SPC Meso - don't show codes in bottom menus
 // [FIX] settins homescreen - use list instead of map for submenu
 
 56091 2020_02_25 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
@@ -32,6 +31,7 @@
 	       	 [ADD] better support for rotation in VCs with single image
 		 [FIX] SPC Meso image cutoff at top due to top toolbar
 		 [ADD] in UIPreferences use flutter/dart blue for highlight
+  		 [FIX] SPC Meso - don't show codes in bottom menus
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit

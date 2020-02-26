@@ -26,6 +26,7 @@ class vcSpcMeso: UIwXViewController {
     private let subMenu = ObjectMenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
     var spcMesoFromHomeScreen = false
     var spcMesoToken = ""
+    var parametars = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,7 +128,7 @@ class vcSpcMeso: UIwXViewController {
     }
     
     @objc func paramClicked(sender: ObjectToolbarIcon) {
-        var parametars = [String]()
+        //var parametars = [String]()
         switch sender.title! {
         case "SFC":
             parametars = UtilitySpcMeso.paramSurface
@@ -142,7 +143,8 @@ class vcSpcMeso: UIwXViewController {
         default:
             break
         }
-        _ = ObjectPopUp(self, "Product Selection", sender, parametars, self.productChangedByCode(_:))
+        let labels = parametars.map {$0.split(":")[1]}
+        _ = ObjectPopUp(self, "Product Selection", sender, labels, self.productChangedBySubmenu(_:))
     }
     
     @objc func layerClicked(sender: ObjectToolbarIcon) {
@@ -218,6 +220,11 @@ class vcSpcMeso: UIwXViewController {
     
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
+    }
+    
+    func productChangedBySubmenu(_ index: Int) {
+        self.product = parametars[index].split(":")[0]
+        self.getContent()
     }
     
     func productChangedByCode(_ product: String) {
