@@ -500,26 +500,36 @@ final public class ObjectModel {
     
     func getRunStatus() {
         switch prefModel {
-        case "NSSLWRF":       runTimeData = UtilityModelNsslWrfInputOutput.getRunTime()
-        case "ESRL":          runTimeData = UtilityModelEsrlInputOutput.getRunTime(self)
-        case "GLCFS": break
+        case "NSSLWRF":
+            runTimeData = UtilityModelNsslWrfInputOutput.getRunTime()
+        case "ESRL":
+            runTimeData = UtilityModelEsrlInputOutput.getRunTime(self)
+        case "GLCFS":
+            break
         case "NCEP":
             runTimeData = UtilityModelNcepInputOutput.getRunTime(self)
             runTimeData.listRun = runArr
-        case "WPCGEFS": runTimeData = UtilityModelWpcGefsInputOutput.getRunTime()
-        case "SPCHRRR": runTimeData = UtilityModelSpcHrrrInputOutput.getRunTime()
-        case "SPCHREF": runTimeData = UtilityModelSpcHrefInputOutput.getRunTime()
-        case "SPCSREF": runTimeData = UtilityModelSpcSrefInputOutput.getRunTime()
-        default: break
+        case "WPCGEFS":
+            runTimeData = UtilityModelWpcGefsInputOutput.getRunTime()
+        case "SPCHRRR":
+            runTimeData = UtilityModelSpcHrrrInputOutput.getRunTime()
+        case "SPCHREF":
+            runTimeData = UtilityModelSpcHrefInputOutput.getRunTime()
+        case "SPCSREF":
+            runTimeData = UtilityModelSpcSrefInputOutput.getRunTime()
+        default:
+            break
         }
     }
     
     func getImage() -> Bitmap {
-        var bitmap = Bitmap()
         switch prefModel {
-        case "NSSLWRF": bitmap = UtilityModelNsslWrfInputOutput.getImage(self)
-        case "ESRL":    bitmap = UtilityModelEsrlInputOutput.getImage(self)
-        case "GLCFS":   bitmap = UtilityModelGlcfsInputOutput.getImage(self)
+        case "NSSLWRF":
+            return UtilityModelNsslWrfInputOutput.getImage(self)
+        case "ESRL":
+            return UtilityModelEsrlInputOutput.getImage(self)
+        case "GLCFS":
+            return UtilityModelGlcfsInputOutput.getImage(self)
         case "NCEP":
             if self.model == "NAM4KM" {
                 self.model = "NAM-HIRES"
@@ -535,30 +545,41 @@ final public class ObjectModel {
             } else {
                 self.timeStr = self.timeStr.truncate(3)
             }
-            bitmap = UtilityModelNcepInputOutput.getImage(self)
-        case "WPCGEFS": bitmap = UtilityModelWpcGefsInputOutput.getImage(self)
-        case "SPCHRRR": bitmap = UtilityModelSpcHrrrInputOutput.getImage(self)
-        case "SPCHREF": bitmap = UtilityModelSpcHrefInputOutput.getImage(self)
-        case "SPCSREF": bitmap = UtilityModelSpcSrefInputOutput.getImage(self)
-        default: break
+            return UtilityModelNcepInputOutput.getImage(self)
+        case "WPCGEFS":
+            return UtilityModelWpcGefsInputOutput.getImage(self)
+        case "SPCHRRR":
+            return UtilityModelSpcHrrrInputOutput.getImage(self)
+        case "SPCHREF":
+            return UtilityModelSpcHrefInputOutput.getImage(self)
+        case "SPCSREF":
+            return UtilityModelSpcSrefInputOutput.getImage(self)
+        default:
+            return Bitmap()
         }
-        return bitmap
     }
     
     func getAnimation() -> AnimationDrawable {
-        var animDrawable = AnimationDrawable()
         switch prefModel {
-        case "NSSLWRF": animDrawable = UtilityModels.getAnimation(self, UtilityModelNsslWrfInputOutput.getImage)
-        case "ESRL":    animDrawable = UtilityModels.getAnimation(self, UtilityModelEsrlInputOutput.getImage)
-        case "GLCFS":   animDrawable = UtilityModels.getAnimation(self, UtilityModelGlcfsInputOutput.getImage)
-        case "NCEP":    animDrawable = UtilityModels.getAnimation(self, UtilityModelNcepInputOutput.getImage)
-        case "WPCGEFS": animDrawable = UtilityModels.getAnimation(self, UtilityModelWpcGefsInputOutput.getImage)
-        case "SPCHRRR": animDrawable = UtilityModels.getAnimation(self, UtilityModelSpcHrrrInputOutput.getImage)
-        case "SPCHREF": animDrawable = UtilityModels.getAnimation(self, UtilityModelSpcHrefInputOutput.getImage)
-        case "SPCSREF": animDrawable = UtilityModels.getAnimation(self, UtilityModelSpcSrefInputOutput.getImage)
-        default: break
+        case "NSSLWRF":
+            return UtilityModels.getAnimation(self, UtilityModelNsslWrfInputOutput.getImage)
+        case "ESRL":
+            return UtilityModels.getAnimation(self, UtilityModelEsrlInputOutput.getImage)
+        case "GLCFS":
+            return UtilityModels.getAnimation(self, UtilityModelGlcfsInputOutput.getImage)
+        case "NCEP":
+            return UtilityModels.getAnimation(self, UtilityModelNcepInputOutput.getImage)
+        case "WPCGEFS":
+            return UtilityModels.getAnimation(self, UtilityModelWpcGefsInputOutput.getImage)
+        case "SPCHRRR":
+            return UtilityModels.getAnimation(self, UtilityModelSpcHrrrInputOutput.getImage)
+        case "SPCHREF":
+            return UtilityModels.getAnimation(self, UtilityModelSpcHrefInputOutput.getImage)
+        case "SPCSREF":
+            return UtilityModels.getAnimation(self, UtilityModelSpcSrefInputOutput.getImage)
+        default:
+            return AnimationDrawable()
         }
-        return animDrawable
     }
     
     func setModel(_ model: String) {

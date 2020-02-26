@@ -22,16 +22,13 @@ final class UtilityModelEsrlInputOutput {
         case "HRRR_AK":
             htmlRunstatus = ("https://rapidrefresh.noaa.gov/alaska/").getHtml()
         case "RAP_NCEP":
-            htmlRunstatus = ("https://rapidrefresh.noaa.gov/RAP/Welcome.cgi?dsKey="
-                + om.model.lowercased() + "_jet&domain=full").getHtml()
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/RAP/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         case "RAP":
             htmlRunstatus = ("httpss://rapidrefresh.noaa.gov/RAP/").getHtml()
         case "HRRR_NCEP":
-            htmlRunstatus = ("https://rapidrefresh.noaa.gov/hrrr/HRRR/Welcome.cgi?dsKey="
-                + om.model.lowercased() + "_jet&domain=full").getHtml()
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/hrrr/HRRR/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         default:
-            htmlRunstatus = ("https://rapidrefresh.noaa.gov/" + om.model.lowercased()
-                + "/" + om.model + "/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
+            htmlRunstatus = ("https://rapidrefresh.noaa.gov/" + om.model.lowercased() + "/" + om.model + "/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         }
         var html = htmlRunstatus.parse(eslHrrrPattern1)
         let oldRunTimes = htmlRunstatus.parseColumn(eslHrrrPattern2)

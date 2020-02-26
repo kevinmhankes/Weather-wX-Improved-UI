@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityModelGlcfsInputOutput {
-
+    
     static func getImage(_ om: ObjectModel) -> Bitmap {
         var sectorLocal = om.sector
         if om.sector.split(" ").count > 1 {
