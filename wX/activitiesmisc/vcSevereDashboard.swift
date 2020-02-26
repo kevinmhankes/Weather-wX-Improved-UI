@@ -109,6 +109,7 @@ class vcSevereDashboard: UIwXViewController {
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
                         if !data.hasPrefix("O.EXP") {
                             let objectCardDashAlertItem = ObjectCardDashAlertItem(
+                                scrollView,
                                 stackView,
                                 warningType.senderNameList[index],
                                 warningType.eventList[index],
@@ -117,7 +118,7 @@ class vcSevereDashboard: UIwXViewController {
                                 warningType.areaDescList[index],
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
                             )
-                            self.stackView.addArrangedSubview(objectCardDashAlertItem.cardStackView.view)
+                            //self.stackView.addArrangedSubview(objectCardDashAlertItem.cardStackView.view)
                         }
                     }
                 }

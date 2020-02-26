@@ -31,6 +31,7 @@
 		 [FIX] SPC Meso image cutoff at top due to top toolbar
 		 [ADD] in UIPreferences use flutter/dart blue for highlight
   		 [FIX] SPC Meso - don't show codes in bottom menus
+  		 [FIX] Severe Dashboard warning card width in landscape
 56090 2020_02_20 [FIX] support NWS icon size in new framework
 		 [ADD] state level RWR
 		 [ADD] WatMcdMpd leave screen on for TTS and reset TTS on exit
