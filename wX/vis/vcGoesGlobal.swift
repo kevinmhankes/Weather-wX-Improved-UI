@@ -8,12 +8,12 @@ import UIKit
 
 class vcGoesGlobal: UIwXViewController {
     
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var index = 0
-    var animateButton = ObjectToolbarIcon()
-    var shareButton = ObjectToolbarIcon()
-    let prefToken = "GOESFULLDISK_IMG_FAV_URL"
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var index = 0
+    private var animateButton = ObjectToolbarIcon()
+    private var shareButton = ObjectToolbarIcon()
+    private let prefToken = "GOESFULLDISK_IMG_FAV_URL"
     
     override func viewDidLoad() {
         super.viewDidLoad()

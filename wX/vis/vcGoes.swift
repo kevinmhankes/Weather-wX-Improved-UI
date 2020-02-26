@@ -8,14 +8,14 @@ import UIKit
 
 class vcGoes: UIwXViewController {
     
-    var image = ObjectTouchImageView()
-    var productButton = ObjectToolbarIcon()
-    var sectorButton = ObjectToolbarIcon()
-    var animateButton = ObjectToolbarIcon()
+    private var image = ObjectTouchImageView()
+    private var productButton = ObjectToolbarIcon()
+    private var sectorButton = ObjectToolbarIcon()
+    private var animateButton = ObjectToolbarIcon()
+    private var savePrefs = true
+    private var firstRun = true
     var productCode = ""
     var sectorCode = ""
-    var savePrefs = true
-    var firstRun = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
