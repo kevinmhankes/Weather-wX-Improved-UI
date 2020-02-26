@@ -20,7 +20,9 @@ final class UtilityModelSpcSrefInputOutput {
         let latestRun = tmpTxt.split("</a>")[0]
         runData.appendListRun(latestRun.replace("z", ""))
         if !result.isEmpty {
-            result.forEach {runData.appendListRun($0.replace("z", ""))}
+            result.forEach {
+                runData.appendListRun($0.replace("z", ""))
+            }
         }
         tmpTxt = tmpTxt.parse(srefPattern2).parse("(f[0-9]{3})")
         runData.imageCompleteStr = tmpTxt

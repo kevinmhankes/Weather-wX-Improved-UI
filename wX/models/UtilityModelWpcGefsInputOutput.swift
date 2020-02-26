@@ -31,8 +31,7 @@ final class UtilityModelWpcGefsInputOutput {
         if om.sector == "AK" {
             sectorAdd = "_ak"
         }
-        let url = MyApplication.nwsWPCwebsitePrefix + "/exper/gefs/"
-            + om.run + "/GEFS_" + om.param + "_" + om.run + "Z_f" + om.time + sectorAdd +  ".gif"
+        let url = MyApplication.nwsWPCwebsitePrefix + "/exper/gefs/" + om.run + "/GEFS_" + om.param + "_" + om.run + "Z_f" + om.time + sectorAdd +  ".gif"
         return Bitmap(url)
     }
 }
