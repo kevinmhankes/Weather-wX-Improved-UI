@@ -17,6 +17,8 @@
 // [FIX] standardize var naming for objectTextView
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
+// [FIX] SPC Meso - don't show codes in bottom menus
+// [FIX] settins homescreen - use list instead of map for submenu
 
 56091 2020_02_25 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
