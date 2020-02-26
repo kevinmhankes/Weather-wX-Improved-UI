@@ -82,7 +82,8 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         }
         return UIImage(named: iconStr)!
     }
-
+    
+    let toolbarIconPadding: CGFloat = 11
     var button = UIButton()
 
     override init() {
@@ -100,10 +101,10 @@ final class ObjectToolbarIcon: UIBarButtonItem {
             )
         )
         button.imageEdgeInsets = UIEdgeInsets(
-            top: UIPreferences.toolbarIconPadding,
-            left: UIPreferences.toolbarIconPadding,
-            bottom: UIPreferences.toolbarIconPadding,
-            right: UIPreferences.toolbarIconPadding
+            top: toolbarIconPadding,
+            left: toolbarIconPadding,
+            bottom: toolbarIconPadding,
+            right: toolbarIconPadding
         )
         button.setImage(UIImage(named: iconStr), for: .normal)
         if #available(iOS 13, *) {

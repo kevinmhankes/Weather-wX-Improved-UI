@@ -61,7 +61,6 @@ class RadarPreferences {
         radarSpotterSize = 1
         radarTextSizePref = 15.0
         radarTextSize = 1.5
-        //wxoglSize = 20
         wxoglRadarAutorefreshBoolString = "true"
         #endif
         ObjectPolygonWarning.load()

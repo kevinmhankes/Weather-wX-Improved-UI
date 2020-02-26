@@ -9,29 +9,24 @@ import UIKit
 class UIPreferences {
     static var tabBarHeight: CGFloat = 48.0
     static var toolbarHeight: CGFloat = 44.0
-    static var toolbarIconSize = 26
-    static var toolbarIconPadding: CGFloat = 11
     static var statusBarHeight: CGFloat = 20.0
     static var toolbarIconSpacing: CGFloat = 17.0
-    //static var stackviewCardSpacing: CGFloat = 4.0
     static var stackviewCardSpacing: CGFloat = 1.0
     static var backButtonAnimation = true
     static var dualpaneRadarIcon = false
-    static var showMetarInCC = false
     static var unitsM = false
     static var unitsF = true
-    static var nwsIconTextColor = 0
-    static var nwsIconBottomColor = 0
+    static var nwsIconTextColor = Color.rgb(38, 97, 139)
+    static var nwsIconBottomColor = Color.rgb(255, 255, 255)
     static var textviewFontSize: CGFloat = 16.0
-    static var refreshLocMin = 0
+    static var refreshLocMin = 10
     static var nwsTextRemovelinebreaks = false
     static var tilesPerRow = 3
-    static var homescreenTextLength = 0
+    static var homescreenTextLength = 500
     static var radarToolbarTransparent = true
     static var mainScreenRadarFab = true
     static var mainScreenCondense = false
     static var nwsIconSize: Float = 80.0
-    //static let sideSpacing: CGFloat = 10.0
     static var useAwcRadarMosaic = false
     static var goesUseFullResolutionImages = false
 
@@ -56,7 +51,6 @@ class UIPreferences {
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
-        //nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 80.0)
         nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 68.0)
     }
 }

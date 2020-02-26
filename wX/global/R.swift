@@ -6,8 +6,6 @@
 
 class R {
 
-    //static let pre = ""
-
     class Raw {
         static let hw = "hw"
         static let hwv4 = "hwv4"
