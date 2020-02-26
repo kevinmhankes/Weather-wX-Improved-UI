@@ -6,9 +6,9 @@
 
 final class UtilityDownloadRadar {
 
-    static let urlTst = MyApplication.nwsApiUrl + "/alerts/active?event=Severe%20Thunderstorm%20Warning"
-    static let urlFfw = MyApplication.nwsApiUrl + "/alerts/active?event=Flash%20Flood%20Warning"
-    static let urlTor = MyApplication.nwsApiUrl + "/alerts/active?event=Tornado%20Warning"
+    private static let urlTst = MyApplication.nwsApiUrl + "/alerts/active?event=Severe%20Thunderstorm%20Warning"
+    private static let urlFfw = MyApplication.nwsApiUrl + "/alerts/active?event=Flash%20Flood%20Warning"
+    private static let urlTor = MyApplication.nwsApiUrl + "/alerts/active?event=Tornado%20Warning"
 
     static func getAllRadarData() {
         getPolygonVtec()
@@ -20,8 +20,6 @@ final class UtilityDownloadRadar {
 
     static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {
         type.storage.value = type.url.getNwsHtml()
-        //print(type.url)
-        //print(type.storage.value)
     }
 
     static func getPolygonVtecByTypeClear(_ type: ObjectPolygonWarning) {

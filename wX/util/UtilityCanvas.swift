@@ -8,9 +8,9 @@ import UIKit
 
 final class UtilityCanvas {
 
-    static let warningVtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]"
+    private static let warningVtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]"
         + "\\.[0-9]{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
-    static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
+    private static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
 
     static func addWarnings(_ provider: ProjectionType, _ bitmap: Bitmap, _ radarSite: String) {
         let isMercato = UtilityCanvasProjection.isMercator(provider)

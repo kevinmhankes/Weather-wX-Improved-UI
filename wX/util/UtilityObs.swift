@@ -9,7 +9,7 @@ import Foundation
 final class UtilityObs {
 
     static var obsClosestClass = ""
-    static var obsCodeToLocation = [String: String]()
+    private static var obsCodeToLocation = [String: String]()
 
     static func getStatus(_ conditionsTimeStr: String) -> String {
         var conditionsTimeStrLocal = conditionsTimeStr

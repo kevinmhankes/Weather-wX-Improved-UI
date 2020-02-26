@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilityDownloadNws {
 
-    static let appCreatorEmail = "joshua.tee@gmail.com"
+    private static let appCreatorEmail = "joshua.tee@gmail.com"
 
     static func getCap(_ sector: String) -> String {
         if sector == "us" {

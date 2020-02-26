@@ -8,7 +8,7 @@ import UIKit
 
 final class UtilityCanvasMain {
 
-    static let showPolygonsCanvas = false
+    private static let showPolygonsCanvas = false
 
     static func addCanvasItems(
         _ bitmapCanvas: Bitmap,
