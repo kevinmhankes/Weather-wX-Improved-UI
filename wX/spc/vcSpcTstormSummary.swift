@@ -48,7 +48,7 @@ class vcSpcTstormSummary: UIwXViewController {
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-
+    
     private func displayContent() {
         var imageCount = 0
         var imagesPerRow = 2
@@ -75,7 +75,7 @@ class vcSpcTstormSummary: UIwXViewController {
             imageCount += 1
         }
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

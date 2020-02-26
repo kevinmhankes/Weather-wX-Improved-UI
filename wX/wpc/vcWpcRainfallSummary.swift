@@ -7,9 +7,9 @@
 import UIKit
 
 class vcWpcRainfallSummary: UIwXViewController {
-
+    
     private var bitmaps = [Bitmap]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -23,11 +23,11 @@ class vcWpcRainfallSummary: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -37,30 +37,35 @@ class vcWpcRainfallSummary: UIwXViewController {
             }
         }
     }
-
+    
     private func displayContent() {
-        let imagesPerRow = 2
+        
+        var imageCount = 0
+        var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        [0, 1].forEach {
-            imageStackViewList.append(
-                ObjectStackView(
-                    UIStackView.Distribution.fill,
-                    NSLayoutConstraint.Axis.horizontal,
-                    spacing: UIPreferences.stackviewCardSpacing
-                )
-            )
-            self.stackView.addArrangedSubview(imageStackViewList[$0].view)
+        if UtilityUI.isTablet() {
+            imagesPerRow = 3
         }
-        self.bitmaps.enumerated().forEach {
+        self.bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                self.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
             _ = ObjectImage(
-                imageStackViewList[$0 / imagesPerRow].view,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.imageClicked(sender:))),
+                stackView,
+                image,
+                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
                 widthDivider: imagesPerRow
             )
+            imageCount += 1
         }
     }
-
+    
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
@@ -70,11 +75,11 @@ class vcWpcRainfallSummary: UIwXViewController {
         default: break
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -82,7 +87,7 @@ class vcWpcRainfallSummary: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
