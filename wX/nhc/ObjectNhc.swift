@@ -132,12 +132,10 @@ final class ObjectNhc: NSObject {
             }
         }
         if textAtl != "" {
-            let objectTextView = ObjectTextView(stackView, textAtl)
-            //objectTextView.constrain(scrollView)
+            _ = ObjectTextView(stackView, textAtl)
         }
         if textPac != "" {
-            let objectTextView = ObjectTextView(stackView, textPac)
-            //objectTextView.constrain(scrollView)
+            _ = ObjectTextView(stackView, textPac)
         }
     }
     
