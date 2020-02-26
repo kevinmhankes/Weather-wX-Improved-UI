@@ -237,7 +237,7 @@ extension UIViewController {
     //}
 
     func goToVC(_ target: UIViewController) {
-        UtilityActions.goToVCS(self, target)
+        UtilityActions.goToVc(self, target)
     }
 }
 

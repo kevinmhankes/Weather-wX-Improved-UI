@@ -274,7 +274,7 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func genericClicked(_ vc: UIViewController) {
-        UtilityActions.goToVCS(uiv!, vc)
+        uiv!.goToVC(vc)
     }
     
     @objc func cloudClicked() {

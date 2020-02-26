@@ -14,11 +14,11 @@ final class UtilityActions {
             let vc = vcGoes()
             vc.productCode = ""
             vc.sectorCode = ""
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         } else {
             let vc = vcCanadaRadar()
             vc.caRadarImageType = "vis"
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         }
     }
     
@@ -27,7 +27,7 @@ final class UtilityActions {
             let vc = vcCanadaRadar()
             vc.caRadarImageType = "radar"
             vc.caRadarProvince = ""
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         } else {
             let vc = vcNexradRadar()
             if UIPreferences.dualpaneRadarIcon {
@@ -35,27 +35,27 @@ final class UtilityActions {
             } else {
                 vc.wxoglPaneCount = "1"
             }
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         }
     }
     
     static func wfotextClicked(_ uiv: UIViewController) {
         if Location.isUS {
             let vc = vcWfoText()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         } else {
             let vc = vcCanadaText()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         }
     }
     
     static func dashClicked(_ uiv: UIViewController) {
         if Location.isUS {
             let vc = vcSevereDashboard()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         } else {
             let vc = vcCanadaWarnings()
-            goToVCS(uiv, vc)
+            uiv.goToVC(vc)
         }
     }
     
@@ -72,18 +72,6 @@ final class UtilityActions {
     }
     
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
-        //var token = ""
-        if menuItem.hasPrefix("Help Mode") {
-            if !MyApplication.helpMode {
-                MyApplication.helpMode = true
-                _ = ObjectToast("Help mode is now enabled. Select again to turn off. Tap any icon to see help text.",
-                                uiv, button)
-            } else {
-                MyApplication.helpMode = false
-                _ = ObjectToast("Help mode is now disabled. Select again to turn on.", uiv, button)
-            }
-            return
-        }
         switch menuItem {
         case "Soundings":
             let vc = vcSoundings()
@@ -140,7 +128,7 @@ final class UtilityActions {
         }
     }
     
-    static func goToVCS(_ uiv: UIViewController, _ target: UIViewController) {
+    static func goToVc(_ uiv: UIViewController, _ target: UIViewController) {
         target.modalPresentationStyle = .fullScreen
         uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }

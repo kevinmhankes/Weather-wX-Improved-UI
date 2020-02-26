@@ -50,7 +50,6 @@ public class ObjectMap {
             case .SOUNDING:
                 latLon = Utility.getSoundingSiteLatLon(ridArr[0])
             }
-            //let latlon = Utility.getWfoSiteLatLon(ridArr[0])
             if ridArr.count > 1 {
                 let arr = [
                     "name": ridArr[0],

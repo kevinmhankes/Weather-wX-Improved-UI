@@ -97,12 +97,10 @@ final class ObjectForecastPackageHazards {
         if isUS {
             let vc = vcUSAlertsDetail()
             vc.usalertsDetailUrl = sender.strData
-            //ActVars.vc.goToVC(vc)
             uiv!.goToVC(vc)
         } else {
             let vc = vcTextViewer()
             vc.textViewText = sender.strData
-            //ActVars.vc.goToVC(vc)
             uiv!.goToVC(vc)
         }
     }

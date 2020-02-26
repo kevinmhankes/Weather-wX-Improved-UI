@@ -22,7 +22,6 @@ final class ObjectCard7DayCollection {
         self.scrollView = scrollView
         var numCards = 0
         let stackViewLocal7Day = ObjectStackViewHS()
-        //stackViewLocal7Day.setupWithPadding()
         stackView.addArrangedSubview(stackViewLocal7Day)
         stackViewLocal7Day.setupWithPadding(stackView)
         let dayArr = objSevenDay.forecastList

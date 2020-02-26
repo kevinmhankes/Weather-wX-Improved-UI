@@ -51,7 +51,6 @@ public class ObjectScrollStackView {
         uiv.view.addSubview(scrollView)
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
-        //fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: (uiv.tabBarController?.tabBar.topAnchor)!)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
         fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor)
         fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor)
@@ -60,7 +59,6 @@ public class ObjectScrollStackView {
         stackView.axis = .vertical
         stackView.spacing = UIPreferences.stackviewCardSpacing
         stackView.alignment = .center
-        //stackView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         scrollView.addSubview(stackView)
         stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
