@@ -18,6 +18,7 @@
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 
+56092 2020_02_26 
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
