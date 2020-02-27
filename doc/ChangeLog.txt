@@ -13,13 +13,10 @@
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [REF] use enum for icon type 
-// [ADD] look into nav drawer and true card class
-// [FIX] standardize var naming for objectTextView
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 // [ADD] WPC Excessive rainfall add Day # in toolbar
 // [ADD] SPC fire outlook add Day # in toolbar
-// [FIX] if spotter labels enabled but not spotters it does not work
 
 56092 2020_02_27 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
