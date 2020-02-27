@@ -7,44 +7,46 @@
 final class UtilityCanadaHourly {
     
     static func getString(_ location: Int) -> String {
+        print("URL: ")
         let url = MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-" + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
+        print("URL: " + url)
         let html = url.getHtml()
         let header = "Time   Temp   Summary   PrecipChance   Wind   Humindex"
         return header + parse(html)
     }
     
     static func getUrl(_ location: Int) -> String {
-        return MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
+        let url =  MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-"
             + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
+        //print("URL: " + url)
+        return url
     }
     
     static func parse(_ html: String) -> String {
-        let htmlLocal = html.parse("<tbody>(.*?)</tbody>")
-        let timeAl = htmlLocal.parseColumn("<tr>.*?<td.*?>(.*?)</td>.*?<td.*?>.*?</td>.*?<div"
+        //let htmlLocal = html.parse("<tbody>(.*?)</tbody>")
+        let timeAl = html.parseColumn("<td headers=.header1. class=.text-center.>([0-9]{2}:[0-9]{2})</td>")
+        let tempAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>(.*?)</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
             + "<abbr title=\".*?\">.*?</abbr>.*?<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let tempAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>(.*?)</td>.*?<div"
-            + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
-            + "<abbr title=\".*?\">.*?</abbr>.*?<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let currCondAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
+        let currCondAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>(.*?)</p>.*?</div>.*?<td.*?>.*?</td>.*?"
             + "<abbr title=\".*?\">.*?</abbr>.*?<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let popsAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
+        let popsAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>(.*?)</td>.*?"
             + "<abbr title=\".*?\">.*?</abbr>.*?<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let windDirAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
+        let windDirAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
             + "<abbr title=\".*?\">(.*?)</abbr>.*?<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let windSpeedAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
+        let windSpeedAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
             + "<abbr title=\".*?\">.*?</abbr>(.*?)<br />.*?<td.*?>.*?</td>.*?</tr>")
-        let humindexAl = htmlLocal.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
+        let humindexAl = html.parseColumn("<tr>.*?<td.*?>.*?</td>.*?<td.*?>.*?</td>.*?<div"
             + " class=\"media.body\">.*?<p>.*?</p>.*?</div>.*?<td.*?>.*?</td>.*?"
             + "<abbr title=\".*?\">.*?</abbr>.*?<br />.*?<td.*?>(.*?)</td>.*?</tr>")
         let space = "   "

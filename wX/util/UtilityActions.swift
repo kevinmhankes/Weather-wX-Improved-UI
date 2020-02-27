@@ -76,7 +76,7 @@ final class UtilityActions {
         case "Soundings":
             let vc = vcSoundings()
             uiv.goToVC(vc)
-        case "Hourly":
+        case "Hourly Forecast":
             if Location.isUS {
                 let vc = vcHourly()
                 uiv.goToVC(vc)
@@ -111,7 +111,7 @@ final class UtilityActions {
                 vc.caRadarImageType = "radar"
                 uiv.goToVC(vc)
             }
-        case "Alerts":
+        case "US Alerts":
             if Location.isUS {
                 let vc = vcUSAlerts()
                 uiv.goToVC(vc)
