@@ -20,7 +20,7 @@ class vcTextViewer: UIwXViewControllerWithAudio {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 playButton,
-                playListButton,
+                //playListButton,
                 shareButton
         ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
