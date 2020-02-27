@@ -579,7 +579,7 @@ class WXMetalRender {
                         self.constructLevel3TextProduct($0)
                     }
                 }
-                if PolygonType.SPOTTER.display {
+                if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
                     self.constructSpotters()
                 }
                 if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
@@ -816,7 +816,7 @@ class WXMetalRender {
         spotterBuffers.lenInit = PolygonType.SPOTTER.size
         //spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.lenInit)
         spotterBuffers.triangleCount = 6
-        _ = UtilitySpotter.getSpotterData()
+        _ = UtilitySpotter.get()
         spotterBuffers.latList = UtilitySpotter.lat
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)

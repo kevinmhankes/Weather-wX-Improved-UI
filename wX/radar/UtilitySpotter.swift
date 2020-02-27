@@ -12,7 +12,7 @@ public class UtilitySpotter {
     static var lat = [Double]()
     static var lon = [Double]()
 
-    static func getSpotterData() -> [Spotter] {
+    static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
             spotterList = []
             reportsList = []

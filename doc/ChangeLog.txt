@@ -30,6 +30,7 @@
 		 [ADD] main screen verbiage enhancement for Hourly and Alerts to US Alerts and Hourly Forecast
 		 [FIX] vc GOES and Global don' t have properties marked as private
 		 [FIX] Canadian Hourly
+		 [FIX] in nexrad radar if spotter labels chosen but not spotters then labels would not show
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
