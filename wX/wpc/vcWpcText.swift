@@ -12,7 +12,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var productButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private var product = "PMDSPD"
-    private var textView = ObjectTextView()
+    private var objectTextView = ObjectTextView()
     private var playListButton = ObjectToolbarIcon()
     private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
     private var synth = AVSpeechSynthesizer()
@@ -38,8 +38,8 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        textView = ObjectTextView(stackView)
-        textView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView = ObjectTextView(stackView)
+        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
         } else {
@@ -64,7 +64,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
             // FIXME fix upstream data source to uppercase
             self.html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async {
-                self.textView.text = self.html
+                self.objectTextView.text = self.html
                 self.productButton.title = self.product
                 Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
             }
@@ -88,15 +88,15 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func playClicked() {
-        UtilityActions.playClicked(textView.view, synth, playButton)
+        UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, textView.text)
+        UtilityShare.share(self, sender, objectTextView.text)
     }
 
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, textView.text, self, playListButton)
+        UtilityPlayList.add(self.product, objectTextView.text, self, playListButton)
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
