@@ -9,12 +9,12 @@ final class UtilitySettingsUI {
     static let boolean  = [
         "UNITS_M": "Use Millibars",
         "BACK_ARROW_ANIM": "Show animation with back arrow" ,
-        "DUALPANE_RADAR_ICON": "Dual-pane radar from main screen",
-        "WFO_REMEMBER_LOCATION": "WFO - Remember location",
-        "RADAR_TOOLBAR_TRANSPARENT": "Radar: transparent toolbars",
+        "DUALPANE_RADAR_ICON": "Lightning button opens dual pane radar",
+        "WFO_REMEMBER_LOCATION": "WFO text viewer remembers location",
+        "RADAR_TOOLBAR_TRANSPARENT": "Radar uses transparent toolbars",
         "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
         "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
-        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the main NWS images.",
+        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the NWS images",
         "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images"
     ]
 
