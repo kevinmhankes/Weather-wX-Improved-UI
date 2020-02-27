@@ -5,26 +5,25 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
-    private var playListButton = ObjectToolbarIcon()
-    private var playButton = ObjectToolbarIcon()
     private var spcMcdNumber = ""
     private var text = ""
-    private var synth = AVSpeechSynthesizer()
-    private var product = ""
     var day = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        synth.delegate = self
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                playButton,
+                playListButton,
+                shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -42,11 +41,6 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
     }
     
-    @objc override func doneClicked() {
-        UtilityActions.resetAudio(&synth, playButton)
-        super.doneClicked()
-    }
-    
     @objc func imageClicked() {
         let number = Int(day)! - 1
         let vc = vcImageViewer()
@@ -54,22 +48,8 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         self.goToVC(vc)
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmap, text)
-    }
-    
-    @objc func playClicked() {
-        UtilityActions.playClicked(text, synth, playButton)
-    }
-    
-    @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, text, self, playListButton)
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
-        }
     }
     
     private func displayContent() {
@@ -99,7 +79,6 @@ class vcWpcRainfallDiscussion: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
-        let objectTextView: ObjectTextView
         if tabletInLandscape {
             objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
         } else {
