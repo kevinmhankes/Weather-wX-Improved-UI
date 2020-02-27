@@ -19,12 +19,14 @@
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
 // [ADD] WPC Excessive rainfall add Day # in toolbar
 // [ADD] SPC fire outlook add Day # in toolbar
+// [FIX] if spotter labels enabled but not spotters it does not work
 
 56092 2020_02_27 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
 		 [FIX] remove option to use Farenheit vs Celsius as it was implemeneted in only one spot
-		 [FIX] remove ability to tap text in settings in help screens as information was not helpful, instead improve help labels
+		 [FIX] remove ability to tap text in settings in help screens as information was not helpful
+		 [ADD] improve existings labels in settings
 		 [FIX] vc GOES and Global don' t have properties marked as private
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code

@@ -10,7 +10,7 @@ final class UtilitySettingsRadar {
         "COD_WARNINGS_DEFAULT": "Warnings (Tor/Tstorm/Ffw)" ,
         "DUALPANE_SHARE_POSN": "Multi-pane: share lat/lon/zoom",
         "WXOGL_SPOTTERS": "Spotters",
-        "WXOGL_SPOTTERS_LABEL": "Spotter labels",
+        "WXOGL_SPOTTERS_LABEL": "Spotter Labels",
         "WXOGL_OBS": "Observations",
         "WXOGL_OBS_WINDBARBS": "Windbarbs",
         "LOCDOT_FOLLOWS_GPS": "Location marker follows GPS",
