@@ -86,8 +86,7 @@ class vcGoes: UIwXViewController {
     }
     
     @objc func productClicked() {
-        let list: [String] = [String] (UtilityGoes.products.keys.sorted())
-        _ = ObjectPopUp(self, "Product Selection", productButton, list, self.productChanged(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityGoes.productLabels, self.productChanged(_:))
     }
     
     @objc func sectorClicked() {
@@ -132,9 +131,9 @@ class vcGoes: UIwXViewController {
     
     @objc func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
+            let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
             DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
+                self.image.startAnimating(animationDrawable)
             }
         }
     }

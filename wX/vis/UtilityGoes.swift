@@ -53,16 +53,7 @@ final class UtilityGoes {
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
-        let url = MyApplication.goes16Url
-            + "/"
-            + satellite
-            + "/ABI/"
-            + sectorLocal
-            + "/"
-            + product
-            + "/"
-            + getImageSize(sector)
-            + ".jpg"
+        let url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/" + getImageSize(sector) + ".jpg"
         return Bitmap(url)
     }
     
@@ -134,26 +125,26 @@ final class UtilityGoes {
         "np"
     ]
     
-    static let products = [
-        "00 True color daytime, multispectral IR at night": "00GEOCOLOR",
-        "00.47 um (Band 1) Blue - Visible": "01",
-        "00.64 um (Band 2) Red - Visible": "02",
-        "00.86 um (Band 3) Veggie - Near IR": "03",
-        "01.37 um (Band 4) Cirrus - Near IR": "04",
-        "01.6 um (Band 5) Snow/Ice - Near IR": "05",
-        "02.2 um (Band 6) Cloud Particle - Near IR": "06",
-        "03.9 um (Band 7) Shortwave Window - IR": "07",
-        "06.2 um (Band 8) Upper-Level Water Vapor - IR": "08",
-        "06.9 um (Band 9) Mid-Level Water Vapor - IR": "09",
-        "07.3 um (Band 10) Lower-level Water Vapor - IR": "10",
-        "08.4 um (Band 11) Cloud Top - IR": "11",
-        "09.6 um (Band 12) Ozone - IR": "12",
-        "10.3 um (Band 13) Clean Longwave Window - IR": "13",
-        "11.2 um (Band 14) Longwave Window - IR": "14",
-        "12.3 um (Band 15) Dirty Longwave Window - IR": "15",
-        "13.3 um (Band 16) CO2 Longwave - IR": "16",
-        "AirMass - RGB composite based on the data from IR and WV": "AirMass",
-        "Sandwich RGB - Bands 3 and 13 combo": "Sandwich"
+    static let productLabels = [
+        "True color daytime, multispectral IR at night",
+        "00.47 um (Band 1) Blue - Visible",
+        "00.64 um (Band 2) Red - Visible",
+        "00.86 um (Band 3) Veggie - Near IR",
+        "01.37 um (Band 4) Cirrus - Near IR",
+        "01.6 um (Band 5) Snow/Ice - Near IR",
+        "02.2 um (Band 6) Cloud Particle - Near IR",
+        "03.9 um (Band 7) Shortwave Window - IR",
+        "06.2 um (Band 8) Upper-Level Water Vapor - IR",
+        "06.9 um (Band 9) Mid-Level Water Vapor - IR",
+        "07.3 um (Band 10) Lower-level Water Vapor - IR",
+        "08.4 um (Band 11) Cloud Top - IR",
+        "09.6 um (Band 12) Ozone - IR",
+        "10.3 um (Band 13) Clean Longwave Window - IR",
+        "11.2 um (Band 14) Longwave Window - IR",
+        "12.3 um (Band 15) Dirty Longwave Window - IR",
+        "13.3 um (Band 16) CO2 Longwave - IR",
+        "AirMass - RGB composite based on the data from IR and WV",
+        "Sandwich RGB - Bands 3 and 13 combo"
     ]
     
     static let productCodes = [
