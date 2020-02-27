@@ -5,24 +5,19 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcCanadaText: UIwXViewController {
+class vcCanadaText: UIwXViewControllerWithAudio {
     
-    private var product = "FOCN45"
-    private var objectTextView = ObjectTextView()
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var html = ""
-    private var playButton = ObjectToolbarIcon()
-    private var playlistButton = ObjectToolbarIcon()
-    private let synth = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        product = "FOCN45"
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
+        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        //playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -30,8 +25,8 @@ class vcCanadaText: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 productButton,
                 playButton,
-                shareButton,
-                playlistButton
+                playListButton,
+                shareButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -49,25 +44,18 @@ class vcCanadaText: UIwXViewController {
         }
     }
     
-    @objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
-    }
-    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Product Selection", productButton, UtilityCanada.products, self.productChanged(_:))
     }
     
     func productChanged(_ product: String) {
         self.product = product
+        UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, html)
-    }
-    
-    @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, self.html, self, playlistButton)
     }
     
     private func displayContent() {
