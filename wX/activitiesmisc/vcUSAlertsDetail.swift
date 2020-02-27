@@ -5,16 +5,13 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcUSAlertsDetail: UIwXViewController {
-
-    private var playButton = ObjectToolbarIcon()
+class vcUSAlertsDetail: UIwXViewControllerWithAudio {
+    
     private var cap = CapAlert()
     private var objAlertDetail = ObjectAlertDetail()
-    private var synth = AVSpeechSynthesizer()
     var usalertsDetailUrl = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -25,15 +22,21 @@ class vcUSAlertsDetail: UIwXViewController {
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                playButton,
+                shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         stackView.spacing = 0
@@ -45,20 +48,15 @@ class vcUSAlertsDetail: UIwXViewController {
             }
         }
     }
-
-    @objc override func doneClicked() {
-        UtilityActions.resetAudio(&synth, playButton)
-        super.doneClicked()
-    }
-
-    @objc func playClicked() {
+    
+    @objc override func playClicked() {
         UtilityActions.playClicked(cap.text + " " + cap.instructions, synth, playButton)
     }
-
-    @objc func shareClicked(sender: UIButton) {
+    
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, cap.text.removeHtml())
     }
-
+    
     private func displayContent() {
         self.objAlertDetail.updateContent(self.scrollView, self.cap)
     }
