@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
+class vcWpcText: UIwXViewControllerWithAudio {
     
     private var productButton = ObjectToolbarIcon()
     private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)

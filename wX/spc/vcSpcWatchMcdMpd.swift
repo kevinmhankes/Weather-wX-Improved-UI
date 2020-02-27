@@ -5,44 +5,44 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcSpcWatchMcdMpd: UIwXViewController {
-
+class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
+    
     private var bitmaps = [Bitmap]()
     private var numbers = [String]()
     private var listOfText = [String]()
     private var urls = [String]()
-    private var playListButton = ObjectToolbarIcon()
-    private var playButton = ObjectToolbarIcon()
     private var productNumber = ""
-    private var synth = AVSpeechSynthesizer()
     private var objectWatchProduct: ObjectWatchProduct?
     var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonType.WATCH
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         // FIXME redundant vars
         productNumber = watchMcdMpdNumber
         if productNumber != "" {
             watchMcdMpdNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                playButton,
+                playListButton,
+                shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
     
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var productNumberList = [String]()
@@ -66,7 +66,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
             }
         }
     }
-
+    
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if self.bitmaps.count == 1 {
             let vc = vcImageViewer()
@@ -80,29 +80,23 @@ class vcSpcWatchMcdMpd: UIwXViewController {
             self.goToVC(vc)
         }
     }
-
-    @objc func shareClicked(sender: UIButton) {
+    
+    @objc override func shareClicked(sender: UIButton) {
         if let object = self.objectWatchProduct {
             UtilityShare.shareImage(self, sender, bitmaps, object.text)
         }
     }
-
-    @objc func playClicked() {
-        if let object = self.objectWatchProduct {
-            UtilityActions.playClicked(object.text, synth, playButton)
-        }
-    }
-
-    @objc func playlistClicked() {
+    
+    @objc override func playlistClicked() {
         if let object = self.objectWatchProduct {
             UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
-
+    
     private func displayContent() {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
-            tabletInLandscape = self.bitmaps.count == 1
+        tabletInLandscape = self.bitmaps.count == 1
         #endif
         if tabletInLandscape {
             stackView.axis = .horizontal
@@ -131,7 +125,6 @@ class vcSpcWatchMcdMpd: UIwXViewController {
                 views.append(objectImage.img)
             }
             if self.bitmaps.count == 1 {
-                let objectTextView: ObjectTextView
                 if tabletInLandscape {
                     objectTextView = ObjectTextView(self.stackView, self.objectWatchProduct?.text ?? "", widthDivider: 2)
                 } else {
@@ -151,7 +144,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -159,7 +152,7 @@ class vcSpcWatchMcdMpd: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
