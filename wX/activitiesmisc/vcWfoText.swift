@@ -5,33 +5,25 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 import MapKit
 
-class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDelegate {
-
-    private var product = "AFD"
-    private var objectTextView = ObjectTextView()
+class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
+    
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
-    private var playButton = ObjectToolbarIcon()
-    private var playlistButton = ObjectToolbarIcon()
-    private var synth = AVSpeechSynthesizer()
     private var html = ""
     private let map = ObjectMap(.WFO)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        synth.delegate = self
+        product = "AFD"
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.wfos)
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
@@ -39,7 +31,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
                 siteButton,
                 productButton,
                 playButton,
-                playlistButton,
+                playListButton,
                 shareButton
             ]
         ).items
@@ -58,13 +50,12 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         }
         self.getContent()
     }
-
+    
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.product.hasPrefix("RTP") && self.product.count == 5 {
@@ -104,17 +95,7 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
             }
         }
     }
-
-    @objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
-        }
-    }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Product Selection", productButton, UtilityWfoText.wfoProdListNoCode, self.productChanged(_:))
     }
@@ -124,25 +105,19 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
         UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
-
-    /*func productChanged(_ product: String) {
-        self.product = product
-        UtilityActions.resetAudio(&synth, playButton)
-        self.getContent()
-    }*/
-
-    @objc func shareClicked(sender: UIButton) {
+    
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }
-
+    
     @objc func mapClicked() {
         map.toggleMap(self)
     }
-
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         return map.mapView(annotation)
     }
-
+    
     func mapView(
         _ mapView: MKMapView,
         annotationView: MKAnnotationView,
@@ -150,15 +125,15 @@ class vcWfoText: UIwXViewController, MKMapViewDelegate, AVSpeechSynthesizerDeleg
     ) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
-
+    
     func mapCall(annotationView: MKAnnotationView) {
         scrollView.scrollToTop()
         self.wfo = (annotationView.annotation!.title!)!
         UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
-
-    @objc func playlistClicked() {
-        UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playlistButton)
+    
+    @objc override func playlistClicked() {
+        UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
     }
 }

@@ -5,13 +5,10 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
 class vcHourly: UIwXViewController {
 
     private var html = ""
-    private var playButton = ObjectToolbarIcon()
-    private let synth = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +19,7 @@ class vcHourly: UIwXViewController {
             object: nil
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -44,10 +40,6 @@ class vcHourly: UIwXViewController {
 
     @objc func textAction() {
         scrollView.scrollToTop()
-    }
-
-    @objc func playClicked() {
-        UtilityActions.playClicked(self.html, synth, playButton)
     }
 
     @objc func shareClicked(sender: UIButton) {

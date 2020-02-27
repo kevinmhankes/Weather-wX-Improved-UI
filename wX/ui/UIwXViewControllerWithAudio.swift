@@ -17,7 +17,6 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     // doneClicked resets the audio
     
     var playButton = ObjectToolbarIcon()
-    //private var objectTextView = ObjectTextView()
     var playListButton = ObjectToolbarIcon()
     var synth = AVSpeechSynthesizer()
     var objectTextView = ObjectTextView()
