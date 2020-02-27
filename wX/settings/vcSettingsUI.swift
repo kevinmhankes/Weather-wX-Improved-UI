@@ -7,9 +7,9 @@
 import UIKit
 
 class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     private var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
@@ -18,13 +18,13 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
         UtilityUI.determineDeviceType()
         self.displayContent()
     }
-
+    
     @objc override func doneClicked() {
         MyApplication.initPreferences()
         AppColors.update()
         super.doneClicked()
     }
-
+    
     @objc func switchChanged(sender: UISwitch) {
         let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
@@ -34,26 +34,26 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         Utility.writePref(prefLabels[sender.tag], truthString)
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
         return UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
@@ -71,11 +71,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     }
-
-    //@objc func getHelp(sender: UIButton) {
-    //    UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsUI.helpStrings)
-    //}
-
+    
     private func displayContent() {
         Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
             let switchObject = ObjectSettingsSwitch(
@@ -84,11 +80,6 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 UtilitySettingsUI.booleanDefault,
                 UtilitySettingsUI.boolean
             )
-            //switchObject.button.addTarget(
-            //    self,
-            //    action: #selector(getHelp(sender:)),
-            //    for: .touchUpInside
-            //)
             switchObject.switchUi.addTarget(
                 self,
                 action: #selector(switchChanged(sender:)),
@@ -102,7 +93,6 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            //objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.firstIndex(of: prefValue)
@@ -119,7 +109,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     }
-
+    
     func setupSliders() {
         [
             "TEXTVIEW_FONT_SIZE",
@@ -128,7 +118,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "UI_TILES_PER_ROW",
             "HOMESCREEN_TEXT_LENGTH_PREF",
             "NWS_ICON_SIZE_PREF"
-        ].forEach {
+            ].forEach {
                 let objSlider = ObjectSlider(
                     self,
                     stackView,
@@ -138,14 +128,14 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
-
+    
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
         let objSlider = objIdToSlider[objId]!
         objSlider.setLabel()
         Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -153,7 +143,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
