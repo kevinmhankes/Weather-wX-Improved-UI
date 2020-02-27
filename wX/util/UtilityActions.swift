@@ -149,21 +149,14 @@ final class UtilityActions {
     
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         let menuList = [
-            "Hourly",
+            "Hourly Forecast",
             "Radar Mosaic",
-            "Alerts",
+            "US Alerts",
             "Observations",
             "Soundings",
             "PlayList",
             "Settings"
         ]
-        /*if MyApplication.helpMode {
-            menuList.enumerated().forEach {
-                if $1.contains("Help Mode") {
-                    menuList[$0] = "Help Mode - On"
-                }
-            }
-        }*/
         let alert = UIAlertController(
             title: "Select from:",
             message: "",

@@ -27,6 +27,7 @@
 		 [FIX] remove option to use Farenheit vs Celsius as it was implemeneted in only one spot
 		 [FIX] remove ability to tap text in settings in help screens as information was not helpful
 		 [ADD] improve existings labels in settings
+		 [ADD] main screen verbiage enhancement for Hourly and Alerts to US Alerts and Hourly Forecast
 		 [FIX] vc GOES and Global don' t have properties marked as private
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
