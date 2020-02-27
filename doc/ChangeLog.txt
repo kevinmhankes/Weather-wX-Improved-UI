@@ -30,6 +30,7 @@
 		 [FIX] in nexrad radar if spotter labels chosen but not spotters then labels would not show
 		 [ADD] in playlist change newlines to spaces and show 400 characters instead of 200
 		 [FIX] fix duplicate spaces by translate in String extension for line breaks
+		 [FIX] TextViewer move share icon to far right for consistency
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
