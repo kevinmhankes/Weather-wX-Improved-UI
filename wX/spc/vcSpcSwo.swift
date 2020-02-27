@@ -5,26 +5,17 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcSpcSwo: UIwXViewControllerWithAudio {
     
     private var bitmaps = [Bitmap]()
     private var html = ""
-    private var product = ""
-    private var playButton = ObjectToolbarIcon()
-    private var playlistButton = ObjectToolbarIcon()
-    private var objectTextView = ObjectTextView()
-    private var synth = AVSpeechSynthesizer()
     var spcSwoDay = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        synth.delegate = self
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let statusButton = ObjectToolbarIcon(title: "Day " + spcSwoDay, self, nil)
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let stateButton = ObjectToolbarIcon(title: "STATE", self, #selector(stateClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -33,7 +24,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
                 GlobalVariables.flexBarButton,
                 stateButton,
                 playButton,
-                playlistButton,
+                playListButton,
                 shareButton
             ]
         ).items
@@ -42,11 +33,6 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             stateButton.title = ""
         }
         self.getContent()
-    }
-    
-    @objc override func doneClicked() {
-        UtilityActions.resetAudio(&synth, playButton)
-        super.doneClicked()
     }
     
     func getContent() {
@@ -71,22 +57,8 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
         self.goToVC(vc)
     }
     
-    @objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
-        }
-    }
-    
-    @objc func shareClicked(sender: UIButton) {
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps, self.html)
-    }
-    
-    @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, self.html, self, playlistButton)
     }
     
     @objc func stateClicked() {
@@ -103,7 +75,7 @@ class vcSpcSwo: UIwXViewController, AVSpeechSynthesizerDelegate {
             imagesPerRow = 4
         }
         #if targetEnvironment(macCatalyst)
-            imagesPerRow = 4
+        imagesPerRow = 4
         #endif
         if bitmaps.count == 2 {
             imagesPerRow = 2

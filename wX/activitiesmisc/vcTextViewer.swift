@@ -5,51 +5,32 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
 
-class vcTextViewer: UIwXViewController {
-
-    private var objectTextView = ObjectTextView()
-    private var playButton = ObjectToolbarIcon()
-    private var playlistButton = ObjectToolbarIcon()
-    private var synth = AVSpeechSynthesizer()
+class vcTextViewer: UIwXViewControllerWithAudio {
+    
     var textViewProduct = ""
     var textViewText = ""
-
+    
+    // FIXME playlist add doesn't work
     override func viewDidLoad() {
         super.viewDidLoad()
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
                 GlobalVariables.flexBarButton,
                 playButton,
-                playlistButton,
+                playListButton,
                 shareButton
         ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         displayContent()
     }
-
-    @objc override func doneClicked() {
-        UtilityActions.resetAudio(&synth, playButton)
-        super.doneClicked()
-    }
-
-    @objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
-    }
-
-    @objc func shareClicked(sender: UIButton) {
+    
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, textViewText)
     }
-
-    @objc func playlistClicked() {
-        UtilityPlayList.add(textViewProduct, textViewText, self, playlistButton)
-    }
-
+    
     private func displayContent() {
         objectTextView = ObjectTextView(stackView, textViewText)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
