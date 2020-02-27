@@ -72,9 +72,9 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
 
-    @objc func getHelp(sender: UIButton) {
-        UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsUI.helpStrings)
-    }
+    //@objc func getHelp(sender: UIButton) {
+    //    UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsUI.helpStrings)
+    //}
 
     private func displayContent() {
         Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
@@ -84,11 +84,11 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 UtilitySettingsUI.booleanDefault,
                 UtilitySettingsUI.boolean
             )
-            switchObject.button.addTarget(
-                self,
-                action: #selector(getHelp(sender:)),
-                for: .touchUpInside
-            )
+            //switchObject.button.addTarget(
+            //    self,
+            //    action: #selector(getHelp(sender:)),
+            //    for: .touchUpInside
+            //)
             switchObject.switchUi.addTarget(
                 self,
                 action: #selector(switchChanged(sender:)),
@@ -102,7 +102,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
+            //objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.firstIndex(of: prefValue)

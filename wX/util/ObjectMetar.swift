@@ -127,11 +127,11 @@ final class ObjectMetar {
         var newValue = "NA"
         if value != "" {
             let tempD = Double(value) ?? 0.0
-            if UIPreferences.unitsF {
-                newValue = tempD.roundToString()
-            } else {
-                newValue = tempD.farenheitToCelsius()
-            }
+            //if UIPreferences.unitsF {
+            newValue = tempD.roundToString()
+            //} else {
+            //    newValue = tempD.farenheitToCelsius()
+            //}
         }
         return newValue
     }

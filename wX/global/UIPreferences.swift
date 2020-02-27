@@ -15,6 +15,7 @@ class UIPreferences {
     static var backButtonAnimation = true
     static var dualpaneRadarIcon = false
     static var unitsM = false
+    // This is no longer configurable by the user
     static var unitsF = true
     static var nwsIconTextColor = Color.rgb(38, 97, 139)
     static var nwsIconBottomColor = Color.rgb(255, 255, 255)
@@ -42,7 +43,7 @@ class UIPreferences {
         tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)
         homescreenTextLength = Utility.readPref("HOMESCREEN_TEXT_LENGTH_PREF", 500)
         unitsM = Utility.readPref("UNITS_M", "true").hasPrefix("t")
-        unitsF = Utility.readPref("UNITS_F", "true").hasPrefix("t")
+        //unitsF = Utility.readPref("UNITS_F", "true").hasPrefix("t")
         nwsIconTextColor = Utility.readPref("NWS_ICON_TEXT_COLOR", Color.rgb(38, 97, 139))
         nwsIconBottomColor = Utility.readPref("NWS_ICON_BOTTOM_COLOR", Color.rgb(255, 255, 255))
         refreshLocMin = Utility.readPref("REFRESH_LOC_MIN", 10)

@@ -100,10 +100,6 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/nfd" + product.lowercased().replace("ns", "") + ".html"
             text = textUrl.getHtmlSep()
             text = UtilityString.extractPre(text)
-            //text = text.parse(MyApplication.pre2Pattern)
-            //if UIPreferences.nwsTextRemovelinebreaks {
-            //    text = text.removeLineBreaks()
-            //}
         } else if product.contains("SPCMCD") {
             let no = product.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
@@ -365,7 +361,8 @@ final class UtilityDownload {
         case "WFOWARNINGS":
             needsBitmap = false
             bitmap = Bitmap("https://www.weather.gov/wwamap/png/" + Location.wfo.lowercased() + ".png")
-        case "RAD_1KM": break
+        case "RAD_1KM":
+            break
         case "IR_2KM":
             needsBitmap = false
             bitmap = Bitmap()
@@ -381,10 +378,7 @@ final class UtilityDownload {
                 bitmap = UtilityUSImgNwsMosaic.getLocalRadarMosaic()
             } else {
                 var product = "rad_rala"
-                //let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
                 let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
-                //var sector = "us"
-                //sector = Utility.readPref(prefTokenSector, sector)
                 let sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
                 product = Utility.readPref(prefTokenProduct, product)
                 bitmap = UtilityAwcRadarMosaic.get(sector, product)
@@ -464,33 +458,27 @@ final class UtilityDownload {
         case "SPCMESO_500":
             let param = "500mb"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_MSLP":
             let param = "pmsl"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_TTD":
             let param = "ttd"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_RGNLRAD":
             let param = "rgnlrad"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_LLLR":
             let param = "lllr"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_LAPS":
             let param = "laps"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "CONUSWV":
             needsBitmap = false
             bitmap = UtilityGoes.getImage("09", "CONUS")
@@ -504,7 +492,8 @@ final class UtilityDownload {
             let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latlon)
             needsBitmap = false
             bitmap = UtilitySpcSoundings.getImage(nwsOffice)
-        case "STRPT": url = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
+        case "STRPT":
+            url = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
         default:
             bitmap = Bitmap()
             needsBitmap = false
