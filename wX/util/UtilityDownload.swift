@@ -109,7 +109,7 @@ final class UtilityDownload {
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
-            text = text.removeLineBreaks()
+            text = text.removeLineBreaks().replaceAll("  ", " ")
         } else if product.contains("SPCWAT") {
             let no = product.substring(6)
             let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
