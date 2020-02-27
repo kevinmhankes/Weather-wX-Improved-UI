@@ -5,17 +5,11 @@
  *****************************************************************************/
 
 import UIKit
-//import AVFoundation
 
 class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
     
     private var productButton = ObjectToolbarIcon()
-    //private var playButton = ObjectToolbarIcon()
-    //private var product = "PMDSPD"
-    //private var objectTextView = ObjectTextView()
-    //private var playListButton = ObjectToolbarIcon()
     private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
-    //private var synth = AVSpeechSynthesizer()
     private var html = ""
     var wpcTextProduct = ""
     
@@ -23,10 +17,7 @@ class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
         super.viewDidLoad()
         product = "PMDSPD"
         UIApplication.shared.isIdleTimerDisabled = true
-        //synth.delegate = self
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        //playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -52,7 +43,6 @@ class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
     
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        //UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
     
@@ -87,22 +77,4 @@ class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
         UtilityActions.resetAudio(&synth, playButton)
         self.getContent()
     }
-    
-    /*@objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
-    }
-    
-    @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, objectTextView.text)
-    }
-    
-    @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, objectTextView.text, self, playListButton)
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
-        }
-    }*/
 }
