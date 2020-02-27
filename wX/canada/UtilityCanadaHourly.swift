@@ -32,7 +32,7 @@ final class UtilityCanadaHourly {
         let temperatures = html.parseColumn("<td headers=.header2. class=.text-center.>(.*?)</td>")
         let currentConditions = html.parseColumn("</span><div class=.media-body.><p>(.*?)</p></div>")
         let precipChances = html.parseColumn("<td headers=.header4. class=.text-center.>(.*?)</td>")
-        var winds = html.parseColumn("<abbr title=(.West.>.*?<.abbr>..[0-9]{2})<br>")
+        var winds = html.parseColumn("<abbr title=(.*?.>.*?<.abbr>..[0-9]{2})<br>")
         //let feelsLikeTemps = html.parseColumn("<td headers=.header7. class=.text-center.>(.*?)</td>")
         let space = "   "
         var string = ""
