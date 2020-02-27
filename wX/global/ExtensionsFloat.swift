@@ -25,15 +25,15 @@ import simd
 import SceneKit
 
 extension float4x4 {
-
+    
     init() {
         self = float4x4.init(1.0)
     }
-
+    
     static func makeRotate(_ radians: Float, _ x: Float, _ y: Float, _ z: Float) -> float4x4 {
         return float4x4.init(SCNMatrix4MakeRotation(radians, x, y, z))
     }
-
+    
     static func makeOrtho(_ left: Float, right: Float, bottom: Float, top: Float, nearZ: Float, farZ: Float) -> float4x4 {
         let ral = right + left
         let rsl = right - left
@@ -47,22 +47,22 @@ extension float4x4 {
         let col3 = SIMD4<Float>(-ral / rsl, -tab / tsb, -fan / fsn, 1.0)
         return float4x4.init(col0, col1, col2, col3)
     }
-
+    
     mutating func scale(_ x: Float, y: Float, z: Float) {
         self *= float4x4.init(diagonal: [x, y, z, 1.0])
     }
-
+    
     mutating func rotate(_ radians: Float, x: Float, y: Float, z: Float) {
         self = float4x4.makeRotate(radians, x, y, z) * self
     }
-
+    
     mutating func rotateAroundX(_ x: Float, y: Float, z: Float) {
         var rotationM = float4x4.makeRotate(x, 1, 0, 0)
         rotationM = rotationM * float4x4.makeRotate(y, 0, 1, 0)
         rotationM = rotationM * float4x4.makeRotate(z, 0, 0, 1)
         self *= rotationM
     }
-
+    
     mutating func translate(_ x: Float, y: Float, z: Float) {
         let col0 = SIMD4<Float>(1.0, 0.0, 0.0, 0.0)
         let col1 = SIMD4<Float>(0.0, 1.0, 0.0, 0.0)
@@ -70,15 +70,15 @@ extension float4x4 {
         let col3 = SIMD4<Float>(x, y, z, 1.0)
         self *= float4x4.init(col0, col1, col2, col3)
     }
-
+    
     static func numberOfElements() -> Int {
         return 16
     }
-
+    
     static func degrees(toRad angle: Float) -> Float {
         return Float(Double(angle) * Double.pi / 180)
     }
-
+    
     mutating func multiplyLeft(_ matrix: float4x4) {
         self = matrix * self
     }
