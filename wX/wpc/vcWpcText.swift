@@ -5,27 +5,28 @@
  *****************************************************************************/
 
 import UIKit
-import AVFoundation
+//import AVFoundation
 
-class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
+class vcWpcText: UIwXViewControllerWithAudio { // AVSpeechSynthesizerDelegate
     
     private var productButton = ObjectToolbarIcon()
-    private var playButton = ObjectToolbarIcon()
-    private var product = "PMDSPD"
-    private var objectTextView = ObjectTextView()
-    private var playListButton = ObjectToolbarIcon()
+    //private var playButton = ObjectToolbarIcon()
+    //private var product = "PMDSPD"
+    //private var objectTextView = ObjectTextView()
+    //private var playListButton = ObjectToolbarIcon()
     private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
-    private var synth = AVSpeechSynthesizer()
+    //private var synth = AVSpeechSynthesizer()
     private var html = ""
     var wpcTextProduct = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        product = "PMDSPD"
         UIApplication.shared.isIdleTimerDisabled = true
-        synth.delegate = self
+        //synth.delegate = self
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
+        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        //playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -51,7 +52,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityActions.resetAudio(&synth, playButton)
+        //UtilityActions.resetAudio(&synth, playButton)
         super.doneClicked()
     }
     
@@ -87,7 +88,7 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         self.getContent()
     }
     
-    @objc func playClicked() {
+    /*@objc func playClicked() {
         UtilityActions.playClicked(objectTextView.view, synth, playButton)
     }
     
@@ -103,5 +104,5 @@ class vcWpcText: UIwXViewController, AVSpeechSynthesizerDelegate {
         DispatchQueue.main.async {
             UtilityActions.resetAudio(&self.synth, self.playButton)
         }
-    }
+    }*/
 }
