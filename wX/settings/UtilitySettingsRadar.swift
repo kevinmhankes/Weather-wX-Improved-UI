@@ -41,7 +41,7 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_WPC_FRONTS": "Show WPC Fronts and pressure highs and lows"
     ]
 
-    static let helpStrings = [
+    /*static let helpStrings = [
         "Show WPC Fronts and pressure highs and lows": "Show WPC Fronts and pressure highs and lows",
         "Show warnings": "Display warning polygons for tornado, severe thunderstorm, and flash flood."
             + " This will cause a periodic task to run in "
@@ -117,7 +117,7 @@ final class UtilitySettingsRadar {
         "Dust Storm Warning": "Dust Storm Warning",
         "Special Weather Statement": "Special Weather Statement",
         "Center radar on location": "If location marker follows GPS is enabled this will keep the radar centered on your current location when enabled."
-    ]
+    ]*/
 
     #if !targetEnvironment(macCatalyst)
     static let booleanDefault = [

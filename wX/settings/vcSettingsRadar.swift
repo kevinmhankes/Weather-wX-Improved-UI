@@ -106,9 +106,9 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         }
     }
 
-    @objc func getHelp(sender: UIButton) {
-        UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsRadar.helpStrings)
-    }
+    //@objc func getHelp(sender: UIButton) {
+    //    UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsRadar.helpStrings)
+    //}
 
     private func displayContent() {
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
@@ -118,7 +118,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
                 UtilitySettingsRadar.booleanDefault,
                 UtilitySettingsRadar.boolean
             )
-            switchObject.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
+            //switchObject.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             switchObject.switchUi.addTarget(
                 self, action: #selector(switchChanged), for: UIControl.Event.valueChanged
             )
@@ -132,7 +132,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
+            //objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.numberPicker.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.firstIndex(
