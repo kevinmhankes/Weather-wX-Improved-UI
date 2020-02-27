@@ -19,7 +19,7 @@ final class ObjectCardPlayListItem {
         let sV = ObjectStackView(.fill, .vertical, spacing: 0)
         let tvProduct = ObjectTextView(sV.view, product, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvMiddle = ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvBottom = ObjectTextView(sV.view, bottomLines, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvBottom = ObjectTextView(sV.view, bottomLines.replaceAll(MyApplication.newline, " "), isUserInteractionEnabled: false, isZeroSpacing: true)
         tvProduct.font = FontSize.medium.size
         tvMiddle.font = FontSize.small.size
         tvBottom.font = FontSize.small.size
