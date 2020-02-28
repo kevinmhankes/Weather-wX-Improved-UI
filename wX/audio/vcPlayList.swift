@@ -168,6 +168,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         _ = ObjectPopUp(self, "Product Selection", addButton, UtilityWpcText.labels, self.addProduct(_:))
     }
     
+    // FIXME use method from utilityPlaylist
     func addProduct(_ index: Int) {
         let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
         if !playlistItems.contains(product) {
@@ -182,6 +183,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         _ = ObjectPopUp(self, "Product Selection", wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
     
+    // FIXME use method from utilityPlaylist
     func addWfoProduct(_ product: String) {
         let product = "AFD" + product.uppercased()
         if !playlistItems.contains(product) {
