@@ -75,16 +75,9 @@ class vcNhc: UIwXViewController {
     }
 
     func textProductChanged(_ index: Int) {
-        let product = UtilityNhc.textProductCodes[index]
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(product)
-            DispatchQueue.main.async {
-                let vc = vcTextViewer()
-                vc.textViewText = html
-                vc.textViewProduct = product
-                self.goToVC(vc)
-            }
-        }
+        let vc = vcWpcText()
+        vc.wpcTextProduct = UtilityNhc.textProductCodes[index]
+        self.goToVC(vc)
     }
 
     @objc func imageProductClicked() {

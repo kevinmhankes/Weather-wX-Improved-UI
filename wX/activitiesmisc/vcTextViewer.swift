@@ -11,7 +11,6 @@ class vcTextViewer: UIwXViewControllerWithAudio {
     var textViewProduct = ""
     var textViewText = ""
     
-    // FIXME playlist add doesn't work
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -20,7 +19,6 @@ class vcTextViewer: UIwXViewControllerWithAudio {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 playButton,
-                //playListButton,
                 shareButton
         ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)

@@ -18,7 +18,7 @@
 // [ADD] WPC Excessive rainfall add Day # in toolbar
 // [ADD] SPC fire outlook add Day # in toolbar
 
-56092 2020_02_27 [FIX] lighter background behind cards
+56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
 		 [FIX] remove option to use Farenheit vs Celsius as it was implemeneted in only one spot
@@ -32,6 +32,7 @@
 		 [FIX] fix duplicate spaces by translate in String extension for line breaks
 		 [FIX] TextViewer move share icon to far right for consistency
 		 [ADD] UIwXViewControllerWithAudio for superclass supporting TTS and playlist
+		 [ADD] in NHC have text products go to vcWpcText instead of textviewer
 56091 2020_02_26 [FIX] crash in WatMcdMpd if any icon was tapped when no products were loaded
 		 [ADD] NHC refactor code
 		 [ADD] change default nws icon size from 80 to 68
