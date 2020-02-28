@@ -9,16 +9,17 @@ import UIKit
 class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
-    private var spcMcdNumber = ""
     private var text = ""
     var day = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let statusButton = ObjectToolbarIcon(title: "Day " + day, self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
+                statusButton,
                 GlobalVariables.flexBarButton,
                 playButton,
                 playListButton,
