@@ -15,6 +15,7 @@
 // [REF] use enum for icon type 
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
+// [FIX] playlist: save after each add or mod
 
 56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
