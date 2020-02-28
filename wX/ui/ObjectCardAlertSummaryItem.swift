@@ -9,6 +9,7 @@ import UIKit
 final class ObjectCardAlertSummaryItem {
 
     init(
+        _ scrollView: UIScrollView,
         _ stackView: UIStackView,
         _ office: String,
         _ location: String,
@@ -43,5 +44,6 @@ final class ObjectCardAlertSummaryItem {
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
+        verticalTextConainer.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
 }

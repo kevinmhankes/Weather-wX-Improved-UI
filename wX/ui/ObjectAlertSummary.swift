@@ -8,6 +8,7 @@ import UIKit
 
 final class ObjectAlertSummary: NSObject {
 
+    private var scrollView = UIScrollView()
     private var urls = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0
@@ -21,6 +22,7 @@ final class ObjectAlertSummary: NSObject {
 
     convenience init(
         _ uiv: UIViewController,
+        _ scrollView: UIScrollView,
         _ stackView: UIStackView,
         _ filter: String,
         _ capAlerts: [CapAlert],
@@ -28,9 +30,11 @@ final class ObjectAlertSummary: NSObject {
         showImage: Bool = true
     ) {
         self.init()
+        self.scrollView = scrollView
         stackView.subviews.forEach {$0.removeFromSuperview()}
         let objTextSummary = ObjectTextView(stackView)
         objTextSummary.addGestureRecognizer(gesture!)
+        objTextSummary.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         if showImage {
             objImage = ObjectImage(stackView)
             objImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
@@ -67,6 +71,7 @@ final class ObjectAlertSummary: NSObject {
                     nwsLoc = ""
                 }
                 _ = ObjectCardAlertSummaryItem(
+                    scrollView,
                     stackView,
                     nwsOffice,
                     nwsLoc,

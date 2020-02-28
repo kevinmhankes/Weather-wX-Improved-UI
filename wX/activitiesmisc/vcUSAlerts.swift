@@ -80,6 +80,7 @@ class vcUSAlerts: UIwXViewController {
         self.filterButton.title = filter
         self.objAlertSummary = ObjectAlertSummary(
             self,
+            self.scrollView,
             self.stackView,
             filter,
             self.capAlerts,
@@ -96,7 +97,7 @@ class vcUSAlerts: UIwXViewController {
 
     private func displayContent() {
         self.filterButton.title = "Tornado/ThunderStorm/FFW"
-        self.objAlertSummary = ObjectAlertSummary(self, self.stackView, "", self.capAlerts, self.filterGesture)
+        self.objAlertSummary = ObjectAlertSummary(self, self.scrollView, self.stackView, "", self.capAlerts, self.filterGesture)
         self.objAlertSummary.changeImage()
         self.bitmap = self.objAlertSummary.image
     }

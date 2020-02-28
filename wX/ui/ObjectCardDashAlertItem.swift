@@ -48,9 +48,7 @@ final class ObjectCardDashAlertItem {
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
-        
         stackView.addArrangedSubview(cardStackView.view)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-
     }
 }
