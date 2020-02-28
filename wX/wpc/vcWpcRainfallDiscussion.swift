@@ -9,7 +9,7 @@ import UIKit
 class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
-    private var text = ""
+    private var html = ""
     var day = ""
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
             let number = Int(self.day)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
             self.product = UtilityWpcRainfallOutlook.productCodes[number]
-            self.text = UtilityDownload.getTextProduct(self.product)
+            self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
                 self.displayContent()
@@ -50,7 +50,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmap, text)
+        UtilityShare.shareImage(self, sender, bitmap, html)
     }
     
     private func displayContent() {
@@ -81,9 +81,9 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
         if tabletInLandscape {
-            objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+            objectTextView = ObjectTextView(self.stackView, self.html, widthDivider: 2)
         } else {
-            objectTextView = ObjectTextView(self.stackView, self.text)
+            objectTextView = ObjectTextView(self.stackView, self.html)
         }
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)

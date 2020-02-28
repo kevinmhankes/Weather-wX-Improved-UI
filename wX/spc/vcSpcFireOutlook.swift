@@ -9,7 +9,7 @@ import UIKit
 class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
-    private var text = ""
+    private var html = ""
     var dayIndex = 0
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]
-            self.text = UtilityDownload.getTextProduct(self.product)
+            self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
                 self.displayContent()
@@ -52,7 +52,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmap, text)
+        UtilityShare.shareImage(self, sender, bitmap, html)
     }
     
     private func displayContent() {
@@ -80,13 +80,13 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
                 UITapGestureRecognizerWithData(0, self, #selector(imageClicked(sender:)))
             )
         }
-        objectImage.img.accessibilityLabel = text
+        objectImage.img.accessibilityLabel = html
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
         if tabletInLandscape {
-            objectTextView = ObjectTextView(self.stackView, self.text, widthDivider: 2)
+            objectTextView = ObjectTextView(self.stackView, self.html, widthDivider: 2)
         } else {
-            objectTextView = ObjectTextView(self.stackView, self.text)
+            objectTextView = ObjectTextView(self.stackView, self.html)
         }
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
