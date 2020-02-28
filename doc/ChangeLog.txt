@@ -14,7 +14,7 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [REF] use enum for icon type 
 // [FIX] should not need to restart app when changing NWS icon size
-// [FIX] rotate main screen on phone results in whitespace due to shrinking bottom navbar
+// [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
