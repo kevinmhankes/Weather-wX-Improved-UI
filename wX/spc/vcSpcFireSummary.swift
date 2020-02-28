@@ -18,8 +18,15 @@ class vcSpcFireSummary: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        let statusButton = ObjectToolbarIcon(title: "SPC Fire Weather Outlooks", self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                statusButton,
+                GlobalVariables.flexBarButton,
+                shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }

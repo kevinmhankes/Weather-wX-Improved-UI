@@ -16,7 +16,7 @@
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 
-56093 2020_02_28 
+56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
