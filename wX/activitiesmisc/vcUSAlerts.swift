@@ -8,14 +8,15 @@ import UIKit
 import AVFoundation
 
 class vcUSAlerts: UIwXViewController {
-
+    
     private var capAlerts = [CapAlert]()
     private var filter = ""
     private var filterButton = ObjectToolbarIcon()
     private var objAlertSummary = ObjectAlertSummary()
     private var bitmap = Bitmap()
     private var filterGesture: UITapGestureRecognizer?
-
+    private var filterShown = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -31,11 +32,11 @@ class vcUSAlerts: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -49,17 +50,17 @@ class vcUSAlerts: UIwXViewController {
             }
         }
     }
-
+    
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
         let vc = vcUSAlertsDetail()
         vc.usalertsDetailUrl = objAlertSummary.getUrl(sender.data)
         self.goToVC(vc)
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.objAlertSummary.image)
     }
-
+    
     @objc func filterClicked() {
         var eventArr = [String]()
         var counts = [String: Int]()
@@ -75,7 +76,7 @@ class vcUSAlerts: UIwXViewController {
         }
         _ = ObjectPopUp(self, "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
     }
-
+    
     func filterChanged(_ filter: String) {
         self.filterButton.title = filter
         self.objAlertSummary = ObjectAlertSummary(
@@ -88,20 +89,26 @@ class vcUSAlerts: UIwXViewController {
             showImage: false
         )
         self.objAlertSummary.image = bitmap
+        self.filterShown = true
+        self.filter = filter
     }
-
+    
     @objc func imageClicked() {
-        self.objAlertSummary.changeImage()
-        self.bitmap = self.objAlertSummary.image
+        self.objAlertSummary.changeImage(self)
+        //self.bitmap = self.objAlertSummary.image
     }
-
+    
     private func displayContent() {
-        self.filterButton.title = "Tornado/ThunderStorm/FFW"
-        self.objAlertSummary = ObjectAlertSummary(self, self.scrollView, self.stackView, "", self.capAlerts, self.filterGesture)
-        self.objAlertSummary.changeImage()
-        self.bitmap = self.objAlertSummary.image
+        if !filterShown {
+            self.filterButton.title = "Tornado/ThunderStorm/FFW"
+            self.objAlertSummary = ObjectAlertSummary(self, self.scrollView, self.stackView, "", self.capAlerts, self.filterGesture)
+            self.objAlertSummary.getImage()
+            self.bitmap = self.objAlertSummary.image
+        } else {
+            filterChanged(filter)
+        }
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -109,7 +116,7 @@ class vcUSAlerts: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
