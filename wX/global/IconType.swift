@@ -21,4 +21,5 @@ enum IconType {
     case submenu
     case leftArrow
     case rightArrow
+    case download
 }

@@ -46,7 +46,8 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .wfo: "ic_info_outline_24dp",
         .severeDashboard: "ic_report_24dp",
         .leftArrow: "ic_keyboard_arrow_left_24dp",
-        .rightArrow: "ic_keyboard_arrow_right_24dp"
+        .rightArrow: "ic_keyboard_arrow_right_24dp",
+        .download: "ic_get_app_24dp"
     ]
 
     static let iconToAccessibilityLabel: [IconType: String] = [

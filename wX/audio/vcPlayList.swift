@@ -26,10 +26,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             object: nil
         )
         synth.delegate = self
-        playButton = ObjectToolbarIcon(self, "ic_play_arrow_24dp", #selector(playClicked))
-        let downloadButton = ObjectToolbarIcon(self, "ic_get_app_24dp", #selector(downloadClicked))
-        addButton = ObjectToolbarIcon(self, "ic_add_box_24dp", #selector(addClicked))
-        wfoTextButton = ObjectToolbarIcon(self, "ic_info_outline_24dp", #selector(wfotextClicked))
+        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        let downloadButton = ObjectToolbarIcon(self, .download, #selector(downloadClicked))
+        addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
+        wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
@@ -168,8 +168,13 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         _ = ObjectPopUp(self, "Product Selection", addButton, UtilityWpcText.labels, self.addProduct(_:))
     }
     
-    func addProduct(_ product: String) {
-        playlistItems.append(product.uppercased())
+    func addProduct(_ index: Int) {
+        let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
+        if !playlistItems.contains(product) {
+            playlistItems.append(product)
+        } else {
+            _ = ObjectToast(product + " already in playlist.", self, addButton)
+        }
         updateView()
     }
     
@@ -178,7 +183,12 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func addWfoProduct(_ product: String) {
-        playlistItems.append("AFD" + product.uppercased())
+        let product = "AFD" + product.uppercased()
+        if !playlistItems.contains(product) {
+            playlistItems.append(product)
+        } else {
+            _ = ObjectToast(product + " already in playlist.", self, addButton)
+        }
         updateView()
     }
     

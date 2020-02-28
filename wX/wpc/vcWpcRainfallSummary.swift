@@ -39,7 +39,6 @@ class vcWpcRainfallSummary: UIwXViewController {
     }
     
     private func displayContent() {
-        
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
