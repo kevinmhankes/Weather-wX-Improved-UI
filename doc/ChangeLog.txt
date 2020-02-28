@@ -12,10 +12,10 @@
 // [REF] remove the need for storyboards as much as possible
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option, search, mark fav, contact
-// [REF] use enum for icon type 
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [FIX] playlist: save after each add or mod
+// [REF] use enum for icon type grep -R ObjectToolbarIcon *|grep "ic_" |more
 
 56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
