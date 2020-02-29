@@ -16,8 +16,6 @@ class vcCanadaText: UIwXViewControllerWithAudio {
         super.viewDidLoad()
         product = "FOCN45"
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        //playlistButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [

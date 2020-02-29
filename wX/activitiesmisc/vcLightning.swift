@@ -7,7 +7,7 @@
 import UIKit
 
 class vcLightning: UIwXViewController {
-
+    
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()
     private var timeButton = ObjectToolbarIcon()
@@ -17,7 +17,7 @@ class vcLightning: UIwXViewController {
     private var periodPretty = "15 MIN"
     private var firstRun = true
     private var bitmap = Bitmap()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -29,7 +29,14 @@ class vcLightning: UIwXViewController {
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                productButton,
+                timeButton,
+                shareButton
+        ]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref("LIGHTNING_SECTOR", sector)
@@ -38,7 +45,7 @@ class vcLightning: UIwXViewController {
         periodPretty = UtilityLightning.getTimePretty(period)
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = UtilityLightning.getImage(self.sector, self.period)
@@ -58,51 +65,48 @@ class vcLightning: UIwXViewController {
             }
         }
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     @objc func prodClicked() {
         _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
     }
-
+    
     @objc func timeClicked() {
         _ = ObjectPopUp(self, "Time Selection", timeButton, UtilityLightning.times, self.timeChanged(_:))
     }
-
+    
     func sectorChanged(_ idx: Int) {
         firstRun = true
         self.sectorPretty = UtilityLightning.sectors[idx]
         self.sector = UtilityLightning.getSector(self.sectorPretty)
         self.getContent()
     }
-
+    
     func timeChanged(_ index: Int) {
         self.periodPretty = UtilityLightning.times[index]
         self.period = UtilityLightning.getTime(self.periodPretty)
         self.getContent()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
-
+    
     private func displayContent() {
         image = ObjectTouchImageView(self, toolbar)
         self.image.setBitmap(self.bitmap)
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                //self.removeAllViews()
-                //self.view.addSubview(self.toolbar)
-                //self.displayContent()
                 self.image.refresh()
-            }
+        }
         )
     }
 }
