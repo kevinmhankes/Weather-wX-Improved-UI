@@ -7,22 +7,20 @@
 import UIKit
 
 public class ObjectFab {
-
+    
     let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
-
+    
     init(_ uiv: UIViewController, _ action: Selector, iconType: IconType = .radar) {
-    //init(_ uiv: UIViewController, _ action: Selector, imageString: String = "ic_flash_on_24dp") {
         floaty.sticky = true
         floaty.friendlyTap = false
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
         setColor()
-        //setImage(imageString)
         setImage(iconType)
         floaty.addGestureRecognizer(UITapGestureRecognizer(target: uiv, action: action))
+        uiv.view.addSubview(view)
     }
     
     func setImage(_ iconType: IconType) {
-    //func setImage(_ imageString: String) {
         let imageString = ObjectToolbarIcon.iconToString[iconType] ?? ""
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         if #available(iOS 13, *) {
@@ -34,28 +32,28 @@ public class ObjectFab {
                 let image = UIImage(
                     systemName: newIconValue!,
                     withConfiguration: configuration
-                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                    )?.withTintColor(color, renderingMode: .alwaysOriginal)
                 floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
             }
         }
     }
-
+    
     func setColor() {
         floaty.buttonColor = AppColors.primaryColorFab
     }
-
+    
     func resize() {
         floaty.paddingY = 62.0 + UtilityUI.getBottomPadding()
     }
-
+    
     func setToTheLeft() {
         floaty.paddingX = 76.0
     }
-
+    
     func close() {
         floaty.close()
     }
-
+    
     var view: Floaty {
         return floaty
     }

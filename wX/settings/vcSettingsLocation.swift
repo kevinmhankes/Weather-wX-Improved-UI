@@ -20,7 +20,7 @@ class vcSettingsLocation: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         fab = ObjectFab(self, #selector(addClicked), iconType: .plus)
-        self.view.addSubview(fab!.view)
+        //self.view.addSubview(fab!.view)
     }
     
     func getContent() {
