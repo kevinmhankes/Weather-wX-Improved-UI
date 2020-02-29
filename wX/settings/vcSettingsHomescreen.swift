@@ -31,7 +31,7 @@ class vcSettingsHomescreen: UIwXViewController {
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
-        displayContent()
+        displayContent(saveToDisk: false)
     }
     
     @objc override func doneClicked() {
@@ -41,6 +41,7 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     func serializeSettings() {
+        print("HOMESCREEN SAVE")
         Utility.writePref("HOMESCREEN_FAV", TextUtils.join(":", homescreenFav))
     }
     
@@ -151,7 +152,10 @@ class vcSettingsHomescreen: UIwXViewController {
         displayContent()
     }
     
-    private func displayContent() {
+    private func displayContent(saveToDisk: Bool = true) {
+        if saveToDisk {
+            serializeSettings()
+        }
         self.stackView.subviews.forEach {
             $0.removeFromSuperview()
         }
