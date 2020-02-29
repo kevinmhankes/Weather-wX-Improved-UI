@@ -35,7 +35,7 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     @objc func playClicked() {
-        UtilityAudio.playClicked(objectTextView.view, synth, playButton)
+        UtilityAudio.playClicked(objectTextView.view.text, synth, playButton)
     }
     
     @objc func shareClicked(sender: UIButton) {

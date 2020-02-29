@@ -12,7 +12,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var playlistItems = [String]()
     private var addNationalProductButton = ObjectToolbarIcon()
     private var wfoTextButton = ObjectToolbarIcon()
-    //private var playButton = ObjectToolbarIcon()
     private let textPreviewLength = 400
     private var synth = AVSpeechSynthesizer()
     private var fab: ObjectFab?
@@ -27,7 +26,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             object: nil
         )
         synth.delegate = self
-        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
         wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
         toolbar.items = ObjectToolbarItems(

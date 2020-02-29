@@ -153,4 +153,21 @@ final class ObjectToolbarIcon: UIBarButtonItem {
     func setImage(_ image: UIImage, for: UIControl.State) {
         button.setImage(image, for: .normal)
     }
+    
+    func setImage(_ iconType: IconType) {
+        let fileName = ObjectToolbarIcon.iconToString[iconType] ?? ""
+        button.setImage(UIImage(named: fileName), for: .normal)
+        if #available(iOS 13, *) {
+            let configuration = UIImage.SymbolConfiguration(weight: .medium)
+            let color = UIColor.white
+            let newIconValue = ObjectToolbarIcon.oldIconToNew[fileName]
+            if newIconValue != nil {
+                let image = UIImage(
+                    systemName: newIconValue!,
+                    withConfiguration: configuration
+                )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+        }
+    }
 }
