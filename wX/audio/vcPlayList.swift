@@ -10,7 +10,7 @@ import AVFoundation
 class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     private var playlistItems = [String]()
-    private var addButton = ObjectToolbarIcon()
+    private var addNationalProductButton = ObjectToolbarIcon()
     private var wfoTextButton = ObjectToolbarIcon()
     private var playButton = ObjectToolbarIcon()
     private let textPreviewLength = 400
@@ -27,17 +27,15 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         )
         synth.delegate = self
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        let downloadButton = ObjectToolbarIcon(self, .download, #selector(downloadClicked))
-        addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
+        addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
         wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
                 GlobalVariables.flexBarButton,
                 wfoTextButton,
-                addButton,
-                playButton,
-                downloadButton
+                addNationalProductButton,
+                playButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -45,11 +43,11 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         let fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
         self.view.addSubview(fabRight.view)
         updateView()
-        downloadClicked()
+        refreshData()
     }
     
     @objc func willEnterForeground() {
-        downloadClicked()
+        refreshData()
     }
     
     @objc override func doneClicked() {
@@ -60,7 +58,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
-        let alert = ObjectPopUp(self, playlistItems[sender.data], addButton)
+        let alert = ObjectPopUp(self, playlistItems[sender.data], addNationalProductButton)
         alert.addAction(UIAlertAction("Play", {_ in self.playProduct(selection: sender.data)}))
         alert.addAction(UIAlertAction("View Text", {_ in self.viewProduct(selection: sender.data)}))
         if sender.data != 0 {
@@ -151,7 +149,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
     }
     
-    @objc func downloadClicked() {
+    @objc func refreshData() {
         serializeSettings()
         playlistItems.forEach {
             let product = $0
@@ -164,34 +162,42 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         }
     }
     
-    @objc func addClicked() {
-        _ = ObjectPopUp(self, "Product Selection", addButton, UtilityWpcText.labels, self.addProduct(_:))
+    @objc func addNationalProductClicked() {
+        _ = ObjectPopUp(self, "Product Selection", addNationalProductButton, UtilityWpcText.labels, self.addNationalProduct(_:))
     }
     
-    // FIXME use method from utilityPlaylist
-    func addProduct(_ index: Int) {
+    func addNationalProduct(_ index: Int) {
         let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
-        if !playlistItems.contains(product) {
-            playlistItems.append(product)
-        } else {
-            _ = ObjectToast(product + " already in playlist.", self, addButton)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let text = UtilityDownload.getTextProduct(product)
+            DispatchQueue.main.async {
+                let productAdded = UtilityPlayList.add(product, text, self, self.wfoTextButton, showStatus: false)
+                if productAdded {
+                    self.playlistItems.append(product)
+                    self.updateView()
+                    self.serializeSettings()
+                }
+            }
         }
-        updateView()
     }
     
     @objc func wfotextClicked() {
         _ = ObjectPopUp(self, "Product Selection", wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
     
-    // FIXME use method from utilityPlaylist
     func addWfoProduct(_ product: String) {
         let product = "AFD" + product.uppercased()
-        if !playlistItems.contains(product) {
-            playlistItems.append(product)
-        } else {
-            _ = ObjectToast(product + " already in playlist.", self, addButton)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let text = UtilityDownload.getTextProduct(product)
+            DispatchQueue.main.async {
+                let productAdded = UtilityPlayList.add(product, text, self, self.wfoTextButton, showStatus: false)
+                if productAdded {
+                    self.playlistItems.append(product)
+                    self.updateView()
+                    self.serializeSettings()
+                }
+            }
         }
-        updateView()
     }
     
     private func displayContent() {

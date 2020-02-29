@@ -7,23 +7,28 @@
 import UIKit
 
 final class UtilityPlayList {
-
+    
     static let formatTimeString = "MM-dd HH:mm"
-
-    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
+    
+    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon, showStatus: Bool = true) -> Bool {
         let prodLocal = prod.uppercased()
+        var productAdded = false
         if !MyApplication.playlistStr.contains(prodLocal) {
             Utility.writePref("PLAYLIST", MyApplication.playlistStr + ":" + prodLocal)
             MyApplication.playlistStr += ":" + prodLocal
-            _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
+            if showStatus {
+                _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
+            }
+            productAdded = true
         } else {
             _ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)
         }
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         Utility.writePref("PLAYLIST_" + prodLocal, text)
         Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
+        return productAdded
     }
-
+    
     static func checkAndSave(_ prod: String, _ text: String) {
         let prodLocal = prod.uppercased()
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
@@ -32,7 +37,7 @@ final class UtilityPlayList {
             Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
         }
     }
-
+    
     static func download(_ product: String) {
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         let text = UtilityDownload.getTextProduct(product)

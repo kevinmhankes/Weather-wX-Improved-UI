@@ -14,7 +14,6 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
-// [FIX] playlist: save after each add or mod
 // [REF] use enum for icon type grep -R ObjectToolbarIcon *|grep "ic_" |more
 
 56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
@@ -23,6 +22,7 @@
 		 [FIX] US Alerts needed width constraint for text cards
 		 [FIX] if in US Alerts don't rotate warning images but instead do image view with CONUS image
 		 [FIX] if in US Alerts and rotate screen while filter is not standard it resets
+		 [FIX] playlist: save after each add or mod
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
