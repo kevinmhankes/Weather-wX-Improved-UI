@@ -58,16 +58,6 @@ final class UtilityAudio {
         fab.setImage(.pause)
     }
     
-    /*static func stopAudio(_ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        synth.stopSpeaking(at: AVSpeechBoundary.word)
-        playB.setImage(.pause)
-    }*/
-    
-    static func stopAudio(_ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        synth.stopSpeaking(at: AVSpeechBoundary.word)
-        fab.setImage(.pause)
-    }
-    
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
         if synth.isSpeaking {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)

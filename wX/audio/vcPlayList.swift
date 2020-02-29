@@ -71,7 +71,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func playProduct(selection: Int) {
-        UtilityAudio.stopAudio(synth, fab!)
+        UtilityAudio.resetAudio(&synth, fab!)
         playlistItems.enumerated().forEach { index, item in
             if index >= selection {
                 UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synth, fab!)
@@ -167,17 +167,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     func addNationalProduct(_ index: Int) {
         let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
-        DispatchQueue.global(qos: .userInitiated).async {
-            let text = UtilityDownload.getTextProduct(product)
-            DispatchQueue.main.async {
-                let productAdded = UtilityPlayList.add(product, text, self, self.wfoTextButton, showStatus: false)
-                if productAdded {
-                    self.playlistItems.append(product)
-                    self.updateView()
-                    self.serializeSettings()
-                }
-            }
-        }
+        downloadAndAddProduct(product, self.addNationalProductButton)
     }
     
     @objc func wfotextClicked() {
@@ -186,10 +176,14 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     func addWfoProduct(_ product: String) {
         let product = "AFD" + product.uppercased()
+        downloadAndAddProduct(product, self.wfoTextButton)
+    }
+    
+    func downloadAndAddProduct(_ product: String, _ button: ObjectToolbarIcon) {
         DispatchQueue.global(qos: .userInitiated).async {
             let text = UtilityDownload.getTextProduct(product)
             DispatchQueue.main.async {
-                let productAdded = UtilityPlayList.add(product, text, self, self.wfoTextButton, showStatus: false)
+                let productAdded = UtilityPlayList.add(product, text, self, button, showStatus: false)
                 if productAdded {
                     self.playlistItems.append(product)
                     self.updateView()
