@@ -58,7 +58,7 @@ final class UtilityAudio {
         }
     }
     
-    static func playClickedFab(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
+    static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         if synth.isPaused {
@@ -85,7 +85,7 @@ final class UtilityAudio {
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
     
-    static func playClickedNewItemFab(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
+    static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
         var myUtterance = AVSpeechUtterance(string: "")
         let pauseIcon = "ic_pause_24dp"
         myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
@@ -99,7 +99,7 @@ final class UtilityAudio {
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
     
-    static func stopAudioFab(_ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
+    static func stopAudio(_ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
         let pauseIcon = "ic_pause_24dp"
         synth.stopSpeaking(at: AVSpeechBoundary.word)
         fab.setImage(pauseIcon)
@@ -113,7 +113,7 @@ final class UtilityAudio {
         playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
     }
     
-    static func resetAudioFab(_ synth: inout AVSpeechSynthesizer, _ fab: ObjectFab) {
+    static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ fab: ObjectFab) {
         if synth.isSpeaking {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
         }

@@ -53,7 +53,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityAudio.resetAudioFab(&synth, fab!)
+        UtilityAudio.resetAudio(&synth, fab!)
         serializeSettings()
         super.doneClicked()
     }
@@ -73,10 +73,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func playProduct(selection: Int) {
-        UtilityAudio.stopAudioFab(synth, fab!)
+        UtilityAudio.stopAudio(synth, fab!)
         playlistItems.enumerated().forEach { index, item in
             if index >= selection {
-                UtilityAudio.playClickedNewItemFab(Utility.readPref("PLAYLIST_" + item, ""), synth, fab!)
+                UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synth, fab!)
             }
         }
     }
@@ -141,12 +141,12 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems.forEach {
             textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
         }
-        UtilityAudio.playClickedFab(textToSpeak, synth, fab!)
+        UtilityAudio.playClicked(textToSpeak, synth, fab!)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
-            UtilityAudio.resetAudioFab(&self.synth, self.fab!)
+            UtilityAudio.resetAudio(&self.synth, self.fab!)
         }
     }
     
