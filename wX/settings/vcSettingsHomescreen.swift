@@ -41,7 +41,6 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     func serializeSettings() {
-        print("HOMESCREEN SAVE")
         Utility.writePref("HOMESCREEN_FAV", TextUtils.join(":", homescreenFav))
     }
     
