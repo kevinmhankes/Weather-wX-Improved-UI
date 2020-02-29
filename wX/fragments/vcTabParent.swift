@@ -33,7 +33,6 @@ class vcTabParent: UIViewController {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
-            //self.view.addSubview(fab!.view)
         }
     }
     
@@ -131,7 +130,6 @@ class vcTabParent: UIViewController {
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, .TAB)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
-            //self.view.addSubview(fab!.view)
         }
     }
 

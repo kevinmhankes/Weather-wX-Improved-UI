@@ -39,7 +39,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
-        //self.view.addSubview(fab!.view)
         updateView()
         refreshData()
     }
