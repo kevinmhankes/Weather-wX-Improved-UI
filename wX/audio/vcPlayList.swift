@@ -12,9 +12,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var playlistItems = [String]()
     private var addNationalProductButton = ObjectToolbarIcon()
     private var wfoTextButton = ObjectToolbarIcon()
-    private var playButton = ObjectToolbarIcon()
+    //private var playButton = ObjectToolbarIcon()
     private let textPreviewLength = 400
     private var synth = AVSpeechSynthesizer()
+    private var fab: ObjectFab?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             object: nil
         )
         synth.delegate = self
-        playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
+        //playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
         wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
         toolbar.items = ObjectToolbarItems(
@@ -34,14 +35,14 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 wfoTextButton,
-                addNationalProductButton,
-                playButton
+                addNationalProductButton
+                //playButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
-        let fabRight = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
-        self.view.addSubview(fabRight.view)
+        fab = ObjectFab(self, #selector(playClicked), imageString: "ic_play_arrow_24dp")
+        self.view.addSubview(fab!.view)
         updateView()
         refreshData()
     }
@@ -52,7 +53,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityActions.resetAudio(&synth, playButton)
+        UtilityActions.resetAudioFab(&synth, fab!)
         serializeSettings()
         super.doneClicked()
     }
@@ -72,10 +73,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func playProduct(selection: Int) {
-        UtilityActions.stopAudio(synth, playButton)
+        UtilityActions.stopAudioFab(synth, fab!)
         playlistItems.enumerated().forEach { index, item in
             if index >= selection {
-                UtilityActions.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synth, playButton)
+                UtilityActions.playClickedNewItemFab(Utility.readPref("PLAYLIST_" + item, ""), synth, fab!)
             }
         }
     }
@@ -140,12 +141,12 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems.forEach {
             textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
         }
-        UtilityActions.playClicked(textToSpeak, synth, playButton)
+        UtilityActions.playClickedFab(textToSpeak, synth, fab!)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
+            UtilityActions.resetAudioFab(&self.synth, self.fab!)
         }
     }
     
