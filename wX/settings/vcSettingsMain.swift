@@ -7,13 +7,19 @@
 import UIKit
 
 class vcSettingsMain: UIwXViewController {
-
+    
     private var titles = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                statusButton
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         titles = [
             "Location",
@@ -27,12 +33,12 @@ class vcSettingsMain: UIwXViewController {
         ]
         displayContent()
     }
-
+    
     @objc override func doneClicked() {
         MyApplication.initPreferences()
         super.doneClicked()
     }
-
+    
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "Location":
@@ -65,7 +71,7 @@ class vcSettingsMain: UIwXViewController {
             break
         }
     }
-
+    
     private func displayContent() {
         titles.forEach {
             let objectTextView = ObjectTextView(
