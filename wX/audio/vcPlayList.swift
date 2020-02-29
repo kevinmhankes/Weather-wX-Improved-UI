@@ -39,7 +39,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
-        updateView()
+        displayContent()
         refreshData()
     }
     
@@ -91,14 +91,14 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         let tmp = playlistItems[from + delta]
         playlistItems[from + delta] = playlistItems[from]
         playlistItems[from] = tmp
-        updateView()
+        displayContent()
     }
     
     func delete(selection: Int) {
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection])
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection] + "_TIME")
         playlistItems.remove(at: selection)
-        updateView()
+        displayContent()
     }
     
     func serializeSettings() {
@@ -113,7 +113,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems = playlistItems.filter { $0 != "" }
     }
     
-    func updateView() {
+    func displayContent() {
         self.stackView.subviews.forEach {
             $0.removeFromSuperview()
         }
@@ -146,7 +146,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             DispatchQueue.global(qos: .userInitiated).async {
                 UtilityPlayList.download(product)
                 DispatchQueue.main.async {
-                    self.updateView()
+                    self.displayContent()
                 }
             }
         }
@@ -177,14 +177,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 let productAdded = UtilityPlayList.add(product, text, self, button, showStatus: false)
                 if productAdded {
                     self.playlistItems.append(product)
-                    self.updateView()
+                    self.displayContent()
                     self.serializeSettings()
                 }
             }
         }
-    }
-    
-    private func displayContent() {
-        updateView()
     }
 }
