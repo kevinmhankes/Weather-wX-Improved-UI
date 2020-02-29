@@ -139,12 +139,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         UtilityAudio.playClicked(textToSpeak, synth, fab!)
     }
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityAudio.resetAudio(&self.synth, self.fab!)
-        }
-    }
-    
     @objc func refreshData() {
         serializeSettings()
         playlistItems.forEach {
