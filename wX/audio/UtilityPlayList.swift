@@ -14,8 +14,8 @@ final class UtilityPlayList {
         let prodLocal = prod.uppercased()
         var productAdded = false
         if !MyApplication.playlistStr.contains(prodLocal) {
-            Utility.writePref("PLAYLIST", MyApplication.playlistStr + ":" + prodLocal)
             MyApplication.playlistStr += ":" + prodLocal
+            Utility.writePref("PLAYLIST", MyApplication.playlistStr)
             if showStatus {
                 _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
             }
