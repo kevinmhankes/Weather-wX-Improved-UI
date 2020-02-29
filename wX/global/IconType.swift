@@ -6,6 +6,7 @@
 
 enum IconType {
     case share
+    case pause
     case play
     case playList
     case done

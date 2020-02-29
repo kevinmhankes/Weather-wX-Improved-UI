@@ -60,20 +60,16 @@ final class UtilityAudio {
     
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
         var myUtterance = AVSpeechUtterance(string: "")
-        let pauseIcon = "ic_pause_24dp"
         if synth.isPaused {
-            print("continue speaking")
             synth.continueSpeaking()
-            fab.setImage(pauseIcon)
+            fab.setImage(.pause)
         } else if !synth.isSpeaking {
-            print("play speaking")
             myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             synth.speak(myUtterance)
-            fab.setImage(pauseIcon)
+            fab.setImage(.pause)
         } else {
-            print("pause speaking")
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
-            fab.setImage("ic_play_arrow_24dp")
+            fab.setImage(.play)
         }
     }
     
@@ -87,22 +83,21 @@ final class UtilityAudio {
     
     static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
         var myUtterance = AVSpeechUtterance(string: "")
-        let pauseIcon = "ic_pause_24dp"
         myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
         synth.speak(myUtterance)
-        fab.setImage(pauseIcon)
+        fab.setImage(.pause)
     }
     
     static func stopAudio(_ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
+        // FIXME use IconType
         let pauseIcon = "ic_pause_24dp"
         synth.stopSpeaking(at: AVSpeechBoundary.word)
         playB.setImage(ObjectToolbarIcon.getIcon(pauseIcon), for: .normal)
     }
     
     static func stopAudio(_ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        let pauseIcon = "ic_pause_24dp"
         synth.stopSpeaking(at: AVSpeechBoundary.word)
-        fab.setImage(pauseIcon)
+        fab.setImage(.pause)
     }
     
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
@@ -118,6 +113,6 @@ final class UtilityAudio {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
         }
         synth = AVSpeechSynthesizer()
-        fab.setImage("ic_play_arrow_24dp")
+        fab.setImage(.play)
     }
 }

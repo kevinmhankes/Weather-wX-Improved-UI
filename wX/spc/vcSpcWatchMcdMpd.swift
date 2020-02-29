@@ -89,7 +89,7 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     
     @objc override func playlistClicked() {
         if let object = self.objectWatchProduct {
-            UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
+            _ = UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
     

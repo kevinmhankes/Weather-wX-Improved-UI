@@ -32,6 +32,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     static let iconToString: [IconType: String] = [
         .share: "ic_share_24dp",
+        .pause: "ic_pause_24dp",
         .play: "ic_play_arrow_24dp",
         .playList: "ic_queue_24dp",
         .done: "ic_arrow_back_white_24dp",

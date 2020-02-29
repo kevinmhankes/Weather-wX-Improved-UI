@@ -134,6 +134,6 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     }
     
     @objc override func playlistClicked() {
-        UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
+        _ = UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
     }
 }

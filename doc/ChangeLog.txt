@@ -30,6 +30,7 @@
 		 [REF] ObjectFab add method to set image
 		 [ADD] Playlist remove play icon and use Fab instead
 		 [REF] move audio stuff from UtilityAction to UtilityAudio
+		 [REF] use IconType in ObjectFab
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
