@@ -7,12 +7,12 @@
 import UIKit
 
 class vcSpotters: UIwXViewController {
-
+    
     private var spotterData = [Spotter]()
     private var spotterDataSorted = [Spotter]()
     private var spotterReportsButton = ObjectToolbarIcon()
     private var spotterCountButton = ObjectToolbarIcon()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -24,15 +24,21 @@ class vcSpotters: UIwXViewController {
         spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         spotterReportsButton.title = "Spotter Reports"
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterCountButton, spotterReportsButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                spotterCountButton,
+                spotterReportsButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -42,7 +48,7 @@ class vcSpotters: UIwXViewController {
             }
         }
     }
-
+    
     private func displayContent() {
         self.spotterCountButton.title = "Count: \(self.spotterData.count)"
         self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
@@ -55,12 +61,12 @@ class vcSpotters: UIwXViewController {
             )
         }
     }
-
+    
     @objc func showSpotterReports() {
         let vc = vcSpotterReports()
         self.goToVC(vc)
     }
-
+    
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let alert = ObjectPopUp(self, "", spotterReportsButton)
@@ -68,7 +74,7 @@ class vcSpotters: UIwXViewController {
         alert.addAction(c)
         alert.finish()
     }
-
+    
     func showMap(_ selection: Int) {
         let vc = vcMapKitView()
         vc.mapKitLat = self.spotterDataSorted[selection].lat

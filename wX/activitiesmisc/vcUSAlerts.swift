@@ -28,7 +28,13 @@ class vcUSAlerts: UIwXViewController {
         filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
         filterGesture = UITapGestureRecognizer(target: self, action: #selector(filterClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                filterButton,
+                shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -95,7 +101,6 @@ class vcUSAlerts: UIwXViewController {
     
     @objc func imageClicked() {
         self.objAlertSummary.changeImage(self)
-        //self.bitmap = self.objAlertSummary.image
     }
     
     private func displayContent() {

@@ -24,7 +24,12 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         map.setupMap(GlobalArrays.wfos)
         wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                siteButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
@@ -40,8 +45,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     func getLsrFromWfo() -> [String] {
         var lsrList = [String]()
-        let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby="
-            + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
+        let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby=" + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {
             lsrList.append("None issued by this office recently.")

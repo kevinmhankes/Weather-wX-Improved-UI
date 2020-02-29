@@ -23,7 +23,13 @@ class vcOpc: UIwXViewController {
         )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                productButton,
+                shareButton
+        ]).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
