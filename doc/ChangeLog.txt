@@ -14,6 +14,7 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
+// [REF] fix utilRadar / utilRadarUI
 // [REF] use enum for icon type grep -R ObjectToolbarIcon *|grep "ic_" |more
 
 56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
@@ -25,6 +26,7 @@
 		 [FIX] playlist: save after each add or mod
 		 [REF] ObjectFab add method to set image
 		 [ADD] Playlist remove play icon and use Fab instead
+		 [REF] move audio stuff from UtilityAction to UtilityAudio
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed

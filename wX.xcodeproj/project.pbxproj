@@ -103,6 +103,7 @@
 		0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */; };
 		0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3FB23C1194E0024153D /* PressureCenter.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
+		035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66E9240A911E00038C98 /* UtilityAudio.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
 		035E2D4821D29E0F005E31A1 /* WXGLNexradLevel3Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */; };
 		035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */; };
@@ -504,6 +505,7 @@
 		0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenterTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3FB23C1194E0024153D /* PressureCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenter.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
+		035A66E9240A911E00038C98 /* UtilityAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAudio.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
 		035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3Common.swift; sourceTree = "<group>"; };
 		035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
@@ -1403,6 +1405,7 @@
 		F09CCCEB1E15CB4600A8DBA7 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				035A66E9240A911E00038C98 /* UtilityAudio.swift */,
 				F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */,
 				03F3EB7322993F390056A56D /* UtilityTtsTranslations.swift */,
 				0340421A23F16E81003AB242 /* vcPlayList.swift */,
@@ -1941,6 +1944,7 @@
 				F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */,
 				03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */,
 				0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */,
+				035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */,
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
 				03562F461FCC17AD00456395 /* RadarType.swift in Sources */,

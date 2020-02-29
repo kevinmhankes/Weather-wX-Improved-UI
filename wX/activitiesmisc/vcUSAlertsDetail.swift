@@ -50,7 +50,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     }
     
     @objc override func playClicked() {
-        UtilityActions.playClicked(cap.text + " " + cap.instructions, synth, playButton)
+        UtilityAudio.playClicked(cap.text + " " + cap.instructions, synth, playButton)
     }
     
     @objc override func shareClicked(sender: UIButton) {

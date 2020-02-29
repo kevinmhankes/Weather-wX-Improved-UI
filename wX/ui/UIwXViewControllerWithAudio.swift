@@ -30,12 +30,12 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     @objc override func doneClicked() {
-        UtilityActions.resetAudio(&synth, playButton)
+        UtilityAudio.resetAudio(&synth, playButton)
         super.doneClicked()
     }
     
     @objc func playClicked() {
-        UtilityActions.playClicked(objectTextView.view, synth, playButton)
+        UtilityAudio.playClicked(objectTextView.view, synth, playButton)
     }
     
     @objc func shareClicked(sender: UIButton) {
@@ -43,12 +43,12 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     @objc func playlistClicked() {
-        UtilityPlayList.add(self.product, objectTextView.text, self, playListButton)
+        _ = UtilityPlayList.add(self.product, objectTextView.text, self, playListButton)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
-            UtilityActions.resetAudio(&self.synth, self.playButton)
+            UtilityAudio.resetAudio(&self.synth, self.playButton)
         }
     }
 }
