@@ -35,6 +35,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .pause: "ic_pause_24dp",
         .play: "ic_play_arrow_24dp",
         .playList: "ic_queue_24dp",
+        .stop: "ic_stop_24dp",
         .done: "ic_arrow_back_white_24dp",
         .radar: "ic_flash_on_24dp",
         .plus: "ic_add_box_24dp",
@@ -150,9 +151,9 @@ final class ObjectToolbarIcon: UIBarButtonItem {
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 
-    func setImage(_ image: UIImage, for: UIControl.State) {
-        button.setImage(image, for: .normal)
-    }
+    //func setImage(_ image: UIImage, for: UIControl.State) {
+    //    button.setImage(image, for: .normal)
+    //}
     
     func setImage(_ iconType: IconType) {
         let fileName = ObjectToolbarIcon.iconToString[iconType] ?? ""

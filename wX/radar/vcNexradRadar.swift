@@ -666,7 +666,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     @objc func stopAnimate() {
         if inOglAnim {
             inOglAnim = false
-            animateButton.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
+            animateButton.setImage(.play)
             if wxMetal[0] != nil {
                 self.wxMetal.forEach {
                     $0!.getRadar("")
@@ -679,7 +679,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func animateFrameCntClicked(_ frameCnt: Int) {
         if !inOglAnim {
             inOglAnim = true
-            animateButton.setImage(ObjectToolbarIcon.getIcon("ic_stop_24dp"), for: .normal)
+            animateButton.setImage(.stop)
             getAnimate(frameCnt)
         } else {
             stopAnimate()

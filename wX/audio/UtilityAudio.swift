@@ -63,7 +63,7 @@ final class UtilityAudio {
             synth.pauseSpeaking(at: AVSpeechBoundary.word)
         }
         synth = AVSpeechSynthesizer()
-        playB.setImage(ObjectToolbarIcon.getIcon("ic_play_arrow_24dp"), for: .normal)
+        playB.setImage(.play)
     }
     
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ fab: ObjectFab) {

@@ -9,6 +9,7 @@ enum IconType {
     case pause
     case play
     case playList
+    case stop
     case done
     case radar
     case plus
