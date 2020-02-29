@@ -179,6 +179,7 @@ final class UtilityActions {
         uiv.dismiss(animated: true, completion: {})
     }
     
+    // FIXME move to audio folder in new file
     static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
         var myUtterance = AVSpeechUtterance(string: "")
         if !synth.isSpeaking {
