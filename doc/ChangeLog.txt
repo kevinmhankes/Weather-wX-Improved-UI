@@ -17,7 +17,6 @@
 // [REF] fix utilRadar / utilRadarUI
 // [ADD] more robust handling network issues (cc,7day)
 // [ADD] playlist prebuild menus
-// [ADD] utilityAudio use enum instead of strings for icon/fab
 
 56093 2020_02_28 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries

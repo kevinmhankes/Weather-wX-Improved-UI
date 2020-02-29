@@ -10,9 +10,8 @@ import AVFoundation
 final class UtilityAudio {
     
     static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
-        var myUtterance = AVSpeechUtterance(string: "")
         if !synth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(text))
+            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(text))
             synth.speak(myUtterance)
         } else if synth.isPaused {
             synth.continueSpeaking()
@@ -22,12 +21,11 @@ final class UtilityAudio {
     }
     
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        var myUtterance = AVSpeechUtterance(string: "")
         if synth.isPaused {
             synth.continueSpeaking()
             playB.setImage(.pause)
         } else if !synth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
+             let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             synth.speak(myUtterance)
             playB.setImage(.pause)
         } else {
@@ -37,12 +35,11 @@ final class UtilityAudio {
     }
     
     static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        var myUtterance = AVSpeechUtterance(string: "")
         if synth.isPaused {
             synth.continueSpeaking()
             fab.setImage(.pause)
         } else if !synth.isSpeaking {
-            myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
+            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
             synth.speak(myUtterance)
             fab.setImage(.pause)
         } else {
@@ -52,8 +49,7 @@ final class UtilityAudio {
     }
     
     static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        var myUtterance = AVSpeechUtterance(string: "")
-        myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
+        let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.tranlasteAbbreviations(str))
         synth.speak(myUtterance)
         fab.setImage(.pause)
     }
