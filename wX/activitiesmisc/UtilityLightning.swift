@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityLightning {
-
+    
     static let sectors = [
         "US",
         "Florida",
@@ -16,7 +16,7 @@ final class UtilityLightning {
         "Australia",
         "New Zealand"
     ]
-
+    
     static let times = [
         "15 MIN",
         "2 HR",
@@ -24,7 +24,7 @@ final class UtilityLightning {
         "24 HR",
         "48 HR"
     ]
-
+    
     static func getImage(_ sector: String, _ period: String) -> Bitmap {
         let url: String
         if sector.contains("goes") {
@@ -45,7 +45,7 @@ final class UtilityLightning {
         }
         return Bitmap(url)
     }
-
+    
     static func getSectorPretty(_ sector: String) -> String {
         let sectorPretty: String
         switch sector {
@@ -65,11 +65,12 @@ final class UtilityLightning {
             sectorPretty = "Australia"
         case "new_zealand_big":
             sectorPretty = "New Zealand"
-        default: sectorPretty = ""
+        default:
+            sectorPretty = ""
         }
         return sectorPretty
     }
-
+    
     static func getSector(_ sectorPretty: String) -> String {
         let sector: String
         switch sectorPretty {
@@ -89,11 +90,12 @@ final class UtilityLightning {
             sector = "australia_big"
         case "New Zealand":
             sector = "new_zealand_big"
-        default: sector = ""
+        default:
+            sector = ""
         }
         return sector
     }
-
+    
     static func getTimePretty(_ period: String) -> String {
         let periodPretty: String
         switch period {
@@ -107,11 +109,12 @@ final class UtilityLightning {
             periodPretty = "24 HR"
         case "48":
             periodPretty = "48 HR"
-        default: periodPretty = ""
+        default:
+            periodPretty = ""
         }
         return periodPretty
     }
-
+    
     static func getTime(_ periodPretty: String) -> String {
         let period: String
         switch periodPretty {
@@ -125,7 +128,8 @@ final class UtilityLightning {
             period = "24"
         case "48 HR":
             period = "48"
-        default: period = ""
+        default:
+            period = ""
         }
         return period
     }

@@ -7,25 +7,29 @@
 import Foundation
 
 final class SevereNotice {
-
+    
     var numberList = [String]()
     var bitmaps = [Bitmap]()
     var type = ""
-
+    
     init(_ type: String) {
         self.type = type
     }
-
+    
     func getBitmaps(_ html: String) {
         var noAlertsVerbiage = ""
         var url = ""
         var text = ""
         bitmaps = [Bitmap]()
         switch type {
-        case "SPCMCD": noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."
-        case "SPCWAT": noAlertsVerbiage = "<center><strong>No watches are currently valid"
-        case "WPCMPD": noAlertsVerbiage = "No MPDs are currently in effect."
-        default: break
+        case "SPCMCD":
+            noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."
+        case "SPCWAT":
+            noAlertsVerbiage = "<center><strong>No watches are currently valid"
+        case "WPCMPD":
+            noAlertsVerbiage = "No MPDs are currently in effect."
+        default:
+            break
         }
         if !html.contains(noAlertsVerbiage) {
             text = html
@@ -36,11 +40,14 @@ final class SevereNotice {
         if text != "" {
             (0..<(numberList.count - 1)).forEach {
                 switch type {
-                case "SPCMCD": url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[$0] + ".gif"
-                case "SPCWAT": url = MyApplication.nwsSPCwebsitePrefix
-                    + "/products/watch/ww" + numberList[$0] + "_radar.gif"
-                case "WPCMPD": url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[$0] + ".gif"
-                default: break
+                case "SPCMCD":
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[$0] + ".gif"
+                case "SPCWAT":
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + numberList[$0] + "_radar.gif"
+                case "WPCMPD":
+                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[$0] + ".gif"
+                default:
+                    break
                 }
                 bitmaps.append(Bitmap(url))
             }

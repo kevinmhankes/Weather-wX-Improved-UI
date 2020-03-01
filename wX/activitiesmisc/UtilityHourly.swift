@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityHourly {
-
+    
     static let hourlyAbbreviationsFirst = [
         "Showers And Thunderstorms": "Sh/Tst",
         "Chance": "Chc",
@@ -23,12 +23,12 @@ final class UtilityHourly {
         "Likely": "Lkly",
         "T-storms": "Tst"
     ]
-
+    
     static let hourlyAbbreviationsSecond = [
         "Showers": "Shwr",
         "Rn And Sn": "Rn/Sn"
     ]
-
+    
     static func getFooter() -> String {
         var footer = MyApplication.newline
         hourlyAbbreviationsFirst.keys.forEach {
@@ -39,7 +39,7 @@ final class UtilityHourly {
         }
         return footer
     }
-
+    
     static func getHourlyString(_ locationNumber: Int) -> [String] {
         let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
         let header = "Time".fixedLengthString(7)
@@ -50,7 +50,7 @@ final class UtilityHourly {
         let footer = getFooter()
         return [header + parse(html) + footer, html]
     }
-
+    
     static func parse(_ html: String) -> String {
         let startTime = html.parseColumn("\"startTime\": \"(.*?)\",")
         let temperatures = html.parseColumn("\"temperature\": (.*?),")
@@ -73,7 +73,7 @@ final class UtilityHourly {
         }
         return string
     }
-
+    
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
         hourlyAbbreviationsFirst.keys.forEach {
@@ -84,7 +84,7 @@ final class UtilityHourly {
         }
         return hourly
     }
-
+    
     static func translateTime(_ originalTime: String) -> String {
         let originalTimeComponents = originalTime.replace("T", "-").split("-")
         let year = Int(originalTimeComponents[0]) ?? 0
@@ -101,14 +101,22 @@ final class UtilityHourly {
         let futureDate = calendar.date(from: futureDateComp)!
         let dayOfTheWeekIndex = calendar.component(.weekday, from: futureDate)
         switch dayOfTheWeekIndex {
-        case 2: dayOfTheWeek = "Mon"
-        case 3: dayOfTheWeek = "Tue"
-        case 4: dayOfTheWeek = "Wed"
-        case 5: dayOfTheWeek = "Thu"
-        case 6: dayOfTheWeek = "Fri"
-        case 7: dayOfTheWeek = "Sat"
-        case 1: dayOfTheWeek = "Sun"
-        default: dayOfTheWeek = ""
+        case 2:
+            dayOfTheWeek = "Mon"
+        case 3:
+            dayOfTheWeek = "Tue"
+        case 4:
+            dayOfTheWeek = "Wed"
+        case 5:
+            dayOfTheWeek = "Thu"
+        case 6:
+            dayOfTheWeek = "Fri"
+        case 7:
+            dayOfTheWeek = "Sat"
+        case 1:
+            dayOfTheWeek = "Sun"
+        default:
+            dayOfTheWeek = ""
         }
         return (dayOfTheWeek + " " + hourString)
     }
