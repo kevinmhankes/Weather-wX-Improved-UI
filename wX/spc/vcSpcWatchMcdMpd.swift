@@ -33,7 +33,8 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 playButton,
                 playListButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
