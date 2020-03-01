@@ -33,7 +33,6 @@ class vcCanadaHourly: UIwXViewController {
     }
     
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {
@@ -43,6 +42,7 @@ class vcCanadaHourly: UIwXViewController {
     }
     
     private func displayContent() {
+        refreshViews()
         let objectTextView = ObjectTextView(self.stackView, html, FontSize.hourly.size)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         _ = ObjectCALegal(self.stackView)
