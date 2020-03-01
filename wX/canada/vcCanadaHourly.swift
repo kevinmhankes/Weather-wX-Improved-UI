@@ -18,10 +18,12 @@ class vcCanadaHourly: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
-                GlobalVariables.flexBarButton
+                GlobalVariables.flexBarButton,
+                shareButton
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
@@ -44,7 +46,11 @@ class vcCanadaHourly: UIwXViewController {
     private func displayContent() {
         refreshViews()
         let objectTextView = ObjectTextView(self.stackView, html, FontSize.hourly.size)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.constrain(scrollView)
         _ = ObjectCALegal(self.stackView)
+    }
+    
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.share(self, sender, html)
     }
 }
