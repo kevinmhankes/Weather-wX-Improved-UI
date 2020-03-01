@@ -39,15 +39,23 @@ final class UtilityModels {
             day += 1
         }
         var futureDay = ""
-        switch (dayOfWeek+day) % 7 {
-        case 1: futureDay = "Sun"
-        case 2: futureDay = "Mon"
-        case 3: futureDay = "Tue"
-        case 4: futureDay = "Wed"
-        case 5: futureDay = "Thu"
-        case 6: futureDay = "Fri"
-        case 0: futureDay = "Sat"
-        default: break
+        switch (dayOfWeek + day) % 7 {
+        case 1:
+            futureDay = "Sun"
+        case 2:
+            futureDay = "Mon"
+        case 3:
+            futureDay = "Tue"
+        case 4:
+            futureDay = "Wed"
+        case 5:
+            futureDay = "Thu"
+        case 6:
+            futureDay = "Fri"
+        case 0:
+            futureDay = "Sat"
+        default:
+            break
         }
         return futureDay + "  " + String(hourOfDay) + amPm
     }
@@ -70,8 +78,7 @@ final class UtilityModels {
             }
             listTime.enumerated().forEach {
                 tmpStr = $1.split(" ")[0].replace(prefix, "")
-                listTimeNew.append(prefix + tmpStr + " "
-                    + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
+                listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
             }
         }
         return listTimeNew
