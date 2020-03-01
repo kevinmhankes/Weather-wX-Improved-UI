@@ -17,6 +17,7 @@
 // [REF] fix utilRadar / utilRadarUI
 // [ADD] more robust handling network issues (cc,7day)
 // [ADD] usalerts filter by state
+// [ADD] onrestart spc mcd wat mpd
 
 56093 2020_03_01 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
