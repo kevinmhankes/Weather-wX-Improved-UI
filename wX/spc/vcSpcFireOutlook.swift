@@ -14,6 +14,12 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         var dayString = String(dayIndex + 1)
         if dayIndex == 2 {
             dayString = "3-8"
@@ -28,8 +34,13 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
                 playButton,
                 playListButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        self.getContent()
+    }
+    
+    @objc func willEnterForeground() {
         self.getContent()
     }
     
@@ -40,6 +51,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }

@@ -26,7 +26,8 @@ class vcSpcFireSummary: UIwXViewController {
                 statusButton,
                 GlobalVariables.flexBarButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
@@ -36,10 +37,10 @@ class vcSpcFireSummary: UIwXViewController {
     }
     
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }

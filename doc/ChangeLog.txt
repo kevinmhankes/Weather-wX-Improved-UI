@@ -33,7 +33,7 @@
 		 [FIX] homescreen - save to disk after every change
 		 [FIX] adhoc location layout was not working
 		 [ADD] add framework in playlist prebuild menus but don't use (to slow init load)
-		 [ADD] onrestart to SPC SWO
+		 [ADD] onrestart to SPC SWO and SPC Fire
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed
