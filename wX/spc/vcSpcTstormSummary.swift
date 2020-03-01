@@ -40,6 +40,7 @@ class vcSpcTstormSummary: UIwXViewController {
             self.urls = UtilitySpc.getTstormOutlookUrls()
             self.bitmaps = self.urls.map { Bitmap($0) }
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }

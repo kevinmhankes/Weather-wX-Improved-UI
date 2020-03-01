@@ -85,7 +85,8 @@ class vcSpcSwoSummary: UIwXViewController {
             let vc = vcSpcSwo()
             vc.spcSwoDay = "48"
             self.goToVC(vc)
-        default: break
+        default:
+            break
         }
     }
     

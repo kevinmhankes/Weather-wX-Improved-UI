@@ -128,7 +128,6 @@ class vcSpcMeso: UIwXViewController {
     }
     
     @objc func paramClicked(sender: ObjectToolbarIcon) {
-        //var parametars = [String]()
         switch sender.title! {
         case "SFC":
             parametars = UtilitySpcMeso.paramSurface
