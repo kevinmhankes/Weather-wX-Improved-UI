@@ -31,7 +31,7 @@ class vcSpotterReports: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
             DispatchQueue.main.async {
-                self.spotterReportCountButton.title = "Count: \(self.spotterReportsData.count)"
+                self.spotterReportCountButton.title = "Count: " + String(self.spotterReportsData.count)
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
                 self.spotterReportsDataSorted.enumerated().forEach {
                     _ = ObjectSpotterReportCard(
@@ -50,11 +50,11 @@ class vcSpotterReports: UIwXViewController {
     }
     
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
-        let idx = sender.data
-        let alert = ObjectPopUp(self, "", spotterReportCountButton)
-        let c = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(idx)})
-        alert.addAction(c)
-        alert.finish()
+        let index = sender.data
+        let objectPopUp = ObjectPopUp(self, "", spotterReportCountButton)
+        let uiAlertAction = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(index)})
+        objectPopUp.addAction(uiAlertAction)
+        objectPopUp.finish()
     }
     
     func showMap(_ selection: Int) {
