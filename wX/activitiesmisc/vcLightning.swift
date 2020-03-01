@@ -36,7 +36,8 @@ class vcLightning: UIwXViewController {
                 productButton,
                 timeButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref("LIGHTNING_SECTOR", sector)

@@ -7,7 +7,7 @@
 import UIKit
 
 class vcObsSites: UIwXViewController {
-
+    
     private var capAlerts = [CapAlert]()
     private var filter = ""
     private var listCity = [String]()
@@ -16,7 +16,7 @@ class vcObsSites: UIwXViewController {
     private var siteButton = ObjectToolbarIcon()
     private var mapButton = ObjectToolbarIcon()
     private let prefToken = "NWS_OBSSITE_LAST_USED"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         siteButton = ObjectToolbarIcon(self, #selector(siteClicked))
@@ -29,16 +29,17 @@ class vcObsSites: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 mapButton,
                 siteButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         constructStateView()
     }
-
+    
     @objc func gotoState(sender: UITapGestureRecognizerWithData) {
         stateSelected = GlobalArrays.states[sender.data].split(":")[0]
         showState()
     }
-
+    
     func showState() {
         stateView = false
         var idTmp = ""
@@ -75,7 +76,7 @@ class vcObsSites: UIwXViewController {
         }
         self.scrollView.scrollToTop()
     }
-
+    
     @objc func gotoObsSite(sender: UITapGestureRecognizerWithData) {
         if sender.data == 0 {
             constructStateView()
@@ -90,7 +91,7 @@ class vcObsSites: UIwXViewController {
             self.goToVC(vc)
         }
     }
-
+    
     func constructStateView() {
         self.stateView = true
         self.stackView.subviews.forEach { $0.removeFromSuperview() }
@@ -104,7 +105,7 @@ class vcObsSites: UIwXViewController {
             objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         }
     }
-
+    
     @objc func siteClicked() {
         let vc = vcWebView()
         vc.webViewShowProduct = false
@@ -112,7 +113,7 @@ class vcObsSites: UIwXViewController {
         vc.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
         self.goToVC(vc)
     }
-
+    
     @objc func mapClicked() {
         let vc = vcWebView()
         vc.webViewShowProduct = false
@@ -120,7 +121,7 @@ class vcObsSites: UIwXViewController {
         vc.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
         self.goToVC(vc)
     }
-
+    
     private func displayContent() {
         if stateView {
             constructStateView()

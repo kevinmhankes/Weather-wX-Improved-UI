@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 class vcSevereDashboard: UIwXViewController {
-
+    
     private var buttonActions = [String]()
     private var snWat = SevereNotice("SPCWAT")
     private var snMcd = SevereNotice("SPCMCD")
@@ -18,7 +18,7 @@ class vcSevereDashboard: UIwXViewController {
     private var statusButton = ObjectToolbarIcon()
     private let synth = AVSpeechSynthesizer()
     private var statusWarnings = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -35,15 +35,16 @@ class vcSevereDashboard: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 statusButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
@@ -61,7 +62,7 @@ class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-
+    
     func getStatusText() -> String {
         var spokenText = "Download complete with"
         let wTor = SevereWarning("tor")
@@ -81,7 +82,7 @@ class vcSevereDashboard: UIwXViewController {
         spokenText += String(self.snMcd.bitmaps.count) + " mcd " + String(self.snWat.bitmaps.count) + " watch " + String(self.snMpd.bitmaps.count) + " mpd "
         return spokenText
     }
-
+    
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcSpcWatchMcdMpd()
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
@@ -96,7 +97,7 @@ class vcSevereDashboard: UIwXViewController {
         }
         self.goToVC(vc)
     }
-
+    
     func showTextWarnings(_ views: inout [UIView]) {
         let wTor = SevereWarning("tor")
         let wTst = SevereWarning("tst")
@@ -133,28 +134,28 @@ class vcSevereDashboard: UIwXViewController {
             statusWarnings = ""
         }
     }
-
+    
     @objc func gotoAlerts() {
         let vc = vcUSAlerts()
         self.goToVC(vc)
     }
-
+    
     @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
         let vc = vcUSAlertsDetail()
         vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         self.goToVC(vc)
     }
-
+    
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
         let vc = vcSpcStormReports()
         vc.spcStormReportsDay = "today"
         self.goToVC(vc)
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
-
+    
     private func displayContent() {
         var views = [UIView]()
         buttonActions = [String]()
@@ -248,7 +249,7 @@ class vcSevereDashboard: UIwXViewController {
         }
         self.statusButton.title = status + " " + statusWarnings
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -256,7 +257,7 @@ class vcSevereDashboard: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }

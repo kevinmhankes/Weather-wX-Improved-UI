@@ -8,13 +8,13 @@ import UIKit
 import MapKit
 
 class vcMapKitView: UIwXViewController, MKMapViewDelegate {
-
+    
     private var latLonButton = ObjectToolbarIcon()
     private let mapView = MKMapView()
     var mapKitLat = ""
     var mapKitLon = ""
     var mapKitRadius = 0.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -30,11 +30,12 @@ class vcMapKitView: UIwXViewController, MKMapViewDelegate {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 latLonButton
-        ]).items
+            ]
+        ).items
         self.view.addSubview(toolbar)
         self.view.addSubview(mapView)
     }
-
+    
     @objc func showExternalMap() {
         let directionsURL = "http://maps.apple.com/?daddr=" + mapKitLat + "," + mapKitLon
         guard let url = URL(string: directionsURL) else {

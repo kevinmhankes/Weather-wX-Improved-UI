@@ -29,7 +29,8 @@ class vcOpc: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 productButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)

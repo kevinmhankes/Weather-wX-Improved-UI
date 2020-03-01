@@ -7,9 +7,9 @@
 import UIKit
 
 class vcHourly: UIwXViewController {
-
+    
     private var html = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -24,15 +24,16 @@ class vcHourly: UIwXViewController {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -42,15 +43,15 @@ class vcHourly: UIwXViewController {
             }
         }
     }
-
+    
     @objc func textAction() {
         scrollView.scrollToTop()
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, self.html)
     }
-
+    
     private func displayContent() {
         let objectTextView = ObjectTextView(
             self.stackView,
