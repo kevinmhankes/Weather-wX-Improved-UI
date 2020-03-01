@@ -7,7 +7,7 @@
 import UIKit
 
 class vcSpcStormReports: UIwXViewController {
-
+    
     private var image = ObjectImage()
     private var objDatePicker: ObjectDatePicker!
     private var stormReports = [StormReport]()
@@ -21,7 +21,7 @@ class vcSpcStormReports: UIwXViewController {
     private var filter = "All"
     private var filterButton = ObjectToolbarIcon()
     var spcStormReportsDay = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -33,18 +33,26 @@ class vcSpcStormReports: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
         filterButton = ObjectToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, lsrButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                filterButton,
+                lsrButton,
+                shareButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.displayPreContent()
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         //self.getContent()
     }
-
+    
     func getContent() {
         //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -53,21 +61,21 @@ class vcSpcStormReports: UIwXViewController {
             self.html = self.textUrl.getHtml()
             self.stormReports = UtilitySpcStormReports.processData(self.html.split(MyApplication.newline))
             DispatchQueue.main.async {
-               self.displayContent()
+                self.displayContent()
             }
         }
     }
-
+    
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
         vc.imageViewerUrl = self.imageUrl
         self.goToVC(vc)
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, [self.image.bitmap], self.html)
     }
-
+    
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
         let vc = vcMapKitView()
         vc.mapKitLat = self.stormReports[sender.data].lat
@@ -75,7 +83,7 @@ class vcSpcStormReports: UIwXViewController {
         vc.mapKitRadius = 20000.0
         self.goToVC(vc)
     }
-
+    
     @objc func onDateChanged(sender: UIDatePicker) {
         let myDateFormatter: DateFormatter = DateFormatter()
         myDateFormatter.dateFormat = "MM/dd/yyyy"
@@ -88,20 +96,22 @@ class vcSpcStormReports: UIwXViewController {
         let day = String(format: "%02d", components.day!)
         let month = String(format: "%02d", components.month!)
         let year = String(components.year!).substring(2)
-        date = "\(year)\(month)\(day)"
+        date = year + month + day
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         self.getContent()
     }
-
+    
     @objc func lsrClicked() {
         let vc = vcLsrByWfo()
         self.goToVC(vc)
     }
-
+    
     @objc func filterClicked() {
         _ = ObjectPopUp(
             self,
@@ -111,22 +121,24 @@ class vcSpcStormReports: UIwXViewController {
             self.changeFilter(_:)
         )
     }
-
+    
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         displayContent()
     }
-
+    
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(stackView)
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
         image = ObjectImage(self.stackView)
     }
-
+    
     private func displayContent() {
         var stateList = [String]()
         filterList = ["All"]
@@ -182,12 +194,9 @@ class vcSpcStormReports: UIwXViewController {
         }
         if hailReports == 0 {
             if hailHeader != nil {
-               //self.stackView.removeArrangedSubview(hailHeader!.view)
+                //self.stackView.removeArrangedSubview(hailHeader!.view)
             }
         }
-        //print("COUNT: " + String(tornadoReports))
-        //print("COUNT: " + String(windReports))
-        //print("COUNT: " + String(hailReports))
         let mappedItems = stateList.map { ($0, 1) }
         stateCount = Dictionary(mappedItems, uniquingKeysWith: +)
         let sortedKeys = stateCount.keys.sorted()
@@ -196,7 +205,7 @@ class vcSpcStormReports: UIwXViewController {
             filterList += [key + ": " + String(val)]
         }
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -205,7 +214,7 @@ class vcSpcStormReports: UIwXViewController {
                 self.refreshViews()
                 self.displayPreContent()
                 self.displayContent()
-            }
+        }
         )
     }
 }

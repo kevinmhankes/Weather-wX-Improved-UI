@@ -19,7 +19,13 @@ class vcWpcRainfallSummary: UIwXViewController {
             object: nil
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                shareButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
@@ -31,7 +37,7 @@ class vcWpcRainfallSummary: UIwXViewController {
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilityWpcRainfallOutlook.urls.map {Bitmap($0)}
+            self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
             DispatchQueue.main.async {
                 self.displayContent()
             }

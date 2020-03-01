@@ -7,9 +7,9 @@
 import UIKit
 
 class vcSpcSwoSummary: UIwXViewController {
-
+    
     private var bitmaps = [Bitmap]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -19,18 +19,24 @@ class vcSpcSwoSummary: UIwXViewController {
             object: nil
         )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                shareButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = (1...3).map {UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0]}
+            self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
             DispatchQueue.main.async {
                 self.refreshViews()
@@ -38,7 +44,7 @@ class vcSpcSwoSummary: UIwXViewController {
             }
         }
     }
-
+    
     private func displayContent() {
         var imageCount = 0
         var imagesPerRow = 2
@@ -47,7 +53,7 @@ class vcSpcSwoSummary: UIwXViewController {
             imagesPerRow = 4
         }
         #if targetEnvironment(macCatalyst)
-            imagesPerRow = 4
+        imagesPerRow = 4
         #endif
         self.bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
@@ -68,7 +74,7 @@ class vcSpcSwoSummary: UIwXViewController {
             imageCount += 1
         }
     }
-
+    
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
@@ -82,11 +88,11 @@ class vcSpcSwoSummary: UIwXViewController {
         default: break
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -94,7 +100,7 @@ class vcSpcSwoSummary: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }
