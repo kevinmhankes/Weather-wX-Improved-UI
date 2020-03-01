@@ -32,6 +32,7 @@
 		 [REF] use IconType in ObjectFab
 		 [REF] use enum for icon type 
 		 [FIX] homescreen - save to disk after every change
+		 [FIX] adhoc location layout was not working
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed

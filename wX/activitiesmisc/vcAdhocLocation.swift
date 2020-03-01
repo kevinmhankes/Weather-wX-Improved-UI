@@ -8,12 +8,15 @@ import UIKit
 import AVFoundation
 
 class vcAdhocLocation: UIwXViewController {
-
+    
     private var objCurrentConditions = ObjectForecastPackageCurrentConditions()
     private var objHazards = ObjectForecastPackageHazards()
     private var objSevenDay = ObjectForecastPackage7Day()
+    private var stackViewCurrentConditions: ObjectStackView!
+    private var stackViewForecast: ObjectStackView!
+    private var stackViewHazards: ObjectStackView!
     var adhocLocation = LatLon()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -23,17 +26,27 @@ class vcAdhocLocation: UIwXViewController {
             object: nil
         )
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 10.0).isActive = true
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                titleButton
+            ]
+        ).items
+        self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+        self.stackViewForecast = ObjectStackView(.fill, .vertical)
+        self.stackViewHazards = ObjectStackView(.fill, .vertical)
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        scrollView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        stackView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
         self.getContent()
     }
-
+    
     @objc func willEnterForeground() {
         self.getContent()
     }
-
+    
     func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -41,13 +54,21 @@ class vcAdhocLocation: UIwXViewController {
             self.objSevenDay = ObjectForecastPackage7Day(self.adhocLocation)
             self.objHazards = ObjectForecastPackageHazards(self, self.adhocLocation)
             DispatchQueue.main.async {
-                let objectCardCurrentConditions = ObjectCardCurrentConditions(self.stackView, self.objCurrentConditions, true)
+                let objectCardCurrentConditions = ObjectCardCurrentConditions(
+                    self.stackViewCurrentConditions.view,
+                    self.objCurrentConditions,
+                    true
+                )
+                self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+                self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
                 ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
-                _ = ObjectCard7DayCollection(
-                    self.stackView,
+                let objectCard7DayCollection = ObjectCard7DayCollection(
+                    self.stackViewForecast.view,
                     self.scrollView,
                     self.objSevenDay
                 )
+                self.stackView.addArrangedSubview(self.stackViewForecast.view)
+                self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
             }
         }
     }
