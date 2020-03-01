@@ -14,6 +14,12 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let statusButton = ObjectToolbarIcon(title: "Day " + spcSwoDay, self, nil)
         let stateButton = ObjectToolbarIcon(title: "STATE", self, #selector(stateClicked))
@@ -35,6 +41,10 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.spcSwoDay == "48" {
@@ -46,6 +56,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
             }
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }
