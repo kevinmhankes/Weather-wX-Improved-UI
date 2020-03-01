@@ -23,7 +23,8 @@ final class ObjectPopUp {
          _ title: String,
          _ button: UIBarButtonItem,
          _ list: [String],
-         _ fn: @escaping (String) -> Void
+         _ fn: @escaping (String) -> Void,
+         doNotOpen: Bool = false
     ) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
@@ -37,7 +38,11 @@ final class ObjectPopUp {
             let action = UIAlertAction(item, {_ in fn(code)})
             addAction(action)
         }
-        finish()
+        if !doNotOpen {
+            finish()
+        } else {
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        }
     }
 
     init(_ uiv: UIViewController,
@@ -137,6 +142,13 @@ final class ObjectPopUp {
 
     func finish() {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = button
+        }
+        uiv.present(alert, animated: true, completion: nil)
+    }
+    
+    func present() {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = button
         }

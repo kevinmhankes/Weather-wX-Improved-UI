@@ -190,9 +190,12 @@ class vcModels: UIwXViewController {
     func respondToSwipeGesture(gesture: UISwipeGestureRecognizer ) {
         let swipeGesture = gesture
         switch swipeGesture.direction {
-        case .right: rightClicked()
-        case .left: leftClicked()
-        default: break
+        case .right:
+            rightClicked()
+        case .left:
+            leftClicked()
+        default:
+            break
         }
     }
     
