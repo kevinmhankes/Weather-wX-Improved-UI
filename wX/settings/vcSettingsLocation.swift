@@ -25,11 +25,11 @@ class vcSettingsLocation: UIwXViewController {
     func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
-            for index in MyApplication.locations.indices {
+            MyApplication.locations.indices.forEach { index in
                 self.currentConditions.append(ObjectForecastPackageCurrentConditions(index))
             }
             DispatchQueue.main.async {
-                for index in self.objectCards.indices {
+                self.objectCards.indices.forEach { index in
                     self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
                     MyApplication.locations[index].updateObservation(self.currentConditions[index].topLine)
                 }
