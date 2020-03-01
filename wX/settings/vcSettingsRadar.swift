@@ -8,10 +8,10 @@ import UIKit
 import CoreLocation
 
 class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
-
+    
     private var locationManager = CLLocationManager()
     private var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.delegate = self
@@ -20,7 +20,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.displayContent()
     }
-
+    
     @objc override func doneClicked() {
         MyApplication.initPreferences()
         // brute force, reset timers so that fresh data is downloaded next time in nexrad radar
@@ -32,7 +32,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         UtilityColorPaletteGeneric.loadColorMap("99")
         super.doneClicked()
     }
-
+    
     @objc func switchChanged(sender: UISwitch) {
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
@@ -60,34 +60,34 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             locationManager.requestLocation()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
-
+    
     // needed for Radar/GPS setting
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
@@ -105,11 +105,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         }
     }
-
-    //@objc func getHelp(sender: UIButton) {
-    //    UtilitySettings.getHelp(sender, self, doneButton, UtilitySettingsRadar.helpStrings)
-    //}
-
+    
     private func displayContent() {
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
@@ -118,21 +114,19 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
                 UtilitySettingsRadar.booleanDefault,
                 UtilitySettingsRadar.boolean
             )
-            //switchObject.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             switchObject.switchUi.addTarget(
                 self, action: #selector(switchChanged), for: UIControl.Event.valueChanged
             )
             switchObject.switchUi.tag = index
         }
-
+        
         setupSliders()
-
+        
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
             objNp.numberPicker.dataSource = self
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
-            //objNp.button.addTarget(self, action: #selector(getHelp(sender:)), for: .touchUpInside)
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.numberPicker.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.firstIndex(
@@ -153,7 +147,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         }
     }
-
+    
     func setupSliders() {
         [
             "RADAR_HI_SIZE",
@@ -166,7 +160,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             "RADAR_DATA_REFRESH_INTERVAL",
             "WXOGL_SIZE",
             "RADAR_TEXT_SIZE"
-        ].forEach {
+            ].forEach {
                 let objSlider = ObjectSlider(
                     self,
                     stackView,
@@ -176,14 +170,14 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
-
+    
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
         let objSlider = objIdToSlider[objId]!
         objSlider.setLabel()
         Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -191,7 +185,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()
-            }
+        }
         )
     }
 }

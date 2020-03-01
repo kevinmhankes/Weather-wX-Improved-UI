@@ -67,12 +67,8 @@ class vcSettingsLocationCanada: UIwXViewController {
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityCanada.getProvinceHtml(self.provSelected)
-            let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/"
-                + self.provSelected.lowercased()
-                + "-(.*?)_metric_e.html\">.*?</a></li>")
-            let idCityAl = html.parseColumn("<li><a href=\"/city/pages/"
-                + self.provSelected.lowercased()
-                + "-.*?_metric_e.html\">(.*?)</a></li>")
+            let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
+            let idCityAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-.*?_metric_e.html\">(.*?)</a></li>")
             idTmpAl.forEach {self.listIds.append($0)}
             self.listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
             DispatchQueue.main.async {
@@ -82,7 +78,9 @@ class vcSettingsLocationCanada: UIwXViewController {
     }
 
     private func displayCities() {
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         self.cityDisplay = true
         self.listCity.enumerated().forEach {
             let objectTextView = ObjectTextView(
