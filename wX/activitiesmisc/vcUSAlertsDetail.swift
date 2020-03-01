@@ -28,7 +28,8 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
                 GlobalVariables.flexBarButton,
                 playButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }

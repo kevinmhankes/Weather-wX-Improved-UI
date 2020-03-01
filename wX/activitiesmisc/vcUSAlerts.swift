@@ -34,7 +34,8 @@ class vcUSAlerts: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 filterButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
