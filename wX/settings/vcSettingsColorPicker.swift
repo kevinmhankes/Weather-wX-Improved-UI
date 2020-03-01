@@ -7,7 +7,7 @@
 import UIKit
 
 class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
-
+    
     private var colorBarSize: CGFloat = 100.0
     private var colorBar = UIView()
     private var newRed =  0
@@ -18,7 +18,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     private let toolbarTop = ObjectToolbar()
     private var colPicker: HSBColorPicker!
     var colorObject = wXColor()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let labelButton = ObjectToolbarIcon(title: colorObject.uiLabel, self, nil)
@@ -42,14 +42,14 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         self.view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
     }
-
+    
     @objc override func doneClicked() {
         if colorChanged {
             saveNewColorClicked()
         }
         super.doneClicked()
     }
-
+    
     func HSBColorColorPickerTouched(
         sender: HSBColorPicker,
         color: UIColor,
@@ -68,13 +68,13 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colorChanged = true
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }
-
+    
     func saveNewColorClicked() {
         Utility.writePref(colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
         colorObject.regenCurrentColor()
     }
-
+    
     @objc func saveDefaultColorClicked() {
         Utility.writePref(
             colorObject.prefVar,
@@ -92,33 +92,33 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colorChanged = true
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }
-
+    
     internal override func refreshViews() {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         colPicker.frame = CGRect(
-                x: 0,
-                y: toolbar.height + UtilityUI.getTopPadding(),
-                width: width,
-                height: height
-                    - toolbar.height * 2
-                    - colorBarSize
-                    - UtilityUI.getTopPadding()
-            )
+            x: 0,
+            y: toolbar.height + UtilityUI.getTopPadding(),
+            width: width,
+            height: height
+                - toolbar.height * 2
+                - colorBarSize
+                - UtilityUI.getTopPadding()
+        )
         colorBar.frame = CGRect(
-                x: 0,
-                y: height - toolbar.height - colorBarSize,
-                width: width,
-                height: colorBarSize
-            )
+            x: 0,
+            y: height - toolbar.height - colorBarSize,
+            width: width,
+            height: colorBarSize
+        )
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-            }
+        }
         )
     }
 }
