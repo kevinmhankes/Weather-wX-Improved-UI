@@ -7,11 +7,11 @@
 import UIKit
 
 class vcSpotterReports: UIwXViewController {
-
+    
     private var spotterReportsData = [SpotterReports]()
     private var spotterReportsDataSorted = [SpotterReports]()
     private var spotterReportCountButton = ObjectToolbarIcon()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         spotterReportCountButton = ObjectToolbarIcon(self, nil)
@@ -21,12 +21,12 @@ class vcSpotterReports: UIwXViewController {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 spotterReportCountButton
-        ]).items
+            ]
+        ).items
         _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
-        self.view.addSubview(toolbar)
         self.getContent()
     }
-
+    
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
@@ -42,12 +42,13 @@ class vcSpotterReports: UIwXViewController {
                     )
                 }
                 if self.spotterReportsData.count == 0 {
-                    _ = ObjectTextView(self.stackView, "No active spotter reports.")
+                    let objectTextView = ObjectTextView(self.stackView, "No active spotter reports.")
+                    objectTextView.constrain(self.scrollView)
                 }
             }
         }
     }
-
+    
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let idx = sender.data
         let alert = ObjectPopUp(self, "", spotterReportCountButton)
@@ -55,7 +56,7 @@ class vcSpotterReports: UIwXViewController {
         alert.addAction(c)
         alert.finish()
     }
-
+    
     func showMap(_ selection: Int) {
         let vc = vcMapKitView()
         vc.mapKitLat = self.spotterReportsDataSorted[selection].location.latString

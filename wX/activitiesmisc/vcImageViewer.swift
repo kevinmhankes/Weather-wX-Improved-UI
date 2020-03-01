@@ -19,7 +19,8 @@ class vcImageViewer: UIwXViewController {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         self.view.addSubview(toolbar)
         self.getContent(imageViewerUrl)
     }

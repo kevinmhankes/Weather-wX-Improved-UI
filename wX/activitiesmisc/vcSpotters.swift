@@ -30,7 +30,8 @@ class vcSpotters: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 spotterCountButton,
                 spotterReportsButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
         self.getContent()
     }
