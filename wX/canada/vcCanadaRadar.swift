@@ -113,7 +113,7 @@ class vcCanadaRadar: UIwXViewController {
                     animDrawable = UtilityCanadaImg.getRadarMosaicAnimation(self.radarSite, frameCnt)
                 }
             } else {
-                animDrawable = UtilityCanadaImg.getGoesAnim(self.url)
+                animDrawable = UtilityCanadaImg.getGoesAnimation(self.url)
             }
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
