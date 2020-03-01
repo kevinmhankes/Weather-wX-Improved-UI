@@ -43,7 +43,7 @@ class vcNhc: UIwXViewController {
     }
 
     func getContent() {
-        refreshViews()
+        self.refreshViews()
         // FIXME var naming
         objNHC = ObjectNhc(self, scrollView, stackView)
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
