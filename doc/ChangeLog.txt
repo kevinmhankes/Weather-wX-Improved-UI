@@ -20,6 +20,7 @@
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
 // [REF] objectStackScrollView remove all args but uiv as they exist as properties of uiv
+// [ADD] class for list of images in WPC Rainfall, SPC Tstorm, SPC Fire, SPC SWO
 
 56094 2020_03_02 
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
