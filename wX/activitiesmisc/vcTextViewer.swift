@@ -32,6 +32,6 @@ class vcTextViewer: UIwXViewControllerWithAudio {
     
     private func displayContent() {
         objectTextView = ObjectTextView(stackView, textViewText)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.constrain(scrollView)
     }
 }
