@@ -8,7 +8,16 @@ import UIKit
 
 class vcSettingsMain: UIwXViewController {
     
-    private var titles = [String]()
+    private let titles = [
+        "Locations",
+        "Colors",
+        "Radar",
+        "Home Screen",
+        "User Interface",
+        "Celsius to Fahrenheit table",
+        "Spotters (beta)",
+        "About "  + GlobalVariables.appName
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +30,6 @@ class vcSettingsMain: UIwXViewController {
             ]
         ).items
         _ = ObjectScrollStackView(self)
-        titles = [
-            "Locations",
-            "Colors",
-            "Radar",
-            "Home Screen",
-            "User Interface",
-            "Celsius to Fahrenheit table",
-            "Spotters (beta)",
-            "About "  + GlobalVariables.appName
-        ]
         displayContent()
     }
     
