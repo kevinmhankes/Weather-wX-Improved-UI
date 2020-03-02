@@ -21,6 +21,7 @@
 // [ADD] onrestart spc mcd wat mpd
 // [REF] objectStackScrollView remove all args but uiv as they exist as properties of uiv
 
+56094 2020_03_02 
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar
