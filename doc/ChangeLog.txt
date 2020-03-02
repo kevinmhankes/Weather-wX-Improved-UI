@@ -21,7 +21,7 @@
 // [ADD] onrestart spc mcd wat mpd
 // [REF] objectStackScrollView remove all args but uiv as they exist as properties of uiv
 
-56093 2020_03_01 [ADD] label in status bar in SPC Fire Weather Outlooks
+56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar
 		 [FIX] US Alerts needed width constraint for text cards
@@ -38,7 +38,7 @@
 		 [ADD] add framework in playlist prebuild menus but don't use (to slow init load)
 		 [ADD] onrestart to SPC SWO and SPC Fire
 		 [ADD] share button to Canada location hourly
-		 [ADD] ObjectImageAndText and use in SPC Fire and WPC Excessive Rainfall
+		 [ADD] ObjectImageAndText and use in SPC Fire and WPC Excessive Rainfall, SPC Convective Outlook
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed

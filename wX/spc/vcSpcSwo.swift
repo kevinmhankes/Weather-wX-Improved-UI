@@ -62,7 +62,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         }
     }
     
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
         vc.imageViewerUrl = bitmaps[sender.data].url
         self.goToVC(vc)
@@ -79,7 +79,8 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        var imageCount = 0
+        _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
+        /*var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
@@ -104,7 +105,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
             _ = ObjectImage(
                 stackView,
                 image,
-                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
+                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClickedWithIndex(sender:))),
                 widthDivider: imagesPerRow
             )
             imageCount += 1
@@ -114,7 +115,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         self.objectTextView.constrain(self.scrollView)
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
-        scrollView.accessibilityElements = views
+        scrollView.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

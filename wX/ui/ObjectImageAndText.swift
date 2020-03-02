@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectImageAndText {
     
-    let uiv: UIwXViewController
+    //let uiv: UIwXViewController
     
     init(
         _ uiv: UIwXViewController,
@@ -16,7 +16,7 @@ final class ObjectImageAndText {
         _ objectTextView: inout ObjectTextView,
         _ html: String
     ) {
-        self.uiv = uiv
+        //self.uiv = uiv
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
@@ -54,6 +54,54 @@ final class ObjectImageAndText {
         //self.view.bringSubviewToFront(self.toolbar)
         uiv.scrollView.accessibilityElements = views
     }
+    
+    // SPC SWO
+    init(
+        _ uiv: UIwXViewController,
+        _ bitmaps: [Bitmap],
+        _ objectTextView: inout ObjectTextView,
+        _ html: String
+    ) {
+        //self.uiv = uiv
+        var imageCount = 0
+        var imagesPerRow = 2
+        var imageStackViewList = [ObjectStackView]()
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
+            imagesPerRow = 4
+        }
+        #if targetEnvironment(macCatalyst)
+        imagesPerRow = 4
+        #endif
+        if bitmaps.count == 2 {
+            imagesPerRow = 2
+        }
+        bitmaps.enumerated().forEach { imageIndex, image in
+            let stackView: UIStackView
+            if imageCount % imagesPerRow == 0 {
+                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                imageStackViewList.append(objectStackView)
+                stackView = objectStackView.view
+                uiv.stackView.addArrangedSubview(stackView)
+            } else {
+                stackView = imageStackViewList.last!.view
+            }
+            _ = ObjectImage(
+                stackView,
+                image,
+                UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
+                widthDivider: imagesPerRow
+            )
+            imageCount += 1
+        }
+        var views = [UIView]()
+        objectTextView = ObjectTextView(uiv.stackView, html)
+        objectTextView.constrain(uiv.scrollView)
+        objectTextView.tv.isAccessibilityElement = true
+        views.append(objectTextView.tv)
+        uiv.scrollView.accessibilityElements = views
+    }
+    
+    @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {}
     
     @objc func imageClicked() {}
 }
