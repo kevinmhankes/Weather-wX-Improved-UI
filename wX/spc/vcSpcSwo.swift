@@ -80,42 +80,6 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     
     private func displayContent() {
         _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
-        /*var imageCount = 0
-        var imagesPerRow = 2
-        var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
-            imagesPerRow = 4
-        }
-        #if targetEnvironment(macCatalyst)
-        imagesPerRow = 4
-        #endif
-        if bitmaps.count == 2 {
-            imagesPerRow = 2
-        }
-        self.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            _ = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClickedWithIndex(sender:))),
-                widthDivider: imagesPerRow
-            )
-            imageCount += 1
-        }
-        var views = [UIView]()
-        self.objectTextView = ObjectTextView(self.stackView, self.html)
-        self.objectTextView.constrain(self.scrollView)
-        objectTextView.tv.isAccessibilityElement = true
-        views.append(objectTextView.tv)
-        scrollView.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -69,42 +69,6 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     private func displayContent() {
         _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
-        /*var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
-        #if targetEnvironment(macCatalyst)
-        tabletInLandscape = true
-        #endif
-        if tabletInLandscape {
-            stackView.axis = .horizontal
-            stackView.alignment = .firstBaseline
-        }
-        var views = [UIView]()
-        let objectImage: ObjectImage
-        if tabletInLandscape {
-            objectImage = ObjectImage(
-                self.stackView,
-                bitmap,
-                UITapGestureRecognizerWithData(0, self, #selector(imageClicked(sender:))),
-                widthDivider: 2
-            )
-        } else {
-            objectImage = ObjectImage(
-                self.stackView,
-                bitmap,
-                UITapGestureRecognizerWithData(0, self, #selector(imageClicked(sender:)))
-            )
-        }
-        objectImage.img.accessibilityLabel = html
-        objectImage.img.isAccessibilityElement = true
-        views.append(objectImage.img)
-        if tabletInLandscape {
-            objectTextView = ObjectTextView(self.stackView, self.html, widthDivider: 2)
-        } else {
-            objectTextView = ObjectTextView(self.stackView, self.html)
-        }
-        objectTextView.tv.isAccessibilityElement = true
-        views.append(objectTextView.tv)
-        self.view.bringSubviewToFront(self.toolbar)
-        scrollView.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
