@@ -47,34 +47,6 @@ class vcSpcSwoSummary: UIwXViewController {
     
     private func displayContent() {
         _ = ObjectImageSummary(self, bitmaps, imagersPerRowWide: 4)
-
-        /*var imageCount = 0
-        var imagesPerRow = 2
-        var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
-            imagesPerRow = 4
-        }
-        #if targetEnvironment(macCatalyst)
-        imagesPerRow = 4
-        #endif
-        self.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            _ = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            imageCount += 1
-        }*/
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
