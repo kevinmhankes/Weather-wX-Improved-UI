@@ -15,7 +15,7 @@
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [REF] fix utilRadar / utilRadarUI
-// [ADD] more robust handling network issues (cc,7day)
+// [ADD] more robust handling network issues (cc,7day,radar)
 // [ADD] usalerts filter by state
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
