@@ -37,6 +37,7 @@
 		 [ADD] add framework in playlist prebuild menus but don't use (to slow init load)
 		 [ADD] onrestart to SPC SWO and SPC Fire
 		 [ADD] share button to Canada location hourly
+		 [ADD] ObjectImageAndText and use in SPC Fire
 56092 2020_02_28 [FIX] lighter background behind cards
 		 [FIX] objectTextView rationalization
 		 [FIX] remove option UIPreferences.nwsTextRemovelinebreaks - not needed

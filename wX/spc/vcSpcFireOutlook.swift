@@ -57,7 +57,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         }
     }
     
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked() {
         let vc = vcImageViewer()
         vc.imageViewerUrl = UtilitySpcFireOutlook.urls[dayIndex]
         self.goToVC(vc)
@@ -68,7 +68,8 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        _ = ObjectImageAndText(self, bitmap, &objectTextView, html, UtilitySpcFireOutlook.urls[dayIndex])
+        /*var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
         #endif
@@ -103,7 +104,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
         self.view.bringSubviewToFront(self.toolbar)
-        scrollView.accessibilityElements = views
+        scrollView.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -104,6 +104,7 @@
 		0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3FB23C1194E0024153D /* PressureCenter.swift */; };
 		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
 		035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66E9240A911E00038C98 /* UtilityAudio.swift */; };
+		035A66EC240C88B500038C98 /* ObjectImageAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66EB240C88B500038C98 /* ObjectImageAndText.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
 		035E2D4821D29E0F005E31A1 /* WXGLNexradLevel3Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */; };
 		035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */; };
@@ -506,6 +507,7 @@
 		0354D3FB23C1194E0024153D /* PressureCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenter.swift; sourceTree = "<group>"; };
 		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		035A66E9240A911E00038C98 /* UtilityAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAudio.swift; sourceTree = "<group>"; };
+		035A66EB240C88B500038C98 /* ObjectImageAndText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImageAndText.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
 		035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3Common.swift; sourceTree = "<group>"; };
 		035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
@@ -1243,6 +1245,7 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				035A66EB240C88B500038C98 /* ObjectImageAndText.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1710,6 +1713,7 @@
 				03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */,
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */,
+				035A66EC240C88B500038C98 /* ObjectImageAndText.swift in Sources */,
 				0340423623F16FC3003AB242 /* vcAdhocLocation.swift in Sources */,
 				030045C7233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift in Sources */,
 				03F3EB91229945DA0056A56D /* UtilityModelWpcGefsInterface.swift in Sources */,
