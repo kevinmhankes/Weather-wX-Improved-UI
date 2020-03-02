@@ -19,6 +19,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
+// [REF] objectStackScrollView remove all args but uiv as they exist as properties of uiv
 
 56093 2020_03_01 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
