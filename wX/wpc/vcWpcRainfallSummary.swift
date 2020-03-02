@@ -18,10 +18,12 @@ class vcWpcRainfallSummary: UIwXViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        let statusButton = ObjectToolbarIcon(title: "WPC Excessive Rainfall Outlooks", self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
+                statusButton,
                 GlobalVariables.flexBarButton,
                 shareButton
             ]
@@ -35,10 +37,10 @@ class vcWpcRainfallSummary: UIwXViewController {
     }
     
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -46,30 +48,6 @@ class vcWpcRainfallSummary: UIwXViewController {
     
     private func displayContent() {
         _ = ObjectImageSummary(self, bitmaps)
-        /*var imageCount = 0
-        var imagesPerRow = 2
-        var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() {
-            imagesPerRow = 3
-        }
-        self.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            _ = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            imageCount += 1
-        }*/
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
@@ -78,7 +56,8 @@ class vcWpcRainfallSummary: UIwXViewController {
             let vc = vcWpcRainfallDiscussion()
             vc.day = String(sender.data + 1)
             self.goToVC(vc)
-        default: break
+        default:
+            break
         }
     }
     

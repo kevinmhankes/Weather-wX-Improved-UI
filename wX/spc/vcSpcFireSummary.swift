@@ -58,38 +58,6 @@ class vcSpcFireSummary: UIwXViewController {
     
     private func displayContent() {
         _ = ObjectImageSummary(self, bitmaps)
-
-        /*var views = [UIView]()
-        var dayNumber = 0
-        var imageCount = 0
-        var imagesPerRow = 2
-        var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() {
-            imagesPerRow = 3
-        }
-        self.bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
-            if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                self.stackView.addArrangedSubview(stackView)
-            } else {
-                stackView = imageStackViewList.last!.view
-            }
-            let objectImage = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, self, #selector(imageClicked(sender:))),
-                widthDivider: imagesPerRow
-            )
-            objectImage.img.isAccessibilityElement = true
-            views += [objectImage.img]
-            dayNumber += 1
-            objectImage.img.accessibilityLabel = "day " + String(dayNumber)
-            imageCount += 1
-        }
-        self.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
