@@ -107,7 +107,11 @@ class vcSevereDashboard: UIwXViewController {
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
-                _ = ObjectCardBlackHeaderText(stackView, "(" + String(warningType.getCount()) + ") " + warningType.getName())
+                _ = ObjectCardBlackHeaderText(
+                    scrollView,
+                    stackView,
+                    "(" + String(warningType.getCount()) + ") " + warningType.getName()
+                )
                 warningType.eventList.enumerated().forEach { index, _ in
                     if warningType.warnings.count > 0 {
                         let data = warningType.warnings[index]
@@ -170,6 +174,7 @@ class vcSevereDashboard: UIwXViewController {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
             imageStackViewList.append(stackView)
             self.stackView.addArrangedSubview(stackView.view)
+            stackView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             objectImage = ObjectImage(
                 stackView.view,
                 usAlertsBitmap,

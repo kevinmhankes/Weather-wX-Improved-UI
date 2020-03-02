@@ -158,10 +158,14 @@ class vcSpcStormReports: UIwXViewController {
         self.stormReports.enumerated().forEach {
             if $1.damageHeader != "" {
                 switch $1.damageHeader {
-                case "Tornado Reports": tornadoHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
-                case "Wind Reports": windHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
-                case "Hail Reports": hailHeader = ObjectCardBlackHeaderText(self.stackView, $1.damageHeader)
-                default: break
+                case "Tornado Reports":
+                    tornadoHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                case "Wind Reports":
+                    windHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                case "Hail Reports":
+                    hailHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                default:
+                    break
                 }
             }
             if $1.damageHeader == "" && (filter == "All" || filter == $1.state) {
