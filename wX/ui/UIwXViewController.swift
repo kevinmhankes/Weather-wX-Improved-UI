@@ -41,7 +41,7 @@ class UIwXViewController: UIViewController {
         self.stackView = UIStackView()
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
-        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, self.toolbar)
+        self.objScrollStackView = ObjectScrollStackView(self)
     }
 
     func removeAllViews() {

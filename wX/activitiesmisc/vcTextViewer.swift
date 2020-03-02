@@ -22,7 +22,7 @@ class vcTextViewer: UIwXViewControllerWithAudio {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         displayContent()
     }
     

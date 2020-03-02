@@ -32,7 +32,7 @@ class vcSpotters: UIwXViewController {
                 spotterReportsButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
     

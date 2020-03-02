@@ -35,7 +35,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {

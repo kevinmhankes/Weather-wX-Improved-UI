@@ -44,7 +44,7 @@ class vcSettingsAbout: UIwXViewController {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        _ = ObjectScrollStackView(self)
         displayContent()
     }
 

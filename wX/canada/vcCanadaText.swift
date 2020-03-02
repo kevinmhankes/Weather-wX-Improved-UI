@@ -27,7 +27,7 @@ class vcCanadaText: UIwXViewControllerWithAudio {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         product = Utility.readPref("CA_TEXT_LASTUSED", product)
         self.getContent()
     }

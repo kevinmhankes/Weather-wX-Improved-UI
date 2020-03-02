@@ -34,7 +34,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         if spcSwoDay == "48" {
             stateButton.title = ""
         }

@@ -31,7 +31,7 @@ class vcCanadaWarnings: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.objectCanadaWarnings = ObjectCanadaWarnings(self, stackView)
         self.getContent()
     }

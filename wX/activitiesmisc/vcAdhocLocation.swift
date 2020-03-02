@@ -36,7 +36,7 @@ class vcAdhocLocation: UIwXViewController {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         stackView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)

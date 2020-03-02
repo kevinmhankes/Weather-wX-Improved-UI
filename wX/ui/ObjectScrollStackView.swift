@@ -7,41 +7,35 @@
 import UIKit
 
 public class ObjectScrollStackView {
-
+    
     var fragmentHeightAnchor1: NSLayoutConstraint?
     var fragmentHeightAnchor2: NSLayoutConstraint?
     var fragmentWidthAnchor1: NSLayoutConstraint?
     var fragmentWidthAnchor2: NSLayoutConstraint?
-    //var fragmentCenterAnchor: NSLayoutConstraint?
-
-    init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
-        scrollView.backgroundColor = ColorCompatibility.systemGray5
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        uiv.view.addSubview(scrollView)
-        scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
-        scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
+    
+    init(_ uiv: UIwXViewController) {
+        uiv.scrollView.backgroundColor = ColorCompatibility.systemGray5
+        uiv.scrollView.translatesAutoresizingMaskIntoConstraints = false
+        uiv.view.addSubview(uiv.scrollView)
+        uiv.scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
+        uiv.scrollView.trailingAnchor.constraint(equalTo: uiv.view.trailingAnchor).isActive = true
+        uiv.scrollView.centerXAnchor.constraint(equalTo: uiv.view.centerXAnchor).isActive = true
         let topSpace = UtilityUI.getTopPadding()
         let bottomSpace = -(UtilityUI.getBottomPadding() + UIPreferences.toolbarHeight)
-        scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = UIPreferences.stackviewCardSpacing
-        scrollView.addSubview(stackView)
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        uiv.scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
+        uiv.scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
+        uiv.stackView.translatesAutoresizingMaskIntoConstraints = false
+        uiv.stackView.axis = .vertical
+        uiv.stackView.spacing = UIPreferences.stackviewCardSpacing
+        uiv.scrollView.addSubview(uiv.stackView)
+        uiv.stackView.leadingAnchor.constraint(equalTo: uiv.scrollView.leadingAnchor).isActive = true
+        uiv.stackView.trailingAnchor.constraint(equalTo: uiv.scrollView.trailingAnchor).isActive = true
+        uiv.stackView.topAnchor.constraint(equalTo: uiv.scrollView.topAnchor).isActive = true
+        uiv.stackView.bottomAnchor.constraint(equalTo: uiv.scrollView.bottomAnchor).isActive = true
+        uiv.view.addSubview(uiv.toolbar)
+        uiv.scrollView.bottomAnchor.constraint(equalTo: uiv.toolbar.topAnchor).isActive = true
     }
-
-    convenience init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ toolbar: UIToolbar
-        ) {
-        self.init(uiv, scrollView, stackView)
-        uiv.view.addSubview(toolbar)
-        scrollView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
-    }
-
+    
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
         scrollView.backgroundColor = ColorCompatibility.systemGray5

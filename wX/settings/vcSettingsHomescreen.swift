@@ -29,7 +29,7 @@ class vcSettingsHomescreen: UIwXViewController {
                 addButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         displayContent(saveToDisk: false)
     }

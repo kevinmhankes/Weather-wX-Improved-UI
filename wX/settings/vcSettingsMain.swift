@@ -20,9 +20,9 @@ class vcSettingsMain: UIwXViewController {
                 statusButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        _ = ObjectScrollStackView(self)
         titles = [
-            "Location",
+            "Locations",
             "Colors",
             "Radar",
             "Home Screen",
@@ -41,7 +41,7 @@ class vcSettingsMain: UIwXViewController {
     
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
-        case "Location":
+        case "Locations":
             let vc = vcSettingsLocation()
             self.goToVC(vc)
         case "Radar":

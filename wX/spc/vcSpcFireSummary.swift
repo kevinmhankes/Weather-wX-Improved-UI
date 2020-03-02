@@ -28,7 +28,7 @@ class vcSpcFireSummary: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         getContent()
     }
     
@@ -57,7 +57,9 @@ class vcSpcFireSummary: UIwXViewController {
     }
     
     private func displayContent() {
-        var views = [UIView]()
+        _ = ObjectImageSummary(self, bitmaps)
+
+        /*var views = [UIView]()
         var dayNumber = 0
         var imageCount = 0
         var imagesPerRow = 2
@@ -87,7 +89,7 @@ class vcSpcFireSummary: UIwXViewController {
             objectImage.img.accessibilityLabel = "day " + String(dayNumber)
             imageCount += 1
         }
-        self.accessibilityElements = views
+        self.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

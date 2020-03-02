@@ -18,7 +18,7 @@ class vcSettingsLocation: UIwXViewController {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton]).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         fab = ObjectFab(self, #selector(addClicked), iconType: .plus)
     }
     

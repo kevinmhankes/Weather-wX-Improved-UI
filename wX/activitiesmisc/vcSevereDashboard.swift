@@ -37,7 +37,7 @@ class vcSevereDashboard: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
     

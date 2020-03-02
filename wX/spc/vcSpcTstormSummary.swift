@@ -27,7 +27,7 @@ class vcSpcTstormSummary: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         getContent()
     }
     
@@ -57,7 +57,9 @@ class vcSpcTstormSummary: UIwXViewController {
     }
     
     private func displayContent() {
-        var imageCount = 0
+        _ = ObjectImageSummary(self, bitmaps)
+
+        /*var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         if UtilityUI.isTablet() {
@@ -80,7 +82,7 @@ class vcSpcTstormSummary: UIwXViewController {
                 widthDivider: imagesPerRow
             )
             imageCount += 1
-        }
+        }*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

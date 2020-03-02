@@ -34,7 +34,7 @@ class vcNhc: UIwXViewController {
                 textProductButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
 

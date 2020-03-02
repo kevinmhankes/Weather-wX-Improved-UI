@@ -45,7 +45,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             self.addWfoProduct(_:),
             doNotOpen: true
         )*/
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
         displayContent()

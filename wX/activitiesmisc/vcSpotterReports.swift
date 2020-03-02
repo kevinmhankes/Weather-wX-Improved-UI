@@ -23,7 +23,7 @@ class vcSpotterReports: UIwXViewController {
                 spotterReportCountButton
             ]
         ).items
-        _ = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        _ = ObjectScrollStackView(self)
         self.getContent()
     }
     

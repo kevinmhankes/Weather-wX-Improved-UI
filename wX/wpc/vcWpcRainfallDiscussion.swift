@@ -25,7 +25,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
                 playListButton,
                 shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
     

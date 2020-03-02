@@ -42,7 +42,7 @@ class vcSpcStormReports: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         self.displayPreContent()
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"

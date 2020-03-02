@@ -26,7 +26,7 @@ class vcWpcRainfallSummary: UIwXViewController {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         getContent()
     }
     
@@ -45,7 +45,8 @@ class vcWpcRainfallSummary: UIwXViewController {
     }
     
     private func displayContent() {
-        var imageCount = 0
+        _ = ObjectImageSummary(self, bitmaps)
+        /*var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
         if UtilityUI.isTablet() {
@@ -68,7 +69,7 @@ class vcWpcRainfallSummary: UIwXViewController {
                 widthDivider: imagesPerRow
             )
             imageCount += 1
-        }
+        }*/
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {

@@ -20,7 +20,7 @@ class vcSettingsColorListing: UIwXViewController {
                 GlobalVariables.flexBarButton,
                 statusButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         stackView.spacing = 0
         setupColorObjects()
         colors.sort(by: {$0.uiLabel < $1.uiLabel})

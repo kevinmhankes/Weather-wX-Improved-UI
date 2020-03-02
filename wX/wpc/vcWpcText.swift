@@ -29,7 +29,7 @@ class vcWpcText: UIwXViewControllerWithAudio {
                 shareButton
             ]
         ).items
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, toolbar)
+        objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         if wpcTextProduct == "" {
