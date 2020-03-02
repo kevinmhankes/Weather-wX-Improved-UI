@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectImageAndText {
     
-    //let uiv: UIwXViewController
+    // Used in SPC Swo, SPC Fireoutlook, and WPC Excessive Rain image/text combo
     
     init(
         _ uiv: UIwXViewController,
