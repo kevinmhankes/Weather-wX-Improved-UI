@@ -54,7 +54,8 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
+        _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
+        /*var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
         #endif
@@ -88,7 +89,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
         self.view.bringSubviewToFront(self.toolbar)
-        scrollView.accessibilityElements = views
+        scrollView.accessibilityElements = views*/
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
