@@ -68,7 +68,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        _ = ObjectImageAndText(self, bitmap, &objectTextView, html, UtilitySpcFireOutlook.urls[dayIndex])
+        _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
         /*var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true

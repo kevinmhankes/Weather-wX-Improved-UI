@@ -9,17 +9,14 @@ import UIKit
 final class ObjectImageAndText {
     
     let uiv: UIwXViewController
-    let imageUrl: String
     
     init(
         _ uiv: UIwXViewController,
         _ bitmap: Bitmap,
         _ objectTextView: inout ObjectTextView,
-        _ html: String,
-        _ imageUrl: String
+        _ html: String
     ) {
         self.uiv = uiv
-        self.imageUrl = imageUrl
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
