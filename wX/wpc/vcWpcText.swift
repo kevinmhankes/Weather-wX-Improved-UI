@@ -31,7 +31,7 @@ class vcWpcText: UIwXViewControllerWithAudio {
         ).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.constrain(scrollView)
         if wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
         } else {

@@ -91,7 +91,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         self.wfoProd.forEach {
             let objectTextView = ObjectTextView(self.stackView, $0)
             objectTextView.font = FontSize.hourly.size
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+            objectTextView.constrain(scrollView)
         }
     }
     

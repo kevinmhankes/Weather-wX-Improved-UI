@@ -37,7 +37,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         ).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.constrain(scrollView)
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
         } else {

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcHourly: UIwXViewController {
+class vcHourly: UIwXViewControllerWithAudio {
     
     private var html = ""
     
@@ -27,6 +27,13 @@ class vcHourly: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
+        objectTextView = ObjectTextView(
+            self.stackView,
+            self.html,
+            FontSize.hourly.size,
+            UITapGestureRecognizer(target: self, action: #selector(textAction))
+        )
+        objectTextView.constrain(scrollView)
         self.getContent()
     }
     
@@ -38,8 +45,7 @@ class vcHourly: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
             DispatchQueue.main.async {
-                self.refreshViews()
-                self.displayContent()
+                self.objectTextView.text = self.html
             }
         }
     }
@@ -48,18 +54,7 @@ class vcHourly: UIwXViewController {
         scrollView.scrollToTop()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, self.html)
-    }
-    
-    private func displayContent() {
-        let objectTextView = ObjectTextView(
-            self.stackView,
-            self.html,
-            FontSize.hourly.size,
-            UITapGestureRecognizer(target: self, action: #selector(textAction))
-        )
-        scrollView.accessibilityElements = [objectTextView.view]
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
     }
 }

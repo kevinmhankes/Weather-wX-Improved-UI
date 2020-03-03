@@ -74,7 +74,7 @@ class vcObsSites: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoObsSite(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+            objectTextView.constrain(scrollView)
         }
         self.scrollView.scrollToTop()
     }
@@ -104,7 +104,7 @@ class vcObsSites: UIwXViewController {
                 UITapGestureRecognizerWithData($0, self, #selector(gotoState(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+            objectTextView.constrain(scrollView)
         }
     }
     
