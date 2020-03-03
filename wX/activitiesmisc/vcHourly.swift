@@ -35,10 +35,10 @@ class vcHourly: UIwXViewController {
     }
     
     func getContent() {
-        refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }
