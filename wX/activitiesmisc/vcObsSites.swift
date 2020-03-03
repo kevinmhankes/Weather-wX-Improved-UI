@@ -64,7 +64,9 @@ class vcObsSites: UIwXViewController {
             listCity.append(idTmp + ": " + cityTmp)
             listIds.append(idTmp)
         }
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
+        self.stackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         listCity.enumerated().forEach {
             let objectTextView = ObjectTextView(
                 stackView,

@@ -40,11 +40,15 @@ class vcLightning: UIwXViewController {
         ).items
         self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
+        initializePreferences()
+        self.getContent()
+    }
+    
+    func initializePreferences() {
         sector = Utility.readPref("LIGHTNING_SECTOR", sector)
         period = Utility.readPref("LIGHTNING_PERIOD", period)
         sectorPretty = UtilityLightning.getSectorPretty(sector)
         periodPretty = UtilityLightning.getTimePretty(period)
-        self.getContent()
     }
     
     func getContent() {

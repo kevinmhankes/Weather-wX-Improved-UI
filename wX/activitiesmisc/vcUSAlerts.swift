@@ -45,7 +45,7 @@ class vcUSAlerts: UIwXViewController {
     }
     
     func getContent() {
-        refreshViews()
+        capAlerts = []
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")
             let alerts = html.parseColumn("<entry>(.*?)</entry>")
@@ -53,6 +53,7 @@ class vcUSAlerts: UIwXViewController {
                 self.capAlerts.append(CapAlert(eventText: $0))
             }
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }
