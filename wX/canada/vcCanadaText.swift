@@ -28,6 +28,9 @@ class vcCanadaText: UIwXViewControllerWithAudio {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
+        objectTextView = ObjectTextView(stackView)
+        objectTextView.constrain(scrollView)
+        _ = ObjectCALegal(stackView)
         product = Utility.readPref("CA_TEXT_LASTUSED", product)
         self.getContent()
     }
@@ -57,10 +60,6 @@ class vcCanadaText: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        self.refreshViews()
-        objectTextView = ObjectTextView(stackView)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-        _ = ObjectCALegal(stackView)
         if self.html == "" {
             self.html = "None issused by this office recently."
         }

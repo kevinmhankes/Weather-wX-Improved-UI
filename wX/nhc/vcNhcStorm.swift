@@ -133,7 +133,7 @@ class vcNhcStorm: UIwXViewController {
     
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
-        objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        objectTextView.constrain(scrollView)
         self.view.bringSubviewToFront(self.toolbar)
     }
     

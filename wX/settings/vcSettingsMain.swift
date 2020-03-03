@@ -79,7 +79,7 @@ class vcSettingsMain: UIwXViewController {
                 FontSize.extraLarge.size,
                 UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:)))
             )
-            objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+            objectTextView.constrain(scrollView)
             objectTextView.tv.isSelectable = false
         }
     }
