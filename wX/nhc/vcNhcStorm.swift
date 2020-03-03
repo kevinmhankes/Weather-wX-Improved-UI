@@ -7,7 +7,7 @@
 import UIKit
 
 class vcNhcStorm: UIwXViewController {
-
+    
     private var productButton = ObjectToolbarIcon()
     private var buttonActionArray = [String]()
     private var url = ""
@@ -44,7 +44,7 @@ class vcNhcStorm: UIwXViewController {
     var nhcStormImgUrl1 = ""
     var nhcStormImgUrl2 = ""
     var nhcStormWallet = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // FIXME redundant vars
@@ -74,11 +74,10 @@ class vcNhcStorm: UIwXViewController {
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        //self.view.addSubview(toolbar)
         _ = ObjectScrollStackView(self)
         self.getContent()
     }
-
+    
     func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
@@ -103,19 +102,19 @@ class vcNhcStorm: UIwXViewController {
                 self.bitmaps.append(Bitmap(url + $0))
             }
             DispatchQueue.main.async {
-               self.displayImageContent()
+                self.displayImageContent()
             }
         }
     }
-
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.bitmaps)
     }
-
+    
     @objc func productClicked() {
         _ = ObjectPopUp(self, "Product Selection", productButton, textProducts, self.productChanged(_:))
     }
-
+    
     func productChanged(_ product: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product + self.stormId)
@@ -126,25 +125,25 @@ class vcNhcStorm: UIwXViewController {
             }
         }
     }
-
+    
     func displayTopImageContent() {
         _ = ObjectImage(self.stackView, topBitmap)
         self.view.bringSubviewToFront(self.toolbar)
     }
-
+    
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.tv.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         self.view.bringSubviewToFront(self.toolbar)
     }
-
+    
     func displayImageContent() {
         self.bitmaps.filter {($0.isValidForNhc)}.forEach {
             _ = ObjectImage(self.stackView, $0)
         }
         self.view.bringSubviewToFront(self.toolbar)
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
@@ -154,7 +153,7 @@ class vcNhcStorm: UIwXViewController {
                 self.displayTopImageContent()
                 self.displayTextContent()
                 self.displayImageContent()
-            }
+        }
         )
     }
 }

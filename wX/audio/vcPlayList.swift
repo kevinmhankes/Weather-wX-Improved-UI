@@ -15,7 +15,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private let textPreviewLength = 400
     private var synth = AVSpeechSynthesizer()
     private var fab: ObjectFab?
-    //private var objectPopUpWfo: ObjectPopUp?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +36,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 addNationalProductButton
             ]
         ).items
-        /*objectPopUpWfo = ObjectPopUp(
-            self,
-            "Product Selection",
-            wfoTextButton,
-            GlobalArrays.wfos,
-            self.addWfoProduct(_:),
-            doNotOpen: true
-        )*/
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
@@ -172,7 +163,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc func wfotextClicked() {
         _ = ObjectPopUp(self, "Product Selection", wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
-        //objectPopUpWfo?.present()
     }
     
     func addWfoProduct(_ product: String) {
