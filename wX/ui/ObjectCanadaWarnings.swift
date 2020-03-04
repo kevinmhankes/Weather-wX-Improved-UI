@@ -63,11 +63,6 @@ final class ObjectCanadaWarnings: NSObject {
         self.uiv = uiv
     }
     
-    //func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
-    //    self.uiv = uiv
-    //    self.stackView = stackView
-    //}
-    
     func getData() {
         if self.provinceCode == "ca" {
             bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
