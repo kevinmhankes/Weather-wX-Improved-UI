@@ -60,9 +60,6 @@ class vcCanadaText: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
-        if self.html == "" {
-            self.html = "None issused by this office recently."
-        }
         self.objectTextView.text = self.html
         self.productButton.title = self.product
         Utility.writePref("CA_TEXT_LASTUSED", self.product)

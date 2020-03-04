@@ -8,6 +8,7 @@ import UIKit
 
 class vcCanadaHourly: UIwXViewController {
     
+    var objectTextView = ObjectTextView()
     private var html = ""
     
     override func viewDidLoad() {
@@ -21,23 +22,19 @@ class vcCanadaHourly: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
+        objectTextView = ObjectTextView(self.stackView, "", FontSize.hourly.size)
+        objectTextView.constrain(scrollView)
+        _ = ObjectCALegal(self.stackView)
         self.getContent()
     }
-
+    
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {
-                self.displayContent()
+                self.objectTextView.text = self.html
             }
         }
-    }
-    
-    private func displayContent() {
-        refreshViews()
-        let objectTextView = ObjectTextView(self.stackView, html, FontSize.hourly.size)
-        objectTextView.constrain(scrollView)
-        _ = ObjectCALegal(self.stackView)
     }
     
     @objc func shareClicked(sender: UIButton) {
