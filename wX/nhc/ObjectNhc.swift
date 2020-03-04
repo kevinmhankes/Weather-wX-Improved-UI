@@ -7,7 +7,7 @@
 import UIKit
 
 final class ObjectNhc: NSObject {
-
+    
     private var atlSumList = [String]()
     private var atlLinkList = [String]()
     private var atlImg1List = [String]()
@@ -20,9 +20,9 @@ final class ObjectNhc: NSObject {
     private var pacImg2List = [String]()
     private var pacWalletList = [String]()
     private var pacTitleList = [String]()
-    private var uiv: UIViewController
-    private var stackView: UIStackView
-    private var scrollView: UIScrollView
+    private var uiv: UIwXViewController
+    //private var stackView: UIStackView
+    //private var scrollView: UIScrollView
     private var textAtl = ""
     private var textPac = ""
     private var bitmapsAtlantic = [Bitmap]()
@@ -38,23 +38,21 @@ final class ObjectNhc: NSObject {
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
     ]
-
+    
     private let imageUrlsPacific = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
     ]
-
+    
     private let imageUrlsCentral = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
     ]
-
-    init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
+    
+    init(_ uiv: UIwXViewController) {
         self.uiv = uiv
-        self.scrollView = scrollView
-        self.stackView = stackView
         if UtilityUI.isTablet() {
             imagesPerRow = 3
         }
@@ -63,12 +61,11 @@ final class ObjectNhc: NSObject {
             regionMap[$0] = ObjectNhcRegionSummary($0)
         }
     }
-
-    func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
-        self.uiv = uiv
-        self.stackView = stackView
-    }
-
+    
+    //func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
+    //    self.uiv = uiv
+    //}
+    
     // TODO use a class to store 5 String Lists
     // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
     // ATL for example would have list of global bitmaps (which have url in object) and list for storms
@@ -99,7 +96,7 @@ final class ObjectNhc: NSObject {
             }
         }
     }
-
+    
     func showTextData() {
         textAtl = ""
         if self.atlSumList.count < 1 {
@@ -109,7 +106,7 @@ final class ObjectNhc: NSObject {
                 if atlImg1List[$0] != "" {
                     let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[$0])
                     _ = ObjectCardNhcStormReportItem(
-                        stackView,
+                        uiv.stackView,
                         objectNhcStormDetails,
                         UITapGestureRecognizerWithData($0, self, #selector(gotoAtlNhcStorm(sender:)))
                     )
@@ -124,7 +121,7 @@ final class ObjectNhc: NSObject {
                 if pacImg1List[$0] != "" {
                     let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[$0])
                     _ = ObjectCardNhcStormReportItem(
-                        stackView,
+                        uiv.stackView,
                         objectNhcStormDetails,
                         UITapGestureRecognizerWithData($0, self, #selector(gotoEpacNhcStorm(sender:)))
                     )
@@ -132,10 +129,10 @@ final class ObjectNhc: NSObject {
             }
         }
         if textAtl != "" {
-            _ = ObjectTextView(stackView, textAtl)
+            _ = ObjectTextView(uiv.stackView, textAtl)
         }
         if textPac != "" {
-            _ = ObjectTextView(stackView, textPac)
+            _ = ObjectTextView(uiv.stackView, textPac)
         }
     }
     
@@ -144,7 +141,7 @@ final class ObjectNhc: NSObject {
             if imageCount % imagesPerRow == 0 {
                 let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
                 imageStackViewList.append(stackView)
-                self.stackView.addArrangedSubview(stackView.view)
+                uiv.stackView.addArrangedSubview(stackView.view)
                 _ = ObjectImage(
                     stackView.view,
                     bitmap,
@@ -164,7 +161,7 @@ final class ObjectNhc: NSObject {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
-
+    
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()
@@ -175,7 +172,7 @@ final class ObjectNhc: NSObject {
         vc.nhcStormWallet = pacWalletList[index]
         uiv.goToVC(vc)
     }
-
+    
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()

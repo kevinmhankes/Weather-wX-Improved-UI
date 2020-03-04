@@ -26,9 +26,7 @@ class vcSpcSwoState: UIwXViewController {
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar)
-        state = Location.state
-        stateButton.title = state
-        self.getContent(state)
+        self.getContent(Location.state)
     }
     
     @objc override func willEnterForeground() {
@@ -37,9 +35,9 @@ class vcSpcSwoState: UIwXViewController {
     
     func getContent(_ state: String) {
         self.state = state
-        stateButton.title = self.state
+        stateButton.title = state
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
+            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + state + "_swody" + self.day + ".png")
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
             }

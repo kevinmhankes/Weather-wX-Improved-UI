@@ -16,6 +16,7 @@
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [REF] fix utilRadar / utilRadarUI
 // [ADD] more robust handling network issues (cc,7day,radar)
+// [REF] stop using $0 and $1
 // [ADD] usalerts filter by state
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
