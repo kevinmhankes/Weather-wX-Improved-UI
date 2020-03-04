@@ -35,11 +35,11 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
     }
     
     override func getContent() {
+        self.siteButton.title = self.wfo
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(self.wfo)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                self.siteButton.title = self.wfo
             }
         }
     }
