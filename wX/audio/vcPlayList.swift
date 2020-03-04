@@ -147,7 +147,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     @objc func addNationalProductClicked() {
-        _ = ObjectPopUp(self, "Product Selection", addNationalProductButton, UtilityWpcText.labels, self.addNationalProduct(_:))
+        _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, self.addNationalProduct(_:))
     }
     
     func addNationalProduct(_ index: Int) {
@@ -156,7 +156,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     @objc func wfotextClicked() {
-        _ = ObjectPopUp(self, "Product Selection", wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
+        _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
     
     func addWfoProduct(_ product: String) {

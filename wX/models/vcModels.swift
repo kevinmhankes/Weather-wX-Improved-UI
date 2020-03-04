@@ -149,7 +149,7 @@ class vcModels: UIwXViewController {
     }
     
     @objc func prodClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, modelObj.paramLabelArr, self.prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, modelObj.paramLabelArr, self.prodChanged(_:))
     }
     
     @objc func showProdMenu() {
@@ -161,7 +161,7 @@ class vcModels: UIwXViewController {
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Region Selection", sectorButton, modelObj.sectorArr, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectorArr, self.sectorChanged(_:))
     }
     
     func sectorChanged(_ sector: String) {
@@ -170,7 +170,7 @@ class vcModels: UIwXViewController {
     }
     
     @objc func runClicked() {
-        _ = ObjectPopUp(self, "Run Selection", runButton, modelObj.runTimeData.listRun, self.runChanged(_:))
+        _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, self.runChanged(_:))
     }
     
     func runChanged(_ run: String) {
@@ -179,7 +179,7 @@ class vcModels: UIwXViewController {
     }
     
     @objc func modelClicked() {
-        _ = ObjectPopUp(self, "Model Selection", modelButton, self.modelObj.modelArr, self.modelChanged(_:))
+        _ = ObjectPopUp(self, title: "Model Selection", modelButton, self.modelObj.modelArr, self.modelChanged(_:))
     }
     
     func modelChanged(_ model: String) {
@@ -213,7 +213,7 @@ class vcModels: UIwXViewController {
     }
     
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, "Time Selection", timeButton, modelObj.timeArr, self.timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.timeArr, self.timeChanged(_:))
     }
     
     func timeChanged(_ time: Int) {

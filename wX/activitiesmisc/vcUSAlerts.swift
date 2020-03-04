@@ -71,7 +71,7 @@ class vcUSAlerts: UIwXViewController {
         Array(counts.keys).sorted().forEach {
             eventArrWithCount.append("\($0): \(counts[$0]!)")
         }
-        _ = ObjectPopUp(self, "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
+        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
     }
     
     func filterChanged(_ filter: String) {

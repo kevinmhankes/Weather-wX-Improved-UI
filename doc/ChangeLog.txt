@@ -27,6 +27,7 @@
 		 [ADD] move willEnterForeground and getContent into parent view controller, override as needed
 		 [REF] move call to refreshViews into displayContent when applicable
 		 [REF] many VCs had uneeded call to add toolbar to parent view
+		 [REF] ObjectPopup - add title as named arg with default
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar

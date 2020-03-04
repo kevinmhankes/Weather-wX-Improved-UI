@@ -20,7 +20,7 @@ final class ObjectPopUp {
     }
 
     init(_ uiv: UIViewController,
-         _ title: String,
+         title: String = "Product Selection",
          _ button: UIBarButtonItem,
          _ list: [String],
          _ fn: @escaping (String) -> Void,
@@ -46,7 +46,7 @@ final class ObjectPopUp {
     }
 
     init(_ uiv: UIViewController,
-         _ title: String,
+         title: String = "Product Selection",
          _ button: UIBarButtonItem,
          _ list: [Int],
          _ fn: @escaping (Int) -> Void
@@ -63,7 +63,7 @@ final class ObjectPopUp {
     }
 
     init(_ uiv: UIViewController,
-         _ title: String,
+         title: String = "Product Selection",
          _ button: UIBarButtonItem,
          _ list: StrideTo<Int>,
          _ fn: @escaping (Int) -> Void
@@ -80,7 +80,7 @@ final class ObjectPopUp {
     }
 
     init(_ uiv: UIViewController,
-         _ title: String,
+         title: String = "Product Selection",
          _ button: UIBarButtonItem,
          _ list: [String],
          _ fn: @escaping (Int) -> Void

@@ -75,7 +75,7 @@ class vcCanadaRadar: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Site Selection", productButton, UtilityCanadaImg.radarSites, self.productChanged(_:))
+        _ = ObjectPopUp(self, title: "Site Selection", productButton, UtilityCanadaImg.radarSites, self.productChanged(_:))
     }
     
     func productChanged(_ index: Int) {
@@ -89,7 +89,7 @@ class vcCanadaRadar: UIwXViewController {
     }
     
     @objc func animateClicked() {
-        _ = ObjectPopUp(self, "Select animation:", animateButton, ["short", "long"], self.getAnimation(_:))
+        _ = ObjectPopUp(self, title: "Select animation:", animateButton, ["short", "long"], self.getAnimation(_:))
     }
     
     func getAnimation(_ frameCnt: String) {
@@ -111,7 +111,7 @@ class vcCanadaRadar: UIwXViewController {
     }
     
     @objc func cloudClicked() {
-        _ = ObjectPopUp(self, "Product Selection", cloudButton, UtilityCanadaImg.names, self.cloudChanged(_:))
+        _ = ObjectPopUp(self, cloudButton, UtilityCanadaImg.names, self.cloudChanged(_:))
     }
     
     func cloudChanged(_ prod: Int) {

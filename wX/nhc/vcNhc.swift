@@ -56,7 +56,6 @@ class vcNhc: UIwXViewController {
     @objc func textProductClicked() {
         _ = ObjectPopUp(
             self,
-            "Product Selection",
             textProductButton,
             UtilityNhc.textProductLabels,
             self.textProductChanged(_:)
@@ -72,7 +71,6 @@ class vcNhc: UIwXViewController {
     @objc func imageProductClicked() {
         _ = ObjectPopUp(
             self,
-            "Product Selection",
             imageProductButton,
             UtilityNhc.imageTitles,
             self.imageProductChanged(_:)

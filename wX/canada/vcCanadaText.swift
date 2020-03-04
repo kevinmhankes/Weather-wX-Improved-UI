@@ -46,7 +46,7 @@ class vcCanadaText: UIwXViewControllerWithAudio {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityCanada.products, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityCanada.products, self.productChanged(_:))
     }
     
     func productChanged(_ product: String) {

@@ -653,7 +653,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if !inOglAnim {
             _ = ObjectPopUp(
                 self,
-                "Select number of animation frames:",
+                title: "Select number of animation frames:",
                 animateButton,
                 [5, 10, 20, 30, 40, 50, 60],
                 self.animateFrameCntClicked(_:)
@@ -883,7 +883,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if wxMetal[0]!.tdwr {
             tilts = ["Tilt 1", "Tilt 2", "Tilt 3"]
         }
-        _ = ObjectPopUp(self, "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
+        _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
     }
 
     func changeTilt(_ tilt: Int) {

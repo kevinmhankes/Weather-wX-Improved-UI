@@ -97,7 +97,7 @@ class vcSpcMeso: UIwXViewController {
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
     }
     
     func sectorChangedByIndex(_ index: Int) {
@@ -132,7 +132,7 @@ class vcSpcMeso: UIwXViewController {
             break
         }
         let labels = parametars.map {$0.split(":")[1]}
-        _ = ObjectPopUp(self, "Product Selection", sender, labels, self.productChangedBySubmenu(_:))
+        _ = ObjectPopUp(self, sender, labels, self.productChangedBySubmenu(_:))
     }
     
     @objc func layerClicked(sender: ObjectToolbarIcon) {
@@ -190,7 +190,7 @@ class vcSpcMeso: UIwXViewController {
     }
     
     @objc func animateClicked() {
-        _ = ObjectPopUp(self, "Select number of animation frames:", animateButton, [6, 12, 18], self.getAnimation(_:))
+        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], self.getAnimation(_:))
     }
     
     func getAnimation(_ frameCount: Int) {

@@ -63,7 +63,6 @@ class vcRadarMosaic: UIwXViewController {
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
-            "Product Selection",
             productButton,
             UtilityUSImgNwsMosaic.labels,
             self.getContent(_:)
@@ -77,7 +76,7 @@ class vcRadarMosaic: UIwXViewController {
     @objc func animateClicked() {
         _ = ObjectPopUp(
             self,
-            "Select number of animation frames:",
+            title: "Select number of animation frames:",
             animateButton,
             [5, 10, 20, 30],
             self.getAnimation(_:)

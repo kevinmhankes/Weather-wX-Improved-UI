@@ -47,7 +47,7 @@ class vcOpc: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityOpcImages.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, self.getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

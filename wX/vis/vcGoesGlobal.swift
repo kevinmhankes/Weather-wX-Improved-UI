@@ -69,7 +69,6 @@ class vcGoesGlobal: UIwXViewController {
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
-            "Product Selection",
             productButton,
             UtilityGoesFullDisk.labels,
             self.getContent(_:)

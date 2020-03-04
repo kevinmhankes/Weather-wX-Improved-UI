@@ -126,7 +126,7 @@ class vcNhcStorm: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, textProducts, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, textProducts, self.productChanged(_:))
     }
     
     func productChanged(_ product: String) {

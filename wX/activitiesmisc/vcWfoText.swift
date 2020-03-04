@@ -97,7 +97,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityWfoText.wfoProdListNoCode, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityWfoText.wfoProdListNoCode, self.productChanged(_:))
     }
     
     func productChanged(_ index: Int) {

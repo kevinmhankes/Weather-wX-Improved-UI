@@ -76,11 +76,11 @@ class vcGoes: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityGoes.productLabels, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityGoes.productLabels, self.productChanged(_:))
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, "Sector Selection", sectorButton, UtilityGoes.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, self.sectorChanged(_:))
     }
     
     func productChanged(_ index: Int) {
@@ -112,7 +112,7 @@ class vcGoes: UIwXViewController {
     @objc func animateClicked() {
         _ = ObjectPopUp(
             self,
-            "Select number of animation frames:",
+            title: "Select number of animation frames:",
             animateButton,
             stride(from: 12, to: 96 + 12, by: 12),
             self.getAnimation(_:)

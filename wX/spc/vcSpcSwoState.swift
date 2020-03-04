@@ -45,7 +45,7 @@ class vcSpcSwoState: UIwXViewController {
     }
     
     @objc func stateClicked(sender: ObjectToolbarIcon) {
-        _ = ObjectPopUp(self, "State Selection", sender, GlobalArrays.states, self.getContent(_:))
+        _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, self.getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

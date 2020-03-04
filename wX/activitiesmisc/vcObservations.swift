@@ -49,7 +49,7 @@ class vcObservations: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, UtilityObservations.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityObservations.labels, self.getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

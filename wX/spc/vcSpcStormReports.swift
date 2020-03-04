@@ -109,7 +109,7 @@ class vcSpcStormReports: UIwXViewController {
     @objc func filterClicked() {
         _ = ObjectPopUp(
             self,
-            "Filter Selection",
+            title: "Filter Selection",
             filterButton,
             filterList,
             self.changeFilter(_:)

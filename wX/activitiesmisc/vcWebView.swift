@@ -75,7 +75,6 @@ class vcWebView: UIwXViewController {
     @objc func productClicked() {
         _ = ObjectPopUp(
             self,
-            "Product Selection",
             productButton,
             GlobalArrays.states + UtilityCanada.provinceCodes,
             self.productChanged(_:)
