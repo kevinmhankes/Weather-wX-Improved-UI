@@ -84,13 +84,11 @@ class vcRadarMosaicAwc: UIwXViewController {
     
     func productChanged(_ index: Int) {
         product = UtilityAwcRadarMosaic.products[index]
-        productButton.title = product
         self.getContent()
     }
     
     func sectorChanged(_ index: Int) {
         sector = UtilityAwcRadarMosaic.sectors[index]
-        sectorButton.title = sector
         self.getContent()
     }
     
