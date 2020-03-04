@@ -45,6 +45,10 @@ class vcLightning: UIwXViewController {
     }
     
     override func getContent() {
+        self.productButton.title = self.sectorPretty
+        self.timeButton.title = self.periodPretty
+        Utility.writePref("LIGHTNING_SECTOR", self.sector)
+        Utility.writePref("LIGHTNING_PERIOD", self.period)
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = UtilityLightning.getImage(self.sector, self.period)
             self.sectorPretty = UtilityLightning.getSectorPretty(self.sector)
@@ -56,10 +60,6 @@ class vcLightning: UIwXViewController {
                 } else {
                     self.image.updateBitmap(self.bitmap)
                 }
-                self.productButton.title = self.sectorPretty
-                self.timeButton.title = self.periodPretty
-                Utility.writePref("LIGHTNING_SECTOR", self.sector)
-                Utility.writePref("LIGHTNING_PERIOD", self.period)
             }
         }
     }
