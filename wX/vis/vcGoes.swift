@@ -38,10 +38,6 @@ class vcGoes: UIwXViewController {
         self.getContent()
     }
     
-    override func willEnterForeground() {
-        self.getContent()
-    }
-    
     func serializeSettings() {
         if savePrefs {
             Utility.writePref("GOES16_PROD", productCode)
@@ -63,7 +59,6 @@ class vcGoes: UIwXViewController {
     }
     
     override func getContent() {
-        print("VIS GET CONTENT")
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
             self.serializeSettings()

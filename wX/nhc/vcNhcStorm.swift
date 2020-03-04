@@ -148,6 +148,7 @@ class vcNhcStorm: UIwXViewController {
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.constrain(scrollView)
+        // FIXME is this needed?
         self.view.bringSubviewToFront(self.toolbar)
     }
     
