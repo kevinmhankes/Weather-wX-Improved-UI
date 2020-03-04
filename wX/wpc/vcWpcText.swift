@@ -46,7 +46,7 @@ class vcWpcText: UIwXViewControllerWithAudio {
         super.doneClicked()
     }
     
-    func getContent() {
+    override func getContent() {
         // qos was .background
         // userInitiated
         // https://www.raywenderlich.com/148513/grand-central-dispatch-tutorial-swift-3-part-1

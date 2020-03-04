@@ -35,7 +35,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         self.getContent()
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.wfoProd = self.getLsrFromWfo()
             DispatchQueue.main.async {

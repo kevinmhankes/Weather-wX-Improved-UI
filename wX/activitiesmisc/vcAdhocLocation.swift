@@ -19,12 +19,6 @@ class vcAdhocLocation: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -43,11 +37,7 @@ class vcAdhocLocation: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.adhocLocation)

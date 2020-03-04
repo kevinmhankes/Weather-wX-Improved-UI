@@ -16,12 +16,6 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.soundingSites)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -41,11 +35,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(self.wfo)
             DispatchQueue.main.async {

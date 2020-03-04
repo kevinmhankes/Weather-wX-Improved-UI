@@ -16,6 +16,12 @@ class UIwXViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
@@ -24,6 +30,16 @@ class UIwXViewController: UIViewController {
         toolbar.setConfigWithUiv(uiv: self)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
     }
+    
+    //
+    // each class that has this as a parent should override getContent()
+    // in some cases willEnterForeground needs to be overriden
+    //
+    @objc func willEnterForeground() {
+        self.getContent()
+    }
+    
+    func getContent() {}
     
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {

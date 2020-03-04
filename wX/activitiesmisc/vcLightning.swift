@@ -20,12 +20,6 @@ class vcLightning: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(prodClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -51,7 +45,7 @@ class vcLightning: UIwXViewController {
         periodPretty = UtilityLightning.getTimePretty(period)
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = UtilityLightning.getImage(self.sector, self.period)
             self.sectorPretty = UtilityLightning.getSectorPretty(self.sector)
@@ -70,11 +64,7 @@ class vcLightning: UIwXViewController {
             }
         }
     }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
+  
     @objc func prodClicked() {
         _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
     }

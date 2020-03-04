@@ -12,12 +12,6 @@ class vcCanadaHourly: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -29,12 +23,8 @@ class vcCanadaHourly: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async {

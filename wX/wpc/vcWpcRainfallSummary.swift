@@ -12,12 +12,6 @@ class vcWpcRainfallSummary: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let statusButton = ObjectToolbarIcon(title: "WPC Excessive Rainfall Outlooks", self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -32,11 +26,7 @@ class vcWpcRainfallSummary: UIwXViewController {
         getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
             DispatchQueue.main.async {

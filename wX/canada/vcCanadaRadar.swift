@@ -22,12 +22,6 @@ class vcCanadaRadar: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
@@ -57,7 +51,7 @@ class vcCanadaRadar: UIwXViewController {
         self.getContent()
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var bitmap: Bitmap
             if self.caRadarImageType == "radar" {
@@ -79,10 +73,6 @@ class vcCanadaRadar: UIwXViewController {
                 }
             }
         }
-    }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
     }
     
     @objc func productClicked() {

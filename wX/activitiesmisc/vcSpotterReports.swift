@@ -27,10 +27,11 @@ class vcSpotterReports: UIwXViewController {
         self.getContent()
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.spotterReportCountButton.title = "Count: " + String(self.spotterReportsData.count)
                 self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
                 self.spotterReportsDataSorted.enumerated().forEach {

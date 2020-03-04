@@ -15,12 +15,6 @@ class vcCanadaWarnings: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         provButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -36,11 +30,7 @@ class vcCanadaWarnings: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCanadaWarnings.getData()
             DispatchQueue.main.async {

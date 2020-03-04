@@ -19,12 +19,6 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         synth.delegate = self
         addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
         wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
@@ -43,7 +37,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         refreshData()
     }
     
-    @objc func willEnterForeground() {
+    @objc override func willEnterForeground() {
         refreshData()
     }
     

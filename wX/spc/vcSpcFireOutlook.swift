@@ -14,12 +14,6 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         var dayString = String(dayIndex + 1)
         if dayIndex == 2 {
             dayString = "3-8"
@@ -40,11 +34,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]

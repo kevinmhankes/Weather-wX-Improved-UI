@@ -56,7 +56,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         super.doneClicked()
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.product.hasPrefix("RTP") && self.product.count == 5 {
                 let state = Utility.getWfoSiteName(self.wfo).split(",")[0]

@@ -15,12 +15,6 @@ class vcSpcSwoState: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         stateButton = ObjectToolbarIcon(self, #selector(stateClicked))
         toolbar.items = ObjectToolbarItems(
@@ -38,7 +32,7 @@ class vcSpcSwoState: UIwXViewController {
         self.getContent(state)
     }
     
-    @objc func willEnterForeground() {
+    @objc override func willEnterForeground() {
         self.getContent(state)
     }
     

@@ -44,7 +44,9 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         super.doneClicked()
     }
     
-    func getContent() {
+    override func willEnterForeground() {}
+
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             var productNumberList = [String]()
             if self.productNumber == "" {

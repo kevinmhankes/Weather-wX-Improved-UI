@@ -30,12 +30,6 @@ class vcSpcMeso: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let toolbarTop = ObjectToolbar(.top)
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
@@ -86,7 +80,7 @@ class vcSpcMeso: UIwXViewController {
         }
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
             DispatchQueue.main.async {
@@ -101,10 +95,6 @@ class vcSpcMeso: UIwXViewController {
                 Utility.writePref(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
             }
         }
-    }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
     }
     
     @objc func sectorClicked() {

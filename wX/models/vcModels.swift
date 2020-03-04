@@ -132,7 +132,9 @@ class vcModels: UIwXViewController {
         }
     }
     
-    func getContent() {
+    override func willEnterForeground() {}
+    
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = self.modelObj.getImage()
             DispatchQueue.main.async {

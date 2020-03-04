@@ -21,12 +21,6 @@ class vcSevereDashboard: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems(
@@ -41,11 +35,7 @@ class vcSevereDashboard: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")

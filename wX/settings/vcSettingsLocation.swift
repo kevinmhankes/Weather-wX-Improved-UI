@@ -22,7 +22,9 @@ class vcSettingsLocation: UIwXViewController {
         fab = ObjectFab(self, #selector(addClicked), iconType: .plus)
     }
     
-    func getContent() {
+    override func willEnterForeground() {}
+    
+    override func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
             MyApplication.locations.indices.forEach { index in

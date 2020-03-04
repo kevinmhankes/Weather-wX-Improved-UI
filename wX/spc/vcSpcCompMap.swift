@@ -14,12 +14,6 @@ class vcSpcCompMap: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -35,11 +29,7 @@ class vcSpcCompMap: UIwXViewController {
         deSerializeSettings()
         self.getContent()
     }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
+
     func serializeSettings() {
         Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
     }
@@ -48,7 +38,7 @@ class vcSpcCompMap: UIwXViewController {
         layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcCompmap.getImage(self.layers)
             DispatchQueue.main.async {

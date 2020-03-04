@@ -19,12 +19,6 @@ class vcGoes: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -44,7 +38,7 @@ class vcGoes: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
+    override func willEnterForeground() {
         self.getContent()
     }
     
@@ -68,7 +62,8 @@ class vcGoes: UIwXViewController {
         }
     }
     
-    func getContent() {
+    override func getContent() {
+        print("VIS GET CONTENT")
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
             self.serializeSettings()

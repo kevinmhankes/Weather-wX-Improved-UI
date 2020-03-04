@@ -22,12 +22,6 @@ class vcRadarMosaicAwc: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
@@ -54,7 +48,7 @@ class vcRadarMosaicAwc: UIwXViewController {
         self.getContent()
     }
     
-    func getContent() {
+    override func getContent() {
         self.productButton.title = self.product
         self.sectorButton.title = self.sector
         DispatchQueue.global(qos: .userInitiated).async {
@@ -67,10 +61,6 @@ class vcRadarMosaicAwc: UIwXViewController {
                 }
             }
         }
-    }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
     }
     
     @objc func sectorClicked() {

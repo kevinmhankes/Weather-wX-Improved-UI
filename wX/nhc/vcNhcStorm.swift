@@ -78,7 +78,10 @@ class vcNhcStorm: UIwXViewController {
         self.getContent()
     }
     
-    func getContent() {
+    // FIXME add willEnterForeground
+    override func willEnterForeground() {}
+    
+    override func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")

@@ -19,12 +19,6 @@ class vcUSAlerts: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
         filterGesture = UITapGestureRecognizer(target: self, action: #selector(filterClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -40,11 +34,7 @@ class vcUSAlerts: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         capAlerts = []
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")

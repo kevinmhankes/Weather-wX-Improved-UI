@@ -15,12 +15,6 @@ class vcSpotters: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         spotterReportsButton.title = "Spotter Reports"
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
@@ -36,15 +30,11 @@ class vcSpotters: UIwXViewController {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
-        refreshViews()
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterData = UtilitySpotter.get()
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }

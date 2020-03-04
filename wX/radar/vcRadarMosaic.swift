@@ -18,12 +18,6 @@ class vcRadarMosaic: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -63,7 +57,7 @@ class vcRadarMosaic: UIwXViewController {
         }
     }
     
-    @objc func willEnterForeground() {
+    @objc override func willEnterForeground() {
         self.getContent(self.index)
     }
     

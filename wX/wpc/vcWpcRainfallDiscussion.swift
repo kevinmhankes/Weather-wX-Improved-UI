@@ -30,7 +30,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let number = Int(self.day)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
@@ -38,6 +38,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
+                self.refreshViews()
                 self.displayContent()
             }
         }

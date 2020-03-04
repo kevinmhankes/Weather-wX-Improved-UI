@@ -25,6 +25,8 @@ class vcImageViewer: UIwXViewController {
         self.getContent(imageViewerUrl)
     }
     
+    override func willEnterForeground() {}
+    
     func getContent(_ url: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(url)

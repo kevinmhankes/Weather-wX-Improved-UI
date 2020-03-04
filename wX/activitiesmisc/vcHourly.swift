@@ -12,12 +12,6 @@ class vcHourly: UIwXViewControllerWithAudio {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
@@ -37,11 +31,7 @@ class vcHourly: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
             DispatchQueue.main.async {

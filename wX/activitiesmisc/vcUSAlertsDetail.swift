@@ -14,12 +14,6 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         toolbar.items = ObjectToolbarItems(
@@ -34,11 +28,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+    override func getContent() {
         refreshViews()
         stackView.spacing = 0
         objAlertDetail = ObjectAlertDetail(stackView)

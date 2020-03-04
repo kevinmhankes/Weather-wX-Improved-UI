@@ -16,12 +16,6 @@ class vcNhc: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         textProductButton = ObjectToolbarIcon(title: "Text Prod", self, #selector(textProductClicked))
         imageProductButton = ObjectToolbarIcon(title: "Image Prod", self, #selector(imageProductClicked))
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
@@ -38,11 +32,7 @@ class vcNhc: UIwXViewController {
         self.getContent()
     }
 
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-
-    func getContent() {
+    override func getContent() {
         self.refreshViews()
         // FIXME var naming
         objNHC = ObjectNhc(self, scrollView, stackView)

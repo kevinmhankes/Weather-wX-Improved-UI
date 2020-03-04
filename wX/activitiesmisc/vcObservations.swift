@@ -15,12 +15,6 @@ class vcObservations: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -39,7 +33,7 @@ class vcObservations: UIwXViewController {
         self.getContent(index)
     }
     
-    @objc func willEnterForeground() {
+    @objc override func willEnterForeground() {
         self.getContent(index)
     }
     

@@ -12,12 +12,6 @@ class vcSpcFireSummary: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
         let statusButton = ObjectToolbarIcon(title: "SPC Fire Weather Outlooks", self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -31,12 +25,8 @@ class vcSpcFireSummary: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         getContent()
     }
-    
-    @objc func willEnterForeground() {
-        self.getContent()
-    }
-    
-    func getContent() {
+
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
