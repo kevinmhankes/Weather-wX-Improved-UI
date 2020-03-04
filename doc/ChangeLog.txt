@@ -20,6 +20,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
+// [FIX] CAN warnings have bad verbiage
 
 56094 2020_03_04 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController

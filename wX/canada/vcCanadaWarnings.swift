@@ -26,7 +26,7 @@ class vcCanadaWarnings: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.objectCanadaWarnings = ObjectCanadaWarnings(self, stackView)
+        self.objectCanadaWarnings = ObjectCanadaWarnings(self)
         self.getContent()
     }
     
@@ -70,7 +70,6 @@ class vcCanadaWarnings: UIwXViewController {
     }
     
     private func displayContent() {
-        self.objectCanadaWarnings.updateParents(self, stackView)
         self.objectCanadaWarnings.showData()
         self.provButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
     }

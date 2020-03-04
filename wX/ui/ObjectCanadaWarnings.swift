@@ -8,8 +8,7 @@ import UIKit
 
 final class ObjectCanadaWarnings: NSObject {
     
-    private var stackView: UIStackView
-    private var uiv: UIViewController
+    private var uiv: UIwXViewController
     private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var html = ""
@@ -60,15 +59,14 @@ final class ObjectCanadaWarnings: NSObject {
         "Yukon": "yt"
     ]
     
-    init(_ uiv: UIViewController, _ stackView: UIStackView) {
+    init(_ uiv: UIwXViewController) {
         self.uiv = uiv
-        self.stackView = stackView
     }
     
-    func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
-        self.uiv = uiv
-        self.stackView = stackView
-    }
+    //func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
+    //    self.uiv = uiv
+    //    self.stackView = stackView
+    //}
     
     func getData() {
         if self.provinceCode == "ca" {
@@ -89,8 +87,8 @@ final class ObjectCanadaWarnings: NSObject {
     }
     
     func showData() {
-        stackView.subviews.forEach { $0.removeFromSuperview() }
-        _ = ObjectImage(stackView, bitmap)
+        uiv.stackView.subviews.forEach { $0.removeFromSuperview() }
+        _ = ObjectImage(uiv.stackView, bitmap)
         self.listLocWarning.enumerated().forEach { index, _ in
             locWarning = self.listLocWarning[index]
             locWatch = self.listLocWatch[index]
@@ -116,13 +114,13 @@ final class ObjectCanadaWarnings: NSObject {
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")
             let objectTextView = ObjectTextView(
-                stackView,
+                uiv.stackView,
                 text,
                 UITapGestureRecognizerWithData(index, uiv, #selector(goToWarning(sender:)))
             )
             objectTextView.tv.isSelectable = false
         }
-        _ = ObjectCALegal(stackView)
+        _ = ObjectCALegal(uiv.stackView)
     }
     
     func getWarningUrl(_ index: Int) -> String {
