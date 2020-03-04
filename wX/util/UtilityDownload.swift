@@ -133,15 +133,15 @@ final class UtilityDownload {
         } else if product.contains("QPF94E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "1"
             let html = textUrl.getHtmlSep()
-            text = UtilityString.extractPre(html).removeSingleLineBreaks()
+            text = UtilityString.extractPre(html).removeSingleLineBreaks().removeHtml()
         } else if product.contains("QPF98E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "2"
             let html = textUrl.getHtmlSep()
-            text = UtilityString.extractPre(html).removeSingleLineBreaks()
+            text = UtilityString.extractPre(html).removeSingleLineBreaks().removeHtml()
         } else if product.contains("QPF99E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "3"
             let html = textUrl.getHtmlSep()
-            text = UtilityString.extractPre(html).removeSingleLineBreaks()
+            text = UtilityString.extractPre(html).removeSingleLineBreaks().removeHtml()
         } else if product.contains("WPCMPD") {
             let no = product.substring(6)
             let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no

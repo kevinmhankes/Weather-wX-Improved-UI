@@ -41,7 +41,6 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -58,6 +57,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
+        self.refreshViews()
         _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
     }
     
@@ -66,7 +66,6 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

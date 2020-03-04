@@ -30,13 +30,13 @@ class vcWpcRainfallSummary: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
     }
     
     private func displayContent() {
+        self.refreshViews()
         _ = ObjectImageSummary(self, bitmaps)
     }
     
@@ -60,7 +60,6 @@ class vcWpcRainfallSummary: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

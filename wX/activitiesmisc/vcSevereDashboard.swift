@@ -47,7 +47,6 @@ class vcSevereDashboard: UIwXViewController {
                 if UIAccessibility.isVoiceOverRunning {
                     UtilityAudio.speakText(self.getStatusText(), self.synth)
                 }
-                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -151,6 +150,7 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     private func displayContent() {
+        self.refreshViews()
         var views = [UIView]()
         buttonActions = [String]()
         var imageCount = 0
@@ -250,7 +250,6 @@ class vcSevereDashboard: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

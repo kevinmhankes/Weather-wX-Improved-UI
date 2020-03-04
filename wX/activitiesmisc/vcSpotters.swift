@@ -30,17 +30,18 @@ class vcSpotters: UIwXViewController {
         self.getContent()
     }
     
+    // FIXME no rotation support
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterData = UtilitySpotter.get()
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
     }
     
     private func displayContent() {
+        self.refreshViews()
         self.spotterCountButton.title = "Count: " + String(self.spotterData.count)
         self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
         self.spotterDataSorted.enumerated().forEach {

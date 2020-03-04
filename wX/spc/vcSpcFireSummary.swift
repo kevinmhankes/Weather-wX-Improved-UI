@@ -30,7 +30,6 @@ class vcSpcFireSummary: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -47,6 +46,7 @@ class vcSpcFireSummary: UIwXViewController {
     }
     
     private func displayContent() {
+        self.refreshViews()
         _ = ObjectImageSummary(self, bitmaps)
     }
     
@@ -55,7 +55,6 @@ class vcSpcFireSummary: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

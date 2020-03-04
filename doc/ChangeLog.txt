@@ -24,6 +24,7 @@
 56094 2020_03_03 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController
 		 [ADD] move willEnterForeground and getContent into parent view controller, override as needed
+		 [REF] move call to refreshViews into displayContent when applicable
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar

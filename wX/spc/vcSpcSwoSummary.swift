@@ -29,13 +29,13 @@ class vcSpcSwoSummary: UIwXViewController {
             self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
     }
     
     private func displayContent() {
+        self.refreshViews()
         _ = ObjectImageSummary(self, bitmaps, imagersPerRowWide: 4)
     }
     
@@ -63,7 +63,6 @@ class vcSpcSwoSummary: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

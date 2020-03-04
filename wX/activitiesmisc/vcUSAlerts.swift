@@ -43,7 +43,6 @@ class vcUSAlerts: UIwXViewController {
                 self.capAlerts.append(CapAlert(eventText: $0))
             }
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -96,6 +95,7 @@ class vcUSAlerts: UIwXViewController {
     }
     
     private func displayContent() {
+        self.refreshViews()
         if !filterShown {
             self.filterButton.title = "Tornado/ThunderStorm/FFW"
             self.objAlertSummary = ObjectAlertSummary(self, self.scrollView, self.stackView, "", self.capAlerts, self.filterGesture)
@@ -111,7 +111,6 @@ class vcUSAlerts: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )

@@ -46,7 +46,6 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
             }
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
             DispatchQueue.main.async {
-                self.refreshViews()
                 self.displayContent()
             }
         }
@@ -69,6 +68,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     private func displayContent() {
+        self.refreshViews()
         _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
     }
     
@@ -77,7 +77,6 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
                 self.displayContent()
         }
         )
