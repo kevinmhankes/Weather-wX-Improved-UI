@@ -98,10 +98,7 @@ class vcRadarMosaicAwc: UIwXViewController {
     
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityAwcRadarMosaic.getAnimation(
-                self.sector,
-                self.product
-            )
+            let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }

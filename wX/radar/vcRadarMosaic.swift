@@ -86,10 +86,7 @@ class vcRadarMosaic: UIwXViewController {
     
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityUSImgNwsMosaic.getAnimation(
-                UtilityUSImgNwsMosaic.sectors[self.index],
-                frameCount
-            )
+            let animDrawable = UtilityUSImgNwsMosaic.getAnimation(UtilityUSImgNwsMosaic.sectors[self.index], frameCount)
             DispatchQueue.main.async {
                 self.image.startAnimating(animDrawable)
             }
