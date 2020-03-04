@@ -47,6 +47,22 @@ class vcNhcStorm: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeEnvironment()
+        productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                productButton,
+                shareButton
+            ]
+        ).items
+        objScrollStackView = ObjectScrollStackView(self)
+        self.getContent()
+    }
+    
+    func initializeEnvironment() {
         // FIXME redundant vars
         url = nhcStormUrl
         titleS = nhcStormTitle
@@ -71,11 +87,6 @@ class vcNhcStorm: UIwXViewController {
         }
         product = "MIATCP" + stormId
         baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
-        productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
     }
     
     // FIXME add willEnterForeground
@@ -141,8 +152,8 @@ class vcNhcStorm: UIwXViewController {
     }
     
     func displayImageContent() {
-        self.bitmaps.filter {($0.isValidForNhc)}.forEach {
-            _ = ObjectImage(self.stackView, $0)
+        self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in
+            _ = ObjectImage(self.stackView, bitmap)
         }
         self.view.bringSubviewToFront(self.toolbar)
     }
