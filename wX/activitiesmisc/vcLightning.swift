@@ -63,7 +63,7 @@ class vcLightning: UIwXViewController {
             }
         }
     }
-  
+    
     @objc func prodClicked() {
         _ = ObjectPopUp(self, "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
     }
@@ -87,11 +87,6 @@ class vcLightning: UIwXViewController {
     
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
-    }
-    
-    private func displayContent() {
-        image = ObjectTouchImageView(self, toolbar)
-        self.image.setBitmap(self.bitmap)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
