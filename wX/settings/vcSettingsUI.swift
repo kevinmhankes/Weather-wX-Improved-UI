@@ -13,7 +13,13 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                statusButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self)
         UtilityUI.determineDeviceType()
         self.displayContent()

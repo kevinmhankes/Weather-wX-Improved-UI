@@ -32,7 +32,6 @@ class vcMapKitView: UIwXViewController, MKMapViewDelegate {
                 latLonButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         self.view.addSubview(mapView)
     }
     

@@ -29,7 +29,6 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
         self.getContent()

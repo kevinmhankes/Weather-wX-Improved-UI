@@ -16,7 +16,13 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
         self.locationManager.delegate = self
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                statusButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self)
         self.displayContent()
     }

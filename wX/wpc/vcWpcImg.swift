@@ -28,7 +28,6 @@ class vcWpcImg: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {

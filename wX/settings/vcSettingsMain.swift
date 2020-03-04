@@ -29,7 +29,7 @@ class vcSettingsMain: UIwXViewController {
                 statusButton
             ]
         ).items
-        _ = ObjectScrollStackView(self)
+        objScrollStackView = ObjectScrollStackView(self)
         displayContent()
     }
     

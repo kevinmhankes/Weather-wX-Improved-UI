@@ -36,7 +36,6 @@ class vcRadarMosaicAwc: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)

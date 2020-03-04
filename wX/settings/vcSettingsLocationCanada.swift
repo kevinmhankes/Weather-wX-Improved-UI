@@ -7,7 +7,7 @@
 import UIKit
 
 class vcSettingsLocationCanada: UIwXViewController {
-
+    
     private var objectTextViews = [ObjectTextView]()
     private var html = ""
     private var filter = ""
@@ -16,15 +16,21 @@ class vcSettingsLocationCanada: UIwXViewController {
     private var listIds = [String]()
     private var listCity = [String]()
     private var statusButton = ObjectToolbarIcon()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statusButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                statusButton
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self)
         displayProvinces()
     }
-
+    
     func displayProvinces() {
         UtilityCanada.provinces.enumerated().forEach {
             let objectTextView = ObjectTextView(
@@ -37,7 +43,7 @@ class vcSettingsLocationCanada: UIwXViewController {
             self.objectTextViews.append(objectTextView)
         }
     }
-
+    
     @objc func goToProvinces(sender: UITapGestureRecognizerWithData) {
         let position = sender.data
         if !cityDisplay {
@@ -51,11 +57,11 @@ class vcSettingsLocationCanada: UIwXViewController {
             finishSave()
         }
     }
-
+    
     @objc override func doneClicked() {
-          super.doneClicked()
+        super.doneClicked()
     }
-
+    
     func finishSave() {
         let locStr = Utility.readPref("LOCATION_CANADA_PROV", "") + " " +
             Utility.readPref("LOCATION_CANADA_CITY", "") + " " +
@@ -63,7 +69,7 @@ class vcSettingsLocationCanada: UIwXViewController {
         statusButton.title = locStr
         doneClicked()
     }
-
+    
     override func willEnterForeground() {}
     
     override func getContent() {
@@ -78,7 +84,7 @@ class vcSettingsLocationCanada: UIwXViewController {
             }
         }
     }
-
+    
     private func displayCities() {
         self.stackView.subviews.forEach {
             $0.removeFromSuperview()
@@ -95,7 +101,7 @@ class vcSettingsLocationCanada: UIwXViewController {
             self.objectTextViews.append(objectTextView)
         }
     }
-
+    
     private func displayContent() {
         if self.cityDisplay {
             displayCities()

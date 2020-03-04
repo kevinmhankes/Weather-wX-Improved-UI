@@ -82,7 +82,6 @@ class vcModels: UIwXViewController {
                 timeButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true, topToolbar: toolbarTop)

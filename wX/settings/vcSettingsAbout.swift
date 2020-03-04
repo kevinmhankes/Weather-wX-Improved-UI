@@ -7,7 +7,7 @@
 import UIKit
 
 class vcSettingsAbout: UIwXViewController {
-
+    
     private let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
     private let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
     private static let copyright = "©"
@@ -31,28 +31,34 @@ class vcSettingsAbout: UIwXViewController {
         + "2: Dual pane nexrad radar" + MyApplication.newline
         + "4: Quad pane nexrad radar" + MyApplication.newline
         + "w: US Alerts" + MyApplication.newline
-    + "s: Settings" + MyApplication.newline
-    + "e: SPC Mesoanalysis" + MyApplication.newline
-    + "n: NCEP Models" + MyApplication.newline
-    + "h: Hourly forecast" + MyApplication.newline
-    + "t: NHC" + MyApplication.newline
-    + "l: Lightning" + MyApplication.newline
-    + "i: National images" + MyApplication.newline
-    + "z: National text discussions" + MyApplication.newline
-
+        + "s: Settings" + MyApplication.newline
+        + "e: SPC Mesoanalysis" + MyApplication.newline
+        + "n: NCEP Models" + MyApplication.newline
+        + "h: Hourly forecast" + MyApplication.newline
+        + "t: NHC" + MyApplication.newline
+        + "l: Lightning" + MyApplication.newline
+        + "i: National images" + MyApplication.newline
+        + "z: National text discussions" + MyApplication.newline
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        _ = ObjectScrollStackView(self)
+        toolbar.items = ObjectToolbarItems(
+            [
+                doneButton,
+                GlobalVariables.flexBarButton,
+                statusButton
+            ]
+        ).items
+        objScrollStackView = ObjectScrollStackView(self)
         displayContent()
     }
-
+    
     @objc override func doneClicked() {
         MyApplication.initPreferences()
         super.doneClicked()
     }
-
+    
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "faq":
@@ -71,7 +77,7 @@ class vcSettingsAbout: UIwXViewController {
             break
         }
     }
-
+    
     private func displayContent() {
         let objectTextView1 = ObjectTextView(
             self.stackView,

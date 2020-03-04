@@ -26,7 +26,6 @@ class vcSpcSwoState: UIwXViewController {
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar)
-        self.view.addSubview(toolbar)
         state = Location.state
         stateButton.title = state
         self.getContent(state)

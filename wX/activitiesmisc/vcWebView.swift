@@ -41,7 +41,6 @@ class vcWebView: UIwXViewController {
                 ]
             ).items
         }
-        self.view.addSubview(toolbar)
         webView = WKWebView()
         self.view.addSubview(webView)
         self.view.bringSubviewToFront(toolbar)

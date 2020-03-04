@@ -7,6 +7,13 @@
 import UIKit
 
 class UIwXViewController: UIViewController {
+    
+    //
+    // parent class for most viewcontrollers, sets up
+    // basic UI elements - toolbar, stackview, scrollview
+    // refresh when comining into focus
+    // swipe from left edge
+    //
 
     var scrollView = UIScrollView()
     var stackView = UIStackView()

@@ -66,7 +66,6 @@ class vcSpcMeso: UIwXViewController {
             ]
         ).items
         self.view.addSubview(toolbarTop)
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)

@@ -36,7 +36,6 @@ class vcCanadaRadar: UIwXViewController {
                 animateButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         url = Utility.readPref("CA_LAST_RID_URL", url)
         if caRadarProvince == "" {

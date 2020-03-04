@@ -38,6 +38,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
             + ")"
         self.view.addSubview(colPicker)
         self.view.addSubview(colorBar)
+        // FIXME sizing is not working , should not need to add toolbar
         self.view.addSubview(toolbar)
         self.view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)

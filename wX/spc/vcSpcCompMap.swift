@@ -25,7 +25,6 @@ class vcSpcCompMap: UIwXViewController {
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar)
-        self.view.addSubview(toolbar)
         deSerializeSettings()
         self.getContent()
     }

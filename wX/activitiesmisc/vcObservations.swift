@@ -25,7 +25,6 @@ class vcObservations: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)

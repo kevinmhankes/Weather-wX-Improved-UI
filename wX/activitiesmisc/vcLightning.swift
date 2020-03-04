@@ -32,7 +32,6 @@ class vcLightning: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         image = ObjectTouchImageView(self, toolbar)
         initializePreferences()
         self.getContent()

@@ -74,7 +74,7 @@ class vcNhcStorm: UIwXViewController {
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        _ = ObjectScrollStackView(self)
+        objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
     

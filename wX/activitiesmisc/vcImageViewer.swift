@@ -21,7 +21,6 @@ class vcImageViewer: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.view.addSubview(toolbar)
         self.getContent(imageViewerUrl)
     }
     
