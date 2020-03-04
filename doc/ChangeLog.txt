@@ -19,6 +19,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
+// [ADD] move refreshViews into displayContent when possible
 
 56094 2020_03_03 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController
