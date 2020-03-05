@@ -21,8 +21,6 @@ final class ObjectNhc: NSObject {
     private var pacWalletList = [String]()
     private var pacTitleList = [String]()
     private var uiv: UIwXViewController
-    //private var stackView: UIStackView
-    //private var scrollView: UIScrollView
     private var textAtl = ""
     private var textPac = ""
     private var bitmapsAtlantic = [Bitmap]()
@@ -61,10 +59,6 @@ final class ObjectNhc: NSObject {
             regionMap[$0] = ObjectNhcRegionSummary($0)
         }
     }
-    
-    //func updateParents(_ uiv: UIViewController, _ stackView: UIStackView) {
-    //    self.uiv = uiv
-    //}
     
     // TODO use a class to store 5 String Lists
     // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC

@@ -146,8 +146,7 @@ class UtilityWpcFronts {
         let coordinates = parseLatLon(tokens[index])
         front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
         let oldCoordinates = parseLatLon(tokens[index + 1])
-        let coord = UtilityMath.computeMiddishPoint(coordinates[0], coordinates[1],
-            oldCoordinates[0], oldCoordinates[1], fraction)
+        let coord = UtilityMath.computeMiddishPoint(coordinates[0], coordinates[1], oldCoordinates[0], oldCoordinates[1], fraction)
         front.coordinates.append(LatLon(coord[0], coord[1]))
       }
     }
@@ -187,10 +186,7 @@ class UtilityWpcFronts {
             html = html.replaceAll(MyApplication.newline, separator)
             let timestamp = html.parseFirst("SURFACE PROG VALID ([0-9]{12}Z)")
             Utility.writePref("WPC_FRONTS_TIMESTAMP", timestamp)
-            html = html.parseFirst("SURFACE PROG VALID [0-9]{12}Z(.*?)" +
-                separator +
-                " " +
-                separator)
+            html = html.parseFirst("SURFACE PROG VALID [0-9]{12}Z(.*?)" + separator + " " + separator)
             html = html.replaceAll(separator, MyApplication.newline)
             let lines = html.split(MyApplication.newline)
             lines.enumerated().forEach { index, _ in

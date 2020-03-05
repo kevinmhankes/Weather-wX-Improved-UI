@@ -22,7 +22,7 @@ class UtilityWXMetalPerfL3FourBit {
                 numberOfRleHalfwords.append(dis.getUnsignedShort())
                 radarBuffers.rd.radialStartAngle.putFloat((450.0 - Float((dis.getUnsignedShort() / 10))))
                 dis.skipBytes(2)
-                (0..<numberOfRleHalfwords[radial] * 2).forEach {_ in
+                (0..<numberOfRleHalfwords[radial] * 2).forEach { _ in
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
                     (0..<numOfBins).forEach { _ in

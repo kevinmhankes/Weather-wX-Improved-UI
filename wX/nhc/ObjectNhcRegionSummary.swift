@@ -27,7 +27,7 @@ class ObjectNhcRegionSummary {
                 MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
             ]
             replaceString = "NHC Atlantic Wallet"
-            baseUrl = "${MyApplication.nwsNhcWebsitePrefix}/nhc_at"
+            baseUrl = MyApplication.nwsNhcWebsitePrefix + "/nhc_at"
         case NhcOceanEnum.EPAC:
             titles = [
                 "EPAC Tropical Cyclones and Disturbances ",
@@ -40,7 +40,7 @@ class ObjectNhcRegionSummary {
                 MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
             ]
             replaceString = "NHC Eastern Pacific Wallet"
-            baseUrl = "${MyApplication.nwsNhcWebsitePrefix}/nhc_ep"
+            baseUrl = MyApplication.nwsNhcWebsitePrefix + "/nhc_ep"
         case NhcOceanEnum.CPAC:
             titles = [
                 "CPAC Tropical Cyclones and Disturbances ",
@@ -58,7 +58,7 @@ class ObjectNhcRegionSummary {
     }
     
     func getImages() {
-        bitmaps = urls.map {$0.getImage()}
+        bitmaps = urls.map { $0.getImage() }
     }
     
     func getTitle(_ index: Int) -> [String] {
