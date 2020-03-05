@@ -8,7 +8,6 @@ import UIKit
 
 final class ObjectAlertSummary: NSObject {
 
-    private var scrollView = UIScrollView()
     private var urls = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0
@@ -21,22 +20,19 @@ final class ObjectAlertSummary: NSObject {
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
 
     convenience init(
-        _ uiv: UIViewController,
-        _ scrollView: UIScrollView,
-        _ stackView: UIStackView,
+        _ uiv: UIwXViewController,
         _ filter: String,
         _ capAlerts: [CapAlert],
         _ gesture: UITapGestureRecognizer?,
         showImage: Bool = true
     ) {
         self.init()
-        self.scrollView = scrollView
-        stackView.removeViews()
-        let objTextSummary = ObjectTextView(stackView)
+        uiv.stackView.removeViews()
+        let objTextSummary = ObjectTextView(uiv.stackView)
         objTextSummary.addGestureRecognizer(gesture!)
-        objTextSummary.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        objTextSummary.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         if showImage {
-            objImage = ObjectImage(stackView)
+            objImage = ObjectImage(uiv.stackView)
             objImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
         }
         var index = 0
@@ -71,8 +67,8 @@ final class ObjectAlertSummary: NSObject {
                     nwsLoc = ""
                 }
                 _ = ObjectCardAlertSummaryItem(
-                    scrollView,
-                    stackView,
+                    uiv.scrollView,
+                    uiv.stackView,
                     nwsOffice,
                     nwsLoc,
                     alert,
