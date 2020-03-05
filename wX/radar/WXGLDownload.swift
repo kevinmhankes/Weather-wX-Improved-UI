@@ -118,9 +118,9 @@ final class WXGLDownload {
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
-        (0..<snDates.count - 1).forEach {
-            if snDates[$0] == mostRecentTime {
-                mostRecentSn = snFiles[$0]
+        (0..<snDates.count - 1).forEach { index in
+            if snDates[index] == mostRecentTime {
+                mostRecentSn = snFiles[index]
             }
         }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
@@ -133,13 +133,13 @@ final class WXGLDownload {
             listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
-        (0..<frameCount).forEach {
+        (0..<frameCount).forEach { index in
             let data = (WXGLDownload.nwsRadarPub
                 + "SL.us008001/DF.of/DC.radar/"
                 + GlobalDictionaries.nexradProductString[prod]!
                 + "/SI." + ridPrefix + rid.lowercased()
-                + "/" + listOfFiles[$0]).getDataFromUrl()
-            UtilityIO.saveInputStream(data, listOfFiles[$0])
+                + "/" + listOfFiles[index]).getDataFromUrl()
+            UtilityIO.saveInputStream(data, listOfFiles[index])
         }
         return listOfFiles
     }
@@ -147,18 +147,18 @@ final class WXGLDownload {
     // Level 2: Download a list of files and return the list as a list of Strings
     private func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int) -> [String] {
         var listOfFiles = [String]()
-        let tmpArr = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
+        let list = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
-        let fnSize = Int(tmpArr[tmpArr.count - 3]) ?? 0
-        let fnPrevSize = Int(tmpArr[tmpArr.count - 5]) ?? 0
+        let fnSize = Int(list[list.count - 3]) ?? 0
+        let fnPrevSize = Int(list[list.count - 5]) ?? 0
         let ratio = Double(fnSize) / Double(fnPrevSize)
         if ratio < 0.75 {
             additionalAdd = 1
         }
-        (0..<frameCnt).forEach {
-            listOfFiles.append(tmpArr[tmpArr.count - (frameCnt - $0 + additionalAdd) * 2])
-            let data = getInputStreamFromURLL2(baseUrl + listOfFiles[$0])
-            UtilityIO.saveInputStream(data, listOfFiles[$0])
+        (0..<frameCnt).forEach { index in
+            listOfFiles.append(list[list.count - (frameCnt - index + additionalAdd) * 2])
+            let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
+            UtilityIO.saveInputStream(data, listOfFiles[index])
         }
         return listOfFiles
     }
@@ -168,8 +168,8 @@ final class WXGLDownload {
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let html = (baseUrl + "dir.list").getHtmlSep()
         var sizes = [String]()
-        html.split("\n").forEach {
-            sizes.append($0.split(" ")[0])
+        html.split("\n").forEach { line in
+            sizes.append(line.split(" ")[0])
         }
         sizes.removeLast()
         let tmpArr = html.replace("<br>", " ").split(" ")

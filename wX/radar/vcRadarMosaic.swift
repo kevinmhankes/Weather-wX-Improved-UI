@@ -28,7 +28,8 @@ class vcRadarMosaic: UIwXViewController {
                 productButton,
                 animateButton,
                 shareButton
-        ]).items
+            ]
+        ).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         if nwsMosaicType == "local" {

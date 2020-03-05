@@ -51,7 +51,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setPaneSize(size)
-        paneRange.enumerated().forEach { index, _ in
+        paneRange.indices.forEach { index in
             self.render(index)
         }
         coordinator.animate(alongsideTransition: nil,
@@ -245,7 +245,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         toolbar.items = ObjectToolbarItems(toolbarButtons).items
         device = MTLCreateSystemDefaultDevice()
-        paneRange.enumerated().forEach { index, _ in
+        paneRange.indices.forEach { index in
             metalLayer.append(CAMetalLayer())
             metalLayer[index]!.device = device
             metalLayer[index]!.pixelFormat = .bgra8Unorm
@@ -258,10 +258,14 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, textObj, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
         }
-        productButton.enumerated().forEach {$1.title = wxMetal[$0]!.product}
+        productButton.enumerated().forEach {
+            $1.title = wxMetal[$0]!.product
+        }
         radarSiteButton.title = wxMetal[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
-            siteButton.enumerated().forEach {$1.title = wxMetal[$0]!.rid}
+            siteButton.enumerated().forEach {
+                $1.title = wxMetal[$0]!.rid
+            }
         }
         if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             let x = wxMetal[0]!.xPos
