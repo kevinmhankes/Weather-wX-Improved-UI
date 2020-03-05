@@ -18,12 +18,12 @@ final class UtilityColorPalette165 {
         let text = UtilityColorPalette.getColorMapStringFromDisk("165", code)
         let lines = text.split("\n")
         var tmpArr = [String]()
-        lines.forEach {
-            if $0.contains("olor") && !$0.contains("#") {
-                if $0.contains(",") {
-                    tmpArr = $0.split(",")
+        lines.forEach { line in
+            if line.contains("olor") && !line.contains("#") {
+                if line.contains(",") {
+                    tmpArr = line.split(",")
                 } else {
-                    tmpArr = $0.split(" ")
+                    tmpArr = line.split(" ")
                 }
                 if tmpArr.count > 4 {
                     dbzAl.append(Int(tmpArr[1])!)
@@ -35,12 +35,12 @@ final class UtilityColorPalette165 {
         }
         var lowColor = 0
         var diff = 0
-        dbzAl.indices.forEach { i in
-            lowColor = Color.rgb(rAl[i], gAl[i], bAl[i])
+        dbzAl.indices.forEach { index in
+            lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
             diff = 10
-            MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(rAl[i])
-            MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[i])
-            MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[i])
+            MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(rAl[index])
+            MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[index])
+            MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[index])
             (1..<diff).forEach { _ in
                 MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(Color.red(lowColor))
                 MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(Color.green(lowColor))
@@ -51,8 +51,10 @@ final class UtilityColorPalette165 {
     
     static func loadColorMap() {
         switch MyApplication.radarColorPalette["165"]! {
-        case "CODENH": UtilityColorPalette165.generate("CODENH")
-        default:       UtilityColorPalette165.generate(MyApplication.radarColorPalette["165"]!)
+        case "CODENH":
+            UtilityColorPalette165.generate("CODENH")
+        default:
+            UtilityColorPalette165.generate(MyApplication.radarColorPalette["165"]!)
         }
     }
 }

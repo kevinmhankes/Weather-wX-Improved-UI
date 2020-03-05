@@ -219,53 +219,79 @@ final class UtilityColorPaletteGeneric {
         switch product {
         case "94":
             switch map {
-            case "DKenh": UtilityColorPaletteGeneric.generate(product, "DKenh")
-            case "COD":   UtilityColorPaletteGeneric.generate(product, "CODENH")
-            case "CODENH":UtilityColorPaletteGeneric.generate(product, "CODENH")
-            case "MENH":  UtilityColorPaletteGeneric.generate(product, "MENH")
-            case "GREEN": UtilityColorPaletteGeneric.generate(product, "GREEN")
-            case "AF":    UtilityColorPaletteGeneric.generate(product, "AF")
-            case "EAK":   UtilityColorPaletteGeneric.generate(product, "EAK")
-            case "NWS":   UtilityColorPaletteGeneric.generate(product, "NWS")
-            default:      UtilityColorPaletteGeneric.generate(product, map)
+            case "DKenh":
+                UtilityColorPaletteGeneric.generate(product, "DKenh")
+            case "COD":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            case "MENH":
+                UtilityColorPaletteGeneric.generate(product, "MENH")
+            case "GREEN":
+                UtilityColorPaletteGeneric.generate(product, "GREEN")
+            case "AF":
+                UtilityColorPaletteGeneric.generate(product, "AF")
+            case "EAK":
+                UtilityColorPaletteGeneric.generate(product, "EAK")
+            case "NWS":
+                UtilityColorPaletteGeneric.generate(product, "NWS")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "99":
             switch map {
-            case "COD":    UtilityColorPaletteGeneric.generate(product, "CODENH")
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            case "AF":     UtilityColorPaletteGeneric.generate(product, "AF")
-            case "EAK":    UtilityColorPaletteGeneric.generate(product, "EAK")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "COD":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            case "AF":
+                UtilityColorPaletteGeneric.generate(product, "AF")
+            case "EAK":
+                UtilityColorPaletteGeneric.generate(product, "EAK")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "134":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "135":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "159":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "161":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "163":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         case "172":
             switch map {
-            case "CODENH": UtilityColorPaletteGeneric.generate(product, "CODENH")
-            default:       UtilityColorPaletteGeneric.generate(product, map)
+            case "CODENH":
+                UtilityColorPaletteGeneric.generate(product, "CODENH")
+            default:
+                UtilityColorPaletteGeneric.generate(product, map)
             }
         default:
             break
