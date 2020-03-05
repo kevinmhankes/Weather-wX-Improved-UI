@@ -103,8 +103,7 @@ class vcSevereDashboard: UIwXViewController {
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
                         if !data.hasPrefix("O.EXP") {
                             _ = ObjectCardDashAlertItem(
-                                scrollView,
-                                stackView,
+                                self,
                                 warningType.senderNameList[index],
                                 warningType.eventList[index],
                                 warningType.effectiveList[index],

@@ -11,8 +11,7 @@ final class ObjectCardDashAlertItem {
     let cardStackView: ObjectCardStackView
 
     init(
-        _ scrollView: UIScrollView,
-        _ stackView: UIStackView,
+        _ uiv: UIwXViewController,
         _ senderName: String,
         _ eventType: String,
         _ effectiveTime: String,
@@ -46,9 +45,9 @@ final class ObjectCardDashAlertItem {
         }
         verticalTextConainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-        stackView.addArrangedSubview(cardStackView.view)
+        uiv.stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
-        stackView.addArrangedSubview(cardStackView.view)
-        verticalTextConainer.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        uiv.stackView.addArrangedSubview(cardStackView.view)
+        verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
 }

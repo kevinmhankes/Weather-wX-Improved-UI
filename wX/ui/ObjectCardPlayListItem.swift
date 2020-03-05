@@ -9,8 +9,7 @@ import UIKit
 final class ObjectCardPlayListItem {
 
     init(
-        _ scrollView: UIScrollView,
-        _ stackView: UIStackView,
+        _ uiv: UIwXViewController,
         _ product: String,
         _ middleLine: String,
         _ bottomLines: String,
@@ -26,11 +25,11 @@ final class ObjectCardPlayListItem {
         tvProduct.color = ColorCompatibility.highlightText
         tvMiddle.color = ColorCompatibility.label
         tvBottom.color = ColorCompatibility.systemGray2
-        stackView.addArrangedSubview(sV.view)
+        uiv.stackView.addArrangedSubview(sV.view)
         [tvProduct, tvMiddle, tvBottom].forEach {
-            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
         sV.view.addGestureRecognizer(gesture)
-        sV.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        sV.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
     }
 }

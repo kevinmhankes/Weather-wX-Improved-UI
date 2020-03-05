@@ -113,8 +113,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             let productText = Utility.readPref("PLAYLIST_" + item, "")
             let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
             _ = ObjectCardPlayListItem(
-                self.scrollView,
-                self.stackView,
+                self,
                 item,
                 topLine,
                 productText.truncate(textPreviewLength),
@@ -125,8 +124,8 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc func playClicked() {
         var textToSpeak = ""
-        playlistItems.forEach {
-            textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
+        playlistItems.forEach { item in
+            textToSpeak += Utility.readPref("PLAYLIST_" + item, "")
         }
         UtilityAudio.playClicked(textToSpeak, synth, fab!)
     }
