@@ -96,12 +96,8 @@ class vcSevereDashboard: UIwXViewController {
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
-                _ = ObjectCardBlackHeaderText(
-                    scrollView,
-                    stackView,
-                    "(" + String(warningType.getCount()) + ") " + warningType.getName()
-                )
-                warningType.eventList.enumerated().forEach { index, _ in
+                _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
+                warningType.eventList.indices.forEach { index in
                     if warningType.warnings.count > 0 {
                         let data = warningType.warnings[index]
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);

@@ -52,11 +52,11 @@ final class ObjectAlertSummary: NSObject {
             }
             if filterBool {
                 var nwsOffice = ""
-                var nwsLoc = ""
+                var nwsLocation = ""
                 if alert.vtec.count > 15 {
                     nwsOffice = alert.vtec.substring(8, 11)
-                    nwsLoc = Utility.getWfoSiteName(nwsOffice)
-                    state = nwsLoc.substring(0, 2)
+                    nwsLocation = Utility.getWfoSiteName(nwsOffice)
+                    state = nwsLocation.substring(0, 2)
                     if stateCntMap.keys.contains(state) {
                         stateCntMap[state] = (stateCntMap[state]! + 1)
                     } else {
@@ -64,13 +64,12 @@ final class ObjectAlertSummary: NSObject {
                     }
                 } else {
                     nwsOffice = ""
-                    nwsLoc = ""
+                    nwsLocation = ""
                 }
                 _ = ObjectCardAlertSummaryItem(
-                    uiv.scrollView,
-                    uiv.stackView,
+                    uiv,
                     nwsOffice,
-                    nwsLoc,
+                    nwsLocation,
                     alert,
                     UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:)))
                 )

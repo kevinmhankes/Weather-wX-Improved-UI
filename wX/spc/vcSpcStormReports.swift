@@ -149,11 +149,11 @@ class vcSpcStormReports: UIwXViewController {
             if $1.damageHeader != "" {
                 switch $1.damageHeader {
                 case "Tornado Reports":
-                    tornadoHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                    tornadoHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
                 case "Wind Reports":
-                    windHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                    windHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
                 case "Hail Reports":
-                    hailHeader = ObjectCardBlackHeaderText(self.scrollView, self.stackView, $1.damageHeader)
+                    hailHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
                 default:
                     break
                 }
