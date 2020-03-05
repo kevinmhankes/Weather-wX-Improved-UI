@@ -14,7 +14,7 @@ final class UtilitySpcSwo {
             imgUrls = (4...8).map {
                 MyApplication.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + String($0) + "prob.gif"
             }
-            return imgUrls.map {Bitmap($0)}
+            return imgUrls.map { Bitmap($0) }
         }
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
         let time = html.parseFirst("show_tab\\(.otlk_([0-9]{4}).\\)")
@@ -30,10 +30,11 @@ final class UtilitySpcSwo {
             ["otlk_", "prob_"].forEach {
                 imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif")
             }
-        default: break
+        default:
+            break
         }
         if getAllImages {
-            return imgUrls.map {Bitmap($0)}
+            return imgUrls.map { Bitmap($0) }
         } else {
             return [Bitmap(imgUrls[0])]
         }

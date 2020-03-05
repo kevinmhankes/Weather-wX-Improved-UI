@@ -41,7 +41,8 @@ final class ObjectWatchProduct {
             imgUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
             title = "MPD " + productNumber
             prod = "WPCMPD" + productNumber
-        default: break
+        default:
+            break
         }
 	}
 
