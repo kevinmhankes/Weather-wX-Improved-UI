@@ -93,9 +93,7 @@ class vcSpcStormReports: UIwXViewController {
         date = year + month + day
         imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
         textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         self.getContent()
@@ -119,9 +117,7 @@ class vcSpcStormReports: UIwXViewController {
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         displayContent()

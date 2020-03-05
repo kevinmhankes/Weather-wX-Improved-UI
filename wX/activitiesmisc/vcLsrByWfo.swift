@@ -85,9 +85,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     
     private func displayContent() {
         self.siteButton.title = self.wfo
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackView.removeViews()
         self.wfoProd.forEach {
             let objectTextView = ObjectTextView(self.stackView, $0)
             objectTextView.font = FontSize.hourly.size
