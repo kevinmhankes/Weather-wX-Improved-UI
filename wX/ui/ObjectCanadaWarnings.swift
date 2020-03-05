@@ -70,7 +70,9 @@ final class ObjectCanadaWarnings: NSObject {
             bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
         }
         if self.provinceCode == "ca" {
-            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
+            let url = MyApplication.canadaEcSitePrefix + "/warnings/index_e.html"
+            //print(url)
+            html = (url).getHtml()
         } else {
             html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
         }
@@ -89,22 +91,25 @@ final class ObjectCanadaWarnings: NSObject {
             locWatch = self.listLocWatch[index]
             locStatement = self.listLocStatement[index]
             if locWarning.contains("href") {
-                locWarning += "(Warning)"
+                locWarning = locWarning.parse("class=.wb-inv.>(.*?)</span>")
+                locWarning += " (Warning)"
                 locWarning = locWarning.replaceAll("</.*?>", "")
                 locWarning = locWarning.replaceAll("<.*?>", "")
             }
             if locWatch.contains("href") {
-                locWatch += "(Watch)"
+                locWatch = locWatch.parse("class=.wb-inv.>(.*?)</span>")
+                locWatch += " (Watch)"
                 locWatch = locWatch.replaceAll("</.*?>", "")
                 locWatch = locWatch.replaceAll("<*?>>", "")
             }
             if locStatement.contains("href") {
-                locStatement += "(Statement)"
+                locStatement = locStatement.parse("class=.wb-inv.>(.*?)</span>")
+                locStatement += " (Statement)"
                 locStatement = locStatement.replaceAll("</.*?>", "")
                 locStatement = locStatement.replaceAll("<.*?>", "")
             }
-            var text = provL.uppercased() + ": " + self.listLocName[index] + " "
-                + locWarning  + " " + locWatch  + " " + locStatement
+            //var text = provinceCode.uppercased() + ": " + self.listLocName[index] + " " + locWarning  + " " + locWatch  + " " + locStatement
+            var text = locWarning  + " " + locWatch  + " " + locStatement
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")
