@@ -31,7 +31,7 @@ final class ObjectAlertSummary: NSObject {
     ) {
         self.init()
         self.scrollView = scrollView
-        stackView.subviews.forEach {$0.removeFromSuperview()}
+        stackView.removeViews()
         let objTextSummary = ObjectTextView(stackView)
         objTextSummary.addGestureRecognizer(gesture!)
         objTextSummary.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -99,13 +99,6 @@ final class ObjectAlertSummary: NSObject {
         let vc = vcImageViewer()
         vc.url = ObjectAlertSummary.imageUrls[0]
         uiv.goToVC(vc)
-        /*DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
-            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
-            DispatchQueue.main.async {
-                self.objImage.setBitmap(bitmap)
-            }
-        }*/
     }
     
     func getImage() {

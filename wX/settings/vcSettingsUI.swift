@@ -79,10 +79,10 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     private func displayContent() {
-        Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach {
+        Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
                 stackView,
-                $1,
+                prefVar,
                 UtilitySettingsUI.booleanDefault,
                 UtilitySettingsUI.boolean
             )
@@ -91,7 +91,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 action: #selector(switchChanged(sender:)),
                 for: UIControl.Event.valueChanged
             )
-            switchObject.switchUi.tag = $0
+            switchObject.switchUi.tag = index
         }
         setupSliders()
         Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
@@ -124,11 +124,11 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "UI_TILES_PER_ROW",
             "HOMESCREEN_TEXT_LENGTH_PREF",
             "NWS_ICON_SIZE_PREF"
-            ].forEach {
+            ].forEach { pref in
                 let objSlider = ObjectSlider(
                     self,
                     stackView,
-                    $0
+                    pref
                 )
                 objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider

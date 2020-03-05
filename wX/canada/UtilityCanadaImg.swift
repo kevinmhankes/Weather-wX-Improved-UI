@@ -101,7 +101,7 @@ final class UtilityCanadaImg {
         let radarSiteCode = (timeStamps.first ?? "_").split("_")[0]
         var string = timeStamps.map { ":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF" }.joined()
         timeStamps = html.parseColumn("src=.(/data/radar/.*?GIF)\"")
-        string += timeStamps.map {":" + $0}.joined()
+        string += timeStamps.map { ":" + $0 }.joined()
         return string
     }
     

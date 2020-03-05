@@ -42,7 +42,6 @@ class vcNhc: UIwXViewController {
                 self.objectNhc?.showTextData()
             }
         }
-        
         NhcOceanEnum.allCases.forEach { type in
             serial.async {
                 self.objectNhc?.regionMap[type]!.getImages()

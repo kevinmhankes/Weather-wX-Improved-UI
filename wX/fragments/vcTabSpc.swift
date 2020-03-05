@@ -19,9 +19,7 @@ class vcTabSpc: vcTabParent {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if tilesPerRow != UIPreferences.tilesPerRow {
-            stackView.arrangedSubviews.forEach {
-                $0.removeFromSuperview()
-            }
+            stackView.removeArrangedViews()
             tilesPerRow = UIPreferences.tilesPerRow
             objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
         }

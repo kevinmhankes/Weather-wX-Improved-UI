@@ -7,10 +7,10 @@
 import UIKit
 
 class vcSettingsColorListing: UIwXViewController {
-
+    
     private var colors = [wXColor]()
     private var objectTextViews = [ObjectTextView]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
@@ -19,34 +19,35 @@ class vcSettingsColorListing: UIwXViewController {
                 doneButton,
                 GlobalVariables.flexBarButton,
                 statusButton
-        ]).items
+            ]
+        ).items
         objScrollStackView = ObjectScrollStackView(self)
         stackView.spacing = 0
         setupColorObjects()
         colors.sort(by: {$0.uiLabel < $1.uiLabel})
         self.displayContent()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        objectTextViews.enumerated().forEach {
-            if $1.textcolor.colorsCurrent.red == 0
-                && $1.textcolor.colorsCurrent.green == 0
-                && $1.textcolor.colorsCurrent.blue == 0 {
-                $1.color = UIColor.white
+        objectTextViews.forEach { tv in
+            if tv.textcolor.colorsCurrent.red == 0
+                && tv.textcolor.colorsCurrent.green == 0
+                && tv.textcolor.colorsCurrent.blue == 0 {
+                tv.color = UIColor.white
             } else {
-                $1.color = $1.textcolor.uicolorCurrent
+                tv.color = tv.textcolor.uicolorCurrent
             }
         }
     }
-
+    
     @objc override func doneClicked() {
         RadarGeometry.setColors()
         GeographyType.regen()
         PolygonType.regen()
         super.doneClicked()
     }
-
+    
     func setupColorObjects() {
         colors.append(wXColor("Draw Tool", "DRAW_TOOL_COLOR", 255, 0, 0 ))
         colors.append(wXColor("Highways", "RADAR_COLOR_HW", 135, 135, 135 ))
@@ -57,9 +58,9 @@ class vcSettingsColorListing: UIwXViewController {
         colors.append(wXColor("Tornado Warning", "RADAR_COLOR_TOR", 243, 85, 243 ))
         colors.append(wXColor("Tornado Watch", "RADAR_COLOR_TOR_WATCH", 255, 0, 0 ))
         colors.append(wXColor("Flash Flood Warning", "RADAR_COLOR_FFW", 0, 255, 0 ))
-        ObjectPolygonWarning.polygonList.forEach {
-            let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
-            colors.append(wXColor(polygonType.name, polygonType.prefTokenColor, polygonType.defaultColors[$0]!))
+        ObjectPolygonWarning.polygonList.forEach { poly in
+            let polygonType = ObjectPolygonWarning.polygonDataByType[poly]!
+            colors.append(wXColor(polygonType.name, polygonType.prefTokenColor, polygonType.defaultColors[poly]!))
         }
         colors.append(wXColor("MCD", "RADAR_COLOR_MCD", 153, 51, 255 ))
         colors.append(wXColor("MPD", "RADAR_COLOR_MPD", 0, 255, 0 ))
@@ -77,24 +78,24 @@ class vcSettingsColorListing: UIwXViewController {
         colors.append(wXColor("NWS Forecast Icon Bottom Color", "NWS_ICON_BOTTOM_COLOR", 255, 255, 255 ))
         colors.append(wXColor("Nexrad Radar Background Color", "NEXRAD_RADAR_BACKGROUND_COLOR", 0, 0, 0 ))
     }
-
+    
     @objc func goToColor(sender: UITapGestureRecognizerWithData) {
         let vc = vcSettingsColorPicker()
         vc.colorObject = colors[sender.data]
         self.goToVC(vc)
     }
-
+    
     private func displayContent() {
-        colors.enumerated().forEach {
-            let objectTextView = ObjectTextView(self.stackView, $1.uiLabel, $1)
-            if $1.colorsCurrent.red == 0 && $1.colorsCurrent.green == 0 && $1.colorsCurrent.blue == 0 {
+        colors.enumerated().forEach { index, color in
+            let objectTextView = ObjectTextView(self.stackView, color.uiLabel, color)
+            if color.colorsCurrent.red == 0 && color.colorsCurrent.green == 0 && color.colorsCurrent.blue == 0 {
                 objectTextView.color = UIColor.white
             } else {
-                objectTextView.color = $1.uicolorCurrent
+                objectTextView.color = color.uicolorCurrent
             }
             objectTextView.background = UIColor.black
             objectTextView.tv.font = FontSize.extraLarge.size
-            objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData($0, self, #selector(goToColor(sender:))))
+            objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(index, self, #selector(goToColor(sender:))))
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(self.scrollView)
             objectTextViews.append(objectTextView)

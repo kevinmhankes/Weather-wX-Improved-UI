@@ -237,6 +237,12 @@ extension UIStackView {
             view.removeFromSuperview()
         }
     }
+    
+    func removeArrangedViews() {
+        self.arrangedSubviews.forEach { view in
+            view.removeFromSuperview()
+        }
+    }
 }
 
 extension UIViewController {

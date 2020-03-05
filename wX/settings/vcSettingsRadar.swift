@@ -125,9 +125,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             )
             switchObject.switchUi.tag = index
         }
-        
         setupSliders()
-        
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
             objNp.numberPicker.dataSource = self
@@ -166,11 +164,11 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             "RADAR_DATA_REFRESH_INTERVAL",
             "WXOGL_SIZE",
             "RADAR_TEXT_SIZE"
-            ].forEach {
+            ].forEach { pref in
                 let objSlider = ObjectSlider(
                     self,
                     stackView,
-                    $0
+                    pref
                 )
                 objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider

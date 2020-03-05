@@ -155,23 +155,21 @@ class vcSettingsHomescreen: UIwXViewController {
         if saveToDisk {
             serializeSettings()
         }
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackView.removeViews()
         homescreenFav.enumerated().forEach { index, prefVar in
             var title = UtilityHomeScreen.localChoicesText[prefVar]
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {
-                (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
-                    if $0.hasPrefix(prefVarMod) {
-                        title = $0.split(":")[1]
+                (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach { label in
+                    if label.hasPrefix(prefVarMod) {
+                        title = label.split(":")[1]
                     }
                 }
             }
             if title == nil {
-                UtilityWpcText.labelsWithCodes.forEach {
-                    if $0.hasPrefix(prefVarMod) {
-                        title = $0.split(":")[1]
+                UtilityWpcText.labelsWithCodes.forEach { label in
+                    if label.hasPrefix(prefVarMod) {
+                        title = label.split(":")[1]
                     }
                 }
             }

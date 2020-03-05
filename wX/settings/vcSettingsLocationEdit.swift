@@ -64,9 +64,9 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         lonTextView = ObjectTextView("Lon")
         statusTextView = ObjectTextView("")
         let textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
-        textViews.forEach {
-            $0.font = FontSize.extraLarge.size
-            $0.isEditable = true
+        textViews.forEach { label in
+            label.font = FontSize.extraLarge.size
+            label.isEditable = true
         }
         textViews[3].font = FontSize.extraSmall.size
         textViews[3].isEditable = false
@@ -123,8 +123,8 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         var latString = latTextView.view.text!
         var lonString = lonTextView.view.text!
         if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
-            print(self.latTextView.text)
-            print(self.lonTextView.text)
+            //print(self.latTextView.text)
+            //print(self.lonTextView.text)
             if latTextView.view.text!.split(":").count > 2 {
                 latString = latTextView.view.text!.split(":")[2]
             }

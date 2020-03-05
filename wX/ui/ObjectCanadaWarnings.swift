@@ -82,7 +82,7 @@ final class ObjectCanadaWarnings: NSObject {
     }
     
     func showData() {
-        uiv.stackView.subviews.forEach { $0.removeFromSuperview() }
+        uiv.stackView.removeViews()
         _ = ObjectImage(uiv.stackView, bitmap)
         self.listLocWarning.enumerated().forEach { index, _ in
             locWarning = self.listLocWarning[index]

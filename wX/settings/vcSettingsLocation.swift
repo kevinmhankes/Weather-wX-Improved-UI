@@ -127,31 +127,27 @@ class vcSettingsLocation: UIwXViewController {
     }
     
     func initializeObservations() {
-        (0..<Location.numLocations).forEach {
-            MyApplication.locations[$0].updateObservation("")
+        (0..<Location.numLocations).forEach { index in
+            MyApplication.locations[index].updateObservation("")
         }
     }
     
     func displayContent() {
         objectCards = []
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackView.removeViews()
         locations = []
-        (0..<Location.numLocations).forEach {
-            locations.append(String($0+1))
-            let name = MyApplication.locations[$0].name
-            let observation = MyApplication.locations[$0].observation
-            let latLon = MyApplication.locations[$0].lat.truncate(10)
-                + ", " + MyApplication.locations[$0].lon.truncate(10)
-            let details = "WFO: " + MyApplication.locations[$0].wfo + " Radar: " + MyApplication.locations[$0].rid
+        (0..<Location.numLocations).forEach { index in
+            locations.append(String(index + 1))
+            let name = MyApplication.locations[index].name
+            let observation = MyApplication.locations[index].observation
+            let latLon = MyApplication.locations[index].lat.truncate(10) + ", " + MyApplication.locations[index].lon.truncate(10)
+            let details = "WFO: " + MyApplication.locations[index].wfo + " Radar: " + MyApplication.locations[index].rid
             objectCards.append(ObjectCardLocationItem(
-                self.scrollView,
-                self.stackView,
+                self,
                 name,
                 observation,
                 details + " (" + latLon + ")",
-                UITapGestureRecognizerWithData($0, self, #selector(actionLocationPopup(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(actionLocationPopup(sender:)))
                 )
             )
         }

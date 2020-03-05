@@ -72,12 +72,12 @@ class vcSettingsMain: UIwXViewController {
     }
     
     private func displayContent() {
-        titles.forEach {
+        titles.forEach { title in
             let objectTextView = ObjectTextView(
                 self.stackView,
-                $0,
+                title,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData($0, self, #selector(actionClick(sender:)))
+                UITapGestureRecognizerWithData(title, self, #selector(actionClick(sender:)))
             )
             objectTextView.constrain(scrollView)
             objectTextView.tv.isSelectable = false
