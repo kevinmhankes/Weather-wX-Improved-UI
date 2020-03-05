@@ -20,7 +20,7 @@ final class ObjectCanadaWarnings: NSObject {
     private var listLocWarning = [String]()
     private var listLocWatch = [String]()
     private var listLocStatement = [String]()
-    let provList = [
+    let provinces = [
         "Canada",
         "Alberta",
         "British Columbia",
@@ -39,7 +39,7 @@ final class ObjectCanadaWarnings: NSObject {
         "Yukon"
     ]
     
-    private let provToCodeMap = [
+    private let provinceToCode = [
         "Canada": "ca",
         "Alberta": "ab",
         "British Columbia": "bc",
@@ -128,7 +128,7 @@ final class ObjectCanadaWarnings: NSObject {
         return String(listLocUrl.count)
     }
     
-    func setProvince(_ prov: String) {
-        provinceCode = provToCodeMap[prov] ?? ""
+    func setProvince(_ province: String) {
+        provinceCode = provinceToCode[province] ?? ""
     }
 }

@@ -48,7 +48,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     @objc func imageClicked() {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = UtilitySpcFireOutlook.urls[dayIndex]
+        vc.url = UtilitySpcFireOutlook.urls[dayIndex]
         self.goToVC(vc)
     }
     

@@ -35,43 +35,36 @@ class vcObsSites: UIwXViewController {
         constructStateView()
     }
     
-    @objc func gotoState(sender: UITapGestureRecognizerWithData) {
+    @objc func goToState(sender: UITapGestureRecognizerWithData) {
         stateSelected = GlobalArrays.states[sender.data].split(":")[0]
         showState()
     }
     
     func showState() {
         stateView = false
-        var idTmp = ""
-        var cityTmp = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
-        listCity = []
-        var listIds = [String]()
+        listCity = ["..Back to state list"]
+        var listIds = ["..Back to state list"]
         var listSort = [String]()
-        listCity.append("..Back to state list")
-        listIds.append("..Back to state list")
-        var tmpArr = [String]()
-        lines.forEach {
-            if $0.hasPrefix(stateSelected.uppercased()) {
-                listSort.append($0)
+        lines.forEach { line in
+            if line.hasPrefix(stateSelected.uppercased()) {
+                listSort.append(line)
             }
         }
         listSort = listSort.sorted()
-        listSort.forEach {
-            tmpArr = $0.split(",")
-            idTmp = tmpArr[2]
-            cityTmp = tmpArr[1]
-            listCity.append(idTmp + ": " + cityTmp)
-            listIds.append(idTmp)
+        listSort.forEach { item in
+            let list = item.split(",")
+            let id = list[2]
+            let city = list[1]
+            listCity.append(id + ": " + city)
+            listIds.append(id)
         }
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
-        listCity.enumerated().forEach {
+        self.stackView.removeViews()
+        listCity.enumerated().forEach { index, city in
             let objectTextView = ObjectTextView(
                 stackView,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(gotoObsSite(sender:)))
+                city,
+                UITapGestureRecognizerWithData(index, self, #selector(gotoObsSite(sender:)))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
@@ -87,21 +80,21 @@ class vcObsSites: UIwXViewController {
             Utility.writePref(prefToken, site)
             self.siteButton.title = "Last Used: " + site
             let vc = vcWebView()
-            vc.webViewShowProduct = false
-            vc.webViewUseUrl = true
-            vc.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
+            vc.showProduct = false
+            vc.useUrl = true
+            vc.url = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
             self.goToVC(vc)
         }
     }
     
     func constructStateView() {
         self.stateView = true
-        self.stackView.subviews.forEach { $0.removeFromSuperview() }
-        GlobalArrays.states.enumerated().forEach {
+        self.stackView.removeViews()
+        GlobalArrays.states.enumerated().forEach { index, state in
             let objectTextView = ObjectTextView(
                 stackView,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(gotoState(sender:)))
+                state,
+                UITapGestureRecognizerWithData(index, self, #selector(goToState(sender:)))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
@@ -110,17 +103,17 @@ class vcObsSites: UIwXViewController {
     
     @objc func siteClicked() {
         let vc = vcWebView()
-        vc.webViewShowProduct = false
-        vc.webViewUseUrl = true
-        vc.webViewUrl = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
+        vc.showProduct = false
+        vc.useUrl = true
+        vc.url = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
         self.goToVC(vc)
     }
     
     @objc func mapClicked() {
         let vc = vcWebView()
-        vc.webViewShowProduct = false
-        vc.webViewUseUrl = true
-        vc.webViewUrl = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
+        vc.showProduct = false
+        vc.useUrl = true
+        vc.url = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
         self.goToVC(vc)
     }
     

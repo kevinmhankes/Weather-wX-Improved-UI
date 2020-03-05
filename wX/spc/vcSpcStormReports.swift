@@ -62,7 +62,7 @@ class vcSpcStormReports: UIwXViewController {
     
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = self.imageUrl
+        vc.url = self.imageUrl
         self.goToVC(vc)
     }
     

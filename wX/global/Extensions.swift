@@ -231,6 +231,14 @@ extension UIScrollView {
     }
 }
 
+extension UIStackView {
+    func removeViews() {
+        self.subviews.forEach { view in
+            view.removeFromSuperview()
+        }
+    }
+}
+
 extension UIViewController {
     func goToVC(_ target: UIViewController) {
         UtilityActions.goToVc(self, target)

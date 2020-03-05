@@ -108,19 +108,17 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func displayContent() {
-        self.stackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
-        playlistItems.enumerated().forEach {
-            let productText = Utility.readPref("PLAYLIST_" + $1, "")
-            let topLine = " " + Utility.readPref("PLAYLIST_" + $1 + "_TIME", "") + " (size: " + String(productText.count) + ")"
+        self.stackView.removeViews()
+        playlistItems.enumerated().forEach { index, item in
+            let productText = Utility.readPref("PLAYLIST_" + item, "")
+            let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
             _ = ObjectCardPlayListItem(
                 self.scrollView,
                 self.stackView,
-                $1,
+                item,
                 topLine,
                 productText.truncate(textPreviewLength),
-                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:)))
             )
         }
     }
@@ -135,10 +133,9 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     @objc func refreshData() {
         serializeSettings()
-        playlistItems.forEach {
-            let product = $0
+        playlistItems.forEach { item in
             DispatchQueue.global(qos: .userInitiated).async {
-                UtilityPlayList.download(product)
+                UtilityPlayList.download(item)
                 DispatchQueue.main.async {
                     self.displayContent()
                 }

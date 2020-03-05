@@ -97,7 +97,7 @@ final class ObjectAlertSummary: NSObject {
 
     func changeImage(_ uiv: UIViewController) {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = ObjectAlertSummary.imageUrls[0]
+        vc.url = ObjectAlertSummary.imageUrls[0]
         uiv.goToVC(vc)
         /*DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])

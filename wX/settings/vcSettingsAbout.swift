@@ -63,15 +63,15 @@ class vcSettingsAbout: UIwXViewController {
         switch sender.strData {
         case "faq":
             let vc = vcWebView()
-            vc.webViewShowProduct = false
-            vc.webViewUseUrl = true
-            vc.webViewUrl = faqUrl
+            vc.showProduct = false
+            vc.useUrl = true
+            vc.url = faqUrl
             self.goToVC(vc)
         case "notes":
             let vc = vcWebView()
-            vc.webViewShowProduct = false
-            vc.webViewUseUrl = true
-            vc.webViewUrl = releaseNotesUrl
+            vc.showProduct = false
+            vc.useUrl = true
+            vc.url = releaseNotesUrl
             self.goToVC(vc)
         default:
             break

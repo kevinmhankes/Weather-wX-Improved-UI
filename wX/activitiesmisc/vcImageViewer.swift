@@ -9,7 +9,7 @@ import UIKit
 class vcImageViewer: UIwXViewController {
     
     private var image = ObjectTouchImageView()
-    var imageViewerUrl = ""
+    var url = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +21,14 @@ class vcImageViewer: UIwXViewController {
                 shareButton
             ]
         ).items
-        self.getContent(imageViewerUrl)
+        self.getContent()
     }
     
     override func willEnterForeground() {}
     
-    func getContent(_ url: String) {
+    override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(url)
+            let bitmap = Bitmap(self.url)
             DispatchQueue.main.async {
                 self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
             }

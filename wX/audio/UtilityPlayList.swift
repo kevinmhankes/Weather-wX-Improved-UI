@@ -10,7 +10,13 @@ final class UtilityPlayList {
     
     static let formatTimeString = "MM-dd HH:mm"
     
-    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon, showStatus: Bool = true) -> Bool {
+    static func add(
+        _ prod: String,
+        _ text: String,
+        _ uiv: UIViewController,
+        _ menuButton: ObjectToolbarIcon,
+        showStatus: Bool = true
+    ) -> Bool {
         let prodLocal = prod.uppercased()
         var productAdded = false
         if !MyApplication.playlistStr.contains(prodLocal) {

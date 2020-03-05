@@ -31,11 +31,11 @@ final class UtilityHourly {
     
     static func getFooter() -> String {
         var footer = MyApplication.newline
-        hourlyAbbreviationsFirst.keys.forEach {
-            footer += hourlyAbbreviationsFirst[$0]! + ": " + $0 + MyApplication.newline
+        hourlyAbbreviationsFirst.keys.forEach { key in
+            footer += hourlyAbbreviationsFirst[key]! + ": " + key + MyApplication.newline
         }
-        hourlyAbbreviationsSecond.keys.forEach {
-            footer += hourlyAbbreviationsSecond[$0]! + ": " + $0 + MyApplication.newline
+        hourlyAbbreviationsSecond.keys.forEach { key in
+            footer += hourlyAbbreviationsSecond[key]! + ": " + key + MyApplication.newline
         }
         return footer
     }
@@ -52,18 +52,18 @@ final class UtilityHourly {
     }
     
     static func parse(_ html: String) -> String {
-        let startTime = html.parseColumn("\"startTime\": \"(.*?)\",")
+        let startTimes = html.parseColumn("\"startTime\": \"(.*?)\",")
         let temperatures = html.parseColumn("\"temperature\": (.*?),")
         let windSpeeds = html.parseColumn("\"windSpeed\": \"(.*?)\"")
         let windDirections = html.parseColumn("\"windDirection\": \"(.*?)\"")
         let shortForecasts = html.parseColumn("\"shortForecast\": \"(.*?)\"")
         var string = ""
-        startTime.indices.forEach {
-            let time = translateTime(startTime[$0])
-            let temperature = Utility.safeGet(temperatures, $0).replace("\"", "")
-            let windSpeed = Utility.safeGet(windSpeeds, $0).replace(" to ", "-")
-            let windDirection = Utility.safeGet(windDirections, $0)
-            let shortForecast = Utility.safeGet(shortForecasts, $0)
+        startTimes.indices.forEach { index in
+            let time = translateTime(startTimes[index])
+            let temperature = Utility.safeGet(temperatures, index).replace("\"", "")
+            let windSpeed = Utility.safeGet(windSpeeds, index).replace(" to ", "-")
+            let windDirection = Utility.safeGet(windDirections, index)
+            let shortForecast = Utility.safeGet(shortForecasts, index)
             string += time.fixedLengthString(7)
             string += temperature.fixedLengthString(4)
             string += windSpeed.fixedLengthString(8)
@@ -76,11 +76,11 @@ final class UtilityHourly {
     
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
-        hourlyAbbreviationsFirst.keys.forEach {
-            hourly = hourly.replaceAll($0, hourlyAbbreviationsFirst[$0]!)
+        hourlyAbbreviationsFirst.keys.forEach { key in
+            hourly = hourly.replaceAll(key, hourlyAbbreviationsFirst[key]!)
         }
-        hourlyAbbreviationsSecond.keys.forEach {
-            hourly = hourly.replaceAll($0, hourlyAbbreviationsSecond[$0]!)
+        hourlyAbbreviationsSecond.keys.forEach { key in
+            hourly = hourly.replaceAll(key, hourlyAbbreviationsSecond[key]!)
         }
         return hourly
     }

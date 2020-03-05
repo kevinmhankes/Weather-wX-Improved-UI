@@ -39,8 +39,8 @@ class vcUSAlerts: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")
             let alerts = html.parseColumn("<entry>(.*?)</entry>")
-            alerts.forEach {
-                self.capAlerts.append(CapAlert(eventText: $0))
+            alerts.forEach { alert in
+                self.capAlerts.append(CapAlert(eventText: alert))
             }
             DispatchQueue.main.async {
                 self.displayContent()
@@ -62,14 +62,14 @@ class vcUSAlerts: UIwXViewController {
         var eventArr = [String]()
         var counts = [String: Int]()
         var eventArrWithCount = [String]()
-        self.capAlerts.forEach {
-            eventArr.append($0.event)
+        self.capAlerts.forEach { capAlert in
+            eventArr.append(capAlert.event)
         }
-        eventArr.forEach {
-            counts[$0] = (counts[$0] ?? 0) + 1
+        eventArr.forEach { event in
+            counts[event] = (counts[event] ?? 0) + 1
         }
-        Array(counts.keys).sorted().forEach {
-            eventArrWithCount.append("\($0): \(counts[$0]!)")
+        Array(counts.keys).sorted().forEach { key in
+            eventArrWithCount.append(key + ": " + String(counts[key]!))
         }
         _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
     }

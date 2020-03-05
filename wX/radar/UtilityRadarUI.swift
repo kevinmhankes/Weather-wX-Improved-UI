@@ -141,7 +141,7 @@ public class UtilityRadarUI {
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
         let obsSite = UtilityMetar.findClosestObservation(location)
         let vc = vcImageViewer()
-        vc.imageViewerUrl = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
+        vc.url = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
         + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
         + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
         + obsSite.name

@@ -79,13 +79,13 @@ class vcNhc: UIwXViewController {
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = sender.strData
+        vc.url = sender.strData
         self.goToVC(vc)
     }
     
     func imageProductChanged(_ index: Int) {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = UtilityNhc.imageUrls[index]
+        vc.url = UtilityNhc.imageUrls[index]
         self.goToVC(vc)
     }
     

@@ -46,91 +46,83 @@ final class UtilityLightning {
         return Bitmap(url)
     }
     
-    static func getSectorPretty(_ sector: String) -> String {
-        let sectorPretty: String
-        switch sector {
+    static func getSectorLabel(_ code: String) -> String {
+        switch code {
         case "usa_big":
-            sectorPretty = "US"
+            return "US"
         case "florida_big":
-            sectorPretty = "Florida"
+            return "Florida"
         case "texas_big":
-            sectorPretty = "Texas"
+            return "Texas"
         case "oklahoma_kansas_big":
-            sectorPretty = "OK / KS"
+            return "OK / KS"
         case "north_middle_america":
-            sectorPretty = "North America"
+            return "North America"
         case "south_america":
-            sectorPretty = "South America"
+            return "South America"
         case "australia_big":
-            sectorPretty = "Australia"
+            return "Australia"
         case "new_zealand_big":
-            sectorPretty = "New Zealand"
+            return "New Zealand"
         default:
-            sectorPretty = ""
+            return ""
         }
-        return sectorPretty
     }
     
-    static func getSector(_ sectorPretty: String) -> String {
-        let sector: String
-        switch sectorPretty {
+    static func getSector(_ sector: String) -> String {
+        switch sector {
         case  "US":
-            sector = "usa_big"
+            return "usa_big"
         case "Florida" :
-            sector = "florida_big"
+            return "florida_big"
         case "Texas":
-            sector = "texas_big"
+            return "texas_big"
         case "OK / KS":
-            sector = "oklahoma_kansas_big"
+            return "oklahoma_kansas_big"
         case "North America":
-            sector = "north_middle_america"
+            return "north_middle_america"
         case "South America":
-            sector = "south_america"
+            return "south_america"
         case "Australia":
-            sector = "australia_big"
+            return "australia_big"
         case "New Zealand":
-            sector = "new_zealand_big"
+            return "new_zealand_big"
         default:
-            sector = ""
+            return ""
         }
-        return sector
     }
     
-    static func getTimePretty(_ period: String) -> String {
-        let periodPretty: String
+    static func getTimeLabel(_ period: String) -> String {
         switch period {
         case "0.25":
-            periodPretty = "15 MIN"
+            return "15 MIN"
         case "2":
-            periodPretty = "2 HR"
+            return "2 HR"
         case "12":
-            periodPretty = "12 HR"
+            return "12 HR"
         case "24":
-            periodPretty = "24 HR"
+            return "24 HR"
         case "48":
-            periodPretty = "48 HR"
+            return "48 HR"
         default:
-            periodPretty = ""
+            return ""
         }
-        return periodPretty
     }
     
     static func getTime(_ periodPretty: String) -> String {
-        let period: String
         switch periodPretty {
         case "15 MIN":
-            period = "0.25"
+            return "0.25"
         case "2 HR":
-            period = "2"
+            return "2"
         case "12 HR":
-            period = "12"
+            return "12"
         case "24 HR":
-            period = "24"
+            return "24"
         case "48 HR":
-            period = "48"
+            return "48"
         default:
-            period = ""
+            return ""
         }
-        return period
     }
 }

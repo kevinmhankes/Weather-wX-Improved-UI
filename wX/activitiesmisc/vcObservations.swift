@@ -38,12 +38,12 @@ class vcObservations: UIwXViewController {
     
     func getContent(_ index: Int) {
         self.index = index
+        Utility.writePref(self.prefTokenIndex, self.index)
         self.productButton.title = UtilityObservations.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                Utility.writePref(self.prefTokenIndex, self.index)
             }
         }
     }

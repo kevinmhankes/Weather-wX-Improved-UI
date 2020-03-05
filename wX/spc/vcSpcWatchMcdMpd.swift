@@ -73,7 +73,7 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if self.bitmaps.count == 1 {
             let vc = vcImageViewer()
-            vc.imageViewerUrl = urls[0]
+            vc.url = urls[0]
             self.goToVC(vc)
             
         } else {

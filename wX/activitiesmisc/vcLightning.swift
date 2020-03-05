@@ -17,6 +17,8 @@ class vcLightning: UIwXViewController {
     private var periodPretty = "15 MIN"
     private var firstRun = true
     private var bitmap = Bitmap()
+    private let prefTokenSector = "LIGHTNING_SECTOR"
+    private let prefTokenPeriod = "LIGHTNING_PERIOD"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +40,21 @@ class vcLightning: UIwXViewController {
     }
     
     func initializePreferences() {
-        sector = Utility.readPref("LIGHTNING_SECTOR", sector)
-        period = Utility.readPref("LIGHTNING_PERIOD", period)
-        sectorPretty = UtilityLightning.getSectorPretty(sector)
-        periodPretty = UtilityLightning.getTimePretty(period)
+        sector = Utility.readPref(prefTokenSector, sector)
+        period = Utility.readPref(prefTokenPeriod, period)
+        sectorPretty = UtilityLightning.getSectorLabel(sector)
+        periodPretty = UtilityLightning.getTimeLabel(period)
     }
     
     override func getContent() {
+        self.sectorPretty = UtilityLightning.getSectorLabel(self.sector)
+        self.periodPretty = UtilityLightning.getTimeLabel(self.period)
         self.productButton.title = self.sectorPretty
         self.timeButton.title = self.periodPretty
-        Utility.writePref("LIGHTNING_SECTOR", self.sector)
-        Utility.writePref("LIGHTNING_PERIOD", self.period)
+        Utility.writePref(prefTokenSector, self.sector)
+        Utility.writePref(prefTokenPeriod, self.period)
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = UtilityLightning.getImage(self.sector, self.period)
-            self.sectorPretty = UtilityLightning.getSectorPretty(self.sector)
-            self.periodPretty = UtilityLightning.getTimePretty(self.period)
             DispatchQueue.main.async {
                 if self.firstRun {
                     self.image.setBitmap(self.bitmap)

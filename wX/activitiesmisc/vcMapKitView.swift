@@ -18,10 +18,7 @@ class vcMapKitView: UIwXViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        let locationC = CLLocationCoordinate2D(
-            latitude: Double(mapKitLat) ?? 0.0,
-            longitude: Double(mapKitLon) ?? 0.0
-        )
+        let locationC = CLLocationCoordinate2D(latitude: Double(mapKitLat) ?? 0.0, longitude: Double(mapKitLon) ?? 0.0)
         ObjectMap.centerMapForMapKit(mapView, location: locationC, regionRadius: mapKitRadius)
         latLonButton = ObjectToolbarIcon(self, #selector(showExternalMap))
         latLonButton.title = mapKitLat + ", " + mapKitLon

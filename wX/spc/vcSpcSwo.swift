@@ -53,7 +53,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     
     @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {
         let vc = vcImageViewer()
-        vc.imageViewerUrl = bitmaps[sender.data].url
+        vc.url = bitmaps[sender.data].url
         self.goToVC(vc)
     }
     
