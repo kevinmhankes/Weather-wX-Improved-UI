@@ -110,14 +110,12 @@ final class UtilityActions {
                 vc.caRadarImageType = "radar"
                 uiv.goToVC(vc)
             }
+        case "Canadian Alerts":
+            let vc = vcCanadaWarnings()
+            uiv.goToVC(vc)
         case "US Alerts":
-            if Location.isUS {
-                let vc = vcUSAlerts()
-                uiv.goToVC(vc)
-            } else {
-                let vc = vcCanadaWarnings()
-                uiv.goToVC(vc)
-            }
+            let vc = vcUSAlerts()
+            uiv.goToVC(vc)
         case "Spotters":
             let vc = vcSpotters()
             uiv.goToVC(vc)
@@ -148,7 +146,7 @@ final class UtilityActions {
     
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch
-        let menuList = [
+        var menuList = [
             "Hourly Forecast",
             "Radar Mosaic",
             "US Alerts",
@@ -157,6 +155,17 @@ final class UtilityActions {
             "PlayList",
             "Settings"
         ]
+        if !Location.isUS {
+            menuList = [
+                "Hourly Forecast",
+                "Radar Mosaic",
+                "Canadian Alerts",
+                "Observations",
+                "Soundings",
+                "PlayList",
+                "Settings"
+            ]
+        }
         let alert = UIAlertController(
             title: "Select from:",
             message: "",

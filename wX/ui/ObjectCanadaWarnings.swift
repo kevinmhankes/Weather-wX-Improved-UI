@@ -15,7 +15,6 @@ final class ObjectCanadaWarnings: NSObject {
     private var locWarning = ""
     private var locWatch = ""
     private var locStatement = ""
-    private let provL = ""
     private var listLocUrl = [String]()
     private var listLocName = [String]()
     private var listLocWarning = [String]()
@@ -71,7 +70,6 @@ final class ObjectCanadaWarnings: NSObject {
         }
         if self.provinceCode == "ca" {
             let url = MyApplication.canadaEcSitePrefix + "/warnings/index_e.html"
-            //print(url)
             html = (url).getHtml()
         } else {
             html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
@@ -92,24 +90,21 @@ final class ObjectCanadaWarnings: NSObject {
             locStatement = self.listLocStatement[index]
             if locWarning.contains("href") {
                 locWarning = locWarning.parse("class=.wb-inv.>(.*?)</span>")
-                locWarning += " (Warning)"
                 locWarning = locWarning.replaceAll("</.*?>", "")
                 locWarning = locWarning.replaceAll("<.*?>", "")
             }
             if locWatch.contains("href") {
                 locWatch = locWatch.parse("class=.wb-inv.>(.*?)</span>")
-                locWatch += " (Watch)"
                 locWatch = locWatch.replaceAll("</.*?>", "")
                 locWatch = locWatch.replaceAll("<*?>>", "")
             }
             if locStatement.contains("href") {
                 locStatement = locStatement.parse("class=.wb-inv.>(.*?)</span>")
-                locStatement += " (Statement)"
                 locStatement = locStatement.replaceAll("</.*?>", "")
                 locStatement = locStatement.replaceAll("<.*?>", "")
             }
-            //var text = provinceCode.uppercased() + ": " + self.listLocName[index] + " " + locWarning  + " " + locWatch  + " " + locStatement
-            var text = locWarning  + " " + locWatch  + " " + locStatement
+            let province = listLocUrl[index].parse("report_e.html.([a-z]{2}).*?")
+            var text = province.uppercased() + ": " + locWarning  + " " + locWatch  + " " + locStatement
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")

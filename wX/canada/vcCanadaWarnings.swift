@@ -63,7 +63,7 @@ class vcCanadaWarnings: UIwXViewController {
             let data = UtilityCanada.getHazardsFromUrl(url)
             DispatchQueue.main.async {
                 let vc = vcTextViewer()
-                vc.textViewText = data.replaceAllRegexp("<.*?>", "")
+                vc.textViewText = data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n")
                 self.goToVC(vc)
             }
         }
