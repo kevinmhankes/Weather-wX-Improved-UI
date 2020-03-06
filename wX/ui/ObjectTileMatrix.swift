@@ -103,8 +103,10 @@ final class ObjectTileMatrix: NSObject {
     
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         switch tabType {
-        case .spc:    imgClickedSpc(sender: sender)
-        case .misc:   imgClickedMisc(sender: sender)
+        case .spc:
+            imgClickedSpc(sender: sender)
+        case .misc:
+            imgClickedMisc(sender: sender)
         }
     }
     
@@ -257,7 +259,8 @@ final class ObjectTileMatrix: NSObject {
             vc.url = ""
             vc.aStateCode = "tornado"
             uiv!.goToVC(vc)
-        default:  break
+        default:
+            break
         }
     }
     
@@ -268,7 +271,8 @@ final class ObjectTileMatrix: NSObject {
             vc.wxoglPaneCount = "2"
         case "4":
             vc.wxoglPaneCount = "4"
-        default: break
+        default:
+            break
         }
         uiv!.goToVC(vc)
     }

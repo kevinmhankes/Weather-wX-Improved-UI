@@ -50,9 +50,6 @@ final class ObjectTextView {
         if widthDivider == 1 {
             self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         } else {
-            // FIXME use something better for constraint
-            //let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-            //self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
             self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         }
         self.tv.text = text

@@ -20,7 +20,9 @@ final class ObjectStackView {
         uiStackView.axis = axis
         uiStackView.spacing = spacing
         if !arrangedSubviews.isEmpty {
-            arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) }
+            arrangedSubviews.forEach {
+                uiStackView.addArrangedSubview($0)
+            }
         }
     }
 
