@@ -12,15 +12,15 @@ final class UtilityCitiesExtended {
     static func populateArrays() {
         if !initialized {
             initialized = true
-            var tmpArr = [String]()
+            var list = [String]()
             let text = UtilityIO.readTextFile("cityall.txt")
             let lines = text.split(MyApplication.newline)
-            lines.forEach {
-                tmpArr = $0.split(",")
-                if tmpArr.count > 3 {
-                    cities.append(CityExt(tmpArr[0], Double(tmpArr[1])!, -1.0 * Double(tmpArr[2])!, tmpArr[3]))
-                } else if tmpArr.count > 2 {
-                    cities.append(CityExt(tmpArr[0], Double(tmpArr[1])!, -1.0 * Double(tmpArr[2])!, ""))
+            lines.forEach { line in
+                list = line.split(",")
+                if list.count > 3 {
+                    cities.append(CityExt(list[0], Double(list[1])!, -1.0 * Double(list[2])!, list[3]))
+                } else if list.count > 2 {
+                    cities.append(CityExt(list[0], Double(list[1])!, -1.0 * Double(list[2])!, ""))
                 }
             }
         }
