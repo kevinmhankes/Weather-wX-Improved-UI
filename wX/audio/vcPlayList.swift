@@ -34,11 +34,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
         displayContent()
-        refreshData()
-    }
-    
-    @objc override func willEnterForeground() {
-        refreshData()
+        getContent()
     }
     
     @objc override func doneClicked() {
@@ -46,6 +42,33 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         UtilityAudio.resetAudio(&synth, fab!)
         serializeSettings()
         super.doneClicked()
+    }
+    
+    @objc override func getContent() {
+        serializeSettings()
+        playlistItems.forEach { item in
+            DispatchQueue.global(qos: .userInitiated).async {
+                UtilityPlayList.download(item)
+                DispatchQueue.main.async {
+                    self.displayContent()
+                }
+            }
+        }
+    }
+    
+    func displayContent() {
+        self.stackView.removeViews()
+        playlistItems.enumerated().forEach { index, item in
+            let productText = Utility.readPref("PLAYLIST_" + item, "")
+            let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
+            _ = ObjectCardPlayListItem(
+                self,
+                item,
+                topLine,
+                productText.truncate(textPreviewLength),
+                UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:)))
+            )
+        }
     }
     
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
@@ -107,39 +130,12 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems = playlistItems.filter { $0 != "" }
     }
     
-    func displayContent() {
-        self.stackView.removeViews()
-        playlistItems.enumerated().forEach { index, item in
-            let productText = Utility.readPref("PLAYLIST_" + item, "")
-            let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
-            _ = ObjectCardPlayListItem(
-                self,
-                item,
-                topLine,
-                productText.truncate(textPreviewLength),
-                UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:)))
-            )
-        }
-    }
-    
     @objc func playClicked() {
         var textToSpeak = ""
         playlistItems.forEach { item in
             textToSpeak += Utility.readPref("PLAYLIST_" + item, "")
         }
         UtilityAudio.playClicked(textToSpeak, synth, fab!)
-    }
-    
-    @objc func refreshData() {
-        serializeSettings()
-        playlistItems.forEach { item in
-            DispatchQueue.global(qos: .userInitiated).async {
-                UtilityPlayList.download(item)
-                DispatchQueue.main.async {
-                    self.displayContent()
-                }
-            }
-        }
     }
     
     @objc func addNationalProductClicked() {
