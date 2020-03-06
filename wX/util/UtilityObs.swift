@@ -22,9 +22,7 @@ final class UtilityObs {
             }
         }
         conditionsTimeStrLocal = UtilityTime.convertFromUTC(UtilityString.shortenTime(conditionsTimeStrLocal))
-        return conditionsTimeStrLocal.replace(":00 ", " ")
-            + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            + " (" + obsClosestClass + ") "
+        return conditionsTimeStrLocal.replace(":00 ", " ") + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
     }
 
     static func getStatusViaMetar(_ conditionsTimeStr: String) -> String {
@@ -36,9 +34,7 @@ final class UtilityObs {
                 obsCodeToLocation[obsClosestClass] = locationName
             }
         }
-        return conditionsTimeStr + " "
-            + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            + " (" + obsClosestClass + ") "
+        return conditionsTimeStr + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
     }
 
     static func findObsName(_ obsShortCode: String) -> String {
@@ -62,8 +58,7 @@ final class UtilityObs {
         let key = "LLTOOBS" + newLatLon.latString + "," + newLatLon.lonString
         var obsClosest = Utility.readPref(key, "")
         if obsClosest == "" {
-            let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + ","
-                + newLatLon.lonString + "/stations").getNwsHtml()
+            let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + "," + newLatLon.lonString + "/stations").getNwsHtml()
             obsClosest = obsHtml.parseFirst("gov/stations/(.*?)\"")
             obsClosestClass = obsClosest
             if key != "" && obsClosest != "" {

@@ -62,8 +62,7 @@ final class UtilityMath {
         formatter.maximumFractionDigits = 2
         let newX = formatter.string(from: NSNumber(value: location.lat)) ?? "0.0"
         let newY = formatter.string(from: NSNumber(value: location.lon)) ?? "0.0"
-        let newLatLon = LatLon(newX, newY)
-        return newLatLon
+        return LatLon(newX, newY)
     }
 
     static func knotsToMph(_ value: String) -> String {
@@ -129,7 +128,9 @@ final class UtilityMath {
 
     static func celsiusToFarenheitTable() -> String {
         var table = "C\t\tF" + MyApplication.newline
-        (-40...39).forEach {table += String($0) + "  " + celsiusToFarenheit($0) + MyApplication.newline}
+        (-40...39).forEach {
+            table += String($0) + "  " + celsiusToFarenheit($0) + MyApplication.newline
+        }
         return table
     }
 
@@ -223,10 +224,8 @@ final class UtilityMath {
         }
     }
 
-    static func getWindChill( _ tempD: Double, _ mphD: Double  ) -> String {
+    /*static func getWindChill( _ tempD: Double, _ mphD: Double  ) -> String {
      let windChillD = 35.74 + 0.6215 * tempD - 35.75 * pow(mphD, 0.16) + 0.4275 * tempD * pow(mphD, 0.16)
-     return "("
-        + UtilityMath.unitsTemp(String(Int(round(windChillD))))
-        + MyApplication.degreeSymbol + ")"
-    }
+     return "(" + UtilityMath.unitsTemp(String(Int(round(windChillD)))) + MyApplication.degreeSymbol + ")"
+    }*/
 }

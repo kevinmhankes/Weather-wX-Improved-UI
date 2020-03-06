@@ -10,22 +10,26 @@ final class UtilityImgAnim {
         let html = url.getHtml()
         let frames = html.parseColumn(pattern)
         if frames.count > frameCount {
-            return ((frames.count - frameCount)..<frames.count).map {frames[$0]}
+            return ((frames.count - frameCount)..<frames.count).map { frames[$0] }
         } else {
-            return frames.indices.map {frames[$0]}
+            return frames.indices.map { frames[$0] }
         }
     }
 
     static func getAnimationDrawableFromUrlList(_ urls: [String], _ delay: Int) -> AnimationDrawable {
         let animDrawable = AnimationDrawable()
-        let bitmaps = urls.map {Bitmap($0)}
-        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame($0, delay)}
+        let bitmaps = urls.map { Bitmap($0) }
+        bitmaps.filter { $0.isValid }.forEach {
+            animDrawable.addFrame($0, delay)
+        }
         return animDrawable
     }
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap], _ delay: Int) -> AnimationDrawable {
         let animDrawable = AnimationDrawable()
-        bitmaps.filter {$0.isValid}.forEach {animDrawable.addFrame($0, delay)}
+        bitmaps.filter { $0.isValid }.forEach {
+            animDrawable.addFrame($0, delay)
+        }
         return animDrawable
     }
 

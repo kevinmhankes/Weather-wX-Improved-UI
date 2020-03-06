@@ -6,7 +6,7 @@
 
 final class UtilityCountyLabels {
 
-    static var initialized = false
+    private static var initialized = false
     static var countyName = [String]()
     static var location = [LatLon]()
 
@@ -16,10 +16,10 @@ final class UtilityCountyLabels {
             let text = UtilityIO.readTextFile("gaz_counties_national.txt")
             var lines = text.split(MyApplication.newline)
             _ = lines.popLast()
-            lines.forEach {
-                let tokens = $0.split(",")
-                countyName.append(tokens[1])
-                location.append(LatLon(Double(tokens[2])!, -1.0 * Double(tokens[3])!))
+            lines.forEach { line in
+                let items = line.split(",")
+                countyName.append(items[1])
+                location.append(LatLon(Double(items[2])!, -1.0 * Double(items[3])!))
             }
         }
     }

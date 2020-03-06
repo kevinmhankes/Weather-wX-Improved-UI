@@ -32,7 +32,9 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)}
+            layers.forEach {
+                imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)
+            }
             image = imgTmp
         }
         image = addColorBG(image, UIColor.white)
@@ -45,7 +47,9 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach {imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)}
+            layers.forEach {
+                imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)
+            }
             image = imgTmp
         }
         return image
