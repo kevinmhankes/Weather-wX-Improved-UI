@@ -343,7 +343,6 @@
 		F0B335791DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */; };
 		F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */; };
 		F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */; };
-		F0B3357C1DA3FD6F0035BD36 /* UtilityCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335691DA3FD6F0035BD36 /* UtilityCities.swift */; };
 		F0B3357D1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */; };
 		F0B3357E1DA3FD6F0035BD36 /* UtilityColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */; };
 		F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3356E1DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift */; };
@@ -756,7 +755,6 @@
 		F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasGeneric.swift; sourceTree = "<group>"; };
 		F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasMain.swift; sourceTree = "<group>"; };
 		F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasProjection.swift; sourceTree = "<group>"; };
-		F0B335691DA3FD6F0035BD36 /* UtilityCities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCities.swift; sourceTree = "<group>"; };
 		F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesExtended.swift; sourceTree = "<group>"; };
 		F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette.swift; sourceTree = "<group>"; };
 		F0B3356E1DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPaletteGeneric.swift; sourceTree = "<group>"; };
@@ -1119,7 +1117,6 @@
 				F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */,
 				F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */,
 				F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */,
-				F0B335691DA3FD6F0035BD36 /* UtilityCities.swift */,
 				03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */,
 				F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */,
 				F0B3356F1DA3FD6F0035BD36 /* UtilityCountyLabels.swift */,
@@ -1786,7 +1783,6 @@
 				F06033D81EB2CCBD0083BA91 /* ObjectTileMatrix.swift in Sources */,
 				03A89E3823E641EE001B8F50 /* UtilityStorePreferences.swift in Sources */,
 				0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */,
-				F0B3357C1DA3FD6F0035BD36 /* UtilityCities.swift in Sources */,
 				F0B335531DA3FD510035BD36 /* Editor.swift in Sources */,
 				03F3EB87229945D10056A56D /* UtilityModelNcepInterface.swift in Sources */,
 				F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */,
