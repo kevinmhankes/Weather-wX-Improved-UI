@@ -8,34 +8,6 @@ import Foundation
 
 final class UtilityCanvasProjection {
     
-    // FIXME cleanup - removed commented
-
-    /*static func compute4326Numbers(
-        _ lat: Double,
-        _ lon: Double,
-        _ centerX: Double,
-        _ centerY: Double,
-        _ xImageCenterPixels: Double,
-        _ yImageCenterPixels: Double,
-        _ scaleFactor: Double
-    ) -> (Double, Double) {
-        return (
-            (-((lon - centerY) * scaleFactor) + xImageCenterPixels),
-            (-((lat - centerX) *  scaleFactor) + yImageCenterPixels)
-        )
-    }*/
-
-    /*static func compute4326Numbers(_ pn: ProjectionNumbers) -> (Double, Double) {
-        return (
-            (-((pn.yDbl - pn.yCenterDouble) * pn.scale) + pn.xCenterDouble),
-            (-((pn.xDbl - pn.xCenterDouble) *  pn.scale) + pn.yCenterDouble)
-        )
-    }*/
-
-    //static func compute4326Numbers(_ location: LatLon, _ pn: ProjectionNumbers) -> (Double, Double) {
-    //    return compute4326Numbers(pn)
-    //}
-
     static func computeMercatorNumbers(
         _ lat: Double,
         _ lon: Double,
@@ -47,31 +19,8 @@ final class UtilityCanvasProjection {
         let pixXD = -((lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         return (pixXD, pixYD)
     }
-
-    static func computeMercatorNumbers(
-        _ ec: ExternalGlobalCoordinates,
-        _ pn: ProjectionNumbers
-    ) -> (lat: Double, lon: Double) {
+    
+    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
         return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
     }
-
-    /*static func computeMercatorNumbers(
-        _ location: LatLon,
-        _ pn: ProjectionNumbers,
-        multLonNegativeOne: Bool = true
-    ) -> (lat: Double, lon: Double) {
-        if multLonNegativeOne {
-            return computeMercatorNumbers(location.lat, location.lon * -1.0, pn)
-        } else {
-            return computeMercatorNumbers(location.lat, location.lon, pn)
-        }
-    }*/
-
-    //static func isMercator(_ provider: ProjectionType) -> Bool {
-    //    return !(provider == .nwsMosaic || provider == .nwsMosaicSector)
-    //}
-
-    //static func needDarkPaint(_ provider: ProjectionType) -> Bool {
-    //    return false
-    //}
 }
