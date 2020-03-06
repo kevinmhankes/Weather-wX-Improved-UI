@@ -7,6 +7,8 @@
 import Foundation
 
 final class UtilityCanvasProjection {
+    
+    // FIXME cleanup - removed commented
 
     /*static func compute4326Numbers(
         _ lat: Double,

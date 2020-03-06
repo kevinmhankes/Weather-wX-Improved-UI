@@ -5,18 +5,22 @@
  *****************************************************************************/
 
 final class UtilityCities {
-
-    static let num = 345
-    static var CityObj = [City](repeating: City(), count: num)
-    static var cities =  [String](repeating: "", count: num)
-    static var lat = [Double](repeating: 0.0, count: num)
-    static var lon =  [Double](repeating: 0.0, count: num)
-
-    static func initialize() {
+    
+    // FIXME delete file
+    
+    //static let num = 345
+    //static var cityObj = [City](repeating: City(), count: num)
+    //static var cities =  [String](repeating: "", count: num)
+    //static var lat = [Double](repeating: 0.0, count: num)
+    //static var lon =  [Double](repeating: 0.0, count: num)
+    
+    /*static func initialize() {
         loadCitiesArray()
-        CityObj.indices.forEach {CityObj[$0] = City(cities[$0], LatLon(lat[$0], lon[$0]))}
+        cityObj.indices.forEach { index in
+            cityObj[index] = City(cities[index], LatLon(lat[index], lon[index]))
+        }
     }
-
+    
     static func loadCitiesArray() {
         cities[0]="Anchorage, AK"
         cities[1]="Fairbanks, AK"
@@ -264,7 +268,7 @@ final class UtilityCities {
         cities[243]="Parkersburg, WV"
         cities[244]="Steubenville, OH"
         cities[245]="Riverton, WY"
-
+        
         lat[0]=61.2180556
         lat[1]=64.837777799999998
         lat[2]=58.301944399999996
@@ -511,7 +515,7 @@ final class UtilityCities {
         lat[243]=39.266741799999998
         lat[244]=40.369790500000001
         lat[245]=43.024959199999998
-
+        
         lon[0]=149.9002778
         lon[1]=147.7163889
         lon[2]=134.4197222
@@ -758,403 +762,403 @@ final class UtilityCities {
         lon[243]=81.561513500000004
         lon[244]=80.633963800000004
         lon[245]=108.3801036
-
+        
         cities[246] = "Flint, MI"
         lat[246]=43.0171773
         lon[246]=83.7236024
-
+        
         // added
-
+        
         cities[247] = "Grand Rapids, MI"
         lat[247]=42.9633599
         lon[247]=85.6680863
-
+        
         cities[248] = "Muskegon, MI"
         lat[248]=43.2341813
         lon[248]=86.2483921
-
+        
         cities[249] = "Gaylord, MI"
         lat[249]=45.0275126
         lon[249]=84.6747523
-
+        
         cities[250] = "Sault Ste. Marie, MI"
         lat[250]=46.491292
         lon[250]=84.3515787
-
+        
         cities[251] = "Mt Pleasant, MI"
         lat[251]=43.597646
         lon[251]=84.7668495
-
+        
         cities[252] = "Port Huron, MI"
         lat[252]=42.9815877
         lon[252]=82.440466
-
+        
         cities[253] = "Oscoda, MI"
         lat[253]=44.4108489
         lon[253]=83.3321899
-
+        
         cities[254] = "Grayling, MI"
         lat[254]=44.6615168
         lon[254]=84.7146371
-
+        
         cities[255] = "West Branch, MI"
         lat[255]=44.2764083
         lon[255]=84.2386132
-
+        
         cities[256] = "South Bend, IN"
         lat[256]=41.6833813
         lon[256]=86.2500066
-
+        
         cities[257] = "Bloomington, IN"
         lat[257]=39.1670396
         lon[257]=86.5342881
-
+        
         cities[258] = "Peoria, IL"
         lat[258]=40.6938609
         lon[258]=89.5891008
-
+        
         cities[259] = "Rockford, IL"
         lat[259]=42.2713945
         lon[259]=89.093966
-
+        
         cities[260] = "Cleveland, OH"
         lat[260]=41.4871888
         lon[260]=81.6778691
-
+        
         cities[261] = "Traverse City, MI"
         lat[261]=44.7606441
         lon[261]=85.6165301
-
+        
         cities[262] = "Boston, MA"
         lat[262]=42.3604823
         lon[262]=71.0595678
-
+        
         cities[263] = "Portland, ME"
         lat[263]=43.6610277
         lon[263]=70.2548596
-
+        
         cities[264] = "Fort Smith, AR"
         lat[264]=35.3857623
         lon[264]=94.3986725
-
+        
         cities[265] = "Miami, FL"
         lat[265]=25.7742658
         lon[265]=80.1936589
-
+        
         cities[266] = "Raleigh, NC"
         lat[266]=35.7804015
         lon[266]=78.6390779
-
+        
         cities[267] = "Orlando, FL"
         lat[267]=28.5421175
         lon[267]=81.3790462
-
+        
         cities[268] = "Key West, FL"
         lat[268]=24.5625566
         lon[268]=81.7724368
-
+        
         cities[269] = "San Francisco, CA"
         lat[269]=37.7789601
         lon[269]=122.419199
-
+        
         cities[270] = "Fresno, CA"
         lat[270]=36.7394421
         lon[270]=119.7848307
-
+        
         cities[271] = "Sacramento, CA"
         lat[271]=38.5815719
         lon[271]=121.4943996
-
+        
         cities[272] = "Flagstaff, AZ"
         lat[272]=35.199458
         lon[272]=111.6514259
-
+        
         cities[273] = "Albuquerque, NM"
         lat[273]=35.0841034
         lon[273]=106.6509851
-
+        
         cities[274] = "Green Bay, WI"
         lat[274]=44.5418195
         lon[274]=87.8688458600556
-
+        
         cities[275] = "Cheyenne, WY"
         lat[275]=41.1399814
         lon[275]=104.8202462
-
+        
         cities[276] = "Casper, WY"
         lat[276]=42.866632
         lon[276]=106.313081
-
+        
         cities[277] = "Elko, NV"
         lat[277]=40.8324212
         lon[277]=115.7631233
-
+        
         cities[278] = "Provo, UT"
         lat[278]=40.2338438
         lon[278]=111.6585337
-
+        
         cities[279] = "Logan, UT"
         lat[279]=41.7313447
         lon[279]=111.8348631
-
+        
         cities[280] = "Lincoln, NE"
         lat[280]=40.8000554
         lon[280]=96.6674005
-
+        
         cities[281] = "Caribou, ME"
         lat[281]=46.8605982
         lon[281]=68.0119714
-
+        
         cities[282] = "Fargo, ND"
         lat[282]=46.8770537
         lon[282]=96.7897661
-
+        
         cities[283] = "Bismarck, ND"
         lat[283]=46.8083268
         lon[283]=100.7837392
-
+        
         cities[284] = "Fort Collins, CO"
         lat[284]=40.5508527
         lon[284]=105.0668085
-
+        
         cities[285] = "Colorado Springs, CO"
         lat[285]=38.8338816
         lon[285]=104.8213634
-
+        
         cities[286] = "Aberdeen, SD"
         lat[286]=45.4646985
         lon[286]=98.4864829
-
+        
         cities[287] = "Richmond, VA"
         lat[287]=37.5385087
         lon[287]=77.43428
-
+        
         cities[288] = "Virginia Beach, VA"
         lat[288]=36.8529841
         lon[288]=75.9774183
-
+        
         cities[289] = "Dover, DE"
         lat[289]=39.158168
         lon[289]=75.5243682
-
+        
         cities[290] = "Harrisburg, PA"
         lat[290]=40.2663107
         lon[290]=76.8861122
-
+        
         cities[291] = "Atlantic City, NJ"
         lat[291]=39.3642852
         lon[291]=74.4229351
-
+        
         cities[292] = "Providence, RI"
         lat[292]=41.8239891
         lon[292]=71.4128343
-
+        
         cities[293] = "Rutland, VT"
         lat[293]=43.6106237
         lon[293]=72.9726065
-
+        
         cities[294] = "Des Moines, ID"
         lat[294]=41.5910641
         lon[294]=93.6037149
-
+        
         cities[295] = "Hilo, HI"
         lat[295]=19.725
         lon[295]=155.09
-
+        
         cities[296] = "Haiku, HI"
         lat[296]=20.9172
         lon[296]=156.3294
-
+        
         cities[297] = "Mobile, AL"
         lat[297]=30.6928
         lon[297]=88.0564
-
+        
         cities[298] = "Tallahassee, FL"
         lat[298]=30.4379
         lon[298]=84.2814
-
+        
         cities[299] = "Medford, OR"
         lat[299]=42.3436
         lon[299]=122.8441
-
+        
         cities[300] = "Grand Junction, CO"
         lat[300]=39.0646
         lon[300]=108.5506
-
+        
         cities[301] = "Goodland, KS"
         lat[301]=39.3492
         lon[301]=101.7104
-
+        
         cities[302] = "Wichita, KS"
         lat[302]=37.6840
         lon[302]=97.3502
-
+        
         cities[303] = "Glasgow, MT"
         lat[303]=48.1973
         lon[303]=106.6359
-
+        
         cities[304] = "San Juan, PR"
         lat[304]=18.4479
         lon[304]=66.0762
-
+        
         cities[305] = "Ponce, PR"
         lat[305]=18.0119
         lon[305]=66.6123
-
+        
         cities[306] = "Seattle, WA"
         lat[306]=47.65
         lon[306]=122.31
-
+        
         cities[307] = "Jackson, WY"
         lat[307]=43.475278
         lon[307]=110.769167
-
+        
         cities[308] = "Idaho Falls, ID"
         lat[308]=43.5
         lon[308]=112.033333
-
+        
         cities[309] = "Tampa, FL"
         lat[309]=27.968056
         lon[309]=82.476389
-
+        
         cities[310] = "Butte, MT"
         lat[310]=46.006389
         lon[310]=112.529722
-
+        
         cities[311] = "Lewiston, ID"
         lat[311]=46.41
         lon[311]=117.02
-
+        
         cities[312] = "Ely, NV"
         lat[312]=39.253333
         lon[312]=114.877222
-
+        
         cities[313] = "Cedar City, UT"
         lat[313]=37.6825
         lon[313]=113.074444
-
+        
         cities[314] = "Kingman, AZ"
         lat[314]=35.208333
         lon[314]=114.025833
-
+        
         cities[315] = "Seward, AK"
         lat[315]=60.1196475
         lon[315]=149.3748701
-
+        
         cities[316] = "Kenai, AK"
         lat[316]=60.5599189
         lon[316]=151.2038401
-
+        
         cities[317] = "Bethel, AK"
         lat[317]=60.7907944
         lon[317]=161.793728
-
+        
         cities[318] = "Dillingham, AK"
         lat[318]=59.0492389
         lon[318]=158.5254715
-
+        
         cities[319] = "King Salmon, AK"
         lat[319]=58.7552401
         lon[319]=156.5486959
-
+        
         cities[320] = "New Stuyahok, AK"
         lat[320]=59.441279
         lon[320]=157.2390512
-
+        
         cities[321] = "Nome, AK"
         lat[321]=64.5241501
         lon[321]=165.4118314
-
+        
         cities[322] = "Savoonga, AK"
         lat[322]=63.6800927
         lon[322]=170.4891565
-
+        
         cities[323] = "North Pole, AK"
         lat[323]=64.7536865
         lon[323]=147.3682196
-
+        
         cities[324] = "Nenana, AK"
         lat[324]=64.5267315
         lon[324]=148.9891512
-
+        
         cities[325] = "Healy, AK"
         lat[325]=63.9492065
         lon[325]=148.921923
-
+        
         cities[326] = "Kapaa, HI"
         lat[326]=22.0870939
         lon[326]=159.354737
-
+        
         cities[327] = "North Shore, HI"
         lat[327]=21.5989375
         lon[327]=158.1007655
-
+        
         cities[328] = "Wailua, HI"
         lat[328]=20.8486105
         lon[328]=156.136389
-
+        
         cities[329] = "Lanai City, HI"
         lat[329]=20.8328859
         lon[329]=156.9264704
-
+        
         cities[330] = "Kaunakakai, HI"
         lat[330]=21.0903347
         lon[330]=157.0123233
-
+        
         cities[331] = "Waimea, HI"
         lat[331]=21.963357
         lon[331]=159.67307
-
+        
         cities[332] = "Sitka, AK"
         lat[332]=57.0811562
         lon[332]=135.5301858
-
+        
         cities[333] = "Ketchikan, AK"
         lat[333]=55.3464511
         lon[333]=131.6591813
-
+        
         cities[334] = "Petersburg, AK"
         lat[334]=56.7663732
         lon[334]=132.855609
-
+        
         cities[335] = "Bemidji, MN"
         lat[335]=47.4757
         lon[335]=94.8745
-
+        
         cities[336] = "Tupelo, MS"
         lat[336]=34.3628
         lon[336]=88.7250
-
+        
         cities[337] = "Minot, MS"
         lat[337]=48.2373
         lon[337]=101.2706
-
+        
         cities[338] = "Carlsbad, NM"
         lat[338]=32.398
         lon[338]=104.2155
-
+        
         cities[339] = "Roswell, NM"
         lat[339]=33.3369
         lon[339]=104.53
-
+        
         cities[340] = "Clovis, NM"
         lat[340]=34.4539
         lon[340]=104.2155
-
+        
         cities[341]="Hattiesburg, MS"
         lat[341]=31.3108
         lon[341]=89.3055
-
+        
         cities[342]="Ann Arbor, MI"
         lat[342]=42.2681569
         lon[342]=83.7312291
-
+        
         cities[343]="Dallas, TX"
         lat[343]=32.7756
         lon[343]=96.7995
-
+        
         cities[344]="Duluth, MN"
         lat[344]=46.7833
         lon[344]=92.1066
-    }
+    }*/
 }

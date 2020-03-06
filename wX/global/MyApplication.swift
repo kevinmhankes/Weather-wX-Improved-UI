@@ -64,7 +64,7 @@ class MyApplication {
     static func initData() {
         ColorPalettes.initialize()
         RadarGeometry.initialize()
-        UtilityCities.initialize()
+        //UtilityCities.initialize()
     }
 
     static func initPreferences() {
