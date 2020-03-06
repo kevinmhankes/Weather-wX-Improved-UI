@@ -10,8 +10,8 @@ final class ObjectForecastPackage7Day {
 
     var sevenDayLong = ""
     var icons = [String]()
-    private var shortForecastAl = [String]()
-    private var detailedForecastAl = [String]()
+    private var shortForecasts = [String]()
+    private var detailedForecasts = [String]()
     var locationIndex = 0
 
     convenience init(_ locNum: Int) {
@@ -39,37 +39,36 @@ final class ObjectForecastPackage7Day {
     }
 
     var forecastList: [String] {
-        return detailedForecastAl
+        return detailedForecasts
     }
 
     var forecastListCondensed: [String] {
-        return shortForecastAl
+        return shortForecasts
     }
 
     // Canada
     func convertExt7DaytoList() {
-        detailedForecastAl =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
-        shortForecastAl =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        detailedForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        shortForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
 
     func get7DayExt(_ html: String) -> String {
         var forecasts = [ObjectForecast]()
-        let nameAl = html.parseColumn("\"name\": \"(.*?)\",")
-        let temperatureAl = html.parseColumn("\"temperature\": (.*?),")
-        let windSpeedAl = html.parseColumn("\"windSpeed\": \"(.*?)\",")
-        let windDirectionAl = html.parseColumn("\"windDirection\": \"(.*?)\",")
-        let detailedForecastAlLocal = html.parseColumn("\"detailedForecast\": \"(.*?)\"")
+        let names = html.parseColumn("\"name\": \"(.*?)\",")
+        let temperatures = html.parseColumn("\"temperature\": (.*?),")
+        let windSpeeds = html.parseColumn("\"windSpeed\": \"(.*?)\",")
+        let windDirections = html.parseColumn("\"windDirection\": \"(.*?)\",")
+        let detailedLocalForecasts = html.parseColumn("\"detailedForecast\": \"(.*?)\"")
         self.icons = html.parseColumn("\"icon\": \"(.*?)\",")
-        let shortForecastAlLocal = html.parseColumn("\"shortForecast\": \"(.*?)\",")
-        print(shortForecastAl)
-        nameAl.indices.forEach {
-            let name = Utility.safeGet(nameAl, $0)
-            let temperature = Utility.safeGet(temperatureAl, $0)
-            let windSpeed = Utility.safeGet(windSpeedAl, $0)
-            let windDirection = Utility.safeGet(windDirectionAl, $0)
-            let icon = Utility.safeGet(icons, $0)
-            let shortForecast = Utility.safeGet(shortForecastAlLocal, $0)
-            let detailedForecast = Utility.safeGet(detailedForecastAlLocal, $0)
+        let shortLocalForecasts = html.parseColumn("\"shortForecast\": \"(.*?)\",")
+        names.indices.forEach { index in
+            let name = Utility.safeGet(names, index)
+            let temperature = Utility.safeGet(temperatures, index)
+            let windSpeed = Utility.safeGet(windSpeeds, index)
+            let windDirection = Utility.safeGet(windDirections, index)
+            let icon = Utility.safeGet(icons, index)
+            let shortForecast = Utility.safeGet(shortLocalForecasts, index)
+            let detailedForecast = Utility.safeGet(detailedLocalForecasts, index)
             forecasts.append(
                 ObjectForecast(
                     name,
@@ -83,10 +82,10 @@ final class ObjectForecastPackage7Day {
             )
         }
         var forecastString = MyApplication.newline + MyApplication.newline
-        forecasts.forEach {
-            forecastString += $0.name + ": " + $0.detailedForecast + MyApplication.newline + MyApplication.newline
-            self.detailedForecastAl.append($0.name + ": " + $0.detailedForecast)
-            self.shortForecastAl.append($0.name + ": " + $0.shortForecast)
+        forecasts.forEach { forecast in
+            forecastString += forecast.name + ": " + forecast.detailedForecast + MyApplication.newline + MyApplication.newline
+            self.detailedForecasts.append(forecast.name + ": " + forecast.detailedForecast)
+            self.shortForecasts.append(forecast.name + ": " + forecast.shortForecast)
         }
         return forecastString
     }
