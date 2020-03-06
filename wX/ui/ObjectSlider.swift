@@ -18,8 +18,7 @@ final class ObjectSlider {
     var suffix = ""
 
     init(
-        _ uiv: UIViewController,
-        _ stackView: UIStackView,
+        _ uiv: UIwXViewController,
         _ prefVar: String
     ) {
         if UtilityUI.isTablet() {
@@ -46,7 +45,7 @@ final class ObjectSlider {
         let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         slider.widthAnchor.constraint(equalToConstant: width).isActive = true
-        stackView.addArrangedSubview(container.view)
+        uiv.stackView.addArrangedSubview(container.view)
         slider.value = Float(initialValue)
         setLabel()
     }

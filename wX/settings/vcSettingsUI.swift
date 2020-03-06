@@ -125,11 +125,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "HOMESCREEN_TEXT_LENGTH_PREF",
             "NWS_ICON_SIZE_PREF"
             ].forEach { pref in
-                let objSlider = ObjectSlider(
-                    self,
-                    stackView,
-                    pref
-                )
+                let objSlider = ObjectSlider(self, pref)
                 objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
                 objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }

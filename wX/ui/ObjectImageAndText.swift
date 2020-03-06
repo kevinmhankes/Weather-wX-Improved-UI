@@ -16,7 +16,6 @@ final class ObjectImageAndText {
         _ objectTextView: inout ObjectTextView,
         _ html: String
     ) {
-        //self.uiv = uiv
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
@@ -51,7 +50,6 @@ final class ObjectImageAndText {
         }
         objectTextView.tv.isAccessibilityElement = true
         views.append(objectTextView.tv)
-        //self.view.bringSubviewToFront(self.toolbar)
         uiv.scrollView.accessibilityElements = views
     }
     
@@ -62,7 +60,6 @@ final class ObjectImageAndText {
         _ objectTextView: inout ObjectTextView,
         _ html: String
     ) {
-        //self.uiv = uiv
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()

@@ -42,12 +42,7 @@ class vcSpotterReports: UIwXViewController {
         self.spotterReportCountButton.title = "Count: " + String(self.spotterReportsData.count)
         self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
         self.spotterReportsDataSorted.enumerated().forEach {
-            _ = ObjectSpotterReportCard(
-                self.scrollView,
-                self.stackView,
-                $1,
-                UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:)))
-            )
+            _ = ObjectSpotterReportCard(self, $1, UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:))))
         }
         if self.spotterReportsData.count == 0 {
             let objectTextView = ObjectTextView(self.stackView, "No active spotter reports.")
