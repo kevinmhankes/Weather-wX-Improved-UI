@@ -9,7 +9,7 @@ import Metal
 import simd
 
 class vcTabLocation: vcTabParent {
-
+    
     private var locationButton = UITextView()
     private var forecastText = [String]()
     private var forecastImage = [UIImage]()
@@ -51,7 +51,7 @@ class vcTabLocation: vcTabParent {
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
     #endif
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         toolbar.resize(uiv: self)
@@ -64,7 +64,6 @@ class vcTabLocation: vcTabParent {
                     self.objScrollStackView!.fragmentHeightAnchor2!,
                     self.objScrollStackView!.fragmentWidthAnchor1!,
                     self.objScrollStackView!.fragmentWidthAnchor2!
-                    //self.objScrollStackView!.fragmentCenterAnchor!
                 ]
             )
         }
@@ -83,7 +82,7 @@ class vcTabLocation: vcTabParent {
             )
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -144,10 +143,7 @@ class vcTabLocation: vcTabParent {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        globalHomeScreenFav = Utility.readPref(
-            "HOMESCREEN_FAV",
-            MyApplication.homescreenFavDefault
-        )
+        globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
         self.getContentMaster()
@@ -161,7 +157,7 @@ class vcTabLocation: vcTabParent {
         )
         #endif
     }
-
+    
     @objc func getContentMaster() {
         self.oldLocation = Location.latlon
         if Location.isUS {
@@ -173,7 +169,7 @@ class vcTabLocation: vcTabParent {
         getForecastData()
         getContent()
     }
-
+    
     func getForecastData() {
         getLocationForecast()
         getLocationForecastSevenDay()
@@ -182,7 +178,7 @@ class vcTabLocation: vcTabParent {
             self.view.bringSubviewToFront(fab!.view)
         }
     }
-
+    
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objCurrentConditions = ObjectForecastPackageCurrentConditions(Location.getCurrentLocation())
@@ -191,7 +187,7 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     func getLocationForecastSevenDay() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objSevenDay = ObjectForecastPackage7Day(Location.getCurrentLocation())
@@ -217,7 +213,7 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     func getLocationHazards() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
@@ -231,9 +227,8 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     func getContent() {
-        print("DEBUG: getContent")
         DispatchQueue.global(qos: .userInitiated).async {
             if Location.isUS {
                 self.isUS = true
@@ -242,10 +237,7 @@ class vcTabLocation: vcTabParent {
                 self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                self.globalHomeScreenFav = Utility.readPref(
-                    "HOMESCREEN_FAV",
-                    MyApplication.homescreenFavDefault
-                )
+                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
                 let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
                 self.textArr = [:]
                 homescreenFav.forEach {
@@ -279,56 +271,56 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     @objc override func cloudClicked() {
         UtilityActions.cloudClicked(self)
     }
-
+    
     @objc override func radarClicked() {
         UtilityActions.radarClicked(self)
     }
-
+    
     @objc override func wfotextClicked() {
         UtilityActions.wfotextClicked(self)
     }
-
+    
     @objc override func menuClicked() {
         UtilityActions.menuClicked(self, menuButton)
     }
-
+    
     @objc override func dashClicked() {
         UtilityActions.dashClicked(self)
     }
-
+    
     @objc override func warningsClicked() {
         let vc = vcUSAlertsDetail()
         self.goToVC(vc)
     }
-
+    
     @objc override func dualPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "2")
     }
-
+    
     @objc override func quadPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "4")
     }
-
+    
     @objc override func settingsClicked() {
         let vc = vcSettingsMain()
         self.goToVC(vc)
     }
-
+    
     @objc override func mesoanalysisClicked() {
         let vc = vcSpcMeso()
         self.goToVC(vc)
     }
-
+    
     @objc override func ncepModelsClicked() {
         let vc = vcModels()
         vc.modelActivitySelected = "NCEP"
         self.goToVC(vc)
     }
-
+    
     @objc override func hourlyClicked() {
         if Location.isUS {
             let vc = vcHourly()
@@ -338,27 +330,27 @@ class vcTabLocation: vcTabParent {
             self.goToVC(vc)
         }
     }
-
+    
     @objc override func nhcClicked() {
         let vc = vcNhc()
         self.goToVC(vc)
     }
-
+    
     @objc override func lightningClicked() {
         let vc = vcLightning()
         self.goToVC(vc)
     }
-
+    
     @objc override func nationalImagesClicked() {
         let vc = vcWpcImg()
         self.goToVC(vc)
     }
-
+    
     @objc override func nationalTextClicked() {
         let vc = vcWpcText()
         self.goToVC(vc)
     }
-
+    
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         updateColors()
@@ -374,21 +366,15 @@ class vcTabLocation: vcTabParent {
             self.getContentMaster()
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateColors()
         objLabel.text = Location.name
-        let newhomeScreenFav = Utility.readPref(
-            "HOMESCREEN_FAV",
-            MyApplication.homescreenFavDefault
-        )
+        let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
         let textSizeHasChange = abs(UIPreferences.textviewFontSize - globalTextViewFontSize) > 0.5
         Location.checkCurrentLocationValidity()
-        if (Location.latlon != oldLocation)
-            || (newhomeScreenFav != globalHomeScreenFav)
-            || textSizeHasChange {
-            print("refresh homescreen")
+        if (Location.latlon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
             scrollView.scrollToTop()
             self.ccCard?.resetTextSize()
             self.objCard7DayCollection?.resetTextSize()
@@ -396,7 +382,7 @@ class vcTabLocation: vcTabParent {
             self.getContentMaster()
         }
     }
-
+    
     func locationChanged(_ locationNumber: Int) {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
@@ -409,13 +395,13 @@ class vcTabLocation: vcTabParent {
             self.goToVC(vc)
         }
     }
-
+    
     func editLocation() {
         let vc = vcSettingsLocationEdit()
         vc.settingsLocationEditNum = Location.getCurrentLocationStr()
         self.goToVC(vc)
     }
-
+    
     @objc func locationAction() {
         let alert = UIAlertController(
             title: "Select location:",
@@ -443,7 +429,7 @@ class vcTabLocation: vcTabParent {
         }
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     @objc func ccAction() {
         let alert = UIAlertController(
             title: "Select from:",
@@ -466,12 +452,12 @@ class vcTabLocation: vcTabParent {
         }
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     @objc func gotoHourly() {
         let vc = vcHourly()
         self.goToVC(vc)
     }
-
+    
     func getCurrentConditionCards() {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
@@ -483,7 +469,7 @@ class vcTabLocation: vcTabParent {
             ccCard?.updateCard(objCurrentConditions, isUS)
         }
     }
-
+    
     func getContentText(_ product: String, _ stackView: UIStackView) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product.uppercased())
@@ -501,7 +487,7 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     @objc func textTap(sender: UITapGestureRecognizerWithData) {
         if let v = sender.view as? UITextView {
             let currentLength = v.text!.count
@@ -512,25 +498,23 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     func getContentImage(_ product: String, _ stackView: UIStackView) {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(product)
             DispatchQueue.main.async {
                 let imgObj = ObjectImage(self.scrollView, stackView, bitmap, hs: true)
-                imgObj.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:)))
-                )
+                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:))))
             }
         }
     }
-
+    
     func cleanupRadarObjects() {
         if wxMetal[0] != nil {
             //wxMetal.forEach { $0!.cleanup() }
         }
     }
-
+    
     func getNexradRadar(_ product: String, _ stackView: UIStackView) {
         cleanupRadarObjects()
         let paneRange = [0]
@@ -556,7 +540,7 @@ class vcTabLocation: vcTabParent {
             nearZ: -100.0,
             farZ: 100.0
         )
-        paneRange.enumerated().forEach { index, _ in
+        paneRange.indices.forEach { index in
             if metalLayer.count < 1 {
                 metalLayer.append(CAMetalLayer())
                 metalLayer[index]!.device = device
@@ -606,7 +590,7 @@ class vcTabLocation: vcTabParent {
         wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }
-
+    
     func getPolygonWarnings() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityPolygons.get()
@@ -619,7 +603,7 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     func modelMatrix(_ index: Int) -> float4x4 {
         var matrix = float4x4()
         matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
@@ -627,7 +611,7 @@ class vcTabLocation: vcTabParent {
         matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
         return matrix
     }
-
+    
     func render(_ index: Int) {
         guard let drawable = metalLayer[index]!.nextDrawable() else { return }
         wxMetal[index]?.render(
@@ -639,11 +623,11 @@ class vcTabLocation: vcTabParent {
             clearColor: nil
         )
     }
-
+    
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
         UtilityHomeScreen.jumpToActivity(self, sender.strData)
     }
-
+    
     func addLocationSelectionCard() {
         //
         // location card loaded regardless of settings
@@ -660,7 +644,7 @@ class vcTabLocation: vcTabParent {
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         self.objLabel.tv.isSelectable = false
     }
-
+    
     // Clear all views except 7day and current conditions
     func clearViews() {
         self.stackViewHazards.view.subviews.forEach {
@@ -675,39 +659,28 @@ class vcTabLocation: vcTabParent {
         self.stackViewHazards.view.isHidden = true
         self.stackViewRadar.removeFromSuperview()
     }
-
+    
     func setupGestures() {
-        let gestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(tapGesture(_:))
-        )
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
-        let gestureRecognizer2 = UITapGestureRecognizer(
-            target: self,
-            action: #selector(tapGesture(_:double:))
-        )
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:double:)))
         gestureRecognizer2.numberOfTapsRequired = 2
         stackViewRadar.addGestureRecognizer(gestureRecognizer)
         stackViewRadar.addGestureRecognizer(gestureRecognizer2)
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(
-            UILongPressGestureRecognizer(
-                target: self,
-                action: #selector(gestureLongPress(_:))
-            )
-        )
+        self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
     }
-
+    
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
     }
-
+    
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
         WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
     }
-
+    
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         longPressCount = WXMetalSurfaceView.gestureLongPress(
             self,
@@ -718,7 +691,7 @@ class vcTabLocation: vcTabParent {
             gestureRecognizer
         )
     }
-
+    
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
             self,
@@ -739,11 +712,7 @@ class vcTabLocation: vcTabParent {
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
-        let alert = UIAlertController(
-            title: "Closest radar site:",
-            message: alertMessage,
-            preferredStyle: UIAlertController.Style.actionSheet
-        )
+        let alert = UIAlertController(title: "Closest radar site:", message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
@@ -752,40 +721,25 @@ class vcTabLocation: vcTabParent {
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }
-        alert.addAction(UIAlertAction(
-            "Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
-        )
+        alert.addAction(UIAlertAction("Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)}))
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction(
-            "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
-        )
-        alert.addAction(UIAlertAction(
-            "Nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)})
-        )
-        alert.addAction(
-            UIAlertAction(
-                "Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}
-            )
-        )
-        alert.addAction(
-            UIAlertAction(
-                "Radar status message: " + self.wxMetal[index]!.rid, { _ in
-                    UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
-            )
-        )
+        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Nearest forecast", { _ in UtilityRadarUI.getForecast(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Radar status message: " + self.wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {
-                popoverController.barButtonItem = menuButton
+            popoverController.barButtonItem = menuButton
         }
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     func ridChanged(_ rid: String) {
         getPolygonWarnings()
         wxMetal[0]!.resetRidAndGet(rid, isHomeScreen: true)
     }
-
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
@@ -799,7 +753,7 @@ class vcTabLocation: vcTabParent {
             }
         }
     }
-
+    
     override func updateColors() {
         toolbar.setColorToTheme()
         objLabel.color = ColorCompatibility.highlightText
