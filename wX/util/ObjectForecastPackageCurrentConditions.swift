@@ -41,10 +41,10 @@ final class ObjectForecastPackageCurrentConditions {
     // US via LAT LON
     convenience init(_ location: LatLon) {
         self.init()
-        let tmpArr = getConditionsViaMetar(location)
-        data = tmpArr.conditionAsString
-        iconUrl = tmpArr.iconUrl
-        rawMetar = tmpArr.metar
+        let conditions = getConditionsViaMetar(location)
+        data = conditions.conditionAsString
+        iconUrl = conditions.iconUrl
+        rawMetar = conditions.metar
         status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
         formatCurrentConditions()
     }
@@ -58,7 +58,7 @@ final class ObjectForecastPackageCurrentConditions {
     }
 
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
-        var sb = ""
+        var string = ""
         let objMetar = ObjectMetar(location)
         conditionsTimeStr = objMetar.conditionsTimeStr
         self.temperature = objMetar.temperature + MyApplication.degreeSymbol
@@ -72,37 +72,36 @@ final class ObjectForecastPackageCurrentConditions {
         self.windGust = objMetar.windGust
         self.visibility = objMetar.visibility
         self.condition = objMetar.condition
-        sb += self.temperature
+        string += self.temperature
         if objMetar.windChill != "NA" {
-            sb += "(" + self.windChill + ")"
+            string += "(" + self.windChill + ")"
         } else if objMetar.heatIndex != "NA" {
-            sb += "(" + self.heatIndex + ")"
+            string += "(" + self.heatIndex + ")"
         }
-        sb += " / " + self.dewpoint + "(" + self.relativeHumidity + ")" + " - "
-        sb += seaLevelPressure +  " - " + windDirection + " " + windSpeed
+        string += " / " + self.dewpoint + "(" + self.relativeHumidity + ")" + " - "
+        string += seaLevelPressure +  " - " + windDirection + " " + windSpeed
         if windGust != "" {
-            sb += " G "
+            string += " G "
         }
-        sb += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return (sb, objMetar.icon, objMetar.rawMetar)
+        string += windGust + " mph" + " - " + visibility + " mi - " + condition
+        return (string, objMetar.icon, objMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
     private func formatCurrentConditions() {
         let separator = " - "
         let dataList = data.split(separator)
-        var retStr = ""
-        var retStr2 = ""
-        var tempArr = [String]()
+        var topLineLocal = ""
+        var middleLineLocal = ""
+        var list = [String]()
         if dataList.count > 4 {
-            tempArr = dataList[0].split("/")
-            retStr = dataList[4].replaceAll("^ ", "") + " " + tempArr[0] + dataList[2]
-            retStr2 = tempArr[1].replaceAll("^ ", "")
-                + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
-            retStr2 += status
+            list = dataList[0].split("/")
+            topLineLocal = dataList[4].replaceAll("^ ", "") + " " + list[0] + dataList[2]
+            middleLineLocal = list[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
+            middleLineLocal += status
         }
-        topLine = retStr
-        middleLine = retStr2
+        topLine = topLineLocal
+        middleLine = middleLineLocal
         spokenText = condition + ", temperature is " + self.temperature + " with wind at " + self.windDirection + " "
             + self.windSpeed + "miles per hour" +
             " dew point is " + self.dewpoint + ", relative humidity is "

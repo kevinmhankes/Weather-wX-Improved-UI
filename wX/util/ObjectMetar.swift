@@ -30,19 +30,16 @@ final class ObjectMetar {
         let obsClosest = UtilityMetar.findClosestObservation(location)
         UtilityObs.obsClosestClass = obsClosest.name
         if !decodeIcon {
-            let observationData = ("https://api.weather.gov/stations/"
-                + obsClosest.name +  "/observations/current").getNwsHtml()
+            let observationData = ("https://api.weather.gov/stations/" + obsClosest.name +  "/observations/current").getNwsHtml()
             icon = observationData.parseFirst("\"icon\": \"(.*?)\",")
             condition = observationData.parseFirst("\"textDescription\": \"(.*?)\",")
         }
-        let metarData = (WXGLDownload.nwsRadarPub
-            + "/data/observations/metar/decoded/" + obsClosest.name +  ".TXT").getHtml()
+        let metarData = (WXGLDownload.nwsRadarPub + "/data/observations/metar/decoded/" + obsClosest.name +  ".TXT").getHtml()
         temperature = metarData.parseFirst("Temperature: (.*?) F")
         dewpoint = metarData.parseFirst("Dew Point: (.*?) F")
         windDirection = metarData.parseFirst("Wind: from the (.*?) \\(.*? degrees\\) at .*? MPH ")
         windSpeed = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at (.*?) MPH ")
-        windGust = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at .*? "
-            + "MPH \\(.*? KT\\) gusting to (.*?) MPH")
+        windGust = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at .*? " + "MPH \\(.*? KT\\) gusting to (.*?) MPH")
         seaLevelPressure = metarData.parseFirst("Pressure \\(altimeter\\): .*? in. Hg \\((.*?) hPa\\)")
         visibility = metarData.parseFirst("Visibility: (.*?) mile")
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")

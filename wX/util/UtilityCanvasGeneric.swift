@@ -8,7 +8,7 @@ import UIKit
 
 final class UtilityCanvasGeneric {
 
-    static func draw(
+    /*static func draw(
         _ provider: ProjectionType,
         _ bitmap: Bitmap,
         _ radarSite: String,
@@ -64,5 +64,5 @@ final class UtilityCanvasGeneric {
             wallpath.stroke()
         }
         bitmap.image = newImage
-    }
+    }*/
 }

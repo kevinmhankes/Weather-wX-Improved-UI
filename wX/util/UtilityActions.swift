@@ -172,8 +172,8 @@ final class UtilityActions {
             preferredStyle: UIAlertController.Style.actionSheet
         )
         alert.view.tintColor = ColorCompatibility.label
-        menuList.forEach { rid in
-            let action = UIAlertAction(title: rid, style: .default, handler: {_ in menuItemClicked(uiv, rid, button)})
+        menuList.forEach { item in
+            let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item, button)})
             if let popoverController = alert.popoverPresentationController {
                 popoverController.barButtonItem = button
             }

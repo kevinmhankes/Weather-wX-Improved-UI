@@ -19,10 +19,7 @@ final class ObjectForecastPackageHazards {
     // US by LAT LON
     convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
-        let homescreenFav = TextUtils.split(
-            Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
-             ":"
-        )
+        let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
         if homescreenFav.contains("TXT-HAZ") {
             hazards = getHazardsHtml(location)
         }
@@ -40,8 +37,7 @@ final class ObjectForecastPackageHazards {
 
     func getHazardsHtml(_ location: LatLon) -> String {
         let newLocation = UtilityMath.latLonFix(location)
-        return ("https://api.weather.gov/alerts?point=" + newLocation.latString + ","
-            + newLocation.lonString + "&active=1").getNwsHtml()
+        return ("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1").getNwsHtml()
     }
 
     static var isUS = true
@@ -77,13 +73,13 @@ final class ObjectForecastPackageHazards {
             )
             numHaz += 1
         } else {
-            let idAl = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
+            let ids = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
             let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
                 _ = ObjectCardHazard(
                     stackViewLocalHaz,
                     hazard,
-                    UITapGestureRecognizerWithData(idAl[index], self, #selector(self.hazardsAction(sender:)))
+                    UITapGestureRecognizerWithData(ids[index], self, #selector(self.hazardsAction(sender:)))
                 )
                 numHaz += 1
             }

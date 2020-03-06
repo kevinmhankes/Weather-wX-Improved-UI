@@ -8,7 +8,7 @@ import UIKit
 
 final class UtilityCanvasMain {
 
-    private static let showPolygonsCanvas = false
+    /*private static let showPolygonsCanvas = false
 
     static func addCanvasItems(
         _ bitmapCanvas: Bitmap,
@@ -55,5 +55,5 @@ final class UtilityCanvasMain {
                 UtilityCanvas.addMCD(scaleType, bitmapCanvas, radarSite, .MPD)
             }
         }
-    }
+    }*/
 }
