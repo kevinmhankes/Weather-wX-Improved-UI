@@ -45,22 +45,13 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     func deSerializeSettings() {
-        homescreenFav = TextUtils.split(Utility.readPref(
-            "HOMESCREEN_FAV",
-            MyApplication.homescreenFavDefault), ":"
-        )
+        homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
     }
     
     @objc func addClicked() {
         let alert = ObjectPopUp(self, "Product Selection", addButton)
-        Array(UtilityHomeScreen.localChoicesText.keys).sorted().forEach { rid in
-            alert.addAction(
-                UIAlertAction(
-                    title: UtilityHomeScreen.localChoicesText[rid],
-                    style: .default,
-                    handler: { _ in self.addProduct(rid)}
-                )
-            )
+        Array(UtilityHomeScreen.localChoicesText.keys).sorted().forEach { item in
+            alert.addAction(UIAlertAction(title: UtilityHomeScreen.localChoicesText[item], style: .default, handler: { _ in self.addProduct(item)}))
         }
         alert.finish()
     }
@@ -85,30 +76,18 @@ class vcSettingsHomescreen: UIwXViewController {
     
     @objc func addImageClicked() {
         let alert = ObjectPopUp(self, "Graphical Products", addImageButton)
-        (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach {
-            let ridArr = $0.split(":")
-            alert.addAction(
-                UIAlertAction(
-                    title: ridArr[1],
-                    style: .default,
-                    handler: { _ in self.addProduct("IMG-" + ridArr[0])}
-                )
-            )
+        (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach { item in
+            let list = item.split(":")
+            alert.addAction(UIAlertAction(title: list[1], style: .default, handler: { _ in self.addProduct("IMG-" + list[0])}))
         }
         alert.finish()
     }
     
     @objc func addTextClicked() {
         let alert = ObjectPopUp(self, "Text Products", addTextButton)
-        UtilityWpcText.labelsWithCodes.forEach {
-            let ridArr = $0.split(":")
-            alert.addAction(
-                UIAlertAction(
-                    title: ridArr[1],
-                    style: .default,
-                    handler: { _ in self.addProduct("TXT-" + ridArr[0])}
-                )
-            )
+        UtilityWpcText.labelsWithCodes.forEach { item in
+            let list = item.split(":")
+            alert.addAction(UIAlertAction(title: list[1], style: .default, handler: { _ in self.addProduct("TXT-" + list[0])}))
         }
         alert.finish()
     }
@@ -126,9 +105,7 @@ class vcSettingsHomescreen: UIwXViewController {
             alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up)}))
         }
         if index != (homescreenFav.count - 1) {
-            alert.addAction(
-                UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)})
-            )
+            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)}))
         }
         alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in self.delete(selection: index)}))
         alert.finish()
