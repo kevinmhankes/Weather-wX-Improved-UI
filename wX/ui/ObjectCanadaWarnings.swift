@@ -12,9 +12,6 @@ final class ObjectCanadaWarnings: NSObject {
     private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var html = ""
-    private var locWarning = ""
-    private var locWatch = ""
-    private var locStatement = ""
     private var listLocUrl = [String]()
     private var listLocName = [String]()
     private var listLocWarning = [String]()
@@ -84,10 +81,10 @@ final class ObjectCanadaWarnings: NSObject {
     func showData() {
         uiv.stackView.removeViews()
         _ = ObjectImage(uiv.stackView, bitmap)
-        self.listLocWarning.enumerated().forEach { index, _ in
-            locWarning = self.listLocWarning[index]
-            locWatch = self.listLocWatch[index]
-            locStatement = self.listLocStatement[index]
+        self.listLocWarning.indices.forEach { index in
+            var locWarning = self.listLocWarning[index]
+            var locWatch = self.listLocWatch[index]
+            var locStatement = self.listLocStatement[index]
             if locWarning.contains("href") {
                 locWarning = locWarning.parse("class=.wb-inv.>(.*?)</span>")
                 locWarning = locWarning.replaceAll("</.*?>", "")
