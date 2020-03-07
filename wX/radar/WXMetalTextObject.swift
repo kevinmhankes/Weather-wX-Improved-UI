@@ -90,12 +90,12 @@ final class WXMetalTextObject {
         let xPos = latLon.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
         let yPos = latLon.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
         if abs(xPos) * scale * 2 < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
-            tvList.append(TextViewMetal(context))
-            let index = tvList.count - 1
-            tvList[index].textColor = color
-            tvList[index].textSize = Double(textSize)
-            tvList[index].setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
-            tvList[index].setText(text)
+            let tv = TextViewMetal(context)
+            tv.textColor = color
+            tv.textSize = Double(textSize)
+            tv.setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
+            tv.setText(text)
+            tvList.append(tv)
         }
     }
     
