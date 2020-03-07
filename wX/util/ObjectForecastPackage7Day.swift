@@ -33,11 +33,6 @@ final class ObjectForecastPackage7Day {
         sevenDayLong = get7DayExt(html)
     }
 
-    convenience init(_ html: String) {
-        self.init()
-        sevenDayLong = get7DayExt(html)
-    }
-
     var forecastList: [String] {
         return detailedForecasts
     }
