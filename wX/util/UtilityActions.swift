@@ -65,7 +65,8 @@ final class UtilityActions {
             vc.wxoglPaneCount = "2"
         case "4":
             vc.wxoglPaneCount = "4"
-        default: break
+        default:
+            break
         }
         uiv.goToVC(vc)
     }

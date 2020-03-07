@@ -338,9 +338,6 @@
 		F0B335711DA3FD6F0035BD36 /* Spotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */; };
 		F0B335721DA3FD6F0035BD36 /* SpotterReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3355F1DA3FD6F0035BD36 /* SpotterReports.swift */; };
 		F0B335771DA3FD6F0035BD36 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335641DA3FD6F0035BD36 /* Utility.swift */; };
-		F0B335781DA3FD6F0035BD36 /* UtilityCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335651DA3FD6F0035BD36 /* UtilityCanvas.swift */; };
-		F0B335791DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */; };
-		F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */; };
 		F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */; };
 		F0B3357D1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */; };
 		F0B3357E1DA3FD6F0035BD36 /* UtilityColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */; };
@@ -749,9 +746,6 @@
 		F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotter.swift; sourceTree = "<group>"; };
 		F0B3355F1DA3FD6F0035BD36 /* SpotterReports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotterReports.swift; sourceTree = "<group>"; };
 		F0B335641DA3FD6F0035BD36 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		F0B335651DA3FD6F0035BD36 /* UtilityCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvas.swift; sourceTree = "<group>"; };
-		F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasGeneric.swift; sourceTree = "<group>"; };
-		F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasMain.swift; sourceTree = "<group>"; };
 		F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanvasProjection.swift; sourceTree = "<group>"; };
 		F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesExtended.swift; sourceTree = "<group>"; };
 		F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette.swift; sourceTree = "<group>"; };
@@ -1110,9 +1104,6 @@
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
 				F0118B411DA9771600B43DE5 /* UtilityActions.swift */,
-				F0B335651DA3FD6F0035BD36 /* UtilityCanvas.swift */,
-				F0B335661DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift */,
-				F0B335671DA3FD6F0035BD36 /* UtilityCanvasMain.swift */,
 				F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */,
 				03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */,
 				F0B3356A1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift */,
@@ -1654,7 +1645,6 @@
 				0340421B23F16E81003AB242 /* vcPlayList.swift in Sources */,
 				F0DAD9341DA7018D00C2BD4B /* huffman.c in Sources */,
 				F0B3353C1DA3FD450035BD36 /* AnimationDrawable.swift in Sources */,
-				F0B335781DA3FD6F0035BD36 /* UtilityCanvas.swift in Sources */,
 				03C85B5824048F1E0046C8F4 /* OfficeTypeEnum.swift in Sources */,
 				F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */,
 				F0B335391DA3FD3B0035BD36 /* WXGLNexradLevel3TVS.swift in Sources */,
@@ -1796,7 +1786,6 @@
 				0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */,
 				F0B335551DA3FD510035BD36 /* ExternalEllipsoid.swift in Sources */,
 				F0B335541DA3FD510035BD36 /* Extensions.swift in Sources */,
-				F0B335791DA3FD6F0035BD36 /* UtilityCanvasGeneric.swift in Sources */,
 				03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */,
 				F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */,
 				03F3EB9C229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift in Sources */,
@@ -1922,7 +1911,6 @@
 				0340420523F16A4D003AB242 /* vcSettingsLocationCanada.swift in Sources */,
 				03F3EB6922993B870056A56D /* UtilitySpcStormReports.swift in Sources */,
 				0340421623F16DCC003AB242 /* vcCanadaHourly.swift in Sources */,
-				F0B3357A1DA3FD6F0035BD36 /* UtilityCanvasMain.swift in Sources */,
 				F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */,
 				0354D3F623C117710024153D /* Fronts.swift in Sources */,
 				036522B422914AD90056E657 /* UtilityWpcText.swift in Sources */,
