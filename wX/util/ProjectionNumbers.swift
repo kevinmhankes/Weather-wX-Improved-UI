@@ -5,20 +5,20 @@
  *****************************************************************************/
 
 final class ProjectionNumbers {
-
-    var scale = 0.0
+    
+    private var scale = 0.0
     var oneDegreeScaleFactor = 0.0
-    var lat = "0.0"
-    var lon = "0.0"
-    var xCenter = 0.0
-    var yCenter = 0.0
+    private var lat = "0.0"
+    private var lon = "0.0"
+    private var xCenter = 0.0
+    private var yCenter = 0.0
     private var polygonWidth = 0.0
     var radarSite = ""
-
+    
     init() {
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
-
+    
     init(_ scale: Double,
          _ lat: String,
          _ lon: String,
@@ -34,7 +34,7 @@ final class ProjectionNumbers {
         self.polygonWidth = polygonWidth
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
-
+    
     init(_ radarSite: String, _ provider: ProjectionType) {
         self.radarSite = radarSite
         lat = ""
@@ -88,24 +88,24 @@ final class ProjectionNumbers {
         lon = Utility.getRadarSiteY(radarSite)
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
-
+    
     var xDbl: Double {return Double(lat) ?? 0.0}
-
+    
     var xFloat: Float {return Float(lat) ?? 0.0}
-
+    
     var yDbl: Double {return Double(lon) ?? 0.0}
-
+    
     var yFloat: Float {return Float(lon) ?? 0.0}
-
+    
     var xCenterFloat: Float {return Float(xCenter)}
-
+    
     var yCenterFloat: Float {return Float(yCenter)}
-
+    
     var xCenterDouble: Double {return Double(xCenter)}
-
+    
     var yCenterDouble: Double {return Double(yCenter)}
-
+    
     var oneDegreeScaleFactorFloat: Float {return Float(oneDegreeScaleFactor)}
-
+    
     var latlon: LatLon { return LatLon(lat, lon)}
 }
