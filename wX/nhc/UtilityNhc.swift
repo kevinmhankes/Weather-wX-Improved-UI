@@ -96,9 +96,7 @@ final class UtilityNhc {
             "<a href=\"([0-9]{8}_[0-9]{4}Z-" + prodId + "\\.gif)\">",
             frameCount
         )
-        let bitmaps = urls.map {
-            Bitmap(baseUrl + $0)
-        }
+        let bitmaps = urls.map { Bitmap(baseUrl + $0) }
         let animDrawable = AnimationDrawable()
         bitmaps.forEach {
             animDrawable.addFrame($0, UtilityImg.getAnimInterval())
