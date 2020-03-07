@@ -115,9 +115,12 @@ struct LatLon {
         dist = UtilityMath.rad2deg(dist)
         dist = dist * 60 * 1.1515
         switch unit {
-        case .K: return dist * 1.609344
-        case .N: return dist * 0.8684
-        case .MILES: return dist
+        case .K:
+            return dist * 1.609344
+        case .N:
+            return dist * 0.8684
+        case .MILES:
+            return dist
         }
     }
 }

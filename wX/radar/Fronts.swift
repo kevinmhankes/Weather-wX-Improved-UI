@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 struct Fronts {
+    
     var type: FrontTypeEnum
     var coordinates = [LatLon]()
 
