@@ -11,7 +11,7 @@ class WXGLNexradLevel3HailIndex {
     private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
     private static let stiPattern3 = "(\\d+) "
 
-    static func decocodeAndPlotNexradHailIndex(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decocode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("HI", pn.radarSite, fileName)
         let dis = UtilityIO.readFiletoData(fileName)

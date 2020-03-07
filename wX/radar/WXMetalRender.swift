@@ -362,7 +362,7 @@ class WXMetalRender {
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
             )
         case "STI":
-            fList = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, indexString)
+            fList = WXGLNexradLevel3StormInfo.decocode(pn, indexString)
         default:
             break
         }
@@ -680,10 +680,9 @@ class WXMetalRender {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
         }
-        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in
-            index & 1 == 0}.map { _, value in Double(value)}
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in
-            index & 1 != 0}.map { _, value in Double(value)}
+        // get even and odd values and put in seperate lists
+        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in index & 1 == 0}.map { _, value in Double(value)}
+        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in index & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 24
         locdotBuffers.count = locmarkerAl.count
         locdotBuffers.lenInit = scaleLengthLocationDot(locdotBuffers.type.size)
@@ -772,7 +771,7 @@ class WXMetalRender {
     }
     
     func constructStiLines() {
-        fSti = WXGLNexradLevel3StormInfo.decocodeAndPlotNexradStormMotion(pn, stiBaseFn + indexString)
+        fSti = WXGLNexradLevel3StormInfo.decocode(pn, stiBaseFn + indexString)
         constructGenericLinesShort(stiBuffers, fSti)
         stiBuffers.generateMtlBuffer(device)
     }
@@ -782,7 +781,7 @@ class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3TVS.decocodeAndPlotNexradTVS(pn, tvsBaseFn + indexString)
+        let stormList = WXGLNexradLevel3TVS.decocode(pn, tvsBaseFn + indexString)
         tvsBuffers.setXYList(stormList)
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
@@ -793,7 +792,7 @@ class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3HailIndex.decocodeAndPlotNexradHailIndex(pn, hiBaseFn + indexString)
+        let stormList = WXGLNexradLevel3HailIndex.decocode(pn, hiBaseFn + indexString)
         hiBuffers.setXYList(stormList)
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)

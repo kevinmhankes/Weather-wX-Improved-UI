@@ -291,13 +291,19 @@ final class WXMetalSurfaceView {
         switch gestureRecognizer.state {
         case .began:
             textObj.removeTextLabels()
-            wxMetal.forEach {$0!.displayHold = true}
+            wxMetal.forEach {
+                $0!.displayHold = true
+            }
         case .ended:
             textObj.addTextLabels()
-            wxMetal.forEach {$0!.displayHold = false}
+            wxMetal.forEach {
+                $0!.displayHold = false
+            }
         default:
             break
         }
-        wxMetal.forEach {$0!.demandRender()}
+        wxMetal.forEach {
+            $0!.demandRender()
+        }
     }
 }

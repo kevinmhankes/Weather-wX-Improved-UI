@@ -9,7 +9,7 @@ class WXGLNexradLevel3StormInfo {
     private static let stiPattern1 = "AZ/RAN(.*?)V"
     private static let stiPattern2 = "MVT(.*?)V"
 
-    static func decocodeAndPlotNexradStormMotion(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decocode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("STI", pn.radarSite.lowercased(), fileName)
         let dis = UtilityIO.readFiletoData(fileName)

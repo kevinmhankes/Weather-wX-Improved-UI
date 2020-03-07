@@ -10,7 +10,7 @@ class WXGLNexradLevel3TVS {
     private static let tvsPattern2 = ".{9}(.{7})"
 
     // FIXME var and file naming
-    static func decocodeAndPlotNexradTVS(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decocode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("TVS", pn.radarSite, fileName)
         let dis = UtilityIO.readFiletoData(fileName)
