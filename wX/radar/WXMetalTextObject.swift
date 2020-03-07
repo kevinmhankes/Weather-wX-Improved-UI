@@ -11,8 +11,6 @@ final class WXMetalTextObject {
     private var glview = WXMetalSurfaceView()
     var OGLR: WXMetalRender!
     private var numPanes = 0
-    private var spotterLat = 0.0
-    private var spotterLon = 0.0
     private let cityExtZoom = 30.0
     #if targetEnvironment(macCatalyst)
     private let cityMinZoom: Float = 0.20
@@ -29,7 +27,6 @@ final class WXMetalTextObject {
     private var obsExtZoom = 6.5
     private var glviewWidth = 0.0
     private var glviewHeight = 0.0
-    private var tmpCoords = (0.0, 0.0)
     private var scale = 0.0
     private var oglrZoom: Float = 0.0
     private var textSize = Double(RadarPreferences.radarTextSize)
@@ -72,13 +69,13 @@ final class WXMetalTextObject {
             }
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
-                (0..<cityExtLength).forEach {
+                (0..<cityExtLength).forEach { index in
                     if glview.citiesExtAl.count <= maxCitiesPerGlview {
                         checkAndDrawText(
                             &glview.citiesExtAl,
-                            UtilityCitiesExtended.cities[$0].latitude,
-                            UtilityCitiesExtended.cities[$0].longitude,
-                            UtilityCitiesExtended.cities[$0].name,
+                            UtilityCitiesExtended.cities[index].latitude,
+                            UtilityCitiesExtended.cities[index].longitude,
+                            UtilityCitiesExtended.cities[index].name,
                             GeographyType.cities.color
                         )
                     }
@@ -88,20 +85,17 @@ final class WXMetalTextObject {
     }
     
     func checkAndDrawText(_ tvList:inout [TextViewMetal], _ lat: Double, _ lon: Double, _ text: String, _ color: Int) {
-        tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, OGLR.pn)
+        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, OGLR.pn)
         // changing RID resets glviewWidth
-        let xPos = tmpCoords.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
-        let yPos = tmpCoords.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
+        let xPos = latLon.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
+        let yPos = latLon.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
         if abs(xPos) * scale * 2 < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
             tvList.append(TextViewMetal(context))
-            let ii = tvList.count - 1
-            tvList[ii].textColor = color
-            tvList[ii].textSize = Double(textSize)
-            tvList[ii].setPadding(
-                CGFloat(glviewWidth / 2) + CGFloat(xPos * scale),
-                CGFloat(glviewHeight / 2) + CGFloat(yPos * scale)
-            )
-            tvList[ii].setText(text)
+            let index = tvList.count - 1
+            tvList[index].textColor = color
+            tvList[index].textSize = Double(textSize)
+            tvList[index].setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
+            tvList[index].setText(text)
         }
     }
     
@@ -142,8 +136,6 @@ final class WXMetalTextObject {
     
     private func addTextLabelsSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
-            spotterLat = 0.0
-            spotterLon = 0.0
             glview.spottersLabelAl = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.0 {
@@ -171,9 +163,9 @@ final class WXMetalTextObject {
     }
     
     func removeTextLabels() {
-        context.view.subviews.forEach {
-            if $0 is UITextView {
-                $0.removeFromSuperview()
+        context.view.subviews.forEach { view in
+            if view is UITextView {
+                view.removeFromSuperview()
             }
         }
     }
@@ -195,8 +187,6 @@ final class WXMetalTextObject {
     
     func addWpcPressureCenters() {
         if RadarPreferences.radarShowWpcFronts {
-            spotterLat = 0.0
-            spotterLon = 0.0
             glview.pressureCenterLabelAl = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.0 {
@@ -229,9 +219,9 @@ final class WXMetalTextObject {
                         let tmpArrObsExt = UtilityMetar.obsArrExt[index].split(":")
                         let lat = Double(tmpArrObs[0]) ?? 0.0
                         let lon = Double(tmpArrObs[1]) ?? 0.0
-                        tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, OGLR.pn)
-                        let xPos = tmpCoords.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
-                        let yPos = tmpCoords.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
+                        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, OGLR.pn)
+                        let xPos = latLon.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
+                        let yPos = latLon.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
                         if abs(Double(xPos) * scale * 2 ) < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
                             if Double(OGLR.zoom) > obsExtZoom {
                                 glview.obsAl.append(TextViewMetal(context, 150, 150))
@@ -241,10 +231,7 @@ final class WXMetalTextObject {
                             let ii = glview.obsAl.count - 1
                             glview.obsAl[ii].textColor = RadarGeometry.radarColorObs
                             glview.obsAl[ii].textSize = textSize
-                            glview.obsAl[ii].setPadding(
-                                CGFloat(glviewWidth / 2) + CGFloat(xPos * scale),
-                                CGFloat(glviewHeight / 2) + CGFloat(yPos * scale)
-                            )
+                            glview.obsAl[ii].setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
                             if Double(OGLR.zoom) > obsExtZoom {
                                 glview.obsAl[ii].setText(tmpArrObsExt[2])
                             } else if PolygonType.OBS.display {
