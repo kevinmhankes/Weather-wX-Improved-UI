@@ -40,7 +40,7 @@ final class ObjectAlertSummary: NSObject {
         var filterLabel = ""
         var state = ""
         var stateCntMap = [String: Int]()
-        for alert in capAlerts {
+        capAlerts.forEach { alert in
             if filter == "" {
                 filterBool = (alert.title.contains("Tornado Warning")
                     || alert.title.contains("Severe Thunderstorm Warning")
@@ -78,10 +78,10 @@ final class ObjectAlertSummary: NSObject {
             }
         }
         var stateCnt = ""
-        stateCntMap.forEach {stateCnt += "\($0):\($1) "}
-        objTextSummary.text = "Filter: " + filterLabel
-            + "(" + String(index) + " total)"
-            + MyApplication.newline + stateCnt
+        stateCntMap.forEach { state, count in
+            stateCnt += state + ":" + String(count) + " "
+        }
+        objTextSummary.text = "Filter: " + filterLabel + "(" + String(index) + " total)" + MyApplication.newline + stateCnt
     }
 
     func getUrl(_ index: Int) -> String {
