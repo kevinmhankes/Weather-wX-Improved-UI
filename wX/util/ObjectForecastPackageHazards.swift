@@ -16,22 +16,13 @@ final class ObjectForecastPackageHazards {
         self.init(uiv, Location.getLatLon(locNum))
     }
 
-    // US by LAT LON
+    // US by LAT LON (used in adhoc location and other init)
     convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
         let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
         if homescreenFav.contains("TXT-HAZ") {
             hazards = getHazardsHtml(location)
         }
-        ObjectForecastPackageHazards.uiv = uiv
-    }
-
-    // CA
-    convenience init(_ uiv: UIViewController, _ html: String) {
-        self.init()
-        let hazards = UtilityCanada.getHazards(html)
-        hazardsShort = hazards[0]
-        self.hazards = hazards[1]
         ObjectForecastPackageHazards.uiv = uiv
     }
 
