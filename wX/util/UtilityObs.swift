@@ -41,9 +41,9 @@ final class UtilityObs {
         var locatioName = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         var tmp = ""
-        lines.forEach {
-            if $0.contains("," + obsShortCode) {
-                tmp = $0
+        lines.forEach { line in
+            if line.contains("," + obsShortCode) {
+                tmp = line
             }
         }
         let chunks = tmp.split(",")
