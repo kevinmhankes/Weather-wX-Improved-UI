@@ -221,8 +221,8 @@ final public class Level2Record {
 
     func getDataBlockStringValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int, _ size: Int) -> String {
         let off: CLong = Int(offset) + messageOffset + Level2Record.messageHeaderSize
-        raf.seek(off)
-        raf.skipBytes(skip)
+        //raf.seek(off)
+        //raf.skipBytes(skip)
         //var bytes: [UInt8] = []
         //(0..<size).forEach { _ in
         //    bytes.append(raf.get())
