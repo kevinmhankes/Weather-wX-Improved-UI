@@ -56,22 +56,18 @@ final class UtilityDownloadNws {
     static func getHourlyData(_ latLon: LatLon) -> String {
         let pointsData = getLocationPointData(latLon)
         let hourlyUrl = pointsData.parse("\"forecastHourly\": \"(.*?)\"")
-        let data = hourlyUrl.getNwsHtml()
-        return data
+        return hourlyUrl.getNwsHtml()
     }
 
     static func get7DayData(_ latLon: LatLon) -> String {
         let pointsData = getLocationPointData(latLon)
         let forecastUrl = pointsData.parse("\"forecast\": \"(.*?)\"")
-        //print("API " + forecastUrl)
         GlobalVariables.forecastZone = forecastUrl
-        let data = forecastUrl.getNwsHtml()
-        return data
+        return forecastUrl.getNwsHtml()
     }
 
     static func getLocationPointData(_ latLon: LatLon) -> String {
         let url = MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString
-        let data = url.getNwsHtml()
-        return data
+        return url.getNwsHtml()
     }
 }
