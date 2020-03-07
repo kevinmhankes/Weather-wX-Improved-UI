@@ -8,7 +8,7 @@ final class ObjectForecastPackageCurrentConditions {
     
     var data = ""
     var iconUrl = ""
-    private var conditionsTimeStr = ""
+    private var conditionsTimeString = ""
     var status = ""
     var topLine = ""
     var middleLine = ""
@@ -45,7 +45,7 @@ final class ObjectForecastPackageCurrentConditions {
         data = conditions.conditionAsString
         iconUrl = conditions.iconUrl
         rawMetar = conditions.metar
-        status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
+        status = UtilityObs.getStatusViaMetar(conditionsTimeString)
         formatCurrentConditions()
     }
     
@@ -53,7 +53,7 @@ final class ObjectForecastPackageCurrentConditions {
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var string = ""
         let objMetar = ObjectMetar(location)
-        conditionsTimeStr = objMetar.conditionsTimeStr
+        conditionsTimeString = objMetar.conditionsTimeString
         self.temperature = objMetar.temperature + MyApplication.degreeSymbol
         self.windChill = objMetar.windChill + MyApplication.degreeSymbol
         self.heatIndex = objMetar.heatIndex + MyApplication.degreeSymbol

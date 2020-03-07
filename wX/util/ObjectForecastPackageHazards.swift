@@ -7,15 +7,15 @@
 import UIKit
 
 final class ObjectForecastPackageHazards {
-
+    
     var hazardsShort = ""
     var hazards = ""
     static var uiv: UIViewController?
-
+    
     convenience init(_ uiv: UIViewController, _ locNum: Int) {
         self.init(uiv, Location.getLatLon(locNum))
     }
-
+    
     // US by LAT LON (used in adhoc location and other init)
     convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
@@ -25,14 +25,14 @@ final class ObjectForecastPackageHazards {
         }
         ObjectForecastPackageHazards.uiv = uiv
     }
-
+    
     func getHazardsHtml(_ location: LatLon) -> String {
         let newLocation = UtilityMath.latLonFix(location)
         return ("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1").getNwsHtml()
     }
-
+    
     static var isUS = true
-
+    
     // CA
     static func createForCanada(_ html: String) -> ObjectForecastPackageHazards {
         let objectForecastPackageHazards = ObjectForecastPackageHazards()
@@ -41,11 +41,11 @@ final class ObjectForecastPackageHazards {
         objectForecastPackageHazards.hazards = hazards[1]
         return objectForecastPackageHazards
     }
-
+    
     static func getHazardCount(_ objectForecastPackageHazards: ObjectForecastPackageHazards) -> Int {
         return objectForecastPackageHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
     }
-
+    
     static func getHazardCards(
         _ stackView: UIStackView,
         _ objHazards: ObjectForecastPackageHazards,
@@ -79,7 +79,7 @@ final class ObjectForecastPackageHazards {
             stackView.addArrangedSubview(stackViewLocalHaz)
         }
     }
-
+    
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
         if isUS {
             let vc = vcUSAlertsDetail()

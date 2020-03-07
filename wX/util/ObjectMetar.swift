@@ -7,8 +7,8 @@
 import Foundation
 
 final class ObjectMetar {
-
-    let decodeIcon = true
+    
+    private let decodeIcon = true
     var condition = ""
     var temperature = ""
     var dewpoint = ""
@@ -20,12 +20,12 @@ final class ObjectMetar {
     var relativeHumidity = ""
     var windChill = ""
     var heatIndex = ""
-    var conditionsTimeStr = ""
+    var conditionsTimeString = ""
     var icon = ""
     var rawMetar = ""
-    var metarSkyCondition = ""
-    var metarWeatherCondition = ""
-
+    private var metarSkyCondition = ""
+    private var metarWeatherCondition = ""
+    
     init(_ location: LatLon) {
         let obsClosest = UtilityMetar.findClosestObservation(location)
         UtilityObs.obsClosestClass = obsClosest.name
@@ -62,7 +62,7 @@ final class ObjectMetar {
             icon = decodeIconFromMetar(condition, obsClosest)
             condition = condition.replace(";", " and")
         }
-
+        
         // METAR Condition Icon
         // SCT Partly Cloudy sct
         // FEW Mostly Clear few
@@ -70,7 +70,7 @@ final class ObjectMetar {
         // CLR Clear skc
         // -RA BR Overcast Light Rain; Mist (Light Rain and Fog/Mist)  rain
         // -SN BR Obscured Light Snow; Mist (Light Snow) snow
-
+        
         /*
          ANN ARBOR MUNICIPAL AIRPORT, MI, United States (KARB) 42-13N 083-45W 251M
          Feb 11, 2018 - 06:53 PM EST / 2018.02.11 2353 UTC
@@ -97,14 +97,14 @@ final class ObjectMetar {
          Pressure (altimeter): 29.95 in. Hg (1014 hPa)
          ob: KOKH 311556Z AUTO 23014G23KT 10SM SCT017 BKN041 OVC065 03/00 A2995 RMK FIRST
          cycle: 16
-        
+         
          */
-
+        
         let metarDataList = metarData.split(MyApplication.newline)
         if metarDataList.count > 2 {
             let localStatus = metarDataList[1].split("/")
             if localStatus.count > 1 {
-                conditionsTimeStr = UtilityTime.convertFromUTCForMetar(localStatus[1].replace(" UTC", ""))
+                conditionsTimeString = UtilityTime.convertFromUTCForMetar(localStatus[1].replace(" UTC", ""))
             }
         }
         seaLevelPressure = changePressureUnits(seaLevelPressure)
@@ -119,7 +119,7 @@ final class ObjectMetar {
             condition = "NA"
         }
     }
-
+    
     func changeDegreeUnits(_ value: String) -> String {
         var newValue = "NA"
         if value != "" {
@@ -132,7 +132,7 @@ final class ObjectMetar {
         }
         return newValue
     }
-
+    
     func changePressureUnits(_ value: String) -> String {
         var newValue = "NA"
         if !UIPreferences.unitsM {
@@ -142,7 +142,7 @@ final class ObjectMetar {
         }
         return newValue
     }
-
+    
     func decodeMetar(_ metar: String) {
         let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
         let patternMetarWxogl2 = ".*? A([0-9]{4})"
@@ -196,7 +196,7 @@ final class ObjectMetar {
             }
         }
     }
-
+    
     func decodeIconFromMetar(_ condition: String, _ obs: RID) -> String {
         // https://api.weather.gov/icons/land/day/ovc?size=medium
         let sunTimes = UtilityTimeSunMoon.getSunriseSunsetFromObs(obs)
