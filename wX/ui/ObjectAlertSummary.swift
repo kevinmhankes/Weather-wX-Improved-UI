@@ -42,9 +42,7 @@ final class ObjectAlertSummary: NSObject {
         var stateCntMap = [String: Int]()
         capAlerts.forEach { alert in
             if filter == "" {
-                filterBool = (alert.title.contains("Tornado Warning")
-                    || alert.title.contains("Severe Thunderstorm Warning")
-                    || alert.title.contains("Flash Flood Warning"))
+                filterBool = (alert.title.contains("Tornado Warning") || alert.title.contains("Severe Thunderstorm Warning") || alert.title.contains("Flash Flood Warning"))
                 filterLabel = "Tornado/ThunderStorm/FFW"
             } else {
                 filterBool = (alert.title.hasPrefix(filter))
