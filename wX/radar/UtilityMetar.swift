@@ -48,7 +48,6 @@ final class UtilityMetar {
                 }
                 initializedObsMap = true
             }
-            //var tmpArr2 = [String]()
             var obsSite = ""
             var tmpBlob = ""
             var pressureBlob = ""
@@ -62,12 +61,11 @@ final class UtilityMetar {
             var aviationColor = 0
             var TDArr = [String]()
             var latlon = LatLon()
-            var windDirD = 0.0
-            var validWind = false
-            var validWindGust = false
+            //var validWind = false
+            //var validWindGust = false
             metarArr.forEach { metar in
-                validWind = false
-                validWindGust = false
+                var validWind = false
+                var validWindGust = false
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
                     let metarItems = metar.split(" ")
                     tmpBlob = metar.parse(patternMetarWxogl1)
@@ -130,6 +128,7 @@ final class UtilityMetar {
                     var windDir = ""
                     var windInKt = ""
                     var windgustInKt = ""
+                    var windDirD = 0.0
                     if windBlob.contains("KT") && windBlob.count==7 {
                         validWind = true
                         windDir = windBlob.substring(0, 3)
