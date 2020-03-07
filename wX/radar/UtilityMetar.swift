@@ -54,22 +54,14 @@ final class UtilityMetar {
             var windBlob = ""
             var conditionsBlob = ""
             var timeBlob = ""
-            var visBlob = ""
-            var visBlobDisplay = ""
-            var visBlobArr = [String]()
-            var visInt = 0
-            var aviationColor = 0
-            var TDArr = [String]()
-            var latlon = LatLon()
-            //var validWind = false
-            //var validWindGust = false
+            
             metarArr.forEach { metar in
                 var validWind = false
                 var validWindGust = false
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
                     let metarItems = metar.split(" ")
                     tmpBlob = metar.parse(patternMetarWxogl1)
-                    TDArr = tmpBlob.split("/")
+                    let TDArr = tmpBlob.split("/")
                     if metarItems.count > 1 {
                         timeBlob = metarItems[1]
                     }
@@ -79,10 +71,11 @@ final class UtilityMetar {
                         windBlob = metar.parse(patternMetarWxogl4)
                     }
                     conditionsBlob = metar.parse(patternMetarWxogl5)
-                    visBlob = metar.parse(" ([0-9].*?SM) ")
-                    visBlobArr = visBlob.split(" ")
-                    visBlobDisplay = visBlobArr[visBlobArr.count - 1]
+                    var visBlob = metar.parse(" ([0-9].*?SM) ")
+                    let visBlobArr = visBlob.split(" ")
+                    let visBlobDisplay = visBlobArr[visBlobArr.count - 1]
                     visBlob = visBlobArr[visBlobArr.count - 1].replace("SM", "")
+                    var visInt = 0
                     if visBlob.contains("/") {
                         visInt = 0
                     } else if visBlob != "" {
@@ -108,7 +101,7 @@ final class UtilityMetar {
                     } else {
                         lowestCig = ovcInt
                     }
-                    aviationColor = Color.GREEN
+                    var aviationColor = Color.GREEN
                     if visInt > 5 && lowestCig > 3000 {
                         aviationColor = Color.GREEN
                     }
@@ -150,7 +143,7 @@ final class UtilityMetar {
                         temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
                         dewpoint = UtilityMath.celsiusToFarenheit(dewpoint.replace("M", "-")).replace(".0", "")
                         obsSite = metarItems[0]
-                        latlon = obsLatlon[obsSite] ?? LatLon()
+                        var latlon = obsLatlon[obsSite] ?? LatLon()
                         latlon.lonString = latlon.lonString.replace("-0", "-")
                         obsAl.append(latlon.latString + ":" + latlon.lonString + ":" + temperature + "/" + dewpoint)
                         obsAlExt.append(latlon.latString + ":" + latlon.lonString + ":" + temperature
