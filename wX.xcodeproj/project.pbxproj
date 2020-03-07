@@ -318,7 +318,6 @@
 		F0B335161DA3FD1C0035BD36 /* RID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3350A1DA3FD1C0035BD36 /* RID.swift */; };
 		F0B335171DA3FD1C0035BD36 /* RunTimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3350B1DA3FD1C0035BD36 /* RunTimeData.swift */; };
 		F0B335181DA3FD1C0035BD36 /* SevereNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3350C1DA3FD1C0035BD36 /* SevereNotice.swift */; };
-		F0B335281DA3FD2C0035BD36 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3351F1DA3FD2C0035BD36 /* City.swift */; };
 		F0B335291DA3FD2C0035BD36 /* CityExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335201DA3FD2C0035BD36 /* CityExt.swift */; };
 		F0B335331DA3FD3B0035BD36 /* WXGLDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3352B1DA3FD3B0035BD36 /* WXGLDownload.swift */; };
 		F0B335341DA3FD3B0035BD36 /* WXGLNexrad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3352C1DA3FD3B0035BD36 /* WXGLNexrad.swift */; };
@@ -730,7 +729,6 @@
 		F0B3350A1DA3FD1C0035BD36 /* RID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RID.swift; sourceTree = "<group>"; };
 		F0B3350B1DA3FD1C0035BD36 /* RunTimeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeData.swift; sourceTree = "<group>"; };
 		F0B3350C1DA3FD1C0035BD36 /* SevereNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevereNotice.swift; sourceTree = "<group>"; };
-		F0B3351F1DA3FD2C0035BD36 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F0B335201DA3FD2C0035BD36 /* CityExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityExt.swift; sourceTree = "<group>"; };
 		F0B3352B1DA3FD3B0035BD36 /* WXGLDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLDownload.swift; sourceTree = "<group>"; };
 		F0B3352C1DA3FD3B0035BD36 /* WXGLNexrad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexrad.swift; sourceTree = "<group>"; };
@@ -1104,7 +1102,6 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				F0B3351F1DA3FD2C0035BD36 /* City.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */,
@@ -1705,7 +1702,6 @@
 				F0B335721DA3FD6F0035BD36 /* SpotterReports.swift in Sources */,
 				03F3EB6722993B870056A56D /* UtilitySpcMesoInputOutput.swift in Sources */,
 				034041F323F167F9003AB242 /* vcSpcWatchMcdMpd.swift in Sources */,
-				F0B335281DA3FD2C0035BD36 /* City.swift in Sources */,
 				F0B335AC1DA3FD960035BD36 /* UtilityIO.swift in Sources */,
 				03F3EB85229945D10056A56D /* UtilityModelNsslWrfInputOutput.swift in Sources */,
 				03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */,
