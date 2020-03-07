@@ -261,9 +261,11 @@ class vcTabLocation: vcTabParent {
                         stackViewLocal.setup(self.stackView)
                         self.extraDataCards.append(stackViewLocal)
                         if $0.hasPrefix("TXT-") {
-                            self.getContentText($0.split("-")[1], stackViewLocal)
+                            let product = $0.replace("TXT-", "")
+                            self.getContentText(product, stackViewLocal)
                         } else if $0.hasPrefix("IMG-") {
-                            self.getContentImage($0.split("-")[1], stackViewLocal)
+                            let product = $0.replace("IMG-", "")
+                            self.getContentImage(product, stackViewLocal)
                         }
                     }
                 }
