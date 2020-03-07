@@ -221,12 +221,12 @@ final public class Level2Record {
 
     func getDataBlockStringValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int, _ size: Int) -> String {
         let off: CLong = Int(offset) + messageOffset + Level2Record.messageHeaderSize
-        //raf.seek(off)
-        //raf.skipBytes(skip)
-        //var bytes: [UInt8] = []
-        //(0..<size).forEach { _ in
-        //    bytes.append(raf.get())
-        //}
+        /*raf.seek(off)
+        raf.skipBytes(skip)
+        var bytes: [UInt8] = []
+        (0..<size).forEach { _ in
+            bytes.append(raf.get())
+        }*/
         return String(bytes: raf.array[off + skip..<(off + skip + size)], encoding: String.Encoding.utf8)!
         //return String(bytes: bytes, encoding: String.Encoding.utf8)!
     }
@@ -239,5 +239,6 @@ final public class Level2Record {
         (0..<916).forEach { _ in
             binWord.put(UInt8(raf.get()))
         }
+        //binWord.appendArray(Array<UInt8>(raf.array[offset..<(offset + 916)]))
     }
 }
