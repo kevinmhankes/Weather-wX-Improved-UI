@@ -30,8 +30,7 @@ public class UtilitySpotter {
                         Spotter(
                             items[14],
                             items[15],
-                            items[4],
-                            items[5],
+                            LatLon(items[4], items[5]),
                             items[3],
                             items[11],
                             items[10],
@@ -68,8 +67,7 @@ public class UtilitySpotter {
                     SpotterReports(
                         items[9],
                         items[10],
-                        items[5],
-                        items[6],
+                        LatLon(items[5], items[6]),
                         items[8],
                         items[0],
                         items[3],

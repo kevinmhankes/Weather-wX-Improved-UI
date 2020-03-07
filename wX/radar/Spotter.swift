@@ -8,8 +8,6 @@ final class Spotter {
 
     var firstName: String
     var lastName: String
-    var lat: String
-    var lon: String
     var reportedAt: String
     var email: String
     var phone: String
@@ -21,8 +19,7 @@ final class Spotter {
     init(
         _ firstName: String,
         _ lastName: String,
-        _ lat: String,
-        _ lon: String,
+        _ location: LatLon,
         _ reportedAt: String,
         _ email: String,
         _ phone: String,
@@ -30,14 +27,13 @@ final class Spotter {
     ) {
         self.firstName = firstName
         self.lastName = lastName.replaceAll("^ ", "").capitalized
-        self.lat = lat
-        self.lon = lon
+        self.location = location
         self.reportedAt = reportedAt
         self.email = email
         self.phone = phone
         self.uniq = uniq
-        latD = Double(lat) ?? 0.0
-        lonD = -1.0 * (Double(lon) ?? 0.0)
-        location = LatLon(latD, lonD)
+        // FIXME use the upstream code to make the negative one adjustment and remove latD and lonD and use LatLon object directly
+        latD = location.lat
+        lonD = -1.0 * location.lon
     }
 }
