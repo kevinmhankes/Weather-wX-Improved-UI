@@ -101,11 +101,11 @@ class UtilityAwcRadarMosaic {
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = ""
-        cityToLatLon.keys.forEach {
-            currentDistance = LatLon.distance(location, cityToLatLon[$0]!, .MILES)
+        cityToLatLon.keys.forEach { key in
+            currentDistance = LatLon.distance(location, cityToLatLon[key]!, .MILES)
             if currentDistance < shortestDistance {
                 shortestDistance = currentDistance
-                bestIndex = $0
+                bestIndex = key
             }
         }
         if bestIndex == "" {
@@ -153,7 +153,7 @@ class UtilityAwcRadarMosaic {
                 + sector
                 + imageType + ")."
         )
-        let bitmaps = urls.map {Bitmap(baseUrl + baseAddOn + $0)}
+        let bitmaps = urls.map { Bitmap(baseUrl + baseAddOn + $0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }
