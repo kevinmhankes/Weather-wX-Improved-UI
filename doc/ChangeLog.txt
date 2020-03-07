@@ -33,6 +33,7 @@
 		 [REF] remove City class and UtilityMap
 		 [FIX] setting homescreen labels were not correct for QPF1 and possibly others with shared prefix
 		 [REF] remove unused UtilityCanvas.swift UtilityCanvasGeneric.swift UtilityCanvasMain.swift
+		 [ADD] potential minor Level 2 performance enhancement
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar

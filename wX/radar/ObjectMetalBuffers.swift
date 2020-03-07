@@ -147,7 +147,7 @@ class ObjectMetalBuffers {
     func setXYList(_ combinedLatLonList: [Double]) {
         latList = [Double](repeating: 0, count: combinedLatLonList.count / 2)
         lonList = [Double](repeating: 0, count: combinedLatLonList.count / 2)
-        for index in stride(from: 0, to: combinedLatLonList.count, by: 2) {
+        stride(from: 0, to: combinedLatLonList.count, by: 2).forEach { index in
             latList[index / 2] = combinedLatLonList[index]
             lonList[index / 2] = combinedLatLonList[index + 1]
         }
@@ -155,12 +155,18 @@ class ObjectMetalBuffers {
 
    func draw(_ pn: ProjectionNumbers) {
         switch type.string {
-        case "HI": ObjectMetalBuffers.redrawTriangleUp(self, pn)
-        case "SPOTTER": ObjectMetalBuffers.redrawCircle(self, pn)
-        case "TVS": ObjectMetalBuffers.redrawTriangleUp(self, pn)
-        case "LOCDOT": ObjectMetalBuffers.redrawCircle(self, pn)
-        case "WIND_BARB_CIRCLE": ObjectMetalBuffers.redrawCircleWithColor(self, pn)
-        default:  ObjectMetalBuffers.redrawTriangle(self, pn)
+        case "HI":
+            ObjectMetalBuffers.redrawTriangleUp(self, pn)
+        case "SPOTTER":
+            ObjectMetalBuffers.redrawCircle(self, pn)
+        case "TVS":
+            ObjectMetalBuffers.redrawTriangleUp(self, pn)
+        case "LOCDOT":
+            ObjectMetalBuffers.redrawCircle(self, pn)
+        case "WIND_BARB_CIRCLE":
+            ObjectMetalBuffers.redrawCircleWithColor(self, pn)
+        default:
+            ObjectMetalBuffers.redrawTriangle(self, pn)
         }
     }
 
