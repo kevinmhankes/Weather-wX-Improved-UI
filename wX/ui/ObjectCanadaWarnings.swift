@@ -11,7 +11,6 @@ final class ObjectCanadaWarnings: NSObject {
     private var uiv: UIwXViewController
     private var provinceCode = "ca"
     var bitmap = Bitmap()
-    private var html = ""
     private var listLocUrl = [String]()
     private var listLocName = [String]()
     private var listLocWarning = [String]()
@@ -65,9 +64,9 @@ final class ObjectCanadaWarnings: NSObject {
         } else {
             bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
         }
+        var html: String
         if self.provinceCode == "ca" {
-            let url = MyApplication.canadaEcSitePrefix + "/warnings/index_e.html"
-            html = (url).getHtml()
+            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
             html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
         }
