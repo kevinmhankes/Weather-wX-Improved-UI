@@ -10,20 +10,25 @@ class UtilityWatch {
         var warningList = [Double]()
         var prefToken = ""
         switch type.string {
-        case "MCD":           prefToken = MyApplication.mcdLatlon.value
-        case "WATCH":         prefToken = MyApplication.watchLatlon.value
-        case "WATCH_TORNADO": prefToken = MyApplication.watchLatlonTor.value
-        case "MPD":           prefToken = MyApplication.mpdLatlon.value
-        default: break
+        case "MCD":
+            prefToken = MyApplication.mcdLatlon.value
+        case "WATCH":
+            prefToken = MyApplication.watchLatlon.value
+        case "WATCH_TORNADO":
+            prefToken = MyApplication.watchLatlonTor.value
+        case "MPD":
+            prefToken = MyApplication.mpdLatlon.value
+        default:
+            break
         }
         var x = [Double]()
         var y = [Double]()
         var pixXInit = 0.0
         var pixYInit = 0.0
         if prefToken != "" {
-            let tmpArr = prefToken.split(":")
-            tmpArr.indices.forEach {
-                let test = tmpArr[$0].split(" ")
+            let list = prefToken.split(":")
+            list.indices.forEach {
+                let test = list[$0].split(" ")
                 if test.count > 1 {
                     x = test.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
                     y = test.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
