@@ -18,8 +18,12 @@ class WXGLNexradLevel3StormInfo {
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""
             var motionStr = ""
-            posn.forEach {posnStr += $0.replace("/", " ")}
-            motion.forEach {motionStr += $0.replace("/", " ")}
+            posn.forEach {
+                posnStr += $0.replace("/", " ")
+            }
+            motion.forEach {
+                motionStr += $0.replace("/", " ")
+            }
             motionStr = motionStr.replace("NEW", "  0  0  ")
             let reg = "(\\d+) "
             let posnNumbers = posnStr.parseColumnAll(reg)
@@ -70,13 +74,13 @@ class WXGLNexradLevel3StormInfo {
                     stormList.append(tmpCoords.1)
                     ecArr = []
                     tmpCoordsArr = []
-                    (0...3).forEach { index in
+                    (0...3).forEach { z in
                         ecArr.append(
                             ecc.calculateEndingGlobalCoordinates(
                                 ExternalEllipsoid.WGS84,
                                 start,
                                 Double(degree2) + Double(degreeShift),
-                                Double(nm2) * 1852.0 * Double(index) * 0.25,
+                                Double(nm2) * 1852.0 * Double(z) * 0.25,
                                 bearing
                             )
                         )

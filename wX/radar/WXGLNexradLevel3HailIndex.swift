@@ -22,10 +22,16 @@ class WXGLNexradLevel3HailIndex {
             var posnStr = ""
             var hailPercentStr = ""
             var hailSizeStr = ""
-            posn.forEach {posnStr += $0.replace("/", " ")}
-            hailPercent.forEach {hailPercentStr += $0.replace("/", " ")}
+            posn.forEach {
+                posnStr += $0.replace("/", " ")
+            }
+            hailPercent.forEach {
+                hailPercentStr += $0.replace("/", " ")
+            }
             hailPercentStr = hailPercentStr.replace("UNKNOWN", " 0 0 ")
-            hailSize.forEach {hailSizeStr += $0.replace("/", " ")}
+            hailSize.forEach {
+                hailSizeStr += $0.replace("/", " ")
+            }
             hailSizeStr = hailSizeStr.replace("UNKNOWN", " 0.00 ")
             hailSizeStr = hailSizeStr.replace("<0.50", " 0.49 ")
             let hiPattern4 = " ([0-9]{1}\\.[0-9]{2}) "

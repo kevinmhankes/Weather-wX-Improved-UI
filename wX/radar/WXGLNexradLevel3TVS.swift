@@ -23,9 +23,9 @@ class WXGLNexradLevel3TVS {
             let bearing = [Double]()
             var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
             var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            tvs.indices.forEach {
+            tvs.indices.forEach { index in
                 let ecc =  ExternalGeodeticCalculator()
-                tmpStr = tvs[$0].parse(tvsPattern2)
+                tmpStr = tvs[index].parse(tvsPattern2)
                 tmpStrArr = tmpStr.split("/")
                 degree = Int(tmpStrArr[0].replace(" ", "")) ?? 0
                 nm = Int(tmpStrArr[1].replace(" ", "")) ?? 0
