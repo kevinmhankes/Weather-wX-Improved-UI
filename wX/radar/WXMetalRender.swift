@@ -680,10 +680,10 @@ class WXMetalRender {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
         }
-        locdotBuffers.latList = locmarkerAl.enumerated().filter { idx, _ in
-            idx & 1 == 0}.map { _, value in Double(value)}
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter { idx, _ in
-            idx & 1 != 0}.map { _, value in Double(value)}
+        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in
+            index & 1 == 0}.map { _, value in Double(value)}
+        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in
+            index & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 24
         locdotBuffers.count = locmarkerAl.count
         locdotBuffers.lenInit = scaleLengthLocationDot(locdotBuffers.type.size)
@@ -766,7 +766,8 @@ class WXMetalRender {
             constructTvs()
         case "STI":
             constructStiLines()
-        default: break
+        default:
+            break
         }
     }
 
@@ -812,16 +813,12 @@ class WXMetalRender {
     }
 
     func constructSpotters() {
-        //spotterBuffers.lenInit = spotterBuffers.type.size
         spotterBuffers.lenInit = PolygonType.SPOTTER.size
-        //spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.lenInit)
         spotterBuffers.triangleCount = 6
         _ = UtilitySpotter.get()
         spotterBuffers.latList = UtilitySpotter.lat
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)
-        //spotterBuffers.setCount(spotterBuffers.latList.count)
-        //spotterBuffers.initialize(24 * spotterBuffers.count * spotterBuffers.triangleCount, spotterBuffers.type.color)
         spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.type.size)
         spotterBuffers.draw(pn)
         spotterBuffers.generateMtlBuffer(device)
@@ -836,7 +833,7 @@ class WXMetalRender {
             buff.initialize(2, Color.MAGENTA)
             wpcFrontBuffersList.append(buff)
         }
-        UtilityWpcFronts.fronts.enumerated().forEach { z, _ in
+        UtilityWpcFronts.fronts.indices.forEach { z in
             let front = UtilityWpcFronts.fronts[z]
             switch front.type {
             case FrontTypeEnum.COLD:
@@ -881,8 +878,8 @@ class WXMetalRender {
         colorSwo.append(wXColor.colorsToInt(0, 100, 0))
         var tmpCoords = (0.0, 0.0)
         var fSize = 0
-        (0...4).forEach {
-            if let flArr = UtilitySwoD1.hashSwo[$0] {
+        (0...4).forEach { z in
+            if let flArr = UtilitySwoD1.hashSwo[z] {
                 fSize += flArr.count
             }
         }
