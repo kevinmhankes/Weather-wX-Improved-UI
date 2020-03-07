@@ -38,12 +38,8 @@ class UtilitySwoD1 {
                     tmpArr.indices.forEach { z in
                         if tmpArr[z] != "" {
                             test = tmpArr[z].split(" ")
-                            x = test.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in
-                                Double(value) ?? 0.0
-                            }
-                            y = test.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in
-                                (Double(value) ?? 0.0) * -1.0
-                            }
+                            x = test.enumerated().filter { idx, _ in idx & 1 == 0 }.map { _, value in Double(value) ?? 0.0 }
+                            y = test.enumerated().filter { idx, _ in idx & 1 != 0 }.map { _, value in (Double(value) ?? 0.0) * -1.0 }
                             if x.count > 0 && y.count > 0 {
                                 warningList += [x[0], y[0]]
                                 (1..<x.count-1).forEach { j in

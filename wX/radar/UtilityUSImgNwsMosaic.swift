@@ -147,7 +147,7 @@ class UtilityUSImgNwsMosaic {
             numberOfFrames
         )
         let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
-        let bitmaps = urls.map {Bitmap(baseUrl + $0)}
+        let bitmaps = urls.map { Bitmap(baseUrl + $0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }

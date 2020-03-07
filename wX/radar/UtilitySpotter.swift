@@ -5,50 +5,49 @@
  *****************************************************************************/
 
 public class UtilitySpotter {
-
+    
     static var spotterList = [Spotter]()
     static var reportsList = [SpotterReports]()
     private static var timer = DownloadTimer("SPOTTER")
     static var lat = [Double]()
     static var lon = [Double]()
-
+    
     static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
             spotterList = []
             reportsList = []
-            var latAl = [String]()
-            var lonAl = [String]()
+            var latitudeList = [String]()
+            var longitudeList = [String]()
             var html = "https://www.spotternetwork.org/feeds/csv.txt".getHtmlSep()
             let reportData = html.replaceAll(".*?#storm reports", "")
-            processReportsData(reportData)
+            processReports(reportData)
             html = html.replaceAll("#storm reports.*?$", "")
-            let htmlArr = html.split(MyApplication.newline)
-            var tmpArr = [String]()
-            htmlArr.forEach {
-                tmpArr = $0.split(";;")
-                if tmpArr.count > 15 {
+            let lines = html.split(MyApplication.newline)
+            lines.forEach { line in
+                let items = line.split(";;")
+                if items.count > 15 {
                     spotterList.append(
                         Spotter(
-                            tmpArr[14],
-                            tmpArr[15],
-                            tmpArr[4],
-                            tmpArr[5],
-                            tmpArr[3],
-                            tmpArr[11],
-                            tmpArr[10],
-                            tmpArr[0]
+                            items[14],
+                            items[15],
+                            items[4],
+                            items[5],
+                            items[3],
+                            items[11],
+                            items[10],
+                            items[0]
                         )
                     )
-                    latAl.append(tmpArr[4])
-                    lonAl.append(tmpArr[5])
+                    latitudeList.append(items[4])
+                    longitudeList.append(items[5])
                 }
             }
-            if latAl.count == lonAl.count {
+            if latitudeList.count == longitudeList.count {
                 lat = []
                 lon = []
-                latAl.indices.forEach {
-                    lat.append(Double(latAl[$0]) ?? 0.0 )
-                    lon.append(-1.0 * (Double(lonAl[$0]) ?? 0.0))
+                latitudeList.indices.forEach { index in
+                    lat.append(Double(latitudeList[index]) ?? 0.0 )
+                    lon.append(-1.0 * (Double(longitudeList[index]) ?? 0.0))
                 }
             } else {
                 lat = []
@@ -59,24 +58,23 @@ public class UtilitySpotter {
         }
         return spotterList
     }
-
-    static func processReportsData(_ text: String) {
+    
+    static func processReports(_ text: String) {
         let lines = text.split(MyApplication.newline)
-        var tmpArr = [String]()
-        lines.forEach {
-            tmpArr = $0.split(";;")
-            if tmpArr.count > 10 && tmpArr.count < 16 && !tmpArr[0].hasPrefix("#") {
+        lines.forEach { line in
+            let items = line.split(";;")
+            if items.count > 10 && items.count < 16 && !items[0].hasPrefix("#") {
                 reportsList.append(
                     SpotterReports(
-                        tmpArr[9],
-                        tmpArr[10],
-                        tmpArr[5],
-                        tmpArr[6],
-                        tmpArr[8],
-                        tmpArr[0],
-                        tmpArr[3],
-                        tmpArr[2],
-                        tmpArr[7]
+                        items[9],
+                        items[10],
+                        items[5],
+                        items[6],
+                        items[8],
+                        items[0],
+                        items[3],
+                        items[2],
+                        items[7]
                     )
                 )
             }
