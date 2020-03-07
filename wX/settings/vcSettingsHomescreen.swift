@@ -138,14 +138,14 @@ class vcSettingsHomescreen: UIwXViewController {
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {
                 (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach { label in
-                    if label.hasPrefix(prefVarMod) {
+                    if label.hasPrefix(prefVarMod + ":") {
                         title = label.split(":")[1]
                     }
                 }
             }
             if title == nil {
                 UtilityWpcText.labelsWithCodes.forEach { label in
-                    if label.hasPrefix(prefVarMod) {
+                    if label.hasPrefix(prefVarMod + ":") {
                         title = label.split(":")[1]
                     }
                 }
