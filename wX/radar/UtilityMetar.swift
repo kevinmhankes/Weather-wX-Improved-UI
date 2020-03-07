@@ -42,13 +42,13 @@ final class UtilityMetar {
             if !initializedObsMap {
                 var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
                 _ = lines.popLast()
-                lines.forEach {
-                    let tmpArr = $0.split(" ")
-                    obsLatlon[tmpArr[0]] = LatLon(tmpArr[1], tmpArr[2])
+                lines.forEach { line in
+                    let items = line.split(" ")
+                    obsLatlon[items[0]] = LatLon(items[1], items[2])
                 }
                 initializedObsMap = true
             }
-            var tmpArr2 = [String]()
+            //var tmpArr2 = [String]()
             var obsSite = ""
             var tmpBlob = ""
             var pressureBlob = ""
@@ -61,12 +61,7 @@ final class UtilityMetar {
             var visInt = 0
             var aviationColor = 0
             var TDArr = [String]()
-            var temperature = ""
-            var dewpoint = ""
             var latlon = LatLon()
-            var windDir = ""
-            var windInKt = ""
-            var windgustInKt = ""
             var windDirD = 0.0
             var validWind = false
             var validWindGust = false
@@ -74,11 +69,11 @@ final class UtilityMetar {
                 validWind = false
                 validWindGust = false
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
-                    tmpArr2 = metar.split(" ")
+                    let metarItems = metar.split(" ")
                     tmpBlob = metar.parse(patternMetarWxogl1)
                     TDArr = tmpBlob.split("/")
-                    if tmpArr2.count > 1 {
-                        timeBlob = tmpArr2[1]
+                    if metarItems.count > 1 {
+                        timeBlob = metarItems[1]
                     }
                     pressureBlob = metar.parse(patternMetarWxogl2)
                     windBlob = metar.parse(patternMetarWxogl3)
@@ -101,7 +96,6 @@ final class UtilityMetar {
                     var bknStr = conditionsBlob.parse("BKN([0-9]{3})")
                     var ovcInt = 100000
                     var bknInt = 100000
-                    var lowestCig: Int
                     if ovcStr != "" {
                         ovcStr += "00"
                         ovcInt = Int(ovcStr) ?? 0
@@ -110,6 +104,7 @@ final class UtilityMetar {
                         bknStr += "00"
                         bknInt = Int(bknStr) ?? 0
                     }
+                    var lowestCig: Int
                     if bknInt < ovcInt {
                         lowestCig = bknInt
                     } else {
@@ -132,6 +127,9 @@ final class UtilityMetar {
                         pressureBlob = pressureBlob.insert(pressureBlob.count - 2, ".")
                         pressureBlob = UtilityMath.unitsPressure(pressureBlob)
                     }
+                    var windDir = ""
+                    var windInKt = ""
+                    var windgustInKt = ""
                     if windBlob.contains("KT") && windBlob.count==7 {
                         validWind = true
                         windDir = windBlob.substring(0, 3)
@@ -145,15 +143,14 @@ final class UtilityMetar {
                         windInKt = windBlob.substring(3, 5)
                         windgustInKt = windBlob.substring(6, 8)
                         windDirD = Double(windDir) ?? 0.0
-                        windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") "
-                            + windInKt + " G " + windgustInKt + " kt"
+                        windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " G " + windgustInKt + " kt"
                     }
                     if TDArr.count > 1 {
-                        temperature = TDArr[0]
-                        dewpoint = TDArr[1]
+                        var temperature = TDArr[0]
+                        var dewpoint = TDArr[1]
                         temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
                         dewpoint = UtilityMath.celsiusToFarenheit(dewpoint.replace("M", "-")).replace(".0", "")
-                        obsSite = tmpArr2[0]
+                        obsSite = metarItems[0]
                         latlon = obsLatlon[obsSite] ?? LatLon()
                         latlon.lonString = latlon.lonString.replace("-0", "-")
                         obsAl.append(latlon.latString + ":" + latlon.lonString + ":" + temperature + "/" + dewpoint)
@@ -208,9 +205,9 @@ final class UtilityMetar {
             metarDataRaw = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
             _ = metarDataRaw.popLast()
             metarSites = [RID]()
-            metarDataRaw.forEach {
-                let tokens = $0.split(" ")
-                metarSites.append(RID(tokens[0], LatLon(tokens[1], tokens[2])))
+            metarDataRaw.forEach { metar in
+                let items = metar.split(" ")
+                metarSites.append(RID(items[0], LatLon(items[1], items[2])))
             }
         }
     }
@@ -220,18 +217,17 @@ final class UtilityMetar {
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = -1
-        metarSites.indices.forEach {
-            currentDistance = LatLon.distance(location, metarSites[$0].location, .K)
+        metarSites.indices.forEach { index in
+            currentDistance = LatLon.distance(location, metarSites[index].location, .K)
             if currentDistance < shortestDistance {
                 shortestDistance = currentDistance
-                bestIndex = $0
+                bestIndex = index
             }
         }
         if bestIndex == -1 {
             return "Please select a location in the United States."
         } else {
-            let url = (WXGLDownload.nwsRadarPub + "data/observations/metar/decoded/"
-                + metarSites[bestIndex].name + ".TXT")
+            let url = (WXGLDownload.nwsRadarPub + "data/observations/metar/decoded/" + metarSites[bestIndex].name + ".TXT")
             let html = url.getHtmlSep()
             return html.replace("<br>", MyApplication.newline)
         }
@@ -242,11 +238,11 @@ final class UtilityMetar {
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = -1
-        metarSites.indices.forEach {
-            currentDistance = LatLon.distance(location, metarSites[$0].location, .K)
+        metarSites.indices.forEach { index in
+            currentDistance = LatLon.distance(location, metarSites[index].location, .K)
             if currentDistance < shortestDistance {
                 shortestDistance = currentDistance
-                bestIndex = $0
+                bestIndex = index
             }
         }
         if bestIndex == -1 {
@@ -262,10 +258,10 @@ final class UtilityMetar {
         readMetarData()
         let obsSiteRange = 200.0
         var currentDistance = 0.0
-        metarSites.indices.forEach {
-            currentDistance = LatLon.distance(radarLocation, metarSites[$0].location, .MILES)
+        metarSites.indices.forEach { index in
+            currentDistance = LatLon.distance(radarLocation, metarSites[index].location, .MILES)
             if currentDistance < obsSiteRange {
-                obsListSb += metarSites[$0].name + ","
+                obsListSb += metarSites[index].name + ","
             }
         }
         return obsListSb.replaceAll(",$", "")
@@ -277,10 +273,10 @@ final class UtilityMetar {
         var siteMap = [String: Bool]()
         var goodObsList = [String]()
         list.forEach {
-            let tokens = $0.split(" ")
-            if tokens.count > 3 {
-                if siteMap[tokens[0]] != true {
-                    siteMap[tokens[0]] = true
+            let items = $0.split(" ")
+            if items.count > 3 {
+                if siteMap[items[0]] != true {
+                    siteMap[items[0]] = true
                     goodObsList.append($0)
                 }
             }
