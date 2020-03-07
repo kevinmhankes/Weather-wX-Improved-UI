@@ -153,8 +153,8 @@ final class WXMetalTextObject {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
                         &glview.spottersLabelAl,
-                        UtilitySpotter.spotterList[$0].latD,
-                        UtilitySpotter.spotterList[$0].lonD,
+                        UtilitySpotter.spotterList[$0].location.lat,
+                        UtilitySpotter.spotterList[$0].location.lon * -1.0,
                         " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
                         PolygonType.SPOTTER_LABELS.color
                     )

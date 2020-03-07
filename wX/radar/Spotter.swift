@@ -12,8 +12,6 @@ final class Spotter {
     var email: String
     var phone: String
     private var uniq: String
-    var latD: Double
-    var lonD: Double
     var location = LatLon()
 
     init(
@@ -32,8 +30,5 @@ final class Spotter {
         self.email = email
         self.phone = phone
         self.uniq = uniq
-        // FIXME use the upstream code to make the negative one adjustment and remove latD and lonD and use LatLon object directly
-        latD = location.lat
-        lonD = -1.0 * location.lon
     }
 }
