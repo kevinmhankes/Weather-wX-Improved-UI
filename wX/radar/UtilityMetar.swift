@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityMetar {
-
+    
     // FIXME var naming
     private static let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
     private static let patternMetarWxogl2 = ".*? A([0-9]{4})"
@@ -23,7 +23,7 @@ final class UtilityMetar {
     private static var obsStateOld = ""
     private static var obsLatlon = [String: LatLon]()
     private static var timer = DownloadTimer("METAR")
-
+    
     static func getStateMetarArrayForWXOGL(_ radarSite: String) {
         if timer.isRefreshNeeded() || radarSite != obsStateOld {
             var obsAl = [String]()
@@ -35,10 +35,8 @@ final class UtilityMetar {
             var obsAlAviationColor = [Int]()
             obsStateOld = radarSite
             let obsList = getObservationSites(radarSite)
-            let html = (MyApplication.nwsAWCwebsitePrefix + "/adds/metars/index?submit=1&station_ids="
-                + obsList + "&chk_metars=on").getHtml()
-            let metarArrTmp = html.parseColumn("<FONT FACE=\"Monospace,Courier\">(.*?)</FONT><BR>")
-            let metarArr = condenseObs(metarArrTmp)
+            let html = (MyApplication.nwsAWCwebsitePrefix + "/adds/metars/index?submit=1&station_ids=" + obsList + "&chk_metars=on").getHtml()
+            let metarArr = condenseObs(html.parseColumn("<FONT FACE=\"Monospace,Courier\">(.*?)</FONT><BR>"))
             if !initializedObsMap {
                 var lines = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
                 _ = lines.popLast()
@@ -48,29 +46,22 @@ final class UtilityMetar {
                 }
                 initializedObsMap = true
             }
-            var obsSite = ""
-            var tmpBlob = ""
-            var pressureBlob = ""
-            var windBlob = ""
-            var conditionsBlob = ""
-            var timeBlob = ""
-            
             metarArr.forEach { metar in
                 var validWind = false
                 var validWindGust = false
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
                     let metarItems = metar.split(" ")
-                    tmpBlob = metar.parse(patternMetarWxogl1)
-                    let TDArr = tmpBlob.split("/")
+                    let TDArr = metar.parse(patternMetarWxogl1).split("/")
+                    var timeBlob = ""
                     if metarItems.count > 1 {
                         timeBlob = metarItems[1]
                     }
-                    pressureBlob = metar.parse(patternMetarWxogl2)
-                    windBlob = metar.parse(patternMetarWxogl3)
+                    var pressureBlob = metar.parse(patternMetarWxogl2)
+                    var windBlob = metar.parse(patternMetarWxogl3)
                     if windBlob == "" {
                         windBlob = metar.parse(patternMetarWxogl4)
                     }
-                    conditionsBlob = metar.parse(patternMetarWxogl5)
+                    let conditionsBlob = metar.parse(patternMetarWxogl5)
                     var visBlob = metar.parse(" ([0-9].*?SM) ")
                     let visBlobArr = visBlob.split(" ")
                     let visBlobDisplay = visBlobArr[visBlobArr.count - 1]
@@ -142,7 +133,7 @@ final class UtilityMetar {
                         var dewpoint = TDArr[1]
                         temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
                         dewpoint = UtilityMath.celsiusToFarenheit(dewpoint.replace("M", "-")).replace(".0", "")
-                        obsSite = metarItems[0]
+                        let obsSite = metarItems[0]
                         var latlon = obsLatlon[obsSite] ?? LatLon()
                         latlon.lonString = latlon.lonString.replace("-0", "-")
                         obsAl.append(latlon.latString + ":" + latlon.lonString + ":" + temperature + "/" + dewpoint)
@@ -184,14 +175,14 @@ final class UtilityMetar {
             obsArrAviationColor = obsAlAviationColor
         }
     }
-
+    
     static func getObsArrAviationColor() -> [Int] {
         return obsArrAviationColor
     }
-
+    
     private static var metarDataRaw = [String]()
     private static var metarSites = [RID]()
-
+    
     static func readMetarData() {
         if metarDataRaw.isEmpty {
             metarDataRaw = UtilityIO.rawFileToStringArray(R.Raw.us_metar3)
@@ -203,7 +194,7 @@ final class UtilityMetar {
             }
         }
     }
-
+    
     static func findClosestMetar(_ location: LatLon) -> String {
         readMetarData()
         var shortestDistance = 1000.00
@@ -224,7 +215,7 @@ final class UtilityMetar {
             return html.replace("<br>", MyApplication.newline)
         }
     }
-
+    
     static func findClosestObservation(_ location: LatLon) -> RID {
         readMetarData()
         var shortestDistance = 1000.00
@@ -243,7 +234,7 @@ final class UtilityMetar {
             return metarSites[bestIndex]
         }
     }
-
+    
     static func getObservationSites(_ radarSite: String) -> String {
         var obsListSb = ""
         let radarLocation = LatLon(radarSite, isRadar: true)
@@ -258,7 +249,7 @@ final class UtilityMetar {
         }
         return obsListSb.replaceAll(",$", "")
     }
-
+    
     // used to condense a list of metar that contains multiple entries for one site,
     // newest is first so simply grab first/append
     private static func condenseObs(_ list: [String]) -> [String] {
