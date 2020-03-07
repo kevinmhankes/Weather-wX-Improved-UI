@@ -349,7 +349,6 @@
 		F0B335AB1DA3FD960035BD36 /* UtilityImgAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */; };
 		F0B335AC1DA3FD960035BD36 /* UtilityIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */; };
 		F0B335AE1DA3FD960035BD36 /* UtilityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */; };
-		F0B335AF1DA3FD960035BD36 /* UtilityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359D1DA3FD960035BD36 /* UtilityMap.swift */; };
 		F0B335B01DA3FD960035BD36 /* UtilityMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */; };
 		F0B335B11DA3FD960035BD36 /* UtilityMetar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */; };
 		F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */; };
@@ -757,7 +756,6 @@
 		F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityImgAnim.swift; sourceTree = "<group>"; };
 		F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityIO.swift; sourceTree = "<group>"; };
 		F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityLocation.swift; sourceTree = "<group>"; };
-		F0B3359D1DA3FD960035BD36 /* UtilityMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMap.swift; sourceTree = "<group>"; };
 		F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMath.swift; sourceTree = "<group>"; };
 		F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetar.swift; sourceTree = "<group>"; };
 		F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNexradColors.swift; sourceTree = "<group>"; };
@@ -1116,7 +1114,6 @@
 				F0B335981DA3FD960035BD36 /* UtilityImg.swift */,
 				F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */,
 				F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */,
-				F0B3359D1DA3FD960035BD36 /* UtilityMap.swift */,
 				F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */,
 				035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */,
 				0382E04122043ADF00DA45C2 /* UtilityObs.swift */,
@@ -1676,7 +1673,6 @@
 				03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */,
 				03F3EB81229945D10056A56D /* UtilityModelNsslWrfInterface.swift in Sources */,
 				0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */,
-				F0B335AF1DA3FD960035BD36 /* UtilityMap.swift in Sources */,
 				037A56B623CBB61800BB23C0 /* RadarGeometryFile.swift in Sources */,
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
