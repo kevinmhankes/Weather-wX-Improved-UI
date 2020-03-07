@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 struct PressureCenter {
+    
     var type: PressureCenterTypeEnum
     var pressureInMb: String
     var lat: Double
@@ -15,6 +16,5 @@ struct PressureCenter {
         self.pressureInMb = pressureInMb
         self.lat = lat
         self.lon = lon
-        //print("PRESSURE: " + pressureInMb + " " + String(lat) + " " + String(lon))
     }
 }

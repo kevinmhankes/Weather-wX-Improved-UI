@@ -196,6 +196,18 @@ extension Int {
     func toColor() -> CGFloat {
         return CGFloat(Float(self) / 255.0)
     }
+    
+    func red() -> UInt8 {
+        return Color.red(self)
+    }
+    
+    func green() -> UInt8 {
+        return Color.green(self)
+    }
+    
+    func blue() -> UInt8 {
+        return Color.blue(self)
+    }
 }
 
 extension UIImage {

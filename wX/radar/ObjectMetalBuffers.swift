@@ -68,8 +68,7 @@ class ObjectMetalBuffers {
             || type.string == "TVS" {
             self.shape = .triangle
         }
-        if type.string == "LOCDOT_CIRCLE"
-            || type.string == "LOCDOT" {
+        if type.string == "LOCDOT_CIRCLE" || type.string == "LOCDOT" {
             self.honorDisplayHold = false
         }
     }
@@ -102,9 +101,9 @@ class ObjectMetalBuffers {
 
     func initialize(_ floatCount: Int, _ solidColor: Int) {
         self.initialize(floatCount)
-        red = Color.red(solidColor)
-        green = Color.green(solidColor)
-        blue = Color.blue(solidColor)
+        red = solidColor.red()
+        green = solidColor.green()
+        blue = solidColor.blue()
     }
 
     func setToPositionZero() {
