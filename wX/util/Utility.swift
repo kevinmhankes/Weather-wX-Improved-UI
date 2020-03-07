@@ -141,6 +141,6 @@ final class Utility {
     }
     
     static func showDiagnostics() -> String {
-        return MyApplication.newline + "Is Tablet?: " + String(UtilityUI.isTablet())
+        return MyApplication.newline + "Is Tablet?: " + String(UtilityUI.isTablet()) + MyApplication.newline + GlobalVariables.forecastZone
     }
 }

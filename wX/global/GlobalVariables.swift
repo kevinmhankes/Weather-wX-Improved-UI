@@ -17,4 +17,5 @@ class GlobalVariables {
     static let preferences = Preferences()
     static let editor = Editor()
     static let appName = "wXL23"
+    static var forecastZone = ""
 }

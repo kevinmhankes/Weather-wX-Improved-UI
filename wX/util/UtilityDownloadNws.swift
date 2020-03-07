@@ -63,7 +63,8 @@ final class UtilityDownloadNws {
     static func get7DayData(_ latLon: LatLon) -> String {
         let pointsData = getLocationPointData(latLon)
         let forecastUrl = pointsData.parse("\"forecast\": \"(.*?)\"")
-        print("API " + forecastUrl)
+        //print("API " + forecastUrl)
+        GlobalVariables.forecastZone = forecastUrl
         let data = forecastUrl.getNwsHtml()
         return data
     }

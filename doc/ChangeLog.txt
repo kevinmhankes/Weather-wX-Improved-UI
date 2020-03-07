@@ -21,13 +21,14 @@
 // [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
 
-56094 2020_03_06 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
+56094 2020_03_07 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController
 		 [ADD] move willEnterForeground and getContent into parent view controller, override as needed
 		 [REF] move call to refreshViews into displayContent when applicable
 		 [REF] many VCs had uneeded call to add toolbar to parent view
 		 [REF] ObjectPopup - add title as named arg with default
 		 [FIX] Canada warnings format improvements
+		 [ADD] forecast zone url to settings -> about
 56093 2020_03_02 [ADD] label in status bar in SPC Fire Weather Outlooks
 		 [FIX] PlayList: nation text add menu was not working and both adds allowed duplicate entries
 		 [REF] PlayList: use enum for icons in toolbar
