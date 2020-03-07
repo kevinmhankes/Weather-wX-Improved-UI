@@ -25,7 +25,7 @@ final class UtilityModelSpcHrrrInputOutput {
             + getSectorCode(om.sector).lowercased() + "/R" + om.run.replaceAll("Z", "") + "_F" + formatTime(om.time)
             + "_V" + getValidTime(om.run, om.time, om.runTimeData.validTime) + "_"
             + getSectorCode(om.sector) + "_" + om.param + ".gif"
-        return UtilityImg.getBitmapAddWhiteBG(imgUrl)
+        return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
     }
     
     static func getSectorCode(_ sectorName: String) -> String {

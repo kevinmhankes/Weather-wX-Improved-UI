@@ -332,10 +332,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
         case "GOES16":
             needsBitmap = false
-            bitmap = UtilityGoes.getImage(
-                Utility.readPref("GOES16_PROD", "02"),
-                Utility.readPref("GOES16_SECTOR", "cgl")
-            )
+            bitmap = UtilityGoes.getImage(Utility.readPref("GOES16_PROD", "02"), Utility.readPref("GOES16_SECTOR", "cgl"))
         case "VIS_MAIN":
             needsBitmap = false
             bitmap = Bitmap()
@@ -453,8 +450,7 @@ final class UtilityDownload {
         case "SPCMESO1":
             let param = "500mb"
             needsBitmap = false
-            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO"
-                + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
+            bitmap = UtilitySpcMesoInputOutput.getImage(param, Utility.readPref("SPCMESO" + String(1) + "_SECTOR_LAST_USED", UtilitySpcMeso.defaultSector))
         case "SPCMESO_500":
             let param = "500mb"
             needsBitmap = false
@@ -484,10 +480,7 @@ final class UtilityDownload {
             bitmap = UtilityGoes.getImage("09", "CONUS")
         case "LTG":
             needsBitmap = false
-            bitmap = UtilityLightning.getImage(
-                Utility.readPref("LIGHTNING_SECTOR", "usa_big"),
-                Utility.readPref("LIGHTNING_PERIOD", "0.25")
-            )
+            bitmap = UtilityLightning.getImage(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
         case "SND":
             let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latlon)
             needsBitmap = false

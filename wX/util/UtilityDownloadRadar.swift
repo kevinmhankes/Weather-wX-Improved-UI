@@ -5,11 +5,11 @@
  *****************************************************************************/
 
 final class UtilityDownloadRadar {
-
+    
     private static let urlTst = MyApplication.nwsApiUrl + "/alerts/active?event=Severe%20Thunderstorm%20Warning"
     private static let urlFfw = MyApplication.nwsApiUrl + "/alerts/active?event=Flash%20Flood%20Warning"
     private static let urlTor = MyApplication.nwsApiUrl + "/alerts/active?event=Tornado%20Warning"
-
+    
     static func getAllRadarData() {
         getPolygonVtec()
         //getPolygonVtecByType(ObjectPolygonWarning(.))
@@ -17,15 +17,15 @@ final class UtilityDownloadRadar {
         getMcd()
         getWatch()
     }
-
+    
     static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {
         type.storage.value = type.url.getNwsHtml()
     }
-
+    
     static func getPolygonVtecByTypeClear(_ type: ObjectPolygonWarning) {
         type.storage.value = ""
     }
-
+    
     static func getPolygonVtec() {
         let tstHtml = urlTst.getNwsHtml()
         if tstHtml != "" {
@@ -46,13 +46,13 @@ final class UtilityDownloadRadar {
             print("TOR FAILURE")
         }
     }
-
+    
     static func clearPolygonVtec() {
         MyApplication.severeDashboardTst.value = ""
         MyApplication.severeDashboardFfw.value = ""
         MyApplication.severeDashboardTor.value = ""
     }
-
+    
     static func getMcd() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
         if html != "" {
@@ -70,12 +70,12 @@ final class UtilityDownloadRadar {
         MyApplication.mcdLatlon.value = mcdLatLon
         MyApplication.mcdNoList.value = mcdNumberList
     }
-
+    
     static func clearMcd() {
         MyApplication.mcdLatlon.value = ""
         MyApplication.mcdNoList.value = ""
     }
-
+    
     static func getMpd() {
         let html = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
         if html != "" {
@@ -92,7 +92,7 @@ final class UtilityDownloadRadar {
         MyApplication.mpdLatlon.value = mpdLatLon
         MyApplication.mpdNoList.value = mpdNumberList
     }
-
+    
     static func getWatch() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
         if html != "" {
@@ -122,7 +122,7 @@ final class UtilityDownloadRadar {
         MyApplication.watchLatlonCombined.value = watchLatLonCombined
         MyApplication.watNoList.value = watchNumberList
     }
-
+    
     static func clearWatch() {
         MyApplication.severeDashboardWat.value = ""
         MyApplication.watchLatlon.value = ""
@@ -130,16 +130,18 @@ final class UtilityDownloadRadar {
         MyApplication.watchLatlonCombined.value = ""
         MyApplication.watNoList.value = ""
     }
-
+    
     static func clearMpd() {
         MyApplication.mpdLatlon.value = ""
         MyApplication.mpdNoList.value = ""
     }
-
+    
     private static func storeWatchMcdLatLon(_ html: String) -> String {
         let coords = html.parseColumn("([0-9]{8}).*?")
         var retStr = ""
-        coords.forEach {retStr += LatLon($0).print()}
+        coords.forEach {
+            retStr += LatLon($0).print()
+        }
         retStr += ":"
         return retStr.replace(" :", ":")
     }

@@ -47,10 +47,7 @@ final class UtilityModelNsslWrfInputOutput {
             + sector.lowercased() + ".f0" + om.time + "00.png"
         let baseLayer = Bitmap(baseLayerUrl)
         let prodLayer = Bitmap(url)
-        let consolidatedImage = UtilityImg.addColorBG(
-            UtilityImg.mergeImages(prodLayer.image, baseLayer.image),
-            UIColor.white
-        )
+        let consolidatedImage = UtilityImg.addColorBackground(UtilityImg.mergeImages(prodLayer.image, baseLayer.image), UIColor.white)
         return Bitmap(consolidatedImage)
     }
 }

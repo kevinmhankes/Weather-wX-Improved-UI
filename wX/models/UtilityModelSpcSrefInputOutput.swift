@@ -36,6 +36,6 @@ final class UtilityModelSpcSrefInputOutput {
         let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/"
             + om.run.replace("z", "")
             + "/" + om.param + "f0" + om.time + ".gif"
-        return UtilityImg.getBitmapAddWhiteBG(imgUrl)
+        return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
     }
 }

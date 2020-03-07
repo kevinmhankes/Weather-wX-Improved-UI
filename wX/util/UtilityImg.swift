@@ -32,12 +32,12 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach {
-                imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)
+            layers.forEach { layer in
+                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
             }
             image = imgTmp
         }
-        image = addColorBG(image, UIColor.white)
+        image = addColorBackground(image, UIColor.white)
         return Bitmap(image)
     }
 
@@ -47,21 +47,21 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach {
-                imgTmp = UtilityImg.mergeImages(imgTmp, $0.image)
+            layers.forEach { layer in
+                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
             }
             image = imgTmp
         }
         return image
     }
 
-    static func getBitmapAddWhiteBG(_ url: String) -> Bitmap {
+    static func getBitmapAddWhiteBackground(_ url: String) -> Bitmap {
         let bitmap = Bitmap(url)
-        let image = addColorBG(bitmap.image, UIColor.white)
+        let image = addColorBackground(bitmap.image, UIColor.white)
         return Bitmap(image)
     }
 
-    static func addColorBG(_ img: UIImage, _ tintColor: UIColor) -> UIImage {
+    static func addColorBackground(_ img: UIImage, _ tintColor: UIColor) -> UIImage {
         let whiteImg = createSolidImage(tintColor, CGSize(width: img.size.width, height: img.size.height))
         return mergeImages(whiteImg, img)
     }

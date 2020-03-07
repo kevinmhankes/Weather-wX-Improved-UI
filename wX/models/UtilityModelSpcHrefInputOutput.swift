@@ -48,6 +48,6 @@ final class UtilityModelSpcHrefInputOutput {
         }
         urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/blank_maps/" + sector + ".png")
         let bitmaps = urlArr.map {Bitmap($0)}
-        return Bitmap(UtilityImg.addColorBG(UtilityImg.layerDrawableToUIImage(bitmaps), UIColor.white))
+        return Bitmap(UtilityImg.addColorBackground(UtilityImg.layerDrawableToUIImage(bitmaps), UIColor.white))
     }
 }

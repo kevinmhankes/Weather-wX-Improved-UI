@@ -66,7 +66,7 @@ final class UtilitySpcMesoInputOutput {
         if timeList.count > frameCount {
             stride(from: (frameCount - 1), to: 0, by: -1).forEach {
                 imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s" + sector + "/" + product + "/" + product + "_" + timeList[$0] + ".gif"
-                bitmaps.append(UtilityImg.getBitmapAddWhiteBG(imgUrl))
+                bitmaps.append(UtilityImg.getBitmapAddWhiteBackground(imgUrl))
             }
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
