@@ -6,21 +6,20 @@
 
 final class UtilityCitiesExtended {
 
-    static var initialized = false
+    private static var initialized = false
     static var cities = [CityExt]()
 
     static func populateArrays() {
         if !initialized {
             initialized = true
-            var list = [String]()
             let text = UtilityIO.readTextFile("cityall.txt")
             let lines = text.split(MyApplication.newline)
             lines.forEach { line in
-                list = line.split(",")
-                if list.count > 3 {
-                    cities.append(CityExt(list[0], Double(list[1])!, -1.0 * Double(list[2])!, list[3]))
-                } else if list.count > 2 {
-                    cities.append(CityExt(list[0], Double(list[1])!, -1.0 * Double(list[2])!, ""))
+                let items = line.split(",")
+                if items.count > 3 {
+                    cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!, items[3]))
+                } else if items.count > 2 {
+                    cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!, ""))
                 }
             }
         }
