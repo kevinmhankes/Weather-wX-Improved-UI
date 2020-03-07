@@ -5,27 +5,27 @@
  *****************************************************************************/
 
 final class ObjectForecastPackageCurrentConditions {
-
+    
     var data = ""
     var iconUrl = ""
     private var conditionsTimeStr = ""
     var status = ""
     var topLine = ""
     var middleLine = ""
-    var temperature = ""
-    var windChill = ""
-    var heatIndex = ""
-    var dewpoint = ""
-    var relativeHumidity = ""
-    var seaLevelPressure = ""
-    var windDirection = ""
-    var windSpeed = ""
-    var windGust = ""
-    var visibility = ""
-    var condition = ""
-    var rawMetar = ""
+    private var temperature = ""
+    private var windChill = ""
+    private var heatIndex = ""
+    private var dewpoint = ""
+    private var relativeHumidity = ""
+    private var seaLevelPressure = ""
+    private var windDirection = ""
+    private var windSpeed = ""
+    private var windGust = ""
+    private var visibility = ""
+    private var condition = ""
+    private var rawMetar = ""
     var spokenText = ""
-
+    
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
@@ -37,8 +37,8 @@ final class ObjectForecastPackageCurrentConditions {
         }
         self.formatCurrentConditions()
     }
-
-    // US via LAT LON
+    
+    // US via LAT LON (called from adhoc location and from other init)
     convenience init(_ location: LatLon) {
         self.init()
         let conditions = getConditionsViaMetar(location)
@@ -48,15 +48,7 @@ final class ObjectForecastPackageCurrentConditions {
         status = UtilityObs.getStatusViaMetar(conditionsTimeStr)
         formatCurrentConditions()
     }
-
-    // CA
-    convenience init(_ html: String) {
-        self.init()
-        data = UtilityCanada.getConditions(html)
-        status = UtilityCanada.getStatus(html)
-        formatCurrentConditions()
-    }
-
+    
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var string = ""
         let objMetar = ObjectMetar(location)
@@ -87,7 +79,7 @@ final class ObjectForecastPackageCurrentConditions {
         return (string, objMetar.icon, objMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
-
+    
     private func formatCurrentConditions() {
         let separator = " - "
         let dataList = data.split(separator)
