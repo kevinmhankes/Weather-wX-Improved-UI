@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class ObjectForecast {
-
+    
     var name = ""
     private var temperature = ""
     private var windSpeed = ""
@@ -13,7 +13,7 @@ final class ObjectForecast {
     private var icon = ""
     var shortForecast = ""
     var detailedForecast = ""
-
+    
     init(
         _ name: String,
         _ temperature: String,

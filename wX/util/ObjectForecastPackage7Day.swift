@@ -7,13 +7,13 @@
 import UIKit
 
 final class ObjectForecastPackage7Day {
-
+    
     var sevenDayLong = ""
     var icons = [String]()
     private var shortForecasts = [String]()
     private var detailedForecasts = [String]()
     var locationIndex = 0
-
+    
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
@@ -26,27 +26,27 @@ final class ObjectForecastPackage7Day {
             convertExt7DaytoList()
         }
     }
-
+    
     convenience init(_ latLon: LatLon) {
         self.init()
         let html = UtilityDownloadNws.get7DayData(latLon)
         sevenDayLong = get7DayExt(html)
     }
-
+    
     var forecastList: [String] {
         return detailedForecasts
     }
-
+    
     var forecastListCondensed: [String] {
         return shortForecasts
     }
-
+    
     // Canada
     func convertExt7DaytoList() {
         detailedForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
         shortForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
-
+    
     func get7DayExt(_ html: String) -> String {
         var forecasts = [ObjectForecast]()
         let names = html.parseColumn("\"name\": \"(.*?)\",")
@@ -84,9 +84,9 @@ final class ObjectForecastPackage7Day {
         }
         return forecastString
     }
-
+    
     static var scrollView = UIScrollView()
-
+    
     static func getHtml(_ latLon: LatLon) -> String {
         return UtilityDownloadNws.get7DayData(latLon)
     }

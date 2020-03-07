@@ -49,6 +49,7 @@ final class ObjectForecastPackageCurrentConditions {
         formatCurrentConditions()
     }
     
+    // FIXME don't use named tuple for language consistency
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var string = ""
         let objMetar = ObjectMetar(location)
