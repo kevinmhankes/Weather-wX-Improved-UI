@@ -9,11 +9,9 @@ public class UtilityWXOGL {
     static func showTextProducts(_ location: LatLon) -> String {
         var x = [Double]()
         var y = [Double]()
-        var warningChunk = MyApplication.severeDashboardTor.value
-            + MyApplication.severeDashboardTst.value
-            + MyApplication.severeDashboardFfw.value
-        ObjectPolygonWarning.polygonList.forEach {
-            let it = ObjectPolygonWarning.polygonDataByType[$0]!
+        var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value
+        ObjectPolygonWarning.polygonList.forEach { poly in
+            let it = ObjectPolygonWarning.polygonDataByType[poly]!
             if it.isEnabled {
                 warningChunk += it.storage.value
             }
@@ -40,7 +38,9 @@ public class UtilityWXOGL {
             }
             if (y.count > 3 && x.count > 3) && (x.count == y.count) {
                 let poly2 = ExternalPolygon.Builder()
-                x.indices.forEach { _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))}
+                x.indices.forEach {
+                    _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))
+                }
                 let polygon2 = poly2.build()
                 let contains = polygon2.contains(point: ExternalPoint(Float(location.lat), Float(location.lon)))
                 if contains && notFound {
