@@ -25,7 +25,9 @@ public class UtilityRadarUI {
                 $0?.textObj.refreshTextLabels()
             }
         }
-        wxMetal.forEach {$0?.demandRender()}
+        wxMetal.forEach {
+            $0?.demandRender()
+        }
     }
 
     static func zoomInByKey(
@@ -45,7 +47,9 @@ public class UtilityRadarUI {
                 $0?.textObj.refreshTextLabels()
             }
         }
-        wxMetal.forEach {$0?.demandRender()}
+        wxMetal.forEach {
+            $0?.demandRender()
+        }
     }
 
     static func moveByKey(
@@ -60,7 +64,8 @@ public class UtilityRadarUI {
         var xChange: Float = 0.0
         var yChange: Float = 0.0
         switch direction {
-        case .up: yChange = -25.0
+        case .up:
+            yChange = -25.0
         case .leftUp:
             yChange = -25.0
             xChange = 25.0
@@ -73,16 +78,21 @@ public class UtilityRadarUI {
         case .rightDown:
             yChange = 25.0
             xChange = -25.0
-        case .down: yChange = 25.0
-        case .right: xChange = -25.0
-        case .left: xChange = 25.0
+        case .down:
+            yChange = 25.0
+        case .right:
+            xChange = -25.0
+        case .left:
+            xChange = 25.0
         }
         wxMetal.forEach {
             $0?.xPos += xChange
             $0?.yPos += yChange
             $0?.textObj.refreshTextLabels()
         }
-        wxMetal.forEach {$0?.demandRender()}
+        wxMetal.forEach {
+            $0?.demandRender()
+        }
     }
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
@@ -102,7 +112,6 @@ public class UtilityRadarUI {
         } else {
             token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         }
-        print(token)
         let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
