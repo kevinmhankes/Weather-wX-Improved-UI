@@ -228,14 +228,13 @@ final class WXMetalTextObject {
                             } else {
                                 glview.obsAl.append(TextViewMetal(context))
                             }
-                            let ii = glview.obsAl.count - 1
-                            glview.obsAl[ii].textColor = RadarGeometry.radarColorObs
-                            glview.obsAl[ii].textSize = textSize
-                            glview.obsAl[ii].setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
+                            glview.obsAl.last?.textColor = RadarGeometry.radarColorObs
+                            glview.obsAl.last?.textSize = textSize
+                            glview.obsAl.last?.setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
                             if Double(OGLR.zoom) > obsExtZoom {
-                                glview.obsAl[ii].setText(tmpArrObsExt[2])
+                                glview.obsAl.last?.setText(tmpArrObsExt[2])
                             } else if PolygonType.OBS.display {
-                                glview.obsAl[ii].setText(tmpArrObs[2])
+                                glview.obsAl.last?.setText(tmpArrObs[2])
                             }
                         }
                     }
