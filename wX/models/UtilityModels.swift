@@ -76,8 +76,8 @@ final class UtilityModels {
             if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) {
                 run2 = String((Int(run2) ?? 0) - 24)
             }
-            listTime.enumerated().forEach {
-                tmpStr = $1.split(" ")[0].replace(prefix, "")
+            listTime.forEach { value in
+                tmpStr = value.split(" ")[0].replace(prefix, "")
                 listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
             }
         }

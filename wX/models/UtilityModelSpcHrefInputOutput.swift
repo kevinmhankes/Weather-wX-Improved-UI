@@ -27,9 +27,8 @@ final class UtilityModelSpcHrefInputOutput {
         let day = om.run.substring(6, 8)
         let hour = om.run.substring(8, 10)
         let products = om.param.split(",")
-        var urlArr = [String]()
-        urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/spc_white_1050px.png")
-        urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/noaa_overlay_1050px.png")
+        var urls = [MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/spc_white_1050px.png"]
+        urls.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/noaa_overlay_1050px.png")
         let sectorIndex = UtilityModelSpcHrefInterface.sectorsLong.firstIndex(of: om.sector) ?? 0
         let sector = UtilityModelSpcHrefInterface.sectors[sectorIndex]
         products.forEach {
@@ -44,10 +43,10 @@ final class UtilityModelSpcHrefInputOutput {
                     + "/" + day + "/" + hour + "00/f0" + om.time
                     + "00/" + $0 + "." + sector + ".f0" + om.time + "00.png"
             }
-            urlArr.append(url)
+            urls.append(url)
         }
-        urlArr.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/blank_maps/" + sector + ".png")
-        let bitmaps = urlArr.map {Bitmap($0)}
+        urls.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/blank_maps/" + sector + ".png")
+        let bitmaps = urls.map { Bitmap($0) }
         return Bitmap(UtilityImg.addColorBackground(UtilityImg.layerDrawableToUIImage(bitmaps), UIColor.white))
     }
 }
