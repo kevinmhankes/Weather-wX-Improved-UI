@@ -8,7 +8,6 @@ import UIKit
 
 final class ObjectForecastPackage7Day {
     
-    var sevenDayLong = ""
     var icons = [String]()
     private var shortForecasts = [String]()
     private var detailedForecasts = [String]()
@@ -18,19 +17,20 @@ final class ObjectForecastPackage7Day {
         self.init()
         if Location.isUS(locNum) {
             let html = UtilityDownloadNws.get7DayData(Location.getLatLon(locNum))
-            sevenDayLong = get7DayExt(html)
+            process(html)
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            sevenDayLong = UtilityCanada.get7Day(html)
+            let sevenDayLong = UtilityCanada.get7Day(html)
             icons = UtilityCanada.getIcons7DayAsList(sevenDayLong)
-            convertExt7DaytoList()
+            convertExt7DaytoList(sevenDayLong)
         }
     }
     
+    // US
     convenience init(_ latLon: LatLon) {
         self.init()
         let html = UtilityDownloadNws.get7DayData(latLon)
-        sevenDayLong = get7DayExt(html)
+        process(html)
     }
     
     var forecastList: [String] {
@@ -42,12 +42,13 @@ final class ObjectForecastPackage7Day {
     }
     
     // Canada
-    func convertExt7DaytoList() {
-        detailedForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
-        shortForecasts =  sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+    func convertExt7DaytoList(_ sevenDayLong: String) {
+        detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
     
-    func get7DayExt(_ html: String) -> String {
+    // US
+    func process(_ html: String) {
         var forecasts = [ObjectForecast]()
         let names = html.parseColumn("\"name\": \"(.*?)\",")
         let temperatures = html.parseColumn("\"temperature\": (.*?),")
@@ -76,13 +77,10 @@ final class ObjectForecastPackage7Day {
                 )
             )
         }
-        var forecastString = MyApplication.newline + MyApplication.newline
         forecasts.forEach { forecast in
-            forecastString += forecast.name + ": " + forecast.detailedForecast + MyApplication.newline + MyApplication.newline
             self.detailedForecasts.append(forecast.name + ": " + forecast.detailedForecast)
             self.shortForecasts.append(forecast.name + ": " + forecast.shortForecast)
         }
-        return forecastString
     }
     
     static var scrollView = UIScrollView()
