@@ -9,8 +9,7 @@ import UIKit
 final class UtilityModelSpcSrefInputOutput {
     
     static let srefPattern2 = "([0-9]{10}z</a>&nbsp in through <b>f[0-9]{3})"
-    static let srefPattern3 = "<tr><td class=.previous.><a href=sref.php\\?run="
-        + "[0-9]{10}&id=SREF_H5__>([0-9]{10}z)</a></td></tr>"
+    static let srefPattern3 = "<tr><td class=.previous.><a href=sref.php\\?run=[0-9]{10}&id=SREF_H5__>([0-9]{10}z)</a></td></tr>"
     
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
@@ -33,9 +32,7 @@ final class UtilityModelSpcSrefInputOutput {
     }
     
     static func getImage(_ om: ObjectModel) -> Bitmap {
-        let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/"
-            + om.run.replace("z", "")
-            + "/" + om.param + "f0" + om.time + ".gif"
+        let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/" + om.run.replace("z", "") + "/" + om.param + "f0" + om.time + ".gif"
         return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
     }
 }
