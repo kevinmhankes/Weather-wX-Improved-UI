@@ -8,9 +8,9 @@ import UIKit
 
 final class ObjectForecastPackageHazards {
     
-    var hazardsShort = ""
+    private var hazardsShort = ""
     var hazards = ""
-    static var uiv: UIViewController?
+    private static var uiv: UIViewController?
     
     convenience init(_ uiv: UIViewController, _ locNum: Int) {
         self.init(uiv, Location.getLatLon(locNum))
