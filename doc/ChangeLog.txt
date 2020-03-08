@@ -18,7 +18,6 @@
 // [ADD] more robust handling network issues (cc,7day,radar)
 // [REF] stop using $0 and $1
 // [ADD] usalerts filter by state
-// [ADD] onrestart nhc storm
 // [ADD] onrestart spc mcd wat mpd
 
 56094 2020_03_08 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
