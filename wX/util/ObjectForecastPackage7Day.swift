@@ -13,6 +13,7 @@ final class ObjectForecastPackage7Day {
     private var detailedForecasts = [String]()
     var locationIndex = 0
     
+    // US or CA
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
@@ -31,20 +32,6 @@ final class ObjectForecastPackage7Day {
         self.init()
         let html = UtilityDownloadNws.get7DayData(latLon)
         process(html)
-    }
-    
-    var forecastList: [String] {
-        return detailedForecasts
-    }
-    
-    var forecastListCondensed: [String] {
-        return shortForecasts
-    }
-    
-    // Canada
-    func processCanada(_ sevenDayLong: String) {
-        detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
-        shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
     
     // US
@@ -83,9 +70,23 @@ final class ObjectForecastPackage7Day {
         }
     }
     
+    // Canada
+    func processCanada(_ sevenDayLong: String) {
+        detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+    }
+    
     static var scrollView = UIScrollView()
     
     static func getHtml(_ latLon: LatLon) -> String {
         return UtilityDownloadNws.get7DayData(latLon)
+    }
+    
+    var forecastList: [String] {
+        return detailedForecasts
+    }
+    
+    var forecastListCondensed: [String] {
+        return shortForecasts
     }
 }
