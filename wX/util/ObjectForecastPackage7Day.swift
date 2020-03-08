@@ -75,13 +75,7 @@ final class ObjectForecastPackage7Day {
         detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
         shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
-    
-    static var scrollView = UIScrollView()
-    
-    static func getHtml(_ latLon: LatLon) -> String {
-        return UtilityDownloadNws.get7DayData(latLon)
-    }
-    
+        
     var forecastList: [String] {
         return detailedForecasts
     }
