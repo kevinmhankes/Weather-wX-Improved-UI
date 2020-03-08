@@ -21,7 +21,6 @@ class UIPreferences {
     static var nwsIconBottomColor = Color.rgb(255, 255, 255)
     static var textviewFontSize: CGFloat = 16.0
     static var refreshLocMin = 10
-    //static var nwsTextRemovelinebreaks = false
     static var tilesPerRow = 3
     static var homescreenTextLength = 500
     static var radarToolbarTransparent = true
@@ -43,11 +42,9 @@ class UIPreferences {
         tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)
         homescreenTextLength = Utility.readPref("HOMESCREEN_TEXT_LENGTH_PREF", 500)
         unitsM = Utility.readPref("UNITS_M", "true").hasPrefix("t")
-        //unitsF = Utility.readPref("UNITS_F", "true").hasPrefix("t")
         nwsIconTextColor = Utility.readPref("NWS_ICON_TEXT_COLOR", Color.rgb(38, 97, 139))
         nwsIconBottomColor = Utility.readPref("NWS_ICON_BOTTOM_COLOR", Color.rgb(255, 255, 255))
         refreshLocMin = Utility.readPref("REFRESH_LOC_MIN", 10)
-        //nwsTextRemovelinebreaks = Utility.readPref("NWS_TEXT_REMOVELINEBREAKS", "true").hasPrefix("t")
         textviewFontSize = CGFloat(Utility.readPref("TEXTVIEW_FONT_SIZE", Int(textviewFontSize)))
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
