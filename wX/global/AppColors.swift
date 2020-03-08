@@ -7,21 +7,15 @@
 import UIKit
 
 class AppColors {
-
+    
     static var primaryColorRed = 46.toColor()
     static var primaryColorGreen = 63.toColor()
     static var primaryColorBlue = 89.toColor()
     static var toolbarTextColor = UIColor.white
-    static var primaryColorUIColor = UIColor(
-        red: primaryColorRed,
-        green: primaryColorGreen,
-        blue: primaryColorBlue,
-        alpha: CGFloat(1.0)
-    )
     static var primaryDarkBlueUIColor = wXColor.uiColorInt(0, 17, 43)
     static var primaryBackgroundBlueUIColor = ColorCompatibility.separator
     static var primaryColorFab = wXColor.uiColorInt(88, 121, 169)
-
+    
     static func update() {
         var appColor = Utility.readPref("UI_THEME", "blue")
         if #available(iOS 13.0, *) {
@@ -37,11 +31,6 @@ class AppColors {
             primaryColorRed = 10.toColor()
             primaryColorGreen = 10.toColor()
             primaryColorBlue = 10.toColor()
-            primaryColorUIColor =  wXColor.uiColorFloat(
-                primaryColorRed,
-                primaryColorGreen,
-                primaryColorBlue
-            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
             primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(30, 30, 30)
@@ -49,11 +38,6 @@ class AppColors {
             primaryColorRed = 30.toColor()
             primaryColorGreen = 30.toColor()
             primaryColorBlue = 30.toColor()
-            primaryColorUIColor =  wXColor.uiColorFloat(
-                primaryColorRed,
-                primaryColorGreen,
-                primaryColorBlue
-            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 0, 0)
             primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(100, 100, 100)
@@ -61,11 +45,6 @@ class AppColors {
             primaryColorRed = 0.toColor()
             primaryColorGreen = 71.toColor()
             primaryColorBlue = 6.toColor()
-            primaryColorUIColor =  wXColor.uiColorFloat(
-                primaryColorRed,
-                primaryColorGreen,
-                primaryColorBlue
-            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(0, 46, 4)
             primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(70, 175, 70)
@@ -73,11 +52,6 @@ class AppColors {
             primaryColorRed = 46.toColor()
             primaryColorGreen = 63.toColor()
             primaryColorBlue = 89.toColor()
-            primaryColorUIColor =  wXColor.uiColorFloat(
-                primaryColorRed,
-                primaryColorGreen,
-                primaryColorBlue
-            )
             primaryDarkBlueUIColor = wXColor.uiColorInt(46, 63, 89)
             primaryBackgroundBlueUIColor = ColorCompatibility.separator
             primaryColorFab = wXColor.uiColorInt(88, 121, 169)
