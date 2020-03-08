@@ -25,7 +25,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     private var toolbarBottom = ObjectToolbar(.bottom)
     private let helpButton = ObjectToolbarIcon()
     private let helpStatement = "There are four ways to enter and save a location. The easiest method is to tap the GPS icon (which looks like an arrow pointing up and to the right). You will need to give permission for the program to access your GPS location if you have not done so before. It might take 5-10 seconds but eventually latitude and longitude numbers will appear and the location will be automatically saved. The second way is to press and hold (also known as long press) on the map until a red pin appears. Once the red pin appears the latitude and longitude will use reverse geocoding to determine an appropriate label for the location. The third method is to tap the search icon and then enter a location such as a city. Once resolved it will save automatically. The final method is the most manual and that is manually specifying a label, latitude, and longitude. After you have done this you need to tape the checkmark icon to save it. Please note that only land based locations in the USA are supported."
-    
     var settingsLocationEditNum = ""
     
     override func viewDidLoad() {
@@ -123,8 +122,10 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         var latString = latTextView.view.text!
         var lonString = lonTextView.view.text!
         if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
-            //print(self.latTextView.text)
-            //print(self.lonTextView.text)
+            // The location save process looks up the true Lat/Lon which is then ingested by the map
+            let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
+            latTextView.text = MyApplication.locations[locationNumber].lat
+            lonTextView.text = MyApplication.locations[locationNumber].lon
             if latTextView.view.text!.split(":").count > 2 {
                 latString = latTextView.view.text!.split(":")[2]
             }
@@ -163,7 +164,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
                 handler: {_ in
                     let textField = alert.textFields![0]
                     self.searchAddress(textField.text!)
-                    //self.labelTextView.view.text = textField.text?.capitalized
             }
             )
         )
@@ -187,7 +187,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
                     } else {
                         locationName = "Location"
                     }
-                    //print(locationName)
                     self.labelTextView.text = locationName
                     self.latTextView.text = String(coordinate!.latitude)
                     self.lonTextView.text = String(coordinate!.longitude)
@@ -209,7 +208,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         self.latTextView.text = String(locValue.latitude)
         self.lonTextView.text = String(locValue.longitude)
         if self.latTextView.text != "" && self.lonTextView.text != "" {
-            //self.saveClicked()
             getAddressAndSaveLocation(self.latTextView.text, self.lonTextView.text)
         }
     }
@@ -242,7 +240,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
-            //print(locationOnMap)
             getAddressAndSaveLocation(String(locationOnMap.latitude), String(locationOnMap.longitude))
         }
     }
