@@ -22,7 +22,7 @@ final class ObjectForecastPackage7Day {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
             let sevenDayLong = UtilityCanada.get7Day(html)
             icons = UtilityCanada.getIcons7DayAsList(sevenDayLong)
-            convertExt7DaytoList(sevenDayLong)
+            processCanada(sevenDayLong)
         }
     }
     
@@ -42,7 +42,7 @@ final class ObjectForecastPackage7Day {
     }
     
     // Canada
-    func convertExt7DaytoList(_ sevenDayLong: String) {
+    func processCanada(_ sevenDayLong: String) {
         detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
         shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
