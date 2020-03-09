@@ -62,8 +62,7 @@ class vcWpcText: UIwXViewControllerWithAudio {
                 } else {
                     self.objectTextView.font = FontSize.medium.size
                 }
-                
-                self.productButton.title = self.product
+                self.productButton.title = self.product.uppercased()
                 Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
             }
         }

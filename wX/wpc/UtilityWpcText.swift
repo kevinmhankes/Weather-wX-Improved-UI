@@ -11,7 +11,7 @@ final class UtilityWpcText {
             "RWRMX",
             "UVICAC"
         ]
-        if product.startsWith("TPT") || productList.contains(product) {
+        if product.startsWith("TPT") || product.startsWith("SWPC") || productList.contains(product) {
             return true
         }
         return false
