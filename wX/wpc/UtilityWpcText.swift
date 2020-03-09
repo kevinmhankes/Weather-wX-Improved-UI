@@ -6,6 +6,17 @@
 
 final class UtilityWpcText {
     
+    static func needsFixedWidthFont(_ product: String) -> Bool {
+        let productList = [
+            "RWRMX",
+            "UVICAC"
+        ]
+        if product.startsWith("TPT") || productList.contains(product) {
+            return true
+        }
+        return false
+    }
+    
     static let titles = [
         ObjectMenuTitle("General Forecast Discussions", 11),
         ObjectMenuTitle("Precipitation Discussions", 2),

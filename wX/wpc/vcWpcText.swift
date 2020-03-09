@@ -56,6 +56,13 @@ class vcWpcText: UIwXViewControllerWithAudio {
             self.html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async {
                 self.objectTextView.text = self.html
+                
+                if UtilityWpcText.needsFixedWidthFont(self.product.uppercased()) {
+                    self.objectTextView.font = FontSize.hourly.size
+                } else {
+                    self.objectTextView.font = FontSize.medium.size
+                }
+                
                 self.productButton.title = self.product
                 Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
             }

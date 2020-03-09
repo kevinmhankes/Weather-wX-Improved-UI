@@ -9,6 +9,10 @@ import UIKit
 
 extension String {
     
+    func startsWith(_ pattern: String) -> Bool {
+        return self.hasPrefix(pattern)
+    }
+    
     func parseLastMatch(_ pattern: String) -> String {
         return UtilityString.parseLastMatch(self, pattern)
     }
