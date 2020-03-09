@@ -128,8 +128,8 @@ final class UtilityMath {
 
     static func celsiusToFarenheitTable() -> String {
         var table = "C\t\tF" + MyApplication.newline
-        (-40...39).forEach {
-            table += String($0) + "  " + celsiusToFarenheit($0) + MyApplication.newline
+        (-40...39).forEach { degree in
+            table += String(degree) + "  " + celsiusToFarenheit(degree) + MyApplication.newline
         }
         return table
     }

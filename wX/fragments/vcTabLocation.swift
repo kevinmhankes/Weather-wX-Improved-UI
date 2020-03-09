@@ -478,7 +478,7 @@ class vcTabLocation: vcTabParent {
             DispatchQueue.main.async {
                 self.textArr[product] = html
                 let objectTextView = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
-                if product == "HOURLY" {
+                if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
                     objectTextView.font = FontSize.hourly.size
                 }
                 objectTextView.addGestureRecognizer(
