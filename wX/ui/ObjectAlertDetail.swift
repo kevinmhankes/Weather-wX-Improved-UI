@@ -42,8 +42,8 @@ final class ObjectAlertDetail {
         stackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
-        textViews.forEach {
-            $0.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        textViews.forEach { item in
+            item.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         }
     }
 

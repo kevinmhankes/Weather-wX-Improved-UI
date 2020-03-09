@@ -89,9 +89,9 @@ final class ObjectPopUp {
         alert.view.tintColor = ColorCompatibility.label
         self.button = button
         self.uiv = uiv
-        list.forEach {
-            let index = list.firstIndex(of: $0)!
-            let action = UIAlertAction($0, {_ in fn(index)})
+        list.forEach { item in
+            let index = list.firstIndex(of: item)!
+            let action = UIAlertAction(item, {_ in fn(index)})
             addAction(action)
         }
         finish()

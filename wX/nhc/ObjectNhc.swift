@@ -65,8 +65,8 @@ final class ObjectNhc: NSObject {
     // ATL for example would have list of global bitmaps (which have url in object) and list for storms
     
     func getTextData() {
-        (1...5).forEach {
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String($0) + ".xml")
+        (1...5).forEach { index in
+            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String(index) + ".xml")
             if dataRet.title != "" {
                 self.atlSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
@@ -77,8 +77,8 @@ final class ObjectNhc: NSObject {
                 self.atlTitleList.append(dataRet.title.replace("NHC Atlantic Wallet", ""))
             }
         }
-        (1...5).forEach {
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String($0) + ".xml")
+        (1...5).forEach { index in
+            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String(index) + ".xml")
             if dataRet.title != "" {
                 self.pacSumList.append(dataRet.summary)
                 let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)

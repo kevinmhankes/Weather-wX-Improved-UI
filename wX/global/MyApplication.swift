@@ -71,8 +71,8 @@ class MyApplication {
         UIPreferences.initialize()
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
-        [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach {
-            radarColorPalette[String($0)] = Utility.readPref("RADAR_COLOR_PALETTE_" + String($0), "CODENH")
+        [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach { radarProductNumber in
+            radarColorPalette[String(radarProductNumber)] = Utility.readPref("RADAR_COLOR_PALETTE_" + String(radarProductNumber), "CODENH")
         }
         homescreenFav = Utility.readPref("HOMESCREEN_FAV", homescreenFavDefault)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)

@@ -28,8 +28,8 @@ final class ObjectCardLocationItem {
         tvCurrentConditions.color = ColorCompatibility.label
         tvMiddle.color = ColorCompatibility.systemGray2
         uiv.stackView.addArrangedSubview(sV.view)
-        [tvName, tvName, tvCurrentConditions].forEach {
-            $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+        [tvName, tvName, tvCurrentConditions].forEach { item in
+            item.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
         sV.view.addGestureRecognizer(gesture)
         sV.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true

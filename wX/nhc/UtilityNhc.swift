@@ -98,8 +98,8 @@ final class UtilityNhc {
         )
         let bitmaps = urls.map { Bitmap(baseUrl + $0) }
         let animDrawable = AnimationDrawable()
-        bitmaps.forEach {
-            animDrawable.addFrame($0, UtilityImg.getAnimInterval())
+        bitmaps.forEach { bitmap in
+            animDrawable.addFrame(bitmap, UtilityImg.getAnimInterval())
         }
         return animDrawable
     }

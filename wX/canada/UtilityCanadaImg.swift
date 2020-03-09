@@ -78,13 +78,13 @@ final class UtilityCanadaImg {
         let times = html.parseColumn(">([0-9]{4}/[0-9]{2}/[0-9]{2} [0-9]{2}h[0-9]{2}m)</option>")
         var bitmaps = [Bitmap]()
         let delay = UtilityImg.getAnimInterval()
-        stride(from: (times.count - 1), to: (times.count - frameCount), by: -1).forEach {
+        stride(from: (times.count - 1), to: (times.count - frameCount), by: -1).forEach { index in
             let url = MyApplication.canadaEcSitePrefix + "/data/satellite/goes_"
                 + region
                 + "_"
                 + imgType
                 + "_m_"
-                + times[$0].replace(" ", "_").replace("/", "@") + ".jpg"
+                + times[index].replace(" ", "_").replace("/", "@") + ".jpg"
             bitmaps.append(Bitmap(url))
         }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)

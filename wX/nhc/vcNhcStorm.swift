@@ -108,12 +108,12 @@ class vcNhcStorm: UIwXViewController {
         }
         serial.async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
-            self.stormUrls.forEach {
+            self.stormUrls.forEach { fileName in
                 var url = self.baseUrl
-                if $0 == "WPCQPF_sm2.gif" {
+                if fileName == "WPCQPF_sm2.gif" {
                     url = self.baseUrlShort
                 }
-                self.bitmaps.append(Bitmap(url + $0))
+                self.bitmaps.append(Bitmap(url + fileName))
             }
             DispatchQueue.main.async {
                 self.displayImageContent()

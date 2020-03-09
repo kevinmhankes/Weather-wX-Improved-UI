@@ -40,8 +40,8 @@ public class ObjectMap {
     
     func createLocationsList(_ itemList: [String]) -> [[String: String]] {
         var locations = [[String: String]]()
-        itemList.forEach {
-            let ridArr = $0.split(":")
+        itemList.forEach { item in
+            let ridArr = item.split(":")
             let latLon: LatLon
             switch officeType {
             case .WFO:
