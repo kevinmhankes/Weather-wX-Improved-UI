@@ -9,33 +9,33 @@ import UIKit
 final class UtilitySpcSwo {
 
     static func getImageUrls(_ day: String, getAllImages: Bool = true) -> [Bitmap] {
-        var imgUrls = [String]()
+        var urls = [String]()
         if day == "48" {
-            imgUrls = (4...8).map {
+            urls = (4...8).map {
                 MyApplication.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + String($0) + "prob.gif"
             }
-            return imgUrls.map { Bitmap($0) }
+            return urls.map { Bitmap($0) }
         }
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
         let time = html.parseFirst("show_tab\\(.otlk_([0-9]{4}).\\)")
         switch day {
         case "1", "2":
             let baseUrl = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
-            imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
+            urls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
             ["_torn.gif", "_hail.gif", "_wind.gif"].forEach { product in
-                imgUrls.append(baseUrl + time + product)
+                urls.append(baseUrl + time + product)
             }
         case "3":
             ["otlk_", "prob_"].forEach { product in
-                imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + product + time + ".gif")
+                urls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + product + time + ".gif")
             }
         default:
             break
         }
         if getAllImages {
-            return imgUrls.map { Bitmap($0) }
+            return urls.map { Bitmap($0) }
         } else {
-            return [Bitmap(imgUrls[0])]
+            return [Bitmap(urls[0])]
         }
     }
 }
