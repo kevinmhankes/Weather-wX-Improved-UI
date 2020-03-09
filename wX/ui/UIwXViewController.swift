@@ -70,7 +70,9 @@ class UIwXViewController: UIViewController {
     }
 
     func removeAllViews() {
-        self.view.subviews.forEach({ $0.removeFromSuperview() })
+        self.view.subviews.forEach {
+            $0.removeFromSuperview()
+        }
     }
     
     //@objc func shareClicked(sender: UIButton) {
