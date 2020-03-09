@@ -55,8 +55,8 @@ final class ObjectNhc: NSObject {
             imagesPerRow = 3
         }
         super.init()
-        NhcOceanEnum.allCases.forEach {
-            regionMap[$0] = ObjectNhcRegionSummary($0)
+        NhcOceanEnum.allCases.forEach { region in
+            regionMap[region] = ObjectNhcRegionSummary(region)
         }
     }
     
@@ -96,13 +96,13 @@ final class ObjectNhc: NSObject {
         if self.atlSumList.count < 1 {
             textAtl =  "There are no tropical cyclones in the Atlantic at this time."
         } else {
-            self.atlSumList.indices.forEach {
-                if atlImg1List[$0] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[$0])
+            self.atlSumList.indices.forEach { index in
+                if atlImg1List[index] != "" {
+                    let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[index])
                     _ = ObjectCardNhcStormReportItem(
                         uiv.stackView,
                         objectNhcStormDetails,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoAtlNhcStorm(sender:)))
+                        UITapGestureRecognizerWithData(index, self, #selector(gotoAtlNhcStorm(sender:)))
                     )
                 }
             }
@@ -111,13 +111,13 @@ final class ObjectNhc: NSObject {
         if self.pacSumList.count < 1 {
             textPac += "There are no tropical cyclones in the Eastern Pacific at this time."
         } else {
-            self.pacSumList.indices.forEach {
-                if pacImg1List[$0] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[$0])
+            self.pacSumList.indices.forEach { index in
+                if pacImg1List[index] != "" {
+                    let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[index])
                     _ = ObjectCardNhcStormReportItem(
                         uiv.stackView,
                         objectNhcStormDetails,
-                        UITapGestureRecognizerWithData($0, self, #selector(gotoEpacNhcStorm(sender:)))
+                        UITapGestureRecognizerWithData(index, self, #selector(gotoEpacNhcStorm(sender:)))
                     )
                 }
             }

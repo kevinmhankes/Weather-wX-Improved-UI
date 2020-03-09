@@ -55,8 +55,8 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             if maxVers > 30 {
                 maxVers = 30
             }
-            stride(from: 1, to: maxVers, by: 2).forEach {
-                lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, $0))
+            stride(from: 1, to: maxVers, by: 2).forEach { version in
+                lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version))
             }
         }
         return lsrList

@@ -53,8 +53,8 @@ final class ObjectCard7DayCollection {
     }
 
     func resetTextSize() {
-        sevenDayCardList.forEach {
-            $0.resetTextSize()
+        sevenDayCardList.forEach { item in
+            item.resetTextSize()
         }
         objectCardSunTime?.resetTextSize()
     }
@@ -62,10 +62,10 @@ final class ObjectCard7DayCollection {
     func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
         let dayArr = objSevenDay.forecastList
         let dayArrShort = objSevenDay.forecastListCondensed
-        dayArr.indices.forEach {
-            if dayArr[$0] != "" {
-                if sevenDayCardList.count > $0 {
-                    sevenDayCardList[$0].update($0, objSevenDay.icons, dayArr, dayArrShort, isUS)
+        dayArr.indices.forEach { index in
+            if dayArr[index] != "" {
+                if sevenDayCardList.count > index {
+                    sevenDayCardList[index].update(index, objSevenDay.icons, dayArr, dayArrShort, isUS)
                 }
             }
         }
