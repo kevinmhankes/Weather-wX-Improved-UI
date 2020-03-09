@@ -84,7 +84,7 @@ class WXGLNexradLevel3StormInfo {
                                 bearing
                             )
                         )
-                        tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[index], pn)))
+                        tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], pn)))
                     }
                     endPoint = tmpCoords
                     if nm2 > 0 {

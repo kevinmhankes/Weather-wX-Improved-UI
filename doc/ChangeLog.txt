@@ -20,7 +20,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
 
-56095 2020_03_08 
+56095 2020_03_09 [FIX] crash in storm tracks due to index error conflict
 56094 2020_03_08 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController
 		 [ADD] move willEnterForeground and getContent into parent view controller, override as needed
