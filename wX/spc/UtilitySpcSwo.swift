@@ -20,15 +20,14 @@ final class UtilitySpcSwo {
         let time = html.parseFirst("show_tab\\(.otlk_([0-9]{4}).\\)")
         switch day {
         case "1", "2":
-            let day1and2Urls = ["_torn.gif", "_hail.gif", "_wind.gif"]
             let baseUrl = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
             imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
-            day1and2Urls.forEach {
-                imgUrls.append(baseUrl + time + $0)
+            ["_torn.gif", "_hail.gif", "_wind.gif"].forEach { product in
+                imgUrls.append(baseUrl + time + product)
             }
         case "3":
-            ["otlk_", "prob_"].forEach {
-                imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif")
+            ["otlk_", "prob_"].forEach { product in
+                imgUrls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + product + time + ".gif")
             }
         default:
             break
