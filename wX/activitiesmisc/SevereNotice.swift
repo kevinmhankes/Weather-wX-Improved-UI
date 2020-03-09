@@ -36,16 +36,16 @@ final class SevereNotice {
         } else {
             text = ""
         }
-        numberList = text.split(":")
+        numberList = text.split(":").filter { $0 != "" }
         if text != "" {
-            (0..<(numberList.count - 1)).forEach {
+            numberList.indices.forEach { index in
                 switch type {
                 case "SPCMCD":
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[$0] + ".gif"
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[index] + ".gif"
                 case "SPCWAT":
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + numberList[$0] + "_radar.gif"
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + numberList[index] + "_radar.gif"
                 case "WPCMPD":
-                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[$0] + ".gif"
+                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[index] + ".gif"
                 default:
                     break
                 }

@@ -27,7 +27,6 @@ class vcSpotterReports: UIwXViewController {
         self.getContent()
     }
     
-    // FIXME no rotation support, displayContent()
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterReportsData = UtilitySpotter.reportsList
@@ -41,8 +40,8 @@ class vcSpotterReports: UIwXViewController {
         self.refreshViews()
         self.spotterReportCountButton.title = "Count: " + String(self.spotterReportsData.count)
         self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
-        self.spotterReportsDataSorted.enumerated().forEach {
-            _ = ObjectSpotterReportCard(self, $1, UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:))))
+        self.spotterReportsDataSorted.enumerated().forEach { index, item in
+            _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
         }
         if self.spotterReportsData.count == 0 {
             let objectTextView = ObjectTextView(self.stackView, "No active spotter reports.")

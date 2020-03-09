@@ -44,8 +44,8 @@ class vcSpotters: UIwXViewController {
         self.refreshViews()
         self.spotterCountButton.title = "Count: " + String(self.spotterData.count)
         self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
-        self.spotterDataSorted.enumerated().forEach {
-            _ = ObjectSpotterCard(self, $1, UITapGestureRecognizerWithData($0, self, #selector(self.buttonPressed(sender:))))
+        self.spotterDataSorted.enumerated().forEach { index, item in
+            _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
         }
     }
     

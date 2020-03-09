@@ -61,11 +61,11 @@ class vcSevereDashboard: UIwXViewController {
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
-        [wTor.text, wTst.text, wFfw.text].enumerated().forEach {
-            if $1 != "" {
-                let sArr = $1.split(MyApplication.newline)
+        [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
+            if item != "" {
+                let sArr = item.split(MyApplication.newline)
                 let count = String(sArr.count - 1)
-                spokenText += count + titles[$0] + " "
+                spokenText += count + titles[index] + " "
             }
         }
         spokenText += String(self.snMcd.bitmaps.count) + " mcd " + String(self.snWat.bitmaps.count) + " watch " + String(self.snMpd.bitmaps.count) + " mpd "
