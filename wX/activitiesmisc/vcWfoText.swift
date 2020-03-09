@@ -74,13 +74,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
                     self.html = "None issused by this office recently."
                 }
                 self.objectTextView.text = self.html
-                if self.product == "RWR"
-                    || self.product.hasPrefix("RTP")
-                    || self.product == "RVA"
-                    || self.product == "LSR"
-                    || self.product == "ESF"
-                    || self.product == "NSH"
-                    || self.product == "PNS" {
+                if UtilityWfoText.needsFixedWidthFont(self.product) {
                     self.objectTextView.font = FontSize.hourly.size
                 } else {
                     self.objectTextView.font = FontSize.medium.size

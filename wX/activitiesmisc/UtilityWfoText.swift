@@ -5,7 +5,22 @@
  *****************************************************************************/
 
 class UtilityWfoText {
-
+    
+    static func needsFixedWidthFont(_ product: String) -> Bool {
+        let productList = [
+            "RWR",
+            "RVA",
+            "LSR",
+            "ESF",
+            "NSH",
+            "PNS"
+        ]
+        if product.hasPrefix("RTP") || productList.contains(product) {
+            return true
+        }
+        return false
+    }
+    
     static let wfoProdList = [
         "AFD: Area Forecast Discussion",
         "ESF: Hydrologic Outlook",
