@@ -178,9 +178,16 @@ final class UtilityDownload {
             text = textUrl.getHtmlSep()
             text = text.parse(MyApplication.pre2Pattern)
         } else if product.contains("OFF") || product == "UVICAC" || product == "RWRMX" || product.hasPrefix("TPT") {
-            let product = product.substring(0, 3)
-            let site = product.substring(3)
-            let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
+            let productType: String
+            let site: String
+            if product.count == 5 {
+                productType = product.substring(0, 3)
+                site = product.substring(3, 5)
+            } else {
+                productType = product.substring(0, 3)
+                site = product.substring(3, 6)
+            }
+            let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + productType + "&format=txt&version=1&glossary=0"
             let html = url.getNwsHtml()
             text = UtilityString.extractPreLsr(html)
         } else if product.contains("PMD30D") {
