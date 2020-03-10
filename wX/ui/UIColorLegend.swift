@@ -7,15 +7,15 @@
 import UIKit
 
 final class UIColorLegend: UIView {
-
+    
     private var product = ""
     private var frameSize = CGRect()
     private var context = UIGraphicsGetCurrentContext()
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
-
+    
     required init(_ product: String, _ size: CGRect) {
         self.product = product
         frameSize = size
@@ -23,16 +23,16 @@ final class UIColorLegend: UIView {
         backgroundColor = UIColor.clear
         isOpaque = false
     }
-
+    
     required init() {
         super.init(frame: CGRect())
     }
-
+    
     func drawRect(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
         context!.addRect(CGRect(x: x, y: y, width: width, height: height))
         context!.fillPath()
     }
-
+    
     func drawText(_ string: String, _ x: CGFloat, _ y: CGFloat) {
         let textAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white.cgColor,
@@ -41,7 +41,7 @@ final class UIColorLegend: UIView {
         let strn = NSString(string: string)
         drawTextString(context!, strn, textAttributes, x, y)
     }
-
+    
     func drawTextString(
         _ context: CGContext,
         _ text: NSString,
@@ -71,11 +71,11 @@ final class UIColorLegend: UIView {
             CTFrameDraw(frame, context)
         }
     }
-
+    
     func setColor(_ red: UInt8, _ green: UInt8, _ blue: UInt8) {
         _ =  wXColor.uiColorInt(red, green, blue).set()
     }
-
+    
     func setColorWithBuffers(prodId: Int, index: Int) {
         setColor(
             MyApplication.colorMap[prodId]!.redValues.get(index),
@@ -83,7 +83,7 @@ final class UIColorLegend: UIView {
             MyApplication.colorMap[prodId]!.blueValues.get(index)
         )
     }
-
+    
     override func draw(_ rect: CGRect) {
         var units = ""
         context = UIGraphicsGetCurrentContext()
@@ -100,22 +100,22 @@ final class UIColorLegend: UIView {
         var unitsDrawn = false
         switch product {
         case "N0Q", "L2REF", "TZL":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 94, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 94, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " dBZ"
-            (1...95).reversed().forEach {
-                if $0 % 10 == 0 {
+            (1...95).reversed().forEach { index in
+                if index % 10 == 0 {
                     drawText(
-                        String($0) + units,
+                        String(index) + units,
                         widthStarting + width + textFromLegend,
-                        (scaledHeightText * (CGFloat(95) - CGFloat($0))) + heightFudge + startHeight
+                        (scaledHeightText * (CGFloat(95) - CGFloat(index))) + heightFudge + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -124,22 +124,22 @@ final class UIColorLegend: UIView {
                 }
             }
         case "N0U", "L2VEL", "TV0":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 99, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 99, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " KT"
-            (-131...122).reversed().forEach {
-                if $0 % 10 == 0 {
+            (-131...122).reversed().forEach { index in
+                if index % 10 == 0 {
                     drawText(
-                        String($0) + units,
+                        String(index) + units,
                         widthStarting + width + textFromLegend,
-                        (scaledHeightVel * (122.0 - CGFloat($0))) + heightFudge + startHeight
+                        (scaledHeightVel * (122.0 - CGFloat(index))) + heightFudge + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -148,22 +148,22 @@ final class UIColorLegend: UIView {
                 }
             }
         case "DVL":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 134, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 134, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " kg/m2"
-            (1...70).reversed().forEach {
-                if $0 % 5 == 0 {
+            (1...70).reversed().forEach { index in
+                if index % 5 == 0 {
                     drawText(
-                        String($0) + units,
+                        String(index) + units,
                         widthStarting + width + textFromLegend,
-                        (3.64 * scaledHeightVel * (CGFloat(70) - CGFloat($0))) + heightFudge + startHeight
+                        (3.64 * scaledHeightVel * (CGFloat(70) - CGFloat(index))) + heightFudge + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -173,21 +173,21 @@ final class UIColorLegend: UIView {
             }
         case "EET":
             scaledHeight = (screenHeight - 2.0 * startHeight) / 70.0
-            (0...70).forEach {
-                setColorWithBuffers(prodId: 135, index: 70 - $0)
+            (0...70).forEach { index in
+                setColorWithBuffers(prodId: 135, index: 70 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
-                    width + widthStarting, CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + startHeight,
+                    width + widthStarting, CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " K FT"
-            (1...70).reversed().forEach {
-                if $0 % 5 == 0 {
+            (1...70).reversed().forEach { index in
+                if index % 5 == 0 {
                     drawText(
-                        String($0) + units,
+                        String(index) + units,
                         widthStarting + width + textFromLegend,
-                        (3.64 * scaledHeightVel * (CGFloat(70) - CGFloat($0))) + heightFudge + startHeight
+                        (3.64 * scaledHeightVel * (CGFloat(70) - CGFloat(index))) + heightFudge + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -196,21 +196,21 @@ final class UIColorLegend: UIView {
                 }
             }
         case "N0X":
-            for i in (0..<256) {
-                setColorWithBuffers(prodId: 159, index: 255 - i)
+            (0..<256).forEach { index in
+                setColorWithBuffers(prodId: 159, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat(i) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat(i) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " dB"
-            (-7...8).reversed().forEach {
+            (-7...8).reversed().forEach { index in
                 drawText(
-                    String($0) + units,
+                    String(index) + units,
                     widthStarting + width + textFromLegend,
-                    (16 * scaledHeightVel * (CGFloat(8) - CGFloat($0))) + heightFudge + startHeight
+                    (16 * scaledHeightVel * (CGFloat(8) - CGFloat(index))) + heightFudge + startHeight
                 )
                 if !unitsDrawn {
                     unitsDrawn = true
@@ -218,23 +218,23 @@ final class UIColorLegend: UIView {
                 }
             }
         case "N0C":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 161, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 161, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " CC"
-            (0...100).reversed().forEach {
-                if $0 % 5 == 0 {
-                    let tmpStr = String(Double($0)/100.0).truncate(4)
+            (0...100).reversed().forEach { index in
+                if index % 5 == 0 {
+                    let tmpStr = String(Double(index)/100.0).truncate(4)
                     drawText(
                         tmpStr + units,
                         widthStarting + width + textFromLegend,
-                        (CGFloat(3)*scaledHeightVel*CGFloat(100 - $0)) + heightFudge + startHeight
+                        (CGFloat(3)*scaledHeightVel*CGFloat(100 - index)) + heightFudge + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -243,21 +243,21 @@ final class UIColorLegend: UIView {
                 }
             }
         case "N0K":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 163, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 163, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " PHAS"
-            for j in (-2...10).reversed() {
+            (-2...10).reversed().forEach { index in
                 drawText(
-                    String(j) + units,
+                    String(index) + units,
                     widthStarting + width + textFromLegend,
-                    (20.0 * scaledHeightVel * (10.0 - CGFloat(j))) + heightFudge + startHeight
+                    (20.0 * scaledHeightVel * (10.0 - CGFloat(index))) + heightFudge + startHeight
                 )
                 if !unitsDrawn {
                     unitsDrawn = true
@@ -267,22 +267,22 @@ final class UIColorLegend: UIView {
         case "H0C":
             scaledHeight = (screenHeight - 2.0 * startHeight) / 160.0
             let labels = ["ND", "BI", "GC", "IC", "DS", "WS", "RA", "HR", "BD", "GR", "HA", "", "", "", "UK", "RF"]
-            (0...159).forEach {
-                setColorWithBuffers(prodId: 165, index: 160 - $0)
+            (0...159).forEach { index in
+                setColorWithBuffers(prodId: 165, index: 160 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = ""
-            (0...159).reversed().forEach {
-                if $0 % 10 == 0 {
+            (0...159).reversed().forEach { index in
+                if index % 10 == 0 {
                     drawText(
-                        labels[Int($0 / 10)] + units,
+                        labels[Int(index / 10)] + units,
                         widthStarting + width + textFromLegend,
-                        (scaledHeight * (159.0 - CGFloat($0)))  + startHeight
+                        (scaledHeight * (159.0 - CGFloat(index)))  + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true
@@ -291,13 +291,13 @@ final class UIColorLegend: UIView {
                 }
             }
         case "DSP":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 172, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 172, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " IN"
@@ -316,13 +316,13 @@ final class UIColorLegend: UIView {
                 j -= WXGLNexrad.wxoglDspLegendMax / 16.0
             }
         case "DAA":
-            (0...255).forEach {
-                setColorWithBuffers(prodId: 172, index: 255 - $0)
+            (0...255).forEach { index in
+                setColorWithBuffers(prodId: 172, index: 255 - index)
                 drawRect(
                     widthStarting,
-                    CGFloat($0) * scaledHeight + startHeight,
+                    CGFloat(index) * scaledHeight + startHeight,
                     width + widthStarting,
-                    CGFloat($0) * scaledHeight + scaledHeight + startHeight
+                    CGFloat(index) * scaledHeight + scaledHeight + startHeight
                 )
             }
             units = " IN"
@@ -340,7 +340,8 @@ final class UIColorLegend: UIView {
                 }
                 j -= WXGLNexrad.wxoglDspLegendMax / 16.0
             }
-        default: break
+        default:
+            break
         }
     }
 }

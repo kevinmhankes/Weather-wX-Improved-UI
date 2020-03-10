@@ -32,7 +32,7 @@ final class ObjectSpotterCard {
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
         uiv.stackView.addArrangedSubview(sV.view)
-        textViews.forEach {
+        textViews.forEach { 
             $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
         sV.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
