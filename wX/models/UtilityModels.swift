@@ -88,8 +88,8 @@ final class UtilityModels {
         var bitmaps = [Bitmap]()
         let origTime = om.timeStr
         if om.timeArr.count > 0 {
-            (om.timeIndex..<om.timeArr.count).forEach {
-                om.timeStr = om.timeArr[$0].split(" ")[0]
+            (om.timeIndex..<om.timeArr.count).forEach { index in
+                om.timeStr = om.timeArr[index].split(" ")[0]
                 bitmaps.append(getImage(om))
             }
             om.timeStr = origTime

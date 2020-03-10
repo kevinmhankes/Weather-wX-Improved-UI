@@ -42,11 +42,11 @@ final class UtilityModelEsrlInputOutput {
         runData.imageCompleteInt = UtilityString.parseAndCount(htmlRunstatus, ".(allfields).")-1
         runData.imageCompleteStr = String(runData.imageCompleteInt)
         if html != "" {
-            (0...12).forEach {
-                let year = oldRunTimes[$0].parse(eslHrrrPattern3)
-                let day = oldRunTimes[$0].parse(eslHrrrPattern4)
-                let hour = oldRunTimes[$0].parse(eslHrrrPattern5)
-                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[$0].parse(eslHrrrPattern6))
+            (0...12).forEach { index in
+                let year = oldRunTimes[index].parse(eslHrrrPattern3)
+                let day = oldRunTimes[index].parse(eslHrrrPattern4)
+                let hour = oldRunTimes[index].parse(eslHrrrPattern5)
+                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[index].parse(eslHrrrPattern6))
                 runData.appendListRun(year + monthStr + day + hour)
             }
             runData.timeStrConv = html.parse("([0-9]{2})$")

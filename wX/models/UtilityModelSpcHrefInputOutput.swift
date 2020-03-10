@@ -31,17 +31,17 @@ final class UtilityModelSpcHrefInputOutput {
         urls.append(MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/noaa_overlay_1050px.png")
         let sectorIndex = UtilityModelSpcHrefInterface.sectorsLong.firstIndex(of: om.sector) ?? 0
         let sector = UtilityModelSpcHrefInterface.sectors[sectorIndex]
-        products.forEach {
+        products.forEach { product in
             var url = ""
-            if $0.contains("cref_members") {
-                let paramArr = $0.split(" ")
+            if product.contains("cref_members") {
+                let paramArr = product.split(" ")
                 url = MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/models/href/" + year + "/"
                     + month + "/" + day + "/" + hour + "00/f0" + om.time + "00/" + paramArr[0]
                     + "." + sector + ".f0" + om.time + "00." + paramArr[1] + ".tl00.png"
             } else {
                 url = MyApplication.nwsSPCwebsitePrefix + "/exper/href/graphics/models/href/" + year + "/" + month
                     + "/" + day + "/" + hour + "00/f0" + om.time
-                    + "00/" + $0 + "." + sector + ".f0" + om.time + "00.png"
+                    + "00/" + product + "." + sector + ".f0" + om.time + "00.png"
             }
             urls.append(url)
         }

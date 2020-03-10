@@ -145,20 +145,20 @@ class vcSpcStormReports: UIwXViewController {
                 action: #selector(imgClicked(sender:))
             )
         )
-        self.stormReports.enumerated().forEach {
-            if $1.damageHeader != "" {
-                switch $1.damageHeader {
+        self.stormReports.enumerated().forEach { index, stormReport in
+            if stormReport.damageHeader != "" {
+                switch stormReport.damageHeader {
                 case "Tornado Reports":
-                    tornadoHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
+                    tornadoHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
                 case "Wind Reports":
-                    windHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
+                    windHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
                 case "Hail Reports":
-                    hailHeader = ObjectCardBlackHeaderText(self, $1.damageHeader)
+                    hailHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
                 default:
                     break
                 }
             }
-            if $1.damageHeader == "" && (filter == "All" || filter == $1.state) {
+            if stormReport.damageHeader == "" && (filter == "All" || filter == stormReport.state) {
                 if windHeader == nil {
                     tornadoReports += 1
                 } else if hailHeader == nil {
@@ -168,12 +168,12 @@ class vcSpcStormReports: UIwXViewController {
                 }
                 _ = ObjectCardStormReportItem(
                     self.stackView,
-                    $1,
-                    UITapGestureRecognizerWithData($0, self, #selector(gotoMap(sender:)))
+                    stormReport,
+                    UITapGestureRecognizerWithData(index, self, #selector(gotoMap(sender:)))
                 )
             }
-            if $1.state != "" {
-                stateList += [$1.state]
+            if stormReport.state != "" {
+                stateList += [stormReport.state]
             }
         }
         if tornadoReports == 0 {

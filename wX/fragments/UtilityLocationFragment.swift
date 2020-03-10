@@ -120,7 +120,7 @@ final class UtilityLocationFragment {
     ]
 
     static func extractWindDirection(_ chunk: String) -> String {
-        let patternList = [
+        let patterns = [
             "Breezy, with a[n]? (.*?) wind",
             "wind becoming (\\w+\\s?\\w*) around",
             "wind becoming (.*?) [0-9]",
@@ -130,8 +130,8 @@ final class UtilityLocationFragment {
             "Light (.*?) wind"
         ]
         var windResults = [String]()
-        patternList.forEach {
-            windResults.append(chunk.parseLastMatch($0))
+        patterns.forEach { pattern in
+            windResults.append(chunk.parseLastMatch(pattern))
         }
         var retStr = ""
         for windToken in windResults where windToken != "" {
