@@ -21,29 +21,27 @@ class UtilityWatch {
         default:
             break
         }
-        var x = [Double]()
-        var y = [Double]()
-        var pixXInit = 0.0
-        var pixYInit = 0.0
         if prefToken != "" {
-            let list = prefToken.split(":")
-            list.indices.forEach {
-                let test = list[$0].split(" ")
-                if test.count > 1 {
-                    x = test.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
-                    y = test.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
+            let polygons = prefToken.split(":")
+            polygons.forEach { polygon in
+                let numbers = polygon.split(" ")
+                var x = [Double]()
+                var y = [Double]()
+                if numbers.count > 1 {
+                    x = numbers.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
+                    y = numbers.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    pixXInit = tmpCoords.lat
-                    pixYInit = tmpCoords.lon
-                    warningList += [tmpCoords.lat, tmpCoords.lon]
+                    let coordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    let xStart = coordinates.lat
+                    let yStart = coordinates.lon
+                    warningList += [xStart, yStart]
                     if x.count == y.count {
                         (1..<x.count).forEach {
-                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
-                            warningList += [tmpCoords.lat, tmpCoords.lon, tmpCoords.lat, tmpCoords.lon]
+                            let coordinates = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
+                            warningList += [coordinates.lat, coordinates.lon, coordinates.lat, coordinates.lon]
                         }
-                        warningList += [pixXInit, pixYInit]
+                        warningList += [xStart, yStart]
                     }
                 }
             }
@@ -52,8 +50,6 @@ class UtilityWatch {
     }
 
     static func showProducts(_ latLon: LatLon, _ type: PolygonType) -> String {
-        let lat = latLon.lat
-        let lon = latLon.lon
         var text = ""
         var numberList = [String]()
         var watchLatLon: String
@@ -71,25 +67,21 @@ class UtilityWatch {
             numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlon.value
         }
-        let latlonArr = watchLatLon.split(":")
-        var x = [Double]()
-        var y = [Double]()
-        var i: Int
-        var testArr = [String]()
+        let latLons = watchLatLon.split(":")
         var z = 0
         var notFound = true
-        while z < latlonArr.count {
-            testArr = latlonArr[z].split(" ")
-            x = []
-            y = []
-            i = 0
-            while i < testArr.count {
-                if i & 1 == 0 {
-                    x.append(Double(testArr[i]) ?? 0.0)
+        while z < latLons.count {
+            let numbers = latLons[z].split(" ")
+            var x = [Double]()
+            var y = [Double]()
+            var index = 0
+            while index < numbers.count {
+                if index & 1 == 0 {
+                    x.append(Double(numbers[index]) ?? 0.0)
                 } else {
-                    y.append((Double(testArr[i]) ?? 0.0) * -1.0)
+                    y.append((Double(numbers[index]) ?? 0.0) * -1.0)
                 }
-                i += 1
+                index += 1
             }
             if y.count > 3 && x.count > 3 && x.count == y.count {
                 let poly2 = ExternalPolygon.Builder()
@@ -97,7 +89,7 @@ class UtilityWatch {
                     _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))
                 }
                 let polygon2 = poly2.build()
-                let contains = polygon2.contains(point: ExternalPoint(Float(lat), Float(lon)))
+                let contains = polygon2.contains(point: ExternalPoint(Float(latLon.lat), Float(latLon.lon)))
                 if contains && notFound {
                     text = numberList[z]
                     notFound = false

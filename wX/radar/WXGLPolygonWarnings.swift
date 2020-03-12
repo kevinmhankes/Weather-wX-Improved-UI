@@ -59,15 +59,13 @@ final class WXGLPolygonWarnings {
         } else if type.string == "TST" {
             prefToken = MyApplication.severeDashboardTst.value
         }
-        var x = [Double]()
-        var y = [Double]()
-        var pixXInit = 0.0
-        var pixYInit = 0.0
         let html = prefToken.replace("\n", "").replace(" ", "")
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
         var polyCount = -1
         polygons.forEach { poly in
+            var x = [Double]()
+            var y = [Double]()
             polyCount += 1
             if vtecs.count > polyCount
                 && !vtecs[polyCount].hasPrefix("0.EXP")
@@ -79,15 +77,15 @@ final class WXGLPolygonWarnings {
                 }
                 if y.count > 0 && x.count > 0 {
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    pixXInit = tmpCoords.lat
-                    pixYInit = tmpCoords.lon
-                    warningList += [tmpCoords.lat, tmpCoords.lon]
+                    let xStart = tmpCoords.lat
+                    let yStart = tmpCoords.lon
+                    warningList += [xStart, yStart]
                     if x.count == y.count {
                         (1..<x.count).forEach {
                             let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
                             warningList += [tmpCoords.lat, tmpCoords.lon, tmpCoords.lat, tmpCoords.lon]
                         }
-                        warningList += [pixXInit, pixYInit]
+                        warningList += [xStart, yStart]
                     }
                 }
             }
