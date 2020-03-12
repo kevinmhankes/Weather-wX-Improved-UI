@@ -11,27 +11,25 @@ class UtilitySwoD1 {
 
     static func get() {
         if timer.isRefreshNeeded() {
-            var retStr = ""
             let threatList = ["HIGH", "MDT", "ENH", "SLGT", "MRGL"]
             let day = 1
             let urlBlob = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/KWNSPTSDY" + String(day) + ".txt"
             let html = urlBlob.getHtmlSep()
             let htmlBlob = html.parse("... CATEGORICAL ...(.*?&)&")
             threatList.indices.forEach { m in
-                retStr = ""
+                var data = ""
                 let threatLevelCode = threatList[m]
                 let htmlList = htmlBlob.parseColumn(threatLevelCode.substring(1) + "(.*?)[A-Z&]")
                 var warningList = [Double]()
                 htmlList.forEach {
-                    let coords =  $0.parseColumn("([0-9]{8}).*?")
-                    coords.forEach {temp in
-                        retStr += LatLon(temp).print()
+                    let coordinates =  $0.parseColumn("([0-9]{8}).*?")
+                    coordinates.forEach { coordinate in
+                        data += LatLon(coordinate).print()
                     }
-                    retStr += ":"
-                    retStr = retStr.replace(" :", ":")
+                    data += ":"
+                    data = data.replace(" :", ":")
                 }
-                let numberStringList = retStr.split(":")
-                print(numberStringList)
+                let numberStringList = data.split(":")
                 if numberStringList.count > 1 {
                     numberStringList.forEach { numberList in
                         if numberList != "" {
