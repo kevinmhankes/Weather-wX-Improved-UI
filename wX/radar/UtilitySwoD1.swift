@@ -5,35 +5,42 @@
  *****************************************************************************/
 
 class UtilitySwoD1 {
-
+    
     private static var timer = DownloadTimer("SWO")
     static var hashSwo = [Int: [Double]]()
-
+    
     static func get() {
         if timer.isRefreshNeeded() {
             let threatList = ["HIGH", "MDT", "ENH", "SLGT", "MRGL"]
             let day = 1
-            let urlBlob = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/KWNSPTSDY" + String(day) + ".txt"
-            let html = urlBlob.getHtmlSep()
-            let htmlBlob = html.parse("... CATEGORICAL ...(.*?&)&")
+            let html = (MyApplication.nwsSPCwebsitePrefix + "/products/outlook/KWNSPTSDY" + String(day) + ".txt").getHtmlSep()
+            let htmlChunk = html.parse("... CATEGORICAL ...(.*?&)&")
+            //
+            // each threat level will have a string of numbers, each string has lat lon pairs (no neg for lon, will be handled later)
+            // seperated by ":" to support multiple polygons in the same string
+            //
             threatList.indices.forEach { m in
                 var data = ""
                 let threatLevelCode = threatList[m]
-                let htmlList = htmlBlob.parseColumn(threatLevelCode.substring(1) + "(.*?)[A-Z&]")
+                let htmlList = htmlChunk.parseColumn(threatLevelCode.substring(1) + "(.*?)[A-Z&]")
                 var warningList = [Double]()
-                htmlList.forEach {
-                    let coordinates =  $0.parseColumn("([0-9]{8}).*?")
+                htmlList.forEach { polygon in
+                    let coordinates =  polygon.parseColumn("([0-9]{8}).*?")
                     coordinates.forEach { coordinate in
                         data += LatLon(coordinate).print()
                     }
                     data += ":"
                     data = data.replace(" :", ":")
                 }
-                let numberStringList = data.split(":")
-                if numberStringList.count > 1 {
-                    numberStringList.forEach { numberList in
-                        if numberList != "" {
-                            let numbers = numberList.split(" ")
+                let polygons = data.split(":")
+                //
+                // for each polygon parse apart the numbers and then add even numbers to one list and odd numbers to the other list
+                // from there transform into the normal dataset needed for drawing lines in the graphic renderer
+                //
+                if polygons.count > 1 {
+                    polygons.forEach { polygon in
+                        if polygon != "" {
+                            let numbers = polygon.split(" ")
                             let x = numbers.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in Double(value) ?? 0.0 }
                             let y = numbers.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in (Double(value) ?? 0.0) * -1.0 }
                             if x.count > 0 && y.count > 0 {
