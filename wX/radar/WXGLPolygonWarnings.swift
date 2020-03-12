@@ -62,23 +62,19 @@ final class WXGLPolygonWarnings {
         let html = prefToken.replace("\n", "").replace(" ", "")
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
-        var polyCount = -1
-        polygons.forEach { poly in
+        var polygonCount = -1
+        polygons.forEach { polygon in
             var x = [Double]()
             var y = [Double]()
-            polyCount += 1
-            if vtecs.count > polyCount
-                && !vtecs[polyCount].hasPrefix("0.EXP")
-                && !vtecs[polyCount].hasPrefix("0.CAN") {
-                let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
+            polygonCount += 1
+            if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") {
+                let polyTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
                 if polyTmp.count > 1 {
                     y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
                     x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    let xStart = tmpCoords.lat
-                    let yStart = tmpCoords.lon
+                    let (lat: xStart, lon: yStart) = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
                     warningList += [xStart, yStart]
                     if x.count == y.count {
                         (1..<x.count).forEach {

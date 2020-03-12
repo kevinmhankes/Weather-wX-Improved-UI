@@ -32,9 +32,7 @@ class UtilityWatch {
                     y = numbers.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let coordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    let xStart = coordinates.lat
-                    let yStart = coordinates.lon
+                    let (lat: xStart, lon: yStart) = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
                     warningList += [xStart, yStart]
                     if x.count == y.count {
                         (1..<x.count).forEach {
