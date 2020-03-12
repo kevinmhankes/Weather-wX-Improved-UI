@@ -87,8 +87,8 @@ final class WXMetalTextObject {
     func checkAndDrawText(_ tvList:inout [TextViewMetal], _ lat: Double, _ lon: Double, _ text: String, _ color: Int) {
         let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, OGLR.pn)
         // changing RID resets glviewWidth
-        let xPos = latLon.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
-        let yPos = latLon.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
+        let xPos = latLon[0] * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
+        let yPos = latLon[1] * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
         if abs(xPos) * scale * 2 < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
             let tv = TextViewMetal(context)
             tv.textColor = color
@@ -220,8 +220,8 @@ final class WXMetalTextObject {
                         let lat = Double(tmpArrObs[0]) ?? 0.0
                         let lon = Double(tmpArrObs[1]) ?? 0.0
                         let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, OGLR.pn)
-                        let xPos = latLon.0 * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
-                        let yPos = latLon.1 * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
+                        let xPos = latLon[0] * Double(OGLR.zoom) - xFudge + Double(OGLR.xPos)
+                        let yPos = latLon[1] * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
                         if abs(Double(xPos) * scale * 2 ) < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
                             if Double(OGLR.zoom) > obsExtZoom {
                                 glview.obsAl.append(TextViewMetal(context, 150, 150))

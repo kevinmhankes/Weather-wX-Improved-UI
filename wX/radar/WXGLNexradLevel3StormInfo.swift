@@ -35,8 +35,8 @@ class WXGLNexradLevel3StormInfo {
             let bearing = [Double]()
             var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
             var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            var tmpCoords = (0.0, 0.0)
-            var endPoint = (0.0, 0.0)
+            //var tmpCoords = (0.0, 0.0)
+            var endPoint = [Double]()
             var ecArr = [ExternalGlobalCoordinates]()
             var tmpCoordsArr = [LatLon]()
             let sti15IncrLen = 0.40
@@ -58,9 +58,7 @@ class WXGLNexradLevel3StormInfo {
                         Double(nm) * 1852.0,
                         bearing
                     )
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-                    stormList.append(tmpCoords.0)
-                    stormList.append(tmpCoords.1)
+                    stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                     start = ExternalGlobalCoordinates(ec)
                     ec = ecc.calculateEndingGlobalCoordinates(
                         ExternalEllipsoid.WGS84,
@@ -69,9 +67,8 @@ class WXGLNexradLevel3StormInfo {
                         Double(nm2) * 1852.0,
                         bearing
                     )
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-                    stormList.append(tmpCoords.0)
-                    stormList.append(tmpCoords.1)
+                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                    stormList += tmpCoords
                     ecArr = []
                     tmpCoordsArr = []
                     (0...3).forEach { z in
@@ -168,13 +165,12 @@ class WXGLNexradLevel3StormInfo {
         _ bearing: [Double]
         ) -> [Double] {
         var list = [Double]()
+        // FIXME latlon method return list
         list.append(startPoint.lat)
         list.append(startPoint.lon)
         let start = ExternalGlobalCoordinates(ecArr)
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list.append(tmpCoords.0)
-        list.append(tmpCoords.1)
+        list += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
         return list
     }
 }

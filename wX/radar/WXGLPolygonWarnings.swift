@@ -16,8 +16,8 @@ final class WXGLPolygonWarnings {
         let prefToken = type.storage.value
         var x = [Double]()
         var y = [Double]()
-        var pixXInit = 0.0
-        var pixYInit = 0.0
+        //var pixXInit = 0.0
+        //var pixYInit = 0.0
         let html = prefToken.replace("\n", "").replace(" ", "")
         //print("WARN: " + html)
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
@@ -34,16 +34,17 @@ final class WXGLPolygonWarnings {
                     x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    pixXInit = tmpCoords.lat
-                    pixYInit = tmpCoords.lon
-                    warningList += [tmpCoords.lat, tmpCoords.lon]
+                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    //pixXInit = tmpCoords.lat
+                    //pixYInit = tmpCoords.lon
+                    warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {
                             let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
-                            warningList += [tmpCoords.lat, tmpCoords.lon, tmpCoords.lat, tmpCoords.lon]
+                            warningList += tmpCoords
+                            warningList += tmpCoords
                         }
-                        warningList += [pixXInit, pixYInit]
+                        warningList += startCoordinates
                     }
                 }
             }
@@ -68,20 +69,21 @@ final class WXGLPolygonWarnings {
             var y = [Double]()
             polygonCount += 1
             if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") {
-                let polyTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
-                if polyTmp.count > 1 {
-                    y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                    x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
+                let coordinates = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
+                if coordinates.count > 1 {
+                    y = coordinates.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
+                    x = coordinates.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let (lat: xStart, lon: yStart) = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    warningList += [xStart, yStart]
+                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {
                             let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
-                            warningList += [tmpCoords.lat, tmpCoords.lon, tmpCoords.lat, tmpCoords.lon]
+                            warningList += tmpCoords
+                            warningList += tmpCoords
                         }
-                        warningList += [xStart, yStart]
+                        warningList += startCoordinates
                     }
                 }
             }

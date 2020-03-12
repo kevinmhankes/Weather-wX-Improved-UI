@@ -12,15 +12,19 @@ final class UtilityCanvasProjection {
         _ lat: Double,
         _ lon: Double,
         _ pn: ProjectionNumbers
-    ) -> (lat: Double, lon: Double) {
+    ) -> [Double] {
         let test1 = (180.0 / Double.pi * log(tan(Double.pi / 4 + lat * (Double.pi / 180) / 2)))
         let test2 = (180.0 / Double.pi * log(tan(Double.pi / 4 + pn.xDbl * (Double.pi / 180) / 2)))
         let pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
         let pixXD = -((lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
-        return (pixXD, pixYD)
+        return [pixXD, pixYD]
     }
     
-    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
+    //static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
+    //    return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
+    //}
+    
+    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> [Double] {
         return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
     }
 }

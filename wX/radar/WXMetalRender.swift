@@ -695,7 +695,7 @@ class WXMetalRender {
                 gpsLocation.lon,
                 pn
             )
-            gpsLatLonTransformed = (Float(-gpsCoords.lat), Float(gpsCoords.lon))
+            gpsLatLonTransformed = (Float(-gpsCoords[0]), Float(gpsCoords[1]))
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
@@ -826,7 +826,7 @@ class WXMetalRender {
     func constructWpcFronts() {
         wpcFrontBuffersList = []
         wpcFrontPaints = []
-        var tmpCoords = (0.0, 0.0)
+        //var tmpCoords = (0.0, 0.0)
         UtilityWpcFronts.fronts.forEach { _ in
             let buff = ObjectMetalBuffers()
             buff.initialize(2, Color.MAGENTA)
@@ -849,15 +849,15 @@ class WXMetalRender {
                 wpcFrontPaints.append(wXColor.colorsToInt(254, 216, 177))
             }
             for j in stride(from: 0, to: front.coordinates.count - 1, by: 2) {
-                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, pn)
-                wpcFrontBuffersList[z].putFloat(tmpCoords.0)
-                wpcFrontBuffersList[z].putFloat(tmpCoords.1 * -1.0)
+                var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, pn)
+                wpcFrontBuffersList[z].putFloat(tmpCoords[0])
+                wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
                 wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j + 1].lat, front.coordinates[j + 1].lon, pn)
-                wpcFrontBuffersList[z].putFloat(tmpCoords.0)
-                wpcFrontBuffersList[z].putFloat(tmpCoords.1 * -1.0)
+                wpcFrontBuffersList[z].putFloat(tmpCoords[0])
+                wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
                 wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
@@ -875,7 +875,7 @@ class WXMetalRender {
         colorSwo.append(wXColor.colorsToInt(255, 140, 0))
         colorSwo.append(Color.YELLOW)
         colorSwo.append(wXColor.colorsToInt(0, 100, 0))
-        var tmpCoords = (0.0, 0.0)
+        //var tmpCoords = (0.0, 0.0)
         var fSize = 0
         (0...4).forEach { z in
             if let flArr = UtilitySwoD1.hashSwo[z] {
@@ -886,13 +886,13 @@ class WXMetalRender {
         (0...4).forEach { z in
             if let flArr = UtilitySwoD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
+                    var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
                         Double(flArr[j]),
                         Double(flArr[j+1]) * -1.0,
                         pn
                     )
-                    swoBuffers.putFloat(tmpCoords.0)
-                    swoBuffers.putFloat(tmpCoords.1 * -1.0)
+                    swoBuffers.putFloat(tmpCoords[0])
+                    swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))
@@ -901,8 +901,8 @@ class WXMetalRender {
                         Double(flArr[j+3]) * -1.0,
                         pn
                     )
-                    swoBuffers.putFloat(tmpCoords.0)
-                    swoBuffers.putFloat(tmpCoords.1 * -1.0)
+                    swoBuffers.putFloat(tmpCoords[0])
+                    swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))

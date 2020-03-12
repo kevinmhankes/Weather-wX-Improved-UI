@@ -21,7 +21,7 @@ class WXGLNexradLevel3WindBarbs {
         var start = ExternalGlobalCoordinates(pn)
         var end = ExternalGlobalCoordinates(pn)
         var ec = ExternalGlobalCoordinates(pn)
-        var tmpCoords = (lat: 0.0, lon: 0.0)
+        //var tmpCoords = (lat: 0.0, lon: 0.0)
         let degreeShift = 180.00
         let arrowLength = 2.5
         let arrowSpacing = 3.0
@@ -58,8 +58,7 @@ class WXGLNexradLevel3WindBarbs {
                     nm * nmScaleFactor * barbLengthScaleFactor,
                     bearing
                 )
-                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-                stormList += [tmpCoords.lat, tmpCoords.lon]
+                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                 start = ExternalGlobalCoordinates(ec)
                 ec = ecc.calculateEndingGlobalCoordinates(
                     ExternalEllipsoid.WGS84,
@@ -69,8 +68,7 @@ class WXGLNexradLevel3WindBarbs {
                     bearing
                 )
                 end = ExternalGlobalCoordinates(ec)
-                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-                stormList += [tmpCoords.0, tmpCoords.1]
+                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                 var barbCount = Int(length / 10)
                 var halfBarb = false
                 var oneHalfBarb = false
