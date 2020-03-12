@@ -20,10 +20,6 @@ final class UtilityCanvasProjection {
         return [pixXD, pixYD]
     }
     
-    //static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> (lat: Double, lon: Double) {
-    //    return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
-    //}
-    
     static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> [Double] {
         return computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
     }

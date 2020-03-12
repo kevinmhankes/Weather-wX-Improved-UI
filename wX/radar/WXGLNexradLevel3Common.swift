@@ -19,11 +19,10 @@ class WXGLNexradLevel3Common {
         let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, pn)
         var list = startCoords
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list += tmpCoords
+        list += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
         return list
     }
-// FIXME refactor vars
+
     static func drawLine(
         _ startPoint: [Double],
         _ ecc: ExternalGeodeticCalculator,
@@ -35,8 +34,7 @@ class WXGLNexradLevel3Common {
     ) -> [Double] {
         var list = startPoint
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
-        list += tmpCoords
+        list += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
         return list
     }
 }

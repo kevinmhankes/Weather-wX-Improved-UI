@@ -14,11 +14,11 @@ class WXGLNexradLevel3StormInfo {
         WXGLDownload.getNidsTab("STI", pn.radarSite.lowercased(), fileName)
         let dis = UtilityIO.readFiletoData(fileName)
         if let retStr1 = String(data: dis, encoding: .ascii) {
-            let posn = retStr1.parseColumn(stiPattern1)
+            let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""
             var motionStr = ""
-            posn.forEach {
+            position.forEach {
                 posnStr += $0.replace("/", " ")
             }
             motion.forEach {

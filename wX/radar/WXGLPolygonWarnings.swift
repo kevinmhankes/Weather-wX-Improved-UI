@@ -14,16 +14,13 @@ final class WXGLPolygonWarnings {
     static func addGeneric(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
         var warningList = [Double]()
         let prefToken = type.storage.value
-        var x = [Double]()
-        var y = [Double]()
-        //var pixXInit = 0.0
-        //var pixYInit = 0.0
         let html = prefToken.replace("\n", "").replace(" ", "")
-        //print("WARN: " + html)
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
         var polyCount = -1
         polygons.forEach { poly in
+            var x = [Double]()
+            var y = [Double]()
             polyCount += 1
             if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount
                 && !vtecs[polyCount].hasPrefix("0.EXP")
@@ -35,8 +32,6 @@ final class WXGLPolygonWarnings {
                 }
                 if y.count > 0 && x.count > 0 {
                     let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
-                    //pixXInit = tmpCoords.lat
-                    //pixYInit = tmpCoords.lon
                     warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {

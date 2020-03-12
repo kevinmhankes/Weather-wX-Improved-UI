@@ -16,13 +16,13 @@ class WXGLNexradLevel3HailIndex {
         WXGLDownload.getNidsTab("HI", pn.radarSite, fileName)
         let dis = UtilityIO.readFiletoData(fileName)
         if let retStr1 = String(data: dis, encoding: .ascii) {
-            let posn = retStr1.parseColumn(hiPattern1)
+            let position = retStr1.parseColumn(hiPattern1)
             let hailPercent = retStr1.parseColumn(hiPattern2)
             let hailSize = retStr1.parseColumn(hiPattern3)
             var posnStr = ""
             var hailPercentStr = ""
             var hailSizeStr = ""
-            posn.forEach {
+            position.forEach {
                 posnStr += $0.replace("/", " ")
             }
             hailPercent.forEach {
