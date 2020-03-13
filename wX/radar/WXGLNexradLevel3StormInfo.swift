@@ -35,7 +35,6 @@ class WXGLNexradLevel3StormInfo {
             let bearing = [Double]()
             var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
             var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            //var tmpCoords = (0.0, 0.0)
             var endPoint = [Double]()
             var ecArr = [ExternalGlobalCoordinates]()
             var tmpCoordsArr = [LatLon]()
@@ -164,10 +163,7 @@ class WXGLNexradLevel3StormInfo {
         _ distance: Double,
         _ bearing: [Double]
         ) -> [Double] {
-        var list = [Double]()
-        // FIXME latlon method return list
-        list.append(startPoint.lat)
-        list.append(startPoint.lon)
+        var list = startPoint.list
         let start = ExternalGlobalCoordinates(ecArr)
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
         list += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)

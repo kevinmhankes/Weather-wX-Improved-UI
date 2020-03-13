@@ -63,6 +63,10 @@ struct LatLon {
         self.latNum = Double(self.xStr) ?? 0.0
         self.lonNum = Double(self.yStr) ?? 0.0
     }
+    
+    var list: [Double] {
+        get {return [lat, lon]}
+    }
 
     var lat: Double {
         get {return latNum}
