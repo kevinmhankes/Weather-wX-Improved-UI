@@ -7,14 +7,14 @@
 import Foundation
 
 final class WXGLDownload {
-
+    
     private static let utilnxanimPattern1 = ">(sn.[0-9]{4})</a>"
     private static let utilnxanimPattern2 = ".*?([0-9]{2}-[A-Za-z]{3}-[0-9]{4} [0-9]{2}:[0-9]{2}).*?"
     static var nwsRadarPub = "https://tgftp.nws.noaa.gov/"
     private static var nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
     private var radarSite = ""
     private var prod = ""
-
+    
     static func getNidsTab(_ product: String, _ radarSite: String, _ fileName: String) {
         let ridPrefix = WXGLDownload().getRidPrefix(radarSite, false)
         let url = WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
@@ -23,39 +23,47 @@ final class WXGLDownload {
         let inputstream = url.getDataFromUrl()
         UtilityIO.saveInputStream(inputstream, fileName)
     }
-
+    
     func getRidPrefix(_ radarSite: String, _ tdwr: Bool) -> String {
-        var ridPrefix = "k"
-        switch radarSite {
-        case "JUA":
-            ridPrefix = "t"
-        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
-            ridPrefix = "p"
-        default:
-            ridPrefix = "k"
-        }
+        //var ridPrefix = "k"
         if tdwr {
-            ridPrefix = ""
+            return ""
+        } else {
+            switch radarSite {
+            case "JUA":
+                return "t"
+            case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
+                return "p"
+            default:
+                return "k"
+            }
         }
-        return ridPrefix
+        //if tdwr {
+        //    ridPrefix = ""
+        //}
+        //return ridPrefix
     }
-
+    
     func getRidPrefix(_ radarSite: String, _ product: String) -> String {
-        var ridPrefix = "k"
-        switch radarSite {
-        case "JUA":
-            ridPrefix = "t"
-        case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
-            ridPrefix = "p"
-        default:
-            ridPrefix = "k"
-        }
+        //var ridPrefix = "k"
         if product=="TV0" || product=="TZL" || product=="TR0" || product=="TZ0" {
-            ridPrefix = ""
+            return ""
+        } else {
+            switch radarSite {
+            case "JUA":
+                return "t"
+            case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
+                return "p"
+            default:
+                return "k"
+            }
         }
-        return ridPrefix
+        //if product=="TV0" || product=="TZL" || product=="TR0" || product=="TZ0" {
+        //    ridPrefix = ""
+        //}
+        //return ridPrefix
     }
-
+    
     func getRadarFile(_ urlStr: String, _ rid: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
         let l2BaseFn = "l2"
         let l3BaseFn = "nids"
@@ -79,7 +87,7 @@ final class WXGLDownload {
         }
         return ridPrefixGlobal
     }
-
+    
     // Download a list of files and return the list as a list of Strings
     // Determines of Level 2 or Level 3 and calls appropriate method
     func getRadarFilesForAnimation(_ frameCount: Int) -> [String] {
@@ -93,14 +101,14 @@ final class WXGLDownload {
         }
         return listOfFiles
     }
-
+    
     // Level 3: Download a list of files and return the list as a list of Strings
     private func getLevel3FilesForAnimation(
         _ frameCount: Int,
         _ product: String,
         _ ridPrefix: String,
         _ rid: String
-        ) -> [String] {
+    ) -> [String] {
         var listOfFiles = [String]()
         let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
@@ -143,7 +151,7 @@ final class WXGLDownload {
         }
         return listOfFiles
     }
-
+    
     // Level 2: Download a list of files and return the list as a list of Strings
     private func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int) -> [String] {
         var listOfFiles = [String]()
@@ -162,7 +170,7 @@ final class WXGLDownload {
         }
         return listOfFiles
     }
-
+    
     private func getLevel2Url() -> String {
         let ridPrefix = getRidPrefix(radarSite, false).uppercased()
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
@@ -186,7 +194,7 @@ final class WXGLDownload {
         }
         return baseUrl + fileName
     }
-
+    
     private func getInputStreamFromURLL2(_ url: String) -> Data {
         let byteEnd = "3000000"
         let myJustDefaults = JustSessionDefaults(headers: ["Range": "bytes=0-" + byteEnd])

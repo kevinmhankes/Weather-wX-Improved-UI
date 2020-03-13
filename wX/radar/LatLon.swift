@@ -65,7 +65,7 @@ struct LatLon {
     }
     
     var list: [Double] {
-        get {return [lat, lon]}
+        return [lat, lon]
     }
 
     var lat: Double {
