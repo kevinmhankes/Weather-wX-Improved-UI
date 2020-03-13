@@ -24,6 +24,7 @@
 		 [REF] add named arg for all forEach {}
 		 [REF] cleanup un utilSwoD1 and other refactors in radar code
 		 [REF] fix utilRadar / utilRadarUI
+		 [REF] misc for code reability and ongoing maintenance
 56095 2020_03_09 [FIX] crash in storm tracks due to index error conflict
 56094 2020_03_08 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController

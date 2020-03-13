@@ -387,7 +387,7 @@ final class UtilityCanada {
         if !UtilityCitiesCanada.cityInit {
             UtilityCitiesCanada.loadCitiesArray()
         }
-        for city in UtilityCitiesCanada.citiesCa {
+        for city in UtilityCitiesCanada.cities {
             if city.contains(label) {
                 isPresent = true
                 break
@@ -402,10 +402,10 @@ final class UtilityCanada {
         if !UtilityCitiesCanada.cityInit {
             UtilityCitiesCanada.loadCitiesArray()
         }
-        for city in UtilityCitiesCanada.citiesCa {
+        for city in UtilityCitiesCanada.cities {
             if city == label {
-                latLon.append(UtilityCitiesCanada.latCa[index])
-                latLon.append(UtilityCitiesCanada.lonCa[index])
+                latLon.append(UtilityCitiesCanada.lat[index])
+                latLon.append(UtilityCitiesCanada.lon[index])
                 break
             }
             index += 1
