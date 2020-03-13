@@ -33,6 +33,7 @@
 		0327376E23F2083D002636D1 /* vcTabSpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327376A23F2083C002636D1 /* vcTabSpc.swift */; };
 		0327376F23F2083D002636D1 /* vcTabLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327376B23F2083D002636D1 /* vcTabLocation.swift */; };
 		0327377023F2083D002636D1 /* vcTabParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327376C23F2083D002636D1 /* vcTabParent.swift */; };
+		0329E307241BBA84005E0766 /* UtilityRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329E306241BBA84005E0766 /* UtilityRadar.swift */; };
 		0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */; };
 		03339AE922C3661600B888FE /* ObjectCardNhcStormReportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */; };
 		03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */; };
@@ -430,7 +431,7 @@
 		0327376A23F2083C002636D1 /* vcTabSpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcTabSpc.swift; sourceTree = "<group>"; };
 		0327376B23F2083D002636D1 /* vcTabLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcTabLocation.swift; sourceTree = "<group>"; };
 		0327376C23F2083D002636D1 /* vcTabParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcTabParent.swift; sourceTree = "<group>"; };
-		032EAC6F225E974F003A6A30 /* UtilityRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityRadar.swift; sourceTree = "<group>"; };
+		0329E306241BBA84005E0766 /* UtilityRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityRadar.swift; sourceTree = "<group>"; };
 		0332EE0121E9EA8800C6B6D0 /* SunCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunCalc.swift; sourceTree = "<group>"; };
 		03339AE822C3661600B888FE /* ObjectCardNhcStormReportItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardNhcStormReportItem.swift; sourceTree = "<group>"; };
 		03339AEA22C3678400B888FE /* ObjectNhcStormDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcStormDetails.swift; sourceTree = "<group>"; };
@@ -1152,7 +1153,7 @@
 				F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */,
 				F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */,
 				F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */,
-				032EAC6F225E974F003A6A30 /* UtilityRadar.swift */,
+				0329E306241BBA84005E0766 /* UtilityRadar.swift */,
 				031AED0A21C86149004EC175 /* UtilityRadarUI.swift */,
 				F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */,
 				03F8A959229C7145004A88EB /* UtilitySwoD1.swift */,
@@ -1852,6 +1853,7 @@
 				F0B335331DA3FD3B0035BD36 /* WXGLDownload.swift in Sources */,
 				034041DE23F1667B003AB242 /* vcGoes.swift in Sources */,
 				034041DB23F162A4003AB242 /* vcWpcRainfallSummary.swift in Sources */,
+				0329E307241BBA84005E0766 /* UtilityRadar.swift in Sources */,
 				F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */,
 				F04378BD1E0F060100C0A252 /* UtilityCanadaImg.swift in Sources */,
 				F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */,

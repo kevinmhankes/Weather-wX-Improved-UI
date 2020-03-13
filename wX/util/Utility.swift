@@ -10,43 +10,43 @@ import UIKit
 final class Utility {
     
     static func getRadarSiteName(_ radarSite: String) -> String {
-        return UtilityRadarUI.radarIdToName[radarSite] ?? ""
+        return UtilityRadar.radarIdToName[radarSite] ?? ""
     }
     
     static func getRadarSiteLatLon(_ radarSite: String) -> LatLon {
-        let lat = UtilityRadarUI.radarSiteToLat[radarSite] ?? ""
-        let lon = "-" + (UtilityRadarUI.radarSiteToLon[radarSite] ?? "")
+        let lat = UtilityRadar.radarSiteToLat[radarSite] ?? ""
+        let lon = "-" + (UtilityRadar.radarSiteToLon[radarSite] ?? "")
         return LatLon(lat, lon)
     }
     
     static func getRadarSiteX(_ radarSite: String) -> String {
-        return UtilityRadarUI.radarSiteToLat[radarSite] ?? ""
+        return UtilityRadar.radarSiteToLat[radarSite] ?? ""
     }
     
     static func getRadarSiteY(_ radarSite: String) -> String {
-        return UtilityRadarUI.radarSiteToLon[radarSite] ?? ""
+        return UtilityRadar.radarSiteToLon[radarSite] ?? ""
     }
     
     static func getWfoSiteName(_ wfo: String) -> String {
-        return UtilityRadarUI.wfoIdToName[wfo] ?? ""
+        return UtilityRadar.wfoIdToName[wfo] ?? ""
     }
     
     static func getWfoSiteLatLon(_ wfo: String) -> LatLon {
-        let lat = UtilityRadarUI.wfoSitetoLat[wfo] ?? ""
-        let lon = UtilityRadarUI.wfoSitetoLon[wfo] ?? ""
+        let lat = UtilityRadar.wfoSitetoLat[wfo] ?? ""
+        let lon = UtilityRadar.wfoSitetoLon[wfo] ?? ""
         return LatLon(lat, lon)
     }
     
     static func getSoundingSiteLatLon(_ wfo: String) -> LatLon {
-        let lat = UtilityRadarUI.soundingSiteToLat[wfo] ?? ""
-        let lon = "-" + (UtilityRadarUI.soundingSiteToLon[wfo] ?? "")
+        let lat = UtilityRadar.soundingSiteToLat[wfo] ?? ""
+        let lon = "-" + (UtilityRadar.soundingSiteToLon[wfo] ?? "")
         return LatLon(lat, lon)
     }
     
     static func getSoundingSiteName(_ wfo: String) -> String {
-        var site = UtilityRadarUI.wfoIdToName[wfo] ?? ""
+        var site = UtilityRadar.wfoIdToName[wfo] ?? ""
         if site == "" {
-            site = UtilityRadarUI.soundingIdToName[wfo] ?? ""
+            site = UtilityRadar.soundingIdToName[wfo] ?? ""
         }
         return site
     }

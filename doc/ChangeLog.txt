@@ -14,16 +14,16 @@
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
-// [REF] fix utilRadar / utilRadarUI
 // [ADD] more robust handling network issues (cc,7day,radar)
 // [REF] stop using $0 and $1
 // [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
 
-56096 2020_03_12 [FIX] text products start RWRMX and starting with TPT and 5 characters long were not working
+56096 2020_03_13 [FIX] text products start RWRMX and starting with TPT and 5 characters long were not working
 		 [ADD] national text - for some text products use fixed width
 		 [REF] add named arg for all forEach {}
 		 [REF] cleanup un utilSwoD1 and other refactors in radar code
+		 [REF] fix utilRadar / utilRadarUI
 56095 2020_03_09 [FIX] crash in storm tracks due to index error conflict
 56094 2020_03_08 [ADD] use ObjectImageSummary in SPC SWO, Fire, Tstorm, WPC Rainfall
 		 [REF] ObjectScrollStackView - use properties in main viewController
