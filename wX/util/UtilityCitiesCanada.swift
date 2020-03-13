@@ -5,16 +5,15 @@
  *****************************************************************************/
 
 final class UtilityCitiesCanada {
-
-    static var cityInit = false
+    
+    static var initialized = false
     static let num = 838
     static var cities = [String](repeating: "", count: num)
     static var lat = [Double](repeating: 0.0, count: num)
     static var lon = [Double](repeating: 0.0, count: num)
     static var code = [String](repeating: "", count: num)
-
-    static func loadCitiesArray() {
-        cityInit = true
+    
+    static func load() {
         cities[0]="Airdrie, AB"
         lat[0]=51.2859257
         lon[0]=114.0105993
@@ -2529,7 +2528,7 @@ final class UtilityCitiesCanada {
         cities[837]="Whitehorse, YT"
         lat[837]=60.7206761
         lon[837]=135.0523078
-
+        
         code[0]="12"
         code[1]="10"
         code[2]="49"
@@ -3368,5 +3367,6 @@ final class UtilityCitiesCanada {
         code[835]="14"
         code[836]="13"
         code[837]="16"
+        initialized = true
     }
 }

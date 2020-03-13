@@ -38,7 +38,7 @@ final class UtilityDownload {
         guard let safeUrl = URL(string: url) else {
             return Bitmap()
         }
-        let imageData = try?  Data(contentsOf: safeUrl)
+        let imageData = try? Data(contentsOf: safeUrl)
         if let image = imageData {
             return Bitmap(image)
         } else {
@@ -291,9 +291,7 @@ final class UtilityDownload {
                     text = text.parse("<div id=\"discDiv\">(.*?)</div>").replace("<br>", MyApplication.newline).removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
-                    let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2
-                        + "&product=" + t1 + "&format=txt&version=1&glossary=0"
-                    print("URL: " + urlToGet)
+                    let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2 + "&product=" + t1 + "&format=txt&version=1&glossary=0"
                     let prodHtmlFuture = urlToGet.getNwsHtml()
                     if product.hasPrefix("RTP") ||
                         product.hasPrefix("LSR") ||
