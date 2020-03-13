@@ -76,7 +76,7 @@ class vcGoes: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityGoes.productLabels, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityGoes.labels, self.productChanged(_:))
     }
     
     @objc func sectorClicked() {
@@ -84,7 +84,7 @@ class vcGoes: UIwXViewController {
     }
     
     func productChanged(_ index: Int) {
-        productCode = UtilityGoes.productCodes[index]
+        productCode = UtilityGoes.codes[index]
         productButton.title = productCode
         self.getContent()
     }
@@ -103,8 +103,8 @@ class vcGoes: UIwXViewController {
         productChanged(
             UtilityUI.sideSwipe(
                 sender,
-                UtilityGoes.productCodes.firstIndex(of: productCode)!,
-                UtilityGoes.productCodes
+                UtilityGoes.codes.firstIndex(of: productCode)!,
+                UtilityGoes.codes
             )
         )
     }

@@ -125,7 +125,7 @@ final class UtilityGoes {
         "np"
     ]
     
-    static let productLabels = [
+    static let labels = [
         "True color daytime, multispectral IR at night",
         "00.47 um (Band 1) Blue - Visible",
         "00.64 um (Band 2) Red - Visible",
@@ -147,7 +147,7 @@ final class UtilityGoes {
         "Sandwich RGB - Bands 3 and 13 combo"
     ]
     
-    static let productCodes = [
+    static let codes = [
         "GEOCOLOR",
         "01",
         "02",

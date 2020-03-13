@@ -53,7 +53,7 @@ class vcSpcStormReports: UIwXViewController {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl
             self.html = self.textUrl.getHtml()
-            self.stormReports = UtilitySpcStormReports.processData(self.html.split(MyApplication.newline))
+            self.stormReports = UtilitySpcStormReports.process(self.html.split(MyApplication.newline))
             DispatchQueue.main.async {
                 self.displayContent()
             }

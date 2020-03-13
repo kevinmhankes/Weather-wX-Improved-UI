@@ -34,7 +34,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             let number = Int(self.day)! - 1
             let imgUrl = UtilityWpcRainfallOutlook.urls[number]
-            self.product = UtilityWpcRainfallOutlook.productCodes[number]
+            self.product = UtilityWpcRainfallOutlook.codes[number]
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async {

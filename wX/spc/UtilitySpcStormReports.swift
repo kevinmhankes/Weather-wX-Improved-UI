@@ -6,7 +6,7 @@
 
 final class UtilitySpcStormReports {
 
-    static func processData(_ lines: [String]) -> [StormReport] {
+    static func process(_ lines: [String]) -> [StormReport] {
         var output = ""
         var stormReports = [StormReport]()
         var lineChunks = [String]()

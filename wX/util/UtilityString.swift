@@ -168,7 +168,7 @@ final class UtilityString {
     static func fixedLengthString(_ string: String, _ length: Int) -> String {
         if string.count < length {
             var stringLocal = string
-            (string.count...length).forEach {_ in
+            (string.count...length).forEach { _ in
                 stringLocal += " "
             }
             return stringLocal

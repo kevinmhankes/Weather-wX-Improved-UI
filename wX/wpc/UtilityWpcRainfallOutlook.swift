@@ -12,7 +12,7 @@ final class UtilityWpcRainfallOutlook {
         "https://www.wpc.ncep.noaa.gov/qpf/99ewbg.gif"
     ]
     
-    static let productCodes = [
+    static let codes = [
         "QPF94E",
         "QPF98E",
         "QPF99E"
