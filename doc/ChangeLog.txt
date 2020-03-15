@@ -19,7 +19,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
 
-56096 2020_03_13 [FIX] text products start RWRMX and starting with TPT and 5 characters long were not working
+56096 2020_03_15 [FIX] text products start RWRMX and starting with TPT and 5 characters long were not working
 		 [ADD] national text - for some text products use fixed width
 		 [REF] add named arg for all forEach {}
 		 [REF] cleanup un utilSwoD1 and other refactors in radar code
