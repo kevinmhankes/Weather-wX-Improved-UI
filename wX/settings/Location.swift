@@ -37,7 +37,7 @@ final class Location {
         wfo = Utility.readPref("NWS" + jStr, "")
         rid = Utility.readPref("RID" + jStr, "")
         nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
-        state = Utility.getWfoSiteName(rid).split(",")[0]
+        state = Utility.getRadarSiteName(rid).split(",")[0]
         observation = Utility.readPref("LOC" + jStr + "_OBSERVATION", "")
         isLocationUS = Location.us(lat)
         Location.addToListOfNames(name)

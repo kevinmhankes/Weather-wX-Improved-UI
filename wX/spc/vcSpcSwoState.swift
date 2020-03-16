@@ -35,9 +35,12 @@ class vcSpcSwoState: UIwXViewController {
     
     func getContent(_ state: String) {
         self.state = state
-        stateButton.title = state
+        if self.state == "AK" || self.state == "HI" || self.state == "" {
+            self.state = "AL"
+        }
+        stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + state + "_swody" + self.day + ".png")
+            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
             }
