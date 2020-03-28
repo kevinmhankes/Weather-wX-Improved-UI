@@ -17,10 +17,10 @@ class WXGLNexradLevel3StormInfo {
             let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""
-            var motionStr = ""
             position.forEach {
                 posnStr += $0.replace("/", " ")
             }
+            var motionStr = ""
             motion.forEach {
                 motionStr += $0.replace("/", " ")
             }
@@ -28,16 +28,10 @@ class WXGLNexradLevel3StormInfo {
             let reg = "(\\d+) "
             let posnNumbers = posnStr.parseColumnAll(reg)
             let motNumbers = motionStr.parseColumnAll(reg)
-            var degree = 0
-            var nm = 0
-            var degree2 = 0.0
-            var nm2 = 0
             let bearing = [Double]()
-            var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            var endPoint = [Double]()
-            var ecArr = [ExternalGlobalCoordinates]()
-            var tmpCoordsArr = [LatLon]()
+            //var endPoint = [Double]()
+            //var ecArr = [ExternalGlobalCoordinates]()
+            //var tmpCoordsArr = [LatLon]()
             let sti15IncrLen = 0.40
             let degreeShift = 180
             let arrowLength = 2.0
@@ -45,12 +39,12 @@ class WXGLNexradLevel3StormInfo {
             if (posnNumbers.count == motNumbers.count) && posnNumbers.count > 1 {
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach { index in
                     let ecc = ExternalGeodeticCalculator()
-                    degree = Int(posnNumbers[index]) ?? 0
-                    nm = Int(posnNumbers[index + 1]) ?? 0
-                    degree2 = Double(motNumbers[index]) ?? 0.0
-                    nm2 = Int(motNumbers[index + 1]) ?? 0
-                    start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                    ec = ecc.calculateEndingGlobalCoordinates(
+                    let degree = Int(posnNumbers[index]) ?? 0
+                    let nm = Int(posnNumbers[index + 1]) ?? 0
+                    let degree2 = Double(motNumbers[index]) ?? 0.0
+                    let nm2 = Int(motNumbers[index + 1]) ?? 0
+                    var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
+                    var ec = ecc.calculateEndingGlobalCoordinates(
                         ExternalEllipsoid.WGS84,
                         start,
                         Double(degree),
@@ -68,8 +62,8 @@ class WXGLNexradLevel3StormInfo {
                     )
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                     stormList += tmpCoords
-                    ecArr = []
-                    tmpCoordsArr = []
+                    var ecArr = [ExternalGlobalCoordinates]()
+                    var tmpCoordsArr = [LatLon]()
                     (0...3).forEach { z in
                         ecArr.append(
                             ecc.calculateEndingGlobalCoordinates(
@@ -82,7 +76,7 @@ class WXGLNexradLevel3StormInfo {
                         )
                         tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], pn)))
                     }
-                    endPoint = tmpCoords
+                    let endPoint = tmpCoords
                     if nm2 > 0 {
                         start = ExternalGlobalCoordinates(ec)
                         stormList += WXGLNexradLevel3Common.drawLine(

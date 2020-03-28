@@ -12,8 +12,8 @@ class WXGLNexradLevel3TVS {
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
-        let dis = UtilityIO.readFiletoData(fileName)
-        if let retStr1 = String(data: dis, encoding: .ascii) {
+        let data = UtilityIO.readFiletoData(fileName)
+        if let retStr1 = String(data: data, encoding: .ascii) {
             let tvs = retStr1.parseColumn(tvsPattern1)
             let bearing = [Double]()
             tvs.indices.forEach { index in
