@@ -25,7 +25,6 @@ final class WXGLDownload {
     }
     
     func getRidPrefix(_ radarSite: String, _ tdwr: Bool) -> String {
-        //var ridPrefix = "k"
         if tdwr {
             return ""
         } else {
@@ -38,10 +37,6 @@ final class WXGLDownload {
                 return "k"
             }
         }
-        //if tdwr {
-        //    ridPrefix = ""
-        //}
-        //return ridPrefix
     }
     
     func getRidPrefix(_ radarSite: String, _ product: String) -> String {
@@ -58,10 +53,6 @@ final class WXGLDownload {
                 return "k"
             }
         }
-        //if product=="TV0" || product=="TZL" || product=="TR0" || product=="TZ0" {
-        //    ridPrefix = ""
-        //}
-        //return ridPrefix
     }
     
     func getRadarFile(_ urlStr: String, _ rid: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
