@@ -9,9 +9,9 @@ class WXGLNexradLevel3StormInfo {
     private static let stiPattern1 = "AZ/RAN(.*?)V"
     private static let stiPattern2 = "MVT(.*?)V"
 
-    static func decode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
-        WXGLDownload.getNidsTab("STI", pn.radarSite.lowercased(), fileName)
+        WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
         let data = UtilityIO.readFiletoData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
             let position = retStr1.parseColumn(stiPattern1)
@@ -40,7 +40,7 @@ class WXGLNexradLevel3StormInfo {
                     let nm = Int(posnNumbers[index + 1]) ?? 0
                     let degree2 = Double(motNumbers[index]) ?? 0.0
                     let nm2 = Int(motNumbers[index + 1]) ?? 0
-                    var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
+                    var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                     var ec = ecc.calculateEndingGlobalCoordinates(
                         ExternalEllipsoid.WGS84,
                         start,
@@ -48,7 +48,7 @@ class WXGLNexradLevel3StormInfo {
                         Double(nm) * 1852.0,
                         bearing
                     )
-                    stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                    stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     start = ExternalGlobalCoordinates(ec)
                     ec = ecc.calculateEndingGlobalCoordinates(
                         ExternalEllipsoid.WGS84,
@@ -57,7 +57,7 @@ class WXGLNexradLevel3StormInfo {
                         Double(nm2) * 1852.0,
                         bearing
                     )
-                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                    let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     stormList += tmpCoords
                     var ecArr = [ExternalGlobalCoordinates]()
                     var tmpCoordsArr = [LatLon]()
@@ -71,7 +71,7 @@ class WXGLNexradLevel3StormInfo {
                                 bearing
                             )
                         )
-                        tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], pn)))
+                        tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], projectionNumbers)))
                     }
                     let endPoint = tmpCoords
                     if nm2 > 0 {
@@ -79,7 +79,7 @@ class WXGLNexradLevel3StormInfo {
                         stormList += WXGLNexradLevel3Common.drawLine(
                             endPoint,
                             ecc,
-                            pn,
+                            projectionNumbers,
                             start,
                             degree2 + arrowBend,
                             arrowLength * 1852.0,
@@ -88,7 +88,7 @@ class WXGLNexradLevel3StormInfo {
                         stormList += WXGLNexradLevel3Common.drawLine(
                             endPoint,
                             ecc,
-                            pn,
+                            projectionNumbers,
                             start,
                             degree2 - arrowBend,
                             arrowLength * 1852.0,
@@ -101,7 +101,7 @@ class WXGLNexradLevel3StormInfo {
                             stormList += drawTickMarks(
                                 tmpCoordsArr[index],
                                 ecc,
-                                pn,
+                                projectionNumbers,
                                 ecArr[index],
                                 degree2 - (90.0 + stormTrackTickMarkAngleOff90),
                                 arrowLength * 1852.0 * sti15IncrLen,
@@ -110,7 +110,7 @@ class WXGLNexradLevel3StormInfo {
                             stormList += drawTickMarks(
                                 tmpCoordsArr[index],
                                 ecc,
-                                pn,
+                                projectionNumbers,
                                 ecArr[index],
                                 degree2 + (90.0 - stormTrackTickMarkAngleOff90),
                                 arrowLength * 1852.0 * sti15IncrLen,
@@ -120,7 +120,7 @@ class WXGLNexradLevel3StormInfo {
                             stormList += drawTickMarks(
                                 tmpCoordsArr[index],
                                 ecc,
-                                pn,
+                                projectionNumbers,
                                 ecArr[index],
                                 degree2 - (90.0 - stormTrackTickMarkAngleOff90),
                                 arrowLength * 1852.0 * sti15IncrLen,
@@ -129,7 +129,7 @@ class WXGLNexradLevel3StormInfo {
                             stormList += drawTickMarks(
                                 tmpCoordsArr[index],
                                 ecc,
-                                pn,
+                                projectionNumbers,
                                 ecArr[index],
                                 degree2 + (90.0 + stormTrackTickMarkAngleOff90),
                                 arrowLength * 1852.0 * sti15IncrLen,

@@ -14,23 +14,15 @@ class WXGLNexradLevel3WindBarbs {
         } else {
             arrWb = UtilityMetar.obsArrWbGust
         }
-        var degree = 0.0
-        var nm = 0.0
-        var degree2 = 0.0
         let bearing = [Double]()
-        var start = ExternalGlobalCoordinates(pn)
-        var end = ExternalGlobalCoordinates(pn)
-        var ec = ExternalGlobalCoordinates(pn)
         let degreeShift = 180.00
         let arrowLength = 2.5
         let arrowSpacing = 3.0
         let barbLengthScaleFactor = 0.4
         let arrowBend = 60.0
         let nmScaleFactor = -1852.0
-        var startLength = 0.0
         let barbLength = 15.0
         let barbOffset = 0.0
-        var above50 = false
         arrWb.forEach { windBarb in
             let ecc = ExternalGeodeticCalculator()
             let metarArr = windBarb.split(":")
@@ -38,6 +30,7 @@ class WXGLNexradLevel3WindBarbs {
             var length = 0
             var locXDbl = 0.0
             var locYDbl = 0.0
+            var above50 = false
             if metarArr.count > 3 {
                 locXDbl = Double(metarArr[0]) ?? 0.0
                 locYDbl = Double(metarArr[1]) ?? 0.0
@@ -45,12 +38,12 @@ class WXGLNexradLevel3WindBarbs {
                 length = Int(metarArr[3]) ?? 0
             }
             if length > 4 {
-                degree = 0.0
-                nm = 0.0
-                degree2 = Double(angle)
-                startLength = nm * nmScaleFactor
-                start =  ExternalGlobalCoordinates(locXDbl, locYDbl)
-                ec =  ecc.calculateEndingGlobalCoordinates(
+                let degree = 0.0
+                let nm = 0.0
+                let degree2 = Double(angle)
+                let startLength = nm * nmScaleFactor
+                var start =  ExternalGlobalCoordinates(locXDbl, locYDbl)
+                var ec =  ecc.calculateEndingGlobalCoordinates(
                     ExternalEllipsoid.WGS84,
                     start,
                     degree,
@@ -66,7 +59,7 @@ class WXGLNexradLevel3WindBarbs {
                     barbLength * nmScaleFactor * barbLengthScaleFactor,
                     bearing
                 )
-                end = ExternalGlobalCoordinates(ec)
+                let end = ExternalGlobalCoordinates(ec)
                 stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
                 var barbCount = Int(length / 10)
                 var halfBarb = false
