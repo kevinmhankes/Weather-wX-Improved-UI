@@ -48,7 +48,7 @@ class UtilityWatch {
         return warningList
     }
 
-    static func showProducts(_ latLon: LatLon, _ type: PolygonType) -> String {
+    static func show(_ latLon: LatLon, _ type: PolygonType) -> String {
         var text = ""
         var numberList = [String]()
         var watchLatLon: String
@@ -67,20 +67,17 @@ class UtilityWatch {
             watchLatLon = MyApplication.watchLatlon.value
         }
         let latLons = watchLatLon.split(":")
-        var z = 0
         var notFound = true
-        while z < latLons.count {
+        latLons.indices.forEach { z in
             let numbers = latLons[z].split(" ")
             var x = [Double]()
             var y = [Double]()
-            var index = 0
-            while index < numbers.count {
+            numbers.indices.forEach { index in
                 if index & 1 == 0 {
                     x.append(Double(numbers[index]) ?? 0.0)
                 } else {
                     y.append((Double(numbers[index]) ?? 0.0) * -1.0)
                 }
-                index += 1
             }
             if y.count > 3 && x.count > 3 && x.count == y.count {
                 let poly2 = ExternalPolygon.Builder()
@@ -94,7 +91,6 @@ class UtilityWatch {
                     notFound = false
                 }
             }
-            z += 1
         }
         return text
     }

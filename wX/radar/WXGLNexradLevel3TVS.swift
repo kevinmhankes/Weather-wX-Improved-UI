@@ -9,28 +9,21 @@ class WXGLNexradLevel3TVS {
     private static let tvsPattern1 = "P  TVS(.{20})"
     private static let tvsPattern2 = ".{9}(.{7})"
 
-    // FIXME var and file naming
-    static func decocode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
-        WXGLDownload.getNidsTab("TVS", pn.radarSite, fileName)
+        WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
         let dis = UtilityIO.readFiletoData(fileName)
         if let retStr1 = String(data: dis, encoding: .ascii) {
             let tvs = retStr1.parseColumn(tvsPattern1)
-            var tmpStr = ""
-            var tmpStrArr = [String]()
-            var degree = 0
-            var nm = 0
             let bearing = [Double]()
-            var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-            var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
             tvs.indices.forEach { index in
                 let ecc =  ExternalGeodeticCalculator()
-                tmpStr = tvs[index].parse(tvsPattern2)
-                tmpStrArr = tmpStr.split("/")
-                degree = Int(tmpStrArr[0].replace(" ", "")) ?? 0
-                nm = Int(tmpStrArr[1].replace(" ", "")) ?? 0
-                start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                ec = ecc.calculateEndingGlobalCoordinates(
+                let string = tvs[index].parse(tvsPattern2)
+                let items = string.split("/")
+                let degree = Int(items[0].replace(" ", "")) ?? 0
+                let nm = Int(items[1].replace(" ", "")) ?? 0
+                let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
+                let ec = ecc.calculateEndingGlobalCoordinates(
                     ExternalEllipsoid.WGS84,
                     start,
                     Double(degree),

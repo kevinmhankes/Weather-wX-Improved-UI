@@ -362,7 +362,7 @@ class WXMetalRender {
                 ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
             )
         case "STI":
-            fList = WXGLNexradLevel3StormInfo.decocode(pn, indexString)
+            fList = WXGLNexradLevel3StormInfo.decode(pn, indexString)
         default:
             break
         }
@@ -771,7 +771,7 @@ class WXMetalRender {
     }
     
     func constructStiLines() {
-        fSti = WXGLNexradLevel3StormInfo.decocode(pn, stiBaseFn + indexString)
+        fSti = WXGLNexradLevel3StormInfo.decode(pn, stiBaseFn + indexString)
         constructGenericLinesShort(stiBuffers, fSti)
         stiBuffers.generateMtlBuffer(device)
     }
@@ -781,7 +781,7 @@ class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3TVS.decocode(pn, tvsBaseFn + indexString)
+        let stormList = WXGLNexradLevel3TVS.decode(pn, tvsBaseFn + indexString)
         tvsBuffers.setXYList(stormList)
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
@@ -792,7 +792,7 @@ class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3HailIndex.decocode(pn, hiBaseFn + indexString)
+        let stormList = WXGLNexradLevel3HailIndex.decode(pn, hiBaseFn + indexString)
         hiBuffers.setXYList(stormList)
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)

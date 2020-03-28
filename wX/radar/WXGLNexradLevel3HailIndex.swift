@@ -11,7 +11,7 @@ class WXGLNexradLevel3HailIndex {
     private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
     private static let stiPattern3 = "(\\d+) "
 
-    static func decocode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("HI", pn.radarSite, fileName)
         let dis = UtilityIO.readFiletoData(fileName)
@@ -20,15 +20,15 @@ class WXGLNexradLevel3HailIndex {
             let hailPercent = retStr1.parseColumn(hiPattern2)
             let hailSize = retStr1.parseColumn(hiPattern3)
             var posnStr = ""
-            var hailPercentStr = ""
-            var hailSizeStr = ""
             position.forEach {
                 posnStr += $0.replace("/", " ")
             }
+            var hailPercentStr = ""
             hailPercent.forEach {
                 hailPercentStr += $0.replace("/", " ")
             }
             hailPercentStr = hailPercentStr.replace("UNKNOWN", " 0 0 ")
+            var hailSizeStr = ""
             hailSize.forEach {
                 hailSizeStr += $0.replace("/", " ")
             }
@@ -41,20 +41,17 @@ class WXGLNexradLevel3HailIndex {
             let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
             let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
-                var degree = 0
-                var nm = 0
                 let bearing = [Double]()
                 var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
                 var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                var hailSizeDbl = 0.0
                 var index = 0
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach {
-                    hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
+                    let hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
                     if hailSizeDbl > 0.49 && ((Int(hailPercentNumbers[$0]) ?? 0 ) > 60
                         || (Int(hailPercentNumbers[$0+1]) ?? 0 ) > 60) {
                         let ecc = ExternalGeodeticCalculator()
-                        degree = Int(posnNumbers[$0]) ?? 0
-                        nm = Int(posnNumbers[$0 + 1]) ?? 0
+                        let degree = Int(posnNumbers[$0]) ?? 0
+                        let nm = Int(posnNumbers[$0 + 1]) ?? 0
                         start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
                         ec = ecc.calculateEndingGlobalCoordinates(
                             ExternalEllipsoid.WGS84,

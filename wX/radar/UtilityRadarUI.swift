@@ -105,7 +105,7 @@ public class UtilityRadarUI {
     }
 
     static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
-        let txt = UtilityWatch.showProducts(location, type)
+        let txt = UtilityWatch.show(location, type)
         var token = ""
         if type.string == PolygonType.MPD.string {
             token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt

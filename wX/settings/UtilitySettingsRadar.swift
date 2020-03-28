@@ -26,7 +26,7 @@ final class UtilitySettingsRadar {
         "RADAR_CAMX_BORDERS": "Canadian and Mexican borders",
         "RADAR_AUTOREFRESH": "Screen stays on and auto refresh radar",
         "WXOGL_REMEMBER_LOCATION": "Remember location",
-        "RADAR_SHOW_MPD": "Mesoscale Precipitatio Discussions",
+        "RADAR_SHOW_MPD": "Mesoscale Precipitation Discussions",
         "COD_CITIES_DEFAULT": "Cities",
         "COD_HW_DEFAULT": "Highways",
         "COD_LAKES_DEFAULT": "Lakes and Rivers",

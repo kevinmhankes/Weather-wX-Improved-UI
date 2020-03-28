@@ -11,7 +11,7 @@ final class WXGLPolygonWarnings {
         + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
 
     // FIXME have TOR/FFW/TST use this
-    static func addGeneric(_ pn: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
+    static func addGeneric(_ projectionNumbers: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
         var warningList = [Double]()
         let prefToken = type.storage.value
         let html = prefToken.replace("\n", "").replace(" ", "")
@@ -31,11 +31,11 @@ final class WXGLPolygonWarnings {
                     x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
                     warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {
-                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
+                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], projectionNumbers)
                             warningList += tmpCoords
                             warningList += tmpCoords
                         }
@@ -47,7 +47,7 @@ final class WXGLPolygonWarnings {
         return warningList
     }
 
-    static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
+    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = MyApplication.severeDashboardFfw.value
         if type.string == "TOR" {
@@ -70,11 +70,11 @@ final class WXGLPolygonWarnings {
                     x = coordinates.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
                     warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {
-                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
+                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], projectionNumbers)
                             warningList += tmpCoords
                             warningList += tmpCoords
                         }
