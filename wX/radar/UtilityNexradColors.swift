@@ -31,11 +31,11 @@ class UtilityNexradColors {
         var hsvb = [Double]()
         hsva = Color.colorToHsv(colorA, hsva)
         hsvb = Color.colorToHsv(colorB, hsvb)
-        (0...2).forEach {
-            if $0 > 0 {
-                hsvb[$0] = interpolate(hsva[$0], hsvb[$0], Double(proportion))
+        (0...2).forEach { index in
+            if index > 0 {
+                hsvb[index] = interpolate(hsva[index], hsvb[index], Double(proportion))
             } else {
-                hsvb[$0] = interpolateHue(hsva[$0], hsvb[$0], Double(proportion))
+                hsvb[index] = interpolateHue(hsva[index], hsvb[index], Double(proportion))
             }
         }
         return Color.hsvToColor(hsvb)
