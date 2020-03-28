@@ -744,7 +744,7 @@ class WXMetalRender {
     }
     
     func constructWBLines() {
-        let fWb = WXGLNexradLevel3WindBarbs.decocodeAndPlot(pn, isGust: false)
+        let fWb = WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: false)
         constructGenericLinesShort(wbBuffers, fWb)
         constructWBLinesGusts()
         constructWBCircle()
@@ -752,7 +752,7 @@ class WXMetalRender {
     }
     
     func constructWBLinesGusts() {
-        fWbGusts = WXGLNexradLevel3WindBarbs.decocodeAndPlot(pn, isGust: true)
+        fWbGusts = WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: true)
         constructGenericLinesShort(wbGustsBuffers, fWbGusts)
         wbGustsBuffers.generateMtlBuffer(device)
     }

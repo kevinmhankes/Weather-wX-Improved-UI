@@ -6,7 +6,7 @@
 
 class WXGLNexradLevel3WindBarbs {
 
-    static func decocodeAndPlot(_ pn: ProjectionNumbers, isGust: Bool) -> [Double] {
+    static func decodeAndPlot(_ projectionNumbers: ProjectionNumbers, isGust: Bool) -> [Double] {
         var stormList = [Double]()
         var arrWb = [String]()
         if !isGust {
@@ -50,7 +50,7 @@ class WXGLNexradLevel3WindBarbs {
                     nm * nmScaleFactor * barbLengthScaleFactor,
                     bearing
                 )
-                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                 start = ExternalGlobalCoordinates(ec)
                 ec = ecc.calculateEndingGlobalCoordinates(
                     ExternalEllipsoid.WGS84,
@@ -60,7 +60,7 @@ class WXGLNexradLevel3WindBarbs {
                     bearing
                 )
                 let end = ExternalGlobalCoordinates(ec)
-                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+                stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                 var barbCount = Int(length / 10)
                 var halfBarb = false
                 var oneHalfBarb = false
@@ -90,7 +90,7 @@ class WXGLNexradLevel3WindBarbs {
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
                         ecc,
-                        pn,
+                        projectionNumbers,
                         start,
                         degree2 - arrowBend * 2.0,
                         startLength + arrowLength * nmScaleFactor,
@@ -108,7 +108,7 @@ class WXGLNexradLevel3WindBarbs {
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
                         ecc,
-                        pn,
+                        projectionNumbers,
                         start,
                         degree2 - 90.0,
                         startLength + 0.80 * arrowLength * nmScaleFactor,
@@ -127,7 +127,7 @@ class WXGLNexradLevel3WindBarbs {
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
                         ecc,
-                        pn,
+                        projectionNumbers,
                         start,
                         degree2 - 180.0,
                         startLength + 0.5 * arrowLength * nmScaleFactor,
@@ -147,7 +147,7 @@ class WXGLNexradLevel3WindBarbs {
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(ec,
                                           ecc,
-                                          pn,
+                                          projectionNumbers,
                                           start,
                                           degree2 - arrowBend * 2.0,
                                           startLength + arrowLength * nmScaleFactor,
@@ -169,7 +169,7 @@ class WXGLNexradLevel3WindBarbs {
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
                         ecc,
-                        pn,
+                        projectionNumbers,
                         start,
                         degree2 - arrowBend * 2.0,
                         startLength + arrowLength / 2.0 * nmScaleFactor,
