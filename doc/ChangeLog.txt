@@ -20,7 +20,7 @@
 // [ADD] onrestart spc mcd wat mpd
 // [REF] spc storm reports refactor like kotlin
 
-56096 2020_03_16 [FIX] state detection in Locations was not working in some cases
+56096 2020_03_28 [FIX] state detection in Locations was not working in some cases
 		 [FIX] SPC SWO state graphic - if HI or AK force to AL as it's lower 48 only
 56096 2020_03_15 [FIX] text products start RWRMX and starting with TPT and 5 characters long were not working
 		 [ADD] national text - for some text products use fixed width
