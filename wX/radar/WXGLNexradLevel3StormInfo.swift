@@ -12,8 +12,8 @@ class WXGLNexradLevel3StormInfo {
     static func decode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("STI", pn.radarSite.lowercased(), fileName)
-        let dis = UtilityIO.readFiletoData(fileName)
-        if let retStr1 = String(data: dis, encoding: .ascii) {
+        let data = UtilityIO.readFiletoData(fileName)
+        if let retStr1 = String(data: data, encoding: .ascii) {
             let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""
@@ -29,9 +29,6 @@ class WXGLNexradLevel3StormInfo {
             let posnNumbers = posnStr.parseColumnAll(reg)
             let motNumbers = motionStr.parseColumnAll(reg)
             let bearing = [Double]()
-            //var endPoint = [Double]()
-            //var ecArr = [ExternalGlobalCoordinates]()
-            //var tmpCoordsArr = [LatLon]()
             let sti15IncrLen = 0.40
             let degreeShift = 180
             let arrowLength = 2.0
