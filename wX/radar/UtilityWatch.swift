@@ -6,7 +6,7 @@
 
 class UtilityWatch {
 
-    static func add(_ pn: ProjectionNumbers, _ type: PolygonType) -> [Double] {
+    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()
         var prefToken = ""
         switch type.string {
@@ -28,15 +28,15 @@ class UtilityWatch {
                 var x = [Double]()
                 var y = [Double]()
                 if numbers.count > 1 {
-                    x = numbers.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
-                    y = numbers.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
+                    x = numbers.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
+                    y = numbers.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], pn)
+                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
                     warningList += startCoordinates
                     if x.count == y.count {
                         (1..<x.count).forEach {
-                            let coordinates = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], pn)
+                            let coordinates = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], projectionNumbers)
                             warningList += coordinates
                             warningList += coordinates
                         }
