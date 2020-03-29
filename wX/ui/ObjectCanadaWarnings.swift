@@ -114,15 +114,11 @@ final class ObjectCanadaWarnings: NSObject {
         _ = ObjectCALegal(uiv.stackView)
     }
     
-    func getWarningUrl(_ index: Int) -> String {
-        return MyApplication.canadaEcSitePrefix + listLocUrl[index]
-    }
+    func getWarningUrl(_ index: Int) -> String { MyApplication.canadaEcSitePrefix + listLocUrl[index] }
     
     @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
     
-    var count: String {
-        return String(listLocUrl.count)
-    }
+    var count: String { String(listLocUrl.count) }
     
     func setProvince(_ province: String) {
         provinceCode = provinceToCode[province] ?? ""
