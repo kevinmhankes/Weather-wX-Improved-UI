@@ -76,11 +76,7 @@ final class ObjectForecastPackage7Day {
         shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
     }
         
-    var forecastList: [String] {
-        return detailedForecasts
-    }
+    var forecastList: [String] { detailedForecasts }
     
-    var forecastListCondensed: [String] {
-        return shortForecasts
-    }
+    var forecastListCondensed: [String] { shortForecasts }
 }
