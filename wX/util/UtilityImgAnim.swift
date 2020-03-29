@@ -34,6 +34,6 @@ final class UtilityImgAnim {
     }
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap]) -> AnimationDrawable {
-        return getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval() * 2)
+        getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval() * 2)
     }
 }

@@ -62,11 +62,7 @@ final class UtilityIO {
         }
     }
 
-    static func readBitmapResourceFromFile(_ file: String) -> Bitmap {
-        return Bitmap(UIImage(named: file) ?? UIImage())
-    }
+    static func readBitmapResourceFromFile(_ file: String) -> Bitmap { Bitmap(UIImage(named: file) ?? UIImage()) }
 
-    static func rawFileToStringArray(_ rawFile: String) -> [String] {
-        return UtilityIO.readTextFile(rawFile).split("\n")
-    }
+    static func rawFileToStringArray(_ rawFile: String) -> [String] { UtilityIO.readTextFile(rawFile).split("\n") }
 }

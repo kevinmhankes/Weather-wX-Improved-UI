@@ -467,7 +467,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if map.mapShown {
             hideMap()
         } else {
-            if self.presentedViewController == nil {
+            if self.presentedViewController == nil && self.wxMetal[0] != nil {
                 // Don't disable screen being left on if one goes from single pane to dual pane via time
                 // button and back
                 if wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
