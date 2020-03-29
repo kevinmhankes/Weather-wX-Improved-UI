@@ -82,9 +82,7 @@ final class ObjectAlertSummary: NSObject {
         objTextSummary.text = "Total alerts: " + String(capAlerts.count) + MyApplication.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + MyApplication.newline + "State counts: " + stateCnt
     }
 
-    func getUrl(_ index: Int) -> String {
-        return urls[index]
-    }
+    func getUrl(_ index: Int) -> String { urls[index] }
 
     @objc func imageClicked() {}
 
@@ -106,11 +104,7 @@ final class ObjectAlertSummary: NSObject {
     }
 
     var image: Bitmap {
-        get {
-            return self.objImage.bitmap
-        }
-        set {
-            self.objImage.setBitmap(newValue)
-        }
+        get { self.objImage.bitmap }
+        set { self.objImage.setBitmap(newValue) }
     }
 }
