@@ -20,9 +20,7 @@ final class UtilityString {
         return longTime.replace("-06:00", "").replace("-07:00", "")
     }
 
-    static func split(_ str: String, _ splitStr: String) -> [String] {
-        return str.components(separatedBy: splitStr)
-    }
+    static func split(_ str: String, _ splitStr: String) -> [String] { str.components(separatedBy: splitStr) }
 
     static func substring(_ str: String, _ start: Int, _ end: Int) -> String {
         var retStr = ""
@@ -71,9 +69,7 @@ final class UtilityString {
         return str
     }
 
-    static func removeLineBreaks(_ html: String) -> String {
-        return html.replaceAll("\n\n", "<BR>").replaceAll("\n", " ").replaceAll("<BR>", "\n")
-    }
+    static func removeLineBreaks(_ html: String) -> String { html.replaceAll("\n\n", "<BR>").replaceAll("\n", " ").replaceAll("<BR>", "\n") }
 
     static func parseHelper(_ regex: String!, _ text: String!) -> [String] {
         do {
@@ -113,17 +109,11 @@ final class UtilityString {
         }
     }
 
-   	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String {
-        return str.parse(regexpStr)
-    }
+   	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String { str.parse(regexpStr) }
 
-    static func parseColumn(_ str: String, _ regexpStr: String) -> [String] {
-        return parseHelper(regexpStr, str)
-    }
+    static func parseColumn(_ str: String, _ regexpStr: String) -> [String] { parseHelper(regexpStr, str) }
 
-    static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] {
-        return parseHelper(regexpStr, str)
-    }
+    static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] { parseHelper(regexpStr, str) }
 
     static func parseAndCount(_ str: String, _ regexpStr: String) -> Int {
         let tmpArr = str.parseColumn(regexpStr)

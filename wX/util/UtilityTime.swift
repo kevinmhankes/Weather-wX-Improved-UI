@@ -92,21 +92,13 @@ final class UtilityTime {
         return dayOfTheWeek
     }
     
-    static func getYear() -> Int {
-        return Calendar.current.component(.year, from: Date())
-    }
+    static func getYear() -> Int { Calendar.current.component(.year, from: Date()) }
     
-    static func getMonth() -> Int {
-        return Calendar.current.component(.month, from: Date())
-    }
+    static func getMonth() -> Int { Calendar.current.component(.month, from: Date()) }
     
-    static func getDay() -> Int {
-        return Calendar.current.component(.day, from: Date())
-    }
+    static func getDay() -> Int { Calendar.current.component(.day, from: Date()) }
     
-    static func secondsFromUTC() -> Int {
-        return TimeZone.current.secondsFromGMT()
-    }
+    static func secondsFromUTC() -> Int { TimeZone.current.secondsFromGMT() }
     
     static func genModelRuns(_ time: String, _ hours: Int) -> [String] {
         let dateFmt = DateFormatter()
