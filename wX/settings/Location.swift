@@ -91,66 +91,52 @@ final class Location {
         }
     }
 
-    static func getCurrentLocation() -> Int {
-        return currentLocation
-    }
+    static func getCurrentLocation() -> Int { currentLocation }
 
     static func setCurrentLocation(_ currentLocation: Int) {
         Location.currentLocation = currentLocation
     }
 
-    static func getCurrentLocationStr() -> String {
-        return currentLocationStr
-    }
+    static func getCurrentLocationStr() -> String { currentLocationStr }
 
     static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
         self.currentLocation = Int(currentLocationStr)! - 1
     }
 
-    static func us(_ xStr: String) -> Bool {
-        return !xStr.contains("CANADA")
-    }
+    static func us(_ xStr: String) -> Bool { !xStr.contains("CANADA") }
 
     // Class specific getters
-    static var state: String {return MyApplication.locations[getCurrentLocation()].state}
+    static var state: String { MyApplication.locations[getCurrentLocation()].state }
 
-    static var name: String {return MyApplication.locations[getCurrentLocation()].name}
+    static var name: String { MyApplication.locations[getCurrentLocation()].name }
 
-    static func getName(_ locNum: Int) -> String {
-        return MyApplication.locations[locNum].name
-    }
+    static func getName(_ locNum: Int) -> String { MyApplication.locations[locNum].name }
 
-    static var rid: String {return MyApplication.locations[getCurrentLocation()].rid}
+    static var rid: String { MyApplication.locations[getCurrentLocation()].rid }
 
-    static var wfo: String {return MyApplication.locations[getCurrentLocation()].wfo}
+    static var wfo: String { MyApplication.locations[getCurrentLocation()].wfo }
 
-    static var x: String {return MyApplication.locations[getCurrentLocation()].lat}
+    static var x: String { MyApplication.locations[getCurrentLocation()].lat }
 
     static var latLon: LatLon {
-        return LatLon( MyApplication.locations[getCurrentLocation()].lat,
+        LatLon( MyApplication.locations[getCurrentLocation()].lat,
                        MyApplication.locations[getCurrentLocation()].lon)
     }
 
-    static func getX(_ locNum: Int) -> String {
-        return MyApplication.locations[locNum].lat
-    }
+    static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }
 
-    static func getLatLon(_ locNum: Int) -> LatLon {
-        return LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon)
-    }
+    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon) }
 
-    static var xDbl: Double {return Double(Location.x) ?? 0.0}
+    static var xDbl: Double { Double(Location.x) ?? 0.0 }
 
-    static var y: String {return MyApplication.locations[getCurrentLocation()].lon}
+    static var y: String { MyApplication.locations[getCurrentLocation()].lon }
 
-    static func getY(_ locNum: Int) -> String {
-        return MyApplication.locations[locNum].lon
-    }
+    static func getY(_ locNum: Int) -> String { MyApplication.locations[locNum].lon }
 
-    static var yDbl: Double {return Double(Location.y) ?? 0.0}
+    static var yDbl: Double { Double(Location.y) ?? 0.0 }
 
-    static var getLocationIndex: Int {return Location.getCurrentLocation()}
+    static var getLocationIndex: Int { Location.getCurrentLocation() }
 
     static func isUS(_ locationNumber: Int) -> Bool {
         // FIXME bounds check or safeGet
@@ -160,11 +146,11 @@ final class Location {
         return MyApplication.locations[locationNumber].isLocationUS
     }
 
-    static var isUS: Bool {return MyApplication.locations[Location.getLocationIndex].isLocationUS}
+    static var isUS: Bool { MyApplication.locations[Location.getLocationIndex].isLocationUS }
 
-    var prov: String {return lat.split(":")[1]}
+    var prov: String { lat.split(":")[1] }
 
-    static var latlon: LatLon {return LatLon(Location.xDbl, Location.yDbl)}
+    static var latlon: LatLon { LatLon(Location.xDbl, Location.yDbl) }
 
     static func refreshLocationData() {
         initNumLocations()

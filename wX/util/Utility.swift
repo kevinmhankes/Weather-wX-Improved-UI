@@ -9,9 +9,7 @@ import UIKit
 
 final class Utility {
     
-    static func getRadarSiteName(_ radarSite: String) -> String {
-        return UtilityRadar.radarIdToName[radarSite] ?? ""
-    }
+    static func getRadarSiteName(_ radarSite: String) -> String { UtilityRadar.radarIdToName[radarSite] ?? "" }
     
     static func getRadarSiteLatLon(_ radarSite: String) -> LatLon {
         let lat = UtilityRadar.radarSiteToLat[radarSite] ?? ""
@@ -19,17 +17,11 @@ final class Utility {
         return LatLon(lat, lon)
     }
     
-    static func getRadarSiteX(_ radarSite: String) -> String {
-        return UtilityRadar.radarSiteToLat[radarSite] ?? ""
-    }
+    static func getRadarSiteX(_ radarSite: String) -> String { UtilityRadar.radarSiteToLat[radarSite] ?? "" }
     
-    static func getRadarSiteY(_ radarSite: String) -> String {
-        return UtilityRadar.radarSiteToLon[radarSite] ?? ""
-    }
+    static func getRadarSiteY(_ radarSite: String) -> String { UtilityRadar.radarSiteToLon[radarSite] ?? "" }
     
-    static func getWfoSiteName(_ wfo: String) -> String {
-        return UtilityRadar.wfoIdToName[wfo] ?? ""
-    }
+    static func getWfoSiteName(_ wfo: String) -> String { UtilityRadar.wfoIdToName[wfo] ?? "" }
     
     static func getWfoSiteLatLon(_ wfo: String) -> LatLon {
         let lat = UtilityRadar.wfoSitetoLat[wfo] ?? ""
@@ -69,9 +61,7 @@ final class Utility {
         }
     }
     
-    static func getHazards(_ url: String) -> String {
-        return url.parse("<!-- AddThis Button END -->   <hr /><br />(.*?)</div>")
-    }
+    static func getHazards(_ url: String) -> String { url.parse("<!-- AddThis Button END -->   <hr /><br />(.*?)</div>") }
     
     static func safeGet(_ list: [String], _ index: Int) -> String {
         if list.count <= index {
@@ -81,17 +71,11 @@ final class Utility {
         }
     }
     
-    static func readPref(_ key: String, _ value: Float) -> Float {
-        return GlobalVariables.preferences.getFloat(key, value)
-    }
+    static func readPref(_ key: String, _ value: Float) -> Float { GlobalVariables.preferences.getFloat(key, value) }
     
-    static func readPref(_ key: String, _ value: Int) -> Int {
-        return GlobalVariables.preferences.getInt(key, value)
-    }
+    static func readPref(_ key: String, _ value: Int) -> Int { GlobalVariables.preferences.getInt(key, value) }
     
-    static func readPref(_ key: String, _ value: String) -> String {
-        return GlobalVariables.preferences.getString(key, value)
-    }
+    static func readPref(_ key: String, _ value: String) -> String { GlobalVariables.preferences.getString(key, value) }
     
     static func writePref(_ key: String, _ value: Float) {
         GlobalVariables.editor.putFloat(key, value)
@@ -105,9 +89,7 @@ final class Utility {
         GlobalVariables.editor.putString(key, value)
     }
     
-    static func getClassName(_ uiv: UIViewController) -> String {
-        return String(describing: uiv).split(":").safeGet(0).replace("<", "")
-    }
+    static func getClassName(_ uiv: UIViewController) -> String { String(describing: uiv).split(":").safeGet(0).replace("<", "") }
     
     static func showMainScreenShortCuts() -> String {
         return "Ctrl-r: Nexrad radar" + MyApplication.newline +
