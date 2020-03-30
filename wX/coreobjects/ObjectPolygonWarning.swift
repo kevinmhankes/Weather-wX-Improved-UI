@@ -17,14 +17,22 @@ class ObjectPolygonWarning {
         storage.update()
     }
 
-    var color: Int {return Utility.readPref(prefTokenColor, defaultColors[type]!)}
-    var name: String {return longName[type]!.replaceAll("%20", " ")}
-    var prefTokenEnabled: String {return "RADAR_SHOW_" + typeName}
-    var prefTokenColor: String {return "RADAR_COLOR_" + typeName}
-    var prefTokenStorage: String {return "SEVERE_DASHBOARD_" + typeName}
-    var typeName: String {return "\(type)".replaceAll("PolygonType.", "")}
-    var urlToken: String {return longName[type]!}
-    var url: String {return baseUrl + urlToken}
+    var color: Int { Utility.readPref(prefTokenColor, defaultColors[type]!) }
+    
+    var name: String { longName[type]!.replaceAll("%20", " ") }
+    
+    var prefTokenEnabled: String { "RADAR_SHOW_" + typeName }
+    
+    var prefTokenColor: String { "RADAR_COLOR_" + typeName }
+    
+    var prefTokenStorage: String { "SEVERE_DASHBOARD_" + typeName }
+    
+    var typeName: String { "\(type)".replaceAll("PolygonType.", "") }
+    
+    var urlToken: String { longName[type]! }
+    
+    var url: String { baseUrl + urlToken }
+    
 
     static func getCount(_ data: String) -> String {
         let vtecAl = data.parseColumn(ObjectPolygonWarning.pVtec)
