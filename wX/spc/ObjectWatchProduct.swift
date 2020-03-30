@@ -53,9 +53,7 @@ final class ObjectWatchProduct {
         wfos = wfoStr.split("\\.\\.\\.")
     }
 
-    func getTextForSubtitle() -> String {
-        return text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "")
-    }
+    func getTextForSubtitle() -> String { text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "") }
 
     func getTextForNoProducts() -> String {
         switch type.string {

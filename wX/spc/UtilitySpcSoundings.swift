@@ -9,6 +9,6 @@ import UIKit
 final class UtilitySpcSoundings {
 
 	static func getImage(_ office: String) -> Bitmap {
-        return UtilityImg.getBitmapAddWhiteBackground(MyApplication.nwsSPCwebsitePrefix + "/exper/soundings/LATEST/" + office + ".gif")
+        UtilityImg.getBitmapAddWhiteBackground(MyApplication.nwsSPCwebsitePrefix + "/exper/soundings/LATEST/" + office + ".gif")
 	}
 }
