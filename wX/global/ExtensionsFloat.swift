@@ -31,7 +31,7 @@ extension float4x4 {
     }
     
     static func makeRotate(_ radians: Float, _ x: Float, _ y: Float, _ z: Float) -> float4x4 {
-        return float4x4.init(SCNMatrix4MakeRotation(radians, x, y, z))
+        float4x4.init(SCNMatrix4MakeRotation(radians, x, y, z))
     }
     
     static func makeOrtho(_ left: Float, right: Float, bottom: Float, top: Float, nearZ: Float, farZ: Float) -> float4x4 {
@@ -71,13 +71,9 @@ extension float4x4 {
         self *= float4x4.init(col0, col1, col2, col3)
     }
     
-    static func numberOfElements() -> Int {
-        return 16
-    }
+    static func numberOfElements() -> Int { 16 }
     
-    static func degrees(toRad angle: Float) -> Float {
-        return Float(Double(angle) * Double.pi / 180)
-    }
+    static func degrees(toRad angle: Float) -> Float { Float(Double(angle) * Double.pi / 180) }
     
     mutating func multiplyLeft(_ matrix: float4x4) {
         self = matrix * self

@@ -32,9 +32,7 @@ final class MemoryBuffer {
         posn = 0
     }
 
-    var array: [UInt8] {
-        return backingArray
-    }
+    var array: [UInt8] { backingArray }
 
     var eof: Bool {
         if posn < (capacity-1) {
@@ -44,13 +42,9 @@ final class MemoryBuffer {
         }
     }
 
-    var filePointer: Int {
-        return posn
-    }
+    var filePointer: Int { posn }
 
-    var length: Int {
-        return capacity
-    }
+    var length: Int { capacity }
 
     func seek(_ position: Int) {
         self.posn = position
@@ -87,9 +81,7 @@ final class MemoryBuffer {
         posn = markPosition
     }
 
-    func get(_ index: Int) -> UInt8 {
-        return backingArray[index]
-    }
+    func get(_ index: Int) -> UInt8 { backingArray[index] }
 
     func get() -> UInt8 {
         posn += 1
@@ -166,12 +158,8 @@ final class MemoryBuffer {
     }
 
     var position: Int {
-        get {
-            return posn
-        }
-        set {
-            self.posn = newValue
-        }
+        get { posn }
+        set { self.posn = newValue }
     }
 
     func putShort(_ newValue: UInt16) {

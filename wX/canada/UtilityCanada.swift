@@ -261,9 +261,7 @@ final class UtilityCanada {
         return newName
     }
     
-    static func getProvinceHtml(_ prov: String) -> String {
-        return (MyApplication.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
-    }
+    static func getProvinceHtml(_ prov: String) -> String { (MyApplication.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep() }
     
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
@@ -277,9 +275,7 @@ final class UtilityCanada {
         return MyApplication.canadaEcSitePrefix + "/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
     }
     
-    static func getStatus(_ html: String) -> String {
-        return html.parse("<b>Observed at:</b>(.*?)<br/>")
-    }
+    static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
     
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
         let url = MyApplication.canadaEcSitePrefix + "/city/pages/"
@@ -378,9 +374,7 @@ final class UtilityCanada {
         return warningData.replace("<div class=\"row\">", "")
     }
     
-    static func getECSectorFromProvidence(_ province: String) -> String {
-        return provinceToMosaicSector[province] ?? ""
-    }
+    static func getECSectorFromProvidence(_ province: String) -> String { provinceToMosaicSector[province] ?? "" }
     
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false

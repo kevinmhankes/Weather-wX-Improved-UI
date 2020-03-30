@@ -64,12 +64,10 @@ struct LatLon {
         self.lonNum = Double(self.yStr) ?? 0.0
     }
     
-    var list: [Double] {
-        return [lat, lon]
-    }
+    var list: [Double] { [lat, lon] }
 
     var lat: Double {
-        get {return latNum}
+        get { latNum }
         set {
             latNum = newValue
             self.xStr = String(latNum)
@@ -77,7 +75,7 @@ struct LatLon {
     }
 
     var lon: Double {
-        get {return lonNum}
+        get { lonNum }
         set {
             lonNum = newValue
             self.yStr = String(lonNum)
@@ -85,7 +83,7 @@ struct LatLon {
     }
 
     var latString: String {
-        get {return xStr}
+        get { xStr }
         set {
             xStr = newValue
             latNum = Double(newValue) ?? 0.0
@@ -93,20 +91,16 @@ struct LatLon {
     }
 
     var lonString: String {
-        get {return yStr}
+        get { yStr }
         set {
             yStr = newValue
             lonNum = Double(newValue) ?? 0.0
         }
     }
 
-    func print() -> String {
-        return latString + " " + lonString + " "
-    }
+    func print() -> String { latString + " " + lonString + " " }
 
-    static func reversed(_ lon: Double, _ lat: Double) -> LatLon {
-        return LatLon(lat, -1.0 * lon)
-    }
+    static func reversed(_ lon: Double, _ lat: Double) -> LatLon { LatLon(lat, -1.0 * lon) }
 
     static func distance(_ location1: LatLon, _ location2: LatLon, _ unit: DistanceUnit) -> Double {
         let theta = location1.lon - location2.lon
@@ -130,7 +124,5 @@ struct LatLon {
 }
 
 extension LatLon: Equatable {
-    static func == (lhs: LatLon, rhs: LatLon) -> Bool {
-        return lhs.latString == rhs.latString && lhs.lonString == rhs.lonString
-    }
+    static func == (lhs: LatLon, rhs: LatLon) -> Bool { lhs.latString == rhs.latString && lhs.lonString == rhs.lonString }
 }

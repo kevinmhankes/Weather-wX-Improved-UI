@@ -19,9 +19,7 @@ class DataStorage {
     }
 
     var value: String {
-        get {
-            return val
-        }
+        get { val }
         set {
             val = newValue
             Utility.writePref(preference, newValue)

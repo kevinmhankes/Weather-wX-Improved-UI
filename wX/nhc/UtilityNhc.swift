@@ -105,6 +105,6 @@ final class UtilityNhc {
     }
     
     static func getImage(_ sector: String, _ product: String) -> Bitmap {
-        return Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
+        Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
     }
 }

@@ -58,9 +58,7 @@ final class Bitmap {
         }
     }
 
-    var data: Data {
-        return dataBm
-    }
+    var data: Data { dataBm }
 
     static func createBitmap(width: Int, height: Int, type: Int) -> Bitmap {
         let rect = CGSize(width: CGFloat(width), height: CGFloat(height))
@@ -75,21 +73,13 @@ final class Bitmap {
         return Bitmap(UIImage(cgImage: imageRef))
     }
 
-    var width: CGFloat {
-        return image.size.width
-    }
+    var width: CGFloat { image.size.width }
 
-    var height: CGFloat {
-        return image.size.height
-    }
+    var height: CGFloat { image.size.height }
 
-    var isValid: Bool {
-        return width > 10
-    }
+    var isValid: Bool { width > 10 }
 
-    var isValidForNhc: Bool {
-        return width > 100
-    }
+    var isValidForNhc: Bool { width > 100 }
 
     class Config {
         static let ARGB8888 = 0
@@ -126,7 +116,5 @@ final class Bitmap {
         return Bitmap(newImage!)
     }
 
-    static func fromFile(_ filename: String) -> Bitmap {
-        return UtilityIO.readBitmapResourceFromFile(filename)
-    }
+    static func fromFile(_ filename: String) -> Bitmap { UtilityIO.readBitmapResourceFromFile(filename) }
 }

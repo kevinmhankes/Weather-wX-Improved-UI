@@ -19,7 +19,7 @@ final class Paint {
     }
 
     var uicolor: UIColor {
-        return UIColor(
+        UIColor(
             red: colorR8.toColor(),
             green: colorG8.toColor(),
             blue: colorB8.toColor(),

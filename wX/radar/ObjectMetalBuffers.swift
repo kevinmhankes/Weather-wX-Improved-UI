@@ -126,13 +126,9 @@ class ObjectMetalBuffers {
         metalBuffer.append(color)
     }
 
-    func getColorArray() -> [UInt8] {
-        return [red, green, blue]
-    }
+    func getColorArray() -> [UInt8] { [red, green, blue] }
 
-    func getColorArrayInFloat() -> [Float] {
-        return [red.toColor(), green.toColor(), blue.toColor()]
-    }
+    func getColorArrayInFloat() -> [Float] { [red.toColor(), green.toColor(), blue.toColor()] }
 
     func putColors() {
         putColor(red)

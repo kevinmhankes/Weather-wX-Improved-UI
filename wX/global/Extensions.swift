@@ -9,73 +9,39 @@ import UIKit
 
 extension String {
     
-    func startsWith(_ pattern: String) -> Bool {
-        return self.hasPrefix(pattern)
-    }
+    func startsWith(_ pattern: String) -> Bool { self.hasPrefix(pattern) }
     
-    func parseLastMatch(_ pattern: String) -> String {
-        return UtilityString.parseLastMatch(self, pattern)
-    }
+    func parseLastMatch(_ pattern: String) -> String { UtilityString.parseLastMatch(self, pattern) }
     
-    func trim() -> String {
-        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
-    }
+    func trim() -> String { self.trimmingCharacters(in: NSCharacterSet.whitespaces) }
     
-    func removeDuplicateSpaces() -> String {
-        return self.replace("   ", " ")
-    }
+    func removeDuplicateSpaces() -> String { self.replace("   ", " ") }
     
-    func fixedLengthString(_ length: Int) -> String {
-        return UtilityString.fixedLengthString(self, length)
-    }
+    func fixedLengthString(_ length: Int) -> String { UtilityString.fixedLengthString(self, length) }
     
-    func getDataFromUrl() -> Data {
-        return UtilityDownload.getDataFromUrl(self)
-    }
+    func getDataFromUrl() -> Data { UtilityDownload.getDataFromUrl(self) }
     
-    func removeHtml() -> String {
-        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    }
+    func removeHtml() -> String { self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) }
     
-    func removeSingleLineBreaks() -> String {
-        return self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
-    }
+    func removeSingleLineBreaks() -> String { self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n") }
     
-    func removeLineBreaks() -> String {
-        return UtilityString.removeLineBreaks(self).replace("  ", " ")
-    }
+    func removeLineBreaks() -> String { UtilityString.removeLineBreaks(self).replace("  ", " ") }
     
-    func getHtml() -> String {
-        return UtilityDownload.getStringFromUrl(self)
-    }
+    func getHtml() -> String { UtilityDownload.getStringFromUrl(self) }
     
-    func getHtmlSep() -> String {
-        return UtilityDownload.getStringFromUrlSep(self)
-    }
+    func getHtmlSep() -> String { UtilityDownload.getStringFromUrlSep(self) }
     
-    func getNwsHtml() -> String {
-        return UtilityDownloadNws.getStringFromUrl(self)
-    }
+    func getNwsHtml() -> String { UtilityDownloadNws.getStringFromUrl(self) }
     
-    func getImage() -> Bitmap {
-        return UtilityDownload.getBitmapFromUrl(self)
-    }
+    func getImage() -> Bitmap { UtilityDownload.getBitmapFromUrl(self) }
     
-    func parseColumn(_ pattern: String) -> [String] {
-        return UtilityString.parseColumn(self, pattern)
-    }
+    func parseColumn(_ pattern: String) -> [String] { UtilityString.parseColumn(self, pattern) }
     
-    func parseColumnAll(_ pattern: String) -> [String] {
-        return UtilityString.parseColumnAll(self, pattern)
-    }
+    func parseColumnAll(_ pattern: String) -> [String] { UtilityString.parseColumnAll(self, pattern) }
     
-    func parse(_ pattern: String) -> String {
-        return UtilityString.parse(self, pattern)
-    }
+    func parse(_ pattern: String) -> String { UtilityString.parse(self, pattern) }
     
-    func parseFirst(_ pattern: String) -> String {
-        return UtilityString.parseFirst(self, pattern)
-    }
+    func parseFirst(_ pattern: String) -> String { UtilityString.parseFirst(self, pattern) }
     
     func firstToken(_ delim: String) -> String {
         let tokens = self.split(delim)
@@ -86,9 +52,7 @@ extension String {
         }
     }
     
-    func firstToken() -> String {
-        return self.firstToken(":")
-    }
+    func firstToken() -> String { self.firstToken(":") }
     
     func truncate(_ length: Int) -> String {
         if self.count > length {
@@ -105,37 +69,21 @@ extension String {
         return str1 + string + str2
     }
     
-    func contains(_ str: String) -> Bool {
-        return self.range(of: str) != nil
-    }
+    func contains(_ str: String) -> Bool { self.range(of: str) != nil }
     
-    func replaceAll(_ a: String, _ b: String) -> String {
-        return UtilityString.replaceAll(self, a, b)
-    }
+    func replaceAll(_ a: String, _ b: String) -> String { UtilityString.replaceAll(self, a, b) }
     
-    func replaceAllRegexp(_ a: String, _ b: String) -> String {
-        return UtilityString.replaceAllRegexp(self, a, b)
-    }
+    func replaceAllRegexp(_ a: String, _ b: String) -> String { UtilityString.replaceAllRegexp(self, a, b) }
     
-    func matches(regexp: String) -> Bool {
-        return (self.range(of: regexp, options: .regularExpression) != nil)
-    }
+    func matches(regexp: String) -> Bool { (self.range(of: regexp, options: .regularExpression) != nil) }
     
-    func replace(_ a: String, _ b: String) -> String {
-        return self.replaceAll(a, b)
-    }
+    func replace(_ a: String, _ b: String) -> String { self.replaceAll(a, b) }
     
-    func split(_ delim: String) -> [String] {
-        return UtilityString.split(self, delim)
-    }
+    func split(_ delim: String) -> [String] { UtilityString.split(self, delim) }
     
-    func substring(_ start: Int) -> String {
-        return UtilityString.substring(self, start)
-    }
+    func substring(_ start: Int) -> String { UtilityString.substring(self, start) }
     
-    func substring(_ start: Int, _ end: Int) -> String {
-        return UtilityString.substring(self, start, end)
-    }
+    func substring(_ start: Int, _ end: Int) -> String { UtilityString.substring(self, start, end) }
     
     func delete(_ str: String) -> String {
         let stringToArray = self.components(separatedBy: str)
@@ -170,64 +118,40 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
     
-    func roundToString() -> String {
-        return UtilityMath.roundDToString(self)
-    }
+    func roundToString() -> String { UtilityMath.roundDToString(self) }
     
-    func celsiusToFarenheit() -> String {
-        return UtilityMath.celsiusDToFarenheit(self)
-    }
+    func celsiusToFarenheit() -> String { UtilityMath.celsiusDToFarenheit(self) }
     
-    func farenheitToCelsius() -> String {
-        return UtilityMath.farenheitTocelsius(self)
-    }
+    func farenheitToCelsius() -> String { UtilityMath.farenheitTocelsius(self) }
     
     // for SunCalc
     static let radPerDegree = Double.pi / 180.0
 }
 
 extension UInt8 {
-    func toColor() -> CGFloat {
-        return CGFloat(Float(self) / 255.0)
-    }
+    func toColor() -> CGFloat { CGFloat(Float(self) / 255.0) }
     
-    func toColor() -> Float {
-        return Float(self) / 255.0
-    }
+    func toColor() -> Float { Float(self) / 255.0 }
 }
 
 extension Int {
-    func toColor() -> CGFloat {
-        return CGFloat(Float(self) / 255.0)
-    }
+    func toColor() -> CGFloat { CGFloat(Float(self) / 255.0) }
     
-    func red() -> UInt8 {
-        return Color.red(self)
-    }
+    func red() -> UInt8 { Color.red(self) }
     
-    func green() -> UInt8 {
-        return Color.green(self)
-    }
+    func green() -> UInt8 { Color.green(self) }
     
-    func blue() -> UInt8 {
-        return Color.blue(self)
-    }
+    func blue() -> UInt8 { Color.blue(self) }
 }
 
 extension UIImage {
-    func getWidth() -> CGFloat {
-        return self.size.width
-    }
+    func getWidth() -> CGFloat { self.size.width }
     
-    func getHeight() -> CGFloat {
-        return self.size.height
-    }
+    func getHeight() -> CGFloat { self.size.height }
 }
 
 extension UIColor {
-    var coreImageColor: CoreImage.CIColor {
-        return CoreImage.CIColor(color: self)
-    }
+    var coreImageColor: CoreImage.CIColor { CoreImage.CIColor(color: self) }
     var components: (red: Int, green: Int, blue: Int) {
         var r = 0
         var g = 0
@@ -299,17 +223,11 @@ extension Date {
         self.init(timeIntervalSince1970: timeInterval)
     }
     
-    var julianDays: Double {
-        return timeIntervalSince1970 / Date.secondsPerDay - 0.5 + Date.j1970
-    }
+    var julianDays: Double { timeIntervalSince1970 / Date.secondsPerDay - 0.5 + Date.j1970 }
     
-    var daysSince2000: Double {
-        return julianDays - Date.j2000
-    }
+    var daysSince2000: Double { julianDays - Date.j2000 }
     
-    func hoursLater(_ h: Double) -> Date {
-        return addingTimeInterval(h * 3600.0)
-    }
+    func hoursLater(_ h: Double) -> Date { addingTimeInterval(h * 3600.0) }
     
     // Beginning time of a day, aka. 0:00 or midnight in GMT.
     func beginning() -> Date {

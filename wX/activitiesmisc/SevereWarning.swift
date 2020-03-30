@@ -22,9 +22,7 @@ final class SevereWarning {
         self.type = type
     }
 
-    func getCount() -> Int {
-        return eventList.count
-    }
+    func getCount() -> Int { eventList.count }
 
     func toggleCollapsed() {
         if collapsed {
