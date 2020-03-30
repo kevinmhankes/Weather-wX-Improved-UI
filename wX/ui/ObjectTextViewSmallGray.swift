@@ -26,15 +26,9 @@ final class ObjectTextViewSmallGray {
     }
 
     var text: String {
-        get {
-            return tv.text
-        }
-        set {
-            tv.text = newValue
-        }
+        get { tv.text }
+        set { tv.text = newValue }
     }
 
-    var view: UITextView {
-        return tv
-    }
+    var view: UITextView { tv }
 }

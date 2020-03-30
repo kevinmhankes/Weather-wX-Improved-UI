@@ -23,7 +23,5 @@ final class ObjectCardBlackHeaderText {
         verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
 
-    var view: StackView {
-        return cardStackView.view
-    }
+    var view: StackView { cardStackView.view }
 }

@@ -19,7 +19,5 @@ final class ObjectCardImage {
         image.heightAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
     }
 
-    var view: UIImageView {
-        return image
-    }
+    var view: UIImageView { image }
 }

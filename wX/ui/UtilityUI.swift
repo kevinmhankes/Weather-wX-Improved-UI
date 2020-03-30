@@ -8,13 +8,9 @@ import UIKit
 
 public class UtilityUI {
 
-    static func getScreenScale() -> Float {
-        return Float(UIScreen.main.scale)
-    }
+    static func getScreenScale() -> Float { Float(UIScreen.main.scale) }
 
-    static func getNativeScreenScale() -> Float {
-        return Float(UIScreen.main.nativeScale)
-    }
+    static func getNativeScreenScale() -> Float { Float(UIScreen.main.nativeScale) }
 
     static func getScreenBoundsNoCatalyst() -> (Float, Float) {
         let bounds = UIScreen.main.bounds
@@ -71,9 +67,7 @@ public class UtilityUI {
         return cgsize
     }
 
-    static func statusBarHeight() -> CGFloat {
-        return UIApplication.shared.statusBarFrame.size.height
-    }
+    static func statusBarHeight() -> CGFloat { UIApplication.shared.statusBarFrame.size.height }
 
     static func getVersion() -> String {
         var vers = ""

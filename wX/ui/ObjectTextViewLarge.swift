@@ -32,15 +32,9 @@ final class ObjectTextViewLarge {
     }
 
     var text: String {
-        get {
-            return tv.text!
-        }
-        set {
-            tv.text = newValue
-        }
+        get { tv.text! }
+        set { tv.text = newValue }
     }
 
-    var view: UILabelInset {
-        return tv
-    }
+    var view: UILabelInset { tv }
 }

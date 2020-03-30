@@ -25,8 +25,8 @@ final class TextViewMetal {
     }
 
     var textSize: Double {
-        get {return self.realTextSize / 13.0}
-        set {self.realTextSize = newValue * 13.0}
+        get { self.realTextSize / 13.0 }
+        set { self.realTextSize = newValue * 13.0 }
     }
 
     func setText(_ text: String) {

@@ -26,7 +26,5 @@ final class ObjectStackView {
         }
     }
 
-    var view: UIStackView {
-        return uiStackView
-    }
+    var view: UIStackView { uiStackView }
 }

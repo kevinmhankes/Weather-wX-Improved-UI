@@ -64,9 +64,7 @@ final class ObjectToolbar: UIToolbar {
         setShadowImage(UIImage(), forToolbarPosition: .any)
     }
 
-    var height: CGFloat {
-        return frame.size.height
-    }
+    var height: CGFloat { frame.size.height }
 
     required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

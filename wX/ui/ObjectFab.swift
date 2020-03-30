@@ -54,7 +54,5 @@ public class ObjectFab {
         floaty.close()
     }
     
-    var view: Floaty {
-        return floaty
-    }
+    var view: Floaty { floaty }
 }

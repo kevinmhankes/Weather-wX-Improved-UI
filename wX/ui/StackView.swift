@@ -5,7 +5,7 @@ final class StackView: UIStackView {
     private var color: UIColor?
 
     override var backgroundColor: UIColor? {
-        get { return color }
+        get { color }
         set { color = newValue }
     }
 

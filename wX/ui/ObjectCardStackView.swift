@@ -29,9 +29,7 @@ final class ObjectCardStackView {
         stackView.isLayoutMarginsRelativeArrangement = true
     }
 
-    var view: StackView {
-        return stackView
-    }
+    var view: StackView { stackView }
 
     func setAxis(_ axis: NSLayoutConstraint.Axis) {
         stackView.axis = axis

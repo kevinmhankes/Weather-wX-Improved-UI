@@ -102,13 +102,13 @@ final class ObjectTextView {
     }
 
     var color: UIColor {
-        get {return tv.textColor!}
-        set {tv.textColor = newValue}
+        get { tv.textColor! }
+        set { tv.textColor = newValue }
     }
 
     var background: UIColor {
-        get {return tv.backgroundColor!}
-        set {tv.backgroundColor = newValue}
+        get { tv.backgroundColor! }
+        set { tv.backgroundColor = newValue }
     }
 
     var font: UIFont {
@@ -117,13 +117,13 @@ final class ObjectTextView {
     }
 
     var text: String {
-        get {return tv.text}
-        set {tv.text = newValue}
+        get { tv.text }
+        set { tv.text = newValue }
     }
 
     var tag: Int {
-        get {return tv.tag}
-        set {tv.tag = newValue}
+        get { tv.tag }
+        set { tv.tag = newValue }
     }
 
     func setZeroSpacing() {
@@ -138,5 +138,5 @@ final class ObjectTextView {
         tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
 
-    var view: UITextView {return tv}
+    var view: UITextView { tv }
 }
