@@ -84,12 +84,12 @@ final class UtilityColorPaletteGeneric {
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk(prod, code)
         let lines = text.split("\n")
-        var tmpArr = [String]()
         var red = "0"
         var green = "0"
         var blue = "0"
         var priorLineHas6 = false
         lines.forEach { line in
+            var tmpArr = [String]()
             if line.contains("olor") && !line.contains("#") {
                 if line.contains(",") {
                     tmpArr = line.split(",")

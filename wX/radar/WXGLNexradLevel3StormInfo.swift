@@ -5,10 +5,10 @@
  *****************************************************************************/
 
 class WXGLNexradLevel3StormInfo {
-
+    
     private static let stiPattern1 = "AZ/RAN(.*?)V"
     private static let stiPattern2 = "MVT(.*?)V"
-
+    
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
@@ -60,7 +60,7 @@ class WXGLNexradLevel3StormInfo {
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     stormList += tmpCoords
                     var ecArr = [ExternalGlobalCoordinates]()
-                    var tmpCoordsArr = [LatLon]()
+                    var latLons = [LatLon]()
                     (0...3).forEach { z in
                         ecArr.append(
                             ecc.calculateEndingGlobalCoordinates(
@@ -71,70 +71,42 @@ class WXGLNexradLevel3StormInfo {
                                 bearing
                             )
                         )
-                        tmpCoordsArr.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], projectionNumbers)))
+                        latLons.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], projectionNumbers)))
                     }
                     let endPoint = tmpCoords
                     if nm2 > 0 {
                         start = ExternalGlobalCoordinates(ec)
-                        stormList += WXGLNexradLevel3Common.drawLine(
-                            endPoint,
-                            ecc,
-                            projectionNumbers,
-                            start,
-                            degree2 + arrowBend,
-                            arrowLength * 1852.0,
-                            bearing
-                        )
-                        stormList += WXGLNexradLevel3Common.drawLine(
-                            endPoint,
-                            ecc,
-                            projectionNumbers,
-                            start,
-                            degree2 - arrowBend,
-                            arrowLength * 1852.0,
-                            bearing
-                        )
+                        [degree2 + arrowBend, degree2 - arrowBend].forEach {
+                            stormList += WXGLNexradLevel3Common.drawLine(
+                                endPoint,
+                                ecc,
+                                projectionNumbers,
+                                start,
+                                $0,
+                                arrowLength * 1852.0,
+                                bearing
+                            )
+                        }
                         // 15,30,45 min ticks
                         let stormTrackTickMarkAngleOff90 = 30.0
                         (0...3).forEach { index in
-                            // first line
-                            stormList += drawTickMarks(
-                                tmpCoordsArr[index],
-                                ecc,
-                                projectionNumbers,
-                                ecArr[index],
+                            [
                                 degree2 - (90.0 + stormTrackTickMarkAngleOff90),
-                                arrowLength * 1852.0 * sti15IncrLen,
-                                bearing
-                            )
-                            stormList += drawTickMarks(
-                                tmpCoordsArr[index],
-                                ecc,
-                                projectionNumbers,
-                                ecArr[index],
                                 degree2 + (90.0 - stormTrackTickMarkAngleOff90),
-                                arrowLength * 1852.0 * sti15IncrLen,
-                                bearing
-                            )
-                            // 2nd line
-                            stormList += drawTickMarks(
-                                tmpCoordsArr[index],
-                                ecc,
-                                projectionNumbers,
-                                ecArr[index],
                                 degree2 - (90.0 - stormTrackTickMarkAngleOff90),
-                                arrowLength * 1852.0 * sti15IncrLen,
-                                bearing
-                            )
-                            stormList += drawTickMarks(
-                                tmpCoordsArr[index],
-                                ecc,
-                                projectionNumbers,
-                                ecArr[index],
-                                degree2 + (90.0 + stormTrackTickMarkAngleOff90),
-                                arrowLength * 1852.0 * sti15IncrLen,
-                                bearing
-                            )
+                                degree2 + (90.0 + stormTrackTickMarkAngleOff90)
+                                ].forEach {
+                                    stormList += drawTickMarks(
+                                        latLons[index],
+                                        ecc,
+                                        projectionNumbers,
+                                        ecArr[index],
+                                        $0,
+                                        arrowLength * 1852.0 * sti15IncrLen,
+                                        bearing
+                                    )
+                                    
+                            }
                         }
                     }
                 }
@@ -144,7 +116,7 @@ class WXGLNexradLevel3StormInfo {
             return [Double]()
         }
     }
-
+    
     private static func drawTickMarks(
         _ startPoint: LatLon,
         _ ecc: ExternalGeodeticCalculator,
@@ -153,7 +125,7 @@ class WXGLNexradLevel3StormInfo {
         _ startBearing: Double,
         _ distance: Double,
         _ bearing: [Double]
-        ) -> [Double] {
+    ) -> [Double] {
         var list = startPoint.list
         let start = ExternalGlobalCoordinates(ecArr)
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)

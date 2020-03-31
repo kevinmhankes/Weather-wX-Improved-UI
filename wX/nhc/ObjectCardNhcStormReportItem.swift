@@ -8,11 +8,7 @@ import UIKit
 
 final class ObjectCardNhcStormReportItem {
 
-    init(
-        _ stackView: UIStackView,
-        _ stormData: ObjectNhcStormDetails,
-        _ gesture: UITapGestureRecognizerWithData
-    ) {
+    init(_ stackView: UIStackView, _ stormData: ObjectNhcStormDetails, _ gesture: UITapGestureRecognizerWithData) {
         let textViewTop = ObjectTextViewLarge(
             80.0,
             text: stormData.name + " (" + stormData.type + ") " + stormData.center,
