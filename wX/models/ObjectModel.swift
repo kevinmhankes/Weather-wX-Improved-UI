@@ -39,17 +39,11 @@ final public class ObjectModel {
     private var modelButton = ObjectToolbarIcon()
     let productButtonTruncate = 18
     
-    var time: String {
-        return self.timeStr.split(" ")[0]
-    }
+    var time: String { self.timeStr.split(" ")[0] }
     
     var timeIndex: Int {
-        get {
-            return self.timeIdx
-        }
-        set {
-            self.timeIdx = newValue
-        }
+        get { self.timeIdx }
+        set { self.timeIdx = newValue }
     }
     
     convenience init(_ prefModel: String) {

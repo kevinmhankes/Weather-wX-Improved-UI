@@ -213,10 +213,10 @@ extension UIAlertAction {
 
 // for SunCalc
 extension Date {
-    static let j0: Double = 0.0009
-    static let j1970: Double = 2440588.0
-    static let j2000: Double = 2451545.0
-    static let secondsPerDay: Double = 86400.0
+    static let j0 = 0.0009
+    static let j1970 = 2440588.0
+    static let j2000 = 2451545.0
+    static let secondsPerDay = 86400.0
     
     init(julianDays days: Double) {
         let timeInterval = (days + 0.5 - Date.j1970) * Date.secondsPerDay

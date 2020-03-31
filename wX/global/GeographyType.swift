@@ -62,7 +62,7 @@ struct GeographyType {
         false
     )
 
-    var relativeBuffer: MemoryBuffer = MemoryBuffer()
+    var relativeBuffer = MemoryBuffer()
     var count = 0
     var color = 0
     var display = true
