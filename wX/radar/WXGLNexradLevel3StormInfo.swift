@@ -120,7 +120,7 @@ class WXGLNexradLevel3StormInfo {
     private static func drawTickMarks(
         _ startPoint: LatLon,
         _ ecc: ExternalGeodeticCalculator,
-        _ pn: ProjectionNumbers,
+        _ projectionNumbers: ProjectionNumbers,
         _ ecArr: ExternalGlobalCoordinates,
         _ startBearing: Double,
         _ distance: Double,
@@ -129,7 +129,7 @@ class WXGLNexradLevel3StormInfo {
         var list = startPoint.list
         let start = ExternalGlobalCoordinates(ecArr)
         let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
-        list += UtilityCanvasProjection.computeMercatorNumbers(ec, pn)
+        list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
         return list
     }
 }
