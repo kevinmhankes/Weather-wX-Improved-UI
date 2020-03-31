@@ -55,7 +55,5 @@ final class UtilityModelSpcHrrrInputOutput {
         return validTimeCurrent
     }
     
-    static func formatTime(_ time: String) -> String {
-        return "0" + time
-    }
+    static func formatTime(_ time: String) -> String { "0" + time }
 }
