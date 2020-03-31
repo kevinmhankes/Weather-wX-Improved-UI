@@ -27,8 +27,8 @@ final class WXGLPolygonWarnings {
                 && !vtecs[polyCount].hasPrefix("0.CAN") {
                 let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
                 if polyTmp.count > 1 {
-                    y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                    x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
+                    y = polyTmp.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
+                    x = polyTmp.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
                     let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
@@ -66,8 +66,8 @@ final class WXGLPolygonWarnings {
             if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") {
                 let coordinates = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
                 if coordinates.count > 1 {
-                    y = coordinates.enumerated().filter {idx, _ in idx & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                    x = coordinates.enumerated().filter {idx, _ in idx & 1 != 0}.map {_, value in Double(value) ?? 0.0}
+                    y = coordinates.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
+                    x = coordinates.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
                     let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)

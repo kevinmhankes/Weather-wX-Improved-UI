@@ -227,17 +227,11 @@ final class WXGLNexrad {
         }
     }
     
-    static func isRidTdwr(_ radarSite: String) -> Bool {
-        return getTdwrShortList().contains(radarSite)
-    }
+    static func isRidTdwr(_ radarSite: String) -> Bool { getTdwrShortList().contains(radarSite) }
     
-    static func getTdwrShortList() -> [String] {
-        return GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
-    }
+    static func getTdwrShortList() -> [String] { GlobalArrays.tdwrRadars.map {$0.split(" ")[0]} }
     
-    static func getRadarInfo(_ pane: String) -> String {
-        return Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
-    }
+    static func getRadarInfo(_ pane: String) -> String { Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "") }
     
     static func writeRadarInfo(_ pane: String, _ info: String) {
         Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
