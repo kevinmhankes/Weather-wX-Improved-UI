@@ -18,8 +18,6 @@ final class SevereNotice {
     
     func getBitmaps(_ html: String) {
         var noAlertsVerbiage = ""
-        var url = ""
-        var text = ""
         bitmaps = [Bitmap]()
         switch type {
         case "SPCMCD":
@@ -31,6 +29,7 @@ final class SevereNotice {
         default:
             break
         }
+        var text: String
         if !html.contains(noAlertsVerbiage) {
             text = html
         } else {
@@ -39,6 +38,7 @@ final class SevereNotice {
         numberList = text.split(":").filter { $0 != "" }
         if text != "" {
             numberList.indices.forEach { index in
+                var url = ""
                 switch type {
                 case "SPCMCD":
                     url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[index] + ".gif"
