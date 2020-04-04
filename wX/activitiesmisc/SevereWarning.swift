@@ -33,24 +33,19 @@ final class SevereWarning {
     }
 
     func getName() -> String {
-        var name = ""
         switch type {
         case "tor":
-            name = "Tornado Warning"
+            return "Tornado Warning"
         case "tst":
-            name = "Severe Thunderstorm Warning"
+            return "Severe Thunderstorm Warning"
         case "ffw":
-            name = "Flash Flood Warning"
+            return "Flash Flood Warning"
         default:
-            break
+            return ""
         }
-        return name
     }
 
     func generateString(_ html: String) {
-        var wfos = [String]()
-        var wfo = ""
-        var location = ""
         idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
         areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
         effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
@@ -61,12 +56,12 @@ final class SevereWarning {
         warnings.forEach {
             //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)
             if !$0.hasPrefix("O.EXP") {
+                var location = ""
                 count += 1
                 text += $0
-                wfos = $0.split(".")
+                let wfos = $0.split(".")
                 if wfos.count > 1 {
-                    wfo = wfos[2]
-                    wfo = wfo.replaceAllRegexp("^[KP]", "")
+                    let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
                     location = Utility.getWfoSiteName(wfo)
                 }
                 text += "  " + location + MyApplication.newline
