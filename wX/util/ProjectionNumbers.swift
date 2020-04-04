@@ -107,5 +107,5 @@ final class ProjectionNumbers {
     
     var oneDegreeScaleFactorFloat: Float { Float(oneDegreeScaleFactor) }
     
-    var latlon: LatLon {  LatLon(lat, lon) }
+    var latlon: LatLon { LatLon(lat, lon) }
 }

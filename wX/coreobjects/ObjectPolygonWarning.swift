@@ -33,7 +33,6 @@ class ObjectPolygonWarning {
     
     var url: String { baseUrl + urlToken }
     
-
     static func getCount(_ data: String) -> String {
         let vtecAl = data.parseColumn(ObjectPolygonWarning.pVtec)
         var count = 0

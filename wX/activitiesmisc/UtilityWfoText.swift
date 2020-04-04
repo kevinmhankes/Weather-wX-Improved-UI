@@ -17,8 +17,9 @@ class UtilityWfoText {
         ]
         if product.hasPrefix("RTP") || productList.contains(product) {
             return true
+        } else {
+            return false
         }
-        return false
     }
     
     static let wfoProdList = [

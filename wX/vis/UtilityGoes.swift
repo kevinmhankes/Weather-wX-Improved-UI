@@ -30,8 +30,9 @@ final class UtilityGoes {
         let size = "latest"
         if UIPreferences.goesUseFullResolutionImages {
             return size
+        } else {
+            return sizeMap[sector] ?? size
         }
-        return sizeMap[sector] ?? size
     }
     
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
