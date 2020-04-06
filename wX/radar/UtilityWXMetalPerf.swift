@@ -337,18 +337,14 @@ class UtilityWXMetalPerf {
 
     static func genCircleLocdot(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers, _ location: LatLon) {
         buffers.setToPositionZero()
-        var pixYD = 0.0
-        var pixXD = 0.0
-        var test1 = 0.0
-        var test2 = 0.0
         buffers.count = buffers.triangleCount * 4
         let lenLocal = buffers.lenInit * 2.0
         let triangleAmount = Double(buffers.triangleCount)
         buffers.metalBuffer = []
-        test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))
-        test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-        pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-        pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
+        let test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))
+        let test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
+        let pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+        let pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         (0..<buffers.triangleCount).forEach {
             buffers.putFloat(pixXD + (lenLocal * cos(Double($0) * twicePi / triangleAmount)))
             buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))

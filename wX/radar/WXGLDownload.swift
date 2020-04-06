@@ -55,6 +55,8 @@ final class WXGLDownload {
         }
     }
     
+    // FIXME implement kotlin methods for file and dir url
+    // FIXME extension on String for getInputStream
     func getRadarFile(_ urlStr: String, _ rid: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
         let l2BaseFn = "l2"
         let l3BaseFn = "nids"
