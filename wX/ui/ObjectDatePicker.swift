@@ -11,8 +11,6 @@ final class ObjectDatePicker {
     let datePicker = UIDatePicker()
 
     init(_ stackView: UIStackView) {
-        datePicker.backgroundColor = AppColors.primaryBackgroundBlueUIColor
-        datePicker.setValue(UIColor.white, forKey: "textColor")
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.maximumDate = Date()
         stackView.addArrangedSubview(datePicker)
