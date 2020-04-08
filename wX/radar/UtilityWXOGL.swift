@@ -28,13 +28,13 @@ public class UtilityWXOGL {
         }
         warningChunk = warningChunk.replace("\n", "").replace(" ", "")
         let polygons = warningChunk.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        var retStr = ""
+        var string = ""
         var notFound = true
-        polygons.enumerated().forEach { index, warning in
+        polygons.enumerated().forEach { urlIndex, warning in
             let polyTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
             if polyTmp.count > 1 {
-                y = polyTmp.enumerated().filter {idx, _ in idx & 1 == 0}.map { _, value in Double(value) ?? 0.0}
-                x = polyTmp.enumerated().filter {idx, _ in idx & 1 != 0}.map { _, value in Double(value) ?? 0.0}
+                y = polyTmp.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
+                x = polyTmp.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
             }
             if (y.count > 3 && x.count > 3) && (x.count == y.count) {
                 let poly2 = ExternalPolygon.Builder()
@@ -44,11 +44,11 @@ public class UtilityWXOGL {
                 let polygon2 = poly2.build()
                 let contains = polygon2.contains(point: ExternalPoint(Float(location.lat), Float(location.lon)))
                 if contains && notFound {
-                    retStr = urlList[index]
+                    string = urlList[urlIndex]
                     notFound = false
                 }
             }
         }
-        return retStr
+        return string
     }
 }

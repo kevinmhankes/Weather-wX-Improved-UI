@@ -47,8 +47,7 @@ class WXGLNexradLevel3HailIndex {
                 var index = 0
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach {
                     let hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
-                    if hailSizeDbl > 0.49 && ((Int(hailPercentNumbers[$0]) ?? 0 ) > 60
-                        || (Int(hailPercentNumbers[$0+1]) ?? 0 ) > 60) {
+                    if hailSizeDbl > 0.49 && ((Int(hailPercentNumbers[$0]) ?? 0 ) > 60 || (Int(hailPercentNumbers[$0 + 1]) ?? 0 ) > 60) {
                         let ecc = ExternalGeodeticCalculator()
                         let degree = Int(posnNumbers[$0]) ?? 0
                         let nm = Int(posnNumbers[$0 + 1]) ?? 0
