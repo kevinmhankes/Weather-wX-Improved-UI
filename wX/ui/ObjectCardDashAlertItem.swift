@@ -18,7 +18,8 @@ final class ObjectCardDashAlertItem {
         _ expiresTime: String,
         _ areaDescription: String,
         _ gesture: UITapGestureRecognizerWithData,
-        _ gestureRadar: UITapGestureRecognizerWithData
+        _ gestureRadar: UITapGestureRecognizerWithData,
+        _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
         let tvName = ObjectTextViewLarge(80.0, text: senderName, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
@@ -34,9 +35,16 @@ final class ObjectCardDashAlertItem {
         tvArea.tv.isAccessibilityElement = false
         
         let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
+        let radarText = ObjectTextView("Radar")
+        radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        let horizontalConainer = ObjectStackView(.fillProportionally, .horizontal, spacing: 10, arrangedSubviews: [radarIcon.button, spacerView])
+        let horizontalConainer = ObjectStackView(
+            .fillProportionally,
+            .horizontal,
+            spacing: 10,
+            arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
+        )
         horizontalConainer.uiStackView.distribution = .equalSpacing
         
         let verticalTextConainer = ObjectStackView(

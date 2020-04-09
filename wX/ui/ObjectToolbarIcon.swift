@@ -123,7 +123,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         widthConstraint.isActive = true
     }
     
-    // severe dashboard
+    // severe dashboard and us alerts
     convenience init(uiv: UIViewController, iconType: IconType, gesture: UITapGestureRecognizerWithData) {
         self.init()
         let iconStr = ObjectToolbarIcon.iconToString[iconType] ?? ""
@@ -137,7 +137,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         button.setImage(UIImage(named: iconStr), for: .normal)
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
-            let color = UIColor.gray
+            let color = UIColor.black
             let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
             if newIconValue != nil {
                 let image = UIImage(

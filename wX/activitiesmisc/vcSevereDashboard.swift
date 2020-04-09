@@ -111,6 +111,7 @@ class vcSevereDashboard: UIwXViewController {
                                 warningType.expiresList[index],
                                 warningType.areaDescList[index],
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:))),
+                                UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:))),
                                 UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:)))
                             )
                         }
