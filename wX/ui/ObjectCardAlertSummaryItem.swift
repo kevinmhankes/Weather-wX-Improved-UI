@@ -13,8 +13,26 @@ final class ObjectCardAlertSummaryItem {
         _ office: String,
         _ location: String,
         _ alert: CapAlert,
-        _ gesture: UITapGestureRecognizerWithData
+        _ gesture: UITapGestureRecognizerWithData,
+        _ gestureRadar: UITapGestureRecognizerWithData,
+        _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
+        
+        // icons
+        let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
+        let radarText = ObjectTextView("Radar")
+        radarText.addGestureRecognizer(gestureRadarText)
+        let spacerView = UIView()
+        spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        let horizontalConainer = ObjectStackView(
+            .fillProportionally,
+            .horizontal,
+            spacing: 10,
+            arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
+        )
+        horizontalConainer.uiStackView.distribution = .equalSpacing
+        // end icons
+        
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = ObjectTextViewLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
         let tvTitle = ObjectTextView(title, isUserInteractionEnabled: false, isZeroSpacing: true)
@@ -30,7 +48,7 @@ final class ObjectCardAlertSummaryItem {
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
+            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalConainer.view]
         )
         if location == "" {
             tvName.view.isHidden = true
@@ -40,8 +58,6 @@ final class ObjectCardAlertSummaryItem {
         }
         verticalTextConainer.view.isAccessibilityElement = true
         verticalTextConainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
-        
-        
         
         
         

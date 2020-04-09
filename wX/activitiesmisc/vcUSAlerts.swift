@@ -54,6 +54,14 @@ class vcUSAlerts: UIwXViewController {
         self.goToVC(vc)
     }
     
+    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
+        let wfo = objAlertSummary.wfos[sender.data]
+        let radarSite = GlobalDictionaries.wfoToRadarSite[wfo] ?? ""
+        let vc = vcNexradRadar()
+        vc.radarSiteOverride = radarSite
+        self.goToVC(vc)
+    }
+    
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.objAlertSummary.image)
     }

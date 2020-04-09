@@ -9,6 +9,7 @@ import UIKit
 final class ObjectAlertSummary: NSObject {
 
     private var urls = [String]()
+    var wfos = [String]()
     private var objImage = ObjectImage()
     private var imageIndex = 0
     static let imageUrls = [
@@ -18,6 +19,8 @@ final class ObjectAlertSummary: NSObject {
     ]
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
+    
+    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {}
 
     convenience init(
         _ uiv: UIwXViewController,
@@ -69,9 +72,12 @@ final class ObjectAlertSummary: NSObject {
                     nwsOffice,
                     nwsLocation,
                     alert,
-                    UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:)))
+                    UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:))),
+                    UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:))),
+                    UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:)))
                 )
                 self.urls.append(alert.url)
+                self.wfos.append(nwsOffice)
                 index += 1
             }
         }
