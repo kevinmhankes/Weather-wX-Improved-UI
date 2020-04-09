@@ -95,14 +95,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
     
     convenience init(_ uiv: UIViewController, _ iconStr: String, _ action: Selector) {
         self.init()
-        button = UIButton(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: UIPreferences.toolbarHeight,
-                height: UIPreferences.toolbarHeight
-            )
-        )
+        button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight, height: UIPreferences.toolbarHeight))
         button.imageEdgeInsets = UIEdgeInsets(
             top: toolbarIconPadding,
             left: toolbarIconPadding,
@@ -124,6 +117,38 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         }
         customView = button
         button.addTarget(uiv, action: action, for: .touchUpInside)
+        let widthConstraint = button.widthAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight)
+        let heightConstraint = button.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight)
+        heightConstraint.isActive = true
+        widthConstraint.isActive = true
+    }
+    
+    // severe dashboard
+    convenience init(uiv: UIViewController, iconType: IconType, gesture: UITapGestureRecognizerWithData) {
+        self.init()
+        let iconStr = ObjectToolbarIcon.iconToString[iconType] ?? ""
+        button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight, height: UIPreferences.toolbarHeight))
+        button.imageEdgeInsets = UIEdgeInsets(
+            top: toolbarIconPadding,
+            left: toolbarIconPadding,
+            bottom: toolbarIconPadding,
+            right: toolbarIconPadding
+        )
+        button.setImage(UIImage(named: iconStr), for: .normal)
+        if #available(iOS 13, *) {
+            let configuration = UIImage.SymbolConfiguration(weight: .medium)
+            let color = UIColor.gray
+            let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            if newIconValue != nil {
+                let image = UIImage(
+                    systemName: newIconValue!,
+                    withConfiguration: configuration
+                    )?.withTintColor(color, renderingMode: .alwaysOriginal)
+                button.setImage(image, for: .normal)
+            }
+        }
+        customView = button
+        button.addGestureRecognizer(gesture)
         let widthConstraint = button.widthAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight)
         let heightConstraint = button.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight)
         heightConstraint.isActive = true

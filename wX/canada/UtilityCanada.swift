@@ -270,19 +270,15 @@ final class UtilityCanada {
     }
     
     static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
-        let prov = lat.split(":")
+        let province = lat.split(":")
         let id = lon.split(":")
-        return MyApplication.canadaEcSitePrefix + "/city/pages/" + prov[1].lowercased() + "-" + id[0] + "_metric_e.html"
+        return MyApplication.canadaEcSitePrefix + "/city/pages/" + province[1].lowercased() + "-" + id[0] + "_metric_e.html"
     }
     
     static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
     
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
-        let url = MyApplication.canadaEcSitePrefix + "/city/pages/"
-            + lat.split(":")[1].lowercased()
-            + "-"
-            + lon.split(":")[0]
-            + "_metric_e.html"
+        let url = MyApplication.canadaEcSitePrefix + "/city/pages/" + lat.split(":")[1].lowercased() + "-" + lon.split(":")[0] + "_metric_e.html"
         let html = url.getHtmlSep()
         let rid = html.parse("<a href=./radar/index_e.html.id=([a-z]{3})..*?>Weather Radar</a>").uppercased()
         return rid
@@ -316,10 +312,10 @@ final class UtilityCanada {
     
     static func get7Day(_ html: String) -> String {
         let resultList = html.parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary " + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
-        var string = ""
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
         resultListDay = resultListDay.filter {!$0.contains("Current Conditions")}
         resultListDay = resultListDay.filter {$0.contains(":")}
+        var string = ""
         resultListDay.enumerated().forEach { index, value in
             string += value.split(":")[0] + ": " + resultList[index] + MyApplication.newline + MyApplication.newline
         }
@@ -327,7 +323,6 @@ final class UtilityCanada {
     }
     
     static func getHazards(_ html: String) -> [String] {
-        var result = ["", ""]
         var urls = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\"(.*?)\">.*?</a>.*?</div>")
         var titles = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\".*?\">(.*?)</a>.*?</div>")
         let statementUrl = urls.joined()
@@ -342,8 +337,7 @@ final class UtilityCanada {
         titles = chunk.parseColumn("<a href=\".*?\">(.*?)</a>")
         let watchUrl = urls.joined(separator: "," + MyApplication.canadaEcSitePrefix)
         let watch = titles.joined(separator: "<BR>")
-        result[0] = (warning + statement + watch)
-        result[1] = (warningUrl + "," + statementUrl + "," + watchUrl)
+        var result = [warning + statement + watch, warningUrl + "," + statementUrl + "," + watchUrl]
         if !result[0].contains("No watches or warnings in effect") {
             result[1] = getHazardsFromUrl(warningUrl)
         } else {

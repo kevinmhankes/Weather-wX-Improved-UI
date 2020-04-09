@@ -17,6 +17,7 @@ final class SevereWarning {
     var eventList = [String]()
     var senderNameList = [String]()
     var warnings = [String]()
+    var listOfWfo = [String]()
 
     init(_ type: String) {
         self.type = type
@@ -62,6 +63,7 @@ final class SevereWarning {
                 let wfos = $0.split(".")
                 if wfos.count > 1 {
                     let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
+                    listOfWfo.append(wfo)
                     location = Utility.getWfoSiteName(wfo)
                 }
                 text += "  " + location + MyApplication.newline

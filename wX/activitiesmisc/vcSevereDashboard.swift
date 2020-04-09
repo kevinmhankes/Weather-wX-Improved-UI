@@ -110,7 +110,8 @@ class vcSevereDashboard: UIwXViewController {
                                 warningType.effectiveList[index],
                                 warningType.expiresList[index],
                                 warningType.areaDescList[index],
-                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:)))
+                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:))),
+                                UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:)))
                             )
                         }
                     }
@@ -133,6 +134,16 @@ class vcSevereDashboard: UIwXViewController {
         let vc = vcUSAlertsDetail()
         vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         self.goToVC(vc)
+    }
+    
+    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
+        print(sender.strData)
+        let vc = vcNexradRadar()
+        vc.radarSiteOverride = sender.strData
+        self.goToVC(vc)
+        //let vc = vcUSAlertsDetail()
+        //vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
+        //self.goToVC(vc)
     }
     
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {

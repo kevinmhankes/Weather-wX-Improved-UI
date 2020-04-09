@@ -20,7 +20,9 @@
 // [ADD] onrestart spc mcd wat mpd
 // [REF] spc storm reports refactor like kotlin
 
-56098 2020_04_07 [FIX] SPC Storm reports was not working on MacOS due to illegal customizations of data picker
+56098 2020_04_09 [FIX] SPC Storm reports was not working on MacOS due to illegal customizations of data picker
+		 [ADD] add radar icon in severe dashboard warning cards that lead to nexrad
+		 [FIX] disable keyboard shorts in fragments as they are doing odd things
 56097 2020_04_05 [FIX] state detection in Locations was not working in some cases
 		 [FIX] SPC SWO state graphic - if HI or AK force to AL as it's lower 48 only
 		 [FIX] SPC Watches - remove HTML tags that occasionally show up

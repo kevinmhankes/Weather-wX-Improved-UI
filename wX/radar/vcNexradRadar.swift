@@ -46,6 +46,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     private var screenHeight = 0.0
     var wxoglPaneCount = ""
     var wxoglCalledFromTimeButton = false
+    var radarSiteOverride = ""
     private let map = ObjectMap(.RADAR)
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -261,6 +262,14 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         productButton.enumerated().forEach {
             $1.title = wxMetal[$0]!.product
         }
+        
+        // FIXME
+        // when called from severedashboard and us alerts
+        if radarSiteOverride != "" {
+            wxMetal[0]!.rid = radarSiteOverride
+            wxMetal[0]!.loadGeometry()
+        }
+        
         radarSiteButton.title = wxMetal[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
             siteButton.enumerated().forEach {

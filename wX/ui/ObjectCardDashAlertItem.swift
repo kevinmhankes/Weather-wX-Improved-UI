@@ -17,7 +17,8 @@ final class ObjectCardDashAlertItem {
         _ effectiveTime: String,
         _ expiresTime: String,
         _ areaDescription: String,
-        _ gesture: UITapGestureRecognizerWithData
+        _ gesture: UITapGestureRecognizerWithData,
+        _ gestureRadar: UITapGestureRecognizerWithData
     ) {
         let tvName = ObjectTextViewLarge(80.0, text: senderName, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
@@ -31,11 +32,16 @@ final class ObjectCardDashAlertItem {
         tvStart.tv.isAccessibilityElement = false
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
+        
+        let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
+        let horizontalConainer = ObjectStackView(.fillProportionally, .horizontal, spacing: 10, arrangedSubviews: [radarIcon.button])
+        horizontalConainer.uiStackView.alignment = .leading
+        
         let verticalTextConainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view]
+            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalConainer.view]
         )
         if senderName == "" {
             tvName.view.isHidden = true
@@ -49,5 +55,9 @@ final class ObjectCardDashAlertItem {
         cardStackView.view.addGestureRecognizer(gesture)
         uiv.stackView.addArrangedSubview(cardStackView.view)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+    }
+    
+    @objc func showRadar() {
+        
     }
 }

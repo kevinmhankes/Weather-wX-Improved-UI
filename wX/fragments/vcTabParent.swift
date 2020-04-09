@@ -166,7 +166,7 @@ class vcTabParent: UIViewController {
         updateColors()
     }
 
-    override var keyCommands: [UIKeyCommand]? {
+    /*override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(input: UIKeyCommand.inputRightArrow,
              modifierFlags: [],
@@ -195,7 +195,7 @@ class vcTabParent: UIViewController {
             UIKeyCommand(input: "i", modifierFlags: .control, action: #selector(nationalImagesClicked)),
             UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts))
         ]
-    }
+    }*/
 
     @objc func settingsClicked() {
         let vc = vcSettingsMain()
