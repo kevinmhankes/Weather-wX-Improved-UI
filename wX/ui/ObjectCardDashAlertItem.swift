@@ -34,6 +34,7 @@ final class ObjectCardDashAlertItem {
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
         
+        // icons
         let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
         let radarText = ObjectTextView("Radar")
         radarText.addGestureRecognizer(gestureRadarText)
@@ -46,6 +47,7 @@ final class ObjectCardDashAlertItem {
             arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
         )
         horizontalConainer.uiStackView.distribution = .equalSpacing
+        // end icons
         
         let verticalTextConainer = ObjectStackView(
             .fill,

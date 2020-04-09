@@ -266,8 +266,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         // FIXME
         // when called from severedashboard and us alerts
         if radarSiteOverride != "" {
-            wxMetal[0]!.rid = radarSiteOverride
-            wxMetal[0]!.loadGeometry()
+            //wxMetal[0]!.rid = radarSiteOverride
+            //wxMetal[0]!.loadGeometry()
+            wxMetal[0]!.resetRid(radarSiteOverride)
         }
         
         radarSiteButton.title = wxMetal[0]!.rid

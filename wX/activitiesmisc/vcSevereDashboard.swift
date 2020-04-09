@@ -110,7 +110,7 @@ class vcSevereDashboard: UIwXViewController {
                                 warningType.effectiveList[index],
                                 warningType.expiresList[index],
                                 warningType.areaDescList[index],
-                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(gotoAlert(sender:))),
+                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(goToAlert(sender:))),
                                 UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:))),
                                 UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:)))
                             )
@@ -126,12 +126,12 @@ class vcSevereDashboard: UIwXViewController {
         }
     }
     
-    @objc func gotoAlerts() {
+    @objc func goToAlerts() {
         let vc = vcUSAlerts()
         self.goToVC(vc)
     }
     
-    @objc func gotoAlert(sender: UITapGestureRecognizerWithData) {
+    @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
         let vc = vcUSAlertsDetail()
         vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         self.goToVC(vc)
@@ -143,9 +143,6 @@ class vcSevereDashboard: UIwXViewController {
         let vc = vcNexradRadar()
         vc.radarSiteOverride = radarSite
         self.goToVC(vc)
-        //let vc = vcUSAlertsDetail()
-        //vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
-        //self.goToVC(vc)
     }
     
     @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
@@ -177,14 +174,14 @@ class vcSevereDashboard: UIwXViewController {
             objectImage = ObjectImage(
                 stackView.view,
                 usAlertsBitmap,
-                UITapGestureRecognizer(target: self, action: #selector(gotoAlerts)),
+                UITapGestureRecognizer(target: self, action: #selector(goToAlerts)),
                 widthDivider: imagesPerRow
             )
         } else {
             objectImage = ObjectImage(
                 imageStackViewList.last!.view,
                 usAlertsBitmap,
-                UITapGestureRecognizer(target: self, action: #selector(gotoAlerts)),
+                UITapGestureRecognizer(target: self, action: #selector(goToAlerts)),
                 widthDivider: imagesPerRow
             )
         }

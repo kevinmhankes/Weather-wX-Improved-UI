@@ -40,6 +40,11 @@ final class ObjectCardAlertSummaryItem {
         }
         verticalTextConainer.view.isAccessibilityElement = true
         verticalTextConainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
+        
+        
+        
+        
+        
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
