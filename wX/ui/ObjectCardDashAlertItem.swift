@@ -33,7 +33,6 @@ final class ObjectCardDashAlertItem {
         tvStart.tv.isAccessibilityElement = false
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
-        
         // icons
         let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
         let radarText = ObjectTextView("Radar")
@@ -48,7 +47,6 @@ final class ObjectCardDashAlertItem {
         )
         horizontalConainer.uiStackView.distribution = .equalSpacing
         // end icons
-        
         let verticalTextConainer = ObjectStackView(
             .fill,
             .vertical,
@@ -69,7 +67,5 @@ final class ObjectCardDashAlertItem {
         verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
     
-    @objc func showRadar() {
-        
-    }
+    @objc func showRadar() {}
 }
