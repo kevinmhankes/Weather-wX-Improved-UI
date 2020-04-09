@@ -139,8 +139,9 @@ class vcSevereDashboard: UIwXViewController {
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
         print(sender.strData)
+        let radarSite = GlobalDictionaries.wfoToRadarSite[sender.strData] ?? ""
         let vc = vcNexradRadar()
-        vc.radarSiteOverride = sender.strData
+        vc.radarSiteOverride = radarSite
         self.goToVC(vc)
         //let vc = vcUSAlertsDetail()
         //vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
