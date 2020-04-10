@@ -37,6 +37,16 @@ public class ExternalPoint {
         self.x = x
         self.y = y
     }
+    
+    init(_ x: Double, _ y: Double) {
+        self.x = Float(x)
+        self.y = Float(y)
+    }
+    
+    init(_ latLon: LatLon) {
+        self.x = Float(latLon.lat)
+        self.y = Float(latLon.lon)
+    }
 
     func toString() -> String {return String(format: "(%.2f,%.2f)", x, y)}
 }

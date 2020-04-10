@@ -49,7 +49,6 @@ class UtilityWatch {
     }
 
     static func show(_ latLon: LatLon, _ type: PolygonType) -> String {
-        var text = ""
         var numberList = [String]()
         var watchLatLon: String
         switch type.string {
@@ -68,6 +67,7 @@ class UtilityWatch {
         }
         let latLons = watchLatLon.split(":")
         var notFound = true
+        var text = ""
         latLons.indices.forEach { z in
             let numbers = latLons[z].split(" ")
             var x = [Double]()
@@ -80,12 +80,12 @@ class UtilityWatch {
                 }
             }
             if y.count > 3 && x.count > 3 && x.count == y.count {
-                let poly2 = ExternalPolygon.Builder()
+                let polygonFrame = ExternalPolygon.Builder()
                 x.indices.forEach {
-                    _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))
+                    _ = polygonFrame.addVertex(point: ExternalPoint(x[$0], y[$0]))
                 }
-                let polygon2 = poly2.build()
-                let contains = polygon2.contains(point: ExternalPoint(Float(latLon.lat), Float(latLon.lon)))
+                let polygonShape = polygonFrame.build()
+                let contains = polygonShape.contains(point: ExternalPoint(latLon))
                 if contains && notFound {
                     text = numberList[z]
                     notFound = false

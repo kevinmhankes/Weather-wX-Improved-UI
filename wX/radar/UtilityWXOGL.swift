@@ -31,18 +31,18 @@ public class UtilityWXOGL {
         var string = ""
         var notFound = true
         polygons.enumerated().forEach { urlIndex, warning in
-            let polyTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
-            if polyTmp.count > 1 {
-                y = polyTmp.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
-                x = polyTmp.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
+            let polygonTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
+            if polygonTmp.count > 1 {
+                y = polygonTmp.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
+                x = polygonTmp.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
             }
             if (y.count > 3 && x.count > 3) && (x.count == y.count) {
-                let poly2 = ExternalPolygon.Builder()
+                let polygonFrame = ExternalPolygon.Builder()
                 x.indices.forEach {
-                    _ = poly2.addVertex(point: ExternalPoint(Float(x[$0]), Float(y[$0])))
+                    _ = polygonFrame.addVertex(point: ExternalPoint(x[$0], y[$0]))
                 }
-                let polygon2 = poly2.build()
-                let contains = polygon2.contains(point: ExternalPoint(Float(location.lat), Float(location.lon)))
+                let polygonShape = polygonFrame.build()
+                let contains = polygonShape.contains(point: ExternalPoint(location.lat, location.lon))
                 if contains && notFound {
                     string = urlList[urlIndex]
                     notFound = false
