@@ -20,6 +20,7 @@
 // [REF] spc storm reports refactor like kotlin
 // [FIX] nearest forecast from main screen nexrad does not work
 
+56100 2020_04_10 [REF] misc
 56099 2020_04_10 [REF] misc
 56098 2020_04_10 [FIX] SPC Storm reports was not working on MacOS due to illegal customizations of data picker
 		 [ADD] add radar icon in severe dashboard warning cards that lead to nexrad
