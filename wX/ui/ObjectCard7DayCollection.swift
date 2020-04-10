@@ -24,11 +24,11 @@ final class ObjectCard7DayCollection {
         let stackViewLocal7Day = ObjectStackViewHS()
         stackView.addArrangedSubview(stackViewLocal7Day)
         stackViewLocal7Day.setupWithPadding(stackView)
-        let dayArr = objSevenDay.forecastList
-        let dayArrShort = objSevenDay.forecastListCondensed
-        dayArr.indices.forEach { index in
-            if dayArr[index] != "" {
-                let objectCard7Day = ObjectCard7Day(stackViewLocal7Day, index, objSevenDay.icons, dayArr, dayArrShort, isUS)
+        let days = objSevenDay.forecastList
+        let daysShort = objSevenDay.forecastListCondensed
+        days.indices.forEach { index in
+            if days[index] != "" {
+                let objectCard7Day = ObjectCard7Day(stackViewLocal7Day, index, objSevenDay.icons, days, daysShort, isUS)
                 objectCard7Day.addGestureRecognizer(
                     UITapGestureRecognizer(
                         target: self,
