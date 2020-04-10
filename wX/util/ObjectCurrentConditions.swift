@@ -4,8 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-// FIXME rename
-final class ObjectForecastPackageCurrentConditions {
+final class ObjectCurrentConditions {
     
     var data = ""
     var iconUrl = ""

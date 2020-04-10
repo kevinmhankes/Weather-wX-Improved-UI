@@ -18,9 +18,9 @@ class vcTabLocation: vcTabParent {
     private var currentTime: Int64 = 0
     private var currentTimeSec: Int64 = 0
     private var refreshIntervalSec: Int64 = 0
-    private var objCurrentConditions = ObjectForecastPackageCurrentConditions()
-    private var objHazards = ObjectForecastPackageHazards()
-    private var objSevenDay = ObjectForecastPackage7Day()
+    private var objCurrentConditions = ObjectCurrentConditions()
+    private var objHazards = ObjectHazards()
+    private var objSevenDay = ObjectSevenDay()
     private var textArr = [String: String]()
     private var timeButton = ObjectToolbarIcon()
     private var oldLocation = LatLon()
@@ -32,7 +32,7 @@ class vcTabLocation: vcTabParent {
     private var stackViewHazards: ObjectStackView!
     private var stackViewRadar = ObjectStackViewHS()
     private var ccCard: ObjectCardCurrentConditions?
-    private var objCard7DayCollection: ObjectCard7DayCollection?
+    private var objCard7DayCollection: ObjectCardSevenDayCollection?
     private var extraDataCards = [ObjectStackViewHS]()
     private var wxMetal = [WXMetalRender?]()
     private var metalLayer = [CAMetalLayer?]()
@@ -181,7 +181,7 @@ class vcTabLocation: vcTabParent {
     
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(Location.getCurrentLocation())
+            self.objCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.getCurrentConditionCards()
             }
@@ -190,14 +190,14 @@ class vcTabLocation: vcTabParent {
     
     func getLocationForecastSevenDay() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objSevenDay = ObjectForecastPackage7Day(Location.getCurrentLocation())
+            self.objSevenDay = ObjectSevenDay(Location.getCurrentLocation())
             self.objSevenDay.locationIndex = Location.getCurrentLocation()
             DispatchQueue.main.async {
                 if self.objCard7DayCollection == nil
                     || !self.isUS
                     || self.objSevenDay.locationIndex != self.objCard7DayCollection?.locationIndex {
                     self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
-                    self.objCard7DayCollection = ObjectCard7DayCollection(
+                    self.objCard7DayCollection = ObjectCardSevenDayCollection(
                         self.stackViewForecast.view,
                         self.scrollView,
                         self.objSevenDay,
@@ -218,8 +218,8 @@ class vcTabLocation: vcTabParent {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
             DispatchQueue.main.async {
-                if ObjectForecastPackageHazards.getHazardCount(self.objHazards) > 0 {
-                    ObjectForecastPackageHazards.getHazardCards(self.stackViewHazards.view, self.objHazards, self.isUS)
+                if ObjectHazards.getHazardCount(self.objHazards) > 0 {
+                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objHazards, self.isUS)
                     self.stackViewHazards.view.isHidden = false
                 } else {
                     self.stackViewHazards.view.isHidden = true

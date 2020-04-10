@@ -6,8 +6,7 @@
 
 import UIKit
 
-// FIXME rename
-final class ObjectForecastPackageHazards {
+final class ObjectHazards {
     
     private var hazardsShort = ""
     var hazards = ""
@@ -24,7 +23,7 @@ final class ObjectForecastPackageHazards {
         if homescreenFav.contains("TXT-HAZ") {
             hazards = getHazardsHtml(location)
         }
-        ObjectForecastPackageHazards.uiv = uiv
+        ObjectHazards.uiv = uiv
     }
     
     func getHazardsHtml(_ location: LatLon) -> String {
@@ -35,21 +34,21 @@ final class ObjectForecastPackageHazards {
     static var isUS = true
     
     // CA
-    static func createForCanada(_ html: String) -> ObjectForecastPackageHazards {
-        let objectForecastPackageHazards = ObjectForecastPackageHazards()
+    static func createForCanada(_ html: String) -> ObjectHazards {
+        let objectForecastPackageHazards = ObjectHazards()
         let hazards = UtilityCanada.getHazards(html)
         objectForecastPackageHazards.hazardsShort = hazards[0]
         objectForecastPackageHazards.hazards = hazards[1]
         return objectForecastPackageHazards
     }
     
-    static func getHazardCount(_ objectForecastPackageHazards: ObjectForecastPackageHazards) -> Int {
+    static func getHazardCount(_ objectForecastPackageHazards: ObjectHazards) -> Int {
         objectForecastPackageHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
     }
     
     static func getHazardCards(
         _ stackView: UIStackView,
-        _ objHazards: ObjectForecastPackageHazards,
+        _ objHazards: ObjectHazards,
         _ isUS: Bool = true
     ) {
         self.isUS = isUS

@@ -6,8 +6,7 @@
 
 import UIKit
 
-// FIXME rename
-final class ObjectForecastPackage7Day {
+final class ObjectSevenDay {
     
     var icons = [String]()
     private var shortForecasts = [String]()

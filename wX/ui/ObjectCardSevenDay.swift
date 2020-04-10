@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectCard7Day {
+final class ObjectCardSevenDay {
 
     private var isUS = true
     private let horizontalContainer: ObjectCardStackView

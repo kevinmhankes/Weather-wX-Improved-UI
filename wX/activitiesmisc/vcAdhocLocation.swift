@@ -9,9 +9,9 @@ import AVFoundation
 
 class vcAdhocLocation: UIwXViewController {
     
-    private var objCurrentConditions = ObjectForecastPackageCurrentConditions()
-    private var objHazards = ObjectForecastPackageHazards()
-    private var objSevenDay = ObjectForecastPackage7Day()
+    private var objCurrentConditions = ObjectCurrentConditions()
+    private var objHazards = ObjectHazards()
+    private var objSevenDay = ObjectSevenDay()
     private var stackViewCurrentConditions: ObjectStackView!
     private var stackViewForecast: ObjectStackView!
     private var stackViewHazards: ObjectStackView!
@@ -40,9 +40,9 @@ class vcAdhocLocation: UIwXViewController {
     override func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objCurrentConditions = ObjectForecastPackageCurrentConditions(self.adhocLocation)
-            self.objSevenDay = ObjectForecastPackage7Day(self.adhocLocation)
-            self.objHazards = ObjectForecastPackageHazards(self, self.adhocLocation)
+            self.objCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
+            self.objSevenDay = ObjectSevenDay(self.adhocLocation)
+            self.objHazards = ObjectHazards(self, self.adhocLocation)
             DispatchQueue.main.async {
                 _ = ObjectCardCurrentConditions(
                     self.stackViewCurrentConditions.view,
@@ -51,8 +51,8 @@ class vcAdhocLocation: UIwXViewController {
                 )
                 self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
                 self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-                ObjectForecastPackageHazards.getHazardCards(self.stackView, self.objHazards)
-                _ = ObjectCard7DayCollection(
+                ObjectHazards.getHazardCards(self.stackView, self.objHazards)
+                _ = ObjectCardSevenDayCollection(
                     self.stackViewForecast.view,
                     self.scrollView,
                     self.objSevenDay

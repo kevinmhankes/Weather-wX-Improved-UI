@@ -52,12 +52,12 @@ final class Utility {
      return list
      }*/
     
-    static func getCurrentHazards(_ uiv: UIViewController, _ locNum: Int) -> ObjectForecastPackageHazards {
+    static func getCurrentHazards(_ uiv: UIViewController, _ locNum: Int) -> ObjectHazards {
         if Location.isUS(locNum) {
-            return ObjectForecastPackageHazards(uiv, locNum)
+            return ObjectHazards(uiv, locNum)
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            return ObjectForecastPackageHazards.createForCanada(html)
+            return ObjectHazards.createForCanada(html)
         }
     }
     

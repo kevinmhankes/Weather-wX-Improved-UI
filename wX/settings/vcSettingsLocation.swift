@@ -12,7 +12,7 @@ class vcSettingsLocation: UIwXViewController {
     private var fab: ObjectFab?
     private var productButton = ObjectToolbarIcon()
     private var objectCards = [ObjectCardLocationItem]()
-    private var currentConditions = [ObjectForecastPackageCurrentConditions]()
+    private var currentConditions = [ObjectCurrentConditions]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class vcSettingsLocation: UIwXViewController {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
             MyApplication.locations.indices.forEach { index in
-                self.currentConditions.append(ObjectForecastPackageCurrentConditions(index))
+                self.currentConditions.append(ObjectCurrentConditions(index))
             }
             DispatchQueue.main.async {
                 self.objectCards.indices.forEach { index in

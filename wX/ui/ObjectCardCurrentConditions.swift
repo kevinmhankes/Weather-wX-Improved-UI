@@ -16,7 +16,7 @@ final class ObjectCardCurrentConditions {
 
     init(
         _ stackView: UIStackView,
-        _ objectForecastPackageCurrentConditions: ObjectForecastPackageCurrentConditions,
+        _ objectForecastPackageCurrentConditions: ObjectCurrentConditions,
         _ isUS: Bool
     ) {
         if UIPreferences.mainScreenCondense {
@@ -38,12 +38,12 @@ final class ObjectCardCurrentConditions {
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 
-    func updateCard(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
+    func updateCard(_ objCc: ObjectCurrentConditions, _ isUS: Bool) {
         setImage(objCc, isUS)
         setText(objCc)
     }
 
-    func setImage(_ objCc: ObjectForecastPackageCurrentConditions, _ isUS: Bool) {
+    func setImage(_ objCc: ObjectCurrentConditions, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
                 image.view.image = UtilityNws.getIcon(objCc.iconUrl).image
@@ -63,7 +63,7 @@ final class ObjectCardCurrentConditions {
         }
     }
 
-    func setText(_ objCc: ObjectForecastPackageCurrentConditions) {
+    func setText(_ objCc: ObjectCurrentConditions) {
         topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
         horizontalContainer.stackView.accessibilityLabel = objCc.spokenText

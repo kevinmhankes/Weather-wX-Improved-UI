@@ -92,7 +92,7 @@
 		0340423D23F16FC3003AB242 /* vcSoundings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422B23F16FC3003AB242 /* vcSoundings.swift */; };
 		0340423E23F16FC3003AB242 /* vcLsrByWfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422C23F16FC3003AB242 /* vcLsrByWfo.swift */; };
 		0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422D23F16FC3003AB242 /* vcMapKitView.swift */; };
-		0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */; };
+		0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */; };
 		0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */; };
 		0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */; };
 		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
@@ -289,16 +289,16 @@
 		F078FE4F1DA330B7002CCD13 /* wXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078FE4E1DA330B7002CCD13 /* wXUITests.swift */; };
 		F07B5C0C1E53D4DE00555058 /* ObjectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */; };
 		F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */; };
-		F07B5C101E53D73000555058 /* ObjectCard7Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */; };
+		F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */; };
 		F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830E991E593467003149E5 /* ObjectDatePicker.swift */; };
 		F0838FCE1DCA674700517EBF /* UtilityHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0838FCD1DCA674700517EBF /* UtilityHelp.swift */; };
 		F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */; };
 		F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08748171E5513350081E1FD /* ObjectTouchImageView.swift */; };
 		F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08748191E5513A70081E1FD /* ObjectTileImage.swift */; };
 		F08C27D01E86B7DB00D16E9A /* colormaprefgreen.txt in Resources */ = {isa = PBXBuildFile; fileRef = F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */; };
-		F08E48311EB0DF72000629DA /* ObjectForecastPackage7Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */; };
-		F08E48341EB0DF8F000629DA /* ObjectForecastPackageHazards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */; };
-		F08E48351EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */; };
+		F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */; };
+		F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48321EB0DF8F000629DA /* ObjectHazards.swift */; };
+		F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */; };
 		F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */; };
 		F09541A61E75F9B200A25FA1 /* ObjectToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09541A51E75F9B200A25FA1 /* ObjectToolbarIcon.swift */; };
 		F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */; };
@@ -490,7 +490,7 @@
 		0340422B23F16FC3003AB242 /* vcSoundings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSoundings.swift; sourceTree = "<group>"; };
 		0340422C23F16FC3003AB242 /* vcLsrByWfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcLsrByWfo.swift; sourceTree = "<group>"; };
 		0340422D23F16FC3003AB242 /* vcMapKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcMapKitView.swift; sourceTree = "<group>"; };
-		0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7DayCollection.swift; sourceTree = "<group>"; };
+		0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDayCollection.swift; sourceTree = "<group>"; };
 		0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NhcOceanEnum.swift; sourceTree = "<group>"; };
 		0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcRegionSummary.swift; sourceTree = "<group>"; };
 		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
@@ -696,16 +696,16 @@
 		F078FE501DA330B7002CCD13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImage.swift; sourceTree = "<group>"; };
 		F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSettingsSwitch.swift; sourceTree = "<group>"; };
-		F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCard7Day.swift; sourceTree = "<group>"; };
+		F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDay.swift; sourceTree = "<group>"; };
 		F0830E991E593467003149E5 /* ObjectDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDatePicker.swift; sourceTree = "<group>"; };
 		F0838FCD1DCA674700517EBF /* UtilityHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHelp.swift; sourceTree = "<group>"; };
 		F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGL.swift; sourceTree = "<group>"; };
 		F08748171E5513350081E1FD /* ObjectTouchImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTouchImageView.swift; sourceTree = "<group>"; };
 		F08748191E5513A70081E1FD /* ObjectTileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTileImage.swift; sourceTree = "<group>"; };
 		F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefgreen.txt; sourceTree = "<group>"; };
-		F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackage7Day.swift; sourceTree = "<group>"; };
-		F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackageHazards.swift; sourceTree = "<group>"; };
-		F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecastPackageCurrentConditions.swift; sourceTree = "<group>"; };
+		F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSevenDay.swift; sourceTree = "<group>"; };
+		F08E48321EB0DF8F000629DA /* ObjectHazards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectHazards.swift; sourceTree = "<group>"; };
+		F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCurrentConditions.swift; sourceTree = "<group>"; };
 		F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		F09541A51E75F9B200A25FA1 /* ObjectToolbarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToolbarIcon.swift; sourceTree = "<group>"; };
 		F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextView.swift; sourceTree = "<group>"; };
@@ -1096,9 +1096,9 @@
 			isa = PBXGroup;
 			children = (
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
-				F08E48301EB0DF72000629DA /* ObjectForecastPackage7Day.swift */,
-				F08E48331EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift */,
-				F08E48321EB0DF8F000629DA /* ObjectForecastPackageHazards.swift */,
+				F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */,
+				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
+				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
 				039795B62032D7C100F37CCE /* ObjectMetar.swift */,
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
@@ -1243,8 +1243,8 @@
 				F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */,
 				F02DF2541EB89FCF00A951EA /* ObjectCALegal.swift */,
 				03A41C4022C4C86A00C9044F /* ObjectCanadaWarnings.swift */,
-				F07B5C0F1E53D73000555058 /* ObjectCard7Day.swift */,
-				0347B63521CE43E500594F50 /* ObjectCard7DayCollection.swift */,
+				F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */,
+				0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */,
 				038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */,
 				030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */,
 				03A41C3E22C4C7D400C9044F /* ObjectCardCurrentConditions.swift */,
@@ -1789,7 +1789,7 @@
 				F0B335141DA3FD1C0035BD36 /* R.swift in Sources */,
 				F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */,
 				0340423923F16FC3003AB242 /* vcObsSites.swift in Sources */,
-				F08E48351EB0DF8F000629DA /* ObjectForecastPackageCurrentConditions.swift in Sources */,
+				F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
@@ -1824,14 +1824,14 @@
 				03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */,
 				0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */,
 				03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */,
-				F07B5C101E53D73000555058 /* ObjectCard7Day.swift in Sources */,
+				F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */,
 				037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */,
 				F0B335001DA3FC980035BD36 /* GlobalVariables.swift in Sources */,
 				038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */,
 				0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */,
 				03F3EB86229945D10056A56D /* UtilityModelEsrlInterface.swift in Sources */,
 				F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */,
-				F08E48311EB0DF72000629DA /* ObjectForecastPackage7Day.swift in Sources */,
+				F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */,
 				F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */,
 				03F4631422A2F14900C06D16 /* UtilityDownloadMpd.swift in Sources */,
 				031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */,
@@ -1866,7 +1866,7 @@
 				03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */,
 				031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */,
 				F02841811DEFBC6000474084 /* Location.swift in Sources */,
-				0347B63621CE43E500594F50 /* ObjectCard7DayCollection.swift in Sources */,
+				0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */,
 				F0838FCE1DCA674700517EBF /* UtilityHelp.swift in Sources */,
 				03171D6123567EFC00170A4A /* KeyDirections.swift in Sources */,
 				031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */,
@@ -1888,7 +1888,7 @@
 				034041EE23F167F9003AB242 /* vcSpcSwoState.swift in Sources */,
 				03F3EB762299414B0056A56D /* CapAlert.swift in Sources */,
 				036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */,
-				F08E48341EB0DF8F000629DA /* ObjectForecastPackageHazards.swift in Sources */,
+				F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */,
 				F015B8131DACF65700EFE0B4 /* UtilityDownloadRadar.swift in Sources */,
 				F0B335131DA3FD1C0035BD36 /* ProjectionNumbers.swift in Sources */,
 				F0B335171DA3FD1C0035BD36 /* RunTimeData.swift in Sources */,

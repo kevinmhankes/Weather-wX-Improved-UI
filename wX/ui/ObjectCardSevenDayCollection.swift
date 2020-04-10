@@ -6,17 +6,17 @@
 
 import UIKit
 
-final class ObjectCard7DayCollection {
+final class ObjectCardSevenDayCollection {
 
     private let scrollView: UIScrollView
-    private var sevenDayCardList = [ObjectCard7Day]()
+    private var sevenDayCardList = [ObjectCardSevenDay]()
     var locationIndex = 0
     var objectCardSunTime: ObjectCardSunTime?
 
     init(
         _ stackView: UIStackView,
         _ scrollView: UIScrollView,
-        _ objSevenDay: ObjectForecastPackage7Day,
+        _ objSevenDay: ObjectSevenDay,
         _ isUS: Bool = true
     ) {
         self.scrollView = scrollView
@@ -28,7 +28,7 @@ final class ObjectCard7DayCollection {
         let daysShort = objSevenDay.forecastListCondensed
         days.indices.forEach { index in
             if days[index] != "" {
-                let objectCard7Day = ObjectCard7Day(stackViewLocal7Day, index, objSevenDay.icons, days, daysShort, isUS)
+                let objectCard7Day = ObjectCardSevenDay(stackViewLocal7Day, index, objSevenDay.icons, days, daysShort, isUS)
                 objectCard7Day.addGestureRecognizer(
                     UITapGestureRecognizer(
                         target: self,
@@ -59,7 +59,7 @@ final class ObjectCard7DayCollection {
         objectCardSunTime?.resetTextSize()
     }
 
-    func update(_ objSevenDay: ObjectForecastPackage7Day, _ isUS: Bool = true) {
+    func update(_ objSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
         let dayArr = objSevenDay.forecastList
         let dayArrShort = objSevenDay.forecastListCondensed
         dayArr.indices.forEach { index in
