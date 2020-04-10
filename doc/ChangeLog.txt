@@ -15,12 +15,11 @@
 // [FIX] should not need to restart app when changing NWS icon size
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [ADD] more robust handling network issues (cc,7day,radar)
-// [REF] stop using $0 and $1
 // [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
 // [REF] spc storm reports refactor like kotlin
 
-56098 2020_04_09 [FIX] SPC Storm reports was not working on MacOS due to illegal customizations of data picker
+56098 2020_04_10 [FIX] SPC Storm reports was not working on MacOS due to illegal customizations of data picker
 		 [ADD] add radar icon in severe dashboard warning cards that lead to nexrad
 		 [FIX] disable keyboard shorts in fragments as they are doing odd things
 56097 2020_04_05 [FIX] state detection in Locations was not working in some cases
