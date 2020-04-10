@@ -24,7 +24,7 @@ class vcCanadaHourly: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(self.stackView, "", FontSize.hourly.size)
         objectTextView.constrain(scrollView)
-        _ = ObjectCALegal(self.stackView)
+        _ = ObjectCanadaLegal(self.stackView)
         self.getContent()
     }
     

@@ -28,8 +28,8 @@ final class ObjectCardSevenDayCollection {
         let daysShort = objSevenDay.forecastListCondensed
         days.indices.forEach { index in
             if days[index] != "" {
-                let objectCard7Day = ObjectCardSevenDay(stackViewLocal7Day, index, objSevenDay.icons, days, daysShort, isUS)
-                objectCard7Day.addGestureRecognizer(
+                let objectCardSevenDay = ObjectCardSevenDay(stackViewLocal7Day, index, objSevenDay.icons, days, daysShort, isUS)
+                objectCardSevenDay.addGestureRecognizer(
                     UITapGestureRecognizer(
                         target: self,
                         action: #selector(self.sevenDayAction)),
@@ -37,11 +37,11 @@ final class ObjectCardSevenDayCollection {
                     )
                 )
                 numCards += 1
-                sevenDayCardList.append(objectCard7Day)
+                sevenDayCardList.append(objectCardSevenDay)
             }
         }
         if !isUS {
-            _ = ObjectCALegal(stackViewLocal7Day)
+            _ = ObjectCanadaLegal(stackViewLocal7Day)
             numCards += 1
         } else {
             objectCardSunTime = ObjectCardSunTime(
@@ -59,13 +59,13 @@ final class ObjectCardSevenDayCollection {
         objectCardSunTime?.resetTextSize()
     }
 
-    func update(_ objSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
-        let dayArr = objSevenDay.forecastList
-        let dayArrShort = objSevenDay.forecastListCondensed
-        dayArr.indices.forEach { index in
-            if dayArr[index] != "" {
+    func update(_ objectSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
+        let days = objectSevenDay.forecastList
+        let daysShort = objectSevenDay.forecastListCondensed
+        days.indices.forEach { index in
+            if days[index] != "" {
                 if sevenDayCardList.count > index {
-                    sevenDayCardList[index].update(index, objSevenDay.icons, dayArr, dayArrShort, isUS)
+                    sevenDayCardList[index].update(index, objectSevenDay.icons, days, daysShort, isUS)
                 }
             }
         }

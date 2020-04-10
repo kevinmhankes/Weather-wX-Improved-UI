@@ -38,35 +38,35 @@ final class ObjectCardCurrentConditions {
         updateCard(objectForecastPackageCurrentConditions, isUS)
     }
 
-    func updateCard(_ objCc: ObjectCurrentConditions, _ isUS: Bool) {
-        setImage(objCc, isUS)
-        setText(objCc)
+    func updateCard(_ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
+        setImage(objectCurrentConditions, isUS)
+        setText(objectCurrentConditions)
     }
 
-    func setImage(_ objCc: ObjectCurrentConditions, _ isUS: Bool) {
+    func setImage(_ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNws.getIcon(objCc.iconUrl).image
+                image.view.image = UtilityNws.getIcon(objectCurrentConditions.iconUrl).image
             } else {
                 image.view.image = UtilityImg.resizeImage(
-                    UtilityNws.getIcon(objCc.iconUrl).image,
+                    UtilityNws.getIcon(objectCurrentConditions.iconUrl).image,
                     condenseScale
                 )
             }
         } else {
             image.view.image = UtilityNws.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
-                    objCc.data,
-                    objCc.status
+                    objectCurrentConditions.data,
+                    objectCurrentConditions.status
                 )
             ).image
         }
     }
 
-    func setText(_ objCc: ObjectCurrentConditions) {
-        topText.text = objCc.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        middleText.text = objCc.middleLine.trimmingCharacters(in: .whitespaces)
-        horizontalContainer.stackView.accessibilityLabel = objCc.spokenText
+    func setText(_ objectCurrentConditions: ObjectCurrentConditions) {
+        topText.text = objectCurrentConditions.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        middleText.text = objectCurrentConditions.middleLine.trimmingCharacters(in: .whitespaces)
+        horizontalContainer.stackView.accessibilityLabel = objectCurrentConditions.spokenText
     }
 
     func resetTextSize() {

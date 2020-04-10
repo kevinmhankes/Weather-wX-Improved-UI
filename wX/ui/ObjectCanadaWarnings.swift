@@ -111,7 +111,7 @@ final class ObjectCanadaWarnings: NSObject {
             )
             objectTextView.tv.isSelectable = false
         }
-        _ = ObjectCALegal(uiv.stackView)
+        _ = ObjectCanadaLegal(uiv.stackView)
     }
     
     func getWarningUrl(_ index: Int) -> String { MyApplication.canadaEcSitePrefix + listLocUrl[index] }

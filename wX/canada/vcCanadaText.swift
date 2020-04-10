@@ -31,7 +31,7 @@ class vcCanadaText: UIwXViewControllerWithAudio {
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.constrain(scrollView)
-        _ = ObjectCALegal(stackView)
+        _ = ObjectCanadaLegal(stackView)
         product = Utility.readPref(prefToken, product)
         self.getContent()
     }

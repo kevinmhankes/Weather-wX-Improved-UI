@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectCALegal {
+final class ObjectCanadaLegal {
 
     init(_ stackView: UIStackView) {
         _ = ObjectTextView(stackView, MyApplication.mainScreenCaDisclaimor, FontSize.small.size, ColorCompatibility.secondaryLabel)

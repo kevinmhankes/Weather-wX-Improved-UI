@@ -42,13 +42,13 @@ final class ObjectHazards {
         return objectForecastPackageHazards
     }
     
-    static func getHazardCount(_ objectForecastPackageHazards: ObjectHazards) -> Int {
-        objectForecastPackageHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
+    static func getHazardCount(_ objectHazards: ObjectHazards) -> Int {
+        objectHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
     }
     
     static func getHazardCards(
         _ stackView: UIStackView,
-        _ objHazards: ObjectHazards,
+        _ objectHazards: ObjectHazards,
         _ isUS: Bool = true
     ) {
         self.isUS = isUS
@@ -56,16 +56,16 @@ final class ObjectHazards {
         let stackViewLocalHaz = ObjectStackViewHS()
         stackViewLocalHaz.setupWithPadding()
         if !isUS {
-            let hazard = objHazards.hazardsShort.replace("<BR>", "")
+            let hazard = objectHazards.hazardsShort.replace("<BR>", "")
             _ = ObjectCardHazard(
                 stackViewLocalHaz,
                 hazard,
-                UITapGestureRecognizerWithData(objHazards.hazards, self, #selector(self.hazardsAction(sender:)))
+                UITapGestureRecognizerWithData(objectHazards.hazards, self, #selector(self.hazardsAction(sender:)))
             )
             numHaz += 1
         } else {
-            let ids = objHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
-            let hazardTitles = objHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
+            let ids = objectHazards.hazards.parseColumn("\"id\": \"(http.*?)\"")
+            let hazardTitles = objectHazards.hazards.parseColumn("\"event\": \"(.*?)\"")
             hazardTitles.enumerated().forEach { index, hazard in
                 _ = ObjectCardHazard(
                     stackViewLocalHaz,
