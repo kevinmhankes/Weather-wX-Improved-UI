@@ -356,14 +356,10 @@ final class UtilityCanada {
                 notFound = false
             }
         }
-        warningData = warningData
-            .replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM"
+        warningData = warningData.replaceAll("<li><img src=./cacheable/images/img/feed-icon-14x14.png. alt=.ATOM"
                 + " feed.> <a href=./rss/battleboard/.*?.>ATOM</a></li>", "")
-        warningData = warningData
-            .replace(" <div class=\"col-xs-12\">", "")
-            .replace("<section class=\"followus hidden-print\"><h2>Follow:</h2>", "")
-        warningData = warningData
-            .replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/"
+        warningData = warningData.replace(" <div class=\"col-xs-12\">", "").replace("<section class=\"followus hidden-print\"><h2>Follow:</h2>", "")
+        warningData = warningData.replace("<a href=\"/rss/battleboard/.*?.xml\"><img src=\"/cacheable/images/img/"
                 + "feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
         return warningData.replace("<div class=\"row\">", "")
     }
