@@ -19,9 +19,9 @@ final class ObjectCard7Day {
     init(
         _ stackView: UIStackView,
         _ index: Int,
-        _ dayImgUrl: [String],
-        _ dayArr: [String],
-        _ dayArrShort: [String],
+        _ urls: [String],
+        _ days: [String],
+        _ daysShort: [String],
         _ isUS: Bool
     ) {
         self.stackView = stackView
@@ -44,12 +44,12 @@ final class ObjectCard7Day {
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
-        update(index, dayImgUrl, dayArr, dayArrShort, isUS)
+        update(index, urls, days, daysShort, isUS)
     }
 
-    func update(_ index: Int, _ url: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
+    func update(_ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
         self.isUS = isUS
-        setImage(index, url)
+        setImage(index, urls)
         setTextFields(self.format7Day(days[index].replace("</text>", ""), daysShort[index].replace("</text>", "")))
     }
 
