@@ -13,7 +13,6 @@ final class UtilityNhc {
     static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/" + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
     static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
     static let utilNhcPattern5 = "<img src=.(.*?png)."
-    
     static let textProductCodes = [
         "MIATWOAT",
         "MIATWDAT",
@@ -23,7 +22,6 @@ final class UtilityNhc {
         "MIATWSEP",
         "HFOTWOCP"
     ]
-    
     static let textProductLabels = [
         "ATL Tropical Weather Outlook",
         "ATL Tropical Weather Discussion",
@@ -33,7 +31,6 @@ final class UtilityNhc {
         "EPAC Monthly Tropical Summary",
         "CPAC Tropical Weather Outlook"
     ]
-    
     static let imageType = [
         "vis: Visible",
         "wv: Water Vapor",
@@ -46,7 +43,6 @@ final class UtilityNhc {
         "ft: Funktop",
         "rb: Rainbow"
     ]
-    
     static let imageTitles = [
         "EPAC Daily Analysis",
         "ATL Daily Analysis",
@@ -55,7 +51,6 @@ final class UtilityNhc {
         "EPAC SST Anomaly",
         "ATL SST Anomaly"
     ]
-    
     static let imageUrls = [
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/ATL/20.jpg",

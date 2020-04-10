@@ -6,13 +6,13 @@
 
 final class Spotter {
 
-    var firstName: String
-    var lastName: String
-    var reportedAt: String
-    var email: String
-    var phone: String
-    private var uniq: String
-    var location = LatLon()
+    let firstName: String
+    let lastName: String
+    let reportedAt: String
+    let email: String
+    let phone: String
+    private let uniq: String
+    let location: LatLon
 
     init(
         _ firstName: String,

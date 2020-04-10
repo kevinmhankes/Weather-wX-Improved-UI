@@ -6,16 +6,16 @@
 
 final public class StormReport {
 
-    var text = ""
-    var lat = ""
-    var lon = ""
-    var time = ""
-    var magnitude = ""
-    var address = ""
-    var city = ""
-    var state = ""
-    var damageReport = ""
-    var damageHeader = ""
+    let text: String
+    let lat: String
+    let lon: String
+    let time: String
+    let magnitude: String
+    let address: String
+    let city: String
+    let state: String
+    let damageReport: String
+    let damageHeader: String
 
     init(
         _ text: String,

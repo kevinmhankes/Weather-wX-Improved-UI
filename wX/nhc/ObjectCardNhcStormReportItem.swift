@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardNhcStormReportItem {
 
-    init(_ stackView: UIStackView, _ stormData: ObjectNhcStormDetails, _ gesture: UITapGestureRecognizerWithData) {
+    init(_ uiStackView: UIStackView, _ stormData: ObjectNhcStormDetails, _ gesture: UITapGestureRecognizerWithData) {
         let textViewTop = ObjectTextViewLarge(
             80.0,
             text: stormData.name + " (" + stormData.type + ") " + stormData.center,
@@ -55,7 +55,7 @@ final class ObjectCardNhcStormReportItem {
         )
         verticalTextConainer.view.isAccessibilityElement = true
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-        stackView.addArrangedSubview(cardStackView.view)
+        uiStackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
     }
 }

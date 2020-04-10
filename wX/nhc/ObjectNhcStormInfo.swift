@@ -6,12 +6,12 @@
 
 final class ObjectNhcStormInfo {
 
-    var title = ""
-    var summary = ""
-    var url = ""
-    var img1 = ""
-    var img2 = ""
-    var wallet = ""
+    let title: String
+    let summary: String
+    let url: String
+    let img1: String
+    let img2: String
+    let wallet: String
 
     init(_ title: String, _ summary: String, _ url: String, _ img1: String, _ img2: String, _ wallet: String) {
         self.title = title

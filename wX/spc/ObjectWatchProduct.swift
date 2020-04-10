@@ -6,18 +6,18 @@
 
 final class ObjectWatchProduct {
 
-    private var productNumber = ""
-    var imgUrl = ""
-    private var textUrl = ""
-    private var title = ""
-    var prod = ""
+    private let productNumber: String
+    let imgUrl: String
+    private let textUrl: String
+    private let title: String
+    let prod: String
     var bitmap = Bitmap()
     var text = ""
     private var wfos = [String]()
-    private var type: PolygonType
+    private let type: PolygonType
 
     init(_ type: PolygonType, _ productNumber: String) {
-        self.productNumber = productNumber
+        //self.productNumber = productNumber
         self.type = type
         switch type.string {
         case "WATCH_TORNADO":
@@ -33,16 +33,23 @@ final class ObjectWatchProduct {
             title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
         case "MCD":
+            self.productNumber = productNumber
             imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + productNumber + ".gif"
             textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + productNumber + ".html"
             title = "MCD " + productNumber
             prod = "SPCMCD" + productNumber
         case "MPD":
+            self.productNumber = productNumber
             imgUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
+            textUrl = ""
             title = "MPD " + productNumber
             prod = "WPCMPD" + productNumber
         default:
-            break
+            self.productNumber = ""
+            imgUrl = ""
+            textUrl = ""
+            title = ""
+            prod = ""
         }
 	}
 

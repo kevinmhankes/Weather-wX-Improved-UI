@@ -19,16 +19,16 @@ final class ObjectNhcStormDetails {
      <nhc:headline> ...ANDREA IS A REMNANT LOW... ...THIS IS THE LAST ADVISORY...<br>
      */
 
-    var center = ""
-    var type = ""
-    var name = ""
-    var wallet = ""
-    var atcf = ""
-    var dateTime = ""
-    var movement = ""
-    var pressure = ""
-    var wind = ""
-    var headline = ""
+    let center: String
+    let type: String
+    let name: String
+    let wallet: String
+    let atcf: String
+    let dateTime: String
+    let movement: String
+    let pressure: String
+    let wind: String
+    let headline: String
 
     init(_ data: String) {
         center = data.parse("<nhc:center>(.*?)</nhc:center>")
