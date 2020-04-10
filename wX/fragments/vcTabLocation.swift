@@ -18,9 +18,9 @@ class vcTabLocation: vcTabParent {
     private var currentTime: Int64 = 0
     private var currentTimeSec: Int64 = 0
     private var refreshIntervalSec: Int64 = 0
-    private var objCurrentConditions = ObjectCurrentConditions()
-    private var objHazards = ObjectHazards()
-    private var objSevenDay = ObjectSevenDay()
+    private var objectCurrentConditions = ObjectCurrentConditions()
+    private var objectHazards = ObjectHazards()
+    private var objectSevenDay = ObjectSevenDay()
     private var textArr = [String: String]()
     private var timeButton = ObjectToolbarIcon()
     private var oldLocation = LatLon()
@@ -31,8 +31,8 @@ class vcTabLocation: vcTabParent {
     private var stackViewForecast: ObjectStackView!
     private var stackViewHazards: ObjectStackView!
     private var stackViewRadar = ObjectStackViewHS()
-    private var ccCard: ObjectCardCurrentConditions?
-    private var objCard7DayCollection: ObjectCardSevenDayCollection?
+    private var objectCardCurrentConditions: ObjectCardCurrentConditions?
+    private var objectCardSevenDayCollection: ObjectCardSevenDayCollection?
     private var extraDataCards = [ObjectStackViewHS]()
     private var wxMetal = [WXMetalRender?]()
     private var metalLayer = [CAMetalLayer?]()
@@ -43,7 +43,7 @@ class vcTabLocation: vcTabParent {
     private var lastFrameTimestamp: CFTimeInterval = 0.0
     private let ortInt: Float = 350.0
     private let numberOfPanes = 1
-    private var textObj = WXMetalTextObject()
+    private var wxMetalTextObject = WXMetalTextObject()
     private var longPressCount = 0
     private var toolbar = ObjectToolbar(.top)
     private var globalHomeScreenFav = ""
@@ -181,7 +181,7 @@ class vcTabLocation: vcTabParent {
     
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
+            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
             DispatchQueue.main.async {
                 self.getCurrentConditionCards()
             }
@@ -190,23 +190,23 @@ class vcTabLocation: vcTabParent {
     
     func getLocationForecastSevenDay() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objSevenDay = ObjectSevenDay(Location.getCurrentLocation())
-            self.objSevenDay.locationIndex = Location.getCurrentLocation()
+            self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
+            self.objectSevenDay.locationIndex = Location.getCurrentLocation()
             DispatchQueue.main.async {
-                if self.objCard7DayCollection == nil
+                if self.objectCardSevenDayCollection == nil
                     || !self.isUS
-                    || self.objSevenDay.locationIndex != self.objCard7DayCollection?.locationIndex {
+                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex {
                     self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
-                    self.objCard7DayCollection = ObjectCardSevenDayCollection(
+                    self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
                         self.stackViewForecast.view,
                         self.scrollView,
-                        self.objSevenDay,
+                        self.objectSevenDay,
                         self.isUS
                     )
-                    self.objCard7DayCollection?.locationIndex = Location.getCurrentLocation()
+                    self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
                 } else {
-                    self.objCard7DayCollection?.update(
-                        self.objSevenDay,
+                    self.objectCardSevenDayCollection?.update(
+                        self.objectSevenDay,
                         self.isUS
                     )
                 }
@@ -216,10 +216,10 @@ class vcTabLocation: vcTabParent {
     
     func getLocationHazards() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
+            self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
             DispatchQueue.main.async {
-                if ObjectHazards.getHazardCount(self.objHazards) > 0 {
-                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objHazards, self.isUS)
+                if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
+                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
                     self.stackViewHazards.view.isHidden = false
                 } else {
                     self.stackViewHazards.view.isHidden = true
@@ -234,7 +234,7 @@ class vcTabLocation: vcTabParent {
                 self.isUS = true
             } else {
                 self.isUS = false
-                self.objHazards.hazards = self.objHazards.hazards.replaceAllRegexp("<.*?>", "")
+                self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
                 self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
@@ -356,8 +356,8 @@ class vcTabLocation: vcTabParent {
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         updateColors()
-        if objCard7DayCollection != nil && objCard7DayCollection!.objectCardSunTime != nil {
-            objCard7DayCollection!.objectCardSunTime!.update()
+        if objectCardSevenDayCollection != nil && objectCardSevenDayCollection!.objectCardSunTime != nil {
+            objectCardSevenDayCollection!.objectCardSunTime!.update()
         }
         scrollView.scrollToTop()
         currentTime = UtilityTime.currentTimeMillis64()
@@ -378,8 +378,8 @@ class vcTabLocation: vcTabParent {
         Location.checkCurrentLocationValidity()
         if (Location.latlon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
             scrollView.scrollToTop()
-            self.ccCard?.resetTextSize()
-            self.objCard7DayCollection?.resetTextSize()
+            self.objectCardCurrentConditions?.resetTextSize()
+            self.objectCardSevenDayCollection?.resetTextSize()
             self.objLabel.tv.font = FontSize.extraLarge.size
             self.getContentMaster()
         }
@@ -464,11 +464,11 @@ class vcTabLocation: vcTabParent {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
-        if ccCard == nil {
-            ccCard = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, objCurrentConditions, isUS)
-            ccCard?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
+        if objectCardCurrentConditions == nil {
+            objectCardCurrentConditions = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, objectCurrentConditions, isUS)
+            objectCardCurrentConditions?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
-            ccCard?.updateCard(objCurrentConditions, isUS)
+            objectCardCurrentConditions?.updateCard(objectCurrentConditions, isUS)
         }
     }
     
@@ -564,7 +564,7 @@ class vcTabLocation: vcTabParent {
             wxMetal.append(
                 WXMetalRender(
                     device!,
-                    textObj,
+                    wxMetalTextObject,
                     ObjectToolbarIcon(),
                     ObjectToolbarIcon(),
                     paneNumber: 0,
@@ -676,18 +676,18 @@ class vcTabLocation: vcTabParent {
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
+        WXMetalSurfaceView.singleTap(self, wxMetal, wxMetalTextObject, gestureRecognizer)
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
-        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetal, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
     }
     
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         longPressCount = WXMetalSurfaceView.gestureLongPress(
             self,
             wxMetal,
-            textObj,
+            wxMetalTextObject,
             longPressCount,
             longPressAction,
             gestureRecognizer

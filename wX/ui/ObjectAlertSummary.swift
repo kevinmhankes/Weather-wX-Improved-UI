@@ -10,7 +10,7 @@ final class ObjectAlertSummary: NSObject {
 
     private var urls = [String]()
     var wfos = [String]()
-    private var objImage = ObjectImage()
+    private var objectImage = ObjectImage()
     private var imageIndex = 0
     static let imageUrls = [
         "https://forecast.weather.gov/wwamap/png/US.png",
@@ -35,8 +35,8 @@ final class ObjectAlertSummary: NSObject {
         objTextSummary.addGestureRecognizer(gesture!)
         objTextSummary.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         if showImage {
-            objImage = ObjectImage(uiv.stackView)
-            objImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
+            objectImage = ObjectImage(uiv.stackView)
+            objectImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
         }
         var index = 0
         var filterBool = true
@@ -104,13 +104,13 @@ final class ObjectAlertSummary: NSObject {
             let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
             self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
             DispatchQueue.main.async {
-                self.objImage.setBitmap(bitmap)
+                self.objectImage.setBitmap(bitmap)
             }
         }
     }
 
     var image: Bitmap {
-        get { self.objImage.bitmap }
-        set { self.objImage.setBitmap(newValue) }
+        get { self.objectImage.bitmap }
+        set { self.objectImage.setBitmap(newValue) }
     }
 }

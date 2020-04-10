@@ -280,8 +280,7 @@ final class UtilityCanada {
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
         let url = MyApplication.canadaEcSitePrefix + "/city/pages/" + lat.split(":")[1].lowercased() + "-" + lon.split(":")[0] + "_metric_e.html"
         let html = url.getHtmlSep()
-        let rid = html.parse("<a href=./radar/index_e.html.id=([a-z]{3})..*?>Weather Radar</a>").uppercased()
-        return rid
+        return html.parse("<a href=./radar/index_e.html.id=([a-z]{3})..*?>Weather Radar</a>").uppercased()
     }
     
     static func getConditions(_ html: String) -> String {
@@ -381,19 +380,19 @@ final class UtilityCanada {
     }
     
     static func getLatLonFromLabel(_ label: String) -> LatLon {
-        var latLon = [Double]()
+        var coordinates = [Double]()
         var index = 0
         if !UtilityCitiesCanada.initialized {
             UtilityCitiesCanada.load()
         }
         for city in UtilityCitiesCanada.cities {
             if city == label {
-                latLon.append(UtilityCitiesCanada.lat[index])
-                latLon.append(UtilityCitiesCanada.lon[index])
+                coordinates.append(UtilityCitiesCanada.lat[index])
+                coordinates.append(UtilityCitiesCanada.lon[index])
                 break
             }
             index += 1
         }
-        return LatLon(latLon[0], latLon[1])
+        return LatLon(coordinates)
     }
 }

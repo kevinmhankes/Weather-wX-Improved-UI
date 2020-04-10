@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardCurrentConditions {
 
-    private var image = ObjectCardImage()
+    private var objectCardImage = ObjectCardImage()
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
     private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     private let condenseScale: CGFloat = 0.50
@@ -16,26 +16,25 @@ final class ObjectCardCurrentConditions {
 
     init(
         _ stackView: UIStackView,
-        _ objectForecastPackageCurrentConditions: ObjectCurrentConditions,
+        _ objectCurrentConditions: ObjectCurrentConditions,
         _ isUS: Bool
     ) {
         if UIPreferences.mainScreenCondense {
-            image = ObjectCardImage(sizeFactor: condenseScale)
+            objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
-            image = ObjectCardImage(sizeFactor: 1.0)
+            objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
-        let verticalTextConainer: ObjectStackView
-        verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
+        let verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         middleText.tv.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
-        updateCard(objectForecastPackageCurrentConditions, isUS)
+        updateCard(objectCurrentConditions, isUS)
     }
 
     func updateCard(_ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
@@ -46,15 +45,15 @@ final class ObjectCardCurrentConditions {
     func setImage(_ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if isUS {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNws.getIcon(objectCurrentConditions.iconUrl).image
+                objectCardImage.view.image = UtilityNws.getIcon(objectCurrentConditions.iconUrl).image
             } else {
-                image.view.image = UtilityImg.resizeImage(
+                objectCardImage.view.image = UtilityImg.resizeImage(
                     UtilityNws.getIcon(objectCurrentConditions.iconUrl).image,
                     condenseScale
                 )
             }
         } else {
-            image.view.image = UtilityNws.getIcon(
+            objectCardImage.view.image = UtilityNws.getIcon(
                 UtilityCanada.translateIconNameCurrentConditions(
                     objectCurrentConditions.data,
                     objectCurrentConditions.status
@@ -79,7 +78,7 @@ final class ObjectCardCurrentConditions {
         _ gesture2: UITapGestureRecognizer,
         _ gesture3: UITapGestureRecognizer
     ) {
-        image.view.addGestureRecognizer(gesture1)
+        objectCardImage.view.addGestureRecognizer(gesture1)
         topText.view.addGestureRecognizer(gesture2)
         middleText.view.addGestureRecognizer(gesture3)
     }

@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardBlackHeaderText {
 
-    private var cardStackView = ObjectCardStackView()
+    private var objectCardStackView = ObjectCardStackView()
 
     init(_ uiv: UIwXViewController, _ text: String) {
         let tvLocation = ObjectTextViewLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
@@ -17,11 +17,11 @@ final class ObjectCardBlackHeaderText {
         tvLocation.view.backgroundColor = UIColor.black
         tvLocation.tv.font = FontSize.extraLarge.size
         let verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
-        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-        cardStackView.stackView.backgroundColor = UIColor.black
-        uiv.stackView.addArrangedSubview(cardStackView.view)
+        objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        objectCardStackView.stackView.backgroundColor = UIColor.black
+        uiv.stackView.addArrangedSubview(objectCardStackView.view)
         verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
 
-    var view: StackView { cardStackView.view }
+    var view: StackView { objectCardStackView.view }
 }

@@ -9,24 +9,24 @@ import UIKit
 final class ObjectSpotterReportCard {
 
     init(_ uiv: UIwXViewController, _ spotterReport: SpotterReports, _ gesture: UITapGestureRecognizer) {
-        let sV = ObjectStackView(.fill, .vertical, spacing: 0)
+        let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
         var textViews = [ObjectTextView]()
         let topLine = spotterReport.type + " " + spotterReport.time
         let middleLine = spotterReport.city
         let bottomLine = spotterReport.lastName + ", " + spotterReport.firstName
-        textViews.append(ObjectTextView(sV.view, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        textViews.append(ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        textViews.append(ObjectTextView(sV.view, bottomLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, bottomLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         textViews[0].color = ColorCompatibility.highlightText
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
-        uiv.stackView.addArrangedSubview(sV.view)
+        uiv.stackView.addArrangedSubview(objectStackView.view)
         textViews.forEach { item in
             item.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
-        sV.view.addGestureRecognizer(gesture)
+        objectStackView.view.addGestureRecognizer(gesture)
     }
 }

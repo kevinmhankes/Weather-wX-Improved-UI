@@ -9,22 +9,22 @@ import UIKit
 final class ObjectAlertDetail {
 
     private var textViews = [ObjectTextView]()
-    private var stackView: UIStackView = UIStackView()
+    private var uiStackView = UIStackView()
 
-    convenience init(_ stackView: UIStackView) {
+    convenience init(_ uiStackView: UIStackView) {
         self.init()
         (0...6).forEach { _ in
-            let objectTextView = ObjectTextView(stackView, "")
+            let objectTextView = ObjectTextView(uiStackView, "")
             objectTextView.tv.isAccessibilityElement = false
             textViews.append(objectTextView)
         }
         textViews[0].font = FontSize.extraLarge.size
         textViews[4].color = ColorCompatibility.highlightText
-        stackView.isAccessibilityElement = true
-        self.stackView = stackView
+        uiStackView.isAccessibilityElement = true
+        self.uiStackView = uiStackView
     }
 
-    func updateContent(_ scrollView: UIScrollView, _ alert: CapAlert) {
+    func updateContent(_ uiScrollView: UIScrollView, _ alert: CapAlert) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let wfo = alert.title.parse("by (.*?)$")
         self.textViews[0].text = title
@@ -39,11 +39,11 @@ final class ObjectAlertDetail {
         self.textViews[4].text = alert.area.removeSingleLineBreaks()
         self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
-        stackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
+        uiStackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
         textViews.forEach { item in
-            item.tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            item.tv.widthAnchor.constraint(equalTo: uiScrollView.widthAnchor).isActive = true
         }
     }
 

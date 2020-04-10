@@ -14,7 +14,7 @@ final class TextViewMetal {
     private var text = ""
     private var xPos: CGFloat = 0.0
     private var yPos: CGFloat = 0.0
-    private var tv = UITextView()
+    private var uiTextView = UITextView()
     private var width: CGFloat = 150.0
     private var height: CGFloat = 40.0
 
@@ -40,14 +40,14 @@ final class TextViewMetal {
     }
 
     func drawText(_ string: String, _ xPos: CGFloat, _ yPos: CGFloat) {
-        tv = UITextView(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
-        tv.text = string
-        tv.font = UIFont.systemFont(ofSize: CGFloat(self.realTextSize))
-        tv.backgroundColor = UIColor.clear
-        tv.textColor = wXColor(textColor).uicolorCurrent
-        tv.textContainer.lineBreakMode = .byTruncatingTail
-        tv.isEditable = false
-        tv.isUserInteractionEnabled = false
-        context.view.addSubview(tv)
+        uiTextView = UITextView(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
+        uiTextView.text = string
+        uiTextView.font = UIFont.systemFont(ofSize: CGFloat(self.realTextSize))
+        uiTextView.backgroundColor = UIColor.clear
+        uiTextView.textColor = wXColor(textColor).uicolorCurrent
+        uiTextView.textContainer.lineBreakMode = .byTruncatingTail
+        uiTextView.isEditable = false
+        uiTextView.isUserInteractionEnabled = false
+        context.view.addSubview(uiTextView)
     }
 }

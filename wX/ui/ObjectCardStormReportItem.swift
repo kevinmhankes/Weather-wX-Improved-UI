@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardStormReportItem {
 
     init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: UITapGestureRecognizerWithData) {
-        var cardStackView = ObjectCardStackView()
+        var objectCardStackView = ObjectCardStackView()
         let tvLocation = ObjectTextViewLarge(80.0, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
         let tvAddress = ObjectTextViewLarge(80.0, isUserInteractionEnabled: false)
         let tvDescription = ObjectTextViewSmallGray(80.0, isUserInteractionEnabled: false)
@@ -20,9 +20,9 @@ final class ObjectCardStormReportItem {
             let verticalTextConainer = ObjectStackView(
                 .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
-            cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
-            stackView.addArrangedSubview(cardStackView.view)
-            cardStackView.view.addGestureRecognizer(gesture)
+            objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+            stackView.addArrangedSubview(objectCardStackView.view)
+            objectCardStackView.view.addGestureRecognizer(gesture)
         }
     }
 }

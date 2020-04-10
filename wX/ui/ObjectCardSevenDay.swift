@@ -12,7 +12,7 @@ final class ObjectCardSevenDay {
     private let horizontalContainer: ObjectCardStackView
     private let topText = ObjectTextViewLarge(80.0)
     private let bottomText = ObjectTextViewSmallGray(80.0)
-    private var image = ObjectCardImage()
+    private var objectCardImage = ObjectCardImage()
     private let condenseScale: CGFloat = 0.50
     private var stackView: UIStackView
 
@@ -26,9 +26,9 @@ final class ObjectCardSevenDay {
     ) {
         self.stackView = stackView
         if UIPreferences.mainScreenCondense {
-            image = ObjectCardImage(sizeFactor: condenseScale)
+            objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
-            image = ObjectCardImage(sizeFactor: 1.0)
+            objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
         topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let verticalTextConainer = ObjectStackView(
@@ -38,7 +38,7 @@ final class ObjectCardSevenDay {
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         bottomText.tv.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [image.view, verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextConainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
@@ -68,9 +68,9 @@ final class ObjectCardSevenDay {
     func setImage(_ index: Int, _ urls: [String]) {
         if urls.count > index {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNws.getIcon(urls[index]).image
+                objectCardImage.view.image = UtilityNws.getIcon(urls[index]).image
             } else {
-                image.view.image = UtilityImg.resizeImage(UtilityNws.getIcon(urls[index]).image, condenseScale)
+                objectCardImage.view.image = UtilityImg.resizeImage(UtilityNws.getIcon(urls[index]).image, condenseScale)
             }
         }
     }

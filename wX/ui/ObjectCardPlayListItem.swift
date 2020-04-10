@@ -15,21 +15,21 @@ final class ObjectCardPlayListItem {
         _ bottomLines: String,
         _ gesture: UITapGestureRecognizerWithData
     ) {
-        let sV = ObjectStackView(.fill, .vertical, spacing: 0)
-        let tvProduct = ObjectTextView(sV.view, product, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvMiddle = ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvBottom = ObjectTextView(sV.view, bottomLines.replaceAll(MyApplication.newline, " "), isUserInteractionEnabled: false, isZeroSpacing: true)
+        let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
+        let tvProduct = ObjectTextView(objectStackView.view, product, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvMiddle = ObjectTextView(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvBottom = ObjectTextView(objectStackView.view, bottomLines.replaceAll(MyApplication.newline, " "), isUserInteractionEnabled: false, isZeroSpacing: true)
         tvProduct.font = FontSize.medium.size
         tvMiddle.font = FontSize.small.size
         tvBottom.font = FontSize.small.size
         tvProduct.color = ColorCompatibility.highlightText
         tvMiddle.color = ColorCompatibility.label
         tvBottom.color = ColorCompatibility.systemGray2
-        uiv.stackView.addArrangedSubview(sV.view)
+        uiv.stackView.addArrangedSubview(objectStackView.view)
         [tvProduct, tvMiddle, tvBottom].forEach {
             $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
-        sV.view.addGestureRecognizer(gesture)
-        sV.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
+        objectStackView.view.addGestureRecognizer(gesture)
+        objectStackView.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
     }
 }

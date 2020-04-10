@@ -11,7 +11,7 @@ final class ObjectSpotterCard {
     init(_ uiv: UIwXViewController, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
         var textViews = [ObjectTextView]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
-        let sV = ObjectStackView(.fill, .vertical, spacing: 0)
+        let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
         let topLine = spotter.lastName
                 + ", "
                 + spotter.firstName
@@ -22,20 +22,20 @@ final class ObjectSpotterCard {
                 + ")"
         let middleLine = spotter.reportedAt
         let bottomLine = spotter.email + " " + spotter.phone
-        textViews.append(ObjectTextView(sV.view, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        textViews.append(ObjectTextView(sV.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        textViews.append(ObjectTextView(sV.view, bottomLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(ObjectTextView(objectStackView.view, bottomLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[2].font = FontSize.small.size
         textViews[0].color = ColorCompatibility.highlightText
         textViews[1].color = ColorCompatibility.label
         textViews[2].color = ColorCompatibility.systemGray2
-        uiv.stackView.addArrangedSubview(sV.view)
+        uiv.stackView.addArrangedSubview(objectStackView.view)
         textViews.forEach { 
             $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         }
-        sV.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
-        sV.view.addGestureRecognizer(gesture)
+        objectStackView.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
+        objectStackView.view.addGestureRecognizer(gesture)
     }
 }

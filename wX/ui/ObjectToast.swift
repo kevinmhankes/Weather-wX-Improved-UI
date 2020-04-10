@@ -8,8 +8,8 @@ import UIKit
 
 public class ObjectToast {
 
-    init(_ msg: String, _ uiv: UIViewController, _ menuButton: UIBarButtonItem) {
-        let alert = UIAlertController(title: msg, message: "", preferredStyle: UIAlertController.Style.actionSheet)
+    init(_ message: String, _ uiv: UIViewController, _ menuButton: UIBarButtonItem) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {

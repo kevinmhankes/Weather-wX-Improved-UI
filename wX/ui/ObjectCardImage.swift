@@ -8,16 +8,16 @@ import UIKit
 
 final class ObjectCardImage {
 
-    private let image = UIImageView()
+    private let uiImageView = UIImageView()
 
     init(sizeFactor: CGFloat = 1.0) {
         let size = CGFloat(UIPreferences.nwsIconSize)
-        image.isUserInteractionEnabled = true
-        image.contentMode = UIView.ContentMode.scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.widthAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
-        image.heightAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
+        uiImageView.isUserInteractionEnabled = true
+        uiImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        uiImageView.translatesAutoresizingMaskIntoConstraints = false
+        uiImageView.widthAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
+        uiImageView.heightAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
     }
 
-    var view: UIImageView { image }
+    var view: UIImageView { uiImageView }
 }

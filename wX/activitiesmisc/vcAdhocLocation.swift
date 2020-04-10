@@ -9,9 +9,9 @@ import AVFoundation
 
 class vcAdhocLocation: UIwXViewController {
     
-    private var objCurrentConditions = ObjectCurrentConditions()
-    private var objHazards = ObjectHazards()
-    private var objSevenDay = ObjectSevenDay()
+    private var objectCurrentConditions = ObjectCurrentConditions()
+    private var objectHazards = ObjectHazards()
+    private var objectSevenDay = ObjectSevenDay()
     private var stackViewCurrentConditions: ObjectStackView!
     private var stackViewForecast: ObjectStackView!
     private var stackViewHazards: ObjectStackView!
@@ -40,22 +40,22 @@ class vcAdhocLocation: UIwXViewController {
     override func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.objCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
-            self.objSevenDay = ObjectSevenDay(self.adhocLocation)
-            self.objHazards = ObjectHazards(self, self.adhocLocation)
+            self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
+            self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
+            self.objectHazards = ObjectHazards(self, self.adhocLocation)
             DispatchQueue.main.async {
                 _ = ObjectCardCurrentConditions(
                     self.stackViewCurrentConditions.view,
-                    self.objCurrentConditions,
+                    self.objectCurrentConditions,
                     true
                 )
                 self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
                 self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-                ObjectHazards.getHazardCards(self.stackView, self.objHazards)
+                ObjectHazards.getHazardCards(self.stackView, self.objectHazards)
                 _ = ObjectCardSevenDayCollection(
                     self.stackViewForecast.view,
                     self.scrollView,
-                    self.objSevenDay
+                    self.objectSevenDay
                 )
                 self.stackView.addArrangedSubview(self.stackViewForecast.view)
                 self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
