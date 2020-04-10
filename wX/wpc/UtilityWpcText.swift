@@ -10,8 +10,9 @@ final class UtilityWpcText {
         let productList = ["RWRMX", "UVICAC"]
         if product.startsWith("TPT") || product.startsWith("SWPC") || productList.contains(product) {
             return true
+        } else {
+            return false
         }
-        return false
     }
     
     static let titles = [
