@@ -6,7 +6,7 @@
 
 struct Fronts {
     
-    var type: FrontTypeEnum
+    let type: FrontTypeEnum
     var coordinates = [LatLon]()
 
     init(_ type: FrontTypeEnum) {

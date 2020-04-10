@@ -8,7 +8,7 @@ import UIKit
 
 final class Bitmap {
 
-    var dataBm: Data
+    let dataBm: Data
     var image: UIImage
     var url = ""
 

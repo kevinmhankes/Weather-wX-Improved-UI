@@ -10,7 +10,7 @@ final class SevereNotice {
     
     var numberList = [String]()
     var bitmaps = [Bitmap]()
-    var type = ""
+    let type: String
     
     init(_ type: String) {
         self.type = type

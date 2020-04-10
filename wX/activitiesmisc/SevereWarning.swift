@@ -7,7 +7,7 @@
 final class SevereWarning {
 
     var text = ""
-    private var type = ""
+    private let type: String
     private var count = 0
     private var collapsed = false
     var idList = [String]()

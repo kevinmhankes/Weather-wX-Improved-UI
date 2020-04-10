@@ -6,14 +6,14 @@
 
 final class SpotterReports {
     
-    var firstName: String
-    var lastName: String
-    var location: LatLon
-    private var narrative: String
-    var type: String
-    private var uniq: String
-    var time: String
-    var city: String
+    let firstName: String
+    let lastName: String
+    let location: LatLon
+    private let narrative: String
+    let type: String
+    private let uniq: String
+    let time: String
+    let city: String
     
     init(
         _ firstName: String,

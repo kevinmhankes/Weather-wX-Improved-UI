@@ -6,8 +6,8 @@
 
 struct RID {
 
-    var name: String
-    var location: LatLon
+    let name: String
+    let location: LatLon
     var distance = 0
 
     init(_ name: String, _ location: LatLon) {

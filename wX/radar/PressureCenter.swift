@@ -6,10 +6,10 @@
 
 struct PressureCenter {
     
-    var type: PressureCenterTypeEnum
-    var pressureInMb: String
-    var lat: Double
-    var lon: Double
+    let type: PressureCenterTypeEnum
+    let pressureInMb: String
+    let lat: Double
+    let lon: Double
 
     init(_ type: PressureCenterTypeEnum, _ pressureInMb: String, _ lat: Double, _ lon: Double) {
         self.type = type

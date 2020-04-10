@@ -6,10 +6,10 @@
 
 public final class CityExt {
 
-	var name = ""
-	var latitude = 0.0
-	var longitude = 0.0
-	private var population = 0
+    let name: String
+    let latitude: Double
+    let longitude: Double
+    private let population: Int
 
 	init(_ name: String, _ lat: Double, _ lon: Double, _ population: String) {
 		self.name = name

@@ -9,8 +9,8 @@ import UIKit
 final class AnimationDrawable {
 
     var images = [UIImage]()
-    private var delay = 3.0
-    var animationDelay = Double(MyApplication.animInterval)
+    private let delay: Double
+    let animationDelay = Double(MyApplication.animInterval)
 
     init() {
         delay = animationDelay / 2.0
