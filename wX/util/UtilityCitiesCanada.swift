@@ -7,11 +7,11 @@
 final class UtilityCitiesCanada {
     
     static var initialized = false
-    static let num = 838
-    static var cities = [String](repeating: "", count: num)
-    static var lat = [Double](repeating: 0.0, count: num)
-    static var lon = [Double](repeating: 0.0, count: num)
-    static var code = [String](repeating: "", count: num)
+    static let numberOfCities = 838
+    static var cities = [String](repeating: "", count: numberOfCities)
+    static var lat = [Double](repeating: 0.0, count: numberOfCities)
+    static var lon = [Double](repeating: 0.0, count: numberOfCities)
+    static var code = [String](repeating: "", count: numberOfCities)
     
     static func load() {
         cities[0]="Airdrie, AB"

@@ -63,7 +63,7 @@ final class UtilityTime {
     }
     
     static func dayOfWeek(_ year: Int, _ month: Int, _ day: Int) -> String {
-        var dayOfTheWeek = ""
+        let dayOfTheWeek: String
         var futureDateComp = DateComponents()
         futureDateComp.year = year
         futureDateComp.month = month
@@ -87,7 +87,7 @@ final class UtilityTime {
         case 7:
             dayOfTheWeek = "Sat"
         default:
-            break
+            dayOfTheWeek = ""
         }
         return dayOfTheWeek
     }

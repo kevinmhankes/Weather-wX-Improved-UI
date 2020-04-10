@@ -47,17 +47,17 @@ final class ObjectCard7Day {
         update(index, dayImgUrl, dayArr, dayArrShort, isUS)
     }
 
-    func update(_ index: Int, _ dayImgUrl: [String], _ dayArr: [String], _ dayArrShort: [String], _ isUS: Bool) {
+    func update(_ index: Int, _ url: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
         self.isUS = isUS
-        setImage(index, dayImgUrl)
-        setTextFields(self.format7Day(dayArr[index].replace("</text>", ""), dayArrShort[index].replace("</text>", "")))
+        setImage(index, url)
+        setTextFields(self.format7Day(days[index].replace("</text>", ""), daysShort[index].replace("</text>", "")))
     }
 
-    func setTextFields(_ textArr: (top: String, bottom: String)) {
-        topText.text = textArr.top
-        bottomText.text = textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        horizontalContainer.stackView.accessibilityLabel = textArr.top
-            + textArr.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    func setTextFields(_ labels: (top: String, bottom: String)) {
+        topText.text = labels.top
+        bottomText.text = labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        horizontalContainer.stackView.accessibilityLabel = labels.top
+            + labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func resetTextSize() {
@@ -65,59 +65,59 @@ final class ObjectCard7Day {
         bottomText.resetTextSize()
     }
 
-    func setImage(_ index: Int, _ dayImgUrl: [String]) {
-        if dayImgUrl.count > index {
+    func setImage(_ index: Int, _ urls: [String]) {
+        if urls.count > index {
             if !UIPreferences.mainScreenCondense {
-                image.view.image = UtilityNws.getIcon(dayImgUrl[index]).image
+                image.view.image = UtilityNws.getIcon(urls[index]).image
             } else {
-                image.view.image = UtilityImg.resizeImage(UtilityNws.getIcon(dayImgUrl[index]).image, condenseScale)
+                image.view.image = UtilityImg.resizeImage(UtilityNws.getIcon(urls[index]).image, condenseScale)
             }
         }
     }
 
     func format7Day(_ dayStr: String, _ dayStrShort: String) -> (String, String) {
-        let dayTmpArr = dayStr.split(": ")
-        let dayTmpArrShort = dayStrShort.split(": ")
-        var retStr = ""
+        let items = dayStr.split(": ")
+        let itemsShort = dayStrShort.split(": ")
+        let string: String
         if !UIPreferences.mainScreenCondense || !isUS {
-            if dayTmpArr.count > 1 {
+            if items.count > 1 {
                 if isUS {
-                    retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
+                    string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractWindDirection(dayTmpArr[1].substring(1))
-                        + UtilityLocationFragment.extract7DayMetrics(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
                         + ")" + MyApplication.newline
                 } else {
-                    retStr = dayTmpArr[0].replace(":", " ") + " ("
-                        + UtilityLocationFragment.extractCATemp(dayTmpArr[1])
+                    string = items[0].replace(":", " ") + " ("
+                        + UtilityLocationFragment.extractCATemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractCAWindDirection(dayTmpArr[1].substring(1))
-                        + UtilityLocationFragment.extractCAWindSpeed(dayTmpArr[1])
+                        + UtilityLocationFragment.extractCAWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extractCAWindSpeed(items[1])
                         + ")" + MyApplication.newline
                 }
-                return (retStr, dayTmpArr[1])
+                return (string, items[1])
             } else {
-                return (retStr, "")
+                return ("", "")
             }
         } else {
-            if dayTmpArrShort.count > 1 {
+            if itemsShort.count > 1 {
                 if isUS {
-                    retStr = dayTmpArr[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(dayTmpArr[1])
+                    string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractWindDirection(dayTmpArr[1].substring(1))
-                        + UtilityLocationFragment.extract7DayMetrics(dayTmpArr[1].substring(1))
+                        + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
                         + ")" + MyApplication.newline
                 } else {
-                    retStr = dayTmpArr[0].replace(":", " ") + " ("
-                        + UtilityLocationFragment.extractCATemp(dayTmpArr[1])
+                    string = items[0].replace(":", " ") + " ("
+                        + UtilityLocationFragment.extractCATemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractCAWindDirection(dayTmpArr[1].substring(1))
-                        + UtilityLocationFragment.extractCAWindSpeed(dayTmpArr[1])
+                        + UtilityLocationFragment.extractCAWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extractCAWindSpeed(items[1])
                         + ")" + MyApplication.newline
                 }
-                return (retStr, dayTmpArrShort[1])
+                return (string, itemsShort[1])
             } else {
-                return (retStr, "")
+                return ("", "")
             }
         }
     }
