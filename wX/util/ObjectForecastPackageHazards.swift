@@ -6,6 +6,7 @@
 
 import UIKit
 
+// FIXME rename
 final class ObjectForecastPackageHazards {
     
     private var hazardsShort = ""
