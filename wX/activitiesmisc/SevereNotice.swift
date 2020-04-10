@@ -38,7 +38,7 @@ final class SevereNotice {
         numberList = text.split(":").filter { $0 != "" }
         if text != "" {
             numberList.indices.forEach { index in
-                var url = ""
+                var url: String
                 switch type {
                 case "SPCMCD":
                     url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[index] + ".gif"
@@ -47,7 +47,7 @@ final class SevereNotice {
                 case "WPCMPD":
                     url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[index] + ".gif"
                 default:
-                    break
+                    url = ""
                 }
                 bitmaps.append(Bitmap(url))
             }

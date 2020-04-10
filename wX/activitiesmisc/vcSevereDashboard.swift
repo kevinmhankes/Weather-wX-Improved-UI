@@ -94,6 +94,7 @@ class vcSevereDashboard: UIwXViewController {
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
+        print("DEBUG: ")
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
