@@ -6,13 +6,13 @@
 
 final class ObjectForecast {
     
-    var name = ""
-    private var temperature = ""
-    private var windSpeed = ""
-    private var windDirection = ""
-    private var icon = ""
-    var shortForecast = ""
-    var detailedForecast = ""
+    let name: String
+    private let temperature: String
+    private let windSpeed: String
+    private let windDirection: String
+    private let icon: String
+    let shortForecast: String
+    let detailedForecast: String
     
     init(
         _ name: String,

@@ -8,19 +8,15 @@ import Foundation
 
 final class UtilityCanvasProjection {
     
-    static func computeMercatorNumbers(
-        _ lat: Double,
-        _ lon: Double,
-        _ pn: ProjectionNumbers
-    ) -> [Double] {
+    static func computeMercatorNumbers(_ lat: Double, _ lon: Double, _ projectionNumbers: ProjectionNumbers) -> [Double] {
         let test1 = (180.0 / Double.pi * log(tan(Double.pi / 4 + lat * (Double.pi / 180) / 2)))
-        let test2 = (180.0 / Double.pi * log(tan(Double.pi / 4 + pn.xDbl * (Double.pi / 180) / 2)))
-        let pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
-        let pixXD = -((lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
-        return [pixXD, pixYD]
+        let test2 = (180.0 / Double.pi * log(tan(Double.pi / 4 + projectionNumbers.xDbl * (Double.pi / 180) / 2)))
+        let y = -((test1 - test2) *  projectionNumbers.oneDegreeScaleFactor) + projectionNumbers.yCenterDouble
+        let x = -((lon - projectionNumbers.yDbl) * projectionNumbers.oneDegreeScaleFactor) + projectionNumbers.xCenterDouble
+        return [x, y]
     }
     
-    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ pn: ProjectionNumbers) -> [Double] {
-        computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, pn)
+    static func computeMercatorNumbers(_ ec: ExternalGlobalCoordinates, _ projectionNumbers: ProjectionNumbers) -> [Double] {
+        computeMercatorNumbers(ec.getLatitude(), ec.getLongitude() * -1.0, projectionNumbers)
     }
 }
