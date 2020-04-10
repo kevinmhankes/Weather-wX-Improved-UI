@@ -12,10 +12,10 @@ import Foundation
 
 public class ExternalEllipsoid {
 
-    var mSemiMajorAxis: Double
-    var mSemiMinorAxis: Double
-    var mFlattening: Double
-    var mInverseFlattening: Double
+    let mSemiMajorAxis: Double
+    let mSemiMinorAxis: Double
+    let mFlattening: Double
+    let mInverseFlattening: Double
 
     init(semiMajor: Double, semiMinor: Double, flattening: Double, inverseFlattening: Double) {
         mSemiMajorAxis = semiMajor
@@ -24,14 +24,14 @@ public class ExternalEllipsoid {
         mInverseFlattening = inverseFlattening
     }
 
-    static let WGS84: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378137.0, inverseFlattening: 298.257223563)
-    static let GRS80: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378137.0, inverseFlattening: 298.257222101)
-    static let GRS67: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378160.0, inverseFlattening: 298.25)
-    static let ANS: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378160.0, inverseFlattening: 298.25)
-    static let WGS72: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378135.0, inverseFlattening: 298.26)
-    static let Clarke1858: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378293.645, inverseFlattening: 294.26)
-    static let Clarke1880: ExternalEllipsoid = fromAAndInverseF(semiMajor: 6378249.145, inverseFlattening: 293.465)
-    static let Sphere: ExternalEllipsoid = fromAAndF(semiMajor: 6371000, flattening: 0.0)
+    static let WGS84 = fromAAndInverseF(semiMajor: 6378137.0, inverseFlattening: 298.257223563)
+    static let GRS80 = fromAAndInverseF(semiMajor: 6378137.0, inverseFlattening: 298.257222101)
+    static let GRS67 = fromAAndInverseF(semiMajor: 6378160.0, inverseFlattening: 298.25)
+    static let ANS = fromAAndInverseF(semiMajor: 6378160.0, inverseFlattening: 298.25)
+    static let WGS72 = fromAAndInverseF(semiMajor: 6378135.0, inverseFlattening: 298.26)
+    static let Clarke1858 = fromAAndInverseF(semiMajor: 6378293.645, inverseFlattening: 294.26)
+    static let Clarke1880 = fromAAndInverseF(semiMajor: 6378249.145, inverseFlattening: 293.465)
+    static let Sphere = fromAAndF(semiMajor: 6371000, flattening: 0.0)
 
     static func fromAAndInverseF(semiMajor: Double, inverseFlattening: Double) -> ExternalEllipsoid {
         let f = 1.0 / inverseFlattening
@@ -51,20 +51,11 @@ public class ExternalEllipsoid {
                                  inverseFlattening: inverseF)
     }
 
-    func getSemiMajorAxis() -> Double {
-        return mSemiMajorAxis
-    }
+    func getSemiMajorAxis() -> Double { mSemiMajorAxis }
 
-    func getSemiMinorAxis() -> Double {
-        return mSemiMinorAxis
-    }
+    func getSemiMinorAxis() -> Double { mSemiMinorAxis }
 
-    func getFlattening() -> Double {
-        return mFlattening
-    }
+    func getFlattening() -> Double { mFlattening }
 
-    func getInverseFlattening() -> Double {
-        return mInverseFlattening
-    }
-
+    func getInverseFlattening() -> Double { mInverseFlattening }
 }

@@ -25,8 +25,7 @@ import Foundation
  *
  * @author Mike Gavaghan
  */
-public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoordinates>
-{
+public class ExternalGlobalCoordinates {
     /** Latitude in degrees. Negative latitude is southern hemisphere. */
     var mLatitude: Double
 
@@ -42,15 +41,12 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
      */
     func canonicalize() {
         //mLatitude = (mLatitude + 180) % 360
-
         mLatitude += 180
         mLatitude = mLatitude.truncatingRemainder(dividingBy: 360)
-
         if mLatitude < 0 {
             mLatitude += 360
         }
         mLatitude -= 180
-
         if mLatitude > 90 {
             mLatitude = 180 - mLatitude
             mLongitude += 180
@@ -58,11 +54,9 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
             mLatitude = -180 - mLatitude
             mLongitude += 180
         }
-
         //mLongitude = ((mLongitude + 180) % 360)
         mLongitude += 180
         mLongitude = mLongitude.truncatingRemainder(dividingBy: 360)
-
         if mLongitude <= 0 {
             mLongitude += 360
         }
@@ -102,13 +96,9 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
      *
      * @return latitude in degrees
      */
-    func  getLatitude() -> Double {
-        return mLatitude
-    }
+    func  getLatitude() -> Double { mLatitude }
 
-    var latitude: Double {
-        return mLatitude
-    }
+    var latitude: Double { return mLatitude }
 
     /**
      * Set latitude. The latitude value will be canonicalized (which might result
@@ -126,13 +116,9 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
      *
      * @return longitude in degrees
      */
-    func getLongitude() -> Double {
-        return mLongitude
-    }
+    func getLongitude() -> Double { mLongitude }
 
-    var longitude: Double {
-        return mLongitude
-    }
+    var longitude: Double { return mLongitude }
 
     /**
      * Set longitude. The longitude value will be canonicalized. Negative
@@ -155,7 +141,6 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
      */
     func compareTo(other: ExternalGlobalCoordinates ) -> Int {
         var retval: Int
-
         if mLongitude < other.mLongitude {
             retval = -1
         } else if mLongitude > other.mLongitude {
@@ -167,7 +152,6 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
         } else {
             retval = 0
         }
-
         return retval
     }
 
@@ -177,9 +161,7 @@ public class ExternalGlobalCoordinates //implements Comparable<ExternalGlobalCoo
      * @return
      */
 
-    func hashCode() -> Int {
-        return (Int((mLongitude * mLatitude * 1000000 + 1021))) * 1000033
-    }
+    func hashCode() -> Int { (Int((mLongitude * mLatitude * 1000000 + 1021))) * 1000033 }
 
     /**
      * Compare these coordinates to another object for equality.

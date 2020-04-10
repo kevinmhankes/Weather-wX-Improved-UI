@@ -18,7 +18,7 @@ class ExternalLine {
     var  _end: ExternalPoint
     var  _a: Float = 999999999.0
     var  _b: Float = 999999999.0
-    var _vertical: Bool = false
+    var _vertical = false
 
     init(start: ExternalPoint, end: ExternalPoint) {
         _start = start
@@ -32,20 +32,25 @@ class ExternalLine {
     }
 
     func isInside(point: ExternalPoint) -> Bool {
-        let maxX: Float = _start.x > _end.x ? _start.x : _end.x
-        let minX: Float = _start.x < _end.x ? _start.x : _end.x
-        let maxY: Float = _start.y > _end.y ? _start.y : _end.y
-        let minY: Float = _start.y < _end.y ? _start.y : _end.y
+        let maxX = _start.x > _end.x ? _start.x : _end.x
+        let minX = _start.x < _end.x ? _start.x : _end.x
+        let maxY = _start.y > _end.y ? _start.y : _end.y
+        let minY = _start.y < _end.y ? _start.y : _end.y
         if (point.x >= minX && point.x <= maxX) && (point.y >= minY && point.y <= maxY) {
             return true
         }
         return false
     }
 
-    func isVertical() -> Bool {return _vertical}
-    func getA() -> Float {return _a}
-    func getB() -> Float {return _b}
-    func getStart() -> ExternalPoint {return _start}
-    func getEnd() -> ExternalPoint {return _end}
-    func toString() -> String {return String(format: "%s-%s", _start.toString(), _end.toString())}
+    func isVertical() -> Bool { _vertical }
+    
+    func getA() -> Float { _a }
+    
+    func getB() -> Float { _b }
+    
+    func getStart() -> ExternalPoint { _start }
+    
+    func getEnd() -> ExternalPoint { _end }
+    
+    func toString() -> String { String(format: "%s-%s", _start.toString(), _end.toString()) }
 }

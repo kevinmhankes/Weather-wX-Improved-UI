@@ -13,17 +13,18 @@ final class Location {
     private static var currentLocation = 0
     private static var currentLocationStr = "1"
     private static let addLocationLabel = "Add Location..."
-    var lat = ""
-    var lon = ""
-    var name = ""
-    private var countyCurrent = ""
-    private var zoneCurrent = ""
-    var wfo = ""
-    var rid = ""
-    private var nwsStateCurrent = ""
-    var state = ""
-    private var isLocationUS: Bool
-    var observation = ""
+    
+    let lat: String
+    let lon: String
+    let name: String
+    private let countyCurrent: String
+    private let zoneCurrent: String
+    let wfo: String
+    let rid: String
+    private let nwsStateCurrent: String
+    let state: String
+    private let isLocationUS: Bool
+    var observation: String
     private let prefNumberString: String
 
     init(_ locNumInt: Int) {
@@ -120,8 +121,10 @@ final class Location {
     static var x: String { MyApplication.locations[getCurrentLocation()].lat }
 
     static var latLon: LatLon {
-        LatLon( MyApplication.locations[getCurrentLocation()].lat,
-                       MyApplication.locations[getCurrentLocation()].lon)
+        LatLon(
+            MyApplication.locations[getCurrentLocation()].lat,
+            MyApplication.locations[getCurrentLocation()].lon
+        )
     }
 
     static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }

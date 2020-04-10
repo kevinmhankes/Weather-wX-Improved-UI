@@ -52,9 +52,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         map.toggleMap(self)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return map.mapView(annotation)
-    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? { map.mapView(annotation) }
     
     func mapView(
         _ mapView: MKMapView,

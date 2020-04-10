@@ -10,9 +10,10 @@
 
 class ExternalGeodeticCurve {
 
-    var mEllipsoidalDistance: Double=0.0
-    var mAzimuth: Double=0.0
-    var mReverseAzimuth: Double=0.0
+    var mEllipsoidalDistance = 0.0
+    var mAzimuth = 0.0
+    var mReverseAzimuth = 0.0
+    
     init() {}
 
     init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double) {
@@ -21,7 +22,9 @@ class ExternalGeodeticCurve {
         mReverseAzimuth = reverseAzimuth
     }
 
-    func getEllipsoidalDistance() -> Double {return mEllipsoidalDistance}
-    func getAzimuth() -> Double {return mAzimuth}
-    func getReverseAzimuth() -> Double {return mReverseAzimuth}
+    func getEllipsoidalDistance() -> Double { mEllipsoidalDistance }
+    
+    func getAzimuth() -> Double { mAzimuth }
+    
+    func getReverseAzimuth() -> Double { mReverseAzimuth }
 }

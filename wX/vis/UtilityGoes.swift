@@ -78,7 +78,7 @@ final class UtilityGoes {
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
-        let bitmaps = imageUrls.map {Bitmap($0)}
+        let bitmaps = imageUrls.map { Bitmap($0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
     }
     

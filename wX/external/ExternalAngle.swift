@@ -10,7 +10,7 @@
 
 class ExternalAngle {
 
-    static let PiOver180: Double = Double.pi / 180.0
+    static let PiOver180 = Double.pi / 180.0
 
     init() {}
 

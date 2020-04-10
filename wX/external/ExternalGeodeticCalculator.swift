@@ -12,7 +12,7 @@ import Foundation
 
 public class ExternalGeodeticCalculator {
 
-    let TwoPi: Double = 2.0 * Double.pi
+    let TwoPi = 2.0 * Double.pi
 
     /**
      * Calculate the destination and final bearing after traveling a specified
@@ -27,11 +27,13 @@ public class ExternalGeodeticCalculator {
      *            be populated with the result
      * @return
      */
-    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid,
-                                           _ start: ExternalGlobalCoordinates,
-                                           _ startBearing: Double,
-                                           _ distance: Double,
-                                           _ endBearing: [Double]) -> ExternalGlobalCoordinates {
+    func calculateEndingGlobalCoordinates(
+        _ ellipsoid: ExternalEllipsoid,
+        _ start: ExternalGlobalCoordinates,
+        _ startBearing: Double,
+        _ distance: Double,
+        _ endBearing: [Double]
+    ) -> ExternalGlobalCoordinates {
         let a = ellipsoid.getSemiMajorAxis()
         let b = ellipsoid.getSemiMinorAxis()
         let aSquared = a * a
@@ -45,25 +47,18 @@ public class ExternalGeodeticCalculator {
         let tanU1 = (1.0 - f) * tan(phi1)
         let cosU1 = 1.0 / sqrt(1.0 + tanU1 * tanU1)
         let sinU1 = tanU1 * cosU1
-
-        var endBearingLocal: [Double] = endBearing
-
+        var endBearingLocal = endBearing
         // eq. 1
         let sigma1 = atan2(tanU1, cosAlpha1)
-
         // eq. 2
         let sinAlpha = cosU1 * sinAlpha1
-
         let sin2Alpha = sinAlpha * sinAlpha
         let cos2Alpha = 1 - sin2Alpha
         let uSquared = cos2Alpha * (aSquared - bSquared) / bSquared
-
         // eq. 3
         let A = 1 + (uSquared / 16384) * (4096 + uSquared * (-768 + uSquared * (320 - 175 * uSquared)))
-
         // eq. 4
         let B = (uSquared / 1024) * (256 + uSquared * (-128 + uSquared * (74 - 47 * uSquared)))
-
         // iterate until there is a negligible change in sigma
         var deltaSigma: Double
         let sOverbA = s / (b * A)
@@ -73,7 +68,6 @@ public class ExternalGeodeticCalculator {
         var sigmaM2: Double
         var cosSigmaM2: Double
         var cos2SigmaM2: Double
-        //for ()
         while true {
             // eq. 5
             sigmaM2 = 2.0 * sigma1 + sigma
@@ -81,7 +75,6 @@ public class ExternalGeodeticCalculator {
             cos2SigmaM2 = cosSigmaM2 * cosSigmaM2
             sinSigma = sin(sigma)
             let cosSignma = cos(sigma)
-
             // eq. 6
             deltaSigma = B
                 * sinSigma
@@ -91,26 +84,20 @@ public class ExternalGeodeticCalculator {
 
             // eq. 7
             sigma = sOverbA + deltaSigma
-
             // break after converging to tolerance
             if abs(sigma - prevSigma) < 0.0000000000001 {
                 break
             }
-
             prevSigma = sigma
         }
-
         sigmaM2 = 2.0 * sigma1 + sigma
         cosSigmaM2 = cos(sigmaM2)
         cos2SigmaM2 = cosSigmaM2 * cosSigmaM2
-
         let cosSigma = cos(sigma)
         sinSigma = sin(sigma)
-
         // eq. 8
         let phi2 = atan2(sinU1 * cosSigma + cosU1 * sinSigma * cosAlpha1, (1.0 - f)
             * sqrt(sin2Alpha + pow(sinU1 * sinSigma - cosU1 * cosSigma * cosAlpha1, 2.0)))
-
         // eq. 9
         // This fixes the pole crossing defect spotted by Matt Feemster. When a
         // path passes a pole and essentially crosses a line of latitude twice -
@@ -120,17 +107,13 @@ public class ExternalGeodeticCalculator {
         // double tanLambda = sinSigma * sinAlpha1 / (cosU1 * cosSigma - sinU1 * sinSigma * cosAlpha1)
         // double lambda = Math.atan(tanLambda)
         let lambda = atan2(sinSigma * sinAlpha1, (cosU1 * cosSigma - sinU1 * sinSigma * cosAlpha1))
-
         // eq. 10
         let C = (f / 16) * cos2Alpha * (4 + f * (4 - 3 * cos2Alpha))
-
         // eq. 11
         let L = lambda - (1 - C) * f * sinAlpha
             * (sigma + C * sinSigma * (cosSigmaM2 + C * cosSigma * (-1 + 2 * cos2SigmaM2)))
-
         // eq. 12
         let alpha2 = atan2(sinAlpha, -sinU1 * sinSigma + cosU1 * cosSigma * cosAlpha1)
-
         // build result
         let latitude = ExternalAngle.toDegrees(radians: phi2)
         let longitude = start.getLongitude() + ExternalAngle.toDegrees(radians: L)
@@ -150,9 +133,11 @@ public class ExternalGeodeticCalculator {
      * @param distance distance to travel (meters)
      * @return
      */
-    func  calculateEndingGlobalCoordinates(_ ellipsoid: ExternalEllipsoid = ExternalEllipsoid.WGS84,
-                                           _ start: ExternalGlobalCoordinates, _ startBearing: Double,
-                                           _ distance: Double) -> ExternalGlobalCoordinates {
+    func calculateEndingGlobalCoordinates(
+        _ ellipsoid: ExternalEllipsoid = ExternalEllipsoid.WGS84,
+        _ start: ExternalGlobalCoordinates, _ startBearing: Double,
+        _ distance: Double
+    ) -> ExternalGlobalCoordinates {
         return calculateEndingGlobalCoordinates(ellipsoid, start, startBearing, distance, [])
     }
     /**
@@ -164,52 +149,41 @@ public class ExternalGeodeticCalculator {
      * @param end ending coordinates
      * @return
      */
-    func  calculateGeodeticCurve(ellipsoid: ExternalEllipsoid,
-                                 start: ExternalGlobalCoordinates,
-                                 end: ExternalGlobalCoordinates) -> ExternalGeodeticCurve {
+    func calculateGeodeticCurve(ellipsoid: ExternalEllipsoid, start: ExternalGlobalCoordinates, end: ExternalGlobalCoordinates) -> ExternalGeodeticCurve {
         //
         // All equation numbers refer back to Vincenty's publication:
         // See http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
         //
-
         // get constants
         let a = ellipsoid.getSemiMajorAxis()
         let b = ellipsoid.getSemiMinorAxis()
         let f = ellipsoid.getFlattening()
-
         // get parameters as radians
         let phi1 = ExternalAngle.toRadians(degrees: start.getLatitude())
         let lambda1 = ExternalAngle.toRadians(degrees: start.getLongitude())
         let phi2 = ExternalAngle.toRadians(degrees: end.getLatitude())
         let lambda2 = ExternalAngle.toRadians(degrees: end.getLongitude())
-
         // calculations
         let a2 = a * a
         let b2 = b * b
         let a2b2b2 = (a2 - b2) / b2
-
         let omega = lambda2 - lambda1
-
         let tanphi1 = tan(phi1)
         let tanU1 = (1.0 - f) * tanphi1
         let U1 = atan(tanU1)
         let sinU1 = sin(U1)
         let cosU1 = cos(U1)
-
         let tanphi2 = tan(phi2)
         let tanU2 = (1.0 - f) * tanphi2
         let U2 = atan(tanU2)
         let sinU2 = sin(U2)
         let cosU2 = cos(U2)
-
         let sinU1sinU2 = sinU1 * sinU2
         let cosU1sinU2 = cosU1 * sinU2
         let sinU1cosU2 = sinU1 * cosU2
         let cosU1cosU2 = cosU1 * cosU2
-
         // eq. 13
         var lambda = omega
-
         // intermediates we'll need to compute 's'
         var A = 0.0
         var B = 0.0
@@ -217,10 +191,8 @@ public class ExternalGeodeticCalculator {
         var deltasigma = 0.0
         var lambda0: Double
         var converged = false
-
-        for i in ( 0..<20) {
+        for i in 0..<20 {
             lambda0 = lambda
-
             let sinlambda = sin(lambda)
             let coslambda = cos(lambda)
             // eq. 14
@@ -248,7 +220,6 @@ public class ExternalGeodeticCalculator {
             deltasigma = B * sinsigma
                 * (cos2sigmam + B / 4 * (cossigma * (-1 + 2 * cos2sigmam2)
                     - B / 6 * cos2sigmam * (-3 + 4 * sin2sigma) * (-3 + 4 * cos2sigmam2)))
-
             // eq. 10
             let C = f / 16 * cos2alpha * (4 + f * (4 - 3 * cos2alpha))
             // eq. 11 (modified)
@@ -277,9 +248,7 @@ public class ExternalGeodeticCalculator {
                 alpha1 = Double(nan: 0, signaling: false)
                 alpha2 = Double(nan: 0, signaling: false)
             }
-        }
-            // else, it converged, so do the math
-        else {
+        } else { // else, it converged, so do the math
             var radians: Double
             // eq. 20
             radians = atan2(cosU2 * sin(lambda), (cosU1sinU2 - sinU1cosU2 * cos(lambda)))
@@ -323,9 +292,7 @@ public class ExternalGeodeticCalculator {
      * @param end ending position
      * @return
      */
-    func  calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid,
-                                       start: ExternalGlobalPosition,
-                                       end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
+    func  calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid, start: ExternalGlobalPosition, end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
         // calculate elevation differences
         let elev1 = start.getElevation()
         let elev2 = end.getElevation()
@@ -339,10 +306,8 @@ public class ExternalGeodeticCalculator {
         let f = refEllipsoid.getFlattening()
         let a = refA + elev12 * (1.0 + f * sin(phi12))
         let ellipsoid = ExternalEllipsoid.fromAAndF(semiMajor: a, flattening: f)
-
         // calculate the curve at the average elevation
         let averageCurve = calculateGeodeticCurve(ellipsoid: ellipsoid, start: start, end: end)
-
         // return the measurement
         return  ExternalGeodeticMeasurement(averageCurve: averageCurve, elevationChange: elev2 - elev1)
     }

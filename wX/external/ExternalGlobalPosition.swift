@@ -51,9 +51,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
      *
      * @return elevation about the ellipsoid in meters.
      */
-    func  getElevation() -> Double {
-        return mElevation
-    }
+    func  getElevation() -> Double { mElevation }
 
     /**
      * Set the elevation.

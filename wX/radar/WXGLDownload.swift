@@ -16,10 +16,11 @@ final class WXGLDownload {
     private var prod = ""
     
     static func getNidsTab(_ product: String, _ radarSite: String, _ fileName: String) {
-        let ridPrefix = WXGLDownload().getRidPrefix(radarSite, false)
+        /*let ridPrefix = WXGLDownload().getRidPrefix(radarSite, false)
         let url = WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/"
             + GlobalDictionaries.nexradProductString[product]! + "/SI."
-            + ridPrefix + radarSite.lowercased() + "/sn.last"
+            + ridPrefix + radarSite.lowercased() + "/sn.last"*/
+        let url = WXGLDownload().getRadarFileUrl(radarSite, product, false)
         let inputstream = url.getDataFromUrl()
         UtilityIO.saveInputStream(inputstream, fileName)
     }
@@ -55,20 +56,25 @@ final class WXGLDownload {
         }
     }
     
-    // FIXME implement kotlin methods for file and dir url
-    // FIXME extension on String for getInputStream
+    func getRadarFileUrl(_ radarSite: String, _ product: String, _ tdwr: Bool) -> String {
+        let ridPrefix = getRidPrefix(radarSite, tdwr)
+        let productString = GlobalDictionaries.nexradProductString[product] ?? ""
+        return WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
+    }
+    
     func getRadarFile(_ urlStr: String, _ rid: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
         let l2BaseFn = "l2"
         let l3BaseFn = "nids"
         let ridPrefix = getRidPrefix(rid, tdwr)
         self.radarSite = rid
         self.prod = prod
-        let ridPrefixGlobal = ridPrefix
-        let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
+        //let ridPrefixGlobal = ridPrefix
+        //let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
         if !prod.contains("L2") {
-            let data = (WXGLDownload.nwsRadarPub
-                + "SL.us008001/DF.of/DC.radar/" + productId + "/SI."
-                + ridPrefix + rid.lowercased() + "/sn.last").getDataFromUrl()
+            //let data = (WXGLDownload.nwsRadarPub
+            //    + "SL.us008001/DF.of/DC.radar/" + productId + "/SI."
+            //    + ridPrefix + rid.lowercased() + "/sn.last").getDataFromUrl()
+            let data = getRadarFileUrl(radarSite, prod, tdwr).getDataFromUrl()
             UtilityIO.saveInputStream(data, l3BaseFn + idxStr)
         } else {
             if urlStr == "" {
@@ -78,7 +84,7 @@ final class WXGLDownload {
             UtilityFileManagement.deleteFile(l2BaseFn + idxStr)
             UtilityFileManagement.moveFile(l2BaseFn + "_d" + idxStr, l2BaseFn + idxStr)
         }
-        return ridPrefixGlobal
+        return ridPrefix
     }
     
     // Download a list of files and return the list as a list of Strings
@@ -95,25 +101,28 @@ final class WXGLDownload {
         return listOfFiles
     }
     
+    func getRadarDirectoryUrl(_ radarSite: String, _ product: String, _ ridPrefix: String) -> String {
+        let productString = GlobalDictionaries.nexradProductString[product] ?? ""
+        return WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
+    }
+    
     // Level 3: Download a list of files and return the list as a list of Strings
-    private func getLevel3FilesForAnimation(
-        _ frameCount: Int,
-        _ product: String,
-        _ ridPrefix: String,
-        _ rid: String
-    ) -> [String] {
+    private func getLevel3FilesForAnimation(_ frameCount: Int, _ product: String, _ ridPrefix: String, _ rid: String) -> [String] {
         var listOfFiles = [String]()
-        let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
-        let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+        //let productId = GlobalDictionaries.nexradProductString[prod] ?? ""
+        //let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+        let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
         var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
         var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         if snDates.count == 0 {
-            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            //let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
             snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         }
         if snDates.count == 0 {
-            let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            //let html = (WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productId + "/SI." + ridPrefix + rid.lowercased() + "/").getHtml()
+            let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
             snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
             snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
         }
@@ -135,11 +144,12 @@ final class WXGLDownload {
             index += 1
         }
         (0..<frameCount).forEach { index in
-            let data = (WXGLDownload.nwsRadarPub
+            /*let data = (WXGLDownload.nwsRadarPub
                 + "SL.us008001/DF.of/DC.radar/"
                 + GlobalDictionaries.nexradProductString[prod]!
                 + "/SI." + ridPrefix + rid.lowercased()
-                + "/" + listOfFiles[index]).getDataFromUrl()
+                + "/" + listOfFiles[index]).getDataFromUrl()*/
+            let data = (getRadarDirectoryUrl(radarSite, product, ridPrefix) + listOfFiles[index]).getDataFromUrl()
             UtilityIO.saveInputStream(data, listOfFiles[index])
         }
         return listOfFiles

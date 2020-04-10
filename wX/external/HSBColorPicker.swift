@@ -25,8 +25,10 @@ class HSBColorPicker: UIView {
 
     private func initialize() {
         self.clipsToBounds = true
-        let touchGesture = UILongPressGestureRecognizer(target: self,
-                                                        action: #selector(self.touchedColor(gestureRecognizer:)))
+        let touchGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(self.touchedColor(gestureRecognizer:))
+        )
         touchGesture.minimumPressDuration = 0
         touchGesture.allowableMovement = CGFloat.greatestFiniteMagnitude
         self.addGestureRecognizer(touchGesture)
@@ -44,9 +46,7 @@ class HSBColorPicker: UIView {
 
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-
         for y in stride(from: 0, to: rect.height, by: elementSize) {
-
             var saturation = y < rect.height / 2.0
                 ? CGFloat(2 * y) / rect.height
                 : 2.0 * CGFloat(rect.height - y) / rect.height
@@ -54,7 +54,6 @@ class HSBColorPicker: UIView {
                 ? saturationExponentTop
                 : saturationExponentBottom))
             let brightness = y < rect.height / 2.0 ? CGFloat(1.0) : 2.0 * CGFloat(rect.height - y) / rect.height
-
             for x in stride(from: 0, to: rect.width, by: elementSize) {
                 let hue = x / rect.width
                 let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
@@ -100,9 +99,11 @@ class HSBColorPicker: UIView {
     @objc func touchedColor(gestureRecognizer: UILongPressGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
         let color = getColorAtPoint(point: point)
-        self.delegate?.HSBColorColorPickerTouched(sender: self,
-                                                  color: color,
-                                                  point: point,
-                                                  state: gestureRecognizer.state)
+        self.delegate?.HSBColorColorPickerTouched(
+            sender: self,
+            color: color,
+            point: point,
+            state: gestureRecognizer.state
+        )
     }
 }

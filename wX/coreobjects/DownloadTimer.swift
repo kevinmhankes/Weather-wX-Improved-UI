@@ -9,7 +9,7 @@ class DownloadTimer {
     private var initialized = false
     private var lastRefresh: CLong = 0
     private var refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 6)
-    private var identifier: String
+    private let identifier: String
 
     init(_ identifier: String) {
         self.identifier = identifier

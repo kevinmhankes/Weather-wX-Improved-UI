@@ -25,6 +25,7 @@
  * @author Roman Kushnarenko (sromku@gmail.com)
  */
 public class ExternalPolygon {
+    
     var _boundingBox: BoundingBox
     var _sides: [ExternalLine]
 
@@ -38,9 +39,7 @@ public class ExternalPolygon {
      *
      * @return The builder
      */
-    static func  BuilderS() -> Builder {
-        return Builder()
-    }
+    static func  BuilderS() -> Builder { Builder() }
 
     /**
      * Builder of the polygon
@@ -50,7 +49,7 @@ public class ExternalPolygon {
     class Builder {
         var _vertexes: [ExternalPoint] = []
         var _sides: [ExternalLine] = []
-        var _boundingBox: BoundingBox = BoundingBox()
+        var _boundingBox = BoundingBox()
         var _firstPoint = true
         var _isClosed = false
 
@@ -68,13 +67,11 @@ public class ExternalPolygon {
                 _vertexes = []
                 _isClosed = false
             }
-
             updateBoundingBox(point: point)
             _vertexes.append(point)
-
             // add line (edge) to the polygon
             if _vertexes.count > 1 {
-                let Line: ExternalLine =  ExternalLine(start: _vertexes[ _vertexes.count - 2], end: point)
+                let Line =  ExternalLine(start: _vertexes[ _vertexes.count - 2], end: point)
                 _sides.append(Line)
             }
             return self
@@ -106,7 +103,7 @@ public class ExternalPolygon {
                 // add last Line
                 _sides.append(ExternalLine(start: _vertexes[ _vertexes.count - 1], end: _vertexes[0]))
             }
-            let polygon: ExternalPolygon =  ExternalPolygon(sides: _sides, boundingBox: _boundingBox)
+            let polygon =  ExternalPolygon(sides: _sides, boundingBox: _boundingBox)
             return polygon
         }
 
@@ -123,7 +120,6 @@ public class ExternalPolygon {
                 _boundingBox.xMin = point.x
                 _boundingBox.yMax = point.y
                 _boundingBox.yMin = point.y
-
                 _firstPoint = false
             } else {
                 // set bounding box
@@ -156,9 +152,9 @@ public class ExternalPolygon {
      */
     func  contains(point: ExternalPoint) -> Bool {
         if inBoundingBox(point: point) {
-            let ray: ExternalLine = createRay(point: point)
+            let ray = createRay(point: point)
             var intersection = 0
-            for  side in _sides {
+            for side in _sides {
                 if intersect(ray: ray, side: side) {
                     intersection += 1
                 }
@@ -174,9 +170,7 @@ public class ExternalPolygon {
         return false
     }
 
-    func getSides() -> [ExternalLine] {
-        return _sides
-    }
+    func getSides() -> [ExternalLine] { _sides }
 
     /**
      * By given ray and one side of the polygon, check if both lines intersect.
@@ -186,37 +180,32 @@ public class ExternalPolygon {
      * @return <code>True</code> if both lines intersect, otherwise return <code>False</code>
      */
     func intersect(ray: ExternalLine, side: ExternalLine) -> Bool {
-        var intersectPoint: ExternalPoint = ExternalPoint()
-
+        var intersectPoint = ExternalPoint()
         // if both vectors aren't from the kind of x=1 lines then go into
         if !ray.isVertical() && !side.isVertical() {
             // check if both vectors are parallel. If they are parallel then no intersection point will exist
             if ray.getA() - side.getA() == 0 {
                 return false
             }
-
-            let x: Float = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())) // x = (b2-b1)/(a1-a2)
-            let y: Float = side.getA() * x + side.getB() // y = a2*x+b2
+            let x = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())) // x = (b2-b1)/(a1-a2)
+            let y = side.getA() * x + side.getB() // y = a2*x+b2
             intersectPoint = ExternalPoint(x, y)
         } else if ray.isVertical() && !side.isVertical() {
-            let x: Float = ray.getStart().x
-            let y: Float = side.getA() * x + side.getB()
+            let x = ray.getStart().x
+            let y = side.getA() * x + side.getB()
             intersectPoint =  ExternalPoint(x, y)
         } else if !ray.isVertical() && side.isVertical() {
-            let x: Float = side.getStart().x
-            let y: Float = ray.getA() * x + ray.getB()
+            let x = side.getStart().x
+            let y = ray.getA() * x + ray.getB()
             intersectPoint =  ExternalPoint(x, y)
         } else {
             return false
         }
-
         // System.out.println("Ray: " + ray.toString() + " ,Side: " + side)
         // System.out.println("Intersect point: " + intersectPoint.toString())
-
         if side.isInside(point: intersectPoint) && ray.isInside(point: intersectPoint) {
             return true
         }
-
         return false
     }
 
@@ -229,9 +218,9 @@ public class ExternalPolygon {
      */
     func  createRay(point: ExternalPoint) -> ExternalLine {
         // create outside point
-        let epsilon: Float = (_boundingBox.xMax - _boundingBox.xMin) / 100.0
-        let outsidePoint: ExternalPoint =  ExternalPoint(_boundingBox.xMin - epsilon, _boundingBox.yMin)
-        let vector: ExternalLine =  ExternalLine(start: outsidePoint, end: point)
+        let epsilon = (_boundingBox.xMax - _boundingBox.xMin) / 100.0
+        let outsidePoint =  ExternalPoint(_boundingBox.xMin - epsilon, _boundingBox.yMin)
+        let vector =  ExternalLine(start: outsidePoint, end: point)
         return vector
     }
 
@@ -252,9 +241,9 @@ public class ExternalPolygon {
     }
 
     class BoundingBox {
-        var xMax: Float = -Float.infinity
-        var xMin: Float = -Float.infinity
-        var yMax: Float = -Float.infinity
-        var yMin: Float = -Float.infinity
+        var xMax = -Float.infinity
+        var xMin = -Float.infinity
+        var yMax = -Float.infinity
+        var yMin = -Float.infinity
     }
 }
