@@ -25,10 +25,10 @@ final class WXGLPolygonWarnings {
             if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount
                 && !vtecs[polyCount].hasPrefix("0.EXP")
                 && !vtecs[polyCount].hasPrefix("0.CAN") {
-                let polyTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
-                if polyTmp.count > 1 {
-                    y = polyTmp.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                    x = polyTmp.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
+                let polygonTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
+                if polygonTmp.count > 1 {
+                    y = polygonTmp.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
+                    x = polygonTmp.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
                 }
                 if y.count > 0 && x.count > 0 {
                     let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)

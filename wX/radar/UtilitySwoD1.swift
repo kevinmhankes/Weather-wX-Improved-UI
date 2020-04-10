@@ -45,7 +45,7 @@ class UtilitySwoD1 {
                             let y = numbers.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in (Double(value) ?? 0.0) * -1.0 }
                             if x.count > 0 && y.count > 0 {
                                 warningList += [x[0], y[0]]
-                                (1..<x.count-1).forEach { j in
+                                (1..<x.count - 1).forEach { j in
                                     if x[j] < 99.0 {
                                         warningList += [x[j], y[j], x[j], y[j]]
                                     } else {
