@@ -38,35 +38,35 @@ public class ObjectMap {
         centerMapOnLocation(location: usCenter, regionRadius: mapRegionRadius)
     }
     
-    func createLocationsList(_ itemList: [String]) -> [[String: String]] {
+    func createLocationsList(_ offices: [String]) -> [[String: String]] {
         var locations = [[String: String]]()
-        itemList.forEach { item in
-            let ridArr = item.split(":")
+        offices.forEach { item in
+            let items = item.split(":")
             let latLon: LatLon
             switch officeType {
             case .WFO:
-                latLon = Utility.getWfoSiteLatLon(ridArr[0])
+                latLon = Utility.getWfoSiteLatLon(items[0])
             case .RADAR:
-                latLon = Utility.getRadarSiteLatLon(ridArr[0])
+                latLon = Utility.getRadarSiteLatLon(items[0])
             case .SOUNDING:
-                latLon = Utility.getSoundingSiteLatLon(ridArr[0])
+                latLon = Utility.getSoundingSiteLatLon(items[0])
             }
-            if ridArr.count > 1 {
-                let arr = [
-                    "name": ridArr[0],
+            if items.count > 1 {
+                let officeDict = [
+                    "name": items[0],
                     "latitude": latLon.latString,
                     "longitude": latLon.lonString,
-                    "mediaURL": ridArr[1]
+                    "mediaURL": items[1]
                 ]
-                locations.append(arr)
+                locations.append(officeDict)
             } else {
-                let arr = [
-                    "name": ridArr[0],
+                let officeDict = [
+                    "name": items[0],
                     "latitude": latLon.latString,
                     "longitude": latLon.lonString,
                     "mediaURL": ""
                 ]
-                locations.append(arr)
+                locations.append(officeDict)
             }
         }
         return locations
@@ -115,11 +115,7 @@ public class ObjectMap {
         return pin
     }
     
-    func mapViewExtra(
-        _ annotationView: MKAnnotationView,
-        _ control: UIControl,
-        _ localChanges: (MKAnnotationView) -> Void
-    ) -> Bool {
+    func mapViewExtra(_ annotationView: MKAnnotationView, _ control: UIControl, _ localChanges: (MKAnnotationView) -> Void) -> Bool {
         var mapShown = true
         if control == annotationView.rightCalloutAccessoryView {
             mapView.removeFromSuperview()
