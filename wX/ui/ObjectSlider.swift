@@ -17,10 +17,7 @@ final class ObjectSlider {
     // will be nothing for iphone, _C for catalyst, _T for ipad
     var suffix = ""
 
-    init(
-        _ uiv: UIwXViewController,
-        _ prefVar: String
-    ) {
+    init(_ uiv: UIwXViewController, _ prefVar: String) {
         if UtilityUI.isTablet() {
             suffix = "_T"
         }

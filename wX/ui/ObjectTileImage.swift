@@ -28,10 +28,7 @@ final class ObjectTileImage {
 
     }
     
-    init(
-        _ stackView: UIStackView,
-        _ iconsPerRow: CGFloat
-    ) {
+    init(_ stackView: UIStackView, _ iconsPerRow: CGFloat) {
         stackView.addArrangedSubview(image.img)
         image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
         image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
