@@ -10,21 +10,21 @@ final class ObjectMetar {
     
     private let decodeIcon = true
     var condition = ""
-    var temperature = ""
-    var dewpoint = ""
-    var windDirection = ""
-    var windSpeed = ""
-    var windGust = ""
-    var seaLevelPressure = ""
-    var visibility = ""
-    var relativeHumidity = ""
-    var windChill = ""
-    var heatIndex = ""
+    var temperature: String
+    var dewpoint: String
+    let windDirection: String
+    var windSpeed: String
+    var windGust: String
+    let seaLevelPressure: String
+    let visibility: String
+    let relativeHumidity: String
+    var windChill: String
+    var heatIndex: String
     var conditionsTimeString = ""
     var icon = ""
-    var rawMetar = ""
-    private var metarSkyCondition = ""
-    private var metarWeatherCondition = ""
+    let rawMetar: String
+    private let metarSkyCondition: String
+    private let metarWeatherCondition: String
     
     init(_ location: LatLon) {
         let obsClosest = UtilityMetar.findClosestObservation(location)
@@ -107,7 +107,7 @@ final class ObjectMetar {
                 conditionsTimeString = UtilityTime.convertFromUTCForMetar(localStatus[1].replace(" UTC", ""))
             }
         }
-        seaLevelPressure = changePressureUnits(seaLevelPressure)
+        //seaLevelPressure = changePressureUnits(seaLevelPressure)
         temperature = changeDegreeUnits(temperature)
         dewpoint = changeDegreeUnits(dewpoint)
         windChill = changeDegreeUnits(windChill)
