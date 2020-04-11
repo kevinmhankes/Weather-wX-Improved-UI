@@ -142,6 +142,8 @@ extension Int {
     func green() -> UInt8 { Color.green(self) }
     
     func blue() -> UInt8 { Color.blue(self) }
+    
+    func isEven() -> Bool { self & 1 == 0 }
 }
 
 extension UIImage {

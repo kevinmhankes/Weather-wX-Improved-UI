@@ -99,6 +99,8 @@ struct LatLon {
     }
 
     func print() -> String { latString + " " + lonString + " " }
+    
+    func asPoint() -> ExternalPoint { ExternalPoint(lat, lon) }
 
     static func reversed(_ lon: Double, _ lat: Double) -> LatLon { LatLon(lat, -1.0 * lon) }
 
@@ -120,6 +122,38 @@ struct LatLon {
         case .MILES:
             return dist
         }
+    }
+    
+    // take a space separated list of numbers and return a list of LatLon, list is of the format
+    // lon0 lat0 lon1 lat1 for watch
+    // for UtilityWatch need to multiply Y by -1.0
+    static func parseStringToLatLons(_ stringOfNumbers: String, _ multiplier: Double = 1.0, _ isWarning: Bool = true) -> [LatLon] {
+        let list = stringOfNumbers.split(" ")
+        // FIXME move to list of LatLon
+        var x = [Double]()
+        var y = [Double]()
+        list.indices.forEach { i in
+            if (isWarning) {
+                if (i.isEven()) {
+                    y.append((Double(list[i]) ?? 0.0) * multiplier)
+                } else {
+                    x.append(Double(list[i]) ?? 0.0)
+                }
+            } else {
+                if (i.isEven()) {
+                    x.append(Double(list[i]) ?? 0.0)
+                } else {
+                    y.append((Double(list[i]) ?? 0.0) * multiplier)
+                }
+            }
+        }
+        var latLons = [LatLon]()
+        if (y.count > 3 && x.count > 3 && x.count == y.count) {
+            x.enumerated().forEach { index, _ in
+                latLons.append(LatLon(x[index], y[index]))
+            }
+        }
+        return latLons
     }
 }
 

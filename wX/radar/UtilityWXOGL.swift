@@ -6,9 +6,9 @@
 
 public class UtilityWXOGL {
 
-    static func showTextProducts(_ location: LatLon) -> String {
-        var x = [Double]()
-        var y = [Double]()
+    static func showTextProducts(_ latLon: LatLon) -> String {
+        //var x = [Double]()
+        //var y = [Double]()
         var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value
         ObjectPolygonWarning.polygonList.forEach { poly in
             let it = ObjectPolygonWarning.polygonDataByType[poly]!
@@ -31,23 +31,39 @@ public class UtilityWXOGL {
         var string = ""
         var notFound = true
         polygons.enumerated().forEach { urlIndex, warning in
-            let polygonTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
-            if polygonTmp.count > 1 {
-                y = polygonTmp.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
-                x = polygonTmp.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
-            }
-            if (y.count > 3 && x.count > 3) && (x.count == y.count) {
+            //let polygonTmp = warning.replace("[", "").replace("]", "").replace(",", " ").split(" ")
+            
+            let polygonTmp = warning.replace("[", "").replace("]", "").replace(",", " ")
+            let latLons = LatLon.parseStringToLatLons(polygonTmp)
+            if latLons.count > 0 {
                 let polygonFrame = ExternalPolygon.Builder()
-                x.indices.forEach {
-                    _ = polygonFrame.addVertex(point: ExternalPoint(x[$0], y[$0]))
+                latLons.forEach {
+                    _ = polygonFrame.addVertex(point: ExternalPoint($0))
                 }
                 let polygonShape = polygonFrame.build()
-                let contains = polygonShape.contains(point: ExternalPoint(location.lat, location.lon))
+                let contains = polygonShape.contains(point: latLon.asPoint())
                 if contains && notFound {
                     string = urlList[urlIndex]
                     notFound = false
                 }
             }
+
+//            if polygonTmp.count > 1 {
+//                y = polygonTmp.enumerated().filter {index, _ in index & 1 == 0}.map { _, value in Double(value) ?? 0.0}
+//                x = polygonTmp.enumerated().filter {index, _ in index & 1 != 0}.map { _, value in Double(value) ?? 0.0}
+//            }
+//            if (y.count > 3 && x.count > 3) && (x.count == y.count) {
+//                let polygonFrame = ExternalPolygon.Builder()
+//                x.indices.forEach {
+//                    _ = polygonFrame.addVertex(point: ExternalPoint(x[$0], y[$0]))
+//                }
+//                let polygonShape = polygonFrame.build()
+//                let contains = polygonShape.contains(point: ExternalPoint(location.lat, location.lon))
+//                if contains && notFound {
+//                    string = urlList[urlIndex]
+//                    notFound = false
+//                }
+//            }
         }
         return string
     }
