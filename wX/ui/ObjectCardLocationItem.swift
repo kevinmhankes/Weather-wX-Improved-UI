@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardLocationItem {
 
-    var tvCurrentConditions: ObjectTextView
+    let tvCurrentConditions: ObjectTextView
 
     init(
         _ uiv: UIwXViewController,

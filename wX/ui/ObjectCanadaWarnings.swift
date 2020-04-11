@@ -34,7 +34,6 @@ final class ObjectCanadaWarnings: NSObject {
         "Saskatchewan",
         "Yukon"
     ]
-    
     private let provinceToCode = [
         "Canada": "ca",
         "Alberta": "ab",

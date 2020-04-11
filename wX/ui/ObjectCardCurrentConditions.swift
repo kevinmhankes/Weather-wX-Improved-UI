@@ -14,11 +14,7 @@ final class ObjectCardCurrentConditions {
     private let condenseScale: CGFloat = 0.50
     private var horizontalContainer = ObjectCardStackView()
 
-    init(
-        _ stackView: UIStackView,
-        _ objectCurrentConditions: ObjectCurrentConditions,
-        _ isUS: Bool
-    ) {
+    init(_ stackView: UIStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
