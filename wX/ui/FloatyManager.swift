@@ -11,99 +11,90 @@ import UIKit
  KCFloatingActionButton dependent on UIWindow.
  */
 open class FloatyManager: NSObject {
-  private static var __once: () = {
-    StaticInstance.instance = FloatyManager()
-  }()
-  struct StaticInstance {
-    static var dispatchToken: Int = 0
-    static var instance: FloatyManager?
-  }
-
-  static func defaultInstance() -> FloatyManager {
-    _ = FloatyManager.__once
-    return StaticInstance.instance!
-  }
-
-  var _floatyWindow: FloatyWindow?
-  var floatyWindow: FloatyWindow {
-      if _floatyWindow == nil {
-        _floatyWindow = FloatyWindow(frame: UIScreen.main.bounds)
-        _floatyWindow?.rootViewController = floatyController
-      }
-      return _floatyWindow!
-  }
-
-  var _floatyController: FloatyViewController?
-  var floatyController: FloatyViewController {
-      if _floatyController == nil {
-        _floatyController = FloatyViewController()
-      }
-      return _floatyController!
-  }
-
-  open var button: Floaty {
-      return floatyController.floaty
-  }
-
-  private let fontDescriptor: UIFontDescriptor
-  private var _font: UIFont
-
-  public override init() {
-    fontDescriptor = UIFont.systemFont(ofSize: 20.0).fontDescriptor
-    _font = UIFont(descriptor: fontDescriptor, size: 20)
-  }
-
-  open var font: UIFont {
-    get {
-      return _font
+    
+    private static var __once: () = {
+        StaticInstance.instance = FloatyManager()
+    }()
+    struct StaticInstance {
+        static var dispatchToken: Int = 0
+        static var instance: FloatyManager?
     }
-    set {
-      _font = newValue
+    
+    static func defaultInstance() -> FloatyManager {
+        _ = FloatyManager.__once
+        return StaticInstance.instance!
     }
-  }
-
-  private var _rtlMode = false
-  open var rtlMode: Bool {
-    get {
-      return _rtlMode
+    
+    var _floatyWindow: FloatyWindow?
+    var floatyWindow: FloatyWindow {
+        if _floatyWindow == nil {
+            _floatyWindow = FloatyWindow(frame: UIScreen.main.bounds)
+            _floatyWindow?.rootViewController = floatyController
+        }
+        return _floatyWindow!
     }
-    set {
-      _rtlMode = newValue
+    
+    var _floatyController: FloatyViewController?
+    var floatyController: FloatyViewController {
+        if _floatyController == nil {
+            _floatyController = FloatyViewController()
+        }
+        return _floatyController!
     }
-  }
-
-  open func show(_ animated: Bool = true) {
-    if animated == true {
-      floatyWindow.isHidden = false
-      UIView.animate(withDuration: 0.3, animations: { () -> Void in
-        self.floatyWindow.alpha = 1
-      })
-    } else {
-      floatyWindow.isHidden = false
+    
+    open var button: Floaty {
+        return floatyController.floaty
     }
-  }
-
-  open func hide(_ animated: Bool = true) {
-    if animated == true {
-      UIView.animate(withDuration: 0.3, animations: { () -> Void in
-        self.floatyWindow.alpha = 0
-      }, completion: { _ in
-        self.floatyWindow.isHidden = true
-      })
-    } else {
-      floatyWindow.isHidden = true
+    
+    private let fontDescriptor: UIFontDescriptor
+    private var _font: UIFont
+    
+    public override init() {
+        fontDescriptor = UIFont.systemFont(ofSize: 20.0).fontDescriptor
+        _font = UIFont(descriptor: fontDescriptor, size: 20)
     }
-  }
-
-  open func toggle(_ animated: Bool = true) {
-    if floatyWindow.isHidden == false {
-      self.hide(animated)
-    } else {
-      self.show(animated)
+    
+    open var font: UIFont {
+        get { return _font }
+        set { _font = newValue }
     }
-  }
-
-  open var hidden: Bool {
-      return floatyWindow.isHidden
-  }
+    
+    private var _rtlMode = false
+    open var rtlMode: Bool {
+        get { return _rtlMode }
+        set { _rtlMode = newValue }
+    }
+    
+    open func show(_ animated: Bool = true) {
+        if animated == true {
+            floatyWindow.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.floatyWindow.alpha = 1
+            })
+        } else {
+            floatyWindow.isHidden = false
+        }
+    }
+    
+    open func hide(_ animated: Bool = true) {
+        if animated == true {
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.floatyWindow.alpha = 0
+            }, completion: { _ in
+                self.floatyWindow.isHidden = true
+            })
+        } else {
+            floatyWindow.isHidden = true
+        }
+    }
+    
+    open func toggle(_ animated: Bool = true) {
+        if floatyWindow.isHidden == false {
+            self.hide(animated)
+        } else {
+            self.show(animated)
+        }
+    }
+    
+    open var hidden: Bool { return floatyWindow.isHidden }
 }
