@@ -22,14 +22,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         synth.delegate = self
         addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
         wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                wfoTextButton,
-                addNationalProductButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, wfoTextButton, addNationalProductButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)

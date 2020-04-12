@@ -20,13 +20,7 @@ class vcAdhocLocation: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                titleButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, titleButton]).items
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)

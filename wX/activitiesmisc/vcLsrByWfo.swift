@@ -24,13 +24,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         map.setupMap(GlobalArrays.wfos)
         wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                siteButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }

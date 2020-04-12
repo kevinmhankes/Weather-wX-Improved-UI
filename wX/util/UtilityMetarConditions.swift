@@ -267,6 +267,7 @@ final class UtilityMetarConditions {
         "Mist With Thunder In The Vicinity": "tsra",
         "Thunder In The Vicinity And Heavy Rain and Mist": "tsra",
         // add 4/12/2020
+        "Heavy Rain With Thunder In The Vicinity": "tsra",
         "Light Rain With Thunder In The Vicinity": "tsra",
         "Rain With Thunder In The Vicinity": "tsra",
 

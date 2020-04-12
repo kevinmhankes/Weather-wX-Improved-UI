@@ -18,14 +18,7 @@ class vcSpotters: UIwXViewController {
         spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         spotterReportsButton.title = "Spotter Reports"
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                spotterCountButton,
-                spotterReportsButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterCountButton, spotterReportsButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }

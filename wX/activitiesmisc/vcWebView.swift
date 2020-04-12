@@ -24,22 +24,9 @@ class vcWebView: UIwXViewController {
         productButton = ObjectToolbarIcon(title: "Product", self, #selector(productClicked))
         browserButton = ObjectToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
         if showProduct {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    doneButton,
-                    GlobalVariables.flexBarButton,
-                    browserButton,
-                    productButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton, productButton]).items
         } else {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    doneButton,
-                    GlobalVariables.flexBarButton,
-                    browserButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton]).items
         }
         webView = WKWebView()
         self.view.addSubview(webView)

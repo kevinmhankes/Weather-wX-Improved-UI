@@ -23,14 +23,7 @@ class vcSevereDashboard: UIwXViewController {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         statusButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                statusButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
