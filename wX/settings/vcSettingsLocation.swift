@@ -8,10 +8,9 @@ import UIKit
 
 class vcSettingsLocation: UIwXViewController {
     
-    private var locations = [String]()
     private var fab: ObjectFab?
     private var productButton = ObjectToolbarIcon()
-    private var objectCards = [ObjectCardLocationItem]()
+    private var locationCards = [ObjectCardLocationItem]()
     private var currentConditions = [ObjectCurrentConditions]()
     
     override func viewDidLoad() {
@@ -31,8 +30,8 @@ class vcSettingsLocation: UIwXViewController {
                 self.currentConditions.append(ObjectCurrentConditions(index))
             }
             DispatchQueue.main.async {
-                self.objectCards.indices.forEach { index in
-                    self.objectCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
+                self.locationCards.indices.forEach { index in
+                    self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
                     MyApplication.locations[index].updateObservation(self.currentConditions[index].topLine)
                 }
             }
@@ -85,7 +84,9 @@ class vcSettingsLocation: UIwXViewController {
     
     func actionLocation(_ position: Int) {
         let vc = vcSettingsLocationEdit()
-        vc.settingsLocationEditNum = locations[position].split(":")[0]
+        vc.settingsLocationEditNum = String(position + 1)
+        //print("DEBUG: " + locations[position])
+        //vc.settingsLocationEditNum = locations[position].split(":")[0]
         self.goToVC(vc)
     }
     
@@ -126,23 +127,21 @@ class vcSettingsLocation: UIwXViewController {
         }
     }
     
-    func initializeObservations() {
-        (0..<Location.numLocations).forEach { index in
-            MyApplication.locations[index].updateObservation("")
-        }
-    }
+    //func initializeObservations() {
+        //MyApplication.locations.forEach {
+        //    $0.updateObservation("")
+        //}
+    //}
     
     func displayContent() {
-        objectCards = []
+        locationCards = []
         self.stackView.removeViews()
-        locations = []
         (0..<Location.numLocations).forEach { index in
-            locations.append(String(index + 1))
             let name = MyApplication.locations[index].name
             let observation = MyApplication.locations[index].observation
             let latLon = MyApplication.locations[index].lat.truncate(10) + ", " + MyApplication.locations[index].lon.truncate(10)
             let details = "WFO: " + MyApplication.locations[index].wfo + " Radar: " + MyApplication.locations[index].rid
-            objectCards.append(ObjectCardLocationItem(
+            locationCards.append(ObjectCardLocationItem(
                 self,
                 name,
                 observation,
@@ -155,7 +154,6 @@ class vcSettingsLocation: UIwXViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initializeObservations()
         displayContent()
         self.getContent()
     }
