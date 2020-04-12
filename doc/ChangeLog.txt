@@ -18,6 +18,7 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
 // [REF] spc storm reports refactor like kotlin
+// [ADD] text labels in multipane nexrad
 
 56100 2020_04_12 [REF] misc
 	         [FIX] nearest forecast from main screen nexrad as not showing lat/lon even thought it worked
