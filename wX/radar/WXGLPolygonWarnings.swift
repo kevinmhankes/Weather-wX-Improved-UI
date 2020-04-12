@@ -17,45 +17,11 @@ final class WXGLPolygonWarnings {
         let html = prefToken.replace("\n", "").replace(" ", "")
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
-        var polyCount = -1
-        polygons.forEach { polygon in
-            //var x = [Double]()
-            //var y = [Double]()
-            polyCount += 1
-            if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount
-                && !vtecs[polyCount].hasPrefix("0.EXP")
-                && !vtecs[polyCount].hasPrefix("0.CAN") {
-                //let polygonTmp = poly.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
-                
+        polygons.enumerated().forEach { polyCount, polygon in
+            if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount && !vtecs[polyCount].hasPrefix("0.EXP") && !vtecs[polyCount].hasPrefix("0.CAN") {
                 let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
                 let latLons = LatLon.parseStringToLatLons(polygonTmp)
-                if latLons.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[0], projectionNumbers)
-                    warningList += startCoordinates
-                    (1..<latLons.count).forEach { index in
-                        let coordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[index], projectionNumbers)
-                        warningList += coordinates
-                        warningList += coordinates
-                    }
-                    warningList += startCoordinates
-                }
-                
-                /*if polygonTmp.count > 1 {
-                    y = polygonTmp.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                    x = polygonTmp.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
-                }
-                if y.count > 0 && x.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
-                    warningList += startCoordinates
-                    if x.count == y.count {
-                        (1..<x.count).forEach {
-                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], projectionNumbers)
-                            warningList += tmpCoords
-                            warningList += tmpCoords
-                        }
-                        warningList += startCoordinates
-                    }
-                }*/
+                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
             }
         }
         return warningList
@@ -72,45 +38,11 @@ final class WXGLPolygonWarnings {
         let html = prefToken.replace("\n", "").replace(" ", "")
         let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
         let vtecs = html.parseColumn(vtecPattern)
-        var polygonCount = -1
-        polygons.forEach { polygon in
-            
-            //var x = [Double]()
-            //var y = [Double]()
-            polygonCount += 1
+        polygons.enumerated().forEach { polygonCount, polygon in
             if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") {
-                
                 let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
                 let latLons = LatLon.parseStringToLatLons(polygonTmp)
-                if latLons.count > 0 {
-                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[0], projectionNumbers)
-                    warningList += startCoordinates
-                    (1..<latLons.count).forEach { index in
-                        let coordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[index], projectionNumbers)
-                        warningList += coordinates
-                        warningList += coordinates
-                    }
-                    warningList += startCoordinates
-                }
-                
-                //                let coordinates = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "").split(" ")
-                //                if coordinates.count > 1 {
-                //                    y = coordinates.enumerated().filter {index, _ in index & 1 == 0}.map {_, value in Double(value) ?? 0.0}
-                //                    x = coordinates.enumerated().filter {index, _ in index & 1 != 0}.map {_, value in Double(value) ?? 0.0}
-                //                }
-                //                if y.count > 0 && x.count > 0 {
-                //                    let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(x[0], y[0], projectionNumbers)
-                //                    warningList += startCoordinates
-                //                    if x.count == y.count {
-                //                        (1..<x.count).forEach {
-                //                            let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(x[$0], y[$0], projectionNumbers)
-                //                            warningList += tmpCoords
-                //                            warningList += tmpCoords
-                //                        }
-                //                        warningList += startCoordinates
-                //                    }
-                //                }
-                
+                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
             }
         }
         return warningList

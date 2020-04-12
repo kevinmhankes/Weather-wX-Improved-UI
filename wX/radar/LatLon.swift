@@ -5,14 +5,14 @@
  *****************************************************************************/
 
 struct LatLon {
-
+    
     private var latNum = 0.0
     private var lonNum = 0.0
     private var xStr = "0.0"
     private var yStr = "0.0"
-
+    
     init() {}
-
+    
     init(_ radarSite: String, isRadar: Bool) {
         let ridX = Utility.getRadarSiteX(radarSite)
         let ridY = Utility.getRadarSiteY(radarSite)
@@ -21,35 +21,35 @@ struct LatLon {
         self.xStr = String(self.latNum)
         self.yStr = String(self.lonNum)
     }
-
+    
     init(_ latlon: [Double]) {
         self.latNum = latlon[0]
         self.lonNum = latlon[1]
         self.xStr = String(self.latNum)
         self.yStr = String(self.lonNum)
     }
-
+    
     //init(_ latlon: (lat: Double, lon: Double)) {
     //    self.latNum = latlon.lat
     //    self.lonNum = latlon.lon
     //    self.xStr = String(self.latNum)
     //    self.yStr = String(self.lonNum)
     //}
-
+    
     init(_ lat: Double, _ lon: Double) {
         self.latNum = lat
         self.lonNum = lon
         self.xStr = String(self.latNum)
         self.yStr = String(self.lonNum)
     }
-
+    
     init(_ xStr: String, _ yStr: String) {
         self.xStr = xStr
         self.yStr = yStr
         self.latNum = Double(self.xStr) ?? 0.0
         self.lonNum = Double(self.yStr) ?? 0.0
     }
-
+    
     init(_ temp: String) {
         self.xStr = temp.substring(0, 4)
         self.yStr = temp.substring(4, 8)
@@ -65,7 +65,7 @@ struct LatLon {
     }
     
     var list: [Double] { [lat, lon] }
-
+    
     var lat: Double {
         get { latNum }
         set {
@@ -73,7 +73,7 @@ struct LatLon {
             self.xStr = String(latNum)
         }
     }
-
+    
     var lon: Double {
         get { lonNum }
         set {
@@ -81,7 +81,7 @@ struct LatLon {
             self.yStr = String(lonNum)
         }
     }
-
+    
     var latString: String {
         get { xStr }
         set {
@@ -89,7 +89,7 @@ struct LatLon {
             latNum = Double(newValue) ?? 0.0
         }
     }
-
+    
     var lonString: String {
         get { yStr }
         set {
@@ -97,13 +97,13 @@ struct LatLon {
             lonNum = Double(newValue) ?? 0.0
         }
     }
-
+    
     func print() -> String { latString + " " + lonString + " " }
     
     func asPoint() -> ExternalPoint { ExternalPoint(lat, lon) }
-
+    
     static func reversed(_ lon: Double, _ lat: Double) -> LatLon { LatLon(lat, -1.0 * lon) }
-
+    
     static func distance(_ location1: LatLon, _ location2: LatLon, _ unit: DistanceUnit) -> Double {
         let theta = location1.lon - location2.lon
         var dist = sin(
@@ -129,18 +129,17 @@ struct LatLon {
     // for UtilityWatch need to multiply Y by -1.0
     static func parseStringToLatLons(_ stringOfNumbers: String, _ multiplier: Double = 1.0, _ isWarning: Bool = true) -> [LatLon] {
         let list = stringOfNumbers.split(" ")
-        // FIXME move to list of LatLon
         var x = [Double]()
         var y = [Double]()
         list.indices.forEach { i in
-            if (isWarning) {
-                if (i.isEven()) {
+            if isWarning {
+                if i.isEven() {
                     y.append((Double(list[i]) ?? 0.0) * multiplier)
                 } else {
                     x.append(Double(list[i]) ?? 0.0)
                 }
             } else {
-                if (i.isEven()) {
+                if i.isEven() {
                     x.append(Double(list[i]) ?? 0.0)
                 } else {
                     y.append((Double(list[i]) ?? 0.0) * multiplier)
@@ -148,12 +147,27 @@ struct LatLon {
             }
         }
         var latLons = [LatLon]()
-        if (y.count > 3 && x.count > 3 && x.count == y.count) {
+        if y.count > 3 && x.count > 3 && x.count == y.count {
             x.enumerated().forEach { index, _ in
                 latLons.append(LatLon(x[index], y[index]))
             }
         }
         return latLons
+    }
+    
+    static func latLonListToListOfDoubles(_ latLons: [LatLon], _ projectionNumbers: ProjectionNumbers) -> [Double] {
+        var warningList = [Double]()
+        if latLons.count > 0 {
+            let startCoordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[0], projectionNumbers)
+            warningList += startCoordinates
+            (1..<latLons.count).forEach { index in
+                let coordinates = UtilityCanvasProjection.computeMercatorNumbers(latLons[index], projectionNumbers)
+                warningList += coordinates
+                warningList += coordinates
+            }
+            warningList += startCoordinates
+        }
+        return warningList
     }
 }
 
