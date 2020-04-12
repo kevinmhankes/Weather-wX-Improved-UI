@@ -20,14 +20,7 @@ class vcWpcImg: UIwXViewController {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {
@@ -45,11 +38,11 @@ class vcWpcImg: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         self.productButton.title = UtilityWpcImages.labels[index]
+        var getUrl = UtilityWpcImages.urls[self.index]
+        if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
+            getUrl += String(self.timePeriod) + "_conus.png"
+        }
         DispatchQueue.global(qos: .userInitiated).async {
-            var getUrl = UtilityWpcImages.urls[self.index]
-            if getUrl.contains(MyApplication.nwsGraphicalWebsitePrefix + "/images/conus/") {
-                getUrl += String(self.timePeriod) + "_conus.png"
-            }
             let bitmap = Bitmap(getUrl)
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)

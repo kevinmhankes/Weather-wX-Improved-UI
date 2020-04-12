@@ -44,7 +44,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     @objc func imageClicked() {
-        let number = Int(day)! - 1
+        let number = (Int(day) ?? 1) - 1
         let vc = vcImageViewer()
         vc.url = UtilityWpcRainfallOutlook.urls[number]
         self.goToVC(vc)
