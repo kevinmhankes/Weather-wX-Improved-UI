@@ -59,12 +59,7 @@ class vcGoesGlobal: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(
-            self,
-            productButton,
-            UtilityGoesFullDisk.labels,
-            self.getContent(_:)
-        )
+        _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, self.getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

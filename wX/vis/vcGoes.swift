@@ -61,8 +61,8 @@ class vcGoes: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
-            self.serializeSettings()
             DispatchQueue.main.async {
+                self.serializeSettings()
                 self.image.setBitmap(bitmap)
                 if self.firstRun {
                     self.firstRun = false

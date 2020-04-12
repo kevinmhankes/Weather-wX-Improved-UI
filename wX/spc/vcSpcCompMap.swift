@@ -16,14 +16,7 @@ class vcSpcCompMap: UIwXViewController {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         deSerializeSettings()
         self.getContent()
@@ -51,9 +44,7 @@ class vcSpcCompMap: UIwXViewController {
         let alert = ObjectPopUp(self, "Layer Selection", productButton)
         (["Clear All"] + UtilitySpcCompmap.labels).enumerated().forEach { index, rid in
             var pre = ""
-            if index > 0 && layers.contains(
-                UtilitySpcCompmap.urlIndices[UtilitySpcCompmap.labels.firstIndex(of: rid)!]
-                ) {
+            if index > 0 && layers.contains(UtilitySpcCompmap.urlIndices[UtilitySpcCompmap.labels.firstIndex(of: rid)!]) {
                 pre = "(on) "
             }
             alert.addAction(UIAlertAction(pre + rid, { _ in self.productChanged(index)}))
