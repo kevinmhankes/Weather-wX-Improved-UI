@@ -524,12 +524,7 @@ class vcTabLocation: vcTabParent {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         let screenWidth = width
         let screenHeight = screenWidth
-        let carect = CGRect(
-            x: 0,
-            y: 0,
-            width: CGFloat(screenWidth),
-            height: CGFloat(screenWidth)
-        )
+        let carect = CGRect(x: 0, y: 0, width: CGFloat(screenWidth), height: CGFloat(screenWidth))
         let caview = UIView(frame: carect)
         caview.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         caview.heightAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
@@ -538,7 +533,7 @@ class vcTabLocation: vcTabParent {
             -1.0 * ortInt,
             right: ortInt,
             bottom: -1.0 * ortInt * (1.0 / surfaceRatio),
-            top: ortInt * (1 / surfaceRatio),
+            top: ortInt * (1.0 / surfaceRatio),
             nearZ: -100.0,
             farZ: 100.0
         )
@@ -550,27 +545,13 @@ class vcTabLocation: vcTabParent {
                 metalLayer[index]!.framebufferOnly = true
             }
         }
-        metalLayer[0]!.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: CGFloat(screenWidth),
-            height: CGFloat(screenWidth)
-        )
+        metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: CGFloat(screenWidth), height: CGFloat(screenWidth))
         metalLayer.forEach {
             caview.layer.addSublayer($0!)
         }
         stackView.addArrangedSubview(caview)
         if wxMetal.count < 1 {
-            wxMetal.append(
-                WXMetalRender(
-                    device!,
-                    wxMetalTextObject,
-                    ObjectToolbarIcon(),
-                    ObjectToolbarIcon(),
-                    paneNumber: 0,
-                    numberOfPanes
-                )
-            )
+            wxMetal.append(WXMetalRender(device!, wxMetalTextObject, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
         }
         setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
@@ -637,12 +618,7 @@ class vcTabLocation: vcTabParent {
         let stackViewLocationButton = ObjectStackViewHS()
         self.stackView.addArrangedSubview(stackViewLocationButton)
         stackViewLocationButton.setup(self.stackView)
-        self.objLabel = ObjectTextView(
-            stackViewLocationButton,
-            Location.name,
-            FontSize.extraLarge.size,
-            ColorCompatibility.highlightText
-        )
+        self.objLabel = ObjectTextView(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         self.objLabel.tv.isSelectable = false
     }
@@ -684,25 +660,11 @@ class vcTabLocation: vcTabParent {
     }
     
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(
-            self,
-            wxMetal,
-            wxMetalTextObject,
-            longPressCount,
-            longPressAction,
-            gestureRecognizer
-        )
+        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, wxMetalTextObject, longPressCount, longPressAction, gestureRecognizer)
     }
     
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
-        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
-            self,
-            wxMetal[index]!,
-            numberOfPanes,
-            ortInt,
-            x,
-            y
-        )
+        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(self, wxMetal[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
@@ -717,10 +679,7 @@ class vcTabLocation: vcTabParent {
         let alert = UIAlertController(title: "Closest radar site:", message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
-            let radarDescription = rid.name
-                + ": "
-                + Utility.getRadarSiteName(rid.name)
-                + " (" + String(rid.distance) + " mi)"
+            let radarDescription = rid.name + ": " + Utility.getRadarSiteName(rid.name) + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }
         alert.addAction(UIAlertAction("Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)}))
