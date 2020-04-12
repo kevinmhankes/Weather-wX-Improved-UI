@@ -205,7 +205,13 @@ class WXMetalRender {
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
-        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        //renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(
+            red: Double(Color.red(radarBuffers.bgColor)) / 255.0,
+            green: Double(Color.green(radarBuffers.bgColor)) / 255.0,
+            blue: Double(Color.blue(radarBuffers.bgColor)) / 255.0,
+            alpha: 1.0
+        )
         renderPassDescriptor.colorAttachments[0].storeAction = .store
         let commandBuffer = commandQueue.makeCommandBuffer()
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
