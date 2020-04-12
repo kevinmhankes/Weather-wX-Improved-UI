@@ -246,4 +246,14 @@ public class ExternalPolygon {
         var yMax = -Float.infinity
         var yMin = -Float.infinity
     }
+    
+    static func polygonContainsPoint(_ latLon: LatLon, _ latLons: [LatLon]) -> Bool {
+        let polygonFrame = ExternalPolygon.Builder()
+        latLons.forEach {
+            _ = polygonFrame.addVertex(point: ExternalPoint($0))
+        }
+        let polygonShape = polygonFrame.build()
+        let contains = polygonShape.contains(point: latLon.asPoint())
+        return contains
+    }
 }

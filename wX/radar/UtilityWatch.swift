@@ -54,12 +54,7 @@ class UtilityWatch {
         latLons.indices.forEach { z in
             let latLons = LatLon.parseStringToLatLons(latLons[z], -1.0, false)
             if latLons.count > 3 {
-                let polygonFrame = ExternalPolygon.Builder()
-                latLons.forEach {
-                    _ = polygonFrame.addVertex(point: ExternalPoint($0))
-                }
-                let polygonShape = polygonFrame.build()
-                let contains = polygonShape.contains(point: latLon.asPoint())
+                let contains = ExternalPolygon.polygonContainsPoint(latLon, latLons)
                 if contains && notFound {
                     text = numberList[z]
                     notFound = false
