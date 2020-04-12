@@ -127,16 +127,16 @@ class vcSettingsLocation: UIwXViewController {
         }
     }
     
-    //func initializeObservations() {
-        //MyApplication.locations.forEach {
-        //    $0.updateObservation("")
-        //}
-    //}
+    func initializeObservations() {
+        MyApplication.locations.forEach {
+            $0.updateObservation("")
+        }
+    }
     
     func displayContent() {
         locationCards = []
         self.stackView.removeViews()
-        (0..<Location.numLocations).forEach { index in
+        MyApplication.locations.indices.forEach { index in
             let name = MyApplication.locations[index].name
             let observation = MyApplication.locations[index].observation
             let latLon = MyApplication.locations[index].lat.truncate(10) + ", " + MyApplication.locations[index].lon.truncate(10)
@@ -154,6 +154,7 @@ class vcSettingsLocation: UIwXViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initializeObservations()
         displayContent()
         self.getContent()
     }
