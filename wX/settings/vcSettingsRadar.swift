@@ -10,19 +10,13 @@ import CoreLocation
 class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
     
     private var locationManager = CLLocationManager()
-    private var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.delegate = self
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                statusButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.displayContent()
     }
@@ -72,8 +66,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     // needed for Radar/GPS setting
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
@@ -85,9 +78,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
@@ -165,17 +156,17 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             "WXOGL_SIZE",
             "RADAR_TEXT_SIZE"
             ].forEach { pref in
-                let objSlider = ObjectSlider(self, pref)
-                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-                objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+                let objectSlider = ObjectSlider(self, pref)
+                objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+                objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
         }
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
-        let objSlider = objIdToSlider[objId]!
+        let objSlider = objectIdToSlider[objId]!
         objSlider.setLabel()
-        Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
+        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -8,18 +8,12 @@ import UIKit
 
 class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private var objIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                statusButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         UtilityUI.determineDeviceType()
         self.displayContent()
@@ -51,9 +45,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
@@ -127,15 +119,15 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             ].forEach { pref in
                 let objSlider = ObjectSlider(self, pref)
                 objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-                objIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+                objectIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
-        let objSlider = objIdToSlider[objId]!
+        let objSlider = objectIdToSlider[objId]!
         objSlider.setLabel()
-        Utility.writePref(objIdToSlider[objId]!.prefVar, Int(sender!.value))
+        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -46,7 +46,6 @@ class vcSettingsHomescreen: UIwXViewController {
     
     func deSerializeSettings() {
         homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
-        //print(homescreenFav)
     }
     
     @objc func addClicked() {
@@ -66,10 +65,7 @@ class vcSettingsHomescreen: UIwXViewController {
         displayContent()
     }
     
-    func getHelp(
-        _ targetButton: UIBarButtonItem,
-        _ help: String
-    ) {
+    func getHelp(_ targetButton: UIBarButtonItem, _ help: String) {
         let alert = ObjectPopUp(self, help, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()

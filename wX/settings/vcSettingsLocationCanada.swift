@@ -20,13 +20,7 @@ class vcSettingsLocationCanada: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         statusButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                statusButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         displayProvinces()
     }
