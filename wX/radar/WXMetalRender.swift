@@ -26,6 +26,7 @@ class WXMetalRender {
     var rdDownload = WXGLDownload()
     private var radarProduct = "N0Q"
     private var tiltInt = 0
+    // last value is for radar on main screen
     private var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
@@ -142,6 +143,7 @@ class WXMetalRender {
         self.paneNumber = paneNumber
         self.indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
+        print("DEBUGRADAR: " + "readPrefs")
         readPrefs()
         regenerateProductList()
         radarLayers = [radarBuffers]
@@ -474,6 +476,7 @@ class WXMetalRender {
     }
     
     func readPrefs() {
+        print("DEBUGRADAR: in readPrefs")
         if RadarPreferences.wxoglRememberLocation {
             let numberOfPanes = String(self.numberOfPanes)
             let index = String(paneNumber)
@@ -481,13 +484,12 @@ class WXMetalRender {
             zoom = Utility.readPref(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = Utility.readPref(
-                radarType + numberOfPanes + "_PROD" + index,
-                initialRadarProducts[paneNumber]
-            )
+            product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
+            print("DEBUGRADAR: " + numberOfPanes + " " + product)
             rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
             tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
         } else {
+            print("DEBUGRADAR: in not remember location")
             rid = Location.rid
         }
     }

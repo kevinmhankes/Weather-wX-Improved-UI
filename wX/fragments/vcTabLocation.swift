@@ -570,6 +570,7 @@ class vcTabLocation: vcTabParent {
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
         wxMetal[0]!.setRenderFunction(render(_:))
+        //wxMetal[0]!.changeProduct("N0Q")
         wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }
