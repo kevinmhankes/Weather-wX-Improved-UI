@@ -48,11 +48,11 @@ class UtilityWatch {
             numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlon.value
         }
-        let latLons = watchLatLon.split(":")
+        let latLonsFromString = watchLatLon.split(":")
         var notFound = true
         var text = ""
-        latLons.indices.forEach { z in
-            let latLons = LatLon.parseStringToLatLons(latLons[z], -1.0, false)
+        latLonsFromString.indices.forEach { z in
+            let latLons = LatLon.parseStringToLatLons(latLonsFromString[z], -1.0, false)
             if latLons.count > 3 {
                 let contains = ExternalPolygon.polygonContainsPoint(latLon, latLons)
                 if contains && notFound {

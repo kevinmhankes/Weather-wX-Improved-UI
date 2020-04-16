@@ -16,10 +16,8 @@ class WXGLNexradLevel3Common {
     ) -> [Double] {
         let start = ExternalGlobalCoordinates(startEc)
         let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, projectionNumbers)
-        var list = startCoords
         let ec = ecc.calculateEndingGlobalCoordinates(start, startBearing, distance)
-        list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
-        return list
+        return startCoords + UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
     }
 
     static func drawLine(
@@ -30,9 +28,7 @@ class WXGLNexradLevel3Common {
         _ startBearing: Double,
         _ distance: Double
     ) -> [Double] {
-        var list = startPoint
         let ec = ecc.calculateEndingGlobalCoordinates(start, startBearing, distance)
-        list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
-        return list
+        return startPoint + UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
     }
 }
