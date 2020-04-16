@@ -41,7 +41,6 @@ class WXGLNexradLevel3HailIndex {
             let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
             let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
-                let bearing = [Double]()
                 var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
                 var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
                 var index = 0
@@ -53,11 +52,9 @@ class WXGLNexradLevel3HailIndex {
                         let nm = Int(posnNumbers[$0 + 1]) ?? 0
                         start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
                         ec = ecc.calculateEndingGlobalCoordinates(
-                            ExternalEllipsoid.WGS84,
                             start,
                             Double(degree),
-                            Double(nm) * 1852.0,
-                            bearing
+                            Double(nm) * 1852.0
                         )
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
                         let baseSize = 0.015

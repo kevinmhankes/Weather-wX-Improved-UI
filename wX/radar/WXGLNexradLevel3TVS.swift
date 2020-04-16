@@ -15,7 +15,6 @@ class WXGLNexradLevel3TVS {
         let data = UtilityIO.readFiletoData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
             let tvs = retStr1.parseColumn(tvsPattern1)
-            let bearing = [Double]()
             tvs.indices.forEach { index in
                 let ecc =  ExternalGeodeticCalculator()
                 let string = tvs[index].parse(tvsPattern2)
@@ -24,11 +23,9 @@ class WXGLNexradLevel3TVS {
                 let nm = Int(items[1].replace(" ", "")) ?? 0
                 let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                 let ec = ecc.calculateEndingGlobalCoordinates(
-                    ExternalEllipsoid.WGS84,
                     start,
                     Double(degree),
-                    Double(nm) * 1852.0,
-                    bearing
+                    Double(nm) * 1852.0
                 )
                 stormList.append(ec.getLatitude())
                 stormList.append(ec.getLongitude() * -1.0)

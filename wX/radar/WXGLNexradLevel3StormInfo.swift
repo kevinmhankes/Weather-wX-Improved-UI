@@ -28,7 +28,6 @@ class WXGLNexradLevel3StormInfo {
             let reg = "(\\d+) "
             let posnNumbers = posnStr.parseColumnAll(reg)
             let motNumbers = motionStr.parseColumnAll(reg)
-            let bearing = [Double]()
             let sti15IncrLen = 0.40
             let degreeShift = 180
             let arrowLength = 2.0
@@ -42,20 +41,16 @@ class WXGLNexradLevel3StormInfo {
                     let nm2 = Int(motNumbers[index + 1]) ?? 0
                     var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                     var ec = ecc.calculateEndingGlobalCoordinates(
-                        ExternalEllipsoid.WGS84,
                         start,
                         Double(degree),
-                        Double(nm) * 1852.0,
-                        bearing
+                        Double(nm) * 1852.0
                     )
                     stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     start = ExternalGlobalCoordinates(ec)
                     ec = ecc.calculateEndingGlobalCoordinates(
-                        ExternalEllipsoid.WGS84,
                         start,
                         Double(degree2) + Double(degreeShift),
-                        Double(nm2) * 1852.0,
-                        bearing
+                        Double(nm2) * 1852.0
                     )
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     stormList += tmpCoords
@@ -64,11 +59,9 @@ class WXGLNexradLevel3StormInfo {
                     (0...3).forEach { z in
                         ecArr.append(
                             ecc.calculateEndingGlobalCoordinates(
-                                ExternalEllipsoid.WGS84,
                                 start,
                                 Double(degree2) + Double(degreeShift),
-                                Double(nm2) * 1852.0 * Double(z) * 0.25,
-                                bearing
+                                Double(nm2) * 1852.0 * Double(z) * 0.25
                             )
                         )
                         latLons.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], projectionNumbers)))
@@ -83,8 +76,7 @@ class WXGLNexradLevel3StormInfo {
                                 projectionNumbers,
                                 start,
                                 $0,
-                                arrowLength * 1852.0,
-                                bearing
+                                arrowLength * 1852.0
                             )
                         }
                         // 15,30,45 min ticks
@@ -102,8 +94,7 @@ class WXGLNexradLevel3StormInfo {
                                         projectionNumbers,
                                         ecArr[index],
                                         $0,
-                                        arrowLength * 1852.0 * sti15IncrLen,
-                                        bearing
+                                        arrowLength * 1852.0 * sti15IncrLen
                                     )
                                     
                             }
@@ -123,12 +114,11 @@ class WXGLNexradLevel3StormInfo {
         _ projectionNumbers: ProjectionNumbers,
         _ ecArr: ExternalGlobalCoordinates,
         _ startBearing: Double,
-        _ distance: Double,
-        _ bearing: [Double]
+        _ distance: Double
     ) -> [Double] {
         var list = startPoint.list
         let start = ExternalGlobalCoordinates(ecArr)
-        let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
+        let ec = ecc.calculateEndingGlobalCoordinates(start, startBearing, distance)
         list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
         return list
     }

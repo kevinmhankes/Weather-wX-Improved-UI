@@ -27,7 +27,7 @@ public class ExternalGeodeticCalculator {
      *            be populated with the result
      * @return
      */
-    func calculateEndingGlobalCoordinates(
+    func calculateEndingGlobalCoordinatesLocal(
         _ ellipsoid: ExternalEllipsoid,
         _ start: ExternalGlobalCoordinates,
         _ startBearing: Double,
@@ -134,12 +134,13 @@ public class ExternalGeodeticCalculator {
      * @return
      */
     func calculateEndingGlobalCoordinates(
-        _ ellipsoid: ExternalEllipsoid = ExternalEllipsoid.WGS84,
-        _ start: ExternalGlobalCoordinates, _ startBearing: Double,
+        _ start: ExternalGlobalCoordinates,
+        _ startBearing: Double,
         _ distance: Double
     ) -> ExternalGlobalCoordinates {
-        return calculateEndingGlobalCoordinates(ellipsoid, start, startBearing, distance, [])
+        return calculateEndingGlobalCoordinatesLocal(ExternalEllipsoid.WGS84, start, startBearing, distance, [])
     }
+    
     /**
      * Calculate the geodetic curve between two points on a specified reference
      * ellipsoid. This is the solution to the inverse geodetic problem.

@@ -12,13 +12,12 @@ class WXGLNexradLevel3Common {
         _ projectionNumbers: ProjectionNumbers,
         _ start: ExternalGlobalCoordinates,
         _ startBearing: Double,
-        _ distance: Double,
-        _ bearing: [Double]
+        _ distance: Double
     ) -> [Double] {
         let start = ExternalGlobalCoordinates(startEc)
         let startCoords = UtilityCanvasProjection.computeMercatorNumbers(startEc, projectionNumbers)
         var list = startCoords
-        let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
+        let ec = ecc.calculateEndingGlobalCoordinates(start, startBearing, distance)
         list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
         return list
     }
@@ -29,11 +28,10 @@ class WXGLNexradLevel3Common {
         _ projectionNumbers: ProjectionNumbers,
         _ start: ExternalGlobalCoordinates,
         _ startBearing: Double,
-        _ distance: Double,
-        _ bearing: [Double]
+        _ distance: Double
     ) -> [Double] {
         var list = startPoint
-        let ec = ecc.calculateEndingGlobalCoordinates(ExternalEllipsoid.WGS84, start, startBearing, distance, bearing)
+        let ec = ecc.calculateEndingGlobalCoordinates(start, startBearing, distance)
         list += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
         return list
     }
