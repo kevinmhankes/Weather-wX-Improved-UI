@@ -17,7 +17,7 @@ final class SevereNotice {
     }
     
     func getBitmaps(_ html: String) {
-        var noAlertsVerbiage = ""
+        let noAlertsVerbiage: String
         bitmaps = [Bitmap]()
         switch type {
         case "SPCMCD":
@@ -27,7 +27,7 @@ final class SevereNotice {
         case "WPCMPD":
             noAlertsVerbiage = "No MPDs are currently in effect."
         default:
-            break
+            noAlertsVerbiage = ""
         }
         var text: String
         if !html.contains(noAlertsVerbiage) {

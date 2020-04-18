@@ -798,7 +798,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
             )
         }
-        if RadarPreferences.radarWatMcd {
+        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
             alert.addAction(UIAlertAction(
                 "Show Watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
             )
@@ -809,7 +809,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 "Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)})
             )
         }
-        if RadarPreferences.radarMpd {
+        if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
             alert.addAction(UIAlertAction(
                 "Show MPD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MPD, pointerLocation, self)})
             )

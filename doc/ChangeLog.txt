@@ -26,6 +26,8 @@
 	         [FIX] nearest forecast from main screen nexrad as not showing lat/lon even thought it worked
 	         [ADD] nexrad long press - if not warnings don't show option for text
 	         [ADD] nexrad long press - if not mcd don't show option for text
+	         [ADD] nexrad long press - if not mpd don't show option for text
+	         [ADD] nexrad long press - if not watch don't show option for text
 	         [FIX] nexrad background color was only partially working
 		 [FIX] if display nexrad on main screen, long press did not show options to show MPD/MCD/Watch text if those features were enabled
 56099 2020_04_10 [REF] misc
