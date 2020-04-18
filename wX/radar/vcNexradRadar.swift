@@ -802,6 +802,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             alert.addAction(UIAlertAction(
                 "Show Watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
             )
+        }
+        if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
+            //print(MyApplication.mcdNoList.value)
             alert.addAction(UIAlertAction(
                 "Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)})
             )
