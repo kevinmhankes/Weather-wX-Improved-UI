@@ -48,6 +48,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     var wxoglCalledFromTimeButton = false
     var radarSiteOverride = ""
     private let map = ObjectMap(.RADAR)
+    var warningCount = 0
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -567,12 +568,23 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     func updateWarningsInToolbar() {
+        warningCount = 0
         if RadarPreferences.radarWarnings {
+            // FIXME use a global count
             let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
             let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
             let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
             self.warningButton.title = countString
+            let sum = (Int(tstCount) ?? 0) + (Int(torCount) ?? 0) + (Int(ffwCount) ?? 0)
+            warningCount += sum
+        }
+        ObjectPolygonWarning.polygonList.forEach {
+            let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
+            if polygonType.isEnabled {
+               warningCount += Int(ObjectPolygonWarning.getCount(polygonType.storage.value)) ?? 0
+               //print("DEBUG: " + polygonType.name + " " + String(count))
+            }
         }
     }
     
@@ -781,7 +793,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 "Change Tilt", { _ in self.showTiltMenu()})
             )
         }
-        if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() {
+        if (RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled()) && warningCount > 0 {
             alert.addAction(UIAlertAction(
                 "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
             )
