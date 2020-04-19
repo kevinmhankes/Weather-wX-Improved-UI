@@ -67,6 +67,8 @@ final class SevereWarning {
                     location = Utility.getWfoSiteName(wfo)
                 }
                 text += "  " + location + MyApplication.newline
+            } else {
+                listOfWfo.append("")
             }
         }
     }
