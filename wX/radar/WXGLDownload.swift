@@ -8,6 +8,8 @@ import Foundation
 
 final class WXGLDownload {
     
+    // FIXME TODO make all methods/vars static
+    
     private static let utilnxanimPattern1 = ">(sn.[0-9]{4})</a>"
     private static let utilnxanimPattern2 = ".*?([0-9]{2}-[A-Za-z]{3}-[0-9]{4} [0-9]{2}:[0-9]{2}).*?"
     static var nwsRadarPub = "https://tgftp.nws.noaa.gov/"

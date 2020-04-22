@@ -8,6 +8,7 @@ import UIKit
 
 final class WXMetalSurfaceView {
 
+    // FIXME TODO rename these
     var citiesExtAl = [TextViewMetal]()
     var countyLabelsAl = [TextViewMetal]()
     var obsAl = [TextViewMetal]()
