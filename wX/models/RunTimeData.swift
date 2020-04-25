@@ -13,11 +13,7 @@ final public class RunTimeData {
     var timeStrConv = ""
     var validTime = ""
 
-    func appendListRun(_ value: String) {
-        listRun.append(value)
-    }
+    func appendListRun(_ value: String) {listRun.append(value)}
 
-    func appendListRun(_ values: [String]) {
-        listRun += values
-    }
+    func appendListRun(_ values: [String]) {listRun += values}
 }

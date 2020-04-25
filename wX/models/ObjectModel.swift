@@ -402,20 +402,6 @@ final public class ObjectModel {
             timeArr = []
             stride(from: 0, to: 126, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
             setupListRunZ()
-        case "NCEP:WW3-ENP":
-            paramArr = UtilityModelNcepInterface.modelWw3EnpParams
-            paramLabelArr = UtilityModelNcepInterface.modelWw3EnpLabels
-            sectorArr = UtilityModelNcepInterface.sectorsWw3Enp
-            timeArr = []
-            stride(from: 0, to: 126, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
-            setupListRunZ()
-        case "NCEP:WW3-WNA":
-            paramArr = UtilityModelNcepInterface.modelWw3WnaParams
-            paramLabelArr = UtilityModelNcepInterface.modelWw3WnaLabels
-            sectorArr = UtilityModelNcepInterface.sectorsWw3Wna
-            timeArr = []
-            stride(from: 0, to: 126, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
-            setupListRunZ()
         case "NCEP:ESTOFS":
             paramArr = UtilityModelNcepInterface.modelEstofsParams
             paramLabelArr = UtilityModelNcepInterface.modelEstofsLabels

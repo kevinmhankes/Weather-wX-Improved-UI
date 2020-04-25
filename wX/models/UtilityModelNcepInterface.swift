@@ -24,9 +24,9 @@ final class UtilityModelNcepInterface {
         "POLAR",
         "RAP",
         "SREF",
-        "WW3",
-        "WW3-ENP",
-        "WW3-WNA"
+        "WW3"
+        //"WW3-ENP",
+        //"WW3-WNA"
     ]
     
     static let sectorsGfs = [
@@ -153,16 +153,7 @@ final class UtilityModelNcepInterface {
         "ATL-PAC",
         "NORTH-PAC",
         "EAST-PAC",
-        "WN-ATL"
-    ]
-    
-    static let sectorsWw3Enp = [
-        "NORTH-PAC",
-        "EAST-PAC"
-    ]
-    
-    static let sectorsWw3Wna = [
-        "WN-ATL"
+        "WEST-ATL"
     ]
     
     static let sectorsEstofs =  [
@@ -837,30 +828,6 @@ final class UtilityModelNcepInterface {
         "Peak Wave Direction and Period (sec)",
         "Significant Wave Height and Wind",
         "Wind Wave Direction and Period (sec)"
-    ]
-    
-    static let modelWw3EnpParams = [
-        "regional_pk_dir_per",
-        "regional_wv_dir_per",
-        "regional_wv_ht"
-    ]
-    
-    static let modelWw3EnpLabels = [
-        "Regional WW3 Model Peak Wave Direction and Period",
-        "Regional WW3 Model Wind Wave Direction and Period",
-        "Regional WW3 Model Sig Wave Height and Wind"
-    ]
-    
-    static let modelWw3WnaParams = [
-        "regional_pk_dir_per",
-        "regional_wv_dir_per",
-        "regional_wv_ht"
-    ]
-    
-    static let modelWw3WnaLabels = [
-        "Regional WW3 Model Peak Wave Direction and Period",
-        "Regional WW3 Model Wind Wave Direction and Period",
-        "Regional WW3 Model Sig Wave Height and Wind"
     ]
     
     static let modelEstofsParams = [
