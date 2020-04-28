@@ -232,6 +232,7 @@ final class UtilityModelNcepInterface {
         "precip_p60",
         "precip_ptot",
         "dom_precip_type",
+        "sim_radar_comp",
         "snodpth_chng"
     ]
     
@@ -265,6 +266,7 @@ final class UtilityModelNcepInterface {
         "Total Precipitation every 60 hours",
         "Total Accumulated Precipitation of Period",
         "Dominant Precipitation Type",
+        "Composite Radar Reflectivity",
         "Snow Depth Change for previous 001 hours"
     ]
     
