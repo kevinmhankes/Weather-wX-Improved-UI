@@ -15,7 +15,7 @@ final class ObjectMetar {
     let windDirection: String
     var windSpeed: String
     var windGust: String
-    let seaLevelPressure: String
+    var seaLevelPressure: String
     let visibility: String
     let relativeHumidity: String
     var windChill: String
@@ -107,7 +107,7 @@ final class ObjectMetar {
                 conditionsTimeString = UtilityTime.convertFromUTCForMetar(localStatus[1].replace(" UTC", ""))
             }
         }
-        //seaLevelPressure = changePressureUnits(seaLevelPressure)
+        seaLevelPressure = changePressureUnits(seaLevelPressure)
         temperature = changeDegreeUnits(temperature)
         dewpoint = changeDegreeUnits(dewpoint)
         windChill = changeDegreeUnits(windChill)

@@ -69,8 +69,7 @@ final class UtilityMath {
         if value == "" {
             return ""
         }
-        var tmpNum = Double(value) ?? 0.0
-        tmpNum *= 1.152
+        let tmpNum = (Double(value) ?? 0.0) * 1.152
         return roundDToString(tmpNum)
     }
 
@@ -87,12 +86,10 @@ final class UtilityMath {
     }
 
     static func unitsTemp(_ value: String) -> String {
-        var tmpNum = 0
-        var tmpNumD = 0.0
         var value2 = value.replace("\n", "").replace(" ", "")
         if !UIPreferences.unitsF {
-            tmpNum = Int(value2) ?? 0
-            tmpNumD = (Double(tmpNum) - 32.0) * 5.0 / 9.0
+            let tmpNum = Int(value2) ?? 0
+            let tmpNumD = (Double(tmpNum) - 32.0) * 5.0 / 9.0
             value2 = String(Int(round(tmpNumD)))
         }
         return value2
