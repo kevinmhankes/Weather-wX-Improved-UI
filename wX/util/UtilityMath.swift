@@ -35,13 +35,7 @@ final class UtilityMath {
         return [rx, ry]
     }
 
-    static func computeMiddishPoint(
-        _ x0: Double,
-        _ y0: Double,
-        _ x1: Double,
-        _ y1: Double,
-        _ fraction: Double
-    ) -> [Double] {
+    static func computeMiddishPoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
        return [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
     }
 
