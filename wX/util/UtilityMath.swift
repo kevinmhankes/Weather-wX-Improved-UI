@@ -12,13 +12,7 @@ final class UtilityMath {
         sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
     }
 
-    static func computeTipPoint(
-        _ x0: Double,
-        _ y0: Double,
-        _ x1: Double,
-        _ y1: Double,
-        _ right: Bool
-    ) -> [Double] {
+    static func computeTipPoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ right: Bool) -> [Double] {
         let dx = x1 - x0
         let dy = y1 - y0
         let length = sqrt(dx * dx + dy * dy)
