@@ -77,7 +77,6 @@ final class ObjectCurrentConditions {
             string += " G "
         }
         string += windGust + " mph" + " - " + visibility + " mi - " + condition
-        print("DEBUG: " + string)
         return (string, objMetar.icon, objMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
