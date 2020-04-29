@@ -10,7 +10,7 @@ import MapKit
 final class UtilityTime {
     
     static func monthWordToNumber(_ month: String) -> String {
-        return month.replaceAll("Jan", "01")
+        month.replaceAll("Jan", "01")
             .replaceAll("Feb", "02")
             .replaceAll("Mar", "03")
             .replaceAll("Apr", "04")
@@ -41,9 +41,7 @@ final class UtilityTime {
         let date = dateFormatter.date(from: time.replace("+00:00", ""))
         dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
         dateFormatter.timeZone = TimeZone.current
-        if let goodDate = date {
-            returnTime = dateFormatter.string(from: goodDate)
-        }
+        if let goodDate = date { returnTime = dateFormatter.string(from: goodDate) }
         return returnTime
     }
     
@@ -56,14 +54,11 @@ final class UtilityTime {
         let date = dateFormatter.date(from: time.replace("+00:00", ""))
         dateFormatter.dateFormat = "MM-dd h:mm a"
         dateFormatter.timeZone = TimeZone.current
-        if let goodDate = date {
-            returnTime = dateFormatter.string(from: goodDate)
-        }
+        if let goodDate = date { returnTime = dateFormatter.string(from: goodDate) }
         return returnTime
     }
     
     static func dayOfWeek(_ year: Int, _ month: Int, _ day: Int) -> String {
-        let dayOfTheWeek: String
         var futureDateComp = DateComponents()
         futureDateComp.year = year
         futureDateComp.month = month
@@ -73,23 +68,22 @@ final class UtilityTime {
         let dayIndex = calendar.component(.weekday, from: futureDate)
         switch dayIndex {
         case 1:
-            dayOfTheWeek = "Sun"
+            return "Sun"
         case 2:
-            dayOfTheWeek = "Mon"
+            return "Mon"
         case 3:
-            dayOfTheWeek = "Tue"
+            return "Tue"
         case 4:
-            dayOfTheWeek = "Wed"
+            return "Wed"
         case 5:
-            dayOfTheWeek = "Thu"
+            return "Thu"
         case 6:
-            dayOfTheWeek = "Fri"
+            return "Fri"
         case 7:
-            dayOfTheWeek = "Sat"
+            return "Sat"
         default:
-            dayOfTheWeek = ""
+            return ""
         }
-        return dayOfTheWeek
     }
     
     static func getYear() -> Int { Calendar.current.component(.year, from: Date()) }
@@ -138,14 +132,9 @@ final class UtilityTime {
         return dateFormatter.string(from: date)
     }
     
-    static func currentTimeMillis64() -> Int64 {
-        let nowDouble = Date().timeIntervalSince1970
-        return Int64(nowDouble * 1000)
-    }
+    static func currentTimeMillis64() -> Int64 { Int64(Date().timeIntervalSince1970 * 1000) }
     
-    static func currentTimeMillis() -> Int {
-        return Int((Date().timeIntervalSince1970 * 1000.0).rounded())
-    }
+    static func currentTimeMillis() -> Int { Int((Date().timeIntervalSince1970 * 1000.0).rounded()) }
     
     static func getCurrentHourInUTC() -> Int {
         let date = Date()
