@@ -17,9 +17,7 @@ class DownloadTimer {
 
     func isRefreshNeeded() -> Bool {
         refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 6)
-        if identifier == "WARNINGS" {
-            refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 3)
-        }
+        if identifier == "WARNINGS" { refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 3) }
         var refreshNeeded = false
         let currentTime = UtilityTime.currentTimeMillis()
         let currentTimeSeconds = currentTime / 1000
@@ -32,7 +30,5 @@ class DownloadTimer {
         return refreshNeeded
     }
 
-    func resetTimer() {
-        lastRefresh = 0
-    }
+    func resetTimer() { lastRefresh = 0 }
 }
