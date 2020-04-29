@@ -48,9 +48,9 @@ final class UtilityMath {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
-        let newX = formatter.string(from: NSNumber(value: location.lat)) ?? "0.0"
-        let newY = formatter.string(from: NSNumber(value: location.lon)) ?? "0.0"
-        return LatLon(newX, newY)
+        let x = formatter.string(from: NSNumber(value: location.lat)) ?? "0.0"
+        let y = formatter.string(from: NSNumber(value: location.lon)) ?? "0.0"
+        return LatLon(x, y)
     }
 
     static func knotsToMph(_ value: String) -> String {
