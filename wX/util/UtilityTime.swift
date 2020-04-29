@@ -152,9 +152,7 @@ final class UtilityTime {
         return components.hour ?? 0
     }
     
-    static func getCurrentLocalTimeAsString() -> String {
-        return getDateAsString("yyyy-MM-dd HH:mm:ss")
-    }
+    static func getCurrentLocalTimeAsString() -> String { getDateAsString("yyyy-MM-dd HH:mm:ss") }
     
     static func isRadarTimeOld(_ radarTime: String) -> Bool {
         let radarTimeComponents = radarTime.split(":")
@@ -182,9 +180,7 @@ final class UtilityTime {
             // radar time should not be in the future, radar is down
             return true
         }
-        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) {
-            return true
-        }
+        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) { return true }
         return false
     }
     

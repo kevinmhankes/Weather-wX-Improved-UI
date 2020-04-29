@@ -43,12 +43,8 @@ final class UtilityGoes {
         var satellite = "GOES16"
         if sectorsInGoes17.contains(sector) {
             satellite = "GOES17"
-            if sector == "CONUS-G17" {
-                sectorLocal = "CONUS"
-            }
-            if sector == "FD-G17" {
-                sectorLocal = "FD"
-            }
+            if sector == "CONUS-G17" { sectorLocal = "CONUS" }
+            if sector == "FD-G17" { sectorLocal = "FD" }
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
@@ -64,9 +60,7 @@ final class UtilityGoes {
         let frameCount = String(frameCnt)
         var url: String
         var satellite = "G16"
-        if sectorsInGoes17.contains(sector) {
-            satellite = "G17"
-        }
+        if sectorsInGoes17.contains(sector) { satellite = "G17" }
         switch sector {
         case "FD":
             url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band=" + product + "&length=" + frameCount
