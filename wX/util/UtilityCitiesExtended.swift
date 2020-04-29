@@ -9,7 +9,7 @@ final class UtilityCitiesExtended {
     private static var initialized = false
     static var cities = [CityExt]()
 
-    static func populateArrays() {
+    static func create() {
         if !initialized {
             initialized = true
             let text = UtilityIO.readTextFile("cityall.txt")

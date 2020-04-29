@@ -10,7 +10,7 @@ final class UtilityCountyLabels {
     static var countyName = [String]()
     static var location = [LatLon]()
 
-    static func populateArrays() {
+    static func create() {
         if !initialized {
             initialized = true
             let text = UtilityIO.readTextFile("gaz_counties_national.txt")

@@ -60,7 +60,6 @@ final class UtilityDownload {
     
     static func getTextProduct(_ product: String) -> String {
         var text = ""
-        print(product)
         if product == "AFDLOC" {
             text = getTextProduct("AFD" + Location.wfo.uppercased())
         } else if product == "HWOLOC" {
@@ -221,9 +220,7 @@ final class UtilityDownload {
             let location = product.substring(3).replace("%", "")
             let locationName = Utility.getWfoSiteName(location)
             var site = locationName.split(",")[0]
-            if product.hasPrefix("RTP") {
-                site = location
-            }
+            if product.hasPrefix("RTP") { site = location }
             let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + productType
             // https://forecast.weather.gov/product.php?site=ILX&issuedby=IL&product=RWR
             text = url.getHtmlSep()
@@ -321,9 +318,7 @@ final class UtilityDownload {
         text = text.parse(MyApplication.prePattern)
         text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
-        if t1 != "RTP" {
-            text = text.removeLineBreaks()
-        }
+        if t1 != "RTP" { text = text.removeLineBreaks() }
         return text
     }
     
@@ -348,9 +343,7 @@ final class UtilityDownload {
             if Location.x.contains("CANADA") {
                 needsBitmap = false
                 var rid = Location.rid
-                if rid == "NAT" {
-                    rid = "CAN"
-                }
+                if rid == "NAT" { rid = "CAN" }
                 if rid == "CAN" || rid == "PAC" || rid == "WRN" || rid == "ONT" || rid == "QUE" || rid == "ERN" {
                     bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
                 } else {
@@ -496,9 +489,7 @@ final class UtilityDownload {
             bitmap = Bitmap()
             needsBitmap = false
         }
-        if needsBitmap {
-            bitmap = Bitmap(url)
-        }
+        if needsBitmap { bitmap = Bitmap(url) }
         return bitmap
     }
 }

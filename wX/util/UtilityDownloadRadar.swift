@@ -55,9 +55,7 @@ final class UtilityDownloadRadar {
     
     static func getMcd() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
-        if html != "" {
-            MyApplication.severeDashboardMcd.value = html
-        }
+        if html != "" { MyApplication.severeDashboardMcd.value = html }
         var mcdNumberList = ""
         var mcdLatLon = ""
         let mcdList = MyApplication.severeDashboardMcd.value.parseColumn("title=.Mesoscale Discussion #(.*?).>")
@@ -78,9 +76,7 @@ final class UtilityDownloadRadar {
     
     static func getMpd() {
         let html = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
-        if html != "" {
-            MyApplication.severeDashboardMpd.value = html
-        }
+        if html != "" { MyApplication.severeDashboardMpd.value = html }
         var mpdNumberList = ""
         var mpdLatLon = ""
         let mpdList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
@@ -95,9 +91,7 @@ final class UtilityDownloadRadar {
     
     static func getWatch() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
-        if html != "" {
-            MyApplication.severeDashboardWat.value = html
-        }
+        if html != "" { MyApplication.severeDashboardWat.value = html }
         var watchNumberList = ""
         var watchLatLon = ""
         var watchLatLonTor = ""
@@ -139,9 +133,7 @@ final class UtilityDownloadRadar {
     private static func storeWatchMcdLatLon(_ html: String) -> String {
         let coordinates = html.parseColumn("([0-9]{8}).*?")
         var string = ""
-        coordinates.forEach {
-            string += LatLon($0).print()
-        }
+        coordinates.forEach { string += LatLon($0).print() }
         string += ":"
         return string.replace(" :", ":")
     }

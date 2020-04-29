@@ -102,14 +102,14 @@ final class WXMetalTextObject {
     private func initializeTextLabelsCitiesExtended() {
         if numPanes == 1 {
             if GeographyType.cities.display {
-                UtilityCitiesExtended.populateArrays()
+                UtilityCitiesExtended.create()
             }
         }
     }
     
     private func initializeTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
-            UtilityCountyLabels.populateArrays()
+            UtilityCountyLabels.create()
         }
     }
     
