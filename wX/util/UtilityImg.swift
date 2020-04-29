@@ -23,16 +23,12 @@ final class UtilityImg {
 
     static func layerDrawableToBitmap(_ layers: [Bitmap]) -> Bitmap {
         var image = UIImage()
-        if layers.count == 0 {
-            return Bitmap()
-        }
+        if layers.count == 0 { return Bitmap() }
         if layers.count < 2 {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach { layer in
-                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
-            }
+            layers.forEach { layer in imgTmp = UtilityImg.mergeImages(imgTmp, layer.image) }
             image = imgTmp
         }
         image = addColorBackground(image, UIColor.white)
@@ -45,9 +41,7 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach { layer in
-                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
-            }
+            layers.forEach { layer in imgTmp = UtilityImg.mergeImages(imgTmp, layer.image) }
             image = imgTmp
         }
         return image
