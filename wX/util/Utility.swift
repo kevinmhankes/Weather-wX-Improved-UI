@@ -37,9 +37,7 @@ final class Utility {
     
     static func getSoundingSiteName(_ wfo: String) -> String {
         var site = UtilityRadar.wfoIdToName[wfo] ?? ""
-        if site == "" {
-            site = UtilityRadar.soundingIdToName[wfo] ?? ""
-        }
+        if site == "" { site = UtilityRadar.soundingIdToName[wfo] ?? "" }
         return site
     }
     
@@ -64,11 +62,7 @@ final class Utility {
     static func getHazards(_ url: String) -> String { url.parse("<!-- AddThis Button END -->   <hr /><br />(.*?)</div>") }
     
     static func safeGet(_ list: [String], _ index: Int) -> String {
-        if list.count <= index {
-            return ""
-        } else {
-            return list[index]
-        }
+        if list.count <= index { return "" } else { return list[index] }
     }
     
     static func readPref(_ key: String, _ value: Float) -> Float { GlobalVariables.preferences.getFloat(key, value) }
