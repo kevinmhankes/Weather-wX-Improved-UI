@@ -56,9 +56,7 @@ final class ObjectMetar {
             }
             condition = condition.replace("; Lightning Observed", "")
             condition = condition.replace("; Cumulonimbus Clouds, Lightning Observed", "")
-            if condition == "Mist" {
-                condition = "Fog/Mist"
-            }
+            if condition == "Mist" { condition = "Fog/Mist" }
             icon = decodeIconFromMetar(condition, obsClosest)
             condition = condition.replace(";", " and")
         }
@@ -112,12 +110,8 @@ final class ObjectMetar {
         dewpoint = changeDegreeUnits(dewpoint)
         windChill = changeDegreeUnits(windChill)
         heatIndex = changeDegreeUnits(heatIndex)
-        if windSpeed == "" {
-            windSpeed = "0"
-        }
-        if condition == "" {
-            condition = "NA"
-        }
+        if windSpeed == "" { windSpeed = "0" }
+        if condition == "" { condition = "NA" }
     }
     
     func changeDegreeUnits(_ value: String) -> String {
@@ -161,9 +155,7 @@ final class ObjectMetar {
             TDArr = tmpBlob.split("/")
             pressureBlob = metar.parse(patternMetarWxogl2)
             windBlob = metar.parse(patternMetarWxogl3)
-            if windBlob == "" {
-                windBlob = metar.parse(patternMetarWxogl4)
-            }
+            if windBlob == "" { windBlob = metar.parse(patternMetarWxogl4) }
             visBlob = metar.parse(" ([0-9].*?SM) ")
             visBlobArr = visBlob.split(" ")
             visBlob = visBlobArr[visBlobArr.count - 1].replace("SM", "")
@@ -201,9 +193,7 @@ final class ObjectMetar {
         let currentTimeTomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let fallsBetweenTomorrow = (sunTimes.0 ... sunTimes.1).contains(currentTimeTomorrow!)
         var timeOfDay = "night"
-        if fallsBetween || fallsBetweenTomorrow {
-            timeOfDay = "day"
-        }
+        if fallsBetween || fallsBetweenTomorrow { timeOfDay = "day" }
         let conditionModified = condition.split(";")[0]
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
         return MyApplication.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
