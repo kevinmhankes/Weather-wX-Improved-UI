@@ -93,20 +93,12 @@ final class UtilityString {
 
     static func parse(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
-        if retArr.count > 0 {
-            return retArr[retArr.count - 1]
-        } else {
-            return ""
-        }
+        if retArr.count > 0 { return retArr[retArr.count - 1] } else { return "" }
     }
 
     static func parseFirst(_ str: String, _ regexpStr: String) -> String {
         let retArr = parseHelper(regexpStr, str)
-        if retArr.count > 0 {
-            return retArr[0]
-        } else {
-            return ""
-        }
+        if retArr.count > 0 { return retArr[0] } else { return "" }
     }
 
    	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String { str.parse(regexpStr) }
@@ -131,9 +123,7 @@ final class UtilityString {
                     match.append(nsString.substring(with: result.range(at: $0)))
                 }
             }
-            if match.count > 1 {
-                match.remove(at: 0)
-            }
+            if match.count > 1 { match.remove(at: 0) }
             return match
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
@@ -151,9 +141,7 @@ final class UtilityString {
         }
     }
 
-    static func addPeriodBeforeLastTwoChars(_ str: String) -> String {
-        return str.insert(str.count - 2, ".")
-    }
+    static func addPeriodBeforeLastTwoChars(_ str: String) -> String { str.insert(str.count - 2, ".") }
 
     static func fixedLengthString(_ string: String, _ length: Int) -> String {
         if string.count < length {

@@ -41,11 +41,7 @@ final class UtilityObs {
         var locatioName = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         var tmp = ""
-        lines.forEach { line in
-            if line.contains("," + obsShortCode) {
-                tmp = line
-            }
-        }
+        lines.forEach { line in if line.contains("," + obsShortCode) { tmp = line } }
         let chunks = tmp.split(",")
         if chunks.count > 2 {
             locatioName = chunks[0] + ", " + chunks[1]
@@ -61,9 +57,7 @@ final class UtilityObs {
             let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + "," + newLatLon.lonString + "/stations").getNwsHtml()
             obsClosest = obsHtml.parseFirst("gov/stations/(.*?)\"")
             obsClosestClass = obsClosest
-            if key != "" && obsClosest != "" {
-                Utility.writePref(key, obsClosest)
-            }
+            if key != "" && obsClosest != "" { Utility.writePref(key, obsClosest) }
         }
         obsClosestClass = obsClosest
         return obsClosest
