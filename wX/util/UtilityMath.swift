@@ -86,8 +86,7 @@ final class UtilityMath {
     static func celsiusToFarenheit(_ value: String) -> String {
         var value2 = value
         if UIPreferences.unitsF {
-            var tmpNum = Double(value) ?? 0.0
-            tmpNum = tmpNum * 9 / 5 + 32
+            let tmpNum = (Double(value) ?? 0.0) * 9 / 5 + 32
             value2 = String(round(tmpNum))
         }
         return value2
@@ -122,9 +121,7 @@ final class UtilityMath {
         return radius * (Double.pi / 180) * cos(degreesToRadians(centerX))
     }
 
-    static func deg2rad(_ deg: Double) -> Double {
-        return (deg * Double.pi / 180.0)
-    }
+    static func deg2rad(_ deg: Double) -> Double { (deg * Double.pi / 180.0) }
 
     static func rad2deg(_ rad: Double) -> Double { (rad * 180.0 / Double.pi) }
 
