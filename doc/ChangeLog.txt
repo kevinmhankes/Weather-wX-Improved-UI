@@ -23,6 +23,7 @@
 // [FIX] if remember location not chosen, products always default to REF for multi-pane
 // [ADD] NCEP MAG WW3 changes
 // [REF] use more of condition ? trueValue : falseValue
+// [ADD] don't save radar posn if called via severe dash or alerts
 
 56100 2020_04_28 [REF] misc
 	         [FIX] nearest forecast from main screen nexrad as not showing lat/lon even thought it worked
