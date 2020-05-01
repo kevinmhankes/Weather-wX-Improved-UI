@@ -165,9 +165,7 @@ final class UtilityLocationFragment {
         ]
         for regexp in regexps {
             let temp = blob.parse(regexp)
-            if temp != "" {
-                return temp
-            }
+            if temp != "" { return temp }
         }
         return ""
     }
@@ -266,12 +264,8 @@ final class UtilityLocationFragment {
 
     static func extractCAWindDirection(_ chunk: String) -> String {
         var wdir = chunk.parse(ca7dayWinddir1)
-        if wdir == "" {
-            wdir = chunk.parse(ca7dayWinddir2)
-        }
-        if wdir != "" {
-            wdir = " " + (windDir[wdir] ?? "")
-        }
+        if wdir == "" { wdir = chunk.parse(ca7dayWinddir2) }
+        if wdir != "" { wdir = " " + (windDir[wdir] ?? "") }
         return wdir
     }
 
@@ -279,12 +273,8 @@ final class UtilityLocationFragment {
         let wspdRange = UtilityString.parseMultipe(chunk, ca7dayWindspd1, 2)
         let wspd = chunk.parse(ca7dayWindspd2)
         var gust = ""
-        if chunk.contains("gusting") {
-            gust = " G " + chunk.parse(ca7dayWindspd3)
-        }
-        if wspdRange.count > 1 {
-            return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h"
-        }
+        if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindspd3) }
+        if wspdRange.count > 1 { return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h" }
         if wspd == "" {
             return ""
         } else {

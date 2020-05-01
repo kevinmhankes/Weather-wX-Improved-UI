@@ -43,9 +43,7 @@ public class ExternalGlobalCoordinates {
         //mLatitude = (mLatitude + 180) % 360
         mLatitude += 180
         mLatitude = mLatitude.truncatingRemainder(dividingBy: 360)
-        if mLatitude < 0 {
-            mLatitude += 360
-        }
+        if mLatitude < 0 { mLatitude += 360 }
         mLatitude -= 180
         if mLatitude > 90 {
             mLatitude = 180 - mLatitude
@@ -57,9 +55,7 @@ public class ExternalGlobalCoordinates {
         //mLongitude = ((mLongitude + 180) % 360)
         mLongitude += 180
         mLongitude = mLongitude.truncatingRemainder(dividingBy: 360)
-        if mLongitude <= 0 {
-            mLongitude += 360
-        }
+        if mLongitude <= 0 { mLongitude += 360 }
         mLongitude -= 180
     }
 
@@ -98,7 +94,7 @@ public class ExternalGlobalCoordinates {
      */
     func  getLatitude() -> Double { mLatitude }
 
-    var latitude: Double { return mLatitude }
+    var latitude: Double { mLatitude }
 
     /**
      * Set latitude. The latitude value will be canonicalized (which might result
@@ -118,7 +114,7 @@ public class ExternalGlobalCoordinates {
      */
     func getLongitude() -> Double { mLongitude }
 
-    var longitude: Double { return mLongitude }
+    var longitude: Double { mLongitude }
 
     /**
      * Set longitude. The longitude value will be canonicalized. Negative

@@ -10,17 +10,13 @@ final class UtilityNws {
 
     static func getIcon(_ url: String) -> Bitmap {
         var bitmap = Bitmap()
-        if url == "NULL" {
-            return bitmap
-        }
+        if url == "NULL" { return bitmap }
         var fileName = url.replace("?size=medium", "")
             .replace("?size=small", "")
             .replace("https://api.weather.gov/icons/land/", "")
             .replace("http://api.weather.gov/icons/land/", "")
             .replace("day/", "")
-        if fileName.contains("night") {
-            fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n")
-        }
+        if fileName.contains("night") { fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n") }
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
@@ -33,9 +29,7 @@ final class UtilityNws {
         var bitmap = Bitmap()
         if url.contains("/") {
             let tokens = url.split("/")
-            if tokens.count > 1 {
-                bitmap = dualBitmapWithNumbers(tokens[0], tokens[1])
-            }
+            if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) }
         } else {
             bitmap = dualBitmapWithNumbers(url)
         }
@@ -56,12 +50,8 @@ final class UtilityNws {
         var num2 = ""
         let aSplit = iconLeftString.split(",")
         let bSplit = iconRightString.split(",")
-        if aSplit.count > 1 {
-            num1 = aSplit[1]
-        }
-        if bSplit.count > 1 {
-            num2 = bSplit[1]
-        }
+        if aSplit.count > 1 { num1 = aSplit[1] }
+        if bSplit.count > 1 { num2 = bSplit[1] }
         var aLocal = ""
         var bLocal = ""
         if aSplit.count > 0 && bSplit.count > 0 {
@@ -72,12 +62,8 @@ final class UtilityNws {
         var leftCropB = 4
         let halfWidth = 41
         let middlePoint = 45
-        if iconLeftString.contains("fg") {
-            leftCropA = middlePoint
-        }
-        if iconRightString.contains("fg") {
-            leftCropB = middlePoint
-        }
+        if iconLeftString.contains("fg") { leftCropA = middlePoint }
+        if iconRightString.contains("fg") { leftCropB = middlePoint }
         var bitmapLeft = Bitmap()
         var bitmapRight = Bitmap()
         if let fileNameLeft = UtilityNwsIcon.iconMap[aLocal + ".png"] {
@@ -131,13 +117,9 @@ final class UtilityNws {
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
         var num1 = ""
         let aSplit = iconString.split(",")
-        if aSplit.count > 1 {
-            num1 = aSplit[1]
-        }
+        if aSplit.count > 1 { num1 = aSplit[1] }
         var aLocal = ""
-        if aSplit.count > 0 {
-            aLocal = aSplit[0]
-        }
+        if aSplit.count > 0 { aLocal = aSplit[0] }
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
@@ -149,9 +131,7 @@ final class UtilityNws {
         }
         let imageSize = bitmap.image.size
         var xText = 58
-        if num1 == "100" {
-            xText = 50
-        }
+        if num1 == "100" { xText = 50 }
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: imageSize, format: rendererFormat)

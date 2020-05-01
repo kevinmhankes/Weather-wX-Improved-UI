@@ -15,10 +15,10 @@ class ExternalAngle {
     init() {}
 
     static func toRadians(degrees: Double) -> Double {
-        return degrees * PiOver180
+        degrees * PiOver180
     }
 
     static func toDegrees(radians: Double) -> Double {
-        return radians / PiOver180
+        radians / PiOver180
     }
 }

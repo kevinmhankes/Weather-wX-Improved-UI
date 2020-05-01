@@ -175,15 +175,11 @@ extension UIScrollView {
 
 extension UIStackView {
     func removeViews() {
-        self.subviews.forEach { view in
-            view.removeFromSuperview()
-        }
+        self.subviews.forEach { $0.removeFromSuperview() }
     }
     
     func removeArrangedViews() {
-        self.arrangedSubviews.forEach { view in
-            view.removeFromSuperview()
-        }
+        self.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 }
 

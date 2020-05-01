@@ -91,9 +91,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
 
     override func  hashCode() -> Int {
         var hash: Int = super.hashCode()
-        if mElevation != 0 {
-            hash *= Int(mElevation)
-      	 }
+        if mElevation != 0 { hash *= Int(mElevation) }
         return hash
     }
 

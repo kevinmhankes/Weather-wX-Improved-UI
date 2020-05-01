@@ -58,23 +58,23 @@ public class SunCalc {
     private static let e = 23.4397 * Double.radPerDegree
 
     private func rightAscension(l: Double, b: Double) -> Double {
-        return atan2(sin(l) * cos(SunCalc.e) - tan(b) * sin(SunCalc.e), cos(l))
+        atan2(sin(l) * cos(SunCalc.e) - tan(b) * sin(SunCalc.e), cos(l))
     }
 
     private func declination(l: Double, b: Double) -> Double {
-        return asin(sin(b) * cos(SunCalc.e) + cos(b) * sin(SunCalc.e) * sin(l))
+        asin(sin(b) * cos(SunCalc.e) + cos(b) * sin(SunCalc.e) * sin(l))
     }
 
     private func azimuth(h: Double, phi: Double, dec: Double) -> Double {
-        return atan2(sin(h), cos(h) * sin(phi) - tan(dec) * cos(phi))
+        atan2(sin(h), cos(h) * sin(phi) - tan(dec) * cos(phi))
     }
 
     private func altitude(h: Double, phi: Double, dec: Double) -> Double {
-        return asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(h))
+        asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(h))
     }
 
     private func siderealTime(d: Double, lw: Double) -> Double {
-        return Double.radPerDegree * (280.16 + 360.9856235 * d) - lw
+        Double.radPerDegree * (280.16 + 360.9856235 * d) - lw
     }
 
     private func astroRefraction(_ aH: Double) -> Double {
@@ -83,7 +83,7 @@ public class SunCalc {
     }
 
     private func solarMeanAnomaly(_ d: Double) -> Double {
-        return Double.radPerDegree * (357.5291 + 0.98560028 * d)
+        Double.radPerDegree * (357.5291 + 0.98560028 * d)
     }
 
     private func eclipticLongitude(_ m: Double) -> Double {
@@ -104,11 +104,11 @@ public class SunCalc {
     }
 
     private func approximateTransit(hT: Double, lw: Double, n: Double) -> Double {
-        return Date.j0 + (hT + lw) / (2.0 * Double.pi) + n
+        Date.j0 + (hT + lw) / (2.0 * Double.pi) + n
     }
 
     private func solarTransitJ(ds: Double, m: Double, l: Double) -> Double {
-        return Date.j2000 + ds + 0.0053 * sin(m) - 0.0069 * sin(2.0 * l)
+        Date.j2000 + ds + 0.0053 * sin(m) - 0.0069 * sin(2.0 * l)
     }
 
     private func hourAngle(h: Double, phi: Double, d: Double) throws -> Double {

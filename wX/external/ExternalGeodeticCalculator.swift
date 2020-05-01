@@ -138,7 +138,7 @@ public class ExternalGeodeticCalculator {
         _ startBearing: Double,
         _ distance: Double
     ) -> ExternalGlobalCoordinates {
-        return calculateEndingGlobalCoordinatesLocal(ExternalEllipsoid.WGS84, start, startBearing, distance, [])
+        calculateEndingGlobalCoordinatesLocal(ExternalEllipsoid.WGS84, start, startBearing, distance, [])
     }
     
     /**

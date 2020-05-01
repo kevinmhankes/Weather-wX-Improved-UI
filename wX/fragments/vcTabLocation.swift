@@ -174,9 +174,7 @@ class vcTabLocation: vcTabParent {
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
-        if fab != nil {
-            self.view.bringSubviewToFront(fab!.view)
-        }
+        if fab != nil { self.view.bringSubviewToFront(fab!.view) }
     }
     
     func getLocationForecast() {
@@ -546,9 +544,7 @@ class vcTabLocation: vcTabParent {
             }
         }
         metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: CGFloat(screenWidth), height: CGFloat(screenWidth))
-        metalLayer.forEach {
-            caview.layer.addSublayer($0!)
-        }
+        metalLayer.forEach { caview.layer.addSublayer($0!) }
         stackView.addArrangedSubview(caview)
         if wxMetal.count < 1 {
             wxMetal.append(WXMetalRender(device!, wxMetalTextObject, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
@@ -580,9 +576,7 @@ class vcTabLocation: vcTabParent {
             UtilityPolygons.get()
             DispatchQueue.main.async {
                 if self.wxMetal[0] != nil {
-                    self.wxMetal.forEach {
-                        $0!.constructAlertPolygons()
-                    }
+                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
                 }
             }
         }
@@ -626,12 +620,8 @@ class vcTabLocation: vcTabParent {
     
     // Clear all views except 7day and current conditions
     func clearViews() {
-        self.stackViewHazards.view.subviews.forEach {
-            $0.removeFromSuperview()
-        }
-        self.extraDataCards.forEach {
-            $0.removeFromSuperview()
-        }
+        self.stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
+        self.extraDataCards.forEach { $0.removeFromSuperview() }
         self.forecastImage = []
         self.forecastText = []
         self.extraDataCards = []
@@ -703,9 +693,7 @@ class vcTabLocation: vcTabParent {
         alert.addAction(UIAlertAction("Radar status message: " + self.wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = menuButton
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = menuButton }
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -733,8 +721,6 @@ class vcTabLocation: vcTabParent {
         objLabel.color = ColorCompatibility.highlightText
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         setTabBarColor()
-        if UIPreferences.mainScreenRadarFab {
-            fab?.setColor()
-        }
+        if UIPreferences.mainScreenRadarFab { fab?.setColor() }
     }
 }
