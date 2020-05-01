@@ -245,12 +245,8 @@ class vcModels: UIwXViewController {
     }
     
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        if sender.direction == .left {
-            rightClicked()
-        }
-        if sender.direction == .right {
-            leftClicked()
-        }
+        if sender.direction == .left { rightClicked() }
+        if sender.direction == .right { leftClicked() }
     }
     
     @objc func getAnimation() {

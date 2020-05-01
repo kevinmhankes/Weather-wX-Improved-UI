@@ -19,9 +19,7 @@ final class UtilityModels {
         var amPm: String
         if hourOfDay > 11 {
             amPm = "pm"
-            if hourOfDay > 12 {
-                hourOfDay -= 12
-            }
+            if hourOfDay > 12 { hourOfDay -= 12 }
         } else {
             amPm = "am"
         }
@@ -35,9 +33,7 @@ final class UtilityModels {
         let calendar = Calendar.current
         let dayOfWeek = calendar.component(.weekday, from: date )
         let hourOfDayLocal = calendar.component(.hour, from: date )
-        if runInt >= 0 && runInt < -offsetFromUtc/60/60 && (hourOfDayLocal-offsetFromUtc/60/60) >= 24 {
-            day += 1
-        }
+        if runInt >= 0 && runInt < -offsetFromUtc/60/60 && (hourOfDayLocal-offsetFromUtc/60/60) >= 24 { day += 1 }
         var futureDay = ""
         switch (dayOfWeek + day) % 7 {
         case 1:
@@ -73,9 +69,7 @@ final class UtilityModels {
         var modelCurrentTime2 = modelCurrentTime.replace("Z", "")
         modelCurrentTime2 = modelCurrentTime2.replace("z", "")
         if modelCurrentTime2 != "" {
-            if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) {
-                run2 = String((Int(run2) ?? 0) - 24)
-            }
+            if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) { run2 = String((Int(run2) ?? 0) - 24) }
             listTime.forEach { value in
                 tmpStr = value.split(" ")[0].replace(prefix, "")
                 listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))

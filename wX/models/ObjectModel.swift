@@ -589,9 +589,7 @@ final public class ObjectModel {
     func setParam(_ param: String) {
         self.param = param
         self.prodButton.title = param.truncate(productButtonTruncate)
-        if self.modelName == "SSEO" {
-            setModelVars(self.modelName)
-        }
+        if self.modelName == "SSEO" { setModelVars(self.modelName) }
     }
     
     func setTimeIdx(_ timeIdx: Int) {
