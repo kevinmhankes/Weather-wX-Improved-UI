@@ -93,9 +93,7 @@ final class UtilityCanadaImg {
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
         let html = (MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + radarSite).getHtmlSep()
         var durationPattern = "<p>Short .1hr.:</p>(.*?)</div>"
-        if duration == "long" {
-            durationPattern = "<p>Long .3hr.:</p>(.*?)</div>"
-        }
+        if duration == "long" { durationPattern = "<p>Long .3hr.:</p>(.*?)</div>" }
         let radarHtml1hr = html.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
         let radarSiteCode = (timeStamps.first ?? "_").split("_")[0]
@@ -130,9 +128,7 @@ final class UtilityCanadaImg {
     
     static func getRadarMosaicBitmapOptionsApplied(_ sector: String) -> Bitmap {
         var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
-        if sector == "CAN" {
-            url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
-        }
+        if sector == "CAN" { url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html" }
         let radarHtml = url.getHtmlSep()
         let match = "(/data/radar/.*?GIF)\""
         let summary = radarHtml.parse(match).replace("detailed/", "")
@@ -141,9 +137,7 @@ final class UtilityCanadaImg {
     
     static func getRadarMosaicAnimation(_ sector: String, _ duration: String) -> AnimationDrawable {
         var url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html?id=" + sector
-        if sector == "CAN" {
-            url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html"
-        }
+        if sector == "CAN" { url = MyApplication.canadaEcSitePrefix + "/radar/index_e.html" }
         let radarHtml = url.getHtmlSep()
         var sectorLocal = ""
         if sector == "CAN" {
@@ -152,9 +146,7 @@ final class UtilityCanadaImg {
             sectorLocal = sector
         }
         var durationPattern = "<p>Short .1hr.:</p>(.*?)</div>"
-        if duration == "long" {
-            durationPattern = "<p>Long .3hr.:</p>(.*?)</div>"
-        }
+        if duration == "long" { durationPattern = "<p>Long .3hr.:</p>(.*?)</div>" }
         let radarHtml1hr = radarHtml.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
         var string = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF"}.joined()

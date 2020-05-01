@@ -10,21 +10,13 @@ final class UtilityPlayList {
     
     static let formatTimeString = "MM-dd HH:mm"
     
-    static func add(
-        _ prod: String,
-        _ text: String,
-        _ uiv: UIViewController,
-        _ menuButton: ObjectToolbarIcon,
-        showStatus: Bool = true
-    ) -> Bool {
+    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon, showStatus: Bool = true) -> Bool {
         let prodLocal = prod.uppercased()
         var productAdded = false
         if !MyApplication.playlistStr.contains(prodLocal) {
             MyApplication.playlistStr += ":" + prodLocal
             Utility.writePref("PLAYLIST", MyApplication.playlistStr)
-            if showStatus {
-                _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
-            }
+            if showStatus { _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton) }
             productAdded = true
         } else {
             _ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)

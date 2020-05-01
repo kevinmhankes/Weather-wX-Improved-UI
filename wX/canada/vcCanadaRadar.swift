@@ -44,9 +44,7 @@ class vcCanadaRadar: UIwXViewController {
             radarSite = String(caRadarProvince)
             mosaicShown = true
         }
-        if !RadarPreferences.wxoglRememberLocation {
-            radarSite = Location.rid
-        }
+        if !RadarPreferences.wxoglRememberLocation { radarSite = Location.rid }
         self.getContent()
     }
     

@@ -367,9 +367,7 @@ final class UtilityCanada {
     
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false
-        if !UtilityCitiesCanada.initialized {
-            UtilityCitiesCanada.load()
-        }
+        if !UtilityCitiesCanada.initialized { UtilityCitiesCanada.load() }
         for city in UtilityCitiesCanada.cities {
             if city.contains(label) {
                 isPresent = true
@@ -382,9 +380,7 @@ final class UtilityCanada {
     static func getLatLonFromLabel(_ label: String) -> LatLon {
         var coordinates = [Double]()
         var index = 0
-        if !UtilityCitiesCanada.initialized {
-            UtilityCitiesCanada.load()
-        }
+        if !UtilityCitiesCanada.initialized { UtilityCitiesCanada.load() }
         for city in UtilityCitiesCanada.cities {
             if city == label {
                 coordinates.append(UtilityCitiesCanada.lat[index])

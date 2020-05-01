@@ -10,13 +10,13 @@ final class TextUtils {
 
     static func join(_ delim: String, _ data: Set<String>) -> String {
         var string = ""
-        data.forEach {string += $0 + delim}
+        data.forEach { string += $0 + delim }
 	    return string
 	}
 
     static func join(_ delim: String, _ data: [String]) -> String {
         var string = ""
-        data.forEach {string += $0 + delim}
+        data.forEach { string += $0 + delim }
         return string
     }
 

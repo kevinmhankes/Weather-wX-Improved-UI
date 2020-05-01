@@ -28,9 +28,7 @@ class vcMapKitView: UIwXViewController, MKMapViewDelegate {
     
     @objc func showExternalMap() {
         let directionsURL = "http://maps.apple.com/?daddr=" + mapKitLat + "," + mapKitLon
-        guard let url = URL(string: directionsURL) else {
-            return
-        }
+        guard let url = URL(string: directionsURL) else { return }
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {

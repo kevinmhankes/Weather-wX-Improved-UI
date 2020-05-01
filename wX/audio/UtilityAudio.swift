@@ -55,17 +55,13 @@ final class UtilityAudio {
     }
     
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        if synth.isSpeaking {
-            synth.pauseSpeaking(at: AVSpeechBoundary.word)
-        }
+        if synth.isSpeaking { synth.pauseSpeaking(at: AVSpeechBoundary.word) }
         synth = AVSpeechSynthesizer()
         playB.setImage(.play)
     }
     
     static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ fab: ObjectFab) {
-        if synth.isSpeaking {
-            synth.pauseSpeaking(at: AVSpeechBoundary.word)
-        }
+        if synth.isSpeaking { synth.pauseSpeaking(at: AVSpeechBoundary.word) }
         synth = AVSpeechSynthesizer()
         fab.setImage(.play)
     }

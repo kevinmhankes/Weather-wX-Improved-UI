@@ -40,9 +40,7 @@ class vcObsSites: UIwXViewController {
         var listIds = ["..Back to state list"]
         var listSort = [String]()
         lines.forEach { line in
-            if line.hasPrefix(stateSelected.uppercased()) {
-                listSort.append(line)
-            }
+            if line.hasPrefix(stateSelected.uppercased()) { listSort.append(line) }
         }
         listSort = listSort.sorted()
         listSort.forEach { item in
@@ -111,10 +109,6 @@ class vcObsSites: UIwXViewController {
     }
     
     private func displayContent() {
-        if stateView {
-            constructStateView()
-        } else {
-            showState()
-        }
+        if stateView { constructStateView() } else { showState() }
     }
 }

@@ -52,9 +52,7 @@ class vcWebView: UIwXViewController {
         } else {
             webView.loadHTMLString(url, baseURL: nil)
         }
-        if aStateCode == "tornado" {
-            productButton.title = "#tornado"
-        }
+        if aStateCode == "tornado" { productButton.title = "#tornado" }
         showProduct = true
         useUrl = false
     }
@@ -71,9 +69,7 @@ class vcWebView: UIwXViewController {
     func productChanged(_ stateCodeCurrent: String) {
         urlChanged(stateCodeCurrent)
         webView.load(URLRequest(url: URL(string: url)!))
-        if aStateCode != "tornado" {
-            Utility.writePref(prefToken, self.stateCode)
-        }
+        if aStateCode != "tornado" { Utility.writePref(prefToken, self.stateCode) }
     }
 
     func urlChanged(_ stateString: String) {
@@ -92,9 +88,7 @@ class vcWebView: UIwXViewController {
     @objc func browserClicked() {
         var tail = ""
         let state = stateCode.lowercased().split(":")[0]
-        if state.count == 2 {
-            tail = "wx"
-        }
+        if state.count == 2 { tail = "wx" }
         let url = "http://www.twitter.com/hashtag/" + state + tail
         if url.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") ||
         url.hasPrefix("https://www.wrh.noaa.gov/mesowest") {

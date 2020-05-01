@@ -7,7 +7,6 @@
 final class UtilityCanadaHourly {
     
     static func getString(_ location: Int) -> String {
-        print("URL: ")
         let url = MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-" + MyApplication.locations[location].lon.split(":")[0]
