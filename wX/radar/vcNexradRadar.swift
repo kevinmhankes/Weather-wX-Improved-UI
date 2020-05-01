@@ -49,6 +49,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     var radarSiteOverride = ""
     private let map = ObjectMap(.RADAR)
     var warningCount = 0
+    // below var is override in severe dash and usalerts as prefences should not be saved
+    var savePreferences = true
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -71,12 +73,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let screenWidth = width
         let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
-        if numberOfPanes == 2 {
-            surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0)
-        }
-        if numberOfPanes == 4 {
-            surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0)
-        }
+        if numberOfPanes == 2 { surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0) }
+        if numberOfPanes == 4 { surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0) }
         let bottom = -1.0 * ortInt * (1.0 / surfaceRatio)
         let top = ortInt * (1 / surfaceRatio)
         projectionMatrix = float4x4.makeOrtho(
@@ -254,26 +252,16 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             metalLayer[index]!.framebufferOnly = true
         }
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
-        metalLayer.forEach {
-            view.layer.addSublayer($0!)
-        }
+        metalLayer.forEach { view.layer.addSublayer($0!) }
         paneRange.forEach {
             wxMetal.append(WXMetalRender(device, textObj, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
         }
-        productButton.enumerated().forEach {
-            $1.title = wxMetal[$0]!.product
-        }
-        
+        productButton.enumerated().forEach { $1.title = wxMetal[$0]!.product }
         // when called from severedashboard and us alerts
-        if radarSiteOverride != "" {
-            wxMetal[0]!.resetRid(radarSiteOverride)
-        }
-        
+        if radarSiteOverride != "" { wxMetal[0]!.resetRid(radarSiteOverride) }
         radarSiteButton.title = wxMetal[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
-            siteButton.enumerated().forEach {
-                $1.title = wxMetal[$0]!.rid
-            }
+            siteButton.enumerated().forEach { $1.title = wxMetal[$0]!.rid }
         }
         if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             let x = wxMetal[0]!.xPos
@@ -301,9 +289,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             print("error init pipelineState")
         }
         commandQueue = device.makeCommandQueue()
-        wxMetal.forEach {
-            $0?.setRenderFunction(render(_:))
-        }
+        wxMetal.forEach { $0?.setRenderFunction(render(_:)) }
         // Below two lines enable continuous updates
         //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
@@ -354,9 +340,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            doneClicked()
-        }
+        if recognizer.state == .recognized { doneClicked() }
     }
     
     @objc func onPause() {
@@ -411,16 +395,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func setupGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
         let gestureZoomvar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
-        let gestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(tapGesture(_:))
-        )
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
         gestureRecognizer.delegate = self
-        let gestureRecognizer2 = UITapGestureRecognizer(
-            target: self,
-            action: #selector(tapGesture(_:double:))
-        )
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:double:)))
         gestureRecognizer2.numberOfTapsRequired = 2
         gestureRecognizer2.delegate = self
         self.view.addGestureRecognizer(pan)
@@ -430,22 +408,15 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(
-            UILongPressGestureRecognizer(
-                target: self,
-                action: #selector(gestureLongPress(_:))
-            )
-        )
+        self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return touch.view == gestureRecognizer.view
+        touch.view == gestureRecognizer.view
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        if !map.mapShown {
-            WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer)
-        }
+        if !map.mapShown { WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer) }
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
@@ -490,20 +461,12 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 locationManager.stopUpdatingLocation()
                 locationManager.stopMonitoringSignificantLocationChanges()
                 stopAnimate()
-                wxMetal.forEach {
-                    $0!.writePrefs()
-                }
-                wxMetal.forEach {
-                    $0!.cleanup()
-                }
+                if savePreferences { wxMetal.forEach { $0!.writePrefs() }}
+                wxMetal.forEach { $0!.cleanup() }
                 device = nil
                 textObj.OGLR = nil
-                metalLayer.indices.forEach { index in
-                    metalLayer[index] = nil
-                }
-                wxMetal.indices.forEach { index in
-                    wxMetal[index] = nil
-                }
+                metalLayer.indices.forEach { index in metalLayer[index] = nil }
+                wxMetal.indices.forEach { index in wxMetal[index] = nil }
                 commandQueue = nil
                 pipelineState = nil
                 timer = nil

@@ -21,11 +21,12 @@
 // [ADD] text labels in multipane nexrad
 // [FIX] does radar product chosen impact radar on main screen
 // [FIX] if remember location not chosen, products always default to REF for multi-pane
-// [ADD] NCEP MAG WW3 changes
 // [REF] use more of condition ? trueValue : falseValue
-// [ADD] don't save radar posn if called via severe dash or alerts
+// [REF] implement class to handle routing
 
-56100 2020_04_28 [REF] misc
+56100 2020_05_01 [REF] misc
+	         [ADD] If jump to nexrad from US Alerts or Severe Dashboard, don't save radar prererences on exit
+		 [ADD] NCEP MAG comp ref change in nam-hires firewx hrrr rap hrw-nmmb hrw-arw hrw-arw2
 	         [FIX] nearest forecast from main screen nexrad as not showing lat/lon even thought it worked
 	         [FIX] NCEP MAG remove WW3-ENP WW3-WNA
 	         [ADD] nexrad long press - if not warnings don't show option for text

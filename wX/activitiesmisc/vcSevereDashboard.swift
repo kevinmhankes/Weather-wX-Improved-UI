@@ -136,6 +136,7 @@ class vcSevereDashboard: UIwXViewController {
         let radarSite = GlobalDictionaries.wfoToRadarSite[sender.strData] ?? ""
         let vc = vcNexradRadar()
         vc.radarSiteOverride = radarSite
+        vc.savePreferences = false
         self.goToVC(vc)
     }
     
