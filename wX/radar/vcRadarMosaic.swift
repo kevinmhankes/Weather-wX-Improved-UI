@@ -27,9 +27,7 @@ class vcRadarMosaic: UIwXViewController {
         if nwsMosaicType == "local" {
             nwsMosaicType = ""
             isLocal = true
-            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNwsMosaic.getSectorFromState(
-                UtilityUSImgNwsMosaic.getStateFromRid()
-            )
+            let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNwsMosaic.getSectorFromState(UtilityUSImgNwsMosaic.getStateFromRid())
             index = UtilityUSImgNwsMosaic.sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
         self.getContent(index)
@@ -42,9 +40,7 @@ class vcRadarMosaic: UIwXViewController {
             let bitmap = UtilityUSImgNwsMosaic.get(UtilityUSImgNwsMosaic.sectors[self.index])
             DispatchQueue.main.async {
                 self.image.setBitmap(bitmap)
-                if !self.isLocal {
-                    Utility.writePref(self.prefToken, self.index)
-                }
+                if !self.isLocal { Utility.writePref(self.prefToken, self.index) }
             }
         }
     }
@@ -91,11 +87,6 @@ class vcRadarMosaic: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.image.refresh()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
     }
 }
