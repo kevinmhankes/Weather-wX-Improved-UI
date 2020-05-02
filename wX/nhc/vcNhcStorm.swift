@@ -82,9 +82,7 @@ class vcNhcStorm: UIwXViewController {
         goesSector = goesSector.replace("A", "L")  // value is either E or L
         stormId = stormId.replace("AL", "AT")
         goesId = stormId.replace("EP", "").replace("AT", "")
-        if goesId.count < 2 {
-            goesId = "0" + goesId
-        }
+        if goesId.count < 2 { goesId = "0" + goesId }
         product = "MIATCP" + stormId
         baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
     }
@@ -110,9 +108,7 @@ class vcNhcStorm: UIwXViewController {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
                 var url = self.baseUrl
-                if fileName == "WPCQPF_sm2.gif" {
-                    url = self.baseUrlShort
-                }
+                if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
                 self.bitmaps.append(Bitmap(url + fileName))
             }
             DispatchQueue.main.async {
@@ -153,9 +149,7 @@ class vcNhcStorm: UIwXViewController {
     }
     
     func displayImageContent() {
-        self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in
-            _ = ObjectImage(self.stackView, bitmap)
-        }
+        self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in _ = ObjectImage(self.stackView, bitmap) }
         self.view.bringSubviewToFront(self.toolbar)
     }
     

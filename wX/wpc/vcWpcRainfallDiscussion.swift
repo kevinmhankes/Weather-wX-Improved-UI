@@ -61,11 +61,6 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.displayContent()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
     }
 }

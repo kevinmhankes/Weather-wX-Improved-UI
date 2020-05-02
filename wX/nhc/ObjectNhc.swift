@@ -51,13 +51,9 @@ final class ObjectNhc: NSObject {
     
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
-        if UtilityUI.isTablet() {
-            imagesPerRow = 3
-        }
+        if UtilityUI.isTablet() { imagesPerRow = 3 }
         super.init()
-        NhcOceanEnum.allCases.forEach { region in
-            regionMap[region] = ObjectNhcRegionSummary(region)
-        }
+        NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
     }
     
     // TODO use a class to store 5 String Lists
@@ -122,12 +118,8 @@ final class ObjectNhc: NSObject {
                 }
             }
         }
-        if textAtl != "" {
-            _ = ObjectTextView(uiv.stackView, textAtl)
-        }
-        if textPac != "" {
-            _ = ObjectTextView(uiv.stackView, textPac)
-        }
+        if textAtl != "" { _ = ObjectTextView(uiv.stackView, textAtl) }
+        if textPac != "" { _ = ObjectTextView(uiv.stackView, textPac) }
     }
     
     func showImageData(_ region: NhcOceanEnum) {

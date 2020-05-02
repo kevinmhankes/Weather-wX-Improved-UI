@@ -52,12 +52,8 @@ class vcWpcImg: UIwXViewController {
     }
     
     func getContentFromHomescreen() {
-        let titles = GlobalArrays.nwsImageProducts.filter {
-            $0.hasPrefix(wpcImagesToken + ":")
-        }
-        if titles.count > 0 {
-            self.productButton.title = titles[0].split(":")[1]
-        }
+        let titles = GlobalArrays.nwsImageProducts.filter { $0.hasPrefix(wpcImagesToken + ":") }
+        if titles.count > 0 { self.productButton.title = titles[0].split(":")[1] }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(self.wpcImagesToken)
             DispatchQueue.main.async {
@@ -84,11 +80,6 @@ class vcWpcImg: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.image.refresh()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
     }
 }
