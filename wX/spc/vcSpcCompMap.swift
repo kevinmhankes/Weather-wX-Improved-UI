@@ -73,11 +73,6 @@ class vcSpcCompMap: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.image.refresh()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
     }
 }

@@ -7,9 +7,7 @@
 final class UtilitySpcCompmap {
 
     static func getImage(_ layerStrings: Set<String>) -> Bitmap {
-        let layers = layerStrings.map {
-            Bitmap(MyApplication.nwsSPCwebsitePrefix + "/exper/compmap/" + $0 + ".gif")
-        }
+        let layers = layerStrings.map { Bitmap(MyApplication.nwsSPCwebsitePrefix + "/exper/compmap/" + $0 + ".gif") }
         return UtilityImg.layerDrawableToBitmap(layers)
     }
 

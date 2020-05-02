@@ -17,7 +17,6 @@ final class ObjectWatchProduct {
     private let type: PolygonType
 
     init(_ type: PolygonType, _ productNumber: String) {
-        //self.productNumber = productNumber
         self.type = type
         switch type.string {
         case "WATCH_TORNADO":

@@ -15,9 +15,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     override func viewDidLoad() {
         super.viewDidLoad()
         var dayString = String(dayIndex + 1)
-        if dayIndex == 2 {
-            dayString = "3-8"
-        }
+        if dayIndex == 2 { dayString = "3-8" }
         let statusButton = ObjectToolbarIcon(title: "Day " + dayString, self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
@@ -63,11 +61,6 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.displayContent()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
     }
 }
