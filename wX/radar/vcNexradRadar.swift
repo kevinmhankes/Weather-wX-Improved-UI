@@ -441,8 +441,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 wxMetal.forEach { $0!.cleanup() }
                 device = nil
                 textObj.OGLR = nil
-                metalLayer.indices.forEach { index in metalLayer[index] = nil }
-                wxMetal.indices.forEach { index in wxMetal[index] = nil }
+                metalLayer.indices.forEach { metalLayer[$0] = nil }
+                wxMetal.indices.forEach { wxMetal[$0] = nil }
                 commandQueue = nil
                 pipelineState = nil
                 timer = nil
@@ -472,9 +472,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = "2"
         vc.wxoglCalledFromTimeButton = true
-        wxMetal.forEach {
-            $0!.writePrefs()
-        }
+        wxMetal.forEach { $0!.writePrefs() }
         wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(vc)
     }
@@ -491,17 +489,11 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func onResume() {
-        if RadarPreferences.locdotFollowsGps {
-            resumeGps()
-        }
+        if RadarPreferences.locdotFollowsGps { resumeGps() }
         //stopAnimate()
         if wxMetal[0] != nil {
-            self.wxMetal.forEach {
-                $0!.updateTimeToolbar()
-            }
-            self.wxMetal.forEach {
-                $0!.getRadar("")
-            }
+            self.wxMetal.forEach { $0!.updateTimeToolbar() }
+            self.wxMetal.forEach { $0!.getRadar("") }
             getPolygonWarnings()
         }
     }
@@ -520,10 +512,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         ObjectPolygonWarning.polygonList.forEach {
             let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
-            if polygonType.isEnabled {
-               warningCount += Int(ObjectPolygonWarning.getCount(polygonType.storage.value)) ?? 0
-               //print("DEBUG: " + polygonType.name + " " + String(count))
-            }
+            if polygonType.isEnabled { warningCount += Int(ObjectPolygonWarning.getCount(polygonType.storage.value)) ?? 0 }
         }
     }
     
@@ -531,18 +520,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         updateWarningsInToolbar()
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
-            if self.wxMetal[0] != nil {
-                self.wxMetal.forEach {
-                    $0!.constructAlertPolygons()
-                }
-            }
+            if self.wxMetal[0] != nil { self.wxMetal.forEach { $0!.constructAlertPolygons() } }
             UtilityPolygons.get()
             DispatchQueue.main.async {
-                if self.wxMetal[0] != nil {
-                    self.wxMetal.forEach {
-                        $0!.constructAlertPolygons()
-                    }
-                }
+                if self.wxMetal[0] != nil { self.wxMetal.forEach { $0!.constructAlertPolygons() } }
                 self.updateWarningsInToolbar()
                 self.semaphore.signal()
             }
@@ -558,18 +539,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         map.toggleMap(self)
     }
     
-    func mapView(
-        _ mapView: MKMapView,
-        viewFor annotation: MKAnnotation
-    ) -> MKAnnotationView? {
-        return map.mapView(annotation)
-    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? { map.mapView(annotation) }
     
-    func mapView(
-        _ mapView: MKMapView,
-        annotationView: MKAnnotationView,
-        calloutAccessoryControlTapped control: UIControl
-    ) {
+    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
     
