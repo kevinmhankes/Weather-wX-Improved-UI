@@ -149,14 +149,10 @@ class WXMetalRender {
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display {
-                geographicBuffers.append($0)
-            }
+            if $0.geotype.display { geographicBuffers.append($0) }
         }
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display {
-                radarLayers.append($0)
-            }
+            if $0.geotype.display { radarLayers.append($0) }
         }
         [
             warningTstBuffers,
@@ -170,30 +166,14 @@ class WXMetalRender {
             watchBuffers,
             watchTornadoBuffers,
             mpdBuffers
-            ].forEach {
-                if $0.type.display {
-                    radarLayers.append($0)
-                }
-        }
-        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
-            radarLayers.append(locdotBuffers)
-        }
-        if PolygonType.SPOTTER.display {
-            radarLayers.append(spotterBuffers)
-        }
-        if RadarPreferences.locdotFollowsGps {
-            radarLayers.append(locCircleBuffers)
-        }
-        if PolygonType.WIND_BARB.display {
-            radarLayers += [wbCircleBuffers, wbGustsBuffers, wbBuffers]
-        }
-        if PolygonType.SWO.display {
-            radarLayers.append(swoBuffers)
-        }
+            ].forEach { if $0.type.display { radarLayers.append($0) } }
+        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps { radarLayers.append(locdotBuffers) }
+        if PolygonType.SPOTTER.display { radarLayers.append(spotterBuffers) }
+        if RadarPreferences.locdotFollowsGps { radarLayers.append(locCircleBuffers) }
+        if PolygonType.WIND_BARB.display { radarLayers += [wbCircleBuffers, wbGustsBuffers, wbBuffers] }
+        if PolygonType.SWO.display { radarLayers.append(swoBuffers) }
         radarLayers += [stiBuffers, hiBuffers, tvsBuffers]
-        if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn {
-            loadGeometry()
-        }
+        if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn { loadGeometry() }
     }
     
     func render(
@@ -207,7 +187,6 @@ class WXMetalRender {
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
-        //renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(
             red: Double(Color.red(radarBuffers.bgColor)) / 255.0,
             green: Double(Color.green(radarBuffers.bgColor)) / 255.0,
@@ -245,11 +224,7 @@ class WXMetalRender {
                             MemoryLayout<Float>.size * float4x4.numberOfElements()
                         )
                         renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                        renderEncoder!.drawPrimitives(
-                            type: vbuffer.shape,
-                            vertexStart: 0,
-                            vertexCount: vbuffer.vertexCount
-                        )
+                        renderEncoder!.drawPrimitives(type: vbuffer.shape, vertexStart: 0, vertexCount: vbuffer.vertexCount)
                     }
                 }
             }
@@ -279,11 +254,7 @@ class WXMetalRender {
                                     MemoryLayout<Float>.size * float4x4.numberOfElements()
                                 )
                                 renderEncoder!.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
-                                renderEncoder!.drawPrimitives(
-                                    type: .line,
-                                    vertexStart: 0,
-                                    vertexCount: vbuffer.vertexCount
-                                )
+                                renderEncoder!.drawPrimitives(type: .line, vertexStart: 0, vertexCount: vbuffer.vertexCount)
                             }
                         }
                     }
@@ -320,16 +291,12 @@ class WXMetalRender {
                 constructGenericLines($0)
                 $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
-        }
+        if self.renderFn != nil { self.renderFn!(paneNumber) }
         [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
-        }
+        if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
     
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
@@ -350,25 +317,13 @@ class WXMetalRender {
         case "FFW":
             fList = WXGLPolygonWarnings.add(pn, buffers.type)
         case "SMW":
-            fList = WXGLPolygonWarnings.addGeneric(
-                pn,
-                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!
-            )
+            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
         case "SQW":
-            fList = WXGLPolygonWarnings.addGeneric(
-                pn,
-                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!
-            )
+            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
         case "DSW":
-            fList = WXGLPolygonWarnings.addGeneric(
-                pn,
-                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!
-            )
+            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
         case "SPS":
-            fList = WXGLPolygonWarnings.addGeneric(
-                pn,
-                ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!
-            )
+            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case "STI":
             fList = WXGLNexradLevel3StormInfo.decode(pn, indexString)
         default:
@@ -428,13 +383,9 @@ class WXMetalRender {
             constructGenericGeographic($0)
             $0.generateMtlBuffer(device)
         }
-        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
-            constructLocationDot()
-        }
+        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps { constructLocationDot() }
         setZoom()
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
-        }
+        if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
     
     func writePrefs() {
@@ -463,6 +414,8 @@ class WXMetalRender {
         }
     }
     
+    // TODO consolidate the method above and below
+    // TODO move radarType to global and rename
     func writePrefsForSingleToQuadPaneTransition() {
         let numberOfPanes = "4"
         let radarType = "WXMETAL"
@@ -476,7 +429,7 @@ class WXMetalRender {
     }
     
     func readPrefs() {
-        print("DEBUGRADAR: in readPrefs")
+        //print("DEBUGRADAR: in readPrefs")
         if RadarPreferences.wxoglRememberLocation {
             let numberOfPanes = String(self.numberOfPanes)
             let index = String(paneNumber)
@@ -485,11 +438,11 @@ class WXMetalRender {
             xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
             product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
-            print("DEBUGRADAR: " + numberOfPanes + " " + product)
+            //print("DEBUGRADAR: " + numberOfPanes + " " + product)
             rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
             tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
         } else {
-            print("DEBUGRADAR: in not remember location")
+            //print("DEBUGRADAR: in not remember location")
             rid = Location.rid
         }
     }
@@ -509,9 +462,7 @@ class WXMetalRender {
     }
     
     var rid: String {
-        get {
-            return ridStr
-        }
+        get { ridStr }
         set {
             self.ridStr = newValue
             checkIfTdwr()
@@ -519,9 +470,7 @@ class WXMetalRender {
     }
     
     var product: String {
-        get {
-            return radarProduct
-        }
+        get { radarProduct }
         set {
             self.radarProduct = newValue
             checkIfTdwr()
