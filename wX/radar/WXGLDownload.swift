@@ -130,18 +130,12 @@ final class WXGLDownload {
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
-        (0..<snDates.count - 1).forEach { index in
-            if snDates[index] == mostRecentTime {
-                mostRecentSn = snFiles[index]
-            }
-        }
+        (0..<snDates.count - 1).forEach { if snDates[$0] == mostRecentTime { mostRecentSn = snFiles[$0] } }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
         var index = seq - frameCount + 1
         (0..<frameCount).forEach { _ in
             var tmpK = index
-            if tmpK < 0 {
-                tmpK += 251
-            }
+            if tmpK < 0 { tmpK += 251 }
             listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }

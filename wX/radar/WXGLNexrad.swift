@@ -17,9 +17,7 @@ final class WXGLNexrad {
             if radarTimeSplit.count > 0 {
                 radarTimeFinalWithDate = radarTimeSplit[0]
                 let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
-                if radarTimeFinalWithDateInParts.count > 1 {
-                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
-                }
+                if radarTimeFinalWithDateInParts.count > 1 { radarTimeFinal = radarTimeFinalWithDateInParts[1] }
             }
         }
         return radarTimeFinal
