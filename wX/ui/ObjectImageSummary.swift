@@ -16,9 +16,7 @@ final class ObjectImageSummary {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() {
-            imagesPerRow = imagersPerRowWide
-        }
+        if UtilityUI.isTablet() { imagesPerRow = imagersPerRowWide }
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {

@@ -15,6 +15,4 @@ final class ObjectDatePicker {
         datePicker.maximumDate = Date()
         stackView.addArrangedSubview(datePicker)
     }
-    
-    //var view: UIDatePicker { datePicker }
 }

@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    private var objectTextView = ObjectTextView()
+    private let objectTextView: ObjectTextView
     private var sunriseSunset: String
     private var gmtTimetext: String
 

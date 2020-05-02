@@ -8,14 +8,11 @@ import UIKit
 
 final class ObjectImageAndText {
     
+    //
     // Used in SPC Swo, SPC Fireoutlook, and WPC Excessive Rain image/text combo
+    //
     
-    init(
-        _ uiv: UIwXViewController,
-        _ bitmap: Bitmap,
-        _ objectTextView: inout ObjectTextView,
-        _ html: String
-    ) {
+    init(_ uiv: UIwXViewController, _ bitmap: Bitmap, _ objectTextView: inout ObjectTextView, _ html: String) {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
@@ -54,24 +51,15 @@ final class ObjectImageAndText {
     }
     
     // SPC SWO
-    init(
-        _ uiv: UIwXViewController,
-        _ bitmaps: [Bitmap],
-        _ objectTextView: inout ObjectTextView,
-        _ html: String
-    ) {
+    init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], _ objectTextView: inout ObjectTextView, _ html: String) {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
-            imagesPerRow = 4
-        }
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() { imagesPerRow = 4 }
         #if targetEnvironment(macCatalyst)
         imagesPerRow = 4
         #endif
-        if bitmaps.count == 2 {
-            imagesPerRow = 2
-        }
+        if bitmaps.count == 2 { imagesPerRow = 2 }
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {

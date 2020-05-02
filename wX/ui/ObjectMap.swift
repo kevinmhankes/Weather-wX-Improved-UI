@@ -143,32 +143,13 @@ public class ObjectMap {
         mapView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor).isActive = true
         mapView.topAnchor.constraint(equalTo: uiv.view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.toolbarHeight).isActive = true
-        //let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        /*mapView.frame = CGRect(
-         x: 0,
-         y: UtilityUI.getTopPadding(),
-         width: width,
-         height: height
-         - UIPreferences.toolbarHeight
-         - UtilityUI.getBottomPadding()
-         - UtilityUI.getTopPadding()
-         )*/
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
     static func centerMapOnLocationEdit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
-        let coordinateRegion = MKCoordinateRegion(
-            center: location,
-            latitudinalMeters: regionRadius * 2.0,
-            longitudinalMeters: regionRadius * 2.0
-        )
+        let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        mapView.frame = CGRect(
-            x: 0,
-            y: UtilityUI.getTopPadding(),
-            width: width,
-            height: width
-        )
+        mapView.frame = CGRect(x: 0, y: UtilityUI.getTopPadding(), width: width, height: width)
         mapView.setRegion(coordinateRegion, animated: true)
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
@@ -176,11 +157,7 @@ public class ObjectMap {
     }
     
     static func centerMapForMapKit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
-        let coordinateRegion = MKCoordinateRegion(
-            center: location,
-            latitudinalMeters: regionRadius * 2.0,
-            longitudinalMeters: regionRadius * 2.0
-        )
+        let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         mapView.frame = CGRect(
             x: 0,
