@@ -10,7 +10,7 @@ final class ObjectSettingsSwitch {
 
     let button = UIButton(type: UIButton.ButtonType.system)
     let switchUi = UISwitch()
-    var prefMap = [String: String]()
+    let prefMap: [String: String]
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap
