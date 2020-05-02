@@ -17,13 +17,9 @@ class WXGLNexradLevel3StormInfo {
             let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""
-            position.forEach {
-                posnStr += $0.replace("/", " ")
-            }
+            position.forEach { posnStr += $0.replace("/", " ") }
             var motionStr = ""
-            motion.forEach {
-                motionStr += $0.replace("/", " ")
-            }
+            motion.forEach { motionStr += $0.replace("/", " ") }
             motionStr = motionStr.replace("NEW", "  0  0  ")
             let reg = "(\\d+) "
             let posnNumbers = posnStr.parseColumnAll(reg)
@@ -40,29 +36,17 @@ class WXGLNexradLevel3StormInfo {
                     let degree2 = Double(motNumbers[index]) ?? 0.0
                     let nm2 = Int(motNumbers[index + 1]) ?? 0
                     var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
-                    var ec = ecc.calculateEndingGlobalCoordinates(
-                        start,
-                        Double(degree),
-                        Double(nm) * 1852.0
-                    )
+                    var ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                     stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     start = ExternalGlobalCoordinates(ec)
-                    ec = ecc.calculateEndingGlobalCoordinates(
-                        start,
-                        Double(degree2) + Double(degreeShift),
-                        Double(nm2) * 1852.0
-                    )
+                    ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree2) + Double(degreeShift), Double(nm2) * 1852.0)
                     let tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                     stormList += tmpCoords
                     var ecArr = [ExternalGlobalCoordinates]()
                     var latLons = [LatLon]()
                     (0...3).forEach { z in
                         ecArr.append(
-                            ecc.calculateEndingGlobalCoordinates(
-                                start,
-                                Double(degree2) + Double(degreeShift),
-                                Double(nm2) * 1852.0 * Double(z) * 0.25
-                            )
+                            ecc.calculateEndingGlobalCoordinates(start, Double(degree2) + Double(degreeShift), Double(nm2) * 1852.0 * Double(z) * 0.25)
                         )
                         latLons.append(LatLon(UtilityCanvasProjection.computeMercatorNumbers(ecArr[z], projectionNumbers)))
                     }
@@ -70,14 +54,7 @@ class WXGLNexradLevel3StormInfo {
                     if nm2 > 0 {
                         start = ExternalGlobalCoordinates(ec)
                         [degree2 + arrowBend, degree2 - arrowBend].forEach {
-                            stormList += WXGLNexradLevel3Common.drawLine(
-                                endPoint,
-                                ecc,
-                                projectionNumbers,
-                                start,
-                                $0,
-                                arrowLength * 1852.0
-                            )
+                            stormList += WXGLNexradLevel3Common.drawLine(endPoint, ecc, projectionNumbers, start, $0, arrowLength * 1852.0)
                         }
                         // 15,30,45 min ticks
                         let stormTrackTickMarkAngleOff90 = 30.0
@@ -88,15 +65,7 @@ class WXGLNexradLevel3StormInfo {
                                 degree2 - (90.0 - stormTrackTickMarkAngleOff90),
                                 degree2 + (90.0 + stormTrackTickMarkAngleOff90)
                                 ].forEach {
-                                    stormList += drawTickMarks(
-                                        latLons[index],
-                                        ecc,
-                                        projectionNumbers,
-                                        ecArr[index],
-                                        $0,
-                                        arrowLength * 1852.0 * sti15IncrLen
-                                    )
-                                    
+                                    stormList += drawTickMarks(latLons[index], ecc, projectionNumbers, ecArr[index], $0, arrowLength * 1852.0 * sti15IncrLen)
                             }
                         }
                     }

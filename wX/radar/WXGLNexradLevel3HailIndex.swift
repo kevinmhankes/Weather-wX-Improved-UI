@@ -20,18 +20,12 @@ class WXGLNexradLevel3HailIndex {
             let hailPercent = retStr1.parseColumn(hiPattern2)
             let hailSize = retStr1.parseColumn(hiPattern3)
             var posnStr = ""
-            position.forEach {
-                posnStr += $0.replace("/", " ")
-            }
+            position.forEach { posnStr += $0.replace("/", " ") }
             var hailPercentStr = ""
-            hailPercent.forEach {
-                hailPercentStr += $0.replace("/", " ")
-            }
+            hailPercent.forEach { hailPercentStr += $0.replace("/", " ") }
             hailPercentStr = hailPercentStr.replace("UNKNOWN", " 0 0 ")
             var hailSizeStr = ""
-            hailSize.forEach {
-                hailSizeStr += $0.replace("/", " ")
-            }
+            hailSize.forEach { hailSizeStr += $0.replace("/", " ") }
             hailSizeStr = hailSizeStr.replace("UNKNOWN", " 0.00 ")
             hailSizeStr = hailSizeStr.replace("<0.50", " 0.49 ")
             let hiPattern4 = " ([0-9]{1}\\.[0-9]{2}) "
@@ -51,11 +45,7 @@ class WXGLNexradLevel3HailIndex {
                         let degree = Int(posnNumbers[$0]) ?? 0
                         let nm = Int(posnNumbers[$0 + 1]) ?? 0
                         start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                        ec = ecc.calculateEndingGlobalCoordinates(
-                            start,
-                            Double(degree),
-                            Double(nm) * 1852.0
-                        )
+                        ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
                         let baseSize = 0.015
                         [0.99, 1.99, 2.99].enumerated().forEach { index, size in

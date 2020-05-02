@@ -22,11 +22,7 @@ class WXGLNexradLevel3TVS {
                 let degree = Int(items[0].replace(" ", "")) ?? 0
                 let nm = Int(items[1].replace(" ", "")) ?? 0
                 let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
-                let ec = ecc.calculateEndingGlobalCoordinates(
-                    start,
-                    Double(degree),
-                    Double(nm) * 1852.0
-                )
+                let ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                 stormList.append(ec.getLatitude())
                 stormList.append(ec.getLongitude() * -1.0)
             }

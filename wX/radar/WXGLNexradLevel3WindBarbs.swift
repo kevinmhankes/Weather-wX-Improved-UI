@@ -14,7 +14,7 @@ class WXGLNexradLevel3WindBarbs {
         } else {
             arrWb = UtilityMetar.obsArrWbGust
         }
-        let bearing = [Double]()
+        //let bearing = [Double]()
         let degreeShift = 180.00
         let arrowLength = 2.5
         let arrowSpacing = 3.0
@@ -43,29 +43,17 @@ class WXGLNexradLevel3WindBarbs {
                 let degree2 = Double(angle)
                 let startLength = nm * nmScaleFactor
                 var start =  ExternalGlobalCoordinates(locXDbl, locYDbl)
-                var ec =  ecc.calculateEndingGlobalCoordinates(
-                    start,
-                    degree,
-                    nm * nmScaleFactor * barbLengthScaleFactor
-                )
+                var ec =  ecc.calculateEndingGlobalCoordinates(start, degree, nm * nmScaleFactor * barbLengthScaleFactor)
                 stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                 start = ExternalGlobalCoordinates(ec)
-                ec = ecc.calculateEndingGlobalCoordinates(
-                    start,
-                    degree2 + degreeShift,
-                    barbLength * nmScaleFactor * barbLengthScaleFactor
-                )
+                ec = ecc.calculateEndingGlobalCoordinates(start, degree2 + degreeShift, barbLength * nmScaleFactor * barbLengthScaleFactor)
                 let end = ExternalGlobalCoordinates(ec)
                 stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                 var barbCount = Int(length / 10)
                 var halfBarb = false
                 var oneHalfBarb = false
-                if ((length - barbCount * 10) > 4 && length > 10) || (length > 4 && length < 10) {
-                    halfBarb = true
-                }
-                if length > 4 && length < 10 {
-                    oneHalfBarb = true
-                }
+                if ((length - barbCount * 10) > 4 && length > 10) || (length > 4 && length < 10) { halfBarb = true }
+                if length > 4 && length < 10 { oneHalfBarb = true }
                 if length > 49 {
                     above50 = true
                     barbCount -= 4
@@ -78,8 +66,7 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
-                        barbOffset + startLength + Double(index) * arrowSpacing
-                            * nmScaleFactor * barbLengthScaleFactor
+                        barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
@@ -93,8 +80,7 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
-                        barbOffset + startLength + -1.0 * arrowSpacing
-                            * nmScaleFactor * barbLengthScaleFactor
+                        barbOffset + startLength + -1.0 * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
@@ -108,9 +94,7 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
-                        barbOffset + startLength
-                            + Double(index) * arrowSpacing
-                            * nmScaleFactor * barbLengthScaleFactor
+                        barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
@@ -126,9 +110,7 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
-                        barbOffset + startLength
-                            + Double(index) * arrowSpacing
-                            * nmScaleFactor * barbLengthScaleFactor
+                        barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(ec,
                                           ecc,
@@ -145,9 +127,7 @@ class WXGLNexradLevel3WindBarbs {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
-                        barbOffset + halfBarbOffsetFudge + startLength
-                            + Double(index) * arrowSpacing
-                            * nmScaleFactor * barbLengthScaleFactor
+                        barbOffset + halfBarbOffsetFudge + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
                     stormList += WXGLNexradLevel3Common.drawLine(
                         ec,
