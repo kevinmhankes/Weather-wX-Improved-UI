@@ -559,17 +559,11 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
-            wxMetal.forEach {
-                $0!.resetRidAndGet(radarSite)
-            }
+            wxMetal.forEach { $0!.resetRidAndGet(radarSite) }
         } else {
             wxMetal[index]!.resetRidAndGet(radarSite)
         }
-        self.view.subviews.forEach {
-            if $0 is UITextView {
-                $0.removeFromSuperview()
-            }
-        }
+        self.view.subviews.forEach { if $0 is UITextView { $0.removeFromSuperview() } }
         textObj = WXMetalTextObject(
             self,
             numberOfPanes,
@@ -601,9 +595,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             inOglAnim = false
             animateButton.setImage(.play)
             if wxMetal[0] != nil {
-                self.wxMetal.forEach {
-                    $0!.getRadar("")
-                }
+                self.wxMetal.forEach { $0!.getRadar("") }
                 getPolygonWarnings()
             }
         }
@@ -641,9 +633,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                         }
                         var interval = MyApplication.animInterval
                         if self.wxMetal[0]!.product.hasPrefix("L2") {
-                            if interval < 12 {
-                                interval = 12
-                            }
+                            if interval < 12 { interval = 12 }
                         }
                         usleep(UInt32(100000 * interval * scaleFactor))
                     } else {
@@ -700,35 +690,23 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
         if WXGLNexrad.canTilt(wxMetal[index]!.product) {
-            alert.addAction(UIAlertAction(
-                "Change Tilt", { _ in self.showTiltMenu()})
-            )
+            alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu()}))
         }
         if (RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled()) && warningCount > 0 {
-            alert.addAction(UIAlertAction(
-                "Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)})
-            )
+            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)}))
         }
         if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
-            alert.addAction(UIAlertAction(
-                "Show Watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)})
-            )
+            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.WATCH, pointerLocation, self)}))
         }
         if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
             //print(MyApplication.mcdNoList.value)
-            alert.addAction(UIAlertAction(
-                "Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)})
-            )
+            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MCD, pointerLocation, self)}))
         }
         if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
-            alert.addAction(UIAlertAction(
-                "Show MPD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MPD, pointerLocation, self)})
-            )
+            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(PolygonType.MPD, pointerLocation, self)}))
         }
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction(
-            "Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)})
-        )
+        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)}))
         alert.addAction(
             UIAlertAction(
                 "Nearest forecast: "
@@ -738,11 +716,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                         UtilityRadarUI.getForecast(pointerLocation, self)}
             )
         )
-        alert.addAction(
-            UIAlertAction(
-                "Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}
-            )
-        )
+        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
         alert.addAction(
             UIAlertAction(
                 "Radar status message: " + self.wxMetal[index]!.rid, { _ in
@@ -752,13 +726,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
-            if let popoverController = alert.popoverPresentationController {
-                popoverController.barButtonItem = radarSiteButton
-            }
+            if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = radarSiteButton }
         } else {
-            if let popoverController = alert.popoverPresentationController {
-                popoverController.barButtonItem = siteButton[0]
-            }
+            if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = siteButton[0] }
         }
         self.present(alert, animated: true, completion: nil)
     }
@@ -785,9 +755,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func getRadarEveryMinute() {
-        wxMetal.forEach {
-            $0!.getRadar("")
-        }
+        wxMetal.forEach { $0!.getRadar("") }
         getPolygonWarnings()
     }
     
@@ -813,9 +781,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     func showTiltMenu() {
         var tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
-        if wxMetal[0]!.tdwr {
-            tilts = ["Tilt 1", "Tilt 2", "Tilt 3"]
-        }
+        if wxMetal[0]!.tdwr { tilts = ["Tilt 1", "Tilt 2", "Tilt 3"] }
         _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
     }
     
@@ -904,9 +870,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = "4"
         vc.wxoglCalledFromTimeButton = true
-        wxMetal.forEach {
-            $0!.writePrefs()
-        }
+        wxMetal.forEach { $0!.writePrefs() }
         wxMetal[0]?.writePrefsForSingleToQuadPaneTransition()
         self.goToVC(vc)
     }
