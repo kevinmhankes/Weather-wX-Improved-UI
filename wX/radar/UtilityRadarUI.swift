@@ -146,13 +146,9 @@ public class UtilityRadarUI {
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
-        if radarSite.count == 4 {
-            ridSmall.remove(at: radarSite.startIndex)
-        }
+        if radarSite.count == 4 { ridSmall.remove(at: radarSite.startIndex) }
         var message = UtilityDownload.getTextProduct("FTM" + ridSmall.uppercased())
-        if message == "" {
-            message = "The current radar status for " + radarSite + " is not available."
-        }
+        if message == "" { message = "The current radar status for " + radarSite + " is not available." }
         return message
     }
 
@@ -170,43 +166,25 @@ public class UtilityRadarUI {
         var xModified = Double(x)
         if numberOfPanes == 2 {
             if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
-                if y > uiv.view.frame.height / 2.0 {
-                    yModified -= Double(uiv.view.frame.height) / 2.0
-                }
+                if y > uiv.view.frame.height / 2.0 { yModified -= Double(uiv.view.frame.height) / 2.0 }
             } else {
-                if x > uiv.view.frame.width / 2.0 {
-                    xModified -= Double(uiv.view.frame.width) / 2.0
-                }
+                if x > uiv.view.frame.width / 2.0 { xModified -= Double(uiv.view.frame.width) / 2.0 }
             }
         }
         if numberOfPanes == 4 {
-            if y > uiv.view.frame.height / 2.0 {
-                yModified -= Double(uiv.view.frame.height) / 2.0
-            }
-            if x > uiv.view.frame.width / 2.0 {
-                xModified -= Double(uiv.view.frame.width) / 2.0
-            }
+            if y > uiv.view.frame.height / 2.0 { yModified -= Double(uiv.view.frame.height) / 2.0 }
+            if x > uiv.view.frame.width / 2.0 { xModified -= Double(uiv.view.frame.width) / 2.0 }
         }
         var density = Double(ortInt * 2) / width
-        if numberOfPanes == 4 {
-            density = 2.0 * Double(ortInt * 2.0) / width
-        }
+        if numberOfPanes == 4 { density = 2.0 * Double(ortInt * 2.0) / width }
         if numberOfPanes == 2 && UtilityUI.isLandscape() {
             //density = 0.5 * Double(ortInt * 0.5) / width
             //density = Double(ortInt * 2) / width
         }
         var yMiddle = 0.0
         var xMiddle = 0.0
-        if numberOfPanes == 1 {
-            yMiddle = height / 2.0
-        } else {
-            yMiddle = height / 4.0
-        }
-        if numberOfPanes == 4 {
-            xMiddle = width / 4.0
-        } else {
-            xMiddle = width / 2.0
-        }
+        if numberOfPanes == 1 { yMiddle = height / 2.0 } else { yMiddle = height / 4.0 }
+        if numberOfPanes == 4 { xMiddle = width / 4.0 } else { xMiddle = width / 2.0 }
         if numberOfPanes == 2 {
             if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 xMiddle = width / 2.0
