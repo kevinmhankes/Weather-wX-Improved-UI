@@ -53,14 +53,10 @@ final class UtilityMetar {
                     let metarItems = metar.split(" ")
                     let TDArr = metar.parse(patternMetarWxogl1).split("/")
                     var timeBlob = ""
-                    if metarItems.count > 1 {
-                        timeBlob = metarItems[1]
-                    }
+                    if metarItems.count > 1 { timeBlob = metarItems[1] }
                     var pressureBlob = metar.parse(patternMetarWxogl2)
                     var windBlob = metar.parse(patternMetarWxogl3)
-                    if windBlob == "" {
-                        windBlob = metar.parse(patternMetarWxogl4)
-                    }
+                    if windBlob == "" { windBlob = metar.parse(patternMetarWxogl4) }
                     let conditionsBlob = metar.parse(patternMetarWxogl5)
                     var visBlob = metar.parse(" ([0-9].*?SM) ")
                     let visBlobArr = visBlob.split(" ")
@@ -86,12 +82,13 @@ final class UtilityMetar {
                         bknStr += "00"
                         bknInt = Int(bknStr) ?? 0
                     }
-                    var lowestCig: Int
+                    /*var lowestCig: Int
                     if bknInt < ovcInt {
                         lowestCig = bknInt
                     } else {
                         lowestCig = ovcInt
-                    }
+                    }*/
+                    let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
                     if visInt > 5 && lowestCig > 3000 {
                         aviationColor = Color.GREEN
