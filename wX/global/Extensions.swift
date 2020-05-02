@@ -155,13 +155,10 @@ extension UIImage {
 extension UIColor {
     var coreImageColor: CoreImage.CIColor { CoreImage.CIColor(color: self) }
     var components: (red: Int, green: Int, blue: Int) {
-        var r = 0
-        var g = 0
-        var b = 0
         let color = coreImageColor
-        r = Int(color.red * 255)
-        g = Int(color.green * 255)
-        b = Int(color.blue * 255)
+        let r = Int(color.red * 255)
+        let g = Int(color.green * 255)
+        let b = Int(color.blue * 255)
         return (r, g, b)
     }
 }
