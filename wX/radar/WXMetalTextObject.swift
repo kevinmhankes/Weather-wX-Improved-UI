@@ -64,9 +64,7 @@ final class WXMetalTextObject {
         if GeographyType.cities.display {
             glview.citiesExtAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.00 {
-                oglrZoom = OGLR.zoom * 0.8
-            }
+            if OGLR.zoom < 1.00 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach { index in
@@ -100,26 +98,18 @@ final class WXMetalTextObject {
     }
     
     private func initializeTextLabelsCitiesExtended() {
-        if numPanes == 1 {
-            if GeographyType.cities.display {
-                UtilityCitiesExtended.create()
-            }
-        }
+        if numPanes == 1 && GeographyType.cities.display { UtilityCitiesExtended.create() }
     }
     
     private func initializeTextLabelsCountyLabels() {
-        if GeographyType.countyLabels.display {
-            UtilityCountyLabels.create()
-        }
+        if GeographyType.countyLabels.display { UtilityCountyLabels.create() }
     }
     
     private func addTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
             glview.countyLabelsAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.00 {
-                oglrZoom = OGLR.zoom * 0.8
-            }
+            if OGLR.zoom < 1.00 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
@@ -138,9 +128,7 @@ final class WXMetalTextObject {
         if PolygonType.SPOTTER_LABELS.display {
             glview.spottersLabelAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.0 {
-                oglrZoom = OGLR.zoom * 0.8
-            }
+            if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
@@ -156,17 +144,13 @@ final class WXMetalTextObject {
     }
     
     func initializeTextLabels() {
-        if numPanes == 1 {
-            initializeTextLabelsCitiesExtended()
-        }
+        if numPanes == 1 { initializeTextLabelsCitiesExtended() }
         initializeTextLabelsCountyLabels()
     }
     
     func removeTextLabels() {
         context.view.subviews.forEach { view in
-            if view is UITextView {
-                view.removeFromSuperview()
-            }
+            if view is UITextView { view.removeFromSuperview() }
         }
     }
     
@@ -189,15 +173,11 @@ final class WXMetalTextObject {
         if RadarPreferences.radarShowWpcFronts {
             glview.pressureCenterLabelAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.0 {
-                oglrZoom = OGLR.zoom * 0.8
-            }
+            if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom < WXMetalRender.zoomToHideMiscFeatures {
                 UtilityWpcFronts.pressureCenters.forEach { value in
                     var color = wXColor.colorsToInt(0, 127, 255)
-                    if value.type == PressureCenterTypeEnum.LOW {
-                        color = wXColor.colorsToInt(255, 0, 0)
-                    }
+                    if value.type == PressureCenterTypeEnum.LOW { color = wXColor.colorsToInt(255, 0, 0) }
                     checkAndDrawText(&glview.pressureCenterLabelAl, value.lat, value.lon, value.pressureInMb, color)
                 }
             }
@@ -209,9 +189,7 @@ final class WXMetalTextObject {
             obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
             glview.obsAl = []
             oglrZoom = 1.0
-            if OGLR.zoom < 1.0 {
-                oglrZoom = OGLR.zoom * 0.8
-            }
+            if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach { index in
                     if index < UtilityMetar.obsArr.count && index < UtilityMetar.obsArrExt.count {

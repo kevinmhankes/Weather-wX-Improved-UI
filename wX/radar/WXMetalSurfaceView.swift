@@ -17,11 +17,7 @@ final class WXMetalSurfaceView {
     static let maxZoom: Float = 45.0
     static let minZoom: Float = 0.015
 
-    static func setModifiedZoom(
-        _ newZoom: Float,
-        _ oldZoom: Float,
-        _ wxMetal: WXMetalRender
-    ) {
+    static func setModifiedZoom(_ newZoom: Float, _ oldZoom: Float, _ wxMetal: WXMetalRender) {
         let zoomDifference = newZoom / oldZoom
         wxMetal.xPos *= zoomDifference
         wxMetal.yPos *= zoomDifference
@@ -34,9 +30,7 @@ final class WXMetalSurfaceView {
         _ gestureRecognizer: UIPanGestureRecognizer
     ) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 {
-            panSensivity *= 2
-        }
+        if wxMetal[0]!.numberOfPanes == 4 { panSensivity *= 2 }
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
@@ -119,12 +113,7 @@ final class WXMetalSurfaceView {
         }
     }
 
-    static func singleTap(
-        _ uiv: UIViewController,
-        _ wxMetal: [WXMetalRender?],
-        _ textObj: WXMetalTextObject,
-        _ gestureRecognizer: UITapGestureRecognizer
-    ) {
+    static func singleTap(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
@@ -163,9 +152,7 @@ final class WXMetalSurfaceView {
         width = boundsOrig.0
         density *= 0.25
         #endif
-        if numberOfPanes == 4 {
-            density *= 2.0
-        }
+        if numberOfPanes == 4 { density *= 2.0 }
         density /= Float(UIScreen.main.scale)
         var xMiddle = Float(uiv.view.frame.width / 2.0)
         var yMiddle = Float(uiv.view.frame.height / 2.0)
@@ -233,9 +220,7 @@ final class WXMetalSurfaceView {
         var longPressCountLocal = longPressCount
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         longPressCountLocal += 1
-        if longPressCountLocal % 2 != 0 {
-            fn(location.x, location.y, radarIndex)
-        }
+        if longPressCountLocal % 2 != 0 { fn(location.x, location.y, radarIndex) }
         return longPressCountLocal
     }
 
@@ -292,19 +277,13 @@ final class WXMetalSurfaceView {
         switch gestureRecognizer.state {
         case .began:
             textObj.removeTextLabels()
-            wxMetal.forEach {
-                $0!.displayHold = true
-            }
+            wxMetal.forEach { $0!.displayHold = true }
         case .ended:
             textObj.addTextLabels()
-            wxMetal.forEach {
-                $0!.displayHold = false
-            }
+            wxMetal.forEach { $0!.displayHold = false }
         default:
             break
         }
-        wxMetal.forEach {
-            $0!.demandRender()
-        }
+        wxMetal.forEach { $0!.demandRender() }
     }
 }
