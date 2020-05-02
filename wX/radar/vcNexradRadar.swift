@@ -67,7 +67,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         self.screenWidth = Double(width)
         self.screenHeight = Double(height)
         let screenWidth = width
-        let screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
+        var screenHeight = height + CGFloat(UIPreferences.toolbarHeight)
+        #if targetEnvironment(macCatalyst)
+        screenHeight = height
+        #endif
         var surfaceRatio = Float(screenWidth) / Float(screenHeight)
         if numberOfPanes == 2 { surfaceRatio = Float(screenWidth) / Float(screenHeight / 2.0) }
         if numberOfPanes == 4 { surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0) }
