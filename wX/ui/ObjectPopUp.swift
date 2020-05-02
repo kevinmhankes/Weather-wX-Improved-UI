@@ -32,10 +32,8 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.forEach { item in
             var code = item
-            if item.contains(":") {
-                code = item.firstToken(":")
-            }
-            let action = UIAlertAction(item, {_ in fn(code)})
+            if item.contains(":") { code = item.firstToken(":") }
+            let action = UIAlertAction(item, { _ in fn(code) })
             addAction(action)
         }
         if !doNotOpen {
@@ -56,7 +54,7 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
         list.forEach { item in
-            let action = UIAlertAction(String(item), {_ in fn(item)})
+            let action = UIAlertAction(String(item), { _ in fn(item) })
             addAction(action)
         }
         finish()
@@ -73,7 +71,7 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
         list.forEach { item in
-            let action = UIAlertAction(String(item), {_ in fn(item)})
+            let action = UIAlertAction(String(item), { _ in fn(item) })
             addAction(action)
         }
         finish()
@@ -91,7 +89,7 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.forEach { item in
             let index = list.firstIndex(of: item)!
-            let action = UIAlertAction(item, {_ in fn(index)})
+            let action = UIAlertAction(item, { _ in fn(index) })
             addAction(action)
         }
         finish()
@@ -108,7 +106,7 @@ final class ObjectPopUp {
         self.button = button
         self.uiv = uiv
         list.enumerated().forEach { index, title in
-            let action = UIAlertAction(title.title, {_ in fn(index)})
+            let action = UIAlertAction(title.title, { _ in fn(index) })
             addAction(action)
         }
         finish()
@@ -130,7 +128,7 @@ final class ObjectPopUp {
         self.uiv = uiv
         (startIdx..<(startIdx + count)).forEach { idx in
             let paramTitle = menuData.paramLabels[idx]
-            let action = UIAlertAction(paramTitle, { _ in fn(idx)})
+            let action = UIAlertAction(paramTitle, { _ in fn(idx) })
             alert.addAction(action)
         }
         finish()
@@ -142,16 +140,12 @@ final class ObjectPopUp {
 
     func finish() {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = button
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
         uiv.present(alert, animated: true, completion: nil)
     }
     
     func present() {
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = button
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
         uiv.present(alert, animated: true, completion: nil)
     }
 }

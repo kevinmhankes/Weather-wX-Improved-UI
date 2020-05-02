@@ -10,7 +10,7 @@ final class ObjectSlider {
 
     let button = UIButton(type: UIButton.ButtonType.system)
     let slider: UISlider
-    static let step: Float = 1 // If you want UISlider to snap to steps by 10
+    static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
     let prefVar: String
     let label: String
     let initialValue: Int
@@ -48,9 +48,7 @@ final class ObjectSlider {
     }
 
     func setLabel() {
-        if prefVar == "TEXTVIEW_FONT_SIZE" {
-            UIPreferences.textviewFontSize = CGFloat(slider.value)
-        }
+        if prefVar == "TEXTVIEW_FONT_SIZE" { UIPreferences.textviewFontSize = CGFloat(slider.value) }
         button.setTitle(
             label + "(" + String(ObjectSlider.prefToInitialValue[prefVar + suffix]!) + "): " + String(Int(slider.value)) + " ",
             for: .normal

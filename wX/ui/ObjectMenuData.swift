@@ -8,9 +8,9 @@ import UIKit
 
 final class ObjectMenuData {
 
-	var params = [String]()
-   	var paramLabels = [String]()
-    var objTitles = [ObjectMenuTitle]()
+    let params: [String]
+    let paramLabels: [String]
+    let objTitles: [ObjectMenuTitle]
 
     init(_ objTitles: [ObjectMenuTitle], _ params: [String], _ paramLabels: [String]) {
         self.objTitles = objTitles
