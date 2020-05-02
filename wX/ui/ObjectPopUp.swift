@@ -8,9 +8,9 @@ import UIKit
 
 final class ObjectPopUp {
 
-    private var alert = UIAlertController()
-    private var uiv: UIViewController
-    private var button: UIBarButtonItem
+    private let alert: UIAlertController
+    private let uiv: UIViewController
+    private let button: UIBarButtonItem
 
     init(_ uiv: UIViewController, _ title: String, _ button: UIBarButtonItem) {
         alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertController.Style.actionSheet)
