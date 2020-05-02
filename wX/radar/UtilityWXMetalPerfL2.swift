@@ -25,27 +25,19 @@ class UtilityWXMetalPerfL2 {
         if let outputStream = OutputStream(url: fileURL, append: true) {
             outputStream.open()
             let bytesWritten = outputStream.write(UnsafePointer(disFirst.array), maxLength: fileHeaderSize)
-            if bytesWritten < 0 {
-                print("write failure")
-            }
+            if bytesWritten < 0 { print("write failure") }
             outputStream.close()
         } else {
             print("Unable to open file")
         }
-        if radarBuffers.rd.productCode == 153 {
-            loopCntBreak = 5
-        }
+        if radarBuffers.rd.productCode == 153 { loopCntBreak = 5 }
         let outputBufferSize: UInt32 = 2000000
         var retSize: UInt32 = 2000000
         let oBuff = [UInt8](repeating: 1, count: Int(outputBufferSize))
         while !disFirst.eof {
             var numCompBytes = disFirst.getInt()
-            if numCompBytes == -1 || numCompBytes == 0 {
-                break
-            }
-            if numCompBytes < 0 {
-                numCompBytes = -numCompBytes
-            }
+            if numCompBytes == -1 || numCompBytes == 0 { break }
+            if numCompBytes < 0 { numCompBytes = -numCompBytes }
             retSize = outputBufferSize
             BZ2_bzBuffToBuffDecompress(
                 MemoryBuffer.getPointer(oBuff),
@@ -60,20 +52,14 @@ class UtilityWXMetalPerfL2 {
             if let outputStream = OutputStream(url: fileURL, append: true) {
                 outputStream.open()
                 let bytesWritten = outputStream.write(UnsafePointer(oBuff), maxLength: size)
-                if bytesWritten < 0 {
-                    print("write failure")
-                }
+                if bytesWritten < 0 { print("write failure") }
                 outputStream.close()
             } else {
                 print("Unable to open file")
             }
             bytesWritten = bytesWritten2 + bytesWritten
-            if bytesWritten2 == refDecompSize || bytesWritten2 == velDecompSize {
-                loopCnt += 1
-            }
-            if loopCnt > loopCntBreak {
-                break
-            }
+            if bytesWritten2 == refDecompSize || bytesWritten2 == velDecompSize { loopCnt += 1 }
+            if loopCnt > loopCntBreak { break }
         }
     }
 }

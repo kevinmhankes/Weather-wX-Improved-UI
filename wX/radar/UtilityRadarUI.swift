@@ -8,15 +8,9 @@ import UIKit
 
 public class UtilityRadarUI {
 
-    static func zoomOutByKey(
-        _ uiv: UIViewController,
-        _ wxMetal: [WXMetalRender?],
-        _ direction: KeyDirections
-    ) {
+    static func zoomOutByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 {
-            panSensivity *= 2
-        }
+        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom > WXMetalSurfaceView.minZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
@@ -25,20 +19,12 @@ public class UtilityRadarUI {
                 $0?.textObj.refreshTextLabels()
             }
         }
-        wxMetal.forEach {
-            $0?.demandRender()
-        }
+        wxMetal.forEach { $0?.demandRender() }
     }
 
-    static func zoomInByKey(
-        _ uiv: UIViewController,
-        _ wxMetal: [WXMetalRender?],
-        _ direction: KeyDirections
-    ) {
+    static func zoomInByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 {
-            panSensivity *= 2
-        }
+        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom < WXMetalSurfaceView.maxZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
@@ -47,20 +33,12 @@ public class UtilityRadarUI {
                 $0?.textObj.refreshTextLabels()
             }
         }
-        wxMetal.forEach {
-            $0?.demandRender()
-        }
+        wxMetal.forEach { $0?.demandRender() }
     }
 
-    static func moveByKey(
-        _ uiv: UIViewController,
-        _ wxMetal: [WXMetalRender?],
-        _ direction: KeyDirections
-    ) {
+    static func moveByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
         var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 {
-            panSensivity *= 2
-        }
+        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
         var xChange: Float = 0.0
         var yChange: Float = 0.0
         switch direction {
@@ -90,9 +68,7 @@ public class UtilityRadarUI {
             $0?.yPos += yChange
             $0?.textObj.refreshTextLabels()
         }
-        wxMetal.forEach {
-            $0?.demandRender()
-        }
+        wxMetal.forEach { $0?.demandRender() }
     }
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {

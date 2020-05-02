@@ -108,21 +108,13 @@ class UtilityUSImgNwsMosaic {
         "Northeast"
     ]
 
-    static func getSectorLabelFromCode(_ code: String) -> String {
-        return sectorToLabel[code] ?? ""
-    }
+    static func getSectorLabelFromCode(_ code: String) -> String { sectorToLabel[code] ?? "" }
 
-    static func getSectorFromState(_ state: String) -> String {
-        return stateToSector[state] ?? ""
-    }
+    static func getSectorFromState(_ state: String) -> String { stateToSector[state] ?? "" }
 
-    static func get(_ sector: String) -> Bitmap {
-        return Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif")
-    }
+    static func get(_ sector: String) -> Bitmap { Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif") }
 
-    static func getStateFromRid() -> String {
-        return Utility.getRadarSiteName(Location.rid).split(",")[0]
-    }
+    static func getStateFromRid() -> String { Utility.getRadarSiteName(Location.rid).split(",")[0] }
 
     static func getLocalRadarMosaic() -> Bitmap {
         let nwsRadarMosaicSectorLabelCurrent = getSectorFromState(getStateFromRid())
@@ -138,9 +130,7 @@ class UtilityUSImgNwsMosaic {
             sectorUrl = sector
         }
         var sPattern = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl == "alaska" {
-            sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)"
-        }
+        if sectorUrl == "alaska" { sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" }
         let urls = UtilityImgAnim.getUrlArray(
             MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
             sPattern,

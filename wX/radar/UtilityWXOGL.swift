@@ -10,9 +10,7 @@ public class UtilityWXOGL {
         var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value
         ObjectPolygonWarning.polygonList.forEach { poly in
             let it = ObjectPolygonWarning.polygonDataByType[poly]!
-            if it.isEnabled {
-                warningChunk += it.storage.value
-            }
+            if it.isEnabled { warningChunk += it.storage.value }
         }
         var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
         let urlListCopy = urlList

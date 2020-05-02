@@ -26,9 +26,7 @@ class UtilitySwoD1 {
                 var warningList = [Double]()
                 htmlList.forEach { polygon in
                     let coordinates =  polygon.parseColumn("([0-9]{8}).*?")
-                    coordinates.forEach { coordinate in
-                        data += LatLon(coordinate).print()
-                    }
+                    coordinates.forEach { data += LatLon($0).print() }
                     data += ":"
                     data = data.replace(" :", ":")
                 }

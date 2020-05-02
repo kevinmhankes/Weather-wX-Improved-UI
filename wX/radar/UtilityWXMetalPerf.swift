@@ -18,11 +18,8 @@ class UtilityWXMetalPerf {
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFiletoByteByffer(radarBuffers.fileName)
-        if disFirst.capacity == 0 {
-            return 0
-        }
-        while disFirst.getShort() != -1 {
-        }
+        if disFirst.capacity == 0 { return 0 }
+        while disFirst.getShort() != -1 {}
         disFirst.skipBytes(100)
         var retSize: UInt32 = 1000000
         let oBuff = [UInt8](repeating: 1, count: Int(retSize))
@@ -68,9 +65,7 @@ class UtilityWXMetalPerf {
             level = 0
             levelCount = 0
             binStart = radarBuffers.rd.binSize
-            if radial == 0 {
-                angle0 = angle
-            }
+            if radial == 0 { angle0 = angle }
             if radial < numberOfRadials - 1 {
                 angleV = angleNext
             } else {
@@ -78,9 +73,7 @@ class UtilityWXMetalPerf {
             }
             (0..<numberOfRleHalfwords).forEach { bin in
                 curLevel = dis2.get()
-                if bin == 0 {
-                    level = curLevel
-                }
+                if bin == 0 { level = curLevel }
                 if curLevel == level {
                     levelCount += 1
                 } else {
