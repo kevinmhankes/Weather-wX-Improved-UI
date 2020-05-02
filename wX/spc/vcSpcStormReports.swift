@@ -48,7 +48,6 @@ class vcSpcStormReports: UIwXViewController {
     }
     
     override func getContent() {
-        //refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl
@@ -139,12 +138,7 @@ class vcSpcStormReports: UIwXViewController {
         var windHeader: ObjectCardBlackHeaderText?
         var hailHeader: ObjectCardBlackHeaderText?
         self.image.setBitmap(bitmap)
-        self.image.addGestureRecognizer(
-            UITapGestureRecognizerWithData(
-                target: self,
-                action: #selector(imgClicked(sender:))
-            )
-        )
+        self.image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked(sender:))))
         self.stormReports.enumerated().forEach { index, stormReport in
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
@@ -172,9 +166,7 @@ class vcSpcStormReports: UIwXViewController {
                     UITapGestureRecognizerWithData(index, self, #selector(gotoMap(sender:)))
                 )
             }
-            if stormReport.state != "" {
-                stateList += [stormReport.state]
-            }
+            if stormReport.state != "" { stateList += [stormReport.state] }
         }
         if tornadoReports == 0 {
             if tornadoHeader != nil {

@@ -131,7 +131,7 @@ class vcSpcMeso: UIwXViewController {
         default:
             break
         }
-        let labels = parametars.map {$0.split(":")[1]}
+        let labels = parametars.map { $0.split(":")[1] }
         _ = ObjectPopUp(self, sender, labels, self.productChangedBySubmenu(_:))
     }
     
@@ -139,9 +139,7 @@ class vcSpcMeso: UIwXViewController {
         let alert = ObjectPopUp(self, "Toggle Layers", layerButton)
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
             var pre = ""
-            if isLayerSelected(layer) {
-                pre = "(on) "
-            }
+            if isLayerSelected(layer) { pre = "(on) " }
             alert.addAction(UIAlertAction(pre + layer, { _ in self.layerChanged(layer)}))
         }
         alert.finish()
@@ -236,11 +234,6 @@ class vcSpcMeso: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.image.refresh()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() } )
     }
 }

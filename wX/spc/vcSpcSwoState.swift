@@ -28,9 +28,7 @@ class vcSpcSwoState: UIwXViewController {
     
     func getContent(_ state: String) {
         self.state = state
-        if self.state == "AK" || self.state == "HI" || self.state == "" {
-            self.state = "AL"
-        }
+        if self.state == "AK" || self.state == "HI" || self.state == "" { self.state = "AL" }
         stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
@@ -50,11 +48,6 @@ class vcSpcSwoState: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.image.refresh()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
     }
 }

@@ -29,9 +29,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
-        if spcSwoDay == "48" {
-            stateButton.title = ""
-        }
+        if spcSwoDay == "48" { stateButton.title = "" }
         self.getContent()
     }
     
@@ -74,11 +72,6 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.displayContent()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
     }
 }
