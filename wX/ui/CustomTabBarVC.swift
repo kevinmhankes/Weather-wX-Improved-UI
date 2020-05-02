@@ -15,8 +15,8 @@ final class CustomTabBarVC: UITabBarController {
         //let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 14)]
         //appearance.setTitleTextAttributes(attributes as Any as? [NSAttributedString.Key: Any], for: .normal)
         self.tabBar.tintColor = .white
-        self.tabBar.barTintColor = .white
-        self.tabBar.isTranslucent = true
+        //self.tabBar.barTintColor = .white
+        //self.tabBar.isTranslucent = true
         if let items = self.tabBar.items {
             items.forEach {
                 if let image = $0.image { $0.image = image.withRenderingMode(.alwaysOriginal) }
