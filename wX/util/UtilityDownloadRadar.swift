@@ -28,23 +28,11 @@ final class UtilityDownloadRadar {
     
     static func getPolygonVtec() {
         let tstHtml = urlTst.getNwsHtml()
-        if tstHtml != "" {
-            MyApplication.severeDashboardTst.value = tstHtml
-        } else {
-            print("TST FAILURE")
-        }
+        if tstHtml != "" { MyApplication.severeDashboardTst.value = tstHtml }
         let ffwHtml = urlFfw.getNwsHtml()
-        if ffwHtml != "" {
-            MyApplication.severeDashboardFfw.value = ffwHtml
-        } else {
-            print("FFW FAILURE")
-        }
+        if ffwHtml != "" { MyApplication.severeDashboardFfw.value = ffwHtml }
         let torHtml = urlTor.getNwsHtml()
-        if torHtml != "" {
-            MyApplication.severeDashboardTor.value = torHtml
-        } else {
-            print("TOR FAILURE")
-        }
+        if torHtml != "" { MyApplication.severeDashboardTor.value = torHtml }
     }
     
     static func clearPolygonVtec() {

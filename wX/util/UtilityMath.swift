@@ -36,12 +36,11 @@ final class UtilityMath {
     }
 
     static func computeMiddishPoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
-       return [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
+        [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
     }
 
     static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {
-        let relativeHumidity = 100 * (exp((17.625 * dewpt) / (243.04 + dewpt)) / exp((17.625 * temp) / (243.04 + temp)))
-        return roundDToString(relativeHumidity)
+        roundDToString(100 * (exp((17.625 * dewpt) / (243.04 + dewpt)) / exp((17.625 * temp) / (243.04 + temp))))
     }
 
     static func latLonFix(_ location: LatLon) -> LatLon {
@@ -54,9 +53,7 @@ final class UtilityMath {
     }
 
     static func knotsToMph(_ value: String) -> String {
-        if value == "" {
-            return ""
-        }
+        if value == "" { return "" }
         let tmpNum = (Double(value) ?? 0.0) * 1.152
         return roundDToString(tmpNum)
     }
@@ -158,10 +155,7 @@ final class UtilityMath {
         return String(format: "%.2f", tmpNum) + " in"
     }
 
-    static func metersPerSecondtoMph(_ valueD: Double) -> String {
-        let valueDLocal = valueD * 2.23694
-        return String(Int(round(valueDLocal)))
-    }
+    static func metersPerSecondtoMph(_ value: Double) -> String { String(Int(round(value * 2.23694))) }
 
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
         3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0

@@ -13,9 +13,7 @@ final class UtilityImg {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         let renderer = UIGraphicsImageRenderer(size: newSize, format: rendererFormat)
-        let newImage = renderer.image { _ in
-            image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
-        }
+        let newImage = renderer.image { _ in image.draw(in: CGRect(origin: CGPoint.zero, size: newSize)) }
         return newImage
     }
 

@@ -43,9 +43,7 @@ final class UtilityObs {
         var tmp = ""
         lines.forEach { line in if line.contains("," + obsShortCode) { tmp = line } }
         let chunks = tmp.split(",")
-        if chunks.count > 2 {
-            locatioName = chunks[0] + ", " + chunks[1]
-        }
+        if chunks.count > 2 { locatioName = chunks[0] + ", " + chunks[1] }
         return locatioName
     }
 

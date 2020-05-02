@@ -52,9 +52,7 @@ final class ObjectSevenDay {
             let icon = Utility.safeGet(icons, index)
             let shortForecast = Utility.safeGet(shortLocalForecasts, index)
             let detailedForecast = Utility.safeGet(detailedLocalForecasts, index)
-            forecasts.append(
-                ObjectForecast(name, temperature, windSpeed, windDirection, icon, shortForecast, detailedForecast)
-            )
+            forecasts.append(ObjectForecast(name, temperature, windSpeed, windDirection, icon, shortForecast, detailedForecast))
         }
         forecasts.forEach { forecast in
             self.detailedForecasts.append(forecast.name + ": " + forecast.detailedForecast)

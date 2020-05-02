@@ -26,9 +26,7 @@ final class UtilityString {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
-            if intValue >= start && intValue < end {
-                retStr += String(str[$0])
-            }
+            if intValue >= start && intValue < end { retStr += String(str[$0]) }
         }
         return retStr
     }
@@ -37,9 +35,7 @@ final class UtilityString {
         var retStr = ""
         str.indices.forEach {
             let intValue = str.distance(from: str.startIndex, to: $0)
-            if intValue >= start && intValue < str.count {
-                retStr += String(str[$0])
-            }
+            if intValue >= start && intValue < str.count { retStr += String(str[$0]) }
         }
         return retStr
     }
@@ -107,10 +103,7 @@ final class UtilityString {
 
     static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] { parseHelper(regexpStr, str) }
 
-    static func parseAndCount(_ str: String, _ regexpStr: String) -> Int {
-        let tmpArr = str.parseColumn(regexpStr)
-        return tmpArr.count
-    }
+    static func parseAndCount(_ str: String, _ regexpStr: String) -> Int { str.parseColumn(regexpStr).count }
 
     static func parseMultipe(_ str: String, _ matchStr: String, _ number: Int) -> [String] {
         do {
@@ -119,9 +112,7 @@ final class UtilityString {
             let results = regex.matches(in: str, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
             results.forEach { result in
-                (0..<result.numberOfRanges).forEach {
-                    match.append(nsString.substring(with: result.range(at: $0)))
-                }
+                (0..<result.numberOfRanges).forEach { match.append(nsString.substring(with: result.range(at: $0))) }
             }
             if match.count > 1 { match.remove(at: 0) }
             return match
@@ -146,9 +137,7 @@ final class UtilityString {
     static func fixedLengthString(_ string: String, _ length: Int) -> String {
         if string.count < length {
             var stringLocal = string
-            (string.count...length).forEach { _ in
-                stringLocal += " "
-            }
+            (string.count...length).forEach { _ in stringLocal += " " }
             return stringLocal
         } else {
             return string
