@@ -97,10 +97,6 @@ class vcSettingsLocationCanada: UIwXViewController {
     }
     
     private func displayContent() {
-        if self.cityDisplay {
-            displayCities()
-        } else {
-            displayProvinces()
-        }
+        if self.cityDisplay { displayCities() } else { displayProvinces() }
     }
 }

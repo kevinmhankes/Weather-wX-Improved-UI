@@ -45,9 +45,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     }
     
     @objc override func doneClicked() {
-        if colorChanged {
-            saveNewColorClicked()
-        }
+        if colorChanged { saveNewColorClicked() }
         super.doneClicked()
     }
     
@@ -77,14 +75,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     }
     
     @objc func saveDefaultColorClicked() {
-        Utility.writePref(
-            colorObject.prefVar,
-            Color.rgb(
-                colorObject.defaultRed,
-                colorObject.defaultGreen,
-                colorObject.defaultBlue
-            )
-        )
+        Utility.writePref(colorObject.prefVar, Color.rgb(colorObject.defaultRed, colorObject.defaultGreen, colorObject.defaultBlue))
         colorBar.backgroundColor = colorObject.uicolorDefault
         colorObject.regenCurrentColor()
         newRed = colorObject.defaultRed
@@ -115,11 +106,6 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-        }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.refreshViews() })
     }
 }

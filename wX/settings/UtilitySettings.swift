@@ -9,29 +9,17 @@ import UIKit
 final class UtilitySettings {
 
     static func isRadarInHomescreen() -> Bool {
-        let homescreenFav = TextUtils.split(
-            Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault),
-            ":"
-        )
+        let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
         return homescreenFav.contains("METAL-RADAR")
     }
 
-    static func getHelp(
-        _ sender: UIButton,
-        _ uiv: UIViewController,
-        _ targetButton: UIBarButtonItem,
-        _ helpMap: [String: String]
-    ) {
+    static func getHelp(_ sender: UIButton, _ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ helpMap: [String: String]) {
         let alert = ObjectPopUp(uiv, helpMap[(sender.titleLabel?.text)!]!, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
 
-    static func getHelp(
-        _ uiv: UIViewController,
-        _ targetButton: UIBarButtonItem,
-        _ help: String
-    ) {
+    static func getHelp(_ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ help: String) {
         let alert = ObjectPopUp(uiv, help, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
@@ -41,9 +29,7 @@ final class UtilitySettings {
         let prefLabels = [String](sender.prefMap.keys).sorted(by: <)
         let isOnQ = sender.switchUi.isOn
         var truthString = "false"
-        if isOnQ {
-            truthString = "true"
-        }
+        if isOnQ { truthString = "true" }
         Utility.writePref(prefLabels[sender.switchUi.tag], truthString)
     }
 }

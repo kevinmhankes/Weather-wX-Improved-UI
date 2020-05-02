@@ -49,9 +49,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         let gpsButton = ObjectToolbarIcon(self, .gps, #selector(gpsClicked))
         let items = [doneButton, GlobalVariables.flexBarButton, searchButton, gpsButton, saveButton]
         var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, helpButton, canadaButton]
-        if Location.numLocations > 1 {
-            itemsBottom.append(deleteButton)
-        }
+        if Location.numLocations > 1 { itemsBottom.append(deleteButton) }
         toolbar.items = ObjectToolbarItems(items).items
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
         self.view.addSubview(toolbar)
@@ -126,21 +124,14 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
             let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
             latTextView.text = MyApplication.locations[locationNumber].lat
             lonTextView.text = MyApplication.locations[locationNumber].lon
-            if latTextView.view.text!.split(":").count > 2 {
-                latString = latTextView.view.text!.split(":")[2]
-            }
-            if self.lonTextView.text.contains(":") {
-                lonString = "-" + lonTextView.view.text!.split(":")[1]
-            }
+            if latTextView.view.text!.split(":").count > 2 { latString = latTextView.view.text!.split(":")[2] }
+            if self.lonTextView.text.contains(":") { lonString = "-" + lonTextView.view.text!.split(":")[1] }
         }
         centerMap(latString, lonString)
     }
     
     func centerMap(_ lat: String, _ lon: String) {
-        let locationC = CLLocationCoordinate2D(
-            latitude: Double(lat) ?? 0.0,
-            longitude: Double(lon) ?? 0.0
-        )
+        let locationC = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(lon) ?? 0.0)
         ObjectMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
     
@@ -174,9 +165,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         CLGeocoder().geocodeAddressString(
             address,
             completionHandler: {(placemarks, error) in
-                if error != nil {
-                    return
-                }
+                if error != nil { return }
                 if (placemarks?.count)! > 0 {
                     let placemark = placemarks?[0]
                     let location = placemark?.location
@@ -190,9 +179,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
                     self.labelTextView.text = locationName
                     self.latTextView.text = String(coordinate!.latitude)
                     self.lonTextView.text = String(coordinate!.longitude)
-                    if self.latTextView.text != "" && self.lonTextView.text != "" {
-                        self.saveClicked()
-                    }
+                    if self.latTextView.text != "" && self.lonTextView.text != "" { self.saveClicked() }
                 }
         }
         )
@@ -230,9 +217,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
             self.lonTextView.text = caId
             self.labelTextView.text = caCity + ", " + caProv
         }
-        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
-            saveClicked()
-        }
+        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" { saveClicked() }
     }
     
     @objc func longPress(sender: UIGestureRecognizer) {
@@ -291,11 +276,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     
     func saveFromMap(_ locationName: String, _ lat: String, _ lon: String) {
         labelTextView.text = locationName
-        status = Location.locationSave(
-            numLocsLocalStr,
-            LatLon(lat, lon),
-            labelTextView.view.text!
-        )
+        status = Location.locationSave(numLocsLocalStr, LatLon(lat, lon), labelTextView.view.text!)
         latTextView.text = lat
         lonTextView.text = lon
         statusTextView.text = status
@@ -307,20 +288,17 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         var center = CLLocationCoordinate2D()
         let lat = Double(latStr) ?? 0.0
         let lon = Double(lonStr) ?? 0.0
-        let ceo: CLGeocoder = CLGeocoder()
+        let ceo = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
         let loc = CLLocation(latitude: center.latitude, longitude: center.longitude)
         ceo.reverseGeocodeLocation(
             loc,
             completionHandler: { (placemarks, error) in
-                if error != nil {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
-                }
+                if error != nil { print("reverse geodcode fail: \(error!.localizedDescription)") }
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
                     let pm = placemarks![0]
-                    print(pm)
                     let locationName: String
                     if pm.locality != nil && pm.administrativeArea != nil {
                         locationName = pm.administrativeArea! + ", " + pm.locality!
@@ -340,10 +318,10 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
-                    print("Dark mode")
+                    //print("Dark mode")
                 } else {
                     AppColors.update()
-                    print("Light mode")
+                    //print("Light mode")
                 }
                 view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
                 toolbar.setColorToTheme()
@@ -355,9 +333,6 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     override var keyCommands: [UIKeyCommand]? {
-        return [UIKeyCommand(input: UIKeyCommand.inputEscape,
-                             modifierFlags: [],
-                             action: #selector(doneClicked))
-        ]
+        return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked))]
     }
 }

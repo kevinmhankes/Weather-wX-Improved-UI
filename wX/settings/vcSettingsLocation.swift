@@ -26,9 +26,7 @@ class vcSettingsLocation: UIwXViewController {
     override func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
-            MyApplication.locations.indices.forEach { index in
-                self.currentConditions.append(ObjectCurrentConditions(index))
-            }
+            MyApplication.locations.indices.forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
             DispatchQueue.main.async {
                 self.locationCards.indices.forEach { index in
                     self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
@@ -85,8 +83,6 @@ class vcSettingsLocation: UIwXViewController {
     func actionLocation(_ position: Int) {
         let vc = vcSettingsLocationEdit()
         vc.settingsLocationEditNum = String(position + 1)
-        //print("DEBUG: " + locations[position])
-        //vc.settingsLocationEditNum = locations[position].split(":")[0]
         self.goToVC(vc)
     }
     
@@ -128,9 +124,7 @@ class vcSettingsLocation: UIwXViewController {
     }
     
     func initializeObservations() {
-        MyApplication.locations.forEach {
-            $0.updateObservation("")
-        }
+        MyApplication.locations.forEach { $0.updateObservation("") }
     }
     
     func displayContent() {

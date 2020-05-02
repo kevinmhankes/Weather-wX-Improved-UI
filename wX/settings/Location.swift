@@ -105,7 +105,6 @@ final class Location {
 
     static func us(_ xStr: String) -> Bool { !xStr.contains("CANADA") }
 
-    // Class specific getters
     static var state: String { MyApplication.locations[getCurrentLocation()].state }
 
     static var name: String { MyApplication.locations[getCurrentLocation()].name }
@@ -234,7 +233,6 @@ final class Location {
     static func deleteLocation(_ locToDeleteStr: String) {
         let locToDeleteInt = Int(locToDeleteStr) ?? 0
         let locNumIntCurrent = Location.numLocations
-        let locNumIntCurrentStr = String(locNumIntCurrent)
         if locToDeleteInt > locNumIntCurrent { return }
         if locToDeleteInt == locNumIntCurrent {
             Location.numLocations = locNumIntCurrent - 1

@@ -37,9 +37,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
         var truthString = "false"
-        if isOnQ {
-            truthString = "true"
-        }
+        if isOnQ { truthString = "true" }
         Utility.writePref(prefLabels[sender.tag], truthString)
         if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
             locationManager.requestWhenInUseAuthorization()
@@ -111,9 +109,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
                 UtilitySettingsRadar.booleanDefault,
                 UtilitySettingsRadar.boolean
             )
-            switchObject.switchUi.addTarget(
-                self, action: #selector(switchChanged), for: UIControl.Event.valueChanged
-            )
+            switchObject.switchUi.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
             switchObject.switchUi.tag = index
         }
         setupSliders()
@@ -132,10 +128,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
                 )
             } else {
                 objNp.numberPicker.selectRow(
-                    Utility.readPref(
-                        prefVar,
-                        UtilitySettingsRadar.pickerinit[prefVar]!
-                    ),
+                    Utility.readPref(prefVar, UtilitySettingsRadar.pickerinit[prefVar]!),
                     inComponent: 0,
                     animated: true
                 )
@@ -171,8 +164,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
+        coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayContent()

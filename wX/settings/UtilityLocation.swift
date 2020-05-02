@@ -6,6 +6,7 @@
 
 final class UtilityLocation {
 
+    // FIXME naming
     static func getLatLonAsDouble() -> [Double] {
         var latlonAl = [Double]()
         var tmpX = ""
@@ -113,12 +114,8 @@ final class UtilityLocation {
                 bestIndex = $0
             }
         }
-        if bestIndex == -1 {
-            return "BLAH"
-        }
-        if sites[bestIndex].name == "MFX" {
-            return "MFL"
-        }
+        if bestIndex == -1 { return "BLAH" }
+        if sites[bestIndex].name == "MFX" { return "MFL" }
         return sites[bestIndex].name
     }
 }
