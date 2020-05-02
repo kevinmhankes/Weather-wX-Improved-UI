@@ -54,10 +54,7 @@ class MyApplication {
         initPreferences()
         AppColors.update()
         initData()
-        if Utility.readPref("LOC1_LABEL", "") == "" {
-            print("INIT PREF")
-            UtilityStorePreferences.setDefaults()
-        }
+        if Utility.readPref("LOC1_LABEL", "") == "" { UtilityStorePreferences.setDefaults() }
         Location.refreshLocationData()
     }
 
