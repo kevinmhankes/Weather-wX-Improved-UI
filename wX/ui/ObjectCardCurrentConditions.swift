@@ -8,11 +8,11 @@ import UIKit
 
 final class ObjectCardCurrentConditions {
 
-    private var objectCardImage = ObjectCardImage()
+    private let objectCardImage: ObjectCardImage
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
     private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
     private let condenseScale: CGFloat = 0.50
-    private var horizontalContainer = ObjectCardStackView()
+    private let horizontalContainer: ObjectCardStackView
 
     init(_ stackView: UIStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {

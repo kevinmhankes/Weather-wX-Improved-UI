@@ -246,9 +246,7 @@ open class ImageScrollView: UIScrollView {
     }
 
     open func refresh() {
-        if let image = zoomView?.image {
-            display(image: image)
-        }
+        if let image = zoomView?.image { display(image: image) }
     }
 }
 

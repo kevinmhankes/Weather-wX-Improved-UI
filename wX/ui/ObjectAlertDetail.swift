@@ -42,24 +42,16 @@ final class ObjectAlertDetail {
         uiStackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
-        textViews.forEach { item in
-            item.tv.widthAnchor.constraint(equalTo: uiScrollView.widthAnchor).isActive = true
-        }
+        textViews.forEach { $0.tv.widthAnchor.constraint(equalTo: uiScrollView.widthAnchor).isActive = true }
     }
 
     static func condenseTime(_ cap: CapAlert) -> (String, String, String) {
         let title = cap.title.parse("(.*?) issued")
         var startTime = cap.title.parse("issued (.*?) until")
-        if startTime == "" {
-            startTime = cap.title.parse("issued (.*?) expiring")
-        }
-        if startTime == "" {
-            startTime = cap.title.parse("issued (.*?) by")
-        }
+        if startTime == "" { startTime = cap.title.parse("issued (.*?) expiring") }
+        if startTime == "" { startTime = cap.title.parse("issued (.*?) by") }
         var endTime = cap.title.parse("until (.*?) by")
-        if endTime == "" {
-            endTime = cap.title.parse("expiring (.*?) by")
-        }
+        if endTime == "" { endTime = cap.title.parse("expiring (.*?) by") }
         return(title, startTime, endTime)
     }
 }

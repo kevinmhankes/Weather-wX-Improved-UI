@@ -48,9 +48,7 @@ final class ObjectCardSevenDayCollection {
     }
 
     func resetTextSize() {
-        objectCardSevenDayList.forEach { item in
-            item.resetTextSize()
-        }
+        objectCardSevenDayList.forEach { $0.resetTextSize() }
         objectCardSunTime?.resetTextSize()
     }
 

@@ -53,12 +53,8 @@ final class ObjectCardDashAlertItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalConainer.view]
         )
-        if senderName == "" {
-            tvName.view.isHidden = true
-        }
-        if expiresTime == "" {
-            tvEnd.view.isHidden = true
-        }
+        if senderName == "" { tvName.view.isHidden = true }
+        if expiresTime == "" { tvEnd.view.isHidden = true }
         verticalTextConainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)

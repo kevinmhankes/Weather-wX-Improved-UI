@@ -9,17 +9,13 @@ import UIKit
 final class ObjectCardStackView {
 
     let stackView: StackView
-    private let padding: CGFloat = 3
+    private let padding: CGFloat = 3.0
 
     init() {
         stackView = StackView()
     }
 
-    init(
-        arrangedSubviews: [UIView],
-        alignment: UIStackView.Alignment = .top,
-        axis: NSLayoutConstraint.Axis = .horizontal
-    ) {
+    init(arrangedSubviews: [UIView], alignment: UIStackView.Alignment = .top, axis: NSLayoutConstraint.Axis = .horizontal) {
         stackView = StackView(arrangedSubviews: arrangedSubviews)
         stackView.backgroundColor = ColorCompatibility.systemBackground
         stackView.distribution = .fill

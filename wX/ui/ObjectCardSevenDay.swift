@@ -12,18 +12,11 @@ final class ObjectCardSevenDay {
     private let horizontalContainer: ObjectCardStackView
     private let topText = ObjectTextViewLarge(80.0)
     private let bottomText = ObjectTextViewSmallGray(80.0)
-    private var objectCardImage = ObjectCardImage()
+    private let objectCardImage: ObjectCardImage
     private let condenseScale: CGFloat = 0.50
-    private var stackView: UIStackView
+    private let stackView: UIStackView
 
-    init(
-        _ stackView: UIStackView,
-        _ index: Int,
-        _ urls: [String],
-        _ days: [String],
-        _ daysShort: [String],
-        _ isUS: Bool
-    ) {
+    init(_ stackView: UIStackView, _ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
         self.stackView = stackView
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
@@ -31,9 +24,7 @@ final class ObjectCardSevenDay {
             objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
         topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
-        let verticalTextConainer = ObjectStackView(
-            .fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view]
-        )
+        let verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view])
         bottomText.view.widthAnchor.constraint(equalTo: verticalTextConainer.view.widthAnchor).isActive = true
         verticalTextConainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false

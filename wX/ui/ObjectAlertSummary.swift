@@ -82,9 +82,7 @@ final class ObjectAlertSummary: NSObject {
             }
         }
         var stateCnt = ""
-        stateCntMap.forEach { state, count in
-            stateCnt += state + ":" + String(count) + " "
-        }
+        stateCntMap.forEach { state, count in stateCnt += state + ":" + String(count) + " " }
         objTextSummary.text = "Total alerts: " + String(capAlerts.count) + MyApplication.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + MyApplication.newline + "State counts: " + stateCnt
     }
 
