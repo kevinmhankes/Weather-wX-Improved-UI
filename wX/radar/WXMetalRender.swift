@@ -477,6 +477,7 @@ class WXMetalRender {
         }
     }
     
+    // TODO use regex matches below
     func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ") {
@@ -484,11 +485,7 @@ class WXMetalRender {
         } else {
             self.tdwr = false
         }
-        if (self.product == "N0Q"
-            || self.product == "N1Q"
-            || self.product == "N2Q"
-            || self.product == "N3Q"
-            || self.product == "L2REF") && ridIsTdwr {
+        if (self.product == "N0Q" || self.product == "N1Q" || self.product == "N2Q" || self.product == "N3Q" || self.product == "L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
             self.tdwr = true
         }
@@ -496,11 +493,7 @@ class WXMetalRender {
             self.radarProduct = "N0Q"
             self.tdwr = false
         }
-        if (self.product == "N0U"
-            || self.product == "N1U"
-            || self.product == "N2U"
-            || self.product == "N3U"
-            || self.product == "L2VEL") && ridIsTdwr {
+        if (self.product == "N0U" || self.product == "N1U" || self.product == "N2U" || self.product == "N3U" || self.product == "L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
             self.tdwr = true
         }
@@ -514,13 +507,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                self.ridPrefixGlobal = self.rdDownload.getRadarFile(
-                    url,
-                    self.rid,
-                    self.radarProduct,
-                    self.indexString,
-                    self.tdwr
-                )
+                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = self.l3BaseFn + self.indexString
                 } else {
@@ -532,9 +519,7 @@ class WXMetalRender {
             }
             if url == "" {  // not anim
                 [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
-                    if $0.display {
-                        self.constructLevel3TextProduct($0)
-                    }
+                    if $0.display { self.constructLevel3TextProduct($0) }
                 }
                 if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
                     self.constructSpotters()
@@ -558,9 +543,7 @@ class WXMetalRender {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText, isAnimating)
                 self.showProductText(self.radarProduct)
-                if self.renderFn != nil {
-                    self.renderFn!(self.paneNumber)
-                }
+                if self.renderFn != nil { self.renderFn!(self.paneNumber) }
                 if !isAnimating {
                     self.textObj.removeTextLabels()
                     self.textObj.addTextLabels()
@@ -574,9 +557,7 @@ class WXMetalRender {
     }
     
     func demandRender() {
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
-        }
+        if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
     
     func constructPolygons() {
@@ -607,9 +588,7 @@ class WXMetalRender {
         let timeStr = WXGLNexrad.getRadarInfo("").split(" ")
         if timeStr.count > 1 {
             var replaceToken = "Mode:"
-            if product.hasPrefix("L2") {
-                replaceToken = "Product:"
-            }
+            if product.hasPrefix("L2") { replaceToken = "Product:" }
             let text = timeStr[1].replace(MyApplication.newline + replaceToken, "") + additionalText
             timeButton.title = text
             if UtilityTime.isRadarTimeOld(text) && !isAnimating {
@@ -627,12 +606,11 @@ class WXMetalRender {
         productButton.title = product
     }
     
+    // TODO rename vars
     func constructLocationDot() {
         locmarkerAl = []
         locdotBuffers.lenInit = PolygonType.LOCDOT.size
-        if PolygonType.LOCDOT.display {
-            locmarkerAl = UtilityLocation.getLatLonAsDouble()
-        }
+        if PolygonType.LOCDOT.display { locmarkerAl = UtilityLocation.getLatLonAsDouble() }
         if RadarPreferences.locdotFollowsGps {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
@@ -647,11 +625,7 @@ class WXMetalRender {
         locCircleBuffers.triangleCount = 24
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
-            let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(
-                gpsLocation.lat,
-                gpsLocation.lon,
-                pn
-            )
+            let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(gpsLocation.lat, gpsLocation.lon, pn)
             gpsLatLonTransformed = (Float(-gpsCoords[0]), Float(gpsCoords[1]))
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
@@ -783,7 +757,6 @@ class WXMetalRender {
     func constructWpcFronts() {
         wpcFrontBuffersList = []
         wpcFrontPaints = []
-        //var tmpCoords = (0.0, 0.0)
         UtilityWpcFronts.fronts.forEach { _ in
             let buff = ObjectMetalBuffers()
             buff.initialize(2, Color.MAGENTA)
@@ -824,6 +797,7 @@ class WXMetalRender {
         }
     }
     
+    // TODO rename vars
     func constructSwoLines() {
         swoBuffers.initialize(2, Color.MAGENTA)
         colorSwo = []
@@ -832,32 +806,21 @@ class WXMetalRender {
         colorSwo.append(wXColor.colorsToInt(255, 140, 0))
         colorSwo.append(Color.YELLOW)
         colorSwo.append(wXColor.colorsToInt(0, 100, 0))
-        //var tmpCoords = (0.0, 0.0)
         var fSize = 0
         (0...4).forEach { z in
-            if let flArr = UtilitySwoD1.hashSwo[z] {
-                fSize += flArr.count
-            }
+            if let flArr = UtilitySwoD1.hashSwo[z] { fSize += flArr.count }
         }
         swoBuffers.metalBuffer = []
         (0...4).forEach { z in
             if let flArr = UtilitySwoD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
-                    var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
-                        Double(flArr[j]),
-                        Double(flArr[j+1]) * -1.0,
-                        pn
-                    )
+                    var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(
-                        Double(flArr[j+2]),
-                        Double(flArr[j+3]) * -1.0,
-                        pn
-                    )
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, pn)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
@@ -870,9 +833,7 @@ class WXMetalRender {
         swoBuffers.generateMtlBuffer(device)
     }
     
-    func scaleLengthLocationDot(_ currentLength: Double) -> Double {
-        return (currentLength / Double(zoom)) * 2.0
-    }
+    func scaleLengthLocationDot(_ currentLength: Double) -> Double { (currentLength / Double(zoom)) * 2.0 }
     
     func setZoom() {
         // wbCircleBuffers used to be in the first forEach
@@ -891,25 +852,20 @@ class WXMetalRender {
             UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
-        }
+        if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
     
+    // TODO rename vars
     func resetRid(_ rid: String, isHomeScreen: Bool = false) {
         self.rid = rid
         xPos = 0.0
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
         zoom = 1.0 / prefFactor
-        if UtilityUI.isLandscape() {
-            zoom = 0.60 / prefFactor
-        }
+        if UtilityUI.isLandscape() { zoom = 0.60 / prefFactor }
         #if targetEnvironment(macCatalyst)
         zoom = 0.40 / prefFactor
-        if isHomeScreen {
-            zoom = 0.70 / prefFactor
-        }
+        if isHomeScreen { zoom = 0.70 / prefFactor }
         #endif
         loadGeometry()
     }
@@ -920,14 +876,10 @@ class WXMetalRender {
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
         zoom = 1.0 / prefFactor
-        if UtilityUI.isLandscape() {
-            zoom = 0.60 / prefFactor
-        }
+        if UtilityUI.isLandscape() { zoom = 0.60 / prefFactor }
         #if targetEnvironment(macCatalyst)
         zoom = 0.40 / prefFactor
-        if isHomeScreen {
-            zoom = 0.70 / prefFactor
-        }
+        if isHomeScreen { zoom = 0.70 / prefFactor }
         #endif
         loadGeometry()
         getRadar("")
@@ -941,15 +893,11 @@ class WXMetalRender {
     
     func getGpsString() -> String {
         let truncateAmount = 10
-        return gpsLocation.latString.truncate(truncateAmount)
-            + ", -"
-            + gpsLocation.lonString.truncate(truncateAmount)
+        return gpsLocation.latString.truncate(truncateAmount) + ", -" + gpsLocation.lonString.truncate(truncateAmount)
     }
     
     var tilt: Int {
-        get {
-            return tiltInt
-        }
+        get { tiltInt }
         set {
             tiltInt = newValue
             let middleValue = product[product.index(after: product.startIndex)]
