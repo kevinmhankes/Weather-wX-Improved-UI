@@ -83,9 +83,7 @@ final class Location {
     }
 
     static var numLocations: Int {
-        get {
-            return numberOfLocations
-        }
+        get { numberOfLocations }
         set {
             Location.numberOfLocations = newValue
             Utility.writePref("LOC_NUM_INT", newValue)
@@ -143,9 +141,7 @@ final class Location {
 
     static func isUS(_ locationNumber: Int) -> Bool {
         // FIXME bounds check or safeGet
-        if locationNumber == -1 {
-            return true
-        }
+        if locationNumber == -1 { return true }
         return MyApplication.locations[locationNumber].isLocationUS
     }
 
@@ -193,12 +189,8 @@ final class Location {
             let wfoAndRadar = getWfoRadarSiteFromPoint(latLon)
             wfo = wfoAndRadar[0]
             radarSite = wfoAndRadar[1]
-            if wfo == "" {
-                wfo = UtilityLocation.getNearestOffice("WFO", latLon).lowercased()
-            }
-            if radarSite == "" {
-                radarSite = UtilityLocation.getNearestOffice("RADAR", latLon)
-            }
+            if wfo == "" { wfo = UtilityLocation.getNearestOffice("WFO", latLon).lowercased() }
+            if radarSite == "" { radarSite = UtilityLocation.getNearestOffice("RADAR", latLon) }
             Utility.writePref("RID" + locNum, radarSite.uppercased())
             Utility.writePref("NWS" + locNum, wfo.uppercased())
         } else {
@@ -210,14 +202,10 @@ final class Location {
             }
             var prov = ""
             let parseProv = latLon.latString.split(":")
-            if parseProv.count > 0 {
-                prov = parseProv[1]
-            }
+            if parseProv.count > 0 { prov = parseProv[1] }
             var id = ""
             let parseId = latLon.lonString.split(":")
-            if parseId.count > 0 {
-                id = parseId[0]
-            }
+            if parseId.count > 0 { id = parseId[0] }
             if latLon.latString.count > 12 {
                 tmpLatlon.latString = parseProv[2]
                 tmpLatlon.lonString = parseId[1]
@@ -247,9 +235,7 @@ final class Location {
         let locToDeleteInt = Int(locToDeleteStr) ?? 0
         let locNumIntCurrent = Location.numLocations
         let locNumIntCurrentStr = String(locNumIntCurrent)
-        if locToDeleteInt > locNumIntCurrent {
-            return
-        }
+        if locToDeleteInt > locNumIntCurrent { return }
         if locToDeleteInt == locNumIntCurrent {
             Location.numLocations = locNumIntCurrent - 1
         } else {
@@ -266,25 +252,24 @@ final class Location {
                 let nwsCurrent = Utility.readPref("NWS" + jStr, "")
                 let ridCurrent = Utility.readPref("RID" + jStr, "")
                 let nwsStateCurrent = Utility.readPref("NWS" + jStr + "_STATE", "")
-                let alertNotificationCurrent = Utility.readPref("ALERT" + jStr + "_NOTIFICATION", "false")
-                let alertNotificationRadarCurrent = Utility.readPref("ALERT_NOTIFICATION_RADAR" + jStr, "false")
-                let alertCcNotificationCurrent = Utility.readPref("ALERT_CC" + jStr + "_NOTIFICATION", "false")
-                let alert7day1NotificationCurrent = Utility.readPref("ALERT_7DAY_" + jStr + "_NOTIFICATION",
-                                                                          "false")
-                let alertNotificationSoundCurrent = Utility.readPref("ALERT_NOTIFICATION_SOUND" + jStr, "false")
-                let alertNotificationMcdCurrent = Utility.readPref("ALERT_NOTIFICATION_MCD" + jStr, "false")
-                let alertNotificationSwoCurrent = Utility.readPref("ALERT_NOTIFICATION_SWO" + jStr, "false")
-                let alertNotificationSpcfwCurrent = Utility.readPref("ALERT_NOTIFICATION_SPCFW" + jStr, "false")
-                let alertNotificationWpcmpdCurrent = Utility.readPref("ALERT_NOTIFICATION_WPCMPD" + jStr, "false")
-                Utility.writePref("ALERT" + iStr + "_NOTIFICATION", alertNotificationCurrent)
-                Utility.writePref("ALERT_CC" + iStr + "_NOTIFICATION", alertCcNotificationCurrent)
-                Utility.writePref("ALERT_7DAY_" + iStr + "_NOTIFICATION", alert7day1NotificationCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_SOUND" + iStr, alertNotificationSoundCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_MCD" + iStr, alertNotificationMcdCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_SWO" + iStr, alertNotificationSwoCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_SPCFW" + iStr, alertNotificationSpcfwCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + iStr, alertNotificationWpcmpdCurrent)
-                Utility.writePref("ALERT_NOTIFICATION_RADAR" + iStr, alertNotificationRadarCurrent)
+                //let alertNotificationCurrent = Utility.readPref("ALERT" + jStr + "_NOTIFICATION", "false")
+                //let alertNotificationRadarCurrent = Utility.readPref("ALERT_NOTIFICATION_RADAR" + jStr, "false")
+                //let alertCcNotificationCurrent = Utility.readPref("ALERT_CC" + jStr + "_NOTIFICATION", "false")
+                //let alert7day1NotificationCurrent = Utility.readPref("ALERT_7DAY_" + jStr + "_NOTIFICATION", "false")
+                //let alertNotificationSoundCurrent = Utility.readPref("ALERT_NOTIFICATION_SOUND" + jStr, "false")
+                //let alertNotificationMcdCurrent = Utility.readPref("ALERT_NOTIFICATION_MCD" + jStr, "false")
+                //let alertNotificationSwoCurrent = Utility.readPref("ALERT_NOTIFICATION_SWO" + jStr, "false")
+                //let alertNotificationSpcfwCurrent = Utility.readPref("ALERT_NOTIFICATION_SPCFW" + jStr, "false")
+                //let alertNotificationWpcmpdCurrent = Utility.readPref("ALERT_NOTIFICATION_WPCMPD" + jStr, "false")
+                //Utility.writePref("ALERT" + iStr + "_NOTIFICATION", alertNotificationCurrent)
+                //Utility.writePref("ALERT_CC" + iStr + "_NOTIFICATION", alertCcNotificationCurrent)
+                //Utility.writePref("ALERT_7DAY_" + iStr + "_NOTIFICATION", alert7day1NotificationCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_SOUND" + iStr, alertNotificationSoundCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_MCD" + iStr, alertNotificationMcdCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_SWO" + iStr, alertNotificationSwoCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_SPCFW" + iStr, alertNotificationSpcfwCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + iStr, alertNotificationWpcmpdCurrent)
+                //Utility.writePref("ALERT_NOTIFICATION_RADAR" + iStr, alertNotificationRadarCurrent)
                 Utility.writePref("LOC" + iStr + "_OBSERVATION", locObsCurrent)
                 Utility.writePref("LOC" + iStr + "_X", locXCurrent)
                 Utility.writePref("LOC" + iStr + "_Y", locYCurrent)
@@ -297,15 +282,15 @@ final class Location {
                 Location.numLocations = locNumIntCurrent - 1
             }
         }
-        Utility.writePref("ALERT" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        Utility.writePref("ALERT_CC" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        Utility.writePref("ALERT_7DAY_" + locNumIntCurrentStr + "_NOTIFICATION", "false")
-        Utility.writePref("ALERT_NOTIFICATION_SOUND" + locNumIntCurrentStr, "false")
-        Utility.writePref("ALERT_NOTIFICATION_RADAR" + locNumIntCurrentStr, "false")
-        Utility.writePref("ALERT_NOTIFICATION_MCD" + locNumIntCurrentStr, "false")
-        Utility.writePref("ALERT_NOTIFICATION_SWO" + locNumIntCurrentStr, "false")
-        Utility.writePref("ALERT_NOTIFICATION_SPCFW" + locNumIntCurrentStr, "false")
-        Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        //Utility.writePref("ALERT_CC" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        //Utility.writePref("ALERT_7DAY_" + locNumIntCurrentStr + "_NOTIFICATION", "false")
+        //Utility.writePref("ALERT_NOTIFICATION_SOUND" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT_NOTIFICATION_RADAR" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT_NOTIFICATION_MCD" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT_NOTIFICATION_SWO" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT_NOTIFICATION_SPCFW" + locNumIntCurrentStr, "false")
+        //Utility.writePref("ALERT_NOTIFICATION_WPCMPD" + locNumIntCurrentStr, "false")
         let locFragCurrentInt = Location.getCurrentLocation() + 1
         if locToDeleteInt == locFragCurrentInt {
             Utility.writePref("CURRENT_LOC_FRAGMENT", "1")
