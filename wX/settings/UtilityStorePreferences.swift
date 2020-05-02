@@ -10,7 +10,6 @@ final class UtilityStorePreferences {
 		let value = Utility.readPref("COD_WARNINGS_DEFAULT", "")
 		if value == "" {
 			let stateDefault = "Oklahoma"
-			let refreshMainMinDefault = 15
 			let locNumIntDefault = 1
 			let loc1LabelDefault = "home"
 			let zipcodeDefault = "73069"
@@ -32,7 +31,6 @@ final class UtilityStorePreferences {
 			Utility.writePref("RADAR_SHOW_COUNTY", "true")
 			Utility.writePref("RADAR_COLOR_HW", Color.rgb(135, 135, 135))
 			Utility.writePref("RADAR_COLOR_STATE", Color.rgb(255, 255, 255))
-			Utility.writePref("REFRESH_MAIN_MIN", refreshMainMinDefault)
 			Utility.writePref("LOC_NUM_INT", locNumIntDefault)
 			Utility.writePref("LOC1_X", loc1XDefault)
 			Utility.writePref("LOC1_Y", loc1YDefault)
