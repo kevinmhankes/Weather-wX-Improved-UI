@@ -159,9 +159,7 @@ final class WXGLDownload {
         let fnSize = Int(list[list.count - 3]) ?? 0
         let fnPrevSize = Int(list[list.count - 5]) ?? 0
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 {
-            additionalAdd = 1
-        }
+        if ratio < 0.75 { additionalAdd = 1 }
         (0..<frameCnt).forEach { index in
             listOfFiles.append(list[list.count - (frameCnt - index + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
@@ -175,22 +173,16 @@ final class WXGLDownload {
         let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let html = (baseUrl + "dir.list").getHtmlSep()
         var sizes = [String]()
-        html.split("\n").forEach { line in
-            sizes.append(line.split(" ")[0])
-        }
+        html.split("\n").forEach { sizes.append($0.split(" ")[0]) }
         sizes.removeLast()
         let tmpArr = html.replace("<br>", " ").split(" ")
-        if tmpArr.count < 4 {
-            return ""
-        }
+        if tmpArr.count < 4 { return "" }
         var fileName = tmpArr[tmpArr.count - 1].split("\n")[0]
         let fnPrev = tmpArr[tmpArr.count - 2].split("\n")[0]
         let fnSize = Int(sizes[sizes.count - 1]) ?? 1
         let fnPrevSize = Int(sizes[sizes.count - 2]) ?? 1
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 {
-            fileName = fnPrev
-        }
+        if ratio < 0.75 { fileName = fnPrev }
         return baseUrl + fileName
     }
     
