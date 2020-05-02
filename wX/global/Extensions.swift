@@ -45,11 +45,7 @@ extension String {
     
     func firstToken(_ delim: String) -> String {
         let tokens = self.split(delim)
-        if tokens.count > 0 {
-            return tokens[0]
-        } else {
-            return ""
-        }
+        if tokens.count > 0 { return tokens[0] } else { return "" }
     }
     
     func firstToken() -> String { self.firstToken(":") }
@@ -63,11 +59,7 @@ extension String {
         }
     }
     
-    func insert(_ index: Int, _ string: String) -> String {
-        let str1 = self.substring(0, index)
-        let str2 = self.substring(index)
-        return str1 + string + str2
-    }
+    func insert(_ index: Int, _ string: String) -> String { self.substring(0, index) + string + self.substring(index) }
     
     func contains(_ str: String) -> Bool { self.range(of: str) != nil }
     
@@ -85,10 +77,7 @@ extension String {
     
     func substring(_ start: Int, _ end: Int) -> String { UtilityString.substring(self, start, end) }
     
-    func delete(_ str: String) -> String {
-        let stringToArray = self.components(separatedBy: str)
-        return stringToArray.joined(separator: "")
-    }
+    func delete(_ str: String) -> String { self.components(separatedBy: str).joined(separator: "") }
     
     func regex (pattern: String) -> [String] {
         do {
