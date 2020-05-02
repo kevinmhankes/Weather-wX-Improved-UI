@@ -13,10 +13,7 @@ final class ObjectToolbarItems {
     init(_ items: [UIBarButtonItem]) {
         self.items = items
         items.forEach { item in
-            item.setTitleTextAttributes(
-                [NSAttributedString.Key.foregroundColor: AppColors.toolbarTextColor],
-                for: .normal
-            )
+            item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColors.toolbarTextColor], for: .normal)
         }
     }
 }

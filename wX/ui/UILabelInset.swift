@@ -8,10 +8,10 @@ import UIKit
 
 final class UILabelInset: UILabel {
 
-    private let topInset: CGFloat = 0
-    private let bottomInset: CGFloat = 0
-    private let leftInset: CGFloat = 5
-    private let rightInset: CGFloat = 0
+    private let topInset: CGFloat = 0.0
+    private let bottomInset: CGFloat = 0.0
+    private let leftInset: CGFloat = 5.0
+    private let rightInset: CGFloat = 0.0
 
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)

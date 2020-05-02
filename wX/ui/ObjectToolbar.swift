@@ -39,9 +39,7 @@ final class ObjectToolbar: UIToolbar {
     }
 
     func resize(uiv: UIViewController) {
-        if toolbarHeightConstraint != nil {
-            uiv.view.removeConstraint(toolbarHeightConstraint!)
-        }
+        if toolbarHeightConstraint != nil { uiv.view.removeConstraint(toolbarHeightConstraint!) }
         toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
         uiv.view.addConstraint(toolbarHeightConstraint!)
     }
@@ -56,11 +54,7 @@ final class ObjectToolbar: UIToolbar {
     }
 
     func setTransparent() {
-        setBackgroundImage(
-            UIImage(),
-            forToolbarPosition: .any,
-            barMetrics: .default
-        )
+        setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         setShadowImage(UIImage(), forToolbarPosition: .any)
     }
 

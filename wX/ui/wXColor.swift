@@ -53,39 +53,19 @@ final class wXColor {
     static func colorsToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int { (0xFF << 24) | (red << 16) | (green << 8) | blue }
 
     static func uiColorInt(_ newRed: Int, _ newGreen: Int, _ newBlue: Int) -> UIColor {
-        return UIColor(
-            red: newRed.toColor(),
-            green: newGreen.toColor(),
-            blue: newBlue.toColor(),
-            alpha: CGFloat(1.0)
-        )
+        UIColor(red: newRed.toColor(), green: newGreen.toColor(), blue: newBlue.toColor(), alpha: CGFloat(1.0))
     }
 
     static func uiColorInt(_ newRed: Int, _ newGreen: Int, _ newBlue: Int, _ alpha: CGFloat) -> UIColor {
-        return UIColor(
-            red: newRed.toColor(),
-            green: newGreen.toColor(),
-            blue: newBlue.toColor(),
-            alpha: alpha
-        )
+        UIColor(red: newRed.toColor(), green: newGreen.toColor(), blue: newBlue.toColor(), alpha: alpha)
     }
 
     static func uiColorInt(_ newRed: UInt8, _ newGreen: UInt8, _ newBlue: UInt8) -> UIColor {
-        return UIColor(
-            red: newRed.toColor(),
-            green: newGreen.toColor(),
-            blue: newBlue.toColor(),
-            alpha: CGFloat(1.0)
-        )
+        UIColor(red: newRed.toColor(), green: newGreen.toColor(), blue: newBlue.toColor(), alpha: CGFloat(1.0))
     }
 
     static func uiColorFloat(_ newRed: CGFloat, _ newGreen: CGFloat, _ newBlue: CGFloat) -> UIColor {
-        return UIColor(
-            red: newRed,
-            green: newGreen,
-            blue: newBlue,
-            alpha: CGFloat(1.0)
-        )
+        UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
     }
 
     func intToColors(_ colorInt: Int) -> (red: Int, green: Int, blue: Int) {

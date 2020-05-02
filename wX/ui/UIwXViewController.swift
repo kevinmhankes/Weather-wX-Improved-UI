@@ -19,7 +19,6 @@ class UIwXViewController: UIViewController {
     var stackView = UIStackView()
     let toolbar = ObjectToolbar()
     var doneButton = ObjectToolbarIcon()
-    //var shareButton = ObjectToolbarIcon()
     var objScrollStackView: ObjectScrollStackView?
 
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class UIwXViewController: UIViewController {
         self.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        //shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
     }
     
     //
@@ -51,9 +49,7 @@ class UIwXViewController: UIViewController {
     func getContent() {}
     
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            doneClicked()
-        }
+        if recognizer.state == .recognized { doneClicked() }
     }
 
     @objc func doneClicked() {
@@ -70,9 +66,7 @@ class UIwXViewController: UIViewController {
     }
 
     func removeAllViews() {
-        self.view.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        self.view.subviews.forEach { $0.removeFromSuperview() }
     }
     
     //@objc func shareClicked(sender: UIButton) {

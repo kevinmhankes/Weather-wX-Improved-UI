@@ -17,14 +17,7 @@ final class ObjectTouchImageView {
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         let height = UtilityUI.effectiveHeight(toolbar)
         let y = UtilityUI.getTopPadding()
-        img = ImageScrollView(
-            frame: CGRect(
-                x: 0,
-                y: y,
-                width: width,
-                height: height
-            )
-        )
+        img = ImageScrollView(frame: CGRect(x: 0, y: y, width: width, height: height))
         uiv.view.addSubview(img)
         img.contentMode = UIView.ContentMode.scaleAspectFit
         self.img.translatesAutoresizingMaskIntoConstraints = false
