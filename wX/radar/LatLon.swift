@@ -29,13 +29,6 @@ struct LatLon {
         self.yStr = String(self.lonNum)
     }
     
-    //init(_ latlon: (lat: Double, lon: Double)) {
-    //    self.latNum = latlon.lat
-    //    self.lonNum = latlon.lon
-    //    self.xStr = String(self.latNum)
-    //    self.yStr = String(self.lonNum)
-    //}
-    
     init(_ lat: Double, _ lon: Double) {
         self.latNum = lat
         self.lonNum = lon
@@ -148,9 +141,7 @@ struct LatLon {
         }
         var latLons = [LatLon]()
         if y.count > 3 && x.count > 3 && x.count == y.count {
-            x.enumerated().forEach { index, _ in
-                latLons.append(LatLon(x[index], y[index]))
-            }
+            x.enumerated().forEach { index, _ in latLons.append(LatLon(x[index], y[index])) }
         }
         return latLons
     }

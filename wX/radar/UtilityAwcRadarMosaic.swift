@@ -108,9 +108,7 @@ class UtilityAwcRadarMosaic {
                 bestIndex = key
             }
         }
-        if bestIndex == "" {
-            return "BLAH"
-        }
+        if bestIndex == "" { return "BLAH" }
         let index = sectorLabels.firstIndex(of: bestIndex)
         return sectors[index!]
     }

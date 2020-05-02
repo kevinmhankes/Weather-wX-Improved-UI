@@ -90,18 +90,10 @@ final class UtilityMetar {
                     }*/
                     let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
-                    if visInt > 5 && lowestCig > 3000 {
-                        aviationColor = Color.GREEN
-                    }
-                    if (visInt >= 3 &&  visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) {
-                        aviationColor = Color.rgb(0, 100, 255)
-                    }
-                    if (visInt >= 1 &&  visInt < 3) || ( lowestCig >= 500 && lowestCig < 1000) {
-                        aviationColor = Color.RED
-                    }
-                    if visInt < 1  || lowestCig < 500 {
-                        aviationColor = Color.MAGENTA
-                    }
+                    if visInt > 5 && lowestCig > 3000 { aviationColor = Color.GREEN }
+                    if (visInt >= 3 &&  visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) { aviationColor = Color.rgb(0, 100, 255) }
+                    if (visInt >= 1 &&  visInt < 3) || ( lowestCig >= 500 && lowestCig < 1000) { aviationColor = Color.RED }
+                    if visInt < 1  || lowestCig < 500 { aviationColor = Color.MAGENTA }
                     if pressureBlob.count == 4 {
                         pressureBlob = pressureBlob.insert(pressureBlob.count - 2, ".")
                         pressureBlob = UtilityMath.unitsPressure(pressureBlob)
@@ -173,9 +165,7 @@ final class UtilityMetar {
         }
     }
     
-    static func getObsArrAviationColor() -> [Int] {
-        return obsArrAviationColor
-    }
+    static func getObsArrAviationColor() -> [Int] { obsArrAviationColor }
     
     private static var metarDataRaw = [String]()
     private static var metarSites = [RID]()
@@ -225,11 +215,7 @@ final class UtilityMetar {
                 bestIndex = index
             }
         }
-        if bestIndex == -1 {
-            return metarSites[0]
-        } else {
-            return metarSites[bestIndex]
-        }
+        if bestIndex == -1 { return metarSites[0] } else { return metarSites[bestIndex] }
     }
     
     static func getObservationSites(_ radarSite: String) -> String {
@@ -240,9 +226,7 @@ final class UtilityMetar {
         var currentDistance = 0.0
         metarSites.indices.forEach { index in
             currentDistance = LatLon.distance(radarLocation, metarSites[index].location, .MILES)
-            if currentDistance < obsSiteRange {
-                obsListSb += metarSites[index].name + ","
-            }
+            if currentDistance < obsSiteRange { obsListSb += metarSites[index].name + "," }
         }
         return obsListSb.replaceAll(",$", "")
     }
