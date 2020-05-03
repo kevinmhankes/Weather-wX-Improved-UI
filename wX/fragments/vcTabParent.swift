@@ -236,6 +236,6 @@ class vcTabParent: UIViewController {
     }
 
     @objc func showKeyboardShortcuts() {
-        UtilityUI.showDiaglogue(self, Utility.showMainScreenShortCuts())
+        UtilityUI.showDialogue(self, Utility.showMainScreenShortCuts())
     }
 }

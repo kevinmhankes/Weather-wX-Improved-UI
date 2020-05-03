@@ -25,12 +25,12 @@ class vcSettingsColorListing: UIwXViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         objectTextViews.forEach { tv in
-            if tv.textcolor.colorsCurrent.red == 0
-                && tv.textcolor.colorsCurrent.green == 0
-                && tv.textcolor.colorsCurrent.blue == 0 {
+            if tv.textColor.colorsCurrent.red == 0
+                && tv.textColor.colorsCurrent.green == 0
+                && tv.textColor.colorsCurrent.blue == 0 {
                 tv.color = UIColor.white
             } else {
-                tv.color = tv.textcolor.uicolorCurrent
+                tv.color = tv.textColor.uicolorCurrent
             }
         }
     }

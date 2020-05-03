@@ -879,7 +879,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func showKeyboardShortcuts() {
-        UtilityUI.showDiaglogue(self, Utility.showRadarShortCuts())
+        UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
     }
     
     @objc func keyRightArrow() {

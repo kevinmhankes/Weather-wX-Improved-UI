@@ -24,17 +24,17 @@ final class ObjectCardSevenDay {
             objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
         topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
-        let verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view])
-        bottomText.view.widthAnchor.constraint(equalTo: verticalTextConainer.view.widthAnchor).isActive = true
-        verticalTextConainer.view.alignment = UIStackView.Alignment.top
+        let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view])
+        bottomText.view.widthAnchor.constraint(equalTo: verticalTextContainer.view.widthAnchor).isActive = true
+        verticalTextContainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         bottomText.tv.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
+        verticalTextContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
         update(index, urls, days, daysShort, isUS)
     }
 

@@ -176,7 +176,7 @@ public class UtilityUI {
         return landscape
     }
 
-    static func showDiaglogue(_ uiv: UIViewController, _ text: String) {
+    static func showDialogue(_ uiv: UIViewController, _ text: String) {
         let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         uiv.present(alert, animated: true, completion: nil)

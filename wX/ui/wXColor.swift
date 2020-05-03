@@ -13,6 +13,7 @@ final class wXColor {
     var defaultRed = 0
     var defaultGreen = 0
     var defaultBlue = 0
+    // TODO var rename
     var uicolorDefault = UIColor()
     var uicolorCurrent = UIColor()
     var colorsCurrent = (red: 0, green: 0, blue: 0)

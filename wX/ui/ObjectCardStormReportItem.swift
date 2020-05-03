@@ -17,10 +17,10 @@ final class ObjectCardStormReportItem {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvAddress.text = stormReport.address
             tvDescription.text = stormReport.magnitude + " - " + stormReport.damageReport
-            let verticalTextConainer = ObjectStackView(
+            let verticalTextContainer = ObjectStackView(
                 .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
-            objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+            objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
             stackView.addArrangedSubview(objectCardStackView.view)
             objectCardStackView.view.addGestureRecognizer(gesture)
         }

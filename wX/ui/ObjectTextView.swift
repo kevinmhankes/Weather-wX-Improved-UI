@@ -9,7 +9,7 @@ import UIKit
 final class ObjectTextView {
 
     let tv = UITextView()
-    var textcolor = wXColor()
+    var textColor = wXColor()
 
     init() {
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +83,7 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ color: wXColor) {
         self.init(stackView, text)
-        self.textcolor = color
+        self.textColor = color
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ viewOrder: Int) {
