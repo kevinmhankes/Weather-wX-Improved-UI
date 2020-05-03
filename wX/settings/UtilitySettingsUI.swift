@@ -35,7 +35,7 @@ final class UtilitySettingsUI {
         "UI_THEME": "Color theme"
     ]
 
-    static let pickerinit = [
+    static let pickerInit = [
         "UI_THEME": "blue"
     ]
 

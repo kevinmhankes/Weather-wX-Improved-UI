@@ -659,7 +659,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             y
         )
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
-        let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
+        let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)

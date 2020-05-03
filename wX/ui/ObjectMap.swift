@@ -34,7 +34,7 @@ public class ObjectMap {
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
-        let usCenter = CLLocationCoordinate2D(latitude: Location.latlon.lat, longitude: Location.latlon.lon)
+        let usCenter = CLLocationCoordinate2D(latitude: Location.latLon.lat, longitude: Location.latLon.lon)
         centerMapOnLocation(location: usCenter, regionRadius: mapRegionRadius)
     }
     

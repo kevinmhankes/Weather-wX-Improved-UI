@@ -30,7 +30,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar)
-        self.wfo = UtilityLocation.getNearestSoundingSite(Location.latlon)
+        self.wfo = UtilityLocation.getNearestSoundingSite(Location.latLon)
         self.getContent()
     }
     

@@ -90,7 +90,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
             objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
-                let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerinit[prefVar]!)
+                let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerInit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.firstIndex(of: prefValue)
                 if defaultRowIndex == nil {
                     defaultRowIndex = 0
@@ -98,7 +98,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 objNp.numberPicker.selectRow(defaultRowIndex!, inComponent: 0, animated: true)
             } else {
                 objNp.numberPicker.selectRow(
-                    Utility.readPref(prefVar, Int(UtilitySettingsUI.pickerinit[prefVar]!)!),
+                    Utility.readPref(prefVar, Int(UtilitySettingsUI.pickerInit[prefVar]!)!),
                     inComponent: 0,
                     animated: true
                 )

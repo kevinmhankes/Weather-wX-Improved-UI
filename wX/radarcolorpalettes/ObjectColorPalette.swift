@@ -11,8 +11,8 @@ final class ObjectColorPalette {
     var blueValues = MemoryBuffer(16)
     private let colorMapCode: String
     
-    init(_ colormapCode: String) {
-        self.colorMapCode = colormapCode
+    init(_ colorMapCode: String) {
+        self.colorMapCode = colorMapCode
     }
     
     private func setupBuffers(_ size: Int) {

@@ -117,12 +117,12 @@ final class Location {
 
     static var x: String { MyApplication.locations[getCurrentLocation()].lat }
 
-    static var latLon: LatLon {
-        LatLon(
-            MyApplication.locations[getCurrentLocation()].lat,
-            MyApplication.locations[getCurrentLocation()].lon
-        )
-    }
+    //static var latLon: LatLon {
+    //    LatLon(
+    //        MyApplication.locations[getCurrentLocation()].lat,
+    //        MyApplication.locations[getCurrentLocation()].lon
+    //    )
+    //}
 
     static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }
 
@@ -148,7 +148,7 @@ final class Location {
 
     var prov: String { lat.split(":")[1] }
 
-    static var latlon: LatLon { LatLon(Location.xDbl, Location.yDbl) }
+    static var latLon: LatLon { LatLon(Location.xDbl, Location.yDbl) }
 
     static func refreshLocationData() {
         initNumLocations()

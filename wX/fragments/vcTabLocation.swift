@@ -159,7 +159,7 @@ class vcTabLocation: vcTabParent {
     }
     
     @objc func getContentMaster() {
-        self.oldLocation = Location.latlon
+        self.oldLocation = Location.latLon
         if Location.isUS {
             self.isUS = true
         } else {
@@ -374,7 +374,7 @@ class vcTabLocation: vcTabParent {
         let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
         let textSizeHasChange = abs(UIPreferences.textviewFontSize - globalTextViewFontSize) > 0.5
         Location.checkCurrentLocationValidity()
-        if (Location.latlon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
+        if (Location.latLon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
             scrollView.scrollToTop()
             self.objectCardCurrentConditions?.resetTextSize()
             self.objectCardSevenDayCollection?.resetTextSize()
@@ -657,7 +657,7 @@ class vcTabLocation: vcTabParent {
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(self, wxMetal[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
-        let dist = LatLon.distance(Location.latlon, pointerLocation, .MILES)
+        let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         var alertMessage = WXGLNexrad.getRadarInfo("") + MyApplication.newline

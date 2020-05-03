@@ -28,16 +28,16 @@ final class WXMetalSurfaceView {
         _ textObj: WXMetalTextObject,
         _ gestureRecognizer: UIPanGestureRecognizer
     ) {
-        var panSensivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 { panSensivity *= 2 }
+        var panSensitivity: Float = 500.0
+        if wxMetal[0]!.numberOfPanes == 4 { panSensitivity *= 2 }
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 if gestureRecognizer.state == UIGestureRecognizer.State.changed {
                     let pointInView = gestureRecognizer.location(in: uiv.view)
-                    let xDelta = Float(($0!.lastPanLocation.x - pointInView.x) / uiv.view.bounds.width) * panSensivity
-                    let yDelta = Float(($0!.lastPanLocation.y - pointInView.y) / uiv.view.bounds.height) * panSensivity
+                    let xDelta = Float(($0!.lastPanLocation.x - pointInView.x) / uiv.view.bounds.width) * panSensitivity
+                    let yDelta = Float(($0!.lastPanLocation.y - pointInView.y) / uiv.view.bounds.height) * panSensitivity
                     $0!.xPos -= xDelta
                     $0!.yPos += yDelta
                     $0!.lastPanLocation = pointInView
@@ -49,9 +49,9 @@ final class WXMetalSurfaceView {
             if gestureRecognizer.state == UIGestureRecognizer.State.changed {
                 let pointInView = gestureRecognizer.location(in: uiv.view)
                 let xDelta = Float((wxMetal[radarIndex]!.lastPanLocation.x
-                    - pointInView.x) / uiv.view.bounds.width) * panSensivity
+                    - pointInView.x) / uiv.view.bounds.width) * panSensitivity
                 let yDelta = Float((wxMetal[radarIndex]!.lastPanLocation.y
-                    - pointInView.y) / uiv.view.bounds.height) * panSensivity
+                    - pointInView.y) / uiv.view.bounds.height) * panSensitivity
                 wxMetal[radarIndex]!.xPos -= xDelta
                 wxMetal[radarIndex]!.yPos += yDelta
                 wxMetal[radarIndex]!.lastPanLocation = pointInView

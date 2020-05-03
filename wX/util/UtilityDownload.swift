@@ -478,7 +478,7 @@ final class UtilityDownload {
             needsBitmap = false
             bitmap = UtilityLightning.getImage(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
         case "SND":
-            let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latlon)
+            let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latLon)
             needsBitmap = false
             bitmap = UtilitySpcSoundings.getImage(nwsOffice)
         case "STRPT":
