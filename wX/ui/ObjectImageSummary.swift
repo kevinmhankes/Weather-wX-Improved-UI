@@ -12,11 +12,11 @@ final class ObjectImageSummary {
     // To be used in image based summary for SPC SWO, SPC Tstorm, SPC Fire Outlook, WPC Excessive Rain
     //
     
-    init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], imagersPerRowWide: Int = 3) {
+    init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() { imagesPerRow = imagersPerRowWide }
+        if UtilityUI.isTablet() { imagesPerRow = imagesPerRowWide }
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {

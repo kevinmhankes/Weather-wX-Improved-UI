@@ -41,7 +41,7 @@ final class UtilityNws {
     static let textFont = UIFont(name: "HelveticaNeue-Bold", size: 12)! // HelveticaNeue-Bold
 
     static func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
-        let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
+        let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
             NSAttributedString.Key.foregroundColor: textColor
@@ -93,7 +93,7 @@ final class UtilityNws {
             let xText = 58
             let yText = 70
             let xTextLeft = 2
-            let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
+            let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uiColorCurrent
             if num1 != "" {
                 let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
@@ -120,7 +120,7 @@ final class UtilityNws {
         if aSplit.count > 1 { num1 = aSplit[1] }
         var aLocal = ""
         if aSplit.count > 0 { aLocal = aSplit[0] }
-        let textColor = wXColor(UIPreferences.nwsIconTextColor).uicolorCurrent
+        let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
             NSAttributedString.Key.foregroundColor: textColor
@@ -139,7 +139,7 @@ final class UtilityNws {
             bitmap.image.draw(at: CGPoint.zero)
             if num1 != "" {
                 let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: dimensions, height: dimensions)
-                let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
+                let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uiColorCurrent
                 fillColor.setFill()
                 UIRectFill(rectangle)
                 let rect = CGRect(x: xText, y: 70, width: dimensions, height: dimensions)

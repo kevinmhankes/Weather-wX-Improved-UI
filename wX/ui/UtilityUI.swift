@@ -131,9 +131,9 @@ public class UtilityUI {
     static func determineDeviceType() {
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-            print("device type: iphone")
+            print("device type: iPhone")
         case .pad:
-            print("device type: ipad")
+            print("device type: iPad")
         case .unspecified:
             print("device type: unknown")
         default:

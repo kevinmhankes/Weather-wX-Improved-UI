@@ -47,7 +47,7 @@ final class ObjectCardDashAlertItem {
         )
         horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
-        let verticalTextConainer = ObjectStackView(
+        let verticalTextContainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
@@ -55,12 +55,12 @@ final class ObjectCardDashAlertItem {
         )
         if senderName == "" { tvName.view.isHidden = true }
         if expiresTime == "" { tvEnd.view.isHidden = true }
-        verticalTextConainer.view.isAccessibilityElement = true
-        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        verticalTextContainer.view.isAccessibilityElement = true
+        cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
         uiv.stackView.addArrangedSubview(cardStackView.view)
-        verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+        verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
     
     @objc func showRadar() {}

@@ -30,7 +30,7 @@ class vcSettingsColorListing: UIwXViewController {
                 && tv.textColor.colorsCurrent.blue == 0 {
                 tv.color = UIColor.white
             } else {
-                tv.color = tv.textColor.uicolorCurrent
+                tv.color = tv.textColor.uiColorCurrent
             }
         }
     }
@@ -85,7 +85,7 @@ class vcSettingsColorListing: UIwXViewController {
             if color.colorsCurrent.red == 0 && color.colorsCurrent.green == 0 && color.colorsCurrent.blue == 0 {
                 objectTextView.color = UIColor.white
             } else {
-                objectTextView.color = color.uicolorCurrent
+                objectTextView.color = color.uiColorCurrent
             }
             objectTextView.background = UIColor.black
             objectTextView.tv.font = FontSize.extraLarge.size

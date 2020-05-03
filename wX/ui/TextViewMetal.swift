@@ -43,7 +43,7 @@ final class TextViewMetal {
         uiTextView.text = string
         uiTextView.font = UIFont.systemFont(ofSize: CGFloat(self.realTextSize))
         uiTextView.backgroundColor = UIColor.clear
-        uiTextView.textColor = wXColor(textColor).uicolorCurrent
+        uiTextView.textColor = wXColor(textColor).uiColorCurrent
         uiTextView.textContainer.lineBreakMode = .byTruncatingTail
         uiTextView.isEditable = false
         uiTextView.isUserInteractionEnabled = false

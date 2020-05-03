@@ -29,7 +29,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colPicker = HSBColorPicker()
         colPicker.delegate = self
         refreshViews()
-        colorBar.backgroundColor = colorObject.uicolorCurrent
+        colorBar.backgroundColor = colorObject.uiColorCurrent
         colorButton.title = "(" + String(colorObject.colorsCurrent.red)
             + ", "
             + String(colorObject.colorsCurrent.green)
@@ -76,7 +76,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     
     @objc func saveDefaultColorClicked() {
         Utility.writePref(colorObject.prefVar, Color.rgb(colorObject.defaultRed, colorObject.defaultGreen, colorObject.defaultBlue))
-        colorBar.backgroundColor = colorObject.uicolorDefault
+        colorBar.backgroundColor = colorObject.uiColorDefault
         colorObject.regenCurrentColor()
         newRed = colorObject.defaultRed
         newGreen = colorObject.defaultGreen

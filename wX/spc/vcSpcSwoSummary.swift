@@ -30,7 +30,7 @@ class vcSpcSwoSummary: UIwXViewController {
     
     private func displayContent() {
         self.refreshViews()
-        _ = ObjectImageSummary(self, bitmaps, imagersPerRowWide: 4)
+        _ = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 4)
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
