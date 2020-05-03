@@ -16,7 +16,7 @@ final class UtilityModelWpcGefsInputOutput {
         if currentHour >= 18 { runData.mostRecentRun = "12" }
         if currentHour < 6 { runData.mostRecentRun = "18" }
         runData.listRun = ["00", "06", "12", "18"]
-        runData.timeStrConv = runData.mostRecentRun
+        runData.timeStringConversion = runData.mostRecentRun
         return runData
     }
     

@@ -141,10 +141,10 @@ final public class ObjectModel {
             sector = "north"
         default: break
         }
-        getPrefs()
+        getPreferences()
     }
     
-    func getPrefs() {
+    private func getPreferences() {
         model = Utility.readPref(prefModel, model)
         param = Utility.readPref(prefParam, param)
         sector = Utility.readPref(prefSector, sector)
@@ -152,7 +152,7 @@ final public class ObjectModel {
         timeIdx = Utility.readPref(prefRunPosnIdx, timeIdx)
     }
     
-    func setPrefs() {
+    func setPreferences() {
         Utility.writePref(prefModel, model)
         Utility.writePref(prefParam, param)
         Utility.writePref(prefSector, sector)

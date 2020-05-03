@@ -10,7 +10,7 @@ final public class RunTimeData {
     var mostRecentRun = ""
     var imageCompleteInt = 0
     var imageCompleteStr = ""
-    var timeStrConv = ""
+    var timeStringConversion = ""
     var validTime = ""
 
     func appendListRun(_ value: String) { listRun.append(value) }

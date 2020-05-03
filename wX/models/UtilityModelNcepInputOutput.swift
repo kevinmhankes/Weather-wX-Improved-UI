@@ -29,7 +29,7 @@ final class UtilityModelNcepInputOutput {
         let ncepPattern1 = "([0-9]{2}Z)"
         let time = html.parse(ncepPattern1)
         runData.mostRecentRun = time
-        runData.timeStrConv = time
+        runData.timeStringConversion = time
         let timeCompleteUrl = "https://mag.ncep.noaa.gov/model-fhrs.php?group=Model%20Guidance&model="
             + om.model.lowercased() + "&fhr_mode=image&loop_start=-1&loop_end=-1&area="
             + om.sector + "&fourpan=no&imageSize=&preselected_formatted_cycle_date="

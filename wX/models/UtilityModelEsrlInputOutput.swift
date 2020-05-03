@@ -49,7 +49,7 @@ final class UtilityModelEsrlInputOutput {
                 let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[index].parse(eslHrrrPattern6))
                 runData.appendListRun(year + monthStr + day + hour)
             }
-            runData.timeStrConv = html.parse("([0-9]{2})$")
+            runData.timeStringConversion = html.parse("([0-9]{2})$")
         }
         return runData
     }

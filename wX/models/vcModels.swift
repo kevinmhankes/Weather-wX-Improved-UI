@@ -115,7 +115,7 @@ class vcModels: UIwXViewController {
                             idx,
                             timeStr.split(" ")[0] + " "
                                 + UtilityModels.convertTimeRuntoTimeString(
-                                    self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                                    self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                                     timeStr.split(" ")[0],
                                     false
                             )
@@ -143,7 +143,7 @@ class vcModels: UIwXViewController {
                 } else {
                     self.image.updateBitmap(bitmap)
                 }
-                self.modelObj.setPrefs()
+                self.modelObj.setPreferences()
             }
         }
     }
@@ -230,7 +230,7 @@ class vcModels: UIwXViewController {
                     timeStr.split(" ")[0]
                         + " "
                         + UtilityModels.convertTimeRuntoTimeString(
-                            self.modelObj.runTimeData.timeStrConv.replace("Z", ""),
+                            self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                             timeStr.split(" ")[0],
                             false
                     )
