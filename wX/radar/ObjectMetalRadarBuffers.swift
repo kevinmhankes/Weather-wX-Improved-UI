@@ -19,8 +19,8 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         colorGF = Float(Color.green(bgColor)) / 255.0
         colorBF = Float(Color.blue(bgColor)) / 255.0
     }
-    // TODO rename
-    var colormap: ObjectColorPalette { MyApplication.colorMap[Int(self.rd.productCode)]! }
+    
+    var colorMap: ObjectColorPalette { MyApplication.colorMap[Int(self.rd.productCode)]! }
 
     func initialize() {
         if rd.productCode == 37 || rd.productCode == 38 || rd.productCode == 41 || rd.productCode == 57 {
@@ -32,8 +32,8 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     }
 
     func putColorsByIndex(_ level: UInt8) {
-        putColor(colormap.redValues.get(Int(level)))
-        putColor(colormap.greenValues.get(Int(level)))
-        putColor(colormap.blueValues.get(Int(level)))
+        putColor(colorMap.redValues.get(Int(level)))
+        putColor(colorMap.greenValues.get(Int(level)))
+        putColor(colorMap.blueValues.get(Int(level)))
     }
 }

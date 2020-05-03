@@ -7,9 +7,9 @@
 class UtilityWXMetalPerfRaster {
 
     static func generate(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
-        radarBuffers.colormap.redValues.put(0, Color.red(radarBuffers.bgColor))
-        radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
-        radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
+        radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
+        radarBuffers.colorMap.greenValues.put(0, Color.green(radarBuffers.bgColor))
+        radarBuffers.colorMap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
         var totalBins = 0
         var curLevel: UInt8 = 0
         var numberOfRows = 464

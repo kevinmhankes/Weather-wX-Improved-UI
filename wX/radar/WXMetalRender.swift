@@ -855,7 +855,6 @@ class WXMetalRender {
         if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
     
-    // TODO rename vars
     func resetRid(_ rid: String, isHomeScreen: Bool = false) {
         self.rid = rid
         xPos = 0.0

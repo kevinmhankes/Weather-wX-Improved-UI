@@ -62,15 +62,15 @@ final class WXMetalTextObject {
     
     private func addTextLabelsCitiesExtended() {
         if GeographyType.cities.display {
-            glview.citiesExtAl = []
+            glview.cities = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.00 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > cityMinZoom {
                 cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach { index in
-                    if glview.citiesExtAl.count <= maxCitiesPerGlview {
+                    if glview.cities.count <= maxCitiesPerGlview {
                         checkAndDrawText(
-                            &glview.citiesExtAl,
+                            &glview.cities,
                             UtilityCitiesExtended.cities[index].latitude,
                             UtilityCitiesExtended.cities[index].longitude,
                             UtilityCitiesExtended.cities[index].name,
@@ -107,13 +107,13 @@ final class WXMetalTextObject {
     
     private func addTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
-            glview.countyLabelsAl = []
+            glview.countyLabels = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.00 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
-                        &glview.countyLabelsAl,
+                        &glview.countyLabels,
                         UtilityCountyLabels.location[$0].lat,
                         UtilityCountyLabels.location[$0].lon,
                         UtilityCountyLabels.countyName[$0],
@@ -126,13 +126,13 @@ final class WXMetalTextObject {
     
     private func addTextLabelsSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
-            glview.spottersLabelAl = []
+            glview.spottersLabels = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
-                        &glview.spottersLabelAl,
+                        &glview.spottersLabels,
                         UtilitySpotter.spotterList[$0].location.lat,
                         UtilitySpotter.spotterList[$0].location.lon * -1.0,
                         " " + UtilitySpotter.spotterList[$0].lastName.replace("0FAV ", ""),
@@ -171,14 +171,14 @@ final class WXMetalTextObject {
     
     func addWpcPressureCenters() {
         if RadarPreferences.radarShowWpcFronts {
-            glview.pressureCenterLabelAl = []
+            glview.pressureCenterLabels = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom < WXMetalRender.zoomToHideMiscFeatures {
                 UtilityWpcFronts.pressureCenters.forEach { value in
                     var color = wXColor.colorsToInt(0, 127, 255)
                     if value.type == PressureCenterTypeEnum.LOW { color = wXColor.colorsToInt(255, 0, 0) }
-                    checkAndDrawText(&glview.pressureCenterLabelAl, value.lat, value.lon, value.pressureInMb, color)
+                    checkAndDrawText(&glview.pressureCenterLabels, value.lat, value.lon, value.pressureInMb, color)
                 }
             }
         }
@@ -187,7 +187,7 @@ final class WXMetalTextObject {
     private func addTextLabelsObservations() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
             obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
-            glview.obsAl = []
+            glview.observations = []
             oglrZoom = 1.0
             if OGLR.zoom < 1.0 { oglrZoom = OGLR.zoom * 0.8 }
             if OGLR.zoom > obsMinZoom {
@@ -202,17 +202,17 @@ final class WXMetalTextObject {
                         let yPos = latLon[1] * Double(OGLR.zoom) - yFudge - Double(OGLR.yPos)
                         if abs(Double(xPos) * scale * 2 ) < glviewWidth && abs(yPos * scale * 2) < glviewHeight {
                             if Double(OGLR.zoom) > obsExtZoom {
-                                glview.obsAl.append(TextViewMetal(context, 150, 150))
+                                glview.observations.append(TextViewMetal(context, 150, 150))
                             } else {
-                                glview.obsAl.append(TextViewMetal(context))
+                                glview.observations.append(TextViewMetal(context))
                             }
-                            glview.obsAl.last?.textColor = RadarGeometry.radarColorObs
-                            glview.obsAl.last?.textSize = textSize
-                            glview.obsAl.last?.setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
+                            glview.observations.last?.textColor = RadarGeometry.radarColorObs
+                            glview.observations.last?.textSize = textSize
+                            glview.observations.last?.setPadding(CGFloat(glviewWidth / 2) + CGFloat(xPos * scale), CGFloat(glviewHeight / 2) + CGFloat(yPos * scale))
                             if Double(OGLR.zoom) > obsExtZoom {
-                                glview.obsAl.last?.setText(tmpArrObsExt[2])
+                                glview.observations.last?.setText(tmpArrObsExt[2])
                             } else if PolygonType.OBS.display {
-                                glview.obsAl.last?.setText(tmpArrObs[2])
+                                glview.observations.last?.setText(tmpArrObs[2])
                             }
                         }
                     }

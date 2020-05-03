@@ -8,12 +8,11 @@ import UIKit
 
 final class WXMetalSurfaceView {
 
-    // FIXME TODO rename these
-    var citiesExtAl = [TextViewMetal]()
-    var countyLabelsAl = [TextViewMetal]()
-    var obsAl = [TextViewMetal]()
-    var spottersLabelAl = [TextViewMetal]()
-    var pressureCenterLabelAl = [TextViewMetal]()
+    var cities = [TextViewMetal]()
+    var countyLabels = [TextViewMetal]()
+    var observations = [TextViewMetal]()
+    var spottersLabels = [TextViewMetal]()
+    var pressureCenterLabels = [TextViewMetal]()
     static let maxZoom: Float = 45.0
     static let minZoom: Float = 0.015
 
