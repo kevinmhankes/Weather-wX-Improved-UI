@@ -149,10 +149,10 @@ class WXMetalRender {
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display { geographicBuffers.append($0) }
+            if $0.geoType.display { geographicBuffers.append($0) }
         }
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geotype.display { radarLayers.append($0) }
+            if $0.geoType.display { radarLayers.append($0) }
         }
         [
             warningTstBuffers,
@@ -350,11 +350,11 @@ class WXMetalRender {
     }
     
     func constructGenericGeographic(_ buffers: ObjectMetalBuffers) {
-        buffers.setCount(buffers.geotype.count)
-        buffers.initialize(4 * buffers.count, buffers.geotype.color)
+        buffers.setCount(buffers.geoType.count)
+        buffers.initialize(4 * buffers.count, buffers.geoType.color)
         let colors = buffers.getColorArrayInFloat()
         JNI_GenMercato(
-            MemoryBuffer.getPointer(buffers.geotype.relativeBuffer.array),
+            MemoryBuffer.getPointer(buffers.geoType.relativeBuffer.array),
             MemoryBuffer.getPointer(buffers.floatBuffer.array),
             pn.xFloat,
             pn.yFloat,

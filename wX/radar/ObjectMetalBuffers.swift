@@ -21,7 +21,7 @@ class ObjectMetalBuffers {
     var triangleCount = 0
     var scaleCutOff: Float = 0.0
     var type: PolygonType = .NONE
-    var geotype: GeographyType = .NONE
+    var geoType: GeographyType = .NONE
     let floatCountPerVertex = 5 // x y r g b a ( last 4 bytes )
     var vertexCount = 0
     var mtlBuffer: MTLBuffer?
@@ -44,9 +44,9 @@ class ObjectMetalBuffers {
         self.scaleCutOff = scaleCutOff
     }
 
-    convenience init (_ geotype: GeographyType, _ scaleCutOff: Float) {
+    convenience init (_ geoType: GeographyType, _ scaleCutOff: Float) {
         self.init()
-        self.geotype = geotype
+        self.geoType = geoType
         self.scaleCutOff = scaleCutOff
         self.shape = .line
     }
