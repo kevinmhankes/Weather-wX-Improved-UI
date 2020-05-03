@@ -86,7 +86,7 @@ final class Utility {
     static func getClassName(_ uiv: UIViewController) -> String { String(describing: uiv).split(":").safeGet(0).replace("<", "") }
     
     static func showMainScreenShortCuts() -> String {
-        return "Ctrl-r: Nexrad radar" + MyApplication.newline +
+            "Ctrl-r: Nexrad radar" + MyApplication.newline +
             "Ctrl-m: Show submenu" + MyApplication.newline +
             "Ctrl-d: Severe Dashboard" + MyApplication.newline +
             "Ctrl-c: Goes Viewer" + MyApplication.newline +
@@ -107,7 +107,7 @@ final class Utility {
     }
     
     static func showRadarShortCuts() -> String {
-        return "Ctrl-a: Animate" + MyApplication.newline +
+            "Ctrl-a: Animate" + MyApplication.newline +
             "Ctrl-a: Stop animate" + MyApplication.newline +
             "Ctrl-2: Show dual pane radar" + MyApplication.newline +
             "Ctrl-4: Show quad pane radar" + MyApplication.newline +

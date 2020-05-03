@@ -106,6 +106,4 @@ final class ProjectionNumbers {
     var yCenterDouble: Double { Double(yCenter) }
     
     var oneDegreeScaleFactorFloat: Float { Float(oneDegreeScaleFactor) }
-    
-    var latlon: LatLon { LatLon(lat, lon) }
 }
