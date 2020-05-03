@@ -9,60 +9,60 @@ import AVFoundation
 
 final class UtilityAudio {
     
-    static func speakText(_ text: String, _ synth: AVSpeechSynthesizer) {
-        if !synth.isSpeaking {
-            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(text))
-            synth.speak(myUtterance)
-        } else if synth.isPaused {
-            synth.continueSpeaking()
+    static func speakText(_ string: String, _ synthesizer: AVSpeechSynthesizer) {
+        if !synthesizer.isSpeaking {
+            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
+            synthesizer.speak(myUtterance)
+        } else if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
         } else {
-            synth.pauseSpeaking(at: AVSpeechBoundary.word)
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
         }
     }
     
-    static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        if synth.isPaused {
-            synth.continueSpeaking()
+    static func playClicked(_ string: String, _ synthesizer: AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
             playB.setImage(.pause)
-        } else if !synth.isSpeaking {
-             let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(str))
-            synth.speak(myUtterance)
+        } else if !synthesizer.isSpeaking {
+             let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
+            synthesizer.speak(myUtterance)
             playB.setImage(.pause)
         } else {
-            synth.pauseSpeaking(at: AVSpeechBoundary.word)
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
             playB.setImage(.play)
         }
     }
     
-    static func playClicked(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        if synth.isPaused {
-            synth.continueSpeaking()
+    static func playClicked(_ string: String, _ synthesizer: AVSpeechSynthesizer, _ fab: ObjectFab) {
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
             fab.setImage(.pause)
-        } else if !synth.isSpeaking {
-            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(str))
-            synth.speak(myUtterance)
+        } else if !synthesizer.isSpeaking {
+            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
+            synthesizer.speak(myUtterance)
             fab.setImage(.pause)
         } else {
-            synth.pauseSpeaking(at: AVSpeechBoundary.word)
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
             fab.setImage(.play)
         }
     }
     
-    static func playClickedNewItem(_ str: String, _ synth: AVSpeechSynthesizer, _ fab: ObjectFab) {
-        let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(str))
-        synth.speak(myUtterance)
+    static func playClickedNewItem(_ string: String, _ synthesizer: AVSpeechSynthesizer, _ fab: ObjectFab) {
+        let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
+        synthesizer.speak(myUtterance)
         fab.setImage(.pause)
     }
     
-    static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
-        if synth.isSpeaking { synth.pauseSpeaking(at: AVSpeechBoundary.word) }
-        synth = AVSpeechSynthesizer()
+    static func resetAudio(_ synthesizer: inout AVSpeechSynthesizer, _ playB: ObjectToolbarIcon) {
+        if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
+        synthesizer = AVSpeechSynthesizer()
         playB.setImage(.play)
     }
     
-    static func resetAudio(_ synth: inout AVSpeechSynthesizer, _ fab: ObjectFab) {
-        if synth.isSpeaking { synth.pauseSpeaking(at: AVSpeechBoundary.word) }
-        synth = AVSpeechSynthesizer()
+    static func resetAudio(_ synthesizer: inout AVSpeechSynthesizer, _ fab: ObjectFab) {
+        if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
+        synthesizer = AVSpeechSynthesizer()
         fab.setImage(.play)
     }
 }
