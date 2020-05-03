@@ -6,9 +6,8 @@
 
 final class UtilityLocation {
 
-    // FIXME naming
     static func getLatLonAsDouble() -> [Double] {
-        var latlonAl = [Double]()
+        var latLonList = [Double]()
         var tmpX = ""
         var tmpY = ""
         var tmpXArr = [String]()
@@ -28,11 +27,11 @@ final class UtilityLocation {
                 }
             }
             if tmpX != "" && tmpY != "" {
-                latlonAl.append(Double(tmpX) ?? 0.0)
-                latlonAl.append(Double(tmpY) ?? 0.0)
+                latLonList.append(Double(tmpX) ?? 0.0)
+                latLonList.append(Double(tmpY) ?? 0.0)
             }
         }
-        return latlonAl
+        return latLonList
     }
 
     static func getNearestOffice(_ officeType: String, _ location: LatLon) -> String {
