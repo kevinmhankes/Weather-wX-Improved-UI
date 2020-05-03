@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilityTimeSunMoon {
 
-    static func getSunTimesForHomescreen() -> String {
+    static func getSunTimesForHomeScreen() -> String {
         let sunCalc = SunCalc()
         let now = Date()
         let formatter = DateFormatter()

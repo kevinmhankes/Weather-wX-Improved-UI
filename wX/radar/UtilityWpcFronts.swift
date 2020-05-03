@@ -146,7 +146,7 @@ class UtilityWpcFronts {
         let coordinates = parseLatLon(tokens[index])
         front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
         let oldCoordinates = parseLatLon(tokens[index + 1])
-        let coord = UtilityMath.computeMiddishPoint(coordinates[0], coordinates[1], oldCoordinates[0], oldCoordinates[1], fraction)
+        let coord = UtilityMath.computeMiddlePoint(coordinates[0], coordinates[1], oldCoordinates[0], oldCoordinates[1], fraction)
         front.coordinates.append(LatLon(coord[0], coord[1]))
       }
     }

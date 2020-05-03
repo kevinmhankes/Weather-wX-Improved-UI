@@ -38,13 +38,13 @@ final class UtilityObs {
     }
 
     static func findObsName(_ obsShortCode: String) -> String {
-        var locatioName = ""
+        var locationName = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         var tmp = ""
         lines.forEach { line in if line.contains("," + obsShortCode) { tmp = line } }
         let chunks = tmp.split(",")
-        if chunks.count > 2 { locatioName = chunks[0] + ", " + chunks[1] }
-        return locatioName
+        if chunks.count > 2 { locationName = chunks[0] + ", " + chunks[1] }
+        return locationName
     }
 
     static func getObsFromLatLon(_ location: LatLon) -> String {

@@ -12,7 +12,7 @@ class WXGLNexradLevel3StormInfo {
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
         WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
-        let data = UtilityIO.readFiletoData(fileName)
+        let data = UtilityIO.readFileToData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
             let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)

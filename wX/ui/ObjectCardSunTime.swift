@@ -13,7 +13,7 @@ final class ObjectCardSunTime {
     private var gmtTimeText: String
 
     init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
-        sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomescreen()
+        sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText =  UtilityTime.gmtTime()
         objectTextView = ObjectTextView(
             stackView,
@@ -26,7 +26,7 @@ final class ObjectCardSunTime {
     }
 
     func update() {
-        sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomescreen()
+        sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText =  UtilityTime.gmtTime()
         objectTextView.text = sunriseSunset + MyApplication.newline + gmtTimeText
     }

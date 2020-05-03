@@ -35,12 +35,12 @@ final class UtilityMath {
         return [rx, ry]
     }
 
-    static func computeMiddishPoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
+    static func computeMiddlePoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
         [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
     }
 
-    static func rHFromTD(_ temp: Double, _ dewpt: Double) -> String {
-        roundDToString(100 * (exp((17.625 * dewpt) / (243.04 + dewpt)) / exp((17.625 * temp) / (243.04 + temp))))
+    static func rHFromTD(_ temp: Double, _ dewPoint: Double) -> String {
+        roundDToString(100 * (exp((17.625 * dewPoint) / (243.04 + dewPoint)) / exp((17.625 * temp) / (243.04 + temp))))
     }
 
     static func latLonFix(_ location: LatLon) -> LatLon {
@@ -80,7 +80,7 @@ final class UtilityMath {
         return value2
     }
 
-    static func celsiusToFarenheit(_ value: String) -> String {
+    static func celsiusToFahrenheit(_ value: String) -> String {
         var value2 = value
         if UIPreferences.unitsF {
             let tmpNum = (Double(value) ?? 0.0) * 9 / 5 + 32
@@ -89,7 +89,7 @@ final class UtilityMath {
         return value2
     }
 
-    static func celsiusToFarenheit(_ value: Int) -> String {
+    static func celsiusToFahrenheit(_ value: Int) -> String {
         var retVal = ""
         var retValNum = 0.0
         if UIPreferences.unitsF {
@@ -103,10 +103,10 @@ final class UtilityMath {
 
     static func farenheitTocelsius(_ valueD: Double) -> String { String(Int(round((valueD - 32) * 5 / 9))) }
 
-    static func celsiusToFarenheitTable() -> String {
+    static func celsiusToFahrenheitTable() -> String {
         var table = "C\t\tF" + MyApplication.newline
         (-40...39).forEach { degree in
-            table += String(degree) + "  " + celsiusToFarenheit(degree) + MyApplication.newline
+            table += String(degree) + "  " + celsiusToFahrenheit(degree) + MyApplication.newline
         }
         return table
     }

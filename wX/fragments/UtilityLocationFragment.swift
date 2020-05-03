@@ -57,21 +57,21 @@ final class UtilityLocationFragment {
     static func extract7DayMetrics(_ chunk: String) -> String {
         let spacing = " "
         // wind 24 to 29 mph
-        let wind = UtilityString.parseMultipe(chunk, sevenDayWind1, 2 )
+        let wind = UtilityString.parseMultiple(chunk, sevenDayWind1, 2 )
         // wind around 9 mph
         let wind2 = chunk.parse(sevenDayWind2)
         // 5 to 10 mph after
-        let wind3 = UtilityString.parseMultipe(chunk, sevenDayWind4, 2)
+        let wind3 = UtilityString.parseMultiple(chunk, sevenDayWind4, 2)
         // around 5 mph after
         let wind4 = chunk.parse(sevenDayWind5)
         // 5 to 7 mph in
-        let wind5 = UtilityString.parseMultipe(chunk, sevenDayWind6, 2)
+        let wind5 = UtilityString.parseMultiple(chunk, sevenDayWind6, 2)
         // around 6 mph.
         let wind7 = chunk.parse(sevenDayWind7)
         // with gusts as high as 21 mph
         var gust = chunk.parse(sevenDayWind3)
         // 5 to 7 mph.
-        let wind9 = UtilityString.parseMultipe(chunk, sevenDayWind9, 2)
+        let wind9 = UtilityString.parseMultiple(chunk, sevenDayWind9, 2)
         // Winds could gusts as high as 21 mph.
         if gust == "" {
             gust = chunk.parse(sevenDayWind8)
@@ -270,7 +270,7 @@ final class UtilityLocationFragment {
     }
 
     static func extractCAWindSpeed(_ chunk: String) -> String {
-        let wspdRange = UtilityString.parseMultipe(chunk, ca7dayWindspd1, 2)
+        let wspdRange = UtilityString.parseMultiple(chunk, ca7dayWindspd1, 2)
         let wspd = chunk.parse(ca7dayWindspd2)
         var gust = ""
         if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindspd3) }

@@ -179,8 +179,8 @@ final class ObjectMetar {
             if TDArr.count > 1 {
                 temperature = TDArr[0]
                 dewpoint = TDArr[1]
-                temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
-                dewpoint = UtilityMath.celsiusToFarenheit(dewpoint.replace("M", "-")).replace(".0", "")
+                temperature = UtilityMath.celsiusToFahrenheit(temperature.replace("M", "-")).replace(".0", "")
+                dewpoint = UtilityMath.celsiusToFahrenheit(dewpoint.replace("M", "-")).replace(".0", "")
             }
         }
     }

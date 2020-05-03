@@ -120,8 +120,8 @@ final class UtilityMetar {
                     if TDArr.count > 1 {
                         var temperature = TDArr[0]
                         var dewpoint = TDArr[1]
-                        temperature = UtilityMath.celsiusToFarenheit(temperature.replace("M", "-")).replace(".0", "")
-                        dewpoint = UtilityMath.celsiusToFarenheit(dewpoint.replace("M", "-")).replace(".0", "")
+                        temperature = UtilityMath.celsiusToFahrenheit(temperature.replace("M", "-")).replace(".0", "")
+                        dewpoint = UtilityMath.celsiusToFahrenheit(dewpoint.replace("M", "-")).replace(".0", "")
                         let obsSite = metarItems[0]
                         var latlon = obsLatlon[obsSite] ?? LatLon()
                         latlon.lonString = latlon.lonString.replace("-0", "-")

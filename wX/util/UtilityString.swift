@@ -104,8 +104,9 @@ final class UtilityString {
     static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] { parseHelper(regexpStr, str) }
 
     static func parseAndCount(_ str: String, _ regexpStr: String) -> Int { str.parseColumn(regexpStr).count }
-
-    static func parseMultipe(_ str: String, _ matchStr: String, _ number: Int) -> [String] {
+    
+    // TODO make extension and rename
+    static func parseMultiple(_ str: String, _ matchStr: String, _ number: Int) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: matchStr, options: [])
             let nsString = str as NSString
@@ -145,16 +146,16 @@ final class UtilityString {
     }
 
     static func extractPre(_ html: String) -> String {
-        let seperator = "ABC123E"
-        let htmlOneLine = html.replaceAll(MyApplication.newline, seperator)
+        let separator = "ABC123E"
+        let htmlOneLine = html.replaceAll(MyApplication.newline, separator)
         let parsedText = htmlOneLine.parse(MyApplication.pre2Pattern)
-        return parsedText.replaceAll(seperator, MyApplication.newline)
+        return parsedText.replaceAll(separator, MyApplication.newline)
     }
 
     static func extractPreLsr(_ html: String) -> String {
-        let seperator = "ABC123E"
-        let htmlOneLine = html.replace(MyApplication.newline, seperator)
+        let separator = "ABC123E"
+        let htmlOneLine = html.replace(MyApplication.newline, separator)
         let parsedText = htmlOneLine.parse(MyApplication.prePattern)
-        return parsedText.replace(seperator, MyApplication.newline)
+        return parsedText.replace(separator, MyApplication.newline)
     }
 }

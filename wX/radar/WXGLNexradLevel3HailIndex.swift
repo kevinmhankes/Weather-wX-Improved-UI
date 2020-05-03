@@ -11,10 +11,10 @@ class WXGLNexradLevel3HailIndex {
     private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
     private static let stiPattern3 = "(\\d+) "
 
-    static func decode(_ pn: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         var stormList = [Double]()
-        WXGLDownload.getNidsTab("HI", pn.radarSite, fileName)
-        let data = UtilityIO.readFiletoData(fileName)
+        WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
+        let data = UtilityIO.readFileToData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
             let position = retStr1.parseColumn(hiPattern1)
             let hailPercent = retStr1.parseColumn(hiPattern2)
@@ -35,8 +35,8 @@ class WXGLNexradLevel3HailIndex {
             let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
             let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
-                var start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
-                var ec = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
+                var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
+                var ec = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                 var index = 0
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach {
                     let hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
@@ -44,7 +44,7 @@ class WXGLNexradLevel3HailIndex {
                         let ecc = ExternalGeodeticCalculator()
                         let degree = Int(posnNumbers[$0]) ?? 0
                         let nm = Int(posnNumbers[$0 + 1]) ?? 0
-                        start = ExternalGlobalCoordinates(pn, lonNegativeOne: true)
+                        start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                         ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
                         let baseSize = 0.015

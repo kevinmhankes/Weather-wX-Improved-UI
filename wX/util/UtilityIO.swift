@@ -29,7 +29,7 @@ final class UtilityIO {
         }
     }
 
-    static func readFiletoByteByffer(_ filename: String) -> MemoryBuffer {
+    static func readFileToByteBuffer(_ filename: String) -> MemoryBuffer {
         do {
             let documentDirUrl = try FileManager.default.url(
                 for: .documentDirectory,
@@ -46,7 +46,7 @@ final class UtilityIO {
         }
     }
 
-    static func readFiletoData(_ filename: String) -> Data {
+    static func readFileToData(_ filename: String) -> Data {
         do {
             let documentDirUrl = try FileManager.default.url(
                 for: .documentDirectory,
