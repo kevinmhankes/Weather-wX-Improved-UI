@@ -12,7 +12,7 @@ final class UtilityStorePreferences {
 			let stateDefault = "Oklahoma"
 			let locNumIntDefault = 1
 			let loc1LabelDefault = "home"
-			let zipcodeDefault = "73069"
+			let zipCodeDefault = "73069"
 			let current1Default = "true"
 			let county1Default = "Cleveland"
 			let zone1Default = "OKC027"
@@ -41,7 +41,7 @@ final class UtilityStorePreferences {
 			Utility.writePref("CURRENT1", current1Default)
 			Utility.writePref("STATE", stateDefault)
 			Utility.writePref("STATE_CODE", stateCodeDefault)
-			Utility.writePref("ZIPCODE1", zipcodeDefault)
+			Utility.writePref("ZIPCODE1", zipCodeDefault)
 			Utility.writePref("NWS1", nws1Default)
 			Utility.writePref("RID1", rid1Default)
 			Utility.writePref("NWS1_STATE", nws1DefaultState)

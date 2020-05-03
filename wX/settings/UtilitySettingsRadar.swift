@@ -121,14 +121,14 @@ final class UtilitySettingsRadar {
         "RADAR_COLOR_PALETTE_99": "Velocity Colormap"
     ]
 
-    static let pickerinit: [String: Int] = [:]
+    static let pickerInit: [String: Int] = [:]
 
     static let pickerCount = [
         "RADAR_COLOR_PALETTE_94": 8,
         "RADAR_COLOR_PALETTE_99": 3
     ]
 
-    static let pickerinitString = [
+    static let pickerInitString = [
         "RADAR_COLOR_PALETTE_94": "CODENH",
         "RADAR_COLOR_PALETTE_99": "CODENH"
     ]

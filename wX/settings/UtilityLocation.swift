@@ -18,13 +18,9 @@ final class UtilityLocation {
                 tmpY = MyApplication.locations[index].lon.replace("-", "")
             } else {
                 tmpXArr = MyApplication.locations[index].lat.split(":")
-                if tmpXArr.count > 2 {
-                    tmpX = tmpXArr[2]
-                }
+                if tmpXArr.count > 2 { tmpX = tmpXArr[2] }
                 tmpYArr = MyApplication.locations[index].lon.replace("-", "").split(":")
-                if tmpYArr.count > 1 {
-                    tmpY = tmpYArr[1]
-                }
+                if tmpYArr.count > 1 { tmpY = tmpYArr[1] }
             }
             if tmpX != "" && tmpY != "" {
                 latLonList.append(Double(tmpX) ?? 0.0)

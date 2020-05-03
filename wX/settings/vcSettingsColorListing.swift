@@ -35,7 +35,7 @@ class vcSettingsColorListing: UIwXViewController {
         }
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         RadarGeometry.setColors()
         GeographyType.regen()
         PolygonType.regen()

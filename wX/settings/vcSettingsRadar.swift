@@ -121,14 +121,14 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
             if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
                 objNp.numberPicker.selectRow(
                     (UtilitySettingsRadar.pickerDataSource[prefVar]?.firstIndex(
-                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerinitString[prefVar]!))!
+                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerInitString[prefVar]!))!
                         )!,
                     inComponent: 0,
                     animated: true
                 )
             } else {
                 objNp.numberPicker.selectRow(
-                    Utility.readPref(prefVar, UtilitySettingsRadar.pickerinit[prefVar]!),
+                    Utility.readPref(prefVar, UtilitySettingsRadar.pickerInit[prefVar]!),
                     inComponent: 0,
                     animated: true
                 )

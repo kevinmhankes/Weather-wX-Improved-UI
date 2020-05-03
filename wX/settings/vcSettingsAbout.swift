@@ -48,11 +48,6 @@ class vcSettingsAbout: UIwXViewController {
         displayContent()
     }
     
-    @objc override func doneClicked() {
-        MyApplication.initPreferences()
-        super.doneClicked()
-    }
-    
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "faq":
