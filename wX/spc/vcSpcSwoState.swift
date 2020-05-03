@@ -22,7 +22,7 @@ class vcSpcSwoState: UIwXViewController {
         self.getContent(Location.state)
     }
     
-    @objc override func willEnterForeground() {
+    override func willEnterForeground() {
         self.getContent(state)
     }
     

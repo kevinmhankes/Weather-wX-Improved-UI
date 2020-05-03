@@ -43,7 +43,8 @@ class vcSpcStormReports: UIwXViewController {
         self.getContent()
     }
     
-    @objc override func willEnterForeground() {
+    // do not do anything
+    override func willEnterForeground() {
         //self.getContent()
     }
     

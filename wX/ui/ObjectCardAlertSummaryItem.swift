@@ -23,13 +23,13 @@ final class ObjectCardAlertSummaryItem {
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        let horizontalConainer = ObjectStackView(
+        let horizontalContainer = ObjectStackView(
             .fillProportionally,
             .horizontal,
             spacing: 10,
             arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
         )
-        horizontalConainer.uiStackView.distribution = .equalSpacing
+        horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = ObjectTextViewLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
@@ -46,7 +46,7 @@ final class ObjectCardAlertSummaryItem {
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalConainer.view]
+            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
         if location == "" { tvName.view.isHidden = true }
         if endTime == "" { tvEnd.view.isHidden = true }

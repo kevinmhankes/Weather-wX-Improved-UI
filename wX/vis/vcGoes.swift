@@ -71,7 +71,7 @@ class vcGoes: UIwXViewController {
         }
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         super.doneClicked()
     }
     

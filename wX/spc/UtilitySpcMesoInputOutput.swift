@@ -12,6 +12,7 @@ final class UtilitySpcMesoInputOutput {
         let prefModel = "SPCMESO"
         let showRadar = Utility.readPref(prefModel + "_SHOW_RADAR", "false").hasPrefix("t")
         let showOutlook = Utility.readPref(prefModel + "_SHOW_OUTLOOK", "false").hasPrefix("t")
+        // TODO var naming
         let showWatwarn = Utility.readPref(prefModel + "_SHOW_WATWARN", "false").hasPrefix("t")
         let showTopo = Utility.readPref(prefModel + "_SHOW_TOPO", "false").hasPrefix("t")
         var layers = [Bitmap]()

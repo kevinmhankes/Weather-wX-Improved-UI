@@ -39,7 +39,7 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         self.getContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
@@ -90,7 +90,7 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         }
     }
     
-    @objc override func playlistClicked() {
+    override func playlistClicked() {
         if let object = self.objectWatchProduct {
             _ = UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
         }
