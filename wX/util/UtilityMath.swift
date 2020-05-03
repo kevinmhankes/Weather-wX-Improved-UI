@@ -99,10 +99,6 @@ final class UtilityMath {
         return retVal
     }
 
-    static func celsiusDToFarenheit(_ valueD: Double) -> String { String(Int(round(valueD * 9 / 5 + 32))) }
-
-    static func farenheitTocelsius(_ valueD: Double) -> String { String(Int(round((valueD - 32) * 5 / 9))) }
-
     static func celsiusToFahrenheitTable() -> String {
         var table = "C\t\tF" + MyApplication.newline
         (-40...39).forEach { degree in

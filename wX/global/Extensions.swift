@@ -109,10 +109,6 @@ extension Double {
     
     func roundToString() -> String { UtilityMath.roundDToString(self) }
     
-    func celsiusToFarenheit() -> String { UtilityMath.celsiusDToFarenheit(self) }
-    
-    func farenheitToCelsius() -> String { UtilityMath.farenheitTocelsius(self) }
-    
     // for SunCalc
     static let radPerDegree = Double.pi / 180.0
 }
