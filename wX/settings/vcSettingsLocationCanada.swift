@@ -53,10 +53,6 @@ class vcSettingsLocationCanada: UIwXViewController {
         }
     }
     
-    @objc override func doneClicked() {
-        super.doneClicked()
-    }
-    
     func finishSave() {
         let locStr = Utility.readPref("LOCATION_CANADA_PROV", "") + " " +
             Utility.readPref("LOCATION_CANADA_CITY", "") + " " +

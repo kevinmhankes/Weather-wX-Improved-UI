@@ -19,7 +19,7 @@ class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.displayContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         MyApplication.initPreferences()
         AppColors.update()
         super.doneClicked()
