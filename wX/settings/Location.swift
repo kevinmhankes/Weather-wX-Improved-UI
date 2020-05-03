@@ -193,10 +193,10 @@ final class Location {
             Utility.writePref("RID" + locNum, radarSite.uppercased())
             Utility.writePref("NWS" + locNum, wfo.uppercased())
         } else {
-            var tmpLatlon = LatLon()
+            var tempLatLon = LatLon()
             if latLon.latString.count < 12 {
                 if UtilityCanada.isLabelPresent(labelStr) {
-                    tmpLatlon = UtilityCanada.getLatLonFromLabel(labelStr)
+                    tempLatLon = UtilityCanada.getLatLonFromLabel(labelStr)
                 }
             }
             var prov = ""
@@ -206,11 +206,11 @@ final class Location {
             let parseId = latLon.lonString.split(":")
             if parseId.count > 0 { id = parseId[0] }
             if latLon.latString.count > 12 {
-                tmpLatlon.latString = parseProv[2]
-                tmpLatlon.lonString = parseId[1]
+                tempLatLon.latString = parseProv[2]
+                tempLatLon.lonString = parseId[1]
             }
-            Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tmpLatlon.latString)
-            Utility.writePref("LOC" + locNum + "_Y", id + ":" + tmpLatlon.lonString)
+            Utility.writePref("LOC" + locNum + "_X", "CANADA" + ":" + prov + ":" + tempLatLon.latString)
+            Utility.writePref("LOC" + locNum + "_Y", id + ":" + tempLatLon.lonString)
             Location.numLocations = locNumToSave
             radarSite = UtilityCanada.getRadarSite(latLon.latString, latLon.lonString)
             Utility.writePref("RID" + locNum, rid.uppercased())

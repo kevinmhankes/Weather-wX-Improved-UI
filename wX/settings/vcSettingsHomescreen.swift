@@ -6,6 +6,7 @@
 
 import UIKit
 
+// TODO rename to vcSettingsHomeScreen
 class vcSettingsHomescreen: UIwXViewController {
     
     private var homeScreenFav = [String]()
@@ -58,7 +59,7 @@ class vcSettingsHomescreen: UIwXViewController {
     
     func addProduct(_ selection: String) {
         if homeScreenFav.contains(selection) {
-            getHelp(addButton, selection + " is already in the homescreen widgets list.")
+            getHelp(addButton, selection + " is already in the home screen list.")
         } else {
             homeScreenFav.append(selection)
         }

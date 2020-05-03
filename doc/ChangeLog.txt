@@ -23,6 +23,7 @@
 // [FIX] if remember location not chosen, products always default to REF for multi-pane
 // [REF] use more of condition ? trueValue : falseValue
 // [REF] implement class to handle routing
+// [FIX] color picker is to slow on large screens
 
 56101 2020_05_03 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used

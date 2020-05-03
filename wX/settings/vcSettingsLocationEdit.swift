@@ -143,7 +143,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     @objc func searchClicked() {
         let alert = UIAlertController(
             title: "Search for location",
-            message: "Enter a city,state combination or a zipcode. After the search completes, "
+            message: "Enter a city/state combination or a zip code. After the search completes, "
                 + "valid latitude and longitude values should appear. Hit save after they appear.",
             preferredStyle: .alert
         )
@@ -164,10 +164,10 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     func searchAddress(_ address: String) {
         CLGeocoder().geocodeAddressString(
             address,
-            completionHandler: {(placemarks, error) in
+            completionHandler: { placeMarks, error in
                 if error != nil { return }
-                if (placemarks?.count)! > 0 {
-                    let placemark = placemarks?[0]
+                if (placeMarks?.count)! > 0 {
+                    let placemark = placeMarks?[0]
                     let location = placemark?.location
                     let coordinate = location?.coordinate
                     let locationName: String
@@ -232,12 +232,12 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     func addAnnotation(location: CLLocationCoordinate2D) {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
-        let latlonTruncateLength = 9
+        let latLonTruncateLength = 9
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = String(location.latitude).truncate(latlonTruncateLength)
+        annotation.title = String(location.latitude).truncate(latLonTruncateLength)
             + ","
-            + String(location.longitude).truncate(latlonTruncateLength)
+            + String(location.longitude).truncate(latLonTruncateLength)
         annotation.subtitle = ""
         self.mapView.addAnnotation(annotation)
     }
@@ -294,11 +294,11 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
         let loc = CLLocation(latitude: center.latitude, longitude: center.longitude)
         ceo.reverseGeocodeLocation(
             loc,
-            completionHandler: { (placemarks, error) in
+            completionHandler: { placeMarks, error in
                 if error != nil { print("reverse geodcode fail: \(error!.localizedDescription)") }
-                let pm = placemarks! as [CLPlacemark]
+                let pm = placeMarks! as [CLPlacemark]
                 if pm.count > 0 {
-                    let pm = placemarks![0]
+                    let pm = placeMarks![0]
                     let locationName: String
                     if pm.locality != nil && pm.administrativeArea != nil {
                         locationName = pm.administrativeArea! + ", " + pm.locality!
