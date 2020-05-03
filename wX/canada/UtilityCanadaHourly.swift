@@ -30,7 +30,7 @@ final class UtilityCanadaHourly {
         let times = html.parseColumn("<td headers=.header1. class=.text-center.>([0-9]{2}:[0-9]{2})</td>")
         let temperatures = html.parseColumn("<td headers=.header2. class=.text-center.>(.*?)</td>")
         let currentConditions = html.parseColumn("</span><div class=.media-body.><p>(.*?)</p></div>")
-        let precipChances = html.parseColumn("<td headers=.header4. class=.text-center.>(.*?)</td>")
+        let precipitationChances = html.parseColumn("<td headers=.header4. class=.text-center.>(.*?)</td>")
         var winds = html.parseColumn("<abbr title=(.*?.>.*?<.abbr>..[0-9]{2})<br>")
         let space = "   "
         var string = ""
@@ -42,7 +42,7 @@ final class UtilityCanadaHourly {
             string += MyApplication.newline + times[index] + space
                 + Utility.safeGet(temperatures, index).padding(toLength: 3, withPad: " ", startingAt: 0) + space
                 + Utility.safeGet(currentConditions, index).padding(toLength: 22, withPad: " ", startingAt: 0) + space
-                + Utility.safeGet(precipChances, index).padding(toLength: 6, withPad: " ", startingAt: 0)
+                + Utility.safeGet(precipitationChances, index).padding(toLength: 6, withPad: " ", startingAt: 0)
                 + space + Utility.safeGet(winds, index)
         }
         return string
