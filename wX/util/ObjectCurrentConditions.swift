@@ -15,7 +15,7 @@ final class ObjectCurrentConditions {
     private var temperature = ""
     private var windChill = ""
     private var heatIndex = ""
-    private var dewpoint = ""
+    private var dewPoint = ""
     private var relativeHumidity = ""
     private var seaLevelPressure = ""
     private var windDirection = ""
@@ -52,30 +52,30 @@ final class ObjectCurrentConditions {
     // FIXME don't use named tuple for language consistency
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var string = ""
-        let objMetar = ObjectMetar(location)
-        conditionsTimeString = objMetar.conditionsTimeString
-        self.temperature = objMetar.temperature + MyApplication.degreeSymbol
-        self.windChill = objMetar.windChill + MyApplication.degreeSymbol
-        self.heatIndex = objMetar.heatIndex + MyApplication.degreeSymbol
-        self.dewpoint = objMetar.dewpoint + MyApplication.degreeSymbol
-        self.relativeHumidity = objMetar.relativeHumidity + "%"
-        self.seaLevelPressure = objMetar.seaLevelPressure
-        self.windDirection = objMetar.windDirection
-        self.windSpeed = objMetar.windSpeed
-        self.windGust = objMetar.windGust
-        self.visibility = objMetar.visibility
-        self.condition = objMetar.condition
+        let objectMetar = ObjectMetar(location)
+        conditionsTimeString = objectMetar.conditionsTimeString
+        self.temperature = objectMetar.temperature + MyApplication.degreeSymbol
+        self.windChill = objectMetar.windChill + MyApplication.degreeSymbol
+        self.heatIndex = objectMetar.heatIndex + MyApplication.degreeSymbol
+        self.dewPoint = objectMetar.dewpoint + MyApplication.degreeSymbol
+        self.relativeHumidity = objectMetar.relativeHumidity + "%"
+        self.seaLevelPressure = objectMetar.seaLevelPressure
+        self.windDirection = objectMetar.windDirection
+        self.windSpeed = objectMetar.windSpeed
+        self.windGust = objectMetar.windGust
+        self.visibility = objectMetar.visibility
+        self.condition = objectMetar.condition
         string += self.temperature
-        if objMetar.windChill != "NA" {
+        if objectMetar.windChill != "NA" {
             string += "(" + self.windChill + ")"
-        } else if objMetar.heatIndex != "NA" {
+        } else if objectMetar.heatIndex != "NA" {
             string += "(" + self.heatIndex + ")"
         }
-        string += " / " + self.dewpoint + "(" + self.relativeHumidity + ")" + " - "
+        string += " / " + self.dewPoint + "(" + self.relativeHumidity + ")" + " - "
         string += seaLevelPressure +  " - " + windDirection + " " + windSpeed
         if windGust != "" { string += " G " }
         string += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return (string, objMetar.icon, objMetar.rawMetar)
+        return (string, objectMetar.icon, objectMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
     
@@ -95,7 +95,7 @@ final class ObjectCurrentConditions {
         middleLine = middleLineLocal
         spokenText = condition + ", temperature is " + self.temperature + " with wind at " + self.windDirection + " "
             + self.windSpeed + "miles per hour" +
-            " dew point is " + self.dewpoint + ", relative humidity is "
+            " dew point is " + self.dewPoint + ", relative humidity is "
             + self.relativeHumidity + ", pressure in milli-bars is "
             + self.seaLevelPressure + ", visibility is " + self.visibility + " miles" + status
     }
