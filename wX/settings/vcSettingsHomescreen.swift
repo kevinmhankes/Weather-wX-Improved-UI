@@ -8,7 +8,7 @@ import UIKit
 
 class vcSettingsHomescreen: UIwXViewController {
     
-    private var homescreenFav = [String]()
+    private var homeScreenFav = [String]()
     private var addImageButton = ObjectToolbarIcon()
     private var addTextButton = ObjectToolbarIcon()
     private var addButton = ObjectToolbarIcon()
@@ -41,11 +41,11 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     func serializeSettings() {
-        Utility.writePref("HOMESCREEN_FAV", TextUtils.join(":", homescreenFav))
+        Utility.writePref("HOMESCREEN_FAV", TextUtils.join(":", homeScreenFav))
     }
     
     func deSerializeSettings() {
-        homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
+        homeScreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
     }
     
     @objc func addClicked() {
@@ -57,10 +57,10 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     func addProduct(_ selection: String) {
-        if homescreenFav.contains(selection) {
+        if homeScreenFav.contains(selection) {
             getHelp(addButton, selection + " is already in the homescreen widgets list.")
         } else {
-            homescreenFav.append(selection)
+            homeScreenFav.append(selection)
         }
         displayContent()
     }
@@ -90,7 +90,7 @@ class vcSettingsHomescreen: UIwXViewController {
     }
     
     @objc func setToDefault() {
-        homescreenFav = TextUtils.split(MyApplication.homescreenFavDefault, ":")
+        homeScreenFav = TextUtils.split(MyApplication.homescreenFavDefault, ":")
         displayContent()
     }
     
@@ -99,7 +99,7 @@ class vcSettingsHomescreen: UIwXViewController {
         let title = sender.strData
         let alert = ObjectPopUp(self, title, addButton)
         if index != 0 { alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up)})) }
-        if index != (homescreenFav.count - 1) { alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)})) }
+        if index != (homeScreenFav.count - 1) { alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)})) }
         alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in self.delete(selection: index)}))
         alert.finish()
     }
@@ -107,22 +107,22 @@ class vcSettingsHomescreen: UIwXViewController {
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
         if to == .up { delta = -1 }
-        let tmp = homescreenFav[from + delta]
-        homescreenFav[from + delta] = homescreenFav[from]
-        homescreenFav[from] = tmp
+        let tmp = homeScreenFav[from + delta]
+        homeScreenFav[from + delta] = homeScreenFav[from]
+        homeScreenFav[from] = tmp
         displayContent()
     }
     
     // need to keep the label
     func delete(selection: Int) {
-        homescreenFav.remove(at: selection)
+        homeScreenFav.remove(at: selection)
         displayContent()
     }
     
     private func displayContent(saveToDisk: Bool = true) {
         if saveToDisk { serializeSettings() }
         self.stackView.removeViews()
-        homescreenFav.enumerated().forEach { index, prefVar in
+        homeScreenFav.enumerated().forEach { index, prefVar in
             var title = UtilityHomeScreen.localChoicesText[prefVar]
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {

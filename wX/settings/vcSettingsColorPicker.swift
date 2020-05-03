@@ -44,7 +44,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         if colorChanged { saveNewColorClicked() }
         super.doneClicked()
     }
