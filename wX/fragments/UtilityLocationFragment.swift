@@ -39,11 +39,11 @@ final class UtilityLocationFragment {
     static let ca7dayTemp20 = "Temperature falling to (zero) in"
     static let ca7dayTemp21 = "steady near ([0-9]{1,2})\\."
     static let ca7dayTemp22 = "steady near (zero)\\."
-    static let ca7dayWinddir1 = "Wind ([a-z]*?) [0-9]{2,3} "
-    static let ca7dayWinddir2 = "Wind becoming ([a-z]*?) [0-9]{2,3} "
-    static let ca7dayWindspd1 = "([0-9]{2,3}) to ([0-9]{2,3}) km/h"
-    static let ca7dayWindspd2 = "( [0-9]{2,3}) km/h"
-    static let ca7dayWindspd3 = "gusting to ([0-9]{2,3})"
+    static let ca7dayWindDirection1 = "Wind ([a-z]*?) [0-9]{2,3} "
+    static let ca7dayWindDirection2 = "Wind becoming ([a-z]*?) [0-9]{2,3} "
+    static let ca7dayWindSpeed1 = "([0-9]{2,3}) to ([0-9]{2,3}) km/h"
+    static let ca7dayWindSpeed2 = "( [0-9]{2,3}) km/h"
+    static let ca7dayWindSpeed3 = "gusting to ([0-9]{2,3})"
     static let sevenDayWind1 = "wind ([0-9]*) to ([0-9]*) mph"
     static let sevenDayWind2 = "wind around ([0-9]*) mph"
     static let sevenDayWind3 = "with gusts as high as ([0-9]*) mph"
@@ -263,17 +263,17 @@ final class UtilityLocationFragment {
     }
 
     static func extractCAWindDirection(_ chunk: String) -> String {
-        var wdir = chunk.parse(ca7dayWinddir1)
-        if wdir == "" { wdir = chunk.parse(ca7dayWinddir2) }
+        var wdir = chunk.parse(ca7dayWindDirection1)
+        if wdir == "" { wdir = chunk.parse(ca7dayWindDirection2) }
         if wdir != "" { wdir = " " + (windDir[wdir] ?? "") }
         return wdir
     }
 
     static func extractCAWindSpeed(_ chunk: String) -> String {
-        let wspdRange = UtilityString.parseMultiple(chunk, ca7dayWindspd1, 2)
-        let wspd = chunk.parse(ca7dayWindspd2)
+        let wspdRange = UtilityString.parseMultiple(chunk, ca7dayWindSpeed1, 2)
+        let wspd = chunk.parse(ca7dayWindSpeed2)
         var gust = ""
-        if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindspd3) }
+        if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindSpeed3) }
         if wspdRange.count > 1 { return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h" }
         if wspd == "" {
             return ""

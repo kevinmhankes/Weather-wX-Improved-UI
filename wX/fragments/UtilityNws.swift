@@ -36,7 +36,7 @@ final class UtilityNws {
         return bitmap
     }
 
-    static let dimens = 86
+    static let dimensions = 86
     static let numHeight = 15
     static let textFont = UIFont(name: "HelveticaNeue-Bold", size: 12)! // HelveticaNeue-Bold
 
@@ -72,41 +72,41 @@ final class UtilityNws {
         if let fileNameRight = UtilityNwsIcon.iconMap[bLocal + ".png"] {
             bitmapRight = UtilityIO.readBitmapResourceFromFile(fileNameRight)
         }
-        let size = CGSize(width: dimens, height: dimens)
-        let rect = CGRect(x: leftCropA, y: 0, width: halfWidth, height: dimens)
+        let size = CGSize(width: dimensions, height: dimensions)
+        let rect = CGRect(x: leftCropA, y: 0, width: halfWidth, height: dimensions)
         let imageRef: CGImage = bitmapLeft.image.cgImage!.cropping(to: rect)!
         bitmapLeft.image = UIImage(cgImage: imageRef)
-        let rectB = CGRect(x: leftCropB, y: 0, width: halfWidth, height: dimens)
+        let rectB = CGRect(x: leftCropB, y: 0, width: halfWidth, height: dimensions)
         let imageRefB = bitmapRight.image.cgImage!.cropping(to: rectB)!
         bitmapRight.image = UIImage(cgImage: imageRefB)
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: size, format: rendererFormat)
         let newImage = renderer.image { _ in
-            let bgRect = CGRect(x: 0, y: 0, width: dimens, height: dimens)
+            let bgRect = CGRect(x: 0, y: 0, width: dimensions, height: dimensions)
             UIColor.white.setFill()
             UIRectFill(bgRect)
-            let aSize = CGRect(x: 0, y: 0, width: halfWidth, height: dimens)
+            let aSize = CGRect(x: 0, y: 0, width: halfWidth, height: dimensions)
             bitmapLeft.image.draw(in: aSize)
-            let bSize = CGRect(x: middlePoint, y: 0, width: halfWidth, height: dimens)
+            let bSize = CGRect(x: middlePoint, y: 0, width: halfWidth, height: dimensions)
             bitmapRight.image.draw(in: bSize, blendMode: .normal, alpha: 1.0)
             let xText = 58
             let yText = 70
             let xTextLeft = 2
             let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
             if num1 != "" {
-                let rectangle = CGRect(x: 0, y: dimens - numHeight, width: halfWidth, height: dimens)
+                let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
-                let rect = CGRect(x: xTextLeft, y: yText, width: dimens, height: dimens)
+                let rect = CGRect(x: xTextLeft, y: yText, width: dimensions, height: dimensions)
                 let strToDraw = num1 + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
             if num2 != "" {
-                let rectangle = CGRect(x: middlePoint, y: dimens - numHeight, width: halfWidth, height: dimens)
+                let rectangle = CGRect(x: middlePoint, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
-                let rect = CGRect(x: xText, y: yText, width: dimens, height: dimens)
+                let rect = CGRect(x: xText, y: yText, width: dimensions, height: dimensions)
                 let strToDraw = num2 + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
@@ -138,11 +138,11 @@ final class UtilityNws {
         let newImage = renderer.image { _ in
             bitmap.image.draw(at: CGPoint.zero)
             if num1 != "" {
-                let rectangle = CGRect(x: 0, y: dimens - numHeight, width: dimens, height: dimens)
+                let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: dimensions, height: dimensions)
                 let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uicolorCurrent
                 fillColor.setFill()
                 UIRectFill(rectangle)
-                let rect = CGRect(x: xText, y: 70, width: dimens, height: dimens)
+                let rect = CGRect(x: xText, y: 70, width: dimensions, height: dimensions)
                 let strToDraw = num1 + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
