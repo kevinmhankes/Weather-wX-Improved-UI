@@ -20,16 +20,16 @@ final class ObjectCardCurrentConditions {
         } else {
             objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
-        let verticalTextConainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
-        verticalTextConainer.view.alignment = UIStackView.Alignment.top
+        let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
+        verticalTextContainer.view.alignment = UIStackView.Alignment.top
         topText.tv.isAccessibilityElement = false
         middleText.tv.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextConainer.view])
+        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.stackView.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextConainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
+        verticalTextContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
         updateCard(objectCurrentConditions, isUS)
     }
 

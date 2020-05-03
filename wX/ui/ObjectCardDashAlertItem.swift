@@ -39,19 +39,19 @@ final class ObjectCardDashAlertItem {
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        let horizontalConainer = ObjectStackView(
+        let horizontalContainer = ObjectStackView(
             .fillProportionally,
             .horizontal,
             spacing: 10,
             arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
         )
-        horizontalConainer.uiStackView.distribution = .equalSpacing
+        horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let verticalTextConainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalConainer.view]
+            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
         if senderName == "" { tvName.view.isHidden = true }
         if expiresTime == "" { tvEnd.view.isHidden = true }

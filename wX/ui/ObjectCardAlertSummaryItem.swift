@@ -42,7 +42,7 @@ final class ObjectCardAlertSummaryItem {
         tvStart.tv.isAccessibilityElement = false
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
-        let verticalTextConainer = ObjectStackView(
+        let verticalTextContainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
@@ -50,11 +50,11 @@ final class ObjectCardAlertSummaryItem {
         )
         if location == "" { tvName.view.isHidden = true }
         if endTime == "" { tvEnd.view.isHidden = true }
-        verticalTextConainer.view.isAccessibilityElement = true
-        verticalTextConainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
-        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        verticalTextContainer.view.isAccessibilityElement = true
+        verticalTextContainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
+        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
-        verticalTextConainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+        verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
 }
