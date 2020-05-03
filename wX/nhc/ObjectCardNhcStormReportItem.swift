@@ -40,7 +40,7 @@ final class ObjectCardNhcStormReportItem {
         }
         textViewTop.tv.isAccessibilityElement = false
         textViewBottom.tv.isAccessibilityElement = false
-        let verticalTextConainer = ObjectStackView(
+        let verticalTextContainer = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
@@ -53,8 +53,8 @@ final class ObjectCardNhcStormReportItem {
                 textViewBottom.view
             ]
         )
-        verticalTextConainer.view.isAccessibilityElement = true
-        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextConainer.view])
+        verticalTextContainer.view.isAccessibilityElement = true
+        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         uiStackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
     }

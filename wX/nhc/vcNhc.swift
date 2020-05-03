@@ -8,7 +8,6 @@ import UIKit
 
 class vcNhc: UIwXViewController {
     
-    private var textprod = "AFD"
     private var textProductButton = ObjectToolbarIcon()
     private var imageProductButton = ObjectToolbarIcon()
     private var glcfsButton = ObjectToolbarIcon()

@@ -31,7 +31,7 @@ final class ObjectNhc: NSObject {
     private var imageStackViewList = [ObjectStackView]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
     
-    private let imageUrlsAtlanic = [
+    /*private let imageUrlsAtlantic = [
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
@@ -47,7 +47,7 @@ final class ObjectNhc: NSObject {
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
         MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
-    ]
+    ]*/
     
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
