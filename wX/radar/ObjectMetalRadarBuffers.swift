@@ -19,7 +19,7 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         colorGF = Float(Color.green(bgColor)) / 255.0
         colorBF = Float(Color.blue(bgColor)) / 255.0
     }
-
+    // TODO rename
     var colormap: ObjectColorPalette { MyApplication.colorMap[Int(self.rd.productCode)]! }
 
     func initialize() {

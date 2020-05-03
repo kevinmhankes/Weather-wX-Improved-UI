@@ -22,9 +22,9 @@ struct LatLon {
         self.yStr = String(self.lonNum)
     }
     
-    init(_ latlon: [Double]) {
-        self.latNum = latlon[0]
-        self.lonNum = latlon[1]
+    init(_ latLon: [Double]) {
+        self.latNum = latLon[0]
+        self.lonNum = latLon[1]
         self.xStr = String(self.latNum)
         self.yStr = String(self.lonNum)
     }

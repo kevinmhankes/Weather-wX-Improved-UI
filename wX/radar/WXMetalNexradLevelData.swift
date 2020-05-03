@@ -17,7 +17,7 @@ final class WXMetalNexradLevelData {
     var radarType: RadarType = .level3
     private var days = MemoryBuffer(2)
     private var msecs = MemoryBuffer(4)
-    private var halfword3132: Float = 0.0
+    private var halfWord3132: Float = 0.0
     private var timestampStr = ""
     private var seekStart: CLong = 0
     private var compressedFileSize = 0
@@ -44,15 +44,15 @@ final class WXMetalNexradLevelData {
     func decode() {
         switch productCode {
         case 153, 154:
-            decocodeAndPlotNexradL2()
+            decodeAndPlotNexradL2()
         case 30, 37, 38, 41, 56, 57, 78, 80, 181:
-            decocodeAndPlotNexradLevel3FourBit()
+            decodeAndPlotNexradLevel3FourBit()
         default:
-            decocodeAndPlotNexradLevel3()
+            decodeAndPlotNexradLevel3()
         }
     }
 
-    func decocodeAndPlotNexradLevel3() {
+    func decodeAndPlotNexradLevel3() {
         let dis = UtilityIO.readFiletoByteByffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
             while dis.getShort() != -1 {}
@@ -75,8 +75,8 @@ final class WXMetalNexradLevelData {
             _ = dis.getUnsignedShort()
             let elevationAngle = dis.getShort()
             degree = Double(elevationAngle) / 10.0
-            halfword3132 = dis.getFloat()
-            WXGLNexrad.wxoglDspLegendMax = (255.0 / Double(halfword3132)) * 0.01
+            halfWord3132 = dis.getFloat()
+            WXGLNexrad.wxoglDspLegendMax = (255.0 / Double(halfWord3132)) * 0.01
             dis.skipBytes(26)
             dis.skipBytes(30)
             seekStart = dis.filePointer
@@ -86,7 +86,7 @@ final class WXMetalNexradLevelData {
         }
     }
 
-    func decocodeAndPlotNexradLevel3FourBit() {
+    func decodeAndPlotNexradLevel3FourBit() {
         if productCode == 181 {
             binWord = MemoryBuffer(360 * 720)
             radialStartAngle = MemoryBuffer(4 * 360)
@@ -133,7 +133,7 @@ final class WXMetalNexradLevelData {
         }
     }
 
-   func decocodeAndPlotNexradL2() {
+   func decodeAndPlotNexradL2() {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
         UtilityWXMetalPerfL2.decompress(radarBuffers!)

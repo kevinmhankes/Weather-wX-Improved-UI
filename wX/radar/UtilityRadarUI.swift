@@ -9,8 +9,8 @@ import UIKit
 public class UtilityRadarUI {
 
     static func zoomOutByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
-        var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
+        var panSensitivity: Float = 500.0
+        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom > WXMetalSurfaceView.minZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
@@ -23,8 +23,8 @@ public class UtilityRadarUI {
     }
 
     static func zoomInByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
-        var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
+        var panSensitivity: Float = 500.0
+        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom < WXMetalSurfaceView.maxZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
@@ -37,8 +37,8 @@ public class UtilityRadarUI {
     }
 
     static func moveByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
-        var panSensivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensivity *= 2 }
+        var panSensitivity: Float = 500.0
+        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         var xChange: Float = 0.0
         var yChange: Float = 0.0
         switch direction {

@@ -14,15 +14,15 @@ class UtilityWXMetalPerfL3FourBit {
             numberOfRangeBins = dis.getUnsignedShort()
             dis.skipBytes(6)
             _ = dis.getUnsignedShort()
-            var numberOfRleHalfwords = [UInt16]()
+            var numberOfRleHalfWords = [UInt16]()
             radarBuffers.rd.radialStartAngle.position = 0
             var numOfBins = 0
             let radials = 360
             (0..<radials).forEach { radial in
-                numberOfRleHalfwords.append(dis.getUnsignedShort())
+                numberOfRleHalfWords.append(dis.getUnsignedShort())
                 radarBuffers.rd.radialStartAngle.putFloat((450.0 - Float((dis.getUnsignedShort() / 10))))
                 dis.skipBytes(2)
-                (0..<numberOfRleHalfwords[radial] * 2).forEach { _ in
+                (0..<numberOfRleHalfWords[radial] * 2).forEach { _ in
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
                     (0..<numOfBins).forEach { _ in

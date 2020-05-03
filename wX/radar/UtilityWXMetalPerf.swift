@@ -34,7 +34,7 @@ class UtilityWXMetalPerf {
         )
         let dis2 = MemoryBuffer(oBuff)
         dis2.skipBytes(30)
-        var numberOfRleHalfwords: UInt16 = 0
+        var numberOfRleHalfWords: UInt16 = 0
         radarBuffers.colormap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colormap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colormap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
@@ -53,12 +53,12 @@ class UtilityWXMetalPerf {
         var angle0 = 0.0
         let numberOfRadials = 360
         (0..<numberOfRadials).forEach { radial in
-            numberOfRleHalfwords = dis2.getUnsignedShort()
+            numberOfRleHalfWords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
             dis2.skipBytes(2)
             if radial < numberOfRadials - 1 {
                 dis2.mark(dis2.position)
-                dis2.skipBytes(Int(numberOfRleHalfwords) + 2)
+                dis2.skipBytes(Int(numberOfRleHalfWords) + 2)
                 angleNext = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
                 dis2.reset()
             }
@@ -71,7 +71,7 @@ class UtilityWXMetalPerf {
             } else {
                 angleV = angle0
             }
-            (0..<numberOfRleHalfwords).forEach { bin in
+            (0..<numberOfRleHalfWords).forEach { bin in
                 curLevel = dis2.get()
                 if bin == 0 { level = curLevel }
                 if curLevel == level {
@@ -328,7 +328,7 @@ class UtilityWXMetalPerf {
         }
     }
 
-    static func genCircleLocdot(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers, _ location: LatLon) {
+    static func genCircleLocationDot(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers, _ location: LatLon) {
         buffers.setToPositionZero()
         buffers.count = buffers.triangleCount * 4
         let lenLocal = buffers.lenInit * 2.0

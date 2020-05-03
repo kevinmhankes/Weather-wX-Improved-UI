@@ -8,9 +8,9 @@ import UIKit
 
 final class UtilitySettings {
 
-    static func isRadarInHomescreen() -> Bool {
-        let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
-        return homescreenFav.contains("METAL-RADAR")
+    static func isRadarInHomeScreen() -> Bool {
+        let homeScreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
+        return homeScreenFav.contains("METAL-RADAR")
     }
 
     static func getHelp(_ sender: UIButton, _ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ helpMap: [String: String]) {

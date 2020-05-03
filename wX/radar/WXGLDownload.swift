@@ -23,8 +23,8 @@ final class WXGLDownload {
             + GlobalDictionaries.nexradProductString[product]! + "/SI."
             + ridPrefix + radarSite.lowercased() + "/sn.last"*/
         let url = WXGLDownload().getRadarFileUrl(radarSite, product, false)
-        let inputstream = url.getDataFromUrl()
-        UtilityIO.saveInputStream(inputstream, fileName)
+        let inputStream = url.getDataFromUrl()
+        UtilityIO.saveInputStream(inputStream, fileName)
     }
     
     func getRidPrefix(_ radarSite: String, _ tdwr: Bool) -> String {

@@ -24,7 +24,7 @@
 // [REF] use more of condition ? trueValue : falseValue
 // [REF] implement class to handle routing
 
-56101 2020_05_01 [REF] misc
+56101 2020_05_03 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
 		 [REF] remove unused prefs in UtilityStorePreferences
 		 [ADD] in ui/CustomTabBarVC remove custom font for tab labels

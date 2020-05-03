@@ -439,7 +439,7 @@ class vcTabLocation: vcTabParent {
         alert.view.tintColor = ColorCompatibility.label
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
-        if UtilitySettings.isRadarInHomescreen() {
+        if UtilitySettings.isRadarInHomeScreen() {
             alert.addAction(UIAlertAction(
                 title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
                 style: .default,

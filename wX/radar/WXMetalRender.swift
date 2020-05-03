@@ -628,7 +628,7 @@ class WXMetalRender {
             let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(gpsLocation.lat, gpsLocation.lon, pn)
             gpsLatLonTransformed = (Float(-gpsCoords[0]), Float(gpsCoords[1]))
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
+            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
         locdotBuffers.generateMtlBuffer(device)
@@ -849,7 +849,7 @@ class WXMetalRender {
         }
         if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            UtilityWXMetalPerf.genCircleLocdot(locCircleBuffers, pn, gpsLocation)
+            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, pn, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
         if self.renderFn != nil { self.renderFn!(paneNumber) }

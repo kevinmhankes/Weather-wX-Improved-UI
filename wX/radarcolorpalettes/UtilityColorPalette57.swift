@@ -7,6 +7,7 @@
 public class UtilityColorPalette57 {
 
     class func generate() {
+        // TODO creater shorter ref var
         let radarColorPaletteCode = 57
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0

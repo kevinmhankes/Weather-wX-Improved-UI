@@ -10,8 +10,8 @@ final class UtilityModelSpcHrefInputOutput {
     
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
-        let htmlRunstatus = (MyApplication.nwsSPCwebsitePrefix + "/exper/href/").getHtml()
-        let html = htmlRunstatus.parse("\\{model: \"href\",product: \"500mb_mean\",sector: \"conus\",(rd: .[0-9]{8}\",rt: .[0-9]{4}\",\\})")
+        let htmlRunStatus = (MyApplication.nwsSPCwebsitePrefix + "/exper/href/").getHtml()
+        let html = htmlRunStatus.parse("\\{model: \"href\",product: \"500mb_mean\",sector: \"conus\",(rd: .[0-9]{8}\",rt: .[0-9]{4}\",\\})")
         let day = html.parse("rd:.(.*?),.*?").replaceAll("\"", "")
         let time = html.parse("rt:.(.*?)00.,.*?").replaceAll("\"", "")
         let mostRecentRun = day + time

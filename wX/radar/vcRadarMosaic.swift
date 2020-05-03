@@ -45,7 +45,7 @@ class vcRadarMosaic: UIwXViewController {
         }
     }
     
-    @objc override func willEnterForeground() {
+    override func willEnterForeground() {
         self.getContent(self.index)
     }
     
