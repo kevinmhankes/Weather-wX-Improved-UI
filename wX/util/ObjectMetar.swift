@@ -145,7 +145,7 @@ final class ObjectMetar {
         var visBlobArr = [String]()
         var TDArr = [String]()
         var temperature = ""
-        var dewpoint = ""
+        var dewPoint = ""
         var windDir = ""
         var windInKt = ""
         var windgustInKt = ""
@@ -178,9 +178,9 @@ final class ObjectMetar {
             }
             if TDArr.count > 1 {
                 temperature = TDArr[0]
-                dewpoint = TDArr[1]
+                dewPoint = TDArr[1]
                 temperature = UtilityMath.celsiusToFahrenheit(temperature.replace("M", "-")).replace(".0", "")
-                dewpoint = UtilityMath.celsiusToFahrenheit(dewpoint.replace("M", "-")).replace(".0", "")
+                dewPoint = UtilityMath.celsiusToFahrenheit(dewPoint.replace("M", "-")).replace(".0", "")
             }
         }
     }
