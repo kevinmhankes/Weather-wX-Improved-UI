@@ -11,7 +11,7 @@ public class ObjectMap {
     
     let mapView = MKMapView()
     var mapShown = false
-    var officeType: OfficeTypeEnum
+    let officeType: OfficeTypeEnum
     let mapRegionRadius = 1000000.0
     
     init(_ officeType: OfficeTypeEnum) {
