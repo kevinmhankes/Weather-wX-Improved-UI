@@ -6,7 +6,7 @@
 
 final class UtilityTtsTranslations {
 
-	static func tranlasteAbbreviations(_ text: String) -> String {
+	static func translateAbbreviations(_ text: String) -> String {
 		let string = text.replace("...", " ")
 				.replaceAll(" \\-([0-9])", " negative $1")
 				.replace(" U/L ", " upper level ")
@@ -36,14 +36,14 @@ final class UtilityTtsTranslations {
 				.replace("`", "")
 				.replace("-", " - ")
 				.replace("$$", " ")
-		return tranlasteAbbreviationsChunk(string)
+		return translateAbbreviationsChunk(string)
 	}
 
-	static func tranlasteAbbreviationsForVisual(_ text: String) -> String {
-        tranlasteAbbreviationsChunk(text.replace("&nbsp", " "))
+	static func translateAbbreviationsForVisual(_ text: String) -> String {
+        translateAbbreviationsChunk(text.replace("&nbsp", " "))
     }
 
-	static func tranlasteAbbreviationsChunk(_ text: String) -> String {
+	static func translateAbbreviationsChunk(_ text: String) -> String {
 		var string = text.uppercased()
 		string = string.replace(" SVR ", " severe ")
 				.replace(" TSTM ", " thunderstorm ")

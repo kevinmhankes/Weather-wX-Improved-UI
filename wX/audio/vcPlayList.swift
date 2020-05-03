@@ -13,15 +13,15 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var addNationalProductButton = ObjectToolbarIcon()
     private var wfoTextButton = ObjectToolbarIcon()
     private let textPreviewLength = 400
-    private var synth = AVSpeechSynthesizer()
+    private var synthesizer = AVSpeechSynthesizer()
     private var fab: ObjectFab?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        synth.delegate = self
+        synthesizer.delegate = self
         addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
-        wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
+        wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfoTextClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, wfoTextButton, addNationalProductButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
@@ -32,7 +32,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
-        UtilityAudio.resetAudio(&synth, fab!)
+        UtilityAudio.resetAudio(&synthesizer, fab!)
         serializeSettings()
         super.doneClicked()
     }
@@ -75,10 +75,10 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func playProduct(selection: Int) {
-        UtilityAudio.resetAudio(&synth, fab!)
+        UtilityAudio.resetAudio(&synthesizer, fab!)
         playlistItems.enumerated().forEach { index, item in
             if index >= selection {
-                UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synth, fab!)
+                UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synthesizer, fab!)
             }
         }
     }
@@ -120,7 +120,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     @objc func playClicked() {
         var textToSpeak = ""
         playlistItems.forEach { textToSpeak += Utility.readPref("PLAYLIST_" + $0, "") }
-        UtilityAudio.playClicked(textToSpeak, synth, fab!)
+        UtilityAudio.playClicked(textToSpeak, synthesizer, fab!)
     }
     
     @objc func addNationalProductClicked() {
@@ -132,7 +132,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         downloadAndAddProduct(product, self.addNationalProductButton)
     }
     
-    @objc func wfotextClicked() {
+    @objc func wfoTextClicked() {
         _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
     
