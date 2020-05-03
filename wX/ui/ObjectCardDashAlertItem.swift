@@ -12,22 +12,35 @@ final class ObjectCardDashAlertItem {
 
     init(
         _ uiv: UIwXViewController,
-        _ senderName: String,
-        _ eventType: String,
-        _ effectiveTime: String,
-        _ expiresTime: String,
-        _ areaDescription: String,
+        _ severeWarning: SevereWarning,
+        _ index: Int,
+        //_ senderName: String,
+        //_ eventType: String,
+        //_ effectiveTime: String,
+        //_ expiresTime: String,
+        //_ areaDescription: String,
         _ gesture: UITapGestureRecognizerWithData,
         _ gestureRadar: UITapGestureRecognizerWithData,
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
-        let tvName = ObjectTextViewLarge(80.0, text: senderName, color: ColorCompatibility.highlightText)
+        let tvName = ObjectTextViewLarge(80.0, text: severeWarning.senderNameList[index], color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
-        let tvTitle = ObjectTextView(eventType, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvStart = ObjectTextView("Start: " + effectiveTime.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""), isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvEnd = ObjectTextView("End: " + expiresTime.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""), isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvArea = ObjectTextViewSmallGray(80.0, text: areaDescription, isUserInteractionEnabled: false)
+        let tvTitle = ObjectTextView(
+            severeWarning.eventList[index],
+            isUserInteractionEnabled: false,
+            isZeroSpacing: true
+        )
+        let tvStart = ObjectTextView(
+            "Start: " + severeWarning.effectiveList[index].replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
+            isUserInteractionEnabled: false,
+            isZeroSpacing: true
+        )
+        let tvEnd = ObjectTextView(
+            "End: " + severeWarning.expiresList[index].replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
+            isUserInteractionEnabled: false, isZeroSpacing: true
+        )
+        let tvArea = ObjectTextViewSmallGray(80.0, text: severeWarning.areaDescList[index], isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false
@@ -53,8 +66,8 @@ final class ObjectCardDashAlertItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
-        if senderName == "" { tvName.view.isHidden = true }
-        if expiresTime == "" { tvEnd.view.isHidden = true }
+        if severeWarning.senderNameList[index] == "" { tvName.view.isHidden = true }
+        if severeWarning.expiresList[index] == "" { tvEnd.view.isHidden = true }
         verticalTextContainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)

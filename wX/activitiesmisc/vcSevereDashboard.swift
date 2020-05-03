@@ -96,14 +96,10 @@ class vcSevereDashboard: UIwXViewController {
                         let data = warningType.warnings[index]
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
                         if !data.hasPrefix("O.EXP") {
-                            // FIXME send object, index not items in object 
                             _ = ObjectCardDashAlertItem(
                                 self,
-                                warningType.senderNameList[index],
-                                warningType.eventList[index],
-                                warningType.effectiveList[index],
-                                warningType.expiresList[index],
-                                warningType.areaDescList[index],
+                                warningType,
+                                index,
                                 UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(goToAlert(sender:))),
                                 UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:))),
                                 UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:)))
