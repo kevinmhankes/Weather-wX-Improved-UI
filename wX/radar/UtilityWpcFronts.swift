@@ -55,7 +55,7 @@ class UtilityWpcFronts {
     private static var timer = DownloadTimer("WPC FRONTS")
 
     static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
-        let length = 0.4 // size of trianle
+        let length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
         if front.type == FrontTypeEnum.OCFNT {
@@ -88,7 +88,7 @@ class UtilityWpcFronts {
     }
 
     static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
-        var length = 0.4 // size of trianle
+        var length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
         if front.type == FrontTypeEnum.OCFNT {
@@ -131,7 +131,7 @@ class UtilityWpcFronts {
         }
     }
 
-    static func addFrontDataStnryWarm(_ front: inout Fronts, _ tokens: [String]) {
+    static func addFrontDataStationaryWarm(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             if index != 0 && index != (tokens.count - 1) {
@@ -230,7 +230,7 @@ class UtilityWpcFronts {
                         addFrontData(&front, tokens)
                         fronts.append(front)
                         var frontStWarm = Fronts(FrontTypeEnum.STNRY_WARM)
-                        addFrontDataStnryWarm(&frontStWarm, tokens)
+                        addFrontDataStationaryWarm(&frontStWarm, tokens)
                         fronts.append(frontStWarm)
                     case "WARM":
                         var front = Fronts(FrontTypeEnum.WARM)

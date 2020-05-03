@@ -372,7 +372,7 @@ final class UtilityRadar {
         "TICT": "KS, Wichita"
     ]
     
-    static let wfoSitetoLat = [
+    static let wfoSiteToLat = [
         "ABC": "60.79278",
         "ABQ": "35.1027",
         "ABR": "45.45583",
@@ -590,7 +590,7 @@ final class UtilityRadar {
         "YUX": "32.49528"
     ]
     
-    static let wfoSitetoLon = [
+    static let wfoSiteToLon = [
         "ABC": "-161.87417",
         "ABQ": "-106.6276",
         "ABR": "-98.41306",

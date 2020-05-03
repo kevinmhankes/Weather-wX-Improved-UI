@@ -443,7 +443,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 if savePreferences { wxMetal.forEach { $0!.writePrefs() }}
                 wxMetal.forEach { $0!.cleanup() }
                 device = nil
-                textObj.OGLR = nil
+                textObj.wxMetalRender = nil
                 metalLayer.indices.forEach { metalLayer[$0] = nil }
                 wxMetal.indices.forEach { wxMetal[$0] = nil }
                 commandQueue = nil

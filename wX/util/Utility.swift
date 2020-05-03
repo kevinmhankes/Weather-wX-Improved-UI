@@ -24,8 +24,8 @@ final class Utility {
     static func getWfoSiteName(_ wfo: String) -> String { UtilityRadar.wfoIdToName[wfo] ?? "" }
     
     static func getWfoSiteLatLon(_ wfo: String) -> LatLon {
-        let lat = UtilityRadar.wfoSitetoLat[wfo] ?? ""
-        let lon = UtilityRadar.wfoSitetoLon[wfo] ?? ""
+        let lat = UtilityRadar.wfoSiteToLat[wfo] ?? ""
+        let lon = UtilityRadar.wfoSiteToLon[wfo] ?? ""
         return LatLon(lat, lon)
     }
     

@@ -100,7 +100,7 @@ final class UtilityMetar {
                     }
                     var windDir = ""
                     var windInKt = ""
-                    var windgustInKt = ""
+                    var windGustInKt = ""
                     var windDirD = 0.0
                     if windBlob.contains("KT") && windBlob.count==7 {
                         validWind = true
@@ -113,21 +113,21 @@ final class UtilityMetar {
                         validWindGust = true
                         windDir = windBlob.substring(0, 3)
                         windInKt = windBlob.substring(3, 5)
-                        windgustInKt = windBlob.substring(6, 8)
+                        windGustInKt = windBlob.substring(6, 8)
                         windDirD = Double(windDir) ?? 0.0
-                        windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " G " + windgustInKt + " kt"
+                        windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " G " + windGustInKt + " kt"
                     }
                     if TDArr.count > 1 {
                         var temperature = TDArr[0]
-                        var dewpoint = TDArr[1]
+                        var dewPoint = TDArr[1]
                         temperature = UtilityMath.celsiusToFahrenheit(temperature.replace("M", "-")).replace(".0", "")
-                        dewpoint = UtilityMath.celsiusToFahrenheit(dewpoint.replace("M", "-")).replace(".0", "")
+                        dewPoint = UtilityMath.celsiusToFahrenheit(dewPoint.replace("M", "-")).replace(".0", "")
                         let obsSite = metarItems[0]
                         var latlon = obsLatlon[obsSite] ?? LatLon()
                         latlon.lonString = latlon.lonString.replace("-0", "-")
-                        obsAl.append(latlon.latString + ":" + latlon.lonString + ":" + temperature + "/" + dewpoint)
+                        obsAl.append(latlon.latString + ":" + latlon.lonString + ":" + temperature + "/" + dewPoint)
                         obsAlExt.append(latlon.latString + ":" + latlon.lonString + ":" + temperature
-                            + "/" + dewpoint + " (" + obsSite + ")" + MyApplication.newline + pressureBlob
+                            + "/" + dewPoint + " (" + obsSite + ")" + MyApplication.newline + pressureBlob
                             + " - " + visBlobDisplay + MyApplication.newline + windBlob + MyApplication.newline
                             + conditionsBlob + MyApplication.newline + timeBlob)
                         if validWind {
@@ -143,7 +143,7 @@ final class UtilityMetar {
                                 + ":"
                                 + windDir
                                 + ":"
-                                + windgustInKt)
+                                + windGustInKt)
                         }
                     }
                 }
