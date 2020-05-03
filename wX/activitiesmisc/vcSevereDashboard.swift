@@ -16,7 +16,7 @@ class vcSevereDashboard: UIwXViewController {
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ObjectToolbarIcon()
-    private let synth = AVSpeechSynthesizer()
+    private let synthesizer = AVSpeechSynthesizer()
     private var statusWarnings = ""
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class vcSevereDashboard: UIwXViewController {
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
             DispatchQueue.main.async {
                 if UIAccessibility.isVoiceOverRunning {
-                    UtilityAudio.speakText(self.getStatusText(), self.synth)
+                    UtilityAudio.speakText(self.getStatusText(), self.synthesizer)
                 }
                 self.displayContent()
             }
@@ -127,7 +127,7 @@ class vcSevereDashboard: UIwXViewController {
     
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
         let vc = vcUSAlertsDetail()
-        vc.usalertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
+        vc.usAlertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
         self.goToVC(vc)
     }
     
@@ -140,7 +140,7 @@ class vcSevereDashboard: UIwXViewController {
         self.goToVC(vc)
     }
     
-    @objc func spcstreportsClicked(sender: UITapGestureRecognizer) {
+    @objc func spcStormReportsClicked(sender: UITapGestureRecognizer) {
         let vc = vcSpcStormReports()
         vc.spcStormReportsDay = "today"
         self.goToVC(vc)
@@ -192,14 +192,14 @@ class vcSevereDashboard: UIwXViewController {
             objectImage2 = ObjectImage(
                 stackView.view,
                 bitmap,
-                UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
+                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked(sender:))),
                 widthDivider: imagesPerRow
             )
         } else {
             objectImage2 = ObjectImage(
                 imageStackViewList.last!.view,
                 bitmap,
-                UITapGestureRecognizer(target: self, action: #selector(spcstreportsClicked(sender:))),
+                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked(sender:))),
                 widthDivider: imagesPerRow
             )
         }

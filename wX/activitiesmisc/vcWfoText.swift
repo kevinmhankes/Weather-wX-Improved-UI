@@ -71,7 +71,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             }
             DispatchQueue.main.async {
                 if self.html == "" {
-                    self.html = "None issused by this office recently."
+                    self.html = "None issued by this office recently."
                 }
                 self.objectTextView.text = self.html
                 if UtilityWfoText.needsFixedWidthFont(self.product) {

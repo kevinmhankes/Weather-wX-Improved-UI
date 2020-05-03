@@ -10,7 +10,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     private var cap = CapAlert()
     private var objAlertDetail = ObjectAlertDetail()
-    var usalertsDetailUrl = ""
+    var usAlertsDetailUrl = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         stackView.spacing = 0
         objAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
-            self.cap = CapAlert(url: self.usalertsDetailUrl)
+            self.cap = CapAlert(url: self.usAlertsDetailUrl)
             DispatchQueue.main.async {
                 self.displayContent()
             }

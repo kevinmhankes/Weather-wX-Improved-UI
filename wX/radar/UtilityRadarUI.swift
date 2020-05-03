@@ -75,7 +75,7 @@ public class UtilityRadarUI {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
             let vc = vcUSAlertsDetail()
-            vc.usalertsDetailUrl = warningText
+            vc.usAlertsDetailUrl = warningText
             uiv.goToVC(vc)
         }
     }

@@ -41,7 +41,7 @@ class vcUSAlerts: UIwXViewController {
     
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
         let vc = vcUSAlertsDetail()
-        vc.usalertsDetailUrl = objAlertSummary.getUrl(sender.data)
+        vc.usAlertsDetailUrl = objAlertSummary.getUrl(sender.data)
         self.goToVC(vc)
     }
     
