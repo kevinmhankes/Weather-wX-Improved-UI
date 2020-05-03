@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilityModels {
     
-    static func convertTimeRuntoTimeString(_ runStr: String, _ timeStrFunc: String, _ showDate: Bool) -> String {
+    static func convertTimeRunToTimeString(_ runStr: String, _ timeStrFunc: String, _ showDate: Bool) -> String {
         let timeStr = timeStrFunc.truncate(3)
         let runInt = Int(runStr) ?? 0
         let timeInt = Int(timeStr) ?? 0
@@ -72,7 +72,7 @@ final class UtilityModels {
             if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) { run2 = String((Int(run2) ?? 0) - 24) }
             listTime.forEach { value in
                 tmpStr = value.split(" ")[0].replace(prefix, "")
-                listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRuntoTimeString(run2, tmpStr, showDate))
+                listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRunToTimeString(run2, tmpStr, showDate))
             }
         }
         return listTimeNew

@@ -114,7 +114,7 @@ class vcModels: UIwXViewController {
                         self.modelObj.setTimeArr(
                             idx,
                             timeStr.split(" ")[0] + " "
-                                + UtilityModels.convertTimeRuntoTimeString(
+                                + UtilityModels.convertTimeRunToTimeString(
                                     self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                                     timeStr.split(" ")[0],
                                     false
@@ -229,7 +229,7 @@ class vcModels: UIwXViewController {
                     idx,
                     timeStr.split(" ")[0]
                         + " "
-                        + UtilityModels.convertTimeRuntoTimeString(
+                        + UtilityModels.convertTimeRunToTimeString(
                             self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                             timeStr.split(" ")[0],
                             false

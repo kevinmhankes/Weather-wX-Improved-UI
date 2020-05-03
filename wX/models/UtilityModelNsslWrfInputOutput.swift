@@ -14,8 +14,8 @@ final class UtilityModelNsslWrfInputOutput {
     
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
-        let htmlRunstatus = (baseUrl).getHtml()
-        let html = htmlRunstatus.parse("\\{model: \"fv3_nssl\",(rd: .[0-9]{8}\",rt: .[0-9]{4}\",)")
+        let htmlRunStatus = (baseUrl).getHtml()
+        let html = htmlRunStatus.parse("\\{model: \"fv3_nssl\",(rd: .[0-9]{8}\",rt: .[0-9]{4}\",)")
         let day = html.parse("rd:.(.*?),.*?").replaceAll("\"", "")
         let time = html.parse("rt:.(.*?)00.,.*?").replaceAll("\"", "")
         let mostRecentRun = day + time
