@@ -24,7 +24,7 @@ class vcWpcImg: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {
-            self.getContentFromHomescreen()
+            self.getContentFromHomeScreen()
             wpcImagesFromHomeScreen = false
         } else {
             self.getContent(index)
@@ -51,7 +51,7 @@ class vcWpcImg: UIwXViewController {
         }
     }
     
-    func getContentFromHomescreen() {
+    func getContentFromHomeScreen() {
         let titles = GlobalArrays.nwsImageProducts.filter { $0.hasPrefix(wpcImagesToken + ":") }
         if titles.count > 0 { self.productButton.title = titles[0].split(":")[1] }
         DispatchQueue.global(qos: .userInitiated).async {

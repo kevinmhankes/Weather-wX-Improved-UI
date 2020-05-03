@@ -41,7 +41,7 @@ final class UtilityIO {
             let data = (try? Data(contentsOf: fileUrl)) ?? Data()
             return MemoryBuffer(data)
         } catch {
-            print("error in readFiletoByteByffer")
+            print("error in readFiletoByteBuffer")
             return MemoryBuffer()
         }
     }
@@ -57,7 +57,7 @@ final class UtilityIO {
             let fileUrl = documentDirUrl.appendingPathComponent(filename)
             return try Data(contentsOf: fileUrl)
         } catch {
-            print("error in readFiletoData")
+            print("error in readFileToData")
             return Data()
         }
     }

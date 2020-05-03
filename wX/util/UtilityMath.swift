@@ -151,8 +151,6 @@ final class UtilityMath {
         return String(format: "%.2f", tmpNum) + " in"
     }
 
-    static func metersPerSecondtoMph(_ value: Double) -> String { String(Int(round(value * 2.23694))) }
-
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
         3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
     }
@@ -178,9 +176,4 @@ final class UtilityMath {
             return ""
         }
     }
-
-    /*static func getWindChill( _ tempD: Double, _ mphD: Double  ) -> String {
-     let windChillD = 35.74 + 0.6215 * tempD - 35.75 * pow(mphD, 0.16) + 0.4275 * tempD * pow(mphD, 0.16)
-     return "(" + UtilityMath.unitsTemp(String(Int(round(windChillD)))) + MyApplication.degreeSymbol + ")"
-    }*/
 }
