@@ -33,8 +33,8 @@ final class UtilityFileManagement {
             )
             let srcUrl = documentDirUrl.appendingPathComponent(src)
             let targetUrl = documentDirUrl.appendingPathComponent(target)
-            let filemgr = FileManager.default
-            try filemgr.moveItem(at: srcUrl, to: targetUrl)
+            let fileManager = FileManager.default
+            try fileManager.moveItem(at: srcUrl, to: targetUrl)
         } catch {
             print("Unable to move file from " + src + " to " + target)
         }
@@ -48,9 +48,9 @@ final class UtilityFileManagement {
                 appropriateFor: nil,
                 create: true
             )
-            let filemgr = FileManager.default
+            let fileManager = FileManager.default
             let file = documentDirUrl.appendingPathComponent(fileName)
-            try filemgr.removeItem(at: file)
+            try fileManager.removeItem(at: file)
         } catch {
             print("Unable to delete file: " + fileName)
         }
@@ -64,14 +64,14 @@ final class UtilityFileManagement {
                 appropriateFor: nil,
                 create: true
             )
-            let filemgr = FileManager.default
-            let filePaths = try filemgr.contentsOfDirectory(
+            let fileManager = FileManager.default
+            let filePaths = try fileManager.contentsOfDirectory(
                 at: documentDirUrl,
                 includingPropertiesForKeys: nil,
                 options: []
             )
             for filePath in filePaths {
-                try filemgr.removeItem(at: filePath)
+                try fileManager.removeItem(at: filePath)
             }
         } catch {
             print("Unable to delete all files in storage.")
