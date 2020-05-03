@@ -61,7 +61,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return map.mapView(annotation)
+        map.mapView(annotation)
     }
     
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

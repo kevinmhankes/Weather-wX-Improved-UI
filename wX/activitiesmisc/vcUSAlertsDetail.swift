@@ -33,7 +33,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         }
     }
     
-    @objc override func playClicked() {
+    override func playClicked() {
         UtilityAudio.playClicked(cap.text + " " + cap.instructions, synth, playButton)
     }
     

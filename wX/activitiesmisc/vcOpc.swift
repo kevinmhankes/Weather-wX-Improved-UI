@@ -23,7 +23,7 @@ class vcOpc: UIwXViewController {
         self.getContent(index)
     }
     
-    @objc override func willEnterForeground() {
+    override func willEnterForeground() {
         self.getContent(index)
     }
     

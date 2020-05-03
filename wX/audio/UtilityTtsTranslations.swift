@@ -40,7 +40,7 @@ final class UtilityTtsTranslations {
 	}
 
 	static func tranlasteAbbreviationsForVisual(_ text: String) -> String {
-        return tranlasteAbbreviationsChunk(text.replace("&nbsp", " "))
+        tranlasteAbbreviationsChunk(text.replace("&nbsp", " "))
     }
 
 	static func tranlasteAbbreviationsChunk(_ text: String) -> String {

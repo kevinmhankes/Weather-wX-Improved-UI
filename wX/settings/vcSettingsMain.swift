@@ -27,7 +27,7 @@ class vcSettingsMain: UIwXViewController {
         displayContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         MyApplication.initPreferences()
         super.doneClicked()
     }

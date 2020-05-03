@@ -51,7 +51,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         self.getContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
@@ -121,7 +121,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         self.getContent()
     }
     
-    @objc override func playlistClicked() {
+    override func playlistClicked() {
         _ = UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
     }
 }

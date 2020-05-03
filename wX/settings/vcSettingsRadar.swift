@@ -21,7 +21,7 @@ class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDat
         self.displayContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         MyApplication.initPreferences()
         // brute force, reset timers so that fresh data is downloaded next time in nexrad radar
         RadarGeometry.resetTimerOnRadarPolygons()

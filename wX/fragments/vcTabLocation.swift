@@ -272,56 +272,56 @@ class vcTabLocation: vcTabParent {
         }
     }
     
-    @objc override func cloudClicked() {
+    override func cloudClicked() {
         UtilityActions.cloudClicked(self)
     }
     
-    @objc override func radarClicked() {
+    override func radarClicked() {
         UtilityActions.radarClicked(self)
     }
     
-    @objc override func wfotextClicked() {
+    override func wfotextClicked() {
         UtilityActions.wfotextClicked(self)
     }
     
-    @objc override func menuClicked() {
+    override func menuClicked() {
         UtilityActions.menuClicked(self, menuButton)
     }
     
-    @objc override func dashClicked() {
+    override func dashClicked() {
         UtilityActions.dashClicked(self)
     }
     
-    @objc override func warningsClicked() {
+    override func warningsClicked() {
         let vc = vcUSAlertsDetail()
         self.goToVC(vc)
     }
     
-    @objc override func dualPaneRadarClicked() {
+    override func dualPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "2")
     }
     
-    @objc override func quadPaneRadarClicked() {
+    override func quadPaneRadarClicked() {
         UtilityActions.multiPaneRadarClicked(self, "4")
     }
     
-    @objc override func settingsClicked() {
+    override func settingsClicked() {
         let vc = vcSettingsMain()
         self.goToVC(vc)
     }
     
-    @objc override func mesoanalysisClicked() {
+    override func mesoanalysisClicked() {
         let vc = vcSpcMeso()
         self.goToVC(vc)
     }
     
-    @objc override func ncepModelsClicked() {
+    override func ncepModelsClicked() {
         let vc = vcModels()
         vc.modelActivitySelected = "NCEP"
         self.goToVC(vc)
     }
     
-    @objc override func hourlyClicked() {
+    override func hourlyClicked() {
         if Location.isUS {
             let vc = vcHourly()
             self.goToVC(vc)
@@ -331,22 +331,22 @@ class vcTabLocation: vcTabParent {
         }
     }
     
-    @objc override func nhcClicked() {
+    override func nhcClicked() {
         let vc = vcNhc()
         self.goToVC(vc)
     }
     
-    @objc override func lightningClicked() {
+    override func lightningClicked() {
         let vc = vcLightning()
         self.goToVC(vc)
     }
     
-    @objc override func nationalImagesClicked() {
+    override func nationalImagesClicked() {
         let vc = vcWpcImg()
         self.goToVC(vc)
     }
     
-    @objc override func nationalTextClicked() {
+    override func nationalTextClicked() {
         let vc = vcWpcText()
         self.goToVC(vc)
     }

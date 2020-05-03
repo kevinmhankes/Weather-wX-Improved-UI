@@ -36,7 +36,7 @@ class vcSettingsLocation: UIwXViewController {
         }
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         Location.refreshLocationData()
         super.doneClicked()
     }

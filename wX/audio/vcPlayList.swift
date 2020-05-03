@@ -30,7 +30,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         getContent()
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         UtilityAudio.resetAudio(&synth, fab!)
         serializeSettings()
