@@ -618,7 +618,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
             self.wxMetal.enumerated().forEach { index, glv in
-                animArray.append(glv!.rdDownload.getRadarFilesForAnimation(frameCnt))
+                animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, glv!.product, glv!.rid))
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
@@ -630,7 +630,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 for frame in (0..<frameCnt) {
                     if self.inOglAnim {
                         self.wxMetal.enumerated().forEach { index, glv in
-                            let buttonText = " (\(String(frame+1))/\(frameCnt))"
+                            let buttonText = " (" + String(frame+1) + "/" + String(frameCnt) + ")"
                             glv!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
                             scaleFactor = 1
                         }

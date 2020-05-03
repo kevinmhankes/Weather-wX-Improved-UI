@@ -507,7 +507,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                self.ridPrefixGlobal = self.rdDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
+                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = self.l3BaseFn + self.indexString
                 } else {
