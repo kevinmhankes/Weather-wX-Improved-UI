@@ -57,7 +57,7 @@ final class ObjectCurrentConditions {
         self.temperature = objectMetar.temperature + MyApplication.degreeSymbol
         self.windChill = objectMetar.windChill + MyApplication.degreeSymbol
         self.heatIndex = objectMetar.heatIndex + MyApplication.degreeSymbol
-        self.dewPoint = objectMetar.dewpoint + MyApplication.degreeSymbol
+        self.dewPoint = objectMetar.dewPoint + MyApplication.degreeSymbol
         self.relativeHumidity = objectMetar.relativeHumidity + "%"
         self.seaLevelPressure = objectMetar.seaLevelPressure
         self.windDirection = objectMetar.windDirection

@@ -11,7 +11,7 @@ final class ObjectMetar {
     private let decodeIcon = true
     var condition = ""
     var temperature: String
-    var dewpoint: String
+    var dewPoint: String
     let windDirection: String
     var windSpeed: String
     var windGust: String
@@ -36,7 +36,7 @@ final class ObjectMetar {
         }
         let metarData = (WXGLDownload.nwsRadarPub + "/data/observations/metar/decoded/" + obsClosest.name +  ".TXT").getHtml()
         temperature = metarData.parseFirst("Temperature: (.*?) F")
-        dewpoint = metarData.parseFirst("Dew Point: (.*?) F")
+        dewPoint = metarData.parseFirst("Dew Point: (.*?) F")
         windDirection = metarData.parseFirst("Wind: from the (.*?) \\(.*? degrees\\) at .*? MPH ")
         windSpeed = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at (.*?) MPH ")
         windGust = metarData.parseFirst("Wind: from the .*? \\(.*? degrees\\) at .*? " + "MPH \\(.*? KT\\) gusting to (.*?) MPH")
@@ -107,7 +107,7 @@ final class ObjectMetar {
         }
         seaLevelPressure = changePressureUnits(seaLevelPressure)
         temperature = changeDegreeUnits(temperature)
-        dewpoint = changeDegreeUnits(dewpoint)
+        dewPoint = changeDegreeUnits(dewPoint)
         windChill = changeDegreeUnits(windChill)
         heatIndex = changeDegreeUnits(heatIndex)
         if windSpeed == "" { windSpeed = "0" }
