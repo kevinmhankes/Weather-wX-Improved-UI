@@ -110,8 +110,8 @@ final class ObjectTextView {
     }
 
     var font: UIFont {
-        get {return tv.font!}
-        set {tv.font = newValue}
+        get { tv.font! }
+        set { tv.font = newValue }
     }
 
     var text: String {

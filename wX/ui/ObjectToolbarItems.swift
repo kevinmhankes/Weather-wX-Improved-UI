@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectToolbarItems {
 
-    var items: [UIBarButtonItem]
+    let items: [UIBarButtonItem]
 
     init(_ items: [UIBarButtonItem]) {
         self.items = items

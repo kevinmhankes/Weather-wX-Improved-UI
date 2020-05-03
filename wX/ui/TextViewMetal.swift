@@ -8,18 +8,17 @@ import UIKit
 
 final class TextViewMetal {
 
-    private var context: UIViewController
+    private var uiv: UIViewController
     private var realTextSize = 0.0
     var textColor = 0
     private var text = ""
     private var xPos: CGFloat = 0.0
     private var yPos: CGFloat = 0.0
-    private var uiTextView = UITextView()
-    private var width: CGFloat = 150.0
-    private var height: CGFloat = 40.0
+    private let width: CGFloat
+    private let height: CGFloat
 
-    init(_ context: UIViewController, _ width: Int = 150, _ height: Int = 40) {
-        self.context = context
+    init(_ uiv: UIViewController, _ width: Int = 150, _ height: Int = 40) {
+        self.uiv = uiv
         self.width = CGFloat(width)
         self.height = CGFloat(height)
     }
@@ -40,7 +39,7 @@ final class TextViewMetal {
     }
 
     func drawText(_ string: String, _ xPos: CGFloat, _ yPos: CGFloat) {
-        uiTextView = UITextView(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
+        let uiTextView = UITextView(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
         uiTextView.text = string
         uiTextView.font = UIFont.systemFont(ofSize: CGFloat(self.realTextSize))
         uiTextView.backgroundColor = UIColor.clear
@@ -48,6 +47,6 @@ final class TextViewMetal {
         uiTextView.textContainer.lineBreakMode = .byTruncatingTail
         uiTextView.isEditable = false
         uiTextView.isUserInteractionEnabled = false
-        context.view.addSubview(uiTextView)
+        uiv.view.addSubview(uiTextView)
     }
 }

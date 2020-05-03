@@ -86,7 +86,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         return UIImage(named: iconStr)!
     }
     
-    let toolbarIconPadding: CGFloat = 11
+    let toolbarIconPadding: CGFloat = 11.0
     var button = UIButton()
     
     override init() {
