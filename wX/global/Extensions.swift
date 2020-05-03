@@ -43,8 +43,8 @@ extension String {
     
     func parseFirst(_ pattern: String) -> String { UtilityString.parseFirst(self, pattern) }
     
-    func firstToken(_ delim: String) -> String {
-        let tokens = self.split(delim)
+    func firstToken(_ delimiter: String) -> String {
+        let tokens = self.split(delimiter)
         if tokens.count > 0 { return tokens[0] } else { return "" }
     }
     
@@ -71,7 +71,7 @@ extension String {
     
     func replace(_ a: String, _ b: String) -> String { self.replaceAll(a, b) }
     
-    func split(_ delim: String) -> [String] { UtilityString.split(self, delim) }
+    func split(_ delimiter: String) -> [String] { UtilityString.split(self, delimiter) }
     
     func substring(_ start: Int) -> String { UtilityString.substring(self, start) }
     
@@ -82,14 +82,14 @@ extension String {
     func regex (pattern: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: .dotMatchesLineSeparators)
-            let nsstr = self as NSString
-            let all = NSRange(location: 0, length: nsstr.length)
+            let nsString = self as NSString
+            let all = NSRange(location: 0, length: nsString.length)
             var matches = [String]()
             regex.enumerateMatches(in: self,
                                    options: NSRegularExpression.MatchingOptions(rawValue: 0),
                                    range: all) {(result: NSTextCheckingResult?, _, _) in
                                     if let r = result {
-                                        let result = nsstr.substring(with: r.range) as String
+                                        let result = nsString.substring(with: r.range) as String
                                         matches.append(result)
                                     }
             }
