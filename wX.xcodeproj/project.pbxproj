@@ -312,7 +312,6 @@
 		F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */; };
 		F0B334FC1DA3FBF10035BD36 /* MyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334FB1DA3FBF10035BD36 /* MyApplication.swift */; };
 		F0B335001DA3FC980035BD36 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334FF1DA3FC980035BD36 /* GlobalVariables.swift */; };
-		F0B335101DA3FD1C0035BD36 /* Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335041DA3FD1C0035BD36 /* Paint.swift */; };
 		F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335061DA3FD1C0035BD36 /* Preferences.swift */; };
 		F0B335131DA3FD1C0035BD36 /* ProjectionNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */; };
 		F0B335141DA3FD1C0035BD36 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335081DA3FD1C0035BD36 /* R.swift */; };
@@ -719,7 +718,6 @@
 		F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityString.swift; sourceTree = "<group>"; };
 		F0B334FB1DA3FBF10035BD36 /* MyApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyApplication.swift; sourceTree = "<group>"; };
 		F0B334FF1DA3FC980035BD36 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
-		F0B335041DA3FD1C0035BD36 /* Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paint.swift; sourceTree = "<group>"; };
 		F0B335061DA3FD1C0035BD36 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionNumbers.swift; sourceTree = "<group>"; };
 		F0B335081DA3FD1C0035BD36 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
@@ -1196,7 +1194,6 @@
 				F0B335451DA3FD510035BD36 /* Editor.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
 				0379672D227B8C990067920C /* ObjectPolygonWarning.swift */,
-				F0B335041DA3FD1C0035BD36 /* Paint.swift */,
 				F0B335061DA3FD1C0035BD36 /* Preferences.swift */,
 				F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */,
 			);
@@ -1733,7 +1730,6 @@
 				0326E5EB21B4B1660000F8DB /* WXMetalTextObject.swift in Sources */,
 				F078FE2D1DA330B7002CCD13 /* AppDelegate.swift in Sources */,
 				F0B335161DA3FD1C0035BD36 /* RID.swift in Sources */,
-				F0B335101DA3FD1C0035BD36 /* Paint.swift in Sources */,
 				037FF29221A9C1DA0002E6E6 /* ObjectMetalBuffers.swift in Sources */,
 				03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */,
 				F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */,
