@@ -12,7 +12,7 @@ import simd
 
 class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
-    private var wxMetal = [WXMetalRender?]()
+    private var wxMetalRenders = [WXMetalRender?]()
     private var device: MTLDevice!
     private var metalLayer = [CAMetalLayer?]()
     private var pipelineState: MTLRenderPipelineState!
@@ -37,8 +37,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     private var numberOfPanes = 1
     private var oneMinRadarFetch = Timer()
     private let ortInt: Float = 250.0
-    private var textObj = WXMetalTextObject()
-    private var colorLegend = UIColorLegend()
+    private var wxMetalTextObject = WXMetalTextObject()
+    private var uiColorLegend = UIColorLegend()
     private var screenScale = 0.0
     private var paneRange: Range<Int> = 0..<1
     private let semaphore = DispatchSemaphore(value: 1)
@@ -238,18 +238,18 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
         metalLayer.forEach { view.layer.addSublayer($0!) }
-        paneRange.forEach { wxMetal.append(WXMetalRender(device, textObj, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
-        productButton.enumerated().forEach { $1.title = wxMetal[$0]!.product }
+        paneRange.forEach { wxMetalRenders.append(WXMetalRender(device, wxMetalTextObject, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
+        productButton.enumerated().forEach { $1.title = wxMetalRenders[$0]!.product }
         // when called from severedashboard and us alerts
-        if radarSiteOverride != "" { wxMetal[0]!.resetRid(radarSiteOverride) }
-        radarSiteButton.title = wxMetal[0]!.rid
-        if !RadarPreferences.dualpaneshareposn { siteButton.enumerated().forEach { $1.title = wxMetal[$0]!.rid } }
+        if radarSiteOverride != "" { wxMetalRenders[0]!.resetRid(radarSiteOverride) }
+        radarSiteButton.title = wxMetalRenders[0]!.rid
+        if !RadarPreferences.dualpaneshareposn { siteButton.enumerated().forEach { $1.title = wxMetalRenders[$0]!.rid } }
         if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
-            let x = wxMetal[0]!.xPos
-            let y = wxMetal[0]!.yPos
-            let zoom = wxMetal[0]!.zoom
-            let rid = wxMetal[0]!.rid
-            wxMetal.forEach {
+            let x = wxMetalRenders[0]!.xPos
+            let y = wxMetalRenders[0]!.yPos
+            let zoom = wxMetalRenders[0]!.zoom
+            let rid = wxMetalRenders[0]!.rid
+            wxMetalRenders.forEach {
                 $0!.xPos = x
                 $0!.yPos = y
                 $0!.zoom = zoom
@@ -270,7 +270,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             print("error init pipelineState")
         }
         commandQueue = device.makeCommandQueue()
-        wxMetal.forEach { $0?.setRenderFunction(render(_:)) }
+        wxMetalRenders.forEach { $0?.setRenderFunction(render(_:)) }
         // Below two lines enable continuous updates
         //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
         //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
@@ -288,18 +288,18 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         #if targetEnvironment(macCatalyst)
         screenScale *= 2.0
         #endif
-        textObj = WXMetalTextObject(
+        wxMetalTextObject = WXMetalTextObject(
             self,
             numberOfPanes,
             screenWidth,
             screenHeight,
-            wxMetal[0]!,
+            wxMetalRenders[0]!,
             screenScale
         )
-        textObj.initializeTextLabels()
-        textObj.addTextLabels()
-        self.wxMetal.forEach {
-            $0?.textObj = textObj
+        wxMetalTextObject.initializeTextLabels()
+        wxMetalTextObject.addTextLabels()
+        self.wxMetalRenders.forEach {
+            $0?.textObj = wxMetalTextObject
             $0?.getRadar("")
         }
         getPolygonWarnings()
@@ -330,20 +330,20 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func modelMatrix(_ index: Int) -> float4x4 {
         var matrix = float4x4()
         if !RadarPreferences.wxoglCenterOnLocation {
-            matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+            matrix.translate(wxMetalRenders[index]!.xPos, y: wxMetalRenders[index]!.yPos, z: wxMetalRenders[index]!.zPos)
         } else {
-            wxMetal[index]!.xPos = wxMetal[index]!.gpsLatLonTransformed.0 * wxMetal[index]!.zoom
-            wxMetal[index]!.yPos = wxMetal[index]!.gpsLatLonTransformed.1 * wxMetal[index]!.zoom
-            matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
+            wxMetalRenders[index]!.xPos = wxMetalRenders[index]!.gpsLatLonTransformed.0 * wxMetalRenders[index]!.zoom
+            wxMetalRenders[index]!.yPos = wxMetalRenders[index]!.gpsLatLonTransformed.1 * wxMetalRenders[index]!.zoom
+            matrix.translate(wxMetalRenders[index]!.xPos, y: wxMetalRenders[index]!.yPos, z: wxMetalRenders[index]!.zPos)
         }
         matrix.rotateAroundX(0, y: 0, z: 0)
-        matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
+        matrix.scale(wxMetalRenders[index]!.zoom, y: wxMetalRenders[index]!.zoom, z: wxMetalRenders[index]!.zoom)
         return matrix
     }
     
     func render(_ index: Int) {
         guard let drawable = metalLayer[index]!.nextDrawable() else { return }
-        wxMetal[index]?.render(
+        wxMetalRenders[index]?.render(
             commandQueue: commandQueue,
             pipelineState: pipelineState,
             drawable: drawable,
@@ -395,26 +395,26 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        if !map.mapShown { WXMetalSurfaceView.singleTap(self, wxMetal, textObj, gestureRecognizer) }
+        if !map.mapShown { WXMetalSurfaceView.singleTap(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer) }
     }
     
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
-        WXMetalSurfaceView.doubleTap(self, wxMetal, textObj, numberOfPanes, ortInt, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetalRenders, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
     }
     
     @objc func gestureZoom(_ gestureRecognizer: UIPinchGestureRecognizer) {
-        WXMetalSurfaceView.gestureZoom(self, wxMetal, textObj, gestureRecognizer)
+        WXMetalSurfaceView.gestureZoom(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer)
     }
     
     @objc func gesturePan(_ gestureRecognizer: UIPanGestureRecognizer) {
-        WXMetalSurfaceView.gesturePan(self, wxMetal, textObj, gestureRecognizer)
+        WXMetalSurfaceView.gesturePan(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer)
     }
     
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         longPressCount = WXMetalSurfaceView.gestureLongPress(
             self,
-            wxMetal,
-            textObj,
+            wxMetalRenders,
+            wxMetalTextObject,
             longPressCount,
             longPressAction,
             gestureRecognizer
@@ -425,7 +425,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if map.mapShown {
             hideMap()
         } else {
-            if self.presentedViewController == nil && self.wxMetal[0] != nil {
+            if self.presentedViewController == nil && self.wxMetalRenders[0] != nil {
                 // Don't disable screen being left on if one goes from single pane to dual pane via time
                 // button and back
                 if wxoglCalledFromTimeButton && RadarPreferences.wxoglRadarAutorefresh {
@@ -440,16 +440,16 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 locationManager.stopUpdatingLocation()
                 locationManager.stopMonitoringSignificantLocationChanges()
                 stopAnimate()
-                if savePreferences { wxMetal.forEach { $0!.writePrefs() }}
-                wxMetal.forEach { $0!.cleanup() }
+                if savePreferences { wxMetalRenders.forEach { $0!.writePrefs() }}
+                wxMetalRenders.forEach { $0!.cleanup() }
                 device = nil
-                textObj.wxMetalRender = nil
+                wxMetalTextObject.wxMetalRender = nil
                 metalLayer.indices.forEach { metalLayer[$0] = nil }
-                wxMetal.indices.forEach { wxMetal[$0] = nil }
+                wxMetalRenders.indices.forEach { wxMetalRenders[$0] = nil }
                 commandQueue = nil
                 pipelineState = nil
                 timer = nil
-                textObj = WXMetalTextObject()
+                wxMetalTextObject = WXMetalTextObject()
                 self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
             } else {
                 self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
@@ -459,12 +459,12 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     @objc func productClicked(sender: ObjectToolbarIcon) {
         let alert = ObjectPopUp(self, "Select radar product:", productButton[sender.tag])
-        if WXGLNexrad.isRidTdwr(wxMetal[sender.tag]!.rid) {
+        if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTdwr.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in self.productChanged(sender.tag, product.split(":")[0])}))
             }
         } else {
-            wxMetal[sender.tag]!.radarProductList.forEach {product in
+            wxMetalRenders[sender.tag]!.radarProductList.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in self.productChanged(sender.tag, product.split(":")[0])}))
             }
         }
@@ -475,8 +475,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = "2"
         vc.wxoglCalledFromTimeButton = true
-        wxMetal.forEach { $0!.writePrefs() }
-        wxMetal[0]?.writePrefsForSingleToDualPaneTransition()
+        wxMetalRenders.forEach { $0!.writePrefs() }
+        wxMetalRenders[0]?.writePrefsForSingleToDualPaneTransition()
         self.goToVC(vc)
     }
     
@@ -486,7 +486,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     func productChanged(_ index: Int, _ product: String) {
         stopAnimate()
-        self.wxMetal[index]!.changeProduct(product)
+        self.wxMetalRenders[index]!.changeProduct(product)
         updateColorLegend()
         getPolygonWarnings()
     }
@@ -494,9 +494,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     @objc func onResume() {
         if RadarPreferences.locdotFollowsGps { resumeGps() }
         //stopAnimate()
-        if wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.updateTimeToolbar() }
-            self.wxMetal.forEach { $0!.getRadar("") }
+        if wxMetalRenders[0] != nil {
+            self.wxMetalRenders.forEach { $0!.updateTimeToolbar() }
+            self.wxMetalRenders.forEach { $0!.getRadar("") }
             getPolygonWarnings()
         }
     }
@@ -523,10 +523,10 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         updateWarningsInToolbar()
         DispatchQueue.global(qos: .userInitiated).async {
             self.semaphore.wait()
-            if self.wxMetal[0] != nil { self.wxMetal.forEach { $0!.constructAlertPolygons() } }
+            if self.wxMetalRenders[0] != nil { self.wxMetalRenders.forEach { $0!.constructAlertPolygons() } }
             UtilityPolygons.get()
             DispatchQueue.main.async {
-                if self.wxMetal[0] != nil { self.wxMetal.forEach { $0!.constructAlertPolygons() } }
+                if self.wxMetalRenders[0] != nil { self.wxMetalRenders.forEach { $0!.constructAlertPolygons() } }
                 self.updateWarningsInToolbar()
                 self.semaphore.signal()
             }
@@ -562,21 +562,21 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
-            wxMetal.forEach { $0!.resetRidAndGet(radarSite) }
+            wxMetalRenders.forEach { $0!.resetRidAndGet(radarSite) }
         } else {
-            wxMetal[index]!.resetRidAndGet(radarSite)
+            wxMetalRenders[index]!.resetRidAndGet(radarSite)
         }
         self.view.subviews.forEach { if $0 is UITextView { $0.removeFromSuperview() } }
-        textObj = WXMetalTextObject(
+        wxMetalTextObject = WXMetalTextObject(
             self,
             numberOfPanes,
             Double(view.frame.width),
             Double(view.frame.height),
-            wxMetal[0]!,
+            wxMetalRenders[0]!,
             screenScale
         )
-        textObj.initializeTextLabels()
-        textObj.addTextLabels()
+        wxMetalTextObject.initializeTextLabels()
+        wxMetalTextObject.addTextLabels()
     }
     
     @objc func animateClicked() {
@@ -597,8 +597,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if inOglAnim {
             inOglAnim = false
             animateButton.setImage(.play)
-            if wxMetal[0] != nil {
-                self.wxMetal.forEach { $0!.getRadar("") }
+            if wxMetalRenders[0] != nil {
+                self.wxMetalRenders.forEach { $0!.getRadar("") }
                 getPolygonWarnings()
             }
         }
@@ -617,8 +617,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
-            self.wxMetal.enumerated().forEach { index, glv in
-                animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, glv!.product, glv!.rid))
+            self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
+                animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid))
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
@@ -629,13 +629,13 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             while self.inOglAnim {
                 for frame in (0..<frameCnt) {
                     if self.inOglAnim {
-                        self.wxMetal.enumerated().forEach { index, glv in
-                            let buttonText = " (" + String(frame+1) + "/" + String(frameCnt) + ")"
-                            glv!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
+                        self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
+                            let buttonText = " (" + String(frame + 1) + "/" + String(frameCnt) + ")"
+                            wxMetalRender!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
                             scaleFactor = 1
                         }
                         var interval = MyApplication.animInterval
-                        if self.wxMetal[0]!.product.hasPrefix("L2") {
+                        if self.wxMetalRenders[0]!.product.hasPrefix("L2") {
                             if interval < 12 { interval = 12 }
                         }
                         usleep(UInt32(100000 * interval * scaleFactor))
@@ -652,7 +652,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
             self,
-            wxMetal[index]!,
+            wxMetalRenders[index]!,
             numberOfPanes,
             ortInt,
             x,
@@ -660,18 +660,18 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         )
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
-        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
+        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetalRenders[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
         var alertMessage = WXGLNexrad.getRadarInfo("") + MyApplication.newline
             + String(dist.roundTo(places: 2)) + " miles from location" + MyApplication.newline
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
-            + wxMetal[index]!.rid
-        if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
-            alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
+            + wxMetalRenders[index]!.rid
+        if wxMetalRenders[index]!.gpsLocation.latString != "0.0" && wxMetalRenders[index]!.gpsLocation.lonString != "0.0" {
+            alertMessage += MyApplication.newline + "GPS: " + wxMetalRenders[index]!.getGpsString()
         }
-        let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetal[index]!.radarBuffers.rd.degree, distRidKm))
-        let heightMsl = Int(wxMetal[index]!.radarBuffers.rd.radarHeight) + heightAgl
+        let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetalRenders[index]!.radarBuffers.rd.degree, distRidKm))
+        let heightMsl = Int(wxMetalRenders[index]!.radarBuffers.rd.radarHeight) + heightAgl
         alertMessage += MyApplication.newline + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
         if RadarPreferences.radarShowWpcFronts {
             var wpcFrontsTimeStamp = Utility.readPref("WPC_FRONTS_TIMESTAMP", "")
@@ -692,7 +692,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 + " (" + String(rid.distance) + " mi)"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
-        if WXGLNexrad.canTilt(wxMetal[index]!.product) {
+        if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
             alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu()}))
         }
         if (RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled()) && warningCount > 0 {
@@ -722,8 +722,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
         alert.addAction(
             UIAlertAction(
-                "Radar status message: " + self.wxMetal[index]!.rid, { _ in
-                    UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}
+                "Radar status message: " + self.wxMetalRenders[index]!.rid, { _ in
+                    UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.rid)}
             )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
@@ -748,8 +748,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locValue = manager.location?.coordinate { // type CLLocationCoordinate2D
-            if wxMetal[0] != nil {
-                wxMetal.forEach {
+            if wxMetalRenders[0] != nil {
+                wxMetalRenders.forEach {
                     $0!.gpsLocation = LatLon(Double(locValue.latitude), Double(locValue.longitude) * -1.0)
                     $0!.constructLocationDot()
                 }
@@ -758,15 +758,15 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func getRadarEveryMinute() {
-        wxMetal.forEach { $0!.getRadar("") }
+        wxMetalRenders.forEach { $0!.getRadar("") }
         getPolygonWarnings()
     }
     
     func updateColorLegend() {
         if RadarPreferences.radarShowLegend && numberOfPanes == 1 {
-            colorLegend.removeFromSuperview()
-            colorLegend = UIColorLegend(
-                wxMetal[0]!.product,
+            uiColorLegend.removeFromSuperview()
+            uiColorLegend = UIColorLegend(
+                wxMetalRenders[0]!.product,
                 CGRect(
                     x: 0,
                     y: UIPreferences.statusBarHeight,
@@ -776,20 +776,20 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                         - UIPreferences.statusBarHeight
                 )
             )
-            colorLegend.backgroundColor = UIColor.clear
-            colorLegend.isOpaque = false
-            self.view.addSubview(colorLegend)
+            uiColorLegend.backgroundColor = UIColor.clear
+            uiColorLegend.isOpaque = false
+            self.view.addSubview(uiColorLegend)
         }
     }
     
     func showTiltMenu() {
         var tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
-        if wxMetal[0]!.tdwr { tilts = ["Tilt 1", "Tilt 2", "Tilt 3"] }
+        if wxMetalRenders[0]!.tdwr { tilts = ["Tilt 1", "Tilt 2", "Tilt 3"] }
         _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
     }
     
     func changeTilt(_ tilt: Int) {
-        wxMetal.forEach {
+        wxMetalRenders.forEach {
             $0!.tilt = tilt
             $0!.getRadar("")
         }
@@ -873,8 +873,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = "4"
         vc.wxoglCalledFromTimeButton = true
-        wxMetal.forEach { $0!.writePrefs() }
-        wxMetal[0]?.writePrefsForSingleToQuadPaneTransition()
+        wxMetalRenders.forEach { $0!.writePrefs() }
+        wxMetalRenders[0]?.writePrefsForSingleToQuadPaneTransition()
         self.goToVC(vc)
     }
     
@@ -883,42 +883,42 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func keyRightArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .right)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .right)
     }
     
     @objc func keyLeftArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .left)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .left)
     }
     
     @objc func keyUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .up)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .up)
     }
     
     @objc func keyDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .down)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .down)
     }
     
     @objc func keyRightUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .rightUp)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .rightUp)
     }
     
     @objc func keyRightDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .rightDown)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .rightDown)
     }
     
     @objc func keyLeftUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .leftUp)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .leftUp)
     }
     
     @objc func keyLeftDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetal, .leftDown)
+        UtilityRadarUI.moveByKey(self, wxMetalRenders, .leftDown)
     }
     
     @objc func keyZoomIn() {
-        UtilityRadarUI.zoomInByKey(self, wxMetal, .leftDown)
+        UtilityRadarUI.zoomInByKey(self, wxMetalRenders, .leftDown)
     }
     
     @objc func keyZoomOut() {
-        UtilityRadarUI.zoomOutByKey(self, wxMetal, .leftDown)
+        UtilityRadarUI.zoomOutByKey(self, wxMetalRenders, .leftDown)
     }
 }

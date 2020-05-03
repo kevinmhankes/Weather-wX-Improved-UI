@@ -23,7 +23,6 @@ class WXMetalRender {
     private var scale: Float = 1.0
     var pn = ProjectionNumbers()
     private var ridStr = "DTX"
-    var rdDownload = WXGLDownload()
     private var radarProduct = "N0Q"
     private var tiltInt = 0
     // last value is for radar on main screen

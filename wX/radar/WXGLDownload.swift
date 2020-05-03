@@ -14,7 +14,7 @@ final class WXGLDownload {
     private static var nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
     
     static func getNidsTab(_ product: String, _ radarSite: String, _ fileName: String) {
-        let url = WXGLDownload.getRadarFileUrl(radarSite, product, false)
+        let url = getRadarFileUrl(radarSite, product, false)
         let inputStream = url.getDataFromUrl()
         UtilityIO.saveInputStream(inputStream, fileName)
     }
@@ -52,7 +52,7 @@ final class WXGLDownload {
     static func getRadarFileUrl(_ radarSite: String, _ product: String, _ tdwr: Bool) -> String {
         let ridPrefix = getRidPrefix(radarSite, tdwr)
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
-        return WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
+        return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
     }
     
     static func getRadarFile(_ urlStr: String, _ radarSite: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
@@ -81,32 +81,31 @@ final class WXGLDownload {
         if !prod.contains("L2") {
             listOfFiles = getLevel3FilesForAnimation(frameCount, prod, ridPrefix, radarSite.lowercased())
         } else {
-            listOfFiles = getLevel2FilesForAnimation(WXGLDownload.nwsRadarLevel2Pub
-                + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCount)
+            listOfFiles = getLevel2FilesForAnimation(nwsRadarLevel2Pub + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCount)
         }
         return listOfFiles
     }
     
     static func getRadarDirectoryUrl(_ radarSite: String, _ product: String, _ ridPrefix: String) -> String {
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
-        return WXGLDownload.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
+        return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
     }
     
     // Level 3: Download a list of files and return the list as a list of Strings
     private static func getLevel3FilesForAnimation(_ frameCount: Int, _ product: String, _ ridPrefix: String, _ radarSite: String) -> [String] {
         var listOfFiles = [String]()
         let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-        var snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
-        var snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
+        var snFiles = html.parseColumn(utilnxanimPattern1)
+        var snDates = html.parseColumn(utilnxanimPattern2)
         if snDates.count == 0 {
             let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-            snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
-            snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
+            snFiles = html.parseColumn(utilnxanimPattern1)
+            snDates = html.parseColumn(utilnxanimPattern2)
         }
         if snDates.count == 0 {
             let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-            snFiles = html.parseColumn(WXGLDownload.utilnxanimPattern1)
-            snDates = html.parseColumn(WXGLDownload.utilnxanimPattern2)
+            snFiles = html.parseColumn(utilnxanimPattern1)
+            snDates = html.parseColumn(utilnxanimPattern2)
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
@@ -145,7 +144,7 @@ final class WXGLDownload {
     
     private static func getLevel2Url(_ radarSite: String) -> String {
         let ridPrefix = getRidPrefix(radarSite, false).uppercased()
-        let baseUrl = WXGLDownload.nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
+        let baseUrl = nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let html = (baseUrl + "dir.list").getHtmlSep()
         var sizes = [String]()
         html.split("\n").forEach { sizes.append($0.split(" ")[0]) }
