@@ -7,7 +7,7 @@
 class ColorPalettes {
     
     static func initialize() {
-        let colorMapInts = [19, 30, 41, 56, 57, 78, 134, 135, 159, 161, 163, 165]
+        let colorMapNumbers = [19, 30, 41, 56, 57, 78, 134, 135, 159, 161, 163, 165]
         let cm94 = ObjectColorPalette("94")
         MyApplication.colorMap[94] = cm94
         MyApplication.colorMap[94]!.initialize()
@@ -23,7 +23,7 @@ class ColorPalettes {
         MyApplication.colorMap[172] = cm172
         MyApplication.colorMap[172]!.initialize()
         MyApplication.colorMap[170] = cm172
-        colorMapInts.forEach { productNumber in
+        colorMapNumbers.forEach { productNumber in
             MyApplication.colorMap[productNumber] = ObjectColorPalette(String(productNumber))
             MyApplication.colorMap[productNumber]!.initialize()
         }
