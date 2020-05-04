@@ -42,6 +42,13 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func goesWaterVapor(_ uiv: UIViewController) {
+        let vc = vcGoes()
+        vc.productCode = "09"
+        vc.sectorCode = "CONUS"
+        uiv.goToVC(vc)
+    }
+    
     static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonType) {
         let vc = vcSpcWatchMcdMpd()
         vc.watchMcdMpdType = type

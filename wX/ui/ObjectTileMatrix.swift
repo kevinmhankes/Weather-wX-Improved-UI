@@ -148,10 +148,7 @@ final class ObjectTileMatrix: NSObject {
         case "uswarn":
             uiv!.goToVC(vcUSAlerts())
         case "goes":
-            let vc = vcGoes()
-            vc.productCode = "09"
-            vc.sectorCode = "CONUS"
-            uiv!.goToVC(vc)
+            Route.goesWaterVapor(uiv!)
         case "srfd":
             uiv!.goToVC(vcWpcText())
         case "fmap":
