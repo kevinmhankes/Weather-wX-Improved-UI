@@ -9,7 +9,7 @@ import UIKit
 class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     private var cap = CapAlert()
-    private var objAlertDetail = ObjectAlertDetail()
+    private var objectAlertDetail = ObjectAlertDetail()
     var usAlertsDetailUrl = ""
     
     override func viewDidLoad() {
@@ -24,11 +24,15 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     override func getContent() {
         refreshViews()
         stackView.spacing = 0
-        objAlertDetail = ObjectAlertDetail(stackView)
+        objectAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CapAlert(url: self.usAlertsDetailUrl)
             DispatchQueue.main.async { self.displayContent() }
         }
+    }
+    
+    private func displayContent() {
+        self.objectAlertDetail.updateContent(self.scrollView, self.cap)
     }
     
     override func playClicked() {
@@ -37,9 +41,5 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, cap.text.removeHtml())
-    }
-    
-    private func displayContent() {
-        self.objAlertDetail.updateContent(self.scrollView, self.cap)
     }
 }

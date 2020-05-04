@@ -33,9 +33,7 @@ class vcCanadaWarnings: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCanadaWarnings.getData()
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
@@ -62,9 +60,7 @@ class vcCanadaWarnings: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let data = UtilityCanada.getHazardsFromUrl(url)
             DispatchQueue.main.async {
-                let vc = vcTextViewer()
-                vc.textViewText = data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n")
-                self.goToVC(vc)
+                Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))
             }
         }
     }

@@ -23,25 +23,21 @@ class vcSpcTstormSummary: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.urls = UtilitySpc.getTstormOutlookUrls()
             self.bitmaps = self.urls.map { Bitmap($0) }
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
-    }
-    
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcImageViewer()
-        vc.url = urls[sender.data]
-        self.goToVC(vc)
-    }
-    
-    @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps)
     }
     
     private func displayContent() {
         self.refreshViews()
         _ = ObjectImageSummary(self, bitmaps)
+    }
+    
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+        Route.imageViewer(self, urls[sender.data])
+    }
+    
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmaps)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

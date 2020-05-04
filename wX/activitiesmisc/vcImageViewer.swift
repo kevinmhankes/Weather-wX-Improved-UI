@@ -23,10 +23,12 @@ class vcImageViewer: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(self.url)
-            DispatchQueue.main.async {
-                self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
     }
     
     @objc func shareClicked(sender: UIButton) {

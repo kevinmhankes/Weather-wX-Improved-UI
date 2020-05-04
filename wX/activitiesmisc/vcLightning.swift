@@ -55,14 +55,16 @@ class vcLightning: UIwXViewController {
         Utility.writePref(prefTokenPeriod, self.period)
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = UtilityLightning.getImage(self.sector, self.period)
-            DispatchQueue.main.async {
-                if self.firstRun {
-                    self.image.setBitmap(self.bitmap)
-                    self.firstRun = false
-                } else {
-                    self.image.updateBitmap(self.bitmap)
-                }
-            }
+            DispatchQueue.main.async { self.displayContent() }
+        }
+    }
+    
+    private func displayContent() {
+        if self.firstRun {
+            self.image.setBitmap(self.bitmap)
+            self.firstRun = false
+        } else {
+            self.image.updateBitmap(self.bitmap)
         }
     }
     

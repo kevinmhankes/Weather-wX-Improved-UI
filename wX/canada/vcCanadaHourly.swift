@@ -25,10 +25,12 @@ class vcCanadaHourly: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
-            DispatchQueue.main.async {
-                self.objectTextView.text = self.html
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
+    }
+    
+    private func displayContent() {
+        self.objectTextView.text = self.html
     }
     
     @objc func shareClicked(sender: UIButton) {

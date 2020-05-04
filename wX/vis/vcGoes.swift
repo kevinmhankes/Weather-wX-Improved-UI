@@ -61,14 +61,14 @@ class vcGoes: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
-            DispatchQueue.main.async {
-                self.serializeSettings()
-                self.image.setBitmap(bitmap)
-                if self.firstRun {
-                    self.firstRun = false
-                }
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.serializeSettings()
+        self.image.setBitmap(bitmap)
+        if self.firstRun { self.firstRun = false }
     }
     
     override func doneClicked() {
@@ -122,9 +122,7 @@ class vcGoes: UIwXViewController {
     @objc func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
-            DispatchQueue.main.async {
-                self.image.startAnimating(animationDrawable)
-            }
+            DispatchQueue.main.async { self.image.startAnimating(animationDrawable) }
         }
     }
     

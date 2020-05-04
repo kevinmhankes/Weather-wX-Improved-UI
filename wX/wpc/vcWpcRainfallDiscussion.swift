@@ -37,26 +37,22 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
-    }
-    
-    @objc func imageClicked() {
-        let number = (Int(day) ?? 1) - 1
-        let vc = vcImageViewer()
-        vc.url = UtilityWpcRainfallOutlook.urls[number]
-        self.goToVC(vc)
-    }
-    
-    @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmap, html)
     }
     
     private func displayContent() {
         self.refreshViews()
         _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
+    }
+    
+    @objc func imageClicked() {
+        let number = (Int(day) ?? 1) - 1
+        Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[number])
+    }
+    
+    @objc override func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmap, html)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

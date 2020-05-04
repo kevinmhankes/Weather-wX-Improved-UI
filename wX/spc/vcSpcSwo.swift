@@ -43,16 +43,17 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
                 self.html = UtilityDownload.getTextProduct(self.product)
             }
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
+    private func displayContent() {
+       self.refreshViews()
+       _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
+    }
+    
     @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {
-        let vc = vcImageViewer()
-        vc.url = bitmaps[sender.data].url
-        self.goToVC(vc)
+        Route.imageViewer(self, bitmaps[sender.data].url)
     }
     
     @objc override func shareClicked(sender: UIButton) {
@@ -63,11 +64,6 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         let vc = vcSpcSwoState()
         vc.day = spcSwoDay
         self.goToVC(vc)
-    }
-    
-    private func displayContent() {
-        self.refreshViews()
-        _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

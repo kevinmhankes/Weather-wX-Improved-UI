@@ -54,16 +54,12 @@ class vcSpcStormReports: UIwXViewController {
             self.bitmap.url = self.imageUrl
             self.html = self.textUrl.getHtml()
             self.stormReports = UtilitySpcStormReports.process(self.html.split(MyApplication.newline))
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
     @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcImageViewer()
-        vc.url = self.imageUrl
-        self.goToVC(vc)
+        Route.imageViewer(self, self.imageUrl)
     }
     
     @objc func shareClicked(sender: UIButton) {

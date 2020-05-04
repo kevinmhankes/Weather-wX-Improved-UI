@@ -69,23 +69,25 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             } else {
                 self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
             }
-            DispatchQueue.main.async {
-                if self.html == "" { self.html = "None issued by this office recently." }
-                self.objectTextView.text = self.html
-                if UtilityWfoText.needsFixedWidthFont(self.product) {
-                    self.objectTextView.font = FontSize.hourly.size
-                } else {
-                    self.objectTextView.font = FontSize.medium.size
-                }
-                if self.product.hasPrefix("RTP") && self.product.count == 5 {
-                    Utility.writePref("WFOTEXT_PARAM_LAST_USED", "RTPZZ")
-                } else {
-                    Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
-                }
-                Utility.writePref("WFO_LAST_USED", self.wfo)
-                self.scrollView.scrollToTop()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
+    }
+    
+    private func displayContent() {
+        if self.html == "" { self.html = "None issued by this office recently." }
+        self.objectTextView.text = self.html
+        if UtilityWfoText.needsFixedWidthFont(self.product) {
+            self.objectTextView.font = FontSize.hourly.size
+        } else {
+            self.objectTextView.font = FontSize.medium.size
+        }
+        if self.product.hasPrefix("RTP") && self.product.count == 5 {
+            Utility.writePref("WFOTEXT_PARAM_LAST_USED", "RTPZZ")
+        } else {
+            Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
+        }
+        Utility.writePref("WFO_LAST_USED", self.wfo)
+        self.scrollView.scrollToTop()
     }
     
     @objc func productClicked() {

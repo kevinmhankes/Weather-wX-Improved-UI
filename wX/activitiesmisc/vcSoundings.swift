@@ -30,8 +30,12 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.siteButton.title = self.wfo
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(self.wfo)
-            DispatchQueue.main.async { self.image.setBitmap(bitmap) }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
     }
     
     @objc func shareClicked(sender: UIButton) {

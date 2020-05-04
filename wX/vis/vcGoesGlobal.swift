@@ -38,16 +38,18 @@ class vcGoesGlobal: UIwXViewController {
         self.productButton.title = UtilityGoesFullDisk.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                if UtilityGoesFullDisk.urls[self.index].contains("jma") {
-                    self.showAnimateButton()
-                } else {
-                    self.hideAnimateButton()
-                }
-                Utility.writePref(self.prefToken, self.index)
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        if UtilityGoesFullDisk.urls[self.index].contains("jma") {
+            self.showAnimateButton()
+        } else {
+            self.hideAnimateButton()
+        }
+        Utility.writePref(self.prefToken, self.index)
     }
     
     func showAnimateButton() {
@@ -73,9 +75,7 @@ class vcGoesGlobal: UIwXViewController {
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
-            DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
-            }
+            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
     

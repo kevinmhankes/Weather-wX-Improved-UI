@@ -22,10 +22,13 @@ class vcSpcFireSummary: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
+    }
+    
+    private func displayContent() {
+       self.refreshViews()
+       _ = ObjectImageSummary(self, bitmaps)
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
@@ -36,11 +39,6 @@ class vcSpcFireSummary: UIwXViewController {
     
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps)
-    }
-    
-    private func displayContent() {
-        self.refreshViews()
-        _ = ObjectImageSummary(self, bitmaps)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

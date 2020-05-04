@@ -33,10 +33,12 @@ class vcOpc: UIwXViewController {
         self.productButton.title = UtilityOpcImages.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
     }
     
     @objc func productClicked() {

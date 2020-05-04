@@ -38,11 +38,13 @@ class vcRadarMosaic: UIwXViewController {
         self.productButton.title = UtilityUSImgNwsMosaic.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityUSImgNwsMosaic.get(UtilityUSImgNwsMosaic.sectors[self.index])
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                if !self.isLocal { Utility.writePref(self.prefToken, self.index) }
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        if !self.isLocal { Utility.writePref(self.prefToken, self.index) }
     }
     
     override func willEnterForeground() {

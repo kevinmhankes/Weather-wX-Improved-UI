@@ -128,11 +128,7 @@ class vcNhcStorm: UIwXViewController {
     func productChanged(_ product: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product + self.stormId)
-            DispatchQueue.main.async {
-                let vc = vcTextViewer()
-                vc.textViewText = html
-                self.goToVC(vc)
-            }
+            DispatchQueue.main.async { Route.textViewer(self, html) }
         }
     }
     

@@ -38,25 +38,21 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
     @objc func imageClicked() {
-        let vc = vcImageViewer()
-        vc.url = UtilitySpcFireOutlook.urls[dayIndex]
-        self.goToVC(vc)
-    }
-    
-    @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmap, html)
+        Route.imageViewer(self, UtilitySpcFireOutlook.urls[dayIndex])
     }
     
     private func displayContent() {
         self.refreshViews()
         _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
+    }
+    
+    @objc override func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, bitmap, html)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

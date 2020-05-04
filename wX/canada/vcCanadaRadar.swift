@@ -50,25 +50,27 @@ class vcCanadaRadar: UIwXViewController {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            var bitmap: Bitmap
+            let bitmap: Bitmap
             if self.caRadarImageType == "radar" {
                 bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(self.radarSite, "")
             } else {
                 bitmap = Bitmap(self.url)
             }
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                self.productButton.title = self.radarSite
-                if !self.startFromMosaic {
-                    Utility.writePref("CA_LAST_RID", self.radarSite)
-                    Utility.writePref("CA_LAST_RID_URL", self.url)
-                }
-                if UtilityCanadaImg.mosaicSectors.contains(self.radarSite) {
-                    self.mosaicShown = true
-                } else {
-                    self.mosaicShown = false
-                }
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
+        }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        self.productButton.title = self.radarSite
+        if !self.startFromMosaic {
+           Utility.writePref("CA_LAST_RID", self.radarSite)
+           Utility.writePref("CA_LAST_RID_URL", self.url)
+        }
+        if UtilityCanadaImg.mosaicSectors.contains(self.radarSite) {
+           self.mosaicShown = true
+        } else {
+           self.mosaicShown = false
         }
     }
     
@@ -102,9 +104,7 @@ class vcCanadaRadar: UIwXViewController {
             } else {
                 animDrawable = UtilityCanadaImg.getGoesAnimation(self.url)
             }
-            DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
-            }
+            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
     

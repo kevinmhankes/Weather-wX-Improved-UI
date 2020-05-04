@@ -37,6 +37,18 @@ class vcUSAlerts: UIwXViewController {
         }
     }
     
+    private func displayContent() {
+        self.refreshViews()
+        if !filterShown {
+            self.filterButton.title = "Tornado/ThunderStorm/FFW"
+            self.objAlertSummary = ObjectAlertSummary(self, "", self.capAlerts, self.filterGesture)
+            self.objAlertSummary.getImage()
+            self.bitmap = self.objAlertSummary.image
+        } else {
+            filterChanged(filter)
+        }
+    }
+    
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
         Route.alertDetail(self, objAlertSummary.getUrl(sender.data))
     }
@@ -70,18 +82,6 @@ class vcUSAlerts: UIwXViewController {
     
     @objc func imageClicked() {
         self.objAlertSummary.changeImage(self)
-    }
-    
-    private func displayContent() {
-        self.refreshViews()
-        if !filterShown {
-            self.filterButton.title = "Tornado/ThunderStorm/FFW"
-            self.objAlertSummary = ObjectAlertSummary(self, "", self.capAlerts, self.filterGesture)
-            self.objAlertSummary.getImage()
-            self.bitmap = self.objAlertSummary.image
-        } else {
-            filterChanged(filter)
-        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

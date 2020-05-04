@@ -32,9 +32,17 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.wfoProd = self.getLsrFromWfo()
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
+        }
+    }
+    
+    private func displayContent() {
+        self.siteButton.title = self.wfo
+        self.stackView.removeViews()
+        self.wfoProd.forEach { item in
+            let objectTextView = ObjectTextView(self.stackView, item)
+            objectTextView.font = FontSize.hourly.size
+            objectTextView.constrain(scrollView)
         }
     }
     
@@ -71,16 +79,6 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     func mapCall(annotationView: MKAnnotationView) {
         self.wfo = (annotationView.annotation!.title!)!
         self.getContent()
-    }
-    
-    private func displayContent() {
-        self.siteButton.title = self.wfo
-        self.stackView.removeViews()
-        self.wfoProd.forEach { item in
-            let objectTextView = ObjectTextView(self.stackView, item)
-            objectTextView.font = FontSize.hourly.size
-            objectTextView.constrain(scrollView)
-        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

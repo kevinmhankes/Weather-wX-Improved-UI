@@ -44,11 +44,13 @@ class vcWpcImg: UIwXViewController {
         }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(getUrl)
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
     }
     
     func getContentFromHomeScreen() {
@@ -56,9 +58,7 @@ class vcWpcImg: UIwXViewController {
         if titles.count > 0 { self.productButton.title = titles[0].split(":")[1] }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(self.wpcImagesToken)
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-            }
+            DispatchQueue.main.async { self.image.setBitmap(bitmap) }
         }
     }
     

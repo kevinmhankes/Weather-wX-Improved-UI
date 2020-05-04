@@ -52,13 +52,15 @@ class vcRadarMosaicAwc: UIwXViewController {
         self.sectorButton.title = self.sector
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                if !self.isLocal {
-                    Utility.writePref(self.prefTokenSector, self.sector)
-                    Utility.writePref(self.prefTokenProduct, self.product)
-                }
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
+        }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        if !self.isLocal {
+            Utility.writePref(self.prefTokenSector, self.sector)
+            Utility.writePref(self.prefTokenProduct, self.product)
         }
     }
     

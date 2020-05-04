@@ -37,23 +37,25 @@ class vcAdhocLocation: UIwXViewController {
             self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
             self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
             self.objectHazards = ObjectHazards(self, self.adhocLocation)
-            DispatchQueue.main.async {
-                _ = ObjectCardCurrentConditions(
-                    self.stackViewCurrentConditions.view,
-                    self.objectCurrentConditions,
-                    true
-                )
-                self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-                ObjectHazards.getHazardCards(self.stackView, self.objectHazards)
-                _ = ObjectCardSevenDayCollection(
-                    self.stackViewForecast.view,
-                    self.scrollView,
-                    self.objectSevenDay
-                )
-                self.stackView.addArrangedSubview(self.stackViewForecast.view)
-                self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
+    }
+    
+    private func displayContent() {
+        _ = ObjectCardCurrentConditions(
+            self.stackViewCurrentConditions.view,
+            self.objectCurrentConditions,
+            true
+        )
+        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        ObjectHazards.getHazardCards(self.stackView, self.objectHazards)
+        _ = ObjectCardSevenDayCollection(
+            self.stackViewForecast.view,
+            self.scrollView,
+            self.objectSevenDay
+        )
+        self.stackView.addArrangedSubview(self.stackViewForecast.view)
+        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
     }
 }

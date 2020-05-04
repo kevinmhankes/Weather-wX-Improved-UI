@@ -82,18 +82,20 @@ class vcSpcMeso: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
-            DispatchQueue.main.async {
-                if self.firstRun {
-                    self.image.setBitmap(bitmap)
-                    self.firstRun = false
-                } else {
-                    self.image.updateBitmap(bitmap)
-                }
-                self.paramButton.title = self.product
-                Utility.writePref(self.prefModel + self.numPanesStr + "_PARAM_LAST_USED", self.product)
-                Utility.writePref(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        if self.firstRun {
+            self.image.setBitmap(bitmap)
+            self.firstRun = false
+        } else {
+            self.image.updateBitmap(bitmap)
+        }
+        self.paramButton.title = self.product
+        Utility.writePref(self.prefModel + self.numPanesStr + "_PARAM_LAST_USED", self.product)
+        Utility.writePref(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
     }
     
     @objc func sectorClicked() {

@@ -33,11 +33,13 @@ class vcSpcCompMap: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcCompmap.getImage(self.layers)
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-                self.serializeSettings()
-            }
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
+    }
+    
+    private func displayContent(_ bitmap: Bitmap) {
+        self.image.setBitmap(bitmap)
+        self.serializeSettings()
     }
     
     @objc func productClicked() {
