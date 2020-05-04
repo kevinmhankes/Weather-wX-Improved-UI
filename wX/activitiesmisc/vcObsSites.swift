@@ -39,9 +39,7 @@ class vcObsSites: UIwXViewController {
         listCity = ["..Back to state list"]
         var listIds = ["..Back to state list"]
         var listSort = [String]()
-        lines.forEach { line in
-            if line.hasPrefix(stateSelected.uppercased()) { listSort.append(line) }
-        }
+        lines.forEach {if $0.hasPrefix(stateSelected.uppercased()) { listSort.append($0) } }
         listSort = listSort.sorted()
         listSort.forEach { item in
             let list = item.split(",")
@@ -70,11 +68,7 @@ class vcObsSites: UIwXViewController {
             let site = listCity[sender.data].split(":")[0]
             Utility.writePref(prefToken, site)
             self.siteButton.title = "Last Used: " + site
-            let vc = vcWebView()
-            vc.showProduct = false
-            vc.useUrl = true
-            vc.url = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site
-            self.goToVC(vc)
+            Route.web(self, "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site)
         }
     }
     
@@ -93,19 +87,11 @@ class vcObsSites: UIwXViewController {
     }
     
     @objc func siteClicked() {
-        let vc = vcWebView()
-        vc.showProduct = false
-        vc.useUrl = true
-        vc.url = "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, "")
-        self.goToVC(vc)
+        Route.web(self, "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, ""))
     }
     
     @objc func mapClicked() {
-        let vc = vcWebView()
-        vc.showProduct = false
-        vc.useUrl = true
-        vc.url = "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased()
-        self.goToVC(vc)
+        Route.web(self, "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased())
     }
     
     private func displayContent() {
