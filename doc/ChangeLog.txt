@@ -24,7 +24,6 @@
 // [REF] use more of condition ? trueValue : falseValue
 // [REF] implement class to handle routing
 // [FIX] color picker is to slow on large screens
-// [REF] remove UtilityColorPalette57
 
 56101 2020_05_03 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
@@ -32,6 +31,7 @@
 		 [ADD] in ui/CustomTabBarVC remove custom font for tab labels
 	 	 [FIX] MacOS - quad pane long press in polygon in bottom 2 panes does not work
 	 	 [REF] WXGLDownload - convert to all static methods/vars
+		 [REF] remove UtilityColorPalette57
 56100 2020_05_01 [REF] misc
 	         [ADD] If jump to nexrad from US Alerts or Severe Dashboard, don't save radar prererences on exit
 		 [ADD] NCEP MAG comp ref change in nam-hires firewx hrrr rap hrw-nmmb hrw-arw hrw-arw2

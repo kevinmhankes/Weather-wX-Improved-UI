@@ -95,7 +95,6 @@
 		0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */; };
 		0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */; };
 		0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */; };
-		0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
@@ -492,7 +491,6 @@
 		0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDayCollection.swift; sourceTree = "<group>"; };
 		0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NhcOceanEnum.swift; sourceTree = "<group>"; };
 		0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcRegionSummary.swift; sourceTree = "<group>"; };
-		0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityColorPalette57.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
@@ -976,7 +974,6 @@
 				F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */,
 				F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */,
 				03A90D4E2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift */,
-				0349764622E3B215009D93A4 /* UtilityColorPalette57.swift */,
 				F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */,
 				F0B3356E1DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift */,
 			);
@@ -1670,7 +1667,6 @@
 				0340423023F16FC3003AB242 /* vcUSAlertsDetail.swift in Sources */,
 				03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */,
 				03F3EB81229945D10056A56D /* UtilityModelNsslWrfInterface.swift in Sources */,
-				0349764822E3B215009D93A4 /* UtilityColorPalette57.swift in Sources */,
 				037A56B623CBB61800BB23C0 /* RadarGeometryFile.swift in Sources */,
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
