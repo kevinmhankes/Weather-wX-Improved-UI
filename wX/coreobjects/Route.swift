@@ -9,6 +9,21 @@ import UIKit
 
 final class Route {
     
+    // TODO route for SPC SWO
+    // TODO route for SPC Storm Reports
+    
+    static func wpcText(_ uiv: UIViewController, _ product: String) {
+        let vc = vcWpcText()
+        vc.wpcTextProduct = product
+        uiv.goToVC(vc)
+    }
+    
+    static func imageViewer(_ uiv: UIViewController, _ url: String) {
+        let vc = vcImageViewer()
+        vc.url = url
+        uiv.goToVC(vc)
+    }
+    
     static func radar(_ uiv: UIViewController, _ paneString: String) {
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = paneString

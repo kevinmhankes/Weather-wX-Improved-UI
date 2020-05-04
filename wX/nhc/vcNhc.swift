@@ -37,60 +37,37 @@ class vcNhc: UIwXViewController {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.objectNhc?.getTextData()
-            DispatchQueue.main.async {
-                self.objectNhc?.showTextData()
-            }
+            DispatchQueue.main.async { self.objectNhc?.showTextData() }
         }
         NhcOceanEnum.allCases.forEach { type in
             serial.async {
                 self.objectNhc?.regionMap[type]!.getImages()
-                DispatchQueue.main.async {
-                    self.objectNhc?.showImageData(type)
-                }
+                DispatchQueue.main.async { self.objectNhc?.showImageData(type) }
             }
         }
     }
     
     @objc func textProductClicked() {
-        _ = ObjectPopUp(
-            self,
-            textProductButton,
-            UtilityNhc.textProductLabels,
-            self.textProductChanged(_:)
-        )
+        _ = ObjectPopUp(self, textProductButton, UtilityNhc.textProductLabels, self.textProductChanged(_:))
     }
     
     func textProductChanged(_ index: Int) {
-        let vc = vcWpcText()
-        vc.wpcTextProduct = UtilityNhc.textProductCodes[index]
-        self.goToVC(vc)
+        Route.wpcText(self, UtilityNhc.textProductCodes[index])
     }
     
     @objc func imageProductClicked() {
-        _ = ObjectPopUp(
-            self,
-            imageProductButton,
-            UtilityNhc.imageTitles,
-            self.imageProductChanged(_:)
-        )
+        _ = ObjectPopUp(self, imageProductButton, UtilityNhc.imageTitles, self.imageProductChanged(_:))
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcImageViewer()
-        vc.url = sender.strData
-        self.goToVC(vc)
+        Route.imageViewer(self, sender.strData)
     }
     
     func imageProductChanged(_ index: Int) {
-        let vc = vcImageViewer()
-        vc.url = UtilityNhc.imageUrls[index]
-        self.goToVC(vc)
+        Route.imageViewer(self, UtilityNhc.imageUrls[index])
     }
     
     @objc func glcfsClicked() {
-        //let vc = vcModels()
-        //vc.modelActivitySelected = "GLCFS"
-        //self.goToVC(vc)
         Route.model(self, "GLCFS")
     }
     
