@@ -86,8 +86,6 @@ class vcWebView: UIwXViewController {
     }
 
     @objc func browserClicked() {
-        print("URL: " + url)
-        print("USEURL: " + String(useUrl))
         if useUrl {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         } else {
