@@ -22,6 +22,13 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func radarFromTimeButton(_ uiv: UIViewController, _ paneString: String) {
+        let vc = vcNexradRadar()
+        vc.wxoglPaneCount = paneString
+        vc.wxoglCalledFromTimeButton = true
+        uiv.goToVC(vc)
+    }
+    
     static func map(_ uiv: UIwXViewController, _ lat: String, _ lon: String, radius: Double = 20000.0) {
         let vc = vcMapKitView()
         vc.mapKitLat = lat

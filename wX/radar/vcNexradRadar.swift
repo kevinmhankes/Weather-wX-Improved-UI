@@ -472,12 +472,14 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func timeClicked() {
-        let vc = vcNexradRadar()
-        vc.wxoglPaneCount = "2"
-        vc.wxoglCalledFromTimeButton = true
+        //let vc = vcNexradRadar()
+        //vc.wxoglPaneCount = "2"
+        //vc.wxoglCalledFromTimeButton = true
         wxMetalRenders.forEach { $0!.writePrefs() }
         wxMetalRenders[0]?.writePrefsForSingleToDualPaneTransition()
-        self.goToVC(vc)
+        //self.goToVC(vc)
+        print(numberOfPanes)
+        Route.radarFromTimeButton(self, "2")
     }
     
     @objc func warningClicked() {
@@ -870,12 +872,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func goToQuadPane() {
-        let vc = vcNexradRadar()
-        vc.wxoglPaneCount = "4"
-        vc.wxoglCalledFromTimeButton = true
         wxMetalRenders.forEach { $0!.writePrefs() }
         wxMetalRenders[0]?.writePrefsForSingleToQuadPaneTransition()
-        self.goToVC(vc)
+        Route.radarFromTimeButton(self, "4")
     }
     
     @objc func showKeyboardShortcuts() {
