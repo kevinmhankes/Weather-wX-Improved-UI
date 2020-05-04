@@ -22,6 +22,7 @@
 // [FIX] does radar product chosen impact radar on main screen
 // [FIX] if remember location not chosen, products always default to REF for multi-pane
 // [REF] use more of condition ? trueValue : falseValue
+// [FIX] MacOS nexrad county labels truncate second line
 
 56101 2020_05_04 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
