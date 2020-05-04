@@ -66,7 +66,7 @@ final class UtilityActions {
         case "PlayList":
             uiv.goToVC(vcPlayList())
         case "Radar Mosaic":
-            Route.radarMosaic(uiv)
+            Route.radarMosaicLocal(uiv)
         case "Canadian Alerts":
             uiv.goToVC(vcCanadaWarnings())
         case "US Alerts":

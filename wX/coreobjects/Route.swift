@@ -15,7 +15,7 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func radarMosaic(_ uiv: UIViewController) {
+    static func radarMosaicLocal(_ uiv: UIViewController) {
         if Location.isUS {
             if !UIPreferences.useAwcRadarMosaic {
                 let vc = vcRadarMosaic()
@@ -31,6 +31,16 @@ final class Route {
             let vc = vcCanadaRadar()
             vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
             vc.caRadarImageType = "radar"
+            uiv.goToVC(vc)
+        }
+    }
+    
+    static func radarMosaic(_ uiv: UIViewController) {
+        if !UIPreferences.useAwcRadarMosaic {
+            let vc = vcRadarMosaic()
+            uiv.goToVC(vc)
+        } else {
+            let vc = vcRadarMosaicAwc()
             uiv.goToVC(vc)
         }
     }

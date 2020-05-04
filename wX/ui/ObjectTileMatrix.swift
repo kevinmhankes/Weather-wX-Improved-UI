@@ -156,13 +156,7 @@ final class ObjectTileMatrix: NSObject {
         case "nhc":
             uiv!.goToVC(vcNhc())
         case "nws_sector":
-            if !UIPreferences.useAwcRadarMosaic {
-                let vc = vcRadarMosaic()
-                uiv!.goToVC(vc)
-            } else {
-                let vc = vcRadarMosaicAwc()
-                uiv!.goToVC(vc)
-            }
+            Route.radarMosaic(uiv!)
         case "opc":
             uiv!.goToVC(vcOpc())
         case "goesfulldisk":
