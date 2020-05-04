@@ -22,4 +22,12 @@ final class Route {
         vc.mapKitRadius = 20000.0
         uiv.goToVC(vc)
     }
+    
+    static func web(_ uiv: UIwXViewController, _ url: String) {
+        let vc = vcWebView()
+        vc.showProduct = false
+        vc.useUrl = true
+        vc.url = url
+        uiv.goToVC(vc)
+    }
 }
