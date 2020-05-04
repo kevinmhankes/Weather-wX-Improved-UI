@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 import Foundation
+import UIKit
 
 final class Route {
     
@@ -28,6 +29,19 @@ final class Route {
         vc.showProduct = false
         vc.useUrl = true
         vc.url = url
+        uiv.goToVC(vc)
+    }
+    
+    static func webTwitter(_ uiv: UIViewController, _ url: String) {
+        let vc = vcWebView()
+        vc.url = ""
+        vc.aStateCode = url
+        uiv.goToVC(vc)
+    }
+    
+    static func model(_ uiv: UIViewController, _ model: String) {
+        let vc = vcModels()
+        vc.modelActivitySelected = model
         uiv.goToVC(vc)
     }
 }

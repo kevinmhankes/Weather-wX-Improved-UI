@@ -234,19 +234,14 @@ final class ObjectTileMatrix: NSObject {
             vc.modelActivitySelected = "NCAR_ENSEMBLE"
             uiv!.goToVC(vc)
         case "wpcgefs":
-            let vc = vcModels()
-            vc.modelActivitySelected = "WPCGEFS"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "WPCGEFS"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "WPCGEFS")
         case "twstate":
-            let vc = vcWebView()
-            vc.url = ""
-            vc.aStateCode = Location.state
-            uiv!.goToVC(vc)
+            Route.webTwitter(uiv!, Location.state)
         case "twtornado":
-            let vc = vcWebView()
-            vc.url = ""
-            vc.aStateCode = "tornado"
-            uiv!.goToVC(vc)
+            Route.webTwitter(uiv!, "tornado")
         default:
             break
         }
