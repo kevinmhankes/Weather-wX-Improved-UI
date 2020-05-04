@@ -160,11 +160,7 @@ class vcTabLocation: vcTabParent {
     
     @objc func getContentMaster() {
         self.oldLocation = Location.latLon
-        if Location.isUS {
-            self.isUS = true
-        } else {
-            self.isUS = false
-        }
+        if Location.isUS { self.isUS = true } else { self.isUS = false }
         clearViews()
         getForecastData()
         getContent()
@@ -180,9 +176,7 @@ class vcTabLocation: vcTabParent {
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
-            DispatchQueue.main.async {
-                self.getCurrentConditionCards()
-            }
+            DispatchQueue.main.async { self.getCurrentConditionCards() }
         }
     }
     
@@ -297,14 +291,6 @@ class vcTabLocation: vcTabParent {
         self.goToVC(vc)
     }
     
-    override func dualPaneRadarClicked() {
-        UtilityActions.multiPaneRadarClicked(self, "2")
-    }
-    
-    override func quadPaneRadarClicked() {
-        UtilityActions.multiPaneRadarClicked(self, "4")
-    }
-    
     override func settingsClicked() {
         let vc = vcSettingsMain()
         self.goToVC(vc)
@@ -390,16 +376,12 @@ class vcTabLocation: vcTabParent {
             self.objLabel.text = Location.name
             self.getContentMaster()
         } else {
-            let vc = vcSettingsLocationEdit()
-            vc.settingsLocationEditNum = "0"
-            self.goToVC(vc)
+            Route.locationAdd(self)
         }
     }
     
     func editLocation() {
-        let vc = vcSettingsLocationEdit()
-        vc.settingsLocationEditNum = Location.getCurrentLocationStr()
-        self.goToVC(vc)
+        Route.locationEdit(self, Location.getCurrentLocationStr())
     }
     
     @objc func locationAction() {

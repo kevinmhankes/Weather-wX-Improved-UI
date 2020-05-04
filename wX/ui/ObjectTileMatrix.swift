@@ -102,70 +102,39 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "spcsref":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "SPCSREF"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "SPCSREF")
         case "spc_sum":
-            let vc = vcSpcSwoSummary()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcSwoSummary())
         case "day1":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "1"
-            uiv!.goToVC(vc)
+            Route.swo(uiv!, day: "1")
         case "day2":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "2"
-            uiv!.goToVC(vc)
+            Route.swo(uiv!, day: "2")
         case "day3":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "3"
-            uiv!.goToVC(vc)
+            Route.swo(uiv!, day: "3")
         case "day48":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "48"
-            uiv!.goToVC(vc)
+            Route.swo(uiv!, day: "48")
         case "report_today":
-            let vc = vcSpcStormReports()
-            vc.spcStormReportsDay = "today"
-            uiv!.goToVC(vc)
+            Route.spcStormReports(uiv!, "today")
         case "report_yesterday":
-            let vc = vcSpcStormReports()
-            vc.spcStormReportsDay = "yesterday"
-            uiv!.goToVC(vc)
+            Route.spcStormReports(uiv!, "yesterday")
         case "mcd_tile":
-            let vc = vcSpcWatchMcdMpd()
-            vc.watchMcdMpdType = .MCD
-            uiv!.goToVC(vc)
+            Route.spcMcdWatchSummary(uiv!, .MCD)
         case "wat":
-            let vc = vcSpcWatchMcdMpd()
-            vc.watchMcdMpdType = .WATCH
-            uiv!.goToVC(vc)
+            Route.spcMcdWatchSummary(uiv!, .WATCH)
         case "meso":
-            let vc = vcSpcMeso()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcMeso())
         case "fire_outlook":
-            let vc = vcSpcFireSummary()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcFireSummary())
         case "tstorm":
-            let vc = vcSpcTstormSummary()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcTstormSummary())
         case "spccompmap":
-            let vc = vcSpcCompMap()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcCompMap())
         case "spchrrr":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "SPCHRRR"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "SPCHRRR")
         case "spchref":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "SPCHREF"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "SPCHREF")
         default:
-            let vc = vcSpcSwo()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcSpcSwo())
         }
     }
     
@@ -173,32 +142,22 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "ncep":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "NCEP"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "NCEP")
         case "hrrrviewer":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "ESRL"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "ESRL")
         case "uswarn":
-            let vc = vcUSAlerts()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcUSAlerts())
         case "goes":
             let vc = vcGoes()
             vc.productCode = "09"
             vc.sectorCode = "CONUS"
             uiv!.goToVC(vc)
         case "srfd":
-            let vc = vcWpcText()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcWpcText())
         case "fmap":
-            let vc = vcWpcImg()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcWpcImg())
         case "nhc":
-            let vc = vcNhc()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcNhc())
         case "nws_sector":
             if !UIPreferences.useAwcRadarMosaic {
                 let vc = vcRadarMosaic()
@@ -208,11 +167,9 @@ final class ObjectTileMatrix: NSObject {
                 uiv!.goToVC(vc)
             }
         case "opc":
-            let vc = vcOpc()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcOpc())
         case "goesfulldisk":
-            let vc = vcGoesGlobal()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcGoesGlobal())
         case "nwsobs":
             let vc = vcObsSites()
             uiv!.goToVC(vc)
@@ -221,25 +178,14 @@ final class ObjectTileMatrix: NSObject {
         case "wxoglquadpane":
             Route.radar(uiv!, "4")
         case "nsslwrf":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "NSSLWRF"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "NSSLWRF")
         case "lightning":
-            let vc = vcLightning()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcLightning())
         case "wpc_rainfall":
-            let vc = vcWpcRainfallSummary()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcWpcRainfallSummary())
         case "ncar_ensemble":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "NCAR_ENSEMBLE"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "NCAR_ENSEMBLE")
         case "wpcgefs":
-            //let vc = vcModels()
-            //vc.modelActivitySelected = "WPCGEFS"
-            //uiv!.goToVC(vc)
             Route.model(uiv!, "WPCGEFS")
         case "twstate":
             Route.webTwitter(uiv!, Location.state)
@@ -248,19 +194,6 @@ final class ObjectTileMatrix: NSObject {
         default:
             break
         }
-    }
-    
-    @objc func multiPaneRadarClicked(_ paneCount: String) {
-        let vc = vcNexradRadar()
-        switch paneCount {
-        case "2":
-            vc.wxoglPaneCount = "2"
-        case "4":
-            vc.wxoglPaneCount = "4"
-        default:
-            break
-        }
-        uiv!.goToVC(vc)
     }
     
     @objc func genericClicked(_ vc: UIViewController) {

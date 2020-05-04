@@ -10,10 +10,7 @@ final class UtilityActions {
     
     static func cloudClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            let vc = vcGoes()
-            vc.productCode = ""
-            vc.sectorCode = ""
-            uiv.goToVC(vc)
+            Route.vis(uiv)
         } else {
             let vc = vcCanadaRadar()
             vc.caRadarImageType = "vis"
@@ -28,101 +25,56 @@ final class UtilityActions {
             vc.caRadarProvince = ""
             uiv.goToVC(vc)
         } else {
-            let vc = vcNexradRadar()
             if UIPreferences.dualpaneRadarIcon {
-                vc.wxoglPaneCount = "2"
+                Route.radar(uiv, "2")
             } else {
-                vc.wxoglPaneCount = "1"
+                Route.radar(uiv, "1")
             }
-            uiv.goToVC(vc)
         }
     }
     
     static func wfotextClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            let vc = vcWfoText()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcWfoText())
         } else {
-            let vc = vcCanadaText()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcCanadaText())
         }
     }
     
     static func dashClicked(_ uiv: UIViewController) {
         if Location.isUS {
-            let vc = vcSevereDashboard()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcSevereDashboard())
         } else {
-            let vc = vcCanadaWarnings()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcCanadaWarnings())
         }
-    }
-    
-    static func multiPaneRadarClicked(_ uiv: UIViewController, _ paneCount: String) {
-        let vc = vcNexradRadar()
-        switch paneCount {
-        case "2":
-            vc.wxoglPaneCount = "2"
-        case "4":
-            vc.wxoglPaneCount = "4"
-        default:
-            break
-        }
-        uiv.goToVC(vc)
     }
     
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
         switch menuItem {
         case "Soundings":
-            let vc = vcSoundings()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcSoundings())
         case "Hourly Forecast":
             if Location.isUS {
-                let vc = vcHourly()
-                uiv.goToVC(vc)
+                uiv.goToVC(vcHourly())
             } else {
-                let vc = vcCanadaHourly()
-                uiv.goToVC(vc)
+                uiv.goToVC(vcCanadaHourly())
             }
         case "Settings":
-            let vc = vcSettingsMain()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcSettingsMain())
         case "Observations":
-            let vc = vcObservations()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcObservations())
         case "PlayList":
-            let vc = vcPlayList()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcPlayList())
         case "Radar Mosaic":
-            if Location.isUS {
-                if !UIPreferences.useAwcRadarMosaic {
-                    let vc = vcRadarMosaic()
-                    vc.nwsMosaicType = "local"
-                    uiv.goToVC(vc)
-                } else {
-                    let vc = vcRadarMosaicAwc()
-                    vc.nwsMosaicType = "local"
-                    uiv.goToVC(vc)
-                }
-            } else {
-                let prov = MyApplication.locations[Location.getLocationIndex].prov
-                let vc = vcCanadaRadar()
-                vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
-                vc.caRadarImageType = "radar"
-                uiv.goToVC(vc)
-            }
+            Route.radarMosaic(uiv)
         case "Canadian Alerts":
-            let vc = vcCanadaWarnings()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcCanadaWarnings())
         case "US Alerts":
-            let vc = vcUSAlerts()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcUSAlerts())
         case "Spotters":
-            let vc = vcSpotters()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcSpotters())
         default:
-            let vc = vcHourly()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcHourly())
         }
     }
     
@@ -175,16 +127,10 @@ final class UtilityActions {
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
             let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item, button)})
-            if let popoverController = alert.popoverPresentationController {
-                popoverController.barButtonItem = button
-            }
+            if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
             alert.addAction(action)
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         uiv.present(alert, animated: true, completion: nil)
-    }
-    
-    static func doneClicked(_ uiv: UIViewController) {
-        uiv.dismiss(animated: true, completion: {})
     }
 }

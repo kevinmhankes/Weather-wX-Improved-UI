@@ -20,9 +20,7 @@ final class ObjectHazards {
     convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
         let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
-        if homescreenFav.contains("TXT-HAZ") {
-            hazards = getHazardsHtml(location)
-        }
+        if homescreenFav.contains("TXT-HAZ") { hazards = getHazardsHtml(location) }
         ObjectHazards.uiv = uiv
     }
     
@@ -74,13 +72,9 @@ final class ObjectHazards {
     
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
         if isUS {
-            let vc = vcUSAlertsDetail()
-            vc.usAlertsDetailUrl = sender.strData
-            uiv!.goToVC(vc)
+            Route.alertDetail(uiv!, sender.strData)
         } else {
-            let vc = vcTextViewer()
-            vc.textViewText = sender.strData
-            uiv!.goToVC(vc)
+            Route.textViewer(uiv!, sender.strData)
         }
     }
 }

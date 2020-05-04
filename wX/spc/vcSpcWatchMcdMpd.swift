@@ -23,18 +23,8 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         // FIXME redundant vars
         productNumber = watchMcdMpdNumber
-        if productNumber != "" {
-            watchMcdMpdNumber = ""
-        }
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        if productNumber != "" { watchMcdMpdNumber = "" }
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
@@ -56,7 +46,6 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             }
             productNumberList.forEach {
                 let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-                print("NUMBER: " + number)
                 self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
                 self.objectWatchProduct!.getData()
                 self.listOfText.append(self.objectWatchProduct!.text)
@@ -64,23 +53,15 @@ class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 self.bitmaps.append(self.objectWatchProduct!.bitmap)
                 self.numbers.append(number)
             }
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if self.bitmaps.count == 1 {
-            let vc = vcImageViewer()
-            vc.url = urls[0]
-            self.goToVC(vc)
-            
+            Route.imageViewer(self, urls[0])
         } else {
-            let vc = vcSpcWatchMcdMpd()
-            vc.watchMcdMpdNumber = self.numbers[sender.data]
-            vc.watchMcdMpdType = self.watchMcdMpdType
-            self.goToVC(vc)
+            Route.spcMcdWatchItem(self, self.watchMcdMpdType, self.numbers[sender.data])
         }
     }
     

@@ -27,9 +27,7 @@ class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         objAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CapAlert(url: self.usAlertsDetailUrl)
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     

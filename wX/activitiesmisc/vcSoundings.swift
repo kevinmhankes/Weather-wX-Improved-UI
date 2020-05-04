@@ -20,15 +20,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         map.setupMap(GlobalArrays.soundingSites)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                GlobalVariables.fixedSpace,
-                siteButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, siteButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         self.wfo = UtilityLocation.getNearestSoundingSite(Location.latLon)
         self.getContent()
@@ -38,9 +30,7 @@ class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.siteButton.title = self.wfo
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(self.wfo)
-            DispatchQueue.main.async {
-                self.image.setBitmap(bitmap)
-            }
+            DispatchQueue.main.async { self.image.setBitmap(bitmap) }
         }
     }
     

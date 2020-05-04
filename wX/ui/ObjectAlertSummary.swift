@@ -91,9 +91,7 @@ final class ObjectAlertSummary: NSObject {
     @objc func imageClicked() {}
 
     func changeImage(_ uiv: UIViewController) {
-        let vc = vcImageViewer()
-        vc.url = ObjectAlertSummary.imageUrls[0]
-        uiv.goToVC(vc)
+        Route.imageViewer(uiv, ObjectAlertSummary.imageUrls[0])
     }
     
     func getImage() {
@@ -101,9 +99,7 @@ final class ObjectAlertSummary: NSObject {
             self.imageIndex = 0
             let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
             self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
-            DispatchQueue.main.async {
-                self.objectImage.setBitmap(bitmap)
-            }
+            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
         }
     }
 

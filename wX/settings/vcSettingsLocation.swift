@@ -42,9 +42,7 @@ class vcSettingsLocation: UIwXViewController {
     }
     
     @objc func addClicked() {
-        let vc = vcSettingsLocationEdit()
-        vc.settingsLocationEditNum = "0"
-        self.goToVC(vc)
+        Route.locationAdd(self)
     }
     
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
@@ -81,9 +79,7 @@ class vcSettingsLocation: UIwXViewController {
     }
     
     func actionLocation(_ position: Int) {
-        let vc = vcSettingsLocationEdit()
-        vc.settingsLocationEditNum = String(position + 1)
-        self.goToVC(vc)
+        Route.locationEdit(self, String(position + 1))
     }
     
     func moveUp(_ position: Int) {

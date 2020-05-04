@@ -113,14 +113,6 @@ class vcTabParent: UIViewController {
         objTileMatrix.genericClicked(vc)
     }
 
-    @objc func dualPaneRadarClicked() {
-        objTileMatrix.multiPaneRadarClicked("2")
-    }
-
-    @objc func quadPaneRadarClicked() {
-        objTileMatrix.multiPaneRadarClicked("4")
-    }
-
     func refreshViews() {
         self.removeAllViews()
         self.scrollView = UIScrollView()

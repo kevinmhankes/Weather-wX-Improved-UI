@@ -9,8 +9,81 @@ import UIKit
 
 final class Route {
     
-    // TODO route for SPC SWO
-    // TODO route for SPC Storm Reports
+    static func textViewer(_ uiv: UIViewController, _ text: String) {
+        let vc = vcTextViewer()
+        vc.textViewText = text
+        uiv.goToVC(vc)
+    }
+    
+    static func radarMosaic(_ uiv: UIViewController) {
+        if Location.isUS {
+            if !UIPreferences.useAwcRadarMosaic {
+                let vc = vcRadarMosaic()
+                vc.nwsMosaicType = "local"
+                uiv.goToVC(vc)
+            } else {
+                let vc = vcRadarMosaicAwc()
+                vc.nwsMosaicType = "local"
+                uiv.goToVC(vc)
+            }
+        } else {
+            let prov = MyApplication.locations[Location.getLocationIndex].prov
+            let vc = vcCanadaRadar()
+            vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
+            vc.caRadarImageType = "radar"
+            uiv.goToVC(vc)
+        }
+    }
+    
+    static func vis(_ uiv: UIViewController) {
+        let vc = vcGoes()
+        vc.productCode = ""
+        vc.sectorCode = ""
+        uiv.goToVC(vc)
+    }
+    
+    static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonType) {
+        let vc = vcSpcWatchMcdMpd()
+        vc.watchMcdMpdType = type
+        uiv.goToVC(vc)
+    }
+    
+    static func spcMcdWatchItem(_ uiv: UIViewController, _ type: PolygonType, _ number: String) {
+        let vc = vcSpcWatchMcdMpd()
+        vc.watchMcdMpdNumber = number
+        vc.watchMcdMpdType = type
+        uiv.goToVC(vc)
+    }
+
+    static func locationAdd(_ uiv: UIViewController) {
+        let vc = vcSettingsLocationEdit()
+        vc.settingsLocationEditNum = "0"
+        uiv.goToVC(vc)
+    }
+    
+    static func locationEdit(_ uiv: UIViewController, _ number: String) {
+        let vc = vcSettingsLocationEdit()
+        vc.settingsLocationEditNum = number
+        uiv.goToVC(vc)
+    }
+    
+    static func swo(_ uiv: UIViewController, day: String) {
+        let vc = vcSpcSwo()
+        vc.spcSwoDay = day
+        uiv.goToVC(vc)
+    }
+    
+    static func alertDetail(_ uiv: UIViewController, _ url: String) {
+        let vc = vcUSAlertsDetail()
+        vc.usAlertsDetailUrl = url
+        uiv.goToVC(vc)
+    }
+    
+    static func spcStormReports(_ uiv: UIViewController, _ day: String) {
+        let vc = vcSpcStormReports()
+        vc.spcStormReportsDay = day
+        uiv.goToVC(vc)
+    }
     
     static func wpcText(_ uiv: UIViewController, _ product: String) {
         let vc = vcWpcText()

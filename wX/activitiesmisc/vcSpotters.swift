@@ -27,9 +27,7 @@ class vcSpotters: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.spotterData = UtilitySpotter.get()
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     

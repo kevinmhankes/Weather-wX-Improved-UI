@@ -66,18 +66,21 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcSpcWatchMcdMpd()
+        //let vc = vcSpcWatchMcdMpd()
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            vc.watchMcdMpdType = .MPD
+            Route.spcMcdWatchItem(self, .MPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
+            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
+            //vc.watchMcdMpdType = .MPD
         } else if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
-            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
-            vc.watchMcdMpdType = .MCD
+            Route.spcMcdWatchItem(self, .MCD, self.buttonActions[sender.data].replace("SPCMCD", ""))
+            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
+            //vc.watchMcdMpdType = .MCD
         } else if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
-            vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
-            vc.watchMcdMpdType = .WATCH
+            Route.spcMcdWatchItem(self, .WATCH, self.buttonActions[sender.data].replace("SPCWAT", ""))
+            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
+            //vc.watchMcdMpdType = .WATCH
         }
-        self.goToVC(vc)
+        //self.goToVC(vc)
     }
     
     func showTextWarnings(_ views: inout [UIView]) {
@@ -122,9 +125,7 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
-        let vc = vcUSAlertsDetail()
-        vc.usAlertsDetailUrl = "https://api.weather.gov/alerts/" + sender.strData
-        self.goToVC(vc)
+        Route.alertDetail(self, "https://api.weather.gov/alerts/" + sender.strData)
     }
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
@@ -132,9 +133,7 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func spcStormReportsClicked(sender: UITapGestureRecognizer) {
-        let vc = vcSpcStormReports()
-        vc.spcStormReportsDay = "today"
-        self.goToVC(vc)
+        Route.spcStormReports(self, "today")
     }
     
     @objc func shareClicked(sender: UIButton) {

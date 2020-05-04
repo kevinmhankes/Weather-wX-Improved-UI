@@ -33,16 +33,12 @@ class vcUSAlerts: UIwXViewController {
             let html = UtilityDownloadNws.getCap("us")
             let alerts = html.parseColumn("<entry>(.*?)</entry>")
             alerts.forEach { self.capAlerts.append(CapAlert(eventText: $0)) }
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
-        let vc = vcUSAlertsDetail()
-        vc.usAlertsDetailUrl = objAlertSummary.getUrl(sender.data)
-        self.goToVC(vc)
+        Route.alertDetail(self, objAlertSummary.getUrl(sender.data))
     }
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
@@ -66,13 +62,7 @@ class vcUSAlerts: UIwXViewController {
     
     func filterChanged(_ filter: String) {
         self.filterButton.title = filter
-        self.objAlertSummary = ObjectAlertSummary(
-            self,
-            filter,
-            self.capAlerts,
-            self.filterGesture,
-            showImage: false
-        )
+        self.objAlertSummary = ObjectAlertSummary(self, filter, self.capAlerts, self.filterGesture, showImage: false)
         self.objAlertSummary.image = bitmap
         self.filterShown = true
         self.filter = filter

@@ -22,9 +22,7 @@ class vcSpcSwoSummary: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
             self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
-            DispatchQueue.main.async {
-                self.displayContent()
-            }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
@@ -36,13 +34,9 @@ class vcSpcSwoSummary: UIwXViewController {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = String(sender.data + 1)
-            self.goToVC(vc)
+            Route.swo(self, day: String(sender.data + 1))
         case 3...7:
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "48"
-            self.goToVC(vc)
+            Route.swo(self, day: "48")
         default:
             break
         }
