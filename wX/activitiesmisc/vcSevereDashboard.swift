@@ -66,21 +66,13 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        //let vc = vcSpcWatchMcdMpd()
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
             Route.spcMcdWatchItem(self, .MPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
-            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("WPCMPD", "")
-            //vc.watchMcdMpdType = .MPD
         } else if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
             Route.spcMcdWatchItem(self, .MCD, self.buttonActions[sender.data].replace("SPCMCD", ""))
-            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCMCD", "")
-            //vc.watchMcdMpdType = .MCD
         } else if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
             Route.spcMcdWatchItem(self, .WATCH, self.buttonActions[sender.data].replace("SPCWAT", ""))
-            //vc.watchMcdMpdNumber = self.buttonActions[sender.data].replace("SPCWAT", "")
-            //vc.watchMcdMpdType = .WATCH
         }
-        //self.goToVC(vc)
     }
     
     func showTextWarnings(_ views: inout [UIView]) {
@@ -90,7 +82,6 @@ class vcSevereDashboard: UIwXViewController {
         wTor.generateString(MyApplication.severeDashboardTor.value)
         wTst.generateString(MyApplication.severeDashboardTst.value)
         wFfw.generateString(MyApplication.severeDashboardFfw.value)
-        print("DEBUG: ")
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
