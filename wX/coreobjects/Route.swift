@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func radar(_ uiv: UIViewController, _ paneString: String) {
+        let vc = vcNexradRadar()
+        vc.wxoglPaneCount = paneString
+        uiv.goToVC(vc)
+    }
+    
     static func radarNoSave(_ uiv: UIwXViewController, _ radarSite: String) {
         let vc = vcNexradRadar()
         vc.radarSiteOverride = radarSite

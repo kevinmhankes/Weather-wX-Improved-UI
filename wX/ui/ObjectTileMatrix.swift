@@ -212,13 +212,9 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcObsSites()
             uiv!.goToVC(vc)
         case "wxogldualpane":
-            let vc = vcNexradRadar()
-            vc.wxoglPaneCount = "2"
-            uiv!.goToVC(vc)
+            Route.radar(uiv!, "2")
         case "wxoglquadpane":
-            let vc = vcNexradRadar()
-            vc.wxoglPaneCount = "4"
-            uiv!.goToVC(vc)
+            Route.radar(uiv!, "4")
         case "nsslwrf":
             let vc = vcModels()
             vc.modelActivitySelected = "NSSLWRF"
