@@ -54,7 +54,7 @@ class vcWebView: UIwXViewController {
         }
         if aStateCode == "tornado" { productButton.title = "#tornado" }
         showProduct = true
-        useUrl = false
+        //useUrl = false
     }
 
     @objc func productClicked() {
@@ -87,6 +87,7 @@ class vcWebView: UIwXViewController {
 
     @objc func browserClicked() {
         print("URL: " + url)
+        print("USEURL: " + String(useUrl))
         if useUrl {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         } else {
