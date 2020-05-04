@@ -87,7 +87,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     
     internal override func refreshViews() {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        colPicker.frame = CGRect(
+        /*colPicker.frame = CGRect(
             x: 0,
             y: toolbar.height + UtilityUI.getTopPadding(),
             width: width,
@@ -95,7 +95,28 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
                 - toolbar.height * 2
                 - colorBarSize
                 - UtilityUI.getTopPadding()
-        )
+        )*/
+        if UtilityUI.isTablet() {
+            colPicker.frame = CGRect(
+                x: width * 0.25,
+                y: toolbar.height + UtilityUI.getTopPadding() + height * 0.25,
+                width: width / 2.0,
+                height: height / 2.0
+                    - toolbar.height * 2
+                    - colorBarSize
+                    - UtilityUI.getTopPadding()
+            )
+        } else {
+            colPicker.frame = CGRect(
+                x: 0,
+                y: toolbar.height + UtilityUI.getTopPadding(),
+                width: width,
+                height: height
+                    - toolbar.height * 2
+                    - colorBarSize
+                    - UtilityUI.getTopPadding()
+            )
+        }
         colorBar.frame = CGRect(
             x: 0,
             y: height - toolbar.height - colorBarSize,
