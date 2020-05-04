@@ -102,9 +102,10 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "spcsref":
-            let vc = vcModels()
-            vc.modelActivitySelected = "SPCSREF"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "SPCSREF"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "SPCSREF")
         case "spc_sum":
             let vc = vcSpcSwoSummary()
             uiv!.goToVC(vc)
@@ -153,13 +154,15 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcSpcCompMap()
             uiv!.goToVC(vc)
         case "spchrrr":
-            let vc = vcModels()
-            vc.modelActivitySelected = "SPCHRRR"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "SPCHRRR"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "SPCHRRR")
         case "spchref":
-            let vc = vcModels()
-            vc.modelActivitySelected = "SPCHREF"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "SPCHREF"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "SPCHREF")
         default:
             let vc = vcSpcSwo()
             uiv!.goToVC(vc)
@@ -170,13 +173,15 @@ final class ObjectTileMatrix: NSObject {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
         case "ncep":
-            let vc = vcModels()
-            vc.modelActivitySelected = "NCEP"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "NCEP"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "NCEP")
         case "hrrrviewer":
-            let vc = vcModels()
-            vc.modelActivitySelected = "ESRL"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "ESRL"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "ESRL")
         case "uswarn":
             let vc = vcUSAlerts()
             uiv!.goToVC(vc)
@@ -216,9 +221,10 @@ final class ObjectTileMatrix: NSObject {
         case "wxoglquadpane":
             Route.radar(uiv!, "4")
         case "nsslwrf":
-            let vc = vcModels()
-            vc.modelActivitySelected = "NSSLWRF"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "NSSLWRF"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "NSSLWRF")
         case "lightning":
             let vc = vcLightning()
             uiv!.goToVC(vc)
@@ -226,9 +232,10 @@ final class ObjectTileMatrix: NSObject {
             let vc = vcWpcRainfallSummary()
             uiv!.goToVC(vc)
         case "ncar_ensemble":
-            let vc = vcModels()
-            vc.modelActivitySelected = "NCAR_ENSEMBLE"
-            uiv!.goToVC(vc)
+            //let vc = vcModels()
+            //vc.modelActivitySelected = "NCAR_ENSEMBLE"
+            //uiv!.goToVC(vc)
+            Route.model(uiv!, "NCAR_ENSEMBLE")
         case "wpcgefs":
             //let vc = vcModels()
             //vc.modelActivitySelected = "WPCGEFS"

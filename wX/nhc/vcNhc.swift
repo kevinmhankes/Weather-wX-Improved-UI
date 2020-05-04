@@ -88,9 +88,10 @@ class vcNhc: UIwXViewController {
     }
     
     @objc func glcfsClicked() {
-        let vc = vcModels()
-        vc.modelActivitySelected = "GLCFS"
-        self.goToVC(vc)
+        //let vc = vcModels()
+        //vc.modelActivitySelected = "GLCFS"
+        //self.goToVC(vc)
+        Route.model(self, "GLCFS")
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
