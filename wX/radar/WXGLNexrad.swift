@@ -150,14 +150,14 @@ final class WXGLNexrad {
             return 460
         case 186:
             return 1390
-        case 78:
-            return 592
-        case 80:
-            return 592
+        //case 78:
+        //    return 592
+        //case 80:
+        //    return 592
         case 180:
             return 720
-        case 181:
-            return 720
+        //case 181:
+        //    return 720
         case 182:
             return 720
         case 135:
@@ -184,7 +184,7 @@ final class WXGLNexrad {
         let binSize13 = 0.50
         let binSize08 = 0.295011
         let binSize16 = 0.590022
-        let binSize110 = 2.0 * binSize54
+        //let binSize110 = 2.0 * binSize54
         switch productCode {
         case 134:
             return binSize54
@@ -206,14 +206,14 @@ final class WXGLNexrad {
             return binSize13
         case 172:
             return binSize13
-        case 78:
-            return binSize110
-        case 80:
-            return binSize110
+        //case 78:
+        //    return binSize110
+        //case 80:
+        //    return binSize110
         case 180:
             return binSize08
-        case 181:
-            return binSize08
+        //case 181:
+        //    return binSize08
         case 182:
             return binSize08
         case 153:
