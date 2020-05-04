@@ -71,11 +71,7 @@ class vcSpcStormReports: UIwXViewController {
     }
     
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
-        let vc = vcMapKitView()
-        vc.mapKitLat = self.stormReports[sender.data].lat
-        vc.mapKitLon = self.stormReports[sender.data].lon
-        vc.mapKitRadius = 20000.0
-        self.goToVC(vc)
+        Route.map(self, self.stormReports[sender.data].lat, self.stormReports[sender.data].lon)
     }
     
     @objc func onDateChanged(sender: UIDatePicker) {

@@ -14,4 +14,12 @@ final class Route {
         vc.savePreferences = false
         uiv.goToVC(vc)
     }
+    
+    static func map(_ uiv: UIwXViewController, _ lat: String, _ lon: String, radius: Double = 20000.0) {
+        let vc = vcMapKitView()
+        vc.mapKitLat = lat
+        vc.mapKitLon = lon
+        vc.mapKitRadius = 20000.0
+        uiv.goToVC(vc)
+    }
 }
