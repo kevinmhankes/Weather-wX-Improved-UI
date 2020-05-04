@@ -42,9 +42,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems.forEach { item in
             DispatchQueue.global(qos: .userInitiated).async {
                 UtilityPlayList.download(item)
-                DispatchQueue.main.async {
-                    self.displayContent()
-                }
+                DispatchQueue.main.async { self.displayContent() }
             }
         }
     }
@@ -84,9 +82,7 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func viewProduct(selection: Int) {
-        let vc = vcWpcText()
-        vc.wpcTextProduct = playlistItems[selection]
-        self.goToVC(vc)
+        Route.wpcText(self, playlistItems[selection])
     }
     
     func move(_ from: Int, _ to: MotionType) {
