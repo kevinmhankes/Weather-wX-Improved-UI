@@ -128,12 +128,7 @@ class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
-        print(sender.strData)
-        let radarSite = GlobalDictionaries.wfoToRadarSite[sender.strData] ?? ""
-        let vc = vcNexradRadar()
-        vc.radarSiteOverride = radarSite
-        vc.savePreferences = false
-        self.goToVC(vc)
+        Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[sender.strData] ?? "")
     }
     
     @objc func spcStormReportsClicked(sender: UITapGestureRecognizer) {

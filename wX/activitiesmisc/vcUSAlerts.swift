@@ -47,11 +47,7 @@ class vcUSAlerts: UIwXViewController {
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
         let wfo = objAlertSummary.wfos[sender.data]
-        let radarSite = GlobalDictionaries.wfoToRadarSite[wfo] ?? ""
-        let vc = vcNexradRadar()
-        vc.radarSiteOverride = radarSite
-        vc.savePreferences = false
-        self.goToVC(vc)
+        Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[wfo] ?? "")
     }
     
     @objc func shareClicked(sender: UIButton) {

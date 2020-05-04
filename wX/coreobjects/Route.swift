@@ -8,9 +8,10 @@ import Foundation
 
 final class Route {
     
-    static func join(_ delimiter: String, _ data: Set<String>) -> String {
-        var string = ""
-        data.forEach { string += $0 + delimiter }
-        return string
+    static func radarNoSave(_ uiv: UIwXViewController, _ radarSite: String) {
+        let vc = vcNexradRadar()
+        vc.radarSiteOverride = radarSite
+        vc.savePreferences = false
+        uiv.goToVC(vc)
     }
 }
