@@ -41,15 +41,6 @@ final class Utility {
         return site
     }
     
-    /*static func generateSoundingNameList() -> [String] {
-     var list = <String>[]
-     GlobalArrays.soundingSites.sort()
-     GlobalArrays.soundingSites.forEach((data) {
-     list.add(data + ": " + getSoundingSiteName(data))
-     });
-     return list
-     }*/
-    
     static func getCurrentHazards(_ uiv: UIViewController, _ locNum: Int) -> ObjectHazards {
         if Location.isUS(locNum) {
             return ObjectHazards(uiv, locNum)

@@ -9,11 +9,7 @@ import UIKit
 final class UtilityActions {
     
     static func cloudClicked(_ uiv: UIViewController) {
-        if Location.isUS {
-            Route.vis(uiv)
-        } else {
-            Route.visCanada(uiv)
-        }
+        if Location.isUS { Route.vis(uiv) } else { Route.visCanada(uiv) }
     }
     
     static func radarClicked(_ uiv: UIViewController) {

@@ -116,10 +116,7 @@ final class ObjectMetar {
     
     func changeDegreeUnits(_ value: String) -> String {
         var newValue = "NA"
-        if value != "" {
-            let tempD = Double(value) ?? 0.0
-            newValue = tempD.roundToString()
-        }
+        if value != "" { newValue = (Double(value) ?? 0.0).roundToString() }
         return newValue
     }
     

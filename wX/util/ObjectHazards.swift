@@ -71,10 +71,6 @@ final class ObjectHazards {
     }
     
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
-        if isUS {
-            Route.alertDetail(uiv!, sender.strData)
-        } else {
-            Route.textViewer(uiv!, sender.strData)
-        }
+        if isUS { Route.alertDetail(uiv!, sender.strData) } else { Route.textViewer(uiv!, sender.strData) }
     }
 }
