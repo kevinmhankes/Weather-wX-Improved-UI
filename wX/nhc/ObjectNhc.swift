@@ -31,34 +31,12 @@ final class ObjectNhc: NSObject {
     private var imageStackViewList = [ObjectStackView]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
     
-    /*private let imageUrlsAtlantic = [
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_0d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
-    ]
-    
-    private let imageUrlsPacific = [
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_0d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
-    ]
-    
-    private let imageUrlsCentral = [
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_0d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_2d0.png",
-        MyApplication.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
-    ]*/
-    
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
         if UtilityUI.isTablet() { imagesPerRow = 3 }
         super.init()
         NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
     }
-    
-    // TODO use a class to store 5 String Lists
-    // potentially could use be a List of ObjectNhcStormInfo, list for ATL and one for PAC
-    // ATL for example would have list of global bitmaps (which have url in object) and list for storms
     
     func getTextData() {
         (1...5).forEach { index in

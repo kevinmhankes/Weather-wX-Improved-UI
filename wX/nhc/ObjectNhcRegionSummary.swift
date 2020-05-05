@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class ObjectNhcRegionSummary {
+final class ObjectNhcRegionSummary {
     
     var urls: [String]
     var titles: [String]
