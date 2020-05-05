@@ -57,21 +57,21 @@ final class UtilityLocationFragment {
     static func extract7DayMetrics(_ chunk: String) -> String {
         let spacing = " "
         // wind 24 to 29 mph
-        let wind = UtilityString.parseMultiple(chunk, sevenDayWind1, 2 )
+        let wind = chunk.parseMultiple(sevenDayWind1, 2 )
         // wind around 9 mph
         let wind2 = chunk.parse(sevenDayWind2)
         // 5 to 10 mph after
-        let wind3 = UtilityString.parseMultiple(chunk, sevenDayWind4, 2)
+        let wind3 = chunk.parseMultiple(sevenDayWind4, 2)
         // around 5 mph after
         let wind4 = chunk.parse(sevenDayWind5)
         // 5 to 7 mph in
-        let wind5 = UtilityString.parseMultiple(chunk, sevenDayWind6, 2)
+        let wind5 = chunk.parseMultiple(sevenDayWind6, 2)
         // around 6 mph.
         let wind7 = chunk.parse(sevenDayWind7)
         // with gusts as high as 21 mph
         var gust = chunk.parse(sevenDayWind3)
         // 5 to 7 mph.
-        let wind9 = UtilityString.parseMultiple(chunk, sevenDayWind9, 2)
+        let wind9 = chunk.parseMultiple(sevenDayWind9, 2)
         // Winds could gusts as high as 21 mph.
         if gust == "" {
             gust = chunk.parse(sevenDayWind8)
@@ -172,93 +172,49 @@ final class UtilityLocationFragment {
 
     static func extractCATemp(_ blob: String) -> String {
         var temp = blob.parse(ca7dayTemp1)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp2)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp3)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp4)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp5)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp6)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp7)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp8)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp9)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp10)
-        if temp != "" {
-            return temp.replace("minus ", "-")
-        }
+        if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp11)
-        if temp != "" {
-            return "0"
-        }
+        if temp != "" { return "0" }
         temp = blob.parse(ca7dayTemp12)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp13)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp14)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp15)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp16)
-        if temp != "" {
-            return "0"
-        }
+        if temp != "" { return "0" }
         temp = blob.parse(ca7dayTemp17)
-        if temp != "" {
-            return "0"
-        }
+        if temp != "" { return "0" }
         temp = blob.parse(ca7dayTemp18)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp19)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp20)
-        if temp != "" {
-            return "0"
-        }
+        if temp != "" { return "0" }
         temp = blob.parse(ca7dayTemp21)
-        if temp != "" {
-            return temp
-        }
+        if temp != "" { return temp }
         temp = blob.parse(ca7dayTemp22)
-        if temp != "" {
-            return "0"
-        }
+        if temp != "" { return "0" }
         return temp
     }
 
@@ -270,15 +226,11 @@ final class UtilityLocationFragment {
     }
 
     static func extractCAWindSpeed(_ chunk: String) -> String {
-        let wspdRange = UtilityString.parseMultiple(chunk, ca7dayWindSpeed1, 2)
+        let wspdRange = chunk.parseMultiple(ca7dayWindSpeed1, 2)
         let wspd = chunk.parse(ca7dayWindSpeed2)
         var gust = ""
         if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindSpeed3) }
         if wspdRange.count > 1 { return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h" }
-        if wspd == "" {
-            return ""
-        } else {
-            return wspd + gust + " km/h"
-        }
+        if wspd == "" { return "" } else { return wspd + gust + " km/h" }
     }
 }
