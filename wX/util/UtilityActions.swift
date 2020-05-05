@@ -12,18 +12,13 @@ final class UtilityActions {
         if Location.isUS {
             Route.vis(uiv)
         } else {
-            let vc = vcCanadaRadar()
-            vc.caRadarImageType = "vis"
-            uiv.goToVC(vc)
+            Route.visCanada(uiv)
         }
     }
     
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
-            let vc = vcCanadaRadar()
-            vc.caRadarImageType = "radar"
-            vc.caRadarProvince = ""
-            uiv.goToVC(vc)
+            Route.radarCanada(uiv)
         } else {
             if UIPreferences.dualpaneRadarIcon {
                 Route.radar(uiv, "2")

@@ -52,6 +52,12 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func visCanada(_ uiv: UIViewController) {
+        let vc = vcCanadaRadar()
+        vc.caRadarImageType = "vis"
+        uiv.goToVC(vc)
+    }
+    
     static func goesWaterVapor(_ uiv: UIViewController) {
         let vc = vcGoes()
         vc.productCode = "09"
@@ -131,6 +137,13 @@ final class Route {
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = paneString
         vc.wxoglCalledFromTimeButton = true
+        uiv.goToVC(vc)
+    }
+    
+    static func radarCanada(_ uiv: UIViewController) {
+        let vc = vcCanadaRadar()
+        vc.caRadarImageType = "radar"
+        vc.caRadarProvince = ""
         uiv.goToVC(vc)
     }
     
