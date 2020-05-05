@@ -20,11 +20,7 @@ final class UtilityActions {
         if !Location.isUS {
             Route.radarCanada(uiv)
         } else {
-            if UIPreferences.dualpaneRadarIcon {
-                Route.radar(uiv, "2")
-            } else {
-                Route.radar(uiv, "1")
-            }
+            if UIPreferences.dualpaneRadarIcon { Route.radar(uiv, "2") } else { Route.radar(uiv, "1") }
         }
     }
     
