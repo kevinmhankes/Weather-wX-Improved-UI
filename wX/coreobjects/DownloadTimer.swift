@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class DownloadTimer {
+final class DownloadTimer {
 
     private var initialized = false
     private var lastRefresh: CLong = 0
