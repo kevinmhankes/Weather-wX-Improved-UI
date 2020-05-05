@@ -25,19 +25,11 @@ final class UtilityActions {
     }
     
     static func wfotextClicked(_ uiv: UIViewController) {
-        if Location.isUS {
-            uiv.goToVC(vcWfoText())
-        } else {
-            uiv.goToVC(vcCanadaText())
-        }
+        if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
     }
     
-    static func dashClicked(_ uiv: UIViewController) {
-        if Location.isUS {
-            uiv.goToVC(vcSevereDashboard())
-        } else {
-            uiv.goToVC(vcCanadaWarnings())
-        }
+    static func severeDashboardClicked(_ uiv: UIViewController) {
+        if Location.isUS { uiv.goToVC(vcSevereDashboard()) } else { uiv.goToVC(vcCanadaWarnings()) }
     }
     
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {

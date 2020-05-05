@@ -208,7 +208,7 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func dashClicked() {
-        UtilityActions.dashClicked(uiv!)
+        UtilityActions.severeDashboardClicked(uiv!)
     }
     
     var iconsSpc = [

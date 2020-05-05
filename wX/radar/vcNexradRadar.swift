@@ -483,7 +483,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func warningClicked() {
-        UtilityActions.dashClicked(self)
+        UtilityActions.severeDashboardClicked(self)
     }
     
     func productChanged(_ index: Int, _ product: String) {

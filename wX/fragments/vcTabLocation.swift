@@ -283,7 +283,7 @@ class vcTabLocation: vcTabParent {
     }
     
     override func dashClicked() {
-        UtilityActions.dashClicked(self)
+        UtilityActions.severeDashboardClicked(self)
     }
     
     override func warningsClicked() {
