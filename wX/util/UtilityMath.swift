@@ -70,24 +70,7 @@ final class UtilityMath {
         return value2
     }
 
-    static func unitsTemp(_ value: String) -> String {
-        var value2 = value.replace("\n", "").replace(" ", "")
-        if !UIPreferences.unitsF {
-            let tmpNum = Int(value2) ?? 0
-            let tmpNumD = (Double(tmpNum) - 32.0) * 5.0 / 9.0
-            value2 = String(Int(round(tmpNumD)))
-        }
-        return value2
-    }
-
-    static func celsiusToFahrenheit(_ value: String) -> String {
-        var value2 = value
-        if UIPreferences.unitsF {
-            let tmpNum = (Double(value) ?? 0.0) * 9 / 5 + 32
-            value2 = String(round(tmpNum))
-        }
-        return value2
-    }
+    static func celsiusToFahrenheit(_ value: String) -> String { String(round((Double(value) ?? 0.0) * 9 / 5 + 32)) }
 
     // only used in the "table" method below
     static func celsiusToFahrenheit(_ value: Int) -> String { String(Int(round(Double(value) * 9.0 / 5.0 + 32.0))) }
