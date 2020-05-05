@@ -17,9 +17,7 @@ final class UtilityObs {
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" {
-                obsCodeToLocation[obsClosestClass] = locationName
-            }
+            if locationName != "" && obsClosestClass != "" { obsCodeToLocation[obsClosestClass] = locationName }
         }
         conditionsTimeStrLocal = UtilityTime.convertFromUTC(UtilityString.shortenTime(conditionsTimeStrLocal))
         return conditionsTimeStrLocal.replace(":00 ", " ") + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
@@ -30,9 +28,7 @@ final class UtilityObs {
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" {
-                obsCodeToLocation[obsClosestClass] = locationName
-            }
+            if locationName != "" && obsClosestClass != "" { obsCodeToLocation[obsClosestClass] = locationName }
         }
         return conditionsTimeStr + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
     }

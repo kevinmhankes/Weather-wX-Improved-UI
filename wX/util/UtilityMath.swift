@@ -89,15 +89,8 @@ final class UtilityMath {
         return value2
     }
 
-    static func celsiusToFahrenheit(_ value: Int) -> String {
-        var retVal = ""
-        var retValNum = 0.0
-        if UIPreferences.unitsF {
-            retValNum = Double(value) * 9.0 / 5.0 + 32.0
-            retVal = String(Int(round(retValNum)))
-        }
-        return retVal
-    }
+    // only used in the "table" method below
+    static func celsiusToFahrenheit(_ value: Int) -> String { String(Int(round(Double(value) * 9.0 / 5.0 + 32.0))) }
 
     static func celsiusToFahrenheitTable() -> String {
         var table = "C\t\tF" + MyApplication.newline
@@ -146,10 +139,7 @@ final class UtilityMath {
 
     static func pressurePAtoMB(_ valueD: Double) -> String { String(Int(round(valueD / 100.0))) }
 
-    static func pressureMBtoIn(_ value: String) -> String {
-        let tmpNum = (Double(value) ?? 0.0) / 33.8637526
-        return String(format: "%.2f", tmpNum) + " in"
-    }
+    static func pressureMBtoIn(_ value: String) -> String { String(format: "%.2f", (Double(value) ?? 0.0) / 33.8637526) + " in" }
 
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
         3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
