@@ -33,6 +33,7 @@
 	 	 [FIX] MacOS - quad pane long press in polygon in bottom 2 panes does not work
 	 	 [REF] WXGLDownload - convert to all static methods/vars
 		 [REF] remove UtilityColorPalette57
+		 [REF] remove UtilityHelp
 		 [FIX] color picker is to slow on large screens
 		 [REF] implement class to handle routing
 		 [ADD] vtec check in UtilityTime but don't yet use in SevereWarning

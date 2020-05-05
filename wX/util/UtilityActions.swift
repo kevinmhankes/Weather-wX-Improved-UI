@@ -62,18 +62,6 @@ final class UtilityActions {
         uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
     
-    static func showHelp(_ token: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon) {
-        let alert = UIAlertController(
-            title: UtilityHelp.helpStrings[token],
-            message: "",
-            preferredStyle: UIAlertController.Style.actionSheet
-        )
-        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = menuButton }
-        uiv.present(alert, animated: true, completion: nil)
-    }
-    
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch
         var menuList = [
