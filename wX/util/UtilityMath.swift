@@ -54,13 +54,12 @@ final class UtilityMath {
 
     static func knotsToMph(_ value: String) -> String {
         if value == "" { return "" }
-        let tmpNum = (Double(value) ?? 0.0) * 1.152
-        return roundDToString(tmpNum)
+        return roundDToString((Double(value) ?? 0.0) * 1.152)
     }
 
     static func unitsPressure(_ value: String) -> String {
         var tmpNum = Double(value) ?? 0.0
-        var value2 = value
+        var value2: String
         if UIPreferences.unitsM {
             tmpNum *= 33.8637526
             value2 = String(format: "%.2f", tmpNum) + " mb"
