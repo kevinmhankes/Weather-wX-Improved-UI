@@ -37,11 +37,7 @@ final class UtilityActions {
         case "Soundings":
             uiv.goToVC(vcSoundings())
         case "Hourly Forecast":
-            if Location.isUS {
-                uiv.goToVC(vcHourly())
-            } else {
-                uiv.goToVC(vcCanadaHourly())
-            }
+            if Location.isUS { uiv.goToVC(vcHourly()) } else { uiv.goToVC(vcCanadaHourly()) }
         case "Settings":
             uiv.goToVC(vcSettingsMain())
         case "Observations":
@@ -74,9 +70,7 @@ final class UtilityActions {
         )
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = menuButton
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = menuButton }
         uiv.present(alert, animated: true, completion: nil)
     }
     
