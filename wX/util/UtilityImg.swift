@@ -13,8 +13,7 @@ final class UtilityImg {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         let renderer = UIGraphicsImageRenderer(size: newSize, format: rendererFormat)
-        let newImage = renderer.image { _ in image.draw(in: CGRect(origin: CGPoint.zero, size: newSize)) }
-        return newImage
+        return renderer.image { _ in image.draw(in: CGRect(origin: CGPoint.zero, size: newSize)) }
     }
 
     static func getAnimInterval() -> Int { 50 * MyApplication.animInterval }
@@ -47,8 +46,7 @@ final class UtilityImg {
 
     static func getBitmapAddWhiteBackground( _ url: String) -> Bitmap {
         let bitmap = Bitmap(url)
-        let image = addColorBackground(bitmap.image, UIColor.white)
-        return Bitmap(image)
+        return Bitmap(addColorBackground(bitmap.image, UIColor.white))
     }
 
     static func addColorBackground(_ img: UIImage, _ tintColor: UIColor) -> UIImage {
@@ -61,11 +59,10 @@ final class UtilityImg {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         let renderer = UIGraphicsImageRenderer(size: newSize, format: rendererFormat)
-        let newImage = renderer.image { _ in
+        return renderer.image { _ in
             imageA.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
             imageB.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
         }
-        return newImage
     }
 
     static func createSolidImage(_ color: UIColor, _ size: CGSize) -> UIImage {
@@ -74,10 +71,9 @@ final class UtilityImg {
         rendererFormat.opaque = false
         rendererFormat.scale = 0.0
         let renderer = UIGraphicsImageRenderer(size: rect.size, format: rendererFormat)
-        let newImage = renderer.image { _ in
+        return renderer.image { _ in
             color.setFill()
             UIRectFill(rect)
         }
-        return newImage
     }
 }
