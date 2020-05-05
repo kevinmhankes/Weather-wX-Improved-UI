@@ -10,13 +10,7 @@ final class ObjectTileImage {
 
     private var image = ObjectImage()
 
-    init(
-        _ stackView: UIStackView,
-        _ filename: String,
-        _ index: Int,
-        _ iconsPerRow: CGFloat,
-        _ accessibilityLabel: String
-    ) {
+    init(_ stackView: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat, _ accessibilityLabel: String) {
         let bitmap = Bitmap.fromFile(filename)
         image.img.tag = index
         image.setBitmap(bitmap)
