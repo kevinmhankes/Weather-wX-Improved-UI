@@ -73,9 +73,7 @@ final class UtilityLocationFragment {
         // 5 to 7 mph.
         let wind9 = chunk.parseMultiple(sevenDayWind9, 2)
         // Winds could gusts as high as 21 mph.
-        if gust == "" {
-            gust = chunk.parse(sevenDayWind8)
-        }
+        if gust == "" { gust = chunk.parse(sevenDayWind8) }
         if gust != "" {
             gust = " G " + gust + " mph"
         } else {
@@ -130,9 +128,7 @@ final class UtilityLocationFragment {
             "Light (.*?) wind"
         ]
         var windResults = [String]()
-        patterns.forEach { pattern in
-            windResults.append(chunk.parseLastMatch(pattern))
-        }
+        patterns.forEach { windResults.append(chunk.parseLastMatch($0)) }
         var retStr = ""
         for windToken in windResults where windToken != "" {
             retStr = windToken
