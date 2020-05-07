@@ -23,7 +23,12 @@ final class UtilityGoes {
         "nsa": "1800x1080",
         "ssa": "1800x1080",
         "np": "1800x1080",
-        "cam": "1000x1000"
+        "cam": "1000x1000",
+        "np": "1800x1080",
+        "ak": "1000x1000",
+        "cak": "1200x1200",
+        "sea": "1200x1200",
+        "hi": "1200x1200",
     ]
     
     private static func getImageSize(_ sector: String) -> String {
@@ -97,6 +102,8 @@ final class UtilityGoes {
         "pr: Puerto Rico",
         "taw: Tropical Atlantic: wide view",
         "ak: Alaska",
+        "cak: Central Alaska",
+        "sea: Southeastern Alaska",
         "hi: Hawaii",
         "tpw: US Pacific Coast",
         "wus: Tropical Pacific",
@@ -112,6 +119,8 @@ final class UtilityGoes {
         "CONUS-G17",
         "FD-G17",
         "ak",
+        "cak",
+        "sea",
         "hi",
         "pnw",
         "psw",

@@ -29,6 +29,7 @@
 56101 2020_05_05 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
 		 [REF] remove unused prefs in UtilityStorePreferences
+                 [ADD] GOES sea cak
 		 [ADD] in ui/CustomTabBarVC remove custom font for tab labels
 	 	 [FIX] MacOS - quad pane long press in polygon in bottom 2 panes does not work
 	 	 [REF] WXGLDownload - convert to all static methods/vars
