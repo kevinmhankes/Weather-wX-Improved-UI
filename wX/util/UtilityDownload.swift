@@ -10,52 +10,6 @@ final class UtilityDownload {
     
     static let useNwsApi = false
     
-    static func getStringFromUrl(_ url: String) -> String {
-        guard let safeUrl = URL(string: url) else {
-            return ""
-        }
-        do {
-            return try String(contentsOf: safeUrl, encoding: .ascii)
-        } catch {
-            print(error.localizedDescription)
-        }
-        return ""
-    }
-    
-    static func getStringFromUrlSep(_ url: String) -> String {
-        guard let safeUrl = URL(string: url) else {
-            return ""
-        }
-        do {
-            return try String(contentsOf: safeUrl, encoding: .ascii)
-        } catch _ {
-            //print("Error: \(error)")
-        }
-        return ""
-    }
-    
-    static func getBitmapFromUrl(_ url: String) -> Bitmap {
-        guard let safeUrl = URL(string: url) else {
-            return Bitmap()
-        }
-        let imageData = try? Data(contentsOf: safeUrl)
-        if let image = imageData {
-            return Bitmap(image)
-        } else {
-            return Bitmap()
-        }
-    }
-    
-    static func getDataFromUrl(_ url: String) -> Data {
-        guard let safeUrl = URL(string: url) else {
-            return Data()
-        }
-        let imageData = try? Data(contentsOf: safeUrl)
-        var data = Data()
-        if let dataTmp = imageData { data = dataTmp }
-        return data
-    }
-    
     static func getTextProduct(_ product: String) -> String {
         var text = ""
         if product == "AFDLOC" {

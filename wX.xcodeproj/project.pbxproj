@@ -14,6 +14,7 @@
 		03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */; };
 		03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03089CC121CFF17800C9FE4D /* ObjectFab.swift */; };
 		03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */; };
+		030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */; };
 		030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DC62B1FE4A58B006DCF93 /* MotionType.swift */; };
 		031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */; };
 		031546321FC632FD0020EF7B /* ObjectTextViewLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */; };
@@ -410,6 +411,7 @@
 		03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcFireOutlook.swift; sourceTree = "<group>"; };
 		03089CC121CFF17800C9FE4D /* ObjectFab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFab.swift; sourceTree = "<group>"; };
 		03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewControllerWithAudio.swift; sourceTree = "<group>"; };
+		030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNetworkIO.swift; sourceTree = "<group>"; };
 		030DC62B1FE4A58B006DCF93 /* MotionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionType.swift; sourceTree = "<group>"; };
 		0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewSmallGray.swift; sourceTree = "<group>"; };
 		031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewLarge.swift; sourceTree = "<group>"; };
@@ -1090,11 +1092,11 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
-				F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
+				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
 				039795B62032D7C100F37CCE /* ObjectMetar.swift */,
+				F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */,
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
 				F0118B411DA9771600B43DE5 /* UtilityActions.swift */,
@@ -1111,6 +1113,7 @@
 				F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */,
 				F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */,
 				035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */,
+				030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */,
 				0382E04122043ADF00DA45C2 /* UtilityObs.swift */,
 				F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */,
 				F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */,
@@ -1787,6 +1790,7 @@
 				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
 				F0B3357D1DA3FD6F0035BD36 /* UtilityCitiesExtended.swift in Sources */,
+				030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */,
 				F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */,
 				0340423B23F16FC3003AB242 /* vcTextViewer.swift in Sources */,
 				F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */,

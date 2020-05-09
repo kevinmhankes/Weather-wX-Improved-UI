@@ -19,7 +19,7 @@ extension String {
     
     func fixedLengthString(_ length: Int) -> String { UtilityString.fixedLengthString(self, length) }
     
-    func getDataFromUrl() -> Data { UtilityDownload.getDataFromUrl(self) }
+    func getDataFromUrl() -> Data { UtilityNetworkIO.getDataFromUrl(self) }
     
     func removeHtml() -> String { self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) }
     
@@ -27,13 +27,13 @@ extension String {
     
     func removeLineBreaks() -> String { UtilityString.removeLineBreaks(self).replace("  ", " ") }
     
-    func getHtml() -> String { UtilityDownload.getStringFromUrl(self) }
+    func getHtml() -> String { UtilityNetworkIO.getStringFromUrl(self) }
     
-    func getHtmlSep() -> String { UtilityDownload.getStringFromUrlSep(self) }
+    func getHtmlSep() -> String { UtilityNetworkIO.getStringFromUrlSep(self) }
     
     func getNwsHtml() -> String { UtilityDownloadNws.getStringFromUrl(self) }
     
-    func getImage() -> Bitmap { UtilityDownload.getBitmapFromUrl(self) }
+    func getImage() -> Bitmap { UtilityNetworkIO.getBitmapFromUrl(self) }
     
     func parseColumn(_ pattern: String) -> [String] { UtilityString.parseColumn(self, pattern) }
     
