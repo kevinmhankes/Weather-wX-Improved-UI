@@ -10,7 +10,6 @@ class vcWpcText: UIwXViewControllerWithAudio {
     
     private var productButton = ObjectToolbarIcon()
     private var subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
-    private var html = ""
     var wpcTextProduct = ""
     
     override func viewDidLoad() {
@@ -53,13 +52,13 @@ class vcWpcText: UIwXViewControllerWithAudio {
         // https://developer.apple.com/videos/play/wwdc2016/720/
         DispatchQueue.global(qos: .userInitiated).async {
             // FIXME fix upstream data source to uppercase
-            self.html = UtilityDownload.getTextProduct(self.product.uppercased())
-            DispatchQueue.main.async { self.displayContent() }
+            let html = UtilityDownload.getTextProduct(self.product.uppercased())
+            DispatchQueue.main.async { self.displayContent(html) }
         }
     }
     
-    private func displayContent() {
-        self.objectTextView.text = self.html
+    private func displayContent(_ html: String) {
+        self.objectTextView.text = html
         if UtilityWpcText.needsFixedWidthFont(self.product.uppercased()) {
             self.objectTextView.font = FontSize.hourly.size
         } else {

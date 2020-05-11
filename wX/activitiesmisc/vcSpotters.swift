@@ -8,7 +8,6 @@ import UIKit
 
 class vcSpotters: UIwXViewController {
     
-    private var spotterData = [Spotter]()
     private var spotterDataSorted = [Spotter]()
     private var spotterReportsButton = ObjectToolbarIcon()
     private var spotterCountButton = ObjectToolbarIcon()
@@ -26,15 +25,15 @@ class vcSpotters: UIwXViewController {
     // FIXME no rotation support
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.spotterData = UtilitySpotter.get()
-            DispatchQueue.main.async { self.displayContent() }
+            let spotterData = UtilitySpotter.get()
+            DispatchQueue.main.async { self.displayContent(spotterData) }
         }
     }
     
-    private func displayContent() {
+    private func displayContent(_ spotterData: [Spotter]) {
         self.refreshViews()
-        self.spotterCountButton.title = "Count: " + String(self.spotterData.count)
-        self.spotterDataSorted = self.spotterData.sorted(by: {$1.lastName > $0.lastName})
+        self.spotterCountButton.title = "Count: " + String(spotterData.count)
+        self.spotterDataSorted = spotterData.sorted(by: {$1.lastName > $0.lastName})
         self.spotterDataSorted.enumerated().forEach { index, item in
             _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
         }

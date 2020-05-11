@@ -8,7 +8,7 @@ import UIKit
 
 class vcSpcTstormSummary: UIwXViewController {
     
-    private var urls = [String]()
+    //private var urls = [String]()
     private var bitmaps = [Bitmap]()
     
     override func viewDidLoad() {
@@ -21,8 +21,8 @@ class vcSpcTstormSummary: UIwXViewController {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.urls = UtilitySpc.getTstormOutlookUrls()
-            self.bitmaps = self.urls.map { Bitmap($0) }
+            let urls = UtilitySpc.getTstormOutlookUrls()
+            self.bitmaps = urls.map { Bitmap($0) }
             DispatchQueue.main.async { self.displayContent() }
         }
     }
@@ -33,7 +33,7 @@ class vcSpcTstormSummary: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        Route.imageViewer(self, urls[sender.data])
+        Route.imageViewer(self, bitmaps[sender.data].url)
     }
     
     @objc func shareClicked(sender: UIButton) {

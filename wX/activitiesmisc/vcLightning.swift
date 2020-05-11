@@ -16,7 +16,6 @@ class vcLightning: UIwXViewController {
     private var period = "0.25"
     private var periodPretty = "15 MIN"
     private var firstRun = true
-    private var bitmap = Bitmap()
     private let prefTokenSector = "LIGHTNING_SECTOR"
     private let prefTokenPeriod = "LIGHTNING_PERIOD"
     
@@ -54,17 +53,17 @@ class vcLightning: UIwXViewController {
         Utility.writePref(prefTokenSector, self.sector)
         Utility.writePref(prefTokenPeriod, self.period)
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmap = UtilityLightning.getImage(self.sector, self.period)
-            DispatchQueue.main.async { self.displayContent() }
+            let bitmap = UtilityLightning.getImage(self.sector, self.period)
+            DispatchQueue.main.async { self.displayContent(bitmap) }
         }
     }
     
-    private func displayContent() {
+    private func displayContent(_ bitmap: Bitmap) {
         if self.firstRun {
-            self.image.setBitmap(self.bitmap)
+            self.image.setBitmap(bitmap)
             self.firstRun = false
         } else {
-            self.image.updateBitmap(self.bitmap)
+            self.image.updateBitmap(bitmap)
         }
     }
     

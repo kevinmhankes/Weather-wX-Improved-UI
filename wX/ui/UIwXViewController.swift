@@ -92,10 +92,10 @@ class UIwXViewController: UIViewController {
         }
     }
 
-    override var keyCommands: [UIKeyCommand]? {
+    /*override var keyCommands: [UIKeyCommand]? {
         return [UIKeyCommand(input: UIKeyCommand.inputEscape,
              modifierFlags: [],
              action: #selector(doneClicked))
         ]
-    }
+    }*/
 }

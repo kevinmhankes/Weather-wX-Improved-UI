@@ -11,7 +11,6 @@ class vcCanadaText: UIwXViewControllerWithAudio {
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private let prefToken = "CA_TEXT_LASTUSED"
-    private var html = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +40,13 @@ class vcCanadaText: UIwXViewControllerWithAudio {
         Utility.writePref(prefToken, self.product)
         DispatchQueue.global(qos: .userInitiated).async {
             // FIXME fix upstream data to uppercase
-            self.html = UtilityDownload.getTextProduct(self.product.uppercased())
-            DispatchQueue.main.async { self.displayContent() }
+            let html = UtilityDownload.getTextProduct(self.product.uppercased())
+            DispatchQueue.main.async { self.displayContent(html) }
         }
     }
     
-    private func displayContent() {
-        self.objectTextView.text = self.html
+    private func displayContent(_ html: String) {
+        self.objectTextView.text = html
     }
     
     @objc func productClicked() {
@@ -61,6 +60,6 @@ class vcCanadaText: UIwXViewControllerWithAudio {
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, html)
+        UtilityShare.share(self, sender, objectTextView.text)
     }
 }

@@ -7,9 +7,7 @@
 import UIKit
 
 class vcHourly: UIwXViewControllerWithAudio {
-    
-    private var html = ""
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -17,7 +15,7 @@ class vcHourly: UIwXViewControllerWithAudio {
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(
             self.stackView,
-            self.html,
+            "",
             FontSize.hourly.size,
             UITapGestureRecognizer(target: self, action: #selector(textAction))
         )
@@ -27,13 +25,13 @@ class vcHourly: UIwXViewControllerWithAudio {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
-            DispatchQueue.main.async { self.displayContent() }
+            let html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
+            DispatchQueue.main.async { self.displayContent(html) }
         }
     }
     
-    private func displayContent() {
-        self.objectTextView.text = self.html
+    private func displayContent(_ html: String) {
+        self.objectTextView.text = html
     }
     
     @objc func textAction() {
@@ -41,6 +39,6 @@ class vcHourly: UIwXViewControllerWithAudio {
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, self.html)
+        UtilityShare.share(self, sender, objectTextView.text)
     }
 }

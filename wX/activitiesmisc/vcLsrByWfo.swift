@@ -12,8 +12,6 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     
     private var capAlerts = [CapAlert]()
     private var images = [UIImageView]()
-    private var urls = [String]()
-    private var wfo = ""
     private var wfoProd = [String]()
     private var siteButton = ObjectToolbarIcon()
     private let map = ObjectMap(.WFO)
@@ -22,22 +20,23 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         super.viewDidLoad()
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.wfos)
-        wfo = Location.wfo
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        self.getContent(Location.wfo)
     }
     
-    override func getContent() {
+    func getContent(_ wfo: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.wfoProd = self.getLsrFromWfo()
-            DispatchQueue.main.async { self.displayContent() }
+            self.wfoProd = self.getLsrFromWfo(wfo)
+            DispatchQueue.main.async {
+                self.siteButton.title = wfo
+                self.displayContent()
+            }
         }
     }
     
     private func displayContent() {
-        self.siteButton.title = self.wfo
         self.stackView.removeViews()
         self.wfoProd.forEach { item in
             let objectTextView = ObjectTextView(self.stackView, item)
@@ -46,7 +45,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         }
     }
     
-    func getLsrFromWfo() -> [String] {
+    func getLsrFromWfo(_ wfo: String) -> [String] {
         var lsrList = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby=" + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
@@ -77,8 +76,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
     
     func mapCall(annotationView: MKAnnotationView) {
-        self.wfo = (annotationView.annotation!.title!)!
-        self.getContent()
+        self.getContent((annotationView.annotation!.title!)!)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

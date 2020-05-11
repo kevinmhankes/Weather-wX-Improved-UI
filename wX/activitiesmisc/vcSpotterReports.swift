@@ -8,7 +8,6 @@ import UIKit
 
 class vcSpotterReports: UIwXViewController {
     
-    private var spotterReportsData = [SpotterReports]()
     private var spotterReportsDataSorted = [SpotterReports]()
     private var spotterReportCountButton = ObjectToolbarIcon()
     
@@ -23,19 +22,19 @@ class vcSpotterReports: UIwXViewController {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.spotterReportsData = UtilitySpotter.reportsList
-            DispatchQueue.main.async { self.displayContent() }
+            let spotterReportsData = UtilitySpotter.reportsList
+            DispatchQueue.main.async { self.displayContent(spotterReportsData) }
         }
     }
     
-    func displayContent() {
+    func displayContent(_ spotterReportsData: [SpotterReports]) {
         self.refreshViews()
-        self.spotterReportCountButton.title = "Count: " + String(self.spotterReportsData.count)
-        self.spotterReportsDataSorted = self.spotterReportsData.sorted(by: { $1.time > $0.time })
+        self.spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
+        self.spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
         self.spotterReportsDataSorted.enumerated().forEach { index, item in
             _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
         }
-        if self.spotterReportsData.count == 0 {
+        if spotterReportsData.count == 0 {
             let objectTextView = ObjectTextView(self.stackView, "No active spotter reports.")
             objectTextView.constrain(self.scrollView)
         }

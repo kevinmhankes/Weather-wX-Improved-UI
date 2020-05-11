@@ -6,11 +6,8 @@
 
 import UIKit
 
-class vcCanadaHourly: UIwXViewController {
-    
-    var objectTextView = ObjectTextView()
-    private var html = ""
-    
+class vcCanadaHourly: UIwXViewControllerWithAudio {
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -24,16 +21,12 @@ class vcCanadaHourly: UIwXViewController {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityCanadaHourly.getString(Location.getLocationIndex)
-            DispatchQueue.main.async { self.displayContent() }
+            let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
+            DispatchQueue.main.async { self.displayContent(html) }
         }
     }
     
-    private func displayContent() {
-        self.objectTextView.text = self.html
-    }
-    
-    @objc func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, html)
+    private func displayContent(_ html: String) {
+        self.objectTextView.text = html
     }
 }

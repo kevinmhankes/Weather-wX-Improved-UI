@@ -12,7 +12,7 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
-    private var html = ""
+    //private var html = ""
     private let map = ObjectMap(.WFO)
     
     override func viewDidLoad() {
@@ -64,18 +64,22 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             }
             self.productButton.title = self.product
             self.siteButton.title = self.wfo
+            let html: String
             if self.product.hasPrefix("RTP") && self.product.count == 5 {
-                self.html = UtilityDownload.getTextProduct(self.product)
+                html = UtilityDownload.getTextProduct(self.product)
             } else {
-                self.html = UtilityDownload.getTextProduct(self.product + self.wfo)
+                html = UtilityDownload.getTextProduct(self.product + self.wfo)
             }
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.displayContent(html) }
         }
     }
     
-    private func displayContent() {
-        if self.html == "" { self.html = "None issued by this office recently." }
-        self.objectTextView.text = self.html
+    private func displayContent(_ html: String) {
+        if html == "" {
+            self.objectTextView.text = "None issued by this office recently."
+        } else {
+            self.objectTextView.text = html
+        }
         if UtilityWfoText.needsFixedWidthFont(self.product) {
             self.objectTextView.font = FontSize.hourly.size
         } else {

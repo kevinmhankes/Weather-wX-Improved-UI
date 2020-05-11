@@ -10,18 +10,18 @@ import AVFoundation
 class vcCanadaWarnings: UIwXViewController {
     
     private var objectCanadaWarnings: ObjectCanadaWarnings!
-    private var provButton = ObjectToolbarIcon()
+    private var provinceButton = ObjectToolbarIcon()
     private var province = "Canada"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        provButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
+        provinceButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
                 GlobalVariables.flexBarButton,
-                provButton,
+                provinceButton,
                 shareButton
             ]
         ).items
@@ -47,7 +47,7 @@ class vcCanadaWarnings: UIwXViewController {
     }
     
     @objc func provinceClicked() {
-        _ = ObjectPopUp(self, title: "Province Selection", provButton, self.objectCanadaWarnings.provinces, self.provinceChanged(_:))
+        _ = ObjectPopUp(self, title: "Province Selection", provinceButton, self.objectCanadaWarnings.provinces, self.provinceChanged(_:))
     }
     
     func provinceChanged(_ province: String) {
@@ -68,7 +68,7 @@ class vcCanadaWarnings: UIwXViewController {
     private func displayContent() {
         self.refreshViews()
         self.objectCanadaWarnings.showData()
-        self.provButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
+        self.provinceButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

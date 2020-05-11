@@ -8,7 +8,6 @@ import UIKit
 
 class vcTextViewer: UIwXViewControllerWithAudio {
     
-    var textViewProduct = ""
     var textViewText = ""
     
     override func viewDidLoad() {
@@ -18,11 +17,7 @@ class vcTextViewer: UIwXViewControllerWithAudio {
         objScrollStackView = ObjectScrollStackView(self)
         displayContent()
     }
-    
-    @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.share(self, sender, textViewText)
-    }
-    
+
     private func displayContent() {
         objectTextView = ObjectTextView(stackView, textViewText)
         objectTextView.constrain(scrollView)
