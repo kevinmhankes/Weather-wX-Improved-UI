@@ -26,6 +26,7 @@
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
 
+56102 2020_05_11 [REF] misc
 56101 2020_05_11 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
 		 [REF] remove unused prefs in UtilityStorePreferences
