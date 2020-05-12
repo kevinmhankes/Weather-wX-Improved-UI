@@ -38,34 +38,34 @@ import Foundation
 final public class Level2Record {
 
     /* added for high resolution message type 31 */
-    static let reflectivityHigh = 5
+    static private let reflectivityHigh = 5
 
     /**
      * High Resolution Radial Velocity moment identifier
      */
-    static let velocityHigh = 6
+    static private let velocityHigh = 6
 
     /**
      * Size of the CTM record header
      */
-    static let ctmHeaderSize = 12
+    static private let ctmHeaderSize = 12
 
     /**
      * Size of the the message header, to start of the data message
      */
-    static let messageHeaderSize = 28
+    static private let messageHeaderSize = 28
 
     /**
      * Size of the entire message, if its a radar data message
      */
-    static let radarDataSize = 2432
+    static private let radarDataSize = 2432
 
     /**
      * Size of the file header, aka title
      */
-    static let fileHeaderSize = 24
+    static private let fileHeaderSize = 24
 
-    var messageOffset: CLong = 0 // offset of start of message
+    private var messageOffset: CLong = 0 // offset of start of message
     var hasHighResREFData = false
     var hasHighResVELData = false
 
@@ -77,15 +77,15 @@ final public class Level2Record {
     var elevationNum: Int16  = 0
     var vcp: Int16  = 0
     var azimuth: Float = 0.0
-    var dbp1 = 0
-    var dbp4 = 0
-    var dbp5 = 0
-    var dbp6 = 0
-    var dbp7 = 0
-    var dbp8 = 0
-    var dbp9 = 0
-    var reflectHROffset: Int16 = 0
-    var velocityHROffset: Int16 = 0
+    private var dbp1 = 0
+    private var dbp4 = 0
+    private var dbp5 = 0
+    private var dbp6 = 0
+    private var dbp7 = 0
+    private var dbp8 = 0
+    private var dbp9 = 0
+    private var reflectHROffset: Int16 = 0
+    private var velocityHROffset: Int16 = 0
 
     static func factory(_ din: MemoryBuffer, _ record: Int, _  messageOffset31: CLong) -> Level2Record? {
         let offset: CLong = record * radarDataSize + fileHeaderSize + messageOffset31
@@ -195,7 +195,7 @@ final public class Level2Record {
         }
     }
 
-    func getDataOffset(datatype: Int) -> Int16 {
+    private func getDataOffset(datatype: Int) -> Int16 {
         switch datatype {
         case Level2Record.reflectivityHigh:
             return reflectHROffset
@@ -206,14 +206,14 @@ final public class Level2Record {
         }
     }
 
-    func getDataBlockValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int) -> Int16 {
+    private func getDataBlockValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int) -> Int16 {
         let off: CLong = Int(offset) + messageOffset + Level2Record.messageHeaderSize
         raf.seek(off)
         raf.skipBytes(skip)
         return raf.getShort()
     }
 
-    func getDataBlockStringValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int, _ size: Int) -> String {
+    private func getDataBlockStringValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int, _ size: Int) -> String {
         let off: CLong = Int(offset) + messageOffset + Level2Record.messageHeaderSize
         /*raf.seek(off)
         raf.skipBytes(skip)
