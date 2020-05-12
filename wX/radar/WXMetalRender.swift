@@ -77,8 +77,8 @@ class WXMetalRender {
     private var fWatMcd = [Double]()
     private var fWatTor = [Double]()
     private var fSti = [Double]()
-    private var fWb = [Double]()
-    private var fWbGusts = [Double]()
+    //private var fWb = [Double]()
+    //private var fWbGusts = [Double]()
     private var locmarkerAl = [Double]()
     private var locdotXArr = [Double]()
     private var locdotYArr = [Double]()
@@ -652,19 +652,19 @@ class WXMetalRender {
         buffers.draw(pn)
     }
     
-    func constructGenericLinesShort(_ buffers: ObjectMetalBuffers, _ fList: [Double]) {
+    func constructGenericLinesShort(_ buffers: ObjectMetalBuffers, _ list: [Double]) {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
         var vList = 0
-        while vList < fList.count {
-            buffers.putFloat(fList[vList])
-            buffers.putFloat(fList[vList+1] * -1)
+        while vList < list.count {
+            buffers.putFloat(list[vList])
+            buffers.putFloat(list[vList+1] * -1)
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            buffers.putFloat(fList[vList+2])
-            buffers.putFloat(fList[vList+3] * -1)
+            buffers.putFloat(list[vList+2])
+            buffers.putFloat(list[vList+3] * -1)
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
@@ -674,16 +674,16 @@ class WXMetalRender {
     }
     
     func constructWBLines() {
-        let fWb = WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: false)
-        constructGenericLinesShort(wbBuffers, fWb)
+        //let fWb =
+        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: false))
         constructWBLinesGusts()
         constructWBCircle()
         wbBuffers.generateMtlBuffer(device)
     }
     
     func constructWBLinesGusts() {
-        fWbGusts = WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: true)
-        constructGenericLinesShort(wbGustsBuffers, fWbGusts)
+        //fWbGusts =
+        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: true))
         wbGustsBuffers.generateMtlBuffer(device)
     }
     
@@ -812,7 +812,7 @@ class WXMetalRender {
         swoBuffers.metalBuffer = []
         (0...4).forEach { z in
             if let flArr = UtilitySwoD1.hashSwo[z] {
-                stride(from: 0, to: flArr.count-1, by: 4).forEach { j in
+                stride(from: 0, to: flArr.count - 1, by: 4).forEach { j in
                     var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
