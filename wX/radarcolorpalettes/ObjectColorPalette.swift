@@ -35,9 +35,6 @@ final class ObjectColorPalette {
         case "56":
             setupBuffers(16)
             UtilityColorPalette4bitGeneric.generate(colorMapCode)
-        //case "57":
-        //    setupBuffers(16)
-        //    UtilityColorPalette57.generate()
         case "78":
             setupBuffers(16)
             UtilityColorPalette4bitGeneric.generate(colorMapCode)

@@ -7,9 +7,9 @@
 final class UtilityColorPaletteGeneric {
     
     static func generate(_ prod: String, _ code: String) {
-        var colorMapR = MemoryBuffer()
-        var colorMapG = MemoryBuffer()
-        var colorMapB = MemoryBuffer()
+        let colorMapR: MemoryBuffer
+        let colorMapG: MemoryBuffer
+        let colorMapB: MemoryBuffer
         var scale = 2
         var lowerEnd = -32
         var prodOffset = 0.0
@@ -73,7 +73,9 @@ final class UtilityColorPaletteGeneric {
             scale = 1
             lowerEnd = 0
         default:
-            break
+            colorMapR = MemoryBuffer()
+            colorMapG = MemoryBuffer()
+            colorMapB = MemoryBuffer()
         }
         colorMapR.position = 0
         colorMapG.position = 0
