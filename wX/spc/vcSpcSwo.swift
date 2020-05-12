@@ -56,7 +56,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
         Route.imageViewer(self, bitmaps[sender.data].url)
     }
     
-    @objc override func shareClicked(sender: UIButton) {
+    override func shareClicked(sender: UIButton) {
         UtilityShare.shareImage(self, sender, bitmaps, self.html)
     }
     

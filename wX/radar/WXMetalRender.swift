@@ -14,19 +14,18 @@ class WXMetalRender {
     
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
-    private var positionX: Float = 0.0
-    private var positionY: Float = 0.0
-    private var positionZ: Float = 0.0
-    private var rotationX: Float = 0.0
-    private var rotationY: Float = 0.0
-    private var rotationZ: Float = 0.0
-    private var scale: Float = 1.0
+    //private let positionX: Float = 0.0
+    //private let positionY: Float = 0.0
+    //private let positionZ: Float = 0.0
+    //private let rotationX: Float = 0.0
+    //private let rotationY: Float = 0.0
+    //private let rotationZ: Float = 0.0
+    //private let scale: Float = 1.0
     var pn = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
     private var tiltInt = 0
-    // last value is for radar on main screen
-    private var initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
+    private let initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
     var zPos: Float = -7.0
@@ -39,33 +38,33 @@ class WXMetalRender {
     #if targetEnvironment(macCatalyst)
     static let zoomToHideMiscFeatures: Float = 0.2
     #endif
-    var displayHold: Bool = false
+    var displayHold = false
     private var stateLineBuffers = ObjectMetalBuffers(GeographyType.stateLines, 0.0)
     private var countyLineBuffers = ObjectMetalBuffers(GeographyType.countyLines, 0.75)
     private var hwBuffers = ObjectMetalBuffers(GeographyType.highways, zoomToHideMiscFeatures)
-    private var hwExtBuffers = ObjectMetalBuffers(GeographyType.highwaysExtended, 3.00)
-    private var lakeBuffers = ObjectMetalBuffers(GeographyType.lakes, zoomToHideMiscFeatures)
-    private var stiBuffers = ObjectMetalBuffers(PolygonType.STI, zoomToHideMiscFeatures)
-    private var wbBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB, zoomToHideMiscFeatures)
-    private var wbGustsBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_GUSTS, zoomToHideMiscFeatures)
-    private var mpdBuffers = ObjectMetalBuffers(PolygonType.MPD)
-    private var hiBuffers = ObjectMetalBuffers(PolygonType.HI, zoomToHideMiscFeatures)
-    private var tvsBuffers = ObjectMetalBuffers(PolygonType.TVS, zoomToHideMiscFeatures)
-    private var warningTstBuffers = ObjectMetalBuffers(PolygonType.TST)
-    private var warningTorBuffers = ObjectMetalBuffers(PolygonType.TOR)
-    private var warningFfwBuffers = ObjectMetalBuffers(PolygonType.FFW)
-    private var warningSmwBuffers = ObjectMetalBuffers(PolygonType.SMW)
-    private var warningSqwBuffers = ObjectMetalBuffers(PolygonType.SQW)
-    private var warningDswBuffers = ObjectMetalBuffers(PolygonType.DSW)
-    private var warningSpsBuffers = ObjectMetalBuffers(PolygonType.SPS)
-    private var watchBuffers = ObjectMetalBuffers(PolygonType.WATCH)
-    private var watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
-    private var mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
-    private var swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
-    private var locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
-    private var locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
-    private var wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
-    private var spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
+    private let hwExtBuffers = ObjectMetalBuffers(GeographyType.highwaysExtended, 3.00)
+    private let lakeBuffers = ObjectMetalBuffers(GeographyType.lakes, zoomToHideMiscFeatures)
+    private let stiBuffers = ObjectMetalBuffers(PolygonType.STI, zoomToHideMiscFeatures)
+    private let wbBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB, zoomToHideMiscFeatures)
+    private let wbGustsBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_GUSTS, zoomToHideMiscFeatures)
+    private let mpdBuffers = ObjectMetalBuffers(PolygonType.MPD)
+    private let hiBuffers = ObjectMetalBuffers(PolygonType.HI, zoomToHideMiscFeatures)
+    private let tvsBuffers = ObjectMetalBuffers(PolygonType.TVS, zoomToHideMiscFeatures)
+    private let warningTstBuffers = ObjectMetalBuffers(PolygonType.TST)
+    private let warningTorBuffers = ObjectMetalBuffers(PolygonType.TOR)
+    private let warningFfwBuffers = ObjectMetalBuffers(PolygonType.FFW)
+    private let warningSmwBuffers = ObjectMetalBuffers(PolygonType.SMW)
+    private let warningSqwBuffers = ObjectMetalBuffers(PolygonType.SQW)
+    private let warningDswBuffers = ObjectMetalBuffers(PolygonType.DSW)
+    private let warningSpsBuffers = ObjectMetalBuffers(PolygonType.SPS)
+    private let watchBuffers = ObjectMetalBuffers(PolygonType.WATCH)
+    private let watchTornadoBuffers = ObjectMetalBuffers(PolygonType.WATCH_TORNADO)
+    private let mcdBuffers = ObjectMetalBuffers(PolygonType.MCD)
+    private let swoBuffers = ObjectMetalBuffers(PolygonType.SWO)
+    private let locdotBuffers = ObjectMetalBuffers(PolygonType.LOCDOT)
+    private let locCircleBuffers = ObjectMetalBuffers(PolygonType.LOCDOT_CIRCLE)
+    private let wbCircleBuffers = ObjectMetalBuffers(PolygonType.WIND_BARB_CIRCLE, zoomToHideMiscFeatures)
+    private let spotterBuffers = ObjectMetalBuffers(PolygonType.SPOTTER, zoomToHideMiscFeatures)
     private var wpcFrontBuffersList = [ObjectMetalBuffers]()
     private var wpcFrontPaints = [Int]()
     private var colorSwo = [Int]()
@@ -76,7 +75,7 @@ class WXMetalRender {
     //private var fWatAll = [Double]()
     //private var fWatMcd = [Double]()
     //private var fWatTor = [Double]()
-    private var locmarkerAl = [Double]()
+    //private var locmarkerAl = [Double]()
     //private var locdotXArr = [Double]()
     //private var locdotYArr = [Double]()
     //private var tvsXArr = [Double]()
@@ -92,13 +91,14 @@ class WXMetalRender {
     private var ridPrefixGlobal = "0"
     private var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
-    private final var l3BaseFn = "nids"
-    private final var stiBaseFn = "nids_sti_tab"
-    private final var hiBaseFn = "nids_hi_tab"
-    private final var tvsBaseFn = "nids_tvs_tab"
+    // TODO move to where they are needed
+    //private let l3BaseFn = "nids"
+    //private let stiBaseFn = "nids_sti_tab"
+    //private let hiBaseFn = "nids_hi_tab"
+    //private let tvsBaseFn = "nids_tvs_tab"
     private var totalBins = 0
-    private var timeButton: ObjectToolbarIcon
-    private var productButton: ObjectToolbarIcon
+    private let timeButton: ObjectToolbarIcon
+    private let productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
     private var paneNumber = 0
@@ -264,9 +264,9 @@ class WXMetalRender {
     
     func modelMatrix() -> float4x4 {
         var matrix = float4x4()
-        matrix.translate(positionX, y: positionY, z: positionZ)
-        matrix.rotateAroundX(rotationX, y: rotationY, z: rotationZ)
-        matrix.scale(scale, y: scale, z: scale)
+        matrix.translate(0.0, y: 0.0, z: 0.0)
+        matrix.rotateAroundX(0.0, y: 0.0, z: 0.0)
+        matrix.scale(1.0, y: 1.0, z: 1.0)
         return matrix
     }
     
@@ -505,7 +505,7 @@ class WXMetalRender {
             if url == "" {
                 self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
                 if !self.radarProduct.contains("L2") {
-                    self.radarBuffers.fileName = self.l3BaseFn + self.indexString
+                    self.radarBuffers.fileName = "nids" + self.indexString
                 } else {
                     self.radarBuffers.fileName = "l2" + self.indexString
                 }
@@ -604,14 +604,14 @@ class WXMetalRender {
     
     // TODO rename vars
     func constructLocationDot() {
-        locmarkerAl = []
+        var locmarkerAl = [Double]() //locmarkerAl = []
         locdotBuffers.lenInit = PolygonType.LOCDOT.size
         if PolygonType.LOCDOT.display { locmarkerAl = UtilityLocation.getLatLonAsDouble() }
         if RadarPreferences.locdotFollowsGps {
             locmarkerAl.append(gpsLocation.lat)
             locmarkerAl.append(gpsLocation.lon)
         }
-        // get even and odd values and put in seperate lists
+        // get even and odd values and put in separate lists
         locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in index & 1 == 0}.map { _, value in Double(value)}
         locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in index & 1 != 0}.map { _, value in Double(value)}
         locdotBuffers.triangleCount = 24
@@ -696,7 +696,7 @@ class WXMetalRender {
     }
     
     func constructStiLines() {
-        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(pn, stiBaseFn + indexString))
+        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(pn, "nids_sti_tab" + indexString))
         stiBuffers.generateMtlBuffer(device)
     }
     
@@ -705,7 +705,7 @@ class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(pn, tvsBaseFn + indexString))
+        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(pn, "nids_tvs_tab" + indexString))
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
@@ -715,7 +715,7 @@ class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(pn, hiBaseFn + indexString))
+        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(pn, "nids_hi_tab" + indexString))
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }
