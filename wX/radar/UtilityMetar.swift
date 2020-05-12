@@ -82,12 +82,6 @@ final class UtilityMetar {
                         bknStr += "00"
                         bknInt = Int(bknStr) ?? 0
                     }
-                    /*var lowestCig: Int
-                    if bknInt < ovcInt {
-                        lowestCig = bknInt
-                    } else {
-                        lowestCig = ovcInt
-                    }*/
                     let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
                     if visInt > 5 && lowestCig > 3000 { aviationColor = Color.GREEN }
