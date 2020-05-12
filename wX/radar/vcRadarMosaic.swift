@@ -52,12 +52,7 @@ class vcRadarMosaic: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(
-            self,
-            productButton,
-            UtilityUSImgNwsMosaic.labels,
-            self.getContent(_:)
-        )
+        _ = ObjectPopUp(self, productButton, UtilityUSImgNwsMosaic.labels, self.getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {
@@ -77,9 +72,7 @@ class vcRadarMosaic: UIwXViewController {
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityUSImgNwsMosaic.getAnimation(UtilityUSImgNwsMosaic.sectors[self.index], frameCount)
-            DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
-            }
+            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
     
