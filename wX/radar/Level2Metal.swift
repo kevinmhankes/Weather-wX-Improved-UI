@@ -6,13 +6,11 @@
 
 final class Level2Metal {
 
-//  March 2019, deprecate GLES radar
-
-    static let reflectivityHigh = 5
-    static let velocityHigh = 6
-    static let fileHeaderSize = 24
-    static var first = Level2Record()
-    static var vcp: Int16 = 0
+    private static let reflectivityHigh = 5
+    private static let velocityHigh = 6
+    private static let fileHeaderSize = 24
+    private static var first = Level2Record()
+    private static var vcp: Int16 = 0
 
     static func decode(_ radarBuffers: ObjectMetalRadarBuffers, _ days: MemoryBuffer, _ msecs: MemoryBuffer) {
         let fileName = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
