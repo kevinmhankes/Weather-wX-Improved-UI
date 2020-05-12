@@ -71,8 +71,8 @@ class WXMetalRender {
     private let productButton: ObjectToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
-    private var paneNumber = 0
-    var numberOfPanes = 0
+    private let paneNumber: Int
+    let numberOfPanes: Int
     var textObj: WXMetalTextObject
     private var renderFn: ((Int) -> Void)?
     // need a copy of this list here in addition to WXGLNexrad
