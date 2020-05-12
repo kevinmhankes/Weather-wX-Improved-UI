@@ -30,6 +30,7 @@
 
 56102 2020_05_12 [REF] misc
 		 [ADD] from adhoc location allow to save location
+		 [ADD] in color picker if tap "set to default", immediately exit to prior screen
 56101 2020_05_11 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
 		 [REF] remove unused prefs in UtilityStorePreferences

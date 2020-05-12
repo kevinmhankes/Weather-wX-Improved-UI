@@ -42,13 +42,13 @@ final class Color {
     static func blue(_ color: Int) -> UInt8 { UInt8(color & 0xFF) }
 
     static func intToColors(colorInt: Int) -> [Int] {
-        let newRed: Int = (colorInt >> 16) & 0xFF
-        let newGreen: Int = (colorInt >> 8) & 0xFF
-        let newBlue: Int = colorInt & 0xFF
+        let newRed = (colorInt >> 16) & 0xFF
+        let newGreen = (colorInt >> 8) & 0xFF
+        let newBlue = colorInt & 0xFF
         return [newRed, newGreen, newBlue]
     }
 
-    static func colorToHsv(_ color: Int, _ hsv: [Double]) -> [Double] {
+    static func colorToHsv(_ color: Int) -> [Double] {
         let redInt: Int = ((color >> 16) & 0xFF)
         let greenInt: Int = ((color >> 8) & 0xFF)
         let blueInt: Int = (color & 0xFF)

@@ -83,19 +83,11 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         newBlue = colorObject.defaultBlue
         colorChanged = true
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
+        doneClicked()
     }
     
     internal override func refreshViews() {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
-        /*colPicker.frame = CGRect(
-            x: 0,
-            y: toolbar.height + UtilityUI.getTopPadding(),
-            width: width,
-            height: height
-                - toolbar.height * 2
-                - colorBarSize
-                - UtilityUI.getTopPadding()
-        )*/
         if UtilityUI.isTablet() {
             colPicker.frame = CGRect(
                 x: width * 0.25,

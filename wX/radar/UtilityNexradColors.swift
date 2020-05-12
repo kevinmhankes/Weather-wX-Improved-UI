@@ -23,10 +23,8 @@ class UtilityNexradColors {
     }
 
     static func interpolateColor(_ colorA: Int, _ colorB: Int, _ proportion: Double) -> Int {
-        var hsva = [Double]()
-        var hsvb = [Double]()
-        hsva = Color.colorToHsv(colorA, hsva)
-        hsvb = Color.colorToHsv(colorB, hsvb)
+        let hsva = Color.colorToHsv(colorA)
+        var hsvb = Color.colorToHsv(colorB)
         (0...2).forEach { index in
             if index > 0 {
                 hsvb[index] = interpolate(hsva[index], hsvb[index], Double(proportion))
