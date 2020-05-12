@@ -125,8 +125,6 @@
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
-		037A56B423CBB60E00BB23C0 /* RadarGeometryFileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A56B323CBB60E00BB23C0 /* RadarGeometryFileType.swift */; };
-		037A56B623CBB61800BB23C0 /* RadarGeometryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A56B523CBB61800BB23C0 /* RadarGeometryFile.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
 		037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
@@ -522,8 +520,6 @@
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
-		037A56B323CBB60E00BB23C0 /* RadarGeometryFileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometryFileType.swift; sourceTree = "<group>"; };
-		037A56B523CBB61800BB23C0 /* RadarGeometryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometryFile.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
 		037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTimer.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
@@ -1136,8 +1132,6 @@
 				03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */,
 				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
 				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
-				037A56B523CBB61800BB23C0 /* RadarGeometryFile.swift */,
-				037A56B323CBB60E00BB23C0 /* RadarGeometryFileType.swift */,
 				F0B3350A1DA3FD1C0035BD36 /* RID.swift */,
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
@@ -1670,7 +1664,6 @@
 				0340423023F16FC3003AB242 /* vcUSAlertsDetail.swift in Sources */,
 				03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */,
 				03F3EB81229945D10056A56D /* UtilityModelNsslWrfInterface.swift in Sources */,
-				037A56B623CBB61800BB23C0 /* RadarGeometryFile.swift in Sources */,
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
 				F0B335A81DA3FD960035BD36 /* UtilityFileManagement.swift in Sources */,
@@ -1736,7 +1729,6 @@
 				034041F123F167F9003AB242 /* vcSpcTstormSummary.swift in Sources */,
 				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
-				037A56B423CBB60E00BB23C0 /* RadarGeometryFileType.swift in Sources */,
 				03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */,
 				F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */,
 				F0B335AA1DA3FD960035BD36 /* UtilityImg.swift in Sources */,
