@@ -57,14 +57,12 @@ class UtilityWXMetalPerfL3FourBit {
             _ = dis.getUnsignedShort()
             // 464 rows in NCR
             // 232 rows in NCZ
-            //var s = 0
             var numOfBins = 0
             var u = 0
             var totalPerRow = 0
             (0..<numberOfRows).forEach { _ in
                 let numberOfBytes = dis.getUnsignedShort()
                 totalPerRow = 0
-                //s = 0
                 u = 0
                 (0..<numberOfBytes).forEach { _ in
                     let bin = Int(dis.get())
@@ -76,7 +74,6 @@ class UtilityWXMetalPerfL3FourBit {
                         u += 1
                         totalPerRow += 1
                     }
-                    //s += 1
                 }
             }
         } else {

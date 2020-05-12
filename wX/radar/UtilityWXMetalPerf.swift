@@ -8,8 +8,6 @@ import Foundation
 
 class UtilityWXMetalPerf {
     
-    // FIXME method and var naming
-
     private static let k180DivPi = 180.0 / Double.pi
     private static let piDiv4 = Double.pi / 4.0
     private static let piDiv360 = Double.pi / 360.0
