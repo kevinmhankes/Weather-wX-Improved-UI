@@ -21,12 +21,12 @@ final class WXMetalTextObject {
     private let obsMinZoom: Float = 0.50
     private let countyMinZoom: Float = 1.50
     #endif
-    private var maxCitiesPerGlview = 16
+    private let maxCitiesPerGlview: Int
     private let glViewWidth: Double
     private let glViewHeight: Double
     private let scale: Double
-    private var textSize = Double(RadarPreferences.radarTextSize)
-    private var context: UIViewController
+    private let textSize = Double(RadarPreferences.radarTextSize)
+    private let context: UIViewController
     private let screenScale: Double
     private let xFudge: Double
     private let yFudge: Double
@@ -39,6 +39,7 @@ final class WXMetalTextObject {
         scale = 0.0
         xFudge = 15.0
         yFudge = 25.0
+        maxCitiesPerGlview = 16
         context = UIViewController()
     }
     
@@ -55,7 +56,7 @@ final class WXMetalTextObject {
         self.glViewHeight = glViewHeight
         self.wxMetalRender = wxMetalRender
         self.numPanes = numPanes
-        self.maxCitiesPerGlview = maxCitiesPerGlview / numPanes
+        self.maxCitiesPerGlview = 16 / numPanes
         let fudgeFactor = 375.0
         self.screenScale = screenScale * (glViewWidth / fudgeFactor) * 0.5
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
