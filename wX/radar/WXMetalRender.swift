@@ -69,27 +69,24 @@ class WXMetalRender {
     private var wpcFrontBuffersList = [ObjectMetalBuffers]()
     private var wpcFrontPaints = [Int]()
     private var colorSwo = [Int]()
-    private var fFfw = [Double]()
-    private var fTst = [Double]()
-    private var fTor = [Double]()
-    private var fMpd = [Double]()
-    private var fWatAll = [Double]()
-    private var fWatMcd = [Double]()
-    private var fWatTor = [Double]()
-    private var fSti = [Double]()
-    //private var fWb = [Double]()
-    //private var fWbGusts = [Double]()
+    //private var fFfw = [Double]()
+    //private var fTst = [Double]()
+    //private var fTor = [Double]()
+    //private var fMpd = [Double]()
+    //private var fWatAll = [Double]()
+    //private var fWatMcd = [Double]()
+    //private var fWatTor = [Double]()
     private var locmarkerAl = [Double]()
-    private var locdotXArr = [Double]()
-    private var locdotYArr = [Double]()
-    private var tvsXArr = [Double]()
-    private var tvsYArr = [Double]()
-    private var hiXArr = [Double]()
-    private var hiYArr = [Double]()
-    private var spotterXArr = [Double]()
-    private var spotterYArr = [Double]()
-    private var wbCircleXArr = [Double]()
-    private var wbCircleYArr = [Double]()
+    //private var locdotXArr = [Double]()
+    //private var locdotYArr = [Double]()
+    //private var tvsXArr = [Double]()
+    //private var tvsYArr = [Double]()
+    //private var hiXArr = [Double]()
+    //private var hiYArr = [Double]()
+    //private var spotterXArr = [Double]()
+    //private var spotterYArr = [Double]()
+    //private var wbCircleXArr = [Double]()
+    //private var wbCircleYArr = [Double]()
     var gpsLocation = LatLon(0.0, 0.0)
     private var geographicBuffers = [ObjectMetalBuffers]()
     private var ridPrefixGlobal = "0"
@@ -674,7 +671,6 @@ class WXMetalRender {
     }
     
     func constructWBLines() {
-        //let fWb =
         constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: false))
         constructWBLinesGusts()
         constructWBCircle()
@@ -682,7 +678,6 @@ class WXMetalRender {
     }
     
     func constructWBLinesGusts() {
-        //fWbGusts =
         constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: true))
         wbGustsBuffers.generateMtlBuffer(device)
     }
@@ -701,8 +696,7 @@ class WXMetalRender {
     }
     
     func constructStiLines() {
-        fSti = WXGLNexradLevel3StormInfo.decode(pn, stiBaseFn + indexString)
-        constructGenericLinesShort(stiBuffers, fSti)
+        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(pn, stiBaseFn + indexString))
         stiBuffers.generateMtlBuffer(device)
     }
     
@@ -711,8 +705,7 @@ class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3TVS.decode(pn, tvsBaseFn + indexString)
-        tvsBuffers.setXYList(stormList)
+        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(pn, tvsBaseFn + indexString))
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
@@ -722,8 +715,7 @@ class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        let stormList = WXGLNexradLevel3HailIndex.decode(pn, hiBaseFn + indexString)
-        hiBuffers.setXYList(stormList)
+        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(pn, hiBaseFn + indexString))
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }

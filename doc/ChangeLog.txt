@@ -25,6 +25,7 @@
 // [REF] use enum for model type
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
+// [ADD] re-eval aviation dot size on MacOS
 
 56102 2020_05_12 [REF] misc
 56101 2020_05_11 [REF] misc
