@@ -91,6 +91,9 @@ struct LatLon {
         }
     }
     
+    // used in adhoc location save
+    func prettyPrint() -> String { latString.truncate(5) + ", " + lonString.truncate(5) }
+    
     func print() -> String { latString + " " + lonString + " " }
     
     func asPoint() -> ExternalPoint { ExternalPoint(lat, lon) }

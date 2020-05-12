@@ -25,9 +25,7 @@ class UtilityWXMetalPerfL3FourBit {
                 (0..<numberOfRleHalfWords[radial] * 2).forEach { _ in
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
-                    (0..<numOfBins).forEach { _ in
-                        radarBuffers.rd.binWord.put(UInt8(bin % 16))
-                    }
+                    (0..<numOfBins).forEach { _ in radarBuffers.rd.binWord.put(UInt8(bin % 16)) }
                 }
             }
         } else {
@@ -59,16 +57,16 @@ class UtilityWXMetalPerfL3FourBit {
             _ = dis.getUnsignedShort()
             // 464 rows in NCR
             // 232 rows in NCZ
-            var s = 0
+            //var s = 0
             var numOfBins = 0
             var u = 0
             var totalPerRow = 0
             (0..<numberOfRows).forEach { _ in
                 let numberOfBytes = dis.getUnsignedShort()
                 totalPerRow = 0
-                s = 0
+                //s = 0
                 u = 0
-                while s < numberOfBytes {
+                (0..<numberOfBytes).forEach { _ in
                     let bin = Int(dis.get())
                     numOfBins = Int(bin >> 4)
                     u = 0
@@ -78,7 +76,7 @@ class UtilityWXMetalPerfL3FourBit {
                         u += 1
                         totalPerRow += 1
                     }
-                    s += 1
+                    //s += 1
                 }
             }
         } else {

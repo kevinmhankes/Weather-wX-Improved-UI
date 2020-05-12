@@ -32,8 +32,8 @@ class UtilityWatch {
     }
     
     static func show(_ latLon: LatLon, _ type: PolygonType) -> String {
-        var numberList = [String]()
-        var watchLatLon: String
+        let numberList: [String]
+        let watchLatLon: String
         switch type.string {
         case "WATCH":
             numberList = MyApplication.watNoList.value.split(":")

@@ -169,6 +169,11 @@ final class Location {
         return [wfo, radarStation]
     }
 
+    // used in adhoc location
+    static func locationSave(_ latLon: LatLon) -> String {
+        return locationSave(String(Location.numLocations + 1), latLon, latLon.prettyPrint())
+    }
+
     static func locationSave(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
         var locNumToSave: Int
         let locNumInt = Int(locNum) ?? 0

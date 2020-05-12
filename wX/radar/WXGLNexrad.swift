@@ -24,9 +24,7 @@ final class WXGLNexrad {
     }
     
     static func canTilt(_ product: String) -> Bool {
-        if product == "L2REF" || product == "L2VEL" {
-            return false
-        }
+        if product == "L2REF" || product == "L2VEL" { return false }
         if product.matches(regexp: "[A-Z][0-3][A-Z]") || product.matches(regexp: "T[RV][0-2]") {
             return true
         } else {
@@ -146,33 +144,11 @@ final class WXGLNexrad {
     
     static func getNumberRangeBins(_ productCode: Int) -> Int {
         switch productCode {
-        case 134:
-            return 460
         case 186:
             return 1390
-        //case 78:
-        //    return 592
-        //case 80:
-        //    return 592
-        case 180:
+        case 180, 182:
             return 720
-        //case 181:
-        //    return 720
-        case 182:
-            return 720
-        case 135:
-            return 1200
-        case 99:
-            return 1200
-        case 159:
-            return 1200
-        case 161:
-            return 1200
-        case 163:
-            return 1200
-        case 170:
-            return 1200
-        case 172:
+        case 135, 99, 159, 161, 163, 170, 172:
             return 1200
         default:
             return 460
@@ -184,41 +160,18 @@ final class WXGLNexrad {
         let binSize13 = 0.50
         let binSize08 = 0.295011
         let binSize16 = 0.590022
-        //let binSize110 = 2.0 * binSize54
         switch productCode {
-        case 134:
-            return binSize54
-        case 135:
+        case 134, 135:
             return binSize54
         case 186:
             return binSize16
-        case 159:
+        case 159, 161, 163, 165, 99:
             return binSize13
-        case 161:
+        case 170, 172:
             return binSize13
-        case 163:
-            return binSize13
-        case 165:
-            return binSize13
-        case 99:
-            return binSize13
-        case 170:
-            return binSize13
-        case 172:
-            return binSize13
-        //case 78:
-        //    return binSize110
-        //case 80:
-        //    return binSize110
-        case 180:
+        case 180, 182:
             return binSize08
-        //case 181:
-        //    return binSize08
-        case 182:
-            return binSize08
-        case 153:
-            return binSize13
-        case 154:
+        case 153, 154:
             return binSize13
         default:
             return binSize54

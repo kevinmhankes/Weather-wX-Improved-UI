@@ -1,0 +1,3 @@
+to clear prefs, run via CLI:
+
+defaults delete maccatalyst.joshuatee.wXIOS

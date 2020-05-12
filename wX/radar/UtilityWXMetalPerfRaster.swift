@@ -18,12 +18,12 @@ class UtilityWXMetalPerfRaster {
         if radarBuffers.rd.productCode == 38 {
             numberOfRows = 232
             binsPerRow = 232
-            scaleFactor = 8.0 // was 8
+            scaleFactor = 8.0
         }
         if radarBuffers.rd.productCode == 41 || radarBuffers.rd.productCode == 57 {
             numberOfRows = 116
             binsPerRow = 116
-            scaleFactor = 8.0 // was 8
+            scaleFactor = 8.0
         }
         let halfPoint = numberOfRows / 2
         (0..<numberOfRows).forEach { g in
