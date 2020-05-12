@@ -75,12 +75,7 @@ class vcRadarMosaicAwc: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(
-            self,
-            productButton,
-            UtilityAwcRadarMosaic.productLabels,
-            self.productChanged(_:)
-        )
+        _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, self.productChanged(_:))
     }
     
     func productChanged(_ index: Int) {
@@ -100,9 +95,7 @@ class vcRadarMosaicAwc: UIwXViewController {
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
-            DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
-            }
+            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
     

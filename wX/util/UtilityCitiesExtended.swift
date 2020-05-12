@@ -16,11 +16,11 @@ final class UtilityCitiesExtended {
             let lines = text.split(MyApplication.newline)
             lines.forEach { line in
                 let items = line.split(",")
-                if items.count > 3 {
-                    cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!, items[3]))
-                } else if items.count > 2 {
-                    cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!, ""))
-                }
+                //if items.count > 3 {
+                //    cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!, items[3]))
+                //} else if items.count > 2 {
+                if items.count > 2 { cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!)) }
+                //}
             }
         }
     }
