@@ -49,7 +49,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     var radarSiteOverride = ""
     private let map = ObjectMap(.RADAR)
     var warningCount = 0
-    // below var is override in severe dash and usalerts as prefences should not be saved
+    // below var is override in severe dash and us alerts as preferences should not be saved
     var savePreferences = true
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -373,7 +373,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     func setupGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
-        let gestureZoomvar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
+        let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
         gestureRecognizer.delegate = self
@@ -381,7 +381,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         gestureRecognizer2.numberOfTapsRequired = 2
         gestureRecognizer2.delegate = self
         self.view.addGestureRecognizer(pan)
-        self.view.addGestureRecognizer(gestureZoomvar)
+        self.view.addGestureRecognizer(gestureZoomVar)
         self.view.addGestureRecognizer(gestureRecognizer)
         self.view.addGestureRecognizer(gestureRecognizer2)
         gestureRecognizer.require(toFail: gestureRecognizer2)
@@ -472,13 +472,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func timeClicked() {
-        //let vc = vcNexradRadar()
-        //vc.wxoglPaneCount = "2"
-        //vc.wxoglCalledFromTimeButton = true
         wxMetalRenders.forEach { $0!.writePrefs() }
         wxMetalRenders[0]?.writePrefsForSingleToDualPaneTransition()
-        //self.goToVC(vc)
-        print(numberOfPanes)
         Route.radarFromTimeButton(self, "2")
     }
     
