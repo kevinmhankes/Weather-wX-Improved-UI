@@ -90,9 +90,15 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func swo(_ uiv: UIViewController, day: String) {
+    static func swo(_ uiv: UIViewController,_ day: String) {
         let vc = vcSpcSwo()
         vc.spcSwoDay = day
+        uiv.goToVC(vc)
+    }
+    
+    static func swoState(_ uiv: UIViewController,_ day: String) {
+        let vc = vcSpcSwoState()
+        vc.day = day
         uiv.goToVC(vc)
     }
     

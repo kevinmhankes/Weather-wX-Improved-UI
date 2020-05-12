@@ -106,13 +106,13 @@ final class ObjectTileMatrix: NSObject {
         case "spc_sum":
             uiv!.goToVC(vcSpcSwoSummary())
         case "day1":
-            Route.swo(uiv!, day: "1")
+            Route.swo(uiv!, "1")
         case "day2":
-            Route.swo(uiv!, day: "2")
+            Route.swo(uiv!, "2")
         case "day3":
-            Route.swo(uiv!, day: "3")
+            Route.swo(uiv!, "3")
         case "day48":
-            Route.swo(uiv!, day: "48")
+            Route.swo(uiv!, "48")
         case "report_today":
             Route.spcStormReports(uiv!, "today")
         case "report_yesterday":

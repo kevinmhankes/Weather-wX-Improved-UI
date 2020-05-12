@@ -34,9 +34,9 @@ class vcSpcSwoSummary: UIwXViewController {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         switch sender.data {
         case 0...2:
-            Route.swo(self, day: String(sender.data + 1))
+            Route.swo(self, String(sender.data + 1))
         case 3...7:
-            Route.swo(self, day: "48")
+            Route.swo(self, "48")
         default:
             break
         }

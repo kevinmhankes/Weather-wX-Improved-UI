@@ -14,13 +14,6 @@ class WXMetalRender {
     
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
-    //private let positionX: Float = 0.0
-    //private let positionY: Float = 0.0
-    //private let positionZ: Float = 0.0
-    //private let rotationX: Float = 0.0
-    //private let rotationY: Float = 0.0
-    //private let rotationZ: Float = 0.0
-    //private let scale: Float = 1.0
     var pn = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
@@ -68,34 +61,11 @@ class WXMetalRender {
     private var wpcFrontBuffersList = [ObjectMetalBuffers]()
     private var wpcFrontPaints = [Int]()
     private var colorSwo = [Int]()
-    //private var fFfw = [Double]()
-    //private var fTst = [Double]()
-    //private var fTor = [Double]()
-    //private var fMpd = [Double]()
-    //private var fWatAll = [Double]()
-    //private var fWatMcd = [Double]()
-    //private var fWatTor = [Double]()
-    //private var locmarkerAl = [Double]()
-    //private var locdotXArr = [Double]()
-    //private var locdotYArr = [Double]()
-    //private var tvsXArr = [Double]()
-    //private var tvsYArr = [Double]()
-    //private var hiXArr = [Double]()
-    //private var hiYArr = [Double]()
-    //private var spotterXArr = [Double]()
-    //private var spotterYArr = [Double]()
-    //private var wbCircleXArr = [Double]()
-    //private var wbCircleYArr = [Double]()
     var gpsLocation = LatLon(0.0, 0.0)
     private var geographicBuffers = [ObjectMetalBuffers]()
     private var ridPrefixGlobal = "0"
     private var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
-    // TODO move to where they are needed
-    //private let l3BaseFn = "nids"
-    //private let stiBaseFn = "nids_sti_tab"
-    //private let hiBaseFn = "nids_hi_tab"
-    //private let tvsBaseFn = "nids_tvs_tab"
     private var totalBins = 0
     private let timeButton: ObjectToolbarIcon
     private let productButton: ObjectToolbarIcon

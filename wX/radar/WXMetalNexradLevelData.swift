@@ -14,7 +14,7 @@ final class WXMetalNexradLevelData {
     var numberOfRadials = 360
     var binWord = MemoryBuffer()
     var productCode: Int16 = 0
-    var radarType: RadarType = .level3
+    private var radarType: RadarType = .level3
     private var days = MemoryBuffer(2)
     private var msecs = MemoryBuffer(4)
     private var halfWord3132: Float = 0.0

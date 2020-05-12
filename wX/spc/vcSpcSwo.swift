@@ -61,9 +61,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     @objc func stateClicked() {
-        let vc = vcSpcSwoState()
-        vc.day = spcSwoDay
-        self.goToVC(vc)
+        Route.swoState(self, spcSwoDay)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
