@@ -501,7 +501,6 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func updateWarningsInToolbar() {
         warningCount = 0
         if RadarPreferences.radarWarnings {
-            // FIXME use a global count
             let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
             let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
             let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
