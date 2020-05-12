@@ -21,7 +21,7 @@ class WXMetalRender {
     private let initialRadarProducts = ["N0Q", "N0U", "EET", "DVL"]
     var xPos: Float = 0.0
     var yPos: Float = 0.0
-    var zPos: Float = -7.0
+    let zPos: Float = -7.0
     var zoom: Float = 1.0
     var lastPanLocation: CGPoint!
     var tdwr = false
