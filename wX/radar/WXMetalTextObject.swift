@@ -10,8 +10,7 @@ final class WXMetalTextObject {
     
     private var glView = WXMetalSurfaceView()
     var wxMetalRender: WXMetalRender!
-    private var numPanes = 0
-    private let cityExtZoom = 30.0
+    private let numPanes: Int
     #if targetEnvironment(macCatalyst)
     private let cityMinZoom: Float = 0.20
     private let obsMinZoom: Float = 0.20
@@ -22,21 +21,24 @@ final class WXMetalTextObject {
     private let obsMinZoom: Float = 0.50
     private let countyMinZoom: Float = 1.50
     #endif
-    private var cityExtLength = 0
     private var maxCitiesPerGlview = 16
-    private var obsExtZoom = 6.5
-    private var glViewWidth = 0.0
-    private var glViewHeight = 0.0
-    private var scale = 0.0
-    private var oglrZoom: Float = 0.0
+    private let glViewWidth: Double
+    private let glViewHeight: Double
+    private let scale: Double
     private var textSize = Double(RadarPreferences.radarTextSize)
     private var context: UIViewController
-    private var screenScale = 0.0
-    private var xFudge = 15.0
-    private var yFudge = 25.0
-    private var fudgeFactor = 375.0
+    private let screenScale: Double
+    private let xFudge: Double
+    private let yFudge: Double
     
     init() {
+        numPanes = 0
+        glViewWidth = 0.0
+        glViewHeight = 0.0
+        screenScale = 0.0
+        scale = 0.0
+        xFudge = 15.0
+        yFudge = 25.0
         context = UIViewController()
     }
     
@@ -54,6 +56,7 @@ final class WXMetalTextObject {
         self.wxMetalRender = wxMetalRender
         self.numPanes = numPanes
         self.maxCitiesPerGlview = maxCitiesPerGlview / numPanes
+        let fudgeFactor = 375.0
         self.screenScale = screenScale * (glViewWidth / fudgeFactor) * 0.5
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
         xFudge = 15.0 * (fudgeFactor / glViewWidth)
@@ -63,10 +66,8 @@ final class WXMetalTextObject {
     private func addTextLabelsCitiesExtended() {
         if GeographyType.cities.display {
             glView.cities = []
-            oglrZoom = 1.0
-            if wxMetalRender.zoom < 1.00 { oglrZoom = wxMetalRender.zoom * 0.8 }
             if wxMetalRender.zoom > cityMinZoom {
-                cityExtLength = UtilityCitiesExtended.cities.count
+                let cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach { index in
                     if glView.cities.count <= maxCitiesPerGlview {
                         checkAndDrawText(
@@ -108,8 +109,6 @@ final class WXMetalTextObject {
     private func addTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
             glView.countyLabels = []
-            oglrZoom = 1.0
-            if wxMetalRender.zoom < 1.00 { oglrZoom = wxMetalRender.zoom * 0.8 }
             if wxMetalRender.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
@@ -127,8 +126,6 @@ final class WXMetalTextObject {
     private func addTextLabelsSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
             glView.spottersLabels = []
-            oglrZoom = 1.0
-            if wxMetalRender.zoom < 1.0 { oglrZoom = wxMetalRender.zoom * 0.8 }
             if wxMetalRender.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
@@ -172,8 +169,6 @@ final class WXMetalTextObject {
     func addWpcPressureCenters() {
         if RadarPreferences.radarShowWpcFronts {
             glView.pressureCenterLabels = []
-            oglrZoom = 1.0
-            if wxMetalRender.zoom < 1.0 { oglrZoom = wxMetalRender.zoom * 0.8 }
             if wxMetalRender.zoom < WXMetalRender.zoomToHideMiscFeatures {
                 UtilityWpcFronts.pressureCenters.forEach { value in
                     var color = wXColor.colorsToInt(0, 127, 255)
@@ -186,10 +181,8 @@ final class WXMetalTextObject {
     
     private func addTextLabelsObservations() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
-            obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
+            let obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
             glView.observations = []
-            oglrZoom = 1.0
-            if wxMetalRender.zoom < 1.0 { oglrZoom = wxMetalRender.zoom * 0.8 }
             if wxMetalRender.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach { index in
                     if index < UtilityMetar.obsArr.count && index < UtilityMetar.obsArrExt.count {
