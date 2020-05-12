@@ -171,9 +171,7 @@ final class UtilityColorPaletteGeneric {
                     colorMapG.put(gAl[index])
                     colorMapB.put(bAl[index])
                 }
-                if diff == 0 {
-                    diff = 1
-                }
+                if diff == 0 { diff = 1 }
                 (1..<diff).forEach { j in
                     if scale == 1 {
                         colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))
