@@ -299,7 +299,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         wxMetalTextObject.initializeTextLabels()
         wxMetalTextObject.addTextLabels()
         self.wxMetalRenders.forEach {
-            $0?.textObj = wxMetalTextObject
+            $0?.wxMetalTextObject = wxMetalTextObject
             $0?.getRadar("")
         }
         getPolygonWarnings()

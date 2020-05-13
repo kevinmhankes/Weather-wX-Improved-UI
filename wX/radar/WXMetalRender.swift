@@ -76,8 +76,7 @@ class WXMetalRender {
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
     private let paneNumber: Int
     let numberOfPanes: Int
-    // TODO rename
-    var textObj: WXMetalTextObject
+    var wxMetalTextObject: WXMetalTextObject
     private var renderFn: ((Int) -> Void)?
     // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
@@ -100,13 +99,13 @@ class WXMetalRender {
     ]
     
     init(_ device: MTLDevice,
-         _ textObj: WXMetalTextObject,
+         _ wxMetalTextObject: WXMetalTextObject,
          _ timeButton: ObjectToolbarIcon,
          _ productButton: ObjectToolbarIcon,
          paneNumber: Int,
          _ numberOfPanes: Int
     ) {
-        self.textObj = textObj
+        self.wxMetalTextObject = wxMetalTextObject
         self.device = device
         self.timeButton = timeButton
         self.productButton = productButton
@@ -496,8 +495,8 @@ class WXMetalRender {
                 self.showProductText(self.product)
                 if self.renderFn != nil { self.renderFn!(self.paneNumber) }
                 if !isAnimating {
-                    self.textObj.removeTextLabels()
-                    self.textObj.addTextLabels()
+                    self.wxMetalTextObject.removeTextLabels()
+                    self.wxMetalTextObject.addTextLabels()
                 }
             }
         }

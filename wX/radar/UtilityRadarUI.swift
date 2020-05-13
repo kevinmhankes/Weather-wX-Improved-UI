@@ -16,7 +16,7 @@ public class UtilityRadarUI {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
                 $0?.zoom *= 0.8
                 $0?.setZoom()
-                $0?.textObj.refreshTextLabels()
+                $0?.wxMetalTextObject.refreshTextLabels()
             }
         }
         wxMetal.forEach { $0?.demandRender() }
@@ -30,7 +30,7 @@ public class UtilityRadarUI {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
                 $0?.zoom *= 1.25
                 $0?.setZoom()
-                $0?.textObj.refreshTextLabels()
+                $0?.wxMetalTextObject.refreshTextLabels()
             }
         }
         wxMetal.forEach { $0?.demandRender() }
@@ -66,7 +66,7 @@ public class UtilityRadarUI {
         wxMetal.forEach {
             $0?.xPos += xChange
             $0?.yPos += yChange
-            $0?.textObj.refreshTextLabels()
+            $0?.wxMetalTextObject.refreshTextLabels()
         }
         wxMetal.forEach { $0?.demandRender() }
     }
