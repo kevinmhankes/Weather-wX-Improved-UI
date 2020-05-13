@@ -301,9 +301,9 @@ class WXMetalRender {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
-        var vList = 0
-        // TODO use stride
-        while vList < list.count {
+        //var vList = 0
+        //while vList < list.count {
+        stride(from: 0, to: list.count, by: 4).forEach { vList in
             buffers.putFloat(list[vList])
             buffers.putFloat(list[vList+1] * -1)
             buffers.putFloat(colors[0])
@@ -314,9 +314,10 @@ class WXMetalRender {
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            vList += 4
+            //vList += 4
         }
-        buffers.count = vList
+        //buffers.count = vList
+        buffers.count = list.count
     }
     
     func constructGenericGeographic(_ buffers: ObjectMetalBuffers) {
@@ -785,8 +786,6 @@ class WXMetalRender {
     func scaleLengthLocationDot(_ currentLength: Double) -> Double { (currentLength / Double(zoom)) * 2.0 }
     
     func setZoom() {
-        // wbCircleBuffers used to be in the first forEach
-        // TODO the 2 loops below can consolidate
         //[hiBuffers, tvsBuffers].forEach {
         //    $0.lenInit = scaleLengthLocationDot($0.type.size)
         //    $0.draw(pn)

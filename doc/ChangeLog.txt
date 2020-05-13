@@ -31,6 +31,7 @@
 		 [ADD] from adhoc location allow to save location
 		 [ADD] in color picker if tap "set to default", immediately exit to prior screen
 		 [ADD] in Spotter activity remove phone number/email as they are not available on https://www.spotternetwork.org/ w/o member login
+		 [FIX] disable spotters activity as performance/functionality is not sufficient
 56101 2020_05_11 [REF] misc
 		 [REF] location save, don't save notification pref since notifs not used
 		 [REF] remove unused prefs in UtilityStorePreferences
