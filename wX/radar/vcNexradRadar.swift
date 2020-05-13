@@ -780,7 +780,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     func showTiltMenu() {
         var tilts = ["Tilt 1", "Tilt 2", "Tilt 3", "Tilt 4"]
-        if wxMetalRenders[0]!.tdwr { tilts = ["Tilt 1", "Tilt 2", "Tilt 3"] }
+        if wxMetalRenders[0]!.isTdwr { tilts = ["Tilt 1", "Tilt 2", "Tilt 3"] }
         _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, self.changeTilt(_:))
     }
     

@@ -26,8 +26,7 @@ class WXMetalRender {
     let zPos: Float = -7.0
     var zoom: Float = 1.0
     var lastPanLocation: CGPoint!
-    // TODO rename isTdwr
-    var tdwr = false
+    var isTdwr = false
     #if !targetEnvironment(macCatalyst)
     static let zoomToHideMiscFeatures: Float = 0.5
     #endif
@@ -431,25 +430,25 @@ class WXMetalRender {
     func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ") {
-            self.tdwr = true
+            self.isTdwr = true
         } else {
-            self.tdwr = false
+            self.isTdwr = false
         }
         if (self.product == "N0Q" || self.product == "N1Q" || self.product == "N2Q" || self.product == "N3Q" || self.product == "L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
-            self.tdwr = true
+            self.isTdwr = true
         }
         if (self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ")) && !ridIsTdwr {
             self.radarProduct = "N0Q"
-            self.tdwr = false
+            self.isTdwr = false
         }
         if (self.product == "N0U" || self.product == "N1U" || self.product == "N2U" || self.product == "N3U" || self.product == "L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
-            self.tdwr = true
+            self.isTdwr = true
         }
         if self.product.hasPrefix("TV") && !ridIsTdwr {
             self.radarProduct = "N0U"
-            self.tdwr = false
+            self.isTdwr = false
         }
     }
     
@@ -457,7 +456,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.tdwr)
+                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.isTdwr)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = "nids" + self.indexString
                 } else {
