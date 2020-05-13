@@ -109,11 +109,7 @@ public class UtilityRadarUI {
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityMetar.findClosestMetar(location)
-            DispatchQueue.main.async {
-                let vc = vcTextViewer()
-                vc.textViewText = html
-                uiv.goToVC(vc)
-            }
+            DispatchQueue.main.async { Route.textViewer(uiv, html) }
         }
     }
 
@@ -125,12 +121,11 @@ public class UtilityRadarUI {
 
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
         let obsSite = UtilityMetar.findClosestObservation(location)
-        let vc = vcImageViewer()
-        vc.url = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
+        let url = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
         + "BackHour=0&TempBox=Y&DewBox=Y&SkyBox=Y&WindSpdBox=Y&WindDirBox="
         + "Y&WindGustBox=Y&CigBox=Y&VisBox=Y&ObvBox=Y&PtypeBox=N&PopoBox=Y&LightningBox=Y&ConvBox=Y&sta="
         + obsSite.name
-        uiv.goToVC(vc)
+        Route.imageViewer(uiv, url)
     }
 
     static func getRadarStatus(_ uiv: UIViewController, _ rid: String) {
@@ -152,14 +147,7 @@ public class UtilityRadarUI {
         return message
     }
 
-    static func getLatLonFromScreenPosition(
-        _ uiv: UIViewController,
-        _ wxMetal: WXMetalRender,
-        _ numberOfPanes: Int,
-        _ ortInt: Float,
-        _ x: CGFloat,
-        _ y: CGFloat
-        ) -> LatLon {
+    static func getLatLonFromScreenPosition(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ numberOfPanes: Int, _ ortInt: Float, _ x: CGFloat, _ y: CGFloat) -> LatLon {
         let width = Double(uiv.view.bounds.size.width)
         let height = Double(uiv.view.bounds.size.height)
         var yModified = Double(y)

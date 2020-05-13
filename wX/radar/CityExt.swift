@@ -9,17 +9,10 @@ public final class CityExt {
     let name: String
     let latitude: Double
     let longitude: Double
-    //private let population: Int
 
-	//init(_ name: String, _ lat: Double, _ lon: Double, _ population: String) {
     init(_ name: String, _ lat: Double, _ lon: Double) {
 		self.name = name
 		self.latitude = lat
 		self.longitude = lon
-		//if population == "" {
-		//	self.population = 0
-		//} else {
-		//	self.population = Int(population) ?? 0
-		//}
 	}
 }
