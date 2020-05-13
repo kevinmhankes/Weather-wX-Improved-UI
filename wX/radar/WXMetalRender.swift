@@ -492,8 +492,7 @@ class WXMetalRender {
             DispatchQueue.main.async {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText, isAnimating)
-                // TODO rename to product
-                self.showProductText(self.radarProduct)
+                self.showProductText(self.product)
                 if self.renderFn != nil { self.renderFn!(self.paneNumber) }
                 if !isAnimating {
                     self.textObj.removeTextLabels()
@@ -608,9 +607,9 @@ class WXMetalRender {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
-        // TODO use stride
-        var vList = 0
-        while vList < list.count {
+        //var vList = 0
+        //while vList < list.count {
+        stride(from: 0, to: list.count, by: 4).forEach { vList in
             buffers.putFloat(list[vList])
             buffers.putFloat(list[vList+1] * -1)
             buffers.putFloat(colors[0])
@@ -621,9 +620,11 @@ class WXMetalRender {
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            vList += 4
+            //vList += 4
         }
-        buffers.count = vList
+        //print("DEBUG: " + String(vList) + " " + String(list.count))
+        //buffers.count = vList
+        buffers.count = list.count
     }
     
     func constructWBLines() {
@@ -786,12 +787,12 @@ class WXMetalRender {
     func setZoom() {
         // wbCircleBuffers used to be in the first forEach
         // TODO the 2 loops below can consolidate
-        [hiBuffers, tvsBuffers].forEach {
-            $0.lenInit = scaleLengthLocationDot($0.type.size) // was scaleLength
-            $0.draw(pn)
-            $0.generateMtlBuffer(device)
-        }
-        [locdotBuffers, wbCircleBuffers, spotterBuffers].forEach {
+        //[hiBuffers, tvsBuffers].forEach {
+        //    $0.lenInit = scaleLengthLocationDot($0.type.size)
+        //    $0.draw(pn)
+        //    $0.generateMtlBuffer(device)
+        //}
+        [locdotBuffers, wbCircleBuffers, spotterBuffers, hiBuffers, tvsBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size)
             $0.draw(pn)
             $0.generateMtlBuffer(device)
