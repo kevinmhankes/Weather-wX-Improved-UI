@@ -10,10 +10,10 @@ class WXGLNexradLevel3StormInfo {
     private static let stiPattern2 = "MVT(.*?)V"
     
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
-        var stormList = [Double]()
         WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
         let data = UtilityIO.readFileToData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
+            var stormList = [Double]()
             let position = retStr1.parseColumn(stiPattern1)
             let motion = retStr1.parseColumn(stiPattern2)
             var posnStr = ""

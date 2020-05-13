@@ -10,10 +10,10 @@ class WXGLNexradLevel3TVS {
     private static let tvsPattern2 = ".{9}(.{7})"
 
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
-        var stormList = [Double]()
         WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
         let data = UtilityIO.readFileToData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
+            var stormList = [Double]()
             let tvs = retStr1.parseColumn(tvsPattern1)
             tvs.indices.forEach { index in
                 let ecc =  ExternalGeodeticCalculator()

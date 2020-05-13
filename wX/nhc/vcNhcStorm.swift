@@ -94,15 +94,11 @@ class vcNhcStorm: UIwXViewController {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")
-            DispatchQueue.main.async {
-                self.displayTopImageContent()
-            }
+            DispatchQueue.main.async { self.displayTopImageContent() }
         }
         serial.async {
             self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async {
-                self.displayTextContent()
-            }
+            DispatchQueue.main.async { self.displayTextContent() }
         }
         serial.async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
@@ -111,9 +107,7 @@ class vcNhcStorm: UIwXViewController {
                 if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
                 self.bitmaps.append(Bitmap(url + fileName))
             }
-            DispatchQueue.main.async {
-                self.displayImageContent()
-            }
+            DispatchQueue.main.async { self.displayImageContent() }
         }
     }
     

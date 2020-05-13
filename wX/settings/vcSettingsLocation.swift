@@ -48,32 +48,11 @@ class vcSettingsLocation: UIwXViewController {
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
         let locName = MyApplication.locations[sender.data].name
         let alert = ObjectPopUp(self, locName, productButton)
-        alert.addAction(
-            UIAlertAction(
-                title: "Edit \"" + locName + "\"",
-                style: .default,
-                handler: {_ in self.actionLocation(sender.data)}
-            )
-        )
+        alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"", style: .default, handler: {_ in self.actionLocation(sender.data)}))
         if Location.numLocations > 1 {
-            alert.addAction(
-                UIAlertAction(
-                    title: "Delete \"" + locName + "\"",
-                    style: .default,
-                    handler: {_ in self.deleteLocation(sender.data)})
-            )
-            alert.addAction(
-                UIAlertAction(
-                    title: "Move Up",
-                    style: .default,
-                    handler: {_ in self.moveUp(sender.data)})
-            )
-            alert.addAction(
-                UIAlertAction(
-                    title: "Move Down",
-                    style: .default,
-                    handler: {_ in self.moveDown(sender.data)})
-            )
+            alert.addAction(UIAlertAction(title: "Delete \"" + locName + "\"", style: .default, handler: {_ in self.deleteLocation(sender.data)}))
+            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: {_ in self.moveUp(sender.data)}))
+            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: {_ in self.moveDown(sender.data)}))
         }
         alert.finish()
     }
