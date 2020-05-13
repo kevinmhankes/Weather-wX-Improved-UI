@@ -25,6 +25,7 @@ class WXMetalRender {
     let zPos: Float = -7.0
     var zoom: Float = 1.0
     var lastPanLocation: CGPoint!
+    // TODO rename isTdwr
     var tdwr = false
     #if !targetEnvironment(macCatalyst)
     static let zoomToHideMiscFeatures: Float = 0.5
@@ -354,7 +355,7 @@ class WXMetalRender {
         setZoom()
         if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
-    
+    // TODO rename
     func writePrefs() {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
@@ -369,6 +370,7 @@ class WXMetalRender {
     
     // This method is called between the transition from single to dual pane
     // It saves the current specifics about the single pane radar save the product itself
+    // TODO rename
     func writePrefsForSingleToDualPaneTransition() {
         let numberOfPanes = "2"
         let radarType = "WXMETAL"
@@ -383,6 +385,7 @@ class WXMetalRender {
     
     // TODO consolidate the method above and below
     // TODO move radarType to global and rename
+    // TODO rename
     func writePrefsForSingleToQuadPaneTransition() {
         let numberOfPanes = "4"
         let radarType = "WXMETAL"
@@ -395,8 +398,8 @@ class WXMetalRender {
         }
     }
     
+    // TODO rename
     func readPrefs() {
-        //print("DEBUGRADAR: in readPrefs")
         if RadarPreferences.wxoglRememberLocation {
             let numberOfPanes = String(self.numberOfPanes)
             let index = String(paneNumber)
@@ -405,11 +408,9 @@ class WXMetalRender {
             xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
             product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
-            //print("DEBUGRADAR: " + numberOfPanes + " " + product)
             rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
             tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
         } else {
-            //print("DEBUGRADAR: in not remember location")
             rid = Location.rid
         }
     }
@@ -427,7 +428,7 @@ class WXMetalRender {
         radarBuffers.metalBuffer = []
         radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     }
-    
+    // TODO rename to radarSite
     var rid: String {
         get { ridStr }
         set {
@@ -474,6 +475,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
+                // TODO use product instead of radarProduct
                 self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = "nids" + self.indexString
