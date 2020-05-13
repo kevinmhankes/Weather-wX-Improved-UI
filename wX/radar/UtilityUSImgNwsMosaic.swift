@@ -129,13 +129,9 @@ class UtilityUSImgNwsMosaic {
         } else {
             sectorUrl = sector
         }
-        var sPattern = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl == "alaska" { sPattern = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" }
-        let urls = UtilityImgAnim.getUrlArray(
-            MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/",
-            sPattern,
-            numberOfFrames
-        )
+        var regExp = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
+        if sectorUrl == "alaska" { regExp = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" }
+        let urls = UtilityImgAnim.getUrlArray(MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/", regExp, numberOfFrames)
         let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
         let bitmaps = urls.map { Bitmap(baseUrl + $0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)

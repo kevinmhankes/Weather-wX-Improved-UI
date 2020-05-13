@@ -75,6 +75,7 @@ class WXMetalRender {
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
     private let paneNumber: Int
     let numberOfPanes: Int
+    // TODO rename
     var textObj: WXMetalTextObject
     private var renderFn: ((Int) -> Void)?
     // need a copy of this list here in addition to WXGLNexrad
@@ -486,7 +487,7 @@ class WXMetalRender {
                 isAnimating = true
                 self.radarBuffers.fileName = url
             }
-            if url == "" {  // not anim
+            if url == "" {  // not animating
                 [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
                     if $0.display { self.constructLevel3TextProduct($0) }
                 }
@@ -511,6 +512,7 @@ class WXMetalRender {
             DispatchQueue.main.async {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText, isAnimating)
+                // TODO rename to product
                 self.showProductText(self.radarProduct)
                 if self.renderFn != nil { self.renderFn!(self.paneNumber) }
                 if !isAnimating {

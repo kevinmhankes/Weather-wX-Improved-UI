@@ -60,13 +60,7 @@ class vcRadarMosaic: UIwXViewController {
     }
     
     @objc func animateClicked() {
-        _ = ObjectPopUp(
-            self,
-            title: "Select number of animation frames:",
-            animateButton,
-            [5, 10, 20, 30],
-            self.getAnimation(_:)
-        )
+        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [5, 10, 20, 30], self.getAnimation(_:))
     }
     
     func getAnimation(_ frameCount: Int) {

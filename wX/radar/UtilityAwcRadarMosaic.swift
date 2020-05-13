@@ -125,8 +125,7 @@ class UtilityAwcRadarMosaic {
             baseAddOn = "sat/us/"
             imageType = ".jpg"
         }
-        let url = baseUrl + baseAddOn + product + "_" + sector + imageType
-        return Bitmap(url)
+        return Bitmap(baseUrl + baseAddOn + product + "_" + sector + imageType)
     }
 
     static func getAnimation(_ sector: String, _ product: String) -> AnimationDrawable {

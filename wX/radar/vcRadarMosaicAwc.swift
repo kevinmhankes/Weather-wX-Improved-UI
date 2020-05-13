@@ -26,16 +26,7 @@ class vcRadarMosaicAwc: UIwXViewController {
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                sectorButton,
-                animateButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
@@ -65,13 +56,7 @@ class vcRadarMosaicAwc: UIwXViewController {
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(
-            self,
-            title: "Sector Selection",
-            sectorButton,
-            UtilityAwcRadarMosaic.sectorLabels,
-            self.sectorChanged(_:)
-        )
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, self.sectorChanged(_:))
     }
     
     @objc func productClicked() {
