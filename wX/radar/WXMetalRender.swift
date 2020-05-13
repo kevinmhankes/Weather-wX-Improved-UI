@@ -14,6 +14,7 @@ class WXMetalRender {
     
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
+    // TODO rename
     var pn = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
@@ -166,7 +167,6 @@ class WXMetalRender {
         renderEncoder!.setCullMode(MTLCullMode.front)
         renderEncoder!.setRenderPipelineState(pipelineState)
         var projectionMatrixRef = projectionMatrix
-        //var modelViewMatrixRef = modelViewMatrix
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
                 if vbuffer.scaleCutOff < zoom {
@@ -266,47 +266,48 @@ class WXMetalRender {
     }
     
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
-        var fList = [Double]()
+        var list: [Double]
         switch buffers.type.string {
         case "MCD":
-            fList = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(pn, buffers.type)
         case "MPD":
-            fList = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(pn, buffers.type)
         case "WATCH":
-            fList = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(pn, buffers.type)
         case "WATCH_TORNADO":
-            fList = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(pn, buffers.type)
         case "TST":
-            fList = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(pn, buffers.type)
         case "TOR":
-            fList = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(pn, buffers.type)
         case "FFW":
-            fList = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(pn, buffers.type)
         case "SMW":
-            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
+            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
         case "SQW":
-            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
+            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
         case "DSW":
-            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
+            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
         case "SPS":
-            fList = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
+            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case "STI":
-            fList = WXGLNexradLevel3StormInfo.decode(pn, indexString)
+            list = WXGLNexradLevel3StormInfo.decode(pn, indexString)
         default:
-            break
+            list = [Double]()
         }
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
         var vList = 0
-        while vList < fList.count {
-            buffers.putFloat(fList[vList])
-            buffers.putFloat(fList[vList+1] * -1)
+        // TODO use stride
+        while vList < list.count {
+            buffers.putFloat(list[vList])
+            buffers.putFloat(list[vList+1] * -1)
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            buffers.putFloat(fList[vList+2])
-            buffers.putFloat(fList[vList+3] * -1)
+            buffers.putFloat(list[vList+2])
+            buffers.putFloat(list[vList+3] * -1)
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])

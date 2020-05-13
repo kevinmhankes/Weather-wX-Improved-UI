@@ -26,9 +26,8 @@
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
 // [ADD] re-eval aviation dot size on MacOS
-// [ADD] look into GPS settings if require screen on setting
 
-56102 2020_05_12 [REF] misc
+56102 2020_05_13 [REF] misc
 		 [ADD] from adhoc location allow to save location
 		 [ADD] in color picker if tap "set to default", immediately exit to prior screen
 56101 2020_05_11 [REF] misc
