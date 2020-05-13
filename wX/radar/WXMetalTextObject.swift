@@ -85,7 +85,7 @@ final class WXMetalTextObject {
     }
     
     func checkAndDrawText(_ tvList:inout [TextViewMetal], _ lat: Double, _ lon: Double, _ text: String, _ color: Int) {
-        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, wxMetalRender.pn)
+        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, wxMetalRender.projectionNumbers)
         // changing RID resets glviewWidth
         let xPos = latLon[0] * Double(wxMetalRender.zoom) - xFudge + Double(wxMetalRender.xPos)
         let yPos = latLon[1] * Double(wxMetalRender.zoom) - yFudge - Double(wxMetalRender.yPos)
@@ -191,7 +191,7 @@ final class WXMetalTextObject {
                         let tmpArrObsExt = UtilityMetar.obsArrExt[index].split(":")
                         let lat = Double(tmpArrObs[0]) ?? 0.0
                         let lon = Double(tmpArrObs[1]) ?? 0.0
-                        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, wxMetalRender.pn)
+                        let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, wxMetalRender.projectionNumbers)
                         let xPos = latLon[0] * Double(wxMetalRender.zoom) - xFudge + Double(wxMetalRender.xPos)
                         let yPos = latLon[1] * Double(wxMetalRender.zoom) - yFudge - Double(wxMetalRender.yPos)
                         if abs(Double(xPos) * scale * 2 ) < glViewWidth && abs(yPos * scale * 2) < glViewHeight {

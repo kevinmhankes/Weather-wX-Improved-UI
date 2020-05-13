@@ -15,8 +15,7 @@ class WXMetalRender {
     private let radarType = "WXMETAL"
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
-    // TODO rename
-    var pn = ProjectionNumbers()
+    var projectionNumbers = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
     private var tiltInt = 0
@@ -270,29 +269,29 @@ class WXMetalRender {
         var list: [Double]
         switch buffers.type.string {
         case "MCD":
-            list = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(projectionNumbers, buffers.type)
         case "MPD":
-            list = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(projectionNumbers, buffers.type)
         case "WATCH":
-            list = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(projectionNumbers, buffers.type)
         case "WATCH_TORNADO":
-            list = UtilityWatch.add(pn, buffers.type)
+            list = UtilityWatch.add(projectionNumbers, buffers.type)
         case "TST":
-            list = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
         case "TOR":
-            list = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
         case "FFW":
-            list = WXGLPolygonWarnings.add(pn, buffers.type)
+            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
         case "SMW":
-            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
+            list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
         case "SQW":
-            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
+            list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
         case "DSW":
-            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
+            list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
         case "SPS":
-            list = WXGLPolygonWarnings.addGeneric(pn, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
+            list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case "STI":
-            list = WXGLNexradLevel3StormInfo.decode(pn, indexString)
+            list = WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString)
         default:
             list = [Double]()
         }
@@ -325,11 +324,11 @@ class WXMetalRender {
         JNI_GenMercato(
             MemoryBuffer.getPointer(buffers.geoType.relativeBuffer.array),
             MemoryBuffer.getPointer(buffers.floatBuffer.array),
-            pn.xFloat,
-            pn.yFloat,
-            pn.xCenterFloat,
-            pn.yCenterFloat,
-            pn.oneDegreeScaleFactorFloat,
+            projectionNumbers.xFloat,
+            projectionNumbers.yFloat,
+            projectionNumbers.xCenterFloat,
+            projectionNumbers.yCenterFloat,
+            projectionNumbers.oneDegreeScaleFactorFloat,
             Int32(buffers.count)
         )
         buffers.setToPositionZero()
@@ -347,7 +346,7 @@ class WXMetalRender {
     }
     
     func loadGeometry() {
-        pn = ProjectionNumbers(rid, .wxOgl)
+        projectionNumbers = ProjectionNumbers(rid, .wxOgl)
         geographicBuffers.forEach {
             constructGenericGeographic($0)
             $0.generateMtlBuffer(device)
@@ -574,10 +573,10 @@ class WXMetalRender {
         locCircleBuffers.triangleCount = 24
         locCircleBuffers.initialize(32 * locCircleBuffers.triangleCount, PolygonType.LOCDOT.color)
         if RadarPreferences.locdotFollowsGps {
-            let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(gpsLocation.lat, gpsLocation.lon, pn)
+            let gpsCoords = UtilityCanvasProjection.computeMercatorNumbers(gpsLocation.lat, gpsLocation.lon, projectionNumbers)
             gpsLatLonTransformed = (Float(-gpsCoords[0]), Float(gpsCoords[1]))
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, pn, gpsLocation)
+            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, projectionNumbers, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
         locdotBuffers.generateMtlBuffer(device)
@@ -599,7 +598,7 @@ class WXMetalRender {
             buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
         }
         buffers.lenInit = scaleLengthLocationDot(buffers.lenInit) // was scaleLength
-        buffers.draw(pn)
+        buffers.draw(projectionNumbers)
     }
     
     func constructGenericLinesShort(_ buffers: ObjectMetalBuffers, _ list: [Double]) {
@@ -627,14 +626,14 @@ class WXMetalRender {
     }
     
     func constructWBLines() {
-        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: false))
+        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: false))
         constructWBLinesGusts()
         constructWBCircle()
         wbBuffers.generateMtlBuffer(device)
     }
     
     func constructWBLinesGusts() {
-        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(pn, isGust: true))
+        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: true))
         wbGustsBuffers.generateMtlBuffer(device)
     }
     
@@ -652,7 +651,7 @@ class WXMetalRender {
     }
     
     func constructStiLines() {
-        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(pn, "nids_sti_tab" + indexString))
+        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString))
         stiBuffers.generateMtlBuffer(device)
     }
     
@@ -662,7 +661,7 @@ class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(pn, "nids_tvs_tab" + indexString))
+        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(projectionNumbers, "nids_tvs_tab" + indexString))
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
@@ -672,7 +671,7 @@ class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(pn, "nids_hi_tab" + indexString))
+        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(projectionNumbers, "nids_hi_tab" + indexString))
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }
@@ -686,7 +685,7 @@ class WXMetalRender {
         wbCircleBuffers.triangleCount = 6
         wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
         wbCircleBuffers.lenInit = scaleLengthLocationDot(wbCircleBuffers.lenInit) // was scaleLength
-        ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, pn)
+        ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, projectionNumbers)
         wbCircleBuffers.generateMtlBuffer(device)
     }
     
@@ -698,7 +697,7 @@ class WXMetalRender {
         spotterBuffers.lonList = UtilitySpotter.lon
         constructTriangles(spotterBuffers)
         spotterBuffers.lenInit = scaleLengthLocationDot(spotterBuffers.type.size)
-        spotterBuffers.draw(pn)
+        spotterBuffers.draw(projectionNumbers)
         spotterBuffers.generateMtlBuffer(device)
     }
     
@@ -727,13 +726,13 @@ class WXMetalRender {
                 wpcFrontPaints.append(wXColor.colorsToInt(254, 216, 177))
             }
             for j in stride(from: 0, to: front.coordinates.count - 1, by: 2) {
-                var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, pn)
+                var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, projectionNumbers)
                 wpcFrontBuffersList[z].putFloat(tmpCoords[0])
                 wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
                 wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
                 wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
-                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j + 1].lat, front.coordinates[j + 1].lon, pn)
+                tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j + 1].lat, front.coordinates[j + 1].lon, projectionNumbers)
                 wpcFrontBuffersList[z].putFloat(tmpCoords[0])
                 wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
                 wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
@@ -762,13 +761,13 @@ class WXMetalRender {
         (0...4).forEach { z in
             if let flArr = UtilitySwoD1.hashSwo[z] {
                 stride(from: 0, to: flArr.count - 1, by: 4).forEach { j in
-                    var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, pn)
+                    var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, projectionNumbers)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
                     swoBuffers.putColor(Color.green(self.colorSwo[z]))
                     swoBuffers.putColor(Color.blue(self.colorSwo[z]))
-                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, pn)
+                    tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, projectionNumbers)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
                     swoBuffers.putColor(Color.red(self.colorSwo[z]))
@@ -791,12 +790,12 @@ class WXMetalRender {
         //}
         [locdotBuffers, wbCircleBuffers, spotterBuffers, hiBuffers, tvsBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size)
-            $0.draw(pn)
+            $0.draw(projectionNumbers)
             $0.generateMtlBuffer(device)
         }
         if  RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
-            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, pn, gpsLocation)
+            UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, projectionNumbers, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
         if self.renderFn != nil { self.renderFn!(paneNumber) }
