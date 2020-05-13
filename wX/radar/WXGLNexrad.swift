@@ -8,6 +8,23 @@ final class WXGLNexrad {
     
     static var wxoglDspLegendMax = 0.0
     
+    let tdwrProductList = [
+            "TZ0",
+            "TZ1",
+            "TZ2",
+            "TR0",
+            "TR1",
+            "TR2",
+            "TV0",
+            "TV1",
+            "TV2",
+            "TZL",
+            "N1P",
+            "NTP"
+    ]
+
+    static func isProductTdwr(_ product: String) -> Bool { product.startsWith("TV") || product == "TZL" || product.startsWith("TZ") }
+    
     static func getRadarTimeStamp() -> String {
         let radarTimeStamp = getRadarInfo("")
         var radarTimeFinal = ""

@@ -12,6 +12,7 @@ import UIKit
 
 class WXMetalRender {
     
+    private let radarType = "WXMETAL"
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
     // TODO rename
@@ -112,8 +113,8 @@ class WXMetalRender {
         self.paneNumber = paneNumber
         self.indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
-        print("DEBUGRADAR: " + "readPrefs")
-        readPrefs()
+        //print("DEBUGRADAR: " + "readPrefs")
+        readPreferences()
         regenerateProductList()
         radarLayers = [radarBuffers]
         geographicBuffers = []
@@ -356,11 +357,10 @@ class WXMetalRender {
         setZoom()
         if self.renderFn != nil { self.renderFn!(paneNumber) }
     }
-    // TODO rename
-    func writePrefs() {
+    
+    func writePreferences() {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
-        let radarType = "WXMETAL"
         Utility.writePref(radarType + numberOfPanes + "_ZOOM" + index, zoom)
         Utility.writePref(radarType + numberOfPanes + "_X" + index, xPos)
         Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
@@ -371,10 +371,8 @@ class WXMetalRender {
     
     // This method is called between the transition from single to dual pane
     // It saves the current specifics about the single pane radar save the product itself
-    // TODO rename
-    func writePrefsForSingleToDualPaneTransition() {
+    func writePreferencesForSingleToDualPaneTransition() {
         let numberOfPanes = "2"
-        let radarType = "WXMETAL"
         ["0", "1"].forEach {
             Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
             Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
@@ -384,27 +382,10 @@ class WXMetalRender {
         }
     }
     
-    // TODO consolidate the method above and below
-    // TODO move radarType to global and rename
-    // TODO rename
-    func writePrefsForSingleToQuadPaneTransition() {
-        let numberOfPanes = "4"
-        let radarType = "WXMETAL"
-        ["0", "1", "2", "3"].forEach {
-            Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
-            Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
-            Utility.writePref(radarType + numberOfPanes + "_Y" + $0, yPos)
-            Utility.writePref(radarType + numberOfPanes + "_RID" + $0, rid)
-            Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
-        }
-    }
-    
-    // TODO rename
-    func readPrefs() {
+    func readPreferences() {
         if RadarPreferences.wxoglRememberLocation {
             let numberOfPanes = String(self.numberOfPanes)
             let index = String(paneNumber)
-            let radarType = "WXMETAL"
             zoom = Utility.readPref(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
@@ -476,8 +457,7 @@ class WXMetalRender {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
             if url == "" {
-                // TODO use product instead of radarProduct
-                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.radarProduct, self.indexString, self.tdwr)
+                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.tdwr)
                 if !self.radarProduct.contains("L2") {
                     self.radarBuffers.fileName = "nids" + self.indexString
                 } else {
@@ -628,6 +608,7 @@ class WXMetalRender {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
+        // TODO use stride
         var vList = 0
         while vList < list.count {
             buffers.putFloat(list[vList])
@@ -675,6 +656,7 @@ class WXMetalRender {
         stiBuffers.generateMtlBuffer(device)
     }
     
+    // TODO the 2 methods below can go generic
     func constructTvs() {
         tvsBuffers.lenInit = tvsBuffers.type.size
         tvsBuffers.triangleCount = 1
@@ -803,6 +785,7 @@ class WXMetalRender {
     
     func setZoom() {
         // wbCircleBuffers used to be in the first forEach
+        // TODO the 2 loops below can consolidate
         [hiBuffers, tvsBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size) // was scaleLength
             $0.draw(pn)

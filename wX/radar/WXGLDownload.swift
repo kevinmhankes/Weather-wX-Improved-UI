@@ -10,8 +10,8 @@ final class WXGLDownload {
         
     private static let utilnxanimPattern1 = ">(sn.[0-9]{4})</a>"
     private static let utilnxanimPattern2 = ".*?([0-9]{2}-[A-Za-z]{3}-[0-9]{4} [0-9]{2}:[0-9]{2}).*?"
-    static var nwsRadarPub = "https://tgftp.nws.noaa.gov/"
-    private static var nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
+    static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
+    private static let nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
     
     static func getNidsTab(_ product: String, _ radarSite: String, _ fileName: String) {
         let url = getRadarFileUrl(radarSite, product, false)
@@ -19,8 +19,8 @@ final class WXGLDownload {
         UtilityIO.saveInputStream(inputStream, fileName)
     }
     
-    static func getRidPrefix(_ radarSite: String, _ tdwr: Bool) -> String {
-        if tdwr {
+    private static func getRidPrefix(_ radarSite: String, _ isTdwr: Bool) -> String {
+        if isTdwr {
             return ""
         } else {
             switch radarSite {
@@ -34,22 +34,7 @@ final class WXGLDownload {
         }
     }
     
-    static func getRidPrefix(_ radarSite: String, _ product: String) -> String {
-        if product=="TV0" || product=="TZL" || product=="TR0" || product=="TZ0" {
-            return ""
-        } else {
-            switch radarSite {
-            case "JUA":
-                return "t"
-            case "HKI", "HMO", "HKM", "HWA", "APD", "ACG", "AIH", "AHG", "AKC", "ABC", "AEC", "GUA":
-                return "p"
-            default:
-                return "k"
-            }
-        }
-    }
-    
-    static func getRadarFileUrl(_ radarSite: String, _ product: String, _ tdwr: Bool) -> String {
+    private static func getRadarFileUrl(_ radarSite: String, _ product: String, _ tdwr: Bool) -> String {
         let ridPrefix = getRidPrefix(radarSite, tdwr)
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
         return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
@@ -76,8 +61,8 @@ final class WXGLDownload {
     // Download a list of files and return the list as a list of Strings
     // Determines of Level 2 or Level 3 and calls appropriate method
     static func getRadarFilesForAnimation(_ frameCount: Int, _ prod: String, _ radarSite: String) -> [String] {
-        var listOfFiles = [String]()
-        let ridPrefix = getRidPrefix(radarSite, prod)
+        let listOfFiles: [String]
+        let ridPrefix = getRidPrefix(radarSite, WXGLNexrad.isProductTdwr(prod))
         if !prod.contains("L2") {
             listOfFiles = getLevel3FilesForAnimation(frameCount, prod, ridPrefix, radarSite.lowercased())
         } else {
@@ -86,7 +71,7 @@ final class WXGLDownload {
         return listOfFiles
     }
     
-    static func getRadarDirectoryUrl(_ radarSite: String, _ product: String, _ ridPrefix: String) -> String {
+    private static func getRadarDirectoryUrl(_ radarSite: String, _ product: String, _ ridPrefix: String) -> String {
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
         return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
     }

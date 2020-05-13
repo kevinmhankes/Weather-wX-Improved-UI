@@ -123,14 +123,8 @@ class UtilityUSImgNwsMosaic {
     }
 
     static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
-        var sectorUrl = ""
-        if sector == "latest" {
-            sectorUrl = "NAT"
-        } else {
-            sectorUrl = sector
-        }
-        var regExp = "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        if sectorUrl == "alaska" { regExp = "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" }
+        let sectorUrl = sector == "latest" ?  "NAT" : sector
+        let regExp = sectorUrl == "alaska" ? "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" : "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
         let urls = UtilityImgAnim.getUrlArray(MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/", regExp, numberOfFrames)
         let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
         let bitmaps = urls.map { Bitmap(baseUrl + $0) }

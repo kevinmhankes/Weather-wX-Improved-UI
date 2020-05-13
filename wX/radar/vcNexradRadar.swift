@@ -440,7 +440,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 locationManager.stopUpdatingLocation()
                 locationManager.stopMonitoringSignificantLocationChanges()
                 stopAnimate()
-                if savePreferences { wxMetalRenders.forEach { $0!.writePrefs() }}
+                if savePreferences { wxMetalRenders.forEach { $0!.writePreferences() }}
                 wxMetalRenders.forEach { $0!.cleanup() }
                 device = nil
                 wxMetalTextObject.wxMetalRender = nil
@@ -472,8 +472,8 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func timeClicked() {
-        wxMetalRenders.forEach { $0!.writePrefs() }
-        wxMetalRenders[0]?.writePrefsForSingleToDualPaneTransition()
+        wxMetalRenders.forEach { $0!.writePreferences() }
+        wxMetalRenders[0]?.writePreferencesForSingleToDualPaneTransition()
         Route.radarFromTimeButton(self, "2")
     }
     
@@ -865,11 +865,11 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         self.animateFrameCntClicked(10)
     }
     
-    @objc func goToQuadPane() {
-        wxMetalRenders.forEach { $0!.writePrefs() }
-        wxMetalRenders[0]?.writePrefsForSingleToQuadPaneTransition()
+    /*@objc func goToQuadPane() {
+        wxMetalRenders.forEach { $0!.writePreferences() }
+        wxMetalRenders[0]?.writePreferencesForSingleToQuadPaneTransition()
         Route.radarFromTimeButton(self, "4")
-    }
+    }*/
     
     @objc func showKeyboardShortcuts() {
         UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
