@@ -55,9 +55,13 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setPaneSize(size)
+        //resetTextObject()
         paneRange.indices.forEach { self.render($0) }
         coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap) }
+                            completion: { _ -> Void in
+                                self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
+                                self.resetTextObject()
+        }
         )
     }
     
@@ -562,6 +566,21 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         } else {
             wxMetalRenders[index]!.resetRidAndGet(radarSite)
         }
+        self.view.subviews.forEach { if $0 is UITextView { $0.removeFromSuperview() } }
+        wxMetalTextObject = WXMetalTextObject(
+            self,
+            numberOfPanes,
+            Double(view.frame.width),
+            Double(view.frame.height),
+            wxMetalRenders[0]!,
+            screenScale
+        )
+        wxMetalTextObject.initializeTextLabels()
+        wxMetalTextObject.addTextLabels()
+    }
+    
+    // TODO use above
+    func resetTextObject() {
         self.view.subviews.forEach { if $0 is UITextView { $0.removeFromSuperview() } }
         wxMetalTextObject = WXMetalTextObject(
             self,
