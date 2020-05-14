@@ -28,7 +28,7 @@ final class UtilityActions {
         if Location.isUS { uiv.goToVC(vcSevereDashboard()) } else { uiv.goToVC(vcCanadaWarnings()) }
     }
     
-    static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String, _ button: ObjectToolbarIcon) {
+    static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
         switch menuItem {
         case "Soundings":
             uiv.goToVC(vcSoundings())
@@ -87,7 +87,7 @@ final class UtilityActions {
         )
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
-            let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item, button)})
+            let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item)})
             if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
             alert.addAction(action)
         }

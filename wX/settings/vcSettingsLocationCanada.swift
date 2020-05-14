@@ -9,8 +9,8 @@ import UIKit
 class vcSettingsLocationCanada: UIwXViewController {
     
     private var objectTextViews = [ObjectTextView]()
-    private var html = ""
-    private var filter = ""
+    //private var html = ""
+    //private var filter = ""
     private var cityDisplay = false
     private var provSelected = ""
     private var listIds = [String]()

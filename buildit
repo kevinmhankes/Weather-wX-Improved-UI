@@ -21,3 +21,4 @@ ls -l ${APP_NAME}_${version}.zip
 cp ${APP_NAME}_${version}.zip ${dropBoxPath}/
 rm -rf ${tmpPath} 
 echo Build Complete
+echo hdiutil create wXL23${version}.dmg -volname "wXL23${version}" -fs HFS+ -srcfolder "wX.app"

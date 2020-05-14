@@ -304,7 +304,6 @@
 		F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */; };
 		F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */; };
 		F0AD5B401DD3301500284C7C /* UIColorLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */; };
-		F0B31EE11DB3DB9800239850 /* UtilitySettingsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */; };
 		F0B334F61DA3FB2B0035BD36 /* UtilityDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334F51DA3FB2B0035BD36 /* UtilityDownload.swift */; };
 		F0B334F91DA3FBCE0035BD36 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */; };
 		F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */; };
@@ -708,7 +707,6 @@
 		F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPolygons.swift; sourceTree = "<group>"; };
 		F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectColorPalette.swift; sourceTree = "<group>"; };
 		F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorLegend.swift; sourceTree = "<group>"; };
-		F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettingsMain.swift; sourceTree = "<group>"; };
 		F0B334F51DA3FB2B0035BD36 /* UtilityDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownload.swift; sourceTree = "<group>"; };
 		F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
 		F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityString.swift; sourceTree = "<group>"; };
@@ -1012,7 +1010,6 @@
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
-				F0B31EE01DB3DB9800239850 /* UtilitySettingsMain.swift */,
 				F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */,
 				F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */,
 				03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */,
@@ -1705,7 +1702,6 @@
 				F0B335701DA3FD6F0035BD36 /* SevereWarning.swift in Sources */,
 				034041EA23F167F9003AB242 /* vcSpcCompMap.swift in Sources */,
 				0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */,
-				F0B31EE11DB3DB9800239850 /* UtilitySettingsMain.swift in Sources */,
 				0399A14F21CFD3BB0096ECFB /* Floaty.swift in Sources */,
 				F07761A61DA895A800E36F02 /* UtilityLocationFragment.swift in Sources */,
 				F03F6FAA1E0D3E4D00E4B7FA /* UtilityLightning.swift in Sources */,

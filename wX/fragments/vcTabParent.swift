@@ -227,7 +227,7 @@ class vcTabParent: UIViewController {
         objTileMatrix.genericClicked(vc)
     }
 
-    @objc func showKeyboardShortcuts() {
-        UtilityUI.showDialogue(self, Utility.showMainScreenShortCuts())
-    }
+    //@objc func showKeyboardShortcuts() {
+    //    UtilityUI.showDialogue(self, Utility.showMainScreenShortCuts())
+    //}
 }

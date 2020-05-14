@@ -871,9 +871,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         Route.radarFromTimeButton(self, "4")
     }*/
     
-    @objc func showKeyboardShortcuts() {
-        UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
-    }
+    //@objc func showKeyboardShortcuts() {
+    //    UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
+    //}
     
     @objc func keyRightArrow() {
         UtilityRadarUI.moveByKey(self, wxMetalRenders, .right)
