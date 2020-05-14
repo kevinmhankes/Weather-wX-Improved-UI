@@ -127,11 +127,7 @@ public class UtilityRadarUI {
     static func getRadarStatus(_ uiv: UIViewController, _ rid: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let radarStatus = getRadarStatusMessage(rid)
-            DispatchQueue.main.async {
-                let vc = vcTextViewer()
-                vc.textViewText = radarStatus
-                uiv.goToVC(vc)
-            }
+            DispatchQueue.main.async { Route.textViewer(uiv, radarStatus) }
         }
     }
 
