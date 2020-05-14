@@ -12,8 +12,4 @@ class Fronts {
     init(_ type: FrontTypeEnum) {
         self.type = type
     }
-    
-    func append(_ coordinates: [LatLon]) {
-        self.coordinates += coordinates
-    }
 }
