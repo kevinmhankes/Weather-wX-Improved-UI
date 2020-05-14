@@ -9,10 +9,10 @@ import UIKit
 final class ObjectImageAndText {
     
     //
-    // Used in SPC Swo, SPC Fireoutlook, and WPC Excessive Rain image/text combo
+    // Used in SPC Swo(below), SPC Fireoutlook, and WPC Excessive Rain image/text combo
     //
     
-    init(_ uiv: UIwXViewController, _ bitmap: Bitmap, _ objectTextView: inout ObjectTextView, _ html: String) {
+    init(_ uiv: UIwXViewControllerWithAudio, _ bitmap: Bitmap, _ html: String) {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape()
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = true
@@ -41,17 +41,17 @@ final class ObjectImageAndText {
         objectImage.img.isAccessibilityElement = true
         views.append(objectImage.img)
         if tabletInLandscape {
-            objectTextView = ObjectTextView(uiv.stackView, html, widthDivider: 2)
+            uiv.objectTextView = ObjectTextView(uiv.stackView, html, widthDivider: 2)
         } else {
-            objectTextView = ObjectTextView(uiv.stackView, html)
+            uiv.objectTextView = ObjectTextView(uiv.stackView, html)
         }
-        objectTextView.tv.isAccessibilityElement = true
-        views.append(objectTextView.tv)
+        uiv.objectTextView.tv.isAccessibilityElement = true
+        views.append(uiv.objectTextView.tv)
         uiv.scrollView.accessibilityElements = views
     }
     
     // SPC SWO
-    init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], _ objectTextView: inout ObjectTextView, _ html: String) {
+    init(_ uiv: UIwXViewControllerWithAudio, _ bitmaps: [Bitmap], _ html: String) {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
@@ -79,10 +79,10 @@ final class ObjectImageAndText {
             imageCount += 1
         }
         var views = [UIView]()
-        objectTextView = ObjectTextView(uiv.stackView, html)
-        objectTextView.constrain(uiv.scrollView)
-        objectTextView.tv.isAccessibilityElement = true
-        views.append(objectTextView.tv)
+        uiv.objectTextView = ObjectTextView(uiv.stackView, html)
+        uiv.objectTextView.constrain(uiv.scrollView)
+        uiv.objectTextView.tv.isAccessibilityElement = true
+        views.append(uiv.objectTextView.tv)
         uiv.scrollView.accessibilityElements = views
     }
     

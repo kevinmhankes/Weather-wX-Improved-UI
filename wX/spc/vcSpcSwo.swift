@@ -49,7 +49,7 @@ class vcSpcSwo: UIwXViewControllerWithAudio {
     
     private func displayContent() {
        self.refreshViews()
-       _ = ObjectImageAndText(self, bitmaps, &objectTextView, html)
+       _ = ObjectImageAndText(self, bitmaps, html)
     }
     
     @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {

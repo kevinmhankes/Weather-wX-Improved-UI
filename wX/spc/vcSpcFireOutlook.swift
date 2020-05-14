@@ -48,7 +48,7 @@ class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     private func displayContent() {
         self.refreshViews()
-        _ = ObjectImageAndText(self, bitmap, &objectTextView, html)
+        _ = ObjectImageAndText(self, bitmap, html)
     }
     
     @objc override func shareClicked(sender: UIButton) {
