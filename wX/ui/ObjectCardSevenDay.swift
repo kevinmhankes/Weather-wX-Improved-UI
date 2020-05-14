@@ -11,7 +11,7 @@ final class ObjectCardSevenDay {
     private var isUS = true
     private let horizontalContainer: ObjectCardStackView
     private let topText = ObjectTextViewLarge(80.0)
-    private let bottomText = ObjectTextViewSmallGray(80.0)
+    private let bottomText = ObjectTextViewSmallGray()
     private let objectCardImage: ObjectCardImage
     private let condenseScale: CGFloat = 0.50
     private let stackView: UIStackView

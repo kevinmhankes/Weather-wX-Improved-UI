@@ -18,7 +18,7 @@ final class ObjectCardAlertSummaryItem {
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
         // icons
-        let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
+        let radarIcon = ObjectToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = ObjectTextView("Radar")
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
@@ -36,7 +36,7 @@ final class ObjectCardAlertSummaryItem {
         let tvTitle = ObjectTextView(title, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvStart = ObjectTextView("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvEnd = ObjectTextView("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvArea = ObjectTextViewSmallGray(0.0, text: alert.area, isUserInteractionEnabled: false)
+        let tvArea = ObjectTextViewSmallGray(text: alert.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false

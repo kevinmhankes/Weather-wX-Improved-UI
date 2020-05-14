@@ -58,7 +58,7 @@ class vcSpcStormReports: UIwXViewController {
         }
     }
     
-    @objc func imgClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imgClicked() {
         Route.imageViewer(self, self.imageUrl)
     }
     
@@ -131,7 +131,7 @@ class vcSpcStormReports: UIwXViewController {
         var windHeader: ObjectCardBlackHeaderText?
         var hailHeader: ObjectCardBlackHeaderText?
         self.image.setBitmap(bitmap)
-        self.image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked(sender:))))
+        self.image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked)))
         self.stormReports.enumerated().forEach { index, stormReport in
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {

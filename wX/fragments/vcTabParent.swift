@@ -30,7 +30,7 @@ class vcTabParent: UIViewController {
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         setTabBarColor()
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         if UIPreferences.mainScreenRadarFab { fab = ObjectFab(self, #selector(radarClicked)) }
     }
     
@@ -117,7 +117,7 @@ class vcTabParent: UIViewController {
         self.removeAllViews()
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
-        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView, .TAB)
+        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView)
         if UIPreferences.mainScreenRadarFab { fab = ObjectFab(self, #selector(radarClicked)) }
     }
 

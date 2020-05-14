@@ -10,7 +10,7 @@ final class ObjectTextViewSmallGray {
 
     let tv = UITextView()
 
-    init(_ textPadding: CGFloat, text: String = "", isUserInteractionEnabled: Bool = true) {
+    init(text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.isEditable = false
         tv.isScrollEnabled = false

@@ -90,13 +90,13 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func swo(_ uiv: UIViewController,_ day: String) {
+    static func swo(_ uiv: UIViewController, _ day: String) {
         let vc = vcSpcSwo()
         vc.spcSwoDay = day
         uiv.goToVC(vc)
     }
     
-    static func swoState(_ uiv: UIViewController,_ day: String) {
+    static func swoState(_ uiv: UIViewController, _ day: String) {
         let vc = vcSpcSwoState()
         vc.day = day
         uiv.goToVC(vc)
@@ -157,7 +157,7 @@ final class Route {
         let vc = vcMapKitView()
         vc.mapKitLat = lat
         vc.mapKitLon = lon
-        vc.mapKitRadius = 20000.0
+        vc.mapKitRadius = radius
         uiv.goToVC(vc)
     }
     

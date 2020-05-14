@@ -8,7 +8,7 @@ import UIKit
 
 public class UtilityRadarUI {
 
-    static func zoomOutByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
+    static func zoomOutByKey(_ wxMetal: [WXMetalRender?]) {
         var panSensitivity: Float = 500.0
         if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
@@ -22,7 +22,7 @@ public class UtilityRadarUI {
         wxMetal.forEach { $0?.demandRender() }
     }
 
-    static func zoomInByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
+    static func zoomInByKey(_ wxMetal: [WXMetalRender?]) {
         var panSensitivity: Float = 500.0
         if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
@@ -36,7 +36,7 @@ public class UtilityRadarUI {
         wxMetal.forEach { $0?.demandRender() }
     }
 
-    static func moveByKey(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
+    static func moveByKey(_ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
         var panSensitivity: Float = 500.0
         if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         var xChange: Float = 0.0

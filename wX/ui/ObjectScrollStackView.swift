@@ -37,7 +37,7 @@ public class ObjectScrollStackView {
     }
     
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
-    init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView, _ type: LayoutType) {
+    init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.backgroundColor = ColorCompatibility.systemGray5
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)

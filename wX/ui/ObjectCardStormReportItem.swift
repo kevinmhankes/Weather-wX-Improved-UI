@@ -12,7 +12,7 @@ final class ObjectCardStormReportItem {
         var objectCardStackView = ObjectCardStackView()
         let tvLocation = ObjectTextViewLarge(80.0, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
         let tvAddress = ObjectTextViewLarge(80.0, isUserInteractionEnabled: false)
-        let tvDescription = ObjectTextViewSmallGray(80.0, isUserInteractionEnabled: false)
+        let tvDescription = ObjectTextViewSmallGray(isUserInteractionEnabled: false)
         if stormReport.damageHeader == "" && stormReport.time != "" {
             tvLocation.text = stormReport.state + ", " + stormReport.city + " " + stormReport.time
             tvAddress.text = stormReport.address

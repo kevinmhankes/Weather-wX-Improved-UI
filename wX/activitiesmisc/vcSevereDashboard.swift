@@ -123,7 +123,7 @@ class vcSevereDashboard: UIwXViewController {
         Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[sender.strData] ?? "")
     }
     
-    @objc func spcStormReportsClicked(sender: UITapGestureRecognizer) {
+    @objc func spcStormReportsClicked() {
         Route.spcStormReports(self, "today")
     }
     
@@ -173,14 +173,14 @@ class vcSevereDashboard: UIwXViewController {
             objectImage2 = ObjectImage(
                 stackView.view,
                 bitmap,
-                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked(sender:))),
+                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked)),
                 widthDivider: imagesPerRow
             )
         } else {
             objectImage2 = ObjectImage(
                 imageStackViewList.last!.view,
                 bitmap,
-                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked(sender:))),
+                UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked)),
                 widthDivider: imagesPerRow
             )
         }

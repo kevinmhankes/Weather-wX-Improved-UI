@@ -40,14 +40,14 @@ final class ObjectCardDashAlertItem {
             "End: " + severeWarning.expiresList[index].replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
             isUserInteractionEnabled: false, isZeroSpacing: true
         )
-        let tvArea = ObjectTextViewSmallGray(80.0, text: severeWarning.areaDescList[index], isUserInteractionEnabled: false)
+        let tvArea = ObjectTextViewSmallGray(text: severeWarning.areaDescList[index], isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
         // icons
-        let radarIcon = ObjectToolbarIcon(uiv: uiv, iconType: .radar, gesture: gestureRadar)
+        let radarIcon = ObjectToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = ObjectTextView("Radar")
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()

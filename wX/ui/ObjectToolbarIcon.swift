@@ -124,7 +124,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
     }
     
     // severe dashboard and us alerts
-    convenience init(uiv: UIViewController, iconType: IconType, gesture: UITapGestureRecognizerWithData) {
+    convenience init(iconType: IconType, gesture: UITapGestureRecognizerWithData) {
         self.init()
         let iconStr = ObjectToolbarIcon.iconToString[iconType] ?? ""
         button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight, height: UIPreferences.toolbarHeight))

@@ -377,7 +377,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
         gestureRecognizer.delegate = self
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:double:)))
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
         gestureRecognizer2.numberOfTapsRequired = 2
         gestureRecognizer2.delegate = self
         self.view.addGestureRecognizer(pan)
@@ -398,7 +398,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if !map.mapShown { WXMetalSurfaceView.singleTap(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer) }
     }
     
-    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
+    @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.doubleTap(self, wxMetalRenders, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
     }
     
@@ -876,42 +876,42 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     //}
     
     @objc func keyRightArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .right)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .right)
     }
     
     @objc func keyLeftArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .left)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .left)
     }
     
     @objc func keyUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .up)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .up)
     }
     
     @objc func keyDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .down)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .down)
     }
     
     @objc func keyRightUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .rightUp)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .rightUp)
     }
     
     @objc func keyRightDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .rightDown)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .rightDown)
     }
     
     @objc func keyLeftUpArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .leftUp)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .leftUp)
     }
     
     @objc func keyLeftDownArrow() {
-        UtilityRadarUI.moveByKey(self, wxMetalRenders, .leftDown)
+        UtilityRadarUI.moveByKey(wxMetalRenders, .leftDown)
     }
     
     @objc func keyZoomIn() {
-        UtilityRadarUI.zoomInByKey(self, wxMetalRenders, .leftDown)
+        UtilityRadarUI.zoomInByKey(wxMetalRenders)
     }
     
     @objc func keyZoomOut() {
-        UtilityRadarUI.zoomOutByKey(self, wxMetalRenders, .leftDown)
+        UtilityRadarUI.zoomOutByKey(wxMetalRenders)
     }
 }

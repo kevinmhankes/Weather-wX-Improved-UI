@@ -10,7 +10,7 @@ final class ObjectCardCurrentConditions {
 
     private let objectCardImage: ObjectCardImage
     private let topText: ObjectTextViewLarge = ObjectTextViewLarge(80.0)
-    private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray(80.0)
+    private let middleText: ObjectTextViewSmallGray = ObjectTextViewSmallGray()
     private let condenseScale: CGFloat = 0.50
     private let horizontalContainer: ObjectCardStackView
 

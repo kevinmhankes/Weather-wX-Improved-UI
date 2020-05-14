@@ -139,7 +139,7 @@ class vcTabLocation: vcTabParent {
                 ]
             )
         }
-        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView, .TAB)
+        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
@@ -246,7 +246,7 @@ class vcTabLocation: vcTabParent {
                     case "METAL-RADAR":
                         self.stackViewRadar = ObjectStackViewHS()
                         self.stackView.addArrangedSubview(self.stackViewRadar)
-                        self.getNexradRadar($0.split("-")[1], self.stackViewRadar)
+                        self.getNexradRadar(self.stackViewRadar)
                     default:
                         let stackViewLocal = ObjectStackViewHS()
                         self.stackView.addArrangedSubview(stackViewLocal)
@@ -497,7 +497,7 @@ class vcTabLocation: vcTabParent {
         }
     }
     
-    func getNexradRadar(_ product: String, _ stackView: UIStackView) {
+    func getNexradRadar(_ stackView: UIStackView) {
         cleanupRadarObjects()
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
@@ -614,7 +614,7 @@ class vcTabLocation: vcTabParent {
     func setupGestures() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:double:)))
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
         gestureRecognizer2.numberOfTapsRequired = 2
         stackViewRadar.addGestureRecognizer(gestureRecognizer)
         stackViewRadar.addGestureRecognizer(gestureRecognizer2)
@@ -628,7 +628,7 @@ class vcTabLocation: vcTabParent {
         WXMetalSurfaceView.singleTap(self, wxMetal, wxMetalTextObject, gestureRecognizer)
     }
     
-    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer, double: Int) {
+    @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.doubleTap(self, wxMetal, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
     }
     

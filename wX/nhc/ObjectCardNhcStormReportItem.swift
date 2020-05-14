@@ -31,7 +31,6 @@ final class ObjectCardNhcStormReportItem {
             isZeroSpacing: true
         )
         let textViewBottom = ObjectTextViewSmallGray(
-            80.0,
             text: stormData.headline + " " + stormData.wallet + " " + stormData.atcf,
             isUserInteractionEnabled: false
         )

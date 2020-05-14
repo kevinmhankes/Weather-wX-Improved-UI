@@ -60,19 +60,6 @@ final class Bitmap {
 
     var data: Data { dataBm }
 
-    /*static func createBitmap(width: Int, height: Int, type: Int) -> Bitmap {
-        let rect = CGSize(width: CGFloat(width), height: CGFloat(height))
-        let img = Bitmap.imageWithSize(size: rect)
-        return Bitmap(img)
-    }
-
-    static func createBitmap(bitmap: Bitmap, xPos: Int, yPos: Int, width: Int, height: Int) -> Bitmap {
-        let img = UIImage(cgImage: bitmap.image.cgImage!)
-        let rect = CGRect(x: CGFloat(xPos), y: CGFloat(yPos), width: CGFloat(width), height: CGFloat(height))
-        let imageRef: CGImage = img.cgImage!.cropping(to: rect)!
-        return Bitmap(UIImage(cgImage: imageRef))
-    }*/
-
     var width: CGFloat { image.size.width }
 
     var height: CGFloat { image.size.height }
@@ -80,10 +67,6 @@ final class Bitmap {
     var isValid: Bool { width > 10 }
 
     var isValidForNhc: Bool { width > 100 }
-
-    //class Config {
-    //    static let ARGB8888 = 0
-    //}
 
     static func imageWithSize(
         size: CGSize,
