@@ -55,13 +55,11 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setPaneSize(size)
-        //resetTextObject()
         paneRange.indices.forEach { self.render($0) }
         coordinator.animate(alongsideTransition: nil,
                             completion: { _ -> Void in
                                 self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
-                                self.resetTextObject()
-        }
+                                self.resetTextObject() }
         )
     }
     
