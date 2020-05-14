@@ -75,7 +75,7 @@ class vcSevereDashboard: UIwXViewController {
         }
     }
     
-    func showTextWarnings(_ views: inout [UIView]) {
+    func showTextWarnings() {
         let wTor = SevereWarning("tor")
         let wTst = SevereWarning("tst")
         let wFfw = SevereWarning("ffw")
@@ -214,7 +214,7 @@ class vcSevereDashboard: UIwXViewController {
                 imageCount += 1
             }
         }
-        self.showTextWarnings(&views)
+        self.showTextWarnings()
         self.view.bringSubviewToFront(self.toolbar)
         scrollView.accessibilityElements = views
         var status = ""
