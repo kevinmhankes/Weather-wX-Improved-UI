@@ -26,6 +26,7 @@ class vcCanadaRadar: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
@@ -33,7 +34,8 @@ class vcCanadaRadar: UIwXViewController {
                 productButton,
                 cloudButton,
                 radarButton,
-                animateButton
+                animateButton,
+                shareButton
             ]
         ).items
         image = ObjectTouchImageView(self, toolbar)
@@ -121,6 +123,10 @@ class vcCanadaRadar: UIwXViewController {
     @objc func radarClicked() {
         caRadarImageType = "radar"
         self.getContent()
+    }
+    
+    @objc func shareClicked(sender: UIButton) {
+        UtilityShare.shareImage(self, sender, image.bitmap)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

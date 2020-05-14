@@ -30,11 +30,11 @@
 // [FIX] dual pane shows same prods when remember location not on
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] iOS quad pane tap bottom 2 panes seems off
-// [FIX] no share in canada radar
 
 56102 2020_05_14 [REF] misc
 		 [ADD] from adhoc location allow to save location
 		 [ADD] in color picker if tap "set to default", immediately exit to prior screen
+		 [FIX] no share in canada radar
 		 [ADD] in Spotter activity remove phone number/email as they are not available on https://www.spotternetwork.org/ w/o member login
 		 [FIX] nexrad radar screen rotation with text labels did not reposition them
 56101 2020_05_11 [REF] misc
