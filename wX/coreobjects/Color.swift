@@ -8,17 +8,17 @@ import UIKit
 
 final class Color {
 
-    static let TRANSPARENT = 2
-    static let BLACK       = -16777216
-    static let DKGRAY      = -12303292
-    static let GRAY        = -7829368
-    static let LTGRAY      = -3355444
-    static let WHITE       = -1
+    //static let TRANSPARENT = 2
+    //static let BLACK       = -16777216
+    //static let DKGRAY      = -12303292
+    //static let GRAY        = -7829368
+    //static let LTGRAY      = -3355444
+    //static let WHITE       = -1
     static let RED         = -65536
     static let GREEN       = -16711936
-    static let BLUE        = -16776961
+    //static let BLUE        = -16776961
     static let YELLOW      = -256
-    static let CYAN        = -16711681
+    //static let CYAN        = -16711681
     static let MAGENTA     = -65281
 
     static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Int {
@@ -41,12 +41,12 @@ final class Color {
 
     static func blue(_ color: Int) -> UInt8 { UInt8(color & 0xFF) }
 
-    static func intToColors(colorInt: Int) -> [Int] {
+    /*static func intToColors(colorInt: Int) -> [Int] {
         let newRed = (colorInt >> 16) & 0xFF
         let newGreen = (colorInt >> 8) & 0xFF
         let newBlue = colorInt & 0xFF
         return [newRed, newGreen, newBlue]
-    }
+    }*/
 
     static func colorToHsv(_ color: Int) -> [Double] {
         let redInt: Int = ((color >> 16) & 0xFF)

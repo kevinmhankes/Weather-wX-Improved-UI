@@ -124,7 +124,7 @@ final class Location {
     //    )
     //}
 
-    static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }
+    //static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }
 
     static func getLatLon(_ locNum: Int) -> LatLon { LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon) }
 
@@ -132,7 +132,7 @@ final class Location {
 
     static var y: String { MyApplication.locations[getCurrentLocation()].lon }
 
-    static func getY(_ locNum: Int) -> String { MyApplication.locations[locNum].lon }
+    //static func getY(_ locNum: Int) -> String { MyApplication.locations[locNum].lon }
 
     static var yDbl: Double { Double(Location.y) ?? 0.0 }
 

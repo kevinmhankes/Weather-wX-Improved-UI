@@ -16,14 +16,14 @@ final class UtilityCanadaHourly {
         return header + parse(html)
     }
     
-    static func getUrl(_ location: Int) -> String {
+    /*static func getUrl(_ location: Int) -> String {
         let url =  MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-"
             + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
         return url
-    }
+    }*/
     
     static func parse(_ htmlFullPage: String) -> String {
         let html = htmlFullPage.parse("<tbody>(.*?)</tbody>")

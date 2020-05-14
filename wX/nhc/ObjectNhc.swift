@@ -23,9 +23,9 @@ final class ObjectNhc: NSObject {
     private var uiv: UIwXViewController
     private var textAtl = ""
     private var textPac = ""
-    private var bitmapsAtlantic = [Bitmap]()
-    private var bitmapsPacific = [Bitmap]()
-    private var bitmapsCentral = [Bitmap]()
+    //private var bitmapsAtlantic = [Bitmap]()
+    //private var bitmapsPacific = [Bitmap]()
+    //private var bitmapsCentral = [Bitmap]()
     private var imageCount = 0
     private var imagesPerRow = 2
     private var imageStackViewList = [ObjectStackView]()

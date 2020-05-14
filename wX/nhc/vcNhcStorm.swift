@@ -9,7 +9,7 @@ import UIKit
 class vcNhcStorm: UIwXViewController {
     
     private var productButton = ObjectToolbarIcon()
-    private var buttonActionArray = [String]()
+    //private var buttonActionArray = [String]()
     private var url = ""
     private var html = ""
     private var titleS = ""

@@ -8,8 +8,8 @@ import UIKit
 
 class vcObsSites: UIwXViewController {
     
-    private var capAlerts = [CapAlert]()
-    private var filter = ""
+    //private var capAlerts = [CapAlert]()
+    //private var filter = ""
     private var listCity = [String]()
     private var stateView = true
     private var stateSelected = ""
@@ -94,7 +94,7 @@ class vcObsSites: UIwXViewController {
         Route.web(self, "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased())
     }
     
-    private func displayContent() {
-        if stateView { constructStateView() } else { showState() }
-    }
+    //private func displayContent() {
+    //    if stateView { constructStateView() } else { showState() }
+    //}
 }

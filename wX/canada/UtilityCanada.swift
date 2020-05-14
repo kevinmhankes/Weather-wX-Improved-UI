@@ -269,11 +269,11 @@ final class UtilityCanada {
         return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
     
-    static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
+    /*static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
         let province = lat.split(":")
         let id = lon.split(":")
         return MyApplication.canadaEcSitePrefix + "/city/pages/" + province[1].lowercased() + "-" + id[0] + "_metric_e.html"
-    }
+    }*/
     
     static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
     

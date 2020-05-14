@@ -39,8 +39,8 @@ class R {
         static let colormap165cod = "colormap165cod.txt"
         static let colormap172cod = "colormap172cod.txt"
         static let us_metar3 = "us_metar3.txt"
-        static let dvn94 = "dvn94.bin"
-        static let dvn99 = "dvn99.bin"
+        //static let dvn94 = "dvn94.bin"
+        //static let dvn99 = "dvn99.bin"
     }
 
     class Drawable {
@@ -119,8 +119,8 @@ class R {
         static let mix = "mix.png"
         static let ts = "ts.png"
         static let ts_hur_flags = "ts_hur_flags.png"
-        static let ic_report_24dp = "ic_report_24dp"
-        static let ic_public_24dp = "ic_public_24dp"
+        //static let ic_report_24dp = "ic_report_24dp"
+        /*static let ic_public_24dp = "ic_public_24dp"
         static let ic_brightness_7_24dp = "ic_brightness_7_24dp"
         static let ic_flash_off_24dp = "ic_flash_off_24dp"
         static let ic_directions_24dp = "ic_directions_24dp"
@@ -144,7 +144,7 @@ class R {
         static let ic_keyboard_arrow_left_24dp = "ic_keyboard_arrow_left_24dp"
         static let ic_keyboard_arrow_right_24dp = "ic_keyboard_arrow_right_24dp"
         static let ic_skip_previous_24dp = "ic_skip_previous_24dp"
-        static let ic_skip_next_24dp = "ic_skip_next_24dp"
+        static let ic_skip_next_24dp = "ic_skip_next_24dp"*/
         static let minus_ra = "minus_ra.png"
         static let nminus_ra = "nminus_ra.png"
         static let nhi_tsra = "nhi_tsra.png"

@@ -10,8 +10,8 @@ import MapKit
 
 class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     
-    private var capAlerts = [CapAlert]()
-    private var images = [UIImageView]()
+    //private var capAlerts = [CapAlert]()
+    //private var images = [UIImageView]()
     private var wfoProd = [String]()
     private var siteButton = ObjectToolbarIcon()
     private let map = ObjectMap(.WFO)

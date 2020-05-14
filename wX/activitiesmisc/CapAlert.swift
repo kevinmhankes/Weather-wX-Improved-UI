@@ -11,7 +11,7 @@ final class CapAlert {
     var summary = ""
     var area = ""
     var instructions = ""
-    private var expireToken = "This alert has expired"
+    //private var expireToken = "This alert has expired"
     private var zones = ""
     var vtec = ""
     var url = ""

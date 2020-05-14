@@ -39,9 +39,9 @@ final class UtilityTtsTranslations {
 		return translateAbbreviationsChunk(string)
 	}
 
-	static func translateAbbreviationsForVisual(_ text: String) -> String {
-        translateAbbreviationsChunk(text.replace("&nbsp", " "))
-    }
+	//static func translateAbbreviationsForVisual(_ text: String) -> String {
+    //    translateAbbreviationsChunk(text.replace("&nbsp", " "))
+    //}
 
 	static func translateAbbreviationsChunk(_ text: String) -> String {
 		var string = text.uppercased()

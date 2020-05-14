@@ -105,6 +105,7 @@ final class UtilityString {
 
     static func parseAndCount(_ str: String, _ regexpStr: String) -> Int { str.parseColumn(regexpStr).count }
     
+    // FIXME last arg not used
     static func parseMultiples(_ str: String, _ matchStr: String, _ number: Int) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: matchStr, options: [])

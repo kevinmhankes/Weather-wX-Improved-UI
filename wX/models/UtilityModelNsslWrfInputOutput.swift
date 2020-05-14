@@ -9,7 +9,7 @@ import UIKit
 
 final class UtilityModelNsslWrfInputOutput {
     
-    static let ncarEnsPattern2 = "([0-9]{2})$"
+    //static let ncarEnsPattern2 = "([0-9]{2})$"
     static let baseUrl = "https://cams.nssl.noaa.gov"
     
     static func getRunTime() -> RunTimeData {

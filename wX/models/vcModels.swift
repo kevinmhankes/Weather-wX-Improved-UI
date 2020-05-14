@@ -106,8 +106,7 @@ class vcModels: UIwXViewController {
                         UtilityString.getLastXChars(self.modelObj.run, 2),
                         self.modelObj.run,
                         self.modelObj.timeArr,
-                        "",
-                        false
+                        ""
                     )
                 } else if !self.modelActivitySelected.contains("GLCFS") {
                     self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
@@ -116,8 +115,7 @@ class vcModels: UIwXViewController {
                             timeStr.split(" ")[0] + " "
                                 + UtilityModels.convertTimeRunToTimeString(
                                     self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
-                                    timeStr.split(" ")[0],
-                                    false
+                                    timeStr.split(" ")[0]
                             )
                         )
                     }
@@ -190,7 +188,7 @@ class vcModels: UIwXViewController {
         getRunStatus()
     }
     
-    func respondToSwipeGesture(gesture: UISwipeGestureRecognizer ) {
+    /*func respondToSwipeGestureA(gesture: UISwipeGestureRecognizer ) {
         let swipeGesture = gesture
         switch swipeGesture.direction {
         case .right:
@@ -200,7 +198,7 @@ class vcModels: UIwXViewController {
         default:
             break
         }
-    }
+    }*/
     
     @objc func leftClicked() {
         modelObj.leftClick()
@@ -233,8 +231,7 @@ class vcModels: UIwXViewController {
                         + " "
                         + UtilityModels.convertTimeRunToTimeString(
                             self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
-                            timeStr.split(" ")[0],
-                            false
+                            timeStr.split(" ")[0]
                     )
                 )
             }

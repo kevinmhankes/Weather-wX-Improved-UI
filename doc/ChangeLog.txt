@@ -27,6 +27,9 @@
 // [ADD] nexrad dual pane - tap on time go to quad
 // [ADD] re-eval aviation dot size on MacOS
 // [REF] remove inout if possible
+// [FIX] dual pane shows same prods when remember location not on
+// [FIX] quad pane runs out of room when warnings selected
+// [FIX] no share in canada radar
 
 56102 2020_05_14 [REF] misc
 		 [ADD] from adhoc location allow to save location

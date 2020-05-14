@@ -9,7 +9,7 @@ final class SevereWarning {
     var text = ""
     private let type: String
     private var count = 0
-    private var collapsed = false
+    //private var collapsed = false
     var idList = [String]()
     var areaDescList = [String]()
     var effectiveList = [String]()
@@ -25,13 +25,13 @@ final class SevereWarning {
 
     func getCount() -> Int { eventList.count }
 
-    func toggleCollapsed() {
+    /*func toggleCollapsed() {
         if collapsed {
             collapsed = false
         } else {
             collapsed = true
         }
-    }
+    }*/
 
     func getName() -> String {
         switch type {
