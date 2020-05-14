@@ -54,7 +54,7 @@ class UtilityWpcFronts {
     static var fronts = [Fronts]()
     private static let timer = DownloadTimer("WPC FRONTS")
     
-    private static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
+    private static func addColdFrontTriangles(_ front: Fronts, _ tokens: [String]) {
         let length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
@@ -87,7 +87,7 @@ class UtilityWpcFronts {
         }
     }
     
-    private static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
+    private static func addWarmFrontSemicircles(_ front: Fronts, _ tokens: [String]) {
         var length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
@@ -131,7 +131,7 @@ class UtilityWpcFronts {
         }
     }
     
-    private static func addFrontDataStationaryWarm(_ front: inout Fronts, _ tokens: [String]) {
+    private static func addFrontDataStationaryWarm(_ front: Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             if index != 0 && index != (tokens.count - 1) {
@@ -140,7 +140,7 @@ class UtilityWpcFronts {
         }
     }
     
-    private static func addFrontDataTrof(_ front: inout Fronts, _ tokens: [String]) {
+    private static func addFrontDataTrof(_ front: Fronts, _ tokens: [String]) {
         let fraction = 0.8
         for index in stride(from: 0, to: tokens.count - 1, by: 1) {
             let coordinates = parseLatLon(tokens[index])
@@ -151,7 +151,7 @@ class UtilityWpcFronts {
         }
     }
     
-    private static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
+    private static func addFrontData(_ front: Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
@@ -221,31 +221,31 @@ class UtilityWpcFronts {
                                                                   tokens[index], coordinates[0], coordinates[1]))
                         }
                     case "COLD":
-                        var front = Fronts(FrontTypeEnum.COLD)
-                        addFrontData(&front, tokens)
-                        addColdFrontTriangles(&front, tokens)
+                        let front = Fronts(FrontTypeEnum.COLD)
+                        addFrontData(front, tokens)
+                        addColdFrontTriangles(front, tokens)
                         fronts.append(front)
                     case "STNRY":
-                        var front = Fronts(FrontTypeEnum.STNRY)
-                        addFrontData(&front, tokens)
+                        let front = Fronts(FrontTypeEnum.STNRY)
+                        addFrontData(front, tokens)
                         fronts.append(front)
-                        var frontStWarm = Fronts(FrontTypeEnum.STNRY_WARM)
-                        addFrontDataStationaryWarm(&frontStWarm, tokens)
+                        let frontStWarm = Fronts(FrontTypeEnum.STNRY_WARM)
+                        addFrontDataStationaryWarm(frontStWarm, tokens)
                         fronts.append(frontStWarm)
                     case "WARM":
-                        var front = Fronts(FrontTypeEnum.WARM)
-                        addFrontData(&front, tokens)
-                        addWarmFrontSemicircles(&front, tokens)
+                        let front = Fronts(FrontTypeEnum.WARM)
+                        addFrontData(front, tokens)
+                        addWarmFrontSemicircles(front, tokens)
                         fronts.append(front)
                     case "TROF":
-                        var front = Fronts(FrontTypeEnum.TROF)
-                        addFrontDataTrof(&front, tokens)
+                        let front = Fronts(FrontTypeEnum.TROF)
+                        addFrontDataTrof(front, tokens)
                         fronts.append(front)
                     case "OCFNT":
-                        var front = Fronts(FrontTypeEnum.OCFNT)
-                        addFrontData(&front, tokens)
-                        addColdFrontTriangles(&front, tokens)
-                        addWarmFrontSemicircles(&front, tokens)
+                        let front = Fronts(FrontTypeEnum.OCFNT)
+                        addFrontData(front, tokens)
+                        addColdFrontTriangles(front, tokens)
+                        addWarmFrontSemicircles(front, tokens)
                         fronts.append(front)
                     default:
                         break
