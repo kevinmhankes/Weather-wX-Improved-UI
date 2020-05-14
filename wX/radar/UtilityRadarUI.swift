@@ -73,16 +73,12 @@ public class UtilityRadarUI {
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
-        if warningText != "" {
-            let vc = vcUSAlertsDetail()
-            vc.usAlertsDetailUrl = warningText
-            uiv.goToVC(vc)
-        }
+        if warningText != "" { Route.alertDetail(uiv, warningText) }
     }
 
     static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
         let txt = UtilityWatch.show(location, type)
-        var token: String
+        let token: String
         if type.string == PolygonType.MPD.string {
             token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
         } else {
