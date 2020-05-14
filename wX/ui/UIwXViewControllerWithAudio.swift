@@ -30,7 +30,7 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     @objc override func doneClicked() {
-        UtilityAudio.resetAudio(&synthesizer, playButton)
+        UtilityAudio.resetAudio(self, playButton)
         super.doneClicked()
     }
     
@@ -48,7 +48,7 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
-            UtilityAudio.resetAudio(&self.synthesizer, self.playButton)
+            UtilityAudio.resetAudio(self, self.playButton)
         }
     }
 }

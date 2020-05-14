@@ -80,7 +80,7 @@ class vcWpcText: UIwXViewControllerWithAudio {
         let code = subMenu.params[index].split(":")[0]
         self.scrollView.scrollToTop()
         self.product = code
-        UtilityAudio.resetAudio(&synthesizer, playButton)
+        UtilityAudio.resetAudio(self, playButton)
         self.getContent()
     }
 }
