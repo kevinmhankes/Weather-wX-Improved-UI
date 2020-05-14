@@ -6,7 +6,7 @@
 
 public class UtilityDownloadWatch {
 
-    static var timer = DownloadTimer("WATCH")
+    static let timer = DownloadTimer("WATCH")
 
     static func get() {
         if !PolygonType.MCD.display {

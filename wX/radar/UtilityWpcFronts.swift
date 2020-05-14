@@ -52,9 +52,9 @@ class UtilityWpcFronts {
     static let separator = "ABC123"
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
-    private static var timer = DownloadTimer("WPC FRONTS")
-
-    static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
+    private static let timer = DownloadTimer("WPC FRONTS")
+    
+    private static func addColdFrontTriangles(_ front: inout Fronts, _ tokens: [String]) {
         let length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
@@ -86,8 +86,8 @@ class UtilityWpcFronts {
             }
         }
     }
-
-    static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
+    
+    private static func addWarmFrontSemicircles(_ front: inout Fronts, _ tokens: [String]) {
         var length = 0.4 // size of triangle
         var startIndex = 0
         var indexIncrement = 1
@@ -130,8 +130,8 @@ class UtilityWpcFronts {
             }
         }
     }
-
-    static func addFrontDataStationaryWarm(_ front: inout Fronts, _ tokens: [String]) {
+    
+    private static func addFrontDataStationaryWarm(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             if index != 0 && index != (tokens.count - 1) {
@@ -139,19 +139,19 @@ class UtilityWpcFronts {
             }
         }
     }
-
-    static func addFrontDataTrof(_ front: inout Fronts, _ tokens: [String]) {
-      let fraction = 0.8
+    
+    private static func addFrontDataTrof(_ front: inout Fronts, _ tokens: [String]) {
+        let fraction = 0.8
         for index in stride(from: 0, to: tokens.count - 1, by: 1) {
-        let coordinates = parseLatLon(tokens[index])
-        front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
-        let oldCoordinates = parseLatLon(tokens[index + 1])
-        let coord = UtilityMath.computeMiddlePoint(coordinates[0], coordinates[1], oldCoordinates[0], oldCoordinates[1], fraction)
-        front.coordinates.append(LatLon(coord[0], coord[1]))
-      }
+            let coordinates = parseLatLon(tokens[index])
+            front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
+            let oldCoordinates = parseLatLon(tokens[index + 1])
+            let coord = UtilityMath.computeMiddlePoint(coordinates[0], coordinates[1], oldCoordinates[0], oldCoordinates[1], fraction)
+            front.coordinates.append(LatLon(coord[0], coord[1]))
+        }
     }
-
-    static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
+    
+    private static func addFrontData(_ front: inout Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
             front.coordinates.append(LatLon(coordinates[0], coordinates[1]))
@@ -160,8 +160,8 @@ class UtilityWpcFronts {
             }
         }
     }
-
-    static func parseLatLon(_ string: String) -> [Double] {
+    
+    private static func parseLatLon(_ string: String) -> [Double] {
         if string.count != 7 {
             return [0.0, 0.0]
         } else {
@@ -176,7 +176,7 @@ class UtilityWpcFronts {
             return [lat, lon]
         }
     }
-
+    
     static func get() {
         if timer.isRefreshNeeded() {
             pressureCenters = []

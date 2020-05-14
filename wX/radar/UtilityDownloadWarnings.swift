@@ -6,7 +6,7 @@
 
 public class UtilityDownloadWarnings {
 
-    static var timer = DownloadTimer("WARNINGS")
+    static let timer = DownloadTimer("WARNINGS")
 
     static func get() {
         if !PolygonType.TST.display {

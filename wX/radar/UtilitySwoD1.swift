@@ -6,7 +6,7 @@
 
 class UtilitySwoD1 {
     
-    private static var timer = DownloadTimer("SWO")
+    private static let timer = DownloadTimer("SWO")
     static var hashSwo = [Int: [Double]]()
     
     static func get() {

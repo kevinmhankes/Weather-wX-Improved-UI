@@ -6,7 +6,7 @@
 
 public class UtilityDownloadMpd {
 
-    static var timer = DownloadTimer("MPD")
+    static let timer = DownloadTimer("MPD")
 
     static func get() {
         if !PolygonType.MPD.display {
