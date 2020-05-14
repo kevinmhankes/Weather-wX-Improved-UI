@@ -29,6 +29,7 @@
 // [REF] remove inout if possible
 // [FIX] dual pane shows same prods when remember location not on
 // [FIX] quad pane runs out of room when warnings selected
+// [FIX] iOS quad pane tap bottom 2 panes seems off
 // [FIX] no share in canada radar
 
 56102 2020_05_14 [REF] misc
