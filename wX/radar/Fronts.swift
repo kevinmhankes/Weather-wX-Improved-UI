@@ -4,12 +4,16 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-struct Fronts {
+class Fronts {
     
     let type: FrontTypeEnum
     var coordinates = [LatLon]()
 
     init(_ type: FrontTypeEnum) {
         self.type = type
+    }
+    
+    func append(_ coordinates: [LatLon]) {
+        self.coordinates += coordinates
     }
 }
