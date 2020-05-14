@@ -381,9 +381,9 @@ class WXMetalRender {
     }
     
     func readPreferences() {
+        let numberOfPanes = String(self.numberOfPanes)
+        let index = String(paneNumber)
         if RadarPreferences.wxoglRememberLocation {
-            let numberOfPanes = String(self.numberOfPanes)
-            let index = String(paneNumber)
             zoom = Utility.readPref(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
             xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
@@ -392,6 +392,7 @@ class WXMetalRender {
             tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
         } else {
             rid = Location.rid
+            product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
         }
     }
     
