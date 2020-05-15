@@ -137,7 +137,7 @@ class vcSpcMeso: UIwXViewController {
         _ = ObjectPopUp(self, sender, labels, self.productChangedBySubmenu(_:))
     }
     
-    @objc func layerClicked(sender: ObjectToolbarIcon) {
+    @objc func layerClicked() {
         let alert = ObjectPopUp(self, "Toggle Layers", layerButton)
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
             var pre = ""
@@ -236,6 +236,6 @@ class vcSpcMeso: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() } )
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
     }
 }

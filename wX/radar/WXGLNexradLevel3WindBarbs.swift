@@ -68,39 +68,21 @@ class WXGLNexradLevel3WindBarbs {
                         degree2,
                         barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
-                    stormList += WXGLNexradLevel3Common.drawLine(
-                        ec,
-                        ecc,
-                        projectionNumbers,
-                        degree2 - arrowBend * 2.0,
-                        startLength + arrowLength * nmScaleFactor
-                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, projectionNumbers, degree2 - arrowBend * 2.0, startLength + arrowLength * nmScaleFactor)
                     // perpendicular line from main barb
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
                         barbOffset + startLength + -1.0 * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
-                    stormList += WXGLNexradLevel3Common.drawLine(
-                        ec,
-                        ecc,
-                        projectionNumbers,
-                        degree2 - 90.0,
-                        startLength + 0.80 * arrowLength * nmScaleFactor
-                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, projectionNumbers, degree2 - 90.0, startLength + 0.80 * arrowLength * nmScaleFactor)
                     // connecting line parallel to main barb
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,
                         degree2,
                         barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
-                    stormList += WXGLNexradLevel3Common.drawLine(
-                        ec,
-                        ecc,
-                        projectionNumbers,
-                        degree2 - 180.0,
-                        startLength + 0.5 * arrowLength * nmScaleFactor
-                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, projectionNumbers, degree2 - 180.0, startLength + 0.5 * arrowLength * nmScaleFactor)
                     index += 1
                 }
                 (index..<barbCount).forEach { _ in
@@ -109,12 +91,7 @@ class WXGLNexradLevel3WindBarbs {
                         degree2,
                         barbOffset + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
-                    stormList += WXGLNexradLevel3Common.drawLine(ec,
-                                          ecc,
-                                          projectionNumbers,
-                                          degree2 - arrowBend * 2.0,
-                                          startLength + arrowLength * nmScaleFactor
-                                )
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, projectionNumbers, degree2 - arrowBend * 2.0, startLength + arrowLength * nmScaleFactor)
                     index += 1
                 }
                 var halfBarbOffsetFudge = 0.0
@@ -125,13 +102,7 @@ class WXGLNexradLevel3WindBarbs {
                         degree2,
                         barbOffset + halfBarbOffsetFudge + startLength + Double(index) * arrowSpacing * nmScaleFactor * barbLengthScaleFactor
                     )
-                    stormList += WXGLNexradLevel3Common.drawLine(
-                        ec,
-                        ecc,
-                        projectionNumbers,
-                        degree2 - arrowBend * 2.0,
-                        startLength + arrowLength / 2.0 * nmScaleFactor
-                    )
+                    stormList += WXGLNexradLevel3Common.drawLine(ec, ecc, projectionNumbers, degree2 - arrowBend * 2.0, startLength + arrowLength / 2.0 * nmScaleFactor)
                 }
             }
         }
