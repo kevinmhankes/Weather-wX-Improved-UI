@@ -24,51 +24,32 @@ final class UtilityHomeScreen {
         "WFOWARNINGS: Local NWS Office Warnings"
     ]
 
-    // TODO make more concise - use Route
     static func jumpToActivity(_ uiv: UIViewController, _ homeScreenToken: String) {
-        print("homescreen token: " + homeScreenToken)
+        //print("homescreen token: " + homeScreenToken)
         switch homeScreenToken {
         case "USWARN":
-            let vc = vcUSAlerts()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcUSAlerts())
         case "VIS_1KM":
-            let vc = vcWpcImg()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcWpcImg())
         case "WPC_ANALYSIS":
-            let vc = vcWpcImg()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcWpcImg())
         case "FMAP":
             let vc = vcWpcImg()
             uiv.goToVC(vc)
         case "VIS_CONUS":
-            let vc = vcGoes()
-            vc.productCode = "GEOCOLOR"
-            vc.sectorCode = "CONUS"
-            uiv.goToVC(vc)
+            Route.goesVisConus(uiv)
         case "CONUSWV":
-            let vc = vcGoes()
-            vc.productCode = "09"
-            vc.sectorCode = "CONUS"
-            uiv.goToVC(vc)
+            Route.goesWaterVapor(uiv)
         case "SWOD1":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "1"
-            uiv.goToVC(vc)
+            Route.swo(uiv, "1")
         case "SWOD2":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "2"
-            uiv.goToVC(vc)
+            Route.swo(uiv, "2")
         case "SWOD3":
-            let vc = vcSpcSwo()
-            vc.spcSwoDay = "3"
-            uiv.goToVC(vc)
+            Route.swo(uiv, "3")
         case "STRPT":
-            let vc = vcSpcStormReports()
-            vc.spcStormReportsDay = "today"
-            uiv.goToVC(vc)
+            Route.spcStormReports(uiv, "today")
         case "SND":
-            let vc = vcSoundings()
-            uiv.goToVC(vc)
+            uiv.goToVC(vcSoundings())
         case "SPCMESO_500":
             goToSpcMesoFromHS(uiv, "500mb")
         case "SPCMESO_MSLP":
@@ -82,19 +63,9 @@ final class UtilityHomeScreen {
         case "SPCMESO_RGNLRAD":
             goToSpcMesoFromHS(uiv, "rgnlrad")
         case "RAD_2KM":
-            if !UIPreferences.useAwcRadarMosaic {
-                let vc = vcRadarMosaic()
-                vc.nwsMosaicType = "local"
-                uiv.goToVC(vc)
-            } else {
-                let vc = vcRadarMosaicAwc()
-                uiv.goToVC(vc)
-            }
+            Route.radarMosaic(uiv)
         case "GOES16":
-            let vc = vcGoes()
-            vc.productCode = ""
-            vc.sectorCode = ""
-            uiv.goToVC(vc)
+            Route.vis(uiv)
         default:
             let vc = vcWpcImg()
             vc.wpcImagesToken = homeScreenToken
