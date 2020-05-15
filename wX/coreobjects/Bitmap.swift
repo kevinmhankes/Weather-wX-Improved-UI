@@ -86,18 +86,5 @@ final class Bitmap {
         return newImage
     }
 
-    /*static func resize(image: UIImage, ratio: Float) -> Bitmap {
-        let originalSize = image.size
-        let newSize = CGSize(width: originalSize.width * CGFloat(ratio), height: originalSize.height * CGFloat(ratio))
-        // preparing rect for new image size
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return Bitmap(newImage!)
-    }*/
-
     static func fromFile(_ filename: String) -> Bitmap { UtilityIO.readBitmapResourceFromFile(filename) }
 }

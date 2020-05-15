@@ -12,7 +12,6 @@ class vcCanadaRadar: UIwXViewController {
     private var productButton = ObjectToolbarIcon()
     private var animateButton = ObjectToolbarIcon()
     private var cloudButton = ObjectToolbarIcon()
-    //private var index = 8
     private var radarSite = "WSO"
     private var url = "https://weather.gc.ca/data/satellite/goes_wcan_visible_100.jpg"
     private var mosaicShown = false
@@ -85,11 +84,7 @@ class vcCanadaRadar: UIwXViewController {
         radarSite = UtilityCanadaImg.radarSites[index].split(":")[0]
         self.getContent()
     }
-    
-    //func shareClicked(sender: UIButton) {
-    //    UtilityShare.shareImage(self, sender, image.bitmap)
-    //}
-    
+
     @objc func animateClicked() {
         _ = ObjectPopUp(self, title: "Select animation:", animateButton, ["short", "long"], self.getAnimation(_:))
     }

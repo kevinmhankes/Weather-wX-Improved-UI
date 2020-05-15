@@ -17,14 +17,7 @@ class vcCanadaWarnings: UIwXViewController {
         super.viewDidLoad()
         provinceButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                provinceButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, provinceButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.objectCanadaWarnings = ObjectCanadaWarnings(self)
         self.getContent()

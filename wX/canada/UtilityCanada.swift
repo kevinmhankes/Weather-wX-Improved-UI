@@ -234,17 +234,11 @@ final class UtilityCanada {
         if timeArr.count > 0 {
             hour = Int(timeArr[0]) ?? 0
             if time.contains("AM") {
-                if hour < 8 {
-                    daytime = false
-                }
+                if hour < 8 { daytime = false }
             }
             if time.contains("PM") {
-                if hour == 12 {
-                    hour = 0
-                }
-                if hour > 6 {
-                    daytime = false
-                }
+                if hour == 12 { hour = 0 }
+                if hour > 6 { daytime = false }
             }
         }
         if !daytime {
@@ -268,12 +262,6 @@ final class UtilityCanada {
         let id = location.lonString.split(":")
         return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
-    
-    /*static func getLocationUrl(_ lat: String, _ lon: String ) -> String {
-        let province = lat.split(":")
-        let id = lon.split(":")
-        return MyApplication.canadaEcSitePrefix + "/city/pages/" + province[1].lowercased() + "-" + id[0] + "_metric_e.html"
-    }*/
     
     static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
     

@@ -25,7 +25,7 @@ final class UtilityAudio {
             synthesizer.continueSpeaking()
             playB.setImage(.pause)
         } else if !synthesizer.isSpeaking {
-             let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
+            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
             synthesizer.speak(myUtterance)
             playB.setImage(.pause)
         } else {
