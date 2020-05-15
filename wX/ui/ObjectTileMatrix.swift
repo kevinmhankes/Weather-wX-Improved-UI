@@ -19,7 +19,7 @@ final class ObjectTileMatrix: NSObject {
         self.init()
         self.uiv = uiv
         self.tabType = tabType
-        toolbar = ObjectToolbar(.top)
+        toolbar = ObjectToolbar()
         let radarButton = ObjectToolbarIcon(uiv, .radar, #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(uiv, .cloud, #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))

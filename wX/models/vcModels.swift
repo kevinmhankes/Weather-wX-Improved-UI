@@ -28,7 +28,7 @@ class vcModels: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let toolbarTop = ObjectToolbar(.top)
+        let toolbarTop = ObjectToolbar()
         statusButton = ObjectToolbarIcon(self, #selector(runClicked))
         modelButton = ObjectToolbarIcon(title: "Model", self, #selector(modelClicked))
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))

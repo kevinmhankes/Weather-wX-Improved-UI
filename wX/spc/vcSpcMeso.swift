@@ -30,7 +30,7 @@ class vcSpcMeso: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let toolbarTop = ObjectToolbar(.top)
+        let toolbarTop = ObjectToolbar()
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))

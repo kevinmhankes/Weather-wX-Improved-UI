@@ -177,7 +177,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         UtilityFileManagement.deleteAllFiles()
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
-        let toolbarTop = ObjectToolbar(.top)
+        let toolbarTop = ObjectToolbar()
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             self.view.addSubview(toolbarTop)
             toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)

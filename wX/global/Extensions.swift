@@ -71,7 +71,7 @@ extension String {
     
     func replace(_ a: String, _ b: String) -> String { self.replaceAll(a, b) }
     
-    func parseMultiple(_ matchStr: String, _ number: Int) -> [String] { UtilityString.parseMultiples(self, matchStr, number) }
+    func parseMultiple(_ matchStr: String) -> [String] { UtilityString.parseMultiple(self, matchStr) }
     
     func split(_ delimiter: String) -> [String] { UtilityString.split(self, delimiter) }
     

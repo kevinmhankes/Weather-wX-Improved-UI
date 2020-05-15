@@ -45,7 +45,7 @@ class vcTabLocation: vcTabParent {
     private let numberOfPanes = 1
     private var wxMetalTextObject = WXMetalTextObject()
     private var longPressCount = 0
-    private var toolbar = ObjectToolbar(.top)
+    private var toolbar = ObjectToolbar()
     private var globalHomeScreenFav = ""
     private var globalTextViewFontSize: CGFloat = 0.0
     #if targetEnvironment(macCatalyst)
@@ -91,7 +91,7 @@ class vcTabLocation: vcTabParent {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        toolbar = ObjectToolbar(.top)
+        toolbar = ObjectToolbar()
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
