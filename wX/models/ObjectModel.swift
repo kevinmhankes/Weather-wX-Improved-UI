@@ -16,7 +16,6 @@ final public class ObjectModel {
     private var runArr = [String]()
     var modelArr = [String]()
     var runTimeData = RunTimeData()
-    //private var activityName = ""
     private var modelToken = ""
     private var prefModel = ""
     private var prefSector = ""
@@ -159,22 +158,6 @@ final public class ObjectModel {
         Utility.writePref(prefRunPosn, timeStr)
         Utility.writePref(prefRunPosnIdx, timeIdx)
     }
-    
-    /*func setButtonsA(
-        _ prodButton: ObjectToolbarIcon,
-        _ sectorButton: ObjectToolbarIcon,
-        _ runButton: ObjectToolbarIcon,
-        _ timeButton: ObjectToolbarIcon
-    ) {
-        self.prodButton = prodButton
-        self.sectorButton = sectorButton
-        self.runButton = runButton
-        self.timeButton = timeButton
-        sectorButton.title = sector
-        runButton.title = run
-        timeButton.title = timeStr
-        prodButton.title = param.truncate(productButtonTruncate)
-    }*/
     
     func setButtons(
         _ prodButton: ObjectToolbarIcon,
@@ -586,12 +569,6 @@ final public class ObjectModel {
             setModelVars(self.modelName)
         }
     }
-    
-    /*func setParamA(_ param: String) {
-        self.param = param
-        self.prodButton.title = param.truncate(productButtonTruncate)
-        if self.modelName == "SSEO" { setModelVars(self.modelName) }
-    }*/
     
     func setTimeIdx(_ timeIdx: Int) {
         if timeIdx > -1 && timeIdx < timeArr.count {

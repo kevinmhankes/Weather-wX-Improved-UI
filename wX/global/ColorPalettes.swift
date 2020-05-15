@@ -27,9 +27,7 @@ class ColorPalettes {
             MyApplication.colorMap[productNumber] = ObjectColorPalette(String(productNumber))
             MyApplication.colorMap[productNumber]!.initialize()
         }
-        //MyApplication.colorMap[181] = MyApplication.colorMap[19]
         MyApplication.colorMap[37] = MyApplication.colorMap[19]
         MyApplication.colorMap[38] = MyApplication.colorMap[19]
-        //MyApplication.colorMap[80] = MyApplication.colorMap[78]
     }
 }

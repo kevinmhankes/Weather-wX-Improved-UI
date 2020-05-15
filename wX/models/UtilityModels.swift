@@ -56,12 +56,7 @@ final class UtilityModels {
         return futureDay + "  " + String(hourOfDay) + amPm
     }
     
-    static func updateTime(
-        _ run: String,
-        _ modelCurrentTime: String,
-        _ listTime: [String],
-        _ prefix: String
-    ) -> [String] {
+    static func updateTime(_ run: String, _ modelCurrentTime: String, _ listTime: [String], _ prefix: String) -> [String] {
         var tmpStr = ""
         var run2 = run.replace("Z", "").replace("z", "")
         var listTimeNew = [String]()

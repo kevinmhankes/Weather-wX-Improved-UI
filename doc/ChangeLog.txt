@@ -28,6 +28,8 @@
 // [ADD] re-eval aviation dot size on MacOS
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] iOS quad pane tap bottom 2 panes seems off
+// [REF] rename patterns in model util files
+// [FIX] check default aviation size for tablet
 
 56102 2020_05_14 [REF] misc
 		 [ADD] from adhoc location allow to save location
