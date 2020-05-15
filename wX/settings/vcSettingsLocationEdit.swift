@@ -209,6 +209,7 @@ class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let caProv = Utility.readPref("LOCATION_CANADA_PROV", "")
         let caCity = Utility.readPref("LOCATION_CANADA_CITY", "")
         let caId = Utility.readPref("LOCATION_CANADA_ID", "")
