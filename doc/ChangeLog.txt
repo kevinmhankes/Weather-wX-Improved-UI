@@ -28,6 +28,7 @@
 // [ADD] re-eval aviation dot size on MacOS
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] iOS quad pane tap bottom 2 panes seems off
+// [FIX] WFO Text and WFO LSR do not handle map resize after rotation
 // [REF] rename patterns in model util files
 // [FIX] check default aviation size for tablet
 
