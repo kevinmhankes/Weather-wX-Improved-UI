@@ -10,7 +10,7 @@ class WXGLNexradLevel3Common {
         _ startEc: ExternalGlobalCoordinates,
         _ ecc: ExternalGeodeticCalculator,
         _ projectionNumbers: ProjectionNumbers,
-        _ start: ExternalGlobalCoordinates,
+        //_ startA: ExternalGlobalCoordinates,
         _ startBearing: Double,
         _ distance: Double
     ) -> [Double] {

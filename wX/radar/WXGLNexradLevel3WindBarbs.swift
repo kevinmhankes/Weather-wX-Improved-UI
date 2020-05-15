@@ -72,7 +72,6 @@ class WXGLNexradLevel3WindBarbs {
                         ec,
                         ecc,
                         projectionNumbers,
-                        start,
                         degree2 - arrowBend * 2.0,
                         startLength + arrowLength * nmScaleFactor
                     )
@@ -86,7 +85,6 @@ class WXGLNexradLevel3WindBarbs {
                         ec,
                         ecc,
                         projectionNumbers,
-                        start,
                         degree2 - 90.0,
                         startLength + 0.80 * arrowLength * nmScaleFactor
                     )
@@ -100,7 +98,6 @@ class WXGLNexradLevel3WindBarbs {
                         ec,
                         ecc,
                         projectionNumbers,
-                        start,
                         degree2 - 180.0,
                         startLength + 0.5 * arrowLength * nmScaleFactor
                     )
@@ -115,7 +112,6 @@ class WXGLNexradLevel3WindBarbs {
                     stormList += WXGLNexradLevel3Common.drawLine(ec,
                                           ecc,
                                           projectionNumbers,
-                                          start,
                                           degree2 - arrowBend * 2.0,
                                           startLength + arrowLength * nmScaleFactor
                                 )
@@ -133,7 +129,6 @@ class WXGLNexradLevel3WindBarbs {
                         ec,
                         ecc,
                         projectionNumbers,
-                        start,
                         degree2 - arrowBend * 2.0,
                         startLength + arrowLength / 2.0 * nmScaleFactor
                     )

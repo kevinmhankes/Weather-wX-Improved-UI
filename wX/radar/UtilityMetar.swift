@@ -214,7 +214,7 @@ final class UtilityMetar {
     
     static func getObservationSites(_ radarSite: String) -> String {
         var obsListSb = ""
-        let radarLocation = LatLon(radarSite, isRadar: true)
+        let radarLocation = LatLon(radarSite: radarSite)
         readMetarData()
         let obsSiteRange = 200.0
         var currentDistance = 0.0

@@ -13,7 +13,7 @@ struct LatLon {
     
     init() {}
     
-    init(_ radarSite: String, isRadar: Bool) {
+    init(radarSite: String) {
         let ridX = Utility.getRadarSiteX(radarSite)
         let ridY = Utility.getRadarSiteY(radarSite)
         self.latNum = Double(ridX) ?? 0.0
