@@ -18,15 +18,7 @@ class vcNhc: UIwXViewController {
         textProductButton = ObjectToolbarIcon(title: "Text Prod", self, #selector(textProductClicked))
         imageProductButton = ObjectToolbarIcon(title: "Image Prod", self, #selector(imageProductClicked))
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                glcfsButton,
-                imageProductButton,
-                textProductButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }

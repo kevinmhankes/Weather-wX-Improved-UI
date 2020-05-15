@@ -39,10 +39,6 @@ final class UtilityMath {
         [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
     }
 
-    //static func rHFromTD(_ temp: Double, _ dewPoint: Double) -> String {
-    //    roundDToString(100 * (exp((17.625 * dewPoint) / (243.04 + dewPoint)) / exp((17.625 * temp) / (243.04 + temp))))
-    //}
-
     static func latLonFix(_ location: LatLon) -> LatLon {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
@@ -51,11 +47,6 @@ final class UtilityMath {
         let y = formatter.string(from: NSNumber(value: location.lon)) ?? "0.0"
         return LatLon(x, y)
     }
-
-    //static func knotsToMph(_ value: String) -> String {
-    //    if value == "" { return "" }
-    //    return roundDToString((Double(value) ?? 0.0) * 1.152)
-    //}
 
     static func unitsPressure(_ value: String) -> String {
         var tmpNum = Double(value) ?? 0.0

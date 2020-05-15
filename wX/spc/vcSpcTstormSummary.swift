@@ -8,7 +8,6 @@ import UIKit
 
 class vcSpcTstormSummary: UIwXViewController {
     
-    //private var urls = [String]()
     private var bitmaps = [Bitmap]()
     
     override func viewDidLoad() {

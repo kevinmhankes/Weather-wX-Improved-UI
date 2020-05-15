@@ -47,8 +47,6 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async {
-            UtilityAudio.resetAudio(self, self.playButton)
-        }
+        DispatchQueue.main.async { UtilityAudio.resetAudio(self, self.playButton) }
     }
 }

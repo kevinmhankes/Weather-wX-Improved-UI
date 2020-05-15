@@ -14,11 +14,6 @@ final class ObjectCardDashAlertItem {
         _ uiv: UIwXViewController,
         _ severeWarning: SevereWarning,
         _ index: Int,
-        //_ senderName: String,
-        //_ eventType: String,
-        //_ effectiveTime: String,
-        //_ expiresTime: String,
-        //_ areaDescription: String,
         _ gesture: UITapGestureRecognizerWithData,
         _ gestureRadar: UITapGestureRecognizerWithData,
         _ gestureRadarText: UITapGestureRecognizerWithData

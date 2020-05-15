@@ -14,10 +14,6 @@ final class ObjectToolbar: UIToolbar {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
 
-    //convenience init(_ toolbarType: ToolbarType = .bottom) {
-    //    self.init()
-    //}
-
     func setConfigWithUiv(uiv: UIViewController, toolbarType: ToolbarType = .bottom) {
         switch toolbarType {
         case .bottom:

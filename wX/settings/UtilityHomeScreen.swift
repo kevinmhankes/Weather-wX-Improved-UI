@@ -24,6 +24,7 @@ final class UtilityHomeScreen {
         "WFOWARNINGS: Local NWS Office Warnings"
     ]
 
+    // TODO make more concise - use Route
     static func jumpToActivity(_ uiv: UIViewController, _ homeScreenToken: String) {
         print("homescreen token: " + homeScreenToken)
         switch homeScreenToken {

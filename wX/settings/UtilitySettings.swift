@@ -13,23 +13,9 @@ final class UtilitySettings {
         return homeScreenFav.contains("METAL-RADAR")
     }
 
-    /*static func getHelp(_ sender: UIButton, _ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ helpMap: [String: String]) {
-        let alert = ObjectPopUp(uiv, helpMap[(sender.titleLabel?.text)!]!, targetButton)
-        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-        alert.finish()
-    }*/
-
     static func getHelp(_ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ help: String) {
         let alert = ObjectPopUp(uiv, help, targetButton)
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
-
-    /*static func switchChanged(sender: ObjectSettingsSwitch) {
-        let prefLabels = [String](sender.prefMap.keys).sorted(by: <)
-        let isOnQ = sender.switchUi.isOn
-        var truthString = "false"
-        if isOnQ { truthString = "true" }
-        Utility.writePref(prefLabels[sender.switchUi.tag], truthString)
-    }*/
 }

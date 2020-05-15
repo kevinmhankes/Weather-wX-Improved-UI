@@ -117,22 +117,11 @@ final class Location {
 
     static var x: String { MyApplication.locations[getCurrentLocation()].lat }
 
-    //static var latLon: LatLon {
-    //    LatLon(
-    //        MyApplication.locations[getCurrentLocation()].lat,
-    //        MyApplication.locations[getCurrentLocation()].lon
-    //    )
-    //}
-
-    //static func getX(_ locNum: Int) -> String { MyApplication.locations[locNum].lat }
-
     static func getLatLon(_ locNum: Int) -> LatLon { LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon) }
 
     static var xDbl: Double { Double(Location.x) ?? 0.0 }
 
     static var y: String { MyApplication.locations[getCurrentLocation()].lon }
-
-    //static func getY(_ locNum: Int) -> String { MyApplication.locations[locNum].lon }
 
     static var yDbl: Double { Double(Location.y) ?? 0.0 }
 

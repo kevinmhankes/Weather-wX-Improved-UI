@@ -9,7 +9,6 @@ import UIKit
 class vcNhcStorm: UIwXViewController {
     
     private var productButton = ObjectToolbarIcon()
-    //private var buttonActionArray = [String]()
     private var url = ""
     private var html = ""
     private var titleS = ""
@@ -50,14 +49,7 @@ class vcNhcStorm: UIwXViewController {
         initializeEnvironment()
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }

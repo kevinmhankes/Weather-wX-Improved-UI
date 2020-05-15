@@ -68,10 +68,6 @@ class UIwXViewController: UIViewController {
     func removeAllViews() {
         self.view.subviews.forEach { $0.removeFromSuperview() }
     }
-    
-    //@objc func shareClicked(sender: UIButton) {
-        //UtilityShare.share(self, sender, self.html)
-    //}
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
