@@ -166,7 +166,7 @@ final class UtilityLocationFragment {
         return ""
     }
 
-    static func extractCATemp(_ blob: String) -> String {
+    static func extractCanadaTemp(_ blob: String) -> String {
         var temp = blob.parse(ca7dayTemp1)
         if temp != "" { return temp.replace("minus ", "-") }
         temp = blob.parse(ca7dayTemp2)
@@ -214,14 +214,14 @@ final class UtilityLocationFragment {
         return temp
     }
 
-    static func extractCAWindDirection(_ chunk: String) -> String {
+    static func extractCanadaWindDirection(_ chunk: String) -> String {
         var wdir = chunk.parse(ca7dayWindDirection1)
         if wdir == "" { wdir = chunk.parse(ca7dayWindDirection2) }
         if wdir != "" { wdir = " " + (windDir[wdir] ?? "") }
         return wdir
     }
 
-    static func extractCAWindSpeed(_ chunk: String) -> String {
+    static func extractCanadaWindSpeed(_ chunk: String) -> String {
         let wspdRange = chunk.parseMultiple(ca7dayWindSpeed1)
         let wspd = chunk.parse(ca7dayWindSpeed2)
         var gust = ""

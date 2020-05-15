@@ -80,10 +80,10 @@ final class ObjectCardSevenDay {
                         + ")" + MyApplication.newline
                 } else {
                     string = items[0].replace(":", " ") + " ("
-                        + UtilityLocationFragment.extractCATemp(items[1])
+                        + UtilityLocationFragment.extractCanadaTemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractCAWindDirection(items[1].substring(1))
-                        + UtilityLocationFragment.extractCAWindSpeed(items[1])
+                        + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
                         + ")" + MyApplication.newline
                 }
                 return (string, items[1])
@@ -100,10 +100,10 @@ final class ObjectCardSevenDay {
                         + ")" + MyApplication.newline
                 } else {
                     string = items[0].replace(":", " ") + " ("
-                        + UtilityLocationFragment.extractCATemp(items[1])
+                        + UtilityLocationFragment.extractCanadaTemp(items[1])
                         + MyApplication.degreeSymbol
-                        + UtilityLocationFragment.extractCAWindDirection(items[1].substring(1))
-                        + UtilityLocationFragment.extractCAWindSpeed(items[1])
+                        + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
+                        + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
                         + ")" + MyApplication.newline
                 }
                 return (string, itemsShort[1])
