@@ -148,8 +148,8 @@ class WXMetalRender {
         pipelineState: MTLRenderPipelineState,
         drawable: CAMetalDrawable,
         parentModelViewMatrix: float4x4,
-        projectionMatrix: float4x4,
-        clearColor: MTLClearColor?
+        projectionMatrix: float4x4
+        //clearColor: MTLClearColor?
     ) {
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture

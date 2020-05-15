@@ -579,8 +579,8 @@ class vcTabLocation: vcTabParent {
             pipelineState: pipelineState,
             drawable: drawable,
             parentModelViewMatrix: modelMatrix(index),
-            projectionMatrix: projectionMatrix,
-            clearColor: nil
+            projectionMatrix: projectionMatrix
+            //clearColor: nil
         )
     }
     

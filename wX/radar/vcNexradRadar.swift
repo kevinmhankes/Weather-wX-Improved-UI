@@ -350,9 +350,9 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             pipelineState: pipelineState,
             drawable: drawable,
             parentModelViewMatrix: modelMatrix(index),
-            projectionMatrix: projectionMatrix,
+            projectionMatrix: projectionMatrix
             //clearColor: MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-            clearColor: nil
+            //clearColor: nil
         )
     }
     
