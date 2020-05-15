@@ -629,11 +629,11 @@ class vcTabLocation: vcTabParent {
     }
     
     @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
-        WXMetalSurfaceView.doubleTap(self, wxMetal, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetal, wxMetalTextObject, numberOfPanes, gestureRecognizer)
     }
     
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, wxMetalTextObject, longPressCount, longPressAction, gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, longPressCount, longPressAction, gestureRecognizer)
     }
     
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {

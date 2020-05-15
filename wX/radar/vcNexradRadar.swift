@@ -401,7 +401,7 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
-        WXMetalSurfaceView.doubleTap(self, wxMetalRenders, wxMetalTextObject, numberOfPanes, ortInt, gestureRecognizer)
+        WXMetalSurfaceView.doubleTap(self, wxMetalRenders, wxMetalTextObject, numberOfPanes, gestureRecognizer)
     }
     
     @objc func gestureZoom(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -416,7 +416,6 @@ class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         longPressCount = WXMetalSurfaceView.gestureLongPress(
             self,
             wxMetalRenders,
-            wxMetalTextObject,
             longPressCount,
             longPressAction,
             gestureRecognizer
