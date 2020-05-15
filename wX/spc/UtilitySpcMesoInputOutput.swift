@@ -56,6 +56,6 @@ final class UtilitySpcMesoInputOutput {
                 bitmaps.append(UtilityImg.getBitmapAddWhiteBackground(imgUrl))
             }
         }
-        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
+        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }

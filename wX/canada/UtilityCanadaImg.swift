@@ -87,7 +87,7 @@ final class UtilityCanadaImg {
                 + times[index].replace(" ", "_").replace("/", "@") + ".jpg"
             bitmaps.append(Bitmap(url))
         }
-        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed(), delay)
+        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps.reversed())
     }
     
     static func getRadarAnimStringArray(_ radarSite: String, _ duration: String) -> String {
@@ -109,7 +109,7 @@ final class UtilityCanadaImg {
         let bitmaps = stride(from: (urls.count - 1), to: 1, by: -1).map {
             getRadarBitmapOptionsApplied(radarSite, MyApplication.canadaEcSitePrefix + urls[$0].replaceAll("detailed/", ""))
         }
-        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps, UtilityImg.getAnimInterval())
+        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
     
     static func getRadarBitmapOptionsApplied(_ radarSite: String, _ url: String) -> Bitmap {
@@ -155,6 +155,6 @@ final class UtilityCanadaImg {
         let tokens = string.split(":")
         var urls = tokens.filter { $0 != "" }.map { MyApplication.canadaEcSitePrefix + $0.replaceAll("detailed/", "") }
         urls.reverse()
-        return UtilityImgAnim.getAnimationDrawableFromUrlList(urls, UtilityImg.getAnimInterval())
+        return UtilityImgAnim.getAnimationDrawableFromUrlList(urls)
     }
 }
