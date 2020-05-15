@@ -37,9 +37,7 @@ class vcSevereDashboard: UIwXViewController {
             self.snWat.getBitmaps(MyApplication.watNoList.value)
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
             DispatchQueue.main.async {
-                if UIAccessibility.isVoiceOverRunning {
-                    UtilityAudio.speakText(self.getStatusText(), self.synthesizer)
-                }
+                if UIAccessibility.isVoiceOverRunning { UtilityAudio.speakText(self.getStatusText(), self.synthesizer) }
                 self.displayContent()
             }
         }

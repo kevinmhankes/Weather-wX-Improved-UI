@@ -12,7 +12,6 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()
     private var wfo = Location.wfo
-    //private var html = ""
     private let map = ObjectMap(.WFO)
     
     override func viewDidLoad() {

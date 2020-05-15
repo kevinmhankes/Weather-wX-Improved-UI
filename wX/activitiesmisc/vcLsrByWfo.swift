@@ -9,9 +9,7 @@ import AVFoundation
 import MapKit
 
 class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
-    
-    //private var capAlerts = [CapAlert]()
-    //private var images = [UIImageView]()
+
     private var wfoProd = [String]()
     private var siteButton = ObjectToolbarIcon()
     private let map = ObjectMap(.WFO)
@@ -53,9 +51,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             lsrList.append("None issued by this office recently.")
         } else {
             var maxVers = Int(numberLSR) ?? 0
-            if maxVers > 30 {
-                maxVers = 30
-            }
+            if maxVers > 30 { maxVers = 30 }
             stride(from: 1, to: maxVers, by: 2).forEach { version in
                 lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version))
             }

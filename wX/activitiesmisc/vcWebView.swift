@@ -54,7 +54,6 @@ class vcWebView: UIwXViewController {
         }
         if aStateCode == "tornado" { productButton.title = "#tornado" }
         showProduct = true
-        //useUrl = false
     }
 
     @objc func productClicked() {
