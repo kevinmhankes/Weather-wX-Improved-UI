@@ -30,7 +30,29 @@ public class ExternalGlobalCoordinates {
     private var mLatitude: Double
 
     /** Longitude in degrees. Negative longitude is western hemisphere. */
-    var mLongitude: Double
+    private var mLongitude: Double
+    
+    init(_ latitude: Double, _ longitude: Double) {
+        self.mLatitude = latitude
+        self.mLongitude = longitude
+        canonicalize()
+    }
+
+    convenience init(_ ec: ExternalGlobalCoordinates, lonNegativeOne: Bool = false) {
+        if lonNegativeOne {
+            self.init(ec.getLatitude(), ec.getLongitude() * -1.0)
+        } else {
+            self.init(ec.getLatitude(), ec.getLongitude())
+        }
+    }
+
+    convenience init(_ pn: ProjectionNumbers, lonNegativeOne: Bool = false) {
+        if lonNegativeOne {
+            self.init(pn.xDbl, pn.yDbl * -1.0)
+        } else {
+            self.init(pn.xDbl, pn.yDbl)
+        }
+    }
 
     /**
      * Canonicalize the current latitude and longitude values such that:
@@ -65,27 +87,7 @@ public class ExternalGlobalCoordinates {
      * @param latitude latitude in degrees
      * @param longitude longitude in degrees
      */
-    init(_ latitude: Double, _ longitude: Double) {
-        mLatitude = latitude
-        mLongitude = longitude
-        canonicalize()
-    }
-
-    convenience init(_ ec: ExternalGlobalCoordinates, lonNegativeOne: Bool = false) {
-        if lonNegativeOne {
-            self.init(ec.getLatitude(), ec.getLongitude() * -1.0)
-        } else {
-            self.init(ec.getLatitude(), ec.getLongitude())
-        }
-    }
-
-    convenience init(_ pn: ProjectionNumbers, lonNegativeOne: Bool = false) {
-        if lonNegativeOne {
-            self.init(pn.xDbl, pn.yDbl * -1.0)
-        } else {
-            self.init(pn.xDbl, pn.yDbl)
-        }
-    }
+    
 
     /**
      * Get latitude.
