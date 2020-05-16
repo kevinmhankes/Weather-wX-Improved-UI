@@ -8,8 +8,8 @@ import UIKit
 
 class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     
-    private var colorBarSize: CGFloat = 100.0
-    private var colorBar = UIView()
+    private let colorBarSize: CGFloat = 100.0
+    private let colorBar = UIView()
     private var newRed =  0
     private var newGreen = 0
     private var newBlue = 0
@@ -49,12 +49,7 @@ class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         super.doneClicked()
     }
     
-    func HSBColorColorPickerTouched(
-        sender: HSBColorPicker,
-        color: UIColor,
-        point: CGPoint,
-        state: UIGestureRecognizer.State
-    ) {
+    func HSBColorColorPickerTouched(sender: HSBColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizer.State) {
         let myColorComponents = color.components
         let colorInt: Int = (0xFF << 24)
             | (myColorComponents.red << 16)

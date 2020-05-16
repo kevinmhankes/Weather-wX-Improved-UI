@@ -9,7 +9,7 @@ import CoreLocation
 
 class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
     
-    private var locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     
     override func viewDidLoad() {
