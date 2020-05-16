@@ -6,8 +6,8 @@
 
 final class ObjectPolygonWarning {
 
-    var storage: DataStorage
-    var isEnabled: Bool
+    let storage: DataStorage
+    let isEnabled: Bool
     let type: PolygonTypeGeneric
 
     init(_ type: PolygonTypeGeneric) {

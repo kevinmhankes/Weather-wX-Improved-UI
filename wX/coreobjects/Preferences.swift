@@ -8,7 +8,7 @@ import Foundation
 
 final class Preferences {
 
-    private var preferences = UserDefaults.standard
+    private let preferences = UserDefaults.standard
 
     func getString(_ label: String, _ value: String) -> String {
         if preferences.object(forKey: label) == nil {

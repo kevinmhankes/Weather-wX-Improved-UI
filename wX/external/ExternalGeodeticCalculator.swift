@@ -10,9 +10,9 @@
 
 import Foundation
 
-public class ExternalGeodeticCalculator {
+final class ExternalGeodeticCalculator {
 
-    let TwoPi = 2.0 * Double.pi
+    private let TwoPi = 2.0 * Double.pi
 
     /**
      * Calculate the destination and final bearing after traveling a specified

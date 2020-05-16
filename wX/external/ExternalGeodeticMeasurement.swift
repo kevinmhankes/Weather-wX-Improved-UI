@@ -12,8 +12,8 @@ import Foundation
 
 class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
 
-    var mElevationChange = 0.0
-    var mP2P = 0.0
+    private var mElevationChange = 0.0
+    private var mP2P = 0.0
 
     init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double, elevationChange: Double) {
         super.init(ellipsoidalDistance: ellipsoidalDistance, azimuth: azimuth, reverseAzimuth: reverseAzimuth)
@@ -28,7 +28,7 @@ class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
                   elevationChange: elevationChange)
     }
 
-    func getElevationChange() -> Double { mElevationChange }
+    //func getElevationChange() -> Double { mElevationChange }
     
-    func getPointToPointDistance() -> Double { mP2P }
+    //func getPointToPointDistance() -> Double { mP2P }
 }

@@ -8,11 +8,11 @@
  * BitCoin tips graciously accepted at 1FB63FYQMy7hpC2ANVhZ5mSgAZEtY1aVLf
  */
 
-class ExternalAngle {
+final class ExternalAngle {
 
     static let PiOver180 = Double.pi / 180.0
 
-    init() {}
+    //init() {}
 
     static func toRadians(degrees: Double) -> Double {
         degrees * PiOver180

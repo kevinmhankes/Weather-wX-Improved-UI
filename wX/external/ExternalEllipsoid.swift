@@ -10,7 +10,7 @@
 
 import Foundation
 
-public class ExternalEllipsoid {
+final class ExternalEllipsoid {
 
     let mSemiMajorAxis: Double
     let mSemiMinorAxis: Double
