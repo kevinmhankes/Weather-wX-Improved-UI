@@ -20,7 +20,6 @@ class vcNhcStorm: UIwXViewController {
     private var goesId = ""
     private var imgUrl1 = ""
     private var product = ""
-    //private var topBitmap = Bitmap()
     private var bitmaps = [Bitmap]()
     private let textProducts = [
         "MIATCP: Public Advisory",
@@ -28,7 +27,6 @@ class vcNhcStorm: UIwXViewController {
         "MIATCD: Forecast Discussion",
         "MIAPWS: Wind Speed Probababilities"
     ]
-    private var goodUrls = [String]()
     private var bitmapsFiltered = [Bitmap]()
     private let stormUrls = [
         "_5day_cone_with_line_and_wind_sm2.png",
@@ -50,6 +48,7 @@ class vcNhcStorm: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeEnvironment()
+        //let statusButton = ObjectToolbarIcon(title: nhcStormTitle, self, nil)
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
@@ -82,15 +81,10 @@ class vcNhcStorm: UIwXViewController {
         baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
     }
     
-    // FIXME add willEnterForeground
-    override func willEnterForeground() {}
-    
     override func getContent() {
+        bitmaps = []
+        self.refreshViews()
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
-        //serial.async {
-        //    self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")
-        //    DispatchQueue.main.async { self.displayTopImageContent() }
-        //}
         serial.async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
@@ -127,24 +121,12 @@ class vcNhcStorm: UIwXViewController {
     }
     
     func displayImageContent() {
-        //self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in _ = ObjectImage(self.stackView, bitmap) }
-        //let bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }.map {$0}
-        goodUrls = []
         bitmapsFiltered = []
-        self.bitmaps.enumerated().forEach { index, bitmap in
-            if bitmap.isValidForNhc {
-                bitmapsFiltered.append(bitmap)
-                goodUrls.append(bitmap.url)
-                //print("DEBUGAA: " + String(index) + stormUrls[index])
-            }
-        }
+        self.bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }
         _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        //print("DEBUGAA: " + String(sender.data))
-        //var url = self.baseUrl
-        //if goodUrls[sender.data] == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
         Route.imageViewer(self, bitmapsFiltered[sender.data].url)
     }
     
@@ -154,7 +136,6 @@ class vcNhcStorm: UIwXViewController {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                //self.displayTopImageContent()
                 self.displayImageContent()
                 self.displayTextContent()
         }
