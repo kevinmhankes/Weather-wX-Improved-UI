@@ -29,6 +29,7 @@ class vcNhcStorm: UIwXViewController {
         "MIAPWS: Wind Speed Probababilities"
     ]
     private let stormUrls = [
+        "_5day_cone_with_line_and_wind_sm2.png",
         "_key_messages.png",
         "WPCQPF_sm2.gif",
         "_earliest_reasonable_toa_34_sm2.png",
@@ -84,14 +85,10 @@ class vcNhcStorm: UIwXViewController {
     
     override func getContent() {
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
-        serial.async {
-            self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")
-            DispatchQueue.main.async { self.displayTopImageContent() }
-        }
-        serial.async {
-            self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.displayTextContent() }
-        }
+        //serial.async {
+        //    self.topBitmap = Bitmap(self.baseUrl + "_5day_cone_with_line_and_wind_sm2.png")
+        //    DispatchQueue.main.async { self.displayTopImageContent() }
+        //}
         serial.async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
@@ -100,6 +97,10 @@ class vcNhcStorm: UIwXViewController {
                 self.bitmaps.append(Bitmap(url + fileName))
             }
             DispatchQueue.main.async { self.displayImageContent() }
+        }
+        serial.async {
+            self.html = UtilityDownload.getTextProduct(self.product)
+            DispatchQueue.main.async { self.displayTextContent() }
         }
     }
     
@@ -118,10 +119,10 @@ class vcNhcStorm: UIwXViewController {
         }
     }
     
-    func displayTopImageContent() {
-        _ = ObjectImage(self.stackView, topBitmap)
-        self.view.bringSubviewToFront(self.toolbar)
-    }
+    //func displayTopImageContent() {
+    //    _ = ObjectImage(self.stackView, topBitmap)
+    //    self.view.bringSubviewToFront(self.toolbar)
+    //}
     
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
@@ -131,7 +132,9 @@ class vcNhcStorm: UIwXViewController {
     }
     
     func displayImageContent() {
-        self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in _ = ObjectImage(self.stackView, bitmap) }
+        //self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in _ = ObjectImage(self.stackView, bitmap) }
+        let bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }.map {$0}
+        _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
         self.view.bringSubviewToFront(self.toolbar)
     }
     
@@ -141,9 +144,9 @@ class vcNhcStorm: UIwXViewController {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                self.displayTopImageContent()
-                self.displayTextContent()
+                //self.displayTopImageContent()
                 self.displayImageContent()
+                self.displayTextContent()
         }
         )
     }
