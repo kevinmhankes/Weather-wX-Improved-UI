@@ -20,7 +20,7 @@ class vcNhcStorm: UIwXViewController {
     private var goesId = ""
     private var imgUrl1 = ""
     private var product = ""
-    private var topBitmap = Bitmap()
+    //private var topBitmap = Bitmap()
     private var bitmaps = [Bitmap]()
     private let textProducts = [
         "MIATCP: Public Advisory",
@@ -28,6 +28,8 @@ class vcNhcStorm: UIwXViewController {
         "MIATCD: Forecast Discussion",
         "MIAPWS: Wind Speed Probababilities"
     ]
+    private var goodUrls = [String]()
+    private var bitmapsFiltered = [Bitmap]()
     private let stormUrls = [
         "_5day_cone_with_line_and_wind_sm2.png",
         "_key_messages.png",
@@ -118,24 +120,32 @@ class vcNhcStorm: UIwXViewController {
             DispatchQueue.main.async { Route.textViewer(self, html) }
         }
     }
-    
-    //func displayTopImageContent() {
-    //    _ = ObjectImage(self.stackView, topBitmap)
-    //    self.view.bringSubviewToFront(self.toolbar)
-    //}
-    
+
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.constrain(scrollView)
-        // FIXME is this needed?
-        self.view.bringSubviewToFront(self.toolbar)
     }
     
     func displayImageContent() {
         //self.bitmaps.filter { $0.isValidForNhc }.forEach { bitmap in _ = ObjectImage(self.stackView, bitmap) }
-        let bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }.map {$0}
+        //let bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }.map {$0}
+        goodUrls = []
+        bitmapsFiltered = []
+        self.bitmaps.enumerated().forEach { index, bitmap in
+            if bitmap.isValidForNhc {
+                bitmapsFiltered.append(bitmap)
+                goodUrls.append(bitmap.url)
+                //print("DEBUGAA: " + String(index) + stormUrls[index])
+            }
+        }
         _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
-        self.view.bringSubviewToFront(self.toolbar)
+    }
+    
+    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+        //print("DEBUGAA: " + String(sender.data))
+        //var url = self.baseUrl
+        //if goodUrls[sender.data] == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
+        Route.imageViewer(self, bitmapsFiltered[sender.data].url)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
