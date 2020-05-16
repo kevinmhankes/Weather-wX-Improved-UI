@@ -9,7 +9,7 @@ import UIKit
 class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     private var cap = CapAlert()
-    private var objectAlertDetail = ObjectAlertDetail()
+    private var objectAlertDetail: ObjectAlertDetail!
     var usAlertsDetailUrl = ""
     
     override func viewDidLoad() {

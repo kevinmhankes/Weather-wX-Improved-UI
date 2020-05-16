@@ -9,10 +9,10 @@ import UIKit
 final class ObjectAlertDetail {
 
     private var textViews = [ObjectTextView]()
-    private var uiStackView = UIStackView()
+    private let uiStackView: UIStackView
 
-    convenience init(_ uiStackView: UIStackView) {
-        self.init()
+    init(_ uiStackView: UIStackView) {
+        self.uiStackView = uiStackView
         (0...6).forEach { _ in
             let objectTextView = ObjectTextView(uiStackView, "")
             objectTextView.tv.isAccessibilityElement = false
@@ -21,7 +21,6 @@ final class ObjectAlertDetail {
         textViews[0].font = FontSize.extraLarge.size
         textViews[4].color = ColorCompatibility.highlightText
         uiStackView.isAccessibilityElement = true
-        self.uiStackView = uiStackView
     }
 
     func updateContent(_ uiScrollView: UIScrollView, _ alert: CapAlert) {

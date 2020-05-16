@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCanadaWarnings: NSObject {
     
-    private var uiv: UIwXViewController
+    private let uiv: UIwXViewController
     private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var listLocUrl = [String]()
