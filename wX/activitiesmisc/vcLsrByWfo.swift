@@ -35,11 +35,13 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
     
     private func displayContent() {
-        self.stackView.removeViews()
-        self.wfoProd.forEach { item in
-            let objectTextView = ObjectTextView(self.stackView, item)
-            objectTextView.font = FontSize.hourly.size
-            objectTextView.constrain(scrollView)
+        if !map.mapShown {
+            self.stackView.removeViews()
+            self.wfoProd.forEach { item in
+                let objectTextView = ObjectTextView(self.stackView, item)
+                objectTextView.font = FontSize.hourly.size
+                objectTextView.constrain(scrollView)
+            }
         }
     }
     
@@ -80,7 +82,7 @@ class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                self.refreshViews()
+                //self.refreshViews()
                 self.map.setupMap(GlobalArrays.wfos)
                 self.displayContent()
         }

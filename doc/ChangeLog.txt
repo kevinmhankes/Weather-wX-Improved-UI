@@ -28,7 +28,6 @@
 // [ADD] re-eval aviation dot size on MacOS
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] iOS quad pane tap bottom 2 panes seems off
-// [FIX] WFO LSR do not handle map resize after rotation
 // [REF] rename patterns in model util files
 // [FIX] check default aviation size for tablet
 // [FIX] in homescreen remove the 2km on the Radar Mosaic label
@@ -36,7 +35,7 @@
 
 56102 2020_05_16 [REF] misc
 		 [ADD] from adhoc location allow to save location
-		 [FIX] WFO text - resize map on screen rotate
+		 [FIX] WFO text / WFO LSR - resize map on screen rotate
 		 [REF] remove inout if possible
 		 [FIX] dual pane shows same prods when remember location not on
 		 [ADD] in color picker if tap "set to default", immediately exit to prior screen
