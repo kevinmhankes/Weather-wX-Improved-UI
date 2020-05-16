@@ -29,8 +29,9 @@ final class ObjectNhcStormDetails {
     let pressure: String
     let wind: String
     let headline: String
+    let baseUrl: String
 
-    init(_ data: String) {
+    init(_ data: String, _ url: String) {
         center = data.parse("<nhc:center>(.*?)</nhc:center>")
         type = data.parse("<nhc:type>(.*?)</nhc:type>")
         name = data.parse("<nhc:name>(.*?)</nhc:name>")
@@ -41,5 +42,8 @@ final class ObjectNhcStormDetails {
         pressure = data.parse("<nhc:pressure>(.*?)</nhc:pressure>")
         wind = data.parse("<nhc:wind>(.*?)</nhc:wind>")
         headline = data.parse("<nhc:headline>(.*?)</nhc:headline>")
+        baseUrl = url.replace("_5day_cone_with_line_and_wind_sm2.png", "")
     }
+    
+    func forTopHeader() -> String { movement + ", " + pressure + ", " + wind }
 }

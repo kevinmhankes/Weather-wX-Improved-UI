@@ -14,12 +14,14 @@ final class ObjectNhc: NSObject {
     private var atlImg2List = [String]()
     private var atlWalletList = [String]()
     private var atlTitleList = [String]()
+    private var atlStormDataList = [ObjectNhcStormDetails]()
     private var pacSumList = [String]()
     private var pacLinkList = [String]()
     private var pacImg1List = [String]()
     private var pacImg2List = [String]()
     private var pacWalletList = [String]()
     private var pacTitleList = [String]()
+    private var pacStormDataList = [ObjectNhcStormDetails]()
     private var uiv: UIwXViewController
     private var textAtl = ""
     private var textPac = ""
@@ -69,7 +71,8 @@ final class ObjectNhc: NSObject {
         } else {
             self.atlSumList.indices.forEach { index in
                 if atlImg1List[index] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[index])
+                    let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[index], self.atlImg1List[index])
+                    atlStormDataList.append(objectNhcStormDetails)
                     _ = ObjectCardNhcStormReportItem(
                         uiv.stackView,
                         objectNhcStormDetails,
@@ -84,7 +87,8 @@ final class ObjectNhc: NSObject {
         } else {
             self.pacSumList.indices.forEach { index in
                 if pacImg1List[index] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[index])
+                    let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[index], self.pacImg1List[index])
+                    pacStormDataList.append(objectNhcStormDetails)
                     _ = ObjectCardNhcStormReportItem(
                         uiv.stackView,
                         objectNhcStormDetails,
@@ -126,22 +130,24 @@ final class ObjectNhc: NSObject {
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()
-        vc.nhcStormUrl = pacLinkList[index]
-        vc.nhcStormTitle = pacTitleList[index]
-        vc.nhcStormImgUrl1 = pacImg1List[index]
-        vc.nhcStormImgUrl2 = pacImg2List[index]
-        vc.nhcStormWallet = pacWalletList[index]
+        //vc.nhcStormUrl = pacLinkList[index]
+        //vc.nhcStormTitle = pacTitleList[index]
+        //vc.nhcStormImgUrl1 = pacImg1List[index]
+        //vc.nhcStormImgUrl2 = pacImg2List[index]
+        //vc.nhcStormWallet = pacWalletList[index]
+        vc.stormData = pacStormDataList[index]
         uiv.goToVC(vc)
     }
     
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()
-        vc.nhcStormUrl = atlLinkList[index]
-        vc.nhcStormTitle = atlTitleList[index]
-        vc.nhcStormImgUrl1 = atlImg1List[index]
-        vc.nhcStormImgUrl2 = atlImg2List[index]
-        vc.nhcStormWallet = atlWalletList[index]
+        //vc.nhcStormUrl = atlLinkList[index]
+        //vc.nhcStormTitle = atlTitleList[index]
+        //vc.nhcStormImgUrl1 = atlImg1List[index]
+        //vc.nhcStormImgUrl2 = atlImg2List[index]
+        //vc.nhcStormWallet = atlWalletList[index]
+        vc.stormData = atlStormDataList[index]
         uiv.goToVC(vc)
     }
 }
