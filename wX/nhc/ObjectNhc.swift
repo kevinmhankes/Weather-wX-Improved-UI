@@ -14,7 +14,7 @@ final class ObjectNhc: NSObject {
     private var pacSumList = [String]()
     private var pacImg1List = [String]()
     private var pacStormDataList = [ObjectNhcStormDetails]()
-    private var uiv: UIwXViewController
+    private let uiv: UIwXViewController
     private var textAtl = ""
     private var textPac = ""
     private var imageCount = 0
