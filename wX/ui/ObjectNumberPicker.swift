@@ -9,7 +9,7 @@ import UIKit
 final class ObjectNumberPicker {
 
     let numberPicker = UIPickerView()
-    let button = UIButton(type: UIButton.ButtonType.system)
+    private let button = UIButton(type: UIButton.ButtonType.system)
 
     init(_ stackView: UIStackView, _ prefVar: String, _ pickerMap: [String: String]) {
         let label = pickerMap[prefVar]

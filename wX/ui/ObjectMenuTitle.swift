@@ -8,8 +8,8 @@ import Foundation
 
 final class ObjectMenuTitle {
 
-    var title: String
-    var count: Int
+    let title: String
+    let count: Int
 
     init(_ title: String, _ count: Int) {
 		self.title = title

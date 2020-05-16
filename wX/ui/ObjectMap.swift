@@ -7,12 +7,12 @@
 import UIKit
 import MapKit
 
-public class ObjectMap {
+final class ObjectMap {
     
     let mapView = MKMapView()
     var mapShown = false
-    let officeType: OfficeTypeEnum
-    let mapRegionRadius = 1000000.0
+    private let officeType: OfficeTypeEnum
+    private let mapRegionRadius = 1000000.0
     
     init(_ officeType: OfficeTypeEnum) {
         self.officeType = officeType
@@ -38,7 +38,7 @@ public class ObjectMap {
         centerMapOnLocation(location: usCenter, regionRadius: mapRegionRadius)
     }
     
-    func createLocationsList(_ offices: [String]) -> [[String: String]] {
+    private func createLocationsList(_ offices: [String]) -> [[String: String]] {
         var locations = [[String: String]]()
         offices.forEach { item in
             let items = item.split(":")
@@ -72,7 +72,7 @@ public class ObjectMap {
         return locations
     }
     
-    func centerMapOnLocation(location: CLLocationCoordinate2D, regionRadius: Double) {
+    private func centerMapOnLocation(location: CLLocationCoordinate2D, regionRadius: Double) {
         let coordinateRegion = MKCoordinateRegion(
             center: location,
             latitudinalMeters: regionRadius * 2.0,
