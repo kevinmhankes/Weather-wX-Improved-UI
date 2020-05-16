@@ -8,9 +8,9 @@ import UIKit
 
 final class ObjectSettingsSwitch {
 
-    let button = UIButton(type: UIButton.ButtonType.system)
+    private let button = UIButton(type: UIButton.ButtonType.system)
     let switchUi = UISwitch()
-    let prefMap: [String: String]
+    private let prefMap: [String: String]
 
     init(_ stackView: UIStackView, _ prefVar: String, _ boolDefArray: [String: String], _ prefMap: [String: String]) {
         self.prefMap = prefMap

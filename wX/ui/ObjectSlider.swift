@@ -54,7 +54,7 @@ final class ObjectSlider {
         button.titleLabel?.font = FontSize.medium.size
     }
 
-    static let prefToLabel = [
+    private static let prefToLabel = [
         "RADAR_LOCDOT_SIZE": "Location dot size" ,
         "RADAR_SPOTTER_SIZE": "Spotter size",
         "RADAR_COLOR_PALETTE_94": "Reflectivity Colormap",
@@ -76,7 +76,7 @@ final class ObjectSlider {
         "NWS_ICON_SIZE_PREF": "NWS Icon size"
     ]
 
-    static let prefToInitialValue: [String: Int] = [
+    private static let prefToInitialValue: [String: Int] = [
         "RADAR_LOCDOT_SIZE": 4,
         "RADAR_LOCDOT_SIZE_T": 2,
         "RADAR_LOCDOT_SIZE_C": 1,
@@ -139,7 +139,7 @@ final class ObjectSlider {
 
     ]
 
-    static let prefToMin: [String: Float] = [
+    private static let prefToMin: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 0.0,
             "RADAR_SPOTTER_SIZE": 0.0,
             "RADAR_HI_SIZE": 0.0,
@@ -157,7 +157,7 @@ final class ObjectSlider {
             "RADAR_TEXT_SIZE": 5.0
     ]
 
-    static let prefToMax: [String: Float] = [
+    private static let prefToMax: [String: Float] = [
             "RADAR_LOCDOT_SIZE": 10.0,
             "RADAR_SPOTTER_SIZE": 10.0,
             "RADAR_HI_SIZE": 14.0,
