@@ -8,7 +8,7 @@ import Foundation
 
 final class Editor {
 
-    private var preferences = UserDefaults.standard
+    private let preferences = UserDefaults.standard
 
     func removeObject(_ label: String) {
         preferences.removeObject(forKey: label)
