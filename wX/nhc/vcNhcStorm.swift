@@ -84,19 +84,15 @@ class vcNhcStorm: UIwXViewController {
     override func getContent() {
         bitmaps = []
         self.refreshViews()
-        let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
-        serial.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
                 var url = self.baseUrl
                 if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
                 self.bitmaps.append(Bitmap(url + fileName))
             }
-            DispatchQueue.main.async { self.displayImageContent() }
-        }
-        serial.async {
             self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.displayTextContent() }
+            DispatchQueue.main.async { self.displayContent() }
         }
     }
     
@@ -113,6 +109,12 @@ class vcNhcStorm: UIwXViewController {
             let html = UtilityDownload.getTextProduct(product + self.stormId)
             DispatchQueue.main.async { Route.textViewer(self, html) }
         }
+    }
+    
+    func displayContent() {
+        refreshViews()
+        displayImageContent()
+        displayTextContent()
     }
 
     func displayTextContent() {
@@ -134,11 +136,7 @@ class vcNhcStorm: UIwXViewController {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.refreshViews()
-                self.displayImageContent()
-                self.displayTextContent()
-        }
+            completion: { _ -> Void in self.displayContent() }
         )
     }
 }
