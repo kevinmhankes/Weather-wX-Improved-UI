@@ -20,9 +20,9 @@
  *
  * @author Mike Gavaghan
  */
-public class ExternalGlobalPosition: ExternalGlobalCoordinates {
+final class ExternalGlobalPosition: ExternalGlobalCoordinates {
     /** Elevation, in meters, above the surface of the ellipsoid. */
-    var  mElevation: Double
+    private var elevation: Double
 
     /**
      * Creates a new instance of GlobalPosition.
@@ -32,7 +32,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @param elevation elevation, in meters, above the reference ellipsoid
      */
     init(latitude: Double, longitude: Double, elevation: Double) {
-        mElevation = elevation
+        self.elevation = elevation
         super.init(latitude, longitude)
     }
 
@@ -51,7 +51,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
      *
      * @return elevation about the ellipsoid in meters.
      */
-    func  getElevation() -> Double { mElevation }
+    func getElevation() -> Double { elevation }
 
     /**
      * Set the elevation.
@@ -59,7 +59,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @param elevation elevation about the ellipsoid in meters.
      */
     func setElevation(elevation: Double) {
-        mElevation = elevation
+        self.elevation = elevation
     }
 
     /**
@@ -74,9 +74,9 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
     func compareTo(other: ExternalGlobalPosition ) -> Int {
         var retval: Int = super.compareTo(other: other)
         if retval == 0 {
-            if mElevation < other.mElevation {
+            if elevation < other.elevation {
                 retval = -1
-            } else if mElevation > other.mElevation {
+            } else if elevation > other.elevation {
                 retval = +1
             }
         }
@@ -91,7 +91,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
 
     override func  hashCode() -> Int {
         var hash: Int = super.hashCode()
-        if mElevation != 0 { hash *= Int(mElevation) }
+        if elevation != 0 { hash *= Int(elevation) }
         return hash
     }
 
@@ -104,7 +104,7 @@ public class ExternalGlobalPosition: ExternalGlobalCoordinates {
 
     override func  equals(obj: AnyObject ) -> Bool {
         if let  other: ExternalGlobalPosition = obj as? ExternalGlobalPosition {
-            return (mElevation == other.mElevation) && (super.equals(obj: other))
+            return (elevation == other.elevation) && (super.equals(obj: other))
         } else {
             return false
         }

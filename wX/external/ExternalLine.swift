@@ -12,45 +12,45 @@
  https://github.com/sromku/polygon-contains-point
  */
 
-class ExternalLine {
+final class ExternalLine {
 
-    var  _start: ExternalPoint
-    var  _end: ExternalPoint
-    var  _a: Float = 999999999.0
-    var  _b: Float = 999999999.0
-    var _vertical = false
+    private var  start: ExternalPoint
+    private var  end: ExternalPoint
+    private var  a: Float = 999999999.0
+    private var  b: Float = 999999999.0
+    private var vertical = false
 
     init(start: ExternalPoint, end: ExternalPoint) {
-        _start = start
-        _end = end
-        if _end.x - _start.x != 0 {
-            _a = ((_end.y - _start.y) / (_end.x - _start.x))
-            _b = _start.y - _a * _start.x
+        self.start = start
+        self.end = end
+        if end.x - start.x != 0 {
+            a = ((end.y - start.y) / (end.x - start.x))
+            b = start.y - a * start.x
         } else {
-            _vertical = true
+            vertical = true
         }
     }
 
     func isInside(point: ExternalPoint) -> Bool {
-        let maxX = _start.x > _end.x ? _start.x : _end.x
-        let minX = _start.x < _end.x ? _start.x : _end.x
-        let maxY = _start.y > _end.y ? _start.y : _end.y
-        let minY = _start.y < _end.y ? _start.y : _end.y
+        let maxX = start.x > end.x ? start.x : end.x
+        let minX = start.x < end.x ? start.x : end.x
+        let maxY = start.y > end.y ? start.y : end.y
+        let minY = start.y < end.y ? start.y : end.y
         if (point.x >= minX && point.x <= maxX) && (point.y >= minY && point.y <= maxY) {
             return true
         }
         return false
     }
 
-    func isVertical() -> Bool { _vertical }
+    func isVertical() -> Bool { vertical }
     
-    func getA() -> Float { _a }
+    func getA() -> Float { a }
     
-    func getB() -> Float { _b }
+    func getB() -> Float { b }
     
-    func getStart() -> ExternalPoint { _start }
+    func getStart() -> ExternalPoint { start }
     
-    func getEnd() -> ExternalPoint { _end }
+    func getEnd() -> ExternalPoint { end }
     
-    func toString() -> String { String(format: "%s-%s", _start.toString(), _end.toString()) }
+    func toString() -> String { String(format: "%s-%s", start.toString(), end.toString()) }
 }
