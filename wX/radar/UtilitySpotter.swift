@@ -12,6 +12,7 @@ public class UtilitySpotter {
     static var lat = [Double]()
     static var lon = [Double]()
     
+    // TODO match kotlin getter "reports", use let
     static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
             spotterList = []

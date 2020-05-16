@@ -34,7 +34,7 @@
 // [FIX] in homescreen remove the 2km on the Radar Mosaic label
 // [FIX] in homescreen unify the label for CONUS WV and VIS
 
-56102 2020_05_14 [REF] misc
+56102 2020_05_16 [REF] misc
 		 [ADD] from adhoc location allow to save location
 		 [REF] remove inout if possible
 		 [FIX] dual pane shows same prods when remember location not on
