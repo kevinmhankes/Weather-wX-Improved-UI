@@ -4,9 +4,9 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class R {
+final class R {
 
-    class Raw {
+    final class Raw {
         static let hw = "hw"
         static let hwv4 = "hwv4"
         static let hwv4ext = "hwv4ext"
@@ -41,7 +41,7 @@ class R {
         static let us_metar3 = "us_metar3.txt"
     }
 
-    class Drawable {
+    final class Drawable {
         static let bkn = "bkn.png"
         static let blizzard = "blizzard.png"
         static let cold = "cold.png"

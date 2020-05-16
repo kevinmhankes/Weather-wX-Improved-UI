@@ -6,7 +6,7 @@
 
 import UIKit
 
-class MyApplication {
+final class MyApplication {
     static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by" + " https://weather.gc.ca/canada_e.html."
     static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"

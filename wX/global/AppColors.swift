@@ -6,7 +6,7 @@
 
 import UIKit
 
-class AppColors {
+final class AppColors {
     
     static var primaryColorRed = 46.toColor()
     static var primaryColorGreen = 63.toColor()

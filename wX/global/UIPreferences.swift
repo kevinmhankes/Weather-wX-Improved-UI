@@ -6,12 +6,12 @@
 
 import UIKit
 
-class UIPreferences {
-    static var tabBarHeight: CGFloat = 48.0
-    static var toolbarHeight: CGFloat = 44.0
-    static var statusBarHeight: CGFloat = 20.0
-    static var toolbarIconSpacing: CGFloat = 17.0
-    static var stackviewCardSpacing: CGFloat = 1.0
+final class UIPreferences {
+    static let tabBarHeight: CGFloat = 48.0
+    static let toolbarHeight: CGFloat = 44.0
+    static let statusBarHeight: CGFloat = 20.0
+    static let toolbarIconSpacing: CGFloat = 17.0
+    static let stackviewCardSpacing: CGFloat = 1.0
     static var backButtonAnimation = true
     static var dualpaneRadarIcon = false
     static var unitsM = false

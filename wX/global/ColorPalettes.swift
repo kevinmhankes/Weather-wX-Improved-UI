@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class ColorPalettes {
+final class ColorPalettes {
     
     static func initialize() {
         let colorMapNumbers = [19, 30, 41, 56, 134, 135, 159, 161, 163, 165]

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class GlobalArrays {
+final class GlobalArrays {
     static let states = [
         "AL: Alabama",
         "AK: Alaska",

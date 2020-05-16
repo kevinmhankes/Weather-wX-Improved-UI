@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class RadarPreferences {
+final class RadarPreferences {
     static var radarWarnings = false
     static var locdotFollowsGps = false
     static var dualpaneshareposn = true
