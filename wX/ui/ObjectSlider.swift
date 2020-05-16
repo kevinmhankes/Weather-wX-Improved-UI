@@ -95,7 +95,7 @@ final class ObjectSlider {
 
         "RADAR_AVIATION_SIZE": 4,
         "RADAR_AVIATION_SIZE_T": 2,
-        "RADAR_AVIATION_SIZE_C": 1,
+        "RADAR_AVIATION_SIZE_C": 2,
 
         "RADAR_OBS_EXT_ZOOM": 7,
         "RADAR_OBS_EXT_ZOOM_T": 7,
