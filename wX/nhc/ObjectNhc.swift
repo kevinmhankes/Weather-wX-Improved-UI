@@ -9,18 +9,10 @@ import UIKit
 final class ObjectNhc: NSObject {
     
     private var atlSumList = [String]()
-    //private var atlLinkList = [String]()
     private var atlImg1List = [String]()
-    //private var atlImg2List = [String]()
-    //private var atlWalletList = [String]()
-    //private var atlTitleList = [String]()
     private var atlStormDataList = [ObjectNhcStormDetails]()
     private var pacSumList = [String]()
-    //private var pacLinkList = [String]()
     private var pacImg1List = [String]()
-    //private var pacImg2List = [String]()
-    //private var pacWalletList = [String]()
-    //private var pacTitleList = [String]()
     private var pacStormDataList = [ObjectNhcStormDetails]()
     private var uiv: UIwXViewController
     private var textAtl = ""
@@ -42,24 +34,14 @@ final class ObjectNhc: NSObject {
             let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String(index) + ".xml")
             if dataRet.title != "" {
                 self.atlSumList.append(dataRet.summary)
-                //let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
-                //self.atlLinkList.append(text)
                 self.atlImg1List.append(dataRet.img1)
-                //self.atlImg2List.append(dataRet.img2)
-                //self.atlWalletList.append(dataRet.wallet)
-                //self.atlTitleList.append(dataRet.title.replace("NHC Atlantic Wallet", ""))
             }
         }
         (1...5).forEach { index in
             let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String(index) + ".xml")
             if dataRet.title != "" {
                 self.pacSumList.append(dataRet.summary)
-                //let text = dataRet.url.getHtmlSep().parse(MyApplication.pre2Pattern)
-                //self.pacLinkList.append(text)
                 self.pacImg1List.append(dataRet.img1)
-                //self.pacImg2List.append(dataRet.img2)
-                //self.pacWalletList.append(dataRet.wallet)
-                //self.pacTitleList.append(dataRet.title.replace("NHC Eastern Pacific Wallet", ""))
             }
         }
     }
@@ -129,7 +111,6 @@ final class ObjectNhc: NSObject {
     
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         Route.nhcStorm(uiv, pacStormDataList[sender.data])
-
     }
     
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
