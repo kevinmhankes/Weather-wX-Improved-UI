@@ -11,7 +11,7 @@ internal protocol HSBColorPickerDelegate: NSObjectProtocol {
 // http://stackoverflow.com/questions/27208386/simple-swift-color-picker-popover-ios
 
 @IBDesignable
-class HSBColorPicker: UIView {
+final class HSBColorPicker: UIView {
 
     weak internal var delegate: HSBColorPickerDelegate?
     let saturationExponentTop: Float = 2.0

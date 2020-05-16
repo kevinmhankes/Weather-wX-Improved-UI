@@ -223,7 +223,7 @@ final class ExternalPolygon {
      * @param point
      * @return <code>True</code> if the point in bounding box, otherwise return <code>False</code>
      */
-    func  inBoundingBox(point: ExternalPoint) -> Bool {
+    func inBoundingBox(point: ExternalPoint) -> Bool {
         if point.x < boundingBox.xMin
             || point.x > boundingBox.xMax
             || point.y < boundingBox.yMin
@@ -233,7 +233,7 @@ final class ExternalPolygon {
         return true
     }
 
-    class BoundingBox {
+    final class BoundingBox {
         var xMax = -Float.infinity
         var xMin = -Float.infinity
         var yMax = -Float.infinity
