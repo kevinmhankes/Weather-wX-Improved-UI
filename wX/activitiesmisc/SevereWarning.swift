@@ -38,6 +38,8 @@ final class SevereWarning {
     }
 
     func generateString(_ html: String) {
+        count = 0
+        text = ""
         idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
         areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
         effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
