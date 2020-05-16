@@ -10,15 +10,15 @@
 
 import Foundation
 
-class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
+final class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
 
-    private var mElevationChange = 0.0
-    private var mP2P = 0.0
+    private var elevationChange = 0.0
+    private var p2p = 0.0
 
     init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double, elevationChange: Double) {
         super.init(ellipsoidalDistance: ellipsoidalDistance, azimuth: azimuth, reverseAzimuth: reverseAzimuth)
-        self.mElevationChange = elevationChange
-        self.mP2P = sqrt(ellipsoidalDistance * ellipsoidalDistance + mElevationChange * mElevationChange)
+        self.elevationChange = elevationChange
+        self.p2p = sqrt(ellipsoidalDistance * ellipsoidalDistance + elevationChange * elevationChange)
     }
 
     convenience init(averageCurve: ExternalGeodeticCurve, elevationChange: Double) {

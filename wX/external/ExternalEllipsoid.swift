@@ -12,16 +12,16 @@ import Foundation
 
 final class ExternalEllipsoid {
 
-    let mSemiMajorAxis: Double
-    let mSemiMinorAxis: Double
-    let mFlattening: Double
-    let mInverseFlattening: Double
+    private let semiMajorAxis: Double
+    private let semiMinorAxis: Double
+    private let flattening: Double
+    private let inverseFlattening: Double
 
     init(semiMajor: Double, semiMinor: Double, flattening: Double, inverseFlattening: Double) {
-        mSemiMajorAxis = semiMajor
-        mSemiMinorAxis = semiMinor
-        mFlattening = flattening
-        mInverseFlattening = inverseFlattening
+        self.semiMajorAxis = semiMajor
+        self.semiMinorAxis = semiMinor
+        self.flattening = flattening
+        self.inverseFlattening = inverseFlattening
     }
 
     static let WGS84 = fromAAndInverseF(semiMajor: 6378137.0, inverseFlattening: 298.257223563)
@@ -51,11 +51,11 @@ final class ExternalEllipsoid {
                                  inverseFlattening: inverseF)
     }
 
-    func getSemiMajorAxis() -> Double { mSemiMajorAxis }
+    func getSemiMajorAxis() -> Double { semiMajorAxis }
 
-    func getSemiMinorAxis() -> Double { mSemiMinorAxis }
+    func getSemiMinorAxis() -> Double { semiMinorAxis }
 
-    func getFlattening() -> Double { mFlattening }
+    func getFlattening() -> Double { flattening }
 
-    func getInverseFlattening() -> Double { mInverseFlattening }
+    func getInverseFlattening() -> Double { inverseFlattening }
 }

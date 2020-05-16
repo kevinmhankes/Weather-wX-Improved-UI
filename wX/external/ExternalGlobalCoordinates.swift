@@ -27,7 +27,7 @@ import Foundation
  */
 public class ExternalGlobalCoordinates {
     /** Latitude in degrees. Negative latitude is southern hemisphere. */
-    var mLatitude: Double
+    private var mLatitude: Double
 
     /** Longitude in degrees. Negative longitude is western hemisphere. */
     var mLongitude: Double
