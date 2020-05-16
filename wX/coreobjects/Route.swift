@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func colorPicker(_ uiv: UIViewController, _ color: wXColor) {
+        let vc = vcSettingsColorPicker()
+        vc.colorObject = color
+        uiv.goToVC(vc)
+    }
+    
     static func spcFireOutlookForDay(_ uiv: UIViewController, _ day: Int) {
         let vc = vcSpcFireOutlook()
         vc.dayIndex = day

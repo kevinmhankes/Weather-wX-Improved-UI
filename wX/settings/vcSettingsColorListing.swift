@@ -74,9 +74,7 @@ class vcSettingsColorListing: UIwXViewController {
     }
     
     @objc func goToColor(sender: UITapGestureRecognizerWithData) {
-        let vc = vcSettingsColorPicker()
-        vc.colorObject = colors[sender.data]
-        self.goToVC(vc)
+        Route.colorPicker(self, colors[sender.data])
     }
     
     private func displayContent() {
