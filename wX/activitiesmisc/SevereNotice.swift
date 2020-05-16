@@ -18,7 +18,7 @@ final class SevereNotice {
     
     func getBitmaps(_ html: String) {
         let noAlertsVerbiage: String
-        bitmaps = [Bitmap]()
+        bitmaps = []
         switch type {
         case "SPCMCD":
             noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."

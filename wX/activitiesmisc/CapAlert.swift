@@ -21,7 +21,7 @@ final class CapAlert {
     convenience init(url: String) {
         self.init()
         self.url = url
-        var html = ""
+        var html: String
         if url.contains("NWS-IDP-PROD") {
             html = url.getNwsHtml()
         } else {
