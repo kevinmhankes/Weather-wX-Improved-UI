@@ -32,9 +32,7 @@ class vcSpcFireSummary: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        let vc = vcSpcFireOutlook()
-        vc.dayIndex = sender.data
-        self.goToVC(vc)
+        Route.spcFireOutlookForDay(self, sender.data)
     }
     
     @objc func shareClicked(sender: UIButton) {

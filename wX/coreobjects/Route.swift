@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func spcFireOutlookForDay(_ uiv: UIViewController, _ day: Int) {
+        let vc = vcSpcFireOutlook()
+        vc.dayIndex = day
+        uiv.goToVC(vc)
+    }
+    
     static func wpcRainfallForDay(_ uiv: UIViewController, _ day: String) {
         let vc = vcWpcRainfallDiscussion()
         vc.day = day
