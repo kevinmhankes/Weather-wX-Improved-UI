@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func wpcRainfallForDay(_ uiv: UIViewController, _ day: String) {
+        let vc = vcWpcRainfallDiscussion()
+        vc.day = day
+        uiv.goToVC(vc)
+    }
+    
     static func textViewer(_ uiv: UIViewController, _ text: String) {
         let vc = vcTextViewer()
         vc.textViewText = text

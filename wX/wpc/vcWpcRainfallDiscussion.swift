@@ -47,8 +47,7 @@ class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     @objc func imageClicked() {
-        let number = (Int(day) ?? 1) - 1
-        Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[number])
+        Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[(Int(day) ?? 1) - 1])
     }
     
     @objc override func shareClicked(sender: UIButton) {
