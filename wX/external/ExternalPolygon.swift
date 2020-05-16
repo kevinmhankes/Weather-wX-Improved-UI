@@ -24,14 +24,14 @@
  * @see {@link Builder}
  * @author Roman Kushnarenko (sromku@gmail.com)
  */
-public class ExternalPolygon {
+final class ExternalPolygon {
     
-    var _boundingBox: BoundingBox
-    var _sides: [ExternalLine]
+    private let boundingBox: BoundingBox
+    private let sides: [ExternalLine]
 
     init(sides: [ExternalLine], boundingBox: BoundingBox) {
-        _sides = sides
-        _boundingBox = boundingBox
+        self.sides = sides
+        self.boundingBox = boundingBox
     }
 
     /**
@@ -154,7 +154,7 @@ public class ExternalPolygon {
         if inBoundingBox(point: point) {
             let ray = createRay(point: point)
             var intersection = 0
-            for side in _sides {
+            for side in sides {
                 if intersect(ray: ray, side: side) {
                     intersection += 1
                 }
@@ -170,7 +170,7 @@ public class ExternalPolygon {
         return false
     }
 
-    func getSides() -> [ExternalLine] { _sides }
+    func getSides() -> [ExternalLine] { sides }
 
     /**
      * By given ray and one side of the polygon, check if both lines intersect.
@@ -218,8 +218,8 @@ public class ExternalPolygon {
      */
     func  createRay(point: ExternalPoint) -> ExternalLine {
         // create outside point
-        let epsilon = (_boundingBox.xMax - _boundingBox.xMin) / 100.0
-        let outsidePoint =  ExternalPoint(_boundingBox.xMin - epsilon, _boundingBox.yMin)
+        let epsilon = (boundingBox.xMax - boundingBox.xMin) / 100.0
+        let outsidePoint =  ExternalPoint(boundingBox.xMin - epsilon, boundingBox.yMin)
         let vector =  ExternalLine(start: outsidePoint, end: point)
         return vector
     }
@@ -231,10 +231,10 @@ public class ExternalPolygon {
      * @return <code>True</code> if the point in bounding box, otherwise return <code>False</code>
      */
     func  inBoundingBox(point: ExternalPoint) -> Bool {
-        if point.x < _boundingBox.xMin
-            || point.x > _boundingBox.xMax
-            || point.y < _boundingBox.yMin
-            || point.y > _boundingBox.yMax {
+        if point.x < boundingBox.xMin
+            || point.x > boundingBox.xMax
+            || point.y < boundingBox.yMin
+            || point.y > boundingBox.yMax {
             return false
         }
         return true

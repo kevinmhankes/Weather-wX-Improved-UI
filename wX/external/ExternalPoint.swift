@@ -23,7 +23,7 @@
  *
  * @author Roman Kushnarenko (sromku@gmail.com)</br>
  */
-public class ExternalPoint {
+final class ExternalPoint {
 
     let x: Float
     let y: Float
