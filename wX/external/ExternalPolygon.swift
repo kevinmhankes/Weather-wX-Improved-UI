@@ -46,12 +46,12 @@ final class ExternalPolygon {
      *
      * @author Roman Kushnarenko (sromku@gmail.com)
      */
-    class Builder {
-        var _vertexes: [ExternalPoint] = []
-        var _sides: [ExternalLine] = []
-        var _boundingBox = BoundingBox()
-        var _firstPoint = true
-        var _isClosed = false
+    final class Builder {
+        private var _vertexes: [ExternalPoint] = []
+        private var _sides: [ExternalLine] = []
+        private var _boundingBox = BoundingBox()
+        private var _firstPoint = true
+        private var _isClosed = false
 
         /**
          * Add vertex points of the polygon.<br>
@@ -71,8 +71,8 @@ final class ExternalPolygon {
             _vertexes.append(point)
             // add line (edge) to the polygon
             if _vertexes.count > 1 {
-                let Line =  ExternalLine(start: _vertexes[ _vertexes.count - 2], end: point)
-                _sides.append(Line)
+                let line =  ExternalLine(start: _vertexes[ _vertexes.count - 2], end: point)
+                _sides.append(line)
             }
             return self
         }
@@ -96,7 +96,7 @@ final class ExternalPolygon {
          *
          * @return The polygon
          */
-        func  build() -> ExternalPolygon {
+        func build() -> ExternalPolygon {
             validate()
             // in case you forgot to close
             if !_isClosed {
@@ -150,22 +150,17 @@ final class ExternalPolygon {
      *            The point to check
      * @return <code>True</code> if the point is inside the polygon, otherwise return <code>False</code>
      */
-    func  contains(point: ExternalPoint) -> Bool {
+    func contains(point: ExternalPoint) -> Bool {
         if inBoundingBox(point: point) {
             let ray = createRay(point: point)
             var intersection = 0
             for side in sides {
-                if intersect(ray: ray, side: side) {
-                    intersection += 1
-                }
+                if intersect(ray, side) { intersection += 1 }
             }
-
             /*
              * If the number of intersections is odd, then the point is inside the polygon
              */
-            if intersection % 2 == 1 {
-                return true
-            }
+            if intersection % 2 == 1 { return true }
         }
         return false
     }
@@ -179,14 +174,12 @@ final class ExternalPolygon {
      * @param side
      * @return <code>True</code> if both lines intersect, otherwise return <code>False</code>
      */
-    func intersect(ray: ExternalLine, side: ExternalLine) -> Bool {
+    func intersect(_ ray: ExternalLine, _ side: ExternalLine) -> Bool {
         var intersectPoint = ExternalPoint()
         // if both vectors aren't from the kind of x=1 lines then go into
         if !ray.isVertical() && !side.isVertical() {
             // check if both vectors are parallel. If they are parallel then no intersection point will exist
-            if ray.getA() - side.getA() == 0 {
-                return false
-            }
+            if ray.getA() - side.getA() == 0 { return false }
             let x = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())) // x = (b2-b1)/(a1-a2)
             let y = side.getA() * x + side.getB() // y = a2*x+b2
             intersectPoint = ExternalPoint(x, y)
@@ -216,7 +209,7 @@ final class ExternalPolygon {
      * @param point
      * @return
      */
-    func  createRay(point: ExternalPoint) -> ExternalLine {
+    func createRay(point: ExternalPoint) -> ExternalLine {
         // create outside point
         let epsilon = (boundingBox.xMax - boundingBox.xMin) / 100.0
         let outsidePoint =  ExternalPoint(boundingBox.xMin - epsilon, boundingBox.yMin)
