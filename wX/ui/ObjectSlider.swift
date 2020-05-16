@@ -8,19 +8,17 @@ import UIKit
 
 final class ObjectSlider {
 
-    let button = UIButton(type: UIButton.ButtonType.system)
+    private let button = UIButton(type: UIButton.ButtonType.system)
     let slider: UISlider
-    static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
+    private static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
     let prefVar: String
-    let label: String
-    let initialValue: Int
+    private let label: String
+    private let initialValue: Int
     // will be nothing for iphone, _C for catalyst, _T for ipad
-    var suffix = ""
+    private var suffix = ""
 
     init(_ uiv: UIwXViewController, _ prefVar: String) {
-        if UtilityUI.isTablet() {
-            suffix = "_T"
-        }
+        if UtilityUI.isTablet() { suffix = "_T" }
         #if targetEnvironment(macCatalyst)
             suffix = "_C"
         #endif
