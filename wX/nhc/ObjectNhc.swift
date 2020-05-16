@@ -128,16 +128,11 @@ final class ObjectNhc: NSObject {
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
     
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
-        let index = sender.data
-        let vc = vcNhcStorm()
-        vc.stormData = pacStormDataList[index]
-        uiv.goToVC(vc)
+        Route.nhcStorm(uiv, pacStormDataList[sender.data])
+
     }
     
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
-        let index = sender.data
-        let vc = vcNhcStorm()
-        vc.stormData = atlStormDataList[index]
-        uiv.goToVC(vc)
+        Route.nhcStorm(uiv, atlStormDataList[sender.data])
     }
 }

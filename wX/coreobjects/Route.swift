@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func nhcStorm(_ uiv: UIViewController, _ storm: ObjectNhcStormDetails) {
+        let vc = vcNhcStorm()
+        vc.stormData = storm
+        uiv.goToVC(vc)
+    }
+    
     static func colorPicker(_ uiv: UIViewController, _ color: wXColor) {
         let vc = vcSettingsColorPicker()
         vc.colorObject = color
