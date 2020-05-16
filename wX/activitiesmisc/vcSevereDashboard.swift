@@ -10,9 +10,9 @@ import AVFoundation
 class vcSevereDashboard: UIwXViewController {
     
     private var buttonActions = [String]()
-    private var snWat = SevereNotice("SPCWAT")
-    private var snMcd = SevereNotice("SPCMCD")
-    private var snMpd = SevereNotice("WPCMPD")
+    private let snWat = SevereNotice("SPCWAT")
+    private let snMcd = SevereNotice("SPCMCD")
+    private let snMpd = SevereNotice("WPCMPD")
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ObjectToolbarIcon()
