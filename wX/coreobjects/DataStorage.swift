@@ -6,7 +6,7 @@
 
 class DataStorage {
 
-    private var preference: String
+    private let preference: String
     private var val: String = ""
 
     init(_ preference: String) {
