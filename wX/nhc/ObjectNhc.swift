@@ -130,11 +130,6 @@ final class ObjectNhc: NSObject {
     @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()
-        //vc.nhcStormUrl = pacLinkList[index]
-        //vc.nhcStormTitle = pacTitleList[index]
-        //vc.nhcStormImgUrl1 = pacImg1List[index]
-        //vc.nhcStormImgUrl2 = pacImg2List[index]
-        //vc.nhcStormWallet = pacWalletList[index]
         vc.stormData = pacStormDataList[index]
         uiv.goToVC(vc)
     }
@@ -142,11 +137,6 @@ final class ObjectNhc: NSObject {
     @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let vc = vcNhcStorm()
-        //vc.nhcStormUrl = atlLinkList[index]
-        //vc.nhcStormTitle = atlTitleList[index]
-        //vc.nhcStormImgUrl1 = atlImg1List[index]
-        //vc.nhcStormImgUrl2 = atlImg2List[index]
-        //vc.nhcStormWallet = atlWalletList[index]
         vc.stormData = atlStormDataList[index]
         uiv.goToVC(vc)
     }

@@ -38,12 +38,6 @@ class vcNhcStorm: UIwXViewController {
         "_wind_probs_50_F120_sm2.png",
         "_wind_probs_64_F120_sm2.png"
     ]
-    // FIXME create class for these vars - use ObjectNhcStormInfo
-    //var nhcStormUrl = ""
-    //var nhcStormTitle = ""
-    //var nhcStormImgUrl1 = ""
-    //var nhcStormImgUrl2 = ""
-    //var nhcStormWallet = ""
     var stormData: ObjectNhcStormDetails!
     
     override func viewDidLoad() {
@@ -58,21 +52,13 @@ class vcNhcStorm: UIwXViewController {
     }
     
     func initializeEnvironment() {
-        // FIXME redundant vars
-        //url = nhcStormUrl
-        //titleS = nhcStormTitle
-        //imgUrl1 = nhcStormImgUrl1
         let year = UtilityTime.getYear()
         var yearInString = String(year)
-        let yearInStringFull = String(year)
         let yearInStringShort = yearInString.substring(2)
         yearInString = yearInString.substring(2, 4)
-        //baseUrl = imgUrl1.replace(yearInString+"_5day_cone_with_line_and_wind_sm2.png", "")
-        //baseUrl += yearInString
         baseUrl = stormData.baseUrl
         stormId = baseUrl.substring(baseUrl.count - 4)
         goesIdImg = stormId.substring(stormId.count - 4, stormId.count - 2)
-        //stormId = nhcStormWallet
         stormId = stormData.wallet
         stormId = stormId.replace("EP0", "EP").replace("AL0", "AL")
         goesSector = stormId.truncate(1)
@@ -81,7 +67,6 @@ class vcNhcStorm: UIwXViewController {
         goesId = stormId.replace("EP", "").replace("AT", "")
         if goesId.count < 2 { goesId = "0" + goesId }
         product = "MIATCP" + stormId
-        //baseUrlShort = baseUrl.replace(yearInStringFull, "") + yearInStringShort
         baseUrlShort = "https://www.nhc.noaa.gov/storm_graphics/" + goesId + "/" + stormData.atcf.replaceAll(yearInString, "") + yearInStringShort
     }
     
