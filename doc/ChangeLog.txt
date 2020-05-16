@@ -20,12 +20,9 @@
 // [REF] spc storm reports refactor like kotlin
 // [ADD] text labels in multipane nexrad
 // [FIX] does radar product chosen impact radar on main screen
-// [FIX] if remember location not chosen, products always default to REF for multi-pane
-// [REF] use more of condition ? trueValue : falseValue
 // [REF] use enum for model type
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
-// [ADD] re-eval aviation dot size on MacOS
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] iOS quad pane tap bottom 2 panes seems off
 
