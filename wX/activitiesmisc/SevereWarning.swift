@@ -7,8 +7,8 @@
 final class SevereWarning {
 
     var text = ""
+    var count = 0
     private let type: String
-    private var count = 0
     var idList = [String]()
     var areaDescList = [String]()
     var effectiveList = [String]()
@@ -22,7 +22,9 @@ final class SevereWarning {
         self.type = type
     }
 
-    func getCount() -> Int { eventList.count }
+    //func getCount() -> Int { eventList.count }
+    
+    func getCount() -> Int { count }
 
     func getName() -> String {
         switch type {
@@ -38,8 +40,8 @@ final class SevereWarning {
     }
 
     func generateString(_ html: String) {
-        count = 0
         text = ""
+        count = 0
         idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
         areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
         effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
@@ -51,8 +53,8 @@ final class SevereWarning {
             //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)
             if !$0.hasPrefix("O.EXP") {
                 var location = ""
-                count += 1
                 text += $0
+                count += 1
                 let wfos = $0.split(".")
                 if wfos.count > 1 {
                     let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
