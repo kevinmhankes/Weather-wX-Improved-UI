@@ -33,6 +33,7 @@
 // [FIX] in homescreen remove the 2km on the Radar Mosaic label
 // [FIX] in homescreen unify the label for CONUS WV and VIS
 
+56103 2020_05_16 [REF] misc
 56102 2020_05_16 [REF] misc
 		 [ADD] from adhoc location allow to save location
 		 [FIX] WFO text / WFO LSR - resize map on screen rotate
