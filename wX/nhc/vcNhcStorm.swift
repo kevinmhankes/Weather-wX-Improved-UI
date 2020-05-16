@@ -72,7 +72,6 @@ class vcNhcStorm: UIwXViewController {
     
     override func getContent() {
         bitmaps = []
-        self.refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
