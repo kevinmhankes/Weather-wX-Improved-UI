@@ -152,8 +152,8 @@ class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func resetAudio() {
-       if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
-       synthesizer = AVSpeechSynthesizer()
+        if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
+        synthesizer = AVSpeechSynthesizer()
         fab!.setImage(.play)
     }
 }

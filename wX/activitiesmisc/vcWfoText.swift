@@ -132,7 +132,6 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
-                //self.image.refresh()
                 self.map.setupMap(GlobalArrays.wfos)
         }
         )
