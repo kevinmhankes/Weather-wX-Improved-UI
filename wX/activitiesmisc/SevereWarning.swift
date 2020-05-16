@@ -21,8 +21,6 @@ final class SevereWarning {
     init(_ type: String) {
         self.type = type
     }
-
-    //func getCount() -> Int { eventList.count }
     
     func getCount() -> Int { count }
 
