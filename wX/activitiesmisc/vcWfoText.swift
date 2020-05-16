@@ -127,4 +127,14 @@ class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     override func playlistClicked() {
         _ = UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil,
+            completion: { _ -> Void in
+                //self.image.refresh()
+                self.map.setupMap(GlobalArrays.wfos)
+        }
+        )
+    }
 }
