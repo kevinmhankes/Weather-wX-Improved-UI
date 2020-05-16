@@ -12,7 +12,7 @@ import Foundation
 
 final class ExternalGeodeticCalculator {
 
-    private let TwoPi = 2.0 * Double.pi
+    private let twoPi = 2.0 * Double.pi
 
     /**
      * Calculate the destination and final bearing after traveling a specified
@@ -254,13 +254,13 @@ final class ExternalGeodeticCalculator {
             // eq. 20
             radians = atan2(cosU2 * sin(lambda), (cosU1sinU2 - sinU1cosU2 * cos(lambda)))
             if radians < 0.0 {
-                radians += TwoPi
+                radians += twoPi
             }
             alpha1 = ExternalAngle.toDegrees(radians: radians)
             // eq. 21
             radians = atan2(cosU1 * sin(lambda), (-sinU1cosU2 + cosU1sinU2 * cos(lambda))) + Double.pi
             if radians < 0.0 {
-                radians += TwoPi
+                radians += twoPi
             }
             alpha2 = ExternalAngle.toDegrees(radians: radians)
         }
