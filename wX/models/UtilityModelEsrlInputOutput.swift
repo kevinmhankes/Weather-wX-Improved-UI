@@ -8,12 +8,12 @@ import Foundation
 
 final class UtilityModelEsrlInputOutput {
     
-    static let eslHrrrPattern1 = "<option selected>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
-    static let eslHrrrPattern2 = "<option>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
-    static let eslHrrrPattern3 = "[0-9]{2} \\w{3} ([0-9]{4}) - [0-9]{2}Z"
-    static let eslHrrrPattern4 = "([0-9]{2}) \\w{3} [0-9]{4} - [0-9]{2}Z"
-    static let eslHrrrPattern5 = "[0-9]{2} \\w{3} [0-9]{4} - ([0-9]{2})Z"
-    static let eslHrrrPattern6 = "[0-9]{2} (\\w{3}) [0-9]{4} - [0-9]{2}Z"
+    static let pattern1 = "<option selected>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
+    static let pattern2 = "<option>([0-9]{2} \\w{3} [0-9]{4} - [0-9]{2}Z)<.option>"
+    static let pattern3 = "[0-9]{2} \\w{3} ([0-9]{4}) - [0-9]{2}Z"
+    static let pattern4 = "([0-9]{2}) \\w{3} [0-9]{4} - [0-9]{2}Z"
+    static let pattern5 = "[0-9]{2} \\w{3} [0-9]{4} - ([0-9]{2})Z"
+    static let pattern6 = "[0-9]{2} (\\w{3}) [0-9]{4} - [0-9]{2}Z"
     
     static func getRunTime(_ om: ObjectModel) -> RunTimeData {
         let runData = RunTimeData()
@@ -30,12 +30,12 @@ final class UtilityModelEsrlInputOutput {
         default:
             htmlRunStatus = ("https://rapidrefresh.noaa.gov/" + om.model.lowercased() + "/" + om.model + "/Welcome.cgi?dsKey=" + om.model.lowercased() + "_jet&domain=full").getHtml()
         }
-        var html = htmlRunStatus.parse(eslHrrrPattern1)
-        let oldRunTimes = htmlRunStatus.parseColumn(eslHrrrPattern2)
-        let year = html.parse(eslHrrrPattern3)
-        let day = html.parse(eslHrrrPattern4)
-        let hour = html.parse(eslHrrrPattern5)
-        let monthStr = UtilityTime.monthWordToNumber(html.parse(eslHrrrPattern6))
+        var html = htmlRunStatus.parse(pattern1)
+        let oldRunTimes = htmlRunStatus.parseColumn(pattern2)
+        let year = html.parse(pattern3)
+        let day = html.parse(pattern4)
+        let hour = html.parse(pattern5)
+        let monthStr = UtilityTime.monthWordToNumber(html.parse(pattern6))
         html = year + monthStr + day + hour
         runData.appendListRun(html)
         runData.mostRecentRun = html
@@ -43,10 +43,10 @@ final class UtilityModelEsrlInputOutput {
         runData.imageCompleteStr = String(runData.imageCompleteInt)
         if html != "" {
             (0...12).forEach { index in
-                let year = oldRunTimes[index].parse(eslHrrrPattern3)
-                let day = oldRunTimes[index].parse(eslHrrrPattern4)
-                let hour = oldRunTimes[index].parse(eslHrrrPattern5)
-                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[index].parse(eslHrrrPattern6))
+                let year = oldRunTimes[index].parse(pattern3)
+                let day = oldRunTimes[index].parse(pattern4)
+                let hour = oldRunTimes[index].parse(pattern5)
+                let monthStr = UtilityTime.monthWordToNumber(oldRunTimes[index].parse(pattern6))
                 runData.appendListRun(year + monthStr + day + hour)
             }
             runData.timeStringConversion = html.parse("([0-9]{2})$")
