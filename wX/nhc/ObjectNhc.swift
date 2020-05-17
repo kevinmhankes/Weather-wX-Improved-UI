@@ -8,12 +8,6 @@ import UIKit
 
 final class ObjectNhc: NSObject {
     
-    private var atlSumList = [String]()
-    private var atlImg1List = [String]()
-    //private var atlStormDataList = [ObjectNhcStormDetails]()
-    private var pacSumList = [String]()
-    private var pacImg1List = [String]()
-    //private var pacStormDataList = [ObjectNhcStormDetails]()
     private var stormDataList = [ObjectNhcStormDetails]()
     private let uiv: UIwXViewController
     private var textAtl = ""
@@ -21,18 +15,18 @@ final class ObjectNhc: NSObject {
     private var imageCount = 0
     private var imagesPerRow = 2
     private var imageStackViewList = [ObjectStackView]()
-    var ids = [String]()
-    var binNumbers = [String]()
-    var names = [String]()
-    var classifications = [String]()
-    var intensities = [String]()
-    var pressures = [String]()
-    var latitudes = [String]()
-    var longitudes = [String]()
-    var movementDirs = [String]()
-    var movementSpeeds = [String]()
-    var lastUpdates = [String]()
-    var statusList = [String]()
+    private var ids = [String]()
+    private var binNumbers = [String]()
+    private var names = [String]()
+    private var classifications = [String]()
+    private var intensities = [String]()
+    private var pressures = [String]()
+    private var latitudes = [String]()
+    private var longitudes = [String]()
+    private var movementDirs = [String]()
+    private var movementSpeeds = [String]()
+    private var lastUpdates = [String]()
+    private var statusList = [String]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
     
     init(_ uiv: UIwXViewController) {
@@ -45,7 +39,7 @@ final class ObjectNhc: NSObject {
     func getTextData() {
         statusList = []
         let url = MyApplication.nwsNhcWebsitePrefix + "/CurrentStorms.json"
-        //final url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
+        //let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
         let html = url.getHtml()
         ids = html.parseColumn("\"id\": \"(.*?)\"")
         binNumbers = html.parseColumn("\"binNumber\": \"(.*?)\"")
@@ -71,7 +65,7 @@ final class ObjectNhc: NSObject {
     
     func showTextData() {
         if ids.count > 0 {
-            ids.enumerated().forEach { index, _ in
+            ids.indices.forEach { index in
                 let objectNhcStormDetails = ObjectNhcStormDetails(
                     names[index],
                     movementDirs[index],
@@ -120,11 +114,7 @@ final class ObjectNhc: NSObject {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
-    
-    //@objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
-    //    Route.nhcStorm(uiv, pacStormDataList[sender.data])
-    //}
-    
+
     @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
         Route.nhcStorm(uiv, stormDataList[sender.data])
     }

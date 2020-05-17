@@ -8,12 +8,6 @@ import Foundation
 
 final class UtilityNhc {
     
-    /*static let utilNhcPattern1 = "<title>(.*?)</title>"
-    static let utilNhcPattern2 = "<nhc:Cyclone>(.*?)</nhc:Cyclone>"
-    static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/" + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
-    static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
-    static let utilNhcPattern5 = "<img src=.(.*?png)."*/
-    
     static let textProductCodes = [
         "MIATWOAT",
         "MIATWDAT",
@@ -60,32 +54,4 @@ final class UtilityNhc {
         MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
     ]
-    
-    /*static func getHurricaneInfo(_ rssUrl: String) -> ObjectNhcStormInfo {
-        var title = ""
-        var summary = ""
-        var url = ""
-        var img1 = ""
-        var img2 = ""
-        var wallet = ""
-        var urlList = [String]()
-        let html = rssUrl.getHtml()
-        if !html.contains("No current storm in") {
-            title = html.parse(utilNhcPattern1 )
-            summary = html.parse(utilNhcPattern2)
-            url = html.parse(utilNhcPattern3)
-            summary = summary.replaceAll("</.*?>", "<br>")
-            wallet =  html.parse(utilNhcPattern4)
-            urlList = html.parseColumn(utilNhcPattern5)
-            if urlList.count > 1 {
-                img1 = urlList[0]
-                img2 = urlList[1]
-            }
-        }
-        return ObjectNhcStormInfo(title, summary, url, img1, img2, wallet)
-    }*/
-    
-    static func getImage(_ sector: String, _ product: String) -> Bitmap {
-        Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")
-    }
 }

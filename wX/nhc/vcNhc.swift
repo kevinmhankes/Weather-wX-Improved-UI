@@ -11,7 +11,7 @@ class vcNhc: UIwXViewController {
     private var textProductButton = ObjectToolbarIcon()
     private var imageProductButton = ObjectToolbarIcon()
     private var glcfsButton = ObjectToolbarIcon()
-    private var objectNhc: ObjectNhc?
+    private var objectNhc: ObjectNhc!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +28,13 @@ class vcNhc: UIwXViewController {
         objectNhc = ObjectNhc(self)
         let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
         serial.async {
-            self.objectNhc?.getTextData()
-            DispatchQueue.main.async { self.objectNhc?.showTextData() }
+            self.objectNhc.getTextData()
+            DispatchQueue.main.async { self.objectNhc.showTextData() }
         }
         NhcOceanEnum.allCases.forEach { type in
             serial.async {
-                self.objectNhc?.regionMap[type]!.getImages()
-                DispatchQueue.main.async { self.objectNhc?.showImageData(type) }
+                self.objectNhc.regionMap[type]!.getImages()
+                DispatchQueue.main.async { self.objectNhc.showImageData(type) }
             }
         }
     }
@@ -69,8 +69,8 @@ class vcNhc: UIwXViewController {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                self.objectNhc?.showTextData()
-                NhcOceanEnum.allCases.forEach { type in self.objectNhc?.showImageData(type) }}
+                self.objectNhc.showTextData()
+                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }}
         )
     }
 }

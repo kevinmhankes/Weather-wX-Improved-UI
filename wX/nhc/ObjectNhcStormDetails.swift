@@ -57,5 +57,5 @@ final class ObjectNhcStormDetails {
         baseUrl = "https://www.nhc.noaa.gov/storm_graphics/" + modBinNumber + "/" + id.uppercased()
     }
     
-    func forTopHeader() -> String { movement + ", " + pressure + ", " + intensity }
+    func forTopHeader() -> String { movement + ", " + pressure + "mb, " + intensity + " mph" }
 }

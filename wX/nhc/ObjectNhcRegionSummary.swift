@@ -9,7 +9,6 @@ final class ObjectNhcRegionSummary {
     var urls: [String]
     var titles: [String]
     var bitmaps = [Bitmap]()
-    //var storms = [ObjectNhcStormInfo]()
     private var replaceString: String
     private var baseUrl: String
     

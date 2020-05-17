@@ -14,7 +14,7 @@ final class ObjectCardNhcStormReportItem {
             text: stormData.name + " (" + stormData.classification + ") " + stormData.center,
             color: ColorCompatibility.highlightText
         )
-        let textViewTime = ObjectTextView(stormData.dateTime, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let textViewTime = ObjectTextView(stormData.dateTime.replaceAll("T", " ").replaceAll(":00.000Z", "Z"), isUserInteractionEnabled: false, isZeroSpacing: true)
         let textViewMovement = ObjectTextView(
             "Moving: " + stormData.movement,
             isUserInteractionEnabled: false,

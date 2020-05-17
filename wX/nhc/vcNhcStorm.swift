@@ -9,16 +9,7 @@ import UIKit
 class vcNhcStorm: UIwXViewController {
     
     private var productButton = ObjectToolbarIcon()
-    private var url = ""
     private var html = ""
-    //private var titleS = ""
-    //private var baseUrl = ""
-    //private var baseUrlShort = ""
-    //private var stormId = ""
-    //private var goesIdImg = ""
-    //private var goesSector = ""
-    //private var goesId = ""
-    //private var imgUrl1 = ""
     private var product = ""
     private var bitmaps = [Bitmap]()
     private let textProducts = [
@@ -42,7 +33,6 @@ class vcNhcStorm: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //initializeEnvironment()
         product = "MIATCP" + stormData.binNumber
         let statusButton = ObjectToolbarIcon(title: stormData.classification + " " + stormData.name + " " + stormData.forTopHeader(), self, nil)
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
@@ -51,25 +41,6 @@ class vcNhcStorm: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
-    
-    //func initializeEnvironment() {
-        /*let year = UtilityTime.getYear()
-        var yearInString = String(year)
-        let yearInStringShort = yearInString.substring(2)
-        yearInString = yearInString.substring(2, 4)
-        baseUrl = stormData.baseUrl
-        stormId = baseUrl.substring(baseUrl.count - 4)
-        goesIdImg = stormId.substring(stormId.count - 4, stormId.count - 2)
-        stormId = stormData.wallet
-        stormId = stormId.replace("EP0", "EP").replace("AL0", "AL")
-        goesSector = stormId.truncate(1)
-        goesSector = goesSector.replace("A", "L")  // value is either E or L
-        stormId = stormId.replace("AL", "AT")
-        goesId = stormId.replace("EP", "").replace("AT", "")
-        if goesId.count < 2 { goesId = "0" + goesId }
-        product = "MIATCP" + stormId
-        baseUrlShort = "https://www.nhc.noaa.gov/storm_graphics/" + goesId + "/" + stormData.atcf.replaceAll(yearInString, "") + yearInStringShort*/
-    //}
     
     override func getContent() {
         bitmaps = []
@@ -105,7 +76,7 @@ class vcNhcStorm: UIwXViewController {
         displayImageContent()
         displayTextContent()
     }
-
+    
     func displayTextContent() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.constrain(scrollView)
