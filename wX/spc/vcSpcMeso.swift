@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpcMeso: UIwXViewController {
+final class vcSpcMeso: UIwXViewController {
     
     private var image = ObjectTouchImageView()
     private var sectorButton = ObjectToolbarIcon()

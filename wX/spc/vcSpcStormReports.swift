@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpcStormReports: UIwXViewController {
+final class vcSpcStormReports: UIwXViewController {
     
     private var image = ObjectImage()
     private var objDatePicker: ObjectDatePicker!

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpcCompMap: UIwXViewController {
+final class vcSpcCompMap: UIwXViewController {
     
     private var image = ObjectTouchImageView()
     private var productButton = ObjectToolbarIcon()

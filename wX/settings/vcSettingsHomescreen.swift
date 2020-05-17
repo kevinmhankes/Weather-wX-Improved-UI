@@ -6,8 +6,7 @@
 
 import UIKit
 
-// TODO rename to vcSettingsHomeScreen
-class vcSettingsHomescreen: UIwXViewController {
+final class vcSettingsHomescreen: UIwXViewController {
     
     private var homeScreenFav = [String]()
     private var addImageButton = ObjectToolbarIcon()

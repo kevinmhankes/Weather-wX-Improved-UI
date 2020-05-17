@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
+final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
     private var html = ""

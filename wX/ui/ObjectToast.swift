@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class ObjectToast {
+final class ObjectToast {
 
     init(_ message: String, _ uiv: UIViewController, _ menuButton: UIBarButtonItem) {
         let alert = UIAlertController(title: message, message: "", preferredStyle: UIAlertController.Style.actionSheet)

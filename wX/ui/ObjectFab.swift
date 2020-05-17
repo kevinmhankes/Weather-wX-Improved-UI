@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class ObjectFab {
+final class ObjectFab {
     
     private let floaty = Floaty(frame: UIScreen.main.bounds, size: 56)
     

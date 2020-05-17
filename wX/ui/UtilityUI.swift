@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class UtilityUI {
+final class UtilityUI {
 
     static func getScreenScale() -> Float { Float(UIScreen.main.scale) }
 

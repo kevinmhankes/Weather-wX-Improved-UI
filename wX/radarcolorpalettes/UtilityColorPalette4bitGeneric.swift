@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilityColorPalette4bitGeneric {
+final class UtilityColorPalette4bitGeneric {
 
     static func generate(_ product: String) {
         let radarColorPaletteCode = Int(product)!

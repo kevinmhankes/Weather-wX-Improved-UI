@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class ObjectScrollStackView {
+final class ObjectScrollStackView {
     
     var fragmentHeightAnchor1: NSLayoutConstraint?
     var fragmentHeightAnchor2: NSLayoutConstraint?

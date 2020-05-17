@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
+final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     
     private var bitmaps = [Bitmap]()
     private var numbers = [String]()

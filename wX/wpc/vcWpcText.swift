@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcWpcText: UIwXViewControllerWithAudio {
+final class vcWpcText: UIwXViewControllerWithAudio {
     
     private var productButton = ObjectToolbarIcon()
     private let subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)

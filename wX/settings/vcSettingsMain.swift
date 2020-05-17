@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSettingsMain: UIwXViewController {
+final class vcSettingsMain: UIwXViewController {
     
     private let titles = [
         "Locations",

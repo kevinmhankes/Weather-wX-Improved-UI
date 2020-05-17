@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpcFireSummary: UIwXViewController {
+final class vcSpcFireSummary: UIwXViewController {
     
     private var bitmaps = [Bitmap]()
     
