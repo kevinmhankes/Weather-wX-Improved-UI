@@ -21,12 +21,12 @@ final class ObjectCardNhcStormReportItem {
             isZeroSpacing: true
         )
         let textViewPressure = ObjectTextView(
-            "Min pressure: " + stormData.pressure,
+            "Min pressure: " + stormData.pressure + " mb",
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
         let textViewWindSpeed = ObjectTextView(
-            "Max sustained: " + stormData.intensity,
+            "Max sustained: " + stormData.intensity + " mph",
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )

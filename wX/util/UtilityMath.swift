@@ -89,7 +89,6 @@ final class UtilityMath {
         let normalizedDirection = Int(direction) % 360
         let listIndex = Int(round((Double(normalizedDirection) / 22.5)))
         let windDirectionAsString = windDirections[listIndex]
-        //print(windDirectionAsString + " " + direction.toString())
         return windDirectionAsString
         
         /*var dirStr = ""
