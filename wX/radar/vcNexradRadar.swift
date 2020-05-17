@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import simd
 
-class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
+final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     private var wxMetalRenders = [WXMetalRender?]()
     private var device: MTLDevice!

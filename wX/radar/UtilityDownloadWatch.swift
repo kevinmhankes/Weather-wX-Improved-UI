@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilityDownloadWatch {
+final class UtilityDownloadWatch {
 
     static let timer = DownloadTimer("WATCH")
 

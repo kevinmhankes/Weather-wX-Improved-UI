@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilitySpotter {
+final class UtilitySpotter {
     
     static var spotterList = [Spotter]()
     static var reportsList = [SpotterReports]()

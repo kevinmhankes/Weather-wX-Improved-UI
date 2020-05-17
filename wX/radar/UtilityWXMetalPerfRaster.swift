@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilityWXMetalPerfRaster {
+final class UtilityWXMetalPerfRaster {
 
     static func generate(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilityWXMetalPerfL3FourBit {
+final class UtilityWXMetalPerfL3FourBit {
 
     static func decodeRadial(_ radarBuffers: ObjectMetalRadarBuffers) -> UInt16 {
         let dis = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)

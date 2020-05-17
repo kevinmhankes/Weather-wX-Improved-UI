@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilitySwoD1 {
+final class UtilitySwoD1 {
     
     private static let timer = DownloadTimer("SWO")
     static var hashSwo = [Int: [Double]]()

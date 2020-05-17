@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilityPolygons {
+final class UtilityPolygons {
 
     static func get() {
         UtilityDownloadWarnings.get()

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilityWXOGL {
+final class UtilityWXOGL {
 
     static func showTextProducts(_ latLon: LatLon) -> String {
         var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class WXGLNexradLevel3Common {
+final class WXGLNexradLevel3Common {
 
     static func drawLine(
         _ startEc: ExternalGlobalCoordinates,

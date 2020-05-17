@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class WXGLNexradLevel3WindBarbs {
+final class WXGLNexradLevel3WindBarbs {
 
     static func decodeAndPlot(_ projectionNumbers: ProjectionNumbers, isGust: Bool) -> [Double] {
         var stormList = [Double]()

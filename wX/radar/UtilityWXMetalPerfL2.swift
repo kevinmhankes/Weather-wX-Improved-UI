@@ -6,7 +6,7 @@
 
 import Foundation
 
-class UtilityWXMetalPerfL2 {
+final class UtilityWXMetalPerfL2 {
 
     private static let fileHeaderSize = 24
 

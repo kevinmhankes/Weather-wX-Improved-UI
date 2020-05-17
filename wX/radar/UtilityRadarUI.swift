@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class UtilityRadarUI {
+final class UtilityRadarUI {
 
     static func zoomOutByKey(_ wxMetal: [WXMetalRender?]) {
         var panSensitivity: Float = 500.0

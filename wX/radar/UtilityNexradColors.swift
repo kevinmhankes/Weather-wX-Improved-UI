@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilityNexradColors {
+final class UtilityNexradColors {
 
     private static func interpolate(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
         colorA + ((colorB - colorA) * proportion)

@@ -35,7 +35,7 @@
 
 import Foundation
 
-final public class Level2Record {
+final class Level2Record {
 
     /* added for high resolution message type 31 */
     static private let reflectivityHigh = 5

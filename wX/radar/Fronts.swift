@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class Fronts {
+final class Fronts {
     
     let type: FrontTypeEnum
     var coordinates = [LatLon]()

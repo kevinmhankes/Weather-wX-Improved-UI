@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class WXGLNexradLevel3TVS {
+final class WXGLNexradLevel3TVS {
 
     private static let tvsPattern1 = "P  TVS(.{20})"
     private static let tvsPattern2 = ".{9}(.{7})"

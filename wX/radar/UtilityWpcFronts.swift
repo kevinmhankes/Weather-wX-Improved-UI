@@ -47,7 +47,7 @@ import Foundation
  
  */
 
-class UtilityWpcFronts {
+final class UtilityWpcFronts {
     
     static let separator = "ABC123"
     static var pressureCenters = [PressureCenter]()

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public class UtilityDownloadMpd {
+final class UtilityDownloadMpd {
 
     static let timer = DownloadTimer("MPD")
 

@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class WXGLNexradLevel3HailIndex {
+final class WXGLNexradLevel3HailIndex {
 
     private static let hiPattern1 = "AZ/RAN(.*?)V"
     private static let hiPattern2 = "POSH/POH(.*?)V"

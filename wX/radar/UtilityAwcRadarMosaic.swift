@@ -6,7 +6,7 @@
 
 import UIKit
 
-class UtilityAwcRadarMosaic {
+final class UtilityAwcRadarMosaic {
 
     private static let baseUrl = "https://www.aviationweather.gov/data/obs/"
 

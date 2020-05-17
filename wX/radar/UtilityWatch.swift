@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilityWatch {
+final class UtilityWatch {
     
     static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonType) -> [Double] {
         var warningList = [Double]()

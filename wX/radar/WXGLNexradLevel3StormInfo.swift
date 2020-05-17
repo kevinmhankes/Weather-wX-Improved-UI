@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class WXGLNexradLevel3StormInfo {
+final class WXGLNexradLevel3StormInfo {
     
     private static let stiPattern1 = "AZ/RAN(.*?)V"
     private static let stiPattern2 = "MVT(.*?)V"

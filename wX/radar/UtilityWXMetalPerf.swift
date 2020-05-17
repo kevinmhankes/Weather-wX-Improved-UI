@@ -6,7 +6,7 @@
 
 import Foundation
 
-class UtilityWXMetalPerf {
+final class UtilityWXMetalPerf {
     
     private static let k180DivPi = 180.0 / Double.pi
     private static let piDiv4 = Double.pi / 4.0
