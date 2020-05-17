@@ -2,13 +2,13 @@
 
 import Foundation
 
-public typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
-public typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
-public typealias MoonPosition = (azimuth: Double, altitude: Double, distance: Double, parallacticAngle: Double)
-public typealias MoonCoordinate = (rightAscension: Double, declination: Double, distance: Double)
-public typealias MoonIllumination = (fraction: Double, phase: Double, angle: Double)
+typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
+typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
+typealias MoonPosition = (azimuth: Double, altitude: Double, distance: Double, parallacticAngle: Double)
+typealias MoonCoordinate = (rightAscension: Double, declination: Double, distance: Double)
+typealias MoonIllumination = (fraction: Double, phase: Double, angle: Double)
 
-public enum SolarEvent {
+enum SolarEvent {
     case sunrise
     case sunset
     case sunriseEnd
@@ -38,19 +38,19 @@ public enum SolarEvent {
     }
 }
 
-public class SunCalc {
+final class SunCalc {
 
-    public struct Location {
+    struct Location {
         var latitude: Double
         var longitude: Double
     }
 
-    public enum SolarEventError: Error {
+    enum SolarEventError: Error {
         case sunNeverRise
         case sunNeverSet
     }
 
-    public enum LunarEventError: Error {
+    enum LunarEventError: Error {
         case moonNeverRise(Date?)
         case moonNeverSet(Date?)
     }
@@ -146,7 +146,7 @@ public class SunCalc {
         return (rightAscension(l: altL, b: b), declination(l: altL, b: b), dt)
     }
 
-    public func sunPosition(date: Date, location: Location) -> AzimuthCoordinate {
+    func sunPosition(date: Date, location: Location) -> AzimuthCoordinate {
         let lw = Double.radPerDegree * location.longitude * -1.0
         let phi = Double.radPerDegree * location.latitude
         let d = date.daysSince2000
@@ -155,7 +155,7 @@ public class SunCalc {
         return (azimuth(h: h, phi: phi, dec: c.declination), altitude(h: h, phi: phi, dec: c.declination))
     }
 
-    public func moonPosition(date: Date, location: Location) -> MoonPosition {
+    func moonPosition(date: Date, location: Location) -> MoonPosition {
         let lw = Double.radPerDegree * location.longitude * -1.0
         let phi = Double.radPerDegree * location.latitude
         let d = date.daysSince2000
@@ -167,7 +167,7 @@ public class SunCalc {
         return (azimuth(h: h, phi: phi, dec: c.declination), h1, c.distance, pa)
     }
 
-    public func moonIllumination(date: Date = Date()) -> MoonIllumination {
+    func moonIllumination(date: Date = Date()) -> MoonIllumination {
         let d = date.daysSince2000
         let s = sunCoordinates(d)
         let m = moonCoordinates(d)
@@ -187,7 +187,7 @@ public class SunCalc {
         return ((1.0 + cos(inc)) / 2.0, 0.5 + 0.5 * inc * (angle < 0.0 ? -1.0 : 1.0) / Double.pi, angle)
     }
 
-    public func time(ofDate date: Date, forSolarEvent event: SolarEvent, atLocation location: Location) throws -> Date {
+    func time(ofDate date: Date, forSolarEvent event: SolarEvent, atLocation location: Location) throws -> Date {
         let lw = Double.radPerDegree * location.longitude * -1.0
         let phi = Double.radPerDegree * location.latitude
         let d = date.daysSince2000
@@ -215,7 +215,7 @@ public class SunCalc {
         }
     }
 
-    public func moonTimes(date: Date, location: Location) throws -> (moonRiseTime: Date, moonSetTime: Date) {
+    func moonTimes(date: Date, location: Location) throws -> (moonRiseTime: Date, moonSetTime: Date) {
         let date = date.beginning()
         let hc = 0.133 * Double.radPerDegree
         var h0 = moonPosition(date: date, location: location).altitude - hc
