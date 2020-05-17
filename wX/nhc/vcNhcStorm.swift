@@ -37,7 +37,7 @@ class vcNhcStorm: UIwXViewController {
         let statusButton = ObjectToolbarIcon(title: stormData.classification + " " + stormData.name + " " + stormData.forTopHeader(), self, nil)
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
