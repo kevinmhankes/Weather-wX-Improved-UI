@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-public final class CityExt {
+final class CityExt {
 
     let name: String
     let latitude: Double

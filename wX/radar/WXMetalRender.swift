@@ -10,7 +10,7 @@ import Metal
 import simd
 import UIKit
 
-class WXMetalRender {
+final class WXMetalRender {
     
     private let radarType = "WXMETAL"
     private let device: MTLDevice
@@ -426,15 +426,14 @@ class WXMetalRender {
         }
     }
     
-    // TODO use regex matches below
     func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
-        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ") {
+        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TZ") {
             self.isTdwr = true
         } else {
             self.isTdwr = false
         }
-        if (self.product == "N0Q" || self.product == "N1Q" || self.product == "N2Q" || self.product == "N3Q" || self.product == "L2REF") && ridIsTdwr {
+        if (self.product.matches(regexp: "N[0-3]Q") || self.product == "L2REF") && ridIsTdwr {
             self.radarProduct = "TZL"
             self.isTdwr = true
         }
@@ -442,7 +441,7 @@ class WXMetalRender {
             self.radarProduct = "N0Q"
             self.isTdwr = false
         }
-        if (self.product == "N0U" || self.product == "N1U" || self.product == "N2U" || self.product == "N3U" || self.product == "L2VEL") && ridIsTdwr {
+        if (self.product.matches(regexp: "N[0-3]U") || self.product == "L2VEL") && ridIsTdwr {
             self.radarProduct = "TV0"
             self.isTdwr = true
         }
@@ -857,7 +856,7 @@ class WXMetalRender {
                 product = newProduct
                 regenerateProductList()
             }
-            if product.hasPrefix("TR") || product.hasPrefix("TV") || product.hasPrefix("TZ") {
+            if product.hasPrefix("TV") || product.hasPrefix("TZ") {
                 let firstValue = product[product.startIndex]
                 let middleValue = product[product.index(product.startIndex, offsetBy: 1)]
                 var newProduct = ""
