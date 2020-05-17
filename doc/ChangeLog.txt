@@ -34,6 +34,7 @@
 	         [FIX] default aviation size for tablet, move from 1 to 2
 	         [ADD] NHC Storm move images to top and show multiple per row
 	         [ADD] NHC Storm structural changes based off Flutter port
+		 [ADD] NHC Storm move to json data source per https://www.weather.gov/media/notification/scn20-25tropical_javascrpt.pdf
 56102 2020_05_16 [REF] misc
 		 [ADD] from adhoc location allow to save location
 		 [FIX] WFO text / WFO LSR - resize map on screen rotate

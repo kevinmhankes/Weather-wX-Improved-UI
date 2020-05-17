@@ -11,14 +11,14 @@ class vcNhcStorm: UIwXViewController {
     private var productButton = ObjectToolbarIcon()
     private var url = ""
     private var html = ""
-    private var titleS = ""
-    private var baseUrl = ""
-    private var baseUrlShort = ""
-    private var stormId = ""
-    private var goesIdImg = ""
-    private var goesSector = ""
-    private var goesId = ""
-    private var imgUrl1 = ""
+    //private var titleS = ""
+    //private var baseUrl = ""
+    //private var baseUrlShort = ""
+    //private var stormId = ""
+    //private var goesIdImg = ""
+    //private var goesSector = ""
+    //private var goesId = ""
+    //private var imgUrl1 = ""
     private var product = ""
     private var bitmaps = [Bitmap]()
     private let textProducts = [
@@ -42,8 +42,9 @@ class vcNhcStorm: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeEnvironment()
-        let statusButton = ObjectToolbarIcon(title: stormData.type + " " + stormData.name + " " + stormData.forTopHeader(), self, nil)
+        //initializeEnvironment()
+        product = "MIATCP" + stormData.binNumber
+        let statusButton = ObjectToolbarIcon(title: stormData.classification + " " + stormData.name + " " + stormData.forTopHeader(), self, nil)
         productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
@@ -51,8 +52,8 @@ class vcNhcStorm: UIwXViewController {
         self.getContent()
     }
     
-    func initializeEnvironment() {
-        let year = UtilityTime.getYear()
+    //func initializeEnvironment() {
+        /*let year = UtilityTime.getYear()
         var yearInString = String(year)
         let yearInStringShort = yearInString.substring(2)
         yearInString = yearInString.substring(2, 4)
@@ -67,16 +68,16 @@ class vcNhcStorm: UIwXViewController {
         goesId = stormId.replace("EP", "").replace("AT", "")
         if goesId.count < 2 { goesId = "0" + goesId }
         product = "MIATCP" + stormId
-        baseUrlShort = "https://www.nhc.noaa.gov/storm_graphics/" + goesId + "/" + stormData.atcf.replaceAll(yearInString, "") + yearInStringShort
-    }
+        baseUrlShort = "https://www.nhc.noaa.gov/storm_graphics/" + goesId + "/" + stormData.atcf.replaceAll(yearInString, "") + yearInStringShort*/
+    //}
     
     override func getContent() {
         bitmaps = []
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps.append(UtilityNhc.getImage(self.goesIdImg + self.goesSector, "vis"))
+            //self.bitmaps.append(UtilityNhc.getImage(stormData.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
-                var url = self.baseUrl
-                if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
+                var url = self.stormData.baseUrl
+                //if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
                 self.bitmaps.append(Bitmap(url + fileName))
             }
             self.html = UtilityDownload.getTextProduct(self.product)
@@ -94,7 +95,7 @@ class vcNhcStorm: UIwXViewController {
     
     func productChanged(_ product: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(product + self.stormId)
+            let html = UtilityDownload.getTextProduct(product + self.stormData.binNumber.uppercased())
             DispatchQueue.main.async { Route.textViewer(self, html) }
         }
     }

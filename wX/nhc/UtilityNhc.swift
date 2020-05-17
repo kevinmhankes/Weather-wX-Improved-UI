@@ -8,11 +8,12 @@ import Foundation
 
 final class UtilityNhc {
     
-    static let utilNhcPattern1 = "<title>(.*?)</title>"
+    /*static let utilNhcPattern1 = "<title>(.*?)</title>"
     static let utilNhcPattern2 = "<nhc:Cyclone>(.*?)</nhc:Cyclone>"
     static let utilNhcPattern3 = "<link>.*?(https://www.nhc.noaa.gov/text/refresh/" + "MIATCP[AE][TP][0-9].shtml/.*?shtml).*?</link>"
     static let utilNhcPattern4 = "<nhc:wallet>(.*?)</nhc:wallet>"
-    static let utilNhcPattern5 = "<img src=.(.*?png)."
+    static let utilNhcPattern5 = "<img src=.(.*?png)."*/
+    
     static let textProductCodes = [
         "MIATWOAT",
         "MIATWDAT",
@@ -60,7 +61,7 @@ final class UtilityNhc {
         MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
     ]
     
-    static func getHurricaneInfo(_ rssUrl: String) -> ObjectNhcStormInfo {
+    /*static func getHurricaneInfo(_ rssUrl: String) -> ObjectNhcStormInfo {
         var title = ""
         var summary = ""
         var url = ""
@@ -82,7 +83,7 @@ final class UtilityNhc {
             }
         }
         return ObjectNhcStormInfo(title, summary, url, img1, img2, wallet)
-    }
+    }*/
     
     static func getImage(_ sector: String, _ product: String) -> Bitmap {
         Bitmap("https://www.ssd.noaa.gov/PS/TROP/floaters/" + sector + "/imagery/" + product + "0.gif")

@@ -5,45 +5,57 @@
  *****************************************************************************/
 
 final class ObjectNhcStormDetails {
-
-    /*
-     <nhc:center>30.8, -68.3<br>
-     <nhc:type>Post-Tropical Cyclone<br>
-     <nhc:name>Andrea<br>
-     <nhc:wallet>AT1<br>
-     <nhc:atcf>AL012019<br>
-     <nhc:datetime>5:00 PM AST Tue May 21<br>
-     <nhc:movement>ENE at 8 mph<br>
-     <nhc:pressure>1009 mb<br>
-     <nhc:wind>35 mph<br>
-     <nhc:headline> ...ANDREA IS A REMNANT LOW... ...THIS IS THE LAST ADVISORY...<br>
-     */
-
+    
     let center: String
-    let type: String
+    let classification: String
     let name: String
-    let wallet: String
-    let atcf: String
+    let binNumber: String
+    let id: String
     let dateTime: String
     let movement: String
+    let movementDir: String
+    let movementSpeed: String
     let pressure: String
-    let wind: String
-    let headline: String
+    let intensity: String
+    let status: String
     let baseUrl: String
-
-    init(_ data: String, _ url: String) {
-        center = data.parse("<nhc:center>(.*?)</nhc:center>")
-        type = data.parse("<nhc:type>(.*?)</nhc:type>")
-        name = data.parse("<nhc:name>(.*?)</nhc:name>")
-        wallet = data.parse("<nhc:wallet>(.*?)</nhc:wallet>")
-        atcf = data.parse("<nhc:atcf>(.*?)</nhc:atcf>")
-        dateTime = data.parse("<nhc:datetime>(.*?)</nhc:datetime>")
-        movement = data.parse("<nhc:movement>(.*?)</nhc:movement>")
-        pressure = data.parse("<nhc:pressure>(.*?)</nhc:pressure>")
-        wind = data.parse("<nhc:wind>(.*?)</nhc:wind>")
-        headline = data.parse("<nhc:headline>(.*?)</nhc:headline>")
-        baseUrl = url.replace("_5day_cone_with_line_and_wind_sm2.png", "")
+    let lastUpdate: String
+    let lat: String
+    let lon: String
+    
+    init(
+        _ name: String,
+        _ movementDir: String,
+        _ movementSpeed: String,
+        _ pressure: String,
+        _ binNumber: String,
+        _ id: String,
+        _ lastUpdate: String,
+        _ classification: String,
+        _ lat: String,
+        _ lon: String,
+        _ intensity: String,
+        _ status: String
+    ) {
+        self.name = name
+        self.movementDir = movementDir
+        self.movementSpeed = movementSpeed
+        self.pressure = pressure
+        self.binNumber = binNumber
+        self.id = id
+        self.lastUpdate = lastUpdate
+        self.classification = classification
+        self.lat = lat
+        self.lon = lon
+        self.intensity = intensity
+        self.status = status
+        center = lat + " " + lon
+        dateTime = lastUpdate
+        movement = UtilityMath.convertWindDir(Double(movementDir) ?? 0.0) + " at " + movementSpeed + " mph"
+        var modBinNumber = binNumber
+        if modBinNumber.count == 3 { modBinNumber = modBinNumber.insert(2, "0") }
+        baseUrl = "https://www.nhc.noaa.gov/storm_graphics/" + modBinNumber + "/" + id.uppercased()
     }
     
-    func forTopHeader() -> String { movement + ", " + pressure + ", " + wind }
+    func forTopHeader() -> String { movement + ", " + pressure + ", " + intensity }
 }

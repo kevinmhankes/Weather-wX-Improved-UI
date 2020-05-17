@@ -10,16 +10,29 @@ final class ObjectNhc: NSObject {
     
     private var atlSumList = [String]()
     private var atlImg1List = [String]()
-    private var atlStormDataList = [ObjectNhcStormDetails]()
+    //private var atlStormDataList = [ObjectNhcStormDetails]()
     private var pacSumList = [String]()
     private var pacImg1List = [String]()
-    private var pacStormDataList = [ObjectNhcStormDetails]()
+    //private var pacStormDataList = [ObjectNhcStormDetails]()
+    private var stormDataList = [ObjectNhcStormDetails]()
     private let uiv: UIwXViewController
     private var textAtl = ""
     private var textPac = ""
     private var imageCount = 0
     private var imagesPerRow = 2
     private var imageStackViewList = [ObjectStackView]()
+    var ids = [String]()
+    var binNumbers = [String]()
+    var names = [String]()
+    var classifications = [String]()
+    var intensities = [String]()
+    var pressures = [String]()
+    var latitudes = [String]()
+    var longitudes = [String]()
+    var movementDirs = [String]()
+    var movementSpeeds = [String]()
+    var lastUpdates = [String]()
+    var statusList = [String]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
     
     init(_ uiv: UIwXViewController) {
@@ -30,57 +43,56 @@ final class ObjectNhc: NSObject {
     }
     
     func getTextData() {
-        (1...5).forEach { index in
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_at" + String(index) + ".xml")
-            if dataRet.title != "" {
-                self.atlSumList.append(dataRet.summary)
-                self.atlImg1List.append(dataRet.img1)
-            }
-        }
-        (1...5).forEach { index in
-            let dataRet = UtilityNhc.getHurricaneInfo(MyApplication.nwsNhcWebsitePrefix + "/nhc_ep" + String(index) + ".xml")
-            if dataRet.title != "" {
-                self.pacSumList.append(dataRet.summary)
-                self.pacImg1List.append(dataRet.img1)
-            }
+        statusList = []
+        let url = MyApplication.nwsNhcWebsitePrefix + "/CurrentStorms.json"
+        //final url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
+        let html = url.getHtml()
+        ids = html.parseColumn("\"id\": \"(.*?)\"")
+        binNumbers = html.parseColumn("\"binNumber\": \"(.*?)\"")
+        names = html.parseColumn("\"name\": \"(.*?)\"")
+        classifications = html.parseColumn("\"classification\": \"(.*?)\"")
+        intensities = html.parseColumn("\"intensity\": \"(.*?)\"")
+        pressures = html.parseColumn("\"pressure\": \"(.*?)\"")
+        // sample data not quoted for these two
+        //intensities = html.parseColumn("\"intensity\": (.*?),");
+        //pressures = html.parseColumn("\"pressure\": (.*?),");
+        //
+        latitudes = html.parseColumn("\"latitude\": \"(.*?)\"")
+        longitudes = html.parseColumn("\"longitude\": \"(.*?)\"")
+        movementDirs = html.parseColumn("\"movementDir\": (.*?),")
+        movementSpeeds = html.parseColumn("\"movementSpeed\": (.*?),")
+        lastUpdates = html.parseColumn("\"lastUpdate\": \"(.*?)\"")
+        binNumbers.forEach {
+            let text = UtilityDownload.getTextProduct("MIATCP" + $0)
+            let status = text.parseFirst("(\\.\\.\\..*?\\.\\.\\.)")
+            statusList.append(status)
         }
     }
     
     func showTextData() {
-        textAtl = ""
-        if self.atlSumList.count < 1 {
-            textAtl =  "There are no tropical cyclones in the Atlantic at this time."
-        } else {
-            self.atlSumList.indices.forEach { index in
-                if atlImg1List[index] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.atlSumList[index], self.atlImg1List[index])
-                    atlStormDataList.append(objectNhcStormDetails)
-                    _ = ObjectCardNhcStormReportItem(
-                        uiv.stackView,
-                        objectNhcStormDetails,
-                        UITapGestureRecognizerWithData(index, self, #selector(gotoAtlNhcStorm(sender:)))
-                    )
-                }
+        if ids.count > 0 {
+            ids.enumerated().forEach { index, _ in
+                let objectNhcStormDetails = ObjectNhcStormDetails(
+                    names[index],
+                    movementDirs[index],
+                    movementSpeeds[index],
+                    pressures[index],
+                    binNumbers[index],
+                    ids[index],
+                    lastUpdates[index],
+                    classifications[index],
+                    latitudes[index],
+                    longitudes[index],
+                    intensities[index],
+                    statusList[index]
+                )
+                stormDataList.append(objectNhcStormDetails)
+                _ = ObjectCardNhcStormReportItem(
+                    uiv.stackView,
+                    objectNhcStormDetails,
+                    UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
             }
         }
-        textPac = ""
-        if self.pacSumList.count < 1 {
-            textPac += "There are no tropical cyclones in the Eastern Pacific at this time."
-        } else {
-            self.pacSumList.indices.forEach { index in
-                if pacImg1List[index] != "" {
-                    let objectNhcStormDetails = ObjectNhcStormDetails(self.pacSumList[index], self.pacImg1List[index])
-                    pacStormDataList.append(objectNhcStormDetails)
-                    _ = ObjectCardNhcStormReportItem(
-                        uiv.stackView,
-                        objectNhcStormDetails,
-                        UITapGestureRecognizerWithData(index, self, #selector(gotoEpacNhcStorm(sender:)))
-                    )
-                }
-            }
-        }
-        if textAtl != "" { _ = ObjectTextView(uiv.stackView, textAtl) }
-        if textPac != "" { _ = ObjectTextView(uiv.stackView, textPac) }
     }
     
     func showImageData(_ region: NhcOceanEnum) {
@@ -109,11 +121,11 @@ final class ObjectNhc: NSObject {
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
     
-    @objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
-        Route.nhcStorm(uiv, pacStormDataList[sender.data])
-    }
+    //@objc func gotoEpacNhcStorm(sender: UITapGestureRecognizerWithData) {
+    //    Route.nhcStorm(uiv, pacStormDataList[sender.data])
+    //}
     
-    @objc func gotoAtlNhcStorm(sender: UITapGestureRecognizerWithData) {
-        Route.nhcStorm(uiv, atlStormDataList[sender.data])
+    @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
+        Route.nhcStorm(uiv, stormDataList[sender.data])
     }
 }

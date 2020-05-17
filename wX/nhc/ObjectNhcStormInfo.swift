@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-final class ObjectNhcStormInfo {
+final class ObjectNhcStormInfoA {
 
     let title: String
     let summary: String
