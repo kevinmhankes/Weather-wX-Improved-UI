@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcNhcStorm: UIwXViewController {
+final class vcNhcStorm: UIwXViewController {
     
     private var productButton = ObjectToolbarIcon()
     private var html = ""
@@ -34,8 +34,7 @@ class vcNhcStorm: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         product = "MIATCP" + stormData.binNumber
-        //let statusButton = ObjectToolbarIcon(title: stormData.classification + " " + stormData.name + " " + stormData.forTopHeader(), self, nil)
-        productButton = ObjectToolbarIcon(title: " Text Prod", self, #selector(productClicked))
+        productButton = ObjectToolbarIcon(title: " Text Products", self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
@@ -45,7 +44,6 @@ class vcNhcStorm: UIwXViewController {
     override func getContent() {
         bitmaps = []
         DispatchQueue.global(qos: .userInitiated).async {
-            //self.bitmaps.append(UtilityNhc.getImage(stormData.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
                 var url = self.stormData.baseUrl
                 if fileName == "WPCQPF_sm2.gif" { url.removeLast(2) }
