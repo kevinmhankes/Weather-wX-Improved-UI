@@ -24,7 +24,6 @@
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
 // [FIX] quad pane runs out of room when warnings selected
-// [FIX] iOS quad pane tap bottom 2 panes seems off
 
 56103 2020_05_16 [REF] misc
 		 [REF] rename patterns in model util files
