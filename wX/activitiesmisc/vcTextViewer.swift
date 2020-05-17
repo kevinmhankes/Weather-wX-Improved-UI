@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcTextViewer: UIwXViewControllerWithAudio {
+final class vcTextViewer: UIwXViewControllerWithAudio {
     
     var textViewText = ""
     

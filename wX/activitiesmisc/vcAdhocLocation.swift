@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class vcAdhocLocation: UIwXViewController {
+final class vcAdhocLocation: UIwXViewController {
     
     private var objectCurrentConditions = ObjectCurrentConditions()
     private var objectHazards = ObjectHazards()

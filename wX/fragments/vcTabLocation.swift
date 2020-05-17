@@ -8,7 +8,7 @@ import UIKit
 import Metal
 import simd
 
-class vcTabLocation: vcTabParent {
+final class vcTabLocation: vcTabParent {
     
     private var locationButton = UITextView()
     private var forecastText = [String]()

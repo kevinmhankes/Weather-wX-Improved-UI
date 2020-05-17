@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class vcCanadaWarnings: UIwXViewController {
+final class vcCanadaWarnings: UIwXViewController {
     
     private var objectCanadaWarnings: ObjectCanadaWarnings!
     private var provinceButton = ObjectToolbarIcon()

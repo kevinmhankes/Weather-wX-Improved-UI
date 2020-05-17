@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 import MapKit
 
-class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
+final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     private var wfoProd = [String]()
     private var siteButton = ObjectToolbarIcon()

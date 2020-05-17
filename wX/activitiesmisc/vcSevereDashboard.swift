@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class vcSevereDashboard: UIwXViewController {
+final class vcSevereDashboard: UIwXViewController {
     
     private var buttonActions = [String]()
     private let snWat = SevereNotice("SPCWAT")

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcCanadaText: UIwXViewControllerWithAudio {
+final class vcCanadaText: UIwXViewControllerWithAudio {
     
     private var productButton = ObjectToolbarIcon()
     private var siteButton = ObjectToolbarIcon()

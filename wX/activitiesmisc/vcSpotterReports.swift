@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcSpotterReports: UIwXViewController {
+final class vcSpotterReports: UIwXViewController {
     
     private var spotterReportsDataSorted = [SpotterReports]()
     private var spotterReportCountButton = ObjectToolbarIcon()

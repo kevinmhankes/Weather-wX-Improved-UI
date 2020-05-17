@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcImageViewer: UIwXViewController {
+final class vcImageViewer: UIwXViewController {
     
     private var image = ObjectTouchImageView()
     var url = ""

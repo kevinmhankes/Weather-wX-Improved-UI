@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class UtilityWfoText {
+final class UtilityWfoText {
     
     static func needsFixedWidthFont(_ product: String) -> Bool {
         let productList = [

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcObsSites: UIwXViewController {
+final class vcObsSites: UIwXViewController {
     
     private var listCity = [String]()
     private var stateView = true

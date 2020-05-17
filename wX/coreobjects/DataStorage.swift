@@ -4,7 +4,7 @@
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
 
-class DataStorage {
+final class DataStorage {
 
     private let preference: String
     private var val: String = ""

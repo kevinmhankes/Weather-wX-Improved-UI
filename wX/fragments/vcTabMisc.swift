@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcTabMisc: vcTabParent {
+final class vcTabMisc: vcTabParent {
 
     private var tilesPerRow = 0
 
