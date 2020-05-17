@@ -47,7 +47,7 @@ class vcNhcStorm: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             //self.bitmaps.append(UtilityNhc.getImage(stormData.goesIdImg + self.goesSector, "vis"))
             self.stormUrls.forEach { fileName in
-                var url = self.stormData.baseUrl
+                let url = self.stormData.baseUrl
                 //if fileName == "WPCQPF_sm2.gif" { url = self.baseUrlShort }
                 self.bitmaps.append(Bitmap(url + fileName))
             }
