@@ -25,7 +25,7 @@ import Foundation
  *
  * @author Mike Gavaghan
  */
-public class ExternalGlobalCoordinates {
+class ExternalGlobalCoordinates {
     /** Latitude in degrees. Negative latitude is southern hemisphere. */
     private var mLatitude: Double
 
