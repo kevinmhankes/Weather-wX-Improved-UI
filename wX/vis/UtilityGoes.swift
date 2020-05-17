@@ -28,7 +28,7 @@ final class UtilityGoes {
         "ak": "1000x1000",
         "cak": "1200x1200",
         "sea": "1200x1200",
-        "hi": "1200x1200",
+        "hi": "1200x1200"
     ]
     
     private static func getImageSize(_ sector: String) -> String {

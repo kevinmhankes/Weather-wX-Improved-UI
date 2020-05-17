@@ -87,8 +87,6 @@ public class ExternalGlobalCoordinates {
      * @param latitude latitude in degrees
      * @param longitude longitude in degrees
      */
-    
-
     /**
      * Get latitude.
      *
