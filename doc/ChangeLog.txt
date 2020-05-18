@@ -1,5 +1,4 @@
 // [ADD] Add 4th char to all radar sites
-// [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 // [FIX] troubleshoot TZL and N0U anim freeze (memory exhaustion?)
 // [FIX] Icon spacing issue 7 plus
 // [FIX] Canada radar site detection not working
@@ -24,8 +23,9 @@
 // [FIX] MacOS nexrad county labels truncate second line
 // [ADD] nexrad dual pane - tap on time go to quad
 // [FIX] quad pane runs out of room when warnings selected
+// [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 
-56103 2020_05_16 [REF] misc
+56103 2020_05_18 [REF] misc
 		 [REF] rename patterns in model util files
 		 [FIX] in homescreen remove the 2km on the Radar Mosaic label
 		 [FIX] in homescreen unify the label for CONUS WV and VIS

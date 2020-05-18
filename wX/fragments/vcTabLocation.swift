@@ -286,57 +286,6 @@ final class vcTabLocation: vcTabParent {
         UtilityActions.severeDashboardClicked(self)
     }
     
-    override func warningsClicked() {
-        let vc = vcUSAlertsDetail()
-        self.goToVC(vc)
-    }
-    
-    override func settingsClicked() {
-        let vc = vcSettingsMain()
-        self.goToVC(vc)
-    }
-    
-    override func mesoanalysisClicked() {
-        let vc = vcSpcMeso()
-        self.goToVC(vc)
-    }
-    
-    override func ncepModelsClicked() {
-        let vc = vcModels()
-        vc.modelActivitySelected = "NCEP"
-        self.goToVC(vc)
-    }
-    
-    override func hourlyClicked() {
-        if Location.isUS {
-            let vc = vcHourly()
-            self.goToVC(vc)
-        } else {
-            let vc = vcCanadaHourly()
-            self.goToVC(vc)
-        }
-    }
-    
-    override func nhcClicked() {
-        let vc = vcNhc()
-        self.goToVC(vc)
-    }
-    
-    override func lightningClicked() {
-        let vc = vcLightning()
-        self.goToVC(vc)
-    }
-    
-    override func nationalImagesClicked() {
-        let vc = vcWpcImg()
-        self.goToVC(vc)
-    }
-    
-    override func nationalTextClicked() {
-        let vc = vcWpcText()
-        self.goToVC(vc)
-    }
-    
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         updateColors()
@@ -385,39 +334,20 @@ final class vcTabLocation: vcTabParent {
     }
     
     @objc func locationAction() {
-        let alert = UIAlertController(
-            title: "Select location:",
-            message: "",
-            preferredStyle: UIAlertController.Style.actionSheet
-        )
+        let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         MyApplication.locations.indices.forEach { location in
-            let action = UIAlertAction(
-                title: Location.getName(location),
-                style: .default,
-                handler: {_ in self.locationChanged(location)}
-            )
+            let action = UIAlertAction(title: Location.getName(location), style: .default, handler: {_ in self.locationChanged(location)})
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(
-            title: "Add location..",
-            style: .default,
-            handler: {_ in self.locationChanged(Location.numLocations)}
-            )
-        )
+        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = self.menuButton
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
         self.present(alert, animated: true, completion: nil)
     }
     
     @objc func ccAction() {
-        let alert = UIAlertController(
-            title: "Select from:",
-            message: "",
-            preferredStyle: UIAlertController.Style.actionSheet
-        )
+        let alert = UIAlertController(title: "Select from:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
@@ -429,15 +359,12 @@ final class vcTabLocation: vcTabParent {
             )
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = self.menuButton
-        }
+        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
         self.present(alert, animated: true, completion: nil)
     }
     
     @objc func gotoHourly() {
-        let vc = vcHourly()
-        self.goToVC(vc)
+        self.goToVC(vcHourly())
     }
     
     func getCurrentConditionCards() {
@@ -461,9 +388,7 @@ final class vcTabLocation: vcTabParent {
                 if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
                     objectTextView.font = FontSize.hourly.size
                 }
-                objectTextView.addGestureRecognizer(
-                    UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:)))
-                )
+                objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:))))
                 objectTextView.tv.accessibilityLabel = html
                 objectTextView.tv.isSelectable = false
             }
@@ -491,14 +416,14 @@ final class vcTabLocation: vcTabParent {
         }
     }
     
-    func cleanupRadarObjects() {
-        if wxMetal[0] != nil {
+    //func cleanupRadarObjects() {
+        //if wxMetal[0] != nil {
             //wxMetal.forEach { $0!.cleanup() }
-        }
-    }
+        //}
+    //}
     
     func getNexradRadar(_ stackView: UIStackView) {
-        cleanupRadarObjects()
+        //cleanupRadarObjects()
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
@@ -508,7 +433,7 @@ final class vcTabLocation: vcTabParent {
         let caview = UIView(frame: carect)
         caview.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
         caview.heightAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
-        let surfaceRatio = Float(screenWidth)/Float(screenHeight)
+        let surfaceRatio = Float(screenWidth) / Float(screenHeight)
         projectionMatrix = float4x4.makeOrtho(
             -1.0 * ortInt,
             right: ortInt,
