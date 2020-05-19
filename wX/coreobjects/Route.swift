@@ -174,6 +174,7 @@ final class Route {
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = paneString
         vc.wxoglCalledFromTimeButton = true
+        vc.savePreferences = false
         uiv.goToVC(vc)
     }
     
