@@ -6,9 +6,16 @@
 
 import UIKit
 
+// TODO rename
 final class UtilityNws {
 
+    // given the raw icon URL from NWS, determine if bitmap is on disk or must be created
+    // input examples
+    //  https://api.weather.gov/icons/land/day/rain_showers,60/rain_showers,30?size=medium
+    //  https://api.weather.gov/icons/land/night/bkn?size=medium
+    //  https://api.weather.gov/icons/land/day/tsra_hi,40?size=medium
     static func getIcon(_ url: String) -> Bitmap {
+        print("DEBUG223: " + url)
         if url == "NULL" { return Bitmap() }
         var fileName = url.replace("?size=medium", "")
             .replace("?size=small", "").replace("https://api.weather.gov/icons/land/", "")
