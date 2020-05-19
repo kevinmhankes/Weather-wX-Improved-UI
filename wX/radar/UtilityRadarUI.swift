@@ -9,8 +9,6 @@ import UIKit
 final class UtilityRadarUI {
 
     static func zoomOutByKey(_ wxMetal: [WXMetalRender?]) {
-        var panSensitivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom > WXMetalSurfaceView.minZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 0.8, $0!.zoom, $0!)
@@ -23,8 +21,6 @@ final class UtilityRadarUI {
     }
 
     static func zoomInByKey(_ wxMetal: [WXMetalRender?]) {
-        var panSensitivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         wxMetal.forEach {
             if $0!.zoom < WXMetalSurfaceView.maxZoom {
                 WXMetalSurfaceView.setModifiedZoom($0!.zoom * 1.25, $0!.zoom, $0!)
@@ -37,8 +33,6 @@ final class UtilityRadarUI {
     }
 
     static func moveByKey(_ wxMetal: [WXMetalRender?], _ direction: KeyDirections) {
-        var panSensitivity: Float = 500.0
-        if wxMetal[0]?.numberOfPanes == 4 { panSensitivity *= 2 }
         var xChange: Float = 0.0
         var yChange: Float = 0.0
         switch direction {
@@ -124,19 +118,23 @@ final class UtilityRadarUI {
         Route.imageViewer(uiv, url)
     }
 
-    static func getRadarStatus(_ uiv: UIViewController, _ rid: String) {
+    static func getRadarStatus(_ uiv: UIViewController, _ radarSite: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let radarStatus = getRadarStatusMessage(rid)
-            DispatchQueue.main.async { Route.textViewer(uiv, radarStatus) }
+            let status = getRadarStatusMessage(radarSite)
+            DispatchQueue.main.async { Route.textViewer(uiv, status) }
         }
     }
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
+        // TODO adjustment when convert to 4char radar site code
         if radarSite.count == 4 { ridSmall.remove(at: radarSite.startIndex) }
-        var message = UtilityDownload.getTextProduct("FTM" + ridSmall.uppercased())
-        if message == "" { message = "The current radar status for " + radarSite + " is not available." }
-        return message
+        let message = UtilityDownload.getTextProduct("FTM" + ridSmall.uppercased())
+        if message == "" {
+            return "The current radar status for " + radarSite + " is not available."
+        } else {
+            return message
+        }
     }
 
     static func getLatLonFromScreenPosition(_ uiv: UIViewController, _ wxMetal: WXMetalRender, _ numberOfPanes: Int, _ ortInt: Float, _ x: CGFloat, _ y: CGFloat) -> LatLon {

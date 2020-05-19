@@ -52,8 +52,7 @@ final class UtilityMetar {
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
                     let metarItems = metar.split(" ")
                     let TDArr = metar.parse(patternMetarWxogl1).split("/")
-                    var timeBlob = ""
-                    if metarItems.count > 1 { timeBlob = metarItems[1] }
+                    let timeBlob = metarItems.count > 1 ? metarItems[1] : ""
                     var pressureBlob = metar.parse(patternMetarWxogl2)
                     var windBlob = metar.parse(patternMetarWxogl3)
                     if windBlob == "" { windBlob = metar.parse(patternMetarWxogl4) }
