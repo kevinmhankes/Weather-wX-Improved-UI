@@ -26,10 +26,10 @@ final class UtilityNws {
     }
 
     static func parseBitmap(_ url: String) -> Bitmap {
-        var bitmap = Bitmap()
+        let bitmap: Bitmap
         if url.contains("/") {
             let tokens = url.split("/")
-            if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) }
+            if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) } else { bitmap = Bitmap() }
         } else {
             bitmap = dualBitmapWithNumbers(url)
         }
@@ -46,31 +46,38 @@ final class UtilityNws {
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
             NSAttributedString.Key.foregroundColor: textColor
             ] as [NSAttributedString.Key: Any]?
-        var num1 = ""
-        var num2 = ""
         let aSplit = iconLeftString.split(",")
         let bSplit = iconRightString.split(",")
-        if aSplit.count > 1 { num1 = aSplit[1] }
-        if bSplit.count > 1 { num2 = bSplit[1] }
-        var aLocal = ""
-        var bLocal = ""
+        let num1: String
+        let num2: String
+        if aSplit.count > 1 { num1 = aSplit[1] } else { num1 = "" }
+        if bSplit.count > 1 { num2 = bSplit[1] } else { num2 = "" }
+        let aLocal: String
+        let bLocal: String
         if aSplit.count > 0 && bSplit.count > 0 {
             aLocal = aSplit[0]
             bLocal = bSplit[0]
+        } else {
+            aLocal = ""
+            bLocal = ""
         }
-        var leftCropA = 4
-        var leftCropB = 4
+        let leftCropA: Int
+        let leftCropB: Int
         let halfWidth = 41
         let middlePoint = 45
-        if iconLeftString.contains("fg") { leftCropA = middlePoint }
-        if iconRightString.contains("fg") { leftCropB = middlePoint }
-        var bitmapLeft = Bitmap()
-        var bitmapRight = Bitmap()
+        if iconLeftString.contains("fg") { leftCropA = middlePoint } else { leftCropA = 4 }
+        if iconRightString.contains("fg") { leftCropB = middlePoint } else { leftCropB = 4 }
+        let bitmapLeft: Bitmap
+        let bitmapRight: Bitmap
         if let fileNameLeft = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmapLeft = UtilityIO.readBitmapResourceFromFile(fileNameLeft)
+        } else {
+            bitmapLeft = Bitmap()
         }
         if let fileNameRight = UtilityNwsIcon.iconMap[bLocal + ".png"] {
             bitmapRight = UtilityIO.readBitmapResourceFromFile(fileNameRight)
+        } else {
+            bitmapRight = Bitmap()
         }
         let size = CGSize(width: dimensions, height: dimensions)
         let rect = CGRect(x: leftCropA, y: 0, width: halfWidth, height: dimensions)
@@ -115,23 +122,25 @@ final class UtilityNws {
     }
 
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
-        var num1 = ""
         let aSplit = iconString.split(",")
-        if aSplit.count > 1 { num1 = aSplit[1] }
-        var aLocal = ""
-        if aSplit.count > 0 { aLocal = aSplit[0] }
+        let num1: String
+        if aSplit.count > 1 { num1 = aSplit[1] } else { num1 = "" }
+        let aLocal: String
+        if aSplit.count > 0 { aLocal = aSplit[0] } else { aLocal = "" }
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
             NSAttributedString.Key.foregroundColor: textColor
             ]  as [NSAttributedString.Key: Any]?
-        var bitmap = Bitmap()
+        let bitmap: Bitmap
         if let fileName = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
+        } else {
+            bitmap = Bitmap()
         }
         let imageSize = bitmap.image.size
-        var xText = 58
-        if num1 == "100" { xText = 50 }
+        let xText: Int
+        if num1 == "100" { xText = 50 } else { xText = 58 }
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: imageSize, format: rendererFormat)
