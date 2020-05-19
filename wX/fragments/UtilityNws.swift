@@ -34,15 +34,12 @@ final class UtilityNws {
     //  rain_showers,70/tsra,80
     //  ntsra,80
     static private func parseBitmap(_ url: String) -> Bitmap {
-        //print("DEBUG22: " + url)
-        let bitmap: Bitmap
         if url.contains("/") {
-            let tokens = url.split("/")
-            if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) } else { bitmap = Bitmap() }
+            let items = url.split("/")
+            if items.count > 1 { return dualBitmapWithNumbers(items[0], items[1]) } else { return Bitmap() }
         } else {
-            bitmap = bitmapWithOneNumber(url)
+            return bitmapWithOneNumber(url)
         }
-        return bitmap
     }
 
     static private let dimensions = 86
