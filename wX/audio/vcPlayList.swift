@@ -14,7 +14,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private var wfoTextButton = ObjectToolbarIcon()
     private let textPreviewLength = 400
     private var synthesizer = AVSpeechSynthesizer()
-    private var fab: ObjectFab?
+    private var fab: ObjectFab!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         resetAudio()
         playlistItems.enumerated().forEach { index, item in
             if index >= selection {
-                UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synthesizer, fab!)
+                UtilityAudio.playClickedNewItem(Utility.readPref("PLAYLIST_" + item, ""), synthesizer, fab)
             }
         }
     }
@@ -116,7 +116,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     @objc func playClicked() {
         var textToSpeak = ""
         playlistItems.forEach { textToSpeak += Utility.readPref("PLAYLIST_" + $0, "") }
-        UtilityAudio.playClicked(textToSpeak, synthesizer, fab!)
+        UtilityAudio.playClicked(textToSpeak, synthesizer, fab)
     }
     
     @objc func addNationalProductClicked() {
@@ -132,9 +132,8 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
     }
     
-    func addWfoProduct(_ product: String) {
-        let product = "AFD" + product.uppercased()
-        downloadAndAddProduct(product, self.wfoTextButton)
+    func addWfoProduct(_ office: String) {
+        downloadAndAddProduct("AFD" + office.uppercased(), self.wfoTextButton)
     }
     
     func downloadAndAddProduct(_ product: String, _ button: ObjectToolbarIcon) {
@@ -154,6 +153,6 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     func resetAudio() {
         if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
         synthesizer = AVSpeechSynthesizer()
-        fab!.setImage(.play)
+        fab.setImage(.play)
     }
 }
