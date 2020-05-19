@@ -9,20 +9,16 @@ import UIKit
 final class UtilityNws {
 
     static func getIcon(_ url: String) -> Bitmap {
-        var bitmap = Bitmap()
-        if url == "NULL" { return bitmap }
+        if url == "NULL" { return Bitmap() }
         var fileName = url.replace("?size=medium", "")
-            .replace("?size=small", "")
-            .replace("https://api.weather.gov/icons/land/", "")
-            .replace("http://api.weather.gov/icons/land/", "")
-            .replace("day/", "")
+            .replace("?size=small", "").replace("https://api.weather.gov/icons/land/", "")
+            .replace("http://api.weather.gov/icons/land/", "").replace("day/", "")
         if fileName.contains("night") { fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n") }
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
-            bitmap = UtilityIO.readBitmapResourceFromFile(fnResId)
+            return UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
-            bitmap = parseBitmap(fileName)
+            return parseBitmap(fileName)
         }
-        return bitmap
     }
 
     static func parseBitmap(_ url: String) -> Bitmap {
