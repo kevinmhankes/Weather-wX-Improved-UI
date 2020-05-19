@@ -118,11 +118,8 @@ final class UtilityNws {
 
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
         let aSplit = iconString.split(",")
-        let num1: String
-        // TODO cond ? a : b
-        if aSplit.count > 1 { num1 = aSplit[1] } else { num1 = "" }
-        let aLocal: String
-        if aSplit.count > 0 { aLocal = aSplit[0] } else { aLocal = "" }
+        let num1 = aSplit.count > 1 ? aSplit[1] : ""
+        let aLocal = aSplit.count > 0 ? aSplit[0] : ""
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
