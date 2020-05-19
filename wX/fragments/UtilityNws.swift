@@ -21,13 +21,19 @@ final class UtilityNws {
         }
     }
 
+    // given one string that does not have a match on disk, decode and return a bitmap with textual labels
+    // it could be composed of 2 bitmaps with one or more textual labels (if string has a "/" ) or just one bitmap with label
+    // input examples
+    //  rain_showers,70/tsra,80
+    //  ntsra,80
     static func parseBitmap(_ url: String) -> Bitmap {
+        print("DEBUG22: " + url)
         let bitmap: Bitmap
         if url.contains("/") {
             let tokens = url.split("/")
             if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) } else { bitmap = Bitmap() }
         } else {
-            bitmap = dualBitmapWithOneNumber(url)
+            bitmap = bitmapWithOneNumber(url)
         }
         return bitmap
     }
@@ -36,8 +42,14 @@ final class UtilityNws {
     static let numHeight = 15
     static let textFont = UIFont(name: "HelveticaNeue-Bold", size: 12)! // HelveticaNeue-Bold
 
+    // given two strings return a custom bitmap made of two bitmaps with optional numeric label
+    // input examples
+    //  rain_showers,60 rain_showers,30
+    //  nrain_showers,80 nrain_showers,70
+    //  ntsra_hi,40 ntsra_hi
+    //  bkn rain
     static func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
-        print("DEBUG2: " + iconLeftString + " " + iconRightString)
+        //print("DEBUG2: " + iconLeftString + " " + iconRightString)
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
@@ -116,9 +128,13 @@ final class UtilityNws {
         }
         return Bitmap(newImage)
     }
-
-    static func dualBitmapWithOneNumber(_ iconString: String) -> Bitmap {
-        //print("DEBUG2: " + iconString)
+    
+    // given one string return a custom bitmap with numeric label
+    // input examples
+    //  nrain_showers,80
+    //  tsra_hi,40
+    static func bitmapWithOneNumber(_ iconString: String) -> Bitmap {
+        print("DEBUG2: " + iconString)
         let items = iconString.split(",")
         let number = items.count > 1 ? items[1] : ""
         let weatherCondition = items.count > 0 ? items[0] : ""
