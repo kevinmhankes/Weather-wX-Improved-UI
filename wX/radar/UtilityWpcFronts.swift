@@ -166,7 +166,7 @@ final class UtilityWpcFronts {
             return [0.0, 0.0]
         } else {
             let lat = Double(string.substring(0, 2) + "." + string.substring(2, 3)) ?? 0.0
-            var lon = 0.0
+            let lon: Double
             let index = string.index(string.startIndex, offsetBy: 3)
             if String(string[index]) == "0" {
                 lon = Double(string.substring(4, 6) + "." + string.substring(6, 7)) ?? 0.0
