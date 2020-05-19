@@ -44,10 +44,8 @@ final class UtilityNws {
             ] as [NSAttributedString.Key: Any]?
         let aSplit = iconLeftString.split(",")
         let bSplit = iconRightString.split(",")
-        let num1: String
-        let num2: String
-        if aSplit.count > 1 { num1 = aSplit[1] } else { num1 = "" }
-        if bSplit.count > 1 { num2 = bSplit[1] } else { num2 = "" }
+        let num1 = aSplit.count > 1 ? aSplit[1] : ""
+        let num2 = bSplit.count > 1 ? bSplit[1] : ""
         let aLocal: String
         let bLocal: String
         if aSplit.count > 0 && bSplit.count > 0 {
@@ -65,6 +63,7 @@ final class UtilityNws {
         if iconRightString.contains("fg") { leftCropB = middlePoint } else { leftCropB = 4 }
         let bitmapLeft: Bitmap
         let bitmapRight: Bitmap
+        // TODO cond ? a : b
         if let fileNameLeft = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmapLeft = UtilityIO.readBitmapResourceFromFile(fileNameLeft)
         } else {
@@ -120,6 +119,7 @@ final class UtilityNws {
     static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
         let aSplit = iconString.split(",")
         let num1: String
+        // TODO cond ? a : b
         if aSplit.count > 1 { num1 = aSplit[1] } else { num1 = "" }
         let aLocal: String
         if aSplit.count > 0 { aLocal = aSplit[0] } else { aLocal = "" }
