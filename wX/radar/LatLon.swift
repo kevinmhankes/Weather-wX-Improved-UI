@@ -43,6 +43,11 @@ struct LatLon {
         self.lonNum = Double(self.yStr) ?? 0.0
     }
     
+    // SPC and WPC issue text products with LAT/LON encoded in a special format
+    // points in polygons are 8 char long separated by whitespace spread over multiple
+    // fixed width lines
+    // 35768265  <- 35.76 82.65
+    // 36730423  <- 36.73 104.23
     init(_ temp: String) {
         self.xStr = temp.substring(0, 4)
         self.yStr = temp.substring(4, 8)
@@ -94,7 +99,7 @@ struct LatLon {
     // used in adhoc location save
     func prettyPrint() -> String { latString.truncate(5) + ", " + lonString.truncate(5) }
     
-    func print() -> String { latString + " " + lonString + " " }
+    func printSpaceSeperated() -> String { latString + " " + lonString + " " }
     
     func asPoint() -> ExternalPoint { ExternalPoint(lat, lon) }
     

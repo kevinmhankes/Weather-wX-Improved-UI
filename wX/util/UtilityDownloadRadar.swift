@@ -121,7 +121,7 @@ final class UtilityDownloadRadar {
     private static func storeWatchMcdLatLon(_ html: String) -> String {
         let coordinates = html.parseColumn("([0-9]{8}).*?")
         var string = ""
-        coordinates.forEach { string += LatLon($0).print() }
+        coordinates.forEach { string += LatLon($0).printSpaceSeperated() }
         string += ":"
         return string.replace(" :", ":")
     }
