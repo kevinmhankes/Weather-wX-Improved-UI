@@ -24,7 +24,7 @@ final class UtilityNws {
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
             return UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
-            return parseBitmap(fileName)
+            return parseBitmapString(fileName)
         }
     }
 
@@ -33,12 +33,12 @@ final class UtilityNws {
     // input examples
     //  rain_showers,70/tsra,80
     //  ntsra,80
-    static private func parseBitmap(_ url: String) -> Bitmap {
+    static private func parseBitmapString(_ url: String) -> Bitmap {
         if url.contains("/") {
             let items = url.split("/")
-            if items.count > 1 { return dualBitmapWithNumbers(items[0], items[1]) } else { return Bitmap() }
+            if items.count > 1 { return getDualBitmapWithNumbers(items[0], items[1]) } else { return Bitmap() }
         } else {
-            return bitmapWithOneNumber(url)
+            return getBitmapWithOneNumber(url)
         }
     }
 
@@ -52,7 +52,7 @@ final class UtilityNws {
     //  nrain_showers,80 nrain_showers,70
     //  ntsra_hi,40 ntsra_hi
     //  bkn rain
-    static private func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
+    static private func getDualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
         //print("DEBUG2: " + iconLeftString + " " + iconRightString)
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
@@ -137,7 +137,7 @@ final class UtilityNws {
     // input examples
     //  nrain_showers,80
     //  tsra_hi,40
-    static private func bitmapWithOneNumber(_ iconString: String) -> Bitmap {
+    static private func getBitmapWithOneNumber(_ iconString: String) -> Bitmap {
         //print("DEBUG2: " + iconString)
         let items = iconString.split(",")
         let number = items.count > 1 ? items[1] : ""
