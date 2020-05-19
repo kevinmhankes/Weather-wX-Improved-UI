@@ -37,23 +37,24 @@ final class UtilityNws {
     static let textFont = UIFont(name: "HelveticaNeue-Bold", size: 12)! // HelveticaNeue-Bold
 
     static func dualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
+        print("DEBUG2: " + iconLeftString + " " + iconRightString)
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
             NSAttributedString.Key.foregroundColor: textColor
             ] as [NSAttributedString.Key: Any]?
-        let aSplit = iconLeftString.split(",")
-        let bSplit = iconRightString.split(",")
-        let num1 = aSplit.count > 1 ? aSplit[1] : ""
-        let num2 = bSplit.count > 1 ? bSplit[1] : ""
-        let aLocal: String
-        let bLocal: String
-        if aSplit.count > 0 && bSplit.count > 0 {
-            aLocal = aSplit[0]
-            bLocal = bSplit[0]
+        let leftTokens = iconLeftString.split(",")
+        let rightTokens = iconRightString.split(",")
+        let leftNumber = leftTokens.count > 1 ? leftTokens[1] : ""
+        let rightNumber = rightTokens.count > 1 ? rightTokens[1] : ""
+        let leftWeatherCondition: String
+        let rightWeatherCondition: String
+        if leftTokens.count > 0 && rightTokens.count > 0 {
+            leftWeatherCondition = leftTokens[0]
+            rightWeatherCondition = rightTokens[0]
         } else {
-            aLocal = ""
-            bLocal = ""
+            leftWeatherCondition = ""
+            rightWeatherCondition = ""
         }
         let leftCropA: Int
         let leftCropB: Int
@@ -64,12 +65,12 @@ final class UtilityNws {
         let bitmapLeft: Bitmap
         let bitmapRight: Bitmap
         // TODO cond ? a : b
-        if let fileNameLeft = UtilityNwsIcon.iconMap[aLocal + ".png"] {
+        if let fileNameLeft = UtilityNwsIcon.iconMap[leftWeatherCondition + ".png"] {
             bitmapLeft = UtilityIO.readBitmapResourceFromFile(fileNameLeft)
         } else {
             bitmapLeft = Bitmap()
         }
-        if let fileNameRight = UtilityNwsIcon.iconMap[bLocal + ".png"] {
+        if let fileNameRight = UtilityNwsIcon.iconMap[rightWeatherCondition + ".png"] {
             bitmapRight = UtilityIO.readBitmapResourceFromFile(fileNameRight)
         } else {
             bitmapRight = Bitmap()
@@ -96,20 +97,20 @@ final class UtilityNws {
             let yText = 70
             let xTextLeft = 2
             let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uiColorCurrent
-            if num1 != "" {
+            if leftNumber != "" {
                 let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
                 let rect = CGRect(x: xTextLeft, y: yText, width: dimensions, height: dimensions)
-                let strToDraw = num1 + "%"
+                let strToDraw = leftNumber + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
-            if num2 != "" {
+            if rightNumber != "" {
                 let rectangle = CGRect(x: middlePoint, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
                 let rect = CGRect(x: xText, y: yText, width: dimensions, height: dimensions)
-                let strToDraw = num2 + "%"
+                let strToDraw = rightNumber + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
         }
@@ -117,7 +118,7 @@ final class UtilityNws {
     }
 
     static func dualBitmapWithOneNumber(_ iconString: String) -> Bitmap {
-        print("DEBUG2: " + iconString)
+        //print("DEBUG2: " + iconString)
         let items = iconString.split(",")
         let number = items.count > 1 ? items[1] : ""
         let weatherCondition = items.count > 0 ? items[0] : ""
