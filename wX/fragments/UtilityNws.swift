@@ -27,7 +27,7 @@ final class UtilityNws {
             let tokens = url.split("/")
             if tokens.count > 1 { bitmap = dualBitmapWithNumbers(tokens[0], tokens[1]) } else { bitmap = Bitmap() }
         } else {
-            bitmap = dualBitmapWithNumbers(url)
+            bitmap = dualBitmapWithOneNumber(url)
         }
         return bitmap
     }
@@ -116,39 +116,39 @@ final class UtilityNws {
         return Bitmap(newImage)
     }
 
-    static func dualBitmapWithNumbers(_ iconString: String) -> Bitmap {
-        let aSplit = iconString.split(",")
-        let num1 = aSplit.count > 1 ? aSplit[1] : ""
-        let aLocal = aSplit.count > 0 ? aSplit[0] : ""
+    static func dualBitmapWithOneNumber(_ iconString: String) -> Bitmap {
+        print("DEBUG2: " + iconString)
+        let items = iconString.split(",")
+        let number = items.count > 1 ? items[1] : ""
+        let weatherCondition = items.count > 0 ? items[0] : ""
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
             NSAttributedString.Key.foregroundColor: textColor
             ]  as [NSAttributedString.Key: Any]?
         let bitmap: Bitmap
-        if let fileName = UtilityNwsIcon.iconMap[aLocal + ".png"] {
+        if let fileName = UtilityNwsIcon.iconMap[weatherCondition + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
-            print("DEBUG2: " + fileName)
+            //print("DEBUG2: " + fileName)
         } else {
             bitmap = Bitmap()
-            print("DEBUG2: empty")
+            //print("DEBUG2: empty")
         }
         //let bitmap = UtilityNwsIcon.iconMap[aLocal + ".png"] != nil ? UtilityIO.readBitmapResourceFromFile(UtilityNwsIcon.iconMap[aLocal + ".png"]!) : Bitmap()
         let imageSize = bitmap.image.size
-        let xText: Int
-        if num1 == "100" { xText = 50 } else { xText = 58 }
+        let xText = number == "100" ? 50 : 58
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: imageSize, format: rendererFormat)
         let newImage = renderer.image { _ in
             bitmap.image.draw(at: CGPoint.zero)
-            if num1 != "" {
+            if number != "" {
                 let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: dimensions, height: dimensions)
                 let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uiColorCurrent
                 fillColor.setFill()
                 UIRectFill(rectangle)
                 let rect = CGRect(x: xText, y: 70, width: dimensions, height: dimensions)
-                let strToDraw = num1 + "%"
+                let strToDraw = number + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
         }
