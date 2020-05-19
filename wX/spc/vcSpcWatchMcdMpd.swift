@@ -21,7 +21,6 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        // FIXME redundant vars
         productNumber = watchMcdMpdNumber
         if productNumber != "" { watchMcdMpdNumber = "" }
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
