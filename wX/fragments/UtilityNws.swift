@@ -128,9 +128,12 @@ final class UtilityNws {
         let bitmap: Bitmap
         if let fileName = UtilityNwsIcon.iconMap[aLocal + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
+            print("DEBUG2: " + fileName)
         } else {
             bitmap = Bitmap()
+            print("DEBUG2: empty")
         }
+        //let bitmap = UtilityNwsIcon.iconMap[aLocal + ".png"] != nil ? UtilityIO.readBitmapResourceFromFile(UtilityNwsIcon.iconMap[aLocal + ".png"]!) : Bitmap()
         let imageSize = bitmap.image.size
         let xText: Int
         if num1 == "100" { xText = 50 } else { xText = 58 }
