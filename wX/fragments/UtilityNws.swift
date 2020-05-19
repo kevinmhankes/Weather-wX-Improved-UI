@@ -72,12 +72,10 @@ final class UtilityNws {
             leftWeatherCondition = ""
             rightWeatherCondition = ""
         }
-        let leftCropA: Int
-        let leftCropB: Int
         let halfWidth = 41
         let middlePoint = 45
-        if iconLeftString.contains("fg") { leftCropA = middlePoint } else { leftCropA = 4 }
-        if iconRightString.contains("fg") { leftCropB = middlePoint } else { leftCropB = 4 }
+        let leftCropA = iconLeftString.contains("fg") ? middlePoint : 4
+        let leftCropB = iconRightString.contains("fg") ? middlePoint : 4
         let bitmapLeft: Bitmap
         let bitmapRight: Bitmap
         // TODO cond ? a : b
