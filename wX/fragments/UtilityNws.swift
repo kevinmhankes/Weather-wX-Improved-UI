@@ -78,7 +78,6 @@ final class UtilityNws {
         let leftCropB = iconRightString.contains("fg") ? middlePoint : 4
         let bitmapLeft: Bitmap
         let bitmapRight: Bitmap
-        // TODO cond ? a : b
         if let fileNameLeft = UtilityNwsIcon.iconMap[leftWeatherCondition + ".png"] {
             bitmapLeft = UtilityIO.readBitmapResourceFromFile(fileNameLeft)
         } else {
