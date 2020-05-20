@@ -16,23 +16,20 @@ final class UtilityColorPalette165 {
         var gAl = [UInt8]()
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk("165", code)
-        //var tmpArr = [String]()
         text.split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
-                let tokens = line.contains(",") ? line.split(",") : line.split(" ")
-                if tokens.count > 4 {
-                    dbzAl.append(Int(tokens[1])!)
-                    rAl.append(UInt8(tokens[2])!)
-                    gAl.append(UInt8(tokens[3])!)
-                    bAl.append(UInt8(tokens[4])!)
+                let items = line.contains(",") ? line.split(",") : line.split(" ")
+                if items.count > 4 {
+                    dbzAl.append(Int(items[1])!)
+                    rAl.append(UInt8(items[2])!)
+                    gAl.append(UInt8(items[3])!)
+                    bAl.append(UInt8(items[4])!)
                 }
             }
         }
-        var lowColor = 0
-        var diff = 0
+        let diff = 10
         dbzAl.indices.forEach { index in
-            lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
-            diff = 10
+            let lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
             MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(rAl[index])
             MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[index])
             MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[index])

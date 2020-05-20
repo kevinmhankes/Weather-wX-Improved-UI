@@ -25,7 +25,7 @@
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 
-56103 2020_05_19 [REF] misc
+56103 2020_05_20 [REF] misc
 		 [REF] rename patterns in model util files
 		 [FIX] in homescreen remove the 2km on the Radar Mosaic label
 		 [FIX] in homescreen unify the label for CONUS WV and VIS

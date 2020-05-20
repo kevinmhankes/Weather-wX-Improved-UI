@@ -10,25 +10,25 @@ final class UtilityColorPaletteGeneric {
         let colorMapR: MemoryBuffer
         let colorMapG: MemoryBuffer
         let colorMapB: MemoryBuffer
-        var scale = 2
-        var lowerEnd = -32
+        let scale: Int
+        let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
         let productCode = Int(prod) ?? 94
-        switch prod {
-        case "94":
+        switch productCode {
+        case 94:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
             scale = 2
             lowerEnd = -32
-        case "99":
+        case 99:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
             scale = 1
             lowerEnd = -127
-        case "134":
+        case 134:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
@@ -36,13 +36,13 @@ final class UtilityColorPaletteGeneric {
             lowerEnd = 0
             prodOffset = 0.0
             prodScale = 3.64
-        case "135":
+        case 135:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
             scale = 1
             lowerEnd = 0
-        case "159":
+        case 159:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
@@ -50,7 +50,7 @@ final class UtilityColorPaletteGeneric {
             lowerEnd = 0
             prodOffset = 128.0
             prodScale = 16.0
-        case "161":
+        case 161:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
@@ -58,7 +58,7 @@ final class UtilityColorPaletteGeneric {
             lowerEnd = 0
             prodOffset = -60.5
             prodScale = 300.0
-        case "163":
+        case 163:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
@@ -66,7 +66,7 @@ final class UtilityColorPaletteGeneric {
             lowerEnd = 0
             prodOffset = 43.0
             prodScale = 20.0
-        case "172":
+        case 172:
             colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
             colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
             colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
@@ -76,6 +76,8 @@ final class UtilityColorPaletteGeneric {
             colorMapR = MemoryBuffer()
             colorMapG = MemoryBuffer()
             colorMapB = MemoryBuffer()
+            scale = 2
+            lowerEnd = -32
         }
         colorMapR.position = 0
         colorMapG.position = 0
@@ -85,52 +87,39 @@ final class UtilityColorPaletteGeneric {
         var gAl = [UInt8]()
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk(prod, code)
-        let lines = text.split("\n")
         var red = "0"
         var green = "0"
         var blue = "0"
         var priorLineHas6 = false
-        lines.forEach { line in
-            var tmpArr = [String]()
+        text.split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
-                if line.contains(",") {
-                    tmpArr = line.split(",")
-                } else {
-                    tmpArr = line.split(" ")
-                }
-                if tmpArr.count > 4 {
+                let items = line.contains(",") ? line.split(",") : line.split(" ")
+                if items.count > 4 {
                     if priorLineHas6 {
-                        dbzAl.append(Int(Double(tmpArr[1])! * prodScale + prodOffset - 1))
+                        dbzAl.append(Int(Double(items[1])! * prodScale + prodOffset - 1))
                         rAl.append(UInt8(Int(red)!))
                         gAl.append(UInt8(Int(green)!))
                         bAl.append(UInt8(Int(blue)!))
-                        dbzAl.append(Int(Double(tmpArr[1])! * prodScale + prodOffset))
-                        rAl.append(UInt8(tmpArr[2])!)
-                        gAl.append(UInt8(tmpArr[3])!)
-                        bAl.append(UInt8(tmpArr[4])!)
+                        dbzAl.append(Int(Double(items[1])! * prodScale + prodOffset))
+                        rAl.append(UInt8(items[2])!)
+                        gAl.append(UInt8(items[3])!)
+                        bAl.append(UInt8(items[4])!)
                         priorLineHas6 = false
                     } else {
-                        dbzAl.append(Int(Double(tmpArr[1])! * prodScale + prodOffset))
-                        rAl.append(UInt8(tmpArr[2])!)
-                        gAl.append(UInt8(tmpArr[3])!)
-                        bAl.append(UInt8(tmpArr[4])!)
+                        dbzAl.append(Int(Double(items[1])! * prodScale + prodOffset))
+                        rAl.append(UInt8(items[2])!)
+                        gAl.append(UInt8(items[3])!)
+                        bAl.append(UInt8(items[4])!)
                     }
-                    if tmpArr.count > 7 {
+                    if items.count > 7 {
                         priorLineHas6 = true
-                        red = tmpArr[5]
-                        green = tmpArr[6]
-                        blue = tmpArr[7]
+                        red = items[5]
+                        green = items[6]
+                        blue = items[7]
                     }
                 }
             }
         }
-        var low = 0
-        var high = 0
-        var lowColor = 0
-        var highColor = 0
-        var diff = 0
-        var colorInt = 0
-        var colorInt2 = 0
         if prod == "161" {
             (0..<10).forEach { _ in
                 colorMapR.put(rAl[0])
@@ -158,11 +147,11 @@ final class UtilityColorPaletteGeneric {
         }
         dbzAl.indices.forEach { index in
             if index < (dbzAl.count - 1) {
-                low = dbzAl[index]
-                lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
-                high = dbzAl[index + 1]
-                highColor = Color.rgb(rAl[index + 1], gAl[index + 1], bAl[index + 1])
-                diff = high - low
+                let low = dbzAl[index]
+                let lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
+                let high = dbzAl[index + 1]
+                let highColor = Color.rgb(rAl[index + 1], gAl[index + 1], bAl[index + 1])
+                var diff = high - low
                 colorMapR.put(rAl[index])
                 colorMapG.put(gAl[index])
                 colorMapB.put(bAl[index])
@@ -171,16 +160,16 @@ final class UtilityColorPaletteGeneric {
                     colorMapG.put(gAl[index])
                     colorMapB.put(bAl[index])
                 }
-                if diff == 0 { diff = 1 }
+                if diff == 0 { diff = 1 } // TODO why is this needed?
                 (1..<diff).forEach { j in
                     if scale == 1 {
-                        colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))
+                        let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))
                     } else if scale == 2 {
-                        colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2)-1)) / Double((diff * 2)))
-                        colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double((j * 2)) / Double((diff * 2)))
+                        let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2)-1)) / Double((diff * 2)))
+                        let colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double((j * 2)) / Double((diff * 2)))
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))
