@@ -16,20 +16,15 @@ final class UtilityColorPalette165 {
         var gAl = [UInt8]()
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk("165", code)
-        let lines = text.split("\n")
-        var tmpArr = [String]()
-        lines.forEach { line in
+        //var tmpArr = [String]()
+        text.split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
-                if line.contains(",") {
-                    tmpArr = line.split(",")
-                } else {
-                    tmpArr = line.split(" ")
-                }
-                if tmpArr.count > 4 {
-                    dbzAl.append(Int(tmpArr[1])!)
-                    rAl.append(UInt8(tmpArr[2])!)
-                    gAl.append(UInt8(tmpArr[3])!)
-                    bAl.append(UInt8(tmpArr[4])!)
+                let tokens = line.contains(",") ? line.split(",") : line.split(" ")
+                if tokens.count > 4 {
+                    dbzAl.append(Int(tokens[1])!)
+                    rAl.append(UInt8(tokens[2])!)
+                    gAl.append(UInt8(tokens[3])!)
+                    bAl.append(UInt8(tokens[4])!)
                 }
             }
         }
