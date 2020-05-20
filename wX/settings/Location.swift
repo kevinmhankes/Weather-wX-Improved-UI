@@ -79,7 +79,7 @@ final class Location {
     }
 
     static func initNumLocations() {
-        numLocations = Utility.readPref( "LOC_NUM_INT", 1)
+        numLocations = Utility.readPref("LOC_NUM_INT", 1)
     }
 
     static var numLocations: Int {
@@ -164,14 +164,8 @@ final class Location {
     }
 
     static func locationSave(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
-        var locNumToSave: Int
         let locNumInt = Int(locNum) ?? 0
-        let locNumIntCurrent = Location.numLocations
-        if locNumInt == (locNumIntCurrent + 1) {
-            locNumToSave = locNumInt
-        } else {
-            locNumToSave = locNumIntCurrent
-        }
+        let locNumToSave = locNumInt == (Location.numLocations + 1) ? locNumInt : Location.numLocations
         Utility.writePref("LOC" + locNum + "_X", latLon.latString)
         Utility.writePref("LOC" + locNum + "_Y", latLon.lonString)
         Utility.writePref("LOC" + locNum + "_LABEL", labelStr)
