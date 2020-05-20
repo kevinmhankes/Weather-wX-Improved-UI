@@ -87,6 +87,7 @@ final class UtilityColorPaletteGeneric {
         var gAl = [UInt8]()
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk(prod, code)
+        // TODO why are these used
         var red = "0"
         var green = "0"
         var blue = "0"

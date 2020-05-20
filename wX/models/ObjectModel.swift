@@ -9,6 +9,7 @@ import UIKit
 final public class ObjectModel {
     
     private var modelName = ""
+    // TODO rename all from ending in Arr to s
     private var paramArr = [String]()
     var paramLabelArr = [String]()
     var sectorArr = [String]()
@@ -24,7 +25,9 @@ final public class ObjectModel {
     private var prefRunPosnIdx = ""
     var model = ""
     var run = ""
+    // TODO kotlin uses time
     var timeStr = ""
+    // TODO rename to timeIndex
     var timeIdx = 0
     var param = ""
     var sector = ""
@@ -578,6 +581,7 @@ final public class ObjectModel {
         }
     }
     
+    // TODO make private below 2
     func timeIdxIncr() {
         self.timeIdx += 1
         self.timeStr = self.timeArr.safeGet(timeIdx)
