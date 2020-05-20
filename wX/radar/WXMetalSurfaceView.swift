@@ -23,8 +23,7 @@ final class WXMetalSurfaceView {
     }
 
     static func gesturePan(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPanGestureRecognizer) {
-        var panSensitivity: Float = 500.0
-        if wxMetal[0]!.numberOfPanes == 4 { panSensitivity *= 2 }
+        let panSensitivity: Float = wxMetal[0]!.numberOfPanes == 4 ? 1000.0 : 500.0
         let location = gestureRecognizer.location(in: uiv.view)
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         if RadarPreferences.dualpaneshareposn {
