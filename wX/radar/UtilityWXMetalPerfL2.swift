@@ -13,7 +13,7 @@ final class UtilityWXMetalPerfL2 {
     static func decompress (_ radarBuffers: ObjectMetalRadarBuffers) {
         let destinationPath = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        var loopCntBreak = 11
+        //var loopCntBreak = 11
         let refDecompSize = 827040
         let velDecompSize = 460800
         var loopCnt = 0
@@ -30,7 +30,7 @@ final class UtilityWXMetalPerfL2 {
         } else {
             print("Unable to open file")
         }
-        if radarBuffers.rd.productCode == 153 { loopCntBreak = 5 }
+        let loopCntBreak = radarBuffers.rd.productCode == 153 ? 5 : 11
         let outputBufferSize: UInt32 = 2000000
         var retSize: UInt32 = 2000000
         let oBuff = [UInt8](repeating: 1, count: Int(outputBufferSize))
