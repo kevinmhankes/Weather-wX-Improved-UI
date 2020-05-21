@@ -15,8 +15,7 @@ final class UtilityColorPalette165 {
         var rAl = [UInt8]()
         var gAl = [UInt8]()
         var bAl = [UInt8]()
-        let text = UtilityColorPalette.getColorMapStringFromDisk("165", code)
-        text.split("\n").forEach { line in
+        UtilityColorPalette.getColorMapStringFromDisk(radarColorPaletteCode, code).split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
                 if items.count > 4 {
@@ -42,11 +41,11 @@ final class UtilityColorPalette165 {
     }
     
     static func loadColorMap() {
-        switch MyApplication.radarColorPalette["165"]! {
+        switch MyApplication.radarColorPalette[165]! {
         case "CODENH":
             UtilityColorPalette165.generate("CODENH")
         default:
-            UtilityColorPalette165.generate(MyApplication.radarColorPalette["165"]!)
+            UtilityColorPalette165.generate(MyApplication.radarColorPalette[165]!)
         }
     }
 }

@@ -29,8 +29,7 @@ final class MyApplication {
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"
     static let pre2Pattern = "<pre>(.*?)</pre>"
-    // TODO convert to Int
-    static var radarColorPalette = [String: String]()
+    static var radarColorPalette = [Int: String]()
     static var homescreenFav = ""
     static let homescreenFavDefault = "TXT-CC2:TXT-HAZ:TXT-7DAY2:"
     static let severeDashboardTor = DataStorage("SEVERE_DASHBOARD_TOR")
@@ -69,8 +68,8 @@ final class MyApplication {
         UIPreferences.initialize()
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
-        [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach { radarProductNumber in
-            radarColorPalette[String(radarProductNumber)] = Utility.readPref("RADAR_COLOR_PALETTE_" + String(radarProductNumber), "CODENH")
+        [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach { product in
+            radarColorPalette[product] = Utility.readPref("RADAR_COLOR_PALETTE_" + String(product), "CODENH")
         }
         homescreenFav = Utility.readPref("HOMESCREEN_FAV", homescreenFavDefault)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)

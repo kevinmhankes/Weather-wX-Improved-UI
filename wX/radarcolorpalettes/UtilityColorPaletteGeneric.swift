@@ -6,7 +6,7 @@
 
 final class UtilityColorPaletteGeneric {
     
-    static func generate(_ prod: String, _ code: String) {
+    static func generate(_ productCode: Int, _ code: String) {
         let colorMapR: MemoryBuffer
         let colorMapG: MemoryBuffer
         let colorMapB: MemoryBuffer
@@ -14,62 +14,61 @@ final class UtilityColorPaletteGeneric {
         let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
-        let productCode = Int(prod) ?? 94
         switch productCode {
         case 94:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 2
             lowerEnd = -32
         case 99:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = -127
         case 134:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 0.0
             prodScale = 3.64
         case 135:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
         case 159:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 128.0
             prodScale = 16.0
         case 161:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = -60.5
             prodScale = 300.0
         case 163:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 43.0
             prodScale = 20.0
         case 172:
-            colorMapR = MyApplication.colorMap[Int(productCode)]!.redValues
-            colorMapG = MyApplication.colorMap[Int(productCode)]!.greenValues
-            colorMapB = MyApplication.colorMap[Int(productCode)]!.blueValues
+            colorMapR = MyApplication.colorMap[productCode]!.redValues
+            colorMapG = MyApplication.colorMap[productCode]!.greenValues
+            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
         default:
@@ -86,7 +85,7 @@ final class UtilityColorPaletteGeneric {
         var rAl = [UInt8]()
         var gAl = [UInt8]()
         var bAl = [UInt8]()
-        let text = UtilityColorPalette.getColorMapStringFromDisk(prod, code)
+        let text = UtilityColorPalette.getColorMapStringFromDisk(productCode, code)
         // TODO why are these used
         var red = "0"
         var green = "0"
@@ -121,14 +120,14 @@ final class UtilityColorPaletteGeneric {
                 }
             }
         }
-        if prod == "161" {
+        if productCode == 161 {
             (0..<10).forEach { _ in
                 colorMapR.put(rAl[0])
                 colorMapG.put(gAl[0])
                 colorMapB.put(bAl[0])
             }
         }
-        if prod == "99" || prod == "135" {
+        if productCode == 99 || productCode == 135 {
             colorMapR.put(rAl[0])
             colorMapG.put(gAl[0])
             colorMapB.put(bAl[0])
@@ -192,84 +191,84 @@ final class UtilityColorPaletteGeneric {
         }
     }
     
-    static func loadColorMap(_ product: String) {
+    static func loadColorMap(_ product: Int) {
         let map = MyApplication.radarColorPalette[product]!
         switch product {
-        case "94":
+        case 94:
             switch map {
             case "DKenh":
-                UtilityColorPaletteGeneric.generate(product, "DKenh")
+                generate(product, "DKenh")
             case "COD":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             case "MENH":
-                UtilityColorPaletteGeneric.generate(product, "MENH")
+                generate(product, "MENH")
             case "GREEN":
-                UtilityColorPaletteGeneric.generate(product, "GREEN")
+                generate(product, "GREEN")
             case "AF":
-                UtilityColorPaletteGeneric.generate(product, "AF")
+                generate(product, "AF")
             case "EAK":
-                UtilityColorPaletteGeneric.generate(product, "EAK")
+                generate(product, "EAK")
             case "NWS":
-                UtilityColorPaletteGeneric.generate(product, "NWS")
+                generate(product, "NWS")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "99":
+        case 99:
             switch map {
             case "COD":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             case "AF":
-                UtilityColorPaletteGeneric.generate(product, "AF")
+                generate(product, "AF")
             case "EAK":
-                UtilityColorPaletteGeneric.generate(product, "EAK")
+                generate(product, "EAK")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "134":
+        case 134:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "135":
+        case 135:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "159":
+        case 159:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "161":
+        case 161:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "163":
+        case 163:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
-        case "172":
+        case 172:
             switch map {
             case "CODENH":
-                UtilityColorPaletteGeneric.generate(product, "CODENH")
+                generate(product, "CODENH")
             default:
-                UtilityColorPaletteGeneric.generate(product, map)
+                generate(product, map)
             }
         default:
             break

@@ -6,11 +6,11 @@
 
 final class UtilityColorPalette {
     
-    static func getColorMapStringFromDisk(_ product: String, _ code: String) -> String {
+    static func getColorMapStringFromDisk(_ product: Int, _ code: String) -> String {
         var cmFileInt = ""
         var text: String?
         switch product {
-        case "94":
+        case 94:
             switch code {
             case "DKenh":
                 cmFileInt = R.Raw.colormaprefdkenh
@@ -37,9 +37,9 @@ final class UtilityColorPalette {
             case "EAK":
                 cmFileInt = R.Raw.colormaprefeak
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "99":
+        case 99:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormapbvcod
@@ -50,70 +50,70 @@ final class UtilityColorPalette {
             case "EAK":
                 cmFileInt = R.Raw.colormapbveak
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "135":
+        case 135:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap135cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap135cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "161":
+        case 161:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap161cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap161cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "163":
+        case 163:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap163cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap163cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "159":
+        case 159:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap159cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap159cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "134":
+        case 134:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap134cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap134cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "165":
+        case 165:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap165cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap165cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
-        case "172":
+        case 172:
             switch code {
             case "COD":
                 cmFileInt = R.Raw.colormap172cod
             case "CODENH":
                 cmFileInt = R.Raw.colormap172cod
             default:
-                text = Utility.readPref("RADAR_COLOR_PAL_" + product + "_" + code, "")
+                text = Utility.readPref("RADAR_COLOR_PAL_" + String(product) + "_" + code, "")
             }
         default: break
         }

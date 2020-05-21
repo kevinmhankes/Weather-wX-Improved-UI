@@ -6,12 +6,12 @@
 
 final class UtilityColorPalette4bitGeneric {
 
-    static func generate(_ product: String) {
-        let radarColorPaletteCode = Int(product)!
+    static func generate(_ radarColorPaletteCode: Int) {
+        //let radarColorPaletteCode = Int(product)!
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.position = 0
-        UtilityIO.readTextFile("colormap" + product + ".txt").split("\n").forEach { line in
+        UtilityIO.readTextFile("colormap" + String(radarColorPaletteCode) + ".txt").split("\n").forEach { line in
             if line.contains(",") {
                 let colors = line.split(",")
                 let red = UInt8(colors[0])!

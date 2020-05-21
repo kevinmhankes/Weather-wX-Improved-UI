@@ -28,8 +28,8 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         RadarGeometry.initialize()
         GeographyType.regen()
         PolygonType.regen()
-        UtilityColorPaletteGeneric.loadColorMap("94")
-        UtilityColorPaletteGeneric.loadColorMap("99")
+        UtilityColorPaletteGeneric.loadColorMap(94)
+        UtilityColorPaletteGeneric.loadColorMap(99)
         super.doneClicked()
     }
     
