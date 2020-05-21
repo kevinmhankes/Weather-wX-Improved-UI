@@ -21,9 +21,11 @@
 // [FIX] does radar product chosen impact radar on main screen
 // [REF] use enum for model type
 // [FIX] MacOS nexrad county labels truncate second line
+// [FIX] MacOS nexrad colormap legend does not show text labels
 // [ADD] nexrad dual pane - tap on time go to quad
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
+// [REF] use Int instead of String for productCode in colorpal stuff
 
 56104 2020_05_20 [REF] misc
 // App Store Release

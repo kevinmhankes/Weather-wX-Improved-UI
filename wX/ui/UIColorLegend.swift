@@ -49,10 +49,17 @@ final class UIColorLegend: UIView {
         _ x: CGFloat,
         _ y: CGFloat
     ) {
+        print(x)
+        print(y)
         let textTransform = CGAffineTransform.init(scaleX: 1.0, y: -1.0)
         context.textMatrix = textTransform
         if let font = attributes![NSAttributedString.Key.font] as? UIFont {
             let attributedString = NSAttributedString(string: text as String, attributes: attributes)
+            
+            //let attributedString = NSMutableAttributedString(string: text as String, attributes: attributes)
+            //let range = (text as NSString).range(of: text as String)
+            //attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: range)
+            
             let textSize = text.size(withAttributes: attributes)
             let textPath = CGPath(
                 rect: CGRect(

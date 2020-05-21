@@ -11,8 +11,7 @@ final class UtilityColorPalette4bitGeneric {
         MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0
         MyApplication.colorMap[radarColorPaletteCode]!.blueValues.position = 0
-        let text = UtilityIO.readTextFile("colormap" + product + ".txt")
-        text.split("\n").forEach { line in
+        UtilityIO.readTextFile("colormap" + product + ".txt").split("\n").forEach { line in
             if line.contains(",") {
                 let colors = line.split(",")
                 let red = UInt8(colors[0])!

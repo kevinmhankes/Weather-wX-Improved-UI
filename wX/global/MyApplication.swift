@@ -29,6 +29,7 @@ final class MyApplication {
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"
     static let pre2Pattern = "<pre>(.*?)</pre>"
+    // TODO convert to Int
     static var radarColorPalette = [String: String]()
     static var homescreenFav = ""
     static let homescreenFavDefault = "TXT-CC2:TXT-HAZ:TXT-7DAY2:"

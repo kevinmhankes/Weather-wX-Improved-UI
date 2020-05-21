@@ -35,7 +35,7 @@ final class UtilityModelNcepInterface {
         "AFRICA",
         "NORTH-PAC",
         "EAST-PAC",
-        "WN-ATL",
+        "WEST-ATL",
         "ATLANTIC",
         "POLAR",
         "ALASKA",
