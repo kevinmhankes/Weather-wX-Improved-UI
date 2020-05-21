@@ -43,9 +43,9 @@ final class UtilityColorPalette165 {
     static func loadColorMap() {
         switch MyApplication.radarColorPalette[165]! {
         case "CODENH":
-            UtilityColorPalette165.generate("CODENH")
+            generate("CODENH")
         default:
-            UtilityColorPalette165.generate(MyApplication.radarColorPalette[165]!)
+            generate(MyApplication.radarColorPalette[165]!)
         }
     }
 }

@@ -23,19 +23,7 @@ final class ObjectColorPalette {
     
     func initialize() {
         switch colorMapCode {
-        case 19:
-            setupBuffers(16)
-            UtilityColorPalette4bitGeneric.generate(colorMapCode)
-        case 30:
-            setupBuffers(16)
-            UtilityColorPalette4bitGeneric.generate(colorMapCode)
-        case 41:
-            setupBuffers(16)
-            UtilityColorPalette4bitGeneric.generate(colorMapCode)
-        case 56:
-            setupBuffers(16)
-            UtilityColorPalette4bitGeneric.generate(colorMapCode)
-        case 78:
+        case 19, 30, 41, 56, 78:
             setupBuffers(16)
             UtilityColorPalette4bitGeneric.generate(colorMapCode)
         case 165:
