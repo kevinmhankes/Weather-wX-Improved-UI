@@ -7,74 +7,47 @@
 final class UtilityColorPaletteGeneric {
     
     static func generate(_ productCode: Int, _ code: String) {
-        let colorMapR: MemoryBuffer
-        let colorMapG: MemoryBuffer
-        let colorMapB: MemoryBuffer
         let scale: Int
         let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
+        let colorMapR = MyApplication.colorMap[productCode]!.redValues
+        let colorMapG = MyApplication.colorMap[productCode]!.greenValues
+        let colorMapB = MyApplication.colorMap[productCode]!.blueValues
         switch productCode {
         case 94:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 2
             lowerEnd = -32
         case 99:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = -127
         case 134:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 0.0
             prodScale = 3.64
         case 135:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
         case 159:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 128.0
             prodScale = 16.0
         case 161:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = -60.5
             prodScale = 300.0
         case 163:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
             prodOffset = 43.0
             prodScale = 20.0
         case 172:
-            colorMapR = MyApplication.colorMap[productCode]!.redValues
-            colorMapG = MyApplication.colorMap[productCode]!.greenValues
-            colorMapB = MyApplication.colorMap[productCode]!.blueValues
             scale = 1
             lowerEnd = 0
         default:
-            colorMapR = MemoryBuffer()
-            colorMapG = MemoryBuffer()
-            colorMapB = MemoryBuffer()
             scale = 2
             lowerEnd = -32
         }
