@@ -141,7 +141,7 @@ final class UtilityColorPaletteGeneric {
                         colorMapG.put(Color.green(colorInt))
                         colorMapB.put(Color.blue(colorInt))
                     } else if scale == 2 {
-                        let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2)-1)) / Double((diff * 2)))
+                        let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2) - 1)) / Double((diff * 2)))
                         let colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double((j * 2)) / Double((diff * 2)))
                         colorMapR.put(Color.red(colorInt))
                         colorMapG.put(Color.green(colorInt))
@@ -166,85 +166,6 @@ final class UtilityColorPaletteGeneric {
     
     static func loadColorMap(_ product: Int) {
         let map = MyApplication.radarColorPalette[product]!
-        switch product {
-        case 94:
-            switch map {
-            case "DKenh":
-                generate(product, "DKenh")
-            case "COD":
-                generate(product, "CODENH")
-            case "CODENH":
-                generate(product, "CODENH")
-            case "MENH":
-                generate(product, "MENH")
-            case "GREEN":
-                generate(product, "GREEN")
-            case "AF":
-                generate(product, "AF")
-            case "EAK":
-                generate(product, "EAK")
-            case "NWS":
-                generate(product, "NWS")
-            default:
-                generate(product, map)
-            }
-        case 99:
-            switch map {
-            case "COD":
-                generate(product, "CODENH")
-            case "CODENH":
-                generate(product, "CODENH")
-            case "AF":
-                generate(product, "AF")
-            case "EAK":
-                generate(product, "EAK")
-            default:
-                generate(product, map)
-            }
-        case 134:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        case 135:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        case 159:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        case 161:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        case 163:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        case 172:
-            switch map {
-            case "CODENH":
-                generate(product, "CODENH")
-            default:
-                generate(product, map)
-            }
-        default:
-            break
-        }
+        generate(product, map)
     }
 }
