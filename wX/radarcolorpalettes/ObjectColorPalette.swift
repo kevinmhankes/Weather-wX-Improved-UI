@@ -39,6 +39,12 @@ final class ObjectColorPalette {
         blueValues.put(blueByte)
     }
     
+    func putBytes(_ objectColorPaletteLine: ObjectColorPaletteLine) {
+        redValues.put(objectColorPaletteLine.red)
+        greenValues.put(objectColorPaletteLine.green)
+        blueValues.put(objectColorPaletteLine.blue)
+    }
+    
     // comma separated r,g,b (4bit)
     func putLine(_ line: String) {
         let colors = line.split(",")

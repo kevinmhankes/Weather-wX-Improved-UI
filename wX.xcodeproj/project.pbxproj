@@ -161,6 +161,7 @@
 		03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */; };
 		03C85B56240489C60046C8F4 /* ObjectMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C85B55240489C60046C8F4 /* ObjectMap.swift */; };
 		03C85B5824048F1E0046C8F4 /* OfficeTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */; };
+		03CAD0712479A01000153A6F /* ObjectColorPaletteLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CAD0702479A01000153A6F /* ObjectColorPaletteLine.swift */; };
 		03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */; };
 		03DD1FF61FEB3CE00012F5BB /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DD1FF51FEB3CE00012F5BB /* IconType.swift */; };
 		03DD5B1F2209061500828BF9 /* colormaprefnws.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03DD5B1E2209061500828BF9 /* colormaprefnws.txt */; };
@@ -555,6 +556,7 @@
 		03C4BA9321AE883E00C355BD /* WXMetalSurfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalSurfaceView.swift; sourceTree = "<group>"; };
 		03C85B55240489C60046C8F4 /* ObjectMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMap.swift; sourceTree = "<group>"; };
 		03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeTypeEnum.swift; sourceTree = "<group>"; };
+		03CAD0702479A01000153A6F /* ObjectColorPaletteLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectColorPaletteLine.swift; sourceTree = "<group>"; };
 		03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackView.swift; sourceTree = "<group>"; };
 		03DD1FF51FEB3CE00012F5BB /* IconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		03DD5B1E2209061500828BF9 /* colormaprefnws.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefnws.txt; sourceTree = "<group>"; };
@@ -940,11 +942,11 @@
 		F09504A91E152B3F008A966E /* radarcolorpalettes */ = {
 			isa = PBXGroup;
 			children = (
-				03A90D582341286A00641BEE /* colormap41.txt */,
-				03A90D562341286400641BEE /* colormap78.txt */,
 				03A90D51234125FB00641BEE /* colormap19.txt */,
 				03A90D50234125FB00641BEE /* colormap30.txt */,
+				03A90D582341286A00641BEE /* colormap41.txt */,
 				03A90D52234125FC00641BEE /* colormap56.txt */,
+				03A90D562341286400641BEE /* colormap78.txt */,
 				F06DB4241DA41546005B243A /* colormap134cod.txt */,
 				F06DB4251DA41546005B243A /* colormap135cod.txt */,
 				F06DB4261DA41546005B243A /* colormap159cod.txt */,
@@ -966,6 +968,7 @@
 				03DD5B1E2209061500828BF9 /* colormaprefnws.txt */,
 				F06DB4311DA41547005B243A /* colormaprefnwsd.txt */,
 				F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */,
+				03CAD0702479A01000153A6F /* ObjectColorPaletteLine.swift */,
 				F0B3356B1DA3FD6F0035BD36 /* UtilityColorPalette.swift */,
 				03A90D4E2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift */,
 				F0E0CC021EBEAAA900D5E9D4 /* UtilityColorPalette165.swift */,
@@ -1876,6 +1879,7 @@
 				03A328EC1FC8E84D00FFABCD /* UIwXViewController.swift in Sources */,
 				F05806751DB187FB009E2786 /* ImageScrollView.swift in Sources */,
 				F06B98D31E0EAD1800EFF7FC /* UtilityCanadaHourly.swift in Sources */,
+				03CAD0712479A01000153A6F /* ObjectColorPaletteLine.swift in Sources */,
 				F0B335AB1DA3FD960035BD36 /* UtilityImgAnim.swift in Sources */,
 				0340420223F16A4D003AB242 /* vcSettingsHomescreen.swift in Sources */,
 				03F3EB83229945D10056A56D /* UtilityModelGlcfsInterface.swift in Sources */,

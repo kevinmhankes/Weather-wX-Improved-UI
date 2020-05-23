@@ -50,10 +50,11 @@ final class UtilityColorPaletteGeneric {
             scale = 2
             lowerEnd = -32
         }
-        var dbzList = [Int]()
-        var redList = [UInt8]()
-        var greenList = [UInt8]()
-        var blueList = [UInt8]()
+        //var dbzList = [Int]()
+        //var redList = [UInt8]()
+        //var greenList = [UInt8]()
+        //var blueList = [UInt8]()
+        var objectColorPaletteLines = [ObjectColorPaletteLine]()
         var red = "0"
         var green = "0"
         var blue = "0"
@@ -63,20 +64,35 @@ final class UtilityColorPaletteGeneric {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
                 if items.count > 4 {
                     if priorLineHas6 {
-                        dbzList.append(Int(Double(items[1])! * prodScale + prodOffset - 1))
+                        /*dbzList.append(Int(Double(items[1])! * prodScale + prodOffset - 1))
                         redList.append(UInt8(Int(red)!))
                         greenList.append(UInt8(Int(green)!))
                         blueList.append(UInt8(Int(blue)!))
                         dbzList.append(Int(Double(items[1])! * prodScale + prodOffset))
                         redList.append(UInt8(items[2])!)
                         greenList.append(UInt8(items[3])!)
-                        blueList.append(UInt8(items[4])!)
+                        blueList.append(UInt8(items[4])!)*/
+                        
+                        //objectColorPaletteLines.append(ObjectColorPaletteLine((Int(Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1)), red, green, blue))
+
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(items){
+                            Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset - 1))
+                        })
+                        
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(items){
+                                                   Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
+                                               })
+                        
                         priorLineHas6 = false
                     } else {
-                        dbzList.append(Int(Double(items[1])! * prodScale + prodOffset))
+                        /*dbzList.append(Int(Double(items[1])! * prodScale + prodOffset))
                         redList.append(UInt8(items[2])!)
                         greenList.append(UInt8(items[3])!)
-                        blueList.append(UInt8(items[4])!)
+                        blueList.append(UInt8(items[4])!)*/
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(items){
+                            Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
+                        })
+                        
                     }
                     if items.count > 7 {
                         priorLineHas6 = true
@@ -88,25 +104,25 @@ final class UtilityColorPaletteGeneric {
             }
         }
         if productCode == 161 {
-            (0..<10).forEach { _ in objectColorPalette.putBytes(redList[0], greenList[0], blueList[0]) }
+            (0..<10).forEach { _ in objectColorPalette.putBytes(objectColorPaletteLines[0]) }
         }
         if productCode == 99 || productCode == 135 {
-            objectColorPalette.putBytes(redList[0], greenList[0], blueList[0])
-            objectColorPalette.putBytes(redList[0], greenList[0], blueList[0])
+            objectColorPalette.putBytes(objectColorPaletteLines[0])
+            objectColorPalette.putBytes(objectColorPaletteLines[0])
         }
-        (lowerEnd..<dbzList[0]).forEach { _ in
-            objectColorPalette.putBytes(redList[0], greenList[0], blueList[0])
-            if scale == 2 { objectColorPalette.putBytes(redList[0], greenList[0], blueList[0]) }
+        (lowerEnd..<objectColorPaletteLines[0].dbz).forEach { _ in
+            objectColorPalette.putBytes(objectColorPaletteLines[0])
+            if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[0]) }
         }
-        dbzList.indices.forEach { index in
-            if index < (dbzList.count - 1) {
-                let low = dbzList[index]
-                let lowColor = Color.rgb(redList[index], greenList[index], blueList[index])
-                let high = dbzList[index + 1]
-                let highColor = Color.rgb(redList[index + 1], greenList[index + 1], blueList[index + 1])
+        objectColorPaletteLines.indices.forEach { index in
+            if index < (objectColorPaletteLines.count - 1) {
+                let low = objectColorPaletteLines[index].dbz
+                let lowColor = objectColorPaletteLines[index].asInt
+                let high = objectColorPaletteLines[index + 1].dbz
+                let highColor = objectColorPaletteLines[index + 1].asInt
                 var diff = high - low
-                objectColorPalette.putBytes(redList[index], greenList[index], blueList[index])
-                if scale == 2 { objectColorPalette.putBytes(redList[index], greenList[index], blueList[index]) }
+                objectColorPalette.putBytes(objectColorPaletteLines[index])
+                if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[index]) }
                 if diff == 0 { diff = 1 }
                 (1..<diff).forEach { j in
                     if scale == 1 {
@@ -120,8 +136,8 @@ final class UtilityColorPaletteGeneric {
                     }
                 }
             } else {
-                objectColorPalette.putBytes(redList[index], greenList[index], blueList[index])
-                if scale == 2 { objectColorPalette.putBytes(redList[index], greenList[index], blueList[index]) }
+                objectColorPalette.putBytes(objectColorPaletteLines[index])
+                if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[index]) }
             }
         }
     }
