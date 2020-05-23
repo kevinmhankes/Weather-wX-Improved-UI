@@ -21,6 +21,30 @@ final class ObjectColorPalette {
         blueValues = MemoryBuffer(size)
     }
     
+    func position(_ index: Int) {
+        redValues.position = index
+        blueValues.position = index
+        greenValues.position = index
+    }
+    
+    func putInt(_ colorAsInt: Int) {
+        redValues.put(Color.red(colorAsInt))
+        greenValues.put(Color.green(colorAsInt))
+        blueValues.put(Color.blue(colorAsInt))
+    }
+    
+    func putBytes(_ redByte: UInt8, _ greenByte: UInt8, _ blueByte: UInt8) {
+        redValues.put(redByte)
+        greenValues.put(greenByte)
+        blueValues.put(blueByte)
+    }
+    
+    // comma separated r,g,b (4bit)
+    //func putLine(_ line: String) {
+    //    let colors = line.split(",")
+    //    putBytes(colors[0].toInt().toByte(), colors[1].toInt().toByte(), colors[2].toInt().toByte())
+    //}
+    
     func initialize() {
         switch colorMapCode {
         case 19, 30, 41, 56, 78:

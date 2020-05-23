@@ -33,19 +33,22 @@ final class UtilityColorPalette165 {
             MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[index])
             MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[index])
             (1..<diff).forEach { _ in
-                MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(Color.red(lowColor))
-                MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(Color.green(lowColor))
-                MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(Color.blue(lowColor))
+                MyApplication.colorMap[radarColorPaletteCode]!.putInt(lowColor)
+                //MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(Color.red(lowColor))
+                //MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(Color.green(lowColor))
+                //MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(Color.blue(lowColor))
             }
         }
     }
     
     static func loadColorMap() {
-        switch MyApplication.radarColorPalette[165]! {
-        case "CODENH":
-            generate("CODENH")
-        default:
-            generate(MyApplication.radarColorPalette[165]!)
-        }
+        generate(MyApplication.radarColorPalette[165]!)
+        // TODO replace with one line
+        //switch MyApplication.radarColorPalette[165]! {
+        //case "CODENH":
+        //    generate("CODENH")
+        //default:
+        //    generate(MyApplication.radarColorPalette[165]!)
+        //}
     }
 }
