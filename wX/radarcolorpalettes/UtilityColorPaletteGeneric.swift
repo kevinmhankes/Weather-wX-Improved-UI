@@ -12,9 +12,7 @@ final class UtilityColorPaletteGeneric {
         var prodOffset = 0.0
         var prodScale = 1.0
         let objColormap = MyApplication.colorMap[productCode]!
-        let colorMapR = MyApplication.colorMap[productCode]!.redValues
-        let colorMapG = MyApplication.colorMap[productCode]!.greenValues
-        let colorMapB = MyApplication.colorMap[productCode]!.blueValues
+        objColormap.position(0)
         switch productCode {
         case 94:
             scale = 2
@@ -52,15 +50,11 @@ final class UtilityColorPaletteGeneric {
             scale = 2
             lowerEnd = -32
         }
-        colorMapR.position = 0
-        colorMapG.position = 0
-        colorMapB.position = 0
         var dbzAl = [Int]()
         var rAl = [UInt8]()
         var gAl = [UInt8]()
         var bAl = [UInt8]()
         let text = UtilityColorPalette.getColorMapStringFromDisk(productCode, code)
-        // TODO why are these used
         var red = "0"
         var green = "0"
         var blue = "0"
@@ -95,29 +89,15 @@ final class UtilityColorPaletteGeneric {
             }
         }
         if productCode == 161 {
-            (0..<10).forEach { _ in
-                colorMapR.put(rAl[0])
-                colorMapG.put(gAl[0])
-                colorMapB.put(bAl[0])
-            }
+            (0..<10).forEach { _ in objColormap.putBytes(rAl[0], gAl[0], bAl[0]) }
         }
         if productCode == 99 || productCode == 135 {
-            colorMapR.put(rAl[0])
-            colorMapG.put(gAl[0])
-            colorMapB.put(bAl[0])
-            colorMapR.put(rAl[0])
-            colorMapG.put(gAl[0])
-            colorMapB.put(bAl[0])
+            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
+            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
         }
         (lowerEnd..<dbzAl[0]).forEach { _ in
-            colorMapR.put(rAl[0])
-            colorMapG.put(gAl[0])
-            colorMapB.put(bAl[0])
-            if scale == 2 {
-                colorMapR.put(rAl[0])
-                colorMapG.put(gAl[0])
-                colorMapB.put(bAl[0])
-            }
+            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
+            if scale == 2 { objColormap.putBytes(rAl[0], gAl[0], bAl[0]) }
         }
         dbzAl.indices.forEach { index in
             if index < (dbzAl.count - 1) {
