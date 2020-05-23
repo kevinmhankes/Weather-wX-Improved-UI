@@ -73,13 +73,17 @@ final class UtilityColorPaletteGeneric {
                         greenList.append(UInt8(items[3])!)
                         blueList.append(UInt8(items[4])!)*/
                         
-                        //objectColorPaletteLines.append(ObjectColorPaletteLine((Int(Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1)), red, green, blue))
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(
+                            Int(  (Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1  ),
+                            red,
+                            green,
+                            blue))
 
-                        objectColorPaletteLines.append(ObjectColorPaletteLine(items){
-                            Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset - 1))
-                        })
+                        //objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
+                        //    Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset - 1))
+                        //})
                         
-                        objectColorPaletteLines.append(ObjectColorPaletteLine(items){
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
                                                    Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
                                                })
                         
