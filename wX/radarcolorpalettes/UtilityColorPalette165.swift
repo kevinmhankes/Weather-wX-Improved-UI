@@ -8,9 +8,9 @@ final class UtilityColorPalette165 {
     
     static func generate(_ code: String) {
         let radarColorPaletteCode = 165
-        MyApplication.colorMap[radarColorPaletteCode]!.redValues.position = 0
-        MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0
-        MyApplication.colorMap[radarColorPaletteCode]!.blueValues.position = 0
+        MyApplication.colorMap[radarColorPaletteCode]!.position(0)
+        //MyApplication.colorMap[radarColorPaletteCode]!.greenValues.position = 0
+        //MyApplication.colorMap[radarColorPaletteCode]!.blueValues.position = 0
         var dbzAl = [Int]()
         var rAl = [UInt8]()
         var gAl = [UInt8]()
@@ -29,9 +29,10 @@ final class UtilityColorPalette165 {
         let diff = 10
         dbzAl.indices.forEach { index in
             let lowColor = Color.rgb(rAl[index], gAl[index], bAl[index])
-            MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(rAl[index])
-            MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[index])
-            MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[index])
+            //MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(rAl[index])
+            //MyApplication.colorMap[radarColorPaletteCode]!.greenValues.put(gAl[index])
+            //MyApplication.colorMap[radarColorPaletteCode]!.blueValues.put(bAl[index])
+            MyApplication.colorMap[radarColorPaletteCode]!.putBytes(rAl[index], gAl[index], bAl[index])
             (1..<diff).forEach { _ in
                 MyApplication.colorMap[radarColorPaletteCode]!.putInt(lowColor)
                 //MyApplication.colorMap[radarColorPaletteCode]!.redValues.put(Color.red(lowColor))
