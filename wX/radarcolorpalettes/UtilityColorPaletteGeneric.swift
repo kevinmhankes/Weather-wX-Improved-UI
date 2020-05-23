@@ -11,8 +11,8 @@ final class UtilityColorPaletteGeneric {
         let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
-        let objColormap = MyApplication.colorMap[productCode]!
-        objColormap.position(0)
+        let objectColorPalette = MyApplication.colorMap[productCode]!
+        objectColorPalette.position(0)
         switch productCode {
         case 94:
             scale = 2
@@ -89,15 +89,15 @@ final class UtilityColorPaletteGeneric {
             }
         }
         if productCode == 161 {
-            (0..<10).forEach { _ in objColormap.putBytes(rAl[0], gAl[0], bAl[0]) }
+            (0..<10).forEach { _ in objectColorPalette.putBytes(rAl[0], gAl[0], bAl[0]) }
         }
         if productCode == 99 || productCode == 135 {
-            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
-            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
+            objectColorPalette.putBytes(rAl[0], gAl[0], bAl[0])
+            objectColorPalette.putBytes(rAl[0], gAl[0], bAl[0])
         }
         (lowerEnd..<dbzAl[0]).forEach { _ in
-            objColormap.putBytes(rAl[0], gAl[0], bAl[0])
-            if scale == 2 { objColormap.putBytes(rAl[0], gAl[0], bAl[0]) }
+            objectColorPalette.putBytes(rAl[0], gAl[0], bAl[0])
+            if scale == 2 { objectColorPalette.putBytes(rAl[0], gAl[0], bAl[0]) }
         }
         dbzAl.indices.forEach { index in
             if index < (dbzAl.count - 1) {
@@ -106,24 +106,24 @@ final class UtilityColorPaletteGeneric {
                 let high = dbzAl[index + 1]
                 let highColor = Color.rgb(rAl[index + 1], gAl[index + 1], bAl[index + 1])
                 var diff = high - low
-                objColormap.putBytes(rAl[index], gAl[index], bAl[index])
-                if scale == 2 { objColormap.putBytes(rAl[index], gAl[index], bAl[index]) }
+                objectColorPalette.putBytes(rAl[index], gAl[index], bAl[index])
+                if scale == 2 { objectColorPalette.putBytes(rAl[index], gAl[index], bAl[index]) }
                 if diff == 0 { diff = 1 }
                 (1..<diff).forEach { j in
                     if scale == 1 {
                         let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))
-                        objColormap.putInt(colorInt)
+                        objectColorPalette.putInt(colorInt)
                     } else if scale == 2 {
                         let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2) - 1)) / Double((diff * 2)))
                         let colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double((j * 2)) / Double((diff * 2)))
-                        objColormap.putInt(colorInt)
-                        objColormap.putInt(colorInt2)
+                        objectColorPalette.putInt(colorInt)
+                        objectColorPalette.putInt(colorInt2)
                     }
                 }
             } else {
-                objColormap.putBytes(rAl[index], gAl[index], bAl[index])
+                objectColorPalette.putBytes(rAl[index], gAl[index], bAl[index])
                 if scale == 2 {
-                    objColormap.putBytes(rAl[index], gAl[index], bAl[index])
+                    objectColorPalette.putBytes(rAl[index], gAl[index], bAl[index])
                 }
             }
         }
