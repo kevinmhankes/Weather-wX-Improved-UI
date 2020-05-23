@@ -40,10 +40,10 @@ final class ObjectColorPalette {
     }
     
     // comma separated r,g,b (4bit)
-    //func putLine(_ line: String) {
-    //    let colors = line.split(",")
-    //    putBytes(colors[0].toInt().toByte(), colors[1].toInt().toByte(), colors[2].toInt().toByte())
-    //}
+    func putLine(_ line: String) {
+        let colors = line.split(",")
+        putBytes(UInt8(colors[0])!, UInt8(colors[1])!, UInt8(colors[2])!)
+    }
     
     func initialize() {
         switch colorMapCode {

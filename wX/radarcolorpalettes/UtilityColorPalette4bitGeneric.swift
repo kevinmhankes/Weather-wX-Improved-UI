@@ -9,13 +9,7 @@ final class UtilityColorPalette4bitGeneric {
     static func generate(_ product: Int) {
         MyApplication.colorMap[product]!.position(0)
         UtilityIO.readTextFile("colormap" + String(product) + ".txt").split("\n").forEach { line in
-            if line.contains(",") {
-                let colors = line.split(",")
-                let red = UInt8(colors[0])!
-                let green = UInt8(colors[1])!
-                let blue = UInt8(colors[2])!
-                MyApplication.colorMap[product]!.putBytes(red, green, blue)
-            }
+            if line.contains(",") { MyApplication.colorMap[product]!.putLine(line) }
         }
     }
 }
