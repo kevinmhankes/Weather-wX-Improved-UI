@@ -54,12 +54,11 @@ final class UtilityColorPaletteGeneric {
         var redList = [UInt8]()
         var greenList = [UInt8]()
         var blueList = [UInt8]()
-        let text = UtilityColorPalette.getColorMapStringFromDisk(productCode, code)
         var red = "0"
         var green = "0"
         var blue = "0"
         var priorLineHas6 = false
-        text.split("\n").forEach { line in
+        UtilityColorPalette.getColorMapStringFromDisk(productCode, code).split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
                 if items.count > 4 {
@@ -122,9 +121,7 @@ final class UtilityColorPaletteGeneric {
                 }
             } else {
                 objectColorPalette.putBytes(redList[index], greenList[index], blueList[index])
-                if scale == 2 {
-                    objectColorPalette.putBytes(redList[index], greenList[index], blueList[index])
-                }
+                if scale == 2 { objectColorPalette.putBytes(redList[index], greenList[index], blueList[index]) }
             }
         }
     }
