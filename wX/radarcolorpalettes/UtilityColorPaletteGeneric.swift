@@ -130,7 +130,6 @@ final class UtilityColorPaletteGeneric {
     }
     
     static func loadColorMap(_ product: Int) {
-        let map = MyApplication.radarColorPalette[product]!
-        generate(product, map)
+        generate(product, MyApplication.radarColorPalette[product]!)
     }
 }
