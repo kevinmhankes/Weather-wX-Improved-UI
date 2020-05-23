@@ -11,6 +11,7 @@ final class UtilityColorPaletteGeneric {
         let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
+        let objColormap = MyApplication.colorMap[productCode]!
         let colorMapR = MyApplication.colorMap[productCode]!.redValues
         let colorMapG = MyApplication.colorMap[productCode]!.greenValues
         let colorMapB = MyApplication.colorMap[productCode]!.blueValues
@@ -125,40 +126,24 @@ final class UtilityColorPaletteGeneric {
                 let high = dbzAl[index + 1]
                 let highColor = Color.rgb(rAl[index + 1], gAl[index + 1], bAl[index + 1])
                 var diff = high - low
-                colorMapR.put(rAl[index])
-                colorMapG.put(gAl[index])
-                colorMapB.put(bAl[index])
-                if scale == 2 {
-                    colorMapR.put(rAl[index])
-                    colorMapG.put(gAl[index])
-                    colorMapB.put(bAl[index])
-                }
-                if diff == 0 { diff = 1 } // TODO why is this needed?
+                objColormap.putBytes(rAl[index], gAl[index], bAl[index])
+                if scale == 2 { objColormap.putBytes(rAl[index], gAl[index], bAl[index]) }
+                if diff == 0 { diff = 1 }
                 (1..<diff).forEach { j in
                     if scale == 1 {
                         let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))
-                        colorMapR.put(Color.red(colorInt))
-                        colorMapG.put(Color.green(colorInt))
-                        colorMapB.put(Color.blue(colorInt))
+                        objColormap.putInt(colorInt)
                     } else if scale == 2 {
                         let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(((j * 2) - 1)) / Double((diff * 2)))
                         let colorInt2 = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double((j * 2)) / Double((diff * 2)))
-                        colorMapR.put(Color.red(colorInt))
-                        colorMapG.put(Color.green(colorInt))
-                        colorMapB.put(Color.blue(colorInt))
-                        colorMapR.put(Color.red(colorInt2))
-                        colorMapG.put(Color.green(colorInt2))
-                        colorMapB.put(Color.blue(colorInt2))
+                        objColormap.putInt(colorInt)
+                        objColormap.putInt(colorInt2)
                     }
                 }
             } else {
-                colorMapR.put(rAl[index])
-                colorMapG.put(gAl[index])
-                colorMapB.put(bAl[index])
+                objColormap.putBytes(rAl[index], gAl[index], bAl[index])
                 if scale == 2 {
-                    colorMapR.put(rAl[index])
-                    colorMapG.put(gAl[index])
-                    colorMapB.put(bAl[index])
+                    objColormap.putBytes(rAl[index], gAl[index], bAl[index])
                 }
             }
         }
