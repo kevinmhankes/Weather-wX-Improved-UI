@@ -270,10 +270,17 @@ final class Route {
         uiv.goToVC(vcWpcImg())
     }
     
-    static func wpcImageFromHomeScreen(_ uiv: UIViewController, _ homeScreenToken: String) {
+    static func wpcImageFromHomeScreen(_ uiv: UIViewController, _ token: String) {
         let vc = vcWpcImg()
-        vc.wpcImagesToken = homeScreenToken
+        vc.wpcImagesToken = token
         vc.wpcImagesFromHomeScreen = true
+        uiv.goToVC(vc)
+    }
+    
+    static func spcMesoFromHomeScreen(_ uiv: UIViewController, _ token: String) {
+        let vc = vcSpcMeso()
+        vc.spcMesoToken = token
+        vc.spcMesoFromHomeScreen = true
         uiv.goToVC(vc)
     }
 }

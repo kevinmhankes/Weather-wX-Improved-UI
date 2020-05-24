@@ -48,17 +48,17 @@ final class UtilityHomeScreen {
         case "SND":
             Route.soundings(uiv)
         case "SPCMESO_500":
-            goToSpcMesoFromHS(uiv, "500mb")
+            Route.spcMesoFromHomeScreen(uiv, "500mb")
         case "SPCMESO_MSLP":
-            goToSpcMesoFromHS(uiv, "pmsl")
+            Route.spcMesoFromHomeScreen(uiv, "pmsl")
         case "SPCMESO_TTD":
-            goToSpcMesoFromHS(uiv, "ttd")
+            Route.spcMesoFromHomeScreen(uiv, "ttd")
         case "SPCMESO_LLLR":
-            goToSpcMesoFromHS(uiv, "lllr")
+            Route.spcMesoFromHomeScreen(uiv, "lllr")
         case "SPCMESO_LAPS":
-            goToSpcMesoFromHS(uiv, "laps")
+            Route.spcMesoFromHomeScreen(uiv, "laps")
         case "SPCMESO_RGNLRAD":
-            goToSpcMesoFromHS(uiv, "rgnlrad")
+            Route.spcMesoFromHomeScreen(uiv, "rgnlrad")
         case "RAD_2KM":
             Route.radarMosaic(uiv)
         case "GOES16":
@@ -68,10 +68,10 @@ final class UtilityHomeScreen {
         }
     }
 
-    static func goToSpcMesoFromHS(_ uiv: UIViewController, _ token: String) {
+    /*static func goToSpcMesoFromHS(_ uiv: UIViewController, _ token: String) {
         let vc = vcSpcMeso()
         vc.spcMesoToken = token
         vc.spcMesoFromHomeScreen = true
         uiv.goToVC(vc)
-    }
+    }*/
 }
