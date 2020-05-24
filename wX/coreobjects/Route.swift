@@ -159,9 +159,9 @@ final class Route {
     
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
-            Route.radarCanada(uiv)
+            radarCanada(uiv)
         } else {
-            if UIPreferences.dualpaneRadarIcon { Route.radar(uiv, "2") } else { Route.radar(uiv, "1") }
+            if UIPreferences.dualpaneRadarIcon { radar(uiv, "2") } else { radar(uiv, "1") }
         }
     }
     
