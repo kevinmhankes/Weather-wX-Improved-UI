@@ -116,9 +116,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)
+        //let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        //edgePan.edges = .left
+        //view.addGestureRecognizer(edgePan)
         self.view.backgroundColor = UIColor.black
         numberOfPanes = Int(wxoglPaneCount) ?? 1
         paneRange = 0..<numberOfPanes
@@ -268,9 +268,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 { self.view.bringSubviewToFront(toolbarTop) }
     }
     
-    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized { doneClicked() }
-    }
+    //@objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    //    if recognizer.state == .recognized { doneClicked() }
+    //}
     
     @objc func onPause() {
         //print("viewWillDisappear")
