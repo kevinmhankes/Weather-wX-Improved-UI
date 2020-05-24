@@ -108,7 +108,7 @@ final class Route {
         vc.watchMcdMpdType = type
         uiv.goToVC(vc)
     }
-
+    
     static func locationAdd(_ uiv: UIViewController) {
         let vc = vcSettingsLocationEdit()
         vc.settingsLocationEditNum = "0"
@@ -212,5 +212,13 @@ final class Route {
         let vc = vcModels()
         vc.modelActivitySelected = model
         uiv.goToVC(vc)
+    }
+    
+    static func severeDashboard(_ uiv: UIViewController) {
+        if Location.isUS { uiv.goToVC(vcSevereDashboard()) } else { uiv.goToVC(vcCanadaWarnings()) }
+    }
+    
+    static func cloud(_ uiv: UIViewController) {
+        if Location.isUS { vis(uiv) } else { visCanada(uiv) }
     }
 }

@@ -192,7 +192,7 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func cloudClicked() {
-        UtilityActions.cloudClicked(uiv!)
+        Route.cloud(uiv!)
     }
     
     @objc func radarClicked() {
@@ -208,7 +208,7 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func dashClicked() {
-        UtilityActions.severeDashboardClicked(uiv!)
+        Route.severeDashboard(uiv!)
     }
     
     var iconsSpc = [

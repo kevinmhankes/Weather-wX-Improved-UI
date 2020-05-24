@@ -267,7 +267,7 @@ final class vcTabLocation: vcTabParent {
     }
     
     override func cloudClicked() {
-        UtilityActions.cloudClicked(self)
+        Route.cloud(self)
     }
     
     override func radarClicked() {
@@ -283,7 +283,7 @@ final class vcTabLocation: vcTabParent {
     }
     
     override func dashClicked() {
-        UtilityActions.severeDashboardClicked(self)
+        Route.severeDashboard(self)
     }
     
     @objc override func willEnterForeground() {

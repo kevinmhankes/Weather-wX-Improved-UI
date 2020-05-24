@@ -427,7 +427,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     @objc func warningClicked() {
-        UtilityActions.severeDashboardClicked(self)
+        Route.severeDashboard(self)
     }
     
     func productChanged(_ index: Int, _ product: String) {

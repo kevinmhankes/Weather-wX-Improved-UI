@@ -7,11 +7,7 @@
 import UIKit
 
 final class UtilityActions {
-    
-    static func cloudClicked(_ uiv: UIViewController) {
-        if Location.isUS { Route.vis(uiv) } else { Route.visCanada(uiv) }
-    }
-    
+
     static func radarClicked(_ uiv: UIViewController) {
         if !Location.isUS {
             Route.radarCanada(uiv)
@@ -22,10 +18,6 @@ final class UtilityActions {
     
     static func wfotextClicked(_ uiv: UIViewController) {
         if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
-    }
-    
-    static func severeDashboardClicked(_ uiv: UIViewController) {
-        if Location.isUS { uiv.goToVC(vcSevereDashboard()) } else { uiv.goToVC(vcCanadaWarnings()) }
     }
     
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
