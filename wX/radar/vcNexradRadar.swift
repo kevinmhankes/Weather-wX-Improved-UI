@@ -48,7 +48,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     var wxoglCalledFromTimeButton = false
     var radarSiteOverride = ""
     private let map = ObjectMap(.RADAR)
-    var warningCount = 0
+    private var warningCount = 0
     // below var is override in severe dash and us alerts as preferences should not be saved
     var savePreferences = true
     
@@ -78,23 +78,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if numberOfPanes == 4 { surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight / 2.0) }
         let bottom = -1.0 * ortInt * (1.0 / surfaceRatio)
         let top = ortInt * (1 / surfaceRatio)
-        projectionMatrix = float4x4.makeOrtho(
-            -1.0 * ortInt,
-            right: ortInt,
-            bottom: bottom,
-            top: top,
-            nearZ: -100.0,
-            farZ: 100.0
-        )
+        projectionMatrix = float4x4.makeOrtho(-1.0 * ortInt, right: ortInt, bottom: bottom, top: top, nearZ: -100.0, farZ: 100.0)
         let halfWidth: CGFloat = screenWidth / 2
         let halfHeight: CGFloat = screenHeight / 2
         if numberOfPanes == 1 {
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: width,
-                height: height
-            )
+            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: width, height: height)
         } else if numberOfPanes == 2 {
             if UtilityUI.isLandscape() || screenWidth > screenHeight {
                 surfaceRatio = Float(screenWidth / 2.0) / Float(screenHeight)
@@ -108,61 +96,21 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                     farZ: 100.0
                 )
                 // left half for dual
-                metalLayer[0]!.frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: screenWidth / 2.0,
-                    height: height
-                )
+                metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: screenWidth / 2.0, height: height)
                 // right half for dual
-                metalLayer[1]!.frame = CGRect(
-                    x: halfWidth,
-                    y: 0,
-                    width: screenWidth / 2.0,
-                    height: height
-                )
+                metalLayer[1]!.frame = CGRect(x: halfWidth, y: 0, width: screenWidth / 2.0, height: height)
             } else {
-                metalLayer[0]!.frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: screenWidth,
-                    height: halfHeight
-                )
+                metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: screenWidth, height: halfHeight)
                 // bottom half for dual
-                metalLayer[1]!.frame = CGRect(
-                    x: 0,
-                    y: halfHeight,
-                    width: screenWidth,
-                    height: halfHeight
-                )
+                metalLayer[1]!.frame = CGRect(x: 0, y: halfHeight, width: screenWidth, height: halfHeight)
             }
         } else if numberOfPanes == 4 {
             // top half for quad
-            metalLayer[0]!.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: halfWidth,
-                height: halfHeight
-            )
-            metalLayer[1]!.frame = CGRect(
-                x: CGFloat(halfWidth),
-                y: 0,
-                width: halfWidth,
-                height: halfHeight
-            )
+            metalLayer[0]!.frame = CGRect(x: 0, y: 0, width: halfWidth, height: halfHeight)
+            metalLayer[1]!.frame = CGRect(x: CGFloat(halfWidth), y: 0, width: halfWidth, height: halfHeight)
             // bottom half for quad
-            metalLayer[2]!.frame = CGRect(
-                x: 0,
-                y: halfHeight,
-                width: halfWidth,
-                height: halfHeight
-            )
-            metalLayer[3]!.frame = CGRect(
-                x: halfWidth,
-                y: halfHeight,
-                width: halfWidth,
-                height: halfHeight
-            )
+            metalLayer[2]!.frame = CGRect(x: 0, y: halfHeight, width: halfWidth, height: halfHeight)
+            metalLayer[3]!.frame = CGRect(x: halfWidth, y: halfHeight, width: halfWidth, height: halfHeight)
         }
     }
     
