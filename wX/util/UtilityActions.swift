@@ -8,18 +8,6 @@ import UIKit
 
 final class UtilityActions {
 
-    static func radarClicked(_ uiv: UIViewController) {
-        if !Location.isUS {
-            Route.radarCanada(uiv)
-        } else {
-            if UIPreferences.dualpaneRadarIcon { Route.radar(uiv, "2") } else { Route.radar(uiv, "1") }
-        }
-    }
-    
-    static func wfotextClicked(_ uiv: UIViewController) {
-        if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
-    }
-    
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
         switch menuItem {
         case "Soundings":

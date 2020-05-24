@@ -157,6 +157,14 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func radarClicked(_ uiv: UIViewController) {
+        if !Location.isUS {
+            Route.radarCanada(uiv)
+        } else {
+            if UIPreferences.dualpaneRadarIcon { Route.radar(uiv, "2") } else { Route.radar(uiv, "1") }
+        }
+    }
+    
     static func radar(_ uiv: UIViewController, _ paneString: String) {
         let vc = vcNexradRadar()
         vc.wxoglPaneCount = paneString
@@ -220,5 +228,9 @@ final class Route {
     
     static func cloud(_ uiv: UIViewController) {
         if Location.isUS { vis(uiv) } else { visCanada(uiv) }
+    }
+    
+    static func wfoText(_ uiv: UIViewController) {
+        if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
     }
 }

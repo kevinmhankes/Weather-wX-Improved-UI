@@ -271,11 +271,11 @@ final class vcTabLocation: vcTabParent {
     }
     
     override func radarClicked() {
-        UtilityActions.radarClicked(self)
+        Route.radarClicked(self)
     }
     
     override func wfotextClicked() {
-        UtilityActions.wfotextClicked(self)
+        Route.wfoText(self)
     }
     
     override func menuClicked() {
@@ -355,7 +355,7 @@ final class vcTabLocation: vcTabParent {
             alert.addAction(UIAlertAction(
                 title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
                 style: .default,
-                handler: {_ in UtilityActions.radarClicked(self)})
+                handler: {_ in Route.radarClicked(self)})
             )
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))

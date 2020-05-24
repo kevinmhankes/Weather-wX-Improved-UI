@@ -196,11 +196,11 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func radarClicked() {
-        UtilityActions.radarClicked(uiv!)
+        Route.radarClicked(uiv!)
     }
     
     @objc func wfotextClicked() {
-        UtilityActions.wfotextClicked(uiv!)
+        Route.wfoText(uiv!)
     }
     
     @objc func menuClicked() {
