@@ -322,21 +322,21 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
      }*/
     
     func setupGestures() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
-        let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
-        gestureRecognizer.numberOfTapsRequired = 1
-        gestureRecognizer.delegate = self
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
-        gestureRecognizer2.numberOfTapsRequired = 2
-        gestureRecognizer2.delegate = self
-        self.view.addGestureRecognizer(pan)
-        self.view.addGestureRecognizer(gestureZoomVar)
-        self.view.addGestureRecognizer(gestureRecognizer)
-        self.view.addGestureRecognizer(gestureRecognizer2)
-        gestureRecognizer.require(toFail: gestureRecognizer2)
-        gestureRecognizer.delaysTouchesBegan = true
-        gestureRecognizer2.delaysTouchesBegan = true
+        //let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
+        //let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
+        let gestureRecognizerSingleTap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
+        gestureRecognizerSingleTap.numberOfTapsRequired = 1
+        gestureRecognizerSingleTap.delegate = self
+        let gestureRecognizerDoubleTap = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
+        gestureRecognizerDoubleTap.numberOfTapsRequired = 2
+        gestureRecognizerDoubleTap.delegate = self
+        self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(gesturePan)))
+        self.view.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom)))
+        self.view.addGestureRecognizer(gestureRecognizerSingleTap)
+        self.view.addGestureRecognizer(gestureRecognizerDoubleTap)
+        gestureRecognizerSingleTap.require(toFail: gestureRecognizerDoubleTap)
+        gestureRecognizerSingleTap.delaysTouchesBegan = true
+        gestureRecognizerDoubleTap.delaysTouchesBegan = true
         self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
     }
     
