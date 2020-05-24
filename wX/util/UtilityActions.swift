@@ -17,7 +17,7 @@ final class UtilityActions {
         case "Settings":
             uiv.goToVC(vcSettingsMain())
         case "Observations":
-            uiv.goToVC(vcObservations())
+            Route.observations(uiv)
         case "PlayList":
             uiv.goToVC(vcPlayList())
         case "Radar Mosaic":

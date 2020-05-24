@@ -249,4 +249,12 @@ final class Route {
     static func soundings(_ uiv: UIViewController) {
         uiv.goToVC(vcSoundings())
     }
+    
+    static func observations(_ uiv: UIViewController) {
+        if !Location.isUS {
+            Route.imageViewer(uiv, "http://weather.gc.ca/data/wxoimages/wocanmap0_e.jpg")
+        } else {
+            uiv.goToVC(vcObservations())
+        }
+    }
 }

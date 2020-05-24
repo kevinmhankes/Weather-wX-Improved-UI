@@ -28,6 +28,7 @@
 
 56104 2020_05_24 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
+		 [ADD] Canadian observations image
 		 [FIX] in SPC SWO summary must have tablet in landscape to show 4 images across, shows 2 now
 // App Store Release
 56103 2020_05_20 [REF] misc
