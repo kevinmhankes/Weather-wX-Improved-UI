@@ -31,10 +31,10 @@ final class UtilityActions {
         }
     }
     
-    static func goToVc(_ uiv: UIViewController, _ target: UIViewController) {
-        target.modalPresentationStyle = .fullScreen
-        uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
-    }
+    //static func goToVc(_ uiv: UIViewController, _ target: UIViewController) {
+    //    target.modalPresentationStyle = .fullScreen
+    //    uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
+    //}
     
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch

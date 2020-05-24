@@ -122,7 +122,7 @@ final class ObjectTileMatrix: NSObject {
         case "wat":
             Route.spcMcdWatchSummary(uiv!, .WATCH)
         case "meso":
-            uiv!.goToVC(vcSpcMeso())
+            Route.spcMeso(uiv!)
         case "fire_outlook":
             uiv!.goToVC(vcSpcFireSummary())
         case "tstorm":
@@ -146,11 +146,11 @@ final class ObjectTileMatrix: NSObject {
         case "hrrrviewer":
             Route.model(uiv!, "ESRL")
         case "uswarn":
-            uiv!.goToVC(vcUSAlerts())
+            Route.alerts(uiv!)
         case "goes":
             Route.goesWaterVapor(uiv!)
         case "srfd":
-            uiv!.goToVC(vcWpcText())
+            Route.wpcText(uiv!)
         case "fmap":
             Route.wpcImage(uiv!)
         case "nhc":
@@ -162,8 +162,7 @@ final class ObjectTileMatrix: NSObject {
         case "goesfulldisk":
             uiv!.goToVC(vcGoesGlobal())
         case "nwsobs":
-            let vc = vcObsSites()
-            uiv!.goToVC(vc)
+            uiv!.goToVC(vcObsSites())
         case "wxogldualpane":
             Route.radar(uiv!, "2")
         case "wxoglquadpane":

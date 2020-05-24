@@ -159,6 +159,11 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func wpcText(_ uiv: UIViewController) {
+        let vc = vcWpcText()
+        uiv.goToVC(vc)
+    }
+    
     static func imageViewer(_ uiv: UIViewController, _ url: String) {
         let vc = vcImageViewer()
         vc.url = url
@@ -274,6 +279,11 @@ final class Route {
         let vc = vcWpcImg()
         vc.wpcImagesToken = token
         vc.wpcImagesFromHomeScreen = true
+        uiv.goToVC(vc)
+    }
+    
+    static func spcMeso(_ uiv: UIViewController) {
+        let vc = vcSpcMeso()
         uiv.goToVC(vc)
     }
     
