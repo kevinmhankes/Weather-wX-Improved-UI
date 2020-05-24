@@ -157,7 +157,7 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func radarClicked(_ uiv: UIViewController) {
+    static func radarFromMainScreen(_ uiv: UIViewController) {
         if !Location.isUS {
             radarCanada(uiv)
         } else {

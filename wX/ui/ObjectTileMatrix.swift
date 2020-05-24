@@ -196,7 +196,7 @@ final class ObjectTileMatrix: NSObject {
     }
     
     @objc func radarClicked() {
-        Route.radarClicked(uiv!)
+        Route.radarFromMainScreen(uiv!)
     }
     
     @objc func wfotextClicked() {
