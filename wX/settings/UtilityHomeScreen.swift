@@ -49,7 +49,7 @@ final class UtilityHomeScreen {
         case "STRPT":
             Route.spcStormReports(uiv, "today")
         case "SND":
-            uiv.goToVC(vcSoundings())
+            Route.soundings(uiv)
         case "SPCMESO_500":
             goToSpcMesoFromHS(uiv, "500mb")
         case "SPCMESO_MSLP":

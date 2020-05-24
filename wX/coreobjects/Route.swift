@@ -133,6 +133,14 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func alerts(_ uiv: UIViewController) {
+        if !Location.isUS {
+            uiv.goToVC(vcCanadaWarnings())
+        } else {
+            uiv.goToVC(vcUSAlerts())
+        }
+    }
+    
     static func alertDetail(_ uiv: UIViewController, _ url: String) {
         let vc = vcUSAlertsDetail()
         vc.usAlertsDetailUrl = url
@@ -238,5 +246,7 @@ final class Route {
         if Location.isUS { uiv.goToVC(vcHourly()) } else { uiv.goToVC(vcCanadaHourly()) }
     }
     
-    
+    static func soundings(_ uiv: UIViewController) {
+        uiv.goToVC(vcSoundings())
+    }
 }

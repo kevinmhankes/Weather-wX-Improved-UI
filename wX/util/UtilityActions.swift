@@ -11,7 +11,7 @@ final class UtilityActions {
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
         switch menuItem {
         case "Soundings":
-            uiv.goToVC(vcSoundings())
+            Route.soundings(uiv)
         case "Hourly Forecast":
             Route.hourly(uiv)
         case "Settings":
@@ -23,13 +23,11 @@ final class UtilityActions {
         case "Radar Mosaic":
             Route.radarMosaicLocal(uiv)
         case "Canadian Alerts":
-            uiv.goToVC(vcCanadaWarnings())
+            Route.alerts(uiv)
         case "US Alerts":
-            uiv.goToVC(vcUSAlerts())
-        case "Spotters":
-            uiv.goToVC(vcSpotters())
+            Route.alerts(uiv)
         default:
-            uiv.goToVC(vcHourly())
+            Route.hourly(uiv)
         }
     }
     
