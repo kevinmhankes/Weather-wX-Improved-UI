@@ -152,7 +152,7 @@ final class ObjectTileMatrix: NSObject {
         case "srfd":
             uiv!.goToVC(vcWpcText())
         case "fmap":
-            uiv!.goToVC(vcWpcImg())
+            Route.wpcImage(uiv!)
         case "nhc":
             uiv!.goToVC(vcNhc())
         case "nws_sector":

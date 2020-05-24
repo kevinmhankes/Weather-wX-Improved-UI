@@ -265,4 +265,15 @@ final class Route {
     static func playList(_ uiv: UIViewController) {
         uiv.goToVC(vcPlayList())
     }
+    
+    static func wpcImage(_ uiv: UIViewController) {
+        uiv.goToVC(vcWpcImg())
+    }
+    
+    static func wpcImageFromHomeScreen(_ uiv: UIViewController, _ homeScreenToken: String) {
+        let vc = vcWpcImg()
+        vc.wpcImagesToken = homeScreenToken
+        vc.wpcImagesFromHomeScreen = true
+        uiv.goToVC(vc)
+    }
 }

@@ -28,14 +28,11 @@ final class UtilityHomeScreen {
         //print("homescreen token: " + homeScreenToken)
         switch homeScreenToken {
         case "USWARN":
-            uiv.goToVC(vcUSAlerts())
+            Route.alerts(uiv)
         case "VIS_1KM":
-            uiv.goToVC(vcWpcImg())
-        case "WPC_ANALYSIS":
-            uiv.goToVC(vcWpcImg())
+            Route.wpcImage(uiv)
         case "FMAP":
-            let vc = vcWpcImg()
-            uiv.goToVC(vc)
+            Route.wpcImage(uiv)
         case "VIS_CONUS":
             Route.goesVisConus(uiv)
         case "CONUSWV":
@@ -67,10 +64,7 @@ final class UtilityHomeScreen {
         case "GOES16":
             Route.vis(uiv)
         default:
-            let vc = vcWpcImg()
-            vc.wpcImagesToken = homeScreenToken
-            vc.wpcImagesFromHomeScreen = true
-            uiv.goToVC(vc)
+            Route.wpcImageFromHomeScreen(uiv, homeScreenToken)
         }
     }
 
