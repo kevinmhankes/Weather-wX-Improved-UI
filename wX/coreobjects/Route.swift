@@ -257,4 +257,12 @@ final class Route {
             uiv.goToVC(vcObservations())
         }
     }
+    
+    static func settings(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsMain())
+    }
+    
+    static func playList(_ uiv: UIViewController) {
+        uiv.goToVC(vcPlayList())
+    }
 }

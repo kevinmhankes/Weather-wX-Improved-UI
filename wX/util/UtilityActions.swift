@@ -15,11 +15,11 @@ final class UtilityActions {
         case "Hourly Forecast":
             Route.hourly(uiv)
         case "Settings":
-            uiv.goToVC(vcSettingsMain())
+            Route.settings(uiv)
         case "Observations":
             Route.observations(uiv)
         case "PlayList":
-            uiv.goToVC(vcPlayList())
+            Route.playList(uiv)
         case "Radar Mosaic":
             Route.radarMosaicLocal(uiv)
         case "Canadian Alerts":
