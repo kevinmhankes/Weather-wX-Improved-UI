@@ -50,10 +50,6 @@ final class UtilityColorPaletteGeneric {
             scale = 2
             lowerEnd = -32
         }
-        //var dbzList = [Int]()
-        //var redList = [UInt8]()
-        //var greenList = [UInt8]()
-        //var blueList = [UInt8]()
         var objectColorPaletteLines = [ObjectColorPaletteLine]()
         var red = "0"
         var green = "0"
@@ -64,31 +60,13 @@ final class UtilityColorPaletteGeneric {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
                 if items.count > 4 {
                     if priorLineHas6 {
-                        /*dbzList.append(Int(Double(items[1])! * prodScale + prodOffset - 1))
-                        redList.append(UInt8(Int(red)!))
-                        greenList.append(UInt8(Int(green)!))
-                        blueList.append(UInt8(Int(blue)!))
-                        dbzList.append(Int(Double(items[1])! * prodScale + prodOffset))
-                        redList.append(UInt8(items[2])!)
-                        greenList.append(UInt8(items[3])!)
-                        blueList.append(UInt8(items[4])!)*/
-                        
                         objectColorPaletteLines.append(ObjectColorPaletteLine(Int((Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1  ), red, green, blue))
-
-                        //objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
-                        //    Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset - 1))
-                        //})
-                        
                         objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
                                                    Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
                                                })
                         
                         priorLineHas6 = false
                     } else {
-                        /*dbzList.append(Int(Double(items[1])! * prodScale + prodOffset))
-                        redList.append(UInt8(items[2])!)
-                        greenList.append(UInt8(items[3])!)
-                        blueList.append(UInt8(items[4])!)*/
                         objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
                             Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
                         })
