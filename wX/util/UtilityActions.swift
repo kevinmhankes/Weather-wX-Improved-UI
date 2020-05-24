@@ -13,7 +13,7 @@ final class UtilityActions {
         case "Soundings":
             uiv.goToVC(vcSoundings())
         case "Hourly Forecast":
-            if Location.isUS { uiv.goToVC(vcHourly()) } else { uiv.goToVC(vcCanadaHourly()) }
+            Route.hourly(uiv)
         case "Settings":
             uiv.goToVC(vcSettingsMain())
         case "Observations":

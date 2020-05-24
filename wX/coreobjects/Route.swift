@@ -233,4 +233,10 @@ final class Route {
     static func wfoText(_ uiv: UIViewController) {
         if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
     }
+    
+    static func hourly(_ uiv: UIViewController) {
+        if Location.isUS { uiv.goToVC(vcHourly()) } else { uiv.goToVC(vcCanadaHourly()) }
+    }
+    
+    
 }
