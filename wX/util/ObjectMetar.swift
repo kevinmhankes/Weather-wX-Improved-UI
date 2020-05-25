@@ -185,8 +185,7 @@ final class ObjectMetar {
         let fallsBetween = (sunTimes.0 ... sunTimes.1).contains(currentTime)
         let currentTimeTomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let fallsBetweenTomorrow = (sunTimes.0 ... sunTimes.1).contains(currentTimeTomorrow!)
-        var timeOfDay = "night"
-        if fallsBetween || fallsBetweenTomorrow { timeOfDay = "day" }
+        let timeOfDay =  fallsBetween || fallsBetweenTomorrow ? "day" : "night"
         let conditionModified = condition.split(";")[0]
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
         return MyApplication.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
