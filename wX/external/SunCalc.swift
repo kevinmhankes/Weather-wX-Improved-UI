@@ -4,9 +4,9 @@ import Foundation
 
 typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
 typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
-typealias MoonPosition = (azimuth: Double, altitude: Double, distance: Double, parallacticAngle: Double)
-typealias MoonCoordinate = (rightAscension: Double, declination: Double, distance: Double)
-typealias MoonIllumination = (fraction: Double, phase: Double, angle: Double)
+//typealias MoonPosition = (azimuth: Double, altitude: Double, distance: Double, parallacticAngle: Double)
+//typealias MoonCoordinate = (rightAscension: Double, declination: Double, distance: Double)
+//typealias MoonIllumination = (fraction: Double, phase: Double, angle: Double)
 
 enum SolarEvent {
     case sunrise
@@ -50,10 +50,10 @@ final class SunCalc {
         case sunNeverSet
     }
 
-    enum LunarEventError: Error {
+    /*enum LunarEventError: Error {
         case moonNeverRise(Date?)
         case moonNeverSet(Date?)
-    }
+    }*/
 
     private static let e = 23.4397 * Double.radPerDegree
 
@@ -136,7 +136,7 @@ final class SunCalc {
         return solarTransitJ(ds: a, m: m, l: l)
     }
 
-    private func moonCoordinates(_ d: Double) -> MoonCoordinate {
+    /*private func moonCoordinates(_ d: Double) -> MoonCoordinate {
         let l = Double.radPerDegree * (218.316 + 13.176396 * d)
         let m = Double.radPerDegree * (134.963 + 13.064993 * d)
         let f = Double.radPerDegree * (93.272 + 13.229350 * d)
@@ -144,7 +144,7 @@ final class SunCalc {
         let b = Double.radPerDegree * 5.128 * sin(f)
         let dt = 385001.0 - 20905.0 * cos(m)
         return (rightAscension(l: altL, b: b), declination(l: altL, b: b), dt)
-    }
+    }*/
 
     func sunPosition(date: Date, location: Location) -> AzimuthCoordinate {
         let lw = Double.radPerDegree * location.longitude * -1.0
@@ -155,7 +155,7 @@ final class SunCalc {
         return (azimuth(h: h, phi: phi, dec: c.declination), altitude(h: h, phi: phi, dec: c.declination))
     }
 
-    func moonPosition(date: Date, location: Location) -> MoonPosition {
+    /*func moonPosition(date: Date, location: Location) -> MoonPosition {
         let lw = Double.radPerDegree * location.longitude * -1.0
         let phi = Double.radPerDegree * location.latitude
         let d = date.daysSince2000
@@ -165,9 +165,9 @@ final class SunCalc {
         let pa = atan2(sin(h), tan(phi) * cos(c.declination) - sin(c.declination) * cos(h))
         h1 += astroRefraction(h1)
         return (azimuth(h: h, phi: phi, dec: c.declination), h1, c.distance, pa)
-    }
+    }*/
 
-    func moonIllumination(date: Date = Date()) -> MoonIllumination {
+    /*func moonIllumination(date: Date = Date()) -> MoonIllumination {
         let d = date.daysSince2000
         let s = sunCoordinates(d)
         let m = moonCoordinates(d)
@@ -185,7 +185,7 @@ final class SunCalc {
                 - cos(s.declination) * sin(m.declination) * cos(s.rightAscension - m.rightAscension)
         )
         return ((1.0 + cos(inc)) / 2.0, 0.5 + 0.5 * inc * (angle < 0.0 ? -1.0 : 1.0) / Double.pi, angle)
-    }
+    }*/
 
     func time(ofDate date: Date, forSolarEvent event: SolarEvent, atLocation location: Location) throws -> Date {
         let lw = Double.radPerDegree * location.longitude * -1.0
