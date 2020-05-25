@@ -10,8 +10,7 @@ final class WXGLNexradLevel3HailIndex {
 
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
-        let data = UtilityIO.readFileToData(fileName)
-        if let retStr1 = String(data: data, encoding: .ascii) {
+        if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             var stormList = [Double]()
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let hailPercent = retStr1.parseColumn("POSH/POH(.*?)V")
