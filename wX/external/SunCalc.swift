@@ -215,7 +215,7 @@ final class SunCalc {
         }
     }
 
-    func moonTimes(date: Date, location: Location) throws -> (moonRiseTime: Date, moonSetTime: Date) {
+    /*func moonTimes(date: Date, location: Location) throws -> (moonRiseTime: Date, moonSetTime: Date) {
         let date = date.beginning()
         let hc = 0.133 * Double.radPerDegree
         var h0 = moonPosition(date: date, location: location).altitude - hc
@@ -267,5 +267,5 @@ final class SunCalc {
                 throw LunarEventError.moonNeverRise(set)
             }
         }
-    }
+    }*/
 }

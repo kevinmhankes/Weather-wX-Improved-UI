@@ -89,7 +89,7 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @return
      */
 
-    override func  hashCode() -> Int {
+    override func hashCode() -> Int {
         var hash: Int = super.hashCode()
         if elevation != 0 { hash *= Int(elevation) }
         return hash
@@ -102,7 +102,7 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @return
      */
 
-    override func  equals(obj: AnyObject ) -> Bool {
+    override func equals(obj: AnyObject ) -> Bool {
         if let  other: ExternalGlobalPosition = obj as? ExternalGlobalPosition {
             return (elevation == other.elevation) && (super.equals(obj: other))
         } else {

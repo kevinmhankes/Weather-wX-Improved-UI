@@ -14,10 +14,10 @@
 
 final class ExternalLine {
 
-    private var  start: ExternalPoint
-    private var  end: ExternalPoint
-    private var  a: Float = 999999999.0
-    private var  b: Float = 999999999.0
+    private let start: ExternalPoint
+    private let end: ExternalPoint
+    private var a: Float = 999999999.0
+    private var b: Float = 999999999.0
     private var vertical = false
 
     init(start: ExternalPoint, end: ExternalPoint) {

@@ -76,11 +76,11 @@ final class HSBColorPicker: UIView {
     }
 
     func getPointForColor(color: UIColor) -> CGPoint {
-        var hue: CGFloat = 0
-        var saturation: CGFloat = 0
-        var brightness: CGFloat = 0
+        var hue: CGFloat = 0.0
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
-        var yPos: CGFloat = 0
+        let yPos: CGFloat
         let halfHeight = (self.bounds.height / 2)
         if brightness >= 0.99 {
             let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)

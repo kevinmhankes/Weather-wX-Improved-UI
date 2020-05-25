@@ -92,7 +92,7 @@ class ExternalGlobalCoordinates {
      *
      * @return latitude in degrees
      */
-    func  getLatitude() -> Double { mLatitude }
+    func getLatitude() -> Double { mLatitude }
 
     var latitude: Double { mLatitude }
 
