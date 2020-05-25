@@ -261,12 +261,11 @@ final class UtilityDownload {
     }
     
     static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
-        var text = ""
         let prodLocal = product.uppercased()
         let t1 = prodLocal.substring(0, 3)
         let t2 = prodLocal.substring(3)
         let textUrl = "https://forecast.weather.gov/product.php?site=NWS&product=" + t1 + "&issuedby=" + t2 + "&version=" + String(version)
-        text = textUrl.getHtmlSep()
+        var text = textUrl.getHtmlSep()
         text = text.parse(MyApplication.prePattern)
         text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")

@@ -30,12 +30,7 @@ final class UtilityActions {
             Route.hourly(uiv)
         }
     }
-    
-    //static func goToVc(_ uiv: UIViewController, _ target: UIViewController) {
-    //    target.modalPresentationStyle = .fullScreen
-    //    uiv.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
-    //}
-    
+
     static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch
         var menuList = [
@@ -58,11 +53,7 @@ final class UtilityActions {
                 "Settings"
             ]
         }
-        let alert = UIAlertController(
-            title: "Select from:",
-            message: "",
-            preferredStyle: UIAlertController.Style.actionSheet
-        )
+        let alert = UIAlertController(title: "Select from:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
             let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item)})
