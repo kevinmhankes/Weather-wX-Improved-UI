@@ -115,19 +115,15 @@ final class ObjectMetar {
     }
     
     func changeDegreeUnits(_ value: String) -> String {
-        var newValue = "NA"
-        if value != "" { newValue = (Double(value) ?? 0.0).roundToString() }
-        return newValue
+        if value != "" { return (Double(value) ?? 0.0).roundToString() } else { return "NA" }
     }
     
     func changePressureUnits(_ value: String) -> String {
-        var newValue = "NA"
         if !UIPreferences.unitsM {
-            newValue = UtilityMath.pressureMBtoIn(value)
+            return UtilityMath.pressureMBtoIn(value)
         } else {
-            newValue = value + " mb"
+            return value + " mb"
         }
-        return newValue
     }
     
     func decodeMetar(_ metar: String) {
