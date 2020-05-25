@@ -145,6 +145,14 @@ final class MemoryBuffer {
         memcpy(&float, bytes, 4)
         return CGFloat(float)
     }
+    
+    func getCGFloatNative() -> Float {
+        let bytes: [UInt8] = [backingArray[posn], backingArray[posn+1], backingArray[posn+2], backingArray[posn+3]]
+        var float: Float = 0.0
+        posn += 4
+        memcpy(&float, bytes, 4)
+        return float
+    }
 
     func copy(_ newArray: [UInt8]) {
         backingArray = newArray

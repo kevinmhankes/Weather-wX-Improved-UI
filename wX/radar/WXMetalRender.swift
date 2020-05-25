@@ -333,11 +333,12 @@ final class WXMetalRender {
         )
         buffers.setToPositionZero()
         var i = 0
+        // TODO use stride
         (0..<(buffers.count / 2)).forEach { _ in
-            let f1 = Float(buffers.floatBuffer.getCGFloatNative())
-            let f2 = Float(buffers.floatBuffer.getCGFloatNative())
-            buffers.metalBuffer[i] = f1
-            buffers.metalBuffer[i + 1] = f2
+            //let f1 = Float(buffers.floatBuffer.getCGFloatNative())
+            //let f2 = Float(buffers.floatBuffer.getCGFloatNative())
+            buffers.metalBuffer[i] = buffers.floatBuffer.getCGFloatNative()
+            buffers.metalBuffer[i + 1] = buffers.floatBuffer.getCGFloatNative()
             buffers.metalBuffer[i + 2] = colors[0]
             buffers.metalBuffer[i + 3] = colors[1]
             buffers.metalBuffer[i + 4] = colors[2]
