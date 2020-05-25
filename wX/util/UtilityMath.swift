@@ -23,16 +23,11 @@ final class UtilityMath {
         let cy = y0 + dy * 0.5
         let pDirX = -dirY
         let pDirY = dirX
-        var rx = 0.0
-        var ry = 0.0
         if right {
-            rx = cx + height * pDirX
-            ry = cy + height * pDirY
+            return [cx + height * pDirX, cy + height * pDirY]
         } else {
-            rx = cx - height * pDirX
-            ry = cy - height * pDirY
+            return [cx - height * pDirX, cy - height * pDirY]
         }
-        return [rx, ry]
     }
     
     static func computeMiddlePoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
