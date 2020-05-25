@@ -17,10 +17,8 @@ final class UtilityImgAnim {
     }
 
     static func getAnimationDrawableFromUrlList(_ urls: [String]) -> AnimationDrawable {
-        let animDrawable = AnimationDrawable()
         let bitmaps = urls.map { Bitmap($0) }
-        bitmaps.filter { $0.isValid }.forEach { animDrawable.addFrame($0) }
-        return animDrawable
+        return getAnimationDrawableFromBitmapList(bitmaps)
     }
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap]) -> AnimationDrawable {
