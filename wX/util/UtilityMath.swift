@@ -49,15 +49,13 @@ final class UtilityMath {
     }
     
     static func unitsPressure(_ value: String) -> String {
-        var tmpNum = Double(value) ?? 0.0
-        var value2: String
+        var number = Double(value) ?? 0.0
         if UIPreferences.unitsM {
-            tmpNum *= 33.8637526
-            value2 = String(format: "%.2f", tmpNum) + " mb"
+            number *= 33.8637526
+            return String(format: "%.2f", number) + " mb"
         } else {
-            value2 = String(format: "%.2f", tmpNum) + " in"
+            return String(format: "%.2f", number) + " in"
         }
-        return value2
     }
     
     static func celsiusToFahrenheit(_ value: String) -> String { String(round((Double(value) ?? 0.0) * 9 / 5 + 32)) }
