@@ -102,8 +102,8 @@ final class WXMetalNexradLevelData {
         if dis.capacity > 0 {
             dis.skipBytes(30)
             dis.skipBytes(20)
-            radarHeight = Int(dis.getUnsignedShort())
             dis.skipBytes(8)
+            radarHeight = Int(dis.getUnsignedShort())
             productCode = Int16( dis.getUnsignedShort())
             operationalMode = Int16( dis.getUnsignedShort())
             volumeCoveragePattern = Int16(dis.getUnsignedShort())

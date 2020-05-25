@@ -264,7 +264,7 @@ final public class ObjectModel {
             (0...18).forEach {times.append(String(format: "%03d", $0))}
             runs = []
             (0...22).forEach {runs.append(String(format: "%02d", $0)+"Z")}
-            runTimeData.listRun=runs
+            runTimeData.listRun = runs
         case "NCEP:RAP":
             params = UtilityModelNcepInterface.modelRapParams
             paramLabels = UtilityModelNcepInterface.modelRapLabels
@@ -380,7 +380,7 @@ final public class ObjectModel {
             stride(from: 0, to: 384, by: 24).forEach {times.append(String(format: "%03d", $0))}
             runs = []
             runs.append("00Z")
-            runTimeData.listRun=runs
+            runTimeData.listRun = runs
         case "NCEP:WW3":
             params = UtilityModelNcepInterface.modelWw3Params
             paramLabels = UtilityModelNcepInterface.modelWw3Labels
