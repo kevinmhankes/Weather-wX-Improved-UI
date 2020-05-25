@@ -6,18 +6,12 @@
 
 final class WXGLNexradLevel3StormInfo {
     
-    // TODO rename
-    private static let stiPattern1 = "AZ/RAN(.*?)V"
-    private static let stiPattern2 = "MVT(.*?)V"
-    
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
-        // TODO fold in and rename
-        let data = UtilityIO.readFileToData(fileName)
-        if let retStr1 = String(data: data, encoding: .ascii) {
+        if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             var stormList = [Double]()
-            let position = retStr1.parseColumn(stiPattern1)
-            let motion = retStr1.parseColumn(stiPattern2)
+            let position = retStr1.parseColumn("AZ/RAN(.*?)V")
+            let motion = retStr1.parseColumn("MVT(.*?)V")
             var posnStr = ""
             position.forEach { posnStr += $0.replace("/", " ") }
             var motionStr = ""

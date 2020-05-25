@@ -6,20 +6,16 @@
 
 final class WXGLNexradLevel3HailIndex {
 
-    // TODO rename
-    private static let hiPattern1 = "AZ/RAN(.*?)V"
-    private static let hiPattern2 = "POSH/POH(.*?)V"
-    private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
-    private static let stiPattern3 = "(\\d+) "
+    private static let pattern = "(\\d+) "
 
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
         WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
         let data = UtilityIO.readFileToData(fileName)
         if let retStr1 = String(data: data, encoding: .ascii) {
             var stormList = [Double]()
-            let position = retStr1.parseColumn(hiPattern1)
-            let hailPercent = retStr1.parseColumn(hiPattern2)
-            let hailSize = retStr1.parseColumn(hiPattern3)
+            let position = retStr1.parseColumn("AZ/RAN(.*?)V")
+            let hailPercent = retStr1.parseColumn("POSH/POH(.*?)V")
+            let hailSize = retStr1.parseColumn("MAX HAIL SIZE(.*?)V")
             var posnStr = ""
             position.forEach { posnStr += $0.replace("/", " ") }
             var hailPercentStr = ""
@@ -32,8 +28,8 @@ final class WXGLNexradLevel3HailIndex {
             let hiPattern4 = " ([0-9]{1}\\.[0-9]{2}) "
             posnStr = posnStr.replaceAllRegexp("\\s+", " ")
             hailPercentStr = hailPercentStr.replaceAllRegexp("\\s+", " ")
-            let posnNumbers = posnStr.parseColumnAll(stiPattern3)
-            let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
+            let posnNumbers = posnStr.parseColumnAll(pattern)
+            let hailPercentNumbers = hailPercentStr.parseColumnAll(pattern)
             let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
                 var index = 0
