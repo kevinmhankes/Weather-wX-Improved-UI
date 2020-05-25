@@ -268,20 +268,20 @@ final class WXMetalRender {
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
         var list: [Double]
         switch buffers.type.string {
-        case "MCD":
+        case "MCD", "MPD", "WATCH", "WATCH_TORNADO":
             list = UtilityWatch.add(projectionNumbers, buffers.type)
-        case "MPD":
-            list = UtilityWatch.add(projectionNumbers, buffers.type)
-        case "WATCH":
-            list = UtilityWatch.add(projectionNumbers, buffers.type)
-        case "WATCH_TORNADO":
-            list = UtilityWatch.add(projectionNumbers, buffers.type)
-        case "TST":
+        //case "MPD":
+        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
+        //case "WATCH":
+        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
+        //case "WATCH_TORNADO":
+        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
+        case "TST", "TOR", "FFW":
             list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
-        case "TOR":
-            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
-        case "FFW":
-            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
+        //case "TOR":
+        //    list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
+        //case "FFW":
+        //    list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
         case "SMW":
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
         case "SQW":
