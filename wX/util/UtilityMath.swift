@@ -90,26 +90,6 @@ final class UtilityMath {
         let listIndex = Int(round((Double(normalizedDirection) / 22.5)))
         let windDirectionAsString = windDirections[listIndex]
         return windDirectionAsString
-        
-        /*var dirStr = ""
-         if direction > 337.5 || direction <= 22.5 {
-         dirStr = "N"
-         } else if direction > 22.5 && direction <= 67.5 {
-         dirStr = "NE"
-         } else if direction > 67.5 && direction <= 112.5 {
-         dirStr = "E"
-         } else if direction > 112.5 && direction <= 157.5 {
-         dirStr = "SE"
-         } else if direction > 157.5 && direction <= 202.5 {
-         dirStr = "S"
-         } else if direction > 202.5 && direction <= 247.5 {
-         dirStr = "SW"
-         } else if direction > 247.5 && direction <= 292.5 {
-         dirStr = "W"
-         } else if direction > 292.5 && direction <= 337.5 {
-         dirStr = "NW"
-         }
-         return dirStr*/
     }
     
     static func roundDToString(_ valueD: Double) -> String { String(Int(round(valueD))) }
