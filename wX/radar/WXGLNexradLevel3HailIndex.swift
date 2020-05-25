@@ -6,6 +6,7 @@
 
 final class WXGLNexradLevel3HailIndex {
 
+    // TODO rename
     private static let hiPattern1 = "AZ/RAN(.*?)V"
     private static let hiPattern2 = "POSH/POH(.*?)V"
     private static let hiPattern3 = "MAX HAIL SIZE(.*?)V"
@@ -35,8 +36,6 @@ final class WXGLNexradLevel3HailIndex {
             let hailPercentNumbers = hailPercentStr.parseColumnAll(stiPattern3)
             let hailSizeNumbers = hailSizeStr.parseColumnAll(hiPattern4)
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
-                var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
-                var ec = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                 var index = 0
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach {
                     let hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
@@ -44,8 +43,8 @@ final class WXGLNexradLevel3HailIndex {
                         let ecc = ExternalGeodeticCalculator()
                         let degree = Int(posnNumbers[$0]) ?? 0
                         let nm = Int(posnNumbers[$0 + 1]) ?? 0
-                        start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
-                        ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
+                        let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
+                        let ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
                         let baseSize = 0.015
                         [0.99, 1.99, 2.99].enumerated().forEach { index, size in

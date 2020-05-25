@@ -6,6 +6,7 @@
 
 final class WXGLNexradLevel3TVS {
 
+    // TODO rename
     private static let tvsPattern1 = "P  TVS(.{20})"
     private static let tvsPattern2 = ".{9}(.{7})"
 

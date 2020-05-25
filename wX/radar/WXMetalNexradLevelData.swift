@@ -25,6 +25,8 @@ final class WXMetalNexradLevelData {
     var index = "0"
     var radarHeight = 0
     var degree = 0.0
+    var operationalMode: Int16 = 0
+    var volumeCoveragePattern: Int16 = 0
 
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
         self.init()
@@ -57,19 +59,15 @@ final class WXMetalNexradLevelData {
         if dis.capacity > 0 {
             while dis.getShort() != -1 {}
             dis.skipBytes(8)
-            let heightOfRadar = Int16(dis.getUnsignedShort())
-            radarHeight = Int(heightOfRadar)
+            radarHeight = Int(dis.getUnsignedShort())
             productCode = Int16(dis.getUnsignedShort())
-            let operationalMode = Int16(dis.getUnsignedShort())
-            let volumeCoveragePattern = Int16(dis.getUnsignedShort())
-            //let sequenceNumber = Int16(dis.getUnsignedShort())
-            //let volumeScanNumber = Int16(dis.getUnsignedShort())
+            operationalMode = Int16(dis.getUnsignedShort())
+            volumeCoveragePattern = Int16(dis.getUnsignedShort())
             _ = Int16(dis.getUnsignedShort())
             _ = Int16(dis.getUnsignedShort())
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)" + ", VCP: \(volumeCoveragePattern)"
-                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
+            writeTime(volumeScanDate, volumeScanTime)
             dis.skipBytes(10)
             // elevationNumber
             _ = dis.getUnsignedShort()
@@ -104,19 +102,16 @@ final class WXMetalNexradLevelData {
         if dis.capacity > 0 {
             dis.skipBytes(30)
             dis.skipBytes(20)
-            let heightOfRadar = Int16(dis.getUnsignedShort())
+            radarHeight = Int(dis.getUnsignedShort())
             dis.skipBytes(8)
             productCode = Int16( dis.getUnsignedShort())
-            let operationalMode = Int16( dis.getUnsignedShort())
-            let volumeCoveragePattern = Int16(dis.getUnsignedShort())
-            //let sequenceNumber = Int16(dis.getUnsignedShort())
-            //let volumeScanNumber = Int16(dis.getUnsignedShort())
+            operationalMode = Int16( dis.getUnsignedShort())
+            volumeCoveragePattern = Int16(dis.getUnsignedShort())
             _ = Int16(dis.getUnsignedShort())
             _ = Int16(dis.getUnsignedShort())
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
-            writeTime(volumeScanDate, volumeScanTime, "Mode: \(operationalMode)" + ", VCP: \(volumeCoveragePattern)"
-                + ", " + "Product: \(productCode)" + ", " + "Height: \(heightOfRadar)")
+            writeTime(volumeScanDate, volumeScanTime)
             dis.skipBytes(6)
             dis.skipBytes(56)
             dis.skipBytes(32)
@@ -158,7 +153,9 @@ final class WXMetalNexradLevelData {
         WXGLNexrad.writeRadarInfo("", radarInfoFinal)
     }
 
-    func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int, _ radarInfo: String) {
+    func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int) {
+        let radarInfo = "Mode: " + String(operationalMode) + ", VCP: " + String(volumeCoveragePattern)
+            + ", " + "Product: " + String(productCode) + ", " + "Height: " + String(radarHeight)
         let sec = CLong((Int(volumeScanDate) - 1) * 3600 * 24) + Int(volumeScanTime)
         let date = Date(timeIntervalSince1970: TimeInterval(sec))
         let dateFormatter = DateFormatter()
