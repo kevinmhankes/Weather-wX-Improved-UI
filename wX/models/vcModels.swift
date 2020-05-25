@@ -102,14 +102,14 @@ final class vcModels: UIwXViewController {
                 if self.modelActivitySelected == "SPCHRRR"
                     || self.modelActivitySelected == "SPCSREF"
                     || self.modelActivitySelected == "SPCHREF" {
-                    self.modelObj.timeArr = UtilityModels.updateTime(
+                    self.modelObj.times = UtilityModels.updateTime(
                         UtilityString.getLastXChars(self.modelObj.run, 2),
                         self.modelObj.run,
-                        self.modelObj.timeArr,
+                        self.modelObj.times,
                         ""
                     )
                 } else if !self.modelActivitySelected.contains("GLCFS") {
-                    self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
+                    self.modelObj.times.enumerated().forEach { idx, timeStr in
                         self.modelObj.setTimeArr(
                             idx,
                             timeStr.split(" ")[0] + " "
@@ -120,10 +120,10 @@ final class vcModels: UIwXViewController {
                         )
                     }
                 }
-                if self.modelObj.timeIdx >= self.modelObj.timeArr.count {
-                    self.modelObj.setTimeIdx(self.modelObj.timeArr.count - 1)
+                if self.modelObj.timeIdx >= self.modelObj.times.count {
+                    self.modelObj.setTimeIdx(self.modelObj.times.count - 1)
                 }
-                self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.timeArr, self.modelObj.timeIdx)
+                self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.times, self.modelObj.timeIdx)
                 self.getContent()
             }
         }
@@ -149,7 +149,7 @@ final class vcModels: UIwXViewController {
     }
     
     @objc func prodClicked() {
-        _ = ObjectPopUp(self, productButton, modelObj.paramLabelArr, self.prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, modelObj.paramLabels, self.prodChanged(_:))
     }
     
     @objc func showProdMenu() {
@@ -161,7 +161,7 @@ final class vcModels: UIwXViewController {
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectorArr, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, self.sectorChanged(_:))
     }
     
     func sectorChanged(_ sector: String) {
@@ -179,7 +179,7 @@ final class vcModels: UIwXViewController {
     }
     
     @objc func modelClicked() {
-        _ = ObjectPopUp(self, title: "Model Selection", modelButton, self.modelObj.modelArr, self.modelChanged(_:))
+        _ = ObjectPopUp(self, title: "Model Selection", modelButton, self.modelObj.models, self.modelChanged(_:))
     }
     
     func modelChanged(_ model: String) {
@@ -213,7 +213,7 @@ final class vcModels: UIwXViewController {
     }
     
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.timeArr, self.timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, self.timeChanged(_:))
     }
     
     func timeChanged(_ time: Int) {
@@ -224,7 +224,7 @@ final class vcModels: UIwXViewController {
     func prodChanged(_ prod: Int) {
         modelObj.setParam(prod)
         if modelActivitySelected.contains("SSEO") {
-            self.modelObj.timeArr.enumerated().forEach { idx, timeStr in
+            self.modelObj.times.enumerated().forEach { idx, timeStr in
                 self.modelObj.setTimeArr(
                     idx,
                     timeStr.split(" ")[0]

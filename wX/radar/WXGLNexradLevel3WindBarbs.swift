@@ -8,14 +8,7 @@ final class WXGLNexradLevel3WindBarbs {
 
     static func decodeAndPlot(_ projectionNumbers: ProjectionNumbers, isGust: Bool) -> [Double] {
         var stormList = [Double]()
-        // TODO cond ? : --     let arrWb = !isGust ? UtilityMetar.obsArrWb : UtilityMetar.obsArrWbGust
-        var arrWb = [String]()
-        if !isGust {
-            arrWb = UtilityMetar.obsArrWb
-        } else {
-            arrWb = UtilityMetar.obsArrWbGust
-        }
-        //let bearing = [Double]()
+        let arrWb = !isGust ? UtilityMetar.obsArrWb : UtilityMetar.obsArrWbGust
         let degreeShift = 180.00
         let arrowLength = 2.5
         let arrowSpacing = 3.0

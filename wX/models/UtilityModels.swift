@@ -75,9 +75,9 @@ final class UtilityModels {
     static func getAnimation(_ om: ObjectModel, _ getImage: (ObjectModel) -> Bitmap) -> AnimationDrawable {
         var bitmaps = [Bitmap]()
         let origTime = om.timeStr
-        if om.timeArr.count > 0 {
-            (om.timeIndex..<om.timeArr.count).forEach { index in
-                om.timeStr = om.timeArr[index].split(" ")[0]
+        if om.times.count > 0 {
+            (om.timeIndex..<om.times.count).forEach { index in
+                om.timeStr = om.times[index].split(" ")[0]
                 bitmaps.append(getImage(om))
             }
             om.timeStr = origTime

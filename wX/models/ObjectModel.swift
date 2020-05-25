@@ -10,12 +10,12 @@ final public class ObjectModel {
     
     private var modelName = ""
     // TODO rename all from ending in Arr to s
-    private var paramArr = [String]()
-    var paramLabelArr = [String]()
-    var sectorArr = [String]()
-    var timeArr = [String]()
-    private var runArr = [String]()
-    var modelArr = [String]()
+    private var params = [String]()
+    var paramLabels = [String]()
+    var sectors = [String]()
+    var times = [String]()
+    private var runs = [String]()
+    var models = [String]()
     var runTimeData = RunTimeData()
     private var modelToken = ""
     private var prefModel = ""
@@ -70,7 +70,7 @@ final public class ObjectModel {
             param = "sfct"
             sector = "CONUS"
             model = "WRF"
-            modelArr = UtilityModelNsslWrfInterface.models
+            models = UtilityModelNsslWrfInterface.models
         case "ESRL":
             run = "00Z"
             timeStr = "01"
@@ -79,7 +79,7 @@ final public class ObjectModel {
             model = "HRRR_NCEP"
             sector = "US"
             sectorInt = 0
-            modelArr = UtilityModelEsrlInterface.models
+            models = UtilityModelEsrlInterface.models
         case "GLCFS":
             run = "00Z"
             timeStr = "01"
@@ -94,7 +94,7 @@ final public class ObjectModel {
             param = "500_vort_ht"
             model = "GFS"
             sector = "NAMER"
-            modelArr = UtilityModelNcepInterface.models
+            models = UtilityModelNcepInterface.models
         case "WPCGEFS":
             run = "00Z"
             timeStr = "01"
@@ -188,281 +188,281 @@ final public class ObjectModel {
         self.modelToken = self.prefModel + ":" + modelName
         switch modelToken {
         case "NSSLWRF:WRF":
-            paramArr = UtilityModelNsslWrfInterface.paramsNsslWrf
-            paramLabelArr = UtilityModelNsslWrfInterface.labelsNsslWrf
-            sectorArr = UtilityModelNsslWrfInterface.sectorsLong
-            timeArr = []
-            (1...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelNsslWrfInterface.paramsNsslWrf
+            paramLabels = UtilityModelNsslWrfInterface.labelsNsslWrf
+            sectors = UtilityModelNsslWrfInterface.sectorsLong
+            times = []
+            (1...36).forEach {times.append(String(format: "%02d", $0))}
         case "NSSLWRF:WRF_3KM":
-            paramArr = UtilityModelNsslWrfInterface.paramsNsslWrf
-            paramLabelArr = UtilityModelNsslWrfInterface.labelsNsslWrf
-            sectorArr = UtilityModelNsslWrfInterface.sectorsLong
-            timeArr = []
-            (1...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelNsslWrfInterface.paramsNsslWrf
+            paramLabels = UtilityModelNsslWrfInterface.labelsNsslWrf
+            sectors = UtilityModelNsslWrfInterface.sectorsLong
+            times = []
+            (1...36).forEach {times.append(String(format: "%02d", $0))}
         case "NSSLWRF:FV3":
-            paramArr = UtilityModelNsslWrfInterface.paramsNsslFv3
-            paramLabelArr = UtilityModelNsslWrfInterface.labelsNsslFv3
-            sectorArr = UtilityModelNsslWrfInterface.sectorsLong
-            timeArr = []
-            (1...60).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelNsslWrfInterface.paramsNsslFv3
+            paramLabels = UtilityModelNsslWrfInterface.labelsNsslFv3
+            sectors = UtilityModelNsslWrfInterface.sectorsLong
+            times = []
+            (1...60).forEach {times.append(String(format: "%02d", $0))}
         case "NSSLWRF:HRRRV3":
-            paramArr = UtilityModelNsslWrfInterface.paramsNsslHrrrv3
-            paramLabelArr = UtilityModelNsslWrfInterface.labelsNsslHrrrv3
-            sectorArr = UtilityModelNsslWrfInterface.sectorsLong
-            timeArr = []
-            (1...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelNsslWrfInterface.paramsNsslHrrrv3
+            paramLabels = UtilityModelNsslWrfInterface.labelsNsslHrrrv3
+            sectors = UtilityModelNsslWrfInterface.sectorsLong
+            times = []
+            (1...36).forEach {times.append(String(format: "%02d", $0))}
         case "ESRL:HRRR":
-            paramArr = UtilityModelEsrlInterface.modelHrrrParams
-            paramLabelArr = UtilityModelEsrlInterface.modelHrrrLabels
-            sectorArr = UtilityModelEsrlInterface.sectorsHrrr
-            timeArr = []
-            (0...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelEsrlInterface.modelHrrrParams
+            paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
+            sectors = UtilityModelEsrlInterface.sectorsHrrr
+            times = []
+            (0...36).forEach {times.append(String(format: "%02d", $0))}
         case "ESRL:HRRR_AK":
-            paramArr = UtilityModelEsrlInterface.modelHrrrParams
-            paramLabelArr = UtilityModelEsrlInterface.modelHrrrLabels
-            sectorArr = UtilityModelEsrlInterface.sectorsHrrrAk
-            timeArr = []
-            (0...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelEsrlInterface.modelHrrrParams
+            paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
+            sectors = UtilityModelEsrlInterface.sectorsHrrrAk
+            times = []
+            (0...36).forEach {times.append(String(format: "%02d", $0))}
         case "ESRL:HRRR_NCEP":
-            paramArr = UtilityModelEsrlInterface.modelHrrrParams
-            paramLabelArr = UtilityModelEsrlInterface.modelHrrrLabels
-            sectorArr = UtilityModelEsrlInterface.sectorsHrrr
-            timeArr = []
-            (0...36).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelEsrlInterface.modelHrrrParams
+            paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
+            sectors = UtilityModelEsrlInterface.sectorsHrrr
+            times = []
+            (0...36).forEach {times.append(String(format: "%02d", $0))}
         case "ESRL:RAP":
-            paramArr = UtilityModelEsrlInterface.modelRapParams
-            paramLabelArr = UtilityModelEsrlInterface.modelRapLabels
-            sectorArr = UtilityModelEsrlInterface.sectorsRap
-            timeArr = []
-            (0...21).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelEsrlInterface.modelRapParams
+            paramLabels = UtilityModelEsrlInterface.modelRapLabels
+            sectors = UtilityModelEsrlInterface.sectorsRap
+            times = []
+            (0...21).forEach {times.append(String(format: "%02d", $0))}
         case "ESRL:RAP_NCEP":
-            paramArr = UtilityModelEsrlInterface.modelRapParams
-            paramLabelArr = UtilityModelEsrlInterface.modelRapLabels
-            sectorArr = UtilityModelEsrlInterface.sectorsRap
-            timeArr = []
-            (0...21).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelEsrlInterface.modelRapParams
+            paramLabels = UtilityModelEsrlInterface.modelRapLabels
+            sectors = UtilityModelEsrlInterface.sectorsRap
+            times = []
+            (0...21).forEach {times.append(String(format: "%02d", $0))}
         case "GLCFS:GLCFS":
-            paramArr = UtilityModelGlcfsInterface.params
-            paramLabelArr = UtilityModelGlcfsInterface.labels
-            sectorArr = UtilityModelGlcfsInterface.sectors
-            timeArr = []
-            (1...13).forEach {timeArr.append(String(format: "%02d", $0))}
-            stride(from: 15, to: 120, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}
+            params = UtilityModelGlcfsInterface.params
+            paramLabels = UtilityModelGlcfsInterface.labels
+            sectors = UtilityModelGlcfsInterface.sectors
+            times = []
+            (1...13).forEach {times.append(String(format: "%02d", $0))}
+            stride(from: 15, to: 120, by: 3).forEach {times.append(String(format: "%02d", $0))}
         case "NCEP:GFS":
-            paramArr = UtilityModelNcepInterface.modelGfsParams
-            paramLabelArr = UtilityModelNcepInterface.modelGfsLabels
-            sectorArr = UtilityModelNcepInterface.sectorsGfs
-            timeArr = []
-            stride(from: 0, to: 243, by: 3).forEach {timeArr.append(String(format: "%03d", $0))}
-            stride(from: 252, to: 396, by: 12).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelGfsParams
+            paramLabels = UtilityModelNcepInterface.modelGfsLabels
+            sectors = UtilityModelNcepInterface.sectorsGfs
+            times = []
+            stride(from: 0, to: 243, by: 3).forEach {times.append(String(format: "%03d", $0))}
+            stride(from: 252, to: 396, by: 12).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:HRRR":
-            paramArr = UtilityModelNcepInterface.modelHrrrParams
-            paramLabelArr = UtilityModelNcepInterface.modelHrrrLabels
-            sectorArr = UtilityModelNcepInterface.sectorsHrrr
-            timeArr = []
-            (0...18).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            (0...22).forEach {runArr.append(String(format: "%02d", $0)+"Z")}
-            runTimeData.listRun=runArr
+            params = UtilityModelNcepInterface.modelHrrrParams
+            paramLabels = UtilityModelNcepInterface.modelHrrrLabels
+            sectors = UtilityModelNcepInterface.sectorsHrrr
+            times = []
+            (0...18).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            (0...22).forEach {runs.append(String(format: "%02d", $0)+"Z")}
+            runTimeData.listRun=runs
         case "NCEP:RAP":
-            paramArr = UtilityModelNcepInterface.modelRapParams
-            paramLabelArr = UtilityModelNcepInterface.modelRapLabels
-            sectorArr = UtilityModelNcepInterface.sectorsRap
-            timeArr = []
-            (0...21).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            (0...22).forEach {runArr.append(String(format: "%02d", $0)+"Z")}
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.modelRapParams
+            paramLabels = UtilityModelNcepInterface.modelRapLabels
+            sectors = UtilityModelNcepInterface.sectorsRap
+            times = []
+            (0...21).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            (0...22).forEach {runs.append(String(format: "%02d", $0)+"Z")}
+            runTimeData.listRun = runs
         case "NCEP:NAM-HIRES":
-            paramArr = UtilityModelNcepInterface.modelNam4kmParams
-            paramLabelArr = UtilityModelNcepInterface.modelNam4kmLabels
-            sectorArr = UtilityModelNcepInterface.sectorsNam4km
-            timeArr = []
-            stride(from: 1, to: 61, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelNam4kmParams
+            paramLabels = UtilityModelNcepInterface.modelNam4kmLabels
+            sectors = UtilityModelNcepInterface.sectorsNam4km
+            times = []
+            stride(from: 1, to: 61, by: 1).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:NAM":
-            paramArr = UtilityModelNcepInterface.modelNamParams
-            paramLabelArr = UtilityModelNcepInterface.modelNamLabels
-            sectorArr = UtilityModelNcepInterface.sectorsNam
-            timeArr = []
-            stride(from: 0, to: 85, by: 3).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelNamParams
+            paramLabels = UtilityModelNcepInterface.modelNamLabels
+            sectors = UtilityModelNcepInterface.sectorsNam
+            times = []
+            stride(from: 0, to: 85, by: 3).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:HRW-NMMB":
-            paramArr = UtilityModelNcepInterface.modelHrwNmmParams
-            paramLabelArr = UtilityModelNcepInterface.modelHrwNmmLabels
-            sectorArr = UtilityModelNcepInterface.sectorsHrwNmm
-            timeArr = []
-            (0...48).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runArr.append("12Z")
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.modelHrwNmmParams
+            paramLabels = UtilityModelNcepInterface.modelHrwNmmLabels
+            sectors = UtilityModelNcepInterface.sectorsHrwNmm
+            times = []
+            (0...48).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runs.append("12Z")
+            runTimeData.listRun = runs
         case "NCEP:HRW-ARW":
-            paramArr = UtilityModelNcepInterface.modelHrwNmmParams
-            paramLabelArr = UtilityModelNcepInterface.modelHrwNmmLabels
-            sectorArr = UtilityModelNcepInterface.sectorsHrwNmm
-            timeArr = []
-            (0...48).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runArr.append("12Z")
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.modelHrwNmmParams
+            paramLabels = UtilityModelNcepInterface.modelHrwNmmLabels
+            sectors = UtilityModelNcepInterface.sectorsHrwNmm
+            times = []
+            (0...48).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runs.append("12Z")
+            runTimeData.listRun = runs
         case "NCEP:HRW-ARW2":
-            paramArr = UtilityModelNcepInterface.paramsHrwArw2
-            paramLabelArr = UtilityModelNcepInterface.labelsHrwArw2
-            sectorArr = UtilityModelNcepInterface.sectorsHrwArw2
-            timeArr = []
-            (0...48).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runArr.append("12Z")
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.paramsHrwArw2
+            paramLabels = UtilityModelNcepInterface.labelsHrwArw2
+            sectors = UtilityModelNcepInterface.sectorsHrwArw2
+            times = []
+            (0...48).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runs.append("12Z")
+            runTimeData.listRun = runs
         case "NCEP:HREF":
-            paramArr = UtilityModelNcepInterface.paramsHref
-            paramLabelArr = UtilityModelNcepInterface.labelsHref
-            sectorArr = UtilityModelNcepInterface.sectorsHref
-            timeArr = []
-            (0...36).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runArr.append("06Z")
-            runArr.append("12Z")
-            runArr.append("18Z")
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.paramsHref
+            paramLabels = UtilityModelNcepInterface.labelsHref
+            sectors = UtilityModelNcepInterface.sectorsHref
+            times = []
+            (0...36).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runs.append("06Z")
+            runs.append("12Z")
+            runs.append("18Z")
+            runTimeData.listRun = runs
         case "NCEP:NBM":
-            paramArr = UtilityModelNcepInterface.paramsNbm
-            paramLabelArr = UtilityModelNcepInterface.labelsNbm
-            sectorArr = UtilityModelNcepInterface.sectorsNbm
-            timeArr = []
-            stride(from: 0, to: 264, by: 3).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runArr.append("06Z")
-            runArr.append("12Z")
-            runArr.append("18Z")
-            runTimeData.listRun = runArr
+            params = UtilityModelNcepInterface.paramsNbm
+            paramLabels = UtilityModelNcepInterface.labelsNbm
+            sectors = UtilityModelNcepInterface.sectorsNbm
+            times = []
+            stride(from: 0, to: 264, by: 3).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runs.append("06Z")
+            runs.append("12Z")
+            runs.append("18Z")
+            runTimeData.listRun = runs
         case "NCEP:GEFS-SPAG":
-            paramArr = UtilityModelNcepInterface.modelGefsSpagParams
-            paramLabelArr = UtilityModelNcepInterface.modelGefsSpagLabels
-            sectorArr = UtilityModelNcepInterface.sectorsGefsSpag
-            timeArr = []
-            stride(from: 0, to: 180, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
-            stride(from: 192, to: 384, by: 12).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelGefsSpagParams
+            paramLabels = UtilityModelNcepInterface.modelGefsSpagLabels
+            sectors = UtilityModelNcepInterface.sectorsGefsSpag
+            times = []
+            stride(from: 0, to: 180, by: 6).forEach {times.append(String(format: "%03d", $0))}
+            stride(from: 192, to: 384, by: 12).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:GEFS-MEAN-SPRD":
-            paramArr = UtilityModelNcepInterface.modelGefsMnsprdParams
-            paramLabelArr = UtilityModelNcepInterface.modelGefsMnsprdLabels
-            sectorArr = UtilityModelNcepInterface.sectorsGefsMnsprd
-            timeArr = []
-            stride(from: 0, to: 180, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
-            stride(from: 192, to: 384, by: 12).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelGefsMnsprdParams
+            paramLabels = UtilityModelNcepInterface.modelGefsMnsprdLabels
+            sectors = UtilityModelNcepInterface.sectorsGefsMnsprd
+            times = []
+            stride(from: 0, to: 180, by: 6).forEach {times.append(String(format: "%03d", $0))}
+            stride(from: 192, to: 384, by: 12).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:SREF":
-            paramArr = UtilityModelNcepInterface.modelSrefParams
-            paramLabelArr = UtilityModelNcepInterface.modelSrefLabels
-            sectorArr = UtilityModelNcepInterface.sectorsSref
-            timeArr = []
-            stride(from: 0, to: 87, by: 3).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelSrefParams
+            paramLabels = UtilityModelNcepInterface.modelSrefLabels
+            sectors = UtilityModelNcepInterface.sectorsSref
+            times = []
+            stride(from: 0, to: 87, by: 3).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ("03Z")
         case "NCEP:NAEFS":
-            paramArr = UtilityModelNcepInterface.modelNaefsParams
-            paramLabelArr = UtilityModelNcepInterface.modelNaefsLabels
-            sectorArr = UtilityModelNcepInterface.sectorsNaefs
-            timeArr = []
-            stride(from: 0, to: 384, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelNaefsParams
+            paramLabels = UtilityModelNcepInterface.modelNaefsLabels
+            sectors = UtilityModelNcepInterface.sectorsNaefs
+            times = []
+            stride(from: 0, to: 384, by: 6).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:POLAR":
-            paramArr = UtilityModelNcepInterface.modelPolarParams
-            paramLabelArr = UtilityModelNcepInterface.modelPolarLabels
-            sectorArr = UtilityModelNcepInterface.sectorsPolar
-            timeArr = []
-            stride(from: 0, to: 384, by: 24).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = []
-            runArr.append("00Z")
-            runTimeData.listRun=runArr
+            params = UtilityModelNcepInterface.modelPolarParams
+            paramLabels = UtilityModelNcepInterface.modelPolarLabels
+            sectors = UtilityModelNcepInterface.sectorsPolar
+            times = []
+            stride(from: 0, to: 384, by: 24).forEach {times.append(String(format: "%03d", $0))}
+            runs = []
+            runs.append("00Z")
+            runTimeData.listRun=runs
         case "NCEP:WW3":
-            paramArr = UtilityModelNcepInterface.modelWw3Params
-            paramLabelArr = UtilityModelNcepInterface.modelWw3Labels
-            sectorArr = UtilityModelNcepInterface.sectorsWw3
-            timeArr = []
-            stride(from: 0, to: 126, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelWw3Params
+            paramLabels = UtilityModelNcepInterface.modelWw3Labels
+            sectors = UtilityModelNcepInterface.sectorsWw3
+            times = []
+            stride(from: 0, to: 126, by: 6).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:ESTOFS":
-            paramArr = UtilityModelNcepInterface.modelEstofsParams
-            paramLabelArr = UtilityModelNcepInterface.modelEstofsLabels
-            sectorArr = UtilityModelNcepInterface.sectorsEstofs
-            timeArr = []
-            stride(from: 0, to: 180, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelEstofsParams
+            paramLabels = UtilityModelNcepInterface.modelEstofsLabels
+            sectors = UtilityModelNcepInterface.sectorsEstofs
+            times = []
+            stride(from: 0, to: 180, by: 1).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "NCEP:FIREWX":
-            paramArr = UtilityModelNcepInterface.modelFirewxParams
-            paramLabelArr = UtilityModelNcepInterface.modelFirewxLabels
-            sectorArr = UtilityModelNcepInterface.sectorsFirewx
-            timeArr = []
-            stride(from: 0, to: 37, by: 1).forEach {timeArr.append(String(format: "%03d", $0))}
+            params = UtilityModelNcepInterface.modelFirewxParams
+            paramLabels = UtilityModelNcepInterface.modelFirewxLabels
+            sectors = UtilityModelNcepInterface.sectorsFirewx
+            times = []
+            stride(from: 0, to: 37, by: 1).forEach {times.append(String(format: "%03d", $0))}
             setupListRunZ()
         case "WPCGEFS:WPCGEFS":
-            paramArr = UtilityModelWpcGefsInterface.params
-            paramLabelArr = UtilityModelWpcGefsInterface.labels
-            sectorArr = UtilityModelWpcGefsInterface.sectors
-            timeArr = []
-            stride(from: 0, to: 240, by: 6).forEach {timeArr.append(String(format: "%03d", $0))}
-            runArr = self.runTimeData.listRun
+            params = UtilityModelWpcGefsInterface.params
+            paramLabels = UtilityModelWpcGefsInterface.labels
+            sectors = UtilityModelWpcGefsInterface.sectors
+            times = []
+            stride(from: 0, to: 240, by: 6).forEach {times.append(String(format: "%03d", $0))}
+            runs = self.runTimeData.listRun
         case "SPCHRRR:HRRR":
-            paramArr = UtilityModelSpcHrrrInterface.params
-            paramLabelArr = UtilityModelSpcHrrrInterface.labels
-            sectorArr = UtilityModelSpcHrrrInterface.sectors
-            timeArr = []
-            (2...15).forEach {timeArr.append(String(format: "%02d", $0))}
-            runArr = self.runTimeData.listRun
+            params = UtilityModelSpcHrrrInterface.params
+            paramLabels = UtilityModelSpcHrrrInterface.labels
+            sectors = UtilityModelSpcHrrrInterface.sectors
+            times = []
+            (2...15).forEach {times.append(String(format: "%02d", $0))}
+            runs = self.runTimeData.listRun
         case "SPCHREF:HREF":
-            paramArr = UtilityModelSpcHrefInterface.params
-            paramLabelArr = UtilityModelSpcHrefInterface.labels
-            sectorArr = UtilityModelSpcHrefInterface.sectorsLong
-            timeArr = []
-            (1...49).forEach {timeArr.append(String(format: "%02d", $0))}
-            runArr = self.runTimeData.listRun
+            params = UtilityModelSpcHrefInterface.params
+            paramLabels = UtilityModelSpcHrefInterface.labels
+            sectors = UtilityModelSpcHrefInterface.sectorsLong
+            times = []
+            (1...49).forEach {times.append(String(format: "%02d", $0))}
+            runs = self.runTimeData.listRun
         case "SPCSREF:SREF":
-            paramArr = UtilityModelSpcSrefInterface.params
-            paramLabelArr = UtilityModelSpcSrefInterface.labels
-            sectorArr = []
-            timeArr = []
-            stride(from: 0, to: 87, by: 3).forEach {timeArr.append(String(format: "%02d", $0))}
-            runArr = self.runTimeData.listRun
+            params = UtilityModelSpcSrefInterface.params
+            paramLabels = UtilityModelSpcSrefInterface.labels
+            sectors = []
+            times = []
+            stride(from: 0, to: 87, by: 3).forEach {times.append(String(format: "%02d", $0))}
+            runs = self.runTimeData.listRun
         default: break
         }
-        if sectorArr.count > 0 {
-            if !self.sectorArr.contains(sector) {
-                self.sector = self.sectorArr[0]
+        if sectors.count > 0 {
+            if !self.sectors.contains(sector) {
+                self.sector = self.sectors[0]
                 self.sectorButton.title = self.sector
             }
         }
-        if !self.paramArr.contains(param) {
-            if self.paramArr.count > 0 {
-                self.param = self.paramArr[0]
+        if !self.params.contains(param) {
+            if self.params.count > 0 {
+                self.param = self.params[0]
             }
             self.prodButton.title = self.param.truncate(productButtonTruncate)
         }
     }
     
     func setupListRunZ() {
-        runArr = []
-        runArr.append("00Z")
-        runArr.append("06Z")
-        runArr.append("12Z")
-        runArr.append("18Z")
-        runTimeData.listRun = runArr
+        runs = []
+        runs.append("00Z")
+        runs.append("06Z")
+        runs.append("12Z")
+        runs.append("18Z")
+        runTimeData.listRun = runs
     }
     
     // TODO fix unused arg
     func setupListRunZ(_ start: String) {
-        runArr = []
-        runArr.append("03Z")
-        runArr.append("09Z")
-        runArr.append("15Z")
-        runArr.append("21Z")
-        runTimeData.listRun = runArr
+        runs = []
+        runs.append("03Z")
+        runs.append("09Z")
+        runs.append("15Z")
+        runs.append("21Z")
+        runTimeData.listRun = runs
     }
     
     func getRunStatus() {
@@ -475,7 +475,7 @@ final public class ObjectModel {
             break
         case "NCEP":
             runTimeData = UtilityModelNcepInputOutput.getRunTime(self)
-            runTimeData.listRun = runArr
+            runTimeData.listRun = runs
         case "WPCGEFS":
             runTimeData = UtilityModelWpcGefsInputOutput.getRunTime()
         case "SPCHRRR":
@@ -566,7 +566,7 @@ final public class ObjectModel {
     }
     
     func setParam(_ paramIdx: Int) {
-        self.param = paramArr[paramIdx]
+        self.param = params[paramIdx]
         self.prodButton.title = param.truncate(productButtonTruncate)
         if self.modelName == "SSEO" {
             setModelVars(self.modelName)
@@ -574,9 +574,9 @@ final public class ObjectModel {
     }
     
     func setTimeIdx(_ timeIdx: Int) {
-        if timeIdx > -1 && timeIdx < timeArr.count {
+        if timeIdx > -1 && timeIdx < times.count {
             self.timeIdx = timeIdx
-            self.timeStr = self.timeArr[timeIdx]
+            self.timeStr = self.times[timeIdx]
             self.timeButton.title = timeStr
         }
     }
@@ -584,26 +584,26 @@ final public class ObjectModel {
     // TODO make private below 2
     func timeIdxIncr() {
         self.timeIdx += 1
-        self.timeStr = self.timeArr.safeGet(timeIdx)
+        self.timeStr = self.times.safeGet(timeIdx)
         self.timeButton.title = timeStr
     }
     
     func timeIdxDecr() {
         self.timeIdx -= 1
-        self.timeStr = self.timeArr.safeGet(timeIdx)
+        self.timeStr = self.times.safeGet(timeIdx)
         self.timeButton.title = timeStr
     }
     
     func leftClick() {
         if timeIdx == 0 {
-            setTimeIdx(timeArr.count - 1)
+            setTimeIdx(times.count - 1)
         } else {
             timeIdxDecr()
         }
     }
     
     func rightClick() {
-        if timeIdx == timeArr.count - 1 {
+        if timeIdx == times.count - 1 {
             setTimeIdx(0)
         } else {
             timeIdxIncr()
@@ -611,6 +611,6 @@ final public class ObjectModel {
     }
     
     func setTimeArr(_ idx: Int, _ time: String) {
-        self.timeArr[idx] = time
+        self.times[idx] = time
     }
 }
