@@ -545,7 +545,6 @@ final class WXMetalRender {
             } else {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
             }
-            
         } else {
             timeButton.title = ""
         }
