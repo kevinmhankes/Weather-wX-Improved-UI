@@ -44,7 +44,7 @@ final class Location {
         Location.addToListOfNames(name)
     }
 
-    func saveLocationToNewSlot(_ newLocNumInt: Int) {
+    func saveToNewSlot(_ newLocNumInt: Int) {
         let locNumAsString = String(newLocNumInt + 1)
         Utility.writePref("LOC" + locNumAsString + "_X", lat)
         Utility.writePref("LOC" + locNumAsString + "_Y", lon)
@@ -159,11 +159,11 @@ final class Location {
     }
 
     // used in adhoc location
-    static func locationSave(_ latLon: LatLon) -> String {
-        return locationSave(String(Location.numLocations + 1), latLon, latLon.prettyPrint())
+    static func save(_ latLon: LatLon) -> String {
+        return save(String(Location.numLocations + 1), latLon, latLon.prettyPrint())
     }
 
-    static func locationSave(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
+    static func save(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
         let locNumInt = Int(locNum) ?? 0
         let locNumToSave = locNumInt == (Location.numLocations + 1) ? locNumInt : Location.numLocations
         Utility.writePref("LOC" + locNum + "_X", latLon.latString)
@@ -218,7 +218,7 @@ final class Location {
             + "(" + radarSite.uppercased() + ")"
     }
 
-    static func deleteLocation(_ locToDeleteStr: String) {
+    static func delete(_ locToDeleteStr: String) {
         let locToDeleteInt = Int(locToDeleteStr) ?? 0
         let locNumIntCurrent = Location.numLocations
         if locToDeleteInt > locNumIntCurrent { return }

@@ -65,13 +65,13 @@ final class vcSettingsLocation: UIwXViewController {
         if position > 0 {
             let locA = Location(position - 1)
             let locB = Location(position)
-            locA.saveLocationToNewSlot(position)
-            locB.saveLocationToNewSlot(position - 1)
+            locA.saveToNewSlot(position)
+            locB.saveToNewSlot(position - 1)
         } else {
             let locA = Location(Location.numLocations-1)
             let locB = Location(0)
-            locA.saveLocationToNewSlot(0)
-            locB.saveLocationToNewSlot(Location.numLocations-1)
+            locA.saveToNewSlot(0)
+            locB.saveToNewSlot(Location.numLocations-1)
         }
         displayContent()
     }
@@ -80,20 +80,20 @@ final class vcSettingsLocation: UIwXViewController {
         if position < (Location.numLocations - 1) {
             let locA = Location(position)
             let locB = Location(position + 1)
-            locA.saveLocationToNewSlot(position + 1)
-            locB.saveLocationToNewSlot(position)
+            locA.saveToNewSlot(position + 1)
+            locB.saveToNewSlot(position)
         } else {
             let locA = Location(position)
             let locB = Location(0)
-            locA.saveLocationToNewSlot(0)
-            locB.saveLocationToNewSlot(position)
+            locA.saveToNewSlot(0)
+            locB.saveToNewSlot(position)
         }
         displayContent()
     }
     
     func deleteLocation(_ position: Int) {
         if Location.numLocations > 1 {
-            Location.deleteLocation(String(position + 1))
+            Location.delete(String(position + 1))
             displayContent()
         }
     }

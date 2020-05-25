@@ -108,7 +108,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
     
     @objc func saveClicked() {
-        status = Location.locationSave(
+        status = Location.save(
             numLocsLocalStr,
             LatLon(latTextView.view.text!, lonTextView.view.text!),
             labelTextView.view.text!
@@ -134,7 +134,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
     
     @objc func deleteClicked() {
-        Location.deleteLocation(numLocsLocalStr)
+        Location.delete(numLocsLocalStr)
         doneClicked()
     }
     
@@ -275,7 +275,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     
     func saveFromMap(_ locationName: String, _ lat: String, _ lon: String) {
         labelTextView.text = locationName
-        status = Location.locationSave(numLocsLocalStr, LatLon(lat, lon), labelTextView.view.text!)
+        status = Location.save(numLocsLocalStr, LatLon(lat, lon), labelTextView.view.text!)
         latTextView.text = lat
         lonTextView.text = lon
         statusTextView.text = status

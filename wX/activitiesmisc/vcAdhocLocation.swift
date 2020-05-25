@@ -54,7 +54,7 @@ final class vcAdhocLocation: UIwXViewController {
     }
     
     @objc func saveClicked() {
-        let status = Location.locationSave(adhocLocation)
+        let status = Location.save(adhocLocation)
         ObjectPopUp(self, status, saveButton).present()
     }
 }
