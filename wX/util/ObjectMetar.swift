@@ -126,12 +126,12 @@ final class ObjectMetar {
         }
     }
     
-    func decodeMetar(_ metar: String) {
+    /*func decodeMetar(_ metar: String) {
         let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
         let patternMetarWxogl2 = ".*? A([0-9]{4})"
         let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
         let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
-        var tmpBlob = ""
+        //var tmpBlob = ""
         var pressureBlob = ""
         var windBlob = ""
         var visBlob = ""
@@ -144,7 +144,7 @@ final class ObjectMetar {
         var windgustInKt = ""
         var windDirD = 0.0
         if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
-            tmpBlob = metar.parse(patternMetarWxogl1)
+            let tmpBlob = metar.parse(patternMetarWxogl1)
             TDArr = tmpBlob.split("/")
             pressureBlob = metar.parse(patternMetarWxogl2)
             windBlob = metar.parse(patternMetarWxogl3)
@@ -176,7 +176,7 @@ final class ObjectMetar {
                 dewPoint = UtilityMath.celsiusToFahrenheit(dewPoint.replace("M", "-")).replace(".0", "")
             }
         }
-    }
+    }*/
     
     func decodeIconFromMetar(_ condition: String, _ obs: RID) -> String {
         // https://api.weather.gov/icons/land/day/ovc?size=medium
