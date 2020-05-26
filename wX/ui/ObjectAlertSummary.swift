@@ -41,7 +41,6 @@ final class ObjectAlertSummary: NSObject {
         var index = 0
         var filterBool = true
         var filterLabel = ""
-        var state = ""
         var stateCntMap = [String: Int]()
         capAlerts.forEach { alert in
             if filter == "" {
@@ -52,12 +51,12 @@ final class ObjectAlertSummary: NSObject {
                 filterLabel = filter
             }
             if filterBool {
-                var nwsOffice = ""
-                var nwsLocation = ""
+                let nwsOffice: String
+                let nwsLocation: String
                 if alert.vtec.count > 15 {
                     nwsOffice = alert.vtec.substring(8, 11)
                     nwsLocation = Utility.getWfoSiteName(nwsOffice)
-                    state = nwsLocation.substring(0, 2)
+                    let state = nwsLocation.substring(0, 2)
                     if stateCntMap.keys.contains(state) {
                         stateCntMap[state] = (stateCntMap[state]! + 1)
                     } else {
