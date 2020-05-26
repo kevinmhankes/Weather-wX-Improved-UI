@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardLocationItem {
 
     let tvCurrentConditions: ObjectTextView
-
+    // TODO create method to update tvCurrentConditions.text
     init(
         _ uiv: UIwXViewController,
         _ name: String,
