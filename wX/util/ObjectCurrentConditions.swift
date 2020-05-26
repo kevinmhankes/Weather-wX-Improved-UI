@@ -84,9 +84,8 @@ final class ObjectCurrentConditions {
         let dataList = data.split(separator)
         var topLineLocal = ""
         var middleLineLocal = ""
-        var list = [String]()
         if dataList.count > 4 {
-            list = dataList[0].split("/")
+            let list = dataList[0].split("/")
             topLineLocal = dataList[4].replaceAll("^ ", "") + " " + list[0] + dataList[2]
             middleLineLocal = list[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
             middleLineLocal += status
