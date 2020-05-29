@@ -20,8 +20,8 @@ final class vcAdhocLocation: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleButton = ObjectToolbarIcon(self, #selector(doneClicked))
-        saveButton = ObjectToolbarIcon(title: "Save Location", self, #selector(saveClicked))
+        let titleButton = ObjectToolbarIcon(self, nil)
+        saveButton = ObjectToolbarIcon(title: "Save Location", self, #selector(save))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
@@ -39,11 +39,11 @@ final class vcAdhocLocation: UIwXViewController {
             self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
             self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
             self.objectHazards = ObjectHazards(self, self.adhocLocation)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         _ = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, self.objectCurrentConditions, true)
         self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
         self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
@@ -53,7 +53,7 @@ final class vcAdhocLocation: UIwXViewController {
         self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
     }
     
-    @objc func saveClicked() {
+    @objc func save() {
         let status = Location.save(adhocLocation)
         ObjectPopUp(self, status, saveButton).present()
     }

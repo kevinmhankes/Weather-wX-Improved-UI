@@ -26,7 +26,7 @@
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 
-56104 2020_05_25 [REF] colormap optimizations
+56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
 		 [FIX] in SPC SWO summary must have tablet in landscape to show 4 images across, shows 2 now
