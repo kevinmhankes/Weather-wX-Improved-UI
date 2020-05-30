@@ -491,6 +491,19 @@ final class UtilitySpcMeso {
         "12": "Southwest",
         "11": "Northwest"
     ]
+    
+    static let sectorMapForTitle = [
+        "19": "US",
+        "20": "MW",
+        "13": "NC",
+        "14": "C",
+        "15": "SC",
+        "16": "NE",
+        "17": "CE",
+        "18": "SE",
+        "12": "SW",
+        "11": "NW"
+    ]
 
     static let sectorCodes = [
         "19",

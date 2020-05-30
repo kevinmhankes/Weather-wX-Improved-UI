@@ -25,6 +25,7 @@
 56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
+		 [FIX] SPC Meso - fix region/sector display in lower right corner
 		 [ADD] NHC text products MIATWSAT / EP are now fixed-width font with newlines not stripped
 		 [ADD] new SPC Meso param SR Helicity - Sfc-500m (srh5)
 		 [ADD] new SPC Meso param Sgfnt Tornado (0-500m SRH) (stpc5)

@@ -104,13 +104,13 @@ final class vcSpcMeso: UIwXViewController {
     
     func sectorChangedByIndex(_ index: Int) {
         self.sector = UtilitySpcMeso.sectorCodes[index]
-        self.sectorButton.title = (UtilitySpcMeso.sectorMap[sector] ?? "").truncate(3)
+        self.sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
         self.getContent()
     }
     
     func sectorChanged(_ sector: String) {
         self.sector = sector
-        self.sectorButton.title = (UtilitySpcMeso.sectorMap[sector] ?? "").truncate(3)
+        self.sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
         self.getContent()
     }
     
