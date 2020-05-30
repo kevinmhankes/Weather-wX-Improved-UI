@@ -29,12 +29,12 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             self.wfoProd = self.getLsrFromWfo(wfo)
             DispatchQueue.main.async {
                 self.siteButton.title = wfo
-                self.displayContent()
+                self.display()
             }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         if !map.mapShown {
             self.stackView.removeViews()
             self.wfoProd.forEach { item in
@@ -84,7 +84,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             completion: { _ -> Void in
                 //self.refreshViews()
                 self.map.setupMap(GlobalArrays.wfos)
-                self.displayContent()
+                self.display()
         }
         )
     }

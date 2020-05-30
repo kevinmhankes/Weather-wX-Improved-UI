@@ -17,7 +17,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         super.viewDidLoad()
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.soundingSites)
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, siteButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
@@ -28,15 +28,15 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         self.siteButton.title = wfo
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(wfo)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

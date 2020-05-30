@@ -27,11 +27,11 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         objectAlertDetail = ObjectAlertDetail(stackView)
         DispatchQueue.global(qos: .userInitiated).async {
             self.cap = CapAlert(url: self.usAlertsDetailUrl)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         self.objectAlertDetail.updateContent(self.scrollView, self.cap)
     }
     

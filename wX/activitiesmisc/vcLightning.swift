@@ -21,9 +21,9 @@ final class vcLightning: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(prodClicked))
+        productButton = ObjectToolbarIcon(self, #selector(productClicked))
         timeButton = ObjectToolbarIcon(self, #selector(timeClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         initializePreferences()
@@ -46,11 +46,11 @@ final class vcLightning: UIwXViewController {
         Utility.writePref(prefTokenPeriod, self.period)
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityLightning.getImage(self.sector, self.period)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         if self.firstRun {
             self.image.setBitmap(bitmap)
             self.firstRun = false
@@ -59,7 +59,7 @@ final class vcLightning: UIwXViewController {
         }
     }
     
-    @objc func prodClicked() {
+    @objc func productClicked() {
         _ = ObjectPopUp(self, title: "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
     }
     
@@ -80,7 +80,7 @@ final class vcLightning: UIwXViewController {
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

@@ -33,11 +33,11 @@ final class vcUSAlerts: UIwXViewController {
             let html = UtilityDownloadNws.getCap("us")
             let alerts = html.parseColumn("<entry>(.*?)</entry>")
             alerts.forEach { self.capAlerts.append(CapAlert(eventText: $0)) }
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         if !filterShown {
             self.filterButton.title = "Tornado/ThunderStorm/FFW"
@@ -86,6 +86,6 @@ final class vcUSAlerts: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

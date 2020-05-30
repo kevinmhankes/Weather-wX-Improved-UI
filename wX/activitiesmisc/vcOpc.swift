@@ -16,7 +16,7 @@ final class vcOpc: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
@@ -33,11 +33,11 @@ final class vcOpc: UIwXViewController {
         self.productButton.title = UtilityOpcImages.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
     }
     
@@ -45,7 +45,7 @@ final class vcOpc: UIwXViewController {
         _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, self.getContent(_:))
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

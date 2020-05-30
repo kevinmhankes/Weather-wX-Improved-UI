@@ -15,10 +15,10 @@ final class vcTextViewer: UIwXViewControllerWithAudio {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        displayContent()
+        display()
     }
 
-    private func displayContent() {
+    private func display() {
         objectTextView = ObjectTextView(stackView, textViewText)
         objectTextView.constrain(scrollView)
     }

@@ -13,7 +13,7 @@ final class vcImageViewer: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         self.getContent()
     }
@@ -31,7 +31,7 @@ final class vcImageViewer: UIwXViewController {
         self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

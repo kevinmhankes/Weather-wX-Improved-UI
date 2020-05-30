@@ -21,7 +21,7 @@ final class vcSevereDashboard: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
@@ -38,7 +38,7 @@ final class vcSevereDashboard: UIwXViewController {
             self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
             DispatchQueue.main.async {
                 if UIAccessibility.isVoiceOverRunning { UtilityAudio.speakText(self.getStatusText(), self.synthesizer) }
-                self.displayContent()
+                self.display()
             }
         }
     }
@@ -124,11 +124,11 @@ final class vcSevereDashboard: UIwXViewController {
         Route.spcStormReports(self, "today")
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         var views = [UIView]()
         buttonActions = [String]()
@@ -224,6 +224,6 @@ final class vcSevereDashboard: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

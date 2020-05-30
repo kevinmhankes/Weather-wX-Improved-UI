@@ -26,11 +26,11 @@ final class vcSpotters: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let spotterData = UtilitySpotter.get()
-            DispatchQueue.main.async { self.displayContent(spotterData) }
+            DispatchQueue.main.async { self.display(spotterData) }
         }
     }
     
-    private func displayContent(_ spotterData: [Spotter]) {
+    private func display(_ spotterData: [Spotter]) {
         self.refreshViews()
         self.spotterCountButton.title = "Count: " + String(spotterData.count)
         self.spotterDataSorted = spotterData.sorted(by: {$1.lastName > $0.lastName})

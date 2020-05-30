@@ -69,11 +69,11 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             } else {
                 html = UtilityDownload.getTextProduct(self.product + self.wfo)
             }
-            DispatchQueue.main.async { self.displayContent(html) }
+            DispatchQueue.main.async { self.display(html) }
         }
     }
     
-    private func displayContent(_ html: String) {
+    private func display(_ html: String) {
         if html == "" {
             self.objectTextView.text = "None issued by this office recently."
         } else {
