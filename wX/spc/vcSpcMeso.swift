@@ -27,6 +27,8 @@ final class vcSpcMeso: UIwXViewController {
     var spcMesoFromHomeScreen = false
     var spcMesoToken = ""
     var parameters = [String]()
+    private let prefTokenProduct = "SPCMESO1_PARAM_LAST_USED"
+    private let prefTokenSector = "SPCMESO1_SECTOR_LAST_USED"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +76,8 @@ final class vcSpcMeso: UIwXViewController {
             spcMesoFromHomeScreen = false
             sectorChanged(sector)
         } else {
-            product = Utility.readPref(prefModel + numPanesStr + "_PARAM_LAST_USED", product)
-            sectorChanged(Utility.readPref(prefModel + numPanesStr + "_SECTOR_LAST_USED", sector))
+            product = Utility.readPref(prefTokenProduct, product)
+            sectorChanged(Utility.readPref(prefTokenSector, sector))
         }
     }
     
@@ -94,8 +96,8 @@ final class vcSpcMeso: UIwXViewController {
             self.image.updateBitmap(bitmap)
         }
         self.paramButton.title = self.product
-        Utility.writePref(self.prefModel + self.numPanesStr + "_PARAM_LAST_USED", self.product)
-        Utility.writePref(self.prefModel + self.numPanesStr + "_SECTOR_LAST_USED", self.sector)
+        Utility.writePref(prefTokenProduct, self.product)
+        Utility.writePref(prefTokenSector, self.sector)
     }
     
     @objc func sectorClicked() {
