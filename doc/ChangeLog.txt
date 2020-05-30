@@ -19,7 +19,6 @@
 // [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [ADD] onrestart SPCStormReports
 // [REF] spc storm reports refactor like kotlin
-// [REF] use enum for model type
 // [ADD] usalerts filter by state
 // [ADD] onrestart NHCStorm
 
