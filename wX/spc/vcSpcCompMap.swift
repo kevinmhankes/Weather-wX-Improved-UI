@@ -15,7 +15,7 @@ final class vcSpcCompMap: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         deSerializeSettings()
@@ -33,11 +33,11 @@ final class vcSpcCompMap: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcCompmap.getImage(self.layers)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
         self.serializeSettings()
     }
@@ -69,7 +69,7 @@ final class vcSpcCompMap: UIwXViewController {
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

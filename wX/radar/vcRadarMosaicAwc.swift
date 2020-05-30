@@ -25,7 +25,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
@@ -43,11 +43,11 @@ final class vcRadarMosaicAwc: UIwXViewController {
         self.sectorButton.title = self.sector
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
         if !self.isLocal {
             Utility.writePref(self.prefTokenSector, self.sector)
@@ -73,7 +73,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

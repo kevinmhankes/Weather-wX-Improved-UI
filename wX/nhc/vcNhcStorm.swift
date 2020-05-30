@@ -35,7 +35,7 @@ final class vcNhcStorm: UIwXViewController {
         super.viewDidLoad()
         product = "MIATCP" + stormData.binNumber
         productButton = ObjectToolbarIcon(title: " Text Products", self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
@@ -50,11 +50,11 @@ final class vcNhcStorm: UIwXViewController {
                 self.bitmaps.append(Bitmap(url + fileName))
             }
             self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.bitmaps)
     }
     
@@ -69,18 +69,18 @@ final class vcNhcStorm: UIwXViewController {
         }
     }
     
-    func displayContent() {
+    func display() {
         refreshViews()
-        displayImageContent()
-        displayTextContent()
+        displayImage()
+        displayText()
     }
     
-    func displayTextContent() {
+    func displayText() {
         let objectTextView = ObjectTextView(self.stackView, html)
         objectTextView.constrain(scrollView)
     }
     
-    func displayImageContent() {
+    func displayImage() {
         bitmapsFiltered = []
         self.bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }
         _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
@@ -94,7 +94,7 @@ final class vcNhcStorm: UIwXViewController {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in self.displayContent() }
+            completion: { _ -> Void in self.display() }
         )
     }
 }

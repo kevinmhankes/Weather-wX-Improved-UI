@@ -33,7 +33,7 @@ final class vcSpcMeso: UIwXViewController {
         let toolbarTop = ObjectToolbar()
         layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(layerClicked))
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         toolbarTop.items = ObjectToolbarItems(
             [
@@ -82,11 +82,11 @@ final class vcSpcMeso: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         if self.firstRun {
             self.image.setBitmap(bitmap)
             self.firstRun = false
@@ -114,7 +114,7 @@ final class vcSpcMeso: UIwXViewController {
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

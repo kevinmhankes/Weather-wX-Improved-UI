@@ -38,7 +38,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
@@ -46,7 +46,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         Route.imageViewer(self, UtilitySpcFireOutlook.urls[dayIndex])
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
@@ -57,6 +57,6 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }
