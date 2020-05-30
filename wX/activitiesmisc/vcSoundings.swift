@@ -37,7 +37,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, image.bitmap)
+        UtilityShare.image(self, sender, image.bitmap)
     }
     
     @objc func mapClicked() {

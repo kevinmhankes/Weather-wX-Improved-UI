@@ -36,7 +36,7 @@ final class vcSpcFireSummary: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps)
+        UtilityShare.image(self, sender, bitmaps)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

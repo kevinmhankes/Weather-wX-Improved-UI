@@ -57,7 +57,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps, self.html)
+        UtilityShare.image(self, sender, bitmaps, self.html)
     }
     
     @objc func stateClicked() {

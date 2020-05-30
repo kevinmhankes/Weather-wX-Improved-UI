@@ -52,7 +52,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmap, html)
+        UtilityShare.image(self, sender, bitmap, html)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

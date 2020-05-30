@@ -8,24 +8,24 @@ import UIKit
 
 final class UtilityShare {
 
-    static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmap: Bitmap) {
+    static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmap: Bitmap) {
         let objectsToShare = [bitmap.image]
         shareAction(uiv, sender, objectsToShare)
     }
 
-    static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap]) {
+    static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap]) {
         let images = bitmaps.map {$0.image}
         let objectsToShare = images as [Any]
         shareAction(uiv, sender, objectsToShare)
     }
 
-    static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap], _ text: String) {
+    static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap], _ text: String) {
         let images = bitmaps.map {$0.image}
         let objectsToShare = [text, images] as [Any]
         shareAction(uiv, sender, objectsToShare)
     }
     
-    static func shareImage(_ uiv: UIViewController, _ sender: UIButton, _ bitmap: Bitmap, _ text: String) {
+    static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmap: Bitmap, _ text: String) {
         let image = bitmap.image
         let objectsToShare = [text, image] as [Any]
         shareAction(uiv, sender, objectsToShare)

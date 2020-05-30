@@ -66,7 +66,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     
     @objc override func shareClicked(sender: UIButton) {
         if let object = self.objectWatchProduct {
-            UtilityShare.shareImage(self, sender, bitmaps, object.text)
+            UtilityShare.image(self, sender, bitmaps, object.text)
         }
     }
     

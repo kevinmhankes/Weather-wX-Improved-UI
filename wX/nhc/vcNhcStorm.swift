@@ -55,7 +55,7 @@ final class vcNhcStorm: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, self.bitmaps)
+        UtilityShare.image(self, sender, self.bitmaps)
     }
     
     @objc func productClicked() {

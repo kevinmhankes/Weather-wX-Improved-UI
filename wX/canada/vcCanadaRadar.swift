@@ -121,7 +121,7 @@ final class vcCanadaRadar: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, image.bitmap)
+        UtilityShare.image(self, sender, image.bitmap)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -125,7 +125,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
+        UtilityShare.image(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
     
     private func display() {

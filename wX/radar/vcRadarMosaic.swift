@@ -56,7 +56,7 @@ final class vcRadarMosaic: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, image.bitmap)
+        UtilityShare.image(self, sender, image.bitmap)
     }
     
     @objc func animateClicked() {

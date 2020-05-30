@@ -59,7 +59,7 @@ final class vcUSAlerts: UIwXViewController {
     }
     
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, self.objAlertSummary.image)
+        UtilityShare.image(self, sender, self.objAlertSummary.image)
     }
     
     @objc func filterClicked() {

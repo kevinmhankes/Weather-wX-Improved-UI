@@ -63,7 +63,7 @@ final class vcSpcStormReports: UIwXViewController {
     }
     
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, [self.image.bitmap], self.html)
+        UtilityShare.image(self, sender, [self.image.bitmap], self.html)
     }
     
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {

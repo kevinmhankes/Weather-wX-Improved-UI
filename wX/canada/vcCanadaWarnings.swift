@@ -31,7 +31,7 @@ final class vcCanadaWarnings: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, self.objectCanadaWarnings.bitmap)
+        UtilityShare.image(self, sender, self.objectCanadaWarnings.bitmap)
     }
     
     // this is called in objectCanadaWarnings

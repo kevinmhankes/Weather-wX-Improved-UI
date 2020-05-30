@@ -36,7 +36,7 @@ final class vcSpcTstormSummary: UIwXViewController {
     }
     
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, bitmaps)
+        UtilityShare.image(self, sender, bitmaps)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

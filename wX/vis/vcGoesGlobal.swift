@@ -65,7 +65,7 @@ final class vcGoesGlobal: UIwXViewController {
     }
     
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.shareImage(self, sender, image.bitmap)
+        UtilityShare.image(self, sender, image.bitmap)
     }
     
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
