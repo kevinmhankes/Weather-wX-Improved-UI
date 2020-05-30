@@ -5,6 +5,21 @@
  *****************************************************************************/
 
 final class UtilitySpcMeso {
+    
+    static let titles = [
+        ObjectMenuTitle("Observations", 3),
+        ObjectMenuTitle("Surface", 15),
+        ObjectMenuTitle("Upper Air", 25),
+        ObjectMenuTitle("Thermodynamics", 19),
+        ObjectMenuTitle("Wind Shear", 19),
+        ObjectMenuTitle("Composite Indices", 22),
+        ObjectMenuTitle("Multi-Parameter Fields", 10),
+        ObjectMenuTitle("Heavy Rain", 8), // 3
+        ObjectMenuTitle("Winter Weather", 14),
+        ObjectMenuTitle("Fire Weather", 6),
+        ObjectMenuTitle("Classic", 3),
+        ObjectMenuTitle("Beta", 10)
+    ]
 
     static let defaultSector = "19"
 
@@ -54,21 +69,6 @@ final class UtilitySpcMeso {
         "tadv_925",
         "7tad",
         "tadv"
-    ]
-
-    static let titles = [
-        ObjectMenuTitle("Observations", 3),
-        ObjectMenuTitle("Surface", 15),
-        ObjectMenuTitle("Upper Air", 25),
-        ObjectMenuTitle("Thermodynamics", 19),
-        ObjectMenuTitle("Wind Shear", 18), // 1
-        ObjectMenuTitle("Composite Indices", 21),
-        ObjectMenuTitle("Multi-Parameter Fields", 10),
-        ObjectMenuTitle("Heavy Rain", 8), // 3
-        ObjectMenuTitle("Winter Weather", 14),
-        ObjectMenuTitle("Fire Weather", 6),
-        ObjectMenuTitle("Classic", 3),
-        ObjectMenuTitle("Beta", 10)
     ]
 
     static let params = [
@@ -147,6 +147,7 @@ final class UtilitySpcMeso {
         "effh",
         "srh3",
         "srh1",
+        "srh5", // may 2020
         "llsr",
         "mlsr",
         "ulsr",
@@ -161,6 +162,7 @@ final class UtilitySpcMeso {
         "lscp",
         "stor",
         "stpc",
+        "stpc5", // may 2020
         "sigt1",
         "sigt2",
         "nstp",
@@ -314,6 +316,7 @@ final class UtilitySpcMeso {
         "SR Helicity - Effective",
         "SR Helicity - Sfc-3km",
         "SR Helicity - Sfc-1km",
+        "SR Helicity - Sfc-500m", // may 2020
         "SR Wind - Sfc-2km",
         "SR Wind - 4-6km",
         "SR Wind - 9-11km",
@@ -328,6 +331,7 @@ final class UtilitySpcMeso {
         "Supercell Composite (left-moving)",
         "Sgfnt Tornado (fixed layer)",
         "Sgfnt Tornado (effective layer)",
+        "Sgfnt Tornado (0-500m SRH)", // may 2020
         "Cond. Prob. Sigtor (Eqn 1)",
         "Cond. Prob. Sigtor (Eqn 2)",
         "Non-Supercell Tornado",

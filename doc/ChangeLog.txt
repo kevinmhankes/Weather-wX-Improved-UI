@@ -27,6 +27,9 @@
 56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
+		 [ADD] NHC text products MIATWSAT / EP are now fixed-width font with newlines not stripped
+		 [ADD] new SPC Meso param SR Helicity - Sfc-500m (srh5)
+		 [ADD] new SPC Meso param Sgfnt Tornado (0-500m SRH) (stpc5)
 		 [FIX] in SPC SWO summary must have tablet in landscape to show 4 images across, shows 2 now
 // App Store Release
 56103 2020_05_20 [REF] misc
