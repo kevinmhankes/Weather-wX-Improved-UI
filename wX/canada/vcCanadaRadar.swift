@@ -25,7 +25,7 @@ final class vcCanadaRadar: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems(
             [
                 doneButton,
@@ -57,11 +57,11 @@ final class vcCanadaRadar: UIwXViewController {
             } else {
                 bitmap = Bitmap(self.url)
             }
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
         self.productButton.title = self.radarSite
         if !self.startFromMosaic {
@@ -120,7 +120,7 @@ final class vcCanadaRadar: UIwXViewController {
         self.getContent()
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, image.bitmap)
     }
     

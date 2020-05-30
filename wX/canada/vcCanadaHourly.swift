@@ -22,11 +22,11 @@ final class vcCanadaHourly: UIwXViewControllerWithAudio {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
-            DispatchQueue.main.async { self.displayContent(html) }
+            DispatchQueue.main.async { self.display(html) }
         }
     }
     
-    private func displayContent(_ html: String) {
+    private func display(_ html: String) {
         self.objectTextView.text = html
     }
 }

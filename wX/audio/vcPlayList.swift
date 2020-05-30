@@ -26,7 +26,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
-        displayContent()
+        display()
         getContent()
     }
     
@@ -42,12 +42,12 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems.forEach { item in
             DispatchQueue.global(qos: .userInitiated).async {
                 UtilityPlayList.download(item)
-                DispatchQueue.main.async { self.displayContent() }
+                DispatchQueue.main.async { self.display() }
             }
         }
     }
     
-    func displayContent() {
+    func display() {
         self.stackView.removeViews()
         playlistItems.enumerated().forEach { index, item in
             let productText = Utility.readPref("PLAYLIST_" + item, "")
@@ -91,14 +91,14 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         let tmp = playlistItems[from + delta]
         playlistItems[from + delta] = playlistItems[from]
         playlistItems[from] = tmp
-        displayContent()
+        display()
     }
     
     func delete(selection: Int) {
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection])
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection] + "_TIME")
         playlistItems.remove(at: selection)
-        displayContent()
+        display()
     }
     
     func serializeSettings() {
@@ -143,7 +143,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 let productAdded = UtilityPlayList.add(product, text, self, button, showStatus: false)
                 if productAdded {
                     self.playlistItems.append(product)
-                    self.displayContent()
+                    self.display()
                     self.serializeSettings()
                 }
             }

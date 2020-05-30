@@ -16,7 +16,7 @@ final class vcCanadaWarnings: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         provinceButton = ObjectToolbarIcon(title: province, self, #selector(provinceClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, provinceButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.objectCanadaWarnings = ObjectCanadaWarnings(self)
@@ -26,11 +26,11 @@ final class vcCanadaWarnings: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCanadaWarnings.getData()
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.shareImage(self, sender, self.objectCanadaWarnings.bitmap)
     }
     
@@ -58,7 +58,7 @@ final class vcCanadaWarnings: UIwXViewController {
         }
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         self.objectCanadaWarnings.showData()
         self.provinceButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
@@ -66,6 +66,6 @@ final class vcCanadaWarnings: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

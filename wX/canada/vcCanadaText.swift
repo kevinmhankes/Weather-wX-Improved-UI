@@ -41,11 +41,11 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             // FIXME fix upstream data to uppercase
             let html = UtilityDownload.getTextProduct(self.product.uppercased())
-            DispatchQueue.main.async { self.displayContent(html) }
+            DispatchQueue.main.async { self.display(html) }
         }
     }
     
-    private func displayContent(_ html: String) {
+    private func display(_ html: String) {
         self.objectTextView.text = html
     }
     
