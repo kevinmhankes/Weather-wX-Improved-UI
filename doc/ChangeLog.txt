@@ -1,10 +1,4 @@
-// [ADD] Add 4th char to all radar sites
-// [FIX] troubleshoot TZL and N0U anim freeze (memory exhaustion?)
-// [FIX] Icon spacing issue 7 plus
 // [FIX] Canada radar site detection not working
-// [ADD] onrestart NHCStorm
-// [ADD] onrestart SPCStormReports
-// [FIX] Catalyst - Help dialogue
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
@@ -12,19 +6,22 @@
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [FIX] should not need to restart app when changing NWS icon size
-// [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 // [ADD] more robust handling network issues (cc,7day,radar)
-// [ADD] usalerts filter by state
 // [ADD] onrestart spc mcd wat mpd
-// [REF] spc storm reports refactor like kotlin
 // [ADD] text labels in multipane nexrad
 // [FIX] does radar product chosen impact radar on main screen
-// [REF] use enum for model type
 // [FIX] MacOS nexrad county labels truncate second line
 // [FIX] MacOS nexrad colormap legend does not show text labels
 // [ADD] nexrad dual pane - tap on time go to quad
 // [FIX] quad pane runs out of room when warnings selected
 // [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
+// [ADD] Add 4th char to all radar sites
+// [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
+// [ADD] onrestart SPCStormReports
+// [REF] spc storm reports refactor like kotlin
+// [REF] use enum for model type
+// [ADD] usalerts filter by state
+// [ADD] onrestart NHCStorm
 
 56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
