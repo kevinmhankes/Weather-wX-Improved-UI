@@ -21,12 +21,16 @@ final class UtilityModelSpcSrefInputOutput {
         results.forEach { runData.appendListRun($0.replace("z", "")) }
         tmpTxt = tmpTxt.parse(pattern1).parse("(f[0-9]{3})")
         runData.imageCompleteStr = tmpTxt
-        if runData.listRun.count > 0 { runData.mostRecentRun = runData.listRun[0] }
+        if runData.listRun.count > 0 {
+            runData.mostRecentRun = runData.listRun[0]
+            //runData.mostRecentRun = "latest"
+        }
         return runData
     }
     
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/sref/gifs/" + om.run.replace("z", "") + "/" + om.param + "f0" + om.time + ".gif"
+        print(imgUrl)
         return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
     }
 }

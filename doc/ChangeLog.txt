@@ -22,6 +22,7 @@
 // [REF] use enum for model type
 // [ADD] usalerts filter by state
 // [ADD] onrestart NHCStorm
+// [FIX] SPC SREF does it use "latest"
 
 56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff

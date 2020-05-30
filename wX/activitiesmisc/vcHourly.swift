@@ -17,7 +17,7 @@ final class vcHourly: UIwXViewControllerWithAudio {
             self.stackView,
             "",
             FontSize.hourly.size,
-            UITapGestureRecognizer(target: self, action: #selector(textAction))
+            UITapGestureRecognizer(target: self, action: #selector(scroll))
         )
         objectTextView.constrain(scrollView)
         self.getContent()
@@ -26,15 +26,15 @@ final class vcHourly: UIwXViewControllerWithAudio {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityHourly.getHourlyString(Location.getCurrentLocation())[0]
-            DispatchQueue.main.async { self.displayContent(html) }
+            DispatchQueue.main.async { self.display(html) }
         }
     }
     
-    private func displayContent(_ html: String) {
+    private func display(_ html: String) {
         self.objectTextView.text = html
     }
     
-    @objc func textAction() {
+    @objc func scroll() {
         scrollView.scrollToTop()
     }
     
