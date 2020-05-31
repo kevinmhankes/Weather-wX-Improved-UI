@@ -54,7 +54,7 @@ final class WXMetalNexradLevelData {
         }
     }
     
-    func decodeAndPlotNexradLevel3() {
+    private func decodeAndPlotNexradLevel3() {
         let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
             while dis.getShort() != -1 {}
@@ -84,7 +84,7 @@ final class WXMetalNexradLevelData {
         }
     }
     
-    func decodeAndPlotNexradLevel3FourBit() {
+    private func decodeAndPlotNexradLevel3FourBit() {
         switch productCode {
         case 181:
             binWord = MemoryBuffer(360 * 720)
@@ -126,7 +126,7 @@ final class WXMetalNexradLevelData {
         }
     }
     
-    func decodeAndPlotNexradL2() {
+    private func decodeAndPlotNexradL2() {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
         UtilityWXMetalPerfL2.decompress(radarBuffers!)
@@ -137,7 +137,7 @@ final class WXMetalNexradLevelData {
         numberOfRadials = radialStartAngle.capacity / 4
     }
     
-    func writeTimeL2() {
+    private func writeTimeL2() {
         msecs.position = 0
         days.position = 0
         let days2: Int16 = days.getShortNative()
@@ -151,7 +151,7 @@ final class WXMetalNexradLevelData {
         WXGLNexrad.writeRadarInfo("", radarInfoFinal)
     }
     
-    func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int) {
+    private func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int) {
         let radarInfo = "Mode: " + String(operationalMode) + ", VCP: " + String(volumeCoveragePattern)
             + ", " + "Product: " + String(productCode) + ", " + "Height: " + String(radarHeight)
         let sec = CLong((Int(volumeScanDate) - 1) * 3600 * 24) + Int(volumeScanTime)
