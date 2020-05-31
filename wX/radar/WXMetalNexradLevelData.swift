@@ -110,17 +110,18 @@ final class WXMetalNexradLevelData {
             productCode = Int16( dis.getUnsignedShort())
             operationalMode = Int16( dis.getUnsignedShort())
             volumeCoveragePattern = Int16(dis.getUnsignedShort())
-            _ = Int16(dis.getUnsignedShort())
-            _ = Int16(dis.getUnsignedShort())
+            sequenceNumber = dis.getUnsignedShort()
+            volumeScanNumber = dis.getUnsignedShort()
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
             writeTime(volumeScanDate, volumeScanTime)
             dis.skipBytes(6)
             dis.skipBytes(56)
             dis.skipBytes(32)
-            if productCode == 37 || productCode == 38 || productCode == 41 || productCode == 57 {
+            switch productCode {
+            case 37, 38, 41, 57:
                 numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decodeRaster(radarBuffers!))
-            } else {
+            default:
                 numberOfRangeBins = Int(UtilityWXMetalPerfL3FourBit.decodeRadial(radarBuffers!))
             }
             binSize = WXGLNexrad.getBinSize(productCode)

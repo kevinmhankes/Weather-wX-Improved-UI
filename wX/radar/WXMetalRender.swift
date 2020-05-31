@@ -514,7 +514,7 @@ final class WXMetalRender {
         self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.indexString)
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
-        // TODO use extension method on level data to generate
+        // TODO use extension method on radarBufers to generate
         switch self.radarBuffers.rd.productCode {
         case 37, 38:
             self.totalBins = UtilityWXMetalPerfRaster.generate(self.radarBuffers)
