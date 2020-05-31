@@ -25,6 +25,7 @@
 56104 2020_05_30 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
+		 [ADD] NHC Storm detail text products, use National text viewer instead of generic text viewer
 		 [FIX] SPC Meso - fix region/sector display in lower right corner
 		 [ADD] additional NHC text products that require fixed width
                  [ADD] SPC HREF 24-hr STP Calibrated: Tornado

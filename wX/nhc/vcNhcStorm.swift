@@ -63,10 +63,7 @@ final class vcNhcStorm: UIwXViewController {
     }
     
     func productChanged(_ product: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(product + self.stormData.binNumber.uppercased())
-            DispatchQueue.main.async { Route.textViewer(self, html) }
-        }
+        Route.wpcText(self, product + self.stormData.binNumber.uppercased())
     }
     
     func display() {
