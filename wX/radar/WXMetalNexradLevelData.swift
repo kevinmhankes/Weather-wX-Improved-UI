@@ -27,6 +27,11 @@ final class WXMetalNexradLevelData {
     var degree = 0.0
     var operationalMode: Int16 = 0
     var volumeCoveragePattern: Int16 = 0
+    private var latitudeOfRadar = 0.0
+    private var longitudeOfRadar = 0.0
+    private var sequenceNumber: UInt16 = 0
+    private var volumeScanNumber: UInt16 = 0
+    private var elevationNumber: UInt16 = 0
     
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
         self.init()
@@ -58,19 +63,19 @@ final class WXMetalNexradLevelData {
         let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
             while dis.getShort() != -1 {}
-            dis.skipBytes(8)
+            latitudeOfRadar = Double(dis.getInt()) / 1000.0
+            longitudeOfRadar = Double(dis.getInt()) / 1000.0
             radarHeight = Int(dis.getUnsignedShort())
             productCode = Int16(dis.getUnsignedShort())
             operationalMode = Int16(dis.getUnsignedShort())
             volumeCoveragePattern = Int16(dis.getUnsignedShort())
-            _ = Int16(dis.getUnsignedShort())
-            _ = Int16(dis.getUnsignedShort())
+            sequenceNumber = dis.getUnsignedShort()
+            volumeScanNumber = dis.getUnsignedShort()
             let volumeScanDate = Int16(dis.getUnsignedShort())
             let volumeScanTime = dis.getInt()
             writeTime(volumeScanDate, volumeScanTime)
             dis.skipBytes(10)
-            // elevationNumber
-            _ = dis.getUnsignedShort()
+            elevationNumber = dis.getUnsignedShort()
             let elevationAngle = dis.getShort()
             degree = Double(elevationAngle) / 10.0
             halfWord3132 = dis.getFloat()
