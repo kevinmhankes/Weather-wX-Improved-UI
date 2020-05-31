@@ -16,7 +16,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         UtilityUI.determineDeviceType()
-        self.displayContent()
+        self.display()
     }
     
     override func doneClicked() {
@@ -68,7 +68,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    private func displayContent() {
+    private func display() {
         Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
                 stackView,
@@ -134,7 +134,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                self.displayContent()
+                self.display()
         }
         )
     }

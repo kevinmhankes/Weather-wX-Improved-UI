@@ -18,7 +18,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.displayContent()
+        self.display()
     }
     
     override func doneClicked() {
@@ -101,7 +101,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
-    private func displayContent() {
+    private func display() {
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
                 stackView,
@@ -167,7 +167,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                self.displayContent()
+                self.display()
         }
         )
     }
