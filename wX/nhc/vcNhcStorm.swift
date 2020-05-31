@@ -19,7 +19,7 @@ final class vcNhcStorm: UIwXViewController {
         "MIAPWS: Wind Speed Probababilities"
     ]
     private var bitmapsFiltered = [Bitmap]()
-    private let stormUrls = [
+    private let imageUrls = [
         "_5day_cone_with_line_and_wind_sm2.png",
         "_key_messages.png",
         "WPCQPF_sm2.gif",
@@ -44,10 +44,10 @@ final class vcNhcStorm: UIwXViewController {
     override func getContent() {
         bitmaps = []
         DispatchQueue.global(qos: .userInitiated).async {
-            self.stormUrls.forEach { fileName in
+            self.imageUrls.forEach {
                 var url = self.stormData.baseUrl
-                if fileName == "WPCQPF_sm2.gif" { url.removeLast(2) }
-                self.bitmaps.append(Bitmap(url + fileName))
+                if $0 == "WPCQPF_sm2.gif" { url.removeLast(2) }
+                self.bitmaps.append(Bitmap(url + $0))
             }
             self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async { self.display() }
