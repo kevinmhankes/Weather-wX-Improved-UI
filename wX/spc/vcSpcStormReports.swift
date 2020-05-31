@@ -54,7 +54,7 @@ final class vcSpcStormReports: UIwXViewController {
             self.bitmap.url = self.imageUrl
             self.html = self.textUrl.getHtml()
             self.stormReports = UtilitySpcStormReports.process(self.html.split(MyApplication.newline))
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
@@ -112,7 +112,7 @@ final class vcSpcStormReports: UIwXViewController {
         self.stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
-        displayContent()
+        display()
     }
     
     private func displayPreContent() {
@@ -121,7 +121,7 @@ final class vcSpcStormReports: UIwXViewController {
         image = ObjectImage(self.stackView)
     }
     
-    private func displayContent() {
+    private func display() {
         var stateList = [String]()
         filterList = ["All"]
         var tornadoReports = 0
@@ -192,7 +192,7 @@ final class vcSpcStormReports: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.displayPreContent()
-                self.displayContent()
+                self.display()
         }
         )
     }

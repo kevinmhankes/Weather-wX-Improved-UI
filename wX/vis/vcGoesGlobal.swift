@@ -38,11 +38,11 @@ final class vcGoesGlobal: UIwXViewController {
         self.productButton.title = UtilityGoesFullDisk.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
         if UtilityGoesFullDisk.urls[self.index].contains("jma") {
             self.showAnimateButton()

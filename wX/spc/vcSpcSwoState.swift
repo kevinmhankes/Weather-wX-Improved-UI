@@ -32,11 +32,11 @@ final class vcSpcSwoState: UIwXViewController {
         stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
     }
     

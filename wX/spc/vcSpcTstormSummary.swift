@@ -22,11 +22,11 @@ final class vcSpcTstormSummary: UIwXViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let urls = UtilitySpc.getTstormOutlookUrls()
             self.bitmaps = urls.map { Bitmap($0) }
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         _ = ObjectImageSummary(self, bitmaps)
     }
@@ -41,6 +41,6 @@ final class vcSpcTstormSummary: UIwXViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

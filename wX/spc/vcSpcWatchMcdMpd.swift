@@ -52,7 +52,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 self.bitmaps.append(self.objectWatchProduct!.bitmap)
                 self.numbers.append(number)
             }
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
@@ -76,7 +76,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         }
     }
     
-    private func displayContent() {
+    private func display() {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
         tabletInLandscape = self.bitmaps.count == 1
@@ -134,7 +134,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             alongsideTransition: nil,
             completion: { _ -> Void in
                 self.refreshViews()
-                self.displayContent()
+                self.display()
         }
         )
     }

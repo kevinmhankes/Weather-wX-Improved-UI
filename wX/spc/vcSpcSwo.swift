@@ -43,11 +43,11 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
                 self.html = UtilityDownload.getTextProduct(self.product)
             }
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
        self.refreshViews()
        _ = ObjectImageAndText(self, bitmaps, html)
     }
@@ -66,6 +66,6 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

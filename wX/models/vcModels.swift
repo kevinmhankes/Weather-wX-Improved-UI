@@ -134,11 +134,11 @@ final class vcModels: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = self.modelObj.getImage()
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         if self.firstRun {
             self.image.setBitmap(bitmap)
             self.firstRun = false
