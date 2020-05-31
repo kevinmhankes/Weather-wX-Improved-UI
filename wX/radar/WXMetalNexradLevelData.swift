@@ -7,7 +7,7 @@
 import Foundation
 
 final class WXMetalNexradLevelData {
-
+    
     var radialStartAngle = MemoryBuffer()
     var binSize = 0.0
     var numberOfRangeBins = 916
@@ -27,7 +27,7 @@ final class WXMetalNexradLevelData {
     var degree = 0.0
     var operationalMode: Int16 = 0
     var volumeCoveragePattern: Int16 = 0
-
+    
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
         self.init()
         self.radarBuffers = radarBuffers
@@ -42,7 +42,7 @@ final class WXMetalNexradLevelData {
             radarType = .level3
         }
     }
-
+    
     func decode() {
         switch productCode {
         case 153, 154:
@@ -53,7 +53,7 @@ final class WXMetalNexradLevelData {
             decodeAndPlotNexradLevel3()
         }
     }
-
+    
     func decodeAndPlotNexradLevel3() {
         let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
@@ -83,22 +83,32 @@ final class WXMetalNexradLevelData {
             numberOfRadials = 360
         }
     }
-
+    
     func decodeAndPlotNexradLevel3FourBit() {
-        // TODO switch
-        if productCode == 181 {
+        /*if productCode == 181 {
+         binWord = MemoryBuffer(360 * 720)
+         radialStartAngle = MemoryBuffer(4 * 360)
+         } else if productCode == 78 || productCode == 80 {
+         binWord = MemoryBuffer(360 * 592)
+         radialStartAngle = MemoryBuffer(4 * 360)
+         } else if productCode == 37 || productCode == 38 {
+         binWord = MemoryBuffer(464 * 464)
+         radialStartAngle = MemoryBuffer(4 * 360)
+         } else {
+         binWord = MemoryBuffer(360 * 230)
+         radialStartAngle = MemoryBuffer(4 * 360)
+         }*/
+        switch productCode {
+        case 181:
             binWord = MemoryBuffer(360 * 720)
-            radialStartAngle = MemoryBuffer(4 * 360)
-        } else if productCode == 78 || productCode == 80 {
+        case 78, 80:
             binWord = MemoryBuffer(360 * 592)
-            radialStartAngle = MemoryBuffer(4 * 360)
-        } else if productCode == 37 || productCode == 38 {
+        case 37, 38:
             binWord = MemoryBuffer(464 * 464)
-            radialStartAngle = MemoryBuffer(4 * 360)
-        } else {
+        default:
             binWord = MemoryBuffer(360 * 230)
-            radialStartAngle = MemoryBuffer(4 * 360)
         }
+        radialStartAngle = MemoryBuffer(4 * 360)
         let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
         if dis.capacity > 0 {
             dis.skipBytes(30)
@@ -128,8 +138,8 @@ final class WXMetalNexradLevelData {
             numberOfRadials = 360
         }
     }
-
-   func decodeAndPlotNexradL2() {
+    
+    func decodeAndPlotNexradL2() {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
         UtilityWXMetalPerfL2.decompress(radarBuffers!)
@@ -139,7 +149,7 @@ final class WXMetalNexradLevelData {
         binWord.position = 0
         numberOfRadials = radialStartAngle.capacity / 4
     }
-
+    
     func writeTimeL2() {
         msecs.position = 0
         days.position = 0
@@ -153,7 +163,7 @@ final class WXMetalNexradLevelData {
         let radarInfoFinal = dateString + MyApplication.newline + "Product: " + String(productCode)
         WXGLNexrad.writeRadarInfo("", radarInfoFinal)
     }
-
+    
     func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int) {
         let radarInfo = "Mode: " + String(operationalMode) + ", VCP: " + String(volumeCoveragePattern)
             + ", " + "Product: " + String(productCode) + ", " + "Height: " + String(radarHeight)
