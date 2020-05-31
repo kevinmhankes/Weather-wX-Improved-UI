@@ -8,7 +8,11 @@ final class UtilityWpcText {
     
     static func needsFixedWidthFont(_ product: String) -> Bool {
         let productList = ["RWRMX", "UVICAC", "MIATWSEP", "MIATWSAT"]
-        if product.startsWith("TPT") || product.startsWith("SWPC") || productList.contains(product) {
+        if product.startsWith("TPT")
+            || product.startsWith("SWPC")
+            || product.startsWith("MIAPW")
+            || product.startsWith("MIATCM")
+            || productList.contains(product) {
             return true
         } else {
             return false
