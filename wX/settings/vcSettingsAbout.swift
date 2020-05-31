@@ -45,7 +45,7 @@ final class vcSettingsAbout: UIwXViewController {
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        displayContent()
+        display()
     }
     
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
@@ -59,7 +59,7 @@ final class vcSettingsAbout: UIwXViewController {
         }
     }
     
-    private func displayContent() {
+    private func display() {
         let objectTextView1 = ObjectTextView(
             self.stackView,
             "View FAQ (Outage notifications listed at top if any are current)",

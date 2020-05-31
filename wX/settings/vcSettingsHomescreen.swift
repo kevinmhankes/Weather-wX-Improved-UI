@@ -31,7 +31,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         ).items
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
-        displayContent(saveToDisk: false)
+        display(saveToDisk: false)
     }
     
     @objc override func doneClicked() {
@@ -62,7 +62,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         } else {
             homeScreenFav.append(selection)
         }
-        displayContent()
+        display()
     }
     
     func getHelp(_ targetButton: UIBarButtonItem, _ help: String) {
@@ -91,7 +91,7 @@ final class vcSettingsHomescreen: UIwXViewController {
     
     @objc func setToDefault() {
         homeScreenFav = TextUtils.split(MyApplication.homescreenFavDefault, ":")
-        displayContent()
+        display()
     }
     
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
@@ -110,16 +110,16 @@ final class vcSettingsHomescreen: UIwXViewController {
         let tmp = homeScreenFav[from + delta]
         homeScreenFav[from + delta] = homeScreenFav[from]
         homeScreenFav[from] = tmp
-        displayContent()
+        display()
     }
     
     // need to keep the label
     func delete(selection: Int) {
         homeScreenFav.remove(at: selection)
-        displayContent()
+        display()
     }
     
-    private func displayContent(saveToDisk: Bool = true) {
+    private func display(saveToDisk: Bool = true) {
         if saveToDisk { serializeSettings() }
         self.stackView.removeViews()
         homeScreenFav.enumerated().forEach { index, prefVar in
