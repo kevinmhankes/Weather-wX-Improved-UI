@@ -46,7 +46,6 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
             totalBins = UtilityWXMetalPerf.genRadials(self)
         case 0:
             totalBins = 0
-            break
         default:
             totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self)
         }
