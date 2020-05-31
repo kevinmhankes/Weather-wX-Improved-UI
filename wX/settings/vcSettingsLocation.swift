@@ -73,7 +73,7 @@ final class vcSettingsLocation: UIwXViewController {
             locA.saveToNewSlot(0)
             locB.saveToNewSlot(Location.numLocations-1)
         }
-        displayContent()
+        display()
     }
     
     func moveDown(_ position: Int) {
@@ -88,13 +88,13 @@ final class vcSettingsLocation: UIwXViewController {
             locA.saveToNewSlot(0)
             locB.saveToNewSlot(position)
         }
-        displayContent()
+        display()
     }
     
     func deleteLocation(_ position: Int) {
         if Location.numLocations > 1 {
             Location.delete(String(position + 1))
-            displayContent()
+            display()
         }
     }
     
@@ -102,7 +102,7 @@ final class vcSettingsLocation: UIwXViewController {
         MyApplication.locations.forEach { $0.updateObservation("") }
     }
     
-    func displayContent() {
+    func display() {
         locationCards = []
         self.stackView.removeViews()
         MyApplication.locations.indices.forEach { index in
@@ -124,7 +124,7 @@ final class vcSettingsLocation: UIwXViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeObservations()
-        displayContent()
+        display()
         self.getContent()
     }
 }

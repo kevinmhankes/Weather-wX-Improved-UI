@@ -24,7 +24,7 @@ final class vcSettingsMain: UIwXViewController {
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        displayContent()
+        display()
     }
     
     override func doneClicked() {
@@ -55,7 +55,7 @@ final class vcSettingsMain: UIwXViewController {
         }
     }
     
-    private func displayContent() {
+    private func display() {
         titles.forEach { title in
             let objectTextView = ObjectTextView(
                 self.stackView,
