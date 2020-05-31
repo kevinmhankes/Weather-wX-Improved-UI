@@ -36,7 +36,7 @@ final class WXMetalNexradLevelData {
         switch productCode {
         case 153, 154:
             radarType = .level2
-        case 30, 56, 78, 80, 181:
+        case 30, 37, 38, 56, 78, 80, 181:
             radarType = .level3bit4
         default:
             radarType = .level3
