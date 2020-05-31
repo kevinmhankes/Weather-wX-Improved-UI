@@ -53,11 +53,11 @@ final class vcWpcText: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             // FIXME fix upstream data source to uppercase
             let html = UtilityDownload.getTextProduct(self.product.uppercased())
-            DispatchQueue.main.async { self.displayContent(html) }
+            DispatchQueue.main.async { self.display(html) }
         }
     }
     
-    private func displayContent(_ html: String) {
+    private func display(_ html: String) {
         self.objectTextView.text = html
         if UtilityWpcText.needsFixedWidthFont(self.product.uppercased()) {
             self.objectTextView.font = FontSize.hourly.size

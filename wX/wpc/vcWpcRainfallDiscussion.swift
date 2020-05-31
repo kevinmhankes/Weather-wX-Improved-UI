@@ -37,11 +37,11 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async { self.displayContent() }
+            DispatchQueue.main.async { self.display() }
         }
     }
     
-    private func displayContent() {
+    private func display() {
         self.refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
@@ -56,6 +56,6 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.displayContent() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
     }
 }

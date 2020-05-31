@@ -44,11 +44,11 @@ final class vcWpcImg: UIwXViewController {
         }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(getUrl)
-            DispatchQueue.main.async { self.displayContent(bitmap) }
+            DispatchQueue.main.async { self.display(bitmap) }
         }
     }
     
-    private func displayContent(_ bitmap: Bitmap) {
+    private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
         Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
     }
