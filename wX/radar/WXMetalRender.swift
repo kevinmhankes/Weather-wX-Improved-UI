@@ -514,8 +514,7 @@ final class WXMetalRender {
         self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.indexString)
         self.radarBuffers.rd.decode()
         self.radarBuffers.initialize()
-        // TODO use extension method on radarBufers to generate
-        switch self.radarBuffers.rd.productCode {
+        /*switch self.radarBuffers.rd.productCode {
         case 37, 38:
             self.totalBins = UtilityWXMetalPerfRaster.generate(self.radarBuffers)
         case 153, 154, 30, 56, 78, 80, 181:
@@ -524,9 +523,11 @@ final class WXMetalRender {
             break
         default:
             self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
-        }
+        }*/
+        self.totalBins = self.radarBuffers.generateRadials()
         self.radarBuffers.setToPositionZero()
-        self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
+        //self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
+        self.radarBuffers.setCount()
         self.radarBuffers.generateMtlBuffer(device)
     }
     

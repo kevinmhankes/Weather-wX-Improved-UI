@@ -51,4 +51,8 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         }
         return totalBins
     }
+    
+    func setCount() {
+        count = (metalBuffer.count / floatCountPerVertex) * 2
+    }
 }
