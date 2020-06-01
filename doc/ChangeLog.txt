@@ -20,7 +20,6 @@
 // [ADD] onrestart SPCStormReports
 // [REF] spc storm reports refactor like kotlin
 // [ADD] usalerts filter by state
-// [ADD] onrestart NHCStorm
 
 56104 2020_06_01 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
