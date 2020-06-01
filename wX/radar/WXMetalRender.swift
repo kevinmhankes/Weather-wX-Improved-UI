@@ -582,7 +582,7 @@ final class WXMetalRender {
         default:
             buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
         }
-        buffers.lenInit = scaleLengthLocationDot(buffers.lenInit) // was scaleLength
+        buffers.lenInit = scaleLengthLocationDot(buffers.lenInit)
         buffers.draw(projectionNumbers)
     }
     
