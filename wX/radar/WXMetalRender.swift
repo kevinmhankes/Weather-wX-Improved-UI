@@ -270,18 +270,8 @@ final class WXMetalRender {
         switch buffers.type.string {
         case "MCD", "MPD", "WATCH", "WATCH_TORNADO":
             list = UtilityWatch.add(projectionNumbers, buffers.type)
-        //case "MPD":
-        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
-        //case "WATCH":
-        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
-        //case "WATCH_TORNADO":
-        //    list = UtilityWatch.add(projectionNumbers, buffers.type)
         case "TST", "TOR", "FFW":
             list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
-        //case "TOR":
-        //    list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
-        //case "FFW":
-        //    list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
         case "SMW":
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
         case "SQW":
@@ -298,8 +288,6 @@ final class WXMetalRender {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
-        //var vList = 0
-        //while vList < list.count {
         stride(from: 0, to: list.count, by: 4).forEach { vList in
             buffers.putFloat(list[vList])
             buffers.putFloat(list[vList+1] * -1)
@@ -311,9 +299,7 @@ final class WXMetalRender {
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            //vList += 4
         }
-        //buffers.count = vList
         buffers.count = list.count
     }
     
@@ -335,8 +321,6 @@ final class WXMetalRender {
         var i = 0
         // TODO use stride
         (0..<(buffers.count / 2)).forEach { _ in
-            //let f1 = Float(buffers.floatBuffer.getCGFloatNative())
-            //let f2 = Float(buffers.floatBuffer.getCGFloatNative())
             buffers.metalBuffer[i] = buffers.floatBuffer.getCGFloatNative()
             buffers.metalBuffer[i + 1] = buffers.floatBuffer.getCGFloatNative()
             buffers.metalBuffer[i + 2] = colors[0]

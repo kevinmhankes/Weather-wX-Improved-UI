@@ -34,26 +34,26 @@ final class WXGLDownload {
         }
     }
     
-    private static func getRadarFileUrl(_ radarSite: String, _ product: String, _ tdwr: Bool) -> String {
-        let ridPrefix = getRidPrefix(radarSite, tdwr)
+    private static func getRadarFileUrl(_ radarSite: String, _ product: String, _ isTdwr: Bool) -> String {
+        let ridPrefix = getRidPrefix(radarSite, isTdwr)
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
         return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
     }
     
-    static func getRadarFile(_ urlStr: String, _ radarSite: String, _ prod: String, _ idxStr: String, _ tdwr: Bool) -> String {
+    static func getRadarFile(_ url: String, _ radarSite: String, _ product: String, _ indexString: String, _ isTdwr: Bool) -> String {
         let l2BaseFn = "l2"
         let l3BaseFn = "nids"
-        let ridPrefix = getRidPrefix(radarSite, tdwr)
-        if !prod.contains("L2") {
-            let data = getRadarFileUrl(radarSite, prod, tdwr).getDataFromUrl()
-            UtilityIO.saveInputStream(data, l3BaseFn + idxStr)
+        let ridPrefix = getRidPrefix(radarSite, isTdwr)
+        if !product.contains("L2") {
+            let data = getRadarFileUrl(radarSite, product, isTdwr).getDataFromUrl()
+            UtilityIO.saveInputStream(data, l3BaseFn + indexString)
         } else {
-            if urlStr == "" {
+            if url == "" {
                 let data = getInputStreamFromURLL2(getLevel2Url(radarSite))
-                UtilityIO.saveInputStream(data, l2BaseFn + "_d" + idxStr)
+                UtilityIO.saveInputStream(data, l2BaseFn + "_d" + indexString)
             }
-            UtilityFileManagement.deleteFile(l2BaseFn + idxStr)
-            UtilityFileManagement.moveFile(l2BaseFn + "_d" + idxStr, l2BaseFn + idxStr)
+            UtilityFileManagement.deleteFile(l2BaseFn + indexString)
+            UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
         }
         return ridPrefix
     }
