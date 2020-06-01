@@ -36,7 +36,8 @@ final class ObjectAlertDetail {
             self.textViews[3].text = "End: " + endTime
         }
         self.textViews[4].text = alert.area.removeSingleLineBreaks()
-        self.textViews[5].text = alert.summary.removeSingleLineBreaks()
+        //self.textViews[5].text = alert.summary.removeSingleLineBreaks()
+        self.textViews[5].text = alert.summary
         self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
         uiStackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()

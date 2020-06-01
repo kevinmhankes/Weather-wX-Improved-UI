@@ -33,17 +33,16 @@ final class CapAlert {
         area = html.parse("\"areaDesc\": \"(.*?)\"")
         summary = summary.replace("\\n", "\n")
         instructions = instructions.replace("\\n", "\n")
-        text = "<h4><b>"
+        text = ""
         text += title
-        text += "</b></h4>"
-        text += "<b>Counties: "
+        text += MyApplication.newline
+        text += "Counties: "
         text += area
-        text += "</b><br><br>"
+        text += MyApplication.newline
         text += summary
-        text += "<br><br><br>"
+        text += MyApplication.newline
         text += instructions
-        text += "<br><br><br>"
-        instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
+        text += MyApplication.newline
     }
 
     // used by usAlerts
@@ -60,17 +59,16 @@ final class CapAlert {
         event = eventText.parse("<cap:event>(.*?)</cap:event>")
         vtec = eventText.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
         zones = eventText.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
-        text = "<h4><b>"
+        text = ""
         text += title
-        text += "</b></h4>"
-        text += "<b>Counties: "
+        text += MyApplication.newline
+        text += "Counties: "
         text += area
-        text += "</b><br><br>"
+        text += MyApplication.newline
         text += summary
-        text += "<br><br><br>"
+        text += MyApplication.newline
         text += instructions
-        text += "<br><br><br>"
+        text += MyApplication.newline
         summary = summary.replaceAll("<br>\\*", "<br><br>*")
-        instructions = instructions.replaceAll("<br><br>", "<BR><BR>").replaceAll("<br>", " ")
     }
 }

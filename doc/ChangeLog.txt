@@ -22,9 +22,11 @@
 // [ADD] usalerts filter by state
 // [ADD] onrestart NHCStorm
 
-56104 2020_05_30 [REF] colormap optimizations
+56104 2020_06_01 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
+		 [FIX] minor formatting change in USAlerts detail
+		 [FIX] remove HTML tags from text that is used for TTS in USAlerts detail
 		 [ADD] NHC Storm detail text products, use National text viewer instead of generic text viewer
 		 [FIX] SPC Meso - fix region/sector display in lower right corner
 		 [ADD] additional NHC text products that require fixed width
