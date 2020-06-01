@@ -591,8 +591,6 @@ final class WXMetalRender {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
         buffers.metalBuffer = []
-        //var vList = 0
-        //while vList < list.count {
         stride(from: 0, to: list.count, by: 4).forEach { vList in
             buffers.putFloat(list[vList])
             buffers.putFloat(list[vList+1] * -1)
@@ -604,10 +602,7 @@ final class WXMetalRender {
             buffers.putFloat(colors[0])
             buffers.putFloat(colors[1])
             buffers.putFloat(colors[2])
-            //vList += 4
         }
-        //print("DEBUG: " + String(vList) + " " + String(list.count))
-        //buffers.count = vList
         buffers.count = list.count
     }
     
@@ -769,11 +764,6 @@ final class WXMetalRender {
     func scaleLengthLocationDot(_ currentLength: Double) -> Double { (currentLength / Double(zoom)) * 2.0 }
     
     func setZoom() {
-        //[hiBuffers, tvsBuffers].forEach {
-        //    $0.lenInit = scaleLengthLocationDot($0.type.size)
-        //    $0.draw(pn)
-        //    $0.generateMtlBuffer(device)
-        //}
         [locdotBuffers, wbCircleBuffers, spotterBuffers, hiBuffers, tvsBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size)
             $0.draw(projectionNumbers)
