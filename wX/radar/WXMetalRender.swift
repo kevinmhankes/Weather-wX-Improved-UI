@@ -110,7 +110,6 @@ final class WXMetalRender {
         self.paneNumber = paneNumber
         self.indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
-        //print("DEBUGRADAR: " + "readPrefs")
         readPreferences()
         regenerateProductList()
         radarLayers = [radarBuffers]
