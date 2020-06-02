@@ -22,10 +22,10 @@ final class SevereNotice {
         bitmaps = []
         switch type {
         case .SPCMCD:
-            noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."
+            noAlertsVerbiage = "No Mesoscale Discussions are currently in effect."
             html = MyApplication.mcdNoList.value
         case .SPCWAT:
-            noAlertsVerbiage = "<center><strong>No watches are currently valid"
+            noAlertsVerbiage = "No watches are currently valid"
             html = MyApplication.watNoList.value
         case .WPCMPD:
             noAlertsVerbiage = "No MPDs are currently in effect."

@@ -6,17 +6,17 @@
 
 final class UtilityWatch {
     
-    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonType) -> [Double] {
+    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
         var warningList = [Double]()
         var prefToken = ""
-        switch type.string {
-        case "MCD":
+        switch type {
+        case .SPCMCD:
             prefToken = MyApplication.mcdLatlon.value
-        case "WATCH":
+        case .SPCWAT:
             prefToken = MyApplication.watchLatlon.value
-        case "WATCH_TORNADO":
+        case .SPCWAT_TORNADO:
             prefToken = MyApplication.watchLatlonTor.value
-        case "MPD":
+        case .WPCMPD:
             prefToken = MyApplication.mpdLatlon.value
         default:
             break

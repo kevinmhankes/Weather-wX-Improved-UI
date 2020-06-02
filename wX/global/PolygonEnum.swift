@@ -12,4 +12,10 @@ enum PolygonEnum {
     case TOR
     case TST
     case FFW
+    case STI
+    case SMW
+    case SQW
+    case DSW
+    case SPS
+    case NONE
 }

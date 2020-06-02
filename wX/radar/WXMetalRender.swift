@@ -266,20 +266,20 @@ final class WXMetalRender {
     
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
         var list: [Double]
-        switch buffers.type.string {
-        case "MCD", "MPD", "WATCH", "WATCH_TORNADO":
-            list = UtilityWatch.add(projectionNumbers, buffers.type)
-        case "TST", "TOR", "FFW":
-            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.type)
-        case "SMW":
+        switch buffers.typeEnum {
+        case .SPCMCD, .WPCMPD, .SPCWAT, .SPCWAT_TORNADO:
+            list = UtilityWatch.add(projectionNumbers, buffers.typeEnum)
+        case .TST, .TOR, .FFW:
+            list = WXGLPolygonWarnings.add(projectionNumbers, buffers.typeEnum)
+        case .SMW:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SMW]!)
-        case "SQW":
+        case .SQW:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SQW]!)
-        case "DSW":
+        case .DSW:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.DSW]!)
-        case "SPS":
+        case .SPS:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
-        case "STI":
+        case .STI:
             list = WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString)
         default:
             list = [Double]()

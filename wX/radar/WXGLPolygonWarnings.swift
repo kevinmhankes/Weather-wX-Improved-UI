@@ -26,18 +26,12 @@ final class WXGLPolygonWarnings {
         return warningList
     }
     
-    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonType) -> [Double] {
-        /*var prefToken = MyApplication.severeDashboardFfw.value
-        if type.string == "TOR" {
-            prefToken = MyApplication.severeDashboardTor.value
-        } else if type.string == "TST" {
-            prefToken = MyApplication.severeDashboardTst.value
-        }*/
+    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
         let prefToken: String
-        switch type.string {
-        case "TOR":
+        switch type {
+        case .TOR:
             prefToken = MyApplication.severeDashboardTor.value
-        case "TST":
+        case .TST:
             prefToken = MyApplication.severeDashboardTst.value
         default:
             prefToken = MyApplication.severeDashboardFfw.value
