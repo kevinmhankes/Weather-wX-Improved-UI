@@ -17,5 +17,10 @@ enum PolygonEnum {
     case SQW
     case DSW
     case SPS
+    case LOCDOT
+    case SPOTTER
+    case HI
+    case TVS
+    case WIND_BARB_CIRCLE
     case NONE
 }

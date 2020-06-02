@@ -92,6 +92,16 @@ class ObjectMetalBuffers {
             typeEnum = .SPS
         case "STI":
             typeEnum = .STI
+        case "LOCDOT":
+            typeEnum = .LOCDOT
+        case "SPOTTER":
+            typeEnum = .SPOTTER
+        case "HI":
+            typeEnum = .HI
+        case "TVS":
+            typeEnum = .TVS
+        case "WIND_BARB_CIRCLE":
+            typeEnum = .WIND_BARB_CIRCLE
         default:
             typeEnum = .NONE
         }

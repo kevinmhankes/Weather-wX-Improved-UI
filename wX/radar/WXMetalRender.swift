@@ -450,8 +450,8 @@ final class WXMetalRender {
                 self.radarBuffers.fileName = url
             }
             if url == "" {  // not animating
-                [PolygonType.STI, PolygonType.TVS, PolygonType.HI].forEach {
-                    if $0.display { self.constructLevel3TextProduct($0) }
+                [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
+                    if $0.type.display { self.constructLevel3TextProduct($0.typeEnum) }
                 }
                 if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
                     self.constructSpotters()
@@ -574,10 +574,10 @@ final class WXMetalRender {
     
     func constructTriangles(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.latList.count)
-        switch buffers.type.string {
-        case "LOCDOT":
+        switch buffers.typeEnum {
+        case .LOCDOT:
             buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
-        case "SPOTTER":
+        case .SPOTTER:
             buffers.initialize(24 * buffers.count * buffers.triangleCount, buffers.type.color)
         default:
             buffers.initialize(4 * 6 * buffers.count, buffers.type.color)
@@ -617,13 +617,13 @@ final class WXMetalRender {
         wbGustsBuffers.generateMtlBuffer(device)
     }
     
-    func constructLevel3TextProduct(_ type: PolygonType) {
-        switch type.string {
-        case "HI":
+    func constructLevel3TextProduct(_ type: PolygonEnum) {
+        switch type {
+        case .HI:
             constructHi()
-        case "TVS":
+        case .TVS:
             constructTvs()
-        case "STI":
+        case .STI:
             constructStiLines()
         default:
             break
