@@ -26,7 +26,7 @@ final class vcNhc: UIwXViewController {
     override func getContent() {
         self.refreshViews()
         objectNhc = ObjectNhc(self)
-        let serial: DispatchQueue = DispatchQueue(label: "joshuatee.wx")
+        let serial = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.objectNhc.getTextData()
             DispatchQueue.main.async { self.objectNhc.showTextData() }

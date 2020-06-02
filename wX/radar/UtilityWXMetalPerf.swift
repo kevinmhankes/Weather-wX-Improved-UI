@@ -12,7 +12,7 @@ final class UtilityWXMetalPerf {
     private static let piDiv4 = Double.pi / 4.0
     private static let piDiv360 = Double.pi / 360.0
     private static let twicePi = 2.0 * Double.pi
-
+    
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
@@ -85,14 +85,14 @@ final class UtilityWXMetalPerf {
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVSin))
                     radarBuffers.putColorsByIndex(level)
-
+                    
                     angleCos = cos(angle/k180DivPi)
                     angleSin = sin(angle/k180DivPi)
                     // 3
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
                     radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
                     radarBuffers.putColorsByIndex(level)
-
+                    
                     // 1
                     radarBuffers.putFloat((binStart * angleVCos))
                     radarBuffers.putFloat((binStart * angleVSin))
@@ -105,7 +105,7 @@ final class UtilityWXMetalPerf {
                     radarBuffers.putFloat((binStart * angleCos))
                     radarBuffers.putFloat((binStart * angleSin))
                     radarBuffers.putColorsByIndex(level)
-
+                    
                     totalBins += 1
                     level = curLevel
                     binStart = Double(bin) * radarBuffers.rd.binSize
@@ -115,7 +115,7 @@ final class UtilityWXMetalPerf {
         }
         return totalBins
     }
-
+    
     static func genRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colorMap.greenValues.put(0, Color.green(radarBuffers.bgColor))
@@ -132,12 +132,20 @@ final class UtilityWXMetalPerf {
         var angleCos = 0.0
         var angleVSin = 0.0
         var angleVCos = 0.0
-        var radarBlackHole = 0.0
-        var radarBlackHoleAdd = 0.0
-        if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 || radarBuffers.rd.productCode == 181 || radarBuffers.rd.productCode == 78 || radarBuffers.rd.productCode == 80 {
+        let radarBlackHole: Double
+        let radarBlackHoleAdd: Double
+        /*if radarBuffers.rd.productCode == 56 || radarBuffers.rd.productCode == 19 || radarBuffers.rd.productCode == 181 || radarBuffers.rd.productCode == 78 || radarBuffers.rd.productCode == 80 {
+         radarBlackHole = 1.0
+         radarBlackHoleAdd = 0.0
+         } else {
+         radarBlackHole = 4.0
+         radarBlackHoleAdd = 4.0
+         }*/
+        switch radarBuffers.rd.productCode {
+        case  56, 19, 181, 78, 80:
             radarBlackHole = 1.0
             radarBlackHoleAdd = 0.0
-        } else {
+        default:
             radarBlackHole = 4.0
             radarBlackHoleAdd = 4.0
         }
@@ -169,7 +177,7 @@ final class UtilityWXMetalPerf {
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVCos)
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleVSin)
                     radarBuffers.putColorsByIndex(level)
-
+                    
                     angleCos = cos(angle / k180DivPi)
                     angleSin = sin(angle / k180DivPi)
                     // 3
@@ -188,7 +196,7 @@ final class UtilityWXMetalPerf {
                     radarBuffers.putFloat(binStart * angleCos)
                     radarBuffers.putFloat(binStart * angleSin)
                     radarBuffers.putColorsByIndex(level)
-
+                    
                     totalBins += 1
                     level = curLevel
                     binStart = Double(bin) * radarBuffers.rd.binSize + radarBlackHoleAdd
@@ -198,7 +206,7 @@ final class UtilityWXMetalPerf {
         }
         return totalBins
     }
-
+    
     static func genTriangle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         var pointX = 0.0
         var pointY = 0.0
@@ -227,7 +235,7 @@ final class UtilityWXMetalPerf {
             buffers.putColors()
         }
     }
-
+    
     static func genTriangleUp(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         var pointX = 0.0
         var pointY = 0.0
@@ -256,7 +264,7 @@ final class UtilityWXMetalPerf {
             buffers.putColors()
         }
     }
-
+    
     static func genCircle(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         var pointX = 0.0
         var pointY = 0.0
@@ -288,7 +296,7 @@ final class UtilityWXMetalPerf {
             }
         }
     }
-
+    
     static func genCircleWithColor(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers) {
         var pointX = 0.0
         var pointY = 0.0
@@ -301,7 +309,7 @@ final class UtilityWXMetalPerf {
         buffers.setToPositionZero()
         buffers.metalBuffer = []
         (0..<buffers.count).forEach {
-            if buffers.type.string == "WIND_BARB_CIRCLE" {
+            if buffers.typeEnum == .WIND_BARB_CIRCLE {
                 buffers.red = Color.red(Int(buffers.colorIntArray[$0]))
                 buffers.green = Color.green(Int(buffers.colorIntArray[$0]))
                 buffers.blue = Color.blue(Int(buffers.colorIntArray[$0]))
@@ -325,7 +333,7 @@ final class UtilityWXMetalPerf {
             }
         }
     }
-
+    
     static func genCircleLocationDot(_ buffers: ObjectMetalBuffers, _ pn: ProjectionNumbers, _ location: LatLon) {
         buffers.setToPositionZero()
         buffers.count = buffers.triangleCount * 4
