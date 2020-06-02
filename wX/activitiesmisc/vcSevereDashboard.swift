@@ -30,6 +30,7 @@ final class vcSevereDashboard: UIwXViewController {
     
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
+            // TODO move into radar, currently in util
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
