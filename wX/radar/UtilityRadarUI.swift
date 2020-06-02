@@ -72,14 +72,9 @@ final class UtilityRadarUI {
 
     static func showNearestProduct(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
         let txt = UtilityWatch.show(location, type)
-        //let token: String
         let token = String(describing: type) + txt
-        //if type == .WPCMPD {
-            //token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
-            //token = String(describing: type) + txt
-        //} else {
-            //token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
-        //}
+        //token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
+        //token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
