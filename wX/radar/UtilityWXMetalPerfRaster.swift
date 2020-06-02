@@ -15,16 +15,6 @@ final class UtilityWXMetalPerfRaster {
         let numberOfRows: Int
         let binsPerRow: Int
         let scaleFactor: Float
-        /*if radarBuffers.rd.productCode == 38 {
-            numberOfRows = 232
-            binsPerRow = 232
-            scaleFactor = 8.0
-        }
-        if radarBuffers.rd.productCode == 41 || radarBuffers.rd.productCode == 57 {
-            numberOfRows = 116
-            binsPerRow = 116
-            scaleFactor = 8.0
-        }*/
         switch radarBuffers.rd.productCode {
         case 38:
             numberOfRows = 232
