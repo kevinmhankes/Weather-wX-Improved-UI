@@ -10,9 +10,9 @@ import AVFoundation
 final class vcSevereDashboard: UIwXViewController {
     
     private var buttonActions = [String]()
-    private let snWat = SevereNotice("SPCWAT")
-    private let snMcd = SevereNotice("SPCMCD")
-    private let snMpd = SevereNotice("WPCMPD")
+    private let snWat = SevereNotice(.SPCWAT)
+    private let snMcd = SevereNotice(.SPCMCD)
+    private let snMpd = SevereNotice(.WPCMPD)
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ObjectToolbarIcon()
@@ -33,9 +33,9 @@ final class vcSevereDashboard: UIwXViewController {
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
-            self.snMcd.getBitmaps(MyApplication.mcdNoList.value)
-            self.snWat.getBitmaps(MyApplication.watNoList.value)
-            self.snMpd.getBitmaps(MyApplication.mpdNoList.value)
+            self.snMcd.getBitmaps()
+            self.snWat.getBitmaps()
+            self.snMpd.getBitmaps()
             DispatchQueue.main.async {
                 if UIAccessibility.isVoiceOverRunning { UtilityAudio.speakText(self.getStatusText(), self.synthesizer) }
                 self.display()
@@ -45,13 +45,13 @@ final class vcSevereDashboard: UIwXViewController {
     
     func getStatusText() -> String {
         var spokenText = "Download complete with"
-        let wTor = SevereWarning("tor")
-        let wTst = SevereWarning("tst")
-        let wFfw = SevereWarning("ffw")
+        let wTor = SevereWarning(PolygonEnum.TOR)
+        let wTst = SevereWarning(PolygonEnum.TST)
+        let wFfw = SevereWarning(PolygonEnum.FFW)
         let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
-        wTor.generateString(MyApplication.severeDashboardTor.value)
-        wTst.generateString(MyApplication.severeDashboardTst.value)
-        wFfw.generateString(MyApplication.severeDashboardFfw.value)
+        //wTor.generateString()
+        //wTst.generateString()
+        //wFfw.generateString()
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
             if item != "" {
                 let sArr = item.split(MyApplication.newline)
@@ -74,12 +74,12 @@ final class vcSevereDashboard: UIwXViewController {
     }
     
     func showTextWarnings() {
-        let wTor = SevereWarning("tor")
-        let wTst = SevereWarning("tst")
-        let wFfw = SevereWarning("ffw")
-        wTor.generateString(MyApplication.severeDashboardTor.value)
-        wTst.generateString(MyApplication.severeDashboardTst.value)
-        wFfw.generateString(MyApplication.severeDashboardFfw.value)
+        let wTor = SevereWarning(PolygonEnum.TOR)
+        let wTst = SevereWarning(PolygonEnum.TST)
+        let wFfw = SevereWarning(PolygonEnum.FFW)
+        //wTor.generateString()
+        //wTst.generateString()
+        //wFfw.generateString()
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
@@ -201,8 +201,8 @@ final class vcSevereDashboard: UIwXViewController {
                     UITapGestureRecognizerWithData(index, self, #selector(imageClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
-                self.buttonActions.append(severeNotice.type + severeNotice.numberList[imageIndex])
-                objectImage.img.accessibilityLabel = severeNotice.type + severeNotice.numberList[imageIndex]
+                self.buttonActions.append(String(describing: severeNotice.type) + severeNotice.numberList[imageIndex])
+                objectImage.img.accessibilityLabel = String(describing: severeNotice.type) + severeNotice.numberList[imageIndex]
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
                 index += 1

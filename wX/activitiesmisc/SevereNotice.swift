@@ -10,24 +10,29 @@ final class SevereNotice {
     
     var numberList = [String]()
     var bitmaps = [Bitmap]()
-    let type: String
+    let type: PolygonEnum
     
-    init(_ type: String) {
+    init(_ type: PolygonEnum) {
         self.type = type
     }
     
-    func getBitmaps(_ html: String) {
+    func getBitmaps() {
         let noAlertsVerbiage: String
+        let html: String
         bitmaps = []
         switch type {
-        case "SPCMCD":
+        case .SPCMCD:
             noAlertsVerbiage = "<center>No Mesoscale Discussions are currently in effect."
-        case "SPCWAT":
+            html = MyApplication.mcdNoList.value
+        case .SPCWAT:
             noAlertsVerbiage = "<center><strong>No watches are currently valid"
-        case "WPCMPD":
+            html = MyApplication.watNoList.value
+        case .WPCMPD:
             noAlertsVerbiage = "No MPDs are currently in effect."
+            html = MyApplication.mpdNoList.value
         default:
             noAlertsVerbiage = ""
+            html = ""
         }
         var text: String
         if !html.contains(noAlertsVerbiage) {
@@ -37,15 +42,15 @@ final class SevereNotice {
         }
         numberList = text.split(":").filter { $0 != "" }
         if text != "" {
-            numberList.indices.forEach { index in
+            numberList.forEach {
                 var url: String
                 switch type {
-                case "SPCMCD":
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + numberList[index] + ".gif"
-                case "SPCWAT":
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + numberList[index] + "_radar.gif"
-                case "WPCMPD":
-                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + numberList[index] + ".gif"
+                case .SPCMCD:
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + $0 + ".gif"
+                case .SPCWAT:
+                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + $0 + "_radar.gif"
+                case .WPCMPD:
+                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + $0 + ".gif"
                 default:
                     url = ""
                 }

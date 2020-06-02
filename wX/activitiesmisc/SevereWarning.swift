@@ -5,10 +5,10 @@
  *****************************************************************************/
 
 final class SevereWarning {
-
+    
     var text = ""
     var count = 0
-    private let type: String
+    private let type: PolygonEnum
     var idList = [String]()
     var areaDescList = [String]()
     var effectiveList = [String]()
@@ -17,27 +17,39 @@ final class SevereWarning {
     var senderNameList = [String]()
     var warnings = [String]()
     var listOfWfo = [String]()
-
-    init(_ type: String) {
+    
+    init(_ type: PolygonEnum) {
         self.type = type
+        generateString()
     }
     
     func getCount() -> Int { count }
-
+    
     func getName() -> String {
         switch type {
-        case "tor":
+        case .TOR:
             return "Tornado Warning"
-        case "tst":
+        case .TST:
             return "Severe Thunderstorm Warning"
-        case "ffw":
+        case .FFW:
             return "Flash Flood Warning"
         default:
             return ""
         }
     }
-
-    func generateString(_ html: String) {
+    
+    func generateString() {
+        let html: String
+        switch type {
+        case .TOR:
+            html = MyApplication.severeDashboardTor.value
+        case .TST:
+            html = MyApplication.severeDashboardTst.value
+        case .FFW:
+            html = MyApplication.severeDashboardFfw.value
+        default:
+            html = ""
+        }
         text = ""
         count = 0
         idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
