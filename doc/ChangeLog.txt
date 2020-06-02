@@ -20,11 +20,12 @@
 // [ADD] onrestart SPCStormReports
 // [REF] spc storm reports refactor like kotlin
 // [ADD] usalerts filter by state
+// [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar
 
-56104 2020_06_01 [REF] colormap optimizations
+56104 2020_06_02 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] Canadian observations image
-		 [REF] add PolygonEnum and refactor SevereNotice to use it
+		 [REF] add PolygonEnum and refactor SevereNotice/Warning, severeDash, nexrad radar mainscreen/dedicated utilRadarUi, ObjectSPC to use it
 		 [FIX] minor formatting change in USAlerts detail
 		 [FIX] remove HTML tags from text that is used for TTS in USAlerts detail
 		 [ADD] NHC Storm detail text products, use National text viewer instead of generic text viewer

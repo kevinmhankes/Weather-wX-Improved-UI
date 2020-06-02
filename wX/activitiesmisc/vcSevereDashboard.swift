@@ -46,9 +46,9 @@ final class vcSevereDashboard: UIwXViewController {
     
     func getStatusText() -> String {
         var spokenText = "Download complete with"
-        let wTor = SevereWarning(PolygonEnum.TOR)
-        let wTst = SevereWarning(PolygonEnum.TST)
-        let wFfw = SevereWarning(PolygonEnum.FFW)
+        let wTor = SevereWarning(.TOR)
+        let wTst = SevereWarning(.TST)
+        let wFfw = SevereWarning(.FFW)
         let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
         //wTor.generateString()
         //wTst.generateString()
@@ -66,18 +66,18 @@ final class vcSevereDashboard: UIwXViewController {
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            Route.spcMcdWatchItem(self, .MPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
+            Route.spcMcdWatchItem(self, .WPCMPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
         } else if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
-            Route.spcMcdWatchItem(self, .MCD, self.buttonActions[sender.data].replace("SPCMCD", ""))
+            Route.spcMcdWatchItem(self, .SPCMCD, self.buttonActions[sender.data].replace("SPCMCD", ""))
         } else if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
-            Route.spcMcdWatchItem(self, .WATCH, self.buttonActions[sender.data].replace("SPCWAT", ""))
+            Route.spcMcdWatchItem(self, .SPCWAT, self.buttonActions[sender.data].replace("SPCWAT", ""))
         }
     }
     
     func showTextWarnings() {
-        let wTor = SevereWarning(PolygonEnum.TOR)
-        let wTst = SevereWarning(PolygonEnum.TST)
-        let wFfw = SevereWarning(PolygonEnum.FFW)
+        let wTor = SevereWarning(.TOR)
+        let wTst = SevereWarning(.TST)
+        let wFfw = SevereWarning(.FFW)
         //wTor.generateString()
         //wTst.generateString()
         //wFfw.generateString()

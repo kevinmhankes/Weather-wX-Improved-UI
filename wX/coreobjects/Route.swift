@@ -96,13 +96,13 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonType) {
+    static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonEnum) {
         let vc = vcSpcWatchMcdMpd()
         vc.watchMcdMpdType = type
         uiv.goToVC(vc)
     }
     
-    static func spcMcdWatchItem(_ uiv: UIViewController, _ type: PolygonType, _ number: String) {
+    static func spcMcdWatchItem(_ uiv: UIViewController, _ type: PolygonEnum, _ number: String) {
         let vc = vcSpcWatchMcdMpd()
         vc.watchMcdMpdNumber = number
         vc.watchMcdMpdType = type

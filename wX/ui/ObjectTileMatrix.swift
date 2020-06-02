@@ -118,9 +118,9 @@ final class ObjectTileMatrix: NSObject {
         case "report_yesterday":
             Route.spcStormReports(uiv!, "yesterday")
         case "mcd_tile":
-            Route.spcMcdWatchSummary(uiv!, .MCD)
+            Route.spcMcdWatchSummary(uiv!, .SPCMCD)
         case "wat":
-            Route.spcMcdWatchSummary(uiv!, .WATCH)
+            Route.spcMcdWatchSummary(uiv!, .SPCWAT)
         case "meso":
             Route.spcMeso(uiv!)
         case "fire_outlook":

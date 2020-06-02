@@ -15,7 +15,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     private var productNumber = ""
     private var objectWatchProduct: ObjectWatchProduct?
     var watchMcdMpdNumber = ""
-    var watchMcdMpdType = PolygonType.WATCH
+    var watchMcdMpdType = PolygonEnum.SPCWAT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +117,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 views.append(objectTextView.tv)
             }
         } else {
-            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + watchMcdMpdType.string + "s"
+            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + String(describing: watchMcdMpdType) + "s"
             let objectTextView = ObjectTextView(self.stackView, message)
             objectTextView.tv.isAccessibilityElement = true
             objectTextView.constrain(self.scrollView)

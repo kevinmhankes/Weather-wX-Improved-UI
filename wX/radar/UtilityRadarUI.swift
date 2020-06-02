@@ -70,26 +70,28 @@ final class UtilityRadarUI {
         if warningText != "" { Route.alertDetail(uiv, warningText) }
     }
 
-    static func showNearestProduct(_ type: PolygonType, _ location: LatLon, _ uiv: UIViewController) {
+    static func showNearestProduct(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
         let txt = UtilityWatch.show(location, type)
-        let token: String
-        if type.string == PolygonType.MPD.string {
-            token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
-        } else {
-            token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
-        }
+        //let token: String
+        let token = String(describing: type) + txt
+        //if type == .WPCMPD {
+            //token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
+            //token = String(describing: type) + txt
+        //} else {
+            //token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
+        //}
         let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
-            vc.watchMcdMpdType = .MPD
+            vc.watchMcdMpdType = .WPCMPD
         }
         if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
             vc.watchMcdMpdNumber = token.replace("SPCMCD", "")
-            vc.watchMcdMpdType = .MCD
+            vc.watchMcdMpdType = .SPCMCD
         }
         if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
             vc.watchMcdMpdNumber = token.replace("SPCWAT", "")
-            vc.watchMcdMpdType = .WATCH
+            vc.watchMcdMpdType = .SPCWAT
         }
         if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
             uiv.goToVC(vc)

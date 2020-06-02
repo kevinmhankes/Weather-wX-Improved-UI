@@ -31,17 +31,17 @@ final class UtilityWatch {
         return warningList
     }
     
-    static func show(_ latLon: LatLon, _ type: PolygonType) -> String {
+    static func show(_ latLon: LatLon, _ type: PolygonEnum) -> String {
         let numberList: [String]
         let watchLatLon: String
-        switch type.string {
-        case "WATCH":
+        switch type {
+        case .SPCWAT:
             numberList = MyApplication.watNoList.value.split(":")
             watchLatLon = MyApplication.watchLatlonCombined.value
-        case "MCD":
+        case .SPCMCD:
             numberList = MyApplication.mcdNoList.value.split(":")
             watchLatLon = MyApplication.mcdLatlon.value
-        case "MPD":
+        case .WPCMPD:
             numberList = MyApplication.mpdNoList.value.split(":")
             watchLatLon = MyApplication.mpdLatlon.value
         default:

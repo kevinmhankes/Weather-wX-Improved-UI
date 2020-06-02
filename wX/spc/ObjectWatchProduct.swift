@@ -14,30 +14,30 @@ final class ObjectWatchProduct {
     var bitmap = Bitmap()
     var text = ""
     private var wfos = [String]()
-    private let type: PolygonType
+    private let type: PolygonEnum
 
-    init(_ type: PolygonType, _ productNumber: String) {
+    init(_ type: PolygonEnum, _ productNumber: String) {
         self.type = type
-        switch type.string {
-        case "WATCH_TORNADO":
+        switch type {
+        case .SPCWAT_TORNADO:
             self.productNumber = productNumber.replaceAll("w", "")
             imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
             textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
             title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
-        case "WATCH":
+        case .SPCWAT:
             self.productNumber = productNumber.replaceAll("w", "")
             imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
             textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
             title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
-        case "MCD":
+        case .SPCMCD:
             self.productNumber = productNumber
             imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + productNumber + ".gif"
             textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + productNumber + ".html"
             title = "MCD " + productNumber
             prod = "SPCMCD" + productNumber
-        case "MPD":
+        case .WPCMPD:
             self.productNumber = productNumber
             imgUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
             textUrl = ""
@@ -62,29 +62,29 @@ final class ObjectWatchProduct {
     func getTextForSubtitle() -> String { text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "") }
 
     func getTextForNoProducts() -> String {
-        switch type.string {
-        case "WATCH_TORNADO":
+        switch type {
+        case .SPCWAT_TORNADO:
             return ""
-        case "WATCH":
+        case .SPCWAT:
             return ""
-        case "MCD":
+        case .SPCMCD:
             return "No active SPC MCDs"
-        case "MPD":
+        case .WPCMPD:
             return ""
         default:
             return ""
         }
     }
 
-    static func getNumberList(_ type: PolygonType) -> [String] {
-        switch type.string {
-        case "WATCH_TORNADO":
+    static func getNumberList(_ type: PolygonEnum) -> [String] {
+        switch type {
+        case .SPCWAT_TORNADO:
             return [String]()
-        case "WATCH":
+        case .SPCWAT:
             return (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
-        case "MCD":
+        case .SPCMCD:
             return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
-        case "MPD":
+        case .WPCMPD:
             return [String]()
         default:
             return [String]()

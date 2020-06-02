@@ -7,6 +7,7 @@
 enum PolygonEnum {
     case SPCMCD
     case SPCWAT
+    case SPCWAT_TORNADO
     case WPCMPD
     case TOR
     case TST
