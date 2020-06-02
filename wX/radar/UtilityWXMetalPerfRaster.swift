@@ -5,17 +5,17 @@
  *****************************************************************************/
 
 final class UtilityWXMetalPerfRaster {
-
+    
     static func generate(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colorMap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colorMap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
         var totalBins = 0
         var curLevel: UInt8 = 0
-        var numberOfRows = 464
-        var binsPerRow = 464
-        var scaleFactor: Float = 2.0
-        if radarBuffers.rd.productCode == 38 {
+        let numberOfRows: Int
+        let binsPerRow: Int
+        let scaleFactor: Float
+        /*if radarBuffers.rd.productCode == 38 {
             numberOfRows = 232
             binsPerRow = 232
             scaleFactor = 8.0
@@ -24,6 +24,20 @@ final class UtilityWXMetalPerfRaster {
             numberOfRows = 116
             binsPerRow = 116
             scaleFactor = 8.0
+        }*/
+        switch radarBuffers.rd.productCode {
+        case 38:
+            numberOfRows = 232
+            binsPerRow = 232
+            scaleFactor = 8.0
+        case 41, 57:
+            numberOfRows = 116
+            binsPerRow = 116
+            scaleFactor = 8.0
+        default:
+            numberOfRows = 464
+            binsPerRow = 464
+            scaleFactor = 2.0
         }
         let halfPoint = numberOfRows / 2
         (0..<numberOfRows).forEach { g in
