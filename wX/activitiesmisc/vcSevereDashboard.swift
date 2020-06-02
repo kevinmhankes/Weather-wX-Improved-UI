@@ -50,9 +50,6 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
         let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
-        //wTor.generateString()
-        //wTst.generateString()
-        //wFfw.generateString()
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
             if item != "" {
                 let sArr = item.split(MyApplication.newline)
@@ -78,9 +75,6 @@ final class vcSevereDashboard: UIwXViewController {
         let wTor = SevereWarning(.TOR)
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
-        //wTor.generateString()
-        //wTst.generateString()
-        //wFfw.generateString()
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
