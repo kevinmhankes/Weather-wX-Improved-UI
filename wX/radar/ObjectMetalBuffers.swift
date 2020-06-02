@@ -35,9 +35,16 @@ class ObjectMetalBuffers {
         self.init()
         self.type = type
         setTypeEnum()
-        self.shape = .line
-        if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+        //self.shape = .line
+        //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+        //    self.shape = .triangle
+        //}
+        
+        switch typeEnum {
+        case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
             self.shape = .triangle
+        default:
+            self.shape = .line
         }
     }
     
@@ -59,11 +66,19 @@ class ObjectMetalBuffers {
         setTypeEnum()
         self.scaleCutOff = scaleCutOff
         self.honorDisplayHold = true
-        self.shape = .line
-        if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+        //self.shape = .line
+        //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+        //    self.shape = .triangle
+        //}
+        
+        switch typeEnum {
+        case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
             self.shape = .triangle
+        default:
+            self.shape = .line
         }
-        if type.string == "LOCDOT_CIRCLE" || type.string == "LOCDOT" { self.honorDisplayHold = false }
+        
+        if typeEnum == .LOCDOT_CIRCLE || typeEnum == .LOCDOT { self.honorDisplayHold = false }
     }
     
     func setTypeEnum() {
@@ -94,6 +109,8 @@ class ObjectMetalBuffers {
             typeEnum = .STI
         case "LOCDOT":
             typeEnum = .LOCDOT
+        case "LOCDOT_CIRCLE":
+            typeEnum = .LOCDOT_CIRCLE
         case "SPOTTER":
             typeEnum = .SPOTTER
         case "HI":
@@ -111,9 +128,15 @@ class ObjectMetalBuffers {
         if count > 0 {
             let dataSize = metalBuffer.count * MemoryLayout.size(ofValue: metalBuffer[0])
             mtlBuffer = device.makeBuffer(bytes: metalBuffer, length: dataSize, options: [])!
-            if type.string == "LOCDOT" || type.string == "WIND_BARB_CIRCLE" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+            /*if type.string == "LOCDOT" || type.string == "WIND_BARB_CIRCLE" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
+             vertexCount = triangleCount * 3 * count
+             } else {
+             vertexCount = count / 2
+             }*/
+            switch typeEnum {
+            case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
                 vertexCount = triangleCount * 3 * count
-            } else {
+            default:
                 vertexCount = count / 2
             }
         } else {
@@ -178,16 +201,16 @@ class ObjectMetalBuffers {
     }
     
     func draw(_ pn: ProjectionNumbers) {
-        switch type.string {
-        case "HI":
+        switch typeEnum {
+        case .HI:
             ObjectMetalBuffers.redrawTriangleUp(self, pn)
-        case "SPOTTER":
+        case .SPOTTER:
             ObjectMetalBuffers.redrawCircle(self, pn)
-        case "TVS":
+        case .TVS:
             ObjectMetalBuffers.redrawTriangleUp(self, pn)
-        case "LOCDOT":
+        case .LOCDOT:
             ObjectMetalBuffers.redrawCircle(self, pn)
-        case "WIND_BARB_CIRCLE":
+        case .WIND_BARB_CIRCLE:
             ObjectMetalBuffers.redrawCircleWithColor(self, pn)
         default:
             ObjectMetalBuffers.redrawTriangle(self, pn)

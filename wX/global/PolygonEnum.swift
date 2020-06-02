@@ -18,6 +18,7 @@ enum PolygonEnum {
     case DSW
     case SPS
     case LOCDOT
+    case LOCDOT_CIRCLE
     case SPOTTER
     case HI
     case TVS
