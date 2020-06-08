@@ -29,7 +29,6 @@ final class CapAlert {
             html = url.getHtmlSep()
         }
         points = getWarningsFromJson(html)
-        print("DEBUG: \(points)")
         title = html.parse("\"headline\": \"(.*?)\"")
         summary = html.parse("\"description\": \"(.*?)\"")
         instructions = html.parse("\"instruction\": \"(.*?)\"")

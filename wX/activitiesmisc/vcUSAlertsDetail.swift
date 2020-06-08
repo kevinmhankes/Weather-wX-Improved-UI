@@ -15,8 +15,9 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, radarButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
@@ -41,5 +42,9 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     
     @objc override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, cap.text.removeHtml())
+    }
+    
+    @objc func radarClicked() {
+        Route.radarNoSave(self, cap.getClosestRadar())
     }
 }
