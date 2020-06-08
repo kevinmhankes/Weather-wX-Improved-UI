@@ -21,9 +21,10 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
+        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         productNumber = watchMcdMpdNumber
         if productNumber != "" { watchMcdMpdNumber = "" }
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton]).items
+        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
@@ -74,6 +75,10 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         if let object = self.objectWatchProduct {
             _ = UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
         }
+    }
+    
+    @objc func radarClicked() {
+        Route.radarNoSave(self, objectWatchProduct?.getClosestRadar() ?? "")
     }
     
     private func display() {

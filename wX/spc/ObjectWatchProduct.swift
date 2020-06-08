@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class ObjectWatchProduct {
-
+    
     private let productNumber: String
     let imgUrl: String
     private let textUrl: String
@@ -15,7 +15,9 @@ final class ObjectWatchProduct {
     var text = ""
     private var wfos = [String]()
     private let type: PolygonEnum
-
+    private var stringOfLatLon = ""
+    private var latLons = [String]()
+    
     init(_ type: PolygonEnum, _ productNumber: String) {
         self.type = type
         switch type {
@@ -50,17 +52,19 @@ final class ObjectWatchProduct {
             title = ""
             prod = ""
         }
-	}
-
-	func getData() {
+    }
+    
+    func getData() {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
+        stringOfLatLon = UtilityDownloadRadar.storeWatchMcdLatLon(text).replace(":", "")
+        latLons = stringOfLatLon.split(" ")
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
         wfos = wfoStr.split("\\.\\.\\.")
     }
-
+    
     func getTextForSubtitle() -> String { text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "") }
-
+    
     func getTextForNoProducts() -> String {
         switch type {
         case .SPCWAT_TORNADO:
@@ -75,7 +79,7 @@ final class ObjectWatchProduct {
             return ""
         }
     }
-
+    
     static func getNumberList(_ type: PolygonEnum) -> [String] {
         switch type {
         case .SPCWAT_TORNADO:
@@ -88,6 +92,33 @@ final class ObjectWatchProduct {
             return [String]()
         default:
             return [String]()
+        }
+    }
+    
+    private func getCenterOfPolygon(_ latLons: [LatLon]) -> LatLon {
+        var center = LatLon(0.0, 0.0)
+        for latLon in latLons {
+            center.lat += latLon.lat
+            center.lon += latLon.lon
+        }
+        let totalPoints = latLons.count
+        center.lat /= Double(totalPoints)
+        center.lon /= Double(totalPoints)
+        return center
+    }
+    
+    func getClosestRadar() -> String {
+        if latLons.count > 2 {
+            let latLonList = LatLon.parseStringToLatLons(stringOfLatLon, -1.0, false)
+            let center = getCenterOfPolygon(latLonList)
+            let radarSites = UtilityLocation.getNearestRadarSites(center, 1, includeTdwr: false)
+            if radarSites.isEmpty {
+                return ""
+            } else {
+                return radarSites[0].name
+            }
+        } else {
+            return ""
         }
     }
 }
