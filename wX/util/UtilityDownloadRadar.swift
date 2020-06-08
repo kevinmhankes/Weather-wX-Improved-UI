@@ -129,6 +129,5 @@ final class UtilityDownloadRadar {
     static func getLatLon(_ number: String) -> String {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
         return UtilityString.parseLastMatch(html, MyApplication.pre2Pattern)
-        //UtilityString.getHtmlAndParseLastMatch("${MyApplication.nwsSPCwebsitePrefix}/products/watch/wou$number.html", RegExp.pre2Pattern)
     }
 }
