@@ -103,12 +103,6 @@ final class UtilityDownloadRadar {
         MyApplication.watNoList.value = watchNumberList
     }
     
-    //private func getListOfNumbers() -> [String] {
-    //    let listOriginal = UtilityString.parseColumn(MyApplication.severeDashboardWat.value, "[om] Watch #([0-9]*?)</a>")
-    //    let list = listOriginal.map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
-    //    return list
-    //}
-    
     static func clearWatch() {
         MyApplication.severeDashboardWat.value = ""
         MyApplication.watchLatlon.value = ""
