@@ -6,7 +6,7 @@
 
 final class WXGLPolygonWarnings {
     
-    // Used in SevereWarnings as well
+    // Used in SevereWarnings/CapAlert as well
     static let vtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
         + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
     

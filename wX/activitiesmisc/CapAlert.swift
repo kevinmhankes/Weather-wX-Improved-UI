@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class CapAlert {
-
+    
     var text = ""
     var title = ""
     var summary = ""
@@ -17,7 +17,8 @@ final class CapAlert {
     var event = ""
     private var effective = ""
     private var expires = ""
-
+    var points = [String]()
+    
     convenience init(url: String) {
         self.init()
         self.url = url
@@ -27,6 +28,8 @@ final class CapAlert {
         } else {
             html = url.getHtmlSep()
         }
+        points = getWarningsFromJson(html)
+        print("DEBUG: \(points)")
         title = html.parse("\"headline\": \"(.*?)\"")
         summary = html.parse("\"description\": \"(.*?)\"")
         instructions = html.parse("\"instruction\": \"(.*?)\"")
@@ -44,7 +47,7 @@ final class CapAlert {
         text += instructions
         text += MyApplication.newline
     }
-
+    
     // used by usAlerts
     convenience init(eventText: String) {
         self.init()
@@ -70,5 +73,27 @@ final class CapAlert {
         text += instructions
         text += MyApplication.newline
         summary = summary.replaceAll("<br>\\*", "<br><br>*")
+    }
+    
+    func getClosestRadar() -> String {
+        if points.count > 2 {
+            let lat = points[1]
+            let lon = "-" + points[0]
+            let radarSites = UtilityLocation.getNearestRadarSites(LatLon(lat, lon), 1, includeTdwr: false)
+            if radarSites.isEmpty {
+                return ""
+            } else {
+                return radarSites[0].name
+            }
+        } else {
+            return ""
+        }
+    }
+    
+    private func getWarningsFromJson(_ html: String) -> [String] {
+        let data = html.replace("\n", "").replace(" ", "")
+        var points = data.parseFirst("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+        points = points.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+        return points.split(" ")
     }
 }
