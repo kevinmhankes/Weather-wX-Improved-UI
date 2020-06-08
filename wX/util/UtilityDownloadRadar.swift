@@ -85,10 +85,10 @@ final class UtilityDownloadRadar {
         var watchLatLonTor = ""
         var watchLatLonCombined = ""
         let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
-        numberList.forEach { watchNumber in
-            let watPre = UtilityDownload.getTextProduct("SPCWAT" + watchNumber)
-            watchNumberList += watchNumber + ":"
-            var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + watchNumber + ".html").getHtml()
+        numberList.forEach { number in
+            let watPre = UtilityDownload.getTextProduct("SPCWAT" + number)
+            watchNumberList += number + ":"
+            var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
             watPre2 = UtilityString.parseLastMatch(watPre2, MyApplication.pre2Pattern)
             if watPre.contains("Severe Thunderstorm Watch") || watPre2.contains("SEVERE TSTM") {
                 watchLatLon += storeWatchMcdLatLon(watPre2)
