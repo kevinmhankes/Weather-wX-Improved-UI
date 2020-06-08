@@ -84,10 +84,8 @@ final class UtilityDownloadRadar {
         var watchLatLon = ""
         var watchLatLonTor = ""
         var watchLatLonCombined = ""
-        let mcdList = html.parseColumn("[om] Watch #([0-9]*?)</a>")
-        mcdList.forEach {
-            var watchNumber = String(format: "%04d", Int($0) ?? 0)
-            watchNumber = watchNumber.replace(" ", "0")
+        let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
+        numberList.forEach { watchNumber in
             let watPre = UtilityDownload.getTextProduct("SPCWAT" + watchNumber)
             watchNumberList += watchNumber + ":"
             var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + watchNumber + ".html").getHtml()
@@ -104,6 +102,12 @@ final class UtilityDownloadRadar {
         MyApplication.watchLatlonCombined.value = watchLatLonCombined
         MyApplication.watNoList.value = watchNumberList
     }
+    
+    //private func getListOfNumbers() -> [String] {
+    //    let listOriginal = UtilityString.parseColumn(MyApplication.severeDashboardWat.value, "[om] Watch #([0-9]*?)</a>")
+    //    let list = listOriginal.map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
+    //    return list
+    //}
     
     static func clearWatch() {
         MyApplication.severeDashboardWat.value = ""
