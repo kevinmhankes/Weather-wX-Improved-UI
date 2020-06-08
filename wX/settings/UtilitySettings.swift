@@ -18,4 +18,14 @@ final class UtilitySettings {
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
+    
+    static func backupRadarSettingsAndEnable() {
+        RadarPreferences.radarWarningsOrig = RadarPreferences.radarWarnings
+        RadarPreferences.radarWarnings = true
+        UtilityDownloadWarnings.timer.resetTimer()
+    }
+    
+    static func restoreRadarSettings() {
+        RadarPreferences.radarWarnings = RadarPreferences.radarWarningsOrig
+    }
 }

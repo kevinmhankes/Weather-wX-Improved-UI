@@ -57,7 +57,7 @@ final class ObjectWatchProduct {
     func getData() {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
         var textWithLatLon = text
-        if (type == .SPCWAT || type == .SPCWAT_TORNADO) {
+        if type == .SPCWAT || type == .SPCWAT_TORNADO {
             textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
         }
         stringOfLatLon = UtilityDownloadRadar.storeWatchMcdLatLon(textWithLatLon).replace(":", "")

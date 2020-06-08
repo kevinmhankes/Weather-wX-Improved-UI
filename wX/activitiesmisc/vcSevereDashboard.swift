@@ -21,6 +21,7 @@ final class vcSevereDashboard: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //UtilitySettings.backupRadarSettingsAndEnable()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
@@ -43,6 +44,11 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
+    
+    //override func doneClicked() {
+    //    UtilitySettings.restoreRadarSettings()
+    //    super.doneClicked()
+    //}
     
     func getStatusText() -> String {
         var spokenText = "Download complete with"
