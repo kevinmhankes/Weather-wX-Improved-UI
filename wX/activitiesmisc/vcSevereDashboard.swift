@@ -76,7 +76,6 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
-            print("DEBUG2: \(warningType.listOfWfo)")
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
                 warningType.eventList.indices.forEach { index in
@@ -84,7 +83,6 @@ final class vcSevereDashboard: UIwXViewController {
                         let data = warningType.warnings[index]
                         //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
                         if !data.hasPrefix("O.EXP") {
-                            print("DEBUG23: " + warningType.listOfWfo[index])
                             _ = ObjectCardDashAlertItem(
                                 self,
                                 warningType,
@@ -114,8 +112,6 @@ final class vcSevereDashboard: UIwXViewController {
     }
     
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
-        //print("DEBUG234" + sender.strData)
-        //Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[sender.strData] ?? "")
         Route.radarNoSave(self, sender.strData)
     }
     

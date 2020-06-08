@@ -92,23 +92,5 @@ final class SevereWarning {
                 listOfWfo.append("")
             }
         }
-        
-        /*warnings.forEach {
-         //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)
-         if !$0.hasPrefix("O.EXP") {
-         var location = ""
-         text += $0
-         count += 1
-         let wfos = $0.split(".")
-         if wfos.count > 1 {
-         let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
-         listOfWfo.append(wfo)
-         location = Utility.getWfoSiteName(wfo)
-         }
-         text += "  " + location + MyApplication.newline
-         } else {
-         listOfWfo.append("")
-         }
-         }*/
     }
 }
