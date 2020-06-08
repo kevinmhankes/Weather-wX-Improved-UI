@@ -44,17 +44,16 @@ final class UtilityDownloadRadar {
     static func getMcd() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
         if html != "" { MyApplication.severeDashboardMcd.value = html }
-        var mcdNumberList = ""
+        var numberListString = ""
         var mcdLatLon = ""
-        let mcdList = MyApplication.severeDashboardMcd.value.parseColumn("title=.Mesoscale Discussion #(.*?).>")
-        mcdList.forEach {
-            let mcdNumber = String(format: "%04d", Int($0.replace(" ", "")) ?? 0)
-            let mcdPre = UtilityDownload.getTextProduct("SPCMCD" + mcdNumber)
-            mcdNumberList += mcdNumber + ":"
-            mcdLatLon += storeWatchMcdLatLon(mcdPre)
+        let numberList = html.parseColumn("title=.Mesoscale Discussion #(.*?).>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
+        numberList.forEach { number in
+            let text = UtilityDownload.getTextProduct("SPCMCD" + number)
+            numberListString += number + ":"
+            mcdLatLon += storeWatchMcdLatLon(text)
         }
         MyApplication.mcdLatlon.value = mcdLatLon
-        MyApplication.mcdNoList.value = mcdNumberList
+        MyApplication.mcdNoList.value = numberListString
     }
     
     static func clearMcd() {
@@ -65,42 +64,42 @@ final class UtilityDownloadRadar {
     static func getMpd() {
         let html = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
         if html != "" { MyApplication.severeDashboardMpd.value = html }
-        var mpdNumberList = ""
+        var numberListString = ""
         var mpdLatLon = ""
         let numberList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
         numberList.forEach { number in
-            let mcdPre = UtilityDownload.getTextProduct("WPCMPD" + number)
-            mpdNumberList += number + ":"
-            mpdLatLon += storeWatchMcdLatLon(mcdPre)
+            let text = UtilityDownload.getTextProduct("WPCMPD" + number)
+            numberListString += number + ":"
+            mpdLatLon += storeWatchMcdLatLon(text)
         }
         MyApplication.mpdLatlon.value = mpdLatLon
-        MyApplication.mpdNoList.value = mpdNumberList
+        MyApplication.mpdNoList.value = numberListString
     }
     
     static func getWatch() {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
         if html != "" { MyApplication.severeDashboardWat.value = html }
-        var watchNumberList = ""
+        var numberListString = ""
         var watchLatLon = ""
         var watchLatLonTor = ""
         var watchLatLonCombined = ""
         let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
         numberList.forEach { number in
-            let watPre = UtilityDownload.getTextProduct("SPCWAT" + number)
-            watchNumberList += number + ":"
-            var watPre2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
-            watPre2 = UtilityString.parseLastMatch(watPre2, MyApplication.pre2Pattern)
-            if watPre.contains("Severe Thunderstorm Watch") || watPre2.contains("SEVERE TSTM") {
-                watchLatLon += storeWatchMcdLatLon(watPre2)
+            let text1 = UtilityDownload.getTextProduct("SPCWAT" + number)
+            numberListString += number + ":"
+            var text2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
+            text2 = UtilityString.parseLastMatch(text2, MyApplication.pre2Pattern)
+            if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
+                watchLatLon += storeWatchMcdLatLon(text2)
             } else {
-                watchLatLonTor += storeWatchMcdLatLon(watPre2)
+                watchLatLonTor += storeWatchMcdLatLon(text2)
             }
-            watchLatLonCombined += storeWatchMcdLatLon(watPre2)
+            watchLatLonCombined += storeWatchMcdLatLon(text2)
         }
         MyApplication.watchLatlon.value = watchLatLon
         MyApplication.watchLatlonTor.value = watchLatLonTor
         MyApplication.watchLatlonCombined.value = watchLatLonCombined
-        MyApplication.watNoList.value = watchNumberList
+        MyApplication.watNoList.value = numberListString
     }
     
     static func clearWatch() {
