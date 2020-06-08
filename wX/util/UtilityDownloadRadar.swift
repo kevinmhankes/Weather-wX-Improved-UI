@@ -45,14 +45,14 @@ final class UtilityDownloadRadar {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml()
         if html != "" { MyApplication.severeDashboardMcd.value = html }
         var numberListString = ""
-        var mcdLatLon = ""
+        var latLonString = ""
         let numberList = html.parseColumn("title=.Mesoscale Discussion #(.*?).>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
         numberList.forEach { number in
             let text = UtilityDownload.getTextProduct("SPCMCD" + number)
             numberListString += number + ":"
-            mcdLatLon += storeWatchMcdLatLon(text)
+            latLonString += storeWatchMcdLatLon(text)
         }
-        MyApplication.mcdLatlon.value = mcdLatLon
+        MyApplication.mcdLatlon.value = latLonString
         MyApplication.mcdNoList.value = numberListString
     }
     
@@ -65,14 +65,14 @@ final class UtilityDownloadRadar {
         let html = (MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
         if html != "" { MyApplication.severeDashboardMpd.value = html }
         var numberListString = ""
-        var mpdLatLon = ""
+        var latLonString = ""
         let numberList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
         numberList.forEach { number in
             let text = UtilityDownload.getTextProduct("WPCMPD" + number)
             numberListString += number + ":"
-            mpdLatLon += storeWatchMcdLatLon(text)
+            latLonString += storeWatchMcdLatLon(text)
         }
-        MyApplication.mpdLatlon.value = mpdLatLon
+        MyApplication.mpdLatlon.value = latLonString
         MyApplication.mpdNoList.value = numberListString
     }
     
@@ -80,9 +80,9 @@ final class UtilityDownloadRadar {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
         if html != "" { MyApplication.severeDashboardWat.value = html }
         var numberListString = ""
-        var watchLatLon = ""
-        var watchLatLonTor = ""
-        var watchLatLonCombined = ""
+        var latLongString = ""
+        var latLonTorString = ""
+        var latLonCombinedString = ""
         let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
         numberList.forEach { number in
             let text1 = UtilityDownload.getTextProduct("SPCWAT" + number)
@@ -90,15 +90,15 @@ final class UtilityDownloadRadar {
             var text2 = (MyApplication.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
             text2 = UtilityString.parseLastMatch(text2, MyApplication.pre2Pattern)
             if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
-                watchLatLon += storeWatchMcdLatLon(text2)
+                latLongString += storeWatchMcdLatLon(text2)
             } else {
-                watchLatLonTor += storeWatchMcdLatLon(text2)
+                latLonTorString += storeWatchMcdLatLon(text2)
             }
-            watchLatLonCombined += storeWatchMcdLatLon(text2)
+            latLonCombinedString += storeWatchMcdLatLon(text2)
         }
-        MyApplication.watchLatlon.value = watchLatLon
-        MyApplication.watchLatlonTor.value = watchLatLonTor
-        MyApplication.watchLatlonCombined.value = watchLatLonCombined
+        MyApplication.watchLatlon.value = latLongString
+        MyApplication.watchLatlonTor.value = latLonTorString
+        MyApplication.watchLatlonCombined.value = latLonCombinedString
         MyApplication.watNoList.value = numberListString
     }
     
