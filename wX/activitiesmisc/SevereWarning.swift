@@ -17,6 +17,7 @@ final class SevereWarning {
     var senderNameList = [String]()
     var warnings = [String]()
     var listOfWfo = [String]()
+    private var listOfPolygonRaw = [String]()
     
     init(_ type: PolygonEnum) {
         self.type = type
@@ -34,6 +35,24 @@ final class SevereWarning {
         case .FFW:
             return "Flash Flood Warning"
         default:
+            return ""
+        }
+    }
+    
+    private func getClosestRadar(_ index: Int) -> String {
+        let data = listOfPolygonRaw[index].replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+        let points = data.split(" ")
+        // From CapAlert
+        if points.count > 2 {
+            let lat = points[1]
+            let lon = "-" + points[0]
+            let radarSites = UtilityLocation.getNearestRadarSites(LatLon(lat, lon), 1, includeTdwr: false)
+            if radarSites.isEmpty {
+                return ""
+            } else {
+                return radarSites[0].name
+            }
+        } else {
             return ""
         }
     }
@@ -58,23 +77,38 @@ final class SevereWarning {
         expiresList = html.parseColumn("\"expires\": \"(.*?)\"")
         eventList = html.parseColumn("\"event\": \"(.*?)\"")
         senderNameList = html.parseColumn("\"senderName\": \"(.*?)\"")
+        let data = html.replace("\n", "").replace(" ", "")
+        listOfPolygonRaw = data.parseColumn(WXGLPolygonWarnings.warningLatLonPattern)
         warnings = html.parseColumn(WXGLPolygonWarnings.vtecPattern)
-        warnings.forEach {
-            //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)
-            if !$0.hasPrefix("O.EXP") {
-                var location = ""
-                text += $0
+        warnings.enumerated().forEach { index, warning in
+            let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
+            if !warning.startsWith("O.EXP") && vtecIsCurrent {
                 count += 1
-                let wfos = $0.split(".")
-                if wfos.count > 1 {
-                    let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
-                    listOfWfo.append(wfo)
-                    location = Utility.getWfoSiteName(wfo)
-                }
+                let radarSite = getClosestRadar(index)
+                listOfWfo.append(radarSite)
+                let location = Utility.getWfoSiteName(radarSite)
                 text += "  " + location + MyApplication.newline
             } else {
                 listOfWfo.append("")
             }
         }
+        
+        /*warnings.forEach {
+         //let vtecIsCurrent = UtilityTime.isVtecCurrent($0)
+         if !$0.hasPrefix("O.EXP") {
+         var location = ""
+         text += $0
+         count += 1
+         let wfos = $0.split(".")
+         if wfos.count > 1 {
+         let wfo = wfos[2].replaceAllRegexp("^[KP]", "")
+         listOfWfo.append(wfo)
+         location = Utility.getWfoSiteName(wfo)
+         }
+         text += "  " + location + MyApplication.newline
+         } else {
+         listOfWfo.append("")
+         }
+         }*/
     }
 }
