@@ -67,10 +67,10 @@ final class UtilityDownloadRadar {
         if html != "" { MyApplication.severeDashboardMpd.value = html }
         var mpdNumberList = ""
         var mpdLatLon = ""
-        let mpdList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
-        mpdList.forEach {
-            let mcdPre = UtilityDownload.getTextProduct("WPCMPD" + $0)
-            mpdNumberList += $0 + ":"
+        let numberList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
+        numberList.forEach { number in
+            let mcdPre = UtilityDownload.getTextProduct("WPCMPD" + number)
+            mpdNumberList += number + ":"
             mpdLatLon += storeWatchMcdLatLon(mcdPre)
         }
         MyApplication.mpdLatlon.value = mpdLatLon
