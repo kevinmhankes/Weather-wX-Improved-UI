@@ -23,6 +23,7 @@
 // [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 
 56105 2020_06_08 [ADD] additional local text products HLS, MWW, CFW, FFA
+		 [ADD] continued work on radar icon in severe dash, usalerts, and mcd/mpd/watch viewer
 56104 2020_06_08 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] radar icon in usalerts detail

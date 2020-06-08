@@ -56,7 +56,11 @@ final class ObjectWatchProduct {
     
     func getData() {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
-        stringOfLatLon = UtilityDownloadRadar.storeWatchMcdLatLon(text).replace(":", "")
+        var textWithLatLon = text
+        if (type == .SPCWAT || type == .SPCWAT_TORNADO) {
+            textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
+        }
+        stringOfLatLon = UtilityDownloadRadar.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
