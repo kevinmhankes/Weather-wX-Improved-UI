@@ -36,9 +36,13 @@ final class UtilityWfoText {
         "RVA: Hydrologic Summary",
         "RWR: Regional Weather Roundup",
         "SPS: Special Weather Statement",
-        "VFD: Aviation Only AFD"
+        "VFD: Aviation Only AFD",
+        "HLS: Hurricane Local Statement",
+        "MWW: Marine Weather Warning",
+        "CFW: Coastal Flood Advisory",
+        "FFA: Areal Flood Watch"
     ]
-    
+
     static let wfoProdListNoCode = [
         "Area Forecast Discussion",
         "Hydrologic Outlook",
@@ -53,6 +57,10 @@ final class UtilityWfoText {
         "Hydrologic Summary",
         "Regional Weather Roundup",
         "Special Weather Statement",
-        "Aviation Only AFD"
+        "Aviation Only AFD",
+        "Hurricane Local Statement",
+        "Marine Weather Warning",
+        "Coastal Flood Advisory",
+        "Areal Flood Watch"
     ]
 }
