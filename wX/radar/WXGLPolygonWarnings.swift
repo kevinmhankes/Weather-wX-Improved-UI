@@ -43,7 +43,7 @@ final class WXGLPolygonWarnings {
         let vtecs = html.parseColumn(vtecPattern)
         var warningList = [Double]()
         polygons.enumerated().forEach { polygonCount, polygon in
-            if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") {
+            if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") && UtilityTime.isVtecCurrent(vtecs[polygonCount]) {
                 let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
                 let latLons = LatLon.parseStringToLatLons(polygonTmp)
                 warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)

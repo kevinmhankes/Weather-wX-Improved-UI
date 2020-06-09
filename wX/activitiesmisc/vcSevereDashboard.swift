@@ -87,8 +87,8 @@ final class vcSevereDashboard: UIwXViewController {
                 warningType.eventList.indices.forEach { index in
                     if warningType.warnings.count > 0 {
                         let data = warningType.warnings[index]
-                        //let vtecIsCurrent = UtilityTime.isVtecCurrent(data);
-                        if !data.hasPrefix("O.EXP") {
+                        let vtecIsCurrent = UtilityTime.isVtecCurrent(data)
+                        if !data.hasPrefix("O.EXP") && vtecIsCurrent {
                             _ = ObjectCardDashAlertItem(
                                 self,
                                 warningType,
