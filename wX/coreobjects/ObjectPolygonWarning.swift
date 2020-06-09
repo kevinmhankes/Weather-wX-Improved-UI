@@ -37,7 +37,7 @@ final class ObjectPolygonWarning {
         let vtecAl = data.parseColumn(ObjectPolygonWarning.pVtec)
         var count = 0
         vtecAl.forEach {
-            if !$0.hasPrefix("O.EXP") && !$0.hasPrefix("O.CAN") { // UtilityTime.isVtecCurrent($0)
+            if !$0.hasPrefix("O.EXP") && !$0.hasPrefix("O.CAN") && UtilityTime.isVtecCurrent($0) { // UtilityTime.isVtecCurrent($0)
                 count += 1
             }
         }
