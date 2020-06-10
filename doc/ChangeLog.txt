@@ -22,9 +22,11 @@
 // [ADD] usalerts filter by state
 // [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 
-56105 2020_06_09 [ADD] additional local text products HLS, MWW, CFW, FFA
+56105 2020_06_10 [ADD] additional local text products HLS, MWW, CFW, FFA
 		 [ADD] continued work on radar icon in severe dash, usalerts, and mcd/mpd/watch viewer
 		 [ADD] WXGL polygons and severe dash - add check if vtect is current
+		 [FIX] SPC Mesoanalys - animation was skipping most current frame, off by one
+		 [ADD] UtilityDownloadRadar.getWatch - don't fetch initital watch data, go straight to aviation
 56104 2020_06_08 [REF] colormap optimizations
 		 [REF] use Int instead of String for productCode in colorpal stuff
 		 [ADD] radar icon in usalerts detail

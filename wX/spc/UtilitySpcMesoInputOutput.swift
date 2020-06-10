@@ -50,7 +50,7 @@ final class UtilitySpcMesoInputOutput {
         let html = (MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
         let timeList = html.parseColumn("dattim\\[[0-9]{1,2}\\].*?=.*?([0-9]{8})")
         if timeList.count > frameCount {
-            stride(from: (frameCount - 1), to: 0, by: -1).forEach { index in
+            stride(from: (frameCount - 1), to: -1, by: -1).forEach { index in
                 let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s" + sector + "/" + product + "/" + product + "_" + timeList[index] + ".gif"
                 bitmaps.append(UtilityImg.getBitmapAddWhiteBackground(imgUrl))
             }
