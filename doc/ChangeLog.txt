@@ -23,8 +23,9 @@
 // [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
 
-56105 2020_06_10 [ADD] additional local text products HLS, MWW, CFW, FFA
+56105 2020_06_12 [ADD] additional local text products HLS, MWW, CFW, FFA
 		 [ADD] continued work on radar icon in severe dash, usalerts, and mcd/mpd/watch viewer
+		 [ADD] GOES products DayCloudPhase NightMicrophysics, see https://www.star.nesdis.noaa.gov/GOES/index.php for description
 		 [ADD] WXGL polygons and severe dash - add check if vtect is current
 		 [FIX] SPC Mesoanalys - animation was skipping most current frame, off by one
 		 [ADD] UtilityDownloadRadar.getWatch - don't fetch initital watch data, go straight to aviation
