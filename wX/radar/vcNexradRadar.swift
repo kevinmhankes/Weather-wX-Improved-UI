@@ -642,7 +642,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             alertMessage += MyApplication.newline + "WPC Fronts: " + wpcFrontsTimeStamp
         }
         let alert = UIAlertController(
-            title: "Closest radar site:",
+            title: "",
             message: alertMessage,
             preferredStyle: UIAlertController.Style.actionSheet
         )
