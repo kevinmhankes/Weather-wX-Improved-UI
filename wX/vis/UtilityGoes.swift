@@ -66,8 +66,10 @@ final class UtilityGoes {
             url = url.replace("ABI", "GLM")
             url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT")
         }
-        print(url)
-        return Bitmap(url)
+        //print(url)
+        let bitmap = Bitmap(url)
+        bitmap.info = productLocal
+        return bitmap
     }
     
     // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G17&sector=ak&band=GEOCOLOR&length=12

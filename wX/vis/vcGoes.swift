@@ -61,7 +61,10 @@ final class vcGoes: UIwXViewController {
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
-            DispatchQueue.main.async { self.display(bitmap) }
+            DispatchQueue.main.async {
+                self.productButton.title = bitmap.info
+                self.display(bitmap)
+            }
         }
     }
     

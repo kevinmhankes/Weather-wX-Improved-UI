@@ -11,6 +11,7 @@ final class Bitmap {
     let dataBm: Data
     var image: UIImage
     var url = ""
+    var info = "" // used in GOES viewer to store additional info
 
     init() {
         self.image = Bitmap.imageWithSize(
