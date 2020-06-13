@@ -649,9 +649,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
-                + ": "
+                + " "
                 +  Utility.getRadarSiteName(rid.name)
-                + " (" + String(rid.distance) + " mi)"
+                + " " + String(rid.distance) + " mi"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
