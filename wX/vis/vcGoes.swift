@@ -63,6 +63,7 @@ final class vcGoes: UIwXViewController {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
             DispatchQueue.main.async {
                 self.productButton.title = bitmap.info
+                self.productCode = bitmap.info
                 self.display(bitmap)
             }
         }

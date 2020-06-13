@@ -81,16 +81,15 @@ final class UtilityGoes {
         if sectorsInGoes17.contains(sector) { satellite = "G17" }
         switch sector {
         case "FD":
-            url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band=" + product + "&length=" + frameCount
+            url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band=" + product.replace("GLM", "EXTENT") + "&length=" + frameCount
         case "CONUS", "CONUS-G17":
-            url = "https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=" + satellite + "&band=" + product + "&length=" + frameCount
+            url = "https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=" + satellite + "&band=" + product.replace("GLM", "EXTENT") + "&length=" + frameCount
         default:
             url = "https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=" + satellite + "&sector=" + sector + "&band=" + product + "&length=" + frameCount
         }
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
-        print(imageUrls)
         let bitmaps = imageUrls.map { Bitmap($0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
