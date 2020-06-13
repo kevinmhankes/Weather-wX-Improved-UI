@@ -562,10 +562,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 getPolygonWarnings()
             }
         }
+        updateWarningsInToolbar()
     }
     
     func animateFrameCntClicked(_ frameCnt: Int) {
         if !inOglAnim {
+            self.warningButton.title = ""
             inOglAnim = true
             animateButton.setImage(.stop)
             getAnimate(frameCnt)
