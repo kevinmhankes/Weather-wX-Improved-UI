@@ -407,7 +407,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     @objc func productClicked(sender: ObjectToolbarIcon) {
-        let alert = ObjectPopUp(self, "Select radar product:", productButton[sender.tag])
+        let alert = ObjectPopUp(self, "", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTdwr.forEach {product in
                 alert.addAction(UIAlertAction(product, {_ in self.productChanged(sender.tag, product.split(":")[0])}))
