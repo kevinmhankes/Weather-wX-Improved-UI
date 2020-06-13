@@ -57,14 +57,16 @@ final class UtilityGoes {
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // If GLM is selected and user switches to sector w/o GLM show default instead
-        if productLocal == "GLM" && !sectorsWithAdditional.contains(sector) {
+        if additionalCodes.contains(productLocal) && !sectorsWithAdditional.contains(sector) {
             productLocal = "GEOCOLOR"
         }
         var url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
+        print(url)
         if productLocal == "GLM" {
             url = url.replace("ABI", "GLM")
-            url = url.replace(sector + "/GLM", sector + "/EXTENT")
+            url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT")
         }
+        print(url)
         return Bitmap(url)
     }
     
@@ -86,6 +88,7 @@ final class UtilityGoes {
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
+        print(imageUrls)
         let bitmaps = imageUrls.map { Bitmap($0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
@@ -124,7 +127,7 @@ final class UtilityGoes {
         "ssa: South America (south)"
     ]
     
-    static let sectorsWithAdditional = ["CONUS", "FD"]
+    static let sectorsWithAdditional = ["CONUS", "CONUS-G17", "FD", "FD-G17"]
     
     private static let sectorsInGoes17 = [
         "CONUS-G17",
@@ -166,6 +169,11 @@ final class UtilityGoes {
     
     static let additionalLabels = [
         "GLM FED+GeoColor",
+        "DMW"
+    ]
+    
+    static let additionalCodes = [
+        "GLM",
         "DMW"
     ]
     
