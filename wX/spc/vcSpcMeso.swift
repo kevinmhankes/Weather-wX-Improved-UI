@@ -101,7 +101,7 @@ final class vcSpcMeso: UIwXViewController {
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
+        _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
     }
     
     func sectorChangedByIndex(_ index: Int) {
@@ -136,7 +136,7 @@ final class vcSpcMeso: UIwXViewController {
             break
         }
         let labels = parameters.map { $0.split(":")[1] }
-        _ = ObjectPopUp(self, sender, labels, self.productChangedBySubmenu(_:))
+        _ = ObjectPopUp(self, title: "", sender, labels, self.productChangedBySubmenu(_:))
     }
     
     @objc func layerClicked() {
@@ -205,7 +205,7 @@ final class vcSpcMeso: UIwXViewController {
     }
     
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "Product Selection", paramButton, subMenu.objTitles, self.showSubMenu(_:))
+        _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, self.showSubMenu(_:))
     }
     
     func showSubMenu(_ index: Int) {
