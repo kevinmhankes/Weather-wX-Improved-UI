@@ -15,8 +15,8 @@ final class vcNhc: UIwXViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textProductButton = ObjectToolbarIcon(title: "Text Prod", self, #selector(textProductClicked))
-        imageProductButton = ObjectToolbarIcon(title: "Image Prod", self, #selector(imageProductClicked))
+        textProductButton = ObjectToolbarIcon(title: "Text Products", self, #selector(textProductClicked))
+        imageProductButton = ObjectToolbarIcon(title: "Images", self, #selector(imageProductClicked))
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ObjectScrollStackView(self)
@@ -40,7 +40,7 @@ final class vcNhc: UIwXViewController {
     }
     
     @objc func textProductClicked() {
-        _ = ObjectPopUp(self, textProductButton, UtilityNhc.textProductLabels, self.textProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, self.textProductChanged(_:))
     }
     
     func textProductChanged(_ index: Int) {
@@ -48,7 +48,7 @@ final class vcNhc: UIwXViewController {
     }
     
     @objc func imageProductClicked() {
-        _ = ObjectPopUp(self, imageProductButton, UtilityNhc.imageTitles, self.imageProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, self.imageProductChanged(_:))
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {

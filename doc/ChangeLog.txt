@@ -28,6 +28,8 @@
 		 [ADD] nexrad radar: don't show warning count in bottom toolbar when animating - not enough space on smaller phones
 		 [ADD] nexrad radar: remove useless title from menu opened when "long press"
 		 [ADD] nexrad radar: minor formatting changes in menu opened when "long press" to reduce space used and clutter
+		 [ADD] nhc - minor verbiage change in bottom toolbar labels
+		 [ADD] in submenus where the title is redundant or obvious, removed it
 		 [ADD] GOES - add 2 additional products (GLM FED and DMW) for CONUS/FD sectors in both GOES-16 and GOES-17
 		 [ADD] GOES products DayCloudPhase NightMicrophysics, see https://www.star.nesdis.noaa.gov/GOES/index.php for description
 		 [ADD] WXGL polygons and severe dash - add check if vtect is current
