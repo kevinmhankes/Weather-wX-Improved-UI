@@ -812,7 +812,7 @@ final class WXMetalRender {
     }
     
     func getGpsString() -> String {
-        let truncateAmount = 10
+        let truncateAmount = 7
         return gpsLocation.latString.truncate(truncateAmount) + ", -" + gpsLocation.lonString.truncate(truncateAmount)
     }
     

@@ -574,10 +574,10 @@ final class vcTabLocation: vcTabParent {
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
-        let alert = UIAlertController(title: "Closest radar site:", message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(title: "", message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
-            let radarDescription = rid.name + ": " + Utility.getRadarSiteName(rid.name) + " (" + String(rid.distance) + " mi)"
+            let radarDescription = rid.name + " " + Utility.getRadarSiteName(rid.name) + " " + String(rid.distance) + " mi"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
         }
         if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() {
