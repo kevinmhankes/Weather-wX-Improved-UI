@@ -53,7 +53,7 @@ final class UtilityActions {
                 "Settings"
             ]
         }
-        let alert = UIAlertController(title: "Select from:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
             let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item)})

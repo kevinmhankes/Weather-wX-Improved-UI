@@ -347,7 +347,7 @@ final class vcTabLocation: vcTabParent {
     }
     
     @objc func ccAction() {
-        let alert = UIAlertController(title: "Select from:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
