@@ -76,7 +76,13 @@ final class vcGoes: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityGoes.labels, self.productChanged(_:))
+        var labels: [String]
+        if UtilityGoes.sectorsWithAdditional.contains(sectorCode) {
+            labels = UtilityGoes.labels + UtilityGoes.additionalLabels
+        } else {
+            labels = UtilityGoes.labels
+        }
+        _ = ObjectPopUp(self, productButton, labels, self.productChanged(_:))
     }
     
     @objc func sectorClicked() {
