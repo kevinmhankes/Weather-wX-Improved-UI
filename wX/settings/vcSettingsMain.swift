@@ -15,7 +15,7 @@ final class vcSettingsMain: UIwXViewController {
         "Home Screen",
         "User Interface",
         "Celsius to Fahrenheit table",
-        "Spotters (beta)",
+        "Spotters",
         "About "  + GlobalVariables.appName
     ]
     
@@ -44,7 +44,7 @@ final class vcSettingsMain: UIwXViewController {
             self.goToVC(vcSettingsColorListing())
         case "Home Screen":
             self.goToVC(vcSettingsHomescreen())
-        case "Spotters (beta)":
+        case "Spotters":
             self.goToVC(vcSpotters())
         case "Celsius to Fahrenheit table":
             Route.textViewer(self, UtilityMath.celsiusToFahrenheitTable())
