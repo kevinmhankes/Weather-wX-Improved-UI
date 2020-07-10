@@ -24,6 +24,7 @@
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
 // [FIX] remove draw tool from settings color listing
 
+56107 2020_07_10 [FIX] 
 56106 2020_07_10 [FIX] NHC Storm graphics
 56105 2020_06_13 [ADD] additional local text products HLS, MWW, CFW, FFA
 		 [ADD] continued work on radar icon in severe dash, usalerts, and mcd/mpd/watch viewer
