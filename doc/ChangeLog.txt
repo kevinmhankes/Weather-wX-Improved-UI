@@ -24,6 +24,7 @@
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
 // [FIX] remove draw tool from settings color listing
 
+56108 2020_07_10 
 56107 2020_07_10 [FIX] remove draw tool from settings -> colors
 		 [FIX] remove beta label from spotters in settings after apple rejected last release
 56106 2020_07_10 [FIX] NHC Storm graphics
