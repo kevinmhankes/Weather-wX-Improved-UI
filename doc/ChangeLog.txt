@@ -22,6 +22,7 @@
 // [ADD] usalerts filter by state
 // [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
+// [FIX] remove draw tool from settings color listing
 
 56105 2020_06_13 [ADD] additional local text products HLS, MWW, CFW, FFA
 		 [ADD] continued work on radar icon in severe dash, usalerts, and mcd/mpd/watch viewer
