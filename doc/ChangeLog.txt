@@ -25,6 +25,7 @@
 // [FIX] remove draw tool from settings color listing
 
 
+56121 2020_08_25 take 3 for apple app store approval
 56120 2020_08_25 take 3 for apple app store approval
 56108 2020_07_10 
 56107 2020_07_10 [FIX] remove draw tool from settings -> colors
