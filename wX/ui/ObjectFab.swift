@@ -21,6 +21,9 @@ final class ObjectFab {
     }
     
     func setImage(_ iconType: IconType) {
+        #if targetEnvironment(macCatalyst)
+
+        #else
         let imageString = ObjectToolbarIcon.iconToString[iconType] ?? ""
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         if #available(iOS 13, *) {
@@ -36,6 +39,7 @@ final class ObjectFab {
                 floaty.buttonImage = UtilityImg.resizeImage(image!, 1.00)
             }
         }
+        #endif
     }
     
     func setColor() {
