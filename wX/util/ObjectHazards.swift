@@ -26,7 +26,11 @@ final class ObjectHazards {
     
     func getHazardsHtml(_ location: LatLon) -> String {
         let newLocation = UtilityMath.latLonFix(location)
-        return ("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1").getNwsHtml()
+        let html = ("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1").getNwsHtml()
+        // print("HAZARDS: " + hazards.replaceAll("\n", " "))
+        // print("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1")
+        // print(html)
+        return html
     }
     
     static var isUS = true
