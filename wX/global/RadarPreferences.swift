@@ -77,7 +77,7 @@ final class RadarPreferences {
         radarHw = Utility.readPref("COD_HW_DEFAULT", "true").hasPrefix("t")
         radarLocDot = Utility.readPref("COD_LOCDOT_DEFAULT", "true").hasPrefix("t")
         radarLakes = Utility.readPref("COD_LAKES_DEFAULT", "false").hasPrefix("t")
-        radarCounty = Utility.readPref("RADAR_SHOW_COUNTY", "false").hasPrefix("t")
+        radarCounty = Utility.readPref("RADAR_SHOW_COUNTY", "true").hasPrefix("t")
         radarWatMcd = Utility.readPref("RADAR_SHOW_WATCH", "false").hasPrefix("t")
         radarMpd = Utility.readPref("RADAR_SHOW_MPD", "false").hasPrefix("t")
         radarSti = Utility.readPref("RADAR_SHOW_STI", "false").hasPrefix("t")
