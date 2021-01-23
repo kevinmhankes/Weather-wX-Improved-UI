@@ -30,7 +30,7 @@ final class ObjectCardSevenDay {
         topText.tv.isAccessibilityElement = false
         bottomText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
-        horizontalContainer.stackView.isAccessibilityElement = true
+        horizontalContainer.view.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
@@ -47,7 +47,7 @@ final class ObjectCardSevenDay {
     func setTextFields(_ labels: (top: String, bottom: String)) {
         topText.text = labels.top
         bottomText.text = labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        horizontalContainer.stackView.accessibilityLabel = labels.top
+        horizontalContainer.view.accessibilityLabel = labels.top
             + labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 

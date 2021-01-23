@@ -6,7 +6,6 @@
 
 import UIKit
 
-// TODO rename
 final class UtilityNws {
 
     // Given the raw icon URL from NWS, determine if bitmap is on disk or must be created

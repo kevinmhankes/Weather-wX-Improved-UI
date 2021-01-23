@@ -39,7 +39,6 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
         self.productButton.title = self.product
         Utility.writePref(prefToken, self.product)
         DispatchQueue.global(qos: .userInitiated).async {
-            // FIXME fix upstream data to uppercase
             let html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async { self.display(html) }
         }

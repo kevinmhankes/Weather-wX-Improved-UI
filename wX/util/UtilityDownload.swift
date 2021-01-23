@@ -278,15 +278,9 @@ final class UtilityDownload {
         var bitmap = Bitmap()
         var needsBitmap = true
         switch product {
-            //case "VIS_1KM":
-            //    needsBitmap = false
-        //    bitmap = Bitmap()
         case "GOES16":
             needsBitmap = false
             bitmap = UtilityGoes.getImage(Utility.readPref("GOES16_PROD", "02"), Utility.readPref("GOES16_SECTOR", "cgl"))
-            //case "VIS_MAIN":
-            //    needsBitmap = false
-        //    bitmap = Bitmap()
         case "VIS_CONUS":
             needsBitmap = false
             bitmap = UtilityGoes.getImage("GEOCOLOR", "CONUS")
@@ -308,17 +302,6 @@ final class UtilityDownload {
         case "WFOWARNINGS":
             needsBitmap = false
             bitmap = Bitmap("https://www.weather.gov/wwamap/png/" + Location.wfo.lowercased() + ".png")
-            //case "RAD_1KM":
-            //    break
-            //case "IR_2KM":
-            //    needsBitmap = false
-            //    bitmap = Bitmap()
-            //case "WV_2KM":
-            //    needsBitmap = false
-            //    bitmap = Bitmap()
-            //case "VIS_2KM":
-            //    needsBitmap = false
-        //    bitmap = Bitmap()
         case "RAD_2KM":
             needsBitmap = false
             if !UIPreferences.useAwcRadarMosaic {

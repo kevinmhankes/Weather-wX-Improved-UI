@@ -25,7 +25,7 @@ final class ObjectCardCurrentConditions {
         topText.tv.isAccessibilityElement = false
         middleText.tv.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
-        horizontalContainer.stackView.isAccessibilityElement = true
+        horizontalContainer.view.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
         horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
@@ -61,7 +61,7 @@ final class ObjectCardCurrentConditions {
     func setText(_ objectCurrentConditions: ObjectCurrentConditions) {
         topText.text = objectCurrentConditions.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objectCurrentConditions.middleLine.trimmingCharacters(in: .whitespaces)
-        horizontalContainer.stackView.accessibilityLabel = objectCurrentConditions.spokenText
+        horizontalContainer.view.accessibilityLabel = objectCurrentConditions.spokenText
     }
 
     func resetTextSize() {

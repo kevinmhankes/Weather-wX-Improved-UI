@@ -8,8 +8,7 @@ import UIKit
 
 final class ObjectCardStackView {
 
-    // TODO  make private
-    let stackView: StackView
+    private let stackView: StackView
     private let padding: CGFloat = 3.0
 
     init() {
