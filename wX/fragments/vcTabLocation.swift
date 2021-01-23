@@ -184,10 +184,12 @@ final class vcTabLocation: vcTabParent {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
             self.objectSevenDay.locationIndex = Location.getCurrentLocation()
+            print("getLocationForecastSevenDay: " + String(self.objectCardSevenDayCollection?.objectCardSevenDayList.count ?? -1))
             DispatchQueue.main.async {
                 if self.objectCardSevenDayCollection == nil
                     || !self.isUS
-                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex {
+                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
+                    || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
                     self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
                     self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
                         self.stackViewForecast.view,

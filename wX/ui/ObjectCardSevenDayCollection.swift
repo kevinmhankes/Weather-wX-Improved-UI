@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardSevenDayCollection {
 
     private let uiScrollView: UIScrollView
-    private var objectCardSevenDayList = [ObjectCardSevenDay]()
+    var objectCardSevenDayList = [ObjectCardSevenDay]()
     var locationIndex = 0
     var objectCardSunTime: ObjectCardSunTime?
 
