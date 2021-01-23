@@ -2110,7 +2110,7 @@
 				INFOPLIST_FILE = wX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 56121;
+				MARKETING_VERSION = 56122;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Ounchecked";
 				PRODUCT_BUNDLE_IDENTIFIER = joshuatee.wXIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2134,7 +2134,7 @@
 				INFOPLIST_FILE = wX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 56121;
+				MARKETING_VERSION = 56122;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Ounchecked";
 				PRODUCT_BUNDLE_IDENTIFIER = joshuatee.wXIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";

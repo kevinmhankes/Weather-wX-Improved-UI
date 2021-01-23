@@ -20,7 +20,7 @@ final class UtilityWpcText {
     }
     
     static let titles = [
-        ObjectMenuTitle("General Forecast Discussions", 11),
+        ObjectMenuTitle("General Forecast Discussions", 10),
         ObjectMenuTitle("Precipitation Discussions", 2),
         ObjectMenuTitle("Hazards", 7),
         ObjectMenuTitle("Ocean Weather", 38),
@@ -36,7 +36,7 @@ final class UtilityWpcText {
     static let labels = [
         "Short Range Forecast Discussion",
         "Extended Forecast Discussion",
-        "Model Diagnostics Discussion",
+        // "Model Diagnostics Discussion",
         
         "Hawaii Extended Forecast Discussion",
         "Alaska Extended Forecast Discussion",
@@ -155,7 +155,7 @@ final class UtilityWpcText {
     static let labelsWithCodes = [
         "pmdspd: Short Range Forecast Discussion",
         "pmdepd: Extended Forecast Discussion",
-        "pmdhmd: Model Diagnostics Discussion",
+        // "pmdhmd: Model Diagnostics Discussion",
         
         "pmdhi: Hawaii Extended Forecast Discussion",
         "pmdak: Alaska Extended Forecast Discussion",
