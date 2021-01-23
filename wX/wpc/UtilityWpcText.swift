@@ -36,7 +36,6 @@ final class UtilityWpcText {
     static let labels = [
         "Short Range Forecast Discussion",
         "Extended Forecast Discussion",
-        // "Model Diagnostics Discussion",
         
         "Hawaii Extended Forecast Discussion",
         "Alaska Extended Forecast Discussion",
@@ -155,7 +154,6 @@ final class UtilityWpcText {
     static let labelsWithCodes = [
         "pmdspd: Short Range Forecast Discussion",
         "pmdepd: Extended Forecast Discussion",
-        // "pmdhmd: Model Diagnostics Discussion",
         
         "pmdhi: Hawaii Extended Forecast Discussion",
         "pmdak: Alaska Extended Forecast Discussion",
