@@ -22,7 +22,8 @@
 // [ADD] usalerts filter by state
 // [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
-// TODO [ADD] update copyright 2021
+// [ADD] update copyright 2021
+// [FIX] nexrad timestamp is slightly offset higher then other text
 
 56122 2021_01_23 [FIX] remove "pmdhmd: Model Diagnostics Discussion" from National Text Products as the NWS no longer provides this product
 		 [FIX] corrected URLs for 2 Space Weather images in National Images
