@@ -91,7 +91,8 @@ final class ObjectWatchProduct {
         case .SPCWAT:
             return (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
         case .SPCMCD:
-            return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
+            // return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
+            return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>")
         case .WPCMPD:
             return [String]()
         default:

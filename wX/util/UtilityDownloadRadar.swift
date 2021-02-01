@@ -46,7 +46,8 @@ final class UtilityDownloadRadar {
         if html != "" { MyApplication.severeDashboardMcd.value = html }
         var numberListString = ""
         var latLonString = ""
-        let numberList = html.parseColumn("title=.Mesoscale Discussion #(.*?).>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
+        // let numberList = html.parseColumn("title=.Mesoscale Discussion #(.*?).>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
+        let numberList = html.parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
         numberList.forEach { number in
             let text = UtilityDownload.getTextProduct("SPCMCD" + number)
             numberListString += number + ":"
