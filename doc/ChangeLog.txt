@@ -25,7 +25,11 @@
 // [ADD] update copyright 2021
 // [FIX] nexrad timestamp is slightly offset higher then other text
 
-56123 2021_02_01 [FIX] SPC MCD regexp was not correct
+56123 2021_02_04 [FIX] SPC MCD regexp was not correct
+		 [ADD] SPC Meso - move VTP Violent Tornado from Beta into Composite Indices to match SPC website
+		 [ADD] SPC Meso - add Tornadic 0-1km EHI to Beta to match SPC website
+		 [ADD] SPC Meso - add Tornadic Tilting & Stretching to Beta to match SPC website
+		 [ADD] SPC Meso - remove Enhanced EHI from Beta as it's no longer present on the SPC website
 56122 2021_01_23 [FIX] remove "pmdhmd: Model Diagnostics Discussion" from National Text Products as the NWS no longer provides this product
 		 [FIX] corrected URLs for 2 Space Weather images in National Images
 		 [FIX] on a fresh install, county lines were not turned on by default in nexrad radar as they should
