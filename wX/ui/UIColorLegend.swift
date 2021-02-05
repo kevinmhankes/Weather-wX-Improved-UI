@@ -80,7 +80,7 @@ final class UIColorLegend: UIView {
     }
     
     func setColor(_ red: UInt8, _ green: UInt8, _ blue: UInt8) {
-        _ =  wXColor.uiColorInt(red, green, blue).set()
+        wXColor.uiColorInt(red, green, blue).set()
     }
     
     func setColorWithBuffers(prodId: Int, index: Int) {

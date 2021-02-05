@@ -19,6 +19,7 @@ final class UtilityDownloadNws {
     }
 
     static func getStringFromUrl(_ url: String) -> String {
+        print("UtilityDownloadNws.getStringFromUrl: " + url)
         let myJustDefaults = JustSessionDefaults(headers: ["User-Agent": "IOS "
             + GlobalVariables.appName
             + " "
@@ -42,6 +43,7 @@ final class UtilityDownloadNws {
     }
 
     static func getStringFromUrlXml(_ url: String) -> String {
+        print("UtilityDownloadNws.getStringFromUrlXml: " + url)
         let myJustDefaults = JustSessionDefaults(
             headers: [
                 "User-Agent": "IOS " + GlobalVariables.appName + " " + appCreatorEmail,

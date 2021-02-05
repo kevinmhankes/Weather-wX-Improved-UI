@@ -67,7 +67,11 @@ final class UtilityUI {
         return cgsize
     }
 
-    static func statusBarHeight() -> CGFloat { UIApplication.shared.statusBarFrame.size.height }
+    static func statusBarHeight() -> CGFloat {
+        UIApplication.shared.statusBarFrame.size.height
+        // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        // return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+    }
 
     static func getVersion() -> String {
         var vers = ""
@@ -104,6 +108,7 @@ final class UtilityUI {
         var bottomPadding: CGFloat = 0.0
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
+            // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first  
             bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
         }
         return bottomPadding
@@ -113,6 +118,7 @@ final class UtilityUI {
         var topPadding: CGFloat = UIPreferences.statusBarHeight
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
+            // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
             topPadding = window?.safeAreaInsets.top ?? UIPreferences.statusBarHeight
         }
         return topPadding
