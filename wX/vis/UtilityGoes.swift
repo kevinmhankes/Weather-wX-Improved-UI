@@ -78,7 +78,9 @@ final class UtilityGoes {
         let frameCount = String(frameCnt)
         var url: String
         var satellite = "G16"
-        if sectorsInGoes17.contains(sector) { satellite = "G17" }
+        if sectorsInGoes17.contains(sector) {
+            satellite = "G17"
+        }
         switch sector {
         case "FD":
             url = "https://www.star.nesdis.noaa.gov/GOES/GOES16_FullDisk_Band.php?band=" + product.replace("GLM", "EXTENT") + "&length=" + frameCount
