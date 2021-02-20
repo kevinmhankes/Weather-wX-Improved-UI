@@ -46,7 +46,7 @@ final class UtilityNws {
     //  rain_showers,70/tsra,80
     //  ntsra,80
     static private func parseBitmapString(_ url: String) -> Bitmap {
-        if url.contains("/") {
+        if url.contains("/") || url.contains(";j=") {
             let items = url.split("/")
             if items.count > 1 {
                 return getDualBitmapWithNumbers(items[0], items[1])
@@ -91,10 +91,10 @@ final class UtilityNws {
             ] as [NSAttributedString.Key: Any]?
         let leftTokens = iconLeftString.split(",")
         let rightTokens = iconRightString.split(",")
-        let leftNumber = leftTokens.count > 1 ? leftTokens[1] : ""
-        let rightNumber = rightTokens.count > 1 ? rightTokens[1] : ""
-        let leftWeatherCondition: String
-        let rightWeatherCondition: String
+        var leftNumber = leftTokens.count > 1 ? leftTokens[1] : ""
+        var rightNumber = rightTokens.count > 1 ? rightTokens[1] : ""
+        var leftWeatherCondition: String
+        var rightWeatherCondition: String
         if leftTokens.count > 0 && rightTokens.count > 0 {
             leftWeatherCondition = leftTokens[0]
             rightWeatherCondition = rightTokens[0]
@@ -102,6 +102,17 @@ final class UtilityNws {
             leftWeatherCondition = ""
             rightWeatherCondition = ""
         }
+        
+        // legacy add
+        if !iconLeftString.contains(",") && !iconRightString.contains(",") {
+            leftNumber = UtilityString.parse(iconLeftString, ".*?([0-9]+)")
+            leftWeatherCondition = UtilityString.parse(iconLeftString, "([a-z_]+)")
+            rightNumber = UtilityString.parse(iconRightString, ".*?([0-9]+)")
+            rightWeatherCondition = UtilityString.parse(iconRightString, "([a-z_]+)")
+            // UtilityLog.d("wx", "dual: " + leftNumber + leftWeatherCondition + rightNumber + rightWeatherCondition)
+        }
+        // legacy add end
+        
         let halfWidth = 41
         let middlePoint = 45
         let leftCropA = iconLeftString.contains("fg") ? middlePoint : 4
@@ -165,10 +176,18 @@ final class UtilityNws {
     //  nrain_showers,80
     //  tsra_hi,40
     static private func getBitmapWithOneNumber(_ iconString: String) -> Bitmap {
-        //print("DEBUG2: " + iconString)
         let items = iconString.split(",")
-        let number = items.count > 1 ? items[1] : ""
-        let weatherCondition = items.count > 0 ? items[0] : ""
+        var number = items.count > 1 ? items[1] : ""
+        var weatherCondition = items.count > 0 ? items[0] : ""
+        
+        // legacy add
+        if !iconString.contains(",") {
+            // UtilityLog.d("wx","getBitmapWithOneNumber: " + iconString)
+            number = UtilityString.parse(iconString, ".*?([0-9]+)")
+            weatherCondition = UtilityString.parse(iconString, "([a-z]+)")
+        }
+        // legacy add end
+        
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
