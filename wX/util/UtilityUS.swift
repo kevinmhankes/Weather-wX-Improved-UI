@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilityUS {
     
-    static func getLocationHtml(x: String, y: String) -> String {
+    static func getLocationHtml(_ x: String, _ y: String) -> String {
         let html = UtilityNetworkIO.getStringFromUrl("https://forecast.weather.gov/MapClick.php?lat=" + x + "&lon=" + y + "&unit=0&lg=english&FcstType=dwml")
         return html
     }
@@ -48,7 +48,7 @@ final class UtilityUS {
     static func get7DayExt(_ rawData: [String]) -> String {
         var timeP12n13List = Array(repeating: "", count: 14)
         var weatherSummaries = Array(repeating: "", count: 14)
-        let forecast = UtilityString.parseXml(rawData[11], "text");
+        let forecast = UtilityString.parseXml(rawData[11], "text")
 
         weatherSummaries = UtilityString.parseColumn(rawData[18], MyApplication.utilUS_weather_summary_pattern)
         weatherSummaries.insert("", at: 0)
