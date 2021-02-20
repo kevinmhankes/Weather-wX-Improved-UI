@@ -115,10 +115,14 @@ final class WXMetalRender {
         radarLayers = [radarBuffers]
         geographicBuffers = []
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geoType.display { geographicBuffers.append($0) }
+            if $0.geoType.display {
+                geographicBuffers.append($0)
+            }
         }
         [countyLineBuffers, stateLineBuffers, hwBuffers, hwExtBuffers, lakeBuffers].forEach {
-            if $0.geoType.display { radarLayers.append($0) }
+            if $0.geoType.display {
+                radarLayers.append($0)
+            }
         }
         [
             warningTstBuffers,
@@ -133,13 +137,25 @@ final class WXMetalRender {
             watchTornadoBuffers,
             mpdBuffers
             ].forEach { if $0.type.display { radarLayers.append($0) } }
-        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps { radarLayers.append(locdotBuffers) }
-        if PolygonType.SPOTTER.display { radarLayers.append(spotterBuffers) }
-        if RadarPreferences.locdotFollowsGps { radarLayers.append(locCircleBuffers) }
-        if PolygonType.WIND_BARB.display { radarLayers += [wbCircleBuffers, wbGustsBuffers, wbBuffers] }
-        if PolygonType.SWO.display { radarLayers.append(swoBuffers) }
+        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
+            radarLayers.append(locdotBuffers)
+        }
+        if PolygonType.SPOTTER.display {
+            radarLayers.append(spotterBuffers)
+        }
+        if RadarPreferences.locdotFollowsGps {
+            radarLayers.append(locCircleBuffers)
+        }
+        if PolygonType.WIND_BARB.display {
+            radarLayers += [wbCircleBuffers, wbGustsBuffers, wbBuffers]
+        }
+        if PolygonType.SWO.display {
+            radarLayers.append(swoBuffers)
+        }
         radarLayers += [stiBuffers, hiBuffers, tvsBuffers]
-        if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn { loadGeometry() }
+        if numberOfPanes == 1 || !RadarPreferences.dualpaneshareposn {
+            loadGeometry()
+        }
     }
     
     func render(
@@ -256,12 +272,16 @@ final class WXMetalRender {
                 constructGenericLines($0)
                 $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil { self.renderFn!(paneNumber) }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
         [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil { self.renderFn!(paneNumber) }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
     }
     
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
@@ -335,9 +355,13 @@ final class WXMetalRender {
             constructGenericGeographic($0)
             $0.generateMtlBuffer(device)
         }
-        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps { constructLocationDot() }
+        if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
+            constructLocationDot()
+        }
         setZoom()
-        if self.renderFn != nil { self.renderFn!(paneNumber) }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
     }
     
     func writePreferences() {
@@ -451,7 +475,9 @@ final class WXMetalRender {
             }
             if url == "" {  // not animating
                 [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
-                    if $0.type.display { self.constructLevel3TextProduct($0.typeEnum) }
+                    if $0.type.display {
+                        self.constructLevel3TextProduct($0.typeEnum)
+                    }
                 }
                 if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
                     self.constructSpotters()
@@ -475,7 +501,9 @@ final class WXMetalRender {
                 self.constructPolygons()
                 self.showTimeToolbar(additionalText, isAnimating)
                 self.showProductText(self.product)
-                if self.renderFn != nil { self.renderFn!(self.paneNumber) }
+                if self.renderFn != nil {
+                    self.renderFn!(self.paneNumber)
+                }
                 if !isAnimating {
                     self.wxMetalTextObject.removeTextLabels()
                     self.wxMetalTextObject.addTextLabels()
@@ -489,7 +517,9 @@ final class WXMetalRender {
     }
     
     func demandRender() {
-        if self.renderFn != nil { self.renderFn!(paneNumber) }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
     }
     
     func constructPolygons() {
@@ -522,7 +552,9 @@ final class WXMetalRender {
         let timeString = WXGLNexrad.getRadarInfo("").split(" ")
         if timeString.count > 1 {
             var replaceToken = "Mode:"
-            if product.hasPrefix("L2") { replaceToken = "Product:" }
+            if product.hasPrefix("L2") {
+                replaceToken = "Product:"
+            }
             let text = timeString[1].replace(MyApplication.newline + replaceToken, "") + additionalText
             timeButton.title = text
             if UtilityTime.isRadarTimeOld(text) && !isAnimating {
@@ -735,7 +767,9 @@ final class WXMetalRender {
         colorSwo.append(wXColor.colorsToInt(0, 100, 0))
         var fSize = 0
         (0...4).forEach { z in
-            if let flArr = UtilitySwoD1.hashSwo[z] { fSize += flArr.count }
+            if let flArr = UtilitySwoD1.hashSwo[z] {
+                fSize += flArr.count
+            }
         }
         swoBuffers.metalBuffer = []
         (0...4).forEach { z in
@@ -760,7 +794,9 @@ final class WXMetalRender {
         swoBuffers.generateMtlBuffer(device)
     }
     
-    func scaleLengthLocationDot(_ currentLength: Double) -> Double { (currentLength / Double(zoom)) * 2.0 }
+    func scaleLengthLocationDot(_ currentLength: Double) -> Double {
+        (currentLength / Double(zoom)) * 2.0
+    }
     
     func setZoom() {
         [locdotBuffers, wbCircleBuffers, spotterBuffers, hiBuffers, tvsBuffers].forEach {
@@ -773,7 +809,9 @@ final class WXMetalRender {
             UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, projectionNumbers, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
-        if self.renderFn != nil { self.renderFn!(paneNumber) }
+        if self.renderFn != nil {
+            self.renderFn!(paneNumber)
+        }
     }
     
     func resetRid(_ rid: String, isHomeScreen: Bool = false) {
@@ -782,10 +820,14 @@ final class WXMetalRender {
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
         zoom = 1.0 / prefFactor
-        if UtilityUI.isLandscape() { zoom = 0.60 / prefFactor }
+        if UtilityUI.isLandscape() {
+            zoom = 0.60 / prefFactor
+        }
         #if targetEnvironment(macCatalyst)
         zoom = 0.40 / prefFactor
-        if isHomeScreen { zoom = 0.70 / prefFactor }
+        if isHomeScreen {
+            zoom = 0.70 / prefFactor
+        }
         #endif
         loadGeometry()
     }
@@ -796,10 +838,14 @@ final class WXMetalRender {
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
         zoom = 1.0 / prefFactor
-        if UtilityUI.isLandscape() { zoom = 0.60 / prefFactor }
+        if UtilityUI.isLandscape() {
+            zoom = 0.60 / prefFactor
+        }
         #if targetEnvironment(macCatalyst)
         zoom = 0.40 / prefFactor
-        if isHomeScreen { zoom = 0.70 / prefFactor }
+        if isHomeScreen {
+            zoom = 0.70 / prefFactor
+        }
         #endif
         loadGeometry()
         getRadar("")
