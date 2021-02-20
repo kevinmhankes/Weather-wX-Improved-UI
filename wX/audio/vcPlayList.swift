@@ -66,8 +66,12 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         let alert = ObjectPopUp(self, playlistItems[sender.data], addNationalProductButton)
         alert.addAction(UIAlertAction("Play", {_ in self.playProduct(selection: sender.data)}))
         alert.addAction(UIAlertAction("View Text", {_ in self.viewProduct(selection: sender.data)}))
-        if sender.data != 0 { alert.addAction(UIAlertAction("Move Up", {_ in self.move(sender.data, .up)}))}
-        if sender.data != (playlistItems.count - 1) { alert.addAction(UIAlertAction("Move Down", {_ in self.move(sender.data, .down)})) }
+        if sender.data != 0 {
+            alert.addAction(UIAlertAction("Move Up", {_ in self.move(sender.data, .up)}))
+        }
+        if sender.data != (playlistItems.count - 1) {
+            alert.addAction(UIAlertAction("Move Down", {_ in self.move(sender.data, .down)}))
+        }
         alert.addAction(UIAlertAction("Delete", {_ in self.delete(selection: sender.data)}))
         alert.finish()
     }
@@ -87,7 +91,9 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
-        if to == .up { delta = -1 }
+        if to == .up {
+            delta = -1
+        }
         let tmp = playlistItems[from + delta]
         playlistItems[from + delta] = playlistItems[from]
         playlistItems[from] = tmp
@@ -151,7 +157,9 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func resetAudio() {
-        if synthesizer.isSpeaking { synthesizer.pauseSpeaking(at: AVSpeechBoundary.word) }
+        if synthesizer.isSpeaking {
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+        }
         synthesizer = AVSpeechSynthesizer()
         fab.setImage(.play)
     }

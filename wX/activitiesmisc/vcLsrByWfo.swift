@@ -53,7 +53,9 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             lsrList.append("None issued by this office recently.")
         } else {
             var maxVers = Int(numberLSR) ?? 0
-            if maxVers > 30 { maxVers = 30 }
+            if maxVers > 30 {
+                maxVers = 30
+            }
             stride(from: 1, to: maxVers, by: 2).forEach { version in
                 lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version))
             }

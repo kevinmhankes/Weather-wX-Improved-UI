@@ -52,7 +52,9 @@ final class vcWebView: UIwXViewController {
         } else {
             webView.loadHTMLString(url, baseURL: nil)
         }
-        if aStateCode == "tornado" { productButton.title = "#tornado" }
+        if aStateCode == "tornado" {
+            productButton.title = "#tornado"
+        }
         showProduct = true
     }
 
@@ -68,7 +70,9 @@ final class vcWebView: UIwXViewController {
     func productChanged(_ stateCodeCurrent: String) {
         urlChanged(stateCodeCurrent)
         webView.load(URLRequest(url: URL(string: url)!))
-        if aStateCode != "tornado" { Utility.writePref(prefToken, self.stateCode) }
+        if aStateCode != "tornado" {
+            Utility.writePref(prefToken, self.stateCode)
+        }
     }
 
     func urlChanged(_ stateString: String) {

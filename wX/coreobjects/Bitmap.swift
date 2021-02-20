@@ -87,5 +87,7 @@ final class Bitmap {
         return newImage
     }
 
-    static func fromFile(_ filename: String) -> Bitmap { UtilityIO.readBitmapResourceFromFile(filename) }
+    static func fromFile(_ filename: String) -> Bitmap {
+        UtilityIO.readBitmapResourceFromFile(filename)
+    }
 }

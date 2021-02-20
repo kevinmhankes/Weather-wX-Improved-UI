@@ -46,7 +46,9 @@ final class MemoryBuffer {
 
     var length: Int { capacity }
 
-    func seek(_ position: Int) { self.posn = position }
+    func seek(_ position: Int) {
+        self.posn = position
+    }
 
     var address: UnsafeMutablePointer<UInt8> {
         let iBuffPtr = UnsafeMutablePointer(mutating: backingArray)

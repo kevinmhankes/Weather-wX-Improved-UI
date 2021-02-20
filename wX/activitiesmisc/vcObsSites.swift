@@ -37,7 +37,11 @@ final class vcObsSites: UIwXViewController {
         listCity = ["..Back to state list"]
         var listIds = ["..Back to state list"]
         var listSort = [String]()
-        lines.forEach {if $0.hasPrefix(stateSelected.uppercased()) { listSort.append($0) } }
+        lines.forEach {
+            if $0.hasPrefix(stateSelected.uppercased()) {
+                listSort.append($0)
+            }
+        }
         listSort = listSort.sorted()
         listSort.forEach { item in
             let list = item.split(",")

@@ -68,7 +68,9 @@ final class vcUSAlerts: UIwXViewController {
         var eventArrWithCount = [String]()
         self.capAlerts.forEach { eventArr.append($0.event) }
         eventArr.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
-        Array(counts.keys).sorted().forEach { eventArrWithCount.append($0 + ": " + String(counts[$0]!)) }
+        Array(counts.keys).sorted().forEach {
+            eventArrWithCount.append($0 + ": " + String(counts[$0]!))
+        }
         _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
     }
     
