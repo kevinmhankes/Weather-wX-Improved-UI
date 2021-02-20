@@ -164,9 +164,9 @@ final class UtilityString {
     static func parseXml(_ payloadF: String, _ delim: String) -> [String] {
         var payload = payloadF
         if delim == "start-valid-time" {
-            payload = payload.replaceAllRegexp("<end-valid-time>.*?</end-valid-time>" , "").replaceAllRegexp("<layout-key>.*?</layout-key>" , "")
+            payload = payload.replaceAllRegexp("<end-valid-time>.*?</end-valid-time>", "").replaceAllRegexp("<layout-key>.*?</layout-key>", "")
         }
-        payload = payload.replaceAllRegexp("<name>.*?</name>" , "").replaceAllRegexp("</" + delim + ">" , "")
+        payload = payload.replaceAllRegexp("<name>.*?</name>", "").replaceAllRegexp("</" + delim + ">", "")
         return payload.split("<" + delim + ">")
     }
 
@@ -174,6 +174,7 @@ final class UtilityString {
         var items = Array(repeating: "", count: regexpList.count)
         for i in 0..<regexpList.count {
             items[i] = parseFirst(html, regexpList[i])
+            // print(String(i) + " 223 " + items[i])
         }
         return items
     }

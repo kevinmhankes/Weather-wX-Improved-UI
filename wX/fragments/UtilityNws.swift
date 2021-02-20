@@ -14,12 +14,25 @@ final class UtilityNws {
     //  https://api.weather.gov/icons/land/night/bkn?size=medium
     //  https://api.weather.gov/icons/land/day/tsra_hi,40?size=medium
     static func getIcon(_ url: String) -> Bitmap {
-        //print("DEBUG223: " + url)
-        if url == "NULL" { return Bitmap() }
+        // print("DEBUG223: " + url)
+        if url == "NULL" || url == "" {
+            return Bitmap()
+        }
         var fileName = url.replace("?size=medium", "")
             .replace("?size=small", "").replace("https://api.weather.gov/icons/land/", "")
             .replace("http://api.weather.gov/icons/land/", "").replace("day/", "")
-        if fileName.contains("night") { fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n") }
+        
+        // legacy add
+        fileName = fileName.replace("http://forecast.weather.gov/newimages/medium/", "")
+        fileName = fileName.replace(".png", "")
+        fileName = fileName.replace("http://forecast.weather.gov/DualImage.php?", "")
+        fileName = fileName.replace("&amp", "")
+        // legacy add end
+        
+        if fileName.contains("night") {
+            fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n")
+        }
+        
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
             return UtilityIO.readBitmapResourceFromFile(fnResId)
         } else {
@@ -35,7 +48,25 @@ final class UtilityNws {
     static private func parseBitmapString(_ url: String) -> Bitmap {
         if url.contains("/") {
             let items = url.split("/")
-            if items.count > 1 { return getDualBitmapWithNumbers(items[0], items[1]) } else { return Bitmap() }
+            if items.count > 1 {
+                return getDualBitmapWithNumbers(items[0], items[1])
+            } else {
+                // legacy add
+                var urlTmp = url.replace("i=", "")
+                urlTmp = urlTmp.replace("j=", "")
+                urlTmp = urlTmp.replace("ip=", "")
+                urlTmp = urlTmp.replace("jp=", "")
+                let items = urlTmp.split(";")
+                if items.count > 3 {
+                    // UtilityLog.d("wx", "getDualBitmapWithNumbers " + items[0] + items[2] + ":" + items[1] + items[3])
+                    return getDualBitmapWithNumbers(items[0] + items[2], items[1] + items[3])
+                } else {
+                    // UtilityLog.d("wx", "getDualBitmapWithNumbers " + items[0] + " " + items[1])
+                    return getDualBitmapWithNumbers(items[0], items[1])
+                }
+                // legacy add end
+                // return Bitmap()
+            }
         } else {
             return getBitmapWithOneNumber(url)
         }

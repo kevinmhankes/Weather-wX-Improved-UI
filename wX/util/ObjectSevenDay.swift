@@ -64,25 +64,28 @@ final class ObjectSevenDay {
             let forecastStringList = UtilityUS.getCurrentConditionsUS(html)
             let forecastString = forecastStringList[3]
             let iconString = forecastStringList[0]
+            print("2245:" + forecastString)
             let forecastStrings = forecastString.split("\n")
-            let iconList = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
+            self.icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
+            // print(iconString + "223")
             var forecast = MyApplication.newline + MyApplication.newline
             forecastStrings.enumerated().forEach { index, s in
                 if s != "" {
                     detailedForecasts.append(s.trim())
+                    shortForecasts.append(s.trim())
                     forecast += s.trim()
                     forecast += MyApplication.newline + MyApplication.newline
-                    if iconList.count > index {
+                    if self.icons.count > index {
                         // icons.add(iconList[index]);
                     }
                     // not in kotlin
                     let stringList = s.trim().split(":")
                     let time = stringList[0].replace("\"", "")
-                    var fcst = " ";
+                    var fcst = " "
                     if stringList.count > 1 {
                         fcst = stringList[1]
                     }
-                    let icon = Utility.safeGet(iconList, index)
+                    let icon = Utility.safeGet(self.icons, index)
                     if fcst != " " {
                         forecasts.append(ObjectForecast(time, "", "", "", icon, "short", fcst))
                     }

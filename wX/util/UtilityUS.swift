@@ -10,7 +10,7 @@ final class UtilityUS {
     
     static func getLocationHtml(_ x: String, _ y: String) -> String {
         let html = UtilityNetworkIO.getStringFromUrl("https://forecast.weather.gov/MapClick.php?lat=" + x + "&lon=" + y + "&unit=0&lg=english&FcstType=dwml")
-        return html
+        return html.replace("\n", " ")
     }
 
     static func getCurrentConditionsUS(_ html: String) -> [String] {
@@ -61,6 +61,7 @@ final class UtilityUS {
             sb += timeP12n13List[j]
             sb += ": "
             sb += forecast[j]
+            sb += MyApplication.newline
         }
         return sb
     }
