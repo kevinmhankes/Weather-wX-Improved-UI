@@ -62,7 +62,7 @@ final class UtilityDownloadNws {
     }
 
     static func get7DayData(_ latLon: LatLon) -> String {
-        if (UIPreferences.useNwsApi) {
+        if UIPreferences.useNwsApi {
             let pointsData = getLocationPointData(latLon)
             let forecastUrl = pointsData.parse("\"forecast\": \"(.*?)\"")
             GlobalVariables.forecastZone = forecastUrl
