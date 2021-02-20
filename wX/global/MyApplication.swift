@@ -7,6 +7,7 @@
 import UIKit
 
 final class MyApplication {
+    
     static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by" + " https://weather.gc.ca/canada_e.html."
     static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
@@ -49,6 +50,14 @@ final class MyApplication {
     static var playlistStr = ""
     static var colorMap = [Int: ObjectColorPalette]()
     static var locations = [Location]()
+    //
+    // Legacy forecast support
+    //
+    static let utilUS_weather_summary_pattern = ".*?weather-summary=(.*?)/>.*?"
+    static let utilUS_period_name_pattern = ".*?period-name=(.*?)>.*?"
+    static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
+    static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
+    static let xml_value_pattern = "<value>"
 
     static func onCreate() {
         initPreferences()

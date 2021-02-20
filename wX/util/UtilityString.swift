@@ -157,4 +157,24 @@ final class UtilityString {
         let parsedText = htmlOneLine.parse(MyApplication.prePattern)
         return parsedText.replace(separator, MyApplication.newline)
     }
+    
+    //
+    // Legacy forecast support
+    //
+    static func parseXml(_ payloadF: String, _ delim: String) -> [String] {
+        var payload = payloadF
+        if delim == "start-valid-time" {
+            payload = payload.replaceAllRegexp("<end-valid-time>.*?</end-valid-time>" , "").replaceAllRegexp("<layout-key>.*?</layout-key>" , "")
+        }
+        payload = payload.replaceAllRegexp("<name>.*?</name>" , "").replaceAllRegexp("</" + delim + ">" , "")
+        return payload.split("<" + delim + ">")
+    }
+
+    static func parseXmlExt(_ regexpList: [String], _ html: String) -> [String] {
+        var items = Array(repeating: "", count: regexpList.count)
+        for i in 0..<regexpList.count {
+            items[i] = parseFirst(html, regexpList[i])
+        }
+        return items
+    }
 }
