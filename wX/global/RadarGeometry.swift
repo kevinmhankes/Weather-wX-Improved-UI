@@ -82,14 +82,18 @@ final class RadarGeometry {
             countState = 1166552
             countStateUs = 1166552
         }
-        if RadarPreferences.radarCamxBorders { countState += countCanada + countMexico }
+        if RadarPreferences.radarCamxBorders {
+            countState += countCanada + countMexico
+        }
         if RadarPreferences.radarCountyHires {
             countyFileResid = R.Raw.countyv2
             countCounty = 820852
         }
         stateRelativeBuffer = MemoryBuffer(countState * 4)
         hwRelativeBuffer = MemoryBuffer(countHw * 4)
-        if RadarPreferences.radarHwEnhExt { hwExtRelativeBuffer = MemoryBuffer(countHwExt * 4) }
+        if RadarPreferences.radarHwEnhExt {
+            hwExtRelativeBuffer = MemoryBuffer(countHwExt * 4)
+        }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
         let fileidArr = [
@@ -121,7 +125,9 @@ final class RadarGeometry {
                 RadarPreferences.radarHwEnhExt
         ]
         let fileAdd = [false, false, false, false, true, true, false]
-        fileidArr.indices.forEach {loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])}
+        fileidArr.indices.forEach {
+            loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])
+        }
     }
 
     static func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
@@ -131,7 +137,11 @@ final class RadarGeometry {
             let path = Bundle.main.path(forResource: fileID, ofType: "bin")
             let data = NSData(contentsOfFile: path!)
             data!.getBytes(&newArray, length: MemoryLayout.size(ofValue: floatSize) * count)
-            if addData { bb.appendArray(newArray) } else { bb.copy(newArray) }
+            if addData {
+                bb.appendArray(newArray)
+            } else {
+                bb.copy(newArray)
+            }
         }
     }
 
