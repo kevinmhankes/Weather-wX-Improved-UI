@@ -13,7 +13,7 @@ final class UtilityUS {
         return html
     }
 
-    static func getCurrentConditionsUS(html: String) -> [String] {
+    static func getCurrentConditionsUS(_ html: String) -> [String] {
         var result = Array(repeating: "", count: 5)
         let regexpList = [
                 "<temperature type=.apparent. units=.Fahrenheit..*?>(.*?)</temperature>",

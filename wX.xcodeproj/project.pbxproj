@@ -1090,7 +1090,6 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				0343972625E1AAF600F3C0F1 /* UtilityUS.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
@@ -1118,6 +1117,7 @@
 				F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */,
 				F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */,
 				03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */,
+				0343972625E1AAF600F3C0F1 /* UtilityUS.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
