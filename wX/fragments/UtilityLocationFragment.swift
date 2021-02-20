@@ -216,8 +216,12 @@ final class UtilityLocationFragment {
 
     static func extractCanadaWindDirection(_ chunk: String) -> String {
         var wdir = chunk.parse(ca7dayWindDirection1)
-        if wdir == "" { wdir = chunk.parse(ca7dayWindDirection2) }
-        if wdir != "" { wdir = " " + (windDir[wdir] ?? "") }
+        if wdir == "" {
+            wdir = chunk.parse(ca7dayWindDirection2)
+        }
+        if wdir != "" {
+            wdir = " " + (windDir[wdir] ?? "")
+        }
         return wdir
     }
 
@@ -225,8 +229,16 @@ final class UtilityLocationFragment {
         let wspdRange = chunk.parseMultiple(ca7dayWindSpeed1)
         let wspd = chunk.parse(ca7dayWindSpeed2)
         var gust = ""
-        if chunk.contains("gusting") { gust = " G " + chunk.parse(ca7dayWindSpeed3) }
-        if wspdRange.count > 1 { return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h" }
-        if wspd == "" { return "" } else { return wspd + gust + " km/h" }
+        if chunk.contains("gusting") {
+            gust = " G " + chunk.parse(ca7dayWindSpeed3)
+        }
+        if wspdRange.count > 1 {
+            return " " + wspdRange[0] + "-" + wspdRange[1] + gust + " km/h"
+        }
+        if wspd == "" {
+            return ""
+        } else {
+            return wspd + gust + " km/h"
+        }
     }
 }

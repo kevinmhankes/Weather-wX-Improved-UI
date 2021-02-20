@@ -19,8 +19,10 @@ final class UtilityNws {
             return Bitmap()
         }
         var fileName = url.replace("?size=medium", "")
-            .replace("?size=small", "").replace("https://api.weather.gov/icons/land/", "")
-            .replace("http://api.weather.gov/icons/land/", "").replace("day/", "")
+            .replace("?size=small", "")
+            .replace("https://api.weather.gov/icons/land/", "")
+            .replace("http://api.weather.gov/icons/land/", "")
+            .replace("day/", "")
         
         // legacy add
         fileName = fileName.replace("http://forecast.weather.gov/newimages/medium/", "")
@@ -30,7 +32,9 @@ final class UtilityNws {
         // legacy add end
         
         if fileName.contains("night") {
-            fileName = fileName.replace("night//", "n").replace("night/", "n").replace("/", "/n")
+            fileName = fileName.replace("night//", "n")
+                .replace("night/", "n")
+                .replace("/", "/n")
         }
         
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
@@ -83,7 +87,6 @@ final class UtilityNws {
     //  ntsra_hi,40 ntsra_hi
     //  bkn rain
     static private func getDualBitmapWithNumbers(_ iconLeftString: String, _ iconRightString: String) -> Bitmap {
-        //print("DEBUG2: " + iconLeftString + " " + iconRightString)
         let textColor = wXColor(UIPreferences.nwsIconTextColor).uiColorCurrent
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont,
@@ -109,7 +112,6 @@ final class UtilityNws {
             leftWeatherCondition = UtilityString.parse(iconLeftString, "([a-z_]+)")
             rightNumber = UtilityString.parse(iconRightString, ".*?([0-9]+)")
             rightWeatherCondition = UtilityString.parse(iconRightString, "([a-z_]+)")
-            // UtilityLog.d("wx", "dual: " + leftNumber + leftWeatherCondition + rightNumber + rightWeatherCondition)
         }
         // legacy add end
         
@@ -133,9 +135,11 @@ final class UtilityNws {
         let rect = CGRect(x: leftCropA, y: 0, width: halfWidth, height: dimensions)
         let imageRef: CGImage = bitmapLeft.image.cgImage!.cropping(to: rect)!
         bitmapLeft.image = UIImage(cgImage: imageRef)
+        
         let rectB = CGRect(x: leftCropB, y: 0, width: halfWidth, height: dimensions)
         let imageRefB = bitmapRight.image.cgImage!.cropping(to: rectB)!
         bitmapRight.image = UIImage(cgImage: imageRefB)
+        
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = true
         let renderer = UIGraphicsImageRenderer(size: size, format: rendererFormat)
@@ -143,10 +147,13 @@ final class UtilityNws {
             let bgRect = CGRect(x: 0, y: 0, width: dimensions, height: dimensions)
             UIColor.white.setFill()
             UIRectFill(bgRect)
+            
             let aSize = CGRect(x: 0, y: 0, width: halfWidth, height: dimensions)
             bitmapLeft.image.draw(in: aSize)
+            
             let bSize = CGRect(x: middlePoint, y: 0, width: halfWidth, height: dimensions)
             bitmapRight.image.draw(in: bSize, blendMode: .normal, alpha: 1.0)
+            
             let xText = 58
             let yText = 70
             let xTextLeft = 2
@@ -182,7 +189,6 @@ final class UtilityNws {
         
         // legacy add
         if !iconString.contains(",") {
-            // UtilityLog.d("wx","getBitmapWithOneNumber: " + iconString)
             number = UtilityString.parse(iconString, ".*?([0-9]+)")
             weatherCondition = UtilityString.parse(iconString, "([a-z]+)")
         }
@@ -196,12 +202,9 @@ final class UtilityNws {
         let bitmap: Bitmap
         if let fileName = UtilityNwsIcon.iconMap[weatherCondition + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)
-            //print("DEBUG2: " + fileName)
         } else {
             bitmap = Bitmap()
-            //print("DEBUG2: empty")
         }
-        //let bitmap = UtilityNwsIcon.iconMap[aLocal + ".png"] != nil ? UtilityIO.readBitmapResourceFromFile(UtilityNwsIcon.iconMap[aLocal + ".png"]!) : Bitmap()
         let imageSize = bitmap.image.size
         let xText = number == "100" ? 50 : 58
         let rendererFormat = UIGraphicsImageRendererFormat()
