@@ -80,13 +80,13 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             numLocsLocalStr = settingsLocationEditNum
             let locIdx = Int(numLocsLocalStr)! - 1
             labelTextView.text = Location.getName(locIdx)
-            latTextView.text = MyApplication.locations[locIdx].lat
-            lonTextView.text = MyApplication.locations[locIdx].lon
-            var latString = MyApplication.locations[locIdx].lat
-            var lonString = MyApplication.locations[locIdx].lon
+            latTextView.text = Location.locations[locIdx].lat
+            lonTextView.text = Location.locations[locIdx].lon
+            var latString = Location.locations[locIdx].lat
+            var lonString = Location.locations[locIdx].lon
             if !Location.isUS(locIdx) {
-                latString = MyApplication.locations[locIdx].lat.split(":")[2]
-                lonString = "-" + MyApplication.locations[locIdx].lon.split(":")[1]
+                latString = Location.locations[locIdx].lat.split(":")[2]
+                lonString = "-" + Location.locations[locIdx].lon.split(":")[1]
             }
             let locationC = CLLocationCoordinate2D(
                 latitude: Double(latString) ?? 0.0,
@@ -120,8 +120,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
             // The location save process looks up the true Lat/Lon which is then ingested by the map
             let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
-            latTextView.text = MyApplication.locations[locationNumber].lat
-            lonTextView.text = MyApplication.locations[locationNumber].lon
+            latTextView.text = Location.locations[locationNumber].lat
+            lonTextView.text = Location.locations[locationNumber].lon
             if latTextView.view.text!.split(":").count > 2 { latString = latTextView.view.text!.split(":")[2] }
             if self.lonTextView.text.contains(":") { lonString = "-" + lonTextView.view.text!.split(":")[1] }
         }

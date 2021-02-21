@@ -13,14 +13,18 @@ final class UtilityLocation {
         var tmpXArr = [String]()
         var tmpYArr = [String]()
         (0..<Location.numLocations).forEach { index in
-            if !MyApplication.locations[index].lat.contains(":") {
-                tmpX = MyApplication.locations[index].lat
-                tmpY = MyApplication.locations[index].lon.replace("-", "")
+            if !Location.locations[index].lat.contains(":") {
+                tmpX = Location.locations[index].lat
+                tmpY = Location.locations[index].lon.replace("-", "")
             } else {
-                tmpXArr = MyApplication.locations[index].lat.split(":")
-                if tmpXArr.count > 2 { tmpX = tmpXArr[2] }
-                tmpYArr = MyApplication.locations[index].lon.replace("-", "").split(":")
-                if tmpYArr.count > 1 { tmpY = tmpYArr[1] }
+                tmpXArr = Location.locations[index].lat.split(":")
+                if tmpXArr.count > 2 {
+                    tmpX = tmpXArr[2]
+                }
+                tmpYArr = Location.locations[index].lon.replace("-", "").split(":")
+                if tmpYArr.count > 1 {
+                    tmpY = tmpYArr[1]
+                }
             }
             if tmpX != "" && tmpY != "" {
                 latLonList.append(Double(tmpX) ?? 0.0)

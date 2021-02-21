@@ -170,6 +170,7 @@
 		03DF17EE21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */; };
 		03DF17F021AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */; };
 		03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */; };
+		03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E154C325E2B53D00682A8D /* ObjectLocation.swift */; };
 		03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */; };
 		03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */; };
 		03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */; };
@@ -567,6 +568,7 @@
 		03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMetalRadarBuffers.swift; sourceTree = "<group>"; };
 		03DF17EF21AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalNexradLevelData.swift; sourceTree = "<group>"; };
 		03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerf.swift; sourceTree = "<group>"; };
+		03E154C325E2B53D00682A8D /* ObjectLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectLocation.swift; sourceTree = "<group>"; };
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
 		03EE9057234D5F1D002F897F /* wX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wX.entitlements; sourceTree = "<group>"; };
 		03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesCanada.swift; sourceTree = "<group>"; };
@@ -1011,6 +1013,7 @@
 		F09504AC1E152C76008A966E /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				03E154C325E2B53D00682A8D /* ObjectLocation.swift */,
 				F02841801DEFBC6000474084 /* Location.swift */,
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
@@ -1923,6 +1926,7 @@
 				03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */,
 				0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */,
 				035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */,
+				03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */,
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
 				03562F461FCC17AD00456395 /* RadarType.swift in Sources */,

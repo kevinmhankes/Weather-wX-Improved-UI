@@ -26,7 +26,7 @@
 // [REF] add to common/ GlobalGlobalArrays.swift GlobalDictionaries.swift GlobalVariables.swift
 // [FIX] nexrad timestamp is slightly offset higher then other text
 // [REF] move radarColorPalette,colorMap to ObjectColorPalette
-// [REF] add ObjectLocation
+// [REF] in Location, make locations private and add various methods
 
 56124 2021_02_21 
 56123 2021_02_20 [FIX] SPC MCD regexp was not correct

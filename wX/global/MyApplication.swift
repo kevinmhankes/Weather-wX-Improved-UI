@@ -27,7 +27,6 @@ final class MyApplication {
     static let mpdNoList = DataStorage("MPD_NO_LIST")
     static var playlistStr = ""
     static var colorMap = [Int: ObjectColorPalette]()
-    static var locations = [Location]()
 
     static func onCreate() {
         initPreferences()

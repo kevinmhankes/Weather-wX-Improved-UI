@@ -51,7 +51,7 @@ final class Route {
                 uiv.goToVC(vc)
             }
         } else {
-            let prov = MyApplication.locations[Location.getLocationIndex].prov
+            let prov = Location.locations[Location.getLocationIndex].prov
             let vc = vcCanadaRadar()
             vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
             vc.caRadarImageType = "radar"

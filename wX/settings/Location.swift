@@ -6,6 +6,7 @@
 
 final class Location {
 
+    public static var locations = [ObjectLocation]()
     public static var listOf = [String]()
     static var numberOfLocations = 1
     // as implied by initial values currentLocation is an index starting at 0
@@ -68,8 +69,8 @@ final class Location {
     }
 
     static func checkCurrentLocationValidity() {
-        if getCurrentLocation() >= MyApplication.locations.count {
-            setCurrentLocation(MyApplication.locations.count - 1)
+        if getCurrentLocation() >= locations.count {
+            setCurrentLocation(locations.count - 1)
             setCurrentLocationStr(String(currentLocation + 1))
         }
     }
@@ -105,23 +106,23 @@ final class Location {
 
     static func us(_ xStr: String) -> Bool { !xStr.contains("CANADA") }
 
-    static var state: String { MyApplication.locations[getCurrentLocation()].state }
+    static var state: String { locations[getCurrentLocation()].state }
 
-    static var name: String { MyApplication.locations[getCurrentLocation()].name }
+    static var name: String { locations[getCurrentLocation()].name }
 
-    static func getName(_ locNum: Int) -> String { MyApplication.locations[locNum].name }
+    static func getName(_ locNum: Int) -> String { locations[locNum].name }
 
-    static var rid: String { MyApplication.locations[getCurrentLocation()].rid }
+    static var rid: String { locations[getCurrentLocation()].rid }
 
-    static var wfo: String { MyApplication.locations[getCurrentLocation()].wfo }
+    static var wfo: String { locations[getCurrentLocation()].wfo }
 
-    static var x: String { MyApplication.locations[getCurrentLocation()].lat }
+    static var x: String { locations[getCurrentLocation()].lat }
 
-    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(MyApplication.locations[locNum].lat, MyApplication.locations[locNum].lon) }
+    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(locations[locNum].lat, locations[locNum].lon) }
 
     static var xDbl: Double { Double(Location.x) ?? 0.0 }
 
-    static var y: String { MyApplication.locations[getCurrentLocation()].lon }
+    static var y: String { locations[getCurrentLocation()].lon }
 
     static var yDbl: Double { Double(Location.y) ?? 0.0 }
 
@@ -129,11 +130,13 @@ final class Location {
 
     static func isUS(_ locationNumber: Int) -> Bool {
         // FIXME bounds check or safeGet
-        if locationNumber == -1 { return true }
-        return MyApplication.locations[locationNumber].isLocationUS
+        if locationNumber == -1 {
+            return true
+        }
+        return locations[locationNumber].isLocationUS
     }
 
-    static var isUS: Bool { MyApplication.locations[Location.getLocationIndex].isLocationUS }
+    static var isUS: Bool { locations[Location.getLocationIndex].isLocationUS }
 
     var prov: String { lat.split(":")[1] }
 
@@ -141,9 +144,9 @@ final class Location {
 
     static func refreshLocationData() {
         initNumLocations()
-        MyApplication.locations = []
+        locations = []
         clearListOfNames()
-        (0..<numLocations).forEach {MyApplication.locations.append(Location($0))}
+        (0..<numLocations).forEach {locations.append(ObjectLocation($0))}
         addToListOfNames(addLocationLabel)
         checkCurrentLocationValidity()
     }

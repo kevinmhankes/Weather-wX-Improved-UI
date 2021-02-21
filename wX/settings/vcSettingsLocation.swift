@@ -26,11 +26,11 @@ final class vcSettingsLocation: UIwXViewController {
     override func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
-            MyApplication.locations.indices.forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
+            Location.locations.indices.forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
             DispatchQueue.main.async {
                 self.locationCards.indices.forEach { index in
                     self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-                    MyApplication.locations[index].updateObservation(self.currentConditions[index].topLine)
+                    Location.locations[index].updateObservation(self.currentConditions[index].topLine)
                 }
             }
         }
@@ -46,7 +46,7 @@ final class vcSettingsLocation: UIwXViewController {
     }
     
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
-        let locName = MyApplication.locations[sender.data].name
+        let locName = Location.locations[sender.data].name
         let alert = ObjectPopUp(self, locName, productButton)
         alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"", style: .default, handler: {_ in self.actionLocation(sender.data)}))
         if Location.numLocations > 1 {
@@ -99,17 +99,17 @@ final class vcSettingsLocation: UIwXViewController {
     }
     
     func initializeObservations() {
-        MyApplication.locations.forEach { $0.updateObservation("") }
+        Location.locations.forEach { $0.updateObservation("") }
     }
     
     func display() {
         locationCards = []
         self.stackView.removeViews()
-        MyApplication.locations.indices.forEach { index in
-            let name = MyApplication.locations[index].name
-            let observation = MyApplication.locations[index].observation
-            let latLon = MyApplication.locations[index].lat.truncate(10) + ", " + MyApplication.locations[index].lon.truncate(10)
-            let details = "WFO: " + MyApplication.locations[index].wfo + " Radar: " + MyApplication.locations[index].rid
+        Location.locations.indices.forEach { index in
+            let name = Location.locations[index].name
+            let observation = Location.locations[index].observation
+            let latLon = Location.locations[index].lat.truncate(10) + ", " + Location.locations[index].lon.truncate(10)
+            let details = "WFO: " + Location.locations[index].wfo + " Radar: " + Location.locations[index].rid
             locationCards.append(ObjectCardLocationItem(
                 self,
                 name,
