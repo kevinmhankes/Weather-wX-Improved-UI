@@ -2,7 +2,6 @@
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes
-// [REF] remove the need for storyboards as much as possible
 // [ADD] spc storm reports - landscape optimization
 // [ADD] spotters - show on radar option, search, mark fav, contact
 // [FIX] should not need to restart app when changing NWS icon size
@@ -25,9 +24,7 @@
 // [ADD] update copyright 2021
 // [REF] add to common/ GlobalGlobalArrays.swift GlobalDictionaries.swift GlobalVariables.swift
 // [FIX] nexrad timestamp is slightly offset higher then other text
-// [REF] move radarColorPalette,colorMap to ObjectColorPalette
 // [REF] in Location, make locations private and add various methods
-// [FIX] avoid having to restart app after change color pal 
 
 56124 2021_02_21 
 56123 2021_02_20 [FIX] SPC MCD regexp was not correct
