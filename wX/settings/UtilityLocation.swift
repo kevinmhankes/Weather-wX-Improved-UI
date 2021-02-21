@@ -13,15 +13,15 @@ final class UtilityLocation {
         var tmpXArr = [String]()
         var tmpYArr = [String]()
         (0..<Location.numLocations).forEach { index in
-            if !Location.locations[index].lat.contains(":") {
-                tmpX = Location.locations[index].lat
-                tmpY = Location.locations[index].lon.replace("-", "")
+            if !Location.getX(index).contains(":") {
+                tmpX = Location.getX(index)
+                tmpY = Location.getY(index).replace("-", "")
             } else {
-                tmpXArr = Location.locations[index].lat.split(":")
+                tmpXArr = Location.getX(index).split(":")
                 if tmpXArr.count > 2 {
                     tmpX = tmpXArr[2]
                 }
-                tmpYArr = Location.locations[index].lon.replace("-", "").split(":")
+                tmpYArr = Location.getY(index).replace("-", "").split(":")
                 if tmpYArr.count > 1 {
                     tmpY = tmpYArr[1]
                 }

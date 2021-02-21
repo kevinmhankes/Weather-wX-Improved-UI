@@ -26,11 +26,11 @@ final class vcSettingsLocation: UIwXViewController {
     override func getContent() {
         currentConditions = []
         DispatchQueue.global(qos: .userInitiated).async {
-            Location.locations.indices.forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
+            (0..<Location.numLocations).forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
             DispatchQueue.main.async {
                 self.locationCards.indices.forEach { index in
                     self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-                    Location.locations[index].updateObservation(self.currentConditions[index].topLine)
+                    Location.updateObservation(index, self.currentConditions[index].topLine)
                 }
             }
         }
@@ -46,7 +46,7 @@ final class vcSettingsLocation: UIwXViewController {
     }
     
     @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
-        let locName = Location.locations[sender.data].name
+        let locName = Location.getName(sender.data)
         let alert = ObjectPopUp(self, locName, productButton)
         alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"", style: .default, handler: {_ in self.actionLocation(sender.data)}))
         if Location.numLocations > 1 {
@@ -63,13 +63,13 @@ final class vcSettingsLocation: UIwXViewController {
     
     func moveUp(_ position: Int) {
         if position > 0 {
-            let locA = Location(position - 1)
-            let locB = Location(position)
+            let locA = ObjectLocation(position - 1)
+            let locB = ObjectLocation(position)
             locA.saveToNewSlot(position)
             locB.saveToNewSlot(position - 1)
         } else {
-            let locA = Location(Location.numLocations-1)
-            let locB = Location(0)
+            let locA = ObjectLocation(Location.numLocations-1)
+            let locB = ObjectLocation(0)
             locA.saveToNewSlot(0)
             locB.saveToNewSlot(Location.numLocations-1)
         }
@@ -78,13 +78,13 @@ final class vcSettingsLocation: UIwXViewController {
     
     func moveDown(_ position: Int) {
         if position < (Location.numLocations - 1) {
-            let locA = Location(position)
-            let locB = Location(position + 1)
+            let locA = ObjectLocation(position)
+            let locB = ObjectLocation(position + 1)
             locA.saveToNewSlot(position + 1)
             locB.saveToNewSlot(position)
         } else {
-            let locA = Location(position)
-            let locB = Location(0)
+            let locA = ObjectLocation(position)
+            let locB = ObjectLocation(0)
             locA.saveToNewSlot(0)
             locB.saveToNewSlot(position)
         }
@@ -99,17 +99,17 @@ final class vcSettingsLocation: UIwXViewController {
     }
     
     func initializeObservations() {
-        Location.locations.forEach { $0.updateObservation("") }
+        (0..<Location.numberOfLocations).forEach { Location.updateObservation($0, "") }
     }
     
     func display() {
         locationCards = []
         self.stackView.removeViews()
-        Location.locations.indices.forEach { index in
-            let name = Location.locations[index].name
-            let observation = Location.locations[index].observation
-            let latLon = Location.locations[index].lat.truncate(10) + ", " + Location.locations[index].lon.truncate(10)
-            let details = "WFO: " + Location.locations[index].wfo + " Radar: " + Location.locations[index].rid
+        (0..<Location.numberOfLocations).forEach { index in
+            let name = Location.getName(index)
+            let observation = Location.getObservation(index)
+            let latLon = Location.getX(index).truncate(10) + ", " + Location.getY(index).truncate(10)
+            let details = "WFO: " + Location.getWfo(index) + " Radar: " + Location.getRid(index)
             locationCards.append(ObjectCardLocationItem(
                 self,
                 name,

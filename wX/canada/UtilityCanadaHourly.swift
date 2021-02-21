@@ -8,8 +8,8 @@ final class UtilityCanadaHourly {
 
     static func getString(_ location: Int) -> String {
         let url = GlobalVariables.canadaEcSitePrefix + "/forecast/hourly/"
-            + Location.locations[location].lat.split(":")[1].lowercased()
-            + "-" + Location.locations[location].lon.split(":")[0]
+            + Location.getX(location).split(":")[1].lowercased()
+            + "-" + Location.getY(location).split(":")[0]
             + "_metric_e.html"
         let html = url.getHtml()
         let header = "Time    Temp  Summary                  Precip   Wind"

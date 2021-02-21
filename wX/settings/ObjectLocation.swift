@@ -56,5 +56,4 @@ final class ObjectLocation {
     }
 
     var prov: String { lat.split(":")[1] }
-
 }

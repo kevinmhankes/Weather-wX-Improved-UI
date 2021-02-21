@@ -6,8 +6,8 @@
 
 final class Location {
 
-    static var locations = [ObjectLocation]()
-    public static var listOf = [String]()
+    private static var locations = [ObjectLocation]()
+    static var listOf = [String]()
     static var numberOfLocations = 1
     // as implied by initial values currentLocation is an index starting at 0
     // while Str version is starting at "1"
@@ -15,53 +15,52 @@ final class Location {
     private static var currentLocationStr = "1"
     private static let addLocationLabel = "Add Location..."
     
-    let lat: String
-    let lon: String
-    let name: String
-    private let countyCurrent: String
-    private let zoneCurrent: String
-    let wfo: String
-    let rid: String
-    private let nwsStateCurrent: String
-    let state: String
-    private let isLocationUS: Bool
-    var observation: String
-    private let prefNumberString: String
+//    let lat: String
+//    let lon: String
+//    let name: String
+//    private let countyCurrent: String
+//    private let zoneCurrent: String
+//    let wfo: String
+//    let rid: String
+//    private let nwsStateCurrent: String
+//    let state: String
+//    private let isLocationUS: Bool
+//    var observation: String
+//    private let prefNumberString: String
 
-    init(_ locNumAsInt: Int) {
-        let locNumAsString = String(locNumAsInt + 1)
-        prefNumberString = locNumAsString
-        lat = Utility.readPref("LOC" + locNumAsString + "_X", "")
-        lon = Utility.readPref("LOC" + locNumAsString + "_Y", "")
-        name = Utility.readPref("LOC" + locNumAsString + "_LABEL", "")
-        countyCurrent = Utility.readPref("COUNTY" + locNumAsString, "")
-        zoneCurrent = Utility.readPref("ZONE" + locNumAsString, "")
-        wfo = Utility.readPref("NWS" + locNumAsString, "")
-        rid = Utility.readPref("RID" + locNumAsString, "")
-        nwsStateCurrent = Utility.readPref("NWS" + locNumAsString + "_STATE", "")
-        state = Utility.getRadarSiteName(rid).split(",")[0]
-        observation = Utility.readPref("LOC" + locNumAsString + "_OBSERVATION", "")
-        isLocationUS = Location.us(lat)
-        Location.addToListOfNames(name)
-    }
+//    init(_ locNumAsInt: Int) {
+//        let locNumAsString = String(locNumAsInt + 1)
+//        prefNumberString = locNumAsString
+//        lat = Utility.readPref("LOC" + locNumAsString + "_X", "")
+//        lon = Utility.readPref("LOC" + locNumAsString + "_Y", "")
+//        name = Utility.readPref("LOC" + locNumAsString + "_LABEL", "")
+//        countyCurrent = Utility.readPref("COUNTY" + locNumAsString, "")
+//        zoneCurrent = Utility.readPref("ZONE" + locNumAsString, "")
+//        wfo = Utility.readPref("NWS" + locNumAsString, "")
+//        rid = Utility.readPref("RID" + locNumAsString, "")
+//        nwsStateCurrent = Utility.readPref("NWS" + locNumAsString + "_STATE", "")
+//        state = Utility.getRadarSiteName(rid).split(",")[0]
+//        observation = Utility.readPref("LOC" + locNumAsString + "_OBSERVATION", "")
+//        isLocationUS = Location.us(lat)
+//        Location.addToListOfNames(name)
+//    }
+//
+//    func saveToNewSlot(_ newLocNumInt: Int) {
+//        let locNumAsString = String(newLocNumInt + 1)
+//        Utility.writePref("LOC" + locNumAsString + "_X", lat)
+//        Utility.writePref("LOC" + locNumAsString + "_Y", lon)
+//        Utility.writePref("LOC" + locNumAsString + "_LABEL", name)
+//        Utility.writePref("COUNTY" + locNumAsString, countyCurrent)
+//        Utility.writePref("ZONE" + locNumAsString, zoneCurrent)
+//        Utility.writePref("NWS" + locNumAsString, wfo)
+//        Utility.writePref("RID" + locNumAsString, rid)
+//        Utility.writePref("NWS" + locNumAsString + "_STATE", nwsStateCurrent)
+//        Utility.writePref("LOC" + locNumAsString + "_OBSERVATION", observation)
+//        Location.refreshLocationData()
+//    }
 
-    func saveToNewSlot(_ newLocNumInt: Int) {
-        let locNumAsString = String(newLocNumInt + 1)
-        Utility.writePref("LOC" + locNumAsString + "_X", lat)
-        Utility.writePref("LOC" + locNumAsString + "_Y", lon)
-        Utility.writePref("LOC" + locNumAsString + "_LABEL", name)
-        Utility.writePref("COUNTY" + locNumAsString, countyCurrent)
-        Utility.writePref("ZONE" + locNumAsString, zoneCurrent)
-        Utility.writePref("NWS" + locNumAsString, wfo)
-        Utility.writePref("RID" + locNumAsString, rid)
-        Utility.writePref("NWS" + locNumAsString + "_STATE", nwsStateCurrent)
-        Utility.writePref("LOC" + locNumAsString + "_OBSERVATION", observation)
-        Location.refreshLocationData()
-    }
-
-    func updateObservation(_ observation: String) {
-        self.observation = observation
-        Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
+    static func updateObservation(_ index: Int, _ obs: String) {
+        locations[index].updateObservation(obs)
     }
 
     static func addToListOfNames(_ name: String) {
@@ -123,6 +122,8 @@ final class Location {
     static func getWfo(_ locNum: Int) -> String { locations[locNum].wfo }
 
     static func getObservation(_ locNum: Int) -> String { locations[locNum].observation }
+    
+    static func getProv(_ locNum: Int) -> String { locations[locNum].prov }
 
     static var rid: String { locations[getCurrentLocation()].rid }
 
@@ -147,8 +148,6 @@ final class Location {
     }
 
     static var isUS: Bool { locations[Location.getLocationIndex].isLocationUS }
-
-    var prov: String { lat.split(":")[1] }
 
     static var latLon: LatLon { LatLon(Location.xDbl, Location.yDbl) }
 

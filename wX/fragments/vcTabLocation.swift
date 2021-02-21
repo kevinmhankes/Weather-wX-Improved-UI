@@ -338,8 +338,8 @@ final class vcTabLocation: vcTabParent {
     @objc func locationAction() {
         let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
-        Location.locations.indices.forEach { location in
-            let action = UIAlertAction(title: Location.getName(location), style: .default, handler: {_ in self.locationChanged(location)})
+        (0..<Location.numberOfLocations).forEach { index in
+            let action = UIAlertAction(title: Location.getName(index), style: .default, handler: {_ in self.locationChanged(index)})
             alert.addAction(action)
         }
         alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
