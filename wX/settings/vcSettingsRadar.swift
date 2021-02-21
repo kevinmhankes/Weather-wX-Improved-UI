@@ -168,7 +168,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             completion: { _ -> Void in
                 self.refreshViews()
                 self.display()
-        }
+            }
         )
     }
 }

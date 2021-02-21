@@ -30,17 +30,29 @@ final class UtilitySpcMesoInputOutput {
         let imgUrl = baseUrl + sector + "/" + product + "/" + product + gifUrl
         let bitmap = Bitmap(imgUrl)
         if showRadar && product != "1kmv" {
-            if showTopo { layersRad.append(Bitmap(topoImgUrl)) }
+            if showTopo {
+                layersRad.append(Bitmap(topoImgUrl))
+            }
             layersRad.append(Bitmap(radarImgUrl))
             layersRad.append(bitmap)
-            if showOutlook { layersRad.append(Bitmap(outlookImgUrl)) }
-            if showWatWarn { layersRad.append(Bitmap(watWarnImgUrl)) }
+            if showOutlook {
+                layersRad.append(Bitmap(outlookImgUrl))
+            }
+            if showWatWarn {
+                layersRad.append(Bitmap(watWarnImgUrl))
+            }
             return UtilityImg.layerDrawableToBitmap(layersRad)
         } else {
-            if showTopo { layers.append(Bitmap(topoImgUrl)) }
+            if showTopo {
+                layers.append(Bitmap(topoImgUrl))
+            }
             layers.append(bitmap)
-            if showOutlook { layers.append(Bitmap(outlookImgUrl)) }
-            if showWatWarn { layers.append(Bitmap(watWarnImgUrl)) }
+            if showOutlook {
+                layers.append(Bitmap(outlookImgUrl))
+            }
+            if showWatWarn {
+                layers.append(Bitmap(watWarnImgUrl))
+            }
             return UtilityImg.layerDrawableToBitmap(layers)
         }
     }

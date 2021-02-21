@@ -29,7 +29,9 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
         var truthString = "false"
-        if isOnQ { truthString = "true" }
+        if isOnQ {
+            truthString = "true"
+        }
         Utility.writePref(prefLabels[sender.tag], truthString)
     }
     
@@ -135,7 +137,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             completion: { _ -> Void in
                 self.refreshViews()
                 self.display()
-        }
+            }
         )
     }
 }

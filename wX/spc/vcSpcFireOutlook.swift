@@ -15,7 +15,9 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     override func viewDidLoad() {
         super.viewDidLoad()
         var dayString = String(dayIndex + 1)
-        if dayIndex == 2 { dayString = "3-8" }
+        if dayIndex == 2 {
+            dayString = "3-8"
+        }
         let statusButton = ObjectToolbarIcon(title: "Day " + dayString, self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems(

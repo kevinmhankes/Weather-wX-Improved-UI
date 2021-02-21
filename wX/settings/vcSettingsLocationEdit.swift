@@ -122,8 +122,12 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
             latTextView.text = Location.getX(locationNumber)
             lonTextView.text = Location.getY(locationNumber)
-            if latTextView.view.text!.split(":").count > 2 { latString = latTextView.view.text!.split(":")[2] }
-            if self.lonTextView.text.contains(":") { lonString = "-" + lonTextView.view.text!.split(":")[1] }
+            if latTextView.view.text!.split(":").count > 2 {
+                latString = latTextView.view.text!.split(":")[2]
+            }
+            if self.lonTextView.text.contains(":") {
+                lonString = "-" + lonTextView.view.text!.split(":")[1]
+            }
         }
         centerMap(latString, lonString)
     }
@@ -177,9 +181,11 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                     self.labelTextView.text = locationName
                     self.latTextView.text = String(coordinate!.latitude)
                     self.lonTextView.text = String(coordinate!.longitude)
-                    if self.latTextView.text != "" && self.lonTextView.text != "" { self.saveClicked() }
+                    if self.latTextView.text != "" && self.lonTextView.text != "" {
+                        self.saveClicked()
+                    }
                 }
-        }
+            }
         )
     }
     
@@ -216,7 +222,9 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             self.lonTextView.text = caId
             self.labelTextView.text = caCity + ", " + caProv
         }
-        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" { saveClicked() }
+        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
+            saveClicked()
+        }
     }
     
     @objc func longPress(sender: UIGestureRecognizer) {
@@ -306,7 +314,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                     }
                     self.saveFromMap(locationName, latStr, lonStr)
                 }
-        }
+            }
         )
     }
     

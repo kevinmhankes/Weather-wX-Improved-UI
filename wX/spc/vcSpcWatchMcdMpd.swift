@@ -23,7 +23,9 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         productNumber = watchMcdMpdNumber
-        if productNumber != "" { watchMcdMpdNumber = "" }
+        if productNumber != "" {
+            watchMcdMpdNumber = ""
+        }
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
@@ -140,7 +142,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.display()
-        }
+            }
         )
     }
 }

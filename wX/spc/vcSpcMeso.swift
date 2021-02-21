@@ -143,7 +143,9 @@ final class vcSpcMeso: UIwXViewController {
         let alert = ObjectPopUp(self, "Toggle Layers", layerButton)
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
             var pre = ""
-            if isLayerSelected(layer) { pre = "(on) " }
+            if isLayerSelected(layer) {
+                pre = "(on) "
+            }
             alert.addAction(UIAlertAction(pre + layer, { _ in self.layerChanged(layer)}))
         }
         alert.finish()

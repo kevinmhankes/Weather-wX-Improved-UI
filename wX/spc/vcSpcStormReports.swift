@@ -193,7 +193,7 @@ final class vcSpcStormReports: UIwXViewController {
                 self.refreshViews()
                 self.displayPreContent()
                 self.display()
-        }
+            }
         )
     }
 }

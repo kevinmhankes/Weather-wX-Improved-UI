@@ -29,7 +29,9 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
-        if spcSwoDay == "48" { stateButton.title = "" }
+        if spcSwoDay == "48" {
+            stateButton.title = ""
+        }
         self.getContent()
     }
     

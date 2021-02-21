@@ -98,15 +98,21 @@ final class vcSettingsHomescreen: UIwXViewController {
         let index = sender.data
         let title = sender.strData
         let alert = ObjectPopUp(self, title, addButton)
-        if index != 0 { alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up)})) }
-        if index != (homeScreenFav.count - 1) { alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)})) }
+        if index != 0 {
+            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up)}))
+        }
+        if index != (homeScreenFav.count - 1) {
+            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down)}))
+        }
         alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in self.delete(selection: index)}))
         alert.finish()
     }
 
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
-        if to == .up { delta = -1 }
+        if to == .up {
+            delta = -1
+        }
         let tmp = homeScreenFav[from + delta]
         homeScreenFav[from + delta] = homeScreenFav[from]
         homeScreenFav[from] = tmp
@@ -120,19 +126,25 @@ final class vcSettingsHomescreen: UIwXViewController {
     }
 
     private func display(saveToDisk: Bool = true) {
-        if saveToDisk { serializeSettings() }
+        if saveToDisk {
+            serializeSettings()
+        }
         self.stackView.removeViews()
         homeScreenFav.enumerated().forEach { index, prefVar in
             var title = UtilityHomeScreen.localChoicesText[prefVar]
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
             if title == nil {
                 (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach { label in
-                    if label.hasPrefix(prefVarMod + ":") { title = label.split(":")[1] }
+                    if label.hasPrefix(prefVarMod + ":") {
+                        title = label.split(":")[1]
+                    }
                 }
             }
             if title == nil {
                 UtilityWpcText.labelsWithCodes.forEach { label in
-                    if label.hasPrefix(prefVarMod + ":") { title = label.split(":")[1] }
+                    if label.hasPrefix(prefVarMod + ":") {
+                        title = label.split(":")[1]
+                    }
                 }
             }
             if let goodTitle = title {
