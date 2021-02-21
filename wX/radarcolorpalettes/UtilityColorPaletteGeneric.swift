@@ -11,7 +11,7 @@ final class UtilityColorPaletteGeneric {
         let lowerEnd: Int
         var prodOffset = 0.0
         var prodScale = 1.0
-        let objectColorPalette = MyApplication.colorMap[productCode]!
+        let objectColorPalette = ObjectColorPalette.colorMap[productCode]!
         objectColorPalette.position(0)
         switch productCode {
         case 94:
@@ -90,7 +90,9 @@ final class UtilityColorPaletteGeneric {
         }
         (lowerEnd..<objectColorPaletteLines[0].dbz).forEach { _ in
             objectColorPalette.putBytes(objectColorPaletteLines[0])
-            if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[0]) }
+            if scale == 2 {
+                objectColorPalette.putBytes(objectColorPaletteLines[0])
+            }
         }
         objectColorPaletteLines.indices.forEach { index in
             if index < (objectColorPaletteLines.count - 1) {
@@ -115,12 +117,14 @@ final class UtilityColorPaletteGeneric {
                 }
             } else {
                 objectColorPalette.putBytes(objectColorPaletteLines[index])
-                if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[index]) }
+                if scale == 2 {
+                    objectColorPalette.putBytes(objectColorPaletteLines[index])
+                }
             }
         }
     }
     
     static func loadColorMap(_ product: Int) {
-        generate(product, MyApplication.radarColorPalette[product]!)
+        generate(product, ObjectColorPalette.radarColorPalette[product]!)
     }
 }

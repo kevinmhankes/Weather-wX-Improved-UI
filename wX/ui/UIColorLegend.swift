@@ -49,8 +49,8 @@ final class UIColorLegend: UIView {
         _ x: CGFloat,
         _ y: CGFloat
     ) {
-        print(x)
-        print(y)
+//        print(x)
+//        print(y)
         let textTransform = CGAffineTransform.init(scaleX: 1.0, y: -1.0)
         context.textMatrix = textTransform
         if let font = attributes![NSAttributedString.Key.font] as? UIFont {
@@ -85,9 +85,9 @@ final class UIColorLegend: UIView {
     
     func setColorWithBuffers(prodId: Int, index: Int) {
         setColor(
-            MyApplication.colorMap[prodId]!.redValues.get(index),
-            MyApplication.colorMap[prodId]!.greenValues.get(index),
-            MyApplication.colorMap[prodId]!.blueValues.get(index)
+            ObjectColorPalette.colorMap[prodId]!.redValues.get(index),
+            ObjectColorPalette.colorMap[prodId]!.greenValues.get(index),
+            ObjectColorPalette.colorMap[prodId]!.blueValues.get(index)
         )
     }
     

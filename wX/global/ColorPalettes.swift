@@ -7,27 +7,30 @@
 final class ColorPalettes {
     
     static func initialize() {
+        [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach { product in
+            ObjectColorPalette.radarColorPalette[product] = Utility.readPref("RADAR_COLOR_PALETTE_" + String(product), "CODENH")
+        }
         let colorMapNumbers = [19, 30, 41, 56, 134, 135, 159, 161, 163, 165]
         let cm94 = ObjectColorPalette(94)
-        MyApplication.colorMap[94] = cm94
-        MyApplication.colorMap[94]!.initialize()
-        MyApplication.colorMap[153] = cm94
-        MyApplication.colorMap[180] = cm94
-        MyApplication.colorMap[186] = cm94
+        ObjectColorPalette.colorMap[94] = cm94
+        ObjectColorPalette.colorMap[94]!.initialize()
+        ObjectColorPalette.colorMap[153] = cm94
+        ObjectColorPalette.colorMap[180] = cm94
+        ObjectColorPalette.colorMap[186] = cm94
         let cm99 = ObjectColorPalette(99)
-        MyApplication.colorMap[99] = cm99
-        MyApplication.colorMap[99]!.initialize()
-        MyApplication.colorMap[154] = cm99
-        MyApplication.colorMap[182] = cm99
+        ObjectColorPalette.colorMap[99] = cm99
+        ObjectColorPalette.colorMap[99]!.initialize()
+        ObjectColorPalette.colorMap[154] = cm99
+        ObjectColorPalette.colorMap[182] = cm99
         let cm172 = ObjectColorPalette(172)
-        MyApplication.colorMap[172] = cm172
-        MyApplication.colorMap[172]!.initialize()
-        MyApplication.colorMap[170] = cm172
+        ObjectColorPalette.colorMap[172] = cm172
+        ObjectColorPalette.colorMap[172]!.initialize()
+        ObjectColorPalette.colorMap[170] = cm172
         colorMapNumbers.forEach { productNumber in
-            MyApplication.colorMap[productNumber] = ObjectColorPalette(productNumber)
-            MyApplication.colorMap[productNumber]!.initialize()
+            ObjectColorPalette.colorMap[productNumber] = ObjectColorPalette(productNumber)
+            ObjectColorPalette.colorMap[productNumber]!.initialize()
         }
-        MyApplication.colorMap[37] = MyApplication.colorMap[19]
-        MyApplication.colorMap[38] = MyApplication.colorMap[19]
+        ObjectColorPalette.colorMap[37] = ObjectColorPalette.colorMap[19]
+        ObjectColorPalette.colorMap[38] = ObjectColorPalette.colorMap[19]
     }
 }

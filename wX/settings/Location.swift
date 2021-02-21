@@ -6,7 +6,7 @@
 
 final class Location {
 
-    public static var locations = [ObjectLocation]()
+    static var locations = [ObjectLocation]()
     public static var listOf = [String]()
     static var numberOfLocations = 1
     // as implied by initial values currentLocation is an index starting at 0

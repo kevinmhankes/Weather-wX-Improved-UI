@@ -9,7 +9,7 @@ final class UtilityColorPalette165 {
     static let radarColorPaletteCode = 165
     
     static func generate(_ code: String) {
-        let objectColorPalette = MyApplication.colorMap[radarColorPaletteCode]!
+        let objectColorPalette = ObjectColorPalette.colorMap[radarColorPaletteCode]!
         objectColorPalette.position(0)
         var objectColorPaletteLines = [ObjectColorPaletteLine]()
         UtilityColorPalette.getColorMapStringFromDisk(radarColorPaletteCode, code).split("\n").forEach { line in
@@ -25,6 +25,6 @@ final class UtilityColorPalette165 {
     }
     
     static func loadColorMap() {
-        generate(MyApplication.radarColorPalette[radarColorPaletteCode]!)
+        generate(ObjectColorPalette.radarColorPalette[radarColorPaletteCode]!)
     }
 }

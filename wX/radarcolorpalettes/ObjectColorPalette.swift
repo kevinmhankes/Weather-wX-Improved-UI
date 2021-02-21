@@ -6,6 +6,9 @@
 
 final class ObjectColorPalette {
     
+    static var colorMap = [Int: ObjectColorPalette]()
+    static var radarColorPalette = [Int: String]()
+    
     var redValues = MemoryBuffer(16)
     var greenValues = MemoryBuffer(16)
     var blueValues = MemoryBuffer(16)
