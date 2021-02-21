@@ -9,10 +9,8 @@ import UIKit
 final class MyApplication {
     
     static var animInterval = 250
-
     static var radarColorPalette = [Int: String]()
     static var homescreenFav = ""
-
     static let severeDashboardTor = DataStorage("SEVERE_DASHBOARD_TOR")
     static let severeDashboardTst = DataStorage("SEVERE_DASHBOARD_TST")
     static let severeDashboardFfw = DataStorage("SEVERE_DASHBOARD_FFW")
@@ -34,7 +32,6 @@ final class MyApplication {
     static func onCreate() {
         initPreferences()
         AppColors.update()
-        // initData()
         ColorPalettes.initialize()
         RadarGeometry.initialize()
         if Utility.readPref("LOC1_LABEL", "") == "" {
@@ -42,11 +39,6 @@ final class MyApplication {
         }
         Location.refreshLocationData()
     }
-
-//    static func initData() {
-//        ColorPalettes.initialize()
-//        RadarGeometry.initialize()
-//    }
 
     static func initPreferences() {
         RadarPreferences.initialize()
