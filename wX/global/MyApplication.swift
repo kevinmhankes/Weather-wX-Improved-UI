@@ -28,8 +28,6 @@ final class MyApplication {
     
     static func onCreate() {
         initPreferences()
-        AppColors.update()
-        ColorPalettes.initialize()
         RadarGeometry.initialize()
         if Utility.readPref("LOC1_LABEL", "") == "" {
             UtilityStorePreferences.setDefaults()
@@ -42,7 +40,6 @@ final class MyApplication {
         UIPreferences.initialize()
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
-
         homescreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)
         playlistStr = Utility.readPref("PLAYLIST", "")
@@ -61,5 +58,7 @@ final class MyApplication {
         mcdNoList.update()
         mpdLatlon.update()
         mpdNoList.update()
+        AppColors.update()
+        ColorPalettes.initialize()
     }
 }
