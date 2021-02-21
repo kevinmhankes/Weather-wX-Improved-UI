@@ -34,17 +34,19 @@ final class MyApplication {
     static func onCreate() {
         initPreferences()
         AppColors.update()
-        initData()
+        // initData()
+        ColorPalettes.initialize()
+        RadarGeometry.initialize()
         if Utility.readPref("LOC1_LABEL", "") == "" {
             UtilityStorePreferences.setDefaults()
         }
         Location.refreshLocationData()
     }
 
-    static func initData() {
-        ColorPalettes.initialize()
-        RadarGeometry.initialize()
-    }
+//    static func initData() {
+//        ColorPalettes.initialize()
+//        RadarGeometry.initialize()
+//    }
 
     static func initPreferences() {
         RadarPreferences.initialize()
