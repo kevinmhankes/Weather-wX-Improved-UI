@@ -19,7 +19,7 @@ final class ObjectAlertSummary: NSObject {
     ]
 
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
-    
+
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {}
 
     convenience init(
@@ -82,7 +82,7 @@ final class ObjectAlertSummary: NSObject {
         }
         var stateCnt = ""
         stateCntMap.forEach { state, count in stateCnt += state + ":" + String(count) + " " }
-        objTextSummary.text = "Total alerts: " + String(capAlerts.count) + MyApplication.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + MyApplication.newline + "State counts: " + stateCnt
+        objTextSummary.text = "Total alerts: " + String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCnt
     }
 
     func getUrl(_ index: Int) -> String { urls[index] }
@@ -92,7 +92,7 @@ final class ObjectAlertSummary: NSObject {
     func changeImage(_ uiv: UIViewController) {
         Route.imageViewer(uiv, ObjectAlertSummary.imageUrls[0])
     }
-    
+
     func getImage() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.imageIndex = 0

@@ -11,18 +11,18 @@ final class UtilitySpcSwo {
     static func getImageUrls(_ day: String, getAllImages: Bool = true) -> [Bitmap] {
         var urls = [String]()
         if day == "48" {
-            urls = (4...8).map { MyApplication.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + String($0) + "prob.gif" }
+            urls = (4...8).map { GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + String($0) + "prob.gif" }
             return urls.map { Bitmap($0) }
         }
-        let html = (MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
+        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
         let time = html.parseFirst("show_tab\\(.otlk_([0-9]{4}).\\)")
         switch day {
         case "1", "2":
-            let baseUrl = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
-            urls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
+            let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
+            urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
             ["_torn.gif", "_hail.gif", "_wind.gif"].forEach { urls.append(baseUrl + time + $0) }
         case "3":
-            ["otlk_", "prob_"].forEach { urls.append(MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif") }
+            ["otlk_", "prob_"].forEach { urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif") }
         default:
             break
         }

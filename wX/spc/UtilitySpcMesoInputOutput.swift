@@ -17,7 +17,7 @@ final class UtilitySpcMesoInputOutput {
         var layers = [Bitmap]()
         var layersRad = [Bitmap]()
         var gifUrl = ""
-        let baseUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s"
+        let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s"
         let radarImgUrl = baseUrl + sector + "/" + "rgnlrad" + "/" + "rgnlrad" + ".gif"
         let outlookImgUrl = baseUrl + sector + "/" + "otlk" + "/" + "otlk" + ".gif"
         let watWarnImgUrl = baseUrl + sector + "/" + "warns" + "/" + "warns" + ".gif"
@@ -47,11 +47,11 @@ final class UtilitySpcMesoInputOutput {
 
     static func getAnimation(_ sector: String, _ product: String, _ frameCount: Int) -> AnimationDrawable {
         var bitmaps = [Bitmap]()
-        let html = (MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
+        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/mesoanalysis/new/archiveviewer.php?sector=19&parm=pmsl").getHtml()
         let timeList = html.parseColumn("dattim\\[[0-9]{1,2}\\].*?=.*?([0-9]{8})")
         if timeList.count > frameCount {
             stride(from: (frameCount - 1), to: -1, by: -1).forEach { index in
-                let imgUrl = MyApplication.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s" + sector + "/" + product + "/" + product + "_" + timeList[index] + ".gif"
+                let imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/exper/mesoanalysis/s" + sector + "/" + product + "/" + product + "_" + timeList[index] + ".gif"
                 bitmaps.append(UtilityImg.getBitmapAddWhiteBackground(imgUrl))
             }
         }

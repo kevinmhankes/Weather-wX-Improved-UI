@@ -22,16 +22,16 @@ final class UtilitySunMoon {
         do {
             let time = try sunCalc.time(ofDate: now, forSolarEvent: .dawn, atLocation: location)
             let timeFormatted = formatter.string(from: time)
-            data += "Dawn:     " + timeFormatted + MyApplication.newline
+            data += "Dawn:     " + timeFormatted + GlobalVariables.newline
             let rise = try sunCalc.time(ofDate: now, forSolarEvent: .sunrise, atLocation: location)
             let sunrise = formatter.string(from: rise)
-            data += "Sunrise:  " + sunrise + MyApplication.newline
+            data += "Sunrise:  " + sunrise + GlobalVariables.newline
             let set = try sunCalc.time(ofDate: now, forSolarEvent: .sunset, atLocation: location)
             let sunset = formatter.string(from: set)
-            data += "Sunset:   " + sunset + MyApplication.newline
+            data += "Sunset:   " + sunset + GlobalVariables.newline
             let aDusk = try sunCalc.time(ofDate: now, forSolarEvent: .dusk, atLocation: location)
             let astronomicalDusk = formatter.string(from: aDusk)
-            data += "Dusk:     " + astronomicalDusk + MyApplication.newline
+            data += "Dusk:     " + astronomicalDusk + GlobalVariables.newline
         } catch let e as SunCalc.SolarEventError {
             switch e {
             case .sunNeverRise:

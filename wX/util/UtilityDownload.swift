@@ -7,9 +7,9 @@
 import UIKit
 
 final class UtilityDownload {
-    
+
     static let useNwsApi = false
-    
+
     static func getTextProduct(_ product: String) -> String {
         var text = ""
         if product == "AFDLOC" {
@@ -22,23 +22,23 @@ final class UtilityDownload {
             let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
             text = textArr[0]
         } else if product == "SWPC3DAY" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()
         } else if product == "SWPC27DAY" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/27-day-outlook.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/27-day-outlook.txt").getHtml()
         } else if product == "SWPCWWA" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/advisory-outlook.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/advisory-outlook.txt").getHtml()
         } else if product == "SWPCHIGH" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/weekly.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/weekly.txt").getHtml()
         } else if product == "SWPCDISC" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/discussion.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/discussion.txt").getHtml()
         } else if product == "SWPC3DAYGEO" {
-            text = (MyApplication.nwsSwpcWebSitePrefix + "/text/3-day-geomag-forecast.txt").getHtml()
+            text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/3-day-geomag-forecast.txt").getHtml()
         } else if product.contains("MIATCP") || product.contains("MIATCM")
             || product.contains("MIATCD") || product.contains("MIAPWS")
             || product.contains("MIAHS") {
             let textUrl = "https://www.nhc.noaa.gov/text/" + product + ".shtml"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parse(GlobalVariables.pre2Pattern)
         } else if product.contains("MIAT") || product == "HFOTWOCP" {
             text = ("https://www.nhc.noaa.gov/ftp/pub/forecasts/discussion/" + product).getHtmlSep()
             if product == "MIATWOAT"
@@ -48,31 +48,31 @@ final class UtilityDownload {
                 text = text.replaceAll("<br>", " ")
             }
         } else if product.hasPrefix("SCCNS") {
-            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/nfd" + product.lowercased().replace("ns", "") + ".html"
+            let textUrl = GlobalVariables.nwsWPCwebsitePrefix + "/discussions/nfd" + product.lowercased().replace("ns", "") + ".html"
             text = textUrl.getHtmlSep()
             text = UtilityString.extractPre(text)
         } else if product.contains("SPCMCD") {
             let no = product.substring(6)
-            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
+            let textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/md" + no + ".html"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parse(GlobalVariables.pre2Pattern)
             text = text.removeLineBreaks().replaceAll("  ", " ")
         } else if product.contains("SPCWAT") {
             let no = product.substring(6)
-            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
+            let textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + no + ".html"
             text = textUrl.getHtmlSep()
-            text = text.parseFirst(MyApplication.pre2Pattern)
+            text = text.parseFirst(GlobalVariables.pre2Pattern)
             text = text.removeLineBreaks()
         } else if product == "FWDDY1" {
-            let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy1.html"
+            let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy1.html"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
         } else if product == "FWDDY2" {
-            let url = MyApplication.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy2.html"
+            let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/fire_wx/fwdy2.html"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
         } else if product == "FWDDY38" {
-            let url = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
+            let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
         } else if product.hasPrefix("GLF") {
@@ -95,9 +95,9 @@ final class UtilityDownload {
             text = UtilityString.extractPre(html).removeSingleLineBreaks().removeHtml()
         } else if product.contains("WPCMPD") {
             let no = product.substring(6)
-            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
+            let textUrl = GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd_multi.php?md=" + no
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parse(GlobalVariables.pre2Pattern)
             text = text.removeLineBreaks()
         } else if product.hasPrefix("GLF") && !product.contains("%") {
             text = getTextProduct(product + "%")
@@ -106,16 +106,16 @@ final class UtilityDownload {
             text = text.removeLineBreaks()
         } else if product.hasPrefix("VFD") {
             let t2 = product.substring(3)
-            text = (MyApplication.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
+            text = (GlobalVariables.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
             text = text.parse("<!-- raw data starts -->(.*?)<!-- raw data ends -->")
         } else if product.hasPrefix("AWCN") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/aw/" + product.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if product.contains("NFD") {
-            text = (MyApplication.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + product.uppercased()).getHtml().removeHtml()
+            text = (GlobalVariables.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + product.uppercased()).getHtml().removeHtml()
         } else if product.contains("FWDDY38") {
-            let textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
+            let textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/fire_wx/"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parse(GlobalVariables.pre2Pattern)
         } else if product.contains("FPCN48") {
             text = (WXGLDownload.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
         } else if product.hasPrefix("FXCN01") {
@@ -123,11 +123,11 @@ final class UtilityDownload {
             let dateList = UtilityString.parseColumn(text, "href=\"([0-9]{8})/\"")
             let dateString = dateList.last ?? ""
             let daysAndRegion = product.replace("FXCN01_", "").lowercased()
-            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml().replace(MyApplication.newline + MyApplication.newline, MyApplication.newline)
+            text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/" + dateString + "/fx_" + daysAndRegion + "_" + dateString + "00.html").getHtmlSep().removeHtml().replace(GlobalVariables.newline + GlobalVariables.newline, GlobalVariables.newline)
         } else if product.contains("QPFPFD") {
-            let textUrl = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
+            let textUrl = GlobalVariables.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=qpfpfd"
             text = textUrl.getHtmlSep()
-            text = text.parse(MyApplication.pre2Pattern)
+            text = text.parse(GlobalVariables.pre2Pattern)
         } else if product.contains("OFF") || product == "UVICAC" || product == "RWRMX" || product.hasPrefix("TPT") {
             let productType: String
             let site: String
@@ -161,9 +161,9 @@ final class UtilityDownload {
         } else if product.hasPrefix("RTP") && product.count == 5 {
             let productType = product.substring(0, 3)
             let location = product.substring(3, 5)
-            let url = MyApplication.nwsApiUrl + "/products/types/" + productType + "/locations/" + location
+            let url = GlobalVariables.nwsApiUrl + "/products/types/" + productType + "/locations/" + location
             let html = url.getNwsHtml()
-            let urlProd = MyApplication.nwsApiUrl + "/products/" + html.parseFirst("\"id\": \"(.*?)\"")
+            let urlProd = GlobalVariables.nwsApiUrl + "/products/" + html.parseFirst("\"id\": \"(.*?)\"")
             let prodHtml = urlProd.getNwsHtml()
             text = prodHtml.parseFirst("\"productText\": \"(.*?)\\}")
             text = text.replace("\\n", "\n")
@@ -204,40 +204,40 @@ final class UtilityDownload {
             } else {
                 switch product {
                 case "SWODY1":
-                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day1otlk.html"
+                    let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY2":
-                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day2otlk.html"
+                    let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day2otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY3":
-                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/outlook/day3otlk.html"
+                    let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk.html"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWOD48":
-                    let url = MyApplication.nwsSPCwebsitePrefix + "/products/exper/day4-8/"
+                    let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "PMDSPD", "PMDEPD", "PMDHMD", "PMDHI", "PMDAK", "QPFERD", "QPFHSD":
-                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=" + product.lowercased()
+                    let url = GlobalVariables.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=" + product.lowercased()
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDSA":
-                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxsa20"
+                    let url = GlobalVariables.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxsa20"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDCA":
-                    let url = MyApplication.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxca20"
+                    let url = GlobalVariables.nwsWPCwebsitePrefix + "/discussions/hpcdiscussions.php?disc=fxca20"
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDMRD":
-                    let textUrl = MyApplication.tgftpSitePrefix +  "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
+                    let textUrl = GlobalVariables.tgftpSitePrefix +  "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
                     text = textUrl.getNwsHtml()
                 case "PMDTHR":
-                    let url = MyApplication.nwsCPCNcepWebsitePrefix + "/products/predictions/threats/threats.php"
+                    let url = GlobalVariables.nwsCPCNcepWebsitePrefix + "/products/predictions/threats/threats.php"
                     text = url.getNwsHtml()
-                    text = text.parse("<div id=\"discDiv\">(.*?)</div>").replace("<br>", MyApplication.newline).removeHtml()
+                    text = text.parse("<div id=\"discDiv\">(.*?)</div>").replace("<br>", GlobalVariables.newline).removeHtml()
                 default:
                     // https://forecast.weather.gov/product.php?site=DTX&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
                     let urlToGet = "https://forecast.weather.gov/product.php?site=" + t2 + "&issuedby=" + t2 + "&product=" + t1 + "&format=txt&version=1&glossary=0"
@@ -259,20 +259,20 @@ final class UtilityDownload {
         UtilityPlayList.checkAndSave(product, text)
         return text
     }
-    
+
     static func getTextProductWithVersion(_ product: String, _ version: Int) -> String {
         let prodLocal = product.uppercased()
         let t1 = prodLocal.substring(0, 3)
         let t2 = prodLocal.substring(3)
         let textUrl = "https://forecast.weather.gov/product.php?site=NWS&product=" + t1 + "&issuedby=" + t2 + "&version=" + String(version)
         var text = textUrl.getHtmlSep()
-        text = text.parse(MyApplication.prePattern)
+        text = text.parse(GlobalVariables.prePattern)
         text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
         if t1 != "RTP" { text = text.removeLineBreaks() }
         return text
     }
-    
+
     static func getImageProduct(_ product: String) -> Bitmap {
         var url = ""
         var bitmap = Bitmap()
@@ -320,57 +320,57 @@ final class UtilityDownload {
         case "HIWARN":
             url = "https://forecast.weather.gov/wwamap/png/hi.png"
         case "FMAPD1":
-            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad1.gif"
         case "FMAPD2":
-            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad2.gif"
         case "FMAPD3":
-            url = MyApplication.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad3.gif"
         case "FMAP12":
-            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif"
         case "FMAP24":
-            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif"
         case "FMAP36":
-            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif"
         case "FMAP48":
-            url = MyApplication.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/98fwbg.gif"
         case "FMAP72":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf072.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf072.gif"
         case "FMAP96":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf096.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf096.gif"
         case "FMAP120":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf120.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf120.gif"
         case "FMAP144":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf144.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf144.gif"
         case "FMAP168":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf168.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/display/wpcwx+frontsf168.gif"
         case "FMAP3D":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/9jhwbg_conus.gif"
         case "FMAP4D":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/9khwbg_conus.gif"
         case "FMAP5D":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/9lhwbg_conus.gif"
         case "FMAP6D":
-            url = MyApplication.nwsWPCwebsitePrefix + "/medr/9mhwbg_conus.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/medr/9mhwbg_conus.gif"
         case "QPF1":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/fill_94qwbg.gif"
         case "QPF2":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/fill_98qwbg.gif"
         case "QPF3":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/fill_99qwbg.gif"
         case "QPF1-2":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d12_fill.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/d12_fill.gif"
         case "QPF1-3":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/d13_fill.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/d13_fill.gif"
         case "QPF4-5":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/95ep48iwbg_fill.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/95ep48iwbg_fill.gif"
         case "QPF6-7":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/97ep48iwbg_fill.gif"
         case "QPF1-5":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/p120i.gif"
         case "QPF1-7":
-            url = MyApplication.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/qpf/p168i.gif"
         case "WPC_ANALYSIS":
-            url = MyApplication.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif"
+            url = GlobalVariables.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif"
         case "SWOD1":
             needsBitmap = false
             bitmap = UtilitySpcSwo.getImageUrls("1", getAllImages: false)[0]
@@ -419,7 +419,7 @@ final class UtilityDownload {
             needsBitmap = false
             bitmap = UtilitySpcSoundings.getImage(nwsOffice)
         case "STRPT":
-            url = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
+            url = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/today.gif"
         default:
             bitmap = Bitmap()
             needsBitmap = false

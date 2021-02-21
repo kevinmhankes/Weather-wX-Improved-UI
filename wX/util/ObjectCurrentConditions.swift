@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class ObjectCurrentConditions {
-    
+
     var data = ""
     var iconUrl = ""
     private var conditionsTimeString = ""
@@ -25,7 +25,7 @@ final class ObjectCurrentConditions {
     private var condition = ""
     private var rawMetar = ""
     var spokenText = ""
-    
+
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
@@ -37,7 +37,7 @@ final class ObjectCurrentConditions {
         }
         self.formatCurrentConditions()
     }
-    
+
     // US via LAT LON (called from adhoc location and from other init)
     convenience init(_ location: LatLon) {
         self.init()
@@ -48,16 +48,16 @@ final class ObjectCurrentConditions {
         status = UtilityObs.getStatusViaMetar(conditionsTimeString)
         formatCurrentConditions()
     }
-    
+
     // FIXME don't use named tuple for language consistency
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
         var string = ""
         let objectMetar = ObjectMetar(location)
         conditionsTimeString = objectMetar.conditionsTimeString
-        self.temperature = objectMetar.temperature + MyApplication.degreeSymbol
-        self.windChill = objectMetar.windChill + MyApplication.degreeSymbol
-        self.heatIndex = objectMetar.heatIndex + MyApplication.degreeSymbol
-        self.dewPoint = objectMetar.dewPoint + MyApplication.degreeSymbol
+        self.temperature = objectMetar.temperature + GlobalVariables.degreeSymbol
+        self.windChill = objectMetar.windChill + GlobalVariables.degreeSymbol
+        self.heatIndex = objectMetar.heatIndex + GlobalVariables.degreeSymbol
+        self.dewPoint = objectMetar.dewPoint + GlobalVariables.degreeSymbol
         self.relativeHumidity = objectMetar.relativeHumidity + "%"
         self.seaLevelPressure = objectMetar.seaLevelPressure
         self.windDirection = objectMetar.windDirection
@@ -78,7 +78,7 @@ final class ObjectCurrentConditions {
         return (string, objectMetar.icon, objectMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
-    
+
     private func formatCurrentConditions() {
         let separator = " - "
         let dataList = data.split(separator)
@@ -87,7 +87,7 @@ final class ObjectCurrentConditions {
         if dataList.count > 4 {
             let list = dataList[0].split("/")
             topLineLocal = dataList[4].replaceAll("^ ", "") + " " + list[0] + dataList[2]
-            middleLineLocal = list[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + MyApplication.newline
+            middleLineLocal = list[1].replaceAll("^ ", "") + separator + dataList[1] + separator + dataList[3] + GlobalVariables.newline
             middleLineLocal += status
         }
         topLine = topLineLocal

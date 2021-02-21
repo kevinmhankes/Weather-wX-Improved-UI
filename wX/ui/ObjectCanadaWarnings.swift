@@ -7,7 +7,7 @@
 import UIKit
 
 final class ObjectCanadaWarnings: NSObject {
-    
+
     private let uiv: UIwXViewController
     private var provinceCode = "ca"
     var bitmap = Bitmap()
@@ -52,22 +52,22 @@ final class ObjectCanadaWarnings: NSObject {
         "Saskatchewan": "sk",
         "Yukon": "yt"
     ]
-    
+
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
     }
-    
+
     func getData() {
         if self.provinceCode == "ca" {
-            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
+            bitmap = Bitmap(GlobalVariables.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
         } else {
-            bitmap = Bitmap(MyApplication.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
+            bitmap = Bitmap(GlobalVariables.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
         }
         var html: String
         if self.provinceCode == "ca" {
-            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
+            html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
-            html = (MyApplication.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
+            html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
         }
         self.listLocUrl = html.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
         self.listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
@@ -75,7 +75,7 @@ final class ObjectCanadaWarnings: NSObject {
         self.listLocWatch = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
         self.listLocStatement = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
     }
-    
+
     func showData() {
         uiv.stackView.removeViews()
         _ = ObjectImage(uiv.stackView, bitmap)
@@ -112,13 +112,13 @@ final class ObjectCanadaWarnings: NSObject {
         }
         _ = ObjectCanadaLegal(uiv.stackView)
     }
-    
-    func getWarningUrl(_ index: Int) -> String { MyApplication.canadaEcSitePrefix + listLocUrl[index] }
-    
+
+    func getWarningUrl(_ index: Int) -> String { GlobalVariables.canadaEcSitePrefix + listLocUrl[index] }
+
     @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
-    
+
     var count: String { String(listLocUrl.count) }
-    
+
     func setProvince(_ province: String) {
         provinceCode = provinceToCode[province] ?? ""
     }

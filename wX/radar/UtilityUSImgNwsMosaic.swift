@@ -112,7 +112,7 @@ final class UtilityUSImgNwsMosaic {
 
     static func getSectorFromState(_ state: String) -> String { stateToSector[state] ?? "" }
 
-    static func get(_ sector: String) -> Bitmap { Bitmap(MyApplication.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif") }
+    static func get(_ sector: String) -> Bitmap { Bitmap(GlobalVariables.nwsRadarWebsitePrefix + "/Conus/RadarImg/" + sector + ".gif") }
 
     static func getStateFromRid() -> String { Utility.getRadarSiteName(Location.rid).split(",")[0] }
 
@@ -125,8 +125,8 @@ final class UtilityUSImgNwsMosaic {
     static func getAnimation(_ sector: String, _ numberOfFrames: Int) -> AnimationDrawable {
         let sectorUrl = sector == "latest" ?  "NAT" : sector
         let regExp = sectorUrl == "alaska" ? "href=.(" + "NATAK" + "_[0-9]{8}_[0-9]{4}.gif)" : "href=.(" + sectorUrl + "_[0-9]{8}_[0-9]{4}.gif)"
-        let urls = UtilityImgAnim.getUrlArray(MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/", regExp, numberOfFrames)
-        let baseUrl = MyApplication.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
+        let urls = UtilityImgAnim.getUrlArray(GlobalVariables.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/", regExp, numberOfFrames)
+        let baseUrl = GlobalVariables.nwsRadarWebsitePrefix + "/ridge/Conus/RadarImg/"
         let bitmaps = urls.map { Bitmap(baseUrl + $0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }

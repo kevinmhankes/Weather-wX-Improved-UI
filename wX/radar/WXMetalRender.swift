@@ -11,7 +11,7 @@ import simd
 import UIKit
 
 final class WXMetalRender {
-    
+
     private let radarType = "WXMETAL"
     private let device: MTLDevice
     private var time: CFTimeInterval = 0.0
@@ -95,7 +95,7 @@ final class WXMetalRender {
         "NCR: Composite Reflectivity 124nm",
         "NCZ: Composite Reflectivity 248nm"
     ]
-    
+
     init(_ device: MTLDevice,
          _ wxMetalTextObject: WXMetalTextObject,
          _ timeButton: ObjectToolbarIcon,
@@ -157,7 +157,7 @@ final class WXMetalRender {
             loadGeometry()
         }
     }
-    
+
     func render(
         commandQueue: MTLCommandQueue,
         pipelineState: MTLRenderPipelineState,
@@ -246,7 +246,7 @@ final class WXMetalRender {
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
     }
-    
+
     func modelMatrix() -> float4x4 {
         var matrix = float4x4()
         matrix.translate(0.0, y: 0.0, z: 0.0)
@@ -254,11 +254,11 @@ final class WXMetalRender {
         matrix.scale(1.0, y: 1.0, z: 1.0)
         return matrix
     }
-    
+
     func updateWithDelta(delta: CFTimeInterval) {
         time += delta
     }
-    
+
     func constructAlertPolygons() {
         [
             warningTstBuffers,
@@ -283,7 +283,7 @@ final class WXMetalRender {
             self.renderFn!(paneNumber)
         }
     }
-    
+
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
         var list: [Double]
         switch buffers.typeEnum {
@@ -321,7 +321,7 @@ final class WXMetalRender {
         }
         buffers.count = list.count
     }
-    
+
     func constructGenericGeographic(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.geoType.count)
         buffers.initialize(4 * buffers.count, buffers.geoType.color)
@@ -348,7 +348,7 @@ final class WXMetalRender {
             i += 5
         }
     }
-    
+
     func loadGeometry() {
         projectionNumbers = ProjectionNumbers(rid, .wxOgl)
         geographicBuffers.forEach {
@@ -363,7 +363,7 @@ final class WXMetalRender {
             self.renderFn!(paneNumber)
         }
     }
-    
+
     func writePreferences() {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
@@ -374,7 +374,7 @@ final class WXMetalRender {
         Utility.writePref(radarType + numberOfPanes + "_PROD" + index, product)
         Utility.writePref(radarType + numberOfPanes + "_TILT" + index, tiltInt)
     }
-    
+
     // This method is called between the transition from single to dual pane
     // It saves the current specifics about the single pane radar save the product itself
     func writePreferencesForSingleToDualPaneTransition() {
@@ -387,7 +387,7 @@ final class WXMetalRender {
             Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
         }
     }
-    
+
     func readPreferences() {
         let numberOfPanes = String(self.numberOfPanes)
         let index = String(paneNumber)
@@ -403,7 +403,7 @@ final class WXMetalRender {
             product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
         }
     }
-    
+
     func cleanup() {
         radarLayers = []
         geographicBuffers = []
@@ -425,7 +425,7 @@ final class WXMetalRender {
             checkIfTdwr()
         }
     }
-    
+
     var product: String {
         get { radarProduct }
         set {
@@ -433,7 +433,7 @@ final class WXMetalRender {
             checkIfTdwr()
         }
     }
-    
+
     func checkIfTdwr() {
         let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
         if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TZ") {
@@ -458,7 +458,7 @@ final class WXMetalRender {
             self.isTdwr = false
         }
     }
-    
+
     func getRadar(_ url: String, _ additionalText: String = "") {
         var isAnimating = false
         DispatchQueue.global(qos: .userInitiated).async {
@@ -511,17 +511,17 @@ final class WXMetalRender {
             }
         }
     }
-    
+
     func setRenderFunction(_ fn: @escaping (Int) -> Void) {
         self.renderFn = fn
     }
-    
+
     func demandRender() {
         if self.renderFn != nil {
             self.renderFn!(paneNumber)
         }
     }
-    
+
     func constructPolygons() {
         self.radarBuffers.metalBuffer = []
         self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.indexString)
@@ -543,11 +543,11 @@ final class WXMetalRender {
         self.radarBuffers.setCount()
         self.radarBuffers.generateMtlBuffer(device)
     }
-    
+
     func updateTimeToolbar() {
         showTimeToolbar("", false)
     }
-    
+
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
         let timeString = WXGLNexrad.getRadarInfo("").split(" ")
         if timeString.count > 1 {
@@ -555,7 +555,7 @@ final class WXMetalRender {
             if product.hasPrefix("L2") {
                 replaceToken = "Product:"
             }
-            let text = timeString[1].replace(MyApplication.newline + replaceToken, "") + additionalText
+            let text = timeString[1].replace(GlobalVariables.newline + replaceToken, "") + additionalText
             timeButton.title = text
             if UtilityTime.isRadarTimeOld(text) && !isAnimating {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
@@ -566,11 +566,11 @@ final class WXMetalRender {
             timeButton.title = ""
         }
     }
-    
+
     func showProductText(_ product: String) {
         productButton.title = product
     }
-    
+
     // TODO rename vars
     func constructLocationDot() {
         var locmarkerAl = [Double]() //locmarkerAl = []
@@ -603,7 +603,7 @@ final class WXMetalRender {
             self.renderFn!(self.paneNumber)
         }
     }
-    
+
     func constructTriangles(_ buffers: ObjectMetalBuffers) {
         buffers.setCount(buffers.latList.count)
         switch buffers.typeEnum {
@@ -617,7 +617,7 @@ final class WXMetalRender {
         buffers.lenInit = scaleLengthLocationDot(buffers.lenInit)
         buffers.draw(projectionNumbers)
     }
-    
+
     func constructGenericLinesShort(_ buffers: ObjectMetalBuffers, _ list: [Double]) {
         buffers.initialize(2, buffers.type.color)
         let colors = buffers.getColorArrayInFloat()
@@ -636,19 +636,19 @@ final class WXMetalRender {
         }
         buffers.count = list.count
     }
-    
+
     func constructWBLines() {
         constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: false))
         constructWBLinesGusts()
         constructWBCircle()
         wbBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructWBLinesGusts() {
         constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: true))
         wbGustsBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructLevel3TextProduct(_ type: PolygonEnum) {
         switch type {
         case .HI:
@@ -661,12 +661,12 @@ final class WXMetalRender {
             break
         }
     }
-    
+
     func constructStiLines() {
         constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString))
         stiBuffers.generateMtlBuffer(device)
     }
-    
+
     // TODO the 2 methods below can go generic
     func constructTvs() {
         tvsBuffers.lenInit = tvsBuffers.type.size
@@ -677,7 +677,7 @@ final class WXMetalRender {
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructHi() {
         hiBuffers.lenInit = hiBuffers.type.size
         hiBuffers.triangleCount = 1
@@ -687,7 +687,7 @@ final class WXMetalRender {
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructWBCircle() {
         wbCircleBuffers.lenInit = PolygonType.WIND_BARB.size
         wbCircleBuffers.latList = UtilityMetar.obsArrX
@@ -700,7 +700,7 @@ final class WXMetalRender {
         ObjectMetalBuffers.redrawCircleWithColor(wbCircleBuffers, projectionNumbers)
         wbCircleBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructSpotters() {
         spotterBuffers.lenInit = PolygonType.SPOTTER.size
         spotterBuffers.triangleCount = 6
@@ -712,7 +712,7 @@ final class WXMetalRender {
         spotterBuffers.draw(projectionNumbers)
         spotterBuffers.generateMtlBuffer(device)
     }
-    
+
     func constructWpcFronts() {
         wpcFrontBuffersList = []
         wpcFrontPaints = []
@@ -755,7 +755,7 @@ final class WXMetalRender {
             wpcFrontBuffersList[z].generateMtlBuffer(device)
         }
     }
-    
+
     // TODO rename vars
     func constructSwoLines() {
         swoBuffers.initialize(2, Color.MAGENTA)
@@ -793,11 +793,11 @@ final class WXMetalRender {
         swoBuffers.count = Int(Double(swoBuffers.metalBuffer.count) * 0.4)
         swoBuffers.generateMtlBuffer(device)
     }
-    
+
     func scaleLengthLocationDot(_ currentLength: Double) -> Double {
         (currentLength / Double(zoom)) * 2.0
     }
-    
+
     func setZoom() {
         [locdotBuffers, wbCircleBuffers, spotterBuffers, hiBuffers, tvsBuffers].forEach {
             $0.lenInit = scaleLengthLocationDot($0.type.size)
@@ -813,7 +813,7 @@ final class WXMetalRender {
             self.renderFn!(paneNumber)
         }
     }
-    
+
     func resetRid(_ rid: String, isHomeScreen: Bool = false) {
         self.rid = rid
         xPos = 0.0
@@ -831,7 +831,7 @@ final class WXMetalRender {
         #endif
         loadGeometry()
     }
-    
+
     func resetRidAndGet(_ rid: String, isHomeScreen: Bool = false) {
         self.rid = rid
         xPos = 0.0
@@ -850,18 +850,18 @@ final class WXMetalRender {
         loadGeometry()
         getRadar("")
     }
-    
+
     func changeProduct(_ product: String) {
         self.product = product
         getRadar("")
         productButton.title = product
     }
-    
+
     func getGpsString() -> String {
         let truncateAmount = 7
         return gpsLocation.latString.truncate(truncateAmount) + ", -" + gpsLocation.lonString.truncate(truncateAmount)
     }
-    
+
     var tilt: Int {
         get { tiltInt }
         set {
@@ -889,7 +889,7 @@ final class WXMetalRender {
             }
         }
     }
-    
+
     func regenerateProductList() {
         radarProductList.enumerated().forEach { index, productString in
             let firstValue = productString[productString.startIndex]

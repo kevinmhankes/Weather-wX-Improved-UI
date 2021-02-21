@@ -38,7 +38,7 @@ final class UtilityTimeSunMoon {
         } catch let e {
             print("Unknown error: \(e)")
         }
-        return "Sunrise: " + sunrise + "  Sunset: " + sunset + MyApplication.newline + "Dawn: " + dawn + "  Dusk: " + dusk
+        return "Sunrise: " + sunrise + "  Sunset: " + sunset + GlobalVariables.newline + "Dawn: " + dawn + "  Dusk: " + dusk
     }
 
     static func getSunriseSunsetFromObs(_ obs: RID) -> (Date, Date) {

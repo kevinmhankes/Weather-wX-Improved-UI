@@ -7,7 +7,7 @@
 import UIKit
 
 final class vcSettingsAbout: UIwXViewController {
-    
+
     private let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
     private let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
     private static let copyright = "©"
@@ -21,25 +21,25 @@ final class vcSettingsAbout: UIwXViewController {
         + " \(GlobalVariables.appName) is bi-licensed under the Mozilla Public License Version 2 as well "
         + "as the GNU General Public License Version 3 or later. "
         + "For more information on the licenses please go here: https://www.mozilla.org/en-US/MPL/2.0/"
-        + " and http://www.gnu.org/licenses/gpl-3.0.en.html" + MyApplication.newline
-        + "Keyboard shortcuts: " + MyApplication.newline + MyApplication.newline
-        + "r: Nexrad radar" + MyApplication.newline
-        + "d: Severe Dashboard" + MyApplication.newline
-        + "c: GOES viewer" + MyApplication.newline
-        + "a: Location text product viewer" + MyApplication.newline
-        + "m: open menu" + MyApplication.newline
-        + "2: Dual pane nexrad radar" + MyApplication.newline
-        + "4: Quad pane nexrad radar" + MyApplication.newline
-        + "w: US Alerts" + MyApplication.newline
-        + "s: Settings" + MyApplication.newline
-        + "e: SPC Mesoanalysis" + MyApplication.newline
-        + "n: NCEP Models" + MyApplication.newline
-        + "h: Hourly forecast" + MyApplication.newline
-        + "t: NHC" + MyApplication.newline
-        + "l: Lightning" + MyApplication.newline
-        + "i: National images" + MyApplication.newline
-        + "z: National text discussions" + MyApplication.newline
-    
+        + " and http://www.gnu.org/licenses/gpl-3.0.en.html" + GlobalVariables.newline
+        + "Keyboard shortcuts: " + GlobalVariables.newline + GlobalVariables.newline
+        + "r: Nexrad radar" + GlobalVariables.newline
+        + "d: Severe Dashboard" + GlobalVariables.newline
+        + "c: GOES viewer" + GlobalVariables.newline
+        + "a: Location text product viewer" + GlobalVariables.newline
+        + "m: open menu" + GlobalVariables.newline
+        + "2: Dual pane nexrad radar" + GlobalVariables.newline
+        + "4: Quad pane nexrad radar" + GlobalVariables.newline
+        + "w: US Alerts" + GlobalVariables.newline
+        + "s: Settings" + GlobalVariables.newline
+        + "e: SPC Mesoanalysis" + GlobalVariables.newline
+        + "n: NCEP Models" + GlobalVariables.newline
+        + "h: Hourly forecast" + GlobalVariables.newline
+        + "t: NHC" + GlobalVariables.newline
+        + "l: Lightning" + GlobalVariables.newline
+        + "i: National images" + GlobalVariables.newline
+        + "z: National text discussions" + GlobalVariables.newline
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
@@ -47,7 +47,7 @@ final class vcSettingsAbout: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         display()
     }
-    
+
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "faq":
@@ -58,7 +58,7 @@ final class vcSettingsAbout: UIwXViewController {
             break
         }
     }
-    
+
     private func display() {
         let objectTextView1 = ObjectTextView(
             self.stackView,

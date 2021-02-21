@@ -5,9 +5,9 @@
  *****************************************************************************/
 
 final class UtilityCanadaHourly {
-    
+
     static func getString(_ location: Int) -> String {
-        let url = MyApplication.canadaEcSitePrefix + "/forecast/hourly/"
+        let url = GlobalVariables.canadaEcSitePrefix + "/forecast/hourly/"
             + MyApplication.locations[location].lat.split(":")[1].lowercased()
             + "-" + MyApplication.locations[location].lon.split(":")[0]
             + "_metric_e.html"
@@ -15,7 +15,7 @@ final class UtilityCanadaHourly {
         let header = "Time    Temp  Summary                  Precip   Wind"
         return header + parse(html)
     }
-    
+
     static func parse(_ htmlFullPage: String) -> String {
         let html = htmlFullPage.parse("<tbody>(.*?)</tbody>")
         let times = html.parseColumn("<td headers=.header1. class=.text-center.>([0-9]{2}:[0-9]{2})</td>")
@@ -30,7 +30,7 @@ final class UtilityCanadaHourly {
             winds[index] = cleanString.parse(">(.*?)<") + " " + cleanString.parse(".*?([0-9]{1,3})")
         }
         times.indices.forEach { index in
-            string += MyApplication.newline + times[index] + space
+            string += GlobalVariables.newline + times[index] + space
                 + Utility.safeGet(temperatures, index).padding(toLength: 3, withPad: " ", startingAt: 0) + space
                 + Utility.safeGet(currentConditions, index).padding(toLength: 22, withPad: " ", startingAt: 0) + space
                 + Utility.safeGet(precipitationChances, index).padding(toLength: 6, withPad: " ", startingAt: 0)
@@ -38,7 +38,7 @@ final class UtilityCanadaHourly {
         }
         return string
     }
-    
+
     static func removeSpecialCharsFromString(_ text: String) -> String {
         let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-=().!_<>")
         return text.filter { okayChars.contains($0) }

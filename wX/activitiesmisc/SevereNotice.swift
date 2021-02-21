@@ -7,15 +7,15 @@
 import Foundation
 
 final class SevereNotice {
-    
+
     var numberList = [String]()
     var bitmaps = [Bitmap]()
     let type: PolygonEnum
-    
+
     init(_ type: PolygonEnum) {
         self.type = type
     }
-    
+
     func getBitmaps() {
         let noAlertsVerbiage: String
         let html: String
@@ -46,11 +46,11 @@ final class SevereNotice {
                 var url: String
                 switch type {
                 case .SPCMCD:
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + $0 + ".gif"
+                    url = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/mcd" + $0 + ".gif"
                 case .SPCWAT:
-                    url = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + $0 + "_radar.gif"
+                    url = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + $0 + "_radar.gif"
                 case .WPCMPD:
-                    url = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + $0 + ".gif"
+                    url = GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + $0 + ".gif"
                 default:
                     url = ""
                 }

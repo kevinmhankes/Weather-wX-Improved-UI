@@ -13,7 +13,7 @@ final class UtilityCitiesExtended {
         if !initialized {
             initialized = true
             let text = UtilityIO.readTextFile("cityall.txt")
-            let lines = text.split(MyApplication.newline)
+            let lines = text.split(GlobalVariables.newline)
             lines.forEach { line in
                 let items = line.split(",")
                 if items.count > 2 { cities.append(CityExt(items[0], Double(items[1])!, -1.0 * Double(items[2])!)) }

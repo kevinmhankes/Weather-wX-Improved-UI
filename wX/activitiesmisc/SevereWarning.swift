@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class SevereWarning {
-    
+
     var text = ""
     var count = 0
     private let type: PolygonEnum
@@ -18,14 +18,14 @@ final class SevereWarning {
     var warnings = [String]()
     var listOfWfo = [String]()
     private var listOfPolygonRaw = [String]()
-    
+
     init(_ type: PolygonEnum) {
         self.type = type
         generateString()
     }
-    
+
     func getCount() -> Int { count }
-    
+
     func getName() -> String {
         switch type {
         case .TOR:
@@ -38,7 +38,7 @@ final class SevereWarning {
             return ""
         }
     }
-    
+
     private func getClosestRadar(_ index: Int) -> String {
         let data = listOfPolygonRaw[index].replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
         let points = data.split(" ")
@@ -56,7 +56,7 @@ final class SevereWarning {
             return ""
         }
     }
-    
+
     func generateString() {
         let html: String
         switch type {
@@ -87,7 +87,7 @@ final class SevereWarning {
                 let radarSite = getClosestRadar(index)
                 listOfWfo.append(radarSite)
                 let location = Utility.getWfoSiteName(radarSite)
-                text += "  " + location + MyApplication.newline
+                text += "  " + location + GlobalVariables.newline
             } else {
                 listOfWfo.append("")
             }

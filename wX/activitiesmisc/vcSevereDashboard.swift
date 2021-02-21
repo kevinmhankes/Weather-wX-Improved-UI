@@ -8,7 +8,7 @@ import UIKit
 import AVFoundation
 
 final class vcSevereDashboard: UIwXViewController {
-    
+
     private var buttonActions = [String]()
     private let snWat = SevereNotice(.SPCWAT)
     private let snMcd = SevereNotice(.SPCMCD)
@@ -18,7 +18,7 @@ final class vcSevereDashboard: UIwXViewController {
     private var statusButton = ObjectToolbarIcon()
     private let synthesizer = AVSpeechSynthesizer()
     private var statusWarnings = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //UtilitySettings.backupRadarSettingsAndEnable()
@@ -28,12 +28,12 @@ final class vcSevereDashboard: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         self.getContent()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             // TODO move into radar, currently in util
             UtilityDownloadRadar.getAllRadarData()
-            self.bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
+            self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
             self.snMcd.getBitmaps()
             self.snWat.getBitmaps()
@@ -46,12 +46,12 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     //override func doneClicked() {
     //    UtilitySettings.restoreRadarSettings()
     //    super.doneClicked()
     //}
-    
+
     func getStatusText() -> String {
         var spokenText = "Download complete with"
         let wTor = SevereWarning(.TOR)
@@ -60,7 +60,7 @@ final class vcSevereDashboard: UIwXViewController {
         let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
         [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
             if item != "" {
-                let sArr = item.split(MyApplication.newline)
+                let sArr = item.split(GlobalVariables.newline)
                 let count = String(sArr.count - 1)
                 spokenText += count + titles[index] + " "
             }
@@ -68,7 +68,7 @@ final class vcSevereDashboard: UIwXViewController {
         spokenText += String(self.snMcd.bitmaps.count) + " mcd " + String(self.snWat.bitmaps.count) + " watch " + String(self.snMpd.bitmaps.count) + " mpd "
         return spokenText
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
             Route.spcMcdWatchItem(self, .WPCMPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
@@ -78,7 +78,7 @@ final class vcSevereDashboard: UIwXViewController {
             Route.spcMcdWatchItem(self, .SPCWAT, self.buttonActions[sender.data].replace("SPCWAT", ""))
         }
     }
-    
+
     func showTextWarnings() {
         let wTor = SevereWarning(.TOR)
         let wTst = SevereWarning(.TST)
@@ -110,27 +110,27 @@ final class vcSevereDashboard: UIwXViewController {
             statusWarnings = ""
         }
     }
-    
+
     @objc func goToAlerts() {
         self.goToVC(vcUSAlerts())
     }
-    
+
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
         Route.alertDetail(self, "https://api.weather.gov/alerts/" + sender.strData)
     }
-    
+
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
         Route.radarNoSave(self, sender.strData)
     }
-    
+
     @objc func spcStormReportsClicked() {
         Route.spcStormReports(self, "today")
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
     }
-    
+
     private func display() {
         self.refreshViews()
         var views = [UIView]()
@@ -224,7 +224,7 @@ final class vcSevereDashboard: UIwXViewController {
         }
         self.statusButton.title = status + " " + statusWarnings
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })

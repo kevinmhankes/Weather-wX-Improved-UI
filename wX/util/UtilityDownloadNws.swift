@@ -74,6 +74,6 @@ final class UtilityDownloadNws {
     }
 
     static func getLocationPointData(_ latLon: LatLon) -> String {
-        (MyApplication.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString).getNwsHtml()
+        (GlobalVariables.nwsApiUrl + "/points/" + latLon.latString + "," + latLon.lonString).getNwsHtml()
     }
 }

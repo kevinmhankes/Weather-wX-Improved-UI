@@ -5,13 +5,13 @@
  *****************************************************************************/
 
 final class UtilitySpotter {
-    
+
     static var spotterList = [Spotter]()
     static var reportsList = [SpotterReports]()
     private static let timer = DownloadTimer("SPOTTER")
     static var lat = [Double]()
     static var lon = [Double]()
-    
+
     // TODO match kotlin getter "reports", use let
     static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
@@ -23,7 +23,7 @@ final class UtilitySpotter {
             let reportData = html.replaceAll(".*?#storm reports", "")
             processReports(reportData)
             html = html.replaceAll("#storm reports.*?$", "")
-            html.split(MyApplication.newline).forEach { line in
+            html.split(GlobalVariables.newline).forEach { line in
                 let items = line.split(";;")
                 if items.count > 15 {
                     spotterList.append(Spotter(items[14], items[15], LatLon(items[4], items[5]), items[3], items[11], items[10], items[0]))
@@ -47,9 +47,9 @@ final class UtilitySpotter {
         }
         return spotterList
     }
-    
+
     static func processReports(_ html: String) {
-        html.split(MyApplication.newline).forEach { line in
+        html.split(GlobalVariables.newline).forEach { line in
             let items = line.split(";;")
             if items.count > 10 && items.count < 16 && !items[0].hasPrefix("#") {
                 reportsList.append(SpotterReports(items[9], items[10], LatLon(items[5], items[6]), items[8], items[0], items[3], items[2], items[7]))

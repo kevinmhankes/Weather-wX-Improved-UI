@@ -7,7 +7,7 @@
 import UIKit
 
 final class ObjectNhc: NSObject {
-    
+
     private var stormDataList = [ObjectNhcStormDetails]()
     private let uiv: UIwXViewController
     private var textAtl = ""
@@ -28,17 +28,17 @@ final class ObjectNhc: NSObject {
     private var lastUpdates = [String]()
     private var statusList = [String]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
-    
+
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
         if UtilityUI.isTablet() { imagesPerRow = 3 }
         super.init()
         NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
     }
-    
+
     func getTextData() {
         statusList = []
-        let url = MyApplication.nwsNhcWebsitePrefix + "/CurrentStorms.json"
+        let url = GlobalVariables.nwsNhcWebsitePrefix + "/CurrentStorms.json"
         //let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
         let html = url.getHtml()
         ids = html.parseColumn("\"id\": \"(.*?)\"")
@@ -62,7 +62,7 @@ final class ObjectNhc: NSObject {
             statusList.append(status)
         }
     }
-    
+
     func showTextData() {
         if ids.count > 0 {
             ids.indices.forEach { index in
@@ -88,7 +88,7 @@ final class ObjectNhc: NSObject {
             }
         }
     }
-    
+
     func showImageData(_ region: NhcOceanEnum) {
         regionMap[region]!.bitmaps.enumerated().forEach { index, bitmap in
             if imageCount % imagesPerRow == 0 {
@@ -112,7 +112,7 @@ final class ObjectNhc: NSObject {
             imageCount += 1
         }
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
 
     @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {

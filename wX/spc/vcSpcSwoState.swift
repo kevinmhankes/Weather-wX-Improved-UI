@@ -7,12 +7,12 @@
 import UIKit
 
 final class vcSpcSwoState: UIwXViewController {
-    
+
     private var state = ""
     private var stateButton = ObjectToolbarIcon()
     private var image = ObjectTouchImageView()
     var day = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -21,33 +21,33 @@ final class vcSpcSwoState: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar)
         self.getContent(Location.state)
     }
-    
+
     override func willEnterForeground() {
         self.getContent(state)
     }
-    
+
     func getContent(_ state: String) {
         self.state = state
         if self.state == "AK" || self.state == "HI" || self.state == "" { self.state = "AL" }
         stateButton.title = self.state
         DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(MyApplication.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
+            let bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         self.image.setBitmap(bitmap)
     }
-    
+
     @objc func stateClicked(sender: ObjectToolbarIcon) {
         _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, self.getContent(_:))
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

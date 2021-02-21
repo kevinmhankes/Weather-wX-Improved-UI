@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityUS {
-    
+
     static func getLocationHtml(_ x: String, _ y: String) -> String {
         let html = UtilityNetworkIO.getStringFromUrl("https://forecast.weather.gov/MapClick.php?lat=" + x + "&lon=" + y + "&unit=0&lg=english&FcstType=dwml")
         return html.replace("\n", " ")
@@ -50,10 +50,10 @@ final class UtilityUS {
         var weatherSummaries = Array(repeating: "", count: 14)
         let forecast = UtilityString.parseXml(rawData[11], "text")
 
-        weatherSummaries = UtilityString.parseColumn(rawData[18], MyApplication.utilUS_weather_summary_pattern)
+        weatherSummaries = UtilityString.parseColumn(rawData[18], GlobalVariables.utilUS_weather_summary_pattern)
         weatherSummaries.insert("", at: 0)
 
-        timeP12n13List = UtilityString.parseColumn(rawData[15], MyApplication.utilUS_period_name_pattern)
+        timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUS_period_name_pattern)
         timeP12n13List.insert("", at: 0)
 
         var sb = ""
@@ -61,7 +61,7 @@ final class UtilityUS {
             sb += timeP12n13List[j]
             sb += ": "
             sb += forecast[j]
-            sb += MyApplication.newline
+            sb += GlobalVariables.newline
         }
         return sb
     }

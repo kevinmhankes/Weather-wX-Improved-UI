@@ -7,18 +7,18 @@
 final class UtilityObservations {
 
     static let urls = [
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/sfcobs/large_latestsfc.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namswsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namscsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namsesfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namcwsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namccsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namcesfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namnwsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namncsfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namnesfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namaksfcwbg.gif",
-        MyApplication.nwsWPCwebsitePrefix + "/sfc/namak2sfcwbg.gif"
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/sfcobs/large_latestsfc.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namswsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namscsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namsesfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namcwsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namccsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namcesfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namnwsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namncsfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namnesfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namaksfcwbg.gif",
+        GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namak2sfcwbg.gif"
     ]
 
     static let labels = [

@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class CapAlert {
-    
+
     var text = ""
     var title = ""
     var summary = ""
@@ -18,7 +18,7 @@ final class CapAlert {
     private var effective = ""
     private var expires = ""
     var points = [String]()
-    
+
     convenience init(url: String) {
         self.init()
         self.url = url
@@ -37,16 +37,16 @@ final class CapAlert {
         instructions = instructions.replace("\\n", "\n")
         text = ""
         text += title
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += "Counties: "
         text += area
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += summary
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += instructions
-        text += MyApplication.newline
+        text += GlobalVariables.newline
     }
-    
+
     // used by usAlerts
     convenience init(eventText: String) {
         self.init()
@@ -63,17 +63,17 @@ final class CapAlert {
         zones = eventText.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
         text = ""
         text += title
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += "Counties: "
         text += area
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += summary
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         text += instructions
-        text += MyApplication.newline
+        text += GlobalVariables.newline
         summary = summary.replaceAll("<br>\\*", "<br><br>*")
     }
-    
+
     func getClosestRadar() -> String {
         if points.count > 2 {
             let lat = points[1]
@@ -88,7 +88,7 @@ final class CapAlert {
             return ""
         }
     }
-    
+
     private func getWarningsFromJson(_ html: String) -> [String] {
         let data = html.replace("\n", "").replace(" ", "")
         var points = data.parseFirst("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")

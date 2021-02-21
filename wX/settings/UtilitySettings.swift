@@ -9,7 +9,7 @@ import UIKit
 final class UtilitySettings {
 
     static func isRadarInHomeScreen() -> Bool {
-        let homeScreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault), ":")
+        let homeScreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault), ":")
         return homeScreenFav.contains("METAL-RADAR")
     }
 
@@ -18,13 +18,13 @@ final class UtilitySettings {
         alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         alert.finish()
     }
-    
+
     static func backupRadarSettingsAndEnable() {
         RadarPreferences.radarWarningsOrig = RadarPreferences.radarWarnings
         RadarPreferences.radarWarnings = true
         UtilityDownloadWarnings.timer.resetTimer()
     }
-    
+
     static func restoreRadarSettings() {
         RadarPreferences.radarWarnings = RadarPreferences.radarWarningsOrig
     }

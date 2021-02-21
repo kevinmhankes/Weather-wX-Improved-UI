@@ -7,12 +7,12 @@
 import UIKit
 
 final class ObjectSevenDay {
-    
+
     var icons = [String]()
     private var shortForecasts = [String]()
     private var detailedForecasts = [String]()
     var locationIndex = 0
-    
+
     // US or CA
     convenience init(_ locNum: Int) {
         self.init()
@@ -26,14 +26,14 @@ final class ObjectSevenDay {
             processCanada(sevenDayLong)
         }
     }
-    
+
     // US
     convenience init(_ latLon: LatLon) {
         self.init()
         let html = UtilityDownloadNws.get7DayData(latLon)
         process(html)
     }
-    
+
     // US
     func process(_ html: String) {
         if UIPreferences.useNwsApi {
@@ -68,13 +68,13 @@ final class ObjectSevenDay {
             let forecastStrings = forecastString.split("\n")
             self.icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
             // print(iconString + "223")
-            var forecast = MyApplication.newline + MyApplication.newline
+            var forecast = GlobalVariables.newline + GlobalVariables.newline
             forecastStrings.enumerated().forEach { index, s in
                 if s != "" {
                     detailedForecasts.append(s.trim())
                     shortForecasts.append(s.trim())
                     forecast += s.trim()
-                    forecast += MyApplication.newline + MyApplication.newline
+                    forecast += GlobalVariables.newline + GlobalVariables.newline
                     if self.icons.count > index {
                         // icons.add(iconList[index]);
                     }
@@ -93,14 +93,14 @@ final class ObjectSevenDay {
             }
         }
     }
-    
+
     // Canada
     func processCanada(_ sevenDayLong: String) {
-        detailedForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
-        shortForecasts = sevenDayLong.split(MyApplication.newline + MyApplication.newline)
+        detailedForecasts = sevenDayLong.split(GlobalVariables.newline + GlobalVariables.newline)
+        shortForecasts = sevenDayLong.split(GlobalVariables.newline + GlobalVariables.newline)
     }
-        
+
     var forecastList: [String] { detailedForecasts }
-    
+
     var forecastListCondensed: [String] { shortForecasts }
 }

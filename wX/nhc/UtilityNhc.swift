@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityNhc {
-    
+
     static let textProductCodes = [
         "MIATWOAT",
         "MIATWDAT",
@@ -49,9 +49,9 @@ final class UtilityNhc {
     static let imageUrls = [
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/PAC/20.jpg",
         "https://www.ssd.noaa.gov/PS/TROP/DATA/RT/SST/ATL/20.jpg",
-        MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anal.gif",
-        MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anal.gif",
-        MyApplication.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
-        MyApplication.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
+        GlobalVariables.nwsNhcWebsitePrefix + "/tafb/pac_anal.gif",
+        GlobalVariables.nwsNhcWebsitePrefix + "/tafb/atl_anal.gif",
+        GlobalVariables.nwsNhcWebsitePrefix + "/tafb/pac_anom.gif",
+        GlobalVariables.nwsNhcWebsitePrefix + "/tafb/atl_anom.gif"
     ]
 }

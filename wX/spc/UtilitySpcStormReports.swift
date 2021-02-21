@@ -52,7 +52,7 @@ final class UtilitySpcStormReports {
                     output += lineChunks[5]
                     output += " "
                     output += lineChunks[6]
-                    output += MyApplication.newline
+                    output += GlobalVariables.newline
                     output += lineChunks[7]
                     time = lineChunks[0]
                     magnitude = lineChunks[1]

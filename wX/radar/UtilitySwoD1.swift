@@ -5,15 +5,15 @@
  *****************************************************************************/
 
 final class UtilitySwoD1 {
-    
+
     private static let timer = DownloadTimer("SWO")
     static var hashSwo = [Int: [Double]]()
-    
+
     static func get() {
         if timer.isRefreshNeeded() {
             let threatList = ["HIGH", "MDT", "ENH", "SLGT", "MRGL"]
             let day = 1
-            let html = (MyApplication.nwsSPCwebsitePrefix + "/products/outlook/KWNSPTSDY" + String(day) + ".txt").getHtmlSep()
+            let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/KWNSPTSDY" + String(day) + ".txt").getHtmlSep()
             let htmlChunk = html.parse("... CATEGORICAL ...(.*?&)&")
             //
             // each threat level will have a string of numbers, each string has lat lon pairs (no neg for lon, will be handled later)

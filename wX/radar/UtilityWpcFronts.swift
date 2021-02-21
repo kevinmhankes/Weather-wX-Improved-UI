@@ -11,11 +11,11 @@ import Foundation
 // Image - https://www.wpc.ncep.noaa.gov/basicwx/basicwx_ndfd.php
 
 /*
- 
+
  CODED SURFACE FRONTAL POSITIONS FORECAST
  NWS WEATHER PREDICTION CENTER COLLEGE PARK MD
  1117 AM EST FRI DEC 20 2019
- 
+
  SURFACE PROG VALID 201912201800Z
  HIGHS 1043 5010795 1036 3750811 1036 4061092 1026 3121240
  LOWS 1000 5301138 1021 4610937 1005 4931216 1005 4151308 1021 3351009
@@ -38,22 +38,22 @@ import Foundation
  TROF 5361348 5171317 4971300 4801292
  TROF 5241139 4991127 4721125
  TROF 3171112 2901103 2711092 2491077
- 
+
  SURFACE PROG VALID 201912210000Z
  HIGHS 1035 3971077 1042 4900775 1023 3181216
  LOWS 1005 5011189 1005 4051297 1000 5271115 1021 4740914 1022 3420997
  COLD 4730916 4690932 4700953 4730971
  STNRY 2310757 2280774 2250791 2260806 2300825
- 
+
  */
 
 final class UtilityWpcFronts {
-    
+
     static let separator = "ABC123"
     static var pressureCenters = [PressureCenter]()
     static var fronts = [Fronts]()
     private static let timer = DownloadTimer("WPC FRONTS")
-    
+
     private static func addColdFrontTriangles(_ front: Fronts, _ tokens: [String]) {
         let length = 0.4 // size of triangle
         var startIndex = 0
@@ -86,7 +86,7 @@ final class UtilityWpcFronts {
             }
         }
     }
-    
+
     private static func addWarmFrontSemicircles(_ front: Fronts, _ tokens: [String]) {
         var length = 0.4 // size of triangle
         var startIndex = 0
@@ -130,7 +130,7 @@ final class UtilityWpcFronts {
             }
         }
     }
-    
+
     private static func addFrontDataStationaryWarm(_ front: Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
@@ -139,7 +139,7 @@ final class UtilityWpcFronts {
             }
         }
     }
-    
+
     private static func addFrontDataTrof(_ front: Fronts, _ tokens: [String]) {
         let fraction = 0.8
         for index in stride(from: 0, to: tokens.count - 1, by: 1) {
@@ -150,7 +150,7 @@ final class UtilityWpcFronts {
             front.coordinates.append(LatLon(coord[0], coord[1]))
         }
     }
-    
+
     private static func addFrontData(_ front: Fronts, _ tokens: [String]) {
         tokens.enumerated().forEach { index, _ in
             let coordinates = parseLatLon(tokens[index])
@@ -160,7 +160,7 @@ final class UtilityWpcFronts {
             }
         }
     }
-    
+
     private static func parseLatLon(_ string: String) -> [Double] {
         if string.count != 7 {
             return [0.0, 0.0]
@@ -176,19 +176,19 @@ final class UtilityWpcFronts {
             return [lat, lon]
         }
     }
-    
+
     static func get() {
         if timer.isRefreshNeeded() {
             pressureCenters = []
             fronts = []
-            let urlBlob = MyApplication.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
+            let urlBlob = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
             var html = urlBlob.getHtmlSep()
-            html = html.replaceAll(MyApplication.newline, separator)
+            html = html.replaceAll(GlobalVariables.newline, separator)
             let timestamp = html.parseFirst("SURFACE PROG VALID ([0-9]{12}Z)")
             Utility.writePref("WPC_FRONTS_TIMESTAMP", timestamp)
             html = html.parseFirst("SURFACE PROG VALID [0-9]{12}Z(.*?)" + separator + " " + separator)
-            html = html.replaceAll(separator, MyApplication.newline)
-            let lines = html.split(MyApplication.newline)
+            html = html.replaceAll(separator, GlobalVariables.newline)
+            let lines = html.split(GlobalVariables.newline)
             lines.enumerated().forEach { index, _ in
                 var data = lines[index]
                 if index < lines.count - 1 {

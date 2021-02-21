@@ -7,7 +7,7 @@
 import Foundation
 
 final class UtilityHourly {
-    
+
     static let hourlyAbbreviationsFirst = [
         "Showers And Thunderstorms": "Sh/Tst",
         "Chance": "Chc",
@@ -23,34 +23,34 @@ final class UtilityHourly {
         "Likely": "Lkly",
         "T-storms": "Tst"
     ]
-    
+
     static let hourlyAbbreviationsSecond = [
         "Showers": "Shwr",
         "Rn And Sn": "Rn/Sn"
     ]
-    
+
     static func getFooter() -> String {
-        var footer = MyApplication.newline
+        var footer = GlobalVariables.newline
         hourlyAbbreviationsFirst.keys.forEach { key in
-            footer += hourlyAbbreviationsFirst[key]! + ": " + key + MyApplication.newline
+            footer += hourlyAbbreviationsFirst[key]! + ": " + key + GlobalVariables.newline
         }
         hourlyAbbreviationsSecond.keys.forEach { key in
-            footer += hourlyAbbreviationsSecond[key]! + ": " + key + MyApplication.newline
+            footer += hourlyAbbreviationsSecond[key]! + ": " + key + GlobalVariables.newline
         }
         return footer
     }
-    
+
     static func getHourlyString(_ locationNumber: Int) -> [String] {
         let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
         let header = "Time".fixedLengthString(7)
             + "T".fixedLengthString(4)
             + "Wind".fixedLengthString(8)
             + "WindDir".fixedLengthString(6)
-            +  MyApplication.newline
+            +  GlobalVariables.newline
         let footer = getFooter()
         return [header + parse(html) + footer, html]
     }
-    
+
     static func parse(_ html: String) -> String {
         let startTimes = html.parseColumn("\"startTime\": \"(.*?)\",")
         let temperatures = html.parseColumn("\"temperature\": (.*?),")
@@ -69,11 +69,11 @@ final class UtilityHourly {
             string += windSpeed.fixedLengthString(8)
             string += windDirection.fixedLengthString(4)
             string += shortenConditions(shortForecast).fixedLengthString(18)
-            string += MyApplication.newline
+            string += GlobalVariables.newline
         }
         return string
     }
-    
+
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
         hourlyAbbreviationsFirst.keys.forEach { key in
@@ -84,7 +84,7 @@ final class UtilityHourly {
         }
         return hourly
     }
-    
+
     static func translateTime(_ originalTime: String) -> String {
         let originalTimeComponents = originalTime.replace("T", "-").split("-")
         let year = Int(originalTimeComponents[0]) ?? 0

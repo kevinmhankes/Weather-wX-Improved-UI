@@ -74,17 +74,17 @@ final class ObjectCardSevenDay {
             if items.count > 1 {
                 if isUS {
                     string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
-                        + MyApplication.degreeSymbol
+                        + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
-                        + ")" + MyApplication.newline
+                        + ")" + GlobalVariables.newline
                 } else {
                     string = items[0].replace(":", " ") + " ("
                         + UtilityLocationFragment.extractCanadaTemp(items[1])
-                        + MyApplication.degreeSymbol
+                        + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
-                        + ")" + MyApplication.newline
+                        + ")" + GlobalVariables.newline
                 }
                 return (string, items[1])
             } else {
@@ -94,17 +94,17 @@ final class ObjectCardSevenDay {
             if itemsShort.count > 1 {
                 if isUS {
                     string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
-                        + MyApplication.degreeSymbol
+                        + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
-                        + ")" + MyApplication.newline
+                        + ")" + GlobalVariables.newline
                 } else {
                     string = items[0].replace(":", " ") + " ("
                         + UtilityLocationFragment.extractCanadaTemp(items[1])
-                        + MyApplication.degreeSymbol
+                        + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
-                        + ")" + MyApplication.newline
+                        + ")" + GlobalVariables.newline
                 }
                 return (string, itemsShort[1])
             } else {

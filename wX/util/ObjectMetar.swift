@@ -7,7 +7,7 @@
 import Foundation
 
 final class ObjectMetar {
-    
+
     private let decodeIcon = true
     var condition = ""
     var temperature: String
@@ -25,7 +25,7 @@ final class ObjectMetar {
     let rawMetar: String
     private let metarSkyCondition: String
     private let metarWeatherCondition: String
-    
+
     init(_ location: LatLon) {
         let obsClosest = UtilityMetar.findClosestObservation(location)
         UtilityObs.obsClosestClass = obsClosest.name
@@ -45,9 +45,9 @@ final class ObjectMetar {
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")
         windChill = metarData.parseFirst("Windchill: (.*?) F")
         heatIndex = UtilityMath.heatIndex(temperature, relativeHumidity)
-        rawMetar = metarData.parseFirst("ob: (.*?)" + MyApplication.newline)
-        metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + MyApplication.newline).capitalized
-        metarWeatherCondition = metarData.parseFirst("Weather: (.*?)" + MyApplication.newline).capitalized
+        rawMetar = metarData.parseFirst("ob: (.*?)" + GlobalVariables.newline)
+        metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + GlobalVariables.newline).capitalized
+        metarWeatherCondition = metarData.parseFirst("Weather: (.*?)" + GlobalVariables.newline).capitalized
         if decodeIcon {
             if metarWeatherCondition == "" || metarWeatherCondition.contains("Inches Of Snow On Ground") {
                 condition = metarSkyCondition
@@ -60,7 +60,7 @@ final class ObjectMetar {
             icon = decodeIconFromMetar(condition, obsClosest)
             condition = condition.replace(";", " and")
         }
-        
+
         // METAR Condition Icon
         // SCT Partly Cloudy sct
         // FEW Mostly Clear few
@@ -68,7 +68,7 @@ final class ObjectMetar {
         // CLR Clear skc
         // -RA BR Overcast Light Rain; Mist (Light Rain and Fog/Mist)  rain
         // -SN BR Obscured Light Snow; Mist (Light Snow) snow
-        
+
         /*
          ANN ARBOR MUNICIPAL AIRPORT, MI, United States (KARB) 42-13N 083-45W 251M
          Feb 11, 2018 - 06:53 PM EST / 2018.02.11 2353 UTC
@@ -83,7 +83,7 @@ final class ObjectMetar {
          Pressure tendency: 0.12 inches (4.1 hPa) higher than three hours ago
          ob: KARB 112353Z 25008KT 10SM CLR M04/M07 A3002 RMK AO2 SLP177 60000 T10441067 11033 21044 51041
          cycle: 0
-         
+
          Oceanside, Oceanside Municipal Airport, CA, United States (KOKH) 33-13-10N 117-20-58W 8M
          Dec 31, 2008 - 10:56 AM EST / 2008.12.31 1556 UTC
          Wind: from the SW (230 degrees) at 16 MPH (14 KT) gusting to 26 MPH (23 KT):0
@@ -95,10 +95,10 @@ final class ObjectMetar {
          Pressure (altimeter): 29.95 in. Hg (1014 hPa)
          ob: KOKH 311556Z AUTO 23014G23KT 10SM SCT017 BKN041 OVC065 03/00 A2995 RMK FIRST
          cycle: 16
-         
+
          */
-        
-        let metarDataList = metarData.split(MyApplication.newline)
+
+        let metarDataList = metarData.split(GlobalVariables.newline)
         if metarDataList.count > 2 {
             let localStatus = metarDataList[1].split("/")
             if localStatus.count > 1 {
@@ -113,11 +113,11 @@ final class ObjectMetar {
         if windSpeed == "" { windSpeed = "0" }
         if condition == "" { condition = "NA" }
     }
-    
+
     func changeDegreeUnits(_ value: String) -> String {
         if value != "" { return (Double(value) ?? 0.0).roundToString() } else { return "NA" }
     }
-    
+
     func changePressureUnits(_ value: String) -> String {
         if !UIPreferences.unitsM {
             return UtilityMath.pressureMBtoIn(value)
@@ -125,7 +125,7 @@ final class ObjectMetar {
             return value + " mb"
         }
     }
-    
+
     /*func decodeMetar(_ metar: String) {
         let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
         let patternMetarWxogl2 = ".*? A([0-9]{4})"
@@ -177,7 +177,7 @@ final class ObjectMetar {
             }
         }
     }*/
-    
+
     func decodeIconFromMetar(_ condition: String, _ obs: RID) -> String {
         // https://api.weather.gov/icons/land/day/ovc?size=medium
         let sunTimes = UtilityTimeSunMoon.getSunriseSunsetFromObs(obs)
@@ -188,6 +188,6 @@ final class ObjectMetar {
         let timeOfDay =  fallsBetween || fallsBetweenTomorrow ? "day" : "night"
         let conditionModified = condition.split(";")[0]
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
-        return MyApplication.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
+        return GlobalVariables.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"
     }
 }

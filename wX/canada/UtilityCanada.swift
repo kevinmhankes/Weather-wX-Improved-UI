@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityCanada {
-    
+
     static let products = [
         "focn45: Significant Weather Discussion, PASPC",
         "fxcn01_d1-3_west: FXCN01_D1-3_WEST",
@@ -19,7 +19,7 @@ final class UtilityCanada {
         "awcn15: Weather Summary S. Alberta",
         "awcn16: Weather Summary N. Alberta"
     ]
-    
+
     static let provinces = [
         "AB: Alberta",
         "BC: British Columbia",
@@ -35,7 +35,7 @@ final class UtilityCanada {
         "SK: Saskatchewan",
         "YT: Yukon"
     ]
-    
+
     private static let provinceToMosaicSector = [
         "AB": "PAC",
         "BC": "PAC",
@@ -51,7 +51,7 @@ final class UtilityCanada {
         "SK": "PAC",
         "YT": "CAN"
     ]
-    
+
     static let provinceCodes = [
         "bcstorm: British Columbia",
         "abstorm: Alberta",
@@ -65,12 +65,12 @@ final class UtilityCanada {
         "ntstorm: North West Territories",
         "nlwx: Newfoundland"
     ]
-    
+
     static func getIcons7DayAsList(_ html: String) -> [String] {
-        let days = html.split(MyApplication.newline + MyApplication.newline)
+        let days = html.split(GlobalVariables.newline + GlobalVariables.newline)
         return days.map {translateIconName($0)}
     }
-    
+
     static func translateIconName(_ condition: String) -> String {
         var newName = ""
         if condition.contains("reezing rain or snow")
@@ -161,7 +161,7 @@ final class UtilityCanada {
         }
         return newName
     }
-    
+
     static func translateIconNameCurrentConditions(_ condition: String, _ day1: String) -> String {
         var newName = ""
         if condition.contains("eriods of freezing drizzle")
@@ -254,23 +254,23 @@ final class UtilityCanada {
         }
         return newName
     }
-    
-    static func getProvinceHtml(_ prov: String) -> String { (MyApplication.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep() }
-    
+
+    static func getProvinceHtml(_ prov: String) -> String { (GlobalVariables.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep() }
+
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
         let id = location.lonString.split(":")
-        return (MyApplication.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
+        return (GlobalVariables.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
-    
+
     static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
-    
+
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
-        let url = MyApplication.canadaEcSitePrefix + "/city/pages/" + lat.split(":")[1].lowercased() + "-" + lon.split(":")[0] + "_metric_e.html"
+        let url = GlobalVariables.canadaEcSitePrefix + "/city/pages/" + lat.split(":")[1].lowercased() + "-" + lon.split(":")[0] + "_metric_e.html"
         let html = url.getHtmlSep()
         return html.parse("<a href=./radar/index_e.html.id=([a-z]{3})..*?>Weather Radar</a>").uppercased()
     }
-    
+
     static func getConditions(_ html: String) -> String {
         let sum = html.parse("<b>Condition:</b> (.*?) <br/>.*?<b>Pressure.*?:</b> .*? kPa.*?<br/>")
         let pressure = html.parse("<b>Condition:</b> .*? <br/>.*?<b>Pressure.*?:</b> (.*?) kPa.*?<br/>")
@@ -278,12 +278,12 @@ final class UtilityCanada {
         let temp = html.parse("<b>Temperature:</b> (.*?)&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>" + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
         let relativeHumidity = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> (.*?) %<br/>" + ".*?<b>Dewpoint:</b> .*?&deg;C <br/>")
         let dew = html.parse("<b>Temperature:</b> .*?&deg;C <br/>.*?<b>Humidity:</b> .*? %<br/>" + ".*?<b>Dewpoint:</b> (.*?)&deg;C <br/>")
-        let wind = html.parse("<b>Wind:</b> (.*?)<br/>").replace(MyApplication.newline, "")
+        let wind = html.parse("<b>Wind:</b> (.*?)<br/>").replace(GlobalVariables.newline, "")
         return temp
-            + MyApplication.degreeSymbol
+            + GlobalVariables.degreeSymbol
             +  " / "
             + dew
-            + MyApplication.degreeSymbol
+            + GlobalVariables.degreeSymbol
             + " ("
             + relativeHumidity
             + "%) - "
@@ -296,7 +296,7 @@ final class UtilityCanada {
             + sum
             + " "
     }
-    
+
     static func get7Day(_ html: String) -> String {
         let resultList = html.parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary " + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
@@ -304,11 +304,11 @@ final class UtilityCanada {
         resultListDay = resultListDay.filter {$0.contains(":")}
         var string = ""
         resultListDay.enumerated().forEach { index, value in
-            string += value.split(":")[0] + ": " + resultList[index] + MyApplication.newline + MyApplication.newline
+            string += value.split(":")[0] + ": " + resultList[index] + GlobalVariables.newline + GlobalVariables.newline
         }
         return string
     }
-    
+
     static func getHazards(_ html: String) -> [String] {
         var urls = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\"(.*?)\">.*?</a>.*?</div>")
         var titles = html.parseColumn("<div id=\"statement\" class=\"floatLeft\">.*?<a href=\".*?\">(.*?)</a>.*?</div>")
@@ -322,7 +322,7 @@ final class UtilityCanada {
         chunk = html.parse("<div id=\"watch\" class=\"floatLeft\">(.*?)</div>")
         urls = chunk.parseColumn("<a href=\"(.*?)\">.*?</a>")
         titles = chunk.parseColumn("<a href=\".*?\">(.*?)</a>")
-        let watchUrl = urls.joined(separator: "," + MyApplication.canadaEcSitePrefix)
+        let watchUrl = urls.joined(separator: "," + GlobalVariables.canadaEcSitePrefix)
         let watch = titles.joined(separator: "<BR>")
         var result = [warning + statement + watch, warningUrl + "," + statementUrl + "," + watchUrl]
         if !result[0].contains("No watches or warnings in effect") {
@@ -332,7 +332,7 @@ final class UtilityCanada {
         }
         return result
     }
-    
+
     static func getHazardsFromUrl(_ urlsCombined: String) -> String {
         var warningData = ""
         let urls = urlsCombined.split(",")
@@ -350,9 +350,9 @@ final class UtilityCanada {
                 + "feed-icon-14x14.png\" alt=\"ATOM feed\" class=\"mrgn-rght-sm\">ATOM</a>", "")
         return warningData.replace("<div class=\"row\">", "")
     }
-    
+
     static func getECSectorFromProvidence(_ province: String) -> String { provinceToMosaicSector[province] ?? "" }
-    
+
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false
         if !UtilityCitiesCanada.initialized { UtilityCitiesCanada.load() }
@@ -364,7 +364,7 @@ final class UtilityCanada {
         }
         return isPresent
     }
-    
+
     static func getLatLonFromLabel(_ label: String) -> LatLon {
         var coordinates = [Double]()
         var index = 0

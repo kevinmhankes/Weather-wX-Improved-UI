@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class UtilityGoes {
-    
+
     private static let sizeMap = [
         "CONUS": "1250x750",
         "CONUS-G17": "1250x750",
@@ -30,7 +30,7 @@ final class UtilityGoes {
         "sea": "1200x1200",
         "hi": "1200x1200"
     ]
-    
+
     private static func getImageSize(_ sector: String) -> String {
         let size = "latest"
         if UIPreferences.goesUseFullResolutionImages {
@@ -39,7 +39,7 @@ final class UtilityGoes {
             return sizeMap[sector] ?? size
         }
     }
-    
+
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
         var productLocal = product
@@ -60,7 +60,7 @@ final class UtilityGoes {
         if additionalCodes.contains(productLocal) && !sectorsWithAdditional.contains(sector) {
             productLocal = "GEOCOLOR"
         }
-        var url = MyApplication.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
+        var url = GlobalVariables.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
         print(url)
         if productLocal == "GLM" {
             url = url.replace("ABI", "GLM")
@@ -71,7 +71,7 @@ final class UtilityGoes {
         bitmap.info = productLocal
         return bitmap
     }
-    
+
     // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G17&sector=ak&band=GEOCOLOR&length=12
     // https://www.star.nesdis.noaa.gov/GOES/sector_band.php?sat=G16&sector=cgl&band=GEOCOLOR&length=12
     static func getAnimation(_ product: String, _ sector: String, _ frameCnt: Int) -> AnimationDrawable {
@@ -95,7 +95,7 @@ final class UtilityGoes {
         let bitmaps = imageUrls.map { Bitmap($0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
-    
+
     static let sectors = [
         "FD: GOES-EAST Full Disk",
         "FD-G17: GOES-WEST Full Disk",
@@ -129,9 +129,9 @@ final class UtilityGoes {
         "nsa: South America (north)",
         "ssa: South America (south)"
     ]
-    
+
     static let sectorsWithAdditional = ["CONUS", "CONUS-G17", "FD", "FD-G17"]
-    
+
     private static let sectorsInGoes17 = [
         "CONUS-G17",
         "FD-G17",
@@ -145,7 +145,7 @@ final class UtilityGoes {
         "wus",
         "np"
     ]
-    
+
     static let labels = [
         "True color daytime, multispectral IR at night",
         "00.47 um (Band 1) Blue - Visible",
@@ -169,17 +169,17 @@ final class UtilityGoes {
         "Day Cloud Phase",
         "Night Microphysics"
     ]
-    
+
     static let additionalLabels = [
         "GLM FED+GeoColor",
         "DMW"
     ]
-    
+
     static let additionalCodes = [
         "GLM",
         "DMW"
     ]
-    
+
     static let codes = [
         "GEOCOLOR",
         "01",

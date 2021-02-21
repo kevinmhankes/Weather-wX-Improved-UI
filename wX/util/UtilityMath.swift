@@ -7,11 +7,11 @@
 import Foundation
 
 final class UtilityMath {
-    
+
     static func distanceOfLine(_ x1: Double, _ y1: Double, _ x2: Double, _ y2: Double) -> Double {
         sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
     }
-    
+
     static func computeTipPoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ right: Bool) -> [Double] {
         let dx = x1 - x0
         let dy = y1 - y0
@@ -29,11 +29,11 @@ final class UtilityMath {
             return [cx - height * pDirX, cy - height * pDirY]
         }
     }
-    
+
     static func computeMiddlePoint(_ x0: Double, _ y0: Double, _ x1: Double, _ y1: Double, _ fraction: Double) -> [Double] {
         [x0 + fraction * (x1 - x0), y0 + fraction * (y1 - y0)]
     }
-    
+
     static func latLonFix(_ location: LatLon) -> LatLon {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
@@ -42,7 +42,7 @@ final class UtilityMath {
         let y = formatter.string(from: NSNumber(value: location.lon)) ?? "0.0"
         return LatLon(x, y)
     }
-    
+
     static func unitsPressure(_ value: String) -> String {
         var number = Double(value) ?? 0.0
         if UIPreferences.unitsM {
@@ -52,31 +52,31 @@ final class UtilityMath {
             return String(format: "%.2f", number) + " in"
         }
     }
-    
+
     static func celsiusToFahrenheit(_ value: String) -> String { String(round((Double(value) ?? 0.0) * 9 / 5 + 32)) }
-    
+
     // only used in the "table" method below
     static func celsiusToFahrenheit(_ value: Int) -> String { String(Int(round(Double(value) * 9.0 / 5.0 + 32.0))) }
-    
+
     static func celsiusToFahrenheitTable() -> String {
-        var table = "C\t\tF" + MyApplication.newline
+        var table = "C\t\tF" + GlobalVariables.newline
         (-40...39).forEach { degree in
-            table += String(degree) + "  " + celsiusToFahrenheit(degree) + MyApplication.newline
+            table += String(degree) + "  " + celsiusToFahrenheit(degree) + GlobalVariables.newline
         }
         return table
     }
-    
+
     static func degreesToRadians(_ deg: Double) -> Double { deg * Double.pi / 180 }
-    
+
     static func pixPerDegreeLon(_ centerX: Double, _ factor: Double) -> Double {
         let radius = (180 / Double.pi) * (1 / cos(degreesToRadians(30.51))) * factor
         return radius * (Double.pi / 180) * cos(degreesToRadians(centerX))
     }
-    
+
     static func deg2rad(_ deg: Double) -> Double { (deg * Double.pi / 180.0) }
-    
+
     static func rad2deg(_ rad: Double) -> Double { (rad * 180.0 / Double.pi) }
-    
+
     static func convertWindDir(_ direction: Double) -> String {
         let windDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"]
         let normalizedDirection = Int(direction) % 360
@@ -84,19 +84,19 @@ final class UtilityMath {
         let windDirectionAsString = windDirections[listIndex]
         return windDirectionAsString
     }
-    
+
     static func roundDToString(_ valueD: Double) -> String { String(Int(round(valueD))) }
-    
+
     static func metersToMileRounded(_ valueD: Double) -> String { String(Int(round(valueD / 1609.34))) }
-    
+
     static func pressurePAtoMB(_ valueD: Double) -> String { String(Int(round(valueD / 100.0))) }
-    
+
     static func pressureMBtoIn(_ value: String) -> String { String(format: "%.2f", (Double(value) ?? 0.0) / 33.8637526) + " in" }
-    
+
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
         3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
     }
-    
+
     static func heatIndex(_ temp: String, _ RH: String) -> String {
         // temp >= 80 and RH >= 40
         let T = Double(temp) ?? 0.0

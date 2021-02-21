@@ -5,7 +5,7 @@
  *****************************************************************************/
 
 final class ObjectWatchProduct {
-    
+
     private let productNumber: String
     let imgUrl: String
     private let textUrl: String
@@ -17,31 +17,31 @@ final class ObjectWatchProduct {
     private let type: PolygonEnum
     private var stringOfLatLon = ""
     private var latLons = [String]()
-    
+
     init(_ type: PolygonEnum, _ productNumber: String) {
         self.type = type
         switch type {
         case .SPCWAT_TORNADO:
             self.productNumber = productNumber.replaceAll("w", "")
-            imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
-            textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
+            imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
+            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
             title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
         case .SPCWAT:
             self.productNumber = productNumber.replaceAll("w", "")
-            imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
-            textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
+            imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
+            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
             title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
         case .SPCMCD:
             self.productNumber = productNumber
-            imgUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/mcd" + productNumber + ".gif"
-            textUrl = MyApplication.nwsSPCwebsitePrefix + "/products/md/md" + productNumber + ".html"
+            imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/mcd" + productNumber + ".gif"
+            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/md" + productNumber + ".html"
             title = "MCD " + productNumber
             prod = "SPCMCD" + productNumber
         case .WPCMPD:
             self.productNumber = productNumber
-            imgUrl = MyApplication.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
+            imgUrl = GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
             textUrl = ""
             title = "MPD " + productNumber
             prod = "WPCMPD" + productNumber
@@ -53,7 +53,7 @@ final class ObjectWatchProduct {
             prod = ""
         }
     }
-    
+
     func getData() {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
         var textWithLatLon = text
@@ -66,9 +66,9 @@ final class ObjectWatchProduct {
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
         wfos = wfoStr.split("\\.\\.\\.")
     }
-    
+
     func getTextForSubtitle() -> String { text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "") }
-    
+
     func getTextForNoProducts() -> String {
         switch type {
         case .SPCWAT_TORNADO:
@@ -83,23 +83,23 @@ final class ObjectWatchProduct {
             return ""
         }
     }
-    
+
     static func getNumberList(_ type: PolygonEnum) -> [String] {
         switch type {
         case .SPCWAT_TORNADO:
             return [String]()
         case .SPCWAT:
-            return (MyApplication.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
+            return (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
         case .SPCMCD:
-            // return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
-            return (MyApplication.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>")
+            // return (GlobalVariables.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
+            return (GlobalVariables.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>")
         case .WPCMPD:
             return [String]()
         default:
             return [String]()
         }
     }
-    
+
     private func getCenterOfPolygon(_ latLons: [LatLon]) -> LatLon {
         var center = LatLon(0.0, 0.0)
         for latLon in latLons {
@@ -111,7 +111,7 @@ final class ObjectWatchProduct {
         center.lon /= Double(totalPoints)
         return center
     }
-    
+
     func getClosestRadar() -> String {
         if latLons.count > 2 {
             let latLonList = LatLon.parseStringToLatLons(stringOfLatLon, -1.0, false)

@@ -7,7 +7,7 @@
 import UIKit
 
 final class vcSpcStormReports: UIwXViewController {
-    
+
     private var image = ObjectImage()
     private var objDatePicker: ObjectDatePicker!
     private var stormReports = [StormReport]()
@@ -21,7 +21,7 @@ final class vcSpcStormReports: UIwXViewController {
     private var filter = "All"
     private var filterButton = ObjectToolbarIcon()
     var spcStormReportsDay = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
@@ -38,38 +38,38 @@ final class vcSpcStormReports: UIwXViewController {
         ).items
         objScrollStackView = ObjectScrollStackView(self)
         self.displayPreContent()
-        imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
-        textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
+        imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
+        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
         self.getContent()
     }
-    
+
     // do not do anything
     override func willEnterForeground() {
         //self.getContent()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(self.imageUrl)
             self.bitmap.url = self.imageUrl
             self.html = self.textUrl.getHtml()
-            self.stormReports = UtilitySpcStormReports.process(self.html.split(MyApplication.newline))
+            self.stormReports = UtilitySpcStormReports.process(self.html.split(GlobalVariables.newline))
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     @objc func imgClicked() {
         Route.imageViewer(self, self.imageUrl)
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, [self.image.bitmap], self.html)
     }
-    
+
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
         Route.map(self, self.stormReports[sender.data].lat, self.stormReports[sender.data].lon)
     }
-    
+
     @objc func onDateChanged(sender: UIDatePicker) {
         let myDateFormatter: DateFormatter = DateFormatter()
         myDateFormatter.dateFormat = "MM/dd/yyyy"
@@ -83,19 +83,19 @@ final class vcSpcStormReports: UIwXViewController {
         let month = String(format: "%02d", components.month!)
         let year = String(components.year!).substring(2)
         date = year + month + day
-        imageUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
-        textUrl = MyApplication.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
+        imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
+        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
         self.stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         self.getContent()
     }
-    
+
     @objc func lsrClicked() {
         let vc = vcLsrByWfo()
         self.goToVC(vc)
     }
-    
+
     @objc func filterClicked() {
         _ = ObjectPopUp(
             self,
@@ -105,7 +105,7 @@ final class vcSpcStormReports: UIwXViewController {
             self.changeFilter(_:)
         )
     }
-    
+
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
@@ -114,13 +114,13 @@ final class vcSpcStormReports: UIwXViewController {
         stackView.addArrangedSubview(image.img)
         display()
     }
-    
+
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(stackView)
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
         image = ObjectImage(self.stackView)
     }
-    
+
     private func display() {
         var stateList = [String]()
         filterList = ["All"]
@@ -184,7 +184,7 @@ final class vcSpcStormReports: UIwXViewController {
             filterList += [key + ": " + String(val)]
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

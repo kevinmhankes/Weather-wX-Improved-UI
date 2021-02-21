@@ -14,7 +14,7 @@ final class UtilityCountyLabels {
         if !initialized {
             initialized = true
             let text = UtilityIO.readTextFile("gaz_counties_national.txt")
-            var lines = text.split(MyApplication.newline)
+            var lines = text.split(GlobalVariables.newline)
             _ = lines.popLast()
             lines.forEach { line in
                 let items = line.split(",")

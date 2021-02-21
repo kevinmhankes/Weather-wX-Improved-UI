@@ -17,7 +17,7 @@ final class ObjectCardSunTime {
         gmtTimeText =  UtilityTime.gmtTime()
         objectTextView = ObjectTextView(
             stackView,
-            sunriseSunset + MyApplication.newline + gmtTimeText,
+            sunriseSunset + GlobalVariables.newline + gmtTimeText,
             FontSize.small.size,
             ColorCompatibility.label
         )
@@ -28,7 +28,7 @@ final class ObjectCardSunTime {
     func update() {
         sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText =  UtilityTime.gmtTime()
-        objectTextView.text = sunriseSunset + MyApplication.newline + gmtTimeText
+        objectTextView.text = sunriseSunset + GlobalVariables.newline + gmtTimeText
     }
 
     func resetTextSize() {

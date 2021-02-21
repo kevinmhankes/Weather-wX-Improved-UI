@@ -9,7 +9,7 @@ import Metal
 import simd
 
 final class vcTabLocation: vcTabParent {
-    
+
     private var locationButton = UITextView()
     private var forecastText = [String]()
     private var forecastImage = [UIImage]()
@@ -51,7 +51,7 @@ final class vcTabLocation: vcTabParent {
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
     #endif
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         toolbar.resize(uiv: self)
@@ -82,7 +82,7 @@ final class vcTabLocation: vcTabParent {
             )
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -143,7 +143,7 @@ final class vcTabLocation: vcTabParent {
         self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
         self.stackViewForecast = ObjectStackView(.fill, .vertical)
         self.stackViewHazards = ObjectStackView(.fill, .vertical)
-        globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
+        globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
         self.getContentMaster()
@@ -157,7 +157,7 @@ final class vcTabLocation: vcTabParent {
         )
         #endif
     }
-    
+
     @objc func getContentMaster() {
         self.oldLocation = Location.latLon
         if Location.isUS { self.isUS = true } else { self.isUS = false }
@@ -165,21 +165,21 @@ final class vcTabLocation: vcTabParent {
         getForecastData()
         getContent()
     }
-    
+
     func getForecastData() {
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
         if fab != nil { self.view.bringSubviewToFront(fab!.view) }
     }
-    
+
     func getLocationForecast() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
             DispatchQueue.main.async { self.getCurrentConditionCards() }
         }
     }
-    
+
     func getLocationForecastSevenDay() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
@@ -207,7 +207,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     func getLocationHazards() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
@@ -221,7 +221,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if Location.isUS {
@@ -231,7 +231,7 @@ final class vcTabLocation: vcTabParent {
                 self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
             }
             DispatchQueue.main.async {
-                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
+                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
                 let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
                 self.textArr = [:]
                 homescreenFav.forEach {
@@ -267,27 +267,27 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     override func cloudClicked() {
         Route.cloud(self)
     }
-    
+
     override func radarClicked() {
         Route.radarFromMainScreen(self)
     }
-    
+
     override func wfotextClicked() {
         Route.wfoText(self)
     }
-    
+
     override func menuClicked() {
         UtilityActions.menuClicked(self, menuButton)
     }
-    
+
     override func dashClicked() {
         Route.severeDashboard(self)
     }
-    
+
     @objc override func willEnterForeground() {
         super.willEnterForeground()
         updateColors()
@@ -303,12 +303,12 @@ final class vcTabLocation: vcTabParent {
             self.getContentMaster()
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateColors()
         objLabel.text = Location.name
-        let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", MyApplication.homescreenFavDefault)
+        let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         let textSizeHasChange = abs(UIPreferences.textviewFontSize - globalTextViewFontSize) > 0.5
         Location.checkCurrentLocationValidity()
         if (Location.latLon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
@@ -319,7 +319,7 @@ final class vcTabLocation: vcTabParent {
             self.getContentMaster()
         }
     }
-    
+
     func locationChanged(_ locationNumber: Int) {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
@@ -330,11 +330,11 @@ final class vcTabLocation: vcTabParent {
             Route.locationAdd(self)
         }
     }
-    
+
     func editLocation() {
         Route.locationEdit(self, Location.getCurrentLocationStr())
     }
-    
+
     @objc func locationAction() {
         let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
@@ -347,7 +347,7 @@ final class vcTabLocation: vcTabParent {
         if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     @objc func ccAction() {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
@@ -364,11 +364,11 @@ final class vcTabLocation: vcTabParent {
         if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     @objc func gotoHourly() {
         self.goToVC(vcHourly())
     }
-    
+
     func getCurrentConditionCards() {
         let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
@@ -380,7 +380,7 @@ final class vcTabLocation: vcTabParent {
             objectCardCurrentConditions?.updateCard(objectCurrentConditions, isUS)
         }
     }
-    
+
     func getContentText(_ product: String, _ stackView: UIStackView) {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(product.uppercased())
@@ -396,7 +396,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     @objc func textTap(sender: UITapGestureRecognizerWithData) {
         if let v = sender.view as? UITextView {
             let currentLength = v.text!.count
@@ -407,7 +407,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     func getContentImage(_ product: String, _ stackView: UIStackView) {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(product)
@@ -417,13 +417,13 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     //func cleanupRadarObjects() {
         //if wxMetal[0] != nil {
             //wxMetal.forEach { $0!.cleanup() }
         //}
     //}
-    
+
     func getNexradRadar(_ stackView: UIStackView) {
         //cleanupRadarObjects()
         let paneRange = [0]
@@ -479,7 +479,7 @@ final class vcTabLocation: vcTabParent {
         wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }
-    
+
     func getPolygonWarnings() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityPolygons.get()
@@ -490,7 +490,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     func modelMatrix(_ index: Int) -> float4x4 {
         var matrix = float4x4()
         matrix.translate(wxMetal[index]!.xPos, y: wxMetal[index]!.yPos, z: wxMetal[index]!.zPos)
@@ -498,7 +498,7 @@ final class vcTabLocation: vcTabParent {
         matrix.scale(wxMetal[index]!.zoom, y: wxMetal[index]!.zoom, z: wxMetal[index]!.zoom)
         return matrix
     }
-    
+
     func render(_ index: Int) {
         guard let drawable = metalLayer[index]!.nextDrawable() else { return }
         wxMetal[index]?.render(
@@ -510,11 +510,11 @@ final class vcTabLocation: vcTabParent {
             //clearColor: nil
         )
     }
-    
+
     @objc func imageTap(sender: UITapGestureRecognizerWithData) {
         UtilityHomeScreen.jumpToActivity(self, sender.strData)
     }
-    
+
     func addLocationSelectionCard() {
         //
         // location card loaded regardless of settings
@@ -526,7 +526,7 @@ final class vcTabLocation: vcTabParent {
         self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         self.objLabel.tv.isSelectable = false
     }
-    
+
     // Clear all views except 7day and current conditions
     func clearViews() {
         self.stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
@@ -537,7 +537,7 @@ final class vcTabLocation: vcTabParent {
         self.stackViewHazards.view.isHidden = true
         self.stackViewRadar.removeFromSuperview()
     }
-    
+
     func setupGestures() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizer.numberOfTapsRequired = 1
@@ -550,31 +550,31 @@ final class vcTabLocation: vcTabParent {
         gestureRecognizer2.delaysTouchesBegan = true
         self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
     }
-    
+
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.singleTap(self, wxMetal, wxMetalTextObject, gestureRecognizer)
     }
-    
+
     @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
         WXMetalSurfaceView.doubleTap(self, wxMetal, wxMetalTextObject, numberOfPanes, gestureRecognizer)
     }
-    
+
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         longPressCount = WXMetalSurfaceView.gestureLongPress(self, wxMetal, longPressCount, longPressAction, gestureRecognizer)
     }
-    
+
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(self, wxMetal[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
-        var alertMessage = WXGLNexrad.getRadarInfo("") + MyApplication.newline
+        var alertMessage = WXGLNexrad.getRadarInfo("") + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
-            alertMessage += MyApplication.newline + "GPS: " + wxMetal[index]!.getGpsString()
+            alertMessage += GlobalVariables.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
         let alert = UIAlertController(title: "", message: alertMessage, preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
@@ -605,12 +605,12 @@ final class vcTabLocation: vcTabParent {
         if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = menuButton }
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func ridChanged(_ rid: String) {
         getPolygonWarnings()
         wxMetal[0]!.resetRidAndGet(rid, isHomeScreen: true)
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
@@ -624,7 +624,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     override func updateColors() {
         toolbar.setColorToTheme()
         objLabel.color = ColorCompatibility.highlightText

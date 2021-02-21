@@ -8,31 +8,11 @@ import UIKit
 
 final class MyApplication {
     
-    static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by" + " https://weather.gc.ca/canada_e.html."
-    static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
-    static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
-    static let nwsAWCwebsitePrefix = "https://www.aviationweather.gov"
-    static let nwsGraphicalWebsitePrefix = "https://graphical.weather.gov"
-    static let nwsCPCNcepWebsitePrefix = "https://www.cpc.ncep.noaa.gov"
-    static let nwsGoesWebsitePrefix = "https://www.goes.noaa.gov"
-    static let nwsOpcWebsitePrefix = "https://ocean.weather.gov"
-    static let nwsNhcWebsitePrefix = "https://www.nhc.noaa.gov"
-    static let nwsRadarWebsitePrefix = "https://radar.weather.gov"
-    static let nwsMagNcepWebsitePrefix = "https://mag.ncep.noaa.gov"
-    static let sunMoonDataUrl = "https://api.usno.navy.mil"
-    static let nwsSwpcWebSitePrefix = "https://services.swpc.noaa.gov"
-    static let canadaEcSitePrefix = "https://weather.gc.ca"
-    static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
-    static let nwsApiUrl = "https://api.weather.gov"
-    static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
-    static let degreeSymbol = "\u{00B0}"
     static var animInterval = 250
-    static let newline = "\n"
-    static let prePattern = "<pre.*?>(.*?)</pre>"
-    static let pre2Pattern = "<pre>(.*?)</pre>"
+
     static var radarColorPalette = [Int: String]()
     static var homescreenFav = ""
-    static let homescreenFavDefault = "TXT-CC2:TXT-HAZ:TXT-7DAY2:"
+
     static let severeDashboardTor = DataStorage("SEVERE_DASHBOARD_TOR")
     static let severeDashboardTst = DataStorage("SEVERE_DASHBOARD_TST")
     static let severeDashboardFfw = DataStorage("SEVERE_DASHBOARD_FFW")
@@ -50,14 +30,6 @@ final class MyApplication {
     static var playlistStr = ""
     static var colorMap = [Int: ObjectColorPalette]()
     static var locations = [Location]()
-    //
-    // Legacy forecast support
-    //
-    static let utilUS_weather_summary_pattern = ".*?weather-summary=(.*?)/>.*?"
-    static let utilUS_period_name_pattern = ".*?period-name=(.*?)>.*?"
-    static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
-    static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
-    static let xml_value_pattern = "<value>"
 
     static func onCreate() {
         initPreferences()
@@ -82,7 +54,7 @@ final class MyApplication {
         [94, 99, 134, 135, 159, 161, 163, 165, 172].forEach { product in
             radarColorPalette[product] = Utility.readPref("RADAR_COLOR_PALETTE_" + String(product), "CODENH")
         }
-        homescreenFav = Utility.readPref("HOMESCREEN_FAV", homescreenFavDefault)
+        homescreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)
         playlistStr = Utility.readPref("PLAYLIST", "")
         Location.setCurrentLocationStr(Utility.readPref("CURRENT_LOC_FRAGMENT", "1"))
