@@ -111,14 +111,24 @@ final class Location {
     static var name: String { locations[getCurrentLocation()].name }
 
     static func getName(_ locNum: Int) -> String { locations[locNum].name }
+    
+    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(locations[locNum].lat, locations[locNum].lon) }
+
+    static func getX(_ locNum: Int) -> String { locations[locNum].lat }
+
+    static func getY(_ locNum: Int) -> String { locations[locNum].lon }
+
+    static func getRid(_ locNum: Int) -> String { locations[locNum].rid }
+
+    static func getWfo(_ locNum: Int) -> String { locations[locNum].wfo }
+
+    static func getObservation(_ locNum: Int) -> String { locations[locNum].observation }
 
     static var rid: String { locations[getCurrentLocation()].rid }
 
     static var wfo: String { locations[getCurrentLocation()].wfo }
 
     static var x: String { locations[getCurrentLocation()].lat }
-
-    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(locations[locNum].lat, locations[locNum].lon) }
 
     static var xDbl: Double { Double(Location.x) ?? 0.0 }
 
