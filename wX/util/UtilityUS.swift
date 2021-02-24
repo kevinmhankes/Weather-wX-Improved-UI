@@ -14,7 +14,7 @@ final class UtilityUS {
     }
 
     static func getCurrentConditionsUS(_ html: String) -> [String] {
-        var result = Array(repeating: "", count: 5)
+        var result = [String]()
         let regexpList = [
                 "<temperature type=.apparent. units=.Fahrenheit..*?>(.*?)</temperature>",
                 "<temperature type=.dew point. units=.Fahrenheit..*?>(.*?)</temperature>",
@@ -40,8 +40,8 @@ final class UtilityUS {
                 "<humidity type=.relative..*?>(.*?)</humidity>"
         ]
         let rawData = UtilityString.parseXmlExt(regexpList, html)
-        result[0] = rawData[10]
-        result[3] = get7DayExt(rawData)
+        result.append(rawData[10])
+        result.append(get7DayExt(rawData))
         return result
     }
 
@@ -56,13 +56,13 @@ final class UtilityUS {
         timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUS_period_name_pattern)
         timeP12n13List.insert("", at: 0)
 
-        var sb = ""
+        var forecastString = ""
         for j in 1..<forecast.count {
-            sb += timeP12n13List[j]
-            sb += ": "
-            sb += forecast[j]
-            sb += GlobalVariables.newline
+            forecastString += timeP12n13List[j]
+            forecastString += ": "
+            forecastString += forecast[j]
+            forecastString += GlobalVariables.newline
         }
-        return sb
+        return forecastString
     }
 }

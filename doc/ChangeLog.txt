@@ -24,9 +24,12 @@
 // [ADD] update copyright 2021
 // [REF] add to common/ GlobalGlobalArrays.swift GlobalDictionaries.swift GlobalVariables.swift
 // [FIX] nexrad timestamp is slightly offset higher then other text
+// [ADD] LSR by WFO - download and show one at a time
 // [REF] in Location, make locations private and add various methods
 
-56124 2021_02_21 [REF] move more stuff out of myapp, add ObjectLocation
+56124 2021_02_24 [REF] move more stuff out of myapp, add ObjectLocation
+		 [FIX] make AWC radar mosaic the only option for radar mosaic as NWS has removed a timeframe for the traditional radar mosaic
+		 [FIX] make the older NWS API the default for 7 day forecast
 56123 2021_02_20 [FIX] SPC MCD regexp was not correct
 		 [ADD] SPC Meso - move VTP Violent Tornado from Beta into Composite Indices to match SPC website
 		 [ADD] SPC Meso - add Tornadic 0-1km EHI to Beta to match SPC website

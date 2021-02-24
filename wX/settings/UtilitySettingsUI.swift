@@ -14,7 +14,7 @@ final class UtilitySettingsUI {
         "RADAR_TOOLBAR_TRANSPARENT": "Radar uses transparent toolbars",
         "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
         "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
-        "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the NWS images",
+        // "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the NWS images",
         "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images",
         "USE_NWS_API_SEVEN_DAY": "Use new NWS API for 7 day"
     ]

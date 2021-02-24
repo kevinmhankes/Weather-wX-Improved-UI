@@ -27,18 +27,18 @@ final class UIPreferences {
     static var mainScreenRadarFab = true
     static var mainScreenCondense = false
     static var nwsIconSize: Float = 80.0
-    static var useAwcRadarMosaic = false
+    static var useAwcRadarMosaic = true
     static var goesUseFullResolutionImages = false
-    static var useNwsApi = true
+    static var useNwsApi = false
 
     static func initialize() {
         #if targetEnvironment(macCatalyst)
         tilesPerRow = 5
         textviewFontSize = 20.0
         #endif
-        useNwsApi = Utility.readPref("USE_NWS_API_SEVEN_DAY", "true").hasPrefix("t")
+        useNwsApi = Utility.readPref("USE_NWS_API_SEVEN_DAY", "false").hasPrefix("t")
         goesUseFullResolutionImages = Utility.readPref("GOES_USE_FULL_RESOLUTION_IMAGES", "false").hasPrefix("t")
-        useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
+        // useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
         dualpaneRadarIcon = Utility.readPref("DUALPANE_RADAR_ICON", "false").hasPrefix("t")
         tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)

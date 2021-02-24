@@ -62,9 +62,9 @@ final class ObjectSevenDay {
         } else {
             var forecasts = [ObjectForecast]()
             let forecastStringList = UtilityUS.getCurrentConditionsUS(html)
-            let forecastString = forecastStringList[3]
+            let forecastString = forecastStringList[1]
             let iconString = forecastStringList[0]
-            print("2245:" + forecastString)
+            // print("2245:" + forecastString)
             let forecastStrings = forecastString.split("\n")
             self.icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
             // print(iconString + "223")
