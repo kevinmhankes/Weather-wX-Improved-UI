@@ -9,12 +9,14 @@ import UIKit
 final class UtilityNws {
 
     // Given the raw icon URL from NWS, determine if bitmap is on disk or must be created
-    // input examples
+    // Note that the url given to getIcon can handle either the new or old format below
+    //
+    // NEW API input examples
     //  https://api.weather.gov/icons/land/day/rain_showers,60/rain_showers,30?size=medium
     //  https://api.weather.gov/icons/land/night/bkn?size=medium
     //  https://api.weather.gov/icons/land/day/tsra_hi,40?size=medium
     //
-    // OLD API examples
+    // OLD API input examples
     //
     // <icon-link>http://forecast.weather.gov/DualImage.php?i=nbkn&j=nsn&jp=60</icon-link>
     // <icon-link>http://forecast.weather.gov/newimages/medium/ra_sn30.png</icon-link>
