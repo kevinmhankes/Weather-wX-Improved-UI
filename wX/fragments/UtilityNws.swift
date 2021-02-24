@@ -190,7 +190,7 @@ final class UtilityNws {
         // legacy add
         if !iconString.contains(",") {
             number = UtilityString.parse(iconString, ".*?([0-9]+)")
-            weatherCondition = UtilityString.parse(iconString, "([a-z]+)")
+            weatherCondition = UtilityString.parse(iconString, "([a-z_]+)")
         }
         // legacy add end
         
