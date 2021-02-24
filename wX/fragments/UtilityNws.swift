@@ -13,6 +13,13 @@ final class UtilityNws {
     //  https://api.weather.gov/icons/land/day/rain_showers,60/rain_showers,30?size=medium
     //  https://api.weather.gov/icons/land/night/bkn?size=medium
     //  https://api.weather.gov/icons/land/day/tsra_hi,40?size=medium
+    //
+    // OLD API examples
+    //
+    // <icon-link>http://forecast.weather.gov/DualImage.php?i=nbkn&j=nsn&jp=60</icon-link>
+    // <icon-link>http://forecast.weather.gov/newimages/medium/ra_sn30.png</icon-link>
+    // <icon-link>http://forecast.weather.gov/newimages/medium/nsct.png</icon-link>
+    // <icon-link>http://forecast.weather.gov/DualImage.php?i=sn&j=ra_sn&ip=30&jp=30</icon-link>
     static func getIcon(_ url: String) -> Bitmap {
         // print("DEBUG223: " + url)
         if url == "NULL" || url == "" {
