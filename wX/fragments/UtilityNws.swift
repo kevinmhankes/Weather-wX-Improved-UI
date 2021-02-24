@@ -28,10 +28,10 @@ final class UtilityNws {
             return Bitmap()
         }
         var fileName = url.replace("?size=medium", "")
-            .replace("?size=small", "")
-            .replace("https://api.weather.gov/icons/land/", "")
-            .replace("http://api.weather.gov/icons/land/", "")
-            .replace("day/", "")
+        fileName = fileName.replace("?size=small", "")
+        fileName = fileName.replace("https://api.weather.gov/icons/land/", "")
+        fileName = fileName.replace("http://api.weather.gov/icons/land/", "")
+        fileName = fileName.replace("day/", "")
         
         // legacy add
         fileName = fileName.replace("http://forecast.weather.gov/newimages/medium/", "")
@@ -42,8 +42,8 @@ final class UtilityNws {
         
         if fileName.contains("night") {
             fileName = fileName.replace("night//", "n")
-                .replace("night/", "n")
-                .replace("/", "/n")
+            fileName = fileName.replace("night/", "n")
+            fileName = fileName.replace("/", "/n")
         }
         
         if let fnResId = UtilityNwsIcon.iconMap[fileName + ".png"] {
