@@ -50,7 +50,7 @@ final class UtilityNws {
     //  rain_showers,70/tsra,80
     //  ntsra,80
     static private func parseBitmapString(_ url: String) -> Bitmap {
-        if url.contains("/") || url.contains(";j=") {
+        if url.contains("/") || url.contains(";j=") || (url.contains("i=") && url.contains("j=")) {
             let items = url.split("/")
             if items.count > 1 {
                 return getDualBitmapWithNumbers(items[0], items[1])
@@ -61,13 +61,25 @@ final class UtilityNws {
                 urlTmp = urlTmp.replace("ip=", "")
                 urlTmp = urlTmp.replace("jp=", "")
                 let items = urlTmp.split(";")
+                
+//                if items.count > 3 {
+//                    return getDualBitmapWithNumbers(items[0] + items[2], items[1] + items[3])
+//                } else {
+//                    return getDualBitmapWithNumbers(items[0], items[1])
+//                }
+                
                 if items.count > 3 {
-                    // UtilityLog.d("wx", "getDualBitmapWithNumbers " + items[0] + items[2] + ":" + items[1] + items[3])
                     return getDualBitmapWithNumbers(items[0] + items[2], items[1] + items[3])
+                } else if items.count > 2 {
+                    if url.contains(";jp=") {
+                        return getDualBitmapWithNumbers(items[0], items[1] + items[2])
+                    } else {
+                        return getDualBitmapWithNumbers(items[0] + items[2], items[1])
+                    }
                 } else {
-                    // UtilityLog.d("wx", "getDualBitmapWithNumbers " + items[0] + " " + items[1])
                     return getDualBitmapWithNumbers(items[0], items[1])
                 }
+                
                 // legacy add end
                 // return Bitmap()
             }
