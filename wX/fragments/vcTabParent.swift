@@ -31,7 +31,9 @@ class vcTabParent: UIViewController {
         view.addGestureRecognizer(rightSwipe)
         setTabBarColor()
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
-        if UIPreferences.mainScreenRadarFab { fab = ObjectFab(self, #selector(radarClicked)) }
+        if UIPreferences.mainScreenRadarFab {
+            fab = ObjectFab(self, #selector(radarClicked))
+        }
     }
     
     func setTabBarColor() {
@@ -118,7 +120,9 @@ class vcTabParent: UIViewController {
         self.scrollView = UIScrollView()
         self.stackView = UIStackView()
         self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView)
-        if UIPreferences.mainScreenRadarFab { fab = ObjectFab(self, #selector(radarClicked)) }
+        if UIPreferences.mainScreenRadarFab {
+            fab = ObjectFab(self, #selector(radarClicked))
+        }
     }
 
     func removeAllViews() {
@@ -143,7 +147,9 @@ class vcTabParent: UIViewController {
     func updateColors() {
         setTabBarColor()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
-        if UIPreferences.mainScreenRadarFab { fab?.setColor() }
+        if UIPreferences.mainScreenRadarFab {
+            fab?.setColor()
+        }
     }
 
     @objc func willEnterForeground() {
