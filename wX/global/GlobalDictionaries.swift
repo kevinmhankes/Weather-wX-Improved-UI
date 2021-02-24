@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 final class GlobalDictionaries {
+    
     static let nexradProductString = [
         "L2REF": "DS.p153r0",
         "L2VEL": "DS.p154r0",
