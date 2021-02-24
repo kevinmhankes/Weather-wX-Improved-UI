@@ -170,7 +170,9 @@ final class vcTabLocation: vcTabParent {
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
-        if fab != nil { self.view.bringSubviewToFront(fab!.view) }
+        if fab != nil {
+            self.view.bringSubviewToFront(fab!.view)
+        }
     }
 
     func getLocationForecast() {
@@ -344,7 +346,9 @@ final class vcTabLocation: vcTabParent {
         }
         alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = self.menuButton
+        }
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -361,7 +365,9 @@ final class vcTabLocation: vcTabParent {
             )
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = self.menuButton }
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = self.menuButton
+        }
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -630,6 +636,8 @@ final class vcTabLocation: vcTabParent {
         objLabel.color = ColorCompatibility.highlightText
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         setTabBarColor()
-        if UIPreferences.mainScreenRadarFab { fab?.setColor() }
+        if UIPreferences.mainScreenRadarFab {
+            fab?.setColor()
+        }
     }
 }
