@@ -30,7 +30,7 @@ final class UtilitySettingsUI {
         "UI_MAIN_SCREEN_CONDENSE": "false",
         "USE_AWC_RADAR_MOSAIC": "false",
         "GOES_USE_FULL_RESOLUTION_IMAGES": "false",
-        "USE_NWS_API_SEVEN_DAY": "true"
+        "USE_NWS_API_SEVEN_DAY": "false"
     ]
 
     static let picker = [
