@@ -23,7 +23,7 @@ final class CapAlert {
         self.init()
         self.url = url
         var html: String
-        if url.contains("NWS-IDP-PROD") {
+        if url.contains("urn:oid") {
             html = url.getNwsHtml()
         } else {
             html = url.getHtmlSep()

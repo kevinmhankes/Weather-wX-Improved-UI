@@ -12,7 +12,8 @@ final class UtilityWXOGL {
             let it = ObjectPolygonWarning.polygonDataByType[poly]!
             if it.isEnabled { warningChunk += it.storage.value }
         }
-        var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
+        // var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
+        var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/urn.*?)\"")
         let urlListCopy = urlList
         // discard  "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3771044",            "type": "Feature",            "geometry": null,
         // Special Weather Statements can either have a polygon or maybe not, need to strip out those w/o polygon
