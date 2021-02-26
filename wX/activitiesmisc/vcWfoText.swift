@@ -133,7 +133,7 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         coordinator.animate(alongsideTransition: nil,
             completion: { _ -> Void in
                 self.map.setupMap(GlobalArrays.wfos)
-        }
+            }
         )
     }
 }

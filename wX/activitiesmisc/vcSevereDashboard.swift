@@ -138,7 +138,9 @@ final class vcSevereDashboard: UIwXViewController {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() && UtilityUI.isLandscape() { imagesPerRow = 3 }
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
+            imagesPerRow = 3
+        }
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)

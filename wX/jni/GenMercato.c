@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -7,8 +7,8 @@
 #include "GenMercato.h"
 
 void JNI_GenMercato(
-    char* iBuff,
-    char* oBuff,
+    char * iBuff,
+    char * oBuff,
 	float center_x,
     float center_y,
     float x_image_center_pixels,
@@ -27,18 +27,18 @@ void JNI_GenMercato(
     char bytes1[4];
     char bytes2[4];
 	for (i_count = 0; i_count < count; i_count = i_count + 2) {
-        bytes1[3] = iBuff[i_count*4];
-        bytes1[2] = iBuff[i_count*4+1];
-        bytes1[1] = iBuff[i_count*4+2];
-        bytes1[0] = iBuff[i_count*4+3];
+        bytes1[3] = iBuff[i_count * 4];
+        bytes1[2] = iBuff[i_count * 4 + 1];
+        bytes1[1] = iBuff[i_count * 4 + 2];
+        bytes1[0] = iBuff[i_count * 4 + 3];
         
-        bytes2[3] = iBuff[i_count*4+4];
-        bytes2[2] = iBuff[i_count*4+5];
-        bytes2[1] = iBuff[i_count*4+6];
-        bytes2[0] = iBuff[i_count*4+7];
+        bytes2[3] = iBuff[i_count * 4 + 4];
+        bytes2[2] = iBuff[i_count * 4 + 5];
+        bytes2[1] = iBuff[i_count * 4 + 6];
+        bytes2[0] = iBuff[i_count * 4 + 7];
 
-        memcpy(&in_val1,bytes1,4);
-        memcpy(&in_val2,bytes2,4);
+        memcpy(&in_val1, bytes1, 4);
+        memcpy(&in_val2, bytes2, 4);
         
 		val2 = -1.0f *( -(((W_180_DIV_PI * log(tan(W_PI_DIV_4+in_val1*(W_PI_DIV_360))))
 									   - (W_180_DIV_PI * log(tan(W_PI_DIV_4+center_x*(W_PI_DIV_360))))) *  one_degree_scale_factor ) + y_image_center_pixels);
@@ -50,8 +50,8 @@ void JNI_GenMercato(
 }
 
 void JNI_GenMercatoMetal(
-    char* iBuff,
-    char* oBuff,
+    char * iBuff,
+    char * oBuff,
     float center_x,
     float center_y,
     float x_image_center_pixels,
@@ -79,18 +79,18 @@ void JNI_GenMercatoMetal(
     // for every two floats ( one vertex )
     // compute mercato and insert additional color, z, and alpha floats
     for (i_count = 0; i_count < count; i_count = i_count + 2) {
-        bytes1[3] = iBuff[i_count*4];
-        bytes1[2] = iBuff[i_count*4+1];
-        bytes1[1] = iBuff[i_count*4+2];
-        bytes1[0] = iBuff[i_count*4+3];
+        bytes1[3] = iBuff[i_count * 4];
+        bytes1[2] = iBuff[i_count * 4 + 1];
+        bytes1[1] = iBuff[i_count * 4 + 2];
+        bytes1[0] = iBuff[i_count * 4 + 3];
         
-        bytes2[3] = iBuff[i_count*4+4];
-        bytes2[2] = iBuff[i_count*4+5];
-        bytes2[1] = iBuff[i_count*4+6];
-        bytes2[0] = iBuff[i_count*4+7];
+        bytes2[3] = iBuff[i_count * 4 + 4];
+        bytes2[2] = iBuff[i_count * 4 + 5];
+        bytes2[1] = iBuff[i_count * 4 + 6];
+        bytes2[0] = iBuff[i_count * 4 + 7];
         
-        memcpy(&in_val1,bytes1,4);
-        memcpy(&in_val2,bytes2,4);
+        memcpy(&in_val1, bytes1, 4);
+        memcpy(&in_val2, bytes2, 4);
         
         val2 = -1.0f *( -(((W_180_DIV_PI * log(tan(W_PI_DIV_4+in_val1*(W_PI_DIV_360))))
                            - (W_180_DIV_PI * log(tan(W_PI_DIV_4+center_x*(W_PI_DIV_360))))) *  one_degree_scale_factor ) + y_image_center_pixels);
@@ -99,20 +99,20 @@ void JNI_GenMercatoMetal(
         val1Reversed = ReverseFloat(val1);
         val2Reversed = ReverseFloat(val2);
         // write the data out
-        memcpy(&oBuff[i_count*4], &val1Reversed, 4);
-        memcpy(&oBuff[i_count*4+4], &val2Reversed, 4);
-        memcpy(&oBuff[i_count*4+4], &z, 4);
-        memcpy(&oBuff[i_count*4], &red, 4);
-        memcpy(&oBuff[i_count*4+4], &green, 4);
-        memcpy(&oBuff[i_count*4+4], &blue, 4);
-        memcpy(&oBuff[i_count*4+4], &one, 4);
+        memcpy(&oBuff[i_count * 4], &val1Reversed, 4);
+        memcpy(&oBuff[i_count * 4 + 4], &val2Reversed, 4);
+        memcpy(&oBuff[i_count * 4 + 4], &z, 4);
+        memcpy(&oBuff[i_count * 4], &red, 4);
+        memcpy(&oBuff[i_count * 4 + 4], &green, 4);
+        memcpy(&oBuff[i_count * 4 + 4], &blue, 4);
+        memcpy(&oBuff[i_count * 4 + 4], &one, 4);
     }
 }
 
-float ReverseFloat( const float inFloat ) {
+float ReverseFloat(const float inFloat) {
     float retVal;
-    char *floatToConvert = ( char* ) & inFloat;
-    char *returnFloat = ( char* ) & retVal;
+    char * floatToConvert = (char *) & inFloat;
+    char * returnFloat = (char *) & retVal;
     // swap the bytes into a temporary buffer
     returnFloat[0] = floatToConvert[3];
     returnFloat[1] = floatToConvert[2];
@@ -120,5 +120,3 @@ float ReverseFloat( const float inFloat ) {
     returnFloat[3] = floatToConvert[0];
     return retVal;
 }
-
-

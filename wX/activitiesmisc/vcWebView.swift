@@ -94,7 +94,9 @@ final class vcWebView: UIwXViewController {
         } else {
             var tail = ""
             let state = stateCode.lowercased().split(":")[0]
-            if state.count == 2 { tail = "wx" }
+            if state.count == 2 {
+                tail = "wx"
+            }
             let url = "http://www.twitter.com/hashtag/" + state + tail
             if url.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") ||
             url.hasPrefix("https://www.wrh.noaa.gov/mesowest") {

@@ -60,7 +60,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
             completion: { _ -> Void in
                 self.image.refresh()
                 self.map.setupMap(GlobalArrays.soundingSites)
-        }
+            }
         )
     }
 }

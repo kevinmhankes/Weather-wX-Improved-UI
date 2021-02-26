@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020 joshua.tee@gmail.com. All rights reserved.
+ * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
  *
  * Refer to the COPYING file of the official project for license.
  *****************************************************************************/
@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 void JNI_GenMercato(
-    char* iBuff,
-    char* oBuff,
+    char * iBuff,
+    char * oBuff,
     float center_x, 
     float center_y, 
     float x_image_center_pixels,
@@ -20,8 +20,8 @@ void JNI_GenMercato(
 );
 
 void JNI_GenMercatoMetal(
-    char* iBuff,
-    char* oBuff,
+    char * iBuff,
+    char * oBuff,
     float center_x,
     float center_y,
     float x_image_center_pixels,
@@ -35,4 +35,3 @@ void JNI_GenMercatoMetal(
 );
 
 float ReverseFloat(const float inFloat);
-

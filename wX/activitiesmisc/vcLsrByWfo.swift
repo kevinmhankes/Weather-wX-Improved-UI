@@ -87,7 +87,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
                 //self.refreshViews()
                 self.map.setupMap(GlobalArrays.wfos)
                 self.display()
-        }
+            }
         )
     }
 }
