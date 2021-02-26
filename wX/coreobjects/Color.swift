@@ -8,10 +8,10 @@ import UIKit
 
 final class Color {
 
-    static let RED         = -65536
-    static let GREEN       = -16711936
-    static let YELLOW      = -256
-    static let MAGENTA     = -65281
+    static let RED = -65536
+    static let GREEN = -16711936
+    static let YELLOW = -256
+    static let MAGENTA = -65281
 
     static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Int {
         var retVal = 0xFF << 24
@@ -27,11 +27,17 @@ final class Color {
         return retVal
     }
 
-    static func red(_ color: Int) -> UInt8 { UInt8((color >> 16) & 0xFF) }
+    static func red(_ color: Int) -> UInt8 {
+        UInt8((color >> 16) & 0xFF)
+    }
 
-    static func green(_ color: Int) -> UInt8 { UInt8(((color >> 8) & 0xFF)) }
+    static func green(_ color: Int) -> UInt8 {
+        UInt8(((color >> 8) & 0xFF))
+    }
 
-    static func blue(_ color: Int) -> UInt8 { UInt8(color & 0xFF) }
+    static func blue(_ color: Int) -> UInt8 {
+        UInt8(color & 0xFF)
+    }
 
     static func colorToHsv(_ color: Int) -> [Double] {
         let redInt: Int = ((color >> 16) & 0xFF)

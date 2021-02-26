@@ -9,6 +9,7 @@ final class ObjectPolygonWarning {
     let storage: DataStorage
     let isEnabled: Bool
     let type: PolygonTypeGeneric
+    private let baseUrl = "https://api.weather.gov/alerts/active?event="
 
     init(_ type: PolygonTypeGeneric) {
         self.type = type
@@ -78,7 +79,9 @@ final class ObjectPolygonWarning {
     static func areAnyEnabled() -> Bool {
         var anyEnabled = false
         polygonList.forEach {
-            if ObjectPolygonWarning.polygonDataByType[$0]!.isEnabled { anyEnabled = true }
+            if ObjectPolygonWarning.polygonDataByType[$0]!.isEnabled {
+                anyEnabled = true
+            }
         }
         return anyEnabled
     }
@@ -91,6 +94,4 @@ final class ObjectPolygonWarning {
     static func load() {
         polygonList.forEach { polygonDataByType[$0] = ObjectPolygonWarning($0) }
     }
-
-    let baseUrl = "https://api.weather.gov/alerts/active?event="
 }

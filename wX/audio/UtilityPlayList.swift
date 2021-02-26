@@ -16,7 +16,9 @@ final class UtilityPlayList {
         if !MyApplication.playlistStr.contains(prodLocal) {
             MyApplication.playlistStr += ":" + prodLocal
             Utility.writePref("PLAYLIST", MyApplication.playlistStr)
-            if showStatus { _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton) }
+            if showStatus {
+                _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
+            }
             productAdded = true
         } else {
             _ = ObjectToast(prodLocal + " already in playlist: " + String(text.count), uiv, menuButton)

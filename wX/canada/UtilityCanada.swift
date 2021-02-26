@@ -234,11 +234,17 @@ final class UtilityCanada {
         if timeArr.count > 0 {
             hour = Int(timeArr[0]) ?? 0
             if time.contains("AM") {
-                if hour < 8 { daytime = false }
+                if hour < 8 {
+                    daytime = false
+                }
             }
             if time.contains("PM") {
-                if hour == 12 { hour = 0 }
-                if hour > 6 { daytime = false }
+                if hour == 12 {
+                    hour = 0
+                }
+                if hour > 6 {
+                    daytime = false
+                }
             }
         }
         if !daytime {
@@ -255,7 +261,9 @@ final class UtilityCanada {
         return newName
     }
 
-    static func getProvinceHtml(_ prov: String) -> String { (GlobalVariables.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep() }
+    static func getProvinceHtml(_ prov: String) -> String {
+        (GlobalVariables.canadaEcSitePrefix + "/forecast/canada/index_e.html?id=" + prov).getHtmlSep()
+    }
 
     static func getLocationHtml(_ location: LatLon) -> String {
         let prov = location.latString.split(":")
@@ -263,7 +271,9 @@ final class UtilityCanada {
         return (GlobalVariables.canadaEcSitePrefix + "/rss/city/" + prov[1].lowercased() + "-" + id[0] + "_e.xml").getHtmlSep()
     }
 
-    static func getStatus(_ html: String) -> String { html.parse("<b>Observed at:</b>(.*?)<br/>") }
+    static func getStatus(_ html: String) -> String {
+        html.parse("<b>Observed at:</b>(.*?)<br/>")
+    }
 
     static func getRadarSite(_ lat: String, _ lon: String) -> String {
         let url = GlobalVariables.canadaEcSitePrefix + "/city/pages/" + lat.split(":")[1].lowercased() + "-" + lon.split(":")[0] + "_metric_e.html"
@@ -351,11 +361,15 @@ final class UtilityCanada {
         return warningData.replace("<div class=\"row\">", "")
     }
 
-    static func getECSectorFromProvidence(_ province: String) -> String { provinceToMosaicSector[province] ?? "" }
+    static func getECSectorFromProvidence(_ province: String) -> String {
+        provinceToMosaicSector[province] ?? ""
+    }
 
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false
-        if !UtilityCitiesCanada.initialized { UtilityCitiesCanada.load() }
+        if !UtilityCitiesCanada.initialized {
+            UtilityCitiesCanada.load()
+        }
         for city in UtilityCitiesCanada.cities {
             if city.contains(label) {
                 isPresent = true
@@ -368,7 +382,9 @@ final class UtilityCanada {
     static func getLatLonFromLabel(_ label: String) -> LatLon {
         var coordinates = [Double]()
         var index = 0
-        if !UtilityCitiesCanada.initialized { UtilityCitiesCanada.load() }
+        if !UtilityCitiesCanada.initialized {
+            UtilityCitiesCanada.load()
+        }
         for city in UtilityCitiesCanada.cities {
             if city == label {
                 coordinates.append(UtilityCitiesCanada.lat[index])
