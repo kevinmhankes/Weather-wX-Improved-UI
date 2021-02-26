@@ -98,14 +98,22 @@ struct LatLon {
     }
     
     // used in adhoc location save
-    func prettyPrint() -> String { latString.truncate(5) + ", " + lonString.truncate(5) }
+    func prettyPrint() -> String {
+        latString.truncate(5) + ", " + lonString.truncate(5)
+    }
     
     // used in UtilitySwoD1 and UtilityDownloadRadar
-    func printSpaceSeparated() -> String { latString + " " + lonString + " " }
+    func printSpaceSeparated() -> String {
+        latString + " " + lonString + " "
+    }
     
-    func asPoint() -> ExternalPoint { ExternalPoint(lat, lon) }
+    func asPoint() -> ExternalPoint {
+        ExternalPoint(lat, lon)
+    }
     
-    static func reversed(_ lon: Double, _ lat: Double) -> LatLon { LatLon(lat, -1.0 * lon) }
+    static func reversed(_ lon: Double, _ lat: Double) -> LatLon {
+        LatLon(lat, -1.0 * lon)
+    }
     
     static func distance(_ location1: LatLon, _ location2: LatLon, _ unit: DistanceUnit) -> Double {
         let theta = location1.lon - location2.lon
