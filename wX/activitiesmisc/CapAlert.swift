@@ -26,6 +26,7 @@ final class CapAlert {
         if url.contains("urn:oid") {
             html = url.getNwsHtml()
         } else {
+            print("22334")
             html = url.getHtmlSep()
         }
         points = getWarningsFromJson(html)

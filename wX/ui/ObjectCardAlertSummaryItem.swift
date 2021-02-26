@@ -48,8 +48,16 @@ final class ObjectCardAlertSummaryItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
-        if location == "" { tvName.view.isHidden = true }
-        if endTime == "" { tvEnd.view.isHidden = true }
+        if location == "" {
+            tvName.view.isHidden = true
+        }
+        if endTime == "" {
+            tvEnd.view.isHidden = true
+        }
+        if office == "" {
+            radarIcon.button.isHidden = true
+            radarText.tv.isHidden = true
+        }
         verticalTextContainer.view.isAccessibilityElement = true
         verticalTextContainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])

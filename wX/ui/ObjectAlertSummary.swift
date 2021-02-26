@@ -47,7 +47,7 @@ final class ObjectAlertSummary: NSObject {
                 filterBool = (alert.title.contains("Tornado Warning") || alert.title.contains("Severe Thunderstorm Warning") || alert.title.contains("Flash Flood Warning"))
                 filterLabel = "Tornado/ThunderStorm/FFW"
             } else {
-                filterBool = (alert.title.hasPrefix(filter))
+                filterBool = alert.title.hasPrefix(filter)
                 filterLabel = filter
             }
             if filterBool {
@@ -85,7 +85,9 @@ final class ObjectAlertSummary: NSObject {
         objTextSummary.text = "Total alerts: " + String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCnt
     }
 
-    func getUrl(_ index: Int) -> String { urls[index] }
+    func getUrl(_ index: Int) -> String {
+        urls[index]
+    }
 
     @objc func imageClicked() {}
 
