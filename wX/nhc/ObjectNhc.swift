@@ -31,7 +31,9 @@ final class ObjectNhc: NSObject {
 
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
-        if UtilityUI.isTablet() { imagesPerRow = 3 }
+        if UtilityUI.isTablet() {
+            imagesPerRow = 3
+        }
         super.init()
         NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
     }

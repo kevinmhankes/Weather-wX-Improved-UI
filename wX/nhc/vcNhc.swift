@@ -70,7 +70,8 @@ final class vcNhc: UIwXViewController {
             completion: { _ -> Void in
                 self.refreshViews()
                 self.objectNhc.showTextData()
-                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }}
+                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }
+            }
         )
     }
 }

@@ -60,5 +60,7 @@ final class ObjectNhcRegionSummary {
         bitmaps = urls.map { $0.getImage() }
     }
 
-    func getTitle(_ index: Int) -> [String] { [urls[index], titles[index]] }
+    func getTitle(_ index: Int) -> [String] {
+        [urls[index], titles[index]]
+    }
 }
