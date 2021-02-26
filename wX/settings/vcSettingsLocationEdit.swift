@@ -302,7 +302,9 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         ceo.reverseGeocodeLocation(
             loc,
             completionHandler: { placeMarks, error in
-                if error != nil { print("reverse geodcode fail: \(error!.localizedDescription)") }
+                if error != nil {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
                 let pm = placeMarks! as [CLPlacemark]
                 if pm.count > 0 {
                     let pm = placeMarks![0]

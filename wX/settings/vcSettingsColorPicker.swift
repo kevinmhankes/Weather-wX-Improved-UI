@@ -45,7 +45,9 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     }
     
     override func doneClicked() {
-        if colorChanged { saveNewColorClicked() }
+        if colorChanged {
+            saveNewColorClicked()
+        }
         super.doneClicked()
     }
     

@@ -15,50 +15,6 @@ final class Location {
     private static var currentLocationStr = "1"
     private static let addLocationLabel = "Add Location..."
     
-//    let lat: String
-//    let lon: String
-//    let name: String
-//    private let countyCurrent: String
-//    private let zoneCurrent: String
-//    let wfo: String
-//    let rid: String
-//    private let nwsStateCurrent: String
-//    let state: String
-//    private let isLocationUS: Bool
-//    var observation: String
-//    private let prefNumberString: String
-
-//    init(_ locNumAsInt: Int) {
-//        let locNumAsString = String(locNumAsInt + 1)
-//        prefNumberString = locNumAsString
-//        lat = Utility.readPref("LOC" + locNumAsString + "_X", "")
-//        lon = Utility.readPref("LOC" + locNumAsString + "_Y", "")
-//        name = Utility.readPref("LOC" + locNumAsString + "_LABEL", "")
-//        countyCurrent = Utility.readPref("COUNTY" + locNumAsString, "")
-//        zoneCurrent = Utility.readPref("ZONE" + locNumAsString, "")
-//        wfo = Utility.readPref("NWS" + locNumAsString, "")
-//        rid = Utility.readPref("RID" + locNumAsString, "")
-//        nwsStateCurrent = Utility.readPref("NWS" + locNumAsString + "_STATE", "")
-//        state = Utility.getRadarSiteName(rid).split(",")[0]
-//        observation = Utility.readPref("LOC" + locNumAsString + "_OBSERVATION", "")
-//        isLocationUS = Location.us(lat)
-//        Location.addToListOfNames(name)
-//    }
-//
-//    func saveToNewSlot(_ newLocNumInt: Int) {
-//        let locNumAsString = String(newLocNumInt + 1)
-//        Utility.writePref("LOC" + locNumAsString + "_X", lat)
-//        Utility.writePref("LOC" + locNumAsString + "_Y", lon)
-//        Utility.writePref("LOC" + locNumAsString + "_LABEL", name)
-//        Utility.writePref("COUNTY" + locNumAsString, countyCurrent)
-//        Utility.writePref("ZONE" + locNumAsString, zoneCurrent)
-//        Utility.writePref("NWS" + locNumAsString, wfo)
-//        Utility.writePref("RID" + locNumAsString, rid)
-//        Utility.writePref("NWS" + locNumAsString + "_STATE", nwsStateCurrent)
-//        Utility.writePref("LOC" + locNumAsString + "_OBSERVATION", observation)
-//        Location.refreshLocationData()
-//    }
-
     static func updateObservation(_ index: Int, _ obs: String) {
         locations[index].updateObservation(obs)
     }
@@ -90,13 +46,17 @@ final class Location {
         }
     }
 
-    static func getCurrentLocation() -> Int { currentLocation }
+    static func getCurrentLocation() -> Int {
+        currentLocation
+    }
 
     static func setCurrentLocation(_ currentLocation: Int) {
         Location.currentLocation = currentLocation
     }
 
-    static func getCurrentLocationStr() -> String { currentLocationStr }
+    static func getCurrentLocationStr() -> String {
+        currentLocationStr
+    }
 
     static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
@@ -188,8 +148,12 @@ final class Location {
             let wfoAndRadar = getWfoRadarSiteFromPoint(latLon)
             wfo = wfoAndRadar[0]
             radarSite = wfoAndRadar[1]
-            if wfo == "" { wfo = UtilityLocation.getNearestOffice("WFO", latLon).lowercased() }
-            if radarSite == "" { radarSite = UtilityLocation.getNearestOffice("RADAR", latLon) }
+            if wfo == "" {
+                wfo = UtilityLocation.getNearestOffice("WFO", latLon).lowercased()
+            }
+            if radarSite == "" {
+                radarSite = UtilityLocation.getNearestOffice("RADAR", latLon)
+            }
             Utility.writePref("RID" + locNum, radarSite.uppercased())
             Utility.writePref("NWS" + locNum, wfo.uppercased())
         } else {
@@ -201,10 +165,14 @@ final class Location {
             }
             var prov = ""
             let parseProv = latLon.latString.split(":")
-            if parseProv.count > 0 { prov = parseProv[1] }
+            if parseProv.count > 0 {
+                prov = parseProv[1]
+            }
             var id = ""
             let parseId = latLon.lonString.split(":")
-            if parseId.count > 0 { id = parseId[0] }
+            if parseId.count > 0 {
+                id = parseId[0]
+            }
             if latLon.latString.count > 12 {
                 tempLatLon.latString = parseProv[2]
                 tempLatLon.lonString = parseId[1]
@@ -233,7 +201,9 @@ final class Location {
     static func delete(_ locToDeleteStr: String) {
         let locToDeleteInt = Int(locToDeleteStr) ?? 0
         let locNumIntCurrent = Location.numLocations
-        if locToDeleteInt > locNumIntCurrent { return }
+        if locToDeleteInt > locNumIntCurrent {
+            return
+        }
         if locToDeleteInt == locNumIntCurrent {
             Location.numLocations = locNumIntCurrent - 1
         } else {
@@ -280,4 +250,5 @@ final class Location {
             Utility.writePref("WIDGET_LOCATION", shiftNum)
         }
         Location.refreshLocationData()
-    }}
+    }
+}
