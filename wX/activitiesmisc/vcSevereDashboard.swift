@@ -116,7 +116,8 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
-        Route.alertDetail(self, "https://api.weather.gov/alerts/" + sender.strData)
+        // Route.alertDetail(self, "https://api.weather.gov/alerts/" + sender.strData)
+        Route.alertDetail(self, sender.strData)
     }
 
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {

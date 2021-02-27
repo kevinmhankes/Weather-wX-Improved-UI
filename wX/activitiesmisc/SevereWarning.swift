@@ -71,7 +71,8 @@ final class SevereWarning {
         }
         text = ""
         count = 0
-        idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
+        // idList = html.parseColumn("\"id\": \"(NWS.*?)\"")
+        idList = html.parseColumn("\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"")
         areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
         effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
         expiresList = html.parseColumn("\"expires\": \"(.*?)\"")
