@@ -9,7 +9,9 @@ final class UtilityColorPalette4bitGeneric {
     static func generate(_ product: Int) {
         ObjectColorPalette.colorMap[product]!.position(0)
         UtilityIO.readTextFile("colormap" + String(product) + ".txt").split("\n").forEach { line in
-            if line.contains(",") { ObjectColorPalette.colorMap[product]!.putLine(line) }
+            if line.contains(",") {
+                ObjectColorPalette.colorMap[product]!.putLine(line)
+            }
         }
     }
 }

@@ -102,8 +102,12 @@ final class UtilityColorPaletteGeneric {
                 let highColor = objectColorPaletteLines[index + 1].asInt
                 var diff = high - low
                 objectColorPalette.putBytes(objectColorPaletteLines[index])
-                if scale == 2 { objectColorPalette.putBytes(objectColorPaletteLines[index]) }
-                if diff == 0 { diff = 1 }
+                if scale == 2 {
+                    objectColorPalette.putBytes(objectColorPaletteLines[index])
+                }
+                if diff == 0 {
+                    diff = 1
+                }
                 (1..<diff).forEach { j in
                     if scale == 1 {
                         let colorInt = UtilityNexradColors.interpolateColor(Int(lowColor), Int(highColor), Double(j) / Double(diff * scale))

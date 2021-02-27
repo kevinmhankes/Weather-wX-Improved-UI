@@ -15,7 +15,9 @@ final class UtilityColorPalette165 {
         UtilityColorPalette.getColorMapStringFromDisk(radarColorPaletteCode, code).split("\n").forEach { line in
             if line.contains("olor") && !line.contains("#") {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
-                if items.count > 4 { objectColorPaletteLines.append(ObjectColorPaletteLine(items)) }
+                if items.count > 4 {
+                    objectColorPaletteLines.append(ObjectColorPaletteLine(items))
+                }
             }
         }
         let diff = 10

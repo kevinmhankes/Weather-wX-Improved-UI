@@ -23,7 +23,9 @@ final class WXGLNexrad {
             "NTP"
     ]
 
-    static func isProductTdwr(_ product: String) -> Bool { product.startsWith("TV") || product == "TZL" || product.startsWith("TZ") }
+    static func isProductTdwr(_ product: String) -> Bool {
+        product.startsWith("TV") || product == "TZL" || product.startsWith("TZ")
+    }
 
     static func getRadarTimeStamp() -> String {
         let radarTimeStamp = getRadarInfo("")
@@ -41,7 +43,9 @@ final class WXGLNexrad {
     }
 
     static func canTilt(_ product: String) -> Bool {
-        if product == "L2REF" || product == "L2VEL" { return false }
+        if product == "L2REF" || product == "L2VEL" {
+            return false
+        }
         if product.matches(regexp: "[A-Z][0-3][A-Z]") || product.matches(regexp: "T[RV][0-2]") {
             return true
         } else {
@@ -195,11 +199,17 @@ final class WXGLNexrad {
         }
     }
 
-    static func isRidTdwr(_ radarSite: String) -> Bool { getTdwrShortList().contains(radarSite) }
+    static func isRidTdwr(_ radarSite: String) -> Bool {
+        getTdwrShortList().contains(radarSite)
+    }
 
-    static func getTdwrShortList() -> [String] { GlobalArrays.tdwrRadars.map {$0.split(" ")[0]} }
+    static func getTdwrShortList() -> [String] {
+        GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
+    }
 
-    static func getRadarInfo(_ pane: String) -> String { Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "") }
+    static func getRadarInfo(_ pane: String) -> String {
+        Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
+    }
 
     static func writeRadarInfo(_ pane: String, _ info: String) {
         Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
