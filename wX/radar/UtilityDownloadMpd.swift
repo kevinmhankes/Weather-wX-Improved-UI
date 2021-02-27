@@ -25,7 +25,7 @@ final class UtilityDownloadMpd {
         numberList.forEach { number in
             let text = UtilityDownload.getTextProduct("WPCMPD" + number)
             numberListString += number + ":"
-            latLonString += UtilityDownloadRadar.storeWatchMcdLatLon(text)
+            latLonString += LatLon.storeWatchMcdLatLon(text)
         }
         MyApplication.mpdLatlon.value = latLonString
         MyApplication.mpdNoList.value = numberListString

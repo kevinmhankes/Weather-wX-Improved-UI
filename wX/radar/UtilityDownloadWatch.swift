@@ -31,11 +31,11 @@ final class UtilityDownloadWatch {
             let preText = UtilityString.parseLastMatch(text, GlobalVariables.pre2Pattern)
             //if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
             if preText.contains("SEVERE TSTM") {
-                latLongString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+                latLongString += LatLon.storeWatchMcdLatLon(preText)
             } else {
-                latLonTorString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+                latLonTorString += LatLon.storeWatchMcdLatLon(preText)
             }
-            latLonCombinedString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+            latLonCombinedString += LatLon.storeWatchMcdLatLon(preText)
         }
         MyApplication.watchLatlon.value = latLongString
         MyApplication.watchLatlonTor.value = latLonTorString

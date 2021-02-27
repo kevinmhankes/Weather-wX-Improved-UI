@@ -41,14 +41,6 @@ final class UtilityDownloadRadar {
         MyApplication.severeDashboardTor.value = ""
     }
 
-    static func storeWatchMcdLatLon(_ html: String) -> String {
-        let coordinates = html.parseColumn("([0-9]{8}).*?")
-        var string = ""
-        coordinates.forEach { string += LatLon($0).printSpaceSeparated() }
-        string += ":"
-        return string.replace(" :", ":")
-    }
-
     static func getLatLon(_ number: String) -> String {
         let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
         return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)

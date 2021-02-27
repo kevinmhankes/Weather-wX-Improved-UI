@@ -26,7 +26,7 @@ final class UtilityDownloadMcd {
         numberList.forEach { number in
             let text = UtilityDownload.getTextProduct("SPCMCD" + number)
             numberListString += number + ":"
-            latLonString += UtilityDownloadRadar.storeWatchMcdLatLon(text)
+            latLonString += LatLon.storeWatchMcdLatLon(text)
         }
         MyApplication.mcdLatlon.value = latLonString
         MyApplication.mcdNoList.value = numberListString

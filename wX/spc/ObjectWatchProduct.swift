@@ -60,7 +60,7 @@ final class ObjectWatchProduct {
         if type == .SPCWAT || type == .SPCWAT_TORNADO {
             textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
         }
-        stringOfLatLon = UtilityDownloadRadar.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
+        stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
