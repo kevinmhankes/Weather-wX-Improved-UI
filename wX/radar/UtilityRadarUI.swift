@@ -67,7 +67,9 @@ final class UtilityRadarUI {
 
     static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
-        if warningText != "" { Route.alertDetail(uiv, warningText) }
+        if warningText != "" {
+            Route.alertDetail(uiv, warningText)
+        }
     }
 
     static func showNearestProduct(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
@@ -126,7 +128,9 @@ final class UtilityRadarUI {
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
         // TODO adjustment when convert to 4char radar site code
-        if radarSite.count == 4 { ridSmall.remove(at: radarSite.startIndex) }
+        if radarSite.count == 4 {
+            ridSmall.remove(at: radarSite.startIndex)
+        }
         let message = UtilityDownload.getTextProduct("FTM" + ridSmall.uppercased())
         if message == "" {
             return "The current radar status for " + radarSite + " is not available."
@@ -152,15 +156,25 @@ final class UtilityRadarUI {
             if x > uiv.view.frame.width / 2.0 { xModified -= Double(uiv.view.frame.width) / 2.0 }
         }
         var density = Double(ortInt * 2) / width
-        if numberOfPanes == 4 { density = 2.0 * Double(ortInt * 2.0) / width }
+        if numberOfPanes == 4 {
+            density = 2.0 * Double(ortInt * 2.0) / width
+        }
         if numberOfPanes == 2 && UtilityUI.isLandscape() {
             //density = 0.5 * Double(ortInt * 0.5) / width
             //density = Double(ortInt * 2) / width
         }
         var yMiddle = 0.0
         var xMiddle = 0.0
-        if numberOfPanes == 1 { yMiddle = height / 2.0 } else { yMiddle = height / 4.0 }
-        if numberOfPanes == 4 { xMiddle = width / 4.0 } else { xMiddle = width / 2.0 }
+        if numberOfPanes == 1 {
+            yMiddle = height / 2.0
+        } else {
+            yMiddle = height / 4.0
+        }
+        if numberOfPanes == 4 {
+            xMiddle = width / 4.0
+        } else {
+            xMiddle = width / 2.0
+        }
         if numberOfPanes == 2 {
             if !UtilityUI.isLandscape() && !(uiv.view.frame.width > uiv.view.frame.height) {
                 xMiddle = width / 2.0

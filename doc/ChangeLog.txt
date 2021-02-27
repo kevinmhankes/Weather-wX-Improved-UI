@@ -25,6 +25,7 @@
 // [ADD] LSR by WFO - download and show one at a time
 // [REF] update copyright in c code
 // [REF] formatting in c code
+// [ADD] UtilityIO.uncompress
 
 56125 2021_02_26 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
