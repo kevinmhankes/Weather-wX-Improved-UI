@@ -17,7 +17,9 @@ final class UtilityObs {
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" { obsCodeToLocation[obsClosestClass] = locationName }
+            if locationName != "" && obsClosestClass != "" {
+                obsCodeToLocation[obsClosestClass] = locationName
+            }
         }
         conditionsTimeStrLocal = UtilityTime.convertFromUTC(UtilityString.shortenTime(conditionsTimeStrLocal))
         return conditionsTimeStrLocal.replace(":00 ", " ") + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
@@ -28,7 +30,9 @@ final class UtilityObs {
         locationName = obsCodeToLocation[obsClosestClass]
         if locationName == nil {
             locationName = findObsName(obsClosestClass)
-            if locationName != "" && obsClosestClass != "" { obsCodeToLocation[obsClosestClass] = locationName }
+            if locationName != "" && obsClosestClass != "" {
+                obsCodeToLocation[obsClosestClass] = locationName
+            }
         }
         return conditionsTimeStr + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
     }
@@ -37,9 +41,15 @@ final class UtilityObs {
         var locationName = ""
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         var tmp = ""
-        lines.forEach { line in if line.contains("," + obsShortCode) { tmp = line } }
+        lines.forEach { line in
+            if line.contains("," + obsShortCode) {
+                tmp = line
+            }
+        }
         let chunks = tmp.split(",")
-        if chunks.count > 2 { locationName = chunks[0] + ", " + chunks[1] }
+        if chunks.count > 2 {
+            locationName = chunks[0] + ", " + chunks[1]
+        }
         return locationName
     }
 
@@ -51,7 +61,9 @@ final class UtilityObs {
             let obsHtml = ("https://api.weather.gov/points/" + newLatLon.latString + "," + newLatLon.lonString + "/stations").getNwsHtml()
             obsClosest = obsHtml.parseFirst("gov/stations/(.*?)\"")
             obsClosestClass = obsClosest
-            if key != "" && obsClosest != "" { Utility.writePref(key, obsClosest) }
+            if key != "" && obsClosest != "" {
+                Utility.writePref(key, obsClosest)
+            }
         }
         obsClosestClass = obsClosest
         return obsClosest

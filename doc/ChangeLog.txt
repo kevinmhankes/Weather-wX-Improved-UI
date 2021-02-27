@@ -27,6 +27,7 @@
 // [REF] formatting in c code
 // [FIX] long press nexrad does not reset zoom (catalyst)
 // [REF] FileStorage 
+// [REF] utilString, don't use str, use s (python) - use regexp instead of regexpStr
 
 56125 2021_02_27 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
