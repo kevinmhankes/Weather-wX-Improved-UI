@@ -49,8 +49,12 @@ final class UtilityGoes {
         var satellite = "GOES16"
         if sectorsInGoes17.contains(sector) {
             satellite = "GOES17"
-            if sector == "CONUS-G17" { sectorLocal = "CONUS" }
-            if sector == "FD-G17" { sectorLocal = "FD" }
+            if sector == "CONUS-G17" {
+                sectorLocal = "CONUS"
+            }
+            if sector == "FD-G17" {
+                sectorLocal = "FD"
+            }
         }
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/03/
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
@@ -61,12 +65,10 @@ final class UtilityGoes {
             productLocal = "GEOCOLOR"
         }
         var url = GlobalVariables.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
-        print(url)
         if productLocal == "GLM" {
             url = url.replace("ABI", "GLM")
             url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT")
         }
-        //print(url)
         let bitmap = Bitmap(url)
         bitmap.info = productLocal
         return bitmap
