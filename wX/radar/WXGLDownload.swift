@@ -94,12 +94,18 @@ final class WXGLDownload {
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
-        (0..<snDates.count - 1).forEach { if snDates[$0] == mostRecentTime { mostRecentSn = snFiles[$0] } }
+        (0..<snDates.count - 1).forEach {
+            if snDates[$0] == mostRecentTime {
+                mostRecentSn = snFiles[$0]
+            }
+        }
         let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
         var index = seq - frameCount + 1
         (0..<frameCount).forEach { _ in
             var tmpK = index
-            if tmpK < 0 { tmpK += 251 }
+            if tmpK < 0 {
+                tmpK += 251
+            }
             listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
@@ -118,7 +124,9 @@ final class WXGLDownload {
         let fnSize = Int(list[list.count - 3]) ?? 0
         let fnPrevSize = Int(list[list.count - 5]) ?? 0
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 { additionalAdd = 1 }
+        if ratio < 0.75 {
+            additionalAdd = 1
+        }
         (0..<frameCnt).forEach { index in
             listOfFiles.append(list[list.count - (frameCnt - index + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
@@ -135,13 +143,17 @@ final class WXGLDownload {
         html.split("\n").forEach { sizes.append($0.split(" ")[0]) }
         sizes.removeLast()
         let tmpArr = html.replace("<br>", " ").split(" ")
-        if tmpArr.count < 4 { return "" }
+        if tmpArr.count < 4 {
+            return ""
+        }
         var fileName = tmpArr[tmpArr.count - 1].split("\n")[0]
         let fnPrev = tmpArr[tmpArr.count - 2].split("\n")[0]
         let fnSize = Int(sizes[sizes.count - 1]) ?? 1
         let fnPrevSize = Int(sizes[sizes.count - 2]) ?? 1
         let ratio = Double(fnSize) / Double(fnPrevSize)
-        if ratio < 0.75 { fileName = fnPrev }
+        if ratio < 0.75 {
+            fileName = fnPrev
+        }
         return baseUrl + fileName
     }
     
