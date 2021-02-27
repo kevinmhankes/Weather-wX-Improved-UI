@@ -26,9 +26,11 @@
 // [REF] update copyright in c code
 // [REF] formatting in c code
 // [FIX] long press nexrad does not reset zoom (catalyst)
+// [REF] FileStorage 
 
-56125 2021_02_26 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
+56125 2021_02_27 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
+		 [REF] code cleanup
 56124 2021_02_24 [REF] move more stuff out of myapp, add ObjectLocation
 		 [FIX] make AWC radar mosaic the only option for radar mosaic as NWS has removed a timeframe for the traditional radar mosaic
 		 [FIX] make the older NWS API the default for 7 day forecast
