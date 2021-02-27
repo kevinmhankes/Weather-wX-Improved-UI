@@ -132,7 +132,12 @@ final class UtilityGoes {
         "ssa: South America (south)"
     ]
 
-    static let sectorsWithAdditional = ["CONUS", "CONUS-G17", "FD", "FD-G17"]
+    static let sectorsWithAdditional = [
+        "CONUS",
+        "CONUS-G17",
+        "FD",
+        "FD-G17"
+    ]
 
     private static let sectorsInGoes17 = [
         "CONUS-G17",
