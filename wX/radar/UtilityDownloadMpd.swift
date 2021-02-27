@@ -10,9 +10,29 @@ final class UtilityDownloadMpd {
 
     static func get() {
         if !PolygonType.MPD.display {
-            UtilityDownloadRadar.clearMpd()
+            clearMpd()
         } else if timer.isRefreshNeeded() {
-            UtilityDownloadRadar.getMpd()
+            getMpd()
         }
+    }
+    
+    static func getMpd() {
+        let html = (GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
+        if html != "" { MyApplication.severeDashboardMpd.value = html }
+        var numberListString = ""
+        var latLonString = ""
+        let numberList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
+        numberList.forEach { number in
+            let text = UtilityDownload.getTextProduct("WPCMPD" + number)
+            numberListString += number + ":"
+            latLonString += UtilityDownloadRadar.storeWatchMcdLatLon(text)
+        }
+        MyApplication.mpdLatlon.value = latLonString
+        MyApplication.mpdNoList.value = numberListString
+    }
+    
+    static func clearMpd() {
+        MyApplication.mpdLatlon.value = ""
+        MyApplication.mpdNoList.value = ""
     }
 }

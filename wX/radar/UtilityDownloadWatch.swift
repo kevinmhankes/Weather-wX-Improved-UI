@@ -10,9 +10,44 @@ final class UtilityDownloadWatch {
 
     static func get() {
         if !PolygonType.MCD.display {
-            UtilityDownloadRadar.clearWatch()
+            clearWatch()
         } else if timer.isRefreshNeeded() {
-            UtilityDownloadRadar.getWatch()
+            getWatch()
         }
+    }
+    
+    static func getWatch() {
+        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
+        if html != "" { MyApplication.severeDashboardWat.value = html }
+        var numberListString = ""
+        var latLongString = ""
+        var latLonTorString = ""
+        var latLonCombinedString = ""
+        let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
+        numberList.forEach { number in
+            //let text1 = UtilityDownload.getTextProduct("SPCWAT" + number)
+            numberListString += number + ":"
+            let text = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
+            let preText = UtilityString.parseLastMatch(text, GlobalVariables.pre2Pattern)
+            //if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
+            if preText.contains("SEVERE TSTM") {
+                latLongString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+            } else {
+                latLonTorString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+            }
+            latLonCombinedString += UtilityDownloadRadar.storeWatchMcdLatLon(preText)
+        }
+        MyApplication.watchLatlon.value = latLongString
+        MyApplication.watchLatlonTor.value = latLonTorString
+        MyApplication.watchLatlonCombined.value = latLonCombinedString
+        MyApplication.watNoList.value = numberListString
+    }
+
+    static func clearWatch() {
+        MyApplication.severeDashboardWat.value = ""
+        MyApplication.watchLatlon.value = ""
+        MyApplication.watchLatlonTor.value = ""
+        MyApplication.watchLatlonCombined.value = ""
+        MyApplication.watNoList.value = ""
     }
 }

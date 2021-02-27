@@ -13,9 +13,9 @@ final class UtilityDownloadRadar {
     static func getAllRadarData() {
         getPolygonVtec()
         //getPolygonVtecByType(ObjectPolygonWarning(.))
-        getMpd()
-        getMcd()
-        getWatch()
+        UtilityDownloadMpd.getMpd()
+        UtilityDownloadMcd.getMcd()
+        UtilityDownloadWatch.getWatch()
     }
 
     static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {
@@ -39,82 +39,6 @@ final class UtilityDownloadRadar {
         MyApplication.severeDashboardTst.value = ""
         MyApplication.severeDashboardFfw.value = ""
         MyApplication.severeDashboardTor.value = ""
-    }
-
-    static func getMcd() {
-        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/md/").getHtml()
-        if html != "" { MyApplication.severeDashboardMcd.value = html }
-        var numberListString = ""
-        var latLonString = ""
-        // let numberList = html.parseColumn("title=.Mesoscale Discussion #(.*?).>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
-        let numberList = html.parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
-        numberList.forEach { number in
-            let text = UtilityDownload.getTextProduct("SPCMCD" + number)
-            numberListString += number + ":"
-            latLonString += storeWatchMcdLatLon(text)
-        }
-        MyApplication.mcdLatlon.value = latLonString
-        MyApplication.mcdNoList.value = numberListString
-    }
-
-    static func clearMcd() {
-        MyApplication.mcdLatlon.value = ""
-        MyApplication.mcdNoList.value = ""
-    }
-
-    static func getMpd() {
-        let html = (GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php").getHtml()
-        if html != "" { MyApplication.severeDashboardMpd.value = html }
-        var numberListString = ""
-        var latLonString = ""
-        let numberList = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
-        numberList.forEach { number in
-            let text = UtilityDownload.getTextProduct("WPCMPD" + number)
-            numberListString += number + ":"
-            latLonString += storeWatchMcdLatLon(text)
-        }
-        MyApplication.mpdLatlon.value = latLonString
-        MyApplication.mpdNoList.value = numberListString
-    }
-
-    static func getWatch() {
-        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/").getHtml()
-        if html != "" { MyApplication.severeDashboardWat.value = html }
-        var numberListString = ""
-        var latLongString = ""
-        var latLonTorString = ""
-        var latLonCombinedString = ""
-        let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
-        numberList.forEach { number in
-            //let text1 = UtilityDownload.getTextProduct("SPCWAT" + number)
-            numberListString += number + ":"
-            let text = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
-            let preText = UtilityString.parseLastMatch(text, GlobalVariables.pre2Pattern)
-            //if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
-            if preText.contains("SEVERE TSTM") {
-                latLongString += storeWatchMcdLatLon(preText)
-            } else {
-                latLonTorString += storeWatchMcdLatLon(preText)
-            }
-            latLonCombinedString += storeWatchMcdLatLon(preText)
-        }
-        MyApplication.watchLatlon.value = latLongString
-        MyApplication.watchLatlonTor.value = latLonTorString
-        MyApplication.watchLatlonCombined.value = latLonCombinedString
-        MyApplication.watNoList.value = numberListString
-    }
-
-    static func clearWatch() {
-        MyApplication.severeDashboardWat.value = ""
-        MyApplication.watchLatlon.value = ""
-        MyApplication.watchLatlonTor.value = ""
-        MyApplication.watchLatlonCombined.value = ""
-        MyApplication.watNoList.value = ""
-    }
-
-    static func clearMpd() {
-        MyApplication.mpdLatlon.value = ""
-        MyApplication.mpdNoList.value = ""
     }
 
     static func storeWatchMcdLatLon(_ html: String) -> String {
