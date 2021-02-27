@@ -138,7 +138,9 @@ final class UtilityString {
             results.forEach { result in
                 (0..<result.numberOfRanges).forEach { match.append(nsString.substring(with: result.range(at: $0))) }
             }
-            if match.count > 1 { match.remove(at: 0) }
+            if match.count > 1 {
+                match.remove(at: 0)
+            }
             return match
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
@@ -156,7 +158,9 @@ final class UtilityString {
         }
     }
 
-    static func addPeriodBeforeLastTwoChars(_ str: String) -> String { str.insert(str.count - 2, ".") }
+    static func addPeriodBeforeLastTwoChars(_ str: String) -> String {
+        str.insert(str.count - 2, ".")
+    }
 
     static func fixedLengthString(_ string: String, _ length: Int) -> String {
         if string.count < length {
@@ -198,7 +202,6 @@ final class UtilityString {
         var items = Array(repeating: "", count: regexpList.count)
         for i in 0..<regexpList.count {
             items[i] = parseFirst(html, regexpList[i])
-            // print(String(i) + " 223 " + items[i])
         }
         return items
     }
