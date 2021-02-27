@@ -48,10 +48,16 @@ final class ObjectAlertDetail {
     static func condenseTime(_ cap: CapAlert) -> (String, String, String) {
         let title = cap.title.parse("(.*?) issued")
         var startTime = cap.title.parse("issued (.*?) until")
-        if startTime == "" { startTime = cap.title.parse("issued (.*?) expiring") }
-        if startTime == "" { startTime = cap.title.parse("issued (.*?) by") }
+        if startTime == "" {
+            startTime = cap.title.parse("issued (.*?) expiring")
+        }
+        if startTime == "" {
+            startTime = cap.title.parse("issued (.*?) by")
+        }
         var endTime = cap.title.parse("until (.*?) by")
-        if endTime == "" { endTime = cap.title.parse("expiring (.*?) by") }
+        if endTime == "" {
+            endTime = cap.title.parse("expiring (.*?) by")
+        }
         return(title, startTime, endTime)
     }
 }

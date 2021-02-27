@@ -19,7 +19,9 @@ final class ObjectStackView {
         uiStackView.distribution = distribution
         uiStackView.axis = axis
         uiStackView.spacing = spacing
-        if !arrangedSubviews.isEmpty { arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) } }
+        if !arrangedSubviews.isEmpty {
+            arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) }
+        }
     }
 
     var view: UIStackView { uiStackView }

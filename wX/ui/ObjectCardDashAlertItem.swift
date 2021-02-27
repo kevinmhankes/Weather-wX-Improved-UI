@@ -61,8 +61,12 @@ final class ObjectCardDashAlertItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
-        if severeWarning.senderNameList[index] == "" { tvName.view.isHidden = true }
-        if severeWarning.expiresList[index] == "" { tvEnd.view.isHidden = true }
+        if severeWarning.senderNameList[index] == "" {
+            tvName.view.isHidden = true
+        }
+        if severeWarning.expiresList[index] == "" {
+            tvEnd.view.isHidden = true
+        }
         verticalTextContainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         uiv.stackView.addArrangedSubview(cardStackView.view)

@@ -35,7 +35,9 @@ final class ObjectToolbar: UIToolbar {
     }
 
     func resize(uiv: UIViewController) {
-        if toolbarHeightConstraint != nil { uiv.view.removeConstraint(toolbarHeightConstraint!) }
+        if toolbarHeightConstraint != nil {
+            uiv.view.removeConstraint(toolbarHeightConstraint!)
+        }
         toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
         uiv.view.addConstraint(toolbarHeightConstraint!)
     }

@@ -54,7 +54,9 @@ final class ObjectTextView {
         }
         self.tv.text = text
         self.tv.isUserInteractionEnabled = isUserInteractionEnabled
-        if isZeroSpacing { setZeroSpacing() }
+        if isZeroSpacing {
+            setZeroSpacing()
+        }
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {

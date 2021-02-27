@@ -113,7 +113,9 @@ final class ObjectCanadaWarnings: NSObject {
         _ = ObjectCanadaLegal(uiv.stackView)
     }
 
-    func getWarningUrl(_ index: Int) -> String { GlobalVariables.canadaEcSitePrefix + listLocUrl[index] }
+    func getWarningUrl(_ index: Int) -> String {
+        GlobalVariables.canadaEcSitePrefix + listLocUrl[index]
+    }
 
     @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
 
