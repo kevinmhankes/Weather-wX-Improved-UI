@@ -19,18 +19,19 @@ final class UtilityWXMetalPerf {
         if disFirst.capacity == 0 { return 0 }
         while disFirst.getShort() != -1 {}
         disFirst.skipBytes(100)
-        var retSize: UInt32 = 1000000
-        let oBuff = [UInt8](repeating: 1, count: Int(retSize))
-        let compressedFileSize: CLong = disFirst.capacity - disFirst.position
-        BZ2_bzBuffToBuffDecompress(
-            MemoryBuffer.getPointer(oBuff),
-            &retSize,
-            MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
-            UInt32(compressedFileSize),
-            1,
-            0
-        )
-        let dis2 = MemoryBuffer(oBuff)
+//        var retSize: UInt32 = 1000000
+//        let oBuff = [UInt8](repeating: 1, count: Int(retSize))
+//        let compressedFileSize: CLong = disFirst.capacity - disFirst.position
+//        BZ2_bzBuffToBuffDecompress(
+//            MemoryBuffer.getPointer(oBuff),
+//            &retSize,
+//            MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
+//            UInt32(compressedFileSize),
+//            1,
+//            0
+//        )
+//        let dis2 = MemoryBuffer(oBuff)
+        let dis2 = UtilityIO.uncompress(disFirst)
         dis2.skipBytes(30)
         var numberOfRleHalfWords: UInt16 = 0
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))

@@ -8,6 +8,21 @@ import UIKit
 
 final class UtilityIO {
 
+    static func uncompress(_ disFirst: MemoryBuffer) -> MemoryBuffer {
+        var retSize: UInt32 = 1000000
+        let oBuff = [UInt8](repeating: 1, count: Int(retSize))
+        let compressedFileSize: CLong = disFirst.capacity - disFirst.position
+        BZ2_bzBuffToBuffDecompress(
+            MemoryBuffer.getPointer(oBuff),
+            &retSize,
+            MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
+            UInt32(compressedFileSize),
+            1,
+            0
+        )
+        return MemoryBuffer(oBuff)
+    }
+    
     static func readTextFile(_ file: String) -> String {
         let fnParts = file.split(".")
         let path = Bundle.main.path(forResource: fnParts[0], ofType: fnParts[1])
