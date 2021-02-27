@@ -53,10 +53,14 @@ final class UtilityMath {
         }
     }
 
-    static func celsiusToFahrenheit(_ value: String) -> String { String(round((Double(value) ?? 0.0) * 9 / 5 + 32)) }
+    static func celsiusToFahrenheit(_ value: String) -> String {
+        String(round((Double(value) ?? 0.0) * 9 / 5 + 32))
+    }
 
     // only used in the "table" method below
-    static func celsiusToFahrenheit(_ value: Int) -> String { String(Int(round(Double(value) * 9.0 / 5.0 + 32.0))) }
+    static func celsiusToFahrenheit(_ value: Int) -> String {
+        String(Int(round(Double(value) * 9.0 / 5.0 + 32.0)))
+    }
 
     static func celsiusToFahrenheitTable() -> String {
         var table = "C\t\tF" + GlobalVariables.newline
@@ -66,16 +70,22 @@ final class UtilityMath {
         return table
     }
 
-    static func degreesToRadians(_ deg: Double) -> Double { deg * Double.pi / 180 }
+    static func degreesToRadians(_ deg: Double) -> Double {
+        deg * Double.pi / 180
+    }
 
     static func pixPerDegreeLon(_ centerX: Double, _ factor: Double) -> Double {
         let radius = (180 / Double.pi) * (1 / cos(degreesToRadians(30.51))) * factor
         return radius * (Double.pi / 180) * cos(degreesToRadians(centerX))
     }
 
-    static func deg2rad(_ deg: Double) -> Double { (deg * Double.pi / 180.0) }
+    static func deg2rad(_ deg: Double) -> Double {
+        (deg * Double.pi / 180.0)
+    }
 
-    static func rad2deg(_ rad: Double) -> Double { (rad * 180.0 / Double.pi) }
+    static func rad2deg(_ rad: Double) -> Double {
+        (rad * 180.0 / Double.pi)
+    }
 
     static func convertWindDir(_ direction: Double) -> String {
         let windDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"]
@@ -85,13 +95,21 @@ final class UtilityMath {
         return windDirectionAsString
     }
 
-    static func roundDToString(_ valueD: Double) -> String { String(Int(round(valueD))) }
+    static func roundDToString(_ valueD: Double) -> String {
+        String(Int(round(valueD)))
+    }
 
-    static func metersToMileRounded(_ valueD: Double) -> String { String(Int(round(valueD / 1609.34))) }
+    static func metersToMileRounded(_ valueD: Double) -> String {
+        String(Int(round(valueD / 1609.34)))
+    }
 
-    static func pressurePAtoMB(_ valueD: Double) -> String { String(Int(round(valueD / 100.0))) }
+    static func pressurePAtoMB(_ valueD: Double) -> String {
+        String(Int(round(valueD / 100.0)))
+    }
 
-    static func pressureMBtoIn(_ value: String) -> String { String(format: "%.2f", (Double(value) ?? 0.0) / 33.8637526) + " in" }
+    static func pressureMBtoIn(_ value: String) -> String {
+        String(format: "%.2f", (Double(value) ?? 0.0) / 33.8637526) + " in"
+    }
 
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
         3.281 * (sin(deg2rad(degree)) * distance + distance * distance / 15417.82) * 1000.0
