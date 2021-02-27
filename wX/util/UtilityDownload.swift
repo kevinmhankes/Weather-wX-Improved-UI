@@ -247,8 +247,8 @@ final class UtilityDownload {
                         product.hasPrefix("ESF") ||
                         product.hasPrefix("NSH") ||
                         product.hasPrefix("PNS") ||
-                        product.hasPrefix("RVA") {
-                        print("IN RTP 2")
+                        product.hasPrefix("RVA")
+                    {
                         text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
                         text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()
@@ -269,7 +269,9 @@ final class UtilityDownload {
         text = text.parse(GlobalVariables.prePattern)
         text = text.replace("Graphics available at <a href=\"/basicwx/basicwx_wbg.php\">" + "<u>www.wpc.ncep.noaa.gov/basicwx/basicwx_wbg.php</u></a>", "")
         text = text.replaceAll("^<br>", "")
-        if t1 != "RTP" { text = text.removeLineBreaks() }
+        if t1 != "RTP" {
+            text = text.removeLineBreaks()
+        }
         return text
     }
 
@@ -288,7 +290,9 @@ final class UtilityDownload {
             if Location.x.contains("CANADA") {
                 needsBitmap = false
                 var rid = Location.rid
-                if rid == "NAT" { rid = "CAN" }
+                if rid == "NAT" {
+                    rid = "CAN"
+                }
                 switch rid {
                 case "CAN", "PAC", "WRN", "ONT", "QUE", "ERN":
                     bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
@@ -424,7 +428,9 @@ final class UtilityDownload {
             bitmap = Bitmap()
             needsBitmap = false
         }
-        if needsBitmap { bitmap = Bitmap(url) }
+        if needsBitmap {
+            bitmap = Bitmap(url)
+        }
         return bitmap
     }
 }

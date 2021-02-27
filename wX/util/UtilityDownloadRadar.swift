@@ -27,12 +27,19 @@ final class UtilityDownloadRadar {
     }
 
     static func getPolygonVtec() {
+        // TODO FIXME , should there really still be a check for "" ?
         let tstHtml = urlTst.getNwsHtml()
-        if tstHtml != "" { MyApplication.severeDashboardTst.value = tstHtml }
+        if tstHtml != "" {
+            MyApplication.severeDashboardTst.value = tstHtml
+        }
         let ffwHtml = urlFfw.getNwsHtml()
-        if ffwHtml != "" { MyApplication.severeDashboardFfw.value = ffwHtml }
+        if ffwHtml != "" {
+            MyApplication.severeDashboardFfw.value = ffwHtml
+        }
         let torHtml = urlTor.getNwsHtml()
-        if torHtml != "" { MyApplication.severeDashboardTor.value = torHtml }
+        if torHtml != "" {
+            MyApplication.severeDashboardTor.value = torHtml
+        }
     }
 
     static func clearPolygonVtec() {

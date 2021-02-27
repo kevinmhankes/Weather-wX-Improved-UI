@@ -56,7 +56,9 @@ final class ObjectMetar {
             }
             condition = condition.replace("; Lightning Observed", "")
             condition = condition.replace("; Cumulonimbus Clouds, Lightning Observed", "")
-            if condition == "Mist" { condition = "Fog/Mist" }
+            if condition == "Mist" {
+                condition = "Fog/Mist"
+            }
             icon = decodeIconFromMetar(condition, obsClosest)
             condition = condition.replace(";", " and")
         }
@@ -110,12 +112,20 @@ final class ObjectMetar {
         dewPoint = changeDegreeUnits(dewPoint)
         windChill = changeDegreeUnits(windChill)
         heatIndex = changeDegreeUnits(heatIndex)
-        if windSpeed == "" { windSpeed = "0" }
-        if condition == "" { condition = "NA" }
+        if windSpeed == "" {
+            windSpeed = "0"
+        }
+        if condition == "" {
+            condition = "NA"
+        }
     }
 
     func changeDegreeUnits(_ value: String) -> String {
-        if value != "" { return (Double(value) ?? 0.0).roundToString() } else { return "NA" }
+        if value != "" {
+            return (Double(value) ?? 0.0).roundToString()
+        } else {
+            return "NA"
+        }
     }
 
     func changePressureUnits(_ value: String) -> String {
@@ -125,58 +135,6 @@ final class ObjectMetar {
             return value + " mb"
         }
     }
-
-    /*func decodeMetar(_ metar: String) {
-        let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
-        let patternMetarWxogl2 = ".*? A([0-9]{4})"
-        let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
-        let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
-        //var tmpBlob = ""
-        var pressureBlob = ""
-        var windBlob = ""
-        var visBlob = ""
-        var visBlobArr = [String]()
-        var TDArr = [String]()
-        var temperature = ""
-        var dewPoint = ""
-        var windDir = ""
-        var windInKt = ""
-        var windgustInKt = ""
-        var windDirD = 0.0
-        if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
-            let tmpBlob = metar.parse(patternMetarWxogl1)
-            TDArr = tmpBlob.split("/")
-            pressureBlob = metar.parse(patternMetarWxogl2)
-            windBlob = metar.parse(patternMetarWxogl3)
-            if windBlob == "" { windBlob = metar.parse(patternMetarWxogl4) }
-            visBlob = metar.parse(" ([0-9].*?SM) ")
-            visBlobArr = visBlob.split(" ")
-            visBlob = visBlobArr[visBlobArr.count - 1].replace("SM", "")
-            if pressureBlob.count == 4 {
-                pressureBlob = pressureBlob.insert(pressureBlob.count - 2, ".")
-                pressureBlob = UtilityMath.unitsPressure(pressureBlob)
-            }
-            if windBlob.contains("KT") && windBlob.count == 7 {
-                windDir = windBlob.substring(0, 3)
-                windInKt = windBlob.substring(3, 5)
-                windDirD = Double(windDir) ?? 0.0
-                windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " kt"
-            } else if windBlob.contains("KT") && windBlob.count == 10 {
-                windDir = windBlob.substring(0, 3)
-                windInKt = windBlob.substring(3, 5)
-                windgustInKt = windBlob.substring(6, 8)
-                windDirD = Double(windDir) ?? 0.0
-                windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") "
-                    + windInKt + " G " + windgustInKt + " kt"
-            }
-            if TDArr.count > 1 {
-                temperature = TDArr[0]
-                dewPoint = TDArr[1]
-                temperature = UtilityMath.celsiusToFahrenheit(temperature.replace("M", "-")).replace(".0", "")
-                dewPoint = UtilityMath.celsiusToFahrenheit(dewPoint.replace("M", "-")).replace(".0", "")
-            }
-        }
-    }*/
 
     func decodeIconFromMetar(_ condition: String, _ obs: RID) -> String {
         // https://api.weather.gov/icons/land/day/ovc?size=medium

@@ -48,9 +48,13 @@ final class wXColor {
         self.uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 
-    func colorToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int { (0xFF << 24) | (red << 16) | (green << 8) | blue }
+    func colorToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int {
+        (0xFF << 24) | (red << 16) | (green << 8) | blue
+    }
 
-    static func colorsToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int { (0xFF << 24) | (red << 16) | (green << 8) | blue }
+    static func colorsToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int {
+        (0xFF << 24) | (red << 16) | (green << 8) | blue
+    }
 
     static func uiColorInt(_ newRed: Int, _ newGreen: Int, _ newBlue: Int) -> UIColor {
         UIColor(red: newRed.toColor(), green: newGreen.toColor(), blue: newBlue.toColor(), alpha: CGFloat(1.0))

@@ -64,10 +64,8 @@ final class ObjectSevenDay {
             let forecastStringList = UtilityUS.getCurrentConditionsUS(html)
             let forecastString = forecastStringList[1]
             let iconString = forecastStringList[0]
-            // print("2245:" + forecastString)
             let forecastStrings = forecastString.split("\n")
             self.icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
-            // print(iconString + "223")
             var forecast = GlobalVariables.newline + GlobalVariables.newline
             forecastStrings.enumerated().forEach { index, s in
                 if s != "" {

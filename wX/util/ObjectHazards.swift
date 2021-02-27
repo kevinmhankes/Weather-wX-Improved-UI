@@ -20,16 +20,15 @@ final class ObjectHazards {
     convenience init(_ uiv: UIViewController, _ location: LatLon) {
         self.init()
         let homescreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault), ":")
-        if homescreenFav.contains("TXT-HAZ") { hazards = getHazardsHtml(location) }
+        if homescreenFav.contains("TXT-HAZ") {
+            hazards = getHazardsHtml(location)
+        }
         ObjectHazards.uiv = uiv
     }
 
     func getHazardsHtml(_ location: LatLon) -> String {
         let newLocation = UtilityMath.latLonFix(location)
         let html = ("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1").getNwsHtml()
-        // print("HAZARDS: " + hazards.replaceAll("\n", " "))
-        // print("https://api.weather.gov/alerts?point=" + newLocation.latString + "," + newLocation.lonString + "&active=1")
-        // print(html)
         return html
     }
 
@@ -44,7 +43,9 @@ final class ObjectHazards {
         return objectForecastPackageHazards
     }
 
-    static func getHazardCount(_ objectHazards: ObjectHazards) -> Int { objectHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count }
+    static func getHazardCount(_ objectHazards: ObjectHazards) -> Int {
+        objectHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
+    }
 
     static func getHazardCards(_ stackView: UIStackView, _ objectHazards: ObjectHazards, _ isUS: Bool = true) {
         self.isUS = isUS
@@ -71,10 +72,16 @@ final class ObjectHazards {
                 numHaz += 1
             }
         }
-        if numHaz > 0 { stackView.addArrangedSubview(stackViewLocalHaz) }
+        if numHaz > 0 {
+            stackView.addArrangedSubview(stackViewLocalHaz)
+        }
     }
 
     @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
-        if isUS { Route.alertDetail(uiv!, sender.strData) } else { Route.textViewer(uiv!, sender.strData) }
+        if isUS {
+            Route.alertDetail(uiv!, sender.strData)
+        } else {
+            Route.textViewer(uiv!, sender.strData)
+        }
     }
 }

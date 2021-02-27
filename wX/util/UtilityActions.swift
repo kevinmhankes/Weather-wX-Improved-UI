@@ -57,7 +57,9 @@ final class UtilityActions {
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
             let action = UIAlertAction(title: item, style: .default, handler: {_ in menuItemClicked(uiv, item)})
-            if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.barButtonItem = button
+            }
             alert.addAction(action)
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))

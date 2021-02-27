@@ -9,7 +9,9 @@ import UIKit
 
 final class Utility {
 
-    static func getRadarSiteName(_ radarSite: String) -> String { UtilityRadar.radarIdToName[radarSite] ?? "" }
+    static func getRadarSiteName(_ radarSite: String) -> String {
+        UtilityRadar.radarIdToName[radarSite] ?? ""
+    }
 
     static func getRadarSiteLatLon(_ radarSite: String) -> LatLon {
         let lat = UtilityRadar.radarSiteToLat[radarSite] ?? ""
@@ -17,11 +19,17 @@ final class Utility {
         return LatLon(lat, lon)
     }
 
-    static func getRadarSiteX(_ radarSite: String) -> String { UtilityRadar.radarSiteToLat[radarSite] ?? "" }
+    static func getRadarSiteX(_ radarSite: String) -> String {
+        UtilityRadar.radarSiteToLat[radarSite] ?? ""
+    }
 
-    static func getRadarSiteY(_ radarSite: String) -> String { UtilityRadar.radarSiteToLon[radarSite] ?? "" }
+    static func getRadarSiteY(_ radarSite: String) -> String {
+        UtilityRadar.radarSiteToLon[radarSite] ?? ""
+    }
 
-    static func getWfoSiteName(_ wfo: String) -> String { UtilityRadar.wfoIdToName[wfo] ?? "" }
+    static func getWfoSiteName(_ wfo: String) -> String {
+        UtilityRadar.wfoIdToName[wfo] ?? ""
+    }
 
     static func getWfoSiteLatLon(_ wfo: String) -> LatLon {
         let lat = UtilityRadar.wfoSiteToLat[wfo] ?? ""
@@ -51,14 +59,24 @@ final class Utility {
     }
 
     static func safeGet(_ list: [String], _ index: Int) -> String {
-        if list.count <= index { return "" } else { return list[index] }
+        if list.count <= index {
+            return ""
+        } else {
+            return list[index]
+        }
     }
 
-    static func readPref(_ key: String, _ value: Float) -> Float { GlobalVariables.preferences.getFloat(key, value) }
+    static func readPref(_ key: String, _ value: Float) -> Float {
+        GlobalVariables.preferences.getFloat(key, value)
+    }
 
-    static func readPref(_ key: String, _ value: Int) -> Int { GlobalVariables.preferences.getInt(key, value) }
+    static func readPref(_ key: String, _ value: Int) -> Int {
+        GlobalVariables.preferences.getInt(key, value)
+    }
 
-    static func readPref(_ key: String, _ value: String) -> String { GlobalVariables.preferences.getString(key, value) }
+    static func readPref(_ key: String, _ value: String) -> String {
+        GlobalVariables.preferences.getString(key, value)
+    }
 
     static func writePref(_ key: String, _ value: Float) {
         GlobalVariables.editor.putFloat(key, value)
