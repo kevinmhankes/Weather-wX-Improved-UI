@@ -60,7 +60,7 @@ final class Location {
 
     static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
-        self.currentLocation = Int(currentLocationStr)! - 1
+        currentLocation = Int(currentLocationStr)! - 1
     }
 
     static func us(_ xStr: String) -> Bool { !xStr.contains("CANADA") }
@@ -132,7 +132,7 @@ final class Location {
 
     // used in adhoc location
     static func save(_ latLon: LatLon) -> String {
-        return save(String(Location.numLocations + 1), latLon, latLon.prettyPrint())
+        save(String(Location.numLocations + 1), latLon, latLon.prettyPrint())
     }
 
     static func save(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {

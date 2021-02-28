@@ -129,7 +129,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         if saveToDisk {
             serializeSettings()
         }
-        self.stackView.removeViews()
+        stackView.removeViews()
         homeScreenFav.enumerated().forEach { index, prefVar in
             var title = UtilityHomeScreen.localChoicesText[prefVar]
             let prefVarMod = prefVar.replace("TXT-", "").replace("IMG-", "")
@@ -154,7 +154,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
                 )
                 objectTextView.tv.isSelectable = false
-                objectTextView.constrain(self.scrollView)
+                objectTextView.constrain(scrollView)
             } else {
                 let objectTextView = ObjectTextView(
                     stackView,
@@ -162,7 +162,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                     UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))
                 )
                 objectTextView.tv.isSelectable = false
-                objectTextView.constrain(self.scrollView)
+                objectTextView.constrain(scrollView)
             }
         }
     }

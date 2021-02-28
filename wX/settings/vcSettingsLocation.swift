@@ -104,7 +104,7 @@ final class vcSettingsLocation: UIwXViewController {
     
     func display() {
         locationCards = []
-        self.stackView.removeViews()
+        stackView.removeViews()
         (0..<Location.numberOfLocations).forEach { index in
             let name = Location.getName(index)
             let observation = Location.getObservation(index)
@@ -125,6 +125,6 @@ final class vcSettingsLocation: UIwXViewController {
         super.viewWillAppear(animated)
         initializeObservations()
         display()
-        self.getContent()
+        getContent()
     }
 }

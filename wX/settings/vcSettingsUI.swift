@@ -16,7 +16,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         UtilityUI.determineDeviceType()
-        self.display()
+        display()
     }
     
     override func doneClicked() {

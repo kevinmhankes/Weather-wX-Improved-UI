@@ -20,11 +20,11 @@ final class vcNhc: UIwXViewController {
         glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
-        self.refreshViews()
+        refreshViews()
         objectNhc = ObjectNhc(self)
         let serial = DispatchQueue(label: "joshuatee.wx")
         serial.async {
@@ -40,7 +40,7 @@ final class vcNhc: UIwXViewController {
     }
     
     @objc func textProductClicked() {
-        _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, self.textProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, textProductChanged(_:))
     }
     
     func textProductChanged(_ index: Int) {
@@ -48,7 +48,7 @@ final class vcNhc: UIwXViewController {
     }
     
     @objc func imageProductClicked() {
-        _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, self.imageProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, imageProductChanged(_:))
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {

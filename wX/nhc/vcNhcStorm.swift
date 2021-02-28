@@ -38,7 +38,7 @@ final class vcNhcStorm: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -57,15 +57,15 @@ final class vcNhcStorm: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.image(self, sender, self.bitmaps)
+        UtilityShare.image(self, sender, bitmaps)
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, textProducts, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, textProducts, productChanged(_:))
     }
     
     func productChanged(_ product: String) {
-        Route.wpcText(self, product + self.stormData.binNumber.uppercased())
+        Route.wpcText(self, product + stormData.binNumber.uppercased())
     }
     
     func display() {
@@ -75,13 +75,13 @@ final class vcNhcStorm: UIwXViewController {
     }
     
     func displayText() {
-        let objectTextView = ObjectTextView(self.stackView, html)
+        let objectTextView = ObjectTextView(stackView, html)
         objectTextView.constrain(scrollView)
     }
     
     func displayImage() {
         bitmapsFiltered = []
-        self.bitmapsFiltered = self.bitmaps.filter { $0.isValidForNhc }
+        bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
         _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
     }
     

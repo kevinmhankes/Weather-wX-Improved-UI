@@ -34,7 +34,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         Utility.writePref("LOCATION_CANADA_PROV", "")
         Utility.writePref("LOCATION_CANADA_CITY", "")
         Utility.writePref("LOCATION_CANADA_ID", "")
-        self.locationManager.delegate = self
+        locationManager.delegate = self
         toolbar = ObjectToolbar()
         toolbarBottom = ObjectToolbar()
         let helpButton = ObjectToolbarIcon(title: "Help", self, #selector(helpClicked))
@@ -50,8 +50,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         if Location.numLocations > 1 { itemsBottom.append(deleteButton) }
         toolbar.items = ObjectToolbarItems(items).items
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
-        self.view.addSubview(toolbar)
-        self.view.addSubview(toolbarBottom)
+        view.addSubview(toolbar)
+        view.addSubview(toolbarBottom)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         toolbarBottom.setConfigWithUiv(uiv: self)
         labelTextView = ObjectTextView("Label")
@@ -70,10 +70,10 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         view.addSubview(stackView.view)
         let topSpace = UIPreferences.toolbarHeight + UtilityUI.getTopPadding()
         let bottomSpace = UIPreferences.toolbarHeight + UtilityUI.getBottomPadding()
-        stackView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        stackView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        stackView.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace).isActive = true
-        stackView.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomSpace).isActive = true
+        stackView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        stackView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.view.topAnchor.constraint(equalTo: view.topAnchor, constant: topSpace).isActive = true
+        stackView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomSpace).isActive = true
         if settingsLocationEditNum == "0" {
             numLocsLocalStr = String(Location.numLocations + 1)
         } else {
@@ -98,13 +98,13 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     
     @objc func doneClicked() {
         Location.refreshLocationData()
-        self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+        dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
     
     @objc func helpClicked() {
         let vc = vcTextViewer()
         vc.textViewText = helpStatement
-        self.goToVC(vc)
+        goToVC(vc)
     }
     
     @objc func saveClicked() {
@@ -117,7 +117,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         view.endEditing(true)
         var latString = latTextView.view.text!
         var lonString = lonTextView.view.text!
-        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
+        if latTextView.text.contains("CANADA:") && lonTextView.text != "" {
             // The location save process looks up the true Lat/Lon which is then ingested by the map
             let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
             latTextView.text = Location.getX(locationNumber)
@@ -125,7 +125,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             if latTextView.view.text!.split(":").count > 2 {
                 latString = latTextView.view.text!.split(":")[2]
             }
-            if self.lonTextView.text.contains(":") {
+            if lonTextView.text.contains(":") {
                 lonString = "-" + lonTextView.view.text!.split(":")[1]
             }
         }
@@ -160,7 +160,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             }
             )
         )
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func searchAddress(_ address: String) {
@@ -190,16 +190,16 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
     
     @objc func gpsClicked() {
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestLocation()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue: CLLocationCoordinate2D = manager.location!.coordinate
-        self.latTextView.text = String(locValue.latitude)
-        self.lonTextView.text = String(locValue.longitude)
-        if self.latTextView.text != "" && self.lonTextView.text != "" {
-            getAddressAndSaveLocation(self.latTextView.text, self.lonTextView.text)
+        latTextView.text = String(locValue.latitude)
+        lonTextView.text = String(locValue.longitude)
+        if latTextView.text != "" && lonTextView.text != "" {
+            getAddressAndSaveLocation(latTextView.text, lonTextView.text)
         }
     }
     
@@ -209,7 +209,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     
     @objc func caClicked() {
         let vc = vcSettingsLocationCanada()
-        self.goToVC(vc)
+        goToVC(vc)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -218,11 +218,11 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         let caCity = Utility.readPref("LOCATION_CANADA_CITY", "")
         let caId = Utility.readPref("LOCATION_CANADA_ID", "")
         if caProv != "" || caCity != "" || caId != "" {
-            self.latTextView.text = "CANADA:" + caProv
-            self.lonTextView.text = caId
-            self.labelTextView.text = caCity + ", " + caProv
+            latTextView.text = "CANADA:" + caProv
+            lonTextView.text = caId
+            labelTextView.text = caCity + ", " + caProv
         }
-        if self.latTextView.text.contains("CANADA:") && self.lonTextView.text != "" {
+        if latTextView.text.contains("CANADA:") && lonTextView.text != "" {
             saveClicked()
         }
     }
@@ -237,8 +237,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
     
     func addAnnotation(location: CLLocationCoordinate2D) {
-        let allAnnotations = self.mapView.annotations
-        self.mapView.removeAnnotations(allAnnotations)
+        let allAnnotations = mapView.annotations
+        mapView.removeAnnotations(allAnnotations)
         let latLonTruncateLength = 9
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
@@ -246,7 +246,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             + ","
             + String(location.longitude).truncate(latLonTruncateLength)
         annotation.subtitle = ""
-        self.mapView.addAnnotation(annotation)
+        mapView.addAnnotation(annotation)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -342,6 +342,6 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
     
     override var keyCommands: [UIKeyCommand]? {
-        return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked))]
+        [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked))]
     }
 }

@@ -26,14 +26,14 @@ final class vcSettingsLocationCanada: UIwXViewController {
     func displayProvinces() {
         UtilityCanada.provinces.enumerated().forEach { index, province in
             let objectTextView = ObjectTextView(
-                self.stackView,
+                stackView,
                 province,
                 FontSize.extraLarge.size,
                 UITapGestureRecognizerWithData(index, self, #selector(goToProvinces(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.constrain(self.scrollView)
-            self.objectTextViews.append(objectTextView)
+            objectTextView.constrain(scrollView)
+            objectTextViews.append(objectTextView)
         }
     }
     
@@ -75,18 +75,18 @@ final class vcSettingsLocationCanada: UIwXViewController {
     }
     
     private func displayCities() {
-        self.stackView.removeViews()
-        self.cityDisplay = true
-        self.listCity.enumerated().forEach { index, city in
+        stackView.removeViews()
+        cityDisplay = true
+        listCity.enumerated().forEach { index, city in
             let objectTextView = ObjectTextView(
-                self.stackView,
+                stackView,
                 city,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(index, self, #selector(self.goToProvinces(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(goToProvinces(sender:)))
             )
             objectTextView.tv.isSelectable = false
-            objectTextView.constrain(self.scrollView)
-            self.objectTextViews.append(objectTextView)
+            objectTextView.constrain(scrollView)
+            objectTextViews.append(objectTextView)
         }
     }
 }

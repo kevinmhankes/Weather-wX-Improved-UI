@@ -61,29 +61,29 @@ final class vcSettingsAbout: UIwXViewController {
 
     private func display() {
         let objectTextView1 = ObjectTextView(
-            self.stackView,
+            stackView,
             "View FAQ (Outage notifications listed at top if any are current)",
             FontSize.extraLarge.size,
             UITapGestureRecognizerWithData("faq", self, #selector(actionClick(sender:)))
         )
         objectTextView1.color = ColorCompatibility.highlightText
         objectTextView1.tv.isSelectable = false
-        objectTextView1.constrain(self.scrollView)
+        objectTextView1.constrain(scrollView)
         let objectTextView2 = ObjectTextView(
-            self.stackView,
+            stackView,
             "View release notes",
             FontSize.extraLarge.size,
             UITapGestureRecognizerWithData("notes", self, #selector(actionClick(sender:)))
         )
         objectTextView2.color = ColorCompatibility.highlightText
         objectTextView2.tv.isSelectable = false
-        objectTextView2.constrain(self.scrollView)
+        objectTextView2.constrain(scrollView)
         let objectTextView3 = ObjectTextView(
-            self.stackView,
+            stackView,
             aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,
             UITapGestureRecognizerWithData("", self, #selector(actionClick(sender:)))
         )
-        objectTextView3.constrain(self.scrollView)
+        objectTextView3.constrain(scrollView)
     }
 }

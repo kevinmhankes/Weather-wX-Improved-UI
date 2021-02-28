@@ -14,11 +14,11 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.delegate = self
+        locationManager.delegate = self
         let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.display()
+        display()
     }
     
     override func doneClicked() {

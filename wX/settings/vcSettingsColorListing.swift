@@ -19,7 +19,7 @@ final class vcSettingsColorListing: UIwXViewController {
         stackView.spacing = 0
         setupColorObjects()
         colors.sort(by: {$0.uiLabel < $1.uiLabel})
-        self.display()
+        display()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ final class vcSettingsColorListing: UIwXViewController {
     
     private func display() {
         colors.enumerated().forEach { index, color in
-            let objectTextView = ObjectTextView(self.stackView, color.uiLabel, color)
+            let objectTextView = ObjectTextView(stackView, color.uiLabel, color)
             if color.colorsCurrent.red == 0 && color.colorsCurrent.green == 0 && color.colorsCurrent.blue == 0 {
                 objectTextView.color = UIColor.white
             } else {
@@ -89,7 +89,7 @@ final class vcSettingsColorListing: UIwXViewController {
             objectTextView.tv.font = FontSize.extraLarge.size
             objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(index, self, #selector(goToColor(sender:))))
             objectTextView.tv.isSelectable = false
-            objectTextView.constrain(self.scrollView)
+            objectTextView.constrain(scrollView)
             objectTextViews.append(objectTextView)
         }
     }
