@@ -34,7 +34,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         display(saveToDisk: false)
     }
 
-    @objc override func doneClicked() {
+    override func doneClicked() {
         serializeSettings()
         MyApplication.initPreferences()
         super.doneClicked()
