@@ -58,28 +58,24 @@ final class vcTabLocation: vcTabParent {
         fab?.resize()
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
         if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
-            view.removeConstraints(
-                [
-                    objScrollStackView!.fragmentHeightAnchor1!,
-                    objScrollStackView!.fragmentHeightAnchor2!,
-                    objScrollStackView!.fragmentWidthAnchor1!,
-                    objScrollStackView!.fragmentWidthAnchor2!
-                ]
-            )
+            view.removeConstraints([
+                objScrollStackView!.fragmentHeightAnchor1!,
+                objScrollStackView!.fragmentHeightAnchor2!,
+                objScrollStackView!.fragmentWidthAnchor1!,
+                objScrollStackView!.fragmentWidthAnchor2!
+            ])
         }
         if objScrollStackView != nil {
             objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
             objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: topSpace)
             objScrollStackView!.fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
             objScrollStackView!.fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
-            view.addConstraints(
-                [
-                    objScrollStackView!.fragmentHeightAnchor1!,
-                    objScrollStackView!.fragmentHeightAnchor2!,
-                    objScrollStackView!.fragmentWidthAnchor1!,
-                    objScrollStackView!.fragmentWidthAnchor2!
-                ]
-            )
+            view.addConstraints([
+                objScrollStackView!.fragmentHeightAnchor1!,
+                objScrollStackView!.fragmentHeightAnchor2!,
+                objScrollStackView!.fragmentWidthAnchor1!,
+                objScrollStackView!.fragmentWidthAnchor2!
+            ])
         }
     }
 
@@ -104,40 +100,34 @@ final class vcTabLocation: vcTabParent {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    GlobalVariables.flexBarButton,
-                    dashButton,
-                    wfoTextButton,
-                    cloudButton,
-                    menuButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([
+                GlobalVariables.flexBarButton,
+                dashButton,
+                wfoTextButton,
+                cloudButton,
+                menuButton
+            ]).items
         } else {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    GlobalVariables.flexBarButton,
-                    dashButton,
-                    wfoTextButton,
-                    cloudButton,
-                    radarButton,
-                    menuButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([
+                GlobalVariables.flexBarButton,
+                dashButton,
+                wfoTextButton,
+                cloudButton,
+                radarButton,
+                menuButton
+            ]).items
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
         stackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
-            view.removeConstraints(
-                [
-                    objScrollStackView!.fragmentHeightAnchor1!,
-                    objScrollStackView!.fragmentHeightAnchor2!,
-                    objScrollStackView!.fragmentWidthAnchor1!,
-                    objScrollStackView!.fragmentWidthAnchor2!
-                ]
-            )
+            view.removeConstraints([
+                objScrollStackView!.fragmentHeightAnchor1!,
+                objScrollStackView!.fragmentHeightAnchor2!,
+                objScrollStackView!.fragmentWidthAnchor1!,
+                objScrollStackView!.fragmentWidthAnchor2!
+            ])
         }
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
@@ -160,7 +150,11 @@ final class vcTabLocation: vcTabParent {
 
     @objc func getContentMaster() {
         oldLocation = Location.latLon
-        if Location.isUS { isUS = true } else { isUS = false }
+        if Location.isUS {
+            isUS = true
+        } else {
+            isUS = false
+        }
         clearViews()
         getForecastData()
         getContent()
@@ -186,7 +180,7 @@ final class vcTabLocation: vcTabParent {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
             self.objectSevenDay.locationIndex = Location.getCurrentLocation()
-            print("getLocationForecastSevenDay: " + String(self.objectCardSevenDayCollection?.objectCardSevenDayList.count ?? -1))
+            // print("getLocationForecastSevenDay: " + String(self.objectCardSevenDayCollection?.objectCardSevenDayList.count ?? -1))
             DispatchQueue.main.async {
                 if self.objectCardSevenDayCollection == nil
                     || !self.isUS

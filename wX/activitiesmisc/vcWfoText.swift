@@ -23,17 +23,15 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                siteButton,
-                productButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            siteButton,
+            productButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.constrain(scrollView)
@@ -103,7 +101,7 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         getContent()
     }
     
-    @objc override func shareClicked(sender: UIButton) {
+    override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }
     

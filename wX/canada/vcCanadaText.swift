@@ -17,16 +17,14 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
         product = "FOCN45"
         productButton = ObjectToolbarIcon(self, #selector(productClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            productButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.constrain(scrollView)
@@ -58,7 +56,7 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
         getContent()
     }
     
-    @objc override func shareClicked(sender: UIButton) {
+    override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }
 }

@@ -26,17 +26,15 @@ final class vcCanadaRadar: UIwXViewController {
         let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
         cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                cloudButton,
-                radarButton,
-                animateButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            productButton,
+            cloudButton,
+            radarButton,
+            animateButton,
+            shareButton
+        ]).items
         image = ObjectTouchImageView(self, toolbar)
         url = Utility.readPref("CA_LAST_RID_URL", url)
         if caRadarProvince == "" {
@@ -45,7 +43,9 @@ final class vcCanadaRadar: UIwXViewController {
             radarSite = String(caRadarProvince)
             mosaicShown = true
         }
-        if !RadarPreferences.wxoglRememberLocation { radarSite = Location.rid }
+        if !RadarPreferences.wxoglRememberLocation {
+            radarSite = Location.rid
+        }
         getContent()
     }
     
