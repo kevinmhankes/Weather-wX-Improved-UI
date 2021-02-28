@@ -35,12 +35,12 @@ final class vcRadarMosaicAwc: UIwXViewController {
             isLocal = true
             sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
         }
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
-        self.productButton.title = self.product
-        self.sectorButton.title = self.sector
+        productButton.title = product
+        sectorButton.title = sector
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
             DispatchQueue.main.async { self.display(bitmap) }
@@ -48,29 +48,29 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
-        if !self.isLocal {
-            Utility.writePref(self.prefTokenSector, self.sector)
-            Utility.writePref(self.prefTokenProduct, self.product)
+        image.setBitmap(bitmap)
+        if !isLocal {
+            Utility.writePref(prefTokenSector, sector)
+            Utility.writePref(prefTokenProduct, product)
         }
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, sectorChanged(_:))
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, productChanged(_:))
     }
     
     func productChanged(_ index: Int) {
         product = UtilityAwcRadarMosaic.products[index]
-        self.getContent()
+        getContent()
     }
     
     func sectorChanged(_ index: Int) {
         sector = UtilityAwcRadarMosaic.sectors[index]
-        self.getContent()
+        getContent()
     }
     
     @objc func share(sender: UIButton) {

@@ -30,12 +30,12 @@ final class vcRadarMosaic: UIwXViewController {
             let nwsRadarMosaicSectorLabelCurrent = UtilityUSImgNwsMosaic.getSectorFromState(UtilityUSImgNwsMosaic.getStateFromRid())
             index = UtilityUSImgNwsMosaic.sectors.firstIndex(of: nwsRadarMosaicSectorLabelCurrent) ?? 0
         }
-        self.getContent(index)
+        getContent(index)
     }
     
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityUSImgNwsMosaic.labels[self.index]
+        productButton.title = UtilityUSImgNwsMosaic.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityUSImgNwsMosaic.get(UtilityUSImgNwsMosaic.sectors[self.index])
             DispatchQueue.main.async { self.display(bitmap) }
@@ -43,16 +43,18 @@ final class vcRadarMosaic: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
-        if !self.isLocal { Utility.writePref(self.prefToken, self.index) }
+        image.setBitmap(bitmap)
+        if !isLocal {
+            Utility.writePref(prefToken, index)
+        }
     }
     
     override func willEnterForeground() {
-        self.getContent(self.index)
+        getContent(index)
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityUSImgNwsMosaic.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityUSImgNwsMosaic.labels, getContent(_:))
     }
     
     @objc func share(sender: UIButton) {
@@ -60,7 +62,7 @@ final class vcRadarMosaic: UIwXViewController {
     }
     
     @objc func animateClicked() {
-        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [5, 10, 20, 30], self.getAnimation(_:))
+        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [5, 10, 20, 30], getAnimation(_:))
     }
     
     func getAnimation(_ frameCount: Int) {

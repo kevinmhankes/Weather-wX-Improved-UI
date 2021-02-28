@@ -108,7 +108,7 @@ final class WXMetalRender {
         self.timeButton = timeButton
         self.productButton = productButton
         self.paneNumber = paneNumber
-        self.indexString = String(paneNumber)
+        indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
         readPreferences()
         regenerateProductList()
@@ -136,7 +136,11 @@ final class WXMetalRender {
             watchBuffers,
             watchTornadoBuffers,
             mpdBuffers
-            ].forEach { if $0.type.display { radarLayers.append($0) } }
+            ].forEach {
+            if $0.type.display {
+                radarLayers.append($0)
+            }
+        }
         if PolygonType.LOCDOT.display || RadarPreferences.locdotFollowsGps {
             radarLayers.append(locdotBuffers)
         }
@@ -187,7 +191,7 @@ final class WXMetalRender {
                 if vbuffer.scaleCutOff < zoom {
                     if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
                         renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
-                        var nodeModelMatrix = self.modelMatrix()
+                        var nodeModelMatrix = modelMatrix()
                         nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
                         let uniformBuffer = device.makeBuffer(
                             length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
@@ -217,7 +221,7 @@ final class WXMetalRender {
                         if vbuffer.scaleCutOff < zoom {
                             if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
                                 renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
-                                var nodeModelMatrix = self.modelMatrix()
+                                var nodeModelMatrix = modelMatrix()
                                 nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
                                 let uniformBuffer = device.makeBuffer(
                                     length: MemoryLayout<Float>.size * float4x4.numberOfElements() * 2,
@@ -272,8 +276,8 @@ final class WXMetalRender {
                 constructGenericLines($0)
                 $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
         [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
             constructGenericLines($0)

@@ -20,7 +20,7 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         colorBF = Float(Color.blue(bgColor)) / 255.0
     }
     
-    var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(self.rd.productCode)]! }
+    var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }
     
     func initialize() {
         if rd.productCode == 37 || rd.productCode == 38 || rd.productCode == 41 || rd.productCode == 57 {

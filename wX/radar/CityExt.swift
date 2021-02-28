@@ -12,7 +12,7 @@ final class CityExt {
 
     init(_ name: String, _ lat: Double, _ lon: Double) {
 		self.name = name
-		self.latitude = lat
-		self.longitude = lon
+		latitude = lat
+		longitude = lon
 	}
 }

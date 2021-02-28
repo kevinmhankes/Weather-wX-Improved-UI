@@ -16,31 +16,31 @@ struct LatLon {
     init(radarSite: String) {
         let ridX = Utility.getRadarSiteX(radarSite)
         let ridY = Utility.getRadarSiteY(radarSite)
-        self.latNum = Double(ridX) ?? 0.0
-        self.lonNum = -1.0 * (Double(ridY) ?? 0.0)
-        self.xStr = String(self.latNum)
-        self.yStr = String(self.lonNum)
+        latNum = Double(ridX) ?? 0.0
+        lonNum = -1.0 * (Double(ridY) ?? 0.0)
+        xStr = String(latNum)
+        yStr = String(lonNum)
     }
     
     init(_ latLon: [Double]) {
-        self.latNum = latLon[0]
-        self.lonNum = latLon[1]
-        self.xStr = String(self.latNum)
-        self.yStr = String(self.lonNum)
+        latNum = latLon[0]
+        lonNum = latLon[1]
+        xStr = String(latNum)
+        yStr = String(lonNum)
     }
     
     init(_ lat: Double, _ lon: Double) {
-        self.latNum = lat
-        self.lonNum = lon
-        self.xStr = String(self.latNum)
-        self.yStr = String(self.lonNum)
+        latNum = lat
+        lonNum = lon
+        xStr = String(latNum)
+        yStr = String(lonNum)
     }
     
     init(_ xStr: String, _ yStr: String) {
         self.xStr = xStr
         self.yStr = yStr
-        self.latNum = Double(self.xStr) ?? 0.0
-        self.lonNum = Double(self.yStr) ?? 0.0
+        latNum = Double(self.xStr) ?? 0.0
+        lonNum = Double(self.yStr) ?? 0.0
     }
     
     // SPC and WPC issue text products with LAT/LON encoded in a special format
@@ -50,17 +50,17 @@ struct LatLon {
     // 35768265  <- 35.76 82.65
     // 36730423  <- 36.73 104.23
     init(_ temp: String) {
-        self.xStr = temp.substring(0, 4)
-        self.yStr = temp.substring(4, 8)
-        self.xStr = UtilityString.addPeriodBeforeLastTwoChars(self.xStr)
-        self.yStr = UtilityString.addPeriodBeforeLastTwoChars(self.yStr)
-        var tmpDbl = Double(self.yStr) ?? 0.0
+        xStr = temp.substring(0, 4)
+        yStr = temp.substring(4, 8)
+        xStr = UtilityString.addPeriodBeforeLastTwoChars(xStr)
+        yStr = UtilityString.addPeriodBeforeLastTwoChars(yStr)
+        var tmpDbl = Double(yStr) ?? 0.0
         if tmpDbl < 40.00 {
             tmpDbl += 100
-            self.yStr = String(tmpDbl)
+            yStr = String(tmpDbl)
         }
-        self.latNum = Double(self.xStr) ?? 0.0
-        self.lonNum = Double(self.yStr) ?? 0.0
+        latNum = Double(xStr) ?? 0.0
+        lonNum = Double(yStr) ?? 0.0
     }
     
     var list: [Double] { [lat, lon] }
@@ -69,7 +69,7 @@ struct LatLon {
         get { latNum }
         set {
             latNum = newValue
-            self.xStr = String(latNum)
+            xStr = String(latNum)
         }
     }
     
@@ -77,7 +77,7 @@ struct LatLon {
         get { lonNum }
         set {
             lonNum = newValue
-            self.yStr = String(lonNum)
+            yStr = String(lonNum)
         }
     }
     
