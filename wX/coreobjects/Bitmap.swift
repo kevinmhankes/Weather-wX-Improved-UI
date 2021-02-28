@@ -14,21 +14,21 @@ final class Bitmap {
     var info = "" // used in GOES viewer to store additional info
 
     init() {
-        self.image = Bitmap.imageWithSize(
+        image = Bitmap.imageWithSize(
             size: CGSize(width: 86, height: 86),
             filledWithColor: UIColor.white,
             scale: 1.0,
             opaque: false
         )
-        self.dataBm = self.image.pngData()!
+        dataBm = image.pngData()!
     }
 
     init(_ bm: Data) {
-        self.dataBm = bm
-        if let imgTmp = UIImage(data: self.dataBm) {
-            self.image = imgTmp
+        dataBm = bm
+        if let imgTmp = UIImage(data: dataBm) {
+            image = imgTmp
         } else {
-            self.image = Bitmap.imageWithSize(
+            image = Bitmap.imageWithSize(
                 size: CGSize(width: 3, height: 3),
                 filledWithColor: UIColor.white,
                 scale: 1.0,
@@ -39,15 +39,15 @@ final class Bitmap {
 
     init(_ url: String) {
         let bitmapLocal = url.getImage()
-        self.dataBm = bitmapLocal.dataBm
-        self.image = bitmapLocal.image
+        dataBm = bitmapLocal.dataBm
+        image = bitmapLocal.image
         self.url = url
     }
 
     init(_ image: UIImage) {
         self.image = image
         if let data = image.pngData() {
-            self.dataBm = data
+            dataBm = data
         } else {
             self.image = Bitmap.imageWithSize(
                 size: CGSize(width: 86, height: 86),
@@ -55,7 +55,7 @@ final class Bitmap {
                 scale: 1.0,
                 opaque: false
             )
-            self.dataBm = self.image.pngData()!
+            dataBm = self.image.pngData()!
         }
     }
 

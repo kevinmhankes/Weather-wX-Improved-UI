@@ -18,8 +18,8 @@ final class ExternalEllipsoid {
     private let inverseFlattening: Double
 
     init(semiMajor: Double, semiMinor: Double, flattening: Double, inverseFlattening: Double) {
-        self.semiMajorAxis = semiMajor
-        self.semiMinorAxis = semiMinor
+        semiMajorAxis = semiMajor
+        semiMinorAxis = semiMinor
         self.flattening = flattening
         self.inverseFlattening = inverseFlattening
     }

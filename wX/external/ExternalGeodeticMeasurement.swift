@@ -18,7 +18,7 @@ final class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
     init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double, elevationChange: Double) {
         super.init(ellipsoidalDistance: ellipsoidalDistance, azimuth: azimuth, reverseAzimuth: reverseAzimuth)
         self.elevationChange = elevationChange
-        self.p2p = sqrt(ellipsoidalDistance * ellipsoidalDistance + elevationChange * elevationChange)
+        p2p = sqrt(ellipsoidalDistance * ellipsoidalDistance + elevationChange * elevationChange)
     }
 
     convenience init(averageCurve: ExternalGeodeticCurve, elevationChange: Double) {

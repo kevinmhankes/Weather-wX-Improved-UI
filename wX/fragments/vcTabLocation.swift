@@ -57,27 +57,27 @@ final class vcTabLocation: vcTabParent {
         toolbar.resize(uiv: self)
         fab?.resize()
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
-        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
-            self.view.removeConstraints(
+        if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
+            view.removeConstraints(
                 [
-                    self.objScrollStackView!.fragmentHeightAnchor1!,
-                    self.objScrollStackView!.fragmentHeightAnchor2!,
-                    self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!
+                    objScrollStackView!.fragmentHeightAnchor1!,
+                    objScrollStackView!.fragmentHeightAnchor2!,
+                    objScrollStackView!.fragmentWidthAnchor1!,
+                    objScrollStackView!.fragmentWidthAnchor2!
                 ]
             )
         }
-        if self.objScrollStackView != nil {
-            self.objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
-            self.objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topSpace)
-            self.objScrollStackView!.fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-            self.objScrollStackView!.fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor)
-            self.view.addConstraints(
+        if objScrollStackView != nil {
+            objScrollStackView!.fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
+            objScrollStackView!.fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: topSpace)
+            objScrollStackView!.fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            objScrollStackView!.fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
+            view.addConstraints(
                 [
-                    self.objScrollStackView!.fragmentHeightAnchor1!,
-                    self.objScrollStackView!.fragmentHeightAnchor2!,
-                    self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!
+                    objScrollStackView!.fragmentHeightAnchor1!,
+                    objScrollStackView!.fragmentHeightAnchor2!,
+                    objScrollStackView!.fragmentWidthAnchor1!,
+                    objScrollStackView!.fragmentWidthAnchor2!
                 ]
             )
         }
@@ -125,28 +125,28 @@ final class vcTabLocation: vcTabParent {
                 ]
             ).items
         }
-        self.view.addSubview(toolbar)
+        view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         stackView = UIStackView()
-        stackView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        if self.objScrollStackView != nil && self.objScrollStackView!.fragmentHeightAnchor1 != nil {
-            self.view.removeConstraints(
+        stackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
+            view.removeConstraints(
                 [
-                    self.objScrollStackView!.fragmentHeightAnchor1!,
-                    self.objScrollStackView!.fragmentHeightAnchor2!,
-                    self.objScrollStackView!.fragmentWidthAnchor1!,
-                    self.objScrollStackView!.fragmentWidthAnchor2!
+                    objScrollStackView!.fragmentHeightAnchor1!,
+                    objScrollStackView!.fragmentHeightAnchor2!,
+                    objScrollStackView!.fragmentWidthAnchor1!,
+                    objScrollStackView!.fragmentWidthAnchor2!
                 ]
             )
         }
-        self.objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
-        self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-        self.stackViewForecast = ObjectStackView(.fill, .vertical)
-        self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+        stackViewForecast = ObjectStackView(.fill, .vertical)
+        stackViewHazards = ObjectStackView(.fill, .vertical)
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
-        self.getContentMaster()
+        getContentMaster()
         #if targetEnvironment(macCatalyst)
         oneMinRadarFetch = Timer.scheduledTimer(
             timeInterval: 60.0 * Double(UIPreferences.refreshLocMin),
@@ -159,8 +159,8 @@ final class vcTabLocation: vcTabParent {
     }
 
     @objc func getContentMaster() {
-        self.oldLocation = Location.latLon
-        if Location.isUS { self.isUS = true } else { self.isUS = false }
+        oldLocation = Location.latLon
+        if Location.isUS { isUS = true } else { isUS = false }
         clearViews()
         getForecastData()
         getContent()
@@ -171,7 +171,7 @@ final class vcTabLocation: vcTabParent {
         getLocationForecastSevenDay()
         getLocationHazards()
         if fab != nil {
-            self.view.bringSubviewToFront(fab!.view)
+            view.bringSubviewToFront(fab!.view)
         }
     }
 
@@ -301,8 +301,8 @@ final class vcTabLocation: vcTabParent {
         currentTimeSec = currentTime / 1000
         refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
         if currentTimeSec > (lastRefresh + refreshIntervalSec) {
-            self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
-            self.getContentMaster()
+            lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+            getContentMaster()
         }
     }
 
@@ -315,10 +315,10 @@ final class vcTabLocation: vcTabParent {
         Location.checkCurrentLocationValidity()
         if (Location.latLon != oldLocation) || (newhomeScreenFav != globalHomeScreenFav) || textSizeHasChange {
             scrollView.scrollToTop()
-            self.objectCardCurrentConditions?.resetTextSize()
-            self.objectCardSevenDayCollection?.resetTextSize()
-            self.objLabel.tv.font = FontSize.extraLarge.size
-            self.getContentMaster()
+            objectCardCurrentConditions?.resetTextSize()
+            objectCardSevenDayCollection?.resetTextSize()
+            objLabel.tv.font = FontSize.extraLarge.size
+            getContentMaster()
         }
     }
 
@@ -326,8 +326,8 @@ final class vcTabLocation: vcTabParent {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
             Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
-            self.objLabel.text = Location.name
-            self.getContentMaster()
+            objLabel.text = Location.name
+            getContentMaster()
         } else {
             Route.locationAdd(self)
         }
@@ -347,9 +347,9 @@ final class vcTabLocation: vcTabParent {
         alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = self.menuButton
+            popoverController.barButtonItem = menuButton
         }
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     @objc func ccAction() {
@@ -366,13 +366,13 @@ final class vcTabLocation: vcTabParent {
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = self.menuButton
+            popoverController.barButtonItem = menuButton
         }
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     @objc func gotoHourly() {
-        self.goToVC(vcHourly())
+        goToVC(vcHourly())
     }
 
     func getCurrentConditionCards() {
@@ -380,7 +380,7 @@ final class vcTabLocation: vcTabParent {
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if objectCardCurrentConditions == nil {
-            objectCardCurrentConditions = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, objectCurrentConditions, isUS)
+            objectCardCurrentConditions = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, isUS)
             objectCardCurrentConditions?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
             objectCardCurrentConditions?.updateCard(objectCurrentConditions, isUS)
@@ -526,22 +526,22 @@ final class vcTabLocation: vcTabParent {
         // location card loaded regardless of settings
         //
         let stackViewLocationButton = ObjectStackViewHS()
-        self.stackView.addArrangedSubview(stackViewLocationButton)
-        stackViewLocationButton.setup(self.stackView)
-        self.objLabel = ObjectTextView(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
-        self.objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
-        self.objLabel.tv.isSelectable = false
+        stackView.addArrangedSubview(stackViewLocationButton)
+        stackViewLocationButton.setup(stackView)
+        objLabel = ObjectTextView(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
+        objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
+        objLabel.tv.isSelectable = false
     }
 
     // Clear all views except 7day and current conditions
     func clearViews() {
-        self.stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
-        self.extraDataCards.forEach { $0.removeFromSuperview() }
-        self.forecastImage = []
-        self.forecastText = []
-        self.extraDataCards = []
-        self.stackViewHazards.view.isHidden = true
-        self.stackViewRadar.removeFromSuperview()
+        stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
+        extraDataCards.forEach { $0.removeFromSuperview() }
+        forecastImage = []
+        forecastText = []
+        extraDataCards = []
+        stackViewHazards.view.isHidden = true
+        stackViewRadar.removeFromSuperview()
     }
 
     func setupGestures() {
@@ -554,7 +554,7 @@ final class vcTabLocation: vcTabParent {
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
+        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -605,11 +605,13 @@ final class vcTabLocation: vcTabParent {
                 UtilityRadarUI.getForecast(pointerLocation, self)})
         )
         alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
-        alert.addAction(UIAlertAction("Radar status message: " + self.wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}))
+        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = menuButton }
-        self.present(alert, animated: true, completion: nil)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = menuButton
+        }
+        present(alert, animated: true, completion: nil)
     }
 
     func ridChanged(_ rid: String) {

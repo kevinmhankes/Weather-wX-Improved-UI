@@ -33,8 +33,8 @@ class ExternalGlobalCoordinates {
     private var mLongitude: Double
     
     init(_ latitude: Double, _ longitude: Double) {
-        self.mLatitude = latitude
-        self.mLongitude = longitude
+        mLatitude = latitude
+        mLongitude = longitude
         canonicalize()
     }
 
