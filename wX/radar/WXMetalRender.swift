@@ -283,8 +283,8 @@ final class WXMetalRender {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
     }
 
@@ -363,8 +363,8 @@ final class WXMetalRender {
             constructLocationDot()
         }
         setZoom()
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
     }
 
@@ -425,7 +425,7 @@ final class WXMetalRender {
     var rid: String {
         get { ridStr }
         set {
-            self.ridStr = newValue
+            ridStr = newValue
             checkIfTdwr()
         }
     }
@@ -433,33 +433,33 @@ final class WXMetalRender {
     var product: String {
         get { radarProduct }
         set {
-            self.radarProduct = newValue
+            radarProduct = newValue
             checkIfTdwr()
         }
     }
 
     func checkIfTdwr() {
-        let ridIsTdwr = WXGLNexrad.isRidTdwr(self.rid)
-        if self.product.hasPrefix("TV") || self.product == "TZL" || self.product.hasPrefix("TZ") {
-            self.isTdwr = true
+        let ridIsTdwr = WXGLNexrad.isRidTdwr(rid)
+        if product.hasPrefix("TV") || product == "TZL" || product.hasPrefix("TZ") {
+            isTdwr = true
         } else {
-            self.isTdwr = false
+            isTdwr = false
         }
-        if (self.product.matches(regexp: "N[0-3]Q") || self.product == "L2REF") && ridIsTdwr {
-            self.radarProduct = "TZL"
-            self.isTdwr = true
+        if (product.matches(regexp: "N[0-3]Q") || product == "L2REF") && ridIsTdwr {
+            radarProduct = "TZL"
+            isTdwr = true
         }
-        if (self.product == "TZL" || self.product.hasPrefix("TR") || self.product.hasPrefix("TZ")) && !ridIsTdwr {
-            self.radarProduct = "N0Q"
-            self.isTdwr = false
+        if (product == "TZL" || product.hasPrefix("TR") || product.hasPrefix("TZ")) && !ridIsTdwr {
+            radarProduct = "N0Q"
+            isTdwr = false
         }
-        if (self.product.matches(regexp: "N[0-3]U") || self.product == "L2VEL") && ridIsTdwr {
-            self.radarProduct = "TV0"
-            self.isTdwr = true
+        if (product.matches(regexp: "N[0-3]U") || product == "L2VEL") && ridIsTdwr {
+            radarProduct = "TV0"
+            isTdwr = true
         }
-        if self.product.hasPrefix("TV") && !ridIsTdwr {
-            self.radarProduct = "N0U"
-            self.isTdwr = false
+        if product.hasPrefix("TV") && !ridIsTdwr {
+            radarProduct = "N0U"
+            isTdwr = false
         }
     }
 
@@ -517,20 +517,20 @@ final class WXMetalRender {
     }
 
     func setRenderFunction(_ fn: @escaping (Int) -> Void) {
-        self.renderFn = fn
+        renderFn = fn
     }
 
     func demandRender() {
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
     }
 
     func constructPolygons() {
-        self.radarBuffers.metalBuffer = []
-        self.radarBuffers.rd = WXMetalNexradLevelData(self.radarProduct, self.radarBuffers, self.indexString)
-        self.radarBuffers.rd.decode()
-        self.radarBuffers.initialize()
+        radarBuffers.metalBuffer = []
+        radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString)
+        radarBuffers.rd.decode()
+        radarBuffers.initialize()
         /*switch self.radarBuffers.rd.productCode {
         case 37, 38:
             self.totalBins = UtilityWXMetalPerfRaster.generate(self.radarBuffers)
@@ -541,11 +541,11 @@ final class WXMetalRender {
         default:
             self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
         }*/
-        self.totalBins = self.radarBuffers.generateRadials()
-        self.radarBuffers.setToPositionZero()
+        totalBins = radarBuffers.generateRadials()
+        radarBuffers.setToPositionZero()
         //self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
-        self.radarBuffers.setCount()
-        self.radarBuffers.generateMtlBuffer(device)
+        radarBuffers.setCount()
+        radarBuffers.generateMtlBuffer(device)
     }
 
     func updateTimeToolbar() {
@@ -602,9 +602,9 @@ final class WXMetalRender {
         }
         locdotBuffers.generateMtlBuffer(device)
         locCircleBuffers.generateMtlBuffer(device)
-        if self.renderFn != nil {
+        if renderFn != nil {
             setZoom()
-            self.renderFn!(self.paneNumber)
+            renderFn!(paneNumber)
         }
     }
 
@@ -745,15 +745,15 @@ final class WXMetalRender {
                 var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j].lat, front.coordinates[j].lon, projectionNumbers)
                 wpcFrontBuffersList[z].putFloat(tmpCoords[0])
                 wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
-                wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
-                wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
-                wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.red(wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.green(wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.blue(wpcFrontPaints[z]))
                 tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(front.coordinates[j + 1].lat, front.coordinates[j + 1].lon, projectionNumbers)
                 wpcFrontBuffersList[z].putFloat(tmpCoords[0])
                 wpcFrontBuffersList[z].putFloat(tmpCoords[1] * -1.0)
-                wpcFrontBuffersList[z].putColor(Color.red(self.wpcFrontPaints[z]))
-                wpcFrontBuffersList[z].putColor(Color.green(self.wpcFrontPaints[z]))
-                wpcFrontBuffersList[z].putColor(Color.blue(self.wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.red(wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.green(wpcFrontPaints[z]))
+                wpcFrontBuffersList[z].putColor(Color.blue(wpcFrontPaints[z]))
             }
             wpcFrontBuffersList[z].count = Int(Double(wpcFrontBuffersList[z].metalBuffer.count) * 0.4)
             wpcFrontBuffersList[z].generateMtlBuffer(device)
@@ -782,15 +782,15 @@ final class WXMetalRender {
                     var tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j]), Double(flArr[j+1]) * -1.0, projectionNumbers)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
-                    swoBuffers.putColor(Color.red(self.colorSwo[z]))
-                    swoBuffers.putColor(Color.green(self.colorSwo[z]))
-                    swoBuffers.putColor(Color.blue(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.red(colorSwo[z]))
+                    swoBuffers.putColor(Color.green(colorSwo[z]))
+                    swoBuffers.putColor(Color.blue(colorSwo[z]))
                     tmpCoords = UtilityCanvasProjection.computeMercatorNumbers(Double(flArr[j+2]), Double(flArr[j+3]) * -1.0, projectionNumbers)
                     swoBuffers.putFloat(tmpCoords[0])
                     swoBuffers.putFloat(tmpCoords[1] * -1.0)
-                    swoBuffers.putColor(Color.red(self.colorSwo[z]))
-                    swoBuffers.putColor(Color.green(self.colorSwo[z]))
-                    swoBuffers.putColor(Color.blue(self.colorSwo[z]))
+                    swoBuffers.putColor(Color.red(colorSwo[z]))
+                    swoBuffers.putColor(Color.green(colorSwo[z]))
+                    swoBuffers.putColor(Color.blue(colorSwo[z]))
                 }
             }
         }
@@ -813,8 +813,8 @@ final class WXMetalRender {
             UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, projectionNumbers, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)
         }
-        if self.renderFn != nil {
-            self.renderFn!(paneNumber)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
     }
 
