@@ -20,15 +20,15 @@ final class ObjectTouchImageView {
         img = ImageScrollView(frame: CGRect(x: 0, y: y, width: width, height: height))
         uiv.view.addSubview(img)
         img.contentMode = UIView.ContentMode.scaleAspectFit
-        self.img.translatesAutoresizingMaskIntoConstraints = false
-        self.img.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
         if !hasTopToolbar {
-            self.img.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: y).isActive = true
+            img.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: y).isActive = true
         } else {
-            self.img.topAnchor.constraint(equalTo: topToolbar.bottomAnchor).isActive = true
+            img.topAnchor.constraint(equalTo: topToolbar.bottomAnchor).isActive = true
         }
-        self.img.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
-        self.img.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
+        img.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
+        img.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         self.uiv = uiv
     }
     
@@ -75,9 +75,9 @@ final class ObjectTouchImageView {
     }
     
     func startAnimating(_ animDrawable: AnimationDrawable) {
-        self.img.zoomView?.animationImages = animDrawable.images
-        self.img.zoomView?.animationDuration = animDrawable.animationDelay
-        self.img.zoomView?.startAnimating()
+        img.zoomView?.animationImages = animDrawable.images
+        img.zoomView?.animationDuration = animDrawable.animationDelay
+        img.zoomView?.startAnimating()
     }
     
     func setMaxScaleFromMinScale(_ value: CGFloat) {

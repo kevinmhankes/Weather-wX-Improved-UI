@@ -33,7 +33,7 @@ class UIwXViewController: UIViewController {
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
-        self.view.addSubview(toolbar)
+        view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
         doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
     }
@@ -43,7 +43,7 @@ class UIwXViewController: UIViewController {
     // in some cases willEnterForeground needs to be overriden
     //
     @objc func willEnterForeground() {
-        self.getContent()
+        getContent()
     }
     
     func getContent() {}
@@ -53,20 +53,20 @@ class UIwXViewController: UIViewController {
     }
 
     @objc func doneClicked() {
-        self.dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+        dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
 
     func refreshViews() {
-        self.removeAllViews()
-        self.scrollView = UIScrollView()
-        self.stackView = UIStackView()
-        self.view.addSubview(toolbar)
+        removeAllViews()
+        scrollView = UIScrollView()
+        stackView = UIStackView()
+        view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
-        self.objScrollStackView = ObjectScrollStackView(self)
+        objScrollStackView = ObjectScrollStackView(self)
     }
 
     func removeAllViews() {
-        self.view.subviews.forEach { $0.removeFromSuperview() }
+        view.subviews.forEach { $0.removeFromSuperview() }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

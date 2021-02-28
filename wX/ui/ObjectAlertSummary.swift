@@ -75,8 +75,8 @@ final class ObjectAlertSummary: NSObject {
                     UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:))),
                     UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:)))
                 )
-                self.urls.append(alert.url)
-                self.wfos.append(nwsOffice)
+                urls.append(alert.url)
+                wfos.append(nwsOffice)
                 index += 1
             }
         }
@@ -105,7 +105,7 @@ final class ObjectAlertSummary: NSObject {
     }
 
     var image: Bitmap {
-        get { self.objectImage.bitmap }
-        set { self.objectImage.setBitmap(newValue) }
+        get { objectImage.bitmap }
+        set { objectImage.setBitmap(newValue) }
     }
 }

@@ -27,7 +27,7 @@ final class vcSpcFireSummary: UIwXViewController {
     }
     
     private func display() {
-       self.refreshViews()
+       refreshViews()
        _ = ObjectImageSummary(self, bitmaps)
     }
     

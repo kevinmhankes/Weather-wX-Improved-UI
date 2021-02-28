@@ -28,7 +28,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         }
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func doneClicked() {
@@ -60,22 +60,22 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        if self.bitmaps.count == 1 {
+        if bitmaps.count == 1 {
             Route.imageViewer(self, urls[0])
         } else {
-            Route.spcMcdWatchItem(self, self.watchMcdMpdType, self.numbers[sender.data])
+            Route.spcMcdWatchItem(self, watchMcdMpdType, numbers[sender.data])
         }
     }
     
     @objc override func shareClicked(sender: UIButton) {
-        if let object = self.objectWatchProduct {
+        if let object = objectWatchProduct {
             UtilityShare.image(self, sender, bitmaps, object.text)
         }
     }
     
     override func playlistClicked() {
-        if let object = self.objectWatchProduct {
-            _ = UtilityPlayList.add(self.objectWatchProduct!.prod, object.text, self, playListButton)
+        if let object = objectWatchProduct {
+            _ = UtilityPlayList.add(objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
     
@@ -84,28 +84,28 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     }
     
     private func display() {
-        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && self.bitmaps.count == 1
+        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
-        tabletInLandscape = self.bitmaps.count == 1
+        tabletInLandscape = bitmaps.count == 1
         #endif
         if tabletInLandscape {
             stackView.axis = .horizontal
             stackView.alignment = .firstBaseline
         }
         var views = [UIView]()
-        if self.bitmaps.count > 0 {
-            self.bitmaps.enumerated().forEach {
+        if bitmaps.count > 0 {
+            bitmaps.enumerated().forEach {
                 let objectImage: ObjectImage
                 if tabletInLandscape {
                     objectImage = ObjectImage(
-                        self.stackView,
+                        stackView,
                         $1,
                         UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
                         widthDivider: 2
                     )
                 } else {
                     objectImage = ObjectImage(
-                        self.stackView,
+                        stackView,
                         $1,
                         UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
                     )
@@ -114,24 +114,24 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
             }
-            if self.bitmaps.count == 1 {
+            if bitmaps.count == 1 {
                 if tabletInLandscape {
-                    objectTextView = ObjectTextView(self.stackView, self.objectWatchProduct?.text ?? "", widthDivider: 2)
+                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "", widthDivider: 2)
                 } else {
-                    objectTextView = ObjectTextView(self.stackView, self.objectWatchProduct?.text ?? "")
+                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "")
                 }
                 objectTextView.tv.isAccessibilityElement = true
                 views.append(objectTextView.tv)
             }
         } else {
             let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + String(describing: watchMcdMpdType) + "s"
-            let objectTextView = ObjectTextView(self.stackView, message)
+            let objectTextView = ObjectTextView(stackView, message)
             objectTextView.tv.isAccessibilityElement = true
-            objectTextView.constrain(self.scrollView)
+            objectTextView.constrain(scrollView)
             views += [objectTextView.tv]
             objectTextView.tv.accessibilityLabel = message
         }
-        self.view.bringSubviewToFront(self.toolbar)
+        view.bringSubviewToFront(toolbar)
         scrollView.accessibilityElements = views
     }
     

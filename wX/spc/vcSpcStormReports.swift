@@ -37,10 +37,10 @@ final class vcSpcStormReports: UIwXViewController {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.displayPreContent()
+        displayPreContent()
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
-        self.getContent()
+        getContent()
     }
 
     // do not do anything
@@ -59,15 +59,15 @@ final class vcSpcStormReports: UIwXViewController {
     }
 
     @objc func imgClicked() {
-        Route.imageViewer(self, self.imageUrl)
+        Route.imageViewer(self, imageUrl)
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.image(self, sender, [self.image.bitmap], self.html)
+        UtilityShare.image(self, sender, [image.bitmap], html)
     }
 
     @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
-        Route.map(self, self.stormReports[sender.data].lat, self.stormReports[sender.data].lon)
+        Route.map(self, stormReports[sender.data].lat, stormReports[sender.data].lon)
     }
 
     @objc func onDateChanged(sender: UIDatePicker) {
@@ -85,15 +85,15 @@ final class vcSpcStormReports: UIwXViewController {
         date = year + month + day
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
-        self.stackView.removeViews()
+        stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
-        self.getContent()
+        getContent()
     }
 
     @objc func lsrClicked() {
         let vc = vcLsrByWfo()
-        self.goToVC(vc)
+        goToVC(vc)
     }
 
     @objc func filterClicked() {
@@ -102,14 +102,14 @@ final class vcSpcStormReports: UIwXViewController {
             title: "Filter Selection",
             filterButton,
             filterList,
-            self.changeFilter(_:)
+            changeFilter(_:)
         )
     }
 
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
-        self.stackView.removeViews()
+        stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)
         display()
@@ -118,7 +118,7 @@ final class vcSpcStormReports: UIwXViewController {
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(stackView)
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
-        image = ObjectImage(self.stackView)
+        image = ObjectImage(stackView)
     }
 
     private func display() {
@@ -130,9 +130,9 @@ final class vcSpcStormReports: UIwXViewController {
         var tornadoHeader: ObjectCardBlackHeaderText?
         var windHeader: ObjectCardBlackHeaderText?
         var hailHeader: ObjectCardBlackHeaderText?
-        self.image.setBitmap(bitmap)
-        self.image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked)))
-        self.stormReports.enumerated().forEach { index, stormReport in
+        image.setBitmap(bitmap)
+        image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked)))
+        stormReports.enumerated().forEach { index, stormReport in
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
                 case "Tornado Reports":
@@ -154,7 +154,7 @@ final class vcSpcStormReports: UIwXViewController {
                     hailReports += 1
                 }
                 _ = ObjectCardStormReportItem(
-                    self.stackView,
+                    stackView,
                     stormReport,
                     UITapGestureRecognizerWithData(index, self, #selector(gotoMap(sender:)))
                 )

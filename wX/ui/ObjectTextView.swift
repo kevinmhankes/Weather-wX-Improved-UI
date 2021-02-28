@@ -23,10 +23,10 @@ final class ObjectTextView {
         self.init()
         // FIXME need to use widthAnchor
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        self.tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+        tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
         //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
-        self.tv.text = text
-        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
+        tv.text = text
+        tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
             setZeroSpacing()
         }
@@ -34,8 +34,8 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView) {
         self.init()
-        stackView.addArrangedSubview(self.tv)
-        self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        stackView.addArrangedSubview(tv)
+        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
 
     convenience init(
@@ -46,14 +46,14 @@ final class ObjectTextView {
         widthDivider: Int = 1
     ) {
         self.init()
-        stackView.addArrangedSubview(self.tv)
+        stackView.addArrangedSubview(tv)
         if widthDivider == 1 {
-            self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+            tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         } else {
-            self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
+            tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         }
-        self.tv.text = text
-        self.tv.isUserInteractionEnabled = isUserInteractionEnabled
+        tv.text = text
+        tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
             setZeroSpacing()
         }
@@ -66,11 +66,11 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
         self.init()
-        self.tv.text = text
+        tv.text = text
         self.color = color
         self.font = font
-        stackView.addArrangedSubview(self.tv)
-        self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        stackView.addArrangedSubview(tv)
+        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont) {
@@ -85,12 +85,12 @@ final class ObjectTextView {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ color: wXColor) {
         self.init(stackView, text)
-        self.textColor = color
+        textColor = color
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ viewOrder: Int) {
         self.init(text)
-        stackView.insertArrangedSubview(self.tv, at: viewOrder)
+        stackView.insertArrangedSubview(tv, at: viewOrder)
     }
 
     func resetTextSize() {
@@ -98,7 +98,7 @@ final class ObjectTextView {
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
-        self.tv.addGestureRecognizer(gesture)
+        tv.addGestureRecognizer(gesture)
     }
 
     var color: UIColor {

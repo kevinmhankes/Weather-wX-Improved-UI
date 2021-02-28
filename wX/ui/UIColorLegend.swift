@@ -100,7 +100,7 @@ final class UIColorLegend: UIView {
         let widthStarting: CGFloat = 0.0
         let textFromLegend: CGFloat = 10.0
         let heightFudge: CGFloat = 15.0
-        let screenHeight = self.frame.height
+        let screenHeight = frame.height
         var scaledHeight = (screenHeight - 2.0 * startHeight) / 256.0
         let scaledHeightText = (screenHeight - 2.0 * startHeight) / (95.0 + 32.0)
         let scaledHeightVel = (screenHeight - 2.0 * startHeight) / (127.0 * 2.0)

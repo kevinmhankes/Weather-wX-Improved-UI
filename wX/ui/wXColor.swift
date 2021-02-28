@@ -20,7 +20,7 @@ final class wXColor {
     convenience init(_ color: Int, _ alpha: CGFloat = 1.0) {
         self.init()
         let cArr = intToColors(color)
-        self.uiColorCurrent = wXColor.uiColorInt(cArr.red, cArr.green, cArr.blue, alpha)
+        uiColorCurrent = wXColor.uiColorInt(cArr.red, cArr.green, cArr.blue, alpha)
     }
 
     convenience init(_ uiLabel: String, _ prefVar: String, _ defaultRed: Int, _ defaultGreen: Int, _ defaultBlue: Int) {
@@ -30,9 +30,9 @@ final class wXColor {
         self.defaultRed = defaultRed
         self.defaultGreen = defaultGreen
         self.defaultBlue = defaultBlue
-        self.uiColorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
-        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
-        self.uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
+        uiColorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
+        colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 
     convenience init(_ uiLabel: String, _ prefVar: String, _ defaultColor: Int) {
@@ -40,12 +40,12 @@ final class wXColor {
         self.uiLabel = uiLabel
         self.prefVar = prefVar
         let (red, green, blue) = intToColors(defaultColor)
-        self.defaultRed = red
-        self.defaultGreen = green
-        self.defaultBlue = blue
-        self.uiColorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
-        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
-        self.uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
+        defaultRed = red
+        defaultGreen = green
+        defaultBlue = blue
+        uiColorDefault = wXColor.uiColorInt(defaultRed, defaultGreen, defaultBlue)
+        colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 
     func colorToInt(_ red: Int, _ green: Int, _ blue: Int) -> Int {
@@ -80,7 +80,7 @@ final class wXColor {
     }
 
     func regenCurrentColor() {
-        self.colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
-        self.uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
+        colorsCurrent = intToColors(Utility.readPref(prefVar, colorToInt(defaultRed, defaultGreen, defaultBlue)))
+        uiColorCurrent = wXColor.uiColorInt(colorsCurrent.red, colorsCurrent.green, colorsCurrent.blue)
     }
 }

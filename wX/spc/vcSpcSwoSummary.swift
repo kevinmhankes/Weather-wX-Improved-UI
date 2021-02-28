@@ -27,7 +27,7 @@ final class vcSpcSwoSummary: UIwXViewController {
     }
     
     private func display() {
-        self.refreshViews()
+        refreshViews()
         _ = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 4)
     }
     

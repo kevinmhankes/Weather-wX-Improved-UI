@@ -26,19 +26,19 @@ final class ObjectAlertDetail {
     func updateContent(_ uiScrollView: UIScrollView, _ alert: CapAlert) {
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let wfo = alert.title.parse("by (.*?)$")
-        self.textViews[0].text = title
-        self.textViews[1].text = wfo
-        self.textViews[2].text = "Issued: " + startTime
+        textViews[0].text = title
+        textViews[1].text = wfo
+        textViews[2].text = "Issued: " + startTime
         if endTime == "" {
-            self.textViews[3].text = ""
-            self.textViews[3].view.isHidden = true
+            textViews[3].text = ""
+            textViews[3].view.isHidden = true
         } else {
-            self.textViews[3].text = "End: " + endTime
+            textViews[3].text = "End: " + endTime
         }
-        self.textViews[4].text = alert.area.removeSingleLineBreaks()
+        textViews[4].text = alert.area.removeSingleLineBreaks()
         //self.textViews[5].text = alert.summary.removeSingleLineBreaks()
-        self.textViews[5].text = alert.summary
-        self.textViews[6].text = alert.instructions.removeSingleLineBreaks()
+        textViews[5].text = alert.summary
+        textViews[6].text = alert.instructions.removeSingleLineBreaks()
         uiStackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()

@@ -18,18 +18,18 @@ final class ObjectToolbar: UIToolbar {
         switch toolbarType {
         case .bottom:
             let bottomSpace = -UtilityUI.getBottomPadding()
-            self.translatesAutoresizingMaskIntoConstraints = false
-            self.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
-            self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
-            self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
-            self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
+            translatesAutoresizingMaskIntoConstraints = false
+            bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
+            heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
+            leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
+            rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
         case .top:
-            self.translatesAutoresizingMaskIntoConstraints = false
-            toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
+            translatesAutoresizingMaskIntoConstraints = false
+            toolbarHeightConstraint = topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
             uiv.view.addConstraint(toolbarHeightConstraint!)
-            self.leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
-            self.rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
-            self.heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
+            leftAnchor.constraint(equalTo: uiv.view.leftAnchor).isActive = true
+            rightAnchor.constraint(equalTo: uiv.view.rightAnchor).isActive = true
+            heightAnchor.constraint(equalToConstant: UIPreferences.toolbarHeight).isActive = true
         }
         setColorToTheme()
     }
@@ -38,7 +38,7 @@ final class ObjectToolbar: UIToolbar {
         if toolbarHeightConstraint != nil {
             uiv.view.removeConstraint(toolbarHeightConstraint!)
         }
-        toolbarHeightConstraint = self.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
+        toolbarHeightConstraint = topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: UtilityUI.getTopPadding())
         uiv.view.addConstraint(toolbarHeightConstraint!)
     }
 

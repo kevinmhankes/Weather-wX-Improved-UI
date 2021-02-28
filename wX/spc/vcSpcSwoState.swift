@@ -19,11 +19,11 @@ final class vcSpcSwoState: UIwXViewController {
         stateButton = ObjectToolbarIcon(self, #selector(stateClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
-        self.getContent(Location.state)
+        getContent(Location.state)
     }
 
     override func willEnterForeground() {
-        self.getContent(state)
+        getContent(state)
     }
 
     func getContent(_ state: String) {
@@ -39,11 +39,11 @@ final class vcSpcSwoState: UIwXViewController {
     }
 
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
+        image.setBitmap(bitmap)
     }
 
     @objc func stateClicked(sender: ObjectToolbarIcon) {
-        _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, self.getContent(_:))
+        _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {

@@ -31,7 +31,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
             ]
         ).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -49,7 +49,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     private func display() {
-        self.refreshViews()
+        refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
     

@@ -23,7 +23,7 @@ final class ObjectTileMatrix: NSObject {
         let radarButton = ObjectToolbarIcon(uiv, .radar, #selector(radarClicked))
         let cloudButton = ObjectToolbarIcon(uiv, .cloud, #selector(cloudClicked))
         let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
-        self.menuButton = ObjectToolbarIcon(uiv, .submenu, #selector(menuClicked))
+        menuButton = ObjectToolbarIcon(uiv, .submenu, #selector(menuClicked))
         let dashButton = ObjectToolbarIcon(uiv, .severeDashboard, #selector(dashClicked))
         let fixedSpace = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,

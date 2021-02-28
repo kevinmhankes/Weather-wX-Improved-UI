@@ -17,7 +17,7 @@ final class ObjectStackViewHS: UIStackView {
     }
     
     func setup(_ stackView: UIStackView) {
-        self.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         translatesAutoresizingMaskIntoConstraints = false
         autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         axis = .vertical

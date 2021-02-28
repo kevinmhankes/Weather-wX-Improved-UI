@@ -22,7 +22,7 @@ final class ObjectSlider {
         #if targetEnvironment(macCatalyst)
             suffix = "_C"
         #endif
-        self.label = ObjectSlider.prefToLabel[prefVar]!
+        label = ObjectSlider.prefToLabel[prefVar]!
         initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar + suffix]!)
         print(initialValue)
         print(prefVar)

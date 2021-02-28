@@ -67,7 +67,7 @@ final class vcSpcMeso: UIwXViewController {
                 sectorButton
             ]
         ).items
-        self.view.addSubview(toolbarTop)
+        view.addSubview(toolbarTop)
         image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
@@ -89,31 +89,31 @@ final class vcSpcMeso: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        if self.firstRun {
-            self.image.setBitmap(bitmap)
-            self.firstRun = false
+        if firstRun {
+            image.setBitmap(bitmap)
+            firstRun = false
         } else {
-            self.image.updateBitmap(bitmap)
+            image.updateBitmap(bitmap)
         }
-        self.paramButton.title = self.product
-        Utility.writePref(prefTokenProduct, self.product)
-        Utility.writePref(prefTokenSector, self.sector)
+        paramButton.title = product
+        Utility.writePref(prefTokenProduct, product)
+        Utility.writePref(prefTokenSector, sector)
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, self.sectorChangedByIndex(_:))
+        _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, sectorChangedByIndex(_:))
     }
     
     func sectorChangedByIndex(_ index: Int) {
-        self.sector = UtilitySpcMeso.sectorCodes[index]
-        self.sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
-        self.getContent()
+        sector = UtilitySpcMeso.sectorCodes[index]
+        sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
+        getContent()
     }
     
     func sectorChanged(_ sector: String) {
         self.sector = sector
-        self.sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
-        self.getContent()
+        sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
+        getContent()
     }
     
     @objc func share(sender: UIButton) {
@@ -136,7 +136,7 @@ final class vcSpcMeso: UIwXViewController {
             break
         }
         let labels = parameters.map { $0.split(":")[1] }
-        _ = ObjectPopUp(self, title: "", sender, labels, self.productChangedBySubmenu(_:))
+        _ = ObjectPopUp(self, title: "", sender, labels, productChangedBySubmenu(_:))
     }
     
     @objc func layerClicked() {
@@ -194,7 +194,7 @@ final class vcSpcMeso: UIwXViewController {
     }
     
     @objc func animateClicked() {
-        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], self.getAnimation(_:))
+        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation(_:))
     }
     
     func getAnimation(_ frameCount: Int) {
@@ -207,32 +207,32 @@ final class vcSpcMeso: UIwXViewController {
     }
     
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, self.showSubMenu(_:))
+        _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, showSubMenu(_:))
     }
     
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
+        _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, productChanged(_:))
     }
     
     func productChangedBySubmenu(_ index: Int) {
-        self.product = parameters[index].split(":")[0]
-        self.getContent()
+        product = parameters[index].split(":")[0]
+        getContent()
     }
     
     func productChangedByCode(_ product: String) {
         self.product = product
-        self.getContent()
+        getContent()
     }
     
     func productChanged(_ index: Int) {
         let product = subMenu.params[index]
         self.product = product
-        self.getContent()
+        getContent()
     }
     
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         var index = 0
-        if let product = UtilitySpcMeso.productShortList.firstIndex(of: self.product) {
+        if let product = UtilitySpcMeso.productShortList.firstIndex(of: product) {
             index = UtilityUI.sideSwipe(sender, product, UtilitySpcMeso.productShortList)
         }
         productChangedByCode(UtilitySpcMeso.productShortList[index])

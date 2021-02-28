@@ -43,7 +43,7 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
     }
     
     @objc func playlistClicked() {
-        _ = UtilityPlayList.add(self.product, objectTextView.text, self, playListButton)
+        _ = UtilityPlayList.add(product, objectTextView.text, self, playListButton)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {

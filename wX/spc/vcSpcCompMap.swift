@@ -19,7 +19,7 @@ final class vcSpcCompMap: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         deSerializeSettings()
-        self.getContent()
+        getContent()
     }
 
     func serializeSettings() {
@@ -38,8 +38,8 @@ final class vcSpcCompMap: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
-        self.serializeSettings()
+        image.setBitmap(bitmap)
+        serializeSettings()
     }
     
     @objc func productClicked() {
@@ -57,7 +57,7 @@ final class vcSpcCompMap: UIwXViewController {
     func productChanged(_ product: Int) {
         if product == 0 {
             layers = []
-            self.getContent()
+            getContent()
             return
         }
         let prodLocal = product - 1
@@ -66,7 +66,7 @@ final class vcSpcCompMap: UIwXViewController {
         } else {
             layers.insert(UtilitySpcCompmap.urlIndices[prodLocal])
         }
-        self.getContent()
+        getContent()
     }
     
     @objc func share(sender: UIButton) {

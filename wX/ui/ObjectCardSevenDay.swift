@@ -41,7 +41,7 @@ final class ObjectCardSevenDay {
     func update(_ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
         self.isUS = isUS
         setImage(index, urls)
-        setTextFields(self.formatSevenDay(days[index].replace("</text>", ""), daysShort[index].replace("</text>", "")))
+        setTextFields(formatSevenDay(days[index].replace("</text>", ""), daysShort[index].replace("</text>", "")))
     }
 
     func setTextFields(_ labels: (top: String, bottom: String)) {

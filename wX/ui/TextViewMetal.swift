@@ -24,8 +24,8 @@ final class TextViewMetal {
     }
 
     var textSize: Double {
-        get { self.realTextSize / 13.0 }
-        set { self.realTextSize = newValue * 13.0 }
+        get { realTextSize / 13.0 }
+        set { realTextSize = newValue * 13.0 }
     }
 
     func setText(_ text: String) {
@@ -41,7 +41,7 @@ final class TextViewMetal {
     func drawText(_ string: String, _ xPos: CGFloat, _ yPos: CGFloat) {
         let uiTextView = UITextView(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
         uiTextView.text = string
-        uiTextView.font = UIFont.systemFont(ofSize: CGFloat(self.realTextSize))
+        uiTextView.font = UIFont.systemFont(ofSize: CGFloat(realTextSize))
         uiTextView.backgroundColor = UIColor.clear
         uiTextView.textColor = wXColor(textColor).uiColorCurrent
         uiTextView.textContainer.lineBreakMode = .byTruncatingTail

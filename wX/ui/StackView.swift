@@ -17,7 +17,7 @@ final class StackView: UIStackView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundLayer.path = UIBezierPath(rect: self.bounds).cgPath
-        backgroundLayer.fillColor = self.backgroundColor?.cgColor
+        backgroundLayer.path = UIBezierPath(rect: bounds).cgPath
+        backgroundLayer.fillColor = backgroundColor?.cgColor
     }
 }

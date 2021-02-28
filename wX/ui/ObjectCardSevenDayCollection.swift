@@ -14,7 +14,7 @@ final class ObjectCardSevenDayCollection {
     var objectCardSunTime: ObjectCardSunTime?
 
     init(_ stackView: UIStackView, _ scrollView: UIScrollView, _ objectSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
-        self.uiScrollView = scrollView
+        uiScrollView = scrollView
         var numCards = 0
         let stackViewLocal7Day = ObjectStackViewHS()
         stackView.addArrangedSubview(stackViewLocal7Day)
@@ -27,8 +27,8 @@ final class ObjectCardSevenDayCollection {
                 objectCardSevenDay.addGestureRecognizer(
                     UITapGestureRecognizer(
                         target: self,
-                        action: #selector(self.sevenDayAction)),
-                        UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction)
+                        action: #selector(sevenDayAction)),
+                        UITapGestureRecognizer(target: self, action: #selector(sevenDayAction)
                     )
                 )
                 numCards += 1
@@ -41,7 +41,7 @@ final class ObjectCardSevenDayCollection {
         } else {
             objectCardSunTime = ObjectCardSunTime(
                 stackViewLocal7Day,
-                UITapGestureRecognizer(target: self, action: #selector(self.sevenDayAction))
+                UITapGestureRecognizer(target: self, action: #selector(sevenDayAction))
             )
             numCards += 1
         }

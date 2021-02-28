@@ -32,7 +32,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
         if spcSwoDay == "48" {
             stateButton.title = ""
         }
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -50,7 +50,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     private func display() {
-       self.refreshViews()
+       refreshViews()
        _ = ObjectImageAndText(self, bitmaps, html)
     }
     
@@ -59,7 +59,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
     
     override func shareClicked(sender: UIButton) {
-        UtilityShare.image(self, sender, bitmaps, self.html)
+        UtilityShare.image(self, sender, bitmaps, html)
     }
     
     @objc func stateClicked() {

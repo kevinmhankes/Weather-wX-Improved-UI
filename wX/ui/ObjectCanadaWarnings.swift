@@ -58,31 +58,31 @@ final class ObjectCanadaWarnings: NSObject {
     }
 
     func getData() {
-        if self.provinceCode == "ca" {
+        if provinceCode == "ca" {
             bitmap = Bitmap(GlobalVariables.canadaEcSitePrefix + "/data/warningmap/canada_e.png")
         } else {
-            bitmap = Bitmap(GlobalVariables.canadaEcSitePrefix + "/data/warningmap/" + self.provinceCode + "_e.png")
+            bitmap = Bitmap(GlobalVariables.canadaEcSitePrefix + "/data/warningmap/" + provinceCode + "_e.png")
         }
         var html: String
-        if self.provinceCode == "ca" {
+        if provinceCode == "ca" {
             html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html").getHtml()
         } else {
-            html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + self.provinceCode).getHtml()
+            html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + provinceCode).getHtml()
         }
-        self.listLocUrl = html.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWarning = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocWatch = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
-        self.listLocStatement = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
+        listLocUrl = html.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        listLocWarning = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        listLocWatch = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
+        listLocStatement = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
     }
 
     func showData() {
         uiv.stackView.removeViews()
         _ = ObjectImage(uiv.stackView, bitmap)
-        self.listLocWarning.indices.forEach { index in
-            var locWarning = self.listLocWarning[index]
-            var locWatch = self.listLocWatch[index]
-            var locStatement = self.listLocStatement[index]
+        listLocWarning.indices.forEach { index in
+            var locWarning = listLocWarning[index]
+            var locWatch = listLocWatch[index]
+            var locStatement = listLocStatement[index]
             if locWarning.contains("href") {
                 locWarning = locWarning.parse("class=.wb-inv.>(.*?)</span>")
                 locWarning = locWarning.replaceAll("</.*?>", "")
