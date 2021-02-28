@@ -29,8 +29,9 @@
 // [REF] FileStorage 
 // [REF] reduction in chained replace
 // [REF] utilString, don't use str, use s (python) - use regexp instead of regexpStr
+// [REF] add extension for parseLastMatch
 
-56126 2021_02_27 
+56126 2021_02_28 [FIX] lint
 56125 2021_02_27 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
 		 [REF] code cleanup

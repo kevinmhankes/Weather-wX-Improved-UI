@@ -38,7 +38,7 @@ final class vcHourly: UIwXViewControllerWithAudio {
         scrollView.scrollToTop()
     }
     
-    @objc override func shareClicked(sender: UIButton) {
+    override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }
 }
