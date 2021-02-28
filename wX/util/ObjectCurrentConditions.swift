@@ -32,10 +32,10 @@ final class ObjectCurrentConditions {
             self.init(Location.getLatLon(locNum))
         } else {
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
-            self.data = UtilityCanada.getConditions(html)
-            self.status = UtilityCanada.getStatus(html)
+            data = UtilityCanada.getConditions(html)
+            status = UtilityCanada.getStatus(html)
         }
-        self.formatCurrentConditions()
+        formatCurrentConditions()
     }
 
     // US via LAT LON (called from adhoc location and from other init)
@@ -54,24 +54,24 @@ final class ObjectCurrentConditions {
         var string = ""
         let objectMetar = ObjectMetar(location)
         conditionsTimeString = objectMetar.conditionsTimeString
-        self.temperature = objectMetar.temperature + GlobalVariables.degreeSymbol
-        self.windChill = objectMetar.windChill + GlobalVariables.degreeSymbol
-        self.heatIndex = objectMetar.heatIndex + GlobalVariables.degreeSymbol
-        self.dewPoint = objectMetar.dewPoint + GlobalVariables.degreeSymbol
-        self.relativeHumidity = objectMetar.relativeHumidity + "%"
-        self.seaLevelPressure = objectMetar.seaLevelPressure
-        self.windDirection = objectMetar.windDirection
-        self.windSpeed = objectMetar.windSpeed
-        self.windGust = objectMetar.windGust
-        self.visibility = objectMetar.visibility
-        self.condition = objectMetar.condition
-        string += self.temperature
+        temperature = objectMetar.temperature + GlobalVariables.degreeSymbol
+        windChill = objectMetar.windChill + GlobalVariables.degreeSymbol
+        heatIndex = objectMetar.heatIndex + GlobalVariables.degreeSymbol
+        dewPoint = objectMetar.dewPoint + GlobalVariables.degreeSymbol
+        relativeHumidity = objectMetar.relativeHumidity + "%"
+        seaLevelPressure = objectMetar.seaLevelPressure
+        windDirection = objectMetar.windDirection
+        windSpeed = objectMetar.windSpeed
+        windGust = objectMetar.windGust
+        visibility = objectMetar.visibility
+        condition = objectMetar.condition
+        string += temperature
         if objectMetar.windChill != "NA" {
-            string += "(" + self.windChill + ")"
+            string += "(" + windChill + ")"
         } else if objectMetar.heatIndex != "NA" {
-            string += "(" + self.heatIndex + ")"
+            string += "(" + heatIndex + ")"
         }
-        string += " / " + self.dewPoint + "(" + self.relativeHumidity + ")" + " - "
+        string += " / " + dewPoint + "(" + relativeHumidity + ")" + " - "
         string += seaLevelPressure +  " - " + windDirection + " " + windSpeed
         if windGust != "" {
             string += " G "
@@ -94,10 +94,10 @@ final class ObjectCurrentConditions {
         }
         topLine = topLineLocal
         middleLine = middleLineLocal
-        spokenText = condition + ", temperature is " + self.temperature + " with wind at " + self.windDirection + " "
-            + self.windSpeed + "miles per hour" +
-            " dew point is " + self.dewPoint + ", relative humidity is "
-            + self.relativeHumidity + ", pressure in milli-bars is "
-            + self.seaLevelPressure + ", visibility is " + self.visibility + " miles" + status
+        spokenText = condition + ", temperature is " + temperature + " with wind at " + windDirection + " "
+            + windSpeed + "miles per hour" +
+            " dew point is " + dewPoint + ", relative humidity is "
+            + relativeHumidity + ", pressure in milli-bars is "
+            + seaLevelPressure + ", visibility is " + visibility + " miles" + status
     }
 }

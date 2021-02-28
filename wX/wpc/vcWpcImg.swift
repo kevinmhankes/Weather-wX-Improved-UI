@@ -24,23 +24,23 @@ final class vcWpcImg: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {
-            self.getContentFromHomeScreen()
+            getContentFromHomeScreen()
             wpcImagesFromHomeScreen = false
         } else {
-            self.getContent(index)
+            getContent(index)
         }
     }
 
     @objc override func willEnterForeground() {
-        self.getContent(index)
+        getContent(index)
     }
 
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityWpcImages.labels[index]
+        productButton.title = UtilityWpcImages.labels[index]
         var getUrl = UtilityWpcImages.urls[self.index]
         if getUrl.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
-            getUrl += String(self.timePeriod) + "_conus.png"
+            getUrl += String(timePeriod) + "_conus.png"
         }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(getUrl)
@@ -49,13 +49,15 @@ final class vcWpcImg: UIwXViewController {
     }
 
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
-        Utility.writePref("WPCIMG_PARAM_LAST_USED", self.index)
+        image.setBitmap(bitmap)
+        Utility.writePref("WPCIMG_PARAM_LAST_USED", index)
     }
 
     func getContentFromHomeScreen() {
         let titles = GlobalArrays.nwsImageProducts.filter { $0.hasPrefix(wpcImagesToken + ":") }
-        if titles.count > 0 { self.productButton.title = titles[0].split(":")[1] }
+        if titles.count > 0 {
+            productButton.title = titles[0].split(":")[1]
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityDownload.getImageProduct(self.wpcImagesToken)
             DispatchQueue.main.async { self.image.setBitmap(bitmap) }
@@ -63,11 +65,11 @@ final class vcWpcImg: UIwXViewController {
     }
 
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
     }
 
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, getContent(_:))
     }
 
     @objc func shareClicked(sender: UIButton) {

@@ -35,7 +35,7 @@ final class vcGoes: UIwXViewController {
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         deSerializeSettings()
-        self.getContent()
+        getContent()
     }
     
     func serializeSettings() {
@@ -70,9 +70,11 @@ final class vcGoes: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.serializeSettings()
-        self.image.setBitmap(bitmap)
-        if self.firstRun { self.firstRun = false }
+        serializeSettings()
+        image.setBitmap(bitmap)
+        if firstRun {
+            firstRun = false
+        }
     }
     
     override func doneClicked() {
@@ -86,23 +88,23 @@ final class vcGoes: UIwXViewController {
         } else {
             labels = UtilityGoes.labels
         }
-        _ = ObjectPopUp(self, productButton, labels, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, labels, productChanged(_:))
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, sectorChanged(_:))
     }
     
     func productChanged(_ index: Int) {
         productCode = UtilityGoes.codes[index]
         productButton.title = productCode
-        self.getContent()
+        getContent()
     }
     
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
-        self.getContent()
+        getContent()
     }
     
     @objc func shareClicked(sender: UIButton) {
@@ -125,7 +127,7 @@ final class vcGoes: UIwXViewController {
             title: "Select number of animation frames:",
             animateButton,
             stride(from: 12, to: 96 + 12, by: 12),
-            self.getAnimation(_:)
+            getAnimation(_:)
         )
     }
     

@@ -17,17 +17,15 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         let statusButton = ObjectToolbarIcon(title: "Day " + spcSwoDay, self, nil)
         let stateButton = ObjectToolbarIcon(title: "STATE", self, #selector(stateClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                statusButton,
-                GlobalVariables.flexBarButton,
-                stateButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            statusButton,
+            GlobalVariables.flexBarButton,
+            stateButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         if spcSwoDay == "48" {
             stateButton.title = ""

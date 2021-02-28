@@ -20,16 +20,14 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
         }
         let statusButton = ObjectToolbarIcon(title: "Day " + dayString, self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                statusButton,
-                GlobalVariables.flexBarButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            statusButton,
+            GlobalVariables.flexBarButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         getContent()
     }

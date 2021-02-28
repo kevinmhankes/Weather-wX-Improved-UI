@@ -57,7 +57,7 @@ final class ObjectHazards {
             _ = ObjectCardHazard(
                 stackViewLocalHaz,
                 hazard,
-                UITapGestureRecognizerWithData(objectHazards.hazards, self, #selector(self.hazardsAction(sender:)))
+                UITapGestureRecognizerWithData(objectHazards.hazards, self, #selector(hazardsAction(sender:)))
             )
             numHaz += 1
         } else {
@@ -67,7 +67,7 @@ final class ObjectHazards {
                 _ = ObjectCardHazard(
                     stackViewLocalHaz,
                     hazard,
-                    UITapGestureRecognizerWithData(ids[index], self, #selector(self.hazardsAction(sender:)))
+                    UITapGestureRecognizerWithData(ids[index], self, #selector(hazardsAction(sender:)))
                 )
                 numHaz += 1
             }

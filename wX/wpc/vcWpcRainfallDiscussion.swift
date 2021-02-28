@@ -16,24 +16,22 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         super.viewDidLoad()
         let statusButton = ObjectToolbarIcon(title: "Day " + day, self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                statusButton,
-                GlobalVariables.flexBarButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            statusButton,
+            GlobalVariables.flexBarButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
-        let number = (Int(self.day) ?? 1) - 1
+        let number = (Int(day) ?? 1) - 1
         let imgUrl = UtilityWpcRainfallOutlook.urls[number]
-        self.product = UtilityWpcRainfallOutlook.codes[number]
+        product = UtilityWpcRainfallOutlook.codes[number]
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
             self.bitmap = Bitmap(imgUrl)
@@ -42,7 +40,7 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     private func display() {
-        self.refreshViews()
+        refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
     

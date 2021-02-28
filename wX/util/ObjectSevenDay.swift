@@ -43,7 +43,7 @@ final class ObjectSevenDay {
             let windSpeeds = html.parseColumn("\"windSpeed\": \"(.*?)\",")
             let windDirections = html.parseColumn("\"windDirection\": \"(.*?)\",")
             let detailedLocalForecasts = html.parseColumn("\"detailedForecast\": \"(.*?)\"")
-            self.icons = html.parseColumn("\"icon\": \"(.*?)\",")
+            icons = html.parseColumn("\"icon\": \"(.*?)\",")
             let shortLocalForecasts = html.parseColumn("\"shortForecast\": \"(.*?)\",")
             names.indices.forEach { index in
                 let name = Utility.safeGet(names, index)
@@ -56,8 +56,8 @@ final class ObjectSevenDay {
                 forecasts.append(ObjectForecast(name, temperature, windSpeed, windDirection, icon, shortForecast, detailedForecast))
             }
             forecasts.forEach { forecast in
-                self.detailedForecasts.append(forecast.name + ": " + forecast.detailedForecast)
-                self.shortForecasts.append(forecast.name + ": " + forecast.shortForecast)
+                detailedForecasts.append(forecast.name + ": " + forecast.detailedForecast)
+                shortForecasts.append(forecast.name + ": " + forecast.shortForecast)
             }
         } else {
             var forecasts = [ObjectForecast]()
@@ -65,7 +65,7 @@ final class ObjectSevenDay {
             let forecastString = forecastStringList[1]
             let iconString = forecastStringList[0]
             let forecastStrings = forecastString.split("\n")
-            self.icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
+            icons = UtilityString.parseColumn(iconString, "<icon-link>(.*?)</icon-link>")
             var forecast = GlobalVariables.newline + GlobalVariables.newline
             forecastStrings.enumerated().forEach { index, s in
                 if s != "" {
@@ -73,7 +73,7 @@ final class ObjectSevenDay {
                     shortForecasts.append(s.trim())
                     forecast += s.trim()
                     forecast += GlobalVariables.newline + GlobalVariables.newline
-                    if self.icons.count > index {
+                    if icons.count > index {
                         // icons.add(iconList[index]);
                     }
                     // not in kotlin
@@ -83,7 +83,7 @@ final class ObjectSevenDay {
                     if stringList.count > 1 {
                         fcst = stringList[1]
                     }
-                    let icon = Utility.safeGet(self.icons, index)
+                    let icon = Utility.safeGet(icons, index)
                     if fcst != " " {
                         forecasts.append(ObjectForecast(time, "", "", "", icon, "short", fcst))
                     }

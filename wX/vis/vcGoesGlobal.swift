@@ -26,16 +26,16 @@ final class vcGoesGlobal: UIwXViewController {
         if index >= UtilityGoesFullDisk.labels.count {
             index = UtilityGoesFullDisk.labels.count - 1
         }
-        self.getContent(index)
+        getContent(index)
     }
     
     override func willEnterForeground() {
-        self.getContent(index)
+        getContent(index)
     }
     
     func getContent(_ index: Int) {
         self.index = index
-        self.productButton.title = UtilityGoesFullDisk.labels[self.index]
+        productButton.title = UtilityGoesFullDisk.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
             DispatchQueue.main.async { self.display(bitmap) }
@@ -43,13 +43,13 @@ final class vcGoesGlobal: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
-        if UtilityGoesFullDisk.urls[self.index].contains("jma") {
-            self.showAnimateButton()
+        image.setBitmap(bitmap)
+        if UtilityGoesFullDisk.urls[index].contains("jma") {
+            showAnimateButton()
         } else {
-            self.hideAnimateButton()
+            hideAnimateButton()
         }
-        Utility.writePref(self.prefToken, self.index)
+        Utility.writePref(prefToken, index)
     }
     
     func showAnimateButton() {
@@ -61,7 +61,7 @@ final class vcGoesGlobal: UIwXViewController {
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

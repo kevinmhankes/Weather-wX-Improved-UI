@@ -74,14 +74,12 @@ final class vcModels: UIwXViewController {
         timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))
         let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                timeButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            productButton,
+            timeButton
+        ]).items
         view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true, topToolbar: toolbarTop)

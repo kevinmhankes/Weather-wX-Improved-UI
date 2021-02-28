@@ -37,18 +37,16 @@ final class vcSpcMeso: UIwXViewController {
         animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        toolbarTop.items = ObjectToolbarItems(
-            [
-                GlobalVariables.flexBarButton,
-                paramButton,
-                GlobalVariables.fixedSpace,
-                layerButton,
-                GlobalVariables.fixedSpace,
-                animateButton,
-                GlobalVariables.fixedSpace,
-                shareButton
-            ]
-        ).items
+        toolbarTop.items = ObjectToolbarItems([
+            GlobalVariables.flexBarButton,
+            paramButton,
+            GlobalVariables.fixedSpace,
+            layerButton,
+            GlobalVariables.fixedSpace,
+            animateButton,
+            GlobalVariables.fixedSpace,
+            shareButton
+        ]).items
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
         sfcButton = ObjectToolbarIcon(title: "SFC", self, #selector(paramClicked))
         uaButton = ObjectToolbarIcon(title: "UA", self, #selector(paramClicked))

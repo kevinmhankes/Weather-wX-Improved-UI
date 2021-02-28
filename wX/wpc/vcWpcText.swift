@@ -18,16 +18,14 @@ final class vcWpcText: UIwXViewControllerWithAudio {
         UIApplication.shared.isIdleTimerDisabled = true
         productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                productButton,
-                playButton,
-                playListButton,
-                shareButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            productButton,
+            playButton,
+            playListButton,
+            shareButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(stackView)
         objectTextView.constrain(scrollView)
@@ -37,7 +35,7 @@ final class vcWpcText: UIwXViewControllerWithAudio {
             product = wpcTextProduct
             wpcTextProduct = ""
         }
-        self.getContent()
+        getContent()
     }
     
     @objc override func doneClicked() {
@@ -57,29 +55,29 @@ final class vcWpcText: UIwXViewControllerWithAudio {
     }
     
     private func display(_ html: String) {
-        self.objectTextView.text = html
-        if UtilityWpcText.needsFixedWidthFont(self.product.uppercased()) {
-            self.objectTextView.font = FontSize.hourly.size
+        objectTextView.text = html
+        if UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
+            objectTextView.font = FontSize.hourly.size
         } else {
-            self.objectTextView.font = FontSize.medium.size
+            objectTextView.font = FontSize.medium.size
         }
-        self.productButton.title = self.product.uppercased()
-        Utility.writePref("WPCTEXT_PARAM_LAST_USED", self.product)
+        productButton.title = product.uppercased()
+        Utility.writePref("WPCTEXT_PARAM_LAST_USED", product)
     }
     
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
     }
     
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, productChanged(_:))
     }
     
     func productChanged(_ index: Int) {
         let code = subMenu.params[index].split(":")[0]
-        self.scrollView.scrollToTop()
-        self.product = code
+        scrollView.scrollToTop()
+        product = code
         UtilityAudio.resetAudio(self, playButton)
-        self.getContent()
+        getContent()
     }
 }
