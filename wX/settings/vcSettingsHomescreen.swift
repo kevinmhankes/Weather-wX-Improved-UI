@@ -19,16 +19,14 @@ final class vcSettingsHomescreen: UIwXViewController {
         let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(setToDefault))
         addImageButton = ObjectToolbarIcon(title: "Image", self, #selector(addImageClicked))
         addTextButton = ObjectToolbarIcon(title: "Text", self, #selector(addTextClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                addTextButton,
-                addImageButton,
-                defaultButton,
-                addButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            addTextButton,
+            addImageButton,
+            defaultButton,
+            addButton
+        ]).items
         objScrollStackView = ObjectScrollStackView(self)
         deSerializeSettings()
         display(saveToDisk: false)
