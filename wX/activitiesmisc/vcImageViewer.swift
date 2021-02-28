@@ -15,7 +15,7 @@ final class vcImageViewer: UIwXViewController {
         super.viewDidLoad()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
-        self.getContent()
+        getContent()
     }
     
     override func willEnterForeground() {}
@@ -28,7 +28,7 @@ final class vcImageViewer: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image = ObjectTouchImageView(self, self.toolbar, bitmap)
+        image = ObjectTouchImageView(self, toolbar, bitmap)
     }
     
     @objc func share(sender: UIButton) {

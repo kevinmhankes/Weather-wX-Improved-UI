@@ -17,7 +17,7 @@ final class vcSpotterReports: UIwXViewController {
         spotterReportCountButton.title = ""
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterReportCountButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -28,15 +28,15 @@ final class vcSpotterReports: UIwXViewController {
     }
     
     func display(_ spotterReportsData: [SpotterReports]) {
-        self.refreshViews()
-        self.spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
-        self.spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
-        self.spotterReportsDataSorted.enumerated().forEach { index, item in
-            _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
+        refreshViews()
+        spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
+        spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
+        spotterReportsDataSorted.enumerated().forEach { index, item in
+            _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
         }
         if spotterReportsData.count == 0 {
-            let objectTextView = ObjectTextView(self.stackView, "No active spotter reports.")
-            objectTextView.constrain(self.scrollView)
+            let objectTextView = ObjectTextView(stackView, "No active spotter reports.")
+            objectTextView.constrain(scrollView)
         }
     }
     
@@ -49,6 +49,6 @@ final class vcSpotterReports: UIwXViewController {
     }
     
     func showMap(_ selection: Int) {
-        Route.map(self, self.spotterReportsDataSorted[selection].location.latString, self.spotterReportsDataSorted[selection].location.lonString)
+        Route.map(self, spotterReportsDataSorted[selection].location.latString, spotterReportsDataSorted[selection].location.lonString)
     }
 }

@@ -23,14 +23,14 @@ final class vcAdhocLocation: UIwXViewController {
         let titleButton = ObjectToolbarIcon(self, nil)
         saveButton = ObjectToolbarIcon(title: "Save Location", self, #selector(save))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
-        self.stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-        self.stackViewForecast = ObjectStackView(.fill, .vertical)
-        self.stackViewHazards = ObjectStackView(.fill, .vertical)
+        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+        stackViewForecast = ObjectStackView(.fill, .vertical)
+        stackViewHazards = ObjectStackView(.fill, .vertical)
         objScrollStackView = ObjectScrollStackView(self)
-        scrollView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        stackView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -44,13 +44,13 @@ final class vcAdhocLocation: UIwXViewController {
     }
     
     private func display() {
-        _ = ObjectCardCurrentConditions(self.stackViewCurrentConditions.view, self.objectCurrentConditions, true)
-        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
-        ObjectHazards.getHazardCards(self.stackView, self.objectHazards)
-        _ = ObjectCardSevenDayCollection(self.stackViewForecast.view, self.scrollView, self.objectSevenDay)
-        self.stackView.addArrangedSubview(self.stackViewForecast.view)
-        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        _ = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, true)
+        stackView.addArrangedSubview(stackViewCurrentConditions.view)
+        stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        ObjectHazards.getHazardCards(stackView, objectHazards)
+        _ = ObjectCardSevenDayCollection(stackViewForecast.view, scrollView, objectSevenDay)
+        stackView.addArrangedSubview(stackViewForecast.view)
+        stackViewForecast.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
     @objc func save() {

@@ -20,17 +20,17 @@ final class vcOpc: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
-        self.getContent(index)
+        getContent(index)
     }
     
     override func willEnterForeground() {
-        self.getContent(index)
+        getContent(index)
     }
     
     func getContent(_ index: Int) {
         self.index = index
-        Utility.writePref(self.prefToken, self.index)
-        self.productButton.title = UtilityOpcImages.labels[self.index]
+        Utility.writePref(prefToken, self.index)
+        productButton.title = UtilityOpcImages.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
             DispatchQueue.main.async { self.display(bitmap) }
@@ -38,11 +38,11 @@ final class vcOpc: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
+        image.setBitmap(bitmap)
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, getContent(_:))
     }
     
     @objc func share(sender: UIButton) {

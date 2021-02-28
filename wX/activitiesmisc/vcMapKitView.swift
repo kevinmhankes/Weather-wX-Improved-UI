@@ -23,7 +23,7 @@ final class vcMapKitView: UIwXViewController, MKMapViewDelegate {
         latLonButton = ObjectToolbarIcon(self, #selector(showExternalMap))
         latLonButton.title = mapKitLat + ", " + mapKitLon
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, latLonButton]).items
-        self.view.addSubview(mapView)
+        view.addSubview(mapView)
     }
     
     @objc func showExternalMap() {

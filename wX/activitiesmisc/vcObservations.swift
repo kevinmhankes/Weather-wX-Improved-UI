@@ -21,18 +21,18 @@ final class vcObservations: UIwXViewController {
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        self.index = Utility.readPref(prefTokenIndex, 0)
-        self.getContent(index)
+        index = Utility.readPref(prefTokenIndex, 0)
+        getContent(index)
     }
     
     override func willEnterForeground() {
-        self.getContent(index)
+        getContent(index)
     }
     
     func getContent(_ index: Int) {
         self.index = index
-        Utility.writePref(self.prefTokenIndex, self.index)
-        self.productButton.title = UtilityObservations.labels[self.index]
+        Utility.writePref(prefTokenIndex, self.index)
+        productButton.title = UtilityObservations.labels[self.index]
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(UtilityObservations.urls[self.index])
             DispatchQueue.main.async { self.display(bitmap) }
@@ -40,11 +40,11 @@ final class vcObservations: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
+        image.setBitmap(bitmap)
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityObservations.labels, self.getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityObservations.labels, getContent(_:))
     }
     
     @objc func shareClicked(sender: UIButton) {

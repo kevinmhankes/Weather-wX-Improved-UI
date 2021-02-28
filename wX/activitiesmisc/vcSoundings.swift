@@ -21,11 +21,11 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, siteButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
-        self.getContent(UtilityLocation.getNearestSoundingSite(Location.latLon))
+        getContent(UtilityLocation.getNearestSoundingSite(Location.latLon))
     }
     
     func getContent(_ wfo: String) {
-        self.siteButton.title = wfo
+        siteButton.title = wfo
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcSoundings.getImage(wfo)
             DispatchQueue.main.async { self.display(bitmap) }
@@ -33,7 +33,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
     }
     
     private func display(_ bitmap: Bitmap) {
-        self.image.setBitmap(bitmap)
+        image.setBitmap(bitmap)
     }
     
     @objc func share(sender: UIButton) {
@@ -51,7 +51,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
     }
     
     func mapCall(annotationView: MKAnnotationView) {
-        self.getContent((annotationView.annotation!.title!)!)
+        getContent((annotationView.annotation!.title!)!)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

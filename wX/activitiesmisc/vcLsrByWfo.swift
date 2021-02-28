@@ -21,7 +21,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent(Location.wfo)
+        getContent(Location.wfo)
     }
     
     func getContent(_ wfo: String) {
@@ -36,9 +36,9 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     
     private func display() {
         if !map.mapShown {
-            self.stackView.removeViews()
-            self.wfoProd.forEach { item in
-                let objectTextView = ObjectTextView(self.stackView, item)
+            stackView.removeViews()
+            wfoProd.forEach { item in
+                let objectTextView = ObjectTextView(stackView, item)
                 objectTextView.font = FontSize.hourly.size
                 objectTextView.constrain(scrollView)
             }
@@ -76,7 +76,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
     
     func mapCall(annotationView: MKAnnotationView) {
-        self.getContent((annotationView.annotation!.title!)!)
+        getContent((annotationView.annotation!.title!)!)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

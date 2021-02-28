@@ -26,7 +26,7 @@ final class vcSevereDashboard: UIwXViewController {
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
 
     override func getContent() {
@@ -65,17 +65,17 @@ final class vcSevereDashboard: UIwXViewController {
                 spokenText += count + titles[index] + " "
             }
         }
-        spokenText += String(self.snMcd.bitmaps.count) + " mcd " + String(self.snWat.bitmaps.count) + " watch " + String(self.snMpd.bitmaps.count) + " mpd "
+        spokenText += String(snMcd.bitmaps.count) + " mcd " + String(snWat.bitmaps.count) + " watch " + String(snMpd.bitmaps.count) + " mpd "
         return spokenText
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        if self.buttonActions[sender.data].hasPrefix("WPCMPD") {
-            Route.spcMcdWatchItem(self, .WPCMPD, self.buttonActions[sender.data].replace("WPCMPD", ""))
-        } else if self.buttonActions[sender.data].hasPrefix("SPCMCD") {
-            Route.spcMcdWatchItem(self, .SPCMCD, self.buttonActions[sender.data].replace("SPCMCD", ""))
-        } else if self.buttonActions[sender.data].hasPrefix("SPCWAT") {
-            Route.spcMcdWatchItem(self, .SPCWAT, self.buttonActions[sender.data].replace("SPCWAT", ""))
+        if buttonActions[sender.data].hasPrefix("WPCMPD") {
+            Route.spcMcdWatchItem(self, .WPCMPD, buttonActions[sender.data].replace("WPCMPD", ""))
+        } else if buttonActions[sender.data].hasPrefix("SPCMCD") {
+            Route.spcMcdWatchItem(self, .SPCMCD, buttonActions[sender.data].replace("SPCMCD", ""))
+        } else if buttonActions[sender.data].hasPrefix("SPCWAT") {
+            Route.spcMcdWatchItem(self, .SPCWAT, buttonActions[sender.data].replace("SPCWAT", ""))
         }
     }
 
@@ -112,7 +112,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func goToAlerts() {
-        self.goToVC(vcUSAlerts())
+        goToVC(vcUSAlerts())
     }
 
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
@@ -129,11 +129,11 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func share(sender: UIButton) {
-        UtilityShare.image(self, sender, [self.bitmap] + self.snMcd.bitmaps + self.snWat.bitmaps + self.snMpd.bitmaps)
+        UtilityShare.image(self, sender, [bitmap] + snMcd.bitmaps + snWat.bitmaps + snMpd.bitmaps)
     }
 
     private func display() {
-        self.refreshViews()
+        refreshViews()
         var views = [UIView]()
         buttonActions = [String]()
         var imageCount = 0
@@ -207,7 +207,7 @@ final class vcSevereDashboard: UIwXViewController {
                     UITapGestureRecognizerWithData(index, self, #selector(imageClicked(sender:))),
                     widthDivider: imagesPerRow
                 )
-                self.buttonActions.append(String(describing: severeNotice.type) + severeNotice.numberList[imageIndex])
+                buttonActions.append(String(describing: severeNotice.type) + severeNotice.numberList[imageIndex])
                 objectImage.img.accessibilityLabel = String(describing: severeNotice.type) + severeNotice.numberList[imageIndex]
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
@@ -215,8 +215,8 @@ final class vcSevereDashboard: UIwXViewController {
                 imageCount += 1
             }
         }
-        self.showTextWarnings()
-        self.view.bringSubviewToFront(self.toolbar)
+        showTextWarnings()
+        view.bringSubviewToFront(toolbar)
         scrollView.accessibilityElements = views
         var status = ""
         let warningLabel = ["W", "M", "P"]
@@ -225,7 +225,7 @@ final class vcSevereDashboard: UIwXViewController {
                 status += warningLabel[index] + "(" + String(severeNotice.bitmaps.count) + ") "
             }
         }
-        self.statusButton.title = status + " " + statusWarnings
+        statusButton.title = status + " " + statusWarnings
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

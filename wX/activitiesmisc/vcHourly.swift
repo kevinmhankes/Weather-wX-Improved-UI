@@ -14,13 +14,13 @@ final class vcHourly: UIwXViewControllerWithAudio {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         objectTextView = ObjectTextView(
-            self.stackView,
+            stackView,
             "",
             FontSize.hourly.size,
             UITapGestureRecognizer(target: self, action: #selector(scroll))
         )
         objectTextView.constrain(scrollView)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -31,7 +31,7 @@ final class vcHourly: UIwXViewControllerWithAudio {
     }
     
     private func display(_ html: String) {
-        self.objectTextView.text = html
+        objectTextView.text = html
     }
     
     @objc func scroll() {

@@ -24,7 +24,7 @@ final class vcUSAlerts: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -38,12 +38,12 @@ final class vcUSAlerts: UIwXViewController {
     }
     
     private func display() {
-        self.refreshViews()
+        refreshViews()
         if !filterShown {
-            self.filterButton.title = "Tornado/ThunderStorm/FFW"
-            self.objAlertSummary = ObjectAlertSummary(self, "", self.capAlerts, self.filterGesture)
-            self.objAlertSummary.getImage()
-            self.bitmap = self.objAlertSummary.image
+            filterButton.title = "Tornado/ThunderStorm/FFW"
+            objAlertSummary = ObjectAlertSummary(self, "", capAlerts, filterGesture)
+            objAlertSummary.getImage()
+            bitmap = objAlertSummary.image
         } else {
             filterChanged(filter)
         }
@@ -59,31 +59,31 @@ final class vcUSAlerts: UIwXViewController {
     }
     
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.image(self, sender, self.objAlertSummary.image)
+        UtilityShare.image(self, sender, objAlertSummary.image)
     }
     
     @objc func filterClicked() {
         var eventArr = [String]()
         var counts = [String: Int]()
         var eventArrWithCount = [String]()
-        self.capAlerts.forEach { eventArr.append($0.event) }
+        capAlerts.forEach { eventArr.append($0.event) }
         eventArr.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
         Array(counts.keys).sorted().forEach {
             eventArrWithCount.append($0 + ": " + String(counts[$0]!))
         }
-        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, self.filterChanged(_:))
+        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, filterChanged(_:))
     }
     
     func filterChanged(_ filter: String) {
-        self.filterButton.title = filter
-        self.objAlertSummary = ObjectAlertSummary(self, filter, self.capAlerts, self.filterGesture, showImage: false)
-        self.objAlertSummary.image = bitmap
-        self.filterShown = true
+        filterButton.title = filter
+        objAlertSummary = ObjectAlertSummary(self, filter, capAlerts, filterGesture, showImage: false)
+        objAlertSummary.image = bitmap
+        filterShown = true
         self.filter = filter
     }
     
     @objc func imageClicked() {
-        self.objAlertSummary.changeImage(self)
+        objAlertSummary.changeImage(self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

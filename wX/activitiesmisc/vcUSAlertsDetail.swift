@@ -19,7 +19,7 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         playButton = ObjectToolbarIcon(self, .play, #selector(playClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, radarButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
@@ -33,7 +33,7 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     }
     
     private func display() {
-        self.objectAlertDetail.updateContent(self.scrollView, self.cap)
+        objectAlertDetail.updateContent(scrollView, cap)
     }
     
     override func playClicked() {

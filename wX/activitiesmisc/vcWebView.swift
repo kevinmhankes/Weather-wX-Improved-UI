@@ -29,12 +29,12 @@ final class vcWebView: UIwXViewController {
             toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton]).items
         }
         webView = WKWebView()
-        self.view.addSubview(webView)
-        self.view.bringSubviewToFront(toolbar)
+        view.addSubview(webView)
+        view.bringSubviewToFront(toolbar)
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        webView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
+        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: view.topAnchor, constant: UtilityUI.getTopPadding()).isActive = true
         webView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
         if stateCode != "tornado" && !useUrl {
             stateCode = aStateCode
@@ -43,7 +43,7 @@ final class vcWebView: UIwXViewController {
             useUrl = true
         }
         if aStateCode == "tornado" {
-            self.stateCode = aStateCode
+            stateCode = aStateCode
             url = "https://www.twitter.com/hashtag/tornado"
             useUrl = true
         }
@@ -63,7 +63,7 @@ final class vcWebView: UIwXViewController {
             self,
             productButton,
             GlobalArrays.states + UtilityCanada.provinceCodes,
-            self.productChanged(_:)
+            productChanged(_:)
         )
     }
 
@@ -71,12 +71,12 @@ final class vcWebView: UIwXViewController {
         urlChanged(stateCodeCurrent)
         webView.load(URLRequest(url: URL(string: url)!))
         if aStateCode != "tornado" {
-            Utility.writePref(prefToken, self.stateCode)
+            Utility.writePref(prefToken, stateCode)
         }
     }
 
     func urlChanged(_ stateString: String) {
-        self.stateCode = stateString
+        stateCode = stateString
         let state = stateString.split(":")[0]
         var url = "https://www.twitter.com/hashtag/" + state.lowercased()
         var title = "#" + state.lowercased()

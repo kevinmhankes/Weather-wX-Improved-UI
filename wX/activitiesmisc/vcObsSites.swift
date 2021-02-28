@@ -19,8 +19,8 @@ final class vcObsSites: UIwXViewController {
         super.viewDidLoad()
         siteButton = ObjectToolbarIcon(self, #selector(siteClicked))
         mapButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        self.siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
-        self.mapButton.title = "Map"
+        siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
+        mapButton.title = "Map"
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, mapButton, siteButton]).items
         objScrollStackView = ObjectScrollStackView(self)
         constructStateView()
@@ -50,7 +50,7 @@ final class vcObsSites: UIwXViewController {
             listCity.append(id + ": " + city)
             listIds.append(id)
         }
-        self.stackView.removeViews()
+        stackView.removeViews()
         listCity.enumerated().forEach { index, city in
             let objectTextView = ObjectTextView(
                 stackView,
@@ -60,7 +60,7 @@ final class vcObsSites: UIwXViewController {
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
         }
-        self.scrollView.scrollToTop()
+        scrollView.scrollToTop()
     }
     
     @objc func gotoObsSite(sender: UITapGestureRecognizerWithData) {
@@ -69,14 +69,14 @@ final class vcObsSites: UIwXViewController {
         } else {
             let site = listCity[sender.data].split(":")[0]
             Utility.writePref(prefToken, site)
-            self.siteButton.title = "Last Used: " + site
+            siteButton.title = "Last Used: " + site
             Route.web(self, "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site)
         }
     }
     
     func constructStateView() {
-        self.stateView = true
-        self.stackView.removeViews()
+        stateView = true
+        stackView.removeViews()
         GlobalArrays.states.enumerated().forEach { index, state in
             let objectTextView = ObjectTextView(
                 stackView,

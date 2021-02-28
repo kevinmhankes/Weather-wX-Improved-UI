@@ -27,7 +27,7 @@ final class vcLightning: UIwXViewController {
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         initializePreferences()
-        self.getContent()
+        getContent()
     }
     
     func initializePreferences() {
@@ -38,12 +38,12 @@ final class vcLightning: UIwXViewController {
     }
     
     override func getContent() {
-        self.sectorPretty = UtilityLightning.getSectorLabel(self.sector)
-        self.periodPretty = UtilityLightning.getTimeLabel(self.period)
-        self.productButton.title = self.sectorPretty
-        self.timeButton.title = self.periodPretty
-        Utility.writePref(prefTokenSector, self.sector)
-        Utility.writePref(prefTokenPeriod, self.period)
+        sectorPretty = UtilityLightning.getSectorLabel(sector)
+        periodPretty = UtilityLightning.getTimeLabel(period)
+        productButton.title = sectorPretty
+        timeButton.title = periodPretty
+        Utility.writePref(prefTokenSector, sector)
+        Utility.writePref(prefTokenPeriod, period)
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityLightning.getImage(self.sector, self.period)
             DispatchQueue.main.async { self.display(bitmap) }
@@ -51,33 +51,33 @@ final class vcLightning: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        if self.firstRun {
-            self.image.setBitmap(bitmap)
-            self.firstRun = false
+        if firstRun {
+            image.setBitmap(bitmap)
+            firstRun = false
         } else {
-            self.image.updateBitmap(bitmap)
+            image.updateBitmap(bitmap)
         }
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, title: "Region Selection", productButton, UtilityLightning.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", productButton, UtilityLightning.sectors, sectorChanged(_:))
     }
     
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, title: "Time Selection", timeButton, UtilityLightning.times, self.timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, UtilityLightning.times, timeChanged(_:))
     }
     
     func sectorChanged(_ idx: Int) {
         firstRun = true
-        self.sectorPretty = UtilityLightning.sectors[idx]
-        self.sector = UtilityLightning.getSector(self.sectorPretty)
-        self.getContent()
+        sectorPretty = UtilityLightning.sectors[idx]
+        sector = UtilityLightning.getSector(sectorPretty)
+        getContent()
     }
     
     func timeChanged(_ index: Int) {
-        self.periodPretty = UtilityLightning.times[index]
-        self.period = UtilityLightning.getTime(self.periodPretty)
-        self.getContent()
+        periodPretty = UtilityLightning.times[index]
+        period = UtilityLightning.getTime(periodPretty)
+        getContent()
     }
     
     @objc func share(sender: UIButton) {

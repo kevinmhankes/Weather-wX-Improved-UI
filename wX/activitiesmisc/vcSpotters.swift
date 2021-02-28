@@ -19,7 +19,7 @@ final class vcSpotters: UIwXViewController {
         spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterCountButton, spotterReportsButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.getContent()
+        getContent()
     }
     
     // FIXME no rotation support
@@ -31,17 +31,17 @@ final class vcSpotters: UIwXViewController {
     }
     
     private func display(_ spotterData: [Spotter]) {
-        self.refreshViews()
-        self.spotterCountButton.title = "Count: " + String(spotterData.count)
-        self.spotterDataSorted = spotterData.sorted(by: {$1.lastName > $0.lastName})
-        self.spotterDataSorted.enumerated().forEach { index, item in
-            _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:))))
+        refreshViews()
+        spotterCountButton.title = "Count: " + String(spotterData.count)
+        spotterDataSorted = spotterData.sorted(by: {$1.lastName > $0.lastName})
+        spotterDataSorted.enumerated().forEach { index, item in
+            _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
         }
     }
     
     @objc func showSpotterReports() {
         let vc = vcSpotterReports()
-        self.goToVC(vc)
+        goToVC(vc)
     }
     
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
@@ -53,6 +53,6 @@ final class vcSpotters: UIwXViewController {
     }
     
     func showMap(_ selection: Int) {
-        Route.map(self, self.spotterDataSorted[selection].location.latString, self.spotterDataSorted[selection].location.lonString)
+        Route.map(self, spotterDataSorted[selection].location.latString, spotterDataSorted[selection].location.lonString)
     }
 }

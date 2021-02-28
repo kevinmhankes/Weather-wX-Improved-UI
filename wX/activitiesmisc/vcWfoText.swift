@@ -47,7 +47,7 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             let state = Utility.getWfoSiteName(wfo).split(",")[0]
             product = "RTP" + state
         }
-        self.getContent()
+        getContent()
     }
     
     override func doneClicked() {
@@ -75,32 +75,32 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     
     private func display(_ html: String) {
         if html == "" {
-            self.objectTextView.text = "None issued by this office recently."
+            objectTextView.text = "None issued by this office recently."
         } else {
-            self.objectTextView.text = html
+            objectTextView.text = html
         }
-        if UtilityWfoText.needsFixedWidthFont(self.product) {
-            self.objectTextView.font = FontSize.hourly.size
+        if UtilityWfoText.needsFixedWidthFont(product) {
+            objectTextView.font = FontSize.hourly.size
         } else {
-            self.objectTextView.font = FontSize.medium.size
+            objectTextView.font = FontSize.medium.size
         }
-        if self.product.hasPrefix("RTP") && self.product.count == 5 {
+        if product.hasPrefix("RTP") && product.count == 5 {
             Utility.writePref("WFOTEXT_PARAM_LAST_USED", "RTPZZ")
         } else {
-            Utility.writePref("WFOTEXT_PARAM_LAST_USED", self.product)
+            Utility.writePref("WFOTEXT_PARAM_LAST_USED", product)
         }
-        Utility.writePref("WFO_LAST_USED", self.wfo)
-        self.scrollView.scrollToTop()
+        Utility.writePref("WFO_LAST_USED", wfo)
+        scrollView.scrollToTop()
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityWfoText.wfoProdListNoCode, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityWfoText.wfoProdListNoCode, productChanged(_:))
     }
     
     func productChanged(_ index: Int) {
-        self.product = UtilityWfoText.wfoProdList[index].split(":")[0]
+        product = UtilityWfoText.wfoProdList[index].split(":")[0]
         UtilityAudio.resetAudio(self, playButton)
-        self.getContent()
+        getContent()
     }
     
     @objc override func shareClicked(sender: UIButton) {
@@ -119,13 +119,13 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     
     func mapCall(annotationView: MKAnnotationView) {
         scrollView.scrollToTop()
-        self.wfo = (annotationView.annotation!.title!)!
+        wfo = (annotationView.annotation!.title!)!
         UtilityAudio.resetAudio(self, playButton)
-        self.getContent()
+        getContent()
     }
     
     override func playlistClicked() {
-        _ = UtilityPlayList.add(self.product + self.wfo, self.objectTextView.text, self, playListButton)
+        _ = UtilityPlayList.add(product + wfo, objectTextView.text, self, playListButton)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
