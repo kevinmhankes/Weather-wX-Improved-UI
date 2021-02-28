@@ -13,10 +13,10 @@ final class vcCanadaHourly: UIwXViewControllerWithAudio {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(self.stackView, "", FontSize.hourly.size)
+        objectTextView = ObjectTextView(stackView, "", FontSize.hourly.size)
         objectTextView.constrain(scrollView)
-        _ = ObjectCanadaLegal(self.stackView)
-        self.getContent()
+        _ = ObjectCanadaLegal(stackView)
+        getContent()
     }
     
     override func getContent() {
@@ -27,6 +27,6 @@ final class vcCanadaHourly: UIwXViewControllerWithAudio {
     }
     
     private func display(_ html: String) {
-        self.objectTextView.text = html
+        objectTextView.text = html
     }
 }

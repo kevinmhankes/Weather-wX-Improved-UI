@@ -32,12 +32,12 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
         objectTextView.constrain(scrollView)
         _ = ObjectCanadaLegal(stackView)
         product = Utility.readPref(prefToken, product)
-        self.getContent()
+        getContent()
     }
     
     override func getContent() {
-        self.productButton.title = self.product
-        Utility.writePref(prefToken, self.product)
+        productButton.title = product
+        Utility.writePref(prefToken, product)
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownload.getTextProduct(self.product.uppercased())
             DispatchQueue.main.async { self.display(html) }
@@ -45,17 +45,17 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
     }
     
     private func display(_ html: String) {
-        self.objectTextView.text = html
+        objectTextView.text = html
     }
     
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityCanada.products, self.productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityCanada.products, productChanged(_:))
     }
     
     func productChanged(_ product: String) {
         self.product = product
         UtilityAudio.resetAudio(self, playButton)
-        self.getContent()
+        getContent()
     }
     
     @objc override func shareClicked(sender: UIButton) {

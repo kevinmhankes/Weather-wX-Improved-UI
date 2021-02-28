@@ -48,7 +48,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     func display() {
-        self.stackView.removeViews()
+        stackView.removeViews()
         playlistItems.enumerated().forEach { index, item in
             let productText = Utility.readPref("PLAYLIST_" + item, "")
             let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
@@ -57,7 +57,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 item,
                 topLine,
                 productText.truncate(textPreviewLength),
-                UITapGestureRecognizerWithData(index, self, #selector(self.buttonPressed(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:)))
             )
         }
     }
@@ -126,20 +126,20 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
     
     @objc func addNationalProductClicked() {
-        _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, self.addNationalProduct(_:))
+        _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, addNationalProduct(_:))
     }
     
     func addNationalProduct(_ index: Int) {
         let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
-        downloadAndAddProduct(product, self.addNationalProductButton)
+        downloadAndAddProduct(product, addNationalProductButton)
     }
     
     @objc func wfoTextClicked() {
-        _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, self.addWfoProduct(_:))
+        _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, addWfoProduct(_:))
     }
     
     func addWfoProduct(_ office: String) {
-        downloadAndAddProduct("AFD" + office.uppercased(), self.wfoTextButton)
+        downloadAndAddProduct("AFD" + office.uppercased(), wfoTextButton)
     }
     
     func downloadAndAddProduct(_ product: String, _ button: ObjectToolbarIcon) {

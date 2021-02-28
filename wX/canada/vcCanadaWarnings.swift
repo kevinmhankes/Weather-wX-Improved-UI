@@ -19,8 +19,8 @@ final class vcCanadaWarnings: UIwXViewController {
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, provinceButton, shareButton]).items
         objScrollStackView = ObjectScrollStackView(self)
-        self.objectCanadaWarnings = ObjectCanadaWarnings(self)
-        self.getContent()
+        objectCanadaWarnings = ObjectCanadaWarnings(self)
+        getContent()
     }
     
     override func getContent() {
@@ -31,7 +31,7 @@ final class vcCanadaWarnings: UIwXViewController {
     }
     
     @objc func share(sender: UIButton) {
-        UtilityShare.image(self, sender, self.objectCanadaWarnings.bitmap)
+        UtilityShare.image(self, sender, objectCanadaWarnings.bitmap)
     }
     
     // this is called in objectCanadaWarnings
@@ -40,12 +40,12 @@ final class vcCanadaWarnings: UIwXViewController {
     }
     
     @objc func provinceClicked() {
-        _ = ObjectPopUp(self, title: "Province Selection", provinceButton, self.objectCanadaWarnings.provinces, self.provinceChanged(_:))
+        _ = ObjectPopUp(self, title: "Province Selection", provinceButton, objectCanadaWarnings.provinces, provinceChanged(_:))
     }
     
     func provinceChanged(_ province: String) {
         self.province = province
-        self.objectCanadaWarnings.setProvince(province)
+        objectCanadaWarnings.setProvince(province)
         getContent()
     }
     
@@ -59,9 +59,9 @@ final class vcCanadaWarnings: UIwXViewController {
     }
     
     private func display() {
-        self.refreshViews()
-        self.objectCanadaWarnings.showData()
-        self.provinceButton.title = self.province + "(" + (self.objectCanadaWarnings.count) + ")"
+        refreshViews()
+        objectCanadaWarnings.showData()
+        provinceButton.title = province + "(" + (objectCanadaWarnings.count) + ")"
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
