@@ -7,6 +7,7 @@
 import UIKit
 
 final class UIPreferences {
+
     static let tabBarHeight: CGFloat = 48.0
     static let toolbarHeight: CGFloat = 44.0
     static let statusBarHeight: CGFloat = 20.0

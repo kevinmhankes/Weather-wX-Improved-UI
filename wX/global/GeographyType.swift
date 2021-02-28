@@ -72,7 +72,7 @@ struct GeographyType {
         self.relativeBuffer = relativeBuffer
         self.count = count
         self.color = color
-        self.display = pref
+        display = pref
     }
 
     static func regen() {

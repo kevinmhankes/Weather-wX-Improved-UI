@@ -108,8 +108,8 @@ struct PolygonType {
 
     init(_ color: Int, _ stringValue: String, _ pref: Bool) {
         self.color = color
-        self.string = stringValue
-        self.display = pref
+        string = stringValue
+        display = pref
     }
 
     init(_ color: Int, _ stringValue: String, _ pref: Bool, _ size: Int) {

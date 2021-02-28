@@ -37,7 +37,7 @@ class vcTabParent: UIViewController {
     }
     
     func setTabBarColor() {
-        self.tabBarController?.tabBar.barTintColor = UIColor(
+        tabBarController?.tabBar.barTintColor = UIColor(
             red: AppColors.primaryColorRed,
             green: AppColors.primaryColorGreen,
             blue: AppColors.primaryColorBlue,
@@ -47,43 +47,43 @@ class vcTabParent: UIViewController {
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .left {
-            let selectedIndex = self.tabBarController!.selectedIndex
+            let selectedIndex = tabBarController!.selectedIndex
             if selectedIndex == 2 {
-                self.tabBarController!.selectedIndex = 0
+                tabBarController!.selectedIndex = 0
             } else {
-                self.tabBarController!.selectedIndex = selectedIndex + 1
+                tabBarController!.selectedIndex = selectedIndex + 1
             }
         }
         if sender.direction == .right {
-            let selectedIndex = self.tabBarController!.selectedIndex
+            let selectedIndex = tabBarController!.selectedIndex
             if selectedIndex == 0 {
-                self.tabBarController!.selectedIndex = 2
+                tabBarController!.selectedIndex = 2
             } else {
-                self.tabBarController!.selectedIndex = selectedIndex - 1
+                tabBarController!.selectedIndex = selectedIndex - 1
             }
         }
     }
 
     @objc func swipeRight() {
-        let selectedIndex = self.tabBarController!.selectedIndex
+        let selectedIndex = tabBarController!.selectedIndex
         if selectedIndex == 0 {
-            self.tabBarController!.selectedIndex = 2
+            tabBarController!.selectedIndex = 2
         } else {
-            self.tabBarController!.selectedIndex = selectedIndex - 1
+            tabBarController!.selectedIndex = selectedIndex - 1
         }
     }
 
     @objc func swipeLeft() {
-        let selectedIndex = self.tabBarController!.selectedIndex
+        let selectedIndex = tabBarController!.selectedIndex
         if selectedIndex == 2 {
-            self.tabBarController!.selectedIndex = 0
+            tabBarController!.selectedIndex = 0
         } else {
-            self.tabBarController!.selectedIndex = selectedIndex + 1
+            tabBarController!.selectedIndex = selectedIndex + 1
         }
     }
 
     @objc func escape() {
-        self.tabBarController!.selectedIndex = 0
+        tabBarController!.selectedIndex = 0
     }
 
     @objc func imgClicked(sender: UITapGestureRecognizer) {
@@ -116,17 +116,17 @@ class vcTabParent: UIViewController {
     }
 
     func refreshViews() {
-        self.removeAllViews()
-        self.scrollView = UIScrollView()
-        self.stackView = UIStackView()
-        self.objScrollStackView = ObjectScrollStackView(self, self.scrollView, self.stackView)
+        removeAllViews()
+        scrollView = UIScrollView()
+        stackView = UIStackView()
+        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
         }
     }
 
     func removeAllViews() {
-        self.view.subviews.forEach { $0.removeFromSuperview() }
+        view.subviews.forEach { $0.removeFromSuperview() }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

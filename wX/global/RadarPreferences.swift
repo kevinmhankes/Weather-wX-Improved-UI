@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 final class RadarPreferences {
+
     static var radarWarnings = false
     static var radarWarningsOrig = false
     static var locdotFollowsGps = false

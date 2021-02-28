@@ -41,11 +41,11 @@ final public class ObjectModel {
     private var modelButton = ObjectToolbarIcon()
     let productButtonTruncate = 18
     
-    var time: String { self.timeStr.split(" ")[0] }
+    var time: String { timeStr.split(" ")[0] }
     
     var timeIndex: Int {
-        get { self.timeIdx }
-        set { self.timeIdx = newValue }
+        get { timeIdx }
+        set { timeIdx = newValue }
     }
     
     convenience init(_ prefModel: String) {
@@ -185,7 +185,7 @@ final public class ObjectModel {
     
     func setModelVars(_ modelName: String) {
         self.modelName = modelName
-        self.modelToken = self.prefModel + ":" + modelName
+        modelToken = prefModel + ":" + modelName
         switch modelToken {
         case "NSSLWRF:WRF":
             params = UtilityModelNsslWrfInterface.paramsNsslWrf
@@ -408,41 +408,41 @@ final public class ObjectModel {
             sectors = UtilityModelWpcGefsInterface.sectors
             times = []
             stride(from: 0, to: 240, by: 6).forEach {times.append(String(format: "%03d", $0))}
-            runs = self.runTimeData.listRun
+            runs = runTimeData.listRun
         case "SPCHRRR:HRRR":
             params = UtilityModelSpcHrrrInterface.params
             paramLabels = UtilityModelSpcHrrrInterface.labels
             sectors = UtilityModelSpcHrrrInterface.sectors
             times = []
             (2...15).forEach {times.append(String(format: "%02d", $0))}
-            runs = self.runTimeData.listRun
+            runs = runTimeData.listRun
         case "SPCHREF:HREF":
             params = UtilityModelSpcHrefInterface.params
             paramLabels = UtilityModelSpcHrefInterface.labels
             sectors = UtilityModelSpcHrefInterface.sectorsLong
             times = []
             (1...49).forEach {times.append(String(format: "%02d", $0))}
-            runs = self.runTimeData.listRun
+            runs = runTimeData.listRun
         case "SPCSREF:SREF":
             params = UtilityModelSpcSrefInterface.params
             paramLabels = UtilityModelSpcSrefInterface.labels
             sectors = []
             times = []
             stride(from: 0, to: 87, by: 3).forEach {times.append(String(format: "%02d", $0))}
-            runs = self.runTimeData.listRun
+            runs = runTimeData.listRun
         default: break
         }
         if sectors.count > 0 {
-            if !self.sectors.contains(sector) {
-                self.sector = self.sectors[0]
-                self.sectorButton.title = self.sector
+            if !sectors.contains(sector) {
+                sector = sectors[0]
+                sectorButton.title = sector
             }
         }
-        if !self.params.contains(param) {
-            if self.params.count > 0 {
-                self.param = self.params[0]
+        if !params.contains(param) {
+            if params.count > 0 {
+                param = params[0]
             }
-            self.prodButton.title = self.param.truncate(productButtonTruncate)
+            prodButton.title = param.truncate(productButtonTruncate)
         }
     }
     
@@ -498,19 +498,19 @@ final public class ObjectModel {
         case "GLCFS":
             return UtilityModelGlcfsInputOutput.getImage(self)
         case "NCEP":
-            if self.model == "NAM4KM" {
-                self.model = "NAM-HIRES"
+            if model == "NAM4KM" {
+                model = "NAM-HIRES"
             }
-            if self.model.contains("HRW") && self.model.contains("-AK") {
-                self.model = self.model.replace("-AK", "")
+            if model.contains("HRW") && model.contains("-AK") {
+                model = model.replace("-AK", "")
             }
-            if self.model.contains("HRW") && self.model.contains("-PR") {
-                self.model = self.model.replace("-PR", "")
+            if model.contains("HRW") && model.contains("-PR") {
+                model = model.replace("-PR", "")
             }
-            if self.model != "HRRR" {
-                self.timeStr = self.timeStr.truncate(3)
+            if model != "HRRR" {
+                timeStr = timeStr.truncate(3)
             } else {
-                self.timeStr = self.timeStr.truncate(3)
+                timeStr = timeStr.truncate(3)
             }
             return UtilityModelNcepInputOutput.getImage(self)
         case "WPCGEFS":
@@ -551,47 +551,47 @@ final public class ObjectModel {
     
     func setModel(_ model: String) {
         self.model = model
-        self.modelButton.title = model
+        modelButton.title = model
     }
     
     func setRun(_ run: String) {
         self.run = run
-        self.runButton.title = run
-        self.statusButton.title = runTimeData.imageCompleteStr
+        runButton.title = run
+        statusButton.title = runTimeData.imageCompleteStr
     }
     
     func setSector(_ sector: String) {
         self.sector = sector
-        self.sectorButton.title = sector
+        sectorButton.title = sector
     }
     
     func setParam(_ paramIdx: Int) {
-        self.param = params[paramIdx]
-        self.prodButton.title = param.truncate(productButtonTruncate)
-        if self.modelName == "SSEO" {
-            setModelVars(self.modelName)
+        param = params[paramIdx]
+        prodButton.title = param.truncate(productButtonTruncate)
+        if modelName == "SSEO" {
+            setModelVars(modelName)
         }
     }
     
     func setTimeIdx(_ timeIdx: Int) {
         if timeIdx > -1 && timeIdx < times.count {
             self.timeIdx = timeIdx
-            self.timeStr = self.times[timeIdx]
-            self.timeButton.title = timeStr
+            timeStr = times[timeIdx]
+            timeButton.title = timeStr
         }
     }
     
     // TODO make private below 2
     func timeIdxIncr() {
-        self.timeIdx += 1
-        self.timeStr = self.times.safeGet(timeIdx)
-        self.timeButton.title = timeStr
+        timeIdx += 1
+        timeStr = times.safeGet(timeIdx)
+        timeButton.title = timeStr
     }
     
     func timeIdxDecr() {
-        self.timeIdx -= 1
-        self.timeStr = self.times.safeGet(timeIdx)
-        self.timeButton.title = timeStr
+        timeIdx -= 1
+        timeStr = times.safeGet(timeIdx)
+        timeButton.title = timeStr
     }
     
     func leftClick() {
@@ -611,6 +611,6 @@ final public class ObjectModel {
     }
     
     func setTimeArr(_ idx: Int, _ time: String) {
-        self.times[idx] = time
+        times[idx] = time
     }
 }

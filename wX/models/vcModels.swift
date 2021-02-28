@@ -82,7 +82,7 @@ final class vcModels: UIwXViewController {
                 timeButton
             ]
         ).items
-        self.view.addSubview(toolbarTop)
+        view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true, topToolbar: toolbarTop)
         fabLeft = ObjectFab(self, #selector(leftClicked), iconType: .leftArrow)
@@ -90,8 +90,8 @@ final class vcModels: UIwXViewController {
         fabLeft?.setToTheLeft()
         modelObj = ObjectModel(modelActivitySelected)
         modelObj.setButtons(productButton, sectorButton, runButton, timeButton, statusButton, modelButton)
-        self.setupModel()
-        self.getRunStatus()
+        setupModel()
+        getRunStatus()
     }
     
     func getRunStatus() {
@@ -139,51 +139,51 @@ final class vcModels: UIwXViewController {
     }
     
     private func display(_ bitmap: Bitmap) {
-        if self.firstRun {
-            self.image.setBitmap(bitmap)
-            self.firstRun = false
+        if firstRun {
+            image.setBitmap(bitmap)
+            firstRun = false
         } else {
-            self.image.updateBitmap(bitmap)
+            image.updateBitmap(bitmap)
         }
-        self.modelObj.setPreferences()
+        modelObj.setPreferences()
     }
     
     @objc func prodClicked() {
-        _ = ObjectPopUp(self, productButton, modelObj.paramLabels, self.prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, modelObj.paramLabels, prodChanged(_:))
     }
     
     @objc func showProdMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, self.showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
     }
     
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, self.prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, prodChanged(_:))
     }
     
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, self.sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, sectorChanged(_:))
     }
     
     func sectorChanged(_ sector: String) {
-        self.modelObj.setSector(sector)
+        modelObj.setSector(sector)
         getRunStatus()
     }
     
     @objc func runClicked() {
-        _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, self.runChanged(_:))
+        _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, runChanged(_:))
     }
     
     func runChanged(_ run: String) {
         modelObj.setRun(run)
-        self.getContent()
+        getContent()
     }
     
     @objc func modelClicked() {
-        _ = ObjectPopUp(self, title: "Model Selection", modelButton, self.modelObj.models, self.modelChanged(_:))
+        _ = ObjectPopUp(self, title: "Model Selection", modelButton, modelObj.models, modelChanged(_:))
     }
     
     func modelChanged(_ model: String) {
-        self.modelObj.setModel(model)
+        modelObj.setModel(model)
         setupModel()
         getRunStatus()
     }
@@ -213,34 +213,34 @@ final class vcModels: UIwXViewController {
     }
     
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, self.timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, timeChanged(_:))
     }
     
     func timeChanged(_ time: Int) {
         modelObj.setTimeIdx(time)
-        self.getContent()
+        getContent()
     }
     
     func prodChanged(_ prod: Int) {
         modelObj.setParam(prod)
         if modelActivitySelected.contains("SSEO") {
-            self.modelObj.times.enumerated().forEach { idx, timeStr in
-                self.modelObj.setTimeArr(
+            modelObj.times.enumerated().forEach { idx, timeStr in
+                modelObj.setTimeArr(
                     idx,
                     timeStr.split(" ")[0]
                         + " "
                         + UtilityModels.convertTimeRunToTimeString(
-                            self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
+                            modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                             timeStr.split(" ")[0]
                     )
                 )
             }
         }
-        self.getContent()
+        getContent()
     }
     
     func setupModel() {
-        modelObj.setModelVars(self.modelObj.model)
+        modelObj.setModelVars(modelObj.model)
     }
     
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
