@@ -502,7 +502,7 @@ final class UtilityRadar {
         "LMK": "38.1722",
         "LNX": "41.95778",
         "LOT": "41.60444",
-        "LOX": "34.206965",  // 33.8228
+        "LOX": "34.206965",
         "LRX": "40.73972",
         "LSX": "38.69889",
         "LTX": "33.98917",
@@ -966,8 +966,8 @@ final class UtilityRadar {
         "VWX": "38.26",
         "HKM": "20.125",
         
-        "TDTW": "42.11111",  // Detroit (DTW), MI TDTW DTX 772
-        "TADW": "5", //  Andrews Air Force Base (ADW), MD TADW LWX 346
+        "TDTW": "42.11111", // Detroit (DTW), MI TDTW DTX 772
+        "TADW": "5", // Andrews Air Force Base (ADW), MD TADW LWX 346
         "TATL": "33.646193", // Atlanta (ATL), GA TATL FFC 1,075
         "TBNA": "35.979079", // Nashville (BNA), TN TBNA OHX 817
         "TBOS": "42.15806", // Boston (BOS), MA TBOS BOX 264
@@ -1194,7 +1194,7 @@ final class UtilityRadar {
         "TIAH": "95.5675",
         "TICT": "97.437228",
         "TIDS": "86.435286",
-        "TJFK": "73.880303", // NY    FLOYD BENNETT FIELD    40.588633, -73.880303    5647
+        "TJFK": "73.880303",
         "TLAS": "115.007",
         "TMCI": "94.74167",
         "TMCO": "81.324674",

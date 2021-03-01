@@ -36,8 +36,8 @@ final class WXGLNexradLevel3WindBarbs {
                 let nm = 0.0
                 let degree2 = Double(angle)
                 let startLength = nm * nmScaleFactor
-                var start =  ExternalGlobalCoordinates(locXDbl, locYDbl)
-                var ec =  ecc.calculateEndingGlobalCoordinates(start, degree, nm * nmScaleFactor * barbLengthScaleFactor)
+                var start = ExternalGlobalCoordinates(locXDbl, locYDbl)
+                var ec = ecc.calculateEndingGlobalCoordinates(start, degree, nm * nmScaleFactor * barbLengthScaleFactor)
                 stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
                 start = ExternalGlobalCoordinates(ec)
                 ec = ecc.calculateEndingGlobalCoordinates(start, degree2 + degreeShift, barbLength * nmScaleFactor * barbLengthScaleFactor)

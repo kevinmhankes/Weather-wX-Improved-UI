@@ -16,7 +16,7 @@ final class vcSettingsMain: UIwXViewController {
         "User Interface",
         "Celsius to Fahrenheit table",
         "Spotters",
-        "About "  + GlobalVariables.appName
+        "About " + GlobalVariables.appName
     ]
     
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ final class vcSettingsMain: UIwXViewController {
             goToVC(vcSpotters())
         case "Celsius to Fahrenheit table":
             Route.textViewer(self, UtilityMath.celsiusToFahrenheitTable())
-        case "About "  + GlobalVariables.appName:
+        case "About " + GlobalVariables.appName:
             goToVC(vcSettingsAbout())
         default:
             break

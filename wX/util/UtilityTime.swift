@@ -109,7 +109,7 @@ final class UtilityTime {
     static func genModelRuns(_ time: String, _ hours: Int) -> [String] {
         let dateFmt = DateFormatter()
         dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFmt.dateFormat =  "yyyyMMddHH"
+        dateFmt.dateFormat = "yyyyMMddHH"
         let date = dateFmt.date(from: time)
         var runs = [String]()
         (1...4).forEach {
@@ -217,7 +217,7 @@ final class UtilityTime {
         let timeRange = timeRangeOriginal.replace("T", "")
         let year = Int("20" + (timeRange).parse("([0-9]{2})[0-9]{4}[0-9]{4}")) ?? 0
         let month = Int((timeRange).parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}")) ?? 0
-        let day = Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}"))  ?? 0
+        let day = Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}")) ?? 0
         let hour = Int((timeRange).parse("[0-9]{6}([0-9]{2})[0-9]{2}")) ?? 0
         let minute = Int((timeRange).parse("[0-9]{6}[0-9]{2}([0-9]{2})")) ?? 0
         var dateComponents = DateComponents()

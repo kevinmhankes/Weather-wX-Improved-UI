@@ -47,8 +47,8 @@ struct LatLon {
     // points in polygons are 8 char long separated by whitespace spread over multiple
     // fixed width lines
     // notice that long over 100 are show with the leading 1 omitted
-    // 35768265  <- 35.76 82.65
-    // 36730423  <- 36.73 104.23
+    // 35768265 <- 35.76 82.65
+    // 36730423 <- 36.73 104.23
     init(_ temp: String) {
         xStr = temp.substring(0, 4)
         yStr = temp.substring(4, 8)

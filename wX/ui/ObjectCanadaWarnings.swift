@@ -99,7 +99,7 @@ final class ObjectCanadaWarnings: NSObject {
                 locStatement = locStatement.replaceAll("<.*?>", "")
             }
             let province = listLocUrl[index].parse("report_e.html.([a-z]{2}).*?")
-            var text = province.uppercased() + ": " + locWarning  + " " + locWatch  + " " + locStatement
+            var text = province.uppercased() + ": " + locWarning + " " + locWatch + " " + locStatement
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")

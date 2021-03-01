@@ -147,8 +147,8 @@ final class WXMetalNexradLevelData {
         msecs.position = 0
         days.position = 0
         let days2: Int16 = days.getShortNative()
-        let msecs2: Int =  msecs.getInt()
-        let sec: CLong = (CLong(days2 - 1)) * 24 * 3600  + msecs2/1000
+        let msecs2: Int = msecs.getInt()
+        let sec: CLong = (CLong(days2 - 1)) * 24 * 3600 + msecs2/1000
         let date = Date(timeIntervalSince1970: TimeInterval(sec))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

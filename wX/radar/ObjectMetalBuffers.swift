@@ -37,7 +37,7 @@ class ObjectMetalBuffers {
         setTypeEnum()
         //self.shape = .line
         //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
-        //    self.shape = .triangle
+        //self.shape = .triangle
         //}
         
         switch typeEnum {
@@ -68,7 +68,7 @@ class ObjectMetalBuffers {
         honorDisplayHold = true
         //self.shape = .line
         //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
-        //    self.shape = .triangle
+        //self.shape = .triangle
         //}
         
         switch typeEnum {
@@ -148,7 +148,7 @@ class ObjectMetalBuffers {
     
     func initialize(_ floatCount: Int) {
         floatBuffer = MemoryBuffer(floatCount)
-        metalBuffer = Array(repeating: 0.0, count: floatCountPerVertex * (count * 2)) // x y  r g b
+        metalBuffer = Array(repeating: 0.0, count: floatCountPerVertex * (count * 2)) // x y r g b
         setToPositionZero()
     }
     

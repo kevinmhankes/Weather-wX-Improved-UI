@@ -162,7 +162,7 @@ final class UtilityWpcImages {
         "Estimated Planetary K index"
     ]
 
-    static let urls =  [
+    static let urls = [
         GlobalVariables.nwsWPCwebsitePrefix + "/images/wwd/radnat/NATRAD_24.gif",
         GlobalVariables.nwsWPCwebsitePrefix + "/sfc/namussfcwbg.gif",
         GlobalVariables.nwsWPCwebsitePrefix + "/sfc/90fwbg.gif",

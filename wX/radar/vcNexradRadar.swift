@@ -285,7 +285,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     //@objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-    //    if recognizer.state == .recognized { doneClicked() }
+    //if recognizer.state == .recognized { doneClicked() }
     //}
 
     @objc func onPause() {
@@ -613,8 +613,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid))
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
-                    UtilityFileManagement.moveFile(animArray[index][$0], String(index)  + "nexrad_anim" + String($0))
-                    //print(animArray[index][$0] + " move to " +  String(index)  + "nexrad_anim" + String($0))
+                    UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
+                    //print(animArray[index][$0] + " move to " +  String(index) + "nexrad_anim" + String($0))
                 }
             }
             var scaleFactor = 1
@@ -664,7 +664,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
         let heightAgl = Int(UtilityMath.getRadarBeamHeight(wxMetalRenders[index]!.radarBuffers.rd.degree, distRidKm))
         let heightMsl = Int(wxMetalRenders[index]!.radarBuffers.rd.radarHeight) + heightAgl
-        alertMessage += GlobalVariables.newline + "Beam Height MSL: " + String(heightMsl)  + " ft, AGL: " + String(heightAgl) + " ft"
+        alertMessage += GlobalVariables.newline + "Beam Height MSL: " + String(heightMsl) + " ft, AGL: " + String(heightAgl) + " ft"
         if RadarPreferences.radarShowWpcFronts {
             var wpcFrontsTimeStamp = Utility.readPref("WPC_FRONTS_TIMESTAMP", "")
             wpcFrontsTimeStamp = wpcFrontsTimeStamp.replace(String(UtilityTime.getYear()), "")
@@ -680,7 +680,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name
                 + " "
-                +  Utility.getRadarSiteName(rid.name)
+                + Utility.getRadarSiteName(rid.name)
                 + " " + String(rid.distance) + " mi"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
         }
@@ -822,7 +822,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
-            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle && UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
                 } else {
@@ -876,7 +876,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }*/
 
     //@objc func showKeyboardShortcuts() {
-    //    UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
+    //UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
     //}
 
     @objc func keyRightArrow() {

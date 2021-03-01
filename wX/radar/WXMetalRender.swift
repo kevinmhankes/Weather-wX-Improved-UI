@@ -189,7 +189,7 @@ final class WXMetalRender {
         radarLayers.enumerated().forEach { index, vbuffer in
             if vbuffer.vertexCount > 0 {
                 if vbuffer.scaleCutOff < zoom {
-                    if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
+                    if !(vbuffer.honorDisplayHold && displayHold) || !vbuffer.honorDisplayHold {
                         renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
                         var nodeModelMatrix = modelMatrix()
                         nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
@@ -219,7 +219,7 @@ final class WXMetalRender {
                 wpcFrontBuffersList.enumerated().forEach { index, vbuffer in
                     if vbuffer.vertexCount > 0 {
                         if vbuffer.scaleCutOff < zoom {
-                            if !(vbuffer.honorDisplayHold && displayHold) ||  !vbuffer.honorDisplayHold {
+                            if !(vbuffer.honorDisplayHold && displayHold) || !vbuffer.honorDisplayHold {
                                 renderEncoder!.setVertexBuffer(vbuffer.mtlBuffer, offset: 0, index: 0)
                                 var nodeModelMatrix = modelMatrix()
                                 nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
@@ -477,7 +477,7 @@ final class WXMetalRender {
                 isAnimating = true
                 self.radarBuffers.fileName = url
             }
-            if url == "" {  // not animating
+            if url == "" { // not animating
                 [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
                     if $0.type.display {
                         self.constructLevel3TextProduct($0.typeEnum)
@@ -808,7 +808,7 @@ final class WXMetalRender {
             $0.draw(projectionNumbers)
             $0.generateMtlBuffer(device)
         }
-        if  RadarPreferences.locdotFollowsGps {
+        if RadarPreferences.locdotFollowsGps {
             locCircleBuffers.lenInit = locdotBuffers.lenInit
             UtilityWXMetalPerf.genCircleLocationDot(locCircleBuffers, projectionNumbers, gpsLocation)
             locCircleBuffers.generateMtlBuffer(device)

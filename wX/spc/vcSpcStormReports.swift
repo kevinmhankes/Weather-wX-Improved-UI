@@ -37,7 +37,7 @@ final class vcSpcStormReports: UIwXViewController {
         objScrollStackView = ObjectScrollStackView(self)
         displayPreContent()
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
-        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay  + ".csv"
+        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".csv"
         getContent()
     }
 
@@ -82,7 +82,7 @@ final class vcSpcStormReports: UIwXViewController {
         let year = String(components.year!).substring(2)
         date = year + month + day
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
-        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date  + "_rpts.csv"
+        textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.csv"
         stackView.removeViews()
         stackView.addArrangedSubview(objDatePicker.datePicker)
         stackView.addArrangedSubview(image.img)

@@ -72,13 +72,13 @@ final class ObjectCurrentConditions {
             s += "(" + heatIndex + ")"
         }
         s += " / " + dewPoint + "(" + relativeHumidity + ")" + " - "
-        s += seaLevelPressure +  " - " + windDirection + " " + windSpeed
+        s += seaLevelPressure + " - " + windDirection + " " + windSpeed
         if windGust != "" {
             s += " G "
         }
         s += windGust + " mph" + " - " + visibility + " mi - " + condition
         return (s, objectMetar.icon, objectMetar.rawMetar)
-        //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
+        //sb String "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
     private func formatCurrentConditions() {

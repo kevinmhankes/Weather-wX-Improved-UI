@@ -11,7 +11,7 @@ final class UtilityCanvasProjection {
     static func computeMercatorNumbers(_ lat: Double, _ lon: Double, _ projectionNumbers: ProjectionNumbers) -> [Double] {
         let test1 = (180.0 / Double.pi * log(tan(Double.pi / 4 + lat * (Double.pi / 180) / 2)))
         let test2 = (180.0 / Double.pi * log(tan(Double.pi / 4 + projectionNumbers.xDbl * (Double.pi / 180) / 2)))
-        let y = -((test1 - test2) *  projectionNumbers.oneDegreeScaleFactor) + projectionNumbers.yCenterDouble
+        let y = -((test1 - test2) * projectionNumbers.oneDegreeScaleFactor) + projectionNumbers.yCenterDouble
         let x = -((lon - projectionNumbers.yDbl) * projectionNumbers.oneDegreeScaleFactor) + projectionNumbers.xCenterDouble
         return [x, y]
     }

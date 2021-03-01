@@ -47,11 +47,6 @@ final class vcSevereDashboard: UIwXViewController {
         }
     }
 
-    //override func doneClicked() {
-    //    UtilitySettings.restoreRadarSettings()
-    //    super.doneClicked()
-    //}
-
     func getStatusText() -> String {
         var spokenText = "Download complete with"
         let wTor = SevereWarning(.TOR)
@@ -105,7 +100,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
         if wTor.eventList.count > 0 || wTst.eventList.count > 0 || wFfw.eventList.count > 0 {
-            statusWarnings = "(" + String(wTor.eventList.count) + ","  + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
+            statusWarnings = "(" + String(wTor.eventList.count) + "," + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
         } else {
             statusWarnings = ""
         }

@@ -136,7 +136,7 @@ final class UtilityWXMetalPerf {
         let radarBlackHole: Double
         let radarBlackHoleAdd: Double
         switch radarBuffers.rd.productCode {
-        case  56, 19, 181, 78, 80:
+        case 56, 19, 181, 78, 80:
             radarBlackHole = 1.0
             radarBlackHoleAdd = 0.0
         default:
@@ -216,7 +216,7 @@ final class UtilityWXMetalPerf {
             pointY = buffers.lonList[$0]
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-            pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+            pixYD = -((test1 - test2) * pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             buffers.putFloat(pixXD)
             buffers.putFloat(-pixYD)
@@ -245,7 +245,7 @@ final class UtilityWXMetalPerf {
             pointY = buffers.lonList[$0]
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-            pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+            pixYD = -((test1 - test2) * pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             buffers.putFloat(pixXD)
             buffers.putFloat(-pixYD)
@@ -275,16 +275,16 @@ final class UtilityWXMetalPerf {
             pointY = buffers.lonList[$0]
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-            pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+            pixYD = -((test1 - test2) * pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmount)))
+                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) * twicePi / triangleAmount)))
                 buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) *  twicePi / triangleAmount)))
+                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putFloat(-pixYD + (lenLocal * sin((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putColors()
             }
@@ -312,16 +312,16 @@ final class UtilityWXMetalPerf {
             pointY = buffers.lonList[$0]
             test1 = k180DivPi * log(tan(piDiv4 + pointX * piDiv360))
             test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-            pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+            pixYD = -((test1 - test2) * pn.oneDegreeScaleFactor) + pn.yCenterDouble
             pixXD = -((pointY - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
             (0..<buffers.triangleCount).forEach {
                 buffers.putFloat(pixXD)
                 buffers.putFloat(-pixYD)
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) *  twicePi / triangleAmount)))
+                buffers.putFloat(pixXD + (lenLocal * cos(Double($0) * twicePi / triangleAmount)))
                 buffers.putFloat(-pixYD + (lenLocal * sin(Double($0) * twicePi / triangleAmount)))
                 buffers.putColors()
-                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) *  twicePi / triangleAmount)))
+                buffers.putFloat(pixXD + (lenLocal * cos((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putFloat(-pixYD + (lenLocal * sin((Double($0) + 1) * twicePi / triangleAmount)))
                 buffers.putColors()
             }
@@ -336,7 +336,7 @@ final class UtilityWXMetalPerf {
         buffers.metalBuffer = []
         let test1 = k180DivPi * log(tan(piDiv4 + location.lat * piDiv360))
         let test2 = k180DivPi * log(tan(piDiv4 + pn.xDbl * piDiv360))
-        let pixYD = -((test1 - test2) *  pn.oneDegreeScaleFactor) + pn.yCenterDouble
+        let pixYD = -((test1 - test2) * pn.oneDegreeScaleFactor) + pn.yCenterDouble
         let pixXD = -((location.lon - pn.yDbl) * pn.oneDegreeScaleFactor) + pn.xCenterDouble
         (0..<buffers.triangleCount).forEach {
             buffers.putFloat(pixXD + (lenLocal * cos(Double($0) * twicePi / triangleAmount)))

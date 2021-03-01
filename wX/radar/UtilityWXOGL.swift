@@ -15,7 +15,7 @@ final class UtilityWXOGL {
         // var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/NWS-IDP-.*?)\"")
         var urlList = warningChunk.parseColumn("\"id\"\\: .(https://api.weather.gov/alerts/urn.*?)\"")
         let urlListCopy = urlList
-        // discard  "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3771044",            "type": "Feature",            "geometry": null,
+        // discard  "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3771044", "type": "Feature", "geometry": null,
         // Special Weather Statements can either have a polygon or maybe not, need to strip out those w/o polygon
         urlListCopy.forEach { url in
             //if (html.contains(Regex("\"id\"\\: ." + it + "\",            \"type\": \"Feature\",            \"geometry\": null"))) {

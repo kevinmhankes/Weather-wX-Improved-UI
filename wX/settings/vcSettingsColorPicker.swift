@@ -10,7 +10,7 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
     
     private let colorBarSize: CGFloat = 100.0
     private let colorBar = UIView()
-    private var newRed =  0
+    private var newRed = 0
     private var newGreen = 0
     private var newBlue = 0
     private var colorChanged = false

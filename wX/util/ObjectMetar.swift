@@ -30,11 +30,11 @@ final class ObjectMetar {
         let obsClosest = UtilityMetar.findClosestObservation(location)
         UtilityObs.obsClosestClass = obsClosest.name
         if !decodeIcon {
-            let observationData = ("https://api.weather.gov/stations/" + obsClosest.name +  "/observations/current").getNwsHtml()
+            let observationData = ("https://api.weather.gov/stations/" + obsClosest.name + "/observations/current").getNwsHtml()
             icon = observationData.parseFirst("\"icon\": \"(.*?)\",")
             condition = observationData.parseFirst("\"textDescription\": \"(.*?)\",")
         }
-        let metarData = (WXGLDownload.nwsRadarPub + "/data/observations/metar/decoded/" + obsClosest.name +  ".TXT").getHtml()
+        let metarData = (WXGLDownload.nwsRadarPub + "/data/observations/metar/decoded/" + obsClosest.name + ".TXT").getHtml()
         temperature = metarData.parseFirst("Temperature: (.*?) F")
         dewPoint = metarData.parseFirst("Dew Point: (.*?) F")
         windDirection = metarData.parseFirst("Wind: from the (.*?) \\(.*? degrees\\) at .*? MPH ")
@@ -143,7 +143,7 @@ final class ObjectMetar {
         let fallsBetween = (sunTimes.0 ... sunTimes.1).contains(currentTime)
         let currentTimeTomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let fallsBetweenTomorrow = (sunTimes.0 ... sunTimes.1).contains(currentTimeTomorrow!)
-        let timeOfDay =  fallsBetween || fallsBetweenTomorrow ? "day" : "night"
+        let timeOfDay = fallsBetween || fallsBetweenTomorrow ? "day" : "night"
         let conditionModified = condition.split(";")[0]
         let shortCondition = UtilityMetarConditions.iconFromCondition[conditionModified] ?? ""
         return GlobalVariables.nwsApiUrl + "/icons/land/" + timeOfDay + "/" + shortCondition + "?size=medium"

@@ -68,7 +68,7 @@ final class UtilityLightning {
     
     static func getSector(_ sector: String) -> String {
         switch sector {
-        case  "US":
+        case "US":
             return "usa_big"
         case "Florida" :
             return "florida_big"

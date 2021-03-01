@@ -73,9 +73,9 @@ final class Level2Record {
     var messageSize: Int16 = 0
     var messageType: Int8 = 0
     var dataMsecs = 0
-    var dataJulianDate: Int16  = 0
-    var elevationNum: Int16  = 0
-    var vcp: Int16  = 0
+    var dataJulianDate: Int16 = 0
+    var elevationNum: Int16 = 0
+    var vcp: Int16 = 0
     var azimuth: Float = 0.0
     private var dbp1 = 0
     private var dbp4 = 0
@@ -87,7 +87,7 @@ final class Level2Record {
     private var reflectHROffset: Int16 = 0
     private var velocityHROffset: Int16 = 0
 
-    static func factory(_ din: MemoryBuffer, _ record: Int, _  messageOffset31: CLong) -> Level2Record? {
+    static func factory(_ din: MemoryBuffer, _ record: Int, _ messageOffset31: CLong) -> Level2Record? {
         let offset: CLong = record * radarDataSize + fileHeaderSize + messageOffset31
         if offset >= din.length { return nil } else { return Level2Record(din, record, messageOffset31) }
     }

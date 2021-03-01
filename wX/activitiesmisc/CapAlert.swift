@@ -52,7 +52,7 @@ final class CapAlert {
     convenience init(eventText: String) {
         self.init()
         url = eventText.parse("<id>(.*?)</id>")
-        title  = eventText.parse("<title>(.*?)</title>")
+        title = eventText.parse("<title>(.*?)</title>")
         summary = eventText.parse("<summary>(.*?)</summary>")
         instructions = eventText.parse("</description>.*?<instruction>(.*?)</instruction>.*?<areaDesc>")
         area = eventText.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")

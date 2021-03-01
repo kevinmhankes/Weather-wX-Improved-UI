@@ -12,7 +12,7 @@ final class WXGLNexradLevel3TVS {
             var stormList = [Double]()
             let tvs = retStr1.parseColumn("P  TVS(.{20})")
             tvs.indices.forEach { index in
-                let ecc =  ExternalGeodeticCalculator()
+                let ecc = ExternalGeodeticCalculator()
                 let s = tvs[index].parse(".{9}(.{7})")
                 let items = s.split("/")
                 let degree = Int(items[0].replace(" ", "")) ?? 0

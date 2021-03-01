@@ -90,15 +90,15 @@ final class WXMetalSurfaceView {
         } else { // 4 pane
             if location.y < uiv.view.frame.height / 2.0 {
                 if location.x < uiv.view.frame.width / 2.0 {
-                    return 0  // top left
+                    return 0 // top left
                 } else {
-                    return 1  // top right
+                    return 1 // top right
                 }
             } else {
                 if location.x < uiv.view.frame.width / 2.0 {
-                    return 2  // bottom left
+                    return 2 // bottom left
                 } else {
-                    return 3  // bottom right
+                    return 3 // bottom right
                 }
             }
         }
@@ -179,8 +179,8 @@ final class WXMetalSurfaceView {
         if RadarPreferences.dualpaneshareposn {
             wxMetal.forEach {
                 if $0!.zoom * 2.0 < maxZoom {
-                    $0!.xPos +=  ((Float(location.x) - xMiddle) * density)
-                    $0!.yPos +=  ((yMiddle - Float(location.y)) * density)
+                    $0!.xPos += ((Float(location.x) - xMiddle) * density)
+                    $0!.yPos += ((yMiddle - Float(location.y)) * density)
                     setModifiedZoom($0!.zoom * 2.0, $0!.zoom, $0!)
                     $0!.zoom *= 2.0
                     $0!.setZoom()
@@ -218,7 +218,7 @@ final class WXMetalSurfaceView {
                     && $0!.zoom < maxZoom
                     && $0!.zoom > minZoom {
                     setModifiedZoom($0!.zoom / ((1.0 / Float(gestureRecognizer.scale)) * slowItDown), $0!.zoom, $0!)
-                    $0!.zoom /=  ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
+                    $0!.zoom /= ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
                     if $0!.zoom < minZoom {
                         setModifiedZoom(minZoom + fudge / 10.0, $0!.zoom, $0!)
                         $0!.zoom = minZoom + fudge / 10.0
@@ -239,7 +239,7 @@ final class WXMetalSurfaceView {
                     wxMetal[radarIndex]!.zoom,
                     wxMetal[radarIndex]!
                 )
-                wxMetal[radarIndex]!.zoom /=  ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
+                wxMetal[radarIndex]!.zoom /= ((1.0 / Float(gestureRecognizer.scale)) * slowItDown)
                 if wxMetal[radarIndex]!.zoom < minZoom {
                     setModifiedZoom(minZoom + fudge / 10.0, wxMetal[radarIndex]!.zoom, wxMetal[radarIndex]!)
                     wxMetal[radarIndex]!.zoom = minZoom + fudge / 10.0

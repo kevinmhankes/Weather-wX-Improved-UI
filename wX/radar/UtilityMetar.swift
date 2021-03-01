@@ -84,9 +84,15 @@ final class UtilityMetar {
                     let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
                     if visInt > 5 && lowestCig > 3000 { aviationColor = Color.GREEN }
-                    if (visInt >= 3 &&  visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) { aviationColor = Color.rgb(0, 100, 255) }
-                    if (visInt >= 1 &&  visInt < 3) || ( lowestCig >= 500 && lowestCig < 1000) { aviationColor = Color.RED }
-                    if visInt < 1  || lowestCig < 500 { aviationColor = Color.MAGENTA }
+                    if (visInt >= 3 && visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) {
+                        aviationColor = Color.rgb(0, 100, 255)
+                    }
+                    if (visInt >= 1 && visInt < 3) || ( lowestCig >= 500 && lowestCig < 1000) {
+                        aviationColor = Color.RED
+                    }
+                    if visInt < 1  || lowestCig < 500 {
+                        aviationColor = Color.MAGENTA
+                    }
                     if pressureBlob.count == 4 {
                         pressureBlob = pressureBlob.insert(pressureBlob.count - 2, ".")
                         pressureBlob = UtilityMath.unitsPressure(pressureBlob)

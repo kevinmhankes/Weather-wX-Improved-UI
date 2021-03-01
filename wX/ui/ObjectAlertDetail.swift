@@ -39,7 +39,7 @@ final class ObjectAlertDetail {
         //self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         textViews[5].text = alert.summary
         textViews[6].text = alert.instructions.removeSingleLineBreaks()
-        uiStackView.accessibilityLabel = title + wfo +  "Issued: " + startTime +
+        uiStackView.accessibilityLabel = title + wfo + "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
         textViews.forEach { $0.tv.widthAnchor.constraint(equalTo: uiScrollView.widthAnchor).isActive = true }

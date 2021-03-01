@@ -191,7 +191,7 @@ final class Location {
         Utility.writePref("CURRENT_LOC_FRAGMENT", locNum)
         Location.setCurrentLocationStr(locNum)
         return "Saving location " + locNum + " as " + labelStr
-            + " ("  + latLon.latString
+            + " (" + latLon.latString
             + "," + latLon.lonString
             + ") " + "/" + " "
             + wfo.uppercased()

@@ -6,7 +6,7 @@
 
 final class UtilitySettingsUI {
 
-    static let boolean  = [
+    static let boolean = [
         "UNITS_M": "Use Millibars",
         "BACK_ARROW_ANIM": "Show animation with back arrow" ,
         "DUALPANE_RADAR_ICON": "Lightning button opens dual pane radar",
@@ -19,7 +19,7 @@ final class UtilitySettingsUI {
         "USE_NWS_API_SEVEN_DAY": "Use new NWS API for 7 day"
     ]
 
-    static let booleanDefault  = [
+    static let booleanDefault = [
         "": "",
         "UNITS_M": "true",
         "BACK_ARROW_ANIM": "true" ,

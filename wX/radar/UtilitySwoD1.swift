@@ -25,7 +25,7 @@ final class UtilitySwoD1 {
                 let htmlList = htmlChunk.parseColumn(threatLevelCode.substring(1) + "(.*?)[A-Z&]")
                 var warningList = [Double]()
                 htmlList.forEach { polygon in
-                    let coordinates =  polygon.parseColumn("([0-9]{8}).*?")
+                    let coordinates = polygon.parseColumn("([0-9]{8}).*?")
                     coordinates.forEach { data += LatLon($0).printSpaceSeparated() }
                     data += ":"
                     data = data.replace(" :", ":")

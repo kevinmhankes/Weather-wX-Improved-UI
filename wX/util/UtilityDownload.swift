@@ -181,7 +181,7 @@ final class UtilityDownload {
         } else if product.hasPrefix("CLI") {
             let location = product.substring(3, 6).replace("%", "")
             let wfo = product.substring(6).replace("%", "")
-            text =  ("https://forecast.weather.gov/product.php?site=" + wfo + "&product=CLI&issuedby=" + location).getHtmlSep()
+            text = ("https://forecast.weather.gov/product.php?site=" + wfo + "&product=CLI&issuedby=" + location).getHtmlSep()
             text = UtilityString.extractPreLsr(text)
             text = text.replace("<br>", "\n")
         } else {
@@ -232,7 +232,7 @@ final class UtilityDownload {
                     let html = url.getNwsHtml()
                     text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml()
                 case "PMDMRD":
-                    let textUrl = GlobalVariables.tgftpSitePrefix +  "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
+                    let textUrl = GlobalVariables.tgftpSitePrefix + "/data/raw/fx/fxus06.kwbc.pmd.mrd.txt"
                     text = textUrl.getNwsHtml()
                 case "PMDTHR":
                     let url = GlobalVariables.nwsCPCNcepWebsitePrefix + "/products/predictions/threats/threats.php"

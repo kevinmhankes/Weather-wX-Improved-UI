@@ -46,7 +46,7 @@ final class UtilityHourly {
             + "T".fixedLengthString(4)
             + "Wind".fixedLengthString(8)
             + "WindDir".fixedLengthString(6)
-            +  GlobalVariables.newline
+            + GlobalVariables.newline
         let footer = getFooter()
         return [header + parse(html) + footer, html]
     }

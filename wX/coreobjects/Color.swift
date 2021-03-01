@@ -15,7 +15,7 @@ final class Color {
 
     static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Int {
         var retVal = 0xFF << 24
-        retVal +=  (red << 16) + (green << 8) + blue
+        retVal += (red << 16) + (green << 8) + blue
         return retVal
     }
 
