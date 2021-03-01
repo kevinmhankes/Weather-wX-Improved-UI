@@ -291,7 +291,7 @@ final class UtilityCanada {
         let wind = html.parse("<b>Wind:</b> (.*?)<br/>").replace(GlobalVariables.newline, "")
         return temp
             + GlobalVariables.degreeSymbol
-            +  " / "
+            + " / "
             + dew
             + GlobalVariables.degreeSymbol
             + " ("

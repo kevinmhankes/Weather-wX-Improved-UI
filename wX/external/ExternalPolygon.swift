@@ -220,8 +220,8 @@ final class ExternalPolygon {
     func createRay(point: ExternalPoint) -> ExternalLine {
         // create outside point
         let epsilon = (boundingBox.xMax - boundingBox.xMin) / 100.0
-        let outsidePoint =  ExternalPoint(boundingBox.xMin - epsilon, boundingBox.yMin)
-        let vector =  ExternalLine(start: outsidePoint, end: point)
+        let outsidePoint = ExternalPoint(boundingBox.xMin - epsilon, boundingBox.yMin)
+        let vector = ExternalLine(start: outsidePoint, end: point)
         return vector
     }
 
