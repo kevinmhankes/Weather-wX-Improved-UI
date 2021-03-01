@@ -25,7 +25,7 @@ final class UtilityWXOGL {
         }
         warningChunk = warningChunk.replace("\n", "").replace(" ", "")
         let polygons = warningChunk.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        var string = ""
+        var s = ""
         var notFound = true
         polygons.enumerated().forEach { urlIndex, warning in
             let polygonTmp = warning.replace("[", "").replace("]", "").replace(",", " ")
@@ -33,11 +33,11 @@ final class UtilityWXOGL {
             if latLons.count > 0 {
                 let contains = ExternalPolygon.polygonContainsPoint(latLon, latLons)
                 if contains && notFound {
-                    string = urlList[urlIndex]
+                    s = urlList[urlIndex]
                     notFound = false
                 }
             }
         }
-        return string
+        return s
     }
 }

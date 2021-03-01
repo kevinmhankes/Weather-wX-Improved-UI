@@ -98,8 +98,7 @@ final class vcWebView: UIwXViewController {
                 tail = "wx"
             }
             let url = "http://www.twitter.com/hashtag/" + state + tail
-            if url.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") ||
-            url.hasPrefix("https://www.wrh.noaa.gov/mesowest") {
+            if url.hasPrefix("https://www.wrh.noaa.gov/map/?obs=true") || url.hasPrefix("https://www.wrh.noaa.gov/mesowest") {
                 UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
             } else {
                 UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)

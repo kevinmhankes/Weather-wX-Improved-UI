@@ -24,19 +24,19 @@ final class UtilityCanadaHourly {
         let precipitationChances = html.parseColumn("<td headers=.header4. class=.text-center.>(.*?)</td>")
         var winds = html.parseColumn("<abbr title=(.*?.>.*?<.abbr>..[0-9]{2})<br>")
         let space = "   "
-        var string = ""
+        var s = ""
         winds.indices.forEach { index in
             let cleanString = removeSpecialCharsFromString(winds[index])
             winds[index] = cleanString.parse(">(.*?)<") + " " + cleanString.parse(".*?([0-9]{1,3})")
         }
         times.indices.forEach { index in
-            string += GlobalVariables.newline + times[index] + space
+            s += GlobalVariables.newline + times[index] + space
                 + Utility.safeGet(temperatures, index).padding(toLength: 3, withPad: " ", startingAt: 0) + space
                 + Utility.safeGet(currentConditions, index).padding(toLength: 22, withPad: " ", startingAt: 0) + space
                 + Utility.safeGet(precipitationChances, index).padding(toLength: 6, withPad: " ", startingAt: 0)
                 + space + Utility.safeGet(winds, index)
         }
-        return string
+        return s
     }
 
     static func removeSpecialCharsFromString(_ text: String) -> String {

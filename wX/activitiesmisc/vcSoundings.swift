@@ -44,7 +44,9 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         map.toggleMap(self)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? { map.mapView(annotation) }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        map.mapView(annotation)
+    }
     
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)

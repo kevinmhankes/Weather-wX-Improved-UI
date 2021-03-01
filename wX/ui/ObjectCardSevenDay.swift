@@ -69,44 +69,44 @@ final class ObjectCardSevenDay {
     func formatSevenDay(_ dayStr: String, _ dayStrShort: String) -> (String, String) {
         let items = dayStr.split(": ")
         let itemsShort = dayStrShort.split(": ")
-        let string: String
+        let s: String
         if !UIPreferences.mainScreenCondense || !isUS {
             if items.count > 1 {
                 if isUS {
-                    string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
+                    s = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
                         + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
                         + ")" + GlobalVariables.newline
                 } else {
-                    string = items[0].replace(":", " ") + " ("
+                    s = items[0].replace(":", " ") + " ("
                         + UtilityLocationFragment.extractCanadaTemp(items[1])
                         + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
                         + ")" + GlobalVariables.newline
                 }
-                return (string, items[1])
+                return (s, items[1])
             } else {
                 return ("", "")
             }
         } else {
             if itemsShort.count > 1 {
                 if isUS {
-                    string = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
+                    s = items[0].replace(":", " ") + " (" + UtilityLocationFragment.extractTemp(items[1])
                         + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extract7DayMetrics(items[1].substring(1))
                         + ")" + GlobalVariables.newline
                 } else {
-                    string = items[0].replace(":", " ") + " ("
+                    s = items[0].replace(":", " ") + " ("
                         + UtilityLocationFragment.extractCanadaTemp(items[1])
                         + GlobalVariables.degreeSymbol
                         + UtilityLocationFragment.extractCanadaWindDirection(items[1].substring(1))
                         + UtilityLocationFragment.extractCanadaWindSpeed(items[1])
                         + ")" + GlobalVariables.newline
                 }
-                return (string, itemsShort[1])
+                return (s, itemsShort[1])
             } else {
                 return ("", "")
             }

@@ -51,7 +51,7 @@ final class ObjectCurrentConditions {
 
     // FIXME don't use named tuple for language consistency
     func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
-        var string = ""
+        var s = ""
         let objectMetar = ObjectMetar(location)
         conditionsTimeString = objectMetar.conditionsTimeString
         temperature = objectMetar.temperature + GlobalVariables.degreeSymbol
@@ -65,19 +65,19 @@ final class ObjectCurrentConditions {
         windGust = objectMetar.windGust
         visibility = objectMetar.visibility
         condition = objectMetar.condition
-        string += temperature
+        s += temperature
         if objectMetar.windChill != "NA" {
-            string += "(" + windChill + ")"
+            s += "(" + windChill + ")"
         } else if objectMetar.heatIndex != "NA" {
-            string += "(" + heatIndex + ")"
+            s += "(" + heatIndex + ")"
         }
-        string += " / " + dewPoint + "(" + relativeHumidity + ")" + " - "
-        string += seaLevelPressure +  " - " + windDirection + " " + windSpeed
+        s += " / " + dewPoint + "(" + relativeHumidity + ")" + " - "
+        s += seaLevelPressure +  " - " + windDirection + " " + windSpeed
         if windGust != "" {
-            string += " G "
+            s += " G "
         }
-        string += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return (string, objectMetar.icon, objectMetar.rawMetar)
+        s += windGust + " mph" + " - " + visibility + " mi - " + condition
+        return (s, objectMetar.icon, objectMetar.rawMetar)
         //sb    String    "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 

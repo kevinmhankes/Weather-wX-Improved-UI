@@ -181,10 +181,10 @@ struct LatLon {
     
     static func storeWatchMcdLatLon(_ html: String) -> String {
         let coordinates = html.parseColumn("([0-9]{8}).*?")
-        var string = ""
-        coordinates.forEach { string += LatLon($0).printSpaceSeparated() }
-        string += ":"
-        return string.replace(" :", ":")
+        var s = ""
+        coordinates.forEach { s += LatLon($0).printSpaceSeparated() }
+        s += ":"
+        return s.replace(" :", ":")
     }
 }
 

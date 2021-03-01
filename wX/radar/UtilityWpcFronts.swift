@@ -161,17 +161,17 @@ final class UtilityWpcFronts {
         }
     }
 
-    private static func parseLatLon(_ string: String) -> [Double] {
-        if string.count != 7 {
+    private static func parseLatLon(_ s: String) -> [Double] {
+        if s.count != 7 {
             return [0.0, 0.0]
         } else {
-            let lat = Double(string.substring(0, 2) + "." + string.substring(2, 3)) ?? 0.0
+            let lat = Double(s.substring(0, 2) + "." + s.substring(2, 3)) ?? 0.0
             let lon: Double
-            let index = string.index(string.startIndex, offsetBy: 3)
-            if String(string[index]) == "0" {
-                lon = Double(string.substring(4, 6) + "." + string.substring(6, 7)) ?? 0.0
+            let index = s.index(s.startIndex, offsetBy: 3)
+            if String(s[index]) == "0" {
+                lon = Double(s.substring(4, 6) + "." + s.substring(6, 7)) ?? 0.0
             } else {
-                lon = Double(string.substring(3, 6) + "." + string.substring(6, 7)) ?? 0.0
+                lon = Double(s.substring(3, 6) + "." + s.substring(6, 7)) ?? 0.0
             }
             return [lat, lon]
         }

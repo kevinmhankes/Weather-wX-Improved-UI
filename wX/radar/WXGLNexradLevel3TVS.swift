@@ -13,8 +13,8 @@ final class WXGLNexradLevel3TVS {
             let tvs = retStr1.parseColumn("P  TVS(.{20})")
             tvs.indices.forEach { index in
                 let ecc =  ExternalGeodeticCalculator()
-                let string = tvs[index].parse(".{9}(.{7})")
-                let items = string.split("/")
+                let s = tvs[index].parse(".{9}(.{7})")
+                let items = s.split("/")
                 let degree = Int(items[0].replace(" ", "")) ?? 0
                 let nm = Int(items[1].replace(" ", "")) ?? 0
                 let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)

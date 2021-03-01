@@ -57,21 +57,21 @@ final class UtilityHourly {
         let windSpeeds = html.parseColumn("\"windSpeed\": \"(.*?)\"")
         let windDirections = html.parseColumn("\"windDirection\": \"(.*?)\"")
         let shortForecasts = html.parseColumn("\"shortForecast\": \"(.*?)\"")
-        var string = ""
+        var s = ""
         startTimes.indices.forEach { index in
             let time = translateTime(startTimes[index])
             let temperature = Utility.safeGet(temperatures, index).replace("\"", "")
             let windSpeed = Utility.safeGet(windSpeeds, index).replace(" to ", "-")
             let windDirection = Utility.safeGet(windDirections, index)
             let shortForecast = Utility.safeGet(shortForecasts, index)
-            string += time.fixedLengthString(7)
-            string += temperature.fixedLengthString(4)
-            string += windSpeed.fixedLengthString(8)
-            string += windDirection.fixedLengthString(4)
-            string += shortenConditions(shortForecast).fixedLengthString(18)
-            string += GlobalVariables.newline
+            s += time.fixedLengthString(7)
+            s += temperature.fixedLengthString(4)
+            s += windSpeed.fixedLengthString(8)
+            s += windDirection.fixedLengthString(4)
+            s += shortenConditions(shortForecast).fixedLengthString(18)
+            s += GlobalVariables.newline
         }
-        return string
+        return s
     }
 
     static func shortenConditions(_ string: String) -> String {

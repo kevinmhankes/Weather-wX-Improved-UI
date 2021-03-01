@@ -7,7 +7,7 @@
 final class UtilityTtsTranslations {
 
 	static func translateAbbreviations(_ text: String) -> String {
-		let string = text.replace("...", " ")
+		let s = text.replace("...", " ")
 				.replaceAll(" \\-([0-9])", " negative $1")
 				.replace(" U/L ", " upper level ")
 				.replace(" DE ", " Delaware ")
@@ -36,12 +36,12 @@ final class UtilityTtsTranslations {
 				.replace("`", "")
 				.replace("-", " - ")
 				.replace("$$", " ")
-		return translateAbbreviationsChunk(string)
+		return translateAbbreviationsChunk(s)
 	}
 
 	static func translateAbbreviationsChunk(_ text: String) -> String {
-		var string = text.uppercased()
-		string = string.replace(" SVR ", " severe ")
+		var s = text.uppercased()
+		s = s.replace(" SVR ", " severe ")
 				.replace(" TSTM ", " thunderstorm ")
 				.replace(" TSTMS ", " thunderstorms ")
 				.replace(" SWLY ", " south westerly ")
@@ -97,19 +97,19 @@ final class UtilityTtsTranslations {
 				.replace(" POSTFRONTAL ", " post frontal  ")
 				.replace(" WW ", " watch ")
 
-		string = string.replace(" EST ", " Eastern standard time ")
+		s = s.replace(" EST ", " Eastern standard time ")
 				.replace(" EDT ", " Eastern day light time ")
 				.replace(" MST ", " Mountain standard time ")
 				.replace(" PST ", " Pacific standard time ")
 				.replace(" HST ", " Hawaii Standard time ")
 				.replace(" AKST ", " Alaska Standard time ")
 
-		string = string.replace(" EDT ", " Eastern day light time ")
+		s = s.replace(" EDT ", " Eastern day light time ")
 				.replace(" CDT ", " Central day light time ")
 				.replace(" PDT ", " Pacific day light time ")
 				.replace(" AKDT ", " Alaska day light time ")
 
-		string = string.replace(" SE ", " south east ")
+		s = s.replace(" SE ", " south east ")
 				.replace(" PCPN ", " precipitation ")
 				.replace(" BKN ", " BROKEN ")
 				.replace(" SCT ", " SCATTERED ")
@@ -164,7 +164,7 @@ final class UtilityTtsTranslations {
 				.replace(" SSWWD ", " south south westward ")
 				.replace(" SW ", " south west ")
 
-		string = string.replace(" BAROCLINIC ", " baro clinic ")
+		s = s.replace(" BAROCLINIC ", " baro clinic ")
 				.replace("*", " ")
 				.replace(" TROF ", " trough ")
 				.replace(" KTS ", " knots ")
@@ -194,7 +194,7 @@ final class UtilityTtsTranslations {
 				.replace(" ISOLD ", " isolated ")
 				.replace(" RH ", " relative humidity ")
 
-		string = string.replace(" AGL ", " above ground level ")
+		s = s.replace(" AGL ", " above ground level ")
 				.replace(" AFTN ", " afternoon ")
 				.replace(" ASL ", " above sea level ")
 				.replace(" BLO ", " below ")
@@ -224,13 +224,13 @@ final class UtilityTtsTranslations {
 				.replace(" MIDLEVEL ", " mid-level ")
 				.replace(" BNDRY ", " boundary ")
 
-		string = string.replace(" AMTS ", " amounts ")
+		s = s.replace(" AMTS ", " amounts ")
 				.replace(" FNT ", " front ")
 				.replace(" PTYPE ", " precipitation type ")
 				.replace(" DWPTS ", " dew points ")
 				.replace(" SNWFL ", " snow fall ")
 
-		string = string.replace(" FRONTOGENESIS ", " front O genesis ")
+		s = s.replace(" FRONTOGENESIS ", " front O genesis ")
 				.replace(" GEN ", " general ")
 				.replace(" LTG ", " light ")
 				.replace(" FRONTOGENETIC ", " front O genetic ")
@@ -239,7 +239,7 @@ final class UtilityTtsTranslations {
 				.replace(" CLIMO ", " climatological ")
 				.replace(" SNE ", " southern new england ")
 
-		string = string.replace(" ACCUM ", " accumulation ")
+		s = s.replace(" ACCUM ", " accumulation ")
 				.replace(" 20S ", " twenties ")
 				.replace(" 30S ", " thirties ")
 				.replace(" 40S ", " forties ")
@@ -261,7 +261,7 @@ final class UtilityTtsTranslations {
 				.replaceAll("(DAY)([0-9])", "$1 $2")
 				.replace(" FGEN ", " front O genesis ")
 
-		string = string.replace(" SN ", " snow ")
+		s = s.replace(" SN ", " snow ")
 				.replace(" BR ", " mist ")
 				.replace(" VSBYS ", " visibility ")
 				.replace(" ACCUMS ", " accumulations ")
@@ -312,7 +312,7 @@ final class UtilityTtsTranslations {
 				.replace(" IP ", " sleet ")
 				.replace(" CAL ", " california ")
 
-		string = string.replace(" VRB ", " variable ")
+		s = s.replace(" VRB ", " variable ")
 				.replace(" SHRA ", " rain showers ")
 				.replace(" SLY ", " visibility ")
 				.replace(" DEAMPLIFIES ", " de-amplifies ")
@@ -341,7 +341,7 @@ final class UtilityTtsTranslations {
 				.replace(" SCNTRL ", " south central ")
 				.replace(" VIS ", " visibility ")
 
-		string = string.replace(" MX ", " Mexico ")
+		s = s.replace(" MX ", " Mexico ")
 				.replace(" ADVECT ", " ad-vet ")
 				.replace(" ADVECTS ", " ad-vets ")
 				.replace(" ADVECTING ", " ad-veting ")
@@ -357,7 +357,7 @@ final class UtilityTtsTranslations {
 				.replace(" STNRY ", " stationary ")
 				.replace(" MTS ", " mountains ")
 
-		string = string.replace(" NRN ", " northern ")
+		s = s.replace(" NRN ", " northern ")
 				.replace(" DFW ", " Dallas Fort Worth ")
 				.replace(" SM ", " statue miles ")
 				.replace(" VLIFR ", " very low instrument flight rules ")
@@ -391,7 +391,7 @@ final class UtilityTtsTranslations {
 				.replace(" RETROGRADING ", " retrograde-ing ")
 				.replace(" MDL ", " model ")
 
-		string = string.replace(" MVNG ", " moving ")
+		s = s.replace(" MVNG ", " moving ")
 				.replace(" SRLY ", " southerly ")
 				.replace(" AGRMNT ", " agreement ")
 				.replace(" ASSD ", " associated ")
@@ -422,16 +422,16 @@ final class UtilityTtsTranslations {
 				.replace(" CONVECTION ", " convect-ion ")
 				.replace(" OFFSHR ", " off-shore ")
 
-		string = string.replace(" TROUGHED ", " trough-ed ")
+		s = s.replace(" TROUGHED ", " trough-ed ")
 				.replace(" NEB ", " Nebraska ")
 
-		string = string.replace(" RADIATIONAL ", " radiation-al ")
+		s = s.replace(" RADIATIONAL ", " radiation-al ")
 				.replace(" BOMBOGENESIS  ", " bomb O genenesis ")
 				.replace(" BAROCLINICITY ", " baro-clinicity ")
 				.replace(" PROBABILISTIC ", " probabilistic ")
 				.replace(" CYCLONICALLY  ", " cyclonic-ally ")
 
-		string = string.replace(" CNTR ", " central ")
+		s = s.replace(" CNTR ", " central ")
 				.replace(" BC ", " British Columbia ")
 				.replace(" TELECONNECTIONS ", " tele-connections ")
 				.replace(" POS ", " possible ")
@@ -445,7 +445,7 @@ final class UtilityTtsTranslations {
 				.replace(" RAOBS ", " radiosonde observations ")
 				.replace(" POSN ", " position ")
 
-		string = string.replace(" PSBLY ", " possibly ")
+		s = s.replace(" PSBLY ", " possibly ")
 				.replace(" PREFS  ", " preferences ")
 				.replace(" FCSTS ", " forecasts ")
 				.replace(" WWD ", " westward ")
@@ -454,17 +454,17 @@ final class UtilityTtsTranslations {
 				.replace(" UNK ", " unknown ")
 				.replace(" DIFFS ", " differences ")
 
-		string = string.replace(" MPH ", " miles per hour ")
+		s = s.replace(" MPH ", " miles per hour ")
 				.replace(" SHRTWVS  ", " short waves ")
 				.replace(" WSWWD  ", " west south westward ")
 				.replace("GRAPHICS AVAILABLE AT WWW.WPC.NCEP.NOAA.GOV", " ")
 				.replace("PLEASE SEE WWW.SPC.NOAA.GOV / FIRE FOR GRAPHIC PRODUCT", " ")
 				.replace(" NCNTRL ", " north central ")
 
-		string = string.replace(" STRATOCU ", " strato-cumulous ")
+		s = s.replace(" STRATOCU ", " strato-cumulous ")
 				.replace(" KM ", " kilometers ")
 
-		string = string.replace(" JETLET ", " jet let ")
+		s = s.replace(" JETLET ", " jet let ")
 				.replace(" IT ", " it ")
 				.replace(" WCNTRL ", " west central ")
 				.replace(" MAR ", " March ")
@@ -480,23 +480,23 @@ final class UtilityTtsTranslations {
 				.replace(" DEC ", " December ")
 				.replace(" HYDROMETEORS ", " hydro-meteors ")
 
-		string = string.replace(" ONT ", " Ontario ")
+		s = s.replace(" ONT ", " Ontario ")
 				.replace(" QUE ", " Quebec ")
 
-		string = string.replace(" STRATIFORM ", " strati-form ")
+		s = s.replace(" STRATIFORM ", " strati-form ")
 				.replace(" HR ", " hour ")
 				.replace(" WINDSPEEDS ", " wind speeds ")
 				.replace(" JETLETS ", " jet lets ")
 				.replace(" ANAFRONTAL ", " anna-frontal ")
 				.replace(" HR ", " hour ")
 
-		string = string.replace(" EMBDD ", " embedded ")
+		s = s.replace(" EMBDD ", " embedded ")
 				.replace(" CM ", " centimeters ")
 				.replace(" UHI ", " urban heat island ")
 				.replace(" SCHC ", " slight chance ")
 				.replace(" SIG ", " significant ")
 
-		string = string.replace(" RA ", " rain ")
+		s = s.replace(" RA ", " rain ")
 				.replace(" SN ", " snow ")
 				.replace(" LO ", " low ")
 				.replace(" ENUF ", " enough ")
@@ -525,7 +525,7 @@ final class UtilityTtsTranslations {
 				.replace(" HWVR ", " however ")
 				.replace(" PD ", " period ")
 
-		string = string.replace(" RMNS ", " remains ")
+		s = s.replace(" RMNS ", " remains ")
 				.replace(" DPNG ", " deepening ")
 				.replace(" ATLC ", " Atlantic ")
 				.replace(" JMSBA ", " James Bay ")
@@ -567,7 +567,7 @@ final class UtilityTtsTranslations {
 				.replace(" KM / H ", " kilometers per hour ")
 				.replace(" LO ", " low ")
 
-		string = string.replace(" WTRS ", " waters ")
+		s = s.replace(" WTRS ", " waters ")
 				.replace(" LBRDR ", " Labrador ")
 				.replace(" LK ", " lake ")
 				.replace(" LKSUPR ", " Lake Superior")
@@ -582,7 +582,7 @@ final class UtilityTtsTranslations {
 				.replace(" OA ", " objective analysis ")
 				.replace(" ADDNLY ", " additionally ")
 
-		string = string.replace(" WKNG ", " weakening ")
+		s = s.replace(" WKNG ", " weakening ")
 				.replace(" FEAT ", " feature ")
 				.replace(" MLDS ", " models ")
 				.replace(" NMRCLS ", " numerical ")
@@ -593,7 +593,7 @@ final class UtilityTtsTranslations {
 				.replace(" NELY ", " north-easterly ")
 				.replace(" MRTMS ", " martimes ")
 
-		string = string.replace(" PT ", " points ")
+		s = s.replace(" PT ", " points ")
 				.replace(" XTRM ", " extreme ")
 				.replace(" XTDG ", " extending ")
 				.replace(" SUP ", " Superior ")
@@ -601,7 +601,7 @@ final class UtilityTtsTranslations {
 				.replace(" MM ", " millimeters ")
 				.replace(" LAWR ", " Lawrence ")
 
-		string = string.replace(" TROFS ", " troughs ")
+		s = s.replace(" TROFS ", " troughs ")
 				.replace(" TRAJ ", " trajectory ")
 				.replace(" SIGLY ", " significantly ")
 				.replace(" RGNS ", " regions ")
@@ -612,7 +612,7 @@ final class UtilityTtsTranslations {
 				.replace(" EDG ", " edge ")
 				.replace(" RGN ", " region ")
 
-		string = string.replace(" HV ", " have ")
+		s = s.replace(" HV ", " have ")
 				.replace(" HVG ", " having ")
 				.replace(" ISENTROPIC ", " isen-tropic ")
 				.replace(" VERIF ", " verify ")
@@ -623,7 +623,7 @@ final class UtilityTtsTranslations {
 				.replace(" OBJ ", " objective ")
 				.replace(" WINTERSTORM ", " winter storm ")
 
-		string = string.replace(" PROBLY ", " probably ")
+		s = s.replace(" PROBLY ", " probably ")
 				.replace(" RJCT ", " reject ")
 				.replace(" WTR ", " water ")
 				.replace(" DVLPMNT ", " development ")
@@ -641,7 +641,7 @@ final class UtilityTtsTranslations {
 				.replace(" ISENTROPIC ", " ice-tropic ")
 				.replace(" LT ", " late ")
 
-		string = string.replace(" EQUIV ", " equivalent ")
+		s = s.replace(" EQUIV ", " equivalent ")
 				.replace(" PROV ", " provinces ")
 				.replace(" WVS ", " waves ")
 				.replace(" AKPNHDL ", " Alaska pan handle ")
@@ -660,9 +660,9 @@ final class UtilityTtsTranslations {
 				.replace(" LOS ", " lows ")
 				.replace(" XTND ", " extended ")
 
-		string = string.replace("NORMAN OK", "Norman Oklahoma")
+		s = s.replace("NORMAN OK", "Norman Oklahoma")
 
-		string = string.replace(" DRYLINE ", " dry line ")
+		s = s.replace(" DRYLINE ", " dry line ")
 				.replace(" SUPERCELLULAR ", " super cellular ")
 				.replace(" WSWWD ", " west south westward ")
 				.replace(" THERMODYNAMICALLY ", " thermo-dynamically ")
@@ -691,7 +691,7 @@ final class UtilityTtsTranslations {
 				.replace(" TSARS ", " thunder storms ")
 				.replace(" SOUTHWESTWARD ", " south westward ")
 
-		string = string.replace(" POTNL ", " potential ")
+		s = s.replace(" POTNL ", " potential ")
 				.replace(" ESPCLY ", " especially ")
 				.replace(" PRBLY ", " probably ")
 				.replace(" CONTD ", " continued ")
@@ -701,7 +701,7 @@ final class UtilityTtsTranslations {
 				.replace(" QSTNRY ", " quasi stationary ")
 				.replace(" TS ", " thunderstorms ")
 
-		string = string.replace(" ISO-SCT ", " isolated to scattered ")
+		s = s.replace(" ISO-SCT ", " isolated to scattered ")
 				.replace(" WKND ", " weekend ")
 				.replace(" PRES ", " pressure ")
 				.replace(" LO ", " low ")
@@ -712,7 +712,7 @@ final class UtilityTtsTranslations {
 				.replace(" SGFNT ", " significant ")
 				.replace(" PTNTLLY ", " potentially ")
 
-		string = string.replace(" WKNS ", " weakens ")
+		s = s.replace(" WKNS ", " weakens ")
 				.replace(" DVLPS ", " develops ")
 				.replace(" GVG ", " giving ")
 				.replace(" OFSHR ", " off shore ")
@@ -734,12 +734,12 @@ final class UtilityTtsTranslations {
 				.replace(" CNDTNS ", " conditions ")
 				.replace(" THRUT ", " through out ")
 
-		string = string.replace(" PATTN ", " pattern ")
+		s = s.replace(" PATTN ", " pattern ")
 				.replace(" CNTRD ", " centered ")
 				.replace(" INAVD ", " in advance ")
 				.replace(" SHRT ", " short ")
 
-		string = string.replace(" AL ", " Alabama ")
+		s = s.replace(" AL ", " Alabama ")
 				.replace(" AK ", " Alaska ")
 				.replace(" AZ ", " Arizona ")
 				.replace(" AR ", " Arkansas ")
@@ -784,12 +784,12 @@ final class UtilityTtsTranslations {
 				.replace(" WI ", " Wisconsin ")
 				.replace(" WY ", " Wyoming ")
 
-		string = string.replace(" FRI ", " Friday ")
+		s = s.replace(" FRI ", " Friday ")
 				.replace(" MON ", " Monday ")
 				.replace(" TUE ", " Tuesday ")
 				.replace(" WED ", " Wednesday ")
 				.replace(" THU ", " Thursday ")
 				.replace(" SAT ", " Saturday ")
-		return string
+		return s
 	}
 }

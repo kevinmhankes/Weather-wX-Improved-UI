@@ -95,8 +95,8 @@ final class UtilityString {
         }
     }
 
-    static func parse(_ str: String, _ regexpStr: String) -> String {
-        let retArr = parseHelper(regexpStr, str)
+    static func parse(_ s: String, _ regexpStr: String) -> String {
+        let retArr = parseHelper(regexpStr, s)
         if retArr.count > 0 {
             return retArr[retArr.count - 1]
         } else {
@@ -104,8 +104,8 @@ final class UtilityString {
         }
     }
 
-    static func parseFirst(_ str: String, _ regexpStr: String) -> String {
-        let retArr = parseHelper(regexpStr, str)
+    static func parseFirst(_ s: String, _ regexpStr: String) -> String {
+        let retArr = parseHelper(regexpStr, s)
         if retArr.count > 0 {
             return retArr[0]
         } else {
@@ -113,27 +113,27 @@ final class UtilityString {
         }
     }
 
-   	static func parseLastMatch(_ str: String, _ regexpStr: String) -> String {
-        str.parse(regexpStr)
+   	static func parseLastMatch(_ s: String, _ regexpStr: String) -> String {
+        s.parse(regexpStr)
     }
 
-    static func parseColumn(_ str: String, _ regexpStr: String) -> [String] {
-        parseHelper(regexpStr, str)
+    static func parseColumn(_ s: String, _ regexpStr: String) -> [String] {
+        parseHelper(regexpStr, s)
     }
 
-    static func parseColumnAll(_ str: String, _ regexpStr: String) -> [String] {
-        parseHelper(regexpStr, str)
+    static func parseColumnAll(_ s: String, _ regexpStr: String) -> [String] {
+        parseHelper(regexpStr, s)
     }
 
-    static func parseAndCount(_ str: String, _ regexpStr: String) -> Int {
-        str.parseColumn(regexpStr).count
+    static func parseAndCount(_ s: String, _ regexpStr: String) -> Int {
+        s.parseColumn(regexpStr).count
     }
 
-    static func parseMultiple(_ str: String, _ matchStr: String) -> [String] {
+    static func parseMultiple(_ s: String, _ matchStr: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: matchStr, options: [])
-            let nsString = str as NSString
-            let results = regex.matches(in: str, options: [], range: NSRange(location: 0, length: nsString.length))
+            let nsString = s as NSString
+            let results = regex.matches(in: s, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
             results.forEach { result in
                 (0..<result.numberOfRanges).forEach { match.append(nsString.substring(with: result.range(at: $0))) }
@@ -148,27 +148,27 @@ final class UtilityString {
         }
     }
 
-    static func getLastXChars(_ string: String, _ count: Int) -> String {
-        if string.count == count {
-            return string
-        } else if string.count > count {
-            return string.substring(string.count - count)
+    static func getLastXChars(_ s: String, _ count: Int) -> String {
+        if s.count == count {
+            return s
+        } else if s.count > count {
+            return s.substring(s.count - count)
         } else {
-            return string
+            return s
         }
     }
 
-    static func addPeriodBeforeLastTwoChars(_ str: String) -> String {
-        str.insert(str.count - 2, ".")
+    static func addPeriodBeforeLastTwoChars(_ s: String) -> String {
+        s.insert(s.count - 2, ".")
     }
 
-    static func fixedLengthString(_ string: String, _ length: Int) -> String {
-        if string.count < length {
-            var stringLocal = string
-            (string.count...length).forEach { _ in stringLocal += " " }
+    static func fixedLengthString(_ s: String, _ length: Int) -> String {
+        if s.count < length {
+            var stringLocal = s
+            (s.count...length).forEach { _ in stringLocal += " " }
             return stringLocal
         } else {
-            return string
+            return s
         }
     }
 

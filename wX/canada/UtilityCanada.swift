@@ -312,11 +312,11 @@ final class UtilityCanada {
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
         resultListDay = resultListDay.filter {!$0.contains("Current Conditions")}
         resultListDay = resultListDay.filter {$0.contains(":")}
-        var string = ""
+        var s = ""
         resultListDay.enumerated().forEach { index, value in
-            string += value.split(":")[0] + ": " + resultList[index] + GlobalVariables.newline + GlobalVariables.newline
+            s += value.split(":")[0] + ": " + resultList[index] + GlobalVariables.newline + GlobalVariables.newline
         }
-        return string
+        return s
     }
 
     static func getHazards(_ html: String) -> [String] {

@@ -98,10 +98,10 @@ final class UtilityCanadaImg {
         let radarHtml1hr = html.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
         let radarSiteCode = (timeStamps.first ?? "_").split("_")[0]
-        var string = timeStamps.map { ":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF" }.joined()
+        var s = timeStamps.map { ":/data/radar/detailed/temp_image/" + radarSiteCode + "/" + $0 + ".GIF" }.joined()
         timeStamps = html.parseColumn("src=.(/data/radar/.*?GIF)\"")
-        string += timeStamps.map { ":" + $0 }.joined()
-        return string
+        s += timeStamps.map { ":" + $0 }.joined()
+        return s
     }
 
     static func getRadarAnimOptionsApplied(_ radarSite: String, _ frameCntStr: String) -> AnimationDrawable {
@@ -156,10 +156,10 @@ final class UtilityCanadaImg {
         }
         let radarHtml1hr = radarHtml.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        var string = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF"}.joined()
+        var s = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF"}.joined()
         timeStamps = radarHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
-        string += timeStamps.map { ":" + $0 }.joined()
-        let tokens = string.split(":")
+        s += timeStamps.map { ":" + $0 }.joined()
+        let tokens = s.split(":")
         var urls = tokens.filter { $0 != "" }.map { GlobalVariables.canadaEcSitePrefix + $0.replaceAll("detailed/", "") }
         urls.reverse()
         return UtilityImgAnim.getAnimationDrawableFromUrlList(urls)
