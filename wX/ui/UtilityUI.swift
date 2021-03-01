@@ -8,9 +8,13 @@ import UIKit
 
 final class UtilityUI {
 
-    static func getScreenScale() -> Float { Float(UIScreen.main.scale) }
+    static func getScreenScale() -> Float {
+        Float(UIScreen.main.scale)
+    }
 
-    static func getNativeScreenScale() -> Float { Float(UIScreen.main.nativeScale) }
+    static func getNativeScreenScale() -> Float {
+        Float(UIScreen.main.nativeScale)
+    }
 
     static func getScreenBoundsNoCatalyst() -> (Float, Float) {
         let bounds = UIScreen.main.bounds

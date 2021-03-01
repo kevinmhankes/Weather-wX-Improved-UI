@@ -34,16 +34,14 @@ final class vcModels: UIwXViewController {
         sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
         runButton = ObjectToolbarIcon(title: "Run", self, #selector(runClicked))
         let animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        toolbarTop.items = ObjectToolbarItems(
-            [
-                statusButton,
-                GlobalVariables.flexBarButton,
-                modelButton,
-                sectorButton,
-                runButton,
-                animateButton
-            ]
-        ).items
+        toolbarTop.items = ObjectToolbarItems([
+            statusButton,
+            GlobalVariables.flexBarButton,
+            modelButton,
+            sectorButton,
+            runButton,
+            animateButton
+        ]).items
         if modelActivitySelected.contains("NCAR")
             || modelActivitySelected.contains("SPCSREF")
             || modelActivitySelected.contains("SPCHREF")

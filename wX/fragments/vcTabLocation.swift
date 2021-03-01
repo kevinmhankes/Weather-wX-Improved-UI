@@ -595,7 +595,7 @@ final class vcTabLocation: vcTabParent {
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
         alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)}))
         alert.addAction(UIAlertAction(
-            "Nearest forecast: "  + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6), { _ in
+            "Nearest forecast: " + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6), { _ in
                 UtilityRadarUI.getForecast(pointerLocation, self)})
         )
         alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))

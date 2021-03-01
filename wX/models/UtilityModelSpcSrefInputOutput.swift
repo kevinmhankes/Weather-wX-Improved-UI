@@ -23,14 +23,12 @@ final class UtilityModelSpcSrefInputOutput {
         runData.imageCompleteStr = tmpTxt
         if runData.listRun.count > 0 {
             runData.mostRecentRun = runData.listRun[0]
-            //runData.mostRecentRun = "latest"
         }
         return runData
     }
 
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/exper/sref/gifs/" + om.run.replace("z", "") + "/" + om.param + "f0" + om.time + ".gif"
-        print(imgUrl)
         return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
     }
 }

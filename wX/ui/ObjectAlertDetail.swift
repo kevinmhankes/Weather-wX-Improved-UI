@@ -36,7 +36,6 @@ final class ObjectAlertDetail {
             textViews[3].text = "End: " + endTime
         }
         textViews[4].text = alert.area.removeSingleLineBreaks()
-        //self.textViews[5].text = alert.summary.removeSingleLineBreaks()
         textViews[5].text = alert.summary
         textViews[6].text = alert.instructions.removeSingleLineBreaks()
         uiStackView.accessibilityLabel = title + wfo + "Issued: " + startTime +
@@ -58,6 +57,6 @@ final class ObjectAlertDetail {
         if endTime == "" {
             endTime = cap.title.parse("expiring (.*?) by")
         }
-        return(title, startTime, endTime)
+        return (title, startTime, endTime)
     }
 }

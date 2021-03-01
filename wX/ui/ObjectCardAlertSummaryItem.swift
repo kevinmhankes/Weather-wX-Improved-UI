@@ -17,7 +17,7 @@ final class ObjectCardAlertSummaryItem {
         _ gestureRadar: UITapGestureRecognizerWithData,
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
-        // icons
+        // start icons
         let radarIcon = ObjectToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = ObjectTextView("Radar")
         radarText.addGestureRecognizer(gestureRadarText)

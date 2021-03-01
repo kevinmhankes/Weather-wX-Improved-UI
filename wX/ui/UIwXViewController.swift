@@ -49,7 +49,9 @@ class UIwXViewController: UIViewController {
     func getContent() {}
     
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized { doneClicked() }
+        if recognizer.state == .recognized {
+            doneClicked()
+        }
     }
 
     @objc func doneClicked() {
@@ -72,13 +74,13 @@ class UIwXViewController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
-            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle &&  UIApplication.shared.applicationState == .inactive {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle && UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
-                    print("Dark mode")
+                    // print("Dark mode")
                 } else {
                     AppColors.update()
-                    print("Light mode")
+                    // print("Light mode")
                 }
                 view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
                 toolbar.setColorToTheme()

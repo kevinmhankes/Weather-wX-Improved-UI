@@ -264,7 +264,7 @@ final class UIColorLegend: UIView {
                 drawText(
                     String(index) + units,
                     widthStarting + width + textFromLegend,
-                    (20.0 * scaledHeightVel * (10.0 - CGFloat(index))) + heightFudge + startHeight
+                    20.0 * scaledHeightVel * (10.0 - CGFloat(index)) + heightFudge + startHeight
                 )
                 if !unitsDrawn {
                     unitsDrawn = true
@@ -289,7 +289,7 @@ final class UIColorLegend: UIView {
                     drawText(
                         labels[Int(index / 10)] + units,
                         widthStarting + width + textFromLegend,
-                        (scaledHeight * (159.0 - CGFloat(index)))  + startHeight
+                        scaledHeight * (159.0 - CGFloat(index)) + startHeight
                     )
                     if !unitsDrawn {
                         unitsDrawn = true

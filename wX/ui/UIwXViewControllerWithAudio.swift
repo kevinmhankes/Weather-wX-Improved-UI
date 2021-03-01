@@ -29,7 +29,7 @@ class UIwXViewControllerWithAudio: UIwXViewController, AVSpeechSynthesizerDelega
         playListButton = ObjectToolbarIcon(self, .playList, #selector(playlistClicked))
     }
     
-    @objc override func doneClicked() {
+    override func doneClicked() {
         UtilityAudio.resetAudio(self, playButton)
         super.doneClicked()
     }

@@ -32,7 +32,9 @@ final class ObjectPopUp {
         self.uiv = uiv
         list.forEach { item in
             var code = item
-            if item.contains(":") { code = item.firstToken(":") }
+            if item.contains(":") {
+                code = item.firstToken(":")
+            }
             let action = UIAlertAction(item, { _ in fn(code) })
             addAction(action)
         }
@@ -140,12 +142,16 @@ final class ObjectPopUp {
 
     func finish() {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = button
+        }
         uiv.present(alert, animated: true, completion: nil)
     }
     
     func present() {
-        if let popoverController = alert.popoverPresentationController { popoverController.barButtonItem = button }
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = button
+        }
         uiv.present(alert, animated: true, completion: nil)
     }
 }

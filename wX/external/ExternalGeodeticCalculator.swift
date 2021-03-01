@@ -293,7 +293,7 @@ final class ExternalGeodeticCalculator {
      * @param end ending position
      * @return
      */
-    func  calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid, start: ExternalGlobalPosition, end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
+    func calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid, start: ExternalGlobalPosition, end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
         // calculate elevation differences
         let elev1 = start.getElevation()
         let elev2 = end.getElevation()
@@ -310,6 +310,6 @@ final class ExternalGeodeticCalculator {
         // calculate the curve at the average elevation
         let averageCurve = calculateGeodeticCurve(ellipsoid: ellipsoid, start: start, end: end)
         // return the measurement
-        return  ExternalGeodeticMeasurement(averageCurve: averageCurve, elevationChange: elev2 - elev1)
+        return ExternalGeodeticMeasurement(averageCurve: averageCurve, elevationChange: elev2 - elev1)
     }
 }

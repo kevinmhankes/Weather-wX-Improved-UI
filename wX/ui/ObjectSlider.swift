@@ -18,14 +18,16 @@ final class ObjectSlider {
     private var suffix = ""
 
     init(_ uiv: UIwXViewController, _ prefVar: String) {
-        if UtilityUI.isTablet() { suffix = "_T" }
+        if UtilityUI.isTablet() {
+            suffix = "_T"
+        }
         #if targetEnvironment(macCatalyst)
             suffix = "_C"
         #endif
         label = ObjectSlider.prefToLabel[prefVar]!
         initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar + suffix]!)
-        print(initialValue)
-        print(prefVar)
+        // print(initialValue)
+        // print(prefVar)
         self.prefVar = prefVar
         slider = UISlider()
         slider.minimumValue = ObjectSlider.prefToMin[prefVar]!
@@ -46,7 +48,9 @@ final class ObjectSlider {
     }
 
     func setLabel() {
-        if prefVar == "TEXTVIEW_FONT_SIZE" { UIPreferences.textviewFontSize = CGFloat(slider.value) }
+        if prefVar == "TEXTVIEW_FONT_SIZE" {
+            UIPreferences.textviewFontSize = CGFloat(slider.value)
+        }
         button.setTitle(
             label + "(" + String(ObjectSlider.prefToInitialValue[prefVar + suffix]!) + "): " + String(Int(slider.value)) + " ",
             for: .normal
@@ -76,7 +80,7 @@ final class ObjectSlider {
         "NWS_ICON_SIZE_PREF": "NWS Icon size"
     ]
 
-    private static let prefToInitialValue: [String: Int] = [
+    private static let prefToInitialValue = [
         "RADAR_LOCDOT_SIZE": 4,
         "RADAR_LOCDOT_SIZE_T": 2,
         "RADAR_LOCDOT_SIZE_C": 1,

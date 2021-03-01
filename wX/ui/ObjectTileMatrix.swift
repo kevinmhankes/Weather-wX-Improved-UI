@@ -32,26 +32,22 @@ final class ObjectTileMatrix: NSObject {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    GlobalVariables.flexBarButton,
-                    dashButton,
-                    wfoTextButton,
-                    cloudButton,
-                    menuButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([
+                GlobalVariables.flexBarButton,
+                dashButton,
+                wfoTextButton,
+                cloudButton,
+                menuButton
+            ]).items
         } else {
-            toolbar.items = ObjectToolbarItems(
-                [
-                    GlobalVariables.flexBarButton,
-                    dashButton,
-                    wfoTextButton,
-                    cloudButton,
-                    radarButton,
-                    menuButton
-                ]
-            ).items
+            toolbar.items = ObjectToolbarItems([
+                GlobalVariables.flexBarButton,
+                dashButton,
+                wfoTextButton,
+                cloudButton,
+                radarButton,
+                menuButton
+            ]).items
         }
         uiv.view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: uiv, toolbarType: .top)
@@ -85,7 +81,9 @@ final class ObjectTileMatrix: NSObject {
                 jIndex += 1
             }
             stackView.addArrangedSubview(sV.view)
-            if jIndex >= icons.count { break }
+            if jIndex >= icons.count {
+                break
+            }
         }
     }
     

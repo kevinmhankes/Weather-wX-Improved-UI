@@ -60,7 +60,7 @@ final class UtilityColorPaletteGeneric {
                 let items = line.contains(",") ? line.split(",") : line.split(" ")
                 if items.count > 4 {
                     if priorLineHas6 {
-                        objectColorPaletteLines.append(ObjectColorPaletteLine(Int((Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1  ), red, green, blue))
+                        objectColorPaletteLines.append(ObjectColorPaletteLine(Int((Double(items[1]) ?? 0.0) * prodScale + prodOffset - 1), red, green, blue))
                         objectColorPaletteLines.append(ObjectColorPaletteLine(items) {
                                                    Int(((Double($0[1]) ?? 0.0) * prodScale + prodOffset))
                                                })

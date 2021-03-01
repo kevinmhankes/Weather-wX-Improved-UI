@@ -13,7 +13,7 @@ final class UtilityModelNsslWrfInputOutput {
     
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
-        let htmlRunStatus = (baseUrl).getHtml()
+        let htmlRunStatus = baseUrl.getHtml()
         let html = htmlRunStatus.parse("\\{model: \"fv3_nssl\",(rd: .[0-9]{8}\",rt: .[0-9]{4}\",)")
         let day = html.parse("rd:.(.*?),.*?").replaceAll("\"", "")
         let time = html.parse("rt:.(.*?)00.,.*?").replaceAll("\"", "")
@@ -30,7 +30,9 @@ final class UtilityModelNsslWrfInputOutput {
         let baseLayerUrl = "https://cams.nssl.noaa.gov/graphics/blank_maps/spc_" + sector + ".png"
         var modelPostfix = "_nssl"
         var model = om.model.lowercased()
-        if om.model == "HRRRV3" { modelPostfix = "" }
+        if om.model == "HRRRV3" {
+            modelPostfix = ""
+        }
         if om.model == "WRF_3KM" {
             model = "wrf_nssl_3km"
             modelPostfix = ""

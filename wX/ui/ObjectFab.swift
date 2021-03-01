@@ -27,7 +27,7 @@ final class ObjectFab {
         let imageString = ObjectToolbarIcon.iconToString[iconType] ?? ""
         floaty.buttonImage = UtilityImg.resizeImage(UIImage(named: imageString)!, 0.50)
         if #available(iOS 13, *) {
-            print(imageString)
+            // print(imageString)
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
             let newIconValue = ObjectToolbarIcon.oldIconToNew[imageString]

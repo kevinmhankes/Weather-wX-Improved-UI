@@ -219,7 +219,7 @@ final class UtilityNws {
         let textFontAttributes = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): textFont ,
             NSAttributedString.Key.foregroundColor: textColor
-            ]  as [NSAttributedString.Key: Any]?
+            ] as [NSAttributedString.Key: Any]?
         let bitmap: Bitmap
         if let fileName = UtilityNwsIcon.iconMap[weatherCondition + ".png"] {
             bitmap = UtilityIO.readBitmapResourceFromFile(fileName)

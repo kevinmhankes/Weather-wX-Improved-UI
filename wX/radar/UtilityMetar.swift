@@ -90,7 +90,7 @@ final class UtilityMetar {
                     if (visInt >= 1 && visInt < 3) || ( lowestCig >= 500 && lowestCig < 1000) {
                         aviationColor = Color.RED
                     }
-                    if visInt < 1  || lowestCig < 500 {
+                    if visInt < 1 || lowestCig < 500 {
                         aviationColor = Color.MAGENTA
                     }
                     if pressureBlob.count == 4 {

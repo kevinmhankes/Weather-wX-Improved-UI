@@ -33,7 +33,9 @@ final class UtilityModels {
         let calendar = Calendar.current
         let dayOfWeek = calendar.component(.weekday, from: date )
         let hourOfDayLocal = calendar.component(.hour, from: date )
-        if runInt >= 0 && runInt < -offsetFromUtc/60/60 && (hourOfDayLocal-offsetFromUtc/60/60) >= 24 { day += 1 }
+        if runInt >= 0 && runInt < -offsetFromUtc/60/60 && (hourOfDayLocal-offsetFromUtc/60/60) >= 24 {
+            day += 1
+        }
         var futureDay = ""
         switch (dayOfWeek + day) % 7 {
         case 1:

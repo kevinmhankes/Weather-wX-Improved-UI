@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectToolbarIcon: UIBarButtonItem {
     
-    static let oldIconToNew: [String: String] = [
+    static let oldIconToNew = [
         "ic_arrow_back_white_24dp": "chevron.left",
         "ic_play_arrow_24dp": "play.fill",
         "ic_share_24dp": "square.and.arrow.up",

@@ -614,7 +614,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
-                    //print(animArray[index][$0] + " move to " +  String(index) + "nexrad_anim" + String($0))
+                    //print(animArray[index][$0] + " move to " + String(index) + "nexrad_anim" + String($0))
                 }
             }
             var scaleFactor = 1
