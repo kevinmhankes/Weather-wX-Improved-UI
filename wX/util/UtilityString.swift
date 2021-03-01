@@ -8,8 +8,8 @@ import Foundation
 
 final class UtilityString {
 
-    static func shortenTime(_ str: String) -> String {
-        let longTime = str
+    static func shortenTime(_ s: String) -> String {
+        let longTime = s
             .replace("-09:00", "")
             .replace("-10:00", "")
             .replace("-05:00", "")
@@ -20,55 +20,55 @@ final class UtilityString {
         return longTime.replace("-06:00", "").replace("-07:00", "")
     }
 
-    static func split(_ str: String, _ splitStr: String) -> [String] {
-        str.components(separatedBy: splitStr)
+    static func split(_ s: String, _ splitStr: String) -> [String] {
+        s.components(separatedBy: splitStr)
     }
 
-    static func substring(_ str: String, _ start: Int, _ end: Int) -> String {
+    static func substring(_ s: String, _ start: Int, _ end: Int) -> String {
         var retStr = ""
-        str.indices.forEach {
-            let intValue = str.distance(from: str.startIndex, to: $0)
+        s.indices.forEach {
+            let intValue = s.distance(from: s.startIndex, to: $0)
             if intValue >= start && intValue < end {
-                retStr += String(str[$0])
+                retStr += String(s[$0])
             }
         }
         return retStr
     }
 
-    static func substring(_ str: String, _ start: Int) -> String {
+    static func substring(_ s: String, _ start: Int) -> String {
         var retStr = ""
-        str.indices.forEach {
-            let intValue = str.distance(from: str.startIndex, to: $0)
-            if intValue >= start && intValue < str.count {
-                retStr += String(str[$0])
+        s.indices.forEach {
+            let intValue = s.distance(from: s.startIndex, to: $0)
+            if intValue >= start && intValue < s.count {
+                retStr += String(s[$0])
             }
         }
         return retStr
     }
 
-    static func insert(_ str: String, _ idx: Int, _ text: Character) -> String {
-        let index = str.index(str.startIndex, offsetBy: idx)
-        var retStr = str
+    static func insert(_ s: String, _ idx: Int, _ text: Character) -> String {
+        let index = s.index(s.startIndex, offsetBy: idx)
+        var retStr = s
         retStr.insert(text, at: index)
         return retStr
     }
 
-    static func replaceAll(_ str: String, _ a: String, _ b: String) -> String {
-        let toArray = str.components(separatedBy: a)
+    static func replaceAll(_ s: String, _ a: String, _ b: String) -> String {
+        let toArray = s.components(separatedBy: a)
         return toArray.joined(separator: b)
     }
 
-    static func replaceAllRegexp(_ str: String, _ a: String, _ b: String) -> String {
+    static func replaceAllRegexp(_ s: String, _ a: String, _ b: String) -> String {
         if let regex = try? NSRegularExpression(pattern: a, options: []) {
             let modString = regex.stringByReplacingMatches(
-                in: str,
+                in: s,
                 options: .withTransparentBounds,
-                range: NSRange(location: 0, length: str.count),
+                range: NSRange(location: 0, length: s.count),
                 withTemplate: b
             )
             return(modString)
         }
-        return str
+        return s
     }
 
     static func removeLineBreaks(_ html: String) -> String {

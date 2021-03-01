@@ -45,7 +45,9 @@ final class Utility {
 
     static func getSoundingSiteName(_ wfo: String) -> String {
         var site = UtilityRadar.wfoIdToName[wfo] ?? ""
-        if site == "" { site = UtilityRadar.soundingIdToName[wfo] ?? "" }
+        if site == "" {
+            site = UtilityRadar.soundingIdToName[wfo] ?? ""
+        }
         return site
     }
 

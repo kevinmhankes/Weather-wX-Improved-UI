@@ -59,8 +59,8 @@ final class ProjectionNumbers {
             polygonWidth = 2
         case .iosQuartz:
             scale = 190.00
-            xCenter = 414/2
-            yCenter = 738/2
+            xCenter = 414 / 2
+            yCenter = 738 / 2
             polygonWidth = 2
         case .wxRender48:
             scale = 450.00

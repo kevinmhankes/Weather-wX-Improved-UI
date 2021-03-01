@@ -172,7 +172,9 @@ final class UtilityDownload {
             let location = product.substring(3).replace("%", "")
             let locationName = Utility.getWfoSiteName(location)
             var site = locationName.split(",")[0]
-            if product.hasPrefix("RTP") { site = location }
+            if product.hasPrefix("RTP") {
+                site = location
+            }
             let url = "https://forecast.weather.gov/product.php?site=" + location + "&issuedby=" + site + "&product=" + productType
             // https://forecast.weather.gov/product.php?site=ILX&issuedby=IL&product=RWR
             text = url.getHtmlSep()
