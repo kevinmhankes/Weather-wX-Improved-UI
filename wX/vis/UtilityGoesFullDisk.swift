@@ -40,7 +40,7 @@ final class UtilityGoesFullDisk {
     
     static func getAnimation(url: String) -> AnimationDrawable {
         let url2 = url.replace("10.gif", "")
-        let bitmaps = (0...9).map { Bitmap(url2 + String($0+1) + ".gif") }
+        let bitmaps = (0...9).map { Bitmap(url2 + String($0 + 1) + ".gif") }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }

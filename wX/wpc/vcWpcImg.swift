@@ -31,7 +31,7 @@ final class vcWpcImg: UIwXViewController {
         }
     }
 
-    @objc override func willEnterForeground() {
+    override func willEnterForeground() {
         getContent(index)
     }
 
