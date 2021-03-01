@@ -39,7 +39,9 @@ final class ExternalPolygon {
      *
      * @return The builder
      */
-    static func BuilderS() -> Builder { Builder() }
+    static func BuilderS() -> Builder {
+        Builder()
+    }
 
     /**
      * Builder of the polygon
@@ -160,12 +162,16 @@ final class ExternalPolygon {
             /*
              * If the number of intersections is odd, then the point is inside the polygon
              */
-            if intersection % 2 == 1 { return true }
+            if intersection % 2 == 1 {
+                return true
+            }
         }
         return false
     }
 
-    func getSides() -> [ExternalLine] { sides }
+    func getSides() -> [ExternalLine] {
+        sides
+    }
 
     /**
      * By given ray and one side of the polygon, check if both lines intersect.
@@ -179,7 +185,9 @@ final class ExternalPolygon {
         // if both vectors aren't from the kind of x=1 lines then go into
         if !ray.isVertical() && !side.isVertical() {
             // check if both vectors are parallel. If they are parallel then no intersection point will exist
-            if ray.getA() - side.getA() == 0 { return false }
+            if ray.getA() - side.getA() == 0 {
+                return false
+            }
             let x = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())) // x = (b2-b1)/(a1-a2)
             let y = side.getA() * x + side.getB() // y = a2*x+b2
             intersectPoint = ExternalPoint(x, y)
@@ -190,7 +198,7 @@ final class ExternalPolygon {
         } else if !ray.isVertical() && side.isVertical() {
             let x = side.getStart().x
             let y = ray.getA() * x + ray.getB()
-            intersectPoint =  ExternalPoint(x, y)
+            intersectPoint = ExternalPoint(x, y)
         } else {
             return false
         }

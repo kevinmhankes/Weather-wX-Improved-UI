@@ -7,7 +7,7 @@
 final class DataStorage {
 
     private let preference: String
-    private var val: String = ""
+    private var data: String = ""
 
     init(_ preference: String) {
         self.preference = preference
@@ -19,9 +19,9 @@ final class DataStorage {
     }
 
     var value: String {
-        get { val }
+        get { data }
         set {
-            val = newValue
+            data = newValue
             Utility.writePref(preference, newValue)
         }
     }

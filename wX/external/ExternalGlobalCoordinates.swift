@@ -92,7 +92,9 @@ class ExternalGlobalCoordinates {
      *
      * @return latitude in degrees
      */
-    func getLatitude() -> Double { mLatitude }
+    func getLatitude() -> Double {
+        mLatitude
+    }
 
     var latitude: Double { mLatitude }
 
@@ -112,7 +114,9 @@ class ExternalGlobalCoordinates {
      *
      * @return longitude in degrees
      */
-    func getLongitude() -> Double { mLongitude }
+    func getLongitude() -> Double {
+        mLongitude
+    }
 
     var longitude: Double { mLongitude }
 
@@ -157,7 +161,9 @@ class ExternalGlobalCoordinates {
      * @return
      */
 
-    func hashCode() -> Int { (Int((mLongitude * mLatitude * 1000000 + 1021))) * 1000033 }
+    func hashCode() -> Int {
+        Int((mLongitude * mLatitude * 1000000 + 1021)) * 1000033
+    }
 
     /**
      * Compare these coordinates to another object for equality.

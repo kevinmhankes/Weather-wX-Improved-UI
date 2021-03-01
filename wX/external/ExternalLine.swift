@@ -24,7 +24,7 @@ final class ExternalLine {
         self.start = start
         self.end = end
         if end.x - start.x != 0 {
-            a = ((end.y - start.y) / (end.x - start.x))
+            a = (end.y - start.y) / (end.x - start.x)
             b = start.y - a * start.x
         } else {
             vertical = true
@@ -42,15 +42,27 @@ final class ExternalLine {
         return false
     }
 
-    func isVertical() -> Bool { vertical }
+    func isVertical() -> Bool {
+        vertical
+    }
     
-    func getA() -> Float { a }
+    func getA() -> Float {
+        a
+    }
     
-    func getB() -> Float { b }
+    func getB() -> Float {
+        b
+    }
     
-    func getStart() -> ExternalPoint { start }
+    func getStart() -> ExternalPoint {
+        start
+    }
     
-    func getEnd() -> ExternalPoint { end }
+    func getEnd() -> ExternalPoint {
+        end
+    }
     
-    func toString() -> String { String(format: "%s-%s", start.toString(), end.toString()) }
+    func toString() -> String {
+        String(format: "%s-%s", start.toString(), end.toString())
+    }
 }

@@ -20,9 +20,15 @@ class ExternalGeodeticCurve {
         self.reverseAzimuth = reverseAzimuth
     }
 
-    func getEllipsoidalDistance() -> Double { ellipsoidalDistance }
+    func getEllipsoidalDistance() -> Double {
+        ellipsoidalDistance
+    }
     
-    func getAzimuth() -> Double { azimuth }
+    func getAzimuth() -> Double {
+        azimuth
+    }
     
-    func getReverseAzimuth() -> Double { reverseAzimuth }
+    func getReverseAzimuth() -> Double {
+        reverseAzimuth
+    }
 }

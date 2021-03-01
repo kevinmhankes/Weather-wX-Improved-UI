@@ -27,8 +27,4 @@ final class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
                   reverseAzimuth: averageCurve.getReverseAzimuth(),
                   elevationChange: elevationChange)
     }
-
-    //func getElevationChange() -> Double { mElevationChange }
-    
-    //func getPointToPointDistance() -> Double { mP2P }
 }

@@ -51,11 +51,19 @@ final class ExternalEllipsoid {
                                  inverseFlattening: inverseF)
     }
 
-    func getSemiMajorAxis() -> Double { semiMajorAxis }
+    func getSemiMajorAxis() -> Double {
+        semiMajorAxis
+    }
 
-    func getSemiMinorAxis() -> Double { semiMinorAxis }
+    func getSemiMinorAxis() -> Double {
+        semiMinorAxis
+    }
 
-    func getFlattening() -> Double { flattening }
+    func getFlattening() -> Double {
+        flattening
+    }
 
-    func getInverseFlattening() -> Double { inverseFlattening }
+    func getInverseFlattening() -> Double {
+        inverseFlattening
+    }
 }

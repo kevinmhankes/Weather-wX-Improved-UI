@@ -236,19 +236,35 @@ final class Route {
     }
     
     static func severeDashboard(_ uiv: UIViewController) {
-        if Location.isUS { uiv.goToVC(vcSevereDashboard()) } else { uiv.goToVC(vcCanadaWarnings()) }
+        if Location.isUS {
+            uiv.goToVC(vcSevereDashboard())
+        } else {
+            uiv.goToVC(vcCanadaWarnings())
+        }
     }
     
     static func cloud(_ uiv: UIViewController) {
-        if Location.isUS { vis(uiv) } else { visCanada(uiv) }
+        if Location.isUS {
+            vis(uiv)
+        } else {
+            visCanada(uiv)
+        }
     }
     
     static func wfoText(_ uiv: UIViewController) {
-        if Location.isUS { uiv.goToVC(vcWfoText()) } else { uiv.goToVC(vcCanadaText()) }
+        if Location.isUS {
+            uiv.goToVC(vcWfoText())
+        } else {
+            uiv.goToVC(vcCanadaText())
+        }
     }
     
     static func hourly(_ uiv: UIViewController) {
-        if Location.isUS { uiv.goToVC(vcHourly()) } else { uiv.goToVC(vcCanadaHourly()) }
+        if Location.isUS {
+            uiv.goToVC(vcHourly())
+        } else {
+            uiv.goToVC(vcCanadaHourly())
+        }
     }
     
     static func soundings(_ uiv: UIViewController) {

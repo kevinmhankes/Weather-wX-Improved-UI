@@ -51,7 +51,9 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      *
      * @return elevation about the ellipsoid in meters.
      */
-    func getElevation() -> Double { elevation }
+    func getElevation() -> Double {
+        elevation
+    }
 
     /**
      * Set the elevation.
@@ -91,7 +93,9 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
 
     override func hashCode() -> Int {
         var hash: Int = super.hashCode()
-        if elevation != 0 { hash *= Int(elevation) }
+        if elevation != 0 {
+            hash *= Int(elevation)
+        }
         return hash
     }
 
