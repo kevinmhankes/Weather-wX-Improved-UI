@@ -134,8 +134,14 @@ final class vcSevereDashboard: UIwXViewController {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
+        let noticeCount = getNoticeCount()
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
             imagesPerRow = 3
+        }
+        if noticeCount == 0 && UtilityUI.isLandscape() {
+            imagesPerRow = 2
+        } else if noticeCount == 0 && !UtilityUI.isLandscape() {
+            imagesPerRow = 1
         }
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
@@ -221,6 +227,15 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
         statusButton.title = status + " " + statusWarnings
+    }
+    
+    func getNoticeCount() -> Int {
+        var count = 0
+        [snWat, snMcd, snMpd].forEach { severeNotice in
+            count += severeNotice.bitmaps.count
+        }
+        print("23444 " + String(count) ?? 22)
+        return count
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

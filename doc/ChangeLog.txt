@@ -23,18 +23,16 @@
 // [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
 // [FIX] nexrad timestamp is slightly offset higher then other text
 // [ADD] LSR by WFO - download and show one at a time
-// [REF] update copyright in c code
-// [REF] formatting in c code
 // [FIX] long press nexrad does not reset zoom (catalyst)
 // [REF] FileStorage 
 // [REF] reduction in chained replace
-// [REF] utilString, don't use str, use s (python) - use regexp instead of regexpStr
 // [REF] add extension for parseLastMatch
 // [REF] move and rename UtilitySunMoon (now now in misc)
 // [REF] in GeographyType/PolygonType rename string
 
-56126 2021_03_01 [FIX] lint
+56126 2021_03_02 [FIX] lint
 		 [REF] avoid using str and string as var names
+		 [ADD] if only 2 images showing in severe dashboard, make them larger
 56125 2021_02_27 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
 		 [REF] code cleanup
