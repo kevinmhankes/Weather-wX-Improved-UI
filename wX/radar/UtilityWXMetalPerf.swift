@@ -16,21 +16,11 @@ final class UtilityWXMetalPerf {
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        if disFirst.capacity == 0 { return 0 }
+        if disFirst.capacity == 0 {
+            return 0
+        }
         while disFirst.getShort() != -1 {}
         disFirst.skipBytes(100)
-//        var retSize: UInt32 = 1000000
-//        let oBuff = [UInt8](repeating: 1, count: Int(retSize))
-//        let compressedFileSize: CLong = disFirst.capacity - disFirst.position
-//        BZ2_bzBuffToBuffDecompress(
-//            MemoryBuffer.getPointer(oBuff),
-//            &retSize,
-//            MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
-//            UInt32(compressedFileSize),
-//            1,
-//            0
-//        )
-//        let dis2 = MemoryBuffer(oBuff)
         let dis2 = UtilityIO.uncompress(disFirst)
         dis2.skipBytes(30)
         var numberOfRleHalfWords: UInt16 = 0
@@ -64,7 +54,9 @@ final class UtilityWXMetalPerf {
             level = 0
             levelCount = 0
             binStart = radarBuffers.rd.binSize
-            if radial == 0 { angle0 = angle }
+            if radial == 0 {
+                angle0 = angle
+            }
             if radial < numberOfRadials - 1 {
                 angleV = angleNext
             } else {
@@ -72,7 +64,9 @@ final class UtilityWXMetalPerf {
             }
             (0..<numberOfRleHalfWords).forEach { bin in
                 curLevel = dis2.get()
-                if bin == 0 { level = curLevel }
+                if bin == 0 {
+                    level = curLevel
+                }
                 if curLevel == level {
                     levelCount += 1
                 } else {

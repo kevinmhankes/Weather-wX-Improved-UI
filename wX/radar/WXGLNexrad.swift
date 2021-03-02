@@ -9,18 +9,18 @@ final class WXGLNexrad {
     static var wxoglDspLegendMax = 0.0
 
     let tdwrProductList = [
-            "TZ0",
-            "TZ1",
-            "TZ2",
-            "TR0",
-            "TR1",
-            "TR2",
-            "TV0",
-            "TV1",
-            "TV2",
-            "TZL",
-            "N1P",
-            "NTP"
+        "TZ0",
+        "TZ1",
+        "TZ2",
+        "TR0",
+        "TR1",
+        "TR2",
+        "TV0",
+        "TV1",
+        "TV2",
+        "TZL",
+        "N1P",
+        "NTP"
     ]
 
     static func isProductTdwr(_ product: String) -> Bool {
@@ -36,7 +36,9 @@ final class WXGLNexrad {
             if radarTimeSplit.count > 0 {
                 radarTimeFinalWithDate = radarTimeSplit[0]
                 let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
-                if radarTimeFinalWithDateInParts.count > 1 { radarTimeFinal = radarTimeFinalWithDateInParts[1] }
+                if radarTimeFinalWithDateInParts.count > 1 {
+                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
+                }
             }
         }
         return radarTimeFinal
