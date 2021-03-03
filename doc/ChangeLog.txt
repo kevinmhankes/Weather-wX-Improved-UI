@@ -30,6 +30,7 @@
 // [REF] move and rename UtilitySunMoon (now now in misc)
 // [REF] in GeographyType/PolygonType rename string
 // [REF] externPoly - remove underscores
+// [FIX] access text from NHC changes stored pref in WPC Text
 
 56126 2021_03_02 [FIX] lint
 		 [REF] avoid using str and string as var names
