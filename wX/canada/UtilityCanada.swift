@@ -310,8 +310,8 @@ final class UtilityCanada {
     static func get7Day(_ html: String) -> String {
         let resultList = html.parseColumn("<category term=\"Weather Forecasts\"/>.*?<summary " + "type=\"html\">(.*?\\.) Forecast.*?</summary>")
         var resultListDay = html.parseColumn("<title>(.*?)</title>")
-        resultListDay = resultListDay.filter {!$0.contains("Current Conditions")}
-        resultListDay = resultListDay.filter {$0.contains(":")}
+        resultListDay = resultListDay.filter { !$0.contains("Current Conditions") }
+        resultListDay = resultListDay.filter { $0.contains(":") }
         var s = ""
         resultListDay.enumerated().forEach { index, value in
             s += value.split(":")[0] + ": " + resultList[index] + GlobalVariables.newline + GlobalVariables.newline
