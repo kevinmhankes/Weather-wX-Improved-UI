@@ -49,5 +49,4 @@ final class GlobalVariables {
     static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
     static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
     static let xml_value_pattern = "<value>"
-    
 }

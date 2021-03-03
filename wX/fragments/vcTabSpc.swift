@@ -12,7 +12,6 @@ final class vcTabSpc: vcTabParent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // tilesPerRow = UIPreferences.tilesPerRow
         objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
     }
 

@@ -45,7 +45,11 @@ extension String {
     
     func firstToken(_ delimiter: String) -> String {
         let tokens = self.split(delimiter)
-        if tokens.count > 0 { return tokens[0] } else { return "" }
+        if tokens.count > 0 {
+            return tokens[0]
+        } else {
+            return ""
+        }
     }
     
     func firstToken() -> String { self.firstToken(":") }
@@ -87,14 +91,15 @@ extension String {
             let nsString = self as NSString
             let all = NSRange(location: 0, length: nsString.length)
             var matches = [String]()
-            regex.enumerateMatches(in: self,
-                                   options: NSRegularExpression.MatchingOptions(rawValue: 0),
-                                   range: all) {(result: NSTextCheckingResult?, _, _) in
-                                    if let r = result {
-                                        let result = nsString.substring(with: r.range) as String
-                                        matches.append(result)
-                                    }
-            }
+            regex.enumerateMatches(
+                in: self,
+                options: NSRegularExpression.MatchingOptions(rawValue: 0),
+                range: all) { (result: NSTextCheckingResult?, _, _) in
+                    if let r = result {
+                        let result = nsString.substring(with: r.range) as String
+                        matches.append(result)
+                    }
+                }
             return matches
         } catch {
             return [String]()
@@ -109,34 +114,54 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
     
-    func roundToString() -> String { UtilityMath.roundDToString(self) }
+    func roundToString() -> String {
+        UtilityMath.roundDToString(self)
+    }
     
     // for SunCalc
     static let radPerDegree = Double.pi / 180.0
 }
 
 extension UInt8 {
-    func toColor() -> CGFloat { CGFloat(Float(self) / 255.0) }
+    func toColor() -> CGFloat {
+        CGFloat(Float(self) / 255.0)
+    }
     
-    func toColor() -> Float { Float(self) / 255.0 }
+    func toColor() -> Float {
+        Float(self) / 255.0
+    }
 }
 
 extension Int {
-    func toColor() -> CGFloat { CGFloat(Float(self) / 255.0) }
+    func toColor() -> CGFloat {
+        CGFloat(Float(self) / 255.0)
+    }
     
-    func red() -> UInt8 { Color.red(self) }
+    func red() -> UInt8 {
+        Color.red(self)
+    }
     
-    func green() -> UInt8 { Color.green(self) }
+    func green() -> UInt8 {
+        Color.green(self)
+    }
     
-    func blue() -> UInt8 { Color.blue(self) }
+    func blue() -> UInt8 {
+        Color.blue(self)
+    }
     
-    func isEven() -> Bool { self & 1 == 0 }
+    func isEven() -> Bool {
+        self & 1 == 0
+    }
 }
 
 extension UIImage {
-    func getWidth() -> CGFloat { self.size.width }
+    func getWidth() -> CGFloat {
+        self.size.width
+    }
     
-    func getHeight() -> CGFloat { self.size.height }
+    func getHeight() -> CGFloat {
+        self.size.height
+    }
 }
 
 extension UIColor {
@@ -211,7 +236,9 @@ extension Date {
     
     var daysSince2000: Double { julianDays - Date.j2000 }
     
-    func hoursLater(_ h: Double) -> Date { addingTimeInterval(h * 3600.0) }
+    func hoursLater(_ h: Double) -> Date {
+        addingTimeInterval(h * 3600.0)
+    }
     
     // Beginning time of a day, aka. 0:00 or midnight in GMT.
     func beginning() -> Date {

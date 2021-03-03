@@ -27,9 +27,9 @@ final class vcTabLocation: vcTabParent {
     private var isUS = true
     private var isUSDisplayed = true
     private var objLabel = ObjectTextView()
-    private var stackViewCurrentConditions: ObjectStackView!
-    private var stackViewForecast: ObjectStackView!
-    private var stackViewHazards: ObjectStackView!
+    private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+    private var stackViewForecast = ObjectStackView(.fill, .vertical)
+    private var stackViewHazards = ObjectStackView(.fill, .vertical)
     private var stackViewRadar = ObjectStackViewHS()
     private var objectCardCurrentConditions: ObjectCardCurrentConditions?
     private var objectCardSevenDayCollection: ObjectCardSevenDayCollection?
@@ -47,7 +47,7 @@ final class vcTabLocation: vcTabParent {
     private var longPressCount = 0
     private var toolbar = ObjectToolbar()
     private var globalHomeScreenFav = ""
-    private var globalTextViewFontSize: CGFloat = 0.0
+    private var globalTextViewFontSize = UIPreferences.textviewFontSize
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
     #endif
@@ -119,7 +119,7 @@ final class vcTabLocation: vcTabParent {
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
-        stackView = UIStackView()
+        // stackView = UIStackView()
         stackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
             view.removeConstraints([
@@ -130,11 +130,11 @@ final class vcTabLocation: vcTabParent {
             ])
         }
         objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
-        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-        stackViewForecast = ObjectStackView(.fill, .vertical)
-        stackViewHazards = ObjectStackView(.fill, .vertical)
+//        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+//        stackViewForecast = ObjectStackView(.fill, .vertical)
+//        stackViewHazards = ObjectStackView(.fill, .vertical)
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
-        globalTextViewFontSize = UIPreferences.textviewFontSize
+        // globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
         getContentMaster()
         #if targetEnvironment(macCatalyst)
@@ -180,7 +180,6 @@ final class vcTabLocation: vcTabParent {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
             self.objectSevenDay.locationIndex = Location.getCurrentLocation()
-            // print("getLocationForecastSevenDay: " + String(self.objectCardSevenDayCollection?.objectCardSevenDayList.count ?? -1))
             DispatchQueue.main.async {
                 if self.objectCardSevenDayCollection == nil
                     || !self.isUS
@@ -418,14 +417,7 @@ final class vcTabLocation: vcTabParent {
         }
     }
 
-    //func cleanupRadarObjects() {
-        //if wxMetal[0] != nil {
-            //wxMetal.forEach { $0!.cleanup() }
-        //}
-    //}
-
     func getNexradRadar(_ stackView: UIStackView) {
-        //cleanupRadarObjects()
         let paneRange = [0]
         let device = MTLCreateSystemDefaultDevice()
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
@@ -475,7 +467,6 @@ final class vcTabLocation: vcTabParent {
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
         wxMetal[0]!.setRenderFunction(render(_:))
-        //wxMetal[0]!.changeProduct("N0Q")
         wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }

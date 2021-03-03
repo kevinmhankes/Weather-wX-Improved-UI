@@ -71,9 +71,13 @@ extension float4x4 {
         self *= float4x4.init(col0, col1, col2, col3)
     }
     
-    static func numberOfElements() -> Int { 16 }
+    static func numberOfElements() -> Int {
+        16
+    }
     
-    static func degrees(toRad angle: Float) -> Float { Float(Double(angle) * Double.pi / 180) }
+    static func degrees(toRad angle: Float) -> Float {
+        Float(Double(angle) * Double.pi / 180)
+    }
     
     mutating func multiplyLeft(_ matrix: float4x4) {
         self = matrix * self

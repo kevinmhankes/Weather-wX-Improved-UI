@@ -70,13 +70,7 @@ final class UtilityNws {
                 urlTmp = urlTmp.replace("ip=", "")
                 urlTmp = urlTmp.replace("jp=", "")
                 let items = urlTmp.split(";")
-                
-//                if items.count > 3 {
-//                    return getDualBitmapWithNumbers(items[0] + items[2], items[1] + items[3])
-//                } else {
-//                    return getDualBitmapWithNumbers(items[0], items[1])
-//                }
-                
+
                 if items.count > 3 {
                     return getDualBitmapWithNumbers(items[0] + items[2], items[1] + items[3])
                 } else if items.count > 2 {
