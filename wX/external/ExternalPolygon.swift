@@ -29,7 +29,7 @@ final class ExternalPolygon {
     private let boundingBox: BoundingBox
     private let sides: [ExternalLine]
 
-    init(sides: [ExternalLine], boundingBox: BoundingBox) {
+    init(_ sides: [ExternalLine], _ boundingBox: BoundingBox) {
         self.sides = sides
         self.boundingBox = boundingBox
     }
@@ -49,11 +49,12 @@ final class ExternalPolygon {
      * @author Roman Kushnarenko (sromku@gmail.com)
      */
     final class Builder {
-        private var _vertexes: [ExternalPoint] = []
-        private var _sides: [ExternalLine] = []
-        private var _boundingBox = BoundingBox()
-        private var _firstPoint = true
-        private var _isClosed = false
+        
+        private var vertexes: [ExternalPoint] = []
+        private var sides: [ExternalLine] = []
+        private var boundingBox = BoundingBox()
+        private var firstPoint = true
+        private var isClosed = false
 
         /**
          * Add vertex points of the polygon.<br>
@@ -64,17 +65,17 @@ final class ExternalPolygon {
          * @return The builder
          */
         func addVertex(point: ExternalPoint ) -> Builder {
-            if _isClosed {
+            if isClosed {
                 // each hole we start with the new array of vertex points
-                _vertexes = []
-                _isClosed = false
+                vertexes = []
+                isClosed = false
             }
             updateBoundingBox(point: point)
-            _vertexes.append(point)
+            vertexes.append(point)
             // add line (edge) to the polygon
-            if _vertexes.count > 1 {
-                let line =  ExternalLine(start: _vertexes[ _vertexes.count - 2], end: point)
-                _sides.append(line)
+            if vertexes.count > 1 {
+                let line =  ExternalLine(start: vertexes[vertexes.count - 2], end: point)
+                sides.append(line)
             }
             return self
         }
@@ -88,8 +89,8 @@ final class ExternalPolygon {
         func close() -> Builder {
             validate()
             // add last Line
-            _sides.append(ExternalLine(start: _vertexes[ _vertexes.count - 1], end: _vertexes[0]))
-            _isClosed = true
+            sides.append(ExternalLine(start: vertexes[vertexes.count - 1], end: vertexes[0]))
+            isClosed = true
             return self
         }
 
@@ -101,11 +102,11 @@ final class ExternalPolygon {
         func build() -> ExternalPolygon {
             validate()
             // in case you forgot to close
-            if !_isClosed {
+            if !isClosed {
                 // add last Line
-                _sides.append(ExternalLine(start: _vertexes[ _vertexes.count - 1], end: _vertexes[0]))
+                sides.append(ExternalLine(start: vertexes[vertexes.count - 1], end: vertexes[0]))
             }
-            let polygon =  ExternalPolygon(sides: _sides, boundingBox: _boundingBox)
+            let polygon = ExternalPolygon(sides, boundingBox)
             return polygon
         }
 
@@ -116,30 +117,30 @@ final class ExternalPolygon {
          *            New point
          */
         func updateBoundingBox(point: ExternalPoint ) {
-            if _firstPoint {
-                _boundingBox =  BoundingBox()
-                _boundingBox.xMax = point.x
-                _boundingBox.xMin = point.x
-                _boundingBox.yMax = point.y
-                _boundingBox.yMin = point.y
-                _firstPoint = false
+            if firstPoint {
+                boundingBox =  BoundingBox()
+                boundingBox.xMax = point.x
+                boundingBox.xMin = point.x
+                boundingBox.yMax = point.y
+                boundingBox.yMin = point.y
+                firstPoint = false
             } else {
                 // set bounding box
-                if point.x > _boundingBox.xMax {
-                    _boundingBox.xMax = point.x
-                } else if point.x < _boundingBox.xMin {
-                    _boundingBox.xMin = point.x
+                if point.x > boundingBox.xMax {
+                    boundingBox.xMax = point.x
+                } else if point.x < boundingBox.xMin {
+                    boundingBox.xMin = point.x
                 }
-                if point.y > _boundingBox.yMax {
-                    _boundingBox.yMax = point.y
-                } else if point.y < _boundingBox.yMin {
-                    _boundingBox.yMin = point.y
+                if point.y > boundingBox.yMax {
+                    boundingBox.yMax = point.y
+                } else if point.y < boundingBox.yMin {
+                    boundingBox.yMin = point.y
                 }
             }
         }
 
         func validate() {
-            if _vertexes.count < 3 {
+            if vertexes.count < 3 {
                 //throw new RuntimeException("Polygon must have at least 3 points")
             }
         }
