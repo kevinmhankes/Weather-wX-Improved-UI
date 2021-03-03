@@ -306,7 +306,7 @@ final class ExternalGeodeticCalculator {
         let refA = refEllipsoid.getSemiMajorAxis()
         let f = refEllipsoid.getFlattening()
         let a = refA + elev12 * (1.0 + f * sin(phi12))
-        let ellipsoid = ExternalEllipsoid.fromAAndF(semiMajor: a, flattening: f)
+        let ellipsoid = ExternalEllipsoid.fromAAndF(a, f)
         // calculate the curve at the average elevation
         let averageCurve = calculateGeodeticCurve(ellipsoid: ellipsoid, start: start, end: end)
         // return the measurement
