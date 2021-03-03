@@ -12,9 +12,9 @@ final class vcAdhocLocation: UIwXViewController {
     private var objectCurrentConditions = ObjectCurrentConditions()
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
-    private var stackViewCurrentConditions: ObjectStackView!
-    private var stackViewForecast: ObjectStackView!
-    private var stackViewHazards: ObjectStackView!
+    private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+    private var stackViewForecast = ObjectStackView(.fill, .vertical)
+    private var stackViewHazards = ObjectStackView(.fill, .vertical)
     var saveButton = ObjectToolbarIcon()
     var adhocLocation = LatLon()
     
@@ -23,9 +23,6 @@ final class vcAdhocLocation: UIwXViewController {
         let titleButton = ObjectToolbarIcon(self, nil)
         saveButton = ObjectToolbarIcon(title: "Save Location", self, #selector(save))
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
-        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-        stackViewForecast = ObjectStackView(.fill, .vertical)
-        stackViewHazards = ObjectStackView(.fill, .vertical)
         objScrollStackView = ObjectScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
