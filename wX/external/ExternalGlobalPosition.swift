@@ -31,7 +31,7 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @param longitude longitude in degrees
      * @param elevation elevation, in meters, above the reference ellipsoid
      */
-    init(latitude: Double, longitude: Double, elevation: Double) {
+    init(_ latitude: Double, _ longitude: Double, _ elevation: Double) {
         self.elevation = elevation
         super.init(latitude, longitude)
     }
@@ -42,8 +42,8 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      * @param coords coordinates of the position
      * @param elevation elevation, in meters, above the reference ellipsoid
      */
-    convenience init(coords: ExternalGlobalCoordinates, elevation: Double) {
-        self.init(latitude: coords.getLatitude(), longitude: coords.getLongitude(), elevation: elevation)
+    convenience init(_ coords: ExternalGlobalCoordinates, _ elevation: Double) {
+        self.init(coords.getLatitude(), coords.getLongitude(), elevation)
     }
 
     /**
@@ -60,7 +60,7 @@ final class ExternalGlobalPosition: ExternalGlobalCoordinates {
      *
      * @param elevation elevation about the ellipsoid in meters.
      */
-    func setElevation(elevation: Double) {
+    func setElevation(_ elevation: Double) {
         self.elevation = elevation
     }
 

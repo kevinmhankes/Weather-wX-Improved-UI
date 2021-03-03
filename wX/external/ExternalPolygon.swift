@@ -64,17 +64,17 @@ final class ExternalPolygon {
          *            The vertex point
          * @return The builder
          */
-        func addVertex(point: ExternalPoint ) -> Builder {
+        func addVertex(_ point: ExternalPoint ) -> Builder {
             if isClosed {
                 // each hole we start with the new array of vertex points
                 vertexes = []
                 isClosed = false
             }
-            updateBoundingBox(point: point)
+            updateBoundingBox(point)
             vertexes.append(point)
             // add line (edge) to the polygon
             if vertexes.count > 1 {
-                let line =  ExternalLine(start: vertexes[vertexes.count - 2], end: point)
+                let line =  ExternalLine(vertexes[vertexes.count - 2], point)
                 sides.append(line)
             }
             return self
@@ -89,7 +89,7 @@ final class ExternalPolygon {
         func close() -> Builder {
             validate()
             // add last Line
-            sides.append(ExternalLine(start: vertexes[vertexes.count - 1], end: vertexes[0]))
+            sides.append(ExternalLine(vertexes[vertexes.count - 1], vertexes[0]))
             isClosed = true
             return self
         }
@@ -104,7 +104,7 @@ final class ExternalPolygon {
             // in case you forgot to close
             if !isClosed {
                 // add last Line
-                sides.append(ExternalLine(start: vertexes[vertexes.count - 1], end: vertexes[0]))
+                sides.append(ExternalLine(vertexes[vertexes.count - 1], vertexes[0]))
             }
             let polygon = ExternalPolygon(sides, boundingBox)
             return polygon
@@ -116,7 +116,7 @@ final class ExternalPolygon {
          * @param point
          *            New point
          */
-        func updateBoundingBox(point: ExternalPoint ) {
+        func updateBoundingBox(_ point: ExternalPoint ) {
             if firstPoint {
                 boundingBox =  BoundingBox()
                 boundingBox.xMax = point.x
@@ -153,9 +153,9 @@ final class ExternalPolygon {
      *            The point to check
      * @return <code>True</code> if the point is inside the polygon, otherwise return <code>False</code>
      */
-    func contains(point: ExternalPoint) -> Bool {
-        if inBoundingBox(point: point) {
-            let ray = createRay(point: point)
+    func contains(_ point: ExternalPoint) -> Bool {
+        if inBoundingBox(point) {
+            let ray = createRay(point)
             var intersection = 0
             for side in sides {
                 if intersect(ray, side) {
@@ -205,7 +205,7 @@ final class ExternalPolygon {
         } else {
             return false
         }
-        if side.isInside(point: intersectPoint) && ray.isInside(point: intersectPoint) {
+        if side.isInside(intersectPoint) && ray.isInside(intersectPoint) {
             return true
         }
         return false
@@ -218,11 +218,11 @@ final class ExternalPolygon {
      * @param point
      * @return
      */
-    func createRay(point: ExternalPoint) -> ExternalLine {
+    func createRay(_ point: ExternalPoint) -> ExternalLine {
         // create outside point
         let epsilon = (boundingBox.xMax - boundingBox.xMin) / 100.0
         let outsidePoint = ExternalPoint(boundingBox.xMin - epsilon, boundingBox.yMin)
-        let vector = ExternalLine(start: outsidePoint, end: point)
+        let vector = ExternalLine(outsidePoint, point)
         return vector
     }
 
@@ -232,7 +232,7 @@ final class ExternalPolygon {
      * @param point
      * @return <code>True</code> if the point in bounding box, otherwise return <code>False</code>
      */
-    func inBoundingBox(point: ExternalPoint) -> Bool {
+    func inBoundingBox(_ point: ExternalPoint) -> Bool {
         if point.x < boundingBox.xMin
             || point.x > boundingBox.xMax
             || point.y < boundingBox.yMin
@@ -251,9 +251,9 @@ final class ExternalPolygon {
     
     static func polygonContainsPoint(_ latLon: LatLon, _ latLons: [LatLon]) -> Bool {
         let polygonFrame = ExternalPolygon.Builder()
-        latLons.forEach { _ = polygonFrame.addVertex(point: ExternalPoint($0)) }
+        latLons.forEach { _ = polygonFrame.addVertex(ExternalPoint($0)) }
         let polygonShape = polygonFrame.build()
-        let contains = polygonShape.contains(point: latLon.asPoint())
+        let contains = polygonShape.contains(latLon.asPoint())
         return contains
     }
 }

@@ -20,7 +20,7 @@ final class ExternalLine {
     private var b: Float = 999999999.0
     private var vertical = false
 
-    init(start: ExternalPoint, end: ExternalPoint) {
+    init(_ start: ExternalPoint, _ end: ExternalPoint) {
         self.start = start
         self.end = end
         if end.x - start.x != 0 {
@@ -31,7 +31,7 @@ final class ExternalLine {
         }
     }
 
-    func isInside(point: ExternalPoint) -> Bool {
+    func isInside(_ point: ExternalPoint) -> Bool {
         let maxX = start.x > end.x ? start.x : end.x
         let minX = start.x < end.x ? start.x : end.x
         let maxY = start.y > end.y ? start.y : end.y
