@@ -24,11 +24,11 @@ final class HSBColorPicker: UIView {
     }
 
     private func initialize() {
-        self.clipsToBounds = true
-        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.touchedColor(gestureRecognizer:)))
+        clipsToBounds = true
+        let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(touchedColor(gestureRecognizer:)))
         touchGesture.minimumPressDuration = 0
         touchGesture.allowableMovement = CGFloat.greatestFiniteMagnitude
-        self.addGestureRecognizer(touchGesture)
+        addGestureRecognizer(touchGesture)
     }
 
     override init(frame: CGRect) {
@@ -63,15 +63,15 @@ final class HSBColorPicker: UIView {
     func getColorAtPoint(point: CGPoint) -> UIColor {
         let roundedPoint = CGPoint(x: elementSize * CGFloat(Int(point.x / elementSize)),
                                    y: elementSize * CGFloat(Int(point.y / elementSize)))
-        var saturation = roundedPoint.y < self.bounds.height / 2.0 ? CGFloat(2 * roundedPoint.y) / self.bounds.height
-            : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
-        saturation = CGFloat(powf(Float(saturation), roundedPoint.y < self.bounds.height / 2.0
+        var saturation = roundedPoint.y < bounds.height / 2.0 ? CGFloat(2 * roundedPoint.y) / bounds.height
+            : 2.0 * CGFloat(bounds.height - roundedPoint.y) / bounds.height
+        saturation = CGFloat(powf(Float(saturation), roundedPoint.y < bounds.height / 2.0
             ? saturationExponentTop
             : saturationExponentBottom))
-        let brightness = roundedPoint.y < self.bounds.height / 2.0
+        let brightness = roundedPoint.y < bounds.height / 2.0
             ? CGFloat(1.0)
-            : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
-        let hue = roundedPoint.x / self.bounds.width
+            : 2.0 * CGFloat(bounds.height - roundedPoint.y) / bounds.height
+        let hue = roundedPoint.x / bounds.width
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
     }
 
@@ -81,7 +81,7 @@ final class HSBColorPicker: UIView {
         var brightness: CGFloat = 0.0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
         let yPos: CGFloat
-        let halfHeight = (self.bounds.height / 2)
+        let halfHeight = (bounds.height / 2)
         if brightness >= 0.99 {
             let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
             yPos = CGFloat(percentageY) * halfHeight
@@ -89,13 +89,13 @@ final class HSBColorPicker: UIView {
             //use brightness to get Y
             yPos = halfHeight + halfHeight * (1.0 - brightness)
         }
-        let xPos = hue * self.bounds.width
+        let xPos = hue * bounds.width
         return CGPoint(x: xPos, y: yPos)
     }
 
     @objc func touchedColor(gestureRecognizer: UILongPressGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
         let color = getColorAtPoint(point: point)
-        self.delegate?.HSBColorColorPickerTouched(sender: self, color: color, point: point, state: gestureRecognizer.state)
+        delegate?.HSBColorColorPickerTouched(sender: self, color: color, point: point, state: gestureRecognizer.state)
     }
 }

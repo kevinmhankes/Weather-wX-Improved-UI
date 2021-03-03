@@ -24,8 +24,8 @@ open class FloatyItem: UIView {
      */
     @objc open var size: CGFloat = 42 {
         didSet {
-            self.frame = CGRect(x: 0, y: 0, width: size, height: size)
-            titleLabel.frame.origin.y = self.frame.height/2-titleLabel.frame.size.height/2
+            frame = CGRect(x: 0, y: 0, width: size, height: size)
+            titleLabel.frame.origin.y = frame.height/2-titleLabel.frame.size.height/2
             _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
             self.setNeedsDisplay()
         }
@@ -129,7 +129,7 @@ open class FloatyItem: UIView {
                 titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
             }
             
-            titleLabel.frame.origin.y = self.size/2-titleLabel.frame.size.height/2
+            titleLabel.frame.origin.y = size/2-titleLabel.frame.size.height/2
             
             if FloatyManager.defaultInstance().rtlMode {
                 titleLabel.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
@@ -201,8 +201,8 @@ open class FloatyItem: UIView {
      */
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
         createCircleLayer()
         setShadow()
         if _titleLabel != nil {

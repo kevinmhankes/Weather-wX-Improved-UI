@@ -10,7 +10,7 @@ import UIKit
 extension String {
     
     func startsWith(_ pattern: String) -> Bool {
-        self.hasPrefix(pattern)
+        hasPrefix(pattern)
     }
     
     func parseLastMatch(_ pattern: String) -> String {
@@ -18,11 +18,11 @@ extension String {
     }
     
     func trim() -> String {
-        self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
     
     func removeDuplicateSpaces() -> String {
-        self.replace("   ", " ")
+        replace("   ", " ")
     }
     
     func fixedLengthString(_ length: Int) -> String {
@@ -38,7 +38,7 @@ extension String {
     }
     
     func removeSingleLineBreaks() -> String {
-        self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
+        replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
     }
     
     func removeLineBreaks() -> String {
@@ -78,7 +78,7 @@ extension String {
     }
     
     func firstToken(_ delimiter: String) -> String {
-        let tokens = self.split(delimiter)
+        let tokens = split(delimiter)
         if tokens.count > 0 {
             return tokens[0]
         } else {
@@ -91,8 +91,8 @@ extension String {
     }
     
     func truncate(_ length: Int) -> String {
-        if self.count > length {
-            let index = self.index(self.startIndex, offsetBy: length)
+        if count > length {
+            let index = self.index(startIndex, offsetBy: length)
             return String(self[..<index])
         } else {
             return self
@@ -120,7 +120,7 @@ extension String {
     }
     
     func replace(_ a: String, _ b: String) -> String {
-        self.replaceAll(a, b)
+        replaceAll(a, b)
     }
     
     func parseMultiple(_ matchStr: String) -> [String] {
@@ -214,11 +214,11 @@ extension Int {
 
 extension UIImage {
     func getWidth() -> CGFloat {
-        self.size.width
+        size.width
     }
     
     func getHeight() -> CGFloat {
-        self.size.height
+        size.height
     }
 }
 
@@ -242,11 +242,11 @@ extension UIScrollView {
 
 extension UIStackView {
     func removeViews() {
-        self.subviews.forEach { $0.removeFromSuperview() }
+        subviews.forEach { $0.removeFromSuperview() }
     }
     
     func removeArrangedViews() {
-        self.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 }
 
@@ -254,13 +254,13 @@ extension UIViewController {
     func goToVC(_ target: UIViewController) {
         //UtilityActions.goToVc(self, target)
         target.modalPresentationStyle = .fullScreen
-        self.present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
+        present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 }
 
 extension Array where Element == String {
     func safeGet(_ index: Int) -> String {
-        if self.count <= index {
+        if count <= index {
             return ""
         } else {
             return self[index]

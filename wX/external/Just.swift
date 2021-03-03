@@ -118,8 +118,8 @@ public enum HTTPMethod: String {
 
 extension URLResponse {
   var HTTPHeaders: [String: String] {
-    return (self as? HTTPURLResponse)?.allHeaderFields as? [String: String]
-      ?? [:]
+    (self as? HTTPURLResponse)?.allHeaderFields as? [String: String]
+            ?? [:]
   }
 }
 
@@ -131,31 +131,33 @@ public final class HTTPResult: NSObject {
   public final var content: Data?
   public var response: URLResponse?
   public var error: Error?
-  public var request: URLRequest? { return task?.originalRequest }
+  public var request: URLRequest? {
+    task?.originalRequest
+  }
   public var task: URLSessionTask?
   public var encoding = String.Encoding.utf8
   public var JSONReadingOptions = JSONSerialization.ReadingOptions(rawValue: 0)
 
   public var reason: String {
-    if let code = self.statusCode, let text = statusCodeDescriptions[code] {
+    if let code = statusCode, let text = statusCodeDescriptions[code] {
       return text
     }
 
-    if let error = self.error {
+    if let error = error {
       return error.localizedDescription
     }
     return "Unknown"
   }
 
   public var isRedirect: Bool {
-    if let code = self.statusCode {
+    if let code = statusCode {
       return code >= 300 && code < 400
     }
     return false
   }
 
   public var isPermanentRedirect: Bool {
-    return self.statusCode == 301
+    statusCode == 301
   }
 
   public override var description: String {
@@ -170,29 +172,31 @@ public final class HTTPResult: NSObject {
 
   public init(data: Data?, response: URLResponse?, error: Error?,
               task: URLSessionTask?) {
-    self.content = data
+    content = data
     self.response = response
     self.error = error
     self.task = task
   }
 
   public var json: Any? {
-    return content.flatMap {
+    content.flatMap {
       try? JSONSerialization.jsonObject(with: $0, options: JSONReadingOptions)
     }
   }
 
   public var statusCode: Int? {
-    return (self.response as? HTTPURLResponse)?.statusCode
+    (response as? HTTPURLResponse)?.statusCode
   }
 
   public var text: String? {
-    return content.flatMap { String(data: $0, encoding: encoding) }
+    content.flatMap {
+      String(data: $0, encoding: encoding)
+    }
   }
 
   public lazy var headers: CaseInsensitiveDictionary<String, String> = {
-    return CaseInsensitiveDictionary<String, String>(
-      dictionary: self.response?.HTTPHeaders ?? [:])
+    CaseInsensitiveDictionary<String, String>(
+            dictionary: self.response?.HTTPHeaders ?? [:])
   }()
 
   public lazy var cookies: [String: HTTPCookie] = {
@@ -211,11 +215,11 @@ public final class HTTPResult: NSObject {
   }()
 
   public var ok: Bool {
-    return statusCode != nil && !(statusCode! >= 400 && statusCode! < 600)
+    statusCode != nil && !(statusCode! >= 400 && statusCode! < 600)
   }
 
   public var url: URL? {
-    return response?.url
+    response?.url
   }
 
   public lazy var links: [String: [String: String]] = {
@@ -270,13 +274,13 @@ public struct CaseInsensitiveDictionary<Key: Hashable, Value>: Collection,
   public typealias Element = (key: Key, value: Value)
   public typealias Index = DictionaryIndex<Key, Value>
   public var startIndex: Index {
-    return _data.startIndex
+    _data.startIndex
   }
   public var endIndex: Index {
-    return _data.endIndex
+    _data.endIndex
   }
   public func index(after: Index) -> Index {
-    return _data.index(after: after)
+    _data.index(after: after)
   }
 
   public var count: Int {
@@ -285,7 +289,7 @@ public struct CaseInsensitiveDictionary<Key: Hashable, Value>: Collection,
   }
 
   public var isEmpty: Bool {
-    return _data.isEmpty
+    _data.isEmpty
   }
 
   public init(dictionaryLiteral elements: (Key, Value)...) {
@@ -303,7 +307,7 @@ public struct CaseInsensitiveDictionary<Key: Hashable, Value>: Collection,
   }
 
   public subscript (position: Index) -> Element {
-    return _data[position]
+    _data[position]
   }
 
   public subscript (key: Key) -> Value? {
@@ -323,14 +327,14 @@ public struct CaseInsensitiveDictionary<Key: Hashable, Value>: Collection,
   }
 
   public func makeIterator() -> DictionaryIterator<Key, Value> {
-    return _data.makeIterator()
+    _data.makeIterator()
   }
 
   public var keys: Dictionary<Key, Value>.Keys {
-    return _data.keys
+    _data.keys
   }
   public var values: Dictionary<Key, Value>.Values {
-    return _data.values
+    _data.values
   }
 }
 
@@ -387,7 +391,7 @@ public struct HTTPProgress {
   public let bytesExpectedToProcess: Int64
   public var chunk: Data?
   public var percent: Float {
-    return Float(bytesProcessed) / Float(bytesExpectedToProcess)
+    Float(bytesProcessed) / Float(bytesExpectedToProcess)
   }
 }
 
@@ -440,25 +444,25 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
-    return adaptor.request(
-      method,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            method,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -476,26 +480,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .DELETE,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .DELETE,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -513,26 +517,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .GET,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .GET,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -550,26 +554,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .HEAD,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .HEAD,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -587,25 +591,25 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
-    return adaptor.request(
-      .OPTIONS,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .OPTIONS,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -623,26 +627,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .PATCH,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .PATCH,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -660,26 +664,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .POST,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .POST,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 
@@ -697,26 +701,26 @@ extension JustOf {
     timeout: Double? = nil,
     URLQuery: String? = nil,
     requestBody: Data? = nil,
-    asyncProgressHandler: (TaskProgressHandler)? = nil,
+    asyncProgressHandler: TaskProgressHandler? = nil,
     asyncCompletionHandler: ((HTTPResult) -> Void)? = nil
     ) -> HTTPResult {
 
-    return adaptor.request(
-      .PUT,
-      URLString: URLString,
-      params: params,
-      data: data,
-      json: json,
-      headers: headers,
-      files: files,
-      auth: auth,
-      cookies: cookies,
-      redirects: allowRedirects,
-      timeout: timeout,
-      URLQuery: URLQuery,
-      requestBody: requestBody,
-      asyncProgressHandler: asyncProgressHandler,
-      asyncCompletionHandler: asyncCompletionHandler
+    adaptor.request(
+            .PUT,
+            URLString: URLString,
+            params: params,
+            data: data,
+            json: json,
+            headers: headers,
+            files: files,
+            auth: auth,
+            cookies: cookies,
+            redirects: allowRedirects,
+            timeout: timeout,
+            URLQuery: URLQuery,
+            requestBody: requestBody,
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler
     )
   }
 }
@@ -808,7 +812,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
   func synthesizeMultipartBody(_ data: [String: Any], files: [String: HTTPFile])
     -> Data? {
     var body = Data()
-    let boundary = "--\(self.defaults.multipartBoundary)\r\n"
+    let boundary = "--\(defaults.multipartBoundary)\r\n"
       .data(using: defaults.encoding)!
     for (k, v) in data {
       let valueToSend: Any = v is NSNull ? "null" : v
@@ -856,7 +860,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
     }
 
     if body.count > 0 {
-      body.append("--\(self.defaults.multipartBoundary)--\r\n"
+      body.append("--\(defaults.multipartBoundary)--\r\n"
         .data(using: defaults.encoding)!)
     }
 
@@ -891,7 +895,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
         body = requestData
       } else if files.count > 0 {
         body = synthesizeMultipartBody(data, files: files)
-        let bound = self.defaults.multipartBoundary
+        let bound = defaults.multipartBoundary
         contentType = "multipart/form-data; boundary=\(bound)"
       } else {
         if let requestJSON = json {
@@ -1034,7 +1038,7 @@ extension HTTP: URLSessionTaskDelegate, URLSessionDataDelegate {
         endCredential = URLCredential(
           user: credential.0,
           password: credential.1,
-          persistence: self.defaults.credentialPersistence
+          persistence: defaults.credentialPersistence
         )
       }
     }
@@ -1099,8 +1103,8 @@ extension HTTP: URLSessionTaskDelegate, URLSessionDataDelegate {
         error: error,
         task: task
       )
-      result.JSONReadingOptions = self.defaults.JSONReadingOptions
-      result.encoding = self.defaults.encoding
+      result.JSONReadingOptions = defaults.JSONReadingOptions
+      result.encoding = defaults.encoding
       handler(result)
     }
     taskConfigs.removeValue(forKey: task.taskIdentifier)

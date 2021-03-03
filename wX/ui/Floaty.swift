@@ -40,7 +40,7 @@ open class Floaty: UIView {
     @objc open var size: CGFloat = 56 {
         didSet {
             self.setNeedsDisplay()
-            self.recalculateItemsOrigin()
+            recalculateItemsOrigin()
         }
     }
     
@@ -122,10 +122,10 @@ open class Floaty: UIView {
     @IBInspectable
     open var itemSize: CGFloat = 42 {
         didSet {
-            self.items.forEach { item in
-                item.size = self.itemSize
+            items.forEach { item in
+                item.size = itemSize
             }
-            self.recalculateItemsOrigin()
+            recalculateItemsOrigin()
             self.setNeedsDisplay()
         }
     }
@@ -322,8 +322,8 @@ open class Floaty: UIView {
         let animationGroup = DispatchGroup()
         if items.count > 0 {
             setOverlayView()
-            self.superview?.insertSubview(overlayView, aboveSubview: self)
-            self.superview?.bringSubviewToFront(self)
+            superview?.insertSubview(overlayView, aboveSubview: self)
+            superview?.bringSubviewToFront(self)
             overlayView.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
             overlayViewDidCompleteOpenAnimation = false
             animationGroup.enter()
@@ -372,7 +372,7 @@ open class Floaty: UIView {
         fabDelegate?.floatyWillClose?(self)
         let animationGroup = DispatchGroup()
         if items.count > 0 {
-            self.overlayView.removeTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
+            overlayView.removeTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
             animationGroup.enter()
             UIView.animate(withDuration: 0.3, delay: 0,
                            usingSpringWithDamping: 0.6,
@@ -493,7 +493,7 @@ open class Floaty: UIView {
      Add item with title and handler.
      */
     @discardableResult
-    @objc open func addItem(title: String, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+    @objc open func addItem(title: String, handler: @escaping (FloatyItem) -> Void) -> FloatyItem {
         let item = FloatyItem()
         itemDefaultSet(item)
         item.title = title
@@ -509,7 +509,7 @@ open class Floaty: UIView {
     @objc open func addItem(
         title: String,
         titlePosition: FloatyItemLabelPositionType = .left,
-        handler: @escaping ((FloatyItem) -> Void)
+        handler: @escaping (FloatyItem) -> Void
     ) -> FloatyItem {
         let item = FloatyItem()
         itemDefaultSet(item)
@@ -523,7 +523,7 @@ open class Floaty: UIView {
      Add item with title, icon or handler.
      */
     @discardableResult
-    @objc open func addItem(_ title: String, icon: UIImage?, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+    @objc open func addItem(_ title: String, icon: UIImage?, handler: @escaping (FloatyItem) -> Void) -> FloatyItem {
         let item = FloatyItem()
         itemDefaultSet(item)
         item.title = title
@@ -541,7 +541,7 @@ open class Floaty: UIView {
         _ title: String,
         icon: UIImage?,
         titlePosition: FloatyItemLabelPositionType = .left,
-        handler: @escaping ((FloatyItem) -> Void)
+        handler: @escaping (FloatyItem) -> Void
     ) -> FloatyItem {
         let item = FloatyItem()
         itemDefaultSet(item)
@@ -567,7 +567,7 @@ open class Floaty: UIView {
      Add item with icon and handler.
      */
     @discardableResult
-    @objc open func addItem(icon: UIImage?, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+    @objc open func addItem(icon: UIImage?, handler: @escaping (FloatyItem) -> Void) -> FloatyItem {
         let item = FloatyItem()
         itemDefaultSet(item)
         item.icon = icon
@@ -715,10 +715,10 @@ open class Floaty: UIView {
     fileprivate func setBottomFrameAccordingToRTL(_ keyboardSize: CGFloat = 0) {
         if FloatyManager.defaultInstance().rtlMode {
             setLeftBottomFrame(keyboardSize)
-            self.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+            transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         } else {
             setRightBottomFrame(keyboardSize)
-            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
     }
     
@@ -825,7 +825,7 @@ open class Floaty: UIView {
     }
     
     fileprivate func isTouched(_ touches: Set<UITouch>) -> Bool {
-        return touches.count == 1 && touches.first?.tapCount == 1 && touches.first?.location(in: self) != nil
+        touches.count == 1 && touches.first?.tapCount == 1 && touches.first?.location(in: self) != nil
     }
     
     open override func observeValue(
@@ -843,8 +843,8 @@ open class Floaty: UIView {
             }
         } else if (object as? UIScrollView) == superview && keyPath == "contentOffset" {
             let scrollView = object as! UIScrollView
-            frame.origin.x = ((self.superview!.bounds.size.width - size) - paddingX) + scrollView.contentOffset.x
-            frame.origin.y = ((self.superview!.bounds.size.height - size) - paddingY) + scrollView.contentOffset.y
+            frame.origin.x = ((superview!.bounds.size.width - size) - paddingX) + scrollView.contentOffset.x
+            frame.origin.y = ((superview!.bounds.size.height - size) - paddingY) + scrollView.contentOffset.y
         }
     }
     
@@ -852,7 +852,7 @@ open class Floaty: UIView {
         superview?.removeObserver(self, forKeyPath: "frame")
         superview?.removeObserver(self, forKeyPath: "bounds")
         if sticky == true {
-            if let superviews = self.getAllSuperviews() {
+            if let superviews = getAllSuperviews() {
                 for superview in superviews where superview is UIScrollView {
                     //if superview is UIScrollView {
                     superview.removeObserver(self, forKeyPath: "contentOffset", context: nil)
@@ -868,7 +868,7 @@ open class Floaty: UIView {
         superview?.addObserver(self, forKeyPath: "frame", options: [], context: nil)
         superview?.addObserver(self, forKeyPath: "bounds", options: [], context: nil)
         if sticky == true {
-            if let superviews = self.getAllSuperviews() {
+            if let superviews = getAllSuperviews() {
                 for superview in superviews where superview is UIScrollView {
                     //if superview is UIScrollView {
                     superview.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
@@ -1120,8 +1120,8 @@ extension Floaty {
      */
     fileprivate func slideDownAnimationWithOpen(group: DispatchGroup) {
         var itemHeight: CGFloat = 0
-        if self.size > self.itemSize && verticalDirection == .down {
-            itemHeight = self.size - self.itemSize
+        if size > itemSize && verticalDirection == .down {
+            itemHeight = size - itemSize
         }
         for item in items {
             if item.isHidden == true {
@@ -1196,12 +1196,12 @@ extension Floaty {
 
 extension UIView {
     fileprivate func getAllSuperviews() -> [UIView]? {
-        if self.superview == nil {
+        if superview == nil {
             return nil
         }
         var superviews: [UIView] = []
-        superviews.append(self.superview!)
-        if let allSuperviews = self.superview!.getAllSuperviews() {
+        superviews.append(superview!)
+        if let allSuperviews = superview!.getAllSuperviews() {
             superviews.append(contentsOf: allSuperviews)
         }
         return superviews
@@ -1216,23 +1216,29 @@ extension Floaty {
     }
     
     func setAccessibilityView() {
-        self.addSubview(accessibilityView)
+        addSubview(accessibilityView)
         accessibilityView.isAccessibilityElement = true
         accessibilityView.accessibilityTraits.insert(.button)
     }
     
     open override var accessibilityLabel: String? {
-        get { return accessibilityView.accessibilityLabel }
+        get {
+            accessibilityView.accessibilityLabel
+        }
         set(newLabel) { accessibilityView.accessibilityLabel = newLabel }
     }
     
     open override var accessibilityHint: String? {
-        get { return accessibilityView.accessibilityHint }
+        get {
+            accessibilityView.accessibilityHint
+        }
         set(newHint) { accessibilityView.accessibilityHint = newHint }
     }
     
     open override var accessibilityValue: String? {
-        get { return accessibilityView.accessibilityValue }
+        get {
+            accessibilityView.accessibilityValue
+        }
         set(newHint) { accessibilityView.accessibilityValue = newHint }
     }
     

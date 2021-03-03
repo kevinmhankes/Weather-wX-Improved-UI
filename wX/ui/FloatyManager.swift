@@ -43,7 +43,7 @@ open class FloatyManager: NSObject {
     }
     
     open var button: Floaty {
-        return floatyController.floaty
+        floatyController.floaty
     }
     
     private let fontDescriptor: UIFontDescriptor
@@ -55,13 +55,17 @@ open class FloatyManager: NSObject {
     }
     
     open var font: UIFont {
-        get { return _font }
+        get {
+            _font
+        }
         set { _font = newValue }
     }
     
     private var _rtlMode = false
     open var rtlMode: Bool {
-        get { return _rtlMode }
+        get {
+            _rtlMode
+        }
         set { _rtlMode = newValue }
     }
     
@@ -90,11 +94,13 @@ open class FloatyManager: NSObject {
     
     open func toggle(_ animated: Bool = true) {
         if floatyWindow.isHidden == false {
-            self.hide(animated)
+            hide(animated)
         } else {
-            self.show(animated)
+            show(animated)
         }
     }
     
-    open var hidden: Bool { return floatyWindow.isHidden }
+    open var hidden: Bool {
+        floatyWindow.isHidden
+    }
 }

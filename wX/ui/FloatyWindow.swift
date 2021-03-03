@@ -13,8 +13,8 @@ import UIKit
 class FloatyWindow: UIWindow {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
-        self.windowLevel = UIWindow.Level.normal
+        backgroundColor = UIColor.clear
+        windowLevel = UIWindow.Level.normal
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -43,7 +43,7 @@ extension UITabBarController {
             action: cycleThroughTabs ? #selector(handleSwipeLeftAllowingCyclingThroughTabs) : #selector(handleSwipeLeft)
         )
         swipeLeftGestureRecognizer.direction = .left
-        self.tabBar.addGestureRecognizer(swipeLeftGestureRecognizer)
+        tabBar.addGestureRecognizer(swipeLeftGestureRecognizer)
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(
             target: self,
             action: cycleThroughTabs
@@ -51,26 +51,26 @@ extension UITabBarController {
                 : #selector(handleSwipeRight)
         )
         swipeRightGestureRecognizer.direction = .right
-        self.tabBar.addGestureRecognizer(swipeRightGestureRecognizer)
+        tabBar.addGestureRecognizer(swipeRightGestureRecognizer)
     }
 
     @objc private func handleSwipeLeft(swipe: UISwipeGestureRecognizer) {
-        self.selectedIndex -= 1
+        selectedIndex -= 1
     }
 
     @objc private func handleSwipeRight(swipe: UISwipeGestureRecognizer) {
-        self.selectedIndex += 1
+        selectedIndex += 1
     }
 
     @objc private func handleSwipeLeftAllowingCyclingThroughTabs(swipe: UISwipeGestureRecognizer) {
-        let maxIndex = (self.viewControllers?.count ?? 0)
-        let nextIndex = self.selectedIndex - 1
-        self.selectedIndex = nextIndex >= 0 ? nextIndex : maxIndex - 1
+        let maxIndex = (viewControllers?.count ?? 0)
+        let nextIndex = selectedIndex - 1
+        selectedIndex = nextIndex >= 0 ? nextIndex : maxIndex - 1
     }
 
     @objc private func handleSwipeRightAllowingCyclingThroughTabs(swipe: UISwipeGestureRecognizer) {
-        let maxIndex = (self.viewControllers?.count ?? 0)
-        let nextIndex = self.selectedIndex + 1
-        self.selectedIndex = nextIndex < maxIndex ? nextIndex : 0
+        let maxIndex = (viewControllers?.count ?? 0)
+        let nextIndex = selectedIndex + 1
+        selectedIndex = nextIndex < maxIndex ? nextIndex : 0
     }
 }
