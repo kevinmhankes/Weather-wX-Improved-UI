@@ -35,11 +35,6 @@ class ObjectMetalBuffers {
         self.init()
         self.type = type
         setTypeEnum()
-        //self.shape = .line
-        //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
-        //self.shape = .triangle
-        //}
-        
         switch typeEnum {
         case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
             shape = .triangle
@@ -66,11 +61,6 @@ class ObjectMetalBuffers {
         setTypeEnum()
         self.scaleCutOff = scaleCutOff
         honorDisplayHold = true
-        //self.shape = .line
-        //if type.string == "WIND_BARB_CIRCLE" || type.string == "LOCDOT" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
-        //self.shape = .triangle
-        //}
-        
         switch typeEnum {
         case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
             shape = .triangle
@@ -130,11 +120,6 @@ class ObjectMetalBuffers {
         if count > 0 {
             let dataSize = metalBuffer.count * MemoryLayout.size(ofValue: metalBuffer[0])
             mtlBuffer = device.makeBuffer(bytes: metalBuffer, length: dataSize, options: [])!
-            /*if type.string == "LOCDOT" || type.string == "WIND_BARB_CIRCLE" || type.string == "SPOTTER" || type.string == "HI" || type.string == "TVS" {
-             vertexCount = triangleCount * 3 * count
-             } else {
-             vertexCount = count / 2
-             }*/
             switch typeEnum {
             case .LOCDOT, .WIND_BARB_CIRCLE, .SPOTTER, .HI, .TVS:
                 vertexCount = triangleCount * 3 * count
@@ -142,7 +127,9 @@ class ObjectMetalBuffers {
                 vertexCount = count / 2
             }
         } else {
-            if type.string != "" { vertexCount = 0 }
+            if type.string != "" {
+                vertexCount = 0
+            }
         }
     }
     
@@ -179,9 +166,13 @@ class ObjectMetalBuffers {
         metalBuffer.append(color)
     }
     
-    func getColorArray() -> [UInt8] { [red, green, blue] }
+    func getColorArray() -> [UInt8] {
+        [red, green, blue]
+    }
     
-    func getColorArrayInFloat() -> [Float] { [red.toColor(), green.toColor(), blue.toColor()] }
+    func getColorArrayInFloat() -> [Float] {
+        [red.toColor(), green.toColor(), blue.toColor()]
+    }
     
     func putColors() {
         putColor(red)

@@ -29,12 +29,22 @@ final class Level2Metal {
                     break
                 }
                 recno += 1
-                if record.messageType == 31 { messageOffset31 += CLong(record.messageSize * 2 + 12 - 2432) }
-                if record.messageType != 1 && record.messageType != 31 { continue }
-                if vcp == 0 { vcp = record.vcp }
                 if record.messageType == 31 {
-                    if record.hasHighResREFData { highReflectivity.append(record) }
-                    if record.hasHighResVELData { highVelocity.append(record) }
+                    messageOffset31 += CLong(record.messageSize * 2 + 12 - 2432)
+                }
+                if record.messageType != 1 && record.messageType != 31 {
+                    continue
+                }
+                if vcp == 0 {
+                    vcp = record.vcp
+                }
+                if record.messageType == 31 {
+                    if record.hasHighResREFData {
+                        highReflectivity.append(record)
+                    }
+                    if record.hasHighResVELData {
+                        highVelocity.append(record)
+                    }
                 }
             }
             var numberOfRadials = 720
@@ -43,7 +53,9 @@ final class Level2Metal {
             days.putSignedShort(Int16(highReflectivity[rIdx].dataJulianDate))
             msecs.position = 0
             msecs.putInt(Int32(highReflectivity[rIdx].dataMsecs))
-            if numberOfRadials > highReflectivity.count { numberOfRadials = highReflectivity.count }
+            if numberOfRadials > highReflectivity.count {
+                numberOfRadials = highReflectivity.count
+            }
             if !velocityProd {
                 (0..<numberOfRadials).forEach {
                     if highReflectivity[$0].elevationNum == 1 {
@@ -52,7 +64,9 @@ final class Level2Metal {
                     }
                 }
             } else {
-                if numberOfRadials > highVelocity.count { numberOfRadials = highVelocity.count }
+                if numberOfRadials > highVelocity.count {
+                    numberOfRadials = highVelocity.count
+                }
                 (0..<numberOfRadials).forEach {
                     if highVelocity[$0].elevationNum == 2 {
                         radarBuffers.rd.radialStartAngle.putFloat(450.0 - highVelocity[$0].azimuth)

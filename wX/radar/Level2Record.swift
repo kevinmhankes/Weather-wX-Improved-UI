@@ -89,7 +89,11 @@ final class Level2Record {
 
     static func factory(_ din: MemoryBuffer, _ record: Int, _ messageOffset31: CLong) -> Level2Record? {
         let offset: CLong = record * radarDataSize + fileHeaderSize + messageOffset31
-        if offset >= din.length { return nil } else { return Level2Record(din, record, messageOffset31) }
+        if offset >= din.length {
+            return nil
+        } else {
+            return Level2Record(din, record, messageOffset31)
+        }
     }
 
     init() {}
@@ -190,8 +194,12 @@ final class Level2Record {
                     dbpp5 = dbp9
                 }
             }
-            if hasHighResREFData { reflectHROffset = Int16(dbpp4 + 28) }
-            if hasHighResVELData { velocityHROffset = Int16(dbpp5 + 28) }
+            if hasHighResREFData {
+                reflectHROffset = Int16(dbpp4 + 28)
+            }
+            if hasHighResVELData {
+                velocityHROffset = Int16(dbpp5 + 28)
+            }
         }
     }
 
@@ -215,14 +223,7 @@ final class Level2Record {
 
     private func getDataBlockStringValue(_ raf: MemoryBuffer, _ offset: Int16, _ skip: Int, _ size: Int) -> String {
         let off: CLong = Int(offset) + messageOffset + Level2Record.messageHeaderSize
-        /*raf.seek(off)
-        raf.skipBytes(skip)
-        var bytes: [UInt8] = []
-        (0..<size).forEach { _ in
-            bytes.append(raf.get())
-        }*/
         return String(bytes: raf.array[off + skip..<(off + skip + size)], encoding: String.Encoding.utf8)!
-        //return String(bytes: bytes, encoding: String.Encoding.utf8)!
     }
 
     func readData(_ raf: MemoryBuffer, _ datatype: Int, _ binWord: MemoryBuffer) {
@@ -231,6 +232,5 @@ final class Level2Record {
         offset += Int(getDataOffset(datatype: datatype))
         raf.seek(offset)
         (0..<916).forEach { _ in binWord.put(UInt8(raf.get())) }
-        //binWord.appendArray(Array<UInt8>(raf.array[offset..<(offset + 916)]))
     }
 }

@@ -55,7 +55,9 @@ final class UtilityMetar {
                     let timeBlob = metarItems.count > 1 ? metarItems[1] : ""
                     var pressureBlob = metar.parse(patternMetarWxogl2)
                     var windBlob = metar.parse(patternMetarWxogl3)
-                    if windBlob == "" { windBlob = metar.parse(patternMetarWxogl4) }
+                    if windBlob == "" {
+                        windBlob = metar.parse(patternMetarWxogl4)
+                    }
                     let conditionsBlob = metar.parse(patternMetarWxogl5)
                     var visBlob = metar.parse(" ([0-9].*?SM) ")
                     let visBlobArr = visBlob.split(" ")
@@ -83,7 +85,9 @@ final class UtilityMetar {
                     }
                     let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
-                    if visInt > 5 && lowestCig > 3000 { aviationColor = Color.GREEN }
+                    if visInt > 5 && lowestCig > 3000 {
+                        aviationColor = Color.GREEN
+                    }
                     if (visInt >= 3 && visInt <= 5) || ( lowestCig >= 1000 && lowestCig <= 3000) {
                         aviationColor = Color.rgb(0, 100, 255)
                     }
@@ -164,7 +168,9 @@ final class UtilityMetar {
         }
     }
 
-    static func getObsArrAviationColor() -> [Int] { obsArrAviationColor }
+    static func getObsArrAviationColor() -> [Int] {
+        obsArrAviationColor
+    }
 
     private static var metarDataRaw = [String]()
     private static var metarSites = [RID]()
@@ -214,7 +220,11 @@ final class UtilityMetar {
                 bestIndex = index
             }
         }
-        if bestIndex == -1 { return metarSites[0] } else { return metarSites[bestIndex] }
+        if bestIndex == -1 {
+            return metarSites[0]
+        } else {
+            return metarSites[bestIndex]
+        }
     }
 
     static func getObservationSites(_ radarSite: String) -> String {
@@ -225,7 +235,9 @@ final class UtilityMetar {
         var currentDistance = 0.0
         metarSites.indices.forEach { index in
             currentDistance = LatLon.distance(radarLocation, metarSites[index].location, .MILES)
-            if currentDistance < obsSiteRange { obsListSb += metarSites[index].name + "," }
+            if currentDistance < obsSiteRange {
+                obsListSb += metarSites[index].name + ","
+            }
         }
         return obsListSb.replaceAll(",$", "")
     }

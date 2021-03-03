@@ -25,11 +25,9 @@ final class UtilityDownloadWatch {
         var latLonCombinedString = ""
         let numberList = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
         numberList.forEach { number in
-            //let text1 = UtilityDownload.getTextProduct("SPCWAT" + number)
             numberListString += number + ":"
             let text = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
             let preText = UtilityString.parseLastMatch(text, GlobalVariables.pre2Pattern)
-            //if text1.contains("Severe Thunderstorm Watch") || text2.contains("SEVERE TSTM") {
             if preText.contains("SEVERE TSTM") {
                 latLongString += LatLon.storeWatchMcdLatLon(preText)
             } else {

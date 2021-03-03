@@ -24,9 +24,13 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     
     func initialize() {
         if rd.productCode == 37 || rd.productCode == 38 || rd.productCode == 41 || rd.productCode == 57 {
-            if floatBuffer.capacity < (48 * 464 * 464) { floatBuffer = MemoryBuffer(48 * 464 * 464) }
+            if floatBuffer.capacity < (48 * 464 * 464) {
+                floatBuffer = MemoryBuffer(48 * 464 * 464)
+            }
         } else {
-            if floatBuffer.capacity < (32 * rd.numberOfRadials * rd.numberOfRangeBins) { floatBuffer = MemoryBuffer(32 * rd.numberOfRadials * rd.numberOfRangeBins) }
+            if floatBuffer.capacity < (32 * rd.numberOfRadials * rd.numberOfRangeBins) {
+                floatBuffer = MemoryBuffer(32 * rd.numberOfRadials * rd.numberOfRangeBins)
+            }
         }
         setToPositionZero()
     }
