@@ -234,7 +234,6 @@ final class vcSevereDashboard: UIwXViewController {
         [snWat, snMcd, snMpd].forEach { severeNotice in
             count += severeNotice.bitmaps.count
         }
-        print("23444 " + String(count) ?? 22)
         return count
     }
 

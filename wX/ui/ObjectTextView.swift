@@ -88,11 +88,6 @@ final class ObjectTextView {
         textColor = color
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, _ viewOrder: Int) {
-        self.init(text)
-        stackView.insertArrangedSubview(tv, at: viewOrder)
-    }
-
     func resetTextSize() {
         tv.font = FontSize.medium.size
     }
