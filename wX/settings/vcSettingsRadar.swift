@@ -37,7 +37,9 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
         var truthString = "false"
-        if isOnQ { truthString = "true" }
+        if isOnQ {
+            truthString = "true"
+        }
         Utility.writePref(prefLabels[sender.tag], truthString)
         if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
             locationManager.requestWhenInUseAuthorization()
@@ -76,7 +78,9 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)

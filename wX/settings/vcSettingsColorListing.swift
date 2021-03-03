@@ -43,7 +43,6 @@ final class vcSettingsColorListing: UIwXViewController {
     }
     
     func setupColorObjects() {
-        //colors.append(wXColor("Draw Tool", "DRAW_TOOL_COLOR", 255, 0, 0 ))
         colors.append(wXColor("Highways", "RADAR_COLOR_HW", 135, 135, 135 ))
         colors.append(wXColor("Secondary Roads", "RADAR_COLOR_HW_EXT", 91, 91, 91 ))
         colors.append(wXColor("State Lines", "RADAR_COLOR_STATE", 142, 142, 142 ))

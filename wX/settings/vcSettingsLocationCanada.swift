@@ -66,7 +66,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
             let html = UtilityCanada.getProvinceHtml(self.provSelected)
             let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
             let idCityAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-.*?_metric_e.html\">(.*?)</a></li>")
-            idTmpAl.forEach {self.listIds.append($0)}
+            idTmpAl.forEach { self.listIds.append($0) }
             self.listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
             DispatchQueue.main.async {
                 self.displayCities()

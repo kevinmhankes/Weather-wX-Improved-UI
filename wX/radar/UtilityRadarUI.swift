@@ -75,7 +75,7 @@ final class UtilityRadarUI {
     static func showNearestProduct(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
         let txt = UtilityWatch.show(location, type)
         let token = String(describing: type) + txt
-        print("DEBUG: " + token)
+        // print("DEBUG: " + token)
         //token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
         //token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         let vc = vcSpcWatchMcdMpd()
@@ -159,10 +159,10 @@ final class UtilityRadarUI {
         if numberOfPanes == 4 {
             density = 2.0 * Double(ortInt * 2.0) / width
         }
-        if numberOfPanes == 2 && UtilityUI.isLandscape() {
+        //if numberOfPanes == 2 && UtilityUI.isLandscape() {
             //density = 0.5 * Double(ortInt * 0.5) / width
             //density = Double(ortInt * 2) / width
-        }
+        //}
         var yMiddle = 0.0
         var xMiddle = 0.0
         if numberOfPanes == 1 {

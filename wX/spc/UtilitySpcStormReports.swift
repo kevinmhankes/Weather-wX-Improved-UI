@@ -7,29 +7,29 @@
 final class UtilitySpcStormReports {
 
     static func process(_ lines: [String]) -> [StormReport] {
-        var output = ""
+//        var output = ""
         var stormReports = [StormReport]()
-        var lineChunks = [String]()
-        var lat = ""
-        var lon = ""
-        var state = ""
-        var time = ""
-        var address = ""
-        var damageReport = ""
-        var magnitude = ""
-        var city = ""
-        var damageHeader = ""
+//        var lineChunks = [String]()
+//        var lat = ""
+//        var lon = ""
+//        var state = ""
+//        var time = ""
+//        var address = ""
+//        var damageReport = ""
+//        var magnitude = ""
+//        var city = ""
+//        var damageHeader = ""
         lines.forEach { line in
-            lat = ""
-            lon = ""
-            state = ""
-            time = ""
-            address = ""
-            damageReport = ""
-            magnitude = ""
-            city = ""
-            output = ""
-            damageHeader = ""
+            var lat = ""
+            var  lon = ""
+            var state = ""
+            var time = ""
+            var address = ""
+            var damageReport = ""
+            var magnitude = ""
+            var city = ""
+            var output = ""
+            var damageHeader = ""
             if line.contains(",F_Scale,") {
                 damageHeader = "Tornado Reports"
             } else if line.contains(",Speed,") {
@@ -37,7 +37,7 @@ final class UtilitySpcStormReports {
             } else if line.contains(",Size,") {
                 damageHeader = "Hail Reports"
             } else {
-                lineChunks = line.split(",")
+                let lineChunks = line.split(",")
                 if lineChunks.count > 7 {
                     output += lineChunks[0]
                     output += " "

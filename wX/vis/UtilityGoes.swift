@@ -103,13 +103,13 @@ final class UtilityGoes {
         var currentDistance = 0.0
         var bestIndex = ""
         sectorToLatLon.keys.forEach { key in
-            currentDistance = LatLon.distance(location, sectorToLatLon[key]! ?? LatLon(), DistanceUnit.MILES)
-            if (currentDistance < shortestDistance) {
+            currentDistance = LatLon.distance(location, sectorToLatLon[key] ?? LatLon(), DistanceUnit.MILES)
+            if currentDistance < shortestDistance {
                     shortestDistance = currentDistance
                     bestIndex = key
             }
         }
-        if (bestIndex == "") {
+        if bestIndex == "" {
             return "BLAH"
         }
         return bestIndex

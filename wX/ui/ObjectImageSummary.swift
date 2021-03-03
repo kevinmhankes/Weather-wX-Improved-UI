@@ -30,10 +30,10 @@ final class ObjectImageSummary {
                 stackView = imageStackViewList.last!.view
             }
             _ = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
-                widthDivider: imagesPerRow
+                    stackView,
+                    image,
+                    UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                    widthDivider: imagesPerRow
             )
             imageCount += 1
         }

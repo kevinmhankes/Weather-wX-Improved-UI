@@ -123,11 +123,11 @@ final class vcGoes: UIwXViewController {
     
     @objc func animateClicked() {
         _ = ObjectPopUp(
-            self,
-            title: "Select number of animation frames:",
-            animateButton,
-            stride(from: 12, to: 96 + 12, by: 12),
-            getAnimation(_:)
+                self,
+                title: "Select number of animation frames:",
+                animateButton,
+                stride(from: 12, to: 96 + 12, by: 12),
+                getAnimation(_:)
         )
     }
     

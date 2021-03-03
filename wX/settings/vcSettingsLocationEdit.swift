@@ -47,7 +47,9 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         let gpsButton = ObjectToolbarIcon(self, .gps, #selector(gpsClicked))
         let items = [doneButton, GlobalVariables.flexBarButton, searchButton, gpsButton, saveButton]
         var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, helpButton, canadaButton]
-        if Location.numLocations > 1 { itemsBottom.append(deleteButton) }
+        if Location.numLocations > 1 {
+            itemsBottom.append(deleteButton)
+        }
         toolbar.items = ObjectToolbarItems(items).items
         toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
         view.addSubview(toolbar)
@@ -149,15 +151,15 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                 + "valid latitude and longitude values should appear. Hit save after they appear.",
             preferredStyle: .alert
         )
-        alert.addTextField {(textField) in textField.text = ""}
+        alert.addTextField { (textField) in textField.text = "" }
         alert.addAction(
             UIAlertAction(
                 title: "OK",
                 style: .default,
-                handler: {_ in
+                handler: { _ in
                     let textField = alert.textFields![0]
                     self.searchAddress(textField.text!)
-            }
+                }
             )
         )
         present(alert, animated: true, completion: nil)
@@ -167,7 +169,9 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         CLGeocoder().geocodeAddressString(
             address,
             completionHandler: { placeMarks, error in
-                if error != nil { return }
+                if error != nil {
+                    return
+                }
                 if (placeMarks?.count)! > 0 {
                     let placemark = placeMarks?[0]
                     let location = placemark?.location
@@ -322,7 +326,6 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        
         if #available(iOS 13.0, *) {
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle && UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {

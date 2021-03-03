@@ -21,7 +21,7 @@ final class vcSpcFireSummary: UIwXViewController {
 
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySpcFireOutlook.urls.map {Bitmap($0)}
+            self.bitmaps = UtilitySpcFireOutlook.urls.map { Bitmap($0) }
             DispatchQueue.main.async { self.display() }
         }
     }

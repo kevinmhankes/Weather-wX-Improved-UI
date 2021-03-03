@@ -67,7 +67,9 @@ final class ObjectWatchProduct {
         wfos = wfoStr.split("\\.\\.\\.")
     }
 
-    func getTextForSubtitle() -> String { text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "") }
+    func getTextForSubtitle() -> String {
+        text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "")
+    }
 
     func getTextForNoProducts() -> String {
         switch type {
@@ -91,7 +93,6 @@ final class ObjectWatchProduct {
         case .SPCWAT:
             return (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/").getHtml().parseColumn("[om] Watch #([0-9]*?)</a>")
         case .SPCMCD:
-            // return (GlobalVariables.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("title=.Mesoscale Discussion #(.*?).>")
             return (GlobalVariables.nwsSPCwebsitePrefix + "/products/md/").getHtml().parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>")
         case .WPCMPD:
             return [String]()

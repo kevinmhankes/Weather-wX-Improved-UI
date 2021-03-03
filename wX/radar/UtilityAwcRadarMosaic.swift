@@ -51,7 +51,10 @@ final class UtilityAwcRadarMosaic {
         "abq",
         "lws",
         "wmc",
-        "las"
+        "las",
+        "ak",
+        "hi",
+        "carib"
     ]
 
     static let sectorLabels = [
@@ -73,7 +76,10 @@ final class UtilityAwcRadarMosaic {
         "Albuquerque NM",
         "Lewiston ID",
         "Winnemuca NV",
-        "Las Vegas NV"
+        "Las Vegas NV",
+        "Alaska",
+        "Hawaii",
+        "Caribbean"
     ]
 
     private static let cityToLatLon = [
@@ -94,7 +100,9 @@ final class UtilityAwcRadarMosaic {
         "Albuquerque NM": LatLon(35.10, -106.62),
         "Lewiston ID": LatLon(46.41, -117.01),
         "Winnemuca NV": LatLon(40.97, -117.73),
-        "Las Vegas NV": LatLon(36.11, -115.17)
+        "Las Vegas NV": LatLon(36.11, -115.17),
+        "Alaska": LatLon(59.199, -150.605),
+        "Hawaii": LatLon(19.8181, -156.5595)
     ]
 
     static func getNearestMosaic(_ location: LatLon) -> String {

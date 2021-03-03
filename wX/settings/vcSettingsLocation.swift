@@ -68,10 +68,10 @@ final class vcSettingsLocation: UIwXViewController {
             locA.saveToNewSlot(position)
             locB.saveToNewSlot(position - 1)
         } else {
-            let locA = ObjectLocation(Location.numLocations-1)
+            let locA = ObjectLocation(Location.numLocations - 1)
             let locB = ObjectLocation(0)
             locA.saveToNewSlot(0)
-            locB.saveToNewSlot(Location.numLocations-1)
+            locB.saveToNewSlot(Location.numLocations - 1)
         }
         display()
     }

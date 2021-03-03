@@ -55,7 +55,9 @@ final class ObjectImageAndText {
         var imageCount = 0
         var imagesPerRow = 2
         var imageStackViewList = [ObjectStackView]()
-        if UtilityUI.isTablet() && UtilityUI.isLandscape() { imagesPerRow = 4 }
+        if UtilityUI.isTablet() && UtilityUI.isLandscape() {
+            imagesPerRow = 4
+        }
         #if targetEnvironment(macCatalyst)
         imagesPerRow = 4
         #endif
@@ -71,11 +73,10 @@ final class ObjectImageAndText {
                 stackView = imageStackViewList.last!.view
             }
             _ = ObjectImage(
-                stackView,
-                image,
-                UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
-                widthDivider: imagesPerRow
-            )
+                    stackView,
+                    image,
+                    UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
+                    widthDivider: imagesPerRow)
             imageCount += 1
         }
         var views = [UIView]()

@@ -53,18 +53,16 @@ final class vcSpcMeso: UIwXViewController {
         cpeButton = ObjectToolbarIcon(title: "CPE", self, #selector(paramClicked))
         cmpButton = ObjectToolbarIcon(title: "CMP", self, #selector(paramClicked))
         shrButton = ObjectToolbarIcon(title: "SHR", self, #selector(paramClicked))
-        toolbar.items = ObjectToolbarItems(
-            [
-                doneButton,
-                GlobalVariables.flexBarButton,
-                sfcButton,
-                uaButton,
-                cpeButton,
-                cmpButton,
-                shrButton,
-                sectorButton
-            ]
-        ).items
+        toolbar.items = ObjectToolbarItems([
+            doneButton,
+            GlobalVariables.flexBarButton,
+            sfcButton,
+            uaButton,
+            cpeButton,
+            cmpButton,
+            shrButton,
+            sectorButton
+        ]).items
         view.addSubview(toolbarTop)
         image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))

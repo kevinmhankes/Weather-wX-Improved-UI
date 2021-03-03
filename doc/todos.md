@@ -32,4 +32,4 @@
 // [REF] externPoly - remove underscores
 // [FIX] access text from NHC changes stored pref in WPC Text
 // [ADD] nexrad - add more parallelism for polygon downloads
-
+// [REF] scan for closure without proper spaces

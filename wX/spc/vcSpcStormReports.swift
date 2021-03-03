@@ -157,7 +157,9 @@ final class vcSpcStormReports: UIwXViewController {
                     UITapGestureRecognizerWithData(index, self, #selector(gotoMap(sender:)))
                 )
             }
-            if stormReport.state != "" { stateList += [stormReport.state] }
+            if stormReport.state != "" {
+                stateList += [stormReport.state]
+            }
         }
         if tornadoReports == 0 {
             if tornadoHeader != nil {
