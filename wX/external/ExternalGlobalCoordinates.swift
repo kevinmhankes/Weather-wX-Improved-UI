@@ -62,10 +62,11 @@ class ExternalGlobalCoordinates {
      * </pre>
      */
     func canonicalize() {
-        //mLatitude = (mLatitude + 180) % 360
         mLatitude += 180
         mLatitude = mLatitude.truncatingRemainder(dividingBy: 360)
-        if mLatitude < 0 { mLatitude += 360 }
+        if mLatitude < 0 {
+            mLatitude += 360
+        }
         mLatitude -= 180
         if mLatitude > 90 {
             mLatitude = 180 - mLatitude
@@ -74,10 +75,11 @@ class ExternalGlobalCoordinates {
             mLatitude = -180 - mLatitude
             mLongitude += 180
         }
-        //mLongitude = ((mLongitude + 180) % 360)
         mLongitude += 180
         mLongitude = mLongitude.truncatingRemainder(dividingBy: 360)
-        if mLongitude <= 0 { mLongitude += 360 }
+        if mLongitude <= 0 {
+            mLongitude += 360
+        }
         mLongitude -= 180
     }
 

@@ -157,7 +157,9 @@ final class ExternalPolygon {
             let ray = createRay(point: point)
             var intersection = 0
             for side in sides {
-                if intersect(ray, side) { intersection += 1 }
+                if intersect(ray, side) {
+                    intersection += 1
+                }
             }
             /*
              * If the number of intersections is odd, then the point is inside the polygon
@@ -202,8 +204,6 @@ final class ExternalPolygon {
         } else {
             return false
         }
-        // System.out.println("Ray: " + ray.toString() + " ,Side: " + side)
-        // System.out.println("Intersect point: " + intersectPoint.toString())
         if side.isInside(point: intersectPoint) && ray.isInside(point: intersectPoint) {
             return true
         }
