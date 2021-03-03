@@ -68,7 +68,6 @@
 		0340420723F16A4D003AB242 /* vcSettingsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034041FD23F16A4D003AB242 /* vcSettingsMain.swift */; };
 		0340420923F16ACA003AB242 /* vcSettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420823F16ACA003AB242 /* vcSettingsUI.swift */; };
 		0340420D23F16C5B003AB242 /* vcRadarMosaicAwc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */; };
-		0340420E23F16C5B003AB242 /* vcRadarMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */; };
 		0340420F23F16C5B003AB242 /* vcNexradRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340420C23F16C5B003AB242 /* vcNexradRadar.swift */; };
 		0340421123F16D23003AB242 /* vcModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421023F16D23003AB242 /* vcModels.swift */; };
 		0340421623F16DCC003AB242 /* vcCanadaHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421223F16DCB003AB242 /* vcCanadaHourly.swift */; };
@@ -208,7 +207,6 @@
 		03F4631422A2F14900C06D16 /* UtilityDownloadMpd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4631022A2F14800C06D16 /* UtilityDownloadMpd.swift */; };
 		03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */; };
 		03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A959229C7145004A88EB /* UtilitySwoD1.swift */; };
-		03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */; };
 		03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
 		03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */; };
@@ -465,7 +463,6 @@
 		034041FD23F16A4D003AB242 /* vcSettingsMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsMain.swift; sourceTree = "<group>"; };
 		0340420823F16ACA003AB242 /* vcSettingsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSettingsUI.swift; sourceTree = "<group>"; };
 		0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcRadarMosaicAwc.swift; sourceTree = "<group>"; };
-		0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcRadarMosaic.swift; sourceTree = "<group>"; };
 		0340420C23F16C5B003AB242 /* vcNexradRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcNexradRadar.swift; sourceTree = "<group>"; };
 		0340421023F16D23003AB242 /* vcModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcModels.swift; sourceTree = "<group>"; };
 		0340421223F16DCB003AB242 /* vcCanadaHourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcCanadaHourly.swift; sourceTree = "<group>"; };
@@ -607,7 +604,6 @@
 		03F4631022A2F14800C06D16 /* UtilityDownloadMpd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadMpd.swift; sourceTree = "<group>"; };
 		03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadMcd.swift; sourceTree = "<group>"; };
 		03F8A959229C7145004A88EB /* UtilitySwoD1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySwoD1.swift; sourceTree = "<group>"; };
-		03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUSImgNwsMosaic.swift; sourceTree = "<group>"; };
 		03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHomeScreen.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
 		03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNwsIcon.swift; sourceTree = "<group>"; };
@@ -1154,7 +1150,6 @@
 				031AED0A21C86149004EC175 /* UtilityRadarUI.swift */,
 				F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */,
 				03F8A959229C7145004A88EB /* UtilitySwoD1.swift */,
-				03F8A95B229C7172004A88EB /* UtilityUSImgNwsMosaic.swift */,
 				037162DD21C1013700B815BB /* UtilityWatch.swift */,
 				0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */,
 				03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */,
@@ -1163,7 +1158,6 @@
 				0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */,
 				F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */,
 				0340420C23F16C5B003AB242 /* vcNexradRadar.swift */,
-				0340420B23F16C5B003AB242 /* vcRadarMosaic.swift */,
 				0340420A23F16C5B003AB242 /* vcRadarMosaicAwc.swift */,
 				F0B3352B1DA3FD3B0035BD36 /* WXGLDownload.swift */,
 				F0B3352C1DA3FD3B0035BD36 /* WXGLNexrad.swift */,
@@ -1701,7 +1695,6 @@
 				030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */,
 				039795B72032D7C100F37CCE /* ObjectMetar.swift in Sources */,
 				0340423323F16FC3003AB242 /* vcObservations.swift in Sources */,
-				0340420E23F16C5B003AB242 /* vcRadarMosaic.swift in Sources */,
 				036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */,
 				F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */,
 				0340423523F16FC3003AB242 /* vcWebView.swift in Sources */,
@@ -1816,7 +1809,6 @@
 				0327377023F2083D002636D1 /* vcTabParent.swift in Sources */,
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
 				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
-				03F8A95C229C7172004A88EB /* UtilityUSImgNwsMosaic.swift in Sources */,
 				0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */,
 				03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */,
 				F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */,

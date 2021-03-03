@@ -42,9 +42,9 @@ final class Route {
     static func radarMosaicLocal(_ uiv: UIViewController) {
         if Location.isUS {
             if !UIPreferences.useAwcRadarMosaic {
-                let vc = vcRadarMosaic()
-                vc.nwsMosaicType = "local"
-                uiv.goToVC(vc)
+                // let vc = vcRadarMosaic()
+                // vc.nwsMosaicType = "local"
+                // uiv.goToVC(vc)
             } else {
                 let vc = vcRadarMosaicAwc()
                 vc.nwsMosaicType = "local"
@@ -61,8 +61,8 @@ final class Route {
     
     static func radarMosaic(_ uiv: UIViewController) {
         if !UIPreferences.useAwcRadarMosaic {
-            let vc = vcRadarMosaic()
-            uiv.goToVC(vc)
+            // let vc = vcRadarMosaic()
+            // uiv.goToVC(vc)
         } else {
             let vc = vcRadarMosaicAwc()
             uiv.goToVC(vc)
