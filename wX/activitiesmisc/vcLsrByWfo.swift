@@ -84,7 +84,6 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                //self.refreshViews()
                 self.map.setupMap(GlobalArrays.wfos)
                 self.display()
             }

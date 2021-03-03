@@ -21,7 +21,6 @@ final class vcSevereDashboard: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UtilitySettings.backupRadarSettingsAndEnable()
         let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
         statusButton = ObjectToolbarIcon(self, nil)
         toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
@@ -31,7 +30,6 @@ final class vcSevereDashboard: UIwXViewController {
 
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
-            // TODO move into radar, currently in util
             UtilityDownloadRadar.getAllRadarData()
             self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
@@ -111,7 +109,6 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
-        // Route.alertDetail(self, "https://api.weather.gov/alerts/" + sender.strData)
         Route.alertDetail(self, sender.strData)
     }
 

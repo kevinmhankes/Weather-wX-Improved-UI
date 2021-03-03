@@ -28,7 +28,6 @@ final class vcWebView: UIwXViewController {
         } else {
             toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton]).items
         }
-        webView = WKWebView()
         view.addSubview(webView)
         view.bringSubviewToFront(toolbar)
         webView.translatesAutoresizingMaskIntoConstraints = false
