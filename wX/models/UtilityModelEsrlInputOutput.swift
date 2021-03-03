@@ -39,7 +39,7 @@ final class UtilityModelEsrlInputOutput {
         html = year + monthStr + day + hour
         runData.appendListRun(html)
         runData.mostRecentRun = html
-        runData.imageCompleteInt = UtilityString.parseAndCount(htmlRunStatus, ".(allfields).")-1
+        runData.imageCompleteInt = UtilityString.parseAndCount(htmlRunStatus, ".(allfields).") - 1
         runData.imageCompleteStr = String(runData.imageCompleteInt)
         if html != "" {
             (0...12).forEach { index in

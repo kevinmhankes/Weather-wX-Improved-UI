@@ -25,7 +25,6 @@ final class UtilityHomeScreen {
     ]
 
     static func jumpToActivity(_ uiv: UIViewController, _ homeScreenToken: String) {
-        //print("homescreen token: " + homeScreenToken)
         switch homeScreenToken {
         case "USWARN":
             Route.alerts(uiv)
@@ -67,11 +66,4 @@ final class UtilityHomeScreen {
             Route.wpcImageFromHomeScreen(uiv, homeScreenToken)
         }
     }
-
-    /*static func goToSpcMesoFromHS(_ uiv: UIViewController, _ token: String) {
-        let vc = vcSpcMeso()
-        vc.spcMesoToken = token
-        vc.spcMesoFromHomeScreen = true
-        uiv.goToVC(vc)
-    }*/
 }

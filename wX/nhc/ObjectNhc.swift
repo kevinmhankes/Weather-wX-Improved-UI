@@ -84,9 +84,9 @@ final class ObjectNhc: NSObject {
                 )
                 stormDataList.append(objectNhcStormDetails)
                 _ = ObjectCardNhcStormReportItem(
-                    uiv.stackView,
-                    objectNhcStormDetails,
-                    UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
+                        uiv.stackView,
+                        objectNhcStormDetails,
+                        UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
             }
         }
     }
@@ -98,18 +98,16 @@ final class ObjectNhc: NSObject {
                 imageStackViewList.append(stackView)
                 uiv.stackView.addArrangedSubview(stackView.view)
                 _ = ObjectImage(
-                    stackView.view,
-                    bitmap,
-                    UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
+                        stackView.view,
+                        bitmap,
+                        UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                        widthDivider: imagesPerRow)
             } else {
                 _ = ObjectImage(
-                    imageStackViewList.last!.view,
-                    bitmap,
-                    UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
-                    widthDivider: imagesPerRow
-                )
+                        imageStackViewList.last!.view,
+                        bitmap,
+                        UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                        widthDivider: imagesPerRow)
             }
             imageCount += 1
         }

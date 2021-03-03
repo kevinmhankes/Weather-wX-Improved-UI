@@ -9,39 +9,73 @@ import UIKit
 
 extension String {
     
-    func startsWith(_ pattern: String) -> Bool { self.hasPrefix(pattern) }
+    func startsWith(_ pattern: String) -> Bool {
+        self.hasPrefix(pattern)
+    }
     
-    func parseLastMatch(_ pattern: String) -> String { UtilityString.parseLastMatch(self, pattern) }
+    func parseLastMatch(_ pattern: String) -> String {
+        UtilityString.parseLastMatch(self, pattern)
+    }
     
-    func trim() -> String { self.trimmingCharacters(in: NSCharacterSet.whitespaces) }
+    func trim() -> String {
+        self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
     
-    func removeDuplicateSpaces() -> String { self.replace("   ", " ") }
+    func removeDuplicateSpaces() -> String {
+        self.replace("   ", " ")
+    }
     
-    func fixedLengthString(_ length: Int) -> String { UtilityString.fixedLengthString(self, length) }
+    func fixedLengthString(_ length: Int) -> String {
+        UtilityString.fixedLengthString(self, length)
+    }
     
-    func getDataFromUrl() -> Data { UtilityNetworkIO.getDataFromUrl(self) }
+    func getDataFromUrl() -> Data {
+        UtilityNetworkIO.getDataFromUrl(self)
+    }
     
-    func removeHtml() -> String { self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) }
+    func removeHtml() -> String {
+        self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
     
-    func removeSingleLineBreaks() -> String { self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n") }
+    func removeSingleLineBreaks() -> String {
+        self.replace("\n\n", "ABZXCZ13").replace("\n", " ").replace("ABZXCZ13", "\n\n")
+    }
     
-    func removeLineBreaks() -> String { UtilityString.removeLineBreaks(self).replace("  ", " ") }
+    func removeLineBreaks() -> String {
+        UtilityString.removeLineBreaks(self).replace("  ", " ")
+    }
     
-    func getHtml() -> String { UtilityNetworkIO.getStringFromUrl(self) }
+    func getHtml() -> String {
+        UtilityNetworkIO.getStringFromUrl(self)
+    }
     
-    func getHtmlSep() -> String { UtilityNetworkIO.getStringFromUrlSep(self) }
+    func getHtmlSep() -> String {
+        UtilityNetworkIO.getStringFromUrlSep(self)
+    }
     
-    func getNwsHtml() -> String { UtilityDownloadNws.getStringFromUrl(self) }
+    func getNwsHtml() -> String {
+        UtilityDownloadNws.getStringFromUrl(self)
+    }
     
-    func getImage() -> Bitmap { UtilityNetworkIO.getBitmapFromUrl(self) }
+    func getImage() -> Bitmap {
+        UtilityNetworkIO.getBitmapFromUrl(self)
+    }
     
-    func parseColumn(_ pattern: String) -> [String] { UtilityString.parseColumn(self, pattern) }
+    func parseColumn(_ pattern: String) -> [String] {
+        UtilityString.parseColumn(self, pattern)
+    }
     
-    func parseColumnAll(_ pattern: String) -> [String] { UtilityString.parseColumnAll(self, pattern) }
+    func parseColumnAll(_ pattern: String) -> [String] {
+        UtilityString.parseColumnAll(self, pattern)
+    }
     
-    func parse(_ pattern: String) -> String { UtilityString.parse(self, pattern) }
+    func parse(_ pattern: String) -> String {
+        UtilityString.parse(self, pattern)
+    }
     
-    func parseFirst(_ pattern: String) -> String { UtilityString.parseFirst(self, pattern) }
+    func parseFirst(_ pattern: String) -> String {
+        UtilityString.parseFirst(self, pattern)
+    }
     
     func firstToken(_ delimiter: String) -> String {
         let tokens = self.split(delimiter)
@@ -52,7 +86,9 @@ extension String {
         }
     }
     
-    func firstToken() -> String { self.firstToken(":") }
+    func firstToken() -> String {
+        self.firstToken(":")
+    }
     
     func truncate(_ length: Int) -> String {
         if self.count > length {
@@ -63,27 +99,49 @@ extension String {
         }
     }
     
-    func insert(_ index: Int, _ string: String) -> String { self.substring(0, index) + string + self.substring(index) }
+    func insert(_ index: Int, _ string: String) -> String {
+        self.substring(0, index) + string + self.substring(index)
+    }
     
-    func contains(_ str: String) -> Bool { self.range(of: str) != nil }
+    func contains(_ str: String) -> Bool {
+        self.range(of: str) != nil
+    }
     
-    func replaceAll(_ a: String, _ b: String) -> String { UtilityString.replaceAll(self, a, b) }
+    func replaceAll(_ a: String, _ b: String) -> String {
+        UtilityString.replaceAll(self, a, b)
+    }
     
-    func replaceAllRegexp(_ a: String, _ b: String) -> String { UtilityString.replaceAllRegexp(self, a, b) }
+    func replaceAllRegexp(_ a: String, _ b: String) -> String {
+        UtilityString.replaceAllRegexp(self, a, b)
+    }
     
-    func matches(regexp: String) -> Bool { (self.range(of: regexp, options: .regularExpression) != nil) }
+    func matches(regexp: String) -> Bool {
+        self.range(of: regexp, options: .regularExpression) != nil
+    }
     
-    func replace(_ a: String, _ b: String) -> String { self.replaceAll(a, b) }
+    func replace(_ a: String, _ b: String) -> String {
+        self.replaceAll(a, b)
+    }
     
-    func parseMultiple(_ matchStr: String) -> [String] { UtilityString.parseMultiple(self, matchStr) }
+    func parseMultiple(_ matchStr: String) -> [String] {
+        UtilityString.parseMultiple(self, matchStr)
+    }
     
-    func split(_ delimiter: String) -> [String] { UtilityString.split(self, delimiter) }
+    func split(_ delimiter: String) -> [String] {
+        UtilityString.split(self, delimiter)
+    }
     
-    func substring(_ start: Int) -> String { UtilityString.substring(self, start) }
+    func substring(_ start: Int) -> String {
+        UtilityString.substring(self, start)
+    }
     
-    func substring(_ start: Int, _ end: Int) -> String { UtilityString.substring(self, start, end) }
+    func substring(_ start: Int, _ end: Int) -> String {
+        UtilityString.substring(self, start, end)
+    }
     
-    func delete(_ str: String) -> String { self.components(separatedBy: str).joined(separator: "") }
+    func delete(_ str: String) -> String {
+        self.components(separatedBy: str).joined(separator: "")
+    }
     
     func regex (pattern: String) -> [String] {
         do {

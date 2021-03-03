@@ -25,8 +25,6 @@ final class UtilityModelNcepInterface {
         "RAP",
         "SREF",
         "WW3"
-        //"WW3-ENP",
-        //"WW3-WNA"
     ]
     
     static let sectorsGfs = [

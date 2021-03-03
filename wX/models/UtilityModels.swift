@@ -14,12 +14,14 @@ final class UtilityModels {
         let timeInt = Int(timeStr) ?? 0
         let realTimeGmt = runInt + timeInt
         let offsetFromUtc = UtilityTime.secondsFromUTC()
-        let realTime = realTimeGmt + offsetFromUtc/60/60
+        let realTime = realTimeGmt + offsetFromUtc / 60 / 60
         var hourOfDay = realTime % 24
         var amPm: String
         if hourOfDay > 11 {
             amPm = "pm"
-            if hourOfDay > 12 { hourOfDay -= 12 }
+            if hourOfDay > 12 {
+                hourOfDay -= 12
+            }
         } else {
             amPm = "am"
         }
@@ -65,7 +67,9 @@ final class UtilityModels {
         var modelCurrentTime2 = modelCurrentTime.replace("Z", "")
         modelCurrentTime2 = modelCurrentTime2.replace("z", "")
         if modelCurrentTime2 != "" {
-            if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) { run2 = String((Int(run2) ?? 0) - 24) }
+            if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) {
+                run2 = String((Int(run2) ?? 0) - 24)
+            }
             listTime.forEach { value in
                 tmpStr = value.split(" ")[0].replace(prefix, "")
                 listTimeNew.append(prefix + tmpStr + " " + UtilityModels.convertTimeRunToTimeString(run2, tmpStr))

@@ -82,7 +82,6 @@ final class UtilityLocation {
         return LatLon(x, y)
     }
 
-    // TODO is indicies really needed?
     static func getNearestRadarSites(_ location: LatLon, _ cnt: Int, includeTdwr: Bool = true) -> [RID] {
         var radarSites = [RID]()
         (0..<GlobalArrays.radars.count).forEach {
@@ -90,8 +89,8 @@ final class UtilityLocation {
             radarSites.append(RID(labels[0], getSiteLocation(site: labels[0])))
         }
         if includeTdwr {
-            GlobalArrays.tdwrRadars.indices.forEach {
-                let labels = GlobalArrays.tdwrRadars[$0].split(" ")
+            GlobalArrays.tdwrRadars.forEach {
+                let labels = $0.split(" ")
                 radarSites.append(RID(labels[0], getSiteLocation(site: labels[0])))
             }
         }

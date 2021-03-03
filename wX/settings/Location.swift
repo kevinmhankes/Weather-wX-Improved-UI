@@ -63,27 +63,45 @@ final class Location {
         currentLocation = Int(currentLocationStr)! - 1
     }
 
-    static func us(_ xStr: String) -> Bool { !xStr.contains("CANADA") }
+    static func us(_ xStr: String) -> Bool {
+        !xStr.contains("CANADA")
+    }
 
     static var state: String { locations[getCurrentLocation()].state }
 
     static var name: String { locations[getCurrentLocation()].name }
 
-    static func getName(_ locNum: Int) -> String { locations[locNum].name }
+    static func getName(_ locNum: Int) -> String {
+        locations[locNum].name
+    }
     
-    static func getLatLon(_ locNum: Int) -> LatLon { LatLon(locations[locNum].lat, locations[locNum].lon) }
+    static func getLatLon(_ locNum: Int) -> LatLon {
+        LatLon(locations[locNum].lat, locations[locNum].lon)
+    }
 
-    static func getX(_ locNum: Int) -> String { locations[locNum].lat }
+    static func getX(_ locNum: Int) -> String {
+        locations[locNum].lat
+    }
 
-    static func getY(_ locNum: Int) -> String { locations[locNum].lon }
+    static func getY(_ locNum: Int) -> String {
+        locations[locNum].lon
+    }
 
-    static func getRid(_ locNum: Int) -> String { locations[locNum].rid }
+    static func getRid(_ locNum: Int) -> String {
+        locations[locNum].rid
+    }
 
-    static func getWfo(_ locNum: Int) -> String { locations[locNum].wfo }
+    static func getWfo(_ locNum: Int) -> String {
+        locations[locNum].wfo
+    }
 
-    static func getObservation(_ locNum: Int) -> String { locations[locNum].observation }
+    static func getObservation(_ locNum: Int) -> String {
+        locations[locNum].observation
+    }
     
-    static func getProv(_ locNum: Int) -> String { locations[locNum].prov }
+    static func getProv(_ locNum: Int) -> String {
+        locations[locNum].prov
+    }
 
     static var rid: String { locations[getCurrentLocation()].rid }
 
@@ -115,7 +133,7 @@ final class Location {
         initNumLocations()
         locations = []
         clearListOfNames()
-        (0..<numLocations).forEach {locations.append(ObjectLocation($0))}
+        (0..<numLocations).forEach { locations.append(ObjectLocation($0)) }
         addToListOfNames(addLocationLabel)
         checkCurrentLocationValidity()
     }

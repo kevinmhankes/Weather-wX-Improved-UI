@@ -183,19 +183,7 @@ final class vcModels: UIwXViewController {
         setupModel()
         getRunStatus()
     }
-    
-    /*func respondToSwipeGestureA(gesture: UISwipeGestureRecognizer ) {
-        let swipeGesture = gesture
-        switch swipeGesture.direction {
-        case .right:
-            rightClicked()
-        case .left:
-            leftClicked()
-        default:
-            break
-        }
-    }*/
-    
+
     @objc func leftClicked() {
         modelObj.leftClick()
         fabLeft?.close()
