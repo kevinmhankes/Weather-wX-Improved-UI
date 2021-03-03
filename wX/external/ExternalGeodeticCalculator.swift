@@ -270,7 +270,7 @@ final class ExternalGeodeticCalculator {
         if alpha2 >= 360.0 {
             alpha2 -= 360.0
         }
-        return  ExternalGeodeticCurve(ellipsoidalDistance: s, azimuth: alpha1, reverseAzimuth: alpha2)
+        return ExternalGeodeticCurve(s, alpha1, alpha2)
     }
 
     /**
@@ -293,7 +293,11 @@ final class ExternalGeodeticCalculator {
      * @param end ending position
      * @return
      */
-    func calculateGeodeticMeasurement(refEllipsoid: ExternalEllipsoid, start: ExternalGlobalPosition, end: ExternalGlobalPosition) -> ExternalGeodeticMeasurement {
+    func calculateGeodeticMeasurement(
+        _ refEllipsoid: ExternalEllipsoid,
+        _ start: ExternalGlobalPosition,
+        _ end: ExternalGlobalPosition
+    ) -> ExternalGeodeticMeasurement {
         // calculate elevation differences
         let elev1 = start.getElevation()
         let elev2 = end.getElevation()
@@ -310,6 +314,6 @@ final class ExternalGeodeticCalculator {
         // calculate the curve at the average elevation
         let averageCurve = calculateGeodeticCurve(ellipsoid: ellipsoid, start: start, end: end)
         // return the measurement
-        return ExternalGeodeticMeasurement(averageCurve: averageCurve, elevationChange: elev2 - elev1)
+        return ExternalGeodeticMeasurement(averageCurve, elev2 - elev1)
     }
 }

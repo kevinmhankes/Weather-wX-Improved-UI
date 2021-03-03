@@ -15,16 +15,13 @@ final class ExternalGeodeticMeasurement: ExternalGeodeticCurve {
     private var elevationChange = 0.0
     private var p2p = 0.0
 
-    init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double, elevationChange: Double) {
-        super.init(ellipsoidalDistance: ellipsoidalDistance, azimuth: azimuth, reverseAzimuth: reverseAzimuth)
+    init(_ ellipsoidalDistance: Double, _ azimuth: Double, _ reverseAzimuth: Double, _ elevationChange: Double) {
+        super.init(ellipsoidalDistance, azimuth, reverseAzimuth)
         self.elevationChange = elevationChange
         p2p = sqrt(ellipsoidalDistance * ellipsoidalDistance + elevationChange * elevationChange)
     }
 
-    convenience init(averageCurve: ExternalGeodeticCurve, elevationChange: Double) {
-        self.init(ellipsoidalDistance: averageCurve.getEllipsoidalDistance(),
-                  azimuth: averageCurve.getAzimuth(),
-                  reverseAzimuth: averageCurve.getReverseAzimuth(),
-                  elevationChange: elevationChange)
+    convenience init(_ averageCurve: ExternalGeodeticCurve, _ elevationChange: Double) {
+        self.init(averageCurve.getEllipsoidalDistance(), averageCurve.getAzimuth(), averageCurve.getReverseAzimuth(), elevationChange)
     }
 }

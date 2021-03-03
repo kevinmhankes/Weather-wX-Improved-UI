@@ -14,7 +14,7 @@ class ExternalGeodeticCurve {
     private let azimuth: Double
     private let reverseAzimuth: Double
     
-    init(ellipsoidalDistance: Double, azimuth: Double, reverseAzimuth: Double) {
+    init(_ ellipsoidalDistance: Double, _ azimuth: Double, _ reverseAzimuth: Double) {
         self.ellipsoidalDistance = ellipsoidalDistance
         self.azimuth = azimuth
         self.reverseAzimuth = reverseAzimuth
