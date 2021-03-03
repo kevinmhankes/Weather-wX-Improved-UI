@@ -8,11 +8,11 @@ import UIKit
 
 final class vcTabMisc: vcTabParent {
 
-    private var tilesPerRow = 0
+    private var tilesPerRow = UIPreferences.tilesPerRow
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tilesPerRow = UIPreferences.tilesPerRow
+        // tilesPerRow = UIPreferences.tilesPerRow
         objTileMatrix = ObjectTileMatrix(self, stackView, .misc)
     }
 
