@@ -156,7 +156,7 @@ final class UtilityCanadaImg {
         }
         let radarHtml1hr = radarHtml.parse(durationPattern)
         var timeStamps = radarHtml1hr.parseColumn("display='(.*?)'&amp;")
-        var s = timeStamps.map {":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF"}.joined()
+        var s = timeStamps.map { ":/data/radar/detailed/temp_image/COMPOSITE_" + sectorLocal + "/" + $0 + ".GIF" }.joined()
         timeStamps = radarHtml.parseColumn("src=.(/data/radar/.*?GIF)\"")
         s += timeStamps.map { ":" + $0 }.joined()
         let tokens = s.split(":")

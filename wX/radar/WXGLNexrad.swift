@@ -206,7 +206,7 @@ final class WXGLNexrad {
     }
 
     static func getTdwrShortList() -> [String] {
-        GlobalArrays.tdwrRadars.map {$0.split(" ")[0]}
+        GlobalArrays.tdwrRadars.map { $0.split(" ")[0] }
     }
 
     static func getRadarInfo(_ pane: String) -> String {

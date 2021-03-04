@@ -33,7 +33,7 @@ final class vcSpotters: UIwXViewController {
     private func display(_ spotterData: [Spotter]) {
         refreshViews()
         spotterCountButton.title = "Count: " + String(spotterData.count)
-        spotterDataSorted = spotterData.sorted(by: {$1.lastName > $0.lastName})
+        spotterDataSorted = spotterData.sorted(by: { $1.lastName > $0.lastName })
         spotterDataSorted.enumerated().forEach { index, item in
             _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
         }
@@ -47,7 +47,7 @@ final class vcSpotters: UIwXViewController {
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let objectPopUp = ObjectPopUp(self, "", spotterReportsButton)
-        let uiAlertAction = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(index)})
+        let uiAlertAction = UIAlertAction(title: "Show on map", style: .default, handler: { _ in self.showMap(index) })
         objectPopUp.addAction(uiAlertAction)
         objectPopUp.finish()
     }

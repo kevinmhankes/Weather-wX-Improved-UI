@@ -585,8 +585,8 @@ final class WXMetalRender {
             locmarkerAl.append(gpsLocation.lon)
         }
         // get even and odd values and put in separate lists
-        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in index & 1 == 0}.map { _, value in Double(value)}
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in index & 1 != 0}.map { _, value in Double(value)}
+        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in Double(value) }
+        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in Double(value) }
         locdotBuffers.triangleCount = 24
         locdotBuffers.count = locmarkerAl.count
         locdotBuffers.lenInit = scaleLengthLocationDot(locdotBuffers.type.size)

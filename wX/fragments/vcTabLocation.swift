@@ -185,7 +185,7 @@ final class vcTabLocation: vcTabParent {
                     || !self.isUS
                     || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
                     || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
-                    self.stackViewForecast.view.subviews.forEach {$0.removeFromSuperview()}
+                    self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
                     self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
                         self.stackViewForecast.view,
                         self.scrollView,
@@ -334,10 +334,10 @@ final class vcTabLocation: vcTabParent {
         let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         (0..<Location.numberOfLocations).forEach { index in
-            let action = UIAlertAction(title: Location.getName(index), style: .default, handler: {_ in self.locationChanged(index)})
+            let action = UIAlertAction(title: Location.getName(index), style: .default, handler: { _ in self.locationChanged(index) })
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: {_ in self.locationChanged(Location.numLocations)}))
+        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
@@ -348,13 +348,13 @@ final class vcTabLocation: vcTabParent {
     @objc func ccAction() {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
-        alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: {_ in self.editLocation()}))
-        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: {_ in self.getContentMaster()}))
+        alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: { _ in self.editLocation() }))
+        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentMaster() }))
         if UtilitySettings.isRadarInHomeScreen() {
             alert.addAction(UIAlertAction(
                 title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
                 style: .default,
-                handler: {_ in Route.radarFromMainScreen(self)})
+                handler: { _ in Route.radarFromMainScreen(self) })
             )
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
@@ -571,26 +571,26 @@ final class vcTabLocation: vcTabParent {
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name + " " + Utility.getRadarSiteName(rid.name) + " " + String(rid.distance) + " mi"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name)}))
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name) }))
         }
         if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() {
-            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
         if RadarPreferences.radarWatMcd {
-            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self)}))
-            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
         if RadarPreferences.radarMpd {
-            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self) }))
         alert.addAction(UIAlertAction(
             "Nearest forecast: " + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6), { _ in
                 UtilityRadarUI.getForecast(pointerLocation, self)})
         )
-        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
-        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid)}))
+        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
+        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self, self.wxMetal[index]!.rid) }))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {

@@ -104,7 +104,7 @@ final class UtilityLocation {
     }
 
     static func getNearestSoundingSite(_ location: LatLon) -> String {
-        let sites = GlobalArrays.soundingSites.map {RID($0, getSiteLocation(site: $0, officeType: "SND"))}
+        let sites = GlobalArrays.soundingSites.map { RID($0, getSiteLocation(site: $0, officeType: "SND")) }
         var shortestDistance = 1000.00
         var currentDistance = 0.0
         var bestIndex = -1

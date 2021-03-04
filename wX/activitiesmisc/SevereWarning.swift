@@ -24,7 +24,9 @@ final class SevereWarning {
         generateString()
     }
 
-    func getCount() -> Int { count }
+    func getCount() -> Int {
+        count
+    }
 
     func getName() -> String {
         switch type {

@@ -174,7 +174,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         self.tag = tag
     }
     
-    required init?(coder aDecoder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func setImage(_ iconType: IconType) {
         let fileName = ObjectToolbarIcon.iconToString[iconType] ?? ""

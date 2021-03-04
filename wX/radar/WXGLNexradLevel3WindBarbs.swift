@@ -93,7 +93,9 @@ final class WXGLNexradLevel3WindBarbs {
                     index += 1
                 }
                 var halfBarbOffsetFudge = 0.0
-                if oneHalfBarb {halfBarbOffsetFudge = nmScaleFactor * 1.0}
+                if oneHalfBarb {
+                    halfBarbOffsetFudge = nmScaleFactor * 1.0
+                }
                 if halfBarb {
                     ec = ecc.calculateEndingGlobalCoordinates(
                         end,

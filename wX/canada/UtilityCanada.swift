@@ -68,7 +68,7 @@ final class UtilityCanada {
 
     static func getIcons7DayAsList(_ html: String) -> [String] {
         let days = html.split(GlobalVariables.newline + GlobalVariables.newline)
-        return days.map {translateIconName($0)}
+        return days.map { translateIconName($0) }
     }
 
     static func translateIconName(_ condition: String) -> String {

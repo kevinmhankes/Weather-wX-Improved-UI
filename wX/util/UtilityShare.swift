@@ -14,13 +14,13 @@ final class UtilityShare {
     }
 
     static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap]) {
-        let images = bitmaps.map {$0.image}
+        let images = bitmaps.map { $0.image }
         let objectsToShare = images as [Any]
         shareAction(uiv, sender, objectsToShare)
     }
 
     static func image(_ uiv: UIViewController, _ sender: UIButton, _ bitmaps: [Bitmap], _ text: String) {
-        let images = bitmaps.map {$0.image}
+        let images = bitmaps.map { $0.image }
         let objectsToShare = [text, images] as [Any]
         shareAction(uiv, sender, objectsToShare)
     }

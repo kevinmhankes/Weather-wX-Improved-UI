@@ -55,14 +55,14 @@ final class WXMetalSurfaceView {
         switch gestureRecognizer.state {
         case .began:
             textObj.removeTextLabels()
-            wxMetal.forEach {$0!.displayHold = true}
+            wxMetal.forEach { $0!.displayHold = true }
         case .ended:
             textObj.addTextLabels()
-            wxMetal.forEach {$0!.displayHold = false}
+            wxMetal.forEach { $0!.displayHold = false }
         default:
             break
         }
-        wxMetal.forEach {$0!.demandRender()}
+        wxMetal.forEach { $0!.demandRender() }
     }
 
     // bottom left 0,600
@@ -142,7 +142,9 @@ final class WXMetalSurfaceView {
         width = boundsOrig.0
         density *= 0.25
         #endif
-        if numberOfPanes == 4 { density *= 2.0 }
+        if numberOfPanes == 4 {
+            density *= 2.0
+        }
         density /= Float(UIScreen.main.scale)
         var xMiddle = Float(uiv.view.frame.width / 2.0)
         var yMiddle = Float(uiv.view.frame.height / 2.0)
@@ -203,7 +205,9 @@ final class WXMetalSurfaceView {
         var longPressCountLocal = longPressCount
         let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
         longPressCountLocal += 1
-        if longPressCountLocal % 2 != 0 { fn(location.x, location.y, radarIndex) }
+        if longPressCountLocal % 2 != 0 {
+            fn(location.x, location.y, radarIndex)
+        }
         return longPressCountLocal
     }
 

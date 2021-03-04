@@ -428,11 +428,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         let alert = ObjectPopUp(self, "", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTdwr.forEach { product in
-                alert.addAction(UIAlertAction(product, {_ in self.productChanged(sender.tag, product.split(":")[0])}))
+                alert.addAction(UIAlertAction(product, { _ in self.productChanged(sender.tag, product.split(":")[0]) }))
             }
         } else {
             wxMetalRenders[sender.tag]!.radarProductList.forEach { product in
-                alert.addAction(UIAlertAction(product, {_ in self.productChanged(sender.tag, product.split(":")[0])}))
+                alert.addAction(UIAlertAction(product, { _ in self.productChanged(sender.tag, product.split(":")[0]) }))
             }
         }
         alert.finish()
@@ -682,42 +682,41 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 + " "
                 + Utility.getRadarSiteName(rid.name)
                 + " " + String(rid.distance) + " mi"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index)}))
+            alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index) }))
         }
 
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
-            alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu()}))
+            alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
         }
         if (RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled()) && warningCount > 0 {
-            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
         if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
-            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
         }
         if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
             //print(MyApplication.mcdNoList.value)
-            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
         if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
-            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self)}))
+            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
 
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self) }))
         alert.addAction(
             UIAlertAction(
                 "Nearest forecast: "
                     + pointerLocation.latString.truncate(6)
                     + ", "
-                    + pointerLocation.lonString.truncate(6), { _ in
-                        UtilityRadarUI.getForecast(pointerLocation, self)}
+                    + pointerLocation.lonString.truncate(6), { _ in UtilityRadarUI.getForecast(pointerLocation, self) }
             )
         )
-        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self)}))
+        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
         alert.addAction(
             UIAlertAction(
                 "Radar status message: " + wxMetalRenders[index]!.rid, { _ in
-                    UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.rid)}
+                    UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.rid) }
             )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)

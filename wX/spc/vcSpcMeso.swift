@@ -142,7 +142,7 @@ final class vcSpcMeso: UIwXViewController {
             if isLayerSelected(layer) {
                 pre = "(on) "
             }
-            alert.addAction(UIAlertAction(pre + layer, { _ in self.layerChanged(layer)}))
+            alert.addAction(UIAlertAction(pre + layer, { _ in self.layerChanged(layer) }))
         }
         alert.finish()
     }
