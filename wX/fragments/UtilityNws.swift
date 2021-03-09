@@ -173,7 +173,7 @@ final class UtilityNws {
             let yText = 70
             let xTextLeft = 2
             let fillColor = wXColor(UIPreferences.nwsIconBottomColor, 0.785).uiColorCurrent
-            if leftNumber != "" {
+            if leftNumber != "" && leftNumber != "0" {
                 let rectangle = CGRect(x: 0, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
@@ -181,7 +181,7 @@ final class UtilityNws {
                 let strToDraw = leftNumber + "%"
                 strToDraw.draw(in: rect, withAttributes: textFontAttributes)
             }
-            if rightNumber != "" {
+            if rightNumber != "" && rightNumber != "0" {
                 let rectangle = CGRect(x: middlePoint, y: dimensions - numHeight, width: halfWidth, height: dimensions)
                 fillColor.setFill()
                 UIRectFill(rectangle)
