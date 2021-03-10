@@ -84,4 +84,8 @@ final class UtilityIO {
     static func rawFileToStringArray(_ rawFile: String) -> [String] {
         UtilityIO.readTextFile(rawFile).split("\n")
     }
+    
+    static func getHtml(_ url: String) -> String {
+        return UtilityNetworkIO.getStringFromUrl(url)
+    }
 }

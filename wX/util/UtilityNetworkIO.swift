@@ -7,7 +7,7 @@
 import UIKit
 
 final class UtilityNetworkIO {
-        
+    
     static func getStringFromUrl(_ url: String) -> String {
         print("getStringFromUrl: " + url)
         guard let safeUrl = URL(string: url) else {

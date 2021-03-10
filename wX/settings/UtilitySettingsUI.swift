@@ -16,7 +16,8 @@ final class UtilitySettingsUI {
         "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
         // "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the NWS images",
         "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images",
-        "USE_NWS_API_SEVEN_DAY": "Use new NWS API for 7 day"
+        "USE_NWS_API_SEVEN_DAY": "Use new NWS API for 7 day",
+        "USE_NWS_API_HOURLY": "Use new NWS API for hourly"
     ]
 
     static let booleanDefault = [
@@ -30,7 +31,8 @@ final class UtilitySettingsUI {
         "UI_MAIN_SCREEN_CONDENSE": "false",
         "USE_AWC_RADAR_MOSAIC": "false",
         "GOES_USE_FULL_RESOLUTION_IMAGES": "false",
-        "USE_NWS_API_SEVEN_DAY": "false"
+        "USE_NWS_API_SEVEN_DAY": "false",
+        "USE_NWS_API_HOURLY": "true"
     ]
 
     static let picker = [

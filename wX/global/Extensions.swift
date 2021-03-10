@@ -21,11 +21,19 @@ extension String {
         trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
     
+    func strip() -> String {
+        trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+    
     func removeDuplicateSpaces() -> String {
         replace("   ", " ")
     }
     
     func fixedLengthString(_ length: Int) -> String {
+        UtilityString.fixedLengthString(self, length)
+    }
+    
+    func ljust(_ length: Int) -> String {
         UtilityString.fixedLengthString(self, length)
     }
     

@@ -19,7 +19,7 @@ final class UtilityDownload {
         } else if product == "SUNMOON" {
             text = UtilitySunMoon.computeData()
         } else if product == "HOURLY" {
-            let textArr = UtilityHourly.getHourlyString(Location.getCurrentLocation())
+            let textArr = UtilityHourly.get(Location.getCurrentLocation())
             text = textArr[0]
         } else if product == "SWPC3DAY" {
             text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/3-day-forecast.txt").getHtml()

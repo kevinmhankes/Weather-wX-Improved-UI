@@ -187,7 +187,7 @@ final class UtilityString {
     }
 
     //
-    // Legacy forecast support
+    // Legacy forecast/hourly support
     //
     static func parseXml(_ payloadF: String, _ delim: String) -> [String] {
         var payload = payloadF
@@ -204,5 +204,12 @@ final class UtilityString {
             items[i] = parseFirst(html, regexpList[i])
         }
         return items
+    }
+    
+    static func parseXmlValue(_ payloadF: String) -> [String] {
+        var payload = payloadF
+        payload = UtilityString.replaceAllRegexp(payload, "<name>.*?</name>" , "")
+        payload = UtilityString.replaceAllRegexp(payload, "</value>" , "")
+        return payload.split(GlobalVariables.xml_value_pattern)
     }
 }
