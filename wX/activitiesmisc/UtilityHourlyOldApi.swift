@@ -82,7 +82,7 @@ final class UtilityHourlyOldApi {
             sb += temp5Val.ljust(6)
             sb += GlobalVariables.newline
         }
-        print(sb)
+        // print(sb)
         return sb
     }
 }
