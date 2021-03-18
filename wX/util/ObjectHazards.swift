@@ -48,7 +48,6 @@ final class ObjectHazards {
     }
 
     static func getHazardCards(_ stackView: UIStackView, _ objectHazards: ObjectHazards, _ isUS: Bool = true) {
-        print("22234 getHazCards")
         self.isUS = isUS
         var numHaz = 0
         let stackViewLocalHaz = ObjectStackViewHS()
