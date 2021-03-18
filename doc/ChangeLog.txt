@@ -1,9 +1,10 @@
 
-56126 2021_03_09 [FIX] lint
+56126 2021_03_18 [FIX] lint
 		 [REF] avoid using str and string as var names
 		 [ADD] if only 2 images showing in severe dashboard, make them larger
 		 [ADD] AK and Hawaii images for AWC Radar mosaic
 		 [FIX] some forecasts icons showing "0%"
+		 [FIX] location fragment - globalTextViewFontSize not initialized properly causing data to load twice on initial load (hazards would duplicate)
 56125 2021_02_27 [FIX] UtilityWXOGL and CapAlert to make use of the new API URL for alerts starting with urn:oid
 		 [FIX] In UsAlerts, do not show radar icon if WFO/Radar Site can't be detected
 		 [REF] code cleanup

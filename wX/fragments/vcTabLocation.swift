@@ -47,7 +47,9 @@ final class vcTabLocation: vcTabParent {
     private var longPressCount = 0
     private var toolbar = ObjectToolbar()
     private var globalHomeScreenFav = ""
-    private var globalTextViewFontSize = UIPreferences.textviewFontSize
+    // private var globalTextViewFontSize = UIPreferences.textviewFontSize
+    private var globalTextViewFontSize: CGFloat = 0.0
+    private var firstLoadCompleted = false
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
     #endif
@@ -134,7 +136,7 @@ final class vcTabLocation: vcTabParent {
 //        stackViewForecast = ObjectStackView(.fill, .vertical)
 //        stackViewHazards = ObjectStackView(.fill, .vertical)
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
-        // globalTextViewFontSize = UIPreferences.textviewFontSize
+        globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
         getContentMaster()
         #if targetEnvironment(macCatalyst)
@@ -149,6 +151,8 @@ final class vcTabLocation: vcTabParent {
     }
 
     @objc func getContentMaster() {
+        firstLoadCompleted = true
+        print("22234 getContentMaster")
         oldLocation = Location.latLon
         if Location.isUS {
             isUS = true
@@ -161,6 +165,7 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getForecastData() {
+        print("22234 Get forecast")
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
@@ -206,6 +211,7 @@ final class vcTabLocation: vcTabParent {
     func getLocationHazards() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
+            print("22234 get hazards")
             DispatchQueue.main.async {
                 if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
                     ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
@@ -311,7 +317,11 @@ final class vcTabLocation: vcTabParent {
             objectCardCurrentConditions?.resetTextSize()
             objectCardSevenDayCollection?.resetTextSize()
             objLabel.tv.font = FontSize.extraLarge.size
-            getContentMaster()
+            if firstLoadCompleted {
+                // print("22234 " + String(UIPreferences.textviewFontSize))
+                print("22234 view appears")
+                getContentMaster()
+            }
         }
     }
 
