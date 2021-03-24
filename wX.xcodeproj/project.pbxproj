@@ -17,6 +17,7 @@
 		03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */; };
 		030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */; };
 		030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DC62B1FE4A58B006DCF93 /* MotionType.swift */; };
+		030DCDCA260BE1D8007BE259 /* ObjectWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */; };
 		031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */; };
 		031546321FC632FD0020EF7B /* ObjectTextViewLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */; };
 		031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031546331FC634CB0020EF7B /* ObjectCardImage.swift */; };
@@ -413,6 +414,7 @@
 		03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewControllerWithAudio.swift; sourceTree = "<group>"; };
 		030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNetworkIO.swift; sourceTree = "<group>"; };
 		030DC62B1FE4A58B006DCF93 /* MotionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionType.swift; sourceTree = "<group>"; };
+		030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectWarning.swift; sourceTree = "<group>"; };
 		0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewSmallGray.swift; sourceTree = "<group>"; };
 		031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewLarge.swift; sourceTree = "<group>"; };
 		031546331FC634CB0020EF7B /* ObjectCardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardImage.swift; sourceTree = "<group>"; };
@@ -1180,6 +1182,7 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */,
 				F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */,
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
 				F0B3353D1DA3FD510035BD36 /* Color.swift */,
@@ -1775,6 +1778,7 @@
 				F0B335541DA3FD510035BD36 /* Extensions.swift in Sources */,
 				03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */,
 				F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */,
+				030DCDCA260BE1D8007BE259 /* ObjectWarning.swift in Sources */,
 				03F3EB9C229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift in Sources */,
 				F0B335141DA3FD1C0035BD36 /* R.swift in Sources */,
 				F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */,
