@@ -18,6 +18,7 @@ final class SevereWarning {
     var warnings = [String]()
     var listOfWfo = [String]()
     private var listOfPolygonRaw = [String]()
+    var warningList = [ObjectWarning]()
 
     init(_ type: PolygonEnum) {
         self.type = type
@@ -60,17 +61,21 @@ final class SevereWarning {
     }
 
     func generateString() {
-        let html: String
-        switch type {
-        case .TOR:
-            html = MyApplication.severeDashboardTor.value
-        case .TST:
-            html = MyApplication.severeDashboardTst.value
-        case .FFW:
-            html = MyApplication.severeDashboardFfw.value
-        default:
-            html = ""
-        }
+//        let html: String
+//        switch type {
+//        case .TOR:
+//            html = MyApplication.severeDashboardTor.value
+//        case .TST:
+//            html = MyApplication.severeDashboardTst.value
+//        case .FFW:
+//            html = MyApplication.severeDashboardFfw.value
+//        default:
+//            html = ""
+//        }
+        
+        let html = ObjectWarning.getBulkData(type)
+        warningList = ObjectWarning.parseJson(html)
+        
         text = ""
         count = 0
         idList = html.parseColumn("\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"")
