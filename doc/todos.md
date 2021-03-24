@@ -35,3 +35,4 @@
 // [REF] scan for closure without proper spaces
 // [REF] remove -> Void from closures
 // [ADD] wxglpolygon need vtec check on top method like bottom
+// [ADD] ObjectWarning
