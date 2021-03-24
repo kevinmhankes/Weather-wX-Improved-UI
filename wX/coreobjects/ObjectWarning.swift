@@ -18,7 +18,6 @@ final class ObjectWarning {
     var geometry = ""
     var isCurrent = true
 
-
     init(
         _ url: String,
         _ title: String,
@@ -40,7 +39,7 @@ final class ObjectWarning {
         self.effective = self.effective.replace("T", " ")
         self.effective = UtilityString.replaceAllRegexp(self.effective, ":00-0[0-9]:00", "")
 
-        self.expires = expires;
+        self.expires = expires
         self.expires = self.expires.replace("T", " ")
         self.expires = UtilityString.replaceAllRegexp(self.expires, ":00-0[0-9]:00", "")
 
@@ -51,19 +50,19 @@ final class ObjectWarning {
         self.geometry = geometry
         self.isCurrent = UtilityTime.isVtecCurrent(self.vtec)
         if vtec.hasPrefix("O.EXP") || vtec.hasPrefix("O.CAN") {
-            self.isCurrent = false;
+            self.isCurrent = false
         }
     }
 
     // static func getCount(_ data: String) -> String {
     
     static func getBulkData(_ type1: PolygonEnum) -> String {
-        var html = "";
-        if (type1 == PolygonEnum.TOR) {
+        var html = ""
+        if type1 == PolygonEnum.TOR {
             html = MyApplication.severeDashboardTor.value
-        } else if (type1 == PolygonEnum.TST) {
+        } else if type1 == PolygonEnum.TST {
             html = MyApplication.severeDashboardTst.value
-        } else if (type1 == PolygonEnum.FFW) {
+        } else if type1 == PolygonEnum.FFW {
             html = MyApplication.severeDashboardFfw.value
         } else {
             html = ""
@@ -77,19 +76,19 @@ final class ObjectWarning {
         html = html.replace("\"geometry\": null,", "\"geometry\": null, \"coordinates\":[[]]}")
         
         var warnings = [ObjectWarning]()
-        var urlList = UtilityString.parseColumn(html, "\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"");
-        var titleList = UtilityString.parseColumn(html, "\"description\": \"(.*?)\"");
-        var areaDescList = UtilityString.parseColumn(html, "\"areaDesc\": \"(.*?)\"");
-        var effectiveList = UtilityString.parseColumn(html, "\"effective\": \"(.*?)\"");
-        var expiresList = UtilityString.parseColumn(html, "\"expires\": \"(.*?)\"");
-        var eventList = UtilityString.parseColumn(html, "\"event\": \"(.*?)\"");
-        var senderNameList = UtilityString.parseColumn(html, "\"senderName\": \"(.*?)\"");
-        var data = html;
-        data = data.replace("\n", "");
-        data = data.replace(" ", "");
-        var listOfPolygonRaw = UtilityString.parseColumn(data, GlobalVariables.warningLatLonPattern);
-        var vtecs = UtilityString.parseColumn(html, GlobalVariables.vtecPattern);
-        var geometryList = UtilityString.parseColumn(html, "\"geometry\": (.*?),");
+        let urlList = UtilityString.parseColumn(html, "\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"")
+        let titleList = UtilityString.parseColumn(html, "\"description\": \"(.*?)\"")
+        let areaDescList = UtilityString.parseColumn(html, "\"areaDesc\": \"(.*?)\"")
+        let effectiveList = UtilityString.parseColumn(html, "\"effective\": \"(.*?)\"")
+        let expiresList = UtilityString.parseColumn(html, "\"expires\": \"(.*?)\"")
+        let eventList = UtilityString.parseColumn(html, "\"event\": \"(.*?)\"")
+        let senderNameList = UtilityString.parseColumn(html, "\"senderName\": \"(.*?)\"")
+        var data = html
+        data = data.replace("\n", "")
+        data = data.replace(" ", "")
+        let listOfPolygonRaw = UtilityString.parseColumn(data, GlobalVariables.warningLatLonPattern)
+        let vtecs = UtilityString.parseColumn(html, GlobalVariables.vtecPattern)
+        let geometryList = UtilityString.parseColumn(html, "\"geometry\": (.*?),")
         // count = len(idList)
         for index in urlList.indices {
             warnings.append(ObjectWarning(
@@ -105,29 +104,28 @@ final class ObjectWarning {
                 Utility.safeGet(geometryList, index)
             ))
         }
-        return warnings;
+        return warnings
     }
 
-
     func getClosestRadar() -> String {
-        var data = polygon;
-        data = data.replace("[", "");
-        data = data.replace("]", "");
-        data = data.replace(",", " ");
-        data = data.replace("-", "");
-        var points = data.split(" ");
-        if (points.count > 2) {
-            var lat = points[1];
-            var lon = "-" + points[0];
-            var latLon = LatLon(lat, lon);
-            var radarSites = UtilityLocation.getNearestRadarSites(latLon, 1, includeTdwr: false);
-            if (radarSites.count == 0) {
-                return "";
+        var data = polygon
+        data = data.replace("[", "")
+        data = data.replace("]", "")
+        data = data.replace(",", " ")
+        data = data.replace("-", "")
+        let points = data.split(" ")
+        if points.count > 2 {
+            let lat = points[1]
+            let lon = "-" + points[0]
+            let latLon = LatLon(lat, lon)
+            let radarSites = UtilityLocation.getNearestRadarSites(latLon, 1, includeTdwr: false)
+            if radarSites.count == 0 {
+                return ""
             } else {
-                return radarSites[0].name;
+                return radarSites[0].name
             }
         } else {
-            return "";
+            return ""
         }
     }
 

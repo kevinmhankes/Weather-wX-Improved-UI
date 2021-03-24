@@ -7,9 +7,9 @@
 final class WXGLPolygonWarnings {
     
     // Used in SevereWarnings/CapAlert as well
-    static let vtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
-        + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
-    static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
+//    static let vtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
+//        + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
+//    static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
     // TODO use above var more
     
 //    static func addGeneric(_ projectionNumbers: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
@@ -73,9 +73,21 @@ final class WXGLPolygonWarnings {
         for w in warnings {
             if w.isCurrent {
                 let latLons = w.getPolygonAsLatLons(-1)
-                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers);
+                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
             }
         }
-        return warningList;
+        return warningList
+    }
+    
+    func getCount( _ type: PolygonEnum) -> Int {
+        let html = ObjectWarning.getBulkData(type)
+        let warningList = ObjectWarning.parseJson(html)
+        var i = 0
+        for s in warningList {
+            if s.isCurrent {
+                i += 1
+            }
+        }
+        return i
     }
 }

@@ -85,8 +85,8 @@ final class SevereWarning {
         eventList = html.parseColumn("\"event\": \"(.*?)\"")
         senderNameList = html.parseColumn("\"senderName\": \"(.*?)\"")
         let data = html.replace("\n", "").replace(" ", "")
-        listOfPolygonRaw = data.parseColumn(WXGLPolygonWarnings.warningLatLonPattern)
-        warnings = html.parseColumn(WXGLPolygonWarnings.vtecPattern)
+        listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
+        warnings = html.parseColumn(GlobalVariables.vtecPattern)
         warnings.enumerated().forEach { index, warning in
             let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
             if !warning.startsWith("O.EXP") && vtecIsCurrent {
@@ -102,7 +102,7 @@ final class SevereWarning {
     }
     
     func getCount() -> String {
-        var i = 0;
+        var i = 0
         for  s in warningList {
             if s.isCurrent {
                 i += 1
