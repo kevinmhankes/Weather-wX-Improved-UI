@@ -135,12 +135,12 @@ final class ObjectWarning {
         return url
     }
 
-    func getPolygonAsLatLons() -> [LatLon] {
+    func getPolygonAsLatLons(_ mult: Int) -> [LatLon] {
         var polygonTmp = polygon
         polygonTmp = polygonTmp.replace("[", "")
         polygonTmp = polygonTmp.replace("]", "")
         polygonTmp = polygonTmp.replace(",", " ")
-        let latLons = LatLon.parseStringToLatLons(polygonTmp, 1, true)
+        let latLons = LatLon.parseStringToLatLons(polygonTmp, Double(mult), true)
         return latLons
     }
 }

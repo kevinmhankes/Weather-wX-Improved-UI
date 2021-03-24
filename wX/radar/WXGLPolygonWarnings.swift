@@ -12,43 +12,70 @@ final class WXGLPolygonWarnings {
     static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
     // TODO use above var more
     
+//    static func addGeneric(_ projectionNumbers: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
+//        let prefToken = type.storage.value
+//        let html = prefToken.replace("\n", "").replace(" ", "")
+//        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+//        let vtecs = html.parseColumn(vtecPattern)
+//        var warningList = [Double]()
+//        polygons.enumerated().forEach { polyCount, polygon in
+//            if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount && !vtecs[polyCount].hasPrefix("0.EXP") && !vtecs[polyCount].hasPrefix("0.CAN") {
+//                let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+//                let latLons = LatLon.parseStringToLatLons(polygonTmp)
+//                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
+//            }
+//        }
+//        return warningList
+//    }
+    
     static func addGeneric(_ projectionNumbers: ProjectionNumbers, _ type: ObjectPolygonWarning) -> [Double] {
-        let prefToken = type.storage.value
-        let html = prefToken.replace("\n", "").replace(" ", "")
-        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        let vtecs = html.parseColumn(vtecPattern)
+        let html = type.storage.value
+        let warnings = ObjectWarning.parseJson(html)
         var warningList = [Double]()
-        polygons.enumerated().forEach { polyCount, polygon in
-            if type.type == PolygonTypeGeneric.SPS || vtecs.count > polyCount && !vtecs[polyCount].hasPrefix("0.EXP") && !vtecs[polyCount].hasPrefix("0.CAN") {
-                let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
-                let latLons = LatLon.parseStringToLatLons(polygonTmp)
+        for w in warnings {
+            if type.type == PolygonTypeGeneric.SPS || type.type == PolygonTypeGeneric.SMW || w.isCurrent {
+                let latLons = w.getPolygonAsLatLons(-1)
                 warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
             }
         }
         return warningList
     }
     
+//
+//    static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
+//        let prefToken: String
+//        switch type {
+//        case .TOR:
+//            prefToken = MyApplication.severeDashboardTor.value
+//        case .TST:
+//            prefToken = MyApplication.severeDashboardTst.value
+//        default:
+//            prefToken = MyApplication.severeDashboardFfw.value
+//        }
+//        let html = prefToken.replace("\n", "").replace(" ", "")
+//        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
+//        let vtecs = html.parseColumn(vtecPattern)
+//        var warningList = [Double]()
+//        polygons.enumerated().forEach { polygonCount, polygon in
+//            if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") && UtilityTime.isVtecCurrent(vtecs[polygonCount]) {
+//                let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+//                let latLons = LatLon.parseStringToLatLons(polygonTmp)
+//                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
+//            }
+//        }
+//        return warningList
+//    }
+    
     static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
-        let prefToken: String
-        switch type {
-        case .TOR:
-            prefToken = MyApplication.severeDashboardTor.value
-        case .TST:
-            prefToken = MyApplication.severeDashboardTst.value
-        default:
-            prefToken = MyApplication.severeDashboardFfw.value
-        }
-        let html = prefToken.replace("\n", "").replace(" ", "")
-        let polygons = html.parseColumn("\"coordinates\":\\[\\[(.*?)\\]\\]\\}")
-        let vtecs = html.parseColumn(vtecPattern)
+        let html = ObjectWarning.getBulkData(type)
+        let warnings = ObjectWarning.parseJson(html)
         var warningList = [Double]()
-        polygons.enumerated().forEach { polygonCount, polygon in
-            if vtecs.count > polygonCount && !vtecs[polygonCount].hasPrefix("0.EXP") && !vtecs[polygonCount].hasPrefix("0.CAN") && UtilityTime.isVtecCurrent(vtecs[polygonCount]) {
-                let polygonTmp = polygon.replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
-                let latLons = LatLon.parseStringToLatLons(polygonTmp)
-                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
+        for w in warnings {
+            if w.isCurrent {
+                let latLons = w.getPolygonAsLatLons(-1)
+                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers);
             }
         }
-        return warningList
+        return warningList;
     }
 }

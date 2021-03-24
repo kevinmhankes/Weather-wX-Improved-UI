@@ -76,14 +76,11 @@ final class vcSevereDashboard: UIwXViewController {
         let wTor = SevereWarning(.TOR)
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
-        [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
+        [wTor, wTst, wFfw].forEach { warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
                 for w in warningType.warningList {
-                //warningType.eventList.indices.forEach { index in
                     if warningType.warnings.count > 0 {
-                        let data = warningType.warnings[index]
-                        let vtecIsCurrent = UtilityTime.isVtecCurrent(data)
                         if w.isCurrent {
                             let radarSite = w.getClosestRadar()
                             _ = ObjectCardDashAlertItem(
