@@ -470,9 +470,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func updateWarningsInToolbar() {
         warningCount = 0
         if RadarPreferences.radarWarnings {
-            let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
-            let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
-            let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
+            let tstCount = WXGLPolygonWarnings.getCount(PolygonEnum.TST)
+            let torCount = WXGLPolygonWarnings.getCount(PolygonEnum.TOR)
+            let ffwCount = WXGLPolygonWarnings.getCount(PolygonEnum.FFW)
+//            let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
+//            let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
+//            let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
             let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
             warningButton.title = countString
             let sum = (Int(tstCount) ?? 0) + (Int(torCount) ?? 0) + (Int(ffwCount) ?? 0)

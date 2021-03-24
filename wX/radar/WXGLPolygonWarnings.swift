@@ -79,7 +79,7 @@ final class WXGLPolygonWarnings {
         return warningList
     }
     
-    func getCount( _ type: PolygonEnum) -> Int {
+    static func getCount( _ type: PolygonEnum) -> String {
         let html = ObjectWarning.getBulkData(type)
         let warningList = ObjectWarning.parseJson(html)
         var i = 0
@@ -88,6 +88,6 @@ final class WXGLPolygonWarnings {
                 i += 1
             }
         }
-        return i
+        return String(i)
     }
 }
