@@ -12,30 +12,29 @@ final class ObjectCardDashAlertItem {
 
     init(
         _ uiv: UIwXViewController,
-        _ severeWarning: SevereWarning,
-        _ index: Int,
+        _ warning: ObjectWarning,
         _ gesture: UITapGestureRecognizerWithData,
         _ gestureRadar: UITapGestureRecognizerWithData,
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
-        let tvName = ObjectTextViewLarge(80.0, text: severeWarning.senderNameList[index], color: ColorCompatibility.highlightText)
+        let tvName = ObjectTextViewLarge(80.0, text: warning.sender, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
         let tvTitle = ObjectTextView(
-            severeWarning.eventList[index],
+            warning.event,
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
         let tvStart = ObjectTextView(
-            "Start: " + severeWarning.effectiveList[index].replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
+            "Start: " + warning.effective.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
         let tvEnd = ObjectTextView(
-            "End: " + severeWarning.expiresList[index].replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
+            "End: " + warning.expires.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
             isUserInteractionEnabled: false, isZeroSpacing: true
         )
-        let tvArea = ObjectTextViewSmallGray(text: severeWarning.areaDescList[index], isUserInteractionEnabled: false)
+        let tvArea = ObjectTextViewSmallGray(text: warning.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false
@@ -61,10 +60,10 @@ final class ObjectCardDashAlertItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
-        if severeWarning.senderNameList[index] == "" {
+        if warning.sender == "" {
             tvName.view.isHidden = true
         }
-        if severeWarning.expiresList[index] == "" {
+        if warning.expires == "" {
             tvEnd.view.isHidden = true
         }
         verticalTextContainer.view.isAccessibilityElement = true

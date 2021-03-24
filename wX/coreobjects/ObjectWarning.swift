@@ -132,15 +132,15 @@ final class ObjectWarning {
     }
 
     func getUrl() -> String {
-        return url;
+        return url
     }
 
     func getPolygonAsLatLons() -> [LatLon] {
-        var polygonTmp = polygon;
-        polygonTmp = polygonTmp.replace("[", "");
-        polygonTmp = polygonTmp.replace("]", "");
-        polygonTmp = polygonTmp.replace(",", " ");
-        var latLons = LatLon.parseStringToLatLons(polygonTmp, 1, true);
-        return latLons;
+        var polygonTmp = polygon
+        polygonTmp = polygonTmp.replace("[", "")
+        polygonTmp = polygonTmp.replace("]", "")
+        polygonTmp = polygonTmp.replace(",", " ")
+        let latLons = LatLon.parseStringToLatLons(polygonTmp, 1, true)
+        return latLons
     }
 }

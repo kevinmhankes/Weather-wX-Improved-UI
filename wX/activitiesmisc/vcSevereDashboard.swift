@@ -79,18 +79,19 @@ final class vcSevereDashboard: UIwXViewController {
         [wTor, wTst, wFfw].enumerated().forEach { index, warningType in
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
-                warningType.eventList.indices.forEach { index in
+                for w in warningType.warningList {
+                //warningType.eventList.indices.forEach { index in
                     if warningType.warnings.count > 0 {
                         let data = warningType.warnings[index]
                         let vtecIsCurrent = UtilityTime.isVtecCurrent(data)
-                        if !data.hasPrefix("O.EXP") && vtecIsCurrent {
+                        if w.isCurrent {
+                            let radarSite = w.getClosestRadar()
                             _ = ObjectCardDashAlertItem(
                                 self,
-                                warningType,
-                                index,
-                                UITapGestureRecognizerWithData(warningType.idList[index], self, #selector(goToAlert(sender:))),
-                                UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:))),
-                                UITapGestureRecognizerWithData(warningType.listOfWfo[index], self, #selector(goToRadar(sender:)))
+                                w,
+                                UITapGestureRecognizerWithData(w.url, self, #selector(goToAlert(sender:))),
+                                UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:))),
+                                UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
                             )
                         }
                     }
@@ -98,7 +99,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
         if wTor.eventList.count > 0 || wTst.eventList.count > 0 || wFfw.eventList.count > 0 {
-            statusWarnings = "(" + String(wTor.eventList.count) + "," + String(wTst.eventList.count) + "," + String(wFfw.eventList.count) + ")"
+            statusWarnings = "(" + wTor.getCount() + "," + wTst.getCount() + "," + wFfw.getCount() + ")"
         } else {
             statusWarnings = ""
         }

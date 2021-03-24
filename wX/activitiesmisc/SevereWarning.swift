@@ -100,4 +100,14 @@ final class SevereWarning {
             }
         }
     }
+    
+    func getCount() -> String {
+        var i = 0;
+        for  s in warningList {
+            if s.isCurrent {
+                i += 1
+            }
+        }
+        return String(i)
+    }
 }
