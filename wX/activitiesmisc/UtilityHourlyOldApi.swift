@@ -47,7 +47,7 @@ final class UtilityHourlyOldApi {
             time2List[j] = time2List[j].replace("00:00", "00")
 
             let timeSplit: [String] = time2List[j].split(" ")
-            //# time_split2 = time_split[0].split("/") pre 2017
+            // time_split2 = time_split[0].split("/") pre 2017
             let timeSplit2: [String] = timeSplit[0].split("-")
             var month: Int = Int(timeSplit2[0]) ?? 0
             let day: Int = Int(timeSplit2[1]) ?? 0

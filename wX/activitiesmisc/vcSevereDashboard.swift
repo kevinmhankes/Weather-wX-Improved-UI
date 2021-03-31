@@ -135,9 +135,10 @@ final class vcSevereDashboard: UIwXViewController {
         }
         if noticeCount == 0 && UtilityUI.isLandscape() {
             imagesPerRow = 2
-        } else if noticeCount == 0 && !UtilityUI.isLandscape() {
-            imagesPerRow = 1
         }
+//        else if noticeCount == 0 && !UtilityUI.isLandscape() {
+//            imagesPerRow = 1
+//        }
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -218,7 +219,7 @@ final class vcSevereDashboard: UIwXViewController {
         let warningLabel = ["W", "M", "P"]
         [snWat, snMcd, snMpd].enumerated().forEach { index, severeNotice in
             if severeNotice.bitmaps.count > 0 {
-                status += warningLabel[index] + "(" + String(severeNotice.bitmaps.count) + ") "
+                status += warningLabel[index] + "(" + String(severeNotice.getCount()) + ") "
             }
         }
         statusButton.title = status + " " + statusWarnings
@@ -227,7 +228,7 @@ final class vcSevereDashboard: UIwXViewController {
     func getNoticeCount() -> Int {
         var count = 0
         [snWat, snMcd, snMpd].forEach { severeNotice in
-            count += severeNotice.bitmaps.count
+            count += severeNotice.getCount()
         }
         return count
     }
