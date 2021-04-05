@@ -691,14 +691,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
             alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
         }
-        if (RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled()) && warningCount > 0 {
+        if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
             alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
         if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
             alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
         }
         if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
-            //print(MyApplication.mcdNoList.value)
+            // print(MyApplication.mcdNoList.value)
             alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
         if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
