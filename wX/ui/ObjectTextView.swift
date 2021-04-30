@@ -24,7 +24,7 @@ final class ObjectTextView {
         // FIXME need to use widthAnchor
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
-        //self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
+        // self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         tv.text = text
         tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {

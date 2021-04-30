@@ -12,7 +12,7 @@ final class UtilityDownloadRadar {
 
     static func getAllRadarData() {
         getPolygonVtec()
-        //getPolygonVtecByType(ObjectPolygonWarning(.))
+        // getPolygonVtecByType(ObjectPolygonWarning(.))
         UtilityDownloadMpd.getMpd()
         UtilityDownloadMcd.getMcd()
         UtilityDownloadWatch.getWatch()

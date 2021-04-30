@@ -60,6 +60,6 @@ final class SevereNotice {
     }
     
     func getCount() -> Int {
-        return bitmaps.count;
+        return bitmaps.count
     }
 }

@@ -20,10 +20,10 @@ final class AppColors {
         var appColor = Utility.readPref("UI_THEME", "blue")
         if #available(iOS 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
-                //print("Dark mode")
+                // print("Dark mode")
                 appColor = "darkMode"
             } else {
-                //print("Light mode")
+                // print("Light mode")
             }
         }
         switch appColor {

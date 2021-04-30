@@ -51,7 +51,7 @@ final class UtilityWXOGL {
                 warningChunk += it.storage.value
             }
         }
-        let warnings = ObjectWarning.parseJson(warningChunk);
+        let warnings = ObjectWarning.parseJson(warningChunk)
         var urlToOpen = ""
         var notFound = true
         for w in warnings {

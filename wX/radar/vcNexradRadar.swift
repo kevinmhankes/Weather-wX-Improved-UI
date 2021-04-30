@@ -120,9 +120,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        //edgePan.edges = .left
-        //view.addGestureRecognizer(edgePan)
+        // let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        // edgePan.edges = .left
+        // view.addGestureRecognizer(edgePan)
         view.backgroundColor = UIColor.black
         numberOfPanes = Int(wxoglPaneCount) ?? 1
         paneRange = 0..<numberOfPanes
@@ -236,8 +236,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         commandQueue = device.makeCommandQueue()
         wxMetalRenders.forEach { $0?.setRenderFunction(render(_:)) }
         // Below two lines enable continuous updates
-        //timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
-        //timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        // timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
+        // timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
         setupGestures()
         if RadarPreferences.locdotFollowsGps {
             locationManager.requestWhenInUseAuthorization()
@@ -284,12 +284,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-    //@objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-    //if recognizer.state == .recognized { doneClicked() }
-    //}
+    // @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    // if recognizer.state == .recognized { doneClicked() }
+    // }
 
     @objc func onPause() {
-        //print("viewWillDisappear")
+        // print("viewWillDisappear")
         stopAnimate()
     }
 
@@ -315,8 +315,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             drawable: drawable,
             parentModelViewMatrix: modelMatrix(index),
             projectionMatrix: projectionMatrix
-            //clearColor: MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
-            //clearColor: nil
+            // clearColor: MTLClearColorMake(0.0, 0.0, 0.0, 1.0)
+            // clearColor: nil
         )
     }
 
@@ -338,8 +338,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
      }*/
 
     func setupGestures() {
-        //let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
-        //let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
+        // let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
+        // let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
         let gestureRecognizerSingleTap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         gestureRecognizerSingleTap.numberOfTapsRequired = 1
         gestureRecognizerSingleTap.delegate = self
@@ -459,7 +459,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if RadarPreferences.locdotFollowsGps {
             resumeGps()
         }
-        //stopAnimate()
+        // stopAnimate()
         if wxMetalRenders[0] != nil {
             wxMetalRenders.forEach { $0!.updateTimeToolbar() }
             wxMetalRenders.forEach { $0!.getRadar("") }
@@ -617,7 +617,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 animArray[index].indices.forEach {
                     UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                     UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
-                    //print(animArray[index][$0] + " move to " + String(index) + "nexrad_anim" + String($0))
+                    // print(animArray[index][$0] + " move to " + String(index) + "nexrad_anim" + String($0))
                 }
             }
             var scaleFactor = 1
@@ -837,17 +837,17 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     override var keyCommands: [UIKeyCommand]? {
          [
-            //UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
-            //UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(keyboardAnimate)),
-            //UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(stopAnimate)),
-            //UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(timeClicked)),
-            //UIKeyCommand(input: "4", modifierFlags: .control, action: #selector(goToQuadPane)),
-            //UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(warningClicked)),
+            // UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
+            // UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(keyboardAnimate)),
+            // UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(stopAnimate)),
+            // UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(timeClicked)),
+            // UIKeyCommand(input: "4", modifierFlags: .control, action: #selector(goToQuadPane)),
+            // UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(warningClicked)),
             UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
             UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),
             UIKeyCommand(input: "2", modifierFlags: .numericPad, action: #selector(keyDownArrow)),
-            //UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts)),
+            // UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts)),
 
             UIKeyCommand(input: "7", modifierFlags: .numericPad, action: #selector(keyLeftUpArrow)),
             UIKeyCommand(input: "9", modifierFlags: .numericPad, action: #selector(keyRightUpArrow)),
@@ -877,9 +877,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         Route.radarFromTimeButton(self, "4")
     }*/
 
-    //@objc func showKeyboardShortcuts() {
-    //UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
-    //}
+    // @objc func showKeyboardShortcuts() {
+    // UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
+    // }
 
     @objc func keyRightArrow() {
         UtilityRadarUI.moveByKey(wxMetalRenders, .right)

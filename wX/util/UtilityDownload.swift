@@ -249,8 +249,7 @@ final class UtilityDownload {
                         product.hasPrefix("ESF") ||
                         product.hasPrefix("NSH") ||
                         product.hasPrefix("PNS") ||
-                        product.hasPrefix("RVA")
-                    {
+                        product.hasPrefix("RVA") {
                         text = UtilityString.extractPreLsr(prodHtmlFuture)
                     } else {
                         text = UtilityString.extractPreLsr(prodHtmlFuture).removeLineBreaks()

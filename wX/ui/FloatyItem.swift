@@ -96,7 +96,7 @@ open class FloatyItem: UIView {
         didSet {
             if titleLabelPosition == .left {
                 titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
-            } else { //titleLabel will be on right
+            } else { // titleLabel will be on right
                 titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
             }
         }
@@ -125,7 +125,7 @@ open class FloatyItem: UIView {
             titleLabel.sizeToFit()
             if titleLabelPosition == .left {
                 titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
-            } else { //titleLabel will be on right
+            } else { // titleLabel will be on right
                 titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
             }
             

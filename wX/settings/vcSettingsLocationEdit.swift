@@ -330,10 +330,10 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle && UIApplication.shared.applicationState == .inactive {
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     AppColors.update()
-                    //print("Dark mode")
+                    // print("Dark mode")
                 } else {
                     AppColors.update()
-                    //print("Light mode")
+                    // print("Light mode")
                 }
                 view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
                 toolbar.setColorToTheme()

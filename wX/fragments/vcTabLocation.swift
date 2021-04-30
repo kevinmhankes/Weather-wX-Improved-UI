@@ -137,19 +137,19 @@ final class vcTabLocation: vcTabParent {
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
-        getContentMaster()
+        getContentSuper()
         #if targetEnvironment(macCatalyst)
         oneMinRadarFetch = Timer.scheduledTimer(
             timeInterval: 60.0 * Double(UIPreferences.refreshLocMin),
             target: self,
-            selector: #selector(getContentMaster),
+            selector: #selector(getContentSuper),
             userInfo: nil,
             repeats: true
         )
         #endif
     }
 
-    @objc func getContentMaster() {
+    @objc func getContentSuper() {
         oldLocation = Location.latLon
         if Location.isUS {
             isUS = true
@@ -297,7 +297,7 @@ final class vcTabLocation: vcTabParent {
         refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
         if currentTimeSec > (lastRefresh + refreshIntervalSec) {
             lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
-            getContentMaster()
+            getContentSuper()
         }
     }
 
@@ -313,7 +313,7 @@ final class vcTabLocation: vcTabParent {
             objectCardCurrentConditions?.resetTextSize()
             objectCardSevenDayCollection?.resetTextSize()
             objLabel.tv.font = FontSize.extraLarge.size
-            getContentMaster()
+            getContentSuper()
         }
     }
 
@@ -322,7 +322,7 @@ final class vcTabLocation: vcTabParent {
             Location.setCurrentLocationStr(String(locationNumber + 1))
             Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
             objLabel.text = Location.name
-            getContentMaster()
+            getContentSuper()
         } else {
             Route.locationAdd(self)
         }
@@ -351,7 +351,7 @@ final class vcTabLocation: vcTabParent {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: { _ in self.editLocation() }))
-        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentMaster() }))
+        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentSuper() }))
         if UtilitySettings.isRadarInHomeScreen() {
             alert.addAction(UIAlertAction(
                 title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
@@ -500,7 +500,7 @@ final class vcTabLocation: vcTabParent {
             drawable: drawable,
             parentModelViewMatrix: modelMatrix(index),
             projectionMatrix: projectionMatrix
-            //clearColor: nil
+            // clearColor: nil
         )
     }
 

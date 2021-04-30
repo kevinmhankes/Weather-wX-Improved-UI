@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = color
         UIToolbar.appearance().barTintColor = color
         UITabBar.appearance().barTintColor = color
-        //window = UIWindow(frame: UIScreen.main.bounds)
-        //window?.rootViewController = UINavigationController(rootViewController: CustomTabBarVC())
-        //window?.makeKeyAndVisible()
+        // window = UIWindow(frame: UIScreen.main.bounds)
+        // window?.rootViewController = UINavigationController(rootViewController: CustomTabBarVC())
+        // window?.makeKeyAndVisible()
         return true
     }
 

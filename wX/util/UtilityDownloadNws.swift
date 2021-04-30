@@ -31,15 +31,15 @@ final class UtilityDownloadNws {
         // https://github.com/JustHTTP/Just
         // http://docs.justhttp.net/QuickStart.html
         // is the request successful?
-        //r.ok
-        //r.statusCode
+        // r.ok
+        // r.statusCode
         // what did the server return?
-        //r.headers       // response headers
-        //r.content       // response body as NSData?
-        //r.text          // response body as text?
-        //r.json          // response body parsed by NSJSONSerielization
-        //r.url           // the URL, as NSURL
-        //r.isRedirect    // is this a redirect response
+        // r.headers       // response headers
+        // r.content       // response body as NSData?
+        // r.text          // response body as text?
+        // r.json          // response body parsed by NSJSONSerielization
+        // r.url           // the URL, as NSURL
+        // r.isRedirect    // is this a redirect response
     }
 
     static func getStringFromUrlXml(_ url: String) -> String {

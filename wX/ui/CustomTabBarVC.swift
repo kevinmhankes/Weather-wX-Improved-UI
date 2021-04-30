@@ -11,12 +11,12 @@ final class CustomTabBarVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let appearance = UITabBarItem.appearance()
-        //let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 14)]
-        //appearance.setTitleTextAttributes(attributes as Any as? [NSAttributedString.Key: Any], for: .normal)
+        // let appearance = UITabBarItem.appearance()
+        // let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 14)]
+        // appearance.setTitleTextAttributes(attributes as Any as? [NSAttributedString.Key: Any], for: .normal)
         tabBar.tintColor = .white
-        //self.tabBar.barTintColor = .white
-        //self.tabBar.isTranslucent = true
+        // self.tabBar.barTintColor = .white
+        // self.tabBar.isTranslucent = true
         if let items = tabBar.items {
             items.forEach {
                 if let image = $0.image { $0.image = image.withRenderingMode(.alwaysOriginal) }

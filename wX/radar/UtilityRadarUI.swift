@@ -76,8 +76,8 @@ final class UtilityRadarUI {
         let txt = UtilityWatch.show(location, type)
         let token = String(describing: type) + txt
         // print("DEBUG: " + token)
-        //token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
-        //token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
+        // token = "WPC" + type.string.replaceAll("PolygonType.", "") + txt
+        // token =  "SPC" + type.string.replaceAll("PolygonType.", "").replaceAll("WATCH", "WAT") + txt
         let vc = vcSpcWatchMcdMpd()
         if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
             vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
@@ -159,10 +159,10 @@ final class UtilityRadarUI {
         if numberOfPanes == 4 {
             density = 2.0 * Double(ortInt * 2.0) / width
         }
-        //if numberOfPanes == 2 && UtilityUI.isLandscape() {
-            //density = 0.5 * Double(ortInt * 0.5) / width
-            //density = Double(ortInt * 2) / width
-        //}
+        // if numberOfPanes == 2 && UtilityUI.isLandscape() {
+            // density = 0.5 * Double(ortInt * 0.5) / width
+            // density = Double(ortInt * 2) / width
+        // }
         var yMiddle = 0.0
         var xMiddle = 0.0
         if numberOfPanes == 1 {

@@ -41,7 +41,7 @@ final class ObjectNhc: NSObject {
     func getTextData() {
         statusList = []
         let url = GlobalVariables.nwsNhcWebsitePrefix + "/CurrentStorms.json"
-        //let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
+        // let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
         let html = url.getHtml()
         ids = html.parseColumn("\"id\": \"(.*?)\"")
         binNumbers = html.parseColumn("\"binNumber\": \"(.*?)\"")
@@ -50,8 +50,8 @@ final class ObjectNhc: NSObject {
         intensities = html.parseColumn("\"intensity\": \"(.*?)\"")
         pressures = html.parseColumn("\"pressure\": \"(.*?)\"")
         // sample data not quoted for these two
-        //intensities = html.parseColumn("\"intensity\": (.*?),");
-        //pressures = html.parseColumn("\"pressure\": (.*?),");
+        // intensities = html.parseColumn("\"intensity\": (.*?),");
+        // pressures = html.parseColumn("\"pressure\": (.*?),");
         //
         latitudes = html.parseColumn("\"latitude\": \"(.*?)\"")
         longitudes = html.parseColumn("\"longitude\": \"(.*?)\"")

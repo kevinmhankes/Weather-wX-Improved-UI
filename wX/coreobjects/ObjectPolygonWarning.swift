@@ -50,9 +50,9 @@ final class ObjectPolygonWarning {
         .SQW: wXColor.colorsToInt(199, 21, 133),
         .DSW: wXColor.colorsToInt(255, 228, 196),
         .SPS: wXColor.colorsToInt(255, 228, 181)
-        //PolygonType.TOR: wXColor.colorsToInt(243, 85, 243),
-        //PolygonType.TST: wXColor.colorsToInt(255, 255, 0),
-        //PolygonType.FFW: wXColor.colorsToInt(0, 255, 0),
+        // PolygonType.TOR: wXColor.colorsToInt(243, 85, 243),
+        // PolygonType.TST: wXColor.colorsToInt(255, 255, 0),
+        // PolygonType.FFW: wXColor.colorsToInt(0, 255, 0),
     ]
 
     let longName: [PolygonTypeGeneric: String] = [
@@ -60,16 +60,16 @@ final class ObjectPolygonWarning {
         .SQW: "Snow%20Squall%20Warning",
         .DSW: "Dust%20Storm%20Warning",
         .SPS: "Special%20Weather%20Statement"
-        //PolygonType.TOR: "Tornado%20Warning",
-        //PolygonType.TST: "Severe%20Thunderstorm%20Warning",
-        //PolygonType.FFW: "Flash%20Flood%20Warning",
-        //PolygonType.SPS: "Flood%20Warning"
+        // PolygonType.TOR: "Tornado%20Warning",
+        // PolygonType.TST: "Severe%20Thunderstorm%20Warning",
+        // PolygonType.FFW: "Flash%20Flood%20Warning",
+        // PolygonType.SPS: "Flood%20Warning"
     ]
 
     static let polygonList = [
-        //PolygonTypeGeneric.TOR,
-        //PolygonTypeGeneric.TST,
-        //PolygonTypeGeneric.FFW,
+        // PolygonTypeGeneric.TOR,
+        // PolygonTypeGeneric.TST,
+        // PolygonTypeGeneric.FFW,
         PolygonTypeGeneric.SMW,
         PolygonTypeGeneric.SQW,
         PolygonTypeGeneric.DSW,

@@ -168,7 +168,7 @@ final class WXMetalRender {
         drawable: CAMetalDrawable,
         parentModelViewMatrix: float4x4,
         projectionMatrix: float4x4
-        //clearColor: MTLClearColor?
+        // clearColor: MTLClearColor?
     ) {
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
@@ -182,7 +182,7 @@ final class WXMetalRender {
         renderPassDescriptor.colorAttachments[0].storeAction = .store
         let commandBuffer = commandQueue.makeCommandBuffer()
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-        //For now cull mode is used instead of depth buffer
+        // For now cull mode is used instead of depth buffer
         renderEncoder!.setCullMode(MTLCullMode.front)
         renderEncoder!.setRenderPipelineState(pipelineState)
         var projectionMatrixRef = projectionMatrix
@@ -543,7 +543,7 @@ final class WXMetalRender {
         }*/
         totalBins = radarBuffers.generateRadials()
         radarBuffers.setToPositionZero()
-        //self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
+        // self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
         radarBuffers.setCount()
         radarBuffers.generateMtlBuffer(device)
     }
@@ -577,7 +577,7 @@ final class WXMetalRender {
 
     // TODO rename vars
     func constructLocationDot() {
-        var locmarkerAl = [Double]() //locmarkerAl = []
+        var locmarkerAl = [Double]() // locmarkerAl = []
         locdotBuffers.lenInit = PolygonType.LOCDOT.size
         if PolygonType.LOCDOT.display { locmarkerAl = UtilityLocation.getLatLonAsDouble() }
         if RadarPreferences.locdotFollowsGps {

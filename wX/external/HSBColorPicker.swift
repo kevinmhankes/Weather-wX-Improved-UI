@@ -86,7 +86,7 @@ final class HSBColorPicker: UIView {
             let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
             yPos = CGFloat(percentageY) * halfHeight
         } else {
-            //use brightness to get Y
+            // use brightness to get Y
             yPos = halfHeight + halfHeight * (1.0 - brightness)
         }
         let xPos = hue * bounds.width

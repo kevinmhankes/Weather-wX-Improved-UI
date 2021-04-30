@@ -240,6 +240,6 @@ final class UtilityGoes {
         "sr": LatLon(34.653376, -108.677852), // sr Fence Lake, NM
         "sp": LatLon(31.463787, -96.058022), // sp Buffalo, TX
         "smv": LatLon(31.326460, -89.289658), // smv Hattiesburg, MS
-        "se": LatLon(30.332184, -81.655647), // se Jacksonville, FL
+        "se": LatLon(30.332184, -81.655647) // se Jacksonville, FL
     ]
 }

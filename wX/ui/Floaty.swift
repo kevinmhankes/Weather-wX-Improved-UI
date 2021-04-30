@@ -272,11 +272,11 @@ open class Floaty: UIView {
     public init(frame: CGRect, size: CGFloat) {
         super.init(frame: frame)
         self.size = size
-        //self.size = min(frame.size.width, frame.size.height)
+        // self.size = min(frame.size.width, frame.size.height)
         backgroundColor = UIColor.clear
         isCustomFrame = false
-        //setObserver()
-        //setAccessibilityView()
+        // setObserver()
+        // setAccessibilityView()
     }
     
     /**
@@ -660,7 +660,7 @@ open class Floaty: UIView {
         tintLayer.frame = CGRect(x: circleLayer.frame.origin.x, y: circleLayer.frame.origin.y, width: size, height: size)
         tintLayer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
         tintLayer.cornerRadius = size/2
-        //layer.addSublayer(tintLayer)
+        // layer.addSublayer(tintLayer)
     }
     
     fileprivate func setOverlayView() {
@@ -672,8 +672,8 @@ open class Floaty: UIView {
     
     fileprivate func setOverlayFrame() {
         if let superview = superview {
-            //print(superview.bounds.width)
-            //print(superview.bounds.height)
+            // print(superview.bounds.width)
+            // print(superview.bounds.height)
             overlayView.frame = CGRect(
                 x: 0,
                 y: 0,
@@ -747,10 +747,10 @@ open class Floaty: UIView {
     fileprivate func setRightBottomFrame(_ keyboardSize: CGFloat = 0) {
         let horizontalMargin = size
         let verticalMargin = size + keyboardSize
-        //if #available(iOS 11, *) {
+        // if #available(iOS 11, *) {
         //  horizontalMargin += safeAreaInsets.right
         //  verticalMargin += safeAreaInsets.bottom
-        //}
+        // }
         
         if superview == nil {
             frame = CGRect(
@@ -854,9 +854,9 @@ open class Floaty: UIView {
         if sticky == true {
             if let superviews = getAllSuperviews() {
                 for superview in superviews where superview is UIScrollView {
-                    //if superview is UIScrollView {
+                    // if superview is UIScrollView {
                     superview.removeObserver(self, forKeyPath: "contentOffset", context: nil)
-                    //}
+                    // }
                 }
             }
         }
@@ -870,9 +870,9 @@ open class Floaty: UIView {
         if sticky == true {
             if let superviews = getAllSuperviews() {
                 for superview in superviews where superview is UIScrollView {
-                    //if superview is UIScrollView {
+                    // if superview is UIScrollView {
                     superview.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
-                    //}
+                    // }
                 }
             }
         }

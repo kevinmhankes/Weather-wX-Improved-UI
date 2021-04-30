@@ -29,7 +29,7 @@ final class UtilityNetworkIO {
         do {
             return try String(contentsOf: safeUrl, encoding: .ascii)
         } catch _ {
-            //print("Error: \(error)")
+            // print("Error: \(error)")
         }
         return ""
     }

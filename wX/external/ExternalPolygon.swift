@@ -141,7 +141,7 @@ final class ExternalPolygon {
 
         func validate() {
             if vertexes.count < 3 {
-                //throw new RuntimeException("Polygon must have at least 3 points")
+                // throw new RuntimeException("Polygon must have at least 3 points")
             }
         }
     }

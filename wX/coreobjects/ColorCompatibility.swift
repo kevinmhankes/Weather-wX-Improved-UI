@@ -10,14 +10,14 @@ enum ColorCompatibility {
         if #available(iOS 13, *) {
             return .label
         }
-        //return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        // return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     }
     static var secondaryLabel: UIColor {
         if #available(iOS 13, *) {
             return .secondaryLabel
         }
-        //return UIColor(red: 0.9215686274509803, green: 0.9215686274509803, blue: 0.9607843137254902, alpha: 0.6)
+        // return UIColor(red: 0.9215686274509803, green: 0.9215686274509803, blue: 0.9607843137254902, alpha: 0.6)
         return UIColor(red: 0.6215686274509803, green: 0.6215686274509803, blue: 0.6607843137254902, alpha: 1.0)
     }
     static var tertiaryLabel: UIColor {
@@ -66,7 +66,7 @@ enum ColorCompatibility {
         if #available(iOS 13, *) {
             return .systemBackground
         }
-        //return UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        // return UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     static var secondarySystemBackground: UIColor {
@@ -102,7 +102,7 @@ enum ColorCompatibility {
     static var separator: UIColor {
         if #available(iOS 13, *) {
             return .separator
-            //return .systemGray5
+            // return .systemGray5
         }
         return UIColor(red: 0.32941176470588235, green: 0.32941176470588235, blue: 0.34509803921568627, alpha: 0.6)
     }
@@ -157,11 +157,11 @@ enum ColorCompatibility {
     static var highlightText: UIColor {
         if #available(iOS 13, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
-                //return .lightText
-                //return UIColor.yellow
+                // return .lightText
+                // return UIColor.yellow
                 return ColorCompatibility.link
             } else {
-                //return UIColor.blue
+                // return UIColor.blue
                 // rgb(88, 121, 169)
                 // rgb(14, 71, 161)
                 return UIColor(red: 0.054901960784313725, green: 0.2784313725490196, blue: 0.6313725490196078, alpha: 1.0)

@@ -208,8 +208,8 @@ final class UtilityString {
     
     static func parseXmlValue(_ payloadF: String) -> [String] {
         var payload = payloadF
-        payload = UtilityString.replaceAllRegexp(payload, "<name>.*?</name>" , "")
-        payload = UtilityString.replaceAllRegexp(payload, "</value>" , "")
+        payload = UtilityString.replaceAllRegexp(payload, "<name>.*?</name>", "")
+        payload = UtilityString.replaceAllRegexp(payload, "</value>", "")
         return payload.split(GlobalVariables.xml_value_pattern)
     }
 }

@@ -39,7 +39,7 @@ import UIKit
 
 open class ImageScrollView: UIScrollView {
 
-    //static let kZoomInFactorFromMinWhenDoubleTap: CGFloat = 3 // was 2
+    // static let kZoomInFactorFromMinWhenDoubleTap: CGFloat = 3 // was 2
     var kZoomInFactorFromMinWhenDoubleTap: CGFloat = 3.0
     var zoomView: UIImageView?
     var imageSize = CGSize.zero
@@ -112,7 +112,7 @@ open class ImageScrollView: UIScrollView {
         scaleToRestoreAfterResize = zoomScale
         // If we're at the minimum zoom scale, preserve that by returning 0, which will be converted to the minimum
         // allowable scale when the scale is restored.
-        //if scaleToRestoreAfterResize <= minimumZoomScale + CGFloat(FLT_EPSILON) {
+        // if scaleToRestoreAfterResize <= minimumZoomScale + CGFloat(FLT_EPSILON) {
         if scaleToRestoreAfterResize <= minimumZoomScale + CGFloat(Float.ulpOfOne) {
             scaleToRestoreAfterResize = 0
         }
@@ -152,10 +152,10 @@ open class ImageScrollView: UIScrollView {
         zoomView!.addGestureRecognizer(tapGesture)
         // the one line below is what causes image data to reset after another image is shown,
         // add logic to only run first time
-        //if (!imageSized) {
+        // if (!imageSized) {
         configureImageForSize(image.size)
         imageSized = true
-        //}
+        // }
     }
 
     func resetUI() {
@@ -165,14 +165,14 @@ open class ImageScrollView: UIScrollView {
     }
 
     func displayAnim( image: UIImage, anim: AnimationDrawable) {
-        //if (!imageSized) {
+        // if (!imageSized) {
         if let zoomView = zoomView {
             zoomView.removeFromSuperview()
         }
         zoomView = UIImageView(image: image)
         zoomView!.isUserInteractionEnabled = true
         addSubview(zoomView!)
-        //}
+        // }
         zoomView?.animationImages = anim.images
         zoomView?.animationDuration = 3.0
         zoomView?.startAnimating()
@@ -195,11 +195,11 @@ open class ImageScrollView: UIScrollView {
         let xScale = bounds.width / imageSize.width    // the scale needed to perfectly fit the image width-wise
         let yScale = bounds.height / imageSize.height   // the scale needed to perfectly fit the image height-wise
         // fill width if the image and phone are both portrait or both landscape; otherwise take smaller scale
-        //let imagePortrait = imageSize.height > imageSize.width
-        //let phonePortrait = bounds.height >= bounds.width
+        // let imagePortrait = imageSize.height > imageSize.width
+        // let phonePortrait = bounds.height >= bounds.width
         // commenting out the below line and implementing the one below it causes landscape
         // images to be not zoomed in at all
-        //var minScale = (imagePortrait == phonePortrait) ? xScale : min(xScale, yScale)
+        // var minScale = (imagePortrait == phonePortrait) ? xScale : min(xScale, yScale)
         var minScale = min(xScale, yScale)
         let maxScale = maxScaleFromMinScale * minScale
         // don't let minScale exceed maxScale. (If the image is smaller
@@ -231,9 +231,9 @@ open class ImageScrollView: UIScrollView {
 
     fileprivate func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
-        //print(scale)
-        //print(center.x)
-        //print(center.y)
+        // print(scale)
+        // print(center.x)
+        // print(center.y)
         // the zoom rect is in the content view's coordinates.
         // at a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
         // as the zoom scale decreases, so more content is visible, the size of the rect grows.

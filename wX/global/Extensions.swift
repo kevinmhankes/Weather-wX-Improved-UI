@@ -260,7 +260,7 @@ extension UIStackView {
 
 extension UIViewController {
     func goToVC(_ target: UIViewController) {
-        //UtilityActions.goToVc(self, target)
+        // UtilityActions.goToVc(self, target)
         target.modalPresentationStyle = .fullScreen
         present(target, animated: UIPreferences.backButtonAnimation, completion: nil)
     }

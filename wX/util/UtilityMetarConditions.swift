@@ -348,7 +348,7 @@ final class UtilityMetarConditions {
         "Shallow Fog in Vicinity": "fg",
         "Partial Fog in Vicinity": "fg",
         "Patches of Fog in Vicinity": "fg",
-        //"Showers in Vicinity Fog": "fg",
+        // "Showers in Vicinity Fog": "fg",
         "Light Freezing Fog": "fg",
         "Heavy Freezing Fog": "fg",
         "Precipitation and Mist": "fg"

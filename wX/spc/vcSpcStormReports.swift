@@ -43,7 +43,7 @@ final class vcSpcStormReports: UIwXViewController {
 
     // do not do anything
     override func willEnterForeground() {
-        //self.getContent()
+        // self.getContent()
     }
 
     override func getContent() {
@@ -163,17 +163,17 @@ final class vcSpcStormReports: UIwXViewController {
         }
         if tornadoReports == 0 {
             if tornadoHeader != nil {
-                //self.stackView.removeArrangedSubview(tornadoHeader!.view)
+                // self.stackView.removeArrangedSubview(tornadoHeader!.view)
             }
         }
         if windReports == 0 {
             if windHeader != nil {
-                //self.stackView.removeArrangedSubview(windHeader!.view)
+                // self.stackView.removeArrangedSubview(windHeader!.view)
             }
         }
         if hailReports == 0 {
             if hailHeader != nil {
-                //self.stackView.removeArrangedSubview(hailHeader!.view)
+                // self.stackView.removeArrangedSubview(hailHeader!.view)
             }
         }
         let mappedItems = stateList.map { ($0, 1) }
