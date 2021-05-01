@@ -37,30 +37,30 @@ final class vcSevereDashboard: UIwXViewController {
             self.snWat.getBitmaps()
             self.snMpd.getBitmaps()
             DispatchQueue.main.async {
-                if UIAccessibility.isVoiceOverRunning {
-                    UtilityAudio.speakText(self.getStatusText(), self.synthesizer)
-                }
+//                if UIAccessibility.isVoiceOverRunning {
+//                    UtilityAudio.speakText(self.getStatusText(), self.synthesizer)
+//                }
                 self.display()
             }
         }
     }
 
-    func getStatusText() -> String {
-        var spokenText = "Download complete with"
-        let wTor = SevereWarning(.TOR)
-        let wTst = SevereWarning(.TST)
-        let wFfw = SevereWarning(.FFW)
-        let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
-        [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
-            if item != "" {
-                let sArr = item.split(GlobalVariables.newline)
-                let count = String(sArr.count - 1)
-                spokenText += count + titles[index] + " "
-            }
-        }
-        spokenText += String(snMcd.bitmaps.count) + " mcd " + String(snWat.bitmaps.count) + " watch " + String(snMpd.bitmaps.count) + " mpd "
-        return spokenText
-    }
+//    func getStatusText() -> String {
+//        var spokenText = "Download complete with"
+//        let wTor = SevereWarning(.TOR)
+//        let wTst = SevereWarning(.TST)
+//        let wFfw = SevereWarning(.FFW)
+//        let titles = ["Tornado Warnings ", "Severe Thunderstorm Warnings ", "Flash Flood Warnings "]
+//        [wTor.text, wTst.text, wFfw.text].enumerated().forEach { index, item in
+//            if item != "" {
+//                let sArr = item.split(GlobalVariables.newline)
+//                let count = String(sArr.count - 1)
+//                spokenText += count + titles[index] + " "
+//            }
+//        }
+//        spokenText += String(snMcd.bitmaps.count) + " mcd " + String(snWat.bitmaps.count) + " watch " + String(snMpd.bitmaps.count) + " mpd "
+//        return spokenText
+//    }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if buttonActions[sender.data].hasPrefix("WPCMPD") {

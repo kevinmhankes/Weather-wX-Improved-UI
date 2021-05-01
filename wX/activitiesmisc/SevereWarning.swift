@@ -7,8 +7,8 @@
 final class SevereWarning {
 
     // text for TTS
-    var text = ""
-    var count = 0
+    // var text = ""
+    // var count = 0
     private let type: PolygonEnum
     var warnings = [String]()
     // var listOfWfo = [String]()
@@ -68,23 +68,23 @@ final class SevereWarning {
         warningList = ObjectWarning.parseJson(html)
         
         //text = ""
-        count = 0
+        //count = 0
         let data = html.replace("\n", "").replace(" ", "")
         listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
         warnings = html.parseColumn(GlobalVariables.vtecPattern)
-        warnings.enumerated().forEach { index, warning in
-            let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
-            if !warning.startsWith("O.EXP") && vtecIsCurrent {
-                count += 1
-                //let radarSite = getClosestRadar(index)
-                //listOfWfo.append(radarSite)
-                //let location = Utility.getWfoSiteName(radarSite)
-                // text += "  " + location + GlobalVariables.newline
-                text += "  " + GlobalVariables.newline
-            } else {
-                //listOfWfo.append("")
-            }
-        }
+//        warnings.enumerated().forEach { index, warning in
+//            let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
+//            if !warning.startsWith("O.EXP") && vtecIsCurrent {
+//                count += 1
+//                //let radarSite = getClosestRadar(index)
+//                //listOfWfo.append(radarSite)
+//                //let location = Utility.getWfoSiteName(radarSite)
+//                // text += "  " + location + GlobalVariables.newline
+//                text += "  " + GlobalVariables.newline
+//            } else {
+//                //listOfWfo.append("")
+//            }
+//        }
     }
     
     func getCount() -> String {
