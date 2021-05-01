@@ -77,9 +77,9 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
         [wTor, wTst, wFfw].forEach { severeWarning in
-            _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
-            for w in severeWarning.warningList {
-                if severeWarning.getCount() > 0 {
+            if severeWarning.getCount() > 0 {
+                _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
+                for w in severeWarning.warningList {
                     if w.isCurrent {
                         let radarSite = w.getClosestRadar()
                         _ = ObjectCardDashAlertItem(
