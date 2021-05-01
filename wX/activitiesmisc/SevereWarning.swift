@@ -10,7 +10,7 @@ final class SevereWarning {
     var count = 0
     private let type: PolygonEnum
     var warnings = [String]()
-    var listOfWfo = [String]()
+    // var listOfWfo = [String]()
     private var listOfPolygonRaw = [String]()
     var warningList = [ObjectWarning]()
 
@@ -76,11 +76,11 @@ final class SevereWarning {
             if !warning.startsWith("O.EXP") && vtecIsCurrent {
                 count += 1
                 let radarSite = getClosestRadar(index)
-                listOfWfo.append(radarSite)
+                //listOfWfo.append(radarSite)
                 let location = Utility.getWfoSiteName(radarSite)
                 text += "  " + location + GlobalVariables.newline
             } else {
-                listOfWfo.append("")
+                //listOfWfo.append("")
             }
         }
     }
