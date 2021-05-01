@@ -80,7 +80,7 @@ final class vcSevereDashboard: UIwXViewController {
             if warningType.text != "" {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
                 for w in warningType.warningList {
-                    if warningType.warnings.count > 0 {
+                    //if warningType.warnings.count > 0 {
                         if w.isCurrent {
                             let radarSite = w.getClosestRadar()
                             _ = ObjectCardDashAlertItem(
@@ -91,11 +91,11 @@ final class vcSevereDashboard: UIwXViewController {
                                 UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
                             )
                         }
-                    }
+                    //}
                 }
             }
         }
-        if wTor.eventList.count > 0 || wTst.eventList.count > 0 || wFfw.eventList.count > 0 {
+        if wTor.getCount() > 0 || wTst.getCount() > 0 || wFfw.getCount() > 0 {
             statusWarnings = "(" + wTor.getCount() + "," + wTst.getCount() + "," + wFfw.getCount() + ")"
         } else {
             statusWarnings = ""

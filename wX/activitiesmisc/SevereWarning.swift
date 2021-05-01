@@ -9,12 +9,6 @@ final class SevereWarning {
     var text = ""
     var count = 0
     private let type: PolygonEnum
-    var idList = [String]()
-    var areaDescList = [String]()
-    var effectiveList = [String]()
-    var expiresList = [String]()
-    var eventList = [String]()
-    var senderNameList = [String]()
     var warnings = [String]()
     var listOfWfo = [String]()
     private var listOfPolygonRaw = [String]()
@@ -23,10 +17,6 @@ final class SevereWarning {
     init(_ type: PolygonEnum) {
         self.type = type
         generateString()
-    }
-
-    func getCount() -> Int {
-        count
     }
 
     func getName() -> String {
@@ -78,12 +68,6 @@ final class SevereWarning {
         
         text = ""
         count = 0
-        idList = html.parseColumn("\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"")
-        areaDescList = html.parseColumn("\"areaDesc\": \"(.*?)\"")
-        effectiveList = html.parseColumn("\"effective\": \"(.*?)\"")
-        expiresList = html.parseColumn("\"expires\": \"(.*?)\"")
-        eventList = html.parseColumn("\"event\": \"(.*?)\"")
-        senderNameList = html.parseColumn("\"senderName\": \"(.*?)\"")
         let data = html.replace("\n", "").replace(" ", "")
         listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
         warnings = html.parseColumn(GlobalVariables.vtecPattern)
@@ -109,5 +93,15 @@ final class SevereWarning {
             }
         }
         return String(i)
+    }
+    
+    func getCount() -> Int {
+        var i = 0
+        for s in warningList {
+            if s.isCurrent {
+                i += 1
+            }
+        }
+        return i
     }
 }
