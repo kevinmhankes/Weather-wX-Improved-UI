@@ -10,9 +10,9 @@ final class SevereWarning {
     // var text = ""
     // var count = 0
     private let type: PolygonEnum
-    var warnings = [String]()
+    //var warnings = [String]()
     // var listOfWfo = [String]()
-    private var listOfPolygonRaw = [String]()
+    //private var listOfPolygonRaw = [String]()
     var warningList = [ObjectWarning]()
 
     init(_ type: PolygonEnum) {
@@ -33,23 +33,23 @@ final class SevereWarning {
         }
     }
 
-    private func getClosestRadar(_ index: Int) -> String {
-        let data = listOfPolygonRaw[index].replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
-        let points = data.split(" ")
-        // From CapAlert
-        if points.count > 2 {
-            let lat = points[1]
-            let lon = "-" + points[0]
-            let radarSites = UtilityLocation.getNearestRadarSites(LatLon(lat, lon), 1, includeTdwr: false)
-            if radarSites.isEmpty {
-                return ""
-            } else {
-                return radarSites[0].name
-            }
-        } else {
-            return ""
-        }
-    }
+//    private func getClosestRadar(_ index: Int) -> String {
+//        let data = listOfPolygonRaw[index].replace("[", "").replace("]", "").replace(",", " ").replace("-", "")
+//        let points = data.split(" ")
+//        // From CapAlert
+//        if points.count > 2 {
+//            let lat = points[1]
+//            let lon = "-" + points[0]
+//            let radarSites = UtilityLocation.getNearestRadarSites(LatLon(lat, lon), 1, includeTdwr: false)
+//            if radarSites.isEmpty {
+//                return ""
+//            } else {
+//                return radarSites[0].name
+//            }
+//        } else {
+//            return ""
+//        }
+//    }
 
     func generateString() {
 //        let html: String
@@ -69,9 +69,9 @@ final class SevereWarning {
         
         //text = ""
         //count = 0
-        let data = html.replace("\n", "").replace(" ", "")
-        listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
-        warnings = html.parseColumn(GlobalVariables.vtecPattern)
+        //let data = html.replace("\n", "").replace(" ", "")
+        //listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
+        //warnings = html.parseColumn(GlobalVariables.vtecPattern)
 //        warnings.enumerated().forEach { index, warning in
 //            let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
 //            if !warning.startsWith("O.EXP") && vtecIsCurrent {
