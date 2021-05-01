@@ -76,22 +76,20 @@ final class vcSevereDashboard: UIwXViewController {
         let wTor = SevereWarning(.TOR)
         let wTst = SevereWarning(.TST)
         let wFfw = SevereWarning(.FFW)
-        [wTor, wTst, wFfw].forEach { warningType in
-            if warningType.text != "" {
-                _ = ObjectCardBlackHeaderText(self, "(" + String(warningType.getCount()) + ") " + warningType.getName())
-                for w in warningType.warningList {
-                    //if warningType.warnings.count > 0 {
-                        if w.isCurrent {
-                            let radarSite = w.getClosestRadar()
-                            _ = ObjectCardDashAlertItem(
-                                self,
-                                w,
-                                UITapGestureRecognizerWithData(w.url, self, #selector(goToAlert(sender:))),
-                                UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:))),
-                                UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
-                            )
-                        }
-                    //}
+        [wTor, wTst, wFfw].forEach { severeWarning in
+            _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
+            for w in severeWarning.warningList {
+                if severeWarning.getCount() > 0 {
+                    if w.isCurrent {
+                        let radarSite = w.getClosestRadar()
+                        _ = ObjectCardDashAlertItem(
+                            self,
+                            w,
+                            UITapGestureRecognizerWithData(w.url, self, #selector(goToAlert(sender:))),
+                            UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:))),
+                            UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
+                        )
+                    }
                 }
             }
         }

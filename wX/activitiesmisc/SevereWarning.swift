@@ -6,6 +6,7 @@
 
 final class SevereWarning {
 
+    // text for TTS
     var text = ""
     var count = 0
     private let type: PolygonEnum
@@ -66,7 +67,7 @@ final class SevereWarning {
         let html = ObjectWarning.getBulkData(type)
         warningList = ObjectWarning.parseJson(html)
         
-        text = ""
+        //text = ""
         count = 0
         let data = html.replace("\n", "").replace(" ", "")
         listOfPolygonRaw = data.parseColumn(GlobalVariables.warningLatLonPattern)
@@ -75,10 +76,11 @@ final class SevereWarning {
             let vtecIsCurrent = UtilityTime.isVtecCurrent(warning)
             if !warning.startsWith("O.EXP") && vtecIsCurrent {
                 count += 1
-                let radarSite = getClosestRadar(index)
+                //let radarSite = getClosestRadar(index)
                 //listOfWfo.append(radarSite)
-                let location = Utility.getWfoSiteName(radarSite)
-                text += "  " + location + GlobalVariables.newline
+                //let location = Utility.getWfoSiteName(radarSite)
+                // text += "  " + location + GlobalVariables.newline
+                text += "  " + GlobalVariables.newline
             } else {
                 //listOfWfo.append("")
             }
