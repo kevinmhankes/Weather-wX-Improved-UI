@@ -1,6 +1,6 @@
 
 
-56127 2021_04_06 
+56127 2021_05_06 [FIX] remove Canada radar as EC is no longer offering static images
 56126 2021_04_05 [FIX] lint
 		 [REF] avoid using str and string as var names
 		 [ADD] if only 2 images showing in severe dashboard, make them larger

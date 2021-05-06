@@ -295,10 +295,11 @@ final class UtilityDownload {
                     rid = "CAN"
                 }
                 switch rid {
-                case "CAN", "PAC", "WRN", "ONT", "QUE", "ERN":
-                    bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
+//                case "CAN", "PAC", "WRN", "ONT", "QUE", "ERN":
+//                    bitmap = UtilityCanadaImg.getRadarMosaicBitmapOptionsApplied(rid)
                 default:
-                    bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(rid, "")
+                    // bitmap = UtilityCanadaImg.getRadarBitmapOptionsApplied(rid, "")
+                    bitmap = Bitmap()
                 }
             }
         case "WEATHERSTORY":

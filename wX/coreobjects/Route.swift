@@ -40,23 +40,23 @@ final class Route {
     }
     
     static func radarMosaicLocal(_ uiv: UIViewController) {
-        if Location.isUS {
-            if !UIPreferences.useAwcRadarMosaic {
-                // let vc = vcRadarMosaic()
-                // vc.nwsMosaicType = "local"
-                // uiv.goToVC(vc)
-            } else {
-                let vc = vcRadarMosaicAwc()
-                vc.nwsMosaicType = "local"
-                uiv.goToVC(vc)
-            }
+        // if Location.isUS {
+        if !UIPreferences.useAwcRadarMosaic {
+            // let vc = vcRadarMosaic()
+            // vc.nwsMosaicType = "local"
+            // uiv.goToVC(vc)
         } else {
-            let prov = Location.getProv(Location.getLocationIndex)
-            let vc = vcCanadaRadar()
-            vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
-            vc.caRadarImageType = "radar"
+            let vc = vcRadarMosaicAwc()
+            vc.nwsMosaicType = "local"
             uiv.goToVC(vc)
         }
+//        } else {
+//            let prov = Location.getProv(Location.getLocationIndex)
+//            let vc = vcCanadaRadar()
+//            vc.caRadarProvince = UtilityCanada.getECSectorFromProvidence(prov)
+//            vc.caRadarImageType = "radar"
+//            uiv.goToVC(vc)
+//        }
     }
     
     static func radarMosaic(_ uiv: UIViewController) {
@@ -76,11 +76,11 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func visCanada(_ uiv: UIViewController) {
-        let vc = vcCanadaRadar()
-        vc.caRadarImageType = "vis"
-        uiv.goToVC(vc)
-    }
+//    static func visCanada(_ uiv: UIViewController) {
+//        let vc = vcCanadaRadar()
+//        vc.caRadarImageType = "vis"
+//        uiv.goToVC(vc)
+//    }
     
     static func goesWaterVapor(_ uiv: UIViewController) {
         let vc = vcGoes()
@@ -171,11 +171,15 @@ final class Route {
     }
     
     static func radarFromMainScreen(_ uiv: UIViewController) {
-        if !Location.isUS {
-            radarCanada(uiv)
+//        if !Location.isUS {
+//            radarCanada(uiv)
+//        } else {
+        if UIPreferences.dualpaneRadarIcon {
+            radar(uiv, "2")
         } else {
-            if UIPreferences.dualpaneRadarIcon { radar(uiv, "2") } else { radar(uiv, "1") }
+            radar(uiv, "1")
         }
+        // }
     }
     
     static func radar(_ uiv: UIViewController, _ paneString: String) {
@@ -199,12 +203,12 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func radarCanada(_ uiv: UIViewController) {
-        let vc = vcCanadaRadar()
-        vc.caRadarImageType = "radar"
-        vc.caRadarProvince = ""
-        uiv.goToVC(vc)
-    }
+//    static func radarCanada(_ uiv: UIViewController) {
+//        let vc = vcCanadaRadar()
+//        vc.caRadarImageType = "radar"
+//        vc.caRadarProvince = ""
+//        uiv.goToVC(vc)
+//    }
     
     static func map(_ uiv: UIwXViewController, _ lat: String, _ lon: String, radius: Double = 20000.0) {
         let vc = vcMapKitView()
@@ -244,11 +248,11 @@ final class Route {
     }
     
     static func cloud(_ uiv: UIViewController) {
-        if Location.isUS {
-            vis(uiv)
-        } else {
-            visCanada(uiv)
-        }
+        // if Location.isUS {
+        vis(uiv)
+//        } else {
+//            visCanada(uiv)
+//        }
     }
     
     static func wfoText(_ uiv: UIViewController) {

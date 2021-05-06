@@ -73,7 +73,6 @@
 		0340421123F16D23003AB242 /* vcModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421023F16D23003AB242 /* vcModels.swift */; };
 		0340421623F16DCC003AB242 /* vcCanadaHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421223F16DCB003AB242 /* vcCanadaHourly.swift */; };
 		0340421723F16DCC003AB242 /* vcCanadaWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421323F16DCB003AB242 /* vcCanadaWarnings.swift */; };
-		0340421823F16DCC003AB242 /* vcCanadaRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421423F16DCB003AB242 /* vcCanadaRadar.swift */; };
 		0340421923F16DCC003AB242 /* vcCanadaText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421523F16DCC003AB242 /* vcCanadaText.swift */; };
 		0340421B23F16E81003AB242 /* vcPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421A23F16E81003AB242 /* vcPlayList.swift */; };
 		0340422E23F16FC3003AB242 /* vcSevereDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340421C23F16FC2003AB242 /* vcSevereDashboard.swift */; };
@@ -231,7 +230,6 @@
 		F02DF2551EB89FCF00A951EA /* ObjectCanadaLegal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DF2541EB89FCF00A951EA /* ObjectCanadaLegal.swift */; };
 		F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F031265C1DB84C1E009D6CF2 /* StackView.swift */; };
 		F03F6FAA1E0D3E4D00E4B7FA /* UtilityLightning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F6FA91E0D3E4D00E4B7FA /* UtilityLightning.swift */; };
-		F04378BD1E0F060100C0A252 /* UtilityCanadaImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04378BC1E0F060100C0A252 /* UtilityCanadaImg.swift */; };
 		F057A0A01DC2B0AF00521C8F /* UtilityModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F057A09F1DC2B0AF00521C8F /* UtilityModels.swift */; };
 		F05806751DB187FB009E2786 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05806741DB187FB009E2786 /* ImageScrollView.swift */; };
 		F059990F1EB422D200EECC32 /* ObjectAlertSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */; };
@@ -470,7 +468,6 @@
 		0340421023F16D23003AB242 /* vcModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcModels.swift; sourceTree = "<group>"; };
 		0340421223F16DCB003AB242 /* vcCanadaHourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcCanadaHourly.swift; sourceTree = "<group>"; };
 		0340421323F16DCB003AB242 /* vcCanadaWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcCanadaWarnings.swift; sourceTree = "<group>"; };
-		0340421423F16DCB003AB242 /* vcCanadaRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcCanadaRadar.swift; sourceTree = "<group>"; };
 		0340421523F16DCC003AB242 /* vcCanadaText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcCanadaText.swift; sourceTree = "<group>"; };
 		0340421A23F16E81003AB242 /* vcPlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcPlayList.swift; sourceTree = "<group>"; };
 		0340421C23F16FC2003AB242 /* vcSevereDashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSevereDashboard.swift; sourceTree = "<group>"; };
@@ -630,7 +627,6 @@
 		F02DF2541EB89FCF00A951EA /* ObjectCanadaLegal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCanadaLegal.swift; sourceTree = "<group>"; };
 		F031265C1DB84C1E009D6CF2 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		F03F6FA91E0D3E4D00E4B7FA /* UtilityLightning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityLightning.swift; sourceTree = "<group>"; };
-		F04378BC1E0F060100C0A252 /* UtilityCanadaImg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanadaImg.swift; sourceTree = "<group>"; };
 		F057A09F1DC2B0AF00521C8F /* UtilityModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModels.swift; sourceTree = "<group>"; };
 		F05806741DB187FB009E2786 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAlertSummary.swift; sourceTree = "<group>"; };
@@ -936,9 +932,7 @@
 			children = (
 				F06B98CE1E0E93B800EFF7FC /* UtilityCanada.swift */,
 				F06B98D21E0EAD1800EFF7FC /* UtilityCanadaHourly.swift */,
-				F04378BC1E0F060100C0A252 /* UtilityCanadaImg.swift */,
 				0340421223F16DCB003AB242 /* vcCanadaHourly.swift */,
-				0340421423F16DCB003AB242 /* vcCanadaRadar.swift */,
 				0340421523F16DCC003AB242 /* vcCanadaText.swift */,
 				0340421323F16DCB003AB242 /* vcCanadaWarnings.swift */,
 			);
@@ -1850,9 +1844,7 @@
 				034041DB23F162A4003AB242 /* vcWpcRainfallSummary.swift in Sources */,
 				0329E307241BBA84005E0766 /* UtilityRadar.swift in Sources */,
 				F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */,
-				F04378BD1E0F060100C0A252 /* UtilityCanadaImg.swift in Sources */,
 				F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */,
-				0340421823F16DCC003AB242 /* vcCanadaRadar.swift in Sources */,
 				034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */,
 				035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */,
 				03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */,
