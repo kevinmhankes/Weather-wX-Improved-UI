@@ -94,5 +94,6 @@ final class Utility {
 
     static func showDiagnostics() -> String {
         GlobalVariables.newline + "Is Tablet?: " + String(UtilityUI.isTablet()) + GlobalVariables.newline + GlobalVariables.forecastZone
+        + "native screen scale: " + String(UtilityUI.getNativeScreenScale()) + GlobalVariables.newline + "screen scale: " + String(UtilityUI.getScreenScale())
     }
 }
