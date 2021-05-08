@@ -34,6 +34,4 @@
 // [ADD] nexrad - add more parallelism for polygon downloads
 // [REF] scan for closure without proper spaces
 // [REF] remove -> Void from closures
-// [ADD] wxglpolygon need vtec check on top method like bottom
-// [ADD] ObjectWarning
-
+// [FIX] pan motion behaves differently on different classes of device (tracks 1:1 on 2018 base ipad, etc)
