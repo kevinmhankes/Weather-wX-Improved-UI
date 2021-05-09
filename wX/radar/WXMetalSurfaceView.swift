@@ -33,7 +33,7 @@ final class WXMetalSurfaceView {
                     let xDelta = Float(($0!.lastPanLocation.x - pointInView.x) / uiv.view.bounds.width) * panSensitivity
                     let yDelta = Float(($0!.lastPanLocation.y - pointInView.y) / uiv.view.bounds.height) * panSensitivity
                     $0!.xPos -= xDelta
-                    $0!.yPos += yDelta
+                    $0!.yPos += yDelta * Float((uiv.view.bounds.height / uiv.view.bounds.width))
                     $0!.lastPanLocation = pointInView
                 } else if gestureRecognizer.state == UIGestureRecognizer.State.began {
                     $0!.lastPanLocation = gestureRecognizer.location(in: uiv.view)
