@@ -53,8 +53,6 @@ final class ObjectWarning {
             self.isCurrent = false
         }
     }
-
-    // static func getCount(_ data: String) -> String {
     
     static func getBulkData(_ type1: PolygonEnum) -> String {
         var html = ""
@@ -71,10 +69,8 @@ final class ObjectWarning {
     }
     
     static func parseJson(_ htmlF: String) -> [ObjectWarning] {
-        
         var html = htmlF
         html = html.replace("\"geometry\": null,", "\"geometry\": null, \"coordinates\":[[]]}")
-        
         var warnings = [ObjectWarning]()
         let urlList = UtilityString.parseColumn(html, "\"id\": \"(https://api.weather.gov/alerts/urn.*?)\"")
         let titleList = UtilityString.parseColumn(html, "\"description\": \"(.*?)\"")
@@ -89,7 +85,6 @@ final class ObjectWarning {
         let listOfPolygonRaw = UtilityString.parseColumn(data, GlobalVariables.warningLatLonPattern)
         let vtecs = UtilityString.parseColumn(html, GlobalVariables.vtecPattern)
         let geometryList = UtilityString.parseColumn(html, "\"geometry\": (.*?),")
-        // count = len(idList)
         for index in urlList.indices {
             warnings.append(ObjectWarning(
                 Utility.safeGet(urlList, index),
@@ -114,6 +109,23 @@ final class ObjectWarning {
         data = data.replace(",", " ")
         data = data.replace("-", "")
         let points = data.split(" ")
+        return ObjectWarning.getClosestRadarCompute(points)
+//        if points.count > 2 {
+//            let lat = points[1]
+//            let lon = "-" + points[0]
+//            let latLon = LatLon(lat, lon)
+//            let radarSites = UtilityLocation.getNearestRadarSites(latLon, 1, includeTdwr: false)
+//            if radarSites.count == 0 {
+//                return ""
+//            } else {
+//                return radarSites[0].name
+//            }
+//        } else {
+//            return ""
+//        }
+    }
+    
+    static func getClosestRadarCompute(_ points: [String]) -> String {
         if points.count > 2 {
             let lat = points[1]
             let lon = "-" + points[0]
