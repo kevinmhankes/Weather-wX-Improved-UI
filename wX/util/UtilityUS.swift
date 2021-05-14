@@ -46,14 +46,14 @@ final class UtilityUS {
     }
 
     static func get7DayExt(_ rawData: [String]) -> String {
-        var timeP12n13List = Array(repeating: "", count: 14)
-        var weatherSummaries = Array(repeating: "", count: 14)
+        // var timeP12n13List = Array(repeating: "", count: 14)
+        // var weatherSummaries = Array(repeating: "", count: 14)
         let forecast = UtilityString.parseXml(rawData[11], "text")
 
-        weatherSummaries = UtilityString.parseColumn(rawData[18], GlobalVariables.utilUS_weather_summary_pattern)
-        weatherSummaries.insert("", at: 0)
+        // weatherSummaries = UtilityString.parseColumn(rawData[18], GlobalVariables.utilUS_weather_summary_pattern)
+        // weatherSummaries.insert("", at: 0)
 
-        timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUS_period_name_pattern)
+        var timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUS_period_name_pattern)
         timeP12n13List.insert("", at: 0)
 
         var forecastString = ""
