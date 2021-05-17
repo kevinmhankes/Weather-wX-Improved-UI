@@ -76,18 +76,6 @@ final class CapAlert {
 
     func getClosestRadar() -> String {
         return ObjectWarning.getClosestRadarCompute(points)
-//        if points.count > 2 {
-//            let lat = points[1]
-//            let lon = "-" + points[0]
-//            let radarSites = UtilityLocation.getNearestRadarSites(LatLon(lat, lon), 1, includeTdwr: false)
-//            if radarSites.isEmpty {
-//                return ""
-//            } else {
-//                return radarSites[0].name
-//            }
-//        } else {
-//            return ""
-//        }
     }
 
     private func getWarningsFromJson(_ html: String) -> [String] {

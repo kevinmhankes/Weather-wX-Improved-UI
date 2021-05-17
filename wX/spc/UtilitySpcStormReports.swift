@@ -7,18 +7,7 @@
 final class UtilitySpcStormReports {
 
     static func process(_ lines: [String]) -> [StormReport] {
-//        var output = ""
         var stormReports = [StormReport]()
-//        var lineChunks = [String]()
-//        var lat = ""
-//        var lon = ""
-//        var state = ""
-//        var time = ""
-//        var address = ""
-//        var damageReport = ""
-//        var magnitude = ""
-//        var city = ""
-//        var damageHeader = ""
         lines.forEach { line in
             var lat = ""
             var  lon = ""

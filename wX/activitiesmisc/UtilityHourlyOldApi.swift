@@ -47,30 +47,22 @@ final class UtilityHourlyOldApi {
             time2List[j] = time2List[j].replace("00:00", "00")
 
             let timeSplit: [String] = time2List[j].split(" ")
-            // time_split2 = time_split[0].split("/") pre 2017
             let timeSplit2: [String] = timeSplit[0].split("-")
             let month: Int = Int(timeSplit2[0]) ?? 0
             let day: Int = Int(timeSplit2[1]) ?? 0
-            var dayOfTheWeek: String = ""
-            // month -= 1
-            dayOfTheWeek = UtilityTime.dayOfWeek(year, month, day)
-
+            let dayOfTheWeek = UtilityTime.dayOfWeek(year, month, day)
             var temp3Val: String = "."
             var temp4Val: String = "."
             var temp5Val: String = "."
-
             if temp2Len == temp3Len {
                temp3Val = temp3List[j]
             }
-
             if temp2Len == temp4Len {
                temp4Val = temp4List[j]
             }
-
             if temp2Len == temp5Len {
                temp5Val = temp5List[j]
             }
-
             time2List[j] = time2List[j].replace(":00", "")
             time2List[j] = time2List[j].strip()
 
@@ -82,7 +74,6 @@ final class UtilityHourlyOldApi {
             sb += temp5Val.ljust(6)
             sb += GlobalVariables.newline
         }
-        // print(sb)
         return sb
     }
 }
