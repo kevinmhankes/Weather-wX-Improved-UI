@@ -50,9 +50,13 @@ final class Level2Metal {
             var numberOfRadials = 720
             let rIdx = 1
             days.position = 0
-            days.putSignedShort(Int16(highReflectivity[rIdx].dataJulianDate))
-            msecs.position = 0
-            msecs.putInt(Int32(highReflectivity[rIdx].dataMsecs))
+            
+            if highReflectivity.count > rIdx {
+                days.putSignedShort(Int16(highReflectivity[rIdx].dataJulianDate))
+                msecs.position = 0
+                msecs.putInt(Int32(highReflectivity[rIdx].dataMsecs))
+            }
+            
             if numberOfRadials > highReflectivity.count {
                 numberOfRadials = highReflectivity.count
             }

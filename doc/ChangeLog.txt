@@ -1,8 +1,9 @@
 
 
-56127 2021_05_16 [FIX] remove Canada radar as EC is no longer offering static images
+56127 2021_05_18 [FIX] remove Canada radar as EC is no longer offering static images
 		 [FIX] SPC SREF was not showing old runs after SPC made a minor change to their HTML code
 		 [FIX] Nexrad vertical pan with finger was not dragging correctly (screen was not in sync with finger location)
+		 [FIX] Nexrad radar would crash on Level 2 data files that were malformed
 		 [REF] refactor getClosestRadar in CapAlert and ObjectWarning
 		 [ADD] NOAA has made changes to GLCFS https://www.glerl.noaa.gov/res/glcfs which required changes to wX
 56126 2021_04_05 [FIX] lint
