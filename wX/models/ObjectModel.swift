@@ -288,12 +288,13 @@ final public class ObjectModel {
             times = []
             stride(from: 0, to: 85, by: 3).forEach { times.append(String(format: "%03d", $0)) }
             setupListRunZ()
-        case "NCEP:HRW-NMMB":
-            params = UtilityModelNcepInterface.modelHrwNmmParams
-            paramLabels = UtilityModelNcepInterface.modelHrwNmmLabels
+        case "NCEP:HRW-FV3":
+            params = UtilityModelNcepInterface.modelHrwFv3Params
+            paramLabels = UtilityModelNcepInterface.modelHrwFv3Labels
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times = []
-            (0...48).forEach { times.append(String(format: "%03d", $0)) }
+            (1...48).forEach { times.append(String(format: "%03d", $0)) }
+            stride(from: 51, to: 61, by: 3).forEach { times.append(String(format: "%03d", $0)) }
             runs = []
             runs.append("00Z")
             runs.append("12Z")
@@ -303,7 +304,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelHrwNmmLabels
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times = []
-            (0...48).forEach { times.append(String(format: "%03d", $0)) }
+            (1...48).forEach { times.append(String(format: "%03d", $0)) }
             runs = []
             runs.append("00Z")
             runs.append("12Z")
@@ -313,7 +314,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.labelsHrwArw2
             sectors = UtilityModelNcepInterface.sectorsHrwArw2
             times = []
-            (0...48).forEach { times.append(String(format: "%03d", $0)) }
+            (1...48).forEach { times.append(String(format: "%03d", $0)) }
             runs = []
             runs.append("00Z")
             runs.append("12Z")
