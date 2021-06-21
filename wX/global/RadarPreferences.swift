@@ -48,6 +48,7 @@ final class RadarPreferences {
     static var nexradRadarBackgroundColor = 0
     static var wxoglCenterOnLocation = false
     static var radarShowWpcFronts = false
+    static var showRadarWhenPan = true
 
     static func initialize() {
         if UtilityUI.isTablet() {
@@ -105,5 +106,6 @@ final class RadarPreferences {
         nexradRadarBackgroundColor = Utility.readPref("NEXRAD_RADAR_BACKGROUND_COLOR", Color.rgb(0, 0, 0))
         wxoglCenterOnLocation = Utility.readPref("RADAR_CENTER_ON_LOCATION", "false").hasPrefix("t")
         radarShowWpcFronts = Utility.readPref("RADAR_SHOW_WPC_FRONTS", "false").hasPrefix("t")
+        showRadarWhenPan = Utility.readPref("SHOW_RADAR_WHEN_PAN", "true").hasPrefix("t")
     }
 }

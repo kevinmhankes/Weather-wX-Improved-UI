@@ -23,6 +23,9 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }
     
     func initialize() {
+        if !RadarPreferences.showRadarWhenPan {
+            honorDisplayHold = true
+        }
         if rd.productCode == 37 || rd.productCode == 38 || rd.productCode == 41 || rd.productCode == 57 {
             if floatBuffer.capacity < (48 * 464 * 464) {
                 floatBuffer = MemoryBuffer(48 * 464 * 464)

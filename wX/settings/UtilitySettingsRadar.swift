@@ -38,7 +38,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_DSW": "Dust Storm Warning",
         "RADAR_SHOW_SPS": "Special Weather Statement",
         "RADAR_CENTER_ON_LOCATION": "Center radar on location",
-        "RADAR_SHOW_WPC_FRONTS": "WPC Fronts and pressure highs and lows"
+        "RADAR_SHOW_WPC_FRONTS": "WPC Fronts and pressure highs and lows",
+        "SHOW_RADAR_WHEN_PAN": "Show radar during a pan/drag motion"
     ]
 
     #if !targetEnvironment(macCatalyst)
@@ -75,7 +76,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_DSW": "false",
         "RADAR_SHOW_SPS": "false",
         "RADAR_CENTER_ON_LOCATION": "false",
-        "RADAR_SHOW_WPC_FRONTS": "false"
+        "RADAR_SHOW_WPC_FRONTS": "false",
+        "SHOW_RADAR_WHEN_PAN": "true"
     ]
     #endif
     #if targetEnvironment(macCatalyst)
@@ -112,7 +114,8 @@ final class UtilitySettingsRadar {
         "RADAR_SHOW_DSW": "false",
         "RADAR_SHOW_SPS": "false",
         "RADAR_CENTER_ON_LOCATION": "false",
-        "RADAR_SHOW_WPC_FRONTS": "false"
+        "RADAR_SHOW_WPC_FRONTS": "false",
+        "SHOW_RADAR_WHEN_PAN": "true"
     ]
     #endif
 
