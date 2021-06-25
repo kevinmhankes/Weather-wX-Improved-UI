@@ -22,23 +22,23 @@ final class vcSettingsAbout: UIwXViewController {
         + "as the GNU General Public License Version 3 or later. "
         + "For more information on the licenses please go here: https://www.mozilla.org/en-US/MPL/2.0/"
         + " and http://www.gnu.org/licenses/gpl-3.0.en.html" + GlobalVariables.newline
-        + "Keyboard shortcuts: " + GlobalVariables.newline + GlobalVariables.newline
-        + "r: Nexrad radar" + GlobalVariables.newline
-        + "d: Severe Dashboard" + GlobalVariables.newline
-        + "c: GOES viewer" + GlobalVariables.newline
-        + "a: Location text product viewer" + GlobalVariables.newline
-        + "m: open menu" + GlobalVariables.newline
-        + "2: Dual pane nexrad radar" + GlobalVariables.newline
-        + "4: Quad pane nexrad radar" + GlobalVariables.newline
-        + "w: US Alerts" + GlobalVariables.newline
-        + "s: Settings" + GlobalVariables.newline
-        + "e: SPC Mesoanalysis" + GlobalVariables.newline
-        + "n: NCEP Models" + GlobalVariables.newline
-        + "h: Hourly forecast" + GlobalVariables.newline
-        + "t: NHC" + GlobalVariables.newline
-        + "l: Lightning" + GlobalVariables.newline
-        + "i: National images" + GlobalVariables.newline
-        + "z: National text discussions" + GlobalVariables.newline
+//        + "Keyboard shortcuts: " + GlobalVariables.newline + GlobalVariables.newline
+//        + "r: Nexrad radar" + GlobalVariables.newline
+//        + "d: Severe Dashboard" + GlobalVariables.newline
+//        + "c: GOES viewer" + GlobalVariables.newline
+//        + "a: Location text product viewer" + GlobalVariables.newline
+//        + "m: open menu" + GlobalVariables.newline
+//        + "2: Dual pane nexrad radar" + GlobalVariables.newline
+//        + "4: Quad pane nexrad radar" + GlobalVariables.newline
+//        + "w: US Alerts" + GlobalVariables.newline
+//        + "s: Settings" + GlobalVariables.newline
+//        + "e: SPC Mesoanalysis" + GlobalVariables.newline
+//        + "n: NCEP Models" + GlobalVariables.newline
+//        + "h: Hourly forecast" + GlobalVariables.newline
+//        + "t: NHC" + GlobalVariables.newline
+//        + "l: Lightning" + GlobalVariables.newline
+//        + "i: National images" + GlobalVariables.newline
+//        + "z: National text discussions" + GlobalVariables.newline
 
     override func viewDidLoad() {
         super.viewDidLoad()

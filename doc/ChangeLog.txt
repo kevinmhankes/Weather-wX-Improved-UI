@@ -1,6 +1,7 @@
 
-56128 2021_06_07 [ADD] NCEP MAG (main NWS production model display) has replaced HRW-NMMB with HRW-FV3. This is accessible via MISC tab, top left corner
+56128 2021_06_25 [ADD] NCEP MAG (main NWS production model display) has replaced HRW-NMMB with HRW-FV3. This is accessible via MISC tab, top left corner
                  [ADD] Settings->Radar - show radar when pan/drag. On by default, allows one to see polygons more clearly when off.
+                 [ADD] About->Help - remove keyboard shortcuts in doc that no longer exist
 56127 2021_05_21 [FIX] remove Canada radar as EC is no longer offering static images
 		 [FIX] SPC SREF was not showing old runs after SPC made a minor change to their HTML code
 		 [FIX] Nexrad vertical pan with finger was not dragging correctly (screen was not in sync with finger location)
