@@ -29,13 +29,85 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     override func getContent() {
+        getContentWatch()
+        getContentMcd()
+        getContentMpd()
+        getContentWarningTst()
+        getContentWarningFfw()
+        getContentWarningTor()
+        getContentUsAlerts()
+        getContentSpcStormReports()
+    }
+    
+    func getContentWatch() {
         DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadRadar.getAllRadarData()
-            self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
-            self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
-            self.snMcd.getBitmaps()
+            UtilityDownloadWatch.getWatch()
             self.snWat.getBitmaps()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentMcd() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityDownloadMcd.getMcd()
+            self.snMcd.getBitmaps()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentMpd() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityDownloadMpd.getMpd()
             self.snMpd.getBitmaps()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentWarningTst() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityDownloadRadar.getPolygonVtecTst()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentWarningFfw() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityDownloadRadar.getPolygonVtecFfw()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentWarningTor() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            UtilityDownloadRadar.getPolygonVtecTor()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentUsAlerts() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
+    }
+    
+    func getContentSpcStormReports() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
             DispatchQueue.main.async {
                 self.display()
             }

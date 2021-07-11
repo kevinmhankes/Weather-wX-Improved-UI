@@ -30,10 +30,11 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
         if spcSwoDay == "48" {
             stateButton.title = ""
         }
-        getContent()
+        getContentText()
+        getContentImage()
     }
     
-    override func getContent() {
+    func getContentText() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.spcSwoDay == "48" {
                 self.product = "SWOD" + self.spcSwoDay
@@ -42,6 +43,12 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
                 self.product = "SWODY" + self.spcSwoDay
                 self.html = UtilityDownload.getTextProduct(self.product)
             }
+            DispatchQueue.main.async { self.display() }
+        }
+    }
+    
+    func getContentImage() {
+        DispatchQueue.global(qos: .userInitiated).async {
             self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
             DispatchQueue.main.async { self.display() }
         }
