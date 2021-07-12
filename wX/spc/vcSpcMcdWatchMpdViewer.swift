@@ -44,29 +44,12 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
         self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
         getImage()
         getText()
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            var productNumberList = [String]()
-//            if self.productNumber == "" {
-//                productNumberList = ObjectWatchProduct.getNumberList(self.watchMcdMpdType)
-//            } else {
-//                productNumberList = [self.productNumber]
-//            }
-//            productNumberList.forEach {
-//                let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-//                self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
-//                self.objectWatchProduct!.getData()
-//                self.html = self.objectWatchProduct!.text
-//                self.url = self.objectWatchProduct!.imgUrl
-//                self.bitmap = self.objectWatchProduct!.bitmap
-//                self.numbers.append(number)
-//            }
-//            DispatchQueue.main.async { self.display() }
-//        }
     }
     
     func getImage() {
         DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmap = Bitmap(self.objectWatchProduct!.imgUrl)
+            self.url = self.objectWatchProduct!.imgUrl
+            self.bitmap = Bitmap(self.url)
             DispatchQueue.main.async { self.display() }
         }
     }
@@ -101,56 +84,6 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
     private func display() {
         refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
-        
-//        var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && bitmaps.count == 1
-//        #if targetEnvironment(macCatalyst)
-//        tabletInLandscape = bitmaps.count == 1
-//        #endif
-//        if tabletInLandscape {
-//            stackView.axis = .horizontal
-//            stackView.alignment = .firstBaseline
-//        }
-//        var views = [UIView]()
-//        if bitmaps.count > 0 {
-//            bitmaps.enumerated().forEach {
-//                let objectImage: ObjectImage
-//                if tabletInLandscape {
-//                    objectImage = ObjectImage(
-//                        stackView,
-//                        $1,
-//                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
-//                        widthDivider: 2
-//                    )
-//                } else {
-//                    objectImage = ObjectImage(
-//                        stackView,
-//                        $1,
-//                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
-//                    )
-//                }
-//                objectImage.img.accessibilityLabel = listOfText[$0]
-//                objectImage.img.isAccessibilityElement = true
-//                views.append(objectImage.img)
-//            }
-//            if bitmaps.count == 1 {
-//                if tabletInLandscape {
-//                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "", widthDivider: 2)
-//                } else {
-//                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "")
-//                }
-//                objectTextView.tv.isAccessibilityElement = true
-//                views.append(objectTextView.tv)
-//            }
-//        } else {
-//            let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + String(describing: watchMcdMpdType) + "s"
-//            let objectTextView = ObjectTextView(stackView, message)
-//            objectTextView.tv.isAccessibilityElement = true
-//            objectTextView.constrain(scrollView)
-//            views += [objectTextView.tv]
-//            objectTextView.tv.accessibilityLabel = message
-//        }
-//        view.bringSubviewToFront(toolbar)
-//        scrollView.accessibilityElements = views
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
