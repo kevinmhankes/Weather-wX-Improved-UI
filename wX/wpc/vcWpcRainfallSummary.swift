@@ -32,7 +32,7 @@ final class vcWpcRainfallSummary: UIwXViewController {
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        Route.wpcRainfallForDay(self, String(sender.data + 1))
+        Route.wpcRainfallForDay(self, sender.data)
     }
     
     @objc func shareClicked(sender: UIButton) {

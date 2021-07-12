@@ -10,11 +10,11 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     
     private var bitmap = Bitmap()
     private var html = ""
-    var day = ""
+    var day = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ObjectToolbarIcon(title: "Day " + day, self, nil)
+        let statusButton = ObjectToolbarIcon(title: "Day " + to.String(day + 1), self, nil)
         let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ObjectToolbarItems([
             doneButton,
@@ -29,12 +29,22 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     override func getContent() {
-        let number = (Int(day) ?? 1) - 1
-        let imgUrl = UtilityWpcRainfallOutlook.urls[number]
-        product = UtilityWpcRainfallOutlook.codes[number]
+        getContentImage()
+        getContentText()
+    }
+    
+    func getContentImage() {
+        let imgUrl = UtilityWpcRainfallOutlook.urls[day]
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.bitmap = Bitmap(imgUrl)
+            DispatchQueue.main.async { self.display() }
+        }
+    }
+    
+    func getContentText() {
+        product = UtilityWpcRainfallOutlook.codes[day]
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = UtilityDownload.getTextProduct(self.product)
-            self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async { self.display() }
         }
     }
@@ -45,7 +55,7 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
     
     @objc func imageClicked() {
-        Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[(Int(day) ?? 1) - 1])
+        Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[day])
     }
     
     override func shareClicked(sender: UIButton) {

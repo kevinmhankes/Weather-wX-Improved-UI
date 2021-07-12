@@ -112,6 +112,8 @@
 		035E2D4821D29E0F005E31A1 /* WXGLNexradLevel3Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */; };
 		035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */; };
 		035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */; };
+		036102CC269C89CC0072EEC4 /* to.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CB269C89CC0072EEC4 /* to.swift */; };
+		036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */; };
 		03626AE41F294B48002BBAAD /* colormapbveak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE31F294B48002BBAAD /* colormapbveak.txt */; };
 		03626AE61F294B6D002BBAAD /* colormaprefeak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE51F294B6C002BBAAD /* colormaprefeak.txt */; };
 		0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364C02F23FF230800D765FF /* UtilityWfoText.swift */; };
@@ -507,6 +509,8 @@
 		035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3Common.swift; sourceTree = "<group>"; };
 		035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
 		035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
+		036102CB269C89CC0072EEC4 /* to.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = to.swift; sourceTree = "<group>"; };
+		036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcMcdWatchMpdViewer.swift; sourceTree = "<group>"; };
 		03626AE31F294B48002BBAAD /* colormapbveak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbveak.txt; sourceTree = "<group>"; };
 		03626AE51F294B6C002BBAAD /* colormaprefeak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefeak.txt; sourceTree = "<group>"; };
 		0364C02F23FF230800D765FF /* UtilityWfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWfoText.swift; sourceTree = "<group>"; };
@@ -1032,6 +1036,7 @@
 		F09504AD1E152CB0008A966E /* spc */ = {
 			isa = PBXGroup;
 			children = (
+				036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */,
 				F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */,
 				F0F28D831DB987400020AD08 /* StormReport.swift */,
 				03F3EB5D22993B870056A56D /* UtilitySpc.swift */,
@@ -1087,6 +1092,7 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
+				036102CB269C89CC0072EEC4 /* to.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
@@ -1837,6 +1843,7 @@
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
 				0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */,
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,
+				036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */,
 				0340423723F16FC3003AB242 /* vcHourly.swift in Sources */,
 				0340423A23F16FC3003AB242 /* vcSpotters.swift in Sources */,
 				F0B335331DA3FD3B0035BD36 /* WXGLDownload.swift in Sources */,
@@ -1908,6 +1915,7 @@
 				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,
 				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
+				036102CC269C89CC0072EEC4 /* to.swift in Sources */,
 				F0B3353A1DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift in Sources */,
 				F0F7760C1E00092A0022484C /* LatLon.swift in Sources */,
 				F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */,

@@ -8,7 +8,7 @@ final class ObjectWatchProduct {
 
     private let productNumber: String
     let imgUrl: String
-    private let textUrl: String
+    let textUrl: String
     private let title: String
     let prod: String
     var bitmap = Bitmap()
@@ -65,6 +65,19 @@ final class ObjectWatchProduct {
         bitmap = Bitmap(imgUrl)
         let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
         wfos = wfoStr.split("\\.\\.\\.")
+    }
+    
+    func getDataTextOnly() -> String {
+        text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
+        var textWithLatLon = text
+        if type == .SPCWAT || type == .SPCWAT_TORNADO {
+            textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
+        }
+        stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
+        latLons = stringOfLatLon.split(" ")
+        let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
+        wfos = wfoStr.split("\\.\\.\\.")
+        return text
     }
 
     func getTextForSubtitle() -> String {

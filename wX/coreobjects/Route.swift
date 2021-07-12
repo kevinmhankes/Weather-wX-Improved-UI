@@ -27,7 +27,7 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func wpcRainfallForDay(_ uiv: UIViewController, _ day: String) {
+    static func wpcRainfallForDay(_ uiv: UIViewController, _ day: Int) {
         let vc = vcWpcRainfallDiscussion()
         vc.day = day
         uiv.goToVC(vc)
@@ -103,7 +103,7 @@ final class Route {
     }
     
     static func spcMcdWatchItem(_ uiv: UIViewController, _ type: PolygonEnum, _ number: String) {
-        let vc = vcSpcWatchMcdMpd()
+        let vc = vcSpcMcdWatchMpdViewer()
         vc.watchMcdMpdNumber = number
         vc.watchMcdMpdType = type
         uiv.goToVC(vc)

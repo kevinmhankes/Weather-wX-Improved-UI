@@ -33,11 +33,22 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
     
     override func getContent() {
+        getContentImage()
+        getContentText()
+    }
+    
+    func getContentImage() {
         DispatchQueue.global(qos: .userInitiated).async {
             let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
+            self.bitmap = Bitmap(imgUrl)
+            DispatchQueue.main.async { self.display() }
+        }
+    }
+    
+    func getContentText() {
+        DispatchQueue.global(qos: .userInitiated).async {
             self.product = UtilitySpcFireOutlook.products[self.dayIndex]
             self.html = UtilityDownload.getTextProduct(self.product)
-            self.bitmap = Bitmap(imgUrl)
             DispatchQueue.main.async { self.display() }
         }
     }
