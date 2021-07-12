@@ -8,24 +8,24 @@ import UIKit
 import MapKit
 
 final class vcMapKitView: UIwXViewController, MKMapViewDelegate {
-    
-    private var latLonButton = ObjectToolbarIcon()
+
+    private var latLonButton = ToolbarIcon()
     private let mapView = MKMapView()
     var mapKitLat = ""
     var mapKitLon = ""
     var mapKitRadius = 0.0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         let locationC = CLLocationCoordinate2D(latitude: Double(mapKitLat) ?? 0.0, longitude: Double(mapKitLon) ?? 0.0)
         ObjectMap.centerMapForMapKit(mapView, location: locationC, regionRadius: mapKitRadius)
-        latLonButton = ObjectToolbarIcon(self, #selector(showExternalMap))
+        latLonButton = ToolbarIcon(self, #selector(showExternalMap))
         latLonButton.title = mapKitLat + ", " + mapKitLon
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, latLonButton]).items
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, latLonButton]).items
         view.addSubview(mapView)
     }
-    
+
     @objc func showExternalMap() {
         let directionsURL = "http://maps.apple.com/?daddr=" + mapKitLat + "," + mapKitLon
         guard let url = URL(string: directionsURL) else { return }

@@ -7,16 +7,16 @@
 import UIKit
 
 final class vcSpcCompMap: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var productButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
     private var layers: Set = ["1"]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(title: "Layers", self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        productButton = ToolbarIcon(title: "Layers", self, #selector(productClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         deSerializeSettings()
         getContent()
@@ -25,23 +25,23 @@ final class vcSpcCompMap: UIwXViewController {
     func serializeSettings() {
         Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
     }
-    
+
     func deSerializeSettings() {
         layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcCompmap.getImage(self.layers)
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         image.setBitmap(bitmap)
         serializeSettings()
     }
-    
+
     @objc func productClicked() {
         let alert = ObjectPopUp(self, "Layer Selection", productButton)
         (["Clear All"] + UtilitySpcCompmap.labels).enumerated().forEach { index, rid in
@@ -53,7 +53,7 @@ final class vcSpcCompMap: UIwXViewController {
         }
         alert.finish()
     }
-    
+
     func productChanged(_ product: Int) {
         if product == 0 {
             layers = []
@@ -68,11 +68,11 @@ final class vcSpcCompMap: UIwXViewController {
         }
         getContent()
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

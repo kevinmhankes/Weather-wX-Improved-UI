@@ -7,7 +7,7 @@
 import UIKit
 
 final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
-    
+
     private var bitmap = Bitmap()
     private var html = ""
     private var numbers = [String]()
@@ -17,26 +17,26 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
     private var objectWatchProduct: ObjectWatchProduct?
     var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonEnum.SPCWAT
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
         productNumber = watchMcdMpdNumber
         if productNumber != "" {
             watchMcdMpdNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
-    
+
     override func willEnterForeground() {}
 
     override func getContent() {
@@ -45,7 +45,7 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
         getImage()
         getText()
     }
-    
+
     func getImage() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.url = self.objectWatchProduct!.imgUrl
@@ -53,39 +53,39 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     func getText() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.html = self.objectWatchProduct!.getDataTextOnly()
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     @objc func imageClicked() {
         Route.imageViewer(self, url)
     }
-    
+
     override func shareClicked(sender: UIButton) {
         if let object = objectWatchProduct {
             UtilityShare.image(self, sender, bitmap, object.text)
         }
     }
-    
+
     override func playlistClicked() {
         if let object = objectWatchProduct {
             _ = UtilityPlayList.add(objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
-    
+
     @objc func radarClicked() {
         Route.radarNoSave(self, objectWatchProduct?.getClosestRadar() ?? "")
     }
-    
+
     private func display() {
         refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

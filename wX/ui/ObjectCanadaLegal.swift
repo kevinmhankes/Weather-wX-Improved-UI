@@ -9,6 +9,6 @@ import UIKit
 final class ObjectCanadaLegal {
 
     init(_ stackView: UIStackView) {
-        _ = ObjectTextView(stackView, GlobalVariables.mainScreenCaDisclaimor, FontSize.small.size, ColorCompatibility.secondaryLabel)
+        _ = Text(stackView, GlobalVariables.mainScreenCaDisclaimor, FontSize.small.size, ColorCompatibility.secondaryLabel)
     }
 }

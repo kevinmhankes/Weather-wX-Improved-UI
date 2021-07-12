@@ -103,7 +103,7 @@ final class ObjectCanadaWarnings: NSObject {
             text = text.replaceAllRegexp("<.*?>", "")
             text = text.replaceAllRegexp("&#160;", "")
             text = text.replaceAllRegexp("\n", "")
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 uiv.stackView,
                 text,
                 UITapGestureRecognizerWithData(index, uiv, #selector(goToWarning(sender:)))

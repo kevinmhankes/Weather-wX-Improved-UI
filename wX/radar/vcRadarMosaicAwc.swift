@@ -7,11 +7,11 @@
 import UIKit
 
 final class vcRadarMosaicAwc: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var productButton = ObjectToolbarIcon()
-    private var sectorButton = ObjectToolbarIcon()
-    private var animateButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
+    private var sectorButton = ToolbarIcon()
+    private var animateButton = ToolbarIcon()
     private var index = 0
     private var product = "rad_rala"
     private let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
@@ -19,14 +19,14 @@ final class vcRadarMosaicAwc: UIwXViewController {
     private var sector = "us"
     private var isLocal = false
     var nwsMosaicType = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
+        productButton = ToolbarIcon(self, #selector(productClicked))
+        sectorButton = ToolbarIcon(self, #selector(sectorClicked))
+        animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
@@ -37,7 +37,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
         }
         getContent()
     }
-    
+
     override func getContent() {
         productButton.title = product
         sectorButton.title = sector
@@ -46,7 +46,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         image.setBitmap(bitmap)
         if !isLocal {
@@ -54,36 +54,36 @@ final class vcRadarMosaicAwc: UIwXViewController {
             Utility.writePref(prefTokenProduct, product)
         }
     }
-    
+
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, sectorChanged(_:))
     }
-    
+
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, productChanged(_:))
     }
-    
+
     func productChanged(_ index: Int) {
         product = UtilityAwcRadarMosaic.products[index]
         getContent()
     }
-    
+
     func sectorChanged(_ index: Int) {
         sector = UtilityAwcRadarMosaic.sectors[index]
         getContent()
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
             DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

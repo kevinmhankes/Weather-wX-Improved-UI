@@ -7,22 +7,22 @@
 import UIKit
 
 final class vcNhc: UIwXViewController {
-    
-    private var textProductButton = ObjectToolbarIcon()
-    private var imageProductButton = ObjectToolbarIcon()
-    private var glcfsButton = ObjectToolbarIcon()
+
+    private var textProductButton = ToolbarIcon()
+    private var imageProductButton = ToolbarIcon()
+    private var glcfsButton = ToolbarIcon()
     private var objectNhc: ObjectNhc!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        textProductButton = ObjectToolbarIcon(title: "Text Products", self, #selector(textProductClicked))
-        imageProductButton = ObjectToolbarIcon(title: "Images", self, #selector(imageProductClicked))
-        glcfsButton = ObjectToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        textProductButton = ToolbarIcon(title: "Text Products", self, #selector(textProductClicked))
+        imageProductButton = ToolbarIcon(title: "Images", self, #selector(imageProductClicked))
+        glcfsButton = ToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         refreshViews()
         objectNhc = ObjectNhc(self)
@@ -38,31 +38,31 @@ final class vcNhc: UIwXViewController {
             }
         }
     }
-    
+
     @objc func textProductClicked() {
         _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, textProductChanged(_:))
     }
-    
+
     func textProductChanged(_ index: Int) {
         Route.wpcText(self, UtilityNhc.textProductCodes[index])
     }
-    
+
     @objc func imageProductClicked() {
         _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, imageProductChanged(_:))
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         Route.imageViewer(self, sender.strData)
     }
-    
+
     func imageProductChanged(_ index: Int) {
         Route.imageViewer(self, UtilityNhc.imageUrls[index])
     }
-    
+
     @objc func glcfsClicked() {
         Route.model(self, "GLCFS")
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

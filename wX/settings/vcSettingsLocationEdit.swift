@@ -11,11 +11,11 @@ import MapKit
 import UserNotifications
 
 final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    
-    private var labelTextView = ObjectTextView()
-    private var latTextView = ObjectTextView()
-    private var lonTextView = ObjectTextView()
-    private var statusTextView = ObjectTextView()
+
+    private var labelTextView = Text()
+    private var latTextView = Text()
+    private var lonTextView = Text()
+    private var statusTextView = Text()
     private var status = ""
     private var numLocsLocalStr = ""
     private let locationManager = CLLocationManager()
@@ -24,7 +24,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     private var toolbarBottom = ObjectToolbar()
     private let helpStatement = "There are four ways to enter and save a location. The easiest method is to tap the GPS icon (which looks like an arrow pointing up and to the right). You will need to give permission for the program to access your GPS location if you have not done so before. It might take 5-10 seconds but eventually latitude and longitude numbers will appear and the location will be automatically saved. The second way is to press and hold (also known as long press) on the map until a red pin appears. Once the red pin appears the latitude and longitude will use reverse geocoding to determine an appropriate label for the location. The third method is to tap the search icon and then enter a location such as a city. Once resolved it will save automatically. The final method is the most manual and that is manually specifying a label, latitude, and longitude. After you have done this you need to tape the checkmark icon to save it. Please note that only land based locations in the USA are supported."
     var settingsLocationEditNum = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
@@ -37,29 +37,29 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         locationManager.delegate = self
         toolbar = ObjectToolbar()
         toolbarBottom = ObjectToolbar()
-        let helpButton = ObjectToolbarIcon(title: "Help", self, #selector(helpClicked))
-        let canadaButton = ObjectToolbarIcon(title: "Canada", self, #selector(caClicked))
-        let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        let doneButton2 = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        let saveButton = ObjectToolbarIcon(self, .save, #selector(saveClicked))
-        let searchButton = ObjectToolbarIcon(self, .search, #selector(searchClicked))
-        let deleteButton = ObjectToolbarIcon(self, .delete, #selector(deleteClicked))
-        let gpsButton = ObjectToolbarIcon(self, .gps, #selector(gpsClicked))
+        let helpButton = ToolbarIcon(title: "Help", self, #selector(helpClicked))
+        let canadaButton = ToolbarIcon(title: "Canada", self, #selector(caClicked))
+        let doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
+        let doneButton2 = ToolbarIcon(self, .done, #selector(doneClicked))
+        let saveButton = ToolbarIcon(self, .save, #selector(saveClicked))
+        let searchButton = ToolbarIcon(self, .search, #selector(searchClicked))
+        let deleteButton = ToolbarIcon(self, .delete, #selector(deleteClicked))
+        let gpsButton = ToolbarIcon(self, .gps, #selector(gpsClicked))
         let items = [doneButton, GlobalVariables.flexBarButton, searchButton, gpsButton, saveButton]
         var itemsBottom = [doneButton2, GlobalVariables.flexBarButton, helpButton, canadaButton]
         if Location.numLocations > 1 {
             itemsBottom.append(deleteButton)
         }
-        toolbar.items = ObjectToolbarItems(items).items
-        toolbarBottom.items = ObjectToolbarItems(itemsBottom).items
+        toolbar.items = ToolbarItems(items).items
+        toolbarBottom.items = ToolbarItems(itemsBottom).items
         view.addSubview(toolbar)
         view.addSubview(toolbarBottom)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
         toolbarBottom.setConfigWithUiv(uiv: self)
-        labelTextView = ObjectTextView("Label")
-        latTextView = ObjectTextView("Lat")
-        lonTextView = ObjectTextView("Lon")
-        statusTextView = ObjectTextView("")
+        labelTextView = Text("Label")
+        latTextView = Text("Lat")
+        lonTextView = Text("Lon")
+        statusTextView = Text("")
         let textViews = [labelTextView.view, latTextView.view, lonTextView.view, statusTextView.view]
         textViews.forEach { label in
             label.font = FontSize.extraLarge.size
@@ -97,18 +97,18 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             ObjectMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
         }
     }
-    
+
     @objc func doneClicked() {
         Location.refreshLocationData()
         dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
     }
-    
+
     @objc func helpClicked() {
         let vc = vcTextViewer()
         vc.textViewText = helpStatement
         goToVC(vc)
     }
-    
+
     @objc func saveClicked() {
         status = Location.save(
             numLocsLocalStr,
@@ -133,17 +133,17 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         }
         centerMap(latString, lonString)
     }
-    
+
     func centerMap(_ lat: String, _ lon: String) {
         let locationC = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(lon) ?? 0.0)
         ObjectMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
-    
+
     @objc func deleteClicked() {
         Location.delete(numLocsLocalStr)
         doneClicked()
     }
-    
+
     @objc func searchClicked() {
         let alert = UIAlertController(
             title: "Search for location",
@@ -164,7 +164,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         )
         present(alert, animated: true, completion: nil)
     }
-    
+
     func searchAddress(_ address: String) {
         CLGeocoder().geocodeAddressString(
             address,
@@ -192,12 +192,12 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             }
         )
     }
-    
+
     @objc func gpsClicked() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue: CLLocationCoordinate2D = manager.location!.coordinate
         latTextView.text = String(locValue.latitude)
@@ -206,16 +206,16 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             getAddressAndSaveLocation(latTextView.text, lonTextView.text)
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
-    
+
     @objc func caClicked() {
         let vc = vcSettingsLocationCanada()
         goToVC(vc)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let caProv = Utility.readPref("LOCATION_CANADA_PROV", "")
@@ -230,7 +230,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             saveClicked()
         }
     }
-    
+
     @objc func longPress(sender: UIGestureRecognizer) {
         if sender.state == .began {
             let locationInView = sender.location(in: mapView)
@@ -239,7 +239,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             getAddressAndSaveLocation(String(locationOnMap.latitude), String(locationOnMap.longitude))
         }
     }
-    
+
     func addAnnotation(location: CLLocationCoordinate2D) {
         let allAnnotations = mapView.annotations
         mapView.removeAnnotations(allAnnotations)
@@ -252,7 +252,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         annotation.subtitle = ""
         mapView.addAnnotation(annotation)
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
         let reuseId = "pin"
@@ -267,11 +267,11 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         }
         return pinView
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("tapped on pin ")
     }
-    
+
     func mapView(
         _ mapView: MKMapView,
         annotationView view: MKAnnotationView,
@@ -284,7 +284,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             }
         }
     }
-    
+
     func saveFromMap(_ locationName: String, _ lat: String, _ lon: String) {
         labelTextView.text = locationName
         status = Location.save(numLocsLocalStr, LatLon(lat, lon), labelTextView.view.text!)
@@ -294,7 +294,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         view.endEditing(true)
         centerMap(lat, lon)
     }
-    
+
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
         var center = CLLocationCoordinate2D()
         let lat = Double(latStr) ?? 0.0
@@ -323,7 +323,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             }
         )
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
@@ -343,7 +343,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
             // Fallback on earlier versions
         }
     }
-    
+
     override var keyCommands: [UIKeyCommand]? {
         [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked))]
     }

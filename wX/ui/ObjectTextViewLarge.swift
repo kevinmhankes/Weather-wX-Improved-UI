@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectTextViewLarge {
+final class TextLarge {
 
     let tv = UILabelInset()
 

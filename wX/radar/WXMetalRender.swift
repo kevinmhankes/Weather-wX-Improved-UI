@@ -68,8 +68,8 @@ final class WXMetalRender {
     private var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     private var totalBins = 0
-    private let timeButton: ObjectToolbarIcon
-    private let productButton: ObjectToolbarIcon
+    private let timeButton: ToolbarIcon
+    private let productButton: ToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
     var gpsLatLonTransformed: (Float, Float) = (0.0, 0.0)
     private let paneNumber: Int
@@ -98,8 +98,8 @@ final class WXMetalRender {
 
     init(_ device: MTLDevice,
          _ wxMetalTextObject: WXMetalTextObject,
-         _ timeButton: ObjectToolbarIcon,
-         _ productButton: ObjectToolbarIcon,
+         _ timeButton: ToolbarIcon,
+         _ productButton: ToolbarIcon,
          paneNumber: Int,
          _ numberOfPanes: Int
     ) {

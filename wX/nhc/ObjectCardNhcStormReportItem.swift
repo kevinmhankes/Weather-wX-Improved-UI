@@ -9,28 +9,28 @@ import UIKit
 final class ObjectCardNhcStormReportItem {
 
     init(_ uiStackView: UIStackView, _ stormData: ObjectNhcStormDetails, _ gesture: UITapGestureRecognizerWithData) {
-        let textViewTop = ObjectTextViewLarge(
+        let textViewTop = TextLarge(
             80.0,
             text: stormData.name + " (" + stormData.classification + ") " + stormData.center,
             color: ColorCompatibility.highlightText
         )
-        let textViewTime = ObjectTextView(stormData.dateTime.replaceAll("T", " ").replaceAll(":00.000Z", "Z"), isUserInteractionEnabled: false, isZeroSpacing: true)
-        let textViewMovement = ObjectTextView(
+        let textViewTime = Text(stormData.dateTime.replaceAll("T", " ").replaceAll(":00.000Z", "Z"), isUserInteractionEnabled: false, isZeroSpacing: true)
+        let textViewMovement = Text(
             "Moving: " + stormData.movement,
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
-        let textViewPressure = ObjectTextView(
+        let textViewPressure = Text(
             "Min pressure: " + stormData.pressure + " mb",
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
-        let textViewWindSpeed = ObjectTextView(
+        let textViewWindSpeed = Text(
             "Max sustained: " + stormData.intensity + " mph",
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
-        let textViewBottom = ObjectTextViewSmallGray(
+        let textViewBottom = TextSmallGray(
             text: stormData.status + " " + stormData.binNumber + " " + stormData.id.uppercased(),
             isUserInteractionEnabled: false
         )

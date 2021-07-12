@@ -7,14 +7,14 @@
 import UIKit
 
 final class vcModels: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var sectorButton = ObjectToolbarIcon()
-    private var statusButton = ObjectToolbarIcon()
-    private var modelButton = ObjectToolbarIcon()
-    private var runButton = ObjectToolbarIcon()
-    private var timeButton = ObjectToolbarIcon()
-    private var productButton = ObjectToolbarIcon()
+    private var sectorButton = ToolbarIcon()
+    private var statusButton = ToolbarIcon()
+    private var modelButton = ToolbarIcon()
+    private var runButton = ToolbarIcon()
+    private var timeButton = ToolbarIcon()
+    private var productButton = ToolbarIcon()
     private var firstRun = true
     private var subMenu = ObjectMenuData(
         UtilityModelSpcHrefInterface.titles,
@@ -25,16 +25,16 @@ final class vcModels: UIwXViewController {
     private var fabLeft: ObjectFab?
     private var fabRight: ObjectFab?
     var modelActivitySelected = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let toolbarTop = ObjectToolbar()
-        statusButton = ObjectToolbarIcon(self, #selector(runClicked))
-        modelButton = ObjectToolbarIcon(title: "Model", self, #selector(modelClicked))
-        sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
-        runButton = ObjectToolbarIcon(title: "Run", self, #selector(runClicked))
-        let animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        toolbarTop.items = ObjectToolbarItems([
+        statusButton = ToolbarIcon(self, #selector(runClicked))
+        modelButton = ToolbarIcon(title: "Model", self, #selector(modelClicked))
+        sectorButton = ToolbarIcon(title: "Sector", self, #selector(sectorClicked))
+        runButton = ToolbarIcon(title: "Run", self, #selector(runClicked))
+        let animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
+        toolbarTop.items = ToolbarItems([
             statusButton,
             GlobalVariables.flexBarButton,
             modelButton,
@@ -46,9 +46,9 @@ final class vcModels: UIwXViewController {
             || modelActivitySelected.contains("SPCSREF")
             || modelActivitySelected.contains("SPCHREF")
             || modelActivitySelected.contains("WPCGEFS") {
-            productButton = ObjectToolbarIcon(title: "Product", self, #selector(showProdMenu))
+            productButton = ToolbarIcon(title: "Product", self, #selector(showProdMenu))
         } else {
-            productButton = ObjectToolbarIcon(title: "Product", self, #selector(prodClicked))
+            productButton = ToolbarIcon(title: "Product", self, #selector(prodClicked))
         }
         if modelActivitySelected.contains("SPCSREF") {
             subMenu = ObjectMenuData(
@@ -69,10 +69,10 @@ final class vcModels: UIwXViewController {
                 UtilityModelWpcGefsInterface.labels
             )
         }
-        timeButton = ObjectToolbarIcon(title: "Time", self, #selector(timeClicked))
-        let doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
+        timeButton = ToolbarIcon(title: "Time", self, #selector(timeClicked))
+        let doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
-        toolbar.items = ObjectToolbarItems([
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             productButton,
@@ -89,7 +89,7 @@ final class vcModels: UIwXViewController {
         setupModel()
         getRunStatus()
     }
-    
+
     func getRunStatus() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.modelObj.getRunStatus()
@@ -124,16 +124,16 @@ final class vcModels: UIwXViewController {
             }
         }
     }
-    
+
     override func willEnterForeground() {}
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = self.modelObj.getImage()
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         if firstRun {
             image.setBitmap(bitmap)
@@ -143,41 +143,41 @@ final class vcModels: UIwXViewController {
         }
         modelObj.setPreferences()
     }
-    
+
     @objc func prodClicked() {
         _ = ObjectPopUp(self, productButton, modelObj.paramLabels, prodChanged(_:))
     }
-    
+
     @objc func showProdMenu() {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
     }
-    
+
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, prodChanged(_:))
     }
-    
+
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, sectorChanged(_:))
     }
-    
+
     func sectorChanged(_ sector: String) {
         modelObj.setSector(sector)
         getRunStatus()
     }
-    
+
     @objc func runClicked() {
         _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, runChanged(_:))
     }
-    
+
     func runChanged(_ run: String) {
         modelObj.setRun(run)
         getContent()
     }
-    
+
     @objc func modelClicked() {
         _ = ObjectPopUp(self, title: "Model Selection", modelButton, modelObj.models, modelChanged(_:))
     }
-    
+
     func modelChanged(_ model: String) {
         modelObj.setModel(model)
         setupModel()
@@ -189,22 +189,22 @@ final class vcModels: UIwXViewController {
         fabLeft?.close()
         getContent()
     }
-    
+
     @objc func rightClicked() {
         modelObj.rightClick()
         fabRight?.close()
         getContent()
     }
-    
+
     @objc func timeClicked() {
         _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, timeChanged(_:))
     }
-    
+
     func timeChanged(_ time: Int) {
         modelObj.setTimeIdx(time)
         getContent()
     }
-    
+
     func prodChanged(_ prod: Int) {
         modelObj.setParam(prod)
         if modelActivitySelected.contains("SSEO") {
@@ -222,11 +222,11 @@ final class vcModels: UIwXViewController {
         }
         getContent()
     }
-    
+
     func setupModel() {
         modelObj.setModelVars(modelObj.model)
     }
-    
+
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .left {
             rightClicked()
@@ -235,7 +235,7 @@ final class vcModels: UIwXViewController {
             leftClicked()
         }
     }
-    
+
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = self.modelObj.getAnimation()
@@ -245,7 +245,7 @@ final class vcModels: UIwXViewController {
             }
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

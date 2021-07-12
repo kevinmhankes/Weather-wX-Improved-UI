@@ -7,17 +7,17 @@
 import UIKit
 
 final class vcSpcMeso: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var sectorButton = ObjectToolbarIcon()
-    private var sfcButton = ObjectToolbarIcon()
-    private var uaButton = ObjectToolbarIcon()
-    private var cpeButton = ObjectToolbarIcon()
-    private var cmpButton = ObjectToolbarIcon()
-    private var shrButton = ObjectToolbarIcon()
-    private var layerButton = ObjectToolbarIcon()
-    private var paramButton = ObjectToolbarIcon()
-    private var animateButton = ObjectToolbarIcon()
+    private var sectorButton = ToolbarIcon()
+    private var sfcButton = ToolbarIcon()
+    private var uaButton = ToolbarIcon()
+    private var cpeButton = ToolbarIcon()
+    private var cmpButton = ToolbarIcon()
+    private var shrButton = ToolbarIcon()
+    private var layerButton = ToolbarIcon()
+    private var paramButton = ToolbarIcon()
+    private var animateButton = ToolbarIcon()
     private var product = "500mb"
     private var sector = "19"
     private var prefModel = "SPCMESO"
@@ -29,15 +29,15 @@ final class vcSpcMeso: UIwXViewController {
     var parameters = [String]()
     private let prefTokenProduct = "SPCMESO1_PARAM_LAST_USED"
     private let prefTokenSector = "SPCMESO1_SECTOR_LAST_USED"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let toolbarTop = ObjectToolbar()
-        layerButton = ObjectToolbarIcon(title: "Layers", self, #selector(layerClicked))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        paramButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        toolbarTop.items = ObjectToolbarItems([
+        layerButton = ToolbarIcon(title: "Layers", self, #selector(layerClicked))
+        animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        paramButton = ToolbarIcon(self, #selector(showProductMenu))
+        toolbarTop.items = ToolbarItems([
             GlobalVariables.flexBarButton,
             paramButton,
             GlobalVariables.fixedSpace,
@@ -47,13 +47,13 @@ final class vcSpcMeso: UIwXViewController {
             GlobalVariables.fixedSpace,
             shareButton
         ]).items
-        sectorButton = ObjectToolbarIcon(title: "Sector", self, #selector(sectorClicked))
-        sfcButton = ObjectToolbarIcon(title: "SFC", self, #selector(paramClicked))
-        uaButton = ObjectToolbarIcon(title: "UA", self, #selector(paramClicked))
-        cpeButton = ObjectToolbarIcon(title: "CPE", self, #selector(paramClicked))
-        cmpButton = ObjectToolbarIcon(title: "CMP", self, #selector(paramClicked))
-        shrButton = ObjectToolbarIcon(title: "SHR", self, #selector(paramClicked))
-        toolbar.items = ObjectToolbarItems([
+        sectorButton = ToolbarIcon(title: "Sector", self, #selector(sectorClicked))
+        sfcButton = ToolbarIcon(title: "SFC", self, #selector(paramClicked))
+        uaButton = ToolbarIcon(title: "UA", self, #selector(paramClicked))
+        cpeButton = ToolbarIcon(title: "CPE", self, #selector(paramClicked))
+        cmpButton = ToolbarIcon(title: "CMP", self, #selector(paramClicked))
+        shrButton = ToolbarIcon(title: "SHR", self, #selector(paramClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             sfcButton,
@@ -76,14 +76,14 @@ final class vcSpcMeso: UIwXViewController {
             sectorChanged(Utility.readPref(prefTokenSector, sector))
         }
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         if firstRun {
             image.setBitmap(bitmap)
@@ -95,28 +95,28 @@ final class vcSpcMeso: UIwXViewController {
         Utility.writePref(prefTokenProduct, product)
         Utility.writePref(prefTokenSector, sector)
     }
-    
+
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, sectorChangedByIndex(_:))
     }
-    
+
     func sectorChangedByIndex(_ index: Int) {
         sector = UtilitySpcMeso.sectorCodes[index]
         sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
         getContent()
     }
-    
+
     func sectorChanged(_ sector: String) {
         self.sector = sector
         sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
         getContent()
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
-    @objc func paramClicked(sender: ObjectToolbarIcon) {
+
+    @objc func paramClicked(sender: ToolbarIcon) {
         switch sender.title! {
         case "SFC":
             parameters = UtilitySpcMeso.paramSurface
@@ -134,7 +134,7 @@ final class vcSpcMeso: UIwXViewController {
         let labels = parameters.map { $0.split(":")[1] }
         _ = ObjectPopUp(self, title: "", sender, labels, productChangedBySubmenu(_:))
     }
-    
+
     @objc func layerClicked() {
         let alert = ObjectPopUp(self, "Toggle Layers", layerButton)
         ["Radar", "SPC Outlooks", "Watches/Warnings", "Topography"].forEach { layer in
@@ -146,7 +146,7 @@ final class vcSpcMeso: UIwXViewController {
         }
         alert.finish()
     }
-    
+
     func layerChanged(_ layer: String) {
         switch layer {
         case "Radar":
@@ -162,7 +162,7 @@ final class vcSpcMeso: UIwXViewController {
         }
         getContent()
     }
-    
+
     func isLayerSelected(_ layer: String) -> Bool {
         var isSelected = "false"
         switch layer {
@@ -179,7 +179,7 @@ final class vcSpcMeso: UIwXViewController {
         }
         return isSelected == "true"
     }
-    
+
     func toggleLayer(_ prefVar: String) {
         let currentValue = Utility.readPref(prefVar, "false").hasPrefix("true")
         if currentValue {
@@ -188,11 +188,11 @@ final class vcSpcMeso: UIwXViewController {
             Utility.writePref(prefVar, "true")
         }
     }
-    
+
     @objc func animateClicked() {
         _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation(_:))
     }
-    
+
     func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount)
@@ -201,31 +201,31 @@ final class vcSpcMeso: UIwXViewController {
             }
         }
     }
-    
+
     @objc func showProductMenu() {
         _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, showSubMenu(_:))
     }
-    
+
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, productChanged(_:))
     }
-    
+
     func productChangedBySubmenu(_ index: Int) {
         product = parameters[index].split(":")[0]
         getContent()
     }
-    
+
     func productChangedByCode(_ product: String) {
         self.product = product
         getContent()
     }
-    
+
     func productChanged(_ index: Int) {
         let product = subMenu.params[index]
         self.product = product
         getContent()
     }
-    
+
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         var index = 0
         if let product = UtilitySpcMeso.productShortList.firstIndex(of: product) {
@@ -233,7 +233,7 @@ final class vcSpcMeso: UIwXViewController {
         }
         productChangedByCode(UtilitySpcMeso.productShortList[index])
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

@@ -18,8 +18,8 @@ final class ObjectCardAlertSummaryItem {
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
         // start icons
-        let radarIcon = ObjectToolbarIcon(iconType: .radar, gesture: gestureRadar)
-        let radarText = ObjectTextView("Radar")
+        let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
+        let radarText = Text("Radar")
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -32,11 +32,11 @@ final class ObjectCardAlertSummaryItem {
         horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
-        let tvName = ObjectTextViewLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
-        let tvTitle = ObjectTextView(title, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvStart = ObjectTextView("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvEnd = ObjectTextView("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvArea = ObjectTextViewSmallGray(text: alert.area, isUserInteractionEnabled: false)
+        let tvName = TextLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
+        let tvTitle = Text(title, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvStart = Text("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvEnd = Text("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvArea = TextSmallGray(text: alert.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false

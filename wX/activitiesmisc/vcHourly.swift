@@ -7,13 +7,13 @@
 import UIKit
 
 final class vcHourly: UIwXViewControllerWithAudio {
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
+        objectTextView = Text(
             stackView,
             "",
             FontSize.hourly.size,
@@ -22,7 +22,7 @@ final class vcHourly: UIwXViewControllerWithAudio {
         objectTextView.constrain(scrollView)
         getContent()
     }
-    
+
     override func getContent() {
         _ = FutureText("HOURLY", self.display)
 //        DispatchQueue.global(qos: .userInitiated).async {
@@ -30,15 +30,15 @@ final class vcHourly: UIwXViewControllerWithAudio {
 //            DispatchQueue.main.async { self.display(html) }
 //        }
     }
-    
+
     private func display(_ html: String) {
         objectTextView.text = html
     }
-    
+
     @objc func scroll() {
         scrollView.scrollToTop()
     }
-    
+
     override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }

@@ -13,7 +13,7 @@ final class vcTabLocation: vcTabParent {
     private var locationButton = UITextView()
     private var forecastText = [String]()
     private var forecastImage = [UIImage]()
-    private var menuButton = ObjectToolbarIcon()
+    private var menuButton = ToolbarIcon()
     private var lastRefresh: Int64 = 0
     private var currentTime: Int64 = 0
     private var currentTimeSec: Int64 = 0
@@ -22,11 +22,11 @@ final class vcTabLocation: vcTabParent {
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
     private var textArr = [String: String]()
-    private var timeButton = ObjectToolbarIcon()
+    private var timeButton = ToolbarIcon()
     private var oldLocation = LatLon()
     private var isUS = true
     private var isUSDisplayed = true
-    private var objLabel = ObjectTextView()
+    private var objLabel = Text()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
     private var stackViewHazards = ObjectStackView(.fill, .vertical)
@@ -89,11 +89,11 @@ final class vcTabLocation: vcTabParent {
             object: nil
         )
         toolbar = ObjectToolbar()
-        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
-        let cloudButton = ObjectToolbarIcon(self, .cloud, #selector(cloudClicked))
-        let wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfotextClicked))
-        menuButton = ObjectToolbarIcon(self, .submenu, #selector(menuClicked))
-        let dashButton = ObjectToolbarIcon(self, .severeDashboard, #selector(dashClicked))
+        let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
+        let cloudButton = ToolbarIcon(self, .cloud, #selector(cloudClicked))
+        let wfoTextButton = ToolbarIcon(self, .wfo, #selector(wfotextClicked))
+        menuButton = ToolbarIcon(self, .submenu, #selector(menuClicked))
+        let dashButton = ToolbarIcon(self, .severeDashboard, #selector(dashClicked))
         let fixedSpace = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
             target: nil,
@@ -101,7 +101,7 @@ final class vcTabLocation: vcTabParent {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems([
+            toolbar.items = ToolbarItems([
                 GlobalVariables.flexBarButton,
                 dashButton,
                 wfoTextButton,
@@ -109,7 +109,7 @@ final class vcTabLocation: vcTabParent {
                 menuButton
             ]).items
         } else {
-            toolbar.items = ObjectToolbarItems([
+            toolbar.items = ToolbarItems([
                 GlobalVariables.flexBarButton,
                 dashButton,
                 wfoTextButton,
@@ -130,7 +130,7 @@ final class vcTabLocation: vcTabParent {
                 objScrollStackView!.fragmentWidthAnchor2!
             ])
         }
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView)
 //        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
 //        stackViewForecast = ObjectStackView(.fill, .vertical)
 //        stackViewHazards = ObjectStackView(.fill, .vertical)
@@ -387,7 +387,7 @@ final class vcTabLocation: vcTabParent {
             let html = UtilityDownload.getTextProduct(product.uppercased())
             DispatchQueue.main.async {
                 self.textArr[product] = html
-                let objectTextView = ObjectTextView(stackView, html.truncate(UIPreferences.homescreenTextLength))
+                let objectTextView = Text(stackView, html.truncate(UIPreferences.homescreenTextLength))
                 if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
                     objectTextView.font = FontSize.hourly.size
                 }
@@ -450,7 +450,7 @@ final class vcTabLocation: vcTabParent {
         metalLayer.forEach { caview.layer.addSublayer($0!) }
         stackView.addArrangedSubview(caview)
         if wxMetal.count < 1 {
-            wxMetal.append(WXMetalRender(device!, wxMetalTextObject, ObjectToolbarIcon(), ObjectToolbarIcon(), paneNumber: 0, numberOfPanes))
+            wxMetal.append(WXMetalRender(device!, wxMetalTextObject, ToolbarIcon(), ToolbarIcon(), paneNumber: 0, numberOfPanes))
         }
         setupGestures()
         let defaultLibrary = device?.makeDefaultLibrary()!
@@ -515,7 +515,7 @@ final class vcTabLocation: vcTabParent {
         let stackViewLocationButton = ObjectStackViewHS()
         stackView.addArrangedSubview(stackViewLocationButton)
         stackViewLocationButton.setup(stackView)
-        objLabel = ObjectTextView(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
+        objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         objLabel.tv.isSelectable = false
     }

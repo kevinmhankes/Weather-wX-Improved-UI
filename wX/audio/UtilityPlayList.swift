@@ -7,10 +7,10 @@
 import UIKit
 
 final class UtilityPlayList {
-    
+
     static let formatTimeString = "MM-dd HH:mm"
-    
-    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ObjectToolbarIcon, showStatus: Bool = true) -> Bool {
+
+    static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ToolbarIcon, showStatus: Bool = true) -> Bool {
         let prodLocal = prod.uppercased()
         var productAdded = false
         if !MyApplication.playlistStr.contains(prodLocal) {
@@ -28,7 +28,7 @@ final class UtilityPlayList {
         Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
         return productAdded
     }
-    
+
     static func checkAndSave(_ prod: String, _ text: String) {
         let prodLocal = prod.uppercased()
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
@@ -37,7 +37,7 @@ final class UtilityPlayList {
             Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
         }
     }
-    
+
     static func download(_ product: String) {
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
         let text = UtilityDownload.getTextProduct(product)

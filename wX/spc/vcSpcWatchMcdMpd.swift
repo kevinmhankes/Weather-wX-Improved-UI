@@ -7,7 +7,7 @@
 import UIKit
 
 final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
-    
+
     private var bitmaps = [Bitmap]()
     private var numbers = [String]()
     private var listOfText = [String]()
@@ -16,26 +16,26 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     private var objectWatchProduct: ObjectWatchProduct?
     var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonEnum.SPCWAT
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        let radarButton = ObjectToolbarIcon(self, .radar, #selector(radarClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
         productNumber = watchMcdMpdNumber
         if productNumber != "" {
             watchMcdMpdNumber = ""
         }
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
-    
+
     override func willEnterForeground() {}
 
     override func getContent() {
@@ -58,7 +58,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         if bitmaps.count == 1 {
             Route.imageViewer(self, urls[0])
@@ -66,23 +66,23 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             Route.spcMcdWatchItem(self, watchMcdMpdType, numbers[sender.data])
         }
     }
-    
+
     override func shareClicked(sender: UIButton) {
         if let object = objectWatchProduct {
             UtilityShare.image(self, sender, bitmaps, object.text)
         }
     }
-    
+
     override func playlistClicked() {
         if let object = objectWatchProduct {
             _ = UtilityPlayList.add(objectWatchProduct!.prod, object.text, self, playListButton)
         }
     }
-    
+
     @objc func radarClicked() {
         Route.radarNoSave(self, objectWatchProduct?.getClosestRadar() ?? "")
     }
-    
+
     private func display() {
         var tabletInLandscape = UtilityUI.isTablet() && UtilityUI.isLandscape() && bitmaps.count == 1
         #if targetEnvironment(macCatalyst)
@@ -116,16 +116,16 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             }
             if bitmaps.count == 1 {
                 if tabletInLandscape {
-                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "", widthDivider: 2)
+                    objectTextView = Text(stackView, objectWatchProduct?.text ?? "", widthDivider: 2)
                 } else {
-                    objectTextView = ObjectTextView(stackView, objectWatchProduct?.text ?? "")
+                    objectTextView = Text(stackView, objectWatchProduct?.text ?? "")
                 }
                 objectTextView.tv.isAccessibilityElement = true
                 views.append(objectTextView.tv)
             }
         } else {
             let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + String(describing: watchMcdMpdType) + "s"
-            let objectTextView = ObjectTextView(stackView, message)
+            let objectTextView = Text(stackView, message)
             objectTextView.tv.isAccessibilityElement = true
             objectTextView.constrain(scrollView)
             views += [objectTextView.tv]
@@ -134,7 +134,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         view.bringSubviewToFront(toolbar)
         scrollView.accessibilityElements = views
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

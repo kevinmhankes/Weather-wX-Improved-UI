@@ -8,35 +8,35 @@ import UIKit
 import AVFoundation
 
 final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
-    
+
     private var playlistItems = [String]()
-    private var addNationalProductButton = ObjectToolbarIcon()
-    private var wfoTextButton = ObjectToolbarIcon()
+    private var addNationalProductButton = ToolbarIcon()
+    private var wfoTextButton = ToolbarIcon()
     private let textPreviewLength = 400
     private var synthesizer = AVSpeechSynthesizer()
     private var fab: ObjectFab!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         synthesizer.delegate = self
-        addNationalProductButton = ObjectToolbarIcon(self, .plus, #selector(addNationalProductClicked))
-        wfoTextButton = ObjectToolbarIcon(self, .wfo, #selector(wfoTextClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, wfoTextButton, addNationalProductButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        addNationalProductButton = ToolbarIcon(self, .plus, #selector(addNationalProductClicked))
+        wfoTextButton = ToolbarIcon(self, .wfo, #selector(wfoTextClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, wfoTextButton, addNationalProductButton]).items
+        objScrollStackView = ScrollStackView(self)
         deSerializeSettings()
         fab = ObjectFab(self, #selector(playClicked), iconType: .play)
         display()
         getContent()
     }
-    
+
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         resetAudio()
         serializeSettings()
         super.doneClicked()
     }
-    
+
     @objc override func getContent() {
         serializeSettings()
         playlistItems.forEach { item in
@@ -46,7 +46,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             }
         }
     }
-    
+
     func display() {
         stackView.removeViews()
         playlistItems.enumerated().forEach { index, item in
@@ -61,7 +61,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             )
         }
     }
-    
+
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let alert = ObjectPopUp(self, playlistItems[sender.data], addNationalProductButton)
         alert.addAction(UIAlertAction("Play", { _ in self.playProduct(selection: sender.data) }))
@@ -75,7 +75,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         alert.addAction(UIAlertAction("Delete", { _ in self.delete(selection: sender.data) }))
         alert.finish()
     }
-    
+
     func playProduct(selection: Int) {
         resetAudio()
         playlistItems.enumerated().forEach { index, item in
@@ -84,11 +84,11 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             }
         }
     }
-    
+
     func viewProduct(selection: Int) {
         Route.wpcText(self, playlistItems[selection])
     }
-    
+
     func move(_ from: Int, _ to: MotionType) {
         var delta = 1
         if to == .up {
@@ -99,50 +99,50 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         playlistItems[from] = tmp
         display()
     }
-    
+
     func delete(selection: Int) {
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection])
         GlobalVariables.editor.removeObject("PLAYLIST_" + playlistItems[selection] + "_TIME")
         playlistItems.remove(at: selection)
         display()
     }
-    
+
     func serializeSettings() {
         playlistItems = playlistItems.filter { $0 != "" }
         let token = TextUtils.join(":", playlistItems)
         MyApplication.playlistStr = token
         Utility.writePref("PLAYLIST", token)
     }
-    
+
     func deSerializeSettings() {
         playlistItems = TextUtils.split(Utility.readPref("PLAYLIST", "") + ":", ":")
         playlistItems = playlistItems.filter { $0 != "" }
     }
-    
+
     @objc func playClicked() {
         var textToSpeak = ""
         playlistItems.forEach { textToSpeak += Utility.readPref("PLAYLIST_" + $0, "") }
         UtilityAudio.playClicked(textToSpeak, synthesizer, fab)
     }
-    
+
     @objc func addNationalProductClicked() {
         _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, addNationalProduct(_:))
     }
-    
+
     func addNationalProduct(_ index: Int) {
         let product = UtilityWpcText.labelsWithCodes[index].split(":")[0].uppercased()
         downloadAndAddProduct(product, addNationalProductButton)
     }
-    
+
     @objc func wfoTextClicked() {
         _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, addWfoProduct(_:))
     }
-    
+
     func addWfoProduct(_ office: String) {
         downloadAndAddProduct("AFD" + office.uppercased(), wfoTextButton)
     }
-    
-    func downloadAndAddProduct(_ product: String, _ button: ObjectToolbarIcon) {
+
+    func downloadAndAddProduct(_ product: String, _ button: ToolbarIcon) {
         DispatchQueue.global(qos: .userInitiated).async {
             let text = UtilityDownload.getTextProduct(product)
             DispatchQueue.main.async {
@@ -155,7 +155,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
             }
         }
     }
-    
+
     func resetAudio() {
         if synthesizer.isSpeaking {
             synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)

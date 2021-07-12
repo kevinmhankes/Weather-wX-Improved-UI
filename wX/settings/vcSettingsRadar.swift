@@ -8,19 +8,19 @@ import UIKit
 import CoreLocation
 
 final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
-    
+
     private let locationManager = CLLocationManager()
     private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let statusButton = ToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        objScrollStackView = ScrollStackView(self)
         display()
     }
-    
+
     override func doneClicked() {
         MyApplication.initPreferences()
         // brute force, reset timers so that fresh data is downloaded next time in nexrad radar
@@ -32,7 +32,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         UtilityColorPaletteGeneric.loadColorMap(99)
         super.doneClicked()
     }
-    
+
     @objc func switchChanged(sender: UISwitch) {
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
@@ -60,33 +60,33 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             locationManager.requestLocation()
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
-    
+
     // needed for Radar/GPS setting
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         return UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
         switch pickerView.tag {
@@ -104,7 +104,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             }
         }
     }
-    
+
     private func display() {
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
@@ -139,7 +139,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             }
         }
     }
-    
+
     func setupSliders() {
         [
             "RADAR_HI_SIZE",
@@ -158,14 +158,14 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
                 objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
         }
     }
-    
+
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let objId = ObjectIdentifier(sender)
         let objSlider = objectIdToSlider[objId]!
         objSlider.setLabel()
         Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil,

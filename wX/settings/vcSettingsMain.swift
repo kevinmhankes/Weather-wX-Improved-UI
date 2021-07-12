@@ -7,7 +7,7 @@
 import UIKit
 
 final class vcSettingsMain: UIwXViewController {
-    
+
     private let titles = [
         "Locations",
         "Colors",
@@ -18,20 +18,20 @@ final class vcSettingsMain: UIwXViewController {
         "Spotters",
         "About " + GlobalVariables.appName
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let statusButton = ToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        objScrollStackView = ScrollStackView(self)
         display()
     }
-    
+
     override func doneClicked() {
         MyApplication.initPreferences()
         super.doneClicked()
     }
-    
+
     @objc func actionClick(sender: UITapGestureRecognizerWithData) {
         switch sender.strData {
         case "Locations":
@@ -54,10 +54,10 @@ final class vcSettingsMain: UIwXViewController {
             break
         }
     }
-    
+
     private func display() {
         titles.forEach { title in
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 stackView,
                 title,
                 FontSize.extraLarge.size,

@@ -6,13 +6,13 @@
 
 import UIKit
 
-final class ObjectScrollStackView {
-    
+final class ScrollStackView {
+
     var fragmentHeightAnchor1: NSLayoutConstraint?
     var fragmentHeightAnchor2: NSLayoutConstraint?
     var fragmentWidthAnchor1: NSLayoutConstraint?
     var fragmentWidthAnchor2: NSLayoutConstraint?
-    
+
     init(_ uiv: UIwXViewController) {
         uiv.scrollView.backgroundColor = ColorCompatibility.systemGray5
         uiv.scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ final class ObjectScrollStackView {
         uiv.view.addSubview(uiv.toolbar)
         uiv.scrollView.bottomAnchor.constraint(equalTo: uiv.toolbar.topAnchor).isActive = true
     }
-    
+
     // TODO use dynamic calc: let height = self.tabBarController?.tabBar.frame.height ?? 49.0
     init(_ uiv: UIViewController, _ scrollView: UIScrollView, _ stackView: UIStackView) {
         scrollView.backgroundColor = ColorCompatibility.systemGray5

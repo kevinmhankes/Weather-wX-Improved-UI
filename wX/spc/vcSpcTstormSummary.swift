@@ -7,17 +7,17 @@
 import UIKit
 
 final class vcSpcTstormSummary: UIwXViewController {
-    
+
     private var bitmaps = [Bitmap]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let urls = UtilitySpc.getTstormOutlookUrls()
@@ -25,20 +25,20 @@ final class vcSpcTstormSummary: UIwXViewController {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     private func display() {
         refreshViews()
         _ = ObjectImageSummary(self, bitmaps)
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         Route.imageViewer(self, bitmaps[sender.data].url)
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, bitmaps)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })

@@ -7,7 +7,7 @@
 import UIKit
 
 final public class ObjectModel {
-    
+
     private var modelName = ""
     // TODO rename all from ending in Arr to s
     private var params = [String]()
@@ -33,21 +33,21 @@ final public class ObjectModel {
     var sector = ""
     private var sectorInt = 0
     private var prodIdx = 0
-    private var sectorButton = ObjectToolbarIcon()
-    private var runButton = ObjectToolbarIcon()
-    var timeButton = ObjectToolbarIcon()
-    private var prodButton = ObjectToolbarIcon()
-    private var statusButton = ObjectToolbarIcon()
-    private var modelButton = ObjectToolbarIcon()
+    private var sectorButton = ToolbarIcon()
+    private var runButton = ToolbarIcon()
+    var timeButton = ToolbarIcon()
+    private var prodButton = ToolbarIcon()
+    private var statusButton = ToolbarIcon()
+    private var modelButton = ToolbarIcon()
     let productButtonTruncate = 18
-    
+
     var time: String { timeStr.split(" ")[0] }
-    
+
     var timeIndex: Int {
         get { timeIdx }
         set { timeIdx = newValue }
     }
-    
+
     convenience init(_ prefModel: String) {
         self.init()
         self.prefModel = prefModel
@@ -145,7 +145,7 @@ final public class ObjectModel {
         }
         getPreferences()
     }
-    
+
     private func getPreferences() {
         model = Utility.readPref(prefModel, model)
         param = Utility.readPref(prefParam, param)
@@ -153,7 +153,7 @@ final public class ObjectModel {
         timeStr = Utility.readPref(prefRunPosn, timeStr)
         timeIdx = Utility.readPref(prefRunPosnIdx, timeIdx)
     }
-    
+
     func setPreferences() {
         Utility.writePref(prefModel, model)
         Utility.writePref(prefParam, param)
@@ -161,14 +161,14 @@ final public class ObjectModel {
         Utility.writePref(prefRunPosn, timeStr)
         Utility.writePref(prefRunPosnIdx, timeIdx)
     }
-    
+
     func setButtons(
-        _ prodButton: ObjectToolbarIcon,
-        _ sectorButton: ObjectToolbarIcon,
-        _ runButton: ObjectToolbarIcon,
-        _ timeButton: ObjectToolbarIcon,
-        _ statusButton: ObjectToolbarIcon,
-        _ modelButton: ObjectToolbarIcon
+        _ prodButton: ToolbarIcon,
+        _ sectorButton: ToolbarIcon,
+        _ runButton: ToolbarIcon,
+        _ timeButton: ToolbarIcon,
+        _ statusButton: ToolbarIcon,
+        _ modelButton: ToolbarIcon
     ) {
         self.prodButton = prodButton
         self.sectorButton = sectorButton
@@ -182,7 +182,7 @@ final public class ObjectModel {
         prodButton.title = param.truncate(productButtonTruncate)
         modelButton.title = model
     }
-    
+
     func setModelVars(_ modelName: String) {
         self.modelName = modelName
         modelToken = prefModel + ":" + modelName
@@ -446,7 +446,7 @@ final public class ObjectModel {
             prodButton.title = param.truncate(productButtonTruncate)
         }
     }
-    
+
     func setupListRunZ() {
         runs = []
         runs.append("00Z")
@@ -455,7 +455,7 @@ final public class ObjectModel {
         runs.append("18Z")
         runTimeData.listRun = runs
     }
-    
+
     // TODO fix unused arg
     func setupListRunZ(_ start: String) {
         runs = []
@@ -465,7 +465,7 @@ final public class ObjectModel {
         runs.append("21Z")
         runTimeData.listRun = runs
     }
-    
+
     func getRunStatus() {
         switch prefModel {
         case "NSSLWRF":
@@ -489,7 +489,7 @@ final public class ObjectModel {
             break
         }
     }
-    
+
     func getImage() -> Bitmap {
         switch prefModel {
         case "NSSLWRF":
@@ -526,7 +526,7 @@ final public class ObjectModel {
             return Bitmap()
         }
     }
-    
+
     func getAnimation() -> AnimationDrawable {
         switch prefModel {
         case "NSSLWRF":
@@ -549,23 +549,23 @@ final public class ObjectModel {
             return AnimationDrawable()
         }
     }
-    
+
     func setModel(_ model: String) {
         self.model = model
         modelButton.title = model
     }
-    
+
     func setRun(_ run: String) {
         self.run = run
         runButton.title = run
         statusButton.title = runTimeData.imageCompleteStr
     }
-    
+
     func setSector(_ sector: String) {
         self.sector = sector
         sectorButton.title = sector
     }
-    
+
     func setParam(_ paramIdx: Int) {
         param = params[paramIdx]
         prodButton.title = param.truncate(productButtonTruncate)
@@ -573,7 +573,7 @@ final public class ObjectModel {
             setModelVars(modelName)
         }
     }
-    
+
     func setTimeIdx(_ timeIdx: Int) {
         if timeIdx > -1 && timeIdx < times.count {
             self.timeIdx = timeIdx
@@ -581,20 +581,20 @@ final public class ObjectModel {
             timeButton.title = timeStr
         }
     }
-    
+
     // TODO make private below 2
     func timeIdxIncr() {
         timeIdx += 1
         timeStr = times.safeGet(timeIdx)
         timeButton.title = timeStr
     }
-    
+
     func timeIdxDecr() {
         timeIdx -= 1
         timeStr = times.safeGet(timeIdx)
         timeButton.title = timeStr
     }
-    
+
     func leftClick() {
         if timeIdx == 0 {
             setTimeIdx(times.count - 1)
@@ -602,7 +602,7 @@ final public class ObjectModel {
             timeIdxDecr()
         }
     }
-    
+
     func rightClick() {
         if timeIdx == times.count - 1 {
             setTimeIdx(0)
@@ -610,7 +610,7 @@ final public class ObjectModel {
             timeIdxIncr()
         }
     }
-    
+
     func setTimeArr(_ idx: Int, _ time: String) {
         times[idx] = time
     }

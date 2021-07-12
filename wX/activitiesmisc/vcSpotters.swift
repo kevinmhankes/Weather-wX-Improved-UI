@@ -7,21 +7,21 @@
 import UIKit
 
 final class vcSpotters: UIwXViewController {
-    
+
     private var spotterDataSorted = [Spotter]()
-    private var spotterReportsButton = ObjectToolbarIcon()
-    private var spotterCountButton = ObjectToolbarIcon()
-    
+    private var spotterReportsButton = ToolbarIcon()
+    private var spotterCountButton = ToolbarIcon()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        spotterReportsButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
+        spotterReportsButton = ToolbarIcon(self, #selector(showSpotterReports))
         spotterReportsButton.title = "Spotter Reports"
-        spotterCountButton = ObjectToolbarIcon(self, #selector(showSpotterReports))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterCountButton, spotterReportsButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        spotterCountButton = ToolbarIcon(self, #selector(showSpotterReports))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterCountButton, spotterReportsButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     // FIXME no rotation support
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -29,7 +29,7 @@ final class vcSpotters: UIwXViewController {
             DispatchQueue.main.async { self.display(spotterData) }
         }
     }
-    
+
     private func display(_ spotterData: [Spotter]) {
         refreshViews()
         spotterCountButton.title = "Count: " + String(spotterData.count)
@@ -38,12 +38,12 @@ final class vcSpotters: UIwXViewController {
             _ = ObjectSpotterCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
         }
     }
-    
+
     @objc func showSpotterReports() {
         let vc = vcSpotterReports()
         goToVC(vc)
     }
-    
+
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let objectPopUp = ObjectPopUp(self, "", spotterReportsButton)
@@ -51,7 +51,7 @@ final class vcSpotters: UIwXViewController {
         objectPopUp.addAction(uiAlertAction)
         objectPopUp.finish()
     }
-    
+
     func showMap(_ selection: Int) {
         Route.map(self, spotterDataSorted[selection].location.latString, spotterDataSorted[selection].location.lonString)
     }

@@ -128,6 +128,10 @@
 		036D975123C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D975023C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift */; };
 		036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */; };
 		036E1ADE1FEE5C3900DE2EFE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */; };
+		036E9B90269D0AAB0009A47B /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B8F269D0AAA0009A47B /* Text.swift */; };
+		036E9B92269D0C010009A47B /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B91269D0C010009A47B /* ToolbarIcon.swift */; };
+		036E9B94269D0C0B0009A47B /* ToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B93269D0C0B0009A47B /* ToolbarItems.swift */; };
+		036E9B96269D0C7C0009A47B /* ScrollStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B95269D0C7C0009A47B /* ScrollStackView.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -280,7 +284,6 @@
 		F06DB4561DA41547005B243A /* hw.bin in Resources */ = {isa = PBXBuildFile; fileRef = F06DB4371DA41547005B243A /* hw.bin */; };
 		F06DB4571DA41547005B243A /* hwv4.bin in Resources */ = {isa = PBXBuildFile; fileRef = F06DB4381DA41547005B243A /* hwv4.bin */; };
 		F071A9FA1E75BD3600B98357 /* ObjectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */; };
-		F072B6691E74ECD1004219A1 /* ObjectToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072B6681E74ECD1004219A1 /* ObjectToolbarItems.swift */; };
 		F073744C1DC355FC006439F6 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F073744A1DC355FC006439F6 /* Shader.fsh */; };
 		F073744D1DC355FC006439F6 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F073744B1DC355FC006439F6 /* Shader.vsh */; };
 		F07482D41E793E2F0072F96D /* ObjectStackViewHS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07482D31E793E2F0072F96D /* ObjectStackViewHS.swift */; };
@@ -303,8 +306,6 @@
 		F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48321EB0DF8F000629DA /* ObjectHazards.swift */; };
 		F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */; };
 		F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */; };
-		F09541A61E75F9B200A25FA1 /* ObjectToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09541A51E75F9B200A25FA1 /* ObjectToolbarIcon.swift */; };
-		F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */; };
 		F098F78B1E4F89A0007EDD2A /* ObjectForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */; };
 		F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */; };
 		F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */; };
@@ -365,7 +366,6 @@
 		F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */; };
 		F0C1BC4F1EBAC69C0063C853 /* colormapbvaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */; };
 		F0C1BC501EBAC69C0063C853 /* colormaprefaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */; };
-		F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */; };
 		F0C8F1591EFBD5500099AAD8 /* ObjectToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */; };
 		F0CB3D781E566562002F8BB4 /* ObjectNumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */; };
 		F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */; };
@@ -527,6 +527,10 @@
 		036D975023C5DFEE00253A39 /* UtilityWpcRainfallOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcRainfallOutlook.swift; sourceTree = "<group>"; };
 		036E1ADB1FEE54C800DE2EFE /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		036E1ADD1FEE5C3900DE2EFE /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		036E9B8F269D0AAA0009A47B /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		036E9B91269D0C010009A47B /* ToolbarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
+		036E9B93269D0C0B0009A47B /* ToolbarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarItems.swift; sourceTree = "<group>"; };
+		036E9B95269D0C7C0009A47B /* ScrollStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollStackView.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -682,7 +686,6 @@
 		F06DB4371DA41547005B243A /* hw.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = hw.bin; sourceTree = "<group>"; };
 		F06DB4381DA41547005B243A /* hwv4.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = hwv4.bin; sourceTree = "<group>"; };
 		F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPopUp.swift; sourceTree = "<group>"; };
-		F072B6681E74ECD1004219A1 /* ObjectToolbarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToolbarItems.swift; sourceTree = "<group>"; };
 		F073744A1DC355FC006439F6 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		F073744B1DC355FC006439F6 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		F07482D31E793E2F0072F96D /* ObjectStackViewHS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStackViewHS.swift; sourceTree = "<group>"; };
@@ -711,8 +714,6 @@
 		F08E48321EB0DF8F000629DA /* ObjectHazards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectHazards.swift; sourceTree = "<group>"; };
 		F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCurrentConditions.swift; sourceTree = "<group>"; };
 		F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
-		F09541A51E75F9B200A25FA1 /* ObjectToolbarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToolbarIcon.swift; sourceTree = "<group>"; };
-		F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextView.swift; sourceTree = "<group>"; };
 		F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecast.swift; sourceTree = "<group>"; };
 		F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPolygons.swift; sourceTree = "<group>"; };
 		F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectColorPalette.swift; sourceTree = "<group>"; };
@@ -773,7 +774,6 @@
 		F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionType.swift; sourceTree = "<group>"; };
 		F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbvaf.txt; sourceTree = "<group>"; };
 		F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefaf.txt; sourceTree = "<group>"; };
-		F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectScrollStackView.swift; sourceTree = "<group>"; };
 		F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToast.swift; sourceTree = "<group>"; };
 		F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNumberPicker.swift; sourceTree = "<group>"; };
 		F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityShare.swift; sourceTree = "<group>"; };
@@ -1232,6 +1232,10 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
+				036E9B93269D0C0B0009A47B /* ToolbarItems.swift */,
+				036E9B91269D0C010009A47B /* ToolbarIcon.swift */,
+				036E9B8F269D0AAA0009A47B /* Text.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1268,22 +1272,18 @@
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,
 				F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */,
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
-				F0C8F1561EFBD4A80099AAD8 /* ObjectScrollStackView.swift */,
 				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
 				03BF9A412296798B00203B26 /* ObjectSlider.swift */,
 				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
 				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
 				03CBF0911FE526A100F40DA6 /* ObjectStackView.swift */,
 				F07482D31E793E2F0072F96D /* ObjectStackViewHS.swift */,
-				F098F63D1E5320F900AAC5B8 /* ObjectTextView.swift */,
 				031546311FC632FD0020EF7B /* ObjectTextViewLarge.swift */,
 				0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */,
 				F08748191E5513A70081E1FD /* ObjectTileImage.swift */,
 				F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */,
 				F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */,
 				F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */,
-				F09541A51E75F9B200A25FA1 /* ObjectToolbarIcon.swift */,
-				F072B6681E74ECD1004219A1 /* ObjectToolbarItems.swift */,
 				F08748171E5513350081E1FD /* ObjectTouchImageView.swift */,
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
@@ -1693,7 +1693,6 @@
 				F0B335AC1DA3FD960035BD36 /* UtilityIO.swift in Sources */,
 				03F3EB85229945D10056A56D /* UtilityModelNsslWrfInputOutput.swift in Sources */,
 				03CBF0921FE526A100F40DA6 /* ObjectStackView.swift in Sources */,
-				F072B6691E74ECD1004219A1 /* ObjectToolbarItems.swift in Sources */,
 				03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */,
 				F031265D1DB84C1E009D6CF2 /* StackView.swift in Sources */,
 				03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */,
@@ -1800,15 +1799,14 @@
 				0340423B23F16FC3003AB242 /* vcTextViewer.swift in Sources */,
 				F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */,
 				0340423223F16FC3003AB242 /* vcLightning.swift in Sources */,
-				F09541A61E75F9B200A25FA1 /* ObjectToolbarIcon.swift in Sources */,
 				03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */,
 				F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */,
 				03F3EB97229945DA0056A56D /* UtilityModelWpcGefsInputOutput.swift in Sources */,
 				0343972725E1AAF600F3C0F1 /* UtilityUS.swift in Sources */,
 				03F3EB95229945DA0056A56D /* UtilityModelSpcHrrrInterface.swift in Sources */,
-				F0C8F1571EFBD4A80099AAD8 /* ObjectScrollStackView.swift in Sources */,
 				03A40A442286F0E9000750C7 /* UtilityTimeSunMoon.swift in Sources */,
 				0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */,
+				036E9B90269D0AAB0009A47B /* Text.swift in Sources */,
 				031D033621F073390074F44D /* ObjectCardLocationItem.swift in Sources */,
 				03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */,
 				F0B3357B1DA3FD6F0035BD36 /* UtilityCanvasProjection.swift in Sources */,
@@ -1875,12 +1873,14 @@
 				F071A9FA1E75BD3600B98357 /* ObjectPopUp.swift in Sources */,
 				030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */,
 				F0DAD9381DA7018D00C2BD4B /* blocksort.c in Sources */,
+				036E9B92269D0C010009A47B /* ToolbarIcon.swift in Sources */,
 				F0B335341DA3FD3B0035BD36 /* WXGLNexrad.swift in Sources */,
 				03DF17F021AA0FBE00FC3BEA /* WXMetalNexradLevelData.swift in Sources */,
 				F0D7B8491E774C730032D1C9 /* UtilitySettings.swift in Sources */,
 				F0B335FE1DA3FDD40035BD36 /* UtilityUI.swift in Sources */,
 				F02DF2551EB89FCF00A951EA /* ObjectCanadaLegal.swift in Sources */,
 				03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */,
+				036E9B94269D0C0B0009A47B /* ToolbarItems.swift in Sources */,
 				0399A14D21CFD3BB0096ECFB /* FloatyDelegate.swift in Sources */,
 				0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */,
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
@@ -1909,6 +1909,7 @@
 				F0B3355B1DA3FD610035BD36 /* GlobalArrays.swift in Sources */,
 				0340420523F16A4D003AB242 /* vcSettingsLocationCanada.swift in Sources */,
 				03F3EB6922993B870056A56D /* UtilitySpcStormReports.swift in Sources */,
+				036E9B96269D0C7C0009A47B /* ScrollStackView.swift in Sources */,
 				0340421623F16DCC003AB242 /* vcCanadaHourly.swift in Sources */,
 				F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */,
 				0354D3F623C117710024153D /* Fronts.swift in Sources */,
@@ -1921,7 +1922,6 @@
 				0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */,
 				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,
-				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
 				036102CC269C89CC0072EEC4 /* to.swift in Sources */,
 				F0B3353A1DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift in Sources */,
 				036102D2269CCE8E0072EEC4 /* FutureText.swift in Sources */,

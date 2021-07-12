@@ -9,7 +9,7 @@ import UIKit
 final class vcWpcImg: UIwXViewController {
 
     private var image = ObjectTouchImageView()
-    private var productButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
     private var index = 0
     private var timePeriod = 1
     private let subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
@@ -18,9 +18,9 @@ final class vcWpcImg: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        productButton = ToolbarIcon(self, #selector(showProductMenu))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {

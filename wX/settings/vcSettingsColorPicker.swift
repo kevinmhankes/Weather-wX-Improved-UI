@@ -7,25 +7,25 @@
 import UIKit
 
 final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
-    
+
     private let colorBarSize: CGFloat = 100.0
     private let colorBar = UIView()
     private var newRed = 0
     private var newGreen = 0
     private var newBlue = 0
     private var colorChanged = false
-    private var colorButton = ObjectToolbarIcon()
+    private var colorButton = ToolbarIcon()
     private let toolbarTop = ObjectToolbar()
     private var colPicker = HSBColorPicker()
     var colorObject = wXColor()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let labelButton = ObjectToolbarIcon(title: colorObject.uiLabel, self, nil)
-        toolbarTop.items = ObjectToolbarItems([GlobalVariables.flexBarButton, labelButton]).items
-        let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
-        colorButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, colorButton, defaultButton]).items
+        let labelButton = ToolbarIcon(title: colorObject.uiLabel, self, nil)
+        toolbarTop.items = ToolbarItems([GlobalVariables.flexBarButton, labelButton]).items
+        let defaultButton = ToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
+        colorButton = ToolbarIcon(self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, colorButton, defaultButton]).items
         // colPicker = HSBColorPicker()
         colPicker.delegate = self
         refreshViews()
@@ -43,14 +43,14 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
     }
-    
+
     override func doneClicked() {
         if colorChanged {
             saveNewColorClicked()
         }
         super.doneClicked()
     }
-    
+
     func HSBColorColorPickerTouched(sender: HSBColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizer.State) {
         let myColorComponents = color.components
         let colorInt: Int = (0xFF << 24)
@@ -64,13 +64,13 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colorChanged = true
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
     }
-    
+
     func saveNewColorClicked() {
         Utility.writePref(colorObject.prefVar, Color.rgb(newRed, newGreen, newBlue))
         colorBar.backgroundColor = wXColor.uiColorInt(newRed, newGreen, newBlue)
         colorObject.regenCurrentColor()
     }
-    
+
     @objc func saveDefaultColorClicked() {
         Utility.writePref(colorObject.prefVar, Color.rgb(colorObject.defaultRed, colorObject.defaultGreen, colorObject.defaultBlue))
         colorBar.backgroundColor = colorObject.uiColorDefault
@@ -82,7 +82,7 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         colorButton.title = "(" + String(newRed) + ", " + String(newGreen) + ", " + String(newBlue) + ")"
         doneClicked()
     }
-    
+
     internal override func refreshViews() {
         let (width, height) = UtilityUI.getScreenBoundsCGFloat()
         if UtilityUI.isTablet() {
@@ -113,7 +113,7 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
             height: colorBarSize
         )
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.refreshViews() })

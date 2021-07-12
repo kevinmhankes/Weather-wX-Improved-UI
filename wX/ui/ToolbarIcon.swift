@@ -6,8 +6,8 @@
 
 import UIKit
 
-final class ObjectToolbarIcon: UIBarButtonItem {
-    
+final class ToolbarIcon: UIBarButtonItem {
+
     static let oldIconToNew = [
         "ic_arrow_back_white_24dp": "chevron.left",
         "ic_play_arrow_24dp": "play.fill",
@@ -29,7 +29,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         "ic_stop_24dp": "stop.fill",
         "ic_pause_24dp": "pause.fill"
     ]
-    
+
     static let iconToString: [IconType: String] = [
         .share: "ic_share_24dp",
         .pause: "ic_pause_24dp",
@@ -51,7 +51,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .rightArrow: "ic_keyboard_arrow_right_24dp",
         .download: "ic_get_app_24dp"
     ]
-    
+
     static let iconToAccessibilityLabel: [IconType: String] = [
         .share: "share content",
         .play: "play",
@@ -70,12 +70,12 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         .leftArrow: "go left",
         .rightArrow: "go right"
     ]
-    
+
     static func getIcon(_ iconStr: String) -> UIImage {
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
-            let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            let newIconValue = ToolbarIcon.oldIconToNew[iconStr]
             if newIconValue != nil {
                 return (UIImage(
                     systemName: newIconValue!,
@@ -85,14 +85,14 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         }
         return UIImage(named: iconStr)!
     }
-    
+
     let toolbarIconPadding: CGFloat = 11.0
     var button = UIButton()
-    
+
     override init() {
         super.init()
     }
-    
+
     convenience init(_ uiv: UIViewController, _ iconStr: String, _ action: Selector) {
         self.init()
         button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight, height: UIPreferences.toolbarHeight))
@@ -106,7 +106,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
-            let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            let newIconValue = ToolbarIcon.oldIconToNew[iconStr]
             if newIconValue != nil {
                 let image = UIImage(
                     systemName: newIconValue!,
@@ -122,11 +122,11 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         heightConstraint.isActive = true
         widthConstraint.isActive = true
     }
-    
+
     // severe dashboard and us alerts
     convenience init(iconType: IconType, gesture: UITapGestureRecognizerWithData) {
         self.init()
-        let iconStr = ObjectToolbarIcon.iconToString[iconType] ?? ""
+        let iconStr = ToolbarIcon.iconToString[iconType] ?? ""
         button = UIButton(frame: CGRect(x: 0, y: 0, width: UIPreferences.toolbarHeight, height: UIPreferences.toolbarHeight))
         button.imageEdgeInsets = UIEdgeInsets(
             top: toolbarIconPadding,
@@ -138,7 +138,7 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.black
-            let newIconValue = ObjectToolbarIcon.oldIconToNew[iconStr]
+            let newIconValue = ToolbarIcon.oldIconToNew[iconStr]
             if newIconValue != nil {
                 let image = UIImage(
                     systemName: newIconValue!,
@@ -154,35 +154,35 @@ final class ObjectToolbarIcon: UIBarButtonItem {
         heightConstraint.isActive = true
         widthConstraint.isActive = true
     }
-    
+
     convenience init(_ uiv: UIViewController, _ iconType: IconType, _ action: Selector) {
-        self.init(uiv, ObjectToolbarIcon.iconToString[iconType] ?? "", action)
+        self.init(uiv, ToolbarIcon.iconToString[iconType] ?? "", action)
         button.isAccessibilityElement = true
-        button.accessibilityLabel = ObjectToolbarIcon.iconToAccessibilityLabel[iconType] ?? "No label"
+        button.accessibilityLabel = ToolbarIcon.iconToAccessibilityLabel[iconType] ?? "No label"
     }
-    
+
     convenience init(_ target: UIViewController, _ action: Selector?) {
         self.init(title: "", style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
-    
+
     convenience init(title: String, _ target: UIViewController, _ action: Selector?) {
         self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
-    
+
     convenience init(title: String, _ target: UIViewController, _ action: Selector?, tag: Int) {
         self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
         self.tag = tag
     }
-    
+
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
+
     func setImage(_ iconType: IconType) {
-        let fileName = ObjectToolbarIcon.iconToString[iconType] ?? ""
+        let fileName = ToolbarIcon.iconToString[iconType] ?? ""
         button.setImage(UIImage(named: fileName), for: .normal)
         if #available(iOS 13, *) {
             let configuration = UIImage.SymbolConfiguration(weight: .medium)
             let color = UIColor.white
-            let newIconValue = ObjectToolbarIcon.oldIconToNew[fileName]
+            let newIconValue = ToolbarIcon.oldIconToNew[fileName]
             if newIconValue != nil {
                 let image = UIImage(
                     systemName: newIconValue!,

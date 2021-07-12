@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectToolbarItems {
+final class ToolbarItems {
 
     let items: [UIBarButtonItem]
 

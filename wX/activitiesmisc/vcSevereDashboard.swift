@@ -15,16 +15,16 @@ final class vcSevereDashboard: UIwXViewController {
     private let snMpd = SevereNotice(.WPCMPD)
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
-    private var statusButton = ObjectToolbarIcon()
+    private var statusButton = ToolbarIcon()
     private let synthesizer = AVSpeechSynthesizer()
     private var statusWarnings = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        statusButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        statusButton = ToolbarIcon(self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
 
@@ -38,7 +38,7 @@ final class vcSevereDashboard: UIwXViewController {
         getContentUsAlerts()
         getContentSpcStormReports()
     }
-    
+
     func getContentWatch() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadWatch.getWatch()
@@ -48,7 +48,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentMcd() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadMcd.getMcd()
@@ -58,7 +58,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentMpd() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadMpd.getMpd()
@@ -68,7 +68,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentWarningTst() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getPolygonVtecTst()
@@ -77,7 +77,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentWarningFfw() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getPolygonVtecFfw()
@@ -86,7 +86,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentWarningTor() {
         DispatchQueue.global(qos: .userInitiated).async {
             UtilityDownloadRadar.getPolygonVtecTor()
@@ -95,7 +95,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentUsAlerts() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
@@ -104,7 +104,7 @@ final class vcSevereDashboard: UIwXViewController {
             }
         }
     }
-    
+
     func getContentSpcStormReports() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
@@ -274,7 +274,7 @@ final class vcSevereDashboard: UIwXViewController {
         }
         statusButton.title = status + " " + statusWarnings
     }
-    
+
     func getNoticeCount() -> Int {
         var count = 0
         [snWat, snMcd, snMpd].forEach { severeNotice in

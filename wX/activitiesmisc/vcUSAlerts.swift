@@ -8,25 +8,25 @@ import UIKit
 import AVFoundation
 
 final class vcUSAlerts: UIwXViewController {
-    
+
     private var capAlerts = [CapAlert]()
     private var filter = ""
-    private var filterButton = ObjectToolbarIcon()
+    private var filterButton = ToolbarIcon()
     private var objAlertSummary = ObjectAlertSummary()
     private var bitmap = Bitmap()
     private var filterGesture: UITapGestureRecognizer?
     private var filterShown = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterButton = ObjectToolbarIcon(self, #selector(filterClicked))
+        filterButton = ToolbarIcon(self, #selector(filterClicked))
         filterGesture = UITapGestureRecognizer(target: self, action: #selector(filterClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         capAlerts = []
         DispatchQueue.global(qos: .userInitiated).async {
@@ -36,7 +36,7 @@ final class vcUSAlerts: UIwXViewController {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     private func display() {
         refreshViews()
         if !filterShown {
@@ -48,20 +48,20 @@ final class vcUSAlerts: UIwXViewController {
             filterChanged(filter)
         }
     }
-    
+
     @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
         Route.alertDetail(self, objAlertSummary.getUrl(sender.data))
     }
-    
+
     @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
         let wfo = objAlertSummary.wfos[sender.data]
         Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[wfo] ?? "")
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, objAlertSummary.image)
     }
-    
+
     @objc func filterClicked() {
         var eventArr = [String]()
         var counts = [String: Int]()
@@ -73,7 +73,7 @@ final class vcUSAlerts: UIwXViewController {
         }
         _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, filterChanged(_:))
     }
-    
+
     func filterChanged(_ filter: String) {
         filterButton.title = filter
         objAlertSummary = ObjectAlertSummary(self, filter, capAlerts, filterGesture, showImage: false)
@@ -81,11 +81,11 @@ final class vcUSAlerts: UIwXViewController {
         filterShown = true
         self.filter = filter
     }
-    
+
     @objc func imageClicked() {
         objAlertSummary.changeImage(self)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })

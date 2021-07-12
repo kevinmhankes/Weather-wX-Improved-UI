@@ -7,8 +7,8 @@
 import UIKit
 
 final class vcNhcStorm: UIwXViewController {
-    
-    private var productButton = ObjectToolbarIcon()
+
+    private var productButton = ToolbarIcon()
     private var html = ""
     private var product = ""
     private var bitmaps = [Bitmap]()
@@ -30,17 +30,17 @@ final class vcNhcStorm: UIwXViewController {
         "_wind_probs_64_F120_sm2.png"
     ]
     var stormData: ObjectNhcStormDetails!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         product = "MIATCP" + stormData.binNumber
-        productButton = ObjectToolbarIcon(title: " Text Products", self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        productButton = ToolbarIcon(title: " Text Products", self, #selector(productClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         bitmaps = []
         DispatchQueue.global(qos: .userInitiated).async {
@@ -55,40 +55,40 @@ final class vcNhcStorm: UIwXViewController {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, bitmaps)
     }
-    
+
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, textProducts, productChanged(_:))
     }
-    
+
     func productChanged(_ product: String) {
         Route.wpcText(self, product + stormData.binNumber.uppercased())
     }
-    
+
     func display() {
         refreshViews()
         displayImage()
         displayText()
     }
-    
+
     func displayText() {
-        let objectTextView = ObjectTextView(stackView, html)
+        let objectTextView = Text(stackView, html)
         objectTextView.constrain(scrollView)
     }
-    
+
     func displayImage() {
         bitmapsFiltered = []
         bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
         _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
     }
-    
+
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         Route.imageViewer(self, bitmapsFiltered[sender.data].url)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

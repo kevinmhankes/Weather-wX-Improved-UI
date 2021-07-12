@@ -7,21 +7,21 @@
 import UIKit
 
 final class vcSettingsColorListing: UIwXViewController {
-    
+
     private var colors = [wXColor]()
-    private var objectTextViews = [ObjectTextView]()
-    
+    private var objectTextViews = [Text]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let statusButton = ToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        objScrollStackView = ScrollStackView(self)
         stackView.spacing = 0
         setupColorObjects()
         colors.sort(by: { $0.uiLabel < $1.uiLabel })
         display()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         objectTextViews.forEach { tv in
@@ -34,14 +34,14 @@ final class vcSettingsColorListing: UIwXViewController {
             }
         }
     }
-    
+
     override func doneClicked() {
         RadarGeometry.setColors()
         GeographyType.regen()
         PolygonType.regen()
         super.doneClicked()
     }
-    
+
     func setupColorObjects() {
         colors.append(wXColor("Highways", "RADAR_COLOR_HW", 135, 135, 135 ))
         colors.append(wXColor("Secondary Roads", "RADAR_COLOR_HW_EXT", 91, 91, 91 ))
@@ -71,14 +71,14 @@ final class vcSettingsColorListing: UIwXViewController {
         colors.append(wXColor("NWS Forecast Icon Bottom Color", "NWS_ICON_BOTTOM_COLOR", 255, 255, 255 ))
         colors.append(wXColor("Nexrad Radar Background Color", "NEXRAD_RADAR_BACKGROUND_COLOR", 0, 0, 0 ))
     }
-    
+
     @objc func goToColor(sender: UITapGestureRecognizerWithData) {
         Route.colorPicker(self, colors[sender.data])
     }
-    
+
     private func display() {
         colors.enumerated().forEach { index, color in
-            let objectTextView = ObjectTextView(stackView, color.uiLabel, color)
+            let objectTextView = Text(stackView, color.uiLabel, color)
             if color.colorsCurrent.red == 0 && color.colorsCurrent.green == 0 && color.colorsCurrent.blue == 0 {
                 objectTextView.color = UIColor.white
             } else {

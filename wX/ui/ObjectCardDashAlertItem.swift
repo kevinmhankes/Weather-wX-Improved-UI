@@ -17,32 +17,32 @@ final class ObjectCardDashAlertItem {
         _ gestureRadar: UITapGestureRecognizerWithData,
         _ gestureRadarText: UITapGestureRecognizerWithData
     ) {
-        let tvName = ObjectTextViewLarge(80.0, text: warning.sender, color: ColorCompatibility.highlightText)
+        let tvName = TextLarge(80.0, text: warning.sender, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
         tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
-        let tvTitle = ObjectTextView(
+        let tvTitle = Text(
             warning.event,
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
-        let tvStart = ObjectTextView(
+        let tvStart = Text(
             "Start: " + warning.effective.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
             isUserInteractionEnabled: false,
             isZeroSpacing: true
         )
-        let tvEnd = ObjectTextView(
+        let tvEnd = Text(
             "End: " + warning.expires.replace("T", " ").replaceAllRegexp(":00-0[0-9]:00", ""),
             isUserInteractionEnabled: false, isZeroSpacing: true
         )
-        let tvArea = ObjectTextViewSmallGray(text: warning.area, isUserInteractionEnabled: false)
+        let tvArea = TextSmallGray(text: warning.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
         tvTitle.tv.isAccessibilityElement = false
         tvStart.tv.isAccessibilityElement = false
         tvEnd.tv.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
         // icons
-        let radarIcon = ObjectToolbarIcon(iconType: .radar, gesture: gestureRadar)
-        let radarText = ObjectTextView("Radar")
+        let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
+        let radarText = Text("Radar")
         radarText.addGestureRecognizer(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -73,6 +73,6 @@ final class ObjectCardDashAlertItem {
         uiv.stackView.addArrangedSubview(cardStackView.view)
         verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
-    
+
     @objc func showRadar() {}
 }

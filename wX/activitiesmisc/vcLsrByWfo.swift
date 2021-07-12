@@ -11,19 +11,19 @@ import MapKit
 final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     private var wfoProd = [String]()
-    private var siteButton = ObjectToolbarIcon()
+    private var siteButton = ToolbarIcon()
     private let map = ObjectMap(.WFO)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.wfos)
-        siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        siteButton = ToolbarIcon(self, #selector(mapClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, siteButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent(Location.wfo)
     }
-    
+
     func getContent(_ wfo: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             self.wfoProd = self.getLsrFromWfo(wfo)
@@ -33,18 +33,18 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
             }
         }
     }
-    
+
     private func display() {
         if !map.mapShown {
             stackView.removeViews()
             wfoProd.forEach { item in
-                let objectTextView = ObjectTextView(stackView, item)
+                let objectTextView = Text(stackView, item)
                 objectTextView.font = FontSize.hourly.size
                 objectTextView.constrain(scrollView)
             }
         }
     }
-    
+
     func getLsrFromWfo(_ wfo: String) -> [String] {
         var lsrList = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby=" + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
@@ -62,23 +62,23 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         }
         return lsrList
     }
-    
+
     @objc func mapClicked() {
         map.toggleMap(self)
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         map.mapView(annotation)
     }
-    
+
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
-    
+
     func mapCall(annotationView: MKAnnotationView) {
         getContent((annotationView.annotation!.title!)!)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(

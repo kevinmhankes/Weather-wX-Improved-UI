@@ -7,16 +7,16 @@
 import UIKit
 
 final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
-    
+
     private var bitmap = Bitmap()
     private var html = ""
     var day = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ObjectToolbarIcon(title: "Day " + to.String(day + 1), self, nil)
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([
+        let statusButton = ToolbarIcon(title: "Day " + to.String(day + 1), self, nil)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             statusButton,
             GlobalVariables.flexBarButton,
@@ -24,15 +24,15 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
             playListButton,
             shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         getContentImage()
         getContentText()
     }
-    
+
     func getContentImage() {
         let imgUrl = UtilityWpcRainfallOutlook.urls[day]
         DispatchQueue.global(qos: .userInitiated).async {
@@ -40,7 +40,7 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     func getContentText() {
         product = UtilityWpcRainfallOutlook.codes[day]
         DispatchQueue.global(qos: .userInitiated).async {
@@ -48,20 +48,20 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     private func display() {
         refreshViews()
         _ = ObjectImageAndText(self, bitmap, html)
     }
-    
+
     @objc func imageClicked() {
         Route.imageViewer(self, UtilityWpcRainfallOutlook.urls[day])
     }
-    
+
     override func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, bitmap, html)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })

@@ -31,7 +31,7 @@ final class UtilityActions {
         }
     }
 
-    static func menuClicked(_ uiv: UIViewController, _ button: ObjectToolbarIcon) {
+    static func menuClicked(_ uiv: UIViewController, _ button: ToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch
         var menuList = [
             "Hourly Forecast",

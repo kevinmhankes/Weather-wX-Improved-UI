@@ -11,7 +11,7 @@ final class ObjectCardBlackHeaderText {
     private let objectCardStackView: ObjectCardStackView
 
     init(_ uiv: UIwXViewController, _ text: String) {
-        let tvLocation = ObjectTextViewLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
+        let tvLocation = TextLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
         tvLocation.text = text
         tvLocation.view.textColor = UIColor.white
         tvLocation.view.backgroundColor = UIColor.black

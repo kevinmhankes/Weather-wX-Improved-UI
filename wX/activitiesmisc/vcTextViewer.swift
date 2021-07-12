@@ -7,19 +7,19 @@
 import UIKit
 
 final class vcTextViewer: UIwXViewControllerWithAudio {
-    
+
     var textViewText = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
         display()
     }
 
     private func display() {
-        objectTextView = ObjectTextView(stackView, textViewText)
+        objectTextView = Text(stackView, textViewText)
         objectTextView.constrain(scrollView)
     }
 }

@@ -7,30 +7,30 @@
 import UIKit
 
 final class vcObsSites: UIwXViewController {
-    
+
     private var listCity = [String]()
     private var stateView = true
     private var stateSelected = ""
-    private var siteButton = ObjectToolbarIcon()
-    private var mapButton = ObjectToolbarIcon()
+    private var siteButton = ToolbarIcon()
+    private var mapButton = ToolbarIcon()
     private let prefToken = "NWS_OBSSITE_LAST_USED"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        siteButton = ObjectToolbarIcon(self, #selector(siteClicked))
-        mapButton = ObjectToolbarIcon(self, #selector(mapClicked))
+        siteButton = ToolbarIcon(self, #selector(siteClicked))
+        mapButton = ToolbarIcon(self, #selector(mapClicked))
         siteButton.title = "Last Used: " + Utility.readPref(prefToken, "")
         mapButton.title = "Map"
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, mapButton, siteButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, mapButton, siteButton]).items
+        objScrollStackView = ScrollStackView(self)
         constructStateView()
     }
-    
+
     @objc func goToState(sender: UITapGestureRecognizerWithData) {
         stateSelected = GlobalArrays.states[sender.data].split(":")[0]
         showState()
     }
-    
+
     func showState() {
         stateView = false
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
@@ -52,7 +52,7 @@ final class vcObsSites: UIwXViewController {
         }
         stackView.removeViews()
         listCity.enumerated().forEach { index, city in
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 stackView,
                 city,
                 UITapGestureRecognizerWithData(index, self, #selector(gotoObsSite(sender:)))
@@ -62,7 +62,7 @@ final class vcObsSites: UIwXViewController {
         }
         scrollView.scrollToTop()
     }
-    
+
     @objc func gotoObsSite(sender: UITapGestureRecognizerWithData) {
         if sender.data == 0 {
             constructStateView()
@@ -73,12 +73,12 @@ final class vcObsSites: UIwXViewController {
             Route.web(self, "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + site)
         }
     }
-    
+
     func constructStateView() {
         stateView = true
         stackView.removeViews()
         GlobalArrays.states.enumerated().forEach { index, state in
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 stackView,
                 state,
                 UITapGestureRecognizerWithData(index, self, #selector(goToState(sender:)))
@@ -87,11 +87,11 @@ final class vcObsSites: UIwXViewController {
             objectTextView.constrain(scrollView)
         }
     }
-    
+
     @objc func siteClicked() {
         Route.web(self, "https://www.wrh.noaa.gov/mesowest/timeseries.php?sid=" + Utility.readPref(prefToken, ""))
     }
-    
+
     @objc func mapClicked() {
         Route.web(self, "https://www.wrh.noaa.gov/map/?obs=true&wfo=" + Location.wfo.lowercased())
     }

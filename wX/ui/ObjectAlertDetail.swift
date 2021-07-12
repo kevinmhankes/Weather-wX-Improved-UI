@@ -8,13 +8,13 @@ import UIKit
 
 final class ObjectAlertDetail {
 
-    private var textViews = [ObjectTextView]()
+    private var textViews = [Text]()
     private let uiStackView: UIStackView
 
     init(_ uiStackView: UIStackView) {
         self.uiStackView = uiStackView
         (0...6).forEach { _ in
-            let objectTextView = ObjectTextView(uiStackView, "")
+            let objectTextView = Text(uiStackView, "")
             objectTextView.tv.isAccessibilityElement = false
             textViews.append(objectTextView)
         }

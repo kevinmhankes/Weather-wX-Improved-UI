@@ -8,14 +8,14 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    private let objectTextView: ObjectTextView
+    private let objectTextView: Text
     private var sunriseSunset: String
     private var gmtTimeText: String
 
     init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
         sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText = UtilityTime.gmtTime()
-        objectTextView = ObjectTextView(
+        objectTextView = Text(
             stackView,
             sunriseSunset + GlobalVariables.newline + gmtTimeText,
             FontSize.small.size,

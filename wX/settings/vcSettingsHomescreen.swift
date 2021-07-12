@@ -9,17 +9,17 @@ import UIKit
 final class vcSettingsHomescreen: UIwXViewController {
 
     private var homeScreenFav = [String]()
-    private var addImageButton = ObjectToolbarIcon()
-    private var addTextButton = ObjectToolbarIcon()
-    private var addButton = ObjectToolbarIcon()
+    private var addImageButton = ToolbarIcon()
+    private var addTextButton = ToolbarIcon()
+    private var addButton = ToolbarIcon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButton = ObjectToolbarIcon(self, .plus, #selector(addClicked))
-        let defaultButton = ObjectToolbarIcon(title: "Set to default", self, #selector(setToDefault))
-        addImageButton = ObjectToolbarIcon(title: "Image", self, #selector(addImageClicked))
-        addTextButton = ObjectToolbarIcon(title: "Text", self, #selector(addTextClicked))
-        toolbar.items = ObjectToolbarItems([
+        addButton = ToolbarIcon(self, .plus, #selector(addClicked))
+        let defaultButton = ToolbarIcon(title: "Set to default", self, #selector(setToDefault))
+        addImageButton = ToolbarIcon(title: "Image", self, #selector(addImageClicked))
+        addTextButton = ToolbarIcon(title: "Text", self, #selector(addTextClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             addTextButton,
@@ -27,7 +27,7 @@ final class vcSettingsHomescreen: UIwXViewController {
             defaultButton,
             addButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        objScrollStackView = ScrollStackView(self)
         deSerializeSettings()
         display(saveToDisk: false)
     }
@@ -146,7 +146,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 }
             }
             if let goodTitle = title {
-                let objectTextView = ObjectTextView(
+                let objectTextView = Text(
                     stackView,
                     goodTitle.trim(),
                     UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
@@ -154,7 +154,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 objectTextView.tv.isSelectable = false
                 objectTextView.constrain(scrollView)
             } else {
-                let objectTextView = ObjectTextView(
+                let objectTextView = Text(
                     stackView,
                     prefVar,
                     UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))

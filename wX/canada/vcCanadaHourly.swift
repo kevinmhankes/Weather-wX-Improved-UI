@@ -7,25 +7,25 @@
 import UIKit
 
 final class vcCanadaHourly: UIwXViewControllerWithAudio {
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(stackView, "", FontSize.hourly.size)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        objScrollStackView = ScrollStackView(self)
+        objectTextView = Text(stackView, "", FontSize.hourly.size)
         objectTextView.constrain(scrollView)
         _ = ObjectCanadaLegal(stackView)
         getContent()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
             DispatchQueue.main.async { self.display(html) }
         }
     }
-    
+
     private func display(_ html: String) {
         objectTextView.text = html
     }

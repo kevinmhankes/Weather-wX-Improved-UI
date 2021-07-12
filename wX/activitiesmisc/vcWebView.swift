@@ -9,9 +9,9 @@ import WebKit
 
 final class vcWebView: UIwXViewController {
 
-    private var productButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
     private var webView = WKWebView()
-    private var browserButton = ObjectToolbarIcon()
+    private var browserButton = ToolbarIcon()
     private var stateCode = ""
     private let prefToken = "STATE_CODE"
     var url = ""
@@ -21,12 +21,12 @@ final class vcWebView: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(title: "Product", self, #selector(productClicked))
-        browserButton = ObjectToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
+        productButton = ToolbarIcon(title: "Product", self, #selector(productClicked))
+        browserButton = ToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
         if showProduct {
-            toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton, productButton]).items
+            toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton, productButton]).items
         } else {
-            toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton]).items
+            toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton]).items
         }
         view.addSubview(webView)
         view.bringSubviewToFront(toolbar)

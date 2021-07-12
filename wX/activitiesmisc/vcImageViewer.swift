@@ -7,34 +7,34 @@
 import UIKit
 
 final class vcImageViewer: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
     var url = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
         getContent()
     }
-    
+
     override func willEnterForeground() {}
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = Bitmap(self.url)
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         image = ObjectTouchImageView(self, toolbar, bitmap)
     }
-    
+
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

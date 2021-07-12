@@ -8,28 +8,28 @@ import UIKit
 import AVFoundation
 
 final class vcAdhocLocation: UIwXViewController {
-    
+
     private var objectCurrentConditions = ObjectCurrentConditions()
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
     private var stackViewHazards = ObjectStackView(.fill, .vertical)
-    var saveButton = ObjectToolbarIcon()
+    var saveButton = ToolbarIcon()
     var adhocLocation = LatLon()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleButton = ObjectToolbarIcon(self, nil)
-        saveButton = ObjectToolbarIcon(title: "Save Location", self, #selector(save))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let titleButton = ToolbarIcon(self, nil)
+        saveButton = ToolbarIcon(title: "Save Location", self, #selector(save))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
+        objScrollStackView = ScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
         getContent()
     }
-    
+
     override func getContent() {
         refreshViews()
         DispatchQueue.global(qos: .userInitiated).async {
@@ -39,7 +39,7 @@ final class vcAdhocLocation: UIwXViewController {
             DispatchQueue.main.async { self.display() }
         }
     }
-    
+
     private func display() {
         _ = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, true)
         stackView.addArrangedSubview(stackViewCurrentConditions.view)
@@ -49,7 +49,7 @@ final class vcAdhocLocation: UIwXViewController {
         stackView.addArrangedSubview(stackViewForecast.view)
         stackViewForecast.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
-    
+
     @objc func save() {
         let status = Location.save(adhocLocation)
         ObjectPopUp(self, status, saveButton).present()

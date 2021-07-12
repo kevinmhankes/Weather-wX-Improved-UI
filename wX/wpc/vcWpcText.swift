@@ -7,18 +7,18 @@
 import UIKit
 
 final class vcWpcText: UIwXViewControllerWithAudio {
-    
-    private var productButton = ObjectToolbarIcon()
+
+    private var productButton = ToolbarIcon()
     private let subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
     var wpcTextProduct = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         product = "PMDSPD"
         UIApplication.shared.isIdleTimerDisabled = true
-        productButton = ObjectToolbarIcon(self, #selector(showProductMenu))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([
+        productButton = ToolbarIcon(self, #selector(showProductMenu))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             productButton,
@@ -26,8 +26,8 @@ final class vcWpcText: UIwXViewControllerWithAudio {
             playListButton,
             shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(stackView)
+        objScrollStackView = ScrollStackView(self)
+        objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
         if wpcTextProduct == "" {
             product = Utility.readPref("WPCTEXT_PARAM_LAST_USED", product)
@@ -37,12 +37,12 @@ final class vcWpcText: UIwXViewControllerWithAudio {
         }
         getContent()
     }
-    
+
     @objc override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
-    
+
     override func getContent() {
         // qos was .background
         // userInitiated
@@ -53,7 +53,7 @@ final class vcWpcText: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display(html) }
         }
     }
-    
+
     private func display(_ html: String) {
         objectTextView.text = html
         if UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
@@ -64,15 +64,15 @@ final class vcWpcText: UIwXViewControllerWithAudio {
         productButton.title = product.uppercased()
         Utility.writePref("WPCTEXT_PARAM_LAST_USED", product)
     }
-    
+
     @objc func showProductMenu() {
         _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
     }
-    
+
     func showSubMenu(_ index: Int) {
         _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, productChanged(_:))
     }
-    
+
     func productChanged(_ index: Int) {
         let code = subMenu.params[index].split(":")[0]
         scrollView.scrollToTop()

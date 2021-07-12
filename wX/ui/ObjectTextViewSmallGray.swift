@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectTextViewSmallGray {
+final class TextSmallGray {
 
     let tv = UITextView()
 

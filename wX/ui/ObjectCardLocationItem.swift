@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardLocationItem {
 
-    let tvCurrentConditions: ObjectTextView
+    let tvCurrentConditions: Text
     init(
         _ uiv: UIwXViewController,
         _ name: String,
@@ -17,9 +17,9 @@ final class ObjectCardLocationItem {
         _ gesture: UITapGestureRecognizerWithData
     ) {
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
-        let tvName = ObjectTextView(objectStackView.view, name, isUserInteractionEnabled: false, isZeroSpacing: false)
-        tvCurrentConditions = ObjectTextView(objectStackView.view, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvMiddle = ObjectTextView(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvName = Text(objectStackView.view, name, isUserInteractionEnabled: false, isZeroSpacing: false)
+        tvCurrentConditions = Text(objectStackView.view, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvMiddle = Text(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
         tvName.font = FontSize.large.size
         tvCurrentConditions.font = FontSize.small.size
         tvMiddle.font = FontSize.small.size

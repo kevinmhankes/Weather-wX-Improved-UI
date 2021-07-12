@@ -8,22 +8,22 @@ import UIKit
 import MapKit
 
 final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
-    
-    private var productButton = ObjectToolbarIcon()
-    private var siteButton = ObjectToolbarIcon()
+
+    private var productButton = ToolbarIcon()
+    private var siteButton = ToolbarIcon()
     private var wfo = Location.wfo
     private let map = ObjectMap(.WFO)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         product = "AFD"
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.wfos)
-        productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        siteButton = ObjectToolbarIcon(self, #selector(mapClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([
+        productButton = ToolbarIcon(self, #selector(productClicked))
+        siteButton = ToolbarIcon(self, #selector(mapClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             siteButton,
@@ -32,8 +32,8 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             playListButton,
             shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(stackView)
+        objScrollStackView = ScrollStackView(self)
+        objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
         if Utility.readPref("WFO_REMEMBER_LOCATION", "") == "true" {
             wfo = Utility.readPref("WFO_LAST_USED", Location.wfo)
@@ -47,12 +47,12 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         }
         getContent()
     }
-    
+
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             if self.product.hasPrefix("RTP") && self.product.count == 5 {
@@ -70,7 +70,7 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
             DispatchQueue.main.async { self.display(html) }
         }
     }
-    
+
     private func display(_ html: String) {
         if html == "" {
             objectTextView.text = "None issued by this office recently."
@@ -90,44 +90,44 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
         Utility.writePref("WFO_LAST_USED", wfo)
         scrollView.scrollToTop()
     }
-    
+
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityWfoText.wfoProdListNoCode, productChanged(_:))
     }
-    
+
     func productChanged(_ index: Int) {
         product = UtilityWfoText.wfoProdList[index].split(":")[0]
         UtilityAudio.resetAudio(self, playButton)
         getContent()
     }
-    
+
     override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }
-    
+
     @objc func mapClicked() {
         map.toggleMap(self)
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         map.mapView(annotation)
     }
-    
+
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
     }
-    
+
     func mapCall(annotationView: MKAnnotationView) {
         scrollView.scrollToTop()
         wfo = (annotationView.annotation!.title!)!
         UtilityAudio.resetAudio(self, playButton)
         getContent()
     }
-    
+
     override func playlistClicked() {
         _ = UtilityPlayList.add(product + wfo, objectTextView.text, self, playListButton)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil,

@@ -7,7 +7,7 @@
 import UIKit
 
 class UIwXViewController: UIViewController {
-    
+
     //
     // parent class for most viewcontrollers, sets up
     // basic UI elements - toolbar, stackview, scrollview
@@ -18,8 +18,8 @@ class UIwXViewController: UIViewController {
     var scrollView = UIScrollView()
     var stackView = UIStackView()
     let toolbar = ObjectToolbar()
-    var doneButton = ObjectToolbarIcon()
-    var objScrollStackView: ObjectScrollStackView?
+    var doneButton = ToolbarIcon()
+    var objScrollStackView: ScrollStackView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,9 @@ class UIwXViewController: UIViewController {
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
-        doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
+        doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
     }
-    
+
     //
     // each class that has this as a parent should override getContent()
     // in some cases willEnterForeground needs to be overriden
@@ -45,9 +45,9 @@ class UIwXViewController: UIViewController {
     @objc func willEnterForeground() {
         getContent()
     }
-    
+
     func getContent() {}
-    
+
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             doneClicked()
@@ -64,7 +64,7 @@ class UIwXViewController: UIViewController {
         stackView = UIStackView()
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
-        objScrollStackView = ObjectScrollStackView(self)
+        objScrollStackView = ScrollStackView(self)
     }
 
     func removeAllViews() {

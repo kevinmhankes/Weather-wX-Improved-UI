@@ -7,20 +7,20 @@
 import UIKit
 
 final class vcGoesGlobal: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var productButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
     private var index = 0
-    private var animateButton = ObjectToolbarIcon()
-    private var shareButton = ObjectToolbarIcon()
+    private var animateButton = ToolbarIcon()
+    private var shareButton = ToolbarIcon()
     private let prefToken = "GOESFULLDISK_IMG_FAV_URL"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(getAnimation))
-        shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
+        productButton = ToolbarIcon(self, #selector(productClicked))
+        animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
+        shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         if index >= UtilityGoesFullDisk.labels.count {
@@ -28,11 +28,11 @@ final class vcGoesGlobal: UIwXViewController {
         }
         getContent(index)
     }
-    
+
     override func willEnterForeground() {
         getContent(index)
     }
-    
+
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityGoesFullDisk.labels[self.index]
@@ -41,7 +41,7 @@ final class vcGoesGlobal: UIwXViewController {
             DispatchQueue.main.async { self.display(bitmap) }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         image.setBitmap(bitmap)
         if UtilityGoesFullDisk.urls[index].contains("jma") {
@@ -51,34 +51,34 @@ final class vcGoesGlobal: UIwXViewController {
         }
         Utility.writePref(prefToken, index)
     }
-    
+
     func showAnimateButton() {
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
     }
-    
+
     func hideAnimateButton() {
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
     }
-    
+
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, getContent(_:))
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         getContent(UtilityUI.sideSwipe(sender, index, UtilityGoesFullDisk.urls))
     }
-    
+
     @objc func getAnimation() {
         DispatchQueue.global(qos: .userInitiated).async {
             let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
             DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

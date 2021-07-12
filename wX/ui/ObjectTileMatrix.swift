@@ -7,24 +7,24 @@
 import UIKit
 
 final class ObjectTileMatrix: NSObject {
-    
+
     private var uiv: UIViewController?
-    private var menuButton = ObjectToolbarIcon()
+    private var menuButton = ToolbarIcon()
     private var tabType: TabType = .spc
     private var icons = [String]()
     private var labels = [String]()
     var toolbar = ObjectToolbar()
-    
+
     convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ tabType: TabType) {
         self.init()
         self.uiv = uiv
         self.tabType = tabType
         toolbar = ObjectToolbar()
-        let radarButton = ObjectToolbarIcon(uiv, .radar, #selector(radarClicked))
-        let cloudButton = ObjectToolbarIcon(uiv, .cloud, #selector(cloudClicked))
-        let wfoTextButton = ObjectToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
-        menuButton = ObjectToolbarIcon(uiv, .submenu, #selector(menuClicked))
-        let dashButton = ObjectToolbarIcon(uiv, .severeDashboard, #selector(dashClicked))
+        let radarButton = ToolbarIcon(uiv, .radar, #selector(radarClicked))
+        let cloudButton = ToolbarIcon(uiv, .cloud, #selector(cloudClicked))
+        let wfoTextButton = ToolbarIcon(uiv, .wfo, #selector(wfotextClicked))
+        menuButton = ToolbarIcon(uiv, .submenu, #selector(menuClicked))
+        let dashButton = ToolbarIcon(uiv, .severeDashboard, #selector(dashClicked))
         let fixedSpace = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace,
             target: nil,
@@ -32,7 +32,7 @@ final class ObjectTileMatrix: NSObject {
         )
         fixedSpace.width = UIPreferences.toolbarIconSpacing
         if UIPreferences.mainScreenRadarFab {
-            toolbar.items = ObjectToolbarItems([
+            toolbar.items = ToolbarItems([
                 GlobalVariables.flexBarButton,
                 dashButton,
                 wfoTextButton,
@@ -40,7 +40,7 @@ final class ObjectTileMatrix: NSObject {
                 menuButton
             ]).items
         } else {
-            toolbar.items = ObjectToolbarItems([
+            toolbar.items = ToolbarItems([
                 GlobalVariables.flexBarButton,
                 dashButton,
                 wfoTextButton,
@@ -86,7 +86,7 @@ final class ObjectTileMatrix: NSObject {
             }
         }
     }
-    
+
     @objc func imgClicked(sender: UITapGestureRecognizer) {
         switch tabType {
         case .spc:
@@ -95,7 +95,7 @@ final class ObjectTileMatrix: NSObject {
             imgClickedMisc(sender: sender)
         }
     }
-    
+
     @objc func imgClickedSpc(sender: UITapGestureRecognizer) {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
@@ -135,7 +135,7 @@ final class ObjectTileMatrix: NSObject {
             uiv!.goToVC(vcSpcSwo())
         }
     }
-    
+
     @objc func imgClickedMisc(sender: UITapGestureRecognizer) {
         let iconTitle = icons[sender.view!.tag]
         switch iconTitle {
@@ -183,31 +183,31 @@ final class ObjectTileMatrix: NSObject {
             break
         }
     }
-    
+
     @objc func genericClicked(_ vc: UIViewController) {
         uiv!.goToVC(vc)
     }
-    
+
     @objc func cloudClicked() {
         Route.cloud(uiv!)
     }
-    
+
     @objc func radarClicked() {
         Route.radarFromMainScreen(uiv!)
     }
-    
+
     @objc func wfotextClicked() {
         Route.wfoText(uiv!)
     }
-    
+
     @objc func menuClicked() {
         UtilityActions.menuClicked(uiv!, menuButton)
     }
-    
+
     @objc func dashClicked() {
         Route.severeDashboard(uiv!)
     }
-    
+
     var iconsSpc = [
         "spcsref",
         "meso",
@@ -226,7 +226,7 @@ final class ObjectTileMatrix: NSObject {
         "fire_outlook",
         "tstorm"
     ]
-    
+
     var labelsSpc = [
         "SREF",
         "Mesoanalysis",
@@ -245,7 +245,7 @@ final class ObjectTileMatrix: NSObject {
         "Fire outlooks",
         "Thunderstorm outlooks"
     ]
-    
+
     var iconsMisc = [
         "ncep",
         "hrrrviewer",
@@ -267,7 +267,7 @@ final class ObjectTileMatrix: NSObject {
         "lightning",
         "wpc_rainfall"
     ]
-    
+
     var labelsMisc = [
         "NCEP Models",
         "HRRR",

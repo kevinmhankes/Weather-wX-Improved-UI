@@ -12,8 +12,8 @@ class vcTabParent: UIViewController {
     var stackView = UIStackView()
     var objTileMatrix = ObjectTileMatrix()
     var fab: ObjectFab?
-    var objScrollStackView: ObjectScrollStackView?
-    
+    var objScrollStackView: ScrollStackView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
@@ -30,12 +30,12 @@ class vcTabParent: UIViewController {
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         setTabBarColor()
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
         }
     }
-    
+
     func setTabBarColor() {
         tabBarController?.tabBar.barTintColor = UIColor(
             red: AppColors.primaryColorRed,
@@ -119,7 +119,7 @@ class vcTabParent: UIViewController {
         removeAllViews()
         scrollView = UIScrollView()
         stackView = UIStackView()
-        objScrollStackView = ObjectScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView)
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
         }

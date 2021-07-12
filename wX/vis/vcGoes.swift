@@ -7,23 +7,23 @@
 import UIKit
 
 final class vcGoes: UIwXViewController {
-    
+
     private var image = ObjectTouchImageView()
-    private var productButton = ObjectToolbarIcon()
-    private var sectorButton = ObjectToolbarIcon()
-    private var animateButton = ObjectToolbarIcon()
+    private var productButton = ToolbarIcon()
+    private var sectorButton = ToolbarIcon()
+    private var animateButton = ToolbarIcon()
     private var savePrefs = true
     private var firstRun = true
     var productCode = ""
     var sectorCode = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        sectorButton = ObjectToolbarIcon(self, #selector(sectorClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
-        toolbar.items = ObjectToolbarItems([
+        productButton = ToolbarIcon(self, #selector(productClicked))
+        sectorButton = ToolbarIcon(self, #selector(sectorClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             sectorButton,
@@ -37,14 +37,14 @@ final class vcGoes: UIwXViewController {
         deSerializeSettings()
         getContent()
     }
-    
+
     func serializeSettings() {
         if savePrefs {
             Utility.writePref("GOES16_PROD", productCode)
             Utility.writePref("GOES16_SECTOR", sectorCode)
         }
     }
-    
+
     func deSerializeSettings() {
         if sectorCode == "" {
             productCode = Utility.readPref("GOES16_PROD", "GEOCOLOR")
@@ -57,7 +57,7 @@ final class vcGoes: UIwXViewController {
             savePrefs = false
         }
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
@@ -68,7 +68,7 @@ final class vcGoes: UIwXViewController {
             }
         }
     }
-    
+
     private func display(_ bitmap: Bitmap) {
         serializeSettings()
         image.setBitmap(bitmap)
@@ -76,11 +76,11 @@ final class vcGoes: UIwXViewController {
             firstRun = false
         }
     }
-    
+
     override func doneClicked() {
         super.doneClicked()
     }
-    
+
     @objc func productClicked() {
         var labels: [String]
         if UtilityGoes.sectorsWithAdditional.contains(sectorCode) {
@@ -90,27 +90,27 @@ final class vcGoes: UIwXViewController {
         }
         _ = ObjectPopUp(self, productButton, labels, productChanged(_:))
     }
-    
+
     @objc func sectorClicked() {
         _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, sectorChanged(_:))
     }
-    
+
     func productChanged(_ index: Int) {
         productCode = UtilityGoes.codes[index]
         productButton.title = productCode
         getContent()
     }
-    
+
     func sectorChanged(_ sector: String) {
         sectorCode = sector
         sectorButton.title = sector
         getContent()
     }
-    
+
     @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
-    
+
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
         productChanged(
             UtilityUI.sideSwipe(
@@ -120,7 +120,7 @@ final class vcGoes: UIwXViewController {
             )
         )
     }
-    
+
     @objc func animateClicked() {
         _ = ObjectPopUp(
                 self,
@@ -130,14 +130,14 @@ final class vcGoes: UIwXViewController {
                 getAnimation(_:)
         )
     }
-    
+
     @objc func getAnimation(_ frameCount: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
             let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
             DispatchQueue.main.async { self.image.startAnimating(animationDrawable) }
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })

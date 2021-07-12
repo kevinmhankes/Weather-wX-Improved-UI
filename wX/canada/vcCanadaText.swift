@@ -7,17 +7,17 @@
 import UIKit
 
 final class vcCanadaText: UIwXViewControllerWithAudio {
-    
-    private var productButton = ObjectToolbarIcon()
-    private var siteButton = ObjectToolbarIcon()
+
+    private var productButton = ToolbarIcon()
+    private var siteButton = ToolbarIcon()
     private let prefToken = "CA_TEXT_LASTUSED"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         product = "FOCN45"
-        productButton = ObjectToolbarIcon(self, #selector(productClicked))
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ObjectToolbarItems([
+        productButton = ToolbarIcon(self, #selector(productClicked))
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             productButton,
@@ -25,14 +25,14 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
             playListButton,
             shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
-        objectTextView = ObjectTextView(stackView)
+        objScrollStackView = ScrollStackView(self)
+        objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
         _ = ObjectCanadaLegal(stackView)
         product = Utility.readPref(prefToken, product)
         getContent()
     }
-    
+
     override func getContent() {
         productButton.title = product
         Utility.writePref(prefToken, product)
@@ -41,21 +41,21 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
             DispatchQueue.main.async { self.display(html) }
         }
     }
-    
+
     private func display(_ html: String) {
         objectTextView.text = html
     }
-    
+
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityCanada.products, productChanged(_:))
     }
-    
+
     func productChanged(_ product: String) {
         self.product = product
         UtilityAudio.resetAudio(self, playButton)
         getContent()
     }
-    
+
     override func shareClicked(sender: UIButton) {
         UtilityShare.share(self, sender, objectTextView.text)
     }

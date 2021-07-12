@@ -25,13 +25,13 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
     private let toolbar = ObjectToolbar()
-    private var doneButton = ObjectToolbarIcon()
-    private var timeButton = ObjectToolbarIcon()
-    private var warningButton = ObjectToolbarIcon()
-    private var radarSiteButton = ObjectToolbarIcon()
-    private var productButton = [ObjectToolbarIcon]()
-    private var animateButton = ObjectToolbarIcon()
-    private var siteButton = [ObjectToolbarIcon]()
+    private var doneButton = ToolbarIcon()
+    private var timeButton = ToolbarIcon()
+    private var warningButton = ToolbarIcon()
+    private var radarSiteButton = ToolbarIcon()
+    private var productButton = [ToolbarIcon]()
+    private var animateButton = ToolbarIcon()
+    private var siteButton = [ToolbarIcon]()
     private var inOglAnim = false
     private var longPressCount = 0
     private var numberOfPanes = 1
@@ -133,11 +133,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             view.addSubview(toolbarTop)
             toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
-            paneRange.forEach { siteButton.append(ObjectToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0)) }
+            paneRange.forEach { siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0)) }
             var items = [UIBarButtonItem]()
             items.append(GlobalVariables.flexBarButton)
             paneRange.forEach { items.append(siteButton[$0]) }
-            toolbarTop.items = ObjectToolbarItems(items).items
+            toolbarTop.items = ToolbarItems(items).items
             if UIPreferences.radarToolbarTransparent {
                 toolbarTop.setTransparent()
             }
@@ -167,19 +167,19 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        doneButton = ObjectToolbarIcon(self, .done, #selector(doneClicked))
-        paneRange.forEach { productButton.append(ObjectToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0)) }
-        radarSiteButton = ObjectToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
-        animateButton = ObjectToolbarIcon(self, .play, #selector(animateClicked))
+        doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
+        paneRange.forEach { productButton.append(ToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0)) }
+        radarSiteButton = ToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
+        animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
-            timeButton = ObjectToolbarIcon(title: "", self, #selector(timeClicked))
-            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked))
+            timeButton = ToolbarIcon(title: "", self, #selector(timeClicked))
+            warningButton = ToolbarIcon(title: "", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         } else {
-            warningButton = ObjectToolbarIcon(title: "", self, #selector(warningClicked))
+            warningButton = ToolbarIcon(title: "", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         }
@@ -188,7 +188,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
             toolbarButtons.append(radarSiteButton)
         }
-        toolbar.items = ObjectToolbarItems(toolbarButtons).items
+        toolbar.items = ToolbarItems(toolbarButtons).items
         device = MTLCreateSystemDefaultDevice()
         paneRange.indices.forEach { index in
             metalLayer.append(CAMetalLayer())
@@ -424,7 +424,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-    @objc func productClicked(sender: ObjectToolbarIcon) {
+    @objc func productClicked(sender: ToolbarIcon) {
         let alert = ObjectPopUp(self, "", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.rid) {
             WXGLNexrad.radarProductListTdwr.forEach { product in
@@ -507,7 +507,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-    @objc func radarSiteClicked(sender: ObjectToolbarIcon) {
+    @objc func radarSiteClicked(sender: ToolbarIcon) {
         mapIndex = sender.tag
         hideMap()
     }

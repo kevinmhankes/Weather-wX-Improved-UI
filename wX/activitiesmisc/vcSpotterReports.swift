@@ -7,26 +7,26 @@
 import UIKit
 
 final class vcSpotterReports: UIwXViewController {
-    
+
     private var spotterReportsDataSorted = [SpotterReports]()
-    private var spotterReportCountButton = ObjectToolbarIcon()
-    
+    private var spotterReportCountButton = ToolbarIcon()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        spotterReportCountButton = ObjectToolbarIcon(self, nil)
+        spotterReportCountButton = ToolbarIcon(self, nil)
         spotterReportCountButton.title = ""
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterReportCountButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, spotterReportCountButton]).items
+        objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let spotterReportsData = UtilitySpotter.reportsList
             DispatchQueue.main.async { self.display(spotterReportsData) }
         }
     }
-    
+
     func display(_ spotterReportsData: [SpotterReports]) {
         refreshViews()
         spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
@@ -35,11 +35,11 @@ final class vcSpotterReports: UIwXViewController {
             _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
         }
         if spotterReportsData.count == 0 {
-            let objectTextView = ObjectTextView(stackView, "No active spotter reports.")
+            let objectTextView = Text(stackView, "No active spotter reports.")
             objectTextView.constrain(scrollView)
         }
     }
-    
+
     @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
         let index = sender.data
         let objectPopUp = ObjectPopUp(self, "", spotterReportCountButton)
@@ -47,7 +47,7 @@ final class vcSpotterReports: UIwXViewController {
         objectPopUp.addAction(uiAlertAction)
         objectPopUp.finish()
     }
-    
+
     func showMap(_ selection: Int) {
         Route.map(self, spotterReportsDataSorted[selection].location.latString, spotterReportsDataSorted[selection].location.lonString)
     }

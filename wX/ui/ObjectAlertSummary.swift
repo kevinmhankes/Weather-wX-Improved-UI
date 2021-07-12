@@ -31,7 +31,7 @@ final class ObjectAlertSummary: NSObject {
     ) {
         self.init()
         uiv.stackView.removeViews()
-        let objTextSummary = ObjectTextView(uiv.stackView)
+        let objTextSummary = Text(uiv.stackView)
         objTextSummary.addGestureRecognizer(gesture!)
         objTextSummary.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         if showImage {

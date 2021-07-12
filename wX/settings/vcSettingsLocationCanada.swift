@@ -7,25 +7,25 @@
 import UIKit
 
 final class vcSettingsLocationCanada: UIwXViewController {
-    
-    private var objectTextViews = [ObjectTextView]()
+
+    private var objectTextViews = [Text]()
     private var cityDisplay = false
     private var provSelected = ""
     private var listIds = [String]()
     private var listCity = [String]()
-    private var statusButton = ObjectToolbarIcon()
-    
+    private var statusButton = ToolbarIcon()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusButton = ObjectToolbarIcon(self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        statusButton = ToolbarIcon(self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        objScrollStackView = ScrollStackView(self)
         displayProvinces()
     }
-    
+
     func displayProvinces() {
         UtilityCanada.provinces.enumerated().forEach { index, province in
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 stackView,
                 province,
                 FontSize.extraLarge.size,
@@ -36,7 +36,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
             objectTextViews.append(objectTextView)
         }
     }
-    
+
     @objc func goToProvinces(sender: UITapGestureRecognizerWithData) {
         let position = sender.data
         if !cityDisplay {
@@ -50,7 +50,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
             finishSave()
         }
     }
-    
+
     func finishSave() {
         let locStr = Utility.readPref("LOCATION_CANADA_PROV", "") + " " +
             Utility.readPref("LOCATION_CANADA_CITY", "") + " " +
@@ -58,9 +58,9 @@ final class vcSettingsLocationCanada: UIwXViewController {
         statusButton.title = locStr
         doneClicked()
     }
-    
+
     override func willEnterForeground() {}
-    
+
     override func getContent() {
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityCanada.getProvinceHtml(self.provSelected)
@@ -73,12 +73,12 @@ final class vcSettingsLocationCanada: UIwXViewController {
             }
         }
     }
-    
+
     private func displayCities() {
         stackView.removeViews()
         cityDisplay = true
         listCity.enumerated().forEach { index, city in
-            let objectTextView = ObjectTextView(
+            let objectTextView = Text(
                 stackView,
                 city,
                 FontSize.extraLarge.size,

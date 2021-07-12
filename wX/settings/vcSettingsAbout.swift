@@ -42,9 +42,9 @@ final class vcSettingsAbout: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ObjectToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        let statusButton = ToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
+        objScrollStackView = ScrollStackView(self)
         display()
     }
 
@@ -60,7 +60,7 @@ final class vcSettingsAbout: UIwXViewController {
     }
 
     private func display() {
-        let objectTextView1 = ObjectTextView(
+        let objectTextView1 = Text(
             stackView,
             "View FAQ (Outage notifications listed at top if any are current)",
             FontSize.extraLarge.size,
@@ -69,7 +69,7 @@ final class vcSettingsAbout: UIwXViewController {
         objectTextView1.color = ColorCompatibility.highlightText
         objectTextView1.tv.isSelectable = false
         objectTextView1.constrain(scrollView)
-        let objectTextView2 = ObjectTextView(
+        let objectTextView2 = Text(
             stackView,
             "View release notes",
             FontSize.extraLarge.size,
@@ -78,7 +78,7 @@ final class vcSettingsAbout: UIwXViewController {
         objectTextView2.color = ColorCompatibility.highlightText
         objectTextView2.tv.isSelectable = false
         objectTextView2.constrain(scrollView)
-        let objectTextView3 = ObjectTextView(
+        let objectTextView3 = Text(
             stackView,
             aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,

@@ -9,15 +9,15 @@ import UIKit
 final class vcSpcSwoState: UIwXViewController {
 
     private var state = ""
-    private var stateButton = ObjectToolbarIcon()
+    private var stateButton = ToolbarIcon()
     private var image = ObjectTouchImageView()
     var day = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        stateButton = ObjectToolbarIcon(self, #selector(stateClicked))
-        toolbar.items = ObjectToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        stateButton = ToolbarIcon(self, #selector(stateClicked))
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
         image = ObjectTouchImageView(self, toolbar)
         getContent(Location.state)
     }
@@ -42,7 +42,7 @@ final class vcSpcSwoState: UIwXViewController {
         image.setBitmap(bitmap)
     }
 
-    @objc func stateClicked(sender: ObjectToolbarIcon) {
+    @objc func stateClicked(sender: ToolbarIcon) {
         _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, getContent(_:))
     }
 

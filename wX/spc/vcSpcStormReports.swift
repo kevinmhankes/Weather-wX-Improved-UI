@@ -19,22 +19,22 @@ final class vcSpcStormReports: UIwXViewController {
     private var stateCount = [String: Int]()
     private var filterList = [String]()
     private var filter = "All"
-    private var filterButton = ObjectToolbarIcon()
+    private var filterButton = ToolbarIcon()
     var spcStormReportsDay = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ObjectToolbarIcon(self, .share, #selector(shareClicked))
-        let lsrButton = ObjectToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
-        filterButton = ObjectToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
-        toolbar.items = ObjectToolbarItems([
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
+        let lsrButton = ToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
+        filterButton = ToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
+        toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,
             filterButton,
             lsrButton,
             shareButton
         ]).items
-        objScrollStackView = ObjectScrollStackView(self)
+        objScrollStackView = ScrollStackView(self)
         displayPreContent()
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".csv"
