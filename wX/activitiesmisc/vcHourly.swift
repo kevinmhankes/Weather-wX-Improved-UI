@@ -24,10 +24,11 @@ final class vcHourly: UIwXViewControllerWithAudio {
     }
     
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityHourly.get(Location.getCurrentLocation())[0]
-            DispatchQueue.main.async { self.display(html) }
-        }
+        _ = FutureText("HOURLY", self.display)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let html = UtilityHourly.get(Location.getCurrentLocation())[0]
+//            DispatchQueue.main.async { self.display(html) }
+//        }
     }
     
     private func display(_ html: String) {

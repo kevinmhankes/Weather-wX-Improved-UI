@@ -1,3 +1,7 @@
+
+rename ObjectTextView to Text
+create/use FutureVoid FutureText FutureBytes
+
 // [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles

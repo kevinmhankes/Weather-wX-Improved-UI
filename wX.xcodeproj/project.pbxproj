@@ -114,6 +114,8 @@
 		035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */; };
 		036102CC269C89CC0072EEC4 /* to.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CB269C89CC0072EEC4 /* to.swift */; };
 		036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */; };
+		036102D0269CCD020072EEC4 /* FutureVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CF269CCD020072EEC4 /* FutureVoid.swift */; };
+		036102D2269CCE8E0072EEC4 /* FutureText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102D1269CCE8E0072EEC4 /* FutureText.swift */; };
 		03626AE41F294B48002BBAAD /* colormapbveak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE31F294B48002BBAAD /* colormapbveak.txt */; };
 		03626AE61F294B6D002BBAAD /* colormaprefeak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03626AE51F294B6C002BBAAD /* colormaprefeak.txt */; };
 		0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364C02F23FF230800D765FF /* UtilityWfoText.swift */; };
@@ -511,6 +513,8 @@
 		035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
 		036102CB269C89CC0072EEC4 /* to.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = to.swift; sourceTree = "<group>"; };
 		036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcMcdWatchMpdViewer.swift; sourceTree = "<group>"; };
+		036102CF269CCD020072EEC4 /* FutureVoid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureVoid.swift; sourceTree = "<group>"; };
+		036102D1269CCE8E0072EEC4 /* FutureText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureText.swift; sourceTree = "<group>"; };
 		03626AE31F294B48002BBAAD /* colormapbveak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbveak.txt; sourceTree = "<group>"; };
 		03626AE51F294B6C002BBAAD /* colormaprefeak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefeak.txt; sourceTree = "<group>"; };
 		0364C02F23FF230800D765FF /* UtilityWfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWfoText.swift; sourceTree = "<group>"; };
@@ -1182,6 +1186,8 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				036102D1269CCE8E0072EEC4 /* FutureText.swift */,
+				036102CF269CCD020072EEC4 /* FutureVoid.swift */,
 				030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */,
 				F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */,
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
@@ -1741,6 +1747,7 @@
 				03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */,
 				F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */,
 				03F3EB6A22993B870056A56D /* UtilitySpcMeso.swift in Sources */,
+				036102D0269CCD020072EEC4 /* FutureVoid.swift in Sources */,
 				03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */,
 				0340423E23F16FC3003AB242 /* vcLsrByWfo.swift in Sources */,
 				0340420F23F16C5B003AB242 /* vcNexradRadar.swift in Sources */,
@@ -1917,6 +1924,7 @@
 				F098F63E1E5320F900AAC5B8 /* ObjectTextView.swift in Sources */,
 				036102CC269C89CC0072EEC4 /* to.swift in Sources */,
 				F0B3353A1DA3FD3B0035BD36 /* WXGLPolygonWarnings.swift in Sources */,
+				036102D2269CCE8E0072EEC4 /* FutureText.swift in Sources */,
 				F0F7760C1E00092A0022484C /* LatLon.swift in Sources */,
 				F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */,
 				F0DAD9361DA7018D00C2BD4B /* crctable.c in Sources */,
