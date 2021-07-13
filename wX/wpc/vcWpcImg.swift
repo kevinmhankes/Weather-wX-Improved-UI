@@ -66,11 +66,11 @@ final class vcWpcImg: UIwXViewController {
     }
 
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu)
     }
 
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, getContent(_:))
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, getContent)
     }
 
     @objc func shareClicked(sender: UIButton) {
