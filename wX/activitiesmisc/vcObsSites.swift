@@ -55,7 +55,7 @@ final class vcObsSites: UIwXViewController {
             let objectTextView = Text(
                 stackView,
                 city,
-                UITapGestureRecognizerWithData(index, self, #selector(gotoObsSite(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(gotoObsSite))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
@@ -81,7 +81,7 @@ final class vcObsSites: UIwXViewController {
             let objectTextView = Text(
                 stackView,
                 state,
-                UITapGestureRecognizerWithData(index, self, #selector(goToState(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(goToState))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)

@@ -29,10 +29,13 @@ final class vcUSAlerts: UIwXViewController {
 
     override func getContent() {
         capAlerts = []
+        // TODO download image in thread
         DispatchQueue.global(qos: .userInitiated).async {
             let html = UtilityDownloadNws.getCap("us")
             let alerts = html.parseColumn("<entry>(.*?)</entry>")
-            alerts.forEach { self.capAlerts.append(CapAlert(eventText: $0)) }
+            alerts.forEach {
+                self.capAlerts.append(CapAlert(eventText: $0))
+            }
             DispatchQueue.main.async { self.display() }
         }
     }
@@ -71,7 +74,7 @@ final class vcUSAlerts: UIwXViewController {
         Array(counts.keys).sorted().forEach {
             eventArrWithCount.append($0 + ": " + String(counts[$0]!))
         }
-        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, filterChanged(_:))
+        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, eventArrWithCount, filterChanged)
     }
 
     func filterChanged(_ filter: String) {

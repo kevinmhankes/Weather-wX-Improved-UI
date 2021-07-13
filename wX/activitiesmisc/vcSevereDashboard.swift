@@ -28,6 +28,7 @@ final class vcSevereDashboard: UIwXViewController {
         getContent()
     }
 
+    // TODO loop over enum
     override func getContent() {
         getContentWatch()
         getContentMcd()
@@ -251,7 +252,7 @@ final class vcSevereDashboard: UIwXViewController {
                 let objectImage = ObjectImage(
                     stackView,
                     image,
-                    UITapGestureRecognizerWithData(index, self, #selector(imageClicked(sender:))),
+                    UITapGestureRecognizerWithData(index, self, #selector(imageClicked)),
                     widthDivider: imagesPerRow
                 )
                 buttonActions.append(String(describing: severeNotice.type) + severeNotice.numberList[imageIndex])

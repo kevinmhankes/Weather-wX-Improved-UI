@@ -18,7 +18,7 @@ final class vcOpc: UIwXViewController {
         productButton = ToolbarIcon(self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         index = Utility.readPref(prefToken, index)
         getContent(index)
     }
@@ -43,7 +43,7 @@ final class vcOpc: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, getContent)
     }
 
     @objc func share(sender: UIButton) {
