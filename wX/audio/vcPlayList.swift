@@ -40,6 +40,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     @objc override func getContent() {
         serializeSettings()
         playlistItems.forEach { item in
+            // TODO FutureVoid
             DispatchQueue.global(qos: .userInitiated).async {
                 UtilityPlayList.download(item)
                 DispatchQueue.main.async { self.display() }
@@ -51,13 +52,13 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
         stackView.removeViews()
         playlistItems.enumerated().forEach { index, item in
             let productText = Utility.readPref("PLAYLIST_" + item, "")
-            let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + String(productText.count) + ")"
+            let topLine = " " + Utility.readPref("PLAYLIST_" + item + "_TIME", "") + " (size: " + to.String(productText.count) + ")"
             _ = ObjectCardPlayListItem(
                 self,
                 item,
                 topLine,
                 productText.truncate(textPreviewLength),
-                UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(buttonPressed))
             )
         }
     }
@@ -126,7 +127,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func addNationalProductClicked() {
-        _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, addNationalProduct(_:))
+        _ = ObjectPopUp(self, addNationalProductButton, UtilityWpcText.labels, addNationalProduct)
     }
 
     func addNationalProduct(_ index: Int) {
@@ -135,7 +136,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     @objc func wfoTextClicked() {
-        _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, addWfoProduct(_:))
+        _ = ObjectPopUp(self, wfoTextButton, GlobalArrays.wfos, addWfoProduct)
     }
 
     func addWfoProduct(_ office: String) {
