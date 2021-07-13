@@ -16,7 +16,7 @@ final class vcModels: UIwXViewController {
     private var timeButton = ToolbarIcon()
     private var productButton = ToolbarIcon()
     private var firstRun = true
-    private var subMenu = ObjectMenuData(
+    private var subMenu = MenuData(
         UtilityModelSpcHrefInterface.titles,
         UtilityModelSpcHrefInterface.params,
         UtilityModelSpcHrefInterface.labels
@@ -51,19 +51,19 @@ final class vcModels: UIwXViewController {
             productButton = ToolbarIcon(title: "Product", self, #selector(prodClicked))
         }
         if modelActivitySelected.contains("SPCSREF") {
-            subMenu = ObjectMenuData(
+            subMenu = MenuData(
                 UtilityModelSpcSrefInterface.titles,
                 UtilityModelSpcSrefInterface.params,
                 UtilityModelSpcSrefInterface.labels
             )
         } else if modelActivitySelected.contains("SPCHREF") {
-            subMenu = ObjectMenuData(
+            subMenu = MenuData(
                 UtilityModelSpcHrefInterface.titles,
                 UtilityModelSpcHrefInterface.params,
                 UtilityModelSpcHrefInterface.labels
             )
         } else if modelActivitySelected.contains("WPCGEFS") {
-            subMenu = ObjectMenuData(
+            subMenu = MenuData(
                 UtilityModelWpcGefsInterface.titles,
                 UtilityModelWpcGefsInterface.params,
                 UtilityModelWpcGefsInterface.labels

@@ -23,7 +23,7 @@ final class vcSpcMeso: UIwXViewController {
     private var prefModel = "SPCMESO"
     private let numPanesStr = "1"
     private var firstRun = true
-    private let subMenu = ObjectMenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
+    private let subMenu = MenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
     var spcMesoFromHomeScreen = false
     var spcMesoToken = ""
     var parameters = [String]()

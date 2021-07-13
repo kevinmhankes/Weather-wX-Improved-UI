@@ -134,6 +134,7 @@
 		036E9B96269D0C7C0009A47B /* ScrollStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B95269D0C7C0009A47B /* ScrollStackView.swift */; };
 		036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B97269D0E740009A47B /* FutureBytes.swift */; };
 		036E9B9A269D90980009A47B /* TouchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B99269D90980009A47B /* TouchImage.swift */; };
+		036E9B9C269D916E0009A47B /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9B269D916E0009A47B /* MenuData.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -246,7 +247,6 @@
 		F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */; };
 		F06033D81EB2CCBD0083BA91 /* ObjectTileMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */; };
 		F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */; };
-		F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0605A531E59F71F00229812 /* ObjectMenuData.swift */; };
 		F064D1401DB6EBA6003C04FB /* ExternalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */; };
 		F064D1421DB6EBAB003C04FB /* ExternalPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */; };
 		F064D1441DB6EBB7003C04FB /* ExternalPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */; };
@@ -534,6 +534,7 @@
 		036E9B95269D0C7C0009A47B /* ScrollStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollStackView.swift; sourceTree = "<group>"; };
 		036E9B97269D0E740009A47B /* FutureBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureBytes.swift; sourceTree = "<group>"; };
 		036E9B99269D90980009A47B /* TouchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchImage.swift; sourceTree = "<group>"; };
+		036E9B9B269D916E0009A47B /* MenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -648,7 +649,6 @@
 		F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAlertDetail.swift; sourceTree = "<group>"; };
 		F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTileMatrix.swift; sourceTree = "<group>"; };
 		F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMenuTitle.swift; sourceTree = "<group>"; };
-		F0605A531E59F71F00229812 /* ObjectMenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMenuData.swift; sourceTree = "<group>"; };
 		F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLine.swift; sourceTree = "<group>"; };
 		F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalPolygon.swift; sourceTree = "<group>"; };
 		F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalPoint.swift; sourceTree = "<group>"; };
@@ -1235,6 +1235,7 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				036E9B9B269D916E0009A47B /* MenuData.swift */,
 				036E9B99269D90980009A47B /* TouchImage.swift */,
 				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
 				036E9B93269D0C0B0009A47B /* ToolbarItems.swift */,
@@ -1272,7 +1273,6 @@
 				035A66EB240C88B500038C98 /* ObjectImageAndText.swift */,
 				033A5552240D2628002018BE /* ObjectImageSummary.swift */,
 				03C85B55240489C60046C8F4 /* ObjectMap.swift */,
-				F0605A531E59F71F00229812 /* ObjectMenuData.swift */,
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,
 				F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */,
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
@@ -1825,7 +1825,6 @@
 				F0B335B01DA3FD960035BD36 /* UtilityMath.swift in Sources */,
 				0327377023F2083D002636D1 /* vcTabParent.swift in Sources */,
 				F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */,
-				F0605A551E59F71F00229812 /* ObjectMenuData.swift in Sources */,
 				0364C03023FF230800D765FF /* UtilityWfoText.swift in Sources */,
 				03A90D4F2341220D00641BEE /* UtilityColorPalette4bitGeneric.swift in Sources */,
 				F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */,
@@ -1861,6 +1860,7 @@
 				034041DB23F162A4003AB242 /* vcWpcRainfallSummary.swift in Sources */,
 				0329E307241BBA84005E0766 /* UtilityRadar.swift in Sources */,
 				F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */,
+				036E9B9C269D916E0009A47B /* MenuData.swift in Sources */,
 				F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */,
 				034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */,
 				035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */,

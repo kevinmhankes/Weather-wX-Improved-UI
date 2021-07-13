@@ -9,7 +9,7 @@ import UIKit
 final class vcWpcText: UIwXViewControllerWithAudio {
 
     private var productButton = ToolbarIcon()
-    private let subMenu = ObjectMenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
+    private let subMenu = MenuData(UtilityWpcText.titles, UtilityWpcText.labelsWithCodes, UtilityWpcText.labels)
     var wpcTextProduct = ""
 
     override func viewDidLoad() {

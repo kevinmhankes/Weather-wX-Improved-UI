@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ObjectMenuData {
+final class MenuData {
 
     let params: [String]
     let paramLabels: [String]

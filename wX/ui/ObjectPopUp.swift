@@ -118,7 +118,7 @@ final class ObjectPopUp {
          _ button: UIBarButtonItem,
          _ list: [ObjectMenuTitle],
          _ index: Int,
-         _ menuData: ObjectMenuData,
+         _ menuData: MenuData,
          _ fn: @escaping (Int) -> Void
     ) {
         let startIdx = ObjectMenuTitle.getStart(list, index)
@@ -147,7 +147,7 @@ final class ObjectPopUp {
         }
         uiv.present(alert, animated: true, completion: nil)
     }
-    
+
     func present() {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = button

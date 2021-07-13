@@ -12,7 +12,7 @@ final class vcWpcImg: UIwXViewController {
     private var productButton = ToolbarIcon()
     private var index = 0
     private var timePeriod = 1
-    private let subMenu = ObjectMenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
+    private let subMenu = MenuData(UtilityWpcImages.titles, UtilityWpcImages.urls, UtilityWpcImages.labels)
     var wpcImagesFromHomeScreen = false
     var wpcImagesToken = ""
 
