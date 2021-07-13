@@ -31,7 +31,7 @@ final class vcGoes: UIwXViewController {
             animateButton,
             shareButton
         ]).items
-        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         deSerializeSettings()

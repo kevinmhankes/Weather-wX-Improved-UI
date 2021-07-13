@@ -79,10 +79,11 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
 
     @objc func getAnimation() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
-            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
+//            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
+//        }
+        _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
