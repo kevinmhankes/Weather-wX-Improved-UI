@@ -36,10 +36,11 @@ final class vcGoesGlobal: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityGoesFullDisk.labels[self.index]
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(UtilityGoesFullDisk.urls[self.index], self.display)
     }
 
     private func display(_ bitmap: Bitmap) {
