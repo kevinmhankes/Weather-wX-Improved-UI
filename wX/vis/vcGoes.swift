@@ -88,7 +88,7 @@ final class vcGoes: UIwXViewController {
         } else {
             labels = UtilityGoes.labels
         }
-        _ = ObjectPopUp(self, productButton, labels, productChanged(_:))
+        _ = ObjectPopUp(self, productButton, labels, productChanged)
     }
 
     @objc func sectorClicked() {
@@ -127,15 +127,16 @@ final class vcGoes: UIwXViewController {
                 title: "Select number of animation frames:",
                 animateButton,
                 stride(from: 12, to: 96 + 12, by: 12),
-                getAnimation(_:)
+                getAnimation
         )
     }
 
     @objc func getAnimation(_ frameCount: Int) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
-            DispatchQueue.main.async { self.image.startAnimating(animationDrawable) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
+//            DispatchQueue.main.async { self.image.startAnimating(animationDrawable) }
+//        }
+        _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
