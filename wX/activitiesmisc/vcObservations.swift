@@ -18,7 +18,7 @@ final class vcObservations: UIwXViewController {
         productButton = ToolbarIcon(self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         index = Utility.readPref(prefTokenIndex, 0)
@@ -45,7 +45,7 @@ final class vcObservations: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityObservations.labels, getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityObservations.labels, getContent)
     }
 
     @objc func shareClicked(sender: UIButton) {

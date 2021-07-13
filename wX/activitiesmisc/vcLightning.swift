@@ -61,11 +61,11 @@ final class vcLightning: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, title: "Region Selection", productButton, UtilityLightning.sectors, sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", productButton, UtilityLightning.sectors, sectorChanged)
     }
 
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, title: "Time Selection", timeButton, UtilityLightning.times, timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, UtilityLightning.times, timeChanged)
     }
 
     func sectorChanged(_ idx: Int) {

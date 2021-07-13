@@ -57,11 +57,11 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityAwcRadarMosaic.sectorLabels, sectorChanged)
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityAwcRadarMosaic.productLabels, productChanged)
     }
 
     func productChanged(_ index: Int) {
