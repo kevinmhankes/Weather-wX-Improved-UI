@@ -132,6 +132,7 @@
 		036E9B92269D0C010009A47B /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B91269D0C010009A47B /* ToolbarIcon.swift */; };
 		036E9B94269D0C0B0009A47B /* ToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B93269D0C0B0009A47B /* ToolbarItems.swift */; };
 		036E9B96269D0C7C0009A47B /* ScrollStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B95269D0C7C0009A47B /* ScrollStackView.swift */; };
+		036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B97269D0E740009A47B /* FutureBytes.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -531,6 +532,7 @@
 		036E9B91269D0C010009A47B /* ToolbarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
 		036E9B93269D0C0B0009A47B /* ToolbarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarItems.swift; sourceTree = "<group>"; };
 		036E9B95269D0C7C0009A47B /* ScrollStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollStackView.swift; sourceTree = "<group>"; };
+		036E9B97269D0E740009A47B /* FutureBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureBytes.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -1186,6 +1188,7 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				036E9B97269D0E740009A47B /* FutureBytes.swift */,
 				036102D1269CCE8E0072EEC4 /* FutureText.swift */,
 				036102CF269CCD020072EEC4 /* FutureVoid.swift */,
 				030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */,
@@ -1739,6 +1742,7 @@
 				0303BC482485CD5E00A61411 /* PolygonEnum.swift in Sources */,
 				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
+				036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */,
 				03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */,
 				F0E14B7D1E759C9500E6C5CD /* ObjectToolbar.swift in Sources */,
 				F0B335AA1DA3FD960035BD36 /* UtilityImg.swift in Sources */,

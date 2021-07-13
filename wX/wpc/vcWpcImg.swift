@@ -42,10 +42,11 @@ final class vcWpcImg: UIwXViewController {
         if getUrl.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
             getUrl += String(timePeriod) + "_conus.png"
         }
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(getUrl)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = Bitmap(getUrl)
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(getUrl, self.display)
     }
 
     private func display(_ bitmap: Bitmap) {
