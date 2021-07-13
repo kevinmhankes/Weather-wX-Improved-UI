@@ -21,10 +21,11 @@ final class vcImageViewer: UIwXViewController {
     override func willEnterForeground() {}
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(self.url)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = Bitmap(self.url)
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(self.url, self.display)
     }
 
     private func display(_ bitmap: Bitmap) {

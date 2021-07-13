@@ -44,10 +44,11 @@ final class vcLightning: UIwXViewController {
         timeButton.title = periodPretty
         Utility.writePref(prefTokenSector, sector)
         Utility.writePref(prefTokenPeriod, period)
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityLightning.getImage(self.sector, self.period)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = UtilityLightning.getImage(self.sector, self.period)
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(UtilityLightning.getImageUrl(self.sector, self.period), self.display)
     }
 
     private func display(_ bitmap: Bitmap) {

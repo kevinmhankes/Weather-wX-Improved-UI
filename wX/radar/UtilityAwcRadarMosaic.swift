@@ -128,14 +128,14 @@ final class UtilityAwcRadarMosaic {
     // https://www.aviationweather.gov/data/obs/radar/rad_cref_bwi.gif
     // https://www.aviationweather.gov/data/obs/sat/us/sat_vis_dtw.jpg
 
-    static func get(_ sector: String, _ product: String) -> Bitmap {
+    static func get(_ sector: String, _ product: String) -> String {
         var baseAddOn = "radar/"
         var imageType = ".gif"
         if product.contains("sat_") {
             baseAddOn = "sat/us/"
             imageType = ".jpg"
         }
-        return Bitmap(baseUrl + baseAddOn + product + "_" + sector + imageType)
+        return baseUrl + baseAddOn + product + "_" + sector + imageType
     }
 
     static func getAnimation(_ sector: String, _ product: String) -> AnimationDrawable {

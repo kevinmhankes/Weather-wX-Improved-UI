@@ -41,10 +41,11 @@ final class vcRadarMosaicAwc: UIwXViewController {
     override func getContent() {
         productButton.title = product
         sectorButton.title = sector
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(UtilityAwcRadarMosaic.get(self.sector, self.product), self.display)
     }
 
     private func display(_ bitmap: Bitmap) {

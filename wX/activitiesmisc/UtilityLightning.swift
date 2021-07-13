@@ -25,7 +25,7 @@ final class UtilityLightning {
         "48 HR"
     ]
     
-    static func getImage(_ sector: String, _ period: String) -> Bitmap {
+    static func getImageUrl(_ sector: String, _ period: String) -> String {
         let url: String
         if sector.contains("goes") {
             let sectorCode = sector.split("_")[1]
@@ -40,7 +40,7 @@ final class UtilityLightning {
                 url = baseUrl + sector + "&period=" + period
             }
         }
-        return Bitmap(url)
+        return url
     }
     
     static func getSectorLabel(_ code: String) -> String {

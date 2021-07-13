@@ -33,10 +33,11 @@ final class vcObservations: UIwXViewController {
         self.index = index
         Utility.writePref(prefTokenIndex, self.index)
         productButton.title = UtilityObservations.labels[self.index]
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = Bitmap(UtilityObservations.urls[self.index])
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = Bitmap(UtilityObservations.urls[self.index])
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes(UtilityObservations.urls[self.index], self.display)
     }
 
     private func display(_ bitmap: Bitmap) {

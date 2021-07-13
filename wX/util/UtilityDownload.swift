@@ -309,7 +309,7 @@ final class UtilityDownload {
             needsBitmap = false
             bitmap = Bitmap("https://www.weather.gov/wwamap/png/" + Location.wfo.lowercased() + ".png")
         case "RAD_2KM":
-            needsBitmap = false
+            // needsBitmap = false
             if !UIPreferences.useAwcRadarMosaic {
                 // bitmap = UtilityUSImgNwsMosaic.getLocalRadarMosaic()
             } else {
@@ -317,7 +317,7 @@ final class UtilityDownload {
                 let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"
                 let sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
                 product = Utility.readPref(prefTokenProduct, product)
-                bitmap = UtilityAwcRadarMosaic.get(sector, product)
+                url = UtilityAwcRadarMosaic.get(sector, product)
             }
         case "USWARN":
             url = "https://forecast.weather.gov/wwamap/png/US.png"
@@ -418,8 +418,7 @@ final class UtilityDownload {
             needsBitmap = false
             bitmap = UtilityGoes.getImage("09", "CONUS")
         case "LTG":
-            needsBitmap = false
-            bitmap = UtilityLightning.getImage(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
+            url = UtilityLightning.getImageUrl(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
         case "SND":
             let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latLon)
             needsBitmap = false
