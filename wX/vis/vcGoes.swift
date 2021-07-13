@@ -8,7 +8,7 @@ import UIKit
 
 final class vcGoes: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
@@ -31,7 +31,7 @@ final class vcGoes: UIwXViewController {
             animateButton,
             shareButton
         ]).items
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         deSerializeSettings()

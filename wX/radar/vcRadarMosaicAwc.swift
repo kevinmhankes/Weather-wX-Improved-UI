@@ -8,7 +8,7 @@ import UIKit
 
 final class vcRadarMosaicAwc: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
@@ -27,7 +27,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
         animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = TouchImage(self, toolbar)
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
         if nwsMosaicType == "local" {

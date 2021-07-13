@@ -8,7 +8,7 @@ import UIKit
 
 final class vcObservations: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var index = 0
     private let prefTokenIndex = "SFC_OBS_IMG_IDX"
@@ -18,7 +18,7 @@ final class vcObservations: UIwXViewController {
         productButton = ToolbarIcon(self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
         index = Utility.readPref(prefTokenIndex, 0)

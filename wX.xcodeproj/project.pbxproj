@@ -133,6 +133,7 @@
 		036E9B94269D0C0B0009A47B /* ToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B93269D0C0B0009A47B /* ToolbarItems.swift */; };
 		036E9B96269D0C7C0009A47B /* ScrollStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B95269D0C7C0009A47B /* ScrollStackView.swift */; };
 		036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B97269D0E740009A47B /* FutureBytes.swift */; };
+		036E9B9A269D90980009A47B /* TouchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B99269D90980009A47B /* TouchImage.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -300,7 +301,6 @@
 		F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */; };
 		F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830E991E593467003149E5 /* ObjectDatePicker.swift */; };
 		F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */; };
-		F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08748171E5513350081E1FD /* ObjectTouchImageView.swift */; };
 		F087481A1E5513A70081E1FD /* ObjectTileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08748191E5513A70081E1FD /* ObjectTileImage.swift */; };
 		F08C27D01E86B7DB00D16E9A /* colormaprefgreen.txt in Resources */ = {isa = PBXBuildFile; fileRef = F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */; };
 		F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */; };
@@ -533,6 +533,7 @@
 		036E9B93269D0C0B0009A47B /* ToolbarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarItems.swift; sourceTree = "<group>"; };
 		036E9B95269D0C7C0009A47B /* ScrollStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollStackView.swift; sourceTree = "<group>"; };
 		036E9B97269D0E740009A47B /* FutureBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureBytes.swift; sourceTree = "<group>"; };
+		036E9B99269D90980009A47B /* TouchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchImage.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -709,7 +710,6 @@
 		F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDay.swift; sourceTree = "<group>"; };
 		F0830E991E593467003149E5 /* ObjectDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDatePicker.swift; sourceTree = "<group>"; };
 		F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGL.swift; sourceTree = "<group>"; };
-		F08748171E5513350081E1FD /* ObjectTouchImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTouchImageView.swift; sourceTree = "<group>"; };
 		F08748191E5513A70081E1FD /* ObjectTileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTileImage.swift; sourceTree = "<group>"; };
 		F08C27CF1E86B7DB00D16E9A /* colormaprefgreen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefgreen.txt; sourceTree = "<group>"; };
 		F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSevenDay.swift; sourceTree = "<group>"; };
@@ -1235,6 +1235,7 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				036E9B99269D90980009A47B /* TouchImage.swift */,
 				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
 				036E9B93269D0C0B0009A47B /* ToolbarItems.swift */,
 				036E9B91269D0C010009A47B /* ToolbarIcon.swift */,
@@ -1287,7 +1288,6 @@
 				F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */,
 				F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */,
 				F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */,
-				F08748171E5513350081E1FD /* ObjectTouchImageView.swift */,
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
 				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
@@ -1794,6 +1794,7 @@
 				F05B3B881EB2060100670E77 /* ObjectAlertDetail.swift in Sources */,
 				0340423923F16FC3003AB242 /* vcObsSites.swift in Sources */,
 				F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */,
+				036E9B9A269D90980009A47B /* TouchImage.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
@@ -1922,7 +1923,6 @@
 				F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */,
 				0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */,
 				036522B222914A580056E657 /* UtilityWpcImages.swift in Sources */,
-				F08748181E5513350081E1FD /* ObjectTouchImageView.swift in Sources */,
 				0399A14C21CFD3BB0096ECFB /* FloatyItem.swift in Sources */,
 				0382E04022039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift in Sources */,
 				F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */,

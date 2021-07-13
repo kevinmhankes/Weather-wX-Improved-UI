@@ -10,7 +10,7 @@ final class vcSpcSwoState: UIwXViewController {
 
     private var state = ""
     private var stateButton = ToolbarIcon()
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     var day = ""
 
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ final class vcSpcSwoState: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         stateButton = ToolbarIcon(self, #selector(stateClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, stateButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = TouchImage(self, toolbar)
         getContent(Location.state)
     }
 

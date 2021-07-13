@@ -8,7 +8,7 @@ import UIKit
 
 final class vcSpcMeso: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var sectorButton = ToolbarIcon()
     private var sfcButton = ToolbarIcon()
     private var uaButton = ToolbarIcon()
@@ -64,7 +64,7 @@ final class vcSpcMeso: UIwXViewController {
             sectorButton
         ]).items
         view.addSubview(toolbarTop)
-        image = ObjectTouchImageView(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
+        image = TouchImage(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
         image.addGestureRecognizer(#selector(handleSwipes(sender:)))
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         if spcMesoFromHomeScreen {

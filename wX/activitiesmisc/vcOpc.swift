@@ -8,7 +8,7 @@ import UIKit
 
 final class vcOpc: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var index = 0
     private let prefToken = "OPC_IMG_FAV_URL"
@@ -18,7 +18,7 @@ final class vcOpc: UIwXViewController {
         productButton = ToolbarIcon(self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         getContent(index)
     }

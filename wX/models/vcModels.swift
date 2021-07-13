@@ -8,7 +8,7 @@ import UIKit
 
 final class vcModels: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var sectorButton = ToolbarIcon()
     private var statusButton = ToolbarIcon()
     private var modelButton = ToolbarIcon()
@@ -80,7 +80,7 @@ final class vcModels: UIwXViewController {
         ]).items
         view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true, topToolbar: toolbarTop)
+        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)), hasTopToolbar: true, topToolbar: toolbarTop)
         fabLeft = ObjectFab(self, #selector(leftClicked), iconType: .leftArrow)
         fabRight = ObjectFab(self, #selector(rightClicked), iconType: .rightArrow)
         fabLeft?.setToTheLeft()

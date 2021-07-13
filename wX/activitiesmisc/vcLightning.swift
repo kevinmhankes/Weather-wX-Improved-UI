@@ -8,7 +8,7 @@ import UIKit
 
 final class vcLightning: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var timeButton = ToolbarIcon()
     private var sector = "usa_big"
@@ -25,7 +25,7 @@ final class vcLightning: UIwXViewController {
         timeButton = ToolbarIcon(self, #selector(timeClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, timeButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = TouchImage(self, toolbar)
         initializePreferences()
         getContent()
     }

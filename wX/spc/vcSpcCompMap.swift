@@ -8,7 +8,7 @@ import UIKit
 
 final class vcSpcCompMap: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var layers: Set = ["1"]
 
@@ -17,7 +17,7 @@ final class vcSpcCompMap: UIwXViewController {
         productButton = ToolbarIcon(title: "Layers", self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = TouchImage(self, toolbar)
         deSerializeSettings()
         getContent()
     }

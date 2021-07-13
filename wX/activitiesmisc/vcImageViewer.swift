@@ -8,7 +8,7 @@ import UIKit
 
 final class vcImageViewer: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     var url = ""
 
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ final class vcImageViewer: UIwXViewController {
     }
 
     private func display(_ bitmap: Bitmap) {
-        image = ObjectTouchImageView(self, toolbar, bitmap)
+        image = TouchImage(self, toolbar, bitmap)
     }
 
     @objc func share(sender: UIButton) {

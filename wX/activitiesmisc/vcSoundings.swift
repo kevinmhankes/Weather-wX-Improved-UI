@@ -9,7 +9,7 @@ import MapKit
 
 final class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var siteButton = ToolbarIcon()
     private let map = ObjectMap(.SOUNDING)
 
@@ -20,7 +20,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         siteButton = ToolbarIcon(self, #selector(mapClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, siteButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar)
+        image = TouchImage(self, toolbar)
         getContent(UtilityLocation.getNearestSoundingSite(Location.latLon))
     }
 

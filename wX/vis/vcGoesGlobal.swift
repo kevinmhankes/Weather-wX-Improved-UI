@@ -8,7 +8,7 @@ import UIKit
 
 final class vcGoesGlobal: UIwXViewController {
 
-    private var image = ObjectTouchImageView()
+    private var image = TouchImage()
     private var productButton = ToolbarIcon()
     private var index = 0
     private var animateButton = ToolbarIcon()
@@ -21,7 +21,7 @@ final class vcGoesGlobal: UIwXViewController {
         animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
-        image = ObjectTouchImageView(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
         index = Utility.readPref(prefToken, index)
         if index >= UtilityGoesFullDisk.labels.count {
             index = UtilityGoesFullDisk.labels.count - 1
