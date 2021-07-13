@@ -13,7 +13,7 @@ final class vcGoes: UIwXViewController {
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
     private var savePrefs = true
-    private var firstRun = true
+    //private var firstRun = true
     var productCode = ""
     var sectorCode = ""
 
@@ -59,22 +59,14 @@ final class vcGoes: UIwXViewController {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityGoes.getImage(self.productCode, self.sectorCode)
-            DispatchQueue.main.async {
-                self.productButton.title = bitmap.info
-                self.productCode = bitmap.info
-                self.display(bitmap)
-            }
-        }
+        _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
     }
 
     private func display(_ bitmap: Bitmap) {
+        self.productButton.title = bitmap.info
+        self.productCode = bitmap.info
         serializeSettings()
         image.setBitmap(bitmap)
-        if firstRun {
-            firstRun = false
-        }
     }
 
     override func doneClicked() {
@@ -132,10 +124,6 @@ final class vcGoes: UIwXViewController {
     }
 
     @objc func getAnimation(_ frameCount: Int) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let animationDrawable = UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount)
-//            DispatchQueue.main.async { self.image.startAnimating(animationDrawable) }
-//        }
         _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
     }
 

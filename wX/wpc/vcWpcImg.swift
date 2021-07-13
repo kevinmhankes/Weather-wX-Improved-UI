@@ -42,16 +42,8 @@ final class vcWpcImg: UIwXViewController {
         if getUrl.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
             getUrl += String(timePeriod) + "_conus.png"
         }
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = Bitmap(getUrl)
-//            DispatchQueue.main.async { self.display(bitmap) }
-//        }
-        _ = FutureBytes(getUrl, self.display)
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
         Utility.writePref("WPCIMG_PARAM_LAST_USED", index)
+        _ = FutureBytes(getUrl, image.setBitmap)
     }
 
     func getContentFromHomeScreen() {
@@ -59,10 +51,7 @@ final class vcWpcImg: UIwXViewController {
         if titles.count > 0 {
             productButton.title = titles[0].split(":")[1]
         }
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilityDownload.getImageProduct(self.wpcImagesToken)
-            DispatchQueue.main.async { self.image.setBitmap(bitmap) }
-        }
+        _ = FutureBytes2({ UtilityDownload.getImageProduct(self.wpcImagesToken) }, image.setBitmap)
     }
 
     @objc func showProductMenu() {

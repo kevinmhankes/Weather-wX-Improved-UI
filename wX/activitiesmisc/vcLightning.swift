@@ -15,7 +15,7 @@ final class vcLightning: UIwXViewController {
     private var sectorPretty = "USA"
     private var period = "0.25"
     private var periodPretty = "15 MIN"
-    private var firstRun = true
+    // private var firstRun = true
     private let prefTokenSector = "LIGHTNING_SECTOR"
     private let prefTokenPeriod = "LIGHTNING_PERIOD"
 
@@ -52,12 +52,12 @@ final class vcLightning: UIwXViewController {
     }
 
     private func display(_ bitmap: Bitmap) {
-        if firstRun {
-            image.setBitmap(bitmap)
-            firstRun = false
-        } else {
-            image.updateBitmap(bitmap)
-        }
+        // if firstRun {
+        image.setBitmap(bitmap)
+//            firstRun = false
+//        } else {
+//            image.updateBitmap(bitmap)
+//        }
     }
 
     @objc func productClicked() {
@@ -69,7 +69,7 @@ final class vcLightning: UIwXViewController {
     }
 
     func sectorChanged(_ idx: Int) {
-        firstRun = true
+        // firstRun = true
         sectorPretty = UtilityLightning.sectors[idx]
         sector = UtilityLightning.getSector(sectorPretty)
         getContent()

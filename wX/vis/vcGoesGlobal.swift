@@ -36,10 +36,6 @@ final class vcGoesGlobal: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityGoesFullDisk.labels[self.index]
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = Bitmap(UtilityGoesFullDisk.urls[self.index])
-//            DispatchQueue.main.async { self.display(bitmap) }
-//        }
         _ = FutureBytes(UtilityGoesFullDisk.urls[self.index], self.display)
     }
 
@@ -74,10 +70,6 @@ final class vcGoesGlobal: UIwXViewController {
     }
 
     @objc func getAnimation() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
-//            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
-//        }
         _ = FutureAnimation({ UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index]) }, image.startAnimating)
     }
 

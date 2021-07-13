@@ -36,11 +36,7 @@ final class vcSpcSwoState: UIwXViewController {
 //            let bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
 //            DispatchQueue.main.async { self.display(bitmap) }
 //        }
-        _ = FutureBytes(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png", self.display)
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
+        _ = FutureBytes(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png", image.setBitmap)
     }
 
     @objc func stateClicked(sender: ToolbarIcon) {

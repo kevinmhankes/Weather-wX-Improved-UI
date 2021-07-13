@@ -1,6 +1,6 @@
 
-rename ObjectTextView to Text
 create/use FutureVoid FutureText FutureBytes
+animate icon change
 
 // [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter

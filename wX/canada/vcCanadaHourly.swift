@@ -20,13 +20,15 @@ final class vcCanadaHourly: UIwXViewControllerWithAudio {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
-            DispatchQueue.main.async { self.display(html) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let html = UtilityCanadaHourly.getString(Location.getLocationIndex)
+//            DispatchQueue.main.async { self.display(html) }
+//        }
+        _ = FutureText2({ UtilityCanadaHourly.getString(Location.getLocationIndex) }, objectTextView.setText)
     }
 
     private func display(_ html: String) {
-        objectTextView.text = html
+//        objectTextView.text = html
+        objectTextView.setText(html)
     }
 }

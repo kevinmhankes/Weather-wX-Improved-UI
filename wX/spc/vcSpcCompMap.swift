@@ -18,28 +18,13 @@ final class vcSpcCompMap: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = TouchImage(self, toolbar)
-        deSerializeSettings()
+        layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
         getContent()
     }
 
-    func serializeSettings() {
-        Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
-    }
-
-    func deSerializeSettings() {
-        layers = Set(TextUtils.split(Utility.readPref("SPCCOMPMAP_LAYERSTRIOS", "7:19:"), ":"))
-    }
-
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySpcCompmap.getImage(self.layers)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
-        serializeSettings()
+        Utility.writePref("SPCCOMPMAP_LAYERSTRIOS", TextUtils.join(":", layers))
+        _ = FutureBytes2({ UtilitySpcCompmap.getImage(self.layers) }, image.setBitmap)
     }
 
     @objc func productClicked() {

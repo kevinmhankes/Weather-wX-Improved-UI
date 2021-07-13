@@ -24,10 +24,11 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objectCanadaWarnings.getData()
-            DispatchQueue.main.async { self.display() }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.objectCanadaWarnings.getData()
+//            DispatchQueue.main.async { self.display() }
+//        }
+        _ = FutureVoid(objectCanadaWarnings.getData, display)
     }
 
     @objc func share(sender: UIButton) {

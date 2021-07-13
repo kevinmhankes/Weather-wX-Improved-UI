@@ -128,10 +128,11 @@ final class vcModels: UIwXViewController {
     override func willEnterForeground() {}
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = self.modelObj.getImage()
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let bitmap = self.modelObj.getImage()
+//            DispatchQueue.main.async { self.display(bitmap) }
+//        }
+        _ = FutureBytes2(modelObj.getImage, display)
     }
 
     private func display(_ bitmap: Bitmap) {

@@ -22,7 +22,7 @@ final class vcSpcMeso: UIwXViewController {
     private var sector = "19"
     private var prefModel = "SPCMESO"
     private let numPanesStr = "1"
-    private var firstRun = true
+    // private var firstRun = true
     private let subMenu = MenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
     var spcMesoFromHomeScreen = false
     var spcMesoToken = ""
@@ -78,19 +78,17 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySpcMesoInputOutput.getImage(self.product, self.sector)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
+        _ = FutureBytes2({ UtilitySpcMesoInputOutput.getImage(self.product, self.sector) }, display)
     }
 
     private func display(_ bitmap: Bitmap) {
-        if firstRun {
-            image.setBitmap(bitmap)
-            firstRun = false
-        } else {
-            image.updateBitmap(bitmap)
-        }
+        image.setBitmap(bitmap)
+//        if firstRun {
+//            image.setBitmap(bitmap)
+//            firstRun = false
+//        } else {
+//            image.updateBitmap(bitmap)
+//        }
         paramButton.title = product
         Utility.writePref(prefTokenProduct, product)
         Utility.writePref(prefTokenSector, sector)

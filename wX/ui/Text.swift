@@ -120,6 +120,10 @@ final class Text {
         get { tv.tag }
         set { tv.tag = newValue }
     }
+    
+    func setText(_ s: String) {
+        tv.text = s
+    }
 
     func setZeroSpacing() {
         tv.textContainerInset = UIEdgeInsets.zero

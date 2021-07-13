@@ -35,12 +35,12 @@ final class vcOpc: UIwXViewController {
 //            let bitmap = Bitmap(UtilityOpcImages.urls[self.index])
 //            DispatchQueue.main.async { self.display(bitmap) }
 //        }
-        _ = FutureBytes(UtilityOpcImages.urls[self.index], self.display)
+        _ = FutureBytes(UtilityOpcImages.urls[self.index], image.setBitmap)
     }
 
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
-    }
+//    private func display(_ bitmap: Bitmap) {
+//        image.setBitmap(bitmap)
+//    }
 
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityOpcImages.labels, getContent)

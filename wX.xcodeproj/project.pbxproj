@@ -136,6 +136,9 @@
 		036E9B9A269D90980009A47B /* TouchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B99269D90980009A47B /* TouchImage.swift */; };
 		036E9B9C269D916E0009A47B /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9B269D916E0009A47B /* MenuData.swift */; };
 		036E9B9E269DA98B0009A47B /* FutureAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9D269DA98B0009A47B /* FutureAnimation.swift */; };
+		036E9BA0269DC5180009A47B /* FutureText2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9F269DC5180009A47B /* FutureText2.swift */; };
+		036E9BA2269DE47D0009A47B /* FutureBytes2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9BA1269DE47D0009A47B /* FutureBytes2.swift */; };
+		036E9BA4269DFA350009A47B /* UtilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9BA3269DFA350009A47B /* UtilityList.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -537,6 +540,9 @@
 		036E9B99269D90980009A47B /* TouchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchImage.swift; sourceTree = "<group>"; };
 		036E9B9B269D916E0009A47B /* MenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		036E9B9D269DA98B0009A47B /* FutureAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureAnimation.swift; sourceTree = "<group>"; };
+		036E9B9F269DC5180009A47B /* FutureText2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureText2.swift; sourceTree = "<group>"; };
+		036E9BA1269DE47D0009A47B /* FutureBytes2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureBytes2.swift; sourceTree = "<group>"; };
+		036E9BA3269DFA350009A47B /* UtilityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityList.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -1100,13 +1106,13 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				036102CB269C89CC0072EEC4 /* to.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
 				039795B62032D7C100F37CCE /* ObjectMetar.swift */,
 				F08E48301EB0DF72000629DA /* ObjectSevenDay.swift */,
 				F0B335071DA3FD1C0035BD36 /* ProjectionNumbers.swift */,
+				036102CB269C89CC0072EEC4 /* to.swift */,
 				F0B335641DA3FD6F0035BD36 /* Utility.swift */,
 				F0118B411DA9771600B43DE5 /* UtilityActions.swift */,
 				F0B335681DA3FD6F0035BD36 /* UtilityCanvasProjection.swift */,
@@ -1120,6 +1126,7 @@
 				F0B335981DA3FD960035BD36 /* UtilityImg.swift */,
 				F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */,
 				F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */,
+				036E9BA3269DFA350009A47B /* UtilityList.swift */,
 				F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */,
 				035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */,
 				030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */,
@@ -1190,6 +1197,8 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				036E9BA1269DE47D0009A47B /* FutureBytes2.swift */,
+				036E9B9F269DC5180009A47B /* FutureText2.swift */,
 				036E9B9D269DA98B0009A47B /* FutureAnimation.swift */,
 				036E9B97269D0E740009A47B /* FutureBytes.swift */,
 				036102D1269CCE8E0072EEC4 /* FutureText.swift */,
@@ -1627,6 +1636,7 @@
 				0340423123F16FC3003AB242 /* vcWfoText.swift in Sources */,
 				034041EF23F167F9003AB242 /* vcSpcMeso.swift in Sources */,
 				0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */,
+				036E9BA4269DFA350009A47B /* UtilityList.swift in Sources */,
 				F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */,
 				037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */,
 				F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */,
@@ -1786,6 +1796,7 @@
 				0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */,
 				03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */,
 				034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */,
+				036E9BA2269DE47D0009A47B /* FutureBytes2.swift in Sources */,
 				0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */,
 				F0B335551DA3FD510035BD36 /* ExternalEllipsoid.swift in Sources */,
 				F0B335541DA3FD510035BD36 /* Extensions.swift in Sources */,
@@ -1868,6 +1879,7 @@
 				034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */,
 				035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */,
 				03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */,
+				036E9BA0269DC5180009A47B /* FutureText2.swift in Sources */,
 				F0B334F61DA3FB2B0035BD36 /* UtilityDownload.swift in Sources */,
 				F07B5C0C1E53D4DE00555058 /* ObjectImage.swift in Sources */,
 				03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */,
