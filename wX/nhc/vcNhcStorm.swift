@@ -61,7 +61,7 @@ final class vcNhcStorm: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, textProducts, productChanged(_:))
+        _ = ObjectPopUp(self, productButton, textProducts, productChanged)
     }
 
     func productChanged(_ product: String) {

@@ -41,19 +41,11 @@ final class vcRadarMosaicAwc: UIwXViewController {
     override func getContent() {
         productButton.title = product
         sectorButton.title = sector
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = UtilityAwcRadarMosaic.get(self.sector, self.product)
-//            DispatchQueue.main.async { self.display(bitmap) }
-//        }
-        _ = FutureBytes(UtilityAwcRadarMosaic.get(self.sector, self.product), self.display)
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
         if !isLocal {
             Utility.writePref(prefTokenSector, sector)
             Utility.writePref(prefTokenProduct, product)
         }
+        _ = FutureBytes(UtilityAwcRadarMosaic.get(self.sector, self.product), image.setBitmap)
     }
 
     @objc func sectorClicked() {
@@ -79,10 +71,6 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
 
     @objc func getAnimation() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let animDrawable = UtilityAwcRadarMosaic.getAnimation(self.sector, self.product)
-//            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
-//        }
         _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
     }
 

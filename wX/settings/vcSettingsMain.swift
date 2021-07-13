@@ -61,7 +61,7 @@ final class vcSettingsMain: UIwXViewController {
                 stackView,
                 title,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(title, self, #selector(actionClick(sender:)))
+                UITapGestureRecognizerWithData(title, self, #selector(actionClick))
             )
             objectTextView.constrain(scrollView)
             objectTextView.tv.isSelectable = false

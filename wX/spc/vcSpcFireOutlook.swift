@@ -14,7 +14,7 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var dayString = String(dayIndex + 1)
+        var dayString = to.String(dayIndex + 1)
         if dayIndex == 2 {
             dayString = "3-8"
         }
@@ -38,19 +38,13 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
 
     func getContentImage() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
-            self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async { self.display() }
-        }
+        let imgUrl = UtilitySpcFireOutlook.urls[self.dayIndex]
+        _ = FutureVoid({ self.bitmap = Bitmap(imgUrl) }, self.display)
     }
 
     func getContentText() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.product = UtilitySpcFireOutlook.products[self.dayIndex]
-            self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.display() }
-        }
+        self.product = UtilitySpcFireOutlook.products[self.dayIndex]
+        _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, self.display)
     }
 
     @objc func imageClicked() {

@@ -35,23 +35,16 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
 
     func getContentText() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if self.spcSwoDay == "48" {
-                self.product = "SWOD" + self.spcSwoDay
-                self.html = UtilityDownload.getTextProduct(self.product)
-            } else {
-                self.product = "SWODY" + self.spcSwoDay
-                self.html = UtilityDownload.getTextProduct(self.product)
-            }
-            DispatchQueue.main.async { self.display() }
+        if self.spcSwoDay == "48" {
+            self.product = "SWOD" + self.spcSwoDay
+        } else {
+            self.product = "SWODY" + self.spcSwoDay
         }
+        _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }
 
     func getContentImage() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay)
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid({ self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay) }, display)
     }
 
     private func display() {

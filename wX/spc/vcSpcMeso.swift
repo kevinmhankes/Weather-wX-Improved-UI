@@ -20,9 +20,6 @@ final class vcSpcMeso: UIwXViewController {
     private var animateButton = ToolbarIcon()
     private var product = "500mb"
     private var sector = "19"
-    private var prefModel = "SPCMESO"
-    private let numPanesStr = "1"
-    // private var firstRun = true
     private let subMenu = MenuData(UtilitySpcMeso.titles, UtilitySpcMeso.params, UtilitySpcMeso.labels)
     var spcMesoFromHomeScreen = false
     var spcMesoToken = ""
@@ -83,12 +80,6 @@ final class vcSpcMeso: UIwXViewController {
 
     private func display(_ bitmap: Bitmap) {
         image.setBitmap(bitmap)
-//        if firstRun {
-//            image.setBitmap(bitmap)
-//            firstRun = false
-//        } else {
-//            image.updateBitmap(bitmap)
-//        }
         paramButton.title = product
         Utility.writePref(prefTokenProduct, product)
         Utility.writePref(prefTokenSector, sector)
@@ -192,12 +183,7 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     func getAnimation(_ frameCount: Int) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount)
-            DispatchQueue.main.async {
-                self.image.startAnimating(animDrawable)
-            }
-        }
+        _ = FutureAnimation({ UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount) }, image.startAnimating)
     }
 
     @objc func showProductMenu() {

@@ -26,15 +26,7 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     func getContent(_ wfo: String) {
         siteButton.title = wfo
-        // TODO FutureBytes
-        DispatchQueue.global(qos: .userInitiated).async {
-            let bitmap = UtilitySpcSoundings.getImage(wfo)
-            DispatchQueue.main.async { self.display(bitmap) }
-        }
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
+        _ = FutureBytes2({ UtilitySpcSoundings.getImage(wfo) }, image.setBitmap)
     }
 
     @objc func share(sender: UIButton) {

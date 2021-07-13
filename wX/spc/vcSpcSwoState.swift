@@ -32,15 +32,11 @@ final class vcSpcSwoState: UIwXViewController {
             self.state = "AL"
         }
         stateButton.title = self.state
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png")
-//            DispatchQueue.main.async { self.display(bitmap) }
-//        }
         _ = FutureBytes(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png", image.setBitmap)
     }
 
     @objc func stateClicked(sender: ToolbarIcon) {
-        _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, getContent(_:))
+        _ = ObjectPopUp(self, title: "State Selection", sender, GlobalArrays.states, getContent)
     }
 
     @objc func shareClicked(sender: UIButton) {

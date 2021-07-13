@@ -82,7 +82,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 stackView,
                 city,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(index, self, #selector(goToProvinces(sender:)))
+                UITapGestureRecognizerWithData(index, self, #selector(goToProvinces))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)

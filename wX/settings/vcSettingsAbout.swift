@@ -64,7 +64,7 @@ final class vcSettingsAbout: UIwXViewController {
             stackView,
             "View FAQ (Outage notifications listed at top if any are current)",
             FontSize.extraLarge.size,
-            UITapGestureRecognizerWithData("faq", self, #selector(actionClick(sender:)))
+            UITapGestureRecognizerWithData("faq", self, #selector(actionClick))
         )
         objectTextView1.color = ColorCompatibility.highlightText
         objectTextView1.tv.isSelectable = false
@@ -73,7 +73,7 @@ final class vcSettingsAbout: UIwXViewController {
             stackView,
             "View release notes",
             FontSize.extraLarge.size,
-            UITapGestureRecognizerWithData("notes", self, #selector(actionClick(sender:)))
+            UITapGestureRecognizerWithData("notes", self, #selector(actionClick))
         )
         objectTextView2.color = ColorCompatibility.highlightText
         objectTextView2.tv.isSelectable = false
@@ -82,7 +82,7 @@ final class vcSettingsAbout: UIwXViewController {
             stackView,
             aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,
-            UITapGestureRecognizerWithData("", self, #selector(actionClick(sender:)))
+            UITapGestureRecognizerWithData("", self, #selector(actionClick))
         )
         objectTextView3.constrain(scrollView)
     }

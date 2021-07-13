@@ -16,14 +16,18 @@ final class vcSpcFireSummary: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        bitmaps = [Bitmap](repeating: Bitmap(), count: UtilitySpcFireOutlook.urls.count)
         getContent()
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilitySpcFireOutlook.urls.map { Bitmap($0) }
-            DispatchQueue.main.async { self.display() }
+        UtilitySpcFireOutlook.urls.enumerated().forEach { i, url in
+            _ = FutureVoid({ self.download(url, i) }, self.display)
         }
+    }
+    
+    private func download(_ url: String, _ i: Int) {
+        self.bitmaps[i] = Bitmap(url)
     }
 
     private func display() {

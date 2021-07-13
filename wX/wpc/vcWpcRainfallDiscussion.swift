@@ -35,18 +35,12 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
 
     func getContentImage() {
         let imgUrl = UtilityWpcRainfallOutlook.urls[day]
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmap = Bitmap(imgUrl)
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid({ self.bitmap = Bitmap(imgUrl) }, display)
     }
 
     func getContentText() {
         product = UtilityWpcRainfallOutlook.codes[day]
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }
 
     private func display() {

@@ -24,10 +24,6 @@ final class vcWpcRainfallSummary: UIwXViewController {
         UtilityWpcRainfallOutlook.urls.enumerated().forEach { i, url in
             _ = FutureVoid({ self.download(url, i) }, self.display)
         }
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
-//            DispatchQueue.main.async { self.display() }
-//        }
     }
     
     private func download(_ url: String, _ i: Int) {
