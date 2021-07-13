@@ -135,6 +135,7 @@
 		036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B97269D0E740009A47B /* FutureBytes.swift */; };
 		036E9B9A269D90980009A47B /* TouchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B99269D90980009A47B /* TouchImage.swift */; };
 		036E9B9C269D916E0009A47B /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9B269D916E0009A47B /* MenuData.swift */; };
+		036E9B9E269DA98B0009A47B /* FutureAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9B9D269DA98B0009A47B /* FutureAnimation.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
 		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
@@ -535,6 +536,7 @@
 		036E9B97269D0E740009A47B /* FutureBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureBytes.swift; sourceTree = "<group>"; };
 		036E9B99269D90980009A47B /* TouchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchImage.swift; sourceTree = "<group>"; };
 		036E9B9B269D916E0009A47B /* MenuData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
+		036E9B9D269DA98B0009A47B /* FutureAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureAnimation.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
 		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				036E9B9D269DA98B0009A47B /* FutureAnimation.swift */,
 				036E9B97269D0E740009A47B /* FutureBytes.swift */,
 				036102D1269CCE8E0072EEC4 /* FutureText.swift */,
 				036102CF269CCD020072EEC4 /* FutureVoid.swift */,
@@ -1887,6 +1890,7 @@
 				03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */,
 				036E9B94269D0C0B0009A47B /* ToolbarItems.swift in Sources */,
 				0399A14D21CFD3BB0096ECFB /* FloatyDelegate.swift in Sources */,
+				036E9B9E269DA98B0009A47B /* FutureAnimation.swift in Sources */,
 				0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */,
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
 				F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */,

@@ -62,7 +62,7 @@ final class vcGoesGlobal: UIwXViewController {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, getContent(_:))
+        _ = ObjectPopUp(self, productButton, UtilityGoesFullDisk.labels, getContent)
     }
 
     @objc func shareClicked(sender: UIButton) {
@@ -74,10 +74,11 @@ final class vcGoesGlobal: UIwXViewController {
     }
 
     @objc func getAnimation() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
-            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let animDrawable = UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index])
+//            DispatchQueue.main.async { self.image.startAnimating(animDrawable) }
+//        }
+        _ = FutureAnimation({ UtilityGoesFullDisk.getAnimation(url: UtilityGoesFullDisk.urls[self.index]) }, image.startAnimating)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
