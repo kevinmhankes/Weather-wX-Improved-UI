@@ -16,14 +16,22 @@ final class vcWpcRainfallSummary: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        bitmaps = [Bitmap](repeating: Bitmap(), count: UtilityWpcRainfallOutlook.urls.count)
         getContent()
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
-            DispatchQueue.main.async { self.display() }
+        UtilityWpcRainfallOutlook.urls.enumerated().forEach { i, url in
+            _ = FutureVoid({ self.download(url, i) }, self.display)
         }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.bitmaps = UtilityWpcRainfallOutlook.urls.map { Bitmap($0) }
+//            DispatchQueue.main.async { self.display() }
+//        }
+    }
+    
+    private func download(_ url: String, _ i: Int) {
+        self.bitmaps[i] = Bitmap(url)
     }
 
     private func display() {
