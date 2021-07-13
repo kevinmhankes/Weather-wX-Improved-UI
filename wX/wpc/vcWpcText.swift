@@ -67,7 +67,7 @@ final class vcWpcText: UIwXViewControllerWithAudio {
     }
 
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu)
     }
 
     func showSubMenu(_ index: Int) {
