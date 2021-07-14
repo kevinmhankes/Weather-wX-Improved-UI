@@ -38,7 +38,11 @@ final class ObjectPolygonWatch {
     func download() {
         if timer.isRefreshNeeded() {
             let html = getUrl().getHtml()
-            print("WWW" + html)
+            if html == "" {
+                timer.resetTimer()
+                return
+            }
+            // print("WWW" + html)
             storage.value = html
             if type == PolygonEnum.WPCMPD {
                 var numberListString = ""
