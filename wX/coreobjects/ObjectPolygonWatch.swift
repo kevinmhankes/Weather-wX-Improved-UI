@@ -36,10 +36,10 @@ final class ObjectPolygonWatch {
     }
     
     func download() {
-        if (timer.isRefreshNeeded()) {
+        if timer.isRefreshNeeded() {
             let html = getUrl().getHtml()
             storage.value = html
-            if (type == PolygonEnum.WPCMPD) {
+            if type == PolygonEnum.WPCMPD {
                 var numberListString = ""
                 var latLonString = ""
                 let numbers = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
@@ -52,10 +52,44 @@ final class ObjectPolygonWatch {
                 // MyApplication.mpdNoList.value = numberListString
                 latLonList.setValue(latLonString)
                 numberList.setValue(numberListString)
-            } else if (type == PolygonEnum.SPCMCD) {
-                
-            } else if (type == PolygonEnum.SPCWAT) {
-                
+            } else if type == PolygonEnum.SPCMCD {
+                var numberListString = ""
+                var latLonString = ""
+                let numbers = html.parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
+                numbers.forEach { number in
+                    let text = UtilityDownload.getTextProduct("SPCMCD" + number)
+                    numberListString += number + ":"
+                    latLonString += LatLon.storeWatchMcdLatLon(text)
+                }
+                // MyApplication.mcdLatlon.value = latLonString
+                // MyApplication.mcdNoList.value = numberListString
+                latLonList.setValue(latLonString)
+                numberList.setValue(numberListString)
+            } else if type == PolygonEnum.SPCWAT {
+                var numberListString = ""
+                var latLonString = ""
+                var latLonTorString = ""
+                var latLonCombinedString = ""
+                let numbers = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
+                numbers.forEach { number in
+                    numberListString += number + ":"
+                    let text = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
+                    let preText = UtilityString.parseLastMatch(text, GlobalVariables.pre2Pattern)
+                    if preText.contains("SEVERE TSTM") {
+                        latLonString += LatLon.storeWatchMcdLatLon(preText)
+                    } else {
+                        latLonTorString += LatLon.storeWatchMcdLatLon(preText)
+                    }
+                    latLonCombinedString += LatLon.storeWatchMcdLatLon(preText)
+                }
+//                MyApplication.watchLatlon.value = latLongString
+//                MyApplication.watchLatlonTor.value = latLonTorString
+//                MyApplication.watchLatlonCombined.value = latLonCombinedString
+//                MyApplication.watNoList.value = numberListString
+                latLonList.setValue(latLonString)
+                numberList.setValue(numberListString)
+                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT_TORNADO]!.latLonList.setValue(latLonTorString)
+                ObjectPolygonWatch.watchLatlonCombined.setValue(latLonCombinedString)
             }
         }
     }
@@ -91,19 +125,19 @@ final class ObjectPolygonWatch {
 
     func getUrl() -> String {
         var downloadUrl = ""
-        if (type == PolygonEnum.SPCMCD) {
+        if type == PolygonEnum.SPCMCD {
             downloadUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/"
-        } else if (type == PolygonEnum.SPCWAT) {
+        } else if type == PolygonEnum.SPCWAT {
             downloadUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/"
-        } else if (type == PolygonEnum.SPCWAT_TORNADO) {
+        } else if type == PolygonEnum.SPCWAT_TORNADO {
             downloadUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/"
-        } else if (type == PolygonEnum.WPCMPD) {
+        } else if type == PolygonEnum.WPCMPD {
             downloadUrl = GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/metwatch_mpd.php"
         }
         return downloadUrl
     }
 
-    static func getLatLon(_ number: String) ->String {
+    static func getLatLon(_ number: String) -> String {
         let html = UtilityIO.getHtml(GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html")
         return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)
     }

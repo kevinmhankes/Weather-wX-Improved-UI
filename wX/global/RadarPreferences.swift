@@ -67,6 +67,7 @@ final class RadarPreferences {
         wxoglRadarAutorefreshBoolString = "true"
         #endif
         ObjectPolygonWarning.load()
+        ObjectPolygonWatch.load()
         radarWarnings = Utility.readPref("COD_WARNINGS_DEFAULT", "true").hasPrefix("t")
         locdotFollowsGps = Utility.readPref("LOCDOT_FOLLOWS_GPS", "false").hasPrefix("t")
         dualpaneshareposn = Utility.readPref("DUALPANE_SHARE_POSN", "true").hasPrefix("t")
