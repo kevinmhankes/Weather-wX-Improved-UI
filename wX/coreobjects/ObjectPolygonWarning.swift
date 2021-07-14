@@ -16,8 +16,7 @@ final class ObjectPolygonWarning {
     init(_ type: PolygonTypeGeneric) {
         self.type = type
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
-        storage = DataStorage("SEVERE_DASHBOARD_\(type)")
-        print("SEVERE_DASHBOARD_\(type)")
+        storage = DataStorage("SEVEREDASHBOARD\(type)")
         timer = DownloadTimer("WARNINGS_\(type)")
         storage.update()
         data = storage.value
@@ -81,7 +80,7 @@ final class ObjectPolygonWarning {
         .SPS: wXColor.colorsToInt(255, 228, 181),
         .TOR: wXColor.colorsToInt(243, 85, 243),
         .TST: wXColor.colorsToInt(255, 255, 0),
-        .FFW: wXColor.colorsToInt(0, 255, 0),
+        .FFW: wXColor.colorsToInt(0, 255, 0)
     ]
 
     let longName: [PolygonTypeGeneric: String] = [
@@ -91,8 +90,8 @@ final class ObjectPolygonWarning {
         .SPS: "Special%20Weather%20Statement",
         .TOR: "Tornado%20Warning",
         .TST: "Severe%20Thunderstorm%20Warning",
-        .FFW: "Flash%20Flood%20Warning",
-        .SPS: "Flood%20Warning"
+        .FFW: "Flash%20Flood%20Warning"
+        // .SPS: "Flood%20Warning"
     ]
 
     static let polygonList = [

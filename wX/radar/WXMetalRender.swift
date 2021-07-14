@@ -263,19 +263,44 @@ final class WXMetalRender {
         time += delta
     }
     
+    func constructAlertPolygonsByType(_ type: PolygonTypeGeneric) {
+        switch type {
+        case .TOR:
+            if warningTorBuffers.type.display {
+                constructGenericLines(warningTorBuffers)
+                warningTorBuffers.generateMtlBuffer(device)
+            }
+        case .TST:
+            if warningTstBuffers.type.display {
+                constructGenericLines(warningTstBuffers)
+                warningTstBuffers.generateMtlBuffer(device)
+            }
+        case .FFW:
+            if warningFfwBuffers.type.display {
+                constructGenericLines(warningFfwBuffers)
+                warningFfwBuffers.generateMtlBuffer(device)
+            }
+        default:
+            break
+        }
+
+    }
+    
     func constructAlertPolygons() {
         // if PolygonType.TST.display {
             [
-                warningTstBuffers,
-                warningTorBuffers,
-                warningFfwBuffers,
+                // warningTstBuffers,
+                // warningTorBuffers,
+                // warningFfwBuffers,
                 warningSmwBuffers,
                 warningSqwBuffers,
                 warningDswBuffers,
                 warningSpsBuffers
                 ].forEach {
-                    constructGenericLines($0)
-                    $0.generateMtlBuffer(device)
+                    if $0.type.display {
+                        constructGenericLines($0)
+                        $0.generateMtlBuffer(device)
+                    }
             }
             if renderFn != nil {
                 renderFn!(paneNumber)

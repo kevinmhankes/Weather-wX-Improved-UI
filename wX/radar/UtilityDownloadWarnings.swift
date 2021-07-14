@@ -12,13 +12,13 @@ final class UtilityDownloadWarnings {
         if !PolygonType.TST.display {
             // UtilityDownloadRadar.clearPolygonVtec()
         } else if timer.isRefreshNeeded() {
-            UtilityDownloadRadar.getPolygonVtec()
+            // UtilityDownloadRadar.getPolygonVtec()
             ObjectPolygonWarning.polygonList.forEach {
                 let polygonType = ObjectPolygonWarning.polygonDataByType[$0]!
                 if polygonType.isEnabled {
                     UtilityDownloadRadar.getPolygonVtecByType(polygonType)
                 } else {
-                    UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)
+                    // UtilityDownloadRadar.getPolygonVtecByTypeClear(polygonType)
                 }
             }
         }

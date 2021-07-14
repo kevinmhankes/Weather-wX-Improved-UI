@@ -1,6 +1,13 @@
-
+test sps
+nexrad - more threads for warnings
+SevereDash use FutureVoid for warnings
+rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
 animate icon change
+
+NCEP MAG 3.19.0 April 2021 (below)
+
+objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 
 // [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter
@@ -39,3 +46,45 @@ animate icon change
 // [REF] scan for closure without proper spaces
 // [REF] remove -> Void from closures
 // [FIX] pan motion behaves differently on different classes of device (tracks 1:1 on 2018 base ipad, etc)
+
+
+
+In conjunction with GFS v16-Wave model upgrade, the following new products are added to GFS-WAVE:
+wsea_wv_ht
+swell1_wv_ht
+swell1_dir_per
+swell1_dir_per
+swell2_wv_ht
+swell2_dir_per
+Added the following domains to GFS-WAVE:
+ALASKA
+HAWAII
+ARCTIC
+NE-COAST
+SE-COAST
+WA-OR
+GOM (Gulf of Mexico)
+SOUTH-CAL (southern California)
+NORTH-CAL (northern California)
+PAC-REGION (including regions in the far South Pacific)
+Added the following domains to GEFS Storm Tracks:
+CONUS
+ATLANTIC
+ASIA
+NORTH-PAC (northern Pacific)
+Europe
+Added Probabilistic Storm Tracks for GEFS for the following domains:
+CONUS
+ATLANTIC
+ASIA
+NORTH-PAC (northern Pacific)
+EUROPE
+Added prob_cref_40dbz and prob_max_hlcy_75 to HREF model.
+Added Alaska domain to HRRR model.
+Added Accumulated Maximum Updraft Helicity (accu_max_updraft_hlcy) to HRRR model.
+Added precip type to HREF pmm_refd_max and pmm_refd_1km.
+Added the NAMER domain to RAP model.
+Added the model name to titles.
+Added 1000-500mb thickness field to precipitation products.
+
+https://mag.ncep.noaa.gov/version_updates.php

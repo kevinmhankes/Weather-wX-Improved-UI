@@ -510,7 +510,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func getPolygonWarnings() {
         updateWarningsInToolbar()
         getPolygonWatch()
-        if PolygonType.TST.display {
+        getPolygonWarningsNonGeneric()
+        if ObjectPolygonWarning.areAnyEnabled() {
             DispatchQueue.global(qos: .userInitiated).async {
                 // self.semaphore.wait()
                 if self.wxMetalRenders[0] != nil {
@@ -519,14 +520,35 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 // UtilityPolygons.get()
                 UtilityDownloadWarnings.get()
                 DispatchQueue.main.async {
+                    self.semaphore.wait()
                     if self.wxMetalRenders[0] != nil {
                         self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
                     }
                     self.updateWarningsInToolbar()
-                    // self.semaphore.signal()
+                    self.semaphore.signal()
                 }
             }
         }
+    }
+    
+    func getPolygonWarningsNonGeneric() {
+        if PolygonType.TST.display {
+            for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
+                self.updatePolygonWarningsNonGeneric(t)
+            }
+            for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
+                _ = FutureVoid(ObjectPolygonWarning.polygonDataByType[t]!.download, { self.updatePolygonWarningsNonGeneric(t) })
+            }
+        }
+    }
+    
+    func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
+        self.semaphore.wait()
+        if self.wxMetalRenders[0] != nil {
+            self.wxMetalRenders.forEach { $0!.constructAlertPolygonsByType(type) }
+        }
+        self.updateWarningsInToolbar()
+        self.semaphore.signal()
     }
     
     func getPolygonWatch() {
@@ -546,9 +568,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
             }
             DispatchQueue.main.async {
+                self.semaphore.wait()
                 if self.wxMetalRenders[0] != nil {
                     self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
                 }
+                self.semaphore.signal()
             }
         }
     }

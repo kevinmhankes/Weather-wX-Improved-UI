@@ -6,6 +6,7 @@
                  [ADD] a dedicated and more standard activity to handle single MPD/MCD/Watch: vcSpcMcdWatchMpdViewer.swift
                  [ADD] additional download threads in WPC Rainfall Outlook and SPC Fire Outlook
                  [ADD] to.swift for compat with desktop ports
+                 [FIX] SPS was not showing in Nexrad correctly (special weather statement)
                  [ADD] Future* and test in WpcImg and Hourly, wpcText
                  [ADD] to.swift for compat with desktop ports
 	renamed:    ObjectScrollStackView.swift -> ScrollStackView.swift
