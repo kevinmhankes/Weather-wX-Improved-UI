@@ -58,7 +58,7 @@ final class ObjectWatchProduct {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
         var textWithLatLon = text
         if type == .SPCWAT || type == .SPCWAT_TORNADO {
-            textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
+            textWithLatLon = ObjectWatchProduct.getLatLon(productNumber)
         }
         stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
@@ -71,7 +71,7 @@ final class ObjectWatchProduct {
         text = UtilityDownload.getTextProduct(prod.uppercased()).removeHtml()
         var textWithLatLon = text
         if type == .SPCWAT || type == .SPCWAT_TORNADO {
-            textWithLatLon = UtilityDownloadRadar.getLatLon(productNumber)
+            textWithLatLon = ObjectWatchProduct.getLatLon(productNumber)
         }
         stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
@@ -139,5 +139,10 @@ final class ObjectWatchProduct {
         } else {
             return ""
         }
+    }
+    
+    static func getLatLon(_ number: String) -> String {
+        let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
+        return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)
     }
 }

@@ -71,7 +71,13 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
 
     @objc func getAnimation() {
-        _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
+        if !image.isAnimating() {
+            animateButton.setImage(.stop)
+            _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
+        } else {
+            image.stopAnimating()
+            animateButton.setImage(.play)
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

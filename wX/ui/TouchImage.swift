@@ -79,6 +79,14 @@ final class TouchImage {
         img.zoomView?.animationDuration = animDrawable.animationDelay
         img.zoomView?.startAnimating()
     }
+    
+    func stopAnimating() {
+        img.zoomView?.stopAnimating()
+    }
+    
+    func isAnimating() -> Bool {
+        return img.zoomView?.isAnimating ?? false
+    }
 
     func setMaxScaleFromMinScale(_ value: CGFloat) {
         img.maxScaleFromMinScale = value
