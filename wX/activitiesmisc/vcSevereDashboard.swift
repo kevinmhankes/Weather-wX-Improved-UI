@@ -104,32 +104,32 @@ final class vcSevereDashboard: UIwXViewController {
 //        }
 //    }
 
-    func getContentWarningTst() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadRadar.getPolygonVtecTst()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
-
-    func getContentWarningFfw() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadRadar.getPolygonVtecFfw()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
-
-    func getContentWarningTor() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadRadar.getPolygonVtecTor()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
+//    func getContentWarningTst() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadRadar.getPolygonVtecTst()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
+//
+//    func getContentWarningFfw() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadRadar.getPolygonVtecFfw()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
+//
+//    func getContentWarningTor() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadRadar.getPolygonVtecTor()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
 
     func getContentUsAlerts() {
         DispatchQueue.global(qos: .userInitiated).async {

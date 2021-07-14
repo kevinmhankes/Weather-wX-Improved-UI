@@ -10,7 +10,7 @@ final class UtilityDownloadWarnings {
 
     static func get() {
         if !PolygonType.TST.display {
-            UtilityDownloadRadar.clearPolygonVtec()
+            // UtilityDownloadRadar.clearPolygonVtec()
         } else if timer.isRefreshNeeded() {
             UtilityDownloadRadar.getPolygonVtec()
             ObjectPolygonWarning.polygonList.forEach {

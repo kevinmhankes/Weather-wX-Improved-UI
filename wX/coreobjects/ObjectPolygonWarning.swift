@@ -10,27 +10,36 @@ final class ObjectPolygonWarning {
     let timer: DownloadTimer
     let isEnabled: Bool
     let type: PolygonTypeGeneric
+    var data = ""
     private let baseUrl = "https://api.weather.gov/alerts/active?event="
 
     init(_ type: PolygonTypeGeneric) {
         self.type = type
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
         storage = DataStorage("SEVERE_DASHBOARD_\(type)")
+        print("SEVERE_DASHBOARD_\(type)")
         timer = DownloadTimer("WARNINGS_\(type)")
         storage.update()
+        data = storage.value
     }
     
     func download() {
         if timer.isRefreshNeeded() {
             let html = getUrl().getNwsHtml()
+            print("AAA download \(type) " + html)
             if html != "" {
-                storage.setValue(html)
+                print("AAA2 download \(type) " + html)
+                storage.value = html
+                data = html
             }
         }
     }
 
     func getData() -> String {
-        return storage.getValue()
+        print("AAA getData \(type)" + storage.value + data)
+        return data
+        // TODO
+        // return storage.value
     }
 
     var color: Int { Utility.readPref(prefTokenColor, defaultColors[type]!) }

@@ -54,19 +54,19 @@ final class ObjectWarning {
         }
     }
     
-    static func getBulkData(_ type1: PolygonEnum) -> String {
-        var html = ""
-        if type1 == PolygonEnum.TOR {
-            html = MyApplication.severeDashboardTor.value
-        } else if type1 == PolygonEnum.TST {
-            html = MyApplication.severeDashboardTst.value
-        } else if type1 == PolygonEnum.FFW {
-            html = MyApplication.severeDashboardFfw.value
-        } else {
-            html = ""
-        }
-        return html
-    }
+//    static func getBulkData(_ type1: PolygonEnum) -> String {
+//        var html = ""
+//        if type1 == PolygonEnum.TOR {
+//            html = MyApplication.severeDashboardTor.value
+//        } else if type1 == PolygonEnum.TST {
+//            html = MyApplication.severeDashboardTst.value
+//        } else if type1 == PolygonEnum.FFW {
+//            html = MyApplication.severeDashboardFfw.value
+//        } else {
+//            html = ""
+//        }
+//        return html
+//    }
     
     static func parseJson(_ htmlF: String) -> [ObjectWarning] {
         var html = htmlF

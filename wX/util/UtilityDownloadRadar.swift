@@ -44,47 +44,52 @@ final class UtilityDownloadRadar {
 
     static func getPolygonVtec() {
         // TODO FIXME , should there really still be a check for "" ?
-        let tstHtml = urlTst.getNwsHtml()
-        if tstHtml != "" {
-            MyApplication.severeDashboardTst.value = tstHtml
-        }
-        let ffwHtml = urlFfw.getNwsHtml()
-        if ffwHtml != "" {
-            MyApplication.severeDashboardFfw.value = ffwHtml
-        }
-        let torHtml = urlTor.getNwsHtml()
-        if torHtml != "" {
-            MyApplication.severeDashboardTor.value = torHtml
-        }
+        
+        ObjectPolygonWarning.polygonDataByType[.TST]!.download()
+        ObjectPolygonWarning.polygonDataByType[.FFW]!.download()
+        ObjectPolygonWarning.polygonDataByType[.TOR]!.download()
+        
+//        let tstHtml = urlTst.getNwsHtml()
+//        if tstHtml != "" {
+//            MyApplication.severeDashboardTst.value = tstHtml
+//        }
+//        let ffwHtml = urlFfw.getNwsHtml()
+//        if ffwHtml != "" {
+//            MyApplication.severeDashboardFfw.value = ffwHtml
+//        }
+//        let torHtml = urlTor.getNwsHtml()
+//        if torHtml != "" {
+//            MyApplication.severeDashboardTor.value = torHtml
+//        }
     }
     
-    static func getPolygonVtecTst() {
-        // TODO FIXME , should there really still be a check for "" ?
-        let tstHtml = urlTst.getNwsHtml()
-        if tstHtml != "" {
-            MyApplication.severeDashboardTst.value = tstHtml
-        }
-    }
-    
-    static func getPolygonVtecFfw() {
-        let ffwHtml = urlFfw.getNwsHtml()
-        if ffwHtml != "" {
-            MyApplication.severeDashboardFfw.value = ffwHtml
-        }
-    }
-    
-    static func getPolygonVtecTor() {
-        let torHtml = urlTor.getNwsHtml()
-        if torHtml != "" {
-            MyApplication.severeDashboardTor.value = torHtml
-        }
-    }
+//    static func getPolygonVtecTst() {
+//        // TODO FIXME , should there really still be a check for "" ?
+//        let tstHtml = urlTst.getNwsHtml()
+//        if tstHtml != "" {
+//            MyApplication.severeDashboardTst.value = tstHtml
+//        }
+//    }
+//
+//    static func getPolygonVtecFfw() {
+//        let ffwHtml = urlFfw.getNwsHtml()
+//        if ffwHtml != "" {
+//            MyApplication.severeDashboardFfw.value = ffwHtml
+//        }
+//    }
+//
+//    static func getPolygonVtecTor() {
+//        let torHtml = urlTor.getNwsHtml()
+//        if torHtml != "" {
+//            MyApplication.severeDashboardTor.value = torHtml
+//        }
+//    }
 
-    static func clearPolygonVtec() {
-        MyApplication.severeDashboardTst.value = ""
-        MyApplication.severeDashboardFfw.value = ""
-        MyApplication.severeDashboardTor.value = ""
-    }
+//    static func clearPolygonVtec() {
+//        MyApplication.severeDashboardTst.value = ""
+//        MyApplication.severeDashboardFfw.value = ""
+//        MyApplication.severeDashboardTor.value = ""
+//    }
 
     static func getLatLon(_ number: String) -> String {
         let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()

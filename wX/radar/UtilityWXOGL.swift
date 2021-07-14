@@ -7,7 +7,13 @@
 final class UtilityWXOGL {
 
     static func showTextProducts(_ latLon: LatLon) -> String {
-        var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value
+        // var warningChunk = MyApplication.severeDashboardTor.value + MyApplication.severeDashboardTst.value + MyApplication.severeDashboardFfw.value
+        
+        var warningChunk = ""
+        for type1 in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.FFW, PolygonTypeGeneric.TST] {
+            warningChunk += ObjectPolygonWarning.polygonDataByType[type1]!.getData()
+        }
+        
         for data in ObjectPolygonWarning.polygonList {
             let it = ObjectPolygonWarning.polygonDataByType[data]!
             if it.isEnabled {

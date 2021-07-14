@@ -20,7 +20,9 @@ final class WXGLPolygonWarnings {
     }
     
     static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
-        let html = ObjectWarning.getBulkData(type)
+        // let html = ObjectWarning.getBulkData(type)
+        let html = ObjectPolygonWarning.polygonDataByType[changeType(type)]!.getData()
+        print("AAA \(type)" + html)
         let warnings = ObjectWarning.parseJson(html)
         var warningList = [Double]()
         for w in warnings {
@@ -33,7 +35,8 @@ final class WXGLPolygonWarnings {
     }
     
     static func getCount( _ type: PolygonEnum) -> String {
-        let html = ObjectWarning.getBulkData(type)
+        // let html = ObjectWarning.getBulkData(type)
+        let html = ObjectPolygonWarning.polygonDataByType[changeType(type)]!.getData()
         let warningList = ObjectWarning.parseJson(html)
         var i = 0
         for s in warningList {
@@ -42,5 +45,18 @@ final class WXGLPolygonWarnings {
             }
         }
         return String(i)
+    }
+    
+    static func changeType(_ type: PolygonEnum) -> PolygonTypeGeneric {
+        switch type {
+        case PolygonEnum.TOR:
+            return PolygonTypeGeneric.TOR
+        case PolygonEnum.TST:
+            return PolygonTypeGeneric.TST
+        case PolygonEnum.FFW:
+            return PolygonTypeGeneric.FFW
+        default:
+            return PolygonTypeGeneric.FFW
+        }
     }
 }
