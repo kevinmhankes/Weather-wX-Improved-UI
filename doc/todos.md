@@ -1,3 +1,4 @@
+DownloadTimer max for warn
 test sps
 nexrad - more threads for warnings
 SevereDash use FutureVoid for warnings
