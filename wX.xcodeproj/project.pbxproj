@@ -187,6 +187,7 @@
 		03DF17F221AA104D00FC3BEA /* UtilityWXMetalPerf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */; };
 		03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E154C325E2B53D00682A8D /* ObjectLocation.swift */; };
 		03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */; };
+		03ED2BAB269E68AE00B1A34C /* ObjectPolygonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */; };
 		03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */; };
 		03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */; };
 		03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5C22993B870056A56D /* UtilitySpcFireOutlook.swift */; };
@@ -592,6 +593,7 @@
 		03DF17F121AA104D00FC3BEA /* UtilityWXMetalPerf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerf.swift; sourceTree = "<group>"; };
 		03E154C325E2B53D00682A8D /* ObjectLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectLocation.swift; sourceTree = "<group>"; };
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
+		03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWatch.swift; sourceTree = "<group>"; };
 		03EE9057234D5F1D002F897F /* wX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wX.entitlements; sourceTree = "<group>"; };
 		03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesCanada.swift; sourceTree = "<group>"; };
 		03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpcSoundings.swift; sourceTree = "<group>"; };
@@ -1197,6 +1199,7 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
+				03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */,
 				036E9BA1269DE47D0009A47B /* FutureBytes2.swift */,
 				036E9B9F269DC5180009A47B /* FutureText2.swift */,
 				036E9B9D269DA98B0009A47B /* FutureAnimation.swift */,
@@ -1925,6 +1928,7 @@
 				03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */,
 				F0B335561DA3FD510035BD36 /* ExternalGeodeticCalculator.swift in Sources */,
 				F011E6111DB03D78006531FD /* UtilityObservations.swift in Sources */,
+				03ED2BAB269E68AE00B1A34C /* ObjectPolygonWatch.swift in Sources */,
 				F0B3355C1DA3FD610035BD36 /* GlobalDictionaries.swift in Sources */,
 				F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */,
 				F0B3355B1DA3FD610035BD36 /* GlobalArrays.swift in Sources */,

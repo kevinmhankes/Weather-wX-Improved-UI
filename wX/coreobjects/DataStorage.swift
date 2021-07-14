@@ -25,4 +25,8 @@ final class DataStorage {
             Utility.writePref(preference, newValue)
         }
     }
+    
+    func setValue(_ s: String) {
+        value = s
+    }
 }
