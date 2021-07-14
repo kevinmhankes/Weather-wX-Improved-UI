@@ -26,9 +26,7 @@ final class ObjectPolygonWarning {
     func download() {
         if timer.isRefreshNeeded() {
             let html = getUrl().getNwsHtml()
-            print("AAA download \(type) " + html)
             if html != "" {
-                print("AAA2 download \(type) " + html)
                 storage.value = html
                 data = html
             }
@@ -36,7 +34,6 @@ final class ObjectPolygonWarning {
     }
 
     func getData() -> String {
-        print("AAA getData \(type)" + storage.value + data)
         return data
         // TODO
         // return storage.value

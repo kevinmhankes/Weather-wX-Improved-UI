@@ -22,7 +22,6 @@ final class WXGLPolygonWarnings {
     static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
         // let html = ObjectWarning.getBulkData(type)
         let html = ObjectPolygonWarning.polygonDataByType[changeType(type)]!.getData()
-        print("AAA \(type)" + html)
         let warnings = ObjectWarning.parseJson(html)
         var warningList = [Double]()
         for w in warnings {
