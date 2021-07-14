@@ -2,7 +2,6 @@ game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
 animate icon change
-NCEP MAG 3.19.0 April 2021 (below)
 objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 
 // [REF] RadarPref shorten names
