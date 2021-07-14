@@ -236,8 +236,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         commandQueue = device.makeCommandQueue()
         wxMetalRenders.forEach { $0?.setRenderFunction(render(_:)) }
         // Below two lines enable continuous updates
-        // timer = CADisplayLink(target: self, selector: #selector(WXMetalMultipane.newFrame(displayLink:)))
-        // timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        timer = CADisplayLink(target: self, selector: #selector(newFrame(displayLink:)))
+        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
         setupGestures()
         if RadarPreferences.locdotFollowsGps {
             locationManager.requestWhenInUseAuthorization()
@@ -320,22 +320,25 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         )
     }
 
-    /*@objc func newFrame(displayLink: CADisplayLink) {
+    // needed for continuous
+    @objc func newFrame(displayLink: CADisplayLink) {
      if lastFrameTimestamp == 0.0 {
      lastFrameTimestamp = displayLink.timestamp
      }
      let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
      lastFrameTimestamp = displayLink.timestamp
      radarLoop(timeSinceLastUpdate: elapsed)
-     }*/
+     }
 
-    /*func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
+    // needed for continuous
+    func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
      autoreleasepool {
-     if wxMetal[0] != nil {
-     //self.render()
+        if self.wxMetalRenders[0] != nil {
+        // TODO FIXME all panes
+        self.render(0)
      }
      }
-     }*/
+     }
 
     func setupGestures() {
         // let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
