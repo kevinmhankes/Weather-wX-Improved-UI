@@ -29,6 +29,8 @@ final class ObjectPolygonWarning {
             if html != "" {
                 storage.value = html
                 data = html
+            } else {
+                timer.resetTimer()
             }
         }
     }

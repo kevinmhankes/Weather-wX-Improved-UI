@@ -1,5 +1,6 @@
 
 56129 2021_07_14 [ADD] if warnings enabled and data fails to download, show "-" instead of a number in the statusbar
+		 [ADD] ObjectPolygonWarning - if data fails to download, reset the timer
 56128 2021_07_14 [ADD] NCEP MAG (main NWS production model display) has replaced HRW-NMMB with HRW-FV3. This is accessible via MISC tab, top left corner
                  [ADD] Settings->Radar - show radar when pan/drag. On by default, allows one to see polygons more clearly when off.
                  [ADD] About->Help - remove keyboard shortcuts in doc that no longer exist
