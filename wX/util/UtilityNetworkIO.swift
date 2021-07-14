@@ -9,7 +9,7 @@ import UIKit
 final class UtilityNetworkIO {
     
     static func getStringFromUrl(_ url: String) -> String {
-        print("getStringFromUrl: " + url)
+        UtilityLog.d("getStringFromUrl: " + url)
         guard let safeUrl = URL(string: url) else {
             return ""
         }
@@ -22,7 +22,7 @@ final class UtilityNetworkIO {
     }
     
     static func getStringFromUrlSep(_ url: String) -> String {
-        print("getStringFromUrlSep: " + url)
+        UtilityLog.d("getStringFromUrlSep: " + url)
         guard let safeUrl = URL(string: url) else {
             return ""
         }
@@ -35,7 +35,7 @@ final class UtilityNetworkIO {
     }
     
     static func getBitmapFromUrl(_ url: String) -> Bitmap {
-        print("getBitmapFromUrl: " + url)
+        UtilityLog.d("getBitmapFromUrl: " + url)
         guard let safeUrl = URL(string: url) else {
             return Bitmap()
         }
@@ -48,7 +48,7 @@ final class UtilityNetworkIO {
     }
     
     static func getDataFromUrl(_ url: String) -> Data {
-        print("getDataFromUrl: " + url)
+        UtilityLog.d("getDataFromUrl: " + url)
         guard let safeUrl = URL(string: url) else {
             return Data()
         }

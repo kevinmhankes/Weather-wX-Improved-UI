@@ -10,9 +10,10 @@ import AVFoundation
 final class vcSevereDashboard: UIwXViewController {
 
     private var buttonActions = [String]()
-    private let snWat = SevereNotice(.SPCWAT)
-    private let snMcd = SevereNotice(.SPCMCD)
-    private let snMpd = SevereNotice(.WPCMPD)
+//    private let snWat = SevereNotice(.SPCWAT)
+//    private let snMcd = SevereNotice(.SPCMCD)
+//    private let snMpd = SevereNotice(.WPCMPD)
+    private var severeNotices = [PolygonEnum: SevereNotice]()
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ToolbarIcon()
@@ -25,50 +26,67 @@ final class vcSevereDashboard: UIwXViewController {
         statusButton = ToolbarIcon(self, nil)
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
+            severeNotices[notice] = SevereNotice(notice)
+        }
         getContent()
     }
 
     // TODO loop over enum
     override func getContent() {
-        getContentWatch()
-        getContentMcd()
-        getContentMpd()
+        for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
+            getNotice(notice)
+        }
+//        getContentWatch()
+//        getContentMcd()
+//        getContentMpd()
         getContentWarningTst()
         getContentWarningFfw()
         getContentWarningTor()
         getContentUsAlerts()
         getContentSpcStormReports()
     }
-
-    func getContentWatch() {
+    
+    func getNotice(_ notice: PolygonEnum) {
         DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadWatch.getWatch()
-            self.snWat.getBitmaps()
+            // UtilityDownloadWatch.getWatch()
+            ObjectPolygonWatch.polygonDataByType[notice]?.download()
+            self.severeNotices[notice]?.getBitmaps()
             DispatchQueue.main.async {
                 self.display()
             }
         }
     }
 
-    func getContentMcd() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadMcd.getMcd()
-            self.snMcd.getBitmaps()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
-
-    func getContentMpd() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityDownloadMpd.getMpd()
-            self.snMpd.getBitmaps()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
+//    func getContentWatch() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadWatch.getWatch()
+//            self.snWat.getBitmaps()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
+//
+//    func getContentMcd() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadMcd.getMcd()
+//            self.snMcd.getBitmaps()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
+//
+//    func getContentMpd() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityDownloadMpd.getMpd()
+//            self.snMpd.getBitmaps()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
 
     func getContentWarningTst() {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -170,7 +188,8 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func share(sender: UIButton) {
-        UtilityShare.image(self, sender, [bitmap] + snMcd.bitmaps + snWat.bitmaps + snMpd.bitmaps)
+        // TODO
+        // UtilityShare.image(self, sender, [bitmap] + snMcd.bitmaps + snWat.bitmaps + snMpd.bitmaps)
     }
 
     private func display() {
@@ -238,8 +257,8 @@ final class vcSevereDashboard: UIwXViewController {
         objectImage2.img.isAccessibilityElement = true
         views.append(objectImage2.img)
         var index = 0
-        [snWat, snMcd, snMpd].forEach { severeNotice in
-            severeNotice.bitmaps.enumerated().forEach { imageIndex, image in
+        [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD].forEach { type1 in
+            severeNotices[type1]?.bitmaps.enumerated().forEach { imageIndex, image in
                 let stackView: UIStackView
                 if imageCount % imagesPerRow == 0 {
                     let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
@@ -255,8 +274,8 @@ final class vcSevereDashboard: UIwXViewController {
                     UITapGestureRecognizerWithData(index, self, #selector(imageClicked)),
                     widthDivider: imagesPerRow
                 )
-                buttonActions.append(String(describing: severeNotice.type) + severeNotice.numberList[imageIndex])
-                objectImage.img.accessibilityLabel = String(describing: severeNotice.type) + severeNotice.numberList[imageIndex]
+                buttonActions.append(String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!)
+                objectImage.img.accessibilityLabel = String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!
                 objectImage.img.isAccessibilityElement = true
                 views.append(objectImage.img)
                 index += 1
@@ -268,9 +287,9 @@ final class vcSevereDashboard: UIwXViewController {
         scrollView.accessibilityElements = views
         var status = ""
         let warningLabel = ["W", "M", "P"]
-        [snWat, snMcd, snMpd].enumerated().forEach { index, severeNotice in
-            if severeNotice.bitmaps.count > 0 {
-                status += warningLabel[index] + "(" + String(severeNotice.getCount()) + ") "
+        [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD].enumerated().forEach { index, type1 in
+            if (severeNotices[type1]?.bitmaps.count)! > 0 {
+                status += warningLabel[index] + "(" + to.String(severeNotices[type1]!.getCount()) + ") "
             }
         }
         statusButton.title = status + " " + statusWarnings
@@ -278,8 +297,8 @@ final class vcSevereDashboard: UIwXViewController {
 
     func getNoticeCount() -> Int {
         var count = 0
-        [snWat, snMcd, snMpd].forEach { severeNotice in
-            count += severeNotice.getCount()
+        [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD].forEach { type1 in
+            count += (severeNotices[type1]?.getCount())!
         }
         return count
     }

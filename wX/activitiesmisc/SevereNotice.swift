@@ -23,16 +23,16 @@ final class SevereNotice {
         switch type {
         case .SPCMCD:
             noAlertsVerbiage = "No Mesoscale Discussions are currently in effect."
-            html = MyApplication.mcdNoList.value
-            // html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()
+            // html = MyApplication.mcdNoList.value
+            html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()
         case .SPCWAT:
             noAlertsVerbiage = "No watches are currently valid"
-            html = MyApplication.watNoList.value
-            // html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue()
+            //html = MyApplication.watNoList.value
+            html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue()
         case .WPCMPD:
             noAlertsVerbiage = "No MPDs are currently in effect."
-            html = MyApplication.mpdNoList.value
-            // html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()
+            // html = MyApplication.mpdNoList.value
+            html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()
         default:
             noAlertsVerbiage = ""
             html = ""

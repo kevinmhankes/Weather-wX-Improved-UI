@@ -694,14 +694,25 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
             alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
-        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
+//        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
+//            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
+//        }
+//        if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
+//            // print(MyApplication.mcdNoList.value)
+//            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
+//        }
+//        if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
+//            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
+//        }
+        
+        if RadarPreferences.radarWatMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
             alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
         }
-        if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
+        if RadarPreferences.radarWatMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
             // print(MyApplication.mcdNoList.value)
             alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
-        if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
+        if RadarPreferences.radarMpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
             alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
 

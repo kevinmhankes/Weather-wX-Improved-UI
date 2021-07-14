@@ -13,9 +13,25 @@ final class UtilityDownloadRadar {
     static func getAllRadarData() {
         getPolygonVtec()
         // getPolygonVtecByType(ObjectPolygonWarning(.))
-        UtilityDownloadMpd.getMpd()
-        UtilityDownloadMcd.getMcd()
-        UtilityDownloadWatch.getWatch()
+        
+//        UtilityDownloadMpd.getMpd()
+//        UtilityDownloadMcd.getMcd()
+//        UtilityDownloadWatch.getWatch()
+//        for t in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
+//            ObjectPolygonWatch.polygonDataByType[t]?.download()
+//        }
+        
+        if PolygonType.MCD.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]?.download()
+        }
+        
+        if PolygonType.WATCH.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]?.download()
+        }
+        
+        if PolygonType.MPD.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
+        }
     }
 
     static func getPolygonVtecByType(_ type: ObjectPolygonWarning) {

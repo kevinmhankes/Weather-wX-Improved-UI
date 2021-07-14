@@ -8,8 +8,25 @@ final class UtilityPolygons {
 
     static func get() {
         UtilityDownloadWarnings.get()
-        UtilityDownloadWatch.get()
-        UtilityDownloadMcd.get()
-        UtilityDownloadMpd.get()
+        
+//        UtilityDownloadWatch.get()
+//        UtilityDownloadMcd.get()
+//        UtilityDownloadMpd.get()
+        
+//        for t in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
+//            ObjectPolygonWatch.polygonDataByType[t]?.download()
+//        }
+        
+        if PolygonType.MCD.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]?.download()
+        }
+        
+        if PolygonType.WATCH.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]?.download()
+        }
+        
+        if PolygonType.MPD.display {
+            ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
+        }
     }
 }

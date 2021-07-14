@@ -188,6 +188,7 @@
 		03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E154C325E2B53D00682A8D /* ObjectLocation.swift */; };
 		03EC7A7B21ABEF2800B93431 /* WXMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */; };
 		03ED2BAB269E68AE00B1A34C /* ObjectPolygonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */; };
+		03ED2BAD269EDFF800B1A34C /* UtilityLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BAC269EDFF800B1A34C /* UtilityLog.swift */; };
 		03F3EB5A22993A7A0056A56D /* UtilityCitiesCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */; };
 		03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */; };
 		03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB5C22993B870056A56D /* UtilitySpcFireOutlook.swift */; };
@@ -594,6 +595,7 @@
 		03E154C325E2B53D00682A8D /* ObjectLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectLocation.swift; sourceTree = "<group>"; };
 		03EC7A7A21ABEF2800B93431 /* WXMetalRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXMetalRender.swift; sourceTree = "<group>"; };
 		03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWatch.swift; sourceTree = "<group>"; };
+		03ED2BAC269EDFF800B1A34C /* UtilityLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityLog.swift; sourceTree = "<group>"; };
 		03EE9057234D5F1D002F897F /* wX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wX.entitlements; sourceTree = "<group>"; };
 		03F3EB5922993A7A0056A56D /* UtilityCitiesCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCitiesCanada.swift; sourceTree = "<group>"; };
 		03F3EB5B22993B870056A56D /* UtilitySpcSoundings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpcSoundings.swift; sourceTree = "<group>"; };
@@ -1108,6 +1110,7 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
+				03ED2BAC269EDFF800B1A34C /* UtilityLog.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
@@ -1866,6 +1869,7 @@
 				034041D923F162A4003AB242 /* vcWpcImg.swift in Sources */,
 				0340421123F16D23003AB242 /* vcModels.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
+				03ED2BAD269EDFF800B1A34C /* UtilityLog.swift in Sources */,
 				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
 				0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */,
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,

@@ -42,7 +42,7 @@ final class ObjectPolygonWatch {
             if type == PolygonEnum.WPCMPD {
                 var numberListString = ""
                 var latLonString = ""
-                let numbers = MyApplication.severeDashboardMpd.value.parseColumn(">MPD #(.*?)</a></strong>")
+                let numbers = html.parseColumn(">MPD #(.*?)</a></strong>")
                 numbers.forEach { number in
                     let text = UtilityDownload.getTextProduct("WPCMPD" + number)
                     numberListString += number + ":"
@@ -50,6 +50,7 @@ final class ObjectPolygonWatch {
                 }
                 // MyApplication.mpdLatlon.value = latLonString
                 // MyApplication.mpdNoList.value = numberListString
+                print("AAA store mpd " + numberListString)
                 latLonList.setValue(latLonString)
                 numberList.setValue(numberListString)
             } else if type == PolygonEnum.SPCMCD {
