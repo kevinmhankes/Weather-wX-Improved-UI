@@ -523,12 +523,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 // UtilityPolygons.get()
                 UtilityDownloadWarnings.get()
                 DispatchQueue.main.async {
-                    self.semaphore.wait()
+                    // self.semaphore.wait()
                     if self.wxMetalRenders[0] != nil {
                         self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
                     }
                     self.updateWarningsInToolbar()
-                    self.semaphore.signal()
+                    // self.semaphore.signal()
                 }
             }
         }
@@ -546,12 +546,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
-        self.semaphore.wait()
+        // self.semaphore.wait()
         if self.wxMetalRenders[0] != nil {
             self.wxMetalRenders.forEach { $0!.constructAlertPolygonsByType(type) }
         }
         self.updateWarningsInToolbar()
-        self.semaphore.signal()
+        // self.semaphore.signal()
     }
     
     func getPolygonWatchGeneric() {
@@ -572,12 +572,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     func updatePolygonWatchGeneric(_ type: PolygonEnum) {
-        self.semaphore.wait()
+        // self.semaphore.wait()
         if self.wxMetalRenders[0] != nil {
             self.wxMetalRenders.forEach { $0!.constructWatchPolygonsByType(type) }
         }
         self.updateWarningsInToolbar()
-        self.semaphore.signal()
+        // self.semaphore.signal()
     }
     
 //    func getPolygonWatch() {
