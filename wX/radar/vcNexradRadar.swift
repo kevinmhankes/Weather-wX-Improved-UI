@@ -512,7 +512,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     
     func getPolygonWarnings() {
         updateWarningsInToolbar()
-        getPolygonWatch()
+        getPolygonWatchGeneric()
         getPolygonWarningsNonGeneric()
         if ObjectPolygonWarning.areAnyEnabled() {
             DispatchQueue.global(qos: .userInitiated).async {
@@ -554,31 +554,57 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         self.semaphore.signal()
     }
     
-    func getPolygonWatch() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if self.wxMetalRenders[0] != nil {
-                self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
-            }
-            if PolygonType.MCD.display {
-                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]?.download()
-            }
-            
-            if PolygonType.WATCH.display {
-                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]?.download()
-            }
-            
-            if PolygonType.MPD.display {
-                ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
-            }
-            DispatchQueue.main.async {
-                self.semaphore.wait()
-                if self.wxMetalRenders[0] != nil {
-                    self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
-                }
-                self.semaphore.signal()
-            }
+    func getPolygonWatchGeneric() {
+        for t in [PolygonEnum.SPCMCD, PolygonEnum.SPCWAT, PolygonEnum.WPCMPD] {
+            self.updatePolygonWatchGeneric(t)
+        }
+        if PolygonType.MCD.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) })
+        }
+        
+        if PolygonType.WATCH.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCWAT) })
+        }
+        
+        if PolygonType.MPD.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.WPCMPD) })
         }
     }
+    
+    func updatePolygonWatchGeneric(_ type: PolygonEnum) {
+        self.semaphore.wait()
+        if self.wxMetalRenders[0] != nil {
+            self.wxMetalRenders.forEach { $0!.constructWatchPolygonsByType(type) }
+        }
+        self.updateWarningsInToolbar()
+        self.semaphore.signal()
+    }
+    
+//    func getPolygonWatch() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            if self.wxMetalRenders[0] != nil {
+//                self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
+//            }
+//            if PolygonType.MCD.display {
+//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]?.download()
+//            }
+//
+//            if PolygonType.WATCH.display {
+//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]?.download()
+//            }
+//
+//            if PolygonType.MPD.display {
+//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
+//            }
+//            DispatchQueue.main.async {
+//                self.semaphore.wait()
+//                if self.wxMetalRenders[0] != nil {
+//                    self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
+//                }
+//                self.semaphore.signal()
+//            }
+//        }
+//    }
 
     @objc func radarSiteClicked(sender: ToolbarIcon) {
         mapIndex = sender.tag

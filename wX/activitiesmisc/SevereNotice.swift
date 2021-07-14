@@ -15,6 +15,11 @@ final class SevereNotice {
     init(_ type: PolygonEnum) {
         self.type = type
     }
+    
+    func download() {
+        ObjectPolygonWatch.polygonDataByType[type]?.download()
+        getBitmaps()
+    }
 
     func getBitmaps() {
         let noAlertsVerbiage: String
@@ -27,7 +32,7 @@ final class SevereNotice {
             html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()
         case .SPCWAT:
             noAlertsVerbiage = "No watches are currently valid"
-            //html = MyApplication.watNoList.value
+            // html = MyApplication.watNoList.value
             html = ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue()
         case .WPCMPD:
             noAlertsVerbiage = "No MPDs are currently in effect."

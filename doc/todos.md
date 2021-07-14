@@ -1,13 +1,8 @@
-DownloadTimer max for warn
-test sps
-nexrad - more threads for warnings
-SevereDash use FutureVoid for warnings
+game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
 animate icon change
-
 NCEP MAG 3.19.0 April 2021 (below)
-
 objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 
 // [REF] RadarPref shorten names
@@ -82,7 +77,6 @@ NORTH-PAC (northern Pacific)
 EUROPE
 Added prob_cref_40dbz and prob_max_hlcy_75 to HREF model.
 Added Alaska domain to HRRR model.
-Added Accumulated Maximum Updraft Helicity (accu_max_updraft_hlcy) to HRRR model.
 Added precip type to HREF pmm_refd_max and pmm_refd_1km.
 Added the NAMER domain to RAP model.
 Added the model name to titles.

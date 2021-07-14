@@ -308,10 +308,39 @@ final class WXMetalRender {
         // }
     }
     
-    func constructWatchPolygons() {
-        [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
-            constructGenericLines($0)
-            $0.generateMtlBuffer(device)
+//    func constructWatchPolygons() {
+//        [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
+//            constructGenericLines($0)
+//            $0.generateMtlBuffer(device)
+//        }
+//        if renderFn != nil {
+//            renderFn!(paneNumber)
+//        }
+//    }
+    
+    func constructWatchPolygonsByType(_ type: PolygonEnum) {
+        
+//        constructGenericLines($0)
+//        $0.generateMtlBuffer(device)
+        
+        if type == PolygonEnum.SPCMCD {
+            if mcdBuffers.type.display {
+                constructGenericLines(mcdBuffers)
+                mcdBuffers.generateMtlBuffer(device)
+            }
+        } else if type == PolygonEnum.WPCMPD {
+            if mpdBuffers.type.display {
+                constructGenericLines(mpdBuffers)
+                mpdBuffers.generateMtlBuffer(device)
+            }
+        } else if type == PolygonEnum.SPCWAT {
+            if watchBuffers.type.display {
+                constructGenericLines(watchBuffers)
+                watchBuffers.generateMtlBuffer(device)
+                
+                constructGenericLines(watchTornadoBuffers)
+                watchTornadoBuffers.generateMtlBuffer(device)
+            }
         }
         if renderFn != nil {
             renderFn!(paneNumber)

@@ -9,6 +9,11 @@
                  [FIX] SPS was not showing in Nexrad correctly (special weather statement)
                  [ADD] Future* and test in WpcImg and Hourly, wpcText
                  [ADD] to.swift for compat with desktop ports
+                 [ADD] DownloadTimer - hardcode warn/watch max to 3/6
+                 [ADD] NAMER domain to RAP Model in NCEP
+                 [ADD] Alask domain to HRRR Model in NCEP
+		 [ADD] Accumulated Maximum Updraft Helicity (accu_max_updraft_hlcy) to HRRR model (NCEP)
+		 [ADD] prob_cref_40dbz and prob_max_hlcy_75 to HREF model (NCEP)
 	renamed:    ObjectScrollStackView.swift -> ScrollStackView.swift
 	renamed:    ObjectTextView.swift -> Text.swift
 	renamed:    ObjectToolbarIcon.swift -> ToolbarIcon.swift

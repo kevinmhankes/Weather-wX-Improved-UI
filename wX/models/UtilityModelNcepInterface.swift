@@ -64,7 +64,8 @@ final class UtilityModelNcepInterface {
     ]
     
     static let sectorsRap = [
-        "CONUS"
+        "CONUS",
+        "NAMER"
     ]
     
     static let sectorsHrrr = [
@@ -74,7 +75,8 @@ final class UtilityModelNcepInterface {
         "US-NC",
         "US-SC",
         "US-NE",
-        "US-SE"
+        "US-SE",
+        "ALASKA"
     ]
     
     static let sectorsSref = [
@@ -409,6 +411,7 @@ final class UtilityModelNcepInterface {
         "10m_wnd_sfc_gust",
         "vis",
         "max_updraft_hlcy",
+        "accu_max_updraft_hlcy",
         "10m_maxwnd",
         "sfc_cape_cin",
         "best_cape_cin",
@@ -445,6 +448,7 @@ final class UtilityModelNcepInterface {
         "10 meter wind gust",
         "Visibility",
         "Max 2-5km Updraft Helicity ",
+        "Accumulated Maximum Updraft Helicity",
         "Max 10m Wind Speed",
         "Surface-Based Convective Available Potential Energy and Convective Inhibition",
         "Most Unstable Convective Available Potential Energy and Convective Inhibition",
@@ -979,6 +983,7 @@ final class UtilityModelNcepInterface {
         "pmm_refd_max",
         "prob_refd_40dbz",
         "prob_refd_max_40dbz",
+        "prob_cref_40dbz",
         "prob_cref_50dbz",
         "prob_rain",
         "prob_snow",
@@ -1021,6 +1026,7 @@ final class UtilityModelNcepInterface {
         "mean_vwshr",
         "prob_vwshr_30kt",
         "prob_max_hlcy_25",
+        "prob_max_hlcy_75",
         "prob_max_hlcy_100"
     ]
     
@@ -1035,6 +1041,7 @@ final class UtilityModelNcepInterface {
         "PMM COL MAX REFD",
         "Probability of 1km REFD greater than 40dBZ",
         "Probability of 1km MAX REFD greater than 40dBZ",
+        "Probability of COMP MAX REFC greater than 40dBZ",
         "Probability of COMP MAX REFC greater than 50dBZ",
         "Probability of rain",
         "Probability of snow",
@@ -1077,6 +1084,7 @@ final class UtilityModelNcepInterface {
         "Mean vertical wind shear ",
         "Probability of vertical wind shear greater than 30kts",
         "Probability of max updraft helicity greater than 25m**2/s**2",
+        "Probability of max updraft helicity greater than 75m**2/s**2",
         "Probability of max updraft helicity greater than 100m**2/s**2"
     ]
     

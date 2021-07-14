@@ -39,7 +39,8 @@ final class vcSevereDashboard: UIwXViewController {
     // TODO loop over enum
     override func getContent() {
         for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
-            getNotice(notice)
+            // getNotice(notice)
+            _ = FutureVoid(self.severeNotices[notice]!.download, display)
         }
 //        getContentWatch()
 //        getContentMcd()
@@ -48,31 +49,32 @@ final class vcSevereDashboard: UIwXViewController {
 //        getContentWarningFfw()
 //        getContentWarningTor()
         for warning in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
-            getWarning(warning)
+            //getWarning(warning)
+            _ = FutureVoid(self.severeWarnings[warning]!.download, display)
         }
         getContentUsAlerts()
         getContentSpcStormReports()
     }
     
-    func getWarning(_ notice: PolygonEnum) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.severeWarnings[notice]?.download()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
+//    func getWarning(_ notice: PolygonEnum) {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.severeWarnings[notice]?.download()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
     
-    func getNotice(_ notice: PolygonEnum) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            // UtilityDownloadWatch.getWatch()
-            ObjectPolygonWatch.polygonDataByType[notice]?.download()
-            self.severeNotices[notice]?.getBitmaps()
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
-    }
+//    func getNotice(_ notice: PolygonEnum) {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            // UtilityDownloadWatch.getWatch()
+//            ObjectPolygonWatch.polygonDataByType[notice]?.download()
+//            self.severeNotices[notice]?.getBitmaps()
+//            DispatchQueue.main.async {
+//                self.display()
+//            }
+//        }
+//    }
 
 //    func getContentWatch() {
 //        DispatchQueue.global(qos: .userInitiated).async {
