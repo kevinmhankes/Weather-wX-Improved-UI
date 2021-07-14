@@ -1,3 +1,4 @@
+objectWatch - if html == "" don't save, reset timer
 game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
