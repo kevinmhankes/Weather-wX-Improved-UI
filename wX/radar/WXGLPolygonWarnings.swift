@@ -36,6 +36,9 @@ final class WXGLPolygonWarnings {
     static func getCount( _ type: PolygonEnum) -> String {
         // let html = ObjectWarning.getBulkData(type)
         let html = ObjectPolygonWarning.polygonDataByType[changeType(type)]!.getData()
+        if html == "" {
+            return "-"
+        }
         let warningList = ObjectWarning.parseJson(html)
         var i = 0
         for s in warningList {
