@@ -14,6 +14,7 @@ final class vcSevereDashboard: UIwXViewController {
 //    private let snMcd = SevereNotice(.SPCMCD)
 //    private let snMpd = SevereNotice(.WPCMPD)
     private var severeNotices = [PolygonEnum: SevereNotice]()
+    private var severeWarnings = [PolygonEnum: SevereWarning]()
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ToolbarIcon()
@@ -29,6 +30,9 @@ final class vcSevereDashboard: UIwXViewController {
         for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
             severeNotices[notice] = SevereNotice(notice)
         }
+        for notice in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
+            severeWarnings[notice] = SevereWarning(notice)
+        }
         getContent()
     }
 
@@ -40,11 +44,23 @@ final class vcSevereDashboard: UIwXViewController {
 //        getContentWatch()
 //        getContentMcd()
 //        getContentMpd()
-        getContentWarningTst()
-        getContentWarningFfw()
-        getContentWarningTor()
+//        getContentWarningTst()
+//        getContentWarningFfw()
+//        getContentWarningTor()
+        for warning in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
+            getWarning(warning)
+        }
         getContentUsAlerts()
         getContentSpcStormReports()
+    }
+    
+    func getWarning(_ notice: PolygonEnum) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.severeWarnings[notice]?.download()
+            DispatchQueue.main.async {
+                self.display()
+            }
+        }
     }
     
     func getNotice(_ notice: PolygonEnum) {
@@ -144,9 +160,9 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     func showTextWarnings() {
-        let wTor = SevereWarning(.TOR)
-        let wTst = SevereWarning(.TST)
-        let wFfw = SevereWarning(.FFW)
+        let wTor = severeWarnings[.TOR]!
+        let wTst = severeWarnings[.TST]!
+        let wFfw = severeWarnings[.FFW]!
         [wTor, wTst, wFfw].forEach { severeWarning in
             if severeWarning.getCount() > 0 {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())

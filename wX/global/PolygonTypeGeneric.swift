@@ -9,4 +9,7 @@ enum PolygonTypeGeneric {
     case SQW
     case DSW
     case SPS
+    case TOR
+    case TST
+    case FFW
 }

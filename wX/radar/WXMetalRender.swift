@@ -262,23 +262,28 @@ final class WXMetalRender {
     func updateWithDelta(delta: CFTimeInterval) {
         time += delta
     }
-
+    
     func constructAlertPolygons() {
-        [
-            warningTstBuffers,
-            warningTorBuffers,
-            warningFfwBuffers,
-            warningSmwBuffers,
-            warningSqwBuffers,
-            warningDswBuffers,
-            warningSpsBuffers
-            ].forEach {
-                constructGenericLines($0)
-                $0.generateMtlBuffer(device)
-        }
-        if renderFn != nil {
-            renderFn!(paneNumber)
-        }
+        // if PolygonType.TST.display {
+            [
+                warningTstBuffers,
+                warningTorBuffers,
+                warningFfwBuffers,
+                warningSmwBuffers,
+                warningSqwBuffers,
+                warningDswBuffers,
+                warningSpsBuffers
+                ].forEach {
+                    constructGenericLines($0)
+                    $0.generateMtlBuffer(device)
+            }
+            if renderFn != nil {
+                renderFn!(paneNumber)
+            }
+        // }
+    }
+    
+    func constructWatchPolygons() {
         [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
             constructGenericLines($0)
             $0.generateMtlBuffer(device)
@@ -287,6 +292,31 @@ final class WXMetalRender {
             renderFn!(paneNumber)
         }
     }
+
+//    func constructAlertPolygons() {
+//        [
+//            warningTstBuffers,
+//            warningTorBuffers,
+//            warningFfwBuffers,
+//            warningSmwBuffers,
+//            warningSqwBuffers,
+//            warningDswBuffers,
+//            warningSpsBuffers
+//            ].forEach {
+//                constructGenericLines($0)
+//                $0.generateMtlBuffer(device)
+//        }
+//        if renderFn != nil {
+//            renderFn!(paneNumber)
+//        }
+//        [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
+//            constructGenericLines($0)
+//            $0.generateMtlBuffer(device)
+//        }
+//        if renderFn != nil {
+//            renderFn!(paneNumber)
+//        }
+//    }
 
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
         var list: [Double]

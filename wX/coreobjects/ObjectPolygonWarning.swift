@@ -7,6 +7,7 @@
 final class ObjectPolygonWarning {
 
     let storage: DataStorage
+    let timer: DownloadTimer
     let isEnabled: Bool
     let type: PolygonTypeGeneric
     private let baseUrl = "https://api.weather.gov/alerts/active?event="
@@ -15,7 +16,21 @@ final class ObjectPolygonWarning {
         self.type = type
         isEnabled = Utility.readPref("RADAR_SHOW_\(type)", "false").hasPrefix("t")
         storage = DataStorage("SEVERE_DASHBOARD_\(type)")
+        timer = DownloadTimer("WARNINGS_\(type)")
         storage.update()
+    }
+    
+    func download() {
+        if timer.isRefreshNeeded() {
+            let html = getUrl().getNwsHtml()
+            if html != "" {
+                storage.setValue(html)
+            }
+        }
+    }
+
+    func getData() -> String {
+        return storage.getValue()
     }
 
     var color: Int { Utility.readPref(prefTokenColor, defaultColors[type]!) }
@@ -32,7 +47,15 @@ final class ObjectPolygonWarning {
     
     var urlToken: String { longName[type]! }
     
+    func getUrlToken() -> String {
+        return longName[type]!
+    }
+    
     var url: String { baseUrl + urlToken }
+    
+    func getUrl() -> String {
+        return baseUrl + getUrlToken()
+    }
     
     static func getCount(_ data: String) -> String {
         let vtecAl = data.parseColumn(ObjectPolygonWarning.pVtec)
@@ -49,27 +72,27 @@ final class ObjectPolygonWarning {
         .SMW: wXColor.colorsToInt(255, 165, 0),
         .SQW: wXColor.colorsToInt(199, 21, 133),
         .DSW: wXColor.colorsToInt(255, 228, 196),
-        .SPS: wXColor.colorsToInt(255, 228, 181)
-        // PolygonType.TOR: wXColor.colorsToInt(243, 85, 243),
-        // PolygonType.TST: wXColor.colorsToInt(255, 255, 0),
-        // PolygonType.FFW: wXColor.colorsToInt(0, 255, 0),
+        .SPS: wXColor.colorsToInt(255, 228, 181),
+        .TOR: wXColor.colorsToInt(243, 85, 243),
+        .TST: wXColor.colorsToInt(255, 255, 0),
+        .FFW: wXColor.colorsToInt(0, 255, 0),
     ]
 
     let longName: [PolygonTypeGeneric: String] = [
         .SMW: "Special%20Marine%20Warning",
         .SQW: "Snow%20Squall%20Warning",
         .DSW: "Dust%20Storm%20Warning",
-        .SPS: "Special%20Weather%20Statement"
-        // PolygonType.TOR: "Tornado%20Warning",
-        // PolygonType.TST: "Severe%20Thunderstorm%20Warning",
-        // PolygonType.FFW: "Flash%20Flood%20Warning",
-        // PolygonType.SPS: "Flood%20Warning"
+        .SPS: "Special%20Weather%20Statement",
+        .TOR: "Tornado%20Warning",
+        .TST: "Severe%20Thunderstorm%20Warning",
+        .FFW: "Flash%20Flood%20Warning",
+        .SPS: "Flood%20Warning"
     ]
 
     static let polygonList = [
-        // PolygonTypeGeneric.TOR,
-        // PolygonTypeGeneric.TST,
-        // PolygonTypeGeneric.FFW,
+        PolygonTypeGeneric.TOR,
+        PolygonTypeGeneric.TST,
+        PolygonTypeGeneric.FFW,
         PolygonTypeGeneric.SMW,
         PolygonTypeGeneric.SQW,
         PolygonTypeGeneric.DSW,

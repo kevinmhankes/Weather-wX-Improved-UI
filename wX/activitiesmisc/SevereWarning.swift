@@ -13,6 +13,36 @@ final class SevereWarning {
         self.type = type
         generateString()
     }
+    
+    func download() {
+        switch type {
+        case .TOR:
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.TOR]!.download()
+        case .TST:
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.TST]!.download()
+        case .FFW:
+            ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.FFW]!.download()
+        default:
+            break
+        }
+        self.generateString()
+    }
+    
+    func generateString() {
+        // let html = ObjectWarning.getBulkData(type)
+        var html = ""
+        switch type {
+        case .TOR:
+            html = ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.TOR]!.getData()
+        case .TST:
+            html = ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.TST]!.getData()
+        case .FFW:
+            html = ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.FFW]!.getData()
+        default:
+            break
+        }
+        warningList = ObjectWarning.parseJson(html)
+    }
 
     func getName() -> String {
         switch type {
@@ -27,11 +57,6 @@ final class SevereWarning {
         }
     }
 
-    func generateString() {
-        let html = ObjectWarning.getBulkData(type)
-        warningList = ObjectWarning.parseJson(html)
-    }
-    
     func getCount() -> String {
         var i = 0
         for  s in warningList {
