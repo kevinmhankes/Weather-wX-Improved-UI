@@ -29,4 +29,8 @@ final class DataStorage {
     func setValue(_ s: String) {
         value = s
     }
+    
+    func getValue() -> String {
+        return value
+    }
 }
