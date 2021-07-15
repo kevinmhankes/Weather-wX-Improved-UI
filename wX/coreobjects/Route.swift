@@ -76,6 +76,15 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func visNhc(_ uiv: UIViewController, _ url: String) {
+        let vc = vcGoes()
+        vc.productCode = ""
+        vc.sectorCode = ""
+        vc.url = url
+        vc.savePrefs = false
+        uiv.goToVC(vc)
+    }
+    
 //    static func visCanada(_ uiv: UIViewController) {
 //        let vc = vcCanadaRadar()
 //        vc.caRadarImageType = "vis"

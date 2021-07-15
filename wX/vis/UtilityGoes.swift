@@ -39,6 +39,13 @@ final class UtilityGoes {
             return sizeMap[sector] ?? size
         }
     }
+    
+    static func getImageGoesFloater(_ url: String, _ product: String) -> String {
+        var urlFinal = url
+        urlFinal = urlFinal.replace("GEOCOLOR", product)
+        return urlFinal
+    }
+
 
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
@@ -95,6 +102,43 @@ final class UtilityGoes {
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
         let bitmaps = imageUrls.map { Bitmap($0) }
+        return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
+    }
+    
+//    static List<String> getAnimation(String product, String sector, int frameCount) {
+//        String baseUrl = UtilityGoes.getImage(product, sector)
+//        String[] items = baseUrl.split("/")
+//        baseUrl = String.join("/", items[0..-3]) + "/" + product + "/"
+//        String html = UtilityIO.getHtml(baseUrl)
+//        List<String> urlList = UtilityString.parseColumn(html.replace("\r\n", " "), "<a href=\"([^\\s]*?1200x1200.jpg)\">")
+//        List<String> returnList = []
+//        if (urlList.size() > frameCount) {
+//            int s = -1 * frameCount
+//            for (u in urlList[s..-1]) {
+//                returnList.add(baseUrl + u)
+//            }
+//        }
+//        return returnList
+//        // <a href="20211842100_GOES16-ABI-FL-GEOCOLOR-AL052021-1000x1000.jpg">
+//    }
+    
+    static func getAnimationGoesFloater(_ product: String, _ url: String, _ frameCount: Int) -> AnimationDrawable {
+        print("getAnimationGoesFloater http: " + url)
+        print("getAnimationGoesFloater http: " + product)
+        var baseUrl = url
+        baseUrl = baseUrl.replace("GEOCOLOR", product).replace("latest.jpg", "")
+        // baseUrl += "/" + product + "/"
+        let html = baseUrl.getHtml()
+        let urlList = UtilityString.parseColumn(html.replace("\r\n", " "), "<a href=\"([^\\s]*?1000x1000.jpg)\">")
+        print(urlList)
+        var returnList = [String]()
+        if urlList.count > frameCount {
+            // let s = -1 * frameCount
+            for u in urlList[(urlList.count - frameCount)..<urlList.count] {
+                returnList.append(baseUrl + u)
+            }
+        }
+        let bitmaps = returnList.map { Bitmap($0) }
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 

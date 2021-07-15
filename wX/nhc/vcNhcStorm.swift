@@ -9,6 +9,7 @@ import UIKit
 final class vcNhcStorm: UIwXViewController {
 
     private var productButton = ToolbarIcon()
+    private var goesButton = ToolbarIcon()
     private var html = ""
     private var product = ""
     private var bitmaps = [Bitmap]()
@@ -35,8 +36,9 @@ final class vcNhcStorm: UIwXViewController {
         super.viewDidLoad()
         product = "MIATCP" + stormData.binNumber
         productButton = ToolbarIcon(title: " Text Products", self, #selector(productClicked))
+        goesButton = ToolbarIcon(self, .cloud, #selector(goesClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
-        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
         getContent()
     }
@@ -87,6 +89,11 @@ final class vcNhcStorm: UIwXViewController {
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
         Route.imageViewer(self, bitmapsFiltered[sender.data].url)
+    }
+    
+    @objc func goesClicked(sender: UIButton) {
+        print("GOES")
+        Route.visNhc(self, stormData.goesUrl)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

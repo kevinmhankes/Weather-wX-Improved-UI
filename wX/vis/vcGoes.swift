@@ -12,10 +12,13 @@ final class vcGoes: UIwXViewController {
     private var productButton = ToolbarIcon()
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
-    private var savePrefs = true
-    //private var firstRun = true
+    var savePrefs = true
+    // private var firstRun = true
     var productCode = ""
     var sectorCode = ""
+    var goesFloater: Bool = false
+    var url = ""
+    var goesFloaterUrl = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +37,17 @@ final class vcGoes: UIwXViewController {
         image = TouchImage(self, toolbar, #selector(handleSwipes))
         image.setMaxScaleFromMinScale(10.0)
         image.setKZoomInFactorFromMinWhenDoubleTap(8.0)
-        deSerializeSettings()
+        
+        if url != "" {
+            goesFloater = true
+            goesFloaterUrl = url
+            productCode = "GEOCOLOR"
+            sectorCode = goesFloaterUrl
+            productButton.title = productCode
+        } else {
+            deSerializeSettings()
+        }
+        
         getContent()
     }
 
@@ -59,13 +72,23 @@ final class vcGoes: UIwXViewController {
     }
 
     override func getContent() {
-        _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
+        // _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
+        
+        if !goesFloater {
+            // new FutureBytes(UtilityGoes.getImage(objectAnimate.product, objectAnimate.sector), photo.&setBytes)
+            _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
+        } else {
+            // new FutureBytes(UtilityGoes.getImageGoesFloater(goesFloaterUrl, objectAnimate.product), photo.&setBytes)
+            _ = FutureBytes(UtilityGoes.getImageGoesFloater(goesFloaterUrl, productCode), display)
+        }
     }
 
     private func display(_ bitmap: Bitmap) {
-        self.productButton.title = bitmap.info
-        self.productCode = bitmap.info
-        serializeSettings()
+        if !goesFloater {
+            self.productButton.title = bitmap.info
+            self.productCode = bitmap.info
+            serializeSettings()
+        }
         image.setBitmap(bitmap)
     }
 
@@ -124,7 +147,11 @@ final class vcGoes: UIwXViewController {
     }
 
     @objc func getAnimation(_ frameCount: Int) {
-        _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+        if !goesFloater {
+            _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+        } else {
+            _ = FutureAnimation({ UtilityGoes.getAnimationGoesFloater(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

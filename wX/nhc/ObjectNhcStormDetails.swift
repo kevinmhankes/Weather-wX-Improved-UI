@@ -22,7 +22,8 @@ final class ObjectNhcStormDetails {
     let lastUpdate: String
     let lat: String
     let lon: String
-    
+    let goesUrl: String
+
     init(
         _ name: String,
         _ movementDir: String,
@@ -58,6 +59,7 @@ final class ObjectNhcStormDetails {
             modBinNumber = modBinNumber.insert(2, "0")
         }
         baseUrl = "https://www.nhc.noaa.gov/storm_graphics/" + modBinNumber + "/" + id.uppercased()
+        goesUrl = "https://cdn.star.nesdis.noaa.gov/FLOATER/data/" + id.uppercased() + "/GEOCOLOR/latest.jpg"
     }
     
     func forTopHeader() -> String {
