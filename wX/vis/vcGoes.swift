@@ -13,7 +13,6 @@ final class vcGoes: UIwXViewController {
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
     var savePrefs = true
-    // private var firstRun = true
     var productCode = ""
     var sectorCode = ""
     var goesFloater: Bool = false
@@ -72,13 +71,9 @@ final class vcGoes: UIwXViewController {
     }
 
     override func getContent() {
-        // _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
-        
         if !goesFloater {
-            // new FutureBytes(UtilityGoes.getImage(objectAnimate.product, objectAnimate.sector), photo.&setBytes)
             _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
         } else {
-            // new FutureBytes(UtilityGoes.getImageGoesFloater(goesFloaterUrl, objectAnimate.product), photo.&setBytes)
             _ = FutureBytes(UtilityGoes.getImageGoesFloater(goesFloaterUrl, productCode), display)
         }
     }
