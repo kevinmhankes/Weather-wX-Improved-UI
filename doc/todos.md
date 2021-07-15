@@ -1,4 +1,5 @@
 objectWatch - if html == "" don't save, reset timer
+add indicator in SD to show when download done
 game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
