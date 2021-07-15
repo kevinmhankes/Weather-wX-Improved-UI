@@ -122,14 +122,10 @@ final class UtilityGoes {
 //    }
     
     static func getAnimationGoesFloater(_ product: String, _ url: String, _ frameCount: Int) -> AnimationDrawable {
-        print("getAnimationGoesFloater http: " + url)
-        print("getAnimationGoesFloater http: " + product)
         var baseUrl = url
         baseUrl = baseUrl.replace("GEOCOLOR", product).replace("latest.jpg", "")
-        // baseUrl += "/" + product + "/"
         let html = baseUrl.getHtml()
         let urlList = UtilityString.parseColumn(html.replace("\r\n", " "), "<a href=\"([^\\s]*?1000x1000.jpg)\">")
-        print(urlList)
         var returnList = [String]()
         if urlList.count > frameCount {
             // let s = -1 * frameCount
