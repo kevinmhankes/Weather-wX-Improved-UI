@@ -46,7 +46,6 @@ final class UtilityGoes {
         return urlFinal
     }
 
-
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
         var productLocal = product
