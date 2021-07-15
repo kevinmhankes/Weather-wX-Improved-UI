@@ -44,6 +44,23 @@ final class vcNhcStorm: UIwXViewController {
     }
 
     override func getContent() {
+        getContentImages()
+        _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
+//        bitmaps = []
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.imageUrls.forEach {
+//                var url = self.stormData.baseUrl
+//                if $0 == "WPCQPF_sm2.gif" {
+//                    url.removeLast(2)
+//                }
+//                self.bitmaps.append(Bitmap(url + $0))
+//            }
+//            self.html = UtilityDownload.getTextProduct(self.product)
+//            DispatchQueue.main.async { self.display() }
+//        }
+    }
+    
+    func getContentImages() {
         bitmaps = []
         DispatchQueue.global(qos: .userInitiated).async {
             self.imageUrls.forEach {
@@ -53,7 +70,7 @@ final class vcNhcStorm: UIwXViewController {
                 }
                 self.bitmaps.append(Bitmap(url + $0))
             }
-            self.html = UtilityDownload.getTextProduct(self.product)
+            // self.html = UtilityDownload.getTextProduct(self.product)
             DispatchQueue.main.async { self.display() }
         }
     }
