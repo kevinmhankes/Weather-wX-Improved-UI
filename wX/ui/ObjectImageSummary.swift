@@ -77,7 +77,7 @@ final class ObjectImageSummary {
                 widthDivider: imagesPerRow
             ))
             if !image.isValidForNhc {
-                objectImages.last!.img.isHidden = true
+                objectImages.last!.isHidden = true
             } else {
                 imageCount += 1
             }

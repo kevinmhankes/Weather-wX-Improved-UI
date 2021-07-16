@@ -93,4 +93,9 @@ final class ObjectImage {
         img.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         img.heightAnchor.constraint(equalTo: img.widthAnchor, multiplier: (bitmap.height / bitmap.width)).isActive = true
     }
+    
+    var isHidden: Bool {
+        get { img.isHidden }
+        set { img.isHidden = newValue }
+    }
 }
