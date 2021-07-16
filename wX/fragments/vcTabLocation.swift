@@ -210,27 +210,27 @@ final class vcTabLocation: vcTabParent {
 //    }
     
     func downloadSevenDay() {
-        self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
-        self.objectSevenDay.locationIndex = Location.getCurrentLocation()
+        objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
+        objectSevenDay.locationIndex = Location.getCurrentLocation()
     }
     
     func updateSevenDay() {
-        if self.objectCardSevenDayCollection == nil
-            || !self.isUS
-            || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
-            || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
-            self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
-            self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
-                self.stackViewForecast.view,
-                self.scrollView,
-                self.objectSevenDay,
-                self.isUS
+        if objectCardSevenDayCollection == nil
+            || !isUS
+            || objectSevenDay.locationIndex != objectCardSevenDayCollection?.locationIndex
+            || objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
+            stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
+            objectCardSevenDayCollection = ObjectCardSevenDayCollection(
+                stackViewForecast.view,
+                scrollView,
+                objectSevenDay,
+                isUS
             )
-            self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
+            objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
         } else {
-            self.objectCardSevenDayCollection?.update(
-                self.objectSevenDay,
-                self.isUS
+            objectCardSevenDayCollection?.update(
+                objectSevenDay,
+                isUS
             )
         }
     }
@@ -250,15 +250,15 @@ final class vcTabLocation: vcTabParent {
 //    }
     
     func downloadHazards() {
-        self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
+        objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
     }
     
     func updateHazards() {
-        if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
-            ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
-            self.stackViewHazards.view.isHidden = false
+        if ObjectHazards.getHazardCount(objectHazards) > 0 {
+            ObjectHazards.getHazardCards(stackViewHazards.view, objectHazards, isUS)
+            stackViewHazards.view.isHidden = false
         } else {
-            self.stackViewHazards.view.isHidden = true
+            stackViewHazards.view.isHidden = true
         }
     }
 
