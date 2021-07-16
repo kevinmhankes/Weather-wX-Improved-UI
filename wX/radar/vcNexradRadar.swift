@@ -537,7 +537,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func getPolygonWarningsNonGeneric() {
         if PolygonType.TST.display {
             for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
-                self.updatePolygonWarningsNonGeneric(t)
+                updatePolygonWarningsNonGeneric(t)
             }
             for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
                 _ = FutureVoid(ObjectPolygonWarning.polygonDataByType[t]!.download, { self.updatePolygonWarningsNonGeneric(t) })
@@ -546,17 +546,17 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
-        self.semaphore.wait()
-        if self.wxMetalRenders[0] != nil {
-            self.wxMetalRenders.forEach { $0!.constructAlertPolygonsByType(type) }
+        semaphore.wait()
+        if wxMetalRenders[0] != nil {
+            wxMetalRenders.forEach { $0!.constructAlertPolygonsByType(type) }
         }
-        self.updateWarningsInToolbar()
-        self.semaphore.signal()
+        updateWarningsInToolbar()
+        semaphore.signal()
     }
     
     func getPolygonWatchGeneric() {
         for t in [PolygonEnum.SPCMCD, PolygonEnum.SPCWAT, PolygonEnum.WPCMPD] {
-            self.updatePolygonWatchGeneric(t)
+            updatePolygonWatchGeneric(t)
         }
         if PolygonType.MCD.display {
             _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) })
@@ -572,12 +572,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
     
     func updatePolygonWatchGeneric(_ type: PolygonEnum) {
-        self.semaphore.wait()
-        if self.wxMetalRenders[0] != nil {
-            self.wxMetalRenders.forEach { $0!.constructWatchPolygonsByType(type) }
+        semaphore.wait()
+        if wxMetalRenders[0] != nil {
+            wxMetalRenders.forEach { $0!.constructWatchPolygonsByType(type) }
         }
-        self.updateWarningsInToolbar()
-        self.semaphore.signal()
+        updateWarningsInToolbar()
+        semaphore.signal()
     }
     
 //    func getPolygonWatch() {

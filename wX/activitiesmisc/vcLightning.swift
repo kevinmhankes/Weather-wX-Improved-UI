@@ -15,7 +15,6 @@ final class vcLightning: UIwXViewController {
     private var sectorPretty = "USA"
     private var period = "0.25"
     private var periodPretty = "15 MIN"
-    // private var firstRun = true
     private let prefTokenSector = "LIGHTNING_SECTOR"
     private let prefTokenPeriod = "LIGHTNING_PERIOD"
 
@@ -44,11 +43,7 @@ final class vcLightning: UIwXViewController {
         timeButton.title = periodPretty
         Utility.writePref(prefTokenSector, sector)
         Utility.writePref(prefTokenPeriod, period)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = UtilityLightning.getImage(self.sector, self.period)
-//            DispatchQueue.main.async { self.display(bitmap) }
-//        }
-        _ = FutureBytes(UtilityLightning.getImageUrl(self.sector, self.period), self.display)
+        _ = FutureBytes(UtilityLightning.getImageUrl(sector, period), display)
     }
 
     private func display(_ bitmap: Bitmap) {

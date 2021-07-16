@@ -52,7 +52,7 @@ final class vcWpcText: UIwXViewControllerWithAudio {
 //            let html = UtilityDownload.getTextProduct(self.product.uppercased())
 //            DispatchQueue.main.async { self.display(html) }
 //        }
-        _ = FutureText(self.product.uppercased(), self.display)
+        _ = FutureText(product.uppercased(), display)
     }
 
     private func display(_ html: String) {

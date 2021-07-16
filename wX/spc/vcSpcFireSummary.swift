@@ -22,12 +22,12 @@ final class vcSpcFireSummary: UIwXViewController {
 
     override func getContent() {
         UtilitySpcFireOutlook.urls.enumerated().forEach { i, url in
-            _ = FutureVoid({ self.download(url, i) }, self.display)
+            _ = FutureVoid({ self.download(url, i) }, display)
         }
     }
     
     private func download(_ url: String, _ i: Int) {
-        self.bitmaps[i] = Bitmap(url)
+        bitmaps[i] = Bitmap(url)
     }
 
     private func display() {

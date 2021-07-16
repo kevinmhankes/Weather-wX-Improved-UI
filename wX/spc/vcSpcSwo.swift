@@ -35,10 +35,10 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
 
     func getContentText() {
-        if self.spcSwoDay == "48" {
-            self.product = "SWOD" + self.spcSwoDay
+        if spcSwoDay == "48" {
+            product = "SWOD" + spcSwoDay
         } else {
-            self.product = "SWODY" + self.spcSwoDay
+            product = "SWODY" + spcSwoDay
         }
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }

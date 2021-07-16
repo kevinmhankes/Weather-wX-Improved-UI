@@ -36,7 +36,7 @@ final class vcGoesGlobal: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityGoesFullDisk.labels[self.index]
-        _ = FutureBytes(UtilityGoesFullDisk.urls[self.index], self.display)
+        _ = FutureBytes(UtilityGoesFullDisk.urls[self.index], display)
     }
 
     private func display(_ bitmap: Bitmap) {

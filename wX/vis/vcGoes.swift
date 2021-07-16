@@ -80,8 +80,8 @@ final class vcGoes: UIwXViewController {
 
     private func display(_ bitmap: Bitmap) {
         if !goesFloater {
-            self.productButton.title = bitmap.info
-            self.productCode = bitmap.info
+            productButton.title = bitmap.info
+            productCode = bitmap.info
             serializeSettings()
         }
         image.setBitmap(bitmap)

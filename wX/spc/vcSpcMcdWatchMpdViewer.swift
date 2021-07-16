@@ -40,8 +40,8 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
     override func willEnterForeground() {}
 
     override func getContent() {
-        let number = String(format: "%04d", to.Int(self.productNumber.replace(" ", "")))
-        self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
+        let number = String(format: "%04d", to.Int(productNumber.replace(" ", "")))
+        objectWatchProduct = ObjectWatchProduct(watchMcdMpdType, number)
         getImage()
         getText()
     }

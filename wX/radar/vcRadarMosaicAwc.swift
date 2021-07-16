@@ -45,7 +45,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
             Utility.writePref(prefTokenSector, sector)
             Utility.writePref(prefTokenProduct, product)
         }
-        _ = FutureBytes(UtilityAwcRadarMosaic.get(self.sector, self.product), image.setBitmap)
+        _ = FutureBytes(UtilityAwcRadarMosaic.get(sector, product), image.setBitmap)
     }
 
     @objc func sectorClicked() {

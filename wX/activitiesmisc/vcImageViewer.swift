@@ -21,7 +21,7 @@ final class vcImageViewer: UIwXViewController {
     override func willEnterForeground() {}
 
     override func getContent() {
-        _ = FutureBytes(self.url, self.display)
+        _ = FutureBytes(url, display)
     }
 
     private func display(_ bitmap: Bitmap) {

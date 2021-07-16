@@ -10,9 +10,6 @@ import AVFoundation
 final class vcSevereDashboard: UIwXViewController {
 
     private var buttonActions = [String]()
-//    private let snWat = SevereNotice(.SPCWAT)
-//    private let snMcd = SevereNotice(.SPCMCD)
-//    private let snMpd = SevereNotice(.WPCMPD)
     private var severeNotices = [PolygonEnum: SevereNotice]()
     private var severeWarnings = [PolygonEnum: SevereWarning]()
     private var bitmap = Bitmap()
@@ -36,13 +33,12 @@ final class vcSevereDashboard: UIwXViewController {
         getContent()
     }
 
-    // TODO loop over enum
     override func getContent() {
         for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
-            _ = FutureVoid(self.severeNotices[notice]!.download, display)
+            _ = FutureVoid(severeNotices[notice]!.download, display)
         }
         for warning in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
-            _ = FutureVoid(self.severeWarnings[warning]!.download, display)
+            _ = FutureVoid(severeWarnings[warning]!.download, display)
         }
         getContentUsAlerts()
         getContentSpcStormReports()
@@ -81,7 +77,7 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = severeWarnings[.TST]!
         let wFfw = severeWarnings[.FFW]!
         [wTor, wTst, wFfw].forEach { severeWarning in
-            //if severeWarning.getCount() > 0 {
+            // if severeWarning.getCount() > 0 {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
                 for w in severeWarning.warningList {
                     if w.isCurrent {
@@ -95,7 +91,7 @@ final class vcSevereDashboard: UIwXViewController {
                         )
                     }
                 }
-            //}
+            // }
         }
         if wTor.getCount() > 0 || wTst.getCount() > 0 || wFfw.getCount() > 0 {
             statusWarnings = "(" + wTor.getCount() + "," + wTst.getCount() + "," + wFfw.getCount() + ")"

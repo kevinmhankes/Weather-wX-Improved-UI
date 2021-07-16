@@ -32,7 +32,7 @@ final class vcSpcSwoState: UIwXViewController {
             self.state = "AL"
         }
         stateButton.title = self.state
-        _ = FutureBytes(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + self.day + ".png", image.setBitmap)
+        _ = FutureBytes(GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + self.state + "_swody" + day + ".png", image.setBitmap)
     }
 
     @objc func stateClicked(sender: ToolbarIcon) {
