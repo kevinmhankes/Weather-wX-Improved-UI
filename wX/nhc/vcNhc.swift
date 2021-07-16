@@ -13,7 +13,7 @@ final class vcNhc: UIwXViewController {
     private var glcfsButton = ToolbarIcon()
     private var objectNhc: ObjectNhc!
     private var objectImageSummary: ObjectImageSummary!
-//    private var bitmaps = [Bitmap]()
+    private var bitmaps = [Bitmap]()
     private var urls = [String]()
 
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ final class vcNhc: UIwXViewController {
         objScrollStackView = ScrollStackView(self)
         
         objectNhc = ObjectNhc(self)
-//        bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
-//        objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
-//
-//        for region in NhcOceanEnum.allCases {
-//            urls += objectNhc.regionMap[region]!.urls
-//        }
+        bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
+        // objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+
+        for region in NhcOceanEnum.allCases {
+            urls += objectNhc.regionMap[region]!.urls
+        }
         
         getContent()
     }
@@ -43,8 +43,9 @@ final class vcNhc: UIwXViewController {
             DispatchQueue.main.async { self.objectNhc.showTextData() }
         }
         
+//        FutureVoid(objectNhc.getTextData, display)
 //        for (index, url) in urls.enumerated() {
-//            _ = FutureBytes(url, objectImageSummary.objectImages[index].setBitmap)
+//            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.objectImages[index].setBitmap(self.bitmaps[index]); self.display() })
 //        }
         
         NhcOceanEnum.allCases.forEach { type in
@@ -56,10 +57,11 @@ final class vcNhc: UIwXViewController {
     }
     
     private func display() {
-//        refreshViews()
-//        objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+        refreshViews()
+        self.objectNhc.showTextData()
+        objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
         
-        objectImageSummary.changeWidth()
+        // objectImageSummary.changeWidth()
     }
 
     @objc func textProductClicked() {
