@@ -36,7 +36,7 @@ final class ObjectPolygonWarning {
 
     func getData() -> String {
         // return data
-        return storage.value
+        storage.value
     }
 
     var color: Int { Utility.readPref(prefTokenColor, defaultColors[type]!) }
@@ -54,13 +54,13 @@ final class ObjectPolygonWarning {
     var urlToken: String { longName[type]! }
     
     func getUrlToken() -> String {
-        return longName[type]!
+        longName[type]!
     }
     
     var url: String { baseUrl + urlToken }
     
     func getUrl() -> String {
-        return baseUrl + getUrlToken()
+        baseUrl + getUrlToken()
     }
     
     static func getCount(_ data: String) -> String {

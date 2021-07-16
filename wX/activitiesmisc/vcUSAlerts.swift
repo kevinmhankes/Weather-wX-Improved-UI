@@ -45,7 +45,7 @@ final class vcUSAlerts: UIwXViewController {
         let html = UtilityDownloadNws.getCap("us")
         let alerts = html.parseColumn("<entry>(.*?)</entry>")
         alerts.forEach {
-            self.capAlerts.append(CapAlert(eventText: $0))
+            capAlerts.append(CapAlert(eventText: $0))
         }
     }
 

@@ -48,9 +48,9 @@ final class ObjectWarning {
         self.polygon = polygon
         self.vtec = vtec
         self.geometry = geometry
-        self.isCurrent = UtilityTime.isVtecCurrent(self.vtec)
+        isCurrent = UtilityTime.isVtecCurrent(self.vtec)
         if vtec.hasPrefix("O.EXP") || vtec.hasPrefix("O.CAN") {
-            self.isCurrent = false
+            isCurrent = false
         }
     }
     
@@ -142,7 +142,7 @@ final class ObjectWarning {
     }
 
     func getUrl() -> String {
-        return url
+        url
     }
 
     func getPolygonAsLatLons(_ mult: Int) -> [LatLon] {

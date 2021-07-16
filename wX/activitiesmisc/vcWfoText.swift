@@ -74,7 +74,7 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     
     private func download() -> String {
         if product.hasPrefix("RTP") && product.count == 5 {
-            let state = Utility.getWfoSiteName(self.wfo).split(",")[0]
+            let state = Utility.getWfoSiteName(wfo).split(",")[0]
             product = "RTP" + state
         }
         productButton.title = product

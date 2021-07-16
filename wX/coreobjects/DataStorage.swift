@@ -31,6 +31,6 @@ final class DataStorage {
     }
     
     func getValue() -> String {
-        return value
+        value
     }
 }

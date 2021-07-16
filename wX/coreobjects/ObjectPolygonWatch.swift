@@ -101,32 +101,32 @@ final class ObjectPolygonWatch {
     }
     
     func getData() -> String {
-        return storage.value
+        storage.value
     }
 
     // int color() { return Utility.readPrefInt(prefTokenColor(), defaultColors[type]);}
      // String name() { return longName[type].replace("%20", " ");}
 
      func prefTokenEnabled() -> String {
-         return "RADARSHOW" + getTypeName()
+         "RADARSHOW" + getTypeName()
      }
 
      // String prefTokenColor() { return "RADARCOLOR" + typeName();}
 
      func prefTokenLatLon() -> String {
-         return getTypeName() + "LATLON"
+         getTypeName() + "LATLON"
      }
 
      func prefTokenNumberList() -> String {
-         return getTypeName() + "NOLIST"
+         getTypeName() + "NOLIST"
      }
 
      func prefTokenStorage() -> String {
-         return "SEVEREDASHBOARD" + getTypeName()
+         "SEVEREDASHBOARD" + getTypeName()
      }
 
      func getTypeName() -> String {
-        return String(describing: type).replace("PolygonType.", "")
+         String(describing: type).replace("PolygonType.", "")
      }
 
     func getUrl() -> String {

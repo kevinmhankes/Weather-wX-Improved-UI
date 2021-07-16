@@ -75,7 +75,7 @@ final class CapAlert {
     }
 
     func getClosestRadar() -> String {
-        return ObjectWarning.getClosestRadarCompute(points)
+        ObjectWarning.getClosestRadarCompute(points)
     }
 
     private func getWarningsFromJson(_ html: String) -> [String] {
