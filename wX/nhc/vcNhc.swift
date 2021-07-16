@@ -12,6 +12,9 @@ final class vcNhc: UIwXViewController {
     private var imageProductButton = ToolbarIcon()
     private var glcfsButton = ToolbarIcon()
     private var objectNhc: ObjectNhc!
+    private var objectImageSummary: ObjectImageSummary!
+//    private var bitmaps = [Bitmap]()
+    private var urls = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +23,43 @@ final class vcNhc: UIwXViewController {
         glcfsButton = ToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
+        
+        objectNhc = ObjectNhc(self)
+//        bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
+//        objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+//
+//        for region in NhcOceanEnum.allCases {
+//            urls += objectNhc.regionMap[region]!.urls
+//        }
+        
         getContent()
     }
 
     override func getContent() {
         refreshViews()
-        objectNhc = ObjectNhc(self)
         let serial = DispatchQueue(label: "joshuatee.wx")
         serial.async {
             self.objectNhc.getTextData()
             DispatchQueue.main.async { self.objectNhc.showTextData() }
         }
+        
+//        for (index, url) in urls.enumerated() {
+//            _ = FutureBytes(url, objectImageSummary.objectImages[index].setBitmap)
+//        }
+        
         NhcOceanEnum.allCases.forEach { type in
             serial.async {
                 self.objectNhc.regionMap[type]!.getImages()
                 DispatchQueue.main.async { self.objectNhc.showImageData(type) }
             }
         }
+    }
+    
+    private func display() {
+//        refreshViews()
+//        objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+        
+        objectImageSummary.changeWidth()
     }
 
     @objc func textProductClicked() {
@@ -68,6 +91,7 @@ final class vcNhc: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
+                // self.display()
                 self.refreshViews()
                 self.objectNhc.showTextData()
                 NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }

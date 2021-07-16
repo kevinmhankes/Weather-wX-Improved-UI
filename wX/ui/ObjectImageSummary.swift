@@ -11,6 +11,7 @@ final class ObjectImageSummary {
     //
     // To be used in image based summary for SPC SWO, SPC Tstorm, SPC Fire Outlook, WPC Excessive Rain
     //
+    var objectImages = [ObjectImage]()
     
     init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
@@ -19,6 +20,9 @@ final class ObjectImageSummary {
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
             imagesPerRow = imagesPerRowWide
         }
+        #if targetEnvironment(macCatalyst)
+        imagesPerRow = imagesPerRowWide
+        #endif
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: UIStackView
             if imageCount % imagesPerRow == 0 {
@@ -29,13 +33,19 @@ final class ObjectImageSummary {
             } else {
                 stackView = imageStackViewList.last!.view
             }
-            _ = ObjectImage(
+            objectImages.append(ObjectImage(
                     stackView,
                     image,
                     UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
                     widthDivider: imagesPerRow
-            )
+            ))
             imageCount += 1
+        }
+    }
+    
+    func changeWidth() {
+        for o in objectImages {
+            o.changeWidth()
         }
     }
     
