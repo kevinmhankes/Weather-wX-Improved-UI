@@ -75,6 +75,7 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     override func getContent() {
+        animateButton.setImage(.play)
         _ = FutureBytes2({ UtilitySpcMesoInputOutput.getImage(self.product, self.sector) }, display)
     }
 
@@ -179,11 +180,26 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation(_:))
+        if image.isAnimating() {
+            image.stopAnimating()
+            animateButton.setImage(.play)
+        } else {
+            _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation(_:))
+        }
     }
 
-    func getAnimation(_ frameCount: Int) {
-        _ = FutureAnimation({ UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount) }, image.startAnimating)
+//    func getAnimation(_ frameCount: Int) {
+//        _ = FutureAnimation({ UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount) }, image.startAnimating)
+//    }
+    
+    @objc func getAnimation(_ frameCount: Int) {
+        if !image.isAnimating() {
+            animateButton.setImage(.stop)
+            _ = FutureAnimation({ UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount) }, image.startAnimating)
+        } else {
+            image.stopAnimating()
+            animateButton.setImage(.play)
+        }
     }
 
     @objc func showProductMenu() {

@@ -1,9 +1,7 @@
 objectWatch - if html == "" don't save, reset timer
-add indicator in SD to show when download done
 game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
-animate icon change
 objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 
 // [REF] RadarPref shorten names

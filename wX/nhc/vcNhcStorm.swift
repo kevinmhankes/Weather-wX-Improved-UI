@@ -31,6 +31,10 @@ final class vcNhcStorm: UIwXViewController {
         "_wind_probs_64_F120_sm2.png"
     ]
     var stormData: ObjectNhcStormDetails!
+    private var objectImageSummary: ObjectImageSummary!
+    private var boxText = ObjectStackView(.fill, .vertical)
+    private var boxImages = ObjectStackView(.fill, .vertical)
+    private var objectTextView: Text!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +44,31 @@ final class vcNhcStorm: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        
+        stackView.addArrangedSubview(boxImages.get())
+        objectTextView = Text(stackView)
+        objectTextView.constrain(scrollView)
+        
+        bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
+        objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
+        
         getContent()
     }
 
     override func getContent() {
         getContentImages()
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
-//        bitmaps = []
+    }
+    
+    func getContentImages() {
+        // bitmaps.removeAll()
+        for (index, imageName) in imageUrls.enumerated() {
+            var url = self.stormData.baseUrl
+            if imageName == "WPCQPF_sm2.gif" {
+                url.removeLast(2)
+            }
+            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url + imageName) }, { self.display() })
+        }
 //        DispatchQueue.global(qos: .userInitiated).async {
 //            self.imageUrls.forEach {
 //                var url = self.stormData.baseUrl
@@ -55,24 +77,8 @@ final class vcNhcStorm: UIwXViewController {
 //                }
 //                self.bitmaps.append(Bitmap(url + $0))
 //            }
-//            self.html = UtilityDownload.getTextProduct(self.product)
 //            DispatchQueue.main.async { self.display() }
 //        }
-    }
-    
-    func getContentImages() {
-        bitmaps = []
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.imageUrls.forEach {
-                var url = self.stormData.baseUrl
-                if $0 == "WPCQPF_sm2.gif" {
-                    url.removeLast(2)
-                }
-                self.bitmaps.append(Bitmap(url + $0))
-            }
-            // self.html = UtilityDownload.getTextProduct(self.product)
-            DispatchQueue.main.async { self.display() }
-        }
     }
 
     @objc func share(sender: UIButton) {
@@ -88,25 +94,29 @@ final class vcNhcStorm: UIwXViewController {
     }
 
     func display() {
-        refreshViews()
+        // refreshViews()
+        boxImages.removeChildren()
         displayImage()
         displayText()
     }
 
     func displayText() {
-        let objectTextView = Text(html)
-        stackView.addArrangedSubview(objectTextView.get())
-        objectTextView.constrain(scrollView)
+        objectTextView.setText(html)
+        // boxText.addWidget(objectTextView.get())
+        // objectTextView.constrain(scrollView)
     }
 
     func displayImage() {
-        bitmapsFiltered = []
-        bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
-        _ = ObjectImageSummary(self, bitmapsFiltered, imagesPerRowWide: 2)
+        // bitmapsFiltered.removeAll()
+        // bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
+        objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
+        for (index, url) in imageUrls.enumerated() {
+            objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))
+        }
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
-        Route.imageViewer(self, bitmapsFiltered[sender.data].url)
+        Route.imageViewer(self, bitmaps[sender.data].url)
     }
     
     @objc func goesClicked(sender: UIButton) {
@@ -118,7 +128,7 @@ final class vcNhcStorm: UIwXViewController {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in self.display() }
+            completion: { _ in self.display() }
         )
     }
 }

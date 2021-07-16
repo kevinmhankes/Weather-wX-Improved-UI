@@ -59,6 +59,7 @@ final class ObjectImageSummary {
         #if targetEnvironment(macCatalyst)
         imagesPerRow = imagesPerRowWide
         #endif
+        // let bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {

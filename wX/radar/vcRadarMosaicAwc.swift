@@ -39,6 +39,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
     }
 
     override func getContent() {
+        animateButton.setImage(.play)
         productButton.title = product
         sectorButton.title = sector
         if !isLocal {

@@ -47,12 +47,13 @@ final class ObjectCardDashAlertItem {
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         let horizontalContainer = ObjectStackView(
-            .fillProportionally,
+            .fill,
             .horizontal,
             spacing: 10,
             arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
         )
-        horizontalContainer.uiStackView.distribution = .equalSpacing
+        // horizontalContainer.uiStackView.alignment = .leading
+        // horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let verticalTextContainer = ObjectStackView(
             .fill,

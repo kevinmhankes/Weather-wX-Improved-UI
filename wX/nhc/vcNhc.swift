@@ -15,7 +15,6 @@ final class vcNhc: UIwXViewController {
     private var objectImageSummary: ObjectImageSummary!
     private var bitmaps = [Bitmap]()
     private var urls = [String]()
-    
     private var boxText = ObjectStackView(.fill, .vertical)
     private var boxImages = ObjectStackView(.fill, .vertical)
 
@@ -37,29 +36,14 @@ final class vcNhc: UIwXViewController {
         for region in NhcOceanEnum.allCases {
             urls += objectNhc.regionMap[region]!.urls
         }
-        
         getContent()
     }
 
     override func getContent() {
-//        refreshViews()
-//        let serial = DispatchQueue(label: "joshuatee.wx")
-//        serial.async {
-//            self.objectNhc.getTextData()
-//            DispatchQueue.main.async { self.objectNhc.showTextData() }
-//        }
-        
         _ = FutureVoid(objectNhc.getTextData, displayText)
         for (index, url) in urls.enumerated() {
             _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.setBitmap(index, self.bitmaps[index]); self.display() })
         }
-        
-//        NhcOceanEnum.allCases.forEach { type in
-//            serial.async {
-//                self.objectNhc.regionMap[type]!.getImages()
-//                DispatchQueue.main.async { self.objectNhc.showImageData(type) }
-//            }
-//        }
     }
     
     private func displayText() {
@@ -72,16 +56,11 @@ final class vcNhc: UIwXViewController {
     }
     
     private func display() {
-        // boxImages.removeChildren()
-        // boxImages.get().removeViews()
         objectImageSummary.removeChildren()
         objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
-        
         for (index, url) in urls.enumerated() {
             objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))
         }
-        
-        // objectImageSummary.changeWidth()
     }
     
     @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
@@ -116,12 +95,7 @@ final class vcNhc: UIwXViewController {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in
-                self.display()
-//                self.refreshViews()
-//                self.objectNhc.showTextData()
-//                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }
-            }
+            completion: { _ in self.display() }
         )
     }
 }

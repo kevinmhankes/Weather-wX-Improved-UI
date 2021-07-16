@@ -24,6 +24,10 @@ final class ObjectStackView {
         }
     }
     
+    func addWidget(_ w: UIView) {
+        view.addArrangedSubview(w)
+    }
+    
     func addLayout(_ w: UIView) {
         view.addArrangedSubview(w)
     }

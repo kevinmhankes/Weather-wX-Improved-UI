@@ -149,7 +149,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 let objectTextView = Text(
                     stackView,
                     goodTitle.trim(),
-                    UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed(sender:)))
+                    UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed))
                 )
                 objectTextView.tv.isSelectable = false
                 objectTextView.constrain(scrollView)
@@ -157,7 +157,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 let objectTextView = Text(
                     stackView,
                     prefVar,
-                    UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed(sender:)))
+                    UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed))
                 )
                 objectTextView.tv.isSelectable = false
                 objectTextView.constrain(scrollView)

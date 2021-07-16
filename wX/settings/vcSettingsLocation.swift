@@ -24,15 +24,31 @@ final class vcSettingsLocation: UIwXViewController {
     override func willEnterForeground() {}
 
     override func getContent() {
-        currentConditions = []
-        DispatchQueue.global(qos: .userInitiated).async {
-            (0..<Location.numLocations).forEach { self.currentConditions.append(ObjectCurrentConditions($0)) }
-            DispatchQueue.main.async {
-                self.locationCards.indices.forEach { index in
-                    self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-                    Location.updateObservation(index, self.currentConditions[index].topLine)
-                }
-            }
+        currentConditions.removeAll()
+        _ = FutureVoid(download, update)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            (0..<Location.numLocations).forEach {
+//                self.currentConditions.append(ObjectCurrentConditions($0))
+//            }
+//            DispatchQueue.main.async {
+//                self.locationCards.indices.forEach { index in
+//                    self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
+//                    Location.updateObservation(index, self.currentConditions[index].topLine)
+//                }
+//            }
+//        }
+    }
+    
+    func download() {
+        (0..<Location.numLocations).forEach {
+            self.currentConditions.append(ObjectCurrentConditions($0))
+        }
+    }
+    
+    func update() {
+        self.locationCards.indices.forEach { index in
+            self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
+            Location.updateObservation(index, self.currentConditions[index].topLine)
         }
     }
 
@@ -93,13 +109,15 @@ final class vcSettingsLocation: UIwXViewController {
 
     func deleteLocation(_ position: Int) {
         if Location.numLocations > 1 {
-            Location.delete(String(position + 1))
+            Location.delete(to.String(position + 1))
             display()
         }
     }
 
     func initializeObservations() {
-        (0..<Location.numberOfLocations).forEach { Location.updateObservation($0, "") }
+        (0..<Location.numberOfLocations).forEach {
+            Location.updateObservation($0, "")
+        }
     }
 
     func display() {

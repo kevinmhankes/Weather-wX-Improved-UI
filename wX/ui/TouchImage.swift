@@ -45,6 +45,7 @@ final class TouchImage {
     }
 
     func setBitmap(_ bitmap: Bitmap) {
+        stopAnimating()
         img.display(image: bitmap.image)
         self.bitmap = bitmap
     }

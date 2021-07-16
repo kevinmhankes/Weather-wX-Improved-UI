@@ -71,6 +71,7 @@ final class vcGoes: UIwXViewController {
     }
 
     override func getContent() {
+        animateButton.setImage(.play)
         if !goesFloater {
             _ = FutureBytes2({ UtilityGoes.getImage(self.productCode, self.sectorCode) }, display)
         } else {
@@ -132,25 +133,45 @@ final class vcGoes: UIwXViewController {
     }
 
     @objc func animateClicked() {
-        _ = ObjectPopUp(
-                self,
-                title: "Select number of animation frames:",
-                animateButton,
-                stride(from: 12, to: 96 + 12, by: 12),
-                getAnimation
-        )
+        if image.isAnimating() {
+            image.stopAnimating()
+            animateButton.setImage(.play)
+        } else {
+            _ = ObjectPopUp(
+                    self,
+                    title: "Select number of animation frames:",
+                    animateButton,
+                    stride(from: 12, to: 96 + 12, by: 12),
+                    getAnimation
+            )
+        }
     }
 
+//    @objc func getAnimation(_ frameCount: Int) {
+//        if !goesFloater {
+//            _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+//        } else {
+//            _ = FutureAnimation({ UtilityGoes.getAnimationGoesFloater(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+//        }
+//    }
+    
     @objc func getAnimation(_ frameCount: Int) {
-        if !goesFloater {
-            _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+        if !image.isAnimating() {
+            animateButton.setImage(.stop)
+            // _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
+            if !goesFloater {
+                _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+            } else {
+                _ = FutureAnimation({ UtilityGoes.getAnimationGoesFloater(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+            }
         } else {
-            _ = FutureAnimation({ UtilityGoes.getAnimationGoesFloater(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
+            image.stopAnimating()
+            animateButton.setImage(.play)
         }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.image.refresh() })
     }
 }
