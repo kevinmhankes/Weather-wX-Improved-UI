@@ -28,15 +28,24 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     override func getContent() {
-        capAlerts = []
-        // TODO download image in thread
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownloadNws.getCap("us")
-            let alerts = html.parseColumn("<entry>(.*?)</entry>")
-            alerts.forEach {
-                self.capAlerts.append(CapAlert(eventText: $0))
-            }
-            DispatchQueue.main.async { self.display() }
+        capAlerts.removeAll()
+        _ = FutureVoid(download, display)
+//        // TODO download image in thread
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let html = UtilityDownloadNws.getCap("us")
+//            let alerts = html.parseColumn("<entry>(.*?)</entry>")
+//            alerts.forEach {
+//                self.capAlerts.append(CapAlert(eventText: $0))
+//            }
+//            DispatchQueue.main.async { self.display() }
+//        }
+    }
+    
+    func download() {
+        let html = UtilityDownloadNws.getCap("us")
+        let alerts = html.parseColumn("<entry>(.*?)</entry>")
+        alerts.forEach {
+            self.capAlerts.append(CapAlert(eventText: $0))
         }
     }
 

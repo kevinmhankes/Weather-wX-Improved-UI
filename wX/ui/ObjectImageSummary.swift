@@ -14,11 +14,11 @@ final class ObjectImageSummary {
     var objectImages = [ObjectImage]()
     var imageStackViewList = [ObjectStackView]()
 
-    
     init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
         var imagesPerRow = 2
         imageStackViewList.removeAll()
+        objectImages.removeAll()
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
             imagesPerRow = imagesPerRowWide
         }
@@ -44,12 +44,15 @@ final class ObjectImageSummary {
             imageCount += 1
         }
     }
-        
+      
+    //
     // NHC, add stack
+    //
     init(_ uiv: UIwXViewController, _ parentBox: ObjectStackView, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
         var imagesPerRow = 2
         imageStackViewList.removeAll()
+        objectImages.removeAll()
         if UtilityUI.isTablet() { // && UtilityUI.isLandscape()
             imagesPerRow = imagesPerRowWide
         }
@@ -57,20 +60,20 @@ final class ObjectImageSummary {
         imagesPerRow = imagesPerRowWide
         #endif
         bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
+            let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                let objectStackView = ObjectStackView(.fillEqually, .horizontal)
                 imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
+                stackView = objectStackView
                 parentBox.addLayout(stackView)
             } else {
-                stackView = imageStackViewList.last!.view
+                stackView = imageStackViewList.last!
             }
             objectImages.append(ObjectImage(
-                    stackView,
-                    image,
-                    UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
-                    widthDivider: imagesPerRow
+                stackView.get(),
+                image,
+                UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                widthDivider: imagesPerRow
             ))
             imageCount += 1
         }
@@ -82,11 +85,16 @@ final class ObjectImageSummary {
         }
     }
     
-    func removeAll() {
+    func removeChildren() {
         for layout in imageStackViewList {
-            layout.get().removeViews()
-            layout.get().removeFromSuperview()
+            layout.removeAllChildren()
+//            layout.get().removeViews()
+//            layout.get().removeFromSuperview()
         }
+    }
+    
+    func setBitmap(_ index: Int, _ bitmap: Bitmap) {
+        objectImages[index].setBitmap(bitmap)
     }
     
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}

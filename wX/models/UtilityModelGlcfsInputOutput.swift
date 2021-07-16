@@ -7,6 +7,6 @@
 final class UtilityModelGlcfsInputOutput {
     
     static func getImage(_ om: ObjectModel) -> Bitmap {
-        return Bitmap("https://www.glerl.noaa.gov/res/glcfs/lakes/cur/" + om.param + "-" + om.time + ".gif")
+        Bitmap("https://www.glerl.noaa.gov/res/glcfs/lakes/cur/" + om.param + "-" + om.time + ".gif")
     }
 }

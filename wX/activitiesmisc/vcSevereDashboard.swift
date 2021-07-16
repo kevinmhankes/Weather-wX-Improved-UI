@@ -82,13 +82,13 @@ final class vcSevereDashboard: UIwXViewController {
                 for w in severeWarning.warningList {
                     if w.isCurrent {
                         let radarSite = w.getClosestRadar()
-                        _ = ObjectCardDashAlertItem(
+                        stackView.addArrangedSubview(ObjectCardDashAlertItem(
                             self,
                             w,
                             UITapGestureRecognizerWithData(w.url, self, #selector(goToAlert(sender:))),
                             UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:))),
                             UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
-                        )
+                        ).get())
                     }
                 }
             // }
@@ -135,6 +135,9 @@ final class vcSevereDashboard: UIwXViewController {
         if noticeCount == 0 && UtilityUI.isLandscape() {
             imagesPerRow = 2
         }
+        #if targetEnvironment(macCatalyst)
+        imagesPerRow = 3
+        #endif
 //        else if noticeCount == 0 && !UtilityUI.isLandscape() {
 //            imagesPerRow = 1
 //        }

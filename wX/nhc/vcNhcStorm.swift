@@ -94,7 +94,8 @@ final class vcNhcStorm: UIwXViewController {
     }
 
     func displayText() {
-        let objectTextView = Text(stackView, html)
+        let objectTextView = Text(html)
+        stackView.addArrangedSubview(objectTextView.get())
         objectTextView.constrain(scrollView)
     }
 

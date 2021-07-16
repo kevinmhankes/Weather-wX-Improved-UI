@@ -68,10 +68,14 @@ final class ObjectCardDashAlertItem {
         }
         verticalTextContainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
-        uiv.stackView.addArrangedSubview(cardStackView.view)
+        // uiv.stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
-        uiv.stackView.addArrangedSubview(cardStackView.view)
-        verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+        // uiv.stackView.addArrangedSubview(cardStackView.view)
+        // verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+    }
+    
+    func get() -> UIView {
+        cardStackView.view
     }
 
     @objc func showRadar() {}

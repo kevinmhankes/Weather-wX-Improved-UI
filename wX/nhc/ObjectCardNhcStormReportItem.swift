@@ -61,6 +61,6 @@ final class ObjectCardNhcStormReportItem {
     }
     
     func get() -> UIView {
-        return cardStackView.view
+        cardStackView.view
     }
 }

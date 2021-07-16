@@ -40,6 +40,7 @@ final class ObjectNhc: NSObject {
 
     func getTextData() {
         statusList = []
+        stormDataList.removeAll()
         let url = GlobalVariables.nwsNhcWebsitePrefix + "/CurrentStorms.json"
         // let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
         let html = url.getHtml()

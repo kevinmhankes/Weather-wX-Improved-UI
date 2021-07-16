@@ -96,12 +96,14 @@ final class ObjectAlertSummary: NSObject {
     }
 
     func getImage() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.imageIndex = 0
-            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
-            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
-            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
-        }
+        imageIndex = 0
+        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) } , objectImage.setBitmap)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.imageIndex = 0
+//            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
+//            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
+//            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
+//        }
     }
 
     var image: Bitmap {

@@ -85,7 +85,7 @@ final class TouchImage {
     }
     
     func isAnimating() -> Bool {
-        return img.zoomView?.isAnimating ?? false
+        img.zoomView?.isAnimating ?? false
     }
 
     func setMaxScaleFromMinScale(_ value: CGFloat) {

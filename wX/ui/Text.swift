@@ -37,7 +37,7 @@ final class Text {
         stackView.addArrangedSubview(tv)
         tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
-
+    
     convenience init(
         _ stackView: UIStackView,
         _ text: String,
@@ -52,6 +52,19 @@ final class Text {
         } else {
             tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         }
+        tv.text = text
+        tv.isUserInteractionEnabled = isUserInteractionEnabled
+        if isZeroSpacing {
+            setZeroSpacing()
+        }
+    }
+    
+    convenience init(
+        _ text: String,
+        isUserInteractionEnabled: Bool = true,
+        isZeroSpacing: Bool = false
+    ) {
+        self.init()
         tv.text = text
         tv.isUserInteractionEnabled = isUserInteractionEnabled
         if isZeroSpacing {
@@ -138,4 +151,8 @@ final class Text {
     }
 
     var view: UITextView { tv }
+    
+    func get() -> UITextView {
+        view
+    }
 }

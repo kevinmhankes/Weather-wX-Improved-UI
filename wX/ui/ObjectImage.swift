@@ -79,7 +79,7 @@ final class ObjectImage {
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         img.addGestureRecognizer(gesture)
     }
-
+    
     private func setImageAnchors(_ width: CGFloat) {
         img.widthAnchor.constraint(equalToConstant: width).isActive = true
         img.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true

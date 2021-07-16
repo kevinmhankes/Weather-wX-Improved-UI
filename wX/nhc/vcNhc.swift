@@ -51,7 +51,7 @@ final class vcNhc: UIwXViewController {
         
         _ = FutureVoid(objectNhc.getTextData, displayText)
         for (index, url) in urls.enumerated() {
-            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.objectImages[index].setBitmap(self.bitmaps[index]); self.display() })
+            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.setBitmap(index, self.bitmaps[index]); self.display() })
         }
         
 //        NhcOceanEnum.allCases.forEach { type in
@@ -63,7 +63,8 @@ final class vcNhc: UIwXViewController {
     }
     
     private func displayText() {
-        self.objectNhc.showTextData()
+        boxText.removeChildren()
+        objectNhc.showTextData()
         for (index, s) in objectNhc.stormDataList.enumerated() {
             let card = ObjectCardNhcStormReportItem(s, UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm)))
             boxText.addLayout(card.get())
@@ -73,8 +74,13 @@ final class vcNhc: UIwXViewController {
     private func display() {
         // boxImages.removeChildren()
         // boxImages.get().removeViews()
-        objectImageSummary.removeAll()
+        objectImageSummary.removeChildren()
         objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+        
+        for (index, url) in urls.enumerated() {
+            objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))
+        }
+        
         // objectImageSummary.changeWidth()
     }
     

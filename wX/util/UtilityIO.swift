@@ -86,6 +86,6 @@ final class UtilityIO {
     }
     
     static func getHtml(_ url: String) -> String {
-        return UtilityNetworkIO.getStringFromUrl(url)
+        UtilityNetworkIO.getStringFromUrl(url)
     }
 }
