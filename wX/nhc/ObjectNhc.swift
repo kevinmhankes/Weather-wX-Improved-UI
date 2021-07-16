@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectNhc: NSObject {
 
-    private var stormDataList = [ObjectNhcStormDetails]()
+    var stormDataList = [ObjectNhcStormDetails]()
     private let uiv: UIwXViewController
     private var textAtl = ""
     private var textPac = ""
@@ -83,10 +83,10 @@ final class ObjectNhc: NSObject {
                     statusList[index]
                 )
                 stormDataList.append(objectNhcStormDetails)
-                _ = ObjectCardNhcStormReportItem(
-                        uiv.stackView,
-                        objectNhcStormDetails,
-                        UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
+//                _ = ObjectCardNhcStormReportItem(
+//                        uiv.stackView,
+//                        objectNhcStormDetails,
+//                        UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
             }
         }
     }

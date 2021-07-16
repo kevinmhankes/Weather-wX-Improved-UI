@@ -23,6 +23,18 @@ final class ObjectStackView {
             arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) }
         }
     }
+    
+    func addLayout(_ w: UIView) {
+        view.addArrangedSubview(w)
+    }
+    
+    func get() -> UIStackView {
+        return uiStackView
+    }
+    
+    func removeChildren() {
+        view.subviews.forEach { $0.removeFromSuperview() }
+    }
 
     var view: UIStackView { uiStackView }
 }

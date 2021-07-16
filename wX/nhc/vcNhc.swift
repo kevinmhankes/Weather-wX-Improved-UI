@@ -15,6 +15,9 @@ final class vcNhc: UIwXViewController {
     private var objectImageSummary: ObjectImageSummary!
     private var bitmaps = [Bitmap]()
     private var urls = [String]()
+    
+    private var boxText = ObjectStackView(.fill, .vertical)
+    private var boxImages = ObjectStackView(.fill, .vertical)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,12 @@ final class vcNhc: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
         
+        stackView.addArrangedSubview(boxText.get())
+        stackView.addArrangedSubview(boxImages.get())
+        
         objectNhc = ObjectNhc(self)
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
-        // objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
+        objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
 
         for region in NhcOceanEnum.allCases {
             urls += objectNhc.regionMap[region]!.urls
@@ -36,32 +42,44 @@ final class vcNhc: UIwXViewController {
     }
 
     override func getContent() {
-        refreshViews()
-        let serial = DispatchQueue(label: "joshuatee.wx")
-        serial.async {
-            self.objectNhc.getTextData()
-            DispatchQueue.main.async { self.objectNhc.showTextData() }
-        }
-        
-//        FutureVoid(objectNhc.getTextData, display)
-//        for (index, url) in urls.enumerated() {
-//            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.objectImages[index].setBitmap(self.bitmaps[index]); self.display() })
+//        refreshViews()
+//        let serial = DispatchQueue(label: "joshuatee.wx")
+//        serial.async {
+//            self.objectNhc.getTextData()
+//            DispatchQueue.main.async { self.objectNhc.showTextData() }
 //        }
         
-        NhcOceanEnum.allCases.forEach { type in
-            serial.async {
-                self.objectNhc.regionMap[type]!.getImages()
-                DispatchQueue.main.async { self.objectNhc.showImageData(type) }
-            }
+        _ = FutureVoid(objectNhc.getTextData, displayText)
+        for (index, url) in urls.enumerated() {
+            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.objectImages[index].setBitmap(self.bitmaps[index]); self.display() })
+        }
+        
+//        NhcOceanEnum.allCases.forEach { type in
+//            serial.async {
+//                self.objectNhc.regionMap[type]!.getImages()
+//                DispatchQueue.main.async { self.objectNhc.showImageData(type) }
+//            }
+//        }
+    }
+    
+    private func displayText() {
+        self.objectNhc.showTextData()
+        for (index, s) in objectNhc.stormDataList.enumerated() {
+            let card = ObjectCardNhcStormReportItem(s, UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm)))
+            boxText.addLayout(card.get())
         }
     }
     
     private func display() {
-        refreshViews()
-        self.objectNhc.showTextData()
+        // boxImages.removeChildren()
+        // boxImages.get().removeViews()
+        objectImageSummary.removeAll()
         objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
-        
         // objectImageSummary.changeWidth()
+    }
+    
+    @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
+        Route.nhcStorm(self, objectNhc.stormDataList[sender.data])
     }
 
     @objc func textProductClicked() {
@@ -93,10 +111,10 @@ final class vcNhc: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ -> Void in
-                // self.display()
-                self.refreshViews()
-                self.objectNhc.showTextData()
-                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }
+                self.display()
+//                self.refreshViews()
+//                self.objectNhc.showTextData()
+//                NhcOceanEnum.allCases.forEach { type in self.objectNhc.showImageData(type) }
             }
         )
     }
