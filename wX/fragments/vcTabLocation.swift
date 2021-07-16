@@ -162,24 +162,27 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getForecastData() {
-        getLocationForecast()
-        getLocationForecastSevenDay()
-        getLocationHazards()
+        // getLocationForecast()
+        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
+        // getLocationForecastSevenDay()
+        _ = FutureVoid(downloadSevenDay, updateSevenDay)
+        // getLocationHazards()
+        _ = FutureVoid(downloadHazards, updateHazards)
         if fab != nil {
             view.bringSubviewToFront(fab!.view)
         }
     }
 
-    func getLocationForecast() {
-        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
+//    func getLocationForecast() {
+//        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
 //        DispatchQueue.global(qos: .userInitiated).async {
 //            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
 //            DispatchQueue.main.async { self.getCurrentConditionCards() }
 //        }
-    }
+//    }
 
-    func getLocationForecastSevenDay() {
-        _ = FutureVoid(downloadSevenDay, updateSevenDay)
+//    func getLocationForecastSevenDay() {
+//        _ = FutureVoid(downloadSevenDay, updateSevenDay)
 //        DispatchQueue.global(qos: .userInitiated).async {
 //            self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
 //            self.objectSevenDay.locationIndex = Location.getCurrentLocation()
@@ -204,7 +207,7 @@ final class vcTabLocation: vcTabParent {
 //                }
 //            }
 //        }
-    }
+//    }
     
     func downloadSevenDay() {
         self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
@@ -232,17 +235,30 @@ final class vcTabLocation: vcTabParent {
         }
     }
 
-    func getLocationHazards() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
-            DispatchQueue.main.async {
-                if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
-                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
-                    self.stackViewHazards.view.isHidden = false
-                } else {
-                    self.stackViewHazards.view.isHidden = true
-                }
-            }
+//    func getLocationHazards() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
+//            DispatchQueue.main.async {
+//                if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
+//                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
+//                    self.stackViewHazards.view.isHidden = false
+//                } else {
+//                    self.stackViewHazards.view.isHidden = true
+//                }
+//            }
+//        }
+//    }
+    
+    func downloadHazards() {
+        self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
+    }
+    
+    func updateHazards() {
+        if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
+            ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
+            self.stackViewHazards.view.isHidden = false
+        } else {
+            self.stackViewHazards.view.isHidden = true
         }
     }
 
