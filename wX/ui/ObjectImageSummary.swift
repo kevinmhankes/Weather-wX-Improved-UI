@@ -76,7 +76,11 @@ final class ObjectImageSummary {
                 UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
                 widthDivider: imagesPerRow
             ))
-            imageCount += 1
+            if !image.isValidForNhc {
+                objectImages.last!.img.isHidden = true
+            } else {
+                imageCount += 1
+            }
         }
     }
     
