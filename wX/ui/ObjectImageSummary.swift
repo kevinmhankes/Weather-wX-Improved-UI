@@ -59,7 +59,6 @@ final class ObjectImageSummary {
         #if targetEnvironment(macCatalyst)
         imagesPerRow = imagesPerRowWide
         #endif
-        // let bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {
@@ -93,8 +92,6 @@ final class ObjectImageSummary {
     func removeChildren() {
         for layout in imageStackViewList {
             layout.removeAllChildren()
-//            layout.get().removeViews()
-//            layout.get().removeFromSuperview()
         }
     }
     

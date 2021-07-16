@@ -12,22 +12,16 @@ final class ObjectImage {
     private var width: CGFloat = 0.0
     private var widthDivider = 1
     var bitmap = Bitmap()
-//    var stackView: UIStackView
-    
-//    var anchor1: NSLayoutConstraint?
-//    var anchor2: NSLayoutConstraint?
 
     init() {
         img.contentMode = UIView.ContentMode.scaleAspectFit
         img.translatesAutoresizingMaskIntoConstraints = false
         img.isUserInteractionEnabled = true
         (width, _) = UtilityUI.getScreenBoundsCGFloat()
-//        self.stackView = UIStackView()
     }
 
     convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, widthDivider: Int = 1) {
         self.init()
-//        self.stackView = stackView
         img.image = UIImage(data: bitmap.data) ?? UIImage()
         self.bitmap = bitmap
         self.widthDivider = widthDivider
@@ -83,10 +77,6 @@ final class ObjectImage {
     private func setImageAnchors(_ width: CGFloat) {
         img.widthAnchor.constraint(equalToConstant: width).isActive = true
         img.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width)).isActive = true
-        
-//        anchor1 = img.widthAnchor.constraint(equalToConstant: width)
-//        anchor2 = img.heightAnchor.constraint(equalToConstant: width * (bitmap.height / bitmap.width))
-//        stackView.addConstraints([anchor1!, anchor2!])
     }
     
     private func setImageAnchorsForHomeScreen(_ scrollView: UIScrollView) {
