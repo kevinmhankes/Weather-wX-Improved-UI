@@ -162,7 +162,6 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getForecastData() {
-        print("22234 Get forecast")
         getLocationForecast()
         getLocationForecastSevenDay()
         getLocationHazards()
@@ -172,36 +171,64 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getLocationForecast() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
-            DispatchQueue.main.async { self.getCurrentConditionCards() }
-        }
+        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
+//            DispatchQueue.main.async { self.getCurrentConditionCards() }
+//        }
     }
 
     func getLocationForecastSevenDay() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
-            self.objectSevenDay.locationIndex = Location.getCurrentLocation()
-            DispatchQueue.main.async {
-                if self.objectCardSevenDayCollection == nil
-                    || !self.isUS
-                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
-                    || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
-                    self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
-                    self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
-                        self.stackViewForecast.view,
-                        self.scrollView,
-                        self.objectSevenDay,
-                        self.isUS
-                    )
-                    self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
-                } else {
-                    self.objectCardSevenDayCollection?.update(
-                        self.objectSevenDay,
-                        self.isUS
-                    )
-                }
-            }
+        _ = FutureVoid(downloadSevenDay, updateSevenDay)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
+//            self.objectSevenDay.locationIndex = Location.getCurrentLocation()
+//            DispatchQueue.main.async {
+//                if self.objectCardSevenDayCollection == nil
+//                    || !self.isUS
+//                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
+//                    || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
+//                    self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
+//                    self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
+//                        self.stackViewForecast.view,
+//                        self.scrollView,
+//                        self.objectSevenDay,
+//                        self.isUS
+//                    )
+//                    self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
+//                } else {
+//                    self.objectCardSevenDayCollection?.update(
+//                        self.objectSevenDay,
+//                        self.isUS
+//                    )
+//                }
+//            }
+//        }
+    }
+    
+    func downloadSevenDay() {
+        self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
+        self.objectSevenDay.locationIndex = Location.getCurrentLocation()
+    }
+    
+    func updateSevenDay() {
+        if self.objectCardSevenDayCollection == nil
+            || !self.isUS
+            || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
+            || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
+            self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
+            self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
+                self.stackViewForecast.view,
+                self.scrollView,
+                self.objectSevenDay,
+                self.isUS
+            )
+            self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
+        } else {
+            self.objectCardSevenDayCollection?.update(
+                self.objectSevenDay,
+                self.isUS
+            )
         }
     }
 
