@@ -39,99 +39,14 @@ final class vcSevereDashboard: UIwXViewController {
     // TODO loop over enum
     override func getContent() {
         for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
-            // getNotice(notice)
             _ = FutureVoid(self.severeNotices[notice]!.download, display)
         }
-//        getContentWatch()
-//        getContentMcd()
-//        getContentMpd()
-//        getContentWarningTst()
-//        getContentWarningFfw()
-//        getContentWarningTor()
         for warning in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
-            //getWarning(warning)
             _ = FutureVoid(self.severeWarnings[warning]!.download, display)
         }
         getContentUsAlerts()
         getContentSpcStormReports()
     }
-    
-//    func getWarning(_ notice: PolygonEnum) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.severeWarnings[notice]?.download()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-    
-//    func getNotice(_ notice: PolygonEnum) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            // UtilityDownloadWatch.getWatch()
-//            ObjectPolygonWatch.polygonDataByType[notice]?.download()
-//            self.severeNotices[notice]?.getBitmaps()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-
-//    func getContentWatch() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadWatch.getWatch()
-//            self.snWat.getBitmaps()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-//
-//    func getContentMcd() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadMcd.getMcd()
-//            self.snMcd.getBitmaps()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-//
-//    func getContentMpd() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadMpd.getMpd()
-//            self.snMpd.getBitmaps()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-
-//    func getContentWarningTst() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadRadar.getPolygonVtecTst()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-//
-//    func getContentWarningFfw() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadRadar.getPolygonVtecFfw()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
-//
-//    func getContentWarningTor() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityDownloadRadar.getPolygonVtecTor()
-//            DispatchQueue.main.async {
-//                self.display()
-//            }
-//        }
-//    }
 
     func getContentUsAlerts() {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -166,7 +81,7 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = severeWarnings[.TST]!
         let wFfw = severeWarnings[.FFW]!
         [wTor, wTst, wFfw].forEach { severeWarning in
-            if severeWarning.getCount() > 0 {
+            //if severeWarning.getCount() > 0 {
                 _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
                 for w in severeWarning.warningList {
                     if w.isCurrent {
@@ -180,7 +95,7 @@ final class vcSevereDashboard: UIwXViewController {
                         )
                     }
                 }
-            }
+            //}
         }
         if wTor.getCount() > 0 || wTst.getCount() > 0 || wFfw.getCount() > 0 {
             statusWarnings = "(" + wTor.getCount() + "," + wTst.getCount() + "," + wFfw.getCount() + ")"

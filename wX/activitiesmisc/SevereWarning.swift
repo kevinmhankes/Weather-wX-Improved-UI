@@ -8,6 +8,7 @@ final class SevereWarning {
 
     private let type: PolygonEnum
     var warningList = [ObjectWarning]()
+    var downloadComplete = false
 
     init(_ type: PolygonEnum) {
         self.type = type
@@ -25,7 +26,8 @@ final class SevereWarning {
         default:
             break
         }
-        self.generateString()
+        generateString()
+        downloadComplete = true
     }
     
     func generateString() {
@@ -58,6 +60,9 @@ final class SevereWarning {
     }
 
     func getCount() -> String {
+        if !downloadComplete {
+            return "?"
+        }
         var i = 0
         for  s in warningList {
             if s.isCurrent {
