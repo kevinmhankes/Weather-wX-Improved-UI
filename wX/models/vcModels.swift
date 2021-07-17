@@ -95,33 +95,33 @@ final class vcModels: UIwXViewController {
     }
     
     private func updateAfterRunStatus() {
-        self.modelObj.setRun(self.modelObj.runTimeData.mostRecentRun)
-        if self.modelActivitySelected == "SPCHRRR"
-            || self.modelActivitySelected == "SPCSREF"
-            || self.modelActivitySelected == "SPCHREF" {
-            self.modelObj.times = UtilityModels.updateTime(
-                UtilityString.getLastXChars(self.modelObj.run, 2),
-                self.modelObj.run,
-                self.modelObj.times,
+        modelObj.setRun(modelObj.runTimeData.mostRecentRun)
+        if modelActivitySelected == "SPCHRRR"
+            || modelActivitySelected == "SPCSREF"
+            || modelActivitySelected == "SPCHREF" {
+            modelObj.times = UtilityModels.updateTime(
+                UtilityString.getLastXChars(modelObj.run, 2),
+                modelObj.run,
+                modelObj.times,
                 ""
             )
-        } else if !self.modelActivitySelected.contains("GLCFS") {
-            self.modelObj.times.enumerated().forEach { idx, timeStr in
-                self.modelObj.setTimeArr(
+        } else if !modelActivitySelected.contains("GLCFS") {
+            modelObj.times.enumerated().forEach { idx, timeStr in
+                modelObj.setTimeArr(
                     idx,
                     timeStr.split(" ")[0] + " "
                         + UtilityModels.convertTimeRunToTimeString(
-                            self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
+                            modelObj.runTimeData.timeStringConversion.replace("Z", ""),
                             timeStr.split(" ")[0]
                     )
                 )
             }
         }
-        if self.modelObj.timeIdx >= self.modelObj.times.count {
-            self.modelObj.setTimeIdx(self.modelObj.times.count - 1)
+        if modelObj.timeIdx >= modelObj.times.count {
+            modelObj.setTimeIdx(modelObj.times.count - 1)
         }
-        self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.times, self.modelObj.timeIdx)
-        self.getContent()
+        modelObj.timeButton.title = Utility.safeGet(modelObj.times, modelObj.timeIdx)
+        getContent()
     }
 
     override func willEnterForeground() {}
