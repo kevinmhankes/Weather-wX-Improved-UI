@@ -51,7 +51,11 @@ UtilityWpcFronts.pressureCenters.asMap().forEach((index, value) {
 Swift:
 ```
 warningDataList.enumerated().forEach { index, warningData in
+for (index, warningData) in warningDataList.enumerated() {
 for index in stride(from: 0, to: tokens.count, by: 2) {
+for index in aList.indices {
+(7...10)
+(7..<10)
 ```
 Kotlin:
 ```
@@ -65,11 +69,6 @@ Kotlin:
 (0..159).forEach {
 for (index in startIndex until tokens.size step indexIncrement) {
 for (index in startIndex..tokens.size step indexIncrement) {
-```
-Swift:
-```
-(7...10)
-(7..<10)
 ```
 ### swift - modify list passed as arg to method (inout and &)
 ```swift
