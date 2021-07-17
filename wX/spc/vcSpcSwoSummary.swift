@@ -18,12 +18,14 @@ final class vcSpcSwoSummary: UIwXViewController {
         getContent()
     }
 
+    // TODO more threads
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
-            self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid(download, display)
+    }
+    
+    private func download() {
+        self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
+        self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
     }
 
     private func display() {

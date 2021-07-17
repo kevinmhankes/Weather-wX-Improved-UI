@@ -46,14 +46,16 @@ final class vcSpcStormReports: UIwXViewController {
         // self.getContent()
     }
 
+    // TODO more threads
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmap = Bitmap(self.imageUrl)
-            self.bitmap.url = self.imageUrl
-            self.html = self.textUrl.getHtml()
-            self.stormReports = UtilitySpcStormReports.process(self.html.split(GlobalVariables.newline))
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid(download, display)
+    }
+    
+    private func download() {
+        self.bitmap = Bitmap(self.imageUrl)
+        self.bitmap.url = self.imageUrl
+        self.html = self.textUrl.getHtml()
+        self.stormReports = UtilitySpcStormReports.process(self.html.split(GlobalVariables.newline))
     }
 
     @objc func imgClicked() {
