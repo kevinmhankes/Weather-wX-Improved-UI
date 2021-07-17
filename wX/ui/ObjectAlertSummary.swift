@@ -97,7 +97,7 @@ final class ObjectAlertSummary: NSObject {
 
     func getImage() {
         imageIndex = 0
-        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) } , objectImage.setBitmap)
+        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) }, objectImage.setBitmap)
 //        DispatchQueue.global(qos: .userInitiated).async {
 //            self.imageIndex = 0
 //            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
