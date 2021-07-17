@@ -55,21 +55,6 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
 
     override func getContent() {
         _ = FutureText2(download, display)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            if self.product.hasPrefix("RTP") && self.product.count == 5 {
-//                let state = Utility.getWfoSiteName(self.wfo).split(",")[0]
-//                self.product = "RTP" + state
-//            }
-//            self.productButton.title = self.product
-//            self.siteButton.title = self.wfo
-//            let html: String
-//            if self.product.hasPrefix("RTP") && self.product.count == 5 {
-//                html = UtilityDownload.getTextProduct(self.product)
-//            } else {
-//                html = UtilityDownload.getTextProduct(self.product + self.wfo)
-//            }
-//            DispatchQueue.main.async { self.display(html) }
-//        }
     }
     
     private func download() -> String {

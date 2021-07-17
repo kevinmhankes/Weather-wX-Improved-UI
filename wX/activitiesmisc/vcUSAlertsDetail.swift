@@ -27,10 +27,6 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
         stackView.spacing = 0
         objectAlertDetail = ObjectAlertDetail(stackView)
         _ = FutureVoid({ self.cap = CapAlert(url: self.usAlertsDetailUrl) }, display)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.cap = CapAlert(url: self.usAlertsDetailUrl)
-//            DispatchQueue.main.async { self.display() }
-//        }
     }
 
     private func display() {
