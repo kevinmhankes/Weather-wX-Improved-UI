@@ -476,9 +476,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             let tstCount = WXGLPolygonWarnings.getCount(PolygonEnum.TST)
             let torCount = WXGLPolygonWarnings.getCount(PolygonEnum.TOR)
             let ffwCount = WXGLPolygonWarnings.getCount(PolygonEnum.FFW)
-//            let tstCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTst.value)
-//            let torCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardTor.value)
-//            let ffwCount = ObjectPolygonWarning.getCount(MyApplication.severeDashboardFfw.value)
             let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
             warningButton.title = countString
             let sum = (Int(tstCount) ?? 0) + (Int(torCount) ?? 0) + (Int(ffwCount) ?? 0)
@@ -492,46 +489,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-//    func getPolygonWarnings() {
-//        updateWarningsInToolbar()
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.semaphore.wait()
-//            if self.wxMetalRenders[0] != nil {
-//                self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-//            }
-//            UtilityPolygons.get()
-//            DispatchQueue.main.async {
-//                if self.wxMetalRenders[0] != nil {
-//                    self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-//                }
-//                self.updateWarningsInToolbar()
-//                self.semaphore.signal()
-//            }
-//        }
-//    }
-    
     func getPolygonWarnings() {
         updateWarningsInToolbar()
         getPolygonWatchGeneric()
         getPolygonWarningsNonGeneric()
         if ObjectPolygonWarning.areAnyEnabled() {
             _ = FutureVoid(getPolygonWarningsGeneric, updatePolygonWarningsGeneric)
-//            DispatchQueue.global(qos: .userInitiated).async {
-//                // self.semaphore.wait()
-//                if self.wxMetalRenders[0] != nil {
-//                    self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-//                }
-//                // UtilityPolygons.get()
-//                UtilityDownloadWarnings.get()
-//                DispatchQueue.main.async {
-//                    self.semaphore.wait()
-//                    if self.wxMetalRenders[0] != nil {
-//                        self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-//                    }
-//                    self.updateWarningsInToolbar()
-//                    self.semaphore.signal()
-//                }
-//            }
         }
     }
     
@@ -540,7 +503,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if wxMetalRenders[0] != nil {
             wxMetalRenders.forEach { $0!.constructAlertPolygons() }
         }
-        // UtilityPolygons.get()
         UtilityDownloadWarnings.get()
     }
     
@@ -598,32 +560,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         updateWarningsInToolbar()
         semaphore.signal()
     }
-    
-//    func getPolygonWatch() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            if self.wxMetalRenders[0] != nil {
-//                self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
-//            }
-//            if PolygonType.MCD.display {
-//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]?.download()
-//            }
-//
-//            if PolygonType.WATCH.display {
-//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]?.download()
-//            }
-//
-//            if PolygonType.MPD.display {
-//                ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]?.download()
-//            }
-//            DispatchQueue.main.async {
-//                self.semaphore.wait()
-//                if self.wxMetalRenders[0] != nil {
-//                    self.wxMetalRenders.forEach { $0!.constructWatchPolygons() }
-//                }
-//                self.semaphore.signal()
-//            }
-//        }
-//    }
 
     @objc func radarSiteClicked(sender: ToolbarIcon) {
         mapIndex = sender.tag
