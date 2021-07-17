@@ -103,7 +103,7 @@ final class vcGoes: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Sector Selection", sectorButton, UtilityGoes.sectors, sectorChanged)
     }
 
     func productChanged(_ index: Int) {
