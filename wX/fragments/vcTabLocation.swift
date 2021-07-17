@@ -453,13 +453,6 @@ final class vcTabLocation: vcTabParent {
 
     func getContentImage(_ product: String, _ stackView: UIStackView) {
         _ = FutureBytes2({ UtilityDownload.getImageProduct(product) }, { bitmap in self.displayImage(product, stackView, bitmap) })
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let bitmap = UtilityDownload.getImageProduct(product)
-//            DispatchQueue.main.async {
-//                let imgObj = ObjectImage(self.scrollView, stackView, bitmap, hs: true)
-//                imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:))))
-//            }
-//        }
     }
     
     private func displayImage(_ product: String, _ stackView: UIStackView, _ bitmap: Bitmap) {
