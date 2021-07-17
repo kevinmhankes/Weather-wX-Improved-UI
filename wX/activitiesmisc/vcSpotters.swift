@@ -8,6 +8,7 @@ import UIKit
 
 final class vcSpotters: UIwXViewController {
 
+    private var spotterData = [Spotter]()
     private var spotterDataSorted = [Spotter]()
     private var spotterReportsButton = ToolbarIcon()
     private var spotterCountButton = ToolbarIcon()
@@ -24,13 +25,11 @@ final class vcSpotters: UIwXViewController {
 
     // FIXME no rotation support
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let spotterData = UtilitySpotter.get()
-            DispatchQueue.main.async { self.display(spotterData) }
-        }
+        spotterData.removeAll()
+        _ = FutureVoid({ self.spotterData = UtilitySpotter.get() }, display)
     }
 
-    private func display(_ spotterData: [Spotter]) {
+    private func display() {
         refreshViews()
         spotterCountButton.title = "Count: " + String(spotterData.count)
         spotterDataSorted = spotterData.sorted(by: { $1.lastName > $0.lastName })
