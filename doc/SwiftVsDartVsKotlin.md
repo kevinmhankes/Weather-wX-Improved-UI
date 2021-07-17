@@ -50,6 +50,10 @@ Kotlin:
 for (index in startIndex until tokens.size step indexIncrement) {
 for (index in startIndex..tokens.size step indexIncrement) {
 
+Swift:
+(7...10)
+(7..<10)
+
 Swift - modify list passed as arg to method (inout and &)
 
 func showTextWarnings(_ views: inout [UIView]) {
@@ -72,7 +76,9 @@ add
 
 Swift:
 append
-
+# add sequence to end
+list1 = append(contentsOf: list2)
+list1 += list2
 
 
 Floor
