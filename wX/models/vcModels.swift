@@ -91,38 +91,37 @@ final class vcModels: UIwXViewController {
     }
 
     func getRunStatus() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.modelObj.getRunStatus()
-            DispatchQueue.main.async {
-                self.modelObj.setRun(self.modelObj.runTimeData.mostRecentRun)
-                if self.modelActivitySelected == "SPCHRRR"
-                    || self.modelActivitySelected == "SPCSREF"
-                    || self.modelActivitySelected == "SPCHREF" {
-                    self.modelObj.times = UtilityModels.updateTime(
-                        UtilityString.getLastXChars(self.modelObj.run, 2),
-                        self.modelObj.run,
-                        self.modelObj.times,
-                        ""
+        _ = FutureVoid(modelObj.getRunStatus, updateAfterRunStatus)
+    }
+    
+    private func updateAfterRunStatus() {
+        self.modelObj.setRun(self.modelObj.runTimeData.mostRecentRun)
+        if self.modelActivitySelected == "SPCHRRR"
+            || self.modelActivitySelected == "SPCSREF"
+            || self.modelActivitySelected == "SPCHREF" {
+            self.modelObj.times = UtilityModels.updateTime(
+                UtilityString.getLastXChars(self.modelObj.run, 2),
+                self.modelObj.run,
+                self.modelObj.times,
+                ""
+            )
+        } else if !self.modelActivitySelected.contains("GLCFS") {
+            self.modelObj.times.enumerated().forEach { idx, timeStr in
+                self.modelObj.setTimeArr(
+                    idx,
+                    timeStr.split(" ")[0] + " "
+                        + UtilityModels.convertTimeRunToTimeString(
+                            self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
+                            timeStr.split(" ")[0]
                     )
-                } else if !self.modelActivitySelected.contains("GLCFS") {
-                    self.modelObj.times.enumerated().forEach { idx, timeStr in
-                        self.modelObj.setTimeArr(
-                            idx,
-                            timeStr.split(" ")[0] + " "
-                                + UtilityModels.convertTimeRunToTimeString(
-                                    self.modelObj.runTimeData.timeStringConversion.replace("Z", ""),
-                                    timeStr.split(" ")[0]
-                            )
-                        )
-                    }
-                }
-                if self.modelObj.timeIdx >= self.modelObj.times.count {
-                    self.modelObj.setTimeIdx(self.modelObj.times.count - 1)
-                }
-                self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.times, self.modelObj.timeIdx)
-                self.getContent()
+                )
             }
         }
+        if self.modelObj.timeIdx >= self.modelObj.times.count {
+            self.modelObj.setTimeIdx(self.modelObj.times.count - 1)
+        }
+        self.modelObj.timeButton.title = Utility.safeGet(self.modelObj.times, self.modelObj.timeIdx)
+        self.getContent()
     }
 
     override func willEnterForeground() {}
