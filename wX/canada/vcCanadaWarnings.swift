@@ -51,12 +51,10 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     func getWarningDetail(_ url: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let data = UtilityCanada.getHazardsFromUrl(url)
-            DispatchQueue.main.async {
-                Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))
-            }
-        }
+        _ = FutureText2(
+            { UtilityCanada.getHazardsFromUrl(url) },
+            { data in Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))}
+        )
     }
 
     private func display() {
