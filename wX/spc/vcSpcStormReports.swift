@@ -41,7 +41,7 @@ final class vcSpcStormReports: UIwXViewController {
         getContent()
     }
 
-    // do not do anything
+    // do not do anything TODO FIXME
     override func willEnterForeground() {
         // self.getContent()
     }

@@ -1054,7 +1054,6 @@
 		F09504AD1E152CB0008A966E /* spc */ = {
 			isa = PBXGroup;
 			children = (
-				036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */,
 				F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */,
 				F0F28D831DB987400020AD08 /* StormReport.swift */,
 				03F3EB5D22993B870056A56D /* UtilitySpc.swift */,
@@ -1068,6 +1067,7 @@
 				034041E023F167F9003AB242 /* vcSpcCompMap.swift */,
 				03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */,
 				034041E123F167F9003AB242 /* vcSpcFireSummary.swift */,
+				036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */,
 				034041E523F167F9003AB242 /* vcSpcMeso.swift */,
 				034041E823F167F9003AB242 /* vcSpcStormReports.swift */,
 				034041E323F167F9003AB242 /* vcSpcSwo.swift */,

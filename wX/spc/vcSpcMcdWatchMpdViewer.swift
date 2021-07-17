@@ -80,7 +80,7 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in
+            completion: { _ in
                 self.refreshViews()
                 self.display()
             }

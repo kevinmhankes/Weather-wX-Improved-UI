@@ -62,6 +62,6 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.display() })
     }
 }

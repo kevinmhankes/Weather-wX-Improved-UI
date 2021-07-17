@@ -62,7 +62,7 @@ final class vcSpcMeso: UIwXViewController {
         ]).items
         view.addSubview(toolbarTop)
         image = TouchImage(self, toolbar, hasTopToolbar: true, topToolbar: toolbarTop)
-        image.addGestureRecognizer(#selector(handleSwipes(sender:)))
+        image.addGestureRecognizer(#selector(handleSwipes))
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
         if spcMesoFromHomeScreen {
             product = spcMesoToken
@@ -188,10 +188,6 @@ final class vcSpcMeso: UIwXViewController {
         }
     }
 
-//    func getAnimation(_ frameCount: Int) {
-//        _ = FutureAnimation({ UtilitySpcMesoInputOutput.getAnimation(self.sector, self.product, frameCount) }, image.startAnimating)
-//    }
-    
     @objc func getAnimation(_ frameCount: Int) {
         if !image.isAnimating() {
             animateButton.setImage(.stop)
@@ -236,6 +232,6 @@ final class vcSpcMeso: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.image.refresh() })
     }
 }
