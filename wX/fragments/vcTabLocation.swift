@@ -263,49 +263,95 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if Location.isUS {
-                self.isUS = true
-            } else {
-                self.isUS = false
-                self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
-            }
-            DispatchQueue.main.async {
-                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
-                let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
-                self.textArr = [:]
-                homescreenFav.forEach {
-                    switch $0 {
-                    case "TXT-CC2":
-                        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-                    case "TXT-HAZ":
-                        self.stackView.addArrangedSubview(self.stackViewHazards.view)
-                        self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-                    case "TXT-7DAY2":
-                        self.stackView.addArrangedSubview(self.stackViewForecast.view)
-                        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-                    case "METAL-RADAR":
-                        self.stackViewRadar = ObjectStackViewHS()
-                        self.stackView.addArrangedSubview(self.stackViewRadar)
-                        self.getNexradRadar(self.stackViewRadar)
-                    default:
-                        let stackViewLocal = ObjectStackViewHS()
-                        self.stackView.addArrangedSubview(stackViewLocal)
-                        stackViewLocal.setup(self.stackView)
-                        self.extraDataCards.append(stackViewLocal)
-                        if $0.hasPrefix("TXT-") {
-                            let product = $0.replace("TXT-", "")
-                            self.getContentText(product, stackViewLocal)
-                        } else if $0.hasPrefix("IMG-") {
-                            let product = $0.replace("IMG-", "")
-                            self.getContentImage(product, stackViewLocal)
-                        }
-                    }
+        _ = FutureVoid(mainDownload, mainDisplay)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            if Location.isUS {
+//                self.isUS = true
+//            } else {
+//                self.isUS = false
+//                self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
+//            }
+//            DispatchQueue.main.async {
+//                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
+//                let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
+//                self.textArr = [:]
+//                homescreenFav.forEach {
+//                    switch $0 {
+//                    case "TXT-CC2":
+//                        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+//                        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+//                    case "TXT-HAZ":
+//                        self.stackView.addArrangedSubview(self.stackViewHazards.view)
+//                        self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+//                    case "TXT-7DAY2":
+//                        self.stackView.addArrangedSubview(self.stackViewForecast.view)
+//                        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+//                    case "METAL-RADAR":
+//                        self.stackViewRadar = ObjectStackViewHS()
+//                        self.stackView.addArrangedSubview(self.stackViewRadar)
+//                        self.getNexradRadar(self.stackViewRadar)
+//                    default:
+//                        let stackViewLocal = ObjectStackViewHS()
+//                        self.stackView.addArrangedSubview(stackViewLocal)
+//                        stackViewLocal.setup(self.stackView)
+//                        self.extraDataCards.append(stackViewLocal)
+//                        if $0.hasPrefix("TXT-") {
+//                            let product = $0.replace("TXT-", "")
+//                            self.getContentText(product, stackViewLocal)
+//                        } else if $0.hasPrefix("IMG-") {
+//                            let product = $0.replace("IMG-", "")
+//                            self.getContentImage(product, stackViewLocal)
+//                        }
+//                    }
+//                }
+//                self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+//            }
+//        }
+    }
+    
+    private func mainDownload() {
+        if Location.isUS {
+            self.isUS = true
+        } else {
+            self.isUS = false
+            self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
+        }
+    }
+    
+    private func mainDisplay() {
+        self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
+        let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
+        self.textArr = [:]
+        homescreenFav.forEach {
+            switch $0 {
+            case "TXT-CC2":
+                self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
+                self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+            case "TXT-HAZ":
+                self.stackView.addArrangedSubview(self.stackViewHazards.view)
+                self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+            case "TXT-7DAY2":
+                self.stackView.addArrangedSubview(self.stackViewForecast.view)
+                self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+            case "METAL-RADAR":
+                self.stackViewRadar = ObjectStackViewHS()
+                self.stackView.addArrangedSubview(self.stackViewRadar)
+                self.getNexradRadar(self.stackViewRadar)
+            default:
+                let stackViewLocal = ObjectStackViewHS()
+                self.stackView.addArrangedSubview(stackViewLocal)
+                stackViewLocal.setup(self.stackView)
+                self.extraDataCards.append(stackViewLocal)
+                if $0.hasPrefix("TXT-") {
+                    let product = $0.replace("TXT-", "")
+                    self.getContentText(product, stackViewLocal)
+                } else if $0.hasPrefix("IMG-") {
+                    let product = $0.replace("IMG-", "")
+                    self.getContentImage(product, stackViewLocal)
                 }
-                self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
             }
         }
+        self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
     }
 
     override func cloudClicked() {
