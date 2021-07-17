@@ -10,6 +10,8 @@ Swift:
 let d = Double("10.3") ?? 0.0
 let i = Int("3") ?? 0
 let s = String(10.3)
+
+Bool, UInt8, Int64, float, CGFloat
 ```
 Kotlin:
 ```kotlin
