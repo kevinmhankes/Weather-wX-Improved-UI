@@ -476,12 +476,12 @@ final class vcTabLocation: vcTabParent {
     }
     
     private func displayText(_ product: String, _ stackView: UIStackView, _ html: String) {
-        self.textArr[product] = html
+        textArr[product] = html
         let objectTextView = Text(stackView, html.truncate(UIPreferences.homescreenTextLength))
         if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
             objectTextView.font = FontSize.hourly.size
         }
-        objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:))))
+        objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(textTap(sender:))))
         objectTextView.tv.accessibilityLabel = html
         objectTextView.tv.isSelectable = false
     }
