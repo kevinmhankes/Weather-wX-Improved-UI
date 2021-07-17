@@ -8,6 +8,8 @@ lon = double.tryParse(string.substring(4, 6) + "." + string.substring(6, 7)) ?? 
 Swift:
 ```swift
 let tempD = Double(value) ?? 0.0
+let i = Int("3") ?? 0
+let s = String(10.3)
 ```
 Kotlin:
 ```kotlin
@@ -194,6 +196,8 @@ var classToId = [String: String]()
 d.keys.forEach { key in
     someString += d[key]! + ": " + key
 }
+
+let s = provinceToMosaicSector[province] ?? ""
 ```
 dart
 ```dart
