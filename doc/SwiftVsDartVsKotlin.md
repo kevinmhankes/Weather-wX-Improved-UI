@@ -80,6 +80,10 @@ append
 list1 = append(contentsOf: list2)
 list1 += list2
 
+# get the last or first 5 items in a list
+list1.suffix(5)
+list1.prefix(5)
+
 
 Floor
 let numberOfTriangles = (distance / length).floor()
