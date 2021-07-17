@@ -116,10 +116,7 @@ final class UtilityRadarUI {
     }
 
     static func getRadarStatus(_ uiv: UIViewController, _ radarSite: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let status = getRadarStatusMessage(radarSite)
-            DispatchQueue.main.async { Route.textViewer(uiv, status) }
-        }
+        _ = FutureText2({ getRadarStatusMessage(radarSite) }, {s in Route.textViewer(uiv, s) })
     }
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
