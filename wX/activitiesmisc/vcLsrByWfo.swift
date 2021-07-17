@@ -25,13 +25,8 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     func getContent(_ wfo: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.wfoProd = self.getLsrFromWfo(wfo)
-            DispatchQueue.main.async {
-                self.siteButton.title = wfo
-                self.display()
-            }
-        }
+        self.siteButton.title = wfo
+        _ = FutureVoid({ self.wfoProd = self.getLsrFromWfo(wfo) }, display)
     }
 
     private func display() {
@@ -83,7 +78,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in
+            completion: { _ in
                 self.map.setupMap(GlobalArrays.wfos)
                 self.display()
             }
