@@ -21,7 +21,7 @@ final class vcGoesGlobal: UIwXViewController {
         animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
         shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, animateButton, shareButton]).items
-        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         index = Utility.readPref(prefToken, index)
         if index >= UtilityGoesFullDisk.labels.count {
             index = UtilityGoesFullDisk.labels.count - 1
