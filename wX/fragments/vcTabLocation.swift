@@ -427,12 +427,6 @@ final class vcTabLocation: vcTabParent {
 
     func getContentText(_ product: String, _ stackView: UIStackView) {
         _ = FutureText(product.uppercased(), {s in self.displayText(product, stackView, s)})
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let html = UtilityDownload.getTextProduct(product.uppercased())
-//            DispatchQueue.main.async {
-//
-//            }
-//        }
     }
     
     private func displayText(_ product: String, _ stackView: UIStackView, _ html: String) {
