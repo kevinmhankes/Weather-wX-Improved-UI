@@ -181,6 +181,10 @@ swift
 ```swift
 var classToId: [String: String] = [:]
 var classToId = [String: String]()
+
+d.keys.forEach { key in
+    someString += d[key]! + ": " + key
+}
 ```
 dart
 ```dart
