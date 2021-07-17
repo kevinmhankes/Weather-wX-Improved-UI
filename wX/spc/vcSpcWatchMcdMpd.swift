@@ -45,18 +45,18 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     private func download() {
         var productNumberList = [String]()
         if self.productNumber == "" {
-            productNumberList = ObjectWatchProduct.getNumberList(self.watchMcdMpdType)
+            productNumberList = ObjectWatchProduct.getNumberList(watchMcdMpdType)
         } else {
-            productNumberList = [self.productNumber]
+            productNumberList = [productNumber]
         }
         productNumberList.forEach {
             let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-            self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
-            self.objectWatchProduct!.getData()
-            self.listOfText.append(self.objectWatchProduct!.text)
-            self.urls.append(self.objectWatchProduct!.imgUrl)
-            self.bitmaps.append(self.objectWatchProduct!.bitmap)
-            self.numbers.append(number)
+            objectWatchProduct = ObjectWatchProduct(watchMcdMpdType, number)
+            objectWatchProduct!.getData()
+            listOfText.append(objectWatchProduct!.text)
+            urls.append(objectWatchProduct!.imgUrl)
+            bitmaps.append(objectWatchProduct!.bitmap)
+            numbers.append(number)
         }
     }
 
