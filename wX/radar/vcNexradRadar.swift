@@ -478,7 +478,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             let ffwCount = WXGLPolygonWarnings.getCount(PolygonEnum.FFW)
             let countString = "(" + torCount + "," + tstCount + "," + ffwCount + ")"
             warningButton.title = countString
-            let sum = (Int(tstCount) ?? 0) + (Int(torCount) ?? 0) + (Int(ffwCount) ?? 0)
+            let sum = to.Int(tstCount) + to.Int(torCount) + to.Int(ffwCount)
             warningCount += sum
         }
         ObjectPolygonWarning.polygonList.forEach {
