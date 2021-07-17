@@ -426,19 +426,24 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getContentText(_ product: String, _ stackView: UIStackView) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityDownload.getTextProduct(product.uppercased())
-            DispatchQueue.main.async {
-                self.textArr[product] = html
-                let objectTextView = Text(stackView, html.truncate(UIPreferences.homescreenTextLength))
-                if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
-                    objectTextView.font = FontSize.hourly.size
-                }
-                objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:))))
-                objectTextView.tv.accessibilityLabel = html
-                objectTextView.tv.isSelectable = false
-            }
+        _ = FutureText(product.uppercased(), {s in self.displayText(product, stackView, s)})
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let html = UtilityDownload.getTextProduct(product.uppercased())
+//            DispatchQueue.main.async {
+//
+//            }
+//        }
+    }
+    
+    private func displayText(_ product: String, _ stackView: UIStackView, _ html: String) {
+        self.textArr[product] = html
+        let objectTextView = Text(stackView, html.truncate(UIPreferences.homescreenTextLength))
+        if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
+            objectTextView.font = FontSize.hourly.size
         }
+        objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.textTap(sender:))))
+        objectTextView.tv.accessibilityLabel = html
+        objectTextView.tv.isSelectable = false
     }
 
     @objc func textTap(sender: UITapGestureRecognizerWithData) {
