@@ -160,6 +160,7 @@ Kotlin
 ```kotlin
 var alist = mutableListOf("")
 var alist = MutableList<String>()
+val alist = MutableList<Int>(10, { it * 3 })
 ```
 Swift
 ```swift
