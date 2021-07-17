@@ -1,6 +1,6 @@
 [[_TOC_]]
 
-### Parse a string and return a double with error checking
+### Types and type conversion
 Dart:
 ```dart
 lon = double.tryParse(string.substring(4, 6) + "." + string.substring(6, 7)) ??  0.0;
@@ -56,6 +56,7 @@ for index in stride(from: 0, to: tokens.count, by: 2) {
 Kotlin:
 ```
 tokens.indices.forEach { index ->
+bitmaps.forEachIndexed { index, bitmap ->
 ```
 Kotlin:
 ```
