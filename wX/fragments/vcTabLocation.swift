@@ -577,23 +577,26 @@ final class vcTabLocation: vcTabParent {
         getPolygonWatchGeneric()
         getPolygonWarningsNonGeneric()
         if ObjectPolygonWarning.areAnyEnabled() {
-            DispatchQueue.global(qos: .userInitiated).async {
-                // self.semaphore.wait()
-                if self.wxMetal[0] != nil {
-                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
-                }
-                // UtilityPolygons.get()
-                UtilityDownloadWarnings.get()
-                DispatchQueue.main.async {
-                    // self.semaphore.wait()
-                    if self.wxMetal[0] != nil {
-                        self.wxMetal.forEach { $0!.constructAlertPolygons() }
-                    }
-                    // self.updateWarningsInToolbar()
-                    // self.semaphore.signal()
-                }
-            }
+            _ = FutureVoid(getPolygonWarningsGeneric, updatePolygonWarningsGeneric)
         }
+    }
+    
+    func getPolygonWarningsGeneric() {
+        // self.semaphore.wait()
+        if self.wxMetal[0] != nil {
+            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+        }
+        // UtilityPolygons.get()
+        UtilityDownloadWarnings.get()
+    }
+    
+    func updatePolygonWarningsGeneric() {
+        // self.semaphore.wait()
+        if self.wxMetal[0] != nil {
+            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+        }
+        // self.updateWarningsInToolbar()
+        // self.semaphore.signal()
     }
     
     func getPolygonWarningsNonGeneric() {
