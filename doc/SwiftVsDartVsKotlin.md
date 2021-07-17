@@ -7,7 +7,7 @@ lon = double.tryParse(string.substring(4, 6) + "." + string.substring(6, 7)) ?? 
 ```
 Swift:
 ```swift
-let tempD = Double(value) ?? 0.0
+let d = Double("10.3") ?? 0.0
 let i = Int("3") ?? 0
 let s = String(10.3)
 ```
