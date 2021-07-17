@@ -106,15 +106,17 @@ list1.prefix(5)
 ```
 
 ### Floor
+swift
+```swift
 let numberOfTriangles = (distance / length).floor()
-
 var x = 6.5
 x.round(.towardZero)
-
-Kotlin:
+```
+Kotlin
+```kotlin
 import kotlin.math.floor
 val numberOfTriangles = floor(distance / length)
-
+```
 
 ### Math - PI
 dart:
@@ -135,20 +137,32 @@ Kotlin var varName = 0.toLong()
 
 
 ### List initialization
+Kotlin 
+```kotlin
+mutableListOf("")
+MutableList<String>
 ```
-Kotlin: mutableListOf("")     MutableList<String>
-Swift [String]()       [String]
-Dart <String>[]      List<String>
+Swift
+```swift
+[String]()
+[String]
+```
+Dart
+```dart
+<String>[]
+List<String>
 ```
 ### forEach loop with both index and value
-```
-Kotlin:
+Kotlin
+```kotlin
 list.forEachIndexed { index, value ->
-
-Dart:
+```
+Dart
+```dart
 list.asMap().forEach((index, value) => f);
-
-Swift:
+```
+Swift
+```swift
 list.enumerated().forEach { index, value in
 ```
 ### Dictionary
