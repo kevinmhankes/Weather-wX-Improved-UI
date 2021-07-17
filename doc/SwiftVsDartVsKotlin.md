@@ -24,7 +24,8 @@ static List<double> parseLatLon(String string) {
 ```
 Swift:
 ```swift
-static func parseLatLon(_ string: String) -> [Double] {
+# use "_" to not require the named arg
+static private func parseLatLon(_ string: String) -> [Double] {
 ```
 Kotlin:
 ```kotlin
