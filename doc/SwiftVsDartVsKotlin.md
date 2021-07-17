@@ -138,15 +138,17 @@ Swift:
 list.enumerated().forEach { index, value in
 ```
 ### Dictionary
-```
-kotlin:
+kotlin
+```kotlin
 val classToId: MutableMap<String, String> = mutableMapOf()
-
-swift:
+```
+swift
+```swift
 var classToId: [String: String] = [:]
 var classToId = [String: String]()
-
-dart:
+```
+dart
+```dart
 var classToId = Map<int, List<double>>();
 ```
 
