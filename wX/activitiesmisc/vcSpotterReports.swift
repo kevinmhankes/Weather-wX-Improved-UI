@@ -31,7 +31,7 @@ final class vcSpotterReports: UIwXViewController {
         spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
         spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
         spotterReportsDataSorted.enumerated().forEach { index, item in
-            _ = ObjectSpotterReportCard(self, item, UITapGestureRecognizerWithData(index, self, #selector(buttonPressed(sender:))))
+            _ = ObjectSpotterReportCard(self, item, GestureData(index, self, #selector(buttonPressed(sender:))))
         }
         if spotterReportsData.count == 0 {
             let objectTextView = Text(stackView, "No active spotter reports.")
@@ -39,7 +39,7 @@ final class vcSpotterReports: UIwXViewController {
         }
     }
 
-    @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
+    @objc func buttonPressed(sender: GestureData) {
         let index = sender.data
         let objectPopUp = ObjectPopUp(self, "", spotterReportCountButton)
         let uiAlertAction = UIAlertAction(title: "Show on map", style: .default, handler: { _ -> Void in self.showMap(index) })

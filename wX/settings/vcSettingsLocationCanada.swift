@@ -29,7 +29,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 stackView,
                 province,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(index, self, #selector(goToProvinces(sender:)))
+                GestureData(index, self, #selector(goToProvinces(sender:)))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
@@ -37,7 +37,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
         }
     }
 
-    @objc func goToProvinces(sender: UITapGestureRecognizerWithData) {
+    @objc func goToProvinces(sender: GestureData) {
         let position = sender.data
         if !cityDisplay {
             provSelected = UtilityCanada.provinces[position].truncate(2)
@@ -64,7 +64,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
     override func getContent() {
         _ = FutureVoid(download, displayCities)
     }
-    
+
     private func download() {
         let html = UtilityCanada.getProvinceHtml(self.provSelected)
         let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
@@ -81,7 +81,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 stackView,
                 city,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(index, self, #selector(goToProvinces))
+                GestureData(index, self, #selector(goToProvinces))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)

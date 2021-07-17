@@ -9,8 +9,8 @@ import UIKit
 final class ObjectCardNhcStormReportItem {
 
     private let cardStackView: ObjectCardStackView
-    
-    init(_ stormData: ObjectNhcStormDetails, _ gesture: UITapGestureRecognizerWithData) {
+
+    init(_ stormData: ObjectNhcStormDetails, _ gesture: GestureData) {
         let textViewTop = TextLarge(
             80.0,
             text: stormData.name + " (" + stormData.classification + ") " + stormData.center,
@@ -59,7 +59,7 @@ final class ObjectCardNhcStormReportItem {
         // uiStackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
     }
-    
+
     func get() -> UIView {
         cardStackView.view
     }

@@ -52,7 +52,7 @@ final class vcSevereDashboard: UIwXViewController {
         _ = FutureVoid({ self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif") }, display)
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         if buttonActions[sender.data].hasPrefix("WPCMPD") {
             Route.spcMcdWatchItem(self, .WPCMPD, buttonActions[sender.data].replace("WPCMPD", ""))
         } else if buttonActions[sender.data].hasPrefix("SPCMCD") {
@@ -75,9 +75,9 @@ final class vcSevereDashboard: UIwXViewController {
                         stackView.addArrangedSubview(ObjectCardDashAlertItem(
                             self,
                             w,
-                            UITapGestureRecognizerWithData(w.url, self, #selector(goToAlert(sender:))),
-                            UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:))),
-                            UITapGestureRecognizerWithData(radarSite, self, #selector(goToRadar(sender:)))
+                            GestureData(w.url, self, #selector(goToAlert(sender:))),
+                            GestureData(radarSite, self, #selector(goToRadar(sender:))),
+                            GestureData(radarSite, self, #selector(goToRadar(sender:)))
                         ).get())
                     }
                 }
@@ -94,11 +94,11 @@ final class vcSevereDashboard: UIwXViewController {
         goToVC(vcUSAlerts())
     }
 
-    @objc func goToAlert(sender: UITapGestureRecognizerWithData) {
+    @objc func goToAlert(sender: GestureData) {
         Route.alertDetail(self, sender.strData)
     }
 
-    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
+    @objc func goToRadar(sender: GestureData) {
         Route.radarNoSave(self, sender.strData)
     }
 
@@ -193,7 +193,7 @@ final class vcSevereDashboard: UIwXViewController {
                 let objectImage = ObjectImage(
                     stackView,
                     image,
-                    UITapGestureRecognizerWithData(index, self, #selector(imageClicked)),
+                    GestureData(index, self, #selector(imageClicked)),
                     widthDivider: imagesPerRow
                 )
                 buttonActions.append(String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!)

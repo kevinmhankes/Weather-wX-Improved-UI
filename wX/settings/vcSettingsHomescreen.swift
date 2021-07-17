@@ -92,7 +92,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         display()
     }
 
-    @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
+    @objc func buttonPressed(sender: GestureData) {
         let index = sender.data
         let title = sender.strData
         let alert = ObjectPopUp(self, title, addButton)
@@ -149,7 +149,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 let objectTextView = Text(
                     stackView,
                     goodTitle.trim(),
-                    UITapGestureRecognizerWithData(index, goodTitle, self, #selector(buttonPressed))
+                    GestureData(index, goodTitle, self, #selector(buttonPressed))
                 )
                 objectTextView.tv.isSelectable = false
                 objectTextView.constrain(scrollView)
@@ -157,7 +157,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                 let objectTextView = Text(
                     stackView,
                     prefVar,
-                    UITapGestureRecognizerWithData(index, prefVar, self, #selector(buttonPressed))
+                    GestureData(index, prefVar, self, #selector(buttonPressed))
                 )
                 objectTextView.tv.isSelectable = false
                 objectTextView.constrain(scrollView)

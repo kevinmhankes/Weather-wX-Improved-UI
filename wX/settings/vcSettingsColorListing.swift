@@ -72,7 +72,7 @@ final class vcSettingsColorListing: UIwXViewController {
         colors.append(wXColor("Nexrad Radar Background Color", "NEXRAD_RADAR_BACKGROUND_COLOR", 0, 0, 0 ))
     }
 
-    @objc func goToColor(sender: UITapGestureRecognizerWithData) {
+    @objc func goToColor(sender: GestureData) {
         Route.colorPicker(self, colors[sender.data])
     }
 
@@ -86,7 +86,7 @@ final class vcSettingsColorListing: UIwXViewController {
             }
             objectTextView.background = UIColor.black
             objectTextView.tv.font = FontSize.extraLarge.size
-            objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(index, self, #selector(goToColor)))
+            objectTextView.addGestureRecognizer(GestureData(index, self, #selector(goToColor)))
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
             objectTextViews.append(objectTextView)

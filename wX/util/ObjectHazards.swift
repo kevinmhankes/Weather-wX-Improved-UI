@@ -57,7 +57,7 @@ final class ObjectHazards {
             _ = ObjectCardHazard(
                 stackViewLocalHaz,
                 hazard,
-                UITapGestureRecognizerWithData(objectHazards.hazards, self, #selector(hazardsAction(sender:)))
+                GestureData(objectHazards.hazards, self, #selector(hazardsAction(sender:)))
             )
             numHaz += 1
         } else {
@@ -67,7 +67,7 @@ final class ObjectHazards {
                 _ = ObjectCardHazard(
                     stackViewLocalHaz,
                     hazard,
-                    UITapGestureRecognizerWithData(ids[index], self, #selector(hazardsAction(sender:)))
+                    GestureData(ids[index], self, #selector(hazardsAction(sender:)))
                 )
                 numHaz += 1
             }
@@ -77,7 +77,7 @@ final class ObjectHazards {
         }
     }
 
-    @objc static func hazardsAction(sender: UITapGestureRecognizerWithData) {
+    @objc static func hazardsAction(sender: GestureData) {
         if isUS {
             Route.alertDetail(uiv!, sender.strData)
         } else {

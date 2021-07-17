@@ -26,7 +26,7 @@ final class vcObsSites: UIwXViewController {
         constructStateView()
     }
 
-    @objc func goToState(sender: UITapGestureRecognizerWithData) {
+    @objc func goToState(sender: GestureData) {
         stateSelected = GlobalArrays.states[sender.data].split(":")[0]
         showState()
     }
@@ -55,7 +55,7 @@ final class vcObsSites: UIwXViewController {
             let objectTextView = Text(
                 stackView,
                 city,
-                UITapGestureRecognizerWithData(index, self, #selector(gotoObsSite))
+                GestureData(index, self, #selector(gotoObsSite))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
@@ -63,7 +63,7 @@ final class vcObsSites: UIwXViewController {
         scrollView.scrollToTop()
     }
 
-    @objc func gotoObsSite(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoObsSite(sender: GestureData) {
         if sender.data == 0 {
             constructStateView()
         } else {
@@ -81,7 +81,7 @@ final class vcObsSites: UIwXViewController {
             let objectTextView = Text(
                 stackView,
                 state,
-                UITapGestureRecognizerWithData(index, self, #selector(goToState))
+                GestureData(index, self, #selector(goToState))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)

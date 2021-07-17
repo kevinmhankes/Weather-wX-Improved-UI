@@ -32,7 +32,7 @@ final class vcUSAlerts: UIwXViewController {
         _ = FutureVoid(download, display)
         // TODO download image in thread
     }
-    
+
     func download() {
         let html = UtilityDownloadNws.getCap("us")
         let alerts = html.parseColumn("<entry>(.*?)</entry>")
@@ -53,11 +53,11 @@ final class vcUSAlerts: UIwXViewController {
         }
     }
 
-    @objc func warningSelected(sender: UITapGestureRecognizerWithData) {
+    @objc func warningSelected(sender: GestureData) {
         Route.alertDetail(self, objAlertSummary.getUrl(sender.data))
     }
 
-    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {
+    @objc func goToRadar(sender: GestureData) {
         let wfo = objAlertSummary.wfos[sender.data]
         Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[wfo] ?? "")
     }

@@ -32,7 +32,7 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     // this is called in objectCanadaWarnings
-    @objc func goToWarning(sender: UITapGestureRecognizerWithData) {
+    @objc func goToWarning(sender: GestureData) {
         getWarningDetail(objectCanadaWarnings.getWarningUrl(sender.data))
     }
 

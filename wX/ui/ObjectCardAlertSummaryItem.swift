@@ -13,9 +13,9 @@ final class ObjectCardAlertSummaryItem {
         _ office: String,
         _ location: String,
         _ alert: CapAlert,
-        _ gesture: UITapGestureRecognizerWithData,
-        _ gestureRadar: UITapGestureRecognizerWithData,
-        _ gestureRadarText: UITapGestureRecognizerWithData
+        _ gesture: GestureData,
+        _ gestureRadar: GestureData,
+        _ gestureRadarText: GestureData
     ) {
         // start icons
         let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)

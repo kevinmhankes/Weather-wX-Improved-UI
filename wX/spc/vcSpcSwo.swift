@@ -52,7 +52,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
        _ = ObjectImageAndText(self, bitmaps, html)
     }
 
-    @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClickedWithIndex(sender: GestureData) {
         Route.imageViewer(self, bitmaps[sender.data].url)
     }
 

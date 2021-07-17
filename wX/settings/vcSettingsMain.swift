@@ -32,7 +32,7 @@ final class vcSettingsMain: UIwXViewController {
         super.doneClicked()
     }
 
-    @objc func actionClick(sender: UITapGestureRecognizerWithData) {
+    @objc func actionClick(sender: GestureData) {
         switch sender.strData {
         case "Locations":
             goToVC(vcSettingsLocation())
@@ -61,7 +61,7 @@ final class vcSettingsMain: UIwXViewController {
                 stackView,
                 title,
                 FontSize.extraLarge.size,
-                UITapGestureRecognizerWithData(title, self, #selector(actionClick))
+                GestureData(title, self, #selector(actionClick))
             )
             objectTextView.constrain(scrollView)
             objectTextView.tv.isSelectable = false

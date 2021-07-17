@@ -44,14 +44,14 @@ final class vcNhcStorm: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
-        
+
         stackView.addArrangedSubview(boxImages.get())
         objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
-        
+
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
-        
+
         getContent()
     }
 
@@ -59,7 +59,7 @@ final class vcNhcStorm: UIwXViewController {
         getContentImages()
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }
-    
+
     func getContentImages() {
         for (index, imageName) in imageUrls.enumerated() {
             var url = self.stormData.baseUrl
@@ -95,14 +95,14 @@ final class vcNhcStorm: UIwXViewController {
     func displayImage() {
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
         for (index, url) in imageUrls.enumerated() {
-            objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))
+            objectImageSummary.objectImages[index].addGestureRecognizer(GestureData(url, self, #selector(imageClicked)))
         }
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         Route.imageViewer(self, bitmaps[sender.data].url)
     }
-    
+
     @objc func goesClicked(sender: UIButton) {
         print("GOES")
         Route.visNhc(self, stormData.goesUrl)

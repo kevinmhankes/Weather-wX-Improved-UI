@@ -21,7 +21,7 @@ final class vcSpcTstormSummary: UIwXViewController {
     override func getContent() {
         _ = FutureVoid(download, display)
     }
-    
+
     private func download() {
         let urls = UtilitySpc.getTstormOutlookUrls()
         self.bitmaps = urls.map { Bitmap($0) }
@@ -32,7 +32,7 @@ final class vcSpcTstormSummary: UIwXViewController {
         _ = ObjectImageSummary(self, bitmaps)
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         Route.imageViewer(self, bitmaps[sender.data].url)
     }
 

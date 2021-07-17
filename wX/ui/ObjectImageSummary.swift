@@ -7,7 +7,7 @@
 import UIKit
 
 final class ObjectImageSummary {
-    
+
     //
     // To be used in image based summary for SPC SWO, SPC Tstorm, SPC Fire Outlook, WPC Excessive Rain
     //
@@ -38,13 +38,13 @@ final class ObjectImageSummary {
             objectImages.append(ObjectImage(
                     stackView,
                     image,
-                    UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                    GestureData(imageIndex, uiv, #selector(imageClicked(sender:))),
                     widthDivider: imagesPerRow
             ))
             imageCount += 1
         }
     }
-      
+
     //
     // NHC, add stack
     //
@@ -72,7 +72,7 @@ final class ObjectImageSummary {
             objectImages.append(ObjectImage(
                 stackView.get(),
                 image,
-                UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                GestureData(imageIndex, uiv, #selector(imageClicked(sender:))),
                 widthDivider: imagesPerRow
             ))
             if !image.isValidForNhc {
@@ -82,22 +82,22 @@ final class ObjectImageSummary {
             }
         }
     }
-    
+
     func changeWidth() {
         for o in objectImages {
             o.changeWidth()
         }
     }
-    
+
     func removeChildren() {
         for layout in imageStackViewList {
             layout.removeAllChildren()
         }
     }
-    
+
     func setBitmap(_ index: Int, _ bitmap: Bitmap) {
         objectImages[index].setBitmap(bitmap)
     }
-    
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
+
+    @objc func imageClicked(sender: GestureData) {}
 }

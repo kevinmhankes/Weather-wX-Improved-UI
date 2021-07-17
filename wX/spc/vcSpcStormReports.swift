@@ -50,7 +50,7 @@ final class vcSpcStormReports: UIwXViewController {
     override func getContent() {
         _ = FutureVoid(download, display)
     }
-    
+
     private func download() {
         bitmap = Bitmap(imageUrl)
         bitmap.url = imageUrl
@@ -66,7 +66,7 @@ final class vcSpcStormReports: UIwXViewController {
         UtilityShare.image(self, sender, [image.bitmap], html)
     }
 
-    @objc func gotoMap(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoMap(sender: GestureData) {
         Route.map(self, stormReports[sender.data].lat, stormReports[sender.data].lon)
     }
 
@@ -131,7 +131,7 @@ final class vcSpcStormReports: UIwXViewController {
         var windHeader: ObjectCardBlackHeaderText?
         var hailHeader: ObjectCardBlackHeaderText?
         image.setBitmap(bitmap)
-        image.addGestureRecognizer(UITapGestureRecognizerWithData(target: self, action: #selector(imgClicked)))
+        image.addGestureRecognizer(GestureData(target: self, action: #selector(imgClicked)))
         stormReports.enumerated().forEach { index, stormReport in
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
@@ -156,7 +156,7 @@ final class vcSpcStormReports: UIwXViewController {
                 _ = ObjectCardStormReportItem(
                     stackView,
                     stormReport,
-                    UITapGestureRecognizerWithData(index, self, #selector(gotoMap(sender:)))
+                    GestureData(index, self, #selector(gotoMap(sender:)))
                 )
             }
             if stormReport.state != "" {

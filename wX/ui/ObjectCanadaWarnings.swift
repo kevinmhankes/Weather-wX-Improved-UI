@@ -106,7 +106,7 @@ final class ObjectCanadaWarnings: NSObject {
             let objectTextView = Text(
                 uiv.stackView,
                 text,
-                UITapGestureRecognizerWithData(index, uiv, #selector(goToWarning(sender:)))
+                GestureData(index, uiv, #selector(goToWarning(sender:)))
             )
             objectTextView.tv.isSelectable = false
         }
@@ -117,7 +117,7 @@ final class ObjectCanadaWarnings: NSObject {
         GlobalVariables.canadaEcSitePrefix + listLocUrl[index]
     }
 
-    @objc func goToWarning(sender: UITapGestureRecognizerWithData) {}
+    @objc func goToWarning(sender: GestureData) {}
 
     var count: String { String(listLocUrl.count) }
 

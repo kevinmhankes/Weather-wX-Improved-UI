@@ -41,7 +41,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     override func getContent() {
         _ = FutureVoid(download, display)
     }
-    
+
     private func download() {
         var productNumberList = [String]()
         if self.productNumber == "" {
@@ -60,7 +60,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         }
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         if bitmaps.count == 1 {
             Route.imageViewer(self, urls[0])
         } else {
@@ -101,14 +101,14 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                     objectImage = ObjectImage(
                         stackView,
                         $1,
-                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:))),
+                        GestureData($0, self, #selector(imageClicked(sender:))),
                         widthDivider: 2
                     )
                 } else {
                     objectImage = ObjectImage(
                         stackView,
                         $1,
-                        UITapGestureRecognizerWithData($0, self, #selector(imageClicked(sender:)))
+                        GestureData($0, self, #selector(imageClicked(sender:)))
                     )
                 }
                 objectImage.img.accessibilityLabel = listOfText[$0]

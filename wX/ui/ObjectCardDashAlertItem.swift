@@ -13,9 +13,9 @@ final class ObjectCardDashAlertItem {
     init(
         _ uiv: UIwXViewController,
         _ warning: ObjectWarning,
-        _ gesture: UITapGestureRecognizerWithData,
-        _ gestureRadar: UITapGestureRecognizerWithData,
-        _ gestureRadarText: UITapGestureRecognizerWithData
+        _ gesture: GestureData,
+        _ gestureRadar: GestureData,
+        _ gestureRadarText: GestureData
     ) {
         let tvName = TextLarge(80.0, text: warning.sender, color: ColorCompatibility.highlightText)
         let bounds = UtilityUI.getScreenBoundsCGFloat()
@@ -74,7 +74,7 @@ final class ObjectCardDashAlertItem {
         // uiv.stackView.addArrangedSubview(cardStackView.view)
         // verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
-    
+
     func get() -> UIView {
         cardStackView.view
     }

@@ -87,7 +87,7 @@ final class ObjectNhc: NSObject {
 //                _ = ObjectCardNhcStormReportItem(
 //                        uiv.stackView,
 //                        objectNhcStormDetails,
-//                        UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm(sender:))))
+//                        GestureData(index, self, #selector(gotoNhcStorm(sender:))))
             }
         }
     }
@@ -101,22 +101,22 @@ final class ObjectNhc: NSObject {
                 _ = ObjectImage(
                         stackView.view,
                         bitmap,
-                        UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
                         widthDivider: imagesPerRow)
             } else {
                 _ = ObjectImage(
                         imageStackViewList.last!.view,
                         bitmap,
-                        UITapGestureRecognizerWithData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
                         widthDivider: imagesPerRow)
             }
             imageCount += 1
         }
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {}
+    @objc func imageClicked(sender: GestureData) {}
 
-    @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
+    @objc func gotoNhcStorm(sender: GestureData) {
         Route.nhcStorm(uiv, stormDataList[sender.data])
     }
 }

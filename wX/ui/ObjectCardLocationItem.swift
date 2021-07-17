@@ -14,7 +14,7 @@ final class ObjectCardLocationItem {
         _ name: String,
         _ observation: String,
         _ middleLine: String,
-        _ gesture: UITapGestureRecognizerWithData
+        _ gesture: GestureData
     ) {
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
         let tvName = Text(objectStackView.view, name, isUserInteractionEnabled: false, isZeroSpacing: false)

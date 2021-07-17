@@ -38,13 +38,13 @@ final class vcSettingsLocation: UIwXViewController {
 //            }
 //        }
     }
-    
+
     func download() {
         (0..<Location.numLocations).forEach {
             self.currentConditions.append(ObjectCurrentConditions($0))
         }
     }
-    
+
     func update() {
         self.locationCards.indices.forEach { index in
             self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
@@ -61,7 +61,7 @@ final class vcSettingsLocation: UIwXViewController {
         Route.locationAdd(self)
     }
 
-    @objc func actionLocationPopup(sender: UITapGestureRecognizerWithData) {
+    @objc func actionLocationPopup(sender: GestureData) {
         let locName = Location.getName(sender.data)
         let alert = ObjectPopUp(self, locName, productButton)
         alert.addAction(UIAlertAction(title: "Edit \"" + locName + "\"", style: .default, handler: { _ in self.actionLocation(sender.data) }))
@@ -133,7 +133,7 @@ final class vcSettingsLocation: UIwXViewController {
                 name,
                 observation,
                 details + " (" + latLon + ")",
-                UITapGestureRecognizerWithData(index, self, #selector(actionLocationPopup(sender:)))
+                GestureData(index, self, #selector(actionLocationPopup(sender:)))
                 )
             )
         }

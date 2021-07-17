@@ -18,9 +18,9 @@ final class ObjectAlertSummary: NSObject {
         "https://forecast.weather.gov/wwamap/png/hi.png"
     ]
 
-    @objc func warningSelected(sender: UITapGestureRecognizerWithData) {}
+    @objc func warningSelected(sender: GestureData) {}
 
-    @objc func goToRadar(sender: UITapGestureRecognizerWithData) {}
+    @objc func goToRadar(sender: GestureData) {}
 
     convenience init(
         _ uiv: UIwXViewController,
@@ -36,7 +36,7 @@ final class ObjectAlertSummary: NSObject {
         objTextSummary.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
         if showImage {
             objectImage = ObjectImage(uiv.stackView)
-            objectImage.addGestureRecognizer(UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)))
+            objectImage.addGestureRecognizer(GestureData(0, uiv, #selector(imageClicked)))
         }
         var index = 0
         var filterBool = true
@@ -71,9 +71,9 @@ final class ObjectAlertSummary: NSObject {
                     nwsOffice,
                     nwsLocation,
                     alert,
-                    UITapGestureRecognizerWithData(index, uiv, #selector(warningSelected(sender:))),
-                    UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:))),
-                    UITapGestureRecognizerWithData(index, uiv, #selector(goToRadar(sender:)))
+                    GestureData(index, uiv, #selector(warningSelected(sender:))),
+                    GestureData(index, uiv, #selector(goToRadar(sender:))),
+                    GestureData(index, uiv, #selector(goToRadar(sender:)))
                 )
                 urls.append(alert.url)
                 wfos.append(nwsOffice)

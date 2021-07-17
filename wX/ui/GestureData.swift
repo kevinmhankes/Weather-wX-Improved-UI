@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class UITapGestureRecognizerWithData: UITapGestureRecognizer {
+final class GestureData: UITapGestureRecognizer {
 
     var data = 0
     var strData = ""

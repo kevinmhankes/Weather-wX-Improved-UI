@@ -27,14 +27,14 @@ final class ObjectImageAndText {
             objectImage = ObjectImage(
                 uiv.stackView,
                 bitmap,
-                UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked)),
+                GestureData(0, uiv, #selector(imageClicked)),
                 widthDivider: 2
             )
         } else {
             objectImage = ObjectImage(
                 uiv.stackView,
                 bitmap,
-                UITapGestureRecognizerWithData(0, uiv, #selector(imageClicked))
+                GestureData(0, uiv, #selector(imageClicked))
             )
         }
         objectImage.img.accessibilityLabel = html
@@ -75,7 +75,7 @@ final class ObjectImageAndText {
             _ = ObjectImage(
                     stackView,
                     image,
-                    UITapGestureRecognizerWithData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
+                    GestureData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
                     widthDivider: imagesPerRow)
             imageCount += 1
         }
@@ -87,7 +87,7 @@ final class ObjectImageAndText {
         uiv.scrollView.accessibilityElements = views
     }
 
-    @objc func imageClickedWithIndex(sender: UITapGestureRecognizerWithData) {}
+    @objc func imageClickedWithIndex(sender: GestureData) {}
 
     @objc func imageClicked() {}
 }

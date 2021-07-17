@@ -99,6 +99,7 @@
 		0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */; };
 		0349764A22E3B52E009D93A4 /* UtilityWXMetalPerfRaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */; };
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
+		034F307F26A30108009155FE /* GestureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F307E26A30108009155FE /* GestureData.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F323C116D10024153D /* FrontTypeEnum.swift */; };
 		0354D3F623C117710024153D /* Fronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F523C117710024153D /* Fronts.swift */; };
@@ -230,7 +231,6 @@
 		03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */; };
 		03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */; };
 		03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */; };
-		F0008EF81DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */; };
 		F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */; };
 		F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */; };
 		F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0118B411DA9771600B43DE5 /* UtilityActions.swift */; };
@@ -505,6 +505,7 @@
 		0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcRegionSummary.swift; sourceTree = "<group>"; };
 		0349764922E3B52D009D93A4 /* UtilityWXMetalPerfRaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfRaster.swift; sourceTree = "<group>"; };
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
+		034F307E26A30108009155FE /* GestureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureData.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		0354D3F323C116D10024153D /* FrontTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3F523C117710024153D /* Fronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fronts.swift; sourceTree = "<group>"; };
@@ -638,7 +639,6 @@
 		03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNwsIcon.swift; sourceTree = "<group>"; };
 		03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterCard.swift; sourceTree = "<group>"; };
 		03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterReportCard.swift; sourceTree = "<group>"; };
-		F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithData.swift; sourceTree = "<group>"; };
 		F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3WindBarbs.swift; sourceTree = "<group>"; };
 		F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettingsRadar.swift; sourceTree = "<group>"; };
 		F0118B411DA9771600B43DE5 /* UtilityActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityActions.swift; sourceTree = "<group>"; };
@@ -1253,12 +1253,6 @@
 		F09504B41E153994008A966E /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				036E9B9B269D916E0009A47B /* MenuData.swift */,
-				036E9B99269D90980009A47B /* TouchImage.swift */,
-				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
-				036E9B93269D0C0B0009A47B /* ToolbarItems.swift */,
-				036E9B91269D0C010009A47B /* ToolbarIcon.swift */,
-				036E9B8F269D0AAA0009A47B /* Text.swift */,
 				F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */,
 				0399A14721CFD3BA0096ECFB /* Floaty.h */,
 				0399A14921CFD3BA0096ECFB /* Floaty.swift */,
@@ -1267,13 +1261,13 @@
 				0399A14821CFD3BA0096ECFB /* FloatyManager.swift */,
 				0399A14321CFD3B90096ECFB /* FloatyViewController.swift */,
 				0399A14421CFD3BA0096ECFB /* FloatyWindow.swift */,
+				034F307E26A30108009155FE /* GestureData.swift */,
 				F05806741DB187FB009E2786 /* ImageScrollView.swift */,
+				036E9B9B269D916E0009A47B /* MenuData.swift */,
 				F05B3B871EB2060100670E77 /* ObjectAlertDetail.swift */,
 				F059990E1EB422D200EECC32 /* ObjectAlertSummary.swift */,
 				F02DF2541EB89FCF00A951EA /* ObjectCanadaLegal.swift */,
 				03A41C4022C4C86A00C9044F /* ObjectCanadaWarnings.swift */,
-				F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */,
-				0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */,
 				038651F921FDC1EB00C48DF1 /* ObjectCardAlertSummaryItem.swift */,
 				030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */,
 				03A41C3E22C4C7D400C9044F /* ObjectCardCurrentConditions.swift */,
@@ -1282,6 +1276,8 @@
 				031546331FC634CB0020EF7B /* ObjectCardImage.swift */,
 				031D033521F073390074F44D /* ObjectCardLocationItem.swift */,
 				031D033321F002BE0074F44D /* ObjectCardPlayListItem.swift */,
+				F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */,
+				0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */,
 				031546351FC636450020EF7B /* ObjectCardStackView.swift */,
 				038651F721FDB00700C48DF1 /* ObjectCardStormReportItem.swift */,
 				037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */,
@@ -1306,12 +1302,16 @@
 				F06033D71EB2CCBD0083BA91 /* ObjectTileMatrix.swift */,
 				F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */,
 				F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */,
+				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
+				036E9B8F269D0AAA0009A47B /* Text.swift */,
 				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
+				036E9B91269D0C010009A47B /* ToolbarIcon.swift */,
+				036E9B93269D0C0B0009A47B /* ToolbarItems.swift */,
+				036E9B99269D90980009A47B /* TouchImage.swift */,
 				F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */,
 				F0FAD0461DCB4F860014752A /* UILabelInset.swift */,
-				F0008EF71DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift */,
 				03A328EB1FC8E84C00FFABCD /* UIwXViewController.swift */,
 				03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */,
 				F0B335FA1DA3FDD40035BD36 /* UtilityUI.swift */,
@@ -1692,7 +1692,6 @@
 				035416A9220EF8B900D9A26B /* FontSize.swift in Sources */,
 				F098F78B1E4F89A0007EDD2A /* ObjectForecast.swift in Sources */,
 				03F3EB94229945DA0056A56D /* UtilityModelSpcHrefInterface.swift in Sources */,
-				F0008EF81DBD9A2F0033B950 /* UITapGestureRecognizerWithData.swift in Sources */,
 				F0B335821DA3FD6F0035BD36 /* UtilityCountyLabels.swift in Sources */,
 				F064D1441DB6EBB7003C04FB /* ExternalPoint.swift in Sources */,
 				0340423023F16FC3003AB242 /* vcUSAlertsDetail.swift in Sources */,
@@ -1892,6 +1891,7 @@
 				03FD74CF21CDBB48004579FF /* UtilityNwsIcon.swift in Sources */,
 				031546341FC634CB0020EF7B /* ObjectCardImage.swift in Sources */,
 				F02841811DEFBC6000474084 /* Location.swift in Sources */,
+				034F307F26A30108009155FE /* GestureData.swift in Sources */,
 				0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */,
 				03171D6123567EFC00170A4A /* KeyDirections.swift in Sources */,
 				031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */,

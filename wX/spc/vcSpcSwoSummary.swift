@@ -22,7 +22,7 @@ final class vcSpcSwoSummary: UIwXViewController {
     override func getContent() {
         _ = FutureVoid(download, display)
     }
-    
+
     private func download() {
         self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
         self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
@@ -33,7 +33,7 @@ final class vcSpcSwoSummary: UIwXViewController {
         _ = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 4)
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         switch sender.data {
         case 0...2:
             Route.swo(self, String(sender.data + 1))

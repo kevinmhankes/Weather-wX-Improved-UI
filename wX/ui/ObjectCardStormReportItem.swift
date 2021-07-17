@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardStormReportItem {
 
-    init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: UITapGestureRecognizerWithData) {
+    init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: GestureData) {
         var objectCardStackView = ObjectCardStackView()
         let tvLocation = TextLarge(80.0, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
         let tvAddress = TextLarge(80.0, isUserInteractionEnabled: false)

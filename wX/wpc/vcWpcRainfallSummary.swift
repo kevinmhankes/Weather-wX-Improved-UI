@@ -25,7 +25,7 @@ final class vcWpcRainfallSummary: UIwXViewController {
             _ = FutureVoid({ self.download(url, i) }, display)
         }
     }
-    
+
     private func download(_ url: String, _ i: Int) {
         bitmaps[i] = Bitmap(url)
     }
@@ -35,7 +35,7 @@ final class vcWpcRainfallSummary: UIwXViewController {
         _ = ObjectImageSummary(self, bitmaps)
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         Route.wpcRainfallForDay(self, sender.data)
     }
 

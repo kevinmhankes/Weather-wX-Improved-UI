@@ -25,10 +25,10 @@ final class vcNhc: UIwXViewController {
         glcfsButton = ToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
-        
+
         stackView.addArrangedSubview(boxText.get())
         stackView.addArrangedSubview(boxImages.get())
-        
+
         objectNhc = ObjectNhc(self)
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
@@ -45,25 +45,25 @@ final class vcNhc: UIwXViewController {
             _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, { self.objectImageSummary.setBitmap(index, self.bitmaps[index]); self.display() })
         }
     }
-    
+
     private func displayText() {
         boxText.removeChildren()
         objectNhc.showTextData()
         for (index, s) in objectNhc.stormDataList.enumerated() {
-            let card = ObjectCardNhcStormReportItem(s, UITapGestureRecognizerWithData(index, self, #selector(gotoNhcStorm)))
+            let card = ObjectCardNhcStormReportItem(s, GestureData(index, self, #selector(gotoNhcStorm)))
             boxText.addLayout(card.get())
         }
     }
-    
+
     private func display() {
         objectImageSummary.removeChildren()
         objectImageSummary = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 3)
         for (index, url) in urls.enumerated() {
-            objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))
+            objectImageSummary.objectImages[index].addGestureRecognizer(GestureData(url, self, #selector(imageClicked)))
         }
     }
-    
-    @objc func gotoNhcStorm(sender: UITapGestureRecognizerWithData) {
+
+    @objc func gotoNhcStorm(sender: GestureData) {
         Route.nhcStorm(self, objectNhc.stormDataList[sender.data])
     }
 
@@ -79,7 +79,7 @@ final class vcNhc: UIwXViewController {
         _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, imageProductChanged(_:))
     }
 
-    @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
+    @objc func imageClicked(sender: GestureData) {
         Route.imageViewer(self, sender.strData)
     }
 

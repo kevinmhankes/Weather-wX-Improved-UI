@@ -54,12 +54,12 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
                 item,
                 topLine,
                 productText.truncate(textPreviewLength),
-                UITapGestureRecognizerWithData(index, self, #selector(buttonPressed))
+                GestureData(index, self, #selector(buttonPressed))
             )
         }
     }
 
-    @objc func buttonPressed(sender: UITapGestureRecognizerWithData) {
+    @objc func buttonPressed(sender: GestureData) {
         let alert = ObjectPopUp(self, playlistItems[sender.data], addNationalProductButton)
         alert.addAction(UIAlertAction("Play", { _ in self.playProduct(selection: sender.data) }))
         alert.addAction(UIAlertAction("View Text", { _ in self.viewProduct(selection: sender.data) }))
@@ -142,7 +142,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     func downloadAndAddProduct(_ product: String, _ button: ToolbarIcon) {
         _ = FutureText(product, { s in self.displayAndAddProduct(s, product, button) })
     }
-    
+
     private func displayAndAddProduct(_ s: String, _ product: String, _ button: ToolbarIcon) {
         let productAdded = UtilityPlayList.add(product, s, self, button, showStatus: false)
         if productAdded {

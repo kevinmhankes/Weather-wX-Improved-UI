@@ -13,7 +13,7 @@ final class ObjectCardPlayListItem {
         _ product: String,
         _ middleLine: String,
         _ bottomLines: String,
-        _ gesture: UITapGestureRecognizerWithData
+        _ gesture: GestureData
     ) {
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
         let tvProduct = Text(objectStackView.view, product, isUserInteractionEnabled: false, isZeroSpacing: true)

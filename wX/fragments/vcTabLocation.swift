@@ -208,12 +208,12 @@ final class vcTabLocation: vcTabParent {
 //            }
 //        }
 //    }
-    
+
     func downloadSevenDay() {
         objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
         objectSevenDay.locationIndex = Location.getCurrentLocation()
     }
-    
+
     func updateSevenDay() {
         if objectCardSevenDayCollection == nil
             || !isUS
@@ -248,11 +248,11 @@ final class vcTabLocation: vcTabParent {
 //            }
 //        }
 //    }
-    
+
     func downloadHazards() {
         objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
     }
-    
+
     func updateHazards() {
         if ObjectHazards.getHazardCount(objectHazards) > 0 {
             ObjectHazards.getHazardCards(stackViewHazards.view, objectHazards, isUS)
@@ -308,7 +308,7 @@ final class vcTabLocation: vcTabParent {
 //            }
 //        }
     }
-    
+
     private func mainDownload() {
         if Location.isUS {
             isUS = true
@@ -317,7 +317,7 @@ final class vcTabLocation: vcTabParent {
             objectHazards.hazards = objectHazards.hazards.replaceAllRegexp("<.*?>", "")
         }
     }
-    
+
     private func mainDisplay() {
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         let homescreenFav = TextUtils.split(globalHomeScreenFav, ":")
@@ -474,19 +474,19 @@ final class vcTabLocation: vcTabParent {
     func getContentText(_ product: String, _ stackView: UIStackView) {
         _ = FutureText(product.uppercased(), { s in self.displayText(product, stackView, s) })
     }
-    
+
     private func displayText(_ product: String, _ stackView: UIStackView, _ html: String) {
         textArr[product] = html
         let objectTextView = Text(stackView, html.truncate(UIPreferences.homescreenTextLength))
         if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
             objectTextView.font = FontSize.hourly.size
         }
-        objectTextView.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(textTap(sender:))))
+        objectTextView.addGestureRecognizer(GestureData(product, self, #selector(textTap(sender:))))
         objectTextView.tv.accessibilityLabel = html
         objectTextView.tv.isSelectable = false
     }
 
-    @objc func textTap(sender: UITapGestureRecognizerWithData) {
+    @objc func textTap(sender: GestureData) {
         if let v = sender.view as? UITextView {
             let currentLength = v.text!.count
             if currentLength < (UIPreferences.homescreenTextLength + 1) {
@@ -500,10 +500,10 @@ final class vcTabLocation: vcTabParent {
     func getContentImage(_ product: String, _ stackView: UIStackView) {
         _ = FutureBytes2({ UtilityDownload.getImageProduct(product) }, { bitmap in self.displayImage(product, stackView, bitmap) })
     }
-    
+
     private func displayImage(_ product: String, _ stackView: UIStackView, _ bitmap: Bitmap) {
         let imgObj = ObjectImage(scrollView, stackView, bitmap, hs: true)
-        imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(imageTap(sender:))))
+        imgObj.addGestureRecognizer(GestureData(product, self, #selector(imageTap(sender:))))
     }
 
     func getNexradRadar(_ stackView: UIStackView) {
@@ -571,7 +571,7 @@ final class vcTabLocation: vcTabParent {
 //            }
 //        }
 //    }
-    
+
     func getPolygonWarnings() {
         // updateWarningsInToolbar()
         getPolygonWatchGeneric()
@@ -580,7 +580,7 @@ final class vcTabLocation: vcTabParent {
             _ = FutureVoid(getPolygonWarningsGeneric, updatePolygonWarningsGeneric)
         }
     }
-    
+
     func getPolygonWarningsGeneric() {
         // self.semaphore.wait()
         if wxMetal[0] != nil {
@@ -589,7 +589,7 @@ final class vcTabLocation: vcTabParent {
         // UtilityPolygons.get()
         UtilityDownloadWarnings.get()
     }
-    
+
     func updatePolygonWarningsGeneric() {
         // self.semaphore.wait()
         if wxMetal[0] != nil {
@@ -598,7 +598,7 @@ final class vcTabLocation: vcTabParent {
         // self.updateWarningsInToolbar()
         // self.semaphore.signal()
     }
-    
+
     func getPolygonWarningsNonGeneric() {
         if PolygonType.TST.display {
             for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
@@ -609,7 +609,7 @@ final class vcTabLocation: vcTabParent {
             }
         }
     }
-    
+
     func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
         // semaphore.wait()
         if wxMetal[0] != nil {
@@ -618,7 +618,7 @@ final class vcTabLocation: vcTabParent {
         // updateWarningsInToolbar()
         // semaphore.signal()
     }
-    
+
     func getPolygonWatchGeneric() {
         for t in [PolygonEnum.SPCMCD, PolygonEnum.SPCWAT, PolygonEnum.WPCMPD] {
             updatePolygonWatchGeneric(t)
@@ -626,16 +626,16 @@ final class vcTabLocation: vcTabParent {
         if PolygonType.MCD.display {
             _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) })
         }
-        
+
         if PolygonType.WATCH.display {
             _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCWAT) })
         }
-        
+
         if PolygonType.MPD.display {
             _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.WPCMPD) })
         }
     }
-    
+
     func updatePolygonWatchGeneric(_ type: PolygonEnum) {
         // semaphore.wait()
         if wxMetal[0] != nil {
@@ -644,7 +644,7 @@ final class vcTabLocation: vcTabParent {
         // updateWarningsInToolbar()
         // semaphore.signal()
     }
-    
+
 //    private func displayPolygonWarnings() {
 //        if self.wxMetal[0] != nil {
 //            self.wxMetal.forEach { $0!.constructAlertPolygons() }
@@ -671,7 +671,7 @@ final class vcTabLocation: vcTabParent {
         )
     }
 
-    @objc func imageTap(sender: UITapGestureRecognizerWithData) {
+    @objc func imageTap(sender: GestureData) {
         UtilityHomeScreen.jumpToActivity(self, sender.strData)
     }
 
