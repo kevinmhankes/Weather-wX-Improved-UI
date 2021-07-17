@@ -150,8 +150,9 @@ MutableList<String>
 ```
 Swift
 ```swift
-[String]()
-[String]
+var aList = [String]()
+var aList: [String] = []
+var bitmaps = [Bitmap](repeating: Bitmap(), count: 10)
 ```
 Dart
 ```dart
