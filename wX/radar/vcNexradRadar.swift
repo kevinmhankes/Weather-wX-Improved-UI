@@ -515,23 +515,42 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         getPolygonWatchGeneric()
         getPolygonWarningsNonGeneric()
         if ObjectPolygonWarning.areAnyEnabled() {
-            DispatchQueue.global(qos: .userInitiated).async {
-                // self.semaphore.wait()
-                if self.wxMetalRenders[0] != nil {
-                    self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-                }
-                // UtilityPolygons.get()
-                UtilityDownloadWarnings.get()
-                DispatchQueue.main.async {
-                    self.semaphore.wait()
-                    if self.wxMetalRenders[0] != nil {
-                        self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
-                    }
-                    self.updateWarningsInToolbar()
-                    self.semaphore.signal()
-                }
-            }
+            _ = FutureVoid(getPolygonWarningsGeneric, updatePolygonWarningsGeneric)
+//            DispatchQueue.global(qos: .userInitiated).async {
+//                // self.semaphore.wait()
+//                if self.wxMetalRenders[0] != nil {
+//                    self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+//                }
+//                // UtilityPolygons.get()
+//                UtilityDownloadWarnings.get()
+//                DispatchQueue.main.async {
+//                    self.semaphore.wait()
+//                    if self.wxMetalRenders[0] != nil {
+//                        self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+//                    }
+//                    self.updateWarningsInToolbar()
+//                    self.semaphore.signal()
+//                }
+//            }
         }
+    }
+    
+    private func getPolygonWarningsGeneric() {
+        // self.semaphore.wait()
+        if self.wxMetalRenders[0] != nil {
+            self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+        }
+        // UtilityPolygons.get()
+        UtilityDownloadWarnings.get()
+    }
+    
+    private func updatePolygonWarningsGeneric() {
+        self.semaphore.wait()
+        if self.wxMetalRenders[0] != nil {
+            self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+        }
+        self.updateWarningsInToolbar()
+        self.semaphore.signal()
     }
     
     func getPolygonWarningsNonGeneric() {
