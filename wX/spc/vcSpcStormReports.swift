@@ -52,10 +52,10 @@ final class vcSpcStormReports: UIwXViewController {
     }
     
     private func download() {
-        self.bitmap = Bitmap(self.imageUrl)
-        self.bitmap.url = self.imageUrl
-        self.html = self.textUrl.getHtml()
-        self.stormReports = UtilitySpcStormReports.process(self.html.split(GlobalVariables.newline))
+        bitmap = Bitmap(imageUrl)
+        bitmap.url = imageUrl
+        html = textUrl.getHtml()
+        stormReports = UtilitySpcStormReports.process(html.split(GlobalVariables.newline))
     }
 
     @objc func imgClicked() {
@@ -191,7 +191,7 @@ final class vcSpcStormReports: UIwXViewController {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(
             alongsideTransition: nil,
-            completion: { _ -> Void in
+            completion: { _ in
                 self.refreshViews()
                 self.displayPreContent()
                 self.display()
