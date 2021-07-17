@@ -106,10 +106,17 @@ list1 += list2
 ### get the last, first, or start/end items in a list
 swift
 ```swift
-list1.first!
-list1.last!
-list1.suffix(5)
-list1.prefix(5)
+alist.first!
+alist.last!
+alist.prefix(5)
+alist.suffix(5)
+```
+kotlin
+```kotlin
+alist.first()
+alist.last()
+alist.take(5)
+alist.takeLast(5)
 ```
 
 ### Floor
