@@ -40,11 +40,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     @objc override func getContent() {
         serializeSettings()
         playlistItems.forEach { item in
-            // TODO FutureVoid
-            DispatchQueue.global(qos: .userInitiated).async {
-                UtilityPlayList.download(item)
-                DispatchQueue.main.async { self.display() }
-            }
+            _ = FutureVoid({ UtilityPlayList.download(item) }, display)
         }
     }
 
