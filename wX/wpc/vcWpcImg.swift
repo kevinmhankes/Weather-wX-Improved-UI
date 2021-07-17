@@ -21,7 +21,7 @@ final class vcWpcImg: UIwXViewController {
         productButton = ToolbarIcon(self, #selector(showProductMenu))
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
-        image = TouchImage(self, toolbar, #selector(handleSwipes(sender:)))
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         index = Utility.readPref("WPCIMG_PARAM_LAST_USED", index)
         if wpcImagesFromHomeScreen {
             getContentFromHomeScreen()
@@ -72,6 +72,6 @@ final class vcWpcImg: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.image.refresh() })
     }
 }
