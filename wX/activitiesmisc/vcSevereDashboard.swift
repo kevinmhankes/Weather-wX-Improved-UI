@@ -45,12 +45,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     func getContentUsAlerts() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0])
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
+        _ = FutureVoid({ self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0]) }, display)
     }
 
     func getContentSpcStormReports() {
