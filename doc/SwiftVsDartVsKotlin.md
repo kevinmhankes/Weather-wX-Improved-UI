@@ -158,6 +158,7 @@ var varName = 0.toLong()
 ### List initialization
 Kotlin 
 ```kotlin
+val blist = listOf(1, 2, 3)
 var alist = mutableListOf("")
 var alist = MutableList<String>()
 val alist = MutableList<Int>(10, { it * 3 })
