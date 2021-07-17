@@ -39,23 +39,24 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     override func willEnterForeground() {}
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            var productNumberList = [String]()
-            if self.productNumber == "" {
-                productNumberList = ObjectWatchProduct.getNumberList(self.watchMcdMpdType)
-            } else {
-                productNumberList = [self.productNumber]
-            }
-            productNumberList.forEach {
-                let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
-                self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
-                self.objectWatchProduct!.getData()
-                self.listOfText.append(self.objectWatchProduct!.text)
-                self.urls.append(self.objectWatchProduct!.imgUrl)
-                self.bitmaps.append(self.objectWatchProduct!.bitmap)
-                self.numbers.append(number)
-            }
-            DispatchQueue.main.async { self.display() }
+        _ = FutureVoid(download, display)
+    }
+    
+    private func download() {
+        var productNumberList = [String]()
+        if self.productNumber == "" {
+            productNumberList = ObjectWatchProduct.getNumberList(self.watchMcdMpdType)
+        } else {
+            productNumberList = [self.productNumber]
+        }
+        productNumberList.forEach {
+            let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
+            self.objectWatchProduct = ObjectWatchProduct(self.watchMcdMpdType, number)
+            self.objectWatchProduct!.getData()
+            self.listOfText.append(self.objectWatchProduct!.text)
+            self.urls.append(self.objectWatchProduct!.imgUrl)
+            self.bitmaps.append(self.objectWatchProduct!.bitmap)
+            self.numbers.append(number)
         }
     }
 
