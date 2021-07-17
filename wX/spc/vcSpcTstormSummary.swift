@@ -19,11 +19,12 @@ final class vcSpcTstormSummary: UIwXViewController {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let urls = UtilitySpc.getTstormOutlookUrls()
-            self.bitmaps = urls.map { Bitmap($0) }
-            DispatchQueue.main.async { self.display() }
-        }
+        _ = FutureVoid(download, display)
+    }
+    
+    private func download() {
+        let urls = UtilitySpc.getTstormOutlookUrls()
+        self.bitmaps = urls.map { Bitmap($0) }
     }
 
     private func display() {
