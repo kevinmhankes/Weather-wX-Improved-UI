@@ -169,7 +169,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil,
-            completion: { _ -> Void in
+            completion: { _ in
                 self.refreshViews()
                 self.display()
             }
