@@ -76,6 +76,7 @@ final class WXMetalRender {
     let numberOfPanes: Int
     var wxMetalTextObject: WXMetalTextObject
     private var renderFn: ((Int) -> Void)?
+    private var isAnimating = false
     // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
         "N0Q: Base Reflectivity",
@@ -548,55 +549,57 @@ final class WXMetalRender {
     }
 
     func getRadar(_ url: String, _ additionalText: String = "") {
-        var isAnimating = false
-        DispatchQueue.global(qos: .userInitiated).async {
-            if url == "" {
-                self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.isTdwr)
-                if !self.radarProduct.contains("L2") {
-                    self.radarBuffers.fileName = "nids" + self.indexString
-                } else {
-                    self.radarBuffers.fileName = "l2" + self.indexString
-                }
+        _ = FutureVoid({ self.downloadRadar(url) }, { self.updateRadar(additionalText) })
+    }
+    
+    private func downloadRadar(_ url: String) {
+        if url == "" {
+            self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.isTdwr)
+            if !self.radarProduct.contains("L2") {
+                self.radarBuffers.fileName = "nids" + self.indexString
             } else {
-                isAnimating = true
-                self.radarBuffers.fileName = url
+                self.radarBuffers.fileName = "l2" + self.indexString
             }
-            if url == "" { // not animating
-                [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
-                    if $0.type.display {
-                        self.constructLevel3TextProduct($0.typeEnum)
-                    }
-                }
-                if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
-                    self.constructSpotters()
-                }
-                if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-                    UtilityMetar.getStateMetarArrayForWXOGL(self.rid)
-                }
-                if PolygonType.WIND_BARB.display {
-                    self.constructWBLines()
-                }
-                if PolygonType.SWO.display {
-                    UtilitySwoD1.get()
-                    self.constructSwoLines()
-                }
-                if RadarPreferences.radarShowWpcFronts {
-                    UtilityWpcFronts.get()
-                    self.constructWpcFronts()
+        } else {
+            isAnimating = true
+            self.radarBuffers.fileName = url
+        }
+        if url == "" { // not animating
+            [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
+                if $0.type.display {
+                    self.constructLevel3TextProduct($0.typeEnum)
                 }
             }
-            DispatchQueue.main.async {
-                self.constructPolygons()
-                self.showTimeToolbar(additionalText, isAnimating)
-                self.showProductText(self.product)
-                if self.renderFn != nil {
-                    self.renderFn!(self.paneNumber)
-                }
-                if !isAnimating {
-                    self.wxMetalTextObject.removeTextLabels()
-                    self.wxMetalTextObject.addTextLabels()
-                }
+            if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
+                self.constructSpotters()
             }
+            if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
+                UtilityMetar.getStateMetarArrayForWXOGL(self.rid)
+            }
+            if PolygonType.WIND_BARB.display {
+                self.constructWBLines()
+            }
+            if PolygonType.SWO.display {
+                UtilitySwoD1.get()
+                self.constructSwoLines()
+            }
+            if RadarPreferences.radarShowWpcFronts {
+                UtilityWpcFronts.get()
+                self.constructWpcFronts()
+            }
+        }
+    }
+    
+    private func updateRadar(_ additionalText: String) {
+        self.constructPolygons()
+        self.showTimeToolbar(additionalText, isAnimating)
+        self.showProductText(self.product)
+        if self.renderFn != nil {
+            self.renderFn!(self.paneNumber)
+        }
+        if !isAnimating {
+            self.wxMetalTextObject.removeTextLabels()
+            self.wxMetalTextObject.addTextLabels()
         }
     }
 
