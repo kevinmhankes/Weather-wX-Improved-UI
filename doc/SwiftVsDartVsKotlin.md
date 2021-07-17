@@ -158,13 +158,13 @@ var varName = 0.toLong()
 ### List initialization
 Kotlin 
 ```kotlin
-mutableListOf("")
-MutableList<String>
+var alist = mutableListOf("")
+var alist = MutableList<String>()
 ```
 Swift
 ```swift
-var aList = [String]()
-var aList: [String] = []
+var alist = [String]()
+var alist: [String] = []
 var bitmaps = [Bitmap](repeating: Bitmap(), count: 10)
 ```
 Dart
