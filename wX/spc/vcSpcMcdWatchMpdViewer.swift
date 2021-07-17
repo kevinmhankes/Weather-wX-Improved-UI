@@ -42,23 +42,13 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
     override func getContent() {
         let number = String(format: "%04d", to.Int(productNumber.replace(" ", "")))
         objectWatchProduct = ObjectWatchProduct(watchMcdMpdType, number)
-        getImage()
-        getText()
+        _ = FutureVoid(downloadImage, display)
+        _ = FutureVoid({ self.html = self.objectWatchProduct!.getDataTextOnly() }, display)
     }
 
-    func getImage() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.url = self.objectWatchProduct!.imgUrl
-            self.bitmap = Bitmap(self.url)
-            DispatchQueue.main.async { self.display() }
-        }
-    }
-
-    func getText() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.html = self.objectWatchProduct!.getDataTextOnly()
-            DispatchQueue.main.async { self.display() }
-        }
+    private func downloadImage() {
+        self.url = self.objectWatchProduct!.imgUrl
+        self.bitmap = Bitmap(self.url)
     }
 
     @objc func imageClicked() {
