@@ -537,20 +537,20 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     
     private func getPolygonWarningsGeneric() {
         // self.semaphore.wait()
-        if self.wxMetalRenders[0] != nil {
-            self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+        if wxMetalRenders[0] != nil {
+            wxMetalRenders.forEach { $0!.constructAlertPolygons() }
         }
         // UtilityPolygons.get()
         UtilityDownloadWarnings.get()
     }
     
     private func updatePolygonWarningsGeneric() {
-        self.semaphore.wait()
-        if self.wxMetalRenders[0] != nil {
-            self.wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+        semaphore.wait()
+        if wxMetalRenders[0] != nil {
+            wxMetalRenders.forEach { $0!.constructAlertPolygons() }
         }
-        self.updateWarningsInToolbar()
-        self.semaphore.signal()
+        updateWarningsInToolbar()
+        semaphore.signal()
     }
     
     func getPolygonWarningsNonGeneric() {

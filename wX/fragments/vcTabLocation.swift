@@ -502,8 +502,8 @@ final class vcTabLocation: vcTabParent {
     }
     
     private func displayImage(_ product: String, _ stackView: UIStackView, _ bitmap: Bitmap) {
-        let imgObj = ObjectImage(self.scrollView, stackView, bitmap, hs: true)
-        imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(self.imageTap(sender:))))
+        let imgObj = ObjectImage(scrollView, stackView, bitmap, hs: true)
+        imgObj.addGestureRecognizer(UITapGestureRecognizerWithData(product, self, #selector(imageTap(sender:))))
     }
 
     func getNexradRadar(_ stackView: UIStackView) {
@@ -583,8 +583,8 @@ final class vcTabLocation: vcTabParent {
     
     func getPolygonWarningsGeneric() {
         // self.semaphore.wait()
-        if self.wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+        if wxMetal[0] != nil {
+            wxMetal.forEach { $0!.constructAlertPolygons() }
         }
         // UtilityPolygons.get()
         UtilityDownloadWarnings.get()
@@ -592,8 +592,8 @@ final class vcTabLocation: vcTabParent {
     
     func updatePolygonWarningsGeneric() {
         // self.semaphore.wait()
-        if self.wxMetal[0] != nil {
-            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+        if wxMetal[0] != nil {
+            wxMetal.forEach { $0!.constructAlertPolygons() }
         }
         // self.updateWarningsInToolbar()
         // self.semaphore.signal()
