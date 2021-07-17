@@ -178,6 +178,13 @@ for (index, value) in list.enumerated() {
 kotlin
 ```kotlin
 val classToId: MutableMap<String, String> = mutableMapOf()
+
+val sectorToName = mapOf(
+    "FD" to "Full Disk: GOES-EAST",
+    "FD-G17" to " Full Disk: GOES-WEST"
+)
+
+val size = sizeMap[sector] ?: fullSize
 ```
 swift
 ```swift
