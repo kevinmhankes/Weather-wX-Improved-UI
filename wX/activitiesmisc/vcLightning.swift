@@ -43,16 +43,7 @@ final class vcLightning: UIwXViewController {
         timeButton.title = periodPretty
         Utility.writePref(prefTokenSector, sector)
         Utility.writePref(prefTokenPeriod, period)
-        _ = FutureBytes(UtilityLightning.getImageUrl(sector, period), display)
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        // if firstRun {
-        image.setBitmap(bitmap)
-//            firstRun = false
-//        } else {
-//            image.updateBitmap(bitmap)
-//        }
+        _ = FutureBytes(UtilityLightning.getImageUrl(sector, period), image.setBitmap)
     }
 
     @objc func productClicked() {
@@ -64,7 +55,6 @@ final class vcLightning: UIwXViewController {
     }
 
     func sectorChanged(_ idx: Int) {
-        // firstRun = true
         sectorPretty = UtilityLightning.sectors[idx]
         sector = UtilityLightning.getSector(sectorPretty)
         getContent()
