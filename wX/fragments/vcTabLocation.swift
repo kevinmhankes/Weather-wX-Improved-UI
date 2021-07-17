@@ -311,47 +311,47 @@ final class vcTabLocation: vcTabParent {
     
     private func mainDownload() {
         if Location.isUS {
-            self.isUS = true
+            isUS = true
         } else {
-            self.isUS = false
-            self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
+            isUS = false
+            objectHazards.hazards = objectHazards.hazards.replaceAllRegexp("<.*?>", "")
         }
     }
     
     private func mainDisplay() {
-        self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
-        let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
-        self.textArr = [:]
+        globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
+        let homescreenFav = TextUtils.split(globalHomeScreenFav, ":")
+        textArr = [:]
         homescreenFav.forEach {
             switch $0 {
             case "TXT-CC2":
-                self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-                self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                stackView.addArrangedSubview(stackViewCurrentConditions.view)
+                stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             case "TXT-HAZ":
-                self.stackView.addArrangedSubview(self.stackViewHazards.view)
-                self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                stackView.addArrangedSubview(stackViewHazards.view)
+                stackViewHazards.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             case "TXT-7DAY2":
-                self.stackView.addArrangedSubview(self.stackViewForecast.view)
-                self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                stackView.addArrangedSubview(stackViewForecast.view)
+                stackViewForecast.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             case "METAL-RADAR":
-                self.stackViewRadar = ObjectStackViewHS()
-                self.stackView.addArrangedSubview(self.stackViewRadar)
-                self.getNexradRadar(self.stackViewRadar)
+                stackViewRadar = ObjectStackViewHS()
+                stackView.addArrangedSubview(stackViewRadar)
+                getNexradRadar(stackViewRadar)
             default:
                 let stackViewLocal = ObjectStackViewHS()
-                self.stackView.addArrangedSubview(stackViewLocal)
-                stackViewLocal.setup(self.stackView)
-                self.extraDataCards.append(stackViewLocal)
+                stackView.addArrangedSubview(stackViewLocal)
+                stackViewLocal.setup(stackView)
+                extraDataCards.append(stackViewLocal)
                 if $0.hasPrefix("TXT-") {
                     let product = $0.replace("TXT-", "")
-                    self.getContentText(product, stackViewLocal)
+                    getContentText(product, stackViewLocal)
                 } else if $0.hasPrefix("IMG-") {
                     let product = $0.replace("IMG-", "")
-                    self.getContentImage(product, stackViewLocal)
+                    getContentImage(product, stackViewLocal)
                 }
             }
         }
-        self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+        lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
     }
 
     override func cloudClicked() {
