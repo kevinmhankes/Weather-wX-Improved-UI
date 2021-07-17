@@ -13,10 +13,10 @@ Kotlin:
 ```kotlin
 y = newValue.toDoubleOrNull() ?: 0.0
 ```
-
+```swift
 removeAt
 remove(at:)
-
+```
 ### Function signature
 Dart:
 ```dart
@@ -33,9 +33,10 @@ fun addColdFrontTriangles(front: Fronts, tokens: List<String>) {
 
 ### Char at index in String
 Swift:
+```swift
 let index = string.index(string.startIndex, offsetBy: 3)
 String(string[index])   
-
+```
 ### for loop index iterate
 Dart:
 ```dart
@@ -64,11 +65,11 @@ Swift:
 (7...10)
 (7..<10)
 ```
-Swift - modify list passed as arg to method (inout and &)
-
+### swift - modify list passed as arg to method (inout and &)
+```swift
 func showTextWarnings(_ views: inout [UIView]) {
 self.showTextWarnings(&views)
-
+```
 ### List Size and range of int
 Dart:
 ```dart
@@ -132,9 +133,14 @@ Kotlin:
 import kotlin.math.*
 PI
 ```
-Swift: let varName:CLong = 0
-Kotlin var varName = 0.toLong()
-
+Swift
+```swift
+let varName:CLong = 0
+```
+Kotlin
+```kotlin
+var varName = 0.toLong()
+```
 
 ### List initialization
 Kotlin 
@@ -164,6 +170,7 @@ list.asMap().forEach((index, value) => f);
 Swift
 ```swift
 list.enumerated().forEach { index, value in
+for (index, value) in list.enumerated() {
 ```
 ### Dictionary
 kotlin
