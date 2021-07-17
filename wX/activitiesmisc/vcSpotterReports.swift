@@ -8,6 +8,7 @@ import UIKit
 
 final class vcSpotterReports: UIwXViewController {
 
+    private var spotterReportsData = [SpotterReports]()
     private var spotterReportsDataSorted = [SpotterReports]()
     private var spotterReportCountButton = ToolbarIcon()
 
@@ -21,13 +22,11 @@ final class vcSpotterReports: UIwXViewController {
     }
 
     override func getContent() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let spotterReportsData = UtilitySpotter.reportsList
-            DispatchQueue.main.async { self.display(spotterReportsData) }
-        }
+        spotterReportsData.removeAll()
+        _ = FutureVoid({ self.spotterReportsData = UtilitySpotter.reportsList }, display)
     }
 
-    func display(_ spotterReportsData: [SpotterReports]) {
+    func display() {
         refreshViews()
         spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
         spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
