@@ -84,6 +84,7 @@ swift
 ```swift
 alist.count
 alist.indices
+alist.isEmpty
 ```
 kotlin
 ```kotlin
