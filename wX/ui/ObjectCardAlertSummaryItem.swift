@@ -29,7 +29,7 @@ final class ObjectCardAlertSummaryItem {
             spacing: 10,
             arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
         )
-        horizontalContainer.uiStackView.distribution = .equalSpacing
+        // horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
         let tvName = TextLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)

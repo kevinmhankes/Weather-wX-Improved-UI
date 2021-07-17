@@ -33,11 +33,7 @@ final class vcObservations: UIwXViewController {
         self.index = index
         Utility.writePref(prefTokenIndex, self.index)
         productButton.title = UtilityObservations.labels[self.index]
-        _ = FutureBytes(UtilityObservations.urls[self.index], display)
-    }
-
-    private func display(_ bitmap: Bitmap) {
-        image.setBitmap(bitmap)
+        _ = FutureBytes(UtilityObservations.urls[self.index], image.setBitmap)
     }
 
     @objc func productClicked() {
@@ -54,6 +50,6 @@ final class vcObservations: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.image.refresh() })
     }
 }
