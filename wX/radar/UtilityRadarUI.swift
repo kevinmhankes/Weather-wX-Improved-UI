@@ -97,10 +97,7 @@ final class UtilityRadarUI {
     }
 
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let html = UtilityMetar.findClosestMetar(location)
-            DispatchQueue.main.async { Route.textViewer(uiv, html) }
-        }
+        _ = FutureText2({ UtilityMetar.findClosestMetar(location) }, { s in Route.textViewer(uiv, s) })
     }
 
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
