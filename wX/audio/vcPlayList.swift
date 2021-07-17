@@ -140,16 +140,15 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     func downloadAndAddProduct(_ product: String, _ button: ToolbarIcon) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let text = UtilityDownload.getTextProduct(product)
-            DispatchQueue.main.async {
-                let productAdded = UtilityPlayList.add(product, text, self, button, showStatus: false)
-                if productAdded {
-                    self.playlistItems.append(product)
-                    self.display()
-                    self.serializeSettings()
-                }
-            }
+        _ = FutureText(product, { s in self.displayAndAddProduct(s, product, button) })
+    }
+    
+    private func displayAndAddProduct(_ s: String, _ product: String, _ button: ToolbarIcon) {
+        let productAdded = UtilityPlayList.add(product, s, self, button, showStatus: false)
+        if productAdded {
+            self.playlistItems.append(product)
+            self.display()
+            self.serializeSettings()
         }
     }
 
