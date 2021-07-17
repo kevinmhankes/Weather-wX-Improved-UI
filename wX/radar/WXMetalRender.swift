@@ -288,42 +288,23 @@ final class WXMetalRender {
     }
     
     func constructAlertPolygons() {
-        // if PolygonType.TST.display {
-            [
-                // warningTstBuffers,
-                // warningTorBuffers,
-                // warningFfwBuffers,
-                warningSmwBuffers,
-                warningSqwBuffers,
-                warningDswBuffers,
-                warningSpsBuffers
-                ].forEach {
-                    if $0.type.display {
-                        constructGenericLines($0)
-                        $0.generateMtlBuffer(device)
-                    }
-            }
-            if renderFn != nil {
-                renderFn!(paneNumber)
-            }
-        // }
+        [
+            warningSmwBuffers,
+            warningSqwBuffers,
+            warningDswBuffers,
+            warningSpsBuffers
+            ].forEach {
+                if $0.type.display {
+                    constructGenericLines($0)
+                    $0.generateMtlBuffer(device)
+                }
+        }
+        if renderFn != nil {
+            renderFn!(paneNumber)
+        }
     }
-    
-//    func constructWatchPolygons() {
-//        [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
-//            constructGenericLines($0)
-//            $0.generateMtlBuffer(device)
-//        }
-//        if renderFn != nil {
-//            renderFn!(paneNumber)
-//        }
-//    }
-    
+
     func constructWatchPolygonsByType(_ type: PolygonEnum) {
-        
-//        constructGenericLines($0)
-//        $0.generateMtlBuffer(device)
-        
         if type == PolygonEnum.SPCMCD {
             if mcdBuffers.type.display {
                 constructGenericLines(mcdBuffers)
@@ -347,31 +328,6 @@ final class WXMetalRender {
             renderFn!(paneNumber)
         }
     }
-
-//    func constructAlertPolygons() {
-//        [
-//            warningTstBuffers,
-//            warningTorBuffers,
-//            warningFfwBuffers,
-//            warningSmwBuffers,
-//            warningSqwBuffers,
-//            warningDswBuffers,
-//            warningSpsBuffers
-//            ].forEach {
-//                constructGenericLines($0)
-//                $0.generateMtlBuffer(device)
-//        }
-//        if renderFn != nil {
-//            renderFn!(paneNumber)
-//        }
-//        [mcdBuffers, watchBuffers, watchTornadoBuffers, mpdBuffers].forEach {
-//            constructGenericLines($0)
-//            $0.generateMtlBuffer(device)
-//        }
-//        if renderFn != nil {
-//            renderFn!(paneNumber)
-//        }
-//    }
 
     func constructGenericLines(_ buffers: ObjectMetalBuffers) {
         var list: [Double]
@@ -554,52 +510,52 @@ final class WXMetalRender {
     
     private func downloadRadar(_ url: String) {
         if url == "" {
-            self.ridPrefixGlobal = WXGLDownload.getRadarFile(url, self.rid, self.product, self.indexString, self.isTdwr)
-            if !self.radarProduct.contains("L2") {
-                self.radarBuffers.fileName = "nids" + self.indexString
+            ridPrefixGlobal = WXGLDownload.getRadarFile(url, rid, product, indexString, isTdwr)
+            if !radarProduct.contains("L2") {
+                radarBuffers.fileName = "nids" + indexString
             } else {
-                self.radarBuffers.fileName = "l2" + self.indexString
+                radarBuffers.fileName = "l2" + indexString
             }
         } else {
             isAnimating = true
-            self.radarBuffers.fileName = url
+            radarBuffers.fileName = url
         }
         if url == "" { // not animating
-            [self.stiBuffers, self.tvsBuffers, self.hiBuffers].forEach {
+            [stiBuffers, tvsBuffers, hiBuffers].forEach {
                 if $0.type.display {
-                    self.constructLevel3TextProduct($0.typeEnum)
+                    constructLevel3TextProduct($0.typeEnum)
                 }
             }
             if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
-                self.constructSpotters()
+                constructSpotters()
             }
             if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-                UtilityMetar.getStateMetarArrayForWXOGL(self.rid)
+                UtilityMetar.getStateMetarArrayForWXOGL(rid)
             }
             if PolygonType.WIND_BARB.display {
-                self.constructWBLines()
+                constructWBLines()
             }
             if PolygonType.SWO.display {
                 UtilitySwoD1.get()
-                self.constructSwoLines()
+                constructSwoLines()
             }
             if RadarPreferences.radarShowWpcFronts {
                 UtilityWpcFronts.get()
-                self.constructWpcFronts()
+                constructWpcFronts()
             }
         }
     }
     
     private func updateRadar(_ additionalText: String) {
-        self.constructPolygons()
-        self.showTimeToolbar(additionalText, isAnimating)
-        self.showProductText(self.product)
-        if self.renderFn != nil {
-            self.renderFn!(self.paneNumber)
+        constructPolygons()
+        showTimeToolbar(additionalText, isAnimating)
+        showProductText(product)
+        if renderFn != nil {
+            renderFn!(paneNumber)
         }
         if !isAnimating {
-            self.wxMetalTextObject.removeTextLabels()
-            self.wxMetalTextObject.addTextLabels()
+            wxMetalTextObject.removeTextLabels()
+            wxMetalTextObject.addTextLabels()
         }
     }
 
