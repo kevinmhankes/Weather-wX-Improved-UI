@@ -560,16 +560,93 @@ final class vcTabLocation: vcTabParent {
         getPolygonWarnings()
     }
 
+//    func getPolygonWarnings() {
+//        _ = FutureVoid(UtilityPolygons.get, displayPolygonWarnings)
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            UtilityPolygons.get()
+//            DispatchQueue.main.async {
+//                if self.wxMetal[0] != nil {
+//                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
+//                }
+//            }
+//        }
+//    }
+    
     func getPolygonWarnings() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            UtilityPolygons.get()
-            DispatchQueue.main.async {
+        // updateWarningsInToolbar()
+        getPolygonWatchGeneric()
+        getPolygonWarningsNonGeneric()
+        if ObjectPolygonWarning.areAnyEnabled() {
+            DispatchQueue.global(qos: .userInitiated).async {
+                // self.semaphore.wait()
                 if self.wxMetal[0] != nil {
                     self.wxMetal.forEach { $0!.constructAlertPolygons() }
+                }
+                // UtilityPolygons.get()
+                UtilityDownloadWarnings.get()
+                DispatchQueue.main.async {
+                    // self.semaphore.wait()
+                    if self.wxMetal[0] != nil {
+                        self.wxMetal.forEach { $0!.constructAlertPolygons() }
+                    }
+                    // self.updateWarningsInToolbar()
+                    // self.semaphore.signal()
                 }
             }
         }
     }
+    
+    func getPolygonWarningsNonGeneric() {
+        if PolygonType.TST.display {
+            for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
+                updatePolygonWarningsNonGeneric(t)
+            }
+            for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
+                _ = FutureVoid(ObjectPolygonWarning.polygonDataByType[t]!.download, { self.updatePolygonWarningsNonGeneric(t) })
+            }
+        }
+    }
+    
+    func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
+        // semaphore.wait()
+        if wxMetal[0] != nil {
+            wxMetal.forEach { $0!.constructAlertPolygonsByType(type) }
+        }
+        // updateWarningsInToolbar()
+        // semaphore.signal()
+    }
+    
+    func getPolygonWatchGeneric() {
+        for t in [PolygonEnum.SPCMCD, PolygonEnum.SPCWAT, PolygonEnum.WPCMPD] {
+            updatePolygonWatchGeneric(t)
+        }
+        if PolygonType.MCD.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) })
+        }
+        
+        if PolygonType.WATCH.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCWAT) })
+        }
+        
+        if PolygonType.MPD.display {
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.WPCMPD) })
+        }
+    }
+    
+    func updatePolygonWatchGeneric(_ type: PolygonEnum) {
+        // semaphore.wait()
+        if wxMetal[0] != nil {
+            wxMetal.forEach { $0!.constructWatchPolygonsByType(type) }
+        }
+        // updateWarningsInToolbar()
+        // semaphore.signal()
+    }
+    
+//    private func displayPolygonWarnings() {
+//        if self.wxMetal[0] != nil {
+//            self.wxMetal.forEach { $0!.constructAlertPolygons() }
+//        }
+//    }
 
     func modelMatrix(_ index: Int) -> float4x4 {
         var matrix = float4x4()

@@ -322,22 +322,22 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     // needed for continuous
     @objc func newFrame(displayLink: CADisplayLink) {
-     if lastFrameTimestamp == 0.0 {
-     lastFrameTimestamp = displayLink.timestamp
-     }
-     let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
-     lastFrameTimestamp = displayLink.timestamp
-     radarLoop(timeSinceLastUpdate: elapsed)
+         if lastFrameTimestamp == 0.0 {
+            lastFrameTimestamp = displayLink.timestamp
+         }
+         let elapsed: CFTimeInterval = displayLink.timestamp - lastFrameTimestamp
+         lastFrameTimestamp = displayLink.timestamp
+         radarLoop(timeSinceLastUpdate: elapsed)
      }
 
     // needed for continuous
     func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
-     autoreleasepool {
-        if self.wxMetalRenders[0] != nil {
-        // TODO FIXME all panes
-        self.render(0)
-     }
-     }
+         autoreleasepool {
+            if self.wxMetalRenders[0] != nil {
+                // TODO FIXME all panes
+                self.render(0)
+            }
+         }
      }
 
     func setupGestures() {
