@@ -49,12 +49,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     func getContentSpcStormReports() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif")
-            DispatchQueue.main.async {
-                self.display()
-            }
-        }
+        _ = FutureVoid({ self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif") }, display)
     }
 
     @objc func imageClicked(sender: UITapGestureRecognizerWithData) {
