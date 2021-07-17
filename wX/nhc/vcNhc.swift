@@ -68,7 +68,7 @@ final class vcNhc: UIwXViewController {
     }
 
     @objc func textProductClicked() {
-        _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, textProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", textProductButton, UtilityNhc.textProductLabels, textProductChanged)
     }
 
     func textProductChanged(_ index: Int) {
@@ -76,7 +76,7 @@ final class vcNhc: UIwXViewController {
     }
 
     @objc func imageProductClicked() {
-        _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, imageProductChanged(_:))
+        _ = ObjectPopUp(self, title: "", imageProductButton, UtilityNhc.imageTitles, imageProductChanged)
     }
 
     @objc func imageClicked(sender: GestureData) {
