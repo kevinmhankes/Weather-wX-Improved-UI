@@ -147,18 +147,9 @@ final class vcGoes: UIwXViewController {
         }
     }
 
-//    @objc func getAnimation(_ frameCount: Int) {
-//        if !goesFloater {
-//            _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
-//        } else {
-//            _ = FutureAnimation({ UtilityGoes.getAnimationGoesFloater(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
-//        }
-//    }
-    
     @objc func getAnimation(_ frameCount: Int) {
         if !image.isAnimating() {
             animateButton.setImage(.stop)
-            // _ = FutureAnimation({ UtilityAwcRadarMosaic.getAnimation(self.sector, self.product) }, image.startAnimating)
             if !goesFloater {
                 _ = FutureAnimation({ UtilityGoes.getAnimation(self.productCode, self.sectorCode, frameCount) }, image.startAnimating)
             } else {
