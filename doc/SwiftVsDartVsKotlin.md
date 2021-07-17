@@ -69,12 +69,20 @@ Swift - modify list passed as arg to method (inout and &)
 func showTextWarnings(_ views: inout [UIView]) {
 self.showTextWarnings(&views)
 
-### List Size
+### List Size and range of int
 Dart:
-length
-
-swift:
-count
+```dart
+alist.length
+```
+swift
+```swift
+alist.count
+alist.indices
+```
+kotlin
+```kotlin
+alist.size
+```
 
 ### List add to
 Dart:
