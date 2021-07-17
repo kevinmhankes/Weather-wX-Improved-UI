@@ -32,13 +32,14 @@ final class vcAdhocLocation: UIwXViewController {
 
     override func getContent() {
         refreshViews()
+        _ = FutureVoid(download, display)
         // TODO more threads
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
-            self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
-            self.objectHazards = ObjectHazards(self, self.adhocLocation)
-            DispatchQueue.main.async { self.display() }
-        }
+    }
+    
+    private func download() {
+        self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
+        self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
+        self.objectHazards = ObjectHazards(self, self.adhocLocation)
     }
 
     private func display() {
