@@ -61,7 +61,6 @@ final class vcNhcStorm: UIwXViewController {
     }
     
     func getContentImages() {
-        // bitmaps.removeAll()
         for (index, imageName) in imageUrls.enumerated() {
             var url = self.stormData.baseUrl
             if imageName == "WPCQPF_sm2.gif" {
@@ -69,16 +68,6 @@ final class vcNhcStorm: UIwXViewController {
             }
             _ = FutureVoid({ self.bitmaps[index] = Bitmap(url + imageName) }, { self.display() })
         }
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.imageUrls.forEach {
-//                var url = self.stormData.baseUrl
-//                if $0 == "WPCQPF_sm2.gif" {
-//                    url.removeLast(2)
-//                }
-//                self.bitmaps.append(Bitmap(url + $0))
-//            }
-//            DispatchQueue.main.async { self.display() }
-//        }
     }
 
     @objc func share(sender: UIButton) {
@@ -94,7 +83,6 @@ final class vcNhcStorm: UIwXViewController {
     }
 
     func display() {
-        // refreshViews()
         boxImages.removeChildren()
         displayImage()
         displayText()
@@ -102,13 +90,9 @@ final class vcNhcStorm: UIwXViewController {
 
     func displayText() {
         objectTextView.setText(html)
-        // boxText.addWidget(objectTextView.get())
-        // objectTextView.constrain(scrollView)
     }
 
     func displayImage() {
-        // bitmapsFiltered.removeAll()
-        // bitmapsFiltered = bitmaps.filter { $0.isValidForNhc }
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
         for (index, url) in imageUrls.enumerated() {
             objectImageSummary.objectImages[index].addGestureRecognizer(UITapGestureRecognizerWithData(url, self, #selector(imageClicked)))

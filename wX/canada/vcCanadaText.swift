@@ -36,16 +36,8 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
     override func getContent() {
         productButton.title = product
         Utility.writePref(prefToken, product)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let html = UtilityDownload.getTextProduct(self.product.uppercased())
-//            DispatchQueue.main.async { self.display(html) }
-//        }
         _ = FutureText2({ UtilityDownload.getTextProduct(self.product.uppercased()) }, objectTextView.setText)
     }
-
-//    private func display(_ html: String) {
-//        objectTextView.text = html
-//    }
 
     @objc func productClicked() {
         _ = ObjectPopUp(self, productButton, UtilityCanada.products, productChanged(_:))

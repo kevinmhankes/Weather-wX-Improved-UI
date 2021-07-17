@@ -15,7 +15,6 @@ final class vcModels: UIwXViewController {
     private var runButton = ToolbarIcon()
     private var timeButton = ToolbarIcon()
     private var productButton = ToolbarIcon()
-    // private var firstRun = true
     private var subMenu = MenuData(
         UtilityModelSpcHrefInterface.titles,
         UtilityModelSpcHrefInterface.params,
@@ -131,12 +130,6 @@ final class vcModels: UIwXViewController {
     }
 
     private func display(_ bitmap: Bitmap) {
-//        if firstRun {
-//            image.setBitmap(bitmap)
-//            firstRun = false
-//        } else {
-//            image.updateBitmap(bitmap)
-//        }
         image.setBitmap(bitmap)
         modelObj.setPreferences()
     }
@@ -234,18 +227,11 @@ final class vcModels: UIwXViewController {
     }
 
     @objc func getAnimation() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let animDrawable = self.modelObj.getAnimation()
-//            DispatchQueue.main.async {
-//                self.image.startAnimating(animDrawable)
-//                self.firstRun = true
-//            }
-//        }
         _ = FutureAnimation(modelObj.getAnimation, image.startAnimating)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.image.refresh() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.image.refresh() })
     }
 }
