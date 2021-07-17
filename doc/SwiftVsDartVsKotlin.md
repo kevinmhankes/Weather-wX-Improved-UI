@@ -42,7 +42,7 @@ Swift:
 let index = string.index(string.startIndex, offsetBy: 3)
 String(string[index])   
 ```
-### for loop index iterate
+### for loop
 Dart:
 ```dart
 for (int index = 0; index < tokens.length; index += 1) {
@@ -59,6 +59,7 @@ for index in aList.indices {
 ```
 Kotlin:
 ```
+for (v in values) {
 tokens.indices.forEach { index ->
 bitmaps.forEachIndexed { index, bitmap ->
 ```
@@ -173,20 +174,6 @@ Dart
 ```dart
 <String>[]
 List<String>
-```
-### forEach loop with both index and value
-Kotlin
-```kotlin
-list.forEachIndexed { index, value ->
-```
-Dart
-```dart
-list.asMap().forEach((index, value) => f);
-```
-Swift
-```swift
-list.enumerated().forEach { index, value in
-for (index, value) in list.enumerated() {
 ```
 ### Dictionary
 kotlin
