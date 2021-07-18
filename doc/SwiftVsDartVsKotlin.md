@@ -229,3 +229,18 @@ dart
 ```dart
 Function(int) fn
 ```
+
+            when (day) {
+                "1", "2" -> {
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+                }
+                "3" -> {
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+                }
+                else -> {
+                }
+            }

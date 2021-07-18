@@ -7,6 +7,10 @@
 import UIKit
 
 final class UtilitySpcSwo {
+    
+    static func getSwoStateUrl(_ state: String, _ day: String) -> String {
+        GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + state + "_swody" + day + ".png"
+    }
 
     static func getImageUrls(_ day: String, getAllImages: Bool = true) -> [Bitmap] {
         var urls = [String]()
@@ -31,5 +35,35 @@ final class UtilitySpcSwo {
         } else {
             return [Bitmap(urls[0])]
         }
+    }
+    
+    static func getUrls(_ day: String) -> [String] {
+        var imgUrls = [String]()
+        if (day == "4-8" || day == "48" || day == "4") {
+            (4...8).forEach { imgUrls.add("${MyApplication.nwsSPCwebsitePrefix}/products/exper/day4-8/day" + it.toString() + "prob.gif") }
+            return imgUrls
+        } else {
+            let html = ("${MyApplication.nwsSPCwebsitePrefix}/products/outlook/day" + day + "otlk.html").getHtml()
+            let time = html.parse("show_tab\\(.otlk_([0-9]{4}).\\)")
+            when (day) {
+                "1", "2" -> {
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+                }
+                "3" -> {
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
+                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+                }
+                else -> {
+                }
+            }
+            return imgUrls
+        }
+    }
+
+    static func getImageUrlsDays48(_ day: String) -> String {
+        return GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + day + "prob.gif"
     }
 }
