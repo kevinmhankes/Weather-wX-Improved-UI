@@ -213,6 +213,16 @@ enum class RadarProduct {
 }
 NhcOceanEnum.values().forEach {}
 ```
+groovy
+```groovy
+enum RadarProduct {
+    vel,
+    ref,
+    dvl,
+}
+for (item in NhcOceanEnum.values()) {
+NhcOceanEnum.values().each {}
+```
 swift
 ```swift
 enum RadarProduct: CaseIterable {
