@@ -38,29 +38,31 @@ final class UtilitySpcSwo {
     }
     
     static func getUrls(_ day: String) -> [String] {
-        var imgUrls = [String]()
+        var urls = [String]()
         if day == "4-8" || day == "48" || day == "4" {
-            (4...8).forEach { imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + to.String($0) + "prob.gif") }
-            return imgUrls
+            (4...8).forEach { urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + to.String($0) + "prob.gif") }
+            return urls
         } else {
             let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
             let time = html.parse("show_tab\\(.otlk_([0-9]{4}).\\)")
             switch day {
             case "1", "2":
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+                let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
+                let z1 = ["_torn.gif", "_hail.gif", "_wind.gif"]
+                for urlEnd in z1 {
+                    urls.append(baseUrl + time + urlEnd)
+                }
             case "3":
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
             default:
                 break
             }
-            return imgUrls
+            return urls
         }
     }
-
+    
     static func getImageUrlsDays48(_ day: String) -> String {
         return GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + day + "prob.gif"
     }

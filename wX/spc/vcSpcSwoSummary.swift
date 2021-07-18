@@ -9,6 +9,7 @@ import UIKit
 final class vcSpcSwoSummary: UIwXViewController {
 
     private var bitmaps = [Bitmap]()
+    private var urls = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +19,36 @@ final class vcSpcSwoSummary: UIwXViewController {
         getContent()
     }
 
-    // TODO more threads
     override func getContent() {
-        _ = FutureVoid(download, display)
+        bitmaps.removeAll()
+        urls.removeAll()
+        bitmaps = [Bitmap](repeating: Bitmap(), count: 8)
+        urls = [String](repeating: "", count: 3)
+        _ = FutureVoid(download13, {})
+        _ = FutureVoid(download48, {})
+    }
+    
+    private func download13() {
+        for day in (1...3) {
+            _ = FutureVoid({ self.urls[day - 1] = UtilitySpcSwo.getUrls(to.String(day))[0] }, { self.download13Bitmap(day - 1)})
+        }
+    }
+    
+    private func download13Bitmap(_ day: Int) {
+        _ = FutureVoid({ self.bitmaps[day] = Bitmap(self.urls[day]) }, display)
+    }
+    
+    private func download48() {
+        for day in (4...8) {
+            let url = UtilitySpcSwo.getImageUrlsDays48(to.String(day))
+            _ = FutureVoid({ self.bitmaps[day - 1] = Bitmap(url) }, display)
+        }
     }
 
-    private func download() {
-        bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
-        bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
-    }
+//    private func download() {
+//        bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
+//        bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
+//    }
 
     private func display() {
         refreshViews()
