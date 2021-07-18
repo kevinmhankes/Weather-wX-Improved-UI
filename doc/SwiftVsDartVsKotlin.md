@@ -247,13 +247,17 @@ Function(int) fn
 
             switch day {
             case "1", "2":
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+                let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
+                let z1 = ["_torn.gif", "_hail.gif", "_wind.gif"]
+                for urlEnd in z1 {
+                    urls.append(baseUrl + time + urlEnd)
+                }
             case "3":
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
-                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+                let z2 = ["otlk_", "prob_"]
+                for urlEnd in z2 {
+                    urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + urlEnd + time + ".gif")
+                }
             default:
                 break
             }
