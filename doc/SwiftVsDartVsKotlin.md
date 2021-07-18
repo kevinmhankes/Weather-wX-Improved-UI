@@ -230,34 +230,39 @@ dart
 Function(int) fn
 ```
 
-            when (day) {
-                "1", "2" -> {
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
-                }
-                "3" -> {
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
-                    imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
-                }
-                else -> {
-                }
-            }
-
-            switch day {
-            case "1", "2":
-                let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
-                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
-                let z1 = ["_torn.gif", "_hail.gif", "_wind.gif"]
-                for urlEnd in z1 {
-                    urls.append(baseUrl + time + urlEnd)
-                }
-            case "3":
-                let z2 = ["otlk_", "prob_"]
-                for urlEnd in z2 {
-                    urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + urlEnd + time + ".gif")
-                }
-            default:
-                break
-            }
+### switch statement
+kotlin (when)
+```kotlin
+when (day) {
+    "1", "2" -> {
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+    }
+    "3" -> {
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
+        imgUrls.add(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+    }
+    else -> {
+    }
+}
+```
+swift
+```swift
+switch day {
+case "1", "2":
+    let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
+    urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
+    let z1 = ["_torn.gif", "_hail.gif", "_wind.gif"]
+    for urlEnd in z1 {
+        urls.append(baseUrl + time + urlEnd)
+    }
+case "3":
+    let z2 = ["otlk_", "prob_"]
+    for urlEnd in z2 {
+        urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + urlEnd + time + ".gif")
+    }
+default:
+    break
+}
