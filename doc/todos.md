@@ -1,6 +1,5 @@
 nexrad state
 objectWatch - if html == "" don't save, reset timer
-game mode for multipane
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes
 objectPolygonWaring download - add a timerReset if failure on http and a 2nd try

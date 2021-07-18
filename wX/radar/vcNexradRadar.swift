@@ -333,10 +333,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     // needed for continuous
     func radarLoop(timeSinceLastUpdate: CFTimeInterval) {
          autoreleasepool {
-            if self.wxMetalRenders[0] != nil {
-                // TODO FIXME all panes
-                self.render(0)
+            // if self.wxMetalRenders[0] != nil {
+            // self.render(0)
+            for (index, wxMetal) in wxMetalRenders.enumerated() {
+                if wxMetal != nil {
+                    render(index)
+                }
             }
+            // }
          }
      }
 
