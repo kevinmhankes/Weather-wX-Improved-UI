@@ -8,33 +8,30 @@ import Foundation
 
 final class FileStorage {
     
-
+    var memoryBuffer = MemoryBuffer()
+    var level3TextProductMap = [String: String]()
+    // var animationByteArray: List[array] = []
+    var animationMemoryBuffer = [MemoryBuffer]()
+    var stiList = [Double]()
+    var hiData = [Double]()
+    var tvsData = [Double]()
+    var radarInfo = ""
+    var radarDate = ""
+    var radarVcp = ""
+    var radarAgeMilli: Int64 = 0
+    // wind barbs
+    var obsArr = [String]()
+    var obsArrExt = [String]()
+    var obsArrWb = [String]()
+    var obsArrWbGust = [String]()
+    var obsArrX = [Double]()
+    var obsArrY = [Double]()
+    var obsArrAviationColor = [Int]()
+    var obsOldRadarSite = ""
+    var obsDownloadTimer = DownloadTimer("OBS_AND_WIND_BARBS" + String(UtilityTime.currentTimeMillis()))
+    
 }
 
-//class FileStorage:
-//    def __init__(self) -> None:
-//        self.byteArray: bytes = b""
-//        self.memoryBuffer: MemoryBuffer = MemoryBuffer(0)
-//        self.level3TextProductMap: Dict[str, str] = {}
-//        self.animationByteArray: List[array] = []
-//        self.animationMemoryBuffer: List[MemoryBuffer] = []
-//        self.stiList: List[float] = []
-//        self.hiData: List[float] = []
-//        self.tvsData: List[float] = []
-//        self.radarInfo: str = ""
-//        self.radarDate: str = ""
-//        self.radarVcp: str = ""
-//        self.radarAgeMilli: int = 0
-//        # wind barb
-//        self.obsArr: List[str] = []
-//        self.obsArrExt: List[str] = []
-//        self.obsArrWb: List[str] = []
-//        self.obsArrWbGust: List[str] = []
-//        self.obsArrX: List[float] = []
-//        self.obsArrY: List[float] = []
-//        self.obsArrAviationColor: List[int] = []
-//        self.obsOldRadarSite: str = ""
-//        self.obsDownloadTimer: DownloadTimer = DownloadTimer("OBS_AND_WIND_BARBS" + to.StringFromFloat(UtilityTime.currentTimeMillis()))
 //
 //    def setMemoryBuffer(self, byteArrayF: bytes) -> None:
 //        data: array = array("B")
