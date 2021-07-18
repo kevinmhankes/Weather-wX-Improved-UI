@@ -9,6 +9,7 @@ import UIKit
 final class vcSpcTstormSummary: UIwXViewController {
 
     private var bitmaps = [Bitmap]()
+    private var urls = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +20,20 @@ final class vcSpcTstormSummary: UIwXViewController {
     }
 
     override func getContent() {
-        _ = FutureVoid(download, display)
+        urls.removeAll()
+        bitmaps.removeAll()
+        _ = FutureVoid(downloadHtml, downloadImages)
     }
 
-    private func download() {
-        let urls = UtilitySpc.getTstormOutlookUrls()
-        bitmaps = urls.map { Bitmap($0) }
+    private func downloadHtml() {
+        urls = UtilitySpc.getTstormOutlookUrls()
+    }
+    
+    private func downloadImages() {
+        bitmaps = [Bitmap](repeating: Bitmap(), count: urls.count)
+        for (index, url) in urls.enumerated() {
+            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, display)
+        }
     }
 
     private func display() {
