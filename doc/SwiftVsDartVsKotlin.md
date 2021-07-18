@@ -244,3 +244,16 @@ Function(int) fn
                 else -> {
                 }
             }
+
+            switch day {
+            case "1", "2":
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}otlk_$time.gif")
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_torn.gif")
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_hail.gif")
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day${day}probotlk_" + time + "_wind.gif")
+            case "3":
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
+                    imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+            default:
+                break
+            }
