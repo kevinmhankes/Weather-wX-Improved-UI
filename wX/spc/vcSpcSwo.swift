@@ -9,6 +9,7 @@ import UIKit
 final class vcSpcSwo: UIwXViewControllerWithAudio {
 
     private var bitmaps = [Bitmap]()
+    private var urls = [String]()
     private var html = ""
     var spcSwoDay = ""
 
@@ -44,7 +45,14 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
     }
 
     func getContentImage() {
-        _ = FutureVoid({ self.bitmaps = UtilitySpcSwo.getImageUrls(self.spcSwoDay) }, display)
+        _ = FutureVoid({ self.urls = UtilitySpcSwo.getUrls(self.spcSwoDay) }, getBitmaps)
+    }
+    
+    private func getBitmaps() {
+        bitmaps = [Bitmap](repeating: Bitmap(), count: urls.count)
+        for (index, url) in urls.enumerated() {
+            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, display)
+        }
     }
 
     private func display() {
