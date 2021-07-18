@@ -1,4 +1,5 @@
 nexrad state
+FileStorage
 objectWatch - if html == "" don't save, reset timer
 rationalize all the Enums, etc
 create/use FutureVoid FutureText FutureBytes

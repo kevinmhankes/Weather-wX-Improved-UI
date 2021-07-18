@@ -410,14 +410,14 @@ final class WXMetalRender {
     }
 
     func writePreferences() {
-        let numberOfPanes = String(self.numberOfPanes)
+        let numberOfPanesString = to.String(numberOfPanes)
         let index = String(paneNumber)
-        Utility.writePref(radarType + numberOfPanes + "_ZOOM" + index, zoom)
-        Utility.writePref(radarType + numberOfPanes + "_X" + index, xPos)
-        Utility.writePref(radarType + numberOfPanes + "_Y" + index, yPos)
-        Utility.writePref(radarType + numberOfPanes + "_RID" + index, rid)
-        Utility.writePref(radarType + numberOfPanes + "_PROD" + index, product)
-        Utility.writePref(radarType + numberOfPanes + "_TILT" + index, tiltInt)
+        Utility.writePref(radarType + numberOfPanesString + "_ZOOM" + index, zoom)
+        Utility.writePref(radarType + numberOfPanesString + "_X" + index, xPos)
+        Utility.writePref(radarType + numberOfPanesString + "_Y" + index, yPos)
+        Utility.writePref(radarType + numberOfPanesString + "_RID" + index, rid)
+        Utility.writePref(radarType + numberOfPanesString + "_PROD" + index, product)
+        Utility.writePref(radarType + numberOfPanesString + "_TILT" + index, tiltInt)
     }
 
     // This method is called between the transition from single to dual pane
@@ -434,18 +434,18 @@ final class WXMetalRender {
     }
 
     func readPreferences() {
-        let numberOfPanes = String(self.numberOfPanes)
+        let numberOfPanesString = to.String(numberOfPanes)
         let index = String(paneNumber)
         if RadarPreferences.wxoglRememberLocation {
-            zoom = Utility.readPref(radarType + numberOfPanes + "_ZOOM" + index, 1.0)
-            xPos = Utility.readPref(radarType + numberOfPanes + "_X" + index, 0.0)
-            yPos = Utility.readPref(radarType + numberOfPanes + "_Y" + index, 0.0)
-            product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
-            rid = Utility.readPref(radarType + numberOfPanes + "_RID" + index, Location.rid)
-            tiltInt = Utility.readPref(radarType + numberOfPanes + "_TILT" + index, 0)
+            zoom = Utility.readPref(radarType + numberOfPanesString + "_ZOOM" + index, 1.0)
+            xPos = Utility.readPref(radarType + numberOfPanesString + "_X" + index, 0.0)
+            yPos = Utility.readPref(radarType + numberOfPanesString + "_Y" + index, 0.0)
+            product = Utility.readPref(radarType + numberOfPanesString + "_PROD" + index, initialRadarProducts[paneNumber])
+            rid = Utility.readPref(radarType + numberOfPanesString + "_RID" + index, Location.rid)
+            tiltInt = Utility.readPref(radarType + numberOfPanesString + "_TILT" + index, 0)
         } else {
             rid = Location.rid
-            product = Utility.readPref(radarType + numberOfPanes + "_PROD" + index, initialRadarProducts[paneNumber])
+            product = Utility.readPref(radarType + numberOfPanesString + "_PROD" + index, initialRadarProducts[paneNumber])
         }
     }
 
