@@ -211,7 +211,9 @@ NhcOceanEnum.values().forEach {}
 swift
 ```swift
 enum RadarProduct: CaseIterable {
-    case vel, ref, dvl
+    case vel
+    case ref
+    case dvl
 }
 let num = RadarProduct.allCases.count
 for product in RadarProduct.allCases {
