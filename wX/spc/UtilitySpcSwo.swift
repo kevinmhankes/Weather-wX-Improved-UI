@@ -54,8 +54,10 @@ final class UtilitySpcSwo {
                     urls.append(baseUrl + time + urlEnd)
                 }
             case "3":
-                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3otlk_$time.gif")
-                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day3prob_$time.gif")
+                let z2 = ["otlk_", "prob_"]
+                for urlEnd in z2 {
+                    urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + urlEnd + time + ".gif")
+                }
             default:
                 break
             }
