@@ -24,7 +24,7 @@ final class vcSpcTstormSummary: UIwXViewController {
 
     private func download() {
         let urls = UtilitySpc.getTstormOutlookUrls()
-        self.bitmaps = urls.map { Bitmap($0) }
+        bitmaps = urls.map { Bitmap($0) }
     }
 
     private func display() {

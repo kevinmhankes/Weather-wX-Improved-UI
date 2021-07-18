@@ -62,7 +62,7 @@ final class vcNhcStorm: UIwXViewController {
 
     func getContentImages() {
         for (index, imageName) in imageUrls.enumerated() {
-            var url = self.stormData.baseUrl
+            var url = stormData.baseUrl
             if imageName == "WPCQPF_sm2.gif" {
                 url.removeLast(2)
             }

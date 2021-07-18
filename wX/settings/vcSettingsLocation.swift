@@ -46,9 +46,9 @@ final class vcSettingsLocation: UIwXViewController {
     }
 
     func update() {
-        self.locationCards.indices.forEach { index in
-            self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-            Location.updateObservation(index, self.currentConditions[index].topLine)
+        locationCards.indices.forEach { index in
+            locationCards[index].tvCurrentConditions.text = currentConditions[index].topLine
+            Location.updateObservation(index, currentConditions[index].topLine)
         }
     }
 

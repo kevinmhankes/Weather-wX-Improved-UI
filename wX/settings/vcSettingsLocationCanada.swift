@@ -66,11 +66,11 @@ final class vcSettingsLocationCanada: UIwXViewController {
     }
 
     private func download() {
-        let html = UtilityCanada.getProvinceHtml(self.provSelected)
-        let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
-        let idCityAl = html.parseColumn("<li><a href=\"/city/pages/" + self.provSelected.lowercased() + "-.*?_metric_e.html\">(.*?)</a></li>")
-        idTmpAl.forEach { self.listIds.append($0) }
-        self.listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
+        let html = UtilityCanada.getProvinceHtml(provSelected)
+        let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
+        let idCityAl = html.parseColumn("<li><a href=\"/city/pages/" + provSelected.lowercased() + "-.*?_metric_e.html\">(.*?)</a></li>")
+        idTmpAl.forEach { listIds.append($0) }
+        listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
     }
 
     private func displayCities() {

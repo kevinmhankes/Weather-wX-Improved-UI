@@ -24,8 +24,8 @@ final class vcSpcSwoSummary: UIwXViewController {
     }
 
     private func download() {
-        self.bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
-        self.bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
+        bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
+        bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
     }
 
     private func display() {

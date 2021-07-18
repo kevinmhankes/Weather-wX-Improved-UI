@@ -37,9 +37,9 @@ final class vcAdhocLocation: UIwXViewController {
     }
     
     private func download() {
-        self.objectCurrentConditions = ObjectCurrentConditions(self.adhocLocation)
-        self.objectSevenDay = ObjectSevenDay(self.adhocLocation)
-        self.objectHazards = ObjectHazards(self, self.adhocLocation)
+        objectCurrentConditions = ObjectCurrentConditions(adhocLocation)
+        objectSevenDay = ObjectSevenDay(adhocLocation)
+        objectHazards = ObjectHazards(self, adhocLocation)
     }
 
     private func display() {

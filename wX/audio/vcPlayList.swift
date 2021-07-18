@@ -146,9 +146,9 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     private func displayAndAddProduct(_ s: String, _ product: String, _ button: ToolbarIcon) {
         let productAdded = UtilityPlayList.add(product, s, self, button, showStatus: false)
         if productAdded {
-            self.playlistItems.append(product)
-            self.display()
-            self.serializeSettings()
+            playlistItems.append(product)
+            display()
+            serializeSettings()
         }
     }
 

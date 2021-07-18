@@ -47,8 +47,8 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
     }
 
     private func downloadImage() {
-        self.url = self.objectWatchProduct!.imgUrl
-        self.bitmap = Bitmap(self.url)
+        url = objectWatchProduct!.imgUrl
+        bitmap = Bitmap(url)
     }
 
     @objc func imageClicked() {

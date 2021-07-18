@@ -25,7 +25,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     func getContent(_ wfo: String) {
-        self.siteButton.title = wfo
+        siteButton.title = wfo
         _ = FutureVoid({ self.wfoProd = self.getLsrFromWfo(wfo) }, display)
     }
 

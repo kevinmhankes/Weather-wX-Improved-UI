@@ -44,7 +44,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
 
     private func download() {
         var productNumberList = [String]()
-        if self.productNumber == "" {
+        if productNumber == "" {
             productNumberList = ObjectWatchProduct.getNumberList(watchMcdMpdType)
         } else {
             productNumberList = [productNumber]
