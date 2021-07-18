@@ -204,8 +204,13 @@ var classToId = Map<int, List<double>>();
 ```
 
 ### Iterate over enum:
-```
-kotlin:
+kotlin
+```kotlin
+enum class RadarProduct {
+    vel,
+    ref,
+    dvl,
+}
 NhcOceanEnum.values().forEach {}
 ```
 swift
