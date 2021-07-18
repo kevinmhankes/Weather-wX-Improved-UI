@@ -77,6 +77,7 @@ final class WXMetalRender {
     var wxMetalTextObject: WXMetalTextObject
     private var renderFn: ((Int) -> Void)?
     private var isAnimating = false
+    var fileStorage = FileStorage()
     // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
         "N0Q: Base Reflectivity",
