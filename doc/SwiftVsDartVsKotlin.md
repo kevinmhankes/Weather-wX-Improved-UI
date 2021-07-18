@@ -220,6 +220,17 @@ for product in RadarProduct.allCases {
     print(product)
 }
 ```
+dart
+```dart
+enum RadarProduct {
+    vel,
+    ref,
+    dvl,
+}
+for (var product in RadarProduct.values) {
+    print(product);
+}
+```
 ### Passing functions as arguments
 kotlin
 ```kotlin
