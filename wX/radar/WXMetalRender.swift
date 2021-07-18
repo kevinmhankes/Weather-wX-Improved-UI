@@ -506,6 +506,40 @@ final class WXMetalRender {
 
     func getRadar(_ url: String, _ additionalText: String = "") {
         _ = FutureVoid({ self.downloadRadar(url) }, { self.updateRadar(additionalText) })
+        
+        if url == "" { // not animating
+            [stiBuffers, tvsBuffers, hiBuffers].forEach {
+                if $0.type.display {
+                    let item = $0
+                    _ = FutureVoid({ self.constructLevel3TextProduct(item.typeEnum) }, {})
+                }
+            }
+            if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
+                _ = FutureVoid(constructSpotters, {})
+            }
+            if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
+                _ = FutureVoid(downloadObs, renderIt)
+            }
+//            if PolygonType.WIND_BARB.display {
+//                _ = FutureVoid(constructWBLines, {})
+//            }
+            if PolygonType.SWO.display {
+                _ = FutureVoid(UtilitySwoD1.get, constructSwoLines)
+                
+            }
+            if RadarPreferences.radarShowWpcFronts {
+                _ = FutureVoid(UtilityWpcFronts.get, constructWpcFronts)
+            }
+        }
+    }
+    
+    private func downloadObs() {
+        if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
+            UtilityMetar.getStateMetarArrayForWXOGL(rid)
+        }
+        if PolygonType.WIND_BARB.display {
+            constructWBLines()
+        }
     }
     
     private func downloadRadar(_ url: String) {
@@ -520,29 +554,39 @@ final class WXMetalRender {
             isAnimating = true
             radarBuffers.fileName = url
         }
-        if url == "" { // not animating
-            [stiBuffers, tvsBuffers, hiBuffers].forEach {
-                if $0.type.display {
-                    constructLevel3TextProduct($0.typeEnum)
-                }
-            }
-            if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
-                constructSpotters()
-            }
-            if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-                UtilityMetar.getStateMetarArrayForWXOGL(rid)
-            }
-            if PolygonType.WIND_BARB.display {
-                constructWBLines()
-            }
-            if PolygonType.SWO.display {
-                UtilitySwoD1.get()
-                constructSwoLines()
-            }
-            if RadarPreferences.radarShowWpcFronts {
-                UtilityWpcFronts.get()
-                constructWpcFronts()
-            }
+//        if url == "" { // not animating
+//            [stiBuffers, tvsBuffers, hiBuffers].forEach {
+//                if $0.type.display {
+//                    constructLevel3TextProduct($0.typeEnum)
+//                }
+//            }
+//            if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
+//                constructSpotters()
+//            }
+//            if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
+//                UtilityMetar.getStateMetarArrayForWXOGL(rid)
+//            }
+//            if PolygonType.WIND_BARB.display {
+//                constructWBLines()
+//            }
+//            if PolygonType.SWO.display {
+//                UtilitySwoD1.get()
+//                constructSwoLines()
+//            }
+//            if RadarPreferences.radarShowWpcFronts {
+//                UtilityWpcFronts.get()
+//                constructWpcFronts()
+//            }
+//        }
+    }
+    
+    private func renderIt() {
+        if renderFn != nil {
+            renderFn!(paneNumber)
+        }
+        if !isAnimating &&  PolygonType.OBS.display  {
+            wxMetalTextObject.removeTextLabels()
+            wxMetalTextObject.addTextLabels()
         }
     }
     
