@@ -1,6 +1,4 @@
 nexrad state
-spc tstorm
-spc swo summ
 objectWatch - if html == "" don't save, reset timer
 game mode for multipane
 rationalize all the Enums, etc
