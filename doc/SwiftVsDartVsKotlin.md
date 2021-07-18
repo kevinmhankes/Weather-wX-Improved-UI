@@ -208,6 +208,16 @@ var classToId = Map<int, List<double>>();
 kotlin:
 NhcOceanEnum.values().forEach {}
 ```
+swift
+```swift
+enum RadarProduct: CaseIterable {
+    case vel, ref, dvl
+}
+let num = RadarProduct.allCases.count
+for product in RadarProduct.allCases {
+    print(product)
+}
+```
 ### Passing functions as arguments
 kotlin
 ```kotlin
@@ -220,7 +230,6 @@ swift
 ```swift
 var renderFn: ((Int) -> Void)?
 self.renderFn!(paneNumber)
-
 func setRenderFunction(_ fn: @escaping (Int) -> Void) {
         self.renderFn = fn
 }
