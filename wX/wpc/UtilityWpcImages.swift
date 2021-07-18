@@ -171,9 +171,14 @@ final class UtilityWpcImages {
         GlobalVariables.nwsWPCwebsitePrefix + "/sfc/satsfc.gif",
         GlobalVariables.nwsWPCwebsitePrefix + "/sfc/lrgnamsfc09wbg.gif",
 
-        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad1.gif",
-        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad2.gif",
-        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad3.gif",
+//        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad1.gif",
+//        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad2.gif",
+//        GlobalVariables.nwsWPCwebsitePrefix + "/noaa/noaad3.gif",
+        
+        GlobalVariables.nwsWPCwebsitePrefix + "/NationalForecastChart/staticmaps/noaad1.png",
+        GlobalVariables.nwsWPCwebsitePrefix + "/NationalForecastChart/staticmaps/noaad2.png",
+        GlobalVariables.nwsWPCwebsitePrefix + "/NationalForecastChart/staticmaps/noaad3.png",
+        
         GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/92fwbg.gif",
         GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/94fwbg.gif",
         GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/96fwbg.gif",
