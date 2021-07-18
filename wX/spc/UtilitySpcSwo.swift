@@ -40,10 +40,10 @@ final class UtilitySpcSwo {
     static func getUrls(_ day: String) -> [String] {
         var imgUrls = [String]()
         if day == "4-8" || day == "48" || day == "4" {
-            (4...8).forEach { imgUrls.append("${MyApplication.nwsSPCwebsitePrefix}/products/exper/day4-8/day" + to.String($0) + "prob.gif") }
+            (4...8).forEach { imgUrls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + to.String($0) + "prob.gif") }
             return imgUrls
         } else {
-            let html = ("${MyApplication.nwsSPCwebsitePrefix}/products/outlook/day" + day + "otlk.html").getHtml()
+            let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
             let time = html.parse("show_tab\\(.otlk_([0-9]{4}).\\)")
             switch day {
             case "1", "2":
