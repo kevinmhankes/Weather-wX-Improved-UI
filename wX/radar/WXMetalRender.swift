@@ -545,7 +545,7 @@ final class WXMetalRender {
     
     private func downloadRadar(_ url: String) {
         if url == "" {
-            ridPrefixGlobal = WXGLDownload.getRadarFile(url, rid, product, indexString, isTdwr)
+            ridPrefixGlobal = WXGLDownload.getRadarFile(url, rid, product, indexString, isTdwr, fileStorage)
             if !radarProduct.contains("L2") {
                 radarBuffers.fileName = "nids" + indexString
             } else {

@@ -40,7 +40,7 @@ final class WXGLDownload {
         return nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
     }
     
-    static func getRadarFile(_ url: String, _ radarSite: String, _ product: String, _ indexString: String, _ isTdwr: Bool) -> String {
+    static func getRadarFile(_ url: String, _ radarSite: String, _ product: String, _ indexString: String, _ isTdwr: Bool, _ fileStorage: FileStorage) -> String {
         let l2BaseFn = "l2"
         let l3BaseFn = "nids"
         let ridPrefix = getRidPrefix(radarSite, isTdwr)
