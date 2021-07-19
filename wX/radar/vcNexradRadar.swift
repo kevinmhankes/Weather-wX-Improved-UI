@@ -236,8 +236,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         commandQueue = device.makeCommandQueue()
         wxMetalRenders.forEach { $0?.setRenderFunction(render(_:)) }
         // Below two lines enable continuous updates
-        timer = CADisplayLink(target: self, selector: #selector(newFrame(displayLink:)))
-        timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        if RadarPreferences.nexradContinuousMode {
+            timer = CADisplayLink(target: self, selector: #selector(newFrame(displayLink:)))
+            timer.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        }
         setupGestures()
         if RadarPreferences.locdotFollowsGps {
             locationManager.requestWhenInUseAuthorization()
