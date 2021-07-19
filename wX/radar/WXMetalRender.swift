@@ -347,7 +347,8 @@ final class WXMetalRender {
         case .SPS:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case .STI:
-            list = WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString, fileStorage)
+            WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString, fileStorage)
+            list = fileStorage.stiList
         default:
             list = [Double]()
         }
@@ -765,7 +766,8 @@ final class WXMetalRender {
     }
 
     func constructStiLines() {
-        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString, fileStorage))
+        WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString, fileStorage)
+        constructGenericLinesShort(stiBuffers, fileStorage.stiList)
         stiBuffers.generateMtlBuffer(device)
     }
 

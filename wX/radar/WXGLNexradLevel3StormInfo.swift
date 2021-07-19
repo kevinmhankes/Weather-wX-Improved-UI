@@ -6,10 +6,10 @@
 
 final class WXGLNexradLevel3StormInfo {
     
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) {
         WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
+        var stormList = [Double]()
         if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
-            var stormList = [Double]()
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let motion = retStr1.parseColumn("MVT(.*?)V")
             var posnStr = ""
@@ -67,10 +67,11 @@ final class WXGLNexradLevel3StormInfo {
                     }
                 }
             }
-            return stormList
+            // return stormList
         } else {
-            return [Double]()
+            // return [Double]()
         }
+        fileStorage.stiList = stormList
     }
     
     private static func drawTickMarks(
