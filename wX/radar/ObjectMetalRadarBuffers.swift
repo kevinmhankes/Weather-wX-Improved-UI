@@ -12,6 +12,7 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     let colorRF: Float
     let colorGF: Float
     let colorBF: Float
+    var fileStorage = FileStorage()
     
     init(_ bgColor: Int) {
         self.bgColor = bgColor
@@ -54,7 +55,7 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         case 0:
             totalBins = 0
         default:
-            totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self)
+            totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self, fileStorage)
         }
         return totalBins
     }

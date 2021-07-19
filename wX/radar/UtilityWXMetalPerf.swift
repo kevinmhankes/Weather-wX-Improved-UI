@@ -13,7 +13,7 @@ final class UtilityWXMetalPerf {
     private static let piDiv360 = Double.pi / 360.0
     private static let twicePi = 2.0 * Double.pi
     
-    static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
+    static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> Int {
         var totalBins = 0
         let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
         if disFirst.capacity == 0 {

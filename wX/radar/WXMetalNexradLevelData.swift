@@ -33,7 +33,7 @@ final class WXMetalNexradLevelData {
     private var volumeScanNumber: UInt16 = 0
     private var elevationNumber: UInt16 = 0
 
-    convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String) {
+    convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String, _ fileStorage: FileStorage) {
         self.init()
         self.radarBuffers = radarBuffers
         self.index = index

@@ -112,6 +112,7 @@ final class WXMetalRender {
         self.paneNumber = paneNumber
         indexString = String(paneNumber)
         self.numberOfPanes = numberOfPanes
+        radarBuffers.fileStorage = fileStorage
         readPreferences()
         regenerateProductList()
         radarLayers = [radarBuffers]
@@ -616,7 +617,7 @@ final class WXMetalRender {
 
     func constructPolygons() {
         radarBuffers.metalBuffer = []
-        radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString)
+        radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString, fileStorage)
         radarBuffers.rd.decode()
         radarBuffers.initialize()
         /*switch self.radarBuffers.rd.productCode {
