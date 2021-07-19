@@ -558,6 +558,7 @@ final class WXMetalRender {
                 isAnimating = true
                 radarBuffers.fileName = url
             } else {
+                isAnimating = true
                 let index = to.Int(url)
                 fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[index]
                 // print(index)
