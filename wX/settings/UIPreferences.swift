@@ -32,6 +32,7 @@ final class UIPreferences {
     static var goesUseFullResolutionImages = false
     static var useNwsApi = false
     static var useNwsApiForHourly = true
+    static var debugMode = false
 
     static func initialize() {
         #if targetEnvironment(macCatalyst)
@@ -55,5 +56,10 @@ final class UIPreferences {
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
         nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 68.0)
+        debugMode = Utility.readPref("DEBUG_MODE", "false").hasPrefix("t")
+        if debugMode {
+            RadarPreferences.useFileStorage = true
+        }
+
     }
 }
