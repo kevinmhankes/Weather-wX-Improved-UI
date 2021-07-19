@@ -12,6 +12,7 @@
 * objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 * wxRender - add more threads for metar, spc swo, wpc fronts
 
+```
 // [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
@@ -49,6 +50,4 @@
 // [REF] scan for closure without proper spaces
 // [REF] remove -> Void from closures
 // [FIX] pan motion behaves differently on different classes of device (tracks 1:1 on 2018 base ipad, etc)
-
-
-
+```
