@@ -101,6 +101,8 @@
 		034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */; };
 		034F307F26A30108009155FE /* GestureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F307E26A30108009155FE /* GestureData.swift */; };
 		0351449626A47C0A00AF38B6 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449526A47C0900AF38B6 /* FileStorage.swift */; };
+		0351449826A5E78400AF38B6 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449726A5E78400AF38B6 /* RadarPreferences.swift */; };
+		0351449A26A5E78C00AF38B6 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449926A5E78C00AF38B6 /* UIPreferences.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F323C116D10024153D /* FrontTypeEnum.swift */; };
 		0354D3F623C117710024153D /* Fronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F523C117710024153D /* Fronts.swift */; };
@@ -112,8 +114,6 @@
 		035A66EC240C88B500038C98 /* ObjectImageAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66EB240C88B500038C98 /* ObjectImageAndText.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
 		035E2D4821D29E0F005E31A1 /* WXGLNexradLevel3Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */; };
-		035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */; };
-		035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */; };
 		036102CC269C89CC0072EEC4 /* to.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CB269C89CC0072EEC4 /* to.swift */; };
 		036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */; };
 		036102D0269CCD020072EEC4 /* FutureVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036102CF269CCD020072EEC4 /* FutureVoid.swift */; };
@@ -508,6 +508,8 @@
 		034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryBuffer.swift; sourceTree = "<group>"; };
 		034F307E26A30108009155FE /* GestureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureData.swift; sourceTree = "<group>"; };
 		0351449526A47C0900AF38B6 /* FileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		0351449726A5E78400AF38B6 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
+		0351449926A5E78C00AF38B6 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		0354D3F323C116D10024153D /* FrontTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3F523C117710024153D /* Fronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fronts.swift; sourceTree = "<group>"; };
@@ -519,8 +521,6 @@
 		035A66EB240C88B500038C98 /* ObjectImageAndText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImageAndText.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
 		035E2D4721D29E0F005E31A1 /* WXGLNexradLevel3Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3Common.swift; sourceTree = "<group>"; };
-		035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
-		035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
 		036102CB269C89CC0072EEC4 /* to.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = to.swift; sourceTree = "<group>"; };
 		036102CD269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcMcdWatchMpdViewer.swift; sourceTree = "<group>"; };
 		036102CF269CCD020072EEC4 /* FutureVoid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureVoid.swift; sourceTree = "<group>"; };
@@ -1031,8 +1031,10 @@
 		F09504AC1E152C76008A966E /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				03E154C325E2B53D00682A8D /* ObjectLocation.swift */,
 				F02841801DEFBC6000474084 /* Location.swift */,
+				03E154C325E2B53D00682A8D /* ObjectLocation.swift */,
+				0351449726A5E78400AF38B6 /* RadarPreferences.swift */,
+				0351449926A5E78C00AF38B6 /* UIPreferences.swift */,
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
@@ -1348,11 +1350,9 @@
 				F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */,
 				F0B335081DA3FD1C0035BD36 /* R.swift */,
 				0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */,
-				035F74F41FEE776D004E5AF2 /* RadarPreferences.swift */,
 				03562F451FCC17AD00456395 /* RadarType.swift */,
 				0321B2EC21E0D3EC00677EBC /* TabType.swift */,
 				0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */,
-				035F74F61FEE7A50004E5AF2 /* UIPreferences.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -1661,6 +1661,7 @@
 				F0B335AE1DA3FD960035BD36 /* UtilityLocation.swift in Sources */,
 				034041DA23F162A4003AB242 /* vcWpcText.swift in Sources */,
 				F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */,
+				0351449A26A5E78C00AF38B6 /* UIPreferences.swift in Sources */,
 				F0B335371DA3FD3B0035BD36 /* WXGLNexradLevel3HailIndex.swift in Sources */,
 				03F3EB98229945DA0056A56D /* UtilityModelSpcHrrrInputOutput.swift in Sources */,
 				03F3EB78229941510056A56D /* UtilityOpcImages.swift in Sources */,
@@ -1688,7 +1689,6 @@
 				03F3EB6522993B870056A56D /* UtilitySpc.swift in Sources */,
 				0340420923F16ACA003AB242 /* vcSettingsUI.swift in Sources */,
 				F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */,
-				035F74F51FEE776D004E5AF2 /* RadarPreferences.swift in Sources */,
 				031D033421F002BE0074F44D /* ObjectCardPlayListItem.swift in Sources */,
 				03F3EB82229945D10056A56D /* UtilityModelEsrlInputOutput.swift in Sources */,
 				03F3EB88229945D10056A56D /* UtilityModelNcepInputOutput.swift in Sources */,
@@ -1817,6 +1817,7 @@
 				0340423923F16FC3003AB242 /* vcObsSites.swift in Sources */,
 				F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */,
 				036E9B9A269D90980009A47B /* TouchImage.swift in Sources */,
+				0351449826A5E78400AF38B6 /* RadarPreferences.swift in Sources */,
 				F0B335571DA3FD510035BD36 /* ExternalGlobalCoordinates.swift in Sources */,
 				0321B2EE21E0D3EC00677EBC /* TabType.swift in Sources */,
 				F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */,
@@ -1974,7 +1975,6 @@
 				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,
 				F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */,
 				036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */,
-				035F74F71FEE7A50004E5AF2 /* UIPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
