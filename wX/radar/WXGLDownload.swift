@@ -19,6 +19,12 @@ final class WXGLDownload {
         UtilityIO.saveInputStream(inputStream, fileName)
     }
     
+    static func getNidsTabNew(_ product: String, _ radarSite: String, _ fileStorage: FileStorage) {
+        let url = getRadarFileUrl(radarSite, product, false)
+        let inputStream = url.getDataFromUrl()
+        fileStorage.setMemoryBufferForL3TextProducts(product, inputStream)
+    }
+    
     private static func getRidPrefix(_ radarSite: String, _ isTdwr: Bool) -> String {
         if isTdwr {
             return ""

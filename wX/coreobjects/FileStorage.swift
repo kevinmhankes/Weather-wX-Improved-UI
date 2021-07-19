@@ -30,6 +30,15 @@ final class FileStorage {
     var obsOldRadarSite = ""
     var obsDownloadTimer = DownloadTimer("OBS_AND_WIND_BARBS" + String(UtilityTime.currentTimeMillis()))
     
+    func setMemoryBufferForL3TextProducts(_ product: String, _ byteArray: Data) {
+        var data = ""
+        if let retStr1 = String(data: byteArray, encoding: .ascii) {
+            data = retStr1
+            print(data)
+        }
+        // dataAsQString: str = byteArrayF.decode('iso-8859-1')
+        level3TextProductMap[product] = data
+    }
 }
 
 //
@@ -46,9 +55,7 @@ final class FileStorage {
 //        # self.animationMemoryBuffer.insert(index, MemoryBuffer.fromArray(self.animationByteArray[index]))
 //        self.animationMemoryBuffer[index] = MemoryBuffer.fromArray(self.animationByteArray[index])
 //
-//    def setMemoryBufferForL3TextProducts(self, product: str, byteArrayF: bytes) -> None:
-//        dataAsQString: str = byteArrayF.decode('iso-8859-1')
-//        self.level3TextProductMap[product] = dataAsQString
+
 //
 //    def clear(self):
 //        self.animationMemoryBuffer.clear()

@@ -7,9 +7,13 @@
 final class WXGLNexradLevel3StormInfo {
     
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) {
-        WXGLDownload.getNidsTab("STI", projectionNumbers.radarSite.lowercased(), fileName)
+        // WXGLDownload.getNidsTabNew("STI", projectionNumbers.radarSite.lowercased(), fileName)
+        let productCode = "STI"
+        WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite.lowercased(), fileStorage)
+        let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
         var stormList = [Double]()
-        if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
+        if retStr1.count > 10 {
+        // if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let motion = retStr1.parseColumn("MVT(.*?)V")
             var posnStr = ""
