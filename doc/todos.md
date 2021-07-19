@@ -1,4 +1,5 @@
 * nexrad state
+* move *Pref* out of global and into settings
 * FileStorage
     - level 2
     - anim
@@ -8,12 +9,12 @@
     - sti
 * objectWatch - if html == "" don't save, reset timer
 * rationalize all the Enums, etc
+* radar colors are in RadarGeom?
 * create/use FutureVoid FutureText FutureBytes
 * objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
 * wxRender - add more threads for metar, spc swo, wpc fronts
 
 ```
-// [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter
 // [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 // [FIX] dual pane does not show radar time for both panes

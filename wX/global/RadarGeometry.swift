@@ -67,7 +67,7 @@ final class RadarGeometry {
     }
 
     static func initialize() {
-        if !RadarPreferences.radarHwEnh {
+        if !RadarPreferences.hwEnh {
             hwFileResid = R.Raw.hw
             countHw = 112640
         }
@@ -78,21 +78,21 @@ final class RadarGeometry {
         let mxResid = R.Raw.mx
         let countCanada = 161792
         let countMexico = 151552
-        if RadarPreferences.radarStateHires {
+        if RadarPreferences.stateHires {
             stateLinesFileResid = R.Raw.statev3
             countState = 1166552
             countStateUs = 1166552
         }
-        if RadarPreferences.radarCamxBorders {
+        if RadarPreferences.camxBorders {
             countState += countCanada + countMexico
         }
-        if RadarPreferences.radarCountyHires {
+        if RadarPreferences.countyHires {
             countyFileResid = R.Raw.countyv2
             countCounty = 820852
         }
         stateRelativeBuffer = MemoryBuffer(countState * 4)
         hwRelativeBuffer = MemoryBuffer(countHw * 4)
-        if RadarPreferences.radarHwEnhExt {
+        if RadarPreferences.hwEnhExt {
             hwExtRelativeBuffer = MemoryBuffer(countHwExt * 4)
         }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
@@ -121,9 +121,9 @@ final class RadarGeometry {
                 true,
                 true,
                 true,
-                RadarPreferences.radarCamxBorders,
-                RadarPreferences.radarCamxBorders,
-                RadarPreferences.radarHwEnhExt
+                RadarPreferences.camxBorders,
+                RadarPreferences.camxBorders,
+                RadarPreferences.hwEnhExt
         ]
         let fileAdd = [false, false, false, false, true, true, false]
         fileidArr.indices.forEach {

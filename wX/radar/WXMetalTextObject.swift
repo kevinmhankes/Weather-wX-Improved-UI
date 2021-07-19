@@ -25,7 +25,7 @@ final class WXMetalTextObject {
     private let glViewWidth: Double
     private let glViewHeight: Double
     private let scale: Double
-    private let textSize = Double(RadarPreferences.radarTextSize)
+    private let textSize = Double(RadarPreferences.textSize)
     private let context: UIViewController
     private let screenScale: Double
     private let xFudge: Double
@@ -182,7 +182,7 @@ final class WXMetalTextObject {
     
     private func addTextLabelsObservations() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
-            let obsExtZoom = Double(RadarPreferences.radarObsExtZoom)
+            let obsExtZoom = Double(RadarPreferences.obsExtZoom)
             glView.observations = []
             if wxMetalRender.zoom > obsMinZoom {
                 UtilityMetar.obsArr.indices.forEach { index in

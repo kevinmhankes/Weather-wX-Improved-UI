@@ -273,7 +273,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if RadarPreferences.wxoglRadarAutorefresh {
             UIApplication.shared.isIdleTimerDisabled = true
             oneMinRadarFetch = Timer.scheduledTimer(
-                timeInterval: 60.0 * Double(RadarPreferences.radarDataRefreshInterval),
+                timeInterval: 60.0 * Double(RadarPreferences.dataRefreshInterval),
                 target: self,
                 selector: #selector(getRadarEveryMinute),
                 userInfo: nil,
@@ -478,7 +478,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     func updateWarningsInToolbar() {
         warningCount = 0
-        if RadarPreferences.radarWarnings {
+        if RadarPreferences.warnings {
             let tstCount = WXGLPolygonWarnings.getCount(PolygonEnum.TST)
             let torCount = WXGLPolygonWarnings.getCount(PolygonEnum.TOR)
             let ffwCount = WXGLPolygonWarnings.getCount(PolygonEnum.FFW)
@@ -751,7 +751,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
             alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
         }
-        if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
+        if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
             alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
 //        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
@@ -765,14 +765,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 //            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
 //        }
         
-        if RadarPreferences.radarWatMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
+        if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
             alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
         }
-        if RadarPreferences.radarWatMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
+        if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
             // print(MyApplication.mcdNoList.value)
             alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
-        if RadarPreferences.radarMpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
+        if RadarPreferences.mpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
             alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
 
@@ -835,7 +835,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     func updateColorLegend() {
-        if RadarPreferences.radarShowLegend && numberOfPanes == 1 {
+        if RadarPreferences.showLegend && numberOfPanes == 1 {
             uiColorLegend.removeFromSuperview()
             uiColorLegend = UIColorLegend(
                 wxMetalRenders[0]!.product,

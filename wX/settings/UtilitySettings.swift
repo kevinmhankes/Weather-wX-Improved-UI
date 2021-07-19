@@ -20,12 +20,12 @@ final class UtilitySettings {
     }
 
     static func backupRadarSettingsAndEnable() {
-        RadarPreferences.radarWarningsOrig = RadarPreferences.radarWarnings
-        RadarPreferences.radarWarnings = true
+        RadarPreferences.warningsOrig = RadarPreferences.warnings
+        RadarPreferences.warnings = true
         UtilityDownloadWarnings.timer.resetTimer()
     }
 
     static func restoreRadarSettings() {
-        RadarPreferences.radarWarnings = RadarPreferences.radarWarningsOrig
+        RadarPreferences.warnings = RadarPreferences.warningsOrig
     }
 }

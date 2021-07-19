@@ -17,6 +17,11 @@ Kotlin:
 ```kotlin
 y = newValue.toDoubleOrNull() ?: 0.0
 ```
+Groovy:
+```groovy
+// surround with try {} catch (Exception e) {}
+d = Double.parseDouble(s)
+```
 ```swift
 removeAt
 remove(at:)
@@ -34,6 +39,10 @@ static private func parseLatLon(_ string: String) -> [Double] {
 Kotlin:
 ```kotlin
 fun addColdFrontTriangles(front: Fronts, tokens: List<String>) {
+```
+Groovy:
+```groovy
+static void addColdFrontTriangles(Fronts front, List<String> tokens) {
 ```
 
 ### Char at index in String
@@ -63,6 +72,16 @@ for (v in values) {
 tokens.indices.forEach { index ->
 bitmaps.forEachIndexed { index, bitmap ->
 ```
+Groovy:
+```
+for (v in values) {
+for (String v : values) {
+for (int i : 0..totalBins) {
+for (int i : 0..<totalBins) {
+for (int i = 0; i < len; i += 1) {
+tokens.indices.each { index ->
+bitmaps.eachWithIndex { bitmap, index ->
+```
 Kotlin:
 ```
 (100 downTo -1 step 1).forEach {
@@ -91,6 +110,10 @@ kotlin
 ```kotlin
 alist.size
 ```
+groovy
+```groovy
+alist.size()
+```
 
 ### List add single value or a sequence
 Dart
@@ -102,6 +125,15 @@ Swift
 alist.append(v)
 list1.append(contentsOf: list2)
 list1 += list2
+```
+kotlin
+```kotlin
+alist.add(v)
+```
+groovy
+```groovy
+alist.add(v)
+alist.addAll(vList)
 ```
 
 ### get the last, first, or start/end items in a list
@@ -118,6 +150,13 @@ alist.first()
 alist.last()
 alist.take(5)
 alist.takeLast(5)
+```
+groovy
+```groovy
+alist.first()
+alist.last()
+alist.take(5)
+alist.takeRight(5)
 ```
 
 ### Floor
@@ -186,6 +225,10 @@ val sectorToName = mapOf(
 )
 
 val size = sizeMap[sector] ?: fullSize
+
+for (size in sizeMap.keys) {
+
+val b = sizeMap.containsKey("test")
 ```
 swift
 ```swift
@@ -197,6 +240,15 @@ d.keys.forEach { key in
 }
 
 let s = provinceToMosaicSector[province] ?? ""
+```
+groovy
+```groovy
+static Map<String, String> sizeMap = [:]
+static Map<String, String> sizeMap = ["small": "100", "medium": "200"]
+sectorToLatLon.put("cgl", new LatLon(39.123405, -82.532938)) // cgl wellston, Oh
+sizeMap.each { size, number ->
+sizeMap.eachWithIndex { item, number -> println(item.key + " " + item.value)
+
 ```
 dart
 ```dart

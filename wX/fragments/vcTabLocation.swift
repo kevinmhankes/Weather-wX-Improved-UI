@@ -742,14 +742,14 @@ final class vcTabLocation: vcTabParent {
             let radarDescription = rid.name + " " + Utility.getRadarSiteName(rid.name) + " " + String(rid.distance) + " mi"
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name) }))
         }
-        if RadarPreferences.radarWarnings || ObjectPolygonWarning.areAnyEnabled() {
+        if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() {
             alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
-        if RadarPreferences.radarWatMcd {
+        if RadarPreferences.watMcd {
             alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
             alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
-        if RadarPreferences.radarMpd {
+        if RadarPreferences.mpd {
             alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)

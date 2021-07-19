@@ -26,80 +26,80 @@ struct PolygonType {
         "SPS",
         ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!.isEnabled
     )
-    static var MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.radarWatMcd)
-    static var MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.radarMpd)
-    static var WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.radarWatMcd)
+    static var MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.watMcd)
+    static var MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.mpd)
+    static var WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.watMcd)
     static var WATCH_TORNADO = PolygonType(
         RadarGeometry.radarColorTorWatch,
         "WATCH_TORNADO",
-        RadarPreferences.radarWatMcd
+        RadarPreferences.watMcd
     )
-    static var TST = PolygonType(RadarGeometry.radarColorTstorm, "TST", RadarPreferences.radarWarnings)
-    static var TOR = PolygonType(RadarGeometry.radarColorTor, "TOR", RadarPreferences.radarWarnings)
-    static var FFW = PolygonType(RadarGeometry.radarColorFfw, "FFW", RadarPreferences.radarWarnings)
+    static var TST = PolygonType(RadarGeometry.radarColorTstorm, "TST", RadarPreferences.warnings)
+    static var TOR = PolygonType(RadarGeometry.radarColorTor, "TOR", RadarPreferences.warnings)
+    static var FFW = PolygonType(RadarGeometry.radarColorFfw, "FFW", RadarPreferences.warnings)
     static var SPOTTER = PolygonType(
         RadarGeometry.radarColorSpotter,
         "SPOTTER",
-        RadarPreferences.radarSpotters,
-        RadarPreferences.radarSpotterSize
+        RadarPreferences.spotters,
+        RadarPreferences.spotterSize
     )
     static var SPOTTER_LABELS = PolygonType(
         RadarGeometry.radarColorSpotter,
         "SPOTTER_LABELS",
-        RadarPreferences.radarSpottersLabel
+        RadarPreferences.spottersLabel
     )
     static var WIND_BARB_GUSTS = PolygonType(
         Color.RED,
         "WIND_BARB_GUSTS",
-        RadarPreferences.radarObsWindbarbs,
-        RadarPreferences.radarAviationSize
+        RadarPreferences.obsWindbarbs,
+        RadarPreferences.aviationSize
     )
     static var WIND_BARB = PolygonType(
         RadarGeometry.radarColorObsWindbarbs,
         "WIND_BARB",
-        RadarPreferences.radarObsWindbarbs,
-        RadarPreferences.radarAviationSize
+        RadarPreferences.obsWindbarbs,
+        RadarPreferences.aviationSize
     )
     static var WIND_BARB_CIRCLE = PolygonType(
         RadarGeometry.radarColorObsWindbarbs,
         "WIND_BARB_CIRCLE",
-        RadarPreferences.radarObsWindbarbs,
-        RadarPreferences.radarAviationSize
+        RadarPreferences.obsWindbarbs,
+        RadarPreferences.aviationSize
     )
     static var LOCDOT = PolygonType(
         RadarGeometry.radarColorLocdot,
         "LOCDOT",
-        RadarPreferences.radarLocDot,
-        RadarPreferences.radarLocdotSize
+        RadarPreferences.locDot,
+        RadarPreferences.locdotSize
     )
     static var LOCDOT_CIRCLE = PolygonType(
         RadarGeometry.radarColorLocdot,
         "LOCDOT_CIRCLE",
         RadarPreferences.locdotFollowsGps,
-        RadarPreferences.radarLocdotSize
+        RadarPreferences.locdotSize
     )
-    static var STI = PolygonType(RadarGeometry.radarColorSti, "STI", RadarPreferences.radarSti)
+    static var STI = PolygonType(RadarGeometry.radarColorSti, "STI", RadarPreferences.sti)
     static var TVS = PolygonType(
         RadarGeometry.radarColorTor,
         "TVS",
-        RadarPreferences.radarTvs,
-        RadarPreferences.radarTvsSize
+        RadarPreferences.tvs,
+        RadarPreferences.tvsSize
     )
     static var HI = PolygonType(
         RadarGeometry.radarColorHi,
         "HI",
-        RadarPreferences.radarHi,
-        RadarPreferences.radarHiSize
+        RadarPreferences.hi,
+        RadarPreferences.hiSize
     )
     static var OBS = PolygonType(
         RadarGeometry.radarColorObs,
         "OBS",
-        RadarPreferences.radarObs
+        RadarPreferences.obs
     )
     static var SWO = PolygonType(
         RadarGeometry.radarColorHi,
         "SWO",
-        RadarPreferences.radarSwo
+        RadarPreferences.swo
     )
     var color = 0
     var string = ""
@@ -139,58 +139,58 @@ struct PolygonType {
             "SPS",
             ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!.isEnabled
         )
-        MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.radarWatMcd)
-        MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.radarMpd)
-        WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.radarWatMcd)
-        WATCH_TORNADO = PolygonType(RadarGeometry.radarColorTorWatch, "WATCH_TORNADO", RadarPreferences.radarWatMcd)
-        TST = PolygonType(RadarGeometry.radarColorTstorm, "TST", RadarPreferences.radarWarnings)
-        TOR = PolygonType(RadarGeometry.radarColorTor, "TOR", RadarPreferences.radarWarnings)
-        FFW = PolygonType(RadarGeometry.radarColorFfw, "FFW", RadarPreferences.radarWarnings)
+        MCD = PolygonType(RadarGeometry.radarColorMcd, "MCD", RadarPreferences.watMcd)
+        MPD = PolygonType(RadarGeometry.radarColorMpd, "MPD", RadarPreferences.mpd)
+        WATCH = PolygonType(RadarGeometry.radarColorTstormWatch, "WATCH", RadarPreferences.watMcd)
+        WATCH_TORNADO = PolygonType(RadarGeometry.radarColorTorWatch, "WATCH_TORNADO", RadarPreferences.watMcd)
+        TST = PolygonType(RadarGeometry.radarColorTstorm, "TST", RadarPreferences.warnings)
+        TOR = PolygonType(RadarGeometry.radarColorTor, "TOR", RadarPreferences.warnings)
+        FFW = PolygonType(RadarGeometry.radarColorFfw, "FFW", RadarPreferences.warnings)
         SPOTTER = PolygonType(
             RadarGeometry.radarColorSpotter,
             "SPOTTER",
-            RadarPreferences.radarSpotters,
-            RadarPreferences.radarSpotterSize
+            RadarPreferences.spotters,
+            RadarPreferences.spotterSize
         )
         SPOTTER_LABELS = PolygonType(
             RadarGeometry.radarColorSpotter,
             "SPOTTER_LABELS",
-            RadarPreferences.radarSpottersLabel
+            RadarPreferences.spottersLabel
         )
         WIND_BARB_GUSTS = PolygonType(
             Color.RED,
             "WIND_BARB_GUSTS",
-            RadarPreferences.radarObsWindbarbs,
-            RadarPreferences.radarAviationSize
+            RadarPreferences.obsWindbarbs,
+            RadarPreferences.aviationSize
         )
         WIND_BARB = PolygonType(
             RadarGeometry.radarColorObsWindbarbs,
             "WIND_BARB",
-            RadarPreferences.radarObsWindbarbs,
-            RadarPreferences.radarAviationSize
+            RadarPreferences.obsWindbarbs,
+            RadarPreferences.aviationSize
         )
         WIND_BARB_CIRCLE = PolygonType(
             RadarGeometry.radarColorObsWindbarbs,
             "WIND_BARB_CIRCLE",
-            RadarPreferences.radarObsWindbarbs,
-            RadarPreferences.radarAviationSize
+            RadarPreferences.obsWindbarbs,
+            RadarPreferences.aviationSize
         )
         LOCDOT = PolygonType(
             RadarGeometry.radarColorLocdot,
             "LOCDOT",
-            RadarPreferences.radarLocDot,
-            RadarPreferences.radarLocdotSize
+            RadarPreferences.locDot,
+            RadarPreferences.locdotSize
         )
         LOCDOT_CIRCLE = PolygonType(
             RadarGeometry.radarColorLocdot,
             "LOCDOT_CIRCLE",
             RadarPreferences.locdotFollowsGps,
-            RadarPreferences.radarLocdotSize
+            RadarPreferences.locdotSize
         )
-        STI = PolygonType(RadarGeometry.radarColorSti, "STI", RadarPreferences.radarSti)
-        TVS = PolygonType(RadarGeometry.radarColorTor, "TVS", RadarPreferences.radarTvs, RadarPreferences.radarTvsSize)
-        HI = PolygonType(RadarGeometry.radarColorHi, "HI", RadarPreferences.radarHi, RadarPreferences.radarHiSize)
-        OBS = PolygonType(RadarGeometry.radarColorObs, "OBS", RadarPreferences.radarObs)
-        SWO = PolygonType(RadarGeometry.radarColorHi, "SWO", RadarPreferences.radarSwo)
+        STI = PolygonType(RadarGeometry.radarColorSti, "STI", RadarPreferences.sti)
+        TVS = PolygonType(RadarGeometry.radarColorTor, "TVS", RadarPreferences.tvs, RadarPreferences.tvsSize)
+        HI = PolygonType(RadarGeometry.radarColorHi, "HI", RadarPreferences.hi, RadarPreferences.hiSize)
+        OBS = PolygonType(RadarGeometry.radarColorObs, "OBS", RadarPreferences.obs)
+        SWO = PolygonType(RadarGeometry.radarColorHi, "SWO", RadarPreferences.swo)
     }
 }

@@ -17,42 +17,42 @@ struct GeographyType {
         RadarGeometry.countyRelativeBuffer,
         RadarGeometry.countCounty,
         RadarGeometry.radarColorCounty,
-        RadarPreferences.radarCounty
+        RadarPreferences.county
     )
     static var lakes = GeographyType(
         "LAKES",
         RadarGeometry.lakesRelativeBuffer,
         RadarGeometry.countLakes,
         RadarGeometry.radarColorLakes,
-        RadarPreferences.radarLakes
+        RadarPreferences.lakes
     )
     static var highways = GeographyType(
         "HIGHWAYS",
         RadarGeometry.hwRelativeBuffer,
         RadarGeometry.countHw,
         RadarGeometry.radarColorHw,
-        RadarPreferences.radarHw
+        RadarPreferences.hw
     )
     static var highwaysExtended = GeographyType(
         "HIGHWAYS_EXTENDED",
         RadarGeometry.hwExtRelativeBuffer,
         RadarGeometry.countHwExt,
         RadarGeometry.radarColorHwExt,
-        RadarPreferences.radarHwEnhExt
+        RadarPreferences.hwEnhExt
     )
     static var cities = GeographyType(
         "CITIES",
         MemoryBuffer(),
         0,
         RadarGeometry.radarColorCity,
-        RadarPreferences.radarCities
+        RadarPreferences.cities
     )
     static var countyLabels = GeographyType(
         "COUNTY_LABELS",
         MemoryBuffer(),
         0,
         RadarGeometry.radarColorCountyLabels,
-        RadarPreferences.radarCountyLabels
+        RadarPreferences.countyLabels
     )
     static var NONE = GeographyType(
         "NONE",
@@ -88,42 +88,42 @@ struct GeographyType {
             RadarGeometry.countyRelativeBuffer,
             RadarGeometry.countCounty,
             RadarGeometry.radarColorCounty,
-            RadarPreferences.radarCounty
+            RadarPreferences.county
         )
         lakes = GeographyType(
             "LAKES",
             RadarGeometry.lakesRelativeBuffer,
             RadarGeometry.countLakes,
             RadarGeometry.radarColorLakes,
-            RadarPreferences.radarLakes
+            RadarPreferences.lakes
         )
         highways = GeographyType(
             "HIGHWAYS",
              RadarGeometry.hwRelativeBuffer,
              RadarGeometry.countHw,
              RadarGeometry.radarColorHw,
-             RadarPreferences.radarHw
+             RadarPreferences.hw
         )
         highwaysExtended = GeographyType(
             "HIGHWAYS_EXTENDED",
              RadarGeometry.hwExtRelativeBuffer,
              RadarGeometry.countHwExt,
              RadarGeometry.radarColorHwExt,
-             RadarPreferences.radarHwEnhExt
+             RadarPreferences.hwEnhExt
         )
         cities = GeographyType(
             "CITIES",
             MemoryBuffer(),
             0,
             RadarGeometry.radarColorCity,
-            RadarPreferences.radarCities
+            RadarPreferences.cities
         )
         countyLabels = GeographyType(
             "COUNTY_LABELS",
              MemoryBuffer(),
              0,
              RadarGeometry.radarColorCountyLabels,
-             RadarPreferences.radarCountyLabels
+             RadarPreferences.countyLabels
         )
         NONE = GeographyType(
             "NONE",
