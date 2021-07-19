@@ -70,7 +70,7 @@ final class WXMetalNexradLevelData {
         } else {
             dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
         }
-        // print(dis.capacity)
+        dis.position = 0
         
         if dis.capacity > 0 {
             while dis.getShort() != -1 {}
@@ -112,7 +112,16 @@ final class WXMetalNexradLevelData {
             binWord = MemoryBuffer(360 * 230)
         }
         radialStartAngle = MemoryBuffer(4 * 360)
-        let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
+        // let dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
+        
+        let dis: MemoryBuffer
+        if RadarPreferences.useFileStorage {
+            dis = fileStorage.memoryBuffer
+        } else {
+            dis = UtilityIO.readFileToByteBuffer(radarBuffers!.fileName)
+        }
+        dis.position = 0
+        
         if dis.capacity > 0 {
             dis.skipBytes(30)
             dis.skipBytes(20)

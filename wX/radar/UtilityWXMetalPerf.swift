@@ -21,9 +21,7 @@ final class UtilityWXMetalPerf {
         } else {
             disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
         }
-        
         disFirst.position = 0
-        print(disFirst.capacity)
         
         if disFirst.capacity == 0 {
             return 0
