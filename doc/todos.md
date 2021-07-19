@@ -1,10 +1,10 @@
-nexrad state
-FileStorage
-objectWatch - if html == "" don't save, reset timer
-rationalize all the Enums, etc
-create/use FutureVoid FutureText FutureBytes
-objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
-wxRender - add more threads for metar, spc swo, wpc fronts
+* nexrad state
+* FileStorage
+* objectWatch - if html == "" don't save, reset timer
+* rationalize all the Enums, etc
+* create/use FutureVoid FutureText FutureBytes
+* objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
+* wxRender - add more threads for metar, spc swo, wpc fronts
 
 // [REF] RadarPref shorten names
 // [FIX] alerts no way back to image after set filter
