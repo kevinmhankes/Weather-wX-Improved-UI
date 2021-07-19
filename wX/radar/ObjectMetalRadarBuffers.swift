@@ -49,9 +49,9 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         let totalBins: Int
         switch rd.productCode {
         case 37, 38:
-            totalBins = UtilityWXMetalPerfRaster.generate(self)
+            totalBins = UtilityWXMetalPerfRaster.generate(self, fileStorage)
         case 153, 154, 30, 56, 78, 80, 181:
-            totalBins = UtilityWXMetalPerf.genRadials(self)
+            totalBins = UtilityWXMetalPerf.genRadials(self, fileStorage)
         case 0:
             totalBins = 0
         default:

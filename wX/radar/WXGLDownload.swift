@@ -46,7 +46,11 @@ final class WXGLDownload {
         let ridPrefix = getRidPrefix(radarSite, isTdwr)
         if !product.contains("L2") {
             let data = getRadarFileUrl(radarSite, product, isTdwr).getDataFromUrl()
-            UtilityIO.saveInputStream(data, l3BaseFn + indexString)
+            if RadarPreferences.useFileStorage {
+                fileStorage.memoryBuffer = MemoryBuffer(data)
+            } else {
+                UtilityIO.saveInputStream(data, l3BaseFn + indexString)
+            }
         } else {
             if url == "" {
                 let data = getInputStreamFromURLL2(getLevel2Url(radarSite))

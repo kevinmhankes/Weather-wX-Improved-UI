@@ -49,6 +49,7 @@ final class RadarPreferences {
     static var wxoglCenterOnLocation = false
     static var radarShowWpcFronts = false
     static var showRadarWhenPan = true
+    static let useFileStorage = false
 
     static func initialize() {
         if UtilityUI.isTablet() {

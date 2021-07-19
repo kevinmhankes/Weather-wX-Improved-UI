@@ -10,7 +10,7 @@ final class UtilityWXMetalPerfL2 {
 
     private static let fileHeaderSize = 24
 
-    static func decompress (_ radarBuffers: ObjectMetalRadarBuffers) {
+    static func decompress (_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) {
         let destinationPath = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
         let refDecompSize = 827040

@@ -15,7 +15,16 @@ final class UtilityWXMetalPerf {
     
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> Int {
         var totalBins = 0
-        let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
+        let disFirst: MemoryBuffer
+        if RadarPreferences.useFileStorage {
+            disFirst = fileStorage.memoryBuffer
+        } else {
+            disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
+        }
+        
+        disFirst.position = 0
+        print(disFirst.capacity)
+        
         if disFirst.capacity == 0 {
             return 0
         }
@@ -44,6 +53,7 @@ final class UtilityWXMetalPerf {
         (0..<numberOfRadials).forEach { radial in
             numberOfRleHalfWords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
+            // print(angle)
             dis2.skipBytes(2)
             if radial < numberOfRadials - 1 {
                 dis2.mark(dis2.position)
@@ -111,7 +121,7 @@ final class UtilityWXMetalPerf {
         return totalBins
     }
     
-    static func genRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
+    static func genRadials(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> Int {
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colorMap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colorMap.blueValues.put(0, Color.blue(radarBuffers.bgColor))
