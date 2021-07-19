@@ -34,7 +34,7 @@ final class FileStorage {
         var data = ""
         if let retStr1 = String(data: byteArray, encoding: .ascii) {
             data = retStr1
-            print(data)
+            // print(data)
         }
         // dataAsQString: str = byteArrayF.decode('iso-8859-1')
         level3TextProductMap[product] = data
