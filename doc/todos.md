@@ -1,5 +1,5 @@
 * nexrad state
-* move *Pref* out of global and into settings
+* move radar stuff out of global and into radar
 * FileStorage
     - level 2
     - anim
