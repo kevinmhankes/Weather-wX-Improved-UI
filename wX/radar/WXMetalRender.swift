@@ -347,7 +347,7 @@ final class WXMetalRender {
         case .SPS:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case .STI:
-            list = WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString)
+            list = WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString, fileStorage)
         default:
             list = [Double]()
         }
@@ -731,14 +731,14 @@ final class WXMetalRender {
     }
 
     func constructWBLines() {
-        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: false))
+        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: false, fileStorage))
         constructWBLinesGusts()
         constructWBCircle()
         wbBuffers.generateMtlBuffer(device)
     }
 
     func constructWBLinesGusts() {
-        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: true))
+        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: true, fileStorage))
         wbGustsBuffers.generateMtlBuffer(device)
     }
 
@@ -756,7 +756,7 @@ final class WXMetalRender {
     }
 
     func constructStiLines() {
-        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString))
+        constructGenericLinesShort(stiBuffers, WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString, fileStorage))
         stiBuffers.generateMtlBuffer(device)
     }
 
@@ -766,7 +766,7 @@ final class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(projectionNumbers, "nids_tvs_tab" + indexString))
+        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(projectionNumbers, "nids_tvs_tab" + indexString, fileStorage))
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
@@ -776,7 +776,7 @@ final class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(projectionNumbers, "nids_hi_tab" + indexString))
+        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(projectionNumbers, "nids_hi_tab" + indexString, fileStorage))
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }

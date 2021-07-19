@@ -6,7 +6,7 @@
 
 final class WXGLNexradLevel3TVS {
 
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) -> [Double] {
         WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
         if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             var stormList = [Double]()

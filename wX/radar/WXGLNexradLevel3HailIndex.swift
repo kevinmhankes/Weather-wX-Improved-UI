@@ -8,7 +8,7 @@ final class WXGLNexradLevel3HailIndex {
 
     private static let pattern = "(\\d+) "
 
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String) -> [Double] {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) -> [Double] {
         WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
         if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             var stormList = [Double]()
