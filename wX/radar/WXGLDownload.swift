@@ -117,15 +117,21 @@ final class WXGLDownload {
             listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
+        
+        fileStorage.animationMemoryBuffer = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
         (0..<frameCount).forEach { index in
             let data = (getRadarDirectoryUrl(radarSite, product, ridPrefix) + listOfFiles[index]).getDataFromUrl()
-            UtilityIO.saveInputStream(data, listOfFiles[index])
+            if RadarPreferences.useFileStorage {
+                fileStorage.animationMemoryBuffer[index] = MemoryBuffer(data)
+            } else {
+                UtilityIO.saveInputStream(data, listOfFiles[index])
+            }
         }
         return listOfFiles
     }
     
     // Level 2: Download a list of files and return the list as a list of Strings
-    private static func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCnt: Int, _ fileStorage: FileStorage) -> [String] {
+    private static func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCount: Int, _ fileStorage: FileStorage) -> [String] {
         var listOfFiles = [String]()
         let list = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
@@ -135,10 +141,15 @@ final class WXGLDownload {
         if ratio < 0.75 {
             additionalAdd = 1
         }
-        (0..<frameCnt).forEach { index in
-            listOfFiles.append(list[list.count - (frameCnt - index + additionalAdd) * 2])
+        fileStorage.animationMemoryBuffer = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
+        (0..<frameCount).forEach { index in
+            listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
-            UtilityIO.saveInputStream(data, listOfFiles[index])
+            if RadarPreferences.useFileStorage {
+                fileStorage.animationMemoryBuffer[frameCount] = MemoryBuffer(data)
+            } else {
+                UtilityIO.saveInputStream(data, listOfFiles[index])
+            }
         }
         return listOfFiles
     }

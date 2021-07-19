@@ -51,6 +51,7 @@ final class RadarPreferences {
     static var showRadarWhenPan = true
     static let nexradContinuousMode = true
     static let useFileStorage = false
+    // static let useFileStorage = true
 
     static func initialize() {
         if UtilityUI.isTablet() {

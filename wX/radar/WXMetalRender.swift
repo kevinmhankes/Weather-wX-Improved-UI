@@ -553,8 +553,16 @@ final class WXMetalRender {
                 radarBuffers.fileName = "l2" + indexString
             }
         } else {
-            isAnimating = true
-            radarBuffers.fileName = url
+            // url will contain "nexrad_anim" with old method
+            if url.contains("nexrad_anim") {
+                isAnimating = true
+                radarBuffers.fileName = url
+            } else {
+                let index = to.Int(url)
+                fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[index]
+                // print(index)
+                // print(fileStorage.animationMemoryBuffer[index].capacity)
+            }
         }
 //        if url == "" { // not animating
 //            [stiBuffers, tvsBuffers, hiBuffers].forEach {

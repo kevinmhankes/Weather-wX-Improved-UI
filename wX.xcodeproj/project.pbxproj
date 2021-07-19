@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		030045C5233FD89700F7FFBD /* ObjectCardDashAlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */; };
 		030045C7233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */; };
-		0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */; };
 		0302CF3F1FEE5F5E0062C0DC /* ColorPalettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */; };
 		03035CB423F9C35B00B040C8 /* vcSpcFireOutlook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */; };
-		0303BC482485CD5E00A61411 /* PolygonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0303BC472485CD5E00A61411 /* PolygonEnum.swift */; };
 		03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03089CC121CFF17800C9FE4D /* ObjectFab.swift */; };
 		03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */; };
 		030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */; };
@@ -103,13 +101,19 @@
 		0351449626A47C0A00AF38B6 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449526A47C0900AF38B6 /* FileStorage.swift */; };
 		0351449826A5E78400AF38B6 /* RadarPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449726A5E78400AF38B6 /* RadarPreferences.swift */; };
 		0351449A26A5E78C00AF38B6 /* UIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449926A5E78C00AF38B6 /* UIPreferences.swift */; };
+		0351449E26A5E90D00AF38B6 /* PolygonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449B26A5E90C00AF38B6 /* PolygonType.swift */; };
+		0351449F26A5E90D00AF38B6 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449C26A5E90C00AF38B6 /* PolygonTypeGeneric.swift */; };
+		035144A026A5E90D00AF38B6 /* PolygonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449D26A5E90D00AF38B6 /* PolygonEnum.swift */; };
+		035144A226A5E91500AF38B6 /* RadarGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A126A5E91500AF38B6 /* RadarGeometry.swift */; };
+		035144A426A5E96E00AF38B6 /* GeographyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A326A5E96E00AF38B6 /* GeographyType.swift */; };
+		035144A626A5E97600AF38B6 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A526A5E97600AF38B6 /* RadarType.swift */; };
+		035144A826A5EB3C00AF38B6 /* UtilitySunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A726A5EB3C00AF38B6 /* UtilitySunMoon.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F323C116D10024153D /* FrontTypeEnum.swift */; };
 		0354D3F623C117710024153D /* Fronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F523C117710024153D /* Fronts.swift */; };
 		0354D3F823C1188C0024153D /* UtilityWpcFronts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */; };
 		0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */; };
 		0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3FB23C1194E0024153D /* PressureCenter.swift */; };
-		03562F461FCC17AD00456395 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03562F451FCC17AD00456395 /* RadarType.swift */; };
 		035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66E9240A911E00038C98 /* UtilityAudio.swift */; };
 		035A66EC240C88B500038C98 /* ObjectImageAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66EB240C88B500038C98 /* ObjectImageAndText.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
@@ -143,7 +147,6 @@
 		036E9BA4269DFA350009A47B /* UtilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E9BA3269DFA350009A47B /* UtilityList.swift */; };
 		037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037162DD21C1013700B815BB /* UtilityWatch.swift */; };
 		0379672E227B8C990067920C /* ObjectPolygonWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379672D227B8C990067920C /* ObjectPolygonWarning.swift */; };
-		037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */; };
 		037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */; };
 		037F6EFF1FB71CC1008A2BDA /* ObjectCardSunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */; };
 		037FF27D21A993450002E6E6 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 037FF27C21A993450002E6E6 /* Shaders.metal */; };
@@ -258,7 +261,6 @@
 		F064D1421DB6EBAB003C04FB /* ExternalPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */; };
 		F064D1441DB6EBB7003C04FB /* ExternalPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */; };
 		F067DEE01DC6BFFF0066CB56 /* GenMercato.c in Sources */ = {isa = PBXBuildFile; fileRef = F067DEDF1DC6BFFF0066CB56 /* GenMercato.c */; };
-		F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06814C11EC29A95000E4405 /* GeographyType.swift */; };
 		F06B98CF1E0E93B800EFF7FC /* UtilityCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B98CE1E0E93B800EFF7FC /* UtilityCanada.swift */; };
 		F06B98D31E0EAD1800EFF7FC /* UtilityCanadaHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B98D21E0EAD1800EFF7FC /* UtilityCanadaHourly.swift */; };
 		F06DB4391DA41547005B243A /* hwv4ext.bin in Resources */ = {isa = PBXBuildFile; fileRef = F06DB41A1DA41546005B243A /* hwv4ext.bin */; };
@@ -365,12 +367,10 @@
 		F0B335DA1DA3FDA70035BD36 /* UtilityNexradColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */; };
 		F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */; };
 		F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */; };
-		F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */; };
 		F0B335F81DA3FDC80035BD36 /* UtilityTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */; };
 		F0B335FE1DA3FDD40035BD36 /* UtilityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B335FA1DA3FDD40035BD36 /* UtilityUI.swift */; };
 		F0B492231DCFBE2F00B184D9 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B492221DCFBE2F00B184D9 /* Just.swift */; };
 		F0B70A861DBF63FB00A3DB6B /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */; };
-		F0C1BC4B1EBAB6A00063C853 /* PolygonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1BC481EBAB6A00063C853 /* PolygonType.swift */; };
 		F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */; };
 		F0C1BC4F1EBAC69C0063C853 /* colormapbvaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */; };
 		F0C1BC501EBAC69C0063C853 /* colormaprefaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */; };
@@ -416,10 +416,8 @@
 /* Begin PBXFileReference section */
 		030045C4233FD89700F7FFBD /* ObjectCardDashAlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardDashAlertItem.swift; sourceTree = "<group>"; };
 		030045C6233FDC7C00F7FFBD /* ObjectCardBlackHeaderText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardBlackHeaderText.swift; sourceTree = "<group>"; };
-		0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometry.swift; sourceTree = "<group>"; };
 		0302CF3E1FEE5F5E0062C0DC /* ColorPalettes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalettes.swift; sourceTree = "<group>"; };
 		03035CB323F9C35B00B040C8 /* vcSpcFireOutlook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcSpcFireOutlook.swift; sourceTree = "<group>"; };
-		0303BC472485CD5E00A61411 /* PolygonEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonEnum.swift; sourceTree = "<group>"; };
 		03089CC121CFF17800C9FE4D /* ObjectFab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFab.swift; sourceTree = "<group>"; };
 		03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewControllerWithAudio.swift; sourceTree = "<group>"; };
 		030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNetworkIO.swift; sourceTree = "<group>"; };
@@ -510,13 +508,19 @@
 		0351449526A47C0900AF38B6 /* FileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		0351449726A5E78400AF38B6 /* RadarPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarPreferences.swift; sourceTree = "<group>"; };
 		0351449926A5E78C00AF38B6 /* UIPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPreferences.swift; sourceTree = "<group>"; };
+		0351449B26A5E90C00AF38B6 /* PolygonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonType.swift; sourceTree = "<group>"; };
+		0351449C26A5E90C00AF38B6 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
+		0351449D26A5E90D00AF38B6 /* PolygonEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonEnum.swift; sourceTree = "<group>"; };
+		035144A126A5E91500AF38B6 /* RadarGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometry.swift; sourceTree = "<group>"; };
+		035144A326A5E96E00AF38B6 /* GeographyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographyType.swift; sourceTree = "<group>"; };
+		035144A526A5E97600AF38B6 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
+		035144A726A5EB3C00AF38B6 /* UtilitySunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySunMoon.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		0354D3F323C116D10024153D /* FrontTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3F523C117710024153D /* Fronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fronts.swift; sourceTree = "<group>"; };
 		0354D3F723C1188C0024153D /* UtilityWpcFronts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWpcFronts.swift; sourceTree = "<group>"; };
 		0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenterTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3FB23C1194E0024153D /* PressureCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenter.swift; sourceTree = "<group>"; };
-		03562F451FCC17AD00456395 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		035A66E9240A911E00038C98 /* UtilityAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAudio.swift; sourceTree = "<group>"; };
 		035A66EB240C88B500038C98 /* ObjectImageAndText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImageAndText.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
@@ -550,7 +554,6 @@
 		036E9BA3269DFA350009A47B /* UtilityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityList.swift; sourceTree = "<group>"; };
 		037162DD21C1013700B815BB /* UtilityWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWatch.swift; sourceTree = "<group>"; };
 		0379672D227B8C990067920C /* ObjectPolygonWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPolygonWarning.swift; sourceTree = "<group>"; };
-		037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonTypeGeneric.swift; sourceTree = "<group>"; };
 		037D7BD723C91E52000FF7D7 /* DownloadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTimer.swift; sourceTree = "<group>"; };
 		037F6EFE1FB71CC1008A2BDA /* ObjectCardSunTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSunTime.swift; sourceTree = "<group>"; };
 		037FF27C21A993450002E6E6 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -668,7 +671,6 @@
 		F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalPoint.swift; sourceTree = "<group>"; };
 		F067DEDE1DC6BFFF0066CB56 /* GenMercato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenMercato.h; path = jni/GenMercato.h; sourceTree = "<group>"; };
 		F067DEDF1DC6BFFF0066CB56 /* GenMercato.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GenMercato.c; path = jni/GenMercato.c; sourceTree = "<group>"; };
-		F06814C11EC29A95000E4405 /* GeographyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographyType.swift; sourceTree = "<group>"; };
 		F06B98CE1E0E93B800EFF7FC /* UtilityCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanada.swift; sourceTree = "<group>"; };
 		F06B98D21E0EAD1800EFF7FC /* UtilityCanadaHourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityCanadaHourly.swift; sourceTree = "<group>"; };
 		F06DB41A1DA41546005B243A /* hwv4ext.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = hwv4ext.bin; sourceTree = "<group>"; };
@@ -781,12 +783,10 @@
 		F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNexradColors.swift; sourceTree = "<group>"; };
 		F0B335C71DA3FDA60035BD36 /* UtilityPlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPlayList.swift; sourceTree = "<group>"; };
 		F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySpotter.swift; sourceTree = "<group>"; };
-		F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySunMoon.swift; sourceTree = "<group>"; };
 		F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTime.swift; sourceTree = "<group>"; };
 		F0B335FA1DA3FDD40035BD36 /* UtilityUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUI.swift; sourceTree = "<group>"; };
 		F0B492221DCFBE2F00B184D9 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 		F0B70A851DBF63FA00A3DB6B /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
-		F0C1BC481EBAB6A00063C853 /* PolygonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonType.swift; sourceTree = "<group>"; };
 		F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionType.swift; sourceTree = "<group>"; };
 		F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbvaf.txt; sourceTree = "<group>"; };
 		F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefaf.txt; sourceTree = "<group>"; };
@@ -1114,7 +1114,6 @@
 		F09504B01E152F6C008A966E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				03ED2BAC269EDFF800B1A34C /* UtilityLog.swift */,
 				F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */,
 				F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */,
 				F08E48321EB0DF8F000629DA /* ObjectHazards.swift */,
@@ -1136,12 +1135,14 @@
 				F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */,
 				F0B3359A1DA3FD960035BD36 /* UtilityIO.swift */,
 				036E9BA3269DFA350009A47B /* UtilityList.swift */,
+				03ED2BAC269EDFF800B1A34C /* UtilityLog.swift */,
 				F0B3359E1DA3FD960035BD36 /* UtilityMath.swift */,
 				035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */,
 				030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */,
 				0382E04122043ADF00DA45C2 /* UtilityObs.swift */,
 				F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */,
 				F0B334F81DA3FBCE0035BD36 /* UtilityString.swift */,
+				035144A726A5EB3C00AF38B6 /* UtilitySunMoon.swift */,
 				F0B335F41DA3FDC80035BD36 /* UtilityTime.swift */,
 				03A40A432286F0E8000750C7 /* UtilityTimeSunMoon.swift */,
 				0343972625E1AAF600F3C0F1 /* UtilityUS.swift */,
@@ -1155,13 +1156,19 @@
 				F0B335201DA3FD2C0035BD36 /* CityExt.swift */,
 				0354D3F523C117710024153D /* Fronts.swift */,
 				0354D3F323C116D10024153D /* FrontTypeEnum.swift */,
+				035144A326A5E96E00AF38B6 /* GeographyType.swift */,
 				F0F7760B1E00092A0022484C /* LatLon.swift */,
 				03AB4AAA21AE161C0037633A /* Level2Metal.swift */,
 				F0B335881DA3FD880035BD36 /* Level2Record.swift */,
 				037FF29121A9C1D90002E6E6 /* ObjectMetalBuffers.swift */,
 				03DF17ED21AA0F4000FC3BEA /* ObjectMetalRadarBuffers.swift */,
+				0351449D26A5E90D00AF38B6 /* PolygonEnum.swift */,
+				0351449B26A5E90C00AF38B6 /* PolygonType.swift */,
+				0351449C26A5E90C00AF38B6 /* PolygonTypeGeneric.swift */,
 				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
 				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
+				035144A126A5E91500AF38B6 /* RadarGeometry.swift */,
+				035144A526A5E97600AF38B6 /* RadarType.swift */,
 				F0B3350A1DA3FD1C0035BD36 /* RID.swift */,
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
@@ -1334,7 +1341,6 @@
 				F0B335461DA3FD510035BD36 /* Extensions.swift */,
 				0335684C234D4B1600428890 /* ExtensionsFloat.swift */,
 				035416A8220EF8B800D9A26B /* FontSize.swift */,
-				F06814C11EC29A95000E4405 /* GeographyType.swift */,
 				F0B335591DA3FD610035BD36 /* GlobalArrays.swift */,
 				F0B3355A1DA3FD610035BD36 /* GlobalDictionaries.swift */,
 				F0B334FF1DA3FC980035BD36 /* GlobalVariables.swift */,
@@ -1344,13 +1350,8 @@
 				030DC62B1FE4A58B006DCF93 /* MotionType.swift */,
 				F0B334FB1DA3FBF10035BD36 /* MyApplication.swift */,
 				03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */,
-				0303BC472485CD5E00A61411 /* PolygonEnum.swift */,
-				F0C1BC481EBAB6A00063C853 /* PolygonType.swift */,
-				037A8610227D189A007D1943 /* PolygonTypeGeneric.swift */,
 				F0C1BC491EBAB6A00063C853 /* ProjectionType.swift */,
 				F0B335081DA3FD1C0035BD36 /* R.swift */,
-				0302CF3C1FEE5F580062C0DC /* RadarGeometry.swift */,
-				03562F451FCC17AD00456395 /* RadarType.swift */,
 				0321B2EC21E0D3EC00677EBC /* TabType.swift */,
 				0321B2ED21E0D3EC00677EBC /* ToolbarType.swift */,
 			);
@@ -1394,7 +1395,6 @@
 				F03F6FA91E0D3E4D00E4B7FA /* UtilityLightning.swift */,
 				F011E60F1DB03D78006531FD /* UtilityObservations.swift */,
 				03F3EB77229941510056A56D /* UtilityOpcImages.swift */,
-				F0B335F21DA3FDC80035BD36 /* UtilitySunMoon.swift */,
 				0364C02F23FF230800D765FF /* UtilityWfoText.swift */,
 				0340422423F16FC2003AB242 /* vcAdhocLocation.swift */,
 				0340422523F16FC3003AB242 /* vcHourly.swift */,
@@ -1647,7 +1647,6 @@
 				0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */,
 				036E9BA4269DFA350009A47B /* UtilityList.swift in Sources */,
 				F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */,
-				037A8611227D189B007D1943 /* PolygonTypeGeneric.swift in Sources */,
 				F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */,
 				F0B335901DA3FD880035BD36 /* Level2Record.swift in Sources */,
 				03F3EB7222993EA80056A56D /* UtilityNws.swift in Sources */,
@@ -1680,6 +1679,7 @@
 				F0B335B11DA3FD960035BD36 /* UtilityMetar.swift in Sources */,
 				F0B335F81DA3FDC80035BD36 /* UtilityTime.swift in Sources */,
 				038651F821FDB00700C48DF1 /* ObjectCardStormReportItem.swift in Sources */,
+				0351449F26A5E90D00AF38B6 /* PolygonTypeGeneric.swift in Sources */,
 				036522B822914B5D0056E657 /* UtilityGoesFullDisk.swift in Sources */,
 				0302CF3F1FEE5F5E0062C0DC /* ColorPalettes.swift in Sources */,
 				0327376D23F2083D002636D1 /* vcTabMisc.swift in Sources */,
@@ -1706,6 +1706,7 @@
 				03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */,
 				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
 				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
+				0351449E26A5E90D00AF38B6 /* PolygonType.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
 				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
 				03C85B56240489C60046C8F4 /* ObjectMap.swift in Sources */,
@@ -1760,7 +1761,6 @@
 				03339AEB22C3678400B888FE /* ObjectNhcStormDetails.swift in Sources */,
 				F0C1BC4C1EBAB6A00063C853 /* ProjectionType.swift in Sources */,
 				034041F123F167F9003AB242 /* vcSpcTstormSummary.swift in Sources */,
-				0303BC482485CD5E00A61411 /* PolygonEnum.swift in Sources */,
 				0332EE0221E9EA8900C6B6D0 /* SunCalc.swift in Sources */,
 				F0DF4C761DBEB8D200D69B1E /* wXColor.swift in Sources */,
 				036E9B98269D0E740009A47B /* FutureBytes.swift in Sources */,
@@ -1772,6 +1772,7 @@
 				F0B3354B1DA3FD510035BD36 /* Color.swift in Sources */,
 				03F3EB6A22993B870056A56D /* UtilitySpcMeso.swift in Sources */,
 				036102D0269CCD020072EEC4 /* FutureVoid.swift in Sources */,
+				035144A426A5E96E00AF38B6 /* GeographyType.swift in Sources */,
 				03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */,
 				0340423E23F16FC3003AB242 /* vcLsrByWfo.swift in Sources */,
 				0340420F23F16C5B003AB242 /* vcNexradRadar.swift in Sources */,
@@ -1792,7 +1793,6 @@
 				0399A14B21CFD3BB0096ECFB /* FloatyWindow.swift in Sources */,
 				F0B335531DA3FD510035BD36 /* Editor.swift in Sources */,
 				03F3EB87229945D10056A56D /* UtilityModelNcepInterface.swift in Sources */,
-				F0B335F61DA3FDC80035BD36 /* UtilitySunMoon.swift in Sources */,
 				034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */,
 				034041D823F162A4003AB242 /* vcWpcRainfallDiscussion.swift in Sources */,
 				037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */,
@@ -1859,6 +1859,7 @@
 				F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */,
 				F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */,
 				F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */,
+				035144A226A5E91500AF38B6 /* RadarGeometry.swift in Sources */,
 				03F4631422A2F14900C06D16 /* UtilityDownloadMpd.swift in Sources */,
 				031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */,
 				031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */,
@@ -1870,6 +1871,7 @@
 				0327376F23F2083D002636D1 /* vcTabLocation.swift in Sources */,
 				0340420423F16A4D003AB242 /* vcSettingsColorListing.swift in Sources */,
 				034041D923F162A4003AB242 /* vcWpcImg.swift in Sources */,
+				035144A826A5EB3C00AF38B6 /* UtilitySunMoon.swift in Sources */,
 				0340421123F16D23003AB242 /* vcModels.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
 				03ED2BAD269EDFF800B1A34C /* UtilityLog.swift in Sources */,
@@ -1878,6 +1880,7 @@
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,
 				036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */,
 				0340423723F16FC3003AB242 /* vcHourly.swift in Sources */,
+				035144A026A5E90D00AF38B6 /* PolygonEnum.swift in Sources */,
 				0340423A23F16FC3003AB242 /* vcSpotters.swift in Sources */,
 				F0B335331DA3FD3B0035BD36 /* WXGLDownload.swift in Sources */,
 				034041DE23F1667B003AB242 /* vcGoes.swift in Sources */,
@@ -1900,7 +1903,6 @@
 				0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */,
 				03171D6123567EFC00170A4A /* KeyDirections.swift in Sources */,
 				031AED0B21C86149004EC175 /* UtilityRadarUI.swift in Sources */,
-				F0C1BC4B1EBAB6A00063C853 /* PolygonType.swift in Sources */,
 				03AB4AA721AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift in Sources */,
 				F071A9FA1E75BD3600B98357 /* ObjectPopUp.swift in Sources */,
 				030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */,
@@ -1917,9 +1919,9 @@
 				036E9B9E269DA98B0009A47B /* FutureAnimation.swift in Sources */,
 				0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */,
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
-				F06814C21EC29A95000E4405 /* GeographyType.swift in Sources */,
 				034041EE23F167F9003AB242 /* vcSpcSwoState.swift in Sources */,
 				03F3EB762299414B0056A56D /* CapAlert.swift in Sources */,
+				035144A626A5E97600AF38B6 /* RadarType.swift in Sources */,
 				036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */,
 				F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */,
 				F015B8131DACF65700EFE0B4 /* UtilityDownloadRadar.swift in Sources */,
@@ -1965,12 +1967,10 @@
 				033A5553240D2628002018BE /* ObjectImageSummary.swift in Sources */,
 				F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */,
 				03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */,
-				0302CF3D1FEE5F590062C0DC /* RadarGeometry.swift in Sources */,
 				035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */,
 				03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */,
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
-				03562F461FCC17AD00456395 /* RadarType.swift in Sources */,
 				F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */,
 				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,
 				F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */,

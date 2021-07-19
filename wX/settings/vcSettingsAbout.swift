@@ -10,6 +10,7 @@ final class vcSettingsAbout: UIwXViewController {
 
     private let faqUrl = "https://docs.google.com/document/d/e/2PACX-1vQVkTWlnpRZCSn-ZI7tNLMDHUq-oWp9i1bf8e1yFf1ebEA2CFMapVUsALGJASj2aNhEMYAwBMs4GstL/pub"
     private let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
+    private let nwsStatusUrl = "https://forecast.weather.gov/product.php?site=NWS&product=ADA&issuedby=SDM"
     private static let copyright = "©"
     private let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
         + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
@@ -54,6 +55,8 @@ final class vcSettingsAbout: UIwXViewController {
             Route.web(self, faqUrl)
         case "notes":
             Route.web(self, releaseNotesUrl)
+        case "nwsStatus":
+            Route.web(self, nwsStatusUrl)
         default:
             break
         }
@@ -69,6 +72,7 @@ final class vcSettingsAbout: UIwXViewController {
         objectTextView1.color = ColorCompatibility.highlightText
         objectTextView1.tv.isSelectable = false
         objectTextView1.constrain(scrollView)
+        
         let objectTextView2 = Text(
             stackView,
             "View release notes",
@@ -78,6 +82,17 @@ final class vcSettingsAbout: UIwXViewController {
         objectTextView2.color = ColorCompatibility.highlightText
         objectTextView2.tv.isSelectable = false
         objectTextView2.constrain(scrollView)
+        
+        let objectTextView4 = Text(
+            stackView,
+            "NWS Status",
+            FontSize.extraLarge.size,
+            GestureData("nwsStatus", self, #selector(actionClick))
+        )
+        objectTextView4.color = ColorCompatibility.highlightText
+        objectTextView4.tv.isSelectable = false
+        objectTextView4.constrain(scrollView)
+        
         let objectTextView3 = Text(
             stackView,
             aboutText + Utility.showDiagnostics(),

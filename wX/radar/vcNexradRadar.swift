@@ -673,11 +673,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         DispatchQueue.global(qos: .userInitiated).async {
             var animArray = [[String]]()
             self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
-                animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
-                animArray[index].indices.forEach {
-                    UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
-                    UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
-                    // print(animArray[index][$0] + " move to " + String(index) + "nexrad_anim" + String($0))
+                if RadarPreferences.useFileStorage {
+                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
+                } else {
+                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
+                    animArray[index].indices.forEach {
+                        UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
+                        UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
+                    }
                 }
             }
             var scaleFactor = 1
@@ -686,12 +689,18 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                     if self.inOglAnim {
                         self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
                             let buttonText = " (" + String(frame + 1) + "/" + String(frameCnt) + ")"
-                            wxMetalRender!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
+                            if RadarPreferences.useFileStorage {
+                                wxMetalRender!.getRadar(String(frame), buttonText)
+                            } else {
+                                wxMetalRender!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
+                            }
                             scaleFactor = 1
                         }
                         var interval = MyApplication.animInterval
                         if self.wxMetalRenders[0]!.product.hasPrefix("L2") {
-                            if interval < 12 { interval = 12 }
+                            if interval < 12 {
+                                interval = 12
+                            }
                         }
                         usleep(UInt32(100000 * interval * scaleFactor))
                     } else {
