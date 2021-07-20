@@ -118,17 +118,17 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             "NWS_ICON_SIZE_PREF"
             ].forEach { pref in
                 let objSlider = ObjectSlider(self, pref)
-                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
+//                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
                 objectIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
 
-    @objc func sliderValueDidChange(_ sender: UISlider!) {
-        let objId = ObjectIdentifier(sender)
-        let objSlider = objectIdToSlider[objId]!
-        objSlider.setLabel()
-        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
-    }
+//    @objc func sliderValueDidChange(_ sender: UISlider!) {
+//        let objId = ObjectIdentifier(sender)
+//        let objSlider = objectIdToSlider[objId]!
+//        objSlider.setLabel()
+//        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
+//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)

@@ -45,6 +45,8 @@ final class ObjectSlider {
         uiv.stackView.addArrangedSubview(container.view)
         slider.value = Float(initialValue)
         setLabel()
+        
+        slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
     }
 
     func setLabel() {
@@ -56,6 +58,13 @@ final class ObjectSlider {
             for: .normal
         )
         button.titleLabel?.font = FontSize.medium.size
+    }
+    
+    @objc func sliderValueDidChange(_ sender: UISlider!) {
+        //let objId = ObjectIdentifier(sender)
+        //let objSlider = objectIdToSlider[objId]!
+        setLabel()
+        Utility.writePref(prefVar, Int(sender!.value))
     }
 
     private static let prefToLabel = [

@@ -154,17 +154,17 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             "RADAR_TEXT_SIZE"
             ].forEach { pref in
                 let objectSlider = ObjectSlider(self, pref)
-                objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+//                objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
                 objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
         }
     }
 
-    @objc func sliderValueDidChange(_ sender: UISlider!) {
-        let objId = ObjectIdentifier(sender)
-        let objSlider = objectIdToSlider[objId]!
-        objSlider.setLabel()
-        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
-    }
+//    @objc func sliderValueDidChange(_ sender: UISlider!) {
+//        let objId = ObjectIdentifier(sender)
+//        let objSlider = objectIdToSlider[objId]!
+//        objSlider.setLabel()
+//        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
+//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
