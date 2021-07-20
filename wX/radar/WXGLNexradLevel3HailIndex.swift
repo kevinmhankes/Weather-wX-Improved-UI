@@ -8,10 +8,15 @@ final class WXGLNexradLevel3HailIndex {
 
     private static let pattern = "(\\d+) "
 
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) -> [Double] {
-        WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
-        if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
-            var stormList = [Double]()
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
+        // WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
+        
+        let productCode = "HI"
+        WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite, fileStorage)
+        let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
+        var stormList = [Double]()
+        if retStr1.count > 10 {
+        // if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let hailPercent = retStr1.parseColumn("POSH/POH(.*?)V")
             let hailSize = retStr1.parseColumn("MAX HAIL SIZE(.*?)V")
@@ -52,9 +57,10 @@ final class WXGLNexradLevel3HailIndex {
                     index += 1
                 }
             }
-            return stormList
+            // return stormList
         } else {
-            return [Double]()
+            // return [Double]()
         }
+        fileStorage.hiData = stormList
     }
 }

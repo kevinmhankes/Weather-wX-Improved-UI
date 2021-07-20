@@ -347,7 +347,7 @@ final class WXMetalRender {
         case .SPS:
             list = WXGLPolygonWarnings.addGeneric(projectionNumbers, ObjectPolygonWarning.polygonDataByType[PolygonTypeGeneric.SPS]!)
         case .STI:
-            WXGLNexradLevel3StormInfo.decode(projectionNumbers, indexString, fileStorage)
+            WXGLNexradLevel3StormInfo.decode(projectionNumbers, fileStorage)
             list = fileStorage.stiList
         default:
             list = [Double]()
@@ -766,7 +766,7 @@ final class WXMetalRender {
     }
 
     func constructStiLines() {
-        WXGLNexradLevel3StormInfo.decode(projectionNumbers, "nids_sti_tab" + indexString, fileStorage)
+        WXGLNexradLevel3StormInfo.decode(projectionNumbers, fileStorage)
         constructGenericLinesShort(stiBuffers, fileStorage.stiList)
         stiBuffers.generateMtlBuffer(device)
     }
@@ -777,7 +777,8 @@ final class WXMetalRender {
         tvsBuffers.triangleCount = 1
         tvsBuffers.metalBuffer = []
         tvsBuffers.vertexCount = 0
-        tvsBuffers.setXYList(WXGLNexradLevel3TVS.decode(projectionNumbers, "nids_tvs_tab" + indexString, fileStorage))
+        WXGLNexradLevel3TVS.decode(projectionNumbers, fileStorage)
+        tvsBuffers.setXYList(fileStorage.tvsData)
         constructTriangles(tvsBuffers)
         tvsBuffers.generateMtlBuffer(device)
     }
@@ -787,7 +788,8 @@ final class WXMetalRender {
         hiBuffers.triangleCount = 1
         hiBuffers.metalBuffer = []
         hiBuffers.vertexCount = 0
-        hiBuffers.setXYList(WXGLNexradLevel3HailIndex.decode(projectionNumbers, "nids_hi_tab" + indexString, fileStorage))
+        WXGLNexradLevel3HailIndex.decode(projectionNumbers, fileStorage)
+        hiBuffers.setXYList(fileStorage.hiData)
         constructTriangles(hiBuffers)
         hiBuffers.generateMtlBuffer(device)
     }

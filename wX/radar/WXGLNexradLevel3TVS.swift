@@ -6,10 +6,15 @@
 
 final class WXGLNexradLevel3TVS {
 
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) -> [Double] {
-        WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
-        if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
-            var stormList = [Double]()
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
+        // WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
+        
+        let productCode = "TVS"
+        WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite, fileStorage)
+        let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
+        var stormList = [Double]()
+        if retStr1.count > 10 {
+        // if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             let tvs = retStr1.parseColumn("P  TVS(.{20})")
             tvs.indices.forEach { index in
                 let ecc = ExternalGeodeticCalculator()
@@ -22,9 +27,10 @@ final class WXGLNexradLevel3TVS {
                 stormList.append(ec.getLatitude())
                 stormList.append(ec.getLongitude() * -1.0)
             }
-            return stormList
+            // return stormList
         } else {
-            return [Double]()
+            // return [Double]()
         }
+        fileStorage.tvsData = stormList
     }
 }

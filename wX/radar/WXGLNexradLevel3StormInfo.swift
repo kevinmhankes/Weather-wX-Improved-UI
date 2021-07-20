@@ -6,7 +6,7 @@
 
 final class WXGLNexradLevel3StormInfo {
     
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileName: String, _ fileStorage: FileStorage) {
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
         // WXGLDownload.getNidsTabNew("STI", projectionNumbers.radarSite.lowercased(), fileName)
         let productCode = "STI"
         WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite.lowercased(), fileStorage)
