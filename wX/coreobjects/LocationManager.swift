@@ -19,12 +19,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             print("already authorized")
         case .notDetermined, .restricted, .denied:
             print("show help")
-//                UtilitySettings.getHelp(
-//                    self,
-//                    doneButton,
-//                    "After the dialog for GPS permission has been shown once, all future updates to GPS"
-//                        + " permissions must be done via settings in iOS."
-//                )
         default:
             print("future options")
         }

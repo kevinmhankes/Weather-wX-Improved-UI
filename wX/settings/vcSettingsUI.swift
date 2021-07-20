@@ -63,7 +63,7 @@ final class vcSettingsUI: UIwXViewController {
 
     func setupSliders() {
         for pref in sliderPreferences {
-                objectSliders.append(ObjectSlider(self, pref))
+            objectSliders.append(ObjectSlider(self, pref))
         }
     }
 
