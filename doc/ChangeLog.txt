@@ -1,4 +1,5 @@
 
+56133 2021_07_20 
 56132 2021_07_20 [REF] use new class Switch in settings
 		 [ADD] in settings, alphabetize entries
 56131 2021_07_20 [FIX] WPC Forecast chart day1-3 URL has changed
