@@ -7,12 +7,13 @@
 import UIKit
 import CoreLocation
 
-final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     private var objectSliders = [ObjectSlider]()
     private var switches = [ObjectSettingsSwitch]()
+    private var numberPickers = [ComboBox]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,43 +72,6 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     // needed for Radar/GPS setting
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
-        return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
-        let array = Array(UtilitySettingsRadar.pickerCount.keys).sorted(by: <)
-        return UtilitySettingsRadar.pickerCount[array[pickerView.tag]]!
-    }
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
-        return UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let array = Array(UtilitySettingsRadar.pickerDataSource.keys).sorted(by: <)
-        switch pickerView.tag {
-        default:
-            if array[pickerView.tag] == "RADAR_COLOR_PALETTE_94" || array[pickerView.tag] == "RADAR_COLOR_PALETTE_99" {
-                Utility.writePref(
-                    array[pickerView.tag],
-                    UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row]
-                )
-            } else {
-                Utility.writePref(
-                    array[pickerView.tag],
-                    Int(UtilitySettingsRadar.pickerDataSource[array[pickerView.tag]]![row])!
-                )
-            }
-        }
-    }
-
     private func display() {
         objectSliders.removeAll()
         switches.removeAll()
@@ -123,27 +87,12 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             switches.append(switchObject)
         }
         setupSliders()
-        Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsRadar.picker)
-            objNp.numberPicker.dataSource = self
-            objNp.numberPicker.delegate = self
-            objNp.numberPicker.tag = index
-            if UtilitySettingsRadar.pickerNonZeroOffset.contains(prefVar) {
-                objNp.numberPicker.selectRow(
-                    (UtilitySettingsRadar.pickerDataSource[prefVar]?.firstIndex(
-                        of: Utility.readPref(prefVar, UtilitySettingsRadar.pickerInitString[prefVar]!))!
-                        )!,
-                    inComponent: 0,
-                    animated: true
-                )
-            } else {
-                objNp.numberPicker.selectRow(
-                    Utility.readPref(prefVar, UtilitySettingsRadar.pickerInit[prefVar]!),
-                    inComponent: 0,
-                    animated: true
-                )
-            }
-        }
+        setupComboBox()
+    }
+    
+    func setupComboBox() {
+        numberPickers.append(ComboBox(stackView, "RADAR_COLOR_PALETTE_94", "Reflectivity Colormap", "CODENH", ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK", "NWS"]))
+        numberPickers.append(ComboBox(stackView, "RADAR_COLOR_PALETTE_99", "Velocity Colormap", "CODENH", ["CODENH", "AF", "EAK"]))
     }
 
     func setupSliders() {

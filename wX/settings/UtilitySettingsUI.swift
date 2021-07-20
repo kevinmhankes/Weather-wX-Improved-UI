@@ -36,26 +36,6 @@ final class UtilitySettingsUI {
         "USE_NWS_API_HOURLY": "true",
         "DEBUG_MODE": "false"
     ]
-
-    static let picker = [
-        "UI_THEME": "Color theme"
-    ]
-
-    static let pickerInit = [
-        "UI_THEME": "blue"
-    ]
-
-    static let pickerCount = [
-        "UI_THEME": 3
-    ]
-
-    static var pickerDataSource = [
-        "UI_THEME": ["blue", "black", "green"]
-    ]
-
-    static let pickerNonZeroOffset = [
-        "UI_THEME"
-    ]
     
     static let sliderPreferences = [
         "TEXTVIEW_FONT_SIZE",

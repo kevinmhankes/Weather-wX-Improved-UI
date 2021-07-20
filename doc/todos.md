@@ -1,3 +1,7 @@
+* rename NumberPicker to ComboBox
+* redo switches in settings
+    - encapsulate more
+    - controlled/better ordering
 * FileStorage
     - level 2
     - windbarb (metar)
