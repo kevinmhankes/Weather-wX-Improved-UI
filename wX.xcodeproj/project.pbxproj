@@ -115,6 +115,7 @@
 		0354D3FA23C119480024153D /* PressureCenterTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */; };
 		0354D3FC23C1194E0024153D /* PressureCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3FB23C1194E0024153D /* PressureCenter.swift */; };
 		0354ED5426A72BB000E8957A /* ComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354ED5326A72BB000E8957A /* ComboBox.swift */; };
+		0354ED5626A7361300E8957A /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354ED5526A7361300E8957A /* Switch.swift */; };
 		035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66E9240A911E00038C98 /* UtilityAudio.swift */; };
 		035A66EC240C88B500038C98 /* ObjectImageAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A66EB240C88B500038C98 /* ObjectImageAndText.swift */; };
 		035E2D4621D2847F005E31A1 /* UtilityMetarConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */; };
@@ -376,7 +377,6 @@
 		F0C1BC4F1EBAC69C0063C853 /* colormapbvaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */; };
 		F0C1BC501EBAC69C0063C853 /* colormaprefaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */; };
 		F0C8F1591EFBD5500099AAD8 /* ObjectToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */; };
-		F0CB3D781E566562002F8BB4 /* ObjectNumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */; };
 		F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */; };
 		F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */; };
 		F0D7B8491E774C730032D1C9 /* UtilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */; };
@@ -523,6 +523,7 @@
 		0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenterTypeEnum.swift; sourceTree = "<group>"; };
 		0354D3FB23C1194E0024153D /* PressureCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureCenter.swift; sourceTree = "<group>"; };
 		0354ED5326A72BB000E8957A /* ComboBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComboBox.swift; sourceTree = "<group>"; };
+		0354ED5526A7361300E8957A /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		035A66E9240A911E00038C98 /* UtilityAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityAudio.swift; sourceTree = "<group>"; };
 		035A66EB240C88B500038C98 /* ObjectImageAndText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImageAndText.swift; sourceTree = "<group>"; };
 		035E2D4521D2847F005E31A1 /* UtilityMetarConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityMetarConditions.swift; sourceTree = "<group>"; };
@@ -793,7 +794,6 @@
 		F0C1BC4D1EBAC69C0063C853 /* colormapbvaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormapbvaf.txt; sourceTree = "<group>"; };
 		F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefaf.txt; sourceTree = "<group>"; };
 		F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToast.swift; sourceTree = "<group>"; };
-		F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNumberPicker.swift; sourceTree = "<group>"; };
 		F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityShare.swift; sourceTree = "<group>"; };
 		F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 		F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettings.swift; sourceTree = "<group>"; };
@@ -1303,7 +1303,6 @@
 				033A5552240D2628002018BE /* ObjectImageSummary.swift */,
 				03C85B55240489C60046C8F4 /* ObjectMap.swift */,
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,
-				F0CB3D771E566562002F8BB4 /* ObjectNumberPicker.swift */,
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
 				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
 				03BF9A412296798B00203B26 /* ObjectSlider.swift */,
@@ -1319,6 +1318,7 @@
 				F0E14B7C1E759C9500E6C5CD /* ObjectToolbar.swift */,
 				036E9B95269D0C7C0009A47B /* ScrollStackView.swift */,
 				F031265C1DB84C1E009D6CF2 /* StackView.swift */,
+				0354ED5526A7361300E8957A /* Switch.swift */,
 				F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */,
 				036E9B8F269D0AAA0009A47B /* Text.swift */,
 				0326E5EC21B4B2940000F8DB /* TextViewMetal.swift */,
@@ -1656,7 +1656,6 @@
 				035E2D4821D29E0F005E31A1 /* WXGLNexradLevel3Common.swift in Sources */,
 				F0B334FC1DA3FBF10035BD36 /* MyApplication.swift in Sources */,
 				03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */,
-				F0CB3D781E566562002F8BB4 /* ObjectNumberPicker.swift in Sources */,
 				F0B3357E1DA3FD6F0035BD36 /* UtilityColorPalette.swift in Sources */,
 				F0AD5B401DD3301500284C7C /* UIColorLegend.swift in Sources */,
 				F057A0A01DC2B0AF00521C8F /* UtilityModels.swift in Sources */,
@@ -1829,6 +1828,7 @@
 				030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */,
 				F0B335E21DA3FDA70035BD36 /* UtilityPlayList.swift in Sources */,
 				0340423B23F16FC3003AB242 /* vcTextViewer.swift in Sources */,
+				0354ED5626A7361300E8957A /* Switch.swift in Sources */,
 				F0605A541E59F71F00229812 /* ObjectMenuTitle.swift in Sources */,
 				0340423223F16FC3003AB242 /* vcLightning.swift in Sources */,
 				03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */,
