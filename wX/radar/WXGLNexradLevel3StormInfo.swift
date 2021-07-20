@@ -9,7 +9,7 @@ final class WXGLNexradLevel3StormInfo {
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
         // WXGLDownload.getNidsTabNew("STI", projectionNumbers.radarSite.lowercased(), fileName)
         let productCode = "STI"
-        WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite.lowercased(), fileStorage)
+        WXGLDownload.getNidsTab(productCode, projectionNumbers.radarSite.lowercased(), fileStorage)
         let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
         var stormList = [Double]()
         if retStr1.count > 10 {

@@ -10,7 +10,7 @@ final class WXGLNexradLevel3TVS {
         // WXGLDownload.getNidsTab("TVS", projectionNumbers.radarSite, fileName)
         
         let productCode = "TVS"
-        WXGLDownload.getNidsTabNew(productCode, projectionNumbers.radarSite, fileStorage)
+        WXGLDownload.getNidsTab(productCode, projectionNumbers.radarSite, fileStorage)
         let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
         var stormList = [Double]()
         if retStr1.count > 10 {
