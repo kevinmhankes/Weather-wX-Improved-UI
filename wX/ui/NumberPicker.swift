@@ -8,14 +8,13 @@ import UIKit
 
 final class NumberPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
-
-
     let numberPicker = UIPickerView()
     private let button = UIButton(type: UIButton.ButtonType.system)
     let prefVar: String
 
     init(_ stackView: UIStackView, _ prefVar: String, _ pickerMap: [String: String]) {
         self.prefVar = prefVar
+        super.init()
         let label = pickerMap[prefVar]
         button.setTitle(label, for: .normal)
         button.titleLabel?.font = FontSize.medium.size
@@ -25,6 +24,9 @@ final class NumberPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource
         numberPicker.backgroundColor = ColorCompatibility.systemBackground
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [button, numberPicker], alignment: .center)
         stackView.addArrangedSubview(horizontalContainer.view)
+        
+        numberPicker.dataSource = self
+        numberPicker.delegate = self
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

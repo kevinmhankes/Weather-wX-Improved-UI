@@ -6,11 +6,13 @@
 
 import UIKit
 
-final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+final class vcSettingsUI: UIwXViewController {
+    // , UIPickerViewDelegate, UIPickerViewDataSource
 
     // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     private var objectSliders = [ObjectSlider]()
     private var switches = [ObjectSettingsSwitch]()
+    private var numberPickers = [NumberPicker]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,40 +39,40 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
 //        Utility.writePref(prefLabels[sender.tag], truthString)
 //    }
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
-        return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
-        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
-        return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
-    }
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
-        return UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
-        switch pickerView.tag {
-        default:
-            if array[pickerView.tag] == "UI_THEME" {
-                Utility.writePref(
-                    array[pickerView.tag],
-                    UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
-                )
-            } else {
-                Utility.writePref(
-                    array[pickerView.tag],
-                    Int(UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])!
-                )
-            }
-        }
-    }
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
+//        return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
+//        let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
+//        return UtilitySettingsUI.pickerCount[array[pickerView.tag]]!
+//    }
+//
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
+//        return UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        let array = Array(UtilitySettingsUI.pickerDataSource.keys).sorted(by: <)
+//        switch pickerView.tag {
+//        default:
+//            if array[pickerView.tag] == "UI_THEME" {
+//                Utility.writePref(
+//                    array[pickerView.tag],
+//                    UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row]
+//                )
+//            } else {
+//                Utility.writePref(
+//                    array[pickerView.tag],
+//                    Int(UtilitySettingsUI.pickerDataSource[array[pickerView.tag]]![row])!
+//                )
+//            }
+//        }
+//    }
 
     private func display() {
         switches.removeAll()
@@ -94,10 +96,11 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         }
         setupSliders()
         Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let objNp = ObjectNumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
-            objNp.numberPicker.dataSource = self
-            objNp.numberPicker.delegate = self
+            let objNp = NumberPicker(stackView, prefVar, UtilitySettingsUI.picker)
+//            objNp.numberPicker.dataSource = self
+//            objNp.numberPicker.delegate = self
             objNp.numberPicker.tag = index
+            numberPickers.append(objNp)
             if UtilitySettingsUI.pickerNonZeroOffset.contains(prefVar) {
                 let prefValue = Utility.readPref(prefVar, UtilitySettingsUI.pickerInit[prefVar]!)
                 var defaultRowIndex = UtilitySettingsUI.pickerDataSource[prefVar]?.firstIndex(of: prefValue)
