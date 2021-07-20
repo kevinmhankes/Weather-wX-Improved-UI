@@ -1,10 +1,6 @@
 * FileStorage
     - level 2
-    - anim
     - windbarb (metar)
-    - hi
-    - tvs
-    - sti
 * objectWatch - if html == "" don't save, reset timer
 * rationalize all the Enums, etc
 * radar colors are in RadarGeom?
