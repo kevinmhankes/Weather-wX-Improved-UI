@@ -12,6 +12,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     private let locationManager = CLLocationManager()
     // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     private var objectSliders = [ObjectSlider]()
+    private var switches = [ObjectSettingsSwitch]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +108,8 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     }
 
     private func display() {
+        objectSliders.removeAll()
+        switches.removeAll()
         Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
                 stackView,
@@ -116,6 +119,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             )
             switchObject.switchUi.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
             switchObject.switchUi.tag = index
+            switches.append(switchObject)
         }
         setupSliders()
         Array(UtilitySettingsRadar.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in

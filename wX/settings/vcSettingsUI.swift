@@ -88,6 +88,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
 //                action: #selector(switchChanged),
 //                for: UIControl.Event.valueChanged
 //            )
+            switchObject.addTarget()
             switchObject.switchUi.tag = index
             switches.append(switchObject)
         }

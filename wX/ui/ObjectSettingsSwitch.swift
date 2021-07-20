@@ -33,6 +33,11 @@ final class ObjectSettingsSwitch {
         ).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
         
+
+    }
+    
+    // UI uses this, radar does not yet
+    func addTarget() {
         switchUi.addTarget(
             self,
             action: #selector(switchChanged),
