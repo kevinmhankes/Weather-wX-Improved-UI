@@ -1,5 +1,7 @@
 
-56131 2021_07_18 [FIX] WPC Forecast chart day1-3 URL has changed
+56132 2021_07_20 
+56131 2021_07_20 [FIX] WPC Forecast chart day1-3 URL has changed
+		 [REF] ObjectSlider in UI/Radar
 56130 2021_07_18 [ADD] better response via parallel downloads
 56129 2021_07_16 [ADD] if warnings enabled and data fails to download, show "-" instead of a number in the statusbar
 		 [ADD] ObjectPolygonWarning - if data fails to download, reset the timer
