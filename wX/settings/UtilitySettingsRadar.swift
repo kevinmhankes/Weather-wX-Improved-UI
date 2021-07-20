@@ -145,4 +145,17 @@ final class UtilitySettingsRadar {
         "RADAR_COLOR_PALETTE_94",
         "RADAR_COLOR_PALETTE_99"
     ]
+    
+    static let sliderPreferences = [
+        "RADAR_HI_SIZE",
+        "RADAR_TVS_SIZE",
+        "RADAR_LOCDOT_SIZE",
+        "RADAR_OBS_EXT_ZOOM",
+        "RADAR_SPOTTER_SIZE",
+        "RADAR_AVIATION_SIZE",
+        "RADAR_OBS_EXT_ZOOM",
+        "RADAR_DATA_REFRESH_INTERVAL",
+        "WXOGL_SIZE",
+        "RADAR_TEXT_SIZE"
+    ]
 }

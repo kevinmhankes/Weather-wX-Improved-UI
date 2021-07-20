@@ -142,18 +142,19 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
     }
 
     func setupSliders() {
-        [
-            "RADAR_HI_SIZE",
-            "RADAR_TVS_SIZE",
-            "RADAR_LOCDOT_SIZE",
-            "RADAR_OBS_EXT_ZOOM",
-            "RADAR_SPOTTER_SIZE",
-            "RADAR_AVIATION_SIZE",
-            "RADAR_OBS_EXT_ZOOM",
-            "RADAR_DATA_REFRESH_INTERVAL",
-            "WXOGL_SIZE",
-            "RADAR_TEXT_SIZE"
-            ].forEach { pref in
+//        [
+//            "RADAR_HI_SIZE",
+//            "RADAR_TVS_SIZE",
+//            "RADAR_LOCDOT_SIZE",
+//            "RADAR_OBS_EXT_ZOOM",
+//            "RADAR_SPOTTER_SIZE",
+//            "RADAR_AVIATION_SIZE",
+//            "RADAR_OBS_EXT_ZOOM",
+//            "RADAR_DATA_REFRESH_INTERVAL",
+//            "WXOGL_SIZE",
+//            "RADAR_TEXT_SIZE"
+//            ].forEach { pref in
+        for pref in UtilitySettingsRadar.sliderPreferences {
                 objectSliders.append(ObjectSlider(self, pref))
                 // let objectSlider = ObjectSlider(self, pref)
                 // objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
