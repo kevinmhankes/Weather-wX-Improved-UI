@@ -116,6 +116,6 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.refreshViews() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.refreshViews() })
     }
 }

@@ -29,7 +29,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 stackView,
                 province,
                 FontSize.extraLarge.size,
-                GestureData(index, self, #selector(goToProvinces(sender:)))
+                GestureData(index, self, #selector(goToProvinces))
             )
             objectTextView.tv.isSelectable = false
             objectTextView.constrain(scrollView)
