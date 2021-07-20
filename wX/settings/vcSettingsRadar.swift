@@ -35,6 +35,7 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
         super.doneClicked()
     }
 
+    // TODO FIXME move to class
     @objc func switchChanged(sender: UISwitch) {
         let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
         let isOnQ = sender.isOn
