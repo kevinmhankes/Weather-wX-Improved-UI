@@ -56,4 +56,13 @@ final class UtilitySettingsUI {
     static let pickerNonZeroOffset = [
         "UI_THEME"
     ]
+    
+    static let sliderPreferences = [
+        "TEXTVIEW_FONT_SIZE",
+        "REFRESH_LOC_MIN",
+        "ANIM_INTERVAL",
+        "UI_TILES_PER_ROW",
+        "HOMESCREEN_TEXT_LENGTH_PREF",
+        "NWS_ICON_SIZE_PREF"
+    ]
 }

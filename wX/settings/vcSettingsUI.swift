@@ -110,14 +110,15 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
     }
 
     func setupSliders() {
-        [
-            "TEXTVIEW_FONT_SIZE",
-            "REFRESH_LOC_MIN",
-            "ANIM_INTERVAL",
-            "UI_TILES_PER_ROW",
-            "HOMESCREEN_TEXT_LENGTH_PREF",
-            "NWS_ICON_SIZE_PREF"
-            ].forEach { pref in
+//        [
+//            "TEXTVIEW_FONT_SIZE",
+//            "REFRESH_LOC_MIN",
+//            "ANIM_INTERVAL",
+//            "UI_TILES_PER_ROW",
+//            "HOMESCREEN_TEXT_LENGTH_PREF",
+//            "NWS_ICON_SIZE_PREF"
+//            ].forEach { pref in
+        for pref in UtilitySettingsUI.sliderPreferences {
                 objectSliders.append(ObjectSlider(self, pref))
                 // let objSlider = ObjectSlider(self, pref)
 //                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
