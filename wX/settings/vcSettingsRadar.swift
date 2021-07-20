@@ -10,7 +10,8 @@ import CoreLocation
 final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
-    private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    private var objectSliders = [ObjectSlider]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,9 +154,10 @@ final class vcSettingsRadar: UIwXViewController, UIPickerViewDelegate, UIPickerV
             "WXOGL_SIZE",
             "RADAR_TEXT_SIZE"
             ].forEach { pref in
-                let objectSlider = ObjectSlider(self, pref)
-//                objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-                objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
+                objectSliders.append(ObjectSlider(self, pref))
+                // let objectSlider = ObjectSlider(self, pref)
+                // objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+                // objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
         }
     }
 
