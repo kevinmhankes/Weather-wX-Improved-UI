@@ -30,5 +30,22 @@ final class ObjectSettingsSwitch {
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
+        
+        switchUi.addTarget(
+            self,
+            action: #selector(switchChanged),
+            for: UIControl.Event.valueChanged
+        )
+    }
+    
+    @objc func switchChanged(sender: UISwitch) {
+        let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
+        let isOnQ = sender.isOn
+        var truthString = "false"
+        if isOnQ {
+            truthString = "true"
+        }
+        print("AAA " + truthString + " " + prefLabels[sender.tag])
+        Utility.writePref(prefLabels[sender.tag], truthString)
     }
 }

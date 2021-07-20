@@ -10,6 +10,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
 
     // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     private var objectSliders = [ObjectSlider]()
+    private var switches = [ObjectSettingsSwitch]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +27,15 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
         super.doneClicked()
     }
 
-    @objc func switchChanged(sender: UISwitch) {
-        let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
-        let isOnQ = sender.isOn
-        var truthString = "false"
-        if isOnQ {
-            truthString = "true"
-        }
-        Utility.writePref(prefLabels[sender.tag], truthString)
-    }
+//    @objc func switchChanged(sender: UISwitch) {
+//        let prefLabels = [String](UtilitySettingsUI.boolean.keys).sorted(by: <)
+//        let isOnQ = sender.isOn
+//        var truthString = "false"
+//        if isOnQ {
+//            truthString = "true"
+//        }
+//        Utility.writePref(prefLabels[sender.tag], truthString)
+//    }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let array = Array(UtilitySettingsUI.pickerCount.keys).sorted(by: <)
@@ -72,6 +73,9 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
     }
 
     private func display() {
+        switches.removeAll()
+        objectSliders.removeAll()
+        
         Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
             let switchObject = ObjectSettingsSwitch(
                 stackView,
@@ -79,12 +83,13 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
                 UtilitySettingsUI.booleanDefault,
                 UtilitySettingsUI.boolean
             )
-            switchObject.switchUi.addTarget(
-                self,
-                action: #selector(switchChanged),
-                for: UIControl.Event.valueChanged
-            )
+//            switchObject.switchUi.addTarget(
+//                self,
+//                action: #selector(switchChanged),
+//                for: UIControl.Event.valueChanged
+//            )
             switchObject.switchUi.tag = index
+            switches.append(switchObject)
         }
         setupSliders()
         Array(UtilitySettingsUI.picker.keys).sorted(by: <).enumerated().forEach { index, prefVar in
