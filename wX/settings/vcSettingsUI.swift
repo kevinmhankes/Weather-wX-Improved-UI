@@ -11,6 +11,14 @@ final class vcSettingsUI: UIwXViewController {
     private var objectSliders = [ObjectSlider]()
     private var switches = [Switch]()
     private var numberPickers = [ComboBox]()
+    let sliderPreferences = [
+        "TEXTVIEW_FONT_SIZE",
+        "REFRESH_LOC_MIN",
+        "ANIM_INTERVAL",
+        "UI_TILES_PER_ROW",
+        "HOMESCREEN_TEXT_LENGTH_PREF",
+        "NWS_ICON_SIZE_PREF"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +62,7 @@ final class vcSettingsUI: UIwXViewController {
     }
 
     func setupSliders() {
-        for pref in UtilitySettingsUI.sliderPreferences {
+        for pref in sliderPreferences {
                 objectSliders.append(ObjectSlider(self, pref))
         }
     }

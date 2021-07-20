@@ -14,6 +14,18 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
     private var objectSliders = [ObjectSlider]()
     private var switches = [Switch]()
     private var numberPickers = [ComboBox]()
+    let sliderPreferences = [
+        "RADAR_HI_SIZE",
+        "RADAR_TVS_SIZE",
+        "RADAR_LOCDOT_SIZE",
+        "RADAR_OBS_EXT_ZOOM",
+        "RADAR_SPOTTER_SIZE",
+        "RADAR_AVIATION_SIZE",
+        "RADAR_OBS_EXT_ZOOM",
+        "RADAR_DATA_REFRESH_INTERVAL",
+        "WXOGL_SIZE",
+        "RADAR_TEXT_SIZE"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,33 +49,33 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
     }
 
     // TODO FIXME move to class
-    @objc func switchChanged(sender: UISwitch) {
-        let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
-        let isOnQ = sender.isOn
-        var truthString = "false"
-        if isOnQ {
-            truthString = "true"
-        }
-        Utility.writePref(prefLabels[sender.tag], truthString)
-        if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
-            locationManager.requestWhenInUseAuthorization()
-            switch CLLocationManager.authorizationStatus() {
-            case .authorizedAlways, .authorizedWhenInUse:
-                print("already authorized")
-            case .notDetermined, .restricted, .denied:
-                print("show help")
-                UtilitySettings.getHelp(
-                    self,
-                    doneButton,
-                    "After the dialog for GPS permission has been shown once, all future updates to GPS"
-                        + " permissions must be done via settings in iOS."
-                )
-            default:
-                print("future options")
-            }
-            locationManager.requestLocation()
-        }
-    }
+//    @objc func switchChanged(sender: UISwitch) {
+//        let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
+//        let isOnQ = sender.isOn
+//        var truthString = "false"
+//        if isOnQ {
+//            truthString = "true"
+//        }
+//        Utility.writePref(prefLabels[sender.tag], truthString)
+//        if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
+//            locationManager.requestWhenInUseAuthorization()
+//            switch CLLocationManager.authorizationStatus() {
+//            case .authorizedAlways, .authorizedWhenInUse:
+//                print("already authorized")
+//            case .notDetermined, .restricted, .denied:
+//                print("show help")
+//                UtilitySettings.getHelp(
+//                    self,
+//                    doneButton,
+//                    "After the dialog for GPS permission has been shown once, all future updates to GPS"
+//                        + " permissions must be done via settings in iOS."
+//                )
+//            default:
+//                print("future options")
+//            }
+//            locationManager.requestLocation()
+//        }
+//    }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
@@ -146,7 +158,7 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
 //            "WXOGL_SIZE",
 //            "RADAR_TEXT_SIZE"
 //            ].forEach { pref in
-        for pref in UtilitySettingsRadar.sliderPreferences {
+        for pref in sliderPreferences {
                 objectSliders.append(ObjectSlider(self, pref))
                 // let objectSlider = ObjectSlider(self, pref)
                 // objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)

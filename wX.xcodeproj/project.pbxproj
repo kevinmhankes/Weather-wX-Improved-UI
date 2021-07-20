@@ -239,7 +239,6 @@
 		03FF8F7E21FA72CD00661F78 /* ObjectSpotterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */; };
 		03FF8F7F21FA72CD00661F78 /* ObjectSpotterReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */; };
 		F00399C41DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */; };
-		F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */; };
 		F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0118B411DA9771600B43DE5 /* UtilityActions.swift */; };
 		F011E6111DB03D78006531FD /* UtilityObservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E60F1DB03D78006531FD /* UtilityObservations.swift */; };
 		F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */; };
@@ -395,7 +394,6 @@
 		F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */; };
 		F0F7760C1E00092A0022484C /* LatLon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7760B1E00092A0022484C /* LatLon.swift */; };
 		F0FAD0471DCB4F860014752A /* UILabelInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAD0461DCB4F860014752A /* UILabelInset.swift */; };
-		F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -650,7 +648,6 @@
 		03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterCard.swift; sourceTree = "<group>"; };
 		03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSpotterReportCard.swift; sourceTree = "<group>"; };
 		F00399C31DE9F7D6004508FE /* WXGLNexradLevel3WindBarbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXGLNexradLevel3WindBarbs.swift; sourceTree = "<group>"; };
-		F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettingsRadar.swift; sourceTree = "<group>"; };
 		F0118B411DA9771600B43DE5 /* UtilityActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityActions.swift; sourceTree = "<group>"; };
 		F011E60F1DB03D78006531FD /* UtilityObservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityObservations.swift; sourceTree = "<group>"; };
 		F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
@@ -816,7 +813,6 @@
 		F0F4FBA41DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerSwipeExtension.swift; sourceTree = "<group>"; };
 		F0F7760B1E00092A0022484C /* LatLon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatLon.swift; sourceTree = "<group>"; };
 		F0FAD0461DCB4F860014752A /* UILabelInset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelInset.swift; sourceTree = "<group>"; };
-		F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettingsUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1042,8 +1038,6 @@
 				03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */,
 				F0B3359C1DA3FD960035BD36 /* UtilityLocation.swift */,
 				F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */,
-				F00623201DB1AB3B00DB6935 /* UtilitySettingsRadar.swift */,
-				F0FE64221DB592EC0064553C /* UtilitySettingsUI.swift */,
 				03A89E3723E641ED001B8F50 /* UtilityStorePreferences.swift */,
 				034041F923F16A4D003AB242 /* vcSettingsAbout.swift */,
 				034041FA23F16A4D003AB242 /* vcSettingsColorListing.swift */,
@@ -1711,7 +1705,6 @@
 				F0B335A81DA3FD960035BD36 /* UtilityFileManagement.swift in Sources */,
 				03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */,
 				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
-				F00623211DB1AB3B00DB6935 /* UtilitySettingsRadar.swift in Sources */,
 				0351449E26A5E90D00AF38B6 /* PolygonType.swift in Sources */,
 				F0B335381DA3FD3B0035BD36 /* WXGLNexradLevel3StormInfo.swift in Sources */,
 				0326E5ED21B4B2940000F8DB /* TextViewMetal.swift in Sources */,
@@ -1864,7 +1857,6 @@
 				038651FA21FDC1EC00C48DF1 /* ObjectCardAlertSummaryItem.swift in Sources */,
 				0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */,
 				03F3EB86229945D10056A56D /* UtilityModelEsrlInterface.swift in Sources */,
-				F0FE64231DB592EC0064553C /* UtilitySettingsUI.swift in Sources */,
 				F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */,
 				F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */,
 				035144A226A5E91500AF38B6 /* RadarGeometry.swift in Sources */,
