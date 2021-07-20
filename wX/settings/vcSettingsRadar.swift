@@ -7,10 +7,8 @@
 import UIKit
 import CoreLocation
 
-final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
+final class vcSettingsRadar: UIwXViewController {
 
-    private let locationManager = CLLocationManager()
-    // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
     private var objectSliders = [ObjectSlider]()
     private var switches = [Switch]()
     private var numberPickers = [ComboBox]()
@@ -29,7 +27,6 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
         let statusButton = ToolbarIcon(title: "version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, statusButton]).items
         objScrollStackView = ScrollStackView(self)
@@ -48,56 +45,9 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
         super.doneClicked()
     }
 
-    // TODO FIXME move to class
-//    @objc func switchChanged(sender: UISwitch) {
-//        let prefLabels = Array(UtilitySettingsRadar.boolean.keys).sorted(by: <)
-//        let isOnQ = sender.isOn
-//        var truthString = "false"
-//        if isOnQ {
-//            truthString = "true"
-//        }
-//        Utility.writePref(prefLabels[sender.tag], truthString)
-//        if prefLabels[sender.tag] == "LOCDOT_FOLLOWS_GPS" && truthString == "true" {
-//            locationManager.requestWhenInUseAuthorization()
-//            switch CLLocationManager.authorizationStatus() {
-//            case .authorizedAlways, .authorizedWhenInUse:
-//                print("already authorized")
-//            case .notDetermined, .restricted, .denied:
-//                print("show help")
-//                UtilitySettings.getHelp(
-//                    self,
-//                    doneButton,
-//                    "After the dialog for GPS permission has been shown once, all future updates to GPS"
-//                        + " permissions must be done via settings in iOS."
-//                )
-//            default:
-//                print("future options")
-//            }
-//            locationManager.requestLocation()
-//        }
-//    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error while updating location " + error.localizedDescription)
-    }
-
-    // needed for Radar/GPS setting
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
-
     private func display() {
         objectSliders.removeAll()
         switches.removeAll()
-//        Array(UtilitySettingsRadar.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-//            let switchObject = ObjectSettingsSwitch(
-//                stackView,
-//                prefVar,
-//                UtilitySettingsRadar.booleanDefault,
-//                UtilitySettingsRadar.boolean
-//            )
-//            switchObject.switchUi.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//            switchObject.switchUi.tag = index
-//            switches.append(switchObject)
-//        }
         setupSwitch()
         setupSliders()
         setupComboBox()
@@ -139,39 +89,16 @@ final class vcSettingsRadar: UIwXViewController, CLLocationManagerDelegate {
         switches.append(Switch(stackView, "RADAR_SHOW_MPD", "WPC MPD: Mesoscale Precipitation Discussions", "false"))
     }
     
-
     func setupComboBox() {
         numberPickers.append(ComboBox(stackView, "RADAR_COLOR_PALETTE_94", "Reflectivity Colormap", "CODENH", ["CODENH", "DKenh", "NSSL", "NWSD", "GREEN", "AF", "EAK", "NWS"]))
         numberPickers.append(ComboBox(stackView, "RADAR_COLOR_PALETTE_99", "Velocity Colormap", "CODENH", ["CODENH", "AF", "EAK"]))
     }
 
     func setupSliders() {
-//        [
-//            "RADAR_HI_SIZE",
-//            "RADAR_TVS_SIZE",
-//            "RADAR_LOCDOT_SIZE",
-//            "RADAR_OBS_EXT_ZOOM",
-//            "RADAR_SPOTTER_SIZE",
-//            "RADAR_AVIATION_SIZE",
-//            "RADAR_OBS_EXT_ZOOM",
-//            "RADAR_DATA_REFRESH_INTERVAL",
-//            "WXOGL_SIZE",
-//            "RADAR_TEXT_SIZE"
-//            ].forEach { pref in
         for pref in sliderPreferences {
                 objectSliders.append(ObjectSlider(self, pref))
-                // let objectSlider = ObjectSlider(self, pref)
-                // objectSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-                // objectIdToSlider[ObjectIdentifier(objectSlider.slider)] = objectSlider
         }
     }
-
-//    @objc func sliderValueDidChange(_ sender: UISlider!) {
-//        let objId = ObjectIdentifier(sender)
-//        let objSlider = objectIdToSlider[objId]!
-//        objSlider.setLabel()
-//        Utility.writePref(objectIdToSlider[objId]!.prefVar, Int(sender!.value))
-//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
