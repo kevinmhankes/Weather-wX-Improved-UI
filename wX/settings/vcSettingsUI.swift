@@ -8,7 +8,8 @@ import UIKit
 
 final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    // private var objectIdToSlider = [ObjectIdentifier: ObjectSlider]()
+    private var objectSliders = [ObjectSlider]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,9 +118,10 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             "HOMESCREEN_TEXT_LENGTH_PREF",
             "NWS_ICON_SIZE_PREF"
             ].forEach { pref in
-                let objSlider = ObjectSlider(self, pref)
+                objectSliders.append(ObjectSlider(self, pref))
+                // let objSlider = ObjectSlider(self, pref)
 //                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
-                objectIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
+                // objectIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
 

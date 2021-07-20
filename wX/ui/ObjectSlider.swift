@@ -61,8 +61,8 @@ final class ObjectSlider {
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
-        //let objId = ObjectIdentifier(sender)
-        //let objSlider = objectIdToSlider[objId]!
+        // let objId = ObjectIdentifier(sender)
+        // let objSlider = objectIdToSlider[objId]!
         setLabel()
         Utility.writePref(prefVar, Int(sender!.value))
     }
