@@ -80,7 +80,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             )
             switchObject.switchUi.addTarget(
                 self,
-                action: #selector(switchChanged(sender:)),
+                action: #selector(switchChanged),
                 for: UIControl.Event.valueChanged
             )
             switchObject.switchUi.tag = index
@@ -118,7 +118,7 @@ final class vcSettingsUI: UIwXViewController, UIPickerViewDelegate, UIPickerView
             "NWS_ICON_SIZE_PREF"
             ].forEach { pref in
                 let objSlider = ObjectSlider(self, pref)
-                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+                objSlider.slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
                 objectIdToSlider[ObjectIdentifier(objSlider.slider)] = objSlider
         }
     }
