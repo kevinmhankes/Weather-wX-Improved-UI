@@ -5,37 +5,6 @@
  *****************************************************************************/
 
 final class UtilitySettingsUI {
-
-    static let boolean = [
-        "UNITS_M": "Use Millibars",
-        "BACK_ARROW_ANIM": "Show animation with back arrow" ,
-        "DUALPANE_RADAR_ICON": "Lightning button opens dual pane radar",
-        "WFO_REMEMBER_LOCATION": "WFO text viewer remembers location",
-        "RADAR_TOOLBAR_TRANSPARENT": "Radar uses transparent toolbars",
-        "UI_MAIN_SCREEN_RADAR_FAB": "Main screen radar button (requires restart)",
-        "UI_MAIN_SCREEN_CONDENSE": "Show less information on main screen",
-        // "USE_AWC_RADAR_MOSAIC": "Use the AWC Radar mosaic images instead of the NWS images",
-        "GOES_USE_FULL_RESOLUTION_IMAGES": "Use full resolution GOES images",
-        "USE_NWS_API_SEVEN_DAY": "Use new NWS API for 7 day",
-        "USE_NWS_API_HOURLY": "Use new NWS API for hourly",
-        "DEBUG_MODE": "Debug mode - developer use"
-    ]
-
-    static let booleanDefault = [
-        "": "",
-        "UNITS_M": "true",
-        "BACK_ARROW_ANIM": "true" ,
-        "DUALPANE_RADAR_ICON": "false",
-        "WFO_REMEMBER_LOCATION": "false",
-        "RADAR_TOOLBAR_TRANSPARENT": "true",
-        "UI_MAIN_SCREEN_RADAR_FAB": "true",
-        "UI_MAIN_SCREEN_CONDENSE": "false",
-        "USE_AWC_RADAR_MOSAIC": "false",
-        "GOES_USE_FULL_RESOLUTION_IMAGES": "false",
-        "USE_NWS_API_SEVEN_DAY": "false",
-        "USE_NWS_API_HOURLY": "true",
-        "DEBUG_MODE": "false"
-    ]
     
     static let sliderPreferences = [
         "TEXTVIEW_FONT_SIZE",

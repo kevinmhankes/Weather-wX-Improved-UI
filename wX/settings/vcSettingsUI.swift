@@ -9,7 +9,7 @@ import UIKit
 final class vcSettingsUI: UIwXViewController {
 
     private var objectSliders = [ObjectSlider]()
-    private var switches = [ObjectSettingsSwitch]()
+    private var switches = [Switch]()
     private var numberPickers = [ComboBox]()
 
     override func viewDidLoad() {
@@ -30,20 +30,23 @@ final class vcSettingsUI: UIwXViewController {
     private func display() {
         switches.removeAll()
         objectSliders.removeAll()
-        
-        Array(UtilitySettingsUI.boolean.keys).sorted(by: <).enumerated().forEach { index, prefVar in
-            let switchObject = ObjectSettingsSwitch(
-                stackView,
-                prefVar,
-                UtilitySettingsUI.booleanDefault,
-                UtilitySettingsUI.boolean
-            )
-            switchObject.addTarget()
-            switchObject.switchUi.tag = index
-            switches.append(switchObject)
-        }
+        setupSwitch()
         setupSliders()
         setupComboBox()
+    }
+    
+    func setupSwitch() {
+        switches.append(Switch(stackView, "BACK_ARROW_ANIM", "Animation with back arrow", "true"))
+        switches.append(Switch(stackView, "DUALPANE_RADAR_ICON", "Lightning button opens dual pane radar", "false"))
+        switches.append(Switch(stackView, "UI_MAIN_SCREEN_RADAR_FAB", "Main screen radar button (requires restart)", "true"))
+        switches.append(Switch(stackView, "RADAR_TOOLBAR_TRANSPARENT", "Radar uses transparent toolbars", "true"))
+        switches.append(Switch(stackView, "UI_MAIN_SCREEN_CONDENSE", "Show less information on main screen", "false"))
+        switches.append(Switch(stackView, "GOES_USE_FULL_RESOLUTION_IMAGES", "Use full resolution GOES images", "false"))
+        switches.append(Switch(stackView, "UNITS_M", "Use millibars", "true"))
+        switches.append(Switch(stackView, "USE_NWS_API_SEVEN_DAY", "Use new NWS API for 7 day", "false"))
+        switches.append(Switch(stackView, "USE_NWS_API_HOURLY", "Use new NWS API for hourly", "true"))
+        switches.append(Switch(stackView, "WFO_REMEMBER_LOCATION", "WFO text viewer remembers location", "false"))
+        switches.append(Switch(stackView, "DEBUG_MODE", "Debug mode - developer use", "false"))
     }
     
     func setupComboBox() {
