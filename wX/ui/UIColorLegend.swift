@@ -9,7 +9,7 @@ import UIKit
 final class UIColorLegend: UIView {
     
     private var product = ""
-    private var frameSize = CGRect()
+    // private var frameSize = CGRect()
     private var context = UIGraphicsGetCurrentContext()
     
     required init(coder aDecoder: NSCoder) {
@@ -18,7 +18,7 @@ final class UIColorLegend: UIView {
     
     required init(_ product: String, _ size: CGRect) {
         self.product = product
-        frameSize = size
+        // frameSize = size
         super.init(frame: size)
         backgroundColor = UIColor.clear
         isOpaque = false
