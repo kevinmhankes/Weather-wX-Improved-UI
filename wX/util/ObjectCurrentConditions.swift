@@ -23,7 +23,7 @@ final class ObjectCurrentConditions {
     private var windGust = ""
     private var visibility = ""
     private var condition = ""
-    private var rawMetar = ""
+    // private var rawMetar = ""
     var spokenText = ""
 
     convenience init(_ locNum: Int) {
@@ -44,7 +44,7 @@ final class ObjectCurrentConditions {
         let conditions = getConditionsViaMetar(location)
         data = conditions.conditionAsString
         iconUrl = conditions.iconUrl
-        rawMetar = conditions.metar
+        // rawMetar = conditions.metar
         status = UtilityObs.getStatusViaMetar(conditionsTimeString)
         formatCurrentConditions()
     }

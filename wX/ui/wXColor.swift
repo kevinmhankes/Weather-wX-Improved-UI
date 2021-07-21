@@ -68,9 +68,9 @@ final class wXColor {
         UIColor(red: newRed.toColor(), green: newGreen.toColor(), blue: newBlue.toColor(), alpha: CGFloat(1.0))
     }
 
-    static func uiColorFloat(_ newRed: CGFloat, _ newGreen: CGFloat, _ newBlue: CGFloat) -> UIColor {
-        UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
-    }
+//    static func uiColorFloat(_ newRed: CGFloat, _ newGreen: CGFloat, _ newBlue: CGFloat) -> UIColor {
+//        UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
+//    }
 
     func intToColors(_ colorInt: Int) -> (red: Int, green: Int, blue: Int) {
         let newRed: Int = (colorInt >> 16) & 0xFF

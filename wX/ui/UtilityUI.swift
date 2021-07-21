@@ -71,11 +71,11 @@ final class UtilityUI {
         return cgsize
     }
 
-    static func statusBarHeight() -> CGFloat {
-        UIApplication.shared.statusBarFrame.size.height
-        // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        // return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-    }
+//    static func statusBarHeight() -> CGFloat {
+//        UIApplication.shared.statusBarFrame.size.height
+//        // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        // return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+//    }
 
     static func getVersion() -> String {
         var vers = ""
@@ -128,10 +128,10 @@ final class UtilityUI {
         return topPadding
     }
 
-    static func effectiveHeight(_ toolbar: ObjectToolbar) -> CGFloat {
-        let (_, height) = UtilityUI.getScreenBoundsCGFloat()
-        return height - toolbar.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
-    }
+//    static func effectiveHeight(_ toolbar: ObjectToolbar) -> CGFloat {
+//        let (_, height) = UtilityUI.getScreenBoundsCGFloat()
+//        return height - toolbar.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
+//    }
 
     static func effectiveHeight(_ toolbar: UIToolbar) -> CGFloat {
         let (_, height) = UtilityUI.getScreenBoundsCGFloat()
@@ -186,9 +186,9 @@ final class UtilityUI {
         return landscape
     }
 
-    static func showDialogue(_ uiv: UIViewController, _ text: String) {
-        let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        uiv.present(alert, animated: true, completion: nil)
-    }
+//    static func showDialogue(_ uiv: UIViewController, _ text: String) {
+//        let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//        uiv.present(alert, animated: true, completion: nil)
+//    }
 }
