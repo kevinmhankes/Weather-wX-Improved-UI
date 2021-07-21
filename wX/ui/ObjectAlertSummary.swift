@@ -68,9 +68,11 @@ final class ObjectAlertSummary: NSObject {
                 index += 1
             }
         }
-        var stateCnt = ""
-        stateCntMap.forEach { state, count in stateCnt += state + ":" + String(count) + " " }
-        objTextSummary.text = "Total alerts: " + to.String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + to.String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCnt
+        var stateCount = ""
+        stateCntMap.forEach { state, count in
+            stateCount += state + ":" + to.String(count) + " "
+        }
+        objTextSummary.text = "Total alerts: " + to.String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + to.String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCount
     }
 
     func getUrl(_ index: Int) -> String {
