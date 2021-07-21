@@ -509,7 +509,18 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if wxMetalRenders[0] != nil {
             wxMetalRenders.forEach { $0!.constructAlertPolygons() }
         }
-        UtilityDownloadWarnings.get()
+        // UtilityDownloadWarnings.get()
+//        PolygonTypeGeneric.SMW,
+//        PolygonTypeGeneric.SQW,
+//        PolygonTypeGeneric.DSW,
+//        PolygonTypeGeneric.SPS
+        for t in [PolygonTypeGeneric.SMW, PolygonTypeGeneric.SQW, PolygonTypeGeneric.DSW, PolygonTypeGeneric.SPS] {
+            
+            if ObjectPolygonWarning.polygonDataByType[t]!.isEnabled {
+                ObjectPolygonWarning.polygonDataByType[t]!.download()
+            }
+            // updatePolygonWarningsNonGeneric(t)
+        }
     }
     
     private func updatePolygonWarningsGeneric() {

@@ -229,9 +229,6 @@
 		03F3EB9B229948BA0056A56D /* UtilityModelSpcSrefInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB99229948BA0056A56D /* UtilityModelSpcSrefInterface.swift */; };
 		03F3EB9C229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB9A229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift */; };
 		03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */; };
-		03F4631322A2F14900C06D16 /* UtilityDownloadWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4630F22A2F14800C06D16 /* UtilityDownloadWatch.swift */; };
-		03F4631422A2F14900C06D16 /* UtilityDownloadMpd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4631022A2F14800C06D16 /* UtilityDownloadMpd.swift */; };
-		03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */; };
 		03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A959229C7145004A88EB /* UtilitySwoD1.swift */; };
 		03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
@@ -318,7 +315,6 @@
 		F08E48351EB0DF8F000629DA /* ObjectCurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */; };
 		F0922D4A1DB3E4F9008526F6 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */; };
 		F098F78B1E4F89A0007EDD2A /* ObjectForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */; };
-		F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */; };
 		F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */; };
 		F0AD5B401DD3301500284C7C /* UIColorLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */; };
 		F0B334F61DA3FB2B0035BD36 /* UtilityDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B334F51DA3FB2B0035BD36 /* UtilityDownload.swift */; };
@@ -637,9 +633,6 @@
 		03F3EB99229948BA0056A56D /* UtilityModelSpcSrefInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSpcSrefInterface.swift; sourceTree = "<group>"; };
 		03F3EB9A229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSpcSrefInputOutput.swift; sourceTree = "<group>"; };
 		03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadWarnings.swift; sourceTree = "<group>"; };
-		03F4630F22A2F14800C06D16 /* UtilityDownloadWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadWatch.swift; sourceTree = "<group>"; };
-		03F4631022A2F14800C06D16 /* UtilityDownloadMpd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadMpd.swift; sourceTree = "<group>"; };
-		03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadMcd.swift; sourceTree = "<group>"; };
 		03F8A959229C7145004A88EB /* UtilitySwoD1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySwoD1.swift; sourceTree = "<group>"; };
 		03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHomeScreen.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
@@ -733,7 +726,6 @@
 		F08E48331EB0DF8F000629DA /* ObjectCurrentConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCurrentConditions.swift; sourceTree = "<group>"; };
 		F0922D491DB3E4F9008526F6 /* HSBColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		F098F78A1E4F89A0007EDD2A /* ObjectForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectForecast.swift; sourceTree = "<group>"; };
-		F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityPolygons.swift; sourceTree = "<group>"; };
 		F0AB14991EBDD8DD00D92CD6 /* ObjectColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectColorPalette.swift; sourceTree = "<group>"; };
 		F0AD5B3F1DD3301500284C7C /* UIColorLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorLegend.swift; sourceTree = "<group>"; };
 		F0B334F51DA3FB2B0035BD36 /* UtilityDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownload.swift; sourceTree = "<group>"; };
@@ -1170,13 +1162,9 @@
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
 				F0B3355F1DA3FD6F0035BD36 /* SpotterReports.swift */,
 				0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */,
-				03F4631122A2F14900C06D16 /* UtilityDownloadMcd.swift */,
-				03F4631022A2F14800C06D16 /* UtilityDownloadMpd.swift */,
 				03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */,
-				03F4630F22A2F14800C06D16 /* UtilityDownloadWatch.swift */,
 				F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */,
 				F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */,
-				F0A3CD721E8133C6000F3622 /* UtilityPolygons.swift */,
 				0329E306241BBA84005E0766 /* UtilityRadar.swift */,
 				031AED0A21C86149004EC175 /* UtilityRadarUI.swift */,
 				F0B335D31DA3FDA70035BD36 /* UtilitySpotter.swift */,
@@ -1643,7 +1631,6 @@
 				034041EF23F167F9003AB242 /* vcSpcMeso.swift in Sources */,
 				0340420623F16A4D003AB242 /* vcSettingsRadar.swift in Sources */,
 				036E9BA4269DFA350009A47B /* UtilityList.swift in Sources */,
-				F0A3CD731E8133C6000F3622 /* UtilityPolygons.swift in Sources */,
 				F0118B421DA9771600B43DE5 /* UtilityActions.swift in Sources */,
 				F0B335901DA3FD880035BD36 /* Level2Record.swift in Sources */,
 				03F3EB7222993EA80056A56D /* UtilityNws.swift in Sources */,
@@ -1793,13 +1780,11 @@
 				034DDC951FCB45CD00A769DA /* MemoryBuffer.swift in Sources */,
 				034041D823F162A4003AB242 /* vcWpcRainfallDiscussion.swift in Sources */,
 				037D7BD823C91E52000FF7D7 /* DownloadTimer.swift in Sources */,
-				03F4631322A2F14900C06D16 /* UtilityDownloadWatch.swift in Sources */,
 				03F3EB6F22993D8E0056A56D /* ObjectNhc.swift in Sources */,
 				03F3EB7422993F390056A56D /* UtilityTtsTranslations.swift in Sources */,
 				03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */,
 				F016C3191DC024D0001BC13E /* ExternalGeodeticMeasurement.swift in Sources */,
 				0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */,
-				03F4631522A2F14900C06D16 /* UtilityDownloadMcd.swift in Sources */,
 				034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */,
 				036E9BA2269DE47D0009A47B /* FutureBytes2.swift in Sources */,
 				0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */,
@@ -1857,7 +1842,6 @@
 				F08E48311EB0DF72000629DA /* ObjectSevenDay.swift in Sources */,
 				F0B335811DA3FD6F0035BD36 /* UtilityColorPaletteGeneric.swift in Sources */,
 				035144A226A5E91500AF38B6 /* RadarGeometry.swift in Sources */,
-				03F4631422A2F14900C06D16 /* UtilityDownloadMpd.swift in Sources */,
 				031546361FC636450020EF7B /* ObjectCardStackView.swift in Sources */,
 				031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */,
 				0334980723454B2100FE6050 /* ColorCompatibility.swift in Sources */,

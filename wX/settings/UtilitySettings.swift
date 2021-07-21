@@ -13,19 +13,9 @@ final class UtilitySettings {
         return homeScreenFav.contains("METAL-RADAR")
     }
 
-    static func getHelp(_ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ help: String) {
-        let alert = ObjectPopUp(uiv, help, targetButton)
-        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-        alert.finish()
-    }
-
-    static func backupRadarSettingsAndEnable() {
-        RadarPreferences.warningsOrig = RadarPreferences.warnings
-        RadarPreferences.warnings = true
-        UtilityDownloadWarnings.timer.resetTimer()
-    }
-
-    static func restoreRadarSettings() {
-        RadarPreferences.warnings = RadarPreferences.warningsOrig
-    }
+//    static func getHelp(_ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ help: String) {
+//        let alert = ObjectPopUp(uiv, help, targetButton)
+//        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
+//        alert.finish()
+//    }
 }

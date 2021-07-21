@@ -10,7 +10,6 @@ final class ObjectPolygonWarning {
     let timer: DownloadTimer
     let isEnabled: Bool
     let type: PolygonTypeGeneric
-    // var data = ""
     private let baseUrl = "https://api.weather.gov/alerts/active?event="
 
     init(_ type: PolygonTypeGeneric) {
@@ -19,7 +18,6 @@ final class ObjectPolygonWarning {
         storage = DataStorage("SEVEREDASHBOARD\(type)")
         timer = DownloadTimer("WARNINGS_\(type)")
         storage.update()
-        // data = storage.value
     }
     
     func download() {
@@ -27,7 +25,6 @@ final class ObjectPolygonWarning {
             let html = getUrl().getNwsHtml()
             if html != "" {
                 storage.value = html
-                // data = html
             } else {
                 timer.resetTimer()
             }
@@ -35,7 +32,6 @@ final class ObjectPolygonWarning {
     }
 
     func getData() -> String {
-        // return data
         storage.value
     }
 
@@ -92,7 +88,6 @@ final class ObjectPolygonWarning {
         .TOR: "Tornado%20Warning",
         .TST: "Severe%20Thunderstorm%20Warning",
         .FFW: "Flash%20Flood%20Warning"
-        // .SPS: "Flood%20Warning"
     ]
 
     static let polygonList = [
@@ -113,6 +108,12 @@ final class ObjectPolygonWarning {
             }
         }
         return anyEnabled
+    }
+    
+    static func resetTimers() {
+        polygonList.forEach {
+            ObjectPolygonWarning.polygonDataByType[$0]!.timer.resetTimer()
+        }
     }
 
     static let pVtec = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]" +

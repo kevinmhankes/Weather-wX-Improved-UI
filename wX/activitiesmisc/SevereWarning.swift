@@ -31,7 +31,6 @@ final class SevereWarning {
     }
     
     func generateString() {
-        // let html = ObjectWarning.getBulkData(type)
         var html = ""
         switch type {
         case .TOR:

@@ -66,6 +66,6 @@ final class UtilitySpcSwo {
     }
     
     static func getImageUrlsDays48(_ day: String) -> String {
-        return GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + day + "prob.gif"
+        GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + day + "prob.gif"
     }
 }

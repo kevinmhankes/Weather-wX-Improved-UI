@@ -35,7 +35,7 @@ final class Route {
     
     static func textViewer(_ uiv: UIViewController, _ text: String) {
         let vc = vcTextViewer()
-        vc.textViewText = text
+        vc.html = text
         uiv.goToVC(vc)
     }
     

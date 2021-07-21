@@ -587,7 +587,12 @@ final class vcTabLocation: vcTabParent {
             wxMetal.forEach { $0!.constructAlertPolygons() }
         }
         // UtilityPolygons.get()
-        UtilityDownloadWarnings.get()
+        // UtilityDownloadWarnings.get()
+        for t in [PolygonTypeGeneric.SMW, PolygonTypeGeneric.SQW, PolygonTypeGeneric.DSW, PolygonTypeGeneric.SPS] {
+            if ObjectPolygonWarning.polygonDataByType[t]!.isEnabled {
+                ObjectPolygonWarning.polygonDataByType[t]!.download()
+            }
+        }
     }
 
     func updatePolygonWarningsGeneric() {

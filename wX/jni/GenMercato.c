@@ -49,7 +49,7 @@ void JNI_GenMercato(
 	}
 }
 
-void JNI_GenMercatoMetal(
+/* void JNI_GenMercatoMetal(
     char * iBuff,
     char * oBuff,
     float center_x,
@@ -107,7 +107,7 @@ void JNI_GenMercatoMetal(
         memcpy(&oBuff[i_count * 4 + 4], &blue, 4);
         memcpy(&oBuff[i_count * 4 + 4], &one, 4);
     }
-}
+} */
 
 float ReverseFloat(const float inFloat) {
     float retVal;

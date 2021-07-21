@@ -8,7 +8,7 @@ import UIKit
 
 final class vcTextViewer: UIwXViewControllerWithAudio {
 
-    var textViewText = ""
+    var html = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ final class vcTextViewer: UIwXViewControllerWithAudio {
     }
 
     private func display() {
-        objectTextView = Text(stackView, textViewText)
+        objectTextView = Text(stackView, html)
         objectTextView.constrain(scrollView)
     }
 }

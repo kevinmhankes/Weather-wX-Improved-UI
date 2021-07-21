@@ -146,12 +146,8 @@ final class RadarGeometry {
         }
     }
 
-    // for now this is only called after leaving settings -> radar
+    // this is only called after leaving settings -> radar
     static func resetTimerOnRadarPolygons() {
-        UtilityDownloadWarnings.timer.resetTimer()
-
-//        UtilityDownloadMcd.timer.resetTimer()
-//        UtilityDownloadMpd.timer.resetTimer()
-//        UtilityDownloadWatch.timer.resetTimer()
+        ObjectPolygonWarning.resetTimers()
     }
 }

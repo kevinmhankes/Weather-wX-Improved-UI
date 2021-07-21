@@ -12,7 +12,7 @@ final class vcUSAlerts: UIwXViewController {
     private var capAlerts = [CapAlert]()
     private var filter = ""
     private var filterButton = ToolbarIcon()
-    private var objAlertSummary = ObjectAlertSummary()
+    private var objectAlertSummary = ObjectAlertSummary()
     private var filterGesture: UITapGestureRecognizer?
     private var filterShown = false
     private var boxImage = ObjectStackView(.fill, .vertical)
@@ -40,11 +40,11 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     override func getContent() {
-        _ = FutureVoid(download, display)
+        _ = FutureVoid(downloadText, display)
         _ = FutureBytes("https://forecast.weather.gov/wwamap/png/US.png", image.setBitmap)
     }
 
-    func download() {
+    func downloadText() {
         capAlerts.removeAll()
         let html = UtilityDownloadNws.getCap("us")
         let alerts = html.parseColumn("<entry>(.*?)</entry>")
@@ -56,18 +56,18 @@ final class vcUSAlerts: UIwXViewController {
     private func display() {
         if !filterShown {
             filterButton.title = "Tornado/ThunderStorm/FFW"
-            objAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)
+            objectAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)
         } else {
             filterChanged(filter)
         }
     }
 
     @objc func warningSelected(sender: GestureData) {
-        Route.alertDetail(self, objAlertSummary.getUrl(sender.data))
+        Route.alertDetail(self, objectAlertSummary.getUrl(sender.data))
     }
 
     @objc func goToRadar(sender: GestureData) {
-        let wfo = objAlertSummary.wfos[sender.data]
+        let wfo = objectAlertSummary.wfos[sender.data]
         Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[wfo] ?? "")
     }
 
@@ -94,7 +94,7 @@ final class vcUSAlerts: UIwXViewController {
     func filterChanged(_ filter: String) {
         boxText.removeChildren()
         filterButton.title = filter
-        objAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture)
+        objectAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture)
         filterShown = true
         self.filter = filter
     }

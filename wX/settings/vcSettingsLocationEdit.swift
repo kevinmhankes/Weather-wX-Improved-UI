@@ -105,7 +105,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
 
     @objc func helpClicked() {
         let vc = vcTextViewer()
-        vc.textViewText = helpStatement
+        vc.html = helpStatement
         goToVC(vc)
     }
 
