@@ -43,13 +43,13 @@ final class Utility {
         return LatLon(lat, lon)
     }
 
-    static func getSoundingSiteName(_ wfo: String) -> String {
-        var site = UtilityRadar.wfoIdToName[wfo] ?? ""
-        if site == "" {
-            site = UtilityRadar.soundingIdToName[wfo] ?? ""
-        }
-        return site
-    }
+//    static func getSoundingSiteName(_ wfo: String) -> String {
+//        var site = UtilityRadar.wfoIdToName[wfo] ?? ""
+//        if site == "" {
+//            site = UtilityRadar.soundingIdToName[wfo] ?? ""
+//        }
+//        return site
+//    }
 
     static func getCurrentHazards(_ uiv: UIViewController, _ locNum: Int) -> ObjectHazards {
         if Location.isUS(locNum) {
