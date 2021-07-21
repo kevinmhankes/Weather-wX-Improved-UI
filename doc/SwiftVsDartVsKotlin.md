@@ -261,6 +261,7 @@ python
 ```python
 d: Dict[str, int] = {}
 d.get(k, defaultVal)
+len(d)
 k in d
 for k in d:
 for k, v in d.entries:
