@@ -94,13 +94,13 @@ final class UtilityTime {
         Calendar.current.component(.year, from: Date())
     }
     
-    static func getMonth() -> Int {
-        Calendar.current.component(.month, from: Date())
-    }
-    
-    static func getDay() -> Int {
-        Calendar.current.component(.day, from: Date())
-    }
+//    static func getMonth() -> Int {
+//        Calendar.current.component(.month, from: Date())
+//    }
+//
+//    static func getDay() -> Int {
+//        Calendar.current.component(.day, from: Date())
+//    }
     
     static func secondsFromUTC() -> Int {
         TimeZone.current.secondsFromGMT()
@@ -138,11 +138,11 @@ final class UtilityTime {
         return dateFormatter.string(from: Date())
     }
     
-    static func getDateAsString(_ date: Date, _ format: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
-    }
+//    static func getDateAsString(_ date: Date, _ format: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = format
+//        return dateFormatter.string(from: date)
+//    }
     
     static func currentTimeMillis64() -> Int64 {
         Int64(Date().timeIntervalSince1970 * 1000)
@@ -160,13 +160,13 @@ final class UtilityTime {
         return components.hour ?? 0
     }
     
-    static func getCurrentHour() -> Int {
-        let date = Date()
-        var calendar = Calendar.current
-        calendar.timeZone = .current
-        let components = calendar.dateComponents([.hour], from: date)
-        return components.hour ?? 0
-    }
+//    static func getCurrentHour() -> Int {
+//        let date = Date()
+//        var calendar = Calendar.current
+//        calendar.timeZone = .current
+//        let components = calendar.dateComponents([.hour], from: date)
+//        return components.hour ?? 0
+//    }
     
     static func getCurrentLocalTimeAsString() -> String {
         getDateAsString("yyyy-MM-dd HH:mm:ss")

@@ -99,13 +99,13 @@ final class UtilityMath {
         String(Int(round(valueD)))
     }
 
-    static func metersToMileRounded(_ valueD: Double) -> String {
-        String(Int(round(valueD / 1609.34)))
-    }
-
-    static func pressurePAtoMB(_ valueD: Double) -> String {
-        String(Int(round(valueD / 100.0)))
-    }
+//    static func metersToMileRounded(_ valueD: Double) -> String {
+//        String(Int(round(valueD / 1609.34)))
+//    }
+//
+//    static func pressurePAtoMB(_ valueD: Double) -> String {
+//        String(Int(round(valueD / 100.0)))
+//    }
 
     static func pressureMBtoIn(_ value: String) -> String {
         String(format: "%.2f", (to.Double(value)) / 33.8637526) + " in"
