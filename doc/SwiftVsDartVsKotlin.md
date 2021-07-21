@@ -257,6 +257,15 @@ dart
 ```dart
 var classToId = Map<int, List<double>>();
 ```
+python
+```python
+d: Dict[str, int] = {}
+d.get(k, defaultVal)
+k in d
+for k in d:
+for k, v in d.entries:
+del d[k]
+```
 
 ### Iterate over enum:
 kotlin
