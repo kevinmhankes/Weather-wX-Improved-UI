@@ -12,7 +12,7 @@ final class ObjectCanadaWarnings: NSObject {
     private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var listLocUrl = [String]()
-    private var listLocName = [String]()
+    // private var listLocName = [String]()
     private var listLocWarning = [String]()
     private var listLocWatch = [String]()
     private var listLocStatement = [String]()
@@ -70,7 +70,7 @@ final class ObjectCanadaWarnings: NSObject {
             html = (GlobalVariables.canadaEcSitePrefix + "/warnings/index_e.html?prov=" + provinceCode).getHtml()
         }
         listLocUrl = html.parseColumn("<tr><td><a href=\"(.*?)\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
-        listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
+        // listLocName = html.parseColumn("<tr><td><a href=\".*?\">(.*?)</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
         listLocWarning = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<tr>")
         listLocWatch = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<td>.*?</td>.*?<tr>")
         listLocStatement = html.parseColumn("<tr><td><a href=\".*?\">.*?</a></td>.*?<td>.*?</td>.*?<td>.*?</td>.*?<td>(.*?)</td>.*?<tr>")
