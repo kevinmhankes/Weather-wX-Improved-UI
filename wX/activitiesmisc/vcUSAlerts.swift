@@ -40,12 +40,12 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     override func getContent() {
-        capAlerts.removeAll()
         _ = FutureVoid(download, display)
         _ = FutureBytes("https://forecast.weather.gov/wwamap/png/US.png", image.setBitmap)
     }
 
     func download() {
+        capAlerts.removeAll()
         let html = UtilityDownloadNws.getCap("us")
         let alerts = html.parseColumn("<entry>(.*?)</entry>")
         alerts.forEach {
@@ -54,12 +54,9 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     private func display() {
-        // refreshViews()
         if !filterShown {
             filterButton.title = "Tornado/ThunderStorm/FFW"
             objAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)
-            // objAlertSummary.getImage()
-            // bitmap = objAlertSummary.image
         } else {
             filterChanged(filter)
         }
@@ -93,15 +90,10 @@ final class vcUSAlerts: UIwXViewController {
     func filterChanged(_ filter: String) {
         boxText.removeChildren()
         filterButton.title = filter
-        objAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture, showImage: false)
-        // objAlertSummary.image = bitmap
+        objAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture)
         filterShown = true
         self.filter = filter
     }
-
-//    @objc func imageClicked() {
-//        objAlertSummary.changeImage(self)
-//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)

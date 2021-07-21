@@ -27,18 +27,12 @@ final class ObjectAlertSummary: NSObject {
         _ stackView: UIStackView,
         _ filter: String,
         _ capAlerts: [CapAlert],
-        _ gesture: UITapGestureRecognizer?,
-        showImage: Bool = true
+        _ gesture: UITapGestureRecognizer?
     ) {
         self.init()
-        //stackView.removeViews()
         let objTextSummary = Text(stackView)
         objTextSummary.addGestureRecognizer(gesture!)
         objTextSummary.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-//        if showImage {
-//            objectImage = ObjectImage(stackView)
-//            objectImage.addGestureRecognizer(GestureData(0, uiv, #selector(imageClicked)))
-//        }
         var index = 0
         var filterBool = true
         var filterLabel = ""
@@ -83,32 +77,10 @@ final class ObjectAlertSummary: NSObject {
         }
         var stateCnt = ""
         stateCntMap.forEach { state, count in stateCnt += state + ":" + String(count) + " " }
-        objTextSummary.text = "Total alerts: " + String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCnt
+        objTextSummary.text = "Total alerts: " + to.String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + to.String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCnt
     }
 
     func getUrl(_ index: Int) -> String {
         urls[index]
     }
-
-    @objc func imageClicked() {}
-
-//    func changeImage(_ uiv: UIViewController) {
-//        Route.imageViewer(uiv, ObjectAlertSummary.imageUrls[0])
-//    }
-
-//    func getImage() {
-//        imageIndex = 0
-//        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) }, objectImage.setBitmap)
-////        DispatchQueue.global(qos: .userInitiated).async {
-////            self.imageIndex = 0
-////            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
-////            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
-////            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
-////        }
-//    }
-
-//    var image: Bitmap {
-//        get { objectImage.bitmap }
-//        set { objectImage.setBitmap(newValue) }
-//    }
 }
