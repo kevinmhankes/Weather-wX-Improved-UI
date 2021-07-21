@@ -23,4 +23,12 @@ final class to {
     static func Int(_ s: String) -> Int {
         Swift.Int(s) ?? 0
     }
+    
+    static func Double(_ s: String) -> Double {
+        Swift.Double(s) ?? 0.0
+    }
+    
+    static func Float(_ s: String) -> Float {
+        Swift.Float(s) ?? 0.0
+    }
 }

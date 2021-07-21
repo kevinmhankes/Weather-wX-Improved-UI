@@ -44,7 +44,7 @@ final class UtilityMath {
     }
 
     static func unitsPressure(_ value: String) -> String {
-        var number = Double(value) ?? 0.0
+        var number = to.Double(value)
         if UIPreferences.unitsM {
             number *= 33.8637526
             return String(format: "%.2f", number) + " mb"
@@ -54,7 +54,7 @@ final class UtilityMath {
     }
 
     static func celsiusToFahrenheit(_ value: String) -> String {
-        String(round((Double(value) ?? 0.0) * 9 / 5 + 32))
+        String(round((to.Double(value)) * 9 / 5 + 32))
     }
 
     // only used in the "table" method below
@@ -108,7 +108,7 @@ final class UtilityMath {
     }
 
     static func pressureMBtoIn(_ value: String) -> String {
-        String(format: "%.2f", (Double(value) ?? 0.0) / 33.8637526) + " in"
+        String(format: "%.2f", (to.Double(value)) / 33.8637526) + " in"
     }
 
     static func getRadarBeamHeight(_ degree: Double, _ distance: Double) -> Double {
@@ -117,8 +117,8 @@ final class UtilityMath {
 
     static func heatIndex(_ temp: String, _ RH: String) -> String {
         // temp >= 80 and RH >= 40
-        let T = Double(temp) ?? 0.0
-        let R = Double(RH) ?? 0.0
+        let T = to.Double(temp)
+        let R = to.Double(RH)
         if T > 80.0 && R > 4.0 {
             let s1 = -42.379
             let s2 = 2.04901523 * T

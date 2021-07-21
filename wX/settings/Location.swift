@@ -109,11 +109,11 @@ final class Location {
 
     static var x: String { locations[getCurrentLocation()].lat }
 
-    static var xDbl: Double { Double(Location.x) ?? 0.0 }
+    static var xDbl: Double { to.Double(Location.x) }
 
     static var y: String { locations[getCurrentLocation()].lon }
 
-    static var yDbl: Double { Double(Location.y) ?? 0.0 }
+    static var yDbl: Double { to.Double(Location.y) }
 
     static var getLocationIndex: Int { Location.getCurrentLocation() }
 
@@ -154,7 +154,7 @@ final class Location {
     }
 
     static func save(_ locNum: String, _ latLon: LatLon, _ labelStr: String) -> String {
-        let locNumInt = Int(locNum) ?? 0
+        let locNumInt = to.Int(locNum)
         let locNumToSave = locNumInt == (Location.numLocations + 1) ? locNumInt : Location.numLocations
         Utility.writePref("LOC" + locNum + "_X", latLon.latString)
         Utility.writePref("LOC" + locNum + "_Y", latLon.lonString)
@@ -217,7 +217,7 @@ final class Location {
     }
 
     static func delete(_ locToDeleteStr: String) {
-        let locToDeleteInt = Int(locToDeleteStr) ?? 0
+        let locToDeleteInt = to.Int(locToDeleteStr)
         let locNumIntCurrent = Location.numLocations
         if locToDeleteInt > locNumIntCurrent {
             return
@@ -260,7 +260,7 @@ final class Location {
             Location.setCurrentLocationStr(shiftNum)
         }
         let widgetLocNum = Utility.readPref("WIDGET_LOCATION", "1")
-        let widgetLocNumInt = Int(widgetLocNum) ?? 0
+        let widgetLocNumInt = to.Int(widgetLocNum)
         if locToDeleteInt == widgetLocNumInt {
             Utility.writePref("WIDGET_LOCATION", "1")
         } else if widgetLocNumInt > locToDeleteInt {

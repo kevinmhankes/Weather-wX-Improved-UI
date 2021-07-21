@@ -232,7 +232,7 @@ final class UtilityCanada {
         var hour: Int
         var daytime = true
         if timeArr.count > 0 {
-            hour = Int(timeArr[0]) ?? 0
+            hour = to.Int(timeArr[0])
             if time.contains("AM") {
                 if hour < 8 {
                     daytime = false

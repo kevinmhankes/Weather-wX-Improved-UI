@@ -39,8 +39,8 @@ final class UtilitySwoD1 {
                     polygons.forEach { polygon in
                         if polygon != "" {
                             let numbers = polygon.split(" ")
-                            let x = numbers.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in Double(value) ?? 0.0 }
-                            let y = numbers.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in (Double(value) ?? 0.0) * -1.0 }
+                            let x = numbers.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in to.Double(value) }
+                            let y = numbers.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in to.Double(value) * -1.0 }
                             if x.count > 0 && y.count > 0 {
                                 warningList += [x[0], y[0]]
                                 (1..<x.count - 1).forEach { j in

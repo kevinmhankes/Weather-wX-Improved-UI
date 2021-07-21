@@ -31,11 +31,11 @@ final class UtilityHourly {
 
     static func getFooter() -> String {
         var footer = GlobalVariables.newline
-        hourlyAbbreviationsFirst.keys.forEach { key in
-            footer += hourlyAbbreviationsFirst[key]! + ": " + key + GlobalVariables.newline
+        hourlyAbbreviationsFirst.forEach { k, v in
+            footer += v + ": " + k + GlobalVariables.newline
         }
-        hourlyAbbreviationsSecond.keys.forEach { key in
-            footer += hourlyAbbreviationsSecond[key]! + ": " + key + GlobalVariables.newline
+        hourlyAbbreviationsSecond.forEach { k, v in
+            footer += v + ": " + k + GlobalVariables.newline
         }
         return footer
     }
@@ -85,21 +85,21 @@ final class UtilityHourly {
 
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
-        hourlyAbbreviationsFirst.keys.forEach { key in
-            hourly = hourly.replaceAll(key, hourlyAbbreviationsFirst[key]!)
+        hourlyAbbreviationsFirst.forEach { k, v in
+            hourly = hourly.replaceAll(k, v)
         }
-        hourlyAbbreviationsSecond.keys.forEach { key in
-            hourly = hourly.replaceAll(key, hourlyAbbreviationsSecond[key]!)
+        hourlyAbbreviationsSecond.forEach { k, v in
+            hourly = hourly.replaceAll(k, v)
         }
         return hourly
     }
 
     static func translateTime(_ originalTime: String) -> String {
         let originalTimeComponents = originalTime.replace("T", "-").split("-")
-        let year = Int(originalTimeComponents[0]) ?? 0
-        let month = Int(originalTimeComponents[1]) ?? 0
-        let day = Int(originalTimeComponents[2]) ?? 0
-        let hour = Int(originalTimeComponents[3].replace(":00:00", "")) ?? 0
+        let year = to.Int(originalTimeComponents[0])
+        let month = to.Int(originalTimeComponents[1])
+        let day = to.Int(originalTimeComponents[2])
+        let hour = to.Int(originalTimeComponents[3].replace(":00:00", ""))
         let hourString = String(hour)
         let dayOfTheWeek: String
         var futureDateComp = DateComponents()

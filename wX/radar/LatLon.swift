@@ -16,8 +16,8 @@ struct LatLon {
     init(radarSite: String) {
         let ridX = Utility.getRadarSiteX(radarSite)
         let ridY = Utility.getRadarSiteY(radarSite)
-        latNum = Double(ridX) ?? 0.0
-        lonNum = -1.0 * (Double(ridY) ?? 0.0)
+        latNum = to.Double(ridX)
+        lonNum = -1.0 * to.Double(ridY)
         xStr = String(latNum)
         yStr = String(lonNum)
     }
@@ -39,8 +39,8 @@ struct LatLon {
     init(_ xStr: String, _ yStr: String) {
         self.xStr = xStr
         self.yStr = yStr
-        latNum = Double(self.xStr) ?? 0.0
-        lonNum = Double(self.yStr) ?? 0.0
+        latNum = to.Double(self.xStr)
+        lonNum = to.Double(self.yStr)
     }
     
     // SPC and WPC issue text products with LAT/LON encoded in a special format
@@ -54,13 +54,13 @@ struct LatLon {
         yStr = temp.substring(4, 8)
         xStr = UtilityString.addPeriodBeforeLastTwoChars(xStr)
         yStr = UtilityString.addPeriodBeforeLastTwoChars(yStr)
-        var tmpDbl = Double(yStr) ?? 0.0
+        var tmpDbl = to.Double(yStr)
         if tmpDbl < 40.00 {
             tmpDbl += 100
             yStr = String(tmpDbl)
         }
-        latNum = Double(xStr) ?? 0.0
-        lonNum = Double(yStr) ?? 0.0
+        latNum = to.Double(xStr)
+        lonNum = to.Double(yStr)
     }
     
     var list: [Double] { [lat, lon] }
@@ -85,7 +85,7 @@ struct LatLon {
         get { xStr }
         set {
             xStr = newValue
-            latNum = Double(newValue) ?? 0.0
+            latNum = to.Double(newValue)
         }
     }
     
@@ -93,7 +93,7 @@ struct LatLon {
         get { yStr }
         set {
             yStr = newValue
-            lonNum = Double(newValue) ?? 0.0
+            lonNum = to.Double(newValue)
         }
     }
     
@@ -145,15 +145,15 @@ struct LatLon {
         list.indices.forEach { i in
             if isWarning {
                 if i.isEven() {
-                    y.append((Double(list[i]) ?? 0.0) * multiplier)
+                    y.append(to.Double(list[i]) * multiplier)
                 } else {
-                    x.append(Double(list[i]) ?? 0.0)
+                    x.append(to.Double(list[i]))
                 }
             } else {
                 if i.isEven() {
-                    x.append(Double(list[i]) ?? 0.0)
+                    x.append(to.Double(list[i]))
                 } else {
-                    y.append((Double(list[i]) ?? 0.0) * multiplier)
+                    y.append(to.Double(list[i]) * multiplier)
                 }
             }
         }
@@ -182,7 +182,9 @@ struct LatLon {
     static func storeWatchMcdLatLon(_ html: String) -> String {
         let coordinates = html.parseColumn("([0-9]{8}).*?")
         var s = ""
-        coordinates.forEach { s += LatLon($0).printSpaceSeparated() }
+        coordinates.forEach {
+            s += LatLon($0).printSpaceSeparated()
+        }
         s += ":"
         return s.replace(" :", ":")
     }

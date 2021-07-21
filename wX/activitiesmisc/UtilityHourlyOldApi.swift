@@ -48,8 +48,8 @@ final class UtilityHourlyOldApi {
 
             let timeSplit: [String] = time2List[j].split(" ")
             let timeSplit2: [String] = timeSplit[0].split("-")
-            let month: Int = Int(timeSplit2[0]) ?? 0
-            let day: Int = Int(timeSplit2[1]) ?? 0
+            let month = to.Int(timeSplit2[0])
+            let day = to.Int(timeSplit2[1])
             let dayOfTheWeek = UtilityTime.dayOfWeek(year, month, day)
             var temp3Val: String = "."
             var temp4Val: String = "."

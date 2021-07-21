@@ -8,15 +8,12 @@ final class WXGLNexradLevel3HailIndex {
 
     private static let pattern = "(\\d+) "
 
-    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
-        // WXGLDownload.getNidsTab("HI", projectionNumbers.radarSite, fileName)
-        
+    static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {        
         let productCode = "HI"
         WXGLDownload.getNidsTab(productCode, projectionNumbers.radarSite, fileStorage)
         let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
         var stormList = [Double]()
         if retStr1.count > 10 {
-        // if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let hailPercent = retStr1.parseColumn("POSH/POH(.*?)V")
             let hailSize = retStr1.parseColumn("MAX HAIL SIZE(.*?)V")
@@ -38,11 +35,11 @@ final class WXGLNexradLevel3HailIndex {
             if (posnNumbers.count == hailPercentNumbers.count) && posnNumbers.count > 1 {
                 var index = 0
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach {
-                    let hailSizeDbl = Double(hailSizeNumbers[index]) ?? 0.0
-                    if hailSizeDbl > 0.49 && ((Int(hailPercentNumbers[$0]) ?? 0 ) > 60 || (Int(hailPercentNumbers[$0 + 1]) ?? 0 ) > 60) {
+                    let hailSizeDbl = to.Double(hailSizeNumbers[index])
+                    if hailSizeDbl > 0.49 && ((to.Int(hailPercentNumbers[$0])) > 60 || to.Int(hailPercentNumbers[$0 + 1]) > 60) {
                         let ecc = ExternalGeodeticCalculator()
-                        let degree = Int(posnNumbers[$0]) ?? 0
-                        let nm = Int(posnNumbers[$0 + 1]) ?? 0
+                        let degree = to.Int(posnNumbers[$0])
+                        let nm = to.Int(posnNumbers[$0 + 1])
                         let start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                         let ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                         stormList += [ec.getLatitude(), ec.getLongitude() * -1.0]
@@ -57,9 +54,6 @@ final class WXGLNexradLevel3HailIndex {
                     index += 1
                 }
             }
-            // return stormList
-        } else {
-            // return [Double]()
         }
         fileStorage.hiData = stormList
     }

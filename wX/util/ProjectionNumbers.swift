@@ -83,13 +83,13 @@ final class ProjectionNumbers {
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
     
-    var xDbl: Double { Double(lat) ?? 0.0 }
+    var xDbl: Double { to.Double(lat) }
     
-    var xFloat: Float { Float(lat) ?? 0.0 }
+    var xFloat: Float { to.Float(lat) }
     
-    var yDbl: Double { Double(lon) ?? 0.0 }
+    var yDbl: Double { to.Double(lon) }
     
-    var yFloat: Float { Float(lon) ?? 0.0 }
+    var yFloat: Float { to.Float(lon) }
     
     var xCenterFloat: Float { Float(xCenter) }
     

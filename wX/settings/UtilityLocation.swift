@@ -27,8 +27,8 @@ final class UtilityLocation {
                 }
             }
             if tmpX != "" && tmpY != "" {
-                latLonList.append(Double(tmpX) ?? 0.0)
-                latLonList.append(Double(tmpY) ?? 0.0)
+                latLonList.append(to.Double(tmpX))
+                latLonList.append(to.Double(tmpY))
             }
         }
         return latLonList

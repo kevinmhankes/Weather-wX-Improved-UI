@@ -67,7 +67,7 @@ final class UtilityMetar {
                     if visBlob.contains("/") {
                         visInt = 0
                     } else if visBlob != "" {
-                        visInt = Int(visBlob) ?? 0
+                        visInt = to.Int(visBlob)
                     } else {
                         visInt = 20000
                     }
@@ -77,11 +77,11 @@ final class UtilityMetar {
                     var bknInt = 100000
                     if ovcStr != "" {
                         ovcStr += "00"
-                        ovcInt = Int(ovcStr) ?? 0
+                        ovcInt = to.Int(ovcStr)
                     }
                     if bknStr != "" {
                         bknStr += "00"
-                        bknInt = Int(bknStr) ?? 0
+                        bknInt = to.Int(bknStr)
                     }
                     let lowestCig = bknInt < ovcInt ? bknInt : ovcInt
                     var aviationColor = Color.GREEN
@@ -109,7 +109,7 @@ final class UtilityMetar {
                         validWind = true
                         windDir = windBlob.substring(0, 3)
                         windInKt = windBlob.substring(3, 5)
-                        windDirD = Double(windDir) ?? 0.0
+                        windDirD = to.Double(windDir)
                         windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " kt"
                     } else if windBlob.contains("KT") && windBlob.count==10 {
                         validWind = true
@@ -117,7 +117,7 @@ final class UtilityMetar {
                         windDir = windBlob.substring(0, 3)
                         windInKt = windBlob.substring(3, 5)
                         windGustInKt = windBlob.substring(6, 8)
-                        windDirD = Double(windDir) ?? 0.0
+                        windDirD = to.Double(windDir)
                         windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " G " + windGustInKt + " kt"
                     }
                     if TDArr.count > 1 {

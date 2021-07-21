@@ -7,13 +7,11 @@
 final class WXGLNexradLevel3StormInfo {
     
     static func decode(_ projectionNumbers: ProjectionNumbers, _ fileStorage: FileStorage) {
-        // WXGLDownload.getNidsTabNew("STI", projectionNumbers.radarSite.lowercased(), fileName)
         let productCode = "STI"
         WXGLDownload.getNidsTab(productCode, projectionNumbers.radarSite.lowercased(), fileStorage)
         let retStr1 = fileStorage.level3TextProductMap[productCode] ?? ""
         var stormList = [Double]()
         if retStr1.count > 10 {
-        // if let retStr1 = String(data: UtilityIO.readFileToData(fileName), encoding: .ascii) {
             let position = retStr1.parseColumn("AZ/RAN(.*?)V")
             let motion = retStr1.parseColumn("MVT(.*?)V")
             var posnStr = ""
@@ -31,10 +29,10 @@ final class WXGLNexradLevel3StormInfo {
             if (posnNumbers.count == motNumbers.count) && posnNumbers.count > 1 {
                 stride(from: 0, to: posnNumbers.count - 2, by: 2).forEach { index in
                     let ecc = ExternalGeodeticCalculator()
-                    let degree = Int(posnNumbers[index]) ?? 0
-                    let nm = Int(posnNumbers[index + 1]) ?? 0
-                    let degree2 = Double(motNumbers[index]) ?? 0.0
-                    let nm2 = Int(motNumbers[index + 1]) ?? 0
+                    let degree = to.Int(posnNumbers[index])
+                    let nm = to.Int(posnNumbers[index + 1])
+                    let degree2 = to.Double(motNumbers[index])
+                    let nm2 = to.Int(motNumbers[index + 1])
                     var start = ExternalGlobalCoordinates(projectionNumbers, lonNegativeOne: true)
                     var ec = ecc.calculateEndingGlobalCoordinates(start, Double(degree), Double(nm) * 1852.0)
                     stormList += UtilityCanvasProjection.computeMercatorNumbers(ec, projectionNumbers)
@@ -71,9 +69,6 @@ final class WXGLNexradLevel3StormInfo {
                     }
                 }
             }
-            // return stormList
-        } else {
-            // return [Double]()
         }
         fileStorage.stiList = stormList
     }

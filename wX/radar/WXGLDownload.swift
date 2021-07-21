@@ -113,7 +113,7 @@ final class WXGLDownload {
                 mostRecentSn = snFiles[$0]
             }
         }
-        let seq = Int(mostRecentSn.replace("sn.", "")) ?? 0
+        let seq = to.Int(mostRecentSn.replace("sn.", ""))
         var index = seq - frameCount + 1
         (0..<frameCount).forEach { _ in
             var tmpK = index
@@ -141,8 +141,8 @@ final class WXGLDownload {
         var listOfFiles = [String]()
         let list = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0
-        let fnSize = Int(list[list.count - 3]) ?? 0
-        let fnPrevSize = Int(list[list.count - 5]) ?? 0
+        let fnSize = to.Int(list[list.count - 3])
+        let fnPrevSize = to.Int(list[list.count - 5])
         let ratio = Double(fnSize) / Double(fnPrevSize)
         if ratio < 0.75 {
             additionalAdd = 1

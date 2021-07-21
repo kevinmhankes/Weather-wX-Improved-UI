@@ -52,7 +52,7 @@ final class ObjectNhcStormDetails {
         self.status = status
         center = lat + " " + lon
         dateTime = lastUpdate
-        movement = UtilityMath.convertWindDir(Double(movementDir) ?? 0.0) + " at " + movementSpeed + " mph"
+        movement = UtilityMath.convertWindDir(to.Double(movementDir)) + " at " + movementSpeed + " mph"
         // var modBinNumber = binNumber
         var modBinNumber = binNumber.substring(0, 2) + id.substring(2, 4)
         if modBinNumber.count == 3 {

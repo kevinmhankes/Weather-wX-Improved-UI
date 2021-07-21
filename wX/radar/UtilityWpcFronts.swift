@@ -165,13 +165,13 @@ final class UtilityWpcFronts {
         if s.count != 7 {
             return [0.0, 0.0]
         } else {
-            let lat = Double(s.substring(0, 2) + "." + s.substring(2, 3)) ?? 0.0
+            let lat = to.Double(s.substring(0, 2) + "." + s.substring(2, 3))
             let lon: Double
             let index = s.index(s.startIndex, offsetBy: 3)
             if String(s[index]) == "0" {
-                lon = Double(s.substring(4, 6) + "." + s.substring(6, 7)) ?? 0.0
+                lon = to.Double(s.substring(4, 6) + "." + s.substring(6, 7))
             } else {
-                lon = Double(s.substring(3, 6) + "." + s.substring(6, 7)) ?? 0.0
+                lon = to.Double(s.substring(3, 6) + "." + s.substring(6, 7))
             }
             return [lat, lon]
         }
@@ -179,8 +179,8 @@ final class UtilityWpcFronts {
 
     static func get() {
         if timer.isRefreshNeeded() {
-            pressureCenters = []
-            fronts = []
+            pressureCenters.removeAll()
+            fronts.removeAll()
             let urlBlob = GlobalVariables.nwsWPCwebsitePrefix + "/basicwx/coded_srp.txt"
             var html = urlBlob.getHtmlSep()
             html = html.replaceAll(GlobalVariables.newline, separator)

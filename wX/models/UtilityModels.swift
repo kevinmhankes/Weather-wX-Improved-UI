@@ -10,8 +10,8 @@ final class UtilityModels {
     
     static func convertTimeRunToTimeString(_ runStr: String, _ timeStrFunc: String) -> String {
         let timeStr = timeStrFunc.truncate(3)
-        let runInt = Int(runStr) ?? 0
-        let timeInt = Int(timeStr) ?? 0
+        let runInt = to.Int(runStr)
+        let timeInt = to.Int(timeStr)
         let realTimeGmt = runInt + timeInt
         let offsetFromUtc = UtilityTime.secondsFromUTC()
         let realTime = realTimeGmt + offsetFromUtc / 60 / 60
@@ -67,8 +67,8 @@ final class UtilityModels {
         var modelCurrentTime2 = modelCurrentTime.replace("Z", "")
         modelCurrentTime2 = modelCurrentTime2.replace("z", "")
         if modelCurrentTime2 != "" {
-            if (Int(run2) ?? 0) > (Int(modelCurrentTime2) ?? 0) {
-                run2 = String((Int(run2) ?? 0) - 24)
+            if to.Int(run2) > to.Int(modelCurrentTime2) {
+                run2 = String(to.Int(run2) - 24)
             }
             listTime.forEach { value in
                 tmpStr = value.split(" ")[0].replace(prefix, "")

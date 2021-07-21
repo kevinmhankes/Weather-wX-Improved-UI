@@ -42,7 +42,6 @@ final class ObjectPolygonWatch {
                 timer.resetTimer()
                 return
             }
-            // print("WWW" + html)
             storage.value = html
             if type == PolygonEnum.WPCMPD {
                 var numberListString = ""
@@ -53,22 +52,17 @@ final class ObjectPolygonWatch {
                     numberListString += number + ":"
                     latLonString += LatLon.storeWatchMcdLatLon(text)
                 }
-                // MyApplication.mpdLatlon.value = latLonString
-                // MyApplication.mpdNoList.value = numberListString
-                print("AAA store mpd " + numberListString)
                 latLonList.setValue(latLonString)
                 numberList.setValue(numberListString)
             } else if type == PolygonEnum.SPCMCD {
                 var numberListString = ""
                 var latLonString = ""
-                let numbers = html.parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>").map { String(format: "%04d", Int($0.replace(" ", "")) ?? 0) }
+                let numbers = html.parseColumn("<strong><a href=./products/md/md.....html.>Mesoscale Discussion #(.*?)</a></strong>").map { String(format: "%04d", to.Int($0.replace(" ", ""))) }
                 numbers.forEach { number in
                     let text = UtilityDownload.getTextProduct("SPCMCD" + number)
                     numberListString += number + ":"
                     latLonString += LatLon.storeWatchMcdLatLon(text)
                 }
-                // MyApplication.mcdLatlon.value = latLonString
-                // MyApplication.mcdNoList.value = numberListString
                 latLonList.setValue(latLonString)
                 numberList.setValue(numberListString)
             } else if type == PolygonEnum.SPCWAT {
@@ -76,7 +70,7 @@ final class ObjectPolygonWatch {
                 var latLonString = ""
                 var latLonTorString = ""
                 var latLonCombinedString = ""
-                let numbers = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", Int($0) ?? 0).replace(" ", "0") }
+                let numbers = html.parseColumn("[om] Watch #([0-9]*?)</a>").map { String(format: "%04d", to.Int($0)).replace(" ", "0") }
                 numbers.forEach { number in
                     numberListString += number + ":"
                     let text = (GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html").getHtml()
@@ -88,10 +82,6 @@ final class ObjectPolygonWatch {
                     }
                     latLonCombinedString += LatLon.storeWatchMcdLatLon(preText)
                 }
-//                MyApplication.watchLatlon.value = latLongString
-//                MyApplication.watchLatlonTor.value = latLonTorString
-//                MyApplication.watchLatlonCombined.value = latLonCombinedString
-//                MyApplication.watNoList.value = numberListString
                 latLonList.setValue(latLonString)
                 numberList.setValue(numberListString)
                 ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT_TORNADO]!.latLonList.setValue(latLonTorString)

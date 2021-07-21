@@ -182,8 +182,8 @@ final class UtilityTime {
             // something went wrong
             return false
         }
-        let radarTimeHours = Int(radarTimeComponents[0]) ?? 0
-        let radarTimeMinutes = Int(radarTimeComponents[1]) ?? 0
+        let radarTimeHours = to.Int(radarTimeComponents[0])
+        let radarTimeMinutes = to.Int(radarTimeComponents[1])
         let radarTimeTotalMinutes = radarTimeHours * 60 + radarTimeMinutes
         let currentTime = Utility.safeGet(getCurrentLocalTimeAsString().split(" "), 1)
         let currentTimeComponents = currentTime.split(":")
@@ -191,8 +191,8 @@ final class UtilityTime {
             // something went wrong
             return false
         }
-        let currentTimeHours = Int(currentTimeComponents[0]) ?? 0
-        let currentTimeMinutes = Int(currentTimeComponents[1]) ?? 0
+        let currentTimeHours = to.Int(currentTimeComponents[0])
+        let currentTimeMinutes = to.Int(currentTimeComponents[1])
         let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
         if currentTimeTotalMinutes < 30 {
             // TODO find out how to handle midnight
@@ -215,15 +215,15 @@ final class UtilityTime {
          let currentTimeInMinutes = decodeVtecTime(getGmtTimeForVtec())
          return currentTimeInMinutes < timeInMinutes
      }
-     
+    
     private static func decodeVtecTime(_ timeRangeOriginal: String) -> Date {
         // Y2K issue
         let timeRange = timeRangeOriginal.replace("T", "")
-        let year = Int("20" + (timeRange).parse("([0-9]{2})[0-9]{4}[0-9]{4}")) ?? 0
-        let month = Int((timeRange).parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}")) ?? 0
-        let day = Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}")) ?? 0
-        let hour = Int((timeRange).parse("[0-9]{6}([0-9]{2})[0-9]{2}")) ?? 0
-        let minute = Int((timeRange).parse("[0-9]{6}[0-9]{2}([0-9]{2})")) ?? 0
+        let year = to.Int("20" + (timeRange).parse("([0-9]{2})[0-9]{4}[0-9]{4}"))
+        let month = to.Int((timeRange).parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}"))
+        let day = to.Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}"))
+        let hour = to.Int((timeRange).parse("[0-9]{6}([0-9]{2})[0-9]{2}"))
+        let minute = to.Int((timeRange).parse("[0-9]{6}[0-9]{2}([0-9]{2})"))
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month

@@ -26,10 +26,10 @@ final class WXGLNexradLevel3WindBarbs {
             var locYDbl = 0.0
             var above50 = false
             if metarArr.count > 3 {
-                locXDbl = Double(metarArr[0]) ?? 0.0
-                locYDbl = Double(metarArr[1]) ?? 0.0
-                angle = Int(metarArr[2]) ?? 0
-                length = Int(metarArr[3]) ?? 0
+                locXDbl = to.Double(metarArr[0])
+                locYDbl = to.Double(metarArr[1])
+                angle = to.Int(metarArr[2])
+                length = to.Int(metarArr[3])
             }
             if length > 4 {
                 let degree = 0.0

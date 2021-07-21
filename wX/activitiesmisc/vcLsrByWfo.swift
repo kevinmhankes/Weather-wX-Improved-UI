@@ -47,7 +47,7 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         if numberLSR == "" {
             lsrList.append("None issued by this office recently.")
         } else {
-            var maxVers = Int(numberLSR) ?? 0
+            var maxVers = to.Int(numberLSR)
             if maxVers > 30 {
                 maxVers = 30
             }

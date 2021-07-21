@@ -91,8 +91,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                 lonString = "-" + Location.getY(locIdx).split(":")[1]
             }
             let locationC = CLLocationCoordinate2D(
-                latitude: Double(latString) ?? 0.0,
-                longitude: Double(lonString) ?? 0.0
+                latitude: to.Double(latString),
+                longitude: to.Double(lonString)
             )
             ObjectMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
         }
@@ -121,7 +121,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         var lonString = lonTextView.view.text!
         if latTextView.text.contains("CANADA:") && lonTextView.text != "" {
             // The location save process looks up the true Lat/Lon which is then ingested by the map
-            let locationNumber = (Int(numLocsLocalStr) ?? 0) - 1
+            let locationNumber = to.Int(numLocsLocalStr) - 1
             latTextView.text = Location.getX(locationNumber)
             lonTextView.text = Location.getY(locationNumber)
             if latTextView.view.text!.split(":").count > 2 {
@@ -135,7 +135,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
 
     func centerMap(_ lat: String, _ lon: String) {
-        let locationC = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(lon) ?? 0.0)
+        let locationC = CLLocationCoordinate2D(latitude: to.Double(lat), longitude: to.Double(lon))
         ObjectMap.centerMapOnLocationEdit(mapView, location: locationC, regionRadius: 50000.0)
     }
 
@@ -297,8 +297,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
 
     func getAddressAndSaveLocation(_ latStr: String, _ lonStr: String) {
         var center = CLLocationCoordinate2D()
-        let lat = Double(latStr) ?? 0.0
-        let lon = Double(lonStr) ?? 0.0
+        let lat = to.Double(latStr)
+        let lon = to.Double(lonStr)
         let ceo = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
