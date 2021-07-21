@@ -10,11 +10,11 @@ final class ObjectNhc: NSObject {
 
     var stormDataList = [ObjectNhcStormDetails]()
     private let uiv: UIwXViewController
-    private var textAtl = ""
-    private var textPac = ""
-    private var imageCount = 0
-    private var imagesPerRow = 2
-    private var imageStackViewList = [ObjectStackView]()
+    // private var textAtl = ""
+    // private var textPac = ""
+//    private var imageCount = 0
+//    private var imagesPerRow = 2
+//    private var imageStackViewList = [ObjectStackView]()
     private var ids = [String]()
     private var binNumbers = [String]()
     private var names = [String]()
@@ -31,9 +31,9 @@ final class ObjectNhc: NSObject {
 
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
-        if UtilityUI.isTablet() {
-            imagesPerRow = 3
-        }
+//        if UtilityUI.isTablet() {
+//            imagesPerRow = 3
+//        }
         super.init()
         NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
     }
@@ -92,27 +92,27 @@ final class ObjectNhc: NSObject {
         }
     }
 
-    func showImageData(_ region: NhcOceanEnum) {
-        regionMap[region]!.bitmaps.enumerated().forEach { index, bitmap in
-            if imageCount % imagesPerRow == 0 {
-                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
-                imageStackViewList.append(stackView)
-                uiv.stackView.addArrangedSubview(stackView.view)
-                _ = ObjectImage(
-                        stackView.view,
-                        bitmap,
-                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
-                        widthDivider: imagesPerRow)
-            } else {
-                _ = ObjectImage(
-                        imageStackViewList.last!.view,
-                        bitmap,
-                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
-                        widthDivider: imagesPerRow)
-            }
-            imageCount += 1
-        }
-    }
+//    func showImageData(_ region: NhcOceanEnum) {
+//        regionMap[region]!.bitmaps.enumerated().forEach { index, bitmap in
+//            if imageCount % imagesPerRow == 0 {
+//                let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+//                imageStackViewList.append(stackView)
+//                uiv.stackView.addArrangedSubview(stackView.view)
+//                _ = ObjectImage(
+//                        stackView.view,
+//                        bitmap,
+//                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+//                        widthDivider: imagesPerRow)
+//            } else {
+//                _ = ObjectImage(
+//                        imageStackViewList.last!.view,
+//                        bitmap,
+//                        GestureData(regionMap[region]!.urls[index], uiv, #selector(imageClicked(sender:))),
+//                        widthDivider: imagesPerRow)
+//            }
+//            imageCount += 1
+//        }
+//    }
 
     @objc func imageClicked(sender: GestureData) {}
 
