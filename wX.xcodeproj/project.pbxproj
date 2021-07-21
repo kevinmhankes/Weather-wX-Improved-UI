@@ -371,7 +371,6 @@
 		F0C1BC501EBAC69C0063C853 /* colormaprefaf.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */; };
 		F0C8F1591EFBD5500099AAD8 /* ObjectToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */; };
 		F0D177CD1E28E0B9003911D1 /* UtilityShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */; };
-		F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */; };
 		F0D7B8491E774C730032D1C9 /* UtilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */; };
 		F0DAD9331DA7018D00C2BD4B /* randtable.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD92A1DA7018C00C2BD4B /* randtable.c */; };
 		F0DAD9341DA7018D00C2BD4B /* huffman.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DAD92B1DA7018C00C2BD4B /* huffman.c */; };
@@ -780,7 +779,6 @@
 		F0C1BC4E1EBAC69C0063C853 /* colormaprefaf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colormaprefaf.txt; sourceTree = "<group>"; };
 		F0C8F1581EFBD5500099AAD8 /* ObjectToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToast.swift; sourceTree = "<group>"; };
 		F0D177CC1E28E0B9003911D1 /* UtilityShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityShare.swift; sourceTree = "<group>"; };
-		F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 		F0D7B8481E774C730032D1C9 /* UtilitySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySettings.swift; sourceTree = "<group>"; };
 		F0DAD9271DA7011C00C2BD4B /* wX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wX-Bridging-Header.h"; sourceTree = "<group>"; };
 		F0DAD92A1DA7018C00C2BD4B /* randtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = randtable.c; path = jni/randtable.c; sourceTree = "<group>"; };
@@ -1325,7 +1323,6 @@
 				F0B334FF1DA3FC980035BD36 /* GlobalVariables.swift */,
 				03DD1FF51FEB3CE00012F5BB /* IconType.swift */,
 				03171D6023567EFC00170A4A /* KeyDirections.swift */,
-				F0D7250D1EFD1DBF0026FA60 /* LayoutType.swift */,
 				030DC62B1FE4A58B006DCF93 /* MotionType.swift */,
 				F0B334FB1DA3FBF10035BD36 /* MyApplication.swift */,
 				03C85B5724048F1E0046C8F4 /* OfficeTypeEnum.swift */,
@@ -1636,7 +1633,6 @@
 				F057A0A01DC2B0AF00521C8F /* UtilityModels.swift in Sources */,
 				F0B335AE1DA3FD960035BD36 /* UtilityLocation.swift in Sources */,
 				034041DA23F162A4003AB242 /* vcWpcText.swift in Sources */,
-				F0D7250E1EFD1DBF0026FA60 /* LayoutType.swift in Sources */,
 				0351449A26A5E78C00AF38B6 /* UIPreferences.swift in Sources */,
 				F0B335371DA3FD3B0035BD36 /* WXGLNexradLevel3HailIndex.swift in Sources */,
 				03F3EB98229945DA0056A56D /* UtilityModelSpcHrrrInputOutput.swift in Sources */,
