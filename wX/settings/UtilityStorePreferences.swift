@@ -23,7 +23,7 @@ final class UtilityStorePreferences {
 			let nws1Default = "OUN"
 			let rid1Default = "TLX"
 			let nws1DefaultState = "OK"
-			let codWarningsDefault = "false"
+			let codWarningsDefault = "true"
 			let codCitiesDefault = "false"
 			Utility.writePref("RADAR_WARN_LINESIZE", 4)
 			Utility.writePref("RADAR_WATMCD_LINESIZE", 4)
