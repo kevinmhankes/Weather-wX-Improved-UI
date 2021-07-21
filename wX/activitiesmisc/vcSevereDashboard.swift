@@ -15,7 +15,7 @@ final class vcSevereDashboard: UIwXViewController {
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ToolbarIcon()
-    private let synthesizer = AVSpeechSynthesizer()
+    // private let synthesizer = AVSpeechSynthesizer()
     private var statusWarnings = ""
 
     override func viewDidLoad() {
@@ -106,10 +106,9 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func share(sender: UIButton) {
-        // TODO
-        // UtilityShare.image(self, sender, [bitmap] + snMcd.bitmaps + snWat.bitmaps + snMpd.bitmaps)
+        UtilityShare.image(self, sender, [bitmap] + severeNotices[PolygonEnum.SPCWAT]!.bitmaps + severeNotices[PolygonEnum.SPCMCD]!.bitmaps + severeNotices[PolygonEnum.WPCMPD]!.bitmaps)
     }
-
+    
     private func display() {
         refreshViews()
         var views = [UIView]()

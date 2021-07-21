@@ -19,13 +19,13 @@ final class ObjectPolygonWatch {
     var storage: DataStorage = DataStorage("")
     var latLonList: DataStorage  = DataStorage("")
     var numberList: DataStorage  = DataStorage("")
-    var isEnabled = false
+    // var isEnabled = false
     let type: PolygonEnum
     var timer: DownloadTimer = DownloadTimer("")
 
     init(_ type: PolygonEnum) {
         self.type = type
-        isEnabled = Utility.readPref(prefTokenEnabled(), "false").hasPrefix("t")
+        // isEnabled = Utility.readPref(prefTokenEnabled(), "false").hasPrefix("t")
         storage = DataStorage(prefTokenStorage())
         storage.update()
         latLonList = DataStorage(prefTokenLatLon())
@@ -90,9 +90,9 @@ final class ObjectPolygonWatch {
         }
     }
     
-    func getData() -> String {
-        storage.value
-    }
+//    func getData() -> String {
+//        storage.value
+//    }
 
     // int color() { return Utility.readPrefInt(prefTokenColor(), defaultColors[type]);}
      // String name() { return longName[type].replace("%20", " ");}
@@ -133,10 +133,10 @@ final class ObjectPolygonWatch {
         return downloadUrl
     }
 
-    static func getLatLon(_ number: String) -> String {
-        let html = UtilityIO.getHtml(GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html")
-        return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)
-    }
+//    static func getLatLon(_ number: String) -> String {
+//        let html = UtilityIO.getHtml(GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html")
+//        return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)
+//    }
 
     static func load( ) {
         initAll()

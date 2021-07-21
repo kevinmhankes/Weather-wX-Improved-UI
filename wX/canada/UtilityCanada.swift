@@ -36,21 +36,21 @@ final class UtilityCanada {
         "YT: Yukon"
     ]
 
-    private static let provinceToMosaicSector = [
-        "AB": "PAC",
-        "BC": "PAC",
-        "MB": "PAC",
-        "NB": "ERN",
-        "NL": "ERN",
-        "NS": "ERN",
-        "NT": "CAN",
-        "NU": "CAN",
-        "ON": "ONT",
-        "PE": "ERN",
-        "QC": "ERN",
-        "SK": "PAC",
-        "YT": "CAN"
-    ]
+//    private static let provinceToMosaicSector = [
+//        "AB": "PAC",
+//        "BC": "PAC",
+//        "MB": "PAC",
+//        "NB": "ERN",
+//        "NL": "ERN",
+//        "NS": "ERN",
+//        "NT": "CAN",
+//        "NU": "CAN",
+//        "ON": "ONT",
+//        "PE": "ERN",
+//        "QC": "ERN",
+//        "SK": "PAC",
+//        "YT": "CAN"
+//    ]
 
     static let provinceCodes = [
         "bcstorm: British Columbia",
@@ -361,9 +361,9 @@ final class UtilityCanada {
         return warningData.replace("<div class=\"row\">", "")
     }
 
-    static func getECSectorFromProvidence(_ province: String) -> String {
-        provinceToMosaicSector[province] ?? ""
-    }
+//    static func getECSectorFromProvidence(_ province: String) -> String {
+//        provinceToMosaicSector[province] ?? ""
+//    }
 
     static func isLabelPresent(_ label: String) -> Bool {
         var isPresent = false

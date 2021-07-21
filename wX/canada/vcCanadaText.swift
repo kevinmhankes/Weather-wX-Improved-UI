@@ -9,7 +9,7 @@ import UIKit
 final class vcCanadaText: UIwXViewControllerWithAudio {
 
     private var productButton = ToolbarIcon()
-    private var siteButton = ToolbarIcon()
+    // private var siteButton = ToolbarIcon()
     private let prefToken = "CA_TEXT_LASTUSED"
 
     override func viewDidLoad() {

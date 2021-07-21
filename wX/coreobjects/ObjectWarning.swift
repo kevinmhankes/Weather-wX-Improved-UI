@@ -7,7 +7,7 @@
 final class ObjectWarning {
 
     var url = ""
-    var title = ""
+    // var title = ""
     var area = ""
     var effective = ""
     var expires = ""
@@ -15,7 +15,7 @@ final class ObjectWarning {
     var sender = ""
     var polygon = ""
     var vtec = ""
-    var geometry = ""
+    // var geometry = ""
     var isCurrent = true
 
     init(
@@ -32,7 +32,7 @@ final class ObjectWarning {
     ) {
         self.url = url
         // detailed desc
-        self.title = title
+        // self.title = title
         self.area = area
 
         self.effective = effective
@@ -47,7 +47,7 @@ final class ObjectWarning {
         self.sender = sender
         self.polygon = polygon
         self.vtec = vtec
-        self.geometry = geometry
+        // self.geometry = geometry
         isCurrent = UtilityTime.isVtecCurrent(self.vtec)
         if vtec.hasPrefix("O.EXP") || vtec.hasPrefix("O.CAN") {
             isCurrent = false

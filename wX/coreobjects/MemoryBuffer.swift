@@ -50,11 +50,11 @@ final class MemoryBuffer {
         posn = position
     }
 
-    var address: UnsafeMutablePointer<UInt8> {
-        let iBuffPtr = UnsafeMutablePointer(mutating: backingArray)
-        let iBuffPtr2 = iBuffPtr.advanced(by: posn)
-        return iBuffPtr2
-    }
+//    var address: UnsafeMutablePointer<UInt8> {
+//        let iBuffPtr = UnsafeMutablePointer(mutating: backingArray)
+//        let iBuffPtr2 = iBuffPtr.advanced(by: posn)
+//        return iBuffPtr2
+//    }
 
     init(_ data: Data) {
         // backingArray = data.withUnsafeBytes {
@@ -68,9 +68,9 @@ final class MemoryBuffer {
         posn += count
     }
 
-    func mark() {
-        markPosition = posn
-    }
+//    func mark() {
+//        markPosition = posn
+//    }
 
     func mark(_ index: Int) {
         markPosition = posn
@@ -105,11 +105,11 @@ final class MemoryBuffer {
         posn += 4
     }
 
-    func putFloat(_ newValue: Double) {
-        var float = Float(newValue)
-        memcpy(&backingArray[posn], &float, 4)
-        posn += 4
-    }
+//    func putFloat(_ newValue: Double) {
+//        var float = Float(newValue)
+//        memcpy(&backingArray[posn], &float, 4)
+//        posn += 4
+//    }
 
     func getFloat() -> Float {
         let bytes: [UInt8] = [backingArray[posn + 3], backingArray[posn + 2], backingArray[posn + 1], backingArray[posn]]
@@ -119,13 +119,13 @@ final class MemoryBuffer {
         return float
     }
 
-    func getCGFloat() -> CGFloat {
-        let bytes: [UInt8] = [backingArray[posn + 3], backingArray[posn + 2], backingArray[posn + 1], backingArray[posn]]
-        var float: Float = 0.0
-        posn += 4
-        memcpy(&float, bytes, 4)
-        return CGFloat(float)
-    }
+//    func getCGFloat() -> CGFloat {
+//        let bytes: [UInt8] = [backingArray[posn + 3], backingArray[posn + 2], backingArray[posn + 1], backingArray[posn]]
+//        var float: Float = 0.0
+//        posn += 4
+//        memcpy(&float, bytes, 4)
+//        return CGFloat(float)
+//    }
 
     func getInt() -> Int {
         let bytes: [UInt8] = [backingArray[posn + 3], backingArray[posn + 2], backingArray[posn + 1], backingArray[posn]]
@@ -142,13 +142,13 @@ final class MemoryBuffer {
         return Double(float)
     }
 
-    func getCGFloatNative() -> CGFloat {
-        let bytes: [UInt8] = [backingArray[posn], backingArray[posn + 1], backingArray[posn + 2], backingArray[posn + 3]]
-        var float: Float = 0.0
-        posn += 4
-        memcpy(&float, bytes, 4)
-        return CGFloat(float)
-    }
+//    func getCGFloatNative() -> CGFloat {
+//        let bytes: [UInt8] = [backingArray[posn], backingArray[posn + 1], backingArray[posn + 2], backingArray[posn + 3]]
+//        var float: Float = 0.0
+//        posn += 4
+//        memcpy(&float, bytes, 4)
+//        return CGFloat(float)
+//    }
     
     func getCGFloatNative() -> Float {
         let bytes: [UInt8] = [backingArray[posn], backingArray[posn + 1], backingArray[posn + 2], backingArray[posn + 3]]
@@ -172,11 +172,11 @@ final class MemoryBuffer {
         set { posn = newValue }
     }
 
-    func putShort(_ newValue: UInt16) {
-        var unsignedShort: UInt16 = newValue
-        memcpy(&backingArray[posn], &unsignedShort, 2)
-        posn += 2
-    }
+//    func putShort(_ newValue: UInt16) {
+//        var unsignedShort: UInt16 = newValue
+//        memcpy(&backingArray[posn], &unsignedShort, 2)
+//        posn += 2
+//    }
 
     func putSignedShort(_ newValue: Int16) {
         var short = newValue
@@ -220,11 +220,11 @@ final class MemoryBuffer {
         return UnsafeMutablePointer<Int8>(oBuffPtr2)
     }
 
-    static func getPointer(_ buffer: [Float]) -> UnsafeMutablePointer<Float> {
-        let oBuffPtr1 = UnsafeRawPointer(buffer)
-        let oBuffPtr2 = OpaquePointer(oBuffPtr1)
-        return UnsafeMutablePointer<Float>(oBuffPtr2)
-    }
+//    static func getPointer(_ buffer: [Float]) -> UnsafeMutablePointer<Float> {
+//        let oBuffPtr1 = UnsafeRawPointer(buffer)
+//        let oBuffPtr2 = OpaquePointer(oBuffPtr1)
+//        return UnsafeMutablePointer<Float>(oBuffPtr2)
+//    }
 
     static func getPointerAndAdvance(_ buffer: [UInt8], by: Int) -> UnsafeMutablePointer<Int8> {
         let iBuffPtr1 = UnsafeRawPointer(buffer)
