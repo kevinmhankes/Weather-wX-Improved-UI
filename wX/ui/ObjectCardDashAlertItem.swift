@@ -11,7 +11,6 @@ final class ObjectCardDashAlertItem {
     let cardStackView: ObjectCardStackView
 
     init(
-        _ uiv: UIwXViewController,
         _ warning: ObjectWarning,
         _ gesture: GestureData,
         _ gestureRadar: GestureData,

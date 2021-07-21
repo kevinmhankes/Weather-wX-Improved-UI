@@ -10,7 +10,7 @@ final class ObjectSlider {
 
     private let button = UIButton(type: UIButton.ButtonType.system)
     let slider: UISlider
-    private static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
+    // private static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
     let prefVar: String
     private let label: String
     private let initialValue: Int

@@ -83,11 +83,11 @@ final class ObjectImageSummary {
         }
     }
 
-    func changeWidth() {
-        for o in objectImages {
-            o.changeWidth()
-        }
-    }
+//    func changeWidth() {
+//        for o in objectImages {
+//            o.changeWidth()
+//        }
+//    }
 
     func removeChildren() {
         for layout in imageStackViewList {

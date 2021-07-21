@@ -73,7 +73,6 @@ final class vcSevereDashboard: UIwXViewController {
                     if w.isCurrent {
                         let radarSite = w.getClosestRadar()
                         stackView.addArrangedSubview(ObjectCardDashAlertItem(
-                            self,
                             w,
                             GestureData(w.url, self, #selector(goToAlert(sender:))),
                             GestureData(radarSite, self, #selector(goToRadar(sender:))),
