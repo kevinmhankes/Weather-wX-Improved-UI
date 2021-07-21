@@ -50,10 +50,10 @@ final class TouchImage {
         self.bitmap = bitmap
     }
 
-    func updateBitmap(_ bitmap: Bitmap) {
-        img.zoomView?.image = bitmap.image
-        self.bitmap = bitmap
-    }
+//    func updateBitmap(_ bitmap: Bitmap) {
+//        img.zoomView?.image = bitmap.image
+//        self.bitmap = bitmap
+//    }
 
     func refresh() {
         img.refresh()

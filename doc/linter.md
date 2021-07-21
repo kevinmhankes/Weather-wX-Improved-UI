@@ -342,12 +342,3 @@ periphery scan --project wX.xcodeproj  --schemes "wX" --targets "wX"
 /Users/josh/wXL23/wX/wX/ui/TabBarControllerSwipeExtension.swift:61:24: warning: Function 'handleSwipeRight(swipe:)' is unused
 /Users/josh/wXL23/wX/wX/ui/TabBarControllerSwipeExtension.swift:65:24: warning: Function 'handleSwipeLeftAllowingCyclingThroughTabs(swipe:)' is unused
 /Users/josh/wXL23/wX/wX/ui/TabBarControllerSwipeExtension.swift:71:24: warning: Function 'handleSwipeRightAllowingCyclingThroughTabs(swipe:)' is unused
-/Users/josh/wXL23/wX/wX/ui/Text.swift:22:17: warning: Initializer 'init(_:isUserInteractionEnabled:isZeroSpacing:widthDivider:)' is unused
-/Users/josh/wXL23/wX/wX/ui/Text.swift:104:10: warning: Function 'resetTextSize()' is unused
-/Users/josh/wXL23/wX/wX/ui/Text.swift:132:9: warning: Property 'tag' is unused
-/Users/josh/wXL23/wX/wX/ui/Text.swift:145:10: warning: Function 'setSpacing(top:left:bottom:right:)' is unused
-/Users/josh/wXL23/wX/wX/ui/Text.swift:155:10: warning: Function 'get()' is unused
-/Users/josh/wXL23/wX/wX/ui/TextViewMetal.swift:14:17: warning: Property 'text' is assigned, but never used
-/Users/josh/wXL23/wX/wX/ui/ToolbarIcon.swift:74:17: warning: Function 'getIcon(_:)' is unused
-/Users/josh/wXL23/wX/wX/ui/TouchImage.swift:53:10: warning: Function 'updateBitmap(_:)' is unused
-

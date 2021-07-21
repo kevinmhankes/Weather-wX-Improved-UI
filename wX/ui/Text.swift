@@ -19,18 +19,18 @@ final class Text {
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
     }
 
-    convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false, widthDivider: Int = 1) {
-        self.init()
-        // FIXME need to use widthAnchor
-        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
-        // self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
-        tv.text = text
-        tv.isUserInteractionEnabled = isUserInteractionEnabled
-        if isZeroSpacing {
-            setZeroSpacing()
-        }
-    }
+//    convenience init(_ text: String, isUserInteractionEnabled: Bool = true, isZeroSpacing: Bool = false, widthDivider: Int = 1) {
+//        self.init()
+//        // FIXME need to use widthAnchor
+//        let (width, _) = UtilityUI.getScreenBoundsCGFloat()
+//        tv.widthAnchor.constraint(equalToConstant: width / CGFloat(widthDivider)).isActive = true
+//        // self.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
+//        tv.text = text
+//        tv.isUserInteractionEnabled = isUserInteractionEnabled
+//        if isZeroSpacing {
+//            setZeroSpacing()
+//        }
+//    }
 
     convenience init(_ stackView: UIStackView) {
         self.init()
@@ -101,9 +101,9 @@ final class Text {
         textColor = color
     }
 
-    func resetTextSize() {
-        tv.font = FontSize.medium.size
-    }
+//    func resetTextSize() {
+//        tv.font = FontSize.medium.size
+//    }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         tv.addGestureRecognizer(gesture)
@@ -129,10 +129,10 @@ final class Text {
         set { tv.text = newValue }
     }
 
-    var tag: Int {
-        get { tv.tag }
-        set { tv.tag = newValue }
-    }
+//    var tag: Int {
+//        get { tv.tag }
+//        set { tv.tag = newValue }
+//    }
     
     func setText(_ s: String) {
         tv.text = s
@@ -142,9 +142,9 @@ final class Text {
         tv.textContainerInset = UIEdgeInsets.zero
     }
 
-    func setSpacing(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
-        tv.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
-    }
+//    func setSpacing(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
+//        tv.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+//    }
 
     func constrain(_ scrollView: UIScrollView) {
         tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -152,7 +152,7 @@ final class Text {
 
     var view: UITextView { tv }
     
-    func get() -> UITextView {
-        view
-    }
+//    func get() -> UITextView {
+//        view
+//    }
 }
