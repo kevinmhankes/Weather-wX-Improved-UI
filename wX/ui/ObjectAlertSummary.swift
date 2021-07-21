@@ -10,13 +10,13 @@ final class ObjectAlertSummary: NSObject {
 
     private var urls = [String]()
     var wfos = [String]()
-    private var objectImage = ObjectImage()
-    private var imageIndex = 0
-    static let imageUrls = [
-        "https://forecast.weather.gov/wwamap/png/US.png",
-        "https://forecast.weather.gov/wwamap/png/ak.png",
-        "https://forecast.weather.gov/wwamap/png/hi.png"
-    ]
+//    private var objectImage = ObjectImage()
+//    private var imageIndex = 0
+//    static let imageUrls = [
+//        "https://forecast.weather.gov/wwamap/png/US.png",
+//        "https://forecast.weather.gov/wwamap/png/ak.png",
+//        "https://forecast.weather.gov/wwamap/png/hi.png"
+//    ]
 
     @objc func warningSelected(sender: GestureData) {}
 
@@ -24,20 +24,21 @@ final class ObjectAlertSummary: NSObject {
 
     convenience init(
         _ uiv: UIwXViewController,
+        _ stackView: UIStackView,
         _ filter: String,
         _ capAlerts: [CapAlert],
         _ gesture: UITapGestureRecognizer?,
         showImage: Bool = true
     ) {
         self.init()
-        uiv.stackView.removeViews()
-        let objTextSummary = Text(uiv.stackView)
+        //stackView.removeViews()
+        let objTextSummary = Text(stackView)
         objTextSummary.addGestureRecognizer(gesture!)
-        objTextSummary.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
-        if showImage {
-            objectImage = ObjectImage(uiv.stackView)
-            objectImage.addGestureRecognizer(GestureData(0, uiv, #selector(imageClicked)))
-        }
+        objTextSummary.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+//        if showImage {
+//            objectImage = ObjectImage(stackView)
+//            objectImage.addGestureRecognizer(GestureData(0, uiv, #selector(imageClicked)))
+//        }
         var index = 0
         var filterBool = true
         var filterLabel = ""
@@ -67,7 +68,7 @@ final class ObjectAlertSummary: NSObject {
                     nwsLocation = ""
                 }
                 _ = ObjectCardAlertSummaryItem(
-                    uiv,
+                    stackView,
                     nwsOffice,
                     nwsLocation,
                     alert,
@@ -91,23 +92,23 @@ final class ObjectAlertSummary: NSObject {
 
     @objc func imageClicked() {}
 
-    func changeImage(_ uiv: UIViewController) {
-        Route.imageViewer(uiv, ObjectAlertSummary.imageUrls[0])
-    }
+//    func changeImage(_ uiv: UIViewController) {
+//        Route.imageViewer(uiv, ObjectAlertSummary.imageUrls[0])
+//    }
 
-    func getImage() {
-        imageIndex = 0
-        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) }, objectImage.setBitmap)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.imageIndex = 0
-//            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
-//            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
-//            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
-//        }
-    }
+//    func getImage() {
+//        imageIndex = 0
+//        _ = FutureBytes2({ Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex]) }, objectImage.setBitmap)
+////        DispatchQueue.global(qos: .userInitiated).async {
+////            self.imageIndex = 0
+////            let bitmap = Bitmap(ObjectAlertSummary.imageUrls[self.imageIndex])
+////            self.imageIndex = (self.imageIndex + 1) % ObjectAlertSummary.imageUrls.count
+////            DispatchQueue.main.async { self.objectImage.setBitmap(bitmap) }
+////        }
+//    }
 
-    var image: Bitmap {
-        get { objectImage.bitmap }
-        set { objectImage.setBitmap(newValue) }
-    }
+//    var image: Bitmap {
+//        get { objectImage.bitmap }
+//        set { objectImage.setBitmap(newValue) }
+//    }
 }

@@ -13,9 +13,12 @@ final class vcUSAlerts: UIwXViewController {
     private var filter = ""
     private var filterButton = ToolbarIcon()
     private var objAlertSummary = ObjectAlertSummary()
-    private var bitmap = Bitmap()
     private var filterGesture: UITapGestureRecognizer?
     private var filterShown = false
+    private var boxImage = ObjectStackView(.fill, .vertical)
+    private var boxText = ObjectStackView(.fill, .vertical)
+    private var image = ObjectImage()
+    private var bitmap = Bitmap()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +27,22 @@ final class vcUSAlerts: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        
+        stackView.addArrangedSubview(boxImage.get())
+        stackView.addArrangedSubview(boxText.get())
+        
+        boxImage.constrain(self)
+        boxText.constrain(self)
+        
+        image = ObjectImage(boxImage.get())
+        
         getContent()
     }
 
     override func getContent() {
         capAlerts.removeAll()
         _ = FutureVoid(download, display)
-        // TODO download image in thread
+        _ = FutureBytes("https://forecast.weather.gov/wwamap/png/US.png", image.setBitmap)
     }
 
     func download() {
@@ -42,12 +54,12 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     private func display() {
-        refreshViews()
+        // refreshViews()
         if !filterShown {
             filterButton.title = "Tornado/ThunderStorm/FFW"
-            objAlertSummary = ObjectAlertSummary(self, "", capAlerts, filterGesture)
-            objAlertSummary.getImage()
-            bitmap = objAlertSummary.image
+            objAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)
+            // objAlertSummary.getImage()
+            // bitmap = objAlertSummary.image
         } else {
             filterChanged(filter)
         }
@@ -63,7 +75,7 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.image(self, sender, objAlertSummary.image)
+        UtilityShare.image(self, sender, bitmap)
     }
 
     @objc func filterClicked() {
@@ -79,16 +91,17 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     func filterChanged(_ filter: String) {
+        boxText.removeChildren()
         filterButton.title = filter
-        objAlertSummary = ObjectAlertSummary(self, filter, capAlerts, filterGesture, showImage: false)
-        objAlertSummary.image = bitmap
+        objAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture, showImage: false)
+        // objAlertSummary.image = bitmap
         filterShown = true
         self.filter = filter
     }
 
-    @objc func imageClicked() {
-        objAlertSummary.changeImage(self)
-    }
+//    @objc func imageClicked() {
+//        objAlertSummary.changeImage(self)
+//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)

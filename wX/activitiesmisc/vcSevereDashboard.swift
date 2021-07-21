@@ -45,7 +45,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     func getContentUsAlerts() {
-        _ = FutureVoid({ self.usAlertsBitmap = Bitmap(ObjectAlertSummary.imageUrls[0]) }, display)
+        _ = FutureVoid({ self.usAlertsBitmap = Bitmap("https://forecast.weather.gov/wwamap/png/US.png") }, display)
     }
 
     func getContentSpcStormReports() {
