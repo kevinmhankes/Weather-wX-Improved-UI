@@ -29,7 +29,7 @@ final class ObjectAlertSummary: NSObject {
         var index = 0
         var filterBool = true
         var filterLabel = ""
-        var stateCntMap = [String: Int]()
+        var stateCountDict = [String: Int]()
         capAlerts.forEach { alert in
             if filter == "" {
                 filterBool = (alert.title.contains("Tornado Warning") || alert.title.contains("Severe Thunderstorm Warning") || alert.title.contains("Flash Flood Warning"))
@@ -45,10 +45,10 @@ final class ObjectAlertSummary: NSObject {
                     wfo = alert.vtec.substring(8, 11)
                     wfoName = Utility.getWfoSiteName(wfo)
                     let state = wfoName.substring(0, 2)
-                    if stateCntMap.keys.contains(state) {
-                        stateCntMap[state] = (stateCntMap[state]! + 1)
+                    if stateCountDict.keys.contains(state) {
+                        stateCountDict[state] = (stateCountDict[state]! + 1)
                     } else {
-                        stateCntMap[state] = 1
+                        stateCountDict[state] = 1
                     }
                 } else {
                     wfo = ""
@@ -69,7 +69,7 @@ final class ObjectAlertSummary: NSObject {
             }
         }
         var stateCount = ""
-        stateCntMap.forEach { state, count in
+        stateCountDict.forEach { state, count in
             stateCount += state + ":" + to.String(count) + " "
         }
         objTextSummary.text = "Total alerts: " + to.String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + to.String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCount
