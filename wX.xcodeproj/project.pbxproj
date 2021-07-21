@@ -106,7 +106,6 @@
 		035144A026A5E90D00AF38B6 /* PolygonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351449D26A5E90D00AF38B6 /* PolygonEnum.swift */; };
 		035144A226A5E91500AF38B6 /* RadarGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A126A5E91500AF38B6 /* RadarGeometry.swift */; };
 		035144A426A5E96E00AF38B6 /* GeographyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A326A5E96E00AF38B6 /* GeographyType.swift */; };
-		035144A626A5E97600AF38B6 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A526A5E97600AF38B6 /* RadarType.swift */; };
 		035144A826A5EB3C00AF38B6 /* UtilitySunMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144A726A5EB3C00AF38B6 /* UtilitySunMoon.swift */; };
 		035416A9220EF8B900D9A26B /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035416A8220EF8B800D9A26B /* FontSize.swift */; };
 		0354D3F423C116D10024153D /* FrontTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D3F323C116D10024153D /* FrontTypeEnum.swift */; };
@@ -505,7 +504,6 @@
 		0351449D26A5E90D00AF38B6 /* PolygonEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonEnum.swift; sourceTree = "<group>"; };
 		035144A126A5E91500AF38B6 /* RadarGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometry.swift; sourceTree = "<group>"; };
 		035144A326A5E96E00AF38B6 /* GeographyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographyType.swift; sourceTree = "<group>"; };
-		035144A526A5E97600AF38B6 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		035144A726A5EB3C00AF38B6 /* UtilitySunMoon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySunMoon.swift; sourceTree = "<group>"; };
 		035416A8220EF8B800D9A26B /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		0354D3F323C116D10024153D /* FrontTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontTypeEnum.swift; sourceTree = "<group>"; };
@@ -1149,7 +1147,6 @@
 				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
 				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
 				035144A126A5E91500AF38B6 /* RadarGeometry.swift */,
-				035144A526A5E97600AF38B6 /* RadarType.swift */,
 				F0B3350A1DA3FD1C0035BD36 /* RID.swift */,
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
@@ -1891,7 +1888,6 @@
 				F0AB149A1EBDD8DD00D92CD6 /* ObjectColorPalette.swift in Sources */,
 				034041EE23F167F9003AB242 /* vcSpcSwoState.swift in Sources */,
 				03F3EB762299414B0056A56D /* CapAlert.swift in Sources */,
-				035144A626A5E97600AF38B6 /* RadarType.swift in Sources */,
 				036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */,
 				F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */,
 				F0B335131DA3FD1C0035BD36 /* ProjectionNumbers.swift in Sources */,
