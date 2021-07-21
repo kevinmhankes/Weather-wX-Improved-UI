@@ -239,7 +239,6 @@
 		F011E6111DB03D78006531FD /* UtilityObservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E60F1DB03D78006531FD /* UtilityObservations.swift */; };
 		F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */; };
 		F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0149B4D1E5BA72900418162 /* ObjectModel.swift */; };
-		F015B8131DACF65700EFE0B4 /* UtilityDownloadRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F015B8121DACF65700EFE0B4 /* UtilityDownloadRadar.swift */; };
 		F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3131DC024CF001BC13E /* ExternalAngle.swift */; };
 		F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3141DC024CF001BC13E /* ExternalGeodeticCurve.swift */; };
 		F016C3191DC024D0001BC13E /* ExternalGeodeticMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3151DC024CF001BC13E /* ExternalGeodeticMeasurement.swift */; };
@@ -642,7 +641,6 @@
 		F011E60F1DB03D78006531FD /* UtilityObservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityObservations.swift; sourceTree = "<group>"; };
 		F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 		F0149B4D1E5BA72900418162 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
-		F015B8121DACF65700EFE0B4 /* UtilityDownloadRadar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadRadar.swift; sourceTree = "<group>"; };
 		F016C3131DC024CF001BC13E /* ExternalAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalAngle.swift; sourceTree = "<group>"; };
 		F016C3141DC024CF001BC13E /* ExternalGeodeticCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGeodeticCurve.swift; sourceTree = "<group>"; };
 		F016C3151DC024CF001BC13E /* ExternalGeodeticMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGeodeticMeasurement.swift; sourceTree = "<group>"; };
@@ -1115,7 +1113,6 @@
 				F0B3356F1DA3FD6F0035BD36 /* UtilityCountyLabels.swift */,
 				F0B334F51DA3FB2B0035BD36 /* UtilityDownload.swift */,
 				036522AD229149440056E657 /* UtilityDownloadNws.swift */,
-				F015B8121DACF65700EFE0B4 /* UtilityDownloadRadar.swift */,
 				F0B335961DA3FD960035BD36 /* UtilityFileManagement.swift */,
 				F0B335981DA3FD960035BD36 /* UtilityImg.swift */,
 				F0B335991DA3FD960035BD36 /* UtilityImgAnim.swift */,
@@ -1901,7 +1898,6 @@
 				035144A626A5E97600AF38B6 /* RadarType.swift in Sources */,
 				036522BA22914C8D0056E657 /* UtilityHourly.swift in Sources */,
 				F08E48341EB0DF8F000629DA /* ObjectHazards.swift in Sources */,
-				F015B8131DACF65700EFE0B4 /* UtilityDownloadRadar.swift in Sources */,
 				F0B335131DA3FD1C0035BD36 /* ProjectionNumbers.swift in Sources */,
 				F0B335171DA3FD1C0035BD36 /* RunTimeData.swift in Sources */,
 				F0DAD9351DA7018D00C2BD4B /* compress.c in Sources */,
