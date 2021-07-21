@@ -228,7 +228,6 @@
 		03F3EB98229945DA0056A56D /* UtilityModelSpcHrrrInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB90229945DA0056A56D /* UtilityModelSpcHrrrInputOutput.swift */; };
 		03F3EB9B229948BA0056A56D /* UtilityModelSpcSrefInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB99229948BA0056A56D /* UtilityModelSpcSrefInterface.swift */; };
 		03F3EB9C229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3EB9A229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift */; };
-		03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */; };
 		03F8A95A229C7145004A88EB /* UtilitySwoD1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A959229C7145004A88EB /* UtilitySwoD1.swift */; };
 		03F9DCB123B9F57800B69C9F /* UtilityHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */; };
 		03FA10051FD0BE4500FD96C8 /* ObjectCardHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */; };
@@ -632,7 +631,6 @@
 		03F3EB90229945DA0056A56D /* UtilityModelSpcHrrrInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSpcHrrrInputOutput.swift; sourceTree = "<group>"; };
 		03F3EB99229948BA0056A56D /* UtilityModelSpcSrefInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSpcSrefInterface.swift; sourceTree = "<group>"; };
 		03F3EB9A229948BA0056A56D /* UtilityModelSpcSrefInputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityModelSpcSrefInputOutput.swift; sourceTree = "<group>"; };
-		03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityDownloadWarnings.swift; sourceTree = "<group>"; };
 		03F8A959229C7145004A88EB /* UtilitySwoD1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitySwoD1.swift; sourceTree = "<group>"; };
 		03F9DCB023B9F57800B69C9F /* UtilityHomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityHomeScreen.swift; sourceTree = "<group>"; };
 		03FA10041FD0BE4500FD96C8 /* ObjectCardHazard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardHazard.swift; sourceTree = "<group>"; };
@@ -1162,7 +1160,6 @@
 				F0B3355E1DA3FD6F0035BD36 /* Spotter.swift */,
 				F0B3355F1DA3FD6F0035BD36 /* SpotterReports.swift */,
 				0382E03E22039F9D00DA45C2 /* UtilityAwcRadarMosaic.swift */,
-				03F4630E22A2F14800C06D16 /* UtilityDownloadWarnings.swift */,
 				F0B3359F1DA3FD960035BD36 /* UtilityMetar.swift */,
 				F0B335BF1DA3FDA60035BD36 /* UtilityNexradColors.swift */,
 				0329E306241BBA84005E0766 /* UtilityRadar.swift */,
@@ -1946,7 +1943,6 @@
 				03339AE922C3661600B888FE /* ObjectCardNhcStormReportItem.swift in Sources */,
 				033A5553240D2628002018BE /* ObjectImageSummary.swift in Sources */,
 				F0B334FA1DA3FBCE0035BD36 /* UtilityString.swift in Sources */,
-				03F4631222A2F14900C06D16 /* UtilityDownloadWarnings.swift in Sources */,
 				035A66EA240A911E00038C98 /* UtilityAudio.swift in Sources */,
 				03E154C425E2B53D00682A8D /* ObjectLocation.swift in Sources */,
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
