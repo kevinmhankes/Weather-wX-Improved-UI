@@ -79,8 +79,12 @@ final class vcUSAlerts: UIwXViewController {
         var eventArr = [String]()
         var counts = [String: Int]()
         var eventArrWithCount = [String]()
-        capAlerts.forEach { eventArr.append($0.event) }
-        eventArr.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
+        capAlerts.forEach {
+            eventArr.append($0.event)
+        }
+        eventArr.forEach {
+            counts[$0] = (counts[$0] ?? 0) + 1
+        }
         Array(counts.keys).sorted().forEach {
             eventArrWithCount.append($0 + ": " + to.String(counts[$0]!))
         }

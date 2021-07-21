@@ -10,13 +10,6 @@ final class ObjectAlertSummary: NSObject {
 
     private var urls = [String]()
     var wfos = [String]()
-//    private var objectImage = ObjectImage()
-//    private var imageIndex = 0
-//    static let imageUrls = [
-//        "https://forecast.weather.gov/wwamap/png/US.png",
-//        "https://forecast.weather.gov/wwamap/png/ak.png",
-//        "https://forecast.weather.gov/wwamap/png/hi.png"
-//    ]
 
     @objc func warningSelected(sender: GestureData) {}
 
@@ -66,9 +59,9 @@ final class ObjectAlertSummary: NSObject {
                     nwsOffice,
                     nwsLocation,
                     alert,
-                    GestureData(index, uiv, #selector(warningSelected(sender:))),
-                    GestureData(index, uiv, #selector(goToRadar(sender:))),
-                    GestureData(index, uiv, #selector(goToRadar(sender:)))
+                    GestureData(index, uiv, #selector(warningSelected)),
+                    GestureData(index, uiv, #selector(goToRadar)),
+                    GestureData(index, uiv, #selector(goToRadar))
                 )
                 urls.append(alert.url)
                 wfos.append(nwsOffice)
