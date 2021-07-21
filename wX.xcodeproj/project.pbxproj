@@ -308,7 +308,6 @@
 		F078FE441DA330B7002CCD13 /* wXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078FE431DA330B7002CCD13 /* wXTests.swift */; };
 		F078FE4F1DA330B7002CCD13 /* wXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078FE4E1DA330B7002CCD13 /* wXUITests.swift */; };
 		F07B5C0C1E53D4DE00555058 /* ObjectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */; };
-		F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */; };
 		F07B5C101E53D73000555058 /* ObjectCardSevenDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */; };
 		F0830E9A1E593467003149E5 /* ObjectDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830E991E593467003149E5 /* ObjectDatePicker.swift */; };
 		F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */; };
@@ -724,7 +723,6 @@
 		F078FE4E1DA330B7002CCD13 /* wXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wXUITests.swift; sourceTree = "<group>"; };
 		F078FE501DA330B7002CCD13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F07B5C0B1E53D4DE00555058 /* ObjectImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectImage.swift; sourceTree = "<group>"; };
-		F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSettingsSwitch.swift; sourceTree = "<group>"; };
 		F07B5C0F1E53D73000555058 /* ObjectCardSevenDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDay.swift; sourceTree = "<group>"; };
 		F0830E991E593467003149E5 /* ObjectDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDatePicker.swift; sourceTree = "<group>"; };
 		F086233A1DB7D9EF004E1C0E /* UtilityWXOGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXOGL.swift; sourceTree = "<group>"; };
@@ -1301,7 +1299,6 @@
 				03C85B55240489C60046C8F4 /* ObjectMap.swift */,
 				F0605A521E59F71F00229812 /* ObjectMenuTitle.swift */,
 				F071A9F91E75BD3600B98357 /* ObjectPopUp.swift */,
-				F07B5C0D1E53D70F00555058 /* ObjectSettingsSwitch.swift */,
 				03BF9A412296798B00203B26 /* ObjectSlider.swift */,
 				03FF8F7C21FA72CD00661F78 /* ObjectSpotterCard.swift */,
 				03FF8F7D21FA72CD00661F78 /* ObjectSpotterReportCard.swift */,
@@ -1886,7 +1883,6 @@
 				034041DE23F1667B003AB242 /* vcGoes.swift in Sources */,
 				034041DB23F162A4003AB242 /* vcWpcRainfallSummary.swift in Sources */,
 				0329E307241BBA84005E0766 /* UtilityRadar.swift in Sources */,
-				F07B5C0E1E53D70F00555058 /* ObjectSettingsSwitch.swift in Sources */,
 				036E9B9C269D916E0009A47B /* MenuData.swift in Sources */,
 				F0B335121DA3FD1C0035BD36 /* Preferences.swift in Sources */,
 				034041FF23F16A4D003AB242 /* vcSettingsLocation.swift in Sources */,

@@ -32,8 +32,6 @@ final class ObjectSettingsSwitch {
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
         stackView.addArrangedSubview(horizontalContainer.view)
-        
-
     }
     
     // UI uses this, radar does not yet
