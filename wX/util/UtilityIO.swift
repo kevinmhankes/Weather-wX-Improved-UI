@@ -61,21 +61,21 @@ final class UtilityIO {
         }
     }
 
-    static func readFileToData(_ filename: String) -> Data {
-        do {
-            let documentDirUrl = try FileManager.default.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: true
-            )
-            let fileUrl = documentDirUrl.appendingPathComponent(filename)
-            return try Data(contentsOf: fileUrl)
-        } catch {
-            print("error in readFileToData")
-            return Data()
-        }
-    }
+//    static func readFileToData(_ filename: String) -> Data {
+//        do {
+//            let documentDirUrl = try FileManager.default.url(
+//                for: .documentDirectory,
+//                in: .userDomainMask,
+//                appropriateFor: nil,
+//                create: true
+//            )
+//            let fileUrl = documentDirUrl.appendingPathComponent(filename)
+//            return try Data(contentsOf: fileUrl)
+//        } catch {
+//            print("error in readFileToData")
+//            return Data()
+//        }
+//    }
 
     static func readBitmapResourceFromFile(_ file: String) -> Bitmap {
         Bitmap(UIImage(named: file) ?? UIImage())

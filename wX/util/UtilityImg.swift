@@ -16,9 +16,9 @@ final class UtilityImg {
         return renderer.image { _ in image.draw(in: CGRect(origin: CGPoint.zero, size: newSize)) }
     }
 
-    static func getAnimInterval() -> Int {
-        50 * MyApplication.animInterval
-    }
+//    static func getAnimInterval() -> Int {
+//        50 * MyApplication.animInterval
+//    }
 
     static func layerDrawableToBitmap(_ layers: [Bitmap]) -> Bitmap {
         var image = UIImage()
