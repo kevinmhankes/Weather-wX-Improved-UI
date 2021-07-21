@@ -239,6 +239,9 @@ d.keys.forEach { key in
     someString += d[key]! + ": " + key
 }
 
+d.keys.contains()
+d.forEach { k, v in
+
 let s = provinceToMosaicSector[province] ?? ""
 ```
 groovy
