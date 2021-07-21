@@ -21,6 +21,8 @@ final class vcSpcStormReports: UIwXViewController {
     private var filter = "All"
     private var filterButton = ToolbarIcon()
     var spcStormReportsDay = ""
+    private var boxImage = ObjectStackView(.fill, .vertical)
+    private var boxText = ObjectStackView(.fill, .vertical)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +37,22 @@ final class vcSpcStormReports: UIwXViewController {
             shareButton
         ]).items
         objScrollStackView = ScrollStackView(self)
+        
+        stackView.addArrangedSubview(boxImage.get())
+        stackView.addArrangedSubview(boxText.get())
+        
+        boxImage.constrain(self)
+        boxText.constrain(self)
+        
         displayPreContent()
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".csv"
         getContent()
     }
 
-    // do not do anything TODO FIXME
-    override func willEnterForeground() {
-        // self.getContent()
-    }
+//    override func willEnterForeground() {
+//        self.getContent()
+//    }
 
     // TODO more threads
     override func getContent() {
@@ -85,9 +93,9 @@ final class vcSpcStormReports: UIwXViewController {
         date = year + month + day
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + date + "_rpts.csv"
-        stackView.removeViews()
-        stackView.addArrangedSubview(objDatePicker.datePicker)
-        stackView.addArrangedSubview(image.img)
+        boxImage.removeChildren()
+        boxImage.addWidget(objDatePicker.datePicker)
+        boxImage.addWidget(image.img)
         getContent()
     }
 
@@ -109,19 +117,21 @@ final class vcSpcStormReports: UIwXViewController {
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
-        stackView.removeViews()
-        stackView.addArrangedSubview(objDatePicker.datePicker)
-        stackView.addArrangedSubview(image.img)
+//        stackView.removeViews()
+//        stackView.addArrangedSubview(objDatePicker.datePicker)
+//        stackView.addArrangedSubview(image.img)
         display()
     }
 
     private func displayPreContent() {
-        objDatePicker = ObjectDatePicker(stackView)
+        objDatePicker = ObjectDatePicker(boxImage.get())
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
-        image = ObjectImage(stackView)
+        image = ObjectImage(boxImage.get())
     }
 
     private func display() {
+        boxText.removeChildren()
+        
         var stateList = [String]()
         filterList = ["All"]
         var tornadoReports = 0
@@ -136,11 +146,14 @@ final class vcSpcStormReports: UIwXViewController {
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
                 case "Tornado Reports":
-                    tornadoHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
+                    tornadoHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    tornadoHeader?.constrain(self)
                 case "Wind Reports":
-                    windHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
+                    windHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    windHeader?.constrain(self)
                 case "Hail Reports":
-                    hailHeader = ObjectCardBlackHeaderText(self, stormReport.damageHeader)
+                    hailHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    hailHeader?.constrain(self)
                 default:
                     break
                 }
@@ -154,7 +167,7 @@ final class vcSpcStormReports: UIwXViewController {
                     hailReports += 1
                 }
                 _ = ObjectCardStormReportItem(
-                    stackView,
+                    boxText.get(),
                     stormReport,
                     GestureData(index, self, #selector(gotoMap(sender:)))
                 )
@@ -192,8 +205,8 @@ final class vcSpcStormReports: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ in
-                self.refreshViews()
-                self.displayPreContent()
+                // self.refreshViews()
+                // self.displayPreContent()
                 self.display()
             }
         )
