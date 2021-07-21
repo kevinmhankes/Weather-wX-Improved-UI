@@ -10,8 +10,8 @@ final class ObjectCardAlertSummaryItem {
 
     init(
         _ stackView: UIStackView,
-        _ office: String,
-        _ location: String,
+        _ wfo: String,
+        _ wfoName: String,
         _ alert: CapAlert,
         _ gesture: GestureData,
         _ gestureRadar: GestureData,
@@ -32,7 +32,7 @@ final class ObjectCardAlertSummaryItem {
         // horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
         let (title, startTime, endTime) = ObjectAlertDetail.condenseTime(alert)
-        let tvName = TextLarge(0.0, text: office + " (" + location + ")", color: ColorCompatibility.highlightText)
+        let tvName = TextLarge(0.0, text: wfo + " (" + wfoName + ")", color: ColorCompatibility.highlightText)
         let tvTitle = Text(title, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvStart = Text("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvEnd = Text("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
@@ -48,13 +48,13 @@ final class ObjectCardAlertSummaryItem {
             spacing: 0,
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
-        if location == "" {
+        if wfoName == "" {
             tvName.view.isHidden = true
         }
         if endTime == "" {
             tvEnd.view.isHidden = true
         }
-        if office == "" {
+        if wfo == "" {
             radarIcon.button.isHidden = true
             radarText.tv.isHidden = true
         }

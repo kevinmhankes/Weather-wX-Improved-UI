@@ -39,32 +39,32 @@ final class ObjectAlertSummary: NSObject {
                 filterLabel = filter
             }
             if filterBool {
-                let nwsOffice: String
-                let nwsLocation: String
+                let wfo: String
+                let wfoName: String
                 if alert.vtec.count > 15 {
-                    nwsOffice = alert.vtec.substring(8, 11)
-                    nwsLocation = Utility.getWfoSiteName(nwsOffice)
-                    let state = nwsLocation.substring(0, 2)
+                    wfo = alert.vtec.substring(8, 11)
+                    wfoName = Utility.getWfoSiteName(wfo)
+                    let state = wfoName.substring(0, 2)
                     if stateCntMap.keys.contains(state) {
                         stateCntMap[state] = (stateCntMap[state]! + 1)
                     } else {
                         stateCntMap[state] = 1
                     }
                 } else {
-                    nwsOffice = ""
-                    nwsLocation = ""
+                    wfo = ""
+                    wfoName = ""
                 }
                 _ = ObjectCardAlertSummaryItem(
                     stackView,
-                    nwsOffice,
-                    nwsLocation,
+                    wfo,
+                    wfoName,
                     alert,
                     GestureData(index, uiv, #selector(warningSelected)),
                     GestureData(index, uiv, #selector(goToRadar)),
                     GestureData(index, uiv, #selector(goToRadar))
                 )
                 urls.append(alert.url)
-                wfos.append(nwsOffice)
+                wfos.append(wfo)
                 index += 1
             }
         }
