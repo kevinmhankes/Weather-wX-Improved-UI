@@ -118,11 +118,11 @@ final class vcSettingsLocation: UIwXViewController {
             let latLon = Location.getX(index).truncate(10) + ", " + Location.getY(index).truncate(10)
             let details = "WFO: " + Location.getWfo(index) + " Radar: " + Location.getRid(index)
             locationCards.append(ObjectCardLocationItem(
-                self,
-                name,
-                observation,
-                details + " (" + latLon + ")",
-                GestureData(index, self, #selector(actionLocationPopup(sender:)))
+                    self,
+                    name,
+                    observation,
+                    details + " (" + latLon + ")",
+                    GestureData(index, self, #selector(actionLocationPopup))
                 )
             )
         }

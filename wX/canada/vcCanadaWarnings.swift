@@ -47,9 +47,7 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     func getWarningDetail(_ url: String) {
-        _ = FutureText2(
-            { UtilityCanada.getHazardsFromUrl(url) },
-            { data in Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))}
+        _ = FutureText2({ UtilityCanada.getHazardsFromUrl(url) }, { data in Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))}
         )
     }
 

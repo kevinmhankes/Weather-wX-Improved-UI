@@ -151,7 +151,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                 + "valid latitude and longitude values should appear. Hit save after they appear.",
             preferredStyle: .alert
         )
-        alert.addTextField { (textField) in textField.text = "" }
+        alert.addTextField { textField in textField.text = "" }
         alert.addAction(
             UIAlertAction(
                 title: "OK",
