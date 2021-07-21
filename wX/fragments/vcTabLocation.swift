@@ -173,42 +173,6 @@ final class vcTabLocation: vcTabParent {
         }
     }
 
-//    func getLocationForecast() {
-//        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
-//            DispatchQueue.main.async { self.getCurrentConditionCards() }
-//        }
-//    }
-
-//    func getLocationForecastSevenDay() {
-//        _ = FutureVoid(downloadSevenDay, updateSevenDay)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
-//            self.objectSevenDay.locationIndex = Location.getCurrentLocation()
-//            DispatchQueue.main.async {
-//                if self.objectCardSevenDayCollection == nil
-//                    || !self.isUS
-//                    || self.objectSevenDay.locationIndex != self.objectCardSevenDayCollection?.locationIndex
-//                    || self.objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
-//                    self.stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
-//                    self.objectCardSevenDayCollection = ObjectCardSevenDayCollection(
-//                        self.stackViewForecast.view,
-//                        self.scrollView,
-//                        self.objectSevenDay,
-//                        self.isUS
-//                    )
-//                    self.objectCardSevenDayCollection?.locationIndex = Location.getCurrentLocation()
-//                } else {
-//                    self.objectCardSevenDayCollection?.update(
-//                        self.objectSevenDay,
-//                        self.isUS
-//                    )
-//                }
-//            }
-//        }
-//    }
-
     func downloadSevenDay() {
         objectSevenDay = ObjectSevenDay(Location.getCurrentLocation())
         objectSevenDay.locationIndex = Location.getCurrentLocation()
@@ -235,20 +199,6 @@ final class vcTabLocation: vcTabParent {
         }
     }
 
-//    func getLocationHazards() {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
-//            DispatchQueue.main.async {
-//                if ObjectHazards.getHazardCount(self.objectHazards) > 0 {
-//                    ObjectHazards.getHazardCards(self.stackViewHazards.view, self.objectHazards, self.isUS)
-//                    self.stackViewHazards.view.isHidden = false
-//                } else {
-//                    self.stackViewHazards.view.isHidden = true
-//                }
-//            }
-//        }
-//    }
-
     func downloadHazards() {
         objectHazards = Utility.getCurrentHazards(self, Location.getCurrentLocation())
     }
@@ -264,49 +214,6 @@ final class vcTabLocation: vcTabParent {
 
     func getContent() {
         _ = FutureVoid(mainDownload, mainDisplay)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            if Location.isUS {
-//                self.isUS = true
-//            } else {
-//                self.isUS = false
-//                self.objectHazards.hazards = self.objectHazards.hazards.replaceAllRegexp("<.*?>", "")
-//            }
-//            DispatchQueue.main.async {
-//                self.globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
-//                let homescreenFav = TextUtils.split(self.globalHomeScreenFav, ":")
-//                self.textArr = [:]
-//                homescreenFav.forEach {
-//                    switch $0 {
-//                    case "TXT-CC2":
-//                        self.stackView.addArrangedSubview(self.stackViewCurrentConditions.view)
-//                        self.stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-//                    case "TXT-HAZ":
-//                        self.stackView.addArrangedSubview(self.stackViewHazards.view)
-//                        self.stackViewHazards.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-//                    case "TXT-7DAY2":
-//                        self.stackView.addArrangedSubview(self.stackViewForecast.view)
-//                        self.stackViewForecast.view.widthAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-//                    case "METAL-RADAR":
-//                        self.stackViewRadar = ObjectStackViewHS()
-//                        self.stackView.addArrangedSubview(self.stackViewRadar)
-//                        self.getNexradRadar(self.stackViewRadar)
-//                    default:
-//                        let stackViewLocal = ObjectStackViewHS()
-//                        self.stackView.addArrangedSubview(stackViewLocal)
-//                        stackViewLocal.setup(self.stackView)
-//                        self.extraDataCards.append(stackViewLocal)
-//                        if $0.hasPrefix("TXT-") {
-//                            let product = $0.replace("TXT-", "")
-//                            self.getContentText(product, stackViewLocal)
-//                        } else if $0.hasPrefix("IMG-") {
-//                            let product = $0.replace("IMG-", "")
-//                            self.getContentImage(product, stackViewLocal)
-//                        }
-//                    }
-//                }
-//                self.lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
-//            }
-//        }
     }
 
     private func mainDownload() {
@@ -560,20 +467,7 @@ final class vcTabLocation: vcTabParent {
         getPolygonWarnings()
     }
 
-//    func getPolygonWarnings() {
-//        _ = FutureVoid(UtilityPolygons.get, displayPolygonWarnings)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            UtilityPolygons.get()
-//            DispatchQueue.main.async {
-//                if self.wxMetal[0] != nil {
-//                    self.wxMetal.forEach { $0!.constructAlertPolygons() }
-//                }
-//            }
-//        }
-//    }
-
     func getPolygonWarnings() {
-        // updateWarningsInToolbar()
         getPolygonWatchGeneric()
         getPolygonWarningsNonGeneric()
         if ObjectPolygonWarning.areAnyEnabled() {
@@ -586,8 +480,6 @@ final class vcTabLocation: vcTabParent {
         if wxMetal[0] != nil {
             wxMetal.forEach { $0!.constructAlertPolygons() }
         }
-        // UtilityPolygons.get()
-        // UtilityDownloadWarnings.get()
         for t in [PolygonTypeGeneric.SMW, PolygonTypeGeneric.SQW, PolygonTypeGeneric.DSW, PolygonTypeGeneric.SPS] {
             if ObjectPolygonWarning.polygonDataByType[t]!.isEnabled {
                 ObjectPolygonWarning.polygonDataByType[t]!.download()
@@ -649,12 +541,6 @@ final class vcTabLocation: vcTabParent {
         // updateWarningsInToolbar()
         // semaphore.signal()
     }
-
-//    private func displayPolygonWarnings() {
-//        if self.wxMetal[0] != nil {
-//            self.wxMetal.forEach { $0!.constructAlertPolygons() }
-//        }
-//    }
 
     func modelMatrix(_ index: Int) -> float4x4 {
         var matrix = float4x4()
