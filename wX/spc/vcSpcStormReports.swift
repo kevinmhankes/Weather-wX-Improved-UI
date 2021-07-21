@@ -56,12 +56,16 @@ final class vcSpcStormReports: UIwXViewController {
 
     // TODO more threads
     override func getContent() {
-        _ = FutureVoid(download, display)
+        _ = FutureVoid(downloadImage, displayImage)
+        _ = FutureVoid(downloadText, displayText)
     }
 
-    private func download() {
+    private func downloadImage() {
         bitmap = Bitmap(imageUrl)
         bitmap.url = imageUrl
+    }
+    
+    private func downloadText() {
         html = textUrl.getHtml()
         stormReports = UtilitySpcStormReports.process(html.split(GlobalVariables.newline))
     }
@@ -120,7 +124,8 @@ final class vcSpcStormReports: UIwXViewController {
 //        stackView.removeViews()
 //        stackView.addArrangedSubview(objDatePicker.datePicker)
 //        stackView.addArrangedSubview(image.img)
-        display()
+        displayImage()
+        displayText()
     }
 
     private func displayPreContent() {
@@ -128,8 +133,13 @@ final class vcSpcStormReports: UIwXViewController {
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
         image = ObjectImage(boxImage.get())
     }
+    
+    private func displayImage() {
+        image.setBitmap(bitmap)
+        image.addGestureRecognizer(GestureData(target: self, action: #selector(imgClicked)))
+    }
 
-    private func display() {
+    private func displayText() {
         boxText.removeChildren()
         
         var stateList = [String]()
@@ -140,8 +150,7 @@ final class vcSpcStormReports: UIwXViewController {
         var tornadoHeader: ObjectCardBlackHeaderText?
         var windHeader: ObjectCardBlackHeaderText?
         var hailHeader: ObjectCardBlackHeaderText?
-        image.setBitmap(bitmap)
-        image.addGestureRecognizer(GestureData(target: self, action: #selector(imgClicked)))
+
         stormReports.enumerated().forEach { index, stormReport in
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
@@ -207,7 +216,8 @@ final class vcSpcStormReports: UIwXViewController {
             completion: { _ in
                 // self.refreshViews()
                 // self.displayPreContent()
-                self.display()
+                self.displayImage()
+                self.displayText()
             }
         )
     }
