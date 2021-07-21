@@ -10,9 +10,9 @@ import simd
 
 final class vcTabLocation: vcTabParent {
 
-    private var locationButton = UITextView()
-    private var forecastText = [String]()
-    private var forecastImage = [UIImage]()
+    // private var locationButton = UITextView()
+    // private var forecastText = [String]()
+    // private var forecastImage = [UIImage]()
     private var menuButton = ToolbarIcon()
     private var lastRefresh: Int64 = 0
     private var currentTime: Int64 = 0
@@ -22,10 +22,10 @@ final class vcTabLocation: vcTabParent {
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
     private var textArr = [String: String]()
-    private var timeButton = ToolbarIcon()
+    // private var timeButton = ToolbarIcon()
     private var oldLocation = LatLon()
     private var isUS = true
-    private var isUSDisplayed = true
+    // private var isUSDisplayed = true
     private var objLabel = Text()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
@@ -38,9 +38,9 @@ final class vcTabLocation: vcTabParent {
     private var metalLayer = [CAMetalLayer?]()
     private var pipelineState: MTLRenderPipelineState!
     private var commandQueue: MTLCommandQueue!
-    private var timer: CADisplayLink!
+    // private var timer: CADisplayLink!
     private var projectionMatrix: float4x4!
-    private var lastFrameTimestamp: CFTimeInterval = 0.0
+    // private var lastFrameTimestamp: CFTimeInterval = 0.0
     private let ortInt: Float = 350.0
     private let numberOfPanes = 1
     private var wxMetalTextObject = WXMetalTextObject()
@@ -582,8 +582,8 @@ final class vcTabLocation: vcTabParent {
     func clearViews() {
         stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
         extraDataCards.forEach { $0.removeFromSuperview() }
-        forecastImage = []
-        forecastText = []
+//        forecastImage = []
+//        forecastText = []
         extraDataCards = []
         stackViewHazards.view.isHidden = true
         stackViewRadar.removeFromSuperview()
