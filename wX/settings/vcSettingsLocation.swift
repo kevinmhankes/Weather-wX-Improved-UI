@@ -26,17 +26,6 @@ final class vcSettingsLocation: UIwXViewController {
     override func getContent() {
         currentConditions.removeAll()
         _ = FutureVoid(download, update)
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            (0..<Location.numLocations).forEach {
-//                self.currentConditions.append(ObjectCurrentConditions($0))
-//            }
-//            DispatchQueue.main.async {
-//                self.locationCards.indices.forEach { index in
-//                    self.locationCards[index].tvCurrentConditions.text = self.currentConditions[index].topLine
-//                    Location.updateObservation(index, self.currentConditions[index].topLine)
-//                }
-//            }
-//        }
     }
 
     func download() {
