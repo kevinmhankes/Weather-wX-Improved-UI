@@ -31,8 +31,8 @@ final public class ObjectModel {
     var timeIdx = 0
     var param = ""
     var sector = ""
-    private var sectorInt = 0
-    private var prodIdx = 0
+//    private var sectorInt = 0
+//    private var prodIdx = 0
     private var sectorButton = ToolbarIcon()
     private var runButton = ToolbarIcon()
     var timeButton = ToolbarIcon()
@@ -78,7 +78,7 @@ final public class ObjectModel {
             param = "1ref_sfc"
             model = "HRRR_NCEP"
             sector = "US"
-            sectorInt = 0
+//            sectorInt = 0
             models = UtilityModelEsrlInterface.models
         case "GLCFS":
             run = "00Z"
@@ -101,10 +101,10 @@ final public class ObjectModel {
             timeIdx = 1
             param = "capegt500"
             sector = "US"
-            sectorInt = 0
+//            sectorInt = 0
             model = "WPCGEFS"
         case "SPCHRRR":
-            prodIdx = 0
+//            prodIdx = 0
             run = "00Z"
             timeStr = "01"
             timeIdx = 1
@@ -112,7 +112,7 @@ final public class ObjectModel {
             model = "HRRR"
             sector = "US"
         case "SPCHREF":
-            prodIdx = 0
+//            prodIdx = 0
             run = "00Z"
             timeStr = "01"
             timeIdx = 1
@@ -126,7 +126,7 @@ final public class ObjectModel {
             param = "sfc_prec"
             model = "SSEO"
             sector = "US"
-            sectorInt = 0
+//            sectorInt = 0
         case "SPCSREF":
             run = "00Z"
             timeStr = "03"

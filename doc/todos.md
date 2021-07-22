@@ -1,3 +1,4 @@
+* [BUG] are textual obs in nexrad updating ?
 * vcUsAlerts is using wfo to nexrad not polygon computation
 * scan for ??
 * [] -> removeAll()
