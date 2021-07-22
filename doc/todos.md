@@ -4,7 +4,6 @@
 * [] -> removeAll()
 * FileStorage
     - level 2
-    - radarInfo including old time detection 
     - windbarb (metar)
 * objectWatch - if html == "" don't save, reset timer
 * rationalize all the Enums, etc
