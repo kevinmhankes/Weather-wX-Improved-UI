@@ -47,8 +47,4 @@ final class ExternalPoint {
         x = Float(latLon.lat)
         y = Float(latLon.lon)
     }
-
-    func toString() -> String {
-        String(format: "(%.2f,%.2f)", x, y)
-    }
 }

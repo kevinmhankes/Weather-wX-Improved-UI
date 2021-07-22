@@ -57,12 +57,4 @@ final class ExternalLine {
     func getStart() -> ExternalPoint {
         start
     }
-    
-    func getEnd() -> ExternalPoint {
-        end
-    }
-    
-    func toString() -> String {
-        String(format: "%s-%s", start.toString(), end.toString())
-    }
 }

@@ -35,15 +35,6 @@ final class ExternalPolygon {
     }
 
     /**
-     * Get the builder of the polygon
-     *
-     * @return The builder
-     */
-    static func BuilderS() -> Builder {
-        Builder()
-    }
-
-    /**
      * Builder of the polygon
      *
      * @author Roman Kushnarenko (sromku@gmail.com)
@@ -77,20 +68,6 @@ final class ExternalPolygon {
                 let line =  ExternalLine(vertexes[vertexes.count - 2], point)
                 sides.append(line)
             }
-            return self
-        }
-
-        /**
-         * Close the polygon shape. This will create a new side (edge)
-         * from the <b>last</b> vertex point to the <b>first</b> vertex point.
-         *
-         * @return The builder
-         */
-        func close() -> Builder {
-            validate()
-            // add last Line
-            sides.append(ExternalLine(vertexes[vertexes.count - 1], vertexes[0]))
-            isClosed = true
             return self
         }
 
@@ -170,10 +147,6 @@ final class ExternalPolygon {
             }
         }
         return false
-    }
-
-    func getSides() -> [ExternalLine] {
-        sides
     }
 
     /**
