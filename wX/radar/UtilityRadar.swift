@@ -6,34 +6,34 @@
 
 final class UtilityRadar {
     
-    static let soundingIdToName = [
-        "VBG": "CA, Vandenberg AFB",
-        "1Y7": "AZ, Yuma",
-        "76405": "MX, La Paz",
-        "76458": "MX, Mazatlan",
-        "SLE": "OR, Salem",
-        "UIL": "WA, Quillayute",
-        "YLW": ", KELOWNA APT",
-        "OAK": "CA, Oakland",
-        "NKX": "CA, San Diego",
-        "TUS": "AZ, Tucson",
-        "DRT": "TX, Del Rio",
-        "RAP": "SD, Rapid City",
-        "INL": "MN, International Falls",
-        "BNA": "TN, Nashville",
-        "YMO": ", MOOSONEE",
-        "GSO": "NC, Greensboro",
-        "WAL": "VA, Wallops Island",
-        "IAD": "DC, Washington",
-        "PIT": "PA, Pittsburgh",
-        "ALB": "NY, Albany",
-        "CHH": "MA, Chatham",
-        "YQI": "Nova Scotia, Yarmouth",
-        "XMR": "FL, Cape Canaveral",
-        "TLH": "FL, Tallahassee",
-        "WPL": "ON, Pickle Lake",
-        "DNR": "CO, Denver"
-    ]
+//    static let soundingIdToName = [
+//        "VBG": "CA, Vandenberg AFB",
+//        "1Y7": "AZ, Yuma",
+//        "76405": "MX, La Paz",
+//        "76458": "MX, Mazatlan",
+//        "SLE": "OR, Salem",
+//        "UIL": "WA, Quillayute",
+//        "YLW": ", KELOWNA APT",
+//        "OAK": "CA, Oakland",
+//        "NKX": "CA, San Diego",
+//        "TUS": "AZ, Tucson",
+//        "DRT": "TX, Del Rio",
+//        "RAP": "SD, Rapid City",
+//        "INL": "MN, International Falls",
+//        "BNA": "TN, Nashville",
+//        "YMO": ", MOOSONEE",
+//        "GSO": "NC, Greensboro",
+//        "WAL": "VA, Wallops Island",
+//        "IAD": "DC, Washington",
+//        "PIT": "PA, Pittsburgh",
+//        "ALB": "NY, Albany",
+//        "CHH": "MA, Chatham",
+//        "YQI": "Nova Scotia, Yarmouth",
+//        "XMR": "FL, Cape Canaveral",
+//        "TLH": "FL, Tallahassee",
+//        "WPL": "ON, Pickle Lake",
+//        "DNR": "CO, Denver"
+//    ]
     
     static let wfoIdToName = [
         "AFC": "AK, Anchorage",

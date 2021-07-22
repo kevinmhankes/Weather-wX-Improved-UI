@@ -26,7 +26,7 @@ final class UtilitySpotter {
             html.split(GlobalVariables.newline).forEach { line in
                 let items = line.split(";;")
                 if items.count > 15 {
-                    spotterList.append(Spotter(items[14], items[15], LatLon(items[4], items[5]), items[3], items[11], items[10], items[0]))
+                    spotterList.append(Spotter(items[14], items[15], LatLon(items[4], items[5]), items[3], items[0]))
                     latitudeList.append(items[4])
                     longitudeList.append(items[5])
                 }
@@ -52,7 +52,7 @@ final class UtilitySpotter {
         html.split(GlobalVariables.newline).forEach { line in
             let items = line.split(";;")
             if items.count > 10 && items.count < 16 && !items[0].hasPrefix("#") {
-                reportsList.append(SpotterReports(items[9], items[10], LatLon(items[5], items[6]), items[8], items[0], items[3], items[2], items[7]))
+                reportsList.append(SpotterReports(items[9], items[10], LatLon(items[5], items[6]), items[3], items[2], items[7]))
             }
         }
     }

@@ -18,7 +18,7 @@ final public class StormReport {
     let damageHeader: String
 
     init(
-        _ text: String,
+       // _ text: String,
         _ lat: String,
         _ lon: String,
         _ time: String,
