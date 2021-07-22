@@ -97,9 +97,9 @@ final class ObjectPolygonWatch {
     // int color() { return Utility.readPrefInt(prefTokenColor(), defaultColors[type]);}
      // String name() { return longName[type].replace("%20", " ");}
 
-     func prefTokenEnabled() -> String {
-         "RADARSHOW" + getTypeName()
-     }
+//     func prefTokenEnabled() -> String {
+//         "RADARSHOW" + getTypeName()
+//     }
 
      // String prefTokenColor() { return "RADARCOLOR" + typeName();}
 
