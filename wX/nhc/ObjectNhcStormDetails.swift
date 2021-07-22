@@ -62,7 +62,7 @@ final class ObjectNhcStormDetails {
         goesUrl = "https://cdn.star.nesdis.noaa.gov/FLOATER/data/" + id.uppercased() + "/GEOCOLOR/latest.jpg"
     }
     
-    func forTopHeader() -> String {
-        movement + ", " + pressure + "mb, " + intensity + " mph"
-    }
+//    func forTopHeader() -> String {
+//        movement + ", " + pressure + "mb, " + intensity + " mph"
+//    }
 }

@@ -10,7 +10,7 @@ final class ObjectNhcRegionSummary {
 //    var titles: [String]
 //    var bitmaps = [Bitmap]()
 //    private var replaceString: String
-    private var baseUrl: String
+//    private var baseUrl: String
 
     init(_ region: NhcOceanEnum) {
         switch region {
@@ -26,7 +26,7 @@ final class ObjectNhcRegionSummary {
                 GlobalVariables.nwsNhcWebsitePrefix + "/xgtwo/two_atl_5d0.png"
             ]
             // replaceString = "NHC Atlantic Wallet"
-            baseUrl = GlobalVariables.nwsNhcWebsitePrefix + "/nhc_at"
+//            baseUrl = GlobalVariables.nwsNhcWebsitePrefix + "/nhc_at"
         case NhcOceanEnum.EPAC:
 //            titles = [
 //                "EPAC Tropical Cyclones and Disturbances ",
@@ -39,7 +39,7 @@ final class ObjectNhcRegionSummary {
                 GlobalVariables.nwsNhcWebsitePrefix + "/xgtwo/two_pac_5d0.png"
             ]
             // replaceString = "NHC Eastern Pacific Wallet"
-            baseUrl = GlobalVariables.nwsNhcWebsitePrefix + "/nhc_ep"
+//            baseUrl = GlobalVariables.nwsNhcWebsitePrefix + "/nhc_ep"
         case NhcOceanEnum.CPAC:
 //            titles = [
 //                "CPAC Tropical Cyclones and Disturbances ",
@@ -52,7 +52,7 @@ final class ObjectNhcRegionSummary {
                 GlobalVariables.nwsNhcWebsitePrefix + "/xgtwo/two_cpac_5d0.png"
             ]
             // replaceString = ""
-            baseUrl = ""
+//            baseUrl = ""
         }
     }
 
