@@ -240,8 +240,6 @@
 		F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */; };
 		F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0149B4D1E5BA72900418162 /* ObjectModel.swift */; };
 		F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3131DC024CF001BC13E /* ExternalAngle.swift */; };
-		F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3141DC024CF001BC13E /* ExternalGeodeticCurve.swift */; };
-		F016C3191DC024D0001BC13E /* ExternalGeodeticMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3151DC024CF001BC13E /* ExternalGeodeticMeasurement.swift */; };
 		F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */; };
 		F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */; };
 		F02841811DEFBC6000474084 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02841801DEFBC6000474084 /* Location.swift */; };
@@ -641,8 +639,6 @@
 		F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 		F0149B4D1E5BA72900418162 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
 		F016C3131DC024CF001BC13E /* ExternalAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalAngle.swift; sourceTree = "<group>"; };
-		F016C3141DC024CF001BC13E /* ExternalGeodeticCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGeodeticCurve.swift; sourceTree = "<group>"; };
-		F016C3151DC024CF001BC13E /* ExternalGeodeticMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGeodeticMeasurement.swift; sourceTree = "<group>"; };
 		F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGlobalPosition.swift; sourceTree = "<group>"; };
 		F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectWatchProduct.swift; sourceTree = "<group>"; };
 		F02841801DEFBC6000474084 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -992,8 +988,6 @@
 				F016C3131DC024CF001BC13E /* ExternalAngle.swift */,
 				F0B335471DA3FD510035BD36 /* ExternalEllipsoid.swift */,
 				F0B335481DA3FD510035BD36 /* ExternalGeodeticCalculator.swift */,
-				F016C3141DC024CF001BC13E /* ExternalGeodeticCurve.swift */,
-				F016C3151DC024CF001BC13E /* ExternalGeodeticMeasurement.swift */,
 				F0B335491DA3FD510035BD36 /* ExternalGlobalCoordinates.swift */,
 				F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */,
 				F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */,
@@ -1774,7 +1768,6 @@
 				03F3EB6F22993D8E0056A56D /* ObjectNhc.swift in Sources */,
 				03F3EB7422993F390056A56D /* UtilityTtsTranslations.swift in Sources */,
 				03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */,
-				F016C3191DC024D0001BC13E /* ExternalGeodeticMeasurement.swift in Sources */,
 				0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */,
 				034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */,
 				036E9BA2269DE47D0009A47B /* FutureBytes2.swift in Sources */,
@@ -1940,7 +1933,6 @@
 				034041DF23F1667B003AB242 /* vcGoesGlobal.swift in Sources */,
 				F0F28D851DB987400020AD08 /* StormReport.swift in Sources */,
 				F0B335EE1DA3FDA70035BD36 /* UtilitySpotter.swift in Sources */,
-				F016C3181DC024D0001BC13E /* ExternalGeodeticCurve.swift in Sources */,
 				F086233B1DB7D9EF004E1C0E /* UtilityWXOGL.swift in Sources */,
 				036E1ADC1FEE54C800DE2EFE /* DataStorage.swift in Sources */,
 			);
