@@ -27,23 +27,6 @@ final class WXGLNexrad {
         product.startsWith("TV") || product == "TZL" || product.startsWith("TZ")
     }
 
-    static func getRadarTimeStamp() -> String {
-        let radarTimeStamp = getRadarInfo("")
-        var radarTimeFinal = ""
-        if radarTimeStamp != "" {
-            var radarTimeFinalWithDate = ""
-            let radarTimeSplit = radarTimeStamp.split(GlobalVariables.newline)
-            if radarTimeSplit.count > 0 {
-                radarTimeFinalWithDate = radarTimeSplit[0]
-                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
-                if radarTimeFinalWithDateInParts.count > 1 {
-                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
-                }
-            }
-        }
-        return radarTimeFinal
-    }
-
     static func canTilt(_ product: String) -> Bool {
         if product == "L2REF" || product == "L2VEL" {
             return false
@@ -209,11 +192,11 @@ final class WXGLNexrad {
         GlobalArrays.tdwrRadars.map { $0.split(" ")[0] }
     }
 
-    static func getRadarInfo(_ pane: String) -> String {
-        Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
-    }
-
-    static func writeRadarInfo(_ pane: String, _ info: String) {
-        Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
-    }
+//    static func getRadarInfo(_ pane: String) -> String {
+//        Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
+//    }
+//
+//    static func writeRadarInfo(_ pane: String, _ info: String) {
+//        Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
+//    }
 }

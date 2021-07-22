@@ -738,7 +738,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetalRenders[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
-        var alertMessage = WXGLNexrad.getRadarInfo("") + GlobalVariables.newline
+        // TODO FIXME
+        let radarInfo = wxMetalRenders[0]!.fileStorage.radarInfo
+        var alertMessage = radarInfo + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location" + GlobalVariables.newline
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetalRenders[index]!.rid

@@ -652,7 +652,8 @@ final class WXMetalRender {
     }
 
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
-        let timeString = WXGLNexrad.getRadarInfo("").split(" ")
+        // let timeString = WXGLNexrad.getRadarInfo("").split(" ")
+        let timeString = fileStorage.radarInfo.split(" ")
         if timeString.count > 1 {
             var replaceToken = "Mode:"
             if product.hasPrefix("L2") {

@@ -350,7 +350,7 @@ final class vcTabLocation: vcTabParent {
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentSuper() }))
         if UtilitySettings.isRadarInHomeScreen() {
             alert.addAction(UIAlertAction(
-                title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(),
+                title: Location.rid + ": " + getRadarTimeStamp(),
                 style: .default,
                 handler: { _ in Route.radarFromMainScreen(self) })
             )
@@ -360,6 +360,24 @@ final class vcTabLocation: vcTabParent {
             popoverController.barButtonItem = menuButton
         }
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func getRadarTimeStamp() -> String {
+        // let radarTimeStamp = WXGLNexrad.getRadarInfo("")
+        let radarTimeStamp = wxMetal[0]?.fileStorage.radarInfo ?? ""
+        var radarTimeFinal = ""
+        if radarTimeStamp != "" {
+            var radarTimeFinalWithDate = ""
+            let radarTimeSplit = radarTimeStamp.split(GlobalVariables.newline)
+            if radarTimeSplit.count > 0 {
+                radarTimeFinalWithDate = radarTimeSplit[0]
+                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
+                if radarTimeFinalWithDateInParts.count > 1 {
+                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
+                }
+            }
+        }
+        return radarTimeFinal
     }
 
     @objc func gotoHourly() {
@@ -620,7 +638,8 @@ final class vcTabLocation: vcTabParent {
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
-        var alertMessage = WXGLNexrad.getRadarInfo("") + GlobalVariables.newline
+        let radarInfo = wxMetal[0]!.fileStorage.radarInfo
+        var alertMessage = radarInfo + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
             + wxMetal[index]!.rid
