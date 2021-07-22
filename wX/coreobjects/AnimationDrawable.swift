@@ -15,7 +15,7 @@ final class AnimationDrawable {
         images.append(layer.image)
     }
 
-    func addFrame(_ layer: UIImage) {
-        images.append(layer)
-    }
+//    func addFrame(_ layer: UIImage) {
+//        images.append(layer)
+//    }
 }
