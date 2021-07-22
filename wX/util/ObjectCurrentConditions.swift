@@ -23,7 +23,6 @@ final class ObjectCurrentConditions {
     private var windGust = ""
     private var visibility = ""
     private var condition = ""
-    // private var rawMetar = ""
     var spokenText = ""
 
     convenience init(_ locNum: Int) {

@@ -51,10 +51,6 @@ final class ComboBox: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         dataList.count
     }
 
-//    func pickerView(_ pickerView: UIPickerView, titleForRow int: Int, numberOfRowsInComponent component: Int) -> Int {
-//        dataList.count
-//    }
-
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         dataList[row]
     }

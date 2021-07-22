@@ -11,7 +11,6 @@ final class TextViewMetal {
     private var uiv: UIViewController
     private var realTextSize = 0.0
     var textColor = 0
-    // private var text = ""
     private var xPos: CGFloat = 0.0
     private var yPos: CGFloat = 0.0
     private let width: CGFloat
@@ -29,7 +28,6 @@ final class TextViewMetal {
     }
 
     func setText(_ text: String) {
-        // self.text = text
         drawText(text, xPos, yPos)
     }
 

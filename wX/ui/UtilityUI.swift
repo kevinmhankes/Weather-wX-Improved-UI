@@ -71,12 +71,6 @@ final class UtilityUI {
         return cgsize
     }
 
-//    static func statusBarHeight() -> CGFloat {
-//        UIApplication.shared.statusBarFrame.size.height
-//        // let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-//        // return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-//    }
-
     static func getVersion() -> String {
         var vers = ""
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -128,11 +122,6 @@ final class UtilityUI {
         return topPadding
     }
 
-//    static func effectiveHeight(_ toolbar: ObjectToolbar) -> CGFloat {
-//        let (_, height) = UtilityUI.getScreenBoundsCGFloat()
-//        return height - toolbar.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
-//    }
-
     static func effectiveHeight(_ toolbar: UIToolbar) -> CGFloat {
         let (_, height) = UtilityUI.getScreenBoundsCGFloat()
         return height - toolbar.frame.height - UtilityUI.getTopPadding() - UtilityUI.getBottomPadding()
@@ -165,11 +154,6 @@ final class UtilityUI {
         return false
     }
 
-    /*static func printBounds() {
-        _ = UIScreen.main.nativeBounds   // 1125x2436
-        _ = UIScreen.main.bounds         // 375x812
-    }*/
-
     static func isLandscape() -> Bool {
         var landscape = false
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
@@ -185,10 +169,4 @@ final class UtilityUI {
         }
         return landscape
     }
-
-//    static func showDialogue(_ uiv: UIViewController, _ text: String) {
-//        let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertController.Style.alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//        uiv.present(alert, animated: true, completion: nil)
-//    }
 }

@@ -10,7 +10,6 @@ final class ObjectSlider {
 
     private let button = UIButton(type: UIButton.ButtonType.system)
     let slider: UISlider
-    // private static let step: Float = 1.0 // If you want UISlider to snap to steps by 10
     let prefVar: String
     private let label: String
     private let initialValue: Int
@@ -26,8 +25,6 @@ final class ObjectSlider {
         #endif
         label = ObjectSlider.prefToLabel[prefVar]!
         initialValue = Utility.readPref(prefVar, ObjectSlider.prefToInitialValue[prefVar + suffix]!)
-        // print(initialValue)
-        // print(prefVar)
         self.prefVar = prefVar
         slider = UISlider()
         slider.minimumValue = ObjectSlider.prefToMin[prefVar]!
@@ -61,8 +58,6 @@ final class ObjectSlider {
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
-        // let objId = ObjectIdentifier(sender)
-        // let objSlider = objectIdToSlider[objId]!
         setLabel()
         Utility.writePref(prefVar, Int(sender!.value))
     }
@@ -153,38 +148,38 @@ final class ObjectSlider {
     ]
 
     private static let prefToMin: [String: Float] = [
-            "RADAR_LOCDOT_SIZE": 0.0,
-            "RADAR_SPOTTER_SIZE": 0.0,
-            "RADAR_HI_SIZE": 0.0,
-            "RADAR_TVS_SIZE": 0.0,
-            "RADAR_AVIATION_SIZE": 0.0,
-            "RADAR_OBS_EXT_ZOOM": 0.0,
-            "RADAR_DATA_REFRESH_INTERVAL": 1.0,
-            "WXOGL_SIZE": 1.0,
-            "TEXTVIEW_FONT_SIZE": 8.0,
-            "REFRESH_LOC_MIN": 1.0,
-            "ANIM_INTERVAL": 1.0,
-            "UI_TILES_PER_ROW": 1.0,
-            "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
-            "NWS_ICON_SIZE_PREF": 0.0,
-            "RADAR_TEXT_SIZE": 5.0
+        "RADAR_LOCDOT_SIZE": 0.0,
+        "RADAR_SPOTTER_SIZE": 0.0,
+        "RADAR_HI_SIZE": 0.0,
+        "RADAR_TVS_SIZE": 0.0,
+        "RADAR_AVIATION_SIZE": 0.0,
+        "RADAR_OBS_EXT_ZOOM": 0.0,
+        "RADAR_DATA_REFRESH_INTERVAL": 1.0,
+        "WXOGL_SIZE": 1.0,
+        "TEXTVIEW_FONT_SIZE": 8.0,
+        "REFRESH_LOC_MIN": 1.0,
+        "ANIM_INTERVAL": 1.0,
+        "UI_TILES_PER_ROW": 1.0,
+        "HOMESCREEN_TEXT_LENGTH_PREF": 250.0,
+        "NWS_ICON_SIZE_PREF": 0.0,
+        "RADAR_TEXT_SIZE": 5.0
     ]
 
     private static let prefToMax: [String: Float] = [
-            "RADAR_LOCDOT_SIZE": 10.0,
-            "RADAR_SPOTTER_SIZE": 10.0,
-            "RADAR_HI_SIZE": 14.0,
-            "RADAR_TVS_SIZE": 14.0,
-            "RADAR_AVIATION_SIZE": 10.0,
-            "RADAR_OBS_EXT_ZOOM": 10.0,
-            "RADAR_DATA_REFRESH_INTERVAL": 20.0,
-            "WXOGL_SIZE": 25.0,
-            "TEXTVIEW_FONT_SIZE": 24.0,
-            "REFRESH_LOC_MIN": 120.0,
-            "ANIM_INTERVAL": 16.0,
-            "UI_TILES_PER_ROW": 8.0,
-            "HOMESCREEN_TEXT_LENGTH_PREF": 2000.0,
-            "NWS_ICON_SIZE_PREF": 100.0,
-            "RADAR_TEXT_SIZE": 30.0
+        "RADAR_LOCDOT_SIZE": 10.0,
+        "RADAR_SPOTTER_SIZE": 10.0,
+        "RADAR_HI_SIZE": 14.0,
+        "RADAR_TVS_SIZE": 14.0,
+        "RADAR_AVIATION_SIZE": 10.0,
+        "RADAR_OBS_EXT_ZOOM": 10.0,
+        "RADAR_DATA_REFRESH_INTERVAL": 20.0,
+        "WXOGL_SIZE": 25.0,
+        "TEXTVIEW_FONT_SIZE": 24.0,
+        "REFRESH_LOC_MIN": 120.0,
+        "ANIM_INTERVAL": 16.0,
+        "UI_TILES_PER_ROW": 8.0,
+        "HOMESCREEN_TEXT_LENGTH_PREF": 2000.0,
+        "NWS_ICON_SIZE_PREF": 100.0,
+        "RADAR_TEXT_SIZE": 30.0
     ]
 }

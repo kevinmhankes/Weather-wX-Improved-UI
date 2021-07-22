@@ -12,7 +12,6 @@ final class ObjectCanadaWarnings: NSObject {
     private var provinceCode = "ca"
     var bitmap = Bitmap()
     private var listLocUrl = [String]()
-    // private var listLocName = [String]()
     private var listLocWarning = [String]()
     private var listLocWatch = [String]()
     private var listLocStatement = [String]()

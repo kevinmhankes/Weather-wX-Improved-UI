@@ -71,21 +71,6 @@ final class ToolbarIcon: UIBarButtonItem {
         .rightArrow: "go right"
     ]
 
-//    static func getIcon(_ iconStr: String) -> UIImage {
-//        if #available(iOS 13, *) {
-//            let configuration = UIImage.SymbolConfiguration(weight: .medium)
-//            let color = UIColor.white
-//            let newIconValue = ToolbarIcon.oldIconToNew[iconStr]
-//            if newIconValue != nil {
-//                return (UIImage(
-//                    systemName: newIconValue!,
-//                    withConfiguration: configuration
-//                    )?.withTintColor(color, renderingMode: .alwaysOriginal))!
-//            }
-//        }
-//        return UIImage(named: iconStr)!
-//    }
-
     let toolbarIconPadding: CGFloat = 11.0
     var button = UIButton()
 

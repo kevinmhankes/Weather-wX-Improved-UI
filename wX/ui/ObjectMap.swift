@@ -125,27 +125,6 @@ final class ObjectMap {
         return mapShown
     }
     
-    // Static methods (Location Edit and MapView)
-//    static func centerMapOnLocationWithConstraintsNotUsed(
-//        _ uiv: UIViewController,
-//        _ mapView: MKMapView,
-//        location: CLLocationCoordinate2D,
-//        regionRadius: Double
-//    ) {
-//        let coordinateRegion = MKCoordinateRegion(
-//            center: location,
-//            latitudinalMeters: regionRadius * 2.0,
-//            longitudinalMeters: regionRadius * 2.0
-//        )
-//        uiv.view.addSubview(mapView)
-//        mapView.isHidden = true
-//        mapView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor).isActive = true
-//        mapView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor).isActive = true
-//        mapView.topAnchor.constraint(equalTo: uiv.view.topAnchor).isActive = true
-//        mapView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.toolbarHeight).isActive = true
-//        mapView.setRegion(coordinateRegion, animated: true)
-//    }
-    
     static func centerMapOnLocationEdit(_ mapView: MKMapView, location: CLLocationCoordinate2D, regionRadius: Double) {
         let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()

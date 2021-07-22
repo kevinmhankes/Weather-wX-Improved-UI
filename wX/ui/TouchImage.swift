@@ -50,21 +50,9 @@ final class TouchImage {
         self.bitmap = bitmap
     }
 
-//    func updateBitmap(_ bitmap: Bitmap) {
-//        img.zoomView?.image = bitmap.image
-//        self.bitmap = bitmap
-//    }
-
     func refresh() {
         img.refresh()
     }
-
-//    func addGestureRecognizer( _ leftSwipe: UISwipeGestureRecognizer, _ rightSwipe: UISwipeGestureRecognizer) {
-//        leftSwipe.direction = .left
-//        rightSwipe.direction = .right
-//        img.addGestureRecognizer(leftSwipe)
-//        img.addGestureRecognizer(rightSwipe)
-//    }
 
     func addGestureRecognizer(_ action: Selector) {
         let leftSwipe = UISwipeGestureRecognizer(target: uiv, action: action)

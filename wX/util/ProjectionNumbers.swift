@@ -12,22 +12,11 @@ final class ProjectionNumbers {
     private var lon = "0.0"
     private var xCenter = 0.0
     private var yCenter = 0.0
-    // private var polygonWidth = 0.0
     var radarSite = ""
     
     init() {
         oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
     }
-    
-//    init(_ scale: Double, _ lat: String, _ lon: String, _ xCenter: Double, _ yCenter: Double, _ polygonWidth: Double = 0.0) {
-//        self.scale = scale
-//        self.lat = lat
-//        self.lon = lon
-//        self.xCenter = xCenter
-//        self.yCenter = yCenter
-//        self.polygonWidth = polygonWidth
-//        oneDegreeScaleFactor = UtilityMath.pixPerDegreeLon(xDbl, scale)
-//    }
     
     init(_ radarSite: String, _ provider: ProjectionType) {
         self.radarSite = radarSite
@@ -36,7 +25,6 @@ final class ProjectionNumbers {
         scale = 0.0
         xCenter = 0.0
         yCenter = 0.0
-        // polygonWidth = 2.0
         switch provider {
         case .nwsMosaic:
             scale = 110.0
@@ -56,27 +44,22 @@ final class ProjectionNumbers {
             scale = 190.00
             xCenter = 500
             yCenter = 500
-            // polygonWidth = 2
         case .iosQuartz:
             scale = 190.00
             xCenter = 414 / 2
             yCenter = 738 / 2
-            // polygonWidth = 2
         case .wxRender48:
             scale = 450.00
             xCenter = 500
             yCenter = 500
-            // polygonWidth = 1
         case .wxOgl:
             scale = 190.00
             xCenter = 0
             yCenter = 0
-            // polygonWidth = 1
         case .wxOgl48:
             scale = 450.00
             xCenter = 0
             yCenter = 0
-            // polygonWidth = 1
         }
         lat = Utility.getRadarSiteX(radarSite)
         lon = Utility.getRadarSiteY(radarSite)
