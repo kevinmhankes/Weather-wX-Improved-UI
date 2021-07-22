@@ -240,7 +240,6 @@
 		F011E61D1DB04E38006531FD /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */; };
 		F0149B4E1E5BA72900418162 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0149B4D1E5BA72900418162 /* ObjectModel.swift */; };
 		F016C3171DC024CF001BC13E /* ExternalAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3131DC024CF001BC13E /* ExternalAngle.swift */; };
-		F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */; };
 		F01AD2361EC9B5BA0091A2A7 /* ObjectWatchProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */; };
 		F02841811DEFBC6000474084 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02841801DEFBC6000474084 /* Location.swift */; };
 		F02DF2551EB89FCF00A951EA /* ObjectCanadaLegal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DF2541EB89FCF00A951EA /* ObjectCanadaLegal.swift */; };
@@ -639,7 +638,6 @@
 		F011E61C1DB04E38006531FD /* CustomTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 		F0149B4D1E5BA72900418162 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
 		F016C3131DC024CF001BC13E /* ExternalAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalAngle.swift; sourceTree = "<group>"; };
-		F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalGlobalPosition.swift; sourceTree = "<group>"; };
 		F01AD2351EC9B5BA0091A2A7 /* ObjectWatchProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectWatchProduct.swift; sourceTree = "<group>"; };
 		F02841801DEFBC6000474084 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F02DF2541EB89FCF00A951EA /* ObjectCanadaLegal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCanadaLegal.swift; sourceTree = "<group>"; };
@@ -989,7 +987,6 @@
 				F0B335471DA3FD510035BD36 /* ExternalEllipsoid.swift */,
 				F0B335481DA3FD510035BD36 /* ExternalGeodeticCalculator.swift */,
 				F0B335491DA3FD510035BD36 /* ExternalGlobalCoordinates.swift */,
-				F016C3161DC024CF001BC13E /* ExternalGlobalPosition.swift */,
 				F064D13F1DB6EBA6003C04FB /* ExternalLine.swift */,
 				F064D1431DB6EBB7003C04FB /* ExternalPoint.swift */,
 				F064D1411DB6EBAB003C04FB /* ExternalPolygon.swift */,
@@ -1840,7 +1837,6 @@
 				0340421123F16D23003AB242 /* vcModels.swift in Sources */,
 				036522B0229149C70056E657 /* UtilityGoes.swift in Sources */,
 				03ED2BAD269EDFF800B1A34C /* UtilityLog.swift in Sources */,
-				F016C31A1DC024D0001BC13E /* ExternalGlobalPosition.swift in Sources */,
 				0340420023F16A4D003AB242 /* vcSettingsColorPicker.swift in Sources */,
 				03F3EB6322993B870056A56D /* UtilitySpcSoundings.swift in Sources */,
 				036102CE269CA60E0072EEC4 /* vcSpcMcdWatchMpdViewer.swift in Sources */,
