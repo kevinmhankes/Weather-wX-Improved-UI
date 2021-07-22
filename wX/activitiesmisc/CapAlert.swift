@@ -18,6 +18,7 @@ final class CapAlert {
     private var effective = ""
     private var expires = ""
     var points = [String]()
+    var polygon = ""
 
     convenience init(url: String) {
         self.init()
@@ -61,6 +62,7 @@ final class CapAlert {
         event = eventText.parse("<cap:event>(.*?)</cap:event>")
         vtec = eventText.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
         zones = eventText.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
+        polygon = UtilityString.parse(eventText, "<cap:polygon>(.*?)</cap:polygon>")
         text = ""
         text += title
         text += GlobalVariables.newline
@@ -72,10 +74,17 @@ final class CapAlert {
         text += instructions
         text += GlobalVariables.newline
         summary = summary.replaceAll("<br>\\*", "<br><br>*")
+        polygon = polygon.replace("-", "")
+        points = polygon.split(" ")
+        if points.count > 1 {
+            points = points[0].split(",")
+            points += [""]
+        }
     }
 
     func getClosestRadar() -> String {
-        ObjectWarning.getClosestRadarCompute(points)
+        print(points)
+        return ObjectWarning.getClosestRadarCompute(points)
     }
 
     private func getWarningsFromJson(_ html: String) -> [String] {

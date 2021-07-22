@@ -10,6 +10,7 @@ final class ObjectAlertSummary: NSObject {
 
     private var urls = [String]()
     var wfos = [String]()
+    var radarSites = [String]()
 
     @objc func warningSelected(sender: GestureData) {}
 
@@ -63,6 +64,8 @@ final class ObjectAlertSummary: NSObject {
                     GestureData(index, uiv, #selector(goToRadar)),
                     GestureData(index, uiv, #selector(goToRadar))
                 )
+                print("AAA " + alert.getClosestRadar())
+                radarSites.append(alert.getClosestRadar())
                 urls.append(alert.url)
                 wfos.append(wfo)
                 index += 1
