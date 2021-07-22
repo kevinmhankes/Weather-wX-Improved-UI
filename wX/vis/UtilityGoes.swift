@@ -137,22 +137,22 @@ final class UtilityGoes {
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 
-    static func getNearestGoesLocation(location: LatLon) -> String {
-        var shortestDistance = 1000.00
-        var currentDistance = 0.0
-        var bestIndex = ""
-        sectorToLatLon.keys.forEach { key in
-            currentDistance = LatLon.distance(location, sectorToLatLon[key] ?? LatLon(), DistanceUnit.MILES)
-            if currentDistance < shortestDistance {
-                    shortestDistance = currentDistance
-                    bestIndex = key
-            }
-        }
-        if bestIndex == "" {
-            return "BLAH"
-        }
-        return bestIndex
-    }
+//    static func getNearestGoesLocation(location: LatLon) -> String {
+//        var shortestDistance = 1000.00
+//        var currentDistance = 0.0
+//        var bestIndex = ""
+//        sectorToLatLon.keys.forEach { key in
+//            currentDistance = LatLon.distance(location, sectorToLatLon[key] ?? LatLon(), DistanceUnit.MILES)
+//            if currentDistance < shortestDistance {
+//                    shortestDistance = currentDistance
+//                    bestIndex = key
+//            }
+//        }
+//        if bestIndex == "" {
+//            return "BLAH"
+//        }
+//        return bestIndex
+//    }
 
     static let sectors = [
         "FD: GOES-EAST Full Disk",
@@ -269,16 +269,16 @@ final class UtilityGoes {
         "DMW"
     ]
 
-    static let sectorToLatLon = [
-        "cgl": LatLon(39.123405, -82.532938), // cgl wellston, Oh
-        "ne": LatLon(39.360611, -74.431877), // ne Atlantic City, NJ
-        "umv": LatLon(40.622777, -93.934116), // umv  Lamoni, IA
-        "pnw": LatLon(41.589703, -119.858865), // pnw Vya, NV
-        "psw": LatLon(38.524448, -118.623611), // psw Hawthorne, NV
-        "nr": LatLon(41.139980, -104.820244), // nr   Cheyenne, Wy
-        "sr": LatLon(34.653376, -108.677852), // sr Fence Lake, NM
-        "sp": LatLon(31.463787, -96.058022), // sp Buffalo, TX
-        "smv": LatLon(31.326460, -89.289658), // smv Hattiesburg, MS
-        "se": LatLon(30.332184, -81.655647) // se Jacksonville, FL
-    ]
+//    static let sectorToLatLon = [
+//        "cgl": LatLon(39.123405, -82.532938), // cgl wellston, Oh
+//        "ne": LatLon(39.360611, -74.431877), // ne Atlantic City, NJ
+//        "umv": LatLon(40.622777, -93.934116), // umv  Lamoni, IA
+//        "pnw": LatLon(41.589703, -119.858865), // pnw Vya, NV
+//        "psw": LatLon(38.524448, -118.623611), // psw Hawthorne, NV
+//        "nr": LatLon(41.139980, -104.820244), // nr   Cheyenne, Wy
+//        "sr": LatLon(34.653376, -108.677852), // sr Fence Lake, NM
+//        "sp": LatLon(31.463787, -96.058022), // sp Buffalo, TX
+//        "smv": LatLon(31.326460, -89.289658), // smv Hattiesburg, MS
+//        "se": LatLon(30.332184, -81.655647) // se Jacksonville, FL
+//    ]
 }

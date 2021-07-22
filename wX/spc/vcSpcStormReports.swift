@@ -82,7 +82,7 @@ final class vcSpcStormReports: UIwXViewController {
         Route.map(self, stormReports[sender.data].lat, stormReports[sender.data].lon)
     }
 
-    @objc func onDateChanged(sender: UIDatePicker) {
+    @objc func onDateChanged(_: UIDatePicker) {
         let myDateFormatter: DateFormatter = DateFormatter()
         myDateFormatter.dateFormat = "MM/dd/yyyy"
         let formatter = DateFormatter()
@@ -130,7 +130,7 @@ final class vcSpcStormReports: UIwXViewController {
 
     private func displayPreContent() {
         objDatePicker = ObjectDatePicker(boxImage.get())
-        objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged(sender:)), for: .valueChanged)
+        objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
         image = ObjectImage(boxImage.get())
     }
     

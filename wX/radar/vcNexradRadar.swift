@@ -22,8 +22,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     private var locationManager = CLLocationManager()
     private var lastFrameTimestamp: CFTimeInterval = 0.0
     private var mapIndex = 0
-    private let scrollView = UIScrollView()
-    private let stackView = UIStackView()
+//    private let scrollView = UIScrollView()
+//    private let stackView = UIStackView()
     private let toolbar = ObjectToolbar()
     private var doneButton = ToolbarIcon()
     private var timeButton = ToolbarIcon()
@@ -889,28 +889,28 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-        let dispatchTime = DispatchTime.now() + seconds
-        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-    }
+//    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
+//        let dispatchTime = DispatchTime.now() + seconds
+//        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
+//    }
 
-    public enum DispatchLevel {
-        case main, userInteractive, userInitiated, utility, background
-        var dispatchQueue: DispatchQueue {
-            switch self {
-            case .main:
-                return DispatchQueue.main
-            case .userInteractive:
-                return DispatchQueue.global(qos: .userInteractive)
-            case .userInitiated:
-                return DispatchQueue.global(qos: .userInitiated)
-            case .utility:
-                return DispatchQueue.global(qos: .utility)
-            case .background:
-                return DispatchQueue.global(qos: .background)
-            }
-        }
-    }
+//    public enum DispatchLevel {
+//        case main, userInteractive, userInitiated, utility, background
+//        var dispatchQueue: DispatchQueue {
+//            switch self {
+//            case .main:
+//                return DispatchQueue.main
+//            case .userInteractive:
+//                return DispatchQueue.global(qos: .userInteractive)
+//            case .userInitiated:
+//                return DispatchQueue.global(qos: .userInitiated)
+//            case .utility:
+//                return DispatchQueue.global(qos: .utility)
+//            case .background:
+//                return DispatchQueue.global(qos: .background)
+//            }
+//        }
+//    }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -958,9 +958,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         ]
     }
 
-    @objc func keyboardAnimate() {
-        animateFrameCntClicked(10)
-    }
+//    @objc func keyboardAnimate() {
+//        animateFrameCntClicked(10)
+//    }
 
     /*@objc func goToQuadPane() {
         wxMetalRenders.forEach { $0!.writePreferences() }

@@ -55,5 +55,5 @@ final class ObjectLocation {
         Utility.writePref("LOC" + prefNumberString + "_OBSERVATION", observation)
     }
 
-    var prov: String { lat.split(":")[1] }
+//    var prov: String { lat.split(":")[1] }
 }

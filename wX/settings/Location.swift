@@ -99,9 +99,9 @@ final class Location {
         locations[locNum].observation
     }
     
-    static func getProv(_ locNum: Int) -> String {
-        locations[locNum].prov
-    }
+//    static func getProv(_ locNum: Int) -> String {
+//        locations[locNum].prov
+//    }
 
     static var rid: String { locations[getCurrentLocation()].rid }
 

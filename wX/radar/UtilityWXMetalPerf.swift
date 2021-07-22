@@ -119,7 +119,7 @@ final class UtilityWXMetalPerf {
         return totalBins
     }
     
-    static func genRadials(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> Int {
+    static func genRadials(_ radarBuffers: ObjectMetalRadarBuffers) -> Int {
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
         radarBuffers.colorMap.greenValues.put(0, Color.green(radarBuffers.bgColor))
         radarBuffers.colorMap.blueValues.put(0, Color.blue(radarBuffers.bgColor))

@@ -8,20 +8,20 @@ final class WXGLNexrad {
 
     static var wxoglDspLegendMax = 0.0
 
-    let tdwrProductList = [
-        "TZ0",
-        "TZ1",
-        "TZ2",
-        "TR0",
-        "TR1",
-        "TR2",
-        "TV0",
-        "TV1",
-        "TV2",
-        "TZL",
-        "N1P",
-        "NTP"
-    ]
+//    let tdwrProductList = [
+//        "TZ0",
+//        "TZ1",
+//        "TZ2",
+//        "TR0",
+//        "TR1",
+//        "TR2",
+//        "TV0",
+//        "TV1",
+//        "TV2",
+//        "TZL",
+//        "N1P",
+//        "NTP"
+//    ]
 
     static func isProductTdwr(_ product: String) -> Bool {
         product.startsWith("TV") || product == "TZL" || product.startsWith("TZ")
@@ -55,24 +55,24 @@ final class WXGLNexrad {
         }
     }
 
-    static var radarProductList = [
-        "N0Q: Base Reflectivity",
-        "N0U: Base Velocity",
-        "L2REF: Level 2 Reflectivity",
-        "L2VEL: Level 2 Velocity",
-        "EET: Enhanced Echo Tops",
-        "DVL: Vertically Integrated Liquid",
-        "N0X: Differential Reflectivity",
-        "N0C: Correlation Coefficient",
-        "N0K: Specific Differential Phase",
-        "H0C: Hydrometer Classification",
-        "DSP: Digital Storm Total Precipitation",
-        "DAA: Digital Accumulation Array",
-        "N0S: Storm Relative Mean Velocity",
-        "NSW: Base Spectrum Width",
-        "NCR: Composite Reflectivity 124nm",
-        "NCZ: Composite Reflectivity 248nm"
-    ]
+//    static var radarProductList = [
+//        "N0Q: Base Reflectivity",
+//        "N0U: Base Velocity",
+//        "L2REF: Level 2 Reflectivity",
+//        "L2VEL: Level 2 Velocity",
+//        "EET: Enhanced Echo Tops",
+//        "DVL: Vertically Integrated Liquid",
+//        "N0X: Differential Reflectivity",
+//        "N0C: Correlation Coefficient",
+//        "N0K: Specific Differential Phase",
+//        "H0C: Hydrometer Classification",
+//        "DSP: Digital Storm Total Precipitation",
+//        "DAA: Digital Accumulation Array",
+//        "N0S: Storm Relative Mean Velocity",
+//        "NSW: Base Spectrum Width",
+//        "NCR: Composite Reflectivity 124nm",
+//        "NCZ: Composite Reflectivity 248nm"
+//    ]
 
     // To add products in this file means also adding entries in global/GlobalDictionaries.swift and global/ColorPalettes.swift
 

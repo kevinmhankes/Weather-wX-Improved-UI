@@ -9,16 +9,16 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var bgColor = 0
     var fileName = "nids"
     var rd = WXMetalNexradLevelData()
-    let colorRF: Float
-    let colorGF: Float
-    let colorBF: Float
+//    let colorRF: Float
+//    let colorGF: Float
+//    let colorBF: Float
     var fileStorage = FileStorage()
     
     init(_ bgColor: Int) {
         self.bgColor = bgColor
-        colorRF = Float(Color.red(bgColor)) / 255.0
-        colorGF = Float(Color.green(bgColor)) / 255.0
-        colorBF = Float(Color.blue(bgColor)) / 255.0
+//        colorRF = Float(Color.red(bgColor)) / 255.0
+//        colorGF = Float(Color.green(bgColor)) / 255.0
+//        colorBF = Float(Color.blue(bgColor)) / 255.0
     }
     
     var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }
@@ -49,9 +49,9 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
         let totalBins: Int
         switch rd.productCode {
         case 37, 38:
-            totalBins = UtilityWXMetalPerfRaster.generate(self, fileStorage)
+            totalBins = UtilityWXMetalPerfRaster.generate(self)
         case 153, 154, 30, 56, 78, 80, 181:
-            totalBins = UtilityWXMetalPerf.genRadials(self, fileStorage)
+            totalBins = UtilityWXMetalPerf.genRadials(self)
         case 0:
             totalBins = 0
         default:

@@ -14,7 +14,7 @@ final class WXMetalRender {
 
     private let radarType = "WXMETAL"
     private let device: MTLDevice
-    private var time: CFTimeInterval = 0.0
+//    private var time: CFTimeInterval = 0.0
     var projectionNumbers = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
@@ -262,9 +262,9 @@ final class WXMetalRender {
         return matrix
     }
 
-    func updateWithDelta(delta: CFTimeInterval) {
-        time += delta
-    }
+//    func updateWithDelta(delta: CFTimeInterval) {
+//        time += delta
+//    }
     
     func constructAlertPolygonsByType(_ type: PolygonTypeGeneric) {
         switch type {
