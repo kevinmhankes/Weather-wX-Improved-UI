@@ -56,7 +56,6 @@ final class ObjectCardNhcStormReportItem {
         )
         verticalTextContainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
-        // uiStackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
     }
 

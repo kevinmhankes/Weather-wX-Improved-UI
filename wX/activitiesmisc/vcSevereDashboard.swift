@@ -15,7 +15,6 @@ final class vcSevereDashboard: UIwXViewController {
     private var bitmap = Bitmap()
     private var usAlertsBitmap = Bitmap()
     private var statusButton = ToolbarIcon()
-    // private let synthesizer = AVSpeechSynthesizer()
     private var statusWarnings = ""
 
     override func viewDidLoad() {
@@ -67,20 +66,18 @@ final class vcSevereDashboard: UIwXViewController {
         let wTst = severeWarnings[.TST]!
         let wFfw = severeWarnings[.FFW]!
         [wTor, wTst, wFfw].forEach { severeWarning in
-            // if severeWarning.getCount() > 0 {
-                _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
-                for w in severeWarning.warningList {
-                    if w.isCurrent {
-                        let radarSite = w.getClosestRadar()
-                        stackView.addArrangedSubview(ObjectCardDashAlertItem(
-                            w,
-                            GestureData(w.url, self, #selector(goToAlert(sender:))),
-                            GestureData(radarSite, self, #selector(goToRadar(sender:))),
-                            GestureData(radarSite, self, #selector(goToRadar(sender:)))
-                        ).get())
-                    }
+            _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
+            for w in severeWarning.warningList {
+                if w.isCurrent {
+                    let radarSite = w.getClosestRadar()
+                    stackView.addArrangedSubview(ObjectCardDashAlertItem(
+                        w,
+                        GestureData(w.url, self, #selector(goToAlert(sender:))),
+                        GestureData(radarSite, self, #selector(goToRadar(sender:))),
+                        GestureData(radarSite, self, #selector(goToRadar(sender:)))
+                    ).get())
                 }
-            // }
+            }
         }
         if wTor.getCount() > 0 || wTst.getCount() > 0 || wFfw.getCount() > 0 {
             statusWarnings = "(" + wTor.getCount() + "," + wTst.getCount() + "," + wFfw.getCount() + ")"
@@ -126,9 +123,6 @@ final class vcSevereDashboard: UIwXViewController {
         #if targetEnvironment(macCatalyst)
         imagesPerRow = 3
         #endif
-//        else if noticeCount == 0 && !UtilityUI.isLandscape() {
-//            imagesPerRow = 1
-//        }
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)

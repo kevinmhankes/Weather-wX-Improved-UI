@@ -52,10 +52,6 @@ extension float4x4 {
         self *= float4x4.init(diagonal: [x, y, z, 1.0])
     }
     
-//    mutating func rotate(_ radians: Float, x: Float, y: Float, z: Float) {
-//        self = float4x4.makeRotate(radians, x, y, z) * self
-//    }
-    
     mutating func rotateAroundX(_ x: Float, y: Float, z: Float) {
         var rotationM = float4x4.makeRotate(x, 1, 0, 0)
         rotationM = rotationM * float4x4.makeRotate(y, 0, 1, 0)
@@ -74,10 +70,6 @@ extension float4x4 {
     static func numberOfElements() -> Int {
         16
     }
-    
-//    static func degrees(toRad angle: Float) -> Float {
-//        Float(Double(angle) * Double.pi / 180)
-//    }
     
     mutating func multiplyLeft(_ matrix: float4x4) {
         self = matrix * self

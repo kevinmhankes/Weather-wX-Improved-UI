@@ -9,7 +9,6 @@ import UIKit
 final class vcObsSites: UIwXViewController {
 
     private var listCity = [String]()
-//    private var stateView = true
     private var stateSelected = ""
     private var siteButton = ToolbarIcon()
     private var mapButton = ToolbarIcon()
@@ -32,7 +31,6 @@ final class vcObsSites: UIwXViewController {
     }
 
     func showState() {
-//        stateView = false
         let lines = UtilityIO.rawFileToStringArray(R.Raw.stations_us4)
         listCity = ["..Back to state list"]
         var listIds = ["..Back to state list"]
@@ -75,7 +73,6 @@ final class vcObsSites: UIwXViewController {
     }
 
     func constructStateView() {
-//        stateView = true
         stackView.removeViews()
         GlobalArrays.states.enumerated().forEach { index, state in
             let objectTextView = Text(

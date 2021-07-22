@@ -8,21 +8,6 @@ final class WXGLNexrad {
 
     static var wxoglDspLegendMax = 0.0
 
-//    let tdwrProductList = [
-//        "TZ0",
-//        "TZ1",
-//        "TZ2",
-//        "TR0",
-//        "TR1",
-//        "TR2",
-//        "TV0",
-//        "TV1",
-//        "TV2",
-//        "TZL",
-//        "N1P",
-//        "NTP"
-//    ]
-
     static func isProductTdwr(_ product: String) -> Bool {
         product.startsWith("TV") || product == "TZL" || product.startsWith("TZ")
     }
@@ -37,25 +22,6 @@ final class WXGLNexrad {
             return false
         }
     }
-
-//    static var radarProductList = [
-//        "N0Q: Base Reflectivity",
-//        "N0U: Base Velocity",
-//        "L2REF: Level 2 Reflectivity",
-//        "L2VEL: Level 2 Velocity",
-//        "EET: Enhanced Echo Tops",
-//        "DVL: Vertically Integrated Liquid",
-//        "N0X: Differential Reflectivity",
-//        "N0C: Correlation Coefficient",
-//        "N0K: Specific Differential Phase",
-//        "H0C: Hydrometer Classification",
-//        "DSP: Digital Storm Total Precipitation",
-//        "DAA: Digital Accumulation Array",
-//        "N0S: Storm Relative Mean Velocity",
-//        "NSW: Base Spectrum Width",
-//        "NCR: Composite Reflectivity 124nm",
-//        "NCZ: Composite Reflectivity 248nm"
-//    ]
 
     // To add products in this file means also adding entries in global/GlobalDictionaries.swift and global/ColorPalettes.swift
 
@@ -191,12 +157,4 @@ final class WXGLNexrad {
     static func getTdwrShortList() -> [String] {
         GlobalArrays.tdwrRadars.map { $0.split(" ")[0] }
     }
-
-//    static func getRadarInfo(_ pane: String) -> String {
-//        Utility.readPref("WX_RADAR_CURRENT_INFO" + pane, "")
-//    }
-//
-//    static func writeRadarInfo(_ pane: String, _ info: String) {
-//        Utility.writePref("WX_RADAR_CURRENT_INFO" + pane, info)
-//    }
 }

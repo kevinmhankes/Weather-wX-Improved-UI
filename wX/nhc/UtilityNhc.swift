@@ -28,19 +28,6 @@ final class UtilityNhc {
         "CPAC Tropical Weather Outlook"
     ]
     
-//    static let imageType = [
-//        "vis: Visible",
-//        "wv: Water Vapor",
-//        "swir: Shortwave IR",
-//        "ir: Unenhanced IR",
-//        "avn: AVN",
-//        "bd: Dvorak",
-//        "jsl: JSL",
-//        "rgb: RGB",
-//        "ft: Funktop",
-//        "rb: Rainbow"
-//    ]
-    
     static let imageTitles = [
         "EPAC Daily Analysis",
         "ATL Daily Analysis",

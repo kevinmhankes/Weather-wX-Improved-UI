@@ -10,9 +10,6 @@ import simd
 
 final class vcTabLocation: vcTabParent {
 
-    // private var locationButton = UITextView()
-    // private var forecastText = [String]()
-    // private var forecastImage = [UIImage]()
     private var menuButton = ToolbarIcon()
     private var lastRefresh: Int64 = 0
     private var currentTime: Int64 = 0
@@ -22,10 +19,8 @@ final class vcTabLocation: vcTabParent {
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
     private var textArr = [String: String]()
-    // private var timeButton = ToolbarIcon()
     private var oldLocation = LatLon()
     private var isUS = true
-    // private var isUSDisplayed = true
     private var objLabel = Text()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
@@ -38,16 +33,13 @@ final class vcTabLocation: vcTabParent {
     private var metalLayer = [CAMetalLayer?]()
     private var pipelineState: MTLRenderPipelineState!
     private var commandQueue: MTLCommandQueue!
-    // private var timer: CADisplayLink!
     private var projectionMatrix: float4x4!
-    // private var lastFrameTimestamp: CFTimeInterval = 0.0
     private let ortInt: Float = 350.0
     private let numberOfPanes = 1
     private var wxMetalTextObject = WXMetalTextObject()
     private var longPressCount = 0
     private var toolbar = ObjectToolbar()
     private var globalHomeScreenFav = ""
-    // private var globalTextViewFontSize = UIPreferences.textviewFontSize
     private var globalTextViewFontSize: CGFloat = 0.0
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
@@ -120,7 +112,6 @@ final class vcTabLocation: vcTabParent {
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
-        // stackView = UIStackView()
         stackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
             view.removeConstraints([
@@ -131,9 +122,6 @@ final class vcTabLocation: vcTabParent {
             ])
         }
         objScrollStackView = ScrollStackView(self, scrollView, stackView)
-//        stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
-//        stackViewForecast = ObjectStackView(.fill, .vertical)
-//        stackViewHazards = ObjectStackView(.fill, .vertical)
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
@@ -162,11 +150,8 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getForecastData() {
-        // getLocationForecast()
         _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
-        // getLocationForecastSevenDay()
         _ = FutureVoid(downloadSevenDay, updateSevenDay)
-        // getLocationHazards()
         _ = FutureVoid(downloadHazards, updateHazards)
         if fab != nil {
             view.bringSubviewToFront(fab!.view)
@@ -363,7 +348,6 @@ final class vcTabLocation: vcTabParent {
     }
     
     private func getRadarTimeStamp() -> String {
-        // let radarTimeStamp = WXGLNexrad.getRadarInfo("")
         let radarTimeStamp = wxMetal[0]?.fileStorage.radarInfo ?? ""
         var radarTimeFinal = ""
         if radarTimeStamp != "" {
@@ -600,8 +584,6 @@ final class vcTabLocation: vcTabParent {
     func clearViews() {
         stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
         extraDataCards.forEach { $0.removeFromSuperview() }
-//        forecastImage = []
-//        forecastText = []
         extraDataCards = []
         stackViewHazards.view.isHidden = true
         stackViewRadar.removeFromSuperview()

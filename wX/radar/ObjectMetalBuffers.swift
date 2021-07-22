@@ -43,11 +43,6 @@ class ObjectMetalBuffers {
         }
     }
     
-//    convenience init (scaleCutOff: Float) {
-//        self.init()
-//        self.scaleCutOff = scaleCutOff
-//    }
-    
     convenience init (_ geoType: GeographyType, _ scaleCutOff: Float) {
         self.init()
         self.geoType = geoType
@@ -161,14 +156,6 @@ class ObjectMetalBuffers {
     func putColor(_ byte: UInt8) {
         metalBuffer.append(Float(Float(byte)/Float(255.0)))
     }
-    
-//    func putColorFloat(_ color: Float) {
-//        metalBuffer.append(color)
-//    }
-    
-//    func getColorArray() -> [UInt8] {
-//        [red, green, blue]
-//    }
     
     func getColorArrayInFloat() -> [Float] {
         [red.toColor(), green.toColor(), blue.toColor()]

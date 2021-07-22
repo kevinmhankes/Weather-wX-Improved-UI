@@ -9,17 +9,6 @@ import AVFoundation
 
 final class UtilityAudio {
 
-//    static func speakText(_ string: String, _ synthesizer: AVSpeechSynthesizer) {
-//        if !synthesizer.isSpeaking {
-//            let myUtterance = AVSpeechUtterance(string: UtilityTtsTranslations.translateAbbreviations(string))
-//            synthesizer.speak(myUtterance)
-//        } else if synthesizer.isPaused {
-//            synthesizer.continueSpeaking()
-//        } else {
-//            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
-//        }
-//    }
-
     static func playClicked(_ string: String, _ synthesizer: AVSpeechSynthesizer, _ playB: ToolbarIcon) {
         if synthesizer.isPaused {
             synthesizer.continueSpeaking()
@@ -61,12 +50,4 @@ final class UtilityAudio {
         uiv.synthesizer = AVSpeechSynthesizer()
         playB.setImage(.play)
     }
-
-//    static func resetAudio(_ uiv: UIwXViewControllerWithAudio, _ fab: ObjectFab) {
-//        if uiv.synthesizer.isSpeaking {
-//            uiv.synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
-//        }
-//        uiv.synthesizer = AVSpeechSynthesizer()
-//        fab.setImage(.play)
-//    }
 }

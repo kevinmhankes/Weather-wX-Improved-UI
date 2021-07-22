@@ -6,7 +6,6 @@
 
 final public class StormReport {
 
-    // let text: String
     let lat: String
     let lon: String
     let time: String
@@ -18,7 +17,6 @@ final public class StormReport {
     let damageHeader: String
 
     init(
-       // _ text: String,
         _ lat: String,
         _ lon: String,
         _ time: String,
@@ -29,7 +27,6 @@ final public class StormReport {
         _ damageReport: String,
         _ damageHeader: String
     ) {
-        // self.text = text
         self.lat = lat
         self.lon = lon
         self.time = time

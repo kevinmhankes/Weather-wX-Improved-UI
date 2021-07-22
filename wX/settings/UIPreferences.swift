@@ -16,8 +16,6 @@ final class UIPreferences {
     static var backButtonAnimation = true
     static var dualpaneRadarIcon = false
     static var unitsM = false
-    // This is no longer configurable by the user
-//    static let unitsF = true
     static var nwsIconTextColor = Color.rgb(38, 97, 139)
     static var nwsIconBottomColor = Color.rgb(255, 255, 255)
     static var textviewFontSize: CGFloat = 16.0
@@ -28,7 +26,6 @@ final class UIPreferences {
     static var mainScreenRadarFab = true
     static var mainScreenCondense = false
     static var nwsIconSize: Float = 80.0
-    static var useAwcRadarMosaic = true
     static var goesUseFullResolutionImages = false
     static var useNwsApi = false
     static var useNwsApiForHourly = true
@@ -42,7 +39,6 @@ final class UIPreferences {
         useNwsApi = Utility.readPref("USE_NWS_API_SEVEN_DAY", "false").hasPrefix("t")
         useNwsApiForHourly = Utility.readPref("USE_NWS_API_HOURLY", "true").hasPrefix("t")
         goesUseFullResolutionImages = Utility.readPref("GOES_USE_FULL_RESOLUTION_IMAGES", "false").hasPrefix("t")
-        // useAwcRadarMosaic = Utility.readPref("USE_AWC_RADAR_MOSAIC", "false").hasPrefix("t")
         backButtonAnimation = Utility.readPref("BACK_ARROW_ANIM", "true").hasPrefix("t")
         dualpaneRadarIcon = Utility.readPref("DUALPANE_RADAR_ICON", "false").hasPrefix("t")
         tilesPerRow = Utility.readPref("UI_TILES_PER_ROW", tilesPerRow)
@@ -60,6 +56,5 @@ final class UIPreferences {
         if debugMode {
             RadarPreferences.useFileStorage = true
         }
-
     }
 }

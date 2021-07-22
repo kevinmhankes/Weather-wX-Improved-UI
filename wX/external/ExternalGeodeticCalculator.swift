@@ -12,8 +12,6 @@ import Foundation
 
 final class ExternalGeodeticCalculator {
 
-//    private let twoPi = 2.0 * Double.pi
-
     /**
      * Calculate the destination and final bearing after traveling a specified
      * distance, and a specified starting bearing, for an initial location. This

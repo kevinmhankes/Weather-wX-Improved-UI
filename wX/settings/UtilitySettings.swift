@@ -12,10 +12,4 @@ final class UtilitySettings {
         let homeScreenFav = TextUtils.split(Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault), ":")
         return homeScreenFav.contains("METAL-RADAR")
     }
-
-//    static func getHelp(_ uiv: UIViewController, _ targetButton: UIBarButtonItem, _ help: String) {
-//        let alert = ObjectPopUp(uiv, help, targetButton)
-//        alert.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-//        alert.finish()
-//    }
 }

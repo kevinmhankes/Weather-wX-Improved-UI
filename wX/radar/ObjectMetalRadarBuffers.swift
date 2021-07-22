@@ -9,16 +9,10 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var bgColor = 0
     var fileName = "nids"
     var rd = WXMetalNexradLevelData()
-//    let colorRF: Float
-//    let colorGF: Float
-//    let colorBF: Float
     var fileStorage = FileStorage()
     
     init(_ bgColor: Int) {
         self.bgColor = bgColor
-//        colorRF = Float(Color.red(bgColor)) / 255.0
-//        colorGF = Float(Color.green(bgColor)) / 255.0
-//        colorBF = Float(Color.blue(bgColor)) / 255.0
     }
     
     var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }

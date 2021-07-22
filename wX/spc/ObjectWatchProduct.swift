@@ -8,12 +8,9 @@ final class ObjectWatchProduct {
 
     private let productNumber: String
     let imgUrl: String
-//    let textUrl: String
-//    private let title: String
     let prod: String
     var bitmap = Bitmap()
     var text = ""
-//    private var wfos = [String]()
     private let type: PolygonEnum
     private var stringOfLatLon = ""
     private var latLons = [String]()
@@ -24,32 +21,22 @@ final class ObjectWatchProduct {
         case .SPCWAT_TORNADO:
             self.productNumber = productNumber.replaceAll("w", "")
             imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
-//            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
-//            title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
         case .SPCWAT:
             self.productNumber = productNumber.replaceAll("w", "")
             imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + "_radar.gif"
-//            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/ww" + productNumber + ".html"
-//            title = "Watch " + productNumber
             prod = "SPCWAT" + productNumber
         case .SPCMCD:
             self.productNumber = productNumber
             imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/mcd" + productNumber + ".gif"
-//            textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/md/md" + productNumber + ".html"
-//            title = "MCD " + productNumber
             prod = "SPCMCD" + productNumber
         case .WPCMPD:
             self.productNumber = productNumber
             imgUrl = GlobalVariables.nwsWPCwebsitePrefix + "/metwatch/images/mcd" + productNumber + ".gif"
-//            textUrl = ""
-//            title = "MPD " + productNumber
             prod = "WPCMPD" + productNumber
         default:
             self.productNumber = ""
             imgUrl = ""
-//            textUrl = ""
-//            title = ""
             prod = ""
         }
     }
@@ -63,8 +50,6 @@ final class ObjectWatchProduct {
         stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
         bitmap = Bitmap(imgUrl)
-//        let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
-//        wfos = wfoStr.split("\\.\\.\\.")
     }
     
     func getDataTextOnly() -> String {
@@ -75,14 +60,8 @@ final class ObjectWatchProduct {
         }
         stringOfLatLon = LatLon.storeWatchMcdLatLon(textWithLatLon).replace(":", "")
         latLons = stringOfLatLon.split(" ")
-//        let wfoStr = text.parse("ATTN...WFO...(.*?)...<br>")
-//        wfos = wfoStr.split("\\.\\.\\.")
         return text
     }
-
-//    func getTextForSubtitle() -> String {
-//        text.parse("AREAS AFFECTED...(.*?)CONCERNING").replace("<BR>", "")
-//    }
 
     func getTextForNoProducts() -> String {
         switch type {

@@ -481,19 +481,6 @@ final class UtilitySpcMeso {
         "eshr"
     ]
 
-//    static let sectorMap = [
-//        "19": "CONUS",
-//        "20": "Midwest",
-//        "13": "North Central",
-//        "14": "Central",
-//        "15": "South Central",
-//        "16": "Northeast",
-//        "17": "Central East",
-//        "18": "Southeast",
-//        "12": "Southwest",
-//        "11": "Northwest"
-//    ]
-    
     static let sectorMapForTitle = [
         "19": "US",
         "20": "MW",

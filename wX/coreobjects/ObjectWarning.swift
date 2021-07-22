@@ -7,7 +7,6 @@
 final class ObjectWarning {
 
     var url = ""
-    // var title = ""
     var area = ""
     var effective = ""
     var expires = ""
@@ -15,7 +14,6 @@ final class ObjectWarning {
     var sender = ""
     var polygon = ""
     var vtec = ""
-    // var geometry = ""
     var isCurrent = true
 
     init(
@@ -32,7 +30,6 @@ final class ObjectWarning {
     ) {
         self.url = url
         // detailed desc
-        // self.title = title
         self.area = area
 
         self.effective = effective
@@ -47,26 +44,11 @@ final class ObjectWarning {
         self.sender = sender
         self.polygon = polygon
         self.vtec = vtec
-        // self.geometry = geometry
         isCurrent = UtilityTime.isVtecCurrent(self.vtec)
         if vtec.hasPrefix("O.EXP") || vtec.hasPrefix("O.CAN") {
             isCurrent = false
         }
     }
-    
-//    static func getBulkData(_ type1: PolygonEnum) -> String {
-//        var html = ""
-//        if type1 == PolygonEnum.TOR {
-//            html = MyApplication.severeDashboardTor.value
-//        } else if type1 == PolygonEnum.TST {
-//            html = MyApplication.severeDashboardTst.value
-//        } else if type1 == PolygonEnum.FFW {
-//            html = MyApplication.severeDashboardFfw.value
-//        } else {
-//            html = ""
-//        }
-//        return html
-//    }
     
     static func parseJson(_ htmlF: String) -> [ObjectWarning] {
         var html = htmlF
@@ -110,19 +92,6 @@ final class ObjectWarning {
         data = data.replace("-", "")
         let points = data.split(" ")
         return ObjectWarning.getClosestRadarCompute(points)
-//        if points.count > 2 {
-//            let lat = points[1]
-//            let lon = "-" + points[0]
-//            let latLon = LatLon(lat, lon)
-//            let radarSites = UtilityLocation.getNearestRadarSites(latLon, 1, includeTdwr: false)
-//            if radarSites.count == 0 {
-//                return ""
-//            } else {
-//                return radarSites[0].name
-//            }
-//        } else {
-//            return ""
-//        }
     }
     
     static func getClosestRadarCompute(_ points: [String]) -> String {

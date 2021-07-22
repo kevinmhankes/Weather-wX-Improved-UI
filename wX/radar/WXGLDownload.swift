@@ -13,12 +13,6 @@ final class WXGLDownload {
     static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
     private static let nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
     
-//    static func getNidsTab(_ product: String, _ radarSite: String, _ fileName: String) {
-//        let url = getRadarFileUrl(radarSite, product, false)
-//        let inputStream = url.getDataFromUrl()
-//        UtilityIO.saveInputStream(inputStream, fileName)
-//    }
-    
     static func getNidsTab(_ product: String, _ radarSite: String, _ fileStorage: FileStorage) {
         let url = getRadarFileUrl(radarSite, product, false)
         let inputStream = url.getDataFromUrl()

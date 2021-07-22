@@ -22,8 +22,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     private var locationManager = CLLocationManager()
     private var lastFrameTimestamp: CFTimeInterval = 0.0
     private var mapIndex = 0
-//    private let scrollView = UIScrollView()
-//    private let stackView = UIStackView()
     private let toolbar = ObjectToolbar()
     private var doneButton = ToolbarIcon()
     private var timeButton = ToolbarIcon()
@@ -891,29 +889,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
 
-//    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-//        let dispatchTime = DispatchTime.now() + seconds
-//        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-//    }
-
-//    public enum DispatchLevel {
-//        case main, userInteractive, userInitiated, utility, background
-//        var dispatchQueue: DispatchQueue {
-//            switch self {
-//            case .main:
-//                return DispatchQueue.main
-//            case .userInteractive:
-//                return DispatchQueue.global(qos: .userInteractive)
-//            case .userInitiated:
-//                return DispatchQueue.global(qos: .userInitiated)
-//            case .utility:
-//                return DispatchQueue.global(qos: .utility)
-//            case .background:
-//                return DispatchQueue.global(qos: .background)
-//            }
-//        }
-//    }
-
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
@@ -930,17 +905,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     override var keyCommands: [UIKeyCommand]? {
          [
-            // UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doneClicked)),
-            // UIKeyCommand(input: "a", modifierFlags: .control, action: #selector(keyboardAnimate)),
-            // UIKeyCommand(input: "s", modifierFlags: .control, action: #selector(stopAnimate)),
-            // UIKeyCommand(input: "2", modifierFlags: .control, action: #selector(timeClicked)),
-            // UIKeyCommand(input: "4", modifierFlags: .control, action: #selector(goToQuadPane)),
-            // UIKeyCommand(input: "d", modifierFlags: .control, action: #selector(warningClicked)),
             UIKeyCommand(input: "4", modifierFlags: .numericPad, action: #selector(keyLeftArrow)),
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
             UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),
             UIKeyCommand(input: "2", modifierFlags: .numericPad, action: #selector(keyDownArrow)),
-            // UIKeyCommand(input: "/", modifierFlags: .control, action: #selector(showKeyboardShortcuts)),
 
             UIKeyCommand(input: "7", modifierFlags: .numericPad, action: #selector(keyLeftUpArrow)),
             UIKeyCommand(input: "9", modifierFlags: .numericPad, action: #selector(keyRightUpArrow)),
@@ -959,20 +927,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .alternate, action: #selector(keyZoomIn))
         ]
     }
-
-//    @objc func keyboardAnimate() {
-//        animateFrameCntClicked(10)
-//    }
-
-    /*@objc func goToQuadPane() {
-        wxMetalRenders.forEach { $0!.writePreferences() }
-        wxMetalRenders[0]?.writePreferencesForSingleToQuadPaneTransition()
-        Route.radarFromTimeButton(self, "4")
-    }*/
-
-    // @objc func showKeyboardShortcuts() {
-    // UtilityUI.showDialogue(self, Utility.showRadarShortCuts())
-    // }
 
     @objc func keyRightArrow() {
         UtilityRadarUI.moveByKey(wxMetalRenders, .right)

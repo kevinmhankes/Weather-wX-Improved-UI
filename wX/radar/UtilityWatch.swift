@@ -9,19 +9,6 @@ final class UtilityWatch {
     static func add(_ projectionNumbers: ProjectionNumbers, _ type: PolygonEnum) -> [Double] {
         var warningList = [Double]()
         let prefToken = ObjectPolygonWatch.polygonDataByType[type]?.latLonList.getValue() ?? ""
-//        var prefToken = ""
-//        switch type {
-//        case .SPCMCD:
-//            prefToken = MyApplication.mcdLatlon.value
-//        case .SPCWAT:
-//            prefToken = MyApplication.watchLatlon.value
-//        case .SPCWAT_TORNADO:
-//            prefToken = MyApplication.watchLatlonTor.value
-//        case .WPCMPD:
-//            prefToken = MyApplication.mpdLatlon.value
-//        default:
-//            break
-//        }
         if prefToken != "" {
             let polygons = prefToken.split(":")
             polygons.forEach { polygon in
@@ -42,20 +29,6 @@ final class UtilityWatch {
             numberList = ObjectPolygonWatch.polygonDataByType[type]!.numberList.getValue().split(":")
             watchLatLon = ObjectPolygonWatch.polygonDataByType[type]!.latLonList.getValue()
         }
-//        switch type {
-//        case .SPCWAT:
-//            numberList = MyApplication.watNoList.value.split(":")
-//            watchLatLon = MyApplication.watchLatlonCombined.value
-//        case .SPCMCD:
-//            numberList = MyApplication.mcdNoList.value.split(":")
-//            watchLatLon = MyApplication.mcdLatlon.value
-//        case .WPCMPD:
-//            numberList = MyApplication.mpdNoList.value.split(":")
-//            watchLatLon = MyApplication.mpdLatlon.value
-//        default:
-//            numberList = MyApplication.watNoList.value.split(":")
-//            watchLatLon = MyApplication.watchLatlon.value
-//        }
         let latLonsFromString = watchLatLon.split(":")
         var notFound = true
         var text = ""

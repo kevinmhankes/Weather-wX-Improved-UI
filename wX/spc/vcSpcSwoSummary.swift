@@ -45,11 +45,6 @@ final class vcSpcSwoSummary: UIwXViewController {
         }
     }
 
-//    private func download() {
-//        bitmaps = (1...3).map { UtilitySpcSwo.getImageUrls(String($0), getAllImages: false)[0] }
-//        bitmaps += UtilitySpcSwo.getImageUrls("48", getAllImages: true)
-//    }
-
     private func display() {
         refreshViews()
         _ = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 4)

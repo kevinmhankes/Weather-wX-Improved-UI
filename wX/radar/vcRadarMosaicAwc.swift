@@ -12,7 +12,6 @@ final class vcRadarMosaicAwc: UIwXViewController {
     private var productButton = ToolbarIcon()
     private var sectorButton = ToolbarIcon()
     private var animateButton = ToolbarIcon()
-//    private var index = 0
     private var product = "rad_rala"
     private let prefTokenSector = "AWCMOSAIC_SECTOR_LAST_USED"
     private let prefTokenProduct = "AWCMOSAIC_PRODUCT_LAST_USED"

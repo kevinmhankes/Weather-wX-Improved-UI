@@ -14,8 +14,4 @@ final class AnimationDrawable {
     func addFrame(_ layer: Bitmap) {
         images.append(layer.image)
     }
-
-//    func addFrame(_ layer: UIImage) {
-//        images.append(layer)
-//    }
 }

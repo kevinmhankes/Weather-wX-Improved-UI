@@ -14,7 +14,6 @@ final class WXMetalRender {
 
     private let radarType = "WXMETAL"
     private let device: MTLDevice
-//    private var time: CFTimeInterval = 0.0
     var projectionNumbers = ProjectionNumbers()
     private var ridStr = "DTX"
     private var radarProduct = "N0Q"
@@ -262,10 +261,6 @@ final class WXMetalRender {
         return matrix
     }
 
-//    func updateWithDelta(delta: CFTimeInterval) {
-//        time += delta
-//    }
-    
     func constructAlertPolygonsByType(_ type: PolygonTypeGeneric) {
         switch type {
         case .TOR:
@@ -562,34 +557,8 @@ final class WXMetalRender {
                 isAnimating = true
                 let index = to.Int(url)
                 fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[index]
-                // print(index)
-                // print(fileStorage.animationMemoryBuffer[index].capacity)
             }
         }
-//        if url == "" { // not animating
-//            [stiBuffers, tvsBuffers, hiBuffers].forEach {
-//                if $0.type.display {
-//                    constructLevel3TextProduct($0.typeEnum)
-//                }
-//            }
-//            if PolygonType.SPOTTER.display || PolygonType.SPOTTER_LABELS.display {
-//                constructSpotters()
-//            }
-//            if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-//                UtilityMetar.getStateMetarArrayForWXOGL(rid)
-//            }
-//            if PolygonType.WIND_BARB.display {
-//                constructWBLines()
-//            }
-//            if PolygonType.SWO.display {
-//                UtilitySwoD1.get()
-//                constructSwoLines()
-//            }
-//            if RadarPreferences.radarShowWpcFronts {
-//                UtilityWpcFronts.get()
-//                constructWpcFronts()
-//            }
-//        }
     }
     
     private func renderIt() {
@@ -630,19 +599,8 @@ final class WXMetalRender {
         radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString, fileStorage)
         radarBuffers.rd.decode()
         radarBuffers.initialize()
-        /*switch self.radarBuffers.rd.productCode {
-        case 37, 38:
-            self.totalBins = UtilityWXMetalPerfRaster.generate(self.radarBuffers)
-        case 153, 154, 30, 56, 78, 80, 181:
-            self.totalBins = UtilityWXMetalPerf.genRadials(self.radarBuffers)
-        case 0:
-            break
-        default:
-            self.totalBins = UtilityWXMetalPerf.decode8BitAndGenRadials(self.radarBuffers)
-        }*/
         totalBins = radarBuffers.generateRadials()
         radarBuffers.setToPositionZero()
-        // self.radarBuffers.count = (self.radarBuffers.metalBuffer.count / self.radarBuffers.floatCountPerVertex) * 2
         radarBuffers.setCount()
         radarBuffers.generateMtlBuffer(device)
     }
@@ -652,7 +610,6 @@ final class WXMetalRender {
     }
 
     func showTimeToolbar(_ additionalText: String, _ isAnimating: Bool) {
-        // let timeString = WXGLNexrad.getRadarInfo("").split(" ")
         let timeString = fileStorage.radarInfo.split(" ")
         if timeString.count > 1 {
             var replaceToken = "Mode:"

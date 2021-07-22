@@ -66,7 +66,6 @@ struct GeographyType {
     var count = 0
     var color = 0
     var display = true
-//    var string = ""
 
     init(_ string: String, _ relativeBuffer: MemoryBuffer, _ count: Int, _ color: Int, _ pref: Bool) {
         self.relativeBuffer = relativeBuffer

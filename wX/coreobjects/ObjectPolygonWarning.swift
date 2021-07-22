@@ -38,23 +38,15 @@ final class ObjectPolygonWarning {
     var color: Int { Utility.readPref(prefTokenColor, defaultColors[type]!) }
     
     var name: String { longName[type]!.replaceAll("%20", " ") }
-    
-    // var prefTokenEnabled: String { "RADAR_SHOW_" + typeName }
-    
+        
     var prefTokenColor: String { "RADAR_COLOR_" + typeName }
-    
-    // var prefTokenStorage: String { "SEVERE_DASHBOARD_" + typeName }
-    
+        
     var typeName: String { "\(type)".replaceAll("PolygonType.", "") }
-    
-    // var urlToken: String { longName[type]! }
-    
+        
     func getUrlToken() -> String {
         longName[type]!
     }
-    
-    // var url: String { baseUrl + urlToken }
-    
+        
     func getUrl() -> String {
         baseUrl + getUrlToken()
     }

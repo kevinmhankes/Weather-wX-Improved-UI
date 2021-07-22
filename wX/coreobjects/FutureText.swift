@@ -15,7 +15,6 @@ final class FutureText {
         self.arg1 = arg1
         self.updateFunc = updateFunc
         DispatchQueue.global(qos: .userInitiated).async {
-            // let s = self.downloadFunc()
             let s = UtilityDownload.getTextProduct(self.arg1)
             DispatchQueue.main.async { self.updateFunc(s) }
         }

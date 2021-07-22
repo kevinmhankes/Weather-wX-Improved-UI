@@ -30,13 +30,10 @@ final class GlobalVariables {
     static let nwsApiUrl = "https://api.weather.gov"
     static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
     static let degreeSymbol = "\u{00B0}"
-    
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"
     static let pre2Pattern = "<pre>(.*?)</pre>"
-    
     static let homescreenFavDefault = "TXT-CC2:TXT-HAZ:TXT-7DAY2:"
-    
     static let vtecPattern = "([A-Z0]{1}\\.[A-Z]{3}\\.[A-Z]{4}\\.[A-Z]{2}\\.[A-Z]\\.[0-9]"
         + "{4}\\.[0-9]{6}T[0-9]{4}Z\\-[0-9]{6}T[0-9]{4}Z)"
     static let warningLatLonPattern = "\"coordinates\":\\[\\[(.*?)\\]\\]\\}"
@@ -44,9 +41,6 @@ final class GlobalVariables {
     //
     // Legacy forecast support
     //
-//    static let utilUS_weather_summary_pattern = ".*?weather-summary=(.*?)/>.*?"
     static let utilUSPeriodNamePattern = ".*?period-name=(.*?)>.*?"
-//    static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
-//    static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
     static let xmlValuePattern = "<value>"
 }

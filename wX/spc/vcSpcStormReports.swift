@@ -121,9 +121,6 @@ final class vcSpcStormReports: UIwXViewController {
     private func changeFilter(_ index: Int) {
         filter = filterList[index].split(":")[0]
         filterButton.title = "Filter: " + filter
-//        stackView.removeViews()
-//        stackView.addArrangedSubview(objDatePicker.datePicker)
-//        stackView.addArrangedSubview(image.img)
         displayImage()
         displayText()
     }
@@ -214,8 +211,6 @@ final class vcSpcStormReports: UIwXViewController {
         coordinator.animate(
             alongsideTransition: nil,
             completion: { _ in
-                // self.refreshViews()
-                // self.displayPreContent()
                 self.displayImage()
                 self.displayText()
             }

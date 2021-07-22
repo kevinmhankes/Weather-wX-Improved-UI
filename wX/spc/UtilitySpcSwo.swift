@@ -8,10 +8,6 @@ import UIKit
 
 final class UtilitySpcSwo {
     
-//    static func getSwoStateUrl(_ state: String, _ day: String) -> String {
-//        GlobalVariables.nwsSPCwebsitePrefix + "/public/state/images/" + state + "_swody" + day + ".png"
-//    }
-
     static func getImageUrls(_ day: String, getAllImages: Bool = true) -> [Bitmap] {
         var urls = [String]()
         if day == "48" {

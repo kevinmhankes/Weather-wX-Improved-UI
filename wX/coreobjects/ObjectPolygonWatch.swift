@@ -19,7 +19,6 @@ final class ObjectPolygonWatch {
     var storage: DataStorage = DataStorage("")
     var latLonList: DataStorage  = DataStorage("")
     var numberList: DataStorage  = DataStorage("")
-    // var isEnabled = false
     let type: PolygonEnum
     var timer: DownloadTimer = DownloadTimer("")
 
@@ -90,34 +89,21 @@ final class ObjectPolygonWatch {
         }
     }
     
-//    func getData() -> String {
-//        storage.value
-//    }
+    func prefTokenLatLon() -> String {
+        getTypeName() + "LATLON"
+    }
 
-    // int color() { return Utility.readPrefInt(prefTokenColor(), defaultColors[type]);}
-     // String name() { return longName[type].replace("%20", " ");}
+    func prefTokenNumberList() -> String {
+        getTypeName() + "NOLIST"
+    }
 
-//     func prefTokenEnabled() -> String {
-//         "RADARSHOW" + getTypeName()
-//     }
+    func prefTokenStorage() -> String {
+        "SEVEREDASHBOARD" + getTypeName()
+    }
 
-     // String prefTokenColor() { return "RADARCOLOR" + typeName();}
-
-     func prefTokenLatLon() -> String {
-         getTypeName() + "LATLON"
-     }
-
-     func prefTokenNumberList() -> String {
-         getTypeName() + "NOLIST"
-     }
-
-     func prefTokenStorage() -> String {
-         "SEVEREDASHBOARD" + getTypeName()
-     }
-
-     func getTypeName() -> String {
-         String(describing: type).replace("PolygonType.", "")
-     }
+    func getTypeName() -> String {
+        String(describing: type).replace("PolygonType.", "")
+    }
 
     func getUrl() -> String {
         var downloadUrl = ""
@@ -132,11 +118,6 @@ final class ObjectPolygonWatch {
         }
         return downloadUrl
     }
-
-//    static func getLatLon(_ number: String) -> String {
-//        let html = UtilityIO.getHtml(GlobalVariables.nwsSPCwebsitePrefix + "/products/watch/wou" + number + ".html")
-//        return UtilityString.parseLastMatch(html, GlobalVariables.pre2Pattern)
-//    }
 
     static func load( ) {
         initAll()

@@ -7,7 +7,6 @@
 final class RadarPreferences {
 
     static var warnings = true
-//    static var warningsOrig = false
     static var locdotFollowsGps = false
     static var dualpaneshareposn = true
     static var spotters = false
@@ -51,7 +50,6 @@ final class RadarPreferences {
     static var showRadarWhenPan = true
     static let nexradContinuousMode = true
     static var useFileStorage = false
-    // static let useFileStorage = true
 
     static func initialize() {
         if UtilityUI.isTablet() {
