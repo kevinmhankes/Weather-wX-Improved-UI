@@ -14,7 +14,7 @@ final class vcAdhocLocation: UIwXViewController {
     private var objectSevenDay = ObjectSevenDay()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
-    private var stackViewHazards = ObjectStackView(.fill, .vertical)
+//    private var stackViewHazards = ObjectStackView(.fill, .vertical)
     var saveButton = ToolbarIcon()
     var adhocLocation = LatLon()
 
