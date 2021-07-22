@@ -12,13 +12,13 @@ final class to {
         Swift.String(i)
     }
     
-    static func String(_ d: Double) -> String {
-        Swift.String(d)
-    }
-    
-    static func String(_ f: Float) -> String {
-        Swift.String(f)
-    }
+//    static func String(_ d: Double) -> String {
+//        Swift.String(d)
+//    }
+//
+//    static func String(_ f: Float) -> String {
+//        Swift.String(f)
+//    }
     
     static func Int(_ s: String) -> Int {
         Swift.Int(s) ?? 0

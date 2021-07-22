@@ -32,20 +32,20 @@ final class UtilityTime {
         return "GMT: " + formatter.string(from: UTCDate)
     }
     
-    static func convertFromUTC(_ time: String) -> String {
-        // time comes in as follows 2017-02-17 06:53:00+00:00
-        var returnTime = ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        let date = dateFormatter.date(from: time.replace("+00:00", ""))
-        dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
-        dateFormatter.timeZone = TimeZone.current
-        if let goodDate = date {
-            returnTime = dateFormatter.string(from: goodDate)
-        }
-        return returnTime
-    }
+//    static func convertFromUTC(_ time: String) -> String {
+//        // time comes in as follows 2017-02-17 06:53:00+00:00
+//        var returnTime = ""
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+//        let date = dateFormatter.date(from: time.replace("+00:00", ""))
+//        dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+//        dateFormatter.timeZone = TimeZone.current
+//        if let goodDate = date {
+//            returnTime = dateFormatter.string(from: goodDate)
+//        }
+//        return returnTime
+//    }
     
     static func convertFromUTCForMetar(_ time: String) -> String {
         // time comes in as follows 2018.02.11 2353 UTC

@@ -46,13 +46,13 @@ final class ObjectImage {
         }
     }
 
-    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, viewOrder: Int) {
-        self.init()
-        img.image = UIImage(data: bitmap.data) ?? UIImage()
-        self.bitmap = bitmap
-        setImageAnchors(width)
-        stackView.insertArrangedSubview(img, at: viewOrder)
-    }
+//    convenience init(_ stackView: UIStackView, _ bitmap: Bitmap, viewOrder: Int) {
+//        self.init()
+//        img.image = UIImage(data: bitmap.data) ?? UIImage()
+//        self.bitmap = bitmap
+//        setImageAnchors(width)
+//        stackView.insertArrangedSubview(img, at: viewOrder)
+//    }
 
     convenience init(_ stackView: UIStackView) {
         self.init()
@@ -65,10 +65,10 @@ final class ObjectImage {
         setImageAnchors(width)
     }
     
-    func changeWidth() {
-        (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        setImageAnchors(width / CGFloat(widthDivider) - UIPreferences.stackviewCardSpacing)
-    }
+//    func changeWidth() {
+//        (width, _) = UtilityUI.getScreenBoundsCGFloat()
+//        setImageAnchors(width / CGFloat(widthDivider) - UIPreferences.stackviewCardSpacing)
+//    }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
         img.addGestureRecognizer(gesture)
