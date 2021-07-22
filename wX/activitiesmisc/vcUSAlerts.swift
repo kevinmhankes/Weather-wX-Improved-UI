@@ -67,10 +67,7 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     @objc func goToRadar(sender: GestureData) {
-//        let wfo = objectAlertSummary.wfos[sender.data]
-//        Route.radarNoSave(self, GlobalDictionaries.wfoToRadarSite[wfo] ?? "")
-        
-         Route.radarNoSave(self, objectAlertSummary.radarSites[sender.data])
+        Route.radarNoSave(self, objectAlertSummary.radarSites[sender.data])
     }
 
     @objc func shareClicked(sender: UIButton) {
