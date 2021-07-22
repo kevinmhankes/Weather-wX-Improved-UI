@@ -1,4 +1,4 @@
-* vcUsAlerts is using wfo to nexrad not polygon computation
+* vcUsAlerts - don't show lightning icon if no valid radar
 * scan for ??
 * [] -> removeAll()
 * FileStorage
