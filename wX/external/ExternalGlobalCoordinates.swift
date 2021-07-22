@@ -98,7 +98,7 @@ class ExternalGlobalCoordinates {
         mLatitude
     }
 
-    var latitude: Double { mLatitude }
+//    var latitude: Double { mLatitude }
 
     /**
      * Set latitude. The latitude value will be canonicalized (which might result
@@ -106,10 +106,10 @@ class ExternalGlobalCoordinates {
      *
      * @param latitude in degrees
      */
-    func setLatitude(latitude: Double) {
-        mLatitude = latitude
-        canonicalize()
-    }
+//    func setLatitude(latitude: Double) {
+//        mLatitude = latitude
+//        canonicalize()
+//    }
 
     /**
      * Get longitude.
@@ -120,7 +120,7 @@ class ExternalGlobalCoordinates {
         mLongitude
     }
 
-    var longitude: Double { mLongitude }
+//    var longitude: Double { mLongitude }
 
     /**
      * Set longitude. The longitude value will be canonicalized. Negative
@@ -128,10 +128,10 @@ class ExternalGlobalCoordinates {
      *
      * @param longitude in degrees
      */
-    func setLongitude(longitude: Double) {
-        mLongitude = longitude
-        canonicalize()
-    }
+//    func setLongitude(longitude: Double) {
+//        mLongitude = longitude
+//        canonicalize()
+//    }
 
     /**
      * Compare these coordinates to another set of coordiates. Western longitudes
@@ -141,21 +141,21 @@ class ExternalGlobalCoordinates {
      * @param other instance to compare to
      * @return -1, 0, or +1 as per Comparable contract
      */
-    func compareTo(other: ExternalGlobalCoordinates ) -> Int {
-        var retval: Int
-        if mLongitude < other.mLongitude {
-            retval = -1
-        } else if mLongitude > other.mLongitude {
-            retval = +1
-        } else if mLatitude < other.mLatitude {
-            retval = -1
-        } else if mLatitude > other.mLatitude {
-            retval = +1
-        } else {
-            retval = 0
-        }
-        return retval
-    }
+//    func compareTo(other: ExternalGlobalCoordinates ) -> Int {
+//        var retval: Int
+//        if mLongitude < other.mLongitude {
+//            retval = -1
+//        } else if mLongitude > other.mLongitude {
+//            retval = +1
+//        } else if mLatitude < other.mLatitude {
+//            retval = -1
+//        } else if mLatitude > other.mLatitude {
+//            retval = +1
+//        } else {
+//            retval = 0
+//        }
+//        return retval
+//    }
 
     /**
      * Get a hash code for these coordinates.
@@ -163,9 +163,9 @@ class ExternalGlobalCoordinates {
      * @return
      */
 
-    func hashCode() -> Int {
-        Int((mLongitude * mLatitude * 1000000 + 1021)) * 1000033
-    }
+//    func hashCode() -> Int {
+//        Int((mLongitude * mLatitude * 1000000 + 1021)) * 1000033
+//    }
 
     /**
      * Compare these coordinates to another object for equality.
@@ -174,11 +174,11 @@ class ExternalGlobalCoordinates {
      * @return
      */
 
-    func equals(obj: AnyObject) -> Bool {
-        if let other: ExternalGlobalCoordinates =  obj as? ExternalGlobalCoordinates {
-            return (mLongitude == other.mLongitude) && (mLatitude == other.mLatitude)
-        } else {
-            return false
-        }
-    }
+//    func equals(obj: AnyObject) -> Bool {
+//        if let other: ExternalGlobalCoordinates =  obj as? ExternalGlobalCoordinates {
+//            return (mLongitude == other.mLongitude) && (mLatitude == other.mLatitude)
+//        } else {
+//            return false
+//        }
+//    }
 }
