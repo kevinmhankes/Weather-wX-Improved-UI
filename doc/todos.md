@@ -9,8 +9,6 @@
 * radar colors are in RadarGeom?
 * nexrad state
 * objectPolygonWaring download - add a timerReset if failure on http and a 2nd try
-* wxRender - add more threads for metar, spc swo, wpc fronts
-* [FIX] alerts no way back to image after set filter
 * [REF] overall logic/consistency of zoom in nexrad with regards to triangles/circles
 * [FIX] dual pane does not show radar time for both panes
 * [ADD] spc storm reports - landscape optimization
