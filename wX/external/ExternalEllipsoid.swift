@@ -15,22 +15,22 @@ final class ExternalEllipsoid {
     private let semiMajorAxis: Double
     private let semiMinorAxis: Double
     private let flattening: Double
-    private let inverseFlattening: Double
+    // private let inverseFlattening: Double
 
     init(_ semiMajor: Double, _ semiMinor: Double, _ flattening: Double, _ inverseFlattening: Double) {
         semiMajorAxis = semiMajor
         semiMinorAxis = semiMinor
         self.flattening = flattening
-        self.inverseFlattening = inverseFlattening
+//        self.inverseFlattening = inverseFlattening
     }
 
     static let WGS84 = fromAAndInverseF(6378137.0, 298.257223563)
-    static let GRS80 = fromAAndInverseF(6378137.0, 298.257222101)
-    static let GRS67 = fromAAndInverseF(6378160.0, 298.25)
-    static let ANS = fromAAndInverseF(6378160.0, 298.25)
-    static let WGS72 = fromAAndInverseF(6378135.0, 298.26)
-    static let Clarke1858 = fromAAndInverseF(6378293.645, 294.26)
-    static let Clarke1880 = fromAAndInverseF(6378249.145, 293.465)
+//    static let GRS80 = fromAAndInverseF(6378137.0, 298.257222101)
+//    static let GRS67 = fromAAndInverseF(6378160.0, 298.25)
+//    static let ANS = fromAAndInverseF(6378160.0, 298.25)
+//    static let WGS72 = fromAAndInverseF(6378135.0, 298.26)
+//    static let Clarke1858 = fromAAndInverseF(6378293.645, 294.26)
+//    static let Clarke1880 = fromAAndInverseF(6378249.145, 293.465)
     static let Sphere = fromAAndF(6371000, 0.0)
 
     static func fromAAndInverseF(_ semiMajor: Double, _ inverseFlattening: Double) -> ExternalEllipsoid {
@@ -57,7 +57,7 @@ final class ExternalEllipsoid {
         flattening
     }
 
-    func getInverseFlattening() -> Double {
-        inverseFlattening
-    }
+//    func getInverseFlattening() -> Double {
+//        inverseFlattening
+//    }
 }
