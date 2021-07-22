@@ -106,7 +106,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func share(sender: UIButton) {
-        UtilityShare.image(self, sender, [bitmap] + severeNotices[PolygonEnum.SPCWAT]!.bitmaps + severeNotices[PolygonEnum.SPCMCD]!.bitmaps + severeNotices[PolygonEnum.WPCMPD]!.bitmaps)
+        UtilityShare.image(self, sender, [bitmap, usAlertsBitmap] + severeNotices[PolygonEnum.SPCWAT]!.bitmaps + severeNotices[PolygonEnum.SPCMCD]!.bitmaps + severeNotices[PolygonEnum.WPCMPD]!.bitmaps)
     }
     
     private func display() {
