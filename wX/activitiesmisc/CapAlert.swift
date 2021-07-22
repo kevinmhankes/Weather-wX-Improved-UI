@@ -78,7 +78,10 @@ final class CapAlert {
         points = polygon.split(" ")
         if points.count > 1 {
             points = points[0].split(",")
-            points += [""]
+            if points.count > 1 {
+                // reverse so lon is first
+                points = [points[1], points[0], ""]
+            }
         }
     }
 
