@@ -47,7 +47,7 @@ final class UtilityUS {
 
     static func get7DayExt(_ rawData: [String]) -> String {
         let forecast = UtilityString.parseXml(rawData[11], "text")
-        var timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUS_period_name_pattern)
+        var timeP12n13List = UtilityString.parseColumn(rawData[15], GlobalVariables.utilUSPeriodNamePattern)
         timeP12n13List.insert("", at: 0)
         var forecastString = ""
         for j in 1..<forecast.count {

@@ -22,12 +22,8 @@ final class GlobalVariables {
     static let nwsAWCwebsitePrefix = "https://www.aviationweather.gov"
     static let nwsGraphicalWebsitePrefix = "https://graphical.weather.gov"
     static let nwsCPCNcepWebsitePrefix = "https://www.cpc.ncep.noaa.gov"
-    static let nwsGoesWebsitePrefix = "https://www.goes.noaa.gov"
     static let nwsOpcWebsitePrefix = "https://ocean.weather.gov"
     static let nwsNhcWebsitePrefix = "https://www.nhc.noaa.gov"
-    static let nwsRadarWebsitePrefix = "https://radar.weather.gov"
-    static let nwsMagNcepWebsitePrefix = "https://mag.ncep.noaa.gov"
-    static let sunMoonDataUrl = "https://api.usno.navy.mil"
     static let nwsSwpcWebSitePrefix = "https://services.swpc.noaa.gov"
     static let canadaEcSitePrefix = "https://weather.gc.ca"
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
@@ -48,9 +44,9 @@ final class GlobalVariables {
     //
     // Legacy forecast support
     //
-    static let utilUS_weather_summary_pattern = ".*?weather-summary=(.*?)/>.*?"
-    static let utilUS_period_name_pattern = ".*?period-name=(.*?)>.*?"
-    static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
-    static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
-    static let xml_value_pattern = "<value>"
+//    static let utilUS_weather_summary_pattern = ".*?weather-summary=(.*?)/>.*?"
+    static let utilUSPeriodNamePattern = ".*?period-name=(.*?)>.*?"
+//    static let utilUS_headline_pattern = ".*?headline=(.*?)>.*?"
+//    static let utilUS_hazardtexturl_pattern = ".*?<hazardTextURL>(.*?)</hazardTextURL>.*?"
+    static let xmlValuePattern = "<value>"
 }

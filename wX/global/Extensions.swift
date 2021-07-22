@@ -94,9 +94,9 @@ extension String {
         }
     }
     
-    func firstToken() -> String {
-        self.firstToken(":")
-    }
+//    func firstToken() -> String {
+//        self.firstToken(":")
+//    }
     
     func truncate(_ length: Int) -> String {
         if count > length {
@@ -147,30 +147,30 @@ extension String {
         UtilityString.substring(self, start, end)
     }
     
-    func delete(_ str: String) -> String {
-        self.components(separatedBy: str).joined(separator: "")
-    }
+//    func delete(_ str: String) -> String {
+//        self.components(separatedBy: str).joined(separator: "")
+//    }
     
-    func regex (pattern: String) -> [String] {
-        do {
-            let regex = try NSRegularExpression(pattern: pattern, options: .dotMatchesLineSeparators)
-            let nsString = self as NSString
-            let all = NSRange(location: 0, length: nsString.length)
-            var matches = [String]()
-            regex.enumerateMatches(
-                in: self,
-                options: NSRegularExpression.MatchingOptions(rawValue: 0),
-                range: all) { (result: NSTextCheckingResult?, _, _) in
-                    if let r = result {
-                        let result = nsString.substring(with: r.range) as String
-                        matches.append(result)
-                    }
-                }
-            return matches
-        } catch {
-            return [String]()
-        }
-    }
+//    func regex (pattern: String) -> [String] {
+//        do {
+//            let regex = try NSRegularExpression(pattern: pattern, options: .dotMatchesLineSeparators)
+//            let nsString = self as NSString
+//            let all = NSRange(location: 0, length: nsString.length)
+//            var matches = [String]()
+//            regex.enumerateMatches(
+//                in: self,
+//                options: NSRegularExpression.MatchingOptions(rawValue: 0),
+//                range: all) { (result: NSTextCheckingResult?, _, _) in
+//                    if let r = result {
+//                        let result = nsString.substring(with: r.range) as String
+//                        matches.append(result)
+//                    }
+//                }
+//            return matches
+//        } catch {
+//            return [String]()
+//        }
+//    }
 }
 
 extension Double {
@@ -220,15 +220,15 @@ extension Int {
     }
 }
 
-extension UIImage {
-    func getWidth() -> CGFloat {
-        size.width
-    }
-    
-    func getHeight() -> CGFloat {
-        size.height
-    }
-}
+//extension UIImage {
+//    func getWidth() -> CGFloat {
+//        size.width
+//    }
+//
+//    func getHeight() -> CGFloat {
+//        size.height
+//    }
+//}
 
 extension UIColor {
     var coreImageColor: CoreImage.CIColor { CoreImage.CIColor(color: self) }
@@ -281,9 +281,9 @@ extension UIAlertAction {
         self.init(title: title, style: .default, handler: handler)
     }
     
-    convenience init(_ title: Int, _ handler: ((UIAlertAction) -> Void)? = nil) {
-        self.init(title: String(title), style: .default, handler: handler)
-    }
+//    convenience init(_ title: Int, _ handler: ((UIAlertAction) -> Void)? = nil) {
+//        self.init(title: String(title), style: .default, handler: handler)
+//    }
 }
 
 // for SunCalc
@@ -302,17 +302,17 @@ extension Date {
     
     var daysSince2000: Double { julianDays - Date.j2000 }
     
-    func hoursLater(_ h: Double) -> Date {
-        addingTimeInterval(h * 3600.0)
-    }
+//    func hoursLater(_ h: Double) -> Date {
+//        addingTimeInterval(h * 3600.0)
+//    }
     
     // Beginning time of a day, aka. 0:00 or midnight in GMT.
-    func beginning() -> Date {
-        let calender = Calendar.init(identifier: .gregorian)
-        var comp = calender.dateComponents(in: TimeZone(identifier: "GMT")!, from: self)
-        comp.hour = 0
-        comp.minute = 0
-        comp.second = 0
-        return calender.date(from: comp)!
-    }
+//    func beginning() -> Date {
+//        let calender = Calendar.init(identifier: .gregorian)
+//        var comp = calender.dateComponents(in: TimeZone(identifier: "GMT")!, from: self)
+//        comp.hour = 0
+//        comp.minute = 0
+//        comp.second = 0
+//        return calender.date(from: comp)!
+//    }
 }

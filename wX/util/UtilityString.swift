@@ -210,6 +210,6 @@ final class UtilityString {
         var payload = payloadF
         payload = UtilityString.replaceAllRegexp(payload, "<name>.*?</name>", "")
         payload = UtilityString.replaceAllRegexp(payload, "</value>", "")
-        return payload.split(GlobalVariables.xml_value_pattern)
+        return payload.split(GlobalVariables.xmlValuePattern)
     }
 }
