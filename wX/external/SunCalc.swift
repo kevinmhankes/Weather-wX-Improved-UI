@@ -2,8 +2,8 @@
 
 import Foundation
 
-typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
-typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
+//typealias AzimuthCoordinate = (azimuth: Double, altitude: Double)
+//typealias EclipticCoordinate = (rightAscension: Double, declination: Double)
 
 enum SolarEvent {
     case sunrise
@@ -49,30 +49,30 @@ final class SunCalc {
 
     private static let e = 23.4397 * Double.radPerDegree
 
-    private func rightAscension(l: Double, b: Double) -> Double {
-        atan2(sin(l) * cos(SunCalc.e) - tan(b) * sin(SunCalc.e), cos(l))
-    }
+//    private func rightAscension(l: Double, b: Double) -> Double {
+//        atan2(sin(l) * cos(SunCalc.e) - tan(b) * sin(SunCalc.e), cos(l))
+//    }
 
     private func declination(l: Double, b: Double) -> Double {
         asin(sin(b) * cos(SunCalc.e) + cos(b) * sin(SunCalc.e) * sin(l))
     }
 
-    private func azimuth(h: Double, phi: Double, dec: Double) -> Double {
-        atan2(sin(h), cos(h) * sin(phi) - tan(dec) * cos(phi))
-    }
+//    private func azimuth(h: Double, phi: Double, dec: Double) -> Double {
+//        atan2(sin(h), cos(h) * sin(phi) - tan(dec) * cos(phi))
+//    }
 
-    private func altitude(h: Double, phi: Double, dec: Double) -> Double {
-        asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(h))
-    }
+//    private func altitude(h: Double, phi: Double, dec: Double) -> Double {
+//        asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(h))
+//    }
+//
+//    private func siderealTime(d: Double, lw: Double) -> Double {
+//        Double.radPerDegree * (280.16 + 360.9856235 * d) - lw
+//    }
 
-    private func siderealTime(d: Double, lw: Double) -> Double {
-        Double.radPerDegree * (280.16 + 360.9856235 * d) - lw
-    }
-
-    private func astroRefraction(_ aH: Double) -> Double {
-        let h = aH < 0 ? 0 : aH
-        return 0.0002967 / tan(h + 0.00312536 / (h + 0.08901179))
-    }
+//    private func astroRefraction(_ aH: Double) -> Double {
+//        let h = aH < 0 ? 0 : aH
+//        return 0.0002967 / tan(h + 0.00312536 / (h + 0.08901179))
+//    }
 
     private func solarMeanAnomaly(_ d: Double) -> Double {
         Double.radPerDegree * (357.5291 + 0.98560028 * d)
@@ -84,11 +84,11 @@ final class SunCalc {
         return m + c + p + Double.pi
     }
 
-    private func sunCoordinates(_ d: Double) -> EclipticCoordinate {
-        let m = solarMeanAnomaly(d)
-        let l = eclipticLongitude(m)
-        return (rightAscension(l: l, b: 0.0), declination(l: l, b: 0.0))
-    }
+//    private func sunCoordinates(_ d: Double) -> EclipticCoordinate {
+//        let m = solarMeanAnomaly(d)
+//        let l = eclipticLongitude(m)
+//        return (rightAscension(l: l, b: 0.0), declination(l: l, b: 0.0))
+//    }
 
     private func julianCycle(d: Double, lw: Double) -> Double {
         let v = (d - Date.j0) - (lw / (2.0 * Double.pi))
@@ -128,14 +128,14 @@ final class SunCalc {
         return solarTransitJ(ds: a, m: m, l: l)
     }
 
-    func sunPosition(date: Date, location: Location) -> AzimuthCoordinate {
-        let lw = Double.radPerDegree * location.longitude * -1.0
-        let phi = Double.radPerDegree * location.latitude
-        let d = date.daysSince2000
-        let c = sunCoordinates(d)
-        let h = siderealTime(d: d, lw: lw) - c.rightAscension
-        return (azimuth(h: h, phi: phi, dec: c.declination), altitude(h: h, phi: phi, dec: c.declination))
-    }
+//    func sunPosition(date: Date, location: Location) -> AzimuthCoordinate {
+//        let lw = Double.radPerDegree * location.longitude * -1.0
+//        let phi = Double.radPerDegree * location.latitude
+//        let d = date.daysSince2000
+//        let c = sunCoordinates(d)
+//        let h = siderealTime(d: d, lw: lw) - c.rightAscension
+//        return (azimuth(h: h, phi: phi, dec: c.declination), altitude(h: h, phi: phi, dec: c.declination))
+//    }
 
     func time(ofDate date: Date, forSolarEvent event: SolarEvent, atLocation location: Location) throws -> Date {
         let lw = Double.radPerDegree * location.longitude * -1.0
