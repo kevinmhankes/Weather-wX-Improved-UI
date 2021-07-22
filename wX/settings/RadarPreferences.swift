@@ -7,7 +7,7 @@
 final class RadarPreferences {
 
     static var warnings = true
-    static var warningsOrig = false
+//    static var warningsOrig = false
     static var locdotFollowsGps = false
     static var dualpaneshareposn = true
     static var spotters = false

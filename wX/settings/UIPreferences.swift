@@ -17,7 +17,7 @@ final class UIPreferences {
     static var dualpaneRadarIcon = false
     static var unitsM = false
     // This is no longer configurable by the user
-    static let unitsF = true
+//    static let unitsF = true
     static var nwsIconTextColor = Color.rgb(38, 97, 139)
     static var nwsIconBottomColor = Color.rgb(255, 255, 255)
     static var textviewFontSize: CGFloat = 16.0
