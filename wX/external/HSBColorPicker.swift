@@ -75,23 +75,23 @@ final class HSBColorPicker: UIView {
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
     }
 
-    func getPointForColor(color: UIColor) -> CGPoint {
-        var hue: CGFloat = 0.0
-        var saturation: CGFloat = 0.0
-        var brightness: CGFloat = 0.0
-        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
-        let yPos: CGFloat
-        let halfHeight = (bounds.height / 2)
-        if brightness >= 0.99 {
-            let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
-            yPos = CGFloat(percentageY) * halfHeight
-        } else {
-            // use brightness to get Y
-            yPos = halfHeight + halfHeight * (1.0 - brightness)
-        }
-        let xPos = hue * bounds.width
-        return CGPoint(x: xPos, y: yPos)
-    }
+//    func getPointForColor(color: UIColor) -> CGPoint {
+//        var hue: CGFloat = 0.0
+//        var saturation: CGFloat = 0.0
+//        var brightness: CGFloat = 0.0
+//        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
+//        let yPos: CGFloat
+//        let halfHeight = (bounds.height / 2)
+//        if brightness >= 0.99 {
+//            let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
+//            yPos = CGFloat(percentageY) * halfHeight
+//        } else {
+//            // use brightness to get Y
+//            yPos = halfHeight + halfHeight * (1.0 - brightness)
+//        }
+//        let xPos = hue * bounds.width
+//        return CGPoint(x: xPos, y: yPos)
+//    }
 
     @objc func touchedColor(gestureRecognizer: UILongPressGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
