@@ -28,6 +28,10 @@ final class ObjectStackView {
         uiStackView.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
     
+    func constrain(_ scrollView: UIScrollView) {
+        uiStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+    }
+    
     func constrain(_ stackView: UIStackView) {
         uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
@@ -55,6 +59,11 @@ final class ObjectStackView {
     func removeAllChildren() {
         get().removeViews()
         get().removeFromSuperview()
+    }
+    
+    var color: UIColor {
+        get { uiStackView.backgroundColor! }
+        set { uiStackView.backgroundColor = newValue }
     }
 
     var view: UIStackView { uiStackView }
