@@ -37,7 +37,7 @@ final class ObjectCardAlertSummaryItem {
         let tvStart = Text("Start: " + startTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvEnd = Text("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvArea = TextSmallGray(text: alert.area, isUserInteractionEnabled: false)
-        tvName.tv.isAccessibilityElement = false
+        tvName.isAccessibilityElement = false
         tvTitle.isAccessibilityElement = false
         tvStart.isAccessibilityElement = false
         tvEnd.isAccessibilityElement = false
@@ -63,6 +63,6 @@ final class ObjectCardAlertSummaryItem {
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)
-        verticalTextContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        verticalTextContainer.constrain(stackView)
     }
 }

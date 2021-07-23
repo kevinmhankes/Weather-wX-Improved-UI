@@ -8,6 +8,7 @@ import UIKit
 
 final class TextLarge {
 
+    // private let tv = UILabelInset()
     let tv = UILabelInset()
 
     init(
@@ -34,6 +35,11 @@ final class TextLarge {
     var text: String {
         get { tv.text! }
         set { tv.text = newValue }
+    }
+    
+    var font: UIFont {
+        get { tv.font! }
+        set { tv.font = newValue }
     }
     
     var isAccessibilityElement: Bool {

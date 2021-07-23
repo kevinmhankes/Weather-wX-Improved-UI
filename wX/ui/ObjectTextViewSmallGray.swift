@@ -9,7 +9,6 @@ import UIKit
 final class TextSmallGray {
 
     private let tv = UITextView()
-    // let tv = UITextView()
 
     init(text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false

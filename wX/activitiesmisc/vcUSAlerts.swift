@@ -54,6 +54,7 @@ final class vcUSAlerts: UIwXViewController {
     }
 
     private func display() {
+        boxText.removeChildren()
         if !filterShown {
             filterButton.title = "Tornado/ThunderStorm/FFW"
             objectAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)

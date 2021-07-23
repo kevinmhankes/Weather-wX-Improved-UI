@@ -28,6 +28,10 @@ final class ObjectStackView {
         uiStackView.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
     }
     
+    func constrain(_ stackView: UIStackView) {
+        uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    }
+    
     func addWidget(_ w: UIView) {
         view.addArrangedSubview(w)
     }
