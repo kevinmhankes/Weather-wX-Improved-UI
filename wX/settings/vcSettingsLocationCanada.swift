@@ -25,15 +25,15 @@ final class vcSettingsLocationCanada: UIwXViewController {
 
     func displayProvinces() {
         UtilityCanada.provinces.enumerated().forEach { index, province in
-            let objectTextView = Text(
+            let text = Text(
                 stackView,
                 province,
                 FontSize.extraLarge.size,
                 GestureData(index, self, #selector(goToProvinces))
             )
-            objectTextView.isSelectable = false
-            objectTextView.constrain(scrollView)
-            objectTextViews.append(objectTextView)
+            text.isSelectable = false
+            text.constrain(scrollView)
+            objectTextViews.append(text)
         }
     }
 
@@ -69,7 +69,9 @@ final class vcSettingsLocationCanada: UIwXViewController {
         let html = UtilityCanada.getProvinceHtml(provSelected)
         let idTmpAl = html.parseColumn("<li><a href=\"/city/pages/" + provSelected.lowercased() + "-(.*?)_metric_e.html\">.*?</a></li>")
         let idCityAl = html.parseColumn("<li><a href=\"/city/pages/" + provSelected.lowercased() + "-.*?_metric_e.html\">(.*?)</a></li>")
-        idTmpAl.forEach { listIds.append($0) }
+        idTmpAl.forEach {
+            listIds.append($0)
+        }
         listCity = Array(idCityAl[0 ..< idCityAl.count / 2])
     }
 
@@ -77,15 +79,15 @@ final class vcSettingsLocationCanada: UIwXViewController {
         stackView.removeViews()
         cityDisplay = true
         listCity.enumerated().forEach { index, city in
-            let objectTextView = Text(
+            let text = Text(
                 stackView,
                 city,
                 FontSize.extraLarge.size,
                 GestureData(index, self, #selector(goToProvinces))
             )
-            objectTextView.isSelectable = false
-            objectTextView.constrain(scrollView)
-            objectTextViews.append(objectTextView)
+            text.isSelectable = false
+            text.constrain(scrollView)
+            objectTextViews.append(text)
         }
     }
 }
