@@ -391,7 +391,7 @@ final class vcTabLocation: vcTabParent {
             objectTextView.font = FontSize.hourly.size
         }
         objectTextView.addGestureRecognizer(GestureData(product, self, #selector(textTap(sender:))))
-        objectTextView.tv.accessibilityLabel = html
+        objectTextView.accessibilityLabel = html
         objectTextView.isSelectable = false
     }
 

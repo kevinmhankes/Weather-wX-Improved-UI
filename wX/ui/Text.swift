@@ -8,8 +8,7 @@ import UIKit
 
 final class Text {
 
-    // private let tv = UITextView()
-    let tv = UITextView()
+    private let tv = UITextView()
     var textColor = wXColor()
 
     init() {
@@ -101,6 +100,11 @@ final class Text {
     var isAccessibilityElement: Bool {
         get { tv.isAccessibilityElement }
         set { tv.isAccessibilityElement = newValue }
+    }
+    
+    var accessibilityLabel: String {
+        get { tv.accessibilityLabel ?? "" }
+        set { tv.accessibilityLabel = newValue }
     }
     
     var isSelectable: Bool {

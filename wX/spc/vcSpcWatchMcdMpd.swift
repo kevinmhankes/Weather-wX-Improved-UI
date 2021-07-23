@@ -130,7 +130,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
             objectTextView.isAccessibilityElement = true
             objectTextView.constrain(scrollView)
             views += [objectTextView.view]
-            objectTextView.tv.accessibilityLabel = message
+            objectTextView.accessibilityLabel = message
         }
         view.bringSubviewToFront(toolbar)
         scrollView.accessibilityElements = views
