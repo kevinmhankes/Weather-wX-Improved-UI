@@ -20,4 +20,8 @@ final class StackView: UIStackView {
         backgroundLayer.path = UIBezierPath(rect: bounds).cgPath
         backgroundLayer.fillColor = backgroundColor?.cgColor
     }
+    
+    func addWidget(_ view: UIView) {
+        addArrangedSubview(view)
+    }
 }
