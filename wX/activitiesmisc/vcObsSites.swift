@@ -80,7 +80,7 @@ final class vcObsSites: UIwXViewController {
                 state,
                 GestureData(index, self, #selector(goToState))
             )
-            objectTextView.tv.isSelectable = false
+            objectTextView.isSelectable = false
             objectTextView.constrain(scrollView)
         }
     }
