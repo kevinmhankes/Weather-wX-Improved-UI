@@ -37,8 +37,8 @@ final class ObjectImageAndText {
                 GestureData(0, uiv, #selector(imageClicked))
             )
         }
-        objectImage.img.accessibilityLabel = html
-        objectImage.img.isAccessibilityElement = true
+        objectImage.accessibilityLabel = html
+        objectImage.isAccessibilityElement = true
         views.append(objectImage.img)
         if tabletInLandscape {
             uiv.objectTextView = Text(uiv.stackView, html, widthDivider: 2)

@@ -72,7 +72,7 @@ final class ObjectImageSummary {
             objectImages.append(ObjectImage(
                 stackView.get(),
                 image,
-                GestureData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                GestureData(imageIndex, uiv, #selector(imageClicked)),
                 widthDivider: imagesPerRow
             ))
             if !image.isValidForNhc {
