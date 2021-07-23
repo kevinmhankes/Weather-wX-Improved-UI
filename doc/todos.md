@@ -1,3 +1,4 @@
+* Text.swift - make tv private
 * vcUsAlerts - don't show lightning icon if no valid radar
 * scan for ??
 * [] -> removeAll()
