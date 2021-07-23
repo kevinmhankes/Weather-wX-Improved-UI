@@ -16,7 +16,7 @@ final class vcUSAlerts: UIwXViewController {
     private var filterGesture: UITapGestureRecognizer?
     private var filterShown = false
     private var boxImage = ObjectStackView(.fill, .vertical)
-    private var boxText = ObjectStackView(.fill, .vertical)
+    private var boxText = ObjectStackView(.fill, .vertical, spacing: 1.0)
     private var image = ObjectImage()
     private var bitmap = Bitmap()
 

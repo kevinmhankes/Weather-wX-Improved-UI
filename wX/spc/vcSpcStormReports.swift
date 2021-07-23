@@ -22,7 +22,7 @@ final class vcSpcStormReports: UIwXViewController {
     private var filterButton = ToolbarIcon()
     var spcStormReportsDay = ""
     private var boxImage = ObjectStackView(.fill, .vertical)
-    private var boxText = ObjectStackView(.fill, .vertical)
+    private var boxText = ObjectStackView(.fill, .vertical, spacing: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()

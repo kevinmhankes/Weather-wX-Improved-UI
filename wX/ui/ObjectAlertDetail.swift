@@ -14,9 +14,8 @@ final class ObjectAlertDetail {
     init(_ uiStackView: UIStackView) {
         self.uiStackView = uiStackView
         (0...6).forEach { _ in
-            let objectTextView = Text(uiStackView, "")
-            objectTextView.isAccessibilityElement = false
-            textViews.append(objectTextView)
+            textViews.append(Text(uiStackView, ""))
+            textViews.last!.isAccessibilityElement = false
         }
         textViews[0].font = FontSize.extraLarge.size
         textViews[4].color = ColorCompatibility.highlightText
