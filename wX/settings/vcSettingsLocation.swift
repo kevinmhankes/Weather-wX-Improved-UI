@@ -110,7 +110,7 @@ final class vcSettingsLocation: UIwXViewController {
     }
 
     func display() {
-        locationCards = []
+        locationCards.removeAll()
         stackView.removeViews()
         (0..<Location.numberOfLocations).forEach { index in
             let name = Location.getName(index)
