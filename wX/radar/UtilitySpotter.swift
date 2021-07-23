@@ -12,7 +12,6 @@ final class UtilitySpotter {
     static var lat = [Double]()
     static var lon = [Double]()
 
-    // TODO match kotlin getter "reports", use let
     static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
             spotterList = []
@@ -26,7 +25,7 @@ final class UtilitySpotter {
             html.split(GlobalVariables.newline).forEach { line in
                 let items = line.split(";;")
                 if items.count > 15 {
-                    spotterList.append(Spotter(items[14], items[15], LatLon(items[4], items[5]), items[3], items[0]))
+                    spotterList.append(Spotter(items[14], items[15], LatLon(items[4], items[5]), items[3]))
                     latitudeList.append(items[4])
                     longitudeList.append(items[5])
                 }

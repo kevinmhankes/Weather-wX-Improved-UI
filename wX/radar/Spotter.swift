@@ -9,20 +9,17 @@ final class Spotter {
     let firstName: String
     let lastName: String
     let reportedAt: String
-    private let uniq: String
     let location: LatLon
 
     init(
         _ firstName: String,
         _ lastName: String,
         _ location: LatLon,
-        _ reportedAt: String,
-        _ uniq: String
+        _ reportedAt: String
     ) {
         self.firstName = firstName
         self.lastName = lastName.replaceAll("^ ", "").capitalized
         self.location = location
         self.reportedAt = reportedAt
-        self.uniq = uniq
     }
 }
