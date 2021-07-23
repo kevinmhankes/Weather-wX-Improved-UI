@@ -34,11 +34,11 @@ final class ObjectCardDashAlertItem {
             isUserInteractionEnabled: false, isZeroSpacing: true
         )
         let tvArea = TextSmallGray(text: warning.area, isUserInteractionEnabled: false)
-        tvName.tv.isAccessibilityElement = false
+        tvName.isAccessibilityElement = false
         tvTitle.isAccessibilityElement = false
         tvStart.isAccessibilityElement = false
         tvEnd.isAccessibilityElement = false
-        tvArea.tv.isAccessibilityElement = false
+        tvArea.isAccessibilityElement = false
         // icons
         let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = Text("Radar")

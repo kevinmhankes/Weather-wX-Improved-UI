@@ -29,6 +29,11 @@ final class TextSmallGray {
         get { tv.text }
         set { tv.text = newValue }
     }
+    
+    var isAccessibilityElement: Bool {
+        get { tv.isAccessibilityElement }
+        set { tv.isAccessibilityElement = newValue }
+    }
 
     var view: UITextView { tv }
 }

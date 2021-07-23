@@ -35,6 +35,11 @@ final class TextLarge {
         get { tv.text! }
         set { tv.text = newValue }
     }
+    
+    var isAccessibilityElement: Bool {
+        get { tv.isAccessibilityElement }
+        set { tv.isAccessibilityElement = newValue }
+    }
 
     var view: UILabelInset { tv }
 }
