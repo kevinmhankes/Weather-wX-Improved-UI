@@ -34,8 +34,8 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
 
     func getContentImage() {
-        let imgUrl = UtilityWpcRainfallOutlook.urls[day]
-        _ = FutureVoid({ self.bitmap = Bitmap(imgUrl) }, display)
+        let url = UtilityWpcRainfallOutlook.urls[day]
+        _ = FutureVoid({ self.bitmap = Bitmap(url) }, display)
     }
 
     func getContentText() {

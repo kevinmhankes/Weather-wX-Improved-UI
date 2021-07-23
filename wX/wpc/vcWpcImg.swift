@@ -38,12 +38,12 @@ final class vcWpcImg: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityWpcImages.labels[index]
-        var getUrl = UtilityWpcImages.urls[self.index]
-        if getUrl.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
-            getUrl += String(timePeriod) + "_conus.png"
+        var url = UtilityWpcImages.urls[self.index]
+        if url.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
+            url += String(timePeriod) + "_conus.png"
         }
         Utility.writePref("WPCIMG_PARAM_LAST_USED", index)
-        _ = FutureBytes(getUrl, image.setBitmap)
+        _ = FutureBytes(url, image.setBitmap)
     }
 
     func getContentFromHomeScreen() {

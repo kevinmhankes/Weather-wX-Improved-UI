@@ -38,8 +38,8 @@ final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
 
     func getContentImage() {
-        let imgUrl = UtilitySpcFireOutlook.urls[dayIndex]
-        _ = FutureVoid({ self.bitmap = Bitmap(imgUrl) }, display)
+        let url = UtilitySpcFireOutlook.urls[dayIndex]
+        _ = FutureVoid({ self.bitmap = Bitmap(url) }, display)
     }
 
     func getContentText() {
