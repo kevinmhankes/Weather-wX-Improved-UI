@@ -8,6 +8,7 @@ import UIKit
 
 final class Text {
 
+    // private let tv = UITextView()
     let tv = UITextView()
     var textColor = wXColor()
 
