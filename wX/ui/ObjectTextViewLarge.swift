@@ -42,6 +42,16 @@ final class TextLarge {
         set { tv.font = newValue }
     }
     
+    var background: UIColor {
+        get { tv.backgroundColor! }
+        set { tv.backgroundColor = newValue }
+    }
+    
+    var color: UIColor {
+        get { tv.textColor! }
+        set { tv.textColor = newValue }
+    }
+    
     var isAccessibilityElement: Bool {
         get { tv.isAccessibilityElement }
         set { tv.isAccessibilityElement = newValue }
