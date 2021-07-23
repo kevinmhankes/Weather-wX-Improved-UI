@@ -38,7 +38,7 @@ final class ObjectImageSummary {
             objectImages.append(ObjectImage(
                     stackView,
                     image,
-                    GestureData(imageIndex, uiv, #selector(imageClicked(sender:))),
+                    GestureData(imageIndex, uiv, #selector(imageClicked)),
                     widthDivider: imagesPerRow
             ))
             imageCount += 1
