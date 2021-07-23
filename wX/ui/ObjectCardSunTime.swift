@@ -8,30 +8,30 @@ import UIKit
 
 final class ObjectCardSunTime {
 
-    private let objectTextView: Text
+    private let text: Text
     private var sunriseSunset: String
     private var gmtTimeText: String
 
     init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
         sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText = UtilityTime.gmtTime()
-        objectTextView = Text(
+        text = Text(
             stackView,
             sunriseSunset + GlobalVariables.newline + gmtTimeText,
             FontSize.small.size,
             ColorCompatibility.label
         )
-        objectTextView.textAlignment = .center
-        objectTextView.addGesture(gesture)
+        text.textAlignment = .center
+        text.addGesture(gesture)
     }
 
     func update() {
         sunriseSunset = UtilityTimeSunMoon.getSunTimesForHomeScreen()
         gmtTimeText = UtilityTime.gmtTime()
-        objectTextView.text = sunriseSunset + GlobalVariables.newline + gmtTimeText
+        text.text = sunriseSunset + GlobalVariables.newline + gmtTimeText
     }
 
     func resetTextSize() {
-        objectTextView.font = FontSize.small.size
+        text.font = FontSize.small.size
     }
 }
