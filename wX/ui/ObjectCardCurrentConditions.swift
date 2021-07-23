@@ -21,7 +21,7 @@ final class ObjectCardCurrentConditions {
             objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
         let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
-        verticalTextContainer.view.alignment = UIStackView.Alignment.top
+        verticalTextContainer.alignment = .top
         topText.isAccessibilityElement = false
         middleText.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
@@ -61,7 +61,7 @@ final class ObjectCardCurrentConditions {
     func setText(_ objectCurrentConditions: ObjectCurrentConditions) {
         topText.text = objectCurrentConditions.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         middleText.text = objectCurrentConditions.middleLine.trimmingCharacters(in: .whitespaces)
-        horizontalContainer.view.accessibilityLabel = objectCurrentConditions.spokenText
+        horizontalContainer.accessibilityLabel = objectCurrentConditions.spokenText
     }
 
     func resetTextSize() {

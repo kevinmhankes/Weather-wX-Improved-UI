@@ -44,4 +44,9 @@ final class ObjectCardStackView {
         get { stackView.isAccessibilityElement }
         set { stackView.isAccessibilityElement = newValue }
     }
+    
+    var accessibilityLabel: String {
+        get { stackView.accessibilityLabel ?? "" }
+        set { stackView.accessibilityLabel = newValue }
+    }
 }

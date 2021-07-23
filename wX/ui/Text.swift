@@ -112,6 +112,11 @@ final class Text {
         get { tv.isHidden }
         set { tv.isHidden = newValue }
     }
+    
+    var textAlignment: NSTextAlignment {
+        get { tv.textAlignment }
+        set { tv.textAlignment = newValue }
+    }
 
     var background: UIColor {
         get { tv.backgroundColor! }

@@ -21,7 +21,7 @@ final class ObjectCardSunTime {
             FontSize.small.size,
             ColorCompatibility.label
         )
-        objectTextView.tv.textAlignment = .center
+        objectTextView.textAlignment = .center
         objectTextView.addGestureRecognizer(gesture)
     }
 

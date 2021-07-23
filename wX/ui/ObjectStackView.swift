@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectStackView {
 
-    let uiStackView = UIStackView()
+    private let uiStackView = UIStackView()
 
     init(
         _ distribution: UIStackView.Distribution,
@@ -41,15 +41,15 @@ final class ObjectStackView {
     }
     
     func addWidget(_ w: UIView) {
-        view.addArrangedSubview(w)
+        uiStackView.addArrangedSubview(w)
     }
     
     func addLayout(_ w: UIView) {
-        view.addArrangedSubview(w)
+        uiStackView.addArrangedSubview(w)
     }
     
     func addLayout(_ layout: ObjectStackView) {
-        view.addArrangedSubview(layout.get())
+        uiStackView.addArrangedSubview(layout.get())
     }
     
     func get() -> UIStackView {
@@ -57,7 +57,7 @@ final class ObjectStackView {
     }
     
     func removeChildren() {
-        view.subviews.forEach { $0.removeFromSuperview() }
+        uiStackView.subviews.forEach { $0.removeFromSuperview() }
     }
     
     func removeAllChildren() {
@@ -79,6 +79,11 @@ final class ObjectStackView {
         get { uiStackView.accessibilityLabel ?? "" }
         set { uiStackView.accessibilityLabel = newValue }
     }
-    
+
+    var alignment: UIStackView.Alignment {
+        get { uiStackView.alignment }
+        set { uiStackView.alignment = newValue }
+    }
+        
     var view: UIStackView { uiStackView }
 }
