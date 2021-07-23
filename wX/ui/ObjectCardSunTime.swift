@@ -32,6 +32,6 @@ final class ObjectCardSunTime {
     }
 
     func resetTextSize() {
-        objectTextView.tv.font = FontSize.small.size
+        objectTextView.font = FontSize.small.size
     }
 }

@@ -31,7 +31,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 FontSize.extraLarge.size,
                 GestureData(index, self, #selector(goToProvinces))
             )
-            objectTextView.tv.isSelectable = false
+            objectTextView.isSelectable = false
             objectTextView.constrain(scrollView)
             objectTextViews.append(objectTextView)
         }
@@ -83,7 +83,7 @@ final class vcSettingsLocationCanada: UIwXViewController {
                 FontSize.extraLarge.size,
                 GestureData(index, self, #selector(goToProvinces))
             )
-            objectTextView.tv.isSelectable = false
+            objectTextView.isSelectable = false
             objectTextView.constrain(scrollView)
             objectTextViews.append(objectTextView)
         }

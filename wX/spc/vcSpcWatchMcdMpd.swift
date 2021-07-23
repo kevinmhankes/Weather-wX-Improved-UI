@@ -121,15 +121,15 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
                 } else {
                     objectTextView = Text(stackView, objectWatchProduct?.text ?? "")
                 }
-                objectTextView.tv.isAccessibilityElement = true
-                views.append(objectTextView.tv)
+                objectTextView.isAccessibilityElement = true
+                views.append(objectTextView.view)
             }
         } else {
             let message = objectWatchProduct?.getTextForNoProducts() ?? "No active " + String(describing: watchMcdMpdType) + "s"
             let objectTextView = Text(stackView, message)
-            objectTextView.tv.isAccessibilityElement = true
+            objectTextView.isAccessibilityElement = true
             objectTextView.constrain(scrollView)
-            views += [objectTextView.tv]
+            views += [objectTextView.view]
             objectTextView.tv.accessibilityLabel = message
         }
         view.bringSubviewToFront(toolbar)

@@ -37,7 +37,7 @@ final class ObjectCardNhcStormReportItem {
             isUserInteractionEnabled: false
         )
         [textViewTime, textViewMovement, textViewPressure, textViewWindSpeed].forEach {
-            $0.tv.isAccessibilityElement = false
+            $0.isAccessibilityElement = false
         }
         textViewTop.tv.isAccessibilityElement = false
         textViewBottom.tv.isAccessibilityElement = false

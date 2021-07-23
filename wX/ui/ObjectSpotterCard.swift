@@ -29,7 +29,7 @@ final class ObjectSpotterCard {
         textViews[1].color = ColorCompatibility.label
         uiv.stackView.addArrangedSubview(objectStackView.view)
         textViews.forEach {
-            $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+            $0.constrain(uiv.scrollView)
         }
         objectStackView.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
         objectStackView.view.addGestureRecognizer(gesture)

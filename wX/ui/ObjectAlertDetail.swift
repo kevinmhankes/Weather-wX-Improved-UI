@@ -15,7 +15,7 @@ final class ObjectAlertDetail {
         self.uiStackView = uiStackView
         (0...6).forEach { _ in
             let objectTextView = Text(uiStackView, "")
-            objectTextView.tv.isAccessibilityElement = false
+            objectTextView.isAccessibilityElement = false
             textViews.append(objectTextView)
         }
         textViews[0].font = FontSize.extraLarge.size
@@ -41,7 +41,9 @@ final class ObjectAlertDetail {
         uiStackView.accessibilityLabel = title + wfo + "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
-        textViews.forEach { $0.tv.widthAnchor.constraint(equalTo: uiScrollView.widthAnchor).isActive = true }
+        textViews.forEach {
+            $0.constrain(uiScrollView)
+        }
     }
 
     static func condenseTime(_ cap: CapAlert) -> (String, String, String) {

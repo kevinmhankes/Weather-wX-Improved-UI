@@ -45,8 +45,8 @@ final class ObjectImageAndText {
         } else {
             uiv.objectTextView = Text(uiv.stackView, html)
         }
-        uiv.objectTextView.tv.isAccessibilityElement = true
-        views.append(uiv.objectTextView.tv)
+        uiv.objectTextView.isAccessibilityElement = true
+        views.append(uiv.objectTextView.view)
         uiv.scrollView.accessibilityElements = views
     }
 
@@ -82,8 +82,8 @@ final class ObjectImageAndText {
         var views = [UIView]()
         uiv.objectTextView = Text(uiv.stackView, html)
         uiv.objectTextView.constrain(uiv.scrollView)
-        uiv.objectTextView.tv.isAccessibilityElement = true
-        views.append(uiv.objectTextView.tv)
+        uiv.objectTextView.isAccessibilityElement = true
+        views.append(uiv.objectTextView.view)
         uiv.scrollView.accessibilityElements = views
     }
 

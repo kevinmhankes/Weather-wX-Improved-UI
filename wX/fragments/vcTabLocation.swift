@@ -293,7 +293,7 @@ final class vcTabLocation: vcTabParent {
             scrollView.scrollToTop()
             objectCardCurrentConditions?.resetTextSize()
             objectCardSevenDayCollection?.resetTextSize()
-            objLabel.tv.font = FontSize.extraLarge.size
+            objLabel.font = FontSize.extraLarge.size
             getContentSuper()
         }
     }
@@ -392,7 +392,7 @@ final class vcTabLocation: vcTabParent {
         }
         objectTextView.addGestureRecognizer(GestureData(product, self, #selector(textTap(sender:))))
         objectTextView.tv.accessibilityLabel = html
-        objectTextView.tv.isSelectable = false
+        objectTextView.isSelectable = false
     }
 
     @objc func textTap(sender: GestureData) {
@@ -577,7 +577,7 @@ final class vcTabLocation: vcTabParent {
         stackViewLocationButton.setup(stackView)
         objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
-        objLabel.tv.isSelectable = false
+        objLabel.isSelectable = false
     }
 
     // Clear all views except 7day and current conditions

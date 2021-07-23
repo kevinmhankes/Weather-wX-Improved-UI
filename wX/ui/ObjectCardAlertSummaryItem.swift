@@ -27,7 +27,7 @@ final class ObjectCardAlertSummaryItem {
             .fillProportionally,
             .horizontal,
             spacing: 10,
-            arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
+            arrangedSubviews: [radarIcon.button, radarText.view, spacerView]
         )
         // horizontalContainer.uiStackView.distribution = .equalSpacing
         // end icons
@@ -38,9 +38,9 @@ final class ObjectCardAlertSummaryItem {
         let tvEnd = Text("End: " + endTime, isUserInteractionEnabled: false, isZeroSpacing: true)
         let tvArea = TextSmallGray(text: alert.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
-        tvTitle.tv.isAccessibilityElement = false
-        tvStart.tv.isAccessibilityElement = false
-        tvEnd.tv.isAccessibilityElement = false
+        tvTitle.isAccessibilityElement = false
+        tvStart.isAccessibilityElement = false
+        tvEnd.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
         let verticalTextContainer = ObjectStackView(
             .fill,

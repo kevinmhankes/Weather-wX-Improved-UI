@@ -35,9 +35,9 @@ final class ObjectCardDashAlertItem {
         )
         let tvArea = TextSmallGray(text: warning.area, isUserInteractionEnabled: false)
         tvName.tv.isAccessibilityElement = false
-        tvTitle.tv.isAccessibilityElement = false
-        tvStart.tv.isAccessibilityElement = false
-        tvEnd.tv.isAccessibilityElement = false
+        tvTitle.isAccessibilityElement = false
+        tvStart.isAccessibilityElement = false
+        tvEnd.isAccessibilityElement = false
         tvArea.tv.isAccessibilityElement = false
         // icons
         let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
@@ -49,7 +49,7 @@ final class ObjectCardDashAlertItem {
             .fill,
             .horizontal,
             spacing: 10,
-            arrangedSubviews: [radarIcon.button, radarText.tv, spacerView]
+            arrangedSubviews: [radarIcon.button, radarText.view, spacerView]
         )
         // horizontalContainer.uiStackView.alignment = .leading
         // horizontalContainer.uiStackView.distribution = .equalSpacing
