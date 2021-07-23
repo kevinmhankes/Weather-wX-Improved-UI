@@ -12,14 +12,14 @@ final class vcSettingsAbout: UIwXViewController {
     private let releaseNotesUrl = "https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub"
     private let nwsStatusUrl = "https://forecast.weather.gov/product.php?site=NWS&product=ADA&issuedby=SDM"
     private static let copyright = "©"
-    private let aboutText = "\(GlobalVariables.appName) is an efficient and configurable method to access weather content from the "
+    private let aboutText = GlobalVariables.appName + " is an efficient and configurable method to access weather content from the "
         + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
         + " Software is provided \"as is\". Use at your own risk. Use for educational purposes "
         + "and non-commercial purposes only. Do not use for operational purposes.  "
         + copyright
         + "2016-2021 joshua.tee@gmail.com . Please report bugs or suggestions "
-        + "via email to me as opposed to app store reviews."
-        + " \(GlobalVariables.appName) is bi-licensed under the Mozilla Public License Version 2 as well "
+        + "via email to me as opposed to app store reviews. "
+        + GlobalVariables.appName + " is bi-licensed under the Mozilla Public License Version 2 as well "
         + "as the GNU General Public License Version 3 or later. "
         + "For more information on the licenses please go here: https://www.mozilla.org/en-US/MPL/2.0/"
         + " and http://www.gnu.org/licenses/gpl-3.0.en.html" + GlobalVariables.newline
@@ -46,42 +46,42 @@ final class vcSettingsAbout: UIwXViewController {
     }
 
     private func display() {
-        let objectTextView1 = Text(
+        let text1 = Text(
             stackView,
             "View FAQ (Outage notifications listed at top if any are current)",
             FontSize.extraLarge.size,
             GestureData("faq", self, #selector(actionClick))
         )
-        objectTextView1.color = ColorCompatibility.highlightText
-        objectTextView1.tv.isSelectable = false
-        objectTextView1.constrain(scrollView)
+        text1.color = ColorCompatibility.highlightText
+        text1.tv.isSelectable = false
+        text1.constrain(scrollView)
         
-        let objectTextView2 = Text(
+        let text2 = Text(
             stackView,
             "View release notes",
             FontSize.extraLarge.size,
             GestureData("notes", self, #selector(actionClick))
         )
-        objectTextView2.color = ColorCompatibility.highlightText
-        objectTextView2.tv.isSelectable = false
-        objectTextView2.constrain(scrollView)
+        text2.color = ColorCompatibility.highlightText
+        text2.tv.isSelectable = false
+        text2.constrain(scrollView)
         
-        let objectTextView4 = Text(
+        let text4 = Text(
             stackView,
             "NWS Status",
             FontSize.extraLarge.size,
             GestureData("nwsStatus", self, #selector(actionClick))
         )
-        objectTextView4.color = ColorCompatibility.highlightText
-        objectTextView4.tv.isSelectable = false
-        objectTextView4.constrain(scrollView)
+        text4.color = ColorCompatibility.highlightText
+        text4.tv.isSelectable = false
+        text4.constrain(scrollView)
         
-        let objectTextView3 = Text(
+        let text3 = Text(
             stackView,
             aboutText + Utility.showDiagnostics(),
             FontSize.medium.size,
             GestureData("", self, #selector(actionClick))
         )
-        objectTextView3.constrain(scrollView)
+        text3.constrain(scrollView)
     }
 }
