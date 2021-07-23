@@ -191,9 +191,9 @@ final class vcTabLocation: vcTabParent {
     func updateHazards() {
         if ObjectHazards.getHazardCount(objectHazards) > 0 {
             ObjectHazards.getHazardCards(stackViewHazards.view, objectHazards, isUS)
-            stackViewHazards.view.isHidden = false
+            stackViewHazards.isHidden = false
         } else {
-            stackViewHazards.view.isHidden = true
+            stackViewHazards.isHidden = true
         }
     }
 
