@@ -27,12 +27,12 @@ final class ObjectCardBlackHeaderText {
     init(_ stackView: UIStackView, _ text: String) {
         let tvLocation = TextLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
         tvLocation.text = text
-        tvLocation.view.textColor = UIColor.white
-        tvLocation.view.backgroundColor = UIColor.black
+        tvLocation.color = UIColor.white
+        tvLocation.background = UIColor.black
         tvLocation.font = FontSize.extraLarge.size
         verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
         objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
-        objectCardStackView.view.backgroundColor = UIColor.black
+        objectCardStackView.color = UIColor.black
         stackView.addArrangedSubview(objectCardStackView.view)
     }
     
