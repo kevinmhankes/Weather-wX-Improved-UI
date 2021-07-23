@@ -57,14 +57,14 @@ final class vcSettingsMain: UIwXViewController {
 
     private func display() {
         titles.forEach { title in
-            let objectTextView = Text(
+            let text = Text(
                 stackView,
                 title,
                 FontSize.extraLarge.size,
                 GestureData(title, self, #selector(actionClick))
             )
-            objectTextView.constrain(scrollView)
-            objectTextView.tv.isSelectable = false
+            text.constrain(scrollView)
+            text.isSelectable = false
         }
     }
 }
