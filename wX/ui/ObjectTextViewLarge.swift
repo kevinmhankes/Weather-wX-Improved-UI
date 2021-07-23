@@ -8,8 +8,7 @@ import UIKit
 
 final class TextLarge {
 
-    // private let tv = UILabelInset()
-    let tv = UILabelInset()
+    private let tv = UILabelInset()
 
     init(
         _ textPadding: CGFloat,
@@ -19,7 +18,6 @@ final class TextLarge {
     ) {
         tv.translatesAutoresizingMaskIntoConstraints = false
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
-        // FIXME use new constraint
         tv.widthAnchor.constraint(equalToConstant: width - textPadding).isActive = true
         tv.font = FontSize.medium.size
         tv.adjustsFontSizeToFitWidth = true
