@@ -55,7 +55,7 @@ final class vcObsSites: UIwXViewController {
                 city,
                 GestureData(index, self, #selector(gotoObsSite))
             )
-            objectTextView.tv.isSelectable = false
+            objectTextView.isSelectable = false
             objectTextView.constrain(scrollView)
         }
         scrollView.scrollToTop()

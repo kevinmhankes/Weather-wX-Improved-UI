@@ -11,6 +11,6 @@ final class ObjectCardHazard {
     init(_ stackView: UIStackView, _ hazard: String, _ gesture: UITapGestureRecognizer) {
         let objectTextView = Text(stackView, hazard.uppercased(), FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objectTextView.addGestureRecognizer(gesture)
-        objectTextView.tv.isSelectable = false
+        objectTextView.isSelectable = false
     }
 }

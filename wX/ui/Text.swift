@@ -97,6 +97,11 @@ final class Text {
         set { tv.textColor = newValue }
     }
     
+    var isAccessibilityElement: Bool {
+        get { tv.isAccessibilityElement }
+        set { tv.isAccessibilityElement = newValue }
+    }
+    
     var isSelectable: Bool {
         get { tv.isSelectable }
         set { tv.isSelectable = newValue }

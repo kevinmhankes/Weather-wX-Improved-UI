@@ -107,7 +107,7 @@ final class ObjectCanadaWarnings: NSObject {
                 text,
                 GestureData(index, uiv, #selector(goToWarning(sender:)))
             )
-            objectTextView.tv.isSelectable = false
+            objectTextView.isSelectable = false
         }
         _ = ObjectCanadaLegal(uiv.stackView)
     }

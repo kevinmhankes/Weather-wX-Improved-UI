@@ -53,7 +53,7 @@ final class vcSettingsAbout: UIwXViewController {
             GestureData("faq", self, #selector(actionClick))
         )
         text1.color = ColorCompatibility.highlightText
-        text1.tv.isSelectable = false
+        text1.isSelectable = false
         text1.constrain(scrollView)
         
         let text2 = Text(
@@ -63,7 +63,7 @@ final class vcSettingsAbout: UIwXViewController {
             GestureData("notes", self, #selector(actionClick))
         )
         text2.color = ColorCompatibility.highlightText
-        text2.tv.isSelectable = false
+        text2.isSelectable = false
         text2.constrain(scrollView)
         
         let text4 = Text(
@@ -73,7 +73,7 @@ final class vcSettingsAbout: UIwXViewController {
             GestureData("nwsStatus", self, #selector(actionClick))
         )
         text4.color = ColorCompatibility.highlightText
-        text4.tv.isSelectable = false
+        text4.isSelectable = false
         text4.constrain(scrollView)
         
         let text3 = Text(

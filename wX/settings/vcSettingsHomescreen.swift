@@ -151,7 +151,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                     goodTitle.trim(),
                     GestureData(index, goodTitle, self, #selector(buttonPressed))
                 )
-                objectTextView.tv.isSelectable = false
+                objectTextView.isSelectable = false
                 objectTextView.constrain(scrollView)
             } else {
                 let objectTextView = Text(
@@ -159,7 +159,7 @@ final class vcSettingsHomescreen: UIwXViewController {
                     prefVar,
                     GestureData(index, prefVar, self, #selector(buttonPressed))
                 )
-                objectTextView.tv.isSelectable = false
+                objectTextView.isSelectable = false
                 objectTextView.constrain(scrollView)
             }
         }
