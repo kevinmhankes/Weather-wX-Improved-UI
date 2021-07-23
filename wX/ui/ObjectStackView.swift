@@ -20,7 +20,9 @@ final class ObjectStackView {
         uiStackView.axis = axis
         uiStackView.spacing = spacing
         if !arrangedSubviews.isEmpty {
-            arrangedSubviews.forEach { uiStackView.addArrangedSubview($0) }
+            arrangedSubviews.forEach {
+                uiStackView.addArrangedSubview($0)
+            }
         }
     }
     
@@ -57,7 +59,9 @@ final class ObjectStackView {
     }
     
     func removeChildren() {
-        uiStackView.subviews.forEach { $0.removeFromSuperview() }
+        uiStackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
     }
     
     func removeAllChildren() {
