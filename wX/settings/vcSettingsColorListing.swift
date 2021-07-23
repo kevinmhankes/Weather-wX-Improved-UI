@@ -78,18 +78,18 @@ final class vcSettingsColorListing: UIwXViewController {
 
     private func display() {
         colors.enumerated().forEach { index, color in
-            let objectTextView = Text(stackView, color.uiLabel, color)
+            let text = Text(stackView, color.uiLabel, color)
             if color.colorsCurrent.red == 0 && color.colorsCurrent.green == 0 && color.colorsCurrent.blue == 0 {
-                objectTextView.color = UIColor.white
+                text.color = UIColor.white
             } else {
-                objectTextView.color = color.uiColorCurrent
+                text.color = color.uiColorCurrent
             }
-            objectTextView.background = UIColor.black
-            objectTextView.tv.font = FontSize.extraLarge.size
-            objectTextView.addGestureRecognizer(GestureData(index, self, #selector(goToColor)))
-            objectTextView.tv.isSelectable = false
-            objectTextView.constrain(scrollView)
-            objectTextViews.append(objectTextView)
+            text.background = UIColor.black
+            text.tv.font = FontSize.extraLarge.size
+            text.addGestureRecognizer(GestureData(index, self, #selector(goToColor)))
+            text.tv.isSelectable = false
+            text.constrain(scrollView)
+            objectTextViews.append(text)
         }
     }
 }
