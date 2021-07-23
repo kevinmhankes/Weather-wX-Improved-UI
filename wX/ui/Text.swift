@@ -61,7 +61,7 @@ final class Text {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text)
-        addGestureRecognizer(gesture)
+        addGesture(gesture)
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
@@ -80,7 +80,7 @@ final class Text {
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text, font)
-        addGestureRecognizer(gesture)
+        addGesture(gesture)
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ color: wXColor) {
@@ -88,7 +88,7 @@ final class Text {
         textColor = color
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+    func addGesture(_ gesture: UITapGestureRecognizer) {
         tv.addGestureRecognizer(gesture)
     }
 

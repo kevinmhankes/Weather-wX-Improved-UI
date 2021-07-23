@@ -43,7 +43,7 @@ final class ObjectCardDashAlertItem {
         // icons
         let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = Text("Radar")
-        radarText.addGestureRecognizer(gestureRadarText)
+        radarText.addGesture(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         let horizontalContainer = ObjectStackView(

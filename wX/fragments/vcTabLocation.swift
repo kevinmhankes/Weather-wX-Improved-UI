@@ -390,7 +390,7 @@ final class vcTabLocation: vcTabParent {
         if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
             objectTextView.font = FontSize.hourly.size
         }
-        objectTextView.addGestureRecognizer(GestureData(product, self, #selector(textTap(sender:))))
+        objectTextView.addGesture(GestureData(product, self, #selector(textTap(sender:))))
         objectTextView.accessibilityLabel = html
         objectTextView.isSelectable = false
     }
@@ -576,16 +576,20 @@ final class vcTabLocation: vcTabParent {
         stackView.addArrangedSubview(stackViewLocationButton)
         stackViewLocationButton.setup(stackView)
         objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
-        objLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
+        objLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         objLabel.isSelectable = false
     }
 
     // Clear all views except 7day and current conditions
     func clearViews() {
-        stackViewHazards.view.subviews.forEach { $0.removeFromSuperview() }
-        extraDataCards.forEach { $0.removeFromSuperview() }
-        extraDataCards = []
-        stackViewHazards.view.isHidden = true
+        stackViewHazards.view.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        extraDataCards.forEach {
+            $0.removeFromSuperview()
+        }
+        extraDataCards.removeAll()
+        stackViewHazards.isHidden = true
         stackViewRadar.removeFromSuperview()
     }
 

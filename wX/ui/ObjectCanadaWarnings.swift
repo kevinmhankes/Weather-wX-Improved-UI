@@ -97,16 +97,16 @@ final class ObjectCanadaWarnings: NSObject {
                 locStatement = locStatement.replaceAll("<.*?>", "")
             }
             let province = listLocUrl[index].parse("report_e.html.([a-z]{2}).*?")
-            var text = province.uppercased() + ": " + locWarning + " " + locWatch + " " + locStatement
-            text = text.replaceAllRegexp("<.*?>", "")
-            text = text.replaceAllRegexp("&#160;", "")
-            text = text.replaceAllRegexp("\n", "")
-            let objectTextView = Text(
+            var html = province.uppercased() + ": " + locWarning + " " + locWatch + " " + locStatement
+            html = html.replaceAllRegexp("<.*?>", "")
+            html = html.replaceAllRegexp("&#160;", "")
+            html = html.replaceAllRegexp("\n", "")
+            let text = Text(
                 uiv.stackView,
-                text,
+                html,
                 GestureData(index, uiv, #selector(goToWarning(sender:)))
             )
-            objectTextView.isSelectable = false
+            text.isSelectable = false
         }
         _ = ObjectCanadaLegal(uiv.stackView)
     }

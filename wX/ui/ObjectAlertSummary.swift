@@ -24,7 +24,7 @@ final class ObjectAlertSummary: NSObject {
     ) {
         self.init()
         let objTextSummary = Text(stackView)
-        objTextSummary.addGestureRecognizer(gesture!)
+        objTextSummary.addGesture(gesture!)
         objTextSummary.constrain(stackView)
         var index = 0
         var filterBool = true
@@ -70,7 +70,7 @@ final class ObjectAlertSummary: NSObject {
         }
         var stateCount = ""
         stateCountDict.forEach { state, count in
-            stateCount += state + ":" + to.String(count) + " "
+            stateCount += state + ": " + to.String(count) + "  "
         }
         objTextSummary.text = "Total alerts: " + to.String(capAlerts.count) + GlobalVariables.newline + "Filter: " + filterLabel + "(" + to.String(index) + " total)" + GlobalVariables.newline + "State counts: " + stateCount
     }

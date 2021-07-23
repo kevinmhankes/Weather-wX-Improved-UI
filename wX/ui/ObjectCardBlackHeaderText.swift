@@ -18,7 +18,7 @@ final class ObjectCardBlackHeaderText {
         tvLocation.background = UIColor.black
         tvLocation.font = FontSize.extraLarge.size
         verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
-        objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
+        objectCardStackView = ObjectCardStackView(verticalTextContainer)
         objectCardStackView.color = UIColor.black
         uiv.stackView.addArrangedSubview(objectCardStackView.view)
         verticalTextContainer.constrain(uiv.scrollView)
@@ -31,7 +31,7 @@ final class ObjectCardBlackHeaderText {
         tvLocation.background = UIColor.black
         tvLocation.font = FontSize.extraLarge.size
         verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
-        objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
+        objectCardStackView = ObjectCardStackView(verticalTextContainer)
         objectCardStackView.color = UIColor.black
         stackView.addArrangedSubview(objectCardStackView.view)
     }

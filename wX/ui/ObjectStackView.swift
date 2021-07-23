@@ -78,6 +78,11 @@ final class ObjectStackView {
         get { uiStackView.isAccessibilityElement }
         set { uiStackView.isAccessibilityElement = newValue }
     }
+    
+    var isHidden: Bool {
+        get { uiStackView.isHidden }
+        set { uiStackView.isHidden = newValue }
+    }
 
     var accessibilityLabel: String {
         get { uiStackView.accessibilityLabel ?? "" }

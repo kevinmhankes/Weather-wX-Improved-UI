@@ -20,7 +20,7 @@ final class ObjectCardAlertSummaryItem {
         // start icons
         let radarIcon = ToolbarIcon(iconType: .radar, gesture: gestureRadar)
         let radarText = Text("Radar")
-        radarText.addGestureRecognizer(gestureRadarText)
+        radarText.addGesture(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         let horizontalContainer = ObjectStackView(
@@ -60,9 +60,9 @@ final class ObjectCardAlertSummaryItem {
         }
         verticalTextContainer.isAccessibilityElement = true
         verticalTextContainer.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
-        let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
+        let cardStackView = ObjectCardStackView(verticalTextContainer)
         stackView.addArrangedSubview(cardStackView.view)
-        cardStackView.view.addGestureRecognizer(gesture)
+        cardStackView.addGesture(gesture)
         verticalTextContainer.constrain(stackView)
     }
 }

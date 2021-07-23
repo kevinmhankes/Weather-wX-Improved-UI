@@ -86,7 +86,7 @@ final class vcSettingsColorListing: UIwXViewController {
             }
             text.background = UIColor.black
             text.font = FontSize.extraLarge.size
-            text.addGestureRecognizer(GestureData(index, self, #selector(goToColor)))
+            text.addGesture(GestureData(index, self, #selector(goToColor)))
             text.isSelectable = false
             text.constrain(scrollView)
             objectTextViews.append(text)

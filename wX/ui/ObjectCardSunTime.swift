@@ -22,7 +22,7 @@ final class ObjectCardSunTime {
             ColorCompatibility.label
         )
         objectTextView.textAlignment = .center
-        objectTextView.addGestureRecognizer(gesture)
+        objectTextView.addGesture(gesture)
     }
 
     func update() {

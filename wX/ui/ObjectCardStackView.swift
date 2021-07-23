@@ -25,8 +25,22 @@ final class ObjectCardStackView {
         stackView.isLayoutMarginsRelativeArrangement = true
     }
     
+    init(_ objectStackView: ObjectStackView) {
+        stackView = StackView(arrangedSubviews: [objectStackView.view])
+        stackView.backgroundColor = ColorCompatibility.systemBackground
+        stackView.distribution = .fill
+        stackView.alignment = .top
+        stackView.axis = .horizontal
+        stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        stackView.isLayoutMarginsRelativeArrangement = true
+    }
+    
     func constrain(_ stackView: UIStackView) {
         stackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    }
+    
+    func addGesture(_ gesture: GestureData) {
+        stackView.addGestureRecognizer(gesture)
     }
     
     var view: StackView { stackView }

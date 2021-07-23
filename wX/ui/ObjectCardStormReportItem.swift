@@ -20,9 +20,9 @@ final class ObjectCardStormReportItem {
             let verticalTextContainer = ObjectStackView(
                 .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
-            objectCardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
+            objectCardStackView = ObjectCardStackView(verticalTextContainer)
             stackView.addArrangedSubview(objectCardStackView.view)
-            objectCardStackView.view.addGestureRecognizer(gesture)
+            objectCardStackView.addGesture(gesture)
         }
     }
 }
