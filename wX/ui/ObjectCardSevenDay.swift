@@ -27,8 +27,8 @@ final class ObjectCardSevenDay {
         let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view])
         bottomText.view.widthAnchor.constraint(equalTo: verticalTextContainer.view.widthAnchor).isActive = true
         verticalTextContainer.view.alignment = UIStackView.Alignment.top
-        topText.tv.isAccessibilityElement = false
-        bottomText.tv.isAccessibilityElement = false
+        topText.isAccessibilityElement = false
+        bottomText.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.view.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)

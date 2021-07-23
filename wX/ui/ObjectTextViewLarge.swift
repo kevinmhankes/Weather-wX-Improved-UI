@@ -40,6 +40,11 @@ final class TextLarge {
         get { tv.isAccessibilityElement }
         set { tv.isAccessibilityElement = newValue }
     }
+    
+    var isHidden: Bool {
+        get { tv.isHidden }
+        set { tv.isHidden = newValue }
+    }
 
     var view: UILabelInset { tv }
 }

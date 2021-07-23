@@ -61,10 +61,10 @@ final class ObjectCardDashAlertItem {
             arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
         )
         if warning.sender == "" {
-            tvName.view.isHidden = true
+            tvName.isHidden = true
         }
         if warning.expires == "" {
-            tvEnd.view.isHidden = true
+            tvEnd.isHidden = true
         }
         verticalTextContainer.view.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])

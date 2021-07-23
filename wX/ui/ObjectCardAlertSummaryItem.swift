@@ -41,7 +41,7 @@ final class ObjectCardAlertSummaryItem {
         tvTitle.isAccessibilityElement = false
         tvStart.isAccessibilityElement = false
         tvEnd.isAccessibilityElement = false
-        tvArea.tv.isAccessibilityElement = false
+        tvArea.isAccessibilityElement = false
         let verticalTextContainer = ObjectStackView(
             .fill,
             .vertical,
@@ -56,7 +56,7 @@ final class ObjectCardAlertSummaryItem {
         }
         if wfo == "" {
             radarIcon.button.isHidden = true
-            radarText.tv.isHidden = true
+            radarText.isHidden = true
         }
         verticalTextContainer.view.isAccessibilityElement = true
         verticalTextContainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area

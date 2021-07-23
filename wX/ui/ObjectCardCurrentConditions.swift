@@ -22,8 +22,8 @@ final class ObjectCardCurrentConditions {
         }
         let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
         verticalTextContainer.view.alignment = UIStackView.Alignment.top
-        topText.tv.isAccessibilityElement = false
-        middleText.tv.isAccessibilityElement = false
+        topText.isAccessibilityElement = false
+        middleText.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.view.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)

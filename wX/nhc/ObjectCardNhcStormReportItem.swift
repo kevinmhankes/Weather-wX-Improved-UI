@@ -39,8 +39,8 @@ final class ObjectCardNhcStormReportItem {
         [textViewTime, textViewMovement, textViewPressure, textViewWindSpeed].forEach {
             $0.isAccessibilityElement = false
         }
-        textViewTop.tv.isAccessibilityElement = false
-        textViewBottom.tv.isAccessibilityElement = false
+        textViewTop.isAccessibilityElement = false
+        textViewBottom.isAccessibilityElement = false
         let verticalTextContainer = ObjectStackView(
             .fill,
             .vertical,

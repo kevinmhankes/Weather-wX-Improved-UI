@@ -8,7 +8,8 @@ import UIKit
 
 final class TextSmallGray {
 
-    let tv = UITextView()
+    private let tv = UITextView()
+    // let tv = UITextView()
 
     init(text: String = "", isUserInteractionEnabled: Bool = true) {
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +34,11 @@ final class TextSmallGray {
     var isAccessibilityElement: Bool {
         get { tv.isAccessibilityElement }
         set { tv.isAccessibilityElement = newValue }
+    }
+    
+    var isHidden: Bool {
+        get { tv.isHidden }
+        set { tv.isHidden = newValue }
     }
 
     var view: UITextView { tv }

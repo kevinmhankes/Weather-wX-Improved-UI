@@ -107,6 +107,11 @@ final class Text {
         get { tv.isSelectable }
         set { tv.isSelectable = newValue }
     }
+    
+    var isHidden: Bool {
+        get { tv.isHidden }
+        set { tv.isHidden = newValue }
+    }
 
     var background: UIColor {
         get { tv.backgroundColor! }
