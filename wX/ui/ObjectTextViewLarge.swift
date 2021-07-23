@@ -27,6 +27,11 @@ final class TextLarge {
         self.text = text
         tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
+    
+    func constrain() {
+        let bounds = UtilityUI.getScreenBoundsCGFloat()
+        tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
+    }
 
     func resetTextSize() {
         tv.font = FontSize.medium.size

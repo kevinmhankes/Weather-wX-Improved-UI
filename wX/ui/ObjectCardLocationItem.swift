@@ -32,6 +32,6 @@ final class ObjectCardLocationItem {
             $0.constrain(uiv.scrollView)
         }
         objectStackView.view.addGestureRecognizer(gesture)
-        objectStackView.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
+        objectStackView.constrain(uiv.stackView)
     }
 }

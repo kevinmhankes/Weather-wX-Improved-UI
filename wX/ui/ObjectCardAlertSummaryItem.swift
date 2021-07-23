@@ -58,8 +58,8 @@ final class ObjectCardAlertSummaryItem {
             radarIcon.button.isHidden = true
             radarText.isHidden = true
         }
-        verticalTextContainer.view.isAccessibilityElement = true
-        verticalTextContainer.view.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
+        verticalTextContainer.isAccessibilityElement = true
+        verticalTextContainer.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
         let cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         stackView.addArrangedSubview(cardStackView.view)
         cardStackView.view.addGestureRecognizer(gesture)

@@ -44,11 +44,11 @@ final class vcAdhocLocation: UIwXViewController {
     private func display() {
         _ = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, true)
         stackView.addArrangedSubview(stackViewCurrentConditions.view)
-        stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackViewCurrentConditions.constrain(scrollView)
         ObjectHazards.getHazardCards(stackView, objectHazards)
         _ = ObjectCardSevenDayCollection(stackViewForecast.view, scrollView, objectSevenDay)
         stackView.addArrangedSubview(stackViewForecast.view)
-        stackViewForecast.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackViewForecast.constrain(scrollView)
     }
 
     @objc func save() {

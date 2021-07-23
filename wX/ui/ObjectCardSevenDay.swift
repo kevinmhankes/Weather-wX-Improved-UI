@@ -25,16 +25,16 @@ final class ObjectCardSevenDay {
         }
         topText.view.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .vertical)
         let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, bottomText.view])
-        bottomText.view.widthAnchor.constraint(equalTo: verticalTextContainer.view.widthAnchor).isActive = true
+        bottomText.constrain(verticalTextContainer.view)
         verticalTextContainer.view.alignment = UIStackView.Alignment.top
         topText.isAccessibilityElement = false
         bottomText.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
-        horizontalContainer.view.isAccessibilityElement = true
+        horizontalContainer.isAccessibilityElement = true
         stackView.addArrangedSubview(horizontalContainer.view)
-        horizontalContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        horizontalContainer.constrain(stackView)
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextContainer.view.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
+        verticalTextContainer.constrain(stackView, padding)
         update(index, urls, days, daysShort, isUS)
     }
 

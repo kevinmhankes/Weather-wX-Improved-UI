@@ -24,7 +24,11 @@ final class ObjectCardStackView {
         stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         stackView.isLayoutMarginsRelativeArrangement = true
     }
-
+    
+    func constrain(_ stackView: UIStackView) {
+        stackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    }
+    
     var view: StackView { stackView }
 
     func setAxis(_ axis: NSLayoutConstraint.Axis) {
@@ -34,5 +38,10 @@ final class ObjectCardStackView {
     var color: UIColor {
         get { stackView.backgroundColor! }
         set { stackView.backgroundColor = newValue }
+    }
+    
+    var isAccessibilityElement: Bool {
+        get { stackView.isAccessibilityElement }
+        set { stackView.isAccessibilityElement = newValue }
     }
 }

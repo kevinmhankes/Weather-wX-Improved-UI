@@ -75,4 +75,14 @@ final class ObjectImage {
         get { img.isHidden }
         set { img.isHidden = newValue }
     }
+
+    var accessibilityLabel: String {
+        get { img.accessibilityLabel ?? "" }
+        set { img.accessibilityLabel = newValue }
+    }
+    
+    var isAccessibilityElement: Bool {
+        get { img.isAccessibilityElement }
+        set { img.isAccessibilityElement = newValue }
+    }
 }

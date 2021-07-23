@@ -17,8 +17,9 @@ final class ObjectCardDashAlertItem {
         _ gestureRadarText: GestureData
     ) {
         let tvName = TextLarge(80.0, text: warning.sender, color: ColorCompatibility.highlightText)
-        let bounds = UtilityUI.getScreenBoundsCGFloat()
-        tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
+        // let bounds = UtilityUI.getScreenBoundsCGFloat()
+        // tvName.tv.widthAnchor.constraint(equalToConstant: bounds.0).isActive = true
+        tvName.constrain()
         let tvTitle = Text(
             warning.event,
             isUserInteractionEnabled: false,
@@ -66,7 +67,7 @@ final class ObjectCardDashAlertItem {
         if warning.expires == "" {
             tvEnd.isHidden = true
         }
-        verticalTextContainer.view.isAccessibilityElement = true
+        verticalTextContainer.isAccessibilityElement = true
         cardStackView = ObjectCardStackView(arrangedSubviews: [verticalTextContainer.view])
         cardStackView.view.addGestureRecognizer(gesture)
     }

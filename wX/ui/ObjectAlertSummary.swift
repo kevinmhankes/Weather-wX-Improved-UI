@@ -25,7 +25,7 @@ final class ObjectAlertSummary: NSObject {
         self.init()
         let objTextSummary = Text(stackView)
         objTextSummary.addGestureRecognizer(gesture!)
-        objTextSummary.tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        objTextSummary.constrain(stackView)
         var index = 0
         var filterBool = true
         var filterLabel = ""

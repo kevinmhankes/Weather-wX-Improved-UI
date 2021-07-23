@@ -21,7 +21,9 @@ final class ObjectMenuTitle {
             return 0
         }
         var sum = 0
-        (0..<index).forEach { sum += titles[$0].count }
+        (0..<index).forEach {
+            sum += titles[$0].count
+        }
         return sum
     }
 }

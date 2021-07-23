@@ -37,6 +37,6 @@ final class ObjectCardBlackHeaderText {
     }
     
     func constrain(_ uiv: UIwXViewController) {
-        verticalTextContainer.view.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
+        verticalTextContainer.constrain(uiv.scrollView)
     }
 }

@@ -36,6 +36,10 @@ final class ObjectStackView {
         uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
     
+    func constrain(_ stackView: UIStackView, _ padding: CGFloat) {
+        uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
+    }
+    
     func addWidget(_ w: UIView) {
         view.addArrangedSubview(w)
     }
@@ -65,6 +69,16 @@ final class ObjectStackView {
         get { uiStackView.backgroundColor! }
         set { uiStackView.backgroundColor = newValue }
     }
+    
+    var isAccessibilityElement: Bool {
+        get { uiStackView.isAccessibilityElement }
+        set { uiStackView.isAccessibilityElement = newValue }
+    }
 
+    var accessibilityLabel: String {
+        get { uiStackView.accessibilityLabel ?? "" }
+        set { uiStackView.accessibilityLabel = newValue }
+    }
+    
     var view: UIStackView { uiStackView }
 }

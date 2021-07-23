@@ -139,6 +139,10 @@ final class Text {
     func constrain(_ scrollView: UIScrollView) {
         tv.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
+    
+    func constrain(_ stackView: UIStackView) {
+        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    }
 
     var view: UITextView { tv }
 }

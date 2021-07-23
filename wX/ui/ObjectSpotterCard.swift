@@ -31,7 +31,7 @@ final class ObjectSpotterCard {
         textViews.forEach {
             $0.constrain(uiv.scrollView)
         }
-        objectStackView.view.widthAnchor.constraint(equalTo: uiv.stackView.widthAnchor).isActive = true
+        objectStackView.constrain(uiv.stackView)
         objectStackView.view.addGestureRecognizer(gesture)
     }
 }

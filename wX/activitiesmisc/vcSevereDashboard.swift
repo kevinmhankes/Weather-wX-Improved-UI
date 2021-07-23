@@ -128,7 +128,7 @@ final class vcSevereDashboard: UIwXViewController {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
             imageStackViewList.append(stackView)
             self.stackView.addArrangedSubview(stackView.view)
-            stackView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            stackView.constrain(scrollView)
             objectImage = ObjectImage(
                 stackView.view,
                 usAlertsBitmap,
@@ -144,8 +144,8 @@ final class vcSevereDashboard: UIwXViewController {
             )
         }
         imageCount += 1
-        objectImage.img.accessibilityLabel = "US Alerts"
-        objectImage.img.isAccessibilityElement = true
+        objectImage.accessibilityLabel = "US Alerts"
+        objectImage.isAccessibilityElement = true
         views.append(objectImage.img)
         let objectImage2: ObjectImage
         if imageCount % imagesPerRow == 0 {
@@ -167,8 +167,8 @@ final class vcSevereDashboard: UIwXViewController {
             )
         }
         imageCount += 1
-        objectImage2.img.accessibilityLabel = "spc storm reports"
-        objectImage2.img.isAccessibilityElement = true
+        objectImage2.accessibilityLabel = "spc storm reports"
+        objectImage2.isAccessibilityElement = true
         views.append(objectImage2.img)
         var index = 0
         [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD].forEach { type1 in
@@ -189,8 +189,8 @@ final class vcSevereDashboard: UIwXViewController {
                     widthDivider: imagesPerRow
                 )
                 buttonActions.append(String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!)
-                objectImage.img.accessibilityLabel = String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!
-                objectImage.img.isAccessibilityElement = true
+                objectImage.accessibilityLabel = String(describing: type1) + (severeNotices[type1]?.numberList[imageIndex])!
+                objectImage.isAccessibilityElement = true
                 views.append(objectImage.img)
                 index += 1
                 imageCount += 1
@@ -219,6 +219,6 @@ final class vcSevereDashboard: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ -> Void in self.display() })
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.display() })
     }
 }
