@@ -26,7 +26,7 @@ final class vcObsSites: UIwXViewController {
     }
 
     @objc func goToState(sender: GestureData) {
-        stateSelected = GlobalArrays.states[sender.data].split(":")[0]
+        stateSelected = sender.strData.split(":")[0]
         showState()
     }
 
@@ -74,11 +74,11 @@ final class vcObsSites: UIwXViewController {
 
     func constructStateView() {
         stackView.removeViews()
-        GlobalArrays.states.enumerated().forEach { index, state in
+        GlobalArrays.states.forEach { state in
             let objectTextView = Text(
                 stackView,
                 state,
-                GestureData(index, self, #selector(goToState))
+                GestureData(state, self, #selector(goToState))
             )
             objectTextView.isSelectable = false
             objectTextView.constrain(scrollView)
