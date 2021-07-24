@@ -13,6 +13,10 @@ extension String {
         hasPrefix(pattern)
     }
     
+    func startswith(_ pattern: String) -> Bool {
+        hasPrefix(pattern)
+    }
+    
     func parseLastMatch(_ pattern: String) -> String {
         UtilityString.parseLastMatch(self, pattern)
     }

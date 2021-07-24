@@ -10,4 +10,3 @@ enum RadarType {
     case level3bit4
     case tdwr
 }
-

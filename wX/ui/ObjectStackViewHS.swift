@@ -45,7 +45,6 @@ final class ObjectStackViewHS {
         view.addArrangedSubview(w)
     }
     
-    
     func addGesture(_ gesture: UIGestureRecognizer) {
         view.addGestureRecognizer(gesture)
     }

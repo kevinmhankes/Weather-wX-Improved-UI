@@ -8,5 +8,12 @@ import Foundation
 
 final class UtilityList {
 
-  
+    static func findex(_ value: String, _ items: [String]) -> Int {
+        for (index, _) in items.enumerated() {
+            if items[index].startswith(value) {
+                return index
+            }
+        }
+        return 0
+    }
 }
