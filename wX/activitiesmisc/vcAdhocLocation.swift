@@ -47,7 +47,7 @@ final class vcAdhocLocation: UIwXViewController {
         stackViewCurrentConditions.constrain(scrollView)
         ObjectHazards.getHazardCards(stackView, objectHazards)
         _ = ObjectCardSevenDayCollection(stackViewForecast, scrollView, objectSevenDay)
-        stackView.addLayout(stackViewForecast.view)
+        stackView.addLayout(stackViewForecast)
         stackViewForecast.constrain(scrollView)
     }
 

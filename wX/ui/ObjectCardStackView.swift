@@ -67,4 +67,8 @@ final class ObjectCardStackView {
         get { stackView.accessibilityLabel ?? "" }
         set { stackView.accessibilityLabel = newValue }
     }
+    
+    func get() -> UIStackView {
+        stackView
+    }
 }
