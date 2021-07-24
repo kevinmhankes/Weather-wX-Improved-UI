@@ -790,6 +790,9 @@ final class UtilityTtsTranslations {
 			.replace(" WED ", " Wednesday ")
 			.replace(" THU ", " Thursday ")
 			.replace(" SAT ", " Saturday ")
+        
+        // 2021-07-24
+        s = s.replace("PWAT", "Precipitable Water")
 
 		return s
 	}
