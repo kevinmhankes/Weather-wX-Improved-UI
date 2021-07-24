@@ -125,7 +125,7 @@ final class vcSevereDashboard: UIwXViewController {
         #endif
         let objectImage: ObjectImage
         if imageCount % imagesPerRow == 0 {
-            let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+            let stackView = ObjectStackView(.fillEqually, .horizontal)
             imageStackViewList.append(stackView)
             self.stackView.addLayout(stackView.view)
             stackView.constrain(scrollView)
@@ -149,7 +149,7 @@ final class vcSevereDashboard: UIwXViewController {
         views.append(objectImage.img)
         let objectImage2: ObjectImage
         if imageCount % imagesPerRow == 0 {
-            let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+            let stackView = ObjectStackView(.fillEqually, .horizontal)
             imageStackViewList.append(stackView)
             self.stackView.addLayout(stackView.view)
             objectImage2 = ObjectImage(
