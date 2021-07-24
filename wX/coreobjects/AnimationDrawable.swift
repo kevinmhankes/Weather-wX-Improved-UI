@@ -9,7 +9,7 @@ import UIKit
 final class AnimationDrawable {
 
     var images = [UIImage]()
-    let animationDelay = Double(MyApplication.animInterval)
+    let animationDelay = Double(UIPreferences.animInterval)
 
     func addFrame(_ layer: Bitmap) {
         images.append(layer.image)

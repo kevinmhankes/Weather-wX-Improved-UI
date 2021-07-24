@@ -8,7 +8,6 @@ import UIKit
 
 final class MyApplication {
     
-    static var animInterval = 250
     static var playlistStr = ""
     
     static func onCreate() {
@@ -25,7 +24,6 @@ final class MyApplication {
         UIPreferences.initialize()
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
-        animInterval = Utility.readPref("ANIM_INTERVAL", 6)
         playlistStr = Utility.readPref("PLAYLIST", "")
         Location.setCurrentLocationStr(Utility.readPref("CURRENT_LOC_FRAGMENT", "1"))
         AppColors.update()

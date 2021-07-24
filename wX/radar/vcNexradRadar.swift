@@ -705,7 +705,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                             }
                             scaleFactor = 1
                         }
-                        var interval = MyApplication.animInterval
+                        var interval = UIPreferences.animInterval
                         if self.wxMetalRenders[0]!.product.hasPrefix("L2") {
                             if interval < 12 {
                                 interval = 12
