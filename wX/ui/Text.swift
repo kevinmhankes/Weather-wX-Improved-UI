@@ -19,10 +19,31 @@ final class Text {
         tv.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
     }
 
-    convenience init(_ stackView: UIStackView) {
+    convenience init(_ stackView: ObjectStackView) {
         self.init()
-        stackView.addArrangedSubview(tv)
-        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        stackView.addWidget(tv)
+        constrain(stackView.get())
+    }
+    
+    convenience init(
+        _ stackView: ObjectStackView,
+        _ text: String,
+        isUserInteractionEnabled: Bool = true,
+        isZeroSpacing: Bool = false,
+        widthDivider: Int = 1
+    ) {
+        self.init()
+        stackView.addWidget(tv)
+        if widthDivider == 1 {
+            constrain(stackView.get())
+        } else {
+            tv.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
+        }
+        tv.text = text
+        tv.isUserInteractionEnabled = isUserInteractionEnabled
+        if isZeroSpacing {
+            setZeroSpacing()
+        }
     }
     
     convenience init(
@@ -35,7 +56,7 @@ final class Text {
         self.init()
         stackView.addArrangedSubview(tv)
         if widthDivider == 1 {
-            tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+            constrain(stackView)
         } else {
             tv.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.0 / CGFloat(widthDivider)).isActive = true
         }
@@ -59,9 +80,27 @@ final class Text {
         }
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
+    convenience init(_ stackView: ObjectStackView, _ text: String, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text)
         addGesture(gesture)
+    }
+
+    convenience init(_ stackView: ObjectStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
+        self.init()
+        tv.text = text
+        self.color = color
+        self.font = font
+        stackView.addWidget(tv)
+        constrain(stackView.get())
+    }
+    
+    convenience init(_ stackView: ObjectStackViewHS, _ text: String, _ font: UIFont, _ color: UIColor) {
+        self.init()
+        tv.text = text
+        self.color = color
+        self.font = font
+        stackView.get().addArrangedSubview(tv)
+        constrain(stackView.get())
     }
 
     convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
@@ -70,20 +109,20 @@ final class Text {
         self.color = color
         self.font = font
         stackView.addArrangedSubview(tv)
-        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        constrain(stackView)
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont) {
+    convenience init(_ stackView: ObjectStackView, _ text: String, _ font: UIFont) {
         self.init(stackView, text)
         self.font = font
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, _ font: UIFont, _ gesture: UITapGestureRecognizer) {
+    convenience init(_ stackView: ObjectStackView, _ text: String, _ font: UIFont, _ gesture: UITapGestureRecognizer) {
         self.init(stackView, text, font)
         addGesture(gesture)
     }
 
-    convenience init(_ stackView: UIStackView, _ text: String, _ color: wXColor) {
+    convenience init(_ stackView: ObjectStackView, _ text: String, _ color: wXColor) {
         self.init(stackView, text)
         textColor = color
     }
@@ -151,6 +190,10 @@ final class Text {
     
     func constrain(_ stackView: UIStackView) {
         tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    }
+    
+    func constrain(_ stackView: ObjectStackView) {
+        tv.widthAnchor.constraint(equalTo: stackView.get().widthAnchor).isActive = true
     }
 
     var view: UITextView { tv }

@@ -24,14 +24,14 @@ final class ScrollStackView {
         let bottomSpace = -(UtilityUI.getBottomPadding() + UIPreferences.toolbarHeight)
         uiv.scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace).isActive = true
         uiv.scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace).isActive = true
-        uiv.stackView.translatesAutoresizingMaskIntoConstraints = false
-        uiv.stackView.axis = .vertical
+        uiv.stackView.get().translatesAutoresizingMaskIntoConstraints = false
+        uiv.stackView.get().axis = .vertical
         uiv.stackView.spacing = UIPreferences.stackviewCardSpacing
-        uiv.scrollView.addSubview(uiv.stackView)
-        uiv.stackView.leadingAnchor.constraint(equalTo: uiv.scrollView.leadingAnchor).isActive = true
-        uiv.stackView.trailingAnchor.constraint(equalTo: uiv.scrollView.trailingAnchor).isActive = true
-        uiv.stackView.topAnchor.constraint(equalTo: uiv.scrollView.topAnchor).isActive = true
-        uiv.stackView.bottomAnchor.constraint(equalTo: uiv.scrollView.bottomAnchor).isActive = true
+        uiv.scrollView.addSubview(uiv.stackView.get())
+        uiv.stackView.get().leadingAnchor.constraint(equalTo: uiv.scrollView.leadingAnchor).isActive = true
+        uiv.stackView.get().trailingAnchor.constraint(equalTo: uiv.scrollView.trailingAnchor).isActive = true
+        uiv.stackView.get().topAnchor.constraint(equalTo: uiv.scrollView.topAnchor).isActive = true
+        uiv.stackView.get().bottomAnchor.constraint(equalTo: uiv.scrollView.bottomAnchor).isActive = true
         uiv.view.addSubview(uiv.toolbar)
         uiv.scrollView.bottomAnchor.constraint(equalTo: uiv.toolbar.topAnchor).isActive = true
     }

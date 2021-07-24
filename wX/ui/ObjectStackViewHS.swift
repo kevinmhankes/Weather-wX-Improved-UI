@@ -6,32 +6,59 @@
 
 import UIKit
 
-final class ObjectStackViewHS: UIStackView {
+final class ObjectStackViewHS {
+    
+    let view = UIStackView()
 
     func setup() {
-        translatesAutoresizingMaskIntoConstraints = false
-        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-        axis = .vertical
-        alignment = .center
-        spacing = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        view.axis = .vertical
+        view.alignment = .center
+        view.spacing = 0.0
     }
     
     func setup(_ stackView: UIStackView) {
-        widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        translatesAutoresizingMaskIntoConstraints = false
-        autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-        axis = .vertical
-        alignment = .center
-        spacing = 0.0
+        view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        view.axis = .vertical
+        view.alignment = .center
+        view.spacing = 0.0
     }
 
     func setupWithPadding() {
         setup()
-        spacing = UIPreferences.stackviewCardSpacing
+        view.spacing = UIPreferences.stackviewCardSpacing
     }
     
     func setupWithPadding(_ stackView: UIStackView) {
         setup(stackView)
-        spacing = UIPreferences.stackviewCardSpacing
+        view.spacing = UIPreferences.stackviewCardSpacing
+    }
+    
+    func addWidget(_ w: UIView) {
+        view.addArrangedSubview(w)
+    }
+    
+    func addLayout(_ w: UIView) {
+        view.addArrangedSubview(w)
+    }
+    
+    
+    func addGesture(_ gesture: UIGestureRecognizer) {
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func addGesture(_ gesture: GestureData) {
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func removeFromSuperview() {
+        view.removeFromSuperview()
+    }
+    
+    func get() -> UIStackView {
+        return view
     }
 }

@@ -39,6 +39,10 @@ final class ObjectCardStackView {
         stackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
     
+    func constrain(_ stackView: ObjectStackView) {
+        stackView.get().widthAnchor.constraint(equalTo: stackView.get().widthAnchor).isActive = true
+    }
+    
     func addGesture(_ gesture: GestureData) {
         stackView.addGestureRecognizer(gesture)
     }

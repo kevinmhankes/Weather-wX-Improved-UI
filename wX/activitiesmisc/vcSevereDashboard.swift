@@ -70,7 +70,7 @@ final class vcSevereDashboard: UIwXViewController {
             for w in severeWarning.warningList {
                 if w.isCurrent {
                     let radarSite = w.getClosestRadar()
-                    stackView.addArrangedSubview(ObjectCardDashAlertItem(
+                    stackView.addWidget(ObjectCardDashAlertItem(
                         w,
                         GestureData(w.url, self, #selector(goToAlert(sender:))),
                         GestureData(radarSite, self, #selector(goToRadar(sender:))),
@@ -127,17 +127,17 @@ final class vcSevereDashboard: UIwXViewController {
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
             imageStackViewList.append(stackView)
-            self.stackView.addArrangedSubview(stackView.view)
+            self.stackView.addLayout(stackView.view)
             stackView.constrain(scrollView)
             objectImage = ObjectImage(
-                stackView.view,
+                stackView,
                 usAlertsBitmap,
                 UITapGestureRecognizer(target: self, action: #selector(goToAlerts)),
                 widthDivider: imagesPerRow
             )
         } else {
             objectImage = ObjectImage(
-                imageStackViewList.last!.view,
+                imageStackViewList.last!,
                 usAlertsBitmap,
                 UITapGestureRecognizer(target: self, action: #selector(goToAlerts)),
                 widthDivider: imagesPerRow
@@ -151,16 +151,16 @@ final class vcSevereDashboard: UIwXViewController {
         if imageCount % imagesPerRow == 0 {
             let stackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
             imageStackViewList.append(stackView)
-            self.stackView.addArrangedSubview(stackView.view)
+            self.stackView.addLayout(stackView.view)
             objectImage2 = ObjectImage(
-                stackView.view,
+                stackView,
                 bitmap,
                 UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked)),
                 widthDivider: imagesPerRow
             )
         } else {
             objectImage2 = ObjectImage(
-                imageStackViewList.last!.view,
+                imageStackViewList.last!,
                 bitmap,
                 UITapGestureRecognizer(target: self, action: #selector(spcStormReportsClicked)),
                 widthDivider: imagesPerRow
@@ -173,14 +173,14 @@ final class vcSevereDashboard: UIwXViewController {
         var index = 0
         [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD].forEach { type1 in
             severeNotices[type1]?.bitmaps.enumerated().forEach { imageIndex, image in
-                let stackView: UIStackView
+                let stackView: ObjectStackView
                 if imageCount % imagesPerRow == 0 {
                     let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
                     imageStackViewList.append(objectStackView)
-                    stackView = objectStackView.view
-                    self.stackView.addArrangedSubview(stackView)
+                    stackView = objectStackView
+                    self.stackView.addLayout(stackView)
                 } else {
-                    stackView = imageStackViewList.last!.view
+                    stackView = imageStackViewList.last!
                 }
                 let objectImage = ObjectImage(
                     stackView,

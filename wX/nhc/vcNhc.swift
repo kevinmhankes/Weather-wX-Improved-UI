@@ -26,8 +26,8 @@ final class vcNhc: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
 
-        stackView.addArrangedSubview(boxText.get())
-        stackView.addArrangedSubview(boxImages.get())
+        stackView.addLayout(boxText.get())
+        stackView.addLayout(boxImages.get())
 
         objectNhc = ObjectNhc(self)
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)

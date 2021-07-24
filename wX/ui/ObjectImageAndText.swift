@@ -63,14 +63,14 @@ final class ObjectImageAndText {
         #endif
         if bitmaps.count == 2 { imagesPerRow = 2 }
         bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
+            let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {
                 let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
                 imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                uiv.stackView.addArrangedSubview(stackView)
+                stackView = objectStackView
+                uiv.stackView.addLayout(stackView)
             } else {
-                stackView = imageStackViewList.last!.view
+                stackView = imageStackViewList.last!
             }
             _ = ObjectImage(
                     stackView,

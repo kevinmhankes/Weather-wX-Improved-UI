@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardAlertSummaryItem {
 
     init(
-        _ stackView: UIStackView,
+        _ stackView: ObjectStackView,
         _ wfo: String,
         _ wfoName: String,
         _ alert: CapAlert,
@@ -63,7 +63,7 @@ final class ObjectCardAlertSummaryItem {
         verticalTextContainer.isAccessibilityElement = true
         verticalTextContainer.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
         let cardStackView = ObjectCardStackView(verticalTextContainer)
-        stackView.addArrangedSubview(cardStackView.view)
+        stackView.addLayout(cardStackView.view)
         cardStackView.addGesture(gesture)
         verticalTextContainer.constrain(stackView)
     }

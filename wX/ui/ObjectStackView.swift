@@ -43,8 +43,16 @@ final class ObjectStackView {
         uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
     
+    func constrain(_ stackView: ObjectStackView) {
+        uiStackView.widthAnchor.constraint(equalTo: stackView.get().widthAnchor).isActive = true
+    }
+    
     func constrain(_ stackView: UIStackView, _ padding: CGFloat) {
         uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: padding).isActive = true
+    }
+    
+    func constrain(_ stackView: ObjectStackView, _ padding: CGFloat) {
+        uiStackView.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, constant: padding).isActive = true
     }
     
     func addWidget(_ w: UIView) {
@@ -71,6 +79,10 @@ final class ObjectStackView {
         uiStackView
     }
     
+    func removeViews() {
+        uiStackView.removeViews()
+    }
+    
     func removeChildren() {
         uiStackView.subviews.forEach {
             $0.removeFromSuperview()
@@ -95,6 +107,16 @@ final class ObjectStackView {
     var isHidden: Bool {
         get { uiStackView.isHidden }
         set { uiStackView.isHidden = newValue }
+    }
+    
+    var axis: NSLayoutConstraint.Axis {
+        get { uiStackView.axis }
+        set { uiStackView.axis = newValue }
+    }
+    
+    var spacing: CGFloat {
+        get { uiStackView.spacing }
+        set { uiStackView.spacing = newValue }
     }
 
     var accessibilityLabel: String {

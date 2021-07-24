@@ -16,16 +16,16 @@ final class ObjectCardPlayListItem {
         _ gesture: GestureData
     ) {
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
-        let tvProduct = Text(objectStackView.view, product, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvMiddle = Text(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvBottom = Text(objectStackView.view, bottomLines.replaceAll(GlobalVariables.newline, " "), isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvProduct = Text(objectStackView, product, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvMiddle = Text(objectStackView, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvBottom = Text(objectStackView, bottomLines.replaceAll(GlobalVariables.newline, " "), isUserInteractionEnabled: false, isZeroSpacing: true)
         tvProduct.font = FontSize.medium.size
         tvMiddle.font = FontSize.small.size
         tvBottom.font = FontSize.small.size
         tvProduct.color = ColorCompatibility.highlightText
         tvMiddle.color = ColorCompatibility.label
         tvBottom.color = ColorCompatibility.systemGray2
-        uiv.stackView.addArrangedSubview(objectStackView.view)
+        uiv.stackView.addLayout(objectStackView.view)
         [tvProduct, tvMiddle, tvBottom].forEach {
             $0.constrain(uiv.scrollView)
         }

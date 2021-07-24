@@ -15,7 +15,7 @@ final class vcCanadaHourly: UIwXViewControllerWithAudio {
         objScrollStackView = ScrollStackView(self)
         objectTextView = Text(stackView, "", FontSize.hourly.size)
         objectTextView.constrain(scrollView)
-        _ = ObjectCanadaLegal(stackView)
+        _ = ObjectCanadaLegal(stackView.get())
         getContent()
     }
 

@@ -16,7 +16,7 @@ class UIwXViewController: UIViewController {
     //
 
     var scrollView = UIScrollView()
-    var stackView = UIStackView()
+    var stackView = ObjectStackView(.fill, .horizontal)
     let toolbar = ObjectToolbar()
     var doneButton = ToolbarIcon()
     var objScrollStackView: ScrollStackView?
@@ -61,7 +61,7 @@ class UIwXViewController: UIViewController {
     func refreshViews() {
         removeAllViews()
         scrollView = UIScrollView()
-        stackView = UIStackView()
+        stackView = ObjectStackView(.fill, .horizontal)
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self)
         objScrollStackView = ScrollStackView(self)

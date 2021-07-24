@@ -26,14 +26,14 @@ final class ObjectImageSummary {
         imagesPerRow = imagesPerRowWide
         #endif
         bitmaps.enumerated().forEach { imageIndex, image in
-            let stackView: UIStackView
+            let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {
                 let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
                 imageStackViewList.append(objectStackView)
-                stackView = objectStackView.view
-                uiv.stackView.addArrangedSubview(stackView)
+                stackView = objectStackView
+                uiv.stackView.addLayout(stackView)
             } else {
-                stackView = imageStackViewList.last!.view
+                stackView = imageStackViewList.last!
             }
             objectImages.append(ObjectImage(
                     stackView,
@@ -70,7 +70,7 @@ final class ObjectImageSummary {
                 stackView = imageStackViewList.last!
             }
             objectImages.append(ObjectImage(
-                stackView.get(),
+                stackView,
                 image,
                 GestureData(imageIndex, uiv, #selector(imageClicked)),
                 widthDivider: imagesPerRow

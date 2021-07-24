@@ -190,7 +190,7 @@ final class vcTabLocation: vcTabParent {
 
     func updateHazards() {
         if ObjectHazards.getHazardCount(objectHazards) > 0 {
-            ObjectHazards.getHazardCards(stackViewHazards.view, objectHazards, isUS)
+            ObjectHazards.getHazardCards(stackViewHazards, objectHazards, isUS)
             stackViewHazards.isHidden = false
         } else {
             stackViewHazards.isHidden = true
@@ -227,16 +227,16 @@ final class vcTabLocation: vcTabParent {
                 stackViewForecast.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
             case "METAL-RADAR":
                 stackViewRadar = ObjectStackViewHS()
-                stackView.addArrangedSubview(stackViewRadar)
-                getNexradRadar(stackViewRadar)
+                stackView.addArrangedSubview(stackViewRadar.get())
+                getNexradRadar(stackViewRadar.get())
             default:
                 let stackViewLocal = ObjectStackViewHS()
-                stackView.addArrangedSubview(stackViewLocal)
+                stackView.addArrangedSubview(stackViewLocal.get())
                 stackViewLocal.setup(stackView)
                 extraDataCards.append(stackViewLocal)
                 if $0.hasPrefix("TXT-") {
                     let product = $0.replace("TXT-", "")
-                    getContentText(product, stackViewLocal)
+                    getContentText(product, stackViewLocal.get())
                 } else if $0.hasPrefix("IMG-") {
                     let product = $0.replace("IMG-", "")
                     getContentImage(product, stackViewLocal)
@@ -406,12 +406,12 @@ final class vcTabLocation: vcTabParent {
         }
     }
 
-    func getContentImage(_ product: String, _ stackView: UIStackView) {
+    func getContentImage(_ product: String, _ stackView: ObjectStackViewHS) {
         _ = FutureBytes2({ UtilityDownload.getImageProduct(product) }, { bitmap in self.displayImage(product, stackView, bitmap) })
     }
 
-    private func displayImage(_ product: String, _ stackView: UIStackView, _ bitmap: Bitmap) {
-        let imgObj = ObjectImage(scrollView, stackView, bitmap, hs: true)
+    private func displayImage(_ product: String, _ stackView: ObjectStackViewHS, _ bitmap: Bitmap) {
+        let imgObj = ObjectImage(scrollView, stackView.get(), bitmap, hs: true)
         imgObj.addGestureRecognizer(GestureData(product, self, #selector(imageTap(sender:))))
     }
 
@@ -573,7 +573,7 @@ final class vcTabLocation: vcTabParent {
         // location card loaded regardless of settings
         //
         let stackViewLocationButton = ObjectStackViewHS()
-        stackView.addArrangedSubview(stackViewLocationButton)
+        stackView.addArrangedSubview(stackViewLocationButton.get())
         stackViewLocationButton.setup(stackView)
         objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
@@ -598,8 +598,8 @@ final class vcTabLocation: vcTabParent {
         gestureRecognizer.numberOfTapsRequired = 1
         let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
         gestureRecognizer2.numberOfTapsRequired = 2
-        stackViewRadar.addGestureRecognizer(gestureRecognizer)
-        stackViewRadar.addGestureRecognizer(gestureRecognizer2)
+        stackViewRadar.addGesture(gestureRecognizer)
+        stackViewRadar.addGesture(gestureRecognizer2)
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true

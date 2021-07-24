@@ -43,7 +43,7 @@ final class vcNhcStorm: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
 
-        stackView.addArrangedSubview(boxImages.get())
+        stackView.addLayout(boxImages.get())
         objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
 

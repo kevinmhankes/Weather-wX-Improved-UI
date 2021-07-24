@@ -38,8 +38,8 @@ final class vcSpcStormReports: UIwXViewController {
         ]).items
         objScrollStackView = ScrollStackView(self)
         
-        stackView.addArrangedSubview(boxImage.get())
-        stackView.addArrangedSubview(boxText.get())
+        stackView.addLayout(boxImage.get())
+        stackView.addLayout(boxText.get())
         
         boxImage.constrain(self)
         boxText.constrain(self)
@@ -152,13 +152,13 @@ final class vcSpcStormReports: UIwXViewController {
             if stormReport.damageHeader != "" {
                 switch stormReport.damageHeader {
                 case "Tornado Reports":
-                    tornadoHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    tornadoHeader = ObjectCardBlackHeaderText(boxText, stormReport.damageHeader)
                     tornadoHeader?.constrain(self)
                 case "Wind Reports":
-                    windHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    windHeader = ObjectCardBlackHeaderText(boxText, stormReport.damageHeader)
                     windHeader?.constrain(self)
                 case "Hail Reports":
-                    hailHeader = ObjectCardBlackHeaderText(boxText.get(), stormReport.damageHeader)
+                    hailHeader = ObjectCardBlackHeaderText(boxText, stormReport.damageHeader)
                     hailHeader?.constrain(self)
                 default:
                     break

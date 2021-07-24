@@ -17,7 +17,7 @@ final class ObjectCardSevenDayCollection {
         uiScrollView = scrollView
         var numCards = 0
         let stackViewLocal7Day = ObjectStackViewHS()
-        stackView.addArrangedSubview(stackViewLocal7Day)
+        stackView.addArrangedSubview(stackViewLocal7Day.get())
         stackViewLocal7Day.setupWithPadding(stackView)
         let days = objectSevenDay.forecastList
         let daysShort = objectSevenDay.forecastListCondensed
@@ -36,7 +36,7 @@ final class ObjectCardSevenDayCollection {
             }
         }
         if !isUS {
-            _ = ObjectCanadaLegal(stackViewLocal7Day)
+            _ = ObjectCanadaLegal(stackViewLocal7Day.get())
             numCards += 1
         } else {
             objectCardSunTime = ObjectCardSunTime(

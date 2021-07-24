@@ -47,7 +47,7 @@ final class ObjectHazards {
         objectHazards.hazards.parseColumn("\"event\": \"(.*?)\"").count
     }
 
-    static func getHazardCards(_ stackView: UIStackView, _ objectHazards: ObjectHazards, _ isUS: Bool = true) {
+    static func getHazardCards(_ stackView: ObjectStackView, _ objectHazards: ObjectHazards, _ isUS: Bool = true) {
         self.isUS = isUS
         var numHaz = 0
         let stackViewLocalHaz = ObjectStackViewHS()
@@ -73,7 +73,7 @@ final class ObjectHazards {
             }
         }
         if numHaz > 0 {
-            stackView.addArrangedSubview(stackViewLocalHaz)
+            stackView.addWidget(stackViewLocalHaz.get())
         }
     }
 

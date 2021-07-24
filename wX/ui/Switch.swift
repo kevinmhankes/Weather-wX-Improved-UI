@@ -13,7 +13,7 @@ final class Switch {
     let prefVar: String
     var locationManger: LocationManager?
 
-    init(_ stackView: UIStackView, _ prefVar: String, _ title: String, _ defaultValue: String) {
+    init(_ stackView: ObjectStackView, _ prefVar: String, _ title: String, _ defaultValue: String) {
         self.prefVar = prefVar
         button.backgroundColor = ColorCompatibility.systemBackground
         button.setTitleColor(ColorCompatibility.label, for: .normal)
@@ -30,7 +30,7 @@ final class Switch {
         horizontalContainer.view.widthAnchor.constraint(
             equalToConstant: CGFloat(width - (UIPreferences.stackviewCardSpacing * 2.0))
         ).isActive = true
-        stackView.addArrangedSubview(horizontalContainer.view)
+        stackView.addLayout(horizontalContainer.view)
         addTarget()
     }
     

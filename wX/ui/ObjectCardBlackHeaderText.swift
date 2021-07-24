@@ -20,11 +20,11 @@ final class ObjectCardBlackHeaderText {
         verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
         objectCardStackView = ObjectCardStackView(verticalTextContainer)
         objectCardStackView.color = UIColor.black
-        uiv.stackView.addArrangedSubview(objectCardStackView.view)
+        uiv.stackView.addLayout(objectCardStackView.view)
         verticalTextContainer.constrain(uiv.scrollView)
     }
     
-    init(_ stackView: UIStackView, _ text: String) {
+    init(_ stackView: ObjectStackView, _ text: String) {
         let tvLocation = TextLarge(80.0, color: UIColor.blue, isUserInteractionEnabled: false)
         tvLocation.text = text
         tvLocation.color = UIColor.white
@@ -33,7 +33,7 @@ final class ObjectCardBlackHeaderText {
         verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view])
         objectCardStackView = ObjectCardStackView(verticalTextContainer)
         objectCardStackView.color = UIColor.black
-        stackView.addArrangedSubview(objectCardStackView.view)
+        stackView.addLayout(objectCardStackView.view)
     }
     
     func constrain(_ uiv: UIwXViewController) {

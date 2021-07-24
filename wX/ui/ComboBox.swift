@@ -14,7 +14,7 @@ final class ComboBox: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     let dataList: [String]
 
     init(
-        _ stackView: UIStackView,
+        _ stackView: ObjectStackView,
         _ prefVar: String,
         _ label: String,
         _ initialValue: String,
@@ -30,7 +30,7 @@ final class ComboBox: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         button.backgroundColor = ColorCompatibility.systemBackground
         numberPicker.backgroundColor = ColorCompatibility.systemBackground
         let horizontalContainer = ObjectCardStackView(arrangedSubviews: [button, numberPicker], alignment: .center)
-        stackView.addArrangedSubview(horizontalContainer.view)
+        stackView.addLayout(horizontalContainer.view)
         
         numberPicker.dataSource = self
         numberPicker.delegate = self

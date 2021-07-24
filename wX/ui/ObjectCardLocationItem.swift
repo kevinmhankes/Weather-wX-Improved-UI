@@ -17,16 +17,16 @@ final class ObjectCardLocationItem {
         _ gesture: GestureData
     ) {
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
-        let tvName = Text(objectStackView.view, name, isUserInteractionEnabled: false, isZeroSpacing: false)
-        tvCurrentConditions = Text(objectStackView.view, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
-        let tvMiddle = Text(objectStackView.view, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvName = Text(objectStackView, name, isUserInteractionEnabled: false, isZeroSpacing: false)
+        tvCurrentConditions = Text(objectStackView, observation, isUserInteractionEnabled: false, isZeroSpacing: true)
+        let tvMiddle = Text(objectStackView, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true)
         tvName.font = FontSize.large.size
         tvCurrentConditions.font = FontSize.small.size
         tvMiddle.font = FontSize.small.size
         tvName.color = ColorCompatibility.highlightText
         tvCurrentConditions.color = ColorCompatibility.label
         tvMiddle.color = ColorCompatibility.systemGray2
-        uiv.stackView.addArrangedSubview(objectStackView.view)
+        uiv.stackView.addLayout(objectStackView.view)
         [tvName, tvName, tvCurrentConditions].forEach {
             // $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
             $0.constrain(uiv.scrollView)

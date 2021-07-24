@@ -39,7 +39,7 @@ final class ObjectSlider {
         let container = ObjectCardStackView(arrangedSubviews: [button, slider], alignment: .top, axis: .vertical)
         let (width, _) = UtilityUI.getScreenBoundsCGFloat()
         slider.widthAnchor.constraint(equalToConstant: width).isActive = true
-        uiv.stackView.addArrangedSubview(container.view)
+        uiv.stackView.addLayout(container.view)
         slider.value = Float(initialValue)
         setLabel()
         

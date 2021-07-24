@@ -108,7 +108,7 @@ final class ObjectCanadaWarnings: NSObject {
             )
             text.isSelectable = false
         }
-        _ = ObjectCanadaLegal(uiv.stackView)
+        _ = ObjectCanadaLegal(uiv.stackView.get())
     }
 
     func getWarningUrl(_ index: Int) -> String {

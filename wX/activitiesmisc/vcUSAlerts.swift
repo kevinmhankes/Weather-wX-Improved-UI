@@ -28,8 +28,8 @@ final class vcUSAlerts: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
         
-        stackView.addArrangedSubview(boxImage.get())
-        stackView.addArrangedSubview(boxText.get())
+        stackView.addLayout(boxImage.get())
+        stackView.addLayout(boxText.get())
         
         boxImage.constrain(self)
         boxText.constrain(self)
@@ -57,7 +57,7 @@ final class vcUSAlerts: UIwXViewController {
         boxText.removeChildren()
         if !filterShown {
             filterButton.title = "Tornado/ThunderStorm/FFW"
-            objectAlertSummary = ObjectAlertSummary(self, boxText.get(), "", capAlerts, filterGesture)
+            objectAlertSummary = ObjectAlertSummary(self, boxText, "", capAlerts, filterGesture)
         } else {
             filterChanged(filter)
         }
@@ -94,7 +94,7 @@ final class vcUSAlerts: UIwXViewController {
     func filterChanged(_ filter: String) {
         boxText.removeChildren()
         filterButton.title = filter
-        objectAlertSummary = ObjectAlertSummary(self, boxText.get(), filter, capAlerts, filterGesture)
+        objectAlertSummary = ObjectAlertSummary(self, boxText, filter, capAlerts, filterGesture)
         filterShown = true
         self.filter = filter
     }

@@ -24,7 +24,7 @@ final class vcAdhocLocation: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
         objScrollStackView = ScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.get().widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
         getContent()
     }
@@ -43,11 +43,11 @@ final class vcAdhocLocation: UIwXViewController {
 
     private func display() {
         _ = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, true)
-        stackView.addArrangedSubview(stackViewCurrentConditions.view)
+        stackView.addLayout(stackViewCurrentConditions.view)
         stackViewCurrentConditions.constrain(scrollView)
         ObjectHazards.getHazardCards(stackView, objectHazards)
         _ = ObjectCardSevenDayCollection(stackViewForecast.view, scrollView, objectSevenDay)
-        stackView.addArrangedSubview(stackViewForecast.view)
+        stackView.addLayout(stackViewForecast.view)
         stackViewForecast.constrain(scrollView)
     }
 

@@ -9,9 +9,9 @@ import UIKit
 final class ObjectAlertDetail {
 
     private var textViews = [Text]()
-    private let uiStackView: UIStackView
+    private let uiStackView: ObjectStackView
 
-    init(_ uiStackView: UIStackView) {
+    init(_ uiStackView: ObjectStackView) {
         self.uiStackView = uiStackView
         (0...6).forEach { _ in
             textViews.append(Text(uiStackView, ""))

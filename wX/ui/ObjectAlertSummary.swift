@@ -17,7 +17,7 @@ final class ObjectAlertSummary: NSObject {
 
     convenience init(
         _ uiv: UIwXViewController,
-        _ stackView: UIStackView,
+        _ stackView: ObjectStackView,
         _ filter: String,
         _ capAlerts: [CapAlert],
         _ gesture: UITapGestureRecognizer?
