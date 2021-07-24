@@ -47,6 +47,10 @@ final class ObjectCardStackView {
         stackView.addGestureRecognizer(gesture)
     }
     
+    func addGesture(_ gesture: UITapGestureRecognizer) {
+        stackView.addGestureRecognizer(gesture)
+    }
+    
     var view: StackView { stackView }
 
 //    func setAxis(_ axis: NSLayoutConstraint.Axis) {

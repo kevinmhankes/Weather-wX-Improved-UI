@@ -111,7 +111,7 @@ final class ObjectCardSevenDay {
     }
 
     func addGestureRecognizer(_ gesture1: UITapGestureRecognizer, _ gesture2: UITapGestureRecognizer) {
-        boxH.view.addGestureRecognizer(gesture1)
-        bottomText.view.addGestureRecognizer(gesture2)
+        boxH.addGesture(gesture1)
+        bottomText.addGesture(gesture2)
     }
 }

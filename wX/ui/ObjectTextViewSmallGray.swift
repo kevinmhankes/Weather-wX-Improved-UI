@@ -32,6 +32,10 @@ final class TextSmallGray {
     func resetTextSize() {
         tv.font = FontSize.medium.size
     }
+    
+    func addGesture(_ gesture: UITapGestureRecognizer) {
+        tv.addGestureRecognizer(gesture)
+    }
 
     var text: String {
         get { tv.text }
