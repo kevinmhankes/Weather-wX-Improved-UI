@@ -39,10 +39,10 @@ final class TextSmallGray {
         set { tv.isAccessibilityElement = newValue }
     }
     
-    var isHidden: Bool {
-        get { tv.isHidden }
-        set { tv.isHidden = newValue }
-    }
+//    var isHidden: Bool {
+//        get { tv.isHidden }
+//        set { tv.isHidden = newValue }
+//    }
 
     var view: UITextView { tv }
 }

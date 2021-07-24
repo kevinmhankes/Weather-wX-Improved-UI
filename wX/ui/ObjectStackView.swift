@@ -39,9 +39,9 @@ final class ObjectStackView {
         uiStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
-    func constrain(_ stackView: UIStackView) {
-        uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-    }
+//    func constrain(_ stackView: UIStackView) {
+//        uiStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+//    }
     
     func constrain(_ stackView: ObjectStackView) {
         uiStackView.widthAnchor.constraint(equalTo: stackView.get().widthAnchor).isActive = true

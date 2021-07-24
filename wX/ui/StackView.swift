@@ -21,7 +21,7 @@ final class StackView: UIStackView {
         backgroundLayer.fillColor = backgroundColor?.cgColor
     }
     
-    func addWidget(_ view: UIView) {
-        addArrangedSubview(view)
-    }
+//    func addWidget(_ view: UIView) {
+//        addArrangedSubview(view)
+//    }
 }
