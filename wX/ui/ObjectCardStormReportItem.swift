@@ -8,8 +8,8 @@ import UIKit
 
 final class ObjectCardStormReportItem {
 
-    init(_ stackView: ObjectStackView, _ stormReport: StormReport, _ gesture: GestureData) {
-        var objectCardStackView = ObjectCardStackView()
+    init(_ box: ObjectStackView, _ stormReport: StormReport, _ gesture: GestureData) {
+        var card = ObjectCardStackView()
         let tvLocation = TextLarge(80.0, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
         let tvAddress = TextLarge(80.0, isUserInteractionEnabled: false)
         let tvDescription = TextSmallGray(isUserInteractionEnabled: false)
@@ -20,9 +20,9 @@ final class ObjectCardStormReportItem {
             let boxV = ObjectStackView(
                 .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
-            objectCardStackView = ObjectCardStackView(boxV)
-            stackView.addLayout(objectCardStackView)
-            objectCardStackView.addGesture(gesture)
+            card = ObjectCardStackView(boxV)
+            box.addLayout(card)
+            card.addGesture(gesture)
         }
     }
 }
