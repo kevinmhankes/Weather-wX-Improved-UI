@@ -54,16 +54,17 @@ final class ObjectAlertSummary: NSObject {
                     wfo = ""
                     wfoName = ""
                 }
+                radarSites.append(alert.getClosestRadar())
                 _ = ObjectCardAlertSummaryItem(
                     stackView,
                     wfo,
                     wfoName,
                     alert,
+                    radarSites.last!,
                     GestureData(index, uiv, #selector(warningSelected)),
                     GestureData(index, uiv, #selector(goToRadar)),
                     GestureData(index, uiv, #selector(goToRadar))
                 )
-                radarSites.append(alert.getClosestRadar())
                 urls.append(alert.url)
                 index += 1
             }

@@ -13,6 +13,7 @@ final class ObjectCardAlertSummaryItem {
         _ wfo: String,
         _ wfoName: String,
         _ alert: CapAlert,
+        _ radarSite: String,
         _ gesture: GestureData,
         _ gestureRadar: GestureData,
         _ gestureRadarText: GestureData
@@ -54,7 +55,7 @@ final class ObjectCardAlertSummaryItem {
         if endTime == "" {
             tvEnd.view.isHidden = true
         }
-        if wfo == "" {
+        if radarSite == "" {
             radarIcon.button.isHidden = true
             radarText.isHidden = true
         }
