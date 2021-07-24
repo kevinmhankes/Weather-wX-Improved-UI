@@ -21,8 +21,12 @@ final class TextSmallGray {
         tv.isUserInteractionEnabled = isUserInteractionEnabled
     }
     
-    func constrain(_ stackView: UIStackView) {
-        tv.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+    func constrain(_ view: UIView) {
+        tv.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
+    
+    func constrain(_ view: ObjectStackView) {
+        tv.widthAnchor.constraint(equalTo: view.get().widthAnchor).isActive = true
     }
 
     func resetTextSize() {
