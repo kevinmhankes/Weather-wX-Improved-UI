@@ -12,14 +12,7 @@ final class ObjectSpotterCard {
         var textViews = [Text]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
         let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
-        let topLine = spotter.lastName
-                + ", "
-                + spotter.firstName
-                + " ("
-                + spotterLocation.latString
-                + ", "
-                + spotterLocation.lonString
-                + ")"
+        let topLine = spotter.lastName + ", " + spotter.firstName + " (" + spotterLocation.latString + ", " + spotterLocation.lonString + ")"
         let middleLine = spotter.reportedAt
         textViews.append(Text(objectStackView, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews.append(Text(objectStackView, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))

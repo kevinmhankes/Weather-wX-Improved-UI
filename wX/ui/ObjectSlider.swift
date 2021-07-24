@@ -42,7 +42,6 @@ final class ObjectSlider {
         uiv.stackView.addLayout(container.view)
         slider.value = Float(initialValue)
         setLabel()
-        
         slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
     }
 

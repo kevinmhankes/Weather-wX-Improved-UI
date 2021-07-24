@@ -34,11 +34,11 @@ final class ObjectImage {
         addGestureRecognizer(gesture)
     }
 
-    convenience init(_ scrollView: UIScrollView, _ stackView: UIStackView, _ bitmap: Bitmap, hs: Bool) {
+    convenience init(_ scrollView: UIScrollView, _ stackView: ObjectStackViewHS, _ bitmap: Bitmap, hs: Bool) {
         self.init()
         img.image = bitmap.image
         self.bitmap = bitmap
-        stackView.addArrangedSubview(img)
+        stackView.addWidget(img)
         if hs {
             setImageAnchorsForHomeScreen(scrollView)
         } else {

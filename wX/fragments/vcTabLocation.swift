@@ -411,7 +411,7 @@ final class vcTabLocation: vcTabParent {
     }
 
     private func displayImage(_ product: String, _ stackView: ObjectStackViewHS, _ bitmap: Bitmap) {
-        let imgObj = ObjectImage(scrollView, stackView.get(), bitmap, hs: true)
+        let imgObj = ObjectImage(scrollView, stackView, bitmap, hs: true)
         imgObj.addGestureRecognizer(GestureData(product, self, #selector(imageTap(sender:))))
     }
 
