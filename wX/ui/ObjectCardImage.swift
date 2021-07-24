@@ -18,6 +18,14 @@ final class ObjectCardImage {
         uiImageView.widthAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
         uiImageView.heightAnchor.constraint(equalToConstant: size * sizeFactor).isActive = true
     }
+    
+    func setBitmap(_ bitmap: Bitmap) {
+        uiImageView.image = bitmap.image
+    }
+    
+    func setImage(_ image: UIImage) {
+        uiImageView.image = image
+    }
 
     var view: UIImageView { uiImageView }
 }

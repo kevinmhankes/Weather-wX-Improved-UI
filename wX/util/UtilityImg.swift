@@ -8,7 +8,7 @@ import UIKit
 
 final class UtilityImg {
 
-    static func resizeImage(_ image: UIImage, _ scale: CGFloat) -> UIImage? {
+    static func resizeImage(_ image: UIImage, _ scale: CGFloat) -> UIImage {
         let newSize = CGSize(width: image.size.width * scale, height: image.size.height * scale)
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false

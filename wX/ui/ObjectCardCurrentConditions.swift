@@ -40,21 +40,15 @@ final class ObjectCardCurrentConditions {
 
     func setImage(_ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if isUS {
+            let bitmap = UtilityNws.getIcon(objectCurrentConditions.iconUrl)
             if !UIPreferences.mainScreenCondense {
-                objectCardImage.view.image = UtilityNws.getIcon(objectCurrentConditions.iconUrl).image
+                objectCardImage.setBitmap(bitmap)
             } else {
-                objectCardImage.view.image = UtilityImg.resizeImage(
-                    UtilityNws.getIcon(objectCurrentConditions.iconUrl).image,
-                    condenseScale
-                )
+                objectCardImage.setImage(UtilityImg.resizeImage(bitmap.image, condenseScale))
             }
         } else {
-            objectCardImage.view.image = UtilityNws.getIcon(
-                UtilityCanada.translateIconNameCurrentConditions(
-                    objectCurrentConditions.data,
-                    objectCurrentConditions.status
-                )
-            ).image
+            let iconName = UtilityCanada.translateIconNameCurrentConditions(objectCurrentConditions.data, objectCurrentConditions.status)
+            objectCardImage.setBitmap(UtilityNws.getIcon(iconName))
         }
     }
 
