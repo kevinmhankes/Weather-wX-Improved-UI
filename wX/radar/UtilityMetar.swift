@@ -8,6 +8,8 @@ final class UtilityMetar {
 
     private static var initializedObsMap = false
     private static var obsLatlon = [String: LatLon]()
+    private static var metarDataRaw = [String]()
+    private static var metarSites = [RID]()
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String, _ fileStorage: FileStorage) {
         if fileStorage.obsDownloadTimer.isRefreshNeeded() || radarSite != fileStorage.obsOldRadarSite {
@@ -136,29 +138,15 @@ final class UtilityMetar {
                     }
                 }
             }
-            fileStorage.obsArr.removeAll()
             fileStorage.obsArr = obsAl
-            fileStorage.obsArrExt.removeAll()
             fileStorage.obsArrExt = obsAlExt
-            fileStorage.obsArrWb.removeAll()
             fileStorage.obsArrWb = obsAlWb
-            fileStorage.obsArrWbGust.removeAll()
             fileStorage.obsArrWbGust = obsAlWbGust
-            fileStorage.obsArrX.removeAll()
             fileStorage.obsArrX = obsAlX
-            fileStorage.obsArrY.removeAll()
             fileStorage.obsArrY = obsAlY
-            fileStorage.obsArrAviationColor.removeAll()
             fileStorage.obsArrAviationColor = obsAlAviationColor
         }
     }
-
-//    static func getObsArrAviationColor(_ file) -> [Int] {
-//        fileStorage.obsArrAviationColor
-//    }
-
-    private static var metarDataRaw = [String]()
-    private static var metarSites = [RID]()
 
     static func readMetarData() {
         if metarDataRaw.isEmpty {
