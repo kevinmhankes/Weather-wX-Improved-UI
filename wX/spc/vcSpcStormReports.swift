@@ -9,7 +9,7 @@ import UIKit
 final class vcSpcStormReports: UIwXViewController {
 
     private var image = ObjectImage()
-    private var objDatePicker: ObjectDatePicker!
+    private let objDatePicker =  ObjectDatePicker()
     private var stormReports = [StormReport]()
     private var html = ""
     private var date = ""
@@ -43,8 +43,11 @@ final class vcSpcStormReports: UIwXViewController {
         
         boxImage.constrain(self)
         boxText.constrain(self)
+
+        boxImage.addWidget(objDatePicker.get())
+        objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
+        image = ObjectImage(boxImage.get())
         
-        displayPreContent()
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".csv"
         getContent()
@@ -125,12 +128,6 @@ final class vcSpcStormReports: UIwXViewController {
         displayText()
     }
 
-    private func displayPreContent() {
-        objDatePicker = ObjectDatePicker(boxImage.get())
-        objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
-        image = ObjectImage(boxImage.get())
-    }
-    
     private func displayImage() {
         image.setBitmap(bitmap)
         image.addGestureRecognizer(GestureData(target: self, action: #selector(imgClicked)))

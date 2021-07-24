@@ -10,9 +10,12 @@ final class ObjectDatePicker {
 
     let datePicker = UIDatePicker()
 
-    init(_ stackView: UIStackView) {
+    init() {
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.maximumDate = Date()
-        stackView.addArrangedSubview(datePicker)
+    }
+    
+    func get() -> UIDatePicker {
+        datePicker
     }
 }

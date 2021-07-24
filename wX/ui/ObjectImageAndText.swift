@@ -31,11 +31,7 @@ final class ObjectImageAndText {
                 widthDivider: 2
             )
         } else {
-            objectImage = ObjectImage(
-                uiv.stackView,
-                bitmap,
-                GestureData(0, uiv, #selector(imageClicked))
-            )
+            objectImage = ObjectImage(uiv.stackView, bitmap, GestureData(0, uiv, #selector(imageClicked)))
         }
         objectImage.accessibilityLabel = html
         objectImage.isAccessibilityElement = true
