@@ -2,7 +2,6 @@
 * [] -> removeAll()
 * FileStorage
     - level 2
-    - windbarb (metar)
 * objectWatch - if html == "" don't save, reset timer
 * rationalize all the Enums, etc
 * radar colors are in RadarGeom?
