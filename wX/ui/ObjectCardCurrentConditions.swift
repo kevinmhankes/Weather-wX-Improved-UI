@@ -59,7 +59,7 @@ final class ObjectCardCurrentConditions {
     }
 
     func setText(_ objectCurrentConditions: ObjectCurrentConditions) {
-        topText.text = objectCurrentConditions.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        topText.text = objectCurrentConditions.topLine.trimnl()
         middleText.text = objectCurrentConditions.middleLine.trim()
         boxH.accessibilityLabel = objectCurrentConditions.spokenText
     }

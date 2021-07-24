@@ -25,6 +25,10 @@ extension String {
         trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
     
+    func trimnl() -> String {
+        trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
     func strip() -> String {
         trimmingCharacters(in: NSCharacterSet.whitespaces)
     }

@@ -20,7 +20,7 @@ final class UtilityObs {
                 obsCodeToLocation[obsClosestClass] = locationName
             }
         }
-        return conditionsTimeStr + " " + locationName!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) + " (" + obsClosestClass + ") "
+        return conditionsTimeStr + " " + locationName!.trimnl() + " (" + obsClosestClass + ") "
     }
 
     static func findObsName(_ obsShortCode: String) -> String {

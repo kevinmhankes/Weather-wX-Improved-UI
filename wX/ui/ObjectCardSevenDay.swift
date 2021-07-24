@@ -44,8 +44,8 @@ final class ObjectCardSevenDay {
 
     func setTextFields(_ labels: (top: String, bottom: String)) {
         topText.text = labels.top.replace("\"", "")
-        bottomText.text = labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        boxH.accessibilityLabel = labels.top + labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        bottomText.text = labels.bottom.trimnl()
+        boxH.accessibilityLabel = labels.top + labels.bottom.trimnl()
     }
 
     func resetTextSize() {
