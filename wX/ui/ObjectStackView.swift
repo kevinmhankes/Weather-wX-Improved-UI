@@ -9,6 +9,11 @@ import UIKit
 final class ObjectStackView {
 
     private let uiStackView = UIStackView()
+    
+    // for a normal UIStackView:
+    // default distribution is .fill
+    // default aix is .horizontal
+    // default spacing is 0.0
 
     init(
         _ distribution: UIStackView.Distribution,
