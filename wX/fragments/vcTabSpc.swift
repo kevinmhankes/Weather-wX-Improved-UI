@@ -12,7 +12,7 @@ final class vcTabSpc: vcTabParent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        objTileMatrix = ObjectTileMatrix(self, stackView.get(), .spc)
+        objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -20,7 +20,7 @@ final class vcTabSpc: vcTabParent {
         if tilesPerRow != UIPreferences.tilesPerRow {
             stackView.removeArrangedViews()
             tilesPerRow = UIPreferences.tilesPerRow
-            objTileMatrix = ObjectTileMatrix(self, stackView.get(), .spc)
+            objTileMatrix = ObjectTileMatrix(self, stackView, .spc)
         }
         updateColors()
     }

@@ -15,7 +15,7 @@ final class ObjectTileMatrix: NSObject {
     private var labels = [String]()
     var toolbar = ObjectToolbar()
 
-    convenience init(_ uiv: UIViewController, _ stackView: UIStackView, _ tabType: TabType) {
+    convenience init(_ uiv: UIViewController, _ stackView: ObjectStackView, _ tabType: TabType) {
         self.init()
         self.uiv = uiv
         self.tabType = tabType
@@ -80,7 +80,7 @@ final class ObjectTileMatrix: NSObject {
                 index += 1
                 jIndex += 1
             }
-            stackView.addArrangedSubview(sV.view)
+            stackView.addLayout(sV.view)
             if jIndex >= icons.count {
                 break
             }
