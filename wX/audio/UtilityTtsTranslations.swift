@@ -793,6 +793,8 @@ final class UtilityTtsTranslations {
         
         // 2021-07-24
         s = s.replace("PWAT", "Precipitable Water")
+        s = s.replace("j/kg", " Joule Per Kilogram ")
+        s = s.replace("J/KG", " Joule Per Kilogram ")
 
 		return s
 	}
