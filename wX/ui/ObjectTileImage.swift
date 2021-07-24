@@ -27,7 +27,7 @@ final class ObjectTileImage {
         image.img.heightAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
 
-    func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
+    func addGesture(_ gesture: UITapGestureRecognizer) {
         image.addGestureRecognizer(gesture)
     }
 }

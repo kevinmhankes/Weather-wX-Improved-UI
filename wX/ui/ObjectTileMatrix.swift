@@ -72,9 +72,9 @@ final class ObjectTileMatrix: NSObject {
                     let tile = ObjectTileImage(sV, icons[jIndex], jIndex, iconsPerRow, labels[jIndex])
                     switch tabType {
                     case .spc:
-                        tile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imgClickedSpc(sender:))))
+                        tile.addGesture(UITapGestureRecognizer(target: self, action: #selector(imgClickedSpc(sender:))))
                     case .misc:
-                        tile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imgClickedMisc(sender:))))
+                        tile.addGesture(UITapGestureRecognizer(target: self, action: #selector(imgClickedMisc(sender:))))
                     }
                 }
                 index += 1
