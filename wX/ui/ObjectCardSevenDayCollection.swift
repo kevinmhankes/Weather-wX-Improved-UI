@@ -13,12 +13,12 @@ final class ObjectCardSevenDayCollection {
     var locationIndex = 0
     var objectCardSunTime: ObjectCardSunTime?
 
-    init(_ stackView: UIStackView, _ scrollView: UIScrollView, _ objectSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
+    init(_ stackView: ObjectStackView, _ scrollView: UIScrollView, _ objectSevenDay: ObjectSevenDay, _ isUS: Bool = true) {
         uiScrollView = scrollView
         var numCards = 0
         let stackViewLocal7Day = ObjectStackViewHS()
-        stackView.addArrangedSubview(stackViewLocal7Day.get())
-        stackViewLocal7Day.setupWithPadding(stackView)
+        stackView.addLayout(stackViewLocal7Day.get())
+        stackViewLocal7Day.setupWithPadding(stackView.get())
         let days = objectSevenDay.forecastList
         let daysShort = objectSevenDay.forecastListCondensed
         days.indices.forEach { index in

@@ -170,7 +170,7 @@ final class vcTabLocation: vcTabParent {
             || objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
             stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
             objectCardSevenDayCollection = ObjectCardSevenDayCollection(
-                stackViewForecast.view,
+                stackViewForecast,
                 scrollView,
                 objectSevenDay,
                 isUS
