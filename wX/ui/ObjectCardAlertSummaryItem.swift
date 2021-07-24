@@ -24,7 +24,7 @@ final class ObjectCardAlertSummaryItem {
         radarText.addGesture(gestureRadarText)
         let spacerView = UIView()
         spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        let horizontalContainer = ObjectStackView(
+        let boxH = ObjectStackView(
             .fillProportionally,
             .horizontal,
             spacing: 10,
@@ -43,11 +43,11 @@ final class ObjectCardAlertSummaryItem {
         tvStart.isAccessibilityElement = false
         tvEnd.isAccessibilityElement = false
         tvArea.isAccessibilityElement = false
-        let verticalTextContainer = ObjectStackView(
+        let boxV = ObjectStackView(
             .fill,
             .vertical,
             spacing: 0,
-            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, horizontalContainer.view]
+            arrangedSubviews: [tvName.view, tvTitle.view, tvStart.view, tvEnd.view, tvArea.view, boxH.view]
         )
         if wfoName == "" {
             tvName.view.isHidden = true
@@ -58,13 +58,13 @@ final class ObjectCardAlertSummaryItem {
         if radarSite == "" {
 //            radarIcon.button.isHidden = true
 //            radarText.isHidden = true
-            horizontalContainer.isHidden = true
+            boxH.isHidden = true
         }
-        verticalTextContainer.isAccessibilityElement = true
-        verticalTextContainer.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
-        let cardStackView = ObjectCardStackView(verticalTextContainer)
+        boxV.isAccessibilityElement = true
+        boxV.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
+        let cardStackView = ObjectCardStackView(boxV)
         stackView.addLayout(cardStackView.view)
         cardStackView.addGesture(gesture)
-        verticalTextContainer.constrain(stackView)
+        boxV.constrain(stackView)
     }
 }
