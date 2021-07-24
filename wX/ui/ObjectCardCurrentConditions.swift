@@ -27,9 +27,9 @@ final class ObjectCardCurrentConditions {
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.isAccessibilityElement = true
         stackView.addWidget(horizontalContainer.view)
-        horizontalContainer.constrain(stackView.get())
+        horizontalContainer.constrain(stackView)
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextContainer.constrain(stackView.get(), padding)
+        verticalTextContainer.constrain(stackView, padding)
         updateCard(objectCurrentConditions, isUS)
     }
 
