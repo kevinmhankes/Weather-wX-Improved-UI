@@ -10,21 +10,21 @@ final class ObjectTileImage {
 
     private var image = ObjectImage()
 
-    init(_ stackView: UIStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat, _ accessibilityLabel: String) {
+    init(_ stackView: ObjectStackView, _ filename: String, _ index: Int, _ iconsPerRow: CGFloat, _ accessibilityLabel: String) {
         let bitmap = Bitmap.fromFile(filename)
         image.img.tag = index
         image.setBitmap(bitmap)
         image.img.isAccessibilityElement = true
         image.img.accessibilityLabel = accessibilityLabel
-        stackView.addArrangedSubview(image.img)
-        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
-        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        stackView.addWidget(image.img)
+        image.img.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
     
-    init(_ stackView: UIStackView, _ iconsPerRow: CGFloat) {
-        stackView.addArrangedSubview(image.img)
-        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
-        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+    init(_ stackView: ObjectStackView, _ iconsPerRow: CGFloat) {
+        stackView.addWidget(image.img)
+        image.img.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
 
     func addGestureRecognizer(_ gesture: UITapGestureRecognizer) {
