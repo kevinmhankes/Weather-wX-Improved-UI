@@ -15,7 +15,7 @@ final class ObjectCardSevenDay {
     private let objectCardImage: ObjectCardImage
     private let condenseScale: CGFloat = 0.50
 
-    init(_ stackView: ObjectStackViewHS, _ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
+    init(_ box: ObjectStackViewHS, _ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
@@ -29,10 +29,10 @@ final class ObjectCardSevenDay {
         bottomText.isAccessibilityElement = false
         boxH = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, boxV.view])
         boxH.isAccessibilityElement = true
-        stackView.addLayout(boxH.get())
-        boxH.constrain(stackView.get())
+        box.addLayout(boxH.get())
+        boxH.constrain(box.get())
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        boxV.constrain(stackView.get(), padding)
+        boxV.constrain(box.get(), padding)
         update(index, urls, days, daysShort, isUS)
     }
 

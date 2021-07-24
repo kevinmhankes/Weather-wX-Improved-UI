@@ -12,24 +12,24 @@ final class ObjectCardCurrentConditions {
     private let topText: TextLarge = TextLarge(80.0)
     private let middleText: TextSmallGray = TextSmallGray()
     private let condenseScale: CGFloat = 0.50
-    private let horizontalContainer: ObjectCardStackView
+    private let boxH: ObjectCardStackView
 
-    init(_ stackView: ObjectStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
+    init(_ box: ObjectStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
             objectCardImage = ObjectCardImage(sizeFactor: 1.0)
         }
-        let verticalTextContainer = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
-        verticalTextContainer.alignment = .top
+        let boxV = ObjectStackView(.fill, .vertical, spacing: 0, arrangedSubviews: [topText.view, middleText.view])
+        boxV.alignment = .top
         topText.isAccessibilityElement = false
         middleText.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
-        horizontalContainer.isAccessibilityElement = true
-        stackView.addLayout(horizontalContainer)
-        horizontalContainer.constrain(stackView)
+        boxH = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, boxV.view])
+        boxH.isAccessibilityElement = true
+        box.addLayout(boxH)
+        boxH.constrain(box)
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextContainer.constrain(stackView, padding)
+        boxV.constrain(box, padding)
         updateCard(objectCurrentConditions, isUS)
     }
 
@@ -60,8 +60,8 @@ final class ObjectCardCurrentConditions {
 
     func setText(_ objectCurrentConditions: ObjectCurrentConditions) {
         topText.text = objectCurrentConditions.topLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        middleText.text = objectCurrentConditions.middleLine.trimmingCharacters(in: .whitespaces)
-        horizontalContainer.accessibilityLabel = objectCurrentConditions.spokenText
+        middleText.text = objectCurrentConditions.middleLine.trim()
+        boxH.accessibilityLabel = objectCurrentConditions.spokenText
     }
 
     func resetTextSize() {
