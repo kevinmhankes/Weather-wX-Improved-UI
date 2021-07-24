@@ -9,7 +9,7 @@ import UIKit
 final class ObjectCardSevenDay {
 
     private var isUS = true
-    private let horizontalContainer: ObjectCardStackView
+    private let boxH: ObjectCardStackView
     private let topText = TextLarge(80.0)
     private let bottomText = TextSmallGray()
     private let objectCardImage: ObjectCardImage
@@ -27,10 +27,10 @@ final class ObjectCardSevenDay {
         verticalTextContainer.alignment = .top
         topText.isAccessibilityElement = false
         bottomText.isAccessibilityElement = false
-        horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
-        horizontalContainer.isAccessibilityElement = true
-        stackView.addLayout(horizontalContainer.view)
-        horizontalContainer.constrain(stackView.get())
+        boxH = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
+        boxH.isAccessibilityElement = true
+        stackView.addLayout(boxH.get())
+        boxH.constrain(stackView.get())
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
         verticalTextContainer.constrain(stackView.get(), padding)
         update(index, urls, days, daysShort, isUS)
@@ -45,8 +45,7 @@ final class ObjectCardSevenDay {
     func setTextFields(_ labels: (top: String, bottom: String)) {
         topText.text = labels.top.replace("\"", "")
         bottomText.text = labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        horizontalContainer.view.accessibilityLabel = labels.top
-            + labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        boxH.accessibilityLabel = labels.top + labels.bottom.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 
     func resetTextSize() {
@@ -112,7 +111,7 @@ final class ObjectCardSevenDay {
     }
 
     func addGestureRecognizer(_ gesture1: UITapGestureRecognizer, _ gesture2: UITapGestureRecognizer) {
-        horizontalContainer.view.addGestureRecognizer(gesture1)
+        boxH.view.addGestureRecognizer(gesture1)
         bottomText.view.addGestureRecognizer(gesture2)
     }
 }
