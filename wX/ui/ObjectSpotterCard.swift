@@ -11,20 +11,20 @@ final class ObjectSpotterCard {
     init(_ uiv: UIwXViewController, _ spotter: Spotter, _ gesture: UITapGestureRecognizer) {
         var textViews = [Text]()
         let spotterLocation = UtilityMath.latLonFix(spotter.location)
-        let objectStackView = ObjectStackView(.fill, .vertical, spacing: 0)
+        let boxV = ObjectStackView(.fill, .vertical, spacing: 0)
         let topLine = spotter.lastName + ", " + spotter.firstName + " (" + spotterLocation.latString + ", " + spotterLocation.lonString + ")"
         let middleLine = spotter.reportedAt
-        textViews.append(Text(objectStackView, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
-        textViews.append(Text(objectStackView, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(Text(boxV, topLine, isUserInteractionEnabled: false, isZeroSpacing: true))
+        textViews.append(Text(boxV, middleLine, isUserInteractionEnabled: false, isZeroSpacing: true))
         textViews[0].font = FontSize.medium.size
         textViews[1].font = FontSize.small.size
         textViews[0].color = ColorCompatibility.highlightText
         textViews[1].color = ColorCompatibility.label
-        uiv.stackView.addLayout(objectStackView.view)
+        uiv.stackView.addLayout(boxV)
         textViews.forEach {
             $0.constrain(uiv.scrollView)
         }
-        objectStackView.constrain(uiv.stackView)
-        objectStackView.addGesture(gesture)
+        boxV.constrain(uiv.stackView)
+        boxV.addGesture(gesture)
     }
 }
