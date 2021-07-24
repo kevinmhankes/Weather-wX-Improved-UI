@@ -65,7 +65,7 @@ final class ObjectImageAndText {
         bitmaps.enumerated().forEach { imageIndex, image in
             let stackView: ObjectStackView
             if imageCount % imagesPerRow == 0 {
-                let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                let objectStackView = ObjectStackView(.fillEqually, .horizontal)
                 imageStackViewList.append(objectStackView)
                 stackView = objectStackView
                 uiv.stackView.addLayout(stackView)
@@ -75,7 +75,7 @@ final class ObjectImageAndText {
             _ = ObjectImage(
                     stackView,
                     image,
-                    GestureData(imageIndex, uiv, #selector(imageClickedWithIndex(sender:))),
+                    GestureData(imageIndex, uiv, #selector(imageClickedWithIndex)),
                     widthDivider: imagesPerRow)
             imageCount += 1
         }

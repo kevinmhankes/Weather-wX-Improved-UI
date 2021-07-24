@@ -175,7 +175,7 @@ final class vcSevereDashboard: UIwXViewController {
             severeNotices[type1]?.bitmaps.enumerated().forEach { imageIndex, image in
                 let stackView: ObjectStackView
                 if imageCount % imagesPerRow == 0 {
-                    let objectStackView = ObjectStackView(UIStackView.Distribution.fillEqually, NSLayoutConstraint.Axis.horizontal)
+                    let objectStackView = ObjectStackView(.fillEqually, .horizontal)
                     imageStackViewList.append(objectStackView)
                     stackView = objectStackView
                     self.stackView.addLayout(stackView)
