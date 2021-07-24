@@ -170,7 +170,7 @@ final class vcSpcStormReports: UIwXViewController {
                     hailReports += 1
                 }
                 _ = ObjectCardStormReportItem(
-                    boxText.get(),
+                    boxText,
                     stormReport,
                     GestureData(index, self, #selector(gotoMap(sender:)))
                 )

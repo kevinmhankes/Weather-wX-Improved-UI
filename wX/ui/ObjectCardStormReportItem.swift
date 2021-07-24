@@ -8,7 +8,7 @@ import UIKit
 
 final class ObjectCardStormReportItem {
 
-    init(_ stackView: UIStackView, _ stormReport: StormReport, _ gesture: GestureData) {
+    init(_ stackView: ObjectStackView, _ stormReport: StormReport, _ gesture: GestureData) {
         var objectCardStackView = ObjectCardStackView()
         let tvLocation = TextLarge(80.0, color: ColorCompatibility.highlightText, isUserInteractionEnabled: false)
         let tvAddress = TextLarge(80.0, isUserInteractionEnabled: false)
@@ -21,7 +21,7 @@ final class ObjectCardStormReportItem {
                 .fill, .vertical, spacing: 0, arrangedSubviews: [tvLocation.view, tvAddress.view, tvDescription.view]
             )
             objectCardStackView = ObjectCardStackView(verticalTextContainer)
-            stackView.addArrangedSubview(objectCardStackView.view)
+            stackView.addLayout(objectCardStackView.view)
             objectCardStackView.addGesture(gesture)
         }
     }
