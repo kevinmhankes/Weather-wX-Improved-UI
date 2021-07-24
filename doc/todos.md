@@ -1,3 +1,4 @@
+* TTS translations
 * Text.swift - make tv private
 * Nexrad long press obs - show distance to
 * vcUsAlerts - don't show lightning icon if no valid radar
