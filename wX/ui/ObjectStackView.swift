@@ -140,6 +140,10 @@ final class ObjectStackView {
         get { uiStackView.alignment }
         set { uiStackView.alignment = newValue }
     }
+    
+    var widthAnchor: NSLayoutDimension {
+        uiStackView.widthAnchor
+    }
         
     var view: UIStackView { uiStackView }
 }

@@ -17,14 +17,14 @@ final class ObjectTileImage {
         image.img.isAccessibilityElement = true
         image.img.accessibilityLabel = accessibilityLabel
         stackView.addWidget(image.img)
-        image.img.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
-        image.img.heightAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
     
     init(_ stackView: ObjectStackView, _ iconsPerRow: CGFloat) {
         stackView.addWidget(image.img)
-        image.img.widthAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
-        image.img.heightAnchor.constraint(equalTo: stackView.get().widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
+        image.img.heightAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1 / iconsPerRow).isActive = true
     }
 
     func addGesture(_ gesture: UITapGestureRecognizer) {
