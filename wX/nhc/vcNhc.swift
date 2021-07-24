@@ -25,14 +25,11 @@ final class vcNhc: UIwXViewController {
         glcfsButton = ToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
-
-        stackView.addLayout(boxText.get())
-        stackView.addLayout(boxImages.get())
-
+        stackView.addLayout(boxText)
+        stackView.addLayout(boxImages)
         objectNhc = ObjectNhc(self)
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
-
         for region in NhcOceanEnum.allCases {
             urls += objectNhc.regionMap[region]!.urls
         }

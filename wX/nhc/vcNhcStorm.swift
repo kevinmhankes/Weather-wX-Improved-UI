@@ -42,14 +42,11 @@ final class vcNhcStorm: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
-
-        stackView.addLayout(boxImages.get())
+        stackView.addLayout(boxImages)
         objectTextView = Text(stackView)
         objectTextView.constrain(scrollView)
-
         bitmaps = [Bitmap](repeating: Bitmap(), count: 9)
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
-
         getContent()
     }
 
