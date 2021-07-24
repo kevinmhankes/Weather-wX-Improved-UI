@@ -46,7 +46,7 @@ final class vcSpcStormReports: UIwXViewController {
 
         boxImage.addWidget(objDatePicker.get())
         objDatePicker.datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
-        image = ObjectImage(boxImage.get())
+        image = ObjectImage(boxImage)
         
         imageUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".gif"
         textUrl = GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + spcStormReportsDay + ".csv"

@@ -24,7 +24,7 @@ final class vcAdhocLocation: UIwXViewController {
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
         objScrollStackView = ScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        stackView.get().widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.constrain(scrollView)
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
         getContent()
     }

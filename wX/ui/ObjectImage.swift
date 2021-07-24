@@ -46,9 +46,9 @@ final class ObjectImage {
         }
     }
 
-    convenience init(_ stackView: UIStackView) {
+    convenience init(_ stackView: ObjectStackView) {
         self.init()
-        stackView.addArrangedSubview(img)
+        stackView.addWidget(img)
     }
 
     func setBitmap(_ bitmap: Bitmap) {

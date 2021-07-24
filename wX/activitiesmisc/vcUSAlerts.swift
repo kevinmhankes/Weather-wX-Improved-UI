@@ -27,15 +27,11 @@ final class vcUSAlerts: UIwXViewController {
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, filterButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
-        
-        stackView.addLayout(boxImage.get())
-        stackView.addLayout(boxText.get())
-        
+        stackView.addLayout(boxImage)
+        stackView.addLayout(boxText)
         boxImage.constrain(self)
         boxText.constrain(self)
-        
-        image = ObjectImage(boxImage.get())
-        
+        image = ObjectImage(boxImage)
         getContent()
     }
 

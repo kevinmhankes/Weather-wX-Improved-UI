@@ -86,7 +86,6 @@ final class CapAlert {
     }
 
     func getClosestRadar() -> String {
-        print(points)
         return ObjectWarning.getClosestRadarCompute(points)
     }
 
