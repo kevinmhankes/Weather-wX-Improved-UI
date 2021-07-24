@@ -49,9 +49,9 @@ final class ObjectCardStackView {
     
     var view: StackView { stackView }
 
-    func setAxis(_ axis: NSLayoutConstraint.Axis) {
-        stackView.axis = axis
-    }
+//    func setAxis(_ axis: NSLayoutConstraint.Axis) {
+//        stackView.axis = axis
+//    }
     
     var color: UIColor {
         get { stackView.backgroundColor! }

@@ -106,10 +106,10 @@ final class ObjectStackView {
         get().removeArrangedViews()
     }
     
-    var color: UIColor {
-        get { uiStackView.backgroundColor! }
-        set { uiStackView.backgroundColor = newValue }
-    }
+//    var color: UIColor {
+//        get { uiStackView.backgroundColor! }
+//        set { uiStackView.backgroundColor = newValue }
+//    }
     
     var isAccessibilityElement: Bool {
         get { uiStackView.isAccessibilityElement }

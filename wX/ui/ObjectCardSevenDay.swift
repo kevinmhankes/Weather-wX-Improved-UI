@@ -14,10 +14,10 @@ final class ObjectCardSevenDay {
     private let bottomText = TextSmallGray()
     private let objectCardImage: ObjectCardImage
     private let condenseScale: CGFloat = 0.50
-    private let stackView: ObjectStackViewHS
+//    private let stackView: ObjectStackViewHS
 
     init(_ stackView: ObjectStackViewHS, _ index: Int, _ urls: [String], _ days: [String], _ daysShort: [String], _ isUS: Bool) {
-        self.stackView = stackView
+//        self.stackView = stackView
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {

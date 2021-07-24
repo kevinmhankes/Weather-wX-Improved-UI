@@ -85,14 +85,14 @@ final class Text {
         addGesture(gesture)
     }
 
-    convenience init(_ stackView: ObjectStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
-        self.init()
-        tv.text = text
-        self.color = color
-        self.font = font
-        stackView.addWidget(tv)
-        constrain(stackView.get())
-    }
+//    convenience init(_ stackView: ObjectStackView, _ text: String, _ font: UIFont, _ color: UIColor) {
+//        self.init()
+//        tv.text = text
+//        self.color = color
+//        self.font = font
+//        stackView.addWidget(tv)
+//        constrain(stackView.get())
+//    }
     
     convenience init(_ stackView: ObjectStackViewHS, _ text: String, _ font: UIFont, _ color: UIColor) {
         self.init()

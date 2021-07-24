@@ -37,9 +37,9 @@ final class ObjectStackViewHS {
         view.spacing = UIPreferences.stackviewCardSpacing
     }
     
-    func addWidget(_ w: UIView) {
-        view.addArrangedSubview(w)
-    }
+//    func addWidget(_ w: UIView) {
+//        view.addArrangedSubview(w)
+//    }
     
     func addLayout(_ w: UIView) {
         view.addArrangedSubview(w)
@@ -49,9 +49,9 @@ final class ObjectStackViewHS {
         view.addGestureRecognizer(gesture)
     }
     
-    func addGesture(_ gesture: GestureData) {
-        view.addGestureRecognizer(gesture)
-    }
+//    func addGesture(_ gesture: GestureData) {
+//        view.addGestureRecognizer(gesture)
+//    }
     
     func removeFromSuperview() {
         view.removeFromSuperview()
