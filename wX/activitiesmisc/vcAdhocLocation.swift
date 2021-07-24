@@ -42,7 +42,7 @@ final class vcAdhocLocation: UIwXViewController {
     }
 
     private func display() {
-        _ = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, true)
+        _ = ObjectCardCurrentConditions(stackViewCurrentConditions, objectCurrentConditions, true)
         stackView.addLayout(stackViewCurrentConditions.view)
         stackViewCurrentConditions.constrain(scrollView)
         ObjectHazards.getHazardCards(stackView, objectHazards)

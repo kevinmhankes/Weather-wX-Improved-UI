@@ -14,7 +14,7 @@ final class ObjectCardCurrentConditions {
     private let condenseScale: CGFloat = 0.50
     private let horizontalContainer: ObjectCardStackView
 
-    init(_ stackView: UIStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
+    init(_ stackView: ObjectStackView, _ objectCurrentConditions: ObjectCurrentConditions, _ isUS: Bool) {
         if UIPreferences.mainScreenCondense {
             objectCardImage = ObjectCardImage(sizeFactor: condenseScale)
         } else {
@@ -26,10 +26,10 @@ final class ObjectCardCurrentConditions {
         middleText.isAccessibilityElement = false
         horizontalContainer = ObjectCardStackView(arrangedSubviews: [objectCardImage.view, verticalTextContainer.view])
         horizontalContainer.isAccessibilityElement = true
-        stackView.addArrangedSubview(horizontalContainer.view)
-        horizontalContainer.constrain(stackView)
+        stackView.addWidget(horizontalContainer.view)
+        horizontalContainer.constrain(stackView.get())
         let padding: CGFloat = CGFloat(-UIPreferences.nwsIconSize - 6.0)
-        verticalTextContainer.constrain(stackView, padding)
+        verticalTextContainer.constrain(stackView.get(), padding)
         updateCard(objectCurrentConditions, isUS)
     }
 

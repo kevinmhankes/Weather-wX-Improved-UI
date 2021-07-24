@@ -373,7 +373,7 @@ final class vcTabLocation: vcTabParent {
         let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if objectCardCurrentConditions == nil {
-            objectCardCurrentConditions = ObjectCardCurrentConditions(stackViewCurrentConditions.view, objectCurrentConditions, isUS)
+            objectCardCurrentConditions = ObjectCardCurrentConditions(stackViewCurrentConditions, objectCurrentConditions, isUS)
             objectCardCurrentConditions?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {
             objectCardCurrentConditions?.updateCard(objectCurrentConditions, isUS)
