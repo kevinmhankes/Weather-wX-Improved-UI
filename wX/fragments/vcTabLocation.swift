@@ -573,7 +573,7 @@ final class vcTabLocation: vcTabParent {
         // location card loaded regardless of settings
         //
         let stackViewLocationButton = ObjectStackViewHS()
-        stackView.addLayout(stackViewLocationButton.get())
+        stackView.addLayout(stackViewLocationButton)
         stackViewLocationButton.setup(stackView.get())
         objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
@@ -582,9 +582,10 @@ final class vcTabLocation: vcTabParent {
 
     // Clear all views except 7day and current conditions
     func clearViews() {
-        stackViewHazards.view.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+//        stackViewHazards.view.subviews.forEach {
+//            $0.removeFromSuperview()
+//        }
+        stackViewHazards.removeChildren()
         extraDataCards.forEach {
             $0.removeFromSuperview()
         }
