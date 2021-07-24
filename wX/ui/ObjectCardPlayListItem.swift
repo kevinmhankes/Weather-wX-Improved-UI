@@ -29,7 +29,7 @@ final class ObjectCardPlayListItem {
         [tvProduct, tvMiddle, tvBottom].forEach {
             $0.constrain(uiv.scrollView)
         }
-        objectStackView.view.addGestureRecognizer(gesture)
+        objectStackView.addGesture(gesture)
         objectStackView.constrain(uiv.stackView)
     }
 }

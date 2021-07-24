@@ -54,6 +54,10 @@ final class ObjectStackView {
         uiStackView.addArrangedSubview(layout.get())
     }
     
+    func addGesture(_ gesture: GestureData) {
+        uiStackView.addGestureRecognizer(gesture)
+    }
+    
     func get() -> UIStackView {
         uiStackView
     }
