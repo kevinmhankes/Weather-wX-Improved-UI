@@ -29,6 +29,7 @@ final class WXMetalTextObject {
     private let context: UIViewController
     private let xFudge: Double
     private let yFudge: Double
+    private var fileStorage = FileStorage()
     
     init() {
         numPanes = 0
@@ -54,6 +55,7 @@ final class WXMetalTextObject {
         self.glViewHeight = glViewHeight
         self.wxMetalRender = wxMetalRender
         self.numPanes = numPanes
+        self.fileStorage = wxMetalRender.fileStorage
         maxCitiesPerGlview = 16 / numPanes
         let fudgeFactor = 375.0
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
@@ -182,10 +184,10 @@ final class WXMetalTextObject {
             let obsExtZoom = Double(RadarPreferences.obsExtZoom)
             glView.observations = []
             if wxMetalRender.zoom > obsMinZoom {
-                UtilityMetar.obsArr.indices.forEach { index in
-                    if index < UtilityMetar.obsArr.count && index < UtilityMetar.obsArrExt.count {
-                        let tmpArrObs = UtilityMetar.obsArr[index].split(":")
-                        let tmpArrObsExt = UtilityMetar.obsArrExt[index].split(":")
+                fileStorage.obsArr.indices.forEach { index in
+                    if index < fileStorage.obsArr.count && index < fileStorage.obsArrExt.count {
+                        let tmpArrObs = fileStorage.obsArr[index].split(":")
+                        let tmpArrObsExt = fileStorage.obsArrExt[index].split(":")
                         let lat = Double(tmpArrObs[0]) ?? 0.0
                         let lon = Double(tmpArrObs[1]) ?? 0.0
                         let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, wxMetalRender.projectionNumbers)

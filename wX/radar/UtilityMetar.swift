@@ -13,19 +13,19 @@ final class UtilityMetar {
     private static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
     private static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
     private static var initializedObsMap = false
-    static var obsArr = [String]()
-    static var obsArrExt = [String]()
-    static var obsArrWb = [String]()
-    static var obsArrWbGust = [String]()
-    static var obsArrX = [Double]()
-    static var obsArrY = [Double]()
-    private static var obsArrAviationColor = [Int]()
-    private static var obsStateOld = ""
+//    static var obsArr = [String]()
+//    static var obsArrExt = [String]()
+//    static var obsArrWb = [String]()
+//    static var obsArrWbGust = [String]()
+//    static var obsArrX = [Double]()
+//    static var obsArrY = [Double]()
+//    private static var obsArrAviationColor = [Int]()
+//    private static var obsStateOld = ""
     private static var obsLatlon = [String: LatLon]()
-    private static var timer = DownloadTimer("METAR")
+//    private static var timer = DownloadTimer("METAR")
 
-    static func getStateMetarArrayForWXOGL(_ radarSite: String) {
-        if timer.isRefreshNeeded() || radarSite != obsStateOld {
+    static func getStateMetarArrayForWXOGL(_ radarSite: String, _ fileStorage: FileStorage) {
+        if fileStorage.obsDownloadTimer.isRefreshNeeded() || radarSite != fileStorage.obsOldRadarSite {
             var obsAl = [String]()
             var obsAlExt = [String]()
             var obsAlWb = [String]()
@@ -33,7 +33,7 @@ final class UtilityMetar {
             var obsAlX = [Double]()
             var obsAlY = [Double]()
             var obsAlAviationColor = [Int]()
-            obsStateOld = radarSite
+            fileStorage.obsOldRadarSite = radarSite
             let obsList = getObservationSites(radarSite)
             let html = (GlobalVariables.nwsAWCwebsitePrefix + "/adds/metars/index?submit=1&station_ids=" + obsList + "&chk_metars=on").getHtml()
             let metarArr = condenseObs(html.parseColumn("<FONT FACE=\"Monospace,Courier\">(.*?)</FONT><BR>"))
@@ -151,26 +151,26 @@ final class UtilityMetar {
                     }
                 }
             }
-            obsArr = []
-            obsArr = obsAl
-            obsArrExt = []
-            obsArrExt = obsAlExt
-            obsArrWb = []
-            obsArrWb = obsAlWb
-            obsArrWbGust = []
-            obsArrWbGust = obsAlWbGust
-            obsArrX = []
-            obsArrX = obsAlX
-            obsArrY = []
-            obsArrY = obsAlY
-            obsArrAviationColor = []
-            obsArrAviationColor = obsAlAviationColor
+            fileStorage.obsArr.removeAll()
+            fileStorage.obsArr = obsAl
+            fileStorage.obsArrExt.removeAll()
+            fileStorage.obsArrExt = obsAlExt
+            fileStorage.obsArrWb.removeAll()
+            fileStorage.obsArrWb = obsAlWb
+            fileStorage.obsArrWbGust.removeAll()
+            fileStorage.obsArrWbGust = obsAlWbGust
+            fileStorage.obsArrX.removeAll()
+            fileStorage.obsArrX = obsAlX
+            fileStorage.obsArrY.removeAll()
+            fileStorage.obsArrY = obsAlY
+            fileStorage.obsArrAviationColor.removeAll()
+            fileStorage.obsArrAviationColor = obsAlAviationColor
         }
     }
 
-    static func getObsArrAviationColor() -> [Int] {
-        obsArrAviationColor
-    }
+//    static func getObsArrAviationColor(_ file) -> [Int] {
+//        fileStorage.obsArrAviationColor
+//    }
 
     private static var metarDataRaw = [String]()
     private static var metarSites = [RID]()

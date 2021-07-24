@@ -533,7 +533,7 @@ final class WXMetalRender {
     
     private func downloadObs() {
         if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-            UtilityMetar.getStateMetarArrayForWXOGL(rid)
+            UtilityMetar.getStateMetarArrayForWXOGL(rid, fileStorage)
         }
         if PolygonType.WIND_BARB.display {
             constructWBLines()
@@ -754,9 +754,9 @@ final class WXMetalRender {
 
     func constructWBCircle() {
         wbCircleBuffers.lenInit = PolygonType.WIND_BARB.size
-        wbCircleBuffers.latList = UtilityMetar.obsArrX
-        wbCircleBuffers.lonList = UtilityMetar.obsArrY
-        wbCircleBuffers.colorIntArray = UtilityMetar.getObsArrAviationColor()
+        wbCircleBuffers.latList = fileStorage.obsArrX
+        wbCircleBuffers.lonList = fileStorage.obsArrY
+        wbCircleBuffers.colorIntArray = fileStorage.obsArrAviationColor
         wbCircleBuffers.setCount(wbCircleBuffers.latList.count)
         wbCircleBuffers.triangleCount = 6
         wbCircleBuffers.initialize(24 * wbCircleBuffers.count * wbCircleBuffers.triangleCount)
