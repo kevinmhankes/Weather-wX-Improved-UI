@@ -31,6 +31,7 @@ final class UIPreferences {
     static var useNwsApiForHourly = true
     static var debugMode = false
     static var animInterval = 250
+    static var playlistStr = ""
 
     static func initialize() {
         #if targetEnvironment(macCatalyst)
@@ -54,6 +55,7 @@ final class UIPreferences {
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
         nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 68.0)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)
+        playlistStr = Utility.readPref("PLAYLIST", "")
         debugMode = Utility.readPref("DEBUG_MODE", "false").hasPrefix("t")
         if debugMode {
             RadarPreferences.useFileStorage = true

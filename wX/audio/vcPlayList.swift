@@ -107,7 +107,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     func serializeSettings() {
         playlistItems = playlistItems.filter { $0 != "" }
         let token = TextUtils.join(":", playlistItems)
-        MyApplication.playlistStr = token
+        UIPreferences.playlistStr = token
         Utility.writePref("PLAYLIST", token)
     }
 

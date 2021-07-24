@@ -13,9 +13,9 @@ final class UtilityPlayList {
     static func add(_ prod: String, _ text: String, _ uiv: UIViewController, _ menuButton: ToolbarIcon, showStatus: Bool = true) -> Bool {
         let prodLocal = prod.uppercased()
         var productAdded = false
-        if !MyApplication.playlistStr.contains(prodLocal) {
-            MyApplication.playlistStr += ":" + prodLocal
-            Utility.writePref("PLAYLIST", MyApplication.playlistStr)
+        if !UIPreferences.playlistStr.contains(prodLocal) {
+            UIPreferences.playlistStr += ":" + prodLocal
+            Utility.writePref("PLAYLIST", UIPreferences.playlistStr)
             if showStatus {
                 _ = ObjectToast(prodLocal + " saved to playlist: " + String(text.count), uiv, menuButton)
             }
@@ -32,7 +32,7 @@ final class UtilityPlayList {
     static func checkAndSave(_ prod: String, _ text: String) {
         let prodLocal = prod.uppercased()
         let formattedDate = UtilityTime.getDateAsString(formatTimeString)
-        if MyApplication.playlistStr.contains(prodLocal) {
+        if UIPreferences.playlistStr.contains(prodLocal) {
             Utility.writePref("PLAYLIST_" + prodLocal, text)
             Utility.writePref("PLAYLIST_" + prodLocal + "_TIME", formattedDate)
         }

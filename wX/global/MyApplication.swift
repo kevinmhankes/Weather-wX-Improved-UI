@@ -7,9 +7,7 @@
 import UIKit
 
 final class MyApplication {
-    
-    static var playlistStr = ""
-    
+        
     static func onCreate() {
         initPreferences()
         RadarGeometry.initialize()
@@ -24,7 +22,6 @@ final class MyApplication {
         UIPreferences.initialize()
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         RadarGeometry.setColors()
-        playlistStr = Utility.readPref("PLAYLIST", "")
         Location.setCurrentLocationStr(Utility.readPref("CURRENT_LOC_FRAGMENT", "1"))
         AppColors.update()
         ColorPalettes.initialize()
