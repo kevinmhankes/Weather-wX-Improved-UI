@@ -9,7 +9,7 @@ import UIKit
 class vcTabParent: UIViewController {
 
     var scrollView = UIScrollView()
-    var stackView = UIStackView()
+    var stackView = ObjectStackView(.fill, .horizontal)
     var objTileMatrix = ObjectTileMatrix()
     var fab: ObjectFab?
     var objScrollStackView: ScrollStackView?
@@ -30,7 +30,7 @@ class vcTabParent: UIViewController {
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
         setTabBarColor()
-        objScrollStackView = ScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView.get())
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
         }
@@ -118,8 +118,8 @@ class vcTabParent: UIViewController {
     func refreshViews() {
         removeAllViews()
         scrollView = UIScrollView()
-        stackView = UIStackView()
-        objScrollStackView = ScrollStackView(self, scrollView, stackView)
+        stackView = ObjectStackView(.fill, .horizontal)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView.get())
         if UIPreferences.mainScreenRadarFab {
             fab = ObjectFab(self, #selector(radarClicked))
         }

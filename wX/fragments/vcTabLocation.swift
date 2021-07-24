@@ -112,7 +112,7 @@ final class vcTabLocation: vcTabParent {
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
-        stackView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        stackView.get().widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
             view.removeConstraints([
                 objScrollStackView!.fragmentHeightAnchor1!,
@@ -121,7 +121,7 @@ final class vcTabLocation: vcTabParent {
                 objScrollStackView!.fragmentWidthAnchor2!
             ])
         }
-        objScrollStackView = ScrollStackView(self, scrollView, stackView)
+        objScrollStackView = ScrollStackView(self, scrollView, stackView.get())
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
@@ -217,22 +217,22 @@ final class vcTabLocation: vcTabParent {
         homescreenFav.forEach {
             switch $0 {
             case "TXT-CC2":
-                stackView.addArrangedSubview(stackViewCurrentConditions.view)
-                stackViewCurrentConditions.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+                stackView.addLayout(stackViewCurrentConditions)
+                stackViewCurrentConditions.constrain(stackView)
             case "TXT-HAZ":
-                stackView.addArrangedSubview(stackViewHazards.view)
-                stackViewHazards.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+                stackView.addLayout(stackViewHazards)
+                stackViewHazards.constrain(stackView)
             case "TXT-7DAY2":
-                stackView.addArrangedSubview(stackViewForecast.view)
-                stackViewForecast.view.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+                stackView.addLayout(stackViewForecast)
+                stackViewForecast.constrain(stackView)
             case "METAL-RADAR":
                 stackViewRadar = ObjectStackViewHS()
-                stackView.addArrangedSubview(stackViewRadar.get())
+                stackView.addLayout(stackViewRadar.get())
                 getNexradRadar(stackViewRadar.get())
             default:
                 let stackViewLocal = ObjectStackViewHS()
-                stackView.addArrangedSubview(stackViewLocal.get())
-                stackViewLocal.setup(stackView)
+                stackView.addLayout(stackViewLocal.get())
+                stackViewLocal.setup(stackView.get())
                 extraDataCards.append(stackViewLocal)
                 if $0.hasPrefix("TXT-") {
                     let product = $0.replace("TXT-", "")
@@ -573,8 +573,8 @@ final class vcTabLocation: vcTabParent {
         // location card loaded regardless of settings
         //
         let stackViewLocationButton = ObjectStackViewHS()
-        stackView.addArrangedSubview(stackViewLocationButton.get())
-        stackViewLocationButton.setup(stackView)
+        stackView.addLayout(stackViewLocationButton.get())
+        stackViewLocationButton.setup(stackView.get())
         objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
         objLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
         objLabel.isSelectable = false

@@ -102,6 +102,10 @@ final class ObjectStackView {
         get().removeFromSuperview()
     }
     
+    func removeArrangedViews() {
+        get().removeArrangedViews()
+    }
+    
     var color: UIColor {
         get { uiStackView.backgroundColor! }
         set { uiStackView.backgroundColor = newValue }
