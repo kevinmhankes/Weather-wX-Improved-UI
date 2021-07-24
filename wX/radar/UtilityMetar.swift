@@ -6,23 +6,8 @@
 
 final class UtilityMetar {
 
-    // FIXME var naming
-    private static let patternMetarWxogl1 = ".*? (M?../M?..) .*?"
-    private static let patternMetarWxogl2 = ".*? A([0-9]{4})"
-    private static let patternMetarWxogl3 = "AUTO ([0-9].*?KT) .*?"
-    private static let patternMetarWxogl4 = "Z ([0-9].*?KT) .*?"
-    private static let patternMetarWxogl5 = "SM (.*?) M?[0-9]{2}/"
     private static var initializedObsMap = false
-//    static var obsArr = [String]()
-//    static var obsArrExt = [String]()
-//    static var obsArrWb = [String]()
-//    static var obsArrWbGust = [String]()
-//    static var obsArrX = [Double]()
-//    static var obsArrY = [Double]()
-//    private static var obsArrAviationColor = [Int]()
-//    private static var obsStateOld = ""
     private static var obsLatlon = [String: LatLon]()
-//    private static var timer = DownloadTimer("METAR")
 
     static func getStateMetarArrayForWXOGL(_ radarSite: String, _ fileStorage: FileStorage) {
         if fileStorage.obsDownloadTimer.isRefreshNeeded() || radarSite != fileStorage.obsOldRadarSite {
@@ -51,14 +36,14 @@ final class UtilityMetar {
                 var validWindGust = false
                 if (metar.hasPrefix("K") || metar.hasPrefix("P")) && !metar.contains("NIL") {
                     let metarItems = metar.split(" ")
-                    let TDArr = metar.parse(patternMetarWxogl1).split("/")
+                    let TDArr = metar.parse(".*? (M?../M?..) .*?").split("/")
                     let timeBlob = metarItems.count > 1 ? metarItems[1] : ""
-                    var pressureBlob = metar.parse(patternMetarWxogl2)
-                    var windBlob = metar.parse(patternMetarWxogl3)
+                    var pressureBlob = metar.parse(".*? A([0-9]{4})")
+                    var windBlob = metar.parse("AUTO ([0-9].*?KT) .*?")
                     if windBlob == "" {
-                        windBlob = metar.parse(patternMetarWxogl4)
+                        windBlob = metar.parse("Z ([0-9].*?KT) .*?")
                     }
-                    let conditionsBlob = metar.parse(patternMetarWxogl5)
+                    let conditionsBlob = metar.parse("SM (.*?) M?[0-9]{2}/")
                     var visBlob = metar.parse(" ([0-9].*?SM) ")
                     let visBlobArr = visBlob.split(" ")
                     let visBlobDisplay = visBlobArr[visBlobArr.count - 1]
