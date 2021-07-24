@@ -11,12 +11,7 @@ final class ObjectCardSunTime {
     private let text: Text
 
     init(_ stackView: UIStackView, _ gesture: UITapGestureRecognizer) {
-        text = Text(
-            stackView,
-            "",
-            FontSize.small.size,
-            ColorCompatibility.label
-        )
+        text = Text(stackView, "", FontSize.small.size, ColorCompatibility.label)
         text.textAlignment = .center
         text.addGesture(gesture)
         update()

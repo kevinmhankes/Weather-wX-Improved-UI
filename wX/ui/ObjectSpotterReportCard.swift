@@ -28,6 +28,6 @@ final class ObjectSpotterReportCard {
             // $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
             $0.constrain(uiv.scrollView)
         }
-        objectStackView.view.addGestureRecognizer(gesture)
+        objectStackView.addGesture(gesture)
     }
 }

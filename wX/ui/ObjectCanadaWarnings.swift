@@ -104,7 +104,7 @@ final class ObjectCanadaWarnings: NSObject {
             let text = Text(
                 uiv.stackView,
                 html,
-                GestureData(index, uiv, #selector(goToWarning(sender:)))
+                GestureData(index, uiv, #selector(goToWarning))
             )
             text.isSelectable = false
         }

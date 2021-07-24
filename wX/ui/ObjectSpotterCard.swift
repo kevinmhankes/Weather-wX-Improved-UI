@@ -32,6 +32,6 @@ final class ObjectSpotterCard {
             $0.constrain(uiv.scrollView)
         }
         objectStackView.constrain(uiv.stackView)
-        objectStackView.view.addGestureRecognizer(gesture)
+        objectStackView.addGesture(gesture)
     }
 }
