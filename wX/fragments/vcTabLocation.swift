@@ -227,11 +227,11 @@ final class vcTabLocation: vcTabParent {
                 stackViewForecast.constrain(stackView)
             case "METAL-RADAR":
                 stackViewRadar = ObjectStackViewHS()
-                stackView.addLayout(stackViewRadar.get())
+                stackView.addLayout(stackViewRadar)
                 getNexradRadar(stackViewRadar.get())
             default:
                 let stackViewLocal = ObjectStackViewHS()
-                stackView.addLayout(stackViewLocal.get())
+                stackView.addLayout(stackViewLocal)
                 stackViewLocal.setup(stackView.get())
                 extraDataCards.append(stackViewLocal)
                 if $0.hasPrefix("TXT-") {
@@ -390,7 +390,7 @@ final class vcTabLocation: vcTabParent {
         if product == "HOURLY" || UtilityWpcText.needsFixedWidthFont(product.uppercased()) {
             objectTextView.font = FontSize.hourly.size
         }
-        objectTextView.addGesture(GestureData(product, self, #selector(textTap(sender:))))
+        objectTextView.addGesture(GestureData(product, self, #selector(textTap)))
         objectTextView.accessibilityLabel = html
         objectTextView.isSelectable = false
     }
@@ -412,7 +412,7 @@ final class vcTabLocation: vcTabParent {
 
     private func displayImage(_ product: String, _ stackView: ObjectStackViewHS, _ bitmap: Bitmap) {
         let imgObj = ObjectImage(scrollView, stackView, bitmap, hs: true)
-        imgObj.addGestureRecognizer(GestureData(product, self, #selector(imageTap(sender:))))
+        imgObj.addGestureRecognizer(GestureData(product, self, #selector(imageTap)))
     }
 
     func getNexradRadar(_ stackView: UIStackView) {
