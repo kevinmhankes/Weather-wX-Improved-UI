@@ -772,7 +772,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
-            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Warning", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
         }
 //        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
 //            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
@@ -786,27 +786,27 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 //        }
         
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
-            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Watch", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
         }
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
             // print(MyApplication.mcdNoList.value)
-            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MCD", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
         }
         if RadarPreferences.mpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
-            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MPD", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
         }
 
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self) }))
+        alert.addAction(UIAlertAction("Observation: " + obsSite.name + " " + to.String(obsSite.distance) + " miles", { _ in UtilityRadarUI.getMetar(pointerLocation, self) }))
         alert.addAction(
             UIAlertAction(
-                "Nearest forecast: "
+                "Forecast: "
                     + pointerLocation.latString.truncate(6)
                     + ", "
                     + pointerLocation.lonString.truncate(6), { _ in UtilityRadarUI.getForecast(pointerLocation, self) }
             )
         )
-        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
+        alert.addAction(UIAlertAction("Meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
         alert.addAction(
             UIAlertAction(
                 "Radar status message: " + wxMetalRenders[index]!.rid, { _ in

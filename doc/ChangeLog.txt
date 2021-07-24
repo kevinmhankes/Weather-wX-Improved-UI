@@ -1,5 +1,12 @@
 
-56134 2021_07_22 
+56134 2021_07_24 [ADD] long press nexrad radar - show how many miles away closest observation point is
+		 [ADD] long press nexrad radar - reduce uncessary text
+		   Show Warning text -> Show Warning
+		   Show Watch text -> Show Watch
+		   Show MCD text -> Show MCD
+		   Show MPD text -> Show MPD
+		   Nearest observation: -> Observation: 
+		   Nearest meteogram -> Meteogram:
 56133 2021_07_22 [ADD] nexrad warnings is now enabled by default for new installs
 56132 2021_07_20 [REF] use new class Switch in settings
 		 [ADD] in settings, alphabetize entries

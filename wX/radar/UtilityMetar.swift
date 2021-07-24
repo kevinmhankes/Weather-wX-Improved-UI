@@ -218,6 +218,7 @@ final class UtilityMetar {
             if currentDistance < shortestDistance {
                 shortestDistance = currentDistance
                 bestIndex = index
+                metarSites[index].distance = Int(currentDistance)
             }
         }
         if bestIndex == -1 {

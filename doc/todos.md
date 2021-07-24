@@ -1,5 +1,4 @@
 * TTS translations
-* Nexrad long press obs - show distance to
 * vcUsAlerts - don't show lightning icon if no valid radar
 * scan for ??
 * [] -> removeAll()
