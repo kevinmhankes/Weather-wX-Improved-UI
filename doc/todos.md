@@ -1,6 +1,3 @@
-
-* main parent window , convert UIStackView to ObjectStackView
-* vcUsAlerts - don't show lightning icon if no valid radar
 * scan for ??
 * [] -> removeAll()
 * FileStorage
