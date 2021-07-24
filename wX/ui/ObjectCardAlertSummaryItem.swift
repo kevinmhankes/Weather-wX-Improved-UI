@@ -56,8 +56,9 @@ final class ObjectCardAlertSummaryItem {
             tvEnd.view.isHidden = true
         }
         if radarSite == "" {
-            radarIcon.button.isHidden = true
-            radarText.isHidden = true
+//            radarIcon.button.isHidden = true
+//            radarText.isHidden = true
+            horizontalContainer.isHidden = true
         }
         verticalTextContainer.isAccessibilityElement = true
         verticalTextContainer.accessibilityLabel = title + "Start: " + startTime + "End: " + endTime + alert.area
