@@ -55,11 +55,11 @@ final class WXGLDownload {
                 let data = getInputStreamFromURLL2(getLevel2Url(radarSite))
                 if  RadarPreferences.useFileStorage {
                     fileStorage.memoryBuffer = MemoryBuffer(data)
-                } else {
-                    UtilityIO.saveInputStream(data, l2BaseFn + "_d" + indexString)
-                    UtilityFileManagement.deleteFile(l2BaseFn + indexString)
-                    UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
                 }
+                // TODO FIXME
+                UtilityIO.saveInputStream(data, l2BaseFn + "_d" + indexString)
+                UtilityFileManagement.deleteFile(l2BaseFn + indexString)
+                UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
             }
         }
         return ridPrefix
@@ -158,12 +158,17 @@ final class WXGLDownload {
         let baseUrl = nwsRadarLevel2Pub + ridPrefix + radarSite + "/"
         let html = (baseUrl + "dir.list").getHtmlSep()
         var sizes = [String]()
-        html.split("\n").forEach { sizes.append($0.split(" ")[0]) }
+        html.split("\n").forEach {
+            sizes.append($0.split(" ")[0])
+        }
         sizes.removeLast()
+        // print(html)
         let tmpArr = html.replace("<br>", " ").split(" ")
         if tmpArr.count < 4 {
             return ""
         }
+        // print(sizes)
+        // print(tmpArr.count)
         var fileName = tmpArr[tmpArr.count - 1].split("\n")[0]
         let fnPrev = tmpArr[tmpArr.count - 2].split("\n")[0]
         let fnSize = Int(sizes[sizes.count - 1]) ?? 1
@@ -172,6 +177,7 @@ final class WXGLDownload {
         if ratio < 0.75 {
             fileName = fnPrev
         }
+        // print("AAA " + baseUrl + fileName)
         return baseUrl + fileName
     }
     
