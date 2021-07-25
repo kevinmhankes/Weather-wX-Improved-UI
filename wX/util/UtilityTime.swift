@@ -176,6 +176,14 @@ final class UtilityTime {
         getDateAsString("yyyy-MM-dd HH:mm:ss")
     }
     
+    static func isRadarTimeOldNew(radarMilli: Int) -> Bool {
+        // 1 min is 60k ms
+        if radarMilli > 20 * 60000 {
+            return true
+        }
+        return false
+    }
+    
     static func isRadarTimeOld(_ radarTime: String) -> Bool {
         let radarTimeComponents = radarTime.split(":")
         if radarTimeComponents.count < 3 {

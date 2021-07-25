@@ -175,6 +175,7 @@ final class WXMetalNexradLevelData {
         let dateString = dateFormatter.string(from: date)
         let radarInfoFinal = dateString + GlobalVariables.newline + "Product: " + String(productCode)
         fileStorage.radarInfo = radarInfoFinal
+        fileStorage.radarAgeMilli = Int64(UtilityTime.currentTimeMillis() - sec * 1000)
     }
 
     private func writeTime(_ volumeScanDate: Int16, _ volumeScanTime: Int) {
@@ -187,5 +188,6 @@ final class WXMetalNexradLevelData {
         let dateString = dateFormatter.string(from: date)
         let radarInfoFinal = dateString + GlobalVariables.newline + radarInfo
         fileStorage.radarInfo = radarInfoFinal
+        fileStorage.radarAgeMilli = Int64(UtilityTime.currentTimeMillis() - sec * 1000)
     }
 }
