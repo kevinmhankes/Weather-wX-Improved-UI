@@ -417,7 +417,7 @@ final public class ObjectModel {
         case "SPCSREF:SREF":
             params = UtilityModelSpcSrefInterface.params
             paramLabels = UtilityModelSpcSrefInterface.labels
-            sectors = []
+            sectors.removeAll()
             times.removeAll()
             stride(from: 0, to: 87, by: 3).forEach { times.append(String(format: "%02d", $0)) }
             runs = runTimeData.listRun
