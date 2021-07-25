@@ -57,10 +57,10 @@ final class WXGLDownload {
                     fileStorage.memoryBuffer = MemoryBuffer(data)
                 } else {
                     UtilityIO.saveInputStream(data, l2BaseFn + "_d" + indexString)
+                    UtilityFileManagement.deleteFile(l2BaseFn + indexString)
+                    UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
                 }
             }
-            UtilityFileManagement.deleteFile(l2BaseFn + indexString)
-            UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
         }
         return ridPrefix
     }
@@ -144,11 +144,11 @@ final class WXGLDownload {
         (0..<frameCount).forEach { index in
             listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
-            if RadarPreferences.useFileStorage {
-                fileStorage.animationMemoryBuffer[frameCount] = MemoryBuffer(data)
-            } else {
+            // if RadarPreferences.useFileStorage {
+            //    fileStorage.animationMemoryBuffer[frameCount] = MemoryBuffer(data)
+            // } else {
                 UtilityIO.saveInputStream(data, listOfFiles[index])
-            }
+            // }
         }
         return listOfFiles
     }
