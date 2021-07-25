@@ -42,7 +42,6 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
     }
 
     func getLsrFromWfo(_ wfo: String) {
-        // var lsrList = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby=" + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {
@@ -56,7 +55,6 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
                 _ = FutureVoid({ self.wfoProd.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version)) }, display)
             }
         }
-        // return lsrList
     }
 
     @objc func mapClicked() {

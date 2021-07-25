@@ -33,7 +33,7 @@ final class vcSpotters: UIwXViewController {
         spotterCountButton.title = "Count: " + String(spotterData.count)
         spotterDataSorted = spotterData.sorted(by: { $1.lastName > $0.lastName })
         spotterDataSorted.enumerated().forEach { index, item in
-            _ = ObjectSpotterCard(self, item, GestureData(index, self, #selector(buttonPressed(sender:))))
+            _ = ObjectSpotterCard(self, item, GestureData(index, self, #selector(buttonPressed)))
         }
     }
 
