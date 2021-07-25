@@ -63,20 +63,20 @@ final class SevereWarning {
             return "?"
         }
         var i = 0
-        for  s in warningList {
-            if s.isCurrent {
-                i += 1
-            }
+        for s in warningList where s.isCurrent {
+            // if s.isCurrent {
+            i += 1
+            // }
         }
         return String(i)
     }
     
     func getCount() -> Int {
         var i = 0
-        for s in warningList {
-            if s.isCurrent {
-                i += 1
-            }
+        for s in warningList where s.isCurrent {
+            // if s.isCurrent {
+            i += 1
+            // }
         }
         return i
     }

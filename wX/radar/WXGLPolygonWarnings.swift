@@ -39,10 +39,10 @@ final class WXGLPolygonWarnings {
         }
         let warningList = ObjectWarning.parseJson(html)
         var i = 0
-        for s in warningList {
-            if s.isCurrent {
-                i += 1
-            }
+        for s in warningList where s.isCurrent {
+            // if s.isCurrent {
+            i += 1
+            // }
         }
         return String(i)
     }
