@@ -15,7 +15,6 @@ final class GlobalVariables {
     static let editor = Editor()
     static let appName = "wXL23"
     static var forecastZone = ""
-    
     static let mainScreenCaDisclaimor = "Data for Canada forecasts and radar provided by" + " https://weather.gc.ca/canada_e.html."
     static let nwsSPCwebsitePrefix = "https://www.spc.noaa.gov"
     static let nwsWPCwebsitePrefix = "https://www.wpc.ncep.noaa.gov"
@@ -29,7 +28,6 @@ final class GlobalVariables {
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
     static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
-    // static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
     static let degreeSymbol = "\u{00B0}"
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"
