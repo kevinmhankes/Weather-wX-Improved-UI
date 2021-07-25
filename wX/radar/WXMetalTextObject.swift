@@ -108,7 +108,7 @@ final class WXMetalTextObject {
     
     private func addTextLabelsCountyLabels() {
         if GeographyType.countyLabels.display {
-            glView.countyLabels = []
+            glView.countyLabels.removeAll()
             if wxMetalRender.zoom > countyMinZoom {
                 UtilityCountyLabels.countyName.indices.forEach {
                     checkAndDrawText(
@@ -125,7 +125,7 @@ final class WXMetalTextObject {
     
     private func addTextLabelsSpottersLabels() {
         if PolygonType.SPOTTER_LABELS.display {
-            glView.spottersLabels = []
+            glView.spottersLabels.removeAll()
             if wxMetalRender.zoom > 0.5 {
                 UtilitySpotter.spotterList.indices.forEach {
                     checkAndDrawText(
@@ -141,13 +141,17 @@ final class WXMetalTextObject {
     }
     
     func initializeTextLabels() {
-        if numPanes == 1 { initializeTextLabelsCitiesExtended() }
+        if numPanes == 1 {
+            initializeTextLabelsCitiesExtended()
+        }
         initializeTextLabelsCountyLabels()
     }
     
     func removeTextLabels() {
         context.view.subviews.forEach { view in
-            if view is UITextView { view.removeFromSuperview() }
+            if view is UITextView {
+                view.removeFromSuperview()
+            }
         }
     }
     
@@ -168,11 +172,13 @@ final class WXMetalTextObject {
     
     func addWpcPressureCenters() {
         if RadarPreferences.radarShowWpcFronts {
-            glView.pressureCenterLabels = []
+            glView.pressureCenterLabels.removeAll()
             if wxMetalRender.zoom < WXMetalRender.zoomToHideMiscFeatures {
                 UtilityWpcFronts.pressureCenters.forEach { value in
                     var color = wXColor.colorsToInt(0, 127, 255)
-                    if value.type == PressureCenterTypeEnum.LOW { color = wXColor.colorsToInt(255, 0, 0) }
+                    if value.type == PressureCenterTypeEnum.LOW {
+                        color = wXColor.colorsToInt(255, 0, 0)
+                    }
                     checkAndDrawText(&glView.pressureCenterLabels, value.lat, value.lon, value.pressureInMb, color)
                 }
             }
@@ -182,7 +188,7 @@ final class WXMetalTextObject {
     private func addTextLabelsObservations() {
         if PolygonType.OBS.display||PolygonType.WIND_BARB.display {
             let obsExtZoom = Double(RadarPreferences.obsExtZoom)
-            glView.observations = []
+            glView.observations.removeAll()
             if wxMetalRender.zoom > obsMinZoom {
                 fileStorage.obsArr.indices.forEach { index in
                     if index < fileStorage.obsArr.count && index < fileStorage.obsArrExt.count {
