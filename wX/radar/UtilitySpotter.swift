@@ -14,8 +14,8 @@ final class UtilitySpotter {
 
     static func get() -> [Spotter] {
         if timer.isRefreshNeeded() {
-            spotterList = []
-            reportsList = []
+            spotterList.removeAll()
+            reportsList.removeAll()
             var latitudeList = [String]()
             var longitudeList = [String]()
             var html = "https://www.spotternetwork.org/feeds/csv.txt".getHtmlSep()

@@ -27,11 +27,13 @@ final class ObjectNhc: NSObject {
     init(_ uiv: UIwXViewController) {
         self.uiv = uiv
         super.init()
-        NhcOceanEnum.allCases.forEach { regionMap[$0] = ObjectNhcRegionSummary($0) }
+        NhcOceanEnum.allCases.forEach {
+            regionMap[$0] = ObjectNhcRegionSummary($0)
+        }
     }
 
     func getTextData() {
-        statusList = []
+        statusList.removeAll()
         stormDataList.removeAll()
         let url = GlobalVariables.nwsNhcWebsitePrefix + "/CurrentStorms.json"
         // let url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json"
