@@ -102,14 +102,14 @@ final class UtilityDownload {
         } else if product.hasPrefix("GLF") && !product.contains("%") {
             text = getTextProduct(product + "%")
         } else if product.contains("FOCN45") {
-            text = (GlobalVariables.nwsRadarPub + "/data/raw/fo/focn45.cwwg..txt").getHtmlSep()
+            text = (GlobalVariables.tgftpSitePrefix + "/data/raw/fo/focn45.cwwg..txt").getHtmlSep()
             text = text.removeLineBreaks()
         } else if product.hasPrefix("VFD") {
             let t2 = product.substring(3)
             text = (GlobalVariables.nwsAWCwebsitePrefix + "/fcstdisc/data?cwa=K" + t2).getNwsHtml()
             text = text.parse("<!-- raw data starts -->(.*?)<!-- raw data ends -->")
         } else if product.hasPrefix("AWCN") {
-            text = (GlobalVariables.nwsRadarPub + "/data/raw/aw/" + product.lowercased() + ".cwwg..txt").getHtmlSep()
+            text = (GlobalVariables.tgftpSitePrefix + "/data/raw/aw/" + product.lowercased() + ".cwwg..txt").getHtmlSep()
         } else if product.contains("NFD") {
             text = (GlobalVariables.nwsOpcWebsitePrefix + "/mobile/mobile_product.php?id=" + product.uppercased()).getHtml().removeHtml()
         } else if product.contains("FWDDY38") {
@@ -117,7 +117,7 @@ final class UtilityDownload {
             text = textUrl.getHtmlSep()
             text = text.parse(GlobalVariables.pre2Pattern)
         } else if product.contains("FPCN48") {
-            text = (GlobalVariables.nwsRadarPub + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
+            text = (GlobalVariables.tgftpSitePrefix + "/data/raw/fp/fpcn48.cwao..txt").getHtmlSep()
         } else if product.hasPrefix("FXCN01") {
             text = ("http://collaboration.cmc.ec.gc.ca/cmc/cmop/FXCN/").getHtmlSep()
             let dateList = UtilityString.parseColumn(text, "href=\"([0-9]{8})/\"")

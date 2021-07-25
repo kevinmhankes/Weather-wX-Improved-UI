@@ -29,7 +29,7 @@ final class GlobalVariables {
     static let goes16Url = "https://cdn.star.nesdis.noaa.gov"
     static let nwsApiUrl = "https://api.weather.gov"
     static let tgftpSitePrefix = "https://tgftp.nws.noaa.gov"
-    static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
+    // static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
     static let degreeSymbol = "\u{00B0}"
     static let newline = "\n"
     static let prePattern = "<pre.*?>(.*?)</pre>"

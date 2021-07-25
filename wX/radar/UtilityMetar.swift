@@ -175,7 +175,7 @@ final class UtilityMetar {
         if bestIndex == -1 {
             return "Please select a location in the United States."
         } else {
-            let url = (GlobalVariables.nwsRadarPub + "data/observations/metar/decoded/" + metarSites[bestIndex].name + ".TXT")
+            let url = (GlobalVariables.tgftpSitePrefix + "/data/observations/metar/decoded/" + metarSites[bestIndex].name + ".TXT")
             let html = url.getHtmlSep()
             return html.replace("<br>", GlobalVariables.newline)
         }

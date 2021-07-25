@@ -34,7 +34,7 @@ final class ObjectMetar {
             icon = observationData.parseFirst("\"icon\": \"(.*?)\",")
             condition = observationData.parseFirst("\"textDescription\": \"(.*?)\",")
         }
-        let metarData = (GlobalVariables.nwsRadarPub + "/data/observations/metar/decoded/" + obsClosest.name + ".TXT").getHtml()
+        let metarData = (GlobalVariables.tgftpSitePrefix + "/data/observations/metar/decoded/" + obsClosest.name + ".TXT").getHtml()
         temperature = metarData.parseFirst("Temperature: (.*?) F")
         dewPoint = metarData.parseFirst("Dew Point: (.*?) F")
         windDirection = metarData.parseFirst("Wind: from the (.*?) \\(.*? degrees\\) at .*? MPH ")

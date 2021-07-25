@@ -36,7 +36,7 @@ final class WXGLDownload {
     private static func getRadarFileUrl(_ radarSite: String, _ product: String, _ isTdwr: Bool) -> String {
         let ridPrefix = getRidPrefix(radarSite, isTdwr)
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
-        return GlobalVariables.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
+        return GlobalVariables.tgftpSitePrefix + "/SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/sn.last"
     }
     
     static func getRadarFile(_ url: String, _ radarSite: String, _ product: String, _ indexString: String, _ isTdwr: Bool, _ fileStorage: FileStorage) -> String {
@@ -80,7 +80,7 @@ final class WXGLDownload {
     
     private static func getRadarDirectoryUrl(_ radarSite: String, _ product: String, _ ridPrefix: String) -> String {
         let productString = GlobalDictionaries.nexradProductString[product] ?? ""
-        return GlobalVariables.nwsRadarPub + "SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
+        return GlobalVariables.tgftpSitePrefix + "/SL.us008001/DF.of/DC.radar/" + productString + "/SI." + ridPrefix + radarSite.lowercased() + "/"
     }
     
     // Level 3: Download a list of files and return the list as a list of Strings
