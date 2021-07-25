@@ -618,7 +618,8 @@ final class WXMetalRender {
             }
             let text = timeString[1].replace(GlobalVariables.newline + replaceToken, "") + additionalText
             timeButton.title = text
-            if UtilityTime.isRadarTimeOld(text) && !isAnimating {
+            // if UtilityTime.isRadarTimeOld(text) && !isAnimating {
+            if UtilityTime.isRadarTimeOld(fileStorage) && !isAnimating {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
             } else {
                 timeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)

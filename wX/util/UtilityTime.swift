@@ -176,45 +176,46 @@ final class UtilityTime {
         getDateAsString("yyyy-MM-dd HH:mm:ss")
     }
     
-    static func isRadarTimeOldNew(radarMilli: Int) -> Bool {
-        // 1 min is 60k ms
-        if radarMilli > 20 * 60000 {
+    static func isRadarTimeOld(_ fileStorage: FileStorage) -> Bool {
+        // 1 min is 60,000 ms
+        print(fileStorage.radarAgeMilli)
+        if fileStorage.radarAgeMilli > 20 * 60000 {
             return true
         }
         return false
     }
     
-    static func isRadarTimeOld(_ radarTime: String) -> Bool {
-        let radarTimeComponents = radarTime.split(":")
-        if radarTimeComponents.count < 3 {
-            // something went wrong
-            return false
-        }
-        let radarTimeHours = to.Int(radarTimeComponents[0])
-        let radarTimeMinutes = to.Int(radarTimeComponents[1])
-        let radarTimeTotalMinutes = radarTimeHours * 60 + radarTimeMinutes
-        let currentTime = Utility.safeGet(getCurrentLocalTimeAsString().split(" "), 1)
-        let currentTimeComponents = currentTime.split(":")
-        if currentTimeComponents.count < 3 {
-            // something went wrong
-            return false
-        }
-        let currentTimeHours = to.Int(currentTimeComponents[0])
-        let currentTimeMinutes = to.Int(currentTimeComponents[1])
-        let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
-        if currentTimeTotalMinutes < 30 {
-            // TODO find out how to handle midnight
-            return false
-        }
-        if radarTimeTotalMinutes > currentTimeTotalMinutes {
-            // radar time should not be in the future, radar is down
-            return true
-        }
-        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) {
-            return true
-        }
-        return false
-    }
+//    static func isRadarTimeOldNOTUSED(_ radarTime: String) -> Bool {
+//        let radarTimeComponents = radarTime.split(":")
+//        if radarTimeComponents.count < 3 {
+//            // something went wrong
+//            return false
+//        }
+//        let radarTimeHours = to.Int(radarTimeComponents[0])
+//        let radarTimeMinutes = to.Int(radarTimeComponents[1])
+//        let radarTimeTotalMinutes = radarTimeHours * 60 + radarTimeMinutes
+//        let currentTime = Utility.safeGet(getCurrentLocalTimeAsString().split(" "), 1)
+//        let currentTimeComponents = currentTime.split(":")
+//        if currentTimeComponents.count < 3 {
+//            // something went wrong
+//            return false
+//        }
+//        let currentTimeHours = to.Int(currentTimeComponents[0])
+//        let currentTimeMinutes = to.Int(currentTimeComponents[1])
+//        let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
+//        if currentTimeTotalMinutes < 30 {
+//            // TODO find out how to handle midnight
+//            return false
+//        }
+//        if radarTimeTotalMinutes > currentTimeTotalMinutes {
+//            // radar time should not be in the future, radar is down
+//            return true
+//        }
+//        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) {
+//            return true
+//        }
+//        return false
+//    }
     
     static func isVtecCurrent(_ vtec: String ) -> Bool {
          // example 190512T1252Z-190512T1545Z
