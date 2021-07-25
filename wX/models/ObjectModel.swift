@@ -252,7 +252,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsHrrr
             times.removeAll()
             (0...18).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             (0...22).forEach { runs.append(String(format: "%02d", $0)+"Z") }
             runTimeData.listRun = runs
         case "NCEP:RAP":
@@ -261,7 +261,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsRap
             times.removeAll()
             (0...21).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             (0...22).forEach { runs.append(String(format: "%02d", $0)+"Z") }
             runTimeData.listRun = runs
         case "NCEP:NAM-HIRES":
@@ -285,7 +285,7 @@ final public class ObjectModel {
             times.removeAll()
             (1...48).forEach { times.append(String(format: "%03d", $0)) }
             stride(from: 51, to: 61, by: 3).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
             runTimeData.listRun = runs
@@ -295,7 +295,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times.removeAll()
             (1...48).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
             runTimeData.listRun = runs
@@ -305,7 +305,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsHrwArw2
             times.removeAll()
             (1...48).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
             runTimeData.listRun = runs
@@ -315,7 +315,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsHref
             times.removeAll()
             (0...36).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runs.append("06Z")
             runs.append("12Z")
@@ -327,7 +327,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsNbm
             times.removeAll()
             stride(from: 0, to: 264, by: 3).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runs.append("06Z")
             runs.append("12Z")
@@ -369,7 +369,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsPolar
             times.removeAll()
             stride(from: 0, to: 384, by: 24).forEach { times.append(String(format: "%03d", $0)) }
-            runs = []
+            runs.removeAll()
             runs.append("00Z")
             runTimeData.listRun = runs
         case "NCEP:WW3":
@@ -438,7 +438,7 @@ final public class ObjectModel {
     }
 
     func setupListRunZ() {
-        runs = []
+        runs.removeAll()
         runs.append("00Z")
         runs.append("06Z")
         runs.append("12Z")
@@ -448,7 +448,7 @@ final public class ObjectModel {
 
     // TODO fix unused arg
     func setupListRunZ(_ start: String) {
-        runs = []
+        runs.removeAll()
         runs.append("03Z")
         runs.append("09Z")
         runs.append("15Z")
