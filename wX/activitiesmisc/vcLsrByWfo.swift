@@ -26,7 +26,8 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     func getContent(_ wfo: String) {
         siteButton.title = wfo
-        _ = FutureVoid({ self.wfoProd = self.getLsrFromWfo(wfo) }, display)
+        wfoProd.removeAll()
+        _ = FutureVoid({ self.getLsrFromWfo(wfo) }, display)
     }
 
     private func display() {
@@ -40,22 +41,22 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
         }
     }
 
-    func getLsrFromWfo(_ wfo: String) -> [String] {
-        var lsrList = [String]()
+    func getLsrFromWfo(_ wfo: String) {
+        // var lsrList = [String]()
         let html = ("https://forecast.weather.gov/product.php?site=" + wfo + "&issuedby=" + wfo + "&product=LSR&format=txt&version=1&glossary=0").getHtml()
         let numberLSR = UtilityString.parseLastMatch(html, "product=LSR&format=TXT&version=(.*?)&glossary")
         if numberLSR == "" {
-            lsrList.append("None issued by this office recently.")
+            wfoProd.append("None issued by this office recently.")
         } else {
             var maxVers = to.Int(numberLSR)
             if maxVers > 30 {
                 maxVers = 30
             }
             stride(from: 1, to: maxVers, by: 2).forEach { version in
-                lsrList.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version))
+                _ = FutureVoid({ self.wfoProd.append(UtilityDownload.getTextProductWithVersion("LSR" + wfo, version)) }, display)
             }
         }
-        return lsrList
+        // return lsrList
     }
 
     @objc func mapClicked() {
