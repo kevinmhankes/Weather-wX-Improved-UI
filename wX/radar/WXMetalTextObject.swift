@@ -188,8 +188,8 @@ final class WXMetalTextObject {
                     if index < fileStorage.obsArr.count && index < fileStorage.obsArrExt.count {
                         let tmpArrObs = fileStorage.obsArr[index].split(":")
                         let tmpArrObsExt = fileStorage.obsArrExt[index].split(":")
-                        let lat = Double(tmpArrObs[0]) ?? 0.0
-                        let lon = Double(tmpArrObs[1]) ?? 0.0
+                        let lat = to.Double(tmpArrObs[0])
+                        let lon = to.Double(tmpArrObs[1])
                         let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon * -1.0, wxMetalRender.projectionNumbers)
                         let xPos = latLon[0] * Double(wxMetalRender.zoom) - xFudge + Double(wxMetalRender.xPos)
                         let yPos = latLon[1] * Double(wxMetalRender.zoom) - yFudge - Double(wxMetalRender.yPos)

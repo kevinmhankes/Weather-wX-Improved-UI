@@ -31,15 +31,15 @@ final class UtilitySpotter {
                 }
             }
             if latitudeList.count == longitudeList.count {
-                lat = []
-                lon = []
+                lat.removeAll()
+                lon.removeAll()
                 latitudeList.indices.forEach { index in
-                    lat.append(Double(latitudeList[index]) ?? 0.0 )
-                    lon.append(-1.0 * (Double(longitudeList[index]) ?? 0.0))
+                    lat.append(to.Double(latitudeList[index]))
+                    lon.append(-1.0 * (to.Double(longitudeList[index])))
                 }
             } else {
-                lat = []
-                lon = []
+                lat.removeAll()
+                lon.removeAll()
                 lat.append(0.0)
                 lon.append(0.0)
             }

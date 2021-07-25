@@ -1,4 +1,3 @@
-* scan for ??
 * [] -> removeAll()
 * FileStorage
     - level 2

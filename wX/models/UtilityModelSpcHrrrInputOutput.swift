@@ -44,8 +44,8 @@ final class UtilityModelSpcHrrrInputOutput {
             let runTimePrefix = run.substring(0, 8)
             let runTimeHr = run.substring(8, 10)
             let endTimePrefix = validTime.substring(0, 8)
-            let runTimeHrInt = Int(runTimeHr) ?? 0
-            let forecastInt = Int(validTimeForecast) ?? 0
+            let runTimeHrInt = to.Int(runTimeHr)
+            let forecastInt = to.Int(validTimeForecast)
             if (runTimeHrInt+forecastInt) > 23 {
                 validTimeCurrent = endTimePrefix + String(format: "%02d", runTimeHrInt + forecastInt - 24)
             } else {
