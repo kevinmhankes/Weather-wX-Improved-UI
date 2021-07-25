@@ -204,7 +204,6 @@ final class UtilityTime {
 //        let currentTimeMinutes = to.Int(currentTimeComponents[1])
 //        let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
 //        if currentTimeTotalMinutes < 30 {
-//            // TODO find out how to handle midnight
 //            return false
 //        }
 //        if radarTimeTotalMinutes > currentTimeTotalMinutes {

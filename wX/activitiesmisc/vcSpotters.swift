@@ -23,7 +23,6 @@ final class vcSpotters: UIwXViewController {
         getContent()
     }
 
-    // FIXME no rotation support
     override func getContent() {
         spotterData.removeAll()
         _ = FutureVoid({ self.spotterData = UtilitySpotter.get() }, display)

@@ -572,14 +572,13 @@ final public class ObjectModel {
         }
     }
 
-    // TODO make private below 2
-    func timeIdxIncr() {
+    private func timeIdxIncr() {
         timeIdx += 1
         timeStr = times.safeGet(timeIdx)
         timeButton.title = timeStr
     }
 
-    func timeIdxDecr() {
+    private func timeIdxDecr() {
         timeIdx -= 1
         timeStr = times.safeGet(timeIdx)
         timeButton.title = timeStr
