@@ -23,11 +23,11 @@ final class WXGLPolygonWarnings {
         let html = ObjectPolygonWarning.polygonDataByType[changeType(type)]!.getData()
         let warnings = ObjectWarning.parseJson(html)
         var warningList = [Double]()
-        for w in warnings {
-            if w.isCurrent {
-                let latLons = w.getPolygonAsLatLons(-1)
-                warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
-            }
+        for w in warnings where w.isCurrent {
+            // if w.isCurrent {
+            let latLons = w.getPolygonAsLatLons(-1)
+            warningList += LatLon.latLonListToListOfDoubles(latLons, projectionNumbers)
+            // }
         }
         return warningList
     }
