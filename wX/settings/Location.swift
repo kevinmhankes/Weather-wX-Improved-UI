@@ -31,7 +31,7 @@ final class Location {
     }
 
     static func clearListOfNames() {
-        listOf = []
+        listOf.removeAll()
     }
 
     static func initNumLocations() {
@@ -60,7 +60,7 @@ final class Location {
 
     static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
-        currentLocation = Int(currentLocationStr)! - 1
+        currentLocation = to.Int(currentLocationStr) - 1
     }
 
     static func us(_ xStr: String) -> Bool {
@@ -127,9 +127,11 @@ final class Location {
 
     static func refreshLocationData() {
         initNumLocations()
-        locations = []
+        locations.removeAll()
         clearListOfNames()
-        (0..<numLocations).forEach { locations.append(ObjectLocation($0)) }
+        (0..<numLocations).forEach { index in
+            locations.append(ObjectLocation(index))
+        }
         addToListOfNames(addLocationLabel)
         checkCurrentLocationValidity()
     }
@@ -205,11 +207,7 @@ final class Location {
         Utility.writePref("CURRENT_LOC_FRAGMENT", locNum)
         Location.setCurrentLocationStr(locNum)
         return "Saving location " + locNum + " as " + labelStr
-            + " (" + latLon.latString
-            + "," + latLon.lonString
-            + ") " + "/" + " "
-            + wfo.uppercased()
-            + "(" + radarSite.uppercased() + ")"
+            + " (" + latLon.latString + "," + latLon.lonString + ") " + "/" + " " + wfo.upper() + "(" + radarSite.upper() + ")"
     }
 
     static func delete(_ locToDeleteStr: String) {

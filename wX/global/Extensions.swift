@@ -21,6 +21,14 @@ extension String {
         UtilityString.parseLastMatch(self, pattern)
     }
     
+    func upper() -> String {
+        uppercased()
+    }
+    
+    func lower() -> String {
+        lowercased()
+    }
+    
     func trim() -> String {
         trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
