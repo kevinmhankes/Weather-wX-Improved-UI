@@ -1,4 +1,3 @@
-* [] -> removeAll()
 * FileStorage
     - level 2
 * objectWatch - if html == "" don't save, reset timer

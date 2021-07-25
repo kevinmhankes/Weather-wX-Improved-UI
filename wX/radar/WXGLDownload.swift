@@ -8,8 +8,8 @@ import Foundation
 
 final class WXGLDownload {
         
-    private static let utilnxanimPattern1 = ">(sn.[0-9]{4})</a>"
-    private static let utilnxanimPattern2 = ".*?([0-9]{2}-[A-Za-z]{3}-[0-9]{4} [0-9]{2}:[0-9]{2}).*?"
+    private static let pattern1 = ">(sn.[0-9]{4})</a>"
+    private static let pattern2 = ".*?([0-9]{2}-[A-Za-z]{3}-[0-9]{4} [0-9]{2}:[0-9]{2}).*?"
     static let nwsRadarPub = "https://tgftp.nws.noaa.gov/"
     private static let nwsRadarLevel2Pub = "https://nomads.ncep.noaa.gov/pub/data/nccf/radar/nexrad_level2/"
     
@@ -88,17 +88,17 @@ final class WXGLDownload {
     private static func getLevel3FilesForAnimation(_ frameCount: Int, _ product: String, _ ridPrefix: String, _ radarSite: String, _ fileStorage: FileStorage) -> [String] {
         var listOfFiles = [String]()
         let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-        var snFiles = html.parseColumn(utilnxanimPattern1)
-        var snDates = html.parseColumn(utilnxanimPattern2)
+        var snFiles = html.parseColumn(pattern1)
+        var snDates = html.parseColumn(pattern2)
         if snDates.count == 0 {
             let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-            snFiles = html.parseColumn(utilnxanimPattern1)
-            snDates = html.parseColumn(utilnxanimPattern2)
+            snFiles = html.parseColumn(pattern1)
+            snDates = html.parseColumn(pattern2)
         }
         if snDates.count == 0 {
             let html = getRadarDirectoryUrl(radarSite, product, ridPrefix).getHtml()
-            snFiles = html.parseColumn(utilnxanimPattern1)
-            snDates = html.parseColumn(utilnxanimPattern2)
+            snFiles = html.parseColumn(pattern1)
+            snDates = html.parseColumn(pattern2)
         }
         var mostRecentSn = ""
         let mostRecentTime = snDates.last
