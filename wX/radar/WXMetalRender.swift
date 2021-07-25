@@ -565,7 +565,7 @@ final class WXMetalRender {
         if renderFn != nil {
             renderFn!(paneNumber)
         }
-        if !isAnimating &&  PolygonType.OBS.display  {
+        if !isAnimating &&  PolygonType.OBS.display {
             wxMetalTextObject.removeTextLabels()
             wxMetalTextObject.addTextLabels()
         }

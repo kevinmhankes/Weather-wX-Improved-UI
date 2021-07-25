@@ -67,16 +67,16 @@ final class vcSevereDashboard: UIwXViewController {
         let wFfw = severeWarnings[.FFW]!
         [wTor, wTst, wFfw].forEach { severeWarning in
             _ = ObjectCardBlackHeaderText(self, "(" + String(severeWarning.getCount()) + ") " + severeWarning.getName())
-            for w in severeWarning.warningList {
-                if w.isCurrent {
-                    let radarSite = w.getClosestRadar()
-                    stackView.addWidget(ObjectCardDashAlertItem(
-                        w,
-                        GestureData(w.url, self, #selector(goToAlert(sender:))),
-                        GestureData(radarSite, self, #selector(goToRadar(sender:))),
-                        GestureData(radarSite, self, #selector(goToRadar(sender:)))
-                    ).get())
-                }
+            for w in severeWarning.warningList where w.isCurrent {
+                // if w.isCurrent {
+                let radarSite = w.getClosestRadar()
+                stackView.addWidget(ObjectCardDashAlertItem(
+                    w,
+                    GestureData(w.url, self, #selector(goToAlert(sender:))),
+                    GestureData(radarSite, self, #selector(goToRadar(sender:))),
+                    GestureData(radarSite, self, #selector(goToRadar(sender:)))
+                ).get())
+                // }
             }
         }
         if wTor.getCount() > 0 || wTst.getCount() > 0 || wFfw.getCount() > 0 {

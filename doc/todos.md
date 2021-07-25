@@ -2,6 +2,7 @@
     - level 2
 * rationalize all the Enums, etc
 * radar colors are in RadarGeom?
+* radar vtec old via new method
 * nexrad state
 * [FIX] dual pane does not show radar time for both panes
 * [FIX] should not need to restart app when changing NWS icon size
