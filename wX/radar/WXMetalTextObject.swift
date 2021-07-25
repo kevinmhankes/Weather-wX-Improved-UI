@@ -65,7 +65,7 @@ final class WXMetalTextObject {
     
     private func addTextLabelsCitiesExtended() {
         if GeographyType.cities.display {
-            glView.cities = []
+            glView.cities.removeAll()
             if wxMetalRender.zoom > cityMinZoom {
                 let cityExtLength = UtilityCitiesExtended.cities.count
                 (0..<cityExtLength).forEach { index in
@@ -83,7 +83,7 @@ final class WXMetalTextObject {
         }
     }
     
-    func checkAndDrawText(_ tvList:inout [TextViewMetal], _ lat: Double, _ lon: Double, _ text: String, _ color: Int) {
+    func checkAndDrawText(_ tvList: inout [TextViewMetal], _ lat: Double, _ lon: Double, _ text: String, _ color: Int) {
         let latLon = UtilityCanvasProjection.computeMercatorNumbers(lat, lon, wxMetalRender.projectionNumbers)
         // changing RID resets glviewWidth
         let xPos = latLon[0] * Double(wxMetalRender.zoom) - xFudge + Double(wxMetalRender.xPos)
@@ -99,11 +99,15 @@ final class WXMetalTextObject {
     }
     
     private func initializeTextLabelsCitiesExtended() {
-        if numPanes == 1 && GeographyType.cities.display { UtilityCitiesExtended.create() }
+        if numPanes == 1 && GeographyType.cities.display {
+            UtilityCitiesExtended.create()
+        }
     }
     
     private func initializeTextLabelsCountyLabels() {
-        if GeographyType.countyLabels.display { UtilityCountyLabels.create() }
+        if GeographyType.countyLabels.display {
+            UtilityCountyLabels.create()
+        }
     }
     
     private func addTextLabelsCountyLabels() {
