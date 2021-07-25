@@ -54,6 +54,6 @@ final class ObjectStackViewHS {
     }
     
     func get() -> UIStackView {
-        return view
+        view
     }
 }

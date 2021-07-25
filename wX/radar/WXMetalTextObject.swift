@@ -55,7 +55,7 @@ final class WXMetalTextObject {
         self.glViewHeight = glViewHeight
         self.wxMetalRender = wxMetalRender
         self.numPanes = numPanes
-        self.fileStorage = wxMetalRender.fileStorage
+        fileStorage = wxMetalRender.fileStorage
         maxCitiesPerGlview = 16 / numPanes
         let fudgeFactor = 375.0
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
