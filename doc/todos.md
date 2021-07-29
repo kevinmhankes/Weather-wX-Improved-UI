@@ -5,6 +5,7 @@
 * radar colors are in RadarGeom?
 * nexrad state
 
+* ESRL HRRR/RAP fix
 * iOS National images first three aviation images don’t work
 * iOS text no Great Lakes open water work
 * iOS awc longer animations
