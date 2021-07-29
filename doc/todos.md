@@ -8,6 +8,7 @@
 * iOS National images first three aviation images don’t work
 * iOS text no Great Lakes open water work
 * iOS awc longer animations
+* iOS text products most recent MCD no longer works
 * iOS radar to severe dash disables screen timeout
 * iOS wpc rainfall screen on for tts
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
