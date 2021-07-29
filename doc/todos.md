@@ -4,6 +4,14 @@
 * deploy new copyright header to all files
 * radar colors are in RadarGeom?
 * nexrad state
+
+* iOS National images first three aviation images don’t work
+* iOS text no Great Lakes open water work
+* iOS awc longer animations
+* iOS radar to severe dash disables screen timeout
+* iOS wpc rainfall screen on for tts
+* https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
+
 * [FIX] dual pane does not show radar time for both panes
 * [FIX] should not need to restart app when changing NWS icon size
 * [ADD] onrestart spc mcd wat mpd
