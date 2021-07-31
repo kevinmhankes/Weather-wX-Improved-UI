@@ -55,65 +55,7 @@ final class UtilityModelEsrlInputOutput {
     }
     
     static func getImage(_ om: ObjectModel) -> Bitmap {
-        let zipStr = "TZA"
-        let paramTmp = om.param
-        var paramTmpLocal = paramTmp
-        var sectorLocal = om.sector
-        let sectorInt = UtilityModelEsrlInterface.sectorsHrrr.firstIndex(of: sectorLocal) ?? 0
-        switch om.model {
-        case "HRRR":
-            if sectorInt == 0 {
-            } else if sectorInt < 9 {
-                sectorLocal = "t" + String(sectorInt)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else {
-                sectorLocal = "z" + String(sectorInt - 9)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            }
-        case "HRRR_NCEP":
-            if sectorInt == 0 {
-            } else if sectorInt < 9 {
-                sectorLocal = "t" + String(sectorInt)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else {
-                sectorLocal = "z" + String(sectorInt - 9)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            }
-        case "HRRR_AK":
-            break
-        case "RAP":
-            if sectorInt == 0 || sectorInt == 1 {
-            } else if sectorInt == 9 {
-                sectorLocal = "alaska"
-            } else if sectorInt == 10 {
-                sectorLocal = "a1"
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else if sectorInt == 11 {
-                sectorLocal = "r1"
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else if sectorInt < 9 {
-                sectorLocal = "t" + String(sectorInt)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            }
-        case "RAP_NCEP":
-            if sectorInt == 0 || sectorInt == 1 {
-            } else if sectorInt == 9 {
-                sectorLocal = "alaska"
-            } else if sectorInt == 10 {
-                sectorLocal = "a1"
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else if sectorInt == 11 {
-                sectorLocal = "r1"
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            } else if sectorInt < 9 {
-                sectorLocal = "t" + String(sectorInt)
-                paramTmpLocal = paramTmp.replaceAll("_", "_" + sectorLocal)
-            }
-        default:
-            break
-        }
-        let param = paramTmpLocal
-        var parentModel = om.model.replaceAll("HRRR_AK", "alaska")
+        var parentModel = ""
         switch om.model {
         case "RAP_NCEP":
             parentModel = "RAP"
@@ -124,27 +66,31 @@ final class UtilityModelEsrlInputOutput {
         }
         var imgUrl: String
         var onDemandUrl: String
+        var sectorLocal = om.sector.replace(" ", "")
+        sectorLocal = sectorLocal.replace("Full", "full")
+        sectorLocal = sectorLocal.replace("CONUS", "conus")
+        let param = om.param.replace("_full_", "_" + sectorLocal + "_")
         if parentModel.contains("RAP") {
             imgUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/for_web/" + om.model.lowercased()
-                + "_jet/" + om.run.replaceAll("Z", "")+"/"+sectorLocal.lowercased()+"/"+param+"_f"+om.time+".png"
-            onDemandUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/" + "displayMapLocalDiskDateDomainZip"
-                + zipStr + ".cgi?keys=" + om.model.lowercased() + "_jet:&runtime=" + om.run.replaceAll("Z", "")
+                + "_jet/" + om.run.replaceAll("Z", "")+"/"+sectorLocal + "/" + param + "_f0" + om.time + ".png"
+            onDemandUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/" + "displayMapUpdated"
+                + ".cgi?keys=" + om.model.lowercased() + "_jet:&runtime=" + om.run.replaceAll("Z", "")
                 + "&plot_type=" + param + "&fcst=" + om.time
                 + "&time_inc=60&num_times=16&model=" + om.model.lowercased()
                 + "&ptitle=" + om.model + "%20Model%20Fields%20-%20Experimental&maxFcstLen=15&fcstStrLen=-1&domain="
-                + sectorLocal.lowercased() + "&adtfn=1"
+                + sectorLocal + "&adtfn=1"
         } else {
             imgUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased() + "/for_web/"
                 + om.model.lowercased() + "_jet/"
                 + om.run.replaceAll("Z", "") + "/"
-                + sectorLocal.lowercased() + "/" + param + "_f" + om.time + ".png"
+                + sectorLocal + "/" + param + "_f0" + om.time + ".png"
             onDemandUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased()
-                + "/" + "displayMapLocalDiskDateDomainZip"
-                + zipStr + ".cgi?keys=" + om.model.lowercased()+"_jet:&runtime="
+                + "/" + "displayMapUpdated"
+                + ".cgi?keys=" + om.model.lowercased()+"_jet:&runtime="
                 + om.run.replaceAll("Z", "") + "&plot_type=" + param + "&fcst="
                 + om.time + "&time_inc=60&num_times=16&model=" + om.model.lowercased()
                 + "&ptitle=" + om.model + "%20Model%20Fields%20-%20Experimental&maxFcstLen=15&fcstStrLen=-1&domain="
-                + sectorLocal.lowercased() + "&adtfn=1"
+                + sectorLocal + "&adtfn=1"
         }
         _ = onDemandUrl.getHtml()
         return Bitmap(imgUrl)
