@@ -49,7 +49,7 @@ final class RadarPreferences {
     static var radarShowWpcFronts = false
     static var showRadarWhenPan = true
     static let nexradContinuousMode = true
-    static var useFileStorage = false
+    static let useFileStorage = true
 
     static func initialize() {
         if UtilityUI.isTablet() {

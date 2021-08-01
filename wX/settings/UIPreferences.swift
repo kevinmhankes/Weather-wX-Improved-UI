@@ -58,7 +58,7 @@ final class UIPreferences {
         playlistStr = Utility.readPref("PLAYLIST", "")
         debugMode = Utility.readPref("DEBUG_MODE", "false").hasPrefix("t")
         if debugMode {
-            RadarPreferences.useFileStorage = true
+            // RadarPreferences.useFileStorage = true
         }
     }
 }
