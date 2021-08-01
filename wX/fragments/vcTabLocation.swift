@@ -335,10 +335,10 @@ final class vcTabLocation: vcTabParent {
         alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentSuper() }))
         if UtilitySettings.isRadarInHomeScreen() {
             alert.addAction(UIAlertAction(
-                title: Location.rid + ": " + getRadarTimeStamp(),
-                style: .default,
-                handler: { _ in Route.radarFromMainScreen(self) })
-            )
+                                title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(wxMetal[0]!.fileStorage),
+                                style: .default,
+                                handler: { _ in Route.radarFromMainScreen(self) })
+                            )
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
@@ -347,23 +347,6 @@ final class vcTabLocation: vcTabParent {
         present(alert, animated: true, completion: nil)
     }
     
-    private func getRadarTimeStamp() -> String {
-        let radarTimeStamp = wxMetal[0]?.fileStorage.radarInfo ?? ""
-        var radarTimeFinal = ""
-        if radarTimeStamp != "" {
-            var radarTimeFinalWithDate = ""
-            let radarTimeSplit = radarTimeStamp.split(GlobalVariables.newline)
-            if radarTimeSplit.count > 0 {
-                radarTimeFinalWithDate = radarTimeSplit[0]
-                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
-                if radarTimeFinalWithDateInParts.count > 1 {
-                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
-                }
-            }
-        }
-        return radarTimeFinal
-    }
-
     @objc func gotoHourly() {
         goToVC(vcHourly())
     }

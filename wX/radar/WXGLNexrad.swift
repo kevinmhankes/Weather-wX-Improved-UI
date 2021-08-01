@@ -157,4 +157,21 @@ final class WXGLNexrad {
     static func getTdwrShortList() -> [String] {
         GlobalArrays.tdwrRadars.map { $0.split(" ")[0] }
     }
+    
+    static func getRadarTimeStamp(_ fileStorage: FileStorage) -> String {
+        let radarTimeStamp = fileStorage.radarInfo
+        var radarTimeFinal = ""
+        if radarTimeStamp != "" {
+            var radarTimeFinalWithDate = ""
+            let radarTimeSplit = radarTimeStamp.split(GlobalVariables.newline)
+            if radarTimeSplit.count > 0 {
+                radarTimeFinalWithDate = radarTimeSplit[0]
+                let radarTimeFinalWithDateInParts = radarTimeFinalWithDate.split(" ")
+                if radarTimeFinalWithDateInParts.count > 1 {
+                    radarTimeFinal = radarTimeFinalWithDateInParts[1]
+                }
+            }
+        }
+        return radarTimeFinal
+    }
 }
