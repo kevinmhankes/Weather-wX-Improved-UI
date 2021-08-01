@@ -14,6 +14,7 @@
 		03089CC221CFF17800C9FE4D /* ObjectFab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03089CC121CFF17800C9FE4D /* ObjectFab.swift */; };
 		03090D5624086F070047BF1D /* UIwXViewControllerWithAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */; };
 		030C644E24675CD600259AF5 /* UtilityNetworkIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */; };
+		030DA45926B73AC300A9DC2E /* NexradTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DA45826B73AC300A9DC2E /* NexradTab.swift */; };
 		030DC62C1FE4A58C006DCF93 /* MotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DC62B1FE4A58B006DCF93 /* MotionType.swift */; };
 		030DCDCA260BE1D8007BE259 /* ObjectWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */; };
 		031546301FC6311F0020EF7B /* ObjectTextViewSmallGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */; };
@@ -410,6 +411,7 @@
 		03089CC121CFF17800C9FE4D /* ObjectFab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectFab.swift; sourceTree = "<group>"; };
 		03090D5524086F070047BF1D /* UIwXViewControllerWithAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIwXViewControllerWithAudio.swift; sourceTree = "<group>"; };
 		030C644D24675CD600259AF5 /* UtilityNetworkIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityNetworkIO.swift; sourceTree = "<group>"; };
+		030DA45826B73AC300A9DC2E /* NexradTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NexradTab.swift; sourceTree = "<group>"; };
 		030DC62B1FE4A58B006DCF93 /* MotionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionType.swift; sourceTree = "<group>"; };
 		030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectWarning.swift; sourceTree = "<group>"; };
 		0315462F1FC6311F0020EF7B /* ObjectTextViewSmallGray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTextViewSmallGray.swift; sourceTree = "<group>"; };
@@ -1073,6 +1075,7 @@
 		F09504AF1E152EE3008A966E /* fragments */ = {
 			isa = PBXGroup;
 			children = (
+				030DA45826B73AC300A9DC2E /* NexradTab.swift */,
 				F07761A51DA895A800E36F02 /* UtilityLocationFragment.swift */,
 				03F3EB7122993EA80056A56D /* UtilityNws.swift */,
 				03FD74CE21CDBB47004579FF /* UtilityNwsIcon.swift */,
@@ -1767,6 +1770,7 @@
 				03F3EB6422993B870056A56D /* UtilitySpcFireOutlook.swift in Sources */,
 				0340420323F16A4D003AB242 /* vcSettingsAbout.swift in Sources */,
 				034041ED23F167F9003AB242 /* vcSpcSwo.swift in Sources */,
+				030DA45926B73AC300A9DC2E /* NexradTab.swift in Sources */,
 				036E9BA2269DE47D0009A47B /* FutureBytes2.swift in Sources */,
 				0340423F23F16FC3003AB242 /* vcMapKitView.swift in Sources */,
 				F0B335551DA3FD510035BD36 /* ExternalEllipsoid.swift in Sources */,
