@@ -142,19 +142,28 @@ final class WXGLDownload {
         }
         fileStorage.animationMemoryBuffer = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
         fileStorage.animationMemoryBufferL2 = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
+        let dispatchGroup = DispatchGroup()
+        let queueL2 = DispatchQueue(label: "queueL2")
         (0..<frameCount).forEach { index in
-            listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
-            let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
-            if RadarPreferences.useFileStorage {
-                fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
-                UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
-                // var days = MemoryBuffer(2)
-                // var msecs = MemoryBuffer(4)
-                // Level2Metal.decodeForAnimation(radarBuffers, fileStorage, index, days, msecs)
-            } else {
-                UtilityIO.saveInputStream(data, listOfFiles[index])
+            dispatchGroup.enter()
+            // queueL2.async(group: dispatchGroup) {
+            DispatchQueue.global().async {
+                listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
+                let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
+                if RadarPreferences.useFileStorage {
+                    print("save to: " + String(index))
+                    fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
+                    UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
+                    // var days = MemoryBuffer(2)
+                    // var msecs = MemoryBuffer(4)
+                    // Level2Metal.decodeForAnimation(radarBuffers, fileStorage, index, days, msecs)
+                } else {
+                    UtilityIO.saveInputStream(data, listOfFiles[index])
+                }
+                dispatchGroup.leave()
             }
         }
+        dispatchGroup.wait()
         return listOfFiles
     }
     

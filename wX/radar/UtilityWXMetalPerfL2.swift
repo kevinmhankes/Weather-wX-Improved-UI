@@ -87,7 +87,7 @@ final class UtilityWXMetalPerfL2 {
     }
     
     static func decompressForAnimation(_ fileStorage: FileStorage, _ index: Int) {
-        let destinationPath = "tmpL2.decomp"        
+        let destinationPath = "tmpL2.decomp" + String(index)
         let disFirst: MemoryBuffer
         disFirst = fileStorage.animationMemoryBufferL2[index]
         disFirst.position = 0
@@ -155,6 +155,7 @@ final class UtilityWXMetalPerfL2 {
         }
         //
         fileStorage.animationMemoryBuffer[index] = UtilityIO.readFileToByteBuffer(destinationPath)
+        UtilityFileManagement.deleteFile(destinationPath)
 //        print(index)
 //        print(fileStorage.animationMemoryBuffer[index].capacity)
     }
