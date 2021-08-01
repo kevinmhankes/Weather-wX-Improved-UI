@@ -214,6 +214,10 @@ final class UtilityDownload {
                 }
             } else {
                 switch product {
+                case "SWOMCD":
+                    let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=MCD&product=SWO&format=CI&version=1&glossary=1"
+                    let html = url.getNwsHtml()
+                    text = UtilityString.extractPreLsr(html).removeLineBreaks().removeHtml().removeDuplicateSpaces()
                 case "SWODY1":
                     let url = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day1otlk.html"
                     let html = url.getNwsHtml()

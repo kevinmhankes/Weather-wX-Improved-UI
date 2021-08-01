@@ -18,7 +18,6 @@ func locationChanged(_ locationNumber: Int) {
             Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
 
 why does writePref not happen in location?
-* iOS awc longer animations
 * iOS text products most recent MCD no longer works
 * iOS radar to severe dash disables screen timeout
 * iOS wpc rainfall screen on for tts
