@@ -4,6 +4,7 @@
 * deploy new copyright header to all files
 * radar colors are in RadarGeom?
 * nexrad state
+* move some radar methods into separate file if possible
 
 * ESRL HRRR/RAP fix
 * iOS National images first three aviation images don’t work

@@ -283,7 +283,7 @@ final class vcTabLocation: vcTabParent {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(UIPreferences.backButtonAnimation)
         updateColors()
         objLabel.text = Location.name
         let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
@@ -369,10 +369,10 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getCurrentConditionCards() {
-        let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
-        let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
-        let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
         if objectCardCurrentConditions == nil {
+            let tapOnCC1 = UITapGestureRecognizer(target: self, action: #selector(ccAction))
+            let tapOnCC2 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
+            let tapOnCC3 = UITapGestureRecognizer(target: self, action: #selector(gotoHourly))
             objectCardCurrentConditions = ObjectCardCurrentConditions(stackViewCurrentConditions, objectCurrentConditions, isUS)
             objectCardCurrentConditions?.addGestureRecognizer(tapOnCC1, tapOnCC2, tapOnCC3)
         } else {

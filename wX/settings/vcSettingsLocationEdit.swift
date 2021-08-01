@@ -162,7 +162,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
                 }
             )
         )
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
     func searchAddress(_ address: String) {
