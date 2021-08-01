@@ -10,7 +10,7 @@ final class UtilityWXMetalPerfL2 {
 
     private static let fileHeaderSize = 24
 
-    static func decompress (_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) {
+    static func decompress(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) {
         let destinationPath = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         // let disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
         
@@ -81,5 +81,79 @@ final class UtilityWXMetalPerfL2 {
                 break
             }
         }
+    }
+    
+    static func decompressForAnimation(_ fileStorage: FileStorage, _ index: Int) {
+        let destinationPath = "tmpL2.decomp"        
+        let disFirst: MemoryBuffer
+        disFirst = fileStorage.animationMemoryBuffer[index]
+        disFirst.position = 0
+        print("size start")
+        print(disFirst.capacity)
+        
+        let refDecompSize = 827040
+        let velDecompSize = 460800
+        var loopCnt = 0
+        var bytesWritten = 0
+        let bytesWritten2 = 0
+        UtilityFileManagement.deleteFile(destinationPath)
+        let fileURL = UtilityFileManagement.getFullPathUrl(destinationPath)
+        disFirst.skipBytes(fileHeaderSize)
+        if let outputStream = OutputStream(url: fileURL, append: true) {
+            outputStream.open()
+            let bytesWritten = outputStream.write(UnsafePointer(disFirst.array), maxLength: fileHeaderSize)
+            if bytesWritten < 0 {
+                print("write failure")
+            }
+            outputStream.close()
+        } else {
+            print("Unable to open file")
+        }
+        // let loopCntBreak = radarBuffers.rd.productCode == 153 ? 5 : 11
+        let loopCntBreak = 11
+        let outputBufferSize: UInt32 = 2000000
+        var retSize: UInt32 = 2000000
+        let oBuff = [UInt8](repeating: 1, count: Int(outputBufferSize))
+        while !disFirst.eof {
+            var numCompBytes = disFirst.getInt()
+            if numCompBytes == -1 || numCompBytes == 0 {
+                break
+            }
+            if numCompBytes < 0 {
+                numCompBytes = -numCompBytes
+            }
+            retSize = outputBufferSize
+            BZ2_bzBuffToBuffDecompress(
+                MemoryBuffer.getPointer(oBuff),
+                &retSize,
+                MemoryBuffer.getPointerAndAdvance(disFirst.array, by: disFirst.position),
+                UInt32(numCompBytes),
+                1,
+                0
+            )
+            disFirst.skipBytes(numCompBytes)
+            let size = Int(retSize)
+            if let outputStream = OutputStream(url: fileURL, append: true) {
+                outputStream.open()
+                let bytesWritten = outputStream.write(UnsafePointer(oBuff), maxLength: size)
+                if bytesWritten < 0 {
+                    print("write failure")
+                }
+                outputStream.close()
+            } else {
+                print("Unable to open file")
+            }
+            bytesWritten = bytesWritten2 + bytesWritten
+            if bytesWritten2 == refDecompSize || bytesWritten2 == velDecompSize {
+                loopCnt += 1
+            }
+            if loopCnt > loopCntBreak {
+                break
+            }
+        }
+        //
+        fileStorage.animationMemoryBuffer[index] = UtilityIO.readFileToByteBuffer(destinationPath)
+        print(index)
+        print(fileStorage.animationMemoryBuffer[index].capacity)
     }
 }

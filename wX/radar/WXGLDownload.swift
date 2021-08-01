@@ -144,11 +144,12 @@ final class WXGLDownload {
         (0..<frameCount).forEach { index in
             listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
-            // if RadarPreferences.useFileStorage {
-            //    fileStorage.animationMemoryBuffer[frameCount] = MemoryBuffer(data)
-            // } else {
+            if RadarPreferences.useFileStorage {
+                fileStorage.animationMemoryBuffer[index] = MemoryBuffer(data)
+                UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
+            } else {
                 UtilityIO.saveInputStream(data, listOfFiles[index])
-            // }
+            }
         }
         return listOfFiles
     }
