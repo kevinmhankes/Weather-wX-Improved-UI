@@ -79,9 +79,17 @@ final class UtilityDownload {
             // let product = product.substring(0, 3)
             // let site = product.substring(3).replace("%", "")
             // let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
-            let url = "https://w2.weather.gov/dmawds/prod_get.php?page=" + product.lower()
-            let html = url.getNwsHtml()
-            text = UtilityString.extractPreLsr(html).removeHtml()
+            if product.lower() == "glfsc" {
+                let url = "https://tgftp.nws.noaa.gov/data/raw/fz/fzus63.kdtx.glf.sc.txt"
+                text = url.getNwsHtml()
+            } else if product.lower() == "glfsl" {
+                let url = "https://tgftp.nws.noaa.gov/data/raw/fz/fzus61.kbuf.glf.sl.txt"
+                text = url.getNwsHtml()
+            } else {
+                let url = "https://w2.weather.gov/dmawds/prod_get.php?page=" + product.lower()
+                let html = url.getNwsHtml()
+                text = UtilityString.extractPreLsr(html).removeHtml()
+            }
         } else if product.contains("QPF94E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "1"
             let html = textUrl.getHtmlSep()
