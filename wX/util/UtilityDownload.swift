@@ -76,11 +76,12 @@ final class UtilityDownload {
             text = url.getNwsHtml()
             text = UtilityString.extractPre(text).removeLineBreaks().removeHtml()
         } else if product.hasPrefix("GLF") {
-            let product = product.substring(0, 3)
-            let site = product.substring(3).replace("%", "")
-            let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
+            // let product = product.substring(0, 3)
+            // let site = product.substring(3).replace("%", "")
+            // let url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=" + site + "&product=" + product + "&format=txt&version=1&glossary=0"
+            let url = "https://w2.weather.gov/dmawds/prod_get.php?page=" + product.lower()
             let html = url.getNwsHtml()
-            text = UtilityString.extractPreLsr(html)
+            text = UtilityString.extractPreLsr(html).removeHtml()
         } else if product.contains("QPF94E") {
             let textUrl = "https://www.wpc.ncep.noaa.gov/qpf/ero.php?opt=curr&day=" + "1"
             let html = textUrl.getHtmlSep()

@@ -19,7 +19,7 @@ func locationChanged(_ locationNumber: Int) {
 
 why does writePref not happen in location?
 
-* iOS text no Great Lakes open water work
+* iOS text no Great Lakes open water not working ( lake SC and st law rv)
 * iOS awc longer animations
 * iOS text products most recent MCD no longer works
 * iOS radar to severe dash disables screen timeout
