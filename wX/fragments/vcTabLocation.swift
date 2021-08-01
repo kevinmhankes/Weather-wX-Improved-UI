@@ -139,11 +139,12 @@ final class vcTabLocation: vcTabParent {
 
     @objc func getContentSuper() {
         oldLocation = Location.latLon
-        if Location.isUS {
-            isUS = true
-        } else {
-            isUS = false
-        }
+//        if Location.isUS {
+//            isUS = true
+//        } else {
+//            isUS = false
+//        }
+        isUS = Location.isUS
         clearViews()
         getForecastData()
         getContent()
@@ -325,7 +326,7 @@ final class vcTabLocation: vcTabParent {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
         }
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
     @objc func ccAction() {
@@ -344,7 +345,7 @@ final class vcTabLocation: vcTabParent {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
         }
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
     
     @objc func gotoHourly() {
@@ -447,7 +448,7 @@ final class vcTabLocation: vcTabParent {
         commandQueue = device?.makeCommandQueue()
         wxMetal[0]!.gpsLocation = LatLon(Location.xDbl, Location.yDbl * -1.0)
         wxMetal[0]!.constructLocationDot()
-        wxMetal[0]!.setRenderFunction(render(_:))
+        wxMetal[0]!.setRenderFunction(render)
         wxMetal[0]!.resetRidAndGet(Location.rid, isHomeScreen: true)
         getPolygonWarnings()
     }
@@ -578,16 +579,16 @@ final class vcTabLocation: vcTabParent {
     }
 
     func setupGestures() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         gestureRecognizer.numberOfTapsRequired = 1
-        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
+        let gestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble))
         gestureRecognizer2.numberOfTapsRequired = 2
         stackViewRadar.addGesture(gestureRecognizer)
         stackViewRadar.addGesture(gestureRecognizer2)
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
+        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress)))
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {

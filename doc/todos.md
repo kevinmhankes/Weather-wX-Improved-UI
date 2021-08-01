@@ -5,6 +5,7 @@
 * radar colors are in RadarGeom?
 * nexrad state
 * move some radar methods into separate file if possible
+* main screen - use download Timer
 * fragment  alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
 dedicated method to handle add
 
