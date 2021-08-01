@@ -33,12 +33,16 @@ final class WXMetalNexradLevelData {
     private var volumeScanNumber: UInt16 = 0
     private var elevationNumber: UInt16 = 0
     private var fileStorage: FileStorage = FileStorage()
+    private var isAnimating = false
+    private var animationIndex = 0
 
-    convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String, _ fileStorage: FileStorage) {
+    convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String, _ fileStorage: FileStorage, _ isAnimating: Bool, _ animationIndex: Int) {
         self.init()
         self.radarBuffers = radarBuffers
         self.index = index
         self.fileStorage = fileStorage
+        self.isAnimating = isAnimating
+        self.animationIndex = animationIndex
         productCode = GlobalDictionaries.radarProductStringToShortInt[product] ?? 0
         switch productCode {
         case 153, 154:
@@ -155,7 +159,11 @@ final class WXMetalNexradLevelData {
     private func decodeAndPlotNexradL2() {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
-        UtilityWXMetalPerfL2.decompress(radarBuffers!, fileStorage)
+        if !isAnimating {
+            UtilityWXMetalPerfL2.decompress(radarBuffers!, fileStorage)
+        } else {
+            fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[animationIndex]
+        }
         Level2Metal.decode(radarBuffers!, fileStorage, days, msecs)
         writeTimeL2()
         binSize = WXGLNexrad.getBinSize(productCode)

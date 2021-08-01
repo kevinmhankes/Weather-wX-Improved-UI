@@ -67,6 +67,7 @@ final class WXMetalRender {
     private var indexString = "0"
     var radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     private var totalBins = 0
+    private var animationIndex = 0
     private let timeButton: ToolbarIcon
     private let productButton: ToolbarIcon
     private var radarLayers = [ObjectMetalBuffers]()
@@ -555,8 +556,8 @@ final class WXMetalRender {
                 radarBuffers.fileName = url
             } else {
                 isAnimating = true
-                let index = to.Int(url)
-                fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[index]
+                animationIndex = to.Int(url)
+                fileStorage.memoryBuffer = fileStorage.animationMemoryBuffer[animationIndex]
             }
         }
     }
@@ -596,7 +597,7 @@ final class WXMetalRender {
 
     func constructPolygons() {
         radarBuffers.metalBuffer = []
-        radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString, fileStorage)
+        radarBuffers.rd = WXMetalNexradLevelData(radarProduct, radarBuffers, indexString, fileStorage, isAnimating, animationIndex)
         radarBuffers.rd.decode()
         radarBuffers.initialize()
         totalBins = radarBuffers.generateRadials()

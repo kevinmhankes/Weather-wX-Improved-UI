@@ -147,7 +147,7 @@ final class WXGLDownload {
             let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
             if RadarPreferences.useFileStorage {
                 fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
-                // UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
+                UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
                 // var days = MemoryBuffer(2)
                 // var msecs = MemoryBuffer(4)
                 // Level2Metal.decodeForAnimation(radarBuffers, fileStorage, index, days, msecs)

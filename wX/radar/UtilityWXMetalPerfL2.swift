@@ -155,7 +155,7 @@ final class UtilityWXMetalPerfL2 {
         }
         //
         fileStorage.animationMemoryBuffer[index] = UtilityIO.readFileToByteBuffer(destinationPath)
-        print(index)
-        print(fileStorage.animationMemoryBuffer[index].capacity)
+//        print(index)
+//        print(fileStorage.animationMemoryBuffer[index].capacity)
     }
 }
