@@ -20,7 +20,6 @@ func locationChanged(_ locationNumber: Int) {
 why does writePref not happen in location?
 
 * ESRL HRRR/RAP fix
-* iOS National images first three aviation images don’t work
 * iOS text no Great Lakes open water work
 * iOS awc longer animations
 * iOS text products most recent MCD no longer works
