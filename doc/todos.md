@@ -1,5 +1,3 @@
-* FileStorage
-    - level 2
 * rationalize all the Enums, etc
 * deploy new copyright header to all files
 * radar colors are in RadarGeom?
