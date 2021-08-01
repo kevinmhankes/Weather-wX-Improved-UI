@@ -210,6 +210,19 @@ final class WXMetalSurfaceView {
         }
         return longPressCountLocal
     }
+    
+    // Used by nexrad on main screen
+    static func gestureLongPress(_ uiv: UIStackView, _ wxMetal: [WXMetalRender?], _ longPressCount: Int, _ fn: (CGFloat, CGFloat, Int) -> Void, _ gestureRecognizer: UILongPressGestureRecognizer) -> Int {
+        let location = gestureRecognizer.location(in: uiv)
+        var longPressCountLocal = longPressCount
+        // let radarIndex = tapInPane(location, uiv, wxMetal[0]!)
+        let radarIndex = 0
+        longPressCountLocal += 1
+        if longPressCountLocal % 2 != 0 {
+            fn(location.x, location.y, radarIndex)
+        }
+        return longPressCountLocal
+    }
 
     static func gestureZoom(_ uiv: UIViewController, _ wxMetal: [WXMetalRender?], _ textObj: WXMetalTextObject, _ gestureRecognizer: UIPinchGestureRecognizer) {
         let location = gestureRecognizer.location(in: uiv.view)

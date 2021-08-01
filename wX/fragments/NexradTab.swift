@@ -180,7 +180,7 @@ final class NexradTab {
         gestureRecognizer.require(toFail: gestureRecognizer2)
         gestureRecognizer.delaysTouchesBegan = true
         gestureRecognizer2.delaysTouchesBegan = true
-        uiv.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress)))
+        uiv.stackViewRadar.addGesture(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress)))
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -192,7 +192,7 @@ final class NexradTab {
     }
 
     @objc func gestureLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressCount = WXMetalSurfaceView.gestureLongPress(uiv, wxMetal, longPressCount, longPressAction, gestureRecognizer)
+        longPressCount = WXMetalSurfaceView.gestureLongPress(uiv.stackViewRadar.get(), wxMetal, longPressCount, longPressAction, gestureRecognizer)
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
