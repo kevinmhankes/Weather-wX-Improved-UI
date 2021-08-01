@@ -18,9 +18,6 @@ func locationChanged(_ locationNumber: Int) {
             Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
 
 why does writePref not happen in location?
-* iOS text products most recent MCD no longer works
-* iOS radar to severe dash disables screen timeout
-* iOS wpc rainfall screen on for tts
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
 
 * [FIX] dual pane does not show radar time for both panes
