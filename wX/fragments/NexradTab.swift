@@ -196,7 +196,7 @@ final class NexradTab {
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
-        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(uiv, wxMetal[index]!, numberOfPanes, ortInt, x, y)
+        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(uiv.stackViewRadar.get(), wxMetal[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)

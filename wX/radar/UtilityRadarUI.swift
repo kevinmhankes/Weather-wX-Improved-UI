@@ -188,4 +188,61 @@ final class UtilityRadarUI {
         newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
         return LatLon.reversed(newX, newY)
     }
+    
+    // main screen nexrad
+    static func getLatLonFromScreenPosition(_ uiv: UIStackView, _ wxMetal: WXMetalRender, _ numberOfPanes: Int, _ ortInt: Float, _ x: CGFloat, _ y: CGFloat) -> LatLon {
+        let width = Double(uiv.bounds.size.width)
+        let height = Double(uiv.bounds.size.height)
+        var yModified = Double(y)
+        var xModified = Double(x)
+        if numberOfPanes == 2 {
+            if !UtilityUI.isLandscape() && !(uiv.frame.width > uiv.frame.height) {
+                if y > uiv.frame.height / 2.0 { yModified -= Double(uiv.frame.height) / 2.0 }
+            } else {
+                if x > uiv.frame.width / 2.0 { xModified -= Double(uiv.frame.width) / 2.0 }
+            }
+        }
+        if numberOfPanes == 4 {
+            if y > uiv.frame.height / 2.0 { yModified -= Double(uiv.frame.height) / 2.0 }
+            if x > uiv.frame.width / 2.0 { xModified -= Double(uiv.frame.width) / 2.0 }
+        }
+        var density = Double(ortInt * 2) / width
+        if numberOfPanes == 4 {
+            density = 2.0 * Double(ortInt * 2.0) / width
+        }
+        // if numberOfPanes == 2 && UtilityUI.isLandscape() {
+            // density = 0.5 * Double(ortInt * 0.5) / width
+            // density = Double(ortInt * 2) / width
+        // }
+        var yMiddle = 0.0
+        var xMiddle = 0.0
+        if numberOfPanes == 1 {
+            yMiddle = height / 2.0
+        } else {
+            yMiddle = height / 4.0
+        }
+        if numberOfPanes == 4 {
+            xMiddle = width / 4.0
+        } else {
+            xMiddle = width / 2.0
+        }
+        if numberOfPanes == 2 {
+            if !UtilityUI.isLandscape() && !(uiv.frame.width > uiv.frame.height) {
+                xMiddle = width / 2.0
+                yMiddle = height / 4.0
+            } else {
+                xMiddle = width / 4.0
+                yMiddle = height / 2.0
+            }
+        }
+        let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
+        let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
+        let radarLocation = LatLon(Utility.getRadarSiteX(wxMetal.rid), Utility.getRadarSiteY(wxMetal.rid))
+        let ppd = wxMetal.projectionNumbers.oneDegreeScaleFactor
+        let newX = radarLocation.lon + (Double(wxMetal.xPos) / Double(wxMetal.zoom) + diffX) / ppd
+        let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
+        var newY = test2 + (Double(-wxMetal.yPos) / Double(wxMetal.zoom) + diffY) / ppd
+        newY = (180.0 / Double.pi * (2 * atan(exp(newY * Double.pi / 180.0)) - Double.pi / 2.0))
+        return LatLon.reversed(newX, newY)
+    }
 }
