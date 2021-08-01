@@ -8,6 +8,15 @@
 * fragment  alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
 dedicated method to handle add
 
+
+fragment:
+func locationChanged(_ locationNumber: Int) {
+        if locationNumber < Location.numLocations {
+            Location.setCurrentLocationStr(String(locationNumber + 1))
+            Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
+
+why does writePref not happen in location?
+
 * ESRL HRRR/RAP fix
 * iOS National images first three aviation images don’t work
 * iOS text no Great Lakes open water work
