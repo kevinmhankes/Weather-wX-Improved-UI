@@ -11,10 +11,10 @@ import simd
 final class vcTabLocation: vcTabParent {
 
     private var menuButton = ToolbarIcon()
-    private var lastRefresh: Int64 = 0
-    private var currentTime: Int64 = 0
-    private var currentTimeSec: Int64 = 0
-    private var refreshIntervalSec: Int64 = 0
+//    private var lastRefresh: Int64 = 0
+//    private var currentTime: Int64 = 0
+//    private var currentTimeSec: Int64 = 0
+//    private var refreshIntervalSec: Int64 = 0
     private var objectCurrentConditions = ObjectCurrentConditions()
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
@@ -41,6 +41,7 @@ final class vcTabLocation: vcTabParent {
     private var toolbar = ObjectToolbar()
     private var globalHomeScreenFav = ""
     private var globalTextViewFontSize: CGFloat = 0.0
+    private let downloadTimer = DownloadTimer("MAIN_LOCATION_TAB")
     #if targetEnvironment(macCatalyst)
     private var oneMinRadarFetch = Timer()
     #endif
@@ -244,7 +245,7 @@ final class vcTabLocation: vcTabParent {
                 }
             }
         }
-        lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+        // lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
     }
 
     override func cloudClicked() {
@@ -274,13 +275,17 @@ final class vcTabLocation: vcTabParent {
             objectCardSevenDayCollection!.objectCardSunTime!.update()
         }
         scrollView.scrollToTop()
-        currentTime = UtilityTime.currentTimeMillis64()
-        currentTimeSec = currentTime / 1000
-        refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
-        if currentTimeSec > (lastRefresh + refreshIntervalSec) {
-            lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+        if downloadTimer.isRefreshNeeded() {
+            print("AAA getContentSuper")
             getContentSuper()
         }
+//        currentTime = UtilityTime.currentTimeMillis64()
+//        currentTimeSec = currentTime / 1000
+//        refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
+//        if currentTimeSec > (lastRefresh + refreshIntervalSec) {
+//            lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
+//            getContentSuper()
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

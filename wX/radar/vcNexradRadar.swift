@@ -133,13 +133,13 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             view.addSubview(toolbarTop)
             toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
-            paneRange.forEach {
-                siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
+            paneRange.forEach { index in
+                siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: index))
             }
             var items = [UIBarButtonItem]()
             items.append(GlobalVariables.flexBarButton)
-            paneRange.forEach {
-                items.append(siteButton[$0])
+            paneRange.forEach { index in
+                items.append(siteButton[index])
             }
             toolbarTop.items = ToolbarItems(items).items
             if UIPreferences.radarToolbarTransparent {
@@ -172,8 +172,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             object: nil
         )
         doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
-        paneRange.forEach {
-            productButton.append(ToolbarIcon(title: "", self, #selector(productClicked), tag: $0))
+        paneRange.forEach { index in
+            productButton.append(ToolbarIcon(title: "", self, #selector(productClicked), tag: index))
         }
         radarSiteButton = ToolbarIcon(title: "", self, #selector(radarSiteClicked))
         animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
@@ -205,11 +205,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             metalLayer[index]!.framebufferOnly = true
         }
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
-        metalLayer.forEach {
-            view.layer.addSublayer($0!)
+        metalLayer.forEach { mlayer in
+            view.layer.addSublayer(mlayer!)
         }
-        paneRange.forEach {
-            wxMetalRenders.append(WXMetalRender(device, wxMetalTextObject, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
+        paneRange.forEach { index in
+            wxMetalRenders.append(WXMetalRender(device, wxMetalTextObject, timeButton, productButton[index], paneNumber: index, numberOfPanes))
         }
         productButton.enumerated().forEach {
             $1.title = wxMetalRenders[$0]!.product
@@ -640,6 +640,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func radarSiteChanged(_ radarSite: String, _ index: Int) {
         stopAnimate()
         UtilityFileManagement.deleteAllFiles()
+        wxMetalRenders[index]!.fileStorage.memoryBuffer = MemoryBuffer()
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             siteButton[index].title = radarSite
         } else {

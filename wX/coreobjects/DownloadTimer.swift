@@ -22,6 +22,8 @@ final class DownloadTimer {
         if identifier.contains("WARNINGS") {
             // refreshDataInMinutes = max(RadarPreferences.radarDataRefreshInterval, 3)
             refreshDataInMinutes = 3
+        } else if identifier.contains("MAIN_LOCATION_TAB") {
+            refreshDataInMinutes = UIPreferences.refreshLocMin
         }
         var refreshNeeded = false
         let currentTime = UtilityTime.currentTimeMillis()
