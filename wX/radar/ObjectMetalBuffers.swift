@@ -122,9 +122,9 @@ class ObjectMetalBuffers {
                 vertexCount = count / 2
             }
         } else {
-            if type.string != "" {
+            // if type.string != "" {
                 vertexCount = 0
-            }
+            // }
         }
     }
     

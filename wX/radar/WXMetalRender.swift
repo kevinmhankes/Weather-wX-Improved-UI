@@ -544,10 +544,12 @@ final class WXMetalRender {
     private func downloadRadar(_ url: String) {
         if url == "" {
             ridPrefixGlobal = WXGLDownload.getRadarFile(url, rid, product, indexString, isTdwr, fileStorage)
-            if !radarProduct.contains("L2") {
-                radarBuffers.fileName = "nids" + indexString
-            } else {
-                radarBuffers.fileName = "l2" + indexString
+            if !RadarPreferences.useFileStorage {
+                if !radarProduct.contains("L2") {
+                    radarBuffers.fileName = "nids" + indexString
+                } else {
+                    radarBuffers.fileName = "l2" + indexString
+                }
             }
         } else {
             // url will contain "nexrad_anim" with old method
