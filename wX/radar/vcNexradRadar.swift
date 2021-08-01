@@ -53,9 +53,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setPaneSize(size)
-        paneRange.indices.forEach { render($0) }
+        paneRange.indices.forEach {
+            render($0)
+        }
         coordinator.animate(alongsideTransition: nil,
-                            completion: { _ -> Void in
+                            completion: { _ in
                                 self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
                                 self.resetTextObject() }
         )
@@ -131,10 +133,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if !RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             view.addSubview(toolbarTop)
             toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
-            paneRange.forEach { siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0)) }
+            paneRange.forEach {
+                siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: $0))
+            }
             var items = [UIBarButtonItem]()
             items.append(GlobalVariables.flexBarButton)
-            paneRange.forEach { items.append(siteButton[$0]) }
+            paneRange.forEach {
+                items.append(siteButton[$0])
+            }
             toolbarTop.items = ToolbarItems(items).items
             if UIPreferences.radarToolbarTransparent {
                 toolbarTop.setTransparent()
@@ -166,8 +172,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             object: nil
         )
         doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
-        paneRange.forEach { productButton.append(ToolbarIcon(title: "", self, #selector(productClicked(sender:)), tag: $0)) }
-        radarSiteButton = ToolbarIcon(title: "", self, #selector(radarSiteClicked(sender:)))
+        paneRange.forEach {
+            productButton.append(ToolbarIcon(title: "", self, #selector(productClicked), tag: $0))
+        }
+        radarSiteButton = ToolbarIcon(title: "", self, #selector(radarSiteClicked))
         animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
@@ -182,7 +190,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             toolbarButtons.append(warningButton)
         }
         toolbarButtons += [GlobalVariables.flexBarButton, animateButton, GlobalVariables.fixedSpace]
-        paneRange.forEach { toolbarButtons.append(productButton[$0]) }
+        paneRange.forEach {
+            toolbarButtons.append(productButton[$0])
+        }
         if RadarPreferences.dualpaneshareposn || numberOfPanes == 1 {
             toolbarButtons.append(radarSiteButton)
         }
@@ -195,16 +205,24 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             metalLayer[index]!.framebufferOnly = true
         }
         setPaneSize(UtilityUI.getScreenBoundsCGSize())
-        metalLayer.forEach { view.layer.addSublayer($0!) }
-        paneRange.forEach { wxMetalRenders.append(WXMetalRender(device, wxMetalTextObject, timeButton, productButton[$0], paneNumber: $0, numberOfPanes)) }
-        productButton.enumerated().forEach { $1.title = wxMetalRenders[$0]!.product }
+        metalLayer.forEach {
+            view.layer.addSublayer($0!)
+        }
+        paneRange.forEach {
+            wxMetalRenders.append(WXMetalRender(device, wxMetalTextObject, timeButton, productButton[$0], paneNumber: $0, numberOfPanes))
+        }
+        productButton.enumerated().forEach {
+            $1.title = wxMetalRenders[$0]!.product
+        }
         // when called from severedashboard and us alerts
         if radarSiteOverride != "" {
             wxMetalRenders[0]!.resetRid(radarSiteOverride)
         }
         radarSiteButton.title = wxMetalRenders[0]!.rid
         if !RadarPreferences.dualpaneshareposn {
-            siteButton.enumerated().forEach { $1.title = wxMetalRenders[$0]!.rid }
+            siteButton.enumerated().forEach {
+                $1.title = wxMetalRenders[$0]!.rid
+            }
         }
         if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             let x = wxMetalRenders[0]!.xPos
@@ -232,7 +250,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             print("error init pipelineState")
         }
         commandQueue = device.makeCommandQueue()
-        wxMetalRenders.forEach { $0?.setRenderFunction(render(_:)) }
+        wxMetalRenders.forEach {
+            $0?.setRenderFunction(render)
+        }
         // Below two lines enable continuous updates
         if RadarPreferences.nexradContinuousMode {
             timer = CADisplayLink(target: self, selector: #selector(newFrame(displayLink:)))
@@ -347,10 +367,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func setupGestures() {
         // let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan))
         // let gestureZoomVar = UIPinchGestureRecognizer(target: self, action: #selector(gestureZoom))
-        let gestureRecognizerSingleTap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
+        let gestureRecognizerSingleTap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         gestureRecognizerSingleTap.numberOfTapsRequired = 1
         gestureRecognizerSingleTap.delegate = self
-        let gestureRecognizerDoubleTap = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble(_:)))
+        let gestureRecognizerDoubleTap = UITapGestureRecognizer(target: self, action: #selector(tapGestureDouble))
         gestureRecognizerDoubleTap.numberOfTapsRequired = 2
         gestureRecognizerDoubleTap.delegate = self
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(gesturePan)))
@@ -360,7 +380,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         gestureRecognizerSingleTap.require(toFail: gestureRecognizerDoubleTap)
         gestureRecognizerSingleTap.delaysTouchesBegan = true
         gestureRecognizerDoubleTap.delaysTouchesBegan = true
-        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:))))
+        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress)))
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -413,13 +433,21 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 locationManager.stopMonitoringSignificantLocationChanges()
                 stopAnimate()
                 if savePreferences {
-                    wxMetalRenders.forEach { $0!.writePreferences() }
+                    wxMetalRenders.forEach {
+                        $0!.writePreferences()
+                    }
                 }
-                wxMetalRenders.forEach { $0!.cleanup() }
+                wxMetalRenders.forEach {
+                    $0!.cleanup()
+                }
                 device = nil
                 wxMetalTextObject.wxMetalRender = nil
-                metalLayer.indices.forEach { metalLayer[$0] = nil }
-                wxMetalRenders.indices.forEach { wxMetalRenders[$0] = nil }
+                metalLayer.indices.forEach {
+                    metalLayer[$0] = nil
+                }
+                wxMetalRenders.indices.forEach {
+                    wxMetalRenders[$0] = nil
+                }
                 commandQueue = nil
                 pipelineState = nil
                 timer = nil
@@ -446,7 +474,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     @objc func timeClicked() {
-        wxMetalRenders.forEach { $0!.writePreferences() }
+        wxMetalRenders.forEach {
+            $0!.writePreferences()
+        }
         wxMetalRenders[0]?.writePreferencesForSingleToDualPaneTransition()
         Route.radarFromTimeButton(self, "2")
     }
@@ -468,8 +498,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
         // stopAnimate()
         if wxMetalRenders[0] != nil {
-            wxMetalRenders.forEach { $0!.updateTimeToolbar() }
-            wxMetalRenders.forEach { $0!.getRadar("") }
+            wxMetalRenders.forEach {
+                $0!.updateTimeToolbar()
+            }
+            wxMetalRenders.forEach {
+                $0!.getRadar("")
+            }
             getPolygonWarnings()
         }
     }
@@ -505,7 +539,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     private func getPolygonWarningsGeneric() {
         // self.semaphore.wait()
         if wxMetalRenders[0] != nil {
-            wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+            wxMetalRenders.forEach {
+                $0!.constructAlertPolygons()
+            }
         }
         // UtilityDownloadWarnings.get()
 //        PolygonTypeGeneric.SMW,
@@ -524,7 +560,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     private func updatePolygonWarningsGeneric() {
         semaphore.wait()
         if wxMetalRenders[0] != nil {
-            wxMetalRenders.forEach { $0!.constructAlertPolygons() }
+            wxMetalRenders.forEach {
+                $0!.constructAlertPolygons()
+            }
         }
         updateWarningsInToolbar()
         semaphore.signal()
@@ -544,7 +582,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func updatePolygonWarningsNonGeneric(_ type: PolygonTypeGeneric) {
         semaphore.wait()
         if wxMetalRenders[0] != nil {
-            wxMetalRenders.forEach { $0!.constructAlertPolygonsByType(type) }
+            wxMetalRenders.forEach {
+                $0!.constructAlertPolygonsByType(type)
+            }
         }
         updateWarningsInToolbar()
         semaphore.signal()
@@ -570,7 +610,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     func updatePolygonWatchGeneric(_ type: PolygonEnum) {
         semaphore.wait()
         if wxMetalRenders[0] != nil {
-            wxMetalRenders.forEach { $0!.constructWatchPolygonsByType(type) }
+            wxMetalRenders.forEach {
+                $0!.constructWatchPolygonsByType(type)
+            }
         }
         updateWarningsInToolbar()
         semaphore.signal()
@@ -605,11 +647,17 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
         getPolygonWarnings()
         if RadarPreferences.dualpaneshareposn {
-            wxMetalRenders.forEach { $0!.resetRidAndGet(radarSite) }
+            wxMetalRenders.forEach {
+                $0!.resetRidAndGet(radarSite)
+            }
         } else {
             wxMetalRenders[index]!.resetRidAndGet(radarSite)
         }
-        view.subviews.forEach { if $0 is UITextView { $0.removeFromSuperview() } }
+        view.subviews.forEach {
+            if $0 is UITextView {
+                $0.removeFromSuperview()
+            }
+        }
         wxMetalTextObject = WXMetalTextObject(
             self,
             numberOfPanes,
@@ -660,7 +708,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             inOglAnim = false
             animateButton.setImage(.play)
             if wxMetalRenders[0] != nil {
-                wxMetalRenders.forEach { $0!.getRadar("") }
+                wxMetalRenders.forEach {
+                    $0!.getRadar("")
+                }
                 getPolygonWarnings()
             }
         }
@@ -825,7 +875,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 popoverController.barButtonItem = siteButton[0]
             }
         }
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
     @objc func invalidateGps() {
@@ -850,7 +900,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     @objc func getRadarEveryMinute() {
-        wxMetalRenders.forEach { $0!.getRadar("") }
+        wxMetalRenders.forEach {
+            $0!.getRadar("")
+        }
         getPolygonWarnings()
     }
 
