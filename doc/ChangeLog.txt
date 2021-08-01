@@ -5,7 +5,8 @@
 		 [ADD] National images add summary aviation image for all SIGMETs
 		 [FIX] National Text - some of the open lake forecasts products were not working
 		 [FIX] Show any non-TDWR radar product on nexrad and then switch to TDWR would continue to show old data
-		 [FIX] accuracy of long press on main screen nexrad
+		 [ADD] Level 2 animation performance improved
+		 WIP [FIX] accuracy of long press on main screen nexrad
 56134 2021_07_24 [ADD] long press nexrad radar - show how many miles away closest observation point is
 		 [ADD] long press nexrad radar - reduce uncessary text
 		   Show Warning text -> Show Warning
