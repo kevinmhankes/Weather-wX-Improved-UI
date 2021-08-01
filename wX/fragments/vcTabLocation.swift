@@ -21,7 +21,7 @@ final class vcTabLocation: vcTabParent {
     private var textArr = [String: String]()
     private var oldLocation = LatLon()
     private var isUS = true
-    private var objLabel = Text()
+    private var locationLabel = Text()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
     private var stackViewHazards = ObjectStackView(.fill, .vertical)
@@ -285,7 +285,7 @@ final class vcTabLocation: vcTabParent {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(UIPreferences.backButtonAnimation)
         updateColors()
-        objLabel.text = Location.name
+        locationLabel.text = Location.name
         let newhomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         let textSizeHasChange = abs(UIPreferences.textviewFontSize - globalTextViewFontSize) > 0.5
         Location.checkCurrentLocationValidity()
@@ -293,7 +293,7 @@ final class vcTabLocation: vcTabParent {
             scrollView.scrollToTop()
             objectCardCurrentConditions?.resetTextSize()
             objectCardSevenDayCollection?.resetTextSize()
-            objLabel.font = FontSize.extraLarge.size
+            locationLabel.font = FontSize.extraLarge.size
             getContentSuper()
         }
     }
@@ -302,7 +302,7 @@ final class vcTabLocation: vcTabParent {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
             Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
-            objLabel.text = Location.name
+            locationLabel.text = Location.name
             getContentSuper()
         } else {
             Route.locationAdd(self)
@@ -558,9 +558,9 @@ final class vcTabLocation: vcTabParent {
         let stackViewLocationButton = ObjectStackViewHS()
         stackView.addLayout(stackViewLocationButton)
         stackViewLocationButton.setup(stackView.get())
-        objLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
-        objLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
-        objLabel.isSelectable = false
+        locationLabel = Text(stackViewLocationButton, Location.name, FontSize.extraLarge.size, ColorCompatibility.highlightText)
+        locationLabel.addGesture(UITapGestureRecognizer(target: self, action: #selector(locationAction)))
+        locationLabel.isSelectable = false
     }
 
     // Clear all views except 7day and current conditions
@@ -669,7 +669,7 @@ final class vcTabLocation: vcTabParent {
 
     override func updateColors() {
         toolbar.setColorToTheme()
-        objLabel.color = ColorCompatibility.highlightText
+        locationLabel.color = ColorCompatibility.highlightText
         view.backgroundColor = AppColors.primaryBackgroundBlueUIColor
         setTabBarColor()
         if UIPreferences.mainScreenRadarFab {
