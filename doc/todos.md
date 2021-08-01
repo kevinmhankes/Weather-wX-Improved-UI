@@ -1,3 +1,4 @@
+* [BUG] accuracy of long press on main tab nexrad
 * rationalize all the Enums, etc
 * deploy new copyright header to all files
 * radar colors are in RadarGeom?
