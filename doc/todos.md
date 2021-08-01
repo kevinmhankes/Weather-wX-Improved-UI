@@ -5,6 +5,8 @@
 * radar colors are in RadarGeom?
 * nexrad state
 * move some radar methods into separate file if possible
+* fragment  alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
+dedicated method to handle add
 
 * ESRL HRRR/RAP fix
 * iOS National images first three aviation images don’t work
