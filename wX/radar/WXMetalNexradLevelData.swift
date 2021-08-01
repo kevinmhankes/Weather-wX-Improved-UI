@@ -156,7 +156,7 @@ final class WXMetalNexradLevelData {
         radialStartAngle = MemoryBuffer(720 * 4)
         binWord = MemoryBuffer(720 * numberOfRangeBins)
         UtilityWXMetalPerfL2.decompress(radarBuffers!, fileStorage)
-        Level2Metal.decode(radarBuffers!, days, msecs)
+        Level2Metal.decode(radarBuffers!, fileStorage, days, msecs)
         writeTimeL2()
         binSize = WXGLNexrad.getBinSize(productCode)
         binWord.position = 0

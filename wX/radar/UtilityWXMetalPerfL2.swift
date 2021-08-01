@@ -16,7 +16,7 @@ final class UtilityWXMetalPerfL2 {
         
         let disFirst: MemoryBuffer
         if RadarPreferences.useFileStorage {
-            disFirst = fileStorage.memoryBuffer
+            disFirst = fileStorage.memoryBufferL2
         } else {
             disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
         }
@@ -81,15 +81,17 @@ final class UtilityWXMetalPerfL2 {
                 break
             }
         }
+        if RadarPreferences.useFileStorage {
+            fileStorage.memoryBuffer = UtilityIO.readFileToByteBuffer(destinationPath)
+        }
     }
     
     static func decompressForAnimation(_ fileStorage: FileStorage, _ index: Int) {
         let destinationPath = "tmpL2.decomp"        
         let disFirst: MemoryBuffer
-        disFirst = fileStorage.animationMemoryBuffer[index]
+        disFirst = fileStorage.animationMemoryBufferL2[index]
         disFirst.position = 0
         print("size start")
-        print(disFirst.capacity)
         
         let refDecompSize = 827040
         let velDecompSize = 460800

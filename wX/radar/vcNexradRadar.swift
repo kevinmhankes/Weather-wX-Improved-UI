@@ -733,9 +733,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             var animArray = [[String]]()
             self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
                 if RadarPreferences.useFileStorage {
-                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
+                    _ = WXGLDownload.getRadarFilesForAnimation(wxMetalRender!.radarBuffers, frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
                 } else {
-                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
+                    animArray.append(WXGLDownload.getRadarFilesForAnimation(wxMetalRender!.radarBuffers, frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
                     animArray[index].indices.forEach {
                         UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                         UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))

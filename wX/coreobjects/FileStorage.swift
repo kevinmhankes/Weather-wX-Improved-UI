@@ -9,9 +9,11 @@ import Foundation
 final class FileStorage {
     
     var memoryBuffer = MemoryBuffer()
+    var memoryBufferL2 = MemoryBuffer()
     var level3TextProductMap = [String: String]()
     // var animationByteArray: List[array] = []
     var animationMemoryBuffer = [MemoryBuffer]()
+    var animationMemoryBufferL2 = [MemoryBuffer]()
     var stiList = [Double]()
     var hiData = [Double]()
     var tvsData = [Double]()
