@@ -1,5 +1,6 @@
 
-56135 2021_07_31 [ADD] update ESRL HRRR/RAP after NOAA changes
+56135 2021_08_01 [ADD] update ESRL HRRR/RAP after NOAA changes
+		 [ADD] Rainfall outlook - disable screen timeout in case TTS is used
 56134 2021_07_24 [ADD] long press nexrad radar - show how many miles away closest observation point is
 		 [ADD] long press nexrad radar - reduce uncessary text
 		   Show Warning text -> Show Warning

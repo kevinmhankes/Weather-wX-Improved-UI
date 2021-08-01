@@ -14,6 +14,7 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         let statusButton = ToolbarIcon(title: "Day " + to.String(day + 1), self, nil)
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([
@@ -26,6 +27,11 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         ]).items
         objScrollStackView = ScrollStackView(self)
         getContent()
+    }
+    
+    override func doneClicked() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        super.doneClicked()
     }
 
     override func getContent() {
