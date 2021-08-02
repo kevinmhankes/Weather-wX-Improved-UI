@@ -7,17 +7,39 @@
 import UIKit
 
 final class UtilityModelSpcHrrrInputOutput {
+    
+//    Latest Run: 2021080211
+//    Run: 20210802/0600
+//    Run: 20210802/0700
+//    Run: 20210802/0800
+//    Run: 20210802/0900
+//    Run: 20210802/1000
+//    Run: 20210802/1100
 
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
-        let htmlRunStatus = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/latestHour.php").getHtml()
-        let html = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R([0-9]{10})_F[0-9]{3}_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-        runData.imageCompleteStr = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F([0-9]{3})_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-        runData.validTime = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F[0-9]{3}_V([0-9]{10})_S[0-9]{2}_.*?.gif..*?")
-        runData.appendListRun(html)
-        runData.appendListRun(UtilityTime.genModelRuns(html, 1))
-        runData.mostRecentRun = html
+        let htmlRunStatus = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/cron.log").getHtml()
+        runData.validTime = htmlRunStatus.parse("Latest Run: ([0-9]{10})")
+        runData.mostRecentRun = runData.validTime
+        runData.appendListRun(runData.mostRecentRun)
+        let runTimes = htmlRunStatus.parseColumn("Run: ([0-9]{8}/[0-9]{4})")
+        for time in runTimes.reversed() {
+            var t = time.replace("/", "")
+            if t != (runData.mostRecentRun + "00") {
+                t = String(t.dropLast(2))
+                runData.appendListRun(t)
+            }
+        }
         return runData
+        
+//        let htmlRunStatus = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/latestHour.php").getHtml()
+//        let html = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R([0-9]{10})_F[0-9]{3}_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
+//        runData.imageCompleteStr = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F([0-9]{3})_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
+//        runData.validTime = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F[0-9]{3}_V([0-9]{10})_S[0-9]{2}_.*?.gif..*?")
+//        runData.appendListRun(html)
+//        runData.appendListRun(UtilityTime.genModelRuns(html, 1))
+//        runData.mostRecentRun = html
+//        return runData
     }
 
     static func getImage(_ om: ObjectModel) -> Bitmap {

@@ -227,18 +227,18 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelHrrrLabels
             sectors = UtilityModelNcepInterface.sectorsHrrr
             times.removeAll()
-            (0...18).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(0, 19, 1)
             runs.removeAll()
-            (0...22).forEach { runs.append(String(format: "%02d", $0)+"Z") }
+            (0...22).forEach { runs.append(String(format: "%02d", $0) + "Z") }
             runTimeData.listRun = runs
         case "NCEP:RAP":
             params = UtilityModelNcepInterface.modelRapParams
             paramLabels = UtilityModelNcepInterface.modelRapLabels
             sectors = UtilityModelNcepInterface.sectorsRap
             times.removeAll()
-            (0...21).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(0, 22, 1)
             runs.removeAll()
-            (0...22).forEach { runs.append(String(format: "%02d", $0)+"Z") }
+            (0...22).forEach { runs.append(String(format: "%02d", $0) + "Z") }
             runTimeData.listRun = runs
         case "NCEP:NAM-HIRES":
             params = UtilityModelNcepInterface.modelNam4kmParams
@@ -259,7 +259,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelHrwFv3Labels
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times.removeAll()
-            (1...48).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(1, 49, 1)
             loadTimeList3(51, 61, 3)
             runs.removeAll()
             runs.append("00Z")
@@ -270,7 +270,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelHrwNmmLabels
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times.removeAll()
-            (1...48).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(1, 49, 1)
             runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
@@ -280,7 +280,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.labelsHrwArw2
             sectors = UtilityModelNcepInterface.sectorsHrwArw2
             times.removeAll()
-            (1...48).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(1, 49, 1)
             runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
@@ -290,7 +290,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.labelsHref
             sectors = UtilityModelNcepInterface.sectorsHref
             times.removeAll()
-            (0...36).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(0, 37, 1)
             runs.removeAll()
             runs.append("00Z")
             runs.append("06Z")
@@ -374,21 +374,21 @@ final public class ObjectModel {
             paramLabels = UtilityModelWpcGefsInterface.labels
             sectors = UtilityModelWpcGefsInterface.sectors
             times.removeAll()
-            stride(from: 0, to: 240, by: 6).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(0, 241, 6)
             runs = runTimeData.listRun
         case "SPCHRRR:HRRR":
             params = UtilityModelSpcHrrrInterface.params
             paramLabels = UtilityModelSpcHrrrInterface.labels
             sectors = UtilityModelSpcHrrrInterface.sectors
             times.removeAll()
-            (2...15).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(2, 16, 1)
             runs = runTimeData.listRun
         case "SPCHREF:HREF":
             params = UtilityModelSpcHrefInterface.params
             paramLabels = UtilityModelSpcHrefInterface.labels
             sectors = UtilityModelSpcHrefInterface.sectorsLong
             times.removeAll()
-            (1...49).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(1, 49, 1)
             runs = runTimeData.listRun
         case "SPCSREF:SREF":
             params = UtilityModelSpcSrefInterface.params
