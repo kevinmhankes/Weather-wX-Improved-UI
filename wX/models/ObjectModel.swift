@@ -419,7 +419,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelSpcSrefInterface.labels
             sectors.removeAll()
             times.removeAll()
-            stride(from: 0, to: 87, by: 3).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3(from: 0, to: 87, by: 3)
             runs = runTimeData.listRun
         default: break
         }
@@ -435,6 +435,10 @@ final public class ObjectModel {
             }
             prodButton.title = param.truncate(productButtonTruncate)
         }
+    }
+    
+    func loadTimeList3(from: Int, to: Int, by: Int) {
+        stride(from: from, to: to, by: by).forEach { times.append(String(format: "%02d", $0)) }
     }
 
     func setupListRunZ() {
