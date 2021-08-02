@@ -237,14 +237,14 @@ final public class ObjectModel {
             sectors = UtilityModelGlcfsInterface.sectors
             times.removeAll()
             (1...13).forEach { times.append(String(format: "%02d", $0)) }
-            loadTimeList3by2(from: 15, to: 120, by: 3)
+            loadTimeList3by2(15, 120, 3)
         case "NCEP:GFS":
             params = UtilityModelNcepInterface.modelGfsParams
             paramLabels = UtilityModelNcepInterface.modelGfsLabels
             sectors = UtilityModelNcepInterface.sectorsGfs
             times.removeAll()
-            loadTimeList3(from: 0, to: 243, by: 3)
-            loadTimeList3(from: 252, to: 396, by: 12)
+            loadTimeList3(0, 243, 3)
+            loadTimeList3(252, 396, 12)
             setupListRunZ()
         case "NCEP:HRRR":
             params = UtilityModelNcepInterface.modelHrrrParams
@@ -269,14 +269,14 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelNam4kmLabels
             sectors = UtilityModelNcepInterface.sectorsNam4km
             times.removeAll()
-            loadTimeList3(from: 1, to: 61, by: 1)
+            loadTimeList3(1, 61, 1)
             setupListRunZ()
         case "NCEP:NAM":
             params = UtilityModelNcepInterface.modelNamParams
             paramLabels = UtilityModelNcepInterface.modelNamLabels
             sectors = UtilityModelNcepInterface.sectorsNam
             times.removeAll()
-            loadTimeList3(from: 0, to: 85, by: 3)
+            loadTimeList3(0, 85, 3)
             setupListRunZ()
         case "NCEP:HRW-FV3":
             params = UtilityModelNcepInterface.modelHrwFv3Params
@@ -284,7 +284,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsHrwNmm
             times.removeAll()
             (1...48).forEach { times.append(String(format: "%03d", $0)) }
-            loadTimeList3(from: 51, to: 61, by: 3)
+            loadTimeList3(51, 61, 3)
             runs.removeAll()
             runs.append("00Z")
             runs.append("12Z")
@@ -326,7 +326,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.labelsNbm
             sectors = UtilityModelNcepInterface.sectorsNbm
             times.removeAll()
-            loadTimeList3(from: 0, to: 264, by: 3)
+            loadTimeList3(0, 264, 3)
             runs.removeAll()
             runs.append("00Z")
             runs.append("06Z")
@@ -338,37 +338,37 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelGefsSpagLabels
             sectors = UtilityModelNcepInterface.sectorsGefsSpag
             times.removeAll()
-            loadTimeList3(from: 0, to: 180, by: 6)
-            loadTimeList3(from: 192, to: 384, by: 12)
+            loadTimeList3(0, 180, 6)
+            loadTimeList3(192, 384, 12)
             setupListRunZ()
         case "NCEP:GEFS-MEAN-SPRD":
             params = UtilityModelNcepInterface.modelGefsMnsprdParams
             paramLabels = UtilityModelNcepInterface.modelGefsMnsprdLabels
             sectors = UtilityModelNcepInterface.sectorsGefsMnsprd
             times.removeAll()
-            loadTimeList3(from: 0, to: 180, by: 6)
-            loadTimeList3(from: 192, to: 384, by: 12)
+            loadTimeList3(0, 180, 6)
+            loadTimeList3(192, 384, 12)
             setupListRunZ()
         case "NCEP:SREF":
             params = UtilityModelNcepInterface.modelSrefParams
             paramLabels = UtilityModelNcepInterface.modelSrefLabels
             sectors = UtilityModelNcepInterface.sectorsSref
             times.removeAll()
-            loadTimeList3(from: 0, to: 87, by: 3)
+            loadTimeList3(0, 87, 3)
             setupListRunZ("03Z")
         case "NCEP:NAEFS":
             params = UtilityModelNcepInterface.modelNaefsParams
             paramLabels = UtilityModelNcepInterface.modelNaefsLabels
             sectors = UtilityModelNcepInterface.sectorsNaefs
             times.removeAll()
-            loadTimeList3(from: 0, to: 384, by: 6)
+            loadTimeList3(0, 384, 6)
             setupListRunZ()
         case "NCEP:POLAR":
             params = UtilityModelNcepInterface.modelPolarParams
             paramLabels = UtilityModelNcepInterface.modelPolarLabels
             sectors = UtilityModelNcepInterface.sectorsPolar
             times.removeAll()
-            loadTimeList3(from: 0, to: 384, by: 24)
+            loadTimeList3(0, 384, 24)
             runs.removeAll()
             runs.append("00Z")
             runTimeData.listRun = runs
@@ -377,21 +377,21 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelWw3Labels
             sectors = UtilityModelNcepInterface.sectorsWw3
             times.removeAll()
-            loadTimeList3(from: 0, to: 126, by: 6)
+            loadTimeList3(0, 126, 6)
             setupListRunZ()
         case "NCEP:ESTOFS":
             params = UtilityModelNcepInterface.modelEstofsParams
             paramLabels = UtilityModelNcepInterface.modelEstofsLabels
             sectors = UtilityModelNcepInterface.sectorsEstofs
             times.removeAll()
-            loadTimeList3(from: 0, to: 180, by: 1)
+            loadTimeList3(0, 180, 1)
             setupListRunZ()
         case "NCEP:FIREWX":
             params = UtilityModelNcepInterface.modelFirewxParams
             paramLabels = UtilityModelNcepInterface.modelFirewxLabels
             sectors = UtilityModelNcepInterface.sectorsFirewx
             times.removeAll()
-            loadTimeList3(from: 0, to: 37, by: 1)
+            loadTimeList3(0, 37, 1)
             setupListRunZ()
         case "WPCGEFS:WPCGEFS":
             params = UtilityModelWpcGefsInterface.params
@@ -419,7 +419,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelSpcSrefInterface.labels
             sectors.removeAll()
             times.removeAll()
-            loadTimeList3by2(from: 0, to: 87, by: 3)
+            loadTimeList3by2(0, 87, 3)
             runs = runTimeData.listRun
         default: break
         }
@@ -437,11 +437,11 @@ final public class ObjectModel {
         }
     }
     
-    func loadTimeList3(from: Int, to: Int, by: Int) {
+    func loadTimeList3(_ from: Int, _ to: Int, _ by: Int) {
         stride(from: from, to: to, by: by).forEach { times.append(String(format: "%03d", $0)) }
     }
     
-    func loadTimeList3by2(from: Int, to: Int, by: Int) {
+    func loadTimeList3by2(_ from: Int, _ to: Int, _ by: Int) {
         stride(from: from, to: to, by: by).forEach { times.append(String(format: "%02d", $0)) }
     }
 
