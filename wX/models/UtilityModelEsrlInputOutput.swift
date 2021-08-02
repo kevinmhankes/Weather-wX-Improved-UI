@@ -72,7 +72,7 @@ final class UtilityModelEsrlInputOutput {
         let param = om.param.replace("_full_", "_" + sectorLocal + "_")
         if parentModel.contains("RAP") {
             imgUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/for_web/" + om.model.lowercased()
-                + "_jet/" + om.run.replaceAll("Z", "")+"/"+sectorLocal + "/" + param + "_f0" + om.time + ".png"
+                + "_jet/" + om.run.replaceAll("Z", "")+"/"+sectorLocal + "/" + param + "_f" + om.time + ".png"
             onDemandUrl = "https://rapidrefresh.noaa.gov/" + parentModel + "/" + "displayMapUpdated"
                 + ".cgi?keys=" + om.model.lowercased() + "_jet:&runtime=" + om.run.replaceAll("Z", "")
                 + "&plot_type=" + param + "&fcst=" + om.time
@@ -83,7 +83,7 @@ final class UtilityModelEsrlInputOutput {
             imgUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased() + "/for_web/"
                 + om.model.lowercased() + "_jet/"
                 + om.run.replaceAll("Z", "") + "/"
-                + sectorLocal + "/" + param + "_f0" + om.time + ".png"
+                + sectorLocal + "/" + param + "_f" + om.time + ".png"
             onDemandUrl = "https://rapidrefresh.noaa.gov/hrrr/" + parentModel.uppercased()
                 + "/" + "displayMapUpdated"
                 + ".cgi?keys=" + om.model.lowercased()+"_jet:&runtime="

@@ -201,36 +201,18 @@ final public class ObjectModel {
             sectors = UtilityModelNsslWrfInterface.sectorsLong
             times.removeAll()
             (1...36).forEach { times.append(String(format: "%02d", $0)) }
-        case "ESRL:HRRR":
-            params = UtilityModelEsrlInterface.modelHrrrParams
-            paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
-            sectors = UtilityModelEsrlInterface.sectorsHrrr
-            times.removeAll()
-            (0...36).forEach { times.append(String(format: "%02d", $0)) }
-        case "ESRL:HRRR_AK":
-            params = UtilityModelEsrlInterface.modelHrrrParams
-            paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
-            sectors = UtilityModelEsrlInterface.sectorsHrrrAk
-            times.removeAll()
-            (0...36).forEach { times.append(String(format: "%02d", $0)) }
         case "ESRL:HRRR_NCEP":
             params = UtilityModelEsrlInterface.modelHrrrParams
             paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
             sectors = UtilityModelEsrlInterface.sectorsHrrr
             times.removeAll()
-            (0...36).forEach { times.append(String(format: "%02d", $0)) }
-        case "ESRL:RAP":
-            params = UtilityModelEsrlInterface.modelRapParams
-            paramLabels = UtilityModelEsrlInterface.modelRapLabels
-            sectors = UtilityModelEsrlInterface.sectorsRap
-            times.removeAll()
-            (0...21).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3(0, 49, 1)
         case "ESRL:RAP_NCEP":
             params = UtilityModelEsrlInterface.modelRapParams
             paramLabels = UtilityModelEsrlInterface.modelRapLabels
             sectors = UtilityModelEsrlInterface.sectorsRap
             times.removeAll()
-            (0...21).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3(0, 52, 1)
         case "GLCFS:GLCFS":
             params = UtilityModelGlcfsInterface.params
             paramLabels = UtilityModelGlcfsInterface.labels
