@@ -7,16 +7,7 @@
 * fragment  alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
 dedicated method to handle add
 
-
-fragment:
-func locationChanged(_ locationNumber: Int) {
-        if locationNumber < Location.numLocations {
-            Location.setCurrentLocationStr(String(locationNumber + 1))
-            Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
-
-why does writePref not happen in location?
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
-
 * [FIX] dual pane does not show radar time for both panes
 * [FIX] should not need to restart app when changing NWS icon size
 * [ADD] onrestart spc mcd wat mpd
