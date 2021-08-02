@@ -10,7 +10,6 @@ final class UtilityModelNsslWrfInterface {
         "WRF",
         "FV3",
         "HRRRV3",
-        "WRF_3KM"
     ]
     
     static let paramsNsslWrf = [

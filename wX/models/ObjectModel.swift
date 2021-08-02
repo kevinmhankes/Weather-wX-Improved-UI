@@ -182,25 +182,19 @@ final public class ObjectModel {
             paramLabels = UtilityModelNsslWrfInterface.labelsNsslWrf
             sectors = UtilityModelNsslWrfInterface.sectorsLong
             times.removeAll()
-            (1...36).forEach { times.append(String(format: "%02d", $0)) }
-        case "NSSLWRF:WRF_3KM":
-            params = UtilityModelNsslWrfInterface.paramsNsslWrf
-            paramLabels = UtilityModelNsslWrfInterface.labelsNsslWrf
-            sectors = UtilityModelNsslWrfInterface.sectorsLong
-            times.removeAll()
-            (1...36).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(1, 37, 1)
         case "NSSLWRF:FV3":
             params = UtilityModelNsslWrfInterface.paramsNsslFv3
             paramLabels = UtilityModelNsslWrfInterface.labelsNsslFv3
             sectors = UtilityModelNsslWrfInterface.sectorsLong
             times.removeAll()
-            (1...60).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(1, 61, 1)
         case "NSSLWRF:HRRRV3":
             params = UtilityModelNsslWrfInterface.paramsNsslHrrrv3
             paramLabels = UtilityModelNsslWrfInterface.labelsNsslHrrrv3
             sectors = UtilityModelNsslWrfInterface.sectorsLong
             times.removeAll()
-            (1...36).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(1, 37, 1)
         case "ESRL:HRRR_NCEP":
             params = UtilityModelEsrlInterface.modelHrrrParams
             paramLabels = UtilityModelEsrlInterface.modelHrrrLabels
@@ -218,7 +212,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelGlcfsInterface.labels
             sectors = UtilityModelGlcfsInterface.sectors
             times.removeAll()
-            (1...13).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(1, 14, 1)
             loadTimeList3by2(15, 120, 3)
         case "NCEP:GFS":
             params = UtilityModelNcepInterface.modelGfsParams
