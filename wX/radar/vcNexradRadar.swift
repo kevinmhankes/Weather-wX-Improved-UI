@@ -543,17 +543,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 $0!.constructAlertPolygons()
             }
         }
-        // UtilityDownloadWarnings.get()
-//        PolygonTypeGeneric.SMW,
-//        PolygonTypeGeneric.SQW,
-//        PolygonTypeGeneric.DSW,
-//        PolygonTypeGeneric.SPS
         for t in [PolygonTypeGeneric.SMW, PolygonTypeGeneric.SQW, PolygonTypeGeneric.DSW, PolygonTypeGeneric.SPS] {
-            
             if ObjectPolygonWarning.polygonDataByType[t]!.isEnabled {
                 ObjectPolygonWarning.polygonDataByType[t]!.download()
             }
-            // updatePolygonWarningsNonGeneric(t)
         }
     }
     
