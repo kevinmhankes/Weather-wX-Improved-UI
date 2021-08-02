@@ -13,6 +13,7 @@ final class vcAdhocLocation: UIwXViewController {
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
     private var stackViewCurrentConditions = ObjectStackView(.fill, .vertical)
+    private var stackViewHazards = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
     var saveButton = ToolbarIcon()
     var adhocLocation = LatLon()
@@ -26,29 +27,46 @@ final class vcAdhocLocation: UIwXViewController {
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         stackView.constrain(scrollView)
         titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
+        
+        stackView.addLayout(stackViewCurrentConditions)
+        stackViewCurrentConditions.constrain(scrollView)
+        stackView.addLayout(stackViewHazards)
+        stackViewHazards.constrain(scrollView)
+        stackView.addLayout(stackViewForecast)
+        stackViewForecast.constrain(scrollView)
+        
         getContent()
     }
 
     override func getContent() {
-        refreshViews()
-        _ = FutureVoid(download, display)
-        // TODO more threads
+        // refreshViews()
+        _ = FutureVoid(downloadCc, displayCc)
+        _ = FutureVoid(downloadHazards, displayHazards)
+        _ = FutureVoid(downloadSevenDay, displaySevenDay)
     }
     
-    private func download() {
+    private func downloadCc() {
         objectCurrentConditions = ObjectCurrentConditions(adhocLocation)
-        objectSevenDay = ObjectSevenDay(adhocLocation)
+    }
+    
+    private func downloadHazards() {
         objectHazards = ObjectHazards(self, adhocLocation)
     }
+    
+    private func downloadSevenDay() {
+        objectSevenDay = ObjectSevenDay(adhocLocation)
+    }
 
-    private func display() {
+    private func displayCc() {
         _ = ObjectCardCurrentConditions(stackViewCurrentConditions, objectCurrentConditions, true)
-        stackView.addLayout(stackViewCurrentConditions)
-        stackViewCurrentConditions.constrain(scrollView)
-        ObjectHazards.getHazardCards(stackView, objectHazards)
+    }
+    
+    private func displayHazards() {
+        ObjectHazards.getHazardCards(stackViewHazards, objectHazards)
+    }
+    
+    private func displaySevenDay() {
         _ = ObjectCardSevenDayCollection(stackViewForecast, scrollView, objectSevenDay)
-        stackView.addLayout(stackViewForecast)
-        stackViewForecast.constrain(scrollView)
     }
 
     @objc func save() {
