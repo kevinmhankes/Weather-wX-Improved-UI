@@ -14,8 +14,5 @@
 * [ADD] Add 4th char to all radar sites
 * [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
 * [ADD] onrestart SPCStormReports
-* [ADD] test all SPCMPD/WAT/MPD products including severe dash, long press radar 
 * [REF] objectModel _loadTimeList3(from: 0, to: 90, by: 3) instead of stride
-* [FIX] nexrad timestamp is slightly offset higher then other text
-* [REF] reduction in chained replace
 * [REF] in GeographyType/PolygonType rename string
