@@ -381,7 +381,7 @@ final public class ObjectModel {
             paramLabels = UtilityModelSpcHrrrInterface.labels
             sectors = UtilityModelSpcHrrrInterface.sectors
             times.removeAll()
-            loadTimeList3(0, 14, 1)
+            loadTimeList3(1, 14, 1)
             runs = runTimeData.listRun
         case "SPCHREF:HREF":
             params = UtilityModelSpcHrefInterface.params
