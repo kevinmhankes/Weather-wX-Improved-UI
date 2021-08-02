@@ -11,10 +11,6 @@ import simd
 final class vcTabLocation: vcTabParent {
 
     var menuButton = ToolbarIcon()
-//    private var lastRefresh: Int64 = 0
-//    private var currentTime: Int64 = 0
-//    private var currentTimeSec: Int64 = 0
-//    private var refreshIntervalSec: Int64 = 0
     private var objectCurrentConditions = ObjectCurrentConditions()
     private var objectHazards = ObjectHazards()
     private var objectSevenDay = ObjectSevenDay()
@@ -132,11 +128,6 @@ final class vcTabLocation: vcTabParent {
 
     @objc func getContentSuper() {
         oldLocation = Location.latLon
-//        if Location.isUS {
-//            isUS = true
-//        } else {
-//            isUS = false
-//        }
         isUS = Location.isUS
         clearViews()
         getForecastData()
@@ -238,7 +229,6 @@ final class vcTabLocation: vcTabParent {
                 }
             }
         }
-        // lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
     }
 
     override func cloudClicked() {
@@ -269,16 +259,8 @@ final class vcTabLocation: vcTabParent {
         }
         scrollView.scrollToTop()
         if downloadTimer.isRefreshNeeded() {
-            print("AAA getContentSuper")
             getContentSuper()
         }
-//        currentTime = UtilityTime.currentTimeMillis64()
-//        currentTimeSec = currentTime / 1000
-//        refreshIntervalSec = Int64(UIPreferences.refreshLocMin) * Int64(60)
-//        if currentTimeSec > (lastRefresh + refreshIntervalSec) {
-//            lastRefresh = UtilityTime.currentTimeMillis64() / Int64(1000)
-//            getContentSuper()
-//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -300,7 +282,6 @@ final class vcTabLocation: vcTabParent {
     func locationChanged(_ locationNumber: Int) {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
-            // Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
             locationLabel.text = Location.name
             getContentSuper()
         } else {
@@ -419,9 +400,6 @@ final class vcTabLocation: vcTabParent {
 
     // Clear all views except 7day and current conditions
     func clearViews() {
-//        stackViewHazards.view.subviews.forEach {
-//            $0.removeFromSuperview()
-//        }
         stackViewHazards.removeChildren()
         extraDataCards.forEach {
             $0.removeFromSuperview()
