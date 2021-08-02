@@ -300,7 +300,7 @@ final class vcTabLocation: vcTabParent {
     func locationChanged(_ locationNumber: Int) {
         if locationNumber < Location.numLocations {
             Location.setCurrentLocationStr(String(locationNumber + 1))
-            Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
+            // Utility.writePref("CURRENT_LOC_FRAGMENT", String(locationNumber + 1))
             locationLabel.text = Location.name
             getContentSuper()
         } else {

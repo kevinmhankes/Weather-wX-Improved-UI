@@ -61,6 +61,7 @@ final class Location {
     static func setCurrentLocationStr(_ currentLocationStr: String) {
         self.currentLocationStr = currentLocationStr
         currentLocation = to.Int(currentLocationStr) - 1
+        Utility.writePref("CURRENT_LOC_FRAGMENT", currentLocationStr)
     }
 
     static func us(_ xStr: String) -> Bool {
@@ -204,7 +205,7 @@ final class Location {
             Utility.writePref("NWS" + locNum, "")
         }
         Location.refreshLocationData()
-        Utility.writePref("CURRENT_LOC_FRAGMENT", locNum)
+        // Utility.writePref("CURRENT_LOC_FRAGMENT", locNum)
         Location.setCurrentLocationStr(locNum)
         return "Saving location " + locNum + " as " + labelStr
             + " (" + latLon.latString + "," + latLon.lonString + ") " + "/" + " " + wfo.upper() + "(" + radarSite.upper() + ")"
@@ -246,11 +247,11 @@ final class Location {
         }
         let locFragCurrentInt = Location.getCurrentLocation() + 1
         if locToDeleteInt == locFragCurrentInt {
-            Utility.writePref("CURRENT_LOC_FRAGMENT", "1")
+            // Utility.writePref("CURRENT_LOC_FRAGMENT", "1")
             Location.setCurrentLocationStr("1")
         } else if locFragCurrentInt > locToDeleteInt {
             let shiftNum = String(locFragCurrentInt - 1)
-            Utility.writePref("CURRENT_LOC_FRAGMENT", shiftNum)
+            // Utility.writePref("CURRENT_LOC_FRAGMENT", shiftNum)
             Location.setCurrentLocationStr(shiftNum)
         }
         let widgetLocNum = Utility.readPref("WIDGET_LOCATION", "1")
