@@ -237,14 +237,14 @@ final public class ObjectModel {
             sectors = UtilityModelGlcfsInterface.sectors
             times.removeAll()
             (1...13).forEach { times.append(String(format: "%02d", $0)) }
-            stride(from: 15, to: 120, by: 3).forEach { times.append(String(format: "%02d", $0)) }
+            loadTimeList3by2(from: 15, to: 120, by: 3)
         case "NCEP:GFS":
             params = UtilityModelNcepInterface.modelGfsParams
             paramLabels = UtilityModelNcepInterface.modelGfsLabels
             sectors = UtilityModelNcepInterface.sectorsGfs
             times.removeAll()
-            stride(from: 0, to: 243, by: 3).forEach { times.append(String(format: "%03d", $0)) }
-            stride(from: 252, to: 396, by: 12).forEach { times.append(String(format: "%03d", $0)) }
+            loadTimeList3(from: 0, to: 243, by: 3)
+            loadTimeList3(from: 252, to: 396, by: 12)
             setupListRunZ()
         case "NCEP:HRRR":
             params = UtilityModelNcepInterface.modelHrrrParams
