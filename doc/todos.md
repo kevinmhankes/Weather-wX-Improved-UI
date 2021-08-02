@@ -1,4 +1,3 @@
-* long press accuracy nexrad main screen
 * rationalize all the Enums, etc
 * deploy new copyright header to all files
 * radar colors are in RadarGeom?
