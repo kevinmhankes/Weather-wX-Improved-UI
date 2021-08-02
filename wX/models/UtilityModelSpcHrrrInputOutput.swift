@@ -61,20 +61,16 @@ final class UtilityModelSpcHrrrInputOutput {
     }
 
     static func getValidTime(_ run: String, _ validTimeForecast: String, _ validTime: String) -> String {
-        var validTimeCurrent = ""
-        if run.count == 10 && validTime.count == 10 {
-            let runTimePrefix = run.substring(0, 8)
-            let runTimeHr = run.substring(8, 10)
-            let endTimePrefix = validTime.substring(0, 8)
-            let runTimeHrInt = to.Int(runTimeHr)
-            let forecastInt = to.Int(validTimeForecast)
-            if (runTimeHrInt+forecastInt) > 23 {
-                validTimeCurrent = endTimePrefix + String(format: "%02d", runTimeHrInt + forecastInt - 24)
-            } else {
-                validTimeCurrent = runTimePrefix + String(format: "%02d", runTimeHrInt + forecastInt)
-            }
+        let dateFmt = DateFormatter()
+        dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFmt.dateFormat = "yyyyMMddHH"
+        if let date = dateFmt.date(from: run) {
+            let timeChange = 60.0 * 60.0 * (Double(validTimeForecast) ?? 0.0)
+            let validTimeCurrent = dateFmt.string(from: (date + timeChange) as Date)
+            return validTimeCurrent
+        } else {
+            return validTime
         }
-        return validTimeCurrent
     }
 
     static func formatTime(_ time: String) -> String {
