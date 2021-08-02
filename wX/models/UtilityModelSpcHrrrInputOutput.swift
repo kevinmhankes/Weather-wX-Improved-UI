@@ -44,7 +44,7 @@ final class UtilityModelSpcHrrrInputOutput {
 
     static func getImage(_ om: ObjectModel) -> Bitmap {
         let imgUrl = GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/"
-            + getSectorCode(om.sector).lowercased() + "/R" + om.run.replaceAll("Z", "") + "_F" + formatTime(om.time)
+            + getSectorCode(om.sector).lowercased() + "/R" + om.run.replaceAll("Z", "") + "_F" + om.time
             + "_V" + getValidTime(om.run, om.time, om.runTimeData.validTime) + "_"
             + getSectorCode(om.sector) + "_" + om.param + ".gif"
         return UtilityImg.getBitmapAddWhiteBackground(imgUrl)
@@ -71,9 +71,5 @@ final class UtilityModelSpcHrrrInputOutput {
         } else {
             return validTime
         }
-    }
-
-    static func formatTime(_ time: String) -> String {
-        "0" + time
     }
 }
