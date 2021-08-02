@@ -4,9 +4,6 @@
 * radar colors are in RadarGeom?
 * nexrad state
 * move some radar methods into separate file if possible
-* fragment  alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
-dedicated method to handle add
-
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
 * [FIX] dual pane does not show radar time for both panes
 * [FIX] should not need to restart app when changing NWS icon size

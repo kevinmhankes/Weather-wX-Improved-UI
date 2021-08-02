@@ -311,6 +311,10 @@ final class vcTabLocation: vcTabParent {
     func editLocation() {
         Route.locationEdit(self, Location.getCurrentLocationStr())
     }
+    
+    func addLocation() {
+        locationChanged(Location.numLocations)
+    }
 
     @objc func locationAction() {
         let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
@@ -319,7 +323,7 @@ final class vcTabLocation: vcTabParent {
             let action = UIAlertAction(title: Location.getName(index), style: .default, handler: { _ in self.locationChanged(index) })
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.locationChanged(Location.numLocations) }))
+        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.addLocation() }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
