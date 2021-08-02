@@ -295,7 +295,7 @@ final class UtilityWpcImages {
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/sigmet/sigmet_cb.gif",
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/sigmet/sigmet_tb.gif",
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/sigmet/sigmet_ic.gif",
-        GlobalVariables.nwsAWCwebsitePrefix + "/adds/data/progs/hpc_sfc_analysis.gif",
+        GlobalVariables.nwsAWCwebsitePrefix + "/data/products/progs/F000_wpc_sfc.gif",
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/progs/F006_wpc_prog.gif",
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/progs/F012_wpc_prog.gif",
         GlobalVariables.nwsAWCwebsitePrefix + "/data/products/progs/F018_wpc_prog.gif",
