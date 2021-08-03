@@ -53,10 +53,6 @@ final class vcSpcStormReports: UIwXViewController {
         getContent()
     }
 
-//    override func willEnterForeground() {
-//        self.getContent()
-//    }
-
     override func getContent() {
         _ = FutureVoid(downloadImage, displayImage)
         _ = FutureVoid(downloadText, displayText)
