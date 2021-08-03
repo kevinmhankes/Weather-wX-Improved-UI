@@ -112,7 +112,7 @@ final class vcSpcStormReports: UIwXViewController {
             title: "Filter Selection",
             filterButton,
             filterList,
-            changeFilter(_:)
+            changeFilter
         )
     }
 
