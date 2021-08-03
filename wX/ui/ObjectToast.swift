@@ -15,6 +15,6 @@ final class ObjectToast {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
         }
-        uiv.present(alert, animated: true, completion: nil)
+        uiv.present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 }

@@ -145,13 +145,13 @@ final class ObjectPopUp {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = button
         }
-        uiv.present(alert, animated: true, completion: nil)
+        uiv.present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 
     func present() {
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = button
         }
-        uiv.present(alert, animated: true, completion: nil)
+        uiv.present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 }
