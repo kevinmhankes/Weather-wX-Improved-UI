@@ -107,13 +107,7 @@ final class vcSpcStormReports: UIwXViewController {
     }
 
     @objc func filterClicked() {
-        _ = ObjectPopUp(
-            self,
-            title: "Filter Selection",
-            filterButton,
-            filterList,
-            changeFilter
-        )
+        _ = ObjectPopUp(self, title: "Filter Selection", filterButton, filterList, changeFilter)
     }
 
     private func changeFilter(_ index: Int) {
@@ -125,7 +119,7 @@ final class vcSpcStormReports: UIwXViewController {
 
     private func displayImage() {
         image.setBitmap(bitmap)
-        image.addGestureRecognizer(GestureData(target: self, action: #selector(imgClicked)))
+        image.addGesture(GestureData(target: self, action: #selector(imgClicked)))
     }
 
     private func displayText() {
@@ -164,11 +158,7 @@ final class vcSpcStormReports: UIwXViewController {
                 } else {
                     hailReports += 1
                 }
-                _ = ObjectCardStormReportItem(
-                    boxText,
-                    stormReport,
-                    GestureData(index, self, #selector(gotoMap(sender:)))
-                )
+                _ = ObjectCardStormReportItem(boxText, stormReport, GestureData(index, self, #selector(gotoMap)))
             }
             if stormReport.state != "" {
                 stateList += [stormReport.state]

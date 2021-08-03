@@ -71,6 +71,10 @@ final class ObjectImage {
         img.heightAnchor.constraint(equalTo: img.widthAnchor, multiplier: (bitmap.height / bitmap.width)).isActive = true
     }
     
+    func addGesture(_ gesture: GestureData) {
+        addGestureRecognizer(gesture)
+    }
+    
     var isHidden: Bool {
         get { img.isHidden }
         set { img.isHidden = newValue }
