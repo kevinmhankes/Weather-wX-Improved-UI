@@ -5,7 +5,6 @@
 * move some radar methods into separate file if possible
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
 * [FIX] dual pane does not show radar time for both panes
-* [FIX] should not need to restart app when changing NWS icon size
 * [ADD] onrestart spc mcd wat mpd
 * [ADD] text labels in multipane nexrad
 * [FIX] does radar product chosen impact radar on main screen
