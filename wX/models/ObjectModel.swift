@@ -331,7 +331,7 @@ final public class ObjectModel {
             sectors = UtilityModelNcepInterface.sectorsSref
             times.removeAll()
             loadTimeList3(0, 87, 3)
-            setupListRunZ("03Z")
+            setupListRun03Z()
         case "NCEP:NAEFS":
             params = UtilityModelNcepInterface.modelNaefsParams
             paramLabels = UtilityModelNcepInterface.modelNaefsLabels
@@ -430,8 +430,7 @@ final public class ObjectModel {
         runTimeData.listRun = runs
     }
 
-    // TODO fix unused arg
-    func setupListRunZ(_ start: String) {
+    func setupListRun03Z() {
         runs.removeAll()
         runs.append("03Z")
         runs.append("09Z")
