@@ -5,7 +5,6 @@
 * move some radar methods into separate file if possible
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
 * [FIX] dual pane does not show radar time for both panes
-* [ADD] onrestart spc mcd wat mpd
 * [ADD] text labels in multipane nexrad
 * [FIX] does radar product chosen impact radar on main screen
 * [FIX] quad pane runs out of room when warnings selected
