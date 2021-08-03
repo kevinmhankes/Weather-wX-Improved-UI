@@ -382,7 +382,6 @@ final class WXMetalRender {
         )
         buffers.setToPositionZero()
         var i = 0
-        // TODO use stride
         (0..<(buffers.count / 2)).forEach { _ in
             buffers.metalBuffer[i] = buffers.floatBuffer.getCGFloatNative()
             buffers.metalBuffer[i + 1] = buffers.floatBuffer.getCGFloatNative()

@@ -767,20 +767,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     func longPressAction(_ x: CGFloat, _ y: CGFloat, _ index: Int) {
-        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(
-            self,
-            wxMetalRenders[index]!,
-            numberOfPanes,
-            ortInt,
-            x,
-            y
-        )
+        let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(self, wxMetalRenders[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
         let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetalRenders[index]!.rid)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
-        // TODO FIXME
         let radarInfo = wxMetalRenders[0]!.fileStorage.radarInfo
         var alertMessage = radarInfo + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location" + GlobalVariables.newline
