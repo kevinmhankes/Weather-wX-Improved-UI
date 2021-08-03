@@ -9,4 +9,3 @@
 * [FIX] in nexrad radar if tr0 selected, exit and enter radar will then show tzl instead (need 4char radar first)
 * [ADD] Add 4th char to all radar sites
 * [FIX] rotate main screen on phone results in whitespace due to shrinking bottom nav bar
-* [REF] in GeographyType/PolygonType rename string
