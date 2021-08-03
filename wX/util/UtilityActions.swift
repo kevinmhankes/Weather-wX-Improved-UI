@@ -63,6 +63,6 @@ final class UtilityActions {
             alert.addAction(action)
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        uiv.present(alert, animated: true, completion: nil)
+        uiv.present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
 }
