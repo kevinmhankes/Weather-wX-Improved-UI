@@ -115,7 +115,6 @@ final class Location {
     static var getLocationIndex: Int { Location.getCurrentLocation() }
 
     static func isUS(_ locationNumber: Int) -> Bool {
-        // FIXME bounds check or safeGet
         if locationNumber == -1 {
             return true
         }

@@ -26,7 +26,6 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
         let defaultButton = ToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ToolbarIcon(self, nil)
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, colorButton, defaultButton]).items
-        // colPicker = HSBColorPicker()
         colPicker.delegate = self
         refreshViews()
         colorBar.backgroundColor = colorObject.uiColorCurrent
@@ -38,7 +37,6 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
             + ")"
         view.addSubview(colPicker)
         view.addSubview(colorBar)
-        // FIXME sizing is not working , should not need to add toolbar
         view.addSubview(toolbar)
         view.addSubview(toolbarTop)
         toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)

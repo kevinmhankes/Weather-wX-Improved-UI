@@ -636,20 +636,21 @@ final class WXMetalRender {
         productButton.title = product
     }
 
-    // TODO rename vars
     func constructLocationDot() {
-        var locmarkerAl = [Double]() // locmarkerAl = []
+        var locationMarkers = [Double]()
         locdotBuffers.lenInit = PolygonType.LOCDOT.size
-        if PolygonType.LOCDOT.display { locmarkerAl = UtilityLocation.getLatLonAsDouble() }
+        if PolygonType.LOCDOT.display {
+            locationMarkers = UtilityLocation.getLatLonAsDouble()
+        }
         if RadarPreferences.locdotFollowsGps {
-            locmarkerAl.append(gpsLocation.lat)
-            locmarkerAl.append(gpsLocation.lon)
+            locationMarkers.append(gpsLocation.lat)
+            locationMarkers.append(gpsLocation.lon)
         }
         // get even and odd values and put in separate lists
-        locdotBuffers.latList = locmarkerAl.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in Double(value) }
-        locdotBuffers.lonList = locmarkerAl.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in Double(value) }
+        locdotBuffers.latList = locationMarkers.enumerated().filter { index, _ in index & 1 == 0 }.map { _, value in Double(value) }
+        locdotBuffers.lonList = locationMarkers.enumerated().filter { index, _ in index & 1 != 0 }.map { _, value in Double(value) }
         locdotBuffers.triangleCount = 24
-        locdotBuffers.count = locmarkerAl.count
+        locdotBuffers.count = locationMarkers.count
         locdotBuffers.lenInit = scaleLengthLocationDot(locdotBuffers.type.size)
         constructTriangles(locdotBuffers)
         locCircleBuffers.triangleCount = 24

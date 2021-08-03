@@ -57,7 +57,6 @@ final class vcSpcStormReports: UIwXViewController {
 //        self.getContent()
 //    }
 
-    // TODO more threads
     override func getContent() {
         _ = FutureVoid(downloadImage, displayImage)
         _ = FutureVoid(downloadText, displayText)
