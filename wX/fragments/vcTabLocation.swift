@@ -153,7 +153,9 @@ final class vcTabLocation: vcTabParent {
             || !isUS
             || objectSevenDay.locationIndex != objectCardSevenDayCollection?.locationIndex
             || objectCardSevenDayCollection?.objectCardSevenDayList.count == 0 {
-            stackViewForecast.view.subviews.forEach { $0.removeFromSuperview() }
+            stackViewForecast.view.subviews.forEach {
+                $0.removeFromSuperview()
+            }
             objectCardSevenDayCollection = ObjectCardSevenDayCollection(
                 stackViewForecast,
                 scrollView,
@@ -199,8 +201,8 @@ final class vcTabLocation: vcTabParent {
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         let homescreenFav = TextUtils.split(globalHomeScreenFav, ":")
         textArr = [:]
-        homescreenFav.forEach {
-            switch $0 {
+        homescreenFav.forEach { favorite in
+            switch favorite {
             case "TXT-CC2":
                 stackView.addLayout(stackViewCurrentConditions)
                 stackViewCurrentConditions.constrain(stackView)
@@ -220,11 +222,11 @@ final class vcTabLocation: vcTabParent {
                 stackView.addLayout(stackViewLocal)
                 stackViewLocal.setup(stackView.get())
                 extraDataCards.append(stackViewLocal)
-                if $0.hasPrefix("TXT-") {
-                    let product = $0.replace("TXT-", "")
+                if favorite.hasPrefix("TXT-") {
+                    let product = favorite.replace("TXT-", "")
                     getContentText(product, stackViewLocal.get())
-                } else if $0.hasPrefix("IMG-") {
-                    let product = $0.replace("IMG-", "")
+                } else if favorite.hasPrefix("IMG-") {
+                    let product = favorite.replace("IMG-", "")
                     getContentImage(product, stackViewLocal)
                 }
             }
