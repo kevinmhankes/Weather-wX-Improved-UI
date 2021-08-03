@@ -1,6 +1,4 @@
-* rationalize all the Enums, etc
 * deploy new copyright header to all files
-* radar colors are in RadarGeom?
 * nexrad state
 * move some radar methods into separate file if possible
 * https://tgftp.nws.noaa.gov/data/raw/ac/acus01.kwns.swo.dy1.txt
