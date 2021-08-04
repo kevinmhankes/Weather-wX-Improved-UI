@@ -92,13 +92,13 @@ final class UtilityMetar {
                     var windInKt = ""
                     var windGustInKt = ""
                     var windDirD = 0.0
-                    if windBlob.contains("KT") && windBlob.count==7 {
+                    if windBlob.contains("KT") && windBlob.count == 7 {
                         validWind = true
                         windDir = windBlob.substring(0, 3)
                         windInKt = windBlob.substring(3, 5)
                         windDirD = to.Double(windDir)
                         windBlob = windDir + " (" + UtilityMath.convertWindDir(windDirD) + ") " + windInKt + " kt"
-                    } else if windBlob.contains("KT") && windBlob.count==10 {
+                    } else if windBlob.contains("KT") && windBlob.count == 10 {
                         validWind = true
                         validWindGust = true
                         windDir = windBlob.substring(0, 3)
