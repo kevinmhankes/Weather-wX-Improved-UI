@@ -175,8 +175,8 @@ final class UtilityModelNcepInterface {
         "NE-COAST",
         "MID-ATL",
         "SE-COAST",
-        "EGOM",
-        "WGOM",
+        "EAST-GOM",
+        "WEST-GOM",
         "HAWAII"
     ]
     
