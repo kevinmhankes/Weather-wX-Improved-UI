@@ -167,17 +167,17 @@ final class UtilityModelNcepInterface {
     ]
     
     static let sectorsEstofs = [
-        "WEST-GOA",
         "EAST-GOA",
-        "WA-OR",
-        "NORTH-CAL",
-        "SOUTH-CAL",
-        "NE-COAST",
-        "MID-ATL",
-        "SE-COAST",
         "EAST-GOM",
-        "WEST-GOM",
-        "HAWAII"
+        "HAWAII",
+        "MID-ATL",
+        "NE-COAST",
+        "NORTH-CAL",
+        "SE-COAST",
+        "SOUTH-CAL",
+        "WA-OR",
+        "WEST-GOA",
+        "WEST-GOM"
     ]
     
     static let sectorsFirewx = [
