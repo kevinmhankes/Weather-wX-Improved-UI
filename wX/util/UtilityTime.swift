@@ -168,9 +168,9 @@ final class UtilityTime {
 //        return components.hour ?? 0
 //    }
     
-    static func getCurrentLocalTimeAsString() -> String {
-        getDateAsString("yyyy-MM-dd HH:mm:ss")
-    }
+//    static func getCurrentLocalTimeAsString() -> String {
+//        getDateAsString("yyyy-MM-dd HH:mm:ss")
+//    }
     
     static func getLocalTimeAsString() -> String {
         getDateAsString("yyyy-MM-dd HH:mm:ss")
