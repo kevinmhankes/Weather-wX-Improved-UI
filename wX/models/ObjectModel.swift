@@ -354,7 +354,8 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.modelGfsWaveLabels
             sectors = UtilityModelNcepInterface.sectorsGfsWave
             times.removeAll()
-            loadTimeList3(0, 126, 6)
+            loadTimeList3(0, 73, 3)
+            loadTimeList3(78, 181, 6)
             setupListRunZ()
         case "NCEP:ESTOFS":
             params = UtilityModelNcepInterface.modelEstofsParams

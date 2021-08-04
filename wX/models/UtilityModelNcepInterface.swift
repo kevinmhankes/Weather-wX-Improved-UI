@@ -150,7 +150,7 @@ final class UtilityModelNcepInterface {
     
     static let sectorsGfsWave = [
         "ALASKA",
-        "ARTIC",
+        "ARCTIC",
         "ATL-PAC",
         "ATLANTIC",
         "EAST-PAC",
@@ -848,20 +848,18 @@ final class UtilityModelNcepInterface {
         "swell1_wv_ht",
         "swell1_dir_per",
         "swell2_wv_ht",
-        "swell2_dir_per",
+        "swell2_dir_per"
     ]
     
     static let modelGfsWaveLabels = [
         "Peak Wave Direction and Period (sec)",
         "Significant Wave Height and Wind",
-        "Wind Wave Direction and Period (sec)",
         "Wind Sea Direction and Period (sec)",
-        
+        "Wind Sea Wave Height and Wind (sec)",
         "Primary Swell Wave Height and Wind Image (sec)",
         "Primary Swell Direction and Period (sec)",
         "Secondary Swell Wave Height and Wind (sec)",
-        "Secondary Swell Direction and Period (sec)",
-        
+        "Secondary Swell Direction and Period (sec)"
     ]
     
     static let modelEstofsParams = [
