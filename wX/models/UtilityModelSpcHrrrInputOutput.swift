@@ -31,15 +31,6 @@ final class UtilityModelSpcHrrrInputOutput {
             }
         }
         return runData
-        
-//        let htmlRunStatus = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/latestHour.php").getHtml()
-//        let html = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R([0-9]{10})_F[0-9]{3}_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-//        runData.imageCompleteStr = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F([0-9]{3})_V[0-9]{10}_S[0-9]{2}_.*?.gif..*?")
-//        runData.validTime = htmlRunStatus.parse(".*?.LatestFile.: .s[0-9]{2}/R[0-9]{10}_F[0-9]{3}_V([0-9]{10})_S[0-9]{2}_.*?.gif..*?")
-//        runData.appendListRun(html)
-//        runData.appendListRun(UtilityTime.genModelRuns(html, 1))
-//        runData.mostRecentRun = html
-//        return runData
     }
 
     static func getImage(_ om: ObjectModel) -> Bitmap {
