@@ -302,7 +302,8 @@ final public class ObjectModel {
             paramLabels = UtilityModelNcepInterface.labelsNbm
             sectors = UtilityModelNcepInterface.sectorsNbm
             times.removeAll()
-            loadTimeList3(0, 264, 3)
+            loadTimeList3(0, 193, 3)
+            loadTimeList3(198, 265, 6)
             runs.removeAll()
             runs.append("00Z")
             runs.append("06Z")
@@ -348,10 +349,10 @@ final public class ObjectModel {
             runs.removeAll()
             runs.append("00Z")
             runTimeData.listRun = runs
-        case "NCEP:WW3":
-            params = UtilityModelNcepInterface.modelWw3Params
-            paramLabels = UtilityModelNcepInterface.modelWw3Labels
-            sectors = UtilityModelNcepInterface.sectorsWw3
+        case "NCEP:GFS-WAVE":
+            params = UtilityModelNcepInterface.modelGfsWaveParams
+            paramLabels = UtilityModelNcepInterface.modelGfsWaveLabels
+            sectors = UtilityModelNcepInterface.sectorsGfsWave
             times.removeAll()
             loadTimeList3(0, 126, 6)
             setupListRunZ()

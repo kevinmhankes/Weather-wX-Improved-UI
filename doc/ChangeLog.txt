@@ -1,6 +1,8 @@
 
 56136 2021_08_01 [ADD] NSSL WRF_3KM has been discontinued by the upstream provider https://cams.nssl.noaa.gov/
 		 [FIX] SPC HRRR is now working again
+		 [FIX] NCEP - rename WW3 to GFS-WAVE and add additional sectors/products
+		 [FIX] NCEP - adjust NMB time periods, remove params that aren't working
 56135 2021_08_01 [ADD] update ESRL HRRR/RAP after NOAA changes
 		 [ADD] Rainfall outlook - disable screen timeout in case TTS is used
 		 [FIX] National images first three aviation images don’t work
