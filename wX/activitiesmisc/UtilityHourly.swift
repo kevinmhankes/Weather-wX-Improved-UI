@@ -127,6 +127,6 @@ final class UtilityHourly {
         default:
             dayOfTheWeek = ""
         }
-        return (dayOfTheWeek + " " + hourString)
+        return dayOfTheWeek + " " + hourString
     }
 }
