@@ -4,6 +4,11 @@
 		 [FIX] NCEP - rename WW3 to GFS-WAVE and add additional sectors/products
 		 [FIX] NCEP - adjust NMB time periods, remove params that aren't working
 		 [FIX] NCEP - correct 2 sectors in ESTOFS and sort list
+                 [FIX] remove 4 outdated images in National Images
+                            "https://www.weather.gov/images/cle/ICE/dist9_concentration.jpg",
+                            "https://www.weather.gov/images/cle/ICE/dist9_thickness.jpg",
+                            "https://www.weather.gov/images/cle/ICE/egg_west.jpg",
+                            "https://www.weather.gov/images/cle/ICE/egg_east.jpg",
 56135 2021_08_01 [ADD] update ESRL HRRR/RAP after NOAA changes
 		 [ADD] Rainfall outlook - disable screen timeout in case TTS is used
 		 [FIX] National images first three aviation images don’t work
