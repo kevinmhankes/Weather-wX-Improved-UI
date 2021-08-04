@@ -106,18 +106,18 @@ final class UtilityTime {
         TimeZone.current.secondsFromGMT()
     }
     
-    static func genModelRuns(_ time: String, _ hours: Int) -> [String] {
-        let dateFmt = DateFormatter()
-        dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFmt.dateFormat = "yyyyMMddHH"
-        let date = dateFmt.date(from: time)
-        var runs = [String]()
-        (1...4).forEach {
-            let timeChange = 60.0 * 60.0 * Double(hours) * Double($0)
-            runs.append(dateFmt.string(from: (date! - timeChange) as Date))
-        }
-        return runs
-    }
+//    static func genModelRuns(_ time: String, _ hours: Int) -> [String] {
+//        let dateFmt = DateFormatter()
+//        dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
+//        dateFmt.dateFormat = "yyyyMMddHH"
+//        let date = dateFmt.date(from: time)
+//        var runs = [String]()
+//        (1...4).forEach {
+//            let timeChange = 60.0 * 60.0 * Double(hours) * Double($0)
+//            runs.append(dateFmt.string(from: (date! - timeChange) as Date))
+//        }
+//        return runs
+//    }
     
     static func genModelRuns(_ time: String, _ hours: Int, _ dateStr: String) -> [String] {
         let dateFmt = DateFormatter()
