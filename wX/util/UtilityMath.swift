@@ -80,11 +80,11 @@ final class UtilityMath {
     }
 
     static func deg2rad(_ deg: Double) -> Double {
-        (deg * Double.pi / 180.0)
+        deg * Double.pi / 180.0
     }
 
     static func rad2deg(_ rad: Double) -> Double {
-        (rad * 180.0 / Double.pi)
+        rad * 180.0 / Double.pi
     }
 
     static func convertWindDir(_ direction: Double) -> String {
