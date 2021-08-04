@@ -8,7 +8,11 @@ final class UtilityImgAnim {
 
     static func getAnimationDrawableFromBitmapList(_ bitmaps: [Bitmap]) -> AnimationDrawable {
         let animDrawable = AnimationDrawable()
-        bitmaps.filter { $0.isValid }.forEach { animDrawable.addFrame($0) }
+        bitmaps.filter {
+            $0.isValid
+        }.forEach {
+            animDrawable.addFrame($0)
+        }
         return animDrawable
     }
 }

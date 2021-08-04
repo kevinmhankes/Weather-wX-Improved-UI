@@ -13,7 +13,9 @@ final class UtilityImg {
         let rendererFormat = UIGraphicsImageRendererFormat()
         rendererFormat.opaque = false
         let renderer = UIGraphicsImageRenderer(size: newSize, format: rendererFormat)
-        return renderer.image { _ in image.draw(in: CGRect(origin: CGPoint.zero, size: newSize)) }
+        return renderer.image { _ in
+            image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        }
     }
 
     static func layerDrawableToBitmap(_ layers: [Bitmap]) -> Bitmap {
@@ -25,7 +27,9 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach { layer in imgTmp = UtilityImg.mergeImages(imgTmp, layer.image) }
+            layers.forEach { layer in
+                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
+            }
             image = imgTmp
         }
         image = addColorBackground(image, UIColor.white)
@@ -38,7 +42,9 @@ final class UtilityImg {
             image = layers[0].image
         } else {
             var imgTmp = layers[0].image
-            layers.forEach { layer in imgTmp = UtilityImg.mergeImages(imgTmp, layer.image) }
+            layers.forEach { layer in
+                imgTmp = UtilityImg.mergeImages(imgTmp, layer.image)
+            }
             image = imgTmp
         }
         return image
