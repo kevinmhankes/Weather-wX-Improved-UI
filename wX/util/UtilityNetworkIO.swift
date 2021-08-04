@@ -54,7 +54,9 @@ final class UtilityNetworkIO {
         }
         let imageData = try? Data(contentsOf: safeUrl)
         var data = Data()
-        if let dataTmp = imageData { data = dataTmp }
+        if let dataTmp = imageData {
+            data = dataTmp
+        }
         return data
     }
 }

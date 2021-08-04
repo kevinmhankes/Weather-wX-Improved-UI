@@ -124,7 +124,9 @@ final class UtilityString {
             let results = regex.matches(in: s, options: [], range: NSRange(location: 0, length: nsString.length))
             var match = [String]()
             results.forEach { result in
-                (0..<result.numberOfRanges).forEach { match.append(nsString.substring(with: result.range(at: $0))) }
+                (0..<result.numberOfRanges).forEach {
+                    match.append(nsString.substring(with: result.range(at: $0)))
+                }
             }
             if match.count > 1 {
                 match.remove(at: 0)
@@ -153,7 +155,9 @@ final class UtilityString {
     static func fixedLengthString(_ s: String, _ length: Int) -> String {
         if s.count < length {
             var stringLocal = s
-            (s.count...length).forEach { _ in stringLocal += " " }
+            (s.count...length).forEach { _ in
+                stringLocal += " "
+            }
             return stringLocal
         } else {
             return s
