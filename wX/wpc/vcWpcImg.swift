@@ -38,7 +38,7 @@ final class vcWpcImg: UIwXViewController {
     func getContent(_ index: Int) {
         self.index = index
         productButton.title = UtilityWpcImages.labels[index]
-        var url = UtilityWpcImages.urls[self.index]
+        var url = UtilityWpcImages.urls[index]
         if url.contains(GlobalVariables.nwsGraphicalWebsitePrefix + "/images/conus/") {
             url += String(timePeriod) + "_conus.png"
         }
