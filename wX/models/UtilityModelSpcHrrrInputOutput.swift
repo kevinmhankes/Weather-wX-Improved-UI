@@ -1,21 +1,13 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 import UIKit
 
 final class UtilityModelSpcHrrrInputOutput {
     
-//    Latest Run: 2021080211
-//    Run: 20210802/0600
-//    Run: 20210802/0700
-//    Run: 20210802/0800
-//    Run: 20210802/0900
-//    Run: 20210802/1000
-//    Run: 20210802/1100
-
     static func getRunTime() -> RunTimeData {
         let runData = RunTimeData()
         let htmlRunStatus = (GlobalVariables.nwsSPCwebsitePrefix + "/exper/hrrr/data/hrrr3/cron.log").getHtml()

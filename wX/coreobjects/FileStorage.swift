@@ -1,8 +1,8 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 import Foundation
 
@@ -11,7 +11,6 @@ final class FileStorage {
     var memoryBuffer = MemoryBuffer()
     var memoryBufferL2 = MemoryBuffer()
     var level3TextProductMap = [String: String]()
-    // var animationByteArray: List[array] = []
     var animationMemoryBuffer = [MemoryBuffer]()
     var animationMemoryBufferL2 = [MemoryBuffer]()
     var stiList = [Double]()
@@ -36,29 +35,7 @@ final class FileStorage {
         var data = ""
         if let retStr1 = String(data: byteArray, encoding: .ascii) {
             data = retStr1
-            // print(data)
         }
-        // dataAsQString: str = byteArrayF.decode('iso-8859-1')
         level3TextProductMap[product] = data
     }
 }
-
-//
-//    def setMemoryBuffer(self, byteArrayF: bytes) -> None:
-//        data: array = array("B")
-//        data.frombytes(byteArrayF)
-//        self.memoryBuffer.fromFile(data)
-//
-//    def setMemoryBufferForAnimation(self, index: int, byteArrayF: bytes) -> None:
-//        data: array = array("B")
-//        data.frombytes(byteArrayF)
-//        # self.animationByteArray.insert(index, data)
-//        self.animationByteArray[index] = data
-//        # self.animationMemoryBuffer.insert(index, MemoryBuffer.fromArray(self.animationByteArray[index]))
-//        self.animationMemoryBuffer[index] = MemoryBuffer.fromArray(self.animationByteArray[index])
-//
-
-//
-//    def clear(self):
-//        self.animationMemoryBuffer.clear()
-//        self.animationByteArray.clear()
