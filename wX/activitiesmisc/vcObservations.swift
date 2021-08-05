@@ -1,8 +1,8 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 import UIKit
 
@@ -31,9 +31,9 @@ final class vcObservations: UIwXViewController {
 
     func getContent(_ index: Int) {
         self.index = index
-        Utility.writePref(prefTokenIndex, self.index)
-        productButton.title = UtilityObservations.labels[self.index]
-        _ = FutureBytes(UtilityObservations.urls[self.index], image.setBitmap)
+        Utility.writePref(prefTokenIndex, index)
+        productButton.title = UtilityObservations.labels[index]
+        _ = FutureBytes(UtilityObservations.urls[index], image.setBitmap)
     }
 
     @objc func productClicked() {
