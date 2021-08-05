@@ -29,9 +29,9 @@ final class vcOpc: UIwXViewController {
 
     func getContent(_ index: Int) {
         self.index = index
-        Utility.writePref(prefToken, self.index)
-        productButton.title = UtilityOpcImages.labels[self.index]
-        _ = FutureBytes(UtilityOpcImages.urls[self.index], image.setBitmap)
+        Utility.writePref(prefToken, index)
+        productButton.title = UtilityOpcImages.labels[index]
+        _ = FutureBytes(UtilityOpcImages.urls[index], image.setBitmap)
     }
 
     @objc func productClicked() {
