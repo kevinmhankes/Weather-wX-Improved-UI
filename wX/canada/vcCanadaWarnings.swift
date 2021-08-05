@@ -37,7 +37,7 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     @objc func provinceClicked() {
-        _ = ObjectPopUp(self, title: "Province Selection", provinceButton, objectCanadaWarnings.provinces, provinceChanged(_:))
+        _ = ObjectPopUp(self, title: "Province Selection", provinceButton, objectCanadaWarnings.provinces, provinceChanged)
     }
 
     func provinceChanged(_ province: String) {

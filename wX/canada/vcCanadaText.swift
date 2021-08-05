@@ -39,7 +39,7 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
     }
 
     @objc func productClicked() {
-        _ = ObjectPopUp(self, productButton, UtilityCanada.products, productChanged(_:))
+        _ = ObjectPopUp(self, productButton, UtilityCanada.products, productChanged)
     }
 
     func productChanged(_ product: String) {
