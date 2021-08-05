@@ -39,12 +39,15 @@ final class UtilityOpcImages {
         "Alaska/Arctic SST/Ice Edge Analysis",
         "Alaska/Arctic 24-hour Surface",
         "Alaska/Arctic 48-hour Surface",
+        "Alaska/Arctic 72-hour Surface",
         "Alaska/Arctic 96-hour Surface",
         "Alaska/Arctic 24-hour Wind & Wave",
         "Alaska/Arctic 48-hour Wind & Wave",
+        "Alaska/Arctic 72-hour Wind & Wave",
         "Alaska/Arctic 96-hour Wind & Wave",
         "Alaska/Arctic 24-hour Wave period & Direction",
         "Alaska/Arctic 48-hour Wave period & Direction",
+        "Alaska/Arctic 72-hour Wave period & Direction",
         "Alaska/Arctic 96-hour Wave period & Direction"
     ]
 
@@ -81,12 +84,15 @@ final class UtilityOpcImages {
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/NSSTICE_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/24SFC_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/48SFC_LATEST.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/72SFC_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/96SFC_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/24WW_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/48WW_LATEST.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/72WW_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/96WW_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_024hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_048hrwper_color.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_072hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_096hrwper_color.gif"
     ]
 }
