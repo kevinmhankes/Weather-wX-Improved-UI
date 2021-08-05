@@ -1,8 +1,8 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 import UIKit
 
@@ -90,9 +90,6 @@ final class vcNhc: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ in self.display() }
-        )
+        coordinator.animate(alongsideTransition: nil, completion: { _ in self.display() })
     }
 }

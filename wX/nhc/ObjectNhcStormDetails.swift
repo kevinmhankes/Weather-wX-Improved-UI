@@ -1,8 +1,8 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 final class ObjectNhcStormDetails {
     
@@ -53,7 +53,6 @@ final class ObjectNhcStormDetails {
         center = lat + " " + lon
         dateTime = lastUpdate
         movement = UtilityMath.convertWindDir(to.Double(movementDir)) + " at " + movementSpeed + " mph"
-        // var modBinNumber = binNumber
         var modBinNumber = binNumber.substring(0, 2) + id.substring(2, 4)
         if modBinNumber.count == 3 {
             modBinNumber = modBinNumber.insert(2, "0")

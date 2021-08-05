@@ -1,8 +1,8 @@
-/*****************************************************************************
- * Copyright (c) 2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
- *
- * Refer to the COPYING file of the official project for license.
- *****************************************************************************/
+// *****************************************************************************
+// Copyright (c)  2016, 2017, 2018, 2019, 2020, 2021 joshua.tee@gmail.com. All rights reserved.
+//
+// Refer to the COPYING file of the official project for license.
+// *****************************************************************************
 
 import UIKit
 
@@ -53,8 +53,8 @@ final class ObjectNhc: NSObject {
         movementDirs = html.parseColumn("\"movementDir\": (.*?),")
         movementSpeeds = html.parseColumn("\"movementSpeed\": (.*?),")
         lastUpdates = html.parseColumn("\"lastUpdate\": \"(.*?)\"")
-        binNumbers.forEach {
-            let text = UtilityDownload.getTextProduct("MIATCP" + $0)
+        binNumbers.forEach { number in
+            let text = UtilityDownload.getTextProduct("MIATCP" + number)
             let status = text.parseFirst("(\\.\\.\\..*?\\.\\.\\.)")
             statusList.append(status)
         }
