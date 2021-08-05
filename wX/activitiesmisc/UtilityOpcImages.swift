@@ -60,12 +60,13 @@ final class UtilityOpcImages {
         "Alaska/Arctic 72-hour Wave period & Direction",
         "Alaska/Arctic 96-hour Wave period & Direction",
         
-        "Atlantic Offshore 15 minute lightning strike density",
-        "North Atlantic 15 minute lightning strike density",
-        "E Tropics 15 minute lightning strike density",
-        "W Tropics 15 minute lightning strike density",
-        "S Pac 15 minute lightning strike density",
-        "N Pac 15 minute lightning strike density"
+        "Atlantic Offshore 15m lightning strike density",
+        "N Atlantic 15m lightning strike density",
+        "S Atlantic 15m lightning strike density",
+        "E Tropics 15m lightning strike density",
+        "W Tropics 15m lightning strike density",
+        "S Pac 15m lightning strike density",
+        "N Pac 15m lightning strike density"
     ]
 
     static let urls = [
@@ -124,6 +125,7 @@ final class UtilityOpcImages {
         
         GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/nAtlOff_IR_15min_latest.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/nAtl_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/sAtlOff_IR_15min_latest.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/eTrop_IR_15min_latest.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/wTrop_IR_15min_latest.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/sPacOff_IR_15min_latest.gif",
