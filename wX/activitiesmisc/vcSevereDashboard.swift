@@ -39,17 +39,22 @@ final class vcSevereDashboard: UIwXViewController {
         for warning in [PolygonEnum.TOR, PolygonEnum.TST, PolygonEnum.FFW] {
             _ = FutureVoid(severeWarnings[warning]!.download, display)
         }
-        getContentUsAlerts()
-        getContentSpcStormReports()
-    }
-
-    func getContentUsAlerts() {
+        
+//        getContentUsAlerts()
+//        getContentSpcStormReports()
+        
         _ = FutureVoid({ self.usAlertsBitmap = Bitmap("https://forecast.weather.gov/wwamap/png/US.png") }, display)
+        _ = FutureVoid({ self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif") }, display)
+
     }
 
-    func getContentSpcStormReports() {
-        _ = FutureVoid({ self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif") }, display)
-    }
+//    func getContentUsAlerts() {
+//        _ = FutureVoid({ self.usAlertsBitmap = Bitmap("https://forecast.weather.gov/wwamap/png/US.png") }, display)
+//    }
+//
+//    func getContentSpcStormReports() {
+//        _ = FutureVoid({ self.bitmap = Bitmap(GlobalVariables.nwsSPCwebsitePrefix + "/climo/reports/" + "today" + ".gif") }, display)
+//    }
 
     @objc func imageClicked(sender: GestureData) {
         if buttonActions[sender.data].hasPrefix("WPCMPD") {
