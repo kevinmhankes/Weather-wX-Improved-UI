@@ -25,6 +25,7 @@ final class UtilityOpcImages {
         "Atlantic 48-hour Wave period & Direction",
         "Atlantic 72-hour Wave period & Direction",
         "Atlantic 96-hour Wave period & Direction",
+        
         "Pacific Surface Analysis",
         "Pacific Wind/Wave Analysis",
         "Pacific 24-hour 500 mb",
@@ -43,6 +44,7 @@ final class UtilityOpcImages {
         "Pacific 48-hour Wave period & Direction",
         "Pacific 72-hour Wave period & Direction",
         "Pacific 96-hour Wave period & Direction",
+        
         "Alaska/Arctic Surface Analysis",
         "Alaska/Arctic SST/Ice Edge Analysis",
         "Alaska/Arctic 24-hour Surface",
@@ -56,7 +58,14 @@ final class UtilityOpcImages {
         "Alaska/Arctic 24-hour Wave period & Direction",
         "Alaska/Arctic 48-hour Wave period & Direction",
         "Alaska/Arctic 72-hour Wave period & Direction",
-        "Alaska/Arctic 96-hour Wave period & Direction"
+        "Alaska/Arctic 96-hour Wave period & Direction",
+        
+        "Atlantic Offshore 15 minute lightning strike density",
+        "North Atlantic 15 minute lightning strike density",
+        "E Tropics 15 minute lightning strike density",
+        "W Tropics 15 minute lightning strike density",
+        "S Pac 15 minute lightning strike density",
+        "N Pac 15 minute lightning strike density"
     ]
 
     static let urls = [
@@ -78,6 +87,7 @@ final class UtilityOpcImages {
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/A_048hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/A_072hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/A_096hrwper_color.gif",
+        
         GlobalVariables.nwsOpcWebsitePrefix + "/P_sfc_full_ocean_color.png",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/irp1.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_24hr500.gif",
@@ -96,6 +106,7 @@ final class UtilityOpcImages {
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_048hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_072hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_096hrwper_color.gif",
+        
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/UA_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/NSSTICE_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/24SFC_LATEST.gif",
@@ -109,6 +120,13 @@ final class UtilityOpcImages {
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_024hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_048hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_072hrwper_color.gif",
-        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_096hrwper_color.gif"
+        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/AK_096hrwper_color.gif",
+        
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/nAtlOff_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/nAtl_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/eTrop_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/wTrop_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/sPacOff_IR_15min_latest.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/lightning/data/nPacOff_IR_15min_latest.gif"
     ]
 }
