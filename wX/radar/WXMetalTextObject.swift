@@ -59,7 +59,11 @@ final class WXMetalTextObject {
         self.numPanes = numPanes
         fileStorage = wxMetalRender.fileStorage
         maxCitiesPerGlview = 16 / numPanes
-        let fudgeFactor = 375.0
+        // let fudgeFactor = 375.0
+        var fudgeFactor: Double = 375.0 * Double(UtilityUI.getScreenScale()) / 2.0
+        if UtilityUI.getScreenScale() < 1.6 {
+            fudgeFactor = 375.0
+        }
         // self.screenScale = screenScale * (glViewWidth / fudgeFactor) * 0.5
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
         xFudge = 15.0 * (fudgeFactor / glViewWidth)
