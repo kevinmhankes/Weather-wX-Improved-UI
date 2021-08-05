@@ -78,7 +78,7 @@ final class UtilityOpcImages {
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_048hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/P_096hrwper_color.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/UA_LATEST.gif",
-        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/OISSTICE_LATEST.gif",
+        GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/NSSTICE_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/24SFC_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/48SFC_LATEST.gif",
         GlobalVariables.nwsOpcWebsitePrefix + "/shtml/arctic/96SFC_LATEST.gif",

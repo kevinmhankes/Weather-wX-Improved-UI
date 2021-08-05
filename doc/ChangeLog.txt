@@ -1,5 +1,5 @@
 
-56137 2021_08_04 
+56137 2021_08_05 [FIX] url had changed in OPC for Alaska/Arctic Analysis Latest SST/Ice Edge Analysis
    *public release
 56136 2021_08_04 [ADD] NSSL WRF_3KM has been discontinued by the upstream provider https://cams.nssl.noaa.gov/
 		 [FIX] SPC HRRR is now working again
