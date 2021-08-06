@@ -1,7 +1,7 @@
 disabled_rules: # rule identifiers to exclude from running
   - cyclomatic_complexity
   - file_length
-  - large_tuple
+  #- large_tuple
   - type_body_length
   - function_body_length
   - identifier_name
@@ -10,3 +10,7 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - line_length
   - trailing_whitespace
+  - valid_ibinspectable
+  - block_based_kvo
+  - unused_setter_value
+  - for_where

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         // Override point for customization after application launch.
         MyApplication.onCreate()
-        self.window?.tintColor = wXColor.uiColorInt(0, 0, 0)
+        window?.tintColor = wXColor.uiColorInt(0, 0, 0)
         let color = wXColor.uiColorInt(204, 204, 204)
         UINavigationBar.appearance().barTintColor = color
         UIToolbar.appearance().barTintColor = color

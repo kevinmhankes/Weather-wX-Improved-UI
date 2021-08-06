@@ -144,9 +144,9 @@ final class UtilityTime {
 //        return dateFormatter.string(from: date)
 //    }
     
-    static func currentTimeMillis64() -> Int64 {
-        Int64(Date().timeIntervalSince1970 * 1000)
-    }
+//    static func currentTimeMillis64() -> Int64 {
+//        Int64(Date().timeIntervalSince1970 * 1000)
+//    }
     
     static func currentTimeMillis() -> Int {
         Int((Date().timeIntervalSince1970 * 1000.0).rounded())

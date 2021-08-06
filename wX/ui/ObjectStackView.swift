@@ -79,9 +79,9 @@ final class ObjectStackView {
         uiStackView.addGestureRecognizer(gesture)
     }
 
-    func addGesture(_ gesture: UIGestureRecognizer) {
-        uiStackView.addGestureRecognizer(gesture)
-    }
+//    func addGesture(_ gesture: UIGestureRecognizer) {
+//        uiStackView.addGestureRecognizer(gesture)
+//    }
     
     func addGesture(_ gesture: UITapGestureRecognizer) {
         uiStackView.addGestureRecognizer(gesture)

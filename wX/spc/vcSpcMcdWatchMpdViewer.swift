@@ -10,8 +10,6 @@ final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
 
     private var bitmap = Bitmap()
     private var html = ""
-    private var numbers = [String]()
-    private var listOfText = [String]()
     private var url = ""
     private var productNumber = ""
     private var objectWatchProduct: ObjectWatchProduct?

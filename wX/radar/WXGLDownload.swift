@@ -67,13 +67,13 @@ final class WXGLDownload {
     
     // Download a list of files and return the list as a list of Strings
     // Determines of Level 2 or Level 3 and calls appropriate method
-    static func getRadarFilesForAnimation(_ radarBuffers: ObjectMetalRadarBuffers, _ frameCount: Int, _ prod: String, _ radarSite: String, _ fileStorage: FileStorage) -> [String] {
+    static func getRadarFilesForAnimation(_ frameCount: Int, _ prod: String, _ radarSite: String, _ fileStorage: FileStorage) -> [String] {
         let listOfFiles: [String]
         let ridPrefix = getRidPrefix(radarSite, WXGLNexrad.isProductTdwr(prod))
         if !prod.contains("L2") {
             listOfFiles = getLevel3FilesForAnimation(frameCount, prod, ridPrefix, radarSite.lowercased(), fileStorage)
         } else {
-            listOfFiles = getLevel2FilesForAnimation(radarBuffers, nwsRadarLevel2Pub + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCount, fileStorage)
+            listOfFiles = getLevel2FilesForAnimation(nwsRadarLevel2Pub + ridPrefix.uppercased() + radarSite.uppercased() + "/", frameCount, fileStorage)
         }
         return listOfFiles
     }
@@ -130,7 +130,7 @@ final class WXGLDownload {
     }
     
     // Level 2: Download a list of files and return the list as a list of Strings
-    private static func getLevel2FilesForAnimation(_ radarBuffers: ObjectMetalRadarBuffers, _ baseUrl: String, _ frameCount: Int, _ fileStorage: FileStorage) -> [String] {
+    private static func getLevel2FilesForAnimation(_ baseUrl: String, _ frameCount: Int, _ fileStorage: FileStorage) -> [String] {
         var listOfFiles = [String]()
         let list = (baseUrl + "dir.list").getHtmlSep().replace("\n", " ").split(" ")
         var additionalAdd = 0

@@ -824,7 +824,6 @@ final class WXMetalRender {
         }
     }
 
-    // TODO rename vars
     func constructSwoLines() {
         swoBuffers.initialize(2, Color.MAGENTA)
         colorSwo = []

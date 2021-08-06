@@ -23,10 +23,6 @@ final class UtilityModelEsrlInterface {
         "East CO"
     ]
     
-    static let sectorsHrrrAk = [
-        "Full"
-    ]
-    
     static let modelHrrrParams = [
         "1ref_full_1000m",
         "cref_full_sfc",

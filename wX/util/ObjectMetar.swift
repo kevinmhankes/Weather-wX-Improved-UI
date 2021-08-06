@@ -22,7 +22,7 @@ final class ObjectMetar {
     var heatIndex: String
     var conditionsTimeString = ""
     var icon = ""
-    let rawMetar: String
+    // let rawMetar: String
     private let metarSkyCondition: String
     private let metarWeatherCondition: String
 
@@ -45,7 +45,7 @@ final class ObjectMetar {
         relativeHumidity = metarData.parseFirst("Relative Humidity: (.*?)%")
         windChill = metarData.parseFirst("Windchill: (.*?) F")
         heatIndex = UtilityMath.heatIndex(temperature, relativeHumidity)
-        rawMetar = metarData.parseFirst("ob: (.*?)" + GlobalVariables.newline)
+        // rawMetar = metarData.parseFirst("ob: (.*?)" + GlobalVariables.newline)
         metarSkyCondition = metarData.parseFirst("Sky conditions: (.*?)" + GlobalVariables.newline).capitalized
         metarWeatherCondition = metarData.parseFirst("Weather: (.*?)" + GlobalVariables.newline).capitalized
         if decodeIcon {
@@ -122,7 +122,7 @@ final class ObjectMetar {
 
     func changeDegreeUnits(_ value: String) -> String {
         if value != "" {
-            return (Double(value) ?? 0.0).roundToString()
+            return to.Double(value).roundToString()
         } else {
             return "NA"
         }

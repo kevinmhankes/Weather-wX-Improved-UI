@@ -18,9 +18,7 @@ final class WXMetalNexradLevelData {
     private var days = MemoryBuffer(2)
     private var msecs = MemoryBuffer(4)
     private var halfWord3132: Float = 0.0
-    private var timestampStr = ""
     private var seekStart: CLong = 0
-    private var compressedFileSize = 0
     var radarBuffers: ObjectMetalRadarBuffers?
     var index = "0"
     var radarHeight = 0

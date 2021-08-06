@@ -7,10 +7,10 @@
 final class ObjectForecast {
     
     let name: String
-    private let temperature: String
-    private let windSpeed: String
-    private let windDirection: String
-    private let icon: String
+//    private let temperature: String
+//    private let windSpeed: String
+//    private let windDirection: String
+//    private let icon: String
     let shortForecast: String
     let detailedForecast: String
     
@@ -24,10 +24,10 @@ final class ObjectForecast {
         _ detailedForecast: String
     ) {
         self.name = name
-        self.temperature = temperature
-        self.windSpeed = windSpeed
-        self.windDirection = windDirection
-        self.icon = icon
+//        self.temperature = temperature
+//        self.windSpeed = windSpeed
+//        self.windDirection = windDirection
+//        self.icon = icon
         self.shortForecast = shortForecast
         self.detailedForecast = detailedForecast
     }

@@ -118,7 +118,6 @@ final class UtilityRadarUI {
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
         var ridSmall = radarSite
-        // TODO adjustment when convert to 4char radar site code
         if radarSite.count == 4 {
             ridSmall.remove(at: radarSite.startIndex)
         }

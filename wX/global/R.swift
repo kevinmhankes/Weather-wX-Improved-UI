@@ -112,7 +112,7 @@ final class R {
         static let hurr_noh = "hurr_noh.png"
         static let tropstorm = "tropstorm.png"
         static let tropstorm_noh = "tropstorm_noh.png"
-        static let ntropstorm_noh = "tropstorm_noh.png"
+//        static let ntropstorm_noh = "tropstorm_noh.png"
         static let nmix = "nmix.png"
         static let mix = "mix.png"
         static let ts = "ts.png"

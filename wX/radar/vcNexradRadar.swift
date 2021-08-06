@@ -647,24 +647,24 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         } else {
             wxMetalRenders[index]!.resetRidAndGet(radarSite)
         }
-        view.subviews.forEach {
-            if $0 is UITextView {
-                $0.removeFromSuperview()
-            }
-        }
-        wxMetalTextObject = WXMetalTextObject(
-            self,
-            numberOfPanes,
-            Double(view.frame.width),
-            Double(view.frame.height),
-            wxMetalRenders[0]!,
-            screenScale
-        )
-        wxMetalTextObject.initializeTextLabels()
-        wxMetalTextObject.addTextLabels()
+//        view.subviews.forEach {
+//            if $0 is UITextView {
+//                $0.removeFromSuperview()
+//            }
+//        }
+//        wxMetalTextObject = WXMetalTextObject(
+//            self,
+//            numberOfPanes,
+//            Double(view.frame.width),
+//            Double(view.frame.height),
+//            wxMetalRenders[0]!,
+//            screenScale
+//        )
+//        wxMetalTextObject.initializeTextLabels()
+//        wxMetalTextObject.addTextLabels()
+        resetTextObject()
     }
 
-    // TODO use above
     func resetTextObject() {
         view.subviews.forEach {
             if $0 is UITextView {
@@ -727,9 +727,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             var animArray = [[String]]()
             self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
                 if RadarPreferences.useFileStorage {
-                    _ = WXGLDownload.getRadarFilesForAnimation(wxMetalRender!.radarBuffers, frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
+                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
                 } else {
-                    animArray.append(WXGLDownload.getRadarFilesForAnimation(wxMetalRender!.radarBuffers, frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
+                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
                     animArray[index].indices.forEach {
                         UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                         UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))

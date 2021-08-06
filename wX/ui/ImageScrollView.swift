@@ -47,8 +47,8 @@ open class ImageScrollView: UIScrollView {
     var pointToCenterAfterResize = CGPoint.zero
     var scaleToRestoreAfterResize: CGFloat = 1.0
     var maxScaleFromMinScale: CGFloat = 5.0 // was 3.0
-    var idx = 0
-    var imageSized = false
+    // var idx = 0
+    // var imageSized = false
 
     override open var frame: CGRect {
         willSet {
@@ -154,33 +154,34 @@ open class ImageScrollView: UIScrollView {
         // add logic to only run first time
         // if (!imageSized) {
         configureImageForSize(image.size)
-        imageSized = true
+        // imageSized = true
+        
         // }
     }
 
-    func resetUI() {
-        if let zoomView = zoomView {zoomView.removeFromSuperview()}
-        zoomView!.isUserInteractionEnabled = true
-        addSubview(zoomView!)
-    }
+//    func resetUI() {
+//        if let zoomView = zoomView {zoomView.removeFromSuperview()}
+//        zoomView!.isUserInteractionEnabled = true
+//        addSubview(zoomView!)
+//    }
 
-    func displayAnim( image: UIImage, anim: AnimationDrawable) {
-        // if (!imageSized) {
-        if let zoomView = zoomView {
-            zoomView.removeFromSuperview()
-        }
-        zoomView = UIImageView(image: image)
-        zoomView!.isUserInteractionEnabled = true
-        addSubview(zoomView!)
-        // }
-        zoomView?.animationImages = anim.images
-        zoomView?.animationDuration = 3.0
-        zoomView?.startAnimating()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
-        tapGesture.numberOfTapsRequired = 2
-        zoomView!.addGestureRecognizer(tapGesture)
-        configureImageForSize(image.size)
-    }
+//    func displayAnim( image: UIImage, anim: AnimationDrawable) {
+//        // if (!imageSized) {
+//        if let zoomView = zoomView {
+//            zoomView.removeFromSuperview()
+//        }
+//        zoomView = UIImageView(image: image)
+//        zoomView!.isUserInteractionEnabled = true
+//        addSubview(zoomView!)
+//        // }
+//        zoomView?.animationImages = anim.images
+//        zoomView?.animationDuration = 3.0
+//        zoomView?.startAnimating()
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
+//        tapGesture.numberOfTapsRequired = 2
+//        zoomView!.addGestureRecognizer(tapGesture)
+//        configureImageForSize(image.size)
+//    }
 
     fileprivate func configureImageForSize(_ size: CGSize) {
         imageSize = size
@@ -224,10 +225,10 @@ open class ImageScrollView: UIScrollView {
         }
     }
 
-    func restorePosition(_ scale: CGFloat, center: CGPoint) {
-        let zoomRect = zoomRectForScale(scale, center: center)
-        zoom(to: zoomRect, animated: true)
-    }
+//    func restorePosition(_ scale: CGFloat, center: CGPoint) {
+//        let zoomRect = zoomRectForScale(scale, center: center)
+//        zoom(to: zoomRect, animated: true)
+//    }
 
     fileprivate func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero

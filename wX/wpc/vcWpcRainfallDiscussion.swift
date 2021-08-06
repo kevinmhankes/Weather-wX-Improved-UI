@@ -28,7 +28,7 @@ final class vcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
         objScrollStackView = ScrollStackView(self)
         getContent()
     }
-    
+
     override func doneClicked() {
         UIApplication.shared.isIdleTimerDisabled = false
         super.doneClicked()
