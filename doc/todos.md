@@ -1,4 +1,3 @@
-* Wpc ice. Removed outdated great lakes images
 * deploy new copyright header to all files
 * [FIX] dual pane does not show radar time for both panes
 * [ADD] text labels in multipane nexrad
