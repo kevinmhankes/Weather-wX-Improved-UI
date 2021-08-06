@@ -41,15 +41,17 @@ final class ObjectCurrentConditions {
     convenience init(_ location: LatLon) {
         self.init()
         let conditions = getConditionsViaMetar(location)
-        data = conditions.conditionAsString
-        iconUrl = conditions.iconUrl
+        data = conditions[0]
+        iconUrl = conditions[1]
+//        data = conditions.conditionAsString
+//        iconUrl = conditions.iconUrl
         // rawMetar = conditions.metar
         status = UtilityObs.getStatusViaMetar(conditionsTimeString)
         formatCurrentConditions()
     }
 
-    // FIXME don't use named tuple for language consistency
-    func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
+    // func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
+    func getConditionsViaMetar(_ location: LatLon) -> [String] {
         var s = ""
         let objectMetar = ObjectMetar(location)
         conditionsTimeString = objectMetar.conditionsTimeString
@@ -76,7 +78,8 @@ final class ObjectCurrentConditions {
             s += " G "
         }
         s += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return (s, objectMetar.icon, objectMetar.rawMetar)
+        return [s, objectMetar.icon]
+        // return (s, objectMetar.icon, objectMetar.rawMetar)
         // sb String "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
