@@ -99,7 +99,7 @@ final class UtilityRadarUI {
 
     static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
         let vc = vcAdhocLocation()
-        vc.adhocLocation = location
+        vc.latLon = location
         uiv.goToVC(vc)
     }
 

@@ -16,7 +16,7 @@ final class vcAdhocLocation: UIwXViewController {
     private var stackViewHazards = ObjectStackView(.fill, .vertical)
     private var stackViewForecast = ObjectStackView(.fill, .vertical)
     var saveButton = ToolbarIcon()
-    var adhocLocation = LatLon()
+    var latLon = LatLon()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class vcAdhocLocation: UIwXViewController {
         objScrollStackView = ScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         stackView.constrain(scrollView)
-        titleButton.title = adhocLocation.latString.truncate(6) + ", " + adhocLocation.lonString.truncate(6)
+        titleButton.title = latLon.latString.truncate(6) + ", " + latLon.lonString.truncate(6)
         
         stackView.addLayout(stackViewCurrentConditions)
         stackViewCurrentConditions.constrain(scrollView)
@@ -46,15 +46,15 @@ final class vcAdhocLocation: UIwXViewController {
     }
     
     private func downloadCc() {
-        objectCurrentConditions = ObjectCurrentConditions(adhocLocation)
+        objectCurrentConditions = ObjectCurrentConditions(latLon)
     }
     
     private func downloadHazards() {
-        objectHazards = ObjectHazards(self, adhocLocation)
+        objectHazards = ObjectHazards(self, latLon)
     }
     
     private func downloadSevenDay() {
-        objectSevenDay = ObjectSevenDay(adhocLocation)
+        objectSevenDay = ObjectSevenDay(latLon)
     }
 
     private func displayCc() {
@@ -70,7 +70,7 @@ final class vcAdhocLocation: UIwXViewController {
     }
 
     @objc func save() {
-        let status = Location.save(adhocLocation)
+        let status = Location.save(latLon)
         ObjectPopUp(self, status, saveButton).present()
     }
 }
