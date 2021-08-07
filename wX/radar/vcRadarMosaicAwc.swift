@@ -69,6 +69,10 @@ final class vcRadarMosaicAwc: UIwXViewController {
     @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, image.bitmap)
     }
+    
+//    @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
+//        getContent(UtilityUI.sideSwipe(sender, index, UtilityAwcRadarMosaic.sectorLabels))
+//    }
 
     @objc func getAnimation() {
         if !image.isAnimating() {
