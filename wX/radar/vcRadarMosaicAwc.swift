@@ -18,6 +18,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
     private var sector = "us"
     private var isLocal = false
     var nwsMosaicType = ""
+    private var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
         animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, sectorButton, animateButton, shareButton]).items
-        image = TouchImage(self, toolbar)
+        image = TouchImage(self, toolbar, #selector(handleSwipes))
         sector = Utility.readPref(prefTokenSector, sector)
         product = Utility.readPref(prefTokenProduct, product)
         if nwsMosaicType == "local" {
@@ -34,6 +35,7 @@ final class vcRadarMosaicAwc: UIwXViewController {
             isLocal = true
             sector = UtilityAwcRadarMosaic.getNearestMosaic(Location.latLon)
         }
+        index = UtilityAwcRadarMosaic.sectors.firstIndex(of: sector)!
         getContent()
     }
 
@@ -70,9 +72,10 @@ final class vcRadarMosaicAwc: UIwXViewController {
         UtilityShare.image(self, sender, image.bitmap)
     }
     
-//    @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-//        getContent(UtilityUI.sideSwipe(sender, index, UtilityAwcRadarMosaic.sectorLabels))
-//    }
+    @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
+        index = UtilityUI.sideSwipe(sender, index, UtilityAwcRadarMosaic.sectors)
+        sectorChanged(index)
+    }
 
     @objc func getAnimation() {
         if !image.isAnimating() {
