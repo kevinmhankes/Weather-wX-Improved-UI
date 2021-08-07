@@ -22,6 +22,8 @@ final class ObjectNhc: NSObject {
     private var movementSpeeds = [String]()
     private var lastUpdates = [String]()
     private var statusList = [String]()
+    private var urls = [String]()
+    private var stormPrefixList = [String]()
     var regionMap = [NhcOceanEnum: ObjectNhcRegionSummary]()
 
     init(_ uiv: UIwXViewController) {
@@ -44,6 +46,7 @@ final class ObjectNhc: NSObject {
         classifications = html.parseColumn("\"classification\": \"(.*?)\"")
         intensities = html.parseColumn("\"intensity\": \"(.*?)\"")
         pressures = html.parseColumn("\"pressure\": \"(.*?)\"")
+        urls = html.parseColumn("\"url\": \"(.*?)\"")
         // sample data not quoted for these two
         // intensities = html.parseColumn("\"intensity\": (.*?),");
         // pressures = html.parseColumn("\"pressure\": (.*?),");
@@ -53,12 +56,36 @@ final class ObjectNhc: NSObject {
         movementDirs = html.parseColumn("\"movementDir\": (.*?),")
         movementSpeeds = html.parseColumn("\"movementSpeed\": (.*?),")
         lastUpdates = html.parseColumn("\"lastUpdate\": \"(.*?)\"")
-        binNumbers.forEach { number in
-            let text = UtilityDownload.getTextProduct("MIATCP" + number)
+        
+        let forecastDiscussions = html.parseColumn("\"forecastDiscussion\": \\{(.*?)\\}")
+        forecastDiscussions.forEach {
+            var nhcPrefix = "MIATCP"
+            if $0.contains("/HFOTCD") {
+                nhcPrefix = "HFOTCP"
+            }
+            print("http " + nhcPrefix + $0)
+            stormPrefixList.append(nhcPrefix)
+        }
+//        var nhcPrefix = "MIATCP"
+//        if forecastDiscussions.count > 0 {
+//            if urls.first!.contains("/HFOTCP") {
+//                nhcPrefix = "HFOTCP"
+//            }
+//        }
+        
+        binNumbers.enumerated().forEach { index, number in
+            // let text = UtilityDownload.getTextProduct(nhcPrefix + number)
+            let text = UtilityDownload.getTextProduct(stormPrefixList[index] + number)
             let status = text.parseFirst("(\\.\\.\\..*?\\.\\.\\.)")
             statusList.append(status)
         }
     }
+    
+//    "forecastDiscussion": {
+//                    "advNum": "017",
+//                    "issuance": "2021-08-07T03:00:00.000Z",
+//                    "url": "https://www.nhc.noaa.gov/text/HFOTCDCP2.shtml"
+//                },
 
     func showTextData() {
         if ids.count > 0 {
@@ -75,7 +102,8 @@ final class ObjectNhc: NSObject {
                     latitudes[index],
                     longitudes[index],
                     intensities[index],
-                    statusList[index]
+                    statusList[index],
+                    stormPrefixList[index]
                 )
                 stormDataList.append(objectNhcStormDetails)
             }

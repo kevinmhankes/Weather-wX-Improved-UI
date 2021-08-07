@@ -23,6 +23,7 @@ final class ObjectNhcStormDetails {
     let lat: String
     let lon: String
     let goesUrl: String
+    var stormPrefix = "MIATCP"
 
     init(
         _ name: String,
@@ -36,7 +37,8 @@ final class ObjectNhcStormDetails {
         _ lat: String,
         _ lon: String,
         _ intensity: String,
-        _ status: String
+        _ status: String,
+        _ stormPrefix: String
     ) {
         self.name = name
         self.movementDir = movementDir
@@ -50,6 +52,7 @@ final class ObjectNhcStormDetails {
         self.lon = lon
         self.intensity = intensity
         self.status = status
+        self.stormPrefix = stormPrefix
         center = lat + " " + lon
         dateTime = lastUpdate
         movement = UtilityMath.convertWindDir(to.Double(movementDir)) + " at " + movementSpeed + " mph"

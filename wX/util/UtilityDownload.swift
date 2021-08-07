@@ -35,7 +35,7 @@ final class UtilityDownload {
             text = (GlobalVariables.nwsSwpcWebSitePrefix + "/text/3-day-geomag-forecast.txt").getHtml()
         } else if product.contains("MIATCP") || product.contains("MIATCM")
             || product.contains("MIATCD") || product.contains("MIAPWS")
-            || product.contains("MIAHS") {
+            || product.contains("MIAHS") || product.contains("HFOTCP") {
             let textUrl = "https://www.nhc.noaa.gov/text/" + product + ".shtml"
             text = textUrl.getHtmlSep()
             text = text.parse(GlobalVariables.pre2Pattern)

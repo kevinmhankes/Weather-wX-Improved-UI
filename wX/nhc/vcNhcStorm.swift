@@ -36,7 +36,8 @@ final class vcNhcStorm: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        product = "MIATCP" + stormData.binNumber
+        // product = "MIATCP" + stormData.binNumber
+        product = stormData.stormPrefix + stormData.binNumber
         productButton = ToolbarIcon(title: " Text Products", self, #selector(productClicked))
         goesButton = ToolbarIcon(self, .cloud, #selector(goesClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
