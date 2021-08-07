@@ -4,7 +4,7 @@
 // Refer to the COPYING file of the official project for license.
 // *****************************************************************************
 
-import UIKit
+import Foundation
 
 final class UtilityAwcRadarMosaic {
 

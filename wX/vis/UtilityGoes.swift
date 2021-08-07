@@ -4,6 +4,8 @@
 // Refer to the COPYING file of the official project for license.
 // *****************************************************************************
 
+import Foundation
+
 final class UtilityGoes {
 
     private static let sizeMap = [
@@ -100,7 +102,17 @@ final class UtilityGoes {
         let html = url.getHtml().replaceAll("\n", "").replaceAll("\r", "")
         let imageHtml = html.parse("animationImages = \\[(.*?)\\];")
         let imageUrls = imageHtml.parseColumn("'(https.*?jpg)'")
-        let bitmaps = imageUrls.map { Bitmap($0) }
+        // let bitmaps = imageUrls.map { Bitmap($0) }
+        var bitmaps = [Bitmap](repeating: Bitmap(), count: imageUrls.count)
+        let dispatchGroup = DispatchGroup()
+        for (index, url) in imageUrls.enumerated() {
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                bitmaps[index] = Bitmap(url)
+                dispatchGroup.leave()
+            }
+        }
+        dispatchGroup.wait()
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
     
