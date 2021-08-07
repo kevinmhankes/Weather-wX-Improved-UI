@@ -1,5 +1,5 @@
 
-56138 2021_08_05 
+56138 2021_08_07 [ADD] AWC Radar Mosaic - animation now downloads files in parallel 
    *public release
 56137 2021_08_05 [FIX] url had changed in OPC for Alaska/Arctic Analysis Latest SST/Ice Edge Analysis
 		 [ADD] OPC - add 72 hour charts for most products

@@ -160,7 +160,17 @@ final class UtilityAwcRadarMosaic {
                 + sector
                 + imageType + ")."
         )
-        let bitmaps = urls.map { Bitmap(baseUrl + baseAddOn + $0) }
+        // let bitmaps = urls.map { Bitmap(baseUrl + baseAddOn + $0) }
+        var bitmaps = [Bitmap](repeating: Bitmap(), count: urls.count)
+        let dispatchGroup = DispatchGroup()
+        for (index, url) in urls.enumerated() {
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                bitmaps[index] = Bitmap(baseUrl + baseAddOn + url)
+                dispatchGroup.leave()
+            }
+        }
+        dispatchGroup.wait()
         return UtilityImgAnim.getAnimationDrawableFromBitmapList(bitmaps)
     }
 }
