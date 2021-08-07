@@ -76,56 +76,6 @@ final class UtilityAwcRadarMosaic {
         "CONUS US"
     ]
 
-//    static let sectors = [
-//        "us",
-//        "alb",
-//        "bwi",
-//        "clt",
-//        "tpa",
-//        "dtw",
-//        "evv",
-//        "mgm",
-//        "msp",
-//        "lit",
-//        "pir",
-//        "ict",
-//        "aus",
-//        "cod",
-//        "den",
-//        "abq",
-//        "lws",
-//        "wmc",
-//        "las",
-//        "ak",
-//        "hi",
-//        "carib"
-//    ]
-//
-//    static let sectorLabels = [
-//        "CONUS US",
-//        "Albany NY",
-//        "Baltimore MD",
-//        "Charlotte NC",
-//        "Tampa FL",
-//        "Detroit MI",
-//        "Evansville IN",
-//        "Montgomery AL",
-//        "Minneapolis MN",
-//        "Little Rock AR",
-//        "Pierre SD",
-//        "Wichita KS",
-//        "Austin TX",
-//        "Cody WY",
-//        "Denver CO",
-//        "Albuquerque NM",
-//        "Lewiston ID",
-//        "Winnemuca NV",
-//        "Las Vegas NV",
-//        "Alaska",
-//        "Hawaii",
-//        "Caribbean"
-//    ]
-
     private static let cityToLatLon = [
         "Albany NY": LatLon(42.65, -73.75),
         "Baltimore MD": LatLon(39.29, -76.60),
