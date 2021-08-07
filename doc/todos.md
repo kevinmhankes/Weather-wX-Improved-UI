@@ -1,4 +1,5 @@
-* parallel download for vis/mosaic
+* [ADD] awc swipe left right
+* [ADD] parallel download for nexrad
 * [FIX] dual pane does not show radar time for both panes
 * [ADD] text labels in multipane nexrad
 * [FIX] quad pane runs out of room when warnings selected
