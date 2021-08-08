@@ -42,14 +42,14 @@ final class CapAlert {
         windThreat = html.parse("\"windThreat\": \\[.*?\"(.*?)\".*?\\],")
         maxWindGust = html.parse("\"maxWindGust\": \\[.*?\"(.*?)\".*?\\],")
         hailThreat = html.parse("\"hailThreat\": \\[.*?\"(.*?)\".*?\\],")
-        maxHailSize = html.parse("\"maxHailSize\": \\[.*?([0-9]{1,2}\\.[0-9]{2}).*?\\],")
-        
+        // maxHailSize = html.parse("\"maxHailSize\": \\[.*?([0-9]{1,2}\\.[0-9]{2}).*?\\],")
+        maxHailSize = html.parse("\"maxHailSize\": \\[\\s*(.*?)\\s*\\],")
+
         print("http " + windThreat)
         print("http " + maxWindGust)
         print("http " + hailThreat)
         print("http " + maxHailSize)
 
-        
         summary = summary.replace("\\n", "\n")
         instructions = instructions.replace("\\n", "\n")
         text = ""

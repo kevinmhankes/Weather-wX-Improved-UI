@@ -33,7 +33,11 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
 
     private func display() {
         objectAlertDetail.updateContent(scrollView, cap)
-        statusButton.title = cap.windThreat.replace("RADAR INDICATED", "") + " " + cap.maxWindGust + " " + cap.hailThreat.replace("RADAR INDICATED", "") + " " + cap.maxHailSize
+        var hailUnit = ""
+        if cap.maxHailSize != "" {
+            hailUnit = " in"
+        }
+        statusButton.title = cap.windThreat.replace("RADAR INDICATED", "") + " " + cap.maxWindGust + " " + cap.hailThreat.replace("RADAR INDICATED", "") + " " + cap.maxHailSize + hailUnit
     }
 
     override func playClicked() {
