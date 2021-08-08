@@ -11,13 +11,15 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     private var cap = CapAlert()
     private var objectAlertDetail: ObjectAlertDetail!
     var usAlertsDetailUrl = ""
+    var statusButton: ToolbarIcon!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusButton = ToolbarIcon(title: "", self, nil)
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
         playButton = ToolbarIcon(self, .play, #selector(playClicked))
-        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, shareButton, radarButton]).items
+        toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, playButton, shareButton, radarButton]).items
         objScrollStackView = ScrollStackView(self)
         getContent()
     }
@@ -31,6 +33,7 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
 
     private func display() {
         objectAlertDetail.updateContent(scrollView, cap)
+        statusButton.title = cap.windThreat.replace("RADAR INDICATED", "") + " " + cap.maxWindGust + " " + cap.hailThreat.replace("RADAR INDICATED", "") + " " + cap.maxHailSize
     }
 
     override func playClicked() {
