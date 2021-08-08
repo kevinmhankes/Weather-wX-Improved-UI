@@ -19,6 +19,10 @@ final class CapAlert {
     private var expires = ""
     var points = [String]()
     var polygon = ""
+    var windThreat = ""
+    var maxWindGust = ""
+    var hailThreat = ""
+    var maxHailSize = ""
 
     convenience init(url: String) {
         self.init()
@@ -34,6 +38,18 @@ final class CapAlert {
         summary = html.parse("\"description\": \"(.*?)\"")
         instructions = html.parse("\"instruction\": \"(.*?)\"")
         area = html.parse("\"areaDesc\": \"(.*?)\"")
+
+        windThreat = html.parse("\"windThreat\": \\[.*?\"(.*?)\".*?\\],")
+        maxWindGust = html.parse("\"maxWindGust\": \\[.*?\"(.*?)\".*?\\],")
+        hailThreat = html.parse("\"hailThreat\": \\[.*?\"(.*?)\".*?\\],")
+        maxHailSize = html.parse("\"maxHailSize\": \\[\\w*?([0-9\\.]*?)\\w*?\\],")
+        
+        print("http " + windThreat)
+        print("http " + maxWindGust)
+        print("http " + hailThreat)
+        print("http " + maxHailSize)
+
+        
         summary = summary.replace("\\n", "\n")
         instructions = instructions.replace("\\n", "\n")
         text = ""
