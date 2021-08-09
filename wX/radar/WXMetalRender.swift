@@ -393,7 +393,7 @@ final class WXMetalRender {
     }
 
     func loadGeometry() {
-        projectionNumbers = ProjectionNumbers(rid, .wxOgl)
+        projectionNumbers = ProjectionNumbers(radarSite, .wxOgl)
         geographicBuffers.forEach {
             constructGenericGeographic($0)
             $0.generateMtlBuffer(device)
@@ -413,7 +413,7 @@ final class WXMetalRender {
         Utility.writePref(radarType + numberOfPanesString + "_ZOOM" + index, zoom)
         Utility.writePref(radarType + numberOfPanesString + "_X" + index, xPos)
         Utility.writePref(radarType + numberOfPanesString + "_Y" + index, yPos)
-        Utility.writePref(radarType + numberOfPanesString + "_RID" + index, rid)
+        Utility.writePref(radarType + numberOfPanesString + "_RID" + index, radarSite)
         Utility.writePref(radarType + numberOfPanesString + "_PROD" + index, product)
         Utility.writePref(radarType + numberOfPanesString + "_TILT" + index, tiltInt)
     }
@@ -426,7 +426,7 @@ final class WXMetalRender {
             Utility.writePref(radarType + numberOfPanes + "_ZOOM" + $0, zoom)
             Utility.writePref(radarType + numberOfPanes + "_X" + $0, xPos)
             Utility.writePref(radarType + numberOfPanes + "_Y" + $0, yPos)
-            Utility.writePref(radarType + numberOfPanes + "_RID" + $0, rid)
+            Utility.writePref(radarType + numberOfPanes + "_RID" + $0, radarSite)
             Utility.writePref(radarType + numberOfPanes + "_TILT" + $0, tiltInt)
         }
     }
@@ -439,10 +439,10 @@ final class WXMetalRender {
             xPos = Utility.readPref(radarType + numberOfPanesString + "_X" + index, 0.0)
             yPos = Utility.readPref(radarType + numberOfPanesString + "_Y" + index, 0.0)
             product = Utility.readPref(radarType + numberOfPanesString + "_PROD" + index, initialRadarProducts[paneNumber])
-            rid = Utility.readPref(radarType + numberOfPanesString + "_RID" + index, Location.rid)
+            radarSite = Utility.readPref(radarType + numberOfPanesString + "_RID" + index, Location.rid)
             tiltInt = Utility.readPref(radarType + numberOfPanesString + "_TILT" + index, 0)
         } else {
-            rid = Location.rid
+            radarSite = Location.rid
             product = Utility.readPref(radarType + numberOfPanesString + "_PROD" + index, initialRadarProducts[paneNumber])
         }
     }
@@ -460,8 +460,8 @@ final class WXMetalRender {
         radarBuffers.metalBuffer = []
         radarBuffers = ObjectMetalRadarBuffers(RadarPreferences.nexradRadarBackgroundColor)
     }
-    // TODO rename to radarSite
-    var rid: String {
+
+    var radarSite: String {
         get { ridStr }
         set {
             ridStr = newValue
@@ -478,7 +478,7 @@ final class WXMetalRender {
     }
 
     func checkIfTdwr() {
-        let ridIsTdwr = WXGLNexrad.isRidTdwr(rid)
+        let ridIsTdwr = WXGLNexrad.isRidTdwr(radarSite)
         if product.hasPrefix("TV") || product == "TZL" || product.hasPrefix("TZ") {
             isTdwr = true
         } else {
@@ -533,7 +533,7 @@ final class WXMetalRender {
     
     private func downloadObs() {
         if PolygonType.OBS.display || PolygonType.WIND_BARB.display {
-            UtilityMetar.getStateMetarArrayForWXOGL(rid, fileStorage)
+            UtilityMetar.getStateMetarArrayForWXOGL(radarSite, fileStorage)
         }
         if PolygonType.WIND_BARB.display {
             constructWBLines()
@@ -542,7 +542,7 @@ final class WXMetalRender {
     
     private func downloadRadar(_ url: String) {
         if url == "" {
-            ridPrefixGlobal = WXGLDownload.getRadarFile(url, rid, product, indexString, isTdwr, fileStorage)
+            ridPrefixGlobal = WXGLDownload.getRadarFile(url, radarSite, product, indexString, isTdwr, fileStorage)
             if !RadarPreferences.useFileStorage {
                 if !radarProduct.contains("L2") {
                     radarBuffers.fileName = "nids" + indexString
@@ -881,8 +881,8 @@ final class WXMetalRender {
         }
     }
 
-    func resetRid(_ rid: String, isHomeScreen: Bool = false) {
-        self.rid = rid
+    func resetRid(_ radarSite: String, isHomeScreen: Bool = false) {
+        self.radarSite = radarSite
         xPos = 0.0
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)
@@ -899,8 +899,8 @@ final class WXMetalRender {
         loadGeometry()
     }
 
-    func resetRidAndGet(_ rid: String, isHomeScreen: Bool = false) {
-        self.rid = rid
+    func resetRidAndGet(_ radarSite: String, isHomeScreen: Bool = false) {
+        self.radarSite = radarSite
         xPos = 0.0
         yPos = 0.0
         let prefFactor = (Float(RadarPreferences.wxoglSize) / 10.0)

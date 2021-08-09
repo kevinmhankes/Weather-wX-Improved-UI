@@ -199,13 +199,13 @@ final class NexradTab {
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(uiv.stackViewRadar.get(), wxMetal[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
-        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.rid)
+        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetal[index]!.radarSite)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let radarInfo = wxMetal[0]!.fileStorage.radarInfo
         var alertMessage = radarInfo + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location"
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
-            + wxMetal[index]!.rid
+            + wxMetal[index]!.radarSite
         if wxMetal[index]!.gpsLocation.latString != "0.0" && wxMetal[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += GlobalVariables.newline + "GPS: " + wxMetal[index]!.getGpsString()
         }
@@ -232,7 +232,7 @@ final class NexradTab {
                 UtilityRadarUI.getForecast(pointerLocation, self.uiv)})
         )
         alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self.uiv) }))
-        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.rid, { _ in UtilityRadarUI.getRadarStatus(self.uiv, self.wxMetal[index]!.rid) }))
+        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.radarSite, { _ in UtilityRadarUI.getRadarStatus(self.uiv, self.wxMetal[index]!.radarSite) }))
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {

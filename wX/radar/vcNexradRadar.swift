@@ -218,22 +218,22 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if radarSiteOverride != "" {
             wxMetalRenders[0]!.resetRid(radarSiteOverride)
         }
-        radarSiteButton.title = wxMetalRenders[0]!.rid
+        radarSiteButton.title = wxMetalRenders[0]!.radarSite
         if !RadarPreferences.dualpaneshareposn {
             siteButton.enumerated().forEach {
-                $1.title = wxMetalRenders[$0]!.rid
+                $1.title = wxMetalRenders[$0]!.radarSite
             }
         }
         if RadarPreferences.dualpaneshareposn && numberOfPanes > 1 {
             let x = wxMetalRenders[0]!.xPos
             let y = wxMetalRenders[0]!.yPos
             let zoom = wxMetalRenders[0]!.zoom
-            let rid = wxMetalRenders[0]!.rid
+            let rid = wxMetalRenders[0]!.radarSite
             wxMetalRenders.forEach {
                 $0!.xPos = x
                 $0!.yPos = y
                 $0!.zoom = zoom
-                $0!.rid = rid
+                $0!.radarSite = rid
                 $0!.loadGeometry()
             }
         }
@@ -461,7 +461,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     @objc func productClicked(sender: ToolbarIcon) {
         let alert = ObjectPopUp(self, "", productButton[sender.tag])
-        if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.rid) {
+        if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.radarSite) {
             WXGLNexrad.radarProductListTdwr.forEach { product in
                 alert.addAction(UIAlertAction(product, { _ in self.productChanged(sender.tag, product.split(":")[0]) }))
             }
@@ -727,9 +727,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             var animArray = [[String]]()
             self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
                 if RadarPreferences.useFileStorage {
-                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage)
+                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.radarSite, wxMetalRender!.fileStorage)
                 } else {
-                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.rid, wxMetalRender!.fileStorage))
+                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.radarSite, wxMetalRender!.fileStorage))
                     animArray[index].indices.forEach {
                         UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
                         UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
@@ -770,14 +770,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         let pointerLocation = UtilityRadarUI.getLatLonFromScreenPosition(self, wxMetalRenders[index]!, numberOfPanes, ortInt, x, y)
         let ridNearbyList = UtilityLocation.getNearestRadarSites(pointerLocation, 5)
         let dist = LatLon.distance(Location.latLon, pointerLocation, .MILES)
-        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetalRenders[index]!.rid)
+        let radarSiteLocation = UtilityLocation.getSiteLocation(site: wxMetalRenders[index]!.radarSite)
         let distRid = LatLon.distance(radarSiteLocation, pointerLocation, .MILES)
         let distRidKm = LatLon.distance(radarSiteLocation, pointerLocation, .K)
         let radarInfo = wxMetalRenders[0]!.fileStorage.radarInfo
         var alertMessage = radarInfo + GlobalVariables.newline
             + String(dist.roundTo(places: 2)) + " miles from location" + GlobalVariables.newline
             + ", " + String(distRid.roundTo(places: 2)) + " miles from "
-            + wxMetalRenders[index]!.rid
+            + wxMetalRenders[index]!.radarSite
         if wxMetalRenders[index]!.gpsLocation.latString != "0.0" && wxMetalRenders[index]!.gpsLocation.lonString != "0.0" {
             alertMessage += GlobalVariables.newline + "GPS: " + wxMetalRenders[index]!.getGpsString()
         }
@@ -845,8 +845,8 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         alert.addAction(UIAlertAction("Meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
         alert.addAction(
             UIAlertAction(
-                "Radar status message: " + wxMetalRenders[index]!.rid, { _ in
-                    UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.rid) }
+                "Radar status message: " + wxMetalRenders[index]!.radarSite, { _ in
+                    UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.radarSite) }
             )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)

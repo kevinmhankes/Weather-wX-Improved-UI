@@ -176,7 +176,7 @@ final class UtilityRadarUI {
         }
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
-        let radarLocation = LatLon(Utility.getRadarSiteX(wxMetal.rid), Utility.getRadarSiteY(wxMetal.rid))
+        let radarLocation = LatLon(Utility.getRadarSiteX(wxMetal.radarSite), Utility.getRadarSiteY(wxMetal.radarSite))
         let ppd = wxMetal.projectionNumbers.oneDegreeScaleFactor
         let newX = radarLocation.lon + (Double(wxMetal.xPos) / Double(wxMetal.zoom) + diffX) / ppd
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
@@ -233,7 +233,7 @@ final class UtilityRadarUI {
         }
         let diffX = density * (xMiddle - xModified) / Double(wxMetal.zoom)
         let diffY = density * (yMiddle - yModified) / Double(wxMetal.zoom)
-        let radarLocation = LatLon(Utility.getRadarSiteX(wxMetal.rid), Utility.getRadarSiteY(wxMetal.rid))
+        let radarLocation = LatLon(Utility.getRadarSiteX(wxMetal.radarSite), Utility.getRadarSiteY(wxMetal.radarSite))
         let ppd = wxMetal.projectionNumbers.oneDegreeScaleFactor
         let newX = radarLocation.lon + (Double(wxMetal.xPos) / Double(wxMetal.zoom) + diffX) / ppd
         let test2 = 180.0 / Double.pi * log(tan(Double.pi / 4 + radarLocation.lat * (Double.pi / 180) / 2.0))
