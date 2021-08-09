@@ -23,6 +23,7 @@ final class CapAlert {
     var maxWindGust = ""
     var hailThreat = ""
     var maxHailSize = ""
+    var tornadoThreat = ""
 
     convenience init(url: String) {
         self.init()
@@ -44,7 +45,8 @@ final class CapAlert {
         hailThreat = html.parse("\"hailThreat\": \\[.*?\"(.*?)\".*?\\],")
         // maxHailSize = html.parse("\"maxHailSize\": \\[.*?([0-9]{1,2}\\.[0-9]{2}).*?\\],")
         maxHailSize = html.parse("\"maxHailSize\": \\[\\s*(.*?)\\s*\\],")
-
+        tornadoThreat = html.parse("\"tornadoDetection\": \\[.*?\"(.*?)\".*?\\],")
+    
         print("http " + windThreat)
         print("http " + maxWindGust)
         print("http " + hailThreat)
