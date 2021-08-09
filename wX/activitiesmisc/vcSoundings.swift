@@ -18,8 +18,10 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
         map.mapView.delegate = self
         map.setupMap(GlobalArrays.soundingSites)
         let shareButton = ToolbarIcon(self, .share, #selector(share))
+        let textButton = ToolbarIcon(self, #selector(textClicked))
+        textButton.title = "TEXT"
         siteButton = ToolbarIcon(self, #selector(mapClicked))
-        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, siteButton, shareButton]).items
+        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, GlobalVariables.fixedSpace, textButton, siteButton, shareButton]).items
         image = TouchImage(self, toolbar)
         getContent(UtilityLocation.getNearestSoundingSite(Location.latLon))
     }
@@ -35,6 +37,15 @@ final class vcSoundings: UIwXViewController, MKMapViewDelegate {
 
     @objc func mapClicked() {
         map.toggleMap(self)
+    }
+    
+    @objc func textClicked() {
+        let textUrl = "https://www.spc.noaa.gov/exper/soundings/LATEST/" + siteButton.title! + ".txt"
+        _ = FutureText2({ textUrl.getHtml() }, gotoTextViewer)
+    }
+    
+    private func gotoTextViewer(_ s: String) {
+        Route.textViewer(self, s, isFixedWidth: true)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

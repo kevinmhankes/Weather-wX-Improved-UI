@@ -33,9 +33,10 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func textViewer(_ uiv: UIViewController, _ text: String) {
+    static func textViewer(_ uiv: UIViewController, _ text: String, isFixedWidth: Bool = false) {
         let vc = vcTextViewer()
         vc.html = text
+        vc.isFixedWidth = isFixedWidth
         uiv.goToVC(vc)
     }
     

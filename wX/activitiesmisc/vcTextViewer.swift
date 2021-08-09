@@ -9,6 +9,7 @@ import UIKit
 final class vcTextViewer: UIwXViewControllerWithAudio {
 
     var html = ""
+    var isFixedWidth = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,11 @@ final class vcTextViewer: UIwXViewControllerWithAudio {
     }
 
     private func display() {
-        objectTextView = Text(stackView, html)
+        if !isFixedWidth {
+            objectTextView = Text(stackView, html)
+        } else {
+            objectTextView = Text(stackView, html, FontSize.hourly.size)
+        }
         objectTextView.constrain(scrollView)
     }
 }
