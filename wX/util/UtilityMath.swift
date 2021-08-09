@@ -63,9 +63,9 @@ final class UtilityMath {
     }
 
     static func celsiusToFahrenheitTable() -> String {
-        var table = "C\t\tF" + GlobalVariables.newline
+        var table = "C      F" + GlobalVariables.newline
         (-40...39).forEach { degree in
-            table += String(degree) + "  " + celsiusToFahrenheit(degree) + GlobalVariables.newline
+            table += String(degree).fixedLengthString(4) + "  " + celsiusToFahrenheit(degree) + GlobalVariables.newline
         }
         return table
     }

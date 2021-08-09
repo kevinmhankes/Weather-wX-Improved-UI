@@ -47,7 +47,7 @@ final class vcSettingsMain: UIwXViewController {
         case "Spotters":
             goToVC(vcSpotters())
         case "Celsius to Fahrenheit table":
-            Route.textViewer(self, UtilityMath.celsiusToFahrenheitTable())
+            Route.textViewer(self, UtilityMath.celsiusToFahrenheitTable(), isFixedWidth: true)
         case "About " + GlobalVariables.appName:
             goToVC(vcSettingsAbout())
         default:

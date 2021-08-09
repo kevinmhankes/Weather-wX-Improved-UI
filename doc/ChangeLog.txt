@@ -5,6 +5,7 @@
 		 [ADD] AWC Radar Mosaic - ordering of sectors in menu has changed to make more sense with left/right wipe motion
 	 	 [ADD] GOES Vis - animation now downloads files in parallel
 	 	 [ADD] SPC Soundings, add "TEXT" button to show raw text for sounding
+	 	 [FIX] Settings -> C to F Table, use fixed width font
 	 	 [ADD] prelim support for NHC Storms supported out of HFO
 	 	 [ADD] Alert detail - if specific windGust or Hail size noted display in toolbar. Radar Indicated unless mentioned otherwise.
    *public release
