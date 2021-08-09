@@ -1,3 +1,4 @@
+* [ADD] textual version of sounding
 * [ADD] parallel download for nexrad
 * [FIX] dual pane does not show radar time for both panes
 * [ADD] text labels in multipane nexrad
