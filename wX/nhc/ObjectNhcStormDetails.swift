@@ -61,7 +61,7 @@ final class ObjectNhcStormDetails {
             modBinNumber = modBinNumber.insert(2, "0")
         }
 
-        // FIXME TODO HFO storm used URL https://www.nhc.noaa.gov/storm_graphics/EP09/EP092021_5day_cone_with_line_and_wind_sm2.png
+        // TODO HFO storm used URL https://www.nhc.noaa.gov/storm_graphics/EP09/EP092021_5day_cone_with_line_and_wind_sm2.png
 //        "activeStorms": [
 //            {
 //                "id": "ep092021",
