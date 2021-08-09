@@ -34,6 +34,9 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
     private func display() {
         objectAlertDetail.updateContent(scrollView, cap)
         var hailUnit = ""
+        if cap.maxHailSize == "0" {
+            cap.maxHailSize = ""
+        }
         if cap.maxHailSize != "" {
             hailUnit = " in"
         }
