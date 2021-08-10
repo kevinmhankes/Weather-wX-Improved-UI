@@ -795,6 +795,9 @@ final class UtilityTtsTranslations {
         s = s.replace("PWAT", "Precipitable Water")
         s = s.replace("j/kg", " Joule Per Kilogram ")
         s = s.replace("J/KG", " Joule Per Kilogram ")
+        s = s.replace("PREV DISCUSSION", " previous discussion ")
+        s = s.replace(" taf ", " aviation terminal forecast ")
+        s = s.replace("OVC", " overcast ")
 
 		return s
 	}
