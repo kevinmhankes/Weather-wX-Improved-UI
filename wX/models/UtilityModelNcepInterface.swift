@@ -28,6 +28,7 @@ final class UtilityModelNcepInterface {
     ]
     
     static let sectorsGfs = [
+        "CONUS",
         "NAMER",
         "SAMER",
         "AFRICA",

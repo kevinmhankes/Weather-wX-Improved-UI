@@ -50,7 +50,7 @@ final class CapAlert {
         tornadoThreat = html.parse("\"tornadoDetection\": \\[.*?\"(.*?)\".*?\\],")
         nwsHeadLine = html.parse("\"NWSheadline\": \\[.*?\"(.*?)\".*?\\],")
         motion = html.parse("\"eventMotionDescription\": \\[.*?\"(.*?)\".*?\\],")
-        motion = html.parse("\"VTEC\": \\[.*?\"(.*?)\".*?\\],")
+        vtec = html.parse("\"VTEC\": \\[.*?\"(.*?)\".*?\\],")
         summary = summary.replace("\\n", "\n")
         instructions = instructions.replace("\\n", "\n")
         text = ""

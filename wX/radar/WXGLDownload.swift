@@ -147,13 +147,14 @@ final class WXGLDownload {
             dispatchGroup.enter()
             // queueL2.async(group: dispatchGroup) {
             DispatchQueue.global().async {
-                listOfFiles.append(list[list.count - (frameCount - index + additionalAdd) * 2])
-                let data = getInputStreamFromURLL2(baseUrl + listOfFiles[index])
+                let url = list[list.count - (frameCount - index + additionalAdd) * 2]
+                listOfFiles.append(url)
+                let data = getInputStreamFromURLL2(baseUrl + url)
                 if RadarPreferences.useFileStorage {
                     fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
                     UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
                 } else {
-                    UtilityIO.saveInputStream(data, listOfFiles[index])
+                    UtilityIO.saveInputStream(data, url)
                 }
                 dispatchGroup.leave()
             }
@@ -191,6 +192,7 @@ final class WXGLDownload {
     }
     
     private static func getInputStreamFromURLL2(_ url: String) -> Data {
+        UtilityLog.d("getInputStreamFromURLL2 " + url)
         let byteEnd = "3000000"
         let myJustDefaults = JustSessionDefaults(headers: ["Range": "bytes=0-" + byteEnd])
         let just = JustOf<HTTP>(defaults: myJustDefaults)

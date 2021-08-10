@@ -15,6 +15,7 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         let statusButton = ToolbarIcon(title: "Day " + spcSwoDay, self, nil)
         let stateButton = ToolbarIcon(title: "STATE", self, #selector(stateClicked))
@@ -33,6 +34,11 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
         }
         getContentText()
         getContentImage()
+    }
+    
+    override func doneClicked() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        super.doneClicked()
     }
 
     func getContentText() {
