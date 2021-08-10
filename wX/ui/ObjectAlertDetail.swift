@@ -37,6 +37,33 @@ final class ObjectAlertDetail {
         textViews[4].text = alert.area.removeSingleLineBreaks()
         textViews[5].text = alert.summary
         textViews[6].text = alert.instructions.removeSingleLineBreaks()
+        
+        textViews[6].text += GlobalVariables.newline
+        textViews[6].text += GlobalVariables.newline
+        
+        if alert.windThreat != "" {
+            textViews[6].text += "WIND THREAT..." + alert.windThreat
+            textViews[6].text += GlobalVariables.newline
+
+            textViews[6].text += "MAX WIND GUST..." + alert.maxWindGust
+            textViews[6].text += GlobalVariables.newline
+        }
+
+        if alert.hailThreat != "" {
+            textViews[6].text += "HAIL THREAT..." + alert.hailThreat
+            textViews[6].text += GlobalVariables.newline
+
+            textViews[6].text += "MAX HAIL SIZE..." + alert.maxHailSize + " in"
+            textViews[6].text += GlobalVariables.newline
+        }
+
+        if alert.tornadoThreat != "" {
+            textViews[6].text += "TORNADO THREAT..." + alert.tornadoThreat
+            textViews[6].text += GlobalVariables.newline
+        }
+
+        // statusButton.title = cap.windThreat.replace("RADAR INDICATED", "") + " " + cap.maxWindGust + " " + cap.hailThreat.replace("RADAR INDICATED", "") + " " + cap.maxHailSize + hailUnit + " " + cap.tornadoThreat
+        
         uiStackView.accessibilityLabel = title + wfo + "Issued: " + startTime +
             "End: " + endTime + alert.area.removeSingleLineBreaks()
             + alert.summary.removeSingleLineBreaks() + alert.instructions.removeSingleLineBreaks()
