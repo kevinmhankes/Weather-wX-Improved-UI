@@ -35,8 +35,14 @@ final class ObjectAlertDetail {
             textViews[3].text = "End: " + endTime
         }
         textViews[4].text = alert.area.removeSingleLineBreaks()
-        textViews[5].text = alert.summary
-        textViews[6].text = alert.instructions.removeSingleLineBreaks()
+        
+        if alert.nwsHeadLine != "" {
+            textViews[5].text = "..." + alert.nwsHeadLine + "..." + GlobalVariables.newline + GlobalVariables.newline
+        }
+        textViews[5].text += alert.summary
+        
+        textViews[6].text = "PRECAUTIONARY/PREPAREDNESS ACTIONS..." + GlobalVariables.newline + GlobalVariables.newline
+        textViews[6].text += alert.instructions.removeSingleLineBreaks()
         
         textViews[6].text += GlobalVariables.newline
         textViews[6].text += GlobalVariables.newline
@@ -44,7 +50,9 @@ final class ObjectAlertDetail {
         if alert.windThreat != "" {
             textViews[6].text += "WIND THREAT..." + alert.windThreat
             textViews[6].text += GlobalVariables.newline
-
+        }
+        
+        if alert.maxWindGust != "" &&  alert.maxWindGust != "0" {
             textViews[6].text += "MAX WIND GUST..." + alert.maxWindGust
             textViews[6].text += GlobalVariables.newline
         }
@@ -61,6 +69,8 @@ final class ObjectAlertDetail {
             textViews[6].text += "TORNADO THREAT..." + alert.tornadoThreat
             textViews[6].text += GlobalVariables.newline
         }
+        textViews[6].text += alert.motion + GlobalVariables.newline
+        textViews[6].text += alert.vtec + GlobalVariables.newline
 
         // statusButton.title = cap.windThreat.replace("RADAR INDICATED", "") + " " + cap.maxWindGust + " " + cap.hailThreat.replace("RADAR INDICATED", "") + " " + cap.maxHailSize + hailUnit + " " + cap.tornadoThreat
         

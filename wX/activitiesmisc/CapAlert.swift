@@ -24,6 +24,8 @@ final class CapAlert {
     var hailThreat = ""
     var maxHailSize = ""
     var tornadoThreat = ""
+    var nwsHeadLine = ""
+    var motion = ""
 
     convenience init(url: String) {
         self.init()
@@ -46,12 +48,9 @@ final class CapAlert {
         // maxHailSize = html.parse("\"maxHailSize\": \\[.*?([0-9]{1,2}\\.[0-9]{2}).*?\\],")
         maxHailSize = html.parse("\"maxHailSize\": \\[\\s*(.*?)\\s*\\],")
         tornadoThreat = html.parse("\"tornadoDetection\": \\[.*?\"(.*?)\".*?\\],")
-    
-        print("http " + windThreat)
-        print("http " + maxWindGust)
-        print("http " + hailThreat)
-        print("http " + maxHailSize)
-
+        nwsHeadLine = html.parse("\"NWSheadline\": \\[.*?\"(.*?)\".*?\\],")
+        motion = html.parse("\"eventMotionDescription\": \\[.*?\"(.*?)\".*?\\],")
+        motion = html.parse("\"VTEC\": \\[.*?\"(.*?)\".*?\\],")
         summary = summary.replace("\\n", "\n")
         instructions = instructions.replace("\\n", "\n")
         text = ""
