@@ -41,8 +41,10 @@ final class ObjectAlertDetail {
         }
         textViews[5].text += alert.summary
         
-        textViews[6].text = "PRECAUTIONARY/PREPAREDNESS ACTIONS..." + GlobalVariables.newline + GlobalVariables.newline
-        textViews[6].text += alert.instructions.removeSingleLineBreaks()
+        if alert.instructions != "" {
+            textViews[6].text = "PRECAUTIONARY/PREPAREDNESS ACTIONS..." + GlobalVariables.newline + GlobalVariables.newline
+            textViews[6].text += alert.instructions.removeSingleLineBreaks()
+        }
         
         textViews[6].text += GlobalVariables.newline
         textViews[6].text += GlobalVariables.newline
