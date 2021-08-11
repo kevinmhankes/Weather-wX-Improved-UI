@@ -184,7 +184,7 @@ final class vcSpcMeso: UIwXViewController {
             image.stopAnimating()
             animateButton.setImage(.play)
         } else {
-            _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation(_:))
+            _ = ObjectPopUp(self, title: "Select number of animation frames:", animateButton, [6, 12, 18], getAnimation)
         }
     }
 
