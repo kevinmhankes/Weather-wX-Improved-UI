@@ -99,7 +99,8 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
 
     func productChanged(_ index: Int) {
         product = UtilityWfoText.wfoProdList[index].split(":")[0]
-        UtilityAudio.resetAudio(self, playButton)
+        UtilityAudio.resetAudio(self)
+        playButton.setImage(.play)
         getContent()
     }
 
@@ -122,7 +123,8 @@ final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
     func mapCall(annotationView: MKAnnotationView) {
         scrollView.scrollToTop()
         wfo = (annotationView.annotation!.title!)!
-        UtilityAudio.resetAudio(self, playButton)
+        UtilityAudio.resetAudio(self)
+        playButton.setImage(.play)
         getContent()
     }
 

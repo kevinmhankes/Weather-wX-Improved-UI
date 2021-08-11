@@ -44,7 +44,8 @@ final class vcCanadaText: UIwXViewControllerWithAudio {
 
     func productChanged(_ product: String) {
         self.product = product
-        UtilityAudio.resetAudio(self, playButton)
+        UtilityAudio.resetAudio(self)
+        playButton.setImage(.play)
         getContent()
     }
 

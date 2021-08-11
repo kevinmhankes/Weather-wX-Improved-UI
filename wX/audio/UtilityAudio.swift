@@ -43,11 +43,12 @@ final class UtilityAudio {
         fab.setImage(.pause)
     }
 
-    static func resetAudio(_ uiv: UIwXViewControllerWithAudio, _ playButton: ToolbarIcon) {
+    // removed , _ playButton: ToolbarIcon
+    static func resetAudio(_ uiv: UIwXViewControllerWithAudio) {
         if uiv.synthesizer.isSpeaking {
             uiv.synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
         }
         uiv.synthesizer = AVSpeechSynthesizer()
-        playButton.setImage(.play)
+//        playButton.setImage(.play)
     }
 }
