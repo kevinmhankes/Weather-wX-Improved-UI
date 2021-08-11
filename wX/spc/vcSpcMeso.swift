@@ -199,11 +199,11 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     @objc func showProductMenu() {
-        _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, showSubMenu(_:))
+        _ = ObjectPopUp(self, "", paramButton, subMenu.objTitles, showSubMenu)
     }
 
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, productChanged(_:))
+        _ = ObjectPopUp(self, paramButton, subMenu.objTitles, index, subMenu, productChanged)
     }
 
     func productChangedBySubmenu(_ index: Int) {
