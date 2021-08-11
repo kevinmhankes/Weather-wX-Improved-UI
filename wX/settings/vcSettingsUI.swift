@@ -22,7 +22,6 @@ final class vcSettingsUI: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // let statusButton = ToolbarIcon("version: " + UtilityUI.getVersion(), self, nil)
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton]).items
         objScrollStackView = ScrollStackView(self)
         UtilityUI.determineDeviceType()
